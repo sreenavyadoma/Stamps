@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Small Flat Rate Box
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_sdc1200_pm_small_box
+  @mail_print_shipping_label_sdc1200_pm_small_box
   Scenario: Shipping Label - SDC-1200 - PM Small Flat Rate Box
 
     Then Mail: Select Shipping Label SDC-1200

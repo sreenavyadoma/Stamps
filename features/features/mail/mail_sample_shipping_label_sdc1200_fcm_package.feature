@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - FCM Package
     Given I am signed in as Mail shipper
 
 
-  @mail_sample_shipping_label_sdc1200_fcm_package
+  @mail_print_sample_shipping_label_sdc1200_fcm_package
   Scenario: Sample Shipping Label - SDC-1200 - FCM Package
 
     Then Mail: Select Shipping Label SDC-1200

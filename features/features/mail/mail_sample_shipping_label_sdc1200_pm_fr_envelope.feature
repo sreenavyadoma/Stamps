@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM FR Envelope
     Given I am signed in as Mail shipper
 
 
-  @mail_sample_shipping_label_sdc1200_pm_fr_envelope
+  @mail_print_sample_shipping_label_sdc1200_pm_fr_envelope
   Scenario: Sample Shipping Label - SDC-1200 - PM FR Envelope
 
     Then Mail: Select Shipping Label SDC-1200

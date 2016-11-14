@@ -3,7 +3,7 @@ Feature: Envelope #10 - Print Only Delivery Address
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_envelope_10_delivery_address
+  @mail_print_envelope_10_delivery_address
   Scenario: Envelope #10
     Then Mail: Select Envelope - #10
     Then Mail: Set Ship-From to default

@@ -6,7 +6,7 @@ Feature: Mail Roll - 4" x 6" - PSG Oversized Package
     Given I am signed in as Mail shipper
 
 
-  @mail_roll_4x6_psg_oversized_package
+  @mail_print_roll_4x6_psg_oversized_package
   Scenario: Roll - 4" x 6" - PSG Oversized Package
 
 

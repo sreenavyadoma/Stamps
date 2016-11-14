@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Large Package
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_8x11_pm_large_package
+  @mail_print_shipping_label_8x11_pm_large_package
   Scenario: Shipping Label - 8 ½” x 11” Paper - PM Large Package
 
     Then Mail: Select Shipping Label 8 x 11

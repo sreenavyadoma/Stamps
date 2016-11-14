@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - FCM Large Envelope
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_8x11_fcm_large_envelope
+  @mail_print_shipping_label_8x11_fcm_large_envelope
   Scenario: Shipping Label - 8 ½” x 11” Paper - FCM Large Envelope
 
     Then Mail: Select Shipping Label 8 x 11

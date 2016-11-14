@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - MM Package
     Given I am signed in as Mail shipper
 
 
-  @mail_sample_shipping_label_8x11_mm_package
+  @mail_print_sample_shipping_label_8x11_mm_package
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - MM Package
 
     Then Mail: Select Shipping Label 8 x 11

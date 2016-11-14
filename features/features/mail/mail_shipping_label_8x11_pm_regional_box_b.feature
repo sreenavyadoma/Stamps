@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Regional Rate Box B
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_8x11_pm_regional_box_b
+  @mail_print_shipping_label_8x11_pm_regional_box_b
   Scenario: Shipping Label - 8 ½” x 11” Paper - PM Regional Rate Box B
 
     Then Mail: Select Shipping Label 8 x 11

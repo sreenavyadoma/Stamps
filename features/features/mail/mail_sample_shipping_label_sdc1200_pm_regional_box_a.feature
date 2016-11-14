@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Regional Rate Box A
     Given I am signed in as Mail shipper
 
 
-  @mail_sample_shipping_label_sdc1200_pm_regional_box_a
+  @mail_print_sample_shipping_label_sdc1200_pm_regional_box_a
   Scenario: Sample Shipping Label - SDC-1200 - PM Regional Rate Box A
 
     Then Mail: Select Shipping Label SDC-1200

@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - XM Flat Rate Envelope
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_8x11_xm_fr_envelope
+  @mail_print_shipping_label_8x11_xm_fr_envelope
   Scenario: Shipping Label - 8 ½” x 11” Paper - XM Flat Rate Envelope
 
     Then Mail: Select Shipping Label 8 x 11

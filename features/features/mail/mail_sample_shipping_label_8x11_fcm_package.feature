@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - FCM Package
     Given I am signed in as Mail shipper
 
 
-  @mail_sample_shipping_label_8x11_fcm_package
+  @mail_print_sample_shipping_label_8x11_fcm_package
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - FCM Package
 
     Then Mail: Select Shipping Label 8 x 11

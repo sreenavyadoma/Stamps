@@ -5,8 +5,8 @@ Feature: Stamps k Series - Specify Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_stamps_regression
-  @mail_stamps_k_series_specify
+  @mail_print_stamps_regression
+  @mail_print_stamps_k_series_specify
   Scenario: Stamps Regression K Series - Specify Postage
     Then Mail: Select Stamps
     Then Mail Stamps: Set Serial Number to K12345

@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM Large Envelope
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_sdc1200_fcm_large_envelope
+  @mail_print_shipping_label_sdc1200_fcm_large_envelope
   Scenario: Shipping Label - SDC-1200 - FCM Large Envelope
 
     Then Mail: Select Shipping Label SDC-1200

@@ -5,8 +5,8 @@ Feature: Stamps WN Series - Calculate Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_stamps_regression
-  @mail_stamps_wn_series_calculate
+  @mail_print_stamps_regression
+  @mail_print_stamps_wn_series_calculate
 
   Scenario: Stamps Regression WN Series - Calculate Postage
     Then Mail: Select Stamps

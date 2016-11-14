@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - SDC-1200 - XM Package
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_sdc1200_xm_package
+  @mail_print_shipping_label_sdc1200_xm_package
   Scenario: Shipping Label - SDC-1200 - XM Package
 
     Then Mail: Select Shipping Label SDC-1200

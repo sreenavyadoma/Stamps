@@ -3,7 +3,7 @@ Feature: Envelope #10 - Print Only Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_envelope_10_postage
+  @mail_print_envelope_10_postage
   Scenario: Envelope #10
     Then Mail: Select Envelope - #10
     Then Mail: Set Ship-From to default

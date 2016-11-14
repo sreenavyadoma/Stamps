@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PSG Large Package
     Given I am signed in as Mail shipper
 
 
-  @mail_sample_shipping_label_sdc1200_psg_large_package
+  @mail_print_sample_shipping_label_sdc1200_psg_large_package
   Scenario: Sample Shipping Label - SDC-1200 - PSG Large Package
 
     Then Mail: Select Shipping Label SDC-1200

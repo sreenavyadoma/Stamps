@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Small Flat Rate Box
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_5x8_pm_small_box
+  @mail_print_shipping_label_5x8_pm_small_box
   Scenario: Shipping Label - 5 ½” x 8 ½” - PM Small Flat Rate Box
 
     Then Mail: Select Shipping Label 5 x 8

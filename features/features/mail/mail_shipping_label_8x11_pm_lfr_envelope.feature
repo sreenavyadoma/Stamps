@@ -6,7 +6,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Legal Flat Rate Envelo
     Given I am signed in as Mail shipper
 
 
-  @mail_shipping_label_8x11_pm_lfr_envelope
+  @mail_print_shipping_label_8x11_pm_lfr_envelope
   Scenario: Shipping Label - 8 ½” x 11” Paper - PM Legal Flat Rate Envelope
 
     Then Mail: Select Shipping Label 8 x 11

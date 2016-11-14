@@ -5,8 +5,8 @@ Feature: Stamps K Series - Calculate Postage
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_stamps_regression
-  @mail_stamps_k_series_calculate
+  @mail_print_stamps_regression
+  @mail_print_stamps_k_series_calculate
 
   Scenario: Stamps Regression K Series - Calculate Postage
     Then Mail: Select Stamps

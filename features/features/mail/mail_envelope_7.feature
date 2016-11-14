@@ -3,7 +3,7 @@ Feature: Envelope #7
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_envelope_7
+  @mail_print_envelope_7
   Scenario: Envelope #7
     Then Mail: Select Envelope - #7
     Then Mail: Set Ship-From to default

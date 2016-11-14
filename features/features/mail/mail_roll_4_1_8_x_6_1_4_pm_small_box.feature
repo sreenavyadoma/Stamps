@@ -5,7 +5,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Small Box
     Given I am signed in as Mail shipper
 
 
-  @mail_roll_4_1_8_x_6_1_4_pm_small_box
+  @mail_print_roll_4_1_8_x_6_1_4_pm_small_box
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM Small Box
 
     Then Mail: Select Roll 4 ⅛ x 6 ¼

@@ -1003,28 +1003,28 @@ Cucumber::Rake::Task.new(:mail_bvt_international) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_label_left_side) do |t|
-  t.profile = 'mail_label_left_side'
+Cucumber::Rake::Task.new(:mail_print_label_left_side) do |t|
+  t.profile = 'mail_print_label_left_side'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_label_right_side) do |t|
-  t.profile = 'mail_label_right_side'
+Cucumber::Rake::Task.new(:mail_print_label_right_side) do |t|
+  t.profile = 'mail_print_label_right_side'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_10) do |t|
-  t.profile = 'mail_envelope_10'
+Cucumber::Rake::Task.new(:mail_print_envelope_10) do |t|
+  t.profile = 'mail_print_envelope_10'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_9) do |t|
-  t.profile = 'mail_envelope_9'
+Cucumber::Rake::Task.new(:mail_print_envelope_9) do |t|
+  t.profile = 'mail_print_envelope_9'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_A9) do |t|
-  t.profile = 'mail_envelope_A9'
+Cucumber::Rake::Task.new(:mail_print_envelope_A9) do |t|
+  t.profile = 'mail_print_envelope_A9'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1033,33 +1033,33 @@ Cucumber::Rake::Task.new(:mail_print_envelope_6) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_A2) do |t|
-  t.profile = 'mail_envelope_A2'
+Cucumber::Rake::Task.new(:mail_print_envelope_A2) do |t|
+  t.profile = 'mail_print_envelope_A2'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_7) do |t|
-  t.profile = 'mail_envelope_7'
+Cucumber::Rake::Task.new(:mail_print_envelope_7) do |t|
+  t.profile = 'mail_print_envelope_7'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_11) do |t|
-  t.profile = 'mail_envelope_11'
+Cucumber::Rake::Task.new(:mail_print_envelope_11) do |t|
+  t.profile = 'mail_print_envelope_11'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_12) do |t|
-  t.profile = 'mail_envelope_12'
+Cucumber::Rake::Task.new(:mail_print_envelope_12) do |t|
+  t.profile = 'mail_print_envelope_12'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_regression) do |t|
-  t.profile = 'mail_envelope_regression'
+Cucumber::Rake::Task.new(:mail_print_envelope_regression) do |t|
+  t.profile = 'mail_print_envelope_regression'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_preview_panel_options) do |t|
-  t.profile = 'mail_shipping_label_preview_panel_options'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_preview_panel_options) do |t|
+  t.profile = 'mail_print_shipping_label_preview_panel_options'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1073,955 +1073,955 @@ Cucumber::Rake::Task.new(:mail_forgot_password) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_fcm_large_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_fcm_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_fcm_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_mm_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_mm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_mm_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_fr_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_large_box) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_large_box) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_large_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_large_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_large_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_large_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_lfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_medium_box) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_medium_box) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_pfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_regional_box_a) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_regional_box_b) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_pm_small_box) do |t|
-  t.profile = 'mail_shipping_label_5x8_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_small_box) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_psg_large_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_psg_large_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_psg_oversized_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_psg_oversized_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_psg_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_psg_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_psg_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_fr_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_lfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_package) do |t|
-  t.profile = 'mail_shipping_label_5x8_xm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_xm_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_5x8_xm_pfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_5x8_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_fcm_large_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_fcm_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_fcm_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_mm_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_mm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_mm_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_fr_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_large_box) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_large_box) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_large_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_large_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_large_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_large_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_lfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_medium_box) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_medium_box) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_pfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_regional_box_a) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_regional_box_b) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_pm_small_box) do |t|
-  t.profile = 'mail_shipping_label_8x11_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_pm_small_box) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_psg_large_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_psg_large_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_psg_oversized_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_psg_oversized_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_psg_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_psg_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_psg_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_fr_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_lfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_package) do |t|
-  t.profile = 'mail_shipping_label_8x11_xm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_xm_package) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_8x11_xm_pfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_8x11_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_8x11_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_fcm_large_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_fcm_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_fcm_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_mm_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_mm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_mm_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_fr_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_large_box) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_large_box) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_large_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_large_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_large_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_large_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_lfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_medium_box) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_medium_box) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_pfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_regional_box_a) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_regional_box_b) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_pm_small_box) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_small_box) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_psg_large_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_psg_large_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_psg_oversized_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_psg_oversized_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_psg_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_psg_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_psg_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_fr_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_lfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_package) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_xm_package'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_xm_package) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_shipping_label_sdc1200_xm_pfr_envelope) do |t|
-  t.profile = 'mail_shipping_label_sdc1200_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_fcm_large_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_fcm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_fcm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_mm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_mm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_mm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_fr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_large_box) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_large_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_large_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_large_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_large_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_large_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_lfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_medium_box) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_medium_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_pfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_regional_box_a) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_regional_box_b) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_pm_small_box) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_small_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_psg_large_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_psg_large_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_psg_oversized_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_psg_oversized_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_psg_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_psg_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_psg_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_fr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_lfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_xm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_xm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_5x8_xm_pfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_5x8_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_5x8_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_fcm_large_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_fcm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_fcm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_mm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_mm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_mm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_fr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_large_box) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_large_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_large_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_large_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_large_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_large_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_lfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_medium_box) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_medium_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_pfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_regional_box_a) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_regional_box_b) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_pm_small_box) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_pm_small_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_psg_large_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_psg_large_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_psg_oversized_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_psg_oversized_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_psg_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_psg_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_psg_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_fr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_lfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_xm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_xm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_8x11_xm_pfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_8x11_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_fcm_large_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_fcm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_fcm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_mm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_mm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_mm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_fr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_large_box) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_large_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_large_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_large_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_large_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_large_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_lfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_medium_box) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_medium_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_pfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_regional_box_a) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_regional_box_b) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_pm_small_box) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_pm_small_box) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_psg_large_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_psg_large_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_psg_oversized_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_psg_oversized_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_psg_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_psg_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_psg_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_fr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_lfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_package) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_xm_package'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_xm_package) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_sample_shipping_label_sdc1200_xm_pfr_envelope) do |t|
-  t.profile = 'mail_sample_shipping_label_sdc1200_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_sample_shipping_label_sdc1200_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 
-Cucumber::Rake::Task.new(:mail_stamps_a_series_calculate) do |t|
-  t.profile = 'mail_stamps_a_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_a_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_a_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_a_series_specify) do |t|
-  t.profile = 'mail_stamps_a_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_a_series_specify) do |t|
+  t.profile = 'mail_print_stamps_a_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_b_series_calculate) do |t|
-  t.profile = 'mail_stamps_b_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_b_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_b_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_b_series_specify) do |t|
-  t.profile = 'mail_stamps_b_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_b_series_specify) do |t|
+  t.profile = 'mail_print_stamps_b_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_c_series_calculate) do |t|
-  t.profile = 'mail_stamps_c_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_c_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_c_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_c_series_specify) do |t|
-  t.profile = 'mail_stamps_c_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_c_series_specify) do |t|
+  t.profile = 'mail_print_stamps_c_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_k_series_calculate) do |t|
-  t.profile = 'mail_stamps_k_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_k_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_k_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_k_series_specify) do |t|
-  t.profile = 'mail_stamps_k_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_k_series_specify) do |t|
+  t.profile = 'mail_print_stamps_k_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_l_series_calculate) do |t|
-  t.profile = 'mail_stamps_l_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_l_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_l_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_l_series_specify) do |t|
-  t.profile = 'mail_stamps_l_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_l_series_specify) do |t|
+  t.profile = 'mail_print_stamps_l_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_ml_series_calculate) do |t|
-  t.profile = 'mail_stamps_ml_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_ml_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_ml_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_ml_series_specify) do |t|
-  t.profile = 'mail_stamps_ml_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_ml_series_specify) do |t|
+  t.profile = 'mail_print_stamps_ml_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_p_series_calculate) do |t|
-  t.profile = 'mail_stamps_p_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_p_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_p_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_p_series_specify) do |t|
-  t.profile = 'mail_stamps_p_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_p_series_specify) do |t|
+  t.profile = 'mail_print_stamps_p_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_r_series_calculate) do |t|
-  t.profile = 'mail_stamps_r_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_r_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_r_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_r_series_specify) do |t|
-  t.profile = 'mail_stamps_r_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_r_series_specify) do |t|
+  t.profile = 'mail_print_stamps_r_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_s_series_calculate) do |t|
-  t.profile = 'mail_stamps_s_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_s_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_s_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_s_series_specify) do |t|
-  t.profile = 'mail_stamps_s_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_s_series_specify) do |t|
+  t.profile = 'mail_print_stamps_s_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_v_series_calculate) do |t|
-  t.profile = 'mail_stamps_v_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_v_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_v_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_v_series_specify) do |t|
-  t.profile = 'mail_stamps_v_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_v_series_specify) do |t|
+  t.profile = 'mail_print_stamps_v_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_wn_series_calculate) do |t|
-  t.profile = 'mail_stamps_wn_series_calculate'
+Cucumber::Rake::Task.new(:mail_print_stamps_wn_series_calculate) do |t|
+  t.profile = 'mail_print_stamps_wn_series_calculate'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_stamps_wn_series_specify) do |t|
-  t.profile = 'mail_stamps_wn_series_specify'
+Cucumber::Rake::Task.new(:mail_print_stamps_wn_series_specify) do |t|
+  t.profile = 'mail_print_stamps_wn_series_specify'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_fcm_large_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_fcm_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_fcm_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_mm_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_mm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_mm_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_fr_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_large_box) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_large_box) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_large_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_large_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_large_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_large_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_medium_box) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_medium_box) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_regional_box_a) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_regional_box_b) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_pm_small_box) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_small_box) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_psg_large_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_psg_large_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_psg_oversized_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_psg_oversized_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_psg_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_psg_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_psg_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_fr_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_package) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_xm_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope) do |t|
-  t.profile = 'mail_roll_4_1_8_x_6_1_4_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_fcm_large_envelope) do |t|
-  t.profile = 'mail_roll_4x6_fcm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_fcm_large_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_fcm_package) do |t|
-  t.profile = 'mail_roll_4x6_fcm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_fcm_package) do |t|
+  t.profile = 'mail_print_roll_4x6_fcm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_mm_package) do |t|
-  t.profile = 'mail_roll_4x6_mm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_mm_package) do |t|
+  t.profile = 'mail_print_roll_4x6_mm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_fr_envelope) do |t|
-  t.profile = 'mail_roll_4x6_pm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_fr_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_large_box) do |t|
-  t.profile = 'mail_roll_4x6_pm_large_box'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_large_box) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_large_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_large_envelope) do |t|
-  t.profile = 'mail_roll_4x6_pm_large_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_large_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_large_package) do |t|
-  t.profile = 'mail_roll_4x6_pm_large_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_large_package) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_lfr_envelope) do |t|
-  t.profile = 'mail_roll_4x6_pm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_lfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_medium_box) do |t|
-  t.profile = 'mail_roll_4x6_pm_medium_box'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_medium_box) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_medium_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_package) do |t|
-  t.profile = 'mail_roll_4x6_pm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_package) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_pfr_envelope) do |t|
-  t.profile = 'mail_roll_4x6_pm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_pfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_regional_box_a) do |t|
-  t.profile = 'mail_roll_4x6_pm_regional_box_a'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_regional_box_a) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_regional_box_a'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_regional_box_b) do |t|
-  t.profile = 'mail_roll_4x6_pm_regional_box_b'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_regional_box_b) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_regional_box_b'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_pm_small_box) do |t|
-  t.profile = 'mail_roll_4x6_pm_small_box'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_pm_small_box) do |t|
+  t.profile = 'mail_print_roll_4x6_pm_small_box'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_psg_large_package) do |t|
-  t.profile = 'mail_roll_4x6_psg_large_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_psg_large_package) do |t|
+  t.profile = 'mail_print_roll_4x6_psg_large_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_psg_oversized_package) do |t|
-  t.profile = 'mail_roll_4x6_psg_oversized_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_psg_oversized_package) do |t|
+  t.profile = 'mail_print_roll_4x6_psg_oversized_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_psg_package) do |t|
-  t.profile = 'mail_roll_4x6_psg_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_psg_package) do |t|
+  t.profile = 'mail_print_roll_4x6_psg_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_xm_fr_envelope) do |t|
-  t.profile = 'mail_roll_4x6_xm_fr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_xm_fr_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_xm_fr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_xm_lfr_envelope) do |t|
-  t.profile = 'mail_roll_4x6_xm_lfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_xm_lfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_xm_lfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_xm_package) do |t|
-  t.profile = 'mail_roll_4x6_xm_package'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_xm_package) do |t|
+  t.profile = 'mail_print_roll_4x6_xm_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_roll_4x6_xm_pfr_envelope) do |t|
-  t.profile = 'mail_roll_4x6_xm_pfr_envelope'
+Cucumber::Rake::Task.new(:mail_print_roll_4x6_xm_pfr_envelope) do |t|
+  t.profile = 'mail_print_roll_4x6_xm_pfr_envelope'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -2050,18 +2050,18 @@ Cucumber::Rake::Task.new(:mail_welcome) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_10_return_address) do |t|
-  t.profile = 'mail_envelope_10_return_address'
+Cucumber::Rake::Task.new(:mail_print_envelope_10_return_address) do |t|
+  t.profile = 'mail_print_envelope_10_return_address'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_10_delivery_address) do |t|
-  t.profile = 'mail_envelope_10_delivery_address'
+Cucumber::Rake::Task.new(:mail_print_envelope_10_delivery_address) do |t|
+  t.profile = 'mail_print_envelope_10_delivery_address'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_10_postage) do |t|
-  t.profile = 'mail_envelope_10_postage'
+Cucumber::Rake::Task.new(:mail_print_envelope_10_postage) do |t|
+  t.profile = 'mail_print_envelope_10_postage'
   t.cucumber_opts = "-p cuke_reports"
 end
 

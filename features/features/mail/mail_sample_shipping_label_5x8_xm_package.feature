@@ -6,7 +6,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - XM Package
     Given I am signed in as Mail shipper
 
 
-  @mail_sample_shipping_label_5x8_xm_package
+  @mail_print_sample_shipping_label_5x8_xm_package
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - XM Package
 
     Then Mail: Select Shipping Label 5 x 8
