@@ -12,16 +12,9 @@ end
 
 Then /^PAM Customer Search: Set username to (.*)$/ do |username|
   logger.step "PAM Customer Search: Set username to #{username}"
-
-  if username.downcase.include? "random"
-    usr = @username
-  else
-    @username = username
-    usr = username
-  end
-  logger.step "PAM Customer Search: Set username to #{usr}"
-  
-  @customer_search.username.set usr
+  @webreg_data[:usr] = username unless username.downcase.include? "random"
+  logger.step "PAM Customer Search: Set username to #{@webreg_data[:usr]}"
+  @customer_search.username.set @webreg_data[:usr]
   sleep 1
 end
 
@@ -38,7 +31,7 @@ Then /^PAM Customer Search: Click Search button$/ do
     if @customer_profile.present?
       @pam_customer_profile_found = true
     else
-      step "PAM Customer Search: Set username to #{@username}"
+      step "PAM Customer Search: Set username to #{@webreg_data[:usr]}"
       step "PAM Customer Search: Set 5.2 or lower"
       step "PAM Customer Search: Click Search button"
     end
@@ -69,14 +62,14 @@ end
 Then /^PAM Customer Profile: Click Change Meter Limit link$/ do
   @customer_profile.should be_truthy
   @change_meter_limit = @customer_profile.header.change_meter_limit
+  # change meter limit if new limit is greater than current limit.
 end
 
 Then /^PAM Change Meter Limit: Set New Meter Limit to \$(\d+)$/ do |new_limit|
   logger.step "PAM Change Meter Limit: Set New Meter Limit to #{new_limit}"
   @change_meter_limit.should be_truthy
-  # change meter limit if new limit is greater than current limit.
-  @change_limit = @change_meter_limit.current_meter_limit > new_limit.to_f
-  @change_meter_limit.new_meter_limit.set(new_limit )if @change_limit
+  @change_limit = new_limit.to_f > @change_meter_limit.current_meter_limit
+  @change_meter_limit.new_meter_limit.set(new_limit) if @change_limit
 end
 
 Then /^PAM Change Meter Limit: Set USPS approval to Checked$/ do
@@ -99,8 +92,12 @@ Then /^PAM Change Meter Limit: Click Submit$/ do
   logger.step "PAM Change Meter Limit: Click Submit"
   if @change_limit
     @change_meter_limit.should be_truthy
-    @customer_profile = @change_meter_limit.submit.ok
+    @change_meter_limit.submit.ok
   end
+  sleep 2
+  step "PAM Customer Profile: Click Change Meter Limit link"
+  sleep 2
+  @change_meter_limit.current_meter_limit.should eql @change_meter_limit.maximum_meter_limit
 end
 
 Then /^PAM Customer Profile: Click ACH Credit link$/ do
@@ -128,7 +125,7 @@ Then /^PAM ACH Purchase: Set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   comments.safe_click
   comments.safe_click
   comments.safe_click
-  comments.set @username
+  comments.set @webreg_data[:usr]
 
   @ach_credit.submit.yes.ok
 end
@@ -269,10 +266,10 @@ end
 
 Then /^WebReg Profile: Send username to standard out$/ do
   logger.message " ############## NEW USER ID "
-  logger.message " ############## #{@username}"
-  logger.message " ############## #{@username}"
-  logger.message " ############## #{@username}"
-  logger.message " ############## #{@username}"
+  logger.message " ############## #{@webreg_data[:usr]}"
+  logger.message " ############## #{@webreg_data[:usr]}"
+  logger.message " ############## #{@webreg_data[:usr]}"
+  logger.message " ############## #{@webreg_data[:usr]}"
   logger.message " ############## NEW USER ID "
 end
 

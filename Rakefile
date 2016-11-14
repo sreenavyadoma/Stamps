@@ -1053,11 +1053,6 @@ Cucumber::Rake::Task.new(:mail_print_envelope_12) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_print_envelope_regression) do |t|
-  t.profile = 'mail_print_envelope_regression'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:mail_print_shipping_label_preview_panel_options) do |t|
   t.profile = 'mail_print_shipping_label_preview_panel_options'
   t.cucumber_opts = "-p cuke_reports"

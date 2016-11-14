@@ -3,7 +3,6 @@ Feature: Envelope a2
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_print_envelope_regression
   @mail_print_envelope_A2
   Scenario: Envelope #A2
     Then Mail: Select Envelope - #A2

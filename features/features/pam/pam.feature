@@ -12,8 +12,8 @@ Feature: PAM page
     Then PAM Customer Search: Click Search button
 
     Then PAM Customer Profile: Click Change Meter Limit link
-    Then PAM Change Meter Limit: Set USPS approval to Checked
     Then PAM Change Meter Limit: Set New Meter Limit to $100000
+    Then PAM Change Meter Limit: Set USPS approval to Checked
     Then PAM Change Meter Limit: Click Submit
 
     Then PAM Customer Profile: Click ACH Credit link
