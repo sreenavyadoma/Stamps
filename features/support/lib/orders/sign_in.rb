@@ -132,7 +132,7 @@ module Stamps
                 logger.error invalid_username.text
                 logger.error invalid_username.text
                 logger.error invalid_username.text
-                "Invalid Username".should eql invalid_username.text
+                "Invalid Username: #{usr}/#{pw}".should eql invalid_username.text
               end
             end
 
@@ -150,7 +150,7 @@ module Stamps
               logger.error invalid_username.text
               logger.error invalid_username.text
               logger.error invalid_username.text
-              "Invalid Username".should eql invalid_username.text
+              "Invalid Username: #{usr}/#{pw}".should eql invalid_username.text
             end
 
             loading_orders.safely_wait_until_present 2
