@@ -3,8 +3,7 @@ Feature: Envelope #6
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_envelope_regression
-  @mail_envelope_6
+  @mail_print_envelope_6
   Scenario: Envelope #6
     Then Mail: Select Envelope - #6
     Then Mail: Set Ship-From to default

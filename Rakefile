@@ -1028,8 +1028,8 @@ Cucumber::Rake::Task.new(:mail_envelope_A9) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_envelope_6) do |t|
-  t.profile = 'mail_envelope_6'
+Cucumber::Rake::Task.new(:mail_print_envelope_6) do |t|
+  t.profile = 'mail_print_envelope_6'
   t.cucumber_opts = "-p cuke_reports"
 end
 

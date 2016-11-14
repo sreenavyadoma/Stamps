@@ -1108,7 +1108,7 @@ mail_credentials:
     mail_invalid_credentials:
       usr: webpost_0007
       pw: pass111
-    mail_envelope_6:
+    mail_print_envelope_6:
       usr: pxihh2exps
       pw: pass111
     mail_envelope_7:
