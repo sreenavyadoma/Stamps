@@ -87,6 +87,7 @@ module Stamps
         toolbar = Stamps::Orders::Toolbar::Toolbar.new param
         market_place = Orders::Stores::MarketPlace.new param
         loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
+        invalid_username = ElementWrapper.new browser.span(id: "InvalidUsernameMsg")
 
         "Check that URL is valid: #{browser.url}".should eql "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 
@@ -125,6 +126,14 @@ module Stamps
               sign_in_btn.safe_send_keys :enter
               sign_in_btn.safe_click
               sign_in_btn.safe_click
+              if invalid_username.present?
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                "Invalid Username".should eql invalid_username.text
+              end
             end
 
             2.times do
@@ -133,6 +142,15 @@ module Stamps
               else
                 break
               end
+            end
+
+            if invalid_username.present?
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              "Invalid Username".should eql invalid_username.text
             end
 
             loading_orders.safely_wait_until_present 2
