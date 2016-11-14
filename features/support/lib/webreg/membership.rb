@@ -263,7 +263,7 @@ module Stamps
           browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(6)>div>span")
         end
 
-        def help_block
+        def help_text
           element_helper.text help_element
         end
     end
@@ -332,7 +332,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(3)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
 
@@ -375,7 +375,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_terms]>div>div>div>div>span.help-block")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -441,18 +441,19 @@ module Stamps
 
 
     class MembershipPhone < TextBoxElement
+      attr_reader :help_element
+
+      def initialize param
+        super param
+        @help_element ||= browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(8)>div>span")
+      end
 
       def has_error?
         help_element.present?
       end
 
-      # Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(8)>div>span")
-      end
-
-      def help_block
-        element_helper.text help_element
+      def help_text
+        help_element.text
       end
     end
 
@@ -462,7 +463,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(1)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -473,7 +474,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(2)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -484,7 +485,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(4)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -495,7 +496,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -506,45 +507,41 @@ module Stamps
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
 
-    #Added by Galina
     class MembershipCardName< TextBoxElement
       def help_element
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(2)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
 
-    #Added by Galina
     class MembershipBillingAddress < TextBoxElement
       def help_element
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(6)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
 
-    #Added by Galina
     class MembershipBillingCity< TextBoxElement
       def help_element
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(7)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
 
-    #Added by Galina
     class BillingState < Browser::Modal
       def select state
         begin
@@ -808,7 +805,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(8)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -819,33 +816,21 @@ module Stamps
       browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(9)>div>span")
       end
 
-      def help_block
+      def help_text
       element_helper.text help_element
       end
     end
 
-
     class MembershipCardNumber < TextBoxElement
-      def help_element
-        browser.span css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span'
+      attr_reader :help_element
+
+      def initialize param
+        super param
+        @help_element ||= ElementWrapper.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
       end
 
-      def help_block
-        element_helper.text help_element
-      end
-
-      def has_error?
-        help_element.present?
-      end
-    end
-
-    class MembershipCardNumber < TextBoxElement
-      def help_element
-        browser.span css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span'
-      end
-
-      def help_block
-        element_helper.text help_element
+      def help_text
+        help_element.text
       end
 
       def has_error?
@@ -858,7 +843,7 @@ module Stamps
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
                   :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions, :back,
                   :submit_button, :supplies, :userid_taken, :download_page, :membership_error, :billing_address,
-                  :billing_city, :billing_state, :billing_zip
+                  :billing_city, :billing_state, :billing_zip, :loading, :page_header, :error_occured, :connection_failed
 
       def initialize param
         super param
@@ -874,7 +859,6 @@ module Stamps
         @zip ||= TextBoxElement.new browser.text_field(id: "zip")
         @ext ||= TextBoxElement.new browser.text_field(id: "extension")
         @card_holder_name ||= MembershipCardHolderName.new browser.text_field(id: "ccName")
-        @card_number ||= MembershipCardName.new browser.text_field(id: "ccNumber")
         @card_holder_name ||= TextBoxElement.new browser.text_field(id: "ccName")
         @card_number ||= MembershipCardNumber.new browser.text_field(id: "ccNumber")
         @expiration_month ||= ExpirationMonth.new param
@@ -891,13 +875,18 @@ module Stamps
         @terms_and_conditions ||= TermsAndConditions.new param
         @back ||= ElementWrapper.new browser.button(id: "prev")
 
-
-
         @submit_button = ElementWrapper.new browser.button(text: "Submit") #Change by Galina from "Submit"
         @supplies = ChooseSupplies.new param
         @userid_taken = UserIdTaken.new param
         @download_page = DownloadPage.new param
         @membership_error = MembershipError.new param
+
+        @loading = ElementWrapper.new browser.button(text: "Loading...")
+        @page_header = ElementWrapper.new browser.h1(text: 'Customize your Welcome Kit')
+
+        @error_occured = WebRegError.new param
+        @connection_failed = WebRegSecureConnectionFailed.new param
+
       end
 
       def wait_until_present
@@ -913,20 +902,33 @@ module Stamps
         (browser.h1 text: "Please enter your mailing information").present?
       end
 
-      def submit
-        loading = ElementWrapper.new browser.button(text: "Loading...")
-        page_header = ElementWrapper.new browser.h1 text: 'Customize your Welcome Kit'
-        error_occured = WebRegError.new param
-        connection_failed = WebRegSecureConnectionFailed.new param
-
-        submit_button.safely_wait_until_present 6
-        submit_button.present?.should be true
+      def submit_correct_errors webreg_data
+        webreg_data.should be_a(Hash)
         10.times do
-          sleep 1
-          submit_button.safe_click
-          submit_button.send_keys :enter
-          loading.safely_wait_while_present 4
-          page_header.safely_wait_until_present 4
+          submit
+
+          loading.safely_wait_while_present 3
+          page_header.safely_wait_until_present 3
+
+          if phone.has_error?
+            err_text = phone.help_text
+             if err_text == "This field is required"
+               logger.error err_text
+               phone.set webreg_data[:phone]
+               phone.send_keys webreg_data[:phone]
+             end
+          end
+
+          if card_number.has_error?
+            err_text = card_number.help_text
+            logger.error err_text
+            "Card Number #{webreg_data[:card_number]} failed verification.".should eql(err_text) if err_text.include? "failed verification"
+             if err_text == "This field is required"
+               card_number.set(webreg_data[:card_number])
+               card_number.send_keys(webreg_data[:card_number])
+             end
+          end
+
           break unless submit_button.present?
         end
         15.times do
@@ -935,7 +937,13 @@ module Stamps
         end
       end
 
-      # Added by Galina
+      def submit
+        submit_button.safely_wait_until_present 6
+        submit_button.present?.should be true
+        submit_button.safe_click
+        submit_button.send_keys :enter
+      end
+
       def tab
         browser.send_keys([:tab])
         sleep(1)

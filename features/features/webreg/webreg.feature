@@ -38,11 +38,3 @@ Feature: WebReg
     Then WebReg Profile: Write credentials to properties file
     Then WebReg Profile: Send username to standard out
 
-  @generate_username
-  Scenario:
-    Then Generate Username
-    Then WebReg Profile: Write username to properties file
-
-  @output_username
-  Scenario:
-    Then Output Username

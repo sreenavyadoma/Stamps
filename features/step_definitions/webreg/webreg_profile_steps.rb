@@ -1,19 +1,3 @@
-Then /^Generate Username$/ do
-  ENV['WEB_REG_USR'] = ParameterHelper.rand_username
-  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Generate Username: #{ENV['WEB_REG_USR']}"
-end
-
-Then /^Output Username$/ do
-  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
-  logger.message "Output Username: #{ENV['WEB_REG_USR']}"
-end
 
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.step "WebReg Profile: Load Registration Page"
@@ -26,26 +10,15 @@ Then /^WebReg Profile:  Continue to Mailing Information Page$/ do
   webreg.profile.continue_to_mailing_info
 end
 
-Then /^WebReg Profile: Set User ID and Email from Jenkins$/ do
-  if ENV['USERNAME'].nil? || ENV['USERNAME'].size==0
-    raise "No username specified when test was ran.  Don't forget to assign a value to USERNAME."
-  else
-    @username = ENV['USERNAME']
-  end
-  logger.step "WebReg Profile: Set User ID and Email to #{@username}"
-  step "WebReg Profile: Set Email to #{@username}@mailinator.com"
-  step "WebReg Profile: Set User ID to #{@username}"
-end
-
 Then /^WebReg Profile: Set User ID and Email to (.*)$/ do |usr|
   if usr.downcase.include? "random"
-    @username = ParameterHelper.rand_username
+    @webreg_data[:usr] = ParameterHelper.rand_username
   else
-    @username = usr
+    @webreg_data[:usr] = usr
   end
-  logger.step "WebReg Profile: Set User ID and Email to #{@username}"
-  step "WebReg Profile: Set Email to #{@username}@mailinator.com"
-  step "WebReg Profile: Set User ID to #{@username}"
+  logger.step "WebReg Profile: Set User ID and Email to #{ @webreg_data[:usr]}"
+  step "WebReg Profile: Set Email to #{ @webreg_data[:usr]}@mailinator.com"
+  step "WebReg Profile: Set User ID to #{ @webreg_data[:usr]}"
 end
 
 Then /^WebReg Profile: Set Email to (.*)$/ do |email|
@@ -55,14 +28,14 @@ end
 
 Then /^WebReg Profile: Set User ID to (.*)$/ do |user_id|
   logger.step "WebReg Profile: Set User ID to #{user_id}"
-  @username = user_id
+  @webreg_data[:usr] = user_id
   webreg.profile.user_id.set user_id
 end
 
 Then /^WebReg Profile: Set Password to (.*)$/ do |password|
   logger.step "WebReg Profile: Set Password to #{password}"
-  @password=password
-  webreg.profile.password.set password
+  @webreg_data[:pw]=password
+  webreg.profile.password.set @webreg_data[:pw]
 end
 
 Then /^WebReg Profile: Set Re-Type password to (.*)$/ do |password|
@@ -181,12 +154,14 @@ end
 
 Then /^WebReg Profile: Set 1st Answer to (.*)$/ do |answer|
   logger.step "WebReg Profile: Set 1st Answer to #{answer}"
-  webreg.profile.first_answer.set answer
+  @webreg_data[:answer] = answer
+  webreg.profile.first_answer.set @webreg_data[:answer]
 end
 
 Then /^WebReg Profile: Set 2nd Answer to (.*)$/ do |answer|
   logger.step "WebReg Profile: Set 2nd Answer to #{answer}"
-  webreg.profile.second_answer.set answer
+  @webreg_data[:answer_2] = answer
+  webreg.profile.second_answer.set @webreg_data[:answer_2]
 end
 
 Then /^WebReg Profile: Set Send me special money-saving offers to checked$/ do
@@ -318,62 +293,62 @@ end
 
 Then(/^WebReg Profile: Expect Email Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect Email Help Block is #{expectation}"
-  help_text = webreg.profile.email.help_block
+  help_text = webreg.profile.email.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Profile: Expect User ID Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect User ID Help Block is #{expectation}"
-  help_text = webreg.profile.user_id.help_block
+  help_text = webreg.profile.user_id.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Profile: Expect Password Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect Password Help Block is #{expectation}"
-  help_text = webreg.profile.password.help_block
+  help_text = webreg.profile.password.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Profile: Expect Re\-Type Password Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect Re-Type Help Block is #{expectation}"
-  help_text = webreg.profile.password.help_block
+  help_text = webreg.profile.password.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Profile: Expect How will you use Stamps\.com Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect How will you use Stamps.com Help Block is #{expectation}"
-  help_text = webreg.profile.usage_type.help_block
+  help_text = webreg.profile.usage_type.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Profile: Expect How did you hear about us\? Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: How did you hear about us? Help Block is #{expectation}"
   referrer_name = webreg.profile.referrer_name
-  help_text = webreg.profile.referrer_name.help_block if referrer_name.present?
+  help_text = webreg.profile.referrer_name.help_text if referrer_name.present?
   help_text.should eql expectation if referrer_name.present?
 end
 
 Then(/^WebReg Profile: Expect 1st Question Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect 1st Question Help Block is #{expectation}"
-  help_text = webreg.profile.first_question.help_block
+  help_text = webreg.profile.first_question.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Profile: Expect 1st Answer Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect 1st Answer Help Block is #{expectation}"
-  help_text = webreg.profile.first_answer.help_block
+  help_text = webreg.profile.first_answer.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Profile: Expect 2nd Question Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect 2n Question Help Block is #{expectation}"
-  help_text = webreg.profile.second_question.help_block
+  help_text = webreg.profile.second_question.help_text
   help_text.should eql expectation
 end
 
 Then(/^^WebReg Profile: Expect 2nd Answer Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Profile: Expect 2nd Answer Help Block is #{expectation}"
-  help_text = webreg.profile.second_answer.help_block
+  help_text = webreg.profile.second_answer.help_text
   help_text.should eql expectation
 end
 

@@ -245,7 +245,7 @@ Then /^WebReg Membership: Set State to Palau$/ do
 end
 
 Then /^WebReg Membership: Set State to Rhode Island$/ do
-  logger.step "WebReg Membership: Set State to xxxxx"
+  logger.step "WebReg Membership: Set State to Rhode Island"
   webreg.profile.membership.state.rhode_island
 end
 
@@ -311,61 +311,69 @@ end
 
 Then /^WebReg Membership: Set First Name to (.*)$/ do |var|
   logger.step "WebReg Membership: Set First Name to #{var}"
-  webreg.profile.membership.first_name.set (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  @webreg_data[:first_name] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  webreg.profile.membership.first_name.set @webreg_data[:first_name]
 end
 
 Then /^WebReg Membership: Set Last Name to (.*)$/ do |var|
   logger.step "WebReg Membership: Set Last Name to #{var}"
-  webreg.profile.membership.last_name.set (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  @webreg_data[:last_name] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  webreg.profile.membership.last_name.set @webreg_data[:last_name]
 end
 
 Then /^WebReg Membership: Set Company to (.*)$/ do |var|
   logger.step "WebReg Membership: Set Company to #{var}"
-  webreg.profile.membership.company.set (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  @webreg_data[:company] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  webreg.profile.membership.company.set @webreg_data[:company]
 end
 
 Then /^WebReg Membership: Set Address to (.*)$/ do |var|
   logger.step "WebReg Membership: Set Address to #{var}"
-  webreg.profile.membership.address.set var
+  @webreg_data[:company] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  webreg.profile.membership.address.set @webreg_data[:company]
 end
 
 Then /^WebReg Membership: Set City to (.*)$/ do |var|
   logger.step "WebReg Membership: Set City to #{var}"
-  webreg.profile.membership.city.set var
+  @webreg_data[:membership] = var
+  webreg.profile.membership.city.set @webreg_data[:membership]
 end
 
 Then /^WebReg Membership: Set Zip Code to (.*)$/ do |var|
   logger.step "WebReg Membership: Set Zip Code to #{var}"
-  webreg.profile.membership.zip.set var
+  @webreg_data[:zip] = var
+  webreg.profile.membership.zip.set @webreg_data[:zip]
 end
 
 Then /^WebReg Membership: Set Phone to (.*)$/ do |var|
   logger.step "WebReg Membership: Set Phone to #{var}"
+  @webreg_data[:phone] = (var.downcase.include? "random") ? ParameterHelper.random_phone : var
   phone = webreg.profile.membership.phone
   6.times do
-    rand_phone = ParameterHelper.random_phone
-    phone.send_keys (var.downcase.include? "random") ? rand_phone : var
+    phone.send_keys @webreg_data[:phone]
     sleep 1
     ui_phone = phone.text
     sleep 1
-    break if ui_phone.include? '-' and (rand_phone[-4,4] == ui_phone[-4,4])
+    break if ui_phone.include? '-' and (@webreg_data[:phone][-4,4] == ui_phone[-4,4])
   end
 end
 
 Then /^WebReg Membership: Set Extenion to (.*)$/ do |var|
   logger.step "WebReg Membership: Set Extenion to #{var}"
-  webreg.profile.membership.ext.set (var.downcase.include? "random") ? ParameterHelper.random_phone_extension : var
+  @webreg_data[:ext] = (var.downcase.include? "random") ? ParameterHelper.random_phone_extension : var
+  webreg.profile.membership.ext.set @webreg_data[:ext]
 end
 
 Then /^WebReg Membership: Set Cardholder name to (.*)$/ do |var|
   logger.step "WebReg Membership: Set Cardholder name to #{var}"
-  webreg.profile.membership.card_holder_name.set (var.downcase.include? "random") ? ParameterHelper.random_name : var
+  @webreg_data[:card_holder_name] = (var.downcase.include? "random") ? ParameterHelper.random_name : var
+  webreg.profile.membership.card_holder_name.set @webreg_data[:card_holder_name]
 end
 
 Then /^WebReg Membership: Set Card number to (.*)$/ do |var|
-  @cc_card_number = var
-  logger.step "WebReg Membership: Set Card number to #{@cc_card_number}"
-  webreg.profile.membership.card_number.set @cc_card_number
+  @webreg_data[:card_number] = var
+  logger.step "WebReg Membership: Set Card number to #{@webreg_data[:card_number]}"
+  webreg.profile.membership.card_number.set @webreg_data[:card_number]
 end
 
 Then /^WebReg Membership: Set Expiration Month to January/ do
@@ -430,7 +438,8 @@ end
 
 Then /^WebReg Membership: Set Expiration Year to (\d+)$/ do |var|
   logger.step "WebReg Membership: Set Expiration Year to #{var}"
-  webreg.profile.membership.expiration_year.select var
+  @webreg_data[:expiration_year] = var
+  webreg.profile.membership.expiration_year.select @webreg_data[:expiration_year]
 end
 
 Then /^WebReg Membership: Set Billing address same as mailing address to Checked$/ do
@@ -455,13 +464,12 @@ end
 
 Then /^WebReg Membership: Click Back Button$/ do
   logger.step "WebReg Membership: Click Back Button"
-  raise "Step Definition not yet implemented! - WebReg Membership: Click Back Button"
-  #webreg.profile.membership.xxxx.set var
+  "".should eql "Step Definition not yet implemented! - WebReg Membership: Click Back Button"
 end
 
 Then /^WebReg Membership: Submit$/ do
   logger.step "WebReg Membership: Submit"
-  @webreg_result = webreg.profile.membership.submit
+  webreg.profile.membership.submit_correct_errors @webreg_data
 end
 
 Then /^WebReg Membership: Submit and correct errors$/ do
@@ -470,12 +478,12 @@ Then /^WebReg Membership: Submit and correct errors$/ do
     case @webreg_result
       #when there's a failure, correct field and resubmit.
       when WebReg::MembershipPhone
-        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_block}"
+        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
         step "WebReg Membership: Set Phone to random"
         step "WebReg Membership: Submit"
       when WebReg::MembershipCardNumber
-        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_block}"
-        step "WebReg Membership: Set Card number to #{@cc_card_number}"
+        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
+        step "WebReg Membership: Set Card number to #{@webreg_data[:card_number]}"
         step "WebReg Membership: Submit"
       when WebReg::ChooseSupplies
         break
@@ -489,86 +497,86 @@ end
 
 Then(/^WebReg Membership: Expect First Name Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect First Name Help Block is #{expectation}"
-  help_text = webreg.profile.membership.first_name.help_block
+  help_text = webreg.profile.membership.first_name.help_text
   help_text.should eql expectation
   end
 
 Then(/^WebReg Membership: Expect Last Name Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect Last Name Help Block is #{expectation}"
-  help_text = webreg.profile.membership.last_name.help_block
+  help_text = webreg.profile.membership.last_name.help_text
   help_text.should eql expectation
   end
 
 Then(/^WebReg Membership: Expect Address Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect Address Help Block is #{expectation}"
-  help_text = webreg.profile.membership.address.help_block
+  help_text = webreg.profile.membership.address.help_text
   help_text.should eql expectation
   end
 
 Then(/^WebReg Membership: Expect City Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect City Help Block is #{expectation}"
-  help_text = webreg.profile.membership.city.help_block
+  help_text = webreg.profile.membership.city.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect State Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect State Help Block is #{expectation}"
-  help_text = webreg.profile.membership.state.help_block
+  help_text = webreg.profile.membership.state.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect Phone Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect Phone Help Block is #{expectation}"
-  help_text = webreg.profile.membership.phone.help_block
+  help_text = webreg.profile.membership.phone.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect Cardhoder name Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect Cardholder name Help Block is #{expectation}"
-  help_text = webreg.profile.membership.card_holder_name.help_block
+  help_text = webreg.profile.membership.card_holder_name.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect Card number Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expect Card number Help Block is #{expectation}"
-  help_text = webreg.profile.membership.card_number.help_block
+  help_text = webreg.profile.membership.card_number.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expires Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Expires Help Block is #{expectation}"
-  help_text = webreg.profile.membership.expiration_month.help_block
+  help_text = webreg.profile.membership.expiration_month.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect Billing Address Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Billing Address Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_address.help_block
+  help_text = webreg.profile.membership.billing_address.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect Billing City Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Billing City Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_city.help_block
+  help_text = webreg.profile.membership.billing_city.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect Billing State Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Billing State Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_state.help_block
+  help_text = webreg.profile.membership.billing_state.help_text
   help_text.should eql expectation
 end
 
 
 Then(/^WebReg Membership: Expect Billing Zip Help Block is (.*)$/) do |expectation|
  logger.step "WebReg Membership: Billing Zip Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_zip.help_block
+  help_text = webreg.profile.membership.billing_zip.help_text
   help_text.should eql expectation
 end
 
 Then(/^WebReg Membership: Expect Terms & Conditions Help Block is (.*)$/) do |expectation|
   logger.step "WebReg Membership: Terms & Conditions Help Block is #{expectation}"
-  help_text = webreg.profile.membership.terms_and_conditions.help_block
+  help_text = webreg.profile.membership.terms_and_conditions.help_text
   help_text.should eql expectation
 end
 

@@ -82,7 +82,7 @@ module Stamps
         browser.span(css: "li[id=survey]>div:nth-child(2)>div>div>span") #if present?
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -132,7 +132,7 @@ module Stamps
         browser.span(css: "li[class='module webreg_survey']>div>div>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
 
@@ -195,7 +195,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(1)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -255,7 +255,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(3)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
 
@@ -266,7 +266,7 @@ module Stamps
         browser.span(css: "li[class='module webreg_email']>div>div>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
 
@@ -287,7 +287,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(1)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
 
@@ -302,7 +302,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(2)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -313,7 +313,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(3)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -324,7 +324,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(2)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
@@ -335,7 +335,7 @@ module Stamps
         browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(4)>div>span")
       end
 
-      def help_block
+      def help_text
         element_helper.text help_element
       end
     end
