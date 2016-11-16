@@ -1,6 +1,5 @@
 module Stamps
   module Orders
-
     class LearnMoreModal < Browser::Modal
       attr_reader :title, :msg_container, :next_button, :cancel_button, :learn_button, :close_button
 
