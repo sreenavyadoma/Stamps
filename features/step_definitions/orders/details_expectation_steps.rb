@@ -348,7 +348,8 @@ end
 Then /^Details: Expect Service Cost is \$([0-9.]*)$/ do |expectation|
   logger.step "Details: Expect Service Cost is $#{expectation}"
   expectation = expectation.to_f
-  10.times do
+  30.times do
+    sleep 1
     break if stamps.orders.details.service.cost.to_f == expectation
   end
   stamps.orders.details.service.cost.to_f.should eql expectation

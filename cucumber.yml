@@ -4,7 +4,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 #qasc800 mail_bvt_international
 rob_cc: --tags @orders_sign_in --guess VERBOSE=true JENKINS=true HEALTHCHECK=false WEB_APP=mail TEST=intellij URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ccd9i8vg8wc60 PW=pass111 #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
-rob_stg: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=bvt_shipstation_updates_domestic URL=stg BROWSER=ff PW=pass111 USR=stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
+rob_stg: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_updates_domestic URL=stg BROWSER=ff PW=pass111 USR=jenkins #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @webreg --guess VERBOSE=true JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=intellij URL=sc BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc  #yh95ws85j c2jinmzmu64 store parcel_select
 
 rob_dev_gc: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
