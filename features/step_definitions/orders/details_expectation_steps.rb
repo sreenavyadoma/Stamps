@@ -345,7 +345,7 @@ Then /^Details: Expect Service Cost saved value is the same$/ do
   step "Details: Expect Service Cost is $#{test_data[:service_cost]}"
 end
 
-Then /^Details: Expect Service Cost is \$([0-9.]*)$/ do |expectation|
+Then /^Details: Expect Service Cost is \$(.*)$/ do |expectation|
   logger.step "Details: Expect Service Cost is $#{expectation}"
   expectation = expectation.to_f
   30.times do
