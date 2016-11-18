@@ -1,7 +1,5 @@
 module Stamps
 
-  extend self
-
   def init scenario
     begin
       TestHelper.init scenario
@@ -34,9 +32,9 @@ module Stamps
     end
   end
 
-  def web_apps
+  def stamps
     begin
-      @web_apps ||= StampsWebApps.new param
+      @stamps ||= StampsCom.new param
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"

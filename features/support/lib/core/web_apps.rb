@@ -1,5 +1,5 @@
 module Stamps
-  class StampsWebApps < Browser::Modal
+  class StampsCom < Browser::Modal
 
     attr_reader :orders, :mail, :navigation_bar
 

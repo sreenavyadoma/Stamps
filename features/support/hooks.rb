@@ -43,7 +43,7 @@ Before do  |scenario|
   begin
     if ENV['WEB_APP'].nil?
       "cucumber.yml: Missing WEB_APP variable".should eql "WEB_APP is nil"
-    elsif (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail')
+    elsif (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail' || (ENV['WEB_APP'].downcase.include? 'reg'))
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default')
         logger.message "Using Default Credentials from ../config/data/default.yml"
         begin

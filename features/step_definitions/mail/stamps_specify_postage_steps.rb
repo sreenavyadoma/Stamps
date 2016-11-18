@@ -2,17 +2,17 @@
 
 Then /^Mail Stamps: Select Specify Mail Amount/ do
   logger.step "Select Stamps Specify Mail Amount"
-  web_apps.mail.netstamps.specify_postage_amount
+  stamps.mail.netstamps.specify_postage_amount
 end
 
 Then /^Mail Stamps: Set Stamp Amount to \$(.*)$/ do |amount|
   logger.step "Set Stamps Stamp Amount to $#{amount}"
-  web_apps.mail.netstamps.specify_postage_amount.stamp_amount.set amount
+  stamps.mail.netstamps.specify_postage_amount.stamp_amount.set amount
 end
 
 Then /^Mail Stamps: Set Specify Mail Service to (.*)/ do |service|
   logger.step "Envelopes: Set Print Mail Service to: \n #{service}"
-  web_apps.mail.netstamps.specify_service_drop_list.select service
+  stamps.mail.netstamps.specify_service_drop_list.select service
 end
 
 Then /^Mail Stamps: Select Specify Mail Service Media Mail$/ do

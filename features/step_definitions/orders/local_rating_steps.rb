@@ -1,7 +1,7 @@
 Then /^Verify Local Rating$/ do |table|
   logger.step "Verify Local Rating..."
   #results_file = "local_rating_results.csv"
-  @order_details = web_apps.orders.details
+  @order_details = stamps.orders.details
   parameter_array = table.hashes
   results = Hash.new
 
@@ -34,11 +34,11 @@ Then /^Verify Local Rating$/ do |table|
     expected_total_amount = element["total"]
 
     5.times do
-      web_apps.orders.details.blur_out
+      stamps.orders.details.blur_out
       sleep 1
-      actual = web_apps.orders.details.footer.total_ship_cost
-      web_apps.orders.details.blur_out
-      web_apps.orders.details.blur_out
+      actual = stamps.orders.details.footer.total_ship_cost
+      stamps.orders.details.blur_out
+      stamps.orders.details.blur_out
       sleep 1
       break if actual.eql? expected_total_amount
     end
@@ -47,7 +47,7 @@ Then /^Verify Local Rating$/ do |table|
     logger.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
     logger.step "  --------------------------------------------------------------------------- "
 
-    actual = web_apps.orders.details.footer.total_ship_cost
+    actual = stamps.orders.details.footer.total_ship_cost
     actual.should == expected_total_amount
 
     if actual != expected_total_amount
