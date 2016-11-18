@@ -299,9 +299,12 @@ Then /^Details: Set Service to (.*)$/ do |service|
     step "Details: Blur out"
     test_data[:service_cost] = stamps.orders.details.service.cost
     step "Details: Blur out"
-    test_data[:service_cost] = stamps.orders.details.service.cost
     step "Details: Blur out"
     test_data[:service_cost] = stamps.orders.details.service.cost
+    step "Details: Blur out"
+    step "Details: Blur out"
+    test_data[:service_cost] = stamps.orders.details.service.cost
+    step "Details: Blur out"
     step "Details: Blur out"
     sleep 1
     test_data[:service_cost] = stamps.orders.details.service.cost
