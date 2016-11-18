@@ -987,7 +987,7 @@ module Stamps
         def initialize param
           super param
           @text_box ||= TextBoxElement.new browser.text_field(name: 'Tracking')
-          @cost_label ||= ElementWrapper.new browser.label(css: "label[class*=selected_tracking_cost]")
+          @cost_label = ElementWrapper.new browser.label(css: "label[class*=selected_tracking_cost]")
           @drop_down ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
         end
 
@@ -1075,7 +1075,7 @@ module Stamps
           super param
           @text_box ||= TextBoxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
           @drop_down ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
-          @cost_label ||= ElementWrapper.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
+          @cost_label = ElementWrapper.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
         end
 
         def abbrev_service_name long_name
@@ -1153,7 +1153,7 @@ module Stamps
 
         def tooltip selection
           button = drop_down
-          selection_label = ElementWrapper.new browser.tr css: "tr[data-qtip*='#{selection}']"
+          selection_label = ElementWrapper.new browser.tr(css: "tr[data-qtip*='#{selection}']")
           10.times {
             begin
               button.safe_click unless selection_label.present?
@@ -1439,7 +1439,7 @@ module Stamps
         def initialize param
           super param
           @text_box ||= TextBoxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
-          @cost_label ||= ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label")
+          @cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label")
           @decrement_trigger ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger ||= ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
 
