@@ -266,7 +266,7 @@ module Stamps
       def sign_in *args
         grid = Orders::Grid::OrdersGrid.new param
         navbar = Navigation::NavigationBar.new param
-        plugin_issue = ErrorStampsPluginIssue.new param
+        #plugin_issue = ErrorStampsPluginIssue.new param
         toolbar = Stamps::Orders::Toolbar::Toolbar.new param
         market_place = Orders::Stores::MarketPlace.new param
         loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
