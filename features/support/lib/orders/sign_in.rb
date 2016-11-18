@@ -308,8 +308,6 @@ module Stamps
               username.set usr
               password.set pw
               sign_in_btn.safe_send_keys :enter
-              #sign_in_btn.safe_click
-              #sign_in_btn.safe_click
 
               5.times do
                 if loading_orders.present?
