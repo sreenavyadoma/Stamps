@@ -1,6 +1,6 @@
 Then /^Toolbar: Import$/ do
   logger.step "Toolbar: Import"
-  @import_orders = web_apps.orders.toolbar.import
+  @import_orders = stamps.orders.toolbar.import
 end
 
 Then /^Import Orders: Select CSV File$/ do

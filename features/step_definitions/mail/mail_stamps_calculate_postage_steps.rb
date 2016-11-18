@@ -2,19 +2,19 @@
 
 Then /^Mail Stamps: Select Calculate Mail Amount/ do
   logger.step "Select Stamps Calculate Mail Amount"
-  web_apps.mail.netstamps.calculate_postage_amount
+  stamps.mail.netstamps.calculate_postage_amount
 end
 
 Then /^Mail Stamps: Set Weight (\d+) lbs (\d+) oz$/ do |lbs, oz|
   logger.step "Set Stamps Weight #{lbs} lbs #{oz} oz"
-  weight = web_apps.mail.netstamps.calculate_postage_amount.weight
+  weight = stamps.mail.netstamps.calculate_postage_amount.weight
   weight.lbs.set lbs
   weight.oz.set oz
 end
 
 Then /^Mail Stamps: Set Calculate Mail Service to (.*)/ do |service|
   logger.step "Envelopes: Set Print Mail Service to: \n #{service}"
-  web_apps.mail.netstamps.calculate_service_drop_list.select service
+  stamps.mail.netstamps.calculate_service_drop_list.select service
 end
 
 Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail Postcard$/ do

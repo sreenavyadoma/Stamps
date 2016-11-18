@@ -75,7 +75,7 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect Reference Number is Reference #123
 
     Then Details: Expect Service is Priority Mail International Package
-    Then Details: Expect Service Cost saved value is the same
+    #Then Details: Expect Service Cost saved value is the same
 
     Then Details: Expect Item 1 Qty is 1
     Then Details: Expect Item 1 ID is ID 1

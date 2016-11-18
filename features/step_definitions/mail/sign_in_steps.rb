@@ -1,7 +1,7 @@
 Given /^Visit Mail sign in page$/ do
   logger.step "I visit mail sign-in page"
-  web_apps.param.app = :mail
-  web_apps.visit(:mail).should include "Webpostage"
+  stamps.param.app = :mail
+  stamps.visit(:mail).should include "Webpostage"
 end
 
 Given /^I am signed in as Mail shipper$/ do
@@ -12,7 +12,7 @@ Given /^I am signed in as Mail shipper$/ do
     step "Health Check: Print - Address Book"
   end
   step "Visit Mail sign in page"
-  web_apps.mail.sign_in_modal.sign_in
+  stamps.mail.sign_in_modal.sign_in
   step "Navigation Bar: Customer Balance"
 end
 
@@ -20,7 +20,7 @@ Given /^I am signed in as Mail shipper (.*)\/(.*)/ do |username, password|
   logger.step "I am signed in as mail shipper #{username}/#{password}"
   step "I launched default browser"
   step "Visit Mail sign in page"
-  web_apps.mail.sign_in_modal.sign_in username, password
+  stamps.mail.sign_in_modal.sign_in username, password
 end
 
 Then /^I am signed in as Mail shipper for the first time(?:| with credentials (.*)\/(.*))$/ do |username, password|
@@ -29,19 +29,19 @@ Then /^I am signed in as Mail shipper for the first time(?:| with credentials (.
   @username = username unless username.nil?
   @password = password unless password.nil?
   logger.step "I am signed in as Mail shipper for the first time #{@username}/#{@password}"
-  @whats_new_modal = web_apps.mail.sign_in_modal.sign_in_first_time username, password
+  @whats_new_modal = stamps.mail.sign_in_modal.sign_in_first_time username, password
 end
 
 Then /^What's New: Expect modal is present$/ do
-  web_apps.mail.sign_in_modal.whats_new_modal.window_title.text.should eql "What’s new in Stamps.com Online"
+  stamps.mail.sign_in_modal.whats_new_modal.window_title.text.should eql "What’s new in Stamps.com Online"
 end
 
 Then /^What's New: Click Continue button$/ do
-  web_apps.mail.sign_in_modal.whats_new_modal.continue
+  stamps.mail.sign_in_modal.whats_new_modal.continue
 end
 
 Then /^What's new: Click More Info$/ do
-  @more_info_page = web_apps.mail.sign_in_modal.whats_new_modal.more_info
+  @more_info_page = stamps.mail.sign_in_modal.whats_new_modal.more_info
 end
 
 Then /^More Info: Expect More Info page is present$/ do
@@ -67,7 +67,7 @@ Then /^Mail Sign In: Set Remember Username to Checked$/ do
   logger.step "Step: Mail Sign In: Set Remember Username to Checked"
   #todo-fix username
   fix me!
-  web_apps.mail.sign_in_modal.remember_username.check
+  stamps.mail.sign_in_modal.remember_username.check
 end
 
 Then /^Mail Sign In: Check Remember Username$/ do
@@ -75,7 +75,7 @@ Then /^Mail Sign In: Check Remember Username$/ do
   step "Visit Mail sign in page"
   #todo-fix username
   fix me!
-  web_apps.mail.sign_in_modal.sign_in_username_check ENV["USR"]
+  stamps.mail.sign_in_modal.sign_in_username_check ENV["USR"]
 end
 
 Then /^Mail Sign In: Expect Remember Username is checked$/ do
@@ -89,7 +89,7 @@ Then /^Mail Sign In: Set Remember Username to Unchecked$/ do
   logger.step "Step: Mail Sign In: Set Remember Username to Unchecked"
   fix me!
   #todo-fix username
-  web_apps.mail.sign_in_modal.sign_in
+  stamps.mail.sign_in_modal.sign_in
 end
 
 Then /^Mail Sign In: Expect Remember Username is unchecked$/ do

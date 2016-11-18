@@ -1,12 +1,12 @@
 
 Then /^Mail: Set Ship-To country to (.*)/ do |country|
   logger.step "Mail: Set Ship-To country to #{country}"
-  web_apps.mail.ship_to.country.select country
+  stamps.mail.ship_to.country.select country
 end
 
 Then /^Mail International: Set Ship-To Name to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To Name to #{value}"
-  field = web_apps.mail.ship_to.name
+  field = stamps.mail.ship_to.name
   if value.length == 0
     field.send_keys :enter
   else
@@ -16,7 +16,7 @@ end
 
 Then /^Mail International: Set Ship-To Company to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To Company to #{value}"
-  field = web_apps.mail.ship_to.company
+  field = stamps.mail.ship_to.company
   if value.length == 0
     field.send_keys :enter
   else
@@ -26,7 +26,7 @@ end
 
 Then /^Mail International: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To Address 1 to #{value}"
-  field = web_apps.mail.ship_to.address_1
+  field = stamps.mail.ship_to.address_1
   if value.length == 0
     field.send_keys :enter
   else
@@ -36,7 +36,7 @@ end
 
 Then /^Mail International: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To Address 2 to #{value}"
-  field = web_apps.mail.ship_to.address_2
+  field = stamps.mail.ship_to.address_2
 
   if value.length == 0
     field.send_keys :enter
@@ -47,7 +47,7 @@ end
 
 Then /^Mail International: Set Ship-To City to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To City to #{value}"
-  field = web_apps.mail.ship_to.city
+  field = stamps.mail.ship_to.city
   if value.length == 0
     field.send_keys :enter
   else
@@ -57,7 +57,7 @@ end
 
 Then /^Mail International: Set Ship-To Province to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To Province to #{value}"
-  field = web_apps.mail.ship_to.province
+  field = stamps.mail.ship_to.province
   if value.length == 0
     field.send_keys :enter
   else
@@ -67,7 +67,7 @@ end
 
 Then /^Mail International: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To Postal Code to #{value}"
-  field = web_apps.mail.ship_to.postal_code
+  field = stamps.mail.ship_to.postal_code
   if value.length == 0
     field.send_keys :enter
   else
@@ -77,7 +77,7 @@ end
 
 Then /^Mail International: Set Ship-To Phone to \"(.*)\"$/ do |value|
   logger.step "Set Ship-To Phone to #{value}"
-  field = web_apps.mail.ship_to.phone
+  field = stamps.mail.ship_to.phone
   if value.length == 0
     field.send_keys :enter
   else

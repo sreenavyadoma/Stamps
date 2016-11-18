@@ -1,7 +1,7 @@
 Given /^Orders: Visit Sign-in page$/ do
   logger.step "Orders: Visit Sign-in page"
-  web_apps.param.app = :orders
-  web_apps.visit(:orders).should include "stamps.com"
+  stamps.param.app = :orders
+  stamps.visit(:orders).should include "stamps.com"
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
@@ -12,7 +12,7 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
     @username = username
   end
   logger.step "I am signed in to Orders as #{usr}/#{password}"
-  @market_place_modal = web_apps.orders.landing_page.first_time_sign_in usr, password
+  @market_place_modal = stamps.orders.landing_page.first_time_sign_in usr, password
 end
 
 Then /^Orders: Expect Marketplace modal is present$/ do
@@ -32,7 +32,7 @@ Given /^I am signed in to Orders$/ do
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page"
-  web_apps.orders.landing_page.sign_in :default
+  stamps.orders.landing_page.sign_in :default
   step "Navigation Bar: Customer Balance"
 end
 
@@ -44,7 +44,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)/ do |username, password|
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page"
-  web_apps.orders.landing_page.sign_in username, password
+  stamps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
@@ -57,7 +57,7 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, pas
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page"
-  web_apps.orders.landing_page.sign_in username, password
+  stamps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
@@ -69,13 +69,13 @@ Given /^I am signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, us
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page #{url}"
-  web_apps.orders.landing_page.sign_in username, password
+  stamps.orders.landing_page.sign_in username, password
   step "Navigation Bar: Customer Balance"
 end
 
 Then /^Orders: Sign in$/ do
   logger.step "Orders: Sign in"
-  web_apps.orders.landing_page.sign_in :default
+  stamps.orders.landing_page.sign_in :default
 end
 
 Then /^Sign out$/ do
@@ -86,7 +86,7 @@ Then /^Sign out$/ do
     #ignore
   end
   begin
-    web_apps.navigation_bar.username.sign_out
+    stamps.navigation_bar.username.sign_out
   rescue
     #do nothing
   end

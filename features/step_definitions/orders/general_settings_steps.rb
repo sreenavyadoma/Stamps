@@ -1,7 +1,7 @@
 
 Then /^Open Settings Modal$/ do
   logger.step "Open Settings Modal"
-  @general_settings = web_apps.orders.toolbar.settings.general_settings #todo-Rob refactor General Settings.
+  @general_settings = stamps.orders.toolbar.settings.general_settings #todo-Rob refactor General Settings.
 end
 # Services checkbox
 Then /^Settings: Check Services$/ do

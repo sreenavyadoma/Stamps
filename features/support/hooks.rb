@@ -38,11 +38,13 @@ Before do  |scenario|
 
   logger.message "-"
   logger.message "USER CREDENTIALS"
+
+  # process username from default.yml
   begin
     if ENV['WEB_APP'].nil?
       "cucumber.yml: Missing WEB_APP variable".should eql "WEB_APP is nil"
-    elsif (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail')
-      if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default')
+    elsif (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail' || (ENV['WEB_APP'].downcase.include? 'reg'))
+      if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default') || (ENV['USR'].downcase == 'jenkins')
         logger.message "Using Default Credentials from ../config/data/default.yml"
         begin
           if ENV['WEB_APP'].downcase == 'orders'
@@ -73,9 +75,9 @@ Before do  |scenario|
     else
       "Valid values are WEB_APP=orders or WEB_APP=mail".should eql "WEB_APP=#{ENV['WEB_APP']} is not a valid value."
     end
-  end unless (ENV['TEST'] == 'healthcheck' || ENV['TEST'].include?('webreg') || ENV['TEST'].include?('pam'))
-  logger.message "-"
+  end unless (ENV['TEST'] == 'healthcheck' || ENV['TEST'].include?('webreg') || ENV['TEST'].include?('pam') || ENV['TEST'].include?('intellij'))
 
+  logger.message "-"
   logger.message "Running Tests..."
   logger.message "-"
   logger.message "-"

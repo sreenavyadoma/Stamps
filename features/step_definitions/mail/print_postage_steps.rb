@@ -74,12 +74,12 @@ end
 
 Then /^Mail: Set Print On (.*)/ do |media|
   logger.step "Mail: Set Print On #{media}"
-  web_apps.mail.print_on media
+  stamps.mail.print_on media
 end
 
 Then /^Mail: Set Ship-From to (.*)/ do |value|
   logger.step "Mail: Set Ship-From to #{value}"
-  web_apps.mail.ship_from.select value
+  stamps.mail.ship_from.select value
 end
 
 Then /^Mail: Set Ship-To to Random Address in Zone 1$/ do
@@ -219,29 +219,29 @@ Then /^Mail: Set Ship-To address to (.*)$/ do |address|
   end
   ship_to_dd = ShipTo::PostageCountry.new param
   ship_to_dd.select "United States"
-  web_apps.mail.ship_to.set formatted_address
+  stamps.mail.ship_to.set formatted_address
 end
 
 Then /^Mail: Set Ounces to (.*)/ do |ounces|
   logger.step "Envelopes: Set Print Mail Ounces to: \n #{ounces}"
-  web_apps.mail.weight.oz.set ounces
+  stamps.mail.weight.oz.set ounces
 end
 
 Then /^Mail: Set Pounds to (.*)/ do |pounds|
   logger.step "Envelopes: Set Print Mail Pounds to: \n #{pounds}"
-  web_apps.mail.weight.lbs.set pounds
+  stamps.mail.weight.lbs.set pounds
 end
 
 Then /^Mail: Expect Print Media Tooltip is (.*)$/ do |selection|
-  web_apps.mail.print_on.tooltip selection
+  stamps.mail.print_on.tooltip selection
 end
 
 Then /^Mail: Expect Print Media (.*) is disabled$/ do |selection|
-  web_apps.mail.print_on.disabled? selection
+  stamps.mail.print_on.disabled? selection
 end
 
 Then /^Mail: Expect Print Media (.*) is enabled$/ do |selection|
-  web_apps.mail.print_on.enabled? selection
+  stamps.mail.print_on.enabled? selection
 end
 
 Then /^Mail: Expect Ship-To address is (.*)/ do |address|
@@ -256,159 +256,159 @@ end
 
 Then /^Mail: Expect Ship From Field is present$/ do
   logger.step "Mail: Expect Ship From Field is present"
-  web_apps.mail.ship_from.text_box.present?.should be true
+  stamps.mail.ship_from.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Ship To Link is present$/ do
   logger.step "Mail: Expect Ship To Link is present"
-  web_apps.mail.ship_to.contacts.link.present?.should be true
+  stamps.mail.ship_to.contacts.link.present?.should be true
 end
 
 Then /^Mail: Expect Ship To Country Field is present$/ do
   logger.step "Mail: Expect Ship To Country Field is present"
-  web_apps.mail.ship_to.country.text_box.present?.should be true
+  stamps.mail.ship_to.country.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Domestic Address Field is present$/ do
   logger.step "Mail: Expect Domestic Address Field is present"
-  web_apps.mail.ship_to.text_area.present?.should be true
+  stamps.mail.ship_to.text_area.present?.should be true
 end
 
 Then /^Mail: Expect International Name Field is present$/ do
   logger.step "Mail: Expect International Name Field is present"
-  web_apps.mail.ship_to.name.present?.should be true
+  stamps.mail.ship_to.name.present?.should be true
 end
 
 Then /^Mail: Expect International Company Field is present$/ do
   logger.step "Mail: Expect International Company Field is present"
-  web_apps.mail.ship_to.company.present?.should be true
+  stamps.mail.ship_to.company.present?.should be true
 end
 
 Then /^Mail: Expect International Address 1 Field is present$/ do
   logger.step "Mail: Expect International Address 1 Field is present"
-  web_apps.mail.ship_to.address_1.present?.should be true
+  stamps.mail.ship_to.address_1.present?.should be true
 end
 
 Then /^Mail: Expect International Address 2 Field is present$/ do
   logger.step "Mail: Expect International Address 2 Field is present"
-  web_apps.mail.ship_to.address_2.present?.should be true
+  stamps.mail.ship_to.address_2.present?.should be true
 end
 
 Then /^Mail: Expect International City Field is present$/ do
   logger.step "Mail: Expect International City Field is present"
-  web_apps.mail.ship_to.city.present?.should be true
+  stamps.mail.ship_to.city.present?.should be true
 end
 
 Then /^Mail: Expect International Province Field is present$/ do
   logger.step "Mail: Expect International Province Field is present"
-  web_apps.mail.ship_to.province.present?.should be true
+  stamps.mail.ship_to.province.present?.should be true
 end
 
 Then /^Mail: Expect International Postcode Field is present$/ do
   logger.step "Mail: Expect International Postcode Field is present"
-  web_apps.mail.ship_to.postal_code.present?.should be true
+  stamps.mail.ship_to.postal_code.present?.should be true
 end
 
 Then /^Mail: Expect International Phone Field is present$/ do
   logger.step "Mail: Expect International Phone Field is present"
-  web_apps.mail.ship_to.phone.present?.should be true
+  stamps.mail.ship_to.phone.present?.should be true
 end
 
 Then /^Mail: Expect Email Check Box is present$/ do
   logger.step "Mail: Expect Email Check Box is present"
-  web_apps.mail.ship_to.email.checkbox.present?.should be true
+  stamps.mail.ship_to.email.checkbox.present?.should be true
 end
 
 Then /^Mail: Expect Email Field is present$/ do
   logger.step "Mail: Expect Email Field is present"
-  web_apps.mail.ship_to.email.text_box.present?.should be true
+  stamps.mail.ship_to.email.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Pounds Field is present$/ do
   logger.step "Mail: Expect Pounds Field is present"
-  web_apps.mail.weight.oz.text_box.present?.should be true
+  stamps.mail.weight.oz.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Ounces Field is present$/ do
   logger.step "Mail: Expect Ounces Field is present"
-  web_apps.mail.weight.lbs.text_box.present?.should be true
+  stamps.mail.weight.lbs.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Weigh Button is present$/ do
   logger.step "Mail: Expect Weigh Button is present"
-  web_apps.mail.weight.weigh_button.present?.should be true
+  stamps.mail.weight.weigh_button.present?.should be true
 end
 
 Then /^Mail: Expect Auto Weigh check box is present$/ do
   logger.step "Mail: Expect Auto Weigh check box is present"
-  web_apps.mail.weight.auto_weigh.present?.should be true
+  stamps.mail.weight.auto_weigh.present?.should be true
 end
 
 Then /^Mail: Expect Service Field is present$/ do
   logger.step "Mail: Expect Service Field is present"
-  web_apps.mail.service.text_box.present?.should be true
+  stamps.mail.service.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Service Price is present$/ do
   logger.step "Mail: Expect Service Price is present"
-  web_apps.mail.service.price.present?.should be true
+  stamps.mail.service.price.present?.should be true
 end
 
 Then /^Mail: Expect Insure For Field is present$/ do
   logger.step "Mail: Expect Insure For Field is present"
-  web_apps.mail.shipping_label.insure_for.text_box.present?.should be true
+  stamps.mail.shipping_label.insure_for.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Insure For Price is present$/ do
   logger.step "Mail: Expect Insure For Price is present"
-  web_apps.mail.shipping_label.insure_for.price.present?.should be true
+  stamps.mail.shipping_label.insure_for.price.present?.should be true
 end
 
 Then /^Mail: Expect Tracking Field is present$/ do
   logger.step "Mail: Expect Tracking Field is present"
-  web_apps.mail.shipping_label.tracking.text_box.present?.should be true
+  stamps.mail.shipping_label.tracking.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Tracking Price is present$/ do
   logger.step "Mail: Expect Tracking Price is present"
-  web_apps.mail.shipping_label.tracking.price.present?.should be true
+  stamps.mail.shipping_label.tracking.price.present?.should be true
 end
 
 Then /^Mail: Expect Extra Services Button is present$/ do
   logger.step "Mail: Expect Extra Services Button is present"
-  web_apps.mail.shipping_label.extra_services.present?.should be true
+  stamps.mail.shipping_label.extra_services.present?.should be true
 end
 
 Then /^Mail: Expect Label Image Preview is present$/ do
   logger.step "Mail: Expect Label Image Preview is present"
   sleep 2
-  web_apps.mail.shipping_label.form_view.starting_label.left_label.present?.should be true
-  web_apps.mail.shipping_label.form_view.starting_label.right_label.present?.should be true
+  stamps.mail.shipping_label.form_view.starting_label.left_label.present?.should be true
+  stamps.mail.shipping_label.form_view.starting_label.right_label.present?.should be true
 end
 
 Then /^Mail: Expect Hide Mail Value check box is present$/ do
   logger.step "Mail: Expect Hide Mail Value check box is present"
-  web_apps.mail.shipping_label.form_view.hide_postage_value.present?.should be true
+  stamps.mail.shipping_label.form_view.hide_postage_value.present?.should be true
 end
 
 Then /^Mail: Expect Print Receipt check box is present$/ do
   logger.step "Mail: Expect Print Receipt check box is present"
-  web_apps.mail.shipping_label.form_view.print_receipt.present?.should be true
+  stamps.mail.shipping_label.form_view.print_receipt.present?.should be true
 end
 
 Then /^Mail: Expect Print Reference Number check box is present$/ do
   logger.step "Mail: Expect Print Reference Number check box is present"
-  web_apps.mail.shipping_label.form_view.print_reference_number.present?.should be true
+  stamps.mail.shipping_label.form_view.print_reference_number.present?.should be true
 end
 
 Then /^Mail: Expect Reference Number field is present$/ do
   logger.step "Mail: Expect Reference Number field is present"
-  web_apps.mail.form_view.reference_number.present?.should be true
+  stamps.mail.form_view.reference_number.present?.should be true
 end
 
 Then /^Mail: Expect Cost Code Field is present$/ do
   logger.step "Mail: Expect Cost Code Field is present"
-  web_apps.mail.form_view.cost_code.text_box.present?.should be true
+  stamps.mail.form_view.cost_code.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Reset Button is present$/ do
@@ -451,17 +451,17 @@ end
 
 Then /^Mail: Expect Mail Total is present$/ do
   logger.step "Mail: Expect Mail Total is present"
-  web_apps.mail.footer.total.present?.should be true
+  stamps.mail.footer.total.present?.should be true
 end
 
 Then /^Mail: Expect Print Sample Button is present$/ do
   logger.step "Mail: Expect Print Sample Button is present"
-  web_apps.mail.footer.print_button.present?.should be true
+  stamps.mail.footer.print_button.present?.should be true
 end
 
 Then /^Mail: Expect Print Button is present$/ do
   logger.step "Mail: Expect Print Button is present"
-  web_apps.mail.footer.sample_button.present?.should be true
+  stamps.mail.footer.sample_button.present?.should be true
 end
 
 

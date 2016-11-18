@@ -7,7 +7,7 @@ Then /^Orders: Sign in using Jenkins web reg credentials$/ do
   @webreg_data[:pw] = CONFIG['pw']
   @webreg_data[:usr].should be_truthy
   @webreg_data[:pw].should be_truthy
-  web_apps.orders.landing_page.sign_in @webreg_data[:usr], @webreg_data[:pw]
+  stamps.orders.landing_page.sign_in @webreg_data[:usr], @webreg_data[:pw]
 end
 
 Then /^PAM Customer Search: Set username as web reg credentials$/ do

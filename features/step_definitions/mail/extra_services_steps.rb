@@ -1,7 +1,7 @@
 
 Then /^Mail: Open Extra Servicess$/ do
   logger.step "Mail: Open Extra Servicess"
-  @extra_services = web_apps.mail.open_extra_services
+  @extra_services = stamps.mail.open_extra_services
 end
 
 Then /^Mail Extra Services: Set COD to \$(\d+)/ do |amount|
