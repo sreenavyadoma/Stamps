@@ -293,9 +293,13 @@ Then /^Details: Set Service to (.*)$/ do |service|
   10.times do
     break if stamps.orders.details.service.cost.to_f > 0
     step "Details: Blur out"
+    sleep 1
+  end
+  3.times do
+    step "Details: Blur out"
+    sleep 1
   end
   step "Details: Save Total Ship Cost"
-  sleep 1
   test_data[:service_cost] = stamps.orders.details.service.cost
 end
 
