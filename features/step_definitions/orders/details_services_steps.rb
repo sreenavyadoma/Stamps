@@ -297,10 +297,18 @@ Then /^Details: Set Service to (.*)$/ do |service|
   end
   3.times do
     step "Details: Blur out"
+    test_data[:service_cost] = stamps.orders.details.service.cost
+    step "Details: Blur out"
+    test_data[:service_cost] = stamps.orders.details.service.cost
+    step "Details: Blur out"
+    test_data[:service_cost] = stamps.orders.details.service.cost
+    step "Details: Blur out"
     sleep 1
+    test_data[:service_cost] = stamps.orders.details.service.cost
   end
   step "Details: Save Total Ship Cost"
   test_data[:service_cost] = stamps.orders.details.service.cost
+  logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
 end
 
 Then /^Details: Expect Service is \"(.*)\"$/ do |expectation|
