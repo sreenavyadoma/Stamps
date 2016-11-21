@@ -20,6 +20,12 @@ url_prefix:
 
 orders_credentials:
   stg:
+    local_rating3:
+      usr: stgi0jkgbdy3xs
+      pw: pass111
+    search_orders:
+      usr: stgi3eicvj8d7b
+      pw: pass111
     details_edit_order:
       usr: i992vss4lipq
       pw: pass111
@@ -27,7 +33,7 @@ orders_credentials:
       usr: mwn2ghor
       pw: pass111
     grid_column_order:
-      usr: scscscscscscscscsc
+      usr: stgsj7lchcx30q
       pw: pass111
     details_flat_rate_no_weight_international:
       usr: qksd97py
@@ -357,6 +363,12 @@ orders_credentials:
       usr: c1k4p8bga4cmg
       pw: pass111
   cc:
+    local_rating3:
+      usr: xxxxx
+      pw: pass111
+    search_orders:
+      usr: xxxxxxxxxxxx
+      pw: pass111
     details_edit_order:
       usr: txdq1khl
       pw: pass111
@@ -700,6 +712,12 @@ orders_credentials:
       usr: p8rk9lk7e
       pw: pass111
   sc:
+    local_rating3:
+      usr: xxxxx
+      pw: pass111
+    search_orders:
+      usr: xxxxxxxxxxxx
+      pw: pass111
     details_edit_order:
       usr: k042sbaxfh
       pw: pass111

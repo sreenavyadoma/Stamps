@@ -5,11 +5,11 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.div(text: 'Learn More')
-        @msg_container ||= ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @close_button ||= ElementWrapper.new browser.span(text: 'Close')
-        @cancel_button ||= ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
-        @learn_button ||= ElementWrapper.new browser.span(text: 'Learn More')
+        @title = ElementWrapper.new browser.div(text: 'Learn More')
+        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @close_button = ElementWrapper.new browser.span(text: 'Close')
+        @cancel_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @learn_button = ElementWrapper.new browser.span(text: 'Learn More')
       end
 
       def present?
@@ -39,10 +39,10 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.div(text: 'Import from Stores')
-        @msg_container ||= ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button ||= ElementWrapper.new browser.span(text: 'Next')
-        @close_button ||= ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = ElementWrapper.new browser.div(text: 'Import from Stores')
+        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = ElementWrapper.new browser.span(text: 'Next')
+        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
         @learn_more ||= LearnMoreModal.new param
       end
 
@@ -76,10 +76,10 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.div(text: 'Import from CSV')
-        @msg_container ||= ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button ||= ElementWrapper.new browser.span(text: 'Next')
-        @close_button ||= ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = ElementWrapper.new browser.div(text: 'Import from CSV')
+        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = ElementWrapper.new browser.span(text: 'Next')
+        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
         @import_from_stores ||= ImportFromStoresModal.new param
       end
 
@@ -113,10 +113,10 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.div(text: 'Add Manual Order')
-        @msg_container ||= ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button ||= ElementWrapper.new browser.span(text: 'Next')
-        @close_button ||= ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = ElementWrapper.new browser.div(text: 'Add Manual Order')
+        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = ElementWrapper.new browser.span(text: 'Next')
+        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
         @import_from_csv ||= ImportFromCsvModal.new param
       end
 
@@ -150,10 +150,10 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.div(text: 'Welcome!')
-        @msg_container ||= ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button ||= ElementWrapper.new browser.span(text: 'Next')
-        @close_button ||= ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = ElementWrapper.new browser.div(text: 'Welcome!')
+        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = ElementWrapper.new browser.span(text: 'Next')
+        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
         @add_manual_order ||= AddManualOrderModal.new param
       end
 
@@ -187,7 +187,7 @@ module Stamps
 
       def initialize param
         super param
-        @okay_button ||= ElementWrapper.new browser.span(text: 'OK')
+        @okay_button = ElementWrapper.new browser.span(text: 'OK')
       end
 
       def present?
@@ -215,9 +215,9 @@ module Stamps
 
       def initialize param
         super param
-        @username ||= TextBoxElement.new browser.text_field(id: "UserNameTextBox")
-        @password ||= TextBoxElement.new browser.text_field(id: "PasswordTextBox")
-        @sign_in_btn ||= ElementWrapper.new browser.button(id: "signInButton")
+        @username = TextboxElement.new browser.text_field(id: "UserNameTextBox")
+        @password = TextboxElement.new browser.text_field(id: "PasswordTextBox")
+        @sign_in_btn = ElementWrapper.new browser.button(id: "signInButton")
         @title = ElementWrapper.new browser.h1(text: 'Sign In')
       end
 

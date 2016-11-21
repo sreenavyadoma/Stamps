@@ -4,10 +4,10 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Given I am signed in to Orders
 
   Scenario: User Views Filter Panel - Panel Default
-    When Filter: Expect system displays expanded filters panel
+    When Left Panel: Expect system displays expanded filters panel
 
-    Then Filter: Select Shipped
-    Then Filter: Expect system selects Shipped Filter Panel - and deselects the previous filter
+    Then Left Panel: Select Shipped
+    Then Left Panel: Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Toolbar:  Set Per Page drop-down to 500
     Then Toolbar: Expect number of orders on page is correct

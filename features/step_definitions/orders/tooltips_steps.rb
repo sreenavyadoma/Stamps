@@ -27,16 +27,16 @@ Then /^Details: Expect Toolbar Menu Tooltip is (.*)$/ do |expectation|
   actual.should include expectation
 end
 
-Then /^Filter: Menu Item collapse button tooltip should be (.*)$/ do |expectation|
-  logger.step "Filter: Menu Item collapse button tooltip should be #{expectation}"
-  actual = stamps.orders.filter.menu_item.collapse.tooltip
+Then /^Left Panel: Menu Item collapse button tooltip should be (.*)$/ do |expectation|
+  logger.step "Left Panel: Menu Item collapse button tooltip should be #{expectation}"
+  actual = stamps.orders.left_panel.menu_item.collapse.tooltip
   logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   actual.should include expectation
 end
 
-Then /^Filter: Menu Item expand button tooltip should be (.*)$/ do |expectation|
-  logger.step "Filter: Menu Item expand button tooltip should be #{expectation}"
-  actual = stamps.orders.filter.menu_item.expand.tooltip
+Then /^Left Panel: Menu Item expand button tooltip should be (.*)$/ do |expectation|
+  logger.step "Left Panel: Menu Item expand button tooltip should be #{expectation}"
+  actual = stamps.orders.left_panel.menu_item.expand.tooltip
   logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   actual.should include expectation
 end

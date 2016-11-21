@@ -18,7 +18,7 @@ Feature: Grid: Tracking & Order Status
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     #Then Grid: Sort Order ID in Descending Order
     Then Grid: Expect Tracking Number is populated
     Then Grid: Expect Order Status is Shipped
@@ -34,7 +34,7 @@ Feature: Grid: Tracking & Order Status
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     #Then Grid: Sort Order ID in Descending Order
     Then Grid: Expect Tracking Number is populated
     Then Grid: Expect Order Status is Shipped

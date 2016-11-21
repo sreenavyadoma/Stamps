@@ -6,7 +6,7 @@ module Stamps
       def initialize param, index
         super param
         @index = index
-        @text_box = TextBoxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
+        @text_box = TextboxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
       end
 
       def select country
@@ -37,8 +37,8 @@ module Stamps
         super param
         @customs_form ||= OrdersCustomsForm.new param
         @view_restrictions ||= Orders::Details::ViewRestrictions.new param
-        @edit_form_btn ||= ElementWrapper.new browser.span text: 'Edit Form...'
-        @restrictions_btn ||= ElementWrapper.new browser.span text: 'Restrictions...'
+        @edit_form_btn = ElementWrapper.new browser.span text: 'Edit Form...'
+        @restrictions_btn = ElementWrapper.new browser.span text: 'Restrictions...'
       end
 
       def edit_form
@@ -101,7 +101,7 @@ module Stamps
         end
 
         def text_box
-          TextBoxElement.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
+          TextboxElement.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -144,7 +144,7 @@ module Stamps
         end
 
         def text_box
-          TextBoxElement.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
+          TextboxElement.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -172,11 +172,11 @@ module Stamps
       def initialize param, number
         super param
         @delete = ElementWrapper.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[number-1]
-        @description = TextBoxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
+        @description = TextboxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
         @qty = Qty.new param, number
         @unit_price = UnitPrice.new param, number
         @made_in = OrdersMadeInCountry.new param, number
-        @hs_tariff = TextBoxElement.new (browser.text_fields name: "TariffNo")[number-1]
+        @hs_tariff = TextboxElement.new (browser.text_fields name: "TariffNo")[number-1]
       end
 
       def present?
@@ -189,8 +189,8 @@ module Stamps
 
       def initialize param
         super param
-        @window_title ||= ElementWrapper.new browser.div text: "USPS Privacy Act Statement"
-        @okay ||= browser.span text: "OK"
+        @window_title = ElementWrapper.new browser.div text: "USPS Privacy Act Statement"
+        @okay = browser.span(text: "OK")
       end
 
       def present?
@@ -211,7 +211,7 @@ module Stamps
 
       def initialize param
         super param
-        @text_box = TextBoxElement.new browser.text_field name: "IsITNRequired"
+        @text_box = TextboxElement.new browser.text_field name: "IsITNRequired"
         @drop_down = ElementWrapper.new browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
       end
 
@@ -239,7 +239,7 @@ module Stamps
 
       def initialize param
         super param
-        @text_box ||= TextBoxElement.new browser.text_field name: "CustomsContents"
+        @text_box = TextboxElement.new browser.text_field name: "CustomsContents"
         @drop_down = ElementWrapper.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
       end
 
@@ -267,7 +267,7 @@ module Stamps
 
       def initialize param
         super param
-        @text_box = TextBoxElement.new browser.text_field name: "NonDelivery"
+        @text_box = TextboxElement.new browser.text_field name: "NonDelivery"
         @drop_down = ElementWrapper.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
       end
 
@@ -298,32 +298,32 @@ module Stamps
 
       def initialize param
         super param
-        @window_title ||= ElementWrapper.new browser.div(text: "Customs Information")
+        @window_title = ElementWrapper.new browser.div(text: "Customs Information")
         @item_grid ||= CustomsItemGrid.new param
         @package_contents ||= PackageContents.new param
         @non_delivery_options ||= NonDeliveryOptions.new param
         @internal_transaction ||= InternalTransaction.new param
 
-        @more_info ||= TextBoxElement.new browser.text_field name: "CustomsComments"
-        @usps_privacy_act_warning ||= ElementWrapper.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
-        @itn_number ||= TextBoxElement.new browser.text_field(name: "AES")
-        @license ||= TextBoxElement.new browser.text_field(name: "CustomsLicenseNumber")
-        @certificate ||= TextBoxElement.new browser.text_field(name: "CustomsCertificateNumber")
-        @invoice ||= TextBoxElement.new browser.text_field(name: "CustomsInvoiceNumber")
-        @total_value_element ||= ElementWrapper.new browser.div(css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div")
+        @more_info = TextboxElement.new browser.text_field name: "CustomsComments"
+        @usps_privacy_act_warning = ElementWrapper.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
+        @itn_number = TextboxElement.new browser.text_field(name: "AES")
+        @license = TextboxElement.new browser.text_field(name: "CustomsLicenseNumber")
+        @certificate = TextboxElement.new browser.text_field(name: "CustomsCertificateNumber")
+        @invoice = TextboxElement.new browser.text_field(name: "CustomsInvoiceNumber")
+        @total_value_element = ElementWrapper.new browser.div(css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div")
 
         field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
         verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
         @i_agree ||= CheckboxElement.new field, verify_field, "class", "checked"
 
         @privacy_statement ||= UspsPrivactActStatementModal.new param
-        @privacy_link ||= ElementWrapper.new browser.span(text: "USPS Privacy Act Statement")
+        @privacy_link = ElementWrapper.new browser.span(text: "USPS Privacy Act Statement")
         @restrictions_link ||= RestrictionsAndProhibitionsModal.new param
-        @restrictions_prohibitions_link ||= ElementWrapper.new browser.span(text: "Restrictions and Prohibitions")
+        @restrictions_prohibitions_link = ElementWrapper.new browser.span(text: "Restrictions and Prohibitions")
 
-        @close_button ||= ElementWrapper.new browser.span(text: "Close")
-        @x_button ||= ElementWrapper.new browser.image(css: "img[class*='x-tool-close']")
-        @total_label ||= ElementWrapper.new browser.span(text: 'Total:')
+        @close_button = ElementWrapper.new browser.span(text: "Close")
+        @x_button = ElementWrapper.new browser.image(css: "img[class*='x-tool-close']")
+        @total_label = ElementWrapper.new browser.span(text: 'Total:')
       end
 
       def blur_out

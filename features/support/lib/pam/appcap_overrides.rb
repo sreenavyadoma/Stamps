@@ -6,8 +6,8 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.td(text: 'AppCap Overrides')
-        @ok_button ||= ElementWrapper.new browser.a(css: 'a[href*=Profile]')
+        @title = ElementWrapper.new browser.td(text: 'AppCap Overrides')
+        @ok_button = ElementWrapper.new browser.a(css: 'a[href*=Profile]')
       end
 
       def text

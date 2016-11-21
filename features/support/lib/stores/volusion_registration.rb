@@ -54,27 +54,27 @@ module Stamps
         end
 
         def first_name
-          TextBoxElement.new browser.text_field(name: "ShipFirstName")
+          TextboxElement.new browser.text_field(name: "ShipFirstName")
         end
 
         def last_name
-          TextBoxElement.new browser.text_field(name: "ShipLastName")
+          TextboxElement.new browser.text_field(name: "ShipLastName")
         end
 
         def company
-          TextBoxElement.new browser.text_field(name: "ShipCompanyName")
+          TextboxElement.new browser.text_field(name: "ShipCompanyName")
         end
 
         def address_1
-          TextBoxElement.new browser.text_field(name: "ShipAddress1")
+          TextboxElement.new browser.text_field(name: "ShipAddress1")
         end
 
         def address_2
-          TextBoxElement.new browser.text_field(name: "ShipAddress2")
+          TextboxElement.new browser.text_field(name: "ShipAddress2")
         end
 
         def city
-          TextBoxElement.new browser.text_field(name: "ShipCity")
+          TextboxElement.new browser.text_field(name: "ShipCity")
         end
 
         def country
@@ -86,11 +86,11 @@ module Stamps
         end
 
         def zip_code
-          TextBoxElement.new browser.text_field(name: "ShipPostalCode")
+          TextboxElement.new browser.text_field(name: "ShipPostalCode")
         end
 
         def phone_number
-          TextBoxElement.new browser.text_field(name: "ShipPhoneNumber")
+          TextboxElement.new browser.text_field(name: "ShipPhoneNumber")
         end
 
         def type_of_address
@@ -202,7 +202,7 @@ module Stamps
         end
 
         def qty_field
-          TextBoxElement.new browser.text_field(name: 'QTY.SAMPLE1')
+          TextboxElement.new browser.text_field(name: 'QTY.SAMPLE1')
         end
 
         def qty number
@@ -301,19 +301,19 @@ module Stamps
         end
 
         def email
-          TextBoxElement.new browser.text_field(name: "Email")
+          TextboxElement.new browser.text_field(name: "Email")
         end
 
         def email_again
-          TextBoxElement.new browser.text_field(name: "Emailagain")
+          TextboxElement.new browser.text_field(name: "Emailagain")
         end
 
         def password
-          TextBoxElement.new browser.text_field(name: "password")
+          TextboxElement.new browser.text_field(name: "password")
         end
 
         def password_again
-          TextBoxElement.new browser.text_field(name: "passwordagain")
+          TextboxElement.new browser.text_field(name: "passwordagain")
         end
 
         def receive_newsletter
@@ -341,11 +341,11 @@ module Stamps
         end
 
         def email
-          TextBoxElement.new browser.text_field(name: "email")
+          TextboxElement.new browser.text_field(name: "email")
         end
 
         def password
-          TextBoxElement.new browser.text_field(name: "password")
+          TextboxElement.new browser.text_field(name: "password")
         end
 
         def login

@@ -21,7 +21,7 @@ module Stamps
         end
 
         def api_url url
-          textbox = TextBoxElement.new browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
+          textbox = TextboxElement.new browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
           textbox.set url
         end
 

@@ -6,8 +6,8 @@ module Stamps
 
       def initialize param
         super param
-        @text_box ||= TextBoxElement.new browser.text_field name: "mailToCountry"
-        @drop_down ||= ElementWrapper.new (browser.divs css: "div[class*=x-form-trigger]")[2]
+        @text_box = TextboxElement.new browser.text_field name: "mailToCountry"
+        @drop_down = ElementWrapper.new (browser.divs css: "div[class*=x-form-trigger]")[2]
       end
 
       def select selection
@@ -33,17 +33,17 @@ module Stamps
 
       def initialize param
         super param
-        @text_area ||= TextBoxElement.new (browser.textarea id: "sdc-mainpanel-shiptotextarea-inputEl")
+        @text_area = TextboxElement.new (browser.textarea id: "sdc-mainpanel-shiptotextarea-inputEl")
         @country ||= PostageCountry.new param
         @email ||= Email.new param
-        @name ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
-        @company ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
-        @address_1 ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
-        @address_2 ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress2field-inputEl")
-        @city ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptocityfield-inputEl")
-        @province ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
-        @postal_code ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
-        @phone ||= TextBoxElement.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
+        @name = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
+        @company = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
+        @address_1 = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
+        @address_2 = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress2field-inputEl")
+        @city = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptocityfield-inputEl")
+        @province = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
+        @postal_code = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
+        @phone = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
         @contacts ||= Contacts.new param
       end
 
@@ -62,7 +62,7 @@ module Stamps
       end
 
       def text_box
-        TextBoxElement.new (browser.text_field Locators::FormBody.print_on_text_field)
+        TextboxElement.new (browser.text_field Locators::FormBody.print_on_text_field)
       end
 
       def select selection
@@ -102,7 +102,7 @@ module Stamps
 
     class Pounds < Browser::Modal
       def text_box
-        TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
+        TextboxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
       end
 
       def set value
@@ -140,7 +140,7 @@ module Stamps
 
     class Ounces < Browser::Modal
       def text_box
-        TextBoxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
+        TextboxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
       end
 
       def set value
@@ -182,7 +182,7 @@ module Stamps
       def initialize param
         super param
         @auto_weigh ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-autoweightcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
-        @weigh_button ||= ElementWrapper.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
+        @weigh_button = ElementWrapper.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
         @oz ||= Ounces.new param
         @lbs ||= Pounds.new param
       end
@@ -191,7 +191,7 @@ module Stamps
     class MailServiceDropList < Browser::Modal
 
       def text_box
-        TextBoxElement.new browser.text_field name: "servicePackage"
+        TextboxElement.new browser.text_field name: "servicePackage"
       end
 
       def drop_down
@@ -288,7 +288,7 @@ module Stamps
       end
 
       def text_box
-        TextBoxElement.new browser.text_field id: "sdc-mainpanel-shipfromdroplist-inputEl"
+        TextboxElement.new browser.text_field id: "sdc-mainpanel-shipfromdroplist-inputEl"
       end
 
       def select selection
@@ -342,7 +342,7 @@ module Stamps
 
     class StampAmount < Browser::Modal
       def text_box
-        TextBoxElement.new (browser.text_field name: "stampAmount"), "data-errorqtip"
+        TextboxElement.new (browser.text_field name: "stampAmount"), "data-errorqtip"
       end
 
       def set value
@@ -371,7 +371,7 @@ module Stamps
       def initialize param
         super param
         @checkbox ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
-        @text_box ||= TextBoxElement.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
+        @text_box = TextboxElement.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
       end
 
       def set value
@@ -383,7 +383,7 @@ module Stamps
     class Tracking < Browser::Modal
 
       def text_box
-        TextBoxElement.new browser.text_field name: "tracking"
+        TextboxElement.new browser.text_field name: "tracking"
       end
 
       def drop_down
@@ -422,7 +422,7 @@ module Stamps
       end
 
       def text_box
-        TextBoxElement.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
+        TextboxElement.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
       end
 
       def increment value
@@ -441,7 +441,7 @@ module Stamps
     class ShipDate < Browser::Modal
 
       def text_box
-        TextBoxElement.new (browser.text_field id: "sdc-mainpanel-shipdatedatefield-inputEl")
+        TextboxElement.new (browser.text_field id: "sdc-mainpanel-shipdatedatefield-inputEl")
       end
 
       def date_picker
@@ -470,7 +470,7 @@ module Stamps
 
     class CostCode  < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field name: "costCodeId"
+        TextboxElement.new browser.text_field name: "costCodeId"
       end
 
       def drop_down
@@ -505,7 +505,7 @@ module Stamps
 
     class Quantity < Browser::Modal
       def text_box
-        TextBoxElement.new (browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
+        TextboxElement.new (browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
       end
 
       def set value

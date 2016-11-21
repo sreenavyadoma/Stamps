@@ -404,6 +404,15 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
     else
       "Invalid Zone Option".should eql "Zone #{zone} is not a valid zone. Valid options are from zone 1 through 8."
   end
+  test_data[:street_address] = address['street_address']
+  test_data[:city] = address['city']
+  test_data[:state] = address['state']
+  test_data[:zip] = address['zip']
+  test_data[:name] = address['name']
+  test_data[:company] = address['company']
+  test_data[:email] = address['email']
+  test_data[:phone] = address['phone']
+
   logger.step "Details: Set Ship-To to address in Zone #{zone} = \"#{address}\""
   # set Ship-To address
   test_data[:ship_to_text_area] = ParameterHelper.format_address(address)

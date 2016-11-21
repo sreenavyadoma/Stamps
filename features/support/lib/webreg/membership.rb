@@ -353,7 +353,7 @@ module Stamps
       attr_reader :checkbox
       def initialize param
         super param
-        @checkbox ||= browser.checkbox id: "termsConditions"
+        @checkbox = browser.checkbox id: "termsConditions"
       end
 
       def check
@@ -390,7 +390,7 @@ module Stamps
       end
 
       def user_id
-        TextBoxElement.new browser.text_field(id: "newUsername")
+        TextboxElement.new browser.text_field(id: "newUsername")
       end
 
       def continue
@@ -403,10 +403,10 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.h3 text: 'An Error Occurred'
-        @top_message ||= ElementWrapper.new browser.p id: 'topMessage'
-        @error_code ||= ElementWrapper.new browser.p id: 'errorCode'
-        @error_description ||= ElementWrapper.new browser.p id: 'errorDescription'
+        @title = ElementWrapper.new browser.h3 text: 'An Error Occurred'
+        @top_message = ElementWrapper.new browser.p id: 'topMessage'
+        @error_code = ElementWrapper.new browser.p id: 'errorCode'
+        @error_description = ElementWrapper.new browser.p id: 'errorDescription'
       end
 
       def present?
@@ -440,12 +440,12 @@ module Stamps
     end
 
 
-    class MembershipPhone < TextBoxElement
+    class MembershipPhone < TextboxElement
       attr_reader :help_element
 
       def initialize param
         super param
-        @help_element ||= browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(8)>div>span")
+        @help_element = browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(8)>div>span")
       end
 
       def has_error?
@@ -458,7 +458,7 @@ module Stamps
     end
 
     #Added by Galina
-    class MembershipFirstName < TextBoxElement
+    class MembershipFirstName < TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(1)>div>span")
       end
@@ -469,7 +469,7 @@ module Stamps
     end
 
     #Added by Galina
-    class MembershipLastName < TextBoxElement
+    class MembershipLastName < TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(2)>div>span")
       end
@@ -480,7 +480,7 @@ module Stamps
     end
 
     #Added by Galina
-    class MembershipAddress < TextBoxElement
+    class MembershipAddress < TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(4)>div>span")
       end
@@ -491,7 +491,7 @@ module Stamps
     end
 
     #Added by Galina
-    class MembershipCity < TextBoxElement
+    class MembershipCity < TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")
       end
@@ -502,7 +502,7 @@ module Stamps
     end
 
     #Added by Galina
-    class MembershipCardHolderName < TextBoxElement
+    class MembershipCardHolderName < TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")
       end
@@ -512,7 +512,7 @@ module Stamps
       end
     end
 
-    class MembershipCardName< TextBoxElement
+    class MembershipCardName< TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(2)>div>span")
       end
@@ -522,7 +522,7 @@ module Stamps
       end
     end
 
-    class MembershipBillingAddress < TextBoxElement
+    class MembershipBillingAddress < TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(6)>div>span")
       end
@@ -532,7 +532,7 @@ module Stamps
       end
     end
 
-    class MembershipBillingCity< TextBoxElement
+    class MembershipBillingCity< TextboxElement
       def help_element
         browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(7)>div>span")
       end
@@ -811,7 +811,7 @@ module Stamps
     end
 
     #Added by Galina
-    class MembershipBillingZip < TextBoxElement
+    class MembershipBillingZip < TextboxElement
       def help_element
       browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(9)>div>span")
       end
@@ -821,12 +821,12 @@ module Stamps
       end
     end
 
-    class MembershipCardNumber < TextBoxElement
+    class MembershipCardNumber < TextboxElement
       attr_reader :help_element
 
       def initialize param
         super param
-        @help_element ||= ElementWrapper.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
+        @help_element = ElementWrapper.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
       end
 
       def help_text
@@ -852,18 +852,18 @@ module Stamps
 
         @first_name ||= MembershipFirstName.new browser.text_field(id: "firstName")
         @last_name ||= MembershipLastName.new browser.text_field(id: "lastName")
-        @company ||= TextBoxElement.new browser.text_field(id: "companyName")
+        @company = TextboxElement.new browser.text_field(id: "companyName")
         @address ||= MembershipAddress.new browser.text_field(id: "street")
         @city ||= MembershipCity.new browser.text_field(id: "city")
         @state ||= State.new param
-        @zip ||= TextBoxElement.new browser.text_field(id: "zip")
-        @ext ||= TextBoxElement.new browser.text_field(id: "extension")
+        @zip = TextboxElement.new browser.text_field(id: "zip")
+        @ext = TextboxElement.new browser.text_field(id: "extension")
         @card_holder_name ||= MembershipCardHolderName.new browser.text_field(id: "ccName")
-        @card_holder_name ||= TextBoxElement.new browser.text_field(id: "ccName")
+        @card_holder_name = TextboxElement.new browser.text_field(id: "ccName")
         @card_number ||= MembershipCardNumber.new browser.text_field(id: "ccNumber")
         @expiration_month ||= ExpirationMonth.new param
         @expiration_year ||= ExpirationYear.new param
-        checkbox_field ||= browser.input id: "useMailingAddressForBilling"
+        checkbox_field = browser.input id: "useMailingAddressForBilling"
         @billing_same_as_mailing ||= CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
 
         #Added by Galina
@@ -873,7 +873,7 @@ module Stamps
         @billing_zip ||= MembershipBillingZip.new browser.text_field(id: "billingZip")
 
         @terms_and_conditions ||= TermsAndConditions.new param
-        @back ||= ElementWrapper.new browser.button(id: "prev")
+        @back = ElementWrapper.new browser.button(id: "prev")
 
         @submit_button = ElementWrapper.new browser.button(text: "Submit") #Change by Galina from "Submit"
         @supplies = ChooseSupplies.new param

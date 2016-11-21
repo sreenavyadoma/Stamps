@@ -126,7 +126,7 @@ module Stamps
         end
 
         def email_address
-          TextBoxElement.new (browser.inputs(css: "input[name^=textfield-][name$=-inputEl]").last)
+          TextboxElement.new (browser.inputs(css: "input[name^=textfield-][name$=-inputEl]").last)
         end
 
         def test_connection

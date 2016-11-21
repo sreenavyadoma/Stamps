@@ -14,7 +14,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
-    Then Filter: Expect printed Order ID is not in Awaiting Shipment tab
-    Then Filter: Expect printed Order ID is in Shipped tab
+    Then Left Panel: Expect printed Order ID is not in Awaiting Shipment tab
+    Then Left Panel: Expect printed Order ID is in Shipped tab
     Then Sign out
 

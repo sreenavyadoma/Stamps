@@ -15,7 +15,7 @@ Feature: Set Print Ship Date to Today + 2
     Then Print: Set Printer to "factory"
     Then Print: Set Ship Date to today plus 2
     Then Print: Print
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     Then Grid: Expect Date Printed for this order is today
     Then Grid: Expect Ship Date for this order is today plus 2
     Then Sign out

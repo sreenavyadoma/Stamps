@@ -111,7 +111,7 @@ module Stamps
 
     class PaperTray < Browser::Modal
       def text_box
-        TextBoxElement.new browser.input name: "paperTrays"
+        TextboxElement.new browser.input name: "paperTrays"
       end
 
       def drop_down

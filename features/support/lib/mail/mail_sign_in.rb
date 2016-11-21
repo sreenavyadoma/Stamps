@@ -87,10 +87,10 @@ module Stamps
 
       def initialize param
         super param
-        @username_textbox ||= TextBoxElement.new browser.text_field(Locators::SignIn.username)
-        @password_textbox ||= TextBoxElement.new browser.text_field(Locators::SignIn.password)
-        @sign_in_button ||= ElementWrapper.new browser.button(id: "signInButton")
-        @sign_in_link ||= ElementWrapper.new browser.link(text: "Sign In")
+        @username_textbox = TextboxElement.new browser.text_field(Locators::SignIn.username)
+        @password_textbox = TextboxElement.new browser.text_field(Locators::SignIn.password)
+        @sign_in_button = ElementWrapper.new browser.button(id: "signInButton")
+        @sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
         @verifying_account_info = ElementWrapper.new browser.div text: "Verifying account information..."
         @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
         @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
@@ -268,8 +268,8 @@ module Stamps
         end
 
         sign_in_link = ElementWrapper.new browser.link(text: "Sign In")
-        username_textbox = TextBoxElement.new browser.text_field(Locators::SignIn.username)
-        password_textbox = TextBoxElement.new browser.text_field(Locators::SignIn.password)
+        username_textbox = TextboxElement.new browser.text_field(Locators::SignIn.username)
+        password_textbox = TextboxElement.new browser.text_field(Locators::SignIn.password)
         remember_username = Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         sign_in_button = ElementWrapper.new browser.button(id: "signInButton")
         verifying_account_info = ElementWrapper.new browser.div(text: "Verifying account information...")

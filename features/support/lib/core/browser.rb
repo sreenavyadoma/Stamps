@@ -356,7 +356,7 @@ module Stamps
       end
     end
 
-    class TextBoxElement < ElementWrapper
+    class TextboxElement < ElementWrapper
       def set text
         element_helper.set element, text
         self

@@ -6,10 +6,10 @@ Feature: Tooltips Improvements
 
   @tooltips_improvements
   Scenario: Tooltips Improvements
-    Then Filter: Menu Item collapse button tooltip should be Collapse this panel.
-    Then Filter: Collapse Panel
-    Then Filter: Menu Item expand button tooltip should be Expand this panel.
-    Then Filter: Expand Panel
+    Then Left Panel: Menu Item collapse button tooltip should be Collapse this panel.
+    Then Left Panel: Collapse Panel
+    Then Left Panel: Menu Item expand button tooltip should be Expand this panel.
+    Then Left Panel: Expand Panel
     Then Toolbar: Expect Add Tooltip to include Add
     Then Toolbar: Expect Add Tooltip to include Create a new, blank order.
     Then Toolbar: Add

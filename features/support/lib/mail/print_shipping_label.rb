@@ -66,7 +66,7 @@ module Stamps
 
       def initialize param
         super param
-        @reference_number ||= TextBoxElement.new browser.text_field(name: "referenceNumber")
+        @reference_number = TextboxElement.new browser.text_field(name: "referenceNumber")
 
       end
 

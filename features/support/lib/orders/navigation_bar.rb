@@ -5,8 +5,8 @@ module Stamps
 
       def initialize param
         super param
-        @ok_button ||= ElementWrapper.new (param.app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
-        @window_title ||= ElementWrapper.new browser.div text: "Purchase Approved"
+        @ok_button = ElementWrapper.new (param.app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
+        @window_title = ElementWrapper.new browser.div text: "Purchase Approved"
       end
 
       def wait_until_present *args
@@ -36,7 +36,7 @@ module Stamps
 
       def initialize param
         super param
-        @window_title ||= ElementWrapper.new browser.div text: 'Confirm Purchase'
+        @window_title = ElementWrapper.new browser.div text: 'Confirm Purchase'
       end
 
       def exit
@@ -104,13 +104,32 @@ module Stamps
       end
     end
 
-    class BuyPostage < Browser::Modal
-      attr_reader :confirm_postage, :confirm_purchase
+    class AutoBuyPostageModal < Browser::Modal
+      attr_reader
+
+      def initialize param
+        super param
+
+      end
+    end
+
+    class BuyPostageModal < Browser::Modal
+      attr_reader :confirm_postage, :confirm_purchase, :auto_buy_postage_modal, :auto_buy_postage_link
 
       def initialize param
         super param
         @confirm_postage ||= ConfirmPurchase.new param
         @confirm_purchase ||= ConfirmPurchase.new param
+        @auto_buy_postage_modal ||= AutoBuyPostageModal.new param
+        @auto_buy_postage_link = ElementWrapper.new browser.span(text: "Auto-buy postage")
+      end
+
+      def auto_buy_postage
+        10.times do
+          auto_buy_postage_link.safe_click
+          return auto_buy_postage_modal if auto_buy_postage_modal.present?
+        end
+        "Auto-Buy Postage modal did not open.".should eql "Unable to open Auto-Buy Postage modal upon clicking Auto-buy postage link"
       end
 
       def purchase_button
@@ -218,7 +237,7 @@ module Stamps
           "raise Purchase Button failure. #{param.app} is not a valid value for param.app, check your test."
         end
 
-        textbox = TextBoxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")
+        textbox = TextboxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")
 
         checkbox.select
         textbox.set value
@@ -249,7 +268,7 @@ module Stamps
       def initialize param
         super param
 
-        @buy_postage_modal = BuyPostage.new param
+        @buy_postage_modal = BuyPostageModal.new param
         @buy_more_drop_down = ElementWrapper.new (browser.span class: "balanceLabel")
         @buy_more_link = ElementWrapper.new (browser.a text: "Buy More")
         @view_history_link = ElementWrapper.new (browser.a text: "View Purchase History")
@@ -301,7 +320,7 @@ module Stamps
 
       def initialize param
         super param
-        @username ||= ElementWrapper.new browser.span id: 'userNameText'
+        @username = ElementWrapper.new browser.span id: 'userNameText'
         @sign_out_link = browser.a text: "Sign Out"
       end
 
@@ -344,8 +363,8 @@ module Stamps
         @username ||= UsernameDropDown.new param
         @sign_out_link = ElementWrapper.new browser.link id: "signOutLink"
         @signed_in_username = ElementWrapper.new browser.span id: 'userNameText'
-        @orders_link ||= ElementWrapper.new browser.a text: 'Orders'
-        @mail_link ||= ElementWrapper.new browser.a text: 'Mail'
+        @orders_link = ElementWrapper.new browser.a text: 'Orders'
+        @mail_link = ElementWrapper.new browser.a text: 'Mail'
         @web_mail ||= WebMail.new param
         @web_orders ||= WebOrders.new param
       end

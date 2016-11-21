@@ -8,7 +8,7 @@ Then /^Toolbar: Add$/ do
     step "Save Shipping Costs Data"
     logger.step "Saved Order ID #{test_data[:order_id]}"
     test_data[:order_id] = test_data[:order_id]
-    test_data[:awaiting_shipment_count] = stamps.orders.filter.awaiting_shipment_count
+    test_data[:awaiting_shipment_count] = stamps.orders.left_panel.awaiting_shipment_count
     @item_count = 0
     @index = 0
   rescue Exception => e

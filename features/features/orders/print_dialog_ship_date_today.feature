@@ -14,7 +14,7 @@ Feature: Set Print Ship Date to Today
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
     Then Print: Set Printer to "factory"
     Then Print: Print
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     Then Grid: Expect Ship Date for this order is today
     Then Grid: Expect Date Printed for this order is today
     Then Sign out

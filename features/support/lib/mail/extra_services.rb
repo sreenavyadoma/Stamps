@@ -113,7 +113,7 @@ module Stamps
 
     class Security < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field name: "security"
+        TextboxElement.new browser.text_field name: "security"
       end
 
       def drop_down
@@ -148,7 +148,7 @@ module Stamps
 
     class SecurityValue < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field id: 'sdc-extraserviceswin-valuenumberfield-inputEl'
+        TextboxElement.new browser.text_field id: 'sdc-extraserviceswin-valuenumberfield-inputEl'
       end
 
       def set value
@@ -175,7 +175,7 @@ module Stamps
 
     class COD < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field id: 'sdc-extraserviceswin-codnumberfield-inputEl'
+        TextboxElement.new browser.text_field id: 'sdc-extraserviceswin-codnumberfield-inputEl'
       end
 
       def form_3816
@@ -221,7 +221,7 @@ module Stamps
 
     class Handling < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field name: "contents"
+        TextboxElement.new browser.text_field name: "contents"
       end
 
       def drop_down

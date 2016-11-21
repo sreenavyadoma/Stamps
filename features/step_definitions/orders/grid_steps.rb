@@ -82,7 +82,7 @@ end
 
 Then /^Grid: Expect Date Printed for this order is today$/ do
   logger.step "Grid: Expect Date Printed for this order is today"
-  grid = stamps.orders.filter.shipped
+  grid = stamps.orders.left_panel.shipped
   grid.order_id.sort_descending
   grid_print_date = grid.date_printed.data(test_data[:order_id]) # Dec 3
   expectation_print_date = Date.today.strftime "%b %-d"
@@ -100,10 +100,10 @@ Then /^Grid: Expect Ship Date for this order is today plus (\d+)$/ do |day|
   logger.step "Grid: Expect Ship Date for this order is today plus #{day}"
   expectation = ParameterHelper.mmddyy_to_mondd @ship_date
   10.times{
-    stamps.orders.filter.shipped.order_id.sort_descending
-    break if stamps.orders.filter.shipped.ship_date.data(test_data[:order_id]) == expectation
+    stamps.orders.left_panel.shipped.order_id.sort_descending
+    break if stamps.orders.left_panel.shipped.ship_date.data(test_data[:order_id]) == expectation
   }
-  stamps.orders.filter.shipped.ship_date.data(test_data[:order_id]).should eql expectation
+  stamps.orders.left_panel.shipped.ship_date.data(test_data[:order_id]).should eql expectation
 end
 
 Then /^List all Grid column values for row (\d+)/ do |row|

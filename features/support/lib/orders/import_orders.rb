@@ -10,7 +10,7 @@ module Stamps
       end
 
       def message
-        box = TextBoxElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+        box = TextboxElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         box.text
       end
 
@@ -33,7 +33,7 @@ module Stamps
       end
 
       def text_box
-        TextBoxElement.new browser.text_field(id: "files-inputEl")
+        TextboxElement.new browser.text_field(id: "files-inputEl")
       end
 
       def import

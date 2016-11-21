@@ -26,7 +26,7 @@ module Stamps
         end
 
         def shopify_domain
-          TextBoxElement.new (browser.text_fields(css: "input[name^=textfield-][name$=-inputEl]").last)
+          TextboxElement.new (browser.text_fields(css: "input[name^=textfield-][name$=-inputEl]").last)
         end
 
         def connect_button
@@ -256,11 +256,11 @@ module Stamps
         end
 
         def username
-          TextBoxElement.new browser.text_field(id: 'login-input')
+          TextboxElement.new browser.text_field(id: 'login-input')
         end
 
         def password
-          TextBoxElement.new browser.text_field(id: 'password')
+          TextboxElement.new browser.text_field(id: 'password')
         end
 
         def sign_in

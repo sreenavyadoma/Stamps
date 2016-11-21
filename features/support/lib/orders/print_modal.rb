@@ -33,8 +33,8 @@ module Stamps
 
       def initialize param
         super param
-        @i_agree ||= ElementWrapper.new browser.span text: "I Agree"
-        @cancel ||= ElementWrapper.new browser.span text: "Cancel"
+        @i_agree = ElementWrapper.new browser.span text: "I Agree"
+        @cancel = ElementWrapper.new browser.span text: "Cancel"
       end
 
       def present?
@@ -73,8 +73,8 @@ module Stamps
 
       def initialize param
         super param
-        @left_label ||= ElementWrapper.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)"
-        @right_label ||= ElementWrapper.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)"
+        @left_label = ElementWrapper.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)"
+        @right_label = ElementWrapper.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)"
       end
 
       def left
@@ -128,8 +128,8 @@ module Stamps
 
       def initialize param
         super param
-        @drop_down ||= ElementWrapper.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
-        @text_box ||= TextBoxElement.new browser.text_field css: "input[name^=printmediadroplist]"
+        @drop_down = ElementWrapper.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
+        @text_box = TextboxElement.new browser.text_field css: "input[name^=printmediadroplist]"
       end
 
       def selection media
@@ -252,7 +252,7 @@ module Stamps
         day = day.to_i
         date_picker_header = ElementWrapper.new browser.div class: "x-datepicker-header"
         picker_button = ElementWrapper.new browser.div(Orders::Locators::PrintModal.date_picker_button)
-        ship_date_textbox = TextBoxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
+        ship_date_textbox = TextboxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
 
         ship_date_str = ParameterHelper.now_plus_month_dd day
         ship_date_mmddyy = ParameterHelper.now_plus_mm_dd_yy day
@@ -286,8 +286,8 @@ module Stamps
 
       def initialize param
         super param
-        @drop_down ||= ElementWrapper.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
-        @text_box ||= TextBoxElement.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
+        @drop_down = ElementWrapper.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
+        @text_box = TextboxElement.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
       end
 
       def select printer
@@ -324,8 +324,8 @@ module Stamps
 
       def initialize param
         super param
-        @drop_down ||= ElementWrapper.new (browser.divs css: "div[id^=combo-][id$=-trigger-picker]").last
-        @text_box ||= TextBoxElement.new browser.text_field name: "paperTrays"
+        @drop_down = ElementWrapper.new (browser.divs css: "div[id^=combo-][id$=-trigger-picker]").last
+        @text_box = TextboxElement.new browser.text_field name: "paperTrays"
       end
 
       def select selection
@@ -371,7 +371,7 @@ module Stamps
 
       def initialize param
         super param
-        @window_x_button ||= browser.img css: "img[class*='x-tool-img x-tool-close']"
+        @window_x_button = browser.img css: "img[class*='x-tool-img x-tool-close']"
       end
 
       def close_window
@@ -402,10 +402,10 @@ module Stamps
         @paper_tray ||= PaperTray.new param
         @date_picker = DatePicker.new param
         @printing_on ||= PrintingOn.new param
-        @ship_date ||= TextBoxElement.new browser.text_field name: "sdc-printpostagewindow-shipdate-inputEl"
+        @ship_date = TextboxElement.new browser.text_field name: "sdc-printpostagewindow-shipdate-inputEl"
         @print_options ||= PrintOptions.new param
-        @print_button ||= ElementWrapper.new browser.span id: 'sdc-printwin-printbtn-btnInnerEl'
-        @print_sample_button ||= ElementWrapper.new browser.span text: 'Print: Print Sample'
+        @print_button = ElementWrapper.new browser.span id: 'sdc-printwin-printbtn-btnInnerEl'
+        @print_sample_button = ElementWrapper.new browser.span text: 'Print: Print Sample'
         @printer ||= Printer.new param
 
         checkbox_field = browser.text_field id: "sdc-mainpanel-cmcheckbox-inputEl"

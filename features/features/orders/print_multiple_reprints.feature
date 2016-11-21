@@ -15,11 +15,11 @@ Feature: Multiple Reprints
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""
     Then Print: Set Printer to "factory"
     Then Print: Print
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     Then Grid: Check Saved Order ID
     Then Print: Open Reprint Modal
     Then RePrint: Reprint
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     Then Grid: Check Saved Order ID
     Then Print: Open Reprint Modal
     Then RePrint: Reprint

@@ -35,23 +35,23 @@ module Stamps
       end
 
       def more_info
-        TextBoxElement.new browser.text_field name: "Comments"
+        TextboxElement.new browser.text_field name: "Comments"
       end
 
       def itn_number
-        TextBoxElement.new browser.text_field name: "ITN"
+        TextboxElement.new browser.text_field name: "ITN"
       end
 
       def license
-        TextBoxElement.new browser.text_field name: "LicenseNumber"
+        TextboxElement.new browser.text_field name: "LicenseNumber"
       end
 
       def certificate
-        TextBoxElement.new browser.text_field name: "CertificateNumber"
+        TextboxElement.new browser.text_field name: "CertificateNumber"
       end
 
       def invoice
-        TextBoxElement.new browser.text_field name: "InvoiceNumber"
+        TextboxElement.new browser.text_field name: "InvoiceNumber"
       end
 
       def i_agree
@@ -149,7 +149,7 @@ module Stamps
       end
 
       def description
-        TextBoxElement.new browser.text_field name: "Description"
+        TextboxElement.new browser.text_field name: "Description"
       end
 
       def qty
@@ -169,7 +169,7 @@ module Stamps
       end
 
       def hs_tariff
-        TextBoxElement.new browser.text_field name: "HSTariffNumber"
+        TextboxElement.new browser.text_field name: "HSTariffNumber"
       end
 
       def origin
@@ -182,7 +182,7 @@ module Stamps
 
       class Qty  < Browser::Modal
         def text_box
-          TextBoxElement.new browser.text_field name: 'Quantity'
+          TextboxElement.new browser.text_field name: 'Quantity'
         end
 
         def set value
@@ -211,7 +211,7 @@ module Stamps
 
       class Value  < Browser::Modal
         def text_box
-          TextBoxElement.new browser.text_field name: 'Value'
+          TextboxElement.new browser.text_field name: 'Value'
         end
 
         def set value
@@ -239,7 +239,7 @@ module Stamps
 
       class Lbs  < Browser::Modal
         def text_box
-          TextBoxElement.new browser.text_field name: 'WeightLb'
+          TextboxElement.new browser.text_field name: 'WeightLb'
         end
 
         def set value
@@ -267,7 +267,7 @@ module Stamps
 
       class Ounces  < Browser::Modal
         def text_box
-          TextBoxElement.new browser.text_field name: 'WeightOz'
+          TextboxElement.new browser.text_field name: 'WeightOz'
         end
 
         def set value
@@ -297,7 +297,7 @@ module Stamps
 
         def initialize param
           super param
-          @text_box = TextBoxElement.new browser.text_field name: "CountryOfOrigin"
+          @text_box = TextboxElement.new browser.text_field name: "CountryOfOrigin"
         end
 
         def drop_down
@@ -326,7 +326,7 @@ module Stamps
 
     class PackageContents < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field name: "ContentType"
+        TextboxElement.new browser.text_field name: "ContentType"
       end
 
       def drop_down
@@ -358,7 +358,7 @@ module Stamps
 
     class NonDeliveryOptions < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field name: "NonDeliveryOption"
+        TextboxElement.new browser.text_field name: "NonDeliveryOption"
       end
 
       def drop_down
@@ -390,7 +390,7 @@ module Stamps
 
     class InternalTransaction < Browser::Modal
       def text_box
-        TextBoxElement.new browser.text_field name: "isITNRequired"
+        TextboxElement.new browser.text_field name: "isITNRequired"
       end
 
       def drop_down
@@ -490,7 +490,7 @@ module Stamps
         end
 
         def text_box
-          TextBoxElement.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
+          TextboxElement.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -533,7 +533,7 @@ module Stamps
         end
 
         def text_box
-          TextBoxElement.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
+          TextboxElement.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -563,7 +563,7 @@ module Stamps
         end
 
         def text_box
-          TextBoxElement.new ((browser.text_fields name: "lbs")[@index-1]), "data-errorqtip"
+          TextboxElement.new ((browser.text_fields name: "lbs")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -606,7 +606,7 @@ module Stamps
         end
 
         def text_box
-          TextBoxElement.new ((browser.text_fields name: "oz")[@index-1]), "data-errorqtip"
+          TextboxElement.new ((browser.text_fields name: "oz")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -656,7 +656,7 @@ module Stamps
       end
 
       def description
-        TextBoxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
+        TextboxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[@index-1]), "data-errorqtip"
       end
 
       def qty
@@ -680,7 +680,7 @@ module Stamps
       end
 
       def hs_tariff
-        TextBoxElement.new (browser.text_fields name: "TariffNo")[@index-1]
+        TextboxElement.new (browser.text_fields name: "TariffNo")[@index-1]
       end
 
     end
