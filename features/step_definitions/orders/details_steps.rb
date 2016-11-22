@@ -410,9 +410,10 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
   test_data[:zip] = address['zip']
   test_data[:name] = address['name']
   test_data[:company] = address['company']
-  test_data[:email] = address['email']
-  test_data[:phone] = address['phone']
-
+  #test_data[:email] = address['email']
+  #test_data[:phone] = address['phone']
+  logger.step "Test Data:"
+  test_data.each_key { |key_value_array| logger.step("#{key_value_array} : #{test_data[key_value_array]}") }
   logger.step "Details: Set Ship-To to address in Zone #{zone} = \"#{address}\""
   # set Ship-To address
   test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
@@ -504,20 +505,20 @@ Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
 end
 
 Then /^Details: Set Phone to (.*)$/ do |phone|
-  @order_details_phone = (phone.to_s.strip.downcase.include? "random")?(ParameterHelper.random_phone):phone
+  test_data[:phone] = (phone.to_s.strip.downcase.include? "random")?(ParameterHelper.random_phone):phone
   begin
-    logger.step "Order Details Form Phone to \"#{@order_details_phone}\""
-    stamps.orders.details.ship_to.address.phone.set @order_details_phone
-  end unless @order_details_phone.length == 0
+    logger.step "Order Details Form Phone to \"#{test_data[:phone]}\""
+    stamps.orders.details.ship_to.address.phone.set test_data[:phone]
+  end unless test_data[:phone].length == 0
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Email to (.*)$/ do |email|
-  @order_details_email = (email.to_s.strip.downcase.include? "random")?(ParameterHelper.random_email):email
+  test_data[:email] = (email.to_s.strip.downcase.include? "random")?(ParameterHelper.random_email):email
   begin
-    logger.step "Details: Set Email to \"#{@order_details_email}\""
-    stamps.orders.details.ship_to.address.email.set @order_details_email
-  end unless @order_details_email.length == 0
+    logger.step "Details: Set Email to \"#{test_data[:email]}\""
+    stamps.orders.details.ship_to.address.email.set test_data[:email]
+  end unless test_data[:email].length == 0
   step "Details: Save Total Ship Cost"
 end
 

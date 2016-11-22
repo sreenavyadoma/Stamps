@@ -123,6 +123,21 @@ module Stamps
           20.times do
             textbox.set str
             search_button.safe_click
+            search_button.safe_click
+            search_button.safe_click
+            if str.include? '@'
+              search_button.send_keys :enter
+              textbox.set str
+              search_button.safe_click
+              search_button.safe_click
+              sleep 1
+              search_button.safe_click
+              search_button.safe_click
+              sleep 1
+              search_button.safe_click
+              search_button.safe_click
+              sleep 1
+            end
             return search_results if search_results.present?
           end
           search_results.present?.should be true
@@ -136,7 +151,7 @@ module Stamps
         def initialize param
           super param
           @menu_item ||= FilterMenuItem.new param
-          @search_orders_modal ||= SearchOrders.new param
+          @search_orders_modal = SearchOrders.new param
           @search_results = SearchResults.new param
 
           @filter_panel = ElementWrapper.new browser.div(css: "div[id*=filterpanel][class*=x-panel-dark-grey]")

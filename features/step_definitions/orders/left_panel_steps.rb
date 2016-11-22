@@ -1,13 +1,32 @@
 
 Then /^Left Panel: Search saved Order ID$/ do
-  step "Left Panel: Search for #{test_data[:order_id]}"
+  logger.step "Left Panel: Search saved Order ID #{test_data[:order_id]}"
   test_data[:order_id].should be_truthy
   step "Left Panel: Search for #{test_data[:order_id]}"
 end
 
+Then /^Left Panel: Search saved Ship Name$/ do
+  logger.step "Left Panel: Search saved Ship Name #{test_data[:name]}"
+  test_data[:name].should be_truthy
+  step "Left Panel: Search for #{test_data[:name]}"
+end
+
+Then /^Left Panel: Search saved Ship Company$/ do
+  logger.step "Left Panel: Search saved Ship Company #{test_data[:company]}"
+  test_data[:company].should be_truthy
+  step "Left Panel: Search for #{test_data[:company]}"
+end
+
+Then /^Left Panel: Search saved Email$/ do
+  logger.step "Left Panel: Search saved Email #{test_data[:email]}"
+  test_data[:email].should be_truthy
+  step "Left Panel: Search for #{test_data[:email]}"
+end
+
 Then /^Left Panel: Search for (.*)$/ do |str|
-  logger.step "Left Panel: Search for #{str}"
-  stamps.orders.left_panel.search_orders str
+  test_data[:orders_search_str] = str
+  logger.step "Left Panel: Search for #{test_data[:orders_search_str]}"
+  stamps.orders.left_panel.search_orders test_data[:orders_search_str]
 end
 
 Then /^Left Panel: Search results count should be (\d*)$/ do |count|

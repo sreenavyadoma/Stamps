@@ -231,8 +231,8 @@ module Stamps
         shipping =  address[rand(address.size)]
         shipping['name'] = ParameterHelper.random_name
         shipping['company'] = ParameterHelper.random_company_name
-        shipping['phone'] = ParameterHelper.random_phone
-        shipping['email'] = ParameterHelper.random_email
+        #shipping['phone'] = ParameterHelper.random_phone
+        #shipping['email'] = ParameterHelper.random_email
         shipping
       end
 
@@ -240,8 +240,8 @@ module Stamps
         shipping = data_rand_zone_1_4
         shipping['name'] = ParameterHelper.random_name
         shipping['company'] = ParameterHelper.random_company_name
-        shipping['phone'] = ParameterHelper.random_phone
-        shipping['email'] = ParameterHelper.random_email
+        #shipping['phone'] = ParameterHelper.random_phone
+        #shipping['email'] = ParameterHelper.random_email
         shipping
       end
 
@@ -249,8 +249,8 @@ module Stamps
         shipping = data_rand_zone_5_8
         shipping['name'] = ParameterHelper.random_name
         shipping['company'] = ParameterHelper.random_company_name
-        shipping['phone'] = ParameterHelper.random_phone
-        shipping['email'] = ParameterHelper.random_email
+        #shipping['phone'] = ParameterHelper.random_phone
+        #shipping['email'] = ParameterHelper.random_email
         shipping
       end
 
@@ -264,8 +264,8 @@ module Stamps
         shipping["ship_from_zip"] = shipping["zip"]
         shipping['name'] = random_name
         shipping['company'] = random_company_name
-        shipping['phone'] = random_phone
-        shipping['email'] = random_email
+        #shipping['phone'] = random_phone
+        #shipping['email'] = random_email
         shipping["state_abbrev"] = shipping["state"]
         shipping["state"] = us_states[shipping["state_abbrev"]]
         shipping["street_address2"] = random_suite
@@ -278,8 +278,8 @@ module Stamps
         shipping["ship_from_zip"] = shipping["zip"]
         shipping['name'] = random_name
         shipping['company'] = random_company_name
-        shipping['phone'] = random_phone
-        shipping['email'] = random_email
+        #shipping['phone'] = random_phone
+        #shipping['email'] = random_email
         shipping["state_abbrev"] = shipping["state"]
         shipping["state"] = us_states[shipping["state_abbrev"]]
         shipping["street_address2"] = random_suite
