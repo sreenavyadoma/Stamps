@@ -5,7 +5,7 @@ Feature:  Basic Search
     Given I am signed in to Orders
 
   @search_orders
-  Scenario: Search for an existing order
+  Scenario: Search order
 
     # Search for New Order ID
     Then Toolbar: Add

@@ -205,7 +205,7 @@ module Stamps
         signed_in_user.safely_wait_until_present 6
         whats_new_modal.close if whats_new_modal.present?
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-        "The environment might be down!".should eql "SIGN IN FAILED FOR USER: #{username}!" unless signed_in_user.present?
+        "SIGN IN FAILED FOR USER: #{username}! Is #{ENV['URL']} up?".should eql "Sign-in Successful for #{username} in #{ENV['URL']}" unless signed_in_user.present?
       end
 
       def sign_in_first_time *args
