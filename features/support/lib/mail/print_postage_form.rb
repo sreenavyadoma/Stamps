@@ -194,7 +194,7 @@ module Stamps
       def initialize param
         super param
         @text_box = TextboxElement.new browser.text_field(name: "servicePackage")
-        @drop_down = ElementWrapper.new browser.div(css "table[id=sdc-mainpanel-servicedroplist-triggerWrap]>tbody>tr>td>div[role=button]")
+        @drop_down = ElementWrapper.new browser.div(css: "table[id=sdc-mainpanel-servicedroplist-triggerWrap]>tbody>tr>td>div[role=button]")
       end
 
       def select selection
