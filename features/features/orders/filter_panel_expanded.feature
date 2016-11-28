@@ -20,7 +20,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then Left Panel: Select Awaiting Shipment
     Then Left Panel: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
-    Then Details: Expect Order ID equals Grid order ID
+    Then Details: Expect Order ID equals Grid Oder ID in row 1
     Then Grid: Expect Recipient is James Test
     Then Grid: Expect Company is Domestic Company
     Then Grid: Expect Address is 600 Front St Apt 220

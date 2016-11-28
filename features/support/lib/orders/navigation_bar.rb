@@ -345,7 +345,8 @@ module Stamps
       end
 
       def sign_out
-        20.times do
+        8.times do
+          sleep 1
           username.safe_click unless sign_out_link.present?
           username.hover
           element_helper.safe_click sign_out_link if sign_out_link.present?

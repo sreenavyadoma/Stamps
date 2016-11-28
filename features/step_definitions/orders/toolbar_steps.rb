@@ -20,10 +20,10 @@ end
 
 Then /^Save Shipping Costs Data$/ do
   logger.step "Save Shipping Costs Data"
-  test_data[:service_cost] = stamps.orders.details.service.cost
-  test_data[:insure_for_cost] = stamps.orders.details.insure_for.cost
-  test_data[:tracking_cost] = stamps.orders.details.tracking.cost
-  test_data[:total_ship_cost] = stamps.orders.details.footer.total_ship_cost
+  test_data[:service_cost] = stamps.orders.order_details.service.cost
+  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
 end
 
 Then /^Toolbar: Move to Shipped$/ do

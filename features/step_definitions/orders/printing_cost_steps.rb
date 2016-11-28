@@ -2,23 +2,23 @@
 Then /^Details: Expect Total label is (.*)$/ do |expectation|
   logger.step "Details: Expect Total Ship Cost exist and is in Bold letters"
   15.times do
-    break if stamps.orders.details.footer.label.text == expectation
+    break if stamps.orders.order_details.footer.label.text == expectation
   end
-  stamps.orders.details.footer.label.text.should eql expectation
+  stamps.orders.order_details.footer.label.text.should eql expectation
 end
 
 Then /^Details: Expect Ship Cost Total is correct$/ do
   logger.step "Details: Expect Ship Cost Total is correct"
-  test_data[:total_ship_cost] = stamps.orders.details.footer.total_ship_cost
-  test_data[:service_cost] = stamps.orders.details.service.cost
-  test_data[:tracking_cost] = stamps.orders.details.tracking.cost
-  test_data[:insure_for_cost] = stamps.orders.details.insure_for.cost
+  test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+  test_data[:service_cost] = stamps.orders.order_details.service.cost
+  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
   test_data[:total_ship_cost].to_f.round(2).should eql (test_data[:service_cost].to_f + test_data[:insure_for_cost].to_f + test_data[:tracking_cost].to_f).round(2)
 end
 
 Then /^Details: Expect Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
   logger.step "Details: Expect Ship Cost Total is $#{expectation}"
-  test_data[:total_ship_cost] = stamps.orders.details.footer.multiple_order_cost
+  test_data[:total_ship_cost] = stamps.orders.order_details.footer.multiple_order_cost
   test_data[:total_ship_cost].should eql expectation
 end
 
@@ -26,12 +26,12 @@ Then /^Expect Ship Cost equals Total amount$/ do
   logger.step "Expect Ship Cost equals Total amount"
   10.times {
     begin
-      break if stamps.orders.grid.ship_cost.data(test_data[:order_id]).eql? stamps.orders.details.footer.total_ship_cost
+      break if stamps.orders.grid.ship_cost.data(test_data[:order_id]).eql? stamps.orders.order_details.footer.total_ship_cost
     rescue
       #ignore
     end
   }
-  stamps.orders.grid.ship_cost.data(test_data[:order_id]).should eql stamps.orders.details.footer.total_ship_cost
+  stamps.orders.grid.ship_cost.data(test_data[:order_id]).should eql stamps.orders.order_details.footer.total_ship_cost
 end
 
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|

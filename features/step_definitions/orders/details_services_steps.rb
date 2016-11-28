@@ -289,13 +289,13 @@ end
 
 Then /^Details: Set Service to (.*)$/ do |service|
   logger.step "Details: Set Service to #{service}"
-  stamps.orders.details.service.select service
+  stamps.orders.order_details.service.select service
   5.times do
     step "Details: Blur out"
-    test_data[:service_cost] = stamps.orders.details.service.cost
+    test_data[:service_cost] = stamps.orders.order_details.service.cost
     logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
-    if stamps.orders.details.service.cost.to_f > 0
-      test_data[:service_cost] = stamps.orders.details.service.cost
+    if stamps.orders.order_details.service.cost.to_f > 0
+      test_data[:service_cost] = stamps.orders.order_details.service.cost
       logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
       break
     end
@@ -304,32 +304,32 @@ Then /^Details: Set Service to (.*)$/ do |service|
   end
   3.times do
     step "Details: Blur out"
-    test_data[:service_cost] = stamps.orders.details.service.cost
+    test_data[:service_cost] = stamps.orders.order_details.service.cost
     logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
     step "Details: Blur out"
     step "Details: Blur out"
-    test_data[:service_cost] = stamps.orders.details.service.cost
+    test_data[:service_cost] = stamps.orders.order_details.service.cost
     logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
     step "Details: Blur out"
     step "Details: Blur out"
-    test_data[:service_cost] = stamps.orders.details.service.cost
+    test_data[:service_cost] = stamps.orders.order_details.service.cost
     logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
     step "Details: Blur out"
     step "Details: Blur out"
     sleep 1
-    test_data[:service_cost] = stamps.orders.details.service.cost
+    test_data[:service_cost] = stamps.orders.order_details.service.cost
     logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
   end
   step "Details: Save Total Ship Cost"
-  test_data[:service_cost] = stamps.orders.details.service.cost
+  test_data[:service_cost] = stamps.orders.order_details.service.cost
   logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
 end
 
 Then /^Details: Expect Service is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect Service is #{expectation}"
-  expectation = stamps.orders.details.service.abbrev_service_name(expectation)
+  expectation = stamps.orders.order_details.service.abbrev_service_name(expectation)
   10.times do
-    break if stamps.orders.details.service.text_box.text.include? expectation
+    break if stamps.orders.order_details.service.text_box.text.include? expectation
   end
-  stamps.orders.details.service.text_box.text.should include expectation
+  stamps.orders.order_details.service.text_box.text.should include expectation
 end

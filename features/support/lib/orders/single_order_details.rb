@@ -1,7 +1,6 @@
 module Stamps
   module Orders
     module Details
-
       class ShipToTextArea < TextboxElement
         def full_address
           50.times do
@@ -1600,40 +1599,41 @@ module Stamps
         end
       end
 
-      class DetailsToolbar < Browser::Modal
-        class ToolbarMenu < Browser::Modal
-          attr_reader :drop_down
-          def initialize param
-            super param
-            @drop_down = ElementWrapper.new (browser.spans(css: "span[class*='sdc-icon-more']").first)
-          end
+      class ToolbarMenu < Browser::Modal
+        attr_reader :drop_down
+        def initialize param
+          super param
+          @drop_down = ElementWrapper.new (browser.spans(css: "span[class*='sdc-icon-more']").first)
+        end
 
-          def collapse
-            selection = ElementWrapper.new browser.span(text: "Collapse Panel")
-            dd = drop_down
-            collapsed_details = DetailsCollapsible.new param
-            10.times do
-              dd.safe_click unless selection.present?
-              selection.safe_click
-              break if collapsed_details.present?
-            end
+        def collapse
+          selection = ElementWrapper.new browser.span(text: "Collapse Panel")
+          dd = drop_down
+          collapsed_details = DetailsCollapsible.new param
+          10.times do
+            dd.safe_click unless selection.present?
+            selection.safe_click
+            break if collapsed_details.present?
           end
+        end
 
-          def tooltip
-            btn = drop_down
-            tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
+        def tooltip
+          btn = drop_down
+          tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
+          btn.element.hover
+          btn.element.hover
+          15.times do
             btn.element.hover
-            btn.element.hover
-            15.times do
-              btn.element.hover
-              sleep 1
-              if tooltip_element.present?
-                logger.info tooltip_element.text
-                return tooltip_element.text
-              end
+            sleep 1
+            if tooltip_element.present?
+              logger.info tooltip_element.text
+              return tooltip_element.text
             end
           end
         end
+      end
+
+      class DetailsToolbar < Browser::Modal
 
         def menu
           ToolbarMenu.new param
@@ -1650,7 +1650,6 @@ module Stamps
               #ignroe
             end
           }
-
           "Unable to obtain Order ID from Single Order Details Form".should eql ""
         end
       end

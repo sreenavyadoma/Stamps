@@ -34,11 +34,11 @@ Then /^Verify Local Rating$/ do |table|
     expected_total_amount = element["total"]
 
     5.times do
-      stamps.orders.details.blur_out
+      stamps.orders.order_details.blur_out
       sleep 1
-      total_ship_cost = stamps.orders.details.footer.total_ship_cost
-      stamps.orders.details.blur_out
-      stamps.orders.details.blur_out
+      total_ship_cost = stamps.orders.order_details.footer.total_ship_cost
+      stamps.orders.order_details.blur_out
+      stamps.orders.order_details.blur_out
       sleep 1
       break if total_ship_cost.to_f == expected_total_amount.to_f
     end
@@ -47,7 +47,7 @@ Then /^Verify Local Rating$/ do |table|
     logger.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
     logger.step "  --------------------------------------------------------------------------- "
 
-    actual = stamps.orders.details.footer.total_ship_cost
+    actual = stamps.orders.order_details.footer.total_ship_cost
     actual.should eql expected_total_amount
 
     "".should eql "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |" if actual != expected_total_amount

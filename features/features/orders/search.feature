@@ -56,4 +56,3 @@ Feature:  Basic Search
     Then Left Panel: Search Results should not be present
     Then Sign out
 
-

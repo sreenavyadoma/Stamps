@@ -86,6 +86,16 @@ Cucumber::Rake::Task.new(:search_orders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bvt_shipstation_search) do |t|
+  t.profile = 'bvt_shipstation_search'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:search_orders) do |t|
+  t.profile = 'search_orders'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:generate_username) do |t|
   t.profile = 'generate_username'
   t.cucumber_opts = "-p cuke_reports"
