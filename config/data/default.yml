@@ -20,6 +20,9 @@ url_prefix:
 
 orders_credentials:
   stg:
+    search_orders:
+      usr: stgo0e9lb9fpv
+      pw: pass111
     bvt_shipstation_search:
       usr: stgxz0386tftl1
       pw: pass111
@@ -366,6 +369,9 @@ orders_credentials:
       usr: c1k4p8bga4cmg
       pw: pass111
   cc:
+    search_orders:
+      usr: ccec1bdx3gees
+      pw: pass111
     bvt_shipstation_search:
       usr: cchw3qhqk
       pw: pass111
@@ -718,6 +724,9 @@ orders_credentials:
       usr: p8rk9lk7e
       pw: pass111
   sc:
+    search_orders:
+      usr: scu9e65xpc
+      pw: pass111
     bvt_shipstation_search:
       usr: scj5dsiahz
       pw: pass111
