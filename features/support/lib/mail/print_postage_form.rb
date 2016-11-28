@@ -189,19 +189,16 @@ module Stamps
     end
 
     class MailServiceDropList < Browser::Modal
+      attr_reader :text_box, :drop_down
 
-      def text_box
-        TextboxElement.new browser.text_field name: "servicePackage"
-      end
-
-      def drop_down
-        ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[5]
+      def initialize param
+        super param
+        @text_box = TextboxElement.new browser.text_field(name: "servicePackage")
+        @drop_down = ElementWrapper.new browser.div(css "table[id=sdc-mainpanel-servicedroplist-triggerWrap]>tbody>tr>td>div[role=button]")
       end
 
       def select selection
         logger.info "Select Service #{selection}"
-        box = text_box
-        button = drop_down
         if selection == "First-Class Mail Letter"
           selection_label = ElementWrapper.new browser.tr(css: "tr[data-qtip*='First-Class Mail Envelope']")
         else
@@ -209,11 +206,11 @@ module Stamps
         end
         10.times {
           begin
+            selected_service = text_box.text
             break if selected_service.include? selection
-            button.safe_click #unless selection_label.present?
+            drop_down.safe_click #unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
-            selected_service = box.text
             logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
           rescue
             #ignore
