@@ -345,11 +345,12 @@ module Stamps
       end
 
       def sign_out
-        8.times do
+        5.times do
           sleep 1
           username.safe_click unless sign_out_link.present?
           username.hover
           element_helper.safe_click sign_out_link if sign_out_link.present?
+          sleep 1
           return if browser.url.include? "SignIn"
         end
       end
