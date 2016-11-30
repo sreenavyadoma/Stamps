@@ -24,8 +24,15 @@ module Stamps
     end
 
     class ImportOrders < Browser::Modal
+      attr_reader :title
+
+      def initialize param
+        super param
+        @title = ElementWrapper.new browser.div(text: "Import Orders")
+      end
+
       def present?
-        browser.div(text: "Import Orders").present?
+        title.present?
       end
 
       def filename_label

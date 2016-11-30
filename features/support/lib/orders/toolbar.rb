@@ -739,8 +739,8 @@ module Stamps
 
         def import
           5.times do
-            import_button.safe_click
             return import_orders_modal if import_orders_modal.present?
+            import_button.safe_click
           end
         end
 
