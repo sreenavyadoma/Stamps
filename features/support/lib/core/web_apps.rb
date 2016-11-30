@@ -30,7 +30,7 @@ module Stamps
         when /cc/
           url = "http://printext.qacc.stamps.com/#{app_name}/"
         when /sc/
-          url = "http://printext.qasc.stamps.com/#{app_name}/"
+          url = "http://printext.qasc.stamps.com/#{app_name}/default2.aspx" #http://printext.qasc.stamps.com/webpostage/default2.aspx OLD:http://printext.qasc.stamps.com/#{app_name}/
         when /stg/
           url = "https://print.testing.stamps.com/#{app_name}/"
         when /rating/
