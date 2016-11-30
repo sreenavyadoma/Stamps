@@ -206,7 +206,7 @@ module Stamps
         end
         10.times {
           begin
-            selected_service = text_box.text
+            selected_service = text_box.safe_text
             break if selected_service.include? selection
             drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
