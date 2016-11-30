@@ -293,13 +293,11 @@ module Stamps
 
         #return @manage_shipping_address if @manage_shipping_address.present?
 
-        ship_from_dropdown = self.drop_down
-        ship_from_textbox = self.text_box
-        ship_from_dropdown.safe_click
-        ship_from_default_selection_field = (browser.divs css: "div[data-qtip*='Return To Address']")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
+        drop_down.safe_click
+        default_selection_field = (browser.divs css: "div[data-qtip*='Return To Address']")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
 
         if selection.downcase == "default"
-          ship_from_selection_field = ship_from_default_selection_field
+          ship_from_selection_field = default_selection_field
         elsif selection.downcase.include? "manage shipping"
           ship_from_selection_field = browser.div(text: "Manage Mailing Addresses...")
         else
@@ -312,7 +310,7 @@ module Stamps
         if selection.downcase.include? "manage shipping"
           10.times{
             begin
-              ship_from_dropdown.safe_click unless selection_label.present?
+              drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
               return @manage_shipping_address if @manage_shipping_address.present?
@@ -323,11 +321,11 @@ module Stamps
           }
         else
           10.times{
-            ship_from_dropdown.safe_click unless selection_label.present?
+            drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
-            selection_text = selection_label.text
+            selection_text = selection_label.safe_text
             selection_label.safe_click
-            text_val = ship_from_textbox.text
+            text_val = text_box.text
             begin
               break if text_val.include? selection_text
             end unless selection_text.nil? || text_val.nil?

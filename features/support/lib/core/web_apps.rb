@@ -15,9 +15,9 @@ module Stamps
 
       case page
         when :orders
-          app_name ="Orders"
+          app_name ="orders"
         when :mail
-          app_name ="Webpostage"
+          app_name ="webpostage"
         else
           raise "#{page} is not a valid page."
       end
@@ -30,7 +30,8 @@ module Stamps
         when /cc/
           url = "http://printext.qacc.stamps.com/#{app_name}/"
         when /sc/
-          url = "http://printext.qasc.stamps.com/#{app_name}/default2.aspx" #http://printext.qasc.stamps.com/webpostage/default2.aspx OLD:http://printext.qasc.stamps.com/#{app_name}/
+          url = "http://printext.qasc.stamps.com/#{app_name}/"
+          url = "http://printext.qasc.stamps.com/#{app_name}/default2.aspx" if ENV['WEB_APP'].downcase == 'mail'
         when /stg/
           url = "https://print.testing.stamps.com/#{app_name}/"
         when /rating/
