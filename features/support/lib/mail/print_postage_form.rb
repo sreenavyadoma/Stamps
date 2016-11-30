@@ -208,7 +208,7 @@ module Stamps
           begin
             selected_service = text_box.text
             break if selected_service.include? selection
-            drop_down.safe_click #unless selection_label.present?
+            drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
             logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"

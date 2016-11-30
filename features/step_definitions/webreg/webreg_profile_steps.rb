@@ -1,8 +1,8 @@
 
 Then /^WebReg Profile: Load Registration Page$/ do
   logger.step "WebReg Profile: Load Registration Page"
-  status = webreg.visit
-  status.should eql "Success"
+  webreg.visit
+  browser.should be_truthy
 end
 
 Then /^WebReg Profile:  Continue to Mailing Information Page$/ do

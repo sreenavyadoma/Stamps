@@ -899,7 +899,7 @@ module Stamps
       end
 
       def present?
-        (browser.h1 text: "Please enter your mailing information").present?
+        browser.h1(text: "Please enter your mailing information").present?
       end
 
       def submit_correct_errors webreg_data
