@@ -66,7 +66,7 @@ module Stamps
       end
 
       def select_csv_file
-        button = ElementWrapper.new browser.text_field(id: "files-button-fileInputEl")
+        button = ElementWrapper.new browser.span(text: "Select CSV File")
         open_file = Windows::OpenFile.new
         10.times do
           button.safe_click
