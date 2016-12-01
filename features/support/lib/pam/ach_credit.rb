@@ -5,8 +5,8 @@ module Stamps
 
       def initialize param
         super param
-        @ok_button ||= ElementWrapper.new browser.a(css: "a[href*=AccountACHCredit]")
-        @title ||= ElementWrapper.new browser.td(text: "ACH Credit Error")
+        @ok_button = ElementWrapper.new browser.a(css: "a[href*=AccountACHCredit]")
+        @title = ElementWrapper.new browser.td(text: "ACH Credit Error")
       end
 
       def present?
@@ -27,8 +27,8 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.td(text: "ACH Credit Confirmation")
-        @ok_button ||= ElementWrapper.new browser.a(css: "a[href^=Profile]")
+        @title = ElementWrapper.new browser.td(text: "ACH Credit Confirmation")
+        @ok_button = ElementWrapper.new browser.a(css: "a[href^=Profile]")
       end
 
       def present?
@@ -49,7 +49,7 @@ module Stamps
 
       def initialize param
         super param
-        @title ||= ElementWrapper.new browser.td(text: "ACH Purchase Verification")
+        @title = ElementWrapper.new browser.td(text: "ACH Purchase Verification")
         @confirmation = ACHCreditConfirmation.new param
         @ach_error = ACHCreditError.new param
         @yes_button = ElementWrapper.new browser.input(name: "YES")
@@ -97,9 +97,9 @@ module Stamps
 
       def initialize param
         super param
-        @dollar_amount ||= TextBoxElement.new browser.text_field(name: "Amount")
-        @cents_amount ||= TextBoxElement.new browser.text_field(name: "AmountFraction")
-        @comments ||= TextBoxElement.new browser.text_field(name: "comments")
+        @dollar_amount = TextboxElement.new browser.text_field(name: "Amount")
+        @cents_amount = TextboxElement.new browser.text_field(name: "AmountFraction")
+        @comments = TextboxElement.new browser.text_field(name: "comments")
         @purchase_verification = ACHPurchaseVerification.new param
         @submit_button = ElementWrapper.new browser.input(:value => "Submit")
       end

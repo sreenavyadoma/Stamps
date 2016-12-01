@@ -34,7 +34,7 @@ module Stamps
         @ship_from ||= MailShipFrom.new param
         @ship_to ||= Stamps::Mail::ShipTo.new param
         @customs ||= PrintPostageCustoms.new param
-        @extra_services ||= ElementWrapper.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
+        @extra_services = ElementWrapper.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
       end
 
       def open_extra_services

@@ -19,9 +19,9 @@ module Stamps
       def initialize param
         super param
         @usps_approval ||= USPSCheckbox.new param
-        @new_meter_limit ||= TextBoxElement.new browser.text_field(name: "resetAmt")
-        @current_meter ||= ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
-        @maximum_meter ||= ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
+        @new_meter_limit = TextboxElement.new browser.text_field(name: "resetAmt")
+        @current_meter = ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
+        @maximum_meter = ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
       end
 
       def present?

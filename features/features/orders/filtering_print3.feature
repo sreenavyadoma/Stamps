@@ -29,8 +29,8 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Print: Set Printer to "factory"
     Then Print: Print
 
-    Then Filter: Expect all printed Order IDs not in Awaiting Shipment tab
-    Then Filter: Expect all printed Order IDs are in Shipped tab
+    Then Left Panel: Expect all printed Order IDs not in Awaiting Shipment tab
+    Then Left Panel: Expect all printed Order IDs are in Shipped tab
     Then Sign out
 
     #todo -rob

@@ -1,8 +1,8 @@
 
 webreg:
   dev_usr_dir: C:\watir-webdriver
-  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\webreg
-  webreg_usr_list_dir: \\jenkins01\Hudson\jenkins\webreg
+  jenkins_usr_dir: \\jenkins01\Hudson\test_data\jenkins\webreg
+  webreg_usr_list_dir: \\jenkins01\Hudson\test_data\jenkins\webreg
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty
@@ -20,6 +20,21 @@ url_prefix:
 
 orders_credentials:
   stg:
+    bvt_shipstation_import_csv:
+      usr: stgp6389urwj4
+      pw: pass111
+    search_orders:
+      usr: stgo0e9lb9fpv
+      pw: pass111
+    bvt_shipstation_search:
+      usr: stgxz0386tftl1
+      pw: pass111
+    local_rating3:
+      usr: stgi0jkgbdy3xs
+      pw: pass111
+    search_orders:
+      usr: stgi3eicvj8d7b
+      pw: pass111
     details_edit_order:
       usr: i992vss4lipq
       pw: pass111
@@ -27,7 +42,7 @@ orders_credentials:
       usr: mwn2ghor
       pw: pass111
     grid_column_order:
-      usr: scscscscscscscscsc
+      usr: stgsj7lchcx30q
       pw: pass111
     details_flat_rate_no_weight_international:
       usr: qksd97py
@@ -357,6 +372,21 @@ orders_credentials:
       usr: c1k4p8bga4cmg
       pw: pass111
   cc:
+    bvt_shipstation_import_csv:
+      usr: xxxxxxxxx
+      pw: pass111
+    search_orders:
+      usr: ccec1bdx3gees
+      pw: pass111
+    bvt_shipstation_search:
+      usr: cchw3qhqk
+      pw: pass111
+    local_rating3:
+      usr: xxxxx
+      pw: pass111
+    search_orders:
+      usr: xxxxxxxxxxxx
+      pw: pass111
     details_edit_order:
       usr: txdq1khl
       pw: pass111
@@ -700,6 +730,21 @@ orders_credentials:
       usr: p8rk9lk7e
       pw: pass111
   sc:
+    bvt_shipstation_import_csv:
+      usr: xxxxxxxxx
+      pw: pass111
+    search_orders:
+      usr: scu9e65xpc
+      pw: pass111
+    bvt_shipstation_search:
+      usr: scj5dsiahz
+      pw: pass111
+    local_rating3:
+      usr: xxxxx
+      pw: pass111
+    search_orders:
+      usr: xxxxxxxxxxxx
+      pw: pass111
     details_edit_order:
       usr: k042sbaxfh
       pw: pass111
@@ -1301,7 +1346,7 @@ mail_credentials:
       usr: f9ednzybw
       pw: pass111
     mail_print_sample_shipping_label_5x8_pm_large_package:
-      usr: r8psmmplsu1
+      usr: stgzom0awk67
       pw: pass111
     mail_print_sample_shipping_label_5x8_pm_lfr_envelope:
       usr: djz4dzh0fo57
@@ -1998,7 +2043,7 @@ mail_credentials:
       usr: ou49h2i
       pw: pass111
     mail_print_sample_shipping_label_5x8_pm_large_package:
-      usr: x7c3bkw7vkov
+      usr: ccfurzdk6coy
       pw: pass111
     mail_print_sample_shipping_label_5x8_pm_lfr_envelope:
       usr: ecdir63c

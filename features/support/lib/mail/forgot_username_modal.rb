@@ -30,7 +30,7 @@ module Stamps
       end
 
       def email
-        TextBoxElement.new (browser.inputs css: "input[class*='x-form-field x-form-text']").last
+        TextboxElement.new (browser.inputs css: "input[class*='x-form-field x-form-text']").last
       end
 
       def continue

@@ -6,8 +6,8 @@ module Stamps
 
       def initialize param
         super param
-        @window_title ||= ElementWrapper.new (browser.span text: "Manage Mailing Addresses")
-        @close_btn ||= ElementWrapper.new browser.img(css: "img[class*=close]")
+        @window_title = ElementWrapper.new (browser.span text: "Manage Mailing Addresses")
+        @close_btn = ElementWrapper.new browser.img(css: "img[class*=close]")
       end
 
       def close

@@ -20,7 +20,7 @@ module Stamps
         class ProductWeightUnit < Browser::Modal
           def select selection
             drop_down = ElementWrapper.new (browser.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
-            textbox = TextBoxElement.new browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
+            textbox = TextboxElement.new browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
             selection_field = ElementWrapper.new browser.li(text: "#{selection}")
             10.times do
               drop_down.safe_click unless selection_field.present?
@@ -43,11 +43,11 @@ module Stamps
         end
 
         def api_user_key
-          TextBoxElement.new browser.text_field(css: "input[name^=textfield-][name$=-inputEl][type=password]")
+          TextboxElement.new browser.text_field(css: "input[name^=textfield-][name$=-inputEl][type=password]")
         end
 
         def store_url
-          TextBoxElement.new (browser.text_fields(css: "input[name^=textfield-][name$=-inputEl][type=text]").last)
+          TextboxElement.new (browser.text_fields(css: "input[name^=textfield-][name$=-inputEl][type=text]").last)
         end
 
         def weight_unit

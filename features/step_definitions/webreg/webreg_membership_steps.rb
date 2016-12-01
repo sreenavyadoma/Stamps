@@ -469,7 +469,12 @@ end
 
 Then /^WebReg Membership: Submit$/ do
   logger.step "WebReg Membership: Submit"
-  webreg.profile.membership.submit_correct_errors @webreg_data
+  begin
+    webreg.profile.membership.submit_correct_errors @webreg_data
+  rescue Exception => e
+    logger.error e.message
+    logger.error e.backtrace.join("\n")
+  end
 end
 
 Then /^WebReg Membership: Submit and correct errors$/ do

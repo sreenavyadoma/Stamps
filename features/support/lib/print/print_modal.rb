@@ -106,7 +106,7 @@ module Stamps
 
       class PaperTray < Browser::Modal
         def text_box
-          TextBoxElement.new browser.text_field css: "input[id*=combobox]"
+          TextboxElement.new browser.text_field css: "input[id*=combobox]"
         end
 
         def drop_down

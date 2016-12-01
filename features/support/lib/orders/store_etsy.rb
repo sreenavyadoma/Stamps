@@ -26,7 +26,7 @@ module Stamps
         end
 
         def etsy_username
-          TextBoxElement.new (browser.text_fields(css: "input[type=text][role=textbox][data-ref=inputEl]").last)
+          TextboxElement.new (browser.text_fields(css: "input[type=text][role=textbox][data-ref=inputEl]").last)
         end
 
         def find_my_shops
@@ -138,11 +138,11 @@ module Stamps
         end
 
         def username
-          TextBoxElement.new browser.text_field(id: 'username-existing')
+          TextboxElement.new browser.text_field(id: 'username-existing')
         end
 
         def password
-          TextBoxElement.new browser.text_field(id: 'password-existing')
+          TextboxElement.new browser.text_field(id: 'password-existing')
         end
 
         def sign_in

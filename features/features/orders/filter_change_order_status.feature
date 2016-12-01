@@ -6,11 +6,11 @@ Feature: Add Canceled Filter Panel - and Allow User to Manually Change Order Sta
 
   @filter_change_order_status
   Scenario: Add Canceled Filter Panel - and Allow User to Manually Change Order Status
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     Then Pause for 3 seconds
-    Then Filter: Select Cancelled
+    Then Left Panel: Select Cancelled
     Then Pause for 3 seconds
-    Then Filter: Select Awaiting Shipment
+    Then Left Panel: Select Awaiting Shipment
     Then Pause for 3 seconds
 
     Then Toolbar: Add
@@ -18,24 +18,24 @@ Feature: Add Canceled Filter Panel - and Allow User to Manually Change Order Sta
 
     Then Toolbar: Move to Shipped
     Then Pause for 3 seconds
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     Then Pause for 3 seconds
-    Then Filter: Expect order moved to Shipped
+    Then Left Panel: Expect order moved to Shipped
 
     Then Pause for 3 seconds
     Then Toolbar: Move to Canceled
     Then Pause for 3 seconds
-    Then Filter: Select Cancelled
+    Then Left Panel: Select Cancelled
     Then Pause for 3 seconds
-    Then Filter: Expect order moved to Canceled
+    Then Left Panel: Expect order moved to Canceled
 
     Then Pause for 3 seconds
-    Then Filter: Select Cancelled
+    Then Left Panel: Select Cancelled
     Then Pause for 3 seconds
-    Then Filter: Move order to Awaiting Shipment
+    Then Left Panel: Move order to Awaiting Shipment
     Then Pause for 3 seconds
-    Then Filter: Select Awaiting Shipment
+    Then Left Panel: Select Awaiting Shipment
     Then Pause for 3 seconds
-    Then Filter: Expect order moved to Awaiting Shipment
+    Then Left Panel: Expect order moved to Awaiting Shipment
 
     Then Sign out

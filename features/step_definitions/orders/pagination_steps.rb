@@ -19,7 +19,7 @@ end
 
 Then /^Toolbar: Expect number of orders on page is correct$/ do
   logger.step "Toolbar: Expect number of orders on page is correct"
-  stamps.orders.filter.awaiting_shipment
+  stamps.orders.left_panel.awaiting_shipment
   sleep 1
   stamps.orders.checkbox.check_all
   sleep 1

@@ -8,7 +8,7 @@ module Stamps
       def initialize param
         super param
         @quantity ||= Quantity.new param
-        @reference_number ||= TextBoxElement.new browser.text_field name: "referenceNumber"
+        @reference_number = TextboxElement.new browser.text_field name: "referenceNumber"
         @cost_code ||= CostCode.new param
       end
 
@@ -78,8 +78,8 @@ module Stamps
 
       def initialize param
         super param
-        @text_box ||= TextBoxElement.new browser.text_field name: "nsService"
-        @drop_down ||= ElementWrapper.new browser.div css:'table[id^=netstampsservicedroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]'
+        @text_box = TextboxElement.new browser.text_field name: "nsService"
+        @drop_down = ElementWrapper.new browser.div css:'table[id^=netstampsservicedroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]'
       end
 
       def select selection
@@ -120,7 +120,7 @@ module Stamps
         super param
         @specify_postage ||= SpecifyPostageAmount.new param
         @calculate_postage||= CalculatePostageAmount.new param
-        @serial ||= TextBoxElement.new browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")
+        @serial = TextboxElement.new browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")
         @calculate_service_drop_list||= MailServiceDropList.new param
         @specify_service_drop_list ||= SpecifyServiceDropList.new param
         @form_view ||= StampsFormView.new param

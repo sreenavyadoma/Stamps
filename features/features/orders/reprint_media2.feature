@@ -26,7 +26,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then Print: Set Printing On "Roll - 4" x 6" Shipping Label"
     Then Print: Print
 
-    Then Filter: Select Shipped
+    Then Left Panel: Select Shipped
     Then Grid: Check Saved Order ID
     Then Print: Open Reprint Modal
     Then RePrint: Reprint

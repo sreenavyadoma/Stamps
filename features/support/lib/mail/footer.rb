@@ -19,12 +19,12 @@ module Stamps
 
       def initialize param
         super param
-        @total ||= ElementWrapper.new browser.label id: "sdc-printpanel-totalcostlabel"
+        @total = ElementWrapper.new browser.label(id: "sdc-printpanel-totalcostlabel")
         @print_postage_modal ||= PrintPostageModal.new param
         @confirm_window = ConfirmPrint.new param
         @windows_print = Windows::PrintWindow.new
-        @print_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printpostagebtn]"
-        @sample_button ||= ElementWrapper.new browser.a css: "a[class*=sdc-printpanel-printsamplebtn]"
+        @print_button = ElementWrapper.new browser.a(css: "a[class*=sdc-printpanel-printpostagebtn]")
+        @sample_button = ElementWrapper.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
         @printing_problem ||= PrintingProblem.new param
       end
 

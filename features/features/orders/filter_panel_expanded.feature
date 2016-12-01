@@ -7,7 +7,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
    @filters
   Scenario: User Changes filters
 
-    When Filter: Expect system displays expanded filters panel
+    When Left Panel: Expect system displays expanded filters panel
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -17,10 +17,10 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
 
-    Then Filter: Select Awaiting Shipment
-    Then Filter: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
+    Then Left Panel: Select Awaiting Shipment
+    Then Left Panel: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
-    Then Details: Expect Order ID equals Grid order ID
+    Then Details: Expect Order ID equals Grid Oder ID in row 1
     Then Grid: Expect Recipient is James Test
     Then Grid: Expect Company is Domestic Company
     Then Grid: Expect Address is 600 Front St Apt 220
@@ -35,8 +35,8 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then Print: Set Printer to "factory"
     Then Print: Print
 
-    Then Filter: Select Shipped
-    Then Filter: Expect system selects Shipped Filter Panel - and deselects the previous filter
+    Then Left Panel: Select Shipped
+    Then Left Panel: Expect system selects Shipped Filter Panel - and deselects the previous filter
 
     Then Grid: Expect Recipient is James Test
     Then Grid: Expect Company is Domestic Company
@@ -49,7 +49,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
 
 
     Then Toolbar: Add
-    Then Filter: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
+    Then Left Panel: Expect system selects Awaiting Shipment Filter Panel - and deselects the previous filter
 
 
     Then Sign out

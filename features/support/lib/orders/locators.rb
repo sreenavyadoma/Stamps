@@ -16,32 +16,10 @@ module Stamps
         end
       end
 
-      module FilterPanel
-        class << self
-        end
-      end
-
       module NavBar
         class << self
           def username
             {id: "userNameText"}
-          end
-        end
-      end
-
-      module ToolBar
-        class << self
-
-          def move
-            {text: "Move"}
-          end
-
-          def confirmation_modal_move_label
-            {css: "span[class*='x-btn-inner-primary-blue-medium']"}
-          end
-
-          def confirmation_modal_cancel_label
-            {text: "Cancel"}
           end
         end
       end

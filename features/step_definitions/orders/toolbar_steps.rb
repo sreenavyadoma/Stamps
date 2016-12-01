@@ -8,7 +8,7 @@ Then /^Toolbar: Add$/ do
     step "Save Shipping Costs Data"
     logger.step "Saved Order ID #{test_data[:order_id]}"
     test_data[:order_id] = test_data[:order_id]
-    test_data[:awaiting_shipment_count] = stamps.orders.filter.awaiting_shipment_count
+    test_data[:awaiting_shipment_count] = stamps.orders.left_panel.awaiting_shipment_count
     @item_count = 0
     @index = 0
   rescue Exception => e
@@ -20,10 +20,10 @@ end
 
 Then /^Save Shipping Costs Data$/ do
   logger.step "Save Shipping Costs Data"
-  test_data[:service_cost] = stamps.orders.details.service.cost
-  test_data[:insure_for_cost] = stamps.orders.details.insure_for.cost
-  test_data[:tracking_cost] = stamps.orders.details.tracking.cost
-  test_data[:total_ship_cost] = stamps.orders.details.footer.total_ship_cost
+  test_data[:service_cost] = stamps.orders.order_details.service.cost
+  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
 end
 
 Then /^Toolbar: Move to Shipped$/ do

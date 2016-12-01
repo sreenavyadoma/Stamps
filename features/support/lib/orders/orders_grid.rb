@@ -1005,7 +1005,7 @@ module Stamps
         def initialize param
           super param
 
-          @anchor_element ||= ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
+          @anchor_element = ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
 
           @column ||= GridColumns.new param
 

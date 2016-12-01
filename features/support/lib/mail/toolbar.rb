@@ -5,11 +5,11 @@ module Stamps
 
       def initialize param
         super param
-        @settings ||= ElementWrapper.new (browser.span css: "span[style*='settings.png']")
-        @reset ||= ElementWrapper.new (browser.span css: "span[style*='reset.png']")
-        @help ||= ElementWrapper.new (browser.span css: "span[style*='help.png']")
-        @feedback ||= ElementWrapper.new (browser.span css: "span[style*='feedback.png']")
-        @classic ||= ElementWrapper.new (browser.span css: "span[style*='classic.png']")
+        @settings = ElementWrapper.new (browser.span css: "span[style*='settings.png']")
+        @reset = ElementWrapper.new (browser.span css: "span[style*='reset.png']")
+        @help = ElementWrapper.new (browser.span css: "span[style*='help.png']")
+        @feedback = ElementWrapper.new (browser.span css: "span[style*='feedback.png']")
+        @classic = ElementWrapper.new (browser.span css: "span[style*='classic.png']")
       end
 
       def present?

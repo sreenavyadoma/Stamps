@@ -5,7 +5,7 @@ module Stamps
         class Weight < Browser::Modal
           class Pounds <  Browser::Modal
             def text_box
-              TextBoxElement.new (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
+              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
             end
 
             def set value
@@ -31,7 +31,7 @@ module Stamps
 
           class Ounces <  Browser::Modal
             def text_box
-              TextBoxElement.new (browser.text_field name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
+              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
             end
 
             def set value
@@ -94,7 +94,7 @@ module Stamps
         class Dimensions < Browser::Modal
           class Length <  Browser::Modal
             def text_box
-              TextBoxElement.new (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
             end
 
             def set value
@@ -135,7 +135,7 @@ module Stamps
 
           class Width <  Browser::Modal
             def text_box
-              TextBoxElement.new (browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
+              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
             end
 
             def set value
@@ -176,7 +176,7 @@ module Stamps
 
           class Height <  Browser::Modal
             def text_box
-              TextBoxElement.new (browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
+              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
             end
 
             def set value
@@ -358,7 +358,7 @@ module Stamps
 
         def initialize param
           super param
-          @text_box ||= TextBoxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
+          @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
           @drop_down = ElementWrapper.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
@@ -402,7 +402,7 @@ module Stamps
 
         def initialize param
           super param
-          @text_box = TextBoxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
+          @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
           @drop_down = ElementWrapper.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
@@ -518,7 +518,7 @@ module Stamps
 
         def initialize param
           super param
-          @text_box = TextBoxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
+          @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
           @drop_down = ElementWrapper.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 

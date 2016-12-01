@@ -10,7 +10,7 @@ module Stamps
       end
 
       def message
-        box = TextBoxElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+        box = TextboxElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         box.text
       end
 
@@ -24,8 +24,15 @@ module Stamps
     end
 
     class ImportOrders < Browser::Modal
+      attr_reader :title
+
+      def initialize param
+        super param
+        @title = ElementWrapper.new browser.div(text: "Import Orders")
+      end
+
       def present?
-        browser.div(text: "Import Orders").present?
+        title.present?
       end
 
       def filename_label
@@ -33,7 +40,7 @@ module Stamps
       end
 
       def text_box
-        TextBoxElement.new browser.text_field(id: "files-inputEl")
+        TextboxElement.new browser.text_field(id: "files-inputEl")
       end
 
       def import
@@ -66,7 +73,7 @@ module Stamps
       end
 
       def select_csv_file
-        button = ElementWrapper.new browser.text_field(id: "files-button-fileInputEl")
+        button = ElementWrapper.new browser.span(text: "Select CSV File")
         open_file = Windows::OpenFile.new
         10.times do
           button.safe_click

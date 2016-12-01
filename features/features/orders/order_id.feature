@@ -8,5 +8,5 @@ Feature: Saved Order ID Created
   Scenario:  Saved Order ID Created
     Then Toolbar: Add
     Then Details: Expect Order ID is truthy
-    Then Details: Expect Order ID equals Grid order ID
+    Then Details: Expect Order ID equals Grid Oder ID in row 1
     Then Sign out

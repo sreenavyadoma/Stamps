@@ -31,23 +31,23 @@ module Stamps
       end
 
       def username
-        TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
+        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
       end
 
       def first_name
-        TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
       end
 
       def last_name
-        TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
       end
 
       def phone
-        TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
+        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
       end
 
       def email
-        TextBoxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
+        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
       end
 
       def user_5_2_or_lower
