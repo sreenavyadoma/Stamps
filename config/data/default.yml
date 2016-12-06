@@ -184,7 +184,7 @@ orders_credentials:
       usr: l0ub8l45a
       pw: pass111
     bvt_shipping_address_management:
-      usr: ccje975fmb
+      usr: stgimsq0r1luvz
       pw: pass111
     address_cleansing:
       usr: tc7lbuuldm7gud
@@ -3151,6 +3151,26 @@ mail_credentials:
     mail_print_stamps_wn_series_specify:
       usr: scctk0sju9
       pw: pass111
+
+redesign_mail_services:
+  Stamps: 0
+  Shipping Label - 8 x 11 Paper:  1
+  Shipping Label - SDC-1200:  2
+  Shipping Label - 5 x 8: 3
+  Envelope 10: 4
+  Envelope 9: 5
+  Envelope A9: 6
+  Envelope 6: 7
+  Envelope A2: 8
+  Envelope 7: 9
+  Envelope 11: 10
+  Envelope 12: 11
+  Certified Mail Label - SDC-3610:  12
+  Certified Mail Label - SDC-3710:  13
+  Certified Mail Label - SDC-3910:  14
+  Certified Mail Label - SDC-3810:  15
+  Roll - 4 x 6: 16
+  Roll - 4 1/8 x 6 1/4: 17
 
 mail_services:
   Stamps: sdc-printmediadroplist-ns

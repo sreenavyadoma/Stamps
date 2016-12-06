@@ -65,8 +65,14 @@ module Stamps
       end
 
       def select selection
-        @mail_services ||= data_for(:mail_services, {})
-        selection_label = ElementWrapper.new browser.div(id: @mail_services[selection])
+        if ENV['URL'].downcase.include?('sc') && ENV['WEB_APP'].downcase.include?('mail')
+          @mail_services ||= data_for(:redesign_mail_services, {})
+          selection_label = ElementWrapper.new browser.li(css: "li[data-recordindex='#{@mail_services[selection]}']")
+        else
+          @mail_services ||= data_for(:mail_services, {})
+          selection_label = ElementWrapper.new browser.div(id: @mail_services[selection])
+        end
+
         25.times do
           begin
             drop_down.safe_click unless selection_label.present?
@@ -126,16 +132,20 @@ module Stamps
     end
 
     class Pounds < Browser::Modal
-      def text_box
-        TextboxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
+      attr_reader :text_box, :increment_button, :decrement_button
+
+      def initialize param
+        super param
+        @text_box = TextboxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
+        @increment_button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
+        @decrement_button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
       end
 
       def set value
-        text_field = text_box
         value = value.to_i
-        max = value + text_field.text.to_i
+        max = value + text_box.text.to_i
         max.times do
-          current_value = text_field.text.to_i
+          current_value = text_box.text.to_i
           break if value == current_value
           if value > current_value
             increment 1
@@ -145,27 +155,30 @@ module Stamps
           break if value == current_value
         end
         sleep 1
-        logger.info "Pounds set to #{text_field.text}"
+        logger.info "Pounds set to #{text_box.text}"
       end
 
       def increment value
-        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
         value.to_i.times do
-          button.safe_click
+          increment_button.safe_click
         end
       end
 
       def decrement value
-        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
         value.to_i.times do
-          button.safe_click
+          decrement_button.safe_click
         end
       end
     end
 
     class Ounces < Browser::Modal
-      def text_box
-        TextboxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
+      attr_reader :decrement_button, :text_box, :increment_button
+
+      def initialize param
+        super param
+        @decrement_button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
+        @text_box = TextboxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
+        @increment_button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
       end
 
       def set value
@@ -187,16 +200,14 @@ module Stamps
       end
 
       def increment value
-        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
         value.to_i.times do
-          button.safe_click
+          increment_button.safe_click
         end
       end
 
       def decrement value
-        button = ElementWrapper.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
         value.to_i.times do
-          button.safe_click
+          decrement_button.safe_click
         end
       end
     end
