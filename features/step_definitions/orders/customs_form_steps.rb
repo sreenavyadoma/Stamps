@@ -281,6 +281,7 @@ end
 
 Then /^Customs: Close Modal$/ do
   logger.step "Closing customs form"
+  step "Pause for 4 seconds"
   step "Customs: Blur out"
   step "Customs: Save Total"
   stamps.orders.order_details.customs.edit_form.close.should be false
