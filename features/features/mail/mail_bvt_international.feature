@@ -6,8 +6,8 @@ Feature: International Shipping BVT
   @mail_bvt_international
   Scenario: International Shipping
 
-    Then Mail: Select Shipping Label 5 x 8
-    Then Mail: Set Ship-From to default
+    Then Mail: Select Shipping Label - 5 ½” x 8 ½”
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To to
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |

@@ -9,9 +9,9 @@ Feature: Mail Sample Shipping Label - SDC-1200 - MM Package
   @mail_print_sample_shipping_label_sdc1200_mm_package
   Scenario: Sample Shipping Label - SDC-1200 - MM Package
 
-    Then Mail: Select Shipping Label SDC-1200
+    Then Mail: Select Shipping Label - SDC-1200, 4 ¼” x 6 ¾”
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 5 through 8
     Then Mail: Set Pounds to 0

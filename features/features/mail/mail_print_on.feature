@@ -1,12 +1,12 @@
-Feature: Print On List Of Values
+Feature: Envelopes BVT
 
   Background:
     Given I am signed in as Mail shipper
 
-  @mail_print_on_list_of_values
-  Scenario: Print On List Of Values
-    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
+  @mail_services
+  Scenario: Envelope
     Then Mail: Select Stamps
+    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
     Then Mail: Select Shipping Label - SDC-1200, 4 ¼” x 6 ¾”
     Then Mail: Select Shipping Label - 5 ½” x 8 ½”
     Then Mail: Select Envelope - #10, 4 ⅛” x 9 ½”
@@ -23,4 +23,4 @@ Feature: Print On List Of Values
     Then Mail: Select Certified Mail Label - SDC-3810
     Then Mail: Select Roll - 4” x 6” Shipping Label
     Then Mail: Select Roll - 4 ⅛” x 6 ¼” Shipping Label
-    Then Sign out
+

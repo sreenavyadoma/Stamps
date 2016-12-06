@@ -9,9 +9,9 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - XM Padded Flat Rate Envelope
   @mail_print_shipping_label_5x8_xm_pfr_envelope
   Scenario: Shipping Label - 5 ½” x 8 ½” - XM Padded Flat Rate Envelope
 
-    Then Mail: Select Shipping Label 5 x 8
+    Then Mail: Select Shipping Label - 5 ½” x 8 ½”
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |

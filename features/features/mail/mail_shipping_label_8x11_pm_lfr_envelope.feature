@@ -9,9 +9,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Legal Flat Rate Envelo
   @mail_print_shipping_label_8x11_pm_lfr_envelope
   Scenario: Shipping Label - 8 ½” x 11” Paper - PM Legal Flat Rate Envelope
 
-    Then Mail: Select Shipping Label 8 x 11
+    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |

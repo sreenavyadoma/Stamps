@@ -56,47 +56,72 @@ module Stamps
     end
 
     class PrintOn < Browser::Modal
+      attr_reader :drop_down, :text_box
 
-      def drop_down
-        ElementWrapper.new ((browser.divs (Locators::FormBody.print_on_drop_down_divs))[0])
-      end
-
-      def text_box
-        TextboxElement.new (browser.text_field Locators::FormBody.print_on_text_field)
+      def initialize param
+        super param
+        @drop_down = ElementWrapper.new browser.div(css: "table[id^=printmediadroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]")
+        @text_box = TextboxElement.new browser.text_field(css: "input[id^=printmediadroplist-][id$=-inputEl]")
       end
 
       def select selection
-        box = text_box
-        button = drop_down
-        selection_label = ElementWrapper.new browser.div text: selection
-        5.times {
+        @mail_services ||= data_for(:mail_services, {})
+        selection_label = ElementWrapper.new browser.div(id: @mail_services[selection])
+        25.times do
           begin
-            button.safe_click unless selection_label.present?
+            drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
-            break if box.text.include? selection
+
+            if selection.include? 'Stamps'
+              break if text_box.text.include? 'Stamps'
+            elsif selection.include? 'Paper'
+              break if text_box.text.include? 'Paper'
+            elsif selection.include? 'SDC-1200'
+              break if text_box.text.include? 'SDC-1200'
+            elsif selection.include? '5 x 8'
+              break if text_box.text.include? 'Shipping Label - 5'
+            elsif selection.include? 'Envelope 10'
+              break if text_box.text.include? '#10'
+            elsif selection.include? 'Envelope 9'
+              break if text_box.text.include? '#9'
+            elsif selection.include? 'Envelope A9'
+              break if text_box.text.include? '#A9'
+            elsif selection.include? 'Envelope 6'
+              break if text_box.text.include? '#6'
+            elsif selection.include? 'Envelope A2'
+              break if text_box.text.include? '#A2'
+            elsif selection.include? 'Envelope 7'
+              break if text_box.text.include? '#7'
+            elsif selection.include? 'Envelope 11'
+              break if text_box.text.include? '#11'
+            elsif selection.include? 'Envelope 12'
+              break if text_box.text.include? '#12'
+            elsif selection.include? 'SDC-3610'
+              break if text_box.text.include? '3610'
+            elsif selection.include? 'SDC-3710'
+              break if text_box.text.include? '3710'
+            elsif selection.include? 'SDC-3910'
+              break if text_box.text.include? '3910'
+            elsif selection.include? 'SDC-3810'
+              break if text_box.text.include? '3810'
+            elsif selection.include? 'Roll - 4 x 6'
+              break if text_box.text.include? 'Roll - 4”'
+            elsif selection.include? 'Roll - 4 1'
+              break if text_box.text.include? 'Roll - 4 ⅛'
+            end
           rescue
             #ignore
           end
-        }
+        end
       end
 
       def tooltip selection
-        drop_down = ElementWrapper.new (browser.divs css: "div[class*=x-form-trigger]")[0]
-        selection_field = ElementWrapper.new browser.div text: selection
-
-        10.times {
+        selection_field = ElementWrapper.new browser.div(text: selection)
+        10.times do
           drop_down.safe_click unless selection_field.present?
           return selection_field.attribute_value "data-qtip" if selection_field.present?
-        }
-      end
-
-      def enabled? selection
-        raise "PrintOn.enabled? #{selection} is not yet implemented."
-      end
-
-      def disabled? selection
-        raise "PrintOn.enabled? #{selection} is not yet implemented."
+        end
       end
     end
 

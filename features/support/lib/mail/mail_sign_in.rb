@@ -83,7 +83,7 @@ module Stamps
     class MailSignInModal < Browser::Modal
 
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
-                  :signed_in_user, :invalid_msg, :remember_username_checkbox
+                  :signed_in_user, :invalid_msg, :remember_username_checkbox, :invalid_username_password
 
       def initialize param
         super param
@@ -95,7 +95,10 @@ module Stamps
         @signed_in_user = ElementWrapper.new browser.span id: "userNameText"
         @invalid_msg = ElementWrapper.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
         @whats_new_modal ||= WhatsNewModal.new param
-        @remember_username_checkbox ||= WatirCheckbox.new browser.checkbox(id: "rememberUser")
+        @remember_username_checkbox = WatirCheckbox.new browser.checkbox(id: "rememberUser")
+        @invalid_username_password = ElementWrapper.new browser.div(id: "InvalidUsernamePasswordMsg")
+        @username = ""
+        @password = ""
       end
 
       def present?
@@ -110,8 +113,12 @@ module Stamps
 
       end
 
-      def remember_username(check)
+      def open_sign_in_form
         sign_in_link.safe_click unless remember_username_checkbox.present?
+      end
+
+      def remember_username(check)
+        open_sign_in_form
         if !!check
           remember_username_checkbox.check
         else
@@ -120,57 +127,66 @@ module Stamps
       end
 
       def remember_username_checked?
-        sign_in_link.safe_click unless remember_username_checkbox.present?
         remember_username_checkbox.checked?
       end
 
       def username usr
-        sign_in_link.safe_click unless username_textbox.present?
-        username_textbox.set usr
+        @username = usr
+        open_sign_in_form
+        username_textbox.set @username
       end
 
       def password pw
-        sign_in_link.safe_click unless password_textbox.present?
-        password_textbox.set pw
+        @password = pw
+        open_sign_in_form
+        password_textbox.set @password
       end
 
       def login
+        open_sign_in_form
         sign_in_button.safe_click
+        open_sign_in_form
         sign_in_button.safe_click
+        open_sign_in_form
         sign_in_button.send_keys :enter
+        sleep 1
+        open_sign_in_form
+        "#{invalid_username_password.text}. #{@username}\\#{@password}".should eql "Valid Username" if invalid_username_password.present?
+        open_sign_in_form
+        "#{invalid_username_password.text}. #{@username}\\#{@password}".should eql "Valid Username" if invalid_username_password.present?
+        open_sign_in_form
+        "#{invalid_username_password.text}. #{@username}\\#{@password}".should eql "Valid Username" if invalid_username_password.present?
       end
 
       def user_credentials *args
         case args
           when Hash
-            username = args[0]['username']
-            password = args[0]['password']
+            @username = args[0]['username']
+            @password = args[0]['password']
           when Array
             if args.length == 2
-              username = args[0]
-              password = args[1]
+              @username = args[0]
+              @password = args[1]
             else
               logger.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
-              username = ENV["USR"]
-              password = ENV["PW"]
+              @username = ENV["USR"]
+              @password = ENV["PW"]
             end
           else
             logger.message "Using Default Sign-in Credentials."
-            username = ENV["USR"]
-            password = ENV["PW"]
-            logger.message "USERNAME: #{username}, PASSWORD: #{password}"
+            @username = ENV["USR"]
+            @password = ENV["PW"]
+            logger.message "USERNAME: #{@username}, PASSWORD: #{@password}"
         end
-        [username, password]
+        [@username, @password]
       end
 
       def sign_in *args
-        credentials = user_credentials *args
-        username = credentials[0]
-        password = credentials[1]
+        user_credentials *args
 
         10.times do
-          username username
-          password password
+          username @username
+          password @password
           login
           whats_new_modal.close if whats_new_modal.present?
 
@@ -186,7 +202,7 @@ module Stamps
           whats_new_modal.close if whats_new_modal.present?
 
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
-          logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+          logger.info "#{@username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
 
           whats_new_modal.close if whats_new_modal.present?
 
@@ -204,18 +220,16 @@ module Stamps
         whats_new_modal.close if whats_new_modal.present?
         signed_in_user.safely_wait_until_present 6
         whats_new_modal.close if whats_new_modal.present?
-        logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-        "User #{username} was unable to sign-in. Is #{ENV['URL']} up? *signed in user drop-down did not appear on the screen*".should eql "Sign-in Successful for #{username} in #{ENV['URL']}" unless signed_in_user.present?
+        logger.info "#{@username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
+        "User #{@username} was unable to sign-in. Is #{ENV['URL']} up? *signed in user drop-down did not appear on the screen*".should eql "Sign-in Successful for #{@username} in #{ENV['URL']}" unless signed_in_user.present?
       end
 
       def sign_in_first_time *args
-        credentials = user_credentials *args
-        username = credentials[0]
-        password = credentials[1]
+        user_credentials *args
 
         5.times do
-          username username
-          password password
+          username @username
+          password @password
           login
 
           20.times do
@@ -227,7 +241,7 @@ module Stamps
 
           return whats_new_modal if whats_new_modal.present?
         end
-        "".should eql "Unable to sign in to Mail with credentials #{username}/#{password}" if sign_in_link.present?
+        "".should eql "Unable to sign in to Mail with @credentials #{@username}/#{@password}" if sign_in_link.present?
         "".should eql "What's New modal did not appear upon login"
       end
 

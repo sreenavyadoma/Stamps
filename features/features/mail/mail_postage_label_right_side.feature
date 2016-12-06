@@ -9,9 +9,9 @@ Feature: Mail Shipping Label - Right Side
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label - 8 ½” x 11” Paper
 
-    Then Mail: Select Shipping Label 8 x 11
+    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0
@@ -26,9 +26,9 @@ Feature: Mail Shipping Label - Right Side
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label -  5 ½” x 8 ½”
 
-    Then Mail: Select Shipping Label 5 x 8
+    Then Mail: Select Shipping Label - 5 ½” x 8 ½”
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0
@@ -43,9 +43,9 @@ Feature: Mail Shipping Label - Right Side
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label -  SDC-1200
 
-    Then Mail: Select Shipping Label SDC-1200
+    Then Mail: Select Shipping Label - SDC-1200, 4 ¼” x 6 ¾”
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0

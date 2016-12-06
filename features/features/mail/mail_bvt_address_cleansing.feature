@@ -5,8 +5,8 @@ Feature: Address Cleansing BVT
 
   @mail_bvt_address_cleansing
   Scenario: Address Cleansing
-    Then Mail: Select Shipping Label 5 x 8
-    Then Mail: Set Ship-From to default
+    Then Mail: Select Shipping Label - 5 ½” x 8 ½”
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to
       | name              | company | street_address      | city          | state | zip    | country       |

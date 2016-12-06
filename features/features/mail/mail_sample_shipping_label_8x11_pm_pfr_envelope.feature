@@ -9,9 +9,9 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Padded Flat Rat
   @mail_print_sample_shipping_label_8x11_pm_pfr_envelope
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - PM Padded Flat Rate Envelope
 
-    Then Mail: Select Shipping Label 8 x 11
+    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0

@@ -1,3 +1,4 @@
+# encoding: utf-8
 
 webreg:
   dev_usr_dir: C:\watir-webdriver
@@ -3150,6 +3151,26 @@ mail_credentials:
     mail_print_stamps_wn_series_specify:
       usr: scctk0sju9
       pw: pass111
+
+mail_services:
+  Stamps: sdc-printmediadroplist-ns
+  Shipping Label - 8 x 11 Paper:  sdc-printmediadroplist-shippinglabel812x11
+  Shipping Label - SDC-1200:  sdc-printmediadroplist-sdc1200
+  Shipping Label - 5 x 8: sdc-printmediadroplist-shippinglabel512x812
+  Envelope 10:  sdc-printmediadroplist-envelope10
+  Envelope 9: sdc-printmediadroplist-envelope9
+  Envelope A9: sdc-printmediadroplist-envelopea9
+  Envelope 6: sdc-printmediadroplist-envelope6
+  Envelope A2:  sdc-printmediadroplist-envelopea2
+  Envelope 7: sdc-printmediadroplist-envelope7
+  Envelope 11: sdc-printmediadroplist-envelope11
+  Envelope 12:  sdc-printmediadroplist-envelope12
+  Certified Mail Label - SDC-3610:  sdc-printmediadroplist-sdc3610
+  Certified Mail Label - SDC-3710:  sdc-printmediadroplist-sdc3710
+  Certified Mail Label - SDC-3910:  sdc-printmediadroplist-sdc3910
+  Certified Mail Label - SDC-3810:  sdc-printmediadroplist-sdc3810
+  Roll - 4 x 6: sdc-printmediadroplist-roll4x6
+  Roll - 4 1/8 x 6 1/4: sdc-printmediadroplist-roll418x614
 
 details_services:
   #First-Class Mail

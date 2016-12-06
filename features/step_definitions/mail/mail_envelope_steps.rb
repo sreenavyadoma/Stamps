@@ -1,11 +1,12 @@
 
-Then /^Mail Envelopes: Select Service First-Class Mail Letter$/ do
-  step "Mail Envelopes: Set Service to First-Class Mail Letter"
-end
 
 Then /^Mail Envelopes: Set Service to (.*)$/ do |service|
   logger.step "Envelopes: Set Print Mail Service to: \n #{service}"
   stamps.mail.service.select service
+end
+
+Then /^Mail Envelopes: Select Service First-Class Mail Letter$/ do
+  step "Mail Envelopes: Set Service to First-Class Mail Letter"
 end
 
 Then /^Mail Envelopes: Set Include Return Address to Checked$/ do

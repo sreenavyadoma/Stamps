@@ -9,9 +9,9 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Medium Flat Rate Box
   @mail_print_shipping_label_5x8_pm_medium_box
   Scenario: Shipping Label - 5 ½” x 8 ½” - PM Medium Flat Rate Box
 
-    Then Mail: Select Shipping Label 5 x 8
+    Then Mail: Select Shipping Label - 5 ½” x 8 ½”
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |

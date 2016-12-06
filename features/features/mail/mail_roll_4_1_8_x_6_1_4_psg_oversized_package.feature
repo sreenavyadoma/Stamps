@@ -8,9 +8,9 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PSG Oversized Package
   @mail_print_roll_4_1_8_x_6_1_4_psg_oversized_package
   Scenario: Roll - 4 ⅛” x 6 ¼” - PSG Oversized Package
 
-    Then Mail: Select Roll 4 ⅛ x 6 ¼
+    Then Mail: Select Roll - 4 ⅛” x 6 ¼” Shipping Label
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 5 through 8
 

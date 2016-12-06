@@ -5,8 +5,8 @@ Feature: Envelope #7
 
   @mail_print_envelope_7
   Scenario: Envelope #7
-    Then Mail: Select Envelope - #7
-    Then Mail: Set Ship-From to default
+    Then Mail: Select Envelope - #7, 3 ⅞” x 7 ½”
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0

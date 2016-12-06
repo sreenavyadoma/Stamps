@@ -5,8 +5,8 @@ Feature: Envelopes #12
 
   @mail_print_envelope_12
   Scenario: Envelope #12
-    Then Mail: Select Envelope - #12
-    Then Mail: Set Ship-From to default
+    Then Mail: Select Envelope - #12, 4 ¾” x 11”
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 5 through 8
     Then Mail: Set Pounds to 0

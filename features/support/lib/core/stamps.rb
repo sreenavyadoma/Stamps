@@ -8,7 +8,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      raise e
+      "#{e.backtrace.join("\n")}".should eql e.message
     end
   end
 
@@ -28,7 +28,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      raise e
+      "#{e.backtrace.join("\n")}".should eql e.message
     end
   end
 
@@ -40,7 +40,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      raise e
+      "#{e.backtrace.join("\n")}".should eql e.message
     end
   end
 
@@ -52,7 +52,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      raise e
+      "#{e.backtrace.join("\n")}".should eql e.message
     end
   end
 
@@ -112,7 +112,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      raise e
+      "#{e.backtrace.join("\n")}".should eql e.message
     end
   end
 
@@ -124,7 +124,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      raise e
+      "#{e.backtrace.join("\n")}".should eql e.message
     end
   end
 
@@ -148,7 +148,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      raise e
+      "#{e.backtrace.join("\n")}".should eql e.message
     end
   end
 

@@ -9,9 +9,9 @@ Feature: Mail Shipping Label - SDC-1200 - PSG Oversized Package
   @mail_print_shipping_label_sdc1200_psg_oversized_package
   Scenario: Shipping Label - SDC-1200 - PSG Oversized Package
 
-    Then Mail: Select Shipping Label SDC-1200
+    Then Mail: Select Shipping Label - SDC-1200, 4 ¼” x 6 ¾”
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |

@@ -297,20 +297,20 @@ module Stamps
       end
 
       def amount
-        10.times{
+        10.times do
           amount = balance_element.text
           amount_no_dollar_sign = amount.gsub("$","")
           amount_stripped_all = amount_no_dollar_sign.gsub(",","")
           return amount_stripped_all if amount_stripped_all.length > 0
-        }
+        end
       end
 
       def new_balance old_balance
-        10.times{
+        10.times do
           balance = ParameterHelper.remove_dollar_sign balance_element.text
           break unless balance.include? old_balance.to_s
           sleep(1)
-        }
+        end
         ParameterHelper.remove_dollar_sign balance_element.text
       end
     end

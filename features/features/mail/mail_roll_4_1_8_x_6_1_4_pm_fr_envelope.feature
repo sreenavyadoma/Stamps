@@ -9,9 +9,9 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM FR Envelope
   @mail_print_roll_4_1_8_x_6_1_4_pm_fr_envelope
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM FR Envelope
 
-    Then Mail: Select Roll 4 ⅛ x 6 ¼
+    Then Mail: Select Roll - 4 ⅛” x 6 ¼” Shipping Label
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
 

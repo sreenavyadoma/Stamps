@@ -9,9 +9,9 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PSG Package
   @mail_print_sample_shipping_label_8x11_psg_package
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - PSG Package
 
-    Then Mail: Select Shipping Label 8 x 11
+    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0

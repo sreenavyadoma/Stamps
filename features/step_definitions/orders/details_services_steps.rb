@@ -302,7 +302,7 @@ Then /^Details: Set Service to (.*)$/ do |service|
     step "Details: Blur out"
     sleep 1
   end
-  3.times do
+  2.times do
     step "Details: Blur out"
     test_data[:service_cost] = stamps.orders.order_details.service.cost
     logger.message "*** Service Cost: #{test_data[:service_cost]} ***"

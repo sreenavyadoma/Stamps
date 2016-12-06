@@ -10,9 +10,9 @@ Feature: Mail Roll - 4" x 6" - PM Regional Box A
   Scenario: Roll - 4" x 6" - PM Regional Box A
 
 
-    Then Mail: Select Roll 4 x 6
+    Then Mail: Select Roll - 4” x 6” Shipping Label
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
 

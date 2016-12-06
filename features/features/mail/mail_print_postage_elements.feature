@@ -5,7 +5,7 @@ Feature: Verify Mail Elements Are Present
 
   @mail_print_postage_elements
   Scenario: Print Mail Elements
-    Then Mail: Select Shipping Label 8 x 11
+    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
     Then Mail: Expect Print On Field is present
     Then Mail: Expect Ship From Field is present
     Then Mail: Expect Ship To Link is present

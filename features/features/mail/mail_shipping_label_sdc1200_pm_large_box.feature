@@ -10,9 +10,9 @@ Feature: Mail Shipping Label - SDC-1200 - Large Box
   Scenario: Shipping Label - SDC-1200 - Large Box
 
 
-    Then Mail: Select Shipping Label SDC-1200
+    Then Mail: Select Shipping Label - SDC-1200, 4 ¼” x 6 ¾”
 
-    Then Mail: Set Ship-From to default
+    Then Mail: Set Mail From to default
     Then Mail: Set Ship-To country to United States
     Then Mail: Set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |
