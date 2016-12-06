@@ -515,7 +515,7 @@ module Stamps
           super param
           @window_title = ElementWrapper.new browser.div(text: 'Add Shipping Address')
           @save_button = ElementWrapper.new browser.span(text: 'Save')
-          @origin_zip = ElementWrapper.new browser.text_field(name: 'OriginZip')
+          @origin_zip = TextboxElement.new browser.text_field(name: 'OriginZip')
         end
 
         def present?
@@ -526,17 +526,17 @@ module Stamps
           window_title.safely_wait_until_present *args
         end
 
-        def shipping_address table
+        def shipping_address table #table.should be_kind_of Hash
           origin_zip.set table["ship_from_zip"]
-          self.name table['name']
-          self.company table['company']
-          self.street_address1 table["street_address"]
-          self.street_address2 table["street_address2"]
-          self.city table['city']
-          self.state.select table["state"]
-          self.zip table["zip"]
-          self.phone table['phone']
-          self.save
+          name table['name']
+          company table['company']
+          street_address1 table["street_address"]
+          street_address2 table["street_address2"]
+          city table['city']
+          state.select table["state"]
+          zip table["zip"]
+          phone table['phone']
+          save
         end
 
         def name *args
@@ -600,8 +600,8 @@ module Stamps
         end
 
         def state
-          text_box = (browser.text_field name: 'State')
-          dd = browser.div css: "div[id^=statecombobox-][id$=-trigger-picker]"
+          text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
+          dd = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
           DropDownElement.new @browser, dd, :li, text_box
         end
 
