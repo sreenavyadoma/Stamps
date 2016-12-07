@@ -40,6 +40,11 @@ Feature: WebReg
 
     Then Pause for 4 seconds
 
+    Then Refresh Browser
+    Then Pause for 1 second
+    Then Refresh Browser
+    Then Pause for 4 seconds
+
     # PAM STEPS
     Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
