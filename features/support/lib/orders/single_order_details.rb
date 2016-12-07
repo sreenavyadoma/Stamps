@@ -135,7 +135,7 @@ module Stamps
       end
 
       class ShipToCountry < ShipToBase
-        attr_reader :dom_drop_down, :dom_text_box, :int_drop_down, :int_text_box
+        attr_reader :text_box, :dom_drop_down, :dom_text_box, :int_drop_down, :int_text_box
 
         def initialize param
           super param
@@ -143,6 +143,9 @@ module Stamps
           @dom_text_box = TextboxElement.new browser.text_field(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
           @int_drop_down = ElementWrapper.new browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div:nth-child(2)>div>div:nth-child(2)")
           @int_text_box = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div>div>div>input")
+
+
+          @text_box = TextboxElement.new browser.text_field(name: "ShipCountryCode")
         end
 
         def drop_down
