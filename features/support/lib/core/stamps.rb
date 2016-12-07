@@ -74,6 +74,16 @@ module Stamps
     end
   end
 
+  def webreg_user_credential_file filename
+    begin
+      @webreg_user_credential_file ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_#{filename}"
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+      "MagicData: Problem retrieving data from #{@webreg_user_credential_file}. Check your format?".should eql e.message
+    end
+  end
+
   def webreg_data_filename
     begin
       @webreg_data_filename ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg.txt"

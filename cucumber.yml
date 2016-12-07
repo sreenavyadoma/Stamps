@@ -4,7 +4,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 #qasc800 mail_bvt_international
 rob_cc: --tags @bvt_shipping_address_management WEB_APP=orders TEST=bvt_shipping_address_management URL=cc  PW=pass111 USR=jenkins --guess VERBOSE=true JENKINS=true HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
-rob_stg: --tags @orders_first_time_sign_in WEB_APP=webreg TEST=orders_first_time_sign_in URL=stg  PW=pass111 USR=stgdmnmrv29j04 --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
+rob_stg: --tags @webreg_pam WEB_APP=webreg TEST=webreg_pam URL=stg  PW=pass111 USR=stgdmnmrv29j04 --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_orders_sc: --tags @mail_bvt_envelopes WEB_APP=orders TEST=mail_bvt_envelopes URL=sc PW=pass111 USR=m9rqvdp97u5 --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc  #yh95ws85j c2jinmzmu64 store parcel_select
 
 rob_mail_cc: --tags @mail_bvt_envelopes TEST=mail_bvt_envelopes WEB_APP=mail URL=cc PW=pass111 USR=cce5nk6k6068z --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium

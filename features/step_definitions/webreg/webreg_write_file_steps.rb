@@ -19,20 +19,20 @@ Then /^PAM Customer Search: Set username as web reg credentials$/ do
   step "PAM Customer Search: Set username to #{CONFIG['usr']}"
 end
 
-Then /^WebReg Profile: Write credentials to properties file$/ do
-  step "WebReg Profile: Write username to properties file"
-  step "WebReg Profile: Write password to properties file"
+Then /^WebReg: Write credentials to properties file$/ do
+  step "WebReg: Write username to properties file"
+  step "WebReg: Write password to properties file"
 end
 
-Then /^WebReg Profile: Write username to properties file$/ do
-  logger.message "WebReg Profile: Write username to properties file: #{webreg_usr_filename}"
+Then /^WebReg: Write username to properties file$/ do
+  logger.message "WebReg: Write username to properties file: #{webreg_usr_filename}"
   sleep 1
   File.open(webreg_usr_filename, 'w+') {|f| f.write("usr: #{@webreg_data[:usr]}\n")}
   step "WebReg Profile: Save username to file"
 end
 
-Then /^WebReg Profile: Write password to properties file$/ do
-  logger.message "WebReg Profile: Write password to properties file: #{webreg_usr_filename}"
+Then /^WebReg: Write password to properties file$/ do
+  logger.message "WebReg: Write password to properties file: #{webreg_usr_filename}"
   sleep 1
   File.exist?(webreg_usr_filename).should be_truthy
   File.open(webreg_usr_filename, 'a+') {|f| f.write("pw: #{@webreg_data[:pw]}\n")}
@@ -51,8 +51,22 @@ Then /^WebReg Profile: Save username to file$/ do
   end
 end
 
+Then /WebReg: Save credentials to file (.*)$/ do |filename|
+  user_defined_file = webreg_user_credential_file filename
+  logger.message "WebReg Profile: Save username to file: #{user_defined_file}"
+  sleep 1
+  if File.exist? user_defined_file
+    sleep 1
+    File.exist?(user_defined_file).should be_truthy
+    File.open(user_defined_file, 'a+') {|f| f.write("#{@webreg_data[:usr]}\n")} unless File.readlines(user_defined_file).to_s.include? @webreg_data[:usr]
+  else
+    sleep 1
+    File.open(user_defined_file, 'w+') {|f| f.write("#{@webreg_data[:usr]}\n")}
+  end
+end
+
 Then /^PAM: Write username to properties file$/ do
-  logger.message "WebReg Profile: Write username to properties file: #{webreg_pam_data_filename}"
+  logger.message "WebReg: Write username to properties file: #{webreg_pam_data_filename}"
   sleep 1
   if File.exist?(webreg_pam_data_filename)
     sleep 1
@@ -65,7 +79,7 @@ Then /^PAM: Write username to properties file$/ do
 end
 
 Then /^WebReg PAM Orders: Write username to properties file$/ do
-  logger.message "WebReg Profile: Write username to properties file: #{webreg_pam_ord_data_filename}"
+  logger.message "WebReg: Write username to properties file: #{webreg_pam_ord_data_filename}"
   sleep 1
   if File.exist? webreg_pam_ord_data_filename
     sleep 2
