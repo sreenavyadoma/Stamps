@@ -57,7 +57,6 @@ Then /WebReg: Save credentials to file (.*)$/ do |filename|
   sleep 1
   if File.exist? user_defined_file
     sleep 1
-    File.exist?(user_defined_file).should be_truthy
     File.open(user_defined_file, 'a+') {|f| f.write("#{@webreg_data[:usr]}\n")} unless File.readlines(user_defined_file).to_s.include? @webreg_data[:usr]
   else
     sleep 1

@@ -151,8 +151,8 @@ Cucumber::Rake::Task.new(:webreg_pam_orders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_pam) do |t|
-  t.profile = 'webreg_pam'
+Cucumber::Rake::Task.new(:webreg_pam_no_sign_in) do |t|
+  t.profile = 'webreg_pam_no_sign_in'
   t.cucumber_opts = "-p cuke_reports"
 end
 

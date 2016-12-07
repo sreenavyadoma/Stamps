@@ -2,7 +2,7 @@ Feature: WebReg
   Background:
     Given I launched default browser
 
-  @webreg_pam
+  @webreg_pam_no_sign_in
   Scenario:
     Then WebReg Profile: Load Registration Page
     Then WebReg Profile: Set User ID and Email to random
@@ -43,7 +43,7 @@ Feature: WebReg
     # PAM STEPS
     Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
-    Then PAM Customer Search: Set username as web reg credentials
+    Then PAM Customer Search: Set username to random
     Then PAM Customer Search: Set 5.2 or lower
     Then PAM Customer Search: Click Search button
 
