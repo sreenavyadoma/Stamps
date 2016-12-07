@@ -2,7 +2,7 @@ Feature: WebReg
   Background:
     Given I launched default browser
 
-  @orders_sign_in
+  @orders_first_time_sign_in
   Scenario:
     Then Orders: Visit Sign-in page
     Then Orders: Sign in using Jenkins web reg credentials
