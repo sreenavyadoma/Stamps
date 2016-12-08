@@ -1,13 +1,12 @@
-
-Feature: PAM page
+Feature: WebReg
   Background:
     Given I launched default browser
 
-  @pam
-  Scenario: PAM page
+  @pam_no_sign_in
+  Scenario:
     Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
-    Then WebReg: Load username and password from parameter file
+    Then WebReg: Load username and password from parameter file webreg_no_sign_in
     Then PAM Customer Search: Set username from parameter file
     Then PAM Customer Search: Set 5.2 or lower
     Then PAM Customer Search: Click Search button
@@ -27,7 +26,6 @@ Feature: PAM page
     Then PAM AppCap Overrides: Set International Shipping to Always On
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
-    Then WebReg: Store username to data file webreg_pam
-    Then Pause for 4 seconds
-
+    Then WebReg: Save username and password to parameter file webreg_no_sign_in
+    Then WebReg: Store username to data file pam_no_sign_in
 

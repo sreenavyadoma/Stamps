@@ -35,6 +35,6 @@ Feature: WebReg
     Then WebReg Membership: Set Terms & Conditions to Checked
 
     Then WebReg Membership: Submit
-    Then WebReg: Write credentials to properties file
+    Then WebReg: Save username and password to parameter file
     Then WebReg Profile: Send username to standard out
 

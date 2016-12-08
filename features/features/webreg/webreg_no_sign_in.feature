@@ -2,7 +2,7 @@ Feature: WebReg
   Background:
     Given I launched default browser
 
-  @webreg_pam_no_sign_in
+  @webreg_no_sign_in
   Scenario:
     Then WebReg Profile: Load Registration Page
     Then WebReg Profile: Set User ID and Email to random
@@ -35,37 +35,6 @@ Feature: WebReg
     Then WebReg Membership: Set Terms & Conditions to Checked
 
     Then WebReg Membership: Submit
-    Then WebReg: Save credentials to file webreg_pam_no_sign_in.txt
+    Then WebReg: Save username and password to parameter file webreg_no_sign_in
+    Then WebReg: Store username to data file webreg_no_sign_in
     Then WebReg Profile: Send username to standard out
-
-    Then Pause for 4 seconds
-
-    Then Refresh Browser
-    Then Pause for 1 second
-    Then Refresh Browser
-    Then Pause for 4 seconds
-
-    # PAM STEPS
-    Then PAM: Load PAM Page
-    Then PAM: Load Customer Search Page
-    Then PAM Customer Search: Set username to random
-    Then PAM Customer Search: Set 5.2 or lower
-    Then PAM Customer Search: Click Search button
-
-    Then PAM Customer Profile: Click Change Meter Limit link
-    Then PAM Change Meter Limit: Set New Meter Limit to $100000
-    Then PAM Change Meter Limit: Set USPS approval to Checked
-    Then PAM Change Meter Limit: Click Submit
-
-    Then PAM Customer Profile: Click ACH Credit link
-    Then PAM ACH Purchase: Set Amount to $100000.00
-
-    Then PAM Customer Profile: Click  AppCap Overrides link
-    Then PAM AppCap Overrides: Set Internet Mail Printing to Always On
-    Then PAM AppCap Overrides: Set Netstamps Printing to Always On
-    Then PAM AppCap Overrides: Set Shipping Label Printing to Always On
-    Then PAM AppCap Overrides: Set International Shipping to Always On
-    Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
-    Then PAM AppCap Overrides: Submit
-    Then WebReg: Save credentials to file webreg_pam_no_sign_in.txt
-    Then Pause for 4 seconds
