@@ -48,8 +48,8 @@ webreg: --tags @webreg --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_
 orders_first_time_sign_in: --tags @orders_first_time_sign_in --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
 pam: --tags @pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=pam TEST=pam
 webreg_no_sign_in: --tags @webreg_no_sign_in --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+pam_no_sign_in: --tags @pam_no_sign_in --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
 webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
-
 details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_non_integer_lbs
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=grid_order_status
 tooltips_improvements: --tags @tooltips_improvements --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=tooltips_improvements

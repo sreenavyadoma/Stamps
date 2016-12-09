@@ -156,6 +156,11 @@ Cucumber::Rake::Task.new(:webreg_no_sign_in) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:pam_no_sign_in) do |t|
+  t.profile = 'pam_no_sign_in'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:default) do |t|
   t.profile = 'default'
   t.cucumber_opts = "-p cuke_reports"
