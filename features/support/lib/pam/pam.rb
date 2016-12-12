@@ -2,9 +2,9 @@ module Stamps
   module Pam
     class PaymentAdministratorManager < Browser::Modal
       def visit
-        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+        helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
-        case ENV['URL'].downcase
+        case helper.test_env.downcase
           when /cc/
             url = "http://qa-clientsite:82/pam/"
           when /sc/
@@ -12,7 +12,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/"
           else
-            "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
+            "#{helper.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
         end
 
         logger.info "Visit: #{url}"
@@ -31,11 +31,11 @@ module Stamps
       end
 
       def customer_search
-        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+        helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
         customer_search_page = Pam::CustomerSearch.new param
 
-        case ENV['URL'].downcase
+        case helper.test_env.downcase
           when /cc/
             url = "http://qa-clientsite:82/pam/AccountSearch.asp"
           when /sc/
@@ -43,7 +43,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
           else
-            "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
+            "#{helper.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
         end
 
         browser.goto url

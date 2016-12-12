@@ -4,7 +4,7 @@ module Stamps
 
     class RollFormView < MailForm
       def preview_image
-        image = ElementWrapper.new browser.img css: "dimg[src*='Labelsample.gif']"
+        image = BrowserElement.new browser.img css: "dimg[src*='Labelsample.gif']"
       end
 
       def hide_postage_value

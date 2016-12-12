@@ -394,7 +394,7 @@ module Stamps
       end
 
       def continue
-        ElementWrapper.new browser.button(id: "btnUserNameTakenContinue")
+        BrowserElement.new browser.button(id: "btnUserNameTakenContinue")
       end
     end
 
@@ -403,10 +403,10 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.h3 text: 'An Error Occurred'
-        @top_message = ElementWrapper.new browser.p id: 'topMessage'
-        @error_code = ElementWrapper.new browser.p id: 'errorCode'
-        @error_description = ElementWrapper.new browser.p id: 'errorDescription'
+        @title = BrowserElement.new browser.h3 text: 'An Error Occurred'
+        @top_message = BrowserElement.new browser.p id: 'topMessage'
+        @error_code = BrowserElement.new browser.p id: 'errorCode'
+        @error_description = BrowserElement.new browser.p id: 'errorDescription'
       end
 
       def present?
@@ -826,7 +826,7 @@ module Stamps
 
       def initialize param
         super param
-        @help_element = ElementWrapper.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
+        @help_element = BrowserElement.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
       end
 
       def help_text
@@ -873,16 +873,16 @@ module Stamps
         @billing_zip ||= MembershipBillingZip.new browser.text_field(id: "billingZip")
 
         @terms_and_conditions ||= TermsAndConditions.new param
-        @back = ElementWrapper.new browser.button(id: "prev")
+        @back = BrowserElement.new browser.button(id: "prev")
 
-        @submit_button = ElementWrapper.new browser.button(text: "Submit") #Change by Galina from "Submit"
+        @submit_button = BrowserElement.new browser.button(text: "Submit") #Change by Galina from "Submit"
         @supplies = ChooseSupplies.new param
         @userid_taken = UserIdTaken.new param
         @download_page = DownloadPage.new param
         @membership_error = MembershipError.new param
 
-        @loading = ElementWrapper.new browser.button(text: "Loading...")
-        @page_header = ElementWrapper.new browser.h1(text: 'Customize your Welcome Kit')
+        @loading = BrowserElement.new browser.button(text: "Loading...")
+        @page_header = BrowserElement.new browser.h1(text: 'Customize your Welcome Kit')
 
         @error_occured = WebRegError.new param
         @connection_failed = WebRegSecureConnectionFailed.new param

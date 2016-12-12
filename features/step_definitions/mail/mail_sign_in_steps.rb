@@ -1,8 +1,8 @@
 
 Given /^Visit Mail sign in page$/ do
   logger.step "I visit mail sign-in page"
-  stamps.param.app = :mail
-  stamps.visit(:mail)
+  stamps.web_app = :mail
+  stamps.load_page
   browser.url.downcase.should include "webpostage"
 end
 

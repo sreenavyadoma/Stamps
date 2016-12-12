@@ -15,14 +15,14 @@ module Stamps
             end
 
             def increment value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -56,14 +56,14 @@ module Stamps
             end
 
             def increment value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -119,14 +119,14 @@ module Stamps
             end
 
             def increment value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -160,14 +160,14 @@ module Stamps
             end
 
             def increment value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -201,14 +201,14 @@ module Stamps
             end
 
             def increment value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = ElementWrapper.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
+              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
               value.to_i.times do
                 button.safe_click
               end
@@ -343,7 +343,7 @@ module Stamps
         end
 
         def close
-          button = ElementWrapper.new (browser.span text: "Close")
+          button = BrowserElement.new (browser.span text: "Close")
           5.times do
             return unless button.present?
             button.safe_click
@@ -359,11 +359,11 @@ module Stamps
         def initialize param
           super param
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
-          @drop_down = ElementWrapper.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
+          @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select selection
-          selection_label = ElementWrapper.new browser.li(text: selection)
+          selection_label = BrowserElement.new browser.li(text: selection)
           10.times do
             break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
@@ -403,11 +403,11 @@ module Stamps
         def initialize param
           super param
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
-          @drop_down = ElementWrapper.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          @drop_down = BrowserElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
         def select selection
-          selection_label = ElementWrapper.new browser.li text: selection
+          selection_label = BrowserElement.new browser.li text: selection
           10.times do
             break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
@@ -519,11 +519,11 @@ module Stamps
         def initialize param
           super param
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
-          @drop_down = ElementWrapper.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
+          @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select selection
-          selection_label = ElementWrapper.new browser.li text: selection
+          selection_label = BrowserElement.new browser.li text: selection
           10.times do
             break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
@@ -562,7 +562,7 @@ module Stamps
       end
 
       def title
-        ElementWrapper.new browser.div text: "Settings"
+        BrowserElement.new browser.div text: "Settings"
       end
 
       def present?
@@ -599,7 +599,7 @@ module Stamps
 
       def reset_fields
         modal = ResetFields.new param
-        button = ElementWrapper.new browser.span text: "Select..."
+        button = BrowserElement.new browser.span text: "Select..."
         10.times do
           button.safe_click unless modal.present?
           return modal if modal.present?
@@ -631,7 +631,7 @@ module Stamps
       end
 
       def save
-        button = ElementWrapper.new (browser.span text: "Save")
+        button = BrowserElement.new (browser.span text: "Save")
         10.times do
           button.safe_click
           return unless button.present?
@@ -639,7 +639,7 @@ module Stamps
       end
 
       def close
-        button = ElementWrapper.new (browser.img css: "img[class$=close]")
+        button = BrowserElement.new (browser.img css: "img[class$=close]")
         10.times do
           button.safe_click
           return unless button.present?

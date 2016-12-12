@@ -102,7 +102,7 @@ module Stamps
         end
 
         def continue
-          button = ElementWrapper.new browser.text_field(name: "btnContinue")
+          button = BrowserElement.new browser.text_field(name: "btnContinue")
           account_page = MyAccountPage.new param
           10.times do
             button.safe_click
@@ -153,8 +153,8 @@ module Stamps
         end
 
         def place_order
-          button = ElementWrapper.new browser.button(id: "btnSubmitOrder")
-          order_num_field = ElementWrapper.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
+          button = BrowserElement.new browser.button(id: "btnSubmitOrder")
+          order_num_field = BrowserElement.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
           10.times do
             button.safe_click
             sleep 2
@@ -185,7 +185,7 @@ module Stamps
         end
 
         def proceed_to_checkout
-          button = ElementWrapper.new browser.text_field(css: "input[name='btn_checkout_guest']")
+          button = BrowserElement.new browser.text_field(css: "input[name='btn_checkout_guest']")
           checkout = VolusionCheckOut.new param
           10.times do
             button.safe_click
@@ -215,7 +215,7 @@ module Stamps
           qty_textbox = self.qty_field
           shopping_cart = VolusionCart.new param
           cart_count_b4_add = shopping_cart.count
-          button = ElementWrapper.new browser.text_field(css: "input[alt='Add to cart']")
+          button = BrowserElement.new browser.text_field(css: "input[alt='Add to cart']")
           2.times do
             button.safe_click
             break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
@@ -232,7 +232,7 @@ module Stamps
         end
 
         def sample_product_one
-          link = ElementWrapper.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+          link = BrowserElement.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
           product = VolusionProduct.new param
           10.times do
             link.safe_click
@@ -244,8 +244,8 @@ module Stamps
 
       class MyAccountPage < Browser::Modal
         def log_out
-          logged_out_field = ElementWrapper.new browser.li(text: "You are now logged out.")
-          button = ElementWrapper.new browser.a(css: "a[href*=logout]")
+          logged_out_field = BrowserElement.new browser.li(text: "You are now logged out.")
+          button = BrowserElement.new browser.a(css: "a[href*=logout]")
           5.times do
             button.safe_click
             sleep 1
@@ -258,8 +258,8 @@ module Stamps
         end
 
         def my_account
-          link = ElementWrapper.new browser.a(text: "My Account")
-          label = ElementWrapper.new browser.b(text: "My Orders")
+          link = BrowserElement.new browser.a(text: "My Account")
+          label = BrowserElement.new browser.b(text: "My Orders")
           10.times do
             link.safe_click
             break if label.present?
@@ -273,7 +273,7 @@ module Stamps
         end
 
         def category_one
-          link = ElementWrapper.new (browser.as(text: "CATEGORY ONE").last)
+          link = BrowserElement.new (browser.as(text: "CATEGORY ONE").last)
           category_1 = VolusionCategoryOne.new param
           10.times do
             link.safe_click
@@ -321,7 +321,7 @@ module Stamps
         end
 
         def continue
-          button = ElementWrapper.new browser.text_field(id: "btnContinue")
+          button = BrowserElement.new browser.text_field(id: "btnContinue")
           shipping_address = VolusionShippingAddress.new param
           10.times do
             button.safe_click
@@ -349,11 +349,11 @@ module Stamps
         end
 
         def login
-          ElementWrapper.new browser.text_field(css: "input[src*=btn_login]")
+          BrowserElement.new browser.text_field(css: "input[src*=btn_login]")
         end
 
         def continue
-          button = ElementWrapper.new browser.img(css: "img[src*=Continue]")
+          button = BrowserElement.new browser.img(css: "img[src*=Continue]")
           webreg = VolusionRegistration.new param
           10.times do
             button.safe_click

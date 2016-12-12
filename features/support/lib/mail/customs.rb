@@ -19,7 +19,7 @@ module Stamps
       end
 
       def window_title
-        ElementWrapper.new (browser.span text: "Customs Information")
+        BrowserElement.new (browser.span text: "Customs Information")
       end
 
       def package_contents
@@ -89,7 +89,7 @@ module Stamps
 
       def add_item
         add_item_modal = AddItemModal.new param
-        button = ElementWrapper.new browser.span text: "Add Item"
+        button = BrowserElement.new browser.span text: "Add Item"
         5.times do
           element_helper.safe_click button
           return add_item_modal if add_item_modal.present?
@@ -99,7 +99,7 @@ module Stamps
 
       def edit_item
         edit_item_modal = EditItemModal.new param
-        button = ElementWrapper.new browser.span text: "Edit Item"
+        button = BrowserElement.new browser.span text: "Edit Item"
         5.times do
           element_helper.safe_click button
           return edit_item_modal if edit_item_modal.present?
@@ -108,7 +108,7 @@ module Stamps
       end
 
       def delete
-        button = ElementWrapper.new browser.span text: "Delete"
+        button = BrowserElement.new browser.span text: "Delete"
         element_helper.safe_click button
       end
 
@@ -193,14 +193,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
           value.to_i.times do
             button.safe_click
           end
@@ -222,14 +222,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
           value.to_i.times do
             button.safe_click
           end
@@ -250,14 +250,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[10]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[10]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[10]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[10]
           value.to_i.times do
             button.safe_click
           end
@@ -278,14 +278,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[11]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[11]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[11]
+          button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[11]
           value.to_i.times do
             button.safe_click
           end
@@ -301,12 +301,12 @@ module Stamps
         end
 
         def drop_down
-          ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[12]
+          BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[12]
         end
 
         def select selection
           logger.info "Select Origin Country #{selection}"
-          selection_label = ElementWrapper.new (browser.divs text: selection)[1]
+          selection_label = BrowserElement.new (browser.divs text: selection)[1]
           10.times {
             begin
               break if text_box.text.include? selection
@@ -330,14 +330,14 @@ module Stamps
       end
 
       def drop_down
-        ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
+        BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
       end
 
       def select selection
         logger.info "Select Package Contents #{selection}"
         box = text_box
         button = drop_down
-        selection_label = ElementWrapper.new browser.div text: selection
+        selection_label = BrowserElement.new browser.div text: selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -362,14 +362,14 @@ module Stamps
       end
 
       def drop_down
-        ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[10]
+        BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[10]
       end
 
       def select selection
         logger.info "Select Non Delivery Option #{selection}"
         box = text_box
         button = drop_down
-        selection_label = ElementWrapper.new browser.div text: selection
+        selection_label = BrowserElement.new browser.div text: selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -394,14 +394,14 @@ module Stamps
       end
 
       def drop_down
-        ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
+        BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
       end
 
       def select selection
         logger.info "Select Internal Transaction #{selection}"
         box = text_box
         button = drop_down
-        selection_label = ElementWrapper.new browser.div text: selection
+        selection_label = BrowserElement.new browser.div text: selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -448,7 +448,7 @@ module Stamps
 
       def browser_edit_form_button
         links = browser.links css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
-        ElementWrapper.new links.first
+        BrowserElement.new links.first
       end
 
       def edit_form
@@ -463,7 +463,7 @@ module Stamps
       end
 
       def browser_restrictions_button
-        ElementWrapper.new browser.span text: "Restrictions..."
+        BrowserElement.new browser.span text: "Restrictions..."
       end
 
       def restrictions
@@ -512,14 +512,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -542,14 +542,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -585,14 +585,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -628,14 +628,14 @@ module Stamps
         end
 
         def increment value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = ElementWrapper.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
           value.to_i.times do
             button.safe_click
           end
@@ -652,7 +652,7 @@ module Stamps
       end
 
       def delete
-        ElementWrapper.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
+        BrowserElement.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
       end
 
       def description
@@ -687,7 +687,7 @@ module Stamps
 
     class UspsPrivactActStatementModal < Browser::Modal
       def window_title
-        ElementWrapper.new browser.div text: "USPS Privacy Act Statement"
+        BrowserElement.new browser.div text: "USPS Privacy Act Statement"
       end
 
       def present?

@@ -5,8 +5,8 @@ module Stamps
 
       def initialize param
         super param
-        @web_apps ||= StampsCom.new param
-        @web_mail ||= @web_apps.mail
+        @helper.web_apps ||= StampsCom.new param
+        @web_mail ||= @helper.web_apps.mail
       end
 
       def present?
@@ -18,13 +18,13 @@ module Stamps
       end
 
       def place_order
-        place_order_button = ElementWrapper.new browser.button text: "Place Order"
+        place_order_button = BrowserElement.new browser.button text: "Place Order"
         page_header = browser.h1 text: 'Customize your Welcome Kit'
-        welcome_kit = ElementWrapper.new page_header
-        welcome_kit_message = ElementWrapper.new page_header.parent.p
+        welcome_kit = BrowserElement.new page_header
+        welcome_kit_message = BrowserElement.new page_header.parent.p
 
         download_page = DownloadPage.new param
-        #@web_apps.mail.landing_page.whats_new_modal
+        #@helper.web_apps.mail.landing_page.whats_new_modal
         place_order_button.safely_wait_until_present 10
 
         logger.info "Registration Page has loaded: #{browser.url}"

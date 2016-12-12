@@ -16,12 +16,12 @@ module Stamps
       end
 
       def save
-        button = ElementWrapper.new browser.span id: "sdc-extraservices-savebtn-btnIconEl"
+        button = BrowserElement.new browser.span id: "sdc-extraservices-savebtn-btnIconEl"
         button.click
       end
 
       def window_title
-        ElementWrapper.new (browser.span text: "Extra Services")
+        BrowserElement.new (browser.span text: "Extra Services")
       end
 
       def security
@@ -77,7 +77,7 @@ module Stamps
 
     class SpecialContentsModal < Browser::Modal
       def window_x_button
-        ElementWrapper.new (browser.imgs css: "img[class*='x-tool-close']")[1]
+        BrowserElement.new (browser.imgs css: "img[class*='x-tool-close']")[1]
       end
 
       def close_window
@@ -105,7 +105,7 @@ module Stamps
       end
 
       def save
-        button = ElementWrapper.new browser.span css: "span[id*=agreebtn-btnIconEl]"
+        button = BrowserElement.new browser.span css: "span[id*=agreebtn-btnIconEl]"
         button.click
         sleep(2)
       end
@@ -117,14 +117,14 @@ module Stamps
       end
 
       def drop_down
-        ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
+        BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
       end
 
       def select selection
         logger.info "Select Security #{selection}"
         box = text_box
         button = drop_down
-        selection_label = ElementWrapper.new browser.div text: selection
+        selection_label = BrowserElement.new browser.div text: selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?
@@ -159,14 +159,14 @@ module Stamps
       end
 
       def increment value
-        button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
+        button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[8]
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
+        button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[8]
         value.to_i.times do
           button.safe_click
         end
@@ -179,11 +179,11 @@ module Stamps
       end
 
       def form_3816
-        ElementWrapper.new browser.span css: "span[id*=sdc-extraserviceswin-codformbtn-btnIconEl]"
+        BrowserElement.new browser.span css: "span[id*=sdc-extraserviceswin-codformbtn-btnIconEl]"
       end
 
       def label
-        ElementWrapper.new browser.label text: 'COD:'
+        BrowserElement.new browser.label text: 'COD:'
       end
 
       def set value
@@ -205,14 +205,14 @@ module Stamps
       end
 
       def increment value
-        button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
+        button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-up]")[9]
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = ElementWrapper.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
+        button = BrowserElement.new (browser.divs css: "div[class*=x-form-spinner-down]")[9]
         value.to_i.times do
           button.safe_click
         end
@@ -225,14 +225,14 @@ module Stamps
       end
 
       def drop_down
-        ElementWrapper.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
+        BrowserElement.new (browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
       end
 
       def select selection
         logger.info "Select Handling: #{selection}"
         box = text_box
         button = drop_down
-        selection_label = ElementWrapper.new browser.div text: selection
+        selection_label = BrowserElement.new browser.div text: selection
         10.times {
           begin
             button.safe_click #unless selection_label.present?

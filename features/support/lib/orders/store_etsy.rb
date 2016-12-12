@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class EtsySettings < StoreSettings
         def window_title
-          ElementWrapper.new browser.div text: "Etsy Settings"
+          BrowserElement.new browser.div text: "Etsy Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Etsy < Browser::Modal
 
         def window_title
-          ElementWrapper.new(browser.div text: "Connect your Etsy Store")
+          BrowserElement.new(browser.div text: "Connect your Etsy Store")
         end
 
         def present?
@@ -30,19 +30,19 @@ module Stamps
         end
 
         def find_my_shops
-          button = ElementWrapper.new browser.span(text: "Find My Shops")
+          button = BrowserElement.new browser.span(text: "Find My Shops")
           button.safe_click
           button.safe_click
         end
 
         def available_shops
-          button = ElementWrapper.new ((browser.text_fields(css: "input[id^=combo-][id$=-inputEl]")).last)
+          button = BrowserElement.new ((browser.text_fields(css: "input[id^=combo-][id$=-inputEl]")).last)
           button.safe_click
           button.safe_click
         end
 
         def connect username, password
-          button = ElementWrapper.new browser.span(text: "Connect")
+          button = BrowserElement.new browser.span(text: "Connect")
           etsy_page = EtsyPage.new param
           sign_in_page = EtsySignInPage.new param
 
@@ -72,7 +72,7 @@ module Stamps
         end
 
         def reconnect username, password
-          button = ElementWrapper.new browser.span(text: "Connect")
+          button = BrowserElement.new browser.span(text: "Connect")
           etsy_page = EtsyPage.new param
           sign_in_page = EtsySignInPage.new param
 
@@ -105,7 +105,7 @@ module Stamps
       class ModifyEtsyStore < Etsy
 
         def window_title
-          ElementWrapper.new(browser.div text: "Modify your Etsy Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Etsy Store Connection")
         end
 
         def present?
@@ -120,7 +120,7 @@ module Stamps
       class ReconnectEtsyStore < Etsy
 
         def window_title
-          ElementWrapper.new(browser.div text: "Modify your Rakuten Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?
@@ -146,7 +146,7 @@ module Stamps
         end
 
         def sign_in
-          button = ElementWrapper.new browser.text_field(id: 'signin_button')
+          button = BrowserElement.new browser.text_field(id: 'signin_button')
           etsy_page = EtsyPage.new param
 
           10.times do
@@ -163,7 +163,7 @@ module Stamps
         end
 
         def allow_access
-          button = ElementWrapper.new browser.text_field(css: 'input[type=submit]')
+          button = BrowserElement.new browser.text_field(css: 'input[type=submit]')
           settings = EtsySettings.new param
 
           3.times do
@@ -177,7 +177,7 @@ module Stamps
         end
 
         def allow_access_after_reconnect
-          button = ElementWrapper.new browser.text_field(css: 'input[type=submit]')
+          button = BrowserElement.new browser.text_field(css: 'input[type=submit]')
           manage_stores = ManageStores.new param
 
           3.times do

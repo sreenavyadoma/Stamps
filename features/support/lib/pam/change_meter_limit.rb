@@ -20,8 +20,8 @@ module Stamps
         super param
         @usps_approval ||= USPSCheckbox.new param
         @new_meter_limit = TextboxElement.new browser.text_field(name: "resetAmt")
-        @current_meter = ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
-        @maximum_meter = ElementWrapper.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
+        @current_meter = BrowserElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
+        @maximum_meter = BrowserElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
       end
 
       def present?
@@ -37,7 +37,7 @@ module Stamps
       end
 
       def submit
-        button = Stamps::Browser::ElementWrapper.new browser.input(name: "submit")
+        button = Stamps::Browser::BrowserElement.new browser.input(name: "submit")
         change_success = ChangeMeterLimitSuccess.new param
         5.times do
           button.send_keys :enter
@@ -57,16 +57,16 @@ module Stamps
       end
 
       def wait_until_present *args
-        (ElementWrapper.new browser.td(text: "Change Meter Limit Success")).safely_wait_until_present *args
+        (BrowserElement.new browser.td(text: "Change Meter Limit Success")).safely_wait_until_present *args
       end
 
       def text
-        (ElementWrapper.new browser.td(text: "Change Meter Limit Success")).text
+        (BrowserElement.new browser.td(text: "Change Meter Limit Success")).text
       end
 
       def ok
         profile = CustomerProfile.new param
-        button = ElementWrapper.new browser.a(css: "a[href^=Profile]")
+        button = BrowserElement.new browser.a(css: "a[href^=Profile]")
         5.times do
           button.safely_wait_until_present 2
           button.safe_click

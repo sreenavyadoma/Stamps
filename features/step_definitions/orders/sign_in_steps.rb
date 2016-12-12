@@ -1,7 +1,8 @@
 Given /^Orders: Visit Sign-in page$/ do
   logger.step "Orders: Visit Sign-in page"
-  stamps.param.app = :orders
-  stamps.visit(:orders).should include "stamps.com"
+  stamps.helper.web_app = :orders
+  stamps.load_page
+  browser.url.should include "stamps.com"
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|

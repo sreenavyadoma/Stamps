@@ -158,16 +158,16 @@ end
 Then /^Details: Set Pounds to (.*)$/ do |value|
   logger.step "Details: Set Pounds to \"#{value}\""
   test_data[:lbs] = value
+  stamps.orders.order_details.weight.lbs.set test_data[:lbs]
   step "Details: Blur out"
-  stamps.orders.order_details.weight.lbs.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ounces to (.*)$/ do |value|
   logger.step "Details: Set Ounces to \"#{value}\""
   test_data[:oz] = value
+  stamps.orders.order_details.weight.oz.set test_data[:oz]
   step "Details: Blur out"
-  stamps.orders.order_details.weight.oz.set value
   step "Details: Save Total Ship Cost"
 end
 

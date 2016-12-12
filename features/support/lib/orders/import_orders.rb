@@ -15,7 +15,7 @@ module Stamps
       end
 
       def ok
-        button = ElementWrapper.new (browser.spans(text: "OK").last)
+        button = BrowserElement.new (browser.spans(text: "OK").last)
         5.times do
           button.safe_click
           break unless button.present?
@@ -28,7 +28,7 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.div(text: "Import Orders")
+        @title = BrowserElement.new browser.div(text: "Import Orders")
       end
 
       def present?
@@ -45,7 +45,7 @@ module Stamps
 
       def import
         success = SuccessModal.new param
-        button = ElementWrapper.new browser.span(text: "Import")
+        button = BrowserElement.new browser.span(text: "Import")
         server_error = Orders::Stores::ServerError.new param
         4.times do
           button.safe_click
@@ -62,7 +62,7 @@ module Stamps
       end
 
       def cancel
-        button = ElementWrapper.new browser.span(text: "Cancel")
+        button = BrowserElement.new browser.span(text: "Cancel")
         5.times do
           button.safe_click
           button.safe_click
@@ -73,7 +73,7 @@ module Stamps
       end
 
       def select_csv_file
-        button = ElementWrapper.new browser.span(text: "Select CSV File")
+        button = BrowserElement.new browser.span(text: "Select CSV File")
         open_file = Windows::OpenFile.new
         10.times do
           button.safe_click

@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class RakutenSettings < StoreSettings
         def window_title
-          ElementWrapper.new browser.div text: "Rakuten Settings"
+          BrowserElement.new browser.div text: "Rakuten Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Rakuten < Browser::Modal
 
         def window_title
-          ElementWrapper.new(browser.div text: "Connect your Rakuten Store")
+          BrowserElement.new(browser.div text: "Connect your Rakuten Store")
         end
 
         def present?
@@ -26,7 +26,7 @@ module Stamps
         end
 
         def close
-          button = ElementWrapper.new browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
+          button = BrowserElement.new browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
           5.times do
             button.safe_click
             break unless present?
@@ -54,11 +54,11 @@ module Stamps
         end
 
         def connect
-          button = ElementWrapper.new browser.span(text: "Connect")
+          button = BrowserElement.new browser.span(text: "Connect")
           settings = RakutenSettings.new param
           importing_order = Orders::Stores::ImportingOrdersModal.new param
           server_error = Orders::Stores::ServerError.new param
-          connecting_button = ElementWrapper.new browser.span(text: "Connecting...")
+          connecting_button = BrowserElement.new browser.span(text: "Connecting...")
 
           max_server_error_retry_count = 5
 
@@ -87,7 +87,7 @@ module Stamps
       class ModifyRakutenStore < Rakuten
 
         def window_title
-          ElementWrapper.new(browser.div text: "Modify your Rakuten Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?
