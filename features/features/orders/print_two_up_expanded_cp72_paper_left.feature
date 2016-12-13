@@ -8,22 +8,22 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To text area to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
+    Then Details: Set Ship-To to Domestic Address PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then Details: Select Service Priority Mail Express Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To text area to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
+    Then Details: Set Ship-To to Domestic Address PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To text area to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
+    Then Details: Set Ship-To to Domestic Address PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
     Then Details: Select Service Priority Mail International Large Flat Rate Box
@@ -35,7 +35,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Customs: Close Modal
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
     Then Details: Select Service Priority Mail Express International Package/Flat/Thick Envelope
@@ -47,7 +47,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then Customs: Close Modal
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
     Then Details: Select Service Priority Mail Express International Flat Rate Envelope

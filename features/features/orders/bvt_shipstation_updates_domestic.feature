@@ -8,7 +8,7 @@ Feature:  Update Order to ShipStation
   Scenario:  Update ShipStation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to domestic address
+    Then Details: Set Ship-To to Domestic Address
       | name       | company      | street_address   | street_address_2| city    | state | zip    | country       | phone        |  email           |
       | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States | 888-888-8888 | rtest@stamps.com |
 
@@ -57,7 +57,6 @@ Feature:  Update Order to ShipStation
     Then Details: Expect Ship-To Phone is 888-888-8888
     Then Details: Expect Ship-To Email is rtest@stamps.com
 
-    Then Details: Hide Ship-To fields
     Then Details: Expect Pound is 1
     Then Details: Expect Ounce is 1
 

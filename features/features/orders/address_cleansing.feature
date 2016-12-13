@@ -8,7 +8,7 @@ Feature: Address Cleansing
   Scenario: Address Cleansing
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to domestic address
+    Then Details: Set Ship-To to Domestic Address
       | name              | company | street_address   | street_address_2 | city       | state | zip | country       | phone          |  email           |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
 
@@ -26,6 +26,5 @@ Feature: Address Cleansing
     Then Toolbar: Add
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Select Service Priority Mail Package
-    Then Details: Hide Ship-To fields
     Then Sign out
 

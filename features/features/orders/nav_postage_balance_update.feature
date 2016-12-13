@@ -7,7 +7,6 @@ Feature: Mail Balance
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Hide Ship-To fields
     Then Details: Set Pounds to 1
     Then Details: Select Service Priority Mail Package
     Then Details: Set Insure-For to $10.00

@@ -24,7 +24,7 @@ Feature: As a batch shipper, I want to be able to print on SDC-1200 labels [B-01
     And I Add a new order
     Then Set Ship From to default
     Then Set Ship-To country to Canada
-    Then Set Ship-To to international address
+    Then Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 

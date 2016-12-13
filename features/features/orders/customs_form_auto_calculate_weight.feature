@@ -7,7 +7,7 @@ Feature: Auto-Calculate Customs Form Weight
   Scenario: Auto-Calculate Customs Form Weight
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
     Then Details: Select Service Priority Mail International Package

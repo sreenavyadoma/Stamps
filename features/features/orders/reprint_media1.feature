@@ -10,7 +10,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to domestic address
+    Then Details: Set Ship-To to Domestic Address
       | name         | company           | street_address  |street_address_2|  city        | state| zip   | country       | phone  |  email |
       | Reprint Test | 4.125 x 6.25 roll | 604 Arizona Ave |                | Santa Monica | CA   | 90401 | United States | 8885551212 | test@stamps.com |
     Then Details: Select Service Priority Mail Package

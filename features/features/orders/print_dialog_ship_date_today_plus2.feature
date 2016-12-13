@@ -7,7 +7,7 @@ Feature: Set Print Ship Date to Today + 2
   Scenario: Ship Date Today + 2
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To text area to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then Details: Set Ship-To to Domestic Address PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then Details: Set Ounces to 4
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Print: Open Modal

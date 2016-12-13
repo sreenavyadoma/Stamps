@@ -7,7 +7,7 @@ Feature: Internal Transaction Number Required for total over $2500
   Scenario: Customs Form Internal Transaction Number Required for total over $2500
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Details: Set Ounces to 5
