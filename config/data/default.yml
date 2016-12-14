@@ -163,7 +163,7 @@ orders_credentials:
       usr: vfknhokj9wq
       pw: pass111
     bvt_new_order:
-      usr: v8r4q2nb3dbv
+      usr: stgyvngqz27b66
       pw: pass111
     bvt_shipstation_updates_international:
       usr: stgqo0xzpzlgx
@@ -510,9 +510,6 @@ orders_credentials:
       pw: pass111
     bvt_international_shipping:
       usr: vfknhokj9wq
-      pw: pass111
-    bvt_new_order:
-      usr: v8r4q2nb3dbv
       pw: pass111
     bvt_shipstation_updates_international:
       usr: ccje975fmb

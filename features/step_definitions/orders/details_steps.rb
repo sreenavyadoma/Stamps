@@ -527,7 +527,7 @@ end
 Then /^Details: Set Ship-To to ambiguous address$/ do |table|
   ambiguous_address = ParameterHelper.format_address table.hashes.first
   logger.step "Details: Set Ship-To to ambiguous address \n#{ambiguous_address}"
-  stamps.orders.order_details.ship_to.domestic.ambiguous.set ambiguous_address
+  stamps.orders.order_details.ship_to.domestic.set_ambiguous ambiguous_address
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|

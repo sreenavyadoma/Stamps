@@ -61,7 +61,6 @@ module Stamps
           "Unable to select service #{service}".should eql ""
         end
       end
-
       class ShipToTextArea < TextboxElement
         def full_address
           50.times do
@@ -172,119 +171,91 @@ module Stamps
         end
       end
 
-      class ShipToCountryDom < Browser::Modal
-        attr_reader :text_box, :drop_down
-
-        def initialize param
-          super param
-          @drop_down = BrowserElement.new browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
-          @text_box = TextboxElement.new browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl")
-        end
-
-        def present?
-          drop_down.present?
-        end
-
-        def select country
-          logger.info "Select Country #{country}"
-          drop_down.safe_click
-          sleep 1
-          drop_down.safe_click
-          drop_down.safe_click
-          lis = browser.lis(text: country)
-          lis.size.should be_between(1, 2).inclusive
-
-          case lis.size
-            when 1
-              selection = BrowserElement.new lis[0]
-            when 2
-              if lis[0].text.size > 0
-                selection = BrowserElement.new  lis[0]
-              else
-                selection = BrowserElement.new  lis[1]
-              end
-            else
-              lis.size.should be_between(1, 2).inclusive
-          end
-
-          10.times do
-            break if text_box.text.include? country
-            drop_down.safe_click unless selection.present?
-            selection.safe_scroll_into_view
-            selection.safe_scroll_into_view
-            selection.safe_click if selection.present?
-            logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-            break if text_box.text.include? country
-            break if text_box.text.include? country
-          end
-          logger.info "#{country} selected."
-          text_box.text.should include country
-        end
-      end
-
-      class ShipToCountryInt < Browser::Modal
-        attr_reader :text_box, :drop_down
-
-        def initialize param
-          super param
-          @drop_down = BrowserElement.new browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
-          @text_box = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
-        end
-
-        def present?
-          drop_down.present?
-        end
-
-        def select country
-          logger.info "Select Country #{country}"
-          drop_down.safe_click
-          sleep 1
-          drop_down.safe_click
-          drop_down.safe_click
-          lis = browser.lis(text: country)
-          lis.size.should be_between(1, 2).inclusive
-
-          case lis.size
-            when 1
-              selection = BrowserElement.new lis[0]
-            when 2
-              selection = BrowserElement.new lis[1]
-            else
-              lis.size.should be_between(1, 2).inclusive
-          end
-
-          10.times do
-            break if text_box.text.include? country
-            drop_down.safe_click unless selection.present?
-            selection.safe_scroll_into_view
-            selection.safe_scroll_into_view
-            selection.safe_click if selection.present?
-            logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-            break if text_box.text.include? country
-            break if text_box.text.include? country
-          end
-          logger.info "#{country} selected."
-          text_box.text.should include country
-        end
-      end
-
       class ShipToCountry < Browser::Modal
-        attr_reader :domestic, :international
+        attr_reader :text_box_dom, :text_box_int, :drop_down_dom, :drop_down_int,
+                    :dom_drop_down_stg, :int_drop_down_stg, :dom_text_box_stg, :int_text_box_stg
 
         def initialize param
           super param
-          @domestic = ShipToCountryDom.new param
-          @international = ShipToCountryInt.new param
+          @drop_down_dom = BrowserElement.new browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
+          @drop_down_int = BrowserElement.new browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
+          @text_box_dom = TextboxElement.new browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl")
+          @text_box_int = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
+
+          @dom_drop_down_stg = BrowserElement.new browser.div(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div[id^=combo-][id$=-trigger-picker]")
+          @dom_text_box_stg = TextboxElement.new browser.text_field(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
+          @int_drop_down_stg = BrowserElement.new browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div:nth-child(2)>div>div:nth-child(2)")
+          @int_text_box_stg = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div>div>div>input")
+        end
+
+        def present?
+          drop_down.present?
+        end
+
+        def text_box
+          50.times do
+            return text_box_dom if text_box_dom.present?
+            return text_box_int if text_box_int.present?
+
+            return dom_text_box_stg if dom_text_box_stg.present?
+            return int_text_box_stg if int_text_box_stg.present?
+          end
+          #(text_box_dom.present? || text_box_int.present?).should be true
+          (dom_text_box_stg.present? || int_text_box_stg.present? || text_box_dom.present? || text_box_int.present?).should be true
+        end
+
+        def  drop_down
+          50.times do
+            return drop_down_dom if drop_down_dom.present?
+            return drop_down_int if drop_down_int.present?
+
+            return dom_drop_down_stg if dom_drop_down_stg.present?
+            return int_drop_down_stg if int_drop_down_stg.present?
+          end
+          #(drop_down_dom.present? || drop_down_int.present?).should be true
+          (drop_down_dom.present? || drop_down_dom.present? || dom_drop_down_stg.present? || int_drop_down_stg.present?).should be true
+        end
+
+        def selected? country
+          text_box.text == country
         end
 
         def select country
-          if domestic.present?
-            domestic.select country
-          elsif international.present?
-            international.select country
-          else
-            "Unable to Select Country : #{country}. Domester or International drop-downs were not detected. Check your page object.".should eql "Select Country : #{country}."
-          end
+          logger.info "Select Country #{country}"
+          begin
+            drop_down.safe_click
+            sleep 1
+            drop_down.safe_click
+            drop_down.safe_click
+            lis = browser.lis(text: country)
+            lis.size.should be_between(1, 2).inclusive
+
+            case lis.size
+              when 1
+                selection = BrowserElement.new lis[0]
+              when 2
+                if lis[0].text.size > 0
+                  selection = BrowserElement.new  lis[0]
+                else
+                  selection = BrowserElement.new  lis[1]
+                end
+              else
+                lis.size.should be_between(1, 2).inclusive
+            end
+
+            10.times do
+              break if text_box.text.include? country
+              drop_down.safe_click unless selection.present?
+              selection.safe_scroll_into_view
+              selection.safe_scroll_into_view
+              selection.safe_click if selection.present?
+              logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+              break if text_box.text.include? country
+              break if text_box.text.include? country
+            end
+            logger.info "#{country} selected."
+            text_box.text.should include country
+          end unless text_box.text.include? country
         end
       end
 
@@ -315,75 +286,6 @@ module Stamps
 
         def present?
           name.present?
-        end
-      end
-
-      class ShipToDomestic < Browser::Modal
-        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element, :text_area, :email, :phone
-
-        def initialize param
-          super param
-          @ambiguous = AmbiguousAddress.new param
-          @auto_suggest = AutoSuggestDomestic.new param
-
-          @less_link = BrowserElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
-
-          @blur_element = BlurOutElement.new param
-
-          dom_text_area = browser.textarea(name: "freeFormAddress")
-          error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
-          error_field_attribute = "data-errorqtip"
-          @text_area = ShipToTextArea.new dom_text_area, error_field, error_field_attribute
-
-          field = browser.text_field name: 'BuyerEmail'
-          error_field = (browser.divs css: "div[data-errorqtip*=email]") #FIX ME, REMOVED [0]
-          error_field_attribute = "data-errorqtip"
-          @email = TextboxElement.new field, error_field, error_field_attribute
-          @phone = TextboxElement.new browser.text_field(name: "ShipPhone")
-        end
-
-        def blur_out
-          blur_element.blur_out
-        end
-
-        def present?
-          dom_text_area.present?
-        end
-
-        def less
-          less_link.click_while_present
-        end
-
-        def show_address
-          collapsed_address_dd.click_while_present
-        end
-
-        def set address
-          5.times do
-            begin
-              text_area.set address
-              30.times do
-                blur_out
-                break if less.present?
-                blur_out
-              end
-              break if less.present?
-            rescue
-              "Unable to Ship-To address to #{address}".should eql "Set Ship-To Address Failed"
-            end
-          end
-          text_area.text.should include address.split(" ").last
-        end
-      end
-
-      class ShipTo < Browser::Modal
-        attr_reader :country, :international, :domestic
-        def initialize param
-          super param
-          @country = ShipToCountry.new param
-          @domestic = ShipToDomestic.new param
-          @international = ShipToInternational.new param
         end
       end
 
@@ -498,20 +400,76 @@ module Stamps
           @address_not_found = AddressNotFound.new param
         end
 
-        def set address
-          text_box = self.text_area
+        def data_error
+          text_area.data_error_qtip
+        end
+      end
 
-          10.times do
-            text_box.set address
-            blur_out
-            address_not_found.wait_until_present 4
-            return address_not_found if address_not_found.present? if address_not_found.present?
-          end
-          "Exact Address Not Found module did not appear.".should eql ""
+      class ShipToDomestic < Browser::Modal
+        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element, :text_area, :email, :phone,
+                    :address_not_found
+
+        def initialize param
+          super param
+          @ambiguous = AmbiguousAddress.new param
+          @auto_suggest = AutoSuggestDomestic.new param
+          @less_link = BrowserElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
+          @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
+          @blur_element = BlurOutElement.new param
+          dom_text_area = browser.textarea(name: "freeFormAddress")
+          error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
+          error_field_attribute = "data-errorqtip"
+          @text_area = ShipToTextArea.new dom_text_area, error_field, error_field_attribute
+          field = browser.text_field name: 'BuyerEmail'
+          error_field = (browser.divs css: "div[data-errorqtip*=email]") #FIX ME, REMOVED [0]
+          error_field_attribute = "data-errorqtip"
+          @email = TextboxElement.new field, error_field, error_field_attribute
+          @phone = TextboxElement.new browser.text_field(name: "ShipPhone")
+          @address_not_found = AddressNotFound.new param
         end
 
-        def data_error
-          self.text_area.data_error_qtip
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def present?
+          dom_text_area.present?
+        end
+
+        def less
+          less_link.click_while_present
+        end
+
+        def show_address
+          collapsed_address_dd.click_while_present
+        end
+
+        def set address
+          10.times do
+            begin
+              text_area.set address
+              15.times do
+                blur_out
+                break if less_link.present?
+              end
+              break if less_link.present?
+            rescue Exception => e
+              logger.error e.message
+              logger.error e.backtrace.join("\n")
+              "Unable to Ship-To address to #{address}. Error: #{e.message}".should eql "Set Ship-To Address Failed"
+            end
+          end
+          text_area.text.should include address.split(" ").last
+        end
+
+        def set_ambiguous address
+          10.times do
+            text_area.set address
+            blur_out
+            address_not_found.wait_until_present 4
+            return address_not_found if address_not_found.present?
+          end
+          "Exact Address Not Found module did not appear.".should eql ""
         end
       end
 
@@ -538,6 +496,16 @@ module Stamps
               #ignore
             end
           }
+        end
+      end
+
+      class ShipTo < Browser::Modal
+        attr_reader :country, :international, :domestic
+        def initialize param
+          super param
+          @country = ShipToCountry.new param
+          @domestic = ShipToDomestic.new param
+          @international = ShipToInternational.new param
         end
       end
 
