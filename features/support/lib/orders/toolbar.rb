@@ -223,6 +223,8 @@ module Stamps
         end
 
         def print_modal
+          return orders_print_modal if orders_print_modal.present?
+
           expectation = "Print Modal is present"
           if orders_print_modal.present?
             logger.info "Print Modal is Present"

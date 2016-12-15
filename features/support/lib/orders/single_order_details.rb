@@ -61,6 +61,7 @@ module Stamps
           "Unable to select service #{service}".should eql ""
         end
       end
+
       class ShipToTextArea < TextboxElement
         def full_address
           50.times do
@@ -406,7 +407,7 @@ module Stamps
       end
 
       class ShipToDomestic < Browser::Modal
-        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element, :text_area, :email, :phone,
+        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element
                     :address_not_found
 
         def initialize param
@@ -416,17 +417,36 @@ module Stamps
           @less_link = BrowserElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
           @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
           @blur_element = BlurOutElement.new param
-          dom_text_area = browser.textarea(name: "freeFormAddress")
-          error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
-          error_field_attribute = "data-errorqtip"
-          @text_area = ShipToTextArea.new dom_text_area, error_field, error_field_attribute
-          field = browser.text_field name: 'BuyerEmail'
-          error_field = (browser.divs css: "div[data-errorqtip*=email]") #FIX ME, REMOVED [0]
-          error_field_attribute = "data-errorqtip"
-          @email = TextboxElement.new field, error_field, error_field_attribute
-          @phone = TextboxElement.new browser.text_field(name: "ShipPhone")
           @address_not_found = AddressNotFound.new param
         end
+
+        def text_area
+          show_address
+          dom_text_area = browser.textarea(name: "freeFormAddress")
+          error_field = browser.a css: "a[data-errorqtip*=address]"
+          error_field_attribute = "data-errorqtip"
+          @text_area ||= ShipToTextArea.new dom_text_area, error_field, error_field_attribute
+          @text_area.present?.should be true
+          @text_area
+        end
+
+        def email
+          show_address
+          field = browser.text_field name: 'BuyerEmail'
+          error_field = (browser.divs css: "div[data-errorqtip*=email]")
+          error_field_attribute = "data-errorqtip"
+          @email ||= TextboxElement.new field, error_field, error_field_attribute
+          @email.present?.should be true
+          @email
+        end
+
+        def phone
+          show_address
+          @phone ||= TextboxElement.new browser.text_field(name: "ShipPhone")
+          @phone.present?.should be true
+          @phone
+        end
+
 
         def blur_out
           blur_element.blur_out
@@ -954,17 +974,19 @@ module Stamps
 
         def select selection
           drop_down.present?.should be true
-          5.times {
+          20.times do
             begin
               drop_down.safe_click
               selection_label = tracking_selection(selection).first
               drop_down.safe_click unless selection_label.present?
               element_helper.safe_click selection_label
               break if text_box.text.include? selection
-            rescue
-              #ignore
+            rescue Exception => e
+              logger.error e.message
+              logger.error e.backtrace.join("\n")
+              "Unable to select Tracking #{selection}. Error: #{e.message}".should eql "Select Tracking #{selection}"
             end
-          }
+          end
           text_box.text.should include selection
         end
 
@@ -1184,6 +1206,7 @@ module Stamps
           end
 
           def set value
+            text_box.present?.should be true
             15.times do
               text_box.set value
               blur_element.blur_out
@@ -1193,14 +1216,17 @@ module Stamps
           end
 
           def text
+            text_box.present?.should be true
             text_box.text
           end
 
           def increment
+            increment_btn.present?.should be true
             increment_btn.click
           end
 
           def decrement
+            decrement_btn.present?.should be true
             decrement_btn.click
           end
         end
@@ -1217,6 +1243,7 @@ module Stamps
           end
 
           def set value
+            text_box.present?.should be true
             15.times do
               text_box.set value
               blur_element.blur_out
@@ -1226,14 +1253,17 @@ module Stamps
           end
 
           def text
+            text_box.present?.should be true
             text_box.text
           end
 
           def increment
+            increment_btn.present?.should be true
             increment_btn.click
           end
 
           def decrement
+            decrement_btn.present?.should be true
             decrement_btn.click
           end
         end
@@ -1258,12 +1288,17 @@ module Stamps
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]"
           end
 
+          def text
+            text_box.present?.should be true
+            text_box.text
+          end
+
           def set value
-            text_field = text_box
+            text_box.present?.should be true
             value = value.to_i
-            max = value + text_field.text.to_i
+            max = value + text_box.text.to_i
             max.times do
-              current_value = text_field.text.to_i
+              current_value = text_box.text.to_i
               break if value == current_value
               if value > current_value
                 increment 1
@@ -1272,17 +1307,19 @@ module Stamps
               end
               break if value == current_value
             end
-            sleep 1
-            logger.info "Length set to #{text_field.text}"
+            text.to_i.should eql value
+            logger.info "Length set to #{text_box.text}"
           end
 
           def increment value
+            increment_button.present?.should be true
             value.to_i.times do
               increment_button.safe_click
             end
           end
 
           def decrement value
+            decrement_button.present?.should be true
             value.to_i.times do
               decrement_button.safe_click
             end
@@ -1299,7 +1336,13 @@ module Stamps
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]"
           end
 
+          def text
+            text_box.present?.should be true
+            text_box.text
+          end
+
           def set value
+            text_box.present?.should be true
             value = value.to_i
             max = value + text_box.text.to_i
             max.times do
@@ -1312,17 +1355,19 @@ module Stamps
               end
               break if value == current_value
             end
-            sleep 1
+            text.to_i.should eql value
             logger.info "Width set to #{text_box.text}"
           end
 
           def increment value
+            increment_button.present?.should be true
             value.to_i.times do
               increment_button.safe_click
             end
           end
 
           def decrement value
+            decrement_button.present?.should be true
             value.to_i.times do
               decrement_button.safe_click
             end
@@ -1339,7 +1384,13 @@ module Stamps
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=down]"
           end
 
+          def text
+            text_box.present?.should be true
+            text_box.text
+          end
+
           def set value
+            text_box.present?.should be true
             value = value.to_i
             max = value + text_box.text.to_i
             max.times do
@@ -1352,17 +1403,19 @@ module Stamps
               end
               break if value == current_value
             end
-            sleep 1
+            text.to_i.should eql value
             logger.info "Height set to #{text_box.text}"
           end
 
           def increment value
+            increment_button.present?.should be true
             value.to_i.times do
               increment_button.safe_click
             end
           end
 
           def decrement value
+            decrement_button.present?.should be true
             value.to_i.times do
               decrement_button.safe_click
             end
@@ -1370,8 +1423,25 @@ module Stamps
         end
       end
 
+      class InsuranceTermsConditions < Browser::Modal
+        def present?
+          @window_title_element = BrowserElement.new browser.divs(text: "Stamps.com Insurance Terms and Conditions").first
+          @window_title_element.present?
+        end
+
+        def i_agree
+          @i_agree_element = BrowserElement.new browser.spans(text: "I Agree").first
+          @i_agree_element.click_while_present
+        end
+
+        def cancel
+          @cancel_element = BrowserElement.new browser.spans(text: "Cancel").first
+          @cancel_element.click_while_present
+        end
+      end
+
       class DetailsInsureFor < Browser::Modal
-        attr_reader :checkbox, :text_box, :cost_label, :increment_trigger, :decrement_trigger
+        attr_reader :checkbox, :text_box, :cost_label, :increment_trigger, :decrement_trigger, :insurance_terms_conditions, :blur_element
 
         def initialize param
           super param
@@ -1383,11 +1453,27 @@ module Stamps
           field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
           verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
           @checkbox ||= CheckboxElement.new field, verify, "class", "checked"
+          @insurance_terms_conditions = InsuranceTermsConditions.new param
+          @blur_element = BlurOutElement.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
         end
 
         def set value
           checkbox.check
-          text_box.set value
+          30.times do
+            text_box.set value
+            blur_out
+            blur_out
+            return insurance_terms_conditions if insurance_terms_conditions.present?
+          end
+          insurance_terms_conditions.present?.should be true
+        end
+
+        def set_and_agree value
+          set(value).i_agree
         end
 
         def increment value

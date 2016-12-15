@@ -231,7 +231,7 @@ end
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   test_data[:insure_for] = value
   logger.step "Details: Set Insure-For to #{test_data[:insure_for]}"
-  stamps.orders.order_details.insure_for.set test_data[:insure_for]
+  stamps.orders.order_details.insure_for.set(test_data[:insure_for]).i_agree
   20.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > 0
     step "Details: Blur out"
@@ -315,8 +315,6 @@ Then /^Details: Set Ship-To to Domestic Address$/ do |table|
   name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
   company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
   city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
   street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
 
   if address_table['street_address_2'].nil?
@@ -324,6 +322,9 @@ Then /^Details: Set Ship-To to Domestic Address$/ do |table|
   else
     street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
   end
+
+  #phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  #email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
 
   state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
   zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
@@ -335,18 +336,19 @@ Then /^Details: Set Ship-To to Domestic Address$/ do |table|
   test_data[:name] = name
   test_data[:company] = company
   test_data[:city] = city
-  test_data[:phone] = phone
-  test_data[:email] = email
   test_data[:street_address] = street_address
   test_data[:street_address_2] = street_address_2
   test_data[:state] = state
   test_data[:zip] = zip
   test_data[:country] = country
 
+  #test_data[:phone] = phone
+  #test_data[:email] = email
+
   step "Details: Set Ship-To Country to #{test_data[:country]}"
   step "Details: Set Ship-To to Domestic Address #{test_data[:ship_to]}"
-  step "Details: Set Phone to #{test_data[:phone]}"
-  step "Details: Set Email to #{test_data[:email]}"
+  #step "Details: Set Phone to #{test_data[:phone]}"
+  #step "Details: Set Email to #{test_data[:email]}"
 end
 
 Then /^Details: Set Ship-To to International Address$/ do |table|

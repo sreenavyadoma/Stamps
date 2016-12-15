@@ -163,16 +163,14 @@ module Stamps
       end
 
       def select media
-        drop_down = self.drop_down
-        text_box = self.text_box
-        media_selection = selection media
-
-        10.times do
-          input_text = text_box.text
-          break if input_text.include? media
-          drop_down.safe_click unless media_selection.present?
-          media_selection.safe_click
-        end
+        begin
+          lov_item = selection(media)
+          10.times do
+            break if text_box.text.include? media
+            drop_down.safe_click unless lov_item.present?
+            lov_item.safe_click
+          end
+        end unless text_box.text.include? media
       end
 
       def tooltip media
@@ -325,7 +323,7 @@ module Stamps
       def initialize param
         super param
         @drop_down = BrowserElement.new (browser.divs css: "div[id^=combo-][id$=-trigger-picker]").last
-        @text_box = TextboxElement.new browser.text_field name: "paperTrays"
+        @text_box = TextboxElement.new browser.text_field(name: "paperTrays")
       end
 
       def select selection
@@ -402,10 +400,10 @@ module Stamps
         @paper_tray ||= PaperTray.new param
         @date_picker = DatePicker.new param
         @printing_on ||= PrintingOn.new param
-        @ship_date = TextboxElement.new browser.text_field name: "sdc-printpostagewindow-shipdate-inputEl"
+        @ship_date = TextboxElement.new browser.text_field(css: "input[name^=datefield-][name$=-inputEl]")
         @print_options ||= PrintOptions.new param
-        @print_button = BrowserElement.new browser.span id: 'sdc-printwin-printbtn-btnInnerEl'
-        @print_sample_button = BrowserElement.new browser.span text: 'Print: Print Sample'
+        @print_button = BrowserElement.new browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')
+        @print_sample_button = BrowserElement.new browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')
         @printer ||= Printer.new param
 
         checkbox_field = browser.text_field id: "sdc-mainpanel-cmcheckbox-inputEl"

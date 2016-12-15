@@ -314,6 +314,24 @@ module Stamps
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
                   loading_orders.safely_wait_while_present 2
                 else
                   break
@@ -340,6 +358,21 @@ module Stamps
             end
 
             if invalid_username.present?
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
               logger.error invalid_username.text
               logger.error invalid_username.text
               logger.error invalid_username.text

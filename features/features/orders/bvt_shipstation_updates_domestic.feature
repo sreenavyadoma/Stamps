@@ -9,15 +9,17 @@ Feature:  Update Order to ShipStation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Domestic Address
-      | name       | company      | street_address   | street_address_2| city    | state | zip    | country       | phone        |  email           |
-      | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States | 888-888-8888 | rtest@stamps.com |
+      | name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
+      | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
+    #Then Details: Set Phone to 888-888-8888
+    #Then Details: Set Email to rtest@stamps.com
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
 
     Then Details: Select Service Priority Mail Package
 
-    Then Details: Set Insure-For to $100.00
+    #Then Details: Set Insure-For to $100.00
 
     Then Details: Set Tracking to Signature Required
 
@@ -54,8 +56,8 @@ Feature:  Update Order to ShipStation
     Then Details: Expect Ship-To Cleansed State is FL
     Then Details: Expect Ship-To Cleansed Zip Plus 4 Code is 32801-1175
     Then Details: Expect Ship-To Cleansed Zip Code is 32801
-    Then Details: Expect Ship-To Phone is 888-888-8888
-    Then Details: Expect Ship-To Email is rtest@stamps.com
+    #Then Details: Expect Ship-To Phone is 888-888-8888
+    #Then Details: Expect Ship-To Email is rtest@stamps.com
 
     Then Details: Expect Pound is 1
     Then Details: Expect Ounce is 1
@@ -67,8 +69,8 @@ Feature:  Update Order to ShipStation
     #Then Details: Expect Service Cost saved value is the same
     Then Details: Expect Service is Priority Mail Package
 
-    Then Details: Expect Insure-For is $100.00
-    Then Details: Expect Insure-For Cost saved value is the same
+    #Then Details: Expect Insure-For is $100.00
+    #Then Details: Expect Insure-For Cost saved value is the same
 
     Then Details: Expect Tracking is Signature Required
     Then Details: Expect Tracking Cost saved value is correct
@@ -88,8 +90,8 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect City is Orlando
     Then Grid: Expect State is FL
     Then Grid: Expect Zip is 32801-1175
-    Then Grid: Expect Phone is 888-888-8888
-    Then Grid: Expect Email is rtest@stamps.com
+    #Then Grid: Expect Phone is 888-888-8888
+    #Then Grid: Expect Email is rtest@stamps.com
 
     Then Grid: Expect Qty. is 1
     Then Grid: Expect Item SKU is Item 1 SKU
@@ -106,7 +108,7 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect Pounds is 1
     Then Grid: Expect Ounces is 1
 
-    Then Grid: Expect Insured Value is $100.00
+    #Then Grid: Expect Insured Value is $100.00
 
     Then Print: Open Modal
     Then Print: Close Modal
