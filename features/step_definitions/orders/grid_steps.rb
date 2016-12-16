@@ -59,14 +59,17 @@ When /^Grid: Uncheck row (\d+)$/ do |row|
 end
 
 Then /^Grid: Uncheck Saved Order ID$/ do
-  logger.step "Grid: Uncheck Saved Order ID#{test_data[:order_id]}"
+  logger.step "Grid: Uncheck Saved Order ID #{test_data[:order_id]}"
   stamps.orders.grid.checkbox.uncheck_order(test_data[:order_id])
   stamps.orders.grid.checkbox.order_checked?(test_data[:order_id]).should be false
 end
 
 Then /^Grid: Check Saved Order ID$/ do
   logger.step "Grid: Check Saved Order ID #{test_data[:order_id]}"
-  stamps.orders.grid.checkbox.check_order(test_data[:order_id])
+  5.times do
+    stamps.orders.grid.checkbox.check_order(test_data[:order_id])
+    break if stamps.orders.grid.checkbox.order_checked?(test_data[:order_id])
+  end
   stamps.orders.grid.checkbox.order_checked?(test_data[:order_id]).should be true
 end
 

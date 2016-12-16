@@ -115,7 +115,7 @@ module Stamps
               columns.each_with_index do |element, index|
                 scroll element
                 if element_helper.text(element) == GRID_COLUMNS[column]
-                  logger.message "Grid:  #{GRID_COLUMNS[column]} is in column #{index+1}"
+                  logger.message "Grid: -- #{GRID_COLUMNS[column]} is in column #{index+1}"
                   return index+1
                 end
               end
@@ -135,7 +135,7 @@ module Stamps
               scroll element
               row_text = element_helper.text element
               if row_text.include? order_id
-                logger.message "Grid: Order ID #{order_id} is in row #{index+1}"
+                logger.message "Grid: -- Order ID #{order_id} is in row #{index+1}"
                 return index + 1
               end
             end
@@ -883,7 +883,7 @@ module Stamps
 
         def order_checked? order_number
           scroll_into_view
-          checked? row_number order_number
+          checked? row_number(order_number)
         end
 
         def checked_rows *args
