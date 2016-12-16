@@ -310,7 +310,7 @@ Then /^Details: Set Service to (.*)$/ do |service|
   end
   step "Details: Save Total Ship Cost"
   test_data[:service_cost] = stamps.orders.order_details.service.cost
-  logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
+  logger.step "Service Cost: $#{test_data[:service_cost]}"
 end
 
 Then /^Details: Expect Service is \"(.*)\"$/ do |expectation|

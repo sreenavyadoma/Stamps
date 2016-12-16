@@ -946,107 +946,12 @@ module Stamps
         end
       end
 
-      class DetailsTracking < Browser::Modal
-        attr_reader :text_box, :cost_label, :drop_down, :blur_element
-        def initialize param
-          super param
-          @text_box = TextboxElement.new browser.text_field(name: 'Tracking')
-          @cost_label = BrowserElement.new browser.label(css: "label[class*=selected_tracking_cost]")
-          @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
-          @blur_element = BlurOutElement.new param
-        end
-
-        def blur_out
-          blur_element.blur_out
-        end
-
-        def tracking_selection selection
-          if selection.downcase.include? "usps"
-            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
-          elsif selection.downcase.include? "signature"
-            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
-          elsif selection.downcase.include? "none"
-            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
-          else
-            "#{selection} is not a valid selection".should eql "Valid selections are USPS Tracking and Signature Required"
-          end
-        end
-
-        def select selection
-          drop_down.present?.should be true
-          20.times do
-            begin
-              drop_down.safe_click
-              selection_label = tracking_selection(selection).first
-              drop_down.safe_click unless selection_label.present?
-              element_helper.safe_click selection_label
-              break if text_box.text.include? selection
-            rescue Exception => e
-              logger.error e.message
-              logger.error e.backtrace.join("\n")
-              "Unable to select Tracking #{selection}. Error: #{e.message}".should eql "Select Tracking #{selection}"
-            end
-          end
-          text_box.text.should include selection
-        end
-
-        def inline_cost selection
-          tds = tracking_selection(selection)
-          tds.size.should equal 2
-          selection_label = BrowserElement.new tds.last
-          5.times do
-            begin
-              drop_down.safe_click unless selection_label.present?
-              return selection_label.text if selection_label.present?
-
-              drop_down.safe_click
-              selection_label = tracking_selection(selection).last
-              drop_down.safe_click unless selection_label.present?
-              return element_helper.text selection_label if selection_label.present?
-            rescue
-              #ignore
-            end
-            "Unable to fetch inline cost for #{selection}".should eql "Details - Tracking inline cost"
-          end
-        end
-
-        def cost
-          10.times do
-            begin
-              cost_label.text.include? "$"
-            rescue
-              #ignore
-            end
-          end
-          cost_label.text.should include "$"
-          ParameterHelper.remove_dollar_sign cost_label.text
-        end
-
-        def tooltip selection
-          button = drop_down
-          selection_label = browser.td text: selection
-          5.times {
-            begin
-              button.safe_click unless selection_label.present?
-              if selection_label.present?
-                qtip = selection_label.parent.parent.parent.parent.attribute_value "data-qtip"
-                logger.info "#{qtip}"
-                return qtip
-              end
-            rescue
-              #ignore
-            end
-          }
-        end
-      end
-
       class DetailsService < Browser::Modal
-        attr_reader :text_box, :drop_down, :cost_label, :blur_element
+        attr_reader :text_box, :drop_down, :blur_element
         def initialize param
           super param
           @text_box = TextboxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
           @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
-          @cost_label = BrowserElement.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
           @blur_element = BlurOutElement.new param
         end
 
@@ -1123,6 +1028,15 @@ module Stamps
           end
         end
 
+        def cost_label
+          labels = browser.label(text: "Service:").parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
+          end
+          cost_element
+        end
+
         def cost
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end
@@ -1183,6 +1097,162 @@ module Stamps
 
         def enabled? service
           !(self.disabled? service)
+        end
+      end
+
+      class DetailsInsureFor < Browser::Modal
+        attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :insurance_terms_conditions, :blur_element
+
+        def initialize param
+          super param
+          @text_box = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
+          @decrement_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
+          @increment_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
+
+          field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
+          verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
+          @checkbox ||= CheckboxElement.new field, verify, "class", "checked"
+          @insurance_terms_conditions = InsuranceTermsConditions.new param
+          @blur_element = BlurOutElement.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def set value
+          checkbox.check
+          5.times do
+            text_box.set value
+            blur_out
+            blur_out
+            return insurance_terms_conditions if insurance_terms_conditions.present?
+          end
+          nil
+        end
+
+        def set_and_agree value
+          insurance_terms_conditions = set(value)
+          insurance_terms_conditions.i_agree unless insurance_terms_conditions.nil?
+        end
+
+        def increment value
+          value.to_i.times do
+            increment_trigger.safe_click
+          end
+        end
+
+        def decrement value
+          value.to_i.times do
+            decrement_trigger.safe_click
+          end
+        end
+
+        def cost_label
+          labels = browser.label(text: "Insure For $:").parent.parent.parent.parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
+          end
+          cost_element
+        end
+
+        def cost
+          ParameterHelper.remove_dollar_sign(cost_label.text)
+        end
+      end
+
+      class DetailsTracking < Browser::Modal
+        attr_reader :text_box, :drop_down, :blur_element
+        def initialize param
+          super param
+          @text_box = TextboxElement.new browser.text_field(name: 'Tracking')
+          @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
+          @blur_element = BlurOutElement.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def tracking_selection selection
+          if selection.downcase.include? "usps"
+            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "signature"
+            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "none"
+            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
+          else
+            "#{selection} is not a valid selection".should eql "Valid selections are USPS Tracking and Signature Required"
+          end
+        end
+
+        def select selection
+          drop_down.present?.should be true
+          20.times do
+            begin
+              drop_down.safe_click
+              selection_label = tracking_selection(selection).first
+              drop_down.safe_click unless selection_label.present?
+              element_helper.safe_click selection_label
+              break if text_box.text.include? selection
+            rescue Exception => e
+              logger.error e.message
+              logger.error e.backtrace.join("\n")
+              "Unable to select Tracking #{selection}. Error: #{e.message}".should eql "Select Tracking #{selection}"
+            end
+          end
+          text_box.text.should include selection
+        end
+
+        def inline_cost selection
+          tds = tracking_selection(selection)
+          tds.size.should equal 2
+          selection_label = BrowserElement.new tds.last
+          5.times do
+            begin
+              drop_down.safe_click unless selection_label.present?
+              return selection_label.text if selection_label.present?
+
+              drop_down.safe_click
+              selection_label = tracking_selection(selection).last
+              drop_down.safe_click unless selection_label.present?
+              return element_helper.text selection_label if selection_label.present?
+            rescue
+              #ignore
+            end
+            "Unable to fetch inline cost for #{selection}".should eql "Details - Tracking inline cost"
+          end
+        end
+
+        def cost_label
+          labels = browser.label(text: "Tracking:").parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
+          end
+          cost_element
+        end
+
+        def cost
+          ParameterHelper.remove_dollar_sign(cost_label.text)
+        end
+
+        def tooltip selection
+          button = drop_down
+          selection_label = browser.td text: selection
+          5.times {
+            begin
+              button.safe_click unless selection_label.present?
+              if selection_label.present?
+                qtip = selection_label.parent.parent.parent.parent.attribute_value "data-qtip"
+                logger.info "#{qtip}"
+                return qtip
+              end
+            rescue
+              #ignore
+            end
+          }
         end
       end
 
@@ -1298,14 +1368,13 @@ module Stamps
             value = value.to_i
             max = value + text_box.text.to_i
             max.times do
-              current_value = text_box.text.to_i
-              break if value == current_value
-              if value > current_value
+              break if value == text_box.text.to_i
+              if value > text_box.text.to_i
                 increment 1
               else
                 decrement 1
               end
-              break if value == current_value
+              break if text_box.text.to_i == value
             end
             text.to_i.should eql value
             logger.info "Length set to #{text_box.text}"
@@ -1437,59 +1506,6 @@ module Stamps
         def cancel
           @cancel_element = BrowserElement.new browser.spans(text: "Cancel").first
           @cancel_element.click_while_present
-        end
-      end
-
-      class DetailsInsureFor < Browser::Modal
-        attr_reader :checkbox, :text_box, :cost_label, :increment_trigger, :decrement_trigger, :insurance_terms_conditions, :blur_element
-
-        def initialize param
-          super param
-          @text_box = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
-          @cost_label = BrowserElement.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label")
-          @decrement_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
-          @increment_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
-
-          field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
-          verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
-          @checkbox ||= CheckboxElement.new field, verify, "class", "checked"
-          @insurance_terms_conditions = InsuranceTermsConditions.new param
-          @blur_element = BlurOutElement.new param
-        end
-
-        def blur_out
-          blur_element.blur_out
-        end
-
-        def set value
-          checkbox.check
-          30.times do
-            text_box.set value
-            blur_out
-            blur_out
-            return insurance_terms_conditions if insurance_terms_conditions.present?
-          end
-          insurance_terms_conditions.present?.should be true
-        end
-
-        def set_and_agree value
-          set(value).i_agree
-        end
-
-        def increment value
-          value.to_i.times do
-            increment_trigger.safe_click
-          end
-        end
-
-        def decrement value
-          value.to_i.times do
-            decrement_trigger.safe_click
-          end
-        end
-
-        def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text)
         end
       end
 

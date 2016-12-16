@@ -231,12 +231,13 @@ end
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   test_data[:insure_for] = value
   logger.step "Details: Set Insure-For to #{test_data[:insure_for]}"
-  stamps.orders.order_details.insure_for.set(test_data[:insure_for]).i_agree
+  stamps.orders.order_details.insure_for.set_and_agree(test_data[:insure_for])
   20.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > 0
     step "Details: Blur out"
   end
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  logger.step "Insurance Cost: $#{test_data[:insure_for_cost]}"
   step "Details: Save Total Ship Cost"
 end
 
@@ -257,6 +258,7 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
     step "Details: Blur out"
   end
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  logger.step "Tracking Cost: $#{test_data[:tracking_cost]}"
   step "Details: Save Total Ship Cost"
 end
 
