@@ -128,7 +128,7 @@ end
 Then /^Details: Expect Ship-To Country is (.*)/ do |value|
   logger.step "Details: Expect Ship-To Country is #{value}"
   step "Details: Blur out"
-  stamps.orders.order_details.ship_to.domestic.country.text_box.text.should eql value
+  stamps.orders.order_details.ship_to.country.text_box.text.should eql value
 end
 
 Then /^Details: Expect International Ship-To City is (.*)/ do |value|
@@ -486,7 +486,7 @@ end
 
 And /^Details: Expect Ship-To drop-down is enabled$/ do
   logger.step "Details: Expect Ship-To drop-down is enabled"
-  stamps.orders.order_details.ship_to.domestic.country.drop_down.element.visible?.should be true
+  stamps.orders.order_details.ship_to.country.drop_down.element.visible?.should be true
 end
 
 And /^Details: Expect Ship-To text area is enabled$/ do

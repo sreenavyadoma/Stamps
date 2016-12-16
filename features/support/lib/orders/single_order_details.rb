@@ -407,7 +407,7 @@ module Stamps
       end
 
       class ShipToDomestic < Browser::Modal
-        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element
+        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element,
                     :address_not_found
 
         def initialize param
