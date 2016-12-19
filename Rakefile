@@ -151,6 +151,16 @@ Cucumber::Rake::Task.new(:webreg_pam_orders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:webreg_meter_limit_100k) do |t|
+  t.profile = 'webreg_meter_limit_100k'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:pam_meter_limit_100k) do |t|
+  t.profile = 'pam_meter_limit_100k'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:webreg_ach_purchase_100k) do |t|
   t.profile = 'webreg_ach_purchase_100k'
   t.cucumber_opts = "-p cuke_reports"
