@@ -2,7 +2,7 @@ Feature: WebReg
   Background:
     Given I launched default browser
 
-  @pam_no_sign_in
+  @pam_ach_purchase_100k
   Scenario:
     Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
@@ -26,6 +26,6 @@ Feature: WebReg
     Then PAM AppCap Overrides: Set International Shipping to Always On
     Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
     Then PAM AppCap Overrides: Submit
-    Then WebReg: Save username and password to parameter file webreg_ach_purchase_100k
-    Then WebReg: Store username to data file pam_no_sign_in
+    Then WebReg: Save username and password to parameter file pam_ach_purchase_100k
+    Then WebReg: Store username to data file pam_ach_purchase_100k
 
