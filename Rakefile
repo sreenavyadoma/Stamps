@@ -141,6 +141,16 @@ Cucumber::Rake::Task.new(:webreg_pam_stg) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:webreg) do |t|
+  t.profile = 'webreg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:webreg_pam) do |t|
+  t.profile = 'webreg_pam'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:webreg_pam_orders) do |t|
   t.profile = 'webreg_pam_orders'
   t.cucumber_opts = "-p cuke_reports"
@@ -679,17 +689,6 @@ Cucumber::Rake::Task.new(:pagination) do |t|
   t.profile = 'pagination'
   t.cucumber_opts = "-p cuke_reports"
 end
-
-Cucumber::Rake::Task.new(:webreg) do |t|
-  t.profile = 'webreg'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:pam) do |t|
-  t.profile = 'pam'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:print_layouts_cp72) do |t|
   t.profile = 'print_layouts_cp72'
   t.cucumber_opts = "-p cuke_reports"
