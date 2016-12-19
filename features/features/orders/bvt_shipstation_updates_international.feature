@@ -72,7 +72,6 @@ Feature:  Update International Orders to ShipStation
     Then Details: Expect Insure-For Cost saved value is the same
     Then Details: Edit Customs Form
     Then Pause for 1 second
-
     Then Customs: Expect Package Contents is Commercial Sample
     Then Customs: Expect License Number is a12346
     Then Customs: Expect Certificate Number is certno1
