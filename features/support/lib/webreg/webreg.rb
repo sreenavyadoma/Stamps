@@ -76,7 +76,7 @@ module Stamps
         50.times do
           break if browser.url.include? 'profile'
         end
-        browser.url.should include "profile"
+        browser.url.should include "registration"
         sign_up_for_new_account = BrowserElement.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.safely_wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"
