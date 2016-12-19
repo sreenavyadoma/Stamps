@@ -2,7 +2,7 @@ Feature: WebReg
   Background:
     Given I launched default browser
 
-  @orders_first_time_sign_in
+  @webreg_pam_orders
   Scenario:
     Then Orders: Visit Sign-in page
     Then WebReg: Load username and password from parameter file
