@@ -52,7 +52,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      raise e
     end
   end
 
@@ -64,7 +64,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      raise e
     end
   end
 
@@ -76,12 +76,12 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      raise e
     end
   end
 
   def param
-    param = BrowserHelper.new
+    param = BrowserParam.new
     param.browser = browser
     param.logger = logger
     param.scenario_name = test_helper.scenario_name

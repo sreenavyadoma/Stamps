@@ -2,7 +2,7 @@ Feature: WebReg
   Background:
     Given I launched default browser
 
-  @webreg_no_sign_in
+  @webreg_ach_purchase_100k
   Scenario:
     Then WebReg Profile: Load Registration Page
     Then WebReg Profile: Set User ID and Email to random
@@ -35,6 +35,6 @@ Feature: WebReg
     Then WebReg Membership: Set Terms & Conditions to Checked
 
     Then WebReg Membership: Submit
-    Then WebReg: Save username and password to parameter file webreg_no_sign_in
-    Then WebReg: Store username to data file webreg_no_sign_in
+    Then WebReg: Save username and password to parameter file webreg_ach_purchase_100k
+    Then WebReg: Store username to data file webreg_ach_purchase_100k
     Then WebReg Profile: Send username to standard out

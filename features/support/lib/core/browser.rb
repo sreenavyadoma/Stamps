@@ -1,7 +1,7 @@
 module Stamps
   module Browser
 
-    class BrowserHelper
+    class BrowserParam
       attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env
     end
 
