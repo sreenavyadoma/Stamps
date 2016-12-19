@@ -18,7 +18,6 @@ Feature:  Update International Orders to ShipStation
     Then Details: Set Reference Number to Reference #123
     Then Details: Add Item 1, Qty 1, ID ID 1, Description Description 1
     # Edit the customs form
-
     Then Details: Edit Customs Form
     Then Customs: Expect I agree to the USPS Privacy Act Statement is unchecked
     Then Customs: Set Package Contents to Commercial Sample
@@ -39,11 +38,11 @@ Feature:  Update International Orders to ShipStation
     Then Pause for 3 seconds
 
     Then Grid: Uncheck Saved Order ID
-    Then Pause for 2 seconds
+    Then Pause for 5 seconds
 
     Then Refresh Browser
 
-    Then Pause for 5 seconds
+    Then Pause for 7 seconds
     Then Grid: Check Saved Order ID
     Then Pause for 2 seconds
 

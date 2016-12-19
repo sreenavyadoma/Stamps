@@ -42,7 +42,7 @@ Feature:  Update Order to ShipStation
 
     Then Refresh Browser
 
-    Then Pause for 2 seconds
+    Then Pause for 7 seconds
     Then Grid: Check Saved Order ID
     Then Pause for 2 seconds
 
