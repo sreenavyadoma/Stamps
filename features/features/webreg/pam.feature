@@ -3,7 +3,7 @@ Feature: PAM page
   Background:
     Given I launched default browser
 
-  @webreg_pam
+  @pam
   Scenario: PAM page
     Then PAM: Load PAM Page
     Then PAM: Load Customer Search Page
