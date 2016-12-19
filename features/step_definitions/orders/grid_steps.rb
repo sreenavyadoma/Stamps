@@ -3,10 +3,7 @@ Then /^Grid: Check Order ID (.*)$/ do |order_id|
   logger.step "Grid: Check Order ID #{order_id}"
   test_data[:order_id] = order_id
   # Check if Order ID exists, fail test if it does not
-  exists = stamps.orders.grid.order_id.exist? test_data[:order_id]
-  expectation = "exists"
-  expectation = "does not exists" unless exists
-  expectation.should eql "exists"
+  stamps.orders.grid.order_id.exist?(test_data[:order_id]).should be true
   logger.step "Order ID #{test_data[:order_id]} #{expectation}!"
   stamps.orders.grid.checkbox.check_order(test_data[:order_id])
 end
@@ -74,11 +71,6 @@ Then /^Grid: Check Saved Order ID$/ do
 end
 
 Then /^Grid: Check Environment Order ID$/ do
-  test_data[:order_id] = (ENV['ORDER_ID'].nil?)?"":ENV['ORDER_ID']
-  expectation = "ENV['ORDER_ID'] is not nil"
-  expectation = "ENV['ORDER_ID'] is nil! This test needs a value for this variable." if test_data[:order_id].size == 0
-  expectation.should eql "ENV['ORDER_ID'] is not nil"
-
   logger.step "Grid: Check Order ID #{test_data[:order_id]}"
   step "Grid: Check Order ID #{test_data[:order_id]}"
 end

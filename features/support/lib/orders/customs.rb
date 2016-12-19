@@ -12,41 +12,41 @@ module Stamps
 
         def select country
           logger.info "Select Country #{country}"
-
           drop_down = BrowserElement.new text_box.element.parent.parent.divs[1]
           drop_down.safe_click
           sleep 1
           drop_down.safe_click
-
-          found = false
-          li = nil
-          20.times do
-            drop_down.safe_click
-            sleep 1
-            countries = (browser.lis text: country)
-            countries.each do |element|
-              if element_helper.text(element) == country
-                found = true
-                li = element
+          begin
+            found = false
+            li = nil
+            20.times do
+              drop_down.safe_click
+              sleep 1
+              countries = (browser.lis text: country)
+              countries.each do |element|
+                if element_helper.text(element) == country
+                  found = true
+                  li = element
+                end
               end
+              break if found
             end
-            break if found
-          end
 
-          selection = BrowserElement.new li
+            selection = BrowserElement.new li
 
-          10.times {
-            begin
-              break if text_box.text.include? country
-              drop_down.safe_click unless selection.present?
-              selection.scroll_into_view
-              selection.safe_click
-            rescue
-              #ignore
-            end
-          }
-          text_box.text.should include country
-          logger.info "#{country} selected."
+            10.times {
+              begin
+                break if text_box.text.include? country
+                drop_down.safe_click unless selection.present?
+                selection.scroll_into_view
+                selection.safe_click
+              rescue
+                #ignore
+              end
+            }
+            text_box.text.should include country
+            logger.info "#{country} selected."
+          end unless text_box.text.include? country
         end
       end
 
@@ -82,7 +82,7 @@ module Stamps
       class CustomsItemGrid < Browser::Modal
 
         def add_button
-          BrowserElement.new (browser.spans text: "Add Item").last
+          @add_button ||= BrowserElement.new (browser.spans text: "Add Item").last
         end
 
         def present?
@@ -90,18 +90,17 @@ module Stamps
         end
 
         def size
-          (browser.tables css: "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
+          browser.tables(css: "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
         end
 
         def item number
-          add = add_button
-          logger.info "Item Count: #{size}"
+          logger.info "Grid Item Count: #{size}"
 
           20.times{
             break if size >= number
             sleep 1
             break if size >= number
-            add.safe_click if number > size
+            add_button.safe_click if number > size
             logger.info "Item Count: #{size}"
             break if size >= number
           }
