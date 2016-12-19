@@ -1,16 +1,15 @@
-default: --profile cuke_reports --profile eva_dev
-default: --profile cuke_reports --profile rob_mail_stg
+default: --profile cuke_reports --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
-#qasc800 mail_bvt_international
-rob_cc: --tags @mail_services WEB_APP=orders TEST=mail_services URL=cc  PW=pass111 USR=cce5nk6k6068z --guess VERBOSE=true JENKINS=true HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
-rob_stg: --tags @mail_services WEB_APP=orders TEST=mail_services URL=stg  PW=pass111 USR=jenkins --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
-rob_orders_sc: --tags @mail_bvt_envelopes WEB_APP=orders TEST=mail_bvt_envelopes URL=sc PW=pass111 USR=jenkins --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc  #yh95ws85j c2jinmzmu64 store parcel_select
+#stgdmnmrv29j04
+rob_cc: --tags @pam_ach_purchase_100k WEB_APP=orders TEST=pam_ach_purchase_100k JENKINS=true URL=cc  PW=pass111 USR=jenkins --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_stg: --tags @bvt_purchasing WEB_APP=orders WEB_APP=orders TEST=bvt_purchasing JENKINS=true URL=stg  PW=pass111 USR=jenkins --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
+rob_orders_sc: --tags @mail_bvt_envelopes WEB_APP=orders TEST=mail_bvt_envelopes JENKINS=true URL=sc PW=pass111 USR=jenkins --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc  #yh95ws85j c2jinmzmu64 store parcel_select
 
-rob_mail_cc: --tags @mail_bvt_envelopes TEST=mail_bvt_envelopes WEB_APP=mail URL=cc PW=pass111 USR=jenkins --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium
+rob_mail_cc: --tags @mail_bvt_envelopes TEST=mail_bvt_envelopes WEB_APP=mail URL=cc PW=pass111 USR=cce5nk6k6068z --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium
 rob_mail_stg: --tags @mail_services TEST=mail_services WEB_APP=mail URL=stg PW=pass111 USR=stgi3eicvj8d7b --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium
-rob_mail_sc: --tags @mail_bvt_envelopes TEST=mail_bvt_envelopes WEB_APP=mail URL=sc PW=pass111 USR=jenkins --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium
+rob_mail_sc: --tags @mail_services TEST=mail_services WEB_APP=mail URL=sc PW=pass111 USR=m9rqvdp97u5 --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium
 
 rob_dev_gc: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders URL=cc BROWSER=chrome PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l
 rob_dev_ie: --tags @bvt_shipstation_updates_domestic --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders URL=cc BROWSER=ie PW=pass111 USR=hd9glvtoauago #nhr9mm6m5l purchasing cce5nk6k6068z
@@ -19,8 +18,6 @@ rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true JENKINS=false HEALTHCHEC
 galina_cc: --tags @webreg_fields_validation_blank_to_next_page1 --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_fields_validation_blank_to_next_page1 URL=cc BROWSER=ff PW=pass111 USR=hd9glvtoauago #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
 
 eli_dev: --tags @item_details   --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=item_details URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=go45dhfhkw PW=pass111
-ray_dev: --tags @mail_print_envelope_10_postage --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=mail_print_envelope_10_postage URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=webpost_0017 PW=pass111
-eva_dev: --tags @my_webreg_specify_username --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 ray_dev: --tags @local_rating3 --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=local_rating3 URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
 eva_dev: --tags @details_panel --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
@@ -48,10 +45,13 @@ customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight -
 whats_new: --tags @whats_new --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=whats_new
 
 webreg: --tags @webreg --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
-orders_sign_in: --tags @orders_sign_in --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
 pam: --tags @pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=pam TEST=pam
-webreg_pam: --tags @webreg_pam --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
 webreg_pam_orders: --tags @webreg_pam_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+
+webreg_ach_purchase_100k: --tags @webreg_ach_purchase_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+pam_ach_purchase_100k: --tags @pam_ach_purchase_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+webreg_meter_limit_100k: --tags @webreg_meter_limit_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
+pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=webreg TEST=webreg
 
 details_non_integer_lbs: --tags @details_non_integer_lbs --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_non_integer_lbs
 grid_order_status: --tags @grid_order_status --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=grid_order_status

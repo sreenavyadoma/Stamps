@@ -9,7 +9,7 @@ Feature:  BVT Order Creation
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1
 
-    Then Details: Set Ship-To to address in Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 5 through 8
 
     Then Details: Select Service Priority Mail Package
 

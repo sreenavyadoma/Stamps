@@ -54,87 +54,97 @@ end
 
 Then /^Details: Set Ship-To Country to (.*)$/ do |country|
   logger.step "Details: Set Ship-To Country to #{country}"
+  stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.country.select country
 end
 
 Then /^Details: Set International Ship-To Name to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Name to #{value}"
+  test_data[:int_ship_to_name] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.name.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.name.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.name.set test_data[:int_ship_to_name]
   end
 end
 
 Then /^Details: Set International Ship-To Company to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Company to #{value}"
+  test_data[:int_ship_to_company] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.company.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.company.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.company.set test_data[:int_ship_to_company]
   end
 end
 
 Then /^Details: Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Address 1 to #{value}"
+  test_data[:int_ship_to_address_1] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_1.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.address_1.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.address_1.set test_data[:int_ship_to_address_1]
   end
 end
 
 Then /^Details: Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Address 2 to #{value}"
+  test_data[:int_ship_to_address_2] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_2.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.address_2.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.address_2.set test_data[:int_ship_to_address_2]
   end
 end
 
 Then /^Details: Set International Ship-To City to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To City to #{value}"
+  test_data[:int_ship_to_city] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.city.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.city.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.city.set test_data[:int_ship_to_city]
   end
 end
 
 Then /^Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Province to #{value}"
+  test_data[:int_ship_to_province] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.province.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.province.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.province.set test_data[:int_ship_to_province]
   end
 end
 
 Then /^Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Postal Code to #{value}"
+  test_data[:int_ship_to_postal_code] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.postal_code.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.postal_code.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.postal_code.set test_data[:int_ship_to_postal_code]
   end
 end
 
 Then /^Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Phone to #{value}"
+  test_data[:int_ship_to_phone] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.phone.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.phone.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.phone.set test_data[:int_ship_to_phone]
   end
 end
 
 Then /^Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
   logger.step "Details: Set International Ship-To Email to #{value}"
+  test_data[:int_ship_to_email] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.email.send_keys :enter
   else
-    stamps.orders.order_details.ship_to.international.email.set ((value.downcase == "random")? ParameterHelper.random_name : value)
+    stamps.orders.order_details.ship_to.international.email.set test_data[:int_ship_to_email]
   end
 end
 
@@ -158,16 +168,16 @@ end
 Then /^Details: Set Pounds to (.*)$/ do |value|
   logger.step "Details: Set Pounds to \"#{value}\""
   test_data[:lbs] = value
+  stamps.orders.order_details.weight.lbs.set test_data[:lbs]
   step "Details: Blur out"
-  stamps.orders.order_details.weight.lbs.set value
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ounces to (.*)$/ do |value|
   logger.step "Details: Set Ounces to \"#{value}\""
   test_data[:oz] = value
+  stamps.orders.order_details.weight.oz.set test_data[:oz]
   step "Details: Blur out"
-  stamps.orders.order_details.weight.oz.set value
   step "Details: Save Total Ship Cost"
 end
 
@@ -221,12 +231,13 @@ end
 Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   test_data[:insure_for] = value
   logger.step "Details: Set Insure-For to #{test_data[:insure_for]}"
-  stamps.orders.order_details.insure_for.set test_data[:insure_for]
+  stamps.orders.order_details.insure_for.set_and_agree(test_data[:insure_for])
   20.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > 0
     step "Details: Blur out"
   end
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  logger.step "Insurance Cost: $#{test_data[:insure_for_cost]}"
   step "Details: Save Total Ship Cost"
 end
 
@@ -247,6 +258,7 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
     step "Details: Blur out"
   end
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  logger.step "Tracking Cost: $#{test_data[:tracking_cost]}"
   step "Details: Save Total Ship Cost"
 end
 
@@ -298,15 +310,13 @@ Then /^Details: Set Ship-To to address in Zone 5 through 8$/ do
   step "Details: Set Ship-To to zone 5 through 8"
 end
 
-Then /^Details: Set Ship-To to domestic address$/ do |table|
+Then /^Details: Set Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
-  logger.step "Details: Set Ship-To to domestic address \n#{address_table}"
+  logger.step "Details: Set Ship-To to Domestic Address \n#{address_table}"
 
   name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
   company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
   city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
   street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
 
   if address_table['street_address_2'].nil?
@@ -314,6 +324,9 @@ Then /^Details: Set Ship-To to domestic address$/ do |table|
   else
     street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
   end
+
+  #phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  #email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
 
   state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
   zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
@@ -325,23 +338,24 @@ Then /^Details: Set Ship-To to domestic address$/ do |table|
   test_data[:name] = name
   test_data[:company] = company
   test_data[:city] = city
-  test_data[:phone] = phone
-  test_data[:email] = email
   test_data[:street_address] = street_address
   test_data[:street_address_2] = street_address_2
   test_data[:state] = state
   test_data[:zip] = zip
   test_data[:country] = country
 
+  #test_data[:phone] = phone
+  #test_data[:email] = email
+
   step "Details: Set Ship-To Country to #{test_data[:country]}"
-  step "Details: Set Ship-To text area to #{test_data[:ship_to]}"
-  step "Details: Set Phone to #{test_data[:phone]}"
-  step "Details: Set Email to #{test_data[:email]}"
+  step "Details: Set Ship-To to Domestic Address #{test_data[:ship_to]}"
+  #step "Details: Set Phone to #{test_data[:phone]}"
+  #step "Details: Set Email to #{test_data[:email]}"
 end
 
-Then /^Details: Set Ship-To to international address$/ do |table|
+Then /^Details: Set Ship-To to International Address$/ do |table|
   address_table = table.hashes.first
-  logger.step "Details: Set Ship-To text area to \n#{address_table}"
+  logger.step "Details: Set Ship-To to Domestic Address \n#{address_table}"
 
   country = address_table['country']
   name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
@@ -393,7 +407,7 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
       address = ParameterHelper.rand_zone_3
     when /4/
       address = ParameterHelper.rand_zone_4
-    when /zone 5/
+    when /5/
       address = ParameterHelper.rand_zone_5
     when /6/
       address = ParameterHelper.rand_zone_6
@@ -404,37 +418,44 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
     else
       "Invalid Zone Option".should eql "Zone #{zone} is not a valid zone. Valid options are from zone 1 through 8."
   end
+
   test_data[:street_address] = address['street_address']
   test_data[:city] = address['city']
   test_data[:state] = address['state']
   test_data[:zip] = address['zip']
   test_data[:name] = address['name']
   test_data[:company] = address['company']
-  #test_data[:email] = address['email']
-  #test_data[:phone] = address['phone']
-  logger.step "Test Data:"
+
   test_data.each_key { |key_value_array| logger.step("#{key_value_array} : #{test_data[key_value_array]}") }
   logger.step "Details: Set Ship-To to address in Zone #{zone} = \"#{address}\""
   # set Ship-To address
   test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
-  stamps.orders.order_details.ship_to.address.set test_data[:ship_to_text_area]
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_text_area]
   step "Details: Save Total Ship Cost"
 end
 
-Then /^Details: Set Ship-To text area to (.*)$/ do |address|
-  logger.step "Details: Set Ship-To text area to \"#{address}\""
+Then /^Details: Set Ship-To to Domestic Address (.*)$/ do |address|
+  logger.step "Details: Set Ship-To to Domestic Address \"#{address}\""
   test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
-  stamps.orders.order_details.ship_to.address.set test_data[:ship_to_text_area]
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_text_area]
   step "Details: Save Total Ship Cost"
-end
-
-Then /^Details: Set Ship-To Less details$/ do
-  stamps.orders.order_details.ship_to.address.less.safe_click
 end
 
 Then /^Details: Hide Ship-To fields$/ do
   logger.step "Details: Hide Ship-To fields"
-  stamps.orders.order_details.ship_to.address.hide_address_details
+  stamps.orders.order_details.ship_to.domestic.less
+end
+
+Then /^Details: Hide International Ship-To fields$/ do
+  logger.step "Details: Hide International Ship-To fields"
+  stamps.orders.order_details.ship_to.international.less
+end
+
+Then /^Details: Show Ship-To fields$/ do
+  logger.step "Details: Show Ship-To fields"
+  stamps.orders.order_details.ship_to.domestic.show_address
 end
 
 Then /^Details: Expect Order ID is truthy$/ do
@@ -455,74 +476,85 @@ end
 
 Then /^Details: Expect Ship-To Name is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Name is #{expectation}"
-  stamps.orders.order_details.ship_to.address.text_area.recipient_name.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.recipient_name.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Company Name is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Company Name is #{expectation}"
-  stamps.orders.order_details.ship_to.address.text_area.company_name.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.company_name.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed Street Address is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed Street Address is #{expectation}"
-  stamps.orders.order_details.ship_to.address.text_area.street_address.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.street_address.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed City is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed City is #{expectation}"
-  stamps.orders.order_details.ship_to.address.text_area.city.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.city.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed State is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed State is #{expectation}"
-  stamps.orders.order_details.ship_to.address.text_area.state.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.state.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed Zip Plus 4 Code is #{expectation}"
-  stamps.orders.order_details.ship_to.address.text_area.zip_plus_4.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.zip_plus_4.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Cleansed Zip Code is #{expectation}"
-  stamps.orders.order_details.ship_to.address.text_area.zip_code.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.zip_code.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Phone is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Phone is #{expectation}"
-  stamps.orders.order_details.ship_to.address.phone.text.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.phone.text.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Email is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Email is #{expectation}"
-  stamps.orders.order_details.ship_to.address.email.text.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.email.text.should eql expectation
 end
 
 Then /^Details: Set Ship-To to ambiguous address$/ do |table|
   ambiguous_address = ParameterHelper.format_address table.hashes.first
   logger.step "Details: Set Ship-To to ambiguous address \n#{ambiguous_address}"
-  stamps.orders.order_details.ship_to.address.ambiguous.set ambiguous_address
+  stamps.orders.order_details.ship_to.domestic.set_ambiguous ambiguous_address
 end
 
 Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
   logger.step "Select row #{row} from Exact Address Not Found module"
-  stamps.orders.order_details.ship_to.address.ambiguous.address_not_found.row row
+  stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.row row
 end
 
 Then /^Details: Set Phone to (.*)$/ do |phone|
   test_data[:phone] = (phone.to_s.strip.downcase.include? "random")?(ParameterHelper.random_phone):phone
+  stamps.orders.order_details.ship_to.domestic.show_address
   begin
     logger.step "Order Details Form Phone to \"#{test_data[:phone]}\""
-    stamps.orders.order_details.ship_to.address.phone.set test_data[:phone]
+    stamps.orders.order_details.ship_to.domestic.phone.set test_data[:phone]
   end unless test_data[:phone].length == 0
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Email to (.*)$/ do |email|
   test_data[:email] = (email.to_s.strip.downcase.include? "random")?(ParameterHelper.random_email):email
+  stamps.orders.order_details.ship_to.domestic.show_address
   begin
     logger.step "Details: Set Email to \"#{test_data[:email]}\""
-    stamps.orders.order_details.ship_to.address.email.set test_data[:email]
+    stamps.orders.order_details.ship_to.domestic.email.set test_data[:email]
   end unless test_data[:email].length == 0
   step "Details: Save Total Ship Cost"
 end
@@ -607,11 +639,13 @@ Then /^Details: Set Reference Number to (.*)$/ do |value|
 end
 
 Then /^Details: Expect Domestic Ship-To Company is (.*)$/ do |company|
-  stamps.orders.order_details.ship_to.address.text_area.text.should include company
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.text.should include company
 end
 
 Then /^Details: Expect Domestic Ship-To Name is (.*)$/ do |name|
-  stamps.orders.order_details.ship_to.address.text_area.text.should include name
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.text.should include name
 end
 
 Then /^Verify Order Details Form Total Amount$/ do

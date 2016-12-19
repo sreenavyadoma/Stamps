@@ -3,7 +3,7 @@ module Stamps
   module Mail
     class PrintPostageCustoms < Browser::Modal
       def edit_form
-        button = ElementWrapper.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"
+        button = BrowserElement.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"
         customs_modal = CustomsForm.new param
         15.times do
           button.safe_click
@@ -34,7 +34,7 @@ module Stamps
         @ship_from ||= MailShipFrom.new param
         @ship_to ||= Stamps::Mail::ShipTo.new param
         @customs ||= PrintPostageCustoms.new param
-        @extra_services = ElementWrapper.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
+        @extra_services = BrowserElement.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
       end
 
       def open_extra_services

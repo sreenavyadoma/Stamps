@@ -7,7 +7,7 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
   Scenario: Print 1 single ply Intl CP72 label on 8.5x11 - left side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then Details: Select Service Priority Mail International Package

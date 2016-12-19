@@ -3,7 +3,7 @@ module Stamps
     class EnvelopeFormView < MailForm
 
       def preview_image
-        image = ElementWrapper.new browser.div id: "envelopePreview"
+        image = BrowserElement.new browser.div id: "envelopePreview"
       end
 
       def include_return_address

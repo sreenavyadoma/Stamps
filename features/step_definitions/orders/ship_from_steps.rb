@@ -21,16 +21,16 @@ Then /^Ship-From: Edit address for name = \"(.*)\", company = \"(.*)\" and city 
 end
 
 Then /^Ship-From: Add address$/ do |ship_from|
-  logger.step "Ship-From: Add address #{ship_from}"
+  test_data[:ship_from_address] = ship_from
+  logger.step "Ship-From: Add address #{test_data[:ship_from_address]}"
   add_form = stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...")
-  add_form.add.shipping_address ship_from.hashes.first
+  add_form.add.shipping_address test_data[:ship_from_address].hashes.first
 end
 
 Then /^Ship-From: Add address (\w+)$/ do |address|
-  ship_from = (address.include?'random ship from zone 1 through 4')?(ParameterHelper.rand_ship_from_zone_1_4):address
-  logger.step "Ship-From: Add address #{(address.include?'random')?ship_from:(address)}"
-  @ship_from_address = stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").add(ship_from)
-  logger.step "Random address added: #{@ship_from_address}"
+  test_data[:ship_from_address] = (address.include?'random ship from zone 1 through 4')?(ParameterHelper.rand_ship_from_zone_1_4):address
+  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").add(test_data[:ship_from_address])
+  logger.step "Random address added: #{test_data[:ship_from_address]}"
 end
 
 Then /^Ship-From: Set Manage Shipping Addresses to$/ do
@@ -41,5 +41,5 @@ end
 Then /^Ship-From: Expect selection has (.*)$/ do |address|
   logger.step "Expect #{address} Ship-From address was added"
   step "Details: Blur out"
-  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").address_located?(@ship_from_address).should be true
+  #stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").address_located?(test_data[:ship_from_address]).should be true
 end

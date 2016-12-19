@@ -52,55 +52,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
-    end
-  end
-
-  def webreg_usr_filename
-    begin
-      begin
-        if ParameterHelper.to_bool(ENV['JENKINS'])
-          @webreg_usr_filename ||= "#{data_for(:webreg, {})['jenkins_usr_dir']}\\#{ENV['URL']}_webreg.yml"
-        else
-          @webreg_usr_filename ||= "#{data_for(:webreg, {})['dev_usr_dir']}\\#{ENV['URL']}_webreg.yml"
-        end
-        logger.message "WebReg parameter file: #{@filename}"        
-      end if @webreg_usr_filename.nil?
-      @webreg_usr_filename
-    rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
-    end
-  end
-
-  def webreg_data_filename
-    begin
-      @webreg_data_filename ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg.txt"
-    rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
-    end
-  end
-
-  def webreg_pam_data_filename
-    begin
-      @webreg_pam_data_filename ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam.txt"
-    rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
-    end
-  end
-
-  def webreg_pam_ord_data_filename
-    begin
-      @webreg_pam_ord_data_filename ||= "#{data_for(:webreg, {})['webreg_usr_list_dir']}\\#{ENV['URL']}_webreg_pam_ord.txt"
-    rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+      raise e
     end
   end
 
@@ -112,7 +64,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      raise e
     end
   end
 
@@ -124,16 +76,17 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      raise e
     end
   end
 
   def param
-    @param ||= ModalParam.new
-    @param.browser = test_helper.browser
-    @param.logger = test_helper.logger
-    @param.scenario_name = test_helper.scenario_name
-    @param
+    param = BrowserParam.new
+    param.browser = browser
+    param.logger = logger
+    param.scenario_name = test_helper.scenario_name
+    param.test_env = ENV['URL']
+    param
   end
 
   def test_data
@@ -159,4 +112,31 @@ module Stamps
   def browser
     test_helper.browser
   end
+
+  def webreg_user_parameter_file * args
+    begin
+      if ParameterHelper.to_bool(ENV['JENKINS'])
+        filename = "#{data_for(:webreg, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+      else
+        filename = "#{data_for(:webreg, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+      end
+      logger.message "WebReg parameter file: #{filename}"
+      filename
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+    end
+  end
+
+  def webreg_data_store_filename *args
+    begin
+      "#{data_for(:webreg, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+      "MagicData: Problem retrieving data. Check your format?".should eql e.message
+    end
+  end
+
 end

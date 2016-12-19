@@ -20,7 +20,6 @@ Feature: Ambigious Address
     Then Grid: Expect City is San Francisco
     Then Grid: Expect State is CA
     Then Grid: Expect Zip is 94102
-    Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Package
     Then Sign out
 

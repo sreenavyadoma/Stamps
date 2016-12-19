@@ -2,8 +2,8 @@
 
 webreg:
   dev_usr_dir: C:\watir-webdriver
-  jenkins_usr_dir: \\jenkins01\Hudson\test_data\jenkins\webreg
-  webreg_usr_list_dir: \\jenkins01\Hudson\test_data\jenkins\webreg
+  webreg_param_dir: \\jenkins01\Hudson\test_data\jenkins\webreg
+  webreg_data_store_dir: \\jenkins01\Hudson\test_data\jenkins\webreg
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty
@@ -163,7 +163,7 @@ orders_credentials:
       usr: vfknhokj9wq
       pw: pass111
     bvt_new_order:
-      usr: v8r4q2nb3dbv
+      usr: stgyvngqz27b66
       pw: pass111
     bvt_shipstation_updates_international:
       usr: stgqo0xzpzlgx
@@ -172,7 +172,7 @@ orders_credentials:
       usr: stgrryltfc0
       pw: pass111
     bvt_purchasing:
-      usr: stgxil5cp0pi
+      usr: stga89wz41xemx
       pw: pass111
     authentication:
       usr: uadybt5iev
@@ -184,7 +184,7 @@ orders_credentials:
       usr: l0ub8l45a
       pw: pass111
     bvt_shipping_address_management:
-      usr: ccje975fmb
+      usr: stgimsq0r1luvz
       pw: pass111
     address_cleansing:
       usr: tc7lbuuldm7gud
@@ -511,9 +511,6 @@ orders_credentials:
     bvt_international_shipping:
       usr: vfknhokj9wq
       pw: pass111
-    bvt_new_order:
-      usr: v8r4q2nb3dbv
-      pw: pass111
     bvt_shipstation_updates_international:
       usr: ccje975fmb
       pw: pass111
@@ -521,7 +518,7 @@ orders_credentials:
       usr: pzlnwe2z03m7y
       pw: pass111
     bvt_purchasing:
-      usr: ccv2ad917b
+      usr: ccft8mxoh9
       pw: pass111
     bvt_new_order:
       usr: u0d9jawgcqaj
@@ -885,7 +882,7 @@ orders_credentials:
       usr: scoini7whe
       pw: pass111
     bvt_purchasing:
-      usr: scqeypuf8y2l
+      usr: schz7c592
       pw: pass111
     bvt_new_order:
       usr: rzyb4un
@@ -3151,6 +3148,26 @@ mail_credentials:
     mail_print_stamps_wn_series_specify:
       usr: scctk0sju9
       pw: pass111
+
+redesign_mail_services:
+  Stamps: 0
+  Shipping Label - 8 x 11 Paper:  1
+  Shipping Label - SDC-1200:  2
+  Shipping Label - 5 x 8: 3
+  Envelope 10: 4
+  Envelope 9: 5
+  Envelope A9: 6
+  Envelope 6: 7
+  Envelope A2: 8
+  Envelope 7: 9
+  Envelope 11: 10
+  Envelope 12: 11
+  Certified Mail Label - SDC-3610:  12
+  Certified Mail Label - SDC-3710:  13
+  Certified Mail Label - SDC-3910:  14
+  Certified Mail Label - SDC-3810:  15
+  Roll - 4 x 6: 16
+  Roll - 4 1/8 x 6 1/4: 17
 
 mail_services:
   Stamps: sdc-printmediadroplist-ns

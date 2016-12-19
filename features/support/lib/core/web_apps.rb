@@ -1,6 +1,5 @@
 module Stamps
   class StampsCom < Browser::Modal
-
     attr_reader :orders, :mail, :navigation_bar
 
     def initialize param
@@ -10,36 +9,39 @@ module Stamps
       @mail ||= WebMail.new param
     end
 
-    def visit page
+    def load_page
       browser.should_not be_nil
+      helper.web_app.should  eq(:mail).or(eq(:orders))
+      helper.test_env.should be_truthy
 
-      case page
+      case helper.web_app
         when :orders
           app_name ="orders"
         when :mail
           app_name ="webpostage"
         else
-          raise "#{page} is not a valid page."
+          #do nothing
       end
 
-      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+      helper.test_env.should be_truthy
+      helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
-      case ENV['URL'].downcase
+      case helper.test_env.downcase
         when /ss/
           url = "http://printss600.qacc.stamps.com/#{app_name}/"
         when /cc/
           url = "http://printext.qacc.stamps.com/#{app_name}/"
         when /sc/
           url = "http://printext.qasc.stamps.com/#{app_name}/"
-          url = "http://printext.qasc.stamps.com/#{app_name}/default2.aspx" if ENV['WEB_APP'].downcase == 'mail'
+          url = "http://printext.qasc.stamps.com/#{app_name}/default2.aspx" if ENV['web_app'].downcase == 'mail'
         when /stg/
           url = "https://print.testing.stamps.com/#{app_name}/"
         when /rating/
           url = "http://printext.qacc.stamps.com/#{app_name}/"
         when /./
-          url = "http://#{ENV['URL']}.stamps.com/#{app_name}/"
+          url = "http://#{helper.test_env}.stamps.com/#{app_name}/"
         else
-          url = ENV['URL']
+          url = helper.test_env
       end
 
       logger.message "-"
@@ -65,24 +67,24 @@ module Stamps
 
       case page
         when :orders
-          case ENV['URL'].downcase
+          case helper.test_env.downcase
             when /ss/
-              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
             when /cc/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
             when /sc/
-              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
             when /staging/
-              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
             when /rating/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
             when /./
-              url = "http://#{ENV['URL']}.stamps.com/webpostage/SignIn/Default.aspx?env=Orders&"
+              url = "http://#{helper.test_env}.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
             else
-              url = ENV['URL']
+              url = helper.test_env
           end
         when :mail
-          case ENV['URL'].downcase
+          case helper.test_env.downcase
             when /ss/
               url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx"
             when /cc/
@@ -94,12 +96,12 @@ module Stamps
             when /rating/
               url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx"
             when /./
-              url = "http://#{ENV['URL']}.stamps.com/webpostage/SignIn/Default.aspx"
+              url = "http://#{helper.test_env}.stamps.com/webpostage/SignIn/Default.aspx"
             else
-              url = ENV['URL']
+              url = helper.test_env
           end
         else
-          raise "#{page} is not a valid page."
+          #do nothing
       end
 
       browser.goto url

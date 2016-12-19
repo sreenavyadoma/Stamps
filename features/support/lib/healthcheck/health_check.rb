@@ -1,14 +1,10 @@
 module Stamps
-  # https://or.staging.stamps.com/postagetools/healthcheck.aspx
-  # https://or.staging.stamps.com/orreports/healthcheck.aspx
-  # https://orext.qasc.stamps.com/addressbook/healthcheck.aspx
-
   class HealthCheck < Browser::Modal
 
     def health_check
-      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+      helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
-      case ENV['URL'].downcase
+      case helper.test_env.downcase
         when /sc/
           url = "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
@@ -49,7 +45,7 @@ module Stamps
           logger.message "-"
 
         else
-          "#{ENV['URL']} is not a valid URL selection".should eql ""
+          "#{helper.test_env} is not a valid URL selection".should eql ""
       end
 
       logger.message browser.text
@@ -69,9 +65,9 @@ module Stamps
     end
 
     def address_book
-      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+      helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
-      case ENV['URL'].downcase
+      case helper.test_env.downcase
         when /sc/
           logger.message "Print - Address Book"
           browser.goto "https://printext.qasc.stamps.com/addressbook/healthcheck.aspx"
@@ -104,7 +100,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "#{ENV['URL']} is not a valid URL selection".should eql ""
+          "#{helper.test_env} is not a valid URL selection".should eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -122,9 +118,9 @@ module Stamps
     end
 
     def or_reports
-      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+      helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
-      case ENV['URL'].downcase
+      case helper.test_env.downcase
         when /sc/
           logger.message "OR - Reports"
           browser.goto "https://orext.qasc.stamps.com/ORReports/healthcheck.aspx"
@@ -157,7 +153,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "#{ENV['URL']} is not a valid URL selection".should eql ""
+          "#{helper.test_env} is not a valid URL selection".should eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -180,9 +176,9 @@ module Stamps
     end
 
     def or_postage_tools
-      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+      helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
-      case ENV['URL'].downcase
+      case helper.test_env.downcase
         when /sc/
           logger.message "OR - Postage Tools"
           browser.goto "https://orext.qasc.stamps.com/postagetools/healthcheck.aspx"
@@ -215,7 +211,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "#{ENV['URL']} is not a valid URL selection".should eql ""
+          "#{helper.test_env} is not a valid URL selection".should eql ""
       end
 
       if browser.text.include? "Server Error"

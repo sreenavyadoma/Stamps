@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
   Scenario: Print 1 Intl CP72 label on 4x6 Roll
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
     Then Details: Select Service Priority Mail International Package

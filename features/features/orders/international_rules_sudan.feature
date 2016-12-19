@@ -8,7 +8,7 @@ Feature: Sudan Internal Transaction Number Required
   Scenario: Sudan Internal Transaction Number Required
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 

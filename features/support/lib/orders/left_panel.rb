@@ -6,8 +6,8 @@ module Stamps
 
         def initialize param
           super param
-          @button = ElementWrapper.new (browser.span css: "span[id^=menuitem-][id$=-textEl]")
-          @tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
+          @button = BrowserElement.new (browser.span css: "span[id^=menuitem-][id$=-textEl]")
+          @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
         def click
@@ -41,8 +41,8 @@ module Stamps
 
         def initialize param
           super param
-          @button = ElementWrapper.new (browser.img css: 'img[class*=tool-expand-right]')
-          @tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
+          @button = BrowserElement.new (browser.img css: 'img[class*=tool-expand-right]')
+          @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
         def click
@@ -86,9 +86,9 @@ module Stamps
 
         def initialize param
           super param
-          @label = ElementWrapper.new browser.div(text: "Search Results")
-          @remove_button = ElementWrapper.new browser.a(css: "a[data-qtip=Remove]")
-          @count_label = ElementWrapper.new browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div")
+          @label = BrowserElement.new browser.div(text: "Search Results")
+          @remove_button = BrowserElement.new browser.a(css: "a[data-qtip=Remove]")
+          @count_label = BrowserElement.new browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div")
         end
 
         def present?
@@ -111,7 +111,7 @@ module Stamps
         def initialize param
           super param
           @textbox = TextboxElement.new browser.text_field(css: "input[placeholder='Search Orders']")
-          @search_button = ElementWrapper.new browser.div(css: "div[id^=textfield-][id$=-trigger-search]")
+          @search_button = BrowserElement.new browser.div(css: "div[id^=textfield-][id$=-trigger-search]")
           @search_results = SearchResults.new param
         end
 
@@ -154,13 +154,13 @@ module Stamps
           @search_orders_modal = SearchOrders.new param
           @search_results = SearchResults.new param
 
-          @filter_panel = ElementWrapper.new browser.div(css: "div[id*=filterpanel][class*=x-panel-dark-grey]")
-          @closed_filter_panel = ElementWrapper.new browser.div(css: "div[id*=title][class*=x-title-text-dark-grey]")
-          @filter_panel_border_arrow = ElementWrapper.new browser.div(css: "div[id*=filterpanel][class*=x-layout-split-left]")
-          @filter_panel_header_arrow = ElementWrapper.new browser.img(css: "img[id*=tool][class*=x-tool-expand-right]")
-          @filter_panel_header_name = ElementWrapper.new browser.div(css: "div[id*=title][class*=x-title-text-dark-grey]")
-          @selected_filter_button = ElementWrapper.new browser.table(css: "table[id*=badgebutton][class*=sdc-badgebutton-selected]")
-          @cancelled_field = ElementWrapper.new browser.div(text: "Canceled")
+          @filter_panel = BrowserElement.new browser.div(css: "div[id*=filterpanel][class*=x-panel-dark-grey]")
+          @closed_filter_panel = BrowserElement.new browser.div(css: "div[id*=title][class*=x-title-text-dark-grey]")
+          @filter_panel_border_arrow = BrowserElement.new browser.div(css: "div[id*=filterpanel][class*=x-layout-split-left]")
+          @filter_panel_header_arrow = BrowserElement.new browser.img(css: "img[id*=tool][class*=x-tool-expand-right]")
+          @filter_panel_header_name = BrowserElement.new browser.div(css: "div[id*=title][class*=x-title-text-dark-grey]")
+          @selected_filter_button = BrowserElement.new browser.table(css: "table[id*=badgebutton][class*=sdc-badgebutton-selected]")
+          @cancelled_field = BrowserElement.new browser.div(text: "Canceled")
         end
 
         def search_orders str

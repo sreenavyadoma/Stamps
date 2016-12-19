@@ -1,6 +1,67 @@
 module Stamps
   module Orders
     module Details
+      class ShipFromAddress < Browser::Modal
+        attr_reader :text_box, :drop_down, :manage_shipping_adddress, :blur_element
+        def initialize param
+          super param
+          @text_box = TextboxElement.new browser.text_field(name: "ShipFrom")
+          @drop_down = BrowserElement.new browser.div css: "div[id^=shipfromdroplist][id$=trigger-picker]"
+          @manage_shipping_adddress = ManageShippingAddresses.new param
+          @blur_element = BlurOutElement.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def select service
+          return manage_shipping_adddress if manage_shipping_adddress.present?
+
+          default_element = browser.li(css: "ul[id^=boundlist-]>li[data-recordindex='0']")
+
+          if service.downcase == "default"
+            element = default_element
+          elsif service.downcase.include? "manage shipping"
+            element = browser.li(text: "Manage Shipping Addresses...")
+          else
+            element = browser.div text: "#{service}"
+          end
+
+          selection = BrowserElement.new element
+          service_text = ""
+          if service.downcase.include? "manage shipping"
+            7.times{
+              begin
+                drop_down.safe_click unless selection.present?
+                selection.safe_scroll_into_view
+                selection.safe_click
+                sleep 1
+                return manage_shipping_adddress if manage_shipping_adddress.present?
+              rescue
+                #ignore
+              end
+              blur_out
+            }
+          else
+            drop_down.safe_click unless selection.present?
+            if selection.present?
+              selection.safe_scroll_into_view
+              service_text = selection.text
+            end
+            10.times do
+              drop_down.safe_click unless selection.present?
+              selection.safe_scroll_into_view
+              selection.safe_click
+              sleep 1
+              text_box_text = text_box.text
+              return if text_box_text.include? service_text
+            end
+          end
+          "Unable to select service #{service}".should eql ""
+        end
+      end
+
       class ShipToTextArea < TextboxElement
         def full_address
           50.times do
@@ -96,12 +157,12 @@ module Stamps
         end
       end
 
-      class DetailsElement < Browser::Modal
+      class BlurOutElement < Browser::Modal
         attr_reader :insure_for_label
 
         def initialize param
           super param
-          @insure_for_label = ElementWrapper.new browser.label(text: 'Insure For $:')
+          @insure_for_label = BrowserElement.new browser.label(text: 'Insure For $:')
         end
 
         def blur_out
@@ -111,253 +172,127 @@ module Stamps
         end
       end
 
-      class ShipToBase < DetailsElement
-        attr_reader :less, :ship_to_dd
+      class ShipToCountry < Browser::Modal
+        attr_reader :text_box_dom, :text_box_int, :drop_down_dom, :drop_down_int,
+                    :dom_drop_down_stg, :int_drop_down_stg, :dom_text_box_stg, :int_text_box_stg
 
         def initialize param
           super param
-          @less = ElementWrapper.new browser.span(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @ship_to_dd = ElementWrapper.new browser.span(css: "div#shiptoview-addressCollapsed-targetEl>a>span>span>span[class*=down]")
+          @drop_down_dom = BrowserElement.new browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
+          @drop_down_int = BrowserElement.new browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
+          @text_box_dom = TextboxElement.new browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl")
+          @text_box_int = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
+
+          @dom_drop_down_stg = BrowserElement.new browser.div(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div[id^=combo-][id$=-trigger-picker]")
+          @dom_text_box_stg = TextboxElement.new browser.text_field(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
+          @int_drop_down_stg = BrowserElement.new browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div:nth-child(2)>div>div:nth-child(2)")
+          @int_text_box_stg = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div>div>div>input")
         end
 
-        def hide_address_details
-          blur_out
-          less.click_while_present
-        end
-
-        def show_address_details
-          blur_out
-          15.times {
-            ship_to_dd.safe_click
-            break unless ship_to_dd.present?
-          }
-        end
-      end
-
-      class ShipToCountry < ShipToBase
-        attr_reader :dom_drop_down, :dom_text_box, :int_drop_down, :int_text_box
-
-        def initialize param
-          super param
-          @dom_drop_down = ElementWrapper.new browser.div(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div[id^=combo-][id$=-trigger-picker]")
-          @dom_text_box = TextboxElement.new browser.text_field(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
-          @int_drop_down = ElementWrapper.new browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div:nth-child(2)>div>div:nth-child(2)")
-          @int_text_box = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div>div>div>input")
-        end
-
-        def drop_down
-          show_address_details
-          if dom_drop_down.present?
-            dom_drop_down
-          elsif int_drop_down.present?
-            int_drop_down
-          else
-            "Country drop-down (both domestic and international) is not present.".should eql ""
-          end
+        def present?
+          drop_down.present?
         end
 
         def text_box
-          show_address_details
-          sleep 1
-          if dom_text_box.present?
-            dom_text_box
-          elsif int_text_box.present?
-            int_text_box
-          else
-            "Country text box (both domestic and international) is not present.".should eql ""
+          50.times do
+            return text_box_dom if text_box_dom.present?
+            return text_box_int if text_box_int.present?
+
+            return dom_text_box_stg if dom_text_box_stg.present?
+            return int_text_box_stg if int_text_box_stg.present?
           end
+          #(text_box_dom.present? || text_box_int.present?).should be true
+          (dom_text_box_stg.present? || int_text_box_stg.present? || text_box_dom.present? || text_box_int.present?).should be true
+        end
+
+        def  drop_down
+          50.times do
+            return drop_down_dom if drop_down_dom.present?
+            return drop_down_int if drop_down_int.present?
+
+            return dom_drop_down_stg if dom_drop_down_stg.present?
+            return int_drop_down_stg if int_drop_down_stg.present?
+          end
+          #(drop_down_dom.present? || drop_down_int.present?).should be true
+          (drop_down_dom.present? || drop_down_dom.present? || dom_drop_down_stg.present? || int_drop_down_stg.present?).should be true
+        end
+
+        def selected? country
+          text_box.text == country
         end
 
         def select country
           logger.info "Select Country #{country}"
-          sleep 1
-          selection_1 = ElementWrapper.new browser.li(text: country)
-          selection_2 = ElementWrapper.new browser.li(text: "#{country} ")
+          begin
+            drop_down.safe_click
+            sleep 1
+            drop_down.safe_click
+            drop_down.safe_click
+            lis = browser.lis(text: country)
+            lis.size.should be_between(1, 2).inclusive
 
-          10.times do
-            begin
-              break if text_box.text.include? country
-              drop_down.safe_click unless selection_1.present? || selection_2.present?
-              if selection_1.present?
-                selection_1.safe_scroll_into_view
-                selection_1.safe_click
-              elsif selection_2.present?
-                selection_2.safe_scroll_into_view
-                selection_2.safe_click
-              else
-                sleep 1
-                if browser.lis(text: country).size == 2
-                  element1 = browser.lis(text: country)[0]
-                  element2 = browser.lis(text: country)[1]
-                  if element1.present?
-                    element_helper.safe_click element1
-                  elsif element2.present?
-                    element_helper.safe_click element2
-                  end
+            case lis.size
+              when 1
+                selection = BrowserElement.new lis[0]
+              when 2
+                if lis[0].text.size > 0
+                  selection = BrowserElement.new  lis[0]
+                else
+                  selection = BrowserElement.new  lis[1]
                 end
-              end
-
-              logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-            rescue Exception => e
-              logger.error e.backtrace.join("\n")
+              else
+                lis.size.should be_between(1, 2).inclusive
             end
-          end
-          logger.info "#{country} selected."
-          text_box.text.should include country
+
+            10.times do
+              break if text_box.text.include? country
+              drop_down.safe_click unless selection.present?
+              selection.safe_scroll_into_view
+              selection.safe_scroll_into_view
+              selection.safe_click if selection.present?
+              logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
+              break if text_box.text.include? country
+              break if text_box.text.include? country
+            end
+            logger.info "#{country} selected."
+            text_box.text.should include country
+          end unless text_box.text.include? country
         end
       end
 
-      class IntShipToBase < ShipToBase
-        attr_reader :name_field, :company_field, :address_1_field, :address_2_field, :city_field, :phone_field, :province_field, :postal_code_field, :email_field
+      class ShipToInternational < Browser::Modal
+        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :collapsed_address_dd
 
         def initialize param
           super param
-          @name_field = TextboxElement.new browser.text_field(name: "ShipName"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(2)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
-          @company_field = TextboxElement.new browser.text_field(name: "ShipCompany"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(3)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
-          @address_1_field = TextboxElement.new browser.text_field(name: "ShipStreet1"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(4)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
-          @address_2_field = TextboxElement.new browser.text_field(name: "ShipStreet2")
-          @city_field = TextboxElement.new browser.text_field(name: "ShipCity"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(6)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
-          @phone_field = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(8)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
-          @province_field = TextboxElement.new browser.text_field(name: "ShipState")
-          @postal_code_field = TextboxElement.new browser.text_field(name: "ShipPostalCode")
-          @email_field = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
+          @name = TextboxElement.new browser.text_field(name: "ShipName"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(2)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @company = TextboxElement.new browser.text_field(name: "ShipCompany"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(3)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @address_1 = TextboxElement.new browser.text_field(name: "ShipStreet1"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(4)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @address_2 = TextboxElement.new browser.text_field(name: "ShipStreet2")
+          @city = TextboxElement.new browser.text_field(name: "ShipCity"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(6)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @phone = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(8)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
+          @province = TextboxElement.new browser.text_field(name: "ShipState")
+          @postal_code = TextboxElement.new browser.text_field(name: "ShipPostalCode")
+          @email = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
+          @auto_suggest ||= AutoSuggestInternational.new param
+          @blur_element = BlurOutElement.new param
+
+          @less_link = BrowserElement.new browser.span(css: "div[id*=international]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
+          @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
+        end
+
+        def blur_out
+          blur_element.blur_out
         end
 
         def present?
-          show_address_details
-          name_field.present?
-        end
-
-        def name
-          show_address_details
-          name_field
-        end
-
-        def company
-          show_address_details
-          company_field
-        end
-
-        def address_1
-          show_address_details
-          address_1_field
-        end
-
-        def address_2
-          show_address_details
-          address_2_field
-        end
-
-        def city
-          show_address_details
-          city_field
-        end
-
-        def phone
-          show_address_details
-          phone_field
-        end
-
-        def province
-          show_address_details
-          province_field
-        end
-
-        def postal_code
-          show_address_details
-          postal_code_field
-        end
-
-        def email
-          show_address_details
-          email_field
-        end
-      end
-
-      class IntShipTo < IntShipToBase
-        attr_reader :auto_suggest
-        def initialize param
-          super param
-          @auto_suggest ||= AutoSuggestInternational.new param
-        end
-      end
-
-      class DomShipToBase < ShipToBase
-        def text_area
-          show_address_details
-          if @text_area.nil?
-            field = browser.textarea(name: "freeFormAddress")
-            error_field = browser.a css: "a[data-errorqtip*=address]" #This is the field containing data error property data-errorqtip
-            error_field_attribute = "data-errorqtip"
-            @text_area ||= ShipToTextArea.new field, error_field, error_field_attribute
-          end
-          @text_area
-        end
-
-        def email
-          show_address_details
-          if @email.nil?
-            field = browser.text_field name: 'BuyerEmail'
-            error_field = (browser.divs css: "div[data-errorqtip*=email]")[0]
-            error_field_attribute = "data-errorqtip"
-            @email = TextboxElement.new field, error_field, error_field_attribute
-          end
-          @email
-        end
-
-        def phone
-          show_address_details
-          if @phone.nil?
-            @phone = TextboxElement.new browser.text_field name: "ShipPhone"
-          end
-          @phone
-        end
-      end
-
-      class DomShipTo < DomShipToBase
-        attr_reader :ambiguous, :auto_suggest
-
-        def initialize param
-          super param
-          @ambiguous ||= AmbiguousAddress.new param
-          @auto_suggest ||= AutoSuggestDomestic.new param
-        end
-
-        def set address
-          20.times do
-            begin
-              text_area.set address
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-              blur_out
-              break if less.present?
-            rescue
-              "Unable to Ship-To address to #{address}".should eql "Set Ship-To Address Failed"
-            end
-          end
-          text_area.text.should include address.split(" ").last
-        end
-      end
-
-      class ShipTo < Browser::Modal
-        attr_reader :country, :international, :address
-        def initialize param
-          super param
-          @country ||= ShipToCountry.new param
-          @address ||= DomShipTo.new param
-          @international ||= IntShipTo.new param
+          name.present?
         end
       end
 
       class AutoSuggestPopUp < Browser::Modal
         def present?
-          (ElementWrapper.new self.name_fields[0]).present?
+          (BrowserElement.new self.name_fields[0]).present?
         end
 
         def size
@@ -365,7 +300,7 @@ module Stamps
         end
 
         def select number
-          selection = ElementWrapper.new name_fields[number.to_i-1]
+          selection = BrowserElement.new name_fields[number.to_i-1]
           selection.safe_click
           selection.safe_click
           selection.safe_click
@@ -380,12 +315,13 @@ module Stamps
         end
       end
 
-      class AutoSuggestInternational < IntShipToBase
+      class AutoSuggestInternational < Browser::Modal
+        #todo-rob FIX ME
         attr_reader :auto_suggest_box
 
         def initialize param
           super param
-          @auto_suggest_box ||= AutoSuggestPopUp.new param
+          @auto_suggest_box = AutoSuggestPopUp.new param
         end
 
         def set address
@@ -412,7 +348,7 @@ module Stamps
 
         def initialize param
           super param
-          @window_title = ElementWrapper.new browser.div(text: 'Exact Address Not Found')
+          @window_title = BrowserElement.new browser.div(text: 'Exact Address Not Found')
         end
 
         def present?
@@ -430,7 +366,7 @@ module Stamps
           checkbox = CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
           checkbox.check
 
-          accept_button = ElementWrapper.new browser.span text: "Accept"
+          accept_button = BrowserElement.new browser.span text: "Accept"
           accept_button.click_while_present
         end
 
@@ -457,32 +393,107 @@ module Stamps
         end
       end
 
-      class AmbiguousAddress < DomShipToBase
+      class AmbiguousAddress < Browser::Modal
         attr_reader :address_not_found
 
         def initialize param
           super param
-          @address_not_found ||= AddressNotFound.new param
-        end
-
-        def set address
-          text_box = self.text_area
-
-          10.times do
-            text_box.set address
-            blur_out
-            address_not_found.wait_until_present 4
-            return address_not_found if address_not_found.present? if address_not_found.present?
-          end
-          "Exact Address Not Found module did not appear.".should eql ""
+          @address_not_found = AddressNotFound.new param
         end
 
         def data_error
-          self.text_area.data_error_qtip
+          text_area.data_error_qtip
         end
       end
 
-      class AutoSuggestDomestic < DomShipToBase
+      class ShipToDomestic < Browser::Modal
+        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element,
+                    :address_not_found
+
+        def initialize param
+          super param
+          @ambiguous = AmbiguousAddress.new param
+          @auto_suggest = AutoSuggestDomestic.new param
+          @less_link = BrowserElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
+          @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
+          @blur_element = BlurOutElement.new param
+          @address_not_found = AddressNotFound.new param
+        end
+
+        def text_area
+          show_address
+          dom_text_area = browser.textarea(name: "freeFormAddress")
+          error_field = browser.a css: "a[data-errorqtip*=address]"
+          error_field_attribute = "data-errorqtip"
+          @text_area ||= ShipToTextArea.new dom_text_area, error_field, error_field_attribute
+          @text_area.present?.should be true
+          @text_area
+        end
+
+        def email
+          show_address
+          field = browser.text_field name: 'BuyerEmail'
+          error_field = (browser.divs css: "div[data-errorqtip*=email]")
+          error_field_attribute = "data-errorqtip"
+          @email ||= TextboxElement.new field, error_field, error_field_attribute
+          @email.present?.should be true
+          @email
+        end
+
+        def phone
+          show_address
+          @phone ||= TextboxElement.new browser.text_field(name: "ShipPhone")
+          @phone.present?.should be true
+          @phone
+        end
+
+
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def present?
+          dom_text_area.present?
+        end
+
+        def less
+          less_link.click_while_present
+        end
+
+        def show_address
+          collapsed_address_dd.click_while_present
+        end
+
+        def set address
+          10.times do
+            begin
+              text_area.set address
+              15.times do
+                blur_out
+                break if less_link.present?
+              end
+              break if less_link.present?
+            rescue Exception => e
+              logger.error e.message
+              logger.error e.backtrace.join("\n")
+              "Unable to Ship-To address to #{address}. Error: #{e.message}".should eql "Set Ship-To Address Failed"
+            end
+          end
+          text_area.text.should include address.split(" ").last
+        end
+
+        def set_ambiguous address
+          10.times do
+            text_area.set address
+            blur_out
+            address_not_found.wait_until_present 4
+            return address_not_found if address_not_found.present?
+          end
+          "Exact Address Not Found module did not appear.".should eql ""
+        end
+      end
+
+      class AutoSuggestDomestic < Browser::Modal
         attr_reader :auto_suggest_box
         def initialize param
           super param
@@ -508,14 +519,24 @@ module Stamps
         end
       end
 
+      class ShipTo < Browser::Modal
+        attr_reader :country, :international, :domestic
+        def initialize param
+          super param
+          @country = ShipToCountry.new param
+          @domestic = ShipToDomestic.new param
+          @international = ShipToInternational.new param
+        end
+      end
+
       class AddShippingAdress < Browser::Modal
         attr_reader :save_button, :origin_zip, :window_title
 
         def initialize param
           super param
-          @window_title = ElementWrapper.new browser.div(text: 'Add Shipping Address')
-          @save_button = ElementWrapper.new browser.span(text: 'Save')
-          @origin_zip = ElementWrapper.new browser.text_field(name: 'OriginZip')
+          @window_title = BrowserElement.new browser.div(text: 'Add Shipping Address')
+          @save_button = BrowserElement.new browser.span(text: 'Save')
+          @origin_zip = TextboxElement.new browser.text_field(name: 'OriginZip')
         end
 
         def present?
@@ -526,17 +547,17 @@ module Stamps
           window_title.safely_wait_until_present *args
         end
 
-        def shipping_address table
+        def shipping_address table #table.should be_kind_of Hash
           origin_zip.set table["ship_from_zip"]
-          self.name table['name']
-          self.company table['company']
-          self.street_address1 table["street_address"]
-          self.street_address2 table["street_address2"]
-          self.city table['city']
-          self.state.select table["state"]
-          self.zip table["zip"]
-          self.phone table['phone']
-          self.save
+          name table['name']
+          company table['company']
+          street_address1 table["street_address"]
+          street_address2 table["street_address2"]
+          city table['city']
+          state.select table["state"]
+          zip table["zip"]
+          phone table['phone']
+          save
         end
 
         def name *args
@@ -600,8 +621,8 @@ module Stamps
         end
 
         def state
-          text_box = (browser.text_field name: 'State')
-          dd = browser.div css: "div[id^=statecombobox-][id$=-trigger-picker]"
+          text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
+          dd = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
           DropDownElement.new @browser, dd, :li, text_box
         end
 
@@ -684,7 +705,7 @@ module Stamps
 
       class ViewRestrictions < Browser::Modal
         def browser_ok_button
-          ElementWrapper.new browser.span text: "OK"
+          BrowserElement.new browser.span text: "OK"
         end
 
         def present?
@@ -701,11 +722,11 @@ module Stamps
 
         def initialize param
           super param
-          @edit_button = ElementWrapper.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
-          @add_button = ElementWrapper.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
-          @window_title = ElementWrapper.new browser.div css: 'div[class*=x-window-header-title-default]>div'
-          @close_button = ElementWrapper.new browser.image css: "img[class*='x-tool-close']"
-          @delete_button = ElementWrapper.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
+          @edit_button = BrowserElement.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
+          @add_button = BrowserElement.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
+          @window_title = BrowserElement.new browser.div css: 'div[class*=x-window-header-title-default]>div'
+          @close_button = BrowserElement.new browser.image css: "img[class*='x-tool-close']"
+          @delete_button = BrowserElement.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
           @add_shipping_address ||= AddShippingAdress.new param
         end
 
@@ -925,156 +946,17 @@ module Stamps
         end
       end
 
-      class ShipFromAddress < DetailsElement
-        attr_reader :text_box, :drop_down, :manage_shipping_adddress
-        def initialize param
-          super param
-          @text_box = TextboxElement.new browser.text_field name: "ShipFrom"
-          @drop_down = ElementWrapper.new browser.div css: "div[id^=shipfromdroplist][id$=trigger-picker]"
-          @manage_shipping_adddress = ManageShippingAddresses.new param
-        end
-
-        def select service
-          return manage_shipping_adddress if manage_shipping_adddress.present?
-
-          default_element = browser.li(css: "ul[id^=boundlist-]>li[data-recordindex='0']")
-
-          if service.downcase == "default"
-            element = default_element
-          elsif service.downcase.include? "manage shipping"
-            element = browser.li(text: "Manage Shipping Addresses...")
-          else
-            element = browser.div text: "#{service}"
-          end
-
-          selection = ElementWrapper.new element
-          service_text = ""
-          if service.downcase.include? "manage shipping"
-            7.times{
-              begin
-                drop_down.safe_click unless selection.present?
-                selection.safe_scroll_into_view
-                selection.safe_click
-                sleep 1
-                return manage_shipping_adddress if manage_shipping_adddress.present?
-              rescue
-                #ignore
-              end
-              blur_out
-            }
-          else
-            drop_down.safe_click unless selection.present?
-            if selection.present?
-              selection.safe_scroll_into_view
-              service_text = selection.text
-            end
-            10.times do
-              drop_down.safe_click unless selection.present?
-              selection.safe_scroll_into_view
-              selection.safe_click
-              sleep 1
-              text_box_text = text_box.text
-              return if text_box_text.include? service_text
-            end
-          end
-          "Unable to select service #{service}".should eql ""
-        end
-      end
-
-      class DetailsTracking < DetailsElement
-        attr_reader :text_box, :cost_label, :drop_down
-        def initialize param
-          super param
-          @text_box = TextboxElement.new browser.text_field(name: 'Tracking')
-          @cost_label = ElementWrapper.new browser.label(css: "label[class*=selected_tracking_cost]")
-          @drop_down = ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
-        end
-
-        def tracking_selection selection
-          if selection.downcase.include? "usps"
-            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
-          elsif selection.downcase.include? "signature"
-            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
-          elsif selection.downcase.include? "none"
-            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
-          else
-            "#{selection} is not a valid selection".should eql "Valid selections are USPS Tracking and Signature Required"
-          end
-        end
-
-        def select selection
-          drop_down.present?.should be true
-          5.times {
-            begin
-              drop_down.safe_click
-              selection_label = tracking_selection(selection).first
-              drop_down.safe_click unless selection_label.present?
-              element_helper.safe_click selection_label
-              break if text_box.text.include? selection
-            rescue
-              #ignore
-            end
-          }
-          text_box.text.should include selection
-        end
-
-        def inline_cost selection
-          tds = tracking_selection(selection)
-          tds.size.should equal 2
-          selection_label = ElementWrapper.new tds.last
-          5.times do
-            begin
-              drop_down.safe_click unless selection_label.present?
-              return selection_label.text if selection_label.present?
-
-              drop_down.safe_click
-              selection_label = tracking_selection(selection).last
-              drop_down.safe_click unless selection_label.present?
-              return element_helper.text selection_label if selection_label.present?
-            rescue
-              #ignore
-            end
-            "Unable to fetch inline cost for #{selection}".should eql "Details - Tracking inline cost"
-          end
-        end
-
-        def cost
-          10.times do
-            begin
-              cost_label.text.include? "$"
-            rescue
-              #ignore
-            end
-          end
-          cost_label.text.should include "$"
-          ParameterHelper.remove_dollar_sign cost_label.text
-        end
-
-        def tooltip selection
-          button = drop_down
-          selection_label = browser.td text: selection
-          5.times {
-            begin
-              button.safe_click unless selection_label.present?
-              if selection_label.present?
-                qtip = selection_label.parent.parent.parent.parent.attribute_value "data-qtip"
-                logger.info "#{qtip}"
-                return qtip
-              end
-            rescue
-              #ignore
-            end
-          }
-        end
-      end
-
-      class DetailsService < DetailsElement
-        attr_reader :text_box, :drop_down, :cost_label
+      class DetailsService < Browser::Modal
+        attr_reader :text_box, :drop_down, :blur_element
         def initialize param
           super param
           @text_box = TextboxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
-          @drop_down = ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
-          @cost_label = ElementWrapper.new browser.label(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(6)>div>div>label:nth-child(3)')
+          @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
+          @blur_element = BlurOutElement.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
         end
 
         def abbrev_service_name long_name
@@ -1107,7 +989,7 @@ module Stamps
           selected_service = ""
           @details_services ||= data_for(:details_services, {})
 
-          selection_label = ElementWrapper.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
+          selection_label = BrowserElement.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
 
           20.times do
             begin
@@ -1130,7 +1012,7 @@ module Stamps
         end
 
         def inline_cost service_name
-          cost_label = ElementWrapper.new browser.td css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"
+          cost_label = BrowserElement.new browser.td css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"
           10.times do
             begin
               drop_down.safe_click unless cost_label.present?
@@ -1146,13 +1028,22 @@ module Stamps
           end
         end
 
+        def cost_label
+          labels = browser.label(text: "Service:").parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
+          end
+          cost_element
+        end
+
         def cost
           ParameterHelper.remove_dollar_sign(cost_label.text)
         end
 
         def tooltip selection
           button = drop_down
-          selection_label = ElementWrapper.new browser.tr(css: "tr[data-qtip*='#{selection}']")
+          selection_label = BrowserElement.new browser.tr(css: "tr[data-qtip*='#{selection}']")
           10.times {
             begin
               button.safe_click unless selection_label.present?
@@ -1176,13 +1067,13 @@ module Stamps
           dd_btn = self.drop_down
           selection_field = browser.li(id: "#{@details_services[service]}")
           #selection_element = browser.tr css: "tr[data-qtip*='#{service}']"
-          selection_label = ElementWrapper.new selection_field
+          selection_label = BrowserElement.new selection_field
 
           10.times do |index|
             dd_btn.safe_click unless selection_label.present?
             sleep 1
             if selection_field.present?
-              disabled_field = ElementWrapper.new (selection_field.parent.parent.parent)
+              disabled_field = BrowserElement.new (selection_field.parent.parent.parent)
               begin
                 if selection_label.present?
                   if disabled_field.present?
@@ -1209,94 +1100,241 @@ module Stamps
         end
       end
 
+      class DetailsInsureFor < Browser::Modal
+        attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :insurance_terms_conditions, :blur_element
+
+        def initialize param
+          super param
+          @text_box = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
+          @decrement_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
+          @increment_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
+
+          field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
+          verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
+          @checkbox ||= CheckboxElement.new field, verify, "class", "checked"
+          @insurance_terms_conditions = InsuranceTermsConditions.new param
+          @blur_element = BlurOutElement.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def set value
+          checkbox.check
+          5.times do
+            text_box.set value
+            blur_out
+            blur_out
+            return insurance_terms_conditions if insurance_terms_conditions.present?
+          end
+          nil
+        end
+
+        def set_and_agree value
+          insurance_terms_conditions = set(value)
+          insurance_terms_conditions.i_agree unless insurance_terms_conditions.nil?
+        end
+
+        def increment value
+          value.to_i.times do
+            increment_trigger.safe_click
+          end
+        end
+
+        def decrement value
+          value.to_i.times do
+            decrement_trigger.safe_click
+          end
+        end
+
+        def cost_label
+          labels = browser.label(text: "Insure For $:").parent.parent.parent.parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
+          end
+          cost_element
+        end
+
+        def cost
+          ParameterHelper.remove_dollar_sign(cost_label.text)
+        end
+      end
+
+      class DetailsTracking < Browser::Modal
+        attr_reader :text_box, :drop_down, :blur_element
+        def initialize param
+          super param
+          @text_box = TextboxElement.new browser.text_field(name: 'Tracking')
+          @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
+          @blur_element = BlurOutElement.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def tracking_selection selection
+          if selection.downcase.include? "usps"
+            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "signature"
+            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "none"
+            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
+          else
+            "#{selection} is not a valid selection".should eql "Valid selections are USPS Tracking and Signature Required"
+          end
+        end
+
+        def select selection
+          drop_down.present?.should be true
+          20.times do
+            begin
+              drop_down.safe_click
+              selection_label = tracking_selection(selection).first
+              drop_down.safe_click unless selection_label.present?
+              element_helper.safe_click selection_label
+              break if text_box.text.include? selection
+            rescue Exception => e
+              logger.error e.message
+              logger.error e.backtrace.join("\n")
+              "Unable to select Tracking #{selection}. Error: #{e.message}".should eql "Select Tracking #{selection}"
+            end
+          end
+          text_box.text.should include selection
+        end
+
+        def inline_cost selection
+          tds = tracking_selection(selection)
+          tds.size.should equal 2
+          selection_label = BrowserElement.new tds.last
+          5.times do
+            begin
+              drop_down.safe_click unless selection_label.present?
+              return selection_label.text if selection_label.present?
+
+              drop_down.safe_click
+              selection_label = tracking_selection(selection).last
+              drop_down.safe_click unless selection_label.present?
+              return element_helper.text selection_label if selection_label.present?
+            rescue
+              #ignore
+            end
+            "Unable to fetch inline cost for #{selection}".should eql "Details - Tracking inline cost"
+          end
+        end
+
+        def cost_label
+          labels = browser.label(text: "Tracking:").parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
+          end
+          cost_element
+        end
+
+        def cost
+          ParameterHelper.remove_dollar_sign(cost_label.text)
+        end
+
+        def tooltip selection
+          button = drop_down
+          selection_label = browser.td text: selection
+          5.times {
+            begin
+              button.safe_click unless selection_label.present?
+              if selection_label.present?
+                qtip = selection_label.parent.parent.parent.parent.attribute_value "data-qtip"
+                logger.info "#{qtip}"
+                return qtip
+              end
+            rescue
+              #ignore
+            end
+          }
+        end
+      end
+
       class Weight < Browser::Modal
         attr_reader :lbs, :oz
         def initialize param
           super param
-          @lbs ||= Pounds.new param
-          @oz ||= Ounces.new param
+          @lbs = Pounds.new param
+          @oz = Ounces.new param
         end
 
         class Pounds < Browser::Modal
-          attr_reader :text_box
+          attr_reader :text_box, :increment_btn, :decrement_btn, :blur_element
+
           def initialize param
             super param
             @text_box = TextboxElement.new (browser.text_field name: 'WeightLbs'), "data-errorqtip"
+            @increment_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
+            @decrement_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
+            @blur_element = BlurOutElement.new param
           end
 
           def set value
-            text_field = text_box
-            value = value.to_i
-            max = value + text_field.text.to_i
-            max.times do
-              current_value = text_field.text.to_i
-              break if value == current_value
-              if value > current_value
-                increment 1
-              else
-                decrement 1
-              end
-              break if value == current_value
+            text_box.present?.should be true
+            15.times do
+              text_box.set value
+              blur_element.blur_out
+              break if value == text
             end
-            sleep 1
-            logger.info "Pounds set to #{text_field.text}"
+            logger.message "Pounds set to #{text}"
           end
 
-          def increment value
-            button = ElementWrapper.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").first
-            value.to_i.times do
-              button.safe_click
-            end
+          def text
+            text_box.present?.should be true
+            text_box.text
           end
 
-          def decrement value
-            button = ElementWrapper.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").first
-            value.to_i.times do
-              button.safe_click
-            end
+          def increment
+            increment_btn.present?.should be true
+            increment_btn.click
+          end
+
+          def decrement
+            decrement_btn.present?.should be true
+            decrement_btn.click
           end
         end
 
         class Ounces < Browser::Modal
-          attr_reader :text_box
+          attr_reader :text_box, :increment_btn, :decrement_btn, :blur_element
+
           def initialize param
             super param
             @text_box = TextboxElement.new (browser.text_field name: 'WeightOz'), "data-errorqtip"
+            @increment_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
+            @decrement_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
+            @blur_element = BlurOutElement.new param
           end
 
           def set value
-=begin
-          text_field = text_box
-          value = value.to_i
-          max = value + text_field.text.to_i
-          max.times do
-            current_value = text_field.text.to_i
-            break if value == current_value
-            if value > current_value
-              increment 1
-            else
-              decrement 1
+            text_box.present?.should be true
+            15.times do
+              text_box.set value
+              blur_element.blur_out
+              break if value == text
             end
-            break if value == current_value
-          end
-          sleep 1
-=end
-            self.text_box.set value
-            logger.info "Ounces set to #{text_box.text}"
+            logger.message "Ounces set to #{text}"
           end
 
-          def increment value
-            button = ElementWrapper.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=up]").last
-            value.to_i.times do
-              button.safe_click
-            end
+          def text
+            text_box.present?.should be true
+            text_box.text
           end
 
-          def decrement value
-            button = ElementWrapper.new (browser.divs css: "div[id^=weightview-][id$=-targetEl]>div>div>div>div[id^=numberfield-][id$=-trigger-spinner]>div[class*=down]").last
-            value.to_i.times do
-              button.safe_click
-            end
+          def increment
+            increment_btn.present?.should be true
+            increment_btn.click
+          end
+
+          def decrement
+            decrement_btn.present?.should be true
+            decrement_btn.click
           end
         end
       end
@@ -1316,35 +1354,41 @@ module Stamps
           def initialize param
             super param
             @text_box = TextboxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div>input"
-            @increment_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]"
-            @decrement_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]"
+            @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]"
+            @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]"
+          end
+
+          def text
+            text_box.present?.should be true
+            text_box.text
           end
 
           def set value
-            text_field = text_box
+            text_box.present?.should be true
             value = value.to_i
-            max = value + text_field.text.to_i
+            max = value + text_box.text.to_i
             max.times do
-              current_value = text_field.text.to_i
-              break if value == current_value
-              if value > current_value
+              break if value == text_box.text.to_i
+              if value > text_box.text.to_i
                 increment 1
               else
                 decrement 1
               end
-              break if value == current_value
+              break if text_box.text.to_i == value
             end
-            sleep 1
-            logger.info "Length set to #{text_field.text}"
+            text.to_i.should eql value
+            logger.info "Length set to #{text_box.text}"
           end
 
           def increment value
+            increment_button.present?.should be true
             value.to_i.times do
               increment_button.safe_click
             end
           end
 
           def decrement value
+            decrement_button.present?.should be true
             value.to_i.times do
               decrement_button.safe_click
             end
@@ -1357,11 +1401,17 @@ module Stamps
           def initialize param
             super param
             @text_box = TextboxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div>input"
-            @increment_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]"
-            @decrement_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]"
+            @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]"
+            @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]"
+          end
+
+          def text
+            text_box.present?.should be true
+            text_box.text
           end
 
           def set value
+            text_box.present?.should be true
             value = value.to_i
             max = value + text_box.text.to_i
             max.times do
@@ -1374,17 +1424,19 @@ module Stamps
               end
               break if value == current_value
             end
-            sleep 1
+            text.to_i.should eql value
             logger.info "Width set to #{text_box.text}"
           end
 
           def increment value
+            increment_button.present?.should be true
             value.to_i.times do
               increment_button.safe_click
             end
           end
 
           def decrement value
+            decrement_button.present?.should be true
             value.to_i.times do
               decrement_button.safe_click
             end
@@ -1397,11 +1449,17 @@ module Stamps
           def initialize param
             super param
             @text_box = TextboxElement.new browser.text_field css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div>input'
-            @increment_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=up]"
-            @decrement_button = ElementWrapper.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=down]"
+            @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=up]"
+            @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=down]"
+          end
+
+          def text
+            text_box.present?.should be true
+            text_box.text
           end
 
           def set value
+            text_box.present?.should be true
             value = value.to_i
             max = value + text_box.text.to_i
             max.times do
@@ -1414,17 +1472,19 @@ module Stamps
               end
               break if value == current_value
             end
-            sleep 1
+            text.to_i.should eql value
             logger.info "Height set to #{text_box.text}"
           end
 
           def increment value
+            increment_button.present?.should be true
             value.to_i.times do
               increment_button.safe_click
             end
           end
 
           def decrement value
+            decrement_button.present?.should be true
             value.to_i.times do
               decrement_button.safe_click
             end
@@ -1432,40 +1492,20 @@ module Stamps
         end
       end
 
-      class DetailsInsureFor < Browser::Modal
-        attr_reader :checkbox, :text_box, :cost_label, :increment_trigger, :decrement_trigger
-
-        def initialize param
-          super param
-          @text_box = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
-          @cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(7)>div>div>label")
-          @decrement_trigger = ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
-          @increment_trigger = ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
-
-          field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
-          verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
-          @checkbox ||= CheckboxElement.new field, verify, "class", "checked"
+      class InsuranceTermsConditions < Browser::Modal
+        def present?
+          @window_title_element = BrowserElement.new browser.divs(text: "Stamps.com Insurance Terms and Conditions").first
+          @window_title_element.present?
         end
 
-        def set value
-          checkbox.check
-          text_box.set value
+        def i_agree
+          @i_agree_element = BrowserElement.new browser.spans(text: "I Agree").first
+          @i_agree_element.click_while_present
         end
 
-        def increment value
-          value.to_i.times do
-            increment_trigger.safe_click
-          end
-        end
-
-        def decrement value
-          value.to_i.times do
-            decrement_trigger.safe_click
-          end
-        end
-
-        def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text)
+        def cancel
+          @cancel_element = BrowserElement.new browser.spans(text: "Cancel").first
+          @cancel_element.click_while_present
         end
       end
 
@@ -1480,7 +1520,7 @@ module Stamps
             @index = number
             @qty ||= Qty.new param, index
             @id = TextboxElement.new (browser.text_fields name: "SKU")[index-1]
-            @delete = ElementWrapper.new (browser.spans css: "span[class*=sdc-icon-remove]")[index-1]
+            @delete = BrowserElement.new (browser.spans css: "span[class*=sdc-icon-remove]")[index-1]
             @description = TextboxElement.new (browser.text_fields name: "Description")[index-1]
           end
 
@@ -1510,14 +1550,14 @@ module Stamps
             end
 
             def increment value
-              button = ElementWrapper.new (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
+              button = BrowserElement.new (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
               value.to_i.times do
                 button.safe_click
               end
             end
 
             def decrement value
-              button = ElementWrapper.new (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
+              button = BrowserElement.new (browser.divs css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
               value.to_i.times do
                 button.safe_click
               end
@@ -1530,28 +1570,28 @@ module Stamps
         end
 
         def item_details_header
-          ElementWrapper.new (browser.div text: "Items Ordered")
+          BrowserElement.new (browser.div text: "Items Ordered")
         end
 
         attr_reader :add_btn
 
         def initialize param
           super param
-          @add_btn = ElementWrapper.new browser.span(css: "span[class*=sdc-icon-add]")
+          @add_btn = BrowserElement.new browser.span(css: "span[class*=sdc-icon-add]")
         end
 
         def expand
-          button = ElementWrapper.new (browser.img css: "img[class*='x-tool-expand-bottom']")
+          button = BrowserElement.new (browser.img css: "img[class*='x-tool-expand-bottom']")
           button.safe_click
         end
 
         def collapse_store_item
-          button = ElementWrapper.new (browser.imgs css: "img[class*='x-tool-collapse-top']")[1]
+          button = BrowserElement.new (browser.imgs css: "img[class*='x-tool-collapse-top']")[1]
           button.safe_click
         end
 
         def collapse_item
-          button = ElementWrapper.new (browser.img css: "img[class*='x-tool-collapse-top']")
+          button = BrowserElement.new (browser.img css: "img[class*='x-tool-collapse-top']")
           button.safe_click
         end
 
@@ -1603,11 +1643,11 @@ module Stamps
         attr_reader :drop_down
         def initialize param
           super param
-          @drop_down = ElementWrapper.new (browser.spans(css: "span[class*='sdc-icon-more']").first)
+          @drop_down = BrowserElement.new (browser.spans(css: "span[class*='sdc-icon-more']").first)
         end
 
         def collapse
-          selection = ElementWrapper.new browser.span(text: "Collapse Panel")
+          selection = BrowserElement.new browser.span(text: "Collapse Panel")
           dd = drop_down
           collapsed_details = DetailsCollapsible.new param
           10.times do
@@ -1619,7 +1659,7 @@ module Stamps
 
         def tooltip
           btn = drop_down
-          tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
+          tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
           btn.element.hover
           btn.element.hover
           15.times do
@@ -1640,7 +1680,7 @@ module Stamps
         end
 
         def order_id
-          order_id_label = ElementWrapper.new browser.bs(css: "label>b").first
+          order_id_label = BrowserElement.new browser.bs(css: "label>b").first
           15.times{
             begin
               order_id_str = order_id_label.text
@@ -1658,11 +1698,11 @@ module Stamps
         attr_reader :label
         def initialize param
           super param
-          @label = ElementWrapper.new browser.strong(text: 'Total Ship Cost:')
+          @label = BrowserElement.new browser.strong(text: 'Total Ship Cost:')
         end
 
         def total_ship_cost
-          cost_label = ElementWrapper.new browser.label(css: "div[id^=singleOrderDetailsForm]>div>div>div>label[class*=total_cost]")
+          cost_label = BrowserElement.new browser.label(css: "div[id^=singleOrderDetailsForm]>div>div>div>label[class*=total_cost]")
           10.times do
             begin
               cost = cost_label.text
@@ -1676,7 +1716,7 @@ module Stamps
         end
 
         def multiple_order_cost
-          cost_label = ElementWrapper.new (browser.labels css: "label[class*=total_cost]")[1]
+          cost_label = BrowserElement.new (browser.labels css: "label[class*=total_cost]")[1]
           10.times do
             begin
               cost = cost_label.text
@@ -1690,26 +1730,34 @@ module Stamps
         end
       end
 
-      class SingleOrderDetails < DetailsElement
-        attr_reader :body, :insure_for, :ship_from, :toolbar, :ship_to, :weight, :service, :tracking, :dimensions,
-                    :footer, :customs, :item_grid, :reference_no, :collapsed_details
+      class SingleOrderDetails < Browser::Modal
+        attr_reader :toolbar, :ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
+                    :footer, :customs, :item_grid, :reference_no, :collapsed_details, :blur_element
 
         def initialize param
           super param
-          @body = ElementWrapper.new browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]")
-          @insure_for ||= DetailsInsureFor.new param
+          @toolbar = DetailsToolbar.new param
+
           @ship_from ||= ShipFromAddress.new param
-          @toolbar ||= DetailsToolbar.new param
           @ship_to ||= ShipTo.new param
           @weight ||= Weight.new param
           @service ||= DetailsService.new param
+          @insure_for ||= DetailsInsureFor.new param
           @tracking ||= DetailsTracking.new param
-          @dimensions ||= Dimensions.new param
-          @footer ||= DetailsFooter.new param
-          @customs ||= OrdersCustomsFields.new param
-          @item_grid ||= DetailsItemGrid.new param
           @reference_no = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input")
+          @dimensions ||= Dimensions.new param
+          @item_grid ||= DetailsItemGrid.new param
+          @customs = Customs::OrdersCustomsFields.new param
+
+          @blur_element = BlurOutElement.new param
+          @body = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]")
           @collapsed_details = DetailsCollapsible.new param
+
+          @footer ||= DetailsFooter.new param
+        end
+
+        def blur_out
+          blur_element.blur_out
         end
 
         def present?
@@ -1746,7 +1794,7 @@ module Stamps
         end
 
         def add_item
-          add_item = ElementWrapper.new browser.span text: "Add Item"
+          add_item = BrowserElement.new browser.span text: "Add Item"
           "Add Item button is not present in Order Details form!".should be "" unless add_item.present?
           count = items_count
           5.times do

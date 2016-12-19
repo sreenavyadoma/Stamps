@@ -9,7 +9,6 @@ Feature: Change Starting Label Position to Right Side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal
@@ -22,7 +21,6 @@ Feature: Change Starting Label Position to Right Side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Hide Ship-To fields
     Then Details: Select Service Priority Mail Package
     Then Details: Set Ounces to 1
     Then Print: Open Modal

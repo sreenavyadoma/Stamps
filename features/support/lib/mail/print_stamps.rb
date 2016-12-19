@@ -16,30 +16,30 @@ module Stamps
         case serial_prefix.upcase
 
           when 'A'
-            image = ElementWrapper.new browser.div css: "div[style*='traditional-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='traditional-bk.gif']"
           when 'B'
-            image = ElementWrapper.new browser.div css: "div[style*='bseries-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='bseries-bk.gif']"
           when 'C'
-            image = ElementWrapper.new browser.div css: "div[style*='standard-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='standard-bk.gif']"
           when 'K'
-            image = ElementWrapper.new browser.div css: "div[style*='themed-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='themed-bk.gif']"
           when 'M'
-            image = ElementWrapper.new browser.div css: "div[style*='landscape-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='landscape-bk.gif']"
           when 'P'
-            image = ElementWrapper.new browser.div css: "div[style*='portrait-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='portrait-bk.gif']"
           when 'R'
-            image = ElementWrapper.new browser.div css: "div[style*='return-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='return-bk.gif']"
           when 'V'
-            image = ElementWrapper.new browser.div css: "div[style*='standard-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='standard-bk.gif']"
           when 'W'
-            image = ElementWrapper.new browser.div css: "div[style*='PromoPaper20-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='PromoPaper20-bk.gif']"
           when 'L'
-            image = ElementWrapper.new browser.div css: "div[style*='landscape-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='landscape-bk.gif']"
           when 'S'
-            image = ElementWrapper.new browser.div css: "div[style*='sordSeries-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='sordSeries-bk.gif']"
           else
             logger.info "Invalid Serial Number #{serial_prefix}"
-            image = ElementWrapper.new browser.div css: "div[style*='traditional-bk.gif']"
+            image = BrowserElement.new browser.div css: "div[style*='traditional-bk.gif']"
         end
 
       end
@@ -79,7 +79,7 @@ module Stamps
       def initialize param
         super param
         @text_box = TextboxElement.new browser.text_field name: "nsService"
-        @drop_down = ElementWrapper.new browser.div css:'table[id^=netstampsservicedroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]'
+        @drop_down = BrowserElement.new browser.div css:'table[id^=netstampsservicedroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]'
       end
 
       def select selection
@@ -87,9 +87,9 @@ module Stamps
         box = text_box
         button = drop_down
         if selection == "Media Mail (2 - 3 Days)"
-          selection_label = ElementWrapper.new browser.div css: "div[data-qtip*='Media Mail (2 - 9 Days)']"
+          selection_label = BrowserElement.new browser.div css: "div[data-qtip*='Media Mail (2 - 9 Days)']"
         else
-          selection_label = ElementWrapper.new browser.div css: "div[data-qtip*='#{selection}']"
+          selection_label = BrowserElement.new browser.div css: "div[data-qtip*='#{selection}']"
         end
 
         10.times {

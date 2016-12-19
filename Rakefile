@@ -126,33 +126,38 @@ Cucumber::Rake::Task.new(:whats_new) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_pam_sc) do |t|
-  t.profile = 'webreg_pam_sc'
+Cucumber::Rake::Task.new(:webreg) do |t|
+  t.profile = 'webreg'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_pam_cc) do |t|
-  t.profile = 'webreg_pam_cc'
+Cucumber::Rake::Task.new(:pam) do |t|
+  t.profile = 'pam'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_pam_stg) do |t|
-  t.profile = 'webreg_pam_stg'
+Cucumber::Rake::Task.new(:orders) do |t|
+  t.profile = 'orders'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:orders_sign_in) do |t|
-  t.profile = 'orders_sign_in'
+Cucumber::Rake::Task.new(:webreg_meter_limit_100k) do |t|
+  t.profile = 'webreg_meter_limit_100k'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_pam_orders) do |t|
-  t.profile = 'webreg_pam_orders'
+Cucumber::Rake::Task.new(:pam_meter_limit_100k) do |t|
+  t.profile = 'pam_meter_limit_100k'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_pam) do |t|
-  t.profile = 'webreg_pam'
+Cucumber::Rake::Task.new(:webreg_ach_purchase_100k) do |t|
+  t.profile = 'webreg_ach_purchase_100k'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:pam_ach_purchase_100k) do |t|
+  t.profile = 'pam_ach_purchase_100k'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -669,17 +674,6 @@ Cucumber::Rake::Task.new(:pagination) do |t|
   t.profile = 'pagination'
   t.cucumber_opts = "-p cuke_reports"
 end
-
-Cucumber::Rake::Task.new(:webreg) do |t|
-  t.profile = 'webreg'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:pam) do |t|
-  t.profile = 'pam'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:print_layouts_cp72) do |t|
   t.profile = 'print_layouts_cp72'
   t.cucumber_opts = "-p cuke_reports"

@@ -6,8 +6,8 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.td(text: 'AppCap Overrides')
-        @ok_button = ElementWrapper.new browser.a(css: 'a[href*=Profile]')
+        @title = BrowserElement.new browser.td(text: 'AppCap Overrides')
+        @ok_button = BrowserElement.new browser.a(css: 'a[href*=Profile]')
       end
 
       def text
@@ -120,7 +120,7 @@ module Stamps
         @international_shipping ||= InternationalShipping.new param
         @allow_high_risk_countries ||= AllowHighRiskCountries.new param
         @mailing_label_printing ||= MailingLabelPrinting.new param
-        @submit_button = ElementWrapper.new browser.input(name: 'submit')
+        @submit_button = BrowserElement.new browser.input(name: 'submit')
         @appcap_overrides = AppCapOverridesConfirmation.new param
       end
 

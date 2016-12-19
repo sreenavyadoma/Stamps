@@ -10,7 +10,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to domestic address
+    Then Details: Set Ship-To to Domestic Address
       | name         | company            | street_address | street_address_2| city | state | zip        | country       | phone  |  email |
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |
     Then Details: Set Weight to 2 lbs 1 oz

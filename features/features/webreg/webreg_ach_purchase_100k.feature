@@ -1,11 +1,12 @@
-
 Feature: WebReg
   Background:
-    Given WebReg Profile: Load Registration Page
+    Given I launched default browser
 
+  @webreg_ach_purchase_100k
   Scenario:
-    Then WebReg Profile: Set User ID and Email to Random Value
-
+    Then WebReg Profile: Load Registration Page
+    Then WebReg Profile: Set User ID and Email to random
+    Then WebReg Profile: Send username to standard out
     Then WebReg Profile: Set Password to pass111
     Then WebReg Profile: Set Re-Type password to pass111
     Then WebReg Profile: Set How will you use Stamps.com to Both Mailing and Shipping
@@ -19,7 +20,7 @@ Feature: WebReg
     Then WebReg Membership: Set First Name to random
     Then WebReg Membership: Set Last Name to random
     Then WebReg Membership: Set Company to random
-    Then WebReg Membership: Set Address to 1990 E. Grand Ave.
+    Then WebReg Membership: Set Address to 1990 East Grand Avenue
     Then WebReg Membership: Set City to El Segundo
     Then WebReg Membership: Set State to California
     Then WebReg Membership: Set Zip Code to 90245
@@ -33,21 +34,7 @@ Feature: WebReg
     Then WebReg Membership: Set Billing address same as mailing address to Checked
     Then WebReg Membership: Set Terms & Conditions to Checked
 
-    Then WebReg Membership: Submit and correct errors
-    Then Registration Choose Supplies: Place Order
-
-    Then Pause for 2 seconds
-
-    Then Health Check: Print - Web Batch
-
-    Then Orders: Visit Sign-in page
-    Then Orders: Sign-in as new user random/pass111
-    Then Toolbar: Add
-    Then Pause for 1 second
-    Then Open Settings Modal
-    Then Settings:  Set Logoff to 2 hours
-    Then Settings:  Save
-    Then Pause for 1 second
-    Then Sign out
+    Then WebReg Membership: Submit
+    Then WebReg: Save username and password to parameter file webreg_ach_purchase_100k
+    Then WebReg: Store username to data file webreg_ach_purchase_100k
     Then WebReg Profile: Send username to standard out
-    Then Pause for 1 second

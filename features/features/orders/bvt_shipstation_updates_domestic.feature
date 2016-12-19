@@ -8,10 +8,12 @@ Feature:  Update Order to ShipStation
   Scenario:  Update ShipStation
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to domestic address
-      | name       | company      | street_address   | street_address_2| city    | state | zip    | country       | phone        |  email           |
-      | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States | 888-888-8888 | rtest@stamps.com |
+    Then Details: Set Ship-To to Domestic Address
+      | name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
+      | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
+    #Then Details: Set Phone to 888-888-8888
+    #Then Details: Set Email to rtest@stamps.com
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
 
@@ -40,7 +42,7 @@ Feature:  Update Order to ShipStation
 
     Then Refresh Browser
 
-    Then Pause for 2 seconds
+    Then Pause for 7 seconds
     Then Grid: Check Saved Order ID
     Then Pause for 2 seconds
 
@@ -54,10 +56,9 @@ Feature:  Update Order to ShipStation
     Then Details: Expect Ship-To Cleansed State is FL
     Then Details: Expect Ship-To Cleansed Zip Plus 4 Code is 32801-1175
     Then Details: Expect Ship-To Cleansed Zip Code is 32801
-    Then Details: Expect Ship-To Phone is 888-888-8888
-    Then Details: Expect Ship-To Email is rtest@stamps.com
+    #Then Details: Expect Ship-To Phone is 888-888-8888
+    #Then Details: Expect Ship-To Email is rtest@stamps.com
 
-    Then Details: Hide Ship-To fields
     Then Details: Expect Pound is 1
     Then Details: Expect Ounce is 1
 
@@ -67,6 +68,7 @@ Feature:  Update Order to ShipStation
 
     #Then Details: Expect Service Cost saved value is the same
     Then Details: Expect Service is Priority Mail Package
+    Then Details: Expect Service Cost saved value is the same
 
     Then Details: Expect Insure-For is $100.00
     Then Details: Expect Insure-For Cost saved value is the same
@@ -89,8 +91,8 @@ Feature:  Update Order to ShipStation
     Then Grid: Expect City is Orlando
     Then Grid: Expect State is FL
     Then Grid: Expect Zip is 32801-1175
-    Then Grid: Expect Phone is 888-888-8888
-    Then Grid: Expect Email is rtest@stamps.com
+    #Then Grid: Expect Phone is 888-888-8888
+    #Then Grid: Expect Email is rtest@stamps.com
 
     Then Grid: Expect Qty. is 1
     Then Grid: Expect Item SKU is Item 1 SKU

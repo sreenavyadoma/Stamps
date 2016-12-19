@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class VolusionSettings < StoreSettings
         def window_title
-          ElementWrapper.new browser.div text: "Volusion Settings"
+          BrowserElement.new browser.div text: "Volusion Settings"
         end
 
         def present?
@@ -26,7 +26,7 @@ module Stamps
         end
 
         def connect_button
-          ElementWrapper.new browser.span(text: "Connect")
+          BrowserElement.new browser.span(text: "Connect")
         end
 
         def connect
@@ -93,7 +93,7 @@ module Stamps
       class ModifyVolusionStore < Volusion
 
         def window_title
-          ElementWrapper.new(browser.div text: "Modify your Volusion Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Volusion Store Connection")
         end
 
         def present?

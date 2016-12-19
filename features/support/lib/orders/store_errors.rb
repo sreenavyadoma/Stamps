@@ -11,7 +11,7 @@ module Stamps
         end
 
         def ok
-          button = ElementWrapper.new browser.span(text: 'OK')
+          button = BrowserElement.new browser.span(text: 'OK')
           button.click_while_present
         end
       end

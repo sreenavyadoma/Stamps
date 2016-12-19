@@ -26,7 +26,7 @@ module Stamps
       end
 
       def window_title
-        ElementWrapper.new (browser.span text: "Search Contacts")
+        BrowserElement.new (browser.span text: "Search Contacts")
       end
 
       def search

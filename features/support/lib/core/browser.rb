@@ -1,24 +1,23 @@
 module Stamps
   module Browser
-    class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :app
+
+    class BrowserParam
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env
     end
 
-    # A modal is a window composed of buttons, labels, text boxes, drop-downs, links, inputs, etc
     class Modal
-      attr_accessor :param, :browser, :logger, :scenario_name, :element_helper
-      def initialize param
-        raise "Illegal Parameter Exception. Expecting #{ModalParam.class}, got #{param.class}" unless param.is_a? ModalParam
-        @param = param
-        @browser = param.browser
-        @logger = param.logger
-        @scenario_name = param.scenario_name
+      attr_accessor :helper, :browser, :logger, :element_helper
+
+      def initialize helper
+        @helper = helper
+        @browser = helper.browser
+        @logger = helper.logger
         @element_helper = ElementHelper
       end
     end
 
     # ElementWrapper object is primarily used to wrap elements for used on step definitions.
-    class ElementWrapper
+    class BrowserElement
       attr_reader :browser, :element_helper, :element, :error_qtip_element, :error_qtip_element_attribute
       def initialize *args
         case args.length
@@ -244,7 +243,7 @@ module Stamps
       end
     end
 
-    class SelectionElement < ElementWrapper
+    class SelectionElement < BrowserElement
       attr_accessor :verify_element, :attribute, :verify_element_attrib
       def initialize element, verify_element, attribute, verify_element_attrib
         super element
@@ -271,7 +270,7 @@ module Stamps
       end
     end
 
-    class WatirCheckbox < ElementWrapper
+    class WatirCheckbox < BrowserElement
       def check
         10.times do
           element_helper.set element
@@ -291,7 +290,7 @@ module Stamps
       end
     end
 
-    class CheckboxElement < ElementWrapper
+    class CheckboxElement < BrowserElement
       attr_accessor :verify_element, :attribute, :attribute_value
       def initialize element, verify_element, attribute, attribute_value
         super element
@@ -330,7 +329,7 @@ module Stamps
       end
     end
 
-    class RadioElement < ElementWrapper
+    class RadioElement < BrowserElement
       attr_accessor :verify_element, :attribute, :attribute_value
       def initialize element, verify_element, attribute, attribute_value
         super element
@@ -356,7 +355,7 @@ module Stamps
       end
     end
 
-    class TextboxElement < ElementWrapper
+    class TextboxElement < BrowserElement
       def set text
         element_helper.set element, text
         self
@@ -371,7 +370,7 @@ module Stamps
       end
     end
 
-    class DropDownElement < ElementWrapper
+    class DropDownElement < BrowserElement
       attr_accessor :drop_down, :text_box, :html_tag
       def initialize browser, drop_down, html_tag, text_box
         super browser

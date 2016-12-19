@@ -8,7 +8,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to domestic address
+    Then Details: Set Ship-To to Domestic Address
       | name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then Details: Set Weight to 3 lbs 2 oz

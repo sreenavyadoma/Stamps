@@ -5,10 +5,10 @@ module Stamps
 
       def initialize param
         super param
-        @header_elem = ElementWrapper.new browser.h3(text: "An Error Occurred")
-        @top_message_elem = ElementWrapper.new browser.p(id: "topMessage")
-        @error_code_elem = ElementWrapper.new browser.p(id: "errorCode")
-        @error_description_elem = ElementWrapper.new browser.p(id: "errorDescription")
+        @header_elem = BrowserElement.new browser.h3(text: "An Error Occurred")
+        @top_message_elem = BrowserElement.new browser.p(id: "topMessage")
+        @error_code_elem = BrowserElement.new browser.p(id: "errorCode")
+        @error_description_elem = BrowserElement.new browser.p(id: "errorDescription")
       end
 
       def present?
@@ -45,9 +45,9 @@ module Stamps
       end
 
       def visit
-        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+        helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
 
-        case ENV['URL'].downcase
+        case helper.test_env.downcase
           when /cc/
             url = "https://qa-registration.stamps.com/registration"
           when /sc/
@@ -55,7 +55,7 @@ module Stamps
           when /stg/
             url = "https://registration.staging.stamps.com/registration"
           else
-            "#{ENV['URL']} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
+            "#{helper.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
         end
 
         logger.info "Visit:  #{url}"
@@ -73,12 +73,11 @@ module Stamps
           logger.error error_occured.error_description
           "#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ".should eql error_occured.header
         end
-        5.times do
+        50.times do
           break if browser.url.include? 'profile'
-          sleep 1
         end
-        browser.url.should include "profile"
-        sign_up_for_new_account = ElementWrapper.new browser.h1(text: "Sign up for a new account")
+        browser.url.should include "registration"
+        sign_up_for_new_account = BrowserElement.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.safely_wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"
         "Success"

@@ -7,7 +7,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
   Scenario: Print 1 single ply APO CP72 label on 4x6 roll
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to domestic address
+    Then Details: Set Ship-To to Domestic Address
       | name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then Details: Set Weight to 2 lbs 1 oz

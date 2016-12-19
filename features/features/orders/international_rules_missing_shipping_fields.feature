@@ -14,7 +14,7 @@ Feature: International Shipping fields and Customs Information fields validation
     Then Details: Expect Customs Restrictions button is visible
     Then Details: Expect Customs Edit Form button is visible
 
-    Then Details: Set Ship-To to international address
+    Then Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 

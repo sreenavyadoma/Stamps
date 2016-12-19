@@ -6,8 +6,8 @@ module Stamps
 
         def initialize param
           super param
-          @window_title = ElementWrapper.new browser.div(text: 'Incomplete Order')
-          @ok_btn = ElementWrapper.new browser.span(text: "OK")
+          @window_title = BrowserElement.new browser.div(text: 'Incomplete Order')
+          @ok_btn = BrowserElement.new browser.span(text: "OK")
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
 
@@ -41,7 +41,7 @@ module Stamps
 
         def initialize param
           super param
-          @window_title = ElementWrapper.new browser.div(text: 'Order Error')
+          @window_title = BrowserElement.new browser.div(text: 'Order Error')
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
 
@@ -59,8 +59,8 @@ module Stamps
 
         def initialize param
           super param
-          @continue_btn = ElementWrapper.new browser.span(text: 'Continue')
-          @cancel_btn = ElementWrapper.new browser.span(text: 'Cancel')
+          @continue_btn = BrowserElement.new browser.span(text: 'Continue')
+          @cancel_btn = BrowserElement.new browser.span(text: 'Cancel')
         end
 
         def present?
@@ -89,7 +89,7 @@ module Stamps
 
         def initialize param
           super param
-          @ok_btn = ElementWrapper.new browser.span(text: "OK")
+          @ok_btn = BrowserElement.new browser.span(text: "OK")
         end
 
         def present?
@@ -106,9 +106,9 @@ module Stamps
 
         def initialize param
           super param
-          @window_title = ElementWrapper.new browser.div(text: 'USPS Privacy Act Statement')
-          @message_label = ElementWrapper.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
-          @ok_btn = ElementWrapper.new browser.span(text: "OK")
+          @window_title = BrowserElement.new browser.div(text: 'USPS Privacy Act Statement')
+          @message_label = BrowserElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          @ok_btn = BrowserElement.new browser.span(text: "OK")
         end
 
         def present?
@@ -133,10 +133,10 @@ module Stamps
 
         def initialize param
           super param
-          @window_title = ElementWrapper.new browser.div(text: 'USPS Terms')
-          @i_agree_btn = ElementWrapper.new browser.span(text: "I Agree")
-          @cancel_btn = ElementWrapper.new browser.span(text: "Cancel")
-          @privacy_act_link = ElementWrapper.new browser.a(text: "USPS Privacy Act Statement")
+          @window_title = BrowserElement.new browser.div(text: 'USPS Terms')
+          @i_agree_btn = BrowserElement.new browser.span(text: "I Agree")
+          @cancel_btn = BrowserElement.new browser.span(text: "Cancel")
+          @privacy_act_link = BrowserElement.new browser.a(text: "USPS Privacy Act Statement")
         end
 
         def present?
@@ -202,7 +202,7 @@ module Stamps
         def initialize param
           super param
           @orders_print_modal = Stamps::Orders::PrintModal.new param
-          @print_order_btn = ElementWrapper.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
+          @print_order_btn = BrowserElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
           @incomplete_order_modal ||= PrintIncompleteOrderError.new param
           @multi_order_some_error ||= PrintMultiOrderSomeHasError.new param
           @multi_order_all_error ||= PrintMultiOrderAllHaveError.new param
@@ -223,6 +223,8 @@ module Stamps
         end
 
         def print_modal
+          return orders_print_modal if orders_print_modal.present?
+
           expectation = "Print Modal is present"
           if orders_print_modal.present?
             logger.info "Print Modal is Present"
@@ -390,13 +392,13 @@ module Stamps
 
       class SettingsMenu < Browser::Modal
         def select menu_item
-          dd = ElementWrapper.new browser.span css: "span[class*=sdc-icon-settings]"
+          dd = BrowserElement.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
             when /settings/
-              selection = ElementWrapper.new(browser.span text: "General Settings")
+              selection = BrowserElement.new(browser.span text: "General Settings")
               modal = Orders::GeneralSettings.new param
             when /stores/
-              selection = ElementWrapper.new(browser.span text: "Add/Edit Stores")
+              selection = BrowserElement.new(browser.span text: "Add/Edit Stores")
               modal = Orders::Stores::ManageStores.new param
             else
               "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.".should eql ""
@@ -427,8 +429,8 @@ module Stamps
 
         def initialize param
           super param
-          @move_label = ElementWrapper.new browser.span(css: "span[class*='x-btn-inner-primary-blue-medium']")
-          @cancel_label = ElementWrapper.new browser.span(text: "Cancel")
+          @move_label = BrowserElement.new browser.span(css: "span[class*='x-btn-inner-primary-blue-medium']")
+          @cancel_label = BrowserElement.new browser.span(text: "Cancel")
         end
 
         def present?
@@ -453,9 +455,9 @@ module Stamps
 
         def initialize param
           super param
-          @drop_down = ElementWrapper.new browser.span(text: "Move")
+          @drop_down = BrowserElement.new browser.span(text: "Move")
           @confirmation = MoveConfirmation.new param
-          @tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
+          @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
         def select selection
@@ -471,7 +473,7 @@ module Stamps
           end
 
           dd = drop_down
-          selection_label = ElementWrapper.new browser.span text: selection_str
+          selection_label = BrowserElement.new browser.span text: selection_str
 
           10.times{
             dd.safe_click unless selection_label.present?
@@ -514,11 +516,11 @@ module Stamps
         def initialize param
           super param
           @text_box = TextboxElement.new browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
-          @drop_down = ElementWrapper.new browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
+          @drop_down = BrowserElement.new browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
         end
 
         def select selection
-          per_page = ElementWrapper.new browser.li(text: selection)
+          per_page = BrowserElement.new browser.li(text: selection)
           box = text_box
           10.times do
             drop_down.safe_click unless per_page.present?
@@ -545,9 +547,9 @@ module Stamps
 
         def initialize param
           super param
-          @button = ElementWrapper.new browser.span(text: 'Add')
-          @initializing_db = ElementWrapper.new browser.div(text: "Initializing Order Database")
-          @loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
+          @button = BrowserElement.new browser.span(text: 'Add')
+          @initializing_db = BrowserElement.new browser.div(text: "Initializing Order Database")
+          @loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
         end
 
         def order_details
@@ -664,7 +666,7 @@ module Stamps
         end
 
         def tooltip
-          tooltip_element = ElementWrapper.new (browser.div id: 'ext-quicktips-tip-innerCt')
+          tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
           button.element.hover
           button.element.hover
           15.times do
@@ -682,7 +684,7 @@ module Stamps
         attr_reader :print_btn, :add, :move, :import_button, :import_orders_modal, :usps_intl_terms
         def initialize param
           super param
-          @import_button = ElementWrapper.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
+          @import_button = BrowserElement.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
           @print_btn ||= ToolbarPrintButton.new param
           @add ||= AddButton.new param
           @move ||= MoveMenu.new param
@@ -691,7 +693,7 @@ module Stamps
         end
 
         def refresh_orders
-          button = ElementWrapper.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+          button = BrowserElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
           importing_order = Orders::Stores::ImportingOrdersModal.new param
 
           button.safe_click
@@ -763,7 +765,7 @@ module Stamps
         end
 
         def reprint
-          button = ElementWrapper.new browser.span(text: "Reprint")
+          button = BrowserElement.new browser.span(text: "Reprint")
           modal = RePrintModal.new param
           label_unavailable = LabelUnavailable.new param
           15.times do
@@ -774,7 +776,7 @@ module Stamps
         end
 
         def browser_settings_button
-          ElementWrapper.new (browser.span css: "span[class*=sdc-icon-settings]")
+          BrowserElement.new (browser.span css: "span[class*=sdc-icon-settings]")
         end
 
         def settings_modal
@@ -793,40 +795,40 @@ module Stamps
 
         def first_page
           field = browser.span css: "span[class*=x-tbar-page-first]"
-          label = ElementWrapper.new field
+          label = BrowserElement.new field
           label
         end
 
         def first_page_disabled
           field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = ElementWrapper.new field
+          label = BrowserElement.new field
           label.element.disabled?
         end
 
         def previous_page
-          ElementWrapper.new element browser.span css: "span[class*=x-tbar-page-prev]"
+          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-prev]"
         end
 
         def previous_page_disabled
           field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = ElementWrapper.new field
+          label = BrowserElement.new field
           label.element.disabled?
         end
 
         def next_page
-          ElementWrapper.new element browser.span css: "span[class*=x-tbar-page-next]"
+          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-next]"
         end
 
         def last_page
-          ElementWrapper.new element browser.span css: "span[class*=x-tbar-page-last]"
+          BrowserElement.new element browser.span css: "span[class*=x-tbar-page-last]"
         end
 
         def last_page_disabled
-          ElementWrapper.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          BrowserElement.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
         end
 
         def total_number_of_pages
-          label = (ElementWrapper.new browser.divs css: "div[id^=tbtext-]").last
+          label = (BrowserElement.new browser.divs css: "div[id^=tbtext-]").last
           number_str=label.text
           number = number_str.scan /\d+/
           number.last.to_s

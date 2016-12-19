@@ -71,7 +71,7 @@ module Stamps
       end
 
       def preview_image
-        image = ElementWrapper.new browser.div css: "div[style*='Label_selection_and_view.gif']"
+        image = BrowserElement.new browser.div css: "div[style*='Label_selection_and_view.gif']"
       end
 
       def hide_postage_value

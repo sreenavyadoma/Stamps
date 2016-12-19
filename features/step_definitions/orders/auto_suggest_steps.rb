@@ -1,7 +1,7 @@
 Then /^Details: Set Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
   @auto_suggest_partial_name = partial_name
   logger.step "Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}"
-  @auto_suggest = stamps.orders.order_details.ship_to.address.auto_suggest.set @auto_suggest_partial_name
+  @auto_suggest = stamps.orders.order_details.ship_to.domestic.auto_suggest.set @auto_suggest_partial_name
 end
 
 Then /^Details: Set International Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
@@ -46,81 +46,92 @@ end
 
 Then /^Expect Domestic Address is (.*)$/ do |value|
   logger.step "Expect Domestic Address is #{value}"
+  stamps.orders.order_details.ship_to.domestic.show_address
   5.times{
   begin
-    #actual =  web_apps.orders.order_details.get_address_text
-    actual = stamps.orders.order_details.ship_to.address.text_area.text
+    actual = stamps.orders.order_details.ship_to.domestic.text_area.text
     actual_stripped = actual.gsub(/\n/,", ")
     break if actual_stripped == value
     sleep 2
   end}
-  actual =  stamps.orders.order_details.ship_to.address.text_area.text
+  actual =  stamps.orders.order_details.ship_to.domestic.text_area.text
   actual_stripped = actual.gsub(/\n/,", ")
   actual_stripped.should eql value
 end
 
 Then /^Expect Domestic Phone is (.*)$/ do |value|
   logger.step "Expect Domestic Phone is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.phone.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   actual.should eql value
 end
 
 Then /^Expect Domestic Email is (.*)$/ do |value|
   logger.step "Expect Domestic Email is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end
 
 Then /^Expect International Name is (.*)$/ do |value|
   logger.step "Expect International Name is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.phone.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   actual.should eql value
 end
 
 Then /^Expect International Company is (.*)$/ do |value|
   logger.step "Expect International Company is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.phone.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   actual.should eql value
 end
 
 Then /^Expect International Address 1 is (.*)$/ do |value|
   logger.step "Expect International Address 1 is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end
 
 Then /^Expect International Address 2 is (.*)$/ do |value|
   logger.step "Expect International Address 2 is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end
 
 Then /^Expect International City is (.*)$/ do |value|
   logger.step "Expect International City is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end
 
 Then /^Expect International Province is (.*)$/ do |value|
   logger.step "Expect International Province is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end
 
 Then /^Expect International Postal Code is (.*)$/ do |value|
   logger.step "Expect International Postal Code is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end
 
 Then /^Expect International Phone is (.*)$/ do |value|
   logger.step "Expect International Postal Code is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end
 
 Then /^Expect International Email is (.*)$/ do |value|
   logger.step "Expect International Email is #{value}"
-  actual =  stamps.orders.order_details.ship_to.address.email.text
+  stamps.orders.order_details.ship_to.domestic.show_address
+  actual =  stamps.orders.order_details.ship_to.domestic.email.text
   actual.should eql value
 end

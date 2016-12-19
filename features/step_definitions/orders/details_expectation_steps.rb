@@ -54,20 +54,22 @@ end
 
 Then /^Details: Expect Ship-To Address Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Address Placeholder is #{expectation}"
+  stamps.orders.order_details.ship_to.domestic.show_address
   step "Details: Blur out"
-  stamps.orders.order_details.ship_to.text_area.placeholder.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.text_area.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Phone Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Phone Placeholder is #{expectation}"
   step "Details: Blur out"
-  stamps.orders.order_details.ship_to.phone.placeholder.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.phone.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Ship-To Email Placeholder is (.*)$/ do |expectation|
   logger.step "Details: Expect Ship-To Email Placeholder is #{expectation}"
   step "Details: Blur out"
-  stamps.orders.order_details.ship_to.email.placeholder.should eql expectation
+  stamps.orders.order_details.ship_to.domestic.email.placeholder.should eql expectation
 end
 
 Then /^Details: Expect Service Placeholder is (.*)$/ do |expectation|
@@ -150,8 +152,9 @@ end
 
 Then /^Details: Expect Domestic Ship-To fields are hidden$/ do
   logger.step "Details: Expect Domestic Ship-To fields are hidden"
+  stamps.orders.order_details.ship_to.domestic.show_address
   step "Details: Blur out"
-  stamps.orders.order_details.ship_to.address.text_area.present?.should be false
+  stamps.orders.order_details.ship_to.domestic.text_area.present?.should be false
 end
 
 Then /^Details: Expect Customs Restrictions button is visible/ do
@@ -257,7 +260,7 @@ end
 
 Then /^Expect "Exact Address Not Found" module to appear/ do
   logger.step "Expect \"Exact Address Not Found\" module to appear"
-  stamps.orders.order_details.ship_to.address.ambiguous.address_not_found.window_title.text.should eql "Exact Address Not Found"
+  stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.window_title.text.should eql "Exact Address Not Found"
 end
 
 Then /^Details: Expect Reference Number is (.*)$/ do |expectation|
@@ -477,7 +480,8 @@ end
 
 And /^Details: Expect Ship-To Textbox is enabled$/ do
   logger.step "Details: Expect Ship-To Textbox is enabled"
-  stamps.orders.order_details.ship_to.address.text_area.element.visible?.should be true
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.element.visible?.should be true
 end
 
 And /^Details: Expect Ship-To drop-down is enabled$/ do
@@ -487,17 +491,19 @@ end
 
 And /^Details: Expect Ship-To text area is enabled$/ do
   logger.step "Details: Expect Ship-To text area is enabled"
-  stamps.orders.order_details.ship_to.address.text_area.element.visible?.should be true
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.text_area.element.visible?.should be true
 end
 
 And /^Details: Expect Phone Textbox is enabled$/ do
   logger.step "Details: Expect Phone Textbox is enabled"
-  stamps.orders.order_details.ship_to.address.phone.element.visible?.should be true
+  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.domestic.phone.element.visible?.should be true
 end
 
 And /^Details: Expect Email Textbox is enabled$/ do
   logger.step "Details: Expect Email Textbox is enabled"
-  stamps.orders.order_details.ship_to.address.email.element.visible?.should be true
+  stamps.orders.order_details.ship_to.domestic.email.element.visible?.should be true
 end
 
 And /^Details: Expect Pounds Textbox is enabled$/ do

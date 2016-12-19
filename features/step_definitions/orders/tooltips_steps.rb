@@ -101,7 +101,8 @@ end
 
 Then /^Details: Expect Domestic Address data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect Domestic Address data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.address.text_area
+  stamps.orders.order_details.ship_to.domestic.show_address
+  text_box = stamps.orders.order_details.ship_to.domestic.text_area
   20.times do
     text_box.safe_double_click
     stamps.orders.order_details.blur_out
@@ -121,7 +122,8 @@ end
 
 Then /^Details: Expect Domestic Email data error tooltip is \"(.*)\"$/ do |expectation|
   logger.step "Details: Expect Domestic Email data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.email
+  stamps.orders.order_details.ship_to.domestic.show_address
+  text_box = stamps.orders.order_details.ship_to.domestic.email
   20.times do
     text_box.safe_double_click
     stamps.orders.order_details.blur_out

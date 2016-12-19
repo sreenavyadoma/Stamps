@@ -27,7 +27,7 @@ module Stamps
       end
 
       def wait_until_present
-        (ElementWrapper.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")).wait_until_present 7
+        (BrowserElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")).wait_until_present 7
       end
 
       def username
@@ -57,7 +57,7 @@ module Stamps
       end
 
       def search
-        button = Stamps::Browser::ElementWrapper.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
+        button = Stamps::Browser::BrowserElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
         customer_profile = CustomerProfile.new param
         customer_profile_not__found = CustomerProfileNotFound.new param
         meter_info_unavailable = MeterInfoNotAvailableForAccount.new param

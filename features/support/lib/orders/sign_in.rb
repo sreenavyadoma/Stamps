@@ -5,11 +5,11 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.div(text: 'Learn More')
-        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @close_button = ElementWrapper.new browser.span(text: 'Close')
-        @cancel_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
-        @learn_button = ElementWrapper.new browser.span(text: 'Learn More')
+        @title = BrowserElement.new browser.div(text: 'Learn More')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @close_button = BrowserElement.new browser.span(text: 'Close')
+        @cancel_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @learn_button = BrowserElement.new browser.span(text: 'Learn More')
       end
 
       def present?
@@ -39,10 +39,10 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.div(text: 'Import from Stores')
-        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = ElementWrapper.new browser.span(text: 'Next')
-        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = BrowserElement.new browser.div(text: 'Import from Stores')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
         @learn_more ||= LearnMoreModal.new param
       end
 
@@ -76,10 +76,10 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.div(text: 'Import from CSV')
-        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = ElementWrapper.new browser.span(text: 'Next')
-        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = BrowserElement.new browser.div(text: 'Import from CSV')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
         @import_from_stores ||= ImportFromStoresModal.new param
       end
 
@@ -113,10 +113,10 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.div(text: 'Add Manual Order')
-        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = ElementWrapper.new browser.span(text: 'Next')
-        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = BrowserElement.new browser.div(text: 'Add Manual Order')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
         @import_from_csv ||= ImportFromCsvModal.new param
       end
 
@@ -150,10 +150,10 @@ module Stamps
 
       def initialize param
         super param
-        @title = ElementWrapper.new browser.div(text: 'Welcome!')
-        @msg_container = ElementWrapper.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = ElementWrapper.new browser.span(text: 'Next')
-        @close_button = ElementWrapper.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = BrowserElement.new browser.div(text: 'Welcome!')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
         @add_manual_order ||= AddManualOrderModal.new param
       end
 
@@ -187,7 +187,7 @@ module Stamps
 
       def initialize param
         super param
-        @okay_button = ElementWrapper.new browser.span(text: 'OK')
+        @okay_button = BrowserElement.new browser.span(text: 'OK')
       end
 
       def present?
@@ -217,8 +217,8 @@ module Stamps
         super param
         @username = TextboxElement.new browser.text_field(id: "UserNameTextBox")
         @password = TextboxElement.new browser.text_field(id: "PasswordTextBox")
-        @sign_in_btn = ElementWrapper.new browser.button(id: "signInButton")
-        @title = ElementWrapper.new browser.h1(text: 'Sign In')
+        @sign_in_btn = BrowserElement.new browser.button(id: "signInButton")
+        @title = BrowserElement.new browser.h1(text: 'Sign In')
       end
 
       def remember_my_username
@@ -269,8 +269,8 @@ module Stamps
         #plugin_issue = ErrorStampsPluginIssue.new param
         toolbar = Stamps::Orders::Toolbar::Toolbar.new param
         market_place = Orders::Stores::MarketPlace.new param
-        loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
-        invalid_username = ElementWrapper.new browser.span(id: "InvalidUsernameMsg")
+        loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
+        invalid_username = BrowserElement.new browser.span(id: "InvalidUsernameMsg")
         new_welcome = NewWelcomeModal.new param
 
         "Check that URL is valid: #{browser.url}".should eql "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
@@ -314,6 +314,24 @@ module Stamps
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
                   loading_orders.safely_wait_while_present 2
                 else
                   break
@@ -340,6 +358,21 @@ module Stamps
             end
 
             if invalid_username.present?
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
               logger.error invalid_username.text
               logger.error invalid_username.text
               logger.error invalid_username.text

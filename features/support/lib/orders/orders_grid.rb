@@ -43,7 +43,7 @@ module Stamps
           scroll column
 
           column_span = browser.span text: GRID_COLUMNS[column]
-          column_field = ElementWrapper.new column_span
+          column_field = BrowserElement.new column_span
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
 
           10.times do
@@ -67,11 +67,17 @@ module Stamps
         end
 
         def scroll column
-          element_helper.scroll_into_view browser, column_name_field(column)
-        end
-
-        def column_name_field column
-          browser.span text: GRID_COLUMNS[column]
+          column.should be_truthy
+          case column
+            when Symbol
+              element_helper.scroll_into_view browser,  browser.span(text: GRID_COLUMNS[column])
+            when String
+              element_helper.scroll_into_view browser,  browser.span(text: column)
+            when Watir::Element
+              element_helper.scroll_into_view browser, column
+            else
+              column.should be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
+          end
         end
 
         def empty?
@@ -90,7 +96,6 @@ module Stamps
         end
 
         def grid_text column, row
-          #scroll :order_total
           scroll column
           element_helper.text grid_field(column, row)
         end
@@ -103,38 +108,34 @@ module Stamps
           grid_text column_number(column_name), row
         end
 
-        def column_number column_name
+        def column_number column
           5.times do
             begin
-              column_str = GRID_COLUMNS[column_name]
-              columns = column_fields
-              columns.each_with_index do |column_field, index|
-                column_text = element_helper.text column_field
-                if column_text == column_str
-                  logger.message "Grid:  #{column_str} is in column #{index+1}"
+              columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
+              columns.each_with_index do |element, index|
+                scroll element
+                if element_helper.text(element) == GRID_COLUMNS[column]
+                  logger.message "Grid: -- #{GRID_COLUMNS[column]} is in column #{index+1}"
                   return index+1
                 end
               end
             rescue => e
               e.backtrace.join("\n").should eql "#{e.message}"
+              e.message.should eql "Grid error. Unable to find column number for #{column}"
             end
           end
           #"Column Name: #{column_name}".should eql "Unable to get column number for #{column_name}"
         end
 
-        def column_fields
-          browser.spans(css: "div[componentid^=gridcolumn]>div>div>div>div>span")
-        end
-
         def row_number order_id
-          scroll :order_id
           5.times do
             column_num = column_number(:order_id)
             fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
-            fields.each_with_index do |div, index|
-              row_text = element_helper.text div
+            fields.each_with_index do |element, index|
+              scroll element
+              row_text = element_helper.text element
               if row_text.include? order_id
-                logger.message "Grid: Order ID #{order_id} is in row #{index+1}"
+                logger.message "Grid: -- Order ID #{order_id} is in row #{index+1}"
                 return index + 1
               end
             end
@@ -785,7 +786,7 @@ module Stamps
         end
 
         def scroll_into_view
-          field = ElementWrapper.new((browser.spans css: "div[componentid^=gridcolumn]").first)
+          field = BrowserElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
           field.scroll_into_view
           field
         end
@@ -882,7 +883,7 @@ module Stamps
 
         def order_checked? order_number
           scroll_into_view
-          checked? row_number order_number
+          checked? row_number(order_number)
         end
 
         def checked_rows *args
@@ -1004,11 +1005,8 @@ module Stamps
 
         def initialize param
           super param
-
-          @anchor_element = ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
-
+          @anchor_element = BrowserElement.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
           @column ||= GridColumns.new param
-
           @checkbox ||= GridCheckBox.new param
           @store ||= Store.new param
           @order_id ||= OrderId.new param
@@ -1030,7 +1028,7 @@ module Stamps
           @ship_from ||= ShipFrom.new param
           @service ||= GridService.new param
           @requested_service ||= RequestedService.new param
-          @weight ||= Weight.new param
+          @weight = Weight.new param
           @insured_value ||= InsuredValue.new param
           @tracking_service ||= TrackingService.new param
           @order_status ||= OrderStatus.new param

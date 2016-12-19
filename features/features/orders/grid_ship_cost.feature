@@ -9,7 +9,6 @@ Feature: Show Cost of Order in Ship Cost Grid
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Hide Ship-To fields
     Then Details: Set Ounces to 1
     Then Details: Set Insure-For to $10.00
     Then Details: Select Service Priority Mail Small Flat Rate Box

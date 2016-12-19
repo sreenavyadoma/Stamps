@@ -10,13 +10,20 @@ Given /^(?:|I )(?:L|l)aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default b
 end
 
 Then /^Refresh Browser$/ do
-  browser.refresh
-  sleep 6
+  begin
+    browser.refresh
+  rescue
+    #ignore
+  end
 end
 
 Then /^Pause for (\d+) seconds?$/ do |seconds|
   logger.step "Pause for #{seconds}"
-  sleep seconds.to_i
+  begin
+    sleep seconds.to_i
+  rescue
+    #ignore
+  end
 end
 
 Then(/^Close the browser and clear cookies$/) do #Clear Cookies

@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class ShopifySettings < StoreSettings
         def window_title
-          ElementWrapper.new browser.div text: "Shopify Settings"
+          BrowserElement.new browser.div text: "Shopify Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Shopify < Browser::Modal
 
         def window_title
-          ElementWrapper.new(browser.div text: "Connect your Shopify Store")
+          BrowserElement.new(browser.div text: "Connect your Shopify Store")
         end
 
         def present?
@@ -30,11 +30,11 @@ module Stamps
         end
 
         def connect_button
-          ElementWrapper.new browser.span(text: "Connect")
+          BrowserElement.new browser.span(text: "Connect")
         end
 
         def connect
-          button = ElementWrapper.new browser.span(text: "Connect")
+          button = BrowserElement.new browser.span(text: "Connect")
           settings = ShopifySettings.new param
           shopify = ShopifyPage.new param
           importing_order = Orders::Stores::ImportingOrdersModal.new param
@@ -138,7 +138,7 @@ module Stamps
         end
 
         def reconnect
-          button = ElementWrapper.new browser.span(text: "Connect")
+          button = BrowserElement.new browser.span(text: "Connect")
           manage_stores = ManageStores.new param
           importing_order = Orders::Stores::ImportingOrdersModal.new param
 
@@ -238,7 +238,7 @@ module Stamps
       class ModifyShopifyStore < Shopify
 
         def window_title
-          ElementWrapper.new(browser.div text: "Modify your Shopify Store Connection")
+          BrowserElement.new(browser.div text: "Modify your Shopify Store Connection")
         end
 
         def present?
@@ -264,7 +264,7 @@ module Stamps
         end
 
         def sign_in
-          button = ElementWrapper.new browser.text_field(css: "input[value='Log in']")
+          button = BrowserElement.new browser.text_field(css: "input[value='Log in']")
           settings_page = ShopifySettings.new param
 
           10.times do

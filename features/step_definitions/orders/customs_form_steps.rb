@@ -281,6 +281,7 @@ end
 
 Then /^Customs: Close Modal$/ do
   logger.step "Closing customs form"
+  step "Pause for 4 seconds"
   step "Customs: Blur out"
   step "Customs: Save Total"
   stamps.orders.order_details.customs.edit_form.close.should be false
@@ -409,10 +410,11 @@ Then /^Customs Form: Expect Total Value is (.+)$/ do |expectation|
   logger.step "Customs Form: Expect Total Value is #{expectation}"
   step "Customs: Blur out"
   expectation = expectation.to_f
-  total_value = stamps.orders.order_details.customs.edit_form.total_value
-  10.times do
+  20.times do
+    total_value = stamps.orders.order_details.customs.edit_form.total_value
     break if total_value.to_f == expectation
   end
+  total_value = stamps.orders.order_details.customs.edit_form.total_value
   total_value.to_f.should eql expectation
 end
 
