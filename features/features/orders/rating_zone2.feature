@@ -156,3 +156,4 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Total Ship Cost is $66.44
 
     Then Sign out
+    #
