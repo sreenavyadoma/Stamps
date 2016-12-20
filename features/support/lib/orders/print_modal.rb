@@ -2,6 +2,203 @@
 module Stamps
   module Orders
 
+    class PrintingOn < Browser::Modal
+      attr_reader :drop_down, :text_box
+
+      def initialize param
+        super param
+        @drop_down = BrowserElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
+        @text_box = TextboxElement.new browser.text_field css: "input[name^=printmediadroplist]"
+      end
+
+      def selection media
+        case media
+          # Shipping Label: 8 ½" x 11" Paper
+          when /Paper/
+            return BrowserElement.new (browser.li text: /Paper/)
+
+          # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+          when /SDC-1200/
+            return BrowserElement.new (browser.li text: /SDC-1200/)
+
+          # Shipping Label: 5 ½" x 8 ½"
+          when /Shipping Label - 5 /
+            return BrowserElement.new (browser.li text: /Shipping Label - 5 /)
+
+          # Roll - 4 ⅛" x 6 ¼" Shipping Label
+          when /Roll - 4/
+            return BrowserElement.new (browser.li text: /Roll - 4/)
+
+          # Roll - 4" x 6" Shipping Label
+          when /Roll - 4 /
+            return BrowserElement.new (browser.li text: /Roll - 4 /)
+          else
+            "Don't know what to do with #{media}.".should eql "Invalid Print Media Selection."
+        end
+      end
+
+      def label
+        BrowserElement.new browser.span(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
+      end
+
+      def select media
+        begin
+          lov_item = selection(media)
+          10.times do
+            break if text_box.text.include? media
+            drop_down.safe_click unless lov_item.present?
+            lov_item.safe_click
+          end
+        end unless text_box.text.include? media
+      end
+
+      def tooltip media
+        drop_down = self.drop_down
+        media_selection = selection media
+
+        10.times do
+          begin
+            drop_down.safe_click unless media_selection.present?
+            if media_selection.present?
+              tooltip = media_selection.attribute_value "data-qtip"
+              logger.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
+              if tooltip.include? "<strong>"
+                drop_down.safe_click if media_selection.present?
+                return tooltip
+              end
+            end
+          rescue
+            return ""
+          end
+        end
+      end
+    end
+
+    class Printer < Browser::Modal
+      attr_reader :drop_down, :text_box
+
+      def initialize param
+        super param
+        @drop_down = BrowserElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
+        @text_box = TextboxElement.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
+      end
+
+      def select selection
+        begin
+          selection_label = BrowserElement.new browser.li(text: selection)
+
+          15.times do
+            return text_box.text  if text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+            drop_down.safe_click unless selection_label.present?
+            selection_label.safe_click
+          end
+          "Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.".should eql ""
+        end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+      end
+    end
+
+    class PaperTray < Browser::Modal
+      attr_reader :drop_down, :text_box
+
+      def initialize param
+        super param
+        @drop_down = BrowserElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
+        @text_box = TextboxElement.new browser.text_field(name: "paperTrays")
+      end
+
+      def select selection
+        begin
+          selection_label = BrowserElement.new browser.li(text: selection)
+          5.times{
+            drop_down.safe_click unless selection_label.present?
+            selection_label.safe_click
+            break if text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+          }
+        end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+      end
+    end
+
+    class StartingLabel < Browser::Modal
+      attr_reader :left_label, :right_label
+
+      def initialize param
+        super param
+        @left_label = BrowserElement.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)"
+        @right_label = BrowserElement.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)"
+      end
+
+      def left
+        10.times{
+          begin
+            left_label.safe_click
+            break if (left_label.attribute_value "class").include? 'selected'
+          rescue
+            false
+          end
+        }
+        (left_label.attribute_value "class").include? 'selected'
+      end
+
+      def right
+        10.times{
+          begin
+            right_label.safe_click
+            break if (right_label.attribute_value "class").include? 'selected'
+          rescue
+            false
+          end
+        }
+        (right_label.attribute_value "class").include? 'selected'
+      end
+
+      def left_selected?
+        label_selected? left_label
+      end
+
+      def right_selected?
+        label_selected? right_label
+      end
+
+      def label_selected? div
+        8.times{
+          selected = (div.attribute_value 'class').include? 'selected'
+          logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
+          break if selected
+        }
+        (div.attribute_value 'class').include? 'selected'
+      end
+
+      def default_selected?
+        label_selected? left_label
+      end
+    end
+
+    class PrintOptions < Browser::Modal
+      def hide_postage_value
+        checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
+        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
+      end
+
+      def email_tracking
+        checkbox_field = browser.span id: "sdc-printpostagewindow-emailtrackingcheckbox-displayEl"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
+        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
+      end
+
+      def print_reference_no
+        checkbox_field = browser.span id: "sdc-printpostagewindow-printreferencenumbercheckbox-displayEl"
+        verify_field = checkbox_field.parent.parent.parent
+        attribute = "class"
+        verify_field_attrib = "checked"
+        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
+      end
+    end
+
     class LabelUnavailable < Browser::Modal
       def present?
         browser.div(text: "Label Unavailable").present?
@@ -64,133 +261,6 @@ module Stamps
         else
           dont_show_checkbox.uncheck
           logger.info "USPS Terms - Don't show this again input field is #{dont_show_checkbox.checked?}"
-        end
-      end
-    end
-
-    class StartingLabel < Browser::Modal
-      attr_reader :left_label, :right_label
-
-      def initialize param
-        super param
-        @left_label = BrowserElement.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)"
-        @right_label = BrowserElement.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)"
-      end
-
-      def left
-        10.times{
-          begin
-            left_label.safe_click
-            break if (left_label.attribute_value "class").include? 'selected'
-          rescue
-            false
-          end
-        }
-        (left_label.attribute_value "class").include? 'selected'
-      end
-
-      def right
-        10.times{
-          begin
-            right_label.safe_click
-            break if (right_label.attribute_value "class").include? 'selected'
-          rescue
-            false
-          end
-        }
-        (right_label.attribute_value "class").include? 'selected'
-      end
-
-      def left_selected?
-        label_selected? left_label
-      end
-
-      def right_selected?
-        label_selected? right_label
-      end
-
-      def label_selected? div
-        8.times{
-          selected = (div.attribute_value 'class').include? 'selected'
-          logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
-          break if selected
-        }
-        (div.attribute_value 'class').include? 'selected'
-      end
-
-      def default_selected?
-        label_selected? left_label
-      end
-    end
-
-    class PrintingOn < Browser::Modal
-      attr_reader :drop_down, :text_box
-
-      def initialize param
-        super param
-        @drop_down = BrowserElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
-        @text_box = TextboxElement.new browser.text_field css: "input[name^=printmediadroplist]"
-      end
-
-      def selection media
-        case media
-          # Shipping Label: 8 ½" x 11" Paper
-          when /Paper/
-            return BrowserElement.new (browser.li text: /Paper/)
-
-          # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-          when /SDC-1200/
-            return BrowserElement.new (browser.li text: /SDC-1200/)
-
-          # Shipping Label: 5 ½" x 8 ½"
-          when /x 8/
-            return BrowserElement.new (browser.li text: /x 8/)
-
-          # Roll - 4 ⅛" x 6 ¼" Shipping Label
-          when /x 6 ¼/
-            return BrowserElement.new (browser.li text: /x 6 ¼/)
-
-          # Roll - 4" x 6" Shipping Label
-          when /4" x 6"/
-            return BrowserElement.new (browser.li text: /4" x 6"/)
-          else
-            "Invalid Media Selection.  Don't know what to do with #{media}.".should eql ""
-        end
-      end
-
-      def label
-        BrowserElement.new browser.span(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
-      end
-
-      def select media
-        begin
-          lov_item = selection(media)
-          10.times do
-            break if text_box.text.include? media
-            drop_down.safe_click unless lov_item.present?
-            lov_item.safe_click
-          end
-        end unless text_box.text.include? media
-      end
-
-      def tooltip media
-        drop_down = self.drop_down
-        media_selection = selection media
-
-        10.times do
-          begin
-            drop_down.safe_click unless media_selection.present?
-            if media_selection.present?
-              tooltip = media_selection.attribute_value "data-qtip"
-              logger.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
-              if tooltip.include? "<strong>"
-                drop_down.safe_click if media_selection.present?
-                return tooltip
-              end
-            end
-          rescue
-            return ""
-          end
         end
       end
     end
@@ -279,91 +349,6 @@ module Stamps
       end
     end
 
-    class Printer < Browser::Modal
-      attr_reader :drop_down, :text_box
-
-      def initialize param
-        super param
-        @drop_down = BrowserElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
-        @text_box = TextboxElement.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
-      end
-
-      def select printer
-        return text_box.text if text_box.text.include? printer
-
-        case printer.downcase
-          when /factory/
-            selection_label = BrowserElement.new browser.li text: /factory/
-          when /kyocera/
-            selection_label = BrowserElement.new browser.li text: /Kyocera/
-          when /epson/
-            selection_label = BrowserElement.new browser.li text: /EPSON/
-          when /brother/
-            selection_label = BrowserElement.new browser.li text: /Brother/
-          when /officejet/
-            selection_label = BrowserElement.new browser.li text: /Officejet/
-          when /designer/
-            selection_label = BrowserElement.new browser.li text: /Designer/
-          else
-            "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.".should eql ""
-        end
-
-        8.times do
-          return text_box.text  if text_box.text.include? printer
-          drop_down.safe_click unless selection_label.present?
-          selection_label.safe_click
-        end
-        "Unable to select Printer #{printer}.  Check and make sure the printer exist in this PC.".should eql ""
-      end
-    end
-
-    class PaperTray < Browser::Modal
-      attr_reader :drop_down, :text_box
-
-      def initialize param
-        super param
-        @drop_down = BrowserElement.new (browser.divs css: "div[id^=combo-][id$=-trigger-picker]").last
-        @text_box = TextboxElement.new browser.text_field(name: "paperTrays")
-      end
-
-      def select selection
-        selection_label = BrowserElement.new browser.li text: selection
-
-        5.times{
-          drop_down.safe_click unless selection_label.present?
-          selection_label.safe_click
-          break if text_box.text.include? selection
-        }
-
-      end
-    end
-
-    class PrintOptions < Browser::Modal
-      def hide_postage_value
-        checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute = "class"
-        verify_field_attrib = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
-      end
-
-      def email_tracking
-        checkbox_field = browser.span id: "sdc-printpostagewindow-emailtrackingcheckbox-displayEl"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute = "class"
-        verify_field_attrib = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
-      end
-
-      def print_reference_no
-        checkbox_field = browser.span id: "sdc-printpostagewindow-printreferencenumbercheckbox-displayEl"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute = "class"
-        verify_field_attrib = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
-      end
-    end
-
     class PrintModalObject < Browser::Modal
       attr_reader :window_x_button
 
@@ -389,6 +374,20 @@ module Stamps
       end
     end
 
+    class ShipDate < Browser::Modal
+      attr_reader :text_box, :date_picker
+
+      def initialize param
+        super param
+        @text_box = TextboxElement.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
+        @date_picker = DatePicker.new param
+      end
+
+      def text
+        text_box.text
+      end
+    end
+
     class PrintModal < PrintModalObject
 
       attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options, :print_button,
@@ -396,19 +395,15 @@ module Stamps
 
       def initialize param
         super param
-        @starting_label ||= StartingLabel.new param
-        @paper_tray ||= PaperTray.new param
-        @date_picker = DatePicker.new param
-        @printing_on ||= PrintingOn.new param
-        @ship_date = TextboxElement.new browser.text_field(css: "input[name^=datefield-][name$=-inputEl]")
-        @print_options ||= PrintOptions.new param
+        @printing_on = PrintingOn.new param
+        @printer = Printer.new param
+        @paper_tray = PaperTray.new param
+        @ship_date = ShipDate.new param
+        @starting_label = StartingLabel.new param
+        @print_options = PrintOptions.new param
+
         @print_button = BrowserElement.new browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')
         @print_sample_button = BrowserElement.new browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')
-        @printer ||= Printer.new param
-
-        checkbox_field = browser.text_field id: "sdc-mainpanel-cmcheckbox-inputEl"
-        verify_field = browser.table id: "sdc-mainpanel-cmcheckbox"
-        @email_tracking_details ||= Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
       end
 
       def click
@@ -427,17 +422,15 @@ module Stamps
       end
 
       def print
-        button = print_button
-        5.times {
+        15.times {
           begin
-            sleep(1)
-            button.safe_click
+            print_button.safe_click
             sleep 1
-            button.safe_click
+            print_button.safe_click
             sleep(1)
             printing_error = printing_error_check
             return printing_error if printing_error.length > 1
-            break unless button.present?
+            break unless print_button.present?
           rescue
             true
           end
@@ -454,7 +447,7 @@ module Stamps
         title[/\d+/]
       end
 
-      def labels_required
+      def label_sheet_required_count
         browser.label(css: 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
       end
 

@@ -38,7 +38,7 @@ end
 Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
   ship_date = ParameterHelper.now_plus_mon_dd day
   logger.step "Print: Set Ship Date to #{ship_date}"
-  @ship_date = stamps.orders.toolbar.print_btn.print_modal.date_picker.today_plus day
+  @ship_date = stamps.orders.toolbar.print_btn.print_modal.ship_date.date_picker.today_plus day
 end
 
 Then /^Print: Check Hide Mail Value$/ do
@@ -176,7 +176,7 @@ end
 
 Then /^Print: Expect number of required label sheets is (\d+)$/ do |sheets|
   logger.step "Print: Expect Requires #{sheets} label sheets"
-  stamps.orders.toolbar.print_btn.print_modal.labels_required.should eql sheets
+  stamps.orders.toolbar.print_btn.print_modal.label_sheet_required_count.should eql sheets
 end
 
 Then /^Print raises a Printing Error/ do

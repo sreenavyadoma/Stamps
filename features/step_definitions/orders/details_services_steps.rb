@@ -155,6 +155,14 @@ Then /^Details: Expect Service is Parcel Select Ground Package\/Flat\/Thick Enve
   step "Details: Expect Service is \"Parcel Select Ground Package\""
 end
 
+Then /^Details: Select Service Parcel Select Ground Large Package$/ do
+  step "Details: Set Service to Parcel Select Ground Large Package"
+end
+
+Then /^Details: Expect Service is Parcel Select Ground Large Package$/ do
+  step "Details: Expect Service is \"Parcel Select Ground Large Package\""
+end
+
 Then /^Details: Select Service Parcel Select Ground Oversized Package$/ do
   step "Details: Set Service to Parcel Select Ground Oversized Package"
 end

@@ -1,9 +1,5 @@
 Then /^WebReg: Load username and password from parameter file(?:| (.*))$/ do |filename|
-  if filename.nil?
-    data_file = webreg_user_parameter_file
-  else
-    data_file = webreg_user_parameter_file filename
-  end
+  data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
   logger.step "WebReg: Load user credentials from file #{data_file}"
   File.exist?(data_file).should be_truthy
   CONFIG = YAML.load_file(data_file)
@@ -29,11 +25,7 @@ Then /^WebReg: Save username and password to parameter file(?:| (.*))$/ do |file
 end
 
 Then /^WebReg: Save username to parameter file(?:| (.*))$/ do |filename|
-  if filename.nil?
-    data_file = webreg_user_parameter_file
-  else
-    data_file = webreg_user_parameter_file filename
-  end
+  data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
   logger.message "WebReg: Save username to parameter file: #{data_file}"
   sleep 1
   File.open(data_file, 'w+') {|f| f.write("usr: #{@webreg_data[:usr]}\n")}
@@ -41,22 +33,14 @@ Then /^WebReg: Save username to parameter file(?:| (.*))$/ do |filename|
 end
 
 Then /^WebReg: Save password to parameter file(?:| (.*))$/ do |filename|
-  if filename.nil?
-    data_file = webreg_user_parameter_file
-  else
-    data_file = webreg_user_parameter_file filename
-  end
+  data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
   logger.message "WebReg: Save password to parameter file: #{data_file}"
   sleep 1
   File.open(data_file, 'a+') {|f| f.write("pw: #{@webreg_data[:pw]}\n")}
 end
 
 Then /^WebReg: Store username to data file(?:| (.*))$/ do |filename|
-  if filename.nil?
-    data_file = webreg_data_store_filename
-  else
-    data_file = webreg_data_store_filename filename
-  end
+  data_file = (filename.nil?)? webreg_data_store_filename : webreg_data_store_filename(filename)
   logger.message "WebReg: Store username to data file: #{data_file}"
   sleep 2
   if File.exist? data_file
@@ -66,28 +50,3 @@ Then /^WebReg: Store username to data file(?:| (.*))$/ do |filename|
     File.open(data_file, 'w+') {|f| f.write("#{@webreg_data[:usr]}\n")}
   end
 end
-
-=begin
-Then /^PAM: Write username to properties file$/ do
-  logger.message "WebReg: Save username to parameter file: #{webreg_pam_data_filename}"
-  sleep 2
-  if File.exist?(webreg_pam_data_filename)
-    File.open(webreg_pam_data_filename, 'a+') {|f| f.write("#{@webreg_data[:usr]}\n")} unless File.readlines(webreg_pam_data_filename).to_s.include? @webreg_data[:usr]
-  else
-    File.open(webreg_pam_data_filename, 'w+') {|f| f.write("#{@webreg_data[:usr]}\n")}
-  end
-end
-
-Then /^WebReg PAM Orders: Write username to properties file$/ do
-  logger.message "WebReg: Save username to parameter file: #{webreg_pam_ord_data_filename}"
-  sleep 3
-  if File.exist? webreg_pam_ord_data_filename
-    file_content = File.readlines(webreg_pam_ord_data_filename).to_s
-    File.open(webreg_pam_ord_data_filename, 'a+') {|f| f.write("#{@webreg_data[:usr]}\n")} unless file_content.include? @webreg_data[:usr]
-  else
-    File.open(webreg_pam_ord_data_filename, 'w+') {|f| f.write("#{@webreg_data[:usr]}\n")}
-  end
-end
-
-
-=end
