@@ -6,7 +6,7 @@ module Stamps
 
         case helper.test_env.downcase
           when /cc/
-            url = "http://qa-clientsite:82/pam/"
+            url = "http://qa-clientsite:82/pam/Default.asp"
           when /sc/
             url = "http://site.qasc.stamps.com:82/pam/"
           when /stg/
@@ -17,7 +17,6 @@ module Stamps
 
         logger.info "Visit: #{url}"
         browser.goto url
-        #self..wait_until_present
         logger.info "Visited: #{browser.url}"
         self
       end

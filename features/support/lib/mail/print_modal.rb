@@ -170,7 +170,7 @@ module Stamps
         RatingError.new param.wait_until_present
       end
 
-      def labels_required
+      def label_sheet_required_count
         browser.label(css: 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
       end
 
