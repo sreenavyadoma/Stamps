@@ -385,9 +385,10 @@ module Stamps
       end
 
       def text
-        sleep 2
-
-        text_box.text
+        sleep 1
+        text_box.text if text_box.present?
+        text_box_cc.text if text_box_cc.present?
+        (text_box.present? || text_box_cc.present?).should be true
       end
     end
 
