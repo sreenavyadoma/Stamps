@@ -7,6 +7,11 @@ Cucumber::Rake::Task.new(:local_rating1) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:local_rating2) do |t|
+  t.profile = 'local_rating2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rob_cc) do |t|
   t.profile = 'rob_cc'
   t.cucumber_opts = "-p cuke_reports"

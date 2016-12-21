@@ -33,6 +33,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=fa
 
 
 local_rating1: --tags @local_rating1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating1
+local_rating2: --tags @local_rating2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating2
 
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=search_orders
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_search
