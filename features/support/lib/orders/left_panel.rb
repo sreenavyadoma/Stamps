@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Modal
+      class CollapseButton < Browser::Modal
         attr_reader :button, :tooltip_element
 
         def initialize param
@@ -36,7 +36,7 @@ module Stamps
         end
       end
 
-      class ExpandButton < Modal
+      class ExpandButton < Browser::Modal
         attr_reader :button, :tooltip_element
 
         def initialize param
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Modal
+      class FilterMenuItem < Browser::Modal
         attr_reader :collapse, :expand
 
         def initialize param
@@ -81,7 +81,7 @@ module Stamps
         end
       end
 
-      class SearchResults < Modal
+      class SearchResults < Browser::Modal
         attr_reader :label, :remove_button, :count_label
 
         def initialize param
@@ -105,7 +105,7 @@ module Stamps
         end
       end
 
-      class SearchOrders < Modal
+      class SearchOrders < Browser::Modal
         attr_reader :textbox, :search_button, :search_results
 
         def initialize param
@@ -144,7 +144,7 @@ module Stamps
         end
       end
 
-      class LeftFilterPanel < Modal
+      class LeftFilterPanel < Browser::Modal
         attr_reader :filter_panel, :closed_filter_panel, :filter_panel_border_arrow, :filter_panel_header_arrow, :filter_panel_header_name,
                     :selected_filter_button, :cancelled_field, :search_orders_modal, :search_results
 

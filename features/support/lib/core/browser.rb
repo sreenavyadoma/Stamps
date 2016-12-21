@@ -6,12 +6,12 @@ module Stamps
     end
 
     class Modal
-      attr_accessor :helper, :browser, :logger, :element_helper
+      attr_accessor :param, :browser, :logger, :element_helper, :web_app
 
-      def initialize helper
-        @helper = helper
-        @browser = helper.browser
-        @logger = helper.logger
+      def initialize param
+        @param = param
+        @browser = param.browser
+        @logger = param.logger
         @element_helper = ElementHelper
       end
     end

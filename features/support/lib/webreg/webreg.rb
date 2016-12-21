@@ -45,9 +45,9 @@ module Stamps
       end
 
       def visit
-        helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
+        param.test_env = 'stg' if param.test_env.downcase == 'staging'
 
-        case helper.test_env.downcase
+        case param.test_env.downcase
           when /cc/
             url = "https://qa-registration.stamps.com/registration"
           when /sc/
@@ -55,7 +55,7 @@ module Stamps
           when /stg/
             url = "https://registration.staging.stamps.com/registration"
           else
-            "#{helper.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
+            "#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
         end
 
         logger.info "Visit:  #{url}"

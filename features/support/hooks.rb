@@ -42,7 +42,7 @@ Before do  |scenario|
   # process username from default.yml
   begin
     if ENV['web_app'].nil?
-      "cucumber.yml: Missing helper.web_app variable".should eql "helper.web_app is nil"
+      "cucumber.yml: Missing web_app variable".should eql "web_app is nil"
     elsif (ENV['web_app'].downcase == 'orders') || (ENV['web_app'].downcase == 'mail' || (ENV['web_app'].downcase.include? 'reg'))
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default') || (ENV['USR'].downcase == 'jenkins')
         logger.message "Using Default Credentials from ../config/data/default.yml"
@@ -56,7 +56,7 @@ Before do  |scenario|
           if e.message.include? "mapping values are not allowed"
             "Formatting issues in default.yml file".should eql "default.yml - #{e.message.split(':').last}}"
           else
-            "There are no user credentials in default.yml file for helper.web_app=#{ENV['web_app']}, #{(ENV['web_app'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']}".should eql "Missing credentials in default.yml #{(ENV['web_app'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']} - #{e.message}"
+            "There are no user credentials in default.yml file for web_app=#{ENV['web_app']}, #{(ENV['web_app'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']}".should eql "Missing credentials in default.yml #{(ENV['web_app'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']} - #{e.message}"
           end
         end
         begin
@@ -73,7 +73,7 @@ Before do  |scenario|
         logger.message "Environment Variable Username (USR) is defined: #{ENV['USR']}"
       end
     else
-      "Valid values are helper.web_app=orders or helper.web_app=mail".should eql "helper.web_app=#{ENV['web_app']} is not a valid value."
+      "Valid values are web_app=orders or web_app=mail".should eql "web_app=#{ENV['web_app']} is not a valid value."
     end
   end unless (ENV['TEST'] == 'healthcheck' || ENV['TEST'].include?('webreg') || ENV['TEST'].include?('pam') || ENV['TEST'].include?('intellij'))
 

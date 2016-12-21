@@ -24,7 +24,7 @@ module Stamps
         welcome_kit_message = BrowserElement.new page_header.parent.p
 
         download_page = DownloadPage.new param
-        #@helper.web_apps.mail.landing_page.whats_new_modal
+        #@web_apps.mail.landing_page.whats_new_modal
         place_order_button.safely_wait_until_present 10
 
         logger.info "Registration Page has loaded: #{browser.url}"

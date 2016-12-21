@@ -5,7 +5,7 @@ module Stamps
 
       def initialize param
         super param
-        @ok_button = BrowserElement.new (helper.web_app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
+        @ok_button = BrowserElement.new (web_app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
         @window_title = BrowserElement.new browser.div text: "Purchase Approved"
       end
 
@@ -53,12 +53,12 @@ module Stamps
       end
 
       def text_area
-        if helper.web_app == :orders
+        if web_app == :orders
           div = browser.div class: 'sdc-dialoguemodal-confirm-purchase'
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
-          "Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test.".should eql "Invalid Value"
+          "Purchase Button failure. #{web_app} is not a valid value for web_app, check your test.".should eql "Invalid Value"
         end
         BrowserElement.new div
       end
@@ -68,12 +68,12 @@ module Stamps
       end
 
       def purchase_button
-        if helper.web_app == :orders
+        if web_app == :orders
           button = (browser.spans text: "Purchase").last
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           button = browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last
         else
-          "Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test.".should eql "Invalid Value"
+          "Purchase Button failure. #{web_app} is not a valid value for web_app, check your test.".should eql "Invalid Value"
         end
         BrowserElement.new button
       end
@@ -133,12 +133,12 @@ module Stamps
       end
 
       def purchase_button
-        if helper.web_app == :orders
+        if web_app == :orders
           button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           button = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
         else
-          "raise Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test."
+          "raise Purchase Button failure. #{web_app} is not a valid value for web_app, check your test."
         end
         BrowserElement.new button
       end
@@ -148,93 +148,93 @@ module Stamps
       end
 
       def buy_10
-        if helper.web_app == :orders
+        if web_app == :orders
           checkbox_element = (browser.label text: "$10.00").parent.span
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-10dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test."
+          "raise Purchase Button failure. #{web_app} is not a valid value for web_app, check your test."
         end
       end
 
       def buy_25
-        if helper.web_app == :orders
+        if web_app == :orders
           checkbox_element = (browser.label text: "$25.00").parent.span
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-25dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test."
+          "raise Purchase Button failure. #{web_app} is not a valid value for web_app, check your test."
         end
 
       end
 
       def buy_50
-        if helper.web_app == :orders
+        if web_app == :orders
           checkbox_element = (browser.label text: "$50.00").parent.span
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-50dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test."
+          "raise Purchase Button failure. #{web_app} is not a valid value for web_app, check your test."
         end
       end
 
       def buy_100
-        if helper.web_app == :orders
+        if web_app == :orders
           checkbox_element = (browser.label text: "$100.00").parent.span
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-100dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test."
+          "raise Purchase Button failure. #{web_app} is not a valid value for web_app, check your test."
         end
       end
 
       def buy_other value
-        if helper.web_app == :orders
+        if web_app == :orders
           checkbox_element = (browser.label text: /Other:/).parent.span
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           checkbox = RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif helper.web_app == :mail
+        elsif web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-otherdradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           checkbox = RadioElement.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{helper.web_app} is not a valid value for helper.web_app, check your test."
+          "raise Purchase Button failure. #{web_app} is not a valid value for web_app, check your test."
         end
 
         textbox = TextboxElement.new (browser.text_field id: "sdc-purchasewin-otheramount")

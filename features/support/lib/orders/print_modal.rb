@@ -375,15 +375,18 @@ module Stamps
     end
 
     class ShipDate < Browser::Modal
-      attr_reader :text_box, :date_picker
+      attr_reader :text_box, :date_picker, :text_box_cc
 
       def initialize param
         super param
         @text_box = TextboxElement.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
+        @text_box_cc = TextboxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
         @date_picker = DatePicker.new param
       end
 
       def text
+        sleep 2
+
         text_box.text
       end
     end

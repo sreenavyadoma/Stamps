@@ -3,7 +3,7 @@ module Stamps
     class GeneralSettings < Browser::Modal
       class ResetFields < Browser::Modal
         class Weight < Browser::Modal
-          class Pounds <  Browser::Modal
+          class Pounds < Browser::Modal
             def text_box
               TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
             end
@@ -29,30 +29,14 @@ module Stamps
             end
           end
 
-          class Ounces <  Browser::Modal
+          class Ounces < Browser::Modal
             def text_box
               TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
             end
 
             def set value
-              text_field = text_box
-=begin
-              value = value.to_i
-              max = value + text_field.text.to_i
-              max.times do
-                current_value = text_field.text.to_i
-                break if value == current_value
-                if value > current_value
-                  increment 1
-                else
-                  decrement 1
-                end
-                break if value == current_value
-              end
-              sleep 1
-=end
-              text_field.set value
-              logger.info "Pounds set to #{text_field.text}"
+              text_box.set value
+              logger.info "Pounds set to #{text_box.text}"
             end
 
             def increment value
@@ -92,7 +76,7 @@ module Stamps
         end
 
         class Dimensions < Browser::Modal
-          class Length <  Browser::Modal
+          class Length < Browser::Modal
             def text_box
               TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
             end
@@ -133,7 +117,7 @@ module Stamps
             end
           end
 
-          class Width <  Browser::Modal
+          class Width < Browser::Modal
             def text_box
               TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
             end
@@ -174,7 +158,7 @@ module Stamps
             end
           end
 
-          class Height <  Browser::Modal
+          class Height < Browser::Modal
             def text_box
               TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
             end
