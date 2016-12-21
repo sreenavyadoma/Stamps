@@ -17,6 +17,9 @@ Feature: Local Rating test for zone 1
 
   @local_rating1
   Scenario:  First-Class Mail Package/Thick Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 1
     Then Details: Select Service First-Class Mail Package/Thick Envelope
     Then Details: Set Weight to 0 lbs 5 oz
@@ -26,6 +29,9 @@ Feature: Local Rating test for zone 1
 
   @local_rating1
   Scenario:  Priority Mail Large/Thick Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 1
     Then Details: Select Service Priority Mail Large/Thick Envelope
     Then Details: Set Weight to 1 lbs 0 oz
