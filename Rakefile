@@ -42,8 +42,28 @@ Cucumber::Rake::Task.new(:local_rating_zone_8) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:local_rating_zone_9) do |t|
+  t.profile = 'local_rating_zone_9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:sas_local_rating_zone_1) do |t|
   t.profile = 'sas_local_rating_zone_1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
   t.cucumber_opts = "-p cuke_reports"
 end
 

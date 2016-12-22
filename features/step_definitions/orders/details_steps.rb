@@ -302,6 +302,10 @@ Then /^Details: Set Ship-To to address in Zone 8$/ do
   step "Details: Set Ship-To to zone 8"
 end
 
+Then /^Details: Set Ship-To to address in Zone 9$/ do
+  step "Details: Set Ship-To to zone 9"
+end
+
 Then /^Details: Set Ship-To to address in Zone 1 through 4$/ do
   step "Details: Set Ship-To to zone 1 through 4"
 end
@@ -415,6 +419,8 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
       address = ParameterHelper.rand_zone_7
     when /8/
       address = ParameterHelper.rand_zone_8
+    when /9/
+      address = ParameterHelper.rand_zone_9
     else
       "Invalid Zone Option".should eql "Zone #{zone} is not a valid zone. Valid options are from zone 1 through 8."
   end

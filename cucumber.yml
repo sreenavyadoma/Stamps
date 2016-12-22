@@ -38,6 +38,7 @@ local_rating_zone_5: --tags @local_rating_zone_5 --guess VERBOSE=false JENKINS=t
 local_rating_zone_6: --tags @local_rating_zone_6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_6
 local_rating_zone_7: --tags @local_rating_zone_7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_7
 local_rating_zone_8: --tags @local_rating_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_8
+local_rating_zone_9: --tags @local_rating_zone_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_9
 
 sas_local_rating_zone_1: --tags @sas_local_rating_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=sas_local_rating_zone_1
 

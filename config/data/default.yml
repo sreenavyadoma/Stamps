@@ -56,7 +56,7 @@ orders_credentials:
     local_rating_zone_8:
       usr: stgknkh000j
       pw: pass111
-    local_rating9:
+    local_rating_zone_9:
       usr: stge373292r
       pw: pass111
     search_orders:
@@ -3363,7 +3363,6 @@ zone_1_through_4:
         city: Roseville
         state: CA
         zip: 95747-7312
-
 zone_5_through_8:
     zone5:
       1:
@@ -3450,6 +3449,7 @@ zone_5_through_8:
         city: Mocksville
         state: NC
         zip: 27028-4708
+non_domestic:
     zone9:
       1:
         street_address: PO Box 659
