@@ -3450,6 +3450,27 @@ zone_5_through_8:
         city: Mocksville
         state: NC
         zip: 27028-4708
+    zone9:
+      1:
+        street_address: PO Box 659
+        city: Kosrae, FM 96944-0305
+        state: FM
+        zip: 96944-0305
+      2:
+        street_address: PO Box 735
+        city: Majuro
+        state: MH
+        zip: 96960-0735
+      3:
+        street_address: PO Box 1949
+        city: Pohnpei
+        state: FM
+        zip: 96941-0735
+      4:
+        street_address: PO Box 8067
+        city: Palau
+        state: PW
+        zip: 96940-0871
 
 us_states:
   AL:	Alabama
@@ -3662,29 +3683,6 @@ login_credentials_invalid:
     password: password1
 
 
-
-  non_domestic:
-    zone9:
-      1:
-        street_address: PO Box 659
-        city: Kosrae, FM 96944-0305
-        state: FM
-        zip: 96944-0305
-      2:
-        street_address: PO Box 735
-        city: Majuro
-        state: MH
-        zip: 96960-0735
-      3:
-        street_address: PO Box 1949
-        city: Pohnpei
-        state: FM
-        zip: 96941-0735
-      4:
-        street_address: PO Box 8067
-        city: Palau
-        state: PW
-        zip: 96940-0871
 
 rob:
   autobase: 326tsetaqcdS!
