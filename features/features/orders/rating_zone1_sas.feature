@@ -4,7 +4,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Given I am signed in to Orders
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -16,7 +16,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -29,7 +29,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -42,7 +42,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -55,7 +55,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -68,7 +68,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -81,7 +81,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -94,7 +94,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -107,7 +107,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -120,7 +120,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -133,7 +133,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -146,7 +146,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Regional Rate Box A
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -159,7 +159,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Regional Rate Box B
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -172,7 +172,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Express Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -185,7 +185,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -198,7 +198,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -211,7 +211,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -224,7 +224,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Media Mail Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -237,7 +237,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -250,7 +250,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -263,7 +263,7 @@ Feature: Local Rating test for zone 1 for SAS user
 
 
   @local_rating1_sas
-  Scenario: xxxxxxxxx
+  Scenario: Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States

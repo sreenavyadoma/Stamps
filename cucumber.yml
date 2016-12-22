@@ -39,6 +39,8 @@ local_rating6: --tags @local_rating6 --guess VERBOSE=false JENKINS=true HEALTHCH
 local_rating7: --tags @local_rating7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating7
 local_rating8: --tags @local_rating8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating8
 
+local_rating1_sas: --tags @local_rating1_sas --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating1_sas
+
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=search_orders
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_search
 
