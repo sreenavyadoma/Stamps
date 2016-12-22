@@ -273,7 +273,7 @@ Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
   logger.step "Details: Set Insure-For to #{expectation}"
   stamps.orders.order_details.insure_for.checkbox.check
   step "Details: Blur out"
-  5.times do
+  10.times do
     break if stamps.orders.order_details.insure_for.text_box.text == expectation
   end
   stamps.orders.order_details.insure_for.text_box.text.should eql expectation
@@ -297,7 +297,7 @@ end
 Then /^Details: Expect Insure-For Cost is greater than \$(.*)$/ do |expectation|
   logger.step "Details: Expect Insure-For Cost is greater than #{expectation}"
   step "Details: Blur out"
-  15.times do
+  10.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > expectation.to_f
   end
   stamps.orders.order_details.insure_for.cost.to_f.should be > expectation.to_f
@@ -351,7 +351,7 @@ end
 Then /^Details: Expect Service Cost is \$(.*)$/ do |expectation|
   logger.step "Details: Expect Service Cost is $#{expectation}"
   expectation = expectation.to_f
-  30.times do
+  10.times do
     sleep 1
     break if stamps.orders.order_details.service.cost.to_f == expectation
   end
