@@ -52,8 +52,8 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:sas_local_rating_zone_1) do |t|
-  t.profile = 'sas_local_rating_zone_1'
+Cucumber::Rake::Task.new(:local_rating_zone_1_sas) do |t|
+  t.profile = 'local_rating_zone_1_sas'
   t.cucumber_opts = "-p cuke_reports"
 end
 

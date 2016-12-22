@@ -40,7 +40,7 @@ local_rating_zone_7: --tags @local_rating_zone_7 --guess VERBOSE=false JENKINS=t
 local_rating_zone_8: --tags @local_rating_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_8
 local_rating_zone_9: --tags @local_rating_zone_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_9
 
-sas_local_rating_zone_1: --tags @sas_local_rating_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=sas_local_rating_zone_1
+local_rating_zone_1_sas: --tags @local_rating_zone_1_sas --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_1_sas
 
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=search_orders
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_search
