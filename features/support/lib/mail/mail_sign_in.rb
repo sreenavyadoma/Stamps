@@ -221,7 +221,7 @@ module Stamps
         signed_in_user.safely_wait_until_present 6
         whats_new_modal.close if whats_new_modal.present?
         logger.info "#{@username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-        "User #{@username} was unable to sign-in. Is #{helper.test_env} up? *signed in user drop-down did not appear on the screen*".should eql "Sign-in Successful for #{@username} in #{helper.test_env}" unless signed_in_user.present?
+        "User #{@username} was unable to sign-in. Is #{param.test_env} up? *signed in user drop-down did not appear on the screen*".should eql "Sign-in Successful for #{@username} in #{param.test_env}" unless signed_in_user.present?
       end
 
       def sign_in_first_time *args

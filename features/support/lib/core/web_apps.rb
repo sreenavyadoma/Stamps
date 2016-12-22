@@ -11,10 +11,10 @@ module Stamps
 
     def load_page
       browser.should_not be_nil
-      helper.web_app.should  eq(:mail).or(eq(:orders))
-      helper.test_env.should be_truthy
+      web_app.should eq(:mail).or(eq(:orders))
+      param.test_env.should_not be_nil
 
-      case helper.web_app
+      case web_app
         when :orders
           app_name ="orders"
         when :mail
@@ -23,10 +23,10 @@ module Stamps
           #do nothing
       end
 
-      helper.test_env.should be_truthy
-      helper.test_env = 'stg' if helper.test_env.downcase == 'staging'
+      param.test_env.should be_truthy
+      param.test_env = 'stg' if param.test_env.downcase == 'staging'
 
-      case helper.test_env.downcase
+      case param.test_env.downcase
         when /ss/
           url = "http://printss600.qacc.stamps.com/#{app_name}/"
         when /cc/
@@ -39,9 +39,9 @@ module Stamps
         when /rating/
           url = "http://printext.qacc.stamps.com/#{app_name}/"
         when /./
-          url = "http://#{helper.test_env}.stamps.com/#{app_name}/"
+          url = "http://#{param.test_env}.stamps.com/#{app_name}/"
         else
-          url = helper.test_env
+          url = param.test_env
       end
 
       logger.message "-"
@@ -67,24 +67,24 @@ module Stamps
 
       case page
         when :orders
-          case helper.test_env.downcase
+          case param.test_env.downcase
             when /ss/
-              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
+              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
             when /cc/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
             when /sc/
-              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
+              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
             when /staging/
-              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
+              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
             when /rating/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
+              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
             when /./
-              url = "http://#{helper.test_env}.stamps.com/webpostage/SignIn/Default.aspx?helper.test_env=Orders&"
+              url = "http://#{param.test_env}.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
             else
-              url = helper.test_env
+              url = param.test_env
           end
         when :mail
-          case helper.test_env.downcase
+          case param.test_env.downcase
             when /ss/
               url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx"
             when /cc/
@@ -96,9 +96,9 @@ module Stamps
             when /rating/
               url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx"
             when /./
-              url = "http://#{helper.test_env}.stamps.com/webpostage/SignIn/Default.aspx"
+              url = "http://#{param.test_env}.stamps.com/webpostage/SignIn/Default.aspx"
             else
-              url = helper.test_env
+              url = param.test_env
           end
         else
           #do nothing

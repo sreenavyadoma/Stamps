@@ -65,7 +65,7 @@ module Stamps
       end
 
       def select selection
-        if helper.test_env.downcase.include?('sc') && ENV['web_app'].downcase.include?('mail')
+        if param.test_env.downcase.include?('sc') && ENV['web_app'].downcase.include?('mail')
           @mail_services ||= data_for(:redesign_mail_services, {})
           selection_label = BrowserElement.new browser.li(css: "li[data-recordindex='#{@mail_services[selection]}']")
         else

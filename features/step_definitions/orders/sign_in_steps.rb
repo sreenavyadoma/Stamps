@@ -1,6 +1,7 @@
 Given /^Orders: Visit Sign-in page$/ do
   logger.step "Orders: Visit Sign-in page"
-  stamps.helper.web_app = :orders
+  stamps.web_app = :orders
+  #stamps.test_env = ENV['URL']
   stamps.load_page
   browser.url.should include "stamps.com"
 end

@@ -64,6 +64,7 @@ Then /^Print: Print$/ do
   @printer = print_modal.printer.text_box.text
   @printing_on = print_modal.printing_on.text_box.text
   @printing_error = print_modal.print
+  sleep 4
 end
 
 Then /^Print: Open Reprint Modal$/ do

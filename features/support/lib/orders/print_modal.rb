@@ -1,7 +1,6 @@
 # encoding: utf-8
 module Stamps
   module Orders
-
     class PrintingOn < Browser::Modal
       attr_reader :drop_down, :text_box
 
@@ -123,8 +122,8 @@ module Stamps
 
       def initialize param
         super param
-        @left_label = BrowserElement.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)"
-        @right_label = BrowserElement.new browser.div css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)"
+        @left_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")
+        @right_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")
       end
 
       def left
@@ -375,16 +374,21 @@ module Stamps
     end
 
     class ShipDate < Browser::Modal
-      attr_reader :text_box, :date_picker
+      attr_reader :text_box, :date_picker, :text_box_cc
 
       def initialize param
         super param
         @text_box = TextboxElement.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
+        @text_box_cc = TextboxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
         @date_picker = DatePicker.new param
       end
 
       def text
-        text_box.text
+        sleep 1
+        5.times do
+          return text_box.text if text_box.present?
+          return text_box_cc.text if text_box_cc.present?
+        end
       end
     end
 

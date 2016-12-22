@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
+
     class PrintPostageCustoms < Browser::Modal
       def edit_form
         button = BrowserElement.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"

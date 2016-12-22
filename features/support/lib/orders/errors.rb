@@ -328,26 +328,5 @@ module Stamps
         }
       end
     end
-
-=begin
-  def print_error_message
-    ptags = browser.ps css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]>p"
-    logger.info "-- Print Plugin Error [Error code: [1009]]--"
-    ptags.each {|p_tag|
-      if helper.present? p_tag
-        logger.info "\n#{helper.text p_tag}"
-      end
-    }
-    logger.info "-- Print Plugin Error [Error code: [1009]]--"
-    self
-  end
-
-  def ok
-    print_error_message
-    helper.click ok_button, "OK"
-    self
-  end
-=end
-
   end
 end
