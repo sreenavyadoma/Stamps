@@ -12,6 +12,46 @@ Cucumber::Rake::Task.new(:local_rating2) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:local_rating3) do |t|
+  t.profile = 'local_rating3'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:local_rating4) do |t|
+  t.profile = 'local_rating4'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:local_rating5) do |t|
+  t.profile = 'local_rating5'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:local_rating6) do |t|
+  t.profile = 'local_rating6'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:local_rating7) do |t|
+  t.profile = 'local_rating7'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:local_rating8) do |t|
+  t.profile = 'local_rating8'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rob_cc) do |t|
   t.profile = 'rob_cc'
   t.cucumber_opts = "-p cuke_reports"

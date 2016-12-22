@@ -30,10 +30,14 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=fa
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 
-
-
 local_rating1: --tags @local_rating1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating1
 local_rating2: --tags @local_rating2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating2
+local_rating3: --tags @local_rating3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating3
+local_rating4: --tags @local_rating4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating4
+local_rating5: --tags @local_rating5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating5
+local_rating6: --tags @local_rating6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating6
+local_rating7: --tags @local_rating7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating7
+local_rating8: --tags @local_rating8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating8
 
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=search_orders
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_search
