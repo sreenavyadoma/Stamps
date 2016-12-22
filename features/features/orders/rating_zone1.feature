@@ -10,7 +10,6 @@ Feature: Local Rating test for zone 1
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 1
     Then Details: Select Service First-Class Mail Large Envelope/Flat
-    Then Details: Expect Service Cost is $55.2
     Then Details: Set Weight to 0 lbs 1 oz
     Then Details: Expect Service Cost is $0.98
     Then Details: Expect Total Ship Cost is $0.98
