@@ -18,7 +18,7 @@ rob_jenkins_dev: --tags @orders_20 --guess VERBOSE=true JENKINS=false HEALTHCHEC
 galina_cc: --tags @webreg_fields_validation_blank_to_next_page1 --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=webreg_fields_validation_blank_to_next_page1 URL=cc BROWSER=ff PW=pass111 USR=hd9glvtoauago #ym3tcgykqt7ops #hd9glvtoauago fawlz7jqdsx
 
 eli_dev: --tags @item_details   --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=item_details URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=go45dhfhkw PW=pass111
-ray_dev: --tags @local_rating4 --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=local_rating4 URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
+ray_dev: --tags @local_rating_zone_4 --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_4 URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
 eva_dev: --tags @details_panel --guess VERBOSE=true JENKINS=false HEALTHCHECK=false WEB_APP=orders TEST=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
@@ -30,16 +30,16 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=fa
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 
-local_rating1: --tags @local_rating1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating1
-local_rating2: --tags @local_rating2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating2
-local_rating3: --tags @local_rating3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating3
-local_rating4: --tags @local_rating4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating4
-local_rating5: --tags @local_rating5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating5
-local_rating6: --tags @local_rating6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating6
-local_rating7: --tags @local_rating7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating7
-local_rating8: --tags @local_rating8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating8
+local_rating_zone_1: --tags @local_rating_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_1
+local_rating_zone_2: --tags @local_rating_zone_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_2
+local_rating_zone_3: --tags @local_rating_zone_3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_3
+local_rating_zone_4: --tags @local_rating_zone_4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_4
+local_rating_zone_5: --tags @local_rating_zone_5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_5
+local_rating_zone_6: --tags @local_rating_zone_6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_6
+local_rating_zone_7: --tags @local_rating_zone_7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_7
+local_rating_zone_8: --tags @local_rating_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating_zone_8
 
-local_rating1_sas: --tags @local_rating1_sas --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=local_rating1_sas
+sas_local_rating_zone_1: --tags @sas_local_rating_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=sas_local_rating_zone_1
 
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=search_orders
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_search

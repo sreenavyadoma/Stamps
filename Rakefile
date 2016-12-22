@@ -2,48 +2,48 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:local_rating1) do |t|
-  t.profile = 'local_rating1'
+Cucumber::Rake::Task.new(:local_rating_zone_1) do |t|
+  t.profile = 'local_rating_zone_1'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating2) do |t|
-  t.profile = 'local_rating2'
+Cucumber::Rake::Task.new(:local_rating_zone_2) do |t|
+  t.profile = 'local_rating_zone_2'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating3) do |t|
-  t.profile = 'local_rating3'
+Cucumber::Rake::Task.new(:local_rating_zone_3) do |t|
+  t.profile = 'local_rating_zone_3'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating4) do |t|
-  t.profile = 'local_rating4'
+Cucumber::Rake::Task.new(:local_rating_zone_4) do |t|
+  t.profile = 'local_rating_zone_4'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating5) do |t|
-  t.profile = 'local_rating5'
+Cucumber::Rake::Task.new(:local_rating_zone_5) do |t|
+  t.profile = 'local_rating_zone_5'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating6) do |t|
-  t.profile = 'local_rating6'
+Cucumber::Rake::Task.new(:local_rating_zone_6) do |t|
+  t.profile = 'local_rating_zone_6'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating7) do |t|
-  t.profile = 'local_rating7'
+Cucumber::Rake::Task.new(:local_rating_zone_7) do |t|
+  t.profile = 'local_rating_zone_7'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating8) do |t|
-  t.profile = 'local_rating8'
+Cucumber::Rake::Task.new(:local_rating_zone_8) do |t|
+  t.profile = 'local_rating_zone_8'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:local_rating1_sas) do |t|
-  t.profile = 'local_rating1_sas'
+Cucumber::Rake::Task.new(:sas_local_rating_zone_1) do |t|
+  t.profile = 'sas_local_rating_zone_1'
   t.cucumber_opts = "-p cuke_reports"
 end
 

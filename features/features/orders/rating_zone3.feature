@@ -3,7 +3,7 @@ Feature: Local Rating test for zone 3
   Background:
     Given I am signed in to Orders
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -14,7 +14,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $1.19
     Then Details: Expect Total Ship Cost is $1.19
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -26,7 +26,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $4.16
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -38,7 +38,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.60
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -50,7 +50,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $7.38
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -62,7 +62,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.17
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -74,7 +74,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.95
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -86,7 +86,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.50
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -98,7 +98,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.25
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -110,7 +110,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.45
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -122,7 +122,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $12.40
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -134,7 +134,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.05
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Regional Rate Box A
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -146,7 +146,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.60
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Regional Rate Box B
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -158,7 +158,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $8.01
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Express Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -170,7 +170,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $48.54
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -182,7 +182,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.18
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -194,7 +194,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.64
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -206,7 +206,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.28
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Media Mail Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -218,7 +218,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $8.45
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -230,7 +230,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $19.29
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -242,7 +242,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $26.46
 
-  @local_rating3
+  @local_rating_zone_3
   Scenario: Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default

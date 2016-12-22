@@ -3,7 +3,7 @@ Feature: Local Rating test for zone 1 for SAS user
   Background:
     Given I am signed in to Orders
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -14,7 +14,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $0.94
     Then Details: Expect Total Ship Cost is $0.94
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -26,7 +26,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $2.60
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -38,7 +38,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -50,7 +50,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.01
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -62,7 +62,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $10.77
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -74,7 +74,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -86,7 +86,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -98,7 +98,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -110,7 +110,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -122,7 +122,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $11.95
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -134,7 +134,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $16.35
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Regional Rate Box A
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -146,7 +146,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.01
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Regional Rate Box B
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -158,7 +158,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.71
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Express Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -170,7 +170,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $38.34
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -182,7 +182,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $20.66
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -194,7 +194,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -206,7 +206,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Media Mail Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -218,7 +218,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $10.29
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -230,7 +230,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.76
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -242,7 +242,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $22.77
 
-  @local_rating1_sas
+  @sas_local_rating_zone_1
   Scenario: Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
