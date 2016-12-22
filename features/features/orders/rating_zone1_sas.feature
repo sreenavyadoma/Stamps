@@ -13,6 +13,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Set Weight to 0 lbs 1 oz
     Then Details: Expect Service Cost is $0.94
     Then Details: Expect Total Ship Cost is $0.94
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: First-Class Mail Package/Thick Envelope
@@ -25,6 +26,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $2.60
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $2.60
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Large/Thick Envelope
@@ -37,6 +39,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $5.75
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Package
@@ -49,6 +52,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $6.01
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.01
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Large Package
@@ -61,6 +65,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $10.77
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $10.77
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Flat Rate Envelope
@@ -73,6 +78,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $5.75
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Padded Flat Rate Envelope
@@ -85,6 +91,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $6.10
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Legal Flat Rate Envelope
@@ -97,6 +104,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $5.75
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Small Flat Rate Box
@@ -109,6 +117,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $6.10
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Medium Flat Rate Box
@@ -121,6 +130,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $11.95
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $11.95
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Large Flat Rate Box
@@ -133,6 +143,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $16.35
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $16.35
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Regional Rate Box A
@@ -145,6 +156,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $6.01
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.01
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Regional Rate Box B
@@ -157,6 +169,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $6.71
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.71
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Express Package
@@ -169,6 +182,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $38.34
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $38.34
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Express Flat Rate Envelope
@@ -181,6 +195,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $20.66
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Express Padded Flat Rate Envelope
@@ -193,6 +208,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Priority Mail Express Legal Flat Rate Envelope
@@ -205,6 +221,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Media Mail Package/Flat/Thick Envelope
@@ -217,6 +234,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $10.29
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $10.29
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
@@ -229,6 +247,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $17.76
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.76
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Parcel Select Ground Large Package
@@ -241,6 +260,7 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $22.77
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $22.77
+    Then Sign out
 
   @sas_local_rating_zone_1
   Scenario: Parcel Select Ground Oversized Package
@@ -253,5 +273,6 @@ Feature: Local Rating test for zone 1 for SAS user
     Then Details: Expect Service Cost is $62.99
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $62.99
+    Then Sign out
 
     Then Sign out

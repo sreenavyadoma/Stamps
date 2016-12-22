@@ -13,6 +13,7 @@ Feature: Local Rating test for zone 3
     Then Details: Set Weight to 0 lbs 2 oz
     Then Details: Expect Service Cost is $1.19
     Then Details: Expect Total Ship Cost is $1.19
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: First-Class Mail Package/Thick Envelope
@@ -25,6 +26,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $4.16
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $4.16
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Large/Thick Envelope
@@ -37,6 +39,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $6.60
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.60
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Package
@@ -49,6 +52,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $7.38
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $7.38
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Large Package
@@ -61,6 +65,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $17.17
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.17
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Flat Rate Envelope
@@ -73,6 +78,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $5.95
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.95
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Padded Flat Rate Envelope
@@ -85,6 +91,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $6.50
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.50
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Legal Flat Rate Envelope
@@ -97,6 +104,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $6.25
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.25
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Small Flat Rate Box
@@ -109,6 +117,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $6.45
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.45
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Medium Flat Rate Box
@@ -121,6 +130,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $12.40
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $12.40
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Large Flat Rate Box
@@ -133,6 +143,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $17.05
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.05
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Regional Rate Box A
@@ -145,6 +156,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $6.60
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.60
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Regional Rate Box B
@@ -157,6 +169,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $8.01
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $8.01
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Express Package
@@ -169,6 +182,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $48.54
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $48.54
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Express Flat Rate Envelope
@@ -181,6 +195,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $21.18
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.18
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Express Padded Flat Rate Envelope
@@ -193,6 +208,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $21.64
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.64
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Priority Mail Express Legal Flat Rate Envelope
@@ -205,6 +221,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $21.28
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.28
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Media Mail Package/Flat/Thick Envelope
@@ -217,6 +234,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $8.45
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $8.45
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
@@ -229,6 +247,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $19.29
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $19.29
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Parcel Select Ground Large Package
@@ -241,6 +260,7 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $26.46
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $26.46
+    Then Sign out
 
   @local_rating_zone_3
   Scenario: Parcel Select Ground Oversized Package
@@ -253,5 +273,4 @@ Feature: Local Rating test for zone 3
     Then Details: Expect Service Cost is $67.94
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $67.94
-
     Then Sign out

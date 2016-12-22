@@ -13,6 +13,7 @@ Feature: Local Rating test for zone 5
     Then Details: Set Weight to 0 lbs 5 oz
     Then Details: Expect Service Cost is $1.78
     Then Details: Expect Total Ship Cost is $1.78
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: First-Class Mail Package/Thick Envelope
@@ -25,6 +26,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $3.40
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $3.40
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Large/Thick Envelope
@@ -37,6 +39,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $6.20
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.20
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Package
@@ -52,6 +55,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $22.78
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $22.78
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Large Package
@@ -67,6 +71,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $42.61
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $42.61
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Flat Rate Envelope
@@ -79,6 +84,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $5.75
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Padded Flat Rate Envelope
@@ -91,6 +97,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $6.10
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Legal Flat Rate Envelope
@@ -103,6 +110,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $5.75
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Small Flat Rate Box
@@ -115,6 +123,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $6.10
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Medium Flat Rate Box
@@ -127,6 +136,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $11.95
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $11.95
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Large Flat Rate Box
@@ -139,6 +149,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $16.35
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $16.35
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Express Package
@@ -151,6 +162,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $50.13
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $50.13
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Express Flat Rate Envelope
@@ -163,6 +175,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Priority Mail Express Padded Flat Rate Envelope
@@ -187,6 +200,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Media Mail Package/Flat/Thick Envelope
@@ -199,6 +213,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $8.37
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $8.37
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
@@ -211,6 +226,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $12.06
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $12.06
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Parcel Select Ground Large Package
@@ -223,6 +239,7 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $21.23
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.23
+    Then Sign out
 
   @local_rating_zone_5
   Scenario: Parcel Select Ground Oversized Package
@@ -235,5 +252,4 @@ Feature: Local Rating test for zone 5
     Then Details: Expect Service Cost is $105.11
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $105.11
-
     Then Sign out

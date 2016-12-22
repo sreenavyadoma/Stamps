@@ -13,7 +13,7 @@ Feature: Local Rating test for zone 7
     Then Details: Set Weight to 0 lbs 11 oz
     Then Details: Expect Service Cost is $3.04
     Then Details: Expect Total Ship Cost is $3.04
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: First-Class Mail Package/Thick Envelope
@@ -26,7 +26,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $2.60
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $2.60
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Large/Thick Envelope
@@ -39,7 +39,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $64.26
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $64.26
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Package
@@ -55,7 +55,7 @@ Feature: Local Rating test for zone 7
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Expect Total Ship Cost is $31.92
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Large Package
@@ -71,7 +71,7 @@ Feature: Local Rating test for zone 7
     Then Details: Set Width to 25
     Then Details: Set Height to 25
     Then Details: Expect Total Ship Cost is $73.93
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Flat Rate Envelope
@@ -84,7 +84,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $5.75
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Padded Flat Rate Envelope
@@ -97,7 +97,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $6.10
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Legal Flat Rate Envelope
@@ -110,7 +110,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $5.75
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Small Flat Rate Box
@@ -123,7 +123,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $6.10
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Medium Flat Rate Box
@@ -136,7 +136,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $11.95
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $11.95
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Large Flat Rate Box
@@ -149,7 +149,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $16.35
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $16.35
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Express Package
@@ -162,7 +162,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $122.31
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $122.31
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Express Flat Rate Envelope
@@ -175,7 +175,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Express Padded Flat Rate Envelope
@@ -188,7 +188,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Priority Mail Express Legal Flat Rate Envelope
@@ -201,7 +201,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $20.66
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Media Mail Package/Flat/Thick Envelope
@@ -214,7 +214,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $35.22
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $35.22
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
@@ -227,7 +227,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $68.02
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $68.02
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
@@ -240,7 +240,7 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $91.52
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $91.52
-
+    Then Sign out
 
   @local_rating_zone_7
   Scenario: Parcel Select Ground Oversized Package
@@ -253,6 +253,5 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $141.62
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $141.62
-
     Then Sign out
 
