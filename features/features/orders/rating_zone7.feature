@@ -3,9 +3,8 @@ Feature: Local Rating test for zone 7
   Background:
     Given I am signed in to Orders
 
-  @local_rating
   @local_rating7
-  Scenario:  All Services
+  Scenario: First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
@@ -15,6 +14,12 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Service Cost is $3.04
     Then Details: Expect Total Ship Cost is $3.04
 
+
+  @local_rating7
+  Scenario: First-Class Mail Package/Thick Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service First-Class Mail Package/Thick Envelope
     Then Details: Set Weight to 0 lbs 8 oz
@@ -22,6 +27,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $2.60
 
+
+  @local_rating7
+  Scenario: Priority Mail Large/Thick Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Large/Thick Envelope
     Then Details: Set Weight to 33 lbs 1 oz
@@ -29,6 +40,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $64.26
 
+
+  @local_rating7
+  Scenario: Priority Mail Package
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Package
     Then Details: Set Weight to 10 lbs 1 oz
@@ -39,6 +56,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Height to 1
     Then Details: Expect Total Ship Cost is $31.92
 
+
+  @local_rating7
+  Scenario: Priority Mail Large Package
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Weight to 41 lbs 1 oz
@@ -49,6 +72,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Height to 25
     Then Details: Expect Total Ship Cost is $73.93
 
+
+  @local_rating7
+  Scenario: Priority Mail Flat Rate Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Flat Rate Envelope
     Then Details: Set Weight to 31 lbs 1 oz
@@ -56,6 +85,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
 
+
+  @local_rating7
+  Scenario: Priority Mail Padded Flat Rate Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Padded Flat Rate Envelope
     Then Details: Set Weight to 22 lbs 1 oz
@@ -63,6 +98,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
 
+
+  @local_rating7
+  Scenario: Priority Mail Legal Flat Rate Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Legal Flat Rate Envelope
     Then Details: Set Weight to 32 lbs 1 oz
@@ -70,6 +111,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.75
 
+
+  @local_rating7
+  Scenario: Priority Mail Small Flat Rate Box
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Small Flat Rate Box
     Then Details: Set Weight to 54 lbs 1 oz
@@ -77,6 +124,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.10
 
+
+  @local_rating7
+  Scenario: Priority Mail Medium Flat Rate Box
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Medium Flat Rate Box
     Then Details: Set Weight to 45 lbs 1 oz
@@ -84,6 +137,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $11.95
 
+
+  @local_rating7
+  Scenario: Priority Mail Large Flat Rate Box
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Large Flat Rate Box
     Then Details: Set Weight to 30 lbs 1 oz
@@ -91,6 +150,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $16.35
 
+
+  @local_rating7
+  Scenario: Priority Mail Express Package
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Express Package
     Then Details: Set Weight to 22 lbs 1 oz
@@ -98,6 +163,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $122.31
 
+
+  @local_rating7
+  Scenario: Priority Mail Express Flat Rate Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Express Flat Rate Envelope
     Then Details: Set Weight to 18 lbs 1 oz
@@ -105,6 +176,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
 
+
+  @local_rating7
+  Scenario: Priority Mail Express Padded Flat Rate Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Weight to 56 lbs 1 oz
@@ -112,6 +189,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
 
+
+  @local_rating7
+  Scenario: Priority Mail Express Legal Flat Rate Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
     Then Details: Set Weight to 39 lbs 15 oz
@@ -119,6 +202,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.66
 
+
+  @local_rating7
+  Scenario: Media Mail Package/Flat/Thick Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Set Weight to 65 lbs 15 oz
@@ -126,6 +215,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $35.22
 
+
+  @local_rating7
+  Scenario: Parcel Select Ground Package/Flat/Thick Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 37 lbs 15 oz
@@ -133,6 +228,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $68.02
 
+
+  @local_rating7
+  Scenario: Parcel Select Ground Package/Flat/Thick Envelope
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
     Then Details: Set Weight to 58 lbs 15 oz
@@ -140,6 +241,12 @@ Feature: Local Rating test for zone 7
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $91.52
 
+
+  @local_rating7
+  Scenario: Parcel Select Ground Oversized Package
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
     Then Details: Select Service Parcel Select Ground Oversized Package
     Then Details: Set Weight to 47 lbs 15 oz
