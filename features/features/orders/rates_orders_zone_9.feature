@@ -275,5 +275,5 @@ Feature: Local Rating test for Zone 9
     Then Details: Set Weight to 50 lbs 0 oz
     Then Details: Expect Service Cost is $173.87
     Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $176.32
+    Then Details: Expect Total Ship Cost is $173.32
     Then Sign out
