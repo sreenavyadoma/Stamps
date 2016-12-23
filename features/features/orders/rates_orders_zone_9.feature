@@ -35,7 +35,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 9
     Then Details: Select Service Priority Mail Large/Thick Envelope
-    Then Details: Set Weight to   0 lbs 8 oz
+    Then Details: Set Weight to 0 lbs 8 oz
     Then Details: Expect Service Cost is $9.89
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $9.89
