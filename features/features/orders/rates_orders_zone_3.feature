@@ -1,4 +1,4 @@
-Feature: Local Rating test for zone 3
+Feature: January 2017 Rates for Core User in Zone 3
 
   Background:
     Given I am signed in to Orders

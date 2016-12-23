@@ -1,4 +1,4 @@
-Feature: Local Rating test for zone 7
+Feature: January 2017 Rates for Core User in Zone 7
 
   Background:
     Given I am signed in to Orders

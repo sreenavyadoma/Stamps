@@ -1,4 +1,4 @@
-Feature: Local Rating test for zone 5
+Feature: January 2017 Rates for Core User in Zone 5
 
   Background:
     Given I am signed in to Orders
