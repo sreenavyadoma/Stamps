@@ -435,17 +435,18 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
   test_data.each_key { |key_value_array| logger.step("#{key_value_array} : #{test_data[key_value_array]}") }
   logger.step "Details: Set Ship-To to address in Zone #{zone} = \"#{address}\""
   # set Ship-To address
-  test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+  test_data[:ship_to_domestic] = ParameterHelper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_text_area]
+  logger.step "Domestic Ship-To Address: #{test_data[:ship_to_domestic]}"
+  stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_domestic]
   step "Details: Save Total Ship Cost"
 end
 
 Then /^Details: Set Ship-To to Domestic Address (.*)$/ do |address|
   logger.step "Details: Set Ship-To to Domestic Address \"#{address}\""
-  test_data[:ship_to_text_area] = ParameterHelper.format_address(address)
+  test_data[:ship_to_domestic] = ParameterHelper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_text_area]
+  stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_domestic]
   step "Details: Save Total Ship Cost"
 end
 
