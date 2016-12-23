@@ -13,6 +13,7 @@ Feature: Local Rating test for zone 2
     Then Details: Set Weight to 0 lbs 4 oz
     Then Details: Expect Service Cost is $1.61
     Then Details: Expect Total Ship Cost is $1.61
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -26,6 +27,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $3.46
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $3.46
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -39,6 +41,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $5.95
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.95
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -52,6 +55,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $6.52
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.52
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -65,6 +69,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $15.54
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $17.99
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -78,6 +83,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $5.95
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.95
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -91,6 +97,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $6.50
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.50
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -104,6 +111,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $6.25
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.25
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -117,6 +125,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $6.45
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.45
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -130,6 +139,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $12.40
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $12.40
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -143,6 +153,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $17.05
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.05
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -156,6 +167,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $6.52
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.52
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -169,6 +181,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $7.17
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $7.17
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -182,6 +195,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $31.69
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $31.69
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -195,6 +209,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $21.18
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.18
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -208,6 +223,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $21.64
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $21.64
+    Then Sign out
 
 
   @local_rating_zone_2
@@ -221,7 +237,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $21.28
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.28
-
+    Then Sign out
 
   @local_rating_zone_2
   Scenario: Media Mail Package/Flat/Thick Envelope
@@ -234,7 +250,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $3.61
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $3.61
-
+    Then Sign out
 
   @local_rating_zone_2
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
@@ -247,7 +263,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $7.52
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $7.52
-
+    Then Sign out
 
   @local_rating_zone_2
   Scenario: Parcel Select Ground Large Package
@@ -260,7 +276,7 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $14.02
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $14.02
-
+    Then Sign out
 
   @local_rating_zone_2
   Scenario: Parcel Select Ground Oversized Package
@@ -273,5 +289,4 @@ Feature: Local Rating test for zone 2
     Then Details: Expect Service Cost is $63.99
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $66.44
-
     Then Sign out

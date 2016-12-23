@@ -224,6 +224,10 @@ module Stamps
         rand_zone_processing data_for(:zone_5_through_8, {})['zone8'].values
       end
 
+      def rand_zone_9
+        rand_zone_processing data_for(:non_domestic, {})['zone9'].values
+      end
+
       def rand_zone_processing address
         shipping =  address[rand(address.size)]
         shipping['name'] = ParameterHelper.random_name
