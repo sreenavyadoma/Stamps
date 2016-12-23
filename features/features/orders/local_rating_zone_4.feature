@@ -49,9 +49,9 @@ Feature: Local Rating test for zone 4
     Then Details: Set Ship-To to address in Zone 4
     Then Details: Select Service Priority Mail Package
     Then Details: Set Weight to 13 lbs 0 oz
-    Then Details: Expect Service Cost is $19.73
+    Then Details: Expect Service Cost is $15.11
     Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $19.73
+    Then Details: Expect Total Ship Cost is $15.11
 
 
   @local_rating_zone_4
