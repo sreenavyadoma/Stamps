@@ -29,34 +29,34 @@ orders_credentials:
     bvt_shipstation_search:
       usr: stgxz0386tftl1
       pw: pass111
-    local_rating_zone_1_ray:
+    rates_orders_zone_1_ray:
       usr: stgeg44rcam
       pw: pass111
-    local_rating_zone_1:
+    rates_orders_zone_1:
       usr: stgeg44rcam
       pw: pass111
-    local_rating_zone_2:
+    rates_orders_zone_2:
       usr: stgsj7lchcx30q
       pw: pass111
-    local_rating_zone_3:
+    rates_orders_zone_3:
       usr: stgu8mk0v09ifr
       pw: pass111
-    local_rating_zone_4:
+    rates_orders_zone_4:
       usr: stggvxsjrll6l
       pw: pass111
-    local_rating_zone_5:
+    rates_orders_zone_5:
       usr: stgbrn0et2ihdv
       pw: pass111
-    local_rating_zone_6:
+    rates_orders_zone_6:
       usr: stgs72n7y8x
       pw: pass111
-    local_rating_zone_7:
+    rates_orders_zone_7:
       usr: stghuwsrts31n
       pw: pass111
-    local_rating_zone_8:
+    rates_orders_zone_8:
       usr: stgknkh000j
       pw: pass111
-    local_rating_zone_9:
+    rates_orders_zone_9:
       usr: stge373292r
       pw: pass111
     search_orders:
@@ -408,7 +408,7 @@ orders_credentials:
     bvt_shipstation_search:
       usr: cchw3qhqk
       pw: pass111
-    local_rating_zone_3:
+    rates_orders_zone_3:
       usr: xxxxx
       pw: pass111
     search_orders:
@@ -763,7 +763,7 @@ orders_credentials:
     bvt_shipstation_search:
       usr: scj5dsiahz
       pw: pass111
-    local_rating_zone_3:
+    rates_orders_zone_3:
       usr: xxxxx
       pw: pass111
     search_orders:

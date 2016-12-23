@@ -3,7 +3,7 @@ Feature: Local Rating test for zone 8
   Background:
     Given I am signed in to Orders
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -14,7 +14,7 @@ Feature: Local Rating test for zone 8
     Then Details: Expect Service Cost is $3.50
     Then Details: Expect Total Ship Cost is $3.50
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -26,7 +26,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $3.46
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -38,7 +38,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $65.40
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -53,7 +53,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $53.88
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -68,7 +68,7 @@ Feature: Local Rating test for zone 8
     Then Details: Expect Service Cost is $76.91
     Then Details: Expect Total Ship Cost is $76.91
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -80,7 +80,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.95
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -92,7 +92,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.50
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -104,7 +104,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.25
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -116,7 +116,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.45
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -128,7 +128,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $12.40
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -164,7 +164,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.41
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Express Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -176,7 +176,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $276.79
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -188,7 +188,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $21.18
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -200,7 +200,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $21.64
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -212,7 +212,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $21.28
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Media Mail Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -224,7 +224,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $20.93
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -236,7 +236,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $41.35
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -248,7 +248,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $62.29
 
-  @local_rating_zone_8
+  @rates_orders_zone_8
   Scenario: Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default

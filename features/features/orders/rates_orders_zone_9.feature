@@ -3,7 +3,7 @@ Feature: Local Rating test for Zone 9
   Background:
     Given I am signed in to Orders
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -15,7 +15,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $3.62
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -28,7 +28,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $3.35
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -41,7 +41,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $63.49
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -57,7 +57,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $52.31
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Large Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -73,7 +73,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $78.80
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -86,7 +86,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $5.75
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -99,7 +99,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $6.10
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -112,7 +112,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $5.75
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -125,7 +125,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $6.10
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -138,7 +138,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $11.95
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -151,7 +151,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $16.35
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Express Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -164,7 +164,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $274.05
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -177,7 +177,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $20.66
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -190,7 +190,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $20.66
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -203,7 +203,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $20.66
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Media Mail Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -216,7 +216,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $21.72
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -229,7 +229,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $40.14
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -242,7 +242,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Expect Total Ship Cost is $60.47
     Then Sign out
 
-  @local_rating_zone_9
+  @rates_orders_zone_9
   Scenario: Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default

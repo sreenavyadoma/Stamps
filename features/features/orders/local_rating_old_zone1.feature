@@ -6,7 +6,7 @@ Feature: Local Rating Zone 1
   Background:
     Given I am signed in to Orders as ff/qacc/dj_cctest_01/postage1
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -87,7 +87,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -168,7 +168,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Large Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -248,7 +248,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Regional Rate Boxes
     Then Toolbar: Add
     Then Verify Local Rating
@@ -294,7 +294,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -374,7 +374,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -454,7 +454,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -534,7 +534,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
@@ -614,7 +614,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
@@ -694,7 +694,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
@@ -774,7 +774,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Express Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -855,7 +855,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -935,7 +935,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1015,7 +1015,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1095,7 +1095,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1175,7 +1175,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Media Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1255,7 +1255,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Parcel Select Ground Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1335,7 +1335,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1414,7 +1414,7 @@ Feature: Local Rating Zone 1
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Large Package|71|0|1|1|1|USPS Tracking|0.00|
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1494,7 +1494,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1516,7 +1516,7 @@ Feature: Local Rating Zone 1
 
     Then Sign out
 
-  @local_rating_zone1
+  @rates_orders_1
   Scenario: Zone 1 - First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
