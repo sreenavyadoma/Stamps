@@ -191,7 +191,7 @@ Feature: Local Rating test for zone 3
     Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
     Then Details: Set Weight to 14 lbs 0 oz
     Then Details: Expect Service Cost is $21.64
-    Then Details: Set Tracking to USPS Tracking
+    Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $21.64
 
   @local_rating_zone_3
@@ -251,7 +251,7 @@ Feature: Local Rating test for zone 3
     Then Details: Select Service Parcel Select Ground Oversized Package
     Then Details: Set Weight to 40 lbs 0 oz
     Then Details: Expect Service Cost is $67.94
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $67.94
+    Then Details: Set Tracking to Signature Required
+    Then Details: Expect Total Ship Cost is $70.39
 
     Then Sign out
