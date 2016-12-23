@@ -117,9 +117,9 @@ Feature: Local Rating test for Zone 9
     Then Details: Set Ship-To to address in Zone 9
     Then Details: Select Service Priority Mail Small Flat Rate Box
     Then Details: Set Weight to 2 lbs 0 oz
-    Then Details: Expect Service Cost is $6.25
+    Then Details: Expect Service Cost is $6.45
     Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $6.25
+    Then Details: Expect Total Ship Cost is $6.45
     Then Sign out
 
   @rates_orders_zone_9
