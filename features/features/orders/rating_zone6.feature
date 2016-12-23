@@ -47,11 +47,11 @@ Feature: Local Rating test for zone 6
     Then Details: Set Ship-To to address in Zone 6
     Then Details: Select Service Priority Mail Package
     Then Details: Set Weight to 11 lbs 0 oz
-    Then Details: Expect Service Cost is $27.00
-    Then Details: Set Tracking to USPS Tracking
     Then Details: Set Length to 10
     Then Details: Set Width to 10
     Then Details: Set Height to 10
+    Then Details: Expect Service Cost is $27.00
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $27.00
 
 
@@ -63,11 +63,11 @@ Feature: Local Rating test for zone 6
     Then Details: Set Ship-To to address in Zone 6
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Weight to 42 lbs 0 oz
-    Then Details: Expect Service Cost is $64.74
-    Then Details: Set Tracking to USPS Tracking
     Then Details: Set Length to 20
     Then Details: Set Width to 10
     Then Details: Set Height to 30
+    Then Details: Expect Service Cost is $64.74
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $64.74
 
 
@@ -147,6 +147,30 @@ Feature: Local Rating test for zone 6
     Then Details: Expect Service Cost is $17.05
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.05
+
+  @local_rating6
+  Scenario: Priority Mail Regional Rate Box A
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Set Weight to 3 lbs 0 oz
+    Then Details: Expect Service Cost is $9.19
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $9.19
+
+  @local_rating6
+  Scenario: Priority Mail Regional Rate Box B
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Select Service Priority Mail Regional Rate Box B
+    Then Details: Set Weight to 1 lbs 0 oz
+    Then Details: Expect Service Cost is $15.68
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $15.68
 
 
   @local_rating6
@@ -250,6 +274,6 @@ Feature: Local Rating test for zone 6
     Then Details: Set Weight to 48 lbs 0 oz
     Then Details: Expect Service Cost is $123.37
     Then Details: Set Tracking to Signature Required
-    Then Details: Expect Total Ship Cost is $123.37
+    Then Details: Expect Total Ship Cost is $125.82
 
     Then Sign out

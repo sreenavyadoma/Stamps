@@ -252,6 +252,6 @@ Feature: Local Rating test for zone 3
     Then Details: Set Weight to 40 lbs 0 oz
     Then Details: Expect Service Cost is $67.94
     Then Details: Set Tracking to Signature Required
-    Then Details: Expect Total Ship Cost is $67.94
+    Then Details: Expect Total Ship Cost is $70.39
 
     Then Sign out

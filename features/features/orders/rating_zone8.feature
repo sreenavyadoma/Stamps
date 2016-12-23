@@ -10,8 +10,8 @@ Feature: Local Rating test for zone 8
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 8
     Then Details: Select Service First-Class Mail Large Envelope/Flat
-    Then Details: Expect Service Cost is $3.50
     Then Details: Set Weight to 0 lbs 13 oz
+    Then Details: Expect Service Cost is $3.50
     Then Details: Expect Total Ship Cost is $3.50
 
   @local_rating8
@@ -46,11 +46,11 @@ Feature: Local Rating test for zone 8
     Then Details: Set Ship-To to address in Zone 8
     Then Details: Select Service Priority Mail Package
     Then Details: Set Weight to 18 lbs 0 oz
-    Then Details: Expect Service Cost is $53.88
-    Then Details: Set Tracking to USPS Tracking
     Then Details: Set Length to 8
     Then Details: Set Width to 16
     Then Details: Set Height to 9
+    Then Details: Expect Service Cost is $53.88
+    Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $53.88
 
   @local_rating8
@@ -61,11 +61,11 @@ Feature: Local Rating test for zone 8
     Then Details: Set Ship-To to address in Zone 8
     Then Details: Select Service Priority Mail Large Package
     Then Details: Set Weight to 32 lbs 0 oz
-    Then Details: Expect Service Cost is $76.91
     Then Details: Set Tracking to USPS Tracking
     Then Details: Set Length to 30
     Then Details: Set Width to 15
     Then Details: Set Height to 15
+    Then Details: Expect Service Cost is $76.91
     Then Details: Expect Total Ship Cost is $76.91
 
   @local_rating8
@@ -139,6 +139,30 @@ Feature: Local Rating test for zone 8
     Then Details: Expect Service Cost is $17.05
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.05
+
+  @local_rating8
+  Scenario: Priority Mail Regional Rate Box A
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Set Weight to 5 lbs 0 oz
+    Then Details: Expect Service Cost is $10.28
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $10.28
+
+  @local_rating8
+  Scenario: Priority Mail Regional Rate Box B
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Select Service Priority Mail Regional Rate Box B
+    Then Details: Set Weight to 2 lbs 0 oz
+    Then Details: Expect Service Cost is $20.41
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $20.41
 
   @local_rating8
   Scenario: Priority Mail Express Package
@@ -234,6 +258,7 @@ Feature: Local Rating test for zone 8
     Then Details: Set Weight to 7 lbs 0 oz
     Then Details: Expect Service Cost is $173.87
     Then Details: Set Tracking to Signature Required
-    Then Details: Expect Total Ship Cost is $173.87
+    Then Details: Expect Total Ship Cost is $176.32
+
 
     Then Sign out

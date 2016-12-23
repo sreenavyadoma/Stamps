@@ -140,6 +140,31 @@ Feature: Local Rating test for zone 5
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $17.05
 
+
+  @local_rating5
+  Scenario: Priority Mail Regional Rate Box A
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Set Weight to 7 lbs 0 oz
+    Then Details: Expect Service Cost is $8.15
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $8.15
+
+  @local_rating5
+  Scenario: Priority Mail Regional Rate Box B
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Select Service Priority Mail Regional Rate Box B
+    Then Details: Set Weight to 6 lbs 0 oz
+    Then Details: Expect Service Cost is $10.95
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $10.95
+
   @local_rating5
   Scenario: Priority Mail Express Package
     Then Toolbar: Add
@@ -234,6 +259,6 @@ Feature: Local Rating test for zone 5
     Then Details: Set Weight to 56 lbs 0 oz
     Then Details: Expect Service Cost is $106.11
     Then Details: Set Tracking to Signature Required
-    Then Details: Expect Total Ship Cost is $106.11
+    Then Details: Expect Total Ship Cost is $108.56
 
     Then Sign out
