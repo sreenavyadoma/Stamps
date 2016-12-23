@@ -3509,22 +3509,22 @@ non_domestic:
         street_address: PO Box 659
         city: Kosrae, FM 96944-0305
         state: FM
-        zip: 96944-0305
+        zip: 96944
       2:
         street_address: PO Box 735
         city: Majuro
         state: MH
-        zip: 96960-0735
+        zip: 96960
       3:
         street_address: PO Box 1949
         city: Pohnpei
         state: FM
-        zip: 96941-0735
+        zip: 96941
       4:
         street_address: PO Box 8067
         city: Palau
         state: PW
-        zip: 96940-0871
+        zip: 96940
 
 us_states:
   AL:	Alabama
