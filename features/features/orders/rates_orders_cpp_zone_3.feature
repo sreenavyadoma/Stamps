@@ -1,4 +1,4 @@
-Feature: January 2017 Rates for NSA User in Zone 3
+Feature: January 2017 Rates for CPP User in Zone 3
 
   Background:
     Given I am signed in to Orders

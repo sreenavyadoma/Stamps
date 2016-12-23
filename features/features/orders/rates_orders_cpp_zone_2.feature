@@ -1,4 +1,4 @@
-Feature: January 2017 Rates for NSA User in Zone 2
+Feature: January 2017 Rates for CPP User in Zone 2
 
   Background:
     Given I am signed in to Orders

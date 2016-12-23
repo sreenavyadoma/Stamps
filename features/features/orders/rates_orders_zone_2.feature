@@ -15,7 +15,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $1.61
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
@@ -28,7 +27,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $3.46
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Large/Thick Envelope
@@ -43,7 +41,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $5.95
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: Priority Mail Package
     Then Toolbar: Add
@@ -56,7 +53,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.52
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Large Package
@@ -71,7 +67,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $17.99
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: Priority Mail Flat Rate Envelope
     Then Toolbar: Add
@@ -84,7 +79,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $5.95
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Padded Flat Rate Envelope
@@ -99,7 +93,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $6.50
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
@@ -112,7 +105,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.25
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Small Flat Rate Box
@@ -127,7 +119,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $6.45
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
@@ -140,7 +131,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $12.40
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Large Flat Rate Box
@@ -155,7 +145,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $17.05
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: Priority Mail Regional Rate Box A
     Then Toolbar: Add
@@ -168,7 +157,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $6.52
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Regional Rate Box B
@@ -183,7 +171,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $7.17
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: Priority Mail Express Package
     Then Toolbar: Add
@@ -196,7 +183,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to USPS Tracking
     Then Details: Expect Total Ship Cost is $31.69
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Express Flat Rate Envelope
@@ -211,7 +197,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Expect Total Ship Cost is $21.18
     Then Sign out
 
-
   @rates_orders_zone_2
   Scenario: Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
@@ -224,7 +209,6 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Details: Set Tracking to Signature Required
     Then Details: Expect Total Ship Cost is $21.64
     Then Sign out
-
 
   @rates_orders_zone_2
   Scenario: Priority Mail Express Legal Flat Rate Envelope
