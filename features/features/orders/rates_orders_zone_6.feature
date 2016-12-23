@@ -153,7 +153,7 @@ Feature: January 2017 Rates for Core User in Zone 6
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Set Ship-To to address in Zone 6
     Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Weight to 3 lbs 0 oz
     Then Details: Expect Service Cost is $9.19
@@ -165,7 +165,7 @@ Feature: January 2017 Rates for Core User in Zone 6
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Set Ship-To to address in Zone 6
     Then Details: Select Service Priority Mail Regional Rate Box B
     Then Details: Set Weight to 1 lbs 0 oz
     Then Details: Expect Service Cost is $15.68
