@@ -102,43 +102,48 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_1) do |t|
+  t.profile = 'rates_orders_sas_zone_1'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_2) do |t|
+  t.profile = 'rates_orders_sas_zone_2'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_3) do |t|
+  t.profile = 'rates_orders_sas_zone_3'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_4) do |t|
+  t.profile = 'rates_orders_sas_zone_4'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_5) do |t|
+  t.profile = 'rates_orders_sas_zone_5'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_6) do |t|
+  t.profile = 'rates_orders_sas_zone_6'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_7) do |t|
+  t.profile = 'rates_orders_sas_zone_7'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_8) do |t|
+  t.profile = 'rates_orders_sas_zone_8'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_orders_sas_zone_9) do |t|
+  t.profile = 'rates_orders_sas_zone_9'
   t.cucumber_opts = "-p cuke_reports"
 end
 
