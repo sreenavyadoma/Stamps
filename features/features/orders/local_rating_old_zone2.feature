@@ -5,7 +5,7 @@ Feature: Local Rating Zone 2
   Background:
     Given I am signed in to Orders as ff/qasc/dj_cctest-01/postage1
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario:  Zone 2 - Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -85,7 +85,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -165,7 +165,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Large Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -245,7 +245,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Regional Rate Boxes
     Then Toolbar: Add
     Then Verify Local Rating
@@ -292,7 +292,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Express Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -373,7 +373,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Parcel Select Ground Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -453,7 +453,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -533,7 +533,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -613,7 +613,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -693,7 +693,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -773,7 +773,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -854,7 +854,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
@@ -933,7 +933,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1013,7 +1013,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1093,7 +1093,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1173,7 +1173,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1253,7 +1253,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1334,7 +1334,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1413,7 +1413,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - Media Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1493,7 +1493,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Verify Local Rating
@@ -1515,7 +1515,7 @@ Feature: Local Rating Zone 2
 
     Then Sign out
 
-  @local_rating_zone2
+  @rates_orders_2
   Scenario: Zone 2 - First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
