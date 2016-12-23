@@ -40,6 +40,16 @@ rates_orders_zone_7: --tags @rates_orders_zone_7 --guess VERBOSE=false JENKINS=t
 rates_orders_zone_8: --tags @rates_orders_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_8
 rates_orders_zone_9: --tags @rates_orders_zone_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_9
 
+rates_orders_nsa_zone_1: --tags @rates_orders_nsa_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_1
+rates_orders_nsa_zone_2: --tags @rates_orders_nsa_zone_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_2
+rates_orders_nsa_zone_3: --tags @rates_orders_nsa_zone_3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_3
+rates_orders_nsa_zone_4: --tags @rates_orders_nsa_zone_4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_4
+rates_orders_nsa_zone_5: --tags @rates_orders_nsa_zone_5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_5
+rates_orders_nsa_zone_6: --tags @rates_orders_nsa_zone_6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_6
+rates_orders_nsa_zone_7: --tags @rates_orders_nsa_zone_7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_7
+rates_orders_nsa_zone_8: --tags @rates_orders_nsa_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_8
+rates_orders_nsa_zone_9: --tags @rates_orders_nsa_zone_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_nsa_zone_9
+
 rates_orders_zone_1_sas: --tags @rates_orders_zone_1_sas --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_1_sas
 
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=search_orders

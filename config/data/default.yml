@@ -59,6 +59,33 @@ orders_credentials:
     rates_orders_zone_9:
       usr: stge373292r
       pw: pass111
+    rates_orders_nsa_zone_1:
+      usr: stgom0dqgzppy
+      pw: pass111
+    rates_orders_nsa_zone_2:
+      usr: stggm2z3od6o5t
+      pw: pass111
+    rates_orders_nsa_zone_3:
+      usr: stgo162k9hy
+      pw: pass111
+    rates_orders_nsa_zone_4:
+      usr: stgvoc0kcnt6rw
+      pw: pass111
+    rates_orders_nsa_zone_5:
+      usr: stgnhscvwnf
+      pw: pass111
+    rates_orders_nsa_zone_6:
+      usr: stgqklz1vjekq6
+      pw: pass111
+    rates_orders_nsa_zone_7:
+      usr: stgih31vmh
+      pw: pass111
+    rates_orders_nsa_zone_8:
+      usr: stge7x4xybj
+      pw: pass111
+    rates_orders_nsa_zone_9:
+      usr: stghwb2ojyi
+      pw: pass111
     search_orders:
       usr: stgi3eicvj8d7b
       pw: pass111
