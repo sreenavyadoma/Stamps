@@ -151,6 +151,31 @@ Feature: Local Rating test for zone 7
     Then Details: Expect Total Ship Cost is $16.35
     Then Sign out
 
+  @local_rating_7
+  Scenario: Priority Mail Regional Rate Box A
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 7
+    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Set Weight to 10 lbs 1 oz
+    Then Details: Expect Service Cost is $9.99
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $9.99
+
+
+  @local_rating_7
+  Scenario: Priority Mail Regional Rate Box B
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To Country to United States
+    Then Details: Set Ship-To to address in Zone 7
+    Then Details: Select Service Priority Mail Regional Rate Box B
+    Then Details: Set Weight to 30 lbs 1 oz
+    Then Details: Expect Service Cost is $17.93
+    Then Details: Set Tracking to USPS Tracking
+    Then Details: Expect Total Ship Cost is $17.93
+
   @local_rating_zone_7
   Scenario: Priority Mail Express Package
     Then Toolbar: Add

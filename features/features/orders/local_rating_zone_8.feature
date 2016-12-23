@@ -145,7 +145,7 @@ Feature: Local Rating test for zone 8
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Set Ship-To to address in Zone 8
     Then Details: Select Service Priority Mail Regional Rate Box A
     Then Details: Set Weight to 5 lbs 0 oz
     Then Details: Expect Service Cost is $10.28
@@ -157,7 +157,7 @@ Feature: Local Rating test for zone 8
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 3
+    Then Details: Set Ship-To to address in Zone 8
     Then Details: Select Service Priority Mail Regional Rate Box B
     Then Details: Set Weight to 2 lbs 0 oz
     Then Details: Expect Service Cost is $20.41
