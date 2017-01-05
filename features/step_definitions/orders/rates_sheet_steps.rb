@@ -150,26 +150,26 @@ Then /^Rates: Test PME Comm Base$/ do
         row[@rates_test_sheet_columns[:zone]] = test_data[:zone]
 
         # Set weight
-        #step "Details: Set Pounds to 0"
-        #step "Details: Set Ounces to 0"
+        step "Details: Set Pounds to 0"
+        step "Details: Set Ounces to 0"
         weight_lb = row[@rates_test_sheet_columns[:weight_lb]]
         logger.step "Column weight_lb: #{weight_lb}"
         if param_helper.is_whole_number?(weight_lb)
           weight_lb = weight_lb.to_int
           row[@rates_test_sheet_columns[:weight]] = "#{weight_lb} lb."
-          #step "Details: Set Pounds to #{weight_lb}"
+          step "Details: Set Pounds to #{weight_lb}"
         else
           weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_int
           logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
           row[@rates_test_sheet_columns[:weight]] = "#{weight_oz} oz."
-          #step "Details: Set Ounces to #{weight_oz}"
+          step "Details: Set Ounces to #{weight_oz}"
         end
 
         # Set Service
         service = row[@rates_test_sheet_columns[:service]]
         # record execution time as time service was selected.
         row[@rates_test_sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
-        #step "Details: Select Service #{service}"
+        step "Details: Select Service #{service}"
 
         # spreadsheet price
         zone_column.should_not be nil
@@ -179,7 +179,7 @@ Then /^Rates: Test PME Comm Base$/ do
         expectation = row[@rates_test_sheet_columns[:expectation]]
 
         # get total cost actual value from UI
-        #step "Save Shipping Costs Data"
+        step "Save Shipping Costs Data"
         row[@rates_test_sheet_columns[:total_ship_cost]] = test_data[:total_ship_cost]
         if row[@rates_test_sheet_columns[:expectation]] == row[@rates_test_sheet_columns[:total_ship_cost]]
           row[@rates_test_sheet_columns[:status]] = "Passed"
