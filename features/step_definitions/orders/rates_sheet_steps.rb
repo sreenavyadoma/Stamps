@@ -3,7 +3,7 @@ Then /^Rates: Load PME Comm Base Test Sheet$/ do
   logger.step "Rates: Load PME Comm Base Test Sheet"
   Spreadsheet.client_encoding = 'UTF-8'
 
-  @xls_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{data_for(:rates_test, {})['rates_sheet_pme_comm_base_zone_1']}"
+  @xls_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{data_for(:rates_test, {})['rates_pme_comm_base']}"
   logger.step "Rate File: #{@xls_loc}"
   File.exist?(@xls_loc).should be true
 
@@ -167,9 +167,11 @@ Then /^Rates: Test PME Comm Base$/ do
         row[@rates_test_sheet_columns[:ship_from]] = test_data[:ship_from]
         row[@rates_test_sheet_columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
 
-        # Set weight
+        # Set weight to 0
         step "Details: Set Pounds to 0"
         step "Details: Set Ounces to 0"
+
+        # Set weight per spreadsheet
         weight_lb = row[@rates_test_sheet_columns[:weight_lb]]
         logger.step "Column weight_lb: #{weight_lb}"
         if param_helper.is_whole_number?(weight_lb)
@@ -214,7 +216,7 @@ Then /^Rates: Test PME Comm Base$/ do
     end
   end
 
-  @result_sheet_loc = "#{data_for(:rates_test, {})['results_dir']}\\#{"rates_sheet_pme_comm_base_zone_1"}_zone1_#{Time.now.strftime("%Y.%m.%d.%H.%M")}_results.xls"
+  @result_sheet_loc = "#{data_for(:rates_test, {})['results_dir']}\\rates_sheet_pme_comm_base_zone_#{test_data[:zone]}_zone1_#{Time.now.strftime("%Y.%m.%d.%H.%M")}_results.xls"
   @rates_xls.write @result_sheet_loc
 
   logger.step "Result Sheet Location: #{@result_sheet_loc}"
