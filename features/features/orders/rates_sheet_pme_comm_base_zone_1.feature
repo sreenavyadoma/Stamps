@@ -3,7 +3,7 @@ Feature: Rates for Core User in Zone 1
   Background:
     Given Rates: Load PME Comm Base Test Sheet
 
-  @rates_pme_comm_base
+  @rates_sheet_pme_comm_base_zone_1
   Scenario: PME Comm Base Zone 1
     And I am signed in to Orders
     Then Toolbar: Add

@@ -4,7 +4,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 
 #stgdmnmrv29j04
 rob_cc: --tags @bvt_international_shipping WEB_APP=orders TEST=bvt_international_shipping JENKINS=true URL=cc  PW=pass111 USR=jenkins --guess VERBOSE=true HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
-rob_stg: --tags @rates_pme_comm_base WEB_APP=orders TEST=rates_pme_comm_base JENKINS=true URL=stg  PW=pass111 USR=jenkins --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
+rob_stg: --tags @rates_sheet_pme_comm_base_zone_1 WEB_APP=orders TEST=rates_sheet_pme_comm_base_zone_1 JENKINS=true URL=stg  PW=pass111 USR=jenkins --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_orders_sc: --tags @mail_bvt_envelopes WEB_APP=orders TEST=mail_bvt_envelopes JENKINS=true URL=sc PW=pass111 USR=jenkins --guess VERBOSE=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium PW=pass111 USR=scoime8mc  #yh95ws85j c2jinmzmu64 store parcel_select
 
 rob_mail_cc: --tags @mail_bvt_envelopes TEST=mail_bvt_envelopes WEB_APP=mail URL=cc PW=pass111 USR=cce5nk6k6068z --guess VERBOSE=true JENKINS=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium
@@ -30,7 +30,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=fa
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 
 
-rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pme_comm_base
+rates_sheet_pme_comm_base_zone_1: --tags @rates_sheet_pme_comm_base_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_sheet_pme_comm_base_zone_1
 
 rates_orders_zone_1: --tags @rates_orders_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_1
 rates_orders_zone_2: --tags @rates_orders_zone_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_2

@@ -3,7 +3,7 @@ Then /^Rates: Load PME Comm Base Test Sheet$/ do
   logger.step "Rates: Load PME Comm Base Test Sheet"
   Spreadsheet.client_encoding = 'UTF-8'
 
-  @xls_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{data_for(:rates_test, {})['rates_pme_comm_base']}"
+  @xls_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{data_for(:rates_test, {})['rates_sheet_pme_comm_base_zone_1']}"
   logger.step "Rate File: #{@xls_loc}"
   File.exist?(@xls_loc).should be true
 
@@ -196,7 +196,7 @@ Then /^Rates: Test PME Comm Base$/ do
     end
   end
 
-  @result_sheet_loc = "#{data_for(:rates_test, {})['results_dir']}\\#{"rates_pme_comm_base"}_zone1_#{Time.now.strftime("%Y.%m.%d.%H.%M")}_results.xls"
+  @result_sheet_loc = "#{data_for(:rates_test, {})['results_dir']}\\#{"rates_sheet_pme_comm_base_zone_1"}_zone1_#{Time.now.strftime("%Y.%m.%d.%H.%M")}_results.xls"
   @rates_xls.write @result_sheet_loc
 
   logger.step "Result Sheet Location: #{@result_sheet_loc}"
