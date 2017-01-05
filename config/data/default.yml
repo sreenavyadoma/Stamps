@@ -1,7 +1,7 @@
 
 rates_test:
   rates_file: rates_file.xls
-  rates_sheet_pme_comm_base_zone_1: rates_sheet_pme_comm_base_zone_1.xls
+  rates_sheet_pme_comm_base_zone_1: rates_pme_comm_base.xls
   test_dir: \\jenkins01\Hudson\test_data\rates\tests
   results_dir: \\jenkins01\Hudson\test_data\rates\results
 
