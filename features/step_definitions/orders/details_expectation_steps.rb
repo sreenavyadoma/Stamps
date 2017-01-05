@@ -394,9 +394,9 @@ Then /^Details: Expect Pounds? is (.*)$/ do |expectation|
   logger.step "Details: Expect Pounds is #{expectation}"
   expectation = expectation.to_f
   10.times do
-    break if stamps.orders.order_details.weight.lbs.text_box.text.to_f == expectation
+    break if stamps.orders.order_details.weight.lb.text_box.text.to_f == expectation
   end
-  stamps.orders.order_details.weight.lbs.text_box.text.to_f.should eql expectation
+  stamps.orders.order_details.weight.lb.text_box.text.to_f.should eql expectation
 end
 
 Then /^Details: Expect Ounces? is (.*)$/ do |expectation|
@@ -508,7 +508,7 @@ end
 
 And /^Details: Expect Pounds Textbox is enabled$/ do
   logger.step "Details: Expect Pounds Textbox is enabled"
-  stamps.orders.order_details.weight.lbs.element.visible?.should be true
+  stamps.orders.order_details.weight.lb.element.visible?.should be true
 end
 
 And /^Details: Expect Ounces Textbox is enabled$/ do

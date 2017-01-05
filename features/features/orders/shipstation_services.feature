@@ -36,17 +36,17 @@
     Then Details: Select Service Priority Mail Regional Rate Box B
     Then Details: Expect Service is Priority Mail Regional Rate Box B
 
-    Then Details: Select Service Priority Mail Express Package
-    Then Details: Expect Service is Priority Mail Express Package
+    Then Details: Select Service PME Package
+    Then Details: Expect Service is PME Package
 
-    Then Details: Select Service Priority Mail Express Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Flat Rate Envelope
+    Then Details: Select Service PME Flat Rate Envelope
+    Then Details: Expect Service is PME Flat Rate Envelope
 
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
+    Then Details: Expect Service is PME Padded Flat Rate Envelope
 
-    Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Legal Flat Rate Envelope
+    Then Details: Select Service PME Legal Flat Rate Envelope
+    Then Details: Expect Service is PME Legal Flat Rate Envelope
 
     Then Sign out
 

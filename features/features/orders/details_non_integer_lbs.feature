@@ -3,7 +3,7 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
   Background:
     Given I am signed in to Orders
 
-  @details_non_integer_lbs
+  @details_non_integer_lb
   Scenario: User edits an order
 
     Then Toolbar: Add

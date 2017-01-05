@@ -7,12 +7,12 @@ Then /^Verify Local Rating$/ do |table|
 
   parameter_array.each_with_index do |element, index|
     logger.step "  --------------------------------------------------------------------------- "
-    logger.step "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lbs"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
+    logger.step "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lb"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
     logger.step "  --------------------------------------------------------------------------- "
     step "Details: Set Ship-From to #{element["ship_from"]}"
     step "Details: Set Ship-To to Domestic Address #{element["ship_to"]}"
     step "Details: Set Ounces to #{element["weight_oz"]}"
-    step "Details: Set Pounds to #{element["weight_lbs"]}"
+    step "Details: Set Pounds to #{element["weight_lb"]}"
     step "Details: Set Length to #{element["length"]}"
     step "Details: Set Height to #{element["height"]}"
     step "Details: Set Width to #{element["width"]}"
@@ -50,7 +50,7 @@ Then /^Verify Local Rating$/ do |table|
     actual = stamps.orders.order_details.footer.total_ship_cost
     actual.should eql expected_total_amount
 
-    "".should eql "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lbs"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |" if actual != expected_total_amount
+    "".should eql "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lb"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |" if actual != expected_total_amount
   end
 
 end

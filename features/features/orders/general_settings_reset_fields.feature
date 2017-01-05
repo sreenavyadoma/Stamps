@@ -10,13 +10,13 @@ Feature: Reset Fields
     Then Open Settings Modal
     Then Settings:  Open Reset Fields Modal
 
-    Then Reset Fields:  Set Weight to 1 lbs 1 oz
+    Then Reset Fields:  Set Weight to 1 lb 1 oz
     Then Pause for 3 seconds
     Then Reset Fields:  Close
     Then Settings:  Save
     Then Open Settings Modal
     Then Settings:  Open Reset Fields Modal
-    Then Reset Fields:  Expect Weight lbs equals 1
+    Then Reset Fields:  Expect Weight lb equals 1
     Then Reset Fields:  Expect Weight oz equals 1
 
     Then Reset Fields:  Set Dimensions to length 1, width 1, height 1

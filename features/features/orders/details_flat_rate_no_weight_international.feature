@@ -108,8 +108,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Express International Flat Rate Envelope
-    Then Details: Select Service Priority Mail Express International Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express International Flat Rate Envelope
+    Then Details: Select Service PME International Flat Rate Envelope
+    Then Details: Expect Service is PME International Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -122,8 +122,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Express International Padded Flat Rate Envelope
-    Then Details: Select Service Priority Mail Express International Padded Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express International Padded Flat Rate Envelope
+    Then Details: Select Service PME International Padded Flat Rate Envelope
+    Then Details: Expect Service is PME International Padded Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -136,8 +136,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Express International Legal Flat Rate Envelope
-    Then Details: Select Service Priority Mail Express International Legal Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express International Legal Flat Rate Envelope
+    Then Details: Select Service PME International Legal Flat Rate Envelope
+    Then Details: Expect Service is PME International Legal Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement

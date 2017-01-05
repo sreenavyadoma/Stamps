@@ -59,14 +59,14 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 11
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     # Media Mail
@@ -148,14 +148,14 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 11
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     # Media Mail
@@ -233,14 +233,14 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 11
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     # Media Mail

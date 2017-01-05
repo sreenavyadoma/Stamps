@@ -213,7 +213,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
@@ -224,7 +224,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Express Flat Rate Envelope
+    Then Details: Select Service PME Flat Rate Envelope
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
@@ -235,7 +235,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
@@ -246,7 +246,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
+    Then Details: Select Service PME Legal Flat Rate Envelope
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
@@ -257,7 +257,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     # Media Mail

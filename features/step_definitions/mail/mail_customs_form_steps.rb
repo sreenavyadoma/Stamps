@@ -40,14 +40,14 @@ Then /^Mail Customs: Set Invoice Number to \"(.+)\"$/ do |value|
   @customs_form.invoice.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Mail Customs: Add Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lbs, oz, origin_country, tariff|
-  logger.step "Customs: Add Item - Description #{description}, Qty #{qty}, Value #{value}, Weight\(lbs\) #{lbs}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+Then /^Mail Customs: Add Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lb, oz, origin_country, tariff|
+  logger.step "Customs: Add Item - Description #{description}, Qty #{qty}, Value #{value}, Weight\(lb\) #{lb}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
 
   @add_item_form = @customs_form.add_item
   @add_item_form.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
   @add_item_form.qty.set qty
   @add_item_form.value.set value
-  @add_item_form.lbs.set lbs
+  @add_item_form.lb.set lb
   @add_item_form.oz.set oz
   @add_item_form.origin.select origin_country
   @add_item_form.hs_tariff.set tariff

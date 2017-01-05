@@ -5,10 +5,10 @@ Then /^Mail Stamps: Select Calculate Mail Amount/ do
   stamps.mail.netstamps.calculate_postage_amount
 end
 
-Then /^Mail Stamps: Set Weight (\d+) lbs (\d+) oz$/ do |lbs, oz|
-  logger.step "Set Stamps Weight #{lbs} lbs #{oz} oz"
+Then /^Mail Stamps: Set Weight (\d+) lb (\d+) oz$/ do |lb, oz|
+  logger.step "Set Stamps Weight #{lb} lb #{oz} oz"
   weight = stamps.mail.netstamps.calculate_postage_amount.weight
-  weight.lbs.set lbs
+  weight.lb.set lb
   weight.oz.set oz
 end
 

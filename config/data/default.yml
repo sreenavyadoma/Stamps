@@ -1,4 +1,10 @@
 
+rates_test:
+  rates_file: rates_file.xls
+  rates_pme_comm_base: rates_pme_comm_base.xls
+  test_dir: \\jenkins01\Hudson\test_data\rates\tests
+  results_dir: \\jenkins01\Hudson\test_data\rates\results
+
 webreg:
   dev_usr_dir: C:\watir-webdriver
   jenkins_usr_dir: \\jenkins01\Hudson\jenkins\webreg
@@ -20,6 +26,9 @@ url_prefix:
 
 orders_credentials:
   stg:
+    rates_pme_comm_base:
+      usr: stgi0jkgbdy3xs
+      pw: pass111
     bvt_shipstation_import_csv:
       usr: stgp6389urwj4
       pw: pass111

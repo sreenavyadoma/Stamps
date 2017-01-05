@@ -160,7 +160,7 @@ module Stamps
         AddItemModal::Value.new param
       end
 
-      def lbs
+      def lb
         AddItemModal::Lbs.new param
       end
 
@@ -563,7 +563,7 @@ module Stamps
         end
 
         def text_box
-          TextboxElement.new ((browser.text_fields name: "lbs")[@index-1]), "data-errorqtip"
+          TextboxElement.new ((browser.text_fields name: "lb")[@index-1]), "data-errorqtip"
         end
 
         def set value
@@ -667,7 +667,7 @@ module Stamps
         UnitPrice.new param, @index
       end
 
-      def lbs
+      def lb
         UnitWeightLbs.new param, @index
       end
 

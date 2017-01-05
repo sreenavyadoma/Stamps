@@ -42,8 +42,8 @@ Feature: Auto-Calculate Customs Form Weight
 
     Then Customs: Close Modal
 
-    Then Grid: Expect Weight is 0 lbs. 4 oz.
-    Then Grid: Expect Weight(lbs) is 0
+    Then Grid: Expect Weight is 0 lb. 4 oz.
+    Then Grid: Expect Weight(lb) is 0
     Then Grid: Expect Weight(oz) is 4
 
     Then Sign out

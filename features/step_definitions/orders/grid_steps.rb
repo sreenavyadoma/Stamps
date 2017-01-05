@@ -279,9 +279,9 @@ end
 Then /^Grid: Expect Pounds is (\d+)$/ do |expectation|
   logger.step "Grid: Expect Pounds is #{expectation}"
   20.times do
-    break if stamps.orders.grid.weight.lbs(test_data[:order_id]).eql? expectation
+    break if stamps.orders.grid.weight.lb(test_data[:order_id]).eql? expectation
   end
-  stamps.orders.grid.weight.lbs(test_data[:order_id]).should eql expectation
+  stamps.orders.grid.weight.lb(test_data[:order_id]).should eql expectation
 end
 
 Then /^Grid: Expect Ounces is (\d+)$/ do |expectation|
@@ -292,8 +292,8 @@ Then /^Grid: Expect Ounces is (\d+)$/ do |expectation|
   stamps.orders.grid.weight.oz(test_data[:order_id]).should eql expectation
 end
 
-Then /^Grid: Expect Weight is (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
-  expectation = "#{pounds} lbs. #{ounces} oz."
+Then /^Grid: Expect Weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
+  expectation = "#{pounds} lb. #{ounces} oz."
   logger.step "Grid: Expect Weight is #{expectation}"
   10.times do
     break if stamps.orders.grid.weight.data(test_data[:order_id]).eql? expectation
@@ -301,12 +301,12 @@ Then /^Grid: Expect Weight is (\d+) lbs. (\d+) oz.$/ do |pounds, ounces|
   stamps.orders.grid.weight.data(test_data[:order_id]).should eql expectation
 end
 
-Then /^Grid: Expect Weight\(lbs\) is (.*)$/ do |expectation|
-  logger.step "Grid: Expect Weight(lbs) is #{expectation}"
+Then /^Grid: Expect Weight\(lb\) is (.*)$/ do |expectation|
+  logger.step "Grid: Expect Weight(lb) is #{expectation}"
   10.times do
-    break if stamps.orders.grid.weight.lbs(test_data[:order_id]).eql? expectation
+    break if stamps.orders.grid.weight.lb(test_data[:order_id]).eql? expectation
   end
-  stamps.orders.grid.weight.lbs(test_data[:order_id]).should eql expectation
+  stamps.orders.grid.weight.lb(test_data[:order_id]).should eql expectation
 end
 
 Then /^Grid: Expect Weight\(oz\) is (.*)$/ do |expectation|

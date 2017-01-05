@@ -12,7 +12,7 @@ Feature:  Update International Orders to ShipStation
     Then Details: Set Ship-To to International Address
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
       | Customer Name | Customer Company | Street Address 1  | Street Address 2 | City   | Province | PostalCode  | France  | 415-411-1111  | rtest@stamps.com  |
-    Then Details: Set Weight to 2 lbs 2 oz
+    Then Details: Set Weight to 2 lb 2 oz
     Then Details: Select Service Priority Mail International Package
     Then Details: Set Insure-For to $100.25
     Then Details: Set Reference Number to Reference #123
@@ -102,7 +102,7 @@ Feature:  Update International Orders to ShipStation
     Then Grid: Expect Item SKU is ID 1
     Then Grid: Expect Item Name is Description 1
     Then Grid: Expect Service is Priority Mail International
-    Then Grid: Expect Weight is 2 lbs. 2 oz.
+    Then Grid: Expect Weight is 2 lb. 2 oz.
     Then Grid: Expect Insured Value is $100.25
     Then Grid: Expect Order Status is Awaiting Shipment
 

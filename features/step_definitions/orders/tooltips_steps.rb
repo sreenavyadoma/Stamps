@@ -86,7 +86,7 @@ end
 Then /^Customs: Expect Pounds Tooltip Error is (.*)$/ do |expectation|
   logger.step "Customs: Expect Pounds Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).lbs.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).lb.text_box.data_error_qtip
   logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   data_error_qtip.should include expectation
 end
@@ -142,8 +142,8 @@ Then /^Details: Expect Domestic Email data error tooltip is \"(.*)\"$/ do |expec
 end
 
 Then /^Details: Expect Weight Lbs data error tooltip is \"(.*)\"$/ do |expectation|
-  logger.step "Details: Expect Domestic  Weight lbs data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.weight.lbs.text_box
+  logger.step "Details: Expect Domestic  Weight lb data error tooltip is #{expectation}"
+  text_box = stamps.orders.order_details.weight.lb.text_box
   20.times do
     text_box.scroll_into_view
     text_box.set "1"

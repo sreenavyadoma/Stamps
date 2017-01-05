@@ -100,7 +100,7 @@ Feature:  Update Order to ShipStation
 
     Then Grid: Expect Service is Priority Mail
 
-    Then Grid: Expect Weight is 1 lbs. 1 oz.
+    Then Grid: Expect Weight is 1 lb. 1 oz.
 
     Then Grid: Expect Tracking Service is Signature Required
 

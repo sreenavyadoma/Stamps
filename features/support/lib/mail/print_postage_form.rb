@@ -213,14 +213,14 @@ module Stamps
     end
 
     class Weight < Browser::Modal
-      attr_reader :auto_weigh, :weigh_button, :lbs, :oz
+      attr_reader :auto_weigh, :weigh_button, :lb, :oz
 
       def initialize param
         super param
         @auto_weigh ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-autoweightcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
         @weigh_button = BrowserElement.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
         @oz ||= Ounces.new param
-        @lbs ||= Pounds.new param
+        @lb ||= Pounds.new param
       end
     end
 

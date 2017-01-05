@@ -523,8 +523,8 @@ module Stamps
           grid_text_by_id :weight, order_id
         end
 
-        def lbs order_id
-          data(order_id).scan(/\d+ lbs./).first.scan(/\d/).first
+        def lb order_id
+          data(order_id).scan(/\d+ lb./).first.scan(/\d/).first
         end
 
         def oz order_id

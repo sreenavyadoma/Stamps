@@ -14,7 +14,7 @@ Feature:  Basic Search
     Then Details: Set Email to random
     Then Details: Set Phone to random
     Then Details: Select Service Priority Mail Package
-    Then Details: Set Weight to 1 lbs 1 oz
+    Then Details: Set Weight to 1 lb 1 oz
 
     Then Grid: Uncheck Saved Order ID
 

@@ -152,7 +152,7 @@ end
 
 Then /^Mail: Set Pounds to (.*)/ do |pounds|
   logger.step "Envelopes: Set Print Mail Pounds to: \n #{pounds}"
-  stamps.mail.weight.lbs.set pounds
+  stamps.mail.weight.lb.set pounds
 end
 
 Then /^Mail: Expect Print Media Tooltip is (.*)$/ do |selection|
@@ -254,7 +254,7 @@ end
 
 Then /^Mail: Expect Ounces Field is present$/ do
   logger.step "Mail: Expect Ounces Field is present"
-  stamps.mail.weight.lbs.text_box.present?.should be true
+  stamps.mail.weight.lb.text_box.present?.should be true
 end
 
 Then /^Mail: Expect Weigh Button is present$/ do

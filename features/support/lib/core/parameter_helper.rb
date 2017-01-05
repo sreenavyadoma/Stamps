@@ -3,6 +3,10 @@ module Stamps
     include DataMagic
     class << self
 
+      def is_whole_number?(variable)
+        variable % 1 == 0
+      end
+
       def remove_dollar_sign str
         strip str, '$', ''
       end

@@ -32,7 +32,7 @@ Feature: Stamps BVT
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default
     Then Mail Stamps: Set Ship-To country to United States
-    Then Mail Stamps: Set Weight 0 lbs 1 oz
+    Then Mail Stamps: Set Weight 0 lb 1 oz
     Then Mail Stamps: Select Calculate Mail Service First-Class Mail Letter
     Then Mail: Open Print Modal
     Then Mail Print Modal: Select Printer "factory"

@@ -1,0 +1,9 @@
+
+ShipStation Post Deploy Testing Completed NO issues.
+
+Verified, post deploy testing tasks passed.
+Verified, connected to Etsy and Shopify store successfully.
+Verified with new registered user (user12092016)and existing user (QASasCon-02) added and printed orders.
+Verified bulk updates for multiple transactions was successfully added to shipments.
+Verified moving orders can be set to Shipped and Canceled filters successfully.
+Verified users able to successfully import CSV files.

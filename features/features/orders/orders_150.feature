@@ -153,7 +153,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -162,7 +162,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Select Service Priority Mail Express Flat Rate Envelope
+    * Details: Select Service PME Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -171,7 +171,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -180,7 +180,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
+    * Details: Select Service PME Legal Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -189,7 +189,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     # Media Mail
@@ -427,7 +427,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -436,7 +436,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Select Service Priority Mail Express Flat Rate Envelope
+    * Details: Select Service PME Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -445,7 +445,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -454,7 +454,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
+    * Details: Select Service PME Legal Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -463,7 +463,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     # Media Mail
@@ -700,7 +700,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -709,7 +709,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Select Service Priority Mail Express Flat Rate Envelope
+    * Details: Select Service PME Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -718,7 +718,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -727,7 +727,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
+    * Details: Select Service PME Legal Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -736,7 +736,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     # Media Mail
@@ -974,7 +974,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -983,7 +983,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Select Service Priority Mail Express Flat Rate Envelope
+    * Details: Select Service PME Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -992,7 +992,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -1001,7 +1001,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
+    * Details: Select Service PME Legal Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1010,7 +1010,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     # Media Mail
@@ -1248,7 +1248,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -1257,7 +1257,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Select Service Priority Mail Express Flat Rate Envelope
+    * Details: Select Service PME Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1266,7 +1266,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -1275,7 +1275,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
+    * Details: Select Service PME Legal Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1284,7 +1284,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     # Media Mail
@@ -1522,7 +1522,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 15
-    Then Details: Select Service Priority Mail Express Package
+    Then Details: Select Service PME Package
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -1531,7 +1531,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 16
-    * Details: Select Service Priority Mail Express Flat Rate Envelope
+    * Details: Select Service PME Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1540,7 +1540,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 17
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     * Toolbar: Add
@@ -1549,7 +1549,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 18
-    * Details: Select Service Priority Mail Express Legal Flat Rate Envelope
+    * Details: Select Service PME Legal Flat Rate Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1558,7 +1558,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 19
-    * Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    * Details: Select Service PME Padded Flat Rate Envelope
     * Details: Set Tracking to Signature Required
 
     # Media Mail

@@ -29,7 +29,7 @@ end
 Then /^Mail Stamps: Set Pounds to (.*)/ do |pounds|
   logger.step "Mail Stamps: Set Pounds to: \n #{pounds}"
   
-  stamps.mail.netstamps.weight.lbs.set pounds
+  stamps.mail.netstamps.weight.lb.set pounds
 end
 
 Then /^Mail Stamps: Set Quantity to (.*)/ do |qty|

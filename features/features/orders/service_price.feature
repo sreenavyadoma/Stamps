@@ -33,5 +33,5 @@ Feature: User Views Price Next to Service Dropdown
     Then Details: Expect Service Cost inline price for "Media Mail Package" is greater than $0.01
     Then Grid: Expect Pounds is 0
     Then Grid: Expect Ounces is 0
-    Then Grid: Expect Weight is 0 lbs. 0 oz.
+    Then Grid: Expect Weight is 0 lb. 0 oz.
     Then Sign out

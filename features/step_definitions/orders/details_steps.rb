@@ -159,21 +159,21 @@ Then /^Details: Delete Item (\d+)$/ do |item_number|
   item.delete.safe_click
 end
 
-Then /^Details: Set Weight to (\d+) lbs (\d+) oz$/ do |pounds, ounces|
+Then /^Details: Set Weight to (\d+) lb (\d+) oz$/ do |pounds, ounces|
   logger.step "Details: Set Weight to #{pounds} Pounds and #{ounces} Ounces"
   step "Details: Set Pounds to #{pounds}"
   step "Details: Set Ounces to #{ounces}"
 end
 
-Then /^Details: Set Pounds to (.*)$/ do |value|
+Then /^Details: Set Pounds to (\d+)$/ do |value|
   logger.step "Details: Set Pounds to \"#{value}\""
-  test_data[:lbs] = value
-  stamps.orders.order_details.weight.lbs.set test_data[:lbs]
+  test_data[:lb] = value
+  stamps.orders.order_details.weight.lb.set test_data[:lb]
   step "Details: Blur out"
   step "Details: Save Total Ship Cost"
 end
 
-Then /^Details: Set Ounces to (.*)$/ do |value|
+Then /^Details: Set Ounces to (\d+)$/ do |value|
   logger.step "Details: Set Ounces to \"#{value}\""
   test_data[:oz] = value
   stamps.orders.order_details.weight.oz.set test_data[:oz]
@@ -405,22 +405,31 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
       address = ParameterHelper.rand_zone_5_8
     when /1/
       address = ParameterHelper.rand_zone_1
+      test_data[:zone] = 1
     when /2/
       address = ParameterHelper.rand_zone_2
+      test_data[:zone] = 2
     when /3/
       address = ParameterHelper.rand_zone_3
+      test_data[:zone] = 3
     when /4/
       address = ParameterHelper.rand_zone_4
+      test_data[:zone] = 4
     when /5/
       address = ParameterHelper.rand_zone_5
+      test_data[:zone] = 5
     when /6/
       address = ParameterHelper.rand_zone_6
+      test_data[:zone] = 6
     when /7/
       address = ParameterHelper.rand_zone_7
+      test_data[:zone] = 7
     when /8/
       address = ParameterHelper.rand_zone_8
+      test_data[:zone] = 8
     when /9/
       address = ParameterHelper.rand_zone_9
+      test_data[:zone] = 9
     else
       "Invalid Zone Option".should eql "Zone #{zone} is not a valid zone. Valid options are from zone 1 through 8."
   end
@@ -568,12 +577,12 @@ end
 
 Then /^Increment Order Details Pounds by (\d*)$/ do |value|
   logger.step "Increment Order Details Pounds by \"#{value}\""
-  stamps.orders.order_details.weight.lbs.increment value
+  stamps.orders.order_details.weight.lb.increment value
 end
 
 Then /^Decrement Order Details Pounds by (\d*)$/ do |value|
   logger.step "Decrement Order Details Pounds by \"#{value}\""
-  stamps.orders.order_details.weight.lbs.decrement value
+  stamps.orders.order_details.weight.lb.decrement value
   step "Details: Save Total Ship Cost"
 end
 

@@ -1,7 +1,6 @@
 # encoding: utf-8
 include Stamps
 include Stamps::Browser
-#include Stamps::Common
 include Stamps::Orders
 include Stamps::Mail
 include Log4r
@@ -9,6 +8,7 @@ include RSpec
 include RSpec::Matchers
 include DataMagic
 include RAutomation
+include Spreadsheet
 
 Before do  |scenario|
   Stamps.init scenario.name
@@ -107,13 +107,13 @@ After do |scenario|
   Stamps.teardown
 
   if scenario.failed?
-    logger.error "#{scenario.feature}"
-    logger.error "#{scenario.feature} TEST FAILED! #{scenario.exception.message}"
-    logger.error "#{scenario.feature}"
+  logger.error "#{scenario.feature}"
+  logger.error "#{scenario.feature} TEST FAILED! #{scenario.exception.message}"
+  logger.error "#{scenario.feature}"
   end
   logger.step "  --  Test Parameters"
   test_data.each do |key, value|
-    logger.step "  --  #{key} : #{value}"
+  logger.step "  --  #{key} : #{value}"
   end
 
   logger.step "  --  Test Parameters"

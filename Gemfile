@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'spreadsheet'
+gem 'measured'
 gem 'watir-webdriver', '0.9.3'
 gem 'selenium-webdriver', '2.53.4'
 gem 'rspec'
@@ -10,7 +12,5 @@ gem 'rautomation'
 gem 'gherkin'
 gem 'cucumber'
 gem 'yml_reader'
-
-
 
 

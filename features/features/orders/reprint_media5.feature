@@ -13,7 +13,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then Details: Set Ship-To to Domestic Address
       | name         | company            | street_address | street_address_2| city | state | zip        | country       | phone  |  email |
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |
-    Then Details: Set Weight to 2 lbs 1 oz
+    Then Details: Set Weight to 2 lb 1 oz
     Then Details: Select Service Media Mail Package/Flat/Thick Envelope
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise

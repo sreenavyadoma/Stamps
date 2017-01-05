@@ -9,7 +9,7 @@ Feature: Change Starting Label Position to Left Side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
@@ -21,7 +21,7 @@ Feature: Change Starting Label Position to Left Side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"

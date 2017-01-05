@@ -339,8 +339,8 @@ Cucumber::Rake::Task.new(:print_dialog_hide_postage_value) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:details_non_integer_lbs) do |t|
-  t.profile = 'details_non_integer_lbs'
+Cucumber::Rake::Task.new(:details_non_integer_lb) do |t|
+  t.profile = 'details_non_integer_lb'
   t.cucumber_opts = "-p cuke_reports"
 end
 

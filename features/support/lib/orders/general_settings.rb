@@ -66,7 +66,7 @@ module Stamps
             CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
           end
 
-          def lbs
+          def lb
             Pounds.new param
           end
 

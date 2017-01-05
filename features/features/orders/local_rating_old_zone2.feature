@@ -9,7 +9,7 @@ Feature: Local Rating Zone 2
   Scenario:  Zone 2 - Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|1|0|1|1|1|Signature Required|7.50|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|1|0|2|2|2|USPS Tracking|4.58|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large/Thick Envelope|2|0|3|3|3|USPS Tracking|4.95|
@@ -89,7 +89,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Package|1|0|13|12|12|Signature Required|0.00|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Package|1|0|13|12|12|USPS Tracking|7.03|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Package|2|0|13|13|12|USPS Tracking|4.58|
@@ -169,7 +169,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Large Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Package|1|0|1|1|1|Signature Required|33.20|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Package|1|0|2|2|2|USPS Tracking|0.00|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Package|2|0|3|3|3|USPS Tracking|11.59|
@@ -249,7 +249,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Regional Rate Boxes
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box A|1|0|1|1|1|Signature Required|32.82|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box A|1|0|1|1|1|USPS Tracking|0.00|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Regional Rate Box A|2|0|1|1|1|USPS Tracking|5.32|
@@ -296,7 +296,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Express Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Package|1|0|1|1|1|Signature Required|15.54|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Package|0|8|1|1|1|USPS Tracking|13.09|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Package|1|0|1|1|1|USPS Tracking|15.13|
@@ -377,7 +377,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Parcel Select Ground Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Package|1|0|1|1|1|Signature Required|34.02|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Package|1|0|1|1|1|USPS Tracking|31.57|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Package|2|0|1|1|1|USPS Tracking|26.85|
@@ -457,7 +457,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Large Package|1|0|1|1|1|Signature Required|12.60|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Large Package|1|0|1|1|1|USPS Tracking|10.15|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Large Package|2|0|1|1|1|USPS Tracking|10.15|
@@ -537,7 +537,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Oversized Package|1|0|1|1|1|Signature Required|65.44|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Oversized Package|1|0|1|1|1|USPS Tracking|62.99|
       |default|Zone2 Test, Parcel Select, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Parcel Select Ground Oversized Package|2|0|1|1|1|USPS Tracking|62.99|
@@ -617,7 +617,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Flat Rate Envelope|1|0|1|1|1|Signature Required|7.50|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Flat Rate Envelope|1|0|1|1|1|USPS Tracking|5.05|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Flat Rate Envelope|2|0|1|1|1|USPS Tracking|5.05|
@@ -697,7 +697,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Padded Flat Rate Envelope|1|0|1|1|1|Signature Required|8.15|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Padded Flat Rate Envelope|1|0|1|1|1|USPS Tracking|5.70|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Padded Flat Rate Envelope|2|0|1|1|1|USPS Tracking|5.70|
@@ -777,7 +777,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Legal Flat Rate Envelope|1|0|1|1|1|Signature Required|7.70|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Legal Flat Rate Envelope|1|0|1|1|1|USPS Tracking|5.25|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Legal Flat Rate Envelope|2|0|1|1|1|USPS Tracking|5.25|
@@ -858,7 +858,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Small Flat Rate Box|1|0|1|1|1|USPS Tracking|5.25|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Small Flat Rate Box|2|0|1|1|1|USPS Tracking|5.25|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Small Flat Rate Box|3|0|1|1|1|USPS Tracking|5.25|
@@ -937,7 +937,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Medium Flat Rate Box|1|0|1|1|1|Signature Required|13.75|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Medium Flat Rate Box|1|0|1|1|1|USPS Tracking|11.30|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Medium Flat Rate Box|2|0|1|1|1|USPS Tracking|11.30|
@@ -1017,7 +1017,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Flat Rate Box|1|0|1|1|1|Signature Required|18.25|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Flat Rate Box|1|0|1|1|1|USPS Tracking|15.80|
       |default|Zone2 Test, Priority Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Large Flat Rate Box|2|0|1|1|1|USPS Tracking|15.80|
@@ -1097,7 +1097,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Flat Rate Envelope|1|0|1|1|1|Signature Required|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Flat Rate Envelope|1|0|1|1|1|USPS Tracking|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Flat Rate Envelope|2|0|1|1|1|USPS Tracking|18.11|
@@ -1177,7 +1177,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|Signature Required|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|USPS Tracking|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|2|0|1|1|1|USPS Tracking|18.11|
@@ -1257,7 +1257,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Legal Flat Rate Envelope|1|0|1|1|1|Signature Required|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Legal Flat Rate Envelope|1|0|1|1|1|USPS Tracking|18.11|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Legal Flat Rate Envelope|2|0|1|1|1|USPS Tracking|18.11|
@@ -1338,7 +1338,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|USPS Tracking|44.95|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|2|0|1|1|1|USPS Tracking|44.95|
       |default|Zone2 Test, Priority Mail Express, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Priority Mail Express Padded Flat Rate Envelope|3|0|1|1|1|USPS Tracking|44.95|
@@ -1417,7 +1417,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - Media Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, Media Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Media Mail Package|1|0|1|1|1|Signature Required|5.17|
       |default|Zone2 Test, Media Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Media Mail Package|1|0|1|1|1|USPS Tracking|2.72|
       |default|Zone2 Test, Media Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|Media Mail Package|2|0|1|1|1|USPS Tracking|3.22|
@@ -1497,7 +1497,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Large Envelope/Flat|0|1|1|1|1|None|0.98|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Large Envelope/Flat|0|2|1|1|1|None|1.20|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Large Envelope/Flat|0|3|1|1|1|None|1.42|
@@ -1519,7 +1519,7 @@ Feature: Local Rating Zone 2
   Scenario: Zone 2 - First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Package/Thick Envelope|0|1|1|1|1|Signature Required|2.04|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Package/Thick Envelope|0|1|1|1|1|USPS Tracking|2.04|
       |default|Zone2 Test, First-Class Mail, 2260 E Palmdale Blvd Ste B, Palmdale CA 93550|First-Class Mail Package/Thick Envelope|0|2|1|1|1|USPS Tracking|2.04|

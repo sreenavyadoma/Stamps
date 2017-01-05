@@ -105,6 +105,18 @@ module Stamps
     end
   end
 
+  def param_helper
+    begin
+      ParameterHelper
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      "#{e.backtrace.join("\n")}".should eql e.message
+    end
+  end
+
   def logger
     test_helper.logger
   end

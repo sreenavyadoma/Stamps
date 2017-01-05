@@ -10,7 +10,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Large/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|1|0|1|1|1|Signature Required|7.50|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|0|8|2|2|2|USPS Tracking|5.05|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|1|0|2|2|2|USPS Tracking|5.05|
@@ -91,7 +91,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Package|1|0|13|12|12|Signature Required|7.50|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Package|0|8|2|2|2|USPS Tracking|5.05|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Package|1|0|13|12|12|USPS Tracking|5.05|
@@ -172,7 +172,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Large Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|1|0|1|1|1|Signature Required|12.71|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|1|0|2|2|2|USPS Tracking|10.26|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large Package|2|0|3|3|3|USPS Tracking|10.26|
@@ -252,7 +252,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Regional Rate Boxes
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box A|1|0|1|1|1|Signature Required|7.77|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box A|1|0|1|1|1|USPS Tracking|5.32|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Regional Rate Box A|2|0|1|1|1|USPS Tracking|5.32|
@@ -298,7 +298,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Flat Rate Envelope|1|0|1|1|1|Signature Required|7.50|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Flat Rate Envelope|1|0|1|1|1|USPS Tracking|5.05|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Flat Rate Envelope|2|0|1|1|1|USPS Tracking|5.05|
@@ -378,7 +378,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Padded Flat Rate Envelope|1|0|1|1|1|Signature Required|8.15|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Padded Flat Rate Envelope|1|0|1|1|1|USPS Tracking|5.70|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Padded Flat Rate Envelope|2|0|1|1|1|USPS Tracking|5.70|
@@ -458,7 +458,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Legal Flat Rate Envelope|1|0|1|1|1|Signature Required|7.70|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Legal Flat Rate Envelope|1|0|1|1|1|USPS Tracking|5.25|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Legal Flat Rate Envelope|2|0|1|1|1|USPS Tracking|5.25|
@@ -538,7 +538,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Small Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Small Flat Rate Box|1|0|1|1|1|Signature Required|7.70|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Small Flat Rate Box|1|0|1|1|1|USPS Tracking|5.25|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Small Flat Rate Box|2|0|1|1|1|USPS Tracking|5.25|
@@ -618,7 +618,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Medium Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Medium Flat Rate Box|1|0|1|1|1|Signature Required|13.75|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Medium Flat Rate Box|1|0|1|1|1|USPS Tracking|11.30|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Medium Flat Rate Box|2|0|1|1|1|USPS Tracking|11.30|
@@ -698,7 +698,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Large Flat Rate Box
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Flat Rate Box|1|0|1|1|1|Signature Required|18.25|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Flat Rate Box|1|0|1|1|1|USPS Tracking|15.80|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St Ste B, Long Beach CA 90810|Priority Mail Large Flat Rate Box|2|0|1|1|1|USPS Tracking|15.80|
@@ -778,7 +778,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Express Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Package|1|0|1|1|1|Signature Required|15.13|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Package|0|8|1|1|1|USPS Tracking|13.09|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Package|1|0|1|1|1|USPS Tracking|15.13|
@@ -859,7 +859,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Express Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Flat Rate Envelope|1|0|1|1|1|Signature Required|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Flat Rate Envelope|1|0|1|1|1|USPS Tracking|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Flat Rate Envelope|2|0|1|1|1|USPS Tracking|18.11|
@@ -939,7 +939,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|Signature Required|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|USPS Tracking|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|2|0|1|1|1|USPS Tracking|18.11|
@@ -1019,7 +1019,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Express Legal Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Legal Flat Rate Envelope|1|0|1|1|1|Signature Required|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Legal Flat Rate Envelope|1|0|1|1|1|USPS Tracking|18.11|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Legal Flat Rate Envelope|2|0|1|1|1|USPS Tracking|18.11|
@@ -1099,7 +1099,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Priority Mail Express Padded Flat Rate Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|Signature Required|44.95|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|1|0|1|1|1|USPS Tracking|44.95|
       |default|Zone1 Test, Priority Mail Express, 1339 W Willow St, Long Beach CA 90810|Priority Mail Express Padded Flat Rate Envelope|2|0|1|1|1|USPS Tracking|44.95|
@@ -1179,7 +1179,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Media Mail Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Media Mail, 1339 W Willow St, Long Beach CA 90810|Media Mail Package|1|0|1|1|1|Signature Required|5.17|
       |default|Zone1 Test, Media Mail, 1339 W Willow St, Long Beach CA 90810|Media Mail Package|1|0|1|1|1|USPS Tracking|2.72|
       |default|Zone1 Test, Media Mail, 1339 W Willow St, Long Beach CA 90810|Media Mail Package|2|0|1|1|1|USPS Tracking|3.22|
@@ -1259,7 +1259,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Parcel Select Ground Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Package|1|0|1|1|1|Signature Required|8.15|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Package|1|0|1|1|1|USPS Tracking|5.70|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Package|2|0|1|1|1|USPS Tracking|5.90|
@@ -1339,7 +1339,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Parcel Select Ground Large Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Large Package|1|0|1|1|1|Signature Required|20.20|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Large Package|1|0|1|1|1|USPS Tracking|17.75|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810-3116|Parcel Select Ground Large Package|2|0|1|1|1|USPS Tracking|17.75|
@@ -1418,7 +1418,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - Parcel Select Ground Oversized Package
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Ground Oversized Package|1|0|1|1|1|Signature Required|65.44|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Ground Oversized Package|1|0|1|1|1|USPS Tracking|62.99|
       |default|Zone1 Test, Parcel Select, 1339 W Willow St, Long Beach CA 90810|Parcel Select Ground Oversized Package|2|0|1|1|1|USPS Tracking|62.99|
@@ -1498,7 +1498,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - First-Class Mail Large Envelope/Flat
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|1|1|1|1|None|0.98|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|2|1|1|1|None|1.20|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|3|1|1|1|None|1.42|
@@ -1520,7 +1520,7 @@ Feature: Local Rating Zone 1
   Scenario: Zone 1 - First-Class Mail Package/Thick Envelope
     Then Toolbar: Add
     Then Verify Local Rating
-      |ship_from|ship_to|service|weight_lbs|weight_oz|length|height|width|tracking|total|
+      |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|Signature Required|4.49|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|1|1|1|1|USPS Tracking|2.04|
       |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Package/Thick Envelope|0|2|1|1|1|USPS Tracking|2.04|

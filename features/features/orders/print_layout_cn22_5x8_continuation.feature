@@ -10,8 +10,8 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Details: Set Ship-To to International Address
       | name      | company            | street_address_1 | street_address_2 | city   | province| postal_code | country     | phone   |  email  |
       | PMEI PFTE |  5.5x8.5 Left Side | random           | random           | random | random  | random      | Philippines | random  | random  |
-    Then Details: Select Service Priority Mail Express International Package/Flat/Thick Envelope
-    Then Details: Set Weight to 2 lbs 0 oz
+    Then Details: Select Service PME International Package/Flat/Thick Envelope
+    Then Details: Set Weight to 2 lb 0 oz
 
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Gift

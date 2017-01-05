@@ -1257,10 +1257,10 @@ module Stamps
       end
 
       class Weight < Browser::Modal
-        attr_reader :lbs, :oz
+        attr_reader :lb, :oz
         def initialize param
           super param
-          @lbs = Pounds.new param
+          @lb = Pounds.new param
           @oz = Ounces.new param
         end
 

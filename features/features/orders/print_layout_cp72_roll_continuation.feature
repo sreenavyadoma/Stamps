@@ -11,7 +11,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
       | name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
     Then Details: Select Service Priority Mail International Large Flat Rate Box
-    Then Details: Set Weight to 2 lbs 0 oz
+    Then Details: Set Weight to 2 lb 0 oz
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 1

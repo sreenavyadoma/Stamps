@@ -94,43 +94,43 @@ Feature:  Orders Service Selection
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express Package
-    Then Details: Expect Service is Priority Mail Express Package
+    Then Details: Select Service PME Package
+    Then Details: Expect Service is PME Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Flat Rate Envelope
+    Then Details: Select Service PME Flat Rate Envelope
+    Then Details: Expect Service is PME Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Flat Rate Envelope
+    Then Details: Select Service PME Flat Rate Envelope
+    Then Details: Expect Service is PME Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
+    Then Details: Expect Service is PME Padded Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express Padded Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Padded Flat Rate Envelope
+    Then Details: Select Service PME Padded Flat Rate Envelope
+    Then Details: Expect Service is PME Padded Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express Legal Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express Legal Flat Rate Envelope
+    Then Details: Select Service PME Legal Flat Rate Envelope
+    Then Details: Expect Service is PME Legal Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
@@ -239,29 +239,29 @@ Feature:  Orders Service Selection
     #Then Details: Select Service Priority Mail International Regional Rate Box B
     #Then Details: Expect Service is Priority Mail International Regional Rate Box B
 
-    Then Details: Select Service Priority Mail Express International Package/Flat/Thick Envelope
-    Then Details: Expect Service is Priority Mail Express International Package/Flat/Thick Envelope
+    Then Details: Select Service PME International Package/Flat/Thick Envelope
+    Then Details: Expect Service is PME International Package/Flat/Thick Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express International Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express International Flat Rate Envelope
+    Then Details: Select Service PME International Flat Rate Envelope
+    Then Details: Expect Service is PME International Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express International Padded Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express International Padded Flat Rate Envelope
+    Then Details: Select Service PME International Padded Flat Rate Envelope
+    Then Details: Expect Service is PME International Padded Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Priority Mail Express International Legal Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Express International Legal Flat Rate Envelope
+    Then Details: Select Service PME International Legal Flat Rate Envelope
+    Then Details: Expect Service is PME International Legal Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present

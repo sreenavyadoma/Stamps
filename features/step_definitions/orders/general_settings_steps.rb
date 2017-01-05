@@ -776,18 +776,18 @@ Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
   @reset_fields.auto_advance_label_position.checked?.should be false
 end
 
-Then /^Reset Fields:  Set Weight to (\d+) lbs (\d+) oz$/ do |lbs, oz|
-  logger.step "Reset Fields:  Set Weight to #{lbs} lbs #{oz} oz"
+Then /^Reset Fields:  Set Weight to (\d+) lb (\d+) oz$/ do |lb, oz|
+  logger.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
   step "Reset Fields:  Check Weight"
-  @reset_fields.weight.lbs.set lbs
+  @reset_fields.weight.lb.set lb
   @reset_fields.weight.oz.set oz
 end
 
-Then /^Reset Fields:  Expect Weight lbs equals (\d+)$/ do |lbs|
-  logger.step  "Reset Fields:  Expect Weight lbs equals #{lbs}"
+Then /^Reset Fields:  Expect Weight lb equals (\d+)$/ do |lb|
+  logger.step  "Reset Fields:  Expect Weight lb equals #{lb}"
 
   step "Reset Fields:  Check Weight"
-  @reset_fields.weight.lbs.text_box.text.to_i.should eql lbs.to_i
+  @reset_fields.weight.lb.text_box.text.to_i.should eql lb.to_i
 end
 
 Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
