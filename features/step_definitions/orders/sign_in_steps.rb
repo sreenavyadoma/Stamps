@@ -34,7 +34,8 @@ Given /^I am signed in to Orders$/ do
     step "Health Check: Print - Address Book"
   end
   step "Orders: Visit Sign-in page"
-  stamps.orders.landing_page.sign_in :default
+  username = stamps.orders.landing_page.sign_in :default
+  test_data[:username] = username
   step "Navigation Bar: Customer Balance"
 end
 

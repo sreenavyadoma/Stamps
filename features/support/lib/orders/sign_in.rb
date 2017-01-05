@@ -424,6 +424,7 @@ module Stamps
             raise e
           end
         end
+        usr
       end
     end
   end

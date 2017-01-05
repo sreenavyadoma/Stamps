@@ -42,6 +42,7 @@ Then /^Rates: Test PME Comm Base$/ do
     @rates_test_sheet_columns[:zone8] = index if column=='zone8'
     @rates_test_sheet_columns[:zone9] = index if column=='zone9'
     @rates_test_sheet_columns[:service] = index if column=='service'
+    @rates_test_sheet_columns[:username] = index if column=='username'
     @rates_test_sheet_columns[:weight] = index if column=='weight'
     @rates_test_sheet_columns[:execution_date] = index if column=='execution_date'
     @rates_test_sheet_columns[:zone] = index if column=='zone'
@@ -88,6 +89,9 @@ Then /^Rates: Test PME Comm Base$/ do
   elsif @rates_test_sheet_columns[:service].nil?
     missing_column = true
     error_msg = "Column service does not exist in parameter sheet"
+  elsif @rates_test_sheet_columns[:username].nil?
+    missing_column = true
+    error_msg = "Column username does not exist in parameter sheet"
   elsif @rates_test_sheet_columns[:weight].nil?
     missing_column = true
     error_msg = "Column weight does not exist in parameter sheet"
@@ -148,6 +152,7 @@ Then /^Rates: Test PME Comm Base$/ do
       if index > 0
         logger.step"Starting Test for Zone #{test_data[:zone]} - Row #{index}"
         row[@rates_test_sheet_columns[:zone]] = test_data[:zone]
+        row[@rates_test_sheet_columns[:username]] = test_data[:username]
 
         # Set weight
         step "Details: Set Pounds to 0"
