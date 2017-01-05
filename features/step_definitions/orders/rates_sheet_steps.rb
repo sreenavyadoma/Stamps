@@ -42,9 +42,11 @@ Then /^Rates: Test PME Comm Base$/ do
     @rates_test_sheet_columns[:zone8] = index if column=='zone8'
     @rates_test_sheet_columns[:zone9] = index if column=='zone9'
     @rates_test_sheet_columns[:service] = index if column=='service'
-    @rates_test_sheet_columns[:username] = index if column=='username'
-    @rates_test_sheet_columns[:weight] = index if column=='weight'
     @rates_test_sheet_columns[:execution_date] = index if column=='execution_date'
+    @rates_test_sheet_columns[:username] = index if column=='username'
+    @rates_test_sheet_columns[:ship_from] = index if column=='ship_from'
+    @rates_test_sheet_columns[:ship_to_domestic] = index if column=='ship_to_domestic'
+    @rates_test_sheet_columns[:weight] = index if column=='weight'
     @rates_test_sheet_columns[:zone] = index if column=='zone'
     @rates_test_sheet_columns[:expectation] = index if column=='expectation'
     @rates_test_sheet_columns[:total_ship_cost] = index if column=='total_ship_cost'
@@ -89,15 +91,24 @@ Then /^Rates: Test PME Comm Base$/ do
   elsif @rates_test_sheet_columns[:service].nil?
     missing_column = true
     error_msg = "Column service does not exist in parameter sheet"
-  elsif @rates_test_sheet_columns[:username].nil?
-    missing_column = true
-    error_msg = "Column username does not exist in parameter sheet"
-  elsif @rates_test_sheet_columns[:weight].nil?
-    missing_column = true
-    error_msg = "Column weight does not exist in parameter sheet"
   elsif @rates_test_sheet_columns[:execution_date].nil?
     missing_column = true
     error_msg = "Column execution_date does not exist in parameter sheet"
+  elsif @rates_test_sheet_columns[:username].nil?
+    missing_column = true
+    error_msg = "Column username does not exist in parameter sheet"
+  elsif @rates_test_sheet_columns[:execution_date].nil?
+    missing_column = true
+    error_msg = "Column execution_date does not exist in parameter sheet"
+  elsif @rates_test_sheet_columns[:ship_from].nil?
+    missing_column = true
+    error_msg = "Column ship_from does not exist in parameter sheet"
+  elsif @rates_test_sheet_columns[:ship_to_domestic].nil?
+    missing_column = true
+    error_msg = "Column ship_to_domestic does not exist in parameter sheet"
+  elsif @rates_test_sheet_columns[:weight].nil?
+    missing_column = true
+    error_msg = "Column weight does not exist in parameter sheet"
   elsif @rates_test_sheet_columns[:zone].nil?
     missing_column = true
     error_msg = "Column zone does not exist in parameter sheet"
@@ -153,6 +164,8 @@ Then /^Rates: Test PME Comm Base$/ do
         logger.step"Starting Test for Zone #{test_data[:zone]} - Row #{index}"
         row[@rates_test_sheet_columns[:zone]] = test_data[:zone]
         row[@rates_test_sheet_columns[:username]] = test_data[:username]
+        row[@rates_test_sheet_columns[:ship_from]] = test_data[:ship_from]
+        row[@rates_test_sheet_columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
 
         # Set weight
         step "Details: Set Pounds to 0"
