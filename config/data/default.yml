@@ -29,6 +29,9 @@ orders_credentials:
     rates_sheet_pme_comm_base_zone_1:
       usr: stgi0jkgbdy3xs
       pw: pass111
+    rates_sheet_pme_comm_base_zone_2:
+      usr: stgbh3mebdk6
+      pw: pass111
     bvt_shipstation_import_csv:
       usr: stgp6389urwj4
       pw: pass111
