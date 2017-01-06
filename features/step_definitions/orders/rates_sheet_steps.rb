@@ -185,6 +185,7 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   @rate_sheet.each_with_index do |row, index|
     begin
       if index > 0
+        logger.step "#{"#"*80}"
         logger.step"Starting Test for Zone #{zone} - Row #{index}"
         row[@columns[:zone]] = zone
         row[@columns[:username]] = test_data[:username]
