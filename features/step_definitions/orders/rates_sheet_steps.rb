@@ -276,11 +276,20 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     logger.error "Number of Failed Tests: #{@failed_test_count}"
     logger.error "Number of Failed Tests: #{@failed_test_count}"
   end
+  logger.step "#{"|"*80}"
 end
 
 Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
   logger.step "Rates: Number of failed test should be less than #{count}"
   count = count.to_i
+  if @failed_test_count > 0
+    logger.step "#{"|"*80}"
+    logger.error "Total number of failing tests: #{@failed_test_count}"
+    logger.error "Total number of failing tests: #{@failed_test_count}"
+    logger.error "Total number of failing tests: #{@failed_test_count}"
+    logger.error "Total number of failing tests: #{@failed_test_count}"
+    logger.step "#{"|"*80}"
+  end
   @failed_test_count.should be < count
 end
 
