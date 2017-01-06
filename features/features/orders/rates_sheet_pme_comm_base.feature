@@ -17,6 +17,6 @@ Feature: PME Comm Base
     Then Rates: Test PME Comm Base in Zone 7
     Then Rates: Test PME Comm Base in Zone 8
     Then Rates: Test PME Comm Base in Zone 9
-    Then Rates: Number of failed test should be less than 1
+    Then Rates: Number of failed test should be less than 100
     Then Sign out
 
