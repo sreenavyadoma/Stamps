@@ -301,7 +301,7 @@ Then /^Details: Set Service to (.*)$/ do |service|
   5.times do
     step "Details: Blur out"
     test_data[:service_cost] = stamps.orders.order_details.service.cost
-    logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
+    #logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
     if stamps.orders.order_details.service.cost.to_f > 0
       test_data[:service_cost] = stamps.orders.order_details.service.cost
       logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
@@ -313,9 +313,10 @@ Then /^Details: Set Service to (.*)$/ do |service|
   3.times do
     step "Details: Blur out"
     test_data[:service_cost] = stamps.orders.order_details.service.cost
-    logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
+    #logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
     step "Details: Blur out"
   end
+  logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
   step "Details: Save Total Ship Cost"
   test_data[:service_cost] = stamps.orders.order_details.service.cost
   logger.step "Service Cost: $#{test_data[:service_cost]}"

@@ -1282,7 +1282,7 @@ module Stamps
               blur_element.blur_out
               break if value == text
             end
-            logger.message "Pounds set to #{text}"
+            logger.info "Pounds set to #{text}"
           end
 
           def text
@@ -1319,7 +1319,7 @@ module Stamps
               blur_element.blur_out
               break if value == text
             end
-            logger.message "Ounces set to #{text}"
+            logger.info "Ounces set to #{text}"
           end
 
           def text

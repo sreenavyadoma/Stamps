@@ -26,6 +26,12 @@ Then /^Rates: Test PME Comm Base in Zone (\d+)$/ do |zone|
   step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
 end
 
+Then /^Rates: Test PME Comm Plus in Zone (\d+)$/ do |zone|
+  logger.step "Rates: Test PME Comm Plus in Zone #{zone}"
+  param_sheet = data_for(:rates_test, {})['rates_pme_comm_plus']
+  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+end
+
 Then /^Rates: Test PM Comm Base in Zone (\d+)$/ do |zone|
   logger.step "Rates: Test PME Comm Base in Zone #{zone}"
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_base']
@@ -200,8 +206,8 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         row[@columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
 
         # Set weight to 0
-        step "Details: Set Pounds to 0"
-        step "Details: Set Ounces to 0"
+        stamps.orders.order_details.weight.lb.set "0"
+        stamps.orders.order_details.weight.oz.set "0"
 
         # Set weight per spreadsheet
         raise "weight_lb is empty" if row[@columns[:weight_lb]].nil?
