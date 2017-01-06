@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then Details: Select Service Priority Mail International Flat Rate Envelope
+    Then Details: Select Service PM International Flat Rate Envelope
     Then Details: Set Weight to 1 lb 14 oz
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise

@@ -12,12 +12,12 @@ Feature: Grid: Tracking & Order Status
     Then Details: Set Ounces to 5
     Then Details: Check Insure-For checkbox
     Then Details: Set Insure-For to $52.99
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Pause for 1 second
     Then Grid: Expect Insured Value is $52.99
     Then Pause for 1 second
     Then Details: Uncheck Insure-For checkbox
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Uncheck Insure-For checkbox
     Then Details: Set Tracking to Signature Required
     Then Pause for 2 seconds

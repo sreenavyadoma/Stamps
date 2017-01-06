@@ -24,8 +24,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
 
     # Priority Mail International Flat Rate Envelope
-    Then Details: Select Service Priority Mail International Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail International Flat Rate Envelope
+    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Expect Service is PM International Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -38,8 +38,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Padded Flat Rate Envelope
-    Then Details: Select Service Priority Mail International Padded Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail International Padded Flat Rate Envelope
+    Then Details: Select Service PM International Padded Flat Rate Envelope
+    Then Details: Expect Service is PM International Padded Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -52,8 +52,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Legal Flat Rate Envelope
-    Then Details: Select Service Priority Mail International Legal Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail International Legal Flat Rate Envelope
+    Then Details: Select Service PM International Legal Flat Rate Envelope
+    Then Details: Expect Service is PM International Legal Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -66,8 +66,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Small Flat Rate Box
-    Then Details: Select Service Priority Mail International Small Flat Rate Box
-    Then Details: Expect Service is Priority Mail International Small Flat Rate Box
+    Then Details: Select Service PM International Small Flat Rate Box
+    Then Details: Expect Service is PM International Small Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -80,8 +80,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Medium Flat Rate Box
-    Then Details: Select Service Priority Mail International Medium Flat Rate Box
-    Then Details: Expect Service is Priority Mail International Medium Flat Rate Box
+    Then Details: Select Service PM International Medium Flat Rate Box
+    Then Details: Expect Service is PM International Medium Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -94,8 +94,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Large Flat Rate Box
-    Then Details: Select Service Priority Mail International Large Flat Rate Box
-    Then Details: Expect Service is Priority Mail International Large Flat Rate Box
+    Then Details: Select Service PM International Large Flat Rate Box
+    Then Details: Expect Service is PM International Large Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement

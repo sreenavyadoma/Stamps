@@ -26,7 +26,7 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
     Then Grid: Check row 1
     Then Grid: Check row 2
     Then Print expecting 1 of 2 selected orders have errors and cannot be printed. To print the remaining orders, click Continue.

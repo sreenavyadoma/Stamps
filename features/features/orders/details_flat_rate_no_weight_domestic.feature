@@ -23,8 +23,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail Flat Rate Envelope
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1
-    Then Details: Select Service Priority Mail Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
+    Then Details: Expect Service is PM Flat Rate Envelope
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail
@@ -33,8 +33,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Padded Flat Rate Envelope
-    Then Details: Select Service Priority Mail Padded Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Padded Flat Rate Envelope
+    Then Details: Select Service PM Padded Flat Rate Envelope
+    Then Details: Expect Service is PM Padded Flat Rate Envelope
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail
@@ -43,8 +43,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Legal Flat Rate Envelope
-    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
-    Then Details: Expect Service is Priority Mail Legal Flat Rate Envelope
+    Then Details: Select Service PM Legal Flat Rate Envelope
+    Then Details: Expect Service is PM Legal Flat Rate Envelope
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail
@@ -53,8 +53,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Small Flat Rate Box
-    Then Details: Select Service Priority Mail Small Flat Rate Box
-    Then Details: Expect Service is Priority Mail Small Flat Rate Box
+    Then Details: Select Service PM Small Flat Rate Box
+    Then Details: Expect Service is PM Small Flat Rate Box
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail
@@ -63,8 +63,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Medium Flat Rate Box
-    Then Details: Select Service Priority Mail Medium Flat Rate Box
-    Then Details: Expect Service is Priority Mail Medium Flat Rate Box
+    Then Details: Select Service PM Medium Flat Rate Box
+    Then Details: Expect Service is PM Medium Flat Rate Box
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail
@@ -73,8 +73,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Large Flat Rate Box
-    Then Details: Select Service Priority Mail Large Flat Rate Box
-    Then Details: Expect Service is Priority Mail Large Flat Rate Box
+    Then Details: Select Service PM Large Flat Rate Box
+    Then Details: Expect Service is PM Large Flat Rate Box
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail
@@ -83,8 +83,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Regional Rate Box A
-    Then Details: Select Service Priority Mail Regional Rate Box A
-    Then Details: Expect Service is Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
+    Then Details: Expect Service is PM Regional Rate Box A
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail
@@ -93,8 +93,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Regional Rate Box B
-    Then Details: Select Service Priority Mail Regional Rate Box B
-    Then Details: Expect Service is Priority Mail Regional Rate Box B
+    Then Details: Select Service PM Regional Rate Box B
+    Then Details: Expect Service is PM Regional Rate Box B
     Then Details: Expect Pounds is 0
     Then Details: Expect Ounces is 0
     Then Grid: Expect Service is Priority Mail

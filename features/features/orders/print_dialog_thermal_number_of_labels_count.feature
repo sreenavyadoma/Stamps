@@ -9,7 +9,7 @@ Feature:  Requires x-number of label sheets
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Weight to 1 lb 1 oz
     Then Print: Open Modal
     Then Print: Expect number of required label sheets is 1
@@ -18,7 +18,7 @@ Feature:  Requires x-number of label sheets
 
     Then Toolbar: Add
     Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Weight to 1 lb 1 oz
     Then Details: Set Dimensions to Length 1 Width 1 Height 1
 
@@ -26,7 +26,7 @@ Feature:  Requires x-number of label sheets
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Small Flat Rate Box
+    Then Details: Select Service PM Small Flat Rate Box
     Then Details: Set Weight to 1 lb 1 oz
 
     Then Grid: Check row 1

@@ -17,7 +17,7 @@ Feature:  Update Order to ShipStation
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
 
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
 
     Then Details: Set Insure-For to $100.00
 
@@ -67,7 +67,7 @@ Feature:  Update Order to ShipStation
     Then Details: Expect Height is 1
 
     #Then Details: Expect Service Cost saved value is the same
-    Then Details: Expect Service is Priority Mail Package
+    Then Details: Expect Service is PM Package
     Then Details: Expect Service Cost saved value is the same
 
     Then Details: Expect Insure-For is $100.00

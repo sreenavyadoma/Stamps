@@ -19,91 +19,91 @@ end
 
 # Priority Mail
 
-Then /^Details: Select Service Priority Mail Large\/Thick Envelope$/ do
+Then /^Details: Select Service PM Large\/Thick Envelope$/ do
   step "Details: Set Service to Priority Mail Large"
 end
 
-Then /^Details: Expect Service is Priority Mail Large\/Thick Envelope$/ do
+Then /^Details: Expect Service is PM Large\/Thick Envelope$/ do
   step "Details: Expect Service is \"Priority Mail Large\""
 end
 
-Then /^Details: Select Service Priority Mail Package$/ do
+Then /^Details: Select Service PM Package$/ do
   step "Details: Set Service to Priority Mail Package"
 end
 
-Then /^Details: Expect Service is Priority Mail Package$/ do
+Then /^Details: Expect Service is PM Package$/ do
   step "Details: Expect Service is \"Priority Mail Package\""
 end
 
-Then /^Details: Select Service Priority Mail Large Package$/ do
+Then /^Details: Select Service PM Large Package$/ do
   step "Details: Set Service to Priority Mail Large Package"
 end
 
-Then /^Details: Expect Service is Priority Mail Large Package$/ do
+Then /^Details: Expect Service is PM Large Package$/ do
   step "Details: Expect Service is \"Priority Mail Large Package\""
 end
 
-Then /^Details: Select Service Priority Mail Flat Rate Envelope$/ do
+Then /^Details: Select Service PM Flat Rate Envelope$/ do
   step "Details: Set Service to Priority Mail Flat Rate Envelope"
 end
 
-Then /^Details: Expect Service is Priority Mail Flat Rate Envelope$/ do
+Then /^Details: Expect Service is PM Flat Rate Envelope$/ do
   step "Details: Expect Service is \"Priority Mail Flat Rate Envelope\""
 end
 
-Then /^Details: Select Service Priority Mail Padded Flat Rate Envelope$/ do
+Then /^Details: Select Service PM Padded Flat Rate Envelope$/ do
   step "Details: Set Service to Priority Mail Padded Flat Rate Envelope"
 end
 
-Then /^Details: Expect Service is Priority Mail Padded Flat Rate Envelope$/ do
+Then /^Details: Expect Service is PM Padded Flat Rate Envelope$/ do
   step "Details: Expect Service is \"Priority Mail Padded Flat Rate Envelope\""
 end
 
-Then /^Details: Select Service Priority Mail Legal Flat Rate Envelope$/ do
+Then /^Details: Select Service PM Legal Flat Rate Envelope$/ do
   step "Details: Set Service to Priority Mail Legal Flat Rate Envelope"
 end
 
-Then /^Details: Expect Service is Priority Mail Legal Flat Rate Envelope$/ do
+Then /^Details: Expect Service is PM Legal Flat Rate Envelope$/ do
   step "Details: Expect Service is \"Priority Mail Legal Flat Rate Envelope\""
 end
 
-Then /^Details: Select Service Priority Mail Small Flat Rate Box$/ do
+Then /^Details: Select Service PM Small Flat Rate Box$/ do
   step "Details: Set Service to Priority Mail Small Flat Rate Box"
 end
 
-Then /^Details: Expect Service is Priority Mail Small Flat Rate Box$/ do
+Then /^Details: Expect Service is PM Small Flat Rate Box$/ do
   step "Details: Expect Service is \"Priority Mail Small Flat Rate Box\""
 end
 
-Then /^Details: Select Service Priority Mail Medium Flat Rate Box$/ do
+Then /^Details: Select Service PM Medium Flat Rate Box$/ do
   step "Details: Set Service to Priority Mail Medium Flat Rate Box"
 end
 
-Then /^Details: Expect Service is Priority Mail Medium Flat Rate Box$/ do
+Then /^Details: Expect Service is PM Medium Flat Rate Box$/ do
   step "Details: Expect Service is \"Priority Mail Medium Flat Rate Box\""
 end
 
-Then /^Details: Select Service Priority Mail Large Flat Rate Box$/ do
+Then /^Details: Select Service PM Large Flat Rate Box$/ do
   step "Details: Set Service to Priority Mail Large Flat Rate Box"
 end
 
-Then /^Details: Expect Service is Priority Mail Large Flat Rate Box$/ do
+Then /^Details: Expect Service is PM Large Flat Rate Box$/ do
   step "Details: Expect Service is \"Priority Mail Large Flat Rate Box\""
 end
 
-Then /^Details: Select Service Priority Mail Regional Rate Box A$/ do
+Then /^Details: Select Service PM Regional Rate Box A$/ do
   step "Details: Set Service to Priority Mail Regional Rate Box A"
 end
 
-Then /^Details: Expect Service is Priority Mail Regional Rate Box A$/ do
+Then /^Details: Expect Service is PM Regional Rate Box A$/ do
   step "Details: Expect Service is \"Priority Mail Regional Rate Box A\""
 end
 
-Then /^Details: Select Service Priority Mail Regional Rate Box B$/ do
+Then /^Details: Select Service PM Regional Rate Box B$/ do
   step "Details: Set Service to Priority Mail Regional Rate Box B"
 end
 
-Then /^Details: Expect Service is Priority Mail Regional Rate Box B$/ do
+Then /^Details: Expect Service is PM Regional Rate Box B$/ do
   step "Details: Expect Service is \"Priority Mail Regional Rate Box B\""
 end
 
@@ -191,75 +191,75 @@ end
 
 #Priority Mail International
 
-Then /^Details: Select Service Priority Mail International Package$/ do
+Then /^Details: Select Service PM International Package$/ do
   step "Details: Set Service to Priority Mail International Package"
 end
 
-Then /^Details: Expect Service is Priority Mail International Package$/ do
+Then /^Details: Expect Service is PM International Package$/ do
   step "Details: Expect Service is \"Priority Mail International Package\""
 end
 
-Then /^Details: Select Service Priority Mail International Flat Rate Envelope$/ do
+Then /^Details: Select Service PM International Flat Rate Envelope$/ do
   step "Details: Set Service to Priority Mail International Flat Rate Envelope"
 end
 
-Then /^Details: Expect Service is Priority Mail International Flat Rate Envelope$/ do
+Then /^Details: Expect Service is PM International Flat Rate Envelope$/ do
   step "Details: Expect Service is \"Priority Mail International Flat Rate Envelope\""
 end
 
-Then /^Details: Select Service Priority Mail International Padded Flat Rate Envelope$/ do
+Then /^Details: Select Service PM International Padded Flat Rate Envelope$/ do
   step "Details: Set Service to Priority Mail International Padded Flat Rate Envelope"
 end
 
-Then /^Details: Expect Service is Priority Mail International Padded Flat Rate Envelope$/ do
+Then /^Details: Expect Service is PM International Padded Flat Rate Envelope$/ do
   step "Details: Expect Service is \"Priority Mail International Padded Flat Rate Envelope\""
 end
 
-Then /^Details: Select Service Priority Mail International Legal Flat Rate Envelope$/ do
+Then /^Details: Select Service PM International Legal Flat Rate Envelope$/ do
   step "Details: Set Service to Priority Mail International Legal Flat Rate Envelope"
 end
 
-Then /^Details: Expect Service is Priority Mail International Legal Flat Rate Envelope$/ do
+Then /^Details: Expect Service is PM International Legal Flat Rate Envelope$/ do
   step "Details: Expect Service is \"Priority Mail International Legal Flat Rate Envelope\""
 end
 
-Then /^Details: Select Service Priority Mail International Small Flat Rate Box$/ do
+Then /^Details: Select Service PM International Small Flat Rate Box$/ do
   step "Details: Set Service to Priority Mail International Small Flat Rate Box"
 end
 
-Then /^Details: Expect Service is Priority Mail International Small Flat Rate Box$/ do
+Then /^Details: Expect Service is PM International Small Flat Rate Box$/ do
   step "Details: Expect Service is \"Priority Mail International Small Flat Rate Box\""
 end
 
-Then /^Details: Select Service Priority Mail International Medium Flat Rate Box$/ do
+Then /^Details: Select Service PM International Medium Flat Rate Box$/ do
   step "Details: Set Service to Priority Mail International Medium Flat Rate Box"
 end
 
-Then /^Details: Expect Service is Priority Mail International Medium Flat Rate Box$/ do
+Then /^Details: Expect Service is PM International Medium Flat Rate Box$/ do
   step "Details: Expect Service is \"Priority Mail International Medium Flat Rate Box\""
 end
 
-Then /^Details: Select Service Priority Mail International Large Flat Rate Box$/ do
+Then /^Details: Select Service PM International Large Flat Rate Box$/ do
   step "Details: Set Service to Priority Mail International Large Flat Rate Box"
 end
 
-Then /^Details: Expect Service is Priority Mail International Large Flat Rate Box$/ do
+Then /^Details: Expect Service is PM International Large Flat Rate Box$/ do
   step "Details: Expect Service is \"Priority Mail International Large Flat Rate Box\""
 end
 
-Then /^Details: Select Service Priority Mail International Regional Rate Box A$/ do
+Then /^Details: Select Service PM International Regional Rate Box A$/ do
   step "Details: Set Service to Priority Mail International Regional Rate Box A"
 end
 
-Then /^Details: Expect Service is Priority Mail International Regional Rate Box A$/ do
+Then /^Details: Expect Service is PM International Regional Rate Box A$/ do
   step "Details: Expect Service is \"Priority Mail International Regional Rate Box A\""
 end
 
-Then /^Details: Select Service Priority Mail International Regional Rate Box B$/ do
+Then /^Details: Select Service PM International Regional Rate Box B$/ do
   step "Details: Set Service to Priority Mail International Regional Rate Box B"
 end
 
-Then /^Details: Expect Service is Priority Mail International Regional Rate Box B$/ do
+Then /^Details: Expect Service is PM International Regional Rate Box B$/ do
   step "Details: Expect Service is \"Priority Mail International Regional Rate Box B\""
 end
 

@@ -10,7 +10,7 @@ Feature: Print two labels on one sheet
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Weight to 1 lb 1 oz
     Then Details: Set Dimensions to Length 1 Width 1 Height 1
     Then Details: Set Insure-For to $50.25
@@ -19,7 +19,7 @@ Feature: Print two labels on one sheet
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Weight to 1 lb 1 oz
     Then Details: Set Insure-For to $10
     Then Details: Set Tracking to Signature Required

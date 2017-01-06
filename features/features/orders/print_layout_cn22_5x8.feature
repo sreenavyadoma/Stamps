@@ -11,7 +11,7 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI SFRB | 5.5x8.5  | random           | random           | random | random  | random      | Netherlands | random  | random  |
-    Then Details: Select Service Priority Mail International Small Flat Rate Box
+    Then Details: Select Service PM International Small Flat Rate Box
     Then Details: Set Ounces to 1
 
     Then Details: Edit Customs Form

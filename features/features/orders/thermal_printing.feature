@@ -11,7 +11,7 @@ Feature: Thermal Printer
     Then Details: Set Ship-To to address in Zone 5 through 8
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Width to 1
     Then Details: Set Height to 1
     Then Details: Set Length to 1

@@ -11,7 +11,7 @@ Feature:  BVT Address Cleansing
       | name          | company      | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
 
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Ounces to 1
     Then Details: Blur out
     Then Pause for 2 seconds

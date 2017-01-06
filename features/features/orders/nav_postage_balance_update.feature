@@ -8,7 +8,7 @@ Feature: Mail Balance
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $10.00
     Then Details: Set Tracking to USPS Tracking
     Then Pause for 1 second

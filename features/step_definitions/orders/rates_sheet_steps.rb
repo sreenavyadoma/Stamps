@@ -22,13 +22,19 @@ end
 
 Then /^Rates: Test PME Comm Base in Zone (\d+)$/ do |zone|
   logger.step "Rates: Test PME Comm Base in Zone #{zone}"
-  param_sheet = data_for(:rates_test, {})['pme_comm_base_sheet']
+  param_sheet = data_for(:rates_test, {})['rates_pme_comm_base']
+  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+end
+
+Then /^Rates: Test PM Comm Base in Zone (\d+)$/ do |zone|
+  logger.step "Rates: Test PME Comm Base in Zone #{zone}"
+  param_sheet = data_for(:rates_test, {})['rates_pm_comm_base']
   step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
 end
 
 Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
-  logger.step "#{"|"*80}"
-  logger.step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+  logger.step ""
+  logger.step "#{"|"*100} Rates: Test Sheet #{param_sheet} in Zone #{zone}"
   zone = zone.to_i
   result_sheet = param_sheet.gsub(/\s+/, "")
   @rate_sheet = @rate_file.worksheet param_sheet
@@ -185,8 +191,9 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   @rate_sheet.each_with_index do |row, index|
     begin
       if index > 0
-        logger.step "#{"#"*80}"
-        logger.step"Starting Test for Zone #{zone} - Row #{index}"
+        logger.step ""
+        logger.step"#{"#"*80} Starting Test for Zone #{zone} - Row #{index}"
+        logger.step ""
         row[@columns[:zone]] = zone
         row[@columns[:username]] = test_data[:username]
         row[@columns[:ship_from]] = test_data[:ship_from]

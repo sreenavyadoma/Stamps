@@ -249,8 +249,8 @@ Cucumber::Rake::Task.new(:rates_pme_comm_base) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:rates_pm_comm_base) do |t|
+  t.profile = 'rates_pm_comm_base'
   t.cucumber_opts = "-p cuke_reports"
 end
 

@@ -13,5 +13,5 @@ Feature:  BVT Address Management
     Then Ship-From: Expect selection has random
     Then Ship-From: Delete all addresses
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Sign out

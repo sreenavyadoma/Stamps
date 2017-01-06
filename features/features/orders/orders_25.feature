@@ -34,7 +34,7 @@ Feature: 25 orders
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service Priority Mail International Flat Rate Envelope
+    Then Details: Select Service PM International Flat Rate Envelope
 
     # First Class Mail
     Then Toolbar: Add
@@ -73,7 +73,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Large/Thick Envelope
+    Then Details: Select Service PM Large/Thick Envelope
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
@@ -84,7 +84,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
@@ -95,7 +95,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Large Package
+    Then Details: Select Service PM Large Package
     Then Details: Set Insure-For to $145.00
     Then Details: Set Tracking to Signature Required
 
@@ -107,7 +107,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
@@ -118,7 +118,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Padded Flat Rate Envelope
+    Then Details: Select Service PM Padded Flat Rate Envelope
     Then Details: Set Insure-For to $98.00
     Then Details: Set Tracking to USPS Tracking
 
@@ -130,7 +130,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
+    Then Details: Select Service PM Legal Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
@@ -141,7 +141,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Small Flat Rate Box
+    Then Details: Select Service PM Small Flat Rate Box
     Then Details: Set Insure-For to $30.00
     Then Details: Set Tracking to Signature Required
 
@@ -153,7 +153,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Medium Flat Rate Box
+    Then Details: Select Service PM Medium Flat Rate Box
     Then Details: Set Insure-For to $45.00
     Then Details: Set Tracking to Signature Required
 
@@ -165,7 +165,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Large Flat Rate Box
+    Then Details: Select Service PM Large Flat Rate Box
     Then Details: Set Insure-For to $239.00
     Then Details: Set Tracking to Signature Required
 
@@ -177,7 +177,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
     Then Details: Set Insure-For to $105.00
     Then Details: Set Tracking to Signature Required
 
@@ -189,7 +189,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Priority Mail Regional Rate Box B
+    Then Details: Select Service PM Regional Rate Box B
     Then Details: Set Insure-For to $205.00
     Then Details: Set Tracking to USPS Tracking
 

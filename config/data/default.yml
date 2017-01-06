@@ -1,7 +1,8 @@
 
 rates_test:
   rate_file: rate_file.xls
-  pme_comm_base_sheet: PME Comm Base
+  rates_pme_comm_base: PME Comm Base
+  rates_pm_comm_base: PM Comm Base
   test_dir: C:\watir-webdriver\rates\tests
   results_dir: C:\watir-webdriver\rates\results
 
@@ -29,7 +30,7 @@ orders_credentials:
     rates_pme_comm_base:
       usr: stgi0jkgbdy3xs
       pw: pass111
-    rates_sheet_pme_comm_base_zone_2:
+    rates_pm_comm_base:
       usr: stgbh3mebdk6
       pw: pass111
     rates_sheet_pme_comm_base_zone_3:

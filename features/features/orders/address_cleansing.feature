@@ -12,7 +12,7 @@ Feature: Address Cleansing
       | name              | company | street_address   | street_address_2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |
 
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1
     Then Details: Set Insure-For to $200
@@ -25,6 +25,6 @@ Feature: Address Cleansing
 
     Then Toolbar: Add
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Sign out
 

@@ -10,7 +10,7 @@ Feature:  As a batch shipper, I want is able to print multiple labels
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI Pkg-Flat-Env | SDC-1200  | random           | random           | random | random  | random      | Australia | random  | random  |
-    Then Details: Select Service Priority Mail International Flat Rate Envelope
+    Then Details: Select Service PM International Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise
@@ -22,7 +22,7 @@ Feature:  As a batch shipper, I want is able to print multiple labels
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | PMI FR Envelope | SDC-1200  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    Then Details: Select Service Priority Mail International Flat Rate Envelope
+    Then Details: Select Service PM International Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise

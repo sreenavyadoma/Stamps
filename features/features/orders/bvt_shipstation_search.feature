@@ -13,7 +13,7 @@ Feature:  Basic Search
     Then Details: Set Ship-To to address in Zone 1
     Then Details: Set Email to random
     Then Details: Set Phone to random
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Weight to 1 lb 1 oz
 
     Then Grid: Uncheck Saved Order ID

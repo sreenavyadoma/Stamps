@@ -9,7 +9,7 @@ Feature:  BVT Wonderment
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Pounds to 1
     Then Details: Set Ounces to 1
     Then Details: Set Length to 1

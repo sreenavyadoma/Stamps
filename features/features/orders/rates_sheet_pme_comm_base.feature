@@ -1,4 +1,4 @@
-Feature: Rates for Core User in Zone 1
+Feature: PME Comm Base
 
   Background:
     Given Rates: Load Rate File

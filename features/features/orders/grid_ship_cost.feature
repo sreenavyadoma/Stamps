@@ -11,6 +11,6 @@ Feature: Show Cost of Order in Ship Cost Grid
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
     Then Details: Set Insure-For to $10.00
-    Then Details: Select Service Priority Mail Small Flat Rate Box
+    Then Details: Select Service PM Small Flat Rate Box
     Then Expect Ship Cost equals Total amount
     Then Sign out

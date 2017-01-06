@@ -32,7 +32,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Large/Thick Envelope
+    Then Details: Select Service PM Large/Thick Envelope
     Then Details: Set Weight to 1 lb 0 oz
     Then Details: Expect Service Cost is $6.73
     Then Details: Set Tracking to USPS Tracking
@@ -44,7 +44,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Weight to 21 lb 0 oz
     Then Details: Set Length to 14
     Then Details: Set Width to 30
@@ -59,7 +59,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Large Package
+    Then Details: Select Service PM Large Package
     Then Details: Set Weight to 5 lb 0 oz
     Then Details: Set Length to 20
     Then Details: Set Width to 20
@@ -74,7 +74,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Weight to 5 lb 3 oz
     Then Details: Expect Service Cost is $5.95
     Then Details: Set Tracking to USPS Tracking
@@ -86,7 +86,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Padded Flat Rate Envelope
+    Then Details: Select Service PM Padded Flat Rate Envelope
     Then Details: Set Weight to 7 lb 0 oz
     Then Details: Expect Service Cost is $6.50
     Then Details: Set Tracking to USPS Tracking
@@ -98,7 +98,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
+    Then Details: Select Service PM Legal Flat Rate Envelope
     Then Details: Set Weight to 15 lb 0 oz
     Then Details: Expect Service Cost is $6.25
     Then Details: Set Tracking to USPS Tracking
@@ -110,7 +110,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Small Flat Rate Box
+    Then Details: Select Service PM Small Flat Rate Box
     Then Details: Set Weight to 2 lb 0 oz
     Then Details: Expect Service Cost is $6.45
     Then Details: Set Tracking to USPS Tracking
@@ -122,7 +122,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Medium Flat Rate Box
+    Then Details: Select Service PM Medium Flat Rate Box
     Then Details: Set Weight to 23 lb 0 oz
     Then Details: Expect Service Cost is $12.40
     Then Details: Set Tracking to USPS Tracking
@@ -134,7 +134,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Priority Mail Large Flat Rate Box
+    Then Details: Select Service PM Large Flat Rate Box
     Then Details: Set Weight to 37 lb 0 oz
     Then Details: Expect Service Cost is $17.05
     Then Details: Set Tracking to USPS Tracking
@@ -147,7 +147,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
     Then Details: Set Weight to 7 lb 0 oz
     Then Details: Expect Service Cost is $8.15
     Then Details: Set Tracking to USPS Tracking
@@ -159,7 +159,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Regional Rate Box B
+    Then Details: Select Service PM Regional Rate Box B
     Then Details: Set Weight to 6 lb 0 oz
     Then Details: Expect Service Cost is $10.95
     Then Details: Set Tracking to USPS Tracking

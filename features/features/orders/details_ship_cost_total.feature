@@ -17,7 +17,7 @@ Feature: Details Ship Cost Total
     Then Details: Expect Total Ship Cost is $0.00
 
     Then Details: Set Ship-To to address in Zone 8
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $58.00
     Then Details: Set Ounces to 1
     Then Details: Set Pounds to 1

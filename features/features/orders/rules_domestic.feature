@@ -36,7 +36,7 @@ Feature:  Service enabled/disabled tests
     Then Details: Set Ship-To to Domestic Address random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then Details: Set Email to random
     Then Details: Set Phone to random
-    Then Details: Select Service Priority Mail Large Package
+    Then Details: Select Service PM Large Package
     Then Details: Set Pounds to 5
     Then Grid: Uncheck Saved Order ID
     Then Grid: Check Saved Order ID

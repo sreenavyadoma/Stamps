@@ -12,7 +12,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | SDC-1200 | random           | random           | random | random  | random      | New Zealand | random  | random  |
-    Then Details: Select Service Priority Mail International Large Flat Rate Box
+    Then Details: Select Service PM International Large Flat Rate Box
     Then Details: Set Ounces to 1
 
     Then Details: Edit Customs Form

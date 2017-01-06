@@ -10,7 +10,7 @@ Feature:  Customs Form Item Grid - Edit/Delete
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
     Then Details: Set Ounces to 5
-    Then Details: Select Service Priority Mail International Flat Rate Envelope
+    Then Details: Select Service PM International Flat Rate Envelope
     Then Details: Add Item 1, Qty 1, ID random, Description random
     Then Details: Edit Customs Form
     Then Customs: Expect Item Grid count is 1

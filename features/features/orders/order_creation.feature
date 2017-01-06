@@ -11,14 +11,14 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $15.00
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $45.00
     Then Details: Set Tracking to USPS Tracking
 
@@ -28,28 +28,28 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Large Package
+    Then Details: Select Service PM Large Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
+    Then Details: Select Service PM Legal Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
     Then Details: Set Insure-For to $105.00
     Then Details: Set Tracking to Signature Required
 
@@ -100,14 +100,14 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $15.00
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $45.00
     Then Details: Set Tracking to USPS Tracking
 
@@ -117,28 +117,28 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Large Package
+    Then Details: Select Service PM Large Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
+    Then Details: Select Service PM Legal Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
     Then Details: Set Insure-For to $105.00
     Then Details: Set Tracking to Signature Required
 
@@ -185,14 +185,14 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $15.00
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Insure-For to $45.00
     Then Details: Set Tracking to USPS Tracking
 
@@ -202,28 +202,28 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Large Package
+    Then Details: Select Service PM Large Package
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 1
-    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
+    Then Details: Select Service PM Legal Flat Rate Envelope
     Then Details: Set Tracking to Signature Required
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 1
-    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
     Then Details: Set Insure-For to $105.00
     Then Details: Set Tracking to Signature Required
 

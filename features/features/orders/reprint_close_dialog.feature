@@ -10,7 +10,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Pounds to 1
 
     Then Pause for 2 seconds

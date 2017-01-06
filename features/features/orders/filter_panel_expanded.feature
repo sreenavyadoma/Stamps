@@ -14,7 +14,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then Details: Set Ship-To to Domestic Address
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Ounces to 1
 
     Then Left Panel: Select Awaiting Shipment

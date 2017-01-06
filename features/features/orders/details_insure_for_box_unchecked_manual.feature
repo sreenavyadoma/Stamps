@@ -11,7 +11,7 @@ Feature: Order Details Insure-For box value - Manual Orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Ounces to 2
     Then Details: Check Insure-For checkbox
     Then Details: Expect Insure-For Textbox is enabled

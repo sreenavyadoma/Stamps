@@ -9,7 +9,7 @@ Feature: Order Details Insure-For box value - External Orders
   @details_insure_for_box_unchecked_imported
   Scenario: Insure-For - External Orders
     Then Grid: Check Environment Order ID
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Check Insure-For checkbox
     Then Details: Expect Insure-For Textbox is enabled
     Then Details: Set Insure-For to $100.00

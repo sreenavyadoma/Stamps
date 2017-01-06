@@ -10,7 +10,7 @@ Feature:  Customs Form Totals
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
-    Then Details: Select Service Priority Mail International Flat Rate Envelope
+    Then Details: Select Service PM International Flat Rate Envelope
     Then Details: Set Pounds to 3
     Then Details: Set Ounces to 3
     Then Details: Add Item 1, Qty 1, ID random, Description random

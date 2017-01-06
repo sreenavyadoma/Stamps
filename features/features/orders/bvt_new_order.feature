@@ -11,7 +11,7 @@ Feature:  BVT Order Creation
 
     Then Details: Set Ship-To to address in Zone 5 through 8
 
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
 
     # Single Order Details Weight
     Then Details: Set Pounds to 1

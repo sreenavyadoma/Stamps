@@ -32,7 +32,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Large/Thick Envelope
+    Then Details: Select Service PM Large/Thick Envelope
     Then Details: Set Weight to 1 lb 5 oz
     Then Details: Expect Service Cost is $6.60
     Then Details: Set Tracking to USPS Tracking
@@ -44,7 +44,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Package
+    Then Details: Select Service PM Package
     Then Details: Set Weight to 3 lb 0 oz
     Then Details: Expect Service Cost is $7.38
     Then Details: Set Tracking to USPS Tracking
@@ -56,7 +56,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Large Package
+    Then Details: Select Service PM Large Package
     Then Details: Set Weight to 12 lb 0 oz
     Then Details: Expect Service Cost is $17.17
     Then Details: Set Tracking to USPS Tracking
@@ -68,7 +68,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Weight to 5 lb 3 oz
     Then Details: Expect Service Cost is $5.95
     Then Details: Set Tracking to USPS Tracking
@@ -80,7 +80,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Padded Flat Rate Envelope
+    Then Details: Select Service PM Padded Flat Rate Envelope
     Then Details: Set Weight to 7 lb 0 oz
     Then Details: Expect Service Cost is $6.50
     Then Details: Set Tracking to USPS Tracking
@@ -92,7 +92,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Legal Flat Rate Envelope
+    Then Details: Select Service PM Legal Flat Rate Envelope
     Then Details: Set Weight to 2 lb 0 oz
     Then Details: Expect Service Cost is $6.25
     Then Details: Set Tracking to USPS Tracking
@@ -104,7 +104,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Small Flat Rate Box
+    Then Details: Select Service PM Small Flat Rate Box
     Then Details: Set Weight to 8 lb 0 oz
     Then Details: Expect Service Cost is $6.45
     Then Details: Set Tracking to USPS Tracking
@@ -116,7 +116,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Medium Flat Rate Box
+    Then Details: Select Service PM Medium Flat Rate Box
     Then Details: Set Weight to 13 lb 0 oz
     Then Details: Expect Service Cost is $12.40
     Then Details: Set Tracking to USPS Tracking
@@ -128,7 +128,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Large Flat Rate Box
+    Then Details: Select Service PM Large Flat Rate Box
     Then Details: Set Weight to 15 lb 0 oz
     Then Details: Expect Service Cost is $17.05
     Then Details: Set Tracking to USPS Tracking
@@ -140,7 +140,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Regional Rate Box A
+    Then Details: Select Service PM Regional Rate Box A
     Then Details: Set Weight to 5 lb 0 oz
     Then Details: Expect Service Cost is $6.60
     Then Details: Set Tracking to USPS Tracking
@@ -152,7 +152,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Priority Mail Regional Rate Box B
+    Then Details: Select Service PM Regional Rate Box B
     Then Details: Set Weight to 6 lb 0 oz
     Then Details: Expect Service Cost is $8.01
     Then Details: Set Tracking to USPS Tracking

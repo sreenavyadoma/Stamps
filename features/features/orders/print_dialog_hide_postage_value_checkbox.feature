@@ -10,7 +10,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
@@ -31,7 +31,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1
-    Then Details: Select Service Priority Mail Flat Rate Envelope
+    Then Details: Select Service PM Flat Rate Envelope
     Then Print: Open Modal
     Then Print: Uncheck Hide Mail Value
     Then Print: Print

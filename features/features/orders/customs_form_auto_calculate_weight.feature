@@ -10,7 +10,7 @@ Feature: Auto-Calculate Customs Form Weight
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
-    Then Details: Select Service Priority Mail International Package
+    Then Details: Select Service PM International Package
     Then Details: Set Ounces to 4
 
     Then Details: Add Item 1
