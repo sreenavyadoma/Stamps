@@ -251,7 +251,6 @@ end
 
 Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   logger.step "Details: Set Tracking to #{value}"
-  test_data[:tracking] = value
   stamps.orders.order_details.tracking.select value
   10.times do
     break if stamps.orders.order_details.tracking.cost.to_f > 0
@@ -259,6 +258,7 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   end
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
   logger.step "Tracking Cost: $#{test_data[:tracking_cost]}"
+  test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
   step "Details: Save Total Ship Cost"
 end
 

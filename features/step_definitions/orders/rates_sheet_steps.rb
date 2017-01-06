@@ -1,248 +1,287 @@
 
-Then /^Rates: Load PME Comm Base Test Sheet$/ do
-  logger.step "Rates: Load PME Comm Base Test Sheet"
+Then /^Rates: Load Rate File$/ do
+  logger.step "Rates: Load Rate File"
   Spreadsheet.client_encoding = 'UTF-8'
+  rate_file = data_for(:rates_test, {})['rate_file']
 
-  @xls_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{data_for(:rates_test, {})['rates_pme_comm_base']}"
-  logger.step "Rate File: #{@xls_loc}"
-  File.exist?(@xls_loc).should be true
+  @rate_file_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{rate_file}"
+  logger.step "Rate File: #{@rate_file_loc}"
+  "Rate File: #{@rate_file_loc}".should eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
 
   begin
-    @rates_xls = Spreadsheet.open @xls_loc
+    @rate_file = Spreadsheet.open @rate_file_loc
   rescue Exception => e
     logger.error e.message
     logger.error e.backtrace.join("\n")
-    e.message.should eql "Excel param sheet is currently opened by someone, please close the excel sheet before running the test again!"
+    e.message.should eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
   end
 
-  @rates_xls.should_not be nil
-
-  @rates_xls.should_not be nil
-  @rates_test_sheet = @rates_xls.worksheet 'data'
-  @rates_test_sheet.should_not be nil
+  @rate_file.should_not be nil
 end
 
-Then /^Rates: Test PME Comm Base$/ do
-  logger.step "Rates: Test PME Comm Base"
+Then /^Rates: Test PME Comm Base in Zone (\d+)$/ do |zone|
+  logger.step "Rates: Test PME Comm Base in Zone #{zone}"
+  param_sheet = data_for(:rates_test, {})['pme_comm_base_sheet']
+  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+end
 
-  #test_data[:zone] = 1
+Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
+  logger.step "#{"|"*80}"
+  logger.step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+  zone = zone.to_i
+  result_sheet = param_sheet.gsub(/\s+/, "")
+  @rate_sheet = @rate_file.worksheet param_sheet
+  @rate_sheet.should_not be nil
 
-  @sheet_columns = Hash.new
+  @columns = Hash.new
 
   # map out parameter sheet column location
-  @columns = @rates_test_sheet.row(0)
-  @columns.each_with_index do |column, index|
-    @sheet_columns[:weight_lb] = index if column=='weight_lb'
-    @sheet_columns[:zone1] = index if column=='zone1'
-    @sheet_columns[:zone2] = index if column=='zone2'
-    @sheet_columns[:zone3] = index if column=='zone3'
-    @sheet_columns[:zone4] = index if column=='zone4'
-    @sheet_columns[:zone5] = index if column=='zone5'
-    @sheet_columns[:zone6] = index if column=='zone6'
-    @sheet_columns[:zone7] = index if column=='zone7'
-    @sheet_columns[:zone8] = index if column=='zone8'
-    @sheet_columns[:zone9] = index if column=='zone9'
-    @sheet_columns[:service] = index if column=='service'
-    @sheet_columns[:execution_date] = index if column=='execution_date'
-    @sheet_columns[:username] = index if column=='username'
-    @sheet_columns[:ship_from] = index if column=='ship_from'
-    @sheet_columns[:ship_to_domestic] = index if column=='ship_to_domestic'
-    @sheet_columns[:weight] = index if column=='weight'
-    @sheet_columns[:zone] = index if column=='zone'
-    @sheet_columns[:expectation] = index if column=='expectation'
-    @sheet_columns[:total_ship_cost] = index if column=='total_ship_cost'
-    @sheet_columns[:results] = index if column=='results'
-    @sheet_columns[:status] = index if column=='status'
-    @sheet_columns[:error_msg] = index if column=='error_msg'
+  @rate_sheet_columns = @rate_sheet.row(0)
+  @rate_sheet_columns.each_with_index do |column, index|
+    @columns[:weight_lb] = index if column=='weight_lb'
+    @columns[:zone1] = index if column=='zone1'
+    @columns[:zone2] = index if column=='zone2'
+    @columns[:zone3] = index if column=='zone3'
+    @columns[:zone4] = index if column=='zone4'
+    @columns[:zone5] = index if column=='zone5'
+    @columns[:zone6] = index if column=='zone6'
+    @columns[:zone7] = index if column=='zone7'
+    @columns[:zone8] = index if column=='zone8'
+    @columns[:zone9] = index if column=='zone9'
+    @columns[:service] = index if column=='service'
+    @columns[:tracking] = index if column=='tracking'
+    @columns[:execution_date] = index if column=='execution_date'
+    @columns[:username] = index if column=='username'
+    @columns[:ship_from] = index if column=='ship_from'
+    @columns[:ship_to_domestic] = index if column=='ship_to_domestic'
+    @columns[:weight] = index if column=='weight'
+    @columns[:service_selected] = index if column=='service_selected'
+    @columns[:tracking_selected] = index if column=='tracking_selected'
+    @columns[:zone] = index if column=='zone'
+    @columns[:expectation] = index if column=='expectation'
+    @columns[:total_ship_cost] = index if column=='total_ship_cost'
+    @columns[:results] = index if column=='results'
+    @columns[:status] = index if column=='status'
+    @columns[:error_msg] = index if column=='error_msg'
   end
 
   # Verify all columns exists in parameter sheet
   missing_column = false
   # noinspection RubyScope
-  if @sheet_columns[:weight_lb].nil?
+  if @columns[:weight_lb].nil?
     missing_column = true
     error_msg = "Column weight_lb does not exist in parameter sheet"
-  elsif @sheet_columns[:zone1].nil?
+  elsif @columns[:zone1].nil?
     missing_column = true
     error_msg = "Column zone1 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone2].nil?
+  elsif @columns[:zone2].nil?
     missing_column = true
     error_msg = "Column zone2 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone3].nil?
+  elsif @columns[:zone3].nil?
     missing_column = true
     error_msg = "Column zone3 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone4].nil?
+  elsif @columns[:zone4].nil?
     missing_column = true
     error_msg = "Column zone4 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone5].nil?
+  elsif @columns[:zone5].nil?
     missing_column = true
     error_msg = "Column zone5 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone6].nil?
+  elsif @columns[:zone6].nil?
     missing_column = true
     error_msg = "Column zone6 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone7].nil?
+  elsif @columns[:zone7].nil?
     missing_column = true
     error_msg = "Column zone7 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone8].nil?
+  elsif @columns[:zone8].nil?
     missing_column = true
     error_msg = "Column zone8 does not exist in parameter sheet"
-  elsif @sheet_columns[:zone9].nil?
+  elsif @columns[:zone9].nil?
     missing_column = true
     error_msg = "Column zone9 does not exist in parameter sheet"
-  elsif @sheet_columns[:service].nil?
+  elsif @columns[:service].nil?
     missing_column = true
     error_msg = "Column service does not exist in parameter sheet"
-  elsif @sheet_columns[:execution_date].nil?
+  elsif @columns[:tracking].nil?
+    missing_column = true
+    error_msg = "Column tracking does not exist in parameter sheet"
+  elsif @columns[:execution_date].nil?
     missing_column = true
     error_msg = "Column execution_date does not exist in parameter sheet"
-  elsif @sheet_columns[:username].nil?
+  elsif @columns[:username].nil?
     missing_column = true
     error_msg = "Column username does not exist in parameter sheet"
-  elsif @sheet_columns[:execution_date].nil?
+  elsif @columns[:execution_date].nil?
     missing_column = true
     error_msg = "Column execution_date does not exist in parameter sheet"
-  elsif @sheet_columns[:ship_from].nil?
+  elsif @columns[:ship_from].nil?
     missing_column = true
     error_msg = "Column ship_from does not exist in parameter sheet"
-  elsif @sheet_columns[:ship_to_domestic].nil?
+  elsif @columns[:ship_to_domestic].nil?
     missing_column = true
     error_msg = "Column ship_to_domestic does not exist in parameter sheet"
-  elsif @sheet_columns[:weight].nil?
+  elsif @columns[:weight].nil?
     missing_column = true
     error_msg = "Column weight does not exist in parameter sheet"
-  elsif @sheet_columns[:zone].nil?
+  elsif @columns[:service_selected].nil?
+    missing_column = true
+    error_msg = "Column service_selected does not exist in parameter sheet"
+  elsif @columns[:tracking_selected].nil?
+    missing_column = true
+    error_msg = "Column tracking_selected does not exist in parameter sheet"
+  elsif @columns[:zone].nil?
     missing_column = true
     error_msg = "Column zone does not exist in parameter sheet"
-  elsif @sheet_columns[:expectation].nil?
+  elsif @columns[:expectation].nil?
     missing_column = true
     error_msg = "Column expectation does not exist in parameter sheet"
-  elsif @sheet_columns[:total_ship_cost].nil?
+  elsif @columns[:total_ship_cost].nil?
     missing_column = true
     error_msg = "Column total_ship_cost does not exist in parameter sheet"
-  elsif @sheet_columns[:results].nil?
+  elsif @columns[:results].nil?
     missing_column = true
     error_msg = "Column results does not exist in parameter sheet"
-  elsif @sheet_columns[:status].nil?
+  elsif @columns[:status].nil?
     missing_column = true
     error_msg = "Column status does not exist in parameter sheet"
-  elsif @sheet_columns[:error_msg].nil?
+  elsif @columns[:error_msg].nil?
     missing_column = true
     error_msg = "Column error_msg does not exist in parameter sheet"
   end
 
-  "Check your paramter sheet: #{@xls_loc}".should eql error_msg if missing_column
+  "Check your paramter sheet: #{@rate_file_loc}".should eql error_msg if missing_column
 
-  # test_data[:zone] is set in step "Details: Set Ship-To to address in Zone xxx"
+  # parameter zone is set in step "Details: Set Ship-To to address in Zone xxx"
   # where xxx is a number between 1-9
-  test_data[:zone].should_not be nil
-  case test_data[:zone]
+  zone.should_not be nil
+  case zone
     when 1
-      zone_column = @sheet_columns[:zone1]
+      zone_column = @columns[:zone1]
     when 2
-      zone_column = @sheet_columns[:zone2]
+      zone_column = @columns[:zone2]
     when 3
-      zone_column = @sheet_columns[:zone3]
+      zone_column = @columns[:zone3]
     when 4
-      zone_column = @sheet_columns[:zone4]
+      zone_column = @columns[:zone4]
     when 5
-      zone_column = @sheet_columns[:zone5]
+      zone_column = @columns[:zone5]
     when 6
-      zone_column = @sheet_columns[:zone6]
+      zone_column = @columns[:zone6]
     when 7
-      zone_column = @sheet_columns[:zone7]
+      zone_column = @columns[:zone7]
     when 8
-      zone_column = @sheet_columns[:zone8]
+      zone_column = @columns[:zone8]
     when 9
-      zone_column = @sheet_columns[:zone9]
+      zone_column = @columns[:zone9]
     else
-      logger.error "test_data[:zone] should have a value between 1 through 9. Check your test."
-      expect(test_data[:zone]).to be_between(1, 9).inclusive
+      logger.error "Zone parameter (zone) should have a value between 1 through 9. #{zone} is an invalid selection. Check your test."
+      expect(zone).to be_between(1, 9).inclusive
   end
 
-  @rates_test_sheet.each_with_index do |row, index|
+  # Set address to proper zone
+  step "Details: Set Ship-To to address in Zone #{zone}"
+
+  # Set weight and services
+  @rate_sheet.each_with_index do |row, index|
     begin
       if index > 0
-        logger.step"Starting Test for Zone #{test_data[:zone]} - Row #{index}"
-        row[@sheet_columns[:zone]] = test_data[:zone]
-        row[@sheet_columns[:username]] = test_data[:username]
-        row[@sheet_columns[:ship_from]] = test_data[:ship_from]
-        row[@sheet_columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
+        logger.step"Starting Test for Zone #{zone} - Row #{index}"
+        row[@columns[:zone]] = zone
+        row[@columns[:username]] = test_data[:username]
+        row[@columns[:ship_from]] = test_data[:ship_from]
+        row[@columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
 
         # Set weight to 0
         step "Details: Set Pounds to 0"
         step "Details: Set Ounces to 0"
 
         # Set weight per spreadsheet
-        raise "weight_lb is empty" if row[@sheet_columns[:weight_lb]].nil?
-        weight_lb = row[@sheet_columns[:weight_lb]]
+        raise "weight_lb is empty" if row[@columns[:weight_lb]].nil?
+        weight_lb = row[@columns[:weight_lb]]
         logger.step "Column weight_lb: #{weight_lb}"
         if param_helper.is_whole_number?(weight_lb)
-          weight_lb = weight_lb.to_int
-          row[@sheet_columns[:weight]] = "#{weight_lb} lb."
+          weight_lb = weight_lb.to_i
+          row[@columns[:weight]] = "#{weight_lb} lb."
           step "Details: Set Pounds to #{weight_lb}"
         else
-          weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_int
+          weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
           logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
-          row[@sheet_columns[:weight]] = "#{weight_oz} oz."
+          row[@columns[:weight]] = "#{weight_oz} oz."
           step "Details: Set Ounces to #{weight_oz}"
         end
 
         # Set Service
-        raise "service is empty" if row[@sheet_columns[:service]].nil?
-        service = row[@sheet_columns[:service]]
+        raise "service is empty" if row[@columns[:service]].nil?
+        service = row[@columns[:service]]
         # record execution time as time service was selected.
-        row[@sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
+        row[@columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
         step "Details: Select Service #{service}"
+        row[@columns[:service_selected]] = test_data[:service]
+
+        # Set Tracking
+        begin
+          tracking = row[@columns[:tracking]]
+          step "Details: Set Tracking to #{tracking}"
+        end unless row[@columns[:tracking]].nil?
+        # Write tracking to spreadsheet
+        test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
+        row[@columns[:tracking_selected]] = test_data[:tracking]
 
         # spreadsheet price
         zone_column.should_not be nil
         raise "#{zone_column} is empty" if row[zone_column].nil?
         price = row[zone_column]
         # set expectation column for this row to zone price
-        row[@sheet_columns[:expectation]] = price
-        expectation = row[@sheet_columns[:expectation]]
+        row[@columns[:expectation]] = price
+        expectation = row[@columns[:expectation]]
 
         # get total cost actual value from UI
         step "Save Shipping Costs Data"
-        row[@sheet_columns[:total_ship_cost]] = test_data[:total_ship_cost]
-        if row[@sheet_columns[:expectation]] == row[@sheet_columns[:total_ship_cost]]
-          row[@sheet_columns[:status]] = "Passed"
-          row[@sheet_columns[:results]] = "#{row[@sheet_columns[:expectation]]} == #{row[@sheet_columns[:total_ship_cost]]}"
+        row[@columns[:total_ship_cost]] = test_data[:total_ship_cost]
+        if row[@columns[:expectation]] == row[@columns[:total_ship_cost]]
+          row[@columns[:status]] = "Passed"
+          row[@columns[:results]] = "#{row[@columns[:expectation]]} == #{row[@columns[:total_ship_cost]]}"
         else
-          row[@sheet_columns[:status]] = "Failed"
-          row[@sheet_columns[:results]] = "Expected #{row[@sheet_columns[:expectation]]}, Got #{row[@sheet_columns[:total_ship_cost]]}"
+          row[@columns[:status]] = "Failed"
+          row[@columns[:results]] = "Expected #{row[@columns[:expectation]]}, Got #{row[@columns[:total_ship_cost]]}"
         end
       end
     rescue Exception=> e
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      row[@sheet_columns[:error_msg]] = "Zone #{test_data[:zone]} - Row #{index}: #{e.message}"
+      row[@columns[:error_msg]] = "Zone #{zone} - Row #{index}: #{e.message}"
     end
   end
 
-  @result_sheet_loc = "#{data_for(:rates_test, {})['results_dir']}\\rates_sheet_pme_comm_base_zone_#{test_data[:zone]}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}_results.xls"
-  @rates_xls.write @result_sheet_loc
+  @result_sheet_loc = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
+  @rate_file.write @result_sheet_loc
 
   logger.step "Result Sheet Location: #{@result_sheet_loc}"
-  failed_test_count = 0
-  @rates_test_sheet.each_with_index do |row, index|
+  @failed_test_count = 0
+  @rate_sheet.each_with_index do |row, index|
     begin
       if index > 0
-        if row[@sheet_columns[:status]] == "Failed"
-          failed_test_count +=1
-          logger.step"Zone #{test_data[:zone]} - Row #{index} Failed"
+        if row[@columns[:status]] == "Failed"
+          @failed_test_count +=1
+          logger.step"Zone #{zone} - Row #{index} Failed"
         end
       end
     end
   end
   logger.step "Result Sheet Location: #{@result_sheet_loc}"
-  if failed_test_count>0
-    logger.error "Number of Failed Tests: #{failed_test_count}"
-    logger.error "Number of Failed Tests: #{failed_test_count}"
-    logger.error "Number of Failed Tests: #{failed_test_count}"
-    logger.error "Number of Failed Tests: #{failed_test_count}"
-    logger.error "Number of Failed Tests: #{failed_test_count}"
-    logger.error "Number of Failed Tests: #{failed_test_count}"
+  if @failed_test_count>0
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
   end
-  failed_test_count.should eql 0
 end
+
+Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
+  logger.step "Rates: Number of failed test should be less than #{count}"
+  count = count.to_i
+  @failed_test_count.should be < count
+end
+
+
