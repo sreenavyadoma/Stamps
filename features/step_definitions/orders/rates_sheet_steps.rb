@@ -16,6 +16,7 @@ Then /^Rates: Load Rate File$/ do
     e.message.should eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
   end
 
+  @failed_test_count = 0
   @rate_file.should_not be nil
 end
 
@@ -256,7 +257,6 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   @rate_file.write @result_sheet_loc
 
   logger.step "Result Sheet Location: #{@result_sheet_loc}"
-  @failed_test_count = 0
   @rate_sheet.each_with_index do |row, index|
     begin
       if index > 0
