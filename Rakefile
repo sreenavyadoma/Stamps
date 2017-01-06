@@ -249,16 +249,6 @@ Cucumber::Rake::Task.new(:rates_pme_comm_base) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:rates_sheet_pme_comm_base_zone_2) do |t|
-  t.profile = 'rates_sheet_pme_comm_base_zone_2'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:rates_sheet_pme_comm_base_zone_3) do |t|
-  t.profile = 'rates_sheet_pme_comm_base_zone_3'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
   t.cucumber_opts = "-p cuke_reports"

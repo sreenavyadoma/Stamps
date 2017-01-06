@@ -31,8 +31,6 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=fa
 
 
 rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pme_comm_base
-rates_sheet_pme_comm_base_zone_2: --tags @rates_sheet_pme_comm_base_zone_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_sheet_pme_comm_base_zone_2
-rates_sheet_pme_comm_base_zone_3: --tags @rates_sheet_pme_comm_base_zone_3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_sheet_pme_comm_base_zone_3
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
