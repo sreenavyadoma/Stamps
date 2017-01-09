@@ -224,7 +224,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 23 lb 0 oz
     Then Details: Expect Service Cost is $19.29
     Then Details: Set Tracking to USPS Tracking
@@ -236,7 +236,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service PSG Large Package
     Then Details: Set Weight to 33 lb 0 oz
     Then Details: Expect Service Cost is $26.46
     Then Details: Set Tracking to USPS Tracking
@@ -248,7 +248,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 3
-    Then Details: Select Service Parcel Select Ground Oversized Package
+    Then Details: Select Service PSG Oversized Package
     Then Details: Set Weight to 40 lb 0 oz
     Then Details: Expect Service Cost is $67.94
     Then Details: Set Tracking to Signature Required

@@ -212,7 +212,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 21
-    * Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    * Details: Select Service PSG Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to USPS Tracking
 
@@ -222,7 +222,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 22
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to Signature Required
 
@@ -232,7 +232,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Select Service Parcel Select Ground Oversized Package
+    * Details: Select Service PSG Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to Signature Required
 
@@ -486,7 +486,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 21
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to USPS Tracking
 
@@ -496,7 +496,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 22
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to Signature Required
 
@@ -506,7 +506,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Select Service Parcel Select Ground Oversized Package
+    * Details: Select Service PSG Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to Signature Required
 
@@ -759,7 +759,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 21
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to USPS Tracking
 
@@ -769,7 +769,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 22
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to Signature Required
 
@@ -779,7 +779,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Select Service Parcel Select Ground Oversized Package
+    * Details: Select Service PSG Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to Signature Required
 
@@ -1033,7 +1033,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 21
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to USPS Tracking
 
@@ -1043,7 +1043,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 22
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to Signature Required
 
@@ -1053,7 +1053,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Select Service Parcel Select Ground Oversized Package
+    * Details: Select Service PSG Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to Signature Required
 
@@ -1307,7 +1307,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 21
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to USPS Tracking
 
@@ -1317,7 +1317,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 22
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to Signature Required
 
@@ -1327,7 +1327,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Select Service Parcel Select Ground Oversized Package
+    * Details: Select Service PSG Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to Signature Required
 
@@ -1581,7 +1581,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 21
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $345.00
     * Details: Set Tracking to USPS Tracking
 
@@ -1591,7 +1591,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 22
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     * Details: Set Insure-For to $456.00
     * Details: Set Tracking to Signature Required
 
@@ -1601,7 +1601,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 23
-    * Details: Select Service Parcel Select Ground Oversized Package
+    * Details: Select Service PSG Oversized Package
     * Details: Set Insure-For to $567.00
     * Details: Set Tracking to Signature Required
 

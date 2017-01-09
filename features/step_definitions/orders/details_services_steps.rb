@@ -147,15 +147,15 @@ Then /^Details: Expect Service is Media Mail Package\/Flat\/Thick Envelope$/ do
   step "Details: Expect Service is \"Media Mail Package\""
 end
 
-Then /^Details: Select Service Parcel Select Ground Package\/Flat\/Thick Envelope$/ do
+Then /^Details: Select Service PSG Package$/ do
   step "Details: Set Service to Parcel Select Ground Package"
 end
 
-Then /^Details: Expect Service is Parcel Select Ground Package\/Flat\/Thick Envelope$/ do
+Then /^Details: Expect Service is PSG Package$/ do
   step "Details: Expect Service is \"Parcel Select Ground Package\""
 end
 
-Then /^Details: Select Service Parcel Select Ground Large Package$/ do
+Then /^Details: Select Service PSG Large Package$/ do
   step "Details: Set Service to Parcel Select Ground Large Package"
 end
 
@@ -163,11 +163,11 @@ Then /^Details: Expect Service is Parcel Select Ground Large Package$/ do
   step "Details: Expect Service is \"Parcel Select Ground Large Package\""
 end
 
-Then /^Details: Select Service Parcel Select Ground Oversized Package$/ do
+Then /^Details: Select Service PSG Oversized Package$/ do
   step "Details: Set Service to Parcel Select Ground Oversized Package"
 end
 
-Then /^Details: Expect Service is Parcel Select Ground Oversized Package$/ do
+Then /^Details: Expect Service is PSG Oversized Package$/ do
   step "Details: Expect Service is \"Parcel Select Ground Oversized Package\""
 end
 

@@ -244,7 +244,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 6
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 38 lb 0 oz
     Then Details: Expect Service Cost is $59.04
     Then Details: Set Tracking to USPS Tracking
@@ -257,7 +257,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 6
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service PSG Large Package
     Then Details: Set Weight to 59 lb 0 oz
     Then Details: Expect Service Cost is $77.60
     Then Details: Set Tracking to USPS Tracking
@@ -270,7 +270,7 @@ Feature: January 2017 Rates for CPP User in Zone 6
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 6
-    Then Details: Select Service Parcel Select Ground Oversized Package
+    Then Details: Select Service PSG Oversized Package
     Then Details: Set Weight to 48 lb 0 oz
     Then Details: Expect Service Cost is $123.37
     Then Details: Set Tracking to Signature Required

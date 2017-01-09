@@ -143,15 +143,15 @@ Feature:  Orders Service Selection
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
-    Then Details: Expect Service is Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
+    Then Details: Expect Service is PSG Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Parcel Select Ground Oversized Package
-    Then Details: Expect Service is Parcel Select Ground Oversized Package
+    Then Details: Select Service PSG Oversized Package
+    Then Details: Expect Service is PSG Oversized Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present

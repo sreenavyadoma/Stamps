@@ -8,7 +8,7 @@ Feature: User Prints 1 Domestic label on 5.5x8.5 - right side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Domestic Address PS Package, 5.5x8.5 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Ounces to 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 5 ½" x 8 ½""

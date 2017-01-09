@@ -222,7 +222,7 @@ Feature: January 2017 Rates for CPP User in Zone 7
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 37 lb 15 oz
     Then Details: Expect Service Cost is $68.02
     Then Details: Set Tracking to USPS Tracking
@@ -235,7 +235,7 @@ Feature: January 2017 Rates for CPP User in Zone 7
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 58 lb 15 oz
     Then Details: Expect Service Cost is $91.52
     Then Details: Set Tracking to USPS Tracking
@@ -248,7 +248,7 @@ Feature: January 2017 Rates for CPP User in Zone 7
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 7
-    Then Details: Select Service Parcel Select Ground Oversized Package
+    Then Details: Select Service PSG Oversized Package
     Then Details: Set Weight to 47 lb 15 oz
     Then Details: Expect Service Cost is $141.62
     Then Details: Set Tracking to USPS Tracking

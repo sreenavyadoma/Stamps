@@ -230,7 +230,7 @@ Feature: January 2017 Rates for SAS User in Zone 8
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 8
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 12 lb 0 oz
     Then Details: Expect Service Cost is $41.35
     Then Details: Set Tracking to USPS Tracking
@@ -242,7 +242,7 @@ Feature: January 2017 Rates for SAS User in Zone 8
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 8
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service PSG Large Package
     Then Details: Set Weight to 24 lb 0 oz
     Then Details: Expect Service Cost is $62.29
     Then Details: Set Tracking to USPS Tracking
@@ -254,7 +254,7 @@ Feature: January 2017 Rates for SAS User in Zone 8
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 8
-    Then Details: Select Service Parcel Select Ground Oversized Package
+    Then Details: Select Service PSG Oversized Package
     Then Details: Set Weight to 7 lb 0 oz
     Then Details: Expect Service Cost is $173.87
     Then Details: Set Tracking to Signature Required

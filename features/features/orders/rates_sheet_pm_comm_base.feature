@@ -1,4 +1,4 @@
-Feature: PM Comm Base
+Feature: PM Comm Base Rates
 
   Background:
     Given Rates: Load Rate File
@@ -17,6 +17,6 @@ Feature: PM Comm Base
     Then Rates: Test PM Comm Base in Zone 7
     Then Rates: Test PM Comm Base in Zone 8
     Then Rates: Test PM Comm Base in Zone 9
-    Then Rates: Number of failed test should be less than 100
+    Then Rates: Number of failed test should be less than 1
     Then Sign out
 

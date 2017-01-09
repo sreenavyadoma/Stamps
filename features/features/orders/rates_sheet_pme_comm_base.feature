@@ -1,4 +1,4 @@
-Feature: PME Comm Base
+Feature: PME Comm Base Rates
 
   Background:
     Given Rates: Load Rate File
@@ -17,6 +17,6 @@ Feature: PME Comm Base
     Then Rates: Test PME Comm Base in Zone 7
     Then Rates: Test PME Comm Base in Zone 8
     Then Rates: Test PME Comm Base in Zone 9
-    Then Rates: Number of failed test should be less than 100
+    Then Rates: Number of failed test should be less than 1
     Then Sign out
 

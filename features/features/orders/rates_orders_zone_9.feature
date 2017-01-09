@@ -245,7 +245,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 6 lb 0 oz
     Then Details: Expect Service Cost is $23.32
     Then Details: Set Tracking to USPS Tracking
@@ -258,7 +258,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 12 lb 0 oz
     Then Details: Expect Service Cost is $57.74
     Then Details: Set Tracking to USPS Tracking
@@ -271,7 +271,7 @@ Feature: Local Rating test for Zone 9
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service Parcel Select Ground Oversized Package
+    Then Details: Select Service PSG Oversized Package
     Then Details: Set Weight to 50 lb 0 oz
     Then Details: Expect Service Cost is $173.87
     Then Details: Set Tracking to USPS Tracking

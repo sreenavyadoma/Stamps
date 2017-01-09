@@ -262,6 +262,11 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   step "Details: Save Total Ship Cost"
 end
 
+Then /^Details: Store Tracking info to parameter$/ do
+  logger.step "Details: Store Tracking info to parameter"
+  test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
+end
+
 Then /^Details: Set Ship-From to (\w+)$/ do |value|
   logger.step "Details: Set Ship-From to: \n #{value}"
   stamps.orders.order_details.ship_from.select value

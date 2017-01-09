@@ -85,7 +85,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 10
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Insure-For to $235.00
     Then Details: Set Tracking to USPS Tracking
 
@@ -174,7 +174,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 10
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Insure-For to $235.00
     Then Details: Set Tracking to USPS Tracking
 
@@ -259,7 +259,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Pounds to 10
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Insure-For to $235.00
     Then Details: Set Tracking to USPS Tracking
 

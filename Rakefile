@@ -259,13 +259,13 @@ Cucumber::Rake::Task.new(:rates_pme_comm_plus) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:rates_pm_comm_plus) do |t|
+  t.profile = 'rates_pm_comm_plus'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:parcel_select_ground) do |t|
+  t.profile = 'parcel_select_ground'
   t.cucumber_opts = "-p cuke_reports"
 end
 

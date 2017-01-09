@@ -12,7 +12,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
       | name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then Details: Set Weight to 3 lb 2 oz
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Other
     Then Customs: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10

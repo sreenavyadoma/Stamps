@@ -242,7 +242,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 4
-    Then Details: Select Service Parcel Select Ground Package/Flat/Thick Envelope
+    Then Details: Select Service PSG Package
     Then Details: Set Weight to 45 lb 0 oz
     Then Details: Expect Service Cost is $41.49
     Then Details: Set Tracking to USPS Tracking
@@ -255,7 +255,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 4
-    Then Details: Select Service Parcel Select Ground Large Package
+    Then Details: Select Service PSG Large Package
     Then Details: Set Weight to 21 lb 0 oz
     Then Details: Expect Service Cost is $20.35
     Then Details: Set Tracking to USPS Tracking
@@ -268,7 +268,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 4
-    Then Details: Select Service Parcel Select Ground Oversized Package
+    Then Details: Select Service PSG Oversized Package
     Then Details: Set Weight to 13 lb 0 oz
     Then Details: Expect Service Cost is $86.89
     Then Details: Set Tracking to Signature Required
