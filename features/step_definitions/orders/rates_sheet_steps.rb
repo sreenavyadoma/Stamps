@@ -18,9 +18,6 @@ Then /^Rates: Load Rate File$/ do
 
   @failed_test_count = 0
   @rate_file.should_not be nil
-
-  @result_file = Spreadsheet::Workbook.new
-  @result_sheet = @result_file.create_worksheet
 end
 
 Then /^Rates: Test PME Comm Base in Zone (\d+)$/ do |zone|
@@ -57,6 +54,10 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   logger.message ""
   logger.message "#{"|"*100} Rates: Test Sheet #{param_sheet} in Zone #{zone}"
   zone = zone.to_i
+
+  @result_file = Spreadsheet::Workbook.new
+  @result_sheet = @result_file.create_worksheet
+
   @rate_sheet = @rate_file.worksheet param_sheet
   @rate_sheet.should_not be nil
 
@@ -404,7 +405,14 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         #test_data[:total_ship_cost] = 21.64
         @result_sheet[row_num, @columns[:total_ship_cost]] = test_data[:total_ship_cost]
 
-        if @result_sheet[row_num, @columns[:expectation]] == @result_sheet[row_num, @columns[:total_ship_cost]]
+        # Set weight to 0
+        step "Details: Set Pounds to 0"
+        step "Details: Set Ounces to 0"
+
+        @result_sheet[row_num, @columns[:expectation]].should_not be nil
+        @result_sheet[row_num, @columns[:total_ship_cost]].should_not be nil
+
+        if @result_sheet[row_num, @columns[:expectation]].to_f == @result_sheet[row_num, @columns[:total_ship_cost]].to_f
           @result_sheet[row_num, @columns[:status]] = "Passed"
           @result_sheet.row(row_num).set_format(@columns[:status], pass_format)
           @result_sheet[row_num, @columns[:results]] = "#{@result_sheet[row_num, @columns[:expectation]]} == #{@result_sheet[row_num, @columns[:total_ship_cost]]}"
@@ -465,11 +473,6 @@ Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
     logger.message "#{"|"*80}"
   end
   @failed_test_count.should be < count
-end
-
-Then /^Rates: Set Weight to (\d+) lb and (\d+) oz$/ do |lb, oz|
-  logger.message "Rates: Set Weight to #{lb} lb and #{oz} oz"
-
 end
 
 
