@@ -394,16 +394,16 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         # spreadsheet price
         zone_column.should_not be nil
         raise "#{zone_column} is empty" if row[zone_column].nil?
-        price = row[zone_column]
+        price = (row[zone_column].to_f * 100).round / 100.0
 
         # set expectation column for this row to zone price
-        @result_sheet[row_num, @columns[:expectation]]= price
         @result_sheet.row(row_num).set_format(@columns[:expectation], format)
+        @result_sheet[row_num, @columns[:expectation]]= price
 
         # get total cost actual value from UI
         step "Save Shipping Costs Data"
         #test_data[:total_ship_cost] = 21.64
-        @result_sheet[row_num, @columns[:total_ship_cost]] = test_data[:total_ship_cost]
+        @result_sheet[row_num, @columns[:total_ship_cost]] = (test_data[:total_ship_cost].to_f * 100).round / 100.0
 
         # Set weight to 0
         step "Details: Set Pounds to 0"
