@@ -412,7 +412,10 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         @result_sheet[row_num, @columns[:expectation]].should_not be nil
         @result_sheet[row_num, @columns[:total_ship_cost]].should_not be nil
 
-        if @result_sheet[row_num, @columns[:expectation]].to_f == @result_sheet[row_num, @columns[:total_ship_cost]].to_f
+        expectation_f = (@result_sheet[row_num, @columns[:expectation]].to_f * 100).round / 100.0
+        total_ship_cost_f = (@result_sheet[row_num, @columns[:total_ship_cost]].to_f * 100).round / 100.0
+
+        if expectation_f == total_ship_cost_f
           @result_sheet[row_num, @columns[:status]] = "Passed"
           @result_sheet.row(row_num).set_format(@columns[:status], pass_format)
           @result_sheet[row_num, @columns[:results]] = "#{@result_sheet[row_num, @columns[:expectation]]} == #{@result_sheet[row_num, @columns[:total_ship_cost]]}"
