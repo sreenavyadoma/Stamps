@@ -24,8 +24,8 @@ url_prefix:
   ss: printss600.qacc
   satya: svarma-win7.corp
   qacc: printext.qacc
-  qasc: printext.qasc
   staging: mail.staging
+  qasc: printext.qasc
   rating: printext.qacc
 
 orders_credentials:

@@ -49,7 +49,7 @@ end
 
 Then /^Rates: Test Parcel Select Ground in Zone (\d+)$/ do |zone|
   logger.message "Rates: Test Parcel Select Ground in Zone #{zone}"
-  param_sheet = data_for(:rates_test, {})['parcel_select_ground']
+  param_sheet = data_for(:rates_test, {})['rates_parcel_select_ground']
   step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
 end
 

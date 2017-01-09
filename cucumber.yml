@@ -29,7 +29,6 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=fa
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 
-
 rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pme_comm_base
 rates_pm_comm_base: --tags @rates_pm_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pm_comm_base
 rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pme_comm_plus
@@ -41,38 +40,6 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=fa
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
-
-rates_orders_zone_1: --tags @rates_orders_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_1
-rates_orders_zone_2: --tags @rates_orders_zone_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_2
-rates_orders_zone_3: --tags @rates_orders_zone_3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_3
-rates_orders_zone_4: --tags @rates_orders_zone_4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_4
-rates_orders_zone_5: --tags @rates_orders_zone_5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_5
-rates_orders_zone_6: --tags @rates_orders_zone_6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_6
-rates_orders_zone_7: --tags @rates_orders_zone_7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_7
-rates_orders_zone_8: --tags @rates_orders_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_8
-rates_orders_zone_9: --tags @rates_orders_zone_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_9
-
-rates_orders_cpp_zone_1: --tags @rates_orders_cpp_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_1
-rates_orders_cpp_zone_2: --tags @rates_orders_cpp_zone_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_2
-rates_orders_cpp_zone_3: --tags @rates_orders_cpp_zone_3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_3
-rates_orders_cpp_zone_4: --tags @rates_orders_cpp_zone_4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_4
-rates_orders_cpp_zone_5: --tags @rates_orders_cpp_zone_5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_5
-rates_orders_cpp_zone_6: --tags @rates_orders_cpp_zone_6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_6
-rates_orders_cpp_zone_7: --tags @rates_orders_cpp_zone_7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_7
-rates_orders_cpp_zone_8: --tags @rates_orders_cpp_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_8
-rates_orders_cpp_zone_9: --tags @rates_orders_cpp_zone_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_cpp_zone_9
-
-rates_orders_sas_zone_1: --tags @rates_orders_sas_zone_1 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_1
-rates_orders_sas_zone_2: --tags @rates_orders_sas_zone_2 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_2
-rates_orders_sas_zone_3: --tags @rates_orders_sas_zone_3 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_3
-rates_orders_sas_zone_4: --tags @rates_orders_sas_zone_4 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_4
-rates_orders_sas_zone_5: --tags @rates_orders_sas_zone_5 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_5
-rates_orders_sas_zone_6: --tags @rates_orders_sas_zone_6 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_6
-rates_orders_sas_zone_7: --tags @rates_orders_sas_zone_7 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_7
-rates_orders_sas_zone_8: --tags @rates_orders_sas_zone_8 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_8
-rates_orders_sas_zone_9: --tags @rates_orders_sas_zone_9 --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_sas_zone_9
-
-rates_orders_zone_1_sas: --tags @rates_orders_zone_1_sas --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_orders_zone_1_sas
 
 search_orders: --tags @search_orders --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=search_orders
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=bvt_shipstation_search
