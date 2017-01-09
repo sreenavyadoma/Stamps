@@ -421,15 +421,11 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet.row(row_num).set_format(@columns[:status], fail_format)
           @result_sheet[row_num, @columns[:results]] = "Expected #{@result_sheet[row_num, @columns[:expectation]]}, Got #{@result_sheet[row_num, @columns[:total_ship_cost]]}"
         end
-        test_data[:street_address] = address['street_address']
-        test_data[:city] = address['city']
-        test_data[:state] = address['state']
-        test_data[:zip] = address['zip']
-        test_data[:name] = address['name']
+
         logger.step "#{"#"*10} "
         logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_num}"
         logger.step "#{"#"*10} Weight : #{@result_sheet[row_num, @columns[:weight_lb]]}, Selected Service: #{@result_sheet[row_num, @columns[:service_selected]]}"
-        logger.step "#{"#"*10} Ship-To Address : #{test_data[:name]}, #{test_data[:street_address]},"
+        logger.step "#{"#"*10} Ship-To Address : #{test_data[:name]}, #{test_data[:street_address]}, #{test_data[:city]}, #{test_data[:state]}, #{test_data[:zip]}"
         logger.step "#{"#"*10} Test #{@result_sheet[row_num, @columns[:status]] } - Expected #{@result_sheet[row_num, @columns[:expectation]]}, Got #{@result_sheet[row_num, @columns[:total_ship_cost]]}"
         logger.step "#{"#"*10} "
       end
