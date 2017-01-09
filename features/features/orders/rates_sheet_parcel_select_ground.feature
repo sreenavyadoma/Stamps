@@ -3,7 +3,7 @@ Feature: Parcel Select Ground Rates
   Background:
     Given Rates: Load Rate File
 
-  @parcel_select_ground
+  @rates_parcel_select_ground
   Scenario: Parcel Select Ground
     And I am signed in to Orders
     Then Toolbar: Add

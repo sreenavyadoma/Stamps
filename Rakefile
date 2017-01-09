@@ -264,8 +264,8 @@ Cucumber::Rake::Task.new(:rates_pm_comm_plus) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:parcel_select_ground) do |t|
-  t.profile = 'parcel_select_ground'
+Cucumber::Rake::Task.new(:rates_parcel_select_ground) do |t|
+  t.profile = 'rates_parcel_select_ground'
   t.cucumber_opts = "-p cuke_reports"
 end
 

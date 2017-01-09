@@ -34,7 +34,7 @@ rates_pme_comm_base: --tags @rates_pme_comm_base --guess VERBOSE=false JENKINS=t
 rates_pm_comm_base: --tags @rates_pm_comm_base --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pm_comm_base
 rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pme_comm_plus
 rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_pm_comm_plus
-parcel_select_ground: --tags @parcel_select_ground --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=parcel_select_ground
+rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=rates_parcel_select_ground
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=xxxxxxxxxx TEST=xxxxxxxxxx
