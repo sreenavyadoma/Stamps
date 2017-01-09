@@ -30,7 +30,7 @@ url_prefix:
 
 orders_credentials:
   stg:
-    rates_parcel_select_ground:
+    rake :
       usr: stgp6389urwj4
       pw: pass111
     rates_pm_comm_plus:

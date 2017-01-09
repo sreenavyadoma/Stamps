@@ -34,7 +34,7 @@ Then /^Rates: Test PME Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_plus']
   step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
 end
-PM Comm Plus
+
 Then /^Rates: Test PM Comm Base in Zone (\d+)$/ do |zone|
   logger.message "Rates: Test PME Comm Base in Zone #{zone}"
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_base']
