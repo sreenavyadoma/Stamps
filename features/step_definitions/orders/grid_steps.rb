@@ -293,6 +293,7 @@ Then /^Grid: Expect Ounces is (\d+)$/ do |expectation|
 end
 
 Then /^Grid: Expect Weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
+  logger.step "Grid: Expect Weight is #{pounds} lb. #{ounces} oz."
   expectation = "#{pounds} lbs. #{ounces} oz." #1 lbs. 0 oz.
   logger.step "Grid: Expect Weight is #{expectation}"
   10.times do
