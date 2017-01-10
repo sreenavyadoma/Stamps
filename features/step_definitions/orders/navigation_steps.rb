@@ -4,6 +4,20 @@ Then /^Buy Mail: Purchase 10$/ do
   stamps.navigation_bar.balance.buy_more.buy_10.select
 end
 
+=begin
+Then Toolbar: Add
+Then Details: Set Ship-From to default
+Then Details: Set Ship-To to address in Zone 5 through 8
+Then Details: Select Service PM Package
+Then Details: Set Ounces to 1
+Then Details: Set Width to 1
+Then Details: Set Length to 1
+Then Details: Set Height to 1
+Then Print: Open Modal
+Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
+Then Print: Set Printer to "factory"
+Then Print: Print
+=end
 Then /^Buy Mail: Purchase 25$/ do
   logger.step "Buy Mail: Purchase 25"
   test_data[:old_balance] = stamps.navigation_bar.balance.amount

@@ -81,12 +81,13 @@ module Stamps
   end
 
   def param
-    param = BrowserParam.new
-    param.browser = browser
-    param.logger = logger
-    param.scenario_name = test_helper.scenario_name
-    param.test_env = ENV['URL']
-    param
+    @test_param ||= BrowserParam.new
+    @test_param.browser = browser
+    @test_param.logger = logger
+    @test_param.scenario_name = test_helper.scenario_name
+    @test_param.test_env = ENV['URL']
+    #@test_param.web_app = :orders
+    @test_param
   end
 
   def test_data
