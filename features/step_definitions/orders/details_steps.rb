@@ -189,7 +189,7 @@ Then /^Save Shipping Costs Data$/ do
   logger.step "Save Shipping Costs Data"
   test_data[:service_cost] = stamps.orders.order_details.service.cost
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost if stamps.orders.order_details.tracking.present?
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
 end
 

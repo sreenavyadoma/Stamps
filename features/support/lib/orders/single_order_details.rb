@@ -1171,6 +1171,10 @@ module Stamps
           @blur_element = BlurOutElement.new param
         end
 
+        def present?
+          text_box.present?
+        end
+
         def blur_out
           blur_element.blur_out
         end
