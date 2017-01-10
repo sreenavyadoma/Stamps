@@ -251,6 +251,7 @@ end
 
 Then /^Details: Set Tracking to Signature Required$/ do
   step "Details: Set Tracking to \"Signature Required\""
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|

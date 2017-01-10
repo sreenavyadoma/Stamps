@@ -57,6 +57,7 @@ end
 
 Then /^Grid: Uncheck Saved Order ID$/ do
   logger.step "Grid: Uncheck Saved Order ID #{test_data[:order_id]}"
+  step "Save Shipping Costs Data"
   stamps.orders.grid.checkbox.uncheck_order(test_data[:order_id])
   stamps.orders.grid.checkbox.order_checked?(test_data[:order_id]).should be false
 end
