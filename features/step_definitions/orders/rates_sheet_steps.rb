@@ -453,6 +453,10 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
       end
     end
   end
+  logger.message "#{"*"*80}"
+  logger.message "#{"*"*80}"
+  logger.message "#{"*"*80}"
+  logger.message "#{"*"*80}"
   if @failed_test_count > 0
     logger.error "Number of Failed Tests: #{@failed_test_count}"
     logger.error "Number of Failed Tests: #{@failed_test_count}"
@@ -461,6 +465,9 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     logger.error "Number of Failed Tests: #{@failed_test_count}"
     logger.error "Number of Failed Tests: #{@failed_test_count}"
   end
+  logger.message "#{"*"*80}"
+  logger.message "#{"*"*80}"
+  logger.message "#{"*"*80}"
   logger.message "#{"*"*80}"
 end
 
