@@ -286,14 +286,14 @@ Then /^Customs: Close Modal$/ do
   step "Customs: Save Total"
   stamps.orders.order_details.customs.edit_form.close.should be false
   step "Details: Blur out"
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Cancel Customs Form$/ do
   logger.step "Cancel customs form"
   step "Customs: Blur out"
   stamps.orders.order_details.customs.edit_form.cancel.should be false
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Customs Form: Expect USPS Privacy Act Warning is visible$/ do

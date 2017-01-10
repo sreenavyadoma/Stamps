@@ -28,7 +28,7 @@ Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_
   step "Details: Blur out"
   item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
   step "Details: Blur out"
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
   step "Details: Blur out"
 end
 
@@ -170,7 +170,7 @@ Then /^Details: Set Pounds to (\d+)$/ do |value|
   test_data[:lb] = value
   stamps.orders.order_details.weight.lb.set test_data[:lb]
   step "Details: Blur out"
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Ounces to (\d+)$/ do |value|
@@ -178,14 +178,18 @@ Then /^Details: Set Ounces to (\d+)$/ do |value|
   test_data[:oz] = value
   stamps.orders.order_details.weight.oz.set test_data[:oz]
   step "Details: Blur out"
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Blur out$/ do
   stamps.orders.order_details.blur_out
 end
 
-Then /^Details: Save Total Ship Cost$/ do
+Then /^Save Shipping Costs Data$/ do
+  logger.step "Save Shipping Costs Data"
+  test_data[:service_cost] = stamps.orders.order_details.service.cost
+  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
 end
 
@@ -194,28 +198,28 @@ Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |le
   stamps.orders.order_details.dimensions.length.set length
   stamps.orders.order_details.dimensions.width.set width
   stamps.orders.order_details.dimensions.height.set height
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Length to (\d*)$/ do |value|
   logger.step "Details: Set Length to \"#{value}\""
   test_data[:length] = value
   stamps.orders.order_details.dimensions.length.set value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Width to (\d*)$/ do |value|
   logger.step "Details: Set Width to \"#{value}\""
   test_data[:width] = value
   stamps.orders.order_details.dimensions.width.set value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Height to (\d*)$/ do |value|
   logger.step "Details: Set Height to \"#{value}\""
   test_data[:height] = value
   stamps.orders.order_details.dimensions.height.set value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Check Insure-For checkbox$/ do
@@ -238,7 +242,7 @@ Then /^Details: Set Insure-For to \$(.*)$/ do |value|
   end
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
   logger.step "Insurance Cost: $#{test_data[:insure_for_cost]}"
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Tracking to USPS Tracking$/ do
@@ -259,7 +263,7 @@ Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
   logger.step "Tracking Cost: $#{test_data[:tracking_cost]}"
   test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Store Tracking info to parameter$/ do
@@ -272,7 +276,7 @@ Then /^Details: Set Ship-From to (\w+)$/ do |value|
   stamps.orders.order_details.ship_from.select value
   step "Details: Blur out"
   test_data[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Ship-To to address in Zone 1$/ do
@@ -453,7 +457,7 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
   stamps.orders.order_details.ship_to.domestic.show_address
   logger.step "Domestic Ship-To Address: #{test_data[:ship_to_domestic]}"
   stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_domestic]
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Ship-To to Domestic Address (.*)$/ do |address|
@@ -461,7 +465,7 @@ Then /^Details: Set Ship-To to Domestic Address (.*)$/ do |address|
   test_data[:ship_to_domestic] = ParameterHelper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_domestic]
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Hide Ship-To fields$/ do
@@ -567,7 +571,7 @@ Then /^Details: Set Phone to (.*)$/ do |phone|
     logger.step "Order Details Form Phone to \"#{test_data[:phone]}\""
     stamps.orders.order_details.ship_to.domestic.phone.set test_data[:phone]
   end unless test_data[:phone].length == 0
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Email to (.*)$/ do |email|
@@ -577,7 +581,7 @@ Then /^Details: Set Email to (.*)$/ do |email|
     logger.step "Details: Set Email to \"#{test_data[:email]}\""
     stamps.orders.order_details.ship_to.domestic.email.set test_data[:email]
   end unless test_data[:email].length == 0
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Increment Order Details Pounds by (\d*)$/ do |value|
@@ -588,67 +592,67 @@ end
 Then /^Decrement Order Details Pounds by (\d*)$/ do |value|
   logger.step "Decrement Order Details Pounds by \"#{value}\""
   stamps.orders.order_details.weight.lb.decrement value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Increment Order Details Ounces by (\d*)$/ do |value|
   logger.step "Increment Order Details Ounces by \"#{value}\""
   stamps.orders.order_details.weight.oz.increment value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Decrement Order Details Ounces by (\d*)$/ do |value|
   logger.step "Decrement Order Details Ounces by \"#{value}\""
   stamps.orders.order_details.weight.oz.decrement value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Increment Order Details Length by (\d*)$/ do |value|
   logger.step "Increment Order Details Length by \"#{value}\""
   stamps.orders.order_details.dimensions.length.increment value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Decrement Order Details Length by (\d*)$/ do |value|
   logger.step "Decrement Order Details Length by \"#{value}\""
   stamps.orders.order_details.dimensions.length.decrement value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Increment Order Details Width by (\d*)$/ do |value|
   logger.step "Increment Order Details Width by \"#{value}\""
   stamps.orders.order_details.dimensions.width.increment value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Decrement Order Details Width by (\d*)$/ do |value|
   logger.step "Decrement Order Details Width by \"#{value}\""
   stamps.orders.order_details.dimensions.width.decrement value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Increment Order Details Height by (\d*)$/ do |value|
   logger.step "Increment Order Details Height by \"#{value}\""
   stamps.orders.order_details.dimensions.height.increment value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Decrement Order Details Height by (\d*)$/ do |value|
   logger.step "Decrement Order Details Height by \"#{value}\""
   stamps.orders.order_details.dimensions.height.decrement value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Increment Order Details Insure-For by (\d*)$/ do |value|
   logger.step "Increment Order Details Insure-For by \"#{value}\""
   stamps.orders.order_details.insure_for.increment value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Decrement Order Details Insure-For by (\d*)$/ do |value|
   logger.step "Decrement Order Details Insure-For by \"#{value}\""
   stamps.orders.order_details.insure_for.decrement value
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Set Reference Number to (.*)$/ do |value|
@@ -656,7 +660,7 @@ Then /^Details: Set Reference Number to (.*)$/ do |value|
   logger.step "Details: Set Reference Number to #{reference_no}"
   stamps.orders.order_details.reference_no.set reference_no
   test_data[:reference_no] = reference_no
-  step "Details: Save Total Ship Cost"
+  step "Save Shipping Costs Data"
 end
 
 Then /^Details: Expect Domestic Ship-To Company is (.*)$/ do |company|
