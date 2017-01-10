@@ -1,6 +1,7 @@
 
 Then /^Print: Open Modal$/ do
   logger.step "Print: Open Modal"
+  step "Save Shipping Costs Data"
   stamps.orders.toolbar.print_btn.print_modal
 end
 
