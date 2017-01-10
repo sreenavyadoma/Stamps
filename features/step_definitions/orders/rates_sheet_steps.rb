@@ -443,13 +443,6 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
   @result_file.write @result_filename
   logger.message "Result Sheet Location: #{@result_sheet_loc}"
-  logger.message "#{"*"*80}"
-end
-
-Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
-  logger.message "Rates: Number of failed test should be less than #{count}"
-  count = count.to_i
-  logger.message "Result Sheet Location: #{@result_sheet_loc}"
   @result_sheet.each_with_index do |row, row_num|
     begin
       if row_num > 0
@@ -460,7 +453,21 @@ Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
       end
     end
   end
-  logger.message "Result Sheet Location: #{@result_sheet_loc}"
+  if @failed_test_count > 0
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+    logger.error "Number of Failed Tests: #{@failed_test_count}"
+  end
+  logger.message "#{"*"*80}"
+end
+
+Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
+  logger.message "#{"*"*80}"
+  logger.message "Rates: Number of failed test should be less than #{count}"
+  count = count.to_i
   if @failed_test_count>0
     logger.error "Number of Failed Tests: #{@failed_test_count}"
     logger.error "Number of Failed Tests: #{@failed_test_count}"
