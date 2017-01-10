@@ -47,20 +47,24 @@ Then /^Buy Mail: Click Purchase button$/ do
   stamps.navigation_bar.balance.buy_more.purchase
 end
 
-Then /^Buy Mail Confirm Purchase: Click Purchase button$/ do
+Then /^Buy Mail Confirm Transction: Click Confirm button$/ do
   logger.step "Buy Mail: Click Purchase button"
-  @purchase_approved = stamps.navigation_bar.balance.buy_more.purchase.purchase
+  @purchase_approved = stamps.navigation_bar.balance.buy_more.purchase.confirm
 end
 
 Then /^Buy Mail Confirm Purchase: Expect text area contains, Please confirm your \$(.*) postage purchase.$/ do |amount|
   logger.step "Buy Mail Confirm Purchase: Expect text area contains, Please confirm your $#{amount} postage purchase."
-  stamps.navigation_bar.balance.buy_more.purchase.text.should include "Please confirm your $#{amount} postage purchase."
+  expectation = "Please confirm that you wish to add $#{amount} to your account balance. Once you click the Confirm button, the amount will be added to your account and cannot be refunded."
+  actual_value = stamps.navigation_bar.balance.buy_more.purchase.text
+  actual_value.should eql expectation
 end
 
-Then /^Buy Mail Purchase Approved: Expect text area contains, Your postage purchase request for \$(.*) has been approved.$/ do |amount|
-  logger.step "Buy Mail Purchase Approved: Expect text area contains, Your postage purchase request for $#{amount} has been approved."
+Then /^Buy Mail Purchase Approved: Expect text area contains, Your fund request for \$(.*) has been approved.$/ do |amount|
+  logger.step "Buy Mail Purchase Approved: Expect text area contains, Your fund request for $#{amount} has been approved."
   @purchase_approved.should be_truthy
-  @purchase_approved.text.should eql "Your postage purchase request for $#{amount} has been approved."
+  expectation = "Your fund request for $#{amount} has been approved."
+  actual_value = @purchase_approved.text
+  actual_value.should eql expectation
 end
 
 Then /^Buy Mail Purchase Approved: Click OK button$/ do

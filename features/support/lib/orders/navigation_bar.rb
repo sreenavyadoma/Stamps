@@ -1,12 +1,12 @@
 module Stamps
   module Navigation #todo-rob Refactor to WebApps module
-    class PurchaseApproved < Browser::Modal
-      attr_reader :ok_button, :window_title
+    class TransactionComplete < Browser::Modal
+      attr_reader :window_title, :text_area
 
       def initialize param
         super param
-        @ok_button = BrowserElement.new (param.web_app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
-        @window_title = BrowserElement.new browser.div text: "Purchase Approved"
+        @window_title = BrowserElement.new browser.div(text: "Transaction Complete")
+        @text_area = BrowserElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
       end
 
       def wait_until_present *args
@@ -17,12 +17,12 @@ module Stamps
         window_title.present?
       end
 
-      def text_area
-        BrowserElement.new (browser.divs css: "div[id^=dialoguemodal-][id$=-innerCt]").last
-      end
-
       def text
         text_area.text
+      end
+
+      def ok_button
+        BrowserElement.new (param.web_app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
       end
 
       def ok
@@ -31,12 +31,14 @@ module Stamps
       end
     end
 
-    class ConfirmPurchase < Browser::Modal
-      attr_reader :window_title
+    class ConfirmTransaction < Browser::Modal
+      attr_reader :window_title, :transaction_complete, :confirm_btn
 
       def initialize param
         super param
-        @window_title = BrowserElement.new browser.div text: 'Confirm Purchase'
+        @window_title = BrowserElement.new browser.div(text: 'Confirm Transaction')
+        @confirm_btn = BrowserElement.new browser.span(text: "Confirm")
+        @transaction_complete = TransactionComplete.new param
       end
 
       def exit
@@ -54,7 +56,7 @@ module Stamps
 
       def text_area
         if param.web_app == :orders
-          div = browser.div class: 'sdc-dialoguemodal-confirm-purchase'
+          div = browser.div(class: 'sdc-dialoguemodal-confirm-purchase')
         elsif param.web_app == :mail
           div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
@@ -67,26 +69,13 @@ module Stamps
         text_area.text
       end
 
-      def purchase_button
-        if param.web_app == :orders
-          button = (browser.spans text: "Purchase").last
-        elsif param.web_app == :mail
-          button = browser.spans(css: "span[id$=-purchasebtn-btnIconEl]").last
-        else
-          "Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test.".should eql "Invalid Value"
-        end
-        BrowserElement.new button
-      end
-
-      def purchase
-        purchase_approved = PurchaseApproved.new param
-
+      def confirm
         10.times do
-          return purchase_approved if purchase_approved.present?
-          purchase_button.safe_click
-          purchase_approved.wait_until_present 6
+          return transaction_complete if transaction_complete.present?
+          confirm_btn.safe_click
+          transaction_complete.wait_until_present 6
         end
-        "Purchase Approved modal did not open!".should eql "Invalid State"
+        "Unable to click Confirm button on Confirm Transaction modal!".should eql "Confirm Transaction Modal"
       end
     end
 
@@ -114,14 +103,14 @@ module Stamps
     end
 
     class BuyPostageModal < Browser::Modal
-      attr_reader :confirm_postage, :confirm_purchase, :auto_buy_postage_modal, :auto_buy_postage_link
+      attr_reader :confirm_transaction, :auto_buy_postage_modal, :auto_buy_postage_link, :window_title
 
       def initialize param
         super param
-        @confirm_postage ||= ConfirmPurchase.new param
-        @confirm_purchase ||= ConfirmPurchase.new param
+        @confirm_transaction ||= ConfirmTransaction.new param
         @auto_buy_postage_modal ||= AutoBuyPostageModal.new param
         @auto_buy_postage_link = BrowserElement.new browser.span(text: "Auto-buy postage")
+        @window_title = browser.div(text: "Add Funds")
       end
 
       def auto_buy_postage
@@ -144,13 +133,13 @@ module Stamps
       end
 
       def present?
-        (browser.div text: "Buy Postage").present?
+        window_title.present?
       end
 
       def buy_10
         param.web_app.should_not be nil
         if param.web_app == :orders
-          checkbox_element = (browser.label text: "$10.00").parent.span
+          checkbox_element = browser.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
@@ -168,7 +157,7 @@ module Stamps
 
       def buy_25
         if param.web_app == :orders
-          checkbox_element = (browser.label text: "$25.00").parent.span
+          checkbox_element = browser.label(css: "label[for=sdc-purchasewin-25dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
@@ -187,7 +176,7 @@ module Stamps
 
       def buy_50
         if param.web_app == :orders
-          checkbox_element = (browser.label text: "$50.00").parent.span
+          checkbox_element = browser.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
@@ -205,7 +194,7 @@ module Stamps
 
       def buy_100
         if param.web_app == :orders
-          checkbox_element = (browser.label text: "$100.00").parent.span
+          checkbox_element = browser.label(css: "label[for=sdc-purchasewin-100dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
@@ -223,7 +212,7 @@ module Stamps
 
       def buy_other value
         if param.web_app == :orders
-          checkbox_element = (browser.label text: /Other:/).parent.span
+          checkbox_element = browser.label(css: "label[for=sdc-purchasewin-otherdradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
@@ -245,13 +234,13 @@ module Stamps
       end
 
       def purchase
-        return confirm_purchase if confirm_purchase.present?
+        return confirm_transaction if confirm_transaction.present?
         10.times do
-          return confirm_purchase if confirm_purchase.present?
+          return confirm_transaction if confirm_transaction.present?
           purchase_button.safe_click
-          confirm_purchase.wait_until_present 6
+          confirm_transaction.wait_until_present 6
         end
-        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Mail modal..." unless confirm_purchase.present?
+        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Mail modal..." unless confirm_transaction.present?
       end
 
       def edit_payment_method
@@ -277,7 +266,6 @@ module Stamps
       end
 
       def buy_more
-        return buy_postage_modal if buy_postage_modal.present?
         20.times do
           return buy_postage_modal if buy_postage_modal.present?
           buy_more_drop_down.element.hover
@@ -286,6 +274,7 @@ module Stamps
           buy_more_link.safe_click
           return buy_postage_modal if buy_postage_modal.present?
         end
+        "Unable to open Buy Postage Modal".should eql "buy_more failed"
       end
 
       def purchase_history
