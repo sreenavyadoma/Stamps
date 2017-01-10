@@ -11,8 +11,8 @@ Then /^Rates: Load Rate File$/ do
   begin
     @rate_file = Spreadsheet.open @rate_file_loc
   rescue Exception => e
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+    logger.message e.message
+    logger.message e.backtrace.join("\n")
     e.message.should eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
   end
 
@@ -308,7 +308,7 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     when 9
       zone_column = @columns[:zone9]
     else
-      logger.error "Zone parameter (zone) should have a value between 1 through 9. #{zone} is an invalid selection. Check your test."
+      logger.message "Zone parameter (zone) should have a value between 1 through 9. #{zone} is an invalid selection. Check your test."
       expect(zone).to be_between(1, 9).inclusive
   end
 
@@ -433,8 +433,8 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         logger.step "#{"#"*10} "
       end
     rescue Exception=> e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
+      logger.message e.message
+      logger.message e.backtrace.join("\n")
       row[@columns[:error_msg]] = "Zone #{zone} - Row #{row_num}: #{e.message}"
     end
   end
@@ -442,31 +442,24 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   result_sheet = param_sheet.gsub(/\s+/, "")
   @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
   @result_file.write @result_filename
-  logger.message "Result Sheet Location: #{@result_sheet_loc}"
   @result_sheet.each_with_index do |row, row_num|
     begin
       if row_num > 0
         if row[@columns[:status]] == "Failed"
           @failed_test_count +=1
-          logger.message"Zone #{zone} - Row #{row_num} Failed"
+          logger.message "Zone #{zone} - Row #{row_num} Failed"
         end
       end
     end
   end
   logger.message "#{"*"*80}"
   logger.message "#{"*"*80}"
-  logger.message "#{"*"*80}"
-  logger.message "#{"*"*80}"
-  if @failed_test_count > 0
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-  end
-  logger.message "#{"*"*80}"
-  logger.message "#{"*"*80}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
   logger.message "#{"*"*80}"
   logger.message "#{"*"*80}"
 end
@@ -475,14 +468,12 @@ Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
   logger.message "#{"*"*80}"
   logger.message "Rates: Number of failed test should be less than #{count}"
   count = count.to_i
-  if @failed_test_count>0
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-    logger.error "Number of Failed Tests: #{@failed_test_count}"
-  end
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
+  logger.message "Number of Failed Tests: #{@failed_test_count}"
   @failed_test_count.should be < count
   logger.message "#{"*"*80}"
 end
