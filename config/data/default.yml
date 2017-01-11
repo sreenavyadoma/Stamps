@@ -1203,31 +1203,31 @@ orders_credentials:
 mail_credentials:
   stg:
     mail_authentication:
-      usr: stgrryltfc0
+      usr: stguspu8o4655f
       pw: pass111
     mail_bvt_international:
-      usr: jho7vpgem5
+      usr: stgo5krbjtc
       pw: pass111
     mail_bvt_netstamps_specify:
-      usr: sqpklsh7h
+      usr: stgepefuut
       pw: pass111
     mail_bvt_netstamps_calculate:
-      usr: c5mq9slp2
+      usr: stgswz5afiev
       pw: pass111
     mail_bvt_purchasing:
-      usr: gmh8y0m
+      usr: stgsqtuz7x2
       pw: pass111
     mail_bvt_extra_services:
-      usr: zkoa63fq4ezbb
+      usr: stgld1uw4sroe7
       pw: pass111
     mail_bvt_envelopes:
-      usr: t5mjsiuy2sukk9
+      usr: stghy955swcbcm
       pw: pass111
     mail_bvt_contacts:
-      usr: k2sljxb2tc
+      usr: stghi5sqaoe
       pw: pass111
     mail_bvt_address_cleansing:
-      usr: b2vc5867
+      usr: stgvw4zzd8jgj7
       pw: pass111
     mail_forgot_password:
       usr: kocp1opzgz
