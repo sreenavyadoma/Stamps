@@ -6,7 +6,7 @@ module Stamps
     end
 
     class Modal
-      attr_accessor :param, :browser, :logger, :element_helper, :web_app
+      attr_accessor :param, :browser, :logger, :element_helper
 
       def initialize param
         @param = param

@@ -1,14 +1,12 @@
 
 Given /^Visit Mail sign in page$/ do
   logger.step "I visit mail sign-in page"
-  stamps.web_app = :mail
   stamps.load_page
   browser.url.downcase.should include "webpostage"
 end
 
 Given /^I am signed in as Mail shipper$/ do
   logger.step "I am signed in as a mail shipper"
-  param.web_app = :mail
   step "Launch default browser"
   if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"

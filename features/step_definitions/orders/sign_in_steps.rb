@@ -28,7 +28,6 @@ end
 
 Given /^I am signed in to Orders$/ do
   logger.step "I am signed in to Orders"
-  param.web_app = :orders
   step "I launched default browser"
   if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"

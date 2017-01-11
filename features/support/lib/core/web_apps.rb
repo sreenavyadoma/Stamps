@@ -11,10 +11,10 @@ module Stamps
 
     def load_page
       browser.should_not be_nil
-      web_app.should eq(:mail).or(eq(:orders))
+      param.web_app.should eq(:mail).or(eq(:orders))
       param.test_env.should_not be_nil
 
-      case web_app
+      case param.web_app
         when :orders
           app_name ="orders"
         when :mail

@@ -44,6 +44,16 @@ module Stamps
     end
   end
 
+  def param
+    @test_param ||= BrowserParam.new
+    @test_param.browser = browser
+    @test_param.logger = logger
+    @test_param.scenario_name = test_helper.scenario_name
+    @test_param.test_env = ENV['URL']
+    @test_param.web_app = ENV['WEB_APP'].to_sym
+    @test_param
+  end
+
   def webreg
     begin
       @webreg ||= WebReg::WebRegistration.new param
@@ -78,16 +88,6 @@ module Stamps
       logger.error ""
       raise e
     end
-  end
-
-  def param
-    @test_param ||= BrowserParam.new
-    @test_param.browser = browser
-    @test_param.logger = logger
-    @test_param.scenario_name = test_helper.scenario_name
-    @test_param.test_env = ENV['URL']
-    #@test_param.web_app = :orders
-    @test_param
   end
 
   def test_data
