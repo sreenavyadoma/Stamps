@@ -1205,24 +1205,6 @@ mail_credentials:
     mail_authentication:
       usr: stgrryltfc0
       pw: pass111
-    stgstgstg:
-      usr: stgstgstg
-      pw: pass111
-    stgstgstg:
-      usr: stgstgstg
-      pw: pass111
-    stgstgstg:
-      usr: stgstgstg
-      pw: pass111
-    stgstgstg:
-      usr: stgstgstg
-      pw: pass111
-    stgstgstg:
-      usr: stgstgstg
-      pw: pass111
-    stgstgstg:
-      usr: stgstgstg
-      pw: pass111
     mail_bvt_international:
       usr: jho7vpgem5
       pw: pass111
@@ -1879,70 +1861,40 @@ mail_credentials:
       pw: pass111
   cc:
     mail_authentication:
-      usr: cce50cu2o
-      pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
-      pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
-      pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
-      pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
-      pw: pass111
-    cccccccccccccccc:
-      usr: cccccccccccccccc
+      usr: ccdvx25ja288
       pw: pass111
     mail_bvt_international:
-      usr: wpqacc1006
+      usr: ccqx3kv9vj90
       pw: pass111
     mail_bvt_netstamps_specify:
-      usr: wpqacc1008
+      usr: ccyvz97b297ol
       pw: pass111
     mail_bvt_netstamps_calculate:
-      usr: wpqacc1007
-      pw: pass111
-    mail_bvt_purchasing:
-      usr: wpqacc1009
+      usr: cco7a51np
       pw: pass111
     mail_bvt_extra_services:
-      usr: wpqacc1005
+      usr: ccm4i8907y
       pw: pass111
     mail_bvt_envelopes:
-      usr: wpqacc1004
+      usr: cct26k6b39tk
       pw: pass111
     mail_bvt_contacts:
-      usr: wpqacc1003
+      usr: cctpfqe5t
       pw: pass111
     mail_bvt_address_cleansing:
-      usr: wpqacc1002
-      pw: pass111
-    mail_bvt_international:
-      usr: jho7vpgem5
-      pw: pass111
-    mail_bvt_netstamps_specify:
-      usr: sqpklsh7h
-      pw: pass111
-    mail_bvt_netstamps_calculate:
-      usr: c5mq9slp2
+      usr: ccmnlxbv44hv0s
       pw: pass111
     mail_bvt_purchasing:
-      usr: gmh8y0m
+      usr: ccu0g3hf0ls
       pw: pass111
-    mail_bvt_extra_services:
-      usr: zkoa63fq4ezbb
+    free_user3:
+      usr: cch3puafas7qr
       pw: pass111
-    mail_bvt_envelopes:
-      usr: t5mjsiuy2sukk9
+    free_user1:
+      usr: ccrfwa5m6
       pw: pass111
-    mail_bvt_contacts:
-      usr: k2sljxb2tc
-      pw: pass111
-    mail_bvt_address_cleansing:
-      usr: b2vc5867
+    free_user2:
+      usr: ccolb8oc2bzoai
       pw: pass111
     mail_forgot_password:
       usr: wpqacc1002

@@ -47,10 +47,12 @@ Before do  |scenario|
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default') || (ENV['USR'].downcase == 'jenkins')
         logger.message "Using Default Credentials from ../config/data/default.yml"
         begin
-          if ENV['web_app'].downcase == 'orders'
+          if ENV['web_app'].downcase == :orders
             ENV['USR'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['TEST']]['usr']
-          else
+          elsif ENV['web_app'].downcase == :mail
             ENV['USR'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['TEST']]['usr']
+          else
+            "Valid web_app values are :orders and :mail. You may add to the list, see hooks.rb".should eql "Invalid web_app selection. #{ENV['web_app']} is not recognized."
           end
         rescue => e
           if e.message.include? "mapping values are not allowed"
