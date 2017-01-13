@@ -13,7 +13,7 @@ Feature:  Update International Orders to ShipStation
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
       | Customer Name | Customer Company | Street Address 1  | Street Address 2 | City   | Province | PostalCode  | France  | 415-411-1111  | rtest@stamps.com  |
     Then Details: Set Weight to 2 lb 2 oz
-    Then Details: Select Service PM International Package
+    Then Details: Select Service PMI Package
     Then Details: Set Insure-For to $100.25
     Then Details: Set Reference Number to Reference #123
     Then Details: Add Item 1, Qty 1, ID ID 1, Description Description 1
@@ -60,7 +60,7 @@ Feature:  Update International Orders to ShipStation
 
     Then Details: Expect Reference Number is Reference #123
 
-    Then Details: Expect Service is PM International Package
+    Then Details: Expect Service is PMI Package
     #Then Details: Expect Service Cost saved value is the same
 
     Then Details: Expect Item 1 Qty is 1

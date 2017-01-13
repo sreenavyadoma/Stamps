@@ -24,8 +24,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
 
     # Priority Mail International Flat Rate Envelope
-    Then Details: Select Service PM International Flat Rate Envelope
-    Then Details: Expect Service is PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
+    Then Details: Expect Service is PMI Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -38,8 +38,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Padded Flat Rate Envelope
-    Then Details: Select Service PM International Padded Flat Rate Envelope
-    Then Details: Expect Service is PM International Padded Flat Rate Envelope
+    Then Details: Select Service PMI Padded Flat Rate Envelope
+    Then Details: Expect Service is PMI Padded Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -52,8 +52,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Legal Flat Rate Envelope
-    Then Details: Select Service PM International Legal Flat Rate Envelope
-    Then Details: Expect Service is PM International Legal Flat Rate Envelope
+    Then Details: Select Service PMI Legal Flat Rate Envelope
+    Then Details: Expect Service is PMI Legal Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -66,8 +66,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Small Flat Rate Box
-    Then Details: Select Service PM International Small Flat Rate Box
-    Then Details: Expect Service is PM International Small Flat Rate Box
+    Then Details: Select Service PMI Small Flat Rate Box
+    Then Details: Expect Service is PMI Small Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -80,8 +80,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Medium Flat Rate Box
-    Then Details: Select Service PM International Medium Flat Rate Box
-    Then Details: Expect Service is PM International Medium Flat Rate Box
+    Then Details: Select Service PMI Medium Flat Rate Box
+    Then Details: Expect Service is PMI Medium Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -94,8 +94,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail International Large Flat Rate Box
-    Then Details: Select Service PM International Large Flat Rate Box
-    Then Details: Expect Service is PM International Large Flat Rate Box
+    Then Details: Select Service PMI Large Flat Rate Box
+    Then Details: Expect Service is PMI Large Flat Rate Box
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -108,8 +108,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Express International Flat Rate Envelope
-    Then Details: Select Service PME International Flat Rate Envelope
-    Then Details: Expect Service is PME International Flat Rate Envelope
+    Then Details: Select Service PMEI Flat Rate Envelope
+    Then Details: Expect Service is PMEI Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -122,8 +122,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Express International Padded Flat Rate Envelope
-    Then Details: Select Service PME International Padded Flat Rate Envelope
-    Then Details: Expect Service is PME International Padded Flat Rate Envelope
+    Then Details: Select Service PMEI Padded Flat Rate Envelope
+    Then Details: Expect Service is PMEI Padded Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement
@@ -136,8 +136,8 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then Print: Close Modal
 
     # Priority Mail Express International Legal Flat Rate Envelope
-    Then Details: Select Service PME International Legal Flat Rate Envelope
-    Then Details: Expect Service is PME International Legal Flat Rate Envelope
+    Then Details: Select Service PMEI Legal Flat Rate Envelope
+    Then Details: Expect Service is PMEI Legal Flat Rate Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 0
     Then Customs: Check I agree to the USPS Privacy Act Statement

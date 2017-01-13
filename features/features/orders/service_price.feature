@@ -10,7 +10,7 @@ Feature: User Views Price Next to Service Dropdown
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Expect Service Cost is $0.00
-    Then Details: Expect Service Cost inline price for "First-Class Mail Large Envelope/Flat" is greater than $0.01
+    Then Details: Expect Service Cost inline price for "FCM Package" is greater than $0.01
     Then Details: Expect Service Cost inline price for "First-Class Mail Package/Thick Envelope" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Large/Thick Envelope" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Package" is greater than $0.01

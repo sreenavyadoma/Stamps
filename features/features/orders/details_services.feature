@@ -4,21 +4,22 @@ Feature:  Orders Service Selection
     Given I am signed in to Orders
 
   @details_services
-  Scenario:  Orders Service Selection
+  @details_services_dom
+  Scenario: Service Selections for Domestic Orders
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1
     Then Details: Set Ounces to 1
 
-    Then Details: Select Service First-Class Mail Large Envelope/Flat
-    Then Details: Expect Service is First-Class Mail Large Envelope/Flat
+    Then Details: Select Service FCM Large Envelope
+    Then Details: Expect Service is FCM Large Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM Large/Thick Envelope
-    Then Details: Expect Service is PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
+    Then Details: Expect Service is PM Large Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
@@ -136,8 +137,8 @@ Feature:  Orders Service Selection
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
-    Then Details: Expect Service is Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
+    Then Details: Expect Service is MM Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
@@ -157,9 +158,10 @@ Feature:  Orders Service Selection
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    # International
+  @details_services
+  @details_services_int
+  Scenario: Service Selections for International Orders
     Then Toolbar: Add
-
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
@@ -170,98 +172,98 @@ Feature:  Orders Service Selection
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
 
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
-    Then Details: Expect Service is First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
+    Then Details: Expect Service is FCMI Large Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service First-Class Mail International Package/Thick Envelope
-    Then Details: Expect Service is First-Class Mail International Package/Thick Envelope
+    Then Details: Select Service FCMI Package
+    Then Details: Expect Service is FCMI Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM International Package
-    Then Details: Expect Service is PM International Package
+    Then Details: Select Service PMI Package
+    Then Details: Expect Service is PMI Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM International Flat Rate Envelope
-    Then Details: Expect Service is PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
+    Then Details: Expect Service is PMI Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM International Padded Flat Rate Envelope
-    Then Details: Expect Service is PM International Padded Flat Rate Envelope
+    Then Details: Select Service PMI Padded Flat Rate Envelope
+    Then Details: Expect Service is PMI Padded Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM International Legal Flat Rate Envelope
-    Then Details: Expect Service is PM International Legal Flat Rate Envelope
+    Then Details: Select Service PMI Legal Flat Rate Envelope
+    Then Details: Expect Service is PMI Legal Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM International Small Flat Rate Box
-    Then Details: Expect Service is PM International Small Flat Rate Box
+    Then Details: Select Service PMI Small Flat Rate Box
+    Then Details: Expect Service is PMI Small Flat Rate Box
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM International Medium Flat Rate Box
-    Then Details: Expect Service is PM International Medium Flat Rate Box
+    Then Details: Select Service PMI Medium Flat Rate Box
+    Then Details: Expect Service is PMI Medium Flat Rate Box
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PM International Large Flat Rate Box
-    Then Details: Expect Service is PM International Large Flat Rate Box
+    Then Details: Select Service PMI Large Flat Rate Box
+    Then Details: Expect Service is PMI Large Flat Rate Box
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    #Then Details: Select Service PM International Regional Rate Box A
-    #Then Details: Expect Service is PM International Regional Rate Box A
+    #Then Details: Select Service PMI Regional Rate Box A
+    #Then Details: Expect Service is PMI Regional Rate Box A
 
-    #Then Details: Select Service PM International Regional Rate Box B
-    #Then Details: Expect Service is PM International Regional Rate Box B
+    #Then Details: Select Service PMI Regional Rate Box B
+    #Then Details: Expect Service is PMI Regional Rate Box B
 
-    Then Details: Select Service PME International Package/Flat/Thick Envelope
-    Then Details: Expect Service is PME International Package/Flat/Thick Envelope
-
-    Then Print: Open Modal
-    Then Print: Expect Print Modal is present
-    Then Print: Close Modal
-
-    Then Details: Select Service PME International Flat Rate Envelope
-    Then Details: Expect Service is PME International Flat Rate Envelope
+    Then Details: Select Service PMEI Package
+    Then Details: Expect Service is PMEI Package
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PME International Padded Flat Rate Envelope
-    Then Details: Expect Service is PME International Padded Flat Rate Envelope
+    Then Details: Select Service PMEI Flat Rate Envelope
+    Then Details: Expect Service is PMEI Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present
     Then Print: Close Modal
 
-    Then Details: Select Service PME International Legal Flat Rate Envelope
-    Then Details: Expect Service is PME International Legal Flat Rate Envelope
+    Then Details: Select Service PMEI Padded Flat Rate Envelope
+    Then Details: Expect Service is PMEI Padded Flat Rate Envelope
+
+    Then Print: Open Modal
+    Then Print: Expect Print Modal is present
+    Then Print: Close Modal
+
+    Then Details: Select Service PMEI Legal Flat Rate Envelope
+    Then Details: Expect Service is PMEI Legal Flat Rate Envelope
 
     Then Print: Open Modal
     Then Print: Expect Print Modal is present

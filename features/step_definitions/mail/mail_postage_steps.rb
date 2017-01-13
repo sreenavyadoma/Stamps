@@ -3,6 +3,7 @@
 Then /^Mail: Set Mail From to (.*)/ do |value|
   logger.step "Mail: Set Mail From to #{value}"
   stamps.mail.ship_from.select value
+  test_data[:ship_from] = value
 end
 
 Then /^Mail: Set Ship-To to Random Address in Zone 1$/ do
@@ -50,19 +51,19 @@ Then /^Mail: Set Ship-To to$/ do |table|
   address = table.hashes.first
   logger.step "Mail: Set Ship-To to \n#{address}"
 
-  ship_to_country = address['country']
-  logger.step "Ship-To Country:  #{ship_to_country}"
+  test_data[:ship_to_country] = address['country']
+  logger.step "Ship-To Country:  #{test_data[:ship_to_country]}"
 
-  ship_to_name = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
-  ship_to_company = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
-  ship_to_city = (address['city'].downcase.include? "random") ? ParameterHelper.random_string : address['city']
+  test_data[:ship_to_name] = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
+  test_data[:ship_to_company] = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
+  test_data[:ship_to_city] = (address['city'].downcase.include? "random") ? ParameterHelper.random_string : address['city']
 
-  if ship_to_country.downcase.include? "united states"
-    ship_to_street_address = (address['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address']
+  if test_data[:ship_to_country].downcase.include? "united states"
+    test_data[:ship_to_street_address] = (address['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address']
     ship_to_state = (address['state'].downcase.include? "random") ? ParameterHelper.random_string : address['state']
     ship_to_zip = (address['zip'].downcase.include? "random") ? ParameterHelper.random_string : address['zip']
 
-    ship_to_address = "#{ship_to_name},#{ship_to_company},#{ship_to_street_address},#{ship_to_city} #{ship_to_state} #{ship_to_zip}"
+    ship_to_address = "#{test_data[:ship_to_name]},#{test_data[:ship_to_company]},#{ship_to_street_address},#{test_data[:ship_to_city]} #{ship_to_state} #{ship_to_zip}"
     logger.step "Ship-To Address:  #{ship_to_address}"
     step "Mail: Set Ship-To address to #{ship_to_address}"
   else
@@ -72,17 +73,17 @@ Then /^Mail: Set Ship-To to$/ do |table|
     ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address['postal_code']
     ship_to_phone = (address['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address['phone']
 
-    logger.step "Ship-To Name: #{ship_to_name}"
-    logger.step "Ship-To Company: #{ship_to_company}"
+    logger.step "Ship-To Name: #{test_data[:ship_to_name]}"
+    logger.step "Ship-To Company: #{test_data[:ship_to_company]}"
     logger.step "Ship-To Address 1: #{ship_to_street_address_1}"
     logger.step "Ship-To Address 2: #{ship_to_street_address_2}"
-    logger.step "Ship-To City: #{ship_to_city}"
+    logger.step "Ship-To City: #{test_data[:ship_to_city]}"
     logger.step "Ship-To Province: #{ship_to_province}"
     logger.step "Ship-To Postal Code: #{ship_to_postal_code}"
     logger.step "Ship-To Phone: #{ship_to_phone}"
 
-    step "Mail: Set Ship-To country to #{ship_to_country}"
-    step "Mail International: Set Ship-To Name to \"#{ship_to_name}\""
+    step "Mail: Set Ship-To country to #{test_data[:ship_to_country]}"
+    step "Mail International: Set Ship-To Name to \"#{test_data[:ship_to_name]}\""
     step "Mail International: Set Ship-To Company to \"#{ship_to_company}\""
     step "Mail International: Set Ship-To Address 1 to \"#{ship_to_street_address_1}\""
     step "Mail International: Set Ship-To Address 2 to \"#{ship_to_street_address_2}\""

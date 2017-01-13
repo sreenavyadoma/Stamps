@@ -13,7 +13,7 @@ Feature:  BVT International Shipping
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then Details: Set Ounces to 4
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 400, Origin Japan, Tariff 100

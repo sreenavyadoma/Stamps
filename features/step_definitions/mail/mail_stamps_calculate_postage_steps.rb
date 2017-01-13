@@ -26,7 +26,7 @@ Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail Letter$/ do
 end
 
 Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail Large Envelope-Flat$/ do
-  step "Mail Stamps: Set Calculate Mail Service to First-Class Mail Large Envelope/Flat"
+  step "Mail Stamps: Set Calculate Mail Service to FCM Package"
 end
 
 Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail International Envelope$/ do
@@ -34,7 +34,7 @@ Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail International
 end
 
 Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail International Large Envelope-Flat$/ do
-  step "Mail Stamps: Set Calculate Mail Service to First-Class Mail International Large Envelope/Flat"
+  step "Mail Stamps: Set Calculate Mail Service to FCMI Large Envelope"
 end
 
 Then /^Mail Stamps: Open Extra Services$/ do

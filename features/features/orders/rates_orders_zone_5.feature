@@ -4,12 +4,12 @@ Feature: January 2017 Rates for Core User in Zone 5
     Given I am signed in to Orders
 
   @rates_orders_zone_5
-  Scenario: First-Class Mail Large Envelope/Flat
+  Scenario: FCM Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service First-Class Mail Large Envelope/Flat
+    Then Details: Select Service FCM Large Envelope
     Then Details: Set Weight to 0 lb 5 oz
     Then Details: Expect Service Cost is $1.82
     Then Details: Expect Total Ship Cost is $1.82
@@ -32,7 +32,7 @@ Feature: January 2017 Rates for Core User in Zone 5
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Set Weight to 1 lb 0 oz
     Then Details: Expect Service Cost is $6.73
     Then Details: Set Tracking to USPS Tracking
@@ -214,12 +214,12 @@ Feature: January 2017 Rates for Core User in Zone 5
     Then Details: Expect Total Ship Cost is $21.28
 
   @rates_orders_zone_5
-  Scenario: Media Mail Package/Flat/Thick Envelope
+  Scenario: MM Package
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to United States
     Then Details: Set Ship-To to address in Zone 5
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
     Then Details: Set Weight to 13 lb 0 oz
     Then Details: Expect Service Cost is $8.45
     Then Details: Set Tracking to USPS Tracking

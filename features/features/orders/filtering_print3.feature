@@ -8,17 +8,17 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service First-Class Mail Large Envelope/Flat
+    Then Details: Select Service FCM Large Envelope
 
     Then Toolbar: Add second order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service First-Class Mail Large Envelope/Flat
+    Then Details: Select Service FCM Large Envelope
 
     Then Toolbar: Add third order
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
 
     Then Grid: Check row 1
     Then Grid: Check row 2

@@ -10,7 +10,7 @@ Feature:  Order Details Form - Reference # Field
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Set Ounces to 2
 
     Then Details: Set Reference Number to random

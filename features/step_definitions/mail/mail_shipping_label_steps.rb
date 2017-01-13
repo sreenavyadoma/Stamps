@@ -5,7 +5,7 @@ Then /^Mail Shipping Labels: Set Service to (.*)/ do |service|
 end
 
 Then /^Mail Shipping Labels: Select Service First-Class Mail Large Envelope-Flat$/ do
-  step "Mail Shipping Labels: Set Service to First-Class Mail Large Envelope/Flat"
+  step "Mail Shipping Labels: Set Service to FCM Package"
 end
 
 Then /^Mail Shipping Labels: Select Service First-Class Mail Package-Thick Envelope$/ do
@@ -89,7 +89,7 @@ Then /^Mail Shipping Labels: Select Service Parcel Select Ground Oversized Packa
 end
 
 Then /^Mail Shipping Labels: Select Service First-Class Mail International Large Envelope-Flat$/ do
-  step "Mail Shipping Labels: Set Service to First-Class Mail Large Envelope/Flat"
+  step "Mail Shipping Labels: Set Service to FCM Package"
 end
 
 Then /^Mail Shipping Labels: Select Service First-Class Mail International Package$/ do

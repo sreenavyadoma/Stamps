@@ -10,7 +10,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI PFR Envelope | 8.5x11 Left Side | random           | random           | random | random  | random      | Germany | random  | random  |
-    Then Details: Select Service PM International Padded Flat Rate Envelope
+    Then Details: Select Service PMI Padded Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise
@@ -23,7 +23,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Envelope | 8.5x11 Right Side | random           | random           | random | random  | random      | Mexico | random  | random  |
-    Then Details: Select Service PM International Legal Flat Rate Envelope
+    Then Details: Select Service PMI Legal Flat Rate Envelope
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise

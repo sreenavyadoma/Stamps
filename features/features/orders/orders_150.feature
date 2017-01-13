@@ -14,7 +14,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Select Service First-Class Mail Large Envelope/Flat
+    * Details: Select Service FCM Large Envelope
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -36,7 +36,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Select Service PM Large/Thick Envelope
+    * Details: Select Service PM Large Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -200,7 +200,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Select Service Media Mail Package/Flat/Thick Envelope
+    * Details: Select Service MM Package
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to Signature Required
 
@@ -257,7 +257,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -278,7 +278,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -288,7 +288,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Select Service First-Class Mail Large Envelope/Flat
+    * Details: Select Service FCM Large Envelope
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -310,7 +310,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Select Service PM Large/Thick Envelope
+    * Details: Select Service PM Large Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -474,7 +474,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Select Service Media Mail Package/Flat/Thick Envelope
+    * Details: Select Service MM Package
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to Signature Required
 
@@ -531,7 +531,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -552,7 +552,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -562,7 +562,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Select Service First-Class Mail Large Envelope/Flat
+    * Details: Select Service FCM Large Envelope
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -584,7 +584,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Select Service PM Large/Thick Envelope
+    * Details: Select Service PM Large Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -747,7 +747,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Select Service Media Mail Package/Flat/Thick Envelope
+    * Details: Select Service MM Package
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to Signature Required
 
@@ -804,7 +804,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -825,7 +825,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -835,7 +835,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Select Service First-Class Mail Large Envelope/Flat
+    * Details: Select Service FCM Large Envelope
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -857,7 +857,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Select Service PM Large/Thick Envelope
+    * Details: Select Service PM Large Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1021,7 +1021,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Select Service Media Mail Package/Flat/Thick Envelope
+    * Details: Select Service MM Package
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to Signature Required
 
@@ -1078,7 +1078,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -1099,7 +1099,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -1109,7 +1109,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Select Service First-Class Mail Large Envelope/Flat
+    * Details: Select Service FCM Large Envelope
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -1131,7 +1131,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Select Service PM Large/Thick Envelope
+    * Details: Select Service PM Large Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1295,7 +1295,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Select Service Media Mail Package/Flat/Thick Envelope
+    * Details: Select Service MM Package
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to Signature Required
 
@@ -1352,7 +1352,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -1373,7 +1373,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -1383,7 +1383,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 1
-    * Details: Select Service First-Class Mail Large Envelope/Flat
+    * Details: Select Service FCM Large Envelope
     * Details: Set Insure-For to $15.00
     * Details: Set Tracking to "None"
 
@@ -1405,7 +1405,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Ounces to 3
-    * Details: Select Service PM Large/Thick Envelope
+    * Details: Select Service PM Large Envelope
     * Details: Set Tracking to USPS Tracking
 
     * Toolbar: Add
@@ -1569,7 +1569,7 @@ Feature: 150 orders
     * Details: Set Ship-To to address in Zone 1 through 4
 
     * Details: Set Pounds to 20
-    * Details: Select Service Media Mail Package/Flat/Thick Envelope
+    * Details: Select Service MM Package
     * Details: Set Insure-For to $56.00
     * Details: Set Tracking to Signature Required
 
@@ -1626,7 +1626,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -1647,7 +1647,7 @@ Feature: 150 orders
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     Then Sign out
 

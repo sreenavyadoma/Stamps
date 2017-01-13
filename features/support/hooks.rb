@@ -79,6 +79,11 @@ Before do  |scenario|
     end
   end unless (ENV['TEST'] == 'healthcheck' || ENV['TEST'].include?('webreg') || ENV['TEST'].include?('pam') || ENV['TEST'].include?('intellij'))
 
+  test_data[:username] = ENV['USR']
+  test_data[:web_app] = ENV['WEB_APP']
+  test_data[:url] = ENV['URL']
+  test_data[:test] = ENV['TEST']
+
   logger.message "-"
   logger.message "Running Tests..."
   logger.message "-"

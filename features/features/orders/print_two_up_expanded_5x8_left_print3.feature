@@ -9,12 +9,12 @@ Feature: Print 3 Domestic labels on 5.5x8.5 - left side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Domestic Address FCM Lg Env-Flat, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
-    Then Details: Select Service First-Class Mail Large Envelope/Flat
+    Then Details: Select Service FCM Large Envelope
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Domestic Address PM Lg-Thick Env, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Set Ounces to 1
     Then Details: Set Length to 1
     Then Details: Set Width to 1

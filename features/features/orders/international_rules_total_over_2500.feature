@@ -11,9 +11,9 @@ Feature: Internal Transaction Number Required for total over $2500
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then Details: Set Ounces to 5
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
     Then Details: Add Item 1, Qty 1, ID random, Description random
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
     Then Details: Edit Customs Form
     Then Customs: Add Item 1, Description random, Qty 1, Price 3000, Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required

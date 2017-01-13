@@ -10,7 +10,7 @@ Feature: Add Missing Field Validation
 
   #  Add Missing Validation Logic for Email
     Then Details: Set Email to @@
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Expect Domestic Email data error tooltip is "Please enter a valid email address"
     Then Grid: Expect Ship Cost error to contain "Please enter a valid email address"
 
@@ -20,7 +20,7 @@ Feature: Add Missing Field Validation
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
 
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Set Length to 0
     Then Details: Set Width to 1
     Then Details: Set Height to 1
@@ -34,7 +34,7 @@ Feature: Add Missing Field Validation
 
   #@validate_width
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail AND Zone > 5
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Set Length to 3
     Then Details: Set Width to 0
     Then Details: Set Height to 3
@@ -48,7 +48,7 @@ Feature: Add Missing Field Validation
 
   #@validate_height
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where Service = Priority Mail Large Envelope/Thick Envelope AND Zone ? 5
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Set Height to 0
     Then Details: Set Length to 5
     Then Details: Set Width to 5

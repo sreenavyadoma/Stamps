@@ -9,7 +9,7 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - right side
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to Domestic Address MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
     Then Details: Set Ounces to 1
     Then Toolbar: Add
     Then Details: Set Ship-From to default

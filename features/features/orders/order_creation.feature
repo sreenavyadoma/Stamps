@@ -75,7 +75,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 3
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
     Then Details: Set Insure-For to $56.00
     Then Details: Set Tracking to Signature Required
 
@@ -164,7 +164,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 3
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
     Then Details: Set Insure-For to $56.00
     Then Details: Set Tracking to Signature Required
 
@@ -249,7 +249,7 @@ Feature: 10 orders
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 3
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
     Then Details: Set Insure-For to $56.00
     Then Details: Set Tracking to Signature Required
 

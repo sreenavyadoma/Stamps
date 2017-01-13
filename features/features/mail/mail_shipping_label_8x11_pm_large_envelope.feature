@@ -1,4 +1,4 @@
-Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Large/Thick Envelope
+Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Large Thick Envelope
 
 
 
@@ -7,7 +7,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Large/Thick Envelope
 
 
   @mail_print_shipping_label_8x11_pm_large_envelope
-  Scenario: Shipping Label - 8 ½” x 11” Paper - PM Large/Thick Envelope
+  Scenario: Shipping Label - 8 ½” x 11” Paper - PM Large Thick Envelope
 
     Then Mail: Select Shipping Label - 8 ½” x 11” Paper
 

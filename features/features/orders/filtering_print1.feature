@@ -8,7 +8,7 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service First-Class Mail Large Envelope/Flat
+    Then Details: Select Service FCM Large Envelope
     Then Grid: Check row 1
     Then Print: Open Modal
     Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"

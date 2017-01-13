@@ -38,10 +38,10 @@ APO, AP 96205-5324
 Print On:
 Shipping Label 8 ½” x 11” Paper
 Services:
-First-Class Mail Large Envelope/Flat (3 Days)
+FCM Package (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Media Mail Package/Flat/Thick Envelope (6 Days)
+MM Package (6 Days)
 Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
@@ -54,10 +54,10 @@ FPO, AE 09578
 Print On:
 Shipping Label 8 ½” x 11” Paper
 Services:
-First-Class Mail Large Envelope/Flat (3 Days)
+FCM Package (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Media Mail Package/Flat/Thick Envelope (6 Days)
+MM Package (6 Days)
 Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
@@ -70,10 +70,10 @@ DPO AE 09498-9997
 Print On:
 Shipping Label 8 ½” x 11” Paper
 Services:
-First-Class Mail Large Envelope/Flat (3 Days)
+FCM Package (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Media Mail Package/Flat/Thick Envelope (6 Days)
+MM Package (6 Days)
 Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
@@ -86,10 +86,10 @@ Tumon, Guam 96913
 Print On:
 Shipping Label 8 ½” x 11” Paper
 Services:
-First-Class Mail Large Envelope/Flat (3 Days)
+FCM Package (3 Days)
 Priority Mail Package (2 Days)
 Priority Mail Medium Flat Rate Box (2 Days)
-Media Mail Package/Flat/Thick Envelope (6 Days)
+MM Package (6 Days)
 Parcel Select Ground Package/Flat/Thick Envelope (6 Days)
  
 ------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ K1A 0G9
 Print On:
 Shipping Label 8 ½” x 11” Paper
 Services:
-First-Class Mail International Large Envelope/Flat/Flat (Varies)
+FCMI Large Envelope/Flat (Varies)
  
 ------------------------------------------------------------------------------
  

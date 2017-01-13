@@ -9,7 +9,7 @@ Feature:  Service enabled/disabled tests
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 17
-    Then Details: Expect Service "First-Class Mail Large Envelope/Flat" is disabled
+    Then Details: Expect Service "FCM Package" is disabled
     Then Details: Expect Service "First-Class Mail Package/Thick Envelope" is disabled
 
     #First Class Mail up to 15.9 ounces enabled
@@ -18,7 +18,7 @@ Feature:  Service enabled/disabled tests
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Set Ounces to 15.9
     Then Details: Expect Service "First-Class Mail Package/Thick Envelope" is enabled
-    #Then Details: Expect Service "First-Class Mail Large Envelope/Flat" is enabled
+    #Then Details: Expect Service "FCM Package" is enabled
 
   @rules_domestic
   Scenario: Domestic Rules Engine Validation

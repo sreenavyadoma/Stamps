@@ -4,7 +4,7 @@ Then /^Mail Roll: Set Service to (.*)/ do |service|
 end
 
 Then /^Mail Roll: Select Service First-Class Mail Large Envelope-Flat$/ do
-  step "Mail Roll: Set Service to First-Class Mail Large Envelope/Flat"
+  step "Mail Roll: Set Service to FCM Package"
 end
 
 Then /^Mail Roll: Select Service First-Class Mail Package-Thick Envelope$/ do
@@ -88,7 +88,7 @@ Then /^Mail Roll: Select Service Parcel Select Ground Oversized Package$/ do
 end
 
 Then /^Mail Roll: Select Service First-Class Mail International Large Envelope-Flat$/ do
-  step "Mail Roll: Set Service to First-Class Mail Large Envelope/Flat"
+  step "Mail Roll: Set Service to FCM Package"
 end
 
 Then /^Mail Roll: Select Service First-Class Mail International Package$/ do

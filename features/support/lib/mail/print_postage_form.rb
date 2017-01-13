@@ -299,38 +299,26 @@ module Stamps
     end
 
     class MailShipFrom < Browser::Modal
+      attr_reader :text_box, :drop_down, :manage_shipping_address
 
-      def drop_down
-        BrowserElement.new (browser.div css: "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
+      def initialize param
+        super param
+        @text_box = TextboxElement.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
+        @drop_down = BrowserElement.new (browser.div css: "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
+        @manage_shipping_address = MailManageShippingAddresses.new(param)
       end
 
       def manage_ship_from_address_field
-        browser.div text: 'Manage Shipping Addresses...'
+        browser.div(text: 'Manage Shipping Addresses...')
       end
 
       def ship_from_selection selection
-        browser.div text: selection
-      end
-
-      def manage_shipping_address
-        MailManageShippingAddresses.new param
-      end
-
-      def manage_shipping_addresses
-        self.ship_from "Manage Shipping Addresses..."
-      end
-
-      def text_box
-        TextboxElement.new browser.text_field id: "sdc-mainpanel-shipfromdroplist-inputEl"
+        browser.div(text: selection)
       end
 
       def select selection
-        @manage_shipping_address = MailManageShippingAddresses.new param
-
-        #return @manage_shipping_address if @manage_shipping_address.present?
-
         drop_down.safe_click
-        default_selection_field = (browser.divs css: "div[data-qtip*='Return To Address']")[0] #"div[id^=shipfromdroplist][id$=trigger-picker]"
+        default_selection_field = (browser.divs css: "div[data-qtip*='Return To Address']")[0]
 
         if selection.downcase == "default"
           ship_from_selection_field = default_selection_field
@@ -340,23 +328,22 @@ module Stamps
           ship_from_selection_field = browser.div text: "#{selection}"
         end
 
-        selection_label = BrowserElement.new ship_from_selection_field
+        selection_label = BrowserElement.new(ship_from_selection_field)
         #logger.info "Selection Text: #{selection_label.text}"
 
         if selection.downcase.include? "manage shipping"
-          10.times{
+          10.times do
             begin
               drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click
-              return @manage_shipping_address if @manage_shipping_address.present?
+              return manage_shipping_address if manage_shipping_address.present?
             rescue
               #ignore
             end
-
-          }
+          end
         else
-          10.times{
+          10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_text = selection_label.safe_text
@@ -365,10 +352,9 @@ module Stamps
             begin
               break if text_val.include? selection_text
             end unless selection_text.nil? || text_val.nil?
-          }
+          end
         end
       end
-
     end
 
     class StampAmount < Browser::Modal

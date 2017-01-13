@@ -20,7 +20,7 @@ Feature: 25 orders
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
@@ -34,7 +34,7 @@ Feature: 25 orders
     Then Customs: Add Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
     Then Customs: Check I agree to the USPS Privacy Act Statement
     Then Customs: Close Modal
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
     Then Toolbar: Add
@@ -45,7 +45,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service First-Class Mail Large Envelope/Flat
+    Then Details: Select Service FCM Large Envelope
     Then Details: Set Insure-For to $15.00
     Then Details: Set Tracking to "None"
     Then Grid: Check row 1
@@ -73,7 +73,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
     Then Details: Set Tracking to USPS Tracking
 
     Then Toolbar: Add
@@ -269,7 +269,7 @@ Feature: 25 orders
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Details: Set Height to 1
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
     Then Details: Set Insure-For to $56.00
     Then Details: Set Tracking to Signature Required
 

@@ -9,8 +9,8 @@ Feature: Service Tooltip
     Then Toolbar: Add
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To Country to Canada
-    Then Details: Expect Service Tooltip for "First-Class Mail International Large Envelope/Flat" to include "Ship up to 4 lb. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
-    Then Details: Expect Service Tooltip for "First-Class Mail International Package/Thick Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise using your own box or thick envelope with pricing that varies by weight and country.||Box requirements:||Length + widthth + height cannot exceed 36"||Length cannot exceed 24""
+    Then Details: Expect Service Tooltip for "FCMI Large Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
+    Then Details: Expect Service Tooltip for "FCMI Package" to include "Ship up to 4 lb. and $400 worth of merchandise using your own box or thick envelope with pricing that varies by weight and country.||Box requirements:||Length + widthth + height cannot exceed 36"||Length cannot exceed 24""
 
     Then Details: Expect Service Tooltip for "Priority Mail International Package" to include "Ship up to 70 lb. using any large or thick envelope or box with pricing that varies by weight and country.  The USPS provides free packaging for Priority Mail which can be ordered from Stamps.com.||Tip: This service includes free insurance of up to $100 for documents and $200 for merchandise."
     Then Details: Expect Service Tooltip for "Priority Mail International Flat Rate Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise with pricing that varies by country, not weight. You must use a USPS-provided envelope which can be ordered for free from Stamps.com.||Available envelope sizes:||Standard: 	9 1/2" x 12 1/2"||Gift Card: 	7" x 10"||Windowed: 	5" x 10"||Small:		6" x 10"
@@ -30,7 +30,7 @@ Feature: Service Tooltip
   Scenario: Domestic Service Tooltip Tests
     Then Toolbar: Add
 
-    Then Details: Expect Service Tooltip for "First-Class Mail Large Envelope/Flat" to include "Ship up to 15.999 ounces using your own large envelope or flat with pricing that varies by weight, not distance.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
+    Then Details: Expect Service Tooltip for "FCM Package" to include "Ship up to 15.999 ounces using your own large envelope or flat with pricing that varies by weight, not distance.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
     Then Details: Expect Service Tooltip for "First-Class Mail Package/Thick Envelope" to include "Ship up to 15.999 ounces using your own box or thick envelope with pricing that varies by weight, not distance.||Packaging requirements: ||Min. Dimensions: 3/4" thick||Max. Dimensions: Package must not exceed 22" in length, 18" in width, or 15" in thickness."
 
     Then Details: Expect Service Tooltip for "Priority Mail Large/Thick Envelope" to include "Ship up to 70 lb. using any large or thick envelope with pricing that varies by weight and distance. The USPS provides free packaging for Priority Mail, which can be ordered from Stamps.com.||Envelope requirements:||Length + 2x width + 2x height cannot exceed 84""

@@ -9,7 +9,7 @@ Feature: Tracking
     Then Toolbar: Add
     Then Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to address in Zone 1 through 4
+    Then Details: Set Ship-To to address in Zone 1
 
     #Then Details: Select Service PME Flat Rate Envelope
     #Then Details: Expect Service is PME Flat Rate Envelope
@@ -27,8 +27,8 @@ Feature: Tracking
     #Then Details: Expect Service is "Priority Mail Express Package"
     #Then Details: Expect Tracking is USPS Tracking
 
-    Then Details: Select Service PM Large/Thick Envelope
-    Then Details: Expect Service is PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
+    Then Details: Expect Service is PM Large Envelope
     Then Details: Expect Tracking is USPS Tracking
 
     Then Details: Select Service PM Package

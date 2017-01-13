@@ -1495,24 +1495,24 @@ Feature: Local Rating Zone 1
     Then Sign out
 
   @rates_orders_1
-  Scenario: Zone 1 - First-Class Mail Large Envelope/Flat
+  Scenario: Zone 1 - FCM Package
     Then Toolbar: Add
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|1|1|1|1|None|0.98|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|2|1|1|1|None|1.20|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|3|1|1|1|None|1.42|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|4|1|1|1|None|1.64|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|5|1|1|1|None|1.86|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|6|1|1|1|None|2.08|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|7|1|1|1|None|2.30|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|8|1|1|1|None|2.52|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|9|1|1|1|None|2.74|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|10|1|1|1|None|2.96|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|11|1|1|1|None|3.18|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|12|1|1|1|None|3.40|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|13|1|1|1|None|3.62|
-      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|First-Class Mail Large Envelope/Flat|0|14|1|1|1|None|0.00|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|1|1|1|1|None|0.98|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|2|1|1|1|None|1.20|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|3|1|1|1|None|1.42|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|4|1|1|1|None|1.64|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|5|1|1|1|None|1.86|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|6|1|1|1|None|2.08|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|7|1|1|1|None|2.30|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|8|1|1|1|None|2.52|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|9|1|1|1|None|2.74|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|10|1|1|1|None|2.96|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|11|1|1|1|None|3.18|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|12|1|1|1|None|3.40|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|13|1|1|1|None|3.62|
+      |default|Zone1 Test, First-Class Mail, 1339 W Willow St, Long Beach CA 90810|FCM Package|0|14|1|1|1|None|0.00|
 
     Then Sign out
 

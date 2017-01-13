@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label on sdc1200 - right side
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
-    Then Details: Select Service PME International Package/Flat/Thick Envelope
+    Then Details: Select Service PMEI Package
     Then Details: Set Ounces to 1
     Then Details: Edit Customs Form
     Then Customs: Set Package Contents to Merchandise

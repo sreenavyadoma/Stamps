@@ -950,7 +950,7 @@ module Stamps
         attr_reader :text_box, :drop_down, :blur_element
         def initialize param
           super param
-          @text_box = TextboxElement.new (browser.text_field name: "Service"), (browser.div css: "div[data-anchortarget^=servicedroplist-]"), "data-errorqtip"
+          @text_box = TextboxElement.new browser.text_field(name: "servicePackage")
           @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
           @blur_element = BlurOutElement.new param
         end
@@ -959,35 +959,14 @@ module Stamps
           blur_element.blur_out
         end
 
-        def abbrev_service_name long_name
-          if long_name.include? 'First-Class Mail International'
-            long_name.sub 'First-Class Mail International', 'FCMI'
-          elsif long_name.include? 'First-Class Mail'
-            long_name.sub 'First-Class Mail', 'FCM'
-          elsif long_name.include? 'Priority Mail Express International'
-            long_name.sub 'Priority Mail Express International', 'PMEI'
-          elsif long_name.include? 'Priority Mail International'
-            long_name.sub 'Priority Mail International', 'PMI'
-          elsif long_name.include? 'Priority Mail Express'
-            long_name.sub 'Priority Mail Express', 'PME'
-          elsif long_name.include? 'Priority Mail'
-            long_name.sub 'Priority Mail', 'PM'
-          elsif long_name.include? 'Media Mail'
-            long_name.sub 'Media Mail', 'MM'
-          elsif long_name.include? 'Parcel Select Ground'
-            long_name.sub 'Parcel Select Ground', 'PSG'
-          else # there's no abbreviation for this long name so send it right back.
-            long_name
-          end
-        end
-
         def select selection
           logger.info "Select Service #{selection}"
 
-          abbrev_selection = abbrev_service_name(selection)
+          sel_arr = selection.split(/\s+/)
+          selection_substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
 
           selected_service = ""
-          @details_services ||= data_for(:details_services, {})
+          @details_services ||= data_for(:orders_services, {})
 
           selection_label = BrowserElement.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
 
@@ -997,18 +976,17 @@ module Stamps
               selection_label.safe_scroll_into_view
               selection_label.safe_click
               blur_out
-              selected_service = text_box.text
-              logger.info "Selected Service #{selected_service} - #{(selected_service.include? abbrev_selection)?"success": "service not selected"}"
-              break if selected_service.include? abbrev_selection
+              logger.info "Selected Service #{text_box.text} - #{(text_box.text.include? selection)?"success": "service not selected"}"
+              break if text_box.text.include? selection_substr
             rescue
               #ignore
             end
           end
-          logger.info "#{selected_service} service selected."
+          logger.info "#{text_box.text} service selected."
 
           # Test if selected service includes abbreviated selection.
-          selected_service.should include abbrev_selection
-          selection_label
+          text_box.text.should include selection_substr
+          text_box.text
         end
 
         def inline_cost service_name

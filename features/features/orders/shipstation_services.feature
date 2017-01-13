@@ -12,8 +12,8 @@
 
     Then Details: Set Ship-To to address in Zone 1 through 4
 
-    Then Details: Select Service PM Large/Thick Envelope
-    Then Details: Expect Service is PM Large/Thick Envelope
+    Then Details: Select Service PM Large Envelope
+    Then Details: Expect Service is PM Large Envelope
 
     Then Details: Select Service PM Package
     Then Details: Expect Service is PM Package

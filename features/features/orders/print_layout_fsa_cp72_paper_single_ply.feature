@@ -11,7 +11,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
       | name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
     Then Details: Set Weight to 1 lb 2 oz
-    Then Details: Select Service Media Mail Package/Flat/Thick Envelope
+    Then Details: Select Service MM Package
 
     Then Customs: Open Modal
     Then Customs: Set Package Contents to Other

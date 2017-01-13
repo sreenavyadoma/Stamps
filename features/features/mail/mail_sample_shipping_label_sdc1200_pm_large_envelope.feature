@@ -1,4 +1,4 @@
-Feature: Mail Sample Shipping Label - SDC-1200 - PM Large/Thick Envelope
+Feature: Mail Sample Shipping Label - SDC-1200 - PM Large Thick Envelope
 
 
 
@@ -7,7 +7,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Large/Thick Envelope
 
 
   @mail_print_sample_shipping_label_sdc1200_pm_large_envelope
-  Scenario: Sample Shipping Label - SDC-1200 - PM Large/Thick Envelope
+  Scenario: Sample Shipping Label - SDC-1200 - PM Large Thick Envelope
 
     Then Mail: Select Shipping Label - SDC-1200, 4 ¼” x 6 ¾”
 

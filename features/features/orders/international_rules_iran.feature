@@ -11,7 +11,7 @@ Feature: Iran Internal Transaction Number Required
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Iran    | random  | random  |
     Then Details: Set Ounces to 5
-    Then Details: Select Service PM International Flat Rate Envelope
+    Then Details: Select Service PMI Flat Rate Envelope
 
     Then Details: Edit Customs Form
     Then Expect Customs Form Internal Transaction Number is Required

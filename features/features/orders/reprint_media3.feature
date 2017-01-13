@@ -12,7 +12,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | 5.5x8.5 | random           | random           | random | random  | random      | Norway | random  | random  |
-    Then Details: Select Service First-Class Mail International Large Envelope/Flat
+    Then Details: Select Service FCMI Large Envelope
     Then Details: Set Ounces to 1
 
     Then Details: Edit Customs Form
