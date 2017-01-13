@@ -28,31 +28,32 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then Customs: Add Item 1
     Then Customs: Set Item Description to item 1
-    Then Customs: Set Item Qty to 100
+    Then Customs: Set Item Qty to 5
     Then Customs: Set Item Unit Price to 11.11
     Then Customs: Set Item Made In Country to United States
-    Then Customs: Set Item Tarriff to 100
+    Then Customs: Set Item Tarriff to 5
 
     Then Customs: Add Item 2
     Then Customs: Set Item Description to item 2
-    Then Customs: Set Item Qty to 99
+    Then Customs: Set Item Qty to 7
     Then Customs: Set Item Unit Price to 22.22
     Then Customs: Set Item Made In Country to United States
-    Then Customs: Set Item Tarriff to 200
-
-    Then Mail Customs: Set ITN Number to "random"
+    Then Customs: Set Item Tarriff to 10
 
     Then Customs: Check I agree to the USPS Privacy Act Statement
 
     Then Customs: Close Modal
 
+    Then Grid: Uncheck row 1
+    Then Grid: Check row 1
+
     Then Details: Edit Customs Form
     Then Pause for 2 seconds
     Then Customs: Expect Item 1 Description is item 1
-    Then Customs: Expect Item 1 Quantity is 100
+    Then Customs: Expect Item 1 Quantity is 5
 
     Then Customs: Expect Item 2 Description is item 2
-    Then Customs: Expect Item 2 Quantity is 99
+    Then Customs: Expect Item 2 Quantity is 7
 
     Then Customs: Close Modal
 
