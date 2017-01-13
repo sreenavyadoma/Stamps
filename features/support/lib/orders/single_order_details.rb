@@ -1430,9 +1430,9 @@ module Stamps
 
           def initialize param
             super param
-            @text_box = TextboxElement.new browser.text_field css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div>input'
-            @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=up]"
-            @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(5)>div>div>div[id*=spinner]>div[class*=down]"
+            @text_box = TextboxElement.new browser.text_field(name: 'InsuredValue')
+            @increment_button = BrowserElement.new browser.div css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]"
+            @decrement_button = BrowserElement.new browser.div css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]"
           end
 
           def text

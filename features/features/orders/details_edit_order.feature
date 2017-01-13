@@ -1,4 +1,4 @@
-Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
+Feature: Edit Order Details
 
   Background:
     Given I am signed in to Orders
@@ -12,20 +12,18 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
     Then Details: Select Service PM Flat Rate Envelope
     Then Details: Set Ounces to 3
     Then Details: Set Pounds to 2
-    Then Details: Set Insure-For to $1.00
+    Then Details: Set Insure-For to $100.00
     Then Details: Set Height to 1
     Then Details: Set Length to 1
     Then Details: Set Width to 1
     Then Grid: Check row 1
-    Then Grid: Check row 1
     Then Details: Select Service PM Package
     Then Details: Set Ounces to 2
     Then Details: Set Pounds to 1
-    Then Details: Set Insure-For to $11.00
+    Then Details: Set Insure-For to $150.00
     Then Details: Set Height to 2
     Then Details: Set Length to 3
     Then Details: Set Width to 4
-    Then Grid: Check row 1
     Then Grid: Check row 1
     Then Details: Expect Service is PM Package
     Then Grid: Expect Ounces is 2
