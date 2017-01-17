@@ -410,7 +410,7 @@ module Stamps
 
       class ShipToDomestic < Browser::Modal
         attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element,
-                    :address_not_found
+                    :address_not_found, :text_area, :email, :phone
 
         def initialize param
           super param
@@ -420,35 +420,10 @@ module Stamps
           @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
           @blur_element = BlurOutElement.new param
           @address_not_found = AddressNotFound.new param
-        end
-
-        def text_area
-          show_address
-          dom_text_area = browser.textarea(name: "freeFormAddress")
-          error_field = browser.a css: "a[data-errorqtip*=address]"
-          error_field_attribute = "data-errorqtip"
-          @text_area ||= ShipToTextArea.new dom_text_area, error_field, error_field_attribute
-          @text_area.present?.should be true
-          @text_area
-        end
-
-        def email
-          show_address
-          field = browser.text_field name: 'BuyerEmail'
-          error_field = (browser.divs css: "div[data-errorqtip*=email]")
-          error_field_attribute = "data-errorqtip"
-          @email ||= TextboxElement.new field, error_field, error_field_attribute
-          @email.present?.should be true
-          @email
-        end
-
-        def phone
-          show_address
+          @text_area = TextboxElement.new browser.textarea(name: "freeFormAddress")
+          @email ||= TextboxElement.new browser.text_field(name: 'BuyerEmail')
           @phone ||= TextboxElement.new browser.text_field(name: "ShipPhone")
-          @phone.present?.should be true
-          @phone
         end
-
 
         def blur_out
           blur_element.blur_out
