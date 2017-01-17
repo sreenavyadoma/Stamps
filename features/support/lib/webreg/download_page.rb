@@ -10,7 +10,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        element.safely_wait_while_present *args
+        element.wait_until_present *args
       end
 
       def text

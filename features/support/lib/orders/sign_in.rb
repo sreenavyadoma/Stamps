@@ -332,7 +332,7 @@ module Stamps
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
-                  loading_orders.safely_wait_while_present 2
+                  loading_orders.wait_until_present 2
                 else
                   break
                 end

@@ -907,7 +907,7 @@ module Stamps
         10.times do
           submit
 
-          loading.safely_wait_while_present 3
+          loading.wait_until_present 3
           page_header.safely_wait_until_present 3
 
           if phone.has_error?

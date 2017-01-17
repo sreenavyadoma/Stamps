@@ -193,7 +193,7 @@ module Stamps
           50.times do
             logger.message verifying_account_info.safe_text
             whats_new_modal.close if whats_new_modal.present?
-            verifying_account_info.safely_wait_while_present 2
+            verifying_account_info.wait_until_present 2
             whats_new_modal.close if whats_new_modal.present?
             break unless verifying_account_info.present?
             whats_new_modal.close if whats_new_modal.present?
@@ -237,7 +237,7 @@ module Stamps
             break unless verifying_account_info.present?
           end
 
-          verifying_account_info.safely_wait_while_present 5
+          verifying_account_info.wait_until_present 5
 
           return whats_new_modal if whats_new_modal.present?
         end

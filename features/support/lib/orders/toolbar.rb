@@ -570,7 +570,7 @@ module Stamps
                   logger.message initializing_db.text
                   logger.message initializing_db.text
                   logger.message initializing_db.text
-                  initializing_db.safely_wait_while_present 2
+                  initializing_db.wait_until_present 2
                   break unless initializing_db.present?
                 end
               end
@@ -580,7 +580,7 @@ module Stamps
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
-                  loading_orders.safely_wait_while_present 2
+                  loading_orders.wait_until_present 2
                 else
                   break
                 end
@@ -594,7 +594,7 @@ module Stamps
                   logger.message initializing_db.text
                   logger.message initializing_db.text
                   logger.message initializing_db.text
-                  initializing_db.safely_wait_while_present 2
+                  initializing_db.wait_until_present 2
                   break unless initializing_db.present?
                 end
               end
@@ -604,7 +604,7 @@ module Stamps
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
-                  loading_orders.safely_wait_while_present 2
+                  loading_orders.wait_until_present 2
                 else
                   break
                 end
@@ -617,7 +617,7 @@ module Stamps
                   logger.message initializing_db.text
                   logger.message initializing_db.text
                   logger.message initializing_db.text
-                  initializing_db.safely_wait_while_present 2
+                  initializing_db.wait_until_present 2
                   break unless initializing_db.present?
                 end
               end
@@ -627,7 +627,7 @@ module Stamps
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
                   logger.message loading_orders.safe_text
-                  loading_orders.safely_wait_while_present 2
+                  loading_orders.wait_until_present 2
                 else
                   break
                 end
@@ -652,7 +652,7 @@ module Stamps
 
           logger.info "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}" if initializing_db.present?
 
-          initializing_db.safely_wait_while_present 15
+          initializing_db.wait_until_present 15
 
           if initializing_db.present?
             message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}"

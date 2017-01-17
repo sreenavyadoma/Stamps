@@ -205,7 +205,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          window_title.safely_wait_while_present *args
+          window_title.wait_until_present *args
         end
 
         def contains store_name

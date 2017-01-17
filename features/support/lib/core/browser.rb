@@ -158,20 +158,16 @@ module Stamps
         end
         self
       end
-
-      def safely_wait_while_present *args
-        begin
-          wait_while_present *args
-        rescue
-          #ignroe
-        end
-      end
-
       def wait_until_present *args
-        if args.length==1
-          element.wait_until_present args[0].to_i
-        else
-          element.wait_until_present
+        begin
+          if args.length==1
+            element.wait_until_present args[0].to_i
+          else
+            element.wait_until_present
+          end
+        rescue Exception => e
+          logger.error e.message
+          logger.error e.backtrace.join("\n")
         end
         self
       end
