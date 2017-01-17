@@ -3,7 +3,7 @@ module Stamps
     class Toolbar < Browser::Modal
       attr_reader :settings, :reset, :help, :feedback, :classic
 
-      def initialize param
+      def initialize(param)
         super(param)
         @settings = BrowserElement.new (browser.span css: "span[style*='settings.png']")
         @reset = BrowserElement.new (browser.span css: "span[style*='reset.png']")

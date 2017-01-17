@@ -3,9 +3,9 @@ module Stamps
     class ChooseSupplies < Browser::Modal
       attr_reader :web_apps, :web_mail
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @web_apps ||= StampsCom.new param
+        @web_apps ||= StampsCom.new(param)
         @web_mail ||= @web_apps.mail
       end
 
@@ -23,7 +23,7 @@ module Stamps
         welcome_kit = BrowserElement.new page_header
         welcome_kit_message = BrowserElement.new page_header.parent.p
 
-        download_page = DownloadPage.new param
+        download_page = DownloadPage.new(param)
         #@web_apps.mail.landing_page.whats_new_modal
         place_order_button.safely_wait_until_present 10
 

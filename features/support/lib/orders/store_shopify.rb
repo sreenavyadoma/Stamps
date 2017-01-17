@@ -35,9 +35,9 @@ module Stamps
 
         def connect
           button = BrowserElement.new browser.span(text: "Connect")
-          settings = ShopifySettings.new param
-          shopify = ShopifyPage.new param
-          importing_order = Orders::Stores::ImportingOrdersModal.new param
+          settings = ShopifySettings.new(param)
+          shopify = ShopifyPage.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.safe_click
@@ -139,8 +139,8 @@ module Stamps
 
         def reconnect
           button = BrowserElement.new browser.span(text: "Connect")
-          manage_stores = ManageStores.new param
-          importing_order = Orders::Stores::ImportingOrdersModal.new param
+          manage_stores = ManageStores.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.safe_click
@@ -265,7 +265,7 @@ module Stamps
 
         def sign_in
           button = BrowserElement.new browser.text_field(css: "input[value='Log in']")
-          settings_page = ShopifySettings.new param
+          settings_page = ShopifySettings.new(param)
 
           10.times do
             button.safe_click

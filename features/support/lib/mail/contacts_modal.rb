@@ -30,15 +30,15 @@ module Stamps
       end
 
       def search
-        Search.new param
+        Search.new(param)
       end
 
       def search_by_group
-        SearchByGroup.new param
+        SearchByGroup.new(param)
       end
 
       def search_by_cost_code
-        SearchByCostCode.new param
+        SearchByCostCode.new(param)
       end
 
       def view_contacts_page
@@ -46,7 +46,7 @@ module Stamps
       end
 
       def view_by
-        ViewBy.new param
+        ViewBy.new(param)
       end
 
     end

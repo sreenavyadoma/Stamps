@@ -4,7 +4,7 @@ module Stamps
       class OrdersMadeInCountry < Browser::Modal
         attr_reader :text_box
 
-        def initialize param, index
+        def initialize(param, index)
           super(param)
           @index = index
           @text_box = TextboxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
@@ -53,10 +53,10 @@ module Stamps
       class OrdersCustomsFields < Browser::Modal
         attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
-        def initialize param
+        def initialize(param)
           super(param)
-          @customs_form ||= OrdersCustomsForm.new param
-          @view_restrictions ||= Orders::Details::ViewRestrictions.new param
+          @customs_form ||= OrdersCustomsForm.new(param)
+          @view_restrictions ||= Orders::Details::ViewRestrictions.new(param)
           @edit_form_btn = BrowserElement.new browser.span text: 'Edit Form...'
           @restrictions_btn = BrowserElement.new browser.span text: 'Restrictions...'
         end
@@ -107,20 +107,20 @@ module Stamps
 
           logger.info "User Entered Number: #{number}. Actual Item Count: #{size}"
 
-          CustomsLineItem.new param, number
+          CustomsLineItem.new(param, number)
         end
       end
 
       class CustomsLineItem < Browser::Modal
 
         class Qty < Browser::Modal
-          def initialize param, number
+          def initialize(param, number)
             super(param)
             @index = number
           end
 
           def text_box
-            TextboxElement.new ((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
+            TextboxElement.new (browser.text_fields(css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
           end
 
           def set value
@@ -157,7 +157,7 @@ module Stamps
         end
 
         class UnitPrice < Browser::Modal
-          def initialize param, number
+          def initialize(param, number)
             super(param)
             @index = number
           end
@@ -188,13 +188,13 @@ module Stamps
 
         attr_reader :delete, :description, :qty, :unit_price, :made_in, :hs_tariff
 
-        def initialize param, number
+        def initialize(param, number)
           super(param)
           @delete = BrowserElement.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[number-1]
           @description = TextboxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
-          @qty = Qty.new param, number
-          @unit_price = UnitPrice.new param, number
-          @made_in = Customs::OrdersMadeInCountry.new param, number
+          @qty = Qty.new(param), number
+          @unit_price = UnitPrice.new(param), number
+          @made_in = Customs::OrdersMadeInCountry.new(param), number
           @hs_tariff = TextboxElement.new (browser.text_fields name: "TariffNo")[number-1]
         end
 
@@ -206,7 +206,7 @@ module Stamps
       class UspsPrivactActStatementModal < Browser::Modal
         attr_reader :window_title, :okay
 
-        def initialize param
+        def initialize(param)
           super(param)
           @window_title = BrowserElement.new browser.div text: "USPS Privacy Act Statement"
           @okay = browser.span(text: "OK")
@@ -228,7 +228,7 @@ module Stamps
       class InternalTransaction < Browser::Modal
         attr_reader :text_box, :drop_down
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field name: "IsITNRequired"
           @drop_down = BrowserElement.new browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
@@ -256,7 +256,7 @@ module Stamps
       class PackageContents < Browser::Modal
         attr_reader :text_box, :drop_down
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field name: "CustomsContents"
           @drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
@@ -284,7 +284,7 @@ module Stamps
       class NonDeliveryOptions < Browser::Modal
         attr_reader :text_box, :drop_down
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field name: "NonDelivery"
           @drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
@@ -315,13 +315,13 @@ module Stamps
                     :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
                     :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label, :certificate
 
-        def initialize param
+        def initialize(param)
           super(param)
           @window_title = BrowserElement.new browser.div(text: "Customs Information")
-          @item_grid ||= CustomsItemGrid.new param
-          @package_contents ||= PackageContents.new param
-          @non_delivery_options ||= NonDeliveryOptions.new param
-          @internal_transaction ||= InternalTransaction.new param
+          @item_grid ||= CustomsItemGrid.new(param)
+          @package_contents ||= PackageContents.new(param)
+          @non_delivery_options ||= NonDeliveryOptions.new(param)
+          @internal_transaction ||= InternalTransaction.new(param)
 
           @more_info = TextboxElement.new browser.text_field name: "CustomsComments"
           @usps_privacy_act_warning = BrowserElement.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
@@ -335,9 +335,9 @@ module Stamps
           verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
           @i_agree ||= CheckboxElement.new field, verify_field, "class", "checked"
 
-          @privacy_statement ||= UspsPrivactActStatementModal.new param
+          @privacy_statement ||= UspsPrivactActStatementModal.new(param)
           @privacy_link = BrowserElement.new browser.span(text: "USPS Privacy Act Statement")
-          @restrictions_link ||= RestrictionsAndProhibitionsModal.new param
+          @restrictions_link ||= RestrictionsAndProhibitionsModal.new(param)
           @restrictions_prohibitions_link = BrowserElement.new browser.span(text: "Restrictions and Prohibitions")
 
           @close_button = BrowserElement.new browser.span(text: "Close")

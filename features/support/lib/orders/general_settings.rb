@@ -67,11 +67,11 @@ module Stamps
           end
 
           def lb
-            Pounds.new param
+            Pounds.new(param)
           end
 
           def oz
-            Ounces.new param
+            Ounces.new(param)
           end
         end
 
@@ -212,15 +212,15 @@ module Stamps
           end
 
           def length
-            Length.new param
+            Length.new(param)
           end
 
           def width
-            Width.new param
+            Width.new(param)
           end
 
           def height
-            Height.new param
+            Height.new(param)
           end
 
         end
@@ -238,11 +238,11 @@ module Stamps
         end
 
         def weight
-          Weight.new param
+          Weight.new(param)
         end
 
         def dimensions
-          Dimensions.new param
+          Dimensions.new(param)
         end
 
         def ship_to_address
@@ -340,7 +340,7 @@ module Stamps
       class SettingsLogoffDropDown < Browser::Modal
         attr_reader :text_box, :drop_down
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
           @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
@@ -384,7 +384,7 @@ module Stamps
       class PostDateDropDown < Browser::Modal
         attr_reader :text_box, :drop_down
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
           @drop_down = BrowserElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
@@ -500,7 +500,7 @@ module Stamps
       class PostageBalanceDropDown < Browser::Modal
         attr_reader :text_box, :drop_down
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
           @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
@@ -562,15 +562,15 @@ module Stamps
       end
 
       def log_off
-        SettingsLogoffDropDown.new param
+        SettingsLogoffDropDown.new(param)
       end
 
       def post_date
-        PostDateDropDown.new param
+        PostDateDropDown.new(param)
       end
 
       def postage_balance
-        PostageBalanceDropDown.new param
+        PostageBalanceDropDown.new(param)
       end
 
       def print_confirm
@@ -582,7 +582,7 @@ module Stamps
       end
 
       def reset_fields
-        modal = ResetFields.new param
+        modal = ResetFields.new(param)
         button = BrowserElement.new browser.span text: "Select..."
         10.times do
           button.safe_click unless modal.present?

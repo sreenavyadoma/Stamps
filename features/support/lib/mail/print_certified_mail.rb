@@ -54,11 +54,11 @@ module Stamps
 
     class CertifiedMail < MailForm
       def insure_for
-        DetailsInsureFor.new param
+        DetailsInsureFor.new(param)
       end
 
       def ship_date
-        ShipDate.new param
+        ShipDate.new(param)
       end
     end
   end

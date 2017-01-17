@@ -4,7 +4,7 @@ module Stamps
     class MailManageShippingAddresses < Browser::Modal
       attr_reader :window_title, :close_btn
 
-      def initialize param
+      def initialize(param)
         super(param)
         @window_title = BrowserElement.new (browser.span text: "Manage Mailing Addresses")
         @close_btn = BrowserElement.new browser.img(css: "img[class*=close]")

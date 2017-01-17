@@ -346,21 +346,21 @@ module Stamps
       attr_reader :referrer_name, :email, :user_id, :password, :retype_password, :usage_type, :first_question,
                   :first_answer, :second_question, :second_answer, :send_promo, :continue, :membership
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @referrer_name ||= ReferrerName.new param
+        @referrer_name ||= ReferrerName.new(param)
         @email ||= ProfileEmail.new browser.text_field(id: "email")
         @user_id ||= ProfileUserId.new browser.text_field(id: "username")
         @password ||= ProfilePassword.new browser.text_field(id: "password")
         @retype_password ||= ProfileRetypePassword.new browser.text_field(id: "confirmPassword")
-        @usage_type ||= UsageType.new param
-        @first_question ||= FirstQuestion.new param
+        @usage_type ||= UsageType.new(param)
+        @first_question ||= FirstQuestion.new(param)
         @first_answer ||= ProfileFirstAnswer.new browser.text_field(id: "secretAnswer1")
-        @second_question ||= SecondQuestion.new param
+        @second_question ||= SecondQuestion.new(param)
         @second_answer ||= ProfileSecondAnswer.new browser.text_field(id: "secretAnswer2")
         @send_promo = BrowserElement.new browser.text_field(id: "optIn")
         @continue = BrowserElement.new browser.button(id: "next")
-        @membership ||= Membership.new param
+        @membership ||= Membership.new(param)
       end
 
       def present?

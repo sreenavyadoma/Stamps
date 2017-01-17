@@ -780,7 +780,7 @@ module Stamps
       class GridCheckBox < Column
         attr_reader :checkbox_element_hash
 
-        def initialize param
+        def initialize(param)
           super(param)
           @checkbox_element_hash ||= Hash.new
         end
@@ -1003,44 +1003,44 @@ module Stamps
                     :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed, :tracking_service,
                     :ship_date, :tracking_no, :requested_service, :source
 
-        def initialize param
+        def initialize(param)
           super(param)
           @anchor_element = BrowserElement.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
-          @column ||= GridColumns.new param
-          @checkbox ||= GridCheckBox.new param
-          @store ||= Store.new param
-          @order_id ||= OrderId.new param
-          @ship_cost ||= ShipCost.new param
-          @age ||= Age.new param
-          @order_date ||= OrderDate.new param
-          @recipient ||= Recipient.new param
-          @company ||= Company.new param
-          @country ||= Country.new param
-          @address ||= Address.new param
-          @city ||= City.new param
-          @state ||= State.new param
-          @zip ||= Zip.new param
-          @phone ||= Phone.new param
-          @email ||= Email.new param
-          @qty ||= Qty.new param
-          @item_sku ||= ItemSKU.new param
-          @item_name ||= ItemName.new param
-          @ship_from ||= ShipFrom.new param
-          @service ||= GridService.new param
-          @requested_service ||= RequestedService.new param
-          @weight = Weight.new param
-          @insured_value ||= InsuredValue.new param
-          @tracking_service ||= TrackingService.new param
-          @order_status ||= OrderStatus.new param
-          @date_printed ||= DatePrinted.new param
-          @ship_date ||= ShipDate.new param
-          @tracking_no ||= Tracking.new param
-          @order_total ||= OrderTotal.new param
-          @source ||= GridSource.new param
+          @column ||= GridColumns.new(param)
+          @checkbox ||= GridCheckBox.new(param)
+          @store ||= Store.new(param)
+          @order_id ||= OrderId.new(param)
+          @ship_cost ||= ShipCost.new(param)
+          @age ||= Age.new(param)
+          @order_date ||= OrderDate.new(param)
+          @recipient ||= Recipient.new(param)
+          @company ||= Company.new(param)
+          @country ||= Country.new(param)
+          @address ||= Address.new(param)
+          @city ||= City.new(param)
+          @state ||= State.new(param)
+          @zip ||= Zip.new(param)
+          @phone ||= Phone.new(param)
+          @email ||= Email.new(param)
+          @qty ||= Qty.new(param)
+          @item_sku ||= ItemSKU.new(param)
+          @item_name ||= ItemName.new(param)
+          @ship_from ||= ShipFrom.new(param)
+          @service ||= GridService.new(param)
+          @requested_service ||= RequestedService.new(param)
+          @weight = Weight.new(param)
+          @insured_value ||= InsuredValue.new(param)
+          @tracking_service ||= TrackingService.new(param)
+          @order_status ||= OrderStatus.new(param)
+          @date_printed ||= DatePrinted.new(param)
+          @ship_date ||= ShipDate.new(param)
+          @tracking_no ||= Tracking.new(param)
+          @order_total ||= OrderTotal.new(param)
+          @source ||= GridSource.new(param)
           # todo-rob These two are no longer a column in orders grid
-          @reference_no ||= ReferenceNo.new param
-          @cost_code ||= CostCode.new param
-          @toolbar ||= Orders::Toolbar::Toolbar.new param
+          @reference_no ||= ReferenceNo.new(param)
+          @cost_code ||= CostCode.new(param)
+          @toolbar ||= Orders::Toolbar::Toolbar.new(param)
         end
 
         def present?

@@ -4,7 +4,7 @@ module Stamps
       class PrintIncompleteOrderError < Browser::Modal
         attr_reader :window_title, :ok_btn, :error_message_label
 
-        def initialize param
+        def initialize(param)
           super(param)
           @window_title = BrowserElement.new browser.div(text: 'Incomplete Order')
           @ok_btn = BrowserElement.new browser.span(text: "OK")
@@ -39,7 +39,7 @@ module Stamps
       class PrintMultiOrderError < Browser::Modal
         attr_reader :window_title, :error_message_label
 
-        def initialize param
+        def initialize(param)
           super(param)
           @window_title = BrowserElement.new browser.div(text: 'Order Error')
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
@@ -57,7 +57,7 @@ module Stamps
       class PrintMultiOrderSomeHasError < PrintMultiOrderError
         attr_reader :continue_btn, :cancel_btn
 
-        def initialize param
+        def initialize(param)
           super(param)
           @continue_btn = BrowserElement.new browser.span(text: 'Continue')
           @cancel_btn = BrowserElement.new browser.span(text: 'Cancel')
@@ -87,7 +87,7 @@ module Stamps
       class PrintMultiOrderAllHaveError < PrintMultiOrderError
         attr_reader :ok_btn
 
-        def initialize param
+        def initialize(param)
           super(param)
           @ok_btn = BrowserElement.new browser.span(text: "OK")
         end
@@ -104,7 +104,7 @@ module Stamps
       class UspsPrivacyActStatement < Browser::Modal
         attr_reader :window_title, :message_label, :ok_btn
 
-        def initialize param
+        def initialize(param)
           super(param)
           @window_title = BrowserElement.new browser.div(text: 'USPS Privacy Act Statement')
           @message_label = BrowserElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
@@ -131,7 +131,7 @@ module Stamps
       class USPSTerms < Browser::Modal
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
-        def initialize param
+        def initialize(param)
           super(param)
           @window_title = BrowserElement.new browser.div(text: 'USPS Terms')
           @i_agree_btn = BrowserElement.new browser.span(text: "I Agree")
@@ -171,7 +171,7 @@ module Stamps
         end
 
         def usps_privacy_act_statement
-          privacy_act = UspsPrivacyActStatement.new param
+          privacy_act = UspsPrivacyActStatement.new(param)
           10.times do
             privacy_act_link.safe_click
             privacy_act.wait_until_present 2
@@ -199,14 +199,14 @@ module Stamps
         attr_reader :print_order_btn, :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
                     :multi_order_some_error, :multi_order_all_error
 
-        def initialize param
+        def initialize(param)
           super(param)
-          @orders_print_modal = Stamps::Orders::PrintModal.new param
+          @orders_print_modal = Stamps::Orders::PrintModal.new(param)
           @print_order_btn = BrowserElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
-          @incomplete_order_modal ||= PrintIncompleteOrderError.new param
-          @multi_order_some_error ||= PrintMultiOrderSomeHasError.new param
-          @multi_order_all_error ||= PrintMultiOrderAllHaveError.new param
-          @usps_terms_modal ||= USPSTerms.new param
+          @incomplete_order_modal ||= PrintIncompleteOrderError.new(param)
+          @multi_order_some_error ||= PrintMultiOrderSomeHasError.new(param)
+          @multi_order_all_error ||= PrintMultiOrderAllHaveError.new(param)
+          @usps_terms_modal ||= USPSTerms.new(param)
         end
 
         def present?
@@ -333,9 +333,9 @@ module Stamps
 
           usps_terms.i_agree if usps_terms_modal.present?
 
-          naws_plugin_error = NawsPluginError.new param
-          error_connecting_to_plugin = ErrorConnectingToPlugin.new param
-          install_plugin_error = ErrorInstallPlugin.new param
+          naws_plugin_error = NawsPluginError.new(param)
+          error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
+          install_plugin_error = ErrorInstallPlugin.new(param)
 
           10.times do
             begin
@@ -373,7 +373,7 @@ module Stamps
         end
 
         def print_expecting_error *args
-          error_window = IncompleteOrderError.new param
+          error_window = IncompleteOrderError.new(param)
           open_window error_window
           case args.length
             when 0
@@ -386,7 +386,7 @@ module Stamps
         end
 
         def print_invalid_address
-          open_window InvalidAddressError.new param
+          open_window InvalidAddressError.new(param)
         end
       end
 
@@ -396,10 +396,10 @@ module Stamps
           case menu_item.downcase
             when /settings/
               selection = BrowserElement.new(browser.span text: "General Settings")
-              modal = Orders::GeneralSettings.new param
+              modal = Orders::GeneralSettings.new(param)
             when /stores/
               selection = BrowserElement.new(browser.span text: "Add/Edit Stores")
-              modal = Orders::Stores::ManageStores.new param
+              modal = Orders::Stores::ManageStores.new(param)
             else
               "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.".should eql ""
           end
@@ -427,7 +427,7 @@ module Stamps
       class MoveConfirmation < Browser::Modal
         attr_reader :move_label, :cancel_label
 
-        def initialize param
+        def initialize(param)
           super(param)
           @move_label = BrowserElement.new browser.span(css: "span[class*='x-btn-inner-primary-blue-medium']")
           @cancel_label = BrowserElement.new browser.span(text: "Cancel")
@@ -440,23 +440,23 @@ module Stamps
         def move
           label = move_label
           label.click_while_present
-          Orders::LeftPanel::LeftFilterPanel.new param
+          Orders::LeftPanel::LeftFilterPanel.new(param)
         end
 
         def cancel
           label = cancel_label
           label.click_while_present
-          Orders::LeftPanel::LeftFilterPanel.new param
+          Orders::LeftPanel::LeftFilterPanel.new(param)
         end
       end
 
       class MoveMenu < Browser::Modal
         attr_reader :drop_down, :confirmation, :tooltip_element
 
-        def initialize param
+        def initialize(param)
           super(param)
           @drop_down = BrowserElement.new browser.span(text: "Move")
-          @confirmation = MoveConfirmation.new param
+          @confirmation = MoveConfirmation.new(param)
           @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
@@ -513,7 +513,7 @@ module Stamps
       class PerPage < Browser::Modal
         attr_reader :text_box, :drop_down
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
           @drop_down = BrowserElement.new browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
@@ -545,7 +545,7 @@ module Stamps
       class AddButton < Browser::Modal
         attr_reader :button, :initializing_db, :loading_orders
 
-        def initialize param
+        def initialize(param)
           super(param)
           @button = BrowserElement.new browser.span(text: 'Add')
           @initializing_db = BrowserElement.new browser.div(text: "Initializing Order Database")
@@ -553,10 +553,10 @@ module Stamps
         end
 
         def order_details
-          details = Orders::Details::SingleOrderDetails.new param # keep this here
-          grid = Orders::Grid::OrdersGrid.new param
-          nav_bar = Navigation::NavigationBar.new param
-          server_error = ShipStationServerError.new param
+          details = Orders::Details::SingleOrderDetails.new(param) # keep this here
+          grid = Orders::Grid::OrdersGrid.new(param)
+          nav_bar = Navigation::NavigationBar.new(param)
+          server_error = ShipStationServerError.new(param)
 
           logger.info "Row 1 Order ID #{grid.order_id.row 1}. Adding new order..."
           15.times do |count|
@@ -682,19 +682,19 @@ module Stamps
 
       class Toolbar < Browser::Modal
         attr_reader :print_btn, :add, :move, :import_button, :import_orders_modal, :usps_intl_terms
-        def initialize param
+        def initialize(param)
           super(param)
           @import_button = BrowserElement.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
-          @print_btn ||= ToolbarPrintButton.new param
-          @add ||= AddButton.new param
-          @move ||= MoveMenu.new param
-          @import_orders_modal ||= ImportOrders.new param
-          @usps_intl_terms ||= USPSTerms.new param
+          @print_btn ||= ToolbarPrintButton.new(param)
+          @add ||= AddButton.new(param)
+          @move ||= MoveMenu.new(param)
+          @import_orders_modal ||= ImportOrders.new(param)
+          @usps_intl_terms ||= USPSTerms.new(param)
         end
 
         def refresh_orders
           button = BrowserElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
-          importing_order = Orders::Stores::ImportingOrdersModal.new param
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           button.safe_click
           sleep 1
@@ -757,17 +757,17 @@ module Stamps
         #============================
 
         def per_page
-          PerPage.new param
+          PerPage.new(param)
         end
 
         def settings
-          SettingsMenu.new param
+          SettingsMenu.new(param)
         end
 
         def reprint
           button = BrowserElement.new browser.span(text: "Reprint")
-          modal = RePrintModal.new param
-          label_unavailable = LabelUnavailable.new param
+          modal = RePrintModal.new(param)
+          label_unavailable = LabelUnavailable.new(param)
           15.times do
             return modal if modal.present?
             return label_unavailable if label_unavailable.present?
@@ -780,7 +780,7 @@ module Stamps
         end
 
         def settings_modal
-          SettingsModal.new param
+          SettingsModal.new(param)
         end
 
         def page_count

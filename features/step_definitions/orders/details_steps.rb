@@ -204,6 +204,7 @@ end
 Then /^Details: Set Length to (\d*)$/ do |value|
   logger.step "Details: Set Length to \"#{value}\""
   test_data[:length] = value
+  stamps.orders.order_details.dimensions.length.present?.should be true
   stamps.orders.order_details.dimensions.length.set value
   step "Save Shipping Costs Data"
 end
@@ -211,6 +212,7 @@ end
 Then /^Details: Set Width to (\d*)$/ do |value|
   logger.step "Details: Set Width to \"#{value}\""
   test_data[:width] = value
+  stamps.orders.order_details.dimensions.width.present?.should be true
   stamps.orders.order_details.dimensions.width.set value
   step "Save Shipping Costs Data"
 end
@@ -218,6 +220,7 @@ end
 Then /^Details: Set Height to (\d*)$/ do |value|
   logger.step "Details: Set Height to \"#{value}\""
   test_data[:height] = value
+  stamps.orders.order_details.dimensions.height.present?.should be true
   stamps.orders.order_details.dimensions.height.set value
   step "Save Shipping Costs Data"
 end

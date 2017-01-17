@@ -64,7 +64,7 @@ module Stamps
     class ShippingLabelFormView < MailForm
       attr_reader :reference_number
 
-      def initialize param
+      def initialize(param)
         super(param)
         @reference_number = TextboxElement.new browser.text_field(name: "referenceNumber")
 
@@ -93,26 +93,26 @@ module Stamps
       end
 
       def cost_code
-        CostCode.new param
+        CostCode.new(param)
       end
 
       def starting_label
-        StartingLabel.new param
+        StartingLabel.new(param)
       end
     end
 
     class ShippingLabel < MailForm
 
       def insure_for
-        DetailsInsureFor.new param
+        DetailsInsureFor.new(param)
       end
 
       def ship_date
-        ShipDate.new param
+        ShipDate.new(param)
       end
 
       def form_view
-        ShippingLabelFormView.new param
+        ShippingLabelFormView.new(param)
       end
 
     end

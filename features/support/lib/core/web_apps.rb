@@ -2,7 +2,7 @@ module Stamps
   class StampsCom < Browser::Modal
     attr_reader :orders, :mail, :navigation_bar
 
-    def initialize param
+    def initialize(param)
       super(param)
       @navigation_bar ||= Navigation::NavigationBar.new(param)
       @orders ||= WebOrders.new(param)

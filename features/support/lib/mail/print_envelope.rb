@@ -35,7 +35,7 @@ module Stamps
       end
 
       def cost_code
-        CostCode.new param
+        CostCode.new(param)
       end
 
     end
@@ -43,15 +43,15 @@ module Stamps
     class Envelope < MailForm
 
       def insure_for
-        DetailsInsureFor.new param
+        DetailsInsureFor.new(param)
       end
 
       def ship_date
-        ShipDate.new param
+        ShipDate.new(param)
       end
 
       def form_view
-        EnvelopeFormView.new param
+        EnvelopeFormView.new(param)
       end
 
     end

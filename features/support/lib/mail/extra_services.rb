@@ -25,51 +25,51 @@ module Stamps
       end
 
       def security
-        Security.new param
+        Security.new(param)
       end
 
       def security_value
-        SecurityValue.new param
+        SecurityValue.new(param)
       end
 
       def cod
-        COD.new param
+        COD.new(param)
       end
 
       def handling
-        Handling.new param
+        Handling.new(param)
       end
 
       def return_receipt
-        ReturnReceipt.new param
+        ReturnReceipt.new(param)
       end
 
       def electronic_return_receipt
-        ElectronicReturnReceipt.new param
+        ElectronicReturnReceipt.new(param)
       end
 
       def restricted_delivery
-        RestrictedDelivery.new param
+        RestrictedDelivery.new(param)
       end
 
       def non_delivery_notice
-        NonDeliveryNotice.new param
+        NonDeliveryNotice.new(param)
       end
 
       def fragile
-        Fragile.new param
+        Fragile.new(param)
       end
 
       def merchandise_return_receipt
-        MerchandiseReturnReceipt.new param
+        MerchandiseReturnReceipt.new(param)
       end
 
       def non_rectangular
-        NonRectangular.new param
+        NonRectangular.new(param)
       end
 
       def special_contents_modal
-        SpecialContentsModal.new param
+        SpecialContentsModal.new(param)
       end
 
 

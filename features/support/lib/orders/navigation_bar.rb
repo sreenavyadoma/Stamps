@@ -3,7 +3,7 @@ module Stamps
     class TransactionComplete < Browser::Modal
       attr_reader :window_title, :text_area
 
-      def initialize param
+      def initialize(param)
         super(param)
         @window_title = BrowserElement.new browser.div(text: "Transaction Complete")
         @text_area = BrowserElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
@@ -34,11 +34,11 @@ module Stamps
     class ConfirmTransaction < Browser::Modal
       attr_reader :window_title, :transaction_complete, :confirm_btn
 
-      def initialize param
+      def initialize(param)
         super(param)
         @window_title = BrowserElement.new browser.div(text: 'Confirm Transaction')
         @confirm_btn = BrowserElement.new browser.span(text: "Confirm")
-        @transaction_complete = TransactionComplete.new param
+        @transaction_complete = TransactionComplete.new(param)
       end
 
       def exit
@@ -96,7 +96,7 @@ module Stamps
     class AutoBuyPostageModal < Browser::Modal
       attr_reader
 
-      def initialize param
+      def initialize(param)
         super(param)
 
       end
@@ -105,10 +105,10 @@ module Stamps
     class BuyPostageModal < Browser::Modal
       attr_reader :confirm_transaction, :auto_buy_postage_modal, :auto_buy_postage_link, :window_title
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @confirm_transaction ||= ConfirmTransaction.new param
-        @auto_buy_postage_modal ||= AutoBuyPostageModal.new param
+        @confirm_transaction ||= ConfirmTransaction.new(param)
+        @auto_buy_postage_modal ||= AutoBuyPostageModal.new(param)
         @auto_buy_postage_link = BrowserElement.new browser.span(text: "Auto-buy postage")
         @window_title = browser.div(text: "Add Funds")
       end
@@ -255,10 +255,10 @@ module Stamps
     class BalanceDropDown < Browser::Modal
       attr_reader :buy_postage_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
 
-      def initialize param
+      def initialize(param)
         super(param)
 
-        @buy_postage_modal = BuyPostageModal.new param
+        @buy_postage_modal = BuyPostageModal.new(param)
         @buy_more_drop_down = BrowserElement.new (browser.span class: "balanceLabel")
         @buy_more_link = BrowserElement.new (browser.a text: "Buy More")
         @view_history_link = BrowserElement.new (browser.a text: "View Purchase History")
@@ -308,7 +308,7 @@ module Stamps
     class UsernameDropDown < Browser::Modal
       attr_reader :username, :sign_out_link
 
-      def initialize param
+      def initialize(param)
         super(param)
         @username = BrowserElement.new browser.span id: 'userNameText'
         @sign_out_link = browser.a text: "Sign Out"
@@ -349,16 +349,16 @@ module Stamps
     class NavigationBar < Browser::Modal
       attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @balance ||= BalanceDropDown.new param
-        @username ||= UsernameDropDown.new param
+        @balance ||= BalanceDropDown.new(param)
+        @username ||= UsernameDropDown.new(param)
         @sign_out_link = BrowserElement.new browser.link id: "signOutLink"
         @signed_in_username = BrowserElement.new browser.span id: 'userNameText'
         @orders_link = BrowserElement.new browser.a text: 'Orders'
         @mail_link = BrowserElement.new browser.a text: 'Mail'
-        @web_mail ||= WebMail.new param
-        @web_orders ||= WebOrders.new param
+        @web_mail ||= WebMail.new(param)
+        @web_orders ||= WebOrders.new(param)
       end
 
       def orders

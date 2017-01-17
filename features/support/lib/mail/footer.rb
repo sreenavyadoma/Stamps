@@ -17,15 +17,15 @@ module Stamps
     class Footer < Browser::Modal
       attr_reader :total, :print_postage_modal, :confirm_window, :windows_print, :print_button, :sample_button, :printing_problem
 
-      def initialize param
+      def initialize(param)
         super(param)
         @total = BrowserElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
-        @print_postage_modal ||= PrintPostageModal.new param
-        @confirm_window = ConfirmPrint.new param
+        @print_postage_modal ||= PrintPostageModal.new(param)
+        @confirm_window = ConfirmPrint.new(param)
         @windows_print = Windows::PrintWindow.new
         @print_button = BrowserElement.new browser.a(css: "a[class*=sdc-printpanel-printpostagebtn]")
         @sample_button = BrowserElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
-        @printing_problem ||= PrintingProblem.new param
+        @printing_problem ||= PrintingProblem.new(param)
       end
 
       def print_sample
@@ -69,10 +69,10 @@ module Stamps
         return window if window.present?
         print = print_button
 
-        naws_plugin_error = NawsPluginError.new param
-        error_connecting_to_plugin = ErrorConnectingToPlugin.new param
-        install_plugin_error = ErrorInstallPlugin.new param
-        confirm_window = ConfirmPrint.new param
+        naws_plugin_error = NawsPluginError.new(param)
+        error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
+        install_plugin_error = ErrorInstallPlugin.new(param)
+        confirm_window = ConfirmPrint.new(param)
 
         20.times do
           print.click
@@ -120,9 +120,9 @@ module Stamps
 
         print.click
 
-        naws_plugin_error = NawsPluginError.new param
-        error_connecting_to_plugin = ErrorConnectingToPlugin.new param
-        install_plugin_error = ErrorInstallPlugin.new param
+        naws_plugin_error = NawsPluginError.new(param)
+        error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
+        install_plugin_error = ErrorInstallPlugin.new(param)
 
         20.times do
           if install_plugin_error.present?

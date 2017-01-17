@@ -351,7 +351,7 @@ module Stamps
 
     class TermsAndConditions < Browser::Modal
       attr_reader :checkbox
-      def initialize param
+      def initialize(param)
         super(param)
         @checkbox = browser.checkbox id: "termsConditions"
       end
@@ -401,7 +401,7 @@ module Stamps
     class MembershipError < Browser::Modal
       attr_reader :title, :top_message, :error_code, :error_description
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.h3 text: 'An Error Occurred'
         @top_message = BrowserElement.new browser.p id: 'topMessage'
@@ -443,7 +443,7 @@ module Stamps
     class MembershipPhone < TextboxElement
       attr_reader :help_element
 
-      def initialize param
+      def initialize(param)
         super(param)
         @help_element = browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(8)>div>span")
       end
@@ -824,7 +824,7 @@ module Stamps
     class MembershipCardNumber < TextboxElement
       attr_reader :help_element
 
-      def initialize param
+      def initialize(param)
         super(param)
         @help_element = BrowserElement.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
       end
@@ -845,7 +845,7 @@ module Stamps
                   :submit_button, :supplies, :userid_taken, :download_page, :membership_error, :billing_address,
                   :billing_city, :billing_state, :billing_zip, :loading, :page_header, :error_occured, :connection_failed
 
-      def initialize param
+      def initialize(param)
         super(param)
 
         @phone ||= MembershipPhone.new browser.text_field(id: "phone")
@@ -855,37 +855,37 @@ module Stamps
         @company = TextboxElement.new browser.text_field(id: "companyName")
         @address ||= MembershipAddress.new browser.text_field(id: "street")
         @city ||= MembershipCity.new browser.text_field(id: "city")
-        @state ||= State.new param
+        @state ||= State.new(param)
         @zip = TextboxElement.new browser.text_field(id: "zip")
         @ext = TextboxElement.new browser.text_field(id: "extension")
         @card_holder_name ||= MembershipCardHolderName.new browser.text_field(id: "ccName")
         @card_holder_name = TextboxElement.new browser.text_field(id: "ccName")
         @card_number ||= MembershipCardNumber.new browser.text_field(id: "ccNumber")
-        @expiration_month ||= ExpirationMonth.new param
-        @expiration_year ||= ExpirationYear.new param
+        @expiration_month ||= ExpirationMonth.new(param)
+        @expiration_year ||= ExpirationYear.new(param)
         checkbox_field = browser.input id: "useMailingAddressForBilling"
         @billing_same_as_mailing ||= CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
 
         #Added by Galina
         @billing_address ||= MembershipBillingAddress.new browser.text_field(id: "billingStreet")
         @billing_city ||= MembershipBillingAddress.new browser.text_field(id: "City")
-        @billing_state ||= BillingState.new param
+        @billing_state ||= BillingState.new(param)
         @billing_zip ||= MembershipBillingZip.new browser.text_field(id: "billingZip")
 
-        @terms_and_conditions ||= TermsAndConditions.new param
+        @terms_and_conditions ||= TermsAndConditions.new(param)
         @back = BrowserElement.new browser.button(id: "prev")
 
         @submit_button = BrowserElement.new browser.button(text: "Submit") #Change by Galina from "Submit"
-        @supplies = ChooseSupplies.new param
-        @userid_taken = UserIdTaken.new param
-        @download_page = DownloadPage.new param
-        @membership_error = MembershipError.new param
+        @supplies = ChooseSupplies.new(param)
+        @userid_taken = UserIdTaken.new(param)
+        @download_page = DownloadPage.new(param)
+        @membership_error = MembershipError.new(param)
 
         @loading = BrowserElement.new browser.button(text: "Loading...")
         @page_header = BrowserElement.new browser.h1(text: 'Customize your Welcome Kit')
 
-        @error_occured = WebRegError.new param
-        @connection_failed = WebRegSecureConnectionFailed.new param
+        @error_occured = WebRegError.new(param)
+        @connection_failed = WebRegSecureConnectionFailed.new(param)
 
       end
 

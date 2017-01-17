@@ -3,7 +3,7 @@ module Stamps
     class PamPageHeader < Browser::Modal
       def change_meter_limit
         link = Stamps::Browser::BrowserElement.new browser.a(text: "Change Meter Limit")
-        meter_limit_page = ChangeMeterLimit.new param
+        meter_limit_page = ChangeMeterLimit.new(param)
         change_meter_limit_header = Browser::BrowserElement.new browser.td(text: "Change Meter Limit")
         5.times do
           link.safe_click
@@ -14,7 +14,7 @@ module Stamps
 
       def ach_credit
         ach_credit_link = Stamps::Browser::BrowserElement.new browser.a(text: "ACH Credit")
-        ach_credit_page = ACHCredit.new param
+        ach_credit_page = ACHCredit.new(param)
         5.times do
           ach_credit_link.safely_wait_until_present 4
           ach_credit_link.safe_click
@@ -24,7 +24,7 @@ module Stamps
 
       def appcapp_overrides
         link = Stamps::Browser::BrowserElement.new browser.a(text: "AppCap Overrides")
-        page = AppCapOverrides.new param
+        page = AppCapOverrides.new(param)
         5.times do
           link.safe_click
           sleep 1
@@ -43,7 +43,7 @@ module Stamps
       end
 
       def header
-        PamPageHeader.new param
+        PamPageHeader.new(param)
       end
 
       def available_postage

@@ -43,8 +43,8 @@ module Stamps
 
         def connect username, password
           button = BrowserElement.new browser.span(text: "Connect")
-          etsy_page = EtsyPage.new param
-          sign_in_page = EtsySignInPage.new param
+          etsy_page = EtsyPage.new(param)
+          sign_in_page = EtsySignInPage.new(param)
 
           10.times do
             button.safe_click
@@ -73,8 +73,8 @@ module Stamps
 
         def reconnect username, password
           button = BrowserElement.new browser.span(text: "Connect")
-          etsy_page = EtsyPage.new param
-          sign_in_page = EtsySignInPage.new param
+          etsy_page = EtsyPage.new(param)
+          sign_in_page = EtsySignInPage.new(param)
 
           10.times do
             button.safe_click
@@ -147,7 +147,7 @@ module Stamps
 
         def sign_in
           button = BrowserElement.new browser.text_field(id: 'signin_button')
-          etsy_page = EtsyPage.new param
+          etsy_page = EtsyPage.new(param)
 
           10.times do
             button.send_keys :enter
@@ -164,7 +164,7 @@ module Stamps
 
         def allow_access
           button = BrowserElement.new browser.text_field(css: 'input[type=submit]')
-          settings = EtsySettings.new param
+          settings = EtsySettings.new(param)
 
           3.times do
             browser.execute_script("window.scrollBy(0,400)")
@@ -178,7 +178,7 @@ module Stamps
 
         def allow_access_after_reconnect
           button = BrowserElement.new browser.text_field(css: 'input[type=submit]')
-          manage_stores = ManageStores.new param
+          manage_stores = ManageStores.new(param)
 
           3.times do
             browser.execute_script("window.scrollBy(0,400)")

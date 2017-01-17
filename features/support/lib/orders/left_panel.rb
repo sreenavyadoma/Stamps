@@ -4,7 +4,7 @@ module Stamps
       class CollapseButton < Browser::Modal
         attr_reader :button, :tooltip_element
 
-        def initialize param
+        def initialize(param)
           super(param)
           @button = BrowserElement.new (browser.span css: "span[id^=menuitem-][id$=-textEl]")
           @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
@@ -39,7 +39,7 @@ module Stamps
       class ExpandButton < Browser::Modal
         attr_reader :button, :tooltip_element
 
-        def initialize param
+        def initialize(param)
           super(param)
           @button = BrowserElement.new (browser.img css: 'img[class*=tool-expand-right]')
           @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
@@ -74,17 +74,17 @@ module Stamps
       class FilterMenuItem < Browser::Modal
         attr_reader :collapse, :expand
 
-        def initialize param
+        def initialize(param)
           super(param)
-          @collapse = CollapseButton.new param
-          @expand = ExpandButton.new param
+          @collapse = CollapseButton.new(param)
+          @expand = ExpandButton.new(param)
         end
       end
 
       class SearchResults < Browser::Modal
         attr_reader :label, :remove_button, :count_label
 
-        def initialize param
+        def initialize(param)
           super(param)
           @label = BrowserElement.new browser.div(text: "Search Results")
           @remove_button = BrowserElement.new browser.a(css: "a[data-qtip=Remove]")
@@ -108,11 +108,11 @@ module Stamps
       class SearchOrders < Browser::Modal
         attr_reader :textbox, :search_button, :search_results
 
-        def initialize param
+        def initialize(param)
           super(param)
           @textbox = TextboxElement.new browser.text_field(css: "input[placeholder='Search Orders']")
           @search_button = BrowserElement.new browser.div(css: "div[id^=textfield-][id$=-trigger-search]")
-          @search_results = SearchResults.new param
+          @search_results = SearchResults.new(param)
         end
 
         def present?
@@ -148,11 +148,11 @@ module Stamps
         attr_reader :filter_panel, :closed_filter_panel, :filter_panel_border_arrow, :filter_panel_header_arrow, :filter_panel_header_name,
                     :selected_filter_button, :cancelled_field, :search_orders_modal, :search_results
 
-        def initialize param
+        def initialize(param)
           super(param)
-          @menu_item ||= FilterMenuItem.new param
-          @search_orders_modal = SearchOrders.new param
-          @search_results = SearchResults.new param
+          @menu_item ||= FilterMenuItem.new(param)
+          @search_orders_modal = SearchOrders.new(param)
+          @search_results = SearchResults.new(param)
 
           @filter_panel = BrowserElement.new browser.div(css: "div[id*=filterpanel][class*=x-panel-dark-grey]")
           @closed_filter_panel = BrowserElement.new browser.div(css: "div[id*=title][class*=x-title-text-dark-grey]")
@@ -176,7 +176,7 @@ module Stamps
           verify = clickable.parent.parent.parent.parent
           tab = SelectionElement.new(clickable, verify, "class", "selected")
           tab.select
-          grid = OrdersGrid.new param
+          grid = OrdersGrid.new(param)
           sleep 2
           grid.wait_until_present
           grid
@@ -187,7 +187,7 @@ module Stamps
           verify = clickable.parent.parent.parent.parent
           tab = Stamps::Browser::SelectionElement.new clickable, verify, "class", "selected"
           tab.select
-          grid = Orders::Grid::OrdersGrid.new param
+          grid = Orders::Grid::OrdersGrid.new(param)
           sleep 2
           grid.wait_until_present
           grid
@@ -198,7 +198,7 @@ module Stamps
           verify = clickable.parent.parent.parent.parent
           tab = Stamps::Browser::SelectionElement.new clickable, verify, "class", "selected"
           tab.select
-          grid = Orders::Grid::OrdersGrid.new param
+          grid = Orders::Grid::OrdersGrid.new(param)
           sleep 2
           grid.wait_until_present
           grid

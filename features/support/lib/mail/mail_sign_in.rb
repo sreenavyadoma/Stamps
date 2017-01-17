@@ -17,12 +17,12 @@ module Stamps
     class WhatsNewModal < Browser::Modal
       attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
-      def initialize param
+      def initialize(param)
         super(param)
         @x_btn = BrowserElement.new browser.img css: 'img.x-tool-close'
         @more_info_btn = BrowserElement.new browser.span css: 'span[id*=sdc-undefinedwindow-more]'
         @continue_btn = BrowserElement.new (browser.span text: "Continue")
-        @more_info_page = MoreInfoPage.new param
+        @more_info_page = MoreInfoPage.new(param)
         @window_title = BrowserElement.new browser.span css: "span[id^=dialoguemodal-][id$=_header_hd-textEl]"
       end
 
@@ -59,7 +59,7 @@ module Stamps
     class RememberUsername < Browser::Modal
       attr_reader :remember_user_element
 
-      def initialize param
+      def initialize(param)
         super(param)
         @remember_user_element = BrowserElement.new browser.checkbox(id: "rememberUser")
       end
@@ -85,7 +85,7 @@ module Stamps
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
                   :signed_in_user, :invalid_msg, :remember_username_checkbox, :invalid_username_password
 
-      def initialize param
+      def initialize(param)
         super(param)
         @username_textbox = TextboxElement.new browser.text_field(Locators::SignIn.username)
         @password_textbox = TextboxElement.new browser.text_field(Locators::SignIn.password)
@@ -94,7 +94,7 @@ module Stamps
         @verifying_account_info = BrowserElement.new browser.div text: "Verifying account information..."
         @signed_in_user = BrowserElement.new browser.span id: "userNameText"
         @invalid_msg = BrowserElement.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
-        @whats_new_modal ||= WhatsNewModal.new param
+        @whats_new_modal ||= WhatsNewModal.new(param)
         @remember_username_checkbox = WatirCheckbox.new browser.checkbox(id: "rememberUser")
         @invalid_username_password = BrowserElement.new browser.div(id: "InvalidUsernamePasswordMsg")
         @username = ""
@@ -341,7 +341,7 @@ module Stamps
         def forgot_username
           sign_in_link = BrowserElement.new browser.link(text: "Sign In")
           button = BrowserElement.new browser.a css: "a[class*=forgotUsername]"
-          forgot_username_modal = ForgotUsernameModal.new param
+          forgot_username_modal = ForgotUsernameModal.new(param)
           5.times do
             sign_in_link.safe_click
             button.safe_click
@@ -354,7 +354,7 @@ module Stamps
         def forgot_password
           sign_in_link = BrowserElement.new browser.link(text: "Sign In")
           button = BrowserElement.new browser.a css: "a[class*=forgotPassword]"
-          forgot_password_modal = ForgotPasswordModal.new param
+          forgot_password_modal = ForgotPasswordModal.new(param)
           5.times do
             sign_in_link.safe_click
             button.safe_click
@@ -370,9 +370,9 @@ module Stamps
     class MailLandingPage < Browser::Modal
       attr_reader :sign_in_modal
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @sign_in_modal ||= MailSignInModal.new param
+        @sign_in_modal ||= MailSignInModal.new(param)
       end
 
       def url

@@ -4,7 +4,7 @@ module Stamps
     class PostageCountry < Browser::Modal
       attr_reader :text_box, :drop_down
 
-      def initialize param
+      def initialize(param)
         super(param)
         @text_box = TextboxElement.new browser.text_field name: "mailToCountry"
         @drop_down = BrowserElement.new (browser.divs css: "div[class*=x-form-trigger]")[2]
@@ -31,11 +31,11 @@ module Stamps
       attr_reader :text_area, :country, :email, :name, :company, :address_1, :address_2, :city, :province, :postal_code,
                   :phone, :contacts
 
-      def initialize param
+      def initialize(param)
         super(param)
         @text_area = TextboxElement.new (browser.textarea id: "sdc-mainpanel-shiptotextarea-inputEl")
-        @country ||= PostageCountry.new param
-        @email ||= Email.new param
+        @country ||= PostageCountry.new(param)
+        @email ||= Email.new(param)
         @name = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
         @company = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
         @address_1 = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
@@ -44,7 +44,7 @@ module Stamps
         @province = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
         @postal_code = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
         @phone = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
-        @contacts ||= Contacts.new param
+        @contacts ||= Contacts.new(param)
       end
 
       # Domestic Ship-To
@@ -58,7 +58,7 @@ module Stamps
     class PrintOn < Browser::Modal
       attr_reader :drop_down, :text_box
 
-      def initialize param
+      def initialize(param)
         super(param)
         @drop_down = BrowserElement.new browser.div(css: "table[id^=printmediadroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]")
         @text_box = TextboxElement.new browser.text_field(css: "input[id^=printmediadroplist-][id$=-inputEl]")
@@ -134,7 +134,7 @@ module Stamps
     class Pounds < Browser::Modal
       attr_reader :text_box, :increment_button, :decrement_button
 
-      def initialize param
+      def initialize(param)
         super(param)
         @text_box = TextboxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
         @increment_button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
@@ -174,7 +174,7 @@ module Stamps
     class Ounces < Browser::Modal
       attr_reader :decrement_button, :text_box, :increment_button
 
-      def initialize param
+      def initialize(param)
         super(param)
         @decrement_button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
         @text_box = TextboxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
@@ -215,19 +215,19 @@ module Stamps
     class Weight < Browser::Modal
       attr_reader :auto_weigh, :weigh_button, :lb, :oz
 
-      def initialize param
+      def initialize(param)
         super(param)
         @auto_weigh ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-autoweightcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
         @weigh_button = BrowserElement.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
-        @oz ||= Ounces.new param
-        @lb ||= Pounds.new param
+        @oz ||= Ounces.new(param)
+        @lb ||= Pounds.new(param)
       end
     end
 
     class MailServiceDropList < Browser::Modal
       attr_reader :text_box, :drop_down
 
-      def initialize param
+      def initialize(param)
         super(param)
         @text_box = TextboxElement.new browser.text_field(name: "servicePackage")
         @drop_down = BrowserElement.new browser.div(css: "table[id=sdc-mainpanel-servicedroplist-triggerWrap]>tbody>tr>td>div[role=button]")
@@ -301,7 +301,7 @@ module Stamps
     class MailShipFrom < Browser::Modal
       attr_reader :text_box, :drop_down, :manage_shipping_address
 
-      def initialize param
+      def initialize(param)
         super(param)
         @text_box = TextboxElement.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
         @drop_down = BrowserElement.new (browser.div css: "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
@@ -385,7 +385,7 @@ module Stamps
 
     class Email < Browser::Modal
       attr_reader :checkbox, :text_box
-      def initialize param
+      def initialize(param)
         super(param)
         @checkbox ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
         @text_box = TextboxElement.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
@@ -475,7 +475,7 @@ module Stamps
 
       def open
         button = link
-        contacts_modal = ContactsModal.new param
+        contacts_modal = ContactsModal.new(param)
         5.times do
           button.safe_click
           sleep 1

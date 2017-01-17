@@ -32,7 +32,7 @@ module Stamps
       def customer_search
         param.test_env = 'stg' if param.test_env.downcase == 'staging'
 
-        customer_search_page = Pam::CustomerSearch.new param
+        customer_search_page = Pam::CustomerSearch.new(param)
 
         case param.test_env.downcase
           when /cc/

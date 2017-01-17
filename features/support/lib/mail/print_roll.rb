@@ -28,21 +28,21 @@ module Stamps
       end
 
       def cost_code
-        CostCode.new param
+        CostCode.new(param)
       end
     end
 
     class Roll < MailForm
       def insure_for
-        DetailsInsureFor.new param
+        DetailsInsureFor.new(param)
       end
 
       def ship_date
-        ShipDate.new param
+        ShipDate.new(param)
       end
 
       def form_view
-        RollFormView.new param
+        RollFormView.new(param)
       end
     end
   end

@@ -22,7 +22,7 @@ module Stamps
 
   def health
     begin
-      HealthCheck.new param
+      HealthCheck.new(param)
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -34,7 +34,7 @@ module Stamps
 
   def stamps
     begin
-      @stamps ||= StampsCom.new param
+      @stamps ||= StampsCom.new(param)
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -56,7 +56,7 @@ module Stamps
 
   def webreg
     begin
-      @webreg ||= WebReg::WebRegistration.new param
+      @webreg ||= WebReg::WebRegistration.new(param)
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -68,7 +68,7 @@ module Stamps
 
   def pam
     begin
-      @pam ||= Pam::PaymentAdministratorManager.new param
+      @pam ||= Pam::PaymentAdministratorManager.new(param)
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -80,7 +80,7 @@ module Stamps
 
   def volusion
     begin
-      @volusion ||= Stores::VolusionLoginPage.new param
+      @volusion ||= Stores::VolusionLoginPage.new(param)
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"

@@ -8,8 +8,8 @@ Feature: Edit Order Details
 
     Then Toolbar: Add
     Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Select Service PM Flat Rate Envelope
+    Then Details: Set Ship-To to address in Zone 8
+    Then Details: Select Service PM Package
     Then Details: Set Ounces to 3
     Then Details: Set Pounds to 2
     Then Details: Set Insure-For to $100.00

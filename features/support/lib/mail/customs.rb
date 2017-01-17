@@ -23,15 +23,15 @@ module Stamps
       end
 
       def package_contents
-        PackageContents.new param
+        PackageContents.new(param)
       end
 
       def non_delivery_options
-        NonDeliveryOptions.new param
+        NonDeliveryOptions.new(param)
       end
 
       def internal_transaction
-        InternalTransaction.new param
+        InternalTransaction.new(param)
       end
 
       def more_info
@@ -68,7 +68,7 @@ module Stamps
       end
 
       def usps_privacy_act_statement
-        privacy_statement = UspsPrivactActStatementModal.new param
+        privacy_statement = UspsPrivactActStatementModal.new(param)
         5.times{
           element_helper.safe_click privacy_act_statement_link
           return privacy_statement if privacy_statement.present?
@@ -80,7 +80,7 @@ module Stamps
       end
 
       def restrictions_and_prohibitions
-        restrictions_link = RestrictionsAndProhibitionsModal.new param
+        restrictions_link = RestrictionsAndProhibitionsModal.new(param)
         5.times{
           element_helper.safe_click restrictions_prohibitions_link
           return restrictions_link if restrictions_link.present?
@@ -88,7 +88,7 @@ module Stamps
       end
 
       def add_item
-        add_item_modal = AddItemModal.new param
+        add_item_modal = AddItemModal.new(param)
         button = BrowserElement.new browser.span text: "Add Item"
         5.times do
           element_helper.safe_click button
@@ -98,7 +98,7 @@ module Stamps
       end
 
       def edit_item
-        edit_item_modal = EditItemModal.new param
+        edit_item_modal = EditItemModal.new(param)
         button = BrowserElement.new browser.span text: "Edit Item"
         5.times do
           element_helper.safe_click button
@@ -153,19 +153,19 @@ module Stamps
       end
 
       def qty
-        AddItemModal::Qty.new param
+        AddItemModal::Qty.new(param)
       end
 
       def value
-        AddItemModal::Value.new param
+        AddItemModal::Value.new(param)
       end
 
       def lb
-        AddItemModal::Lbs.new param
+        AddItemModal::Lbs.new(param)
       end
 
       def oz
-        AddItemModal::Ounces.new param
+        AddItemModal::Ounces.new(param)
       end
 
       def hs_tariff
@@ -173,7 +173,7 @@ module Stamps
       end
 
       def origin
-        AddItemModal::Origin.new param
+        AddItemModal::Origin.new(param)
       end
 
       def add_another
@@ -295,7 +295,7 @@ module Stamps
       class Origin  < Browser::Modal
         attr_reader :text_box
 
-        def initialize param
+        def initialize(param)
           super(param)
           @text_box = TextboxElement.new browser.text_field name: "CountryOfOrigin"
         end
@@ -452,7 +452,7 @@ module Stamps
       end
 
       def edit_form
-        @customs_form = CustomsForm.new param
+        @customs_form = CustomsForm.new(param)
         edit_form_button = browser_edit_form_button
         20.times{
           edit_form_button.safe_click
@@ -468,7 +468,7 @@ module Stamps
 
       def restrictions
         restrictions_button = browser_restrictions_button
-        view_restrictions = Orders::Details::ViewRestrictions.new param
+        view_restrictions = Orders::Details::ViewRestrictions.new(param)
         5.times{
           restrictions_button.safe_click
           if view_restrictions.present?
@@ -484,7 +484,7 @@ module Stamps
     class CustomsLineItem < Browser::Modal
 
       class Qty < Browser::Modal
-        def initialize param, number
+        def initialize(param, number)
           super(param)
           @index = number
         end
@@ -527,7 +527,7 @@ module Stamps
       end
 
       class UnitPrice < Browser::Modal
-        def initialize param, number
+        def initialize(param, number)
           super(param)
           @index = number
         end
@@ -557,7 +557,7 @@ module Stamps
       end
 
       class UnitWeightLbs < Browser::Modal
-        def initialize param, number
+        def initialize(param, number)
           super(param)
           @index = number
         end
@@ -600,7 +600,7 @@ module Stamps
       end
 
       class UnitWeightOz < Browser::Modal
-        def initialize param, number
+        def initialize(param, number)
           super(param)
           @index = number
         end
@@ -642,7 +642,7 @@ module Stamps
         end
       end
 
-      def initialize param, number
+      def initialize(param, number)
         super(param)
         @index = number
       end
@@ -660,23 +660,23 @@ module Stamps
       end
 
       def qty
-        Qty.new param, @index
+        Qty.new(param, @index)
       end
 
       def unit_price
-        UnitPrice.new param, @index
+        UnitPrice.new(param, @index)
       end
 
       def lb
-        UnitWeightLbs.new param, @index
+        UnitWeightLbs.new(param, @index)
       end
 
       def oz
-        UnitWeightOz.new param, @index
+        UnitWeightOz.new(param, @index)
       end
 
       def origin
-        OriginCountry.new param, @index
+        OriginCountry.new(param, @index)
       end
 
       def hs_tariff

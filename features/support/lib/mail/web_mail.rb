@@ -5,17 +5,17 @@ module Stamps
       attr_reader :sign_in_modal, :toolbar, :print_on, :footer, :shipping_label, :netstamps,
                   :envelope, :certified_mail, :roll
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @sign_in_modal = MailSignInModal.new param
-        @toolbar = Toolbar.new param
-        @print_on = PrintOn.new param
-        @footer = Footer.new param
-        @shipping_label = ShippingLabel.new param
-        @netstamps = NetStamps.new param
-        @envelope = Envelope.new param
-        @certified_mail = CertifiedMail.new param
-        @roll = Roll.new param
+        @sign_in_modal = MailSignInModal.new(param)
+        @toolbar = Toolbar.new(param)
+        @print_on = PrintOn.new(param)
+        @footer = Footer.new(param)
+        @shipping_label = ShippingLabel.new(param)
+        @netstamps = NetStamps.new(param)
+        @envelope = Envelope.new(param)
+        @certified_mail = CertifiedMail.new(param)
+        @roll = Roll.new(param)
       end
 
       def present?

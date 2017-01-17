@@ -5,7 +5,7 @@ module Stamps
     class PrintPostageCustoms < Browser::Modal
       def edit_form
         button = BrowserElement.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"
-        customs_modal = CustomsForm.new param
+        customs_modal = CustomsForm.new(param)
         15.times do
           button.safe_click
           sleep 1
@@ -26,20 +26,20 @@ module Stamps
     class MailForm < Browser::Modal
       attr_reader :service, :email_tracking, :tracking, :weight, :ship_from, :ship_to, :customs, :extra_services
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @service ||= MailServiceDropList.new param
-        @email_tracking ||= Email.new param
-        @tracking ||= Tracking.new param
-        @weight ||= Weight.new param
-        @ship_from ||= MailShipFrom.new param
-        @ship_to ||= Stamps::Mail::ShipTo.new param
-        @customs ||= PrintPostageCustoms.new param
+        @service ||= MailServiceDropList.new(param)
+        @email_tracking ||= Email.new(param)
+        @tracking ||= Tracking.new(param)
+        @weight ||= Weight.new(param)
+        @ship_from ||= MailShipFrom.new(param)
+        @ship_to ||= Stamps::Mail::ShipTo.new(param)
+        @customs ||= PrintPostageCustoms.new(param)
         @extra_services = BrowserElement.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
       end
 
       def open_extra_services
-        service_modal = ExtraServices.new param
+        service_modal = ExtraServices.new(param)
         10.times do
           extra_services.safe_click
           extra_services.wait_until_present 2

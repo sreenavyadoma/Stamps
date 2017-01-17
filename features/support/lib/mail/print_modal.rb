@@ -54,7 +54,7 @@ module Stamps
       end
 
       def dont_prompt_deducting_postage_again
-        ConfirmPrintCheckbox.new param
+        ConfirmPrintCheckbox.new(param)
       end
 
       def continue
@@ -134,15 +134,15 @@ module Stamps
 
     class PrintPostageModal < PrintPostageModalObject
       def paper_tray
-        PaperTray.new param
+        PaperTray.new(param)
       end
 
       def printer
-        Printer.new param
+        Printer.new(param)
       end
 
       def confirm_modal
-        ConfirmPrint.new param
+        ConfirmPrint.new(param)
       end
 
       def print
@@ -167,7 +167,7 @@ module Stamps
 
       def print_expecting_rating_error
         #postage
-        RatingError.new param.wait_until_present
+        RatingError.new(param).wait_until_present
       end
 
       def label_sheet_required_count

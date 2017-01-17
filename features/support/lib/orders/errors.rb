@@ -124,7 +124,7 @@ module Stamps
             #ignore
           end
         }
-        PrintModal.new param
+        PrintModal.new(param)
       end
 
       def cancel

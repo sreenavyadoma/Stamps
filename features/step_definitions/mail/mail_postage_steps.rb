@@ -141,7 +141,7 @@ Then /^Mail: Set Ship-To address to (.*)$/ do |address|
     else
       formatted_address = ParameterHelper.format_address address
   end
-  ship_to_dd = ShipTo::PostageCountry.new param
+  ship_to_dd = ShipTo::PostageCountry.new(param)
   ship_to_dd.select "United States"
   stamps.mail.ship_to.set formatted_address
 end
@@ -174,7 +174,7 @@ end
 #todo major rework here
 Then /^Mail: Expect Print On Field is present$/ do
   logger.step "Mail: Expect Print On Field is present"
-  print_on = PrintOn.new param
+  print_on = PrintOn.new(param)
   print_on.text_box.present?.should be true
 end
 
@@ -337,19 +337,19 @@ end
 
 Then /^Mail: Expect Reset Button is present$/ do
   logger.step "Mail: Expect Reset Button is present"
-  toolbar = Toolbar.new param
+  toolbar = Toolbar.new(param)
   toolbar.reset.present?.should be true
 end
 
 Then /^Mail: Expect Settings Button is present$/ do
   logger.step "Mail: Expect Settings Button is present"
-  toolbar = Toolbar.new param
+  toolbar = Toolbar.new(param)
   toolbar.settings.present?.should be true
 end
 
 Then /^Mail: Expect Help Button is present$/ do
   logger.step "Mail: Expect Help Button is present"
-  toolbar = Toolbar.new param
+  toolbar = Toolbar.new(param)
   toolbar.help.present?.should be true
 end
 
@@ -363,13 +363,13 @@ end
 
 Then /^Mail: Expect Feedback Button is present$/ do
   logger.step "Mail: Expect Feedback Button is present"
-  toolbar = Toolbar.new param
+  toolbar = Toolbar.new(param)
   toolbar.feedback.present?.should be true
 end
 
 Then /^Mail: Expect Classic Button is present$/ do
   logger.step "Mail: Expect Classic Button is present"
-  toolbar = Toolbar.new param
+  toolbar = Toolbar.new(param)
   toolbar.classic.present?.should be true
 end
 

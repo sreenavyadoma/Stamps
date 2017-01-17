@@ -4,7 +4,7 @@ module Stamps
     class AppCapOverridesConfirmation < Browser::Modal
       attr_reader :title, :ok_button
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.td(text: 'AppCap Overrides')
         @ok_button = BrowserElement.new browser.a(css: 'a[href*=Profile]')
@@ -112,16 +112,16 @@ module Stamps
       attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
                   :mailing_label_printing, :submit_button, :appcap_overrides
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @internet_postage_printing ||= InternetPostagePrinting.new param
-        @netstamps_printing ||= NetStampsPrinting.new param
-        @shipping_label_printing ||= ShippingLabelPrinting.new param
-        @international_shipping ||= InternationalShipping.new param
-        @allow_high_risk_countries ||= AllowHighRiskCountries.new param
-        @mailing_label_printing ||= MailingLabelPrinting.new param
+        @internet_postage_printing ||= InternetPostagePrinting.new(param)
+        @netstamps_printing ||= NetStampsPrinting.new(param)
+        @shipping_label_printing ||= ShippingLabelPrinting.new(param)
+        @international_shipping ||= InternationalShipping.new(param)
+        @allow_high_risk_countries ||= AllowHighRiskCountries.new(param)
+        @mailing_label_printing ||= MailingLabelPrinting.new(param)
         @submit_button = BrowserElement.new browser.input(name: 'submit')
-        @appcap_overrides = AppCapOverridesConfirmation.new param
+        @appcap_overrides = AppCapOverridesConfirmation.new(param)
       end
 
       def present?

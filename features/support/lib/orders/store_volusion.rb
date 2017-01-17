@@ -31,9 +31,9 @@ module Stamps
 
         def connect
           button = connect_button
-          settings = VolusionSettings.new param
-          server_error = Orders::Stores::ServerError.new param
-          importing_order = Orders::Stores::ImportingOrdersModal.new param
+          settings = VolusionSettings.new(param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.safe_click
@@ -62,9 +62,9 @@ module Stamps
 
         def reconnect
           button = connect_button
-          manage_stores = ManageStores.new param
-          server_error = Orders::Stores::ServerError.new param
-          importing_order = Orders::Stores::ImportingOrdersModal.new param
+          manage_stores = ManageStores.new(param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.safe_click

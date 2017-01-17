@@ -8,7 +8,7 @@ module Stamps
     class Modal
       attr_accessor :param, :browser, :logger, :element_helper
 
-      def initialize param
+      def initialize(param)
         @param = param
         @browser = param.browser
         @logger = param.logger

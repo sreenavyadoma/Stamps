@@ -3,7 +3,7 @@ module Stamps
     class LearnMoreModal < Browser::Modal
       attr_reader :title, :msg_container, :next_button, :cancel_button, :learn_button, :close_button
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.div(text: 'Learn More')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
@@ -37,13 +37,13 @@ module Stamps
     class ImportFromStoresModal < Browser::Modal
       attr_reader :title, :msg_container, :next_button, :close_button, :learn_more
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.div(text: 'Import from Stores')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @learn_more ||= LearnMoreModal.new param
+        @learn_more ||= LearnMoreModal.new(param)
       end
 
       def present?
@@ -74,13 +74,13 @@ module Stamps
     class ImportFromCsvModal < Browser::Modal
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_stores
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.div(text: 'Import from CSV')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @import_from_stores ||= ImportFromStoresModal.new param
+        @import_from_stores ||= ImportFromStoresModal.new(param)
       end
 
       def present?
@@ -111,13 +111,13 @@ module Stamps
     class AddManualOrderModal < Browser::Modal
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_csv
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.div(text: 'Add Manual Order')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @import_from_csv ||= ImportFromCsvModal.new param
+        @import_from_csv ||= ImportFromCsvModal.new(param)
       end
 
       def present?
@@ -148,13 +148,13 @@ module Stamps
     class NewWelcomeModal < Browser::Modal
       attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.div(text: 'Welcome!')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @add_manual_order ||= AddManualOrderModal.new param
+        @add_manual_order ||= AddManualOrderModal.new(param)
       end
 
       def present?
@@ -185,7 +185,7 @@ module Stamps
     class WelcomeModal < Browser::Modal
       attr_reader :okay_button
 
-      def initialize param
+      def initialize(param)
         super(param)
         @okay_button = BrowserElement.new browser.span(text: 'OK')
       end
@@ -213,7 +213,7 @@ module Stamps
     class OrdersLandingPage < Browser::Modal
       attr_reader :username, :password, :sign_in_btn, :title
 
-      def initialize param
+      def initialize(param)
         super(param)
         @username = TextboxElement.new browser.text_field(id: "UserNameTextBox")
         @password = TextboxElement.new browser.text_field(id: "PasswordTextBox")
@@ -235,7 +235,7 @@ module Stamps
       end
 
       def first_time_sign_in usr, pw
-        market_place = Orders::Stores::MarketPlace.new param
+        market_place = Orders::Stores::MarketPlace.new(param)
 
         username.safely_wait_until_present 6
 
@@ -264,14 +264,14 @@ module Stamps
       end
 
       def sign_in *args
-        grid = Orders::Grid::OrdersGrid.new param
-        navbar = Navigation::NavigationBar.new param
-        #plugin_issue = ErrorStampsPluginIssue.new param
-        toolbar = Stamps::Orders::Toolbar::Toolbar.new param
-        market_place = Orders::Stores::MarketPlace.new param
+        grid = Orders::Grid::OrdersGrid.new(param)
+        navbar = Navigation::NavigationBar.new(param)
+        #plugin_issue = ErrorStampsPluginIssue.new(param)
+        toolbar = Stamps::Orders::Toolbar::Toolbar.new(param)
+        market_place = Orders::Stores::MarketPlace.new(param)
         loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
         invalid_username = BrowserElement.new browser.span(id: "InvalidUsernameMsg")
-        new_welcome = NewWelcomeModal.new param
+        new_welcome = NewWelcomeModal.new(param)
 
         "Check that URL is valid: #{browser.url}".should eql "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 

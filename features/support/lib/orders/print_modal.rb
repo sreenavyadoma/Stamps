@@ -4,7 +4,7 @@ module Stamps
     class PrintingOn < Browser::Modal
       attr_reader :drop_down, :text_box
 
-      def initialize param
+      def initialize(param)
         super(param)
         @drop_down = BrowserElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
         @text_box = TextboxElement.new browser.text_field css: "input[name^=printmediadroplist]"
@@ -76,7 +76,7 @@ module Stamps
     class Printer < Browser::Modal
       attr_reader :drop_down, :text_box
 
-      def initialize param
+      def initialize(param)
         super(param)
         @drop_down = BrowserElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
         @text_box = TextboxElement.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
@@ -99,7 +99,7 @@ module Stamps
     class PaperTray < Browser::Modal
       attr_reader :drop_down, :text_box
 
-      def initialize param
+      def initialize(param)
         super(param)
         @drop_down = BrowserElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
         @text_box = TextboxElement.new browser.text_field(name: "paperTrays")
@@ -120,7 +120,7 @@ module Stamps
     class StartingLabel < Browser::Modal
       attr_reader :left_label, :right_label
 
-      def initialize param
+      def initialize(param)
         super(param)
         @left_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")
         @right_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")
@@ -227,7 +227,7 @@ module Stamps
     class UspsTerms < Browser::Modal
       attr_reader :i_agree, :cancel
 
-      def initialize param
+      def initialize(param)
         super(param)
         @i_agree = BrowserElement.new browser.span text: "I Agree"
         @cancel = BrowserElement.new browser.span text: "Cancel"
@@ -351,7 +351,7 @@ module Stamps
     class PrintModalObject < Browser::Modal
       attr_reader :window_x_button
 
-      def initialize param
+      def initialize(param)
         super(param)
         @window_x_button = browser.img css: "img[class*='x-tool-img x-tool-close']"
       end
@@ -376,11 +376,11 @@ module Stamps
     class ShipDate < Browser::Modal
       attr_reader :text_box, :date_picker, :text_box_cc
 
-      def initialize param
+      def initialize(param)
         super(param)
         @text_box = TextboxElement.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
         @text_box_cc = TextboxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
-        @date_picker = DatePicker.new param
+        @date_picker = DatePicker.new(param)
       end
 
       def text
@@ -397,14 +397,14 @@ module Stamps
       attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options, :print_button,
                   :print_sample_button, :printer, :email_tracking_details
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @printing_on = PrintingOn.new param
-        @printer = Printer.new param
-        @paper_tray = PaperTray.new param
-        @ship_date = ShipDate.new param
-        @starting_label = StartingLabel.new param
-        @print_options = PrintOptions.new param
+        @printing_on = PrintingOn.new(param)
+        @printer = Printer.new(param)
+        @paper_tray = PaperTray.new(param)
+        @ship_date = ShipDate.new(param)
+        @starting_label = StartingLabel.new(param)
+        @print_options = PrintOptions.new(param)
 
         @print_button = BrowserElement.new browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')
         @print_sample_button = BrowserElement.new browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')
@@ -444,7 +444,7 @@ module Stamps
 
       def print_expecting_rating_error
         postage
-        RatingError.new param.wait_until_present
+        RatingError.new(param).wait_until_present
       end
 
       def labels_ready_to_print

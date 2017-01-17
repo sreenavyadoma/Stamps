@@ -16,9 +16,9 @@ module Stamps
     class ChangeMeterLimit < Browser::Modal
       attr_reader :usps_approval, :new_meter_limit, :current_meter, :maximum_meter
 
-      def initialize param
+      def initialize(param)
         super(param)
-        @usps_approval ||= USPSCheckbox.new param
+        @usps_approval ||= USPSCheckbox.new(param)
         @new_meter_limit = TextboxElement.new browser.text_field(name: "resetAmt")
         @current_meter = BrowserElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
         @maximum_meter = BrowserElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
@@ -38,7 +38,7 @@ module Stamps
 
       def submit
         button = Stamps::Browser::BrowserElement.new browser.input(name: "submit")
-        change_success = ChangeMeterLimitSuccess.new param
+        change_success = ChangeMeterLimitSuccess.new(param)
         5.times do
           button.send_keys :enter
           button.safe_click
@@ -65,7 +65,7 @@ module Stamps
       end
 
       def ok
-        profile = CustomerProfile.new param
+        profile = CustomerProfile.new(param)
         button = BrowserElement.new browser.a(css: "a[href^=Profile]")
         5.times do
           button.safely_wait_until_present 2

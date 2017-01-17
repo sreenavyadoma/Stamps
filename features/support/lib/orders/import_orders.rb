@@ -26,7 +26,7 @@ module Stamps
     class ImportOrders < Browser::Modal
       attr_reader :title
 
-      def initialize param
+      def initialize(param)
         super(param)
         @title = BrowserElement.new browser.div(text: "Import Orders")
       end
@@ -44,9 +44,9 @@ module Stamps
       end
 
       def import
-        success = SuccessModal.new param
+        success = SuccessModal.new(param)
         button = BrowserElement.new browser.span(text: "Import")
-        server_error = Orders::Stores::ServerError.new param
+        server_error = Orders::Stores::ServerError.new(param)
         4.times do
           button.safe_click
           logger.info "Success modal is #{(success.present?)?"Present":"Not Present"}"
