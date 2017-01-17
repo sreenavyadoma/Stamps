@@ -274,9 +274,9 @@ Then /^Details: Expect Insure-For is \$(.*)$/ do |expectation|
   stamps.orders.order_details.insure_for.checkbox.check
   step "Details: Blur out"
   10.times do
-    break if stamps.orders.order_details.insure_for.text_box.text == expectation
+    break if stamps.orders.order_details.insure_for.text_box.text.to_f == expectation.to_f
   end
-  stamps.orders.order_details.insure_for.text_box.text.should eql expectation
+  stamps.orders.order_details.insure_for.text_box.text.to_f.should eql expectation.to_f
 end
 
 Then /^Details: Expect Insure-For Cost saved value is the same$/ do
