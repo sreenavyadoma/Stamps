@@ -4,7 +4,7 @@ module Stamps
       attr_reader :window_title, :text_area
 
       def initialize param
-        super param
+        super(param)
         @window_title = BrowserElement.new browser.div(text: "Transaction Complete")
         @text_area = BrowserElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
       end
@@ -35,7 +35,7 @@ module Stamps
       attr_reader :window_title, :transaction_complete, :confirm_btn
 
       def initialize param
-        super param
+        super(param)
         @window_title = BrowserElement.new browser.div(text: 'Confirm Transaction')
         @confirm_btn = BrowserElement.new browser.span(text: "Confirm")
         @transaction_complete = TransactionComplete.new param
@@ -97,7 +97,7 @@ module Stamps
       attr_reader
 
       def initialize param
-        super param
+        super(param)
 
       end
     end
@@ -106,7 +106,7 @@ module Stamps
       attr_reader :confirm_transaction, :auto_buy_postage_modal, :auto_buy_postage_link, :window_title
 
       def initialize param
-        super param
+        super(param)
         @confirm_transaction ||= ConfirmTransaction.new param
         @auto_buy_postage_modal ||= AutoBuyPostageModal.new param
         @auto_buy_postage_link = BrowserElement.new browser.span(text: "Auto-buy postage")
@@ -256,7 +256,7 @@ module Stamps
       attr_reader :buy_postage_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
 
       def initialize param
-        super param
+        super(param)
 
         @buy_postage_modal = BuyPostageModal.new param
         @buy_more_drop_down = BrowserElement.new (browser.span class: "balanceLabel")
@@ -309,7 +309,7 @@ module Stamps
       attr_reader :username, :sign_out_link
 
       def initialize param
-        super param
+        super(param)
         @username = BrowserElement.new browser.span id: 'userNameText'
         @sign_out_link = browser.a text: "Sign Out"
       end
@@ -350,7 +350,7 @@ module Stamps
       attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
       def initialize param
-        super param
+        super(param)
         @balance ||= BalanceDropDown.new param
         @username ||= UsernameDropDown.new param
         @sign_out_link = BrowserElement.new browser.link id: "signOutLink"

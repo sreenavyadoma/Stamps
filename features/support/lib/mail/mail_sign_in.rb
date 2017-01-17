@@ -18,7 +18,7 @@ module Stamps
       attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
       def initialize param
-        super param
+        super(param)
         @x_btn = BrowserElement.new browser.img css: 'img.x-tool-close'
         @more_info_btn = BrowserElement.new browser.span css: 'span[id*=sdc-undefinedwindow-more]'
         @continue_btn = BrowserElement.new (browser.span text: "Continue")
@@ -60,7 +60,7 @@ module Stamps
       attr_reader :remember_user_element
 
       def initialize param
-        super param
+        super(param)
         @remember_user_element = BrowserElement.new browser.checkbox(id: "rememberUser")
       end
 
@@ -86,7 +86,7 @@ module Stamps
                   :signed_in_user, :invalid_msg, :remember_username_checkbox, :invalid_username_password
 
       def initialize param
-        super param
+        super(param)
         @username_textbox = TextboxElement.new browser.text_field(Locators::SignIn.username)
         @password_textbox = TextboxElement.new browser.text_field(Locators::SignIn.password)
         @sign_in_button = BrowserElement.new browser.button(id: "signInButton")
@@ -371,7 +371,7 @@ module Stamps
       attr_reader :sign_in_modal
 
       def initialize param
-        super param
+        super(param)
         @sign_in_modal ||= MailSignInModal.new param
       end
 

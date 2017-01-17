@@ -5,7 +5,7 @@ module Stamps
         attr_reader :drop_down, :text_box, :manage_shipping_adddress, :blur_element
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(name: "ShipFrom")
           @drop_down = BrowserElement.new browser.div(css: "div[id^=shipfromdroplist][id$=trigger-picker]")
           @manage_shipping_adddress = ManageShippingAddresses.new param
@@ -68,7 +68,7 @@ module Stamps
         attr_reader :insure_for_label
 
         def initialize param
-          super param
+          super(param)
           @insure_for_label = BrowserElement.new browser.label(text: 'Insure For $:')
         end
 
@@ -84,7 +84,7 @@ module Stamps
                     :dom_drop_down_stg, :int_drop_down_stg, :dom_text_box_stg, :int_text_box_stg
 
         def initialize param
-          super param
+          super(param)
           @drop_down_dom = BrowserElement.new browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
           @drop_down_int = BrowserElement.new browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
           @text_box_dom = TextboxElement.new browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl")
@@ -171,7 +171,7 @@ module Stamps
         attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :collapsed_address_dd
 
         def initialize param
-          super param
+          super(param)
           @name = TextboxElement.new browser.text_field(name: "ShipName"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(2)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
           @company = TextboxElement.new browser.text_field(name: "ShipCompany"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(3)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
           @address_1 = TextboxElement.new browser.text_field(name: "ShipStreet1"), browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(4)>div>div>div>div>div[class*=error-msg]"), "data-errorqtip"
@@ -199,26 +199,26 @@ module Stamps
 
       class AutoSuggestPopUp < Browser::Modal
         def present?
-          (BrowserElement.new self.name_fields[0]).present?
+          name_fields[0].present?
         end
 
         def size
-          (browser.lis css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
+          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
         end
 
         def select number
-          selection = BrowserElement.new name_fields[number.to_i-1]
+          selection = BrowserElement.new(name_fields[number.to_i-1])
           selection.safe_click
           selection.safe_click
           selection.safe_click
         end
 
         def name_fields
-          (browser.lis css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
+          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
         end
 
         def address_fields
-          (browser.lis css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
+          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
         end
       end
 
@@ -227,7 +227,7 @@ module Stamps
         attr_reader :auto_suggest_box
 
         def initialize param
-          super param
+          super(param)
           @auto_suggest_box = AutoSuggestPopUp.new param
         end
 
@@ -254,7 +254,7 @@ module Stamps
         attr_reader :window_title
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div(text: 'Exact Address Not Found')
         end
 
@@ -304,7 +304,7 @@ module Stamps
         attr_reader :address_not_found
 
         def initialize param
-          super param
+          super(param)
           @address_not_found = AddressNotFound.new param
         end
 
@@ -413,9 +413,7 @@ module Stamps
                     :address_not_found
 
         def initialize param
-          super param
-          @ambiguous = AmbiguousAddress.new param
-          @auto_suggest = AutoSuggestDomestic.new param
+          super(param)
           @less_link = BrowserElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
           @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
           @blur_element = BlurOutElement.new param
@@ -423,6 +421,9 @@ module Stamps
           @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
           @email ||= TextboxElement.new browser.text_field(name: 'BuyerEmail')
           @phone ||= TextboxElement.new browser.text_field(name: "ShipPhone")
+
+          @ambiguous = AmbiguousAddress.new param
+          @auto_suggest = AutoSuggestDomestic.new param, @text_area
         end
 
         def text_area
@@ -486,15 +487,14 @@ module Stamps
       end
 
       class AutoSuggestDomestic < Browser::Modal
-        attr_reader :auto_suggest_box
-        def initialize param
-          super param
+        attr_reader :text_area, :auto_suggest_box
+        def initialize(param, text_area)
+          super(param)
+          @text_area = text_area
           @auto_suggest_box = AutoSuggestPopUp.new param
         end
 
-        def set address
-          text_area = self.text_area
-
+        def set(address)
           20.times{
             begin
               text_area.set address
@@ -504,8 +504,9 @@ module Stamps
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.safe_double_click
               return auto_suggest_box if auto_suggest_box.present?
-            rescue
-              #ignore
+            rescue Exception => e
+              logger.error e.message
+              logger.error e.backtrace.join("\n")
             end
           }
         end
@@ -514,7 +515,7 @@ module Stamps
       class ShipTo < Browser::Modal
         attr_reader :country, :international, :domestic
         def initialize param
-          super param
+          super(param)
           @country = ShipToCountry.new param
           @domestic = ShipToDomestic.new param
           @international = ShipToInternational.new param
@@ -525,7 +526,7 @@ module Stamps
         attr_reader :save_button, :origin_zip
 
         def initialize param
-          super param
+          super(param)
           @save_button = BrowserElement.new browser.span(text: 'Save')
           @origin_zip = TextboxElement.new browser.text_field(name: 'OriginZip')
         end
@@ -713,7 +714,7 @@ module Stamps
         attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :shipping_address
 
         def initialize param
-          super param
+          super(param)
           @edit_button = BrowserElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
           @add_button = BrowserElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
           @window_title = BrowserElement.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
@@ -930,7 +931,7 @@ module Stamps
       class DetailsService < Browser::Modal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(name: "servicePackage")
           @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
           @blur_element = BlurOutElement.new param
@@ -1063,7 +1064,7 @@ module Stamps
         attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :insurance_terms_conditions, :blur_element
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
           @decrement_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
@@ -1124,7 +1125,7 @@ module Stamps
       class DetailsTracking < Browser::Modal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(name: 'Tracking')
           @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
           @blur_element = BlurOutElement.new param
@@ -1222,7 +1223,7 @@ module Stamps
       class Weight < Browser::Modal
         attr_reader :lb, :oz
         def initialize param
-          super param
+          super(param)
           @lb = Pounds.new param
           @oz = Ounces.new param
         end
@@ -1231,7 +1232,7 @@ module Stamps
           attr_reader :text_box, :increment_btn, :decrement_btn, :blur_element
 
           def initialize param
-            super param
+            super(param)
             @text_box = TextboxElement.new (browser.text_field name: 'WeightLbs'), "data-errorqtip"
             @increment_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
             @decrement_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
@@ -1268,7 +1269,7 @@ module Stamps
           attr_reader :text_box, :increment_btn, :decrement_btn, :blur_element
 
           def initialize param
-            super param
+            super(param)
             @text_box = TextboxElement.new (browser.text_field name: 'WeightOz'), "data-errorqtip"
             @increment_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
             @decrement_btn = BrowserElement.new browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
@@ -1305,7 +1306,7 @@ module Stamps
       class Dimensions < Browser::Modal
         attr_reader :length, :width, :height
         def initialize param
-          super param
+          super(param)
           @length ||= Length.new param
           @width ||= Width.new param
           @height ||= Height.new param
@@ -1315,7 +1316,7 @@ module Stamps
           attr_reader :text_box, :increment_button, :decrement_button
 
           def initialize param
-            super param
+            super(param)
             @text_box = TextboxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]"
             @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]"
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]"
@@ -1362,7 +1363,7 @@ module Stamps
           attr_reader :text_box, :increment_button, :decrement_button
 
           def initialize param
-            super param
+            super(param)
             @text_box = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
             @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]"
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]"
@@ -1410,7 +1411,7 @@ module Stamps
           attr_reader :text_box, :increment_button, :decrement_button
 
           def initialize param
-            super param
+            super(param)
             @text_box = TextboxElement.new browser.text_field(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
             @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]"
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]"
@@ -1479,7 +1480,7 @@ module Stamps
         class DetailsItem < Browser::Modal
           attr_reader :index, :qty, :id, :description, :delete
           def initialize param, number
-            super param
+            super(param)
             @index = number
             @qty ||= Qty.new param, index
             @id = TextboxElement.new (browser.text_fields name: "SKU")[index-1]
@@ -1491,7 +1492,7 @@ module Stamps
             attr_reader :text_box
 
             def initialize param, number
-              super param
+              super(param)
               @index = number
               @text_box = TextboxElement.new ((browser.text_fields name: "Quantity")[@index-1]), "data-errorqtip"
             end
@@ -1539,7 +1540,7 @@ module Stamps
         attr_reader :add_btn
 
         def initialize param
-          super param
+          super(param)
           @add_btn = BrowserElement.new browser.span(css: "span[class*=sdc-icon-add]")
         end
 
@@ -1586,7 +1587,7 @@ module Stamps
       class DetailsCollapsible < Browser::Modal
         attr_reader :field
         def initialize param
-          super param
+          super(param)
           @field = browser.img class: "x-tool-img x-tool-expand-left"
         end
 
@@ -1605,7 +1606,7 @@ module Stamps
       class ToolbarMenu < Browser::Modal
         attr_reader :drop_down
         def initialize param
-          super param
+          super(param)
           @drop_down = BrowserElement.new (browser.spans(css: "span[class*='sdc-icon-more']").first)
         end
 
@@ -1660,7 +1661,7 @@ module Stamps
       class DetailsFooter < Browser::Modal
         attr_reader :label
         def initialize param
-          super param
+          super(param)
           @label = BrowserElement.new browser.strong(text: 'Total Ship Cost:')
         end
 
@@ -1698,7 +1699,7 @@ module Stamps
                     :footer, :customs, :item_grid, :reference_no, :collapsed_details, :blur_element
 
         def initialize param
-          super param
+          super(param)
           @toolbar = DetailsToolbar.new param
 
           @ship_from ||= ShipFromAddress.new param

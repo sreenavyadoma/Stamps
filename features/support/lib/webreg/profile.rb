@@ -347,7 +347,7 @@ module Stamps
                   :first_answer, :second_question, :second_answer, :send_promo, :continue, :membership
 
       def initialize param
-        super param
+        super(param)
         @referrer_name ||= ReferrerName.new param
         @email ||= ProfileEmail.new browser.text_field(id: "email")
         @user_id ||= ProfileUserId.new browser.text_field(id: "username")

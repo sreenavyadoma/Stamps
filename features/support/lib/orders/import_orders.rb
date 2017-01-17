@@ -27,7 +27,7 @@ module Stamps
       attr_reader :title
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.div(text: "Import Orders")
       end
 

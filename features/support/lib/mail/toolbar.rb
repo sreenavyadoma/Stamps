@@ -4,7 +4,7 @@ module Stamps
       attr_reader :settings, :reset, :help, :feedback, :classic
 
       def initialize param
-        super param
+        super(param)
         @settings = BrowserElement.new (browser.span css: "span[style*='settings.png']")
         @reset = BrowserElement.new (browser.span css: "span[style*='reset.png']")
         @help = BrowserElement.new (browser.span css: "span[style*='help.png']")

@@ -5,7 +5,7 @@ module Stamps
         attr_reader :text_box
 
         def initialize param, index
-          super param
+          super(param)
           @index = index
           @text_box = TextboxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
         end
@@ -54,7 +54,7 @@ module Stamps
         attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
         def initialize param
-          super param
+          super(param)
           @customs_form ||= OrdersCustomsForm.new param
           @view_restrictions ||= Orders::Details::ViewRestrictions.new param
           @edit_form_btn = BrowserElement.new browser.span text: 'Edit Form...'
@@ -115,7 +115,7 @@ module Stamps
 
         class Qty < Browser::Modal
           def initialize param, number
-            super param
+            super(param)
             @index = number
           end
 
@@ -158,7 +158,7 @@ module Stamps
 
         class UnitPrice < Browser::Modal
           def initialize param, number
-            super param
+            super(param)
             @index = number
           end
 
@@ -189,7 +189,7 @@ module Stamps
         attr_reader :delete, :description, :qty, :unit_price, :made_in, :hs_tariff
 
         def initialize param, number
-          super param
+          super(param)
           @delete = BrowserElement.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[number-1]
           @description = TextboxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
           @qty = Qty.new param, number
@@ -207,7 +207,7 @@ module Stamps
         attr_reader :window_title, :okay
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div text: "USPS Privacy Act Statement"
           @okay = browser.span(text: "OK")
         end
@@ -229,7 +229,7 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field name: "IsITNRequired"
           @drop_down = BrowserElement.new browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
         end
@@ -257,7 +257,7 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field name: "CustomsContents"
           @drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
         end
@@ -285,7 +285,7 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field name: "NonDelivery"
           @drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
         end
@@ -316,7 +316,7 @@ module Stamps
                     :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label, :certificate
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div(text: "Customs Information")
           @item_grid ||= CustomsItemGrid.new param
           @package_contents ||= PackageContents.new param

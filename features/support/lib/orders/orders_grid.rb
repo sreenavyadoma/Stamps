@@ -781,7 +781,7 @@ module Stamps
         attr_reader :checkbox_element_hash
 
         def initialize param
-          super param
+          super(param)
           @checkbox_element_hash ||= Hash.new
         end
 
@@ -1004,7 +1004,7 @@ module Stamps
                     :ship_date, :tracking_no, :requested_service, :source
 
         def initialize param
-          super param
+          super(param)
           @anchor_element = BrowserElement.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
           @column ||= GridColumns.new param
           @checkbox ||= GridCheckBox.new param

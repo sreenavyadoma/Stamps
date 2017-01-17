@@ -27,7 +27,7 @@ module Stamps
       attr_reader :service, :email_tracking, :tracking, :weight, :ship_from, :ship_to, :customs, :extra_services
 
       def initialize param
-        super param
+        super(param)
         @service ||= MailServiceDropList.new param
         @email_tracking ||= Email.new param
         @tracking ||= Tracking.new param

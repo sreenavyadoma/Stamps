@@ -17,7 +17,7 @@ module Stamps
       attr_reader :usps_approval, :new_meter_limit, :current_meter, :maximum_meter
 
       def initialize param
-        super param
+        super(param)
         @usps_approval ||= USPSCheckbox.new param
         @new_meter_limit = TextboxElement.new browser.text_field(name: "resetAmt")
         @current_meter = BrowserElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")

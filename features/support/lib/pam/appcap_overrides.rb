@@ -5,7 +5,7 @@ module Stamps
       attr_reader :title, :ok_button
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.td(text: 'AppCap Overrides')
         @ok_button = BrowserElement.new browser.a(css: 'a[href*=Profile]')
       end
@@ -113,7 +113,7 @@ module Stamps
                   :mailing_label_printing, :submit_button, :appcap_overrides
 
       def initialize param
-        super param
+        super(param)
         @internet_postage_printing ||= InternetPostagePrinting.new param
         @netstamps_printing ||= NetStampsPrinting.new param
         @shipping_label_printing ||= ShippingLabelPrinting.new param

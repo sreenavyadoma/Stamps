@@ -352,7 +352,7 @@ module Stamps
     class TermsAndConditions < Browser::Modal
       attr_reader :checkbox
       def initialize param
-        super param
+        super(param)
         @checkbox = browser.checkbox id: "termsConditions"
       end
 
@@ -402,7 +402,7 @@ module Stamps
       attr_reader :title, :top_message, :error_code, :error_description
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.h3 text: 'An Error Occurred'
         @top_message = BrowserElement.new browser.p id: 'topMessage'
         @error_code = BrowserElement.new browser.p id: 'errorCode'
@@ -444,7 +444,7 @@ module Stamps
       attr_reader :help_element
 
       def initialize param
-        super param
+        super(param)
         @help_element = browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(8)>div>span")
       end
 
@@ -825,7 +825,7 @@ module Stamps
       attr_reader :help_element
 
       def initialize param
-        super param
+        super(param)
         @help_element = BrowserElement.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
       end
 
@@ -846,7 +846,7 @@ module Stamps
                   :billing_city, :billing_state, :billing_zip, :loading, :page_header, :error_occured, :connection_failed
 
       def initialize param
-        super param
+        super(param)
 
         @phone ||= MembershipPhone.new browser.text_field(id: "phone")
 

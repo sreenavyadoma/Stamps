@@ -18,7 +18,7 @@ module Stamps
       attr_reader :total, :print_postage_modal, :confirm_window, :windows_print, :print_button, :sample_button, :printing_problem
 
       def initialize param
-        super param
+        super(param)
         @total = BrowserElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
         @print_postage_modal ||= PrintPostageModal.new param
         @confirm_window = ConfirmPrint.new param

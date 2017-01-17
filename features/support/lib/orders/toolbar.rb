@@ -5,7 +5,7 @@ module Stamps
         attr_reader :window_title, :ok_btn, :error_message_label
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div(text: 'Incomplete Order')
           @ok_btn = BrowserElement.new browser.span(text: "OK")
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
@@ -40,7 +40,7 @@ module Stamps
         attr_reader :window_title, :error_message_label
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div(text: 'Order Error')
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
@@ -58,7 +58,7 @@ module Stamps
         attr_reader :continue_btn, :cancel_btn
 
         def initialize param
-          super param
+          super(param)
           @continue_btn = BrowserElement.new browser.span(text: 'Continue')
           @cancel_btn = BrowserElement.new browser.span(text: 'Cancel')
         end
@@ -88,7 +88,7 @@ module Stamps
         attr_reader :ok_btn
 
         def initialize param
-          super param
+          super(param)
           @ok_btn = BrowserElement.new browser.span(text: "OK")
         end
 
@@ -105,7 +105,7 @@ module Stamps
         attr_reader :window_title, :message_label, :ok_btn
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div(text: 'USPS Privacy Act Statement')
           @message_label = BrowserElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
           @ok_btn = BrowserElement.new browser.span(text: "OK")
@@ -132,7 +132,7 @@ module Stamps
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div(text: 'USPS Terms')
           @i_agree_btn = BrowserElement.new browser.span(text: "I Agree")
           @cancel_btn = BrowserElement.new browser.span(text: "Cancel")
@@ -200,7 +200,7 @@ module Stamps
                     :multi_order_some_error, :multi_order_all_error
 
         def initialize param
-          super param
+          super(param)
           @orders_print_modal = Stamps::Orders::PrintModal.new param
           @print_order_btn = BrowserElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
           @incomplete_order_modal ||= PrintIncompleteOrderError.new param
@@ -428,7 +428,7 @@ module Stamps
         attr_reader :move_label, :cancel_label
 
         def initialize param
-          super param
+          super(param)
           @move_label = BrowserElement.new browser.span(css: "span[class*='x-btn-inner-primary-blue-medium']")
           @cancel_label = BrowserElement.new browser.span(text: "Cancel")
         end
@@ -454,7 +454,7 @@ module Stamps
         attr_reader :drop_down, :confirmation, :tooltip_element
 
         def initialize param
-          super param
+          super(param)
           @drop_down = BrowserElement.new browser.span(text: "Move")
           @confirmation = MoveConfirmation.new param
           @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
@@ -514,7 +514,7 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
           @drop_down = BrowserElement.new browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
         end
@@ -546,7 +546,7 @@ module Stamps
         attr_reader :button, :initializing_db, :loading_orders
 
         def initialize param
-          super param
+          super(param)
           @button = BrowserElement.new browser.span(text: 'Add')
           @initializing_db = BrowserElement.new browser.div(text: "Initializing Order Database")
           @loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
@@ -683,7 +683,7 @@ module Stamps
       class Toolbar < Browser::Modal
         attr_reader :print_btn, :add, :move, :import_button, :import_orders_modal, :usps_intl_terms
         def initialize param
-          super param
+          super(param)
           @import_button = BrowserElement.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
           @print_btn ||= ToolbarPrintButton.new param
           @add ||= AddButton.new param

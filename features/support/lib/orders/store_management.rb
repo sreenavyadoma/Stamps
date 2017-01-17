@@ -61,7 +61,7 @@ module Stamps
             class ServiceMappingShippingService < Browser::Modal
 
               def initialize param, index
-                super param
+                super(param)
                 @index = index
               end
 
@@ -99,7 +99,7 @@ module Stamps
             end
 
             def initialize param, index
-              super param
+              super(param)
               @index = index
             end
 
@@ -196,7 +196,7 @@ module Stamps
         attr_reader :window_title
 
         def initialize param
-          super param
+          super(param)
           @window_title = BrowserElement.new browser.div text: "Add your Store or Marketplace"
         end
 

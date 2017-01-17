@@ -6,7 +6,7 @@ module Stamps
       attr_reader :quantity, :reference_number, :cost_code
 
       def initialize param
-        super param
+        super(param)
         @quantity ||= Quantity.new param
         @reference_number = TextboxElement.new browser.text_field name: "referenceNumber"
         @cost_code ||= CostCode.new param
@@ -58,7 +58,7 @@ module Stamps
       attr_reader :weight, :extra_services
 
       def initialize param
-        super param
+        super(param)
         @weight ||= Weight.new param
         @extra_services ||= ExtraServices.new param
       end
@@ -68,7 +68,7 @@ module Stamps
       attr_reader :stamp_amount
 
       def initialize param
-        super param
+        super(param)
         @stamp_amount ||= StampAmount.new param
       end
     end
@@ -77,7 +77,7 @@ module Stamps
       attr_reader :text_box, :drop_down
 
       def initialize param
-        super param
+        super(param)
         @text_box = TextboxElement.new browser.text_field name: "nsService"
         @drop_down = BrowserElement.new browser.div css:'table[id^=netstampsservicedroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]'
       end
@@ -117,7 +117,7 @@ module Stamps
                   :specify_radio, :calculate_radio
 
       def initialize param
-        super param
+        super(param)
         @specify_postage ||= SpecifyPostageAmount.new param
         @calculate_postage||= CalculatePostageAmount.new param
         @serial = TextboxElement.new browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")

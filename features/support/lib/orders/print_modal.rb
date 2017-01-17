@@ -5,7 +5,7 @@ module Stamps
       attr_reader :drop_down, :text_box
 
       def initialize param
-        super param
+        super(param)
         @drop_down = BrowserElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
         @text_box = TextboxElement.new browser.text_field css: "input[name^=printmediadroplist]"
       end
@@ -77,7 +77,7 @@ module Stamps
       attr_reader :drop_down, :text_box
 
       def initialize param
-        super param
+        super(param)
         @drop_down = BrowserElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
         @text_box = TextboxElement.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
       end
@@ -100,7 +100,7 @@ module Stamps
       attr_reader :drop_down, :text_box
 
       def initialize param
-        super param
+        super(param)
         @drop_down = BrowserElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
         @text_box = TextboxElement.new browser.text_field(name: "paperTrays")
       end
@@ -121,7 +121,7 @@ module Stamps
       attr_reader :left_label, :right_label
 
       def initialize param
-        super param
+        super(param)
         @left_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")
         @right_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")
       end
@@ -228,7 +228,7 @@ module Stamps
       attr_reader :i_agree, :cancel
 
       def initialize param
-        super param
+        super(param)
         @i_agree = BrowserElement.new browser.span text: "I Agree"
         @cancel = BrowserElement.new browser.span text: "Cancel"
       end
@@ -352,7 +352,7 @@ module Stamps
       attr_reader :window_x_button
 
       def initialize param
-        super param
+        super(param)
         @window_x_button = browser.img css: "img[class*='x-tool-img x-tool-close']"
       end
 
@@ -377,7 +377,7 @@ module Stamps
       attr_reader :text_box, :date_picker, :text_box_cc
 
       def initialize param
-        super param
+        super(param)
         @text_box = TextboxElement.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
         @text_box_cc = TextboxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
         @date_picker = DatePicker.new param
@@ -398,7 +398,7 @@ module Stamps
                   :print_sample_button, :printer, :email_tracking_details
 
       def initialize param
-        super param
+        super(param)
         @printing_on = PrintingOn.new param
         @printer = Printer.new param
         @paper_tray = PaperTray.new param

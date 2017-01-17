@@ -4,7 +4,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :cancel_button, :learn_button, :close_button
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.div(text: 'Learn More')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @close_button = BrowserElement.new browser.span(text: 'Close')
@@ -38,7 +38,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :learn_more
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.div(text: 'Import from Stores')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
@@ -75,7 +75,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_stores
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.div(text: 'Import from CSV')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
@@ -112,7 +112,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_csv
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.div(text: 'Add Manual Order')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
@@ -149,7 +149,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
       def initialize param
-        super param
+        super(param)
         @title = BrowserElement.new browser.div(text: 'Welcome!')
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
@@ -186,7 +186,7 @@ module Stamps
       attr_reader :okay_button
 
       def initialize param
-        super param
+        super(param)
         @okay_button = BrowserElement.new browser.span(text: 'OK')
       end
 
@@ -214,7 +214,7 @@ module Stamps
       attr_reader :username, :password, :sign_in_btn, :title
 
       def initialize param
-        super param
+        super(param)
         @username = TextboxElement.new browser.text_field(id: "UserNameTextBox")
         @password = TextboxElement.new browser.text_field(id: "PasswordTextBox")
         @sign_in_btn = BrowserElement.new browser.button(id: "signInButton")

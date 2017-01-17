@@ -5,7 +5,7 @@ module Stamps
       attr_reader :text_box, :drop_down
 
       def initialize param
-        super param
+        super(param)
         @text_box = TextboxElement.new browser.text_field name: "mailToCountry"
         @drop_down = BrowserElement.new (browser.divs css: "div[class*=x-form-trigger]")[2]
       end
@@ -32,7 +32,7 @@ module Stamps
                   :phone, :contacts
 
       def initialize param
-        super param
+        super(param)
         @text_area = TextboxElement.new (browser.textarea id: "sdc-mainpanel-shiptotextarea-inputEl")
         @country ||= PostageCountry.new param
         @email ||= Email.new param
@@ -59,7 +59,7 @@ module Stamps
       attr_reader :drop_down, :text_box
 
       def initialize param
-        super param
+        super(param)
         @drop_down = BrowserElement.new browser.div(css: "table[id^=printmediadroplist-][id$=-triggerWrap]>tbody>tr>td>div[role=button]")
         @text_box = TextboxElement.new browser.text_field(css: "input[id^=printmediadroplist-][id$=-inputEl]")
       end
@@ -135,7 +135,7 @@ module Stamps
       attr_reader :text_box, :increment_button, :decrement_button
 
       def initialize param
-        super param
+        super(param)
         @text_box = TextboxElement.new (browser.text_field id: 'sdc-mainpanel-poundsnumberfield-inputEl'), "data-errorqtip"
         @increment_button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
         @decrement_button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-poundsnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
@@ -175,7 +175,7 @@ module Stamps
       attr_reader :decrement_button, :text_box, :increment_button
 
       def initialize param
-        super param
+        super(param)
         @decrement_button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=down]"
         @text_box = TextboxElement.new (browser.text_field id: 'sdc-mainpanel-ouncesnumberfield-inputEl'), "data-errorqtip"
         @increment_button = BrowserElement.new browser.div css: "table[id=sdc-mainpanel-ouncesnumberfield-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div[class*=up]"
@@ -216,7 +216,7 @@ module Stamps
       attr_reader :auto_weigh, :weigh_button, :lb, :oz
 
       def initialize param
-        super param
+        super(param)
         @auto_weigh ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-autoweightcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
         @weigh_button = BrowserElement.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
         @oz ||= Ounces.new param
@@ -228,7 +228,7 @@ module Stamps
       attr_reader :text_box, :drop_down
 
       def initialize param
-        super param
+        super(param)
         @text_box = TextboxElement.new browser.text_field(name: "servicePackage")
         @drop_down = BrowserElement.new browser.div(css: "table[id=sdc-mainpanel-servicedroplist-triggerWrap]>tbody>tr>td>div[role=button]")
       end
@@ -302,7 +302,7 @@ module Stamps
       attr_reader :text_box, :drop_down, :manage_shipping_address
 
       def initialize param
-        super param
+        super(param)
         @text_box = TextboxElement.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
         @drop_down = BrowserElement.new (browser.div css: "table[id=sdc-mainpanel-shipfromdroplist-triggerWrap]>tbody>tr>td[class*=trigger-cell]>div")
         @manage_shipping_address = MailManageShippingAddresses.new(param)
@@ -386,7 +386,7 @@ module Stamps
     class Email < Browser::Modal
       attr_reader :checkbox, :text_box
       def initialize param
-        super param
+        super(param)
         @checkbox ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
         @text_box = TextboxElement.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
       end

@@ -6,7 +6,7 @@ module Stamps
                   :envelope, :certified_mail, :roll
 
       def initialize param
-        super param
+        super(param)
         @sign_in_modal = MailSignInModal.new param
         @toolbar = Toolbar.new param
         @print_on = PrintOn.new param

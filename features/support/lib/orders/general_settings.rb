@@ -341,7 +341,7 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
           @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
         end
@@ -385,7 +385,7 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
           @drop_down = BrowserElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
@@ -501,7 +501,7 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
           @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end

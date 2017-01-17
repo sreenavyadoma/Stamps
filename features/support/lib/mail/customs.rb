@@ -296,7 +296,7 @@ module Stamps
         attr_reader :text_box
 
         def initialize param
-          super param
+          super(param)
           @text_box = TextboxElement.new browser.text_field name: "CountryOfOrigin"
         end
 
@@ -485,7 +485,7 @@ module Stamps
 
       class Qty < Browser::Modal
         def initialize param, number
-          super param
+          super(param)
           @index = number
         end
 
@@ -528,7 +528,7 @@ module Stamps
 
       class UnitPrice < Browser::Modal
         def initialize param, number
-          super param
+          super(param)
           @index = number
         end
 
@@ -558,7 +558,7 @@ module Stamps
 
       class UnitWeightLbs < Browser::Modal
         def initialize param, number
-          super param
+          super(param)
           @index = number
         end
 
@@ -601,7 +601,7 @@ module Stamps
 
       class UnitWeightOz < Browser::Modal
         def initialize param, number
-          super param
+          super(param)
           @index = number
         end
 
@@ -643,7 +643,7 @@ module Stamps
       end
 
       def initialize param, number
-        super param
+        super(param)
         @index = number
       end
 

@@ -4,7 +4,7 @@ module Stamps
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 
       def initialize param
-        super param
+        super(param)
         @header_elem = BrowserElement.new browser.h3(text: "An Error Occurred")
         @top_message_elem = BrowserElement.new browser.p(id: "topMessage")
         @error_code_elem = BrowserElement.new browser.p(id: "errorCode")
@@ -39,7 +39,7 @@ module Stamps
     class WebRegistration < Browser::Modal
       attr_reader :profile, :error_occured
       def initialize param
-        super param
+        super(param)
         @profile ||= Profile.new param
         @error_occured ||= AnErrorOccured.new param
       end
