@@ -19,10 +19,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
   @details_flat_rate_no_weight_domestic
   Scenario:  Domestic Flat
     Then Toolbar: Add
-
-    # Priority Mail Flat Rate Envelope
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1
+
+    # Priority Mail Flat Rate Envelope
     Then Details: Select Service PM Flat Rate Envelope
     Then Details: Expect Service is PM Flat Rate Envelope
     Then Details: Expect Pounds is 0

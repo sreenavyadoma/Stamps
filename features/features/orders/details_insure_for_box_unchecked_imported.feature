@@ -8,6 +8,9 @@ Feature: Order Details Insure-For box value - External Orders
 
   @details_insure_for_box_unchecked_imported
   Scenario: Insure-For - External Orders
+    Then Toolbar: Add
+    Then Details: Set Ship-From to default
+    Then Details: Set Ship-To to address in Zone 1
     Then Details: Select Service PM Flat Rate Envelope
     Then Details: Check Insure-For checkbox
     Then Details: Expect Insure-For Textbox is enabled
