@@ -3,7 +3,7 @@ default: --profile cuke_reports --profile rob_cc
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 #stgdmnmrv29j04
-rob_cc: --tags @auto_suggest WEB_APP=orders TEST=auto_suggest JENKINS=true URL=cc  PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders TEST=bvt_shipstation_updates_domestic JENKINS=true URL=cc  PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @auto_suggest WEB_APP=orders TEST=auto_suggest JENKINS=true URL=stg PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_orders_sc: --tags @mail_bvt_envelopes WEB_APP=orders TEST=mail_bvt_envelopes JENKINS=true URL=sc PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #yh95ws85j c2jinmzmu64 store parcel_select
 

@@ -64,101 +64,6 @@ module Stamps
         end
       end
 
-      class ShipToTextArea < TextboxElement
-        def full_address
-          50.times do
-            break if element.attribute_value("value").size > 0
-          end
-          element.attribute_value("value")
-        end
-
-        def recipient_name
-          address = full_address
-          address_arr = address.split("\n")
-          address_arr.size.should be > 2
-          address_arr[0].strip
-        end
-
-        def company_name
-          address = full_address
-          address_arr = address.split("\n")
-          address_arr.size.should be_between(4, 5).inclusive
-          address_arr[1].strip
-        end
-
-        def street_address
-          address = full_address
-          address_arr = address.split("\n")
-          if address_arr.size == 3
-            addy = address_arr[1]
-            addy.strip
-          elsif address_arr.size == 4 || address_arr.size == 5
-            addy = address_arr[2]
-            addy.strip
-          else
-            address_arr.size.should be > 2
-          end
-        end
-
-        def city
-          address = full_address
-          address_arr = address.split("\n")
-          if address_arr.size == 3
-            last_line = address_arr[2].strip
-          elsif address_arr.size == 4
-            last_line = address_arr[3].strip
-          elsif address_arr.size == 5
-            last_line = address_arr[4].strip
-          else
-            address_arr.size.should be > 2
-          end
-          last_line_arr = last_line.split(",")
-          last_line_arr.size.should equal 2
-          last_line_arr[0]
-        end
-
-        def state
-          address = full_address
-          address_arr = address.split("\n")
-          if address_arr.size == 3
-            last_line = address_arr[2].strip
-          elsif address_arr.size == 4
-            last_line = address_arr[3].strip
-          elsif address_arr.size == 5
-            last_line = address_arr[4].strip
-          else
-            address_arr.size.should be > 2
-          end
-          last_line_arr = last_line.split(",")
-          last_line_arr.size.should equal 2
-          city_zip = last_line_arr[1].strip
-          city_zip.split(" ").first
-        end
-
-        def zip_plus_4
-          address = full_address
-          address_arr = address.split("\n")
-          if address_arr.size == 3
-            last_line = address_arr[2].strip
-          elsif address_arr.size == 4
-            last_line = address_arr[3].strip
-          elsif address_arr.size == 5
-            last_line = address_arr[4].strip
-          else
-            address_arr.size.should be > 2
-          end
-          last_line_arr = last_line.split(",")
-          last_line_arr.size.should equal 2
-          last_line_arr.last.strip.split(" ").last
-        end
-
-        def zip_code
-          code = zip_plus_4.split("-")
-          code.size.should equal 2
-          code.first
-        end
-      end
-
       class BlurOutElement < Browser::Modal
         attr_reader :insure_for_label
 
@@ -408,9 +313,104 @@ module Stamps
         end
       end
 
+      class ShipToTextArea < TextboxElement
+        def full_address
+          50.times do
+            break if element.attribute_value("value").size > 0
+          end
+          element.attribute_value("value")
+        end
+
+        def recipient_name
+          address = full_address
+          address_arr = address.split("\n")
+          address_arr.size.should be > 2
+          address_arr[0].strip
+        end
+
+        def company_name
+          address = full_address
+          address_arr = address.split("\n")
+          address_arr.size.should be_between(4, 5).inclusive
+          address_arr[1].strip
+        end
+
+        def street_address
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            addy = address_arr[1]
+            addy.strip
+          elsif address_arr.size == 4 || address_arr.size == 5
+            addy = address_arr[2]
+            addy.strip
+          else
+            address_arr.size.should be > 2
+          end
+        end
+
+        def city
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            last_line = address_arr[2].strip
+          elsif address_arr.size == 4
+            last_line = address_arr[3].strip
+          elsif address_arr.size == 5
+            last_line = address_arr[4].strip
+          else
+            address_arr.size.should be > 2
+          end
+          last_line_arr = last_line.split(",")
+          last_line_arr.size.should equal 2
+          last_line_arr[0]
+        end
+
+        def state
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            last_line = address_arr[2].strip
+          elsif address_arr.size == 4
+            last_line = address_arr[3].strip
+          elsif address_arr.size == 5
+            last_line = address_arr[4].strip
+          else
+            address_arr.size.should be > 2
+          end
+          last_line_arr = last_line.split(",")
+          last_line_arr.size.should equal 2
+          city_zip = last_line_arr[1].strip
+          city_zip.split(" ").first
+        end
+
+        def zip_plus_4
+          address = full_address
+          address_arr = address.split("\n")
+          if address_arr.size == 3
+            last_line = address_arr[2].strip
+          elsif address_arr.size == 4
+            last_line = address_arr[3].strip
+          elsif address_arr.size == 5
+            last_line = address_arr[4].strip
+          else
+            address_arr.size.should be > 2
+          end
+          last_line_arr = last_line.split(",")
+          last_line_arr.size.should equal 2
+          last_line_arr.last.strip.split(" ").last
+        end
+
+        def zip_code
+          code = zip_plus_4.split("-")
+          code.size.should equal 2
+          code.first
+        end
+      end
+
       class ShipToDomestic < Browser::Modal
         attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element,
-                    :address_not_found, :text_area, :email, :phone
+                    :address_not_found
 
         def initialize param
           super param
@@ -420,9 +420,24 @@ module Stamps
           @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
           @blur_element = BlurOutElement.new param
           @address_not_found = AddressNotFound.new param
-          @text_area = TextboxElement.new browser.textarea(name: "freeFormAddress")
+          @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
           @email ||= TextboxElement.new browser.text_field(name: 'BuyerEmail')
           @phone ||= TextboxElement.new browser.text_field(name: "ShipPhone")
+        end
+
+        def text_area
+          show_address
+          @text_area
+        end
+
+        def email
+          show_address
+          @email
+        end
+
+        def phone
+          show_address
+          @phone
         end
 
         def blur_out
@@ -1301,7 +1316,7 @@ module Stamps
 
           def initialize param
             super param
-            @text_box = TextboxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div>input"
+            @text_box = TextboxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]"
             @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]"
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]"
           end
@@ -1348,7 +1363,7 @@ module Stamps
 
           def initialize param
             super param
-            @text_box = TextboxElement.new browser.text_field css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div>input"
+            @text_box = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
             @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]"
             @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]"
           end
@@ -1396,9 +1411,9 @@ module Stamps
 
           def initialize param
             super param
-            @text_box = TextboxElement.new browser.text_field(name: 'InsuredValue')
-            @increment_button = BrowserElement.new browser.div css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=up]"
-            @decrement_button = BrowserElement.new browser.div css: "div[id^=insurancefield-][id$=-trigger-spinner]>div[class*=down]"
+            @text_box = TextboxElement.new browser.text_field(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
+            @increment_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]"
+            @decrement_button = BrowserElement.new browser.div css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]"
           end
 
           def text
