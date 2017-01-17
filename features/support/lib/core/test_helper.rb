@@ -98,8 +98,8 @@ module Stamps
             driver = Watir::Browser.new :ie
             @browser_name = 'Internet Explorer'
           end
-          driver.window.move_to 0, 0
-          driver.window.resize_to 1250, 850
+          #driver.window.move_to 0, 0
+          driver.window.resize_to 900, 600
           driver.window.maximize if (ENV['MAX_WINDOW'].nil? || ParameterHelper.to_bool(ENV['MAX_WINDOW']))
           logger.message "-"
           logger.message "BROWSER: #{@browser_name}"

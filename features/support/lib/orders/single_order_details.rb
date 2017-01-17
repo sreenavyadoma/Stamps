@@ -2,11 +2,12 @@ module Stamps
   module Orders
     module Details
       class ShipFromAddress < Browser::Modal
-        attr_reader :text_box, :drop_down, :manage_shipping_adddress, :blur_element
+        attr_reader :drop_down, :text_box, :manage_shipping_adddress, :blur_element
+
         def initialize param
           super param
           @text_box = TextboxElement.new browser.text_field(name: "ShipFrom")
-          @drop_down = BrowserElement.new browser.div css: "div[id^=shipfromdroplist][id$=trigger-picker]"
+          @drop_down = BrowserElement.new browser.div(css: "div[id^=shipfromdroplist][id$=trigger-picker]")
           @manage_shipping_adddress = ManageShippingAddresses.new param
           @blur_element = BlurOutElement.new param
         end
@@ -25,23 +26,24 @@ module Stamps
           elsif service.downcase.include? "manage shipping"
             element = browser.li(text: "Manage Shipping Addresses...")
           else
-            element = browser.div text: "#{service}"
+            element = browser.div(text: "#{service}")
           end
 
           selection = BrowserElement.new element
           service_text = ""
           if service.downcase.include? "manage shipping"
-            7.times{
+            15.times{
               begin
                 drop_down.safe_click unless selection.present?
                 selection.safe_scroll_into_view
                 selection.safe_click
                 sleep 1
                 return manage_shipping_adddress if manage_shipping_adddress.present?
-              rescue
-                #ignore
+              rescue Exception => e
+                logger.error e.message
+                logger.error e.backtrace.join "\n"
               end
-              blur_out
+              manage_shipping_adddress.present?.should be true
             }
           else
             drop_down.safe_click unless selection.present?
@@ -529,25 +531,25 @@ module Stamps
         end
       end
 
-      class AddShippingAdress < Browser::Modal
-        attr_reader :save_button, :origin_zip, :window_title
+      class AddEditShipFromModal < Browser::Modal
+        attr_reader :save_button, :origin_zip
 
         def initialize param
           super param
-          @window_title = BrowserElement.new browser.div(text: 'Add Shipping Address')
           @save_button = BrowserElement.new browser.span(text: 'Save')
           @origin_zip = TextboxElement.new browser.text_field(name: 'OriginZip')
         end
 
         def present?
-          window_title.present?
+          browser.div(text: "Edit Shipping Address").present? || browser.div(text: "Add Shipping Address").present?
         end
 
         def wait_until_present *args
-          window_title.safely_wait_until_present *args
+          browser.div(text: "Edit Shipping Address").safely_wait_until_present(*args) if browser.div(text: "Edit Shipping Address").present?
+          browser.div(text: "Add Shipping Address").safely_wait_until_present(*args) if browser.div(text: "Add Shipping Address").present?
         end
 
-        def shipping_address table #table.should be_kind_of Hash
+        def ship_from_address table
           origin_zip.set table["ship_from_zip"]
           name table['name']
           company table['company']
@@ -718,16 +720,16 @@ module Stamps
       end
 
       class ManageShippingAddresses < Browser::Modal
-        attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
+        attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :shipping_address
 
         def initialize param
           super param
-          @edit_button = BrowserElement.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"
-          @add_button = BrowserElement.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"
-          @window_title = BrowserElement.new browser.div css: 'div[class*=x-window-header-title-default]>div'
-          @close_button = BrowserElement.new browser.image css: "img[class*='x-tool-close']"
-          @delete_button = BrowserElement.new browser.link css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)"
-          @add_shipping_address ||= AddShippingAdress.new param
+          @edit_button = BrowserElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
+          @add_button = BrowserElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
+          @window_title = BrowserElement.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
+          @close_button = BrowserElement.new browser.image(css: "img[class*='x-tool-close']")
+          @delete_button = BrowserElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
+          @shipping_address ||= AddEditShipFromModal.new param
         end
 
         def present?
@@ -827,25 +829,16 @@ module Stamps
         def add
           5.times do
             begin
-              return add_shipping_address if add_shipping_address.present?
+              return shipping_address if shipping_address.present?
               add_button.safe_click
-              add_shipping_address.wait_until_present 3
-            rescue
+              shipping_address.wait_until_present 3
+            rescue Exception => e
+              logger.error e.message
+              logger.error e.backtrace.join("\n")
               #ignore
             end
           end
           "Unable to open Add Shipping Address modal.".should eql "Add Shipping Address"
-        end
-
-        def edit_address(name, company, city, new_address_details)
-          row_num = locate_ship_from(name, company, city)
-          if row_num > 0
-            select_row row_num
-            self.edit new_address_details
-          end
-          #@test_status = locate_address(new_address_details[:name], new_address_details[:company], new_address_details[:city])
-          close_window
-          self
         end
 
         def address_located? * args #name, company, city
@@ -869,18 +862,16 @@ module Stamps
           locate_ship_from(name, company, city) > 0
         end
 
-        def edit *args
-          shipping_address = AddShippingAdress.new param
-          edit_button.when_present.click
-          case args.length
-            when 0
-              shipping_address
-            when 1
-              shipping_address.shipping_address = args[0]
-            else
-              "Illegal number of arguments.".should eql ""
+        def select_address(name, company, city)
+          row_num = locate_ship_from(name, company, city)
+          if row_num > 0
+            select_row row_num
+            15.times do
+              edit_button.safe_click
+              return shipping_address if shipping_address.present?
+            end
           end
-          self
+          "Row: #{row_num}".should eql "Unable to Select name: #{name}, company: #{company}, city: #{city}"
         end
 
         def select_row(row_num)

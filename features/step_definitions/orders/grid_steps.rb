@@ -4,7 +4,7 @@ Then /^Grid: Check Order ID (.*)$/ do |order_id|
   test_data[:order_id] = order_id
   # Check if Order ID exists, fail test if it does not
   stamps.orders.grid.order_id.exist?(test_data[:order_id]).should be true
-  logger.step "Order ID #{test_data[:order_id]} #{expectation}!"
+  logger.step "Order ID #{test_data[:order_id]} #{test_data[:order_id]}!"
   stamps.orders.grid.checkbox.check_order(test_data[:order_id])
 end
 

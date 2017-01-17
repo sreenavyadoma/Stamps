@@ -17,14 +17,15 @@ end
 Then /^Ship-From: Edit address for name = \"(.*)\", company = \"(.*)\" and city = \"(.*)\" to;$/ do |name, company, city, new_address|
   logger.step "Ship-From: Edit address for name = \"#{name}\", company = \"#{company}\" and city = \"#{city}\" to #{new_address}"
   ship_address_modal = stamps.orders.order_details.ship_from.select "Manage Shipping Addresses..."
-  ship_address_modal.edit_address name, company, city,  new_address.hashes.first
+  add_shipping_address = ship_address_modal.select_address(name, company, city)
+  add_shipping_address.ship_from_address new_address.hashes.first
 end
 
 Then /^Ship-From: Add address$/ do |ship_from|
   test_data[:ship_from_address] = ship_from
   logger.step "Ship-From: Add address #{test_data[:ship_from_address]}"
   add_form = stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...")
-  add_form.add.shipping_address test_data[:ship_from_address].hashes.first
+  add_form.add.ship_from_address test_data[:ship_from_address].hashes.first
 end
 
 Then /^Ship-From: Add address (\w+)$/ do |address|

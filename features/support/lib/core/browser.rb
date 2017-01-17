@@ -399,8 +399,7 @@ module Stamps
             5.times do
               selection_element = expose_selection selection
               element_helper.safe_click selection_element
-              input_text = text_box.text
-              break if input_text.include? selection
+              break if element_helper.text(text_box).include?(selection)
             end
           else
             2.times do
