@@ -408,6 +408,11 @@ Then /^Details: Expect Ounces? is (.*)$/ do |expectation|
   stamps.orders.order_details.weight.oz.text_box.text.to_f.should eql expectation
 end
 
+Then /^Details: Expect Dimensions are hidden$/ do
+  logger.step "Details: Expect Dimensions are hidden "
+  stamps.orders.order_details.dimensions.present?.should be false
+end
+
 Then /^Details: Expect Length is (\d+)$/ do |expectation|
   logger.step "Details: Expect Length is #{expectation}"
   expectation = expectation.to_f

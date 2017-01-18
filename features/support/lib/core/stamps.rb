@@ -41,6 +41,7 @@ module Stamps
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
       "#{e.backtrace.join("\n")}".should eql e.message
+      #@google_home_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
     end
   end
 

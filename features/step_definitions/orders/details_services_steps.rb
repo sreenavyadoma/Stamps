@@ -301,17 +301,19 @@ Then /^Details: Set Service to (.*)$/ do |service|
     break if stamps.orders.order_details.service.cost.to_f > 0
     step "Details: Blur out"
   end
-  test_data[:service_cost] = stamps.orders.order_details.service.cost
-  logger.step "Service Cost: $#{test_data[:service_cost]}"
   test_data[:service] = stamps.orders.order_details.service.text_box.text
   step "Save Shipping Costs Data"
   logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
 end
 
-Then /^Details: Expect Service to be (.*)$/ do |expectation|
+Then /^Details: Expect Service to be (?:(\w*)|an empty string)$/ do |expectation|
   logger.step "Details: Expect Service is #{expectation}"
-  sel_arr = expectation.split(/\s+/)
-  selection_substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
+  if expectation.nil?
+    selection_substr = ""
+  else
+    sel_arr = expectation.split(/\s+/)
+    selection_substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
+  end
   10.times do
     break if stamps.orders.order_details.service.text_box.text.include? selection_substr
   end

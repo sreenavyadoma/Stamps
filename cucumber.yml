@@ -2,8 +2,8 @@ default: --profile cuke_reports --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
-#stgdmnmrv29j04
-rob_cc: --tags @details_edit_order WEB_APP=orders TEST=details_edit_order JENKINS=true URL=cc  PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+#stgdmnmrv29j04 details_large_dimensions_pm
+rob_cc: --tags @bvt_ambigious_address WEB_APP=orders TEST=bvt_ambigious_address JENKINS=true URL=cc  PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false URL=cc BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @auto_suggest WEB_APP=orders TEST=auto_suggest JENKINS=true URL=stg PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_orders_sc: --tags @mail_bvt_envelopes WEB_APP=orders TEST=mail_bvt_envelopes JENKINS=true URL=sc PW=pass111 USR=jenkins --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #yh95ws85j c2jinmzmu64 store parcel_select
 
@@ -155,8 +155,6 @@ details_services: --tags @details_services --guess VERBOSE=false JENKINS=true HE
 details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_flat_rate_no_weight_international
 details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_flat_rate_no_weight_domestic
 details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_large_dimensions_pm
-details_insure_for_box_unchecked_manual: --tags @details_insure_for_box_unchecked_manual --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_insure_for_box_unchecked_manual
-details_insure_for_box_unchecked_imported: --tags @details_insure_for_box_unchecked_imported --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=details_insure_for_box_unchecked_imported #QC USR=h1di8lkr PW=pass111 SC USR=c2jinmzmu64 ORDER_ID=AB-1018
 international_customs_form_totals: --tags @international_customs_form_totals --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=international_customs_form_totals
 international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=international_customs_form_edit_delete_item
 tooltip_customs_form: --tags @tooltip_customs_form --guess VERBOSE=false JENKINS=true HEALTHCHECK=false WEB_APP=orders TEST=tooltip_customs_form

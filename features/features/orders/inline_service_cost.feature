@@ -10,7 +10,7 @@ Feature: Ship-To Addresses
     Then Details: Set Ship-From to default
     Then Details: Set Ship-To to address in Zone 1 through 4
     Then Details: Expect Service Cost inline price for "Priority Mail Large/Thick Envelope" is greater than $0.01
-    Then Details: Expect Service Cost inline price for "Priority Mail Package" is greater than $0.01
+    Then Details: Expect Service Cost inline price for "PM Package" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Large Package" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Flat Rate Envelope" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Padded Flat Rate Envelope" is greater than $0.01

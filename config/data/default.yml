@@ -162,12 +162,6 @@ orders_credentials:
     details_large_dimensions_pm:
       usr: b0vffjuv
       pw: pass111
-    details_insure_for_box_unchecked_manual:
-      usr: prcnvrd
-      pw: pass111
-    details_insure_for_box_unchecked_imported:
-      usr: gtw5j74tb
-      pw: pass111
     international_customs_form_totals:
       usr: hh8tfayv0
       pw: pass111
@@ -517,9 +511,6 @@ orders_credentials:
     details_insure_for_box_unchecked_manual:
       usr: ryzymjfr0s
       pw: pass111
-    details_insure_for_box_unchecked_imported:
-      usr: h1di8lkr
-      pw: pass111
     international_customs_form_totals:
       usr: ifkirzik55td4h
       pw: pass111
@@ -868,12 +859,6 @@ orders_credentials:
       pw: pass111
     details_large_dimensions_pm:
       usr: pv79wdn
-      pw: pass111
-    details_insure_for_box_unchecked_manual:
-      usr: bnbmiwqfb
-      pw: pass111
-    details_insure_for_box_unchecked_imported:
-      usr: c2jinmzmu64
       pw: pass111
     international_customs_form_totals:
       usr: isgscuub9pfxxu

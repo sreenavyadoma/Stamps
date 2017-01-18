@@ -13,7 +13,7 @@ Feature: User Views Price Next to Service Dropdown
     Then Details: Expect Service Cost inline price for "FCM Package" is greater than $0.01
     Then Details: Expect Service Cost inline price for "First-Class Mail Package/Thick Envelope" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Large/Thick Envelope" is greater than $0.01
-    Then Details: Expect Service Cost inline price for "Priority Mail Package" is greater than $0.01
+    Then Details: Expect Service Cost inline price for "PM Package" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Large Package" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Flat Rate Envelope" is greater than $0.01
     Then Details: Expect Service Cost inline price for "Priority Mail Padded Flat Rate Envelope" is greater than $0.01

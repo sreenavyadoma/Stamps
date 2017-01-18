@@ -2,7 +2,6 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-
 Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.profile = 'xxxxxxxxxx'
   t.cucumber_opts = "-p cuke_reports"
@@ -337,16 +336,6 @@ end
 
 Cucumber::Rake::Task.new(:details_large_dimensions_pm) do |t|
   t.profile = 'details_large_dimensions_pm'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:details_insure_for_box_unchecked_manual) do |t|
-  t.profile = 'details_insure_for_box_unchecked_manual'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:details_insure_for_box_unchecked_imported) do |t|
-  t.profile = 'details_insure_for_box_unchecked_imported'
   t.cucumber_opts = "-p cuke_reports"
 end
 

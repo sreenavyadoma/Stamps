@@ -1024,13 +1024,12 @@ module Stamps
 
           @details_services ||= data_for(:details_services, {})
 
-          dd_btn = self.drop_down
           selection_field = browser.li(id: "#{@details_services[service]}")
           #selection_element = browser.tr css: "tr[data-qtip*='#{service}']"
           selection_label = BrowserElement.new selection_field
 
           10.times do |index|
-            dd_btn.safe_click unless selection_label.present?
+            drop_down.safe_click unless selection_label.present?
             sleep 1
             if selection_field.present?
               disabled_field = BrowserElement.new (selection_field.parent.parent.parent)
@@ -1041,7 +1040,7 @@ module Stamps
                     sleep 1
                     result = disabled_field.attribute_value("class").include? "disabled"
                     result = disabled_field.attribute_value("class").include? "disabled"
-                    dd_btn.safe_click
+                    drop_down.safe_click
                     return result
                   end
                 end
@@ -1056,7 +1055,7 @@ module Stamps
         end
 
         def enabled? service
-          !(self.disabled? service)
+          !(disabled? service)
         end
       end
 
