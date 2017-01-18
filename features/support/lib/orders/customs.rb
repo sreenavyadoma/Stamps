@@ -192,9 +192,9 @@ module Stamps
           super(param)
           @delete = BrowserElement.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[number-1]
           @description = TextboxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
-          @qty = Qty.new(param), number
-          @unit_price = UnitPrice.new(param), number
-          @made_in = Customs::OrdersMadeInCountry.new(param), number
+          @qty = Qty.new(param, number)
+          @unit_price = UnitPrice.new(param, number)
+          @made_in = Customs::OrdersMadeInCountry.new(param, number)
           @hs_tariff = TextboxElement.new (browser.text_fields name: "TariffNo")[number-1]
         end
 
