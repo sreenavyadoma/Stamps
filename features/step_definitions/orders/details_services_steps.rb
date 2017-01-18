@@ -293,6 +293,10 @@ Then /^Details: Expect Service is PMEI Legal Flat Rate Envelope$/ do
   step "Details: Expect Service to be PMEI Legal Flat Rate Envelope"
 end
 
+Then /^Details: Expect Service is an empty string$/ do
+  step "Details: Expect Service to be"
+end
+
 Then /^Details: Set Service to (.*)$/ do |service|
   logger.step "Details: Set Service to #{service}"
   stamps.orders.order_details.service.select service
@@ -306,7 +310,7 @@ Then /^Details: Set Service to (.*)$/ do |service|
   logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
 end
 
-Then /^Details: Expect Service to be (?:([\w ]+)|an empty string)$/ do |expectation|
+Then /^Details: Expect Service to be(?:| ([\w ]+))$/ do |expectation|
   logger.step "Details: Expect Service is #{expectation}"
   if expectation.nil?
     selection_substr = ""
@@ -318,4 +322,10 @@ Then /^Details: Expect Service to be (?:([\w ]+)|an empty string)$/ do |expectat
     break if stamps.orders.order_details.service.text_box.text.include? selection_substr
   end
   stamps.orders.order_details.service.text_box.text.should include selection_substr
+end
+
+Then /^xxx(?:| ([\w ]+))$/ do |expectation|
+  logger.step "#{expectation}"
+  logger.step "#{expectation}"
+  logger.step "#{expectation}"
 end

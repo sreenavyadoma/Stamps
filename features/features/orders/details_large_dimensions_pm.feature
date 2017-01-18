@@ -12,14 +12,16 @@ Feature: Priority Mail and Large Dimensions
     * Details: Set Ounces to 2
     * Details: Set Pounds to 1
     * Details: Select Service PM Package
+    * Details: Expect Service is PM Package
     * Details: Set Length to 20
     * Details: Set Width to 35
     * Details: Set Height to 20
     * Details: Blur out
     * Details: Blur out
     * Details: Expect Dimensions are hidden
-    * Details: Expect Service to be an empty string
+    * Details: Expect Service is an empty string
     * Details: Select Service PM Package
+    * Details: Blur out
     * Details: Set Length to 1
     * Details: Set Width to 1
     * Details: Set Height to 1
@@ -33,8 +35,8 @@ Feature: Priority Mail and Large Dimensions
     * Pause for 1 second
     * Details: Select Service PM Package
     * Pause for 2 seconds
-    * Details: Expect Length is 0
-    * Details: Expect Height is 0
-    * Details: Expect Width is 0
+    * Details: Expect Length is 1
+    * Details: Expect Height is 1
+    * Details: Expect Width is 1
     * Sign out
 
