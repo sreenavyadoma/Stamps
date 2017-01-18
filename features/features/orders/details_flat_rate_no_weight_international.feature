@@ -22,7 +22,6 @@ Feature: Don't Require weight for Flat/Regional Rate Services
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | France  | random  | random  |
 
-
     # Priority Mail International Flat Rate Envelope
     Then Details: Select Service PMI Flat Rate Envelope
     Then Details: Expect Service is PMI Flat Rate Envelope
