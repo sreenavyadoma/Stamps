@@ -306,7 +306,7 @@ Then /^Details: Set Service to (.*)$/ do |service|
   logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
 end
 
-Then /^Details: Expect Service to be (?:(\w*)|an empty string)$/ do |expectation|
+Then /^Details: Expect Service to be (?:([\w ]+)|an empty string)$/ do |expectation|
   logger.step "Details: Expect Service is #{expectation}"
   if expectation.nil?
     selection_substr = ""
