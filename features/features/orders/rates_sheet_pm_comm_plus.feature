@@ -6,8 +6,8 @@ Feature: PM Comm Plus Rates
   @rates_pm_comm_plus
   Scenario: PM Comm Plus
     And I am signed in to Orders
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
     Then Rates: Test PM Comm Plus in Zone 1
     Then Rates: Test PM Comm Plus in Zone 2
     Then Rates: Test PM Comm Plus in Zone 3

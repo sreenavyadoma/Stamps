@@ -6,8 +6,8 @@ Feature: PME Comm Base Rates
   @rates_pme_comm_base
   Scenario: PME Comm Base
     And I am signed in to Orders
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
     Then Rates: Test PME Comm Base in Zone 1
     Then Rates: Test PME Comm Base in Zone 2
     Then Rates: Test PME Comm Base in Zone 3

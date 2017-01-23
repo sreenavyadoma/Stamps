@@ -6,34 +6,34 @@ Feature: Item Details
   @item_details
   Scenario:  Item Details
     Then Pause for 3 seconds
-    Then Grid: Check row 10
+    Then Orders Grid: Check row 10
 
     Then Pause for 3 seconds
 
-    Then Details: Expand Store Items Ordered pane
-    Then Details: Collapse Store Items Ordered pane
-    Then Details: Expand Store Items Ordered pane
-    Then Details: Collapse Store Items Ordered pane
+    Then Order Details: Expand Store Items Ordered pane
+    Then Order Details: Collapse Store Items Ordered pane
+    Then Order Details: Expand Store Items Ordered pane
+    Then Order Details: Collapse Store Items Ordered pane
 
-    Then Grid: Uncheck row 10
+    Then Orders Grid: Uncheck row 10
     Then Pause for 3 seconds
-    Then Grid: Check row 4
+    Then Orders Grid: Check row 4
     Then Pause for 3 seconds
 
-    Then Details: Expand Store Items Ordered pane
-    Then Details: Add Item 1, Qty 1, ID random, Description random
-    Then Details: Add Item 2, Qty 1, ID random, Description random
-    Then Details: Add Item 3, Qty 1, ID random, Description random
-    Then Details: Add Item 4, Qty 1, ID random, Description random
+    Then Order Details: Expand Store Items Ordered pane
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 2, Qty 1, ID random, Description random
+    Then Order Details: Add Item 3, Qty 1, ID random, Description random
+    Then Order Details: Add Item 4, Qty 1, ID random, Description random
 
 
-    Then Details: Collapse Manual Items Ordered pane
-    Then Details: Expand Manual Items Ordered pane
-    Then Details: Delete Item 4
-    Then Details: Delete Item 3
-    Then Details: Delete Item 2
-    Then Details: Delete Item 1
-    Then Details: Collapse Manual Items Ordered pane
+    Then Order Details: Collapse Manual Items Ordered pane
+    Then Order Details: Expand Manual Items Ordered pane
+    Then Order Details: Delete Item 4
+    Then Order Details: Delete Item 3
+    Then Order Details: Delete Item 2
+    Then Order Details: Delete Item 1
+    Then Order Details: Collapse Manual Items Ordered pane
 
 
     Then Sign out

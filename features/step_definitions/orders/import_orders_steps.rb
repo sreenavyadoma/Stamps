@@ -1,5 +1,5 @@
-Then /^Toolbar: Import$/ do
-  logger.step "Toolbar: Import"
+Then /^Orders Toolbar: Import$/ do
+  logger.step "Orders Toolbar: Import"
   @import_orders = stamps.orders.toolbar.import
 end
 
@@ -41,7 +41,7 @@ end
 
 Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename| #import_orders_test.csv
   logger.step "Import Orders: File Upload: Set Filename"
-  step "Toolbar: Import" if @import_orders.orders.nil?
+  step "Orders Toolbar: Import" if @import_orders.orders.nil?
   step "Import Orders: Select CSV File" if (@open_file.nil? || !(@open_file.present?))
   @csv_import_filename = "\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
   logger.step "Import File:  #{@csv_import_filename}"

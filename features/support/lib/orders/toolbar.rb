@@ -343,7 +343,7 @@ module Stamps
               if error_connecting_to_plugin.present?
                 5.times{
                   error_connecting_to_plugin.ok
-                  #order_grid.checkbox.check_all checked_rows_cache
+                  #order_grid.column.checkbox.check_all checked_rows_cache
                   break unless error_connecting_to_plugin.present?
                 }
               end
@@ -351,7 +351,7 @@ module Stamps
               if naws_plugin_error.present?
                 5.times{
                   naws_plugin_error.ok
-                  #order_grid.checkbox.check_all checked_rows_cache
+                  #order_grid.column.checkbox.check_all checked_rows_cache
                   break unless naws_plugin_error.present?
                 }
               end
@@ -440,13 +440,13 @@ module Stamps
         def move
           label = move_label
           label.click_while_present
-          Orders::LeftPanel::LeftFilterPanel.new(param)
+          Orders::LeftPanel::FilterPanel.new(param)
         end
 
         def cancel
           label = cancel_label
           label.click_while_present
-          Orders::LeftPanel::LeftFilterPanel.new(param)
+          Orders::LeftPanel::FilterPanel.new(param)
         end
       end
 
@@ -464,7 +464,7 @@ module Stamps
           case selection
             when :shipped
               selection_str = "Move to Shipped"
-            when :cancelled
+            when :Canceled
               selection_str = "Move to Canceled"
             when :awaiting_shipment
               selection_str = "Move to Awaiting Shipment"
@@ -502,7 +502,7 @@ module Stamps
         end
 
         def to_canceled
-          select :cancelled
+          select :Canceled
         end
 
         def to_awaiting_shipment
@@ -552,20 +552,25 @@ module Stamps
           @loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
         end
 
+        def order
+          order_details
+        end
+
         def order_details
           details = Orders::Details::SingleOrderDetails.new(param) # keep this here
-          grid = Orders::Grid::OrdersGrid.new(param)
           nav_bar = Navigation::NavigationBar.new(param)
           server_error = ShipStationServerError.new(param)
 
-          logger.info "Row 1 Order ID #{grid.order_id.row 1}. Adding new order..."
           15.times do |count|
             begin
               button.safe_click
 
-              details.wait_until_present 6
+              20.times do
+                sleep 1
+                break if details.present?
+              end
 
-              15.times do
+              30.times do
                 if initializing_db.present?
                   logger.message initializing_db.text
                   logger.message initializing_db.text
@@ -575,74 +580,8 @@ module Stamps
                 end
               end
 
-              15.times do
-                if loading_orders.present?
-                  logger.message loading_orders.safe_text
-                  logger.message loading_orders.safe_text
-                  logger.message loading_orders.safe_text
-                  loading_orders.wait_until_present 2
-                else
-                  break
-                end
-              end
-
+              return details  if details.present?
               "Server Error: #{server_error.text}".should eql "" if server_error.present?
-
-
-              15.times do
-                if initializing_db.present?
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
-                  initializing_db.wait_until_present 2
-                  break unless initializing_db.present?
-                end
-              end
-
-              15.times do
-                if loading_orders.present?
-                  logger.message loading_orders.safe_text
-                  logger.message loading_orders.safe_text
-                  logger.message loading_orders.safe_text
-                  loading_orders.wait_until_present 2
-                else
-                  break
-                end
-              end
-
-              details.wait_until_present 8
-
-              15.times do
-                if initializing_db.present?
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
-                  initializing_db.wait_until_present 2
-                  break unless initializing_db.present?
-                end
-              end
-
-              15.times do
-                if loading_orders.present?
-                  logger.message loading_orders.safe_text
-                  logger.message loading_orders.safe_text
-                  logger.message loading_orders.safe_text
-                  loading_orders.wait_until_present 2
-                else
-                  break
-                end
-              end
-
-              if details.present?
-                details_order_id = details.toolbar.order_id
-                grid_order_id = grid.order_id.row 1
-
-                logger.info "Add #{(details_order_id==grid_order_id)?"successful":"failed"} on try #{count+1}"
-                return details if details_order_id==grid_order_id
-              end
-
-              "Server Error: #{server_error.text}".should eql "" if server_error.present?
-
             rescue
               #ignore
             end
@@ -652,7 +591,7 @@ module Stamps
 
           logger.info "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}" if initializing_db.present?
 
-          initializing_db.wait_until_present 15
+          initializing_db.wait_until_present 15 if initializing_db.present?
 
           if initializing_db.present?
             message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}"

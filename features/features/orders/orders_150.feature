@@ -8,1646 +8,1646 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 1
-    * Details: Select Service FCM Large Envelope
-    * Details: Set Insure-For to $15.00
-    * Details: Set Tracking to "None"
+    * Order Details: Set Ounces to 1
+    * Order Details: Select Service FCM Large Envelope
+    * Order Details: Set Insure-For to $15.00
+    * Order Details: Set Tracking to "None"
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 2
-    * Details: Select Service First-Class Mail Package/Thick Envelope
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 2
+    * Order Details: Select Service First-Class Mail Package/Thick Envelope
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 3
-    * Details: Select Service PM Large Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 3
+    * Order Details: Select Service PM Large Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 4
-    * Details: Select Service PM Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 4
+    * Order Details: Select Service PM Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 5
-    * Details: Select Service PM Large Package
-    * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 5
+    * Order Details: Select Service PM Large Package
+    * Order Details: Set Insure-For to $145.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 6
-    * Details: Select Service PM Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 6
+    * Order Details: Select Service PM Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 7
-    * Details: Select Service PM Padded Flat Rate Envelope
-    * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 7
+    * Order Details: Select Service PM Padded Flat Rate Envelope
+    * Order Details: Set Insure-For to $98.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 8
-    * Details: Select Service PM Legal Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 8
+    * Order Details: Select Service PM Legal Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 9
-    * Details: Select Service PM Small Flat Rate Box
-    * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 9
+    * Order Details: Select Service PM Small Flat Rate Box
+    * Order Details: Set Insure-For to $30.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 10
-    * Details: Select Service PM Medium Flat Rate Box
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 10
+    * Order Details: Select Service PM Medium Flat Rate Box
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 11
-    * Details: Select Service PM Large Flat Rate Box
-    * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 11
+    * Order Details: Select Service PM Large Flat Rate Box
+    * Order Details: Set Insure-For to $239.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 12
-    * Details: Select Service PM Regional Rate Box A
-    * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 12
+    * Order Details: Select Service PM Regional Rate Box A
+    * Order Details: Set Insure-For to $105.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 13
-    * Details: Select Service PM Regional Rate Box B
-    * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 13
+    * Order Details: Select Service PM Regional Rate Box B
+    * Order Details: Set Insure-For to $205.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 14
-    * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 14
+    * Order Details: Set Insure-For to $305.00
+    * Order Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 15
-    Then Details: Select Service PME Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 15
+    Then Order Details: Select Service PME Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 16
-    * Details: Select Service PME Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 16
+    * Order Details: Select Service PME Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 17
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 17
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 18
-    * Details: Select Service PME Legal Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 18
+    * Order Details: Select Service PME Legal Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 19
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 19
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
     # Media Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 20
-    * Details: Select Service MM Package
-    * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 20
+    * Order Details: Select Service MM Package
+    * Order Details: Set Insure-For to $56.00
+    * Order Details: Set Tracking to Signature Required
 
     # Parcel Select
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 21
-    * Details: Select Service PSG Package
-    * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 21
+    * Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $345.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 22
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 22
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $456.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 23
-    * Details: Select Service PSG Oversized Package
-    * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 23
+    * Order Details: Select Service PSG Oversized Package
+    * Order Details: Set Insure-For to $567.00
+    * Order Details: Set Tracking to Signature Required
 
     # International
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service FCMI Large Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service FCMI Large Envelope
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service PMI Flat Rate Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 1
-    * Details: Select Service FCM Large Envelope
-    * Details: Set Insure-For to $15.00
-    * Details: Set Tracking to "None"
+    * Order Details: Set Ounces to 1
+    * Order Details: Select Service FCM Large Envelope
+    * Order Details: Set Insure-For to $15.00
+    * Order Details: Set Tracking to "None"
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 2
-    * Details: Select Service First-Class Mail Package/Thick Envelope
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 2
+    * Order Details: Select Service First-Class Mail Package/Thick Envelope
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 3
-    * Details: Select Service PM Large Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 3
+    * Order Details: Select Service PM Large Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 4
-    * Details: Select Service PM Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 4
+    * Order Details: Select Service PM Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 5
-    * Details: Select Service PM Large Package
-    * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 5
+    * Order Details: Select Service PM Large Package
+    * Order Details: Set Insure-For to $145.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 6
-    * Details: Select Service PM Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 6
+    * Order Details: Select Service PM Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 7
-    * Details: Select Service PM Padded Flat Rate Envelope
-    * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 7
+    * Order Details: Select Service PM Padded Flat Rate Envelope
+    * Order Details: Set Insure-For to $98.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 8
-    * Details: Select Service PM Legal Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 8
+    * Order Details: Select Service PM Legal Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 9
-    * Details: Select Service PM Small Flat Rate Box
-    * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 9
+    * Order Details: Select Service PM Small Flat Rate Box
+    * Order Details: Set Insure-For to $30.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 10
-    * Details: Select Service PM Medium Flat Rate Box
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 10
+    * Order Details: Select Service PM Medium Flat Rate Box
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 11
-    * Details: Select Service PM Large Flat Rate Box
-    * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 11
+    * Order Details: Select Service PM Large Flat Rate Box
+    * Order Details: Set Insure-For to $239.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 12
-    * Details: Select Service PM Regional Rate Box A
-    * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 12
+    * Order Details: Select Service PM Regional Rate Box A
+    * Order Details: Set Insure-For to $105.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 13
-    * Details: Select Service PM Regional Rate Box B
-    * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 13
+    * Order Details: Select Service PM Regional Rate Box B
+    * Order Details: Set Insure-For to $205.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 14
-    * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 14
+    * Order Details: Set Insure-For to $305.00
+    * Order Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 15
-    Then Details: Select Service PME Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 15
+    Then Order Details: Select Service PME Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 16
-    * Details: Select Service PME Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 16
+    * Order Details: Select Service PME Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 17
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 17
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 18
-    * Details: Select Service PME Legal Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 18
+    * Order Details: Select Service PME Legal Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 19
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 19
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
     # Media Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 20
-    * Details: Select Service MM Package
-    * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 20
+    * Order Details: Select Service MM Package
+    * Order Details: Set Insure-For to $56.00
+    * Order Details: Set Tracking to Signature Required
 
     # Parcel Select
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 21
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 21
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $345.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 22
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 22
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $456.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 23
-    * Details: Select Service PSG Oversized Package
-    * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 23
+    * Order Details: Select Service PSG Oversized Package
+    * Order Details: Set Insure-For to $567.00
+    * Order Details: Set Tracking to Signature Required
 
     # International
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country | phone       |  email           |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Germany | 0123456789  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service FCMI Large Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service FCMI Large Envelope
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | France    | 9876543210  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service PMI Flat Rate Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 1
-    * Details: Select Service FCM Large Envelope
-    * Details: Set Insure-For to $15.00
-    * Details: Set Tracking to "None"
+    * Order Details: Set Ounces to 1
+    * Order Details: Select Service FCM Large Envelope
+    * Order Details: Set Insure-For to $15.00
+    * Order Details: Set Tracking to "None"
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 2
-    * Details: Select Service First-Class Mail Package/Thick Envelope
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 2
+    * Order Details: Select Service First-Class Mail Package/Thick Envelope
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 3
-    * Details: Select Service PM Large Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 3
+    * Order Details: Select Service PM Large Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 4
-    * Details: Select Service PM Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 4
+    * Order Details: Select Service PM Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 5
-    * Details: Select Service PM Large Package
-    * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 5
+    * Order Details: Select Service PM Large Package
+    * Order Details: Set Insure-For to $145.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 6
-    * Details: Select Service PM Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 6
+    * Order Details: Select Service PM Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 7
-    * Details: Select Service PM Padded Flat Rate Envelope
-    * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 7
+    * Order Details: Select Service PM Padded Flat Rate Envelope
+    * Order Details: Set Insure-For to $98.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 8
-    * Details: Select Service PM Legal Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 8
+    * Order Details: Select Service PM Legal Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 9
-    * Details: Select Service PM Small Flat Rate Box
-    * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 9
+    * Order Details: Select Service PM Small Flat Rate Box
+    * Order Details: Set Insure-For to $30.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 10
-    * Details: Select Service PM Medium Flat Rate Box
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 10
+    * Order Details: Select Service PM Medium Flat Rate Box
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 11
-    * Details: Select Service PM Large Flat Rate Box
-    * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 11
+    * Order Details: Select Service PM Large Flat Rate Box
+    * Order Details: Set Insure-For to $239.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 12
-    * Details: Select Service PM Regional Rate Box A
-    * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 12
+    * Order Details: Select Service PM Regional Rate Box A
+    * Order Details: Set Insure-For to $105.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 13
-    * Details: Select Service PM Regional Rate Box B
-    * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 13
+    * Order Details: Select Service PM Regional Rate Box B
+    * Order Details: Set Insure-For to $205.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
-    * Details: Set Ounces to 14
-    * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to Signature Required
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
+    * Order Details: Set Ounces to 14
+    * Order Details: Set Insure-For to $305.00
+    * Order Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 15
-    Then Details: Select Service PME Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 15
+    Then Order Details: Select Service PME Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 16
-    * Details: Select Service PME Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 16
+    * Order Details: Select Service PME Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 17
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 17
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 18
-    * Details: Select Service PME Legal Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 18
+    * Order Details: Select Service PME Legal Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 19
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 19
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
     # Media Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 20
-    * Details: Select Service MM Package
-    * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 20
+    * Order Details: Select Service MM Package
+    * Order Details: Set Insure-For to $56.00
+    * Order Details: Set Tracking to Signature Required
 
     # Parcel Select
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 21
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 21
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $345.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 22
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 22
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $456.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 23
-    * Details: Select Service PSG Oversized Package
-    * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 23
+    * Order Details: Select Service PSG Oversized Package
+    * Order Details: Set Insure-For to $567.00
+    * Order Details: Set Tracking to Signature Required
 
     # International
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Brazil | 0123456789  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service FCMI Large Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service FCMI Large Envelope
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Mexico    | 9876543210  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service PMI Flat Rate Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 1
-    * Details: Select Service FCM Large Envelope
-    * Details: Set Insure-For to $15.00
-    * Details: Set Tracking to "None"
+    * Order Details: Set Ounces to 1
+    * Order Details: Select Service FCM Large Envelope
+    * Order Details: Set Insure-For to $15.00
+    * Order Details: Set Tracking to "None"
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 2
-    * Details: Select Service First-Class Mail Package/Thick Envelope
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 2
+    * Order Details: Select Service First-Class Mail Package/Thick Envelope
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 3
-    * Details: Select Service PM Large Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 3
+    * Order Details: Select Service PM Large Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 4
-    * Details: Select Service PM Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 4
+    * Order Details: Select Service PM Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 5
-    * Details: Select Service PM Large Package
-    * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 5
+    * Order Details: Select Service PM Large Package
+    * Order Details: Set Insure-For to $145.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 6
-    * Details: Select Service PM Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 6
+    * Order Details: Select Service PM Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 7
-    * Details: Select Service PM Padded Flat Rate Envelope
-    * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 7
+    * Order Details: Select Service PM Padded Flat Rate Envelope
+    * Order Details: Set Insure-For to $98.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 8
-    * Details: Select Service PM Legal Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 8
+    * Order Details: Select Service PM Legal Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 9
-    * Details: Select Service PM Small Flat Rate Box
-    * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 9
+    * Order Details: Select Service PM Small Flat Rate Box
+    * Order Details: Set Insure-For to $30.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 10
-    * Details: Select Service PM Medium Flat Rate Box
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 10
+    * Order Details: Select Service PM Medium Flat Rate Box
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 11
-    * Details: Select Service PM Large Flat Rate Box
-    * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 11
+    * Order Details: Select Service PM Large Flat Rate Box
+    * Order Details: Set Insure-For to $239.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 12
-    * Details: Select Service PM Regional Rate Box A
-    * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 12
+    * Order Details: Select Service PM Regional Rate Box A
+    * Order Details: Set Insure-For to $105.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 13
-    * Details: Select Service PM Regional Rate Box B
-    * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 13
+    * Order Details: Select Service PM Regional Rate Box B
+    * Order Details: Set Insure-For to $205.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 14
-    * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 14
+    * Order Details: Set Insure-For to $305.00
+    * Order Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 15
-    Then Details: Select Service PME Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 15
+    Then Order Details: Select Service PME Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 16
-    * Details: Select Service PME Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 16
+    * Order Details: Select Service PME Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 17
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 17
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 18
-    * Details: Select Service PME Legal Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 18
+    * Order Details: Select Service PME Legal Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 19
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 19
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
     # Media Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 20
-    * Details: Select Service MM Package
-    * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 20
+    * Order Details: Select Service MM Package
+    * Order Details: Set Insure-For to $56.00
+    * Order Details: Set Tracking to Signature Required
 
     # Parcel Select
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 21
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 21
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $345.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 22
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 22
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $456.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 23
-    * Details: Select Service PSG Oversized Package
-    * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 23
+    * Order Details: Select Service PSG Oversized Package
+    * Order Details: Set Insure-For to $567.00
+    * Order Details: Set Tracking to Signature Required
 
     # International
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country     | phone       |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Philippines | 0123456789  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service FCMI Large Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service FCMI Large Envelope
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | India     | 9876543210  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service PMI Flat Rate Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 1
-    * Details: Select Service FCM Large Envelope
-    * Details: Set Insure-For to $15.00
-    * Details: Set Tracking to "None"
+    * Order Details: Set Ounces to 1
+    * Order Details: Select Service FCM Large Envelope
+    * Order Details: Set Insure-For to $15.00
+    * Order Details: Set Tracking to "None"
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 2
-    * Details: Select Service First-Class Mail Package/Thick Envelope
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 2
+    * Order Details: Select Service First-Class Mail Package/Thick Envelope
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 3
-    * Details: Select Service PM Large Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 3
+    * Order Details: Select Service PM Large Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 4
-    * Details: Select Service PM Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 4
+    * Order Details: Select Service PM Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 5
-    * Details: Select Service PM Large Package
-    * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 5
+    * Order Details: Select Service PM Large Package
+    * Order Details: Set Insure-For to $145.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 6
-    * Details: Select Service PM Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 6
+    * Order Details: Select Service PM Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 7
-    * Details: Select Service PM Padded Flat Rate Envelope
-    * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 7
+    * Order Details: Select Service PM Padded Flat Rate Envelope
+    * Order Details: Set Insure-For to $98.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 8
-    * Details: Select Service PM Legal Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 8
+    * Order Details: Select Service PM Legal Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 9
-    * Details: Select Service PM Small Flat Rate Box
-    * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 9
+    * Order Details: Select Service PM Small Flat Rate Box
+    * Order Details: Set Insure-For to $30.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 10
-    * Details: Select Service PM Medium Flat Rate Box
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 10
+    * Order Details: Select Service PM Medium Flat Rate Box
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 11
-    * Details: Select Service PM Large Flat Rate Box
-    * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 11
+    * Order Details: Select Service PM Large Flat Rate Box
+    * Order Details: Set Insure-For to $239.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 12
-    * Details: Select Service PM Regional Rate Box A
-    * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 12
+    * Order Details: Select Service PM Regional Rate Box A
+    * Order Details: Set Insure-For to $105.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 13
-    * Details: Select Service PM Regional Rate Box B
-    * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 13
+    * Order Details: Select Service PM Regional Rate Box B
+    * Order Details: Set Insure-For to $205.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 14
-    * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 14
+    * Order Details: Set Insure-For to $305.00
+    * Order Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 15
-    Then Details: Select Service PME Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 15
+    Then Order Details: Select Service PME Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 16
-    * Details: Select Service PME Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 16
+    * Order Details: Select Service PME Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 17
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 17
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 18
-    * Details: Select Service PME Legal Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 18
+    * Order Details: Select Service PME Legal Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 19
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 19
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
     # Media Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 20
-    * Details: Select Service MM Package
-    * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 20
+    * Order Details: Select Service MM Package
+    * Order Details: Set Insure-For to $56.00
+    * Order Details: Set Tracking to Signature Required
 
     # Parcel Select
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 21
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 21
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $345.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 22
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 22
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $456.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 23
-    * Details: Select Service PSG Oversized Package
-    * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 23
+    * Order Details: Select Service PSG Oversized Package
+    * Order Details: Set Insure-For to $567.00
+    * Order Details: Set Tracking to Signature Required
 
     # International
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Poland | 0123456789  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service FCMI Large Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service FCMI Large Envelope
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Singapore | 9876543210  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service PMI Flat Rate Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service PMI Flat Rate Envelope
 
     # First Class Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 1
-    * Details: Select Service FCM Large Envelope
-    * Details: Set Insure-For to $15.00
-    * Details: Set Tracking to "None"
+    * Order Details: Set Ounces to 1
+    * Order Details: Select Service FCM Large Envelope
+    * Order Details: Set Insure-For to $15.00
+    * Order Details: Set Tracking to "None"
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 2
-    * Details: Select Service First-Class Mail Package/Thick Envelope
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 2
+    * Order Details: Select Service First-Class Mail Package/Thick Envelope
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to USPS Tracking
 
     #Priority Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 3
-    * Details: Select Service PM Large Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 3
+    * Order Details: Select Service PM Large Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 4
-    * Details: Select Service PM Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 4
+    * Order Details: Select Service PM Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 5
-    * Details: Select Service PM Large Package
-    * Details: Set Insure-For to $145.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 5
+    * Order Details: Select Service PM Large Package
+    * Order Details: Set Insure-For to $145.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 6
-    * Details: Select Service PM Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 6
+    * Order Details: Select Service PM Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 7
-    * Details: Select Service PM Padded Flat Rate Envelope
-    * Details: Set Insure-For to $98.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 7
+    * Order Details: Select Service PM Padded Flat Rate Envelope
+    * Order Details: Set Insure-For to $98.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 8
-    * Details: Select Service PM Legal Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 8
+    * Order Details: Select Service PM Legal Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 9
-    * Details: Select Service PM Small Flat Rate Box
-    * Details: Set Insure-For to $30.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 9
+    * Order Details: Select Service PM Small Flat Rate Box
+    * Order Details: Set Insure-For to $30.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 10
-    * Details: Select Service PM Medium Flat Rate Box
-    * Details: Set Insure-For to $45.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 10
+    * Order Details: Select Service PM Medium Flat Rate Box
+    * Order Details: Set Insure-For to $45.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 11
-    * Details: Select Service PM Large Flat Rate Box
-    * Details: Set Insure-For to $239.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 11
+    * Order Details: Select Service PM Large Flat Rate Box
+    * Order Details: Set Insure-For to $239.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 12
-    * Details: Select Service PM Regional Rate Box A
-    * Details: Set Insure-For to $105.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 12
+    * Order Details: Select Service PM Regional Rate Box A
+    * Order Details: Set Insure-For to $105.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 13
-    * Details: Select Service PM Regional Rate Box B
-    * Details: Set Insure-For to $205.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Ounces to 13
+    * Order Details: Select Service PM Regional Rate Box B
+    * Order Details: Set Insure-For to $205.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 14
-    * Details: Set Insure-For to $305.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 14
+    * Order Details: Set Insure-For to $305.00
+    * Order Details: Set Tracking to Signature Required
 
     # Priority Mail Express
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Ounces to 15
-    Then Details: Select Service PME Package
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Ounces to 15
+    Then Order Details: Select Service PME Package
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 16
-    * Details: Select Service PME Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 16
+    * Order Details: Select Service PME Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 17
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 17
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 18
-    * Details: Select Service PME Legal Flat Rate Envelope
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 18
+    * Order Details: Select Service PME Legal Flat Rate Envelope
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 19
-    * Details: Select Service PME Padded Flat Rate Envelope
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 19
+    * Order Details: Select Service PME Padded Flat Rate Envelope
+    * Order Details: Set Tracking to Signature Required
 
     # Media Mail
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 20
-    * Details: Select Service MM Package
-    * Details: Set Insure-For to $56.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 20
+    * Order Details: Select Service MM Package
+    * Order Details: Set Insure-For to $56.00
+    * Order Details: Set Tracking to Signature Required
 
     # Parcel Select
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 21
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $345.00
-    * Details: Set Tracking to USPS Tracking
+    * Order Details: Set Pounds to 21
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $345.00
+    * Order Details: Set Tracking to USPS Tracking
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 22
-    Then Details: Select Service PSG Package
-    * Details: Set Insure-For to $456.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 22
+    Then Order Details: Select Service PSG Package
+    * Order Details: Set Insure-For to $456.00
+    * Order Details: Set Tracking to Signature Required
 
-    * Toolbar: Add
-    * Details: Expect Order ID is truthy
-    * Details: Set Ship-From to default
-    * Details: Set Ship-To to address in Zone 1 through 4
+    * Orders Toolbar: Add
+    * Order Details: Expect Order ID is truthy
+    * Order Details: Set Ship-From to default
+    * Order Details: Set Ship-To to address in Zone 1 through 4
 
-    * Details: Set Pounds to 23
-    * Details: Select Service PSG Oversized Package
-    * Details: Set Insure-For to $567.00
-    * Details: Set Tracking to Signature Required
+    * Order Details: Set Pounds to 23
+    * Order Details: Select Service PSG Oversized Package
+    * Order Details: Set Insure-For to $567.00
+    * Order Details: Set Tracking to Signature Required
 
     # International
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country   | phone       |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Hong Kong | 0123456789  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service FCMI Large Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service FCMI Large Envelope
 
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
 
-    Then Details: Set Ship-To to International Address
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country  | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Thailand | 9876543210  | junk@stamps.com  |
 
-    Then Details: Add Item 1, Qty 1, ID random, Description random
+    Then Order Details: Add Item 1, Qty 1, ID random, Description random
 
-    Then Details: Edit Customs Form
+    Then Order Details: Edit Customs Form
 
-    Then Customs: Set Package Contents to Merchandise
-    Then Customs: Set Non-Delivery Options to Return to sender
-    Then Customs: Set Internal Transaction Number to Required
-    Then Customs: Set More Info to "random"
-    Then Customs: Set ITN Number to "random"
+    Then Customs Form: Set Package Contents to Merchandise
+    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then Customs Form: Set Internal Transaction Number to Required
+    Then Customs Form: Set More Info to "random"
+    Then Customs Form: Set ITN Number to "random"
 
-    Then Customs: Check I agree to the USPS Privacy Act Statement
-    Then Customs: Close Modal
-    Then Details: Select Service PMI Flat Rate Envelope
+    Then Customs Form: Check I agree to the USPS Privacy Act Statement
+    Then Customs Form: Close Customs Form
+    Then Order Details: Select Service PMI Flat Rate Envelope
 
     Then Sign out
 

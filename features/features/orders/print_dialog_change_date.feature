@@ -17,19 +17,19 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Mail Rates"
 
   @print_dialog_change_date
   Scenario: Change Print Date
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service PM Large Envelope
-    Then Details: Set Ounces to 2
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 1 through 4
+    Then Order Details: Select Service PM Large Envelope
+    Then Order Details: Set Ounces to 2
 
-    Then Print: Open Modal
-    Then Print: Set Ship Date to today plus 1
-    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
-    Then Print: Set Printer to "factory"
-    Then Print: Set Ship Date to today plus 2
+    Then Print Modal: Open Print Modal
+    Then Print Modal: Set Ship Date to today plus 1
+    Then Print Modal: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
+    Then Print Modal: Set Printer to "factory"
+    Then Print Modal: Set Ship Date to today plus 2
     Then Pause for 2 seconds
-    Then Print: Print
+    Then Print Modal: Print
     Then Pause for 1 second
     Then Sign out
 

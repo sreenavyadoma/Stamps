@@ -5,252 +5,252 @@ Feature: January 2017 Rates for SAS User in Zone 9
 
   @rates_orders_sas_zone_9
   Scenario: FCM Package
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service FCM Large Envelope
-    Then Details: Expect Service Cost is $3.62
-    Then Details: Set Weight to 0 lb 13 oz
-    Then Details: Expect Total Ship Cost is $3.62
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service FCM Large Envelope
+    Then Order Details: Expect Service Cost is $3.62
+    Then Order Details: Set Weight to 0 lb 13 oz
+    Then Order Details: Expect Total Ship Cost is $3.62
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: First-Class Mail Package/Thick Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service First-Class Mail Package/Thick Envelope
-    Then Details: Set Weight to 0 lb 10 oz
-    Then Details: Expect Service Cost is $3.35
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $3.35
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service First-Class Mail Package/Thick Envelope
+    Then Order Details: Set Weight to 0 lb 10 oz
+    Then Order Details: Expect Service Cost is $3.35
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $3.35
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Large/Thick Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Large Envelope
-    Then Details: Set Weight to 26 lb 0 oz
-    Then Details: Expect Service Cost is $63.49
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $63.49
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Large Envelope
+    Then Order Details: Set Weight to 26 lb 0 oz
+    Then Order Details: Expect Service Cost is $63.49
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $63.49
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Package
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Package
-    Then Details: Set Weight to 18 lb 0 oz
-    Then Details: Expect Service Cost is $52.31
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Set Length to 8
-    Then Details: Set Width to 16
-    Then Details: Set Height to 9
-    Then Details: Expect Total Ship Cost is $52.31
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Weight to 18 lb 0 oz
+    Then Order Details: Expect Service Cost is $52.31
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Set Length to 8
+    Then Order Details: Set Width to 16
+    Then Order Details: Set Height to 9
+    Then Order Details: Expect Total Ship Cost is $52.31
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Large Package
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Large Package
-    Then Details: Set Weight to 32 lb 0 oz
-    Then Details: Expect Service Cost is $78.80
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Set Length to 30
-    Then Details: Set Width to 15
-    Then Details: Set Height to 15
-    Then Details: Expect Total Ship Cost is $78.80
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Large Package
+    Then Order Details: Set Weight to 32 lb 0 oz
+    Then Order Details: Expect Service Cost is $78.80
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Set Length to 30
+    Then Order Details: Set Width to 15
+    Then Order Details: Set Height to 15
+    Then Order Details: Expect Total Ship Cost is $78.80
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Flat Rate Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Flat Rate Envelope
-    Then Details: Set Weight to 53 lb 3 oz
-    Then Details: Expect Service Cost is $5.75
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $5.75
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Flat Rate Envelope
+    Then Order Details: Set Weight to 53 lb 3 oz
+    Then Order Details: Expect Service Cost is $5.75
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $5.75
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Padded Flat Rate Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Padded Flat Rate Envelope
-    Then Details: Set Weight to 25 lb 0 oz
-    Then Details: Expect Service Cost is $6.10
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $6.10
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Padded Flat Rate Envelope
+    Then Order Details: Set Weight to 25 lb 0 oz
+    Then Order Details: Expect Service Cost is $6.10
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $6.10
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Legal Flat Rate Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Legal Flat Rate Envelope
-    Then Details: Set Weight to 37 lb 0 oz
-    Then Details: Expect Service Cost is $5.75
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $5.75
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Legal Flat Rate Envelope
+    Then Order Details: Set Weight to 37 lb 0 oz
+    Then Order Details: Expect Service Cost is $5.75
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $5.75
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Small Flat Rate Box
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Small Flat Rate Box
-    Then Details: Set Weight to 61 lb 0 oz
-    Then Details: Expect Service Cost is $6.10
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $6.10
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Small Flat Rate Box
+    Then Order Details: Set Weight to 61 lb 0 oz
+    Then Order Details: Expect Service Cost is $6.10
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $6.10
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Medium Flat Rate Box
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Medium Flat Rate Box
-    Then Details: Set Weight to 40 lb 0 oz
-    Then Details: Expect Service Cost is $11.95
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $11.95
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Medium Flat Rate Box
+    Then Order Details: Set Weight to 40 lb 0 oz
+    Then Order Details: Expect Service Cost is $11.95
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $11.95
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Large Flat Rate Box
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PM Large Flat Rate Box
-    Then Details: Set Weight to 35 lb 0 oz
-    Then Details: Expect Service Cost is $16.35
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $16.35
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PM Large Flat Rate Box
+    Then Order Details: Set Weight to 35 lb 0 oz
+    Then Order Details: Expect Service Cost is $16.35
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $16.35
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Express Package
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PME Package
-    Then Details: Set Weight to 56 lb 0 oz
-    Then Details: Expect Service Cost is $274.05
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $274.05
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PME Package
+    Then Order Details: Set Weight to 56 lb 0 oz
+    Then Order Details: Expect Service Cost is $274.05
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $274.05
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Express Flat Rate Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PME Flat Rate Envelope
-    Then Details: Set Weight to 4 lb 0 oz
-    Then Details: Expect Service Cost is $20.66
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $20.66
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PME Flat Rate Envelope
+    Then Order Details: Set Weight to 4 lb 0 oz
+    Then Order Details: Expect Service Cost is $20.66
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $20.66
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Express Padded Flat Rate Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PME Padded Flat Rate Envelope
-    Then Details: Set Weight to 21 lb 0 oz
-    Then Details: Expect Service Cost is $20.66
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $20.66
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PME Padded Flat Rate Envelope
+    Then Order Details: Set Weight to 21 lb 0 oz
+    Then Order Details: Expect Service Cost is $20.66
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $20.66
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Priority Mail Express Legal Flat Rate Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PME Legal Flat Rate Envelope
-    Then Details: Set Weight to 70 lb 0 oz
-    Then Details: Expect Service Cost is $20.66
-    Then Details: Set Tracking to Signature Required
-    Then Details: Expect Total Ship Cost is $20.66
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PME Legal Flat Rate Envelope
+    Then Order Details: Set Weight to 70 lb 0 oz
+    Then Order Details: Expect Service Cost is $20.66
+    Then Order Details: Set Tracking to Signature Required
+    Then Order Details: Expect Total Ship Cost is $20.66
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: MM Package
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service MM Package
-    Then Details: Set Weight to 39 lb 0 oz
-    Then Details: Expect Service Cost is $21.72
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $21.72
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service MM Package
+    Then Order Details: Set Weight to 39 lb 0 oz
+    Then Order Details: Expect Service Cost is $21.72
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $21.72
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PSG Package
-    Then Details: Set Weight to 12 lb 0 oz
-    Then Details: Expect Service Cost is $40.14
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $40.14
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PSG Package
+    Then Order Details: Set Weight to 12 lb 0 oz
+    Then Order Details: Expect Service Cost is $40.14
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $40.14
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PSG Package
-    Then Details: Set Weight to 24 lb 0 oz
-    Then Details: Expect Service Cost is $60.47
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $60.47
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PSG Package
+    Then Order Details: Set Weight to 24 lb 0 oz
+    Then Order Details: Expect Service Cost is $60.47
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $60.47
     Then Sign out
 
   @rates_orders_sas_zone_9
   Scenario: Parcel Select Ground Oversized Package
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To Country to United States
-    Then Details: Set Ship-To to address in Zone 9
-    Then Details: Select Service PSG Oversized Package
-    Then Details: Set Weight to 7 lb 0 oz
-    Then Details: Expect Service Cost is $169.87
-    Then Details: Set Tracking to USPS Tracking
-    Then Details: Expect Total Ship Cost is $169.87
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To Country to United States
+    Then Order Details: Set Ship-To to address in Zone 9
+    Then Order Details: Select Service PSG Oversized Package
+    Then Order Details: Set Weight to 7 lb 0 oz
+    Then Order Details: Expect Service Cost is $169.87
+    Then Order Details: Set Tracking to USPS Tracking
+    Then Order Details: Expect Total Ship Cost is $169.87
     Then Sign out

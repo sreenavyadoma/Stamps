@@ -6,17 +6,17 @@ Feature:  BVT Printing
 
   @bvt_printing
   Scenario:  Printing
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Select Service PM Package
-    Then Details: Set Ounces to 1
-    Then Details: Set Width to 1
-    Then Details: Set Length to 1
-    Then Details: Set Height to 1
-    Then Print: Open Modal
-    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
-    Then Print: Set Printer to "factory"
-    Then Print: Print
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Width to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Height to 1
+    Then Print Modal: Open Print Modal
+    Then Print Modal: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
+    Then Print Modal: Set Printer to "factory"
+    Then Print Modal: Print
     Then Sign out
 

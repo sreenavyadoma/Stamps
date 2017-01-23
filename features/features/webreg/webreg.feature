@@ -14,6 +14,8 @@ Feature: WebReg
     Then WebReg Profile: Set 1st Question to What is your mother's maiden name
     Then WebReg Profile: Set 1st Answer to stamps
     Then WebReg Profile: Set 2nd Question to What was your high school mascot
+    Then WebReg Profile: Set 1st Question to What is your city of birth
+    Then WebReg Profile: Set 1st Question to What is your father's birthplace
     Then WebReg Profile: Set 2nd Answer to stamps
 
     Then WebReg Profile: Continue to Mailing Information Page

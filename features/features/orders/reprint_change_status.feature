@@ -6,18 +6,18 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
   @reprint_change_status @reprint
   Scenario: Allow User to Manually Change Order Status - User Reprints Order
-    Then Left Panel: Select Shipped
-    Then Left Panel: Select Awaiting Shipment
+    Then Filter Panel: Select Shipped
+    Then Filter Panel: Select Awaiting Shipment
 
-    Then Toolbar: Add
+    Then Orders Toolbar: Add
 
-    Then Toolbar: Move to Shipped
-    Then Left Panel: Select Shipped
-    Then Left Panel: Expect order moved to Shipped
+    Then Orders Toolbar: Move to Shipped
+    Then Filter Panel: Select Shipped
+    Then Filter Panel: Expect order moved to Shipped
 
-    Then Left Panel: Select Shipped
-    Then Grid: Check Saved Order ID
-    Then Print: Open Reprint Modal
+    Then Filter Panel: Select Shipped
+    Then Orders Grid: Check saved Order ID
+    Then Print Modal: Open Reprint Modal
     Then Label Unavailable:  Expect Visible
     Then Pause for 5 seconds
 

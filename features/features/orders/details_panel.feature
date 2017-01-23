@@ -6,15 +6,15 @@ Feature: Able to collapse and reopen details panel when click Add order
 
   @details_panel
   Scenario: B-01995 When Details Panel is Collapsed, Add Button Should Expand it
-    Then Toolbar: Add
-    Then Details: Collapse Panel
-    Then Toolbar: Add
-    Then Details: Expect Panel is present
+    Then Orders Toolbar: Add
+    Then Order Details: Collapse Panel
+    Then Orders Toolbar: Add
+    Then Order Details: Expect Panel is present
 
-    Then Toolbar: Add
-    Then Details: Collapse Panel
-    Then Details: Expand panel
-    Then Details: Expect Panel is present
+    Then Orders Toolbar: Add
+    Then Order Details: Collapse Panel
+    Then Order Details: Expand panel
+    Then Order Details: Expect Panel is present
 
 
 

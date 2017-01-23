@@ -144,113 +144,103 @@ module Stamps
         end
       end
 
-      class LeftFilterPanel < Browser::Modal
-        attr_reader :filter_panel, :closed_filter_panel, :filter_panel_border_arrow, :filter_panel_header_arrow, :filter_panel_header_name,
-                    :selected_filter_button, :cancelled_field, :search_orders_modal, :search_results
+      class FilterTab < Browser::Modal
+        attr_reader :index
+        def initialize(param, index)
+          super(param)
+          @index = index
+        end
+
+        def tabs
+          browser.divs(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=sdc-badgebutton-text]")
+        end
+
+        def element
+          tabs[index]
+        end
+
+        def select
+          15.times do
+            element_helper.safe_click(element)
+            sleep 1
+            break if selected?
+          end
+          selected?.should be true
+        end
+
+        def selected?
+          begin
+            element.parent.parent.parent.parent.attribute_value("class").include?('selected')
+          rescue
+            false
+          end
+        end
+
+        def text
+          element_helper.text(element)
+        end
+      end
+
+      class AwaitingShipmentTab < FilterTab
+        def initialize(param)
+          super(param, 0)
+        end
+
+        def count
+          element_helper.text(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).to_i
+        end
+      end
+
+      class ShippedTab < FilterTab
+        def initialize(param)
+          super(param, 1)
+        end
+      end
+
+      class CanceledTab < FilterTab
+        def initialize(param)
+          super(param, 2)
+        end
+      end
+
+      class OnHoldTab < FilterTab
+        def initialize(param)
+          super(param, 3)
+        end
+      end
+
+      class FilterPanel < Browser::Modal
+        attr_reader :search_orders_modal, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
 
         def initialize(param)
           super(param)
-          @menu_item ||= FilterMenuItem.new(param)
+          @awaiting_shipment = AwaitingShipmentTab.new(param)
+          @shipped = ShippedTab.new(param)
+          @canceled = CanceledTab.new(param)
+          @on_hold = OnHoldTab.new(param)
           @search_orders_modal = SearchOrders.new(param)
+          @menu_item ||= FilterMenuItem.new(param)
           @search_results = SearchResults.new(param)
-
-          @filter_panel = BrowserElement.new browser.div(css: "div[id*=filterpanel][class*=x-panel-dark-grey]")
-          @closed_filter_panel = BrowserElement.new browser.div(css: "div[id*=title][class*=x-title-text-dark-grey]")
-          @filter_panel_border_arrow = BrowserElement.new browser.div(css: "div[id*=filterpanel][class*=x-layout-split-left]")
-          @filter_panel_header_arrow = BrowserElement.new browser.img(css: "img[id*=tool][class*=x-tool-expand-right]")
-          @filter_panel_header_name = BrowserElement.new browser.div(css: "div[id*=title][class*=x-title-text-dark-grey]")
-          @selected_filter_button = BrowserElement.new browser.table(css: "table[id*=badgebutton][class*=sdc-badgebutton-selected]")
-          @cancelled_field = BrowserElement.new browser.div(text: "Canceled")
         end
 
-        def search_orders str
-          search_orders_modal.search str
+        def search_orders(str)
+          search_orders_modal.search(str)
         end
 
-        def awaiting_shipment_count
-          (element_helper.text (browser.divs css: "div.sdc-badge").last).to_i
+        def selected_filter
+          return awaiting_shipment.text if awaiting_shipment.selected?
+          return shipped.text if shipped.selected?
+          return canceled.text if canceled.selected?
+          return on_hold.text if on_hold.selected?
+          "At least one filter should have been selected.".should eql "Unable to return selected_filter text."
         end
 
-        def awaiting_shipment
-          clickable = browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[0]
-          verify = clickable.parent.parent.parent.parent
-          tab = SelectionElement.new(clickable, verify, "class", "selected")
-          tab.select
-          grid = OrdersGrid.new(param)
-          sleep 2
-          grid.wait_until_present
-          grid
+        def collapse_panel
+
         end
 
-        def shipped
-          clickable = browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[1]
-          verify = clickable.parent.parent.parent.parent
-          tab = Stamps::Browser::SelectionElement.new clickable, verify, "class", "selected"
-          tab.select
-          grid = Orders::Grid::OrdersGrid.new(param)
-          sleep 2
-          grid.wait_until_present
-          grid
-        end
+        def expand_panel
 
-        def cancelled
-          clickable = browser.divs(css: "div[class*='table-cell-inner sdc-badgebutton-text']")[2]
-          verify = clickable.parent.parent.parent.parent
-          tab = Stamps::Browser::SelectionElement.new clickable, verify, "class", "selected"
-          tab.select
-          grid = Orders::Grid::OrdersGrid.new(param)
-          sleep 2
-          grid.wait_until_present
-          grid
-        end
-
-        def get_closed_filter_name
-          element_helper.text filter_panel_header_name #, 'Filter Panel - Panel Header Name'
-        end
-
-        def get_arrow_direction
-          style =  filter_panel_border_arrow.style filter_panel_border_arrow, "background-image"
-          if style.include? 'mini-left.png'
-            'left'
-          elsif style.include? 'mini-right.png'
-            'right'
-          end
-        end
-
-        def click_closed_filter_panel
-          element_helper.safe_click closed_filter_panel
-        end
-
-        def get_selected_filter_text
-          element_helper.text selected_filter_button #, 'Selected Filter'
-        end
-
-        def is_order_grid_filtered(filter)
-          if filter == "Shipped"
-            return are_ship_dates_full
-          elsif filter == "Awaiting Shipment"
-            return are_ship_dates_empty
-          end
-        end
-
-        def is_filter_panel_present?
-          sleep 2
-          filter_panel.present?
-        end
-
-        def click_border_arrow
-          element_helper.safe_click filter_panel_border_arrow
-        end
-
-        def is_header_arrow_present
-          filter_panel_header_arrow.present?
-        end
-
-        def are_filter_links_present
-          (filter_panel_header_name.present? ) || (filter_panel_header_arrow.present? )
-        end
-
-        def click_filter_
         end
       end
     end

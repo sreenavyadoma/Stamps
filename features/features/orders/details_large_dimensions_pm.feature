@@ -7,36 +7,36 @@ Feature: Priority Mail and Large Dimensions
 
   @details_large_dimensions_pm
   Scenario: Priority Mail and Large Dimensions
-    * Toolbar: Add
-    * Details: Set Ship-To to address in Zone 8
-    * Details: Set Ounces to 2
-    * Details: Set Pounds to 1
-    * Details: Select Service PM Package
-    * Details: Expect Service is PM Package
-    * Details: Set Length to 20
-    * Details: Set Width to 35
-    * Details: Set Height to 20
-    * Details: Blur out
-    * Details: Blur out
-    * Details: Expect Dimensions are hidden
-    * Details: Expect Service is an empty string
-    * Details: Select Service PM Package
-    * Details: Blur out
-    * Details: Set Length to 1
-    * Details: Set Width to 1
-    * Details: Set Height to 1
-    * Details: Set Insure-For to $100.00
+    * Orders Toolbar: Add
+    * Order Details: Set Ship-To to address in Zone 8
+    * Order Details: Set Ounces to 2
+    * Order Details: Set Pounds to 1
+    * Order Details: Select Service PM Package
+    * Order Details: Expect Service is PM Package
+    * Order Details: Set Length to 20
+    * Order Details: Set Width to 35
+    * Order Details: Set Height to 20
+    * Order Details: Blur out
+    * Order Details: Blur out
+    * Order Details: Expect Dimensions are hidden
+    * Order Details: Expect Service is an empty string
+    * Order Details: Select Service PM Package
+    * Order Details: Blur out
+    * Order Details: Set Length to 1
+    * Order Details: Set Width to 1
+    * Order Details: Set Height to 1
+    * Order Details: Set Insure-For to $100.00
     * Pause for 2 seconds
-    * Details: Expect Service Textbox is enabled
+    * Order Details: Expect Service Textbox is enabled
     * Pause for 1 second
-    * Details: Expect Service is PM Package
+    * Order Details: Expect Service is PM Package
     * Pause for 1 second
-    * Details: Expect Service "PM Package" is enabled
+    * Order Details: Expect Service "PM Package" is enabled
     * Pause for 1 second
-    * Details: Select Service PM Package
+    * Order Details: Select Service PM Package
     * Pause for 2 seconds
-    * Details: Expect Length is 1
-    * Details: Expect Height is 1
-    * Details: Expect Width is 1
+    * Order Details: Expect Length is 1
+    * Order Details: Expect Height is 1
+    * Order Details: Expect Width is 1
     * Sign out
 

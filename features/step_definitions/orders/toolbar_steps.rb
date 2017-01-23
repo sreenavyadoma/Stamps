@@ -1,16 +1,10 @@
-Then /^Toolbar: Add$/ do
+Then /^Orders Toolbar: Add$/ do
   begin
-    logger.step "Toolbar: Add"
-    stamps.orders.grid.checkbox.uncheck 1
-    @order_details = stamps.orders.toolbar.add.order_details
-    test_data[:order_id] = @order_details.toolbar.order_id
+    logger.step "Orders Toolbar: Add"
     test_data[:old_balance] = stamps.navigation_bar.balance.amount
-    step "Save Shipping Costs Data"
-    logger.step "Saved Order ID #{test_data[:order_id]}"
-    test_data[:order_id] = test_data[:order_id]
-    test_data[:awaiting_shipment_count] = stamps.orders.left_panel.awaiting_shipment_count
-    @item_count = 0
-    @index = 0
+    stamps.orders.orders_grid.column.checkbox.uncheck 1
+    stamps.orders.toolbar.add.order
+    step "Save Test Data"
   rescue Exception => e
     logger.error e.message
     logger.error e.backtrace.join("\n")
@@ -18,37 +12,45 @@ Then /^Toolbar: Add$/ do
   end
 end
 
-Then /^Toolbar: Move to Shipped$/ do
-  logger.step "Toolbar: Move to Shipped"
-  grid = stamps.orders.grid
-  raise "Order ID #{test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num test_data[:order_id]) > 0
+Then /^Orders Toolbar: Move to Shipped$/ do
+  logger.step "Orders Toolbar: Move to Shipped"
+  grid = stamps.orders.orders_grid
+  "Order ID #{test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num test_data[:order_id]) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order test_data[:order_id]
+  grid.column.checkbox.check_order_id test_data[:order_id]
   grid.toolbar.move.to_shipped.cancel
   grid.toolbar.move.to_shipped.move
 end
 
-Then /^Toolbar: Move to Canceled$/ do
-  logger.step "Toolbar: Move to Canceled"
-  grid = stamps.orders.grid
+Then /^Orders Toolbar: Move to Canceled$/ do
+  logger.step "Orders Toolbar: Move to Canceled"
+  grid = stamps.orders.orders_grid
   raise "Order ID #{test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num test_data[:order_id]) > 0
   grid.order_date.sort_descending
-  grid.checkbox.check_order test_data[:order_id]
+  grid.column.checkbox.check_order_id test_data[:order_id]
   grid.toolbar.move.to_canceled.cancel
   grid.toolbar.move.to_canceled.move
 end
 
-Then /^Toolbar: Refresh Orders$/ do
-  logger.step "Toolbar: Refresh Orders"
+Then /^Filter Panel: Move order to Awaiting Shipment$/ do
+  logger.step "Move order to Awaiting Shipmen"
+  stamps.orders.orders_grid.column.order_date.sort_descending
+  stamps.orders.orders_grid.column.checkbox.check_order_id test_data[:order_id]
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
+end
+
+Then /^Orders Toolbar: Refresh Orders$/ do
+  logger.step "Orders Toolbar: Refresh Orders"
   stamps.orders.toolbar.refresh_orders
 end
 
-Then /^Print: Expect Print Modal is present$/ do
+Then /^Print Modal: Expect Print Modal is present$/ do
   logger.step "Test #{(stamps.orders.toolbar.print_btn.print_modal.present?)?"Passed":"Failed"}"
   stamps.orders.toolbar.print_btn.print_modal.present?.should be_truthy
 end
 
-Then /^Print: Print$/ do
+Then /^Print Modal: Print$/ do
   logger.step "Print"
   print_modal = stamps.orders.toolbar.print_btn.print_modal
   @ship_date = print_modal.ship_date.text
@@ -59,7 +61,7 @@ Then /^Print: Print$/ do
   sleep 4
 end
 
-Then /^Print: Open Reprint Modal$/ do
+Then /^Print Modal: Open Reprint Modal$/ do
   logger.step "RePrint"
   @reprint_modal = stamps.orders.toolbar.reprint
 end
@@ -80,31 +82,16 @@ Then /^Label Unavailable:  Expect Visible$/ do
   end
 end
 
-Then /^Toolbar: Add second order$/ do
-  logger.step "Toolbar: Add second order"
-  @order_details = stamps.orders.toolbar.add.order_details
-  test_data[:order_id_2] = @order_details.toolbar.order_id
+Then /^Orders Toolbar: Add second order$/ do
+  logger.step "Orders Toolbar: Add second order"
+  test_data[:order_id_2] = stamps.orders.order_details.toolbar.order_id
 end
 
-Then /^Toolbar: Add third order$/ do
-  logger.step "Toolbar: Add third order"
-  @order_details = stamps.orders.toolbar.add.order_details
-  test_data[:order_id_3] = @order_details.toolbar.order_id
+Then /^Orders Toolbar: Add third order$/ do
+  logger.step "Orders Toolbar: Add third order"
+  test_data[:order_id_3] = stamps.orders.order_details.toolbar.order_id
 end
 
-Then /^Add a second order$/ do
-  logger.step "Add a second order"
-  first_row_order_id = stamps.orders.grid.order_id.row 1
-  5.times{
-    test_data[:order_id_2] = stamps.orders.toolbar.add.order_details_shipping_address_window
-    if first_row_order_id.include? test_data[:order_id]
-      sleep(3)
-    end
-    break unless first_row_order_id.include? test_data[:order_id_2]
-  }
-  logger.step "Second Order Id:  #{test_data[:order_id_2]}"
-  stamps.orders.grid.checkbox.edit test_data[:order_id_2]
-end
 
 Then /^Fail the test$/ do
   logger.step "Fail the test"
@@ -113,9 +100,9 @@ end
 
 Then /^Test Features$/ do |count|
   logger.step "Test Features"
-  stamps.orders.grid.checkbox.check_all
+  stamps.orders.orders_grid.column.checkbox.check_all
   count = stamps.orders.multi_order.order_count
   logger.step count
-  stamps.orders.grid.checkbox.uncheck_all
+  stamps.orders.orders_grid.column.checkbox.uncheck_all
 end
 

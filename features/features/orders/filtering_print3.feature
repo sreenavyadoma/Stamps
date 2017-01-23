@@ -5,32 +5,32 @@ Feature: Batch Filters for Awaiting Shipment and Shipped tab
 
   @filter3
   Scenario: Print 3 orders
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service FCM Large Envelope
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 1 through 4
+    Then Order Details: Select Service FCM Large Envelope
 
-    Then Toolbar: Add second order
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service FCM Large Envelope
+    Then Orders Toolbar: Add second order
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 1 through 4
+    Then Order Details: Select Service FCM Large Envelope
 
-    Then Toolbar: Add third order
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 1 through 4
-    Then Details: Select Service MM Package
+    Then Orders Toolbar: Add third order
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 1 through 4
+    Then Order Details: Select Service MM Package
 
-    Then Grid: Check row 1
-    Then Grid: Check row 2
-    Then Grid: Check row 3
+    Then Orders Grid: Check row 1
+    Then Orders Grid: Check row 2
+    Then Orders Grid: Check row 3
 
-    Then Print: Open Modal
-    Then Print: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
-    Then Print: Set Printer to "factory"
-    Then Print: Print
+    Then Print Modal: Open Print Modal
+    Then Print Modal: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
+    Then Print Modal: Set Printer to "factory"
+    Then Print Modal: Print
 
-    Then Left Panel: Expect all printed Order IDs not in Awaiting Shipment tab
-    Then Left Panel: Expect all printed Order IDs are in Shipped tab
+    Then Filter Panel: Expect all printed Order IDs not in Awaiting Shipment tab
+    Then Filter Panel: Expect all printed Order IDs are in Shipped tab
     Then Sign out
 
     #todo -rob

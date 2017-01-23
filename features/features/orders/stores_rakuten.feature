@@ -28,7 +28,7 @@ Feature:  Rakuten Store Management
 
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
-      Then Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
 
       Then Manage Stores: Select Store random
 
@@ -48,7 +48,7 @@ Feature:  Rakuten Store Management
 
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
-      Then Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
 
       # Edit Store
       Then Manage Stores: Select Store random
@@ -58,12 +58,12 @@ Feature:  Rakuten Store Management
 
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
-      Then Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
 
       # Delete Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
-      Then Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
 
       Then Manage Stores: Close Modal
       Then Sign out

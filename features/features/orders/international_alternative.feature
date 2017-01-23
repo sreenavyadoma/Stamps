@@ -5,12 +5,12 @@ Feature:  International and APO/FPO Printing (CN22 and CP72)
 
 @international_data_error_x @international_failure_x
   Scenario:  Customs Form Data Error
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to International Address
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to International Address
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | Add a new | random  | random           | random           | random | random  | random      | Australia | random  | random  |
-    Then Details: Set Ship-To Country to Australia
-    Then Details: Set International Ship-To Name to ""
-    Then Details: Set International Ship-To Name to "random"
+    Then Order Details: Set Ship-To Country to Australia
+    Then Order Details: Set International Ship-To Name to ""
+    Then Order Details: Set International Ship-To Name to "random"
     Then Sign out

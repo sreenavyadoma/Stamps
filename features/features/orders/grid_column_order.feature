@@ -68,7 +68,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Orders: Visit Sign-in page
     Then Orders: Sign-in as new user random/pass111
     Then Pause for 2 seconds
-    Then Toolbar: Add
+    Then Orders Toolbar: Add
     Then Pause for 1 second
     Then Open Settings Modal
     Then Settings:  Set Logoff to 2 hours
@@ -76,7 +76,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Pause for 2 seconds
     Then Navigation Bar: Customer Balance
 
-    Then Grid: Expect Column Country appears to left of Address
+    Then Orders Grid: Expect Column Country appears to left of Address
 
     Then Sign out
     Then WebReg Profile: Send username to standard out

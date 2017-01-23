@@ -28,13 +28,13 @@ Feature:  Yahoo Store Management
 
       Then Manage Stores: Close Modal
 
-      Then Toolbar: Refresh Orders
-      Then Toolbar: Refresh Orders
-      Then Grid: Check Order ID 637
-      Then Toolbar: Refresh Orders
-      Then Left Panel: Select Shipped
-      Then Left Panel: Select Awaiting Shipment
-      Then Grid: Expect Store is random
+      Then Orders Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
+      Then Orders Grid: Check Order ID 637
+      Then Orders Toolbar: Refresh Orders
+      Then Filter Panel: Select Shipped
+      Then Filter Panel: Select Awaiting Shipment
+      Then Orders Grid: Expect Store is random
 
       Then Manage Stores: Open Modal
 
@@ -47,13 +47,13 @@ Feature:  Yahoo Store Management
       Then Yahoo Store: Reconnect
       Then Manage Stores: Close Modal
 
-      Then Toolbar: Refresh Orders
-      Then Toolbar: Refresh Orders
-      Then Grid: Check Order ID 637
-      Then Toolbar: Refresh Orders
-      Then Left Panel: Select Shipped
-      Then Left Panel: Select Awaiting Shipment
-      Then Grid: Expect Store is random
+      Then Orders Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
+      Then Orders Grid: Check Order ID 637
+      Then Orders Toolbar: Refresh Orders
+      Then Filter Panel: Select Shipped
+      Then Filter Panel: Select Awaiting Shipment
+      Then Orders Grid: Expect Store is random
 
       Then Manage Stores: Open Modal
 
@@ -66,13 +66,13 @@ Feature:  Yahoo Store Management
 
       Then Manage Stores: Close Modal
 
-      Then Toolbar: Refresh Orders
-      Then Toolbar: Refresh Orders
-      Then Grid: Check Order ID 637
-      Then Toolbar: Refresh Orders
-      Then Left Panel: Select Shipped
-      Then Left Panel: Select Awaiting Shipment
-      Then Grid: Expect Store is random
+      Then Orders Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
+      Then Orders Grid: Check Order ID 637
+      Then Orders Toolbar: Refresh Orders
+      Then Filter Panel: Select Shipped
+      Then Filter Panel: Select Awaiting Shipment
+      Then Orders Grid: Expect Store is random
 
       Then Manage Stores: Open Modal
 

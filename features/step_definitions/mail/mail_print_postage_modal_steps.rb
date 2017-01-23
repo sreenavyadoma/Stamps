@@ -35,7 +35,7 @@ When /^Mail Print Modal: Print Sample$/ do
   @printing_error = print_postage_modal.print
 end
 
-Then /^Mail: Print: Close$/ do
+Then /^Mail: Print Modal: Close$/ do
   logger.step "Close Print Mail Print Modal"
   stamps.mail.stamps.mail.close
 end

@@ -46,7 +46,7 @@ Feature:  Etsy Store Management
       Then Pause for 1 second
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
-      Then Toolbar: Refresh Orders
+      Then Orders Toolbar: Refresh Orders
 
       Then Manage Stores: Close Modal
       Then Sign out

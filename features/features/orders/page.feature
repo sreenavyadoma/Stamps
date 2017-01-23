@@ -7,17 +7,17 @@ Feature: Order Pagination
   @page_count @pagination
   Scenario: B-01746 Set per page count
     Then Paging: Set Per Page drop-down to 100
-    Then Toolbar: Expect number of orders on page is correct
-    Then Toolbar:  Set Per Page drop-down to 250
-    Then Toolbar: Expect number of orders on page is correct
-    Then Toolbar:  Set Per Page drop-down to 500
-    Then Toolbar: Expect number of orders on page is correct
-    Then Toolbar:  Set Per Page drop-down to 250
-    Then Toolbar: Expect number of orders on page is correct
+    Then Orders Toolbar: Expect number of orders on page is correct
+    Then Orders Toolbar:  Set Per Page drop-down to 250
+    Then Orders Toolbar: Expect number of orders on page is correct
+    Then Orders Toolbar:  Set Per Page drop-down to 500
+    Then Orders Toolbar: Expect number of orders on page is correct
+    Then Orders Toolbar:  Set Per Page drop-down to 250
+    Then Orders Toolbar: Expect number of orders on page is correct
     Then Paging: Set Per Page drop-down to 100
-    Then Toolbar: Expect number of orders on page is correct
-    Then Toolbar:  Set Per Page drop-down to 500
-    Then Toolbar: Expect number of orders on page is correct
+    Then Orders Toolbar: Expect number of orders on page is correct
+    Then Orders Toolbar:  Set Per Page drop-down to 500
+    Then Orders Toolbar: Expect number of orders on page is correct
 
     Then Sign out
 

@@ -1,59 +1,59 @@
 
-Then /^Print: Open Modal$/ do
-  logger.step "Print: Open Modal"
-  step "Save Shipping Costs Data"
+Then /^Print Modal: Open Print Modal$/ do
+  logger.step "Print Modal: Open Print Modal"
+  step "Save Test Data"
   stamps.orders.toolbar.print_btn.print_modal
 end
 
-Then /^Print: Print Incomplete Order$/ do
-  logger.step "Print: Open Modal"
+Then /^Print Modal: Print Incomplete Order$/ do
+  logger.step "Print Modal: Open Print Modal"
   @incomplete_order_modal = stamps.orders.toolbar.print_btn.print_modal
 
-  "Incomplete Order Modal did not open".should eql "Print: Print Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+  "Incomplete Order Modal did not open".should eql "Print Modal: Print Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
-Then /^Print: Expect Incomplete Order Error Message (.*)$/ do |expectation|
-  logger.step "Print: Expect Incomplete Order Error Message #{expectation}"
+Then /^Print Modal: Expect Incomplete Order Error Message (.*)$/ do |expectation|
+  logger.step "Print Modal: Expect Incomplete Order Error Message #{expectation}"
   @incomplete_order_modal.error_message.should include expectation
 end
 
-Then /^Print: Close Modal$/ do
-  logger.step "Print: Close Modal"
+Then /^Print Modal: Close Print Modal$/ do
+  logger.step "Print Modal: Close Print Modal"
   stamps.orders.toolbar.print_btn.print_modal.close
 end
 
-Then /^Print: Set Printer to \"(.*)\"$/ do |printer|
-  logger.step "Print: Set Printer to \"#{printer}\""
+Then /^Print Modal: Set Printer to \"(.*)\"$/ do |printer|
+  logger.step "Print Modal: Set Printer to \"#{printer}\""
   stamps.orders.toolbar.print_btn.print_modal.printer.select printer
 end
 
-Then /^RePrint: Reprint$/ do
-  logger.step "RePrint: Reprint"
+Then /^RePrint Modal: Reprint$/ do
+  logger.step "RePrint Modal: Reprint"
   stamps.orders.toolbar.reprint.reprint
 end
 
-Then /^Print: Set Ship Date to today$/ do
-  step "Print: Set Ship Date to today plus #{1}"
+Then /^Print Modal: Set Ship Date to today$/ do
+  step "Print Modal: Set Ship Date to today plus #{1}"
 end
 
-Then /^Print: Set Ship Date to today plus (\d+)$/ do |day|
+Then /^Print Modal: Set Ship Date to today plus (\d+)$/ do |day|
   ship_date = ParameterHelper.now_plus_mon_dd day
-  logger.step "Print: Set Ship Date to #{ship_date}"
+  logger.step "Print Modal: Set Ship Date to #{ship_date}"
   @ship_date = stamps.orders.toolbar.print_btn.print_modal.ship_date.date_picker.today_plus day
 end
 
-Then /^Print: Check Hide Mail Value$/ do
-  logger.step "Print: Check Hide Mail Value"
+Then /^Print Modal: Check Hide Mail Value$/ do
+  logger.step "Print Modal: Check Hide Mail Value"
   stamps.orders.toolbar.print_btn.print_modal.print_options.hide_postage_value.check
 end
 
-Then /^Print: Uncheck Hide Mail Value$/ do
-  logger.step "Print: Uncheck Hide Mail Value"
+Then /^Print Modal: Uncheck Hide Mail Value$/ do
+  logger.step "Print Modal: Uncheck Hide Mail Value"
   stamps.orders.toolbar.print_btn.print_modal.print_options.hide_postage_value.uncheck
 end
 
-Then /^Print: Expect Hide Mail Value Checkbox is checked$/ do
-  logger.step "Print: Print: Expect Hide Mail Value Checkbox is checked"
+Then /^Print Modal: Expect Hide Mail Value Checkbox is checked$/ do
+  logger.step "Print Modal: Print Modal: Expect Hide Mail Value Checkbox is checked"
   30.times do
     stamps.orders.toolbar.print_btn.print_modal.click
     break if stamps.orders.toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?
@@ -61,58 +61,58 @@ Then /^Print: Expect Hide Mail Value Checkbox is checked$/ do
   stamps.orders.toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?.should be true
 end
 
-Then /^Print: Check Email Tracking Details to Recipients$/ do
-  logger.step "Print: Check Email Tracking Details to Recipients"
+Then /^Print Modal: Check Email Tracking Details to Recipients$/ do
+  logger.step "Print Modal: Check Email Tracking Details to Recipients"
   stamps.orders.toolbar.print_btn.print_modal.print_options.email_tracking.check
 end
 
-Then /^Print: Uncheck Email Tracking Details to Recipients$/ do
-  logger.step "Print: Uncheck Email Tracking Details to Recipients"
+Then /^Print Modal: Uncheck Email Tracking Details to Recipients$/ do
+  logger.step "Print Modal: Uncheck Email Tracking Details to Recipients"
   stamps.orders.toolbar.print_btn.print_modal.print_options.email_tracking.uncheck
 end
 
-Then /^Print: Uncheck Print Reference # on Shipping Label$/ do
-  logger.step "Print: Uncheck Print Reference # on Shipping Label"
+Then /^Print Modal: Uncheck Print Reference # on Shipping Label$/ do
+  logger.step "Print Modal: Uncheck Print Reference # on Shipping Label"
   stamps.orders.toolbar.print_btn.print_modal.print_options.print_reference_no.uncheck
 end
 
-Then /^Print: Check Print Reference # on Shipping Label$/ do
-  logger.step "Print: Check Print Reference # on Shipping Label"
+Then /^Print Modal: Check Print Reference # on Shipping Label$/ do
+  logger.step "Print Modal: Check Print Reference # on Shipping Label"
   stamps.orders.toolbar.print_btn.print_modal.print_options.print_reference_no.check
 end
 
-When /^Print: Select left-side label$/ do
-  logger.step "Print: Select - Left side label"
+When /^Print Modal: Select left-side label$/ do
+  logger.step "Print Modal: Select - Left side label"
   stamps.orders.toolbar.print_btn.print_modal.starting_label.left
 end
 
-When /^Print: Select right-side label$/ do
-  logger.step "Print: Select - Right side label"
+When /^Print Modal: Select right-side label$/ do
+  logger.step "Print Modal: Select - Right side label"
   stamps.orders.toolbar.print_btn.print_modal.starting_label.right
 end
 
-Then /^Print: Expect right-side label selected$/ do
-  logger.step "Print: Expect right-side label selected"
+Then /^Print Modal: Expect right-side label selected$/ do
+  logger.step "Print Modal: Expect right-side label selected"
   stamps.orders.toolbar.print_btn.print_modal.starting_label.right_selected?.should be true
 end
 
-Then /^Print: Expect left-side label selected$/ do
-  logger.step "Print: Expect left-side label selected"
+Then /^Print Modal: Expect left-side label selected$/ do
+  logger.step "Print Modal: Expect left-side label selected"
   stamps.orders.toolbar.print_btn.print_modal.starting_label.left_selected?.should be true
 end
 
-Then /^Print: Expect Ship Date is (\d+) day\(s\) from today/ do |day|
-  logger.step "Print: Expect Ship Date is #{day} day(s) from today"
+Then /^Print Modal: Expect Ship Date is (\d+) day\(s\) from today/ do |day|
+  logger.step "Print Modal: Expect Ship Date is #{day} day(s) from today"
   stamps.orders.toolbar.print_btn.print_modal.ship_date.text.should eql ParameterHelper.date_printed(day)
 end
 
-Then /^Print: Set Printing On \"(.*)\"$/ do |expectation|
-  logger.step "Print: Set Printing On #{expectation}"
+Then /^Print Modal: Set Printing On \"(.*)\"$/ do |expectation|
+  logger.step "Print Modal: Set Printing On #{expectation}"
   stamps.orders.toolbar.print_btn.print_modal.printing_on.select(expectation)
 end
 
-Then /^Print: Expect Printing On Label is (.*)$/ do |expectation|
-  logger.step "Print: Set Printing On #{expectation}"
+Then /^Print Modal: Expect Printing On Label is (.*)$/ do |expectation|
+  logger.step "Print Modal: Set Printing On #{expectation}"
   stamps.orders.toolbar.print_btn.print_modal.printing_on.label.text.should eql expectation
 end
 
@@ -122,7 +122,7 @@ Then /^Select Printer \"(.*)\"$/ do |printer|
 end
 
 Then /^Close Reprint Modal$/ do
-  logger.step "Print: Close Modal"
+  logger.step "Print Modal: Close Print Modal"
   stamps.orders.toolbar.reprint.close
 end
 
@@ -168,15 +168,15 @@ When /^Print expecting some orders can not be printed$/ do
   actual.should include "To mail the remaining orders, click Continue"
 end
 
-Then /^Print: Expect Modal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  logger.step "Print: Expect Modal Title is \"You have #{expectation} label\(s\) ready to mail\""
+Then /^Print Modal: Expect Modal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
+  logger.step "Print Modal: Expect Modal Title is \"You have #{expectation} label\(s\) ready to mail\""
   actual = stamps.orders.toolbar.print_btn.print_modal.labels_ready_to_print
   stamps.orders.toolbar.print_btn.print_modal.close
   "You have #{actual} label(s) ready to mail".should eql "You have #{expectation} label(s) ready to mail"
 end
 
-Then /^Print: Expect number of required label sheets is (\d+)$/ do |sheets|
-  logger.step "Print: Expect Requires #{sheets} label sheets"
+Then /^Print Modal: Expect number of required label sheets is (\d+)$/ do |sheets|
+  logger.step "Print Modal: Expect Requires #{sheets} label sheets"
   stamps.orders.toolbar.print_btn.print_modal.label_sheet_required_count.should eql sheets
 end
 
@@ -185,13 +185,13 @@ Then /^Print raises a Printing Error/ do
   stamps.orders.print.print_sample_expecting_error.should raise_error(PrintingError)
 end
 
-Then /^Print: Print Sample$/ do
-  logger.step "Print: Print Sample"
+Then /^Print Modal: Print Sample$/ do
+  logger.step "Print Modal: Print Sample"
   stamps.orders.toolbar.print_btn.print_modal.print_sample
 end
 
-Then /^Print: Print Sample raises a Printing Error/ do
-  logger.step "Print: Print Sample raises a Printing Error"
+Then /^Print Modal: Print Sample raises a Printing Error/ do
+  logger.step "Print Modal: Print Sample raises a Printing Error"
   stamps.orders.toolbar.print_btn.print_modal.print_sample_expecting_error.should raise_error(PrintingError)
 end
 

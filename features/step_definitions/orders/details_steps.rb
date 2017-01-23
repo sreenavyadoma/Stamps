@@ -1,65 +1,65 @@
-Then /^Details: Expand Manual Items Ordered pane$/ do
-  logger.step "Details: Expand Manual Items Ordered pane"
+Then /^Order Details: Expand Manual Items Ordered pane$/ do
+  logger.step "Order Details: Expand Manual Items Ordered pane"
   stamps.orders.order_details.item_grid.expand
 end
 
-Then /^Details: Collapse Manual Items Ordered pane$/ do
-  logger.step "Details: Collapse Manual Items Ordered pane"
+Then /^Order Details: Collapse Manual Items Ordered pane$/ do
+  logger.step "Order Details: Collapse Manual Items Ordered pane"
   stamps.orders.order_details.item_grid.collapse_item
 end
 
-Then /^Details: Expand Store Items Ordered pane$/ do
-  logger.step "Details: Expand Items Ordered pane"
+Then /^Order Details: Expand Store Items Ordered pane$/ do
+  logger.step "Order Details: Expand Items Ordered pane"
   stamps.orders.order_details.item_grid.expand
 end
 
-Then /^Details: Collapse Store Items Ordered pane$/ do
-  logger.step "Details: Collapse Items Ordered pane"
+Then /^Order Details: Collapse Store Items Ordered pane$/ do
+  logger.step "Order Details: Collapse Items Ordered pane"
   stamps.orders.order_details.item_grid.collapse_store_item
 end
 
-Then /^Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
-  logger.step "Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
+Then /^Order Details: Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
+  logger.step "Order Details: Add Item #{item_number}, Qty #{qty}, ID #{id} Description #{description}"
   item = stamps.orders.order_details.item_grid.item item_number.to_i
-  step "Details: Blur out"
+  step "Order Details: Blur out"
   item.qty.set qty
-  step "Details: Blur out"
+  step "Order Details: Blur out"
   item.id.set (id.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : id
-  step "Details: Blur out"
+  step "Order Details: Blur out"
   item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
-  step "Details: Blur out"
-  step "Save Shipping Costs Data"
-  step "Details: Blur out"
+  step "Order Details: Blur out"
+  step "Save Test Data"
+  step "Order Details: Blur out"
 end
 
-Then /^Details: Add Item (\d+)$/ do |value|
-  logger.step "Details: Add Item #{value}"
+Then /^Order Details: Add Item (\d+)$/ do |value|
+  logger.step "Order Details: Add Item #{value}"
   @details_line_item = stamps.orders.order_details.item_grid.item value.to_i
 end
 
-Then /^Details: Set Qty to (\d+)$/ do |value|
-  logger.step "Details: Set Qty to #{value}"
+Then /^Order Details: Set Qty to (\d+)$/ do |value|
+  logger.step "Order Details: Set Qty to #{value}"
   @details_line_item.qty.set value
 end
 
-Then /^Details: Set ID to (.*)$/ do |value|
-  logger.step "Details: Set ID to #{value}"
+Then /^Order Details: Set ID to (.*)$/ do |value|
+  logger.step "Order Details: Set ID to #{value}"
   @details_line_item.id.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Details: Set Description to (.*)$/ do |value|
-  logger.step "Details: Set Description to #{value}"
+Then /^Order Details: Set Description to (.*)$/ do |value|
+  logger.step "Order Details: Set Description to #{value}"
   @details_line_item.description.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
-Then /^Details: Set Ship-To Country to (.*)$/ do |country|
-  logger.step "Details: Set Ship-To Country to #{country}"
+Then /^Order Details: Set Ship-To Country to (.*)$/ do |country|
+  logger.step "Order Details: Set Ship-To Country to #{country}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.country.select country
 end
 
-Then /^Details: Set International Ship-To Name to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Name to #{value}"
+Then /^Order Details: Set International Ship-To Name to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Name to #{value}"
   test_data[:int_ship_to_name] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.name.send_keys :enter
@@ -68,8 +68,8 @@ Then /^Details: Set International Ship-To Name to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To Company to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Company to #{value}"
+Then /^Order Details: Set International Ship-To Company to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Company to #{value}"
   test_data[:int_ship_to_company] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.company.send_keys :enter
@@ -78,8 +78,8 @@ Then /^Details: Set International Ship-To Company to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Address 1 to #{value}"
+Then /^Order Details: Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Address 1 to #{value}"
   test_data[:int_ship_to_address_1] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_1.send_keys :enter
@@ -88,8 +88,8 @@ Then /^Details: Set International Ship-To Address 1 to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Address 2 to #{value}"
+Then /^Order Details: Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Address 2 to #{value}"
   test_data[:int_ship_to_address_2] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_2.send_keys :enter
@@ -98,8 +98,8 @@ Then /^Details: Set International Ship-To Address 2 to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To City to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To City to #{value}"
+Then /^Order Details: Set International Ship-To City to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To City to #{value}"
   test_data[:int_ship_to_city] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.city.send_keys :enter
@@ -108,8 +108,8 @@ Then /^Details: Set International Ship-To City to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Province to #{value}"
+Then /^Order Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Province to #{value}"
   test_data[:int_ship_to_province] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.province.send_keys :enter
@@ -118,8 +118,8 @@ Then /^Details: Set International Ship-To Province to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Postal Code to #{value}"
+Then /^Order Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Postal Code to #{value}"
   test_data[:int_ship_to_postal_code] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.postal_code.send_keys :enter
@@ -128,8 +128,8 @@ Then /^Details: Set International Ship-To Postal Code to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Phone to #{value}"
+Then /^Order Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Phone to #{value}"
   test_data[:int_ship_to_phone] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.phone.send_keys :enter
@@ -138,8 +138,8 @@ Then /^Details: Set International Ship-To Phone to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
-  logger.step "Details: Set International Ship-To Email to #{value}"
+Then /^Order Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
+  logger.step "Order Details: Set International Ship-To Email to #{value}"
   test_data[:int_ship_to_email] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.email.send_keys :enter
@@ -148,188 +148,190 @@ Then /^Details: Set International Ship-To Email to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Details: Expand panel$/ do
-  logger.step "Details: Expand panel"
+Then /^Order Details: Expand panel$/ do
+  logger.step "Order Details: Expand panel"
   stamps.orders.order_details.expand
 end
 
-Then /^Details: Delete Item (\d+)$/ do |item_number|
-  logger.step "Details: Delete Item #{item_number}"
+Then /^Order Details: Delete Item (\d+)$/ do |item_number|
+  logger.step "Order Details: Delete Item #{item_number}"
   item = stamps.orders.order_details.item_grid.item item_number.to_i
   item.delete.safe_click
 end
 
-Then /^Details: Set Weight to (\d+) lb (\d+) oz$/ do |pounds, ounces|
-  logger.step "Details: Set Weight to #{pounds} Pounds and #{ounces} Ounces"
-  step "Details: Set Pounds to #{pounds}"
-  step "Details: Set Ounces to #{ounces}"
+Then /^Order Details: Set Weight to (\d+) lb (\d+) oz$/ do |pounds, ounces|
+  logger.step "Order Details: Set Weight to #{pounds} Pounds and #{ounces} Ounces"
+  step "Order Details: Set Pounds to #{pounds}"
+  step "Order Details: Set Ounces to #{ounces}"
 end
 
-Then /^Details: Set Pounds to (\d+)$/ do |value|
-  logger.step "Details: Set Pounds to \"#{value}\""
+Then /^Order Details: Set Pounds to (\d+)$/ do |value|
+  logger.step "Order Details: Set Pounds to \"#{value}\""
   test_data[:lb] = value
   stamps.orders.order_details.weight.lb.set test_data[:lb]
-  step "Details: Blur out"
-  step "Save Shipping Costs Data"
+  step "Order Details: Blur out"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Ounces to (\d+)$/ do |value|
-  logger.step "Details: Set Ounces to \"#{value}\""
+Then /^Order Details: Set Ounces to (\d+)$/ do |value|
+  logger.step "Order Details: Set Ounces to \"#{value}\""
   test_data[:oz] = value
   stamps.orders.order_details.weight.oz.set test_data[:oz]
-  step "Details: Blur out"
-  step "Save Shipping Costs Data"
+  step "Order Details: Blur out"
+  step "Save Test Data"
 end
 
-Then /^Details: Blur out$/ do
+Then /^Order Details: Blur out$/ do
   stamps.orders.order_details.blur_out
 end
 
-Then /^Save Shipping Costs Data$/ do
-  logger.step "Save Shipping Costs Data"
+Then /^Save Test Data$/ do
+  logger.step "Save Test Data"
   test_data[:service_cost] = stamps.orders.order_details.service.cost
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost if stamps.orders.order_details.tracking.present?
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+  test_data[:order_id] = stamps.orders.order_details.toolbar.order_id
+  test_data[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
 end
 
-Then /^Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
-  logger.step "Details: Set Dimensions to Length #{length} Width #{width} Height #{height}"
+Then /^Order Details: Set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
+  logger.step "Order Details: Set Dimensions to Length #{length} Width #{width} Height #{height}"
   stamps.orders.order_details.dimensions.length.set length
   stamps.orders.order_details.dimensions.width.set width
   stamps.orders.order_details.dimensions.height.set height
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Length to (\d*)$/ do |value|
-  logger.step "Details: Set Length to \"#{value}\""
+Then /^Order Details: Set Length to (\d*)$/ do |value|
+  logger.step "Order Details: Set Length to \"#{value}\""
   test_data[:length] = value
   stamps.orders.order_details.dimensions.length.present?.should be true
   stamps.orders.order_details.dimensions.length.set value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Width to (\d*)$/ do |value|
-  logger.step "Details: Set Width to \"#{value}\""
+Then /^Order Details: Set Width to (\d*)$/ do |value|
+  logger.step "Order Details: Set Width to \"#{value}\""
   test_data[:width] = value
   stamps.orders.order_details.dimensions.width.present?.should be true
   stamps.orders.order_details.dimensions.width.set value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Height to (\d*)$/ do |value|
-  logger.step "Details: Set Height to \"#{value}\""
+Then /^Order Details: Set Height to (\d*)$/ do |value|
+  logger.step "Order Details: Set Height to \"#{value}\""
   test_data[:height] = value
   stamps.orders.order_details.dimensions.height.present?.should be true
   stamps.orders.order_details.dimensions.height.set value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Check Insure-For checkbox$/ do
-  logger.step "Details: Check Insure-For checkbox"
+Then /^Order Details: Check Insure-For checkbox$/ do
+  logger.step "Order Details: Check Insure-For checkbox"
   stamps.orders.order_details.insure_for.checkbox.check
 end
 
-Then /^Details: Uncheck Insure-For checkbox$/ do
-  logger.step "Details: Uncheck Insure-For checkbox"
+Then /^Order Details: Uncheck Insure-For checkbox$/ do
+  logger.step "Order Details: Uncheck Insure-For checkbox"
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
-Then /^Details: Set Insure-For to \$(.*)$/ do |value|
+Then /^Order Details: Set Insure-For to \$(.*)$/ do |value|
   test_data[:insure_for] = value
-  logger.step "Details: Set Insure-For to #{test_data[:insure_for]}"
+  logger.step "Order Details: Set Insure-For to #{test_data[:insure_for]}"
   stamps.orders.order_details.insure_for.set_and_agree(test_data[:insure_for])
   20.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > 0
-    step "Details: Blur out"
+    step "Order Details: Blur out"
   end
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
   logger.step "Insurance Cost: $#{test_data[:insure_for_cost]}"
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Tracking to USPS Tracking$/ do
-  step "Details: Set Tracking to \"USPS Tracking\""
+Then /^Order Details: Set Tracking to USPS Tracking$/ do
+  step "Order Details: Set Tracking to \"USPS Tracking\""
 end
 
-Then /^Details: Set Tracking to Signature Required$/ do
-  step "Details: Set Tracking to \"Signature Required\""
-  step "Save Shipping Costs Data"
+Then /^Order Details: Set Tracking to Signature Required$/ do
+  step "Order Details: Set Tracking to \"Signature Required\""
+  step "Save Test Data"
 end
 
-Then /^Details: Set Tracking to \"([\w ]*)\"$/ do |value|
-  logger.step "Details: Set Tracking to #{value}"
+Then /^Order Details: Set Tracking to \"([\w ]*)\"$/ do |value|
+  logger.step "Order Details: Set Tracking to #{value}"
   stamps.orders.order_details.tracking.select value
   10.times do
     break if stamps.orders.order_details.tracking.cost.to_f > 0
-    step "Details: Blur out"
+    step "Order Details: Blur out"
   end
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
   logger.step "Tracking Cost: $#{test_data[:tracking_cost]}"
   test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Store Tracking info to parameter$/ do
-  logger.step "Details: Store Tracking info to parameter"
+Then /^Order Details: Store Tracking info to parameter$/ do
+  logger.step "Order Details: Store Tracking info to parameter"
   test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
 end
 
-Then /^Details: Set Ship-From to (\w+)$/ do |value|
-  logger.step "Details: Set Ship-From to: \n #{value}"
+Then /^Order Details: Set Ship-From to (\w+)$/ do |value|
+  logger.step "Order Details: Set Ship-From to: \n #{value}"
   stamps.orders.order_details.ship_from.select value
-  step "Details: Blur out"
+  step "Order Details: Blur out"
   test_data[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Ship-To to address in Zone 1$/ do
-  step "Details: Set Ship-To to zone 1"
+Then /^Order Details: Set Ship-To to address in Zone 1$/ do
+  step "Order Details: Set Ship-To to zone 1"
 end
 
-Then /^Details: Set Ship-To to address in Zone 2$/ do
-  step "Details: Set Ship-To to zone 2"
+Then /^Order Details: Set Ship-To to address in Zone 2$/ do
+  step "Order Details: Set Ship-To to zone 2"
 end
 
-Then /^Details: Set Ship-To to address in Zone 3$/ do
-  step "Details: Set Ship-To to zone 3"
+Then /^Order Details: Set Ship-To to address in Zone 3$/ do
+  step "Order Details: Set Ship-To to zone 3"
 end
 
-Then /^Details: Set Ship-To to address in Zone 4$/ do
-  step "Details: Set Ship-To to zone 4"
+Then /^Order Details: Set Ship-To to address in Zone 4$/ do
+  step "Order Details: Set Ship-To to zone 4"
 end
 
-Then /^Details: Set Ship-To to address in Zone 5$/ do
-  step "Details: Set Ship-To to zone 5"
+Then /^Order Details: Set Ship-To to address in Zone 5$/ do
+  step "Order Details: Set Ship-To to zone 5"
 end
 
-Then /^Details: Set Ship-To to address in Zone 6$/ do
-  step "Details: Set Ship-To to zone 6"
+Then /^Order Details: Set Ship-To to address in Zone 6$/ do
+  step "Order Details: Set Ship-To to zone 6"
 end
 
-Then /^Details: Set Ship-To to address in Zone 7$/ do
-  step "Details: Set Ship-To to zone 7"
+Then /^Order Details: Set Ship-To to address in Zone 7$/ do
+  step "Order Details: Set Ship-To to zone 7"
 end
 
-Then /^Details: Set Ship-To to address in Zone 8$/ do
-  step "Details: Set Ship-To to zone 8"
+Then /^Order Details: Set Ship-To to address in Zone 8$/ do
+  step "Order Details: Set Ship-To to zone 8"
 end
 
-Then /^Details: Set Ship-To to address in Zone 9$/ do
-  step "Details: Set Ship-To to zone 9"
+Then /^Order Details: Set Ship-To to address in Zone 9$/ do
+  step "Order Details: Set Ship-To to zone 9"
 end
 
-Then /^Details: Set Ship-To to address in Zone 1 through 4$/ do
-  step "Details: Set Ship-To to zone 1 through 4"
+Then /^Order Details: Set Ship-To to address in Zone 1 through 4$/ do
+  step "Order Details: Set Ship-To to zone 1 through 4"
 end
 
-Then /^Details: Set Ship-To to address in Zone 5 through 8$/ do
-  step "Details: Set Ship-To to zone 5 through 8"
+Then /^Order Details: Set Ship-To to address in Zone 5 through 8$/ do
+  step "Order Details: Set Ship-To to zone 5 through 8"
 end
 
-Then /^Details: Set Ship-To to Domestic Address$/ do |table|
+Then /^Order Details: Set Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
-  logger.step "Details: Set Ship-To to Domestic Address \n#{address_table}"
+  logger.step "Order Details: Set Ship-To to Domestic Address \n#{address_table}"
 
   name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
   company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
@@ -364,15 +366,15 @@ Then /^Details: Set Ship-To to Domestic Address$/ do |table|
   #test_data[:phone] = phone
   #test_data[:email] = email
 
-  step "Details: Set Ship-To Country to #{test_data[:country]}"
-  step "Details: Set Ship-To to Domestic Address #{test_data[:ship_to]}"
-  #step "Details: Set Phone to #{test_data[:phone]}"
-  #step "Details: Set Email to #{test_data[:email]}"
+  step "Order Details: Set Ship-To Country to #{test_data[:country]}"
+  step "Order Details: Set Ship-To to Domestic Address #{test_data[:ship_to]}"
+  #step "Order Details: Set Phone to #{test_data[:phone]}"
+  #step "Order Details: Set Email to #{test_data[:email]}"
 end
 
-Then /^Details: Set Ship-To to International Address$/ do |table|
+Then /^Order Details: Set Ship-To to International Address$/ do |table|
   address_table = table.hashes.first
-  logger.step "Details: Set Ship-To to Domestic Address \n#{address_table}"
+  logger.step "Order Details: Set Ship-To to Domestic Address \n#{address_table}"
 
   country = address_table['country']
   name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
@@ -397,19 +399,19 @@ Then /^Details: Set Ship-To to International Address$/ do |table|
   test_data[:phone] = phone
   test_data[:email] = email
 
-  step "Details: Set Ship-To Country to #{test_data[:country]}"
-  step "Details: Set International Ship-To Name to \"#{test_data[:name]}\""
-  step "Details: Set International Ship-To Company to \"#{test_data[:company]}\""
-  step "Details: Set International Ship-To Address 1 to \"#{test_data[:street_address_1]}\""
-  step "Details: Set International Ship-To Address 2 to \"#{test_data[:street_address_2]}\""
-  step "Details: Set International Ship-To City to \"#{test_data[:city]}\""
-  step "Details: Set International Ship-To Province to \"#{test_data[:province]}\""
-  step "Details: Set International Ship-To Postal Code to \"#{test_data[:postal_code]}\""
-  step "Details: Set International Ship-To Phone to \"#{test_data[:phone]}\""
-  step "Details: Set International Ship-To Email to \"#{test_data[:email]}\""
+  step "Order Details: Set Ship-To Country to #{test_data[:country]}"
+  step "Order Details: Set International Ship-To Name to \"#{test_data[:name]}\""
+  step "Order Details: Set International Ship-To Company to \"#{test_data[:company]}\""
+  step "Order Details: Set International Ship-To Address 1 to \"#{test_data[:street_address_1]}\""
+  step "Order Details: Set International Ship-To Address 2 to \"#{test_data[:street_address_2]}\""
+  step "Order Details: Set International Ship-To City to \"#{test_data[:city]}\""
+  step "Order Details: Set International Ship-To Province to \"#{test_data[:province]}\""
+  step "Order Details: Set International Ship-To Postal Code to \"#{test_data[:postal_code]}\""
+  step "Order Details: Set International Ship-To Phone to \"#{test_data[:phone]}\""
+  step "Order Details: Set International Ship-To Email to \"#{test_data[:email]}\""
 end
 
-Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
+Then /^Order Details: Set Ship-To to zone (.*)$/ do |zone|
   address = ""
   case zone.downcase
     when /1 through 4/
@@ -455,111 +457,111 @@ Then /^Details: Set Ship-To to zone (.*)$/ do |zone|
   test_data[:company] = address['company']
 
   test_data.each_key { |key_value_array| logger.step("#{key_value_array} : #{test_data[key_value_array]}") }
-  logger.step "Details: Set Ship-To to address in Zone #{zone} = \"#{address}\""
+  logger.step "Order Details: Set Ship-To to address in Zone #{zone} = \"#{address}\""
   # set Ship-To address
   test_data[:ship_to_domestic] = ParameterHelper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
   logger.step "Domestic Ship-To Address: #{test_data[:ship_to_domestic]}"
   stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_domestic]
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Ship-To to Domestic Address (.*)$/ do |address|
-  logger.step "Details: Set Ship-To to Domestic Address \"#{address}\""
+Then /^Order Details: Set Ship-To to Domestic Address (.*)$/ do |address|
+  logger.step "Order Details: Set Ship-To to Domestic Address \"#{address}\""
   test_data[:ship_to_domestic] = ParameterHelper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.set test_data[:ship_to_domestic]
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Hide Ship-To fields$/ do
-  logger.step "Details: Hide Ship-To fields"
+Then /^Order Details: Hide Ship-To fields$/ do
+  logger.step "Order Details: Hide Ship-To fields"
   stamps.orders.order_details.ship_to.domestic.less
 end
 
-Then /^Details: Hide International Ship-To fields$/ do
-  logger.step "Details: Hide International Ship-To fields"
+Then /^Order Details: Hide International Ship-To fields$/ do
+  logger.step "Order Details: Hide International Ship-To fields"
   stamps.orders.order_details.ship_to.international.less
 end
 
-Then /^Details: Show Ship-To fields$/ do
-  logger.step "Details: Show Ship-To fields"
+Then /^Order Details: Show Ship-To fields$/ do
+  logger.step "Order Details: Show Ship-To fields"
   stamps.orders.order_details.ship_to.domestic.show_address
 end
 
-Then /^Details: Expect Order ID is truthy$/ do
-  logger.step "Details: Expect Order ID is truthy"
+Then /^Order Details: Expect Order ID is truthy$/ do
+  logger.step "Order Details: Expect Order ID is truthy"
   logger.step "Saved Order ID created:  #{test_data[:order_id].to_i>0}"
   test_data[:order_id].to_i.should be > 0
 end
 
-Then /^Details: Expect Order ID equals Grid Oder ID in row (\d+)$/ do |row|
-  logger.step "Details: Expect Order ID equals Grid Oder ID in row #{row}"
-  stamps.orders.order_details.toolbar.order_id.should eql stamps.orders.grid.order_id.row(row)
+Then /^Order Details: Expect Order ID equals Grid Oder ID in row (\d+)$/ do |row|
+  logger.step "Order Details: Expect Order ID equals Grid Oder ID in row #{row}"
+  stamps.orders.order_details.toolbar.order_id.should eql stamps.orders.orders_grid.column.order_id.row(row)
 end
 
-Then /^Details: Expect Order ID is the same as saved Order ID$/ do
-  logger.step "Details: Expect Order ID is the same as saved Order ID. test_data[:order_id]=#{test_data[:order_id]}"
+Then /^Order Details: Expect Order ID is the same as saved Order ID$/ do
+  logger.step "Order Details: Expect Order ID is the same as saved Order ID. test_data[:order_id]=#{test_data[:order_id]}"
   stamps.orders.order_details.toolbar.order_id.should eql test_data[:order_id]
 end
 
-Then /^Details: Expect Ship-To Name is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Name is #{expectation}"
+Then /^Order Details: Expect Ship-To Name is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Name is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.recipient_name.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Company Name is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Company Name is #{expectation}"
+Then /^Order Details: Expect Ship-To Company Name is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Company Name is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.company_name.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Cleansed Street Address is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Cleansed Street Address is #{expectation}"
+Then /^Order Details: Expect Ship-To Cleansed Street Address is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Cleansed Street Address is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.street_address.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Cleansed City is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Cleansed City is #{expectation}"
+Then /^Order Details: Expect Ship-To Cleansed City is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Cleansed City is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.city.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Cleansed State is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Cleansed State is #{expectation}"
+Then /^Order Details: Expect Ship-To Cleansed State is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Cleansed State is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.state.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Cleansed Zip Plus 4 Code is #{expectation}"
+Then /^Order Details: Expect Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Cleansed Zip Plus 4 Code is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.zip_plus_4.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Cleansed Zip Code is #{expectation}"
+Then /^Order Details: Expect Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Cleansed Zip Code is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.zip_code.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Phone is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Phone is #{expectation}"
+Then /^Order Details: Expect Ship-To Phone is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Phone is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.phone.text.should eql expectation
 end
 
-Then /^Details: Expect Ship-To Email is (.*)$/ do |expectation|
-  logger.step "Details: Expect Ship-To Email is #{expectation}"
+Then /^Order Details: Expect Ship-To Email is (.*)$/ do |expectation|
+  logger.step "Order Details: Expect Ship-To Email is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.email.text.should eql expectation
 end
 
-Then /^Details: Set Ship-To to ambiguous address$/ do |table|
+Then /^Order Details: Set Ship-To to ambiguous address$/ do |table|
   ambiguous_address = ParameterHelper.format_address table.hashes.first
-  logger.step "Details: Set Ship-To to ambiguous address \n#{ambiguous_address}"
+  logger.step "Order Details: Set Ship-To to ambiguous address \n#{ambiguous_address}"
   stamps.orders.order_details.ship_to.domestic.set_ambiguous ambiguous_address
 end
 
@@ -568,24 +570,24 @@ Then /^Select row (\d{1,2}) from Exact Address Not Found module$/ do |row|
   stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.row row
 end
 
-Then /^Details: Set Phone to (.*)$/ do |phone|
+Then /^Order Details: Set Phone to (.*)$/ do |phone|
   test_data[:phone] = (phone.to_s.strip.downcase.include? "random")?(ParameterHelper.random_phone):phone
   stamps.orders.order_details.ship_to.domestic.show_address
   begin
     logger.step "Order Details Form Phone to \"#{test_data[:phone]}\""
     stamps.orders.order_details.ship_to.domestic.phone.set test_data[:phone]
   end unless test_data[:phone].length == 0
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Email to (.*)$/ do |email|
+Then /^Order Details: Set Email to (.*)$/ do |email|
   test_data[:email] = (email.to_s.strip.downcase.include? "random")?(ParameterHelper.random_email):email
   stamps.orders.order_details.ship_to.domestic.show_address
   begin
-    logger.step "Details: Set Email to \"#{test_data[:email]}\""
+    logger.step "Order Details: Set Email to \"#{test_data[:email]}\""
     stamps.orders.order_details.ship_to.domestic.email.set test_data[:email]
   end unless test_data[:email].length == 0
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Increment Order Details Pounds by (\d*)$/ do |value|
@@ -596,83 +598,83 @@ end
 Then /^Decrement Order Details Pounds by (\d*)$/ do |value|
   logger.step "Decrement Order Details Pounds by \"#{value}\""
   stamps.orders.order_details.weight.lb.decrement value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Increment Order Details Ounces by (\d*)$/ do |value|
   logger.step "Increment Order Details Ounces by \"#{value}\""
   stamps.orders.order_details.weight.oz.increment value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Decrement Order Details Ounces by (\d*)$/ do |value|
   logger.step "Decrement Order Details Ounces by \"#{value}\""
   stamps.orders.order_details.weight.oz.decrement value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Increment Order Details Length by (\d*)$/ do |value|
   logger.step "Increment Order Details Length by \"#{value}\""
   stamps.orders.order_details.dimensions.length.increment value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Decrement Order Details Length by (\d*)$/ do |value|
   logger.step "Decrement Order Details Length by \"#{value}\""
   stamps.orders.order_details.dimensions.length.decrement value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Increment Order Details Width by (\d*)$/ do |value|
   logger.step "Increment Order Details Width by \"#{value}\""
   stamps.orders.order_details.dimensions.width.increment value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Decrement Order Details Width by (\d*)$/ do |value|
   logger.step "Decrement Order Details Width by \"#{value}\""
   stamps.orders.order_details.dimensions.width.decrement value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Increment Order Details Height by (\d*)$/ do |value|
   logger.step "Increment Order Details Height by \"#{value}\""
   stamps.orders.order_details.dimensions.height.increment value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Decrement Order Details Height by (\d*)$/ do |value|
   logger.step "Decrement Order Details Height by \"#{value}\""
   stamps.orders.order_details.dimensions.height.decrement value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Increment Order Details Insure-For by (\d*)$/ do |value|
   logger.step "Increment Order Details Insure-For by \"#{value}\""
   stamps.orders.order_details.insure_for.increment value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
 Then /^Decrement Order Details Insure-For by (\d*)$/ do |value|
   logger.step "Decrement Order Details Insure-For by \"#{value}\""
   stamps.orders.order_details.insure_for.decrement value
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Set Reference Number to (.*)$/ do |value|
+Then /^Order Details: Set Reference Number to (.*)$/ do |value|
   reference_no = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
-  logger.step "Details: Set Reference Number to #{reference_no}"
+  logger.step "Order Details: Set Reference Number to #{reference_no}"
   stamps.orders.order_details.reference_no.set reference_no
   test_data[:reference_no] = reference_no
-  step "Save Shipping Costs Data"
+  step "Save Test Data"
 end
 
-Then /^Details: Expect Domestic Ship-To Company is (.*)$/ do |company|
+Then /^Order Details: Expect Domestic Ship-To Company is (.*)$/ do |company|
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.text.should include company
 end
 
-Then /^Details: Expect Domestic Ship-To Name is (.*)$/ do |name|
+Then /^Order Details: Expect Domestic Ship-To Name is (.*)$/ do |name|
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.text_area.text.should include name
 end

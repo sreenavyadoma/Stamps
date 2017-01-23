@@ -5,797 +5,797 @@ Feature:  Add Orders
     Given I am signed in to Orders
 
   @add_new_order_eva
-  Scenario:  Toolbar: Add
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
-
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
-    Then Details: Set Ship-To to address in Zone 5 through 8
-    Then Details: Set Ounces to 1
-    Then Details: Set Pounds to 1
-    Then Details: Select Service PM Package
-    Then Details: Set Insure-For to $1.00
-    Then Details: Set Height to 1
-    Then Details: Set Length to 1
-    Then Details: Set Width to 1
+  Scenario:  Orders Toolbar: Add
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
+
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
+    Then Order Details: Set Ship-To to address in Zone 5 through 8
+    Then Order Details: Set Ounces to 1
+    Then Order Details: Set Pounds to 1
+    Then Order Details: Select Service PM Package
+    Then Order Details: Set Insure-For to $1.00
+    Then Order Details: Set Height to 1
+    Then Order Details: Set Length to 1
+    Then Order Details: Set Width to 1
 
     Then Sign out

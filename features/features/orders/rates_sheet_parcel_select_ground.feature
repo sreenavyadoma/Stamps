@@ -6,8 +6,8 @@ Feature: Parcel Select Ground Rates
   @rates_parcel_select_ground
   Scenario: Parcel Select Ground
     And I am signed in to Orders
-    Then Toolbar: Add
-    Then Details: Set Ship-From to default
+    Then Orders Toolbar: Add
+    Then Order Details: Set Ship-From to default
     Then Rates: Test Parcel Select Ground in Zone 1
     Then Rates: Test Parcel Select Ground in Zone 2
     Then Rates: Test Parcel Select Ground in Zone 3

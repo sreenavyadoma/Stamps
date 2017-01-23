@@ -115,7 +115,7 @@ module Stamps
               columns.each_with_index do |element, index|
                 scroll element
                 if element_helper.text(element) == GRID_COLUMNS[column]
-                  logger.message "Grid: -- #{GRID_COLUMNS[column]} is in column #{index+1}"
+                  #logger.message "Orders Grid: -- #{GRID_COLUMNS[column]} is in column #{index+1}"
                   return index+1
                 end
               end
@@ -135,7 +135,7 @@ module Stamps
               scroll element
               row_text = element_helper.text element
               if row_text.include? order_id
-                logger.message "Grid: -- Order ID #{order_id} is in row #{index+1}"
+                logger.message "Orders Grid: -- Order ID #{order_id} is in row #{index+1}"
                 return index + 1
               end
             end
@@ -828,27 +828,27 @@ module Stamps
           checkbox_header.uncheck
         end
 
-        def row row
-          grid_text :check_box, row
+        def row(row)
+          grid_text(:check_box, row)
         end
 
-        def edit order_id
+        def edit(order_id)
           check row_number order_id
         end
 
-        def edit_order order_id
+        def edit_order(order_id)
           edit order_id
         end
 
-        def check_order order_id
+        def check_order_id(order_id)
           check row_number(order_id)
         end
 
-        def uncheck_order order_id
+        def uncheck_order(order_id)
           uncheck row_number(order_id)
         end
 
-        def checkbox_element number
+        def checkbox_element(number)
           if checkbox_element_hash.has_key?(number)
             checkbox_element_hash[number]
           else
@@ -858,7 +858,7 @@ module Stamps
           end
         end
 
-        def check number
+        def check(number)
           scroll_into_view
           if size > 0
             checkbox_element(number).check
@@ -916,49 +916,35 @@ module Stamps
 
       end
 
-      class GridColumns < Column
-        def is_next_to? left, right
-          left_column_sym = GRID_COLUMNS.key left
-          right_column_sym = GRID_COLUMNS.key right
-
-          left_column_sym.should be_truthy
-          right_column_sym.should be_truthy
-
-          left_column_num = column_number left_column_sym
-          right_column_num = column_number right_column_sym
-          left_column_num + 1 == right_column_num
-        end
-      end
-
       class TrackingService < Column
         def scroll_into_view
-          scroll :tracking_service
+          scroll(:tracking_service)
         end
 
         def sort_ascending
-          sort_order :tracking_service, :sort_ascending
+          sort_order(:tracking_service, :sort_ascending)
         end
 
         def sort_descending
-          sort_order :tracking_service, :sort_descending
+          sort_order(:tracking_service, :sort_descending)
         end
 
         def row row
-          grid_text :tracking_service, row
+          grid_text(:tracking_service, row)
         end
 
         def data order_id
-          grid_text_by_id :tracking_service, order_id
+          grid_text_by_id(:tracking_service, order_id)
         end
       end
 
       class OrderTotal < Column
         def scroll_into_view
-          scroll :order_total
+          scroll(:order_total)
         end
 
         def sort_ascending
-          sort_order :order_total, :sort_ascending
+          sort_order(:order_total, :sort_ascending)
         end
 
         def sort_descending
@@ -996,17 +982,13 @@ module Stamps
         end
       end
 
-      # Orders Grid
-      class OrdersGrid < Browser::Modal
-        attr_reader :anchor_element, :column, :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient,
-                    :company, :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
-                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed, :tracking_service,
-                    :ship_date, :tracking_no, :requested_service, :source
+      class GridColumns < Browser::Modal
+        attr_reader :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient, :company,
+                    :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
+                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
+                    :tracking_service, :ship_date, :tracking_no, :requested_service, :source, :ship_from
 
         def initialize(param)
-          super(param)
-          @anchor_element = BrowserElement.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
-          @column ||= GridColumns.new(param)
           @checkbox ||= GridCheckBox.new(param)
           @store ||= Store.new(param)
           @order_id ||= OrderId.new(param)
@@ -1040,15 +1022,38 @@ module Stamps
           # todo-rob These two are no longer a column in orders grid
           @reference_no ||= ReferenceNo.new(param)
           @cost_code ||= CostCode.new(param)
+        end
+
+        def is_next_to? left, right
+          left_column_sym = GRID_COLUMNS.key left
+          right_column_sym = GRID_COLUMNS.key right
+
+          left_column_sym.should be_truthy
+          right_column_sym.should be_truthy
+
+          left_column_num = column_number left_column_sym
+          right_column_num = column_number right_column_sym
+          left_column_num + 1 == right_column_num
+        end
+      end
+
+      # Orders Grid
+      class OrdersGrid < Browser::Modal
+        attr_reader :grid_element, :column
+
+        def initialize(param)
+          super(param)
           @toolbar ||= Orders::Toolbar::Toolbar.new(param)
+          @column ||= GridColumns.new(param)
+          @grid_element = BrowserElement.new browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
         end
 
         def present?
-          anchor_element.present?
+          grid_element.present?
         end
 
         def wait_until_present *args
-          anchor_element.safely_wait_until_present *args
+          grid_element.safely_wait_until_present *args
         end
       end
     end
