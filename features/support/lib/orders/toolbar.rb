@@ -460,6 +460,10 @@ module Stamps
           @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
+        def enabled?
+
+        end
+
         def select selection
           case selection
             when :shipped
@@ -468,15 +472,16 @@ module Stamps
               selection_str = "Move to Canceled"
             when :awaiting_shipment
               selection_str = "Move to Awaiting Shipment"
+            when :on_hold
+              selection_str = "Move to On Hold"
             else
               "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment".should eql ""
           end
 
-          dd = drop_down
-          selection_label = BrowserElement.new browser.span text: selection_str
+          selection_label = BrowserElement.new(browser.span(text: selection_str))
 
           10.times{
-            dd.safe_click unless selection_label.present?
+            drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
             return confirmation if confirmation.present?
           }
@@ -507,6 +512,10 @@ module Stamps
 
         def to_awaiting_shipment
           select :awaiting_shipment
+        end
+
+        def to_on_hold
+          select :on_hold
         end
       end
 

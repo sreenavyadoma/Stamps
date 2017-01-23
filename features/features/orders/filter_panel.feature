@@ -26,26 +26,27 @@ Feature: Orders Filter Panel
     Then Filter Panel: Expect selected filter is Awaiting Shipment
 
     Then Save Test Data
-    Then Orders Toolbar: Move to Shipped
+    Then Orders Grid: Check saved Order ID
+    Then Orders Grid Toolbar: Move to Shipped
     Then Filter Panel: Select Shipped
     Then Orders Grid: Expect saved Order ID is in Orders Grid row 1
     Then Filter Panel: Expect Awaiting Shipment count decreased by 1
 
     Then Save Test Data
     Then Orders Grid: Check saved Order ID
-    Then Orders Toolbar: Move to Canceled
+    Then Orders Grid Toolbar: Move to Canceled
     Then Filter Panel: Select Canceled
     Then Orders Grid: Expect saved Order ID is in Orders Grid row 1
 
     Then Save Test Data
     Then Orders Grid: Check saved Order ID
-    Then Orders Toolbar: Move to On Hold
+    Then Orders Grid Toolbar: Move to On Hold
     Then Filter Panel: Select On Hold
     Then Orders Grid: Expect saved Order ID is in Orders Grid row 1
 
     Then Save Test Data
     Then Orders Grid: Check saved Order ID
-    Then Filter Panel: Move order to Awaiting Shipment
+    Then Orders Grid Toolbar: Move to Awaiting Shipment
     Then Filter Panel: Select Awaiting Shipment
     Then Orders Grid: Expect saved Order ID is in Orders Grid row 1
     Then Filter Panel: Expect Awaiting Shipment count increased by 1

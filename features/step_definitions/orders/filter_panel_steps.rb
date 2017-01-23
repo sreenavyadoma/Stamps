@@ -14,11 +14,6 @@ Then /^Filter Panel: Select Canceled$/ do
   stamps.orders.filter_panel.canceled.select
 end
 
-Then /^Orders Toolbar: Move to On Hold$/ do
-  logger.step "Filter Panel: Select Canceled"
-  stamps.orders.filter_panel.on_hold.select
-end
-
 Then /^Filter Panel: Select On Hold$/ do
   logger.step "Filter Panel: Select Canceled"
   stamps.orders.filter_panel.on_hold.select
@@ -42,8 +37,7 @@ end
 
 Then /^Filter Panel: Expect selected filter to be (.*)$/ do |expectation|
   logger.step "Filter Panel: Expect selected filter is #{expectation}"
-  actual = stamps.orders.filter_panel.selected_filter
-  actual.should eql expectation
+  stamps.orders.filter_panel.selected_filter.should eql expectation
 end
 
 Then /^Filter Panel: Search saved Order ID$/ do

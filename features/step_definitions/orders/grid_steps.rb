@@ -1,4 +1,33 @@
 
+Then /^Orders Grid Toolbar: Move to Shipped$/ do
+  logger.step "Orders Grid Toolbar: Move to Shipped"
+  stamps.orders.orders_grid.order_id.row_num(test_data[:order_id]).should be > 0
+  stamps.orders.orders_grid.toolbar.move.to_shipped.cancel
+  stamps.orders.orders_grid.toolbar.move.to_shipped.move
+end
+
+Then /^Orders Grid Toolbar: Move to Canceled$/ do
+  logger.step "Orders Grid Toolbar: Move to Canceled"
+  stamps.orders.orders_grid.order_id.row_num(test_data[:order_id]).should be > 0
+  stamps.orders.orders_grid.toolbar.move.to_canceled.cancel
+  stamps.orders.orders_grid.toolbar.move.to_canceled.move
+end
+
+Then /^Orders Grid Toolbar: Move to Awaiting Shipment$/ do
+  logger.step "Move order to Awaiting Shipmen"
+  stamps.orders.orders_grid.order_id.row_num(test_data[:order_id]).should be > 0
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
+end
+
+Then /^Orders Grid Toolbar: Move to On Hold$/ do
+  logger.step "Move order to Awaiting Shipmen"
+  stamps.orders.orders_grid.column.order_date.sort_descending
+  stamps.orders.orders_grid.order_id.row_num(test_data[:order_id]).should be > 0
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
+end
+
 Then /^Orders Grid: Check Order ID (.*)$/ do |order_id|
   logger.step "Orders Grid: Check Order ID #{order_id}"
   test_data[:order_id] = order_id
@@ -120,11 +149,11 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
   stamps.orders.orders_grid.column.checkbox.check 3
   logger.step stamps.orders.orders_grid.column.checkbox.checked? 3
 
-  stamps.orders.orders_grid.column.checkbox.uncheck 1
+  stamps.orders.orders_grid.column.checkbox.uncheck(1)
   logger.step stamps.orders.orders_grid.column.checkbox.checked? 1
-  stamps.orders.orders_grid.column.checkbox.uncheck 2
+  stamps.orders.orders_grid.column.checkbox.uncheck(2)
   logger.step stamps.orders.orders_grid.column.checkbox.checked? 2
-  stamps.orders.orders_grid.column.checkbox.uncheck 3
+  stamps.orders.orders_grid.column.checkbox.uncheck(3)
   logger.step stamps.orders.orders_grid.column.checkbox.checked? 3
 
   stamps.orders.orders_grid.column.checkbox.check 2

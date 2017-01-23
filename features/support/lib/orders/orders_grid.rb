@@ -127,7 +127,7 @@ module Stamps
           #"Column Name: #{column_name}".should eql "Unable to get column number for #{column_name}"
         end
 
-        def row_number order_id
+        def row_number(order_id)
           5.times do
             column_num = column_number(:order_id)
             fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
@@ -143,7 +143,7 @@ module Stamps
           #"Unable to obtain row number for Order ID #{order_id}".should eql "" if row == 0
         end
 
-        def row_div number
+        def row_div(number)
           number.should be_truthy
           browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]")
         end
@@ -778,11 +778,11 @@ module Stamps
       end
 
       class GridCheckBox < Column
-        attr_reader :checkbox_element_hash
+        attr_reader :checkbox_hash
 
         def initialize(param)
           super(param)
-          @checkbox_element_hash ||= Hash.new
+          @checkbox_hash ||= Hash.new
         end
 
         def scroll_into_view
@@ -814,8 +814,8 @@ module Stamps
               row_number = hash_element[0]
               checked = hash_element[1]
               if checked
-                check row_number
-                logger.info "Row #{row_number} #{checked? row_number}"
+                check(row_number)
+                logger.info "Row #{row_number} #{checked?(row_number)}"
               end
             end
           else
@@ -833,11 +833,11 @@ module Stamps
         end
 
         def edit(order_id)
-          check row_number order_id
+          check row_number(order_id)
         end
 
         def edit_order(order_id)
-          edit order_id
+          edit(order_id)
         end
 
         def check_order_id(order_id)
@@ -849,12 +849,12 @@ module Stamps
         end
 
         def checkbox_element(number)
-          if checkbox_element_hash.has_key?(number)
-            checkbox_element_hash[number]
+          if checkbox_hash.has_key?(number)
+            checkbox_hash[number]
           else
-            checkbox_field = row_div(number)
-            verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-            checkbox_element_hash[number] = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
+            div = row_div(number)
+            verify_field = div.parent.parent.parent.parent.parent #browser.table(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})")
+            checkbox_hash[number] = CheckboxElement.new(div, verify_field, "class", "selected")
           end
         end
 
@@ -868,7 +868,7 @@ module Stamps
           end
         end
 
-        def uncheck number
+        def uncheck(number)
           scroll_into_view
           if size > 0
             checkbox_element(number).uncheck
@@ -876,17 +876,17 @@ module Stamps
           end
         end
 
-        def checked? number
+        def checked?(number)
           scroll_into_view
           checkbox_element(number).checked?
         end
 
-        def order_checked? order_number
+        def order_checked?(order_number)
           scroll_into_view
           checked? row_number(order_number)
         end
 
-        def checked_rows *args
+        def checked_rows(*args)
           cache_count = 5
           if args.length == 1
             cache_count = args[0]
@@ -904,7 +904,7 @@ module Stamps
           end
           logger.info "Number of rows to check:  #{cache_item_count}"
           1.upto(cache_item_count) { |row|
-            checked = checked? row
+            checked = checked?(row)
             if checked
               checked_rows[row] = checked
             end

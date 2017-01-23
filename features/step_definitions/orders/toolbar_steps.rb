@@ -2,7 +2,7 @@ Then /^Orders Toolbar: Add$/ do
   begin
     logger.step "Orders Toolbar: Add"
     test_data[:old_balance] = stamps.navigation_bar.balance.amount
-    stamps.orders.orders_grid.column.checkbox.uncheck 1
+    stamps.orders.orders_grid.column.checkbox.uncheck(1)
     stamps.orders.toolbar.add.order
     step "Save Test Data"
   rescue Exception => e
@@ -10,34 +10,6 @@ Then /^Orders Toolbar: Add$/ do
     logger.error e.backtrace.join("\n")
     "Unable to add new orders".should eql e.message
   end
-end
-
-Then /^Orders Toolbar: Move to Shipped$/ do
-  logger.step "Orders Toolbar: Move to Shipped"
-  grid = stamps.orders.orders_grid
-  "Order ID #{test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num test_data[:order_id]) > 0
-  grid.order_date.sort_descending
-  grid.column.checkbox.check_order_id test_data[:order_id]
-  grid.toolbar.move.to_shipped.cancel
-  grid.toolbar.move.to_shipped.move
-end
-
-Then /^Orders Toolbar: Move to Canceled$/ do
-  logger.step "Orders Toolbar: Move to Canceled"
-  grid = stamps.orders.orders_grid
-  raise "Order ID #{test_data[:order_id]} does not exist in this tab and therefore cannot be moved." unless (grid.order_id.row_num test_data[:order_id]) > 0
-  grid.order_date.sort_descending
-  grid.column.checkbox.check_order_id test_data[:order_id]
-  grid.toolbar.move.to_canceled.cancel
-  grid.toolbar.move.to_canceled.move
-end
-
-Then /^Filter Panel: Move order to Awaiting Shipment$/ do
-  logger.step "Move order to Awaiting Shipmen"
-  stamps.orders.orders_grid.column.order_date.sort_descending
-  stamps.orders.orders_grid.column.checkbox.check_order_id test_data[:order_id]
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
 end
 
 Then /^Orders Toolbar: Refresh Orders$/ do

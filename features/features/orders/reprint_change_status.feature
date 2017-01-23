@@ -11,7 +11,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then Orders Toolbar: Add
 
-    Then Orders Toolbar: Move to Shipped
+    Then Orders Grid Toolbar: Move to Shipped
     Then Filter Panel: Select Shipped
     Then Filter Panel: Expect order moved to Shipped
 
