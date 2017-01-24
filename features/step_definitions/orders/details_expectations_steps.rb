@@ -5,7 +5,7 @@ Then /^On Order Details form, expect Ship-From saved value is the same$/ do
 end
 
 Then /^On Order Details form, expect Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
-  logger.step "^On Order Details form, expect Item #{item_number} Qty is #{expectation}"
+  logger.step "On Order Details form, expect Item #{item_number} Qty is #{expectation}"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
@@ -13,7 +13,7 @@ Then /^On Order Details form, expect Item (\d+) Qty is (\d+)$/ do |item_number, 
 end
 
 Then /^On Order Details form, expect Item (\d+) ID is (.*)$/ do |item_number, expectation|
-  logger.step "^On Order Details form, expect Item #{item_number} ID is #{expectation}"
+  logger.step "On Order Details form, expect Item #{item_number} ID is #{expectation}"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
@@ -21,7 +21,7 @@ Then /^On Order Details form, expect Item (\d+) ID is (.*)$/ do |item_number, ex
 end
 
 Then /^On Order Details form, expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
-  logger.step "^On Order Details form, expect Item #{item_number} ID is #{expectation}"
+  logger.step "On Order Details form, expect Item #{item_number} ID is #{expectation}"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"

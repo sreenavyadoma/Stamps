@@ -11,7 +11,6 @@ Feature: Address Cleansing
     Then On Order Details form, set Ship-To to Domestic Address
       | name              | company | street_address   | street_address_2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |
-
     Then On Order Details form, select service PM Package
     Then On Order Details form, set Ounces to 1
     Then On Order Details form, set Pounds to 1
@@ -27,4 +26,3 @@ Feature: Address Cleansing
     Then On Order Details form, set Ship-To to address in Zone 1 through 4
     Then On Order Details form, select service PM Package
     Then Sign out
-
