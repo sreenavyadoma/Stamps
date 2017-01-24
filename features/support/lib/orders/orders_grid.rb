@@ -43,7 +43,7 @@ module Stamps
           scroll column
 
           column_span = browser.span text: GRID_COLUMNS[column]
-          column_field = ElementWrapper.new column_span
+          column_field = BrowserElement.new column_span
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
 
           10.times do
@@ -67,11 +67,17 @@ module Stamps
         end
 
         def scroll column
-          element_helper.scroll_into_view browser, column_name_field(column)
-        end
-
-        def column_name_field column
-          browser.span text: GRID_COLUMNS[column]
+          column.should be_truthy
+          case column
+            when Symbol
+              element_helper.scroll_into_view browser,  browser.span(text: GRID_COLUMNS[column])
+            when String
+              element_helper.scroll_into_view browser,  browser.span(text: column)
+            when Watir::Element
+              element_helper.scroll_into_view browser, column
+            else
+              column.should be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
+          end
         end
 
         def empty?
@@ -90,7 +96,6 @@ module Stamps
         end
 
         def grid_text column, row
-          #scroll :order_total
           scroll column
           element_helper.text grid_field(column, row)
         end
@@ -103,38 +108,34 @@ module Stamps
           grid_text column_number(column_name), row
         end
 
-        def column_number column_name
+        def column_number column
           5.times do
             begin
-              column_str = GRID_COLUMNS[column_name]
-              columns = column_fields
-              columns.each_with_index do |column_field, index|
-                column_text = element_helper.text column_field
-                if column_text == column_str
-                  logger.message "Grid:  #{column_str} is in column #{index+1}"
+              columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
+              columns.each_with_index do |element, index|
+                scroll element
+                if element_helper.text(element) == GRID_COLUMNS[column]
+                  #logger.message "In Orders Grid, -- #{GRID_COLUMNS[column]} is in column #{index+1}"
                   return index+1
                 end
               end
             rescue => e
               e.backtrace.join("\n").should eql "#{e.message}"
+              e.message.should eql "Grid error. Unable to find column number for #{column}"
             end
           end
           #"Column Name: #{column_name}".should eql "Unable to get column number for #{column_name}"
         end
 
-        def column_fields
-          browser.spans(css: "div[componentid^=gridcolumn]>div>div>div>div>span")
-        end
-
-        def row_number order_id
-          scroll :order_id
+        def row_number(order_id)
           5.times do
             column_num = column_number(:order_id)
             fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
-            fields.each_with_index do |div, index|
-              row_text = element_helper.text div
+            fields.each_with_index do |element, index|
+              scroll element
+              row_text = element_helper.text element
               if row_text.include? order_id
-                logger.message "Grid: Order ID #{order_id} is in row #{index+1}"
+                logger.message "In Orders Grid, Order ID #{order_id} is in row #{index+1}"
                 return index + 1
               end
             end
@@ -142,9 +143,9 @@ module Stamps
           #"Unable to obtain row number for Order ID #{order_id}".should eql "" if row == 0
         end
 
-        def row_div number
+        def row_div(number)
           number.should be_truthy
-          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]")
+          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+(number.to_s)+")>tbody>tr>td>div>div[class=x-grid-row-checker]")
         end
       end
 
@@ -522,8 +523,8 @@ module Stamps
           grid_text_by_id :weight, order_id
         end
 
-        def lbs order_id
-          data(order_id).scan(/\d+ lbs./).first.scan(/\d/).first
+        def lb order_id
+          data(order_id).scan(/\d+ lb./).first.scan(/\d/).first
         end
 
         def oz order_id
@@ -777,15 +778,9 @@ module Stamps
       end
 
       class GridCheckBox < Column
-        attr_reader :checkbox_element_hash
-
-        def initialize param
-          super param
-          @checkbox_element_hash ||= Hash.new
-        end
 
         def scroll_into_view
-          field = ElementWrapper.new((browser.spans css: "div[componentid^=gridcolumn]").first)
+          field = BrowserElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
           field.scroll_into_view
           field
         end
@@ -813,8 +808,8 @@ module Stamps
               row_number = hash_element[0]
               checked = hash_element[1]
               if checked
-                check row_number
-                logger.info "Row #{row_number} #{checked? row_number}"
+                check(row_number)
+                logger.info "Row #{row_number} #{checked?(row_number)}"
               end
             end
           else
@@ -827,37 +822,33 @@ module Stamps
           checkbox_header.uncheck
         end
 
-        def row row
-          grid_text :check_box, row
+        def row(row)
+          grid_text(:check_box, row)
         end
 
-        def edit order_id
-          check row_number order_id
-        end
-
-        def edit_order order_id
-          edit order_id
-        end
-
-        def check_order order_id
+        def edit(order_id)
           check row_number(order_id)
         end
 
-        def uncheck_order order_id
+        def edit_order(order_id)
+          edit(order_id)
+        end
+
+        def check_order_id(order_id)
+          check row_number(order_id)
+        end
+
+        def uncheck_order_id(order_id)
           uncheck row_number(order_id)
         end
 
-        def checkbox_element number
-          if checkbox_element_hash.has_key?(number)
-            checkbox_element_hash[number]
-          else
-            checkbox_field = row_div(number)
-            verify_field = browser.table css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})"
-            checkbox_element_hash[number] = CheckboxElement.new checkbox_field, verify_field, "class", "grid-item-selected"
-          end
+        def checkbox_element(number)
+          div = row_div(number)
+          verify_field = div.parent.parent.parent.parent.parent #browser.table(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})")
+          CheckboxElement.new(div, verify_field, "class", "selected")
         end
 
-        def check number
+        def check(number)
           scroll_into_view
           if size > 0
             checkbox_element(number).check
@@ -867,7 +858,7 @@ module Stamps
           end
         end
 
-        def uncheck number
+        def uncheck(number)
           scroll_into_view
           if size > 0
             checkbox_element(number).uncheck
@@ -875,17 +866,17 @@ module Stamps
           end
         end
 
-        def checked? number
+        def checked?(number)
           scroll_into_view
           checkbox_element(number).checked?
         end
 
-        def order_checked? order_number
+        def order_checked?(order_number)
           scroll_into_view
-          checked? row_number order_number
+          checked? row_number(order_number)
         end
 
-        def checked_rows *args
+        def checked_rows(*args)
           cache_count = 5
           if args.length == 1
             cache_count = args[0]
@@ -903,7 +894,7 @@ module Stamps
           end
           logger.info "Number of rows to check:  #{cache_item_count}"
           1.upto(cache_item_count) { |row|
-            checked = checked? row
+            checked = checked?(row)
             if checked
               checked_rows[row] = checked
             end
@@ -915,49 +906,35 @@ module Stamps
 
       end
 
-      class GridColumns < Column
-        def is_next_to? left, right
-          left_column_sym = GRID_COLUMNS.key left
-          right_column_sym = GRID_COLUMNS.key right
-
-          left_column_sym.should be_truthy
-          right_column_sym.should be_truthy
-
-          left_column_num = column_number left_column_sym
-          right_column_num = column_number right_column_sym
-          left_column_num + 1 == right_column_num
-        end
-      end
-
       class TrackingService < Column
         def scroll_into_view
-          scroll :tracking_service
+          scroll(:tracking_service)
         end
 
         def sort_ascending
-          sort_order :tracking_service, :sort_ascending
+          sort_order(:tracking_service, :sort_ascending)
         end
 
         def sort_descending
-          sort_order :tracking_service, :sort_descending
+          sort_order(:tracking_service, :sort_descending)
         end
 
         def row row
-          grid_text :tracking_service, row
+          grid_text(:tracking_service, row)
         end
 
         def data order_id
-          grid_text_by_id :tracking_service, order_id
+          grid_text_by_id(:tracking_service, order_id)
         end
       end
 
       class OrderTotal < Column
         def scroll_into_view
-          scroll :order_total
+          scroll(:order_total)
         end
 
         def sort_ascending
-          sort_order :order_total, :sort_ascending
+          sort_order(:order_total, :sort_ascending)
         end
 
         def sort_descending
@@ -995,62 +972,78 @@ module Stamps
         end
       end
 
+      class GridColumns < Browser::Modal
+        attr_reader :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient, :company,
+                    :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
+                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
+                    :tracking_service, :ship_date, :tracking_no, :requested_service, :source, :ship_from
+
+        def initialize(param)
+          @checkbox ||= GridCheckBox.new(param)
+          @store ||= Store.new(param)
+          @order_id ||= OrderId.new(param)
+          @ship_cost ||= ShipCost.new(param)
+          @age ||= Age.new(param)
+          @order_date ||= OrderDate.new(param)
+          @recipient ||= Recipient.new(param)
+          @company ||= Company.new(param)
+          @country ||= Country.new(param)
+          @address ||= Address.new(param)
+          @city ||= City.new(param)
+          @state ||= State.new(param)
+          @zip ||= Zip.new(param)
+          @phone ||= Phone.new(param)
+          @email ||= Email.new(param)
+          @qty ||= Qty.new(param)
+          @item_sku ||= ItemSKU.new(param)
+          @item_name ||= ItemName.new(param)
+          @ship_from ||= ShipFrom.new(param)
+          @service ||= GridService.new(param)
+          @requested_service ||= RequestedService.new(param)
+          @weight = Weight.new(param)
+          @insured_value ||= InsuredValue.new(param)
+          @tracking_service ||= TrackingService.new(param)
+          @order_status ||= OrderStatus.new(param)
+          @date_printed ||= DatePrinted.new(param)
+          @ship_date ||= ShipDate.new(param)
+          @tracking_no ||= Tracking.new(param)
+          @order_total ||= OrderTotal.new(param)
+          @source ||= GridSource.new(param)
+          # todo-rob These two are no longer a column in orders grid
+          @reference_no ||= ReferenceNo.new(param)
+          @cost_code ||= CostCode.new(param)
+        end
+
+        def is_next_to? left, right
+          left_column_sym = GRID_COLUMNS.key left
+          right_column_sym = GRID_COLUMNS.key right
+
+          left_column_sym.should be_truthy
+          right_column_sym.should be_truthy
+
+          left_column_num = column_number left_column_sym
+          right_column_num = column_number right_column_sym
+          left_column_num + 1 == right_column_num
+        end
+      end
+
       # Orders Grid
       class OrdersGrid < Browser::Modal
-        attr_reader :anchor_element, :column, :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient,
-                    :company, :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
-                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed, :tracking_service,
-                    :ship_date, :tracking_no, :requested_service, :source
+        attr_reader :grid_element, :column
 
-        def initialize param
-          super param
-
-          @anchor_element ||= ElementWrapper.new browser.div css: "div[id=appContent]>div>div>div[id^=ordersGrid]"
-
-          @column ||= GridColumns.new param
-
-          @checkbox ||= GridCheckBox.new param
-          @store ||= Store.new param
-          @order_id ||= OrderId.new param
-          @ship_cost ||= ShipCost.new param
-          @age ||= Age.new param
-          @order_date ||= OrderDate.new param
-          @recipient ||= Recipient.new param
-          @company ||= Company.new param
-          @country ||= Country.new param
-          @address ||= Address.new param
-          @city ||= City.new param
-          @state ||= State.new param
-          @zip ||= Zip.new param
-          @phone ||= Phone.new param
-          @email ||= Email.new param
-          @qty ||= Qty.new param
-          @item_sku ||= ItemSKU.new param
-          @item_name ||= ItemName.new param
-          @ship_from ||= ShipFrom.new param
-          @service ||= GridService.new param
-          @requested_service ||= RequestedService.new param
-          @weight ||= Weight.new param
-          @insured_value ||= InsuredValue.new param
-          @tracking_service ||= TrackingService.new param
-          @order_status ||= OrderStatus.new param
-          @date_printed ||= DatePrinted.new param
-          @ship_date ||= ShipDate.new param
-          @tracking_no ||= Tracking.new param
-          @order_total ||= OrderTotal.new param
-          @source ||= GridSource.new param
-          # todo-rob These two are no longer a column in orders grid
-          @reference_no ||= ReferenceNo.new param
-          @cost_code ||= CostCode.new param
-          @toolbar ||= Orders::Toolbar::Toolbar.new param
+        def initialize(param)
+          super(param)
+          @toolbar ||= Orders::Toolbar::Toolbar.new(param)
+          @column ||= GridColumns.new(param)
+          @grid_element = BrowserElement.new browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
         end
 
         def present?
-          anchor_element.present?
+          grid_element.present?
         end
 
         def wait_until_present *args
-          anchor_element.safely_wait_until_present *args
+          grid_element.safely_wait_until_present *args
         end
       end
     end
