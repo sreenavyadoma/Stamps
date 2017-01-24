@@ -1,26 +1,26 @@
 
 When /^Mail: Print International Postage$/ do
-  logger.step "Print International Postage"
+  #logger.step "Print International Postage"
   stamps.mail.footer.print_international
 end
 
 When /^Mail: Open Print Modal$/ do
-  logger.step "Mail: Open Print Modal"
+  #logger.step "Mail: Open Print Modal"
   @print_window = stamps.mail.footer.print
 end
 
 When /^Mail: Open Print Sample Modal$/ do
-  logger.step "Mail: Open Print Sample Modal"
+  #logger.step "Mail: Open Print Sample Modal"
   @print_window = stamps.mail.footer.print_sample
 end
 
 Then /^Mail In Print modal, select Printer \"(.*)\"$/ do |printer|
-  logger.step "Select Printer #{printer}"
+  #logger.step "Select Printer #{printer}"
   @print_window.printer.select printer
 end
 
 When /^Mail In Print modal, click Print button$/ do
-  logger.step "Print"
+  #logger.step "Print"
   print_postage_modal = stamps.mail.footer.print
   @printer = print_postage_modal.printer.text_box.text
   @paper_tray = print_postage_modal.paper_tray.text_box.text
@@ -28,7 +28,7 @@ When /^Mail In Print modal, click Print button$/ do
 end
 
 When /^Mail In Print modal, click Print button Sample$/ do
-  logger.step "Print Sample"
+  #logger.step "Print Sample"
   print_postage_modal = stamps.mail.footer.print_sample
   @printer = print_postage_modal.printer.text_box.text
   @paper_tray = print_postage_modal.paper_tray.text_box.text
@@ -36,7 +36,7 @@ When /^Mail In Print modal, click Print button Sample$/ do
 end
 
 Then /^Mail: In Print modal, Close$/ do
-  logger.step "Close Print Mail Print Modal"
+  #logger.step "Close Print Mail Print Modal"
   stamps.mail.stamps.mail.close
 end
 

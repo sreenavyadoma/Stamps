@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 Then /^Mail: Set Print On to (.*)/ do |media|
-  logger.step "Mail: Set Print On to #{media}"
+  #logger.step "Mail: Set Print On to #{media}"
   test_data[:print_on] = media
   stamps.mail.print_on.select media
 end

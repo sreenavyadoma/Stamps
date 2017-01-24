@@ -1,27 +1,23 @@
 
 Then /^In Orders Grid toolbar, select Move to Shipped$/ do
-  logger.step "In Orders Grid toolbar, select Move to Shipped"
   stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
   stamps.orders.orders_grid.toolbar.move.to_shipped.cancel
   stamps.orders.orders_grid.toolbar.move.to_shipped.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Canceled$/ do
-  logger.step "In Orders Grid toolbar, select Move to Canceled"
   stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
   stamps.orders.orders_grid.toolbar.move.to_canceled.cancel
   stamps.orders.orders_grid.toolbar.move.to_canceled.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  logger.step "Move order to Awaiting Shipmen"
   stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
   stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
   stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
 end
 
 Then /^In Orders Grid toolbar, select Move to On Hold$/ do
-  logger.step "Move order to Awaiting Shipmen"
   stamps.orders.orders_grid.column.order_date.sort_descending
   stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
   stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
@@ -33,7 +29,7 @@ Then /^In Orders Grid, check saved Order ID$/ do
 end
 
 Then /^In Orders Grid, check Order ID (.*)$/ do |order_id|
-  logger.step "In Orders Grid, check Order ID #{order_id}"
+  #logger.step "In Orders Grid, check Order ID #{order_id}"
   stamps.orders.orders_grid.column.checkbox.check_order_id(order_id)
   stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
 end
@@ -43,81 +39,81 @@ Then /^In Orders Grid, uncheck saved Order ID$/ do
 end
 
 Then /^In Orders Grid, uncheck Order ID (.*)$/ do |order_id|
-  logger.step "In Orders Grid, check Order ID #{order_id}"
+  #logger.step "In Orders Grid, check Order ID #{order_id}"
   stamps.orders.orders_grid.column.checkbox.uncheck_order_id(order_id)
   stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be false
 end
 
 Then /^In Orders Grid, expect Store is (.*)$/ do |expectation|
-  logger.step "In Orders Grid, expect Store is #{expectation}"
+  #logger.step "In Orders Grid, expect Store is #{expectation}"
   test_data[:store_name] = (expectation.downcase.include? "random")?test_data[:store_name]:expectation
   stamps.orders.orders_grid.column.store.data(test_data[:order_id]).should eql test_data[:store_name]
 end
 
 Then /^In Orders Grid, expect Order ID is the same as Details Form Order ID$/ do
-  logger.step "In Orders Grid, expect Order ID is the same as Details Form Order ID"
+  #logger.step "In Orders Grid, expect Order ID is the same as Details Form Order ID"
   details_order_id = stamps.orders.order_details.toolbar.order_id
   grid_order_id = stamps.orders.orders_grid.column.order_id.row(1)
   details_order_id.should eql grid_order_id
 end
 
 Then /^In Orders Grid, expect saved Order ID is in Orders Grid row (\d+)$/ do |row|
-  logger.step "In Orders Grid, expect saved Order ID is the same as Orders Grid row #{row}"
+  #logger.step "In Orders Grid, expect saved Order ID is the same as Orders Grid row #{row}"
   stamps.orders.orders_grid.column.order_id.row(1).should eql test_data[:order_id]
 end
 
 Then /^In Orders Grid, expect Ship Cost is the same as Details Form Ship Cost$/ do
-  logger.step "In Orders Grid, expect Ship Cost is the same as Details Form Ship Cost"
+  #logger.step "In Orders Grid, expect Ship Cost is the same as Details Form Ship Cost"
   details_ship_cost = stamps.orders.order_details.footer.total_ship_cost
   grid_ship_cost = stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id])
   details_ship_cost.should eql grid_ship_cost
 end
 
 Then /^Set Orders Grid Row (\d+) to uncheck$/ do |row|
-  logger.step "Set Orders Grid Row #{row} to uncheck"
+  #logger.step "Set Orders Grid Row #{row} to uncheck"
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
 end
 
 Then /^Set Orders Grid Row (\d+) to check$/ do |row|
-  logger.step "Set Orders Grid Row #{row} to check"
+  #logger.step "Set Orders Grid Row #{row} to check"
   stamps.orders.orders_grid.column.checkbox.check(row)
 end
 
 When /^Edit Orders Grid row (\d+)$/ do |row|
-  logger.step "Edit row #{row} on the Orders Grid"
+  #logger.step "Edit row #{row} on the Orders Grid"
   stamps.orders.orders_grid.column.checkbox.check(row)
 end
 
 When /^In Orders Grid, check row (\d+)$/ do |row|
-  logger.step "Edit Orders Grid row #{row}"
+  #logger.step "Edit Orders Grid row #{row}"
   stamps.orders.orders_grid.column.checkbox.check row
   stamps.orders.orders_grid.column.checkbox.checked?(row).should be true
 end
 
 When /^In Orders Grid, uncheck row (\d+)$/ do |row|
-  logger.step "Uncheck row #{row} on the Orders Grid"
+  #logger.step "Uncheck row #{row} on the Orders Grid"
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
   stamps.orders.orders_grid.column.checkbox.checked?(row).should be false
 end
 
 Then /^In Orders Grid, expect Date Printed for this order is today$/ do
-  logger.step "In Orders Grid, expect Date Printed for this order is today"
+  #logger.step "In Orders Grid, expect Date Printed for this order is today"
   grid = stamps.orders.filter_panel.shipped.select
   grid.order_id.sort_descending
   grid_print_date = grid.date_printed.data(test_data[:order_id]) # Dec 3
   expectation_print_date = Date.today.strftime "%b %-d"
 
-  logger.step "Order ID:  #{test_data[:order_id]} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expectation_print_date}"
+  #logger.step "Order ID:  #{test_data[:order_id]} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expectation_print_date}"
   grid_print_date.should eql expectation_print_date
 end
 
 Then /^In Orders Grid, expect Ship Date for this order is today$/ do
-  logger.step "In Orders Grid, expect Ship Date for this order is today"
+  #logger.step "In Orders Grid, expect Ship Date for this order is today"
   step "In Orders Grid, expect Ship Date for this order is today plus 0"
 end
 
 Then /^In Orders Grid, expect Ship Date for this order is today plus (\d+)$/ do |day|
-  logger.step "In Orders Grid, expect Ship Date for this order is today plus #{day}"
+  #logger.step "In Orders Grid, expect Ship Date for this order is today plus #{day}"
   expectation = ParameterHelper.mmddyy_to_mondd @ship_date
   10.times{
     stamps.orders.filter_panel.shipped.select.order_id.sort_descending
@@ -127,13 +123,13 @@ Then /^In Orders Grid, expect Ship Date for this order is today plus (\d+)$/ do 
 end
 
 Then /^List all Grid column values for row (\d+)/ do |row|
-  logger.step "List all Grid column values for row #{row}"
+  #logger.step "List all Grid column values for row #{row}"
   order_id = stamps.orders.orders_grid.column.order_id.row row
   step "List all Grid column values for Order ID #{order_id}"
 end
 
 Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
-  logger.step "List all Grid column values for Order ID #{order_id}"
+  #logger.step "List all Grid column values for Order ID #{order_id}"
   row2_order_id = stamps.orders.orders_grid.column.order_id.row 2
   logger.step stamps.orders.orders_grid.column.checkbox.order_checked? row2_order_id
 
@@ -193,7 +189,7 @@ Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
 end
 
 Then /^Expect Ship-To address is;$/ do |table|
-  logger.step "Expect Ship-To address is..."
+  #logger.step "Expect Ship-To address is..."
   param_hash = table.hashes.first
   step "In Orders Grid, expect Recipient is #{param_hash[:name]}"
   step "In Orders Grid, expect Company is #{param_hash[:company]}"
@@ -206,7 +202,7 @@ Then /^Expect Ship-To address is;$/ do |table|
 end
 
 Then /^In Orders Grid, expect Age is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Age is #{expectation}"
+  #logger.step "In Orders Grid, expect Age is #{expectation}"
   test_data[:order_id].should be_truthy
   10.times do
     break if stamps.orders.orders_grid.column.age.data(test_data[:order_id]).eql? expectation
@@ -215,7 +211,7 @@ Then /^In Orders Grid, expect Age is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Order Date is populated$/ do
-  logger.step "In Orders Grid, expect Order Date is populated"
+  #logger.step "In Orders Grid, expect Order Date is populated"
   test_data[:order_id].should be_truthy
   5.times do
     break if stamps.orders.orders_grid.column.order_date.data(test_data[:order_id]).size > 4
@@ -224,7 +220,7 @@ Then /^In Orders Grid, expect Order Date is populated$/ do
 end
 
 Then /^In Orders Grid, expect Recipient is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Recipient is #{expectation}"
+  #logger.step "In Orders Grid, expect Recipient is #{expectation}"
   test_data[:order_id].should be_truthy
   10.times do
     break if stamps.orders.orders_grid.column.recipient.data(test_data[:order_id]).eql? expectation
@@ -233,7 +229,7 @@ Then /^In Orders Grid, expect Recipient is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Company is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Company is #{expectation}"
+  #logger.step "In Orders Grid, expect Company is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.company.data(test_data[:order_id]).eql? expectation
   end
@@ -241,7 +237,7 @@ Then /^In Orders Grid, expect Company is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Address is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Address is #{expectation}"
+  #logger.step "In Orders Grid, expect Address is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.address.data(test_data[:order_id]).eql? expectation
   end
@@ -249,7 +245,7 @@ Then /^In Orders Grid, expect Address is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect City is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect City is #{expectation}"
+  #logger.step "In Orders Grid, expect City is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.city.data(test_data[:order_id]).eql? expectation
   end
@@ -257,7 +253,7 @@ Then /^In Orders Grid, expect City is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect State is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect State is #{expectation}"
+  #logger.step "In Orders Grid, expect State is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.state.data(test_data[:order_id]).eql? expectation
   end
@@ -265,7 +261,7 @@ Then /^In Orders Grid, expect State is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Zip is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Zip is #{expectation}"
+  #logger.step "In Orders Grid, expect Zip is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.zip.data(test_data[:order_id]).eql? expectation
   end
@@ -273,7 +269,7 @@ Then /^In Orders Grid, expect Zip is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Country is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Country is #{expectation}"
+  #logger.step "In Orders Grid, expect Country is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.country.data(test_data[:order_id]).eql? expectation
   end
@@ -281,12 +277,12 @@ Then /^In Orders Grid, expect Country is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Column (\w+) appears to left of (.+)$/ do |left_column, right_column|
-  logger.step "In Orders Grid, expect Column #{left_column} appears to left of #{right_column}"
+  #logger.step "In Orders Grid, expect Column #{left_column} appears to left of #{right_column}"
   stamps.orders.orders_grid.column.is_next_to?(left_column, right_column).should be true
 end
 
 Then /^In Orders Grid, expect Email is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Email is #{expectation}"
+  #logger.step "In Orders Grid, expect Email is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.email.data(test_data[:order_id]).eql? expectation
   end
@@ -294,7 +290,7 @@ Then /^In Orders Grid, expect Email is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Phone is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Phone is #{expectation}"
+  #logger.step "In Orders Grid, expect Phone is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.phone.data(test_data[:order_id]).eql? expectation
   end
@@ -302,7 +298,7 @@ Then /^In Orders Grid, expect Phone is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Pounds is (\d+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Pounds is #{expectation}"
+  #logger.step "In Orders Grid, expect Pounds is #{expectation}"
   20.times do
     break if stamps.orders.orders_grid.column.weight.lb(test_data[:order_id]).eql? expectation
   end
@@ -310,7 +306,7 @@ Then /^In Orders Grid, expect Pounds is (\d+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Ounces is (\d+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Ounces is #{expectation}"
+  #logger.step "In Orders Grid, expect Ounces is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.weight.oz(test_data[:order_id]).eql? expectation
   end
@@ -318,9 +314,9 @@ Then /^In Orders Grid, expect Ounces is (\d+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
-  logger.step "In Orders Grid, expect Weight is #{pounds} lb. #{ounces} oz."
+  #logger.step "In Orders Grid, expect Weight is #{pounds} lb. #{ounces} oz."
   expectation = "#{pounds} lbs. #{ounces} oz." #1 lbs. 0 oz.
-  logger.step "In Orders Grid, expect Weight is #{expectation}"
+  #logger.step "In Orders Grid, expect Weight is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.weight.data(test_data[:order_id]).eql? expectation
   end
@@ -328,7 +324,7 @@ Then /^In Orders Grid, expect Weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces
 end
 
 Then /^In Orders Grid, expect Weight\(lb\) is (.*)$/ do |expectation|
-  logger.step "In Orders Grid, expect Weight(lb) is #{expectation}"
+  #logger.step "In Orders Grid, expect Weight(lb) is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.weight.lb(test_data[:order_id]).eql? expectation
   end
@@ -336,7 +332,7 @@ Then /^In Orders Grid, expect Weight\(lb\) is (.*)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Weight\(oz\) is (.*)$/ do |expectation|
-  logger.step "In Orders Grid, expect Weight(oz) is #{expectation}"
+  #logger.step "In Orders Grid, expect Weight(oz) is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.weight.oz(test_data[:order_id]).eql? expectation
   end
@@ -344,7 +340,7 @@ Then /^In Orders Grid, expect Weight\(oz\) is (.*)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Qty. is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Qty. is #{expectation}"
+  #logger.step "In Orders Grid, expect Qty. is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.qty.data(test_data[:order_id]).eql? expectation
   end
@@ -352,7 +348,7 @@ Then /^In Orders Grid, expect Qty. is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Item SKU is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect SKU is #{expectation}"
+  #logger.step "In Orders Grid, expect SKU is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.item_sku.data(test_data[:order_id]).eql? expectation
   end
@@ -360,7 +356,7 @@ Then /^In Orders Grid, expect Item SKU is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Item Name is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Name is #{expectation}"
+  #logger.step "In Orders Grid, expect Name is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.item_name.data(test_data[:order_id]).eql? expectation
   end
@@ -368,7 +364,7 @@ Then /^In Orders Grid, expect Item Name is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Ship From is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Ship is #{expectation}"
+  #logger.step "In Orders Grid, expect Ship is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.ship_from.data(test_data[:order_id]).eql? expectation
   end
@@ -376,7 +372,7 @@ Then /^In Orders Grid, expect Ship From is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect service is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect service is #{expectation}"
+  #logger.step "In Orders Grid, expect service is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.service.data(test_data[:order_id]).eql? expectation
   end
@@ -384,7 +380,7 @@ Then /^In Orders Grid, expect service is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Insured Value is \$(.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Insured Value is #{expectation}"
+  #logger.step "In Orders Grid, expect Insured Value is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.insured_value.data(test_data[:order_id]).eql? expectation
   end
@@ -392,7 +388,7 @@ Then /^In Orders Grid, expect Insured Value is \$(.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Reference No. is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Reference No. is #{expectation}"
+  #logger.step "In Orders Grid, expect Reference No. is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.reference_no.data(test_data[:order_id]).eql? expectation
   end
@@ -400,7 +396,7 @@ Then /^In Orders Grid, expect Reference No. is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Cost Code is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Cost Code is #{expectation}"
+  #logger.step "In Orders Grid, expect Cost Code is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.cost_code.data(test_data[:order_id]).eql? expectation
   end
@@ -420,7 +416,7 @@ Then /^In Orders Grid, expect Tracking service is None$/ do
 end
 
 Then /^In Orders Grid, expect Tracking service is \"(.+)\"$/ do |expectation|
-  logger.step "In Orders Grid, expect Tracking service is #{expectation}"
+  #logger.step "In Orders Grid, expect Tracking service is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.tracking_service.data(test_data[:order_id]) == expectation
   end
@@ -428,7 +424,7 @@ Then /^In Orders Grid, expect Tracking service is \"(.+)\"$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Order Status is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Order Status is #{expectation}"
+  #logger.step "In Orders Grid, expect Order Status is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.order_status.data(test_data[:order_id]) == expectation
   end
@@ -436,7 +432,7 @@ Then /^In Orders Grid, expect Order Status is (.+)$/ do |expectation|
 end
 
 Then /^In Orders Grid, expect Tracking Number is populated$/ do
-  logger.step "In Orders Grid, expect Tracking Number is populated"
+  #logger.step "In Orders Grid, expect Tracking Number is populated"
   20.times do
     break if stamps.orders.orders_grid.column.tracking_no.data(test_data[:order_id]).length > 3
   end
@@ -444,7 +440,7 @@ Then /^In Orders Grid, expect Tracking Number is populated$/ do
 end
 
 Then /^In Orders Grid, expect Order Total is (.+)$/ do |expectation|
-  logger.step "In Orders Grid, expect Order Total is #{expectation}"
+  #logger.step "In Orders Grid, expect Order Total is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.order_total.data(test_data[:order_id]).eql? expectation
   end

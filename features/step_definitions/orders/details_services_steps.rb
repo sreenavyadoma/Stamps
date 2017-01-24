@@ -298,7 +298,6 @@ Then /^On Order Details form, expect service is an empty string$/ do
 end
 
 Then /^On Order Details form, set service to (.*)$/ do |service|
-  logger.step "On Order Details form, set service to #{service}"
   stamps.orders.order_details.service.select service
   15.times do
     step "On Order Details form, Blur out"
@@ -311,7 +310,6 @@ Then /^On Order Details form, set service to (.*)$/ do |service|
 end
 
 Then /^On Order Details form, expect service to be(?:| ([\w ]+))$/ do |expectation|
-  logger.step "On Order Details form, expect service is #{expectation}"
   if expectation.nil?
     selection_substr = ""
   else
@@ -322,10 +320,4 @@ Then /^On Order Details form, expect service to be(?:| ([\w ]+))$/ do |expectati
     break if stamps.orders.order_details.service.text_box.text.include? selection_substr
   end
   stamps.orders.order_details.service.text_box.text.should include selection_substr
-end
-
-Then /^xxx(?:| ([\w ]+))$/ do |expectation|
-  logger.step "#{expectation}"
-  logger.step "#{expectation}"
-  logger.step "#{expectation}"
 end

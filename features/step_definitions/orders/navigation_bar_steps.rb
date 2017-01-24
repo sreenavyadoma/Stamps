@@ -1,5 +1,5 @@
 Then /^Navigation Bar: Customer Balance$/ do
-  logger.step "Navigation Bar: Customer Balance"
+  #logger.step "Navigation Bar: Customer Balance"
   logger.message " ############## CUSTOMER BALANCE "
   logger.message " ############## #{stamps.navigation_bar.balance.amount}"
   logger.message " ############## #{stamps.navigation_bar.balance.amount}"
@@ -7,7 +7,7 @@ Then /^Navigation Bar: Customer Balance$/ do
 end
 
 Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
-  logger.step "Navigation Bar: Wait while balance less than #{expectation}"
+  #logger.step "Navigation Bar: Wait while balance less than #{expectation}"
   expectation = expectation.to_f
   for i in 0..30
       new_balance = stamps.navigation_bar.balance.amount.to_f

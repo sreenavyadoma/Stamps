@@ -1,47 +1,47 @@
 
 Then /^Mail On Customs form, set Package Contents to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Package Contents to #{value}"
+  #logger.step "On Customs form, set Package Contents to #{value}"
   @customs_form.package_contents.select value
 end
 
 Then /^Mail On Customs form, set Non-Delivery Options to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Non-Delivery Options to #{value}"
+  #logger.step "On Customs form, set Non-Delivery Options to #{value}"
   @customs_form.non_delivery_options.select value
 end
 
 Then /^Mail On Customs form, set Internal Transaction Number Requirement to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Internal Transaction Number to #{value}"
+  #logger.step "On Customs form, set Internal Transaction Number to #{value}"
   @customs_form.internal_transaction.select (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   sleep 1
 end
 
 Then /^Mail On Customs form, set More Info to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set More Info to #{value}"
+  #logger.step "On Customs form, set More Info to #{value}"
   @customs_form.more_info.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Mail On Customs form, set ITN Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set ITN Number to #{value}"
+  #logger.step "On Customs form, set ITN Number to #{value}"
   @customs_form.itn_number.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Mail On Customs form, set License Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set License Number to #{value}"
+  #logger.step "On Customs form, set License Number to #{value}"
   @customs_form.license.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Mail On Customs form, set Certificate Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Certificate Number to #{value}"
+  #logger.step "On Customs form, set Certificate Number to #{value}"
   @customs_form.certificate.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Mail On Customs form, set Invoice Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Invoice Number to #{value}"
+  #logger.step "On Customs form, set Invoice Number to #{value}"
   @customs_form.invoice.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^Mail On Customs form, add associated Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lb, oz, origin_country, tariff|
-  logger.step "On Customs form, add associated Item - Description #{description}, Qty #{qty}, Value #{value}, Weight\(lb\) #{lb}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
+  #logger.step "On Customs form, add associated Item - Description #{description}, Qty #{qty}, Value #{value}, Weight\(lb\) #{lb}, Weight\(oz\) #{oz} Origin #{origin_country}, Tariff #{tariff}"
 
   @add_item_form = @customs_form.add_item
   @add_item_form.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
@@ -55,7 +55,7 @@ Then /^Mail On Customs form, add associated Item - Description (\w+), Qty (\d+),
 end
 
 Then /^Mail On Customs form, Delete Item (\d+)$/ do |item_number|
-  logger.step "On Customs form, Delete Item #{item_number}"
+  #logger.step "On Customs form, Delete Item #{item_number}"
   count = @customs_item_grid.size
   item = @customs_item_grid.item item_number.to_i
   if count > 1
@@ -66,21 +66,21 @@ Then /^Mail On Customs form, Delete Item (\d+)$/ do |item_number|
 end
 
 Then /^Mail On Customs form, Delete All Items$/ do
-  logger.step "Mail On Customs form, Delete All Items"
+  #logger.step "Mail On Customs form, Delete All Items"
   @customs_form.delete_all
 end
 
 Then /^Mail On Customs form, check I agree to the USPS Privacy Act Statement$/ do
-  logger.step "Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
+  #logger.step "Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form.i_agree.check
 end
 
 Then /^Mail On Customs form, uncheck I agree to the USPS Privacy Act Statement$/ do
-  logger.step "Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
+  #logger.step "Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   @customs_form.i_agree.uncheck
 end
 
 Then /^Mail On Customs form, Save$/ do
-  logger.step "Save Customs Form"
+  #logger.step "Save Customs Form"
   @customs_form.save
 end

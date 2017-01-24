@@ -1,6 +1,6 @@
 
 Then /^Open Settings Modal$/ do
-  logger.step "Open Settings Modal"
+  #logger.step "Open Settings Modal"
   @general_settings = stamps.orders.toolbar.settings.general_settings #todo-Rob refactor General Settings.
 end
 # Services checkbox
@@ -75,7 +75,7 @@ Then /^In Settings modal,  Set Logoff to 2 hours$/ do
 end
 
 Then /^In Settings modal,  Logoff set (.*)$/ do |value|
-  logger.step "In Settings modal,  Logoff set #{value}"
+  #logger.step "In Settings modal,  Logoff set #{value}"
   case value.downcase
     when "5 min"
       @general_settings.log_off.five_min
@@ -278,7 +278,7 @@ Then /^In Settings modal,  Set Mail Balance to 500$/ do
 end
 
 Then /^In Settings modal,  Mail Balance Set (.*)$/ do |value|
-  logger.step "In Settings modal,  Mail Balance Set #{value}"
+  #logger.step "In Settings modal,  Mail Balance Set #{value}"
   case value.downcase
     when "0"
       @general_settings.postage_balance.zero
@@ -539,245 +539,245 @@ Then /^Reset Fields:  Check Weight$/ do
 end
 
 Then /^Reset Fields:  Uncheck Weight$/ do
-  logger.step "Reset Fields:  Uncheck Weight"
+  #logger.step "Reset Fields:  Uncheck Weight"
   @reset_fields.weight.checkbox.uncheck
 end
 
 Then /^Reset Fields:  Expect Weight Checked$/ do
-  logger.step "Reset Fields:  Expect Weight Checked"
+  #logger.step "Reset Fields:  Expect Weight Checked"
   @reset_fields.weight.checkbox.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Weight Unchecked$/ do
-  logger.step "Reset Fields:  Expect Weight Unchecked"
+  #logger.step "Reset Fields:  Expect Weight Unchecked"
   @reset_fields.weight.checkbox.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Dimensions$/ do
-  logger.step "Reset Fields:  Check Weight"
+  #logger.step "Reset Fields:  Check Weight"
   @reset_fields.dimensions.checkbox.check
 end
 
 Then /^Reset Fields:  Uncheck Dimensions$/ do
-  logger.step "Reset Fields:  Uncheck Weight"
+  #logger.step "Reset Fields:  Uncheck Weight"
   @reset_fields.dimensions.checkbox.uncheck
 end
 
 Then /^Reset Fields:  Expect Dimensions Checked$/ do
-  logger.step "Reset Fields:  Expect Dimensions Checked"
+  #logger.step "Reset Fields:  Expect Dimensions Checked"
   @reset_fields.dimensions.checkbox.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Dimensions Unchecked$/ do
-  logger.step "Reset Fields:  Expect Dimensions Unchecked"
+  #logger.step "Reset Fields:  Expect Dimensions Unchecked"
   @reset_fields.dimensions.checkbox.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Ship to Address$/ do
-  logger.step "Reset Fields:  Check Ship to Address"
+  #logger.step "Reset Fields:  Check Ship to Address"
   @reset_fields.ship_to_address.check
 end
 
 Then /^Reset Fields:  Uncheck Ship to Address$/ do
-  logger.step "Reset Fields:  Uncheck Ship to Address"
+  #logger.step "Reset Fields:  Uncheck Ship to Address"
   @reset_fields.ship_to_address.uncheck
 end
 
 
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
-  logger.step "Reset Fields:  Expect Ship to Address Checked"
+  #logger.step "Reset Fields:  Expect Ship to Address Checked"
   @reset_fields.ship_to_address.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
-  logger.step "Reset Fields:  Expect Ship to Address Unchecked"
+  #logger.step "Reset Fields:  Expect Ship to Address Unchecked"
   @reset_fields.ship_to_address.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Tracking$/ do
-  logger.step "Reset Fields:  Check Tracking"
+  #logger.step "Reset Fields:  Check Tracking"
   @reset_fields.tracking.check
 end
 
 Then /^Reset Fields:  Uncheck Tracking$/ do
-  logger.step "Reset Fields:  Uncheck Tracking"
+  #logger.step "Reset Fields:  Uncheck Tracking"
   @reset_fields.tracking.uncheck
 end
 
 Then /^Reset Fields:  Expect Tracking Checked$/ do
-  logger.step "Reset Fields:  Expect Tracking Checked"
+  #logger.step "Reset Fields:  Expect Tracking Checked"
   @reset_fields.tracking.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Tracking Unchecked$/ do
-  logger.step "Reset Fields:  Expect Tracking Unchecked"
+  #logger.step "Reset Fields:  Expect Tracking Unchecked"
   @reset_fields.tracking.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Extra Services$/ do
-    logger.step "Reset Fields:  Check Extra Services"
+    #logger.step "Reset Fields:  Check Extra Services"
   @reset_fields.extra_services.check
 end
 
 Then /^Reset Fields:  Uncheck Extra Services$/ do
-  logger.step "Reset Fields:  Uncheck Extra Services"
+  #logger.step "Reset Fields:  Uncheck Extra Services"
   @reset_fields.extra_services.uncheck
 end
 
 Then /^Reset Fields:  Expect Extra Services Checked$/ do
-  logger.step "Reset Fields:  Expect Extra Services Checked"
+  #logger.step "Reset Fields:  Expect Extra Services Checked"
   @reset_fields.extra_services.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
-  logger.step "Reset Fields:  Expect Extra Services Unchecked"
+  #logger.step "Reset Fields:  Expect Extra Services Unchecked"
   @reset_fields.extra_services.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Insurance$/ do
-  logger.step "Reset Fields:  Check Insurance"
+  #logger.step "Reset Fields:  Check Insurance"
   @reset_fields.insurance.check
 end
 
 Then /^Reset Fields:  Uncheck Insurance$/ do
-  logger.step "Reset Fields:  Uncheck Insurance"
+  #logger.step "Reset Fields:  Uncheck Insurance"
   @reset_fields.insurance.uncheck
 end
 
 Then /^Reset Fields:  Expect Insurance Checked$/ do
-  logger.step "Reset Fields:  Expect Insurance Checked"
+  #logger.step "Reset Fields:  Expect Insurance Checked"
   @reset_fields.insurance.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Insurance Unchecked$/ do
-  logger.step "Reset Fields:  Expect Insurance Unchecked"
+  #logger.step "Reset Fields:  Expect Insurance Unchecked"
   @reset_fields.insurance.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Reference Numbers$/ do
-  logger.step "Reset Fields:  Check Reference Number"
+  #logger.step "Reset Fields:  Check Reference Number"
   @reset_fields.reference_numbers.check
 end
 
 Then /^Reset Fields:  Uncheck Reference Numbers$/ do
-  logger.step "Reset Fields:  Uncheck Reference Numbers"
+  #logger.step "Reset Fields:  Uncheck Reference Numbers"
   @reset_fields.reference_numbers.uncheck
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Checked$/ do
-  logger.step "Reset Fields:  Expect Reference Numbers Checked"
+  #logger.step "Reset Fields:  Expect Reference Numbers Checked"
   @reset_fields.reference_numbers.checked?.should be true
 
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Unchecked$/ do
-  logger.step "Reset Fields:  Expect Reference Numbers Unchecked"
+  #logger.step "Reset Fields:  Expect Reference Numbers Unchecked"
   @reset_fields.reference_numbers.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Cost Code$/ do
-  logger.step "Reset Fields:  Check Cost Code"
+  #logger.step "Reset Fields:  Check Cost Code"
   @reset_fields.cost_code.check
 end
 
 Then /^Reset Fields:  Uncheck Cost Code$/ do
-  logger.step "Reset Fields:  Uncheck Cost Code"
+  #logger.step "Reset Fields:  Uncheck Cost Code"
   @reset_fields.cost_code.uncheck
 end
 
 Then /^Reset Fields:  Expect Cost Code Checked$/ do
-  logger.step "Reset Fields:  Expect Cost Code Checked"
+  #logger.step "Reset Fields:  Expect Cost Code Checked"
   @reset_fields.cost_code.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Cost Code Unchecked$/ do
-  logger.step "Reset Fields:  Expect Cost Code Unchecked"
+  #logger.step "Reset Fields:  Expect Cost Code Unchecked"
   @reset_fields.cost_code.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Customs$/ do
-  logger.step "Reset Fields:  Check Customs"
+  #logger.step "Reset Fields:  Check Customs"
   @reset_fields.customs.check
 end
 
 Then /^Reset Fields:  Uncheck Customs$/ do
-  logger.step "Reset Fields:  Uncheck Customs"
+  #logger.step "Reset Fields:  Uncheck Customs"
   @reset_fields.customs.uncheck
 end
 
 Then /^Reset Fields:  Expect Customs Checked$/ do
-  logger.step "Reset Fields:  Expect Customs Checked"
+  #logger.step "Reset Fields:  Expect Customs Checked"
   @reset_fields.customs.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Customs Unchecked$/ do
-  logger.step "Reset Fields:  Expect Customs Unchecked"
+  #logger.step "Reset Fields:  Expect Customs Unchecked"
   @reset_fields.customs.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Quantity$/ do
-  logger.step "Reset Fields:  Check Quantity"
+  #logger.step "Reset Fields:  Check Quantity"
   @reset_fields.quantity.check
 end
 
 Then /^Reset Fields:  Uncheck Quantity$/ do
-  logger.step "Reset Fields:  Uncheck Quantity"
+  #logger.step "Reset Fields:  Uncheck Quantity"
   @reset_fields.quantity.uncheck
 end
 
 Then /^Reset Fields:  Expect Quantity Checked$/ do
-  logger.step "Reset Fields:  Expect Quantity Checked"
+  #logger.step "Reset Fields:  Expect Quantity Checked"
   @reset_fields.quantity.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Quantity Unchecked$/ do
-  logger.step "Reset Fields:  Expect Quantity Unchecked"
+  #logger.step "Reset Fields:  Expect Quantity Unchecked"
   @reset_fields.quantity.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Stamps Amount$/ do
-  logger.step "Reset Fields:  Check Stamps Amount"
+  #logger.step "Reset Fields:  Check Stamps Amount"
   @reset_fields.stamps_amount.check
 end
 
 Then /^Reset Fields:  Uncheck Stamps Amount$/ do
-  logger.step "Reset Fields:  Uncheck Stamps Amount"
+  #logger.step "Reset Fields:  Uncheck Stamps Amount"
   @reset_fields.stamps_amount.uncheck
 end
 
 Then /^Reset Fields:  Expect Stamps Amount Checked$/ do
-  logger.step "Reset Fields:  Expect Stamps Amount Checked"
+  #logger.step "Reset Fields:  Expect Stamps Amount Checked"
   @reset_fields.stamps_amount.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Stamps Amount Unchecked$/ do
-  logger.step "Reset Fields:  Expect Stamps Amount Unchecked"
+  #logger.step "Reset Fields:  Expect Stamps Amount Unchecked"
   @reset_fields.stamps_amount.checked?.should be false
 end
 
 Then /^Reset Fields:  Check Auto-Advance Label Position$/ do
-  logger.step "Reset Fields:  Check Auto-Advance Label Position"
+  #logger.step "Reset Fields:  Check Auto-Advance Label Position"
   @reset_fields.auto_advance_label_position.check
 end
 
 Then /^Reset Fields:  Uncheck Auto-Advance Label Position$/ do
-  logger.step "Reset Fields:  Uncheck Auto-Advance Label Position"
+  #logger.step "Reset Fields:  Uncheck Auto-Advance Label Position"
   @reset_fields.auto_advance_label_position.uncheck
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Checked$/ do
-  logger.step "Reset Fields:  Expect Auto-Advance Label Position Checked"
+  #logger.step "Reset Fields:  Expect Auto-Advance Label Position Checked"
   @reset_fields.auto_advance_label_position.checked?.should be true
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
-  logger.step "Reset Fields:  Expect Auto-Advance Label Position Unchecked"
+  #logger.step "Reset Fields:  Expect Auto-Advance Label Position Unchecked"
   @reset_fields.auto_advance_label_position.checked?.should be false
 end
 
 Then /^Reset Fields:  Set Weight to (\d+) lb (\d+) oz$/ do |lb, oz|
-  logger.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
+  #logger.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
   step "Reset Fields:  Check Weight"
   @reset_fields.weight.lb.set lb
   @reset_fields.weight.oz.set oz
@@ -823,19 +823,19 @@ Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
 end
 
 Then /^Reset Fields:  Close$/ do
-  logger.step "Reset Fields:  Close"
+  #logger.step "Reset Fields:  Close"
   @reset_fields.close
 end
 
 Then /^In Settings modal,  Save$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  logger.step "In Settings modal,  Save"
+  #logger.step "In Settings modal,  Save"
   @general_settings.save
 end
 
 Then /^In Settings modal,  Close$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  logger.step "In Settings modal,  Close"
+  #logger.step "In Settings modal,  Close"
   @general_settings.close
 end
 

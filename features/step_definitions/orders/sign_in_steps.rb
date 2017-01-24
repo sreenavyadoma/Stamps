@@ -1,5 +1,5 @@
 Given /^Visit Orders Sign-in page$/ do
-  logger.step "Visit Orders Sign-in page"
+  #logger.step "Visit Orders Sign-in page"
   stamps.load_page
   browser.url.should include "stamps.com"
 end
@@ -11,7 +11,7 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
     usr = username
     @username = username
   end
-  logger.step "A user is signed in to Orders as #{usr}/#{password}"
+  #logger.step "A user is signed in to Orders as #{usr}/#{password}"
   @market_place_modal = stamps.orders.landing_page.first_time_sign_in usr, password
 end
 
@@ -36,7 +36,7 @@ Given /^A user is signed in to Orders$/ do
 end
 
 Given /^A user is signed in to Orders as (.*)\/(.*)/ do |username, password|
-  logger.step "A user is signed in to Orders as #{username}/#{password}"
+  #logger.step "A user is signed in to Orders as #{username}/#{password}"
   step "I launched default browser"
   if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -49,7 +49,7 @@ end
 
 #todo Refactor SIGN-IN step definition into one step
 Given /^A user is signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username, password|
-  logger.step "A user is signed in to Orders as #{browser}/#{username}/#{password}"
+  #logger.step "A user is signed in to Orders as #{browser}/#{username}/#{password}"
   step "I launched browser #{browser}"
   if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -61,7 +61,7 @@ Given /^A user is signed in to Orders as (.*)\/(.*)\/(.*)/ do |browser, username
 end
 
 Given /^A user is signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, url, username, password|
-  logger.step "A user is signed in to Orders as #{browser}/#{url}/#{username}/#{password}"
+  #logger.step "A user is signed in to Orders as #{browser}/#{url}/#{username}/#{password}"
   step "I launched browser #{browser}"
   if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -73,12 +73,12 @@ Given /^A user is signed in to Orders as (.*)\/(.*)\/(.*)\/(.*)/ do |browser, ur
 end
 
 Then /^Orders: Sign in$/ do
-  logger.step "Orders: Sign in"
+  #logger.step "Orders: Sign in"
   stamps.orders.landing_page.sign_in :default
 end
 
 Then /^Sign out$/ do
-  logger.step "Sign out"
+  #logger.step "Sign out"
   begin
     step "Navigation Bar: Customer Balance"
   rescue

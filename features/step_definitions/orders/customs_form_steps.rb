@@ -1,6 +1,5 @@
 
 Then /^On Order Details form, click Edit Form button$/ do
-  logger.step "On Order Details form, click Edit Form button"
   stamps.orders.order_details.customs.edit_form
 end
 
@@ -41,7 +40,6 @@ Then /^On Customs form, set Package Contents to Other$/ do
 end
 
 Then /^On Customs form, set Package Contents to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Package Contents to #{value}"
   step "On Customs form, Blur out"
   test_data[:customs_package_contents] = value
   stamps.orders.order_details.customs.edit_form.package_contents.select test_data[:customs_package_contents]
@@ -81,7 +79,6 @@ Then /^On Customs form, expect Package Contents is Other$/ do
 end
 
 Then /^On Customs form, expect Package Contents is \"(.+)\"$/ do |expectation|
-  logger.step "On Customs form, expect Package Contents is #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.package_contents.text_box.text.should eql expectation
 end
@@ -95,7 +92,6 @@ Then /^On Customs form, set Non-Delivery Options to Return to sender$/ do
 end
 
 Then /^On Customs form, set Non-Delivery Options to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Non-Delivery Options to #{value}"
   step "On Customs form, Blur out"
   test_data[:customs_non_delivery_options] = value
   stamps.orders.order_details.customs.edit_form.non_delivery_options.select test_data[:customs_non_delivery_options]
@@ -115,7 +111,6 @@ Then /^On Customs form, expect Non-Delivery Options is Return to sender$/ do
 end
 
 Then /^On Customs form, expect Non-Delivery Options is \"(.+)\"$/ do |expectation|
-  logger.step "On Customs form, expect Non-Delivery to  be #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.non_delivery_options.text_box.text.should eql expectation
 end
@@ -129,7 +124,6 @@ Then /^On Customs form, set Internal Transaction Number to Required$/ do
 end
 
 Then /^On Customs form, set Internal Transaction Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Internal Transaction Number to #{value}"
   step "On Customs form, Blur out"
   test_data[:customs_internal_transaction_no] = value
   stamps.orders.order_details.customs.edit_form.internal_transaction.select test_data[:customs_internal_transaction_no]
@@ -149,13 +143,11 @@ Then /^On Customs form, expect Internal Transaction Number is Required$/ do
 end
 
 Then /^On Customs form, expect Internal Transaction Number is \"(.+)\"$/ do |expectation|
-  logger.step "On Customs form, expect Internal Transaction Number to  be #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.internal_transaction.text_box.text.should eql expectation
 end
 
 Then /^On Customs form, set More Info to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set More Info to #{value}"
   test_data[:customs_more_info] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric(18): value
   stamps.orders.order_details.customs.edit_form.more_info.set test_data[:customs_more_info]
   step "On Customs form, Save Total"
@@ -166,13 +158,11 @@ Then /^On Customs form, expect More Info saved value is the same$/ do
 end
 
 Then /^On Customs form, expect More Info is (.+)$/ do |expectation|
-  logger.step "On Customs form, expect More Info to  be #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.more_info.text.should eql expectation
 end
 
 Then /^On Customs form, set ITN Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set ITN Number to #{value}"
   step "On Customs form, Blur out"
   test_data[:customs_itn_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   stamps.orders.order_details.customs.edit_form.itn_number.set test_data[:customs_itn_no]
@@ -184,13 +174,11 @@ Then /^On Customs form, expect ITN Number saved value is the same$/ do
 end
 
 Then /^On Customs form, expect ITN Number is (.+)$/ do |expectation|
-  logger.step "On Customs form, expect ITN Number to  be #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.itn_number.text.should eql expectation
 end
 
 Then /^On Customs form, set License Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set License Number to #{value}"
   step "On Customs form, Blur out"
   test_data[:customs_license_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
   stamps.orders.order_details.customs.edit_form.license.set test_data[:customs_license_no]
@@ -202,13 +190,11 @@ Then /^On Customs form, expect License Number saved value is the same$/ do
 end
 
 Then /^On Customs form, expect License Number is (.+)$/ do |expectation|
-  logger.step "On Customs form, expect License Number to  be #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.license.text.should eql expectation
 end
 
 Then /^On Customs form, set Certificate Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Certificate Number to #{value}"
   step "On Customs form, Blur out"
   test_data[:customs_certificate_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
   stamps.orders.order_details.customs.edit_form.certificate.set test_data[:customs_certificate_no]
@@ -220,13 +206,11 @@ Then /^On Customs form, expect Certificate Number saved value is the same$/ do
 end
 
 Then /^On Customs form, expect Certificate Number is (.+)$/ do |expectation|
-  logger.step "On Customs form, expect Certificate Number to  be #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.certificate.text.should eql expectation
 end
 
 Then /^On Customs form, set Invoice Number to \"(.+)\"$/ do |value|
-  logger.step "On Customs form, set Invoice Number to #{value}"
   step "On Customs form, Blur out"
   test_data[:customs_invoice_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   stamps.orders.order_details.customs.edit_form.invoice.set test_data[:customs_invoice_no]
@@ -238,13 +222,11 @@ Then /^On Customs form, expect Invoice Number saved value is the same$/ do
 end
 
 Then /^On Customs form, expect Invoice Number is (.+)$/ do |expectation|
-  logger.step "On Customs form, expect Invoice Number to  be #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.invoice.text.should eql expectation
 end
 
 Then /^On Customs form, Delete Item (\d+)$/ do |item_number|
-  logger.step "On Customs form, Delete Item #{item_number}"
   step "On Customs form, Blur out"
   count = stamps.orders.order_details.customs.edit_form.item_grid.size
   item = stamps.orders.order_details.customs.edit_form.item_grid.item item_number.to_i
@@ -256,31 +238,26 @@ Then /^On Customs form, Delete Item (\d+)$/ do |item_number|
 end
 
 Then /^On Customs form, check I agree to the USPS Privacy Act Statement$/ do
-  logger.step "Check I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.i_agree.check
 end
 
 Then /^On Customs form, expect I agree to the USPS Privacy Act Statement is checked$/ do
-  logger.step "On Customs form, expect I agree to the USPS Privacy Act Statement is checked"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.i_agree.checked?.should be true
 end
 
 Then /^On Customs form, uncheck I agree to the USPS Privacy Act Statement$/ do
-  logger.step "Uncheck I agree to the USPS Privacy Act Statement and Restrictions and Prohibition"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.i_agree.uncheck
 end
 
 Then /^On Customs form, expect I agree to the USPS Privacy Act Statement is unchecked$/ do
-  logger.step "On Customs form, expect I agree to the USPS Privacy Act Statement is unchecked"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.i_agree.checked?.should be false
 end
 
 Then /^On Customs form, click Close button$/ do
-  logger.step "Closing customs form"
   step "Pause for 4 seconds"
   step "On Customs form, Blur out"
   step "On Customs form, Save Total"
@@ -290,14 +267,12 @@ Then /^On Customs form, click Close button$/ do
 end
 
 Then /^Cancel Customs Form$/ do
-  logger.step "Cancel customs form"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.cancel.should be false
   step "Save Test Data"
 end
 
 Then /^On Customs form, expect USPS Privacy Act Warning is visible$/ do
-  logger.step "On Customs form, expect USPS Privacy Act Warning is visible"
   step "On Customs form, Blur out"
   15.times do
     break if stamps.orders.order_details.customs.edit_form.usps_privacy_act_warning.visible?
@@ -306,7 +281,6 @@ Then /^On Customs form, expect USPS Privacy Act Warning is visible$/ do
 end
 
 Then /^On Customs form, expect USPS Privacy Act Warning is hidden$/ do
-  logger.step "On Customs form, expect USPS Privacy Act Warning is hidden"
   step "On Customs form, Blur out"
   10.times do
     break if stamps.orders.order_details.customs.edit_form.usps_privacy_act_warning.visible?
@@ -315,61 +289,51 @@ Then /^On Customs form, expect USPS Privacy Act Warning is hidden$/ do
 end
 
 Then /^On Customs form, expect More Info is hidden$/ do
-  logger.step "On Customs form, expect More Info is hidden"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.more_info.present?.should be false
 end
 
 Then /^On Customs form, expect More Info is visible$/ do
-  logger.step "On Customs form, expect More Info is visible"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.more_info.present?.should be true
 end
 
 Then /^On Customs form, expect License Number is visible$/ do
-  logger.step "On Customs form, expect License Number is visible"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.license.present?.should be true
 end
 
 Then /^On Customs form, expect License Number is hidden$/ do
-  logger.step "On Customs form, expect License Number is hidden"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.license.present?.should be false
 end
 
 Then /^On Customs form, expect Certificate Number is hidden$/ do
-  logger.step "On Customs form, expect Certificate Number is hidden"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.certificate.present?.should be false
 end
 
 Then /^On Customs form, expect Certificate Number is visible$/ do
-  logger.step "On Customs form, expect Certificate Number is visible"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.certificate.present?.should be true
 end
 
 Then /^On Customs form, expect Invoice Number is hidden$/ do
-  logger.step "On Customs form, expect Invoice Number is hidden"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.invoice.present?.should be false
 end
 
 Then /^On Customs form, expect Invoice Number is visible$/ do
-  logger.step "On Customs form, expect Invoice Number is visible"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.invoice.present?.should be true
 end
 
 Then /^On Customs form, expect ITN Number is hidden$/ do
-  logger.step "On Customs form, expect ITN Number is hidden"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.itn_number.enabled?.should be false
 end
 
 Then /^On Customs form, expect ITN Number is visible$/ do
-  logger.step "On Customs form, expect ITN Number is visible"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.itn_number.enabled?.should be true
 end
@@ -383,7 +347,6 @@ Then /^Expect Customs Form Internal Transaction Number is Not required$/ do
 end
 
 Then /^Expect Customs Form Internal Transaction Number is \"(.+)\"$/ do |expectation|
-  logger.step "Expect Customs Form Internal Transaction Number is #{expectation}"
   step "On Customs form, Blur out"
   text_box = stamps.orders.order_details.customs.edit_form.internal_transaction.text_box
   10.times do
@@ -393,7 +356,6 @@ Then /^Expect Customs Form Internal Transaction Number is \"(.+)\"$/ do |expecta
 end
 
 Then /^On Customs form, expect Item Grid count is (.+)$/ do |expectation|
-  logger.step "On Customs form, expect Item Grid count is #{expectation}"
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.item_grid.size.should eql expectation.to_i
 end
@@ -407,7 +369,6 @@ Then /^On Customs form, expect Total saved value is the same$/ do
 end
 
 Then /^On Customs form, expect Total Value is (.+)$/ do |expectation|
-  logger.step "On Customs form, expect Total Value is #{expectation}"
   step "On Customs form, Blur out"
   expectation = expectation.to_f
   20.times do
@@ -419,7 +380,6 @@ Then /^On Customs form, expect Total Value is (.+)$/ do |expectation|
 end
 
 Then /^On Customs form, add associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, origin_country, tariff|
-  logger.step "On Customs form, add associated Item #{item_number}, Description #{description}, Qty #{qty}, Price #{price}, Origin #{origin_country}, Tariff #{tariff}"
   step "On Customs form, Blur out"
   item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)
   test_data["customs_total_value"]
@@ -440,48 +400,41 @@ Then /^On Customs form, add associated Item (\d+), Description (.*), Qty (\d+), 
 end
 
 Then /^On Customs form, add associated Item (\d+)$/ do |item_number|
-  logger.step "On Customs form, add associated Item #{item_number}"
   step "On Customs form, Blur out"
   @customs_item_grid_line_item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)
 end
 
 Then /^On Customs form, set Item Description to (.*)$/ do |value|
-  logger.step "On Order Details form, set Description to #{value}"
   step "On Customs form, Blur out"
   @customs_item_grid_line_item.description.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   step "On Customs form, Save Total"
 end
 
 Then /^On Customs form, set Item Qty to (\d+)$/ do |value|
-  logger.step "On Order Details form, set Qty to #{value}"
   step "On Customs form, Blur out"
   @customs_item_grid_line_item.qty.set value
   step "On Customs form, Save Total"
 end
 
 Then /^On Customs form, set Item Unit Price to (.*)$/ do |value|
-  logger.step "On Order Details form, set Unit Price to #{value}"
   step "On Customs form, Blur out"
   @customs_item_grid_line_item.unit_price.set value
   step "On Customs form, Save Total"
 end
 
 Then /^On Customs form, set Item Made In Country to (.*)$/ do |value|
-  logger.step "On Customs form, set Item Made In Country to #{value}"
   step "On Customs form, Blur out"
   @customs_item_grid_line_item.made_in.select value
   step "On Customs form, Save Total"
 end
 
 Then /^On Customs form, set Item Tarriff to (.*)$/ do |value|
-  logger.step "On Order Details form, set Tarriff to #{value}"
   step "On Customs form, Blur out"
   @customs_item_grid_line_item.hs_tariff.set value
   step "On Customs form, Save Total"
 end
 
 Then /^On Customs form, expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
-  logger.step "On Customs form, expect Item #{item_number} Description is #{expectation}"
   step "On Customs form, Blur out"
   item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)
   10.times do
@@ -491,7 +444,6 @@ Then /^On Customs form, expect Item (\d+) Description is (.*)$/ do |item_number,
 end
 
 Then /^On Customs form, expect Item (\d+) Quantity is (\d+)$/ do |item_number, expectation|
-  logger.step "On Customs form, expect Item #{item_number} Quantity is #{expectation}"
   step "On Customs form, Blur out"
   expectation = expectation.to_i
   item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)
@@ -502,7 +454,6 @@ Then /^On Customs form, expect Item (\d+) Quantity is (\d+)$/ do |item_number, e
 end
 
 Then /^On Customs form, expect Item (\d+) Unit Price is (.*)$/ do |item_number, expectation|
-  logger.step "On Customs form, expect Item #{item_number} Unit Price is #{expectation}"
   step "On Customs form, Blur out"
   expectation = expectation.to_f
   item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)
@@ -513,7 +464,6 @@ Then /^On Customs form, expect Item (\d+) Unit Price is (.*)$/ do |item_number, 
 end
 
 Then /^On Customs form, expect Item (\d+) Origin Country is (.*)$/ do |item_number, expectation|
-  logger.step "On Customs form, expect Item #{item_number} Origin Country is #{expectation}"
   step "On Customs form, Blur out"
   item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)
   10.times do
@@ -523,7 +473,6 @@ Then /^On Customs form, expect Item (\d+) Origin Country is (.*)$/ do |item_numb
 end
 
 Then /^On Customs form, expect Item (\d+) Tariff is (.*)$/ do |item_number, expectation|
-  logger.step "On Customs form, expect Item #{item_number} Tariff is #{expectation}"
   step "On Customs form, Blur out"
   expectation = expectation.to_f
   item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)

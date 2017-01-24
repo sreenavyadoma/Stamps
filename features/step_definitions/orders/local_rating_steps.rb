@@ -1,14 +1,14 @@
 Then /^Verify Local Rating$/ do |table|
-  logger.step "Verify Local Rating..."
+  #logger.step "Verify Local Rating..."
   #results_file = "local_rating_results.csv"
   order_details_form = stamps.orders.details
   parameter_array = table.hashes
   results = Hash.new
 
   parameter_array.each_with_index do |element, index|
-    logger.step "  --------------------------------------------------------------------------- "
-    logger.step "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lb"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
-    logger.step "  --------------------------------------------------------------------------- "
+    #logger.step "  --------------------------------------------------------------------------- "
+    #logger.step "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lb"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
+    #logger.step "  --------------------------------------------------------------------------- "
     step "On Order Details form, set Ship-From to #{element["ship_from"]}"
     step "On Order Details form, set Ship-To to Domestic Address #{element["ship_to"]}"
     step "On Order Details form, set Ounces to #{element["weight_oz"]}"
@@ -43,9 +43,9 @@ Then /^Verify Local Rating$/ do |table|
       break if total_ship_cost.to_f == expected_total_amount.to_f
     end
 
-    logger.step "  --------------------------------------------------------------------------- "
-    logger.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
-    logger.step "  --------------------------------------------------------------------------- "
+    #logger.step "  --------------------------------------------------------------------------- "
+    #logger.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
+    #logger.step "  --------------------------------------------------------------------------- "
 
     actual = stamps.orders.order_details.footer.total_ship_cost
     actual.should eql expected_total_amount

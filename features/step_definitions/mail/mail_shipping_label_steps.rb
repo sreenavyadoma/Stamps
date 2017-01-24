@@ -1,6 +1,6 @@
 
 Then /^Mail Shipping Labels: Set service to (.*)/ do |service|
-  logger.step "Shipping Labels - Set Print Mail service to: \n #{service}"
+  #logger.step "Shipping Labels - Set Print Mail service to: \n #{service}"
   stamps.mail.service.select service
 end
 
@@ -145,30 +145,30 @@ Then /^Mail Shipping Labels: Select service Priority Mail Express International 
 end
 
 Then /^Mail Shipping Labels: Edit Customs Form$/ do
-  logger.step "Mail Shipping Labels: Edit Customs Form"
+  #logger.step "Mail Shipping Labels: Edit Customs Form"
   @customs_form = stamps.mail.customs.edit_form
 end
 
 Then /^Mail Shipping Labels: Open Contacts modal/ do
-  logger.step "Mail Shipping Labels: Open Contacts Modal"
+  #logger.step "Mail Shipping Labels: Open Contacts Modal"
   @contacts = stamps.mail.ship_to.contacts.open
 end
 
 Then /^Mail Shipping Labels: Select left side starting label/ do
-  logger.step "Mail Shipping Labels: Select - Left side label"
+  #logger.step "Mail Shipping Labels: Select - Left side label"
   selected = stamps.mail.shipping_label.form_view.starting_label.left
-  logger.step "left-side label was #{(selected)?'selected.':'not selected'}"
+  #logger.step "left-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Mail Shipping Labels: Select right side starting label/ do
-  logger.step "Mail Shipping Labels: Select - Right side label"
+  #logger.step "Mail Shipping Labels: Select - Right side label"
   
   selected = stamps.mail.shipping_label.form_view.starting_label.right
-  logger.step "right-side label was #{(selected)?'selected.':'not selected'}"
+  #logger.step "right-side label was #{(selected)?'selected.':'not selected'}"
 end
 
 Then /^Mail Shipping Labels: Expect Domestic Address field displays (.*)$/ do |value|
-  logger.step "Shipping Label: Expect Domestic Address is #{value}"
+  #logger.step "Shipping Label: Expect Domestic Address is #{value}"
   
   5.times{
     begin
@@ -187,49 +187,49 @@ Then /^Mail Shipping Labels: Expect Domestic Address field displays (.*)$/ do |v
 end
 
 Then /^Mail Shipping Labels: Set Hide Mail Value to Checked$/ do
-  logger.step "Mail Shipping Labels: Check Hide Mail Value"
+  #logger.step "Mail Shipping Labels: Check Hide Mail Value"
   
   stamps.mail.shipping_label.form_view.hide_postage_value.check
 end
 
 Then /^Mail Shipping Labels: Set Hide Mail Value to Unchecked$/ do
-  logger.step "Mail Shipping Labels: Uncheck Hide Mail Value"
+  #logger.step "Mail Shipping Labels: Uncheck Hide Mail Value"
   
   stamps.mail.shipping_label.form_view.hide_postage_value.uncheck
 end
 
 Then /^Mail Shipping Labels: Set Print Receipt to Checked$/ do
-  logger.step "Mail Shipping Labels: Check Print Receipt"
+  #logger.step "Mail Shipping Labels: Check Print Receipt"
   
   stamps.mail.shipping_label.form_view.print_receipt.check
 end
 
 Then /^Mail Shipping Labels: Set Print Receipt to Unchecked$/ do
-  logger.step "Mail Shipping Labels: Uncheck Print Receipt"
+  #logger.step "Mail Shipping Labels: Uncheck Print Receipt"
   
   stamps.mail.shipping_label.form_view.print_receipt.uncheck
 end
 
 Then /^Mail Shipping Labels: Set Print Reference Number to Checked$/ do
-  logger.step "Mail Shipping Labels: Check Print Reference Number"
+  #logger.step "Mail Shipping Labels: Check Print Reference Number"
   
   stamps.mail.shipping_label.form_view.print_reference_number.check
 end
 
 Then /^Mail Shipping Labels: Set Print Reference Number to Unchecked$/ do
-  logger.step "Mail Shipping Labels: Uncheck Print Reference Number"
+  #logger.step "Mail Shipping Labels: Uncheck Print Reference Number"
   
   stamps.mail.shipping_label.form_view.print_reference_number.uncheck
 end
 
 Then /^Mail Shipping Labels: Set Reference Number to (.*)/ do |ref_no|
-  logger.step "Set Shipping Label Reference Number to #{ref_no}"
+  #logger.step "Set Shipping Label Reference Number to #{ref_no}"
   
   stamps.mail.shipping_label.form_view.reference_number.set ref_no
 end
 
 Then /^Mail Shipping Labels: Set Cost Code to (.*)/ do |code|
-  logger.step "Mail Shipping Labels: Set Cost Code to \n #{code}"
+  #logger.step "Mail Shipping Labels: Set Cost Code to \n #{code}"
   
   stamps.mail.shipping_label.form_view.cost_code.select code
 end

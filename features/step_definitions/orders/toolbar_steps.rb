@@ -1,6 +1,6 @@
 Then /^In Orders Toolbar, click Add button$/ do
   begin
-    logger.step "In Orders Toolbar, click Add button"
+    #logger.step "In Orders Toolbar, click Add button"
     test_data[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
     stamps.orders.toolbar.add.order
@@ -13,7 +13,7 @@ Then /^In Orders Toolbar, click Add button$/ do
 end
 
 Then /^In Orders Toolbar, Refresh Orders$/ do
-  logger.step "In Orders Toolbar, Refresh Orders"
+  #logger.step "In Orders Toolbar, Refresh Orders"
   stamps.orders.toolbar.refresh_orders
 end
 
@@ -22,7 +22,7 @@ Then /^In Print modal, expect Print Modal is present$/ do
 end
 
 Then /^In Print modal, click Print button$/ do
-  logger.step "Print"
+  #logger.step "Print"
   print_modal = stamps.orders.toolbar.print_btn.print_modal
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
@@ -33,22 +33,22 @@ Then /^In Print modal, click Print button$/ do
 end
 
 Then /^In Print modal, Open Reprint Modal$/ do
-  logger.step "RePrint"
+  #logger.step "RePrint"
   @reprint_modal = stamps.orders.toolbar.reprint
 end
 
 Then /^Label Unavailable:  Expect Visible$/ do
-  logger.step "Label Unavailable:  Expect Visible"
+  #logger.step "Label Unavailable:  Expect Visible"
   case @reprint_modal
     when LabelUnavailable
       logger.step @reprint_modal.message
       label_unavailable_visible = @reprint_modal.present?
-      logger.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
+      #logger.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
       @reprint_modal.ok
       @reprint_modal.close
       label_unavailable_visible.should be true
     else
-      logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
+      #logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
       @reprint_modal.present?.should be true
   end
 end
@@ -58,13 +58,13 @@ Then /^In Orders Toolbar, click Add button second order$/ do
 end
 
 Then /^In Orders Toolbar, click Add button third order$/ do
-  logger.step "In Orders Toolbar, click Add button third order"
+  #logger.step "In Orders Toolbar, click Add button third order"
   test_data[:order_id_3] = stamps.orders.order_details.toolbar.order_id
 end
 
 
 Then /^Fail the test$/ do
-  logger.step "Fail the test"
+  #logger.step "Fail the test"
   true.should eql  false
 end
 
