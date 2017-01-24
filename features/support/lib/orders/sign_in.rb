@@ -1,12 +1,195 @@
 module Stamps
   module Orders
-    class WelcomeModal < Browser::Modal
-      private
-      def okay_button
-        browser.span text: 'OK'
+    class LearnMoreModal < Browser::Modal
+      attr_reader :title, :msg_container, :next_button, :cancel_button, :learn_button, :close_button
+
+      def initialize(param)
+        super(param)
+        @title = BrowserElement.new browser.div(text: 'Learn More')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @close_button = BrowserElement.new browser.span(text: 'Close')
+        @cancel_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @learn_button = BrowserElement.new browser.span(text: 'Learn More')
       end
 
-      public
+      def present?
+        title.present?
+      end
+
+      def wait_until_present *args
+        title.safely_wait_until_present *args
+      end
+
+      def cancel
+        cancel_button.click_while_present
+      end
+
+      def message
+        msg_container.text
+      end
+
+      def close
+        logger.message message
+        close_button.click_while_present
+      end
+    end
+
+    class ImportFromStoresModal < Browser::Modal
+      attr_reader :title, :msg_container, :next_button, :close_button, :learn_more
+
+      def initialize(param)
+        super(param)
+        @title = BrowserElement.new browser.div(text: 'Import from Stores')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @learn_more ||= LearnMoreModal.new(param)
+      end
+
+      def present?
+        title.present?
+      end
+
+      def wait_until_present *args
+        title.safely_wait_until_present *args
+      end
+
+      def close
+        close_button.click_while_present
+      end
+
+      def message
+        msg_container.text
+      end
+
+      def next
+        10.times do
+          logger.message message
+          next_button.safe_click
+          return learn_more if learn_more.present?
+        end
+      end
+    end
+
+    class ImportFromCsvModal < Browser::Modal
+      attr_reader :title, :msg_container, :next_button, :close_button, :import_from_stores
+
+      def initialize(param)
+        super(param)
+        @title = BrowserElement.new browser.div(text: 'Import from CSV')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @import_from_stores ||= ImportFromStoresModal.new(param)
+      end
+
+      def present?
+        title.present?
+      end
+
+      def wait_until_present *args
+        title.safely_wait_until_present *args
+      end
+
+      def close
+        close_button.click_while_present
+      end
+
+      def message
+        msg_container.text
+      end
+
+      def next
+        10.times do
+          logger.message message
+          next_button.safe_click
+          return import_from_stores if import_from_stores.present?
+        end
+      end
+    end
+
+    class AddManualOrderModal < Browser::Modal
+      attr_reader :title, :msg_container, :next_button, :close_button, :import_from_csv
+
+      def initialize(param)
+        super(param)
+        @title = BrowserElement.new browser.div(text: 'Add Manual Order')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @import_from_csv ||= ImportFromCsvModal.new(param)
+      end
+
+      def present?
+        title.present?
+      end
+
+      def wait_until_present *args
+        title.safely_wait_until_present *args
+      end
+
+      def close
+        close_button.click_while_present
+      end
+
+      def message
+        msg_container.text
+      end
+
+      def next
+        10.times do
+          logger.message message
+          next_button.safe_click
+          return import_from_csv if import_from_csv.present?
+        end
+      end
+    end
+
+    class NewWelcomeModal < Browser::Modal
+      attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
+
+      def initialize(param)
+        super(param)
+        @title = BrowserElement.new browser.div(text: 'Welcome!')
+        @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button = BrowserElement.new browser.span(text: 'Next')
+        @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @add_manual_order ||= AddManualOrderModal.new(param)
+      end
+
+      def present?
+        title.present?
+      end
+
+      def wait_until_present *args
+        title.safely_wait_until_present *args
+      end
+
+      def close
+        close_button.click_while_present
+      end
+
+      def message
+        msg_container.text
+      end
+
+      def next
+        10.times do
+          logger.message message
+          next_button.safe_click
+          return add_manual_order if add_manual_order.present?
+        end
+      end
+    end
+
+    class WelcomeModal < Browser::Modal
+      attr_reader :okay_button
+
+      def initialize(param)
+        super(param)
+        @okay_button = BrowserElement.new browser.span(text: 'OK')
+      end
+
       def present?
         okay_button.present?
       end
@@ -21,7 +204,7 @@ module Stamps
 
       def ok
         5.times{
-          element_helper.safe_click okay_button
+          okay_button.safe_click
           break unless okay_button.present?
         }
       end
@@ -30,12 +213,12 @@ module Stamps
     class OrdersLandingPage < Browser::Modal
       attr_reader :username, :password, :sign_in_btn, :title
 
-      def initialize param
-        super param
-        @username ||= TextBoxElement.new browser.text_field(id: "UserNameTextBox")
-        @password ||= TextBoxElement.new browser.text_field(id: "PasswordTextBox")
-        @sign_in_btn ||= ElementWrapper.new browser.button(id: "signInButton")
-        @title = ElementWrapper.new browser.h1(text: 'Sign In')
+      def initialize(param)
+        super(param)
+        @username = TextboxElement.new browser.text_field(id: "UserNameTextBox")
+        @password = TextboxElement.new browser.text_field(id: "PasswordTextBox")
+        @sign_in_btn = BrowserElement.new browser.button(id: "signInButton")
+        @title = BrowserElement.new browser.h1(text: 'Sign In')
       end
 
       def remember_my_username
@@ -52,7 +235,7 @@ module Stamps
       end
 
       def first_time_sign_in usr, pw
-        market_place = Orders::Stores::MarketPlace.new param
+        market_place = Orders::Stores::MarketPlace.new(param)
 
         username.safely_wait_until_present 6
 
@@ -81,12 +264,14 @@ module Stamps
       end
 
       def sign_in *args
-        grid = Orders::Grid::OrdersGrid.new param
-        navbar = Navigation::NavigationBar.new param #todo sign_in page should extend NavigationBar???
-        plugin_issue = ErrorStampsPluginIssue.new param
-        toolbar = Stamps::Orders::Toolbar::Toolbar.new param
-        market_place = Orders::Stores::MarketPlace.new param
-        loading_orders = ElementWrapper.new browser.div(text: "Loading orders...")
+        grid = Orders::Grid::OrdersGrid.new(param)
+        navbar = Navigation::NavigationBar.new(param)
+        #plugin_issue = ErrorStampsPluginIssue.new(param)
+        toolbar = Stamps::Orders::Toolbar::Toolbar.new(param)
+        market_place = Orders::Stores::MarketPlace.new(param)
+        loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
+        invalid_username = BrowserElement.new browser.span(id: "InvalidUsernameMsg")
+        new_welcome = NewWelcomeModal.new(param)
 
         "Check that URL is valid: #{browser.url}".should eql "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 
@@ -115,7 +300,7 @@ module Stamps
 
         username.safely_wait_until_present 8
 
-        5.times do
+        15.times do
           begin
             break if grid.present?
 
@@ -123,8 +308,45 @@ module Stamps
               username.set usr
               password.set pw
               sign_in_btn.safe_send_keys :enter
-              sign_in_btn.safe_click
-              sign_in_btn.safe_click
+
+              5.times do
+                if loading_orders.present?
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  logger.message loading_orders.safe_text
+                  loading_orders.wait_until_present 2
+                else
+                  break
+                end
+              end
+              if invalid_username.present?
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                "Invalid Username: #{usr}/#{pw}".should eql invalid_username.text
+              end
+
+              #loading_orders.safely_wait_until_present 2
             end
 
             2.times do
@@ -135,17 +357,28 @@ module Stamps
               end
             end
 
-            loading_orders.safely_wait_until_present 2
-
-            5.times do
-              if loading_orders.present?
-                logger.step loading_orders.safe_text
-                logger.step loading_orders.safe_text
-                logger.step loading_orders.safe_text
-                loading_orders.safely_wait_while_present 2
-              else
-                break
-              end
+            if invalid_username.present?
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              logger.error invalid_username.text
+              "Invalid Username: #{usr}/#{pw}".should eql invalid_username.text
             end
 
             if market_place.present?
@@ -154,53 +387,27 @@ module Stamps
             end
 
             grid.wait_until_present 2
+            toolbar.wait_until_present 5
 
-            if market_place.present?
-              market_place.close
-              break
-            end
-            break if grid.present?
-            break if grid.present?
-            break if grid.present?
-            break if grid.present?
-            break if grid.present?
-
+            market_place.wait_until_present 2
             if market_place.present?
               market_place.close
               break
             end
 
-            if market_place.present?
-              market_place.close
-              break
+            new_welcome.wait_until_present 2
+            if new_welcome.present?
+              logger.message new_welcome.message
+              add_manual_order = new_welcome.next
+              add_manual_order.present?.should be true
+              import_from_csv = add_manual_order.next
+              import_from_csv.present?.should be true
+              import_from_stores = import_from_csv.next
+              import_from_stores.present?.should be true
+              learn_more = import_from_stores.next
+              learn_more.present?.should be true
+              learn_more.close
             end
-
-            if market_place.present?
-              market_place.close
-              break
-            end
-
-            if market_place.present?
-              market_place.close
-              break
-            end
-
-            if market_place.present?
-              market_place.close
-              break
-            end
-
-            if market_place.present?
-              market_place.close
-              break
-            end
-
-            if market_place.present?
-              market_place.close
-              break
-            end
-
-            toolbar.wait_until_present 10
 
             logger.info "#{usr} is #{(navbar.present?)?"signed-in!":"not signed-in."}"
 
@@ -208,13 +415,16 @@ module Stamps
             logger.info "#{usr} Orders Grid is #{(toolbar.present?)?"ready.":"not ready."}"
 
             break if grid.present?
+            break if grid.present?
+            break if grid.present?
+            break if grid.present?
+            break if grid.present?
           rescue Exception => e
             logger.error e.backtrace.join "\n"
             raise e
           end
         end
-
-        "Check your sign-in credentials: #{usr}".should eql "Orders Login Failed. Username: #{usr}\n#{browser.url}" unless toolbar.present?
+        usr
       end
     end
   end
