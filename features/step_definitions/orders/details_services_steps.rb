@@ -1,317 +1,317 @@
 
 #First-Class Mail
-Then /^Order Details: Select Service FCM Large Envelope$/ do
-  step "Order Details: Set Service to FCM Large Envelope"
+Then /^On Order Details form, select service FCM Large Envelope$/ do
+  step "On Order Details form, set service to FCM Large Envelope"
 end
 
-Then /^Order Details: Expect Service is FCM Large Envelope$/ do
-  step "Order Details: Expect Service to be FCM Large Envelope"
+Then /^On Order Details form, expect service is FCM Large Envelope$/ do
+  step "On Order Details form, expect service to be FCM Large Envelope"
 end
 
-Then /^Order Details: Select Service FCM Package$/ do
-  step "Order Details: Set Service to FCM Package"
+Then /^On Order Details form, select service FCM Package$/ do
+  step "On Order Details form, set service to FCM Package"
 end
 
-Then /^Order Details: Expect Service is FCM Package$/ do
-  step "Order Details: Expect Service to be FCM Package"
+Then /^On Order Details form, expect service is FCM Package$/ do
+  step "On Order Details form, expect service to be FCM Package"
 end
 
 # Priority Mail
-Then /^Order Details: Select Service PM Large Envelope$/ do
-  step "Order Details: Set Service to PM Large Envelope"
+Then /^On Order Details form, select service PM Large Envelope$/ do
+  step "On Order Details form, set service to PM Large Envelope"
 end
 
-Then /^Order Details: Expect Service is PM Large Envelope$/ do
-  step "Order Details: Expect Service to be PM Large"
+Then /^On Order Details form, expect service is PM Large Envelope$/ do
+  step "On Order Details form, expect service to be PM Large"
 end
 
-Then /^Order Details: Select Service PM Package$/ do
-  step "Order Details: Set Service to PM Package"
+Then /^On Order Details form, select service PM Package$/ do
+  step "On Order Details form, set service to PM Package"
 end
 
-Then /^Order Details: Expect Service is PM Package$/ do
-  step "Order Details: Expect Service to be PM Package"
+Then /^On Order Details form, expect service is PM Package$/ do
+  step "On Order Details form, expect service to be PM Package"
 end
 
-Then /^Order Details: Select Service PM Large Package$/ do
-  step "Order Details: Set Service to PM Large Package"
+Then /^On Order Details form, select service PM Large Package$/ do
+  step "On Order Details form, set service to PM Large Package"
 end
 
-Then /^Order Details: Expect Service is PM Large Package$/ do
-  step "Order Details: Expect Service to be PM Large Package"
+Then /^On Order Details form, expect service is PM Large Package$/ do
+  step "On Order Details form, expect service to be PM Large Package"
 end
 
-Then /^Order Details: Select Service PM Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PM Flat Rate Envelope"
+Then /^On Order Details form, select service PM Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PM Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PM Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PM Flat Rate Envelope"
+Then /^On Order Details form, expect service is PM Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PM Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PM Padded Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PM Padded Flat Rate Envelope"
+Then /^On Order Details form, select service PM Padded Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PM Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PM Padded Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PM Padded Flat Rate Envelope"
+Then /^On Order Details form, expect service is PM Padded Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PM Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PM Legal Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PM Legal Flat Rate Envelope"
+Then /^On Order Details form, select service PM Legal Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PM Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PM Legal Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PM Legal Flat Rate Envelope"
+Then /^On Order Details form, expect service is PM Legal Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PM Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PM Small Flat Rate Box$/ do
-  step "Order Details: Set Service to PM Small Flat Rate Box"
+Then /^On Order Details form, select service PM Small Flat Rate Box$/ do
+  step "On Order Details form, set service to PM Small Flat Rate Box"
 end
 
-Then /^Order Details: Expect Service is PM Small Flat Rate Box$/ do
-  step "Order Details: Expect Service to be PM Small Flat Rate Box"
+Then /^On Order Details form, expect service is PM Small Flat Rate Box$/ do
+  step "On Order Details form, expect service to be PM Small Flat Rate Box"
 end
 
-Then /^Order Details: Select Service PM Medium Flat Rate Box$/ do
-  step "Order Details: Set Service to PM Medium Flat Rate Box"
+Then /^On Order Details form, select service PM Medium Flat Rate Box$/ do
+  step "On Order Details form, set service to PM Medium Flat Rate Box"
 end
 
-Then /^Order Details: Expect Service is PM Medium Flat Rate Box$/ do
-  step "Order Details: Expect Service to be PM Medium Flat Rate Box"
+Then /^On Order Details form, expect service is PM Medium Flat Rate Box$/ do
+  step "On Order Details form, expect service to be PM Medium Flat Rate Box"
 end
 
-Then /^Order Details: Select Service PM Large Flat Rate Box$/ do
-  step "Order Details: Set Service to PM Large Flat Rate Box"
+Then /^On Order Details form, select service PM Large Flat Rate Box$/ do
+  step "On Order Details form, set service to PM Large Flat Rate Box"
 end
 
-Then /^Order Details: Expect Service is PM Large Flat Rate Box$/ do
-  step "Order Details: Expect Service to be PM Large Flat Rate Box"
+Then /^On Order Details form, expect service is PM Large Flat Rate Box$/ do
+  step "On Order Details form, expect service to be PM Large Flat Rate Box"
 end
 
-Then /^Order Details: Select Service PM Regional Rate Box A$/ do
-  step "Order Details: Set Service to PM Regional Rate Box A"
+Then /^On Order Details form, select service PM Regional Rate Box A$/ do
+  step "On Order Details form, set service to PM Regional Rate Box A"
 end
 
-Then /^Order Details: Expect Service is PM Regional Rate Box A$/ do
-  step "Order Details: Expect Service to be PM Regional Rate Box A"
+Then /^On Order Details form, expect service is PM Regional Rate Box A$/ do
+  step "On Order Details form, expect service to be PM Regional Rate Box A"
 end
 
-Then /^Order Details: Select Service PM Regional Rate Box B$/ do
-  step "Order Details: Set Service to PM Regional Rate Box B"
+Then /^On Order Details form, select service PM Regional Rate Box B$/ do
+  step "On Order Details form, set service to PM Regional Rate Box B"
 end
 
-Then /^Order Details: Expect Service is PM Regional Rate Box B$/ do
-  step "Order Details: Expect Service to be PM Regional Rate Box B"
+Then /^On Order Details form, expect service is PM Regional Rate Box B$/ do
+  step "On Order Details form, expect service to be PM Regional Rate Box B"
 end
 
-Then /^Order Details: Select Service PME Package$/ do
-  step "Order Details: Set Service to PME Package"
+Then /^On Order Details form, select service PME Package$/ do
+  step "On Order Details form, set service to PME Package"
 end
 
-Then /^Order Details: Expect Service is PME Package$/ do
-  step "Order Details: Expect Service to be PME Package"
+Then /^On Order Details form, expect service is PME Package$/ do
+  step "On Order Details form, expect service to be PME Package"
 end
 
-Then /^Order Details: Select Service PME Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PME Flat Rate Envelope"
+Then /^On Order Details form, select service PME Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PME Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PME Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PME Flat Rate Envelope"
+Then /^On Order Details form, expect service is PME Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PME Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PME Padded Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PME Padded Flat Rate Envelope"
+Then /^On Order Details form, select service PME Padded Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PME Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PME Padded Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PME Padded Flat Rate Envelope"
+Then /^On Order Details form, expect service is PME Padded Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PME Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PME Legal Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PME Legal Flat Rate Envelope"
+Then /^On Order Details form, select service PME Legal Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PME Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PME Legal Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PME Legal Flat Rate Envelope"
+Then /^On Order Details form, expect service is PME Legal Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PME Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service MM Package$/ do
-  step "Order Details: Set Service to MM Package"
+Then /^On Order Details form, select service MM Package$/ do
+  step "On Order Details form, set service to MM Package"
 end
 
-Then /^Order Details: Expect Service is MM Package$/ do
-  step "Order Details: Expect Service to be MM Package"
+Then /^On Order Details form, expect service is MM Package$/ do
+  step "On Order Details form, expect service to be MM Package"
 end
 
-Then /^Order Details: Select Service PSG Package$/ do
-  step "Order Details: Set Service to PSG Package"
+Then /^On Order Details form, select service PSG Package$/ do
+  step "On Order Details form, set service to PSG Package"
 end
 
-Then /^Order Details: Expect Service is PSG Package$/ do
-  step "Order Details: Expect Service to be PSG Package"
+Then /^On Order Details form, expect service is PSG Package$/ do
+  step "On Order Details form, expect service to be PSG Package"
 end
 
-Then /^Order Details: Select Service PSG Large Package$/ do
-  step "Order Details: Set Service to PSG Large Package"
+Then /^On Order Details form, select service PSG Large Package$/ do
+  step "On Order Details form, set service to PSG Large Package"
 end
 
-Then /^Order Details: Expect Service is PSG Large Package$/ do
-  step "Order Details: Expect Service to be PSG Large Package"
+Then /^On Order Details form, expect service is PSG Large Package$/ do
+  step "On Order Details form, expect service to be PSG Large Package"
 end
 
-Then /^Order Details: Select Service PSG Oversized Package$/ do
-  step "Order Details: Set Service to PSG Oversized Package"
+Then /^On Order Details form, select service PSG Oversized Package$/ do
+  step "On Order Details form, set service to PSG Oversized Package"
 end
 
-Then /^Order Details: Expect Service is PSG Oversized Package$/ do
-  step "Order Details: Expect Service to be PSG Oversized Package"
+Then /^On Order Details form, expect service is PSG Oversized Package$/ do
+  step "On Order Details form, expect service to be PSG Oversized Package"
 end
 
 # FCMI
 
-Then /^Order Details: Select Service FCMI Large Envelope$/ do
-  step "Order Details: Set Service to FCMI Large Envelope"
+Then /^On Order Details form, select service FCMI Large Envelope$/ do
+  step "On Order Details form, set service to FCMI Large Envelope"
 end
 
-Then /^Order Details: Expect Service is FCMI Large Envelope$/ do
-  step "Order Details: Expect Service to be FCMI Large Envelope"
+Then /^On Order Details form, expect service is FCMI Large Envelope$/ do
+  step "On Order Details form, expect service to be FCMI Large Envelope"
 end
 
-Then /^Order Details: Select Service FCMI Package$/ do
-  step "Order Details: Set Service to FCMI Package"
+Then /^On Order Details form, select service FCMI Package$/ do
+  step "On Order Details form, set service to FCMI Package"
 end
 
-Then /^Order Details: Expect Service is FCMI Package$/ do
-  step "Order Details: Expect Service to be FCMI Package"
+Then /^On Order Details form, expect service is FCMI Package$/ do
+  step "On Order Details form, expect service to be FCMI Package"
 end
 
 #Priority Mail International
 
-Then /^Order Details: Select Service PMI Package$/ do
-  step "Order Details: Set Service to PMI Package"
+Then /^On Order Details form, select service PMI Package$/ do
+  step "On Order Details form, set service to PMI Package"
 end
 
-Then /^Order Details: Expect Service is PMI Package$/ do
-  step "Order Details: Expect Service to be PMI Package"
+Then /^On Order Details form, expect service is PMI Package$/ do
+  step "On Order Details form, expect service to be PMI Package"
 end
 
-Then /^Order Details: Select Service PMI Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PMI Flat Rate Envelope"
+Then /^On Order Details form, select service PMI Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PMI Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PMI Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PMI Flat Rate Envelope"
+Then /^On Order Details form, expect service is PMI Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PMI Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PMI Padded Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PMI Padded Flat Rate Envelope"
+Then /^On Order Details form, select service PMI Padded Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PMI Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PMI Padded Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PMI Padded Flat Rate Envelope"
+Then /^On Order Details form, expect service is PMI Padded Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PMI Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PMI Legal Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PMI Legal Flat Rate Envelope"
+Then /^On Order Details form, select service PMI Legal Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PMI Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PMI Legal Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PMI Legal Flat Rate Envelope"
+Then /^On Order Details form, expect service is PMI Legal Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PMI Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PMI Small Flat Rate Box$/ do
-  step "Order Details: Set Service to PMI Small Flat Rate Box"
+Then /^On Order Details form, select service PMI Small Flat Rate Box$/ do
+  step "On Order Details form, set service to PMI Small Flat Rate Box"
 end
 
-Then /^Order Details: Expect Service is PMI Small Flat Rate Box$/ do
-  step "Order Details: Expect Service to be PMI Small Flat Rate Box"
+Then /^On Order Details form, expect service is PMI Small Flat Rate Box$/ do
+  step "On Order Details form, expect service to be PMI Small Flat Rate Box"
 end
 
-Then /^Order Details: Select Service PMI Medium Flat Rate Box$/ do
-  step "Order Details: Set Service to PMI Medium Flat Rate Box"
+Then /^On Order Details form, select service PMI Medium Flat Rate Box$/ do
+  step "On Order Details form, set service to PMI Medium Flat Rate Box"
 end
 
-Then /^Order Details: Expect Service is PMI Medium Flat Rate Box$/ do
-  step "Order Details: Expect Service to be PMI Medium Flat Rate Box"
+Then /^On Order Details form, expect service is PMI Medium Flat Rate Box$/ do
+  step "On Order Details form, expect service to be PMI Medium Flat Rate Box"
 end
 
-Then /^Order Details: Select Service PMI Large Flat Rate Box$/ do
-  step "Order Details: Set Service to PMI Large Flat Rate Box"
+Then /^On Order Details form, select service PMI Large Flat Rate Box$/ do
+  step "On Order Details form, set service to PMI Large Flat Rate Box"
 end
 
-Then /^Order Details: Expect Service is PMI Large Flat Rate Box$/ do
-  step "Order Details: Expect Service to be PMI Large Flat Rate Box"
+Then /^On Order Details form, expect service is PMI Large Flat Rate Box$/ do
+  step "On Order Details form, expect service to be PMI Large Flat Rate Box"
 end
 
-Then /^Order Details: Select Service PMI Regional Rate Box A$/ do
-  step "Order Details: Set Service to PMI Regional Rate Box A"
+Then /^On Order Details form, select service PMI Regional Rate Box A$/ do
+  step "On Order Details form, set service to PMI Regional Rate Box A"
 end
 
-Then /^Order Details: Expect Service is PMI Regional Rate Box A$/ do
-  step "Order Details: Expect Service to be PMI Regional Rate Box A"
+Then /^On Order Details form, expect service is PMI Regional Rate Box A$/ do
+  step "On Order Details form, expect service to be PMI Regional Rate Box A"
 end
 
-Then /^Order Details: Select Service PMI Regional Rate Box B$/ do
-  step "Order Details: Set Service to PMI Regional Rate Box B"
+Then /^On Order Details form, select service PMI Regional Rate Box B$/ do
+  step "On Order Details form, set service to PMI Regional Rate Box B"
 end
 
-Then /^Order Details: Expect Service is PMI Regional Rate Box B$/ do
-  step "Order Details: Expect Service to be PMI Regional Rate Box B"
+Then /^On Order Details form, expect service is PMI Regional Rate Box B$/ do
+  step "On Order Details form, expect service to be PMI Regional Rate Box B"
 end
 
-Then /^Order Details: Select Service PMEI Package$/ do
-  step "Order Details: Set Service to PMEI Package"
+Then /^On Order Details form, select service PMEI Package$/ do
+  step "On Order Details form, set service to PMEI Package"
 end
 
-Then /^Order Details: Expect Service is PMEI Package$/ do
-  step "Order Details: Expect Service to be PMEI Package"
+Then /^On Order Details form, expect service is PMEI Package$/ do
+  step "On Order Details form, expect service to be PMEI Package"
 end
 
-Then /^Order Details: Select Service PMEI Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PMEI Flat Rate Envelope"
+Then /^On Order Details form, select service PMEI Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PMEI Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PMEI Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PMEI Flat Rate Envelope"
+Then /^On Order Details form, expect service is PMEI Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PMEI Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PMEI Padded Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PMEI Padded Flat Rate Envelope"
+Then /^On Order Details form, select service PMEI Padded Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PMEI Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PMEI Padded Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PMEI Padded Flat Rate Envelope"
+Then /^On Order Details form, expect service is PMEI Padded Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PMEI Padded Flat Rate Envelope"
 end
 
-Then /^Order Details: Select Service PMEI Legal Flat Rate Envelope$/ do
-  step "Order Details: Set Service to PMEI Legal Flat Rate Envelope"
+Then /^On Order Details form, select service PMEI Legal Flat Rate Envelope$/ do
+  step "On Order Details form, set service to PMEI Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is PMEI Legal Flat Rate Envelope$/ do
-  step "Order Details: Expect Service to be PMEI Legal Flat Rate Envelope"
+Then /^On Order Details form, expect service is PMEI Legal Flat Rate Envelope$/ do
+  step "On Order Details form, expect service to be PMEI Legal Flat Rate Envelope"
 end
 
-Then /^Order Details: Expect Service is an empty string$/ do
-  step "Order Details: Expect Service to be"
+Then /^On Order Details form, expect service is an empty string$/ do
+  step "On Order Details form, expect service to be"
 end
 
-Then /^Order Details: Set Service to (.*)$/ do |service|
-  logger.step "Order Details: Set Service to #{service}"
+Then /^On Order Details form, set service to (.*)$/ do |service|
+  logger.step "On Order Details form, set service to #{service}"
   stamps.orders.order_details.service.select service
   15.times do
-    step "Order Details: Blur out"
+    step "On Order Details form, Blur out"
     break if stamps.orders.order_details.service.cost.to_f > 0
-    step "Order Details: Blur out"
+    step "On Order Details form, Blur out"
   end
   test_data[:service] = stamps.orders.order_details.service.text_box.text
   step "Save Test Data"
-  logger.message "*** Service Cost: #{test_data[:service_cost]} ***"
+  logger.message "*** service Cost: #{test_data[:service_cost]} ***"
 end
 
-Then /^Order Details: Expect Service to be(?:| ([\w ]+))$/ do |expectation|
-  logger.step "Order Details: Expect Service is #{expectation}"
+Then /^On Order Details form, expect service to be(?:| ([\w ]+))$/ do |expectation|
+  logger.step "On Order Details form, expect service is #{expectation}"
   if expectation.nil?
     selection_substr = ""
   else

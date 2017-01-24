@@ -2,7 +2,7 @@
 Feature:  Shopify Store Management
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
     @shopify
     Scenario: Store Management - Shopify Store
@@ -24,7 +24,7 @@ Feature:  Shopify Store Management
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
 
-      Then Orders Toolbar: Refresh Orders
+      Then In Orders Toolbar, Refresh Orders
 
       # Reconnect Store
       Then Manage Stores: Select Store random
@@ -41,12 +41,12 @@ Feature:  Shopify Store Management
 
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
-      Then Orders Toolbar: Refresh Orders
+      Then In Orders Toolbar, Refresh Orders
 
       # Delete Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
-      Then Orders Toolbar: Refresh Orders
+      Then In Orders Toolbar, Refresh Orders
 
       # Delete All Stores
       Then Manage Stores: Delete All Stores

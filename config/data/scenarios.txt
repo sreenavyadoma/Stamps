@@ -65,7 +65,7 @@ Given User views the "Exact Address Not Found Modal"
 When User Blurs out of the Ship-To Address Field
 And User dismisses "Exact Address Not Found" modal for an order
 And User views Order Details Panel for that order (e.g. by selecting it in the grid).
-Then In Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
+Then On Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
 
 
 Scenario: # 3b.  System Cannot verify the apartment or suite number, but does verify the street address, city, state, zip -- User Views "Validate Address" button tooltip
@@ -73,7 +73,7 @@ Given User views the "Exact Address Not Found Modal"
 When User Blurs out of the Ship-To Address Field
 And User dismisses "Exact Address Not Found" modal for an order
 And User views Order Details Panel for that order (e.g. by selecting it in the grid).
-Then In Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
+Then On Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
 And User User hovers over "Validate Address" button.
 Then Color of Validate Address Ucib and text changes to light blue
 And System displays the following tooltip:
@@ -85,7 +85,7 @@ Given User views the "Exact Address Not Found Modal"
 When User Blurs out of the Ship-To Address Field
 And User dismisses "Exact Address Not Found" modal for an order
 And User views Order Details Panel for that order (e.g. by selecting it in the grid).
-Then In Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
+Then On Order Details Panel, System displays "Validate Address" button below the Ship-To address field.
 And User User hovers over "Validate Address" button.
 Then System displays "Exact Address Not Found" modal
 

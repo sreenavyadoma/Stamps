@@ -5,24 +5,24 @@ Feature: WebReg
   @pam_meter_limit_100k
   Scenario:
     Then PAM: Load PAM Page
-    Then PAM: Load Customer Search Page
+    Then Visit PAM Customer Search page
     Then WebReg: Load username and password from parameter file webreg_meter_limit_100k
-    Then PAM Customer Search: Set username from parameter file
-    Then PAM Customer Search: Set 5.2 or lower
-    Then PAM Customer Search: Click Search button
+    Then On PAM Customer Search page, set username from parameter file
+    Then On PAM Customer Search page, set 5.2 or lower
+    Then On PAM Customer Search page, click Search button
 
-    Then PAM Customer Profile: Click Change Meter Limit link
-    Then PAM Change Meter Limit: Set New Meter Limit to $100000
-    Then PAM Change Meter Limit: Set USPS approval to Checked
-    Then PAM Change Meter Limit: Click Submit
+    Then On PAM Customer Profile page, click Change Meter Limit link
+    Then On PAM Change Meter Limit page, set New Meter Limit to $100000
+    Then On PAM Change Meter Limit page, set USPS approval to Checked
+    Then On PAM Change Meter Limit page, click Submit
 
-    Then PAM Customer Profile: Click  AppCap Overrides link
-    Then PAM AppCap Overrides: Set Internet Mail Printing to Always On
-    Then PAM AppCap Overrides: Set Netstamps Printing to Always On
-    Then PAM AppCap Overrides: Set Shipping Label Printing to Always On
-    Then PAM AppCap Overrides: Set International Shipping to Always On
-    Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
-    Then PAM AppCap Overrides: Submit
+    Then On PAM Customer Profile page, click  AppCap Overrides link
+    Then On PAM AppCap Overrides page, set Internet Mail Printing to Always On
+    Then On PAM AppCap Overrides page, set Netstamps Printing to Always On
+    Then On PAM AppCap Overrides page, set Shipping Label Printing to Always On
+    Then On PAM AppCap Overrides page, set International Shipping to Always On
+    Then On PAM AppCap Overrides page, set Allow High Risk Countries to Always On
+    Then On PAM AppCap Overrides page, Submit
     Then WebReg: Save username and password to parameter file pam_meter_limit_100k
     Then WebReg: Store username to data file pam_meter_limit_100k
 

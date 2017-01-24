@@ -2,7 +2,7 @@
 Feature:  Store Management - Marketplace
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
     @marketplace
     Scenario: Store Management - Marketplace

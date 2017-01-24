@@ -234,7 +234,7 @@ module Stamps
       end
 
       def select selection
-        logger.info "Select Service #{selection}"
+        logger.info "Select service #{selection}"
         if selection == "First-Class Mail Letter"
           selection_label = BrowserElement.new browser.tr(css: "tr[data-qtip*='First-Class Mail Envelope']")
         else
@@ -247,7 +247,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.scroll_into_view
             selection_label.safe_click
-            logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
+            logger.info "Selected service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
           rescue
             #ignore
           end

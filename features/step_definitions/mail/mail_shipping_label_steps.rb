@@ -1,147 +1,147 @@
 
-Then /^Mail Shipping Labels: Set Service to (.*)/ do |service|
-  logger.step "Shipping Labels - Set Print Mail Service to: \n #{service}"
+Then /^Mail Shipping Labels: Set service to (.*)/ do |service|
+  logger.step "Shipping Labels - Set Print Mail service to: \n #{service}"
   stamps.mail.service.select service
 end
 
-Then /^Mail Shipping Labels: Select Service First-Class Mail Large Envelope-Flat$/ do
-  step "Mail Shipping Labels: Set Service to FCM Package"
+Then /^Mail Shipping Labels: Select service First-Class Mail Large Envelope-Flat$/ do
+  step "Mail Shipping Labels: Set service to FCM Package"
 end
 
-Then /^Mail Shipping Labels: Select Service First-Class Mail Package-Thick Envelope$/ do
-  step "Mail Shipping Labels: Set Service to First Class Mail Package/Thick Envelope"
+Then /^Mail Shipping Labels: Select service First-Class Mail Package-Thick Envelope$/ do
+  step "Mail Shipping Labels: Set service to First Class Mail Package/Thick Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Large-Thick Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Large/Thick Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Large-Thick Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Large/Thick Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Package$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Package"
+Then /^Mail Shipping Labels: Select service Priority Mail Package$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Large Package$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Large Package"
+Then /^Mail Shipping Labels: Select service Priority Mail Large Package$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Large Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Padded Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Padded Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Padded Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Padded Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Legal Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Legal Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Legal Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Legal Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Small Flat Rate Box$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Small Flat Rate Box"
+Then /^Mail Shipping Labels: Select service Priority Mail Small Flat Rate Box$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Small Flat Rate Box"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Medium Flat Rate Box$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Medium Flat Rate Box"
+Then /^Mail Shipping Labels: Select service Priority Mail Medium Flat Rate Box$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Medium Flat Rate Box"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Large Flat Rate Box$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Medium Flat Rate Box"
+Then /^Mail Shipping Labels: Select service Priority Mail Large Flat Rate Box$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Medium Flat Rate Box"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Regional Rate Box A$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Regional Rate Box A"
+Then /^Mail Shipping Labels: Select service Priority Mail Regional Rate Box A$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Regional Rate Box A"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Regional Rate Box B$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Regional Rate Box B"
+Then /^Mail Shipping Labels: Select service Priority Mail Regional Rate Box B$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Regional Rate Box B"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express Package$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express Package"
+Then /^Mail Shipping Labels: Select service Priority Mail Express Package$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Express Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express Padded Flat Rate Envelope/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express Padded Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Express Padded Flat Rate Envelope/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express Padded Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express Legal Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express Legal Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Express Legal Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express Legal Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Media Mail Package$/ do
-  step "Mail Shipping Labels: Set Service to Media Mail Package"
+Then /^Mail Shipping Labels: Select service Media Mail Package$/ do
+  step "Mail Shipping Labels: Set service to Media Mail Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Parcel Select Ground Package$/ do
-  step "Mail Shipping Labels: Set Service to Parcel Select Ground Package"
+Then /^Mail Shipping Labels: Select service Parcel Select Ground Package$/ do
+  step "Mail Shipping Labels: Set service to Parcel Select Ground Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Parcel Select Ground Large Package/ do
-  step "Mail Shipping Labels: Set Service to Parcel Select Ground Large Package"
+Then /^Mail Shipping Labels: Select service Parcel Select Ground Large Package/ do
+  step "Mail Shipping Labels: Set service to Parcel Select Ground Large Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Parcel Select Ground Oversized Package$/ do
-  step "Mail Shipping Labels: Set Service to Parcel Select Ground Oversized Package"
+Then /^Mail Shipping Labels: Select service Parcel Select Ground Oversized Package$/ do
+  step "Mail Shipping Labels: Set service to Parcel Select Ground Oversized Package"
 end
 
-Then /^Mail Shipping Labels: Select Service First-Class Mail International Large Envelope-Flat$/ do
-  step "Mail Shipping Labels: Set Service to FCM Package"
+Then /^Mail Shipping Labels: Select service First-Class Mail International Large Envelope-Flat$/ do
+  step "Mail Shipping Labels: Set service to FCM Package"
 end
 
-Then /^Mail Shipping Labels: Select Service First-Class Mail International Package$/ do
-  step "Mail Shipping Labels: Set Service to First-Class Mail International Package"
+Then /^Mail Shipping Labels: Select service First-Class Mail International Package$/ do
+  step "Mail Shipping Labels: Set service to First-Class Mail International Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Package$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Package"
+Then /^Mail Shipping Labels: Select service Priority Mail International Package$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Large Package$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Large Package"
+Then /^Mail Shipping Labels: Select service Priority Mail International Large Package$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Large Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail International Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Padded Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Padded Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail International Padded Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Padded Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Legal Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Legal Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail International Legal Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Legal Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Small Flat Rate Box$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Small Flat Rate Box"
+Then /^Mail Shipping Labels: Select service Priority Mail International Small Flat Rate Box$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Small Flat Rate Box"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Medium Flat Rate Box$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Medium Flat Rate Box"
+Then /^Mail Shipping Labels: Select service Priority Mail International Medium Flat Rate Box$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Medium Flat Rate Box"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail International Large Flat Rate Box$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail International Medium Flat Rate Box"
+Then /^Mail Shipping Labels: Select service Priority Mail International Large Flat Rate Box$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail International Medium Flat Rate Box"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express International Package$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express International Package"
+Then /^Mail Shipping Labels: Select service Priority Mail Express International Package$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express International Package"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express International Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express International Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Express International Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express International Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express International Padded Flat Rate Envelope/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express International Padded Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Express International Padded Flat Rate Envelope/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express International Padded Flat Rate Envelope"
 end
 
-Then /^Mail Shipping Labels: Select Service Priority Mail Express International Legal Flat Rate Envelope$/ do
-  step "Mail Shipping Labels: Set Service to Priority Mail Express International Legal Flat Rate Envelope"
+Then /^Mail Shipping Labels: Select service Priority Mail Express International Legal Flat Rate Envelope$/ do
+  step "Mail Shipping Labels: Set service to Priority Mail Express International Legal Flat Rate Envelope"
 end
 
 Then /^Mail Shipping Labels: Edit Customs Form$/ do

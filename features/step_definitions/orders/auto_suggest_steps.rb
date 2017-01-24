@@ -1,24 +1,24 @@
-Then /^Order Details: Set Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
+Then /^On Order Details form, set Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
   @auto_suggest_partial_name = partial_name
-  logger.step "Order Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}"
+  logger.step "On Order Details form, set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}"
   @auto_suggest = stamps.orders.order_details.ship_to.domestic.auto_suggest.set @auto_suggest_partial_name
 end
 
-Then /^Order Details: Set International Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
+Then /^On Order Details form, set International Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
   @auto_suggest_partial_name = partial_name
-  logger.step "Order Details: Set International Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}"
+  logger.step "On Order Details form, set International Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}"
   @auto_suggest = stamps.orders.order_details.ship_to.international.auto_suggest.set @auto_suggest_partial_name
 end
 
-Then /^Order Details: Select Ship-To auto-suggest item (\d+)$/ do |item_number|
-  logger.step "Order Details: Select Ship-To auto-suggest item #{item_number}"
-  step "Order Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+Then /^On Order Details form, select Ship-To auto-suggest item (\d+)$/ do |item_number|
+  logger.step "On Order Details form, select Ship-To auto-suggest item #{item_number}"
+  step "On Order Details form, set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
 
   @auto_suggest.select item_number
 end
 
-Then /^Order Details: Expect auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
-  step "Order Details: Set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+Then /^On Order Details form, expect auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
+  step "On Order Details form, set Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
   @found_item = false
   selection = "#{firstname} #{lastname}, #{company}"
   @auto_suggest.name_fields.each do |field|

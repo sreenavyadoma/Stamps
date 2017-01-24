@@ -2,95 +2,95 @@
 Feature: As a batch shipper, I want is able to Filter Panel - orders by status [B-01621]
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @filters
   Scenario: User Views Filter Panel - Panel Default
-    When Filter Panel: Expect system displays expanded filters panel
-    Then Filter Panel: Expect selected filter is Awaiting Shipment
+    When In left filter panel, expect system displays expanded filters panel
+    Then In left filter panel, expect selected filter is Awaiting Shipment
 
     Then Filter Panel: Click on panel
-    Then Filter Panel: Expect Filters panel is close
-    Then Filter Panel: Expect selected filter is Awaiting Shipment
-    Then Filter Panel: Expect system shows an arrow above the Order Status Filter Panel - name
-    Then Filter Panel: Expect panel arrow is pointing to the right direction
+    Then In left filter panel, expect Filters panel is close
+    Then In left filter panel, expect selected filter is Awaiting Shipment
+    Then In left filter panel, expect system shows an arrow above the Order Status Filter Panel - name
+    Then In left filter panel, expect panel arrow is pointing to the right direction
 
     Then Filter Panel: Click on panel
-    Then Filter Panel: Expect Panel is open
-    Then Filter Panel: Expect panel is hidden
-    Then Filter Panel: Expect panel arrow is pointing to the left direction
+    Then In left filter panel, expect Panel is open
+    Then In left filter panel, expect panel is hidden
+    Then In left filter panel, expect panel arrow is pointing to the left direction
 
 
     Then Filter Panel: Click on panel
-    Then Filter Panel: Expect Filters panel is close
-    Then Filter Panel: Expect selected filter is Awaiting Shipment
-    Then Filter Panel: Expect system shows an arrow above the Order Status Filter Panel - name
-    Then Filter Panel: Expect panel arrow is pointing to the right direction
+    Then In left filter panel, expect Filters panel is close
+    Then In left filter panel, expect selected filter is Awaiting Shipment
+    Then In left filter panel, expect system shows an arrow above the Order Status Filter Panel - name
+    Then In left filter panel, expect panel arrow is pointing to the right direction
 
     Then Filter Panel: Click on the closed Filters panel
-    Then Filter Panel: Expect Panel is open
-    Then Filter Panel: Expect panel is hidden
-    Then Filter Panel: Expect panel arrow is pointing to the left direction
+    Then In left filter panel, expect Panel is open
+    Then In left filter panel, expect panel is hidden
+    Then In left filter panel, expect panel arrow is pointing to the left direction
 
     Then Filter Panel: Click on panel
-    Then Filter Panel: Expect Filters panel is close
-    Then Filter Panel: Expect selected filter is Awaiting Shipment
-    Then Filter Panel: Expect system shows an arrow above the Order Status Filter Panel - name
-    Then Filter Panel: Expect panel arrow is pointing to the right direction
+    Then In left filter panel, expect Filters panel is close
+    Then In left filter panel, expect selected filter is Awaiting Shipment
+    Then In left filter panel, expect system shows an arrow above the Order Status Filter Panel - name
+    Then In left filter panel, expect panel arrow is pointing to the right direction
 
     Then Filter Panel: Click panel name
-    Then Filter Panel: Expect Panel is open
-    Then Filter Panel: Expect panel is hidden
-    Then Filter Panel: Expect panel arrow is pointing to the left direction
+    Then In left filter panel, expect Panel is open
+    Then In left filter panel, expect panel is hidden
+    Then In left filter panel, expect panel arrow is pointing to the left direction
     Then Sign out
 
   @filters
   Scenario: User Changes filters
 
-    When Filter Panel: Expect system displays expanded filters panel
+    When In left filter panel, expect system displays expanded filters panel
 
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To Country to United States
-    Then Order Details: Set Ship-To to Domestic Address
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To Country to United States
+    Then On Order Details form, set Ship-To to Domestic Address
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |
-    Then Order Details: Select Service PM Package
-    Then Order Details: Set Ounces to 1
+    Then On Order Details form, select service PM Package
+    Then On Order Details form, set Ounces to 1
 
-    Then Filter Panel: Select Awaiting Shipment
-    Then Filter Panel: Expect selected filter is Awaiting Shipment
+    Then In left filter panel, select Awaiting Shipment
+    Then In left filter panel, expect selected filter is Awaiting Shipment
 
-    Then Order Details: Expect Order ID equals Grid Oder ID in row 1
-    Then Orders Grid: Expect Recipient is James Test
-    Then Orders Grid: Expect Company is Domestic Company
-    Then Orders Grid: Expect Address is 600 Front St Apt 220
-    Then Orders Grid: Expect City is San Diego
-    Then Orders Grid: Expect State is CA
-    Then Orders Grid: Expect Zip is 92101
-    Then Orders Grid: Expect Phone is 8885551212
-    Then Orders Grid: Expect Email is test@stamps.com
+    Then On Order Details form, expect Order ID equals Grid Oder ID in row 1
+    Then In Orders Grid, expect Recipient is James Test
+    Then In Orders Grid, expect Company is Domestic Company
+    Then In Orders Grid, expect Address is 600 Front St Apt 220
+    Then In Orders Grid, expect City is San Diego
+    Then In Orders Grid, expect State is CA
+    Then In Orders Grid, expect Zip is 92101
+    Then In Orders Grid, expect Phone is 8885551212
+    Then In Orders Grid, expect Email is test@stamps.com
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
-    Then Print Modal: Set Printer to "factory"
-    Then Print Modal: Print
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then In Print modal, set Printer to "factory"
+    Then In Print modal, click Print button
 
-    Then Filter Panel: Select Shipped
-    Then Filter Panel: Expect selected filter is Shipped
+    Then In left filter panel, select Shipped
+    Then In left filter panel, expect selected filter is Shipped
 
-    Then Orders Grid: Expect Recipient is James Test
-    Then Orders Grid: Expect Company is Domestic Company
-    Then Orders Grid: Expect Address is 600 Front St Apt 220
-    Then Orders Grid: Expect City is San Diego
-    Then Orders Grid: Expect State is CA
-    Then Orders Grid: Expect Zip is 92101
-    Then Orders Grid: Expect Phone is 8885551212
-    Then Orders Grid: Expect Email is test@stamps.com
+    Then In Orders Grid, expect Recipient is James Test
+    Then In Orders Grid, expect Company is Domestic Company
+    Then In Orders Grid, expect Address is 600 Front St Apt 220
+    Then In Orders Grid, expect City is San Diego
+    Then In Orders Grid, expect State is CA
+    Then In Orders Grid, expect Zip is 92101
+    Then In Orders Grid, expect Phone is 8885551212
+    Then In Orders Grid, expect Email is test@stamps.com
 
 
-    Then Orders Toolbar: Add
-    Then Filter Panel: Expect selected filter is Awaiting Shipment
+    Then In Orders Toolbar, click Add button
+    Then In left filter panel, expect selected filter is Awaiting Shipment
 
 
     Then Sign out

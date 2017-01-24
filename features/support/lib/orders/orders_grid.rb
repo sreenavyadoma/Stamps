@@ -115,7 +115,7 @@ module Stamps
               columns.each_with_index do |element, index|
                 scroll element
                 if element_helper.text(element) == GRID_COLUMNS[column]
-                  #logger.message "Orders Grid: -- #{GRID_COLUMNS[column]} is in column #{index+1}"
+                  #logger.message "In Orders Grid, -- #{GRID_COLUMNS[column]} is in column #{index+1}"
                   return index+1
                 end
               end
@@ -135,7 +135,7 @@ module Stamps
               scroll element
               row_text = element_helper.text element
               if row_text.include? order_id
-                logger.message "Orders Grid: -- Order ID #{order_id} is in row #{index+1}"
+                logger.message "In Orders Grid, Order ID #{order_id} is in row #{index+1}"
                 return index + 1
               end
             end
@@ -145,7 +145,7 @@ module Stamps
 
         def row_div(number)
           number.should be_truthy
-          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+ (number.to_s) +")>tbody>tr>td>div>div[class=x-grid-row-checker]")
+          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+(number.to_s)+")>tbody>tr>td>div>div[class=x-grid-row-checker]")
         end
       end
 
@@ -778,12 +778,6 @@ module Stamps
       end
 
       class GridCheckBox < Column
-        attr_reader :checkbox_hash
-
-        def initialize(param)
-          super(param)
-          @checkbox_hash ||= Hash.new
-        end
 
         def scroll_into_view
           field = BrowserElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
@@ -844,18 +838,14 @@ module Stamps
           check row_number(order_id)
         end
 
-        def uncheck_order(order_id)
+        def uncheck_order_id(order_id)
           uncheck row_number(order_id)
         end
 
         def checkbox_element(number)
-          if checkbox_hash.has_key?(number)
-            checkbox_hash[number]
-          else
-            div = row_div(number)
-            verify_field = div.parent.parent.parent.parent.parent #browser.table(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})")
-            checkbox_hash[number] = CheckboxElement.new(div, verify_field, "class", "selected")
-          end
+          div = row_div(number)
+          verify_field = div.parent.parent.parent.parent.parent #browser.table(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})")
+          CheckboxElement.new(div, verify_field, "class", "selected")
         end
 
         def check(number)

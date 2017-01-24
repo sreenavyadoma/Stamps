@@ -15,14 +15,14 @@ Feature: Stamps BVT
     Then Mail Stamps: Select Specify Mail Amount
     Then Mail Stamps: Set Ship-From to default
     Then Mail Stamps: Set Ship-To country to United States
-    Then Mail Stamps: Select Specify Mail Service Media Mail
+    Then Mail Stamps: Select Specify Mail service Media Mail
     Then Mail Stamps: Set Stamp Amount to $4.65
     Then Mail Stamps: Set Quantity to 3
     Then Mail Stamps: Set Reference Number to Stamp3221
     Then Mail Stamps: Set Cost Code to None
     Then Mail: Open Print Modal
-    Then Mail Print Modal: Select Printer "factory"
-    Then Mail Print Modal: Print
+    Then Mail In Print modal, select Printer "factory"
+    Then Mail In Print modal, click Print button
     Then Sign out
 
   @mail_bvt_netstamps_calculate
@@ -33,9 +33,9 @@ Feature: Stamps BVT
     Then Mail Stamps: Set Ship-From to default
     Then Mail Stamps: Set Ship-To country to United States
     Then Mail Stamps: Set Weight 0 lb 1 oz
-    Then Mail Stamps: Select Calculate Mail Service First-Class Mail Letter
+    Then Mail Stamps: Select Calculate Mail service First-Class Mail Letter
     Then Mail: Open Print Modal
-    Then Mail Print Modal: Select Printer "factory"
-    Then Mail Print Modal: Print
+    Then Mail In Print modal, select Printer "factory"
+    Then Mail In Print modal, click Print button
     Then Sign out
 

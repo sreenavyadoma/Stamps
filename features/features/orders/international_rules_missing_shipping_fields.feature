@@ -1,85 +1,85 @@
 Feature: International Shipping fields and Customs Information fields validation
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @rules_international @rules_international_customs_fields_validation
   Scenario: International Shipping fields and Customs Information fields validation
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To Country to Japan
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To Country to Japan
 
-    Then Order Details: Expect International Address fields are visible
-    Then Order Details: Expect Domestic Ship-To fields are hidden
-    Then Order Details: Expect Customs Restrictions button is visible
-    Then Order Details: Expect Customs Edit Form button is visible
+    Then On Order Details form, expect International Address fields are visible
+    Then On Order Details form, expect Domestic Ship-To fields are hidden
+    Then On Order Details form, expect Customs Restrictions button is visible
+    Then On Order Details form, expect Customs Edit Form button is visible
 
-    Then Order Details: Set Ship-To to International Address
+    Then On Order Details International form, set address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
-    Then Order Details: Set Ounces to 5
-    Then Order Details: Select Service PMI Flat Rate Envelope
-    Then Order Details: Add Item 1, Qty 1, ID random, Description random
+    Then On Order Details form, set Ounces to 5
+    Then On Order Details form, select service PMI Flat Rate Envelope
+    Then On Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then Order Details: Edit Customs Form
+    Then On Order Details form, click Edit Form button
 
-    Then Customs Form: Set Package Contents to Commercial Sample
-    Then Customs Form: Expect More Info is hidden
-    Then Customs Form: Expect License Number is visible
-    Then Customs Form: Expect Certificate Number is visible
-    Then Customs Form: Expect Invoice Number is visible
+    Then On Customs form, set Package Contents to Commercial Sample
+    Then On Customs form, expect More Info is hidden
+    Then On Customs form, expect License Number is visible
+    Then On Customs form, expect Certificate Number is visible
+    Then On Customs form, expect Invoice Number is visible
 
-    Then Customs Form: Set Package Contents to Document
-    Then Customs Form: Expect More Info is visible
-    Then Customs Form: Expect License Number is hidden
-    Then Customs Form: Expect Certificate Number is hidden
-    Then Customs Form: Expect Invoice Number is hidden
+    Then On Customs form, set Package Contents to Document
+    Then On Customs form, expect More Info is visible
+    Then On Customs form, expect License Number is hidden
+    Then On Customs form, expect Certificate Number is hidden
+    Then On Customs form, expect Invoice Number is hidden
 
-    Then Customs Form: Set Package Contents to Gift
-    Then Customs Form: Expect More Info is visible
-    Then Customs Form: Expect License Number is hidden
-    Then Customs Form: Expect Certificate Number is hidden
-    Then Customs Form: Expect Invoice Number is hidden
+    Then On Customs form, set Package Contents to Gift
+    Then On Customs form, expect More Info is visible
+    Then On Customs form, expect License Number is hidden
+    Then On Customs form, expect Certificate Number is hidden
+    Then On Customs form, expect Invoice Number is hidden
 
-    Then Customs Form: Set Package Contents to Humanitarian Donation
-    Then Customs Form: Expect More Info is visible
-    Then Customs Form: Expect License Number is hidden
-    Then Customs Form: Expect Certificate Number is hidden
-    Then Customs Form: Expect Invoice Number is hidden
+    Then On Customs form, set Package Contents to Humanitarian Donation
+    Then On Customs form, expect More Info is visible
+    Then On Customs form, expect License Number is hidden
+    Then On Customs form, expect Certificate Number is hidden
+    Then On Customs form, expect Invoice Number is hidden
 
-    Then Customs Form: Set Package Contents to Merchandise
-    Then Customs Form: Expect More Info is visible
-    Then Customs Form: Expect License Number is hidden
-    Then Customs Form: Expect Certificate Number is hidden
-    Then Customs Form: Expect Invoice Number is hidden
+    Then On Customs form, set Package Contents to Merchandise
+    Then On Customs form, expect More Info is visible
+    Then On Customs form, expect License Number is hidden
+    Then On Customs form, expect Certificate Number is hidden
+    Then On Customs form, expect Invoice Number is hidden
 
-    Then Customs Form: Set Package Contents to Returned Goods
-    Then Customs Form: Expect More Info is visible
-    Then Customs Form: Expect License Number is hidden
-    Then Customs Form: Expect Certificate Number is hidden
-    Then Customs Form: Expect Invoice Number is hidden
+    Then On Customs form, set Package Contents to Returned Goods
+    Then On Customs form, expect More Info is visible
+    Then On Customs form, expect License Number is hidden
+    Then On Customs form, expect Certificate Number is hidden
+    Then On Customs form, expect Invoice Number is hidden
 
-    Then Customs Form: Set Package Contents to Commercial Sample
-    Then Customs Form: Expect More Info is hidden
-    Then Customs Form: Set License Number to "random"
-    Then Customs Form: Set Certificate Number to "random"
-    Then Customs Form: Set Invoice Number to "random"
+    Then On Customs form, set Package Contents to Commercial Sample
+    Then On Customs form, expect More Info is hidden
+    Then On Customs form, set License Number to "random"
+    Then On Customs form, set Certificate Number to "random"
+    Then On Customs form, set Invoice Number to "random"
 
-    Then Customs Form: Set Non-Delivery Options to Treat as abandoned
-    Then Customs Form: Set Non-Delivery Options to Return to sender
+    Then On Customs form, set Non-Delivery Options to Treat as abandoned
+    Then On Customs form, set Non-Delivery Options to Return to sender
 
-    Then Customs Form: Set Internal Transaction Number to Required
-    Then Customs Form: Expect ITN Number is visible
+    Then On Customs form, set Internal Transaction Number to Required
+    Then On Customs form, expect ITN Number is visible
 
-    Then Customs Form: Set Internal Transaction Number to Not required
-    Then Customs Form: Expect ITN Number is hidden
+    Then On Customs form, set Internal Transaction Number to Not required
+    Then On Customs form, expect ITN Number is hidden
 
-    Then Customs Form: Set Internal Transaction Number to Required
-    Then Customs Form: Set ITN Number to "random"
+    Then On Customs form, set Internal Transaction Number to Required
+    Then On Customs form, set ITN Number to "random"
 
-    Then Customs Form: Check I agree to the USPS Privacy Act Statement
-    Then Customs Form: Close Customs Form
-    Then Order Details: Select Service FCMI Large Envelope
+    Then On Customs form, check I agree to the USPS Privacy Act Statement
+    Then On Customs form, click Close button
+    Then On Order Details form, select service FCMI Large Envelope
     Then Sign out
 

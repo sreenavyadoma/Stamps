@@ -2,7 +2,7 @@
 Feature:  Volusion Store Management
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
     @volusion
     Scenario: Store Management - Volusion Store
@@ -22,7 +22,7 @@ Feature:  Volusion Store Management
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
 
-      Then Orders Toolbar: Refresh Orders
+      Then In Orders Toolbar, Refresh Orders
       Then Manage Stores: Select Store random
 
       # Reconnect Store
@@ -40,12 +40,12 @@ Feature:  Volusion Store Management
 
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
-      Then Orders Toolbar: Refresh Orders
+      Then In Orders Toolbar, Refresh Orders
 
       # Delete Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
-      Then Orders Toolbar: Refresh Orders
+      Then In Orders Toolbar, Refresh Orders
 
       # Delete All Stores
       Then Manage Stores: Delete All Stores
@@ -59,6 +59,6 @@ Feature:  Volusion Store Management
 
 
 
-      #Then Store Settings: Set Service Mapping 1, Requested Services random, Shipping Service First-Class Mail Postcard
-      #Then Store Settings: Set Service Mapping 2, Requested Services random, Shipping Service Priority Mail Package
-      #Then Store Settings: Set Service Mapping 3, Requested Services random, Shipping Service Priority Mail Small Flat Rate Box
+      #Then Store Settings: Set service Mapping 1, Requested Services random, Shipping service First-Class Mail Postcard
+      #Then Store Settings: Set service Mapping 2, Requested Services random, Shipping service Priority Mail Package
+      #Then Store Settings: Set service Mapping 3, Requested Services random, Shipping service Priority Mail Small Flat Rate Box

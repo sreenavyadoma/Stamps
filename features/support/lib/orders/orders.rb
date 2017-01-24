@@ -2,6 +2,7 @@ module Stamps
   module Orders
     class WebOrders < Browser::Modal
       attr_reader :toolbar, :landing_page, :orders_grid, :styles, :order_details, :filter_panel, :multi_order
+
       def initialize(param)
         super(param)
         @toolbar ||= Orders::Toolbar::Toolbar.new(param)

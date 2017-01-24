@@ -3,7 +3,7 @@ Feature: Web Batch Styles
   Open Style Guide: http://sdcintranet/ProductThenServiceOperations/ProductManagement/Product%20Management%20Documents/Web%20Client/Style%20Guide/Web%20Client%20Style%20Guide.docx
 
   Background:
-    Given I am signed in to Orders as gc/qacc/cctest1/password1
+    Given A user is signed in to Orders as gc/qacc/cctest1/password1
 
   @styles
   Scenario: Font and tool tips

@@ -1,24 +1,24 @@
 
 Then /^Paging: Set Per Page drop-down to 100$/ do
-  logger.step "Orders Toolbar:  Set Per Page Count to 100"
+  logger.step "In Orders Toolbar,  Set Per Page Count to 100"
   stamps.orders.orders_grid.toolbar.per_page.x100
   stamps.orders.orders_grid.toolbar.per_page.text_box.text.should eql "100"
 end
 
-Then /^Orders Toolbar:  Set Per Page drop-down to 250$/ do
-  logger.step "Orders Toolbar:  Set Per Page Count to 250"
+Then /^In Orders Toolbar,  Set Per Page drop-down to 250$/ do
+  logger.step "In Orders Toolbar,  Set Per Page Count to 250"
   stamps.orders.orders_grid.toolbar.per_page.x250
   stamps.orders.orders_grid.toolbar.per_page.text_box.text.should eql "250"
 end
 
-Then /^Orders Toolbar:  Set Per Page drop-down to 500$/ do
-  logger.step "Orders Toolbar:  Set Per Page Count to 500"
+Then /^In Orders Toolbar,  Set Per Page drop-down to 500$/ do
+  logger.step "In Orders Toolbar,  Set Per Page Count to 500"
   stamps.orders.orders_grid.toolbar.per_page.x500
   stamps.orders.orders_grid.toolbar.per_page.text_box.text.should eql "500"
 end
 
-Then /^Orders Toolbar: Expect number of orders on page is correct$/ do
-  logger.step "Orders Toolbar: Expect number of orders on page is correct"
+Then /^In Orders Toolbar, expect number of orders on page is correct$/ do
+  logger.step "In Orders Toolbar, expect number of orders on page is correct"
   stamps.orders.filter_panel.awaiting_shipment.select
   sleep 1
   stamps.orders.checkbox.check_all

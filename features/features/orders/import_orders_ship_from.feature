@@ -9,13 +9,13 @@ Feature: ORDERS-24 ShipStation Orders Should Import with a Ship From Address
   Subsequently-imported orders will include the new default Ship From address.
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @import_orders_ship_from_test
   Scenario:  Import Orders
-    Then Orders Toolbar: Import
+    Then In Orders Toolbar, Import
     Then Import Orders: Cancel
-    Then Orders Toolbar: Import
+    Then In Orders Toolbar, Import
     Then Import Orders: Select CSV File
     Then Import Orders: File Upload: Set Filename to import_orders_ship_from_test.csv
     Then Pause for 2 seconds

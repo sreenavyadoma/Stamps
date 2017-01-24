@@ -13,6 +13,6 @@ Feature: Address Cleansing BVT
       | Address Cleansing | BVT     | 1350 Market Street  | San Francisco | CA    |        | United States |
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 1
-    Then Mail Shipping Labels: Set Service to Priority Mail Package
+    Then Mail Shipping Labels: Set service to Priority Mail Package
     Then Mail Shipping Labels: Expect Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102
     Then Sign out

@@ -4,32 +4,32 @@ Feature: Details Ship Cost Total
   2. Update Total Cost at Bottom of Details Panel
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @details_ship_cost_total
   Scenario: Ship Cost Total
-    Then Orders Toolbar: Add
-    Then Order Details: Expect Total label is Total Ship Cost:
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Expect Service Cost is $0.00
-    Then Order Details: Expect Insure-For Cost is $0.00
-    Then Order Details: Expect Tracking Cost is $0.00
-    Then Order Details: Expect Total Ship Cost is $0.00
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, expect Total label is Total Ship Cost:
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, expect service Cost is $0.00
+    Then On Order Details form, expect Insure-For Cost is $0.00
+    Then On Order Details form, expect Tracking Cost is $0.00
+    Then On Order Details form, expect Total Ship Cost is $0.00
 
-    Then Order Details: Set Ship-To to address in Zone 8
-    Then Order Details: Select Service PM Package
-    Then Order Details: Set Insure-For to $58.00
-    Then Order Details: Set Ounces to 1
-    Then Order Details: Set Pounds to 1
-    Then Order Details: Set Tracking to Signature Required
-    Then Order Details: Set Length to 1
-    Then Order Details: Set Width to 1
-    Then Order Details: Set Height to 1
+    Then On Order Details form, set Ship-To to address in Zone 8
+    Then On Order Details form, select service PM Package
+    Then On Order Details form, set Insure-For to $58.00
+    Then On Order Details form, set Ounces to 1
+    Then On Order Details form, set Pounds to 1
+    Then On Order Details form, set Tracking to Signature Required
+    Then On Order Details form, set Length to 1
+    Then On Order Details form, set Width to 1
+    Then On Order Details form, set Height to 1
 
-    Then Order Details: Expect Service Cost is greater than $1.00
-    #Then Order Details: Expect Insure-For Cost is greater than $1.00
-    Then Order Details: Expect Tracking Cost is greater than $1.00
-    Then Order Details: Expect Ship Cost Total is correct
+    Then On Order Details form, expect service Cost is greater than $1.00
+    #Then On Order Details form, expect Insure-For Cost is greater than $1.00
+    Then On Order Details form, expect Tracking Cost is greater than $1.00
+    Then On Order Details form, expect Ship Cost Total is correct
 
     Then Sign out
 

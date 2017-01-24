@@ -1,11 +1,11 @@
 Feature: B-01746 Order Pagination
 
   Background:
-    Given I am signed in to Orders as webbatch_0009/password1
+    Given A user is signed in to Orders as webbatch_0009/password1
 
   @page_first
   Scenario: Go to first page
-    Then Orders Toolbar:  Set Per Page drop-down to 500
+    Then In Orders Toolbar,  Set Per Page drop-down to 500
     Then Web Batch grid has more orders than value selected in 'number of orders per page' pagination control
     Then Pagination control to go to first page is enabled
     Then User is on the first page of orders

@@ -12,29 +12,29 @@ Then /^Mail Stamps: Set Weight (\d+) lb (\d+) oz$/ do |lb, oz|
   weight.oz.set oz
 end
 
-Then /^Mail Stamps: Set Calculate Mail Service to (.*)/ do |service|
-  logger.step "Envelopes: Set Print Mail Service to: \n #{service}"
+Then /^Mail Stamps: Set Calculate Mail service to (.*)/ do |service|
+  logger.step "Envelopes: Set Print Mail service to: \n #{service}"
   stamps.mail.netstamps.calculate_service_drop_list.select service
 end
 
-Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail Postcard$/ do
-  step "Mail Stamps: Set Calculate Mail Service to First-Class Mail Postcard"
+Then /^Mail Stamps: Select Calculate Mail service First-Class Mail Postcard$/ do
+  step "Mail Stamps: Set Calculate Mail service to First-Class Mail Postcard"
 end
 
-Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail Letter$/ do
-  step "Mail Stamps: Set Calculate Mail Service to First-Class Mail Letter"
+Then /^Mail Stamps: Select Calculate Mail service First-Class Mail Letter$/ do
+  step "Mail Stamps: Set Calculate Mail service to First-Class Mail Letter"
 end
 
-Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail Large Envelope-Flat$/ do
-  step "Mail Stamps: Set Calculate Mail Service to FCM Package"
+Then /^Mail Stamps: Select Calculate Mail service First-Class Mail Large Envelope-Flat$/ do
+  step "Mail Stamps: Set Calculate Mail service to FCM Package"
 end
 
-Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail International Envelope$/ do
-  step "Mail Stamps: Set Calculate Mail Service to First-Class Mail International Envelope"
+Then /^Mail Stamps: Select Calculate Mail service First-Class Mail International Envelope$/ do
+  step "Mail Stamps: Set Calculate Mail service to First-Class Mail International Envelope"
 end
 
-Then /^Mail Stamps: Select Calculate Mail Service First-Class Mail International Large Envelope-Flat$/ do
-  step "Mail Stamps: Set Calculate Mail Service to FCMI Large Envelope"
+Then /^Mail Stamps: Select Calculate Mail service First-Class Mail International Large Envelope-Flat$/ do
+  step "Mail Stamps: Set Calculate Mail service to FCMI Large Envelope"
 end
 
 Then /^Mail Stamps: Open Extra Services$/ do

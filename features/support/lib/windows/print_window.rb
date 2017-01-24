@@ -81,7 +81,7 @@ module Stamps
         else
           "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie".should eql ""
         end
-        logger.info "Windows Print Modal: Printing successful."
+        logger.info "Windows In Print modal, click Print buttoning successful."
         sleep 3
       end
     end

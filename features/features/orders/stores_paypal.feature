@@ -2,7 +2,7 @@
 Feature:  Paypal Store Management
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
     @paypal
     Scenario: PayPal Store Management

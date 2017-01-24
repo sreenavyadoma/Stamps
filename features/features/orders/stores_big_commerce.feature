@@ -2,7 +2,7 @@
 Feature:  Big Commerce Store Management
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
     @big_commerce
     Scenario: Big Commerce Store Management

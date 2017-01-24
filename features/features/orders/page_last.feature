@@ -1,7 +1,7 @@
 Feature: B-01746 Order Pagination
 
   Background:
-    Given I am signed in to Orders as webbatch_0009/password1
+    Given A user is signed in to Orders as webbatch_0009/password1
 
 #  @page_last_enabled
   Scenario:

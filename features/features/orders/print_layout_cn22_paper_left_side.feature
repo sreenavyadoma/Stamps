@@ -1,42 +1,42 @@
 Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @print_layout_cn22_paper_left_side
   Scenario: Print 2 Intl CN22 labels on 8.5x11 - left side
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to International Address
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details International form, set address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI PFR Envelope | 8.5x11 Left Side | random           | random           | random | random  | random      | Germany | random  | random  |
-    Then Order Details: Select Service PMI Padded Flat Rate Envelope
-    Then Order Details: Set Ounces to 1
-    Then Order Details: Edit Customs Form
-    Then Customs Form: Set Package Contents to Merchandise
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 2, Origin United States, Tariff 10
-    Then Customs Form: Check I agree to the USPS Privacy Act Statement
-    Then Customs Form: Close Customs Form
-    Then Orders Toolbar: Add
+    Then On Order Details form, select service PMI Padded Flat Rate Envelope
+    Then On Order Details form, set Ounces to 1
+    Then On Order Details form, click Edit Form button
+    Then On Customs form, set Package Contents to Merchandise
+    Then On Customs form, add associated Item 1, Description random, Qty 1, Price 2, Origin United States, Tariff 10
+    Then On Customs form, check I agree to the USPS Privacy Act Statement
+    Then On Customs form, click Close button
+    Then In Orders Toolbar, click Add button
 
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to International Address
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details International form, set address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Envelope | 8.5x11 Right Side | random           | random           | random | random  | random      | Mexico | random  | random  |
-    Then Order Details: Select Service PMI Legal Flat Rate Envelope
-    Then Order Details: Set Ounces to 1
-    Then Order Details: Edit Customs Form
-    Then Customs Form: Set Package Contents to Merchandise
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 2, Origin United States, Tariff 10
-    Then Customs Form: Check I agree to the USPS Privacy Act Statement
-    Then Customs Form: Close Customs Form
+    Then On Order Details form, select service PMI Legal Flat Rate Envelope
+    Then On Order Details form, set Ounces to 1
+    Then On Order Details form, click Edit Form button
+    Then On Customs form, set Package Contents to Merchandise
+    Then On Customs form, add associated Item 1, Description random, Qty 1, Price 2, Origin United States, Tariff 10
+    Then On Customs form, check I agree to the USPS Privacy Act Statement
+    Then On Customs form, click Close button
 
-    Then Orders Grid: Check row 1
-    Then Orders Grid: Check row 2
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
-    Then Print Modal: Set Printer to "factory"
-    Then Print Modal: Select left-side label
-    Then Print Modal: Expect left-side label selected
-    Then Print Modal: Print
+    Then In Orders Grid, check row 1
+    Then In Orders Grid, check row 2
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then In Print modal, set Printer to "factory"
+    Then In Print modal, select left-side label
+    Then In Print modal, expect left-side label selected
+    Then In Print modal, click Print button
     Then Sign out

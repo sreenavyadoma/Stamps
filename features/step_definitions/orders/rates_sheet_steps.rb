@@ -285,7 +285,7 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
   "Check your paramter sheet: #{@rate_file_loc}".should eql error_msg if missing_column
 
-  # parameter zone is set in step "Order Details: Set Ship-To to address in Zone xxx"
+  # parameter zone is set in step "On Order Details form, set Ship-To to address in Zone xxx"
   # where xxx is a number between 1-9
   zone.should_not be nil
   case zone
@@ -313,7 +313,7 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   end
 
   # Set address to proper zone
-  step "Order Details: Set Ship-To to address in Zone #{zone}"
+  step "On Order Details form, set Ship-To to address in Zone #{zone}"
   format = Spreadsheet::Format.new :color=> :blue,
                                    :pattern_fg_color => :yellow,
                                    :pattern => 1
@@ -351,8 +351,8 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         @result_sheet[row_num, @columns[:zone9]] = row[@columns[:zone9]]
 
         # Set weight to 0
-        step "Order Details: Set Pounds to 0"
-        step "Order Details: Set Ounces to 0"
+        step "On Order Details form, set Pounds to 0"
+        step "On Order Details form, set Ounces to 0"
 
         # Set weight per spreadsheet
         raise "weight_lb is empty" if row[@columns[:weight_lb]].nil?
@@ -362,13 +362,13 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           weight_lb = weight_lb.to_i
           @result_sheet[row_num, @columns[:weight_lb]] = weight_lb
           @result_sheet[row_num, @columns[:weight]] = "#{weight_lb} lb."
-          step "Order Details: Set Pounds to #{weight_lb}"
+          step "On Order Details form, set Pounds to #{weight_lb}"
         else
           weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
           logger.message "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
           @result_sheet[row_num, @columns[:weight]] = "#{weight_oz} oz."
           @result_sheet[row_num, @columns[:weight_lb]] = weight_oz
-          step "Order Details: Set Ounces to #{weight_oz}"
+          step "On Order Details form, set Ounces to #{weight_oz}"
         end
 
         # Set Service
@@ -379,16 +379,16 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         # record execution time as time service was selected.
         @result_sheet[row_num, @columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-        step "Order Details: Select Service #{service}"
+        step "On Order Details form, select service #{service}"
         @result_sheet[row_num, @columns[:service_selected]] = test_data[:service]
 
         # Set Tracking
         begin
           tracking = row[@columns[:tracking]]
-          step "Order Details: Set Tracking to #{tracking}"
+          step "On Order Details form, set Tracking to #{tracking}"
         end unless row[@columns[:tracking]].nil?
         # Write tracking to spreadsheet
-        step "Order Details: Store Tracking info to parameter"
+        step "On Order Details form, Store Tracking info to parameter"
         @result_sheet[row_num, @columns[:tracking_selected]] = test_data[:tracking]
 
         # spreadsheet price
@@ -406,8 +406,8 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         @result_sheet[row_num, @columns[:total_ship_cost]] = (test_data[:total_ship_cost].to_f * 100).round / 100.0
 
         # Set weight to 0
-        step "Order Details: Set Pounds to 0"
-        step "Order Details: Set Ounces to 0"
+        step "On Order Details form, set Pounds to 0"
+        step "On Order Details form, set Ounces to 0"
 
         @result_sheet[row_num, @columns[:expectation]].should_not be nil
         @result_sheet[row_num, @columns[:total_ship_cost]].should_not be nil

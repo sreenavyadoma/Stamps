@@ -78,7 +78,7 @@ module Stamps
               end
 
               def select service
-                logger.info "Select Shipping Service #{service}"
+                logger.info "Select Shipping service #{service}"
                 selection = BrowserElement.new (browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
                 box = text_box
                 dd = drop_down
@@ -122,7 +122,7 @@ module Stamps
           end
 
           def add_new_service_mapping_btn
-            BrowserElement.new browser.span(text: "Add New Service Mapping")
+            BrowserElement.new browser.span(text: "Add New service Mapping")
           end
 
           def size
@@ -177,7 +177,7 @@ module Stamps
         end
 
         def add_new_service_mapping
-          browser.span text: "Add New Service Mapping"
+          browser.span text: "Add New service Mapping"
         end
 
         def store_nickname

@@ -1,273 +1,273 @@
-Feature:  Orders Service Selection
+Feature:  Orders service Selection
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @details_services
   @details_services_dom
-  Scenario: Service Selections for Domestic Orders
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to address in Zone 1
-    Then Order Details: Set Ounces to 1
+  Scenario: service Selections for Domestic Orders
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To to address in Zone 1
+    Then On Order Details form, set Ounces to 1
 
-    Then Order Details: Select Service FCM Large Envelope
-    Then Order Details: Expect Service is FCM Large Envelope
+    Then On Order Details form, select service FCM Large Envelope
+    Then On Order Details form, expect service is FCM Large Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Large Envelope
-    Then Order Details: Expect Service is PM Large Envelope
+    Then On Order Details form, select service PM Large Envelope
+    Then On Order Details form, expect service is PM Large Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Package
-    Then Order Details: Expect Service is PM Package
+    Then On Order Details form, select service PM Package
+    Then On Order Details form, expect service is PM Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Large Package
-    Then Order Details: Expect Service is PM Large Package
+    Then On Order Details form, select service PM Large Package
+    Then On Order Details form, expect service is PM Large Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Flat Rate Envelope
-    Then Order Details: Expect Service is PM Flat Rate Envelope
+    Then On Order Details form, select service PM Flat Rate Envelope
+    Then On Order Details form, expect service is PM Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PM Padded Flat Rate Envelope
+    Then On Order Details form, select service PM Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PM Padded Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Legal Flat Rate Envelope
-    Then Order Details: Expect Service is PM Legal Flat Rate Envelope
+    Then On Order Details form, select service PM Legal Flat Rate Envelope
+    Then On Order Details form, expect service is PM Legal Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Small Flat Rate Box
-    Then Order Details: Expect Service is PM Small Flat Rate Box
+    Then On Order Details form, select service PM Small Flat Rate Box
+    Then On Order Details form, expect service is PM Small Flat Rate Box
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Medium Flat Rate Box
-    Then Order Details: Expect Service is PM Medium Flat Rate Box
+    Then On Order Details form, select service PM Medium Flat Rate Box
+    Then On Order Details form, expect service is PM Medium Flat Rate Box
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Large Flat Rate Box
-    Then Order Details: Expect Service is PM Large Flat Rate Box
+    Then On Order Details form, select service PM Large Flat Rate Box
+    Then On Order Details form, expect service is PM Large Flat Rate Box
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Regional Rate Box A
-    Then Order Details: Expect Service is PM Regional Rate Box A
+    Then On Order Details form, select service PM Regional Rate Box A
+    Then On Order Details form, expect service is PM Regional Rate Box A
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PM Regional Rate Box B
-    Then Order Details: Expect Service is PM Regional Rate Box B
+    Then On Order Details form, select service PM Regional Rate Box B
+    Then On Order Details form, expect service is PM Regional Rate Box B
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PME Package
-    Then Order Details: Expect Service is PME Package
+    Then On Order Details form, select service PME Package
+    Then On Order Details form, expect service is PME Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PME Flat Rate Envelope
-    Then Order Details: Expect Service is PME Flat Rate Envelope
+    Then On Order Details form, select service PME Flat Rate Envelope
+    Then On Order Details form, expect service is PME Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PME Flat Rate Envelope
-    Then Order Details: Expect Service is PME Flat Rate Envelope
+    Then On Order Details form, select service PME Flat Rate Envelope
+    Then On Order Details form, expect service is PME Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PME Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PME Padded Flat Rate Envelope
+    Then On Order Details form, select service PME Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PME Padded Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PME Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PME Padded Flat Rate Envelope
+    Then On Order Details form, select service PME Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PME Padded Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PME Legal Flat Rate Envelope
-    Then Order Details: Expect Service is PME Legal Flat Rate Envelope
+    Then On Order Details form, select service PME Legal Flat Rate Envelope
+    Then On Order Details form, expect service is PME Legal Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service MM Package
-    Then Order Details: Expect Service is MM Package
+    Then On Order Details form, select service MM Package
+    Then On Order Details form, expect service is MM Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PSG Package
-    Then Order Details: Expect Service is PSG Package
+    Then On Order Details form, select service PSG Package
+    Then On Order Details form, expect service is PSG Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PSG Oversized Package
-    Then Order Details: Expect Service is PSG Oversized Package
+    Then On Order Details form, select service PSG Oversized Package
+    Then On Order Details form, expect service is PSG Oversized Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
   @details_services
   @details_services_int
-  Scenario: Service Selections for International Orders
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-To to International Address
+  Scenario: service Selections for International Orders
+    Then In Orders Toolbar, click Add button
+    Then On Order Details International form, set address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
-    Then Order Details: Set Ounces to 1
-    Then Order Details: Add Item 1, Qty 1, ID random, Description random
-    Then Order Details: Edit Customs Form
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 1, Origin Brazil, Tariff 1
-    Then Customs Form: Check I agree to the USPS Privacy Act Statement
-    Then Customs Form: Close Customs Form
+    Then On Order Details form, set Ounces to 1
+    Then On Order Details form, Add Item 1, Qty 1, ID random, Description random
+    Then On Order Details form, click Edit Form button
+    Then On Customs form, add associated Item 1, Description random, Qty 1, Price 1, Origin Brazil, Tariff 1
+    Then On Customs form, check I agree to the USPS Privacy Act Statement
+    Then On Customs form, click Close button
 
-    Then Order Details: Select Service FCMI Large Envelope
-    Then Order Details: Expect Service is FCMI Large Envelope
+    Then On Order Details form, select service FCMI Large Envelope
+    Then On Order Details form, expect service is FCMI Large Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service FCMI Package
-    Then Order Details: Expect Service is FCMI Package
+    Then On Order Details form, select service FCMI Package
+    Then On Order Details form, expect service is FCMI Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMI Package
-    Then Order Details: Expect Service is PMI Package
+    Then On Order Details form, select service PMI Package
+    Then On Order Details form, expect service is PMI Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMI Flat Rate Envelope
-    Then Order Details: Expect Service is PMI Flat Rate Envelope
+    Then On Order Details form, select service PMI Flat Rate Envelope
+    Then On Order Details form, expect service is PMI Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMI Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PMI Padded Flat Rate Envelope
+    Then On Order Details form, select service PMI Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PMI Padded Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMI Legal Flat Rate Envelope
-    Then Order Details: Expect Service is PMI Legal Flat Rate Envelope
+    Then On Order Details form, select service PMI Legal Flat Rate Envelope
+    Then On Order Details form, expect service is PMI Legal Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMI Small Flat Rate Box
-    Then Order Details: Expect Service is PMI Small Flat Rate Box
+    Then On Order Details form, select service PMI Small Flat Rate Box
+    Then On Order Details form, expect service is PMI Small Flat Rate Box
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMI Medium Flat Rate Box
-    Then Order Details: Expect Service is PMI Medium Flat Rate Box
+    Then On Order Details form, select service PMI Medium Flat Rate Box
+    Then On Order Details form, expect service is PMI Medium Flat Rate Box
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMI Large Flat Rate Box
-    Then Order Details: Expect Service is PMI Large Flat Rate Box
+    Then On Order Details form, select service PMI Large Flat Rate Box
+    Then On Order Details form, expect service is PMI Large Flat Rate Box
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    #Then Order Details: Select Service PMI Regional Rate Box A
-    #Then Order Details: Expect Service is PMI Regional Rate Box A
+    #Then On Order Details form, select service PMI Regional Rate Box A
+    #Then On Order Details form, expect service is PMI Regional Rate Box A
 
-    #Then Order Details: Select Service PMI Regional Rate Box B
-    #Then Order Details: Expect Service is PMI Regional Rate Box B
+    #Then On Order Details form, select service PMI Regional Rate Box B
+    #Then On Order Details form, expect service is PMI Regional Rate Box B
 
-    Then Order Details: Select Service PMEI Package
-    Then Order Details: Expect Service is PMEI Package
+    Then On Order Details form, select service PMEI Package
+    Then On Order Details form, expect service is PMEI Package
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMEI Flat Rate Envelope
-    Then Order Details: Expect Service is PMEI Flat Rate Envelope
+    Then On Order Details form, select service PMEI Flat Rate Envelope
+    Then On Order Details form, expect service is PMEI Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMEI Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PMEI Padded Flat Rate Envelope
+    Then On Order Details form, select service PMEI Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PMEI Padded Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
-    Then Order Details: Select Service PMEI Legal Flat Rate Envelope
-    Then Order Details: Expect Service is PMEI Legal Flat Rate Envelope
+    Then On Order Details form, select service PMEI Legal Flat Rate Envelope
+    Then On Order Details form, expect service is PMEI Legal Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Close Print Modal
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, click Close button
 
     Then Sign out
 

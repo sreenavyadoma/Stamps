@@ -18,8 +18,8 @@ Feature: Mail Roll - 4" x 6" - PM Regional Box B
 
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 1
-    Then Mail Roll: Select Service Priority Mail Regional Rate Box B
+    Then Mail Roll: Select service Priority Mail Regional Rate Box B
     Then Mail: Open Print Modal
-    Then Mail Print Modal: Select Printer "ZDesigner"
-    Then Mail Print Modal: Print
+    Then Mail In Print modal, select Printer "ZDesigner"
+    Then Mail In Print modal, click Print button
     Then Sign out

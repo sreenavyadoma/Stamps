@@ -83,7 +83,7 @@ module Stamps
       end
 
       def select selection
-        logger.info "Select Service #{selection}"
+        logger.info "Select service #{selection}"
         box = text_box
         button = drop_down
         if selection == "Media Mail (2 - 3 Days)"
@@ -101,7 +101,7 @@ module Stamps
             if selected_service == "First Class (1 - 3 Days)"
               selected_service = "First Class Mail (1 - 3 Days)"
             end
-            logger.info "Selected Service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
+            logger.info "Selected service #{selected_service} - #{(selected_service.include? selection)?"done": "service not selected"}"
             break if selected_service.include? selection
           rescue
             #ignore

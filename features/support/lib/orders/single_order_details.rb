@@ -80,95 +80,112 @@ module Stamps
       end
 
       class ShipToCountry < Browser::Modal
-        attr_reader :text_box_dom, :text_box_int, :drop_down_dom, :drop_down_int,
-                    :dom_drop_down_stg, :int_drop_down_stg, :dom_text_box_stg, :int_text_box_stg
+        attr_reader :ship_to_dd
 
         def initialize(param)
           super(param)
-          @drop_down_dom = BrowserElement.new browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
-          @drop_down_int = BrowserElement.new browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
-          @text_box_dom = TextboxElement.new browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl")
-          @text_box_int = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
-
-          @dom_drop_down_stg = BrowserElement.new browser.div(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div[id^=combo-][id$=-trigger-picker]")
-          @dom_text_box_stg = TextboxElement.new browser.text_field(css: "div#shiptoview-domestic-targetEl>div>div>div>div>div>div>div>input[name=ShipCountryCode]")
-          @int_drop_down_stg = BrowserElement.new browser.div(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div:nth-child(2)>div>div:nth-child(2)")
-          @int_text_box_stg = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div:nth-child(1)>div>div>div>div>div>div>input")
+          @ship_to_dd = ShipToCountryDropDown.new(param)
         end
 
         def present?
           drop_down.present?
         end
 
-        def text_box
-          50.times do
-            return text_box_dom if text_box_dom.present?
-            return text_box_int if text_box_int.present?
+        def show_address
+          ship_to_dd.element.click_while_present
+        end
 
-            return dom_text_box_stg if dom_text_box_stg.present?
-            return int_text_box_stg if int_text_box_stg.present?
+        def text_box
+          show_address
+          text_field = nil
+          text_fields = browser.text_fields(css: "input[name=ShipCountryCode]")
+          6.times do
+            text_fields.each do |element|
+              text_field = element if element.present?
+              sleep 1
+            end
+            break unless text_field.nil?
           end
-          #(text_box_dom.present? || text_box_int.present?).should be true
-          (dom_text_box_stg.present? || int_text_box_stg.present? || text_box_dom.present? || text_box_int.present?).should be true
+          text_field.should_not be nil
+          text_field.present?.should be true
+          TextboxElement.new(text_field)
         end
 
         def  drop_down
-          50.times do
-            return drop_down_dom if drop_down_dom.present?
-            return drop_down_int if drop_down_int.present?
-
-            return dom_drop_down_stg if dom_drop_down_stg.present?
-            return int_drop_down_stg if int_drop_down_stg.present?
+          dd = nil
+          dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
+          int_dd = browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
+          10.times do
+            if dom_dd.present?
+              dd = dom_dd
+              break
+            elsif int_dd.present?
+              dd = int_dd
+              break
+            end
+            sleep 1
           end
-          #(drop_down_dom.present? || drop_down_int.present?).should be true
-          (drop_down_dom.present? || drop_down_dom.present? || dom_drop_down_stg.present? || int_drop_down_stg.present?).should be true
+          dd.should_not be nil
+          dd.present?.should be true
+          BrowserElement.new(dd)
         end
 
-        def selected? country
+        def selected?(country)
           text_box.text == country
         end
 
-        def select country
+        def select(country)
+          show_address
+          dd = drop_down
+          text_field = text_box
           logger.info "Select Country #{country}"
           begin
-            drop_down.safe_click
+            dd.safe_click
             sleep 1
-            drop_down.safe_click
-            drop_down.safe_click
+            dd.safe_click
+            dd.safe_click
             lis = browser.lis(text: country)
             lis.size.should be_between(1, 2).inclusive
 
             case lis.size
               when 1
-                selection = BrowserElement.new lis[0]
+                selection = BrowserElement.new(lis[0])
               when 2
                 if lis[0].text.size > 0
-                  selection = BrowserElement.new  lis[0]
+                  selection = BrowserElement.new(lis[0])
                 else
-                  selection = BrowserElement.new  lis[1]
+                  selection = BrowserElement.new(lis[1])
                 end
               else
                 lis.size.should be_between(1, 2).inclusive
             end
 
             10.times do
-              break if text_box.text.include? country
-              drop_down.safe_click unless selection.present?
+              break if text_field.text.include?(country)
+              dd.safe_click unless selection.present?
               selection.safe_scroll_into_view
               selection.safe_scroll_into_view
               selection.safe_click if selection.present?
-              logger.info "Selection #{text_box.text} - #{(text_box.text.include? country)?"was selected": "not selected"}"
-              break if text_box.text.include? country
-              break if text_box.text.include? country
+              logger.info "Selection #{text_field.text} - #{(text_field.text.include? country)?"was selected": "not selected"}"
+              break if text_field.text.include?(country)
+              break if text_field.text.include?(country)
             end
             logger.info "#{country} selected."
-            text_box.text.should include country
-          end unless text_box.text.include? country
+            text_field.text.should include(country)
+          end unless text_field.text.include?(country)
+        end
+      end
+
+      class ShipToCountryDropDown < Browser::Modal
+        attr_reader :element
+        def initialize(param)
+          super(param)
+          @element = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
         end
       end
 
       class ShipToInternational < Browser::Modal
-        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :collapsed_address_dd
+        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :ship_to_dd 
 
         def initialize(param)
           super(param)
@@ -185,7 +202,7 @@ module Stamps
           @blur_element = BlurOutElement.new(param)
 
           @less_link = BrowserElement.new browser.span(css: "div[id*=international]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
+          @ship_to_dd = ShipToCountryDropDown.new(param)
         end
 
         def blur_out
@@ -409,13 +426,13 @@ module Stamps
       end
 
       class ShipToDomestic < Browser::Modal
-        attr_reader :ambiguous, :auto_suggest, :less_link, :collapsed_address_dd, :blur_element,
+        attr_reader :ambiguous, :auto_suggest, :less_link, :ship_to_dd , :blur_element,
                     :address_not_found
 
         def initialize(param)
           super(param)
           @less_link = BrowserElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @collapsed_address_dd = BrowserElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
+          @ship_to_dd  = ShipToCountryDropDown.new(param)
           @blur_element = BlurOutElement.new(param)
           @address_not_found = AddressNotFound.new(param)
           @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
@@ -454,7 +471,7 @@ module Stamps
         end
 
         def show_address
-          collapsed_address_dd.click_while_present
+          ship_to_dd.element.click_while_present
         end
 
         def set address
@@ -942,7 +959,7 @@ module Stamps
         end
 
         def select selection
-          logger.info "Select Service #{selection}"
+          logger.info "Select service #{selection}"
 
           sel_arr = selection.split(/\s+/)
           selection_substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
@@ -958,7 +975,7 @@ module Stamps
               selection_label.safe_scroll_into_view
               selection_label.safe_click
               blur_out
-              logger.info "Selected Service #{text_box.text} - #{(text_box.text.include? selection)?"success": "service not selected"}"
+              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? selection)?"success": "service not selected"}"
               break if text_box.text.include? selection_substr
             rescue
               #ignore
@@ -1049,7 +1066,7 @@ module Stamps
               end
             else
               sleep 1
-              return true if index == 5 #try to look for service in Service selection drop-down 3 times before declaring it's disabled.
+              return true if index == 5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
             end
           end
         end

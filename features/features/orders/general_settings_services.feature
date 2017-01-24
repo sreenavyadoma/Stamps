@@ -2,63 +2,63 @@
 Feature: Checkoxes Services, Print Confirm, USPS Terms, Contacts and Shipments
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @general_settings_t1
   Scenario: Services, Print Confirm, USPS Terms, Contacts and Shipments
 
     Then Open Settings Modal
     Then Settings: Check Services
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Services Checked
+    Then In Settings modal,  Expect Services Checked
 
-    Then Settings:  Uncheck Services
-    Then Settings:  Save
+    Then In Settings modal,  Uncheck Services
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Services Unchecked
+    Then In Settings modal,  Expect Services Unchecked
 
     Then Settings: Check Print Confirm
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Print Confirm Checked
+    Then In Settings modal,  Expect Print Confirm Checked
 
     Then Settings: Uncheck Print Confirm
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Print Confirm Unchecked
+    Then In Settings modal,  Expect Print Confirm Unchecked
 
     Then Settings: Check USPS Terms
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect USPS Terms Checked
+    Then In Settings modal,  Expect USPS Terms Checked
 
     Then Settings: Uncheck USPS Terms
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect USPS Terms Unchecked
+    Then In Settings modal,  Expect USPS Terms Unchecked
 
     Then Settings: Check Contacts
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Contacts Checked
+    Then In Settings modal,  Expect Contacts Checked
 
     Then Settings: Uncheck Contacts
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Contacts Unchecked
+    Then In Settings modal,  Expect Contacts Unchecked
 
     Then Settings: Check Shipments
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Shipments Checked
+    Then In Settings modal,  Expect Shipments Checked
 
     Then Settings: Uncheck Shipments
-    Then Settings:  Save
+    Then In Settings modal,  Save
     Then Open Settings Modal
-    Then Settings:  Expect Shipments Unchecked
+    Then In Settings modal,  Expect Shipments Unchecked
 
-    Then Settings:  Close
+    Then In Settings modal,  Close
 
     Then Sign out
 

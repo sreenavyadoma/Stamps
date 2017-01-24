@@ -7,7 +7,7 @@ Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
   @store_settings.store_nickname.set test_data[:store_name]
 end
 
-Then /^Store Settings: Set Service Mapping (\d+), Requested Services (.*), Shipping Service (.*)$/ do |item_number, requested_services, shipping_service|
+Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
   logger.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
 

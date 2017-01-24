@@ -268,13 +268,13 @@ Then /^Mail: Expect Auto Weigh check box is present$/ do
   stamps.mail.weight.auto_weigh.present?.should be true
 end
 
-Then /^Mail: Expect Service Field is present$/ do
-  logger.step "Mail: Expect Service Field is present"
+Then /^Mail: Expect service Field is present$/ do
+  logger.step "Mail: Expect service Field is present"
   stamps.mail.service.text_box.present?.should be true
 end
 
-Then /^Mail: Expect Service Price is present$/ do
-  logger.step "Mail: Expect Service Price is present"
+Then /^Mail: Expect service Price is present$/ do
+  logger.step "Mail: Expect service Price is present"
   stamps.mail.service.price.present?.should be true
 end
 

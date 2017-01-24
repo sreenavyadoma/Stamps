@@ -630,6 +630,7 @@ module Stamps
 
       class Toolbar < Browser::Modal
         attr_reader :print_btn, :add, :move, :import_button, :import_orders_modal, :usps_intl_terms
+
         def initialize(param)
           super(param)
           @import_button = BrowserElement.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")

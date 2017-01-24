@@ -2,7 +2,7 @@
 Feature: Purchasing
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @orders_purchasing
   Scenario:

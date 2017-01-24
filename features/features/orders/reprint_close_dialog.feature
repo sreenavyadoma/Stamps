@@ -2,26 +2,26 @@
 Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" View [B-01639]
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @reprint_media_close @reprint
   Scenario: User Reprints Order - Closes Reprint Modal before reprint
 
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to address in Zone 1 through 4
-    Then Order Details: Select Service PM Package
-    Then Order Details: Set Pounds to 1
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To to address in Zone 1 through 4
+    Then On Order Details form, select service PM Package
+    Then On Order Details form, set Pounds to 1
 
     Then Pause for 2 seconds
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Printing On "Shipping Label - 5 ½" x 8 ½""
-    Then Print Modal: Set Printer to "factory"
-    Then Print Modal: Print
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Print-On to "Shipping Label - 5 ½" x 8 ½""
+    Then In Print modal, set Printer to "factory"
+    Then In Print modal, click Print button
 
-    Then Filter Panel: Select Shipped
-    Then Orders Grid: Check saved Order ID
-    Then Print Modal: Open Reprint Modal
+    Then In left filter panel, select Shipped
+    Then In Orders Grid, check saved Order ID
+    Then In Print modal, Open Reprint Modal
     Then Close Reprint Modal
     Then Sign out
 

@@ -11,10 +11,10 @@ Feature: Envelopes BVT
     Then Mail: Set Ship-To to Random Address in Zone 1
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 1
-    Then Mail Envelopes: Select Service First-Class Mail Letter
+    Then Mail Envelopes: Select service First-Class Mail Letter
     Then Mail: Open Print Modal
-    Then Mail Print Modal: Select Printer "factory"
-    Then Mail Print Modal: Print
+    Then Mail In Print modal, select Printer "factory"
+    Then Mail In Print modal, click Print button
     Then Sign out
 
   @mail_bvt_envelopes2
@@ -25,11 +25,11 @@ Feature: Envelopes BVT
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 1
-    Then Mail Envelopes: Set Service to First-Class Mail Letter
+    Then Mail Envelopes: Set service to First-Class Mail Letter
     Then Mail Envelopes: Set Include Return Address to Checked
     Then Mail Envelopes: Set Include Delivery Address to Unchecked
    # Then Mail Envelopes: Set Include Mail to Unchecked
     Then Mail Envelopes: Set Reference Number to 43223
     Then Mail Envelopes: Set Cost Code to None
-    Then Mail Print Modal: Print
+    Then Mail In Print modal, click Print button
     Then Sign out

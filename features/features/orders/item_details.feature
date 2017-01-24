@@ -1,39 +1,39 @@
 Feature: Item Details
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @item_details
   Scenario:  Item Details
     Then Pause for 3 seconds
-    Then Orders Grid: Check row 10
+    Then In Orders Grid, check row 10
 
     Then Pause for 3 seconds
 
-    Then Order Details: Expand Store Items Ordered pane
-    Then Order Details: Collapse Store Items Ordered pane
-    Then Order Details: Expand Store Items Ordered pane
-    Then Order Details: Collapse Store Items Ordered pane
+    Then On Order Details form, Expand Store Items Ordered pane
+    Then On Order Details form, Collapse Store Items Ordered pane
+    Then On Order Details form, Expand Store Items Ordered pane
+    Then On Order Details form, Collapse Store Items Ordered pane
 
-    Then Orders Grid: Uncheck row 10
+    Then In Orders Grid, uncheck row 10
     Then Pause for 3 seconds
-    Then Orders Grid: Check row 4
+    Then In Orders Grid, check row 4
     Then Pause for 3 seconds
 
-    Then Order Details: Expand Store Items Ordered pane
-    Then Order Details: Add Item 1, Qty 1, ID random, Description random
-    Then Order Details: Add Item 2, Qty 1, ID random, Description random
-    Then Order Details: Add Item 3, Qty 1, ID random, Description random
-    Then Order Details: Add Item 4, Qty 1, ID random, Description random
+    Then On Order Details form, Expand Store Items Ordered pane
+    Then On Order Details form, Add Item 1, Qty 1, ID random, Description random
+    Then On Order Details form, Add Item 2, Qty 1, ID random, Description random
+    Then On Order Details form, Add Item 3, Qty 1, ID random, Description random
+    Then On Order Details form, Add Item 4, Qty 1, ID random, Description random
 
 
-    Then Order Details: Collapse Manual Items Ordered pane
-    Then Order Details: Expand Manual Items Ordered pane
-    Then Order Details: Delete Item 4
-    Then Order Details: Delete Item 3
-    Then Order Details: Delete Item 2
-    Then Order Details: Delete Item 1
-    Then Order Details: Collapse Manual Items Ordered pane
+    Then On Order Details form, Collapse Manual Items Ordered pane
+    Then On Order Details form, Expand Manual Items Ordered pane
+    Then On Order Details form, Delete Item 4
+    Then On Order Details form, Delete Item 3
+    Then On Order Details form, Delete Item 2
+    Then On Order Details form, Delete Item 1
+    Then On Order Details form, Collapse Manual Items Ordered pane
 
 
     Then Sign out

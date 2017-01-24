@@ -2,21 +2,21 @@
 Feature:  Basic Search
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @search_orders
   Scenario: Search order
 
     # Search for New Order ID
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to address in Zone 1
-    Then Order Details: Set Email to random
-    Then Order Details: Set Phone to random
-    Then Order Details: Select Service PM Package
-    Then Order Details: Set Weight to 1 lb 1 oz
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To to address in Zone 1
+    Then On Order Details form, set Email to random
+    Then On Order Details form, set Phone to random
+    Then On Order Details form, select service PM Package
+    Then On Order Details form, set Weight to 1 lb 1 oz
 
-    Then Orders Grid: Uncheck Saved Order ID
+    Then In Orders Grid, uncheck saved Order ID
 
     Then Pause for 3 seconds
     Then Refresh Browser

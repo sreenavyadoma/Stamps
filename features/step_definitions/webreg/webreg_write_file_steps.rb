@@ -14,9 +14,9 @@ Then /^Orders: Sign-in using username and password from parameter file$/ do
   stamps.orders.landing_page.sign_in @webreg_data[:usr], @webreg_data[:pw]
 end
 
-Then /^PAM Customer Search: Set username from parameter file$/ do
-  logger.info "PAM Customer Search: Set username from parameter file"
-  step "PAM Customer Search: Set username to #{CONFIG['usr']}"
+Then /^On PAM Customer Search page, set username from parameter file$/ do
+  logger.info "On PAM Customer Search page, set username from parameter file"
+  step "On PAM Customer Search page, set username to #{CONFIG['usr']}"
 end
 
 Then /^WebReg: Save username and password to parameter file(?:| (.*))$/ do |filename|

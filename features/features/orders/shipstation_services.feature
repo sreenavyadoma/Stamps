@@ -2,51 +2,51 @@
   Feature: Domestic USPS service used to fulfill an order.
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @shipstation_services
   Scenario:  ShipStation & Services
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Orders Grid: Check row 1
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then In Orders Grid, check row 1
 
-    Then Order Details: Set Ship-To to address in Zone 1 through 4
+    Then On Order Details form, set Ship-To to address in Zone 1 through 4
 
-    Then Order Details: Select Service PM Large Envelope
-    Then Order Details: Expect Service is PM Large Envelope
+    Then On Order Details form, select service PM Large Envelope
+    Then On Order Details form, expect service is PM Large Envelope
 
-    Then Order Details: Select Service PM Package
-    Then Order Details: Expect Service is PM Package
+    Then On Order Details form, select service PM Package
+    Then On Order Details form, expect service is PM Package
 
-    Then Order Details: Select Service PM Large Package
-    Then Order Details: Expect Service is PM Large Package
+    Then On Order Details form, select service PM Large Package
+    Then On Order Details form, expect service is PM Large Package
 
-    Then Order Details: Select Service PM Flat Rate Envelope
-    Then Order Details: Expect Service is PM Flat Rate Envelope
+    Then On Order Details form, select service PM Flat Rate Envelope
+    Then On Order Details form, expect service is PM Flat Rate Envelope
 
-    Then Order Details: Select Service PM Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PM Padded Flat Rate Envelope
+    Then On Order Details form, select service PM Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PM Padded Flat Rate Envelope
 
-    Then Order Details: Select Service PM Legal Flat Rate Envelope
-    Then Order Details: Expect Service is PM Legal Flat Rate Envelope
+    Then On Order Details form, select service PM Legal Flat Rate Envelope
+    Then On Order Details form, expect service is PM Legal Flat Rate Envelope
 
-    Then Order Details: Select Service PM Regional Rate Box A
-    Then Order Details: Expect Service is PM Regional Rate Box A
+    Then On Order Details form, select service PM Regional Rate Box A
+    Then On Order Details form, expect service is PM Regional Rate Box A
 
-    Then Order Details: Select Service PM Regional Rate Box B
-    Then Order Details: Expect Service is PM Regional Rate Box B
+    Then On Order Details form, select service PM Regional Rate Box B
+    Then On Order Details form, expect service is PM Regional Rate Box B
 
-    Then Order Details: Select Service PME Package
-    Then Order Details: Expect Service is PME Package
+    Then On Order Details form, select service PME Package
+    Then On Order Details form, expect service is PME Package
 
-    Then Order Details: Select Service PME Flat Rate Envelope
-    Then Order Details: Expect Service is PME Flat Rate Envelope
+    Then On Order Details form, select service PME Flat Rate Envelope
+    Then On Order Details form, expect service is PME Flat Rate Envelope
 
-    Then Order Details: Select Service PME Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PME Padded Flat Rate Envelope
+    Then On Order Details form, select service PME Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PME Padded Flat Rate Envelope
 
-    Then Order Details: Select Service PME Legal Flat Rate Envelope
-    Then Order Details: Expect Service is PME Legal Flat Rate Envelope
+    Then On Order Details form, select service PME Legal Flat Rate Envelope
+    Then On Order Details form, expect service is PME Legal Flat Rate Envelope
 
     Then Sign out
 

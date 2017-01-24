@@ -2,11 +2,11 @@
 Feature: Saved Order ID Created
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @order_id
   Scenario:  Saved Order ID Created
-    Then Orders Toolbar: Add
-    Then Order Details: Expect Order ID is truthy
-    Then Order Details: Expect Order ID equals Grid Oder ID in row 1
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, expect Order ID is truthy
+    Then On Order Details form, expect Order ID equals Grid Oder ID in row 1
     Then Sign out

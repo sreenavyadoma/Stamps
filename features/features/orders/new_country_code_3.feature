@@ -1,29 +1,29 @@
 Feature:  Print Bonaire, Sint Eustatius, and Saba orders
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
      #User Able to Print with  new   country Country Bonaire, Sint Eustatius, and Saba
   @new_country_code @new_country_code_3
   Scenario: Print Bonaire, Sincd t Eustatius, and Saba orders
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to International Address
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details International form, set address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
-       Then Order Details: Select Service FCMI Large Envelope
-    Then Order Details: Set Ounces to 2
-    Then Order Details: Set Pounds to 2
-    Then Order Details: Edit Customs Form
-    Then Customs Form: Set Package Contents to Merchandise
-    Then Customs Form: Add Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
-    Then Customs Form: Check I agree to the USPS Privacy Act Statement
-    Then Customs Form: Close Customs Form
+       Then On Order Details form, select service FCMI Large Envelope
+    Then On Order Details form, set Ounces to 2
+    Then On Order Details form, set Pounds to 2
+    Then On Order Details form, click Edit Form button
+    Then On Customs form, set Package Contents to Merchandise
+    Then On Customs form, add associated Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
+    Then On Customs form, check I agree to the USPS Privacy Act Statement
+    Then On Customs form, click Close button
     Then Pause for 3 seconds
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Printing On "Shipping Label - 8 ½" x 11" Paper"
-    Then Print Modal: Set Printer to "factory"
-    Then Print Modal: Print
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then In Print modal, set Printer to "factory"
+    Then In Print modal, click Print button
     Then Sign out
 
 

@@ -87,8 +87,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @username_textbox = TextboxElement.new browser.text_field(Locators::SignIn.username)
-        @password_textbox = TextboxElement.new browser.text_field(Locators::SignIn.password)
+        @username_textbox = TextboxElement.new browser.text_field(id: "UserNameTextBox")
+        @password_textbox = TextboxElement.new browser.text_field(id: "PasswordTextBox")
         @sign_in_button = BrowserElement.new browser.button(id: "signInButton")
         @sign_in_link = BrowserElement.new browser.link(text: "Sign In")
         @verifying_account_info = BrowserElement.new browser.div text: "Verifying account information..."
@@ -282,8 +282,8 @@ module Stamps
         end
 
         sign_in_link = BrowserElement.new browser.link(text: "Sign In")
-        username_textbox = TextboxElement.new browser.text_field(Locators::SignIn.username)
-        password_textbox = TextboxElement.new browser.text_field(Locators::SignIn.password)
+        username_textbox = TextboxElement.new browser.text_field(id: "UserNameTextBox")
+        password_textbox = TextboxElement.new browser.text_field(id: "PasswordTextBox")
         remember_username = Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
         sign_in_button = BrowserElement.new browser.button(id: "signInButton")
         verifying_account_info = BrowserElement.new browser.div(text: "Verifying account information...")

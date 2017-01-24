@@ -4,7 +4,7 @@ module Stamps
 
       class VolusionShippingAddress < Browser::Modal
         class VolusionCountry < Browser::Modal
-          def select country
+          def select(country)
             begin
               browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
               browser.select_list(:id, "ShipCountry").option(text: country).when_present.select

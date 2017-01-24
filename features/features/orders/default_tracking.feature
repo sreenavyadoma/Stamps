@@ -2,61 +2,61 @@
 Feature: Tracking
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @tracking_defaults
   Scenario:  Print - First-Class Mail Envelope
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
 
-    Then Order Details: Set Ship-To to address in Zone 1
+    Then On Order Details form, set Ship-To to address in Zone 1
 
-    #Then Order Details: Select Service PME Flat Rate Envelope
-    #Then Order Details: Expect Service is PME Flat Rate Envelope
-    #Then Order Details: Expect Tracking is USPS Tracking
+    #Then On Order Details form, select service PME Flat Rate Envelope
+    #Then On Order Details form, expect service is PME Flat Rate Envelope
+    #Then On Order Details form, expect Tracking is USPS Tracking
 
-    #Then Order Details: Select Service PME Padded Flat Rate Envelope
-    #Then Order Details: Expect Service is PME Padded Flat Rate Envelope
-    #Then Order Details: Expect Tracking is USPS Tracking
+    #Then On Order Details form, select service PME Padded Flat Rate Envelope
+    #Then On Order Details form, expect service is PME Padded Flat Rate Envelope
+    #Then On Order Details form, expect Tracking is USPS Tracking
 
-    #Then Order Details: Select Service PME Legal Flat Rate Envelope
-    #Then Order Details: Expect Service is PME Legal Flat Rate Envelope
-    #Then Order Details: Expect Tracking is USPS Tracking
+    #Then On Order Details form, select service PME Legal Flat Rate Envelope
+    #Then On Order Details form, expect service is PME Legal Flat Rate Envelope
+    #Then On Order Details form, expect Tracking is USPS Tracking
 
-    #Then Order Details: Select Service PME Package
-    #Then Order Details: Expect Service is "Priority Mail Express Package"
-    #Then Order Details: Expect Tracking is USPS Tracking
+    #Then On Order Details form, select service PME Package
+    #Then On Order Details form, expect service is "Priority Mail Express Package"
+    #Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Large Envelope
-    Then Order Details: Expect Service is PM Large Envelope
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Large Envelope
+    Then On Order Details form, expect service is PM Large Envelope
+    Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Package
-    Then Order Details: Expect Service is PM Package
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Package
+    Then On Order Details form, expect service is PM Package
+    Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Large Package
-    Then Order Details: Expect Service is PM Large Package
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Large Package
+    Then On Order Details form, expect service is PM Large Package
+    Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Flat Rate Envelope
-    Then Order Details: Expect Service is PM Flat Rate Envelope
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Flat Rate Envelope
+    Then On Order Details form, expect service is PM Flat Rate Envelope
+    Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Padded Flat Rate Envelope
-    Then Order Details: Expect Service is PM Padded Flat Rate Envelope
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Padded Flat Rate Envelope
+    Then On Order Details form, expect service is PM Padded Flat Rate Envelope
+    Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Legal Flat Rate Envelope
-    Then Order Details: Expect Service is PM Legal Flat Rate Envelope
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Legal Flat Rate Envelope
+    Then On Order Details form, expect service is PM Legal Flat Rate Envelope
+    Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Regional Rate Box A
-    Then Order Details: Expect Service is PM Regional Rate Box A
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Regional Rate Box A
+    Then On Order Details form, expect service is PM Regional Rate Box A
+    Then On Order Details form, expect Tracking is USPS Tracking
 
-    Then Order Details: Select Service PM Regional Rate Box B
-    Then Order Details: Expect Service is PM Regional Rate Box B
-    Then Order Details: Expect Tracking is USPS Tracking
+    Then On Order Details form, select service PM Regional Rate Box B
+    Then On Order Details form, expect service is PM Regional Rate Box B
+    Then On Order Details form, expect Tracking is USPS Tracking
 
     Then Sign out

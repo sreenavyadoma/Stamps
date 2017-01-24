@@ -10,7 +10,7 @@ module Stamps
           @text_box = TextboxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
         end
 
-        def select country
+        def select(country)
           logger.info "Select Country #{country}"
           drop_down = BrowserElement.new text_box.element.parent.parent.divs[1]
           drop_down.safe_click
@@ -22,7 +22,7 @@ module Stamps
             20.times do
               drop_down.safe_click
               sleep 1
-              countries = (browser.lis text: country)
+              countries = browser.lis(text: country)
               countries.each do |element|
                 if element_helper.text(element) == country
                   found = true
@@ -32,11 +32,11 @@ module Stamps
               break if found
             end
 
-            selection = BrowserElement.new li
+            selection = BrowserElement.new(li)
 
             10.times {
               begin
-                break if text_box.text.include? country
+                break if text_box.text.include?(country)
                 drop_down.safe_click unless selection.present?
                 selection.scroll_into_view
                 selection.safe_click
@@ -44,9 +44,9 @@ module Stamps
                 #ignore
               end
             }
-            text_box.text.should include country
+            text_box.text.should include(country)
             logger.info "#{country} selected."
-          end unless text_box.text.include? country
+          end unless text_box.text.include?(country)
         end
       end
 

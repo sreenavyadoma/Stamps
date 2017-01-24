@@ -1,7 +1,7 @@
 Feature: B-01746 Order Pagination
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @page_disabled
   Scenario: Less Than 100 orders on a page

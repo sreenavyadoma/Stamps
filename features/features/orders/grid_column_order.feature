@@ -1,85 +1,85 @@
 Feature: "Country" grid column should appear to left of "Address" column by default
 
   Background:
-    Given WebReg Profile: Load Registration Page
+    Given Visit WebReg Registration Page
 
   @grid_column_order
   Scenario: Column Order
-    Then WebReg Profile: Set User ID and Email to Random Value
+    Then On WebReg Profile page, set User ID and Email to Random Value
 
-    Then WebReg Profile: Set Password to pass111
-    Then WebReg Profile: Set Re-Type password to pass111
-    Then WebReg Profile: Set How will you use Stamps.com to Both Mailing and Shipping
-    Then WebReg Profile: Set Referrer Name to Already used in office
-    Then WebReg Profile: Set 1st Question to What is your mother's maiden name
-    Then WebReg Profile: Set 1st Answer to stamps
-    Then WebReg Profile: Set 2nd Question to What was your high school mascot
-    Then WebReg Profile: Set 2nd Answer to stamps
+    Then On WebReg Profile page, set Password to pass111
+    Then On WebReg Profile page, set Re-Type password to pass111
+    Then On WebReg Profile page, set How will you use Stamps.com to Both Mailing and Shipping
+    Then On WebReg Profile page, set Referrer Name to Already used in office
+    Then On WebReg Profile page, set 1st Question to What is your mother's maiden name
+    Then On WebReg Profile page, set 1st Answer to stamps
+    Then On WebReg Profile page, set 2nd Question to What was your high school mascot
+    Then On WebReg Profile page, set 2nd Answer to stamps
 
-    Then WebReg Profile: Continue to Mailing Information Page
-    Then WebReg Membership: Set First Name to random
-    Then WebReg Membership: Set Last Name to random
-    Then WebReg Membership: Set Company to random
-    Then WebReg Membership: Set Address to 1990 E Grand Avenue
-    Then WebReg Membership: Set City to El Segundo
-    Then WebReg Membership: Set State to California
-    Then WebReg Membership: Set Zip Code to 90245
-    Then WebReg Membership: Set Phone to random
-    Then WebReg Membership: Set Extenion to random
+    Then On WebReg Profile page, continue to Mailing Information page
+    Then On WebReg Membership page, set First Name to random
+    Then On WebReg Membership page, set Last Name to random
+    Then On WebReg Membership page, set Company to random
+    Then On WebReg Membership page, set Address to 1990 E Grand Avenue
+    Then On WebReg Membership page, set City to El Segundo
+    Then On WebReg Membership page, set State to California
+    Then On WebReg Membership page, set Zip Code to 90245
+    Then On WebReg Membership page, set Phone to random
+    Then On WebReg Membership page, set Extenion to random
 
-    Then WebReg Membership: Set Cardholder name to random
-    Then WebReg Membership: Set Card number to 4111111111111111
-    Then WebReg Membership: Set Expiration Month to February
-    Then WebReg Membership: Set Expiration Year to 2019
-    Then WebReg Membership: Set Billing address same as mailing address to Checked
-    Then WebReg Membership: Set Terms & Conditions to Checked
+    Then On WebReg Membership page, set Cardholder name to random
+    Then On WebReg Membership page, set Card number to 4111111111111111
+    Then On WebReg Membership page, set Expiration Month to February
+    Then On WebReg Membership page, set Expiration Year to 2019
+    Then On WebReg Membership page, set Billing address same as mailing address to Checked
+    Then On WebReg Membership page, set Terms & Conditions to Checked
 
-    Then WebReg Membership: Submit and correct errors
+    Then On WebReg Membership page, click Submit and correct errors
 
     Then Pause for 2 seconds
     Then Registration Choose Supplies: Place Order
 
-    Then PAM: Load Customer Search Page
-    Then PAM Customer Search: Set username to random
-    Then PAM Customer Search: Set 5.2 or lower
-    Then PAM Customer Search: Click Search button
+    Then Visit PAM Customer Search page
+    Then On PAM Customer Search page, set username to random
+    Then On PAM Customer Search page, set 5.2 or lower
+    Then On PAM Customer Search page, click Search button
 
-    Then PAM Customer Profile: Click Change Meter Limit link
-    Then PAM Change Meter Limit: Set USPS approval to Checked
-    Then PAM Change Meter Limit: Set New Meter Limit to $100000
-    Then PAM Change Meter Limit: Click Submit
-    Then PAM Customer Profile: Get Available Mail Amount
-    Then PAM Customer Profile: Click ACH Credit link
-    Then PAM ACH Purchase: Set Amount to $100000.00
+    Then On PAM Customer Profile page, click Change Meter Limit link
+    Then On PAM Change Meter Limit page, set USPS approval to Checked
+    Then On PAM Change Meter Limit page, set New Meter Limit to $100000
+    Then On PAM Change Meter Limit page, click Submit
+    Then On PAM Customer Profile page, get Available Mail Amount
+    Then On PAM Customer Profile page, click ACH Credit link
+    Then On PAM ACH Purchase page, set Amount to $100000.00
     Then Pause for 2 seconds
-    Then PAM Customer Profile: Get Available Mail Amount
-    Then PAM Customer Profile: Get Available Mail Amount
-    Then PAM Customer Profile: Click  AppCap Overrides link
-    Then PAM AppCap Overrides: Set Internet Mail Printing to Always On
-    Then PAM AppCap Overrides: Set Netstamps Printing to Always On
-    Then PAM AppCap Overrides: Set Shipping Label Printing to Always On
-    Then PAM AppCap Overrides: Set International Shipping to Always On
-    Then PAM AppCap Overrides: Set Allow High Risk Countries to Always On
-    Then PAM AppCap Overrides: Submit
+    Then On PAM Customer Profile page, get Available Mail Amount
+    Then On PAM Customer Profile page, get Available Mail Amount
+    Then On PAM Customer Profile page, click  AppCap Overrides link
+    Then On PAM AppCap Overrides page, set Internet Mail Printing to Always On
+    Then On PAM AppCap Overrides page, set Netstamps Printing to Always On
+    Then On PAM AppCap Overrides page, set Shipping Label Printing to Always On
+    Then On PAM AppCap Overrides page, set International Shipping to Always On
+    Then On PAM AppCap Overrides page, set Allow High Risk Countries to Always On
+    Then On PAM AppCap Overrides page, Submit
 
     Then Health Check: Print - Web Batch
 
     Then Pause for 2 seconds
-    Then Orders: Visit Sign-in page
+    Then Visit Orders Sign-in page
     Then Orders: Sign-in as new user random/pass111
     Then Pause for 2 seconds
-    Then Orders Toolbar: Add
+    Then In Orders Toolbar, click Add button
     Then Pause for 1 second
     Then Open Settings Modal
-    Then Settings:  Set Logoff to 2 hours
-    Then Settings:  Save
+    Then In Settings modal,  Set Logoff to 2 hours
+    Then In Settings modal,  Save
     Then Pause for 2 seconds
     Then Navigation Bar: Customer Balance
 
-    Then Orders Grid: Expect Column Country appears to left of Address
+    Then In Orders Grid, expect Column Country appears to left of Address
 
     Then Sign out
-    Then WebReg Profile: Send username to standard out
+    Then On WebReg Profile page, Send username to standard out
 
 
 

@@ -1,7 +1,7 @@
 #domestic
 
-Then /^Orders Grid: Expect Ship Cost error to contain \"(.*)\"$/ do |expectation|
-  logger.step "Orders Grid: Expect Ship Cost error to contain #{expectation}"
+Then /^In Orders Grid, expect Ship Cost error to contain \"(.*)\"$/ do |expectation|
+  logger.step "In Orders Grid, expect Ship Cost error to contain #{expectation}"
   grid_order_id = stamps.orders.orders_grid.column.order_id.row 1
   logger.step "Grid order id is #{grid_order_id}"
   ship_cost_error = stamps.orders.orders_grid.column.ship_cost.data_error grid_order_id

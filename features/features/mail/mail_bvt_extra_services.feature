@@ -12,7 +12,7 @@ Feature: Extra Services BVT
     Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 1
-    Then Mail Shipping Labels: Select Service Priority Mail Padded Flat Rate Envelope
+    Then Mail Shipping Labels: Select service Priority Mail Padded Flat Rate Envelope
     Then Mail Shipping Labels: Set Hide Mail Value to Unchecked
 
     Then Mail: Open Extra Servicess
@@ -24,7 +24,7 @@ Feature: Extra Services BVT
     #Then Mail Extra Services: Set Non-Rectangular to Checked
     Then Mail Extra Services: Click Save
     Then Mail: Open Print Modal
-    Then Mail Print Modal: Select Printer "factory"
-    Then Mail Print Modal: Print
+    Then Mail In Print modal, select Printer "factory"
+    Then Mail In Print modal, click Print button
     Then Sign out
 

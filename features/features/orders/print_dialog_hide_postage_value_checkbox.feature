@@ -3,38 +3,38 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
   Move "Printing On" to top of the Print dialog
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @print_dialog_hide_postage_value
   Scenario:  Hide Mail Value Checkbox
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to address in Zone 1
-    Then Order Details: Select Service PM Flat Rate Envelope
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To to address in Zone 1
+    Then On Order Details form, select service PM Flat Rate Envelope
 
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Print Modal is present
-    Then Print Modal: Expect Printing On Label is Printing On:
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Print Modal is present
+    Then In Print modal, expect Printing On Label is Printing On:
 
-    Then Print Modal: Check Hide Mail Value
-    Then Print Modal: Expect Hide Mail Value Checkbox is checked
-    Then Print Modal: Close Print Modal
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Expect Hide Mail Value Checkbox is checked
-    Then Print Modal: Uncheck Hide Mail Value
-    Then Print Modal: Check Hide Mail Value
-    Then Print Modal: Uncheck Hide Mail Value
-    Then Print Modal: Check Hide Mail Value
-    Then Print Modal: Uncheck Hide Mail Value
-    Then Print Modal: Print
+    Then In Print modal, check Hide Mail Value
+    Then In Print modal, expect Hide Mail Value Checkbox is checked
+    Then In Print modal, click Close button
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, expect Hide Mail Value Checkbox is checked
+    Then In Print modal, uncheck Hide Mail Value
+    Then In Print modal, check Hide Mail Value
+    Then In Print modal, uncheck Hide Mail Value
+    Then In Print modal, check Hide Mail Value
+    Then In Print modal, uncheck Hide Mail Value
+    Then In Print modal, click Print button
 
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to address in Zone 1
-    Then Order Details: Select Service PM Flat Rate Envelope
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Uncheck Hide Mail Value
-    Then Print Modal: Print
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To to address in Zone 1
+    Then On Order Details form, select service PM Flat Rate Envelope
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, uncheck Hide Mail Value
+    Then In Print modal, click Print button
 
     Then Sign out
 

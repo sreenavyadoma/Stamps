@@ -18,11 +18,11 @@ Feature: Verify Mail Elements Are Present
     Then Mail: Expect Ounces Field is present
     Then Mail: Expect Weigh Button is present
     Then Mail: Expect Auto Weigh check box is present
-    Then Mail: Expect Service Field is present
-    Then Mail: Expect Service Price is present
+    Then Mail: Expect service Field is present
+    Then Mail: Expect service Price is present
     Then Mail: Expect Insure For Field is present
     Then Mail: Expect Insure For Price is present
-    Then Mail Shipping Labels: Select Service Priority Mail Package
+    Then Mail Shipping Labels: Select service Priority Mail Package
     Then Mail: Expect Tracking Field is present
     Then Mail: Expect Tracking Price is present
     Then Mail: Expect Extra Services Button is present

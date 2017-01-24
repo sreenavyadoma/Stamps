@@ -2,55 +2,55 @@
 Feature: Ship Date
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @ship_date
-  Scenario:  Print Modal: Set Ship Date to today
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-To to address in Zone 1 through 4
-    Then Order Details: Select Service PM Package
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Ship Date to today
-    Then Filter Panel: Expect Shipped Tab Ship Date is today
-    Then Print Modal: Print
+  Scenario:  In Print modal, set Ship Date to today
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-To to address in Zone 1 through 4
+    Then On Order Details form, select service PM Package
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Ship Date to today
+    Then In left filter panel, expect Shipped Tab Ship Date is today
+    Then In Print modal, click Print button
     Then Sign out
 
 
   @ship_date
-  Scenario:  Print Modal: Set Ship Date to 1 day from today
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-To to address in Zone 1 through 4
-    Then Order Details: Select Service PM Package
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Ship Date to today plus 1
-    Then Print Modal: Set Ship Date to today plus 3
-    Then Print Modal: Print
+  Scenario:  In Print modal, set Ship Date to 1 day from today
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-To to address in Zone 1 through 4
+    Then On Order Details form, select service PM Package
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Ship Date to today plus 1
+    Then In Print modal, set Ship Date to today plus 3
+    Then In Print modal, click Print button
     Then Sign out
 
 
   @ship_date
-  Scenario:  Print Modal: Set Ship Date to 1 day from today
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to address in Zone 1 through 4
-    Then Order Details: Select Service PM Package
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Ship Date to today plus 2
-    Then Filter Panel: Expect Shipped Tab Ship Date is today plus 2
-    Then Print Modal: Print
+  Scenario:  In Print modal, set Ship Date to 1 day from today
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To to address in Zone 1 through 4
+    Then On Order Details form, select service PM Package
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Ship Date to today plus 2
+    Then In left filter panel, expect Shipped Tab Ship Date is today plus 2
+    Then In Print modal, click Print button
     Then Sign out
 
 
   @ship_date
-  Scenario:  Print Modal: Set Ship Date to 1 day from today
-    Then Orders Toolbar: Add
-    Then Order Details: Set Ship-From to default
-    Then Order Details: Set Ship-To to address in Zone 1 through 4
-    Then Order Details: Select Service PM Package
-    Then Print Modal: Open Print Modal
-    Then Print Modal: Set Ship Date to today plus 3
-    Then Filter Panel: Expect Shipped Tab Ship Date is today plus 3
-    Then Print Modal: Print
+  Scenario:  In Print modal, set Ship Date to 1 day from today
+    Then In Orders Toolbar, click Add button
+    Then On Order Details form, set Ship-From to default
+    Then On Order Details form, set Ship-To to address in Zone 1 through 4
+    Then On Order Details form, select service PM Package
+    Then In Orders Toolbar, click Print button
+    Then In Print modal, set Ship Date to today plus 3
+    Then In left filter panel, expect Shipped Tab Ship Date is today plus 3
+    Then In Print modal, click Print button
     Then Sign out
 
 

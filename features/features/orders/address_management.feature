@@ -2,11 +2,11 @@
 Feature:  Address Management
 
   Background:
-    Given I am signed in to Orders
+    Given A user is signed in to Orders
 
   @address_management
   Scenario: Address Management
-    Then Orders Toolbar: Add
+    Then In Orders Toolbar, click Add button
     Then Ship-From: Add address
       |ship_from_zip  | name  | company    | street_address     | street_address2 | city          | state       | zip    | country       | phone           |
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |

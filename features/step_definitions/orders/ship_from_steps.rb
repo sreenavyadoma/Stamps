@@ -1,6 +1,6 @@
 
-Then /^Order Details: Delete Ship-From address (\w+)$/ do |address|
-  logger.step "Order Details: Delete Ship-From address #{address}"
+Then /^On Order Details form, Delete Ship-From address (\w+)$/ do |address|
+  logger.step "On Order Details form, Delete Ship-From address #{address}"
   # not implemented
 end
 
@@ -41,6 +41,6 @@ end
 
 Then /^Ship-From: Expect selection has (.*)$/ do |address|
   logger.step "Expect #{address} Ship-From address was added"
-  step "Order Details: Blur out"
+  step "On Order Details form, Blur out"
   #stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").address_located?(test_data[:ship_from_address]).should be true
 end

@@ -2,11 +2,11 @@
 Feature: Local Rating Smoke Test
 
   Background:
-    Given I am signed in to Orders as ff/qacc/auto34/326tsetaqcdS!
+    Given A user is signed in to Orders as ff/qacc/auto34/326tsetaqcdS!
 
   @local_rating_smoke_test
   Scenario: Local Rating Smoke Test
-    Then Orders Toolbar: Add
+    Then In Orders Toolbar, click Add button
     Then Verify Local Rating
       |ship_from|ship_to|service|weight_lb|weight_oz|length|height|width|tracking|total|
       |default|Zone1 Test, Priority Mail, 1339 W Willow St, Long Beach CA 90810-3116|Priority Mail Large/Thick Envelope|1|0|0|0|0|Signature Required|8.20|

@@ -357,8 +357,8 @@ module Stamps
         @signed_in_username = BrowserElement.new browser.span id: 'userNameText'
         @orders_link = BrowserElement.new browser.a text: 'Orders'
         @mail_link = BrowserElement.new browser.a text: 'Mail'
-        @web_mail ||= WebMail.new(param)
-        @web_orders ||= WebOrders.new(param)
+        @web_mail = WebMail.new(param)
+        @web_orders = WebOrders.new(param)
       end
 
       def orders

@@ -19,9 +19,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - MM Package
 
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 1
-    Then Mail Shipping Labels: Select Service Media Mail Package
+    Then Mail Shipping Labels: Select service Media Mail Package
     Then Mail Shipping Labels: Select left side starting label
     Then Mail: Open Print Modal
-    Then Mail Print Modal: Select Printer "factory"
-    Then Mail Print Modal: Print
+    Then Mail In Print modal, select Printer "factory"
+    Then Mail In Print modal, click Print button
     Then Sign out
