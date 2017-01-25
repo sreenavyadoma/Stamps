@@ -129,7 +129,7 @@ module Stamps
       end
 
       def browser_selection
-        @browser_selection ||= BrowserSelection.new
+        @browser_selection = BrowserSelection.new
       end
 
       def browser
@@ -137,11 +137,11 @@ module Stamps
       end
 
       def verbose
-        @verbose ||= ENV["VERBOSE"].downcase == "true"
+        @verbose = ENV["VERBOSE"].downcase == "true"
       end
 
       def os
-        @os ||= begin
+        @os = begin
           host_os = RbConfig::CONFIG['host_os']
           case host_os
             when /mswin|msys|mingw|cygwin|bccwin|wince|emc/

@@ -94,7 +94,7 @@ module Stamps
         @verifying_account_info = BrowserElement.new browser.div text: "Verifying account information..."
         @signed_in_user = BrowserElement.new browser.span id: "userNameText"
         @invalid_msg = BrowserElement.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
-        @whats_new_modal ||= WhatsNewModal.new(param)
+        @whats_new_modal = WhatsNewModal.new(param)
         @remember_username_checkbox = WatirCheckbox.new browser.checkbox(id: "rememberUser")
         @invalid_username_password = BrowserElement.new browser.div(id: "InvalidUsernamePasswordMsg")
         @username = ""
@@ -372,7 +372,7 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @sign_in_modal ||= MailSignInModal.new(param)
+        @sign_in_modal = MailSignInModal.new(param)
       end
 
       def url

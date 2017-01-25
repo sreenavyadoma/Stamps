@@ -55,8 +55,8 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @customs_form ||= OrdersCustomsForm.new(param)
-          @view_restrictions ||= Orders::Details::ViewRestrictions.new(param)
+          @customs_form = OrdersCustomsForm.new(param)
+          @view_restrictions = Orders::Details::ViewRestrictions.new(param)
           @edit_form_btn = BrowserElement.new browser.span text: 'Edit Form...'
           @restrictions_btn = BrowserElement.new browser.span text: 'Restrictions...'
         end
@@ -82,7 +82,7 @@ module Stamps
       class CustomsItemGrid < Browser::Modal
 
         def add_button
-          @add_button ||= BrowserElement.new (browser.spans text: "Add Item").last
+          @add_button = BrowserElement.new (browser.spans text: "Add Item").last
         end
 
         def present?
@@ -318,10 +318,10 @@ module Stamps
         def initialize(param)
           super(param)
           @window_title = BrowserElement.new browser.div(text: "Customs Information")
-          @item_grid ||= CustomsItemGrid.new(param)
-          @package_contents ||= PackageContents.new(param)
-          @non_delivery_options ||= NonDeliveryOptions.new(param)
-          @internal_transaction ||= InternalTransaction.new(param)
+          @item_grid = CustomsItemGrid.new(param)
+          @package_contents = PackageContents.new(param)
+          @non_delivery_options = NonDeliveryOptions.new(param)
+          @internal_transaction = InternalTransaction.new(param)
 
           @more_info = TextboxElement.new browser.text_field name: "CustomsComments"
           @usps_privacy_act_warning = BrowserElement.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
@@ -333,11 +333,11 @@ module Stamps
 
           field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
           verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
-          @i_agree ||= CheckboxElement.new field, verify_field, "class", "checked"
+          @i_agree = CheckboxElement.new field, verify_field, "class", "checked"
 
-          @privacy_statement ||= UspsPrivactActStatementModal.new(param)
+          @privacy_statement = UspsPrivactActStatementModal.new(param)
           @privacy_link = BrowserElement.new browser.span(text: "USPS Privacy Act Statement")
-          @restrictions_link ||= RestrictionsAndProhibitionsModal.new(param)
+          @restrictions_link = RestrictionsAndProhibitionsModal.new(param)
           @restrictions_prohibitions_link = BrowserElement.new browser.span(text: "Restrictions and Prohibitions")
 
           @close_button = BrowserElement.new browser.span(text: "Close")

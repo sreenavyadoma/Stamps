@@ -4,7 +4,7 @@ module Stamps
       class Column < Browser::Modal
         MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
         TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
-        GRID_COLUMNS ||= {
+        GRID_COLUMNS = {
             check_box: " ",
             store: "Store",
             ship_cost: "Ship Cost",
@@ -979,39 +979,39 @@ module Stamps
                     :tracking_service, :ship_date, :tracking_no, :requested_service, :source, :ship_from
 
         def initialize(param)
-          @checkbox ||= GridCheckBox.new(param)
-          @store ||= Store.new(param)
-          @order_id ||= OrderId.new(param)
-          @ship_cost ||= ShipCost.new(param)
-          @age ||= Age.new(param)
-          @order_date ||= OrderDate.new(param)
-          @recipient ||= Recipient.new(param)
-          @company ||= Company.new(param)
-          @country ||= Country.new(param)
-          @address ||= Address.new(param)
-          @city ||= City.new(param)
-          @state ||= State.new(param)
-          @zip ||= Zip.new(param)
-          @phone ||= Phone.new(param)
-          @email ||= Email.new(param)
-          @qty ||= Qty.new(param)
-          @item_sku ||= ItemSKU.new(param)
-          @item_name ||= ItemName.new(param)
-          @ship_from ||= ShipFrom.new(param)
-          @service ||= GridService.new(param)
-          @requested_service ||= RequestedService.new(param)
+          @checkbox = GridCheckBox.new(param)
+          @store = Store.new(param)
+          @order_id = OrderId.new(param)
+          @ship_cost = ShipCost.new(param)
+          @age = Age.new(param)
+          @order_date = OrderDate.new(param)
+          @recipient = Recipient.new(param)
+          @company = Company.new(param)
+          @country = Country.new(param)
+          @address = Address.new(param)
+          @city = City.new(param)
+          @state = State.new(param)
+          @zip = Zip.new(param)
+          @phone = Phone.new(param)
+          @email = Email.new(param)
+          @qty = Qty.new(param)
+          @item_sku = ItemSKU.new(param)
+          @item_name = ItemName.new(param)
+          @ship_from = ShipFrom.new(param)
+          @service = GridService.new(param)
+          @requested_service = RequestedService.new(param)
           @weight = Weight.new(param)
-          @insured_value ||= InsuredValue.new(param)
-          @tracking_service ||= TrackingService.new(param)
-          @order_status ||= OrderStatus.new(param)
-          @date_printed ||= DatePrinted.new(param)
-          @ship_date ||= ShipDate.new(param)
-          @tracking_no ||= Tracking.new(param)
-          @order_total ||= OrderTotal.new(param)
-          @source ||= GridSource.new(param)
+          @insured_value = InsuredValue.new(param)
+          @tracking_service = TrackingService.new(param)
+          @order_status = OrderStatus.new(param)
+          @date_printed = DatePrinted.new(param)
+          @ship_date = ShipDate.new(param)
+          @tracking_no = Tracking.new(param)
+          @order_total = OrderTotal.new(param)
+          @source = GridSource.new(param)
           # todo-rob These two are no longer a column in orders grid
-          @reference_no ||= ReferenceNo.new(param)
-          @cost_code ||= CostCode.new(param)
+          @reference_no = ReferenceNo.new(param)
+          @cost_code = CostCode.new(param)
         end
 
         def is_next_to? left, right
@@ -1033,7 +1033,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @column ||= GridColumns.new(param)
+          @column = GridColumns.new(param)
           @grid_element = BrowserElement.new browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
         end
 

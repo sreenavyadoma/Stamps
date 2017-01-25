@@ -7,7 +7,7 @@ module Stamps
         when 1
           @test_name = args[0]
       end
-      @logger ||= Log4r::Logger.new ":"
+      @logger = Log4r::Logger.new ":"
       @logger.outputters = Outputter.stdout
       #@logger.level = Log4r::INFO
     end

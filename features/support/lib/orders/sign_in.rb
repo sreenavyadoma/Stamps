@@ -43,7 +43,7 @@ module Stamps
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @learn_more ||= LearnMoreModal.new(param)
+        @learn_more = LearnMoreModal.new(param)
       end
 
       def present?
@@ -80,7 +80,7 @@ module Stamps
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @import_from_stores ||= ImportFromStoresModal.new(param)
+        @import_from_stores = ImportFromStoresModal.new(param)
       end
 
       def present?
@@ -117,7 +117,7 @@ module Stamps
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @import_from_csv ||= ImportFromCsvModal.new(param)
+        @import_from_csv = ImportFromCsvModal.new(param)
       end
 
       def present?
@@ -154,7 +154,7 @@ module Stamps
         @msg_container = BrowserElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = BrowserElement.new browser.span(text: 'Next')
         @close_button = BrowserElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @add_manual_order ||= AddManualOrderModal.new(param)
+        @add_manual_order = AddManualOrderModal.new(param)
       end
 
       def present?
@@ -267,8 +267,8 @@ module Stamps
         grid = Orders::Grid::OrdersGrid.new(param)
         navbar = Navigation::NavigationBar.new(param)
         #plugin_issue = ErrorStampsPluginIssue.new(param)
-        toolbar = Stamps::Orders::Toolbar::Toolbar.new(param)
-        market_place = Orders::Stores::MarketPlace.new(param)
+        toolbar = Toolbar::OrdersToolbar.new(param)
+        market_place = Stores::MarketPlace.new(param)
         loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
         invalid_username = BrowserElement.new browser.span(id: "InvalidUsernameMsg")
         new_welcome = NewWelcomeModal.new(param)

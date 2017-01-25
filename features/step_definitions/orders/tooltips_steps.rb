@@ -8,7 +8,7 @@ end
 
 Then /^In Orders Toolbar, expect Move Tooltip to include (.*)$/ do |expectation|
   #logger.step "In Orders Toolbar, expect Move Tooltip to include #{expectation}"
-  actual = stamps.orders.toolbar.move_menu.tooltip
+  actual = stamps.orders.toolbar.move_drop_down.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   actual.should include expectation
 end

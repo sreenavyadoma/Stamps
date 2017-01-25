@@ -34,8 +34,8 @@ module Stamps
       def initialize(param)
         super(param)
         @text_area = TextboxElement.new (browser.textarea id: "sdc-mainpanel-shiptotextarea-inputEl")
-        @country ||= PostageCountry.new(param)
-        @email ||= Email.new(param)
+        @country = PostageCountry.new(param)
+        @email = Email.new(param)
         @name = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptonamefield-inputEl")
         @company = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptocompanyfield-inputEl")
         @address_1 = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptoaddress1field-inputEl")
@@ -44,7 +44,7 @@ module Stamps
         @province = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptoprovincefield-inputEl")
         @postal_code = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptopostcodefield-inputEl")
         @phone = TextboxElement.new (browser.text_field id: "sdc-intlform-shiptophonefield-inputEl")
-        @contacts ||= Contacts.new(param)
+        @contacts = Contacts.new(param)
       end
 
       # Domestic Ship-To
@@ -66,10 +66,10 @@ module Stamps
 
       def select selection
         if param.test_env.downcase.include?('sc') && ENV['web_app'].downcase.include?('mail')
-          @mail_services ||= data_for(:redesign_mail_services, {})
+          @mail_services = data_for(:redesign_mail_services, {})
           selection_label = BrowserElement.new browser.li(css: "li[data-recordindex='#{@mail_services[selection]}']")
         else
-          @mail_services ||= data_for(:mail_services, {})
+          @mail_services = data_for(:mail_services, {})
           selection_label = BrowserElement.new browser.div(id: @mail_services[selection])
         end
 
@@ -217,10 +217,10 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @auto_weigh ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-autoweightcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
+        @auto_weigh = CheckboxElement.new browser.input(id: "sdc-mainpanel-autoweightcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
         @weigh_button = BrowserElement.new browser.span id: "sdc-mainpanel-scalebtn-btnIconEl"
-        @oz ||= Ounces.new(param)
-        @lb ||= Pounds.new(param)
+        @oz = Ounces.new(param)
+        @lb = Pounds.new(param)
       end
     end
 
@@ -387,7 +387,7 @@ module Stamps
       attr_reader :checkbox, :text_box
       def initialize(param)
         super(param)
-        @checkbox ||= CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
+        @checkbox = CheckboxElement.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
         @text_box = TextboxElement.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
       end
 

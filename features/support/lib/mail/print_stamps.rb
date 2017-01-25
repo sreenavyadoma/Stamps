@@ -7,9 +7,9 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @quantity ||= Quantity.new(param)
+        @quantity = Quantity.new(param)
         @reference_number = TextboxElement.new browser.text_field name: "referenceNumber"
-        @cost_code ||= CostCode.new(param)
+        @cost_code = CostCode.new(param)
       end
 
       def preview_image serial_prefix
@@ -59,8 +59,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @weight ||= Weight.new(param)
-        @extra_services ||= ExtraServices.new(param)
+        @weight = Weight.new(param)
+        @extra_services = ExtraServices.new(param)
       end
     end
 
@@ -69,7 +69,7 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @stamp_amount ||= StampAmount.new(param)
+        @stamp_amount = StampAmount.new(param)
       end
     end
 
@@ -118,14 +118,14 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @specify_postage ||= SpecifyPostageAmount.new(param)
-        @calculate_postage||= CalculatePostageAmount.new(param)
+        @specify_postage = SpecifyPostageAmount.new(param)
+        @calculate_postage= CalculatePostageAmount.new(param)
         @serial = TextboxElement.new browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")
-        @calculate_service_drop_list||= MailServiceDropList.new(param)
-        @specify_service_drop_list ||= SpecifyServiceDropList.new(param)
-        @form_view ||= StampsFormView.new(param)
-        @specify_radio ||= CheckboxElement.new (browser.input id: 'sdc-mainpanel-calculatepostageradio-inputEl'), (browser.table id: 'sdc-mainpanel-calculatepostageradio'), "class", "checked"
-        @calculate_radio ||= CheckboxElement.new (browser.input id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: 'sdc-mainpanel-specifypostageradio'), "class", "checked"
+        @calculate_service_drop_list= MailServiceDropList.new(param)
+        @specify_service_drop_list = SpecifyServiceDropList.new(param)
+        @form_view = StampsFormView.new(param)
+        @specify_radio = CheckboxElement.new (browser.input id: 'sdc-mainpanel-calculatepostageradio-inputEl'), (browser.table id: 'sdc-mainpanel-calculatepostageradio'), "class", "checked"
+        @calculate_radio = CheckboxElement.new (browser.input id: "sdc-mainpanel-specifypostageradio-inputEl"), (browser.table id: 'sdc-mainpanel-specifypostageradio'), "class", "checked"
       end
 
       def calculate_postage_amount

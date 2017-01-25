@@ -54,27 +54,27 @@ Then /^Label Unavailable:  Expect Visible$/ do
 end
 
 Then /^In Orders Grid toolbar, select Move to Shipped$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
-  stamps.orders.toolbar.move_menu.to_shipped.cancel
-  stamps.orders.toolbar.move_menu.to_shipped.move
+  stamps.orders.toolbar.move_drop_down.enabled?.should be true
+  stamps.orders.toolbar.move_drop_down.to_shipped.cancel
+  stamps.orders.toolbar.move_drop_down.to_shipped.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Canceled$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
-  stamps.orders.toolbar.move_menu.to_canceled.cancel
-  stamps.orders.toolbar.move_menu.to_canceled.move
+  stamps.orders.toolbar.move_drop_down.enabled?.should be true
+  stamps.orders.toolbar.move_drop_down.to_canceled.cancel
+  stamps.orders.toolbar.move_drop_down.to_canceled.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
-  stamps.orders.toolbar.move_menu.to_awaiting_shipment.cancel
-  stamps.orders.toolbar.move_menu.to_awaiting_shipment.move
+  stamps.orders.toolbar.move_drop_down.enabled?.should be true
+  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.cancel
+  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.move
 end
 
 Then /^In Orders Grid toolbar, select Move to On Hold$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
-  stamps.orders.toolbar.move_menu.to_awaiting_shipment.cancel
-  stamps.orders.toolbar.move_menu.to_awaiting_shipment.move
+  stamps.orders.toolbar.move_drop_down.enabled?.should be true
+  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.cancel
+  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.move
 end
 
 

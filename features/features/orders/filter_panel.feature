@@ -20,7 +20,7 @@ Feature: Orders Filter Panel
 
 
   @filter_change_order_status
-  Scenario: Add Canceled Filter Panel - and Allow User to Manually Change Order Status
+  Scenario: Move order to Shipped, Cancelled, On Hold and Awaiting Shipment
     Then In Orders Toolbar, click Add button
     Then In left filter panel, expect selected filter is Awaiting Shipment
 

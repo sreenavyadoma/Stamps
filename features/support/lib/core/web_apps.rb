@@ -4,9 +4,9 @@ module Stamps
 
     def initialize(param)
       super(param)
-      @navigation_bar ||= Navigation::NavigationBar.new(param)
-      @orders ||= WebOrders.new(param)
-      @mail ||= WebMail.new(param)
+      @navigation_bar = Navigation::NavigationBar.new(param)
+      @orders = WebOrders.new(param)
+      @mail = WebMail.new(param)
     end
 
     def load_page
