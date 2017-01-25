@@ -1077,7 +1077,7 @@ module Stamps
       end
 
       class DetailsInsureFor < Browser::Modal
-        attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :insurance_terms_conditions, :blur_element
+        attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :terms_conditions, :blur_element
 
         def initialize(param)
           super(param)
@@ -1087,8 +1087,8 @@ module Stamps
 
           field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
           verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
-          @checkbox = CheckboxElement.new field, verify, "class", "checked"
-          @insurance_terms_conditions = InsuranceTermsConditions.new(param)
+          @checkbox = CheckboxElement.new(field, verify, "class", "checked")
+          @terms_conditions = InsuranceTermsConditions.new(param)
           @blur_element = BlurOutElement.new(param)
         end
 
@@ -1097,19 +1097,20 @@ module Stamps
         end
 
         def set value
-          checkbox.check
-          5.times do
+          10.times do
+            checkbox.check
             text_box.set value
             blur_out
             blur_out
-            return insurance_terms_conditions if insurance_terms_conditions.present?
+            return terms_conditions if terms_conditions.present?
           end
           nil
         end
 
         def set_and_agree value
-          insurance_terms_conditions = set(value)
-          insurance_terms_conditions.i_agree unless insurance_terms_conditions.nil?
+          terms_conditions = set(value)
+          terms_conditions.should_not be nil
+          terms_conditions.i_agree unless terms_conditions.nil?
         end
 
         def increment value
@@ -1486,18 +1487,35 @@ module Stamps
 
       class InsuranceTermsConditions < Browser::Modal
         def present?
-          @window_title_element = BrowserElement.new browser.divs(text: "Stamps.com Insurance Terms and Conditions").first
-          @window_title_element.present?
+          (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present?
+        end
+
+        def i_agree_btn
+          browser.spans(text: "I Agree").first
         end
 
         def i_agree
-          @i_agree_element = BrowserElement.new browser.spans(text: "I Agree").first
-          @i_agree_element.click_while_present
+          btn = BrowserElement.new(i_agree_btn)
+          10.times do
+            btn.safe_click
+            sleep(1)
+            break unless btn.present?
+          end
+          btn.present?.should be false
+        end
+
+        def cancel_btn
+          browser.spans(text: "Cancel").first
         end
 
         def cancel
-          @cancel_element = BrowserElement.new browser.spans(text: "Cancel").first
-          @cancel_element.click_while_present
+          btn = BrowserElement.new(cancel_btn)
+          10.times do
+            btn.safe_click
+            sleep(1)
+            break unless btn.present?
+          end
+          btn.present?.should be false
         end
       end
 
