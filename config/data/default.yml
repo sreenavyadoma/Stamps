@@ -30,6 +30,9 @@ url_prefix:
 
 orders_credentials:
   stg:
+    rob:
+      usr: stgom0dqgzppy
+      pw: pass111
     rates_parcel_select_ground:
       usr: stgp6389urwj4
       pw: pass111
@@ -475,6 +478,9 @@ orders_credentials:
       usr: c1k4p8bga4cmg
       pw: pass111
   cc:
+    rob:
+      usr: ccd9zchlp
+      pw: pass111
     bvt_shipstation_import_csv:
       usr: xxxxxxxxx
       pw: pass111
@@ -827,6 +833,9 @@ orders_credentials:
       usr: p8rk9lk7e
       pw: pass111
   sc:
+    rob:
+      usr: scsxpeco6b90
+      pw: pass111
     bvt_shipstation_import_csv:
       usr: xxxxxxxxx
       pw: pass111
@@ -1187,6 +1196,9 @@ orders_credentials:
 
 mail_credentials:
   stg:
+    rob:
+      usr: stgom0dqgzppy
+      pw: pass111
     mail_authentication:
       usr: stguspu8o4655f
       pw: pass111
@@ -1845,6 +1857,9 @@ mail_credentials:
       usr: fmaxzis6mr36
       pw: pass111
   cc:
+    rob:
+      usr: ccd9zchlp
+      pw: pass111
     mail_authentication:
       usr: ccdvx25ja288
       pw: pass111
@@ -2512,6 +2527,9 @@ mail_credentials:
       usr: ccvoq0itap
       pw: pass111
   sc:
+    rob:
+      usr: scsxpeco6b90
+      pw: pass111
     mail_authentication:
       usr: scxzc76ola293
       pw: pass111
