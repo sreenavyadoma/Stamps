@@ -1033,7 +1033,6 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @toolbar ||= Orders::Toolbar::Toolbar.new(param)
           @column ||= GridColumns.new(param)
           @grid_element = BrowserElement.new browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
         end

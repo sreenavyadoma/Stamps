@@ -62,16 +62,28 @@ Then /^In Orders Toolbar, click Add button third order$/ do
   test_data[:order_id_3] = stamps.orders.order_details.toolbar.order_id
 end
 
-
-Then /^Fail the test$/ do
-  #logger.step "Fail the test"
-  true.should eql  false
+Then /^In Orders Grid toolbar, select Move to Shipped$/ do
+  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
+  stamps.orders.orders_grid.toolbar.move.to_shipped.cancel
+  stamps.orders.orders_grid.toolbar.move.to_shipped.move
 end
 
-Then /^Test Features$/ do |count|
-  stamps.orders.orders_grid.column.checkbox.check_all
-  count = stamps.orders.multi_order.order_count
-  logger.step count
-  stamps.orders.orders_grid.column.checkbox.uncheck_all
+Then /^In Orders Grid toolbar, select Move to Canceled$/ do
+  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
+  stamps.orders.orders_grid.toolbar.move.to_canceled.cancel
+  stamps.orders.orders_grid.toolbar.move.to_canceled.move
 end
+
+Then /^In Orders Grid toolbar, select Move to Awaiting Shipment$/ do
+  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
+end
+
+Then /^In Orders Grid toolbar, select Move to On Hold$/ do
+  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
+  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
+end
+
 

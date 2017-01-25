@@ -1,35 +1,9 @@
 
-Then /^In Orders Grid toolbar, select Move to Shipped$/ do
-  stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
-  stamps.orders.orders_grid.toolbar.move.to_shipped.cancel
-  stamps.orders.orders_grid.toolbar.move.to_shipped.move
-end
-
-Then /^In Orders Grid toolbar, select Move to Canceled$/ do
-  stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
-  stamps.orders.orders_grid.toolbar.move.to_canceled.cancel
-  stamps.orders.orders_grid.toolbar.move.to_canceled.move
-end
-
-Then /^In Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
-end
-
-Then /^In Orders Grid toolbar, select Move to On Hold$/ do
-  stamps.orders.orders_grid.column.order_date.sort_descending
-  stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
-end
-
 Then /^In Orders Grid, check saved Order ID$/ do
   step "In Orders Grid, check Order ID #{test_data[:order_id]}"
 end
 
 Then /^In Orders Grid, check Order ID (.*)$/ do |order_id|
-  #logger.step "In Orders Grid, check Order ID #{order_id}"
   stamps.orders.orders_grid.column.checkbox.check_order_id(order_id)
   stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
 end
@@ -39,81 +13,66 @@ Then /^In Orders Grid, uncheck saved Order ID$/ do
 end
 
 Then /^In Orders Grid, uncheck Order ID (.*)$/ do |order_id|
-  #logger.step "In Orders Grid, check Order ID #{order_id}"
   stamps.orders.orders_grid.column.checkbox.uncheck_order_id(order_id)
   stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be false
 end
 
 Then /^In Orders Grid, expect Store is (.*)$/ do |expectation|
-  #logger.step "In Orders Grid, expect Store is #{expectation}"
   test_data[:store_name] = (expectation.downcase.include? "random")?test_data[:store_name]:expectation
   stamps.orders.orders_grid.column.store.data(test_data[:order_id]).should eql test_data[:store_name]
 end
 
 Then /^In Orders Grid, expect Order ID is the same as Details Form Order ID$/ do
-  #logger.step "In Orders Grid, expect Order ID is the same as Details Form Order ID"
   details_order_id = stamps.orders.order_details.toolbar.order_id
   grid_order_id = stamps.orders.orders_grid.column.order_id.row(1)
   details_order_id.should eql grid_order_id
 end
 
 Then /^In Orders Grid, expect saved Order ID is in Orders Grid row (\d+)$/ do |row|
-  #logger.step "In Orders Grid, expect saved Order ID is the same as Orders Grid row #{row}"
   stamps.orders.orders_grid.column.order_id.row(1).should eql test_data[:order_id]
 end
 
 Then /^In Orders Grid, expect Ship Cost is the same as Details Form Ship Cost$/ do
-  #logger.step "In Orders Grid, expect Ship Cost is the same as Details Form Ship Cost"
   details_ship_cost = stamps.orders.order_details.footer.total_ship_cost
   grid_ship_cost = stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id])
   details_ship_cost.should eql grid_ship_cost
 end
 
 Then /^Set Orders Grid Row (\d+) to uncheck$/ do |row|
-  #logger.step "Set Orders Grid Row #{row} to uncheck"
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
 end
 
 Then /^Set Orders Grid Row (\d+) to check$/ do |row|
-  #logger.step "Set Orders Grid Row #{row} to check"
   stamps.orders.orders_grid.column.checkbox.check(row)
 end
 
 When /^Edit Orders Grid row (\d+)$/ do |row|
-  #logger.step "Edit row #{row} on the Orders Grid"
   stamps.orders.orders_grid.column.checkbox.check(row)
 end
 
 When /^In Orders Grid, check row (\d+)$/ do |row|
-  #logger.step "Edit Orders Grid row #{row}"
   stamps.orders.orders_grid.column.checkbox.check row
   stamps.orders.orders_grid.column.checkbox.checked?(row).should be true
 end
 
 When /^In Orders Grid, uncheck row (\d+)$/ do |row|
-  #logger.step "Uncheck row #{row} on the Orders Grid"
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
   stamps.orders.orders_grid.column.checkbox.checked?(row).should be false
 end
 
 Then /^In Orders Grid, expect Date Printed for this order is today$/ do
-  #logger.step "In Orders Grid, expect Date Printed for this order is today"
   grid = stamps.orders.filter_panel.shipped.select
   grid.order_id.sort_descending
   grid_print_date = grid.date_printed.data(test_data[:order_id]) # Dec 3
   expectation_print_date = Date.today.strftime "%b %-d"
-
-  #logger.step "Order ID:  #{test_data[:order_id]} - Orders Grid Date Printed:  #{grid_print_date} - Today's date:  #{expectation_print_date}"
   grid_print_date.should eql expectation_print_date
 end
 
 Then /^In Orders Grid, expect Ship Date for this order is today$/ do
-  #logger.step "In Orders Grid, expect Ship Date for this order is today"
   step "In Orders Grid, expect Ship Date for this order is today plus 0"
 end
 
 Then /^In Orders Grid, expect Ship Date for this order is today plus (\d+)$/ do |day|
-  #logger.step "In Orders Grid, expect Ship Date for this order is today plus #{day}"
   expectation = ParameterHelper.mmddyy_to_mondd @ship_date
   10.times{
     stamps.orders.filter_panel.shipped.select.order_id.sort_descending
@@ -123,13 +82,11 @@ Then /^In Orders Grid, expect Ship Date for this order is today plus (\d+)$/ do 
 end
 
 Then /^List all Grid column values for row (\d+)/ do |row|
-  #logger.step "List all Grid column values for row #{row}"
   order_id = stamps.orders.orders_grid.column.order_id.row row
   step "List all Grid column values for Order ID #{order_id}"
 end
 
 Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
-  #logger.step "List all Grid column values for Order ID #{order_id}"
   row2_order_id = stamps.orders.orders_grid.column.order_id.row 2
   logger.step stamps.orders.orders_grid.column.checkbox.order_checked? row2_order_id
 
