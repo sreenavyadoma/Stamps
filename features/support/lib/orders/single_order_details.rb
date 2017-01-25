@@ -1736,13 +1736,13 @@ module Stamps
           @service ||= DetailsService.new(param)
           @insure_for ||= DetailsInsureFor.new(param)
           @tracking ||= DetailsTracking.new(param)
-          @reference_no = TextboxElement.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input")
+          @reference_no = TextboxElement.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
           @dimensions ||= Dimensions.new(param)
           @item_grid ||= DetailsItemGrid.new(param)
           @customs = Customs::OrdersCustomsFields.new(param)
 
           @blur_element = BlurOutElement.new(param)
-          @body = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]")
+          @body = BrowserElement.new(browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]"))
           @collapsed_details = DetailsCollapsible.new(param)
 
           @footer ||= DetailsFooter.new(param)
