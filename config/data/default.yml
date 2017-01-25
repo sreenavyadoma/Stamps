@@ -222,7 +222,7 @@ orders_credentials:
     tooltips_services:
       usr: scscscscscscscscsc
       pw: pass111
-    filter_change_order_status:
+    filter_panel:
       usr: xg6ar0zae
       pw: pass111
     inline_service_rates:
@@ -571,7 +571,7 @@ orders_credentials:
     tooltips_services:
       usr: scscscscscscscscsc
       pw: pass111
-    filter_change_order_status:
+    filter_panel:
       usr: iuc75alcb8
       pw: pass111
     inline_service_rates:
@@ -926,7 +926,7 @@ orders_credentials:
     tooltips_services:
       usr: scscscscscscscscsc
       pw: pass111
-    filter_change_order_status:
+    filter_panel:
       usr: ucgt1sacruzz
       pw: pass111
     inline_service_rates:

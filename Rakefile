@@ -817,8 +817,8 @@ Cucumber::Rake::Task.new(:tooltips_services) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:filter_change_order_status) do |t|
-  t.profile = 'filter_change_order_status'
+Cucumber::Rake::Task.new(:filter_panel) do |t|
+  t.profile = 'filter_panel'
   t.cucumber_opts = "-p cuke_reports"
 end
 
