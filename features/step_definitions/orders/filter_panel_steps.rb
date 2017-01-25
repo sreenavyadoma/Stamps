@@ -1,21 +1,17 @@
 
 Then /^In left filter panel, select Awaiting Shipment$/ do
-  #logger.step "In left filter panel, select Awaiting Shipment"
   stamps.orders.filter_panel.awaiting_shipment.select
 end
 
 Then /^In left filter panel, select Shipped$/ do
-  #logger.step "In left filter panel, select Shipped"
   stamps.orders.filter_panel.shipped.select
 end
 
 Then /^In left filter panel, select Canceled$/ do
-  #logger.step "In left filter panel, select Canceled"
   stamps.orders.filter_panel.canceled.select
 end
 
 Then /^In left filter panel, select On Hold$/ do
-  #logger.step "In left filter panel, select Canceled"
   stamps.orders.filter_panel.on_hold.select
 end
 
