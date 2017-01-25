@@ -48,102 +48,6 @@ orders_credentials:
     rates_pm_comm_base:
       usr: stgbh3mebdk6
       pw: pass111
-    rates_sheet_pme_comm_base_zone_3:
-      usr: stgo0e9lb9fpv
-      pw: pass111
-    bvt_shipstation_import_csv:
-      usr: stgp6389urwj4
-      pw: pass111
-    search_orders:
-      usr: stgo0e9lb9fpv
-      pw: pass111
-    bvt_shipstation_search:
-      usr: stgxz0386tftl1
-      pw: pass111
-    rates_orders_zone_1_ray:
-      usr: stgeg44rcam
-      pw: pass111
-    rates_orders_zone_1:
-      usr: stgeg44rcam
-      pw: pass111
-    rates_orders_zone_2:
-      usr: stgsj7lchcx30q
-      pw: pass111
-    rates_orders_zone_3:
-      usr: stgu8mk0v09ifr
-      pw: pass111
-    rates_orders_zone_4:
-      usr: stggvxsjrll6l
-      pw: pass111
-    rates_orders_zone_5:
-      usr: stgbrn0et2ihdv
-      pw: pass111
-    rates_orders_zone_6:
-      usr: stgs72n7y8x
-      pw: pass111
-    rates_orders_zone_7:
-      usr: stghuwsrts31n
-      pw: pass111
-    rates_orders_zone_8:
-      usr: stgknkh000j
-      pw: pass111
-    rates_orders_zone_9:
-      usr: stge373292r
-      pw: pass111
-    rates_orders_cpp_zone_1:
-      usr: stgom0dqgzppy
-      pw: pass111
-    rates_orders_cpp_zone_2:
-      usr: stggm2z3od6o5t
-      pw: pass111
-    rates_orders_cpp_zone_3:
-      usr: stgo162k9hy
-      pw: pass111
-    rates_orders_cpp_zone_4:
-      usr: stgvoc0kcnt6rw
-      pw: pass111
-    rates_orders_cpp_zone_5:
-      usr: stgnhscvwnf
-      pw: pass111
-    rates_orders_cpp_zone_6:
-      usr: stgqklz1vjekq6
-      pw: pass111
-    rates_orders_cpp_zone_7:
-      usr: stgih31vmh
-      pw: pass111
-    rates_orders_cpp_zone_8:
-      usr: stge7x4xybj
-      pw: pass111
-    rates_orders_cpp_zone_9:
-      usr: stghwb2ojyi
-      pw: pass111
-    rates_orders_sas_zone_1:
-      usr: stgom0dqgzppy
-      pw: pass111
-    rates_orders_sas_zone_2:
-      usr: stggm2z3od6o5t
-      pw: pass111
-    rates_orders_sas_zone_3:
-      usr: stgo162k9hy
-      pw: pass111
-    rates_orders_sas_zone_4:
-      usr: stgvoc0kcnt6rw
-      pw: pass111
-    rates_orders_sas_zone_5:
-      usr: stgnhscvwnf
-      pw: pass111
-    rates_orders_sas_zone_6:
-      usr: stgqklz1vjekq6
-      pw: pass111
-    rates_orders_sas_zone_7:
-      usr: stgih31vmh
-      pw: pass111
-    rates_orders_sas_zone_8:
-      usr: stge7x4xybj
-      pw: pass111
-    rates_orders_sas_zone_9:
-      usr: stghwb2ojyi
-      pw: pass111
     search_orders:
       usr: stgi3eicvj8d7b
       pw: pass111
@@ -479,7 +383,19 @@ orders_credentials:
       pw: pass111
   cc:
     rates_parcel_select_ground:
-      usr: change me
+      usr: ccdwth36s
+      pw: pass111
+    rates_pm_comm_plus:
+      usr:ccy1qzgbk3
+      pw: pass111
+    rates_pme_comm_plus:
+      usr:ccyygzhuv2
+      pw: pass111
+    rates_pme_comm_base:
+      usr:ccjicx88o5tz
+      pw: pass111
+    rates_pm_comm_base:
+      usr:ccixjqr1mt
       pw: pass111
     rob:
       usr: ccd9zchlp
