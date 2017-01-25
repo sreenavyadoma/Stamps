@@ -18,13 +18,13 @@ Before do  |scenario|
   scenario.feature.name
   logger.message "-"
   logger.message "-"
-  logger.message "Cucumber Test: #{ENV['TEST']}"
+  logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"
   logger.message "-"
   logger.message "-"
   logger.message "URL: #{ENV['URL']}"
   "".should eql "Environment variable URL is not defined!" if (ENV['URL'].nil? || ENV['URL'].size==0)
-  logger.message "Test Name: #{ENV['TEST']}"
-  "".should eql "Environment variable TEST is not defined!" if (ENV['TEST'].nil? || ENV['TEST'].size==0)
+  logger.message "Test Name: #{ENV['USER_CREDENTIALS']}"
+  "".should eql "Environment variable USER_CREDENTIALS is not defined!" if (ENV['USER_CREDENTIALS'].nil? || ENV['USER_CREDENTIALS'].size==0)
   logger.message "Browser: #{ENV['BROWSER']}"
   "".should eql "Environment variable BROWSER is not defined!" if (ENV['BROWSER'].nil? || ENV['BROWSER'].size==0)
   logger.message "-"
@@ -48,9 +48,9 @@ Before do  |scenario|
         logger.message "Using Default Credentials from ../config/data/default.yml"
         begin
           if ENV['WEB_APP'].downcase == 'orders'
-            ENV['USR'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['TEST']]['usr']
+            ENV['USR'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['usr']
           elsif ENV['WEB_APP'].downcase== 'mail'
-            ENV['USR'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['TEST']]['usr']
+            ENV['USR'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['usr']
           else
             "Valid WEB_APP values are orders and mail. You may add to the list, see hooks.rb".should eql "Invalid WEB_APP selection. #{ENV['WEB_APP']} is not recognized."
           end
@@ -58,17 +58,17 @@ Before do  |scenario|
           if e.message.include? "mapping values are not allowed"
             "Formatting issues in default.yml file".should eql "default.yml - #{e.message.split(':').last}}"
           else
-            "There are no user credentials in default.yml file for WEB_APP=#{ENV['WEB_APP']}, #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']}".should eql "Missing credentials in default.yml #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['TEST']} - #{e.message}"
+            "There are no user credentials in default.yml file for WEB_APP=#{ENV['WEB_APP']}, #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['USER_CREDENTIALS']}".should eql "Missing credentials in default.yml #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['USER_CREDENTIALS']} - #{e.message}"
           end
         end
         begin
           if ENV['WEB_APP'].downcase == 'orders'
-            ENV['PW'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['TEST']]['pw']
+            ENV['PW'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['pw']
           else
-            ENV['PW'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['TEST']]['pw']
+            ENV['PW'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['pw']
           end
         rescue => e
-          "Missing credentials in #{ENV['WEB_APP']} Parameter credentials #{ENV['URL']}:#{ENV['TEST']}".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} TEST:#{ENV['TEST']} usr:#{ENV['usr']} - #{e.message}"
+          "Missing credentials in #{ENV['WEB_APP']} Parameter credentials #{ENV['URL']}:#{ENV['USER_CREDENTIALS']}".should eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} USER_CREDENTIALS:#{ENV['USER_CREDENTIALS']} usr:#{ENV['usr']} - #{e.message}"
         end
         logger.message "#{ENV['WEB_APP']} Default Username: #{ENV['USR']}"
       else
@@ -77,12 +77,12 @@ Before do  |scenario|
     else
       "Valid values are WEB_APP=orders or WEB_APP=mail".should eql "WEB_APP=#{ENV['WEB_APP']} is not a valid value."
     end
-  end unless (ENV['TEST'] == 'healthcheck' || ENV['TEST'].include?('webreg') || ENV['TEST'].include?('pam') || ENV['TEST'].include?('intellij'))
+  end unless (ENV['USER_CREDENTIALS'] == 'healthcheck' || ENV['USER_CREDENTIALS'].include?('webreg') || ENV['USER_CREDENTIALS'].include?('pam') || ENV['USER_CREDENTIALS'].include?('intellij'))
 
   test_data[:username] = ENV['USR']
   test_data[:web_app] = ENV['WEB_APP']
   test_data[:url] = ENV['URL']
-  test_data[:test] = ENV['TEST']
+  test_data[:test] = ENV['USER_CREDENTIALS']
 
   logger.message "-"
   logger.message "Running Tests..."
@@ -115,7 +115,7 @@ After do |scenario|
 
   if scenario.failed?
     logger.error "#{scenario.feature}"
-    logger.error "#{scenario.feature} TEST FAILED! #{scenario.exception.message}"
+    logger.error "#{scenario.feature} USER_CREDENTIALS FAILED! #{scenario.exception.message}"
     logger.error "#{scenario.feature}"
   end
   logger.step "  --  Test Parameters"
