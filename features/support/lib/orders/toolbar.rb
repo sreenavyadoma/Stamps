@@ -429,8 +429,8 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @move_label = BrowserElement.new browser.span(css: "span[class*='x-btn-inner-primary-blue-medium']")
-          @cancel_label = BrowserElement.new browser.span(text: "Cancel")
+          @move_label = BrowserElement.new(browser.span(css: "span[class*='x-btn-inner-primary-blue-medium']"))
+          @cancel_label = BrowserElement.new(browser.span(text: "Cancel"))
         end
 
         def present?
@@ -455,9 +455,9 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @drop_down = BrowserElement.new browser.span(text: "Move")
+          @drop_down = BrowserElement.new(browser.span(text: "Move"))
           @confirmation = MoveConfirmation.new(param)
-          @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
+          @tooltip_element = BrowserElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
         end
 
         def enabled?
@@ -628,17 +628,17 @@ module Stamps
         end
       end
 
-      class Toolbar < Browser::Modal
-        attr_reader :print_btn, :add, :move, :import_button, :import_orders_modal, :usps_intl_terms
+      class OrdersToolbar < Browser::Modal
+        attr_reader :print_btn, :add, :move_menu, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)
           super(param)
-          @import_button = BrowserElement.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
-          @print_btn ||= ToolbarPrintButton.new(param)
-          @add ||= AddButton.new(param)
-          @move ||= MoveMenu.new(param)
-          @import_orders_modal ||= ImportOrders.new(param)
-          @usps_intl_terms ||= USPSTerms.new(param)
+          @import_button = BrowserElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]"))
+          @print_btn = ToolbarPrintButton.new(param)
+          @add = AddButton.new(param)
+          @move_menu = MoveMenu.new(param)
+          @import_orders_modal = ImportOrders.new(param)
+          @usps_intl_terms = USPSTerms.new(param)
         end
 
         def refresh_orders

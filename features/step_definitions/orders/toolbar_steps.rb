@@ -53,37 +53,28 @@ Then /^Label Unavailable:  Expect Visible$/ do
   end
 end
 
-Then /^In Orders Toolbar, click Add button second order$/ do
-  test_data[:order_id_2] = stamps.orders.order_details.toolbar.order_id
-end
-
-Then /^In Orders Toolbar, click Add button third order$/ do
-  #logger.step "In Orders Toolbar, click Add button third order"
-  test_data[:order_id_3] = stamps.orders.order_details.toolbar.order_id
-end
-
 Then /^In Orders Grid toolbar, select Move to Shipped$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
-  stamps.orders.orders_grid.toolbar.move.to_shipped.cancel
-  stamps.orders.orders_grid.toolbar.move.to_shipped.move
+  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
+  stamps.orders.toolbar.move_menu.to_shipped.cancel
+  stamps.orders.toolbar.move_menu.to_shipped.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Canceled$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
-  stamps.orders.orders_grid.toolbar.move.to_canceled.cancel
-  stamps.orders.orders_grid.toolbar.move.to_canceled.move
+  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
+  stamps.orders.toolbar.move_menu.to_canceled.cancel
+  stamps.orders.toolbar.move_menu.to_canceled.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
+  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
+  stamps.orders.toolbar.move_menu.to_awaiting_shipment.cancel
+  stamps.orders.toolbar.move_menu.to_awaiting_shipment.move
 end
 
 Then /^In Orders Grid toolbar, select Move to On Hold$/ do
-  stamps.orders.orders_grid.column.checkbox.order_checked?(order_id).should be true
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.cancel
-  stamps.orders.orders_grid.toolbar.move.to_awaiting_shipment.move
+  stamps.orders.orders_grid.column.checkbox.order_checked?(test_data[:order_id]).should be true
+  stamps.orders.toolbar.move_menu.to_awaiting_shipment.cancel
+  stamps.orders.toolbar.move_menu.to_awaiting_shipment.move
 end
 
 
