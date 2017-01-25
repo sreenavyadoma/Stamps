@@ -478,6 +478,9 @@ orders_credentials:
       usr: c1k4p8bga4cmg
       pw: pass111
   cc:
+    rates_parcel_select_ground:
+      usr: change me
+      pw: pass111
     rob:
       usr: ccd9zchlp
       pw: pass111
