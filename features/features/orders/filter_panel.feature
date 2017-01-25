@@ -19,7 +19,6 @@ Feature: Orders Filter Panel
     * Sign out
 
 
-  @filter_panel
   @filter_change_order_status
   Scenario: Add Canceled Filter Panel - and Allow User to Manually Change Order Status
     * In Orders Toolbar, click Add button
