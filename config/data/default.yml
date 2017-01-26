@@ -386,16 +386,16 @@ orders_credentials:
       usr: ccdwth36s
       pw: pass111
     rates_pm_comm_plus:
-      usr:ccy1qzgbk3
+      usr: ccy1qzgbk3
       pw: pass111
     rates_pme_comm_plus:
-      usr:ccyygzhuv2
+      usr: ccyygzhuv2
       pw: pass111
     rates_pme_comm_base:
-      usr:ccjicx88o5tz
+      usr: ccjicx88o5tz
       pw: pass111
     rates_pm_comm_base:
-      usr:ccixjqr1mt
+      usr: ccixjqr1mt
       pw: pass111
     rob:
       usr: ccfw2jpdg
