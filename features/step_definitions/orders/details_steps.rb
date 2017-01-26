@@ -161,15 +161,6 @@ Then /^On Order Details form, Blur out$/ do
   stamps.orders.order_details.blur_out
 end
 
-Then /^Save Test Data$/ do
-  test_data[:service_cost] = stamps.orders.order_details.service.cost
-  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost if stamps.orders.order_details.tracking.present?
-  test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
-  test_data[:order_id] = stamps.orders.order_details.toolbar.order_id
-  test_data[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-end
-
 Then /^On Order Details form, set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
   stamps.orders.order_details.dimensions.length.set length
   stamps.orders.order_details.dimensions.width.set width

@@ -1,18 +1,27 @@
 
 Then /^In left filter panel, select Awaiting Shipment$/ do
+  test_data[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+  sleep(1)
   stamps.orders.filter_panel.awaiting_shipment.select
+  sleep(1)
 end
 
 Then /^In left filter panel, select Shipped$/ do
+  sleep(1)
   stamps.orders.filter_panel.shipped.select
+  sleep(1)
 end
 
 Then /^In left filter panel, select Canceled$/ do
+  sleep(1)
   stamps.orders.filter_panel.canceled.select
+  sleep(1)
 end
 
 Then /^In left filter panel, select On Hold$/ do
+  sleep(1)
   stamps.orders.filter_panel.on_hold.select
+  sleep(1)
 end
 
 Then /^In left filter panel, expect selected filter is Awaiting Shipment$/ do

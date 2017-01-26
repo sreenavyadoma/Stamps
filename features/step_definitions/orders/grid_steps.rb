@@ -29,7 +29,10 @@ Then /^In Orders Grid, expect Order ID is the same as Details Form Order ID$/ do
 end
 
 Then /^In Orders Grid, expect saved Order ID is in Orders Grid row (\d+)$/ do |row|
-  stamps.orders.orders_grid.column.order_id.row(1).should eql test_data[:order_id]
+  10.times do
+    break if stamps.orders.orders_grid.column.order_id.row(row) == test_data[:order_id]
+  end
+  stamps.orders.orders_grid.column.order_id.row(row).should eql test_data[:order_id]
 end
 
 Then /^In Orders Grid, expect Ship Cost is the same as Details Form Ship Cost$/ do

@@ -7,7 +7,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = BrowserElement.new(browser.div(text: "Move to On Hold"))
+          @window_title = BrowserElement.new(browser.div(css: "div[id^=movetohold-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
           @hold_until = TextboxElement.new(browser.text_field(css: "input[placeholder='Select a Date']"))
         end
@@ -37,7 +37,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = BrowserElement.new(browser.div(text: "Move to Canceled"))
+          @window_title = BrowserElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
         end
 
@@ -66,7 +66,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = BrowserElement.new(browser.div(text: "Move to Shipped"))
+          @window_title = BrowserElement.new(browser.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
         end
 
@@ -95,7 +95,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = BrowserElement.new(browser.div(text: "Move to Awaiting Shipment"))
+          @window_title = BrowserElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
         end
 
@@ -127,8 +127,8 @@ module Stamps
           @drop_down = BrowserElement.new(browser.span(text: "Move"))
           @shipped = MoveToShipped.new(param)
           @canceled = MoveToCanceled.new(param)
-          @on_hold = MoveToCanceled.new(param)
-          @awaiting_shipment = MoveToShipped.new(param)
+          @on_hold = MoveToOnHold.new(param)
+          @awaiting_shipment = MoveToAwaitingShipment.new(param)
           @tooltip_element = BrowserElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
         end
 
@@ -141,7 +141,7 @@ module Stamps
         end
 
         def move_to_canceled
-          select :Canceled
+          select :canceled
         end
 
         def move_to_awaiting_shipment
@@ -153,30 +153,37 @@ module Stamps
         end
 
         def select selection
-          expect([:shipped, :Canceled, :awaiting_shipment, :on_hold]).to include(selection)
+          expect(enabled?).to be true
+          expect([:shipped, :canceled, :awaiting_shipment, :on_hold]).to include(selection)
           selection_str = ""
           modal = nil
           case selection
             when :shipped
               selection_str = "Move to Shipped"
-            when :Canceled
+              modal = shipped
+            when :canceled
               selection_str = "Move to Canceled"
+              modal = canceled
             when :awaiting_shipment
               selection_str = "Move to Awaiting Shipment"
+              modal = awaiting_shipment
             when :on_hold
               selection_str = "Move to On Hold"
+              modal = on_hold
             else
               #do nothing.
           end
 
-          selection = BrowserElement.new(browser.span(text: selection_str))
+          selection_item = BrowserElement.new(browser.span(text: selection_str))
 
-          10.times{
-            drop_down.safe_click unless selection.present?
-            selection.safe_click
-            return move_to_shipped if move_to_shipped.present?
+          30.times{
+            return modal if modal.present?
+            drop_down.safe_click unless selection_item.present?
+            sleep(0.25)
+            selection_item.hover
+            selection_item.safe_click
           }
-          "Unable to select #{selection} from Move menu.".should eql ""
+          "Unable to select #{selection}".should eql("Move Menu - Select")
         end
 
         def tooltip

@@ -18,8 +18,8 @@ module Stamps
 
     # ElementWrapper object is primarily used to wrap elements for used on step definitions.
     class BrowserElement
-      attr_reader :browser, :element_helper, :element, :error_qtip_element, :error_qtip_element_attribute
-      def initialize *args
+      attr_reader(:browser, :element_helper, :element, :error_qtip_element, :error_qtip_element_attribute)
+      def initialize(*args)
         case args.length
           when 1
             @element = args[0]
@@ -127,7 +127,7 @@ module Stamps
         end
       end
 
-      def attribute_value *args
+      def attribute_value(*args)
         case args.length
           when 1
             #fetch the attribute value of this element using specified name
@@ -146,22 +146,22 @@ module Stamps
         attribute_value "placeholder"
       end
 
-      def style property
-        element.style property
+      def style(property)
+        element.style(property)
       end
 
-      def wait_while_present *args
+      def wait_while_present(*args)
         if args.length==1
-          element.wait_while_present args[0].to_i
+          element.wait_while_present(args[0].to_i)
         else
           element.wait_while_present
         end
         self
       end
-      def wait_until_present *args
+      def wait_until_present(*args)
         begin
           if args.length==1
-            element.wait_until_present args[0].to_i
+            element.wait_until_present(args[0].to_i)
           else
             element.wait_until_present
           end
@@ -172,53 +172,53 @@ module Stamps
         self
       end
 
-      def safely_wait_until_present *args
+      def safely_wait_until_present(*args)
         begin
-          wait_until_present *args
+          wait_until_present(*args)
         rescue
           #ignroe
         end
       end
 
       def click
-        element_helper.safe_click element
+        element_helper.safe_click(element)
       end
 
       def safe_click
-        element_helper.safe_click element
+        element_helper.safe_click(element)
       end
 
       def double_click
-        element_helper.double_click element
+        element_helper.double_click(element)
       end
 
       def safe_double_click
-        element_helper.safe_double_click element
+        element_helper.safe_double_click(element)
       end
 
       def click_while_present
-        element_helper.click_while_present element
+        element_helper.click_while_present(element)
       end
 
-      def safe_send_keys special_char
+      def safe_send_keys(special_char)
         begin
-          send_keys special_char
+          send_keys(special_char)
         rescue
           #ignore
         end
       end
 
-      def send_keys special_char
-        element_helper.send_keys element, special_char
+      def send_keys(special_char)
+        element_helper.send_keys(element, special_char)
       end
 
       def set_element
-        element_helper.set_element element
+        element_helper.set_element(element)
       end
 
       def text
-        txt = element_helper.text element
-        val = element.attribute_value "value"
+        txt = element_helper.text(element)
+        val = element.attribute_value("value")
         if txt.nil? && val.nil?
           ""
         elsif txt.nil?
@@ -240,8 +240,8 @@ module Stamps
     end
 
     class SelectionElement < BrowserElement
-      attr_accessor :verify_element, :attribute, :verify_element_attrib
-      def initialize element, verify_element, attribute, verify_element_attrib
+      attr_accessor(:verify_element, :attribute, :verify_element_attrib)
+      def initialize(element, verify_element, attribute, verify_element_attrib)
         super element
         @verify_element = verify_element
         @attribute = attribute
@@ -257,9 +257,9 @@ module Stamps
 
       def selected?
         begin
-          attribute_value_str = verify_element.attribute_value attribute
+          attribute_value_str = verify_element.attribute_value(attribute)
           return attribute_value_str == "true" if attribute_value_str == "true" || attribute_value_str == "false"
-          return attribute_value_str.include? verify_element_attrib
+          return attribute_value_str.include?(verify_element_attrib)
         rescue
           false
         end
@@ -269,26 +269,26 @@ module Stamps
     class WatirCheckbox < BrowserElement
       def check
         10.times do
-          element_helper.set element
+          element_helper.set(element)
           break if checked?
         end
       end
 
       def uncheck
         10.times do
-          element_helper.clear element
+          element_helper.clear(element)
           break unless checked?
         end
       end
 
       def checked?
-        element_helper.checked? element
+        element_helper.checked?(element)
       end
     end
 
     class CheckboxElement < BrowserElement
-      attr_accessor :verify_element, :attribute, :attribute_value
-      def initialize element, verify_element, attribute, attribute_value
+      attr_accessor(:verify_element, :attribute, :attribute_value)
+      def initialize(element, verify_element, attribute, attribute_value)
         super element
         @verify_element = verify_element
         @attribute = attribute
@@ -313,11 +313,11 @@ module Stamps
 
       def checked?
         begin
-          actual_attribute_value = verify_element.attribute_value attribute
+          actual_attribute_value = verify_element.attribute_value(attribute)
           if actual_attribute_value == "true" || actual_attribute_value == "false"
             return actual_attribute_value == "true"
           else
-            actual_attribute_value.include? attribute_value
+            actual_attribute_value.include?(attribute_value)
           end
         rescue
           false
@@ -326,8 +326,8 @@ module Stamps
     end
 
     class RadioElement < BrowserElement
-      attr_accessor :verify_element, :attribute, :attribute_value
-      def initialize element, verify_element, attribute, attribute_value
+      attr_accessor(:verify_element, :attribute, :attribute_value)
+      def initialize(element, verify_element, attribute, attribute_value)
         super element
         @verify_element = verify_element
         @attribute = attribute
@@ -352,14 +352,14 @@ module Stamps
     end
 
     class TextboxElement < BrowserElement
-      def set text
-        element_helper.set element, text
+      def set(text)
+        element_helper.set(element, text)
         self
       end
 
-      def safe_set text
+      def safe_set(text)
         begin
-          set text
+          set(text)
         rescue
           #ignore
         end
@@ -368,17 +368,17 @@ module Stamps
 
     class DropDownElement < BrowserElement
       attr_accessor :drop_down, :text_box, :html_tag
-      def initialize browser, drop_down, html_tag, text_box
-        super browser
+      def initialize(browser, drop_down, html_tag, text_box)
+        super(browser)
         @drop_down = drop_down
         @html_tag = html_tag
         @text_box = text_box
       end
 
-      def expose_selection selection
+      def expose_selection(selection)
         case html_tag
           when :li
-            selection_element = browser.li text: selection
+            selection_element = browser.li(text: selection)
           else
             "Unsupported HTML drop-down selection tag #{html_tag}".should
         end
@@ -389,24 +389,24 @@ module Stamps
         }
       end
 
-      def select selection
+      def select(selection)
         case selection
           when String
             5.times do
-              selection_element = expose_selection selection
-              element_helper.safe_click selection_element
+              selection_element = expose_selection(selection)
+              element_helper.safe_click(selection_element)
               break if element_helper.text(text_box).include?(selection)
             end
           else
             2.times do
-              selection_element = expose_selection selection
-              element_helper.safe_click selection_element
+              selection_element = expose_selection(selection)
+              element_helper.safe_click(selection_element)
             end
         end
       end
 
-      def data_qtip selection
-        selection_element = expose_selection selection
+      def data_qtip(selection)
+        selection_element = expose_selection(selection)
         selection_element.attribute_value "data-qtip"
       end
     end
@@ -414,7 +414,7 @@ module Stamps
     class ElementHelper
       class << self
 
-        def scroll_into_view browser, element
+        def scroll_into_view(browser, element)
           begin
             browser.execute_script('arguments[0].scrollIntoView();', element)
           rescue
@@ -423,7 +423,6 @@ module Stamps
         end
 
         def text element
-          #element.wait_until_present 5
           begin
             text = element.text
             return text if text.size > 0
@@ -439,7 +438,7 @@ module Stamps
           end
 
           begin
-            value = element.attribute_value 'value'
+            value = element.attribute_value('value')
             return value if value.size > 0
           rescue
             #ignore
@@ -447,7 +446,7 @@ module Stamps
           ""
         end
 
-        def send_keys *args
+        def send_keys(*args)
           case args.length
             when 2
               element = args[0]
@@ -462,14 +461,14 @@ module Stamps
           end
           2.times do
             begin
-              element.send_keys text
+              element.send_keys(text)
             rescue
               #ignore
             end
           end
         end
 
-        def set *args
+        def set(*args)
           case args.size
             when 1
               element = args[0]
@@ -483,14 +482,14 @@ module Stamps
                   #element.clear
 
                   # set element text
-                  element.set text
-                  actual_value = text element
+                  element.set(text)
+                  actual_value = text(element)
                   break if actual_value == text
                   break if actual_value == text
 
                   #set element attribute value
-                  set_attribute_value element, "value", text
-                  actual_value = text element
+                  set_attribute_value(element, "value", text)
+                  actual_value = text(element)
                   break if actual_value == text
                   break if actual_value == text
                 rescue
@@ -502,7 +501,7 @@ module Stamps
           end
         end
 
-        def safe_click element
+        def safe_click(element)
           begin
             element.click
           rescue
@@ -510,14 +509,14 @@ module Stamps
           end
         end
 
-        def click_while_present element
+        def click_while_present(element)
           30.times{
             safe_click element
             break unless element.present?
           }
         end
 
-        def checked? element
+        def checked?(element)
           begin
             element.checked?
           rescue
@@ -525,7 +524,7 @@ module Stamps
           end
         end
 
-        def visible? element
+        def visible?(element)
           begin
             element.visible?
           rescue
@@ -533,7 +532,7 @@ module Stamps
           end
         end
 
-        def enabled? element
+        def enabled?(element)
           begin
             element.enabled?
           rescue
@@ -541,7 +540,7 @@ module Stamps
           end
         end
 
-        def disabled? *args
+        def disabled?(*args)
           case args.length
             when 1
               @disabled_element = args[0]
@@ -554,14 +553,14 @@ module Stamps
             else
               "Wrong number of arguments for enabled?".should eql ""
           end
-          attribute_value = attribute_value @disabled_element, @element_attribute
-          disabled = attribute_value.include? @search_string
+          attribute_value = attribute_value(@disabled_element, @element_attribute)
+          disabled = attribute_value.include?(@search_string)
 
           #logger.info "element disabled? #{disabled}"
           disabled
         end
 
-        def safe_double_click element
+        def safe_double_click(element)
           begin
             element.double_click
           rescue
@@ -569,7 +568,7 @@ module Stamps
           end
         end
 
-        def set_attribute_value element, attribute_name, value
+        def set_attribute_value(element, attribute_name, value)
           script = "return arguments[0].#{attribute_name}='#{value}'"
           element.browser.execute_script(script, element)
         end

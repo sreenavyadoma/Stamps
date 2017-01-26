@@ -160,9 +160,9 @@ module Stamps
         end
 
         def select
-          15.times do
+          30.times do
             element_helper.safe_click(element)
-            sleep 1
+            sleep(0.25)
             break if selected?
           end
           selected?.should be true

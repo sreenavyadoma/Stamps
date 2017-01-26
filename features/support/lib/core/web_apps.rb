@@ -31,6 +31,7 @@ module Stamps
           url = "http://printss600.qacc.stamps.com/#{app_name}/"
         when /cc/
           url = "http://printext.qacc.stamps.com/#{app_name}/"
+          #url = "http://printext.qacc.stamps.com/#{app_name}/default2.aspx" if ENV['web_app'].downcase == 'mail'
         when /sc/
           url = "http://printext.qasc.stamps.com/#{app_name}/"
           url = "http://printext.qasc.stamps.com/#{app_name}/default2.aspx" if ENV['web_app'].downcase == 'mail'
