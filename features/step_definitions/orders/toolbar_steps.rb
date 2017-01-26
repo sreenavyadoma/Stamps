@@ -55,26 +55,26 @@ end
 
 Then /^In Orders Grid toolbar, select Move to Shipped$/ do
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.to_shipped.cancel
-  stamps.orders.toolbar.move_drop_down.to_shipped.move
+  stamps.orders.toolbar.move_drop_down.move_to_shipped.cancel
+  stamps.orders.toolbar.move_drop_down.move_to_shipped.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Canceled$/ do
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.to_canceled.cancel
-  stamps.orders.toolbar.move_drop_down.to_canceled.move
+  stamps.orders.toolbar.move_drop_down.move_to_canceled.cancel
+  stamps.orders.toolbar.move_drop_down.move_to_canceled.move
 end
 
 Then /^In Orders Grid toolbar, select Move to Awaiting Shipment$/ do
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.cancel
-  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.move
+  stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.cancel
+  stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.move
 end
 
 Then /^In Orders Grid toolbar, select Move to On Hold$/ do
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.cancel
-  stamps.orders.toolbar.move_drop_down.to_awaiting_shipment.move
+  stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.cancel
+  stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.move
 end
 
 

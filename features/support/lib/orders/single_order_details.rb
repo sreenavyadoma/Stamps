@@ -1101,7 +1101,6 @@ module Stamps
             checkbox.check
             text_box.set value
             blur_out
-            blur_out
             return terms_conditions if terms_conditions.present?
           end
           nil
@@ -1109,8 +1108,9 @@ module Stamps
 
         def set_and_agree value
           terms_conditions = set(value)
-          terms_conditions.should_not be nil
-          terms_conditions.i_agree unless terms_conditions.nil?
+          begin
+            terms_conditions.i_agree if terms_conditions.present?
+          end unless terms_conditions.nil?
         end
 
         def increment value
@@ -1491,14 +1491,13 @@ module Stamps
         end
 
         def i_agree_btn
-          browser.spans(text: "I Agree").first
+          browser.spans(css: "a[class*=sdc-inseula-agreebtn]>span>span").first
         end
 
         def i_agree
           btn = BrowserElement.new(i_agree_btn)
-          10.times do
+          30.times do
             btn.safe_click
-            sleep(1)
             break unless btn.present?
           end
           btn.present?.should be false
