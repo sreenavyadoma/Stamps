@@ -135,7 +135,8 @@ module Stamps
               scroll element
               row_text = element_helper.text element
               if row_text.include? order_id
-                logger.message "In Orders Grid, Order ID #{order_id} is in row #{index+1}"
+                logger.info "Order ID #{order_id}, Row #{index+1}"
+                sleep(1)
                 return index + 1
               end
             end
