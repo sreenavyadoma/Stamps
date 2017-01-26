@@ -1,9 +1,8 @@
 Then /^In Orders Toolbar, click Add button$/ do
   begin
-    #logger.step "In Orders Toolbar, click Add button"
     test_data[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
-    stamps.orders.toolbar.add.order
+    test_data[:order_id] = stamps.orders.toolbar.add.order_details.toolbar.order_id
     step "Save Test Data"
   rescue Exception => e
     logger.error e.message
@@ -12,8 +11,16 @@ Then /^In Orders Toolbar, click Add button$/ do
   end
 end
 
+Then /^Save Test Data$/ do
+  stamps.orders.order_details.present?.should be true
+  test_data[:service_cost] = stamps.orders.order_details.service.cost
+  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost if stamps.orders.order_details.tracking.present?
+  test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+  test_data[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+end
+
 Then /^In Orders Toolbar, Refresh Orders$/ do
-  #logger.step "In Orders Toolbar, Refresh Orders"
   stamps.orders.toolbar.refresh_orders
 end
 
@@ -22,7 +29,6 @@ Then /^In Print modal, expect Print Modal is present$/ do
 end
 
 Then /^In Print modal, click Print button$/ do
-  #logger.step "Print"
   print_modal = stamps.orders.toolbar.print_btn.print_modal
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
@@ -33,7 +39,6 @@ Then /^In Print modal, click Print button$/ do
 end
 
 Then /^In Print modal, Open Reprint Modal$/ do
-  #logger.step "RePrint"
   @reprint_modal = stamps.orders.toolbar.reprint
 end
 
@@ -71,10 +76,15 @@ Then /^In Orders Grid toolbar, select Move to Awaiting Shipment$/ do
   stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.move
 end
 
-Then /^In Orders Grid toolbar, select Move to On Hold$/ do
+Then /^In Orders Grid toolbar, select Move to On Hold until today plus (\d+)$/ do |day|
+  step "In Orders Grid toolbar, select Move to On Hold until #{(Date.today + day.to_i).strftime("%m/%d/%Y")}"
+end
+
+Then /^In Orders Grid toolbar, select Move to On Hold until (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.cancel
-  stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.move
+  stamps.orders.toolbar.move_drop_down.move_to_on_hold.cancel
+  stamps.orders.toolbar.move_drop_down.move_to_on_hold.hold_until.set("#{month}/#{day}/#{year}")
+  stamps.orders.toolbar.move_drop_down.move_to_on_hold.move
 end
 
 

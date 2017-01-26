@@ -104,7 +104,7 @@ module Stamps
         now_plus_mm_dd_yy 0
       end
 
-      def now_plus_mm_dd_yy day
+      def now_plus_mm_dd_yy(day)
         (Date.today + day.to_i).strftime "%m/%d/%Y"
       end
 
