@@ -37,7 +37,6 @@ Feature: Orders Filter Panel
 
     Then In Orders Grid, check saved Order ID
     Then In Orders Grid toolbar, select Move to Awaiting Shipment
-    Then In left filter panel, select Awaiting Shipment
     Then In Orders Grid, expect saved Order ID is in Orders Grid row 1
     Then In left filter panel, expect Awaiting Shipment count increased by 1
     Then Sign out
