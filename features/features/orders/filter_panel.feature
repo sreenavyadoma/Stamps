@@ -5,7 +5,7 @@ Feature: Orders Filter Panel
     Given A user is signed in to Orders
 
   @filter_panel
-  Scenario: Move order to Shipped, Cancelled, On Hold and Awaiting Shipment
+  Scenario: Filter Panel
     Then In left filter panel, expect selected filter is Awaiting Shipment
     Then In left filter panel, select Shipped
     Then In left filter panel, expect selected filter is Shipped
