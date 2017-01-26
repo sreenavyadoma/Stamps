@@ -198,7 +198,7 @@ module Stamps
           @province = TextboxElement.new browser.text_field(name: "ShipState")
           @postal_code = TextboxElement.new browser.text_field(name: "ShipPostalCode")
           @email = TextboxElement.new browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]")
-          @auto_suggest ||= AutoSuggestInternational.new(param)
+          @auto_suggest = AutoSuggestInternational.new(param)
           @blur_element = BlurOutElement.new(param)
 
           @less_link = BrowserElement.new browser.span(css: "div[id*=international]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
@@ -436,8 +436,8 @@ module Stamps
           @blur_element = BlurOutElement.new(param)
           @address_not_found = AddressNotFound.new(param)
           @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
-          @email ||= TextboxElement.new browser.text_field(name: 'BuyerEmail')
-          @phone ||= TextboxElement.new browser.text_field(name: "ShipPhone")
+          @email = TextboxElement.new browser.text_field(name: 'BuyerEmail')
+          @phone = TextboxElement.new browser.text_field(name: "ShipPhone")
 
           @ambiguous = AmbiguousAddress.new(param)
           @auto_suggest = AutoSuggestDomestic.new(param, @text_area)
@@ -737,7 +737,7 @@ module Stamps
           @window_title = BrowserElement.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
           @close_button = BrowserElement.new browser.image(css: "img[class*='x-tool-close']")
           @delete_button = BrowserElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
-          @shipping_address ||= AddEditShipFromModal.new(param)
+          @shipping_address = AddEditShipFromModal.new(param)
         end
 
         def present?
@@ -965,7 +965,7 @@ module Stamps
           selection_substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
 
           selected_service = ""
-          @details_services ||= data_for(:orders_services, {})
+          @details_services = data_for(:orders_services, {})
 
           selection_label = BrowserElement.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
 
@@ -1039,7 +1039,7 @@ module Stamps
 
         def disabled? service
 
-          @details_services ||= data_for(:details_services, {})
+          @details_services = data_for(:details_services, {})
 
           selection_field = browser.li(id: "#{@details_services[service]}")
           #selection_element = browser.tr css: "tr[data-qtip*='#{service}']"
@@ -1077,7 +1077,7 @@ module Stamps
       end
 
       class DetailsInsureFor < Browser::Modal
-        attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :insurance_terms_conditions, :blur_element
+        attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :terms_conditions, :blur_element
 
         def initialize(param)
           super(param)
@@ -1087,8 +1087,8 @@ module Stamps
 
           field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
           verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
-          @checkbox ||= CheckboxElement.new field, verify, "class", "checked"
-          @insurance_terms_conditions = InsuranceTermsConditions.new(param)
+          @checkbox = CheckboxElement.new(field, verify, "class", "checked")
+          @terms_conditions = InsuranceTermsConditions.new(param)
           @blur_element = BlurOutElement.new(param)
         end
 
@@ -1097,19 +1097,20 @@ module Stamps
         end
 
         def set value
-          checkbox.check
-          5.times do
+          10.times do
+            checkbox.check
             text_box.set value
             blur_out
-            blur_out
-            return insurance_terms_conditions if insurance_terms_conditions.present?
+            return terms_conditions if terms_conditions.present?
           end
           nil
         end
 
         def set_and_agree value
-          insurance_terms_conditions = set(value)
-          insurance_terms_conditions.i_agree unless insurance_terms_conditions.nil?
+          terms_conditions = set(value)
+          begin
+            terms_conditions.i_agree if terms_conditions.present?
+          end unless terms_conditions.nil?
         end
 
         def increment value
@@ -1474,9 +1475,9 @@ module Stamps
         attr_reader :length, :width, :height
         def initialize(param)
           super(param)
-          @length ||= Length.new(param)
-          @width ||= Width.new(param)
-          @height ||= Height.new(param)
+          @length = Length.new(param)
+          @width = Width.new(param)
+          @height = Height.new(param)
         end
 
         def present?
@@ -1486,18 +1487,34 @@ module Stamps
 
       class InsuranceTermsConditions < Browser::Modal
         def present?
-          @window_title_element = BrowserElement.new browser.divs(text: "Stamps.com Insurance Terms and Conditions").first
-          @window_title_element.present?
+          (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present?
+        end
+
+        def i_agree_btn
+          browser.spans(css: "a[class*=sdc-inseula-agreebtn]>span>span").first
         end
 
         def i_agree
-          @i_agree_element = BrowserElement.new browser.spans(text: "I Agree").first
-          @i_agree_element.click_while_present
+          btn = BrowserElement.new(i_agree_btn)
+          30.times do
+            btn.safe_click
+            break unless btn.present?
+          end
+          btn.present?.should be false
+        end
+
+        def cancel_btn
+          browser.spans(text: "Cancel").first
         end
 
         def cancel
-          @cancel_element = BrowserElement.new browser.spans(text: "Cancel").first
-          @cancel_element.click_while_present
+          btn = BrowserElement.new(cancel_btn)
+          10.times do
+            btn.safe_click
+            sleep(1)
+            break unless btn.present?
+          end
+          btn.present?.should be false
         end
       end
 
@@ -1510,7 +1527,7 @@ module Stamps
           def initialize(param, number)
             super(param)
             @index = number
-            @qty ||= Qty.new(param, index)
+            @qty = Qty.new(param, index)
             @id = TextboxElement.new (browser.text_fields name: "SKU")[index-1]
             @delete = BrowserElement.new (browser.spans css: "span[class*=sdc-icon-remove]")[index-1]
             @description = TextboxElement.new (browser.text_fields name: "Description")[index-1]
@@ -1730,22 +1747,22 @@ module Stamps
           super(param)
           @toolbar = DetailsToolbar.new(param)
 
-          @ship_from ||= ShipFromAddress.new(param)
-          @ship_to ||= ShipTo.new(param)
-          @weight ||= Weight.new(param)
-          @service ||= DetailsService.new(param)
-          @insure_for ||= DetailsInsureFor.new(param)
-          @tracking ||= DetailsTracking.new(param)
+          @ship_from = ShipFromAddress.new(param)
+          @ship_to = ShipTo.new(param)
+          @weight = Weight.new(param)
+          @service = DetailsService.new(param)
+          @insure_for = DetailsInsureFor.new(param)
+          @tracking = DetailsTracking.new(param)
           @reference_no = TextboxElement.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
-          @dimensions ||= Dimensions.new(param)
-          @item_grid ||= DetailsItemGrid.new(param)
+          @dimensions = Dimensions.new(param)
+          @item_grid = DetailsItemGrid.new(param)
           @customs = Customs::OrdersCustomsFields.new(param)
 
           @blur_element = BlurOutElement.new(param)
           @body = BrowserElement.new(browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]"))
           @collapsed_details = DetailsCollapsible.new(param)
 
-          @footer ||= DetailsFooter.new(param)
+          @footer = DetailsFooter.new(param)
         end
 
         def blur_out

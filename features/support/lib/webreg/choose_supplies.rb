@@ -5,8 +5,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @web_apps ||= StampsCom.new(param)
-        @web_mail ||= @web_apps.mail
+        @web_apps = StampsCom.new(param)
+        @web_mail = @web_apps.mail
       end
 
       def present?

@@ -107,8 +107,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @confirm_transaction ||= ConfirmTransaction.new(param)
-        @auto_buy_postage_modal ||= AutoBuyPostageModal.new(param)
+        @confirm_transaction = ConfirmTransaction.new(param)
+        @auto_buy_postage_modal = AutoBuyPostageModal.new(param)
         @auto_buy_postage_link = BrowserElement.new browser.span(text: "Auto-buy postage")
         @window_title = browser.div(text: "Add Funds")
       end
@@ -351,8 +351,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @balance ||= BalanceDropDown.new(param)
-        @username ||= UsernameDropDown.new(param)
+        @balance = BalanceDropDown.new(param)
+        @username = UsernameDropDown.new(param)
         @sign_out_link = BrowserElement.new browser.link id: "signOutLink"
         @signed_in_username = BrowserElement.new browser.span id: 'userNameText'
         @orders_link = BrowserElement.new browser.a text: 'Orders'

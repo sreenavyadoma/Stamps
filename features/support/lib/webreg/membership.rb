@@ -848,31 +848,31 @@ module Stamps
       def initialize(param)
         super(param)
 
-        @phone ||= MembershipPhone.new browser.text_field(id: "phone")
+        @phone = MembershipPhone.new browser.text_field(id: "phone")
 
-        @first_name ||= MembershipFirstName.new browser.text_field(id: "firstName")
-        @last_name ||= MembershipLastName.new browser.text_field(id: "lastName")
+        @first_name = MembershipFirstName.new browser.text_field(id: "firstName")
+        @last_name = MembershipLastName.new browser.text_field(id: "lastName")
         @company = TextboxElement.new browser.text_field(id: "companyName")
-        @address ||= MembershipAddress.new browser.text_field(id: "street")
-        @city ||= MembershipCity.new browser.text_field(id: "city")
-        @state ||= State.new(param)
+        @address = MembershipAddress.new browser.text_field(id: "street")
+        @city = MembershipCity.new browser.text_field(id: "city")
+        @state = State.new(param)
         @zip = TextboxElement.new browser.text_field(id: "zip")
         @ext = TextboxElement.new browser.text_field(id: "extension")
-        @card_holder_name ||= MembershipCardHolderName.new browser.text_field(id: "ccName")
+        @card_holder_name = MembershipCardHolderName.new browser.text_field(id: "ccName")
         @card_holder_name = TextboxElement.new browser.text_field(id: "ccName")
-        @card_number ||= MembershipCardNumber.new browser.text_field(id: "ccNumber")
-        @expiration_month ||= ExpirationMonth.new(param)
-        @expiration_year ||= ExpirationYear.new(param)
+        @card_number = MembershipCardNumber.new browser.text_field(id: "ccNumber")
+        @expiration_month = ExpirationMonth.new(param)
+        @expiration_year = ExpirationYear.new(param)
         checkbox_field = browser.input id: "useMailingAddressForBilling"
-        @billing_same_as_mailing ||= CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
+        @billing_same_as_mailing = CheckboxElement.new checkbox_field, checkbox_field, "checked", "checked"
 
         #Added by Galina
-        @billing_address ||= MembershipBillingAddress.new browser.text_field(id: "billingStreet")
-        @billing_city ||= MembershipBillingAddress.new browser.text_field(id: "City")
-        @billing_state ||= BillingState.new(param)
-        @billing_zip ||= MembershipBillingZip.new browser.text_field(id: "billingZip")
+        @billing_address = MembershipBillingAddress.new browser.text_field(id: "billingStreet")
+        @billing_city = MembershipBillingAddress.new browser.text_field(id: "City")
+        @billing_state = BillingState.new(param)
+        @billing_zip = MembershipBillingZip.new browser.text_field(id: "billingZip")
 
-        @terms_and_conditions ||= TermsAndConditions.new(param)
+        @terms_and_conditions = TermsAndConditions.new(param)
         @back = BrowserElement.new browser.button(id: "prev")
 
         @submit_button = BrowserElement.new browser.button(text: "Submit") #Change by Galina from "Submit"

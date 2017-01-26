@@ -219,7 +219,7 @@ module Stamps
           @canceled = CanceledTab.new(param)
           @on_hold = OnHoldTab.new(param)
           @search_orders_modal = SearchOrders.new(param)
-          @menu_item ||= FilterMenuItem.new(param)
+          @menu_item = FilterMenuItem.new(param)
           @search_results = SearchResults.new(param)
         end
 

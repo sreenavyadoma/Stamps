@@ -40,8 +40,8 @@ module Stamps
       attr_reader :profile, :error_occured
       def initialize(param)
         super(param)
-        @profile ||= Profile.new(param)
-        @error_occured ||= AnErrorOccured.new(param)
+        @profile = Profile.new(param)
+        @error_occured = AnErrorOccured.new(param)
       end
 
       def visit

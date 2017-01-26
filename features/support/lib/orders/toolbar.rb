@@ -1,6 +1,199 @@
 module Stamps
   module Orders
     module Toolbar
+
+      class MoveToOnHold < Browser::Modal
+        attr_reader :window_title, :cancel_btn, :hold_until
+
+        def initialize(param)
+          super(param)
+          @window_title = BrowserElement.new(browser.div(text: "Move to On Hold"))
+          @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
+          @hold_until = TextboxElement.new(browser.text_field(css: "input[placeholder='Select a Date']"))
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def move
+          move_btn = BrowserElement.new(browser.spans(text: "Move").last)
+          10.times do
+            move_btn.safe_click
+            break unless move_btn.present?
+          end
+        end
+
+        def cancel
+          10.times do
+            cancel_btn.safe_click
+            break unless cancel_btn.present?
+          end
+        end
+      end
+
+      class MoveToCanceled < Browser::Modal
+        attr_reader :window_title, :cancel_btn
+
+        def initialize(param)
+          super(param)
+          @window_title = BrowserElement.new(browser.div(text: "Move to Canceled"))
+          @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def move
+          move_btn = BrowserElement.new(browser.spans(text: "Move").last)
+          10.times do
+            move_btn.safe_click
+            break unless move_btn.present?
+          end
+        end
+
+        def cancel
+          10.times do
+            cancel_btn.safe_click
+            break unless cancel_btn.present?
+          end
+        end
+      end
+
+      class MoveToShipped < Browser::Modal
+        attr_reader :window_title, :cancel_btn
+
+        def initialize(param)
+          super(param)
+          @window_title = BrowserElement.new(browser.div(text: "Move to Shipped"))
+          @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def move
+          btn = BrowserElement.new(browser.spans(text: "Move to Shipped").last)
+          10.times do
+            btn.safe_click
+            break unless btn.present?
+          end
+        end
+
+        def cancel
+          10.times do
+            cancel_btn.safe_click
+            break unless cancel_btn.present?
+          end
+        end
+      end
+
+      class MoveToAwaitingShipment < Browser::Modal
+        attr_reader :window_title, :cancel_btn
+
+        def initialize(param)
+          super(param)
+          @window_title = BrowserElement.new(browser.div(text: "Move to Awaiting Shipment"))
+          @cancel_btn = BrowserElement.new(browser.span(text: "Cancel"))
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def move
+          move_btn = BrowserElement.new(browser.spans(text: "Move").last)
+          10.times do
+            move_btn.safe_click
+            break unless move_btn.present?
+          end
+        end
+
+        def cancel
+          10.times do
+            cancel_btn.safe_click
+            break unless cancel_btn.present?
+          end
+        end
+      end
+
+      class MoveDropDown < Browser::Modal
+        attr_reader :drop_down, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_element
+
+        def initialize(param)
+          super(param)
+          @drop_down = BrowserElement.new(browser.span(text: "Move"))
+          @shipped = MoveToShipped.new(param)
+          @canceled = MoveToCanceled.new(param)
+          @on_hold = MoveToCanceled.new(param)
+          @awaiting_shipment = MoveToShipped.new(param)
+          @tooltip_element = BrowserElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+        end
+
+        def enabled?
+          drop_down.enabled?
+        end
+
+        def move_to_shipped
+          select :shipped
+        end
+
+        def move_to_canceled
+          select :Canceled
+        end
+
+        def move_to_awaiting_shipment
+          select :awaiting_shipment
+        end
+
+        def move_to_on_hold
+          select :on_hold
+        end
+
+        def select selection
+          expect([:shipped, :Canceled, :awaiting_shipment, :on_hold]).to include(selection)
+          selection_str = ""
+          modal = nil
+          case selection
+            when :shipped
+              selection_str = "Move to Shipped"
+            when :Canceled
+              selection_str = "Move to Canceled"
+            when :awaiting_shipment
+              selection_str = "Move to Awaiting Shipment"
+            when :on_hold
+              selection_str = "Move to On Hold"
+            else
+              #do nothing.
+          end
+
+          selection = BrowserElement.new(browser.span(text: selection_str))
+
+          10.times{
+            drop_down.safe_click unless selection.present?
+            selection.safe_click
+            return move_to_shipped if move_to_shipped.present?
+          }
+          "Unable to select #{selection} from Move menu.".should eql ""
+        end
+
+        def tooltip
+          btn = drop_down
+          btn.element.hover
+          btn.element.hover
+          15.times do
+            btn.element.hover
+            sleep 1
+            if tooltip_element.present?
+              logger.info tooltip_element.text
+              return tooltip_element.text
+            end
+          end
+        end
+      end
+
       class PrintIncompleteOrderError < Browser::Modal
         attr_reader :window_title, :ok_btn, :error_message_label
 
@@ -203,10 +396,10 @@ module Stamps
           super(param)
           @orders_print_modal = Stamps::Orders::PrintModal.new(param)
           @print_order_btn = BrowserElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
-          @incomplete_order_modal ||= PrintIncompleteOrderError.new(param)
-          @multi_order_some_error ||= PrintMultiOrderSomeHasError.new(param)
-          @multi_order_all_error ||= PrintMultiOrderAllHaveError.new(param)
-          @usps_terms_modal ||= USPSTerms.new(param)
+          @incomplete_order_modal = PrintIncompleteOrderError.new(param)
+          @multi_order_some_error = PrintMultiOrderSomeHasError.new(param)
+          @multi_order_all_error = PrintMultiOrderAllHaveError.new(param)
+          @usps_terms_modal = USPSTerms.new(param)
         end
 
         def present?
@@ -424,130 +617,35 @@ module Stamps
         end
       end
 
-      class MoveConfirmation < Browser::Modal
-        attr_reader :move_label, :cancel_label
-
-        def initialize(param)
-          super(param)
-          @move_label = BrowserElement.new browser.span(css: "span[class*='x-btn-inner-primary-blue-medium']")
-          @cancel_label = BrowserElement.new browser.span(text: "Cancel")
-        end
-
-        def present?
-          move_label.present?
-        end
-
-        def move
-          label = move_label
-          label.click_while_present
-          Orders::LeftPanel::FilterPanel.new(param)
-        end
-
-        def cancel
-          label = cancel_label
-          label.click_while_present
-          Orders::LeftPanel::FilterPanel.new(param)
-        end
-      end
-
-      class MoveMenu < Browser::Modal
-        attr_reader :drop_down, :confirmation, :tooltip_element
-
-        def initialize(param)
-          super(param)
-          @drop_down = BrowserElement.new browser.span(text: "Move")
-          @confirmation = MoveConfirmation.new(param)
-          @tooltip_element = BrowserElement.new (browser.div id: 'ext-quicktips-tip-innerCt')
-        end
-
-        def enabled?
-
-        end
-
-        def select selection
-          case selection
-            when :shipped
-              selection_str = "Move to Shipped"
-            when :Canceled
-              selection_str = "Move to Canceled"
-            when :awaiting_shipment
-              selection_str = "Move to Awaiting Shipment"
-            when :on_hold
-              selection_str = "Move to On Hold"
-            else
-              "#{selection} is not a valid value for Move Menu.  Valid values are :shipped, :canceled or :awaiting_shipment".should eql ""
-          end
-
-          selection_label = BrowserElement.new(browser.span(text: selection_str))
-
-          10.times{
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
-            return confirmation if confirmation.present?
-          }
-          "Unable to select #{selection} from Move menu.".should eql ""
-        end
-
-        def tooltip
-          btn = drop_down
-          btn.element.hover
-          btn.element.hover
-          15.times do
-            btn.element.hover
-            sleep 1
-            if tooltip_element.present?
-              logger.info tooltip_element.text
-              return tooltip_element.text
-            end
-          end
-        end
-
-        def to_shipped
-          select :shipped
-        end
-
-        def to_canceled
-          select :Canceled
-        end
-
-        def to_awaiting_shipment
-          select :awaiting_shipment
-        end
-
-        def to_on_hold
-          select :on_hold
-        end
-      end
-
       class PerPage < Browser::Modal
         attr_reader :text_box, :drop_down
 
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl")
-          @drop_down = BrowserElement.new browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker")
+          @text_box = TextboxElement.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
+          @drop_down = BrowserElement.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
         end
 
         def select selection
-          per_page = BrowserElement.new browser.li(text: selection)
+          per_page = BrowserElement.new(browser.li(text: selection))
           box = text_box
           10.times do
             drop_down.safe_click unless per_page.present?
             per_page.safe_click if per_page.present?
-            return box.text if box.text.include? selection
+            return box.text if box.text.include?(selection)
           end
         end
 
         def x100
-          select "100"
+          select("100")
         end
 
         def x250
-          select "250"
+          select("250")
         end
 
         def x500
-          select "500"
+          select("500")
         end
       end
 
@@ -556,9 +654,9 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @button = BrowserElement.new browser.span(text: 'Add')
-          @initializing_db = BrowserElement.new browser.div(text: "Initializing Order Database")
-          @loading_orders = BrowserElement.new browser.div(text: "Loading orders...")
+          @button = BrowserElement.new(browser.span(text: 'Add'))
+          @initializing_db = BrowserElement.new(browser.div(text: "Initializing Order Database"))
+          @loading_orders = BrowserElement.new(browser.div(text: "Loading orders..."))
         end
 
         def order
@@ -566,7 +664,7 @@ module Stamps
         end
 
         def order_details
-          details = Orders::Details::SingleOrderDetails.new(param) # keep this here
+          details = Orders::Details::SingleOrderDetails.new(param)
           nav_bar = Navigation::NavigationBar.new(param)
           server_error = ShipStationServerError.new(param)
 
@@ -628,17 +726,17 @@ module Stamps
         end
       end
 
-      class Toolbar < Browser::Modal
-        attr_reader :print_btn, :add, :move, :import_button, :import_orders_modal, :usps_intl_terms
+      class OrdersToolbar < Browser::Modal
+        attr_reader :print_btn, :add, :move_drop_down, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)
           super(param)
-          @import_button = BrowserElement.new browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")
-          @print_btn ||= ToolbarPrintButton.new(param)
-          @add ||= AddButton.new(param)
-          @move ||= MoveMenu.new(param)
-          @import_orders_modal ||= ImportOrders.new(param)
-          @usps_intl_terms ||= USPSTerms.new(param)
+          @import_button = BrowserElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]"))
+          @print_btn = ToolbarPrintButton.new(param)
+          @add = AddButton.new(param)
+          @move_drop_down = MoveDropDown.new(param)
+          @import_orders_modal = ImportOrders.new(param)
+          @usps_intl_terms = USPSTerms.new(param)
         end
 
         def refresh_orders

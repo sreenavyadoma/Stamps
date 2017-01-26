@@ -5,7 +5,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 #stgdmnmrv29j04 details_large_dimensions_pm cce5nk6k6068z stgi3eicvj8d7b SC-m9rqvdp97u5
 rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 
-rob_cc: --tags @filter_change_order_status WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @bvt_shipstation_updates_international WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=ccn3iqjkt4ow6c PW=pass111 URL=cc --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @filter_change_order_status WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @filter_change_order_status WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess VERBOSE=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #yh95ws85j c2jinmzmu64 store parcel_select
 

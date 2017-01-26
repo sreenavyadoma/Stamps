@@ -114,12 +114,12 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @internet_postage_printing ||= InternetPostagePrinting.new(param)
-        @netstamps_printing ||= NetStampsPrinting.new(param)
-        @shipping_label_printing ||= ShippingLabelPrinting.new(param)
-        @international_shipping ||= InternationalShipping.new(param)
-        @allow_high_risk_countries ||= AllowHighRiskCountries.new(param)
-        @mailing_label_printing ||= MailingLabelPrinting.new(param)
+        @internet_postage_printing = InternetPostagePrinting.new(param)
+        @netstamps_printing = NetStampsPrinting.new(param)
+        @shipping_label_printing = ShippingLabelPrinting.new(param)
+        @international_shipping = InternationalShipping.new(param)
+        @allow_high_risk_countries = AllowHighRiskCountries.new(param)
+        @mailing_label_printing = MailingLabelPrinting.new(param)
         @submit_button = BrowserElement.new browser.input(name: 'submit')
         @appcap_overrides = AppCapOverridesConfirmation.new(param)
       end

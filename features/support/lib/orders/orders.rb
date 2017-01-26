@@ -5,13 +5,13 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @toolbar ||= Orders::Toolbar::Toolbar.new(param)
-        @landing_page ||= Orders::OrdersLandingPage.new(param)
-        @orders_grid ||= Orders::Grid::OrdersGrid.new(param)
-        @styles ||= PageStyles.new(param)
-        @order_details ||= Orders::Details::SingleOrderDetails.new(param)
-        @filter_panel ||= Orders::LeftPanel::FilterPanel.new(param)
-        @multi_order ||= Orders::Details::MultiOrderDetails.new(param)
+        @toolbar = Toolbar::OrdersToolbar.new(param)
+        @landing_page = Orders::OrdersLandingPage.new(param)
+        @orders_grid = Orders::Grid::OrdersGrid.new(param)
+        @styles = PageStyles.new(param)
+        @order_details = Orders::Details::SingleOrderDetails.new(param)
+        @filter_panel = Orders::LeftPanel::FilterPanel.new(param)
+        @multi_order = Orders::Details::MultiOrderDetails.new(param)
       end
 
       def present?
