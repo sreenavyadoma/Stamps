@@ -393,7 +393,7 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
         # spreadsheet price
         zone_column.should_not be nil
-        raise "#{zone_column} is empty" if row[zone_column].nil?
+        row[zone_column].should_not be nil
         price = (row[zone_column].to_f * 100).round / 100.0
 
         # set expectation column for this row to zone price
