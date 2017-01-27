@@ -18,6 +18,6 @@ Feature: Envelope #10 - Print Only Delivery Address
     Then Mail Envelopes: Set Reference Number to 12345
     Then Mail Envelopes: Set Cost Code to None
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out

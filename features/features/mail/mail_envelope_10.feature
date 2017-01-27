@@ -15,6 +15,6 @@ Feature: Envelope #10
     Then Mail: Set Ounces to 1
     Then Mail Envelopes: Select service First-Class Mail Letter
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out

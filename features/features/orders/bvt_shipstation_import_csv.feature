@@ -6,9 +6,9 @@ Feature: ShipStation BVT Import CSV
 
   @bvt_shipstation_import_csv
   Scenario:  ShipStation BVT Import CSV
-    Then In Orders Toolbar, Import
+    Then in Orders Toolbar, Import
     Then Import Orders: Cancel
-    Then In Orders Toolbar, Import
+    Then in Orders Toolbar, Import
     Then Import Orders: Select CSV File
     Then Import Orders: File Upload: Set Filename to import_orders_test.csv
     Then Pause for 1 second

@@ -68,11 +68,11 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Visit Orders Sign-in page
     Then Orders: Sign-in as new user random/pass111
     Then Pause for 2 seconds
-    Then In Orders Toolbar, click Add button
+    Then in Orders Toolbar, click Add button
     Then Pause for 1 second
     Then Open Settings Modal
-    Then In Settings modal,  Set Logoff to 2 hours
-    Then In Settings modal,  Save
+    Then In Settings modal, set Logoff to 2 hours
+    Then In Settings modal, Save
     Then Pause for 2 seconds
     Then Navigation Bar: Customer Balance
 

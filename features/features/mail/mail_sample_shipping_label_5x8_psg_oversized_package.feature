@@ -19,6 +19,6 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - PSG Oversized Package
     Then Mail Shipping Labels: Select service Parcel Select Ground Oversized Package
     Then Mail Shipping Labels: Select left side starting label
     Then Mail: Open Print Sample Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button Sample
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button Sample
     Then Sign out

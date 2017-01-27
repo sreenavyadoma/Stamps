@@ -6,31 +6,31 @@ Feature:  Update Order to ShipStation
 
   @bvt_shipstation_updates_domestic
   Scenario:  Update ShipStation
-    Then In Orders Toolbar, click Add button
-    Then On Order Details form, set Ship-From to default
-    Then On Order Details form, set Ship-To to Domestic Address
+    Then in Orders Toolbar, click Add button
+    Then on Order Details form, set Ship-From to default
+    Then on Order Details form, set Ship-To to Domestic Address
       | name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
       | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
-    #Then On Order Details form, set Phone to 888-888-8888
-    #Then On Order Details form, set Email to rtest@stamps.com
-    Then On Order Details form, set Pounds to 1
-    Then On Order Details form, set Ounces to 1
-    Then On Order Details form, select service PM Package
-    Then On Order Details form, set Insure-For to $100.00
-    Then On Order Details form, set Tracking to Signature Required
-    Then On Order Details form, set Length to 1
-    Then On Order Details form, set Width to 1
-    Then On Order Details form, set Height to 1
+    #Then on Order Details form, set Phone to 888-888-8888
+    #Then on Order Details form, set Email to rtest@stamps.com
+    Then on Order Details form, set Pounds to 1
+    Then on Order Details form, set Ounces to 1
+    Then on Order Details form, select service PM Package
+    Then on Order Details form, set Insure-For to $100.00
+    Then on Order Details form, set Tracking to Signature Required
+    Then on Order Details form, set Length to 1
+    Then on Order Details form, set Width to 1
+    Then on Order Details form, set Height to 1
 
-    Then On Order Details form, set Reference Number to Update Orders To ShipStation
+    Then on Order Details form, set Reference Number to Update Orders To ShipStation
 
-    Then On Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
+    Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
-    Then On Order Details form, Blur out
-    Then On Order Details form, Blur out
-    Then On Order Details form, Blur out
+    Then on Order Details form, Blur out
+    Then on Order Details form, Blur out
+    Then on Order Details form, Blur out
     Then Pause for 3 seconds
 
     Then In Orders Grid, uncheck saved Order ID
@@ -43,36 +43,36 @@ Feature:  Update Order to ShipStation
     Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
-    Then On Order Details form, expect Ship-From saved value is the same
+    Then on Order Details form, expect Ship-From saved value is the same
 
-    Then On Order Details form, expect Ship-To Name is First Last
-    Then On Order Details form, expect Ship-To Company Name is Company Name
-    Then On Order Details form, expect Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
-    Then On Order Details form, expect Ship-To Cleansed City is Orlando
-    Then On Order Details form, expect Ship-To Cleansed State is FL
-    Then On Order Details form, expect Ship-To Cleansed Zip Plus 4 Code is 32801-1175
-    Then On Order Details form, expect Ship-To Cleansed Zip Code is 32801
-    #Then On Order Details form, expect Ship-To Phone is 888-888-8888
-    #Then On Order Details form, expect Ship-To Email is rtest@stamps.com
+    Then on Order Details form, expect Ship-To Name is First Last
+    Then on Order Details form, expect Ship-To Company Name is Company Name
+    Then on Order Details form, expect Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
+    Then on Order Details form, expect Ship-To Cleansed City is Orlando
+    Then on Order Details form, expect Ship-To Cleansed State is FL
+    Then on Order Details form, expect Ship-To Cleansed Zip Plus 4 Code is 32801-1175
+    Then on Order Details form, expect Ship-To Cleansed Zip Code is 32801
+    #Then on Order Details form, expect Ship-To Phone is 888-888-8888
+    #Then on Order Details form, expect Ship-To Email is rtest@stamps.com
 
-    Then On Order Details form, expect Pound is 1
-    Then On Order Details form, expect Ounce is 1
+    Then on Order Details form, expect Pound is 1
+    Then on Order Details form, expect Ounce is 1
 
-    Then On Order Details form, expect Length is 1
-    Then On Order Details form, expect Width is 1
-    Then On Order Details form, expect Height is 1
+    Then on Order Details form, expect Length is 1
+    Then on Order Details form, expect Width is 1
+    Then on Order Details form, expect Height is 1
 
-    #Then On Order Details form, expect service Cost saved value is the same
-    Then On Order Details form, expect service is PM Package
-    Then On Order Details form, expect service Cost saved value is the same
+    #Then on Order Details form, expect service Cost saved value is the same
+    Then on Order Details form, expect service is PM Package
+    Then on Order Details form, expect service Cost saved value is the same
 
-    Then On Order Details form, expect Insure-For is $100.00
-    Then On Order Details form, expect Insure-For Cost saved value is the same
+    Then on Order Details form, expect Insure-For is $100.00
+    Then on Order Details form, expect Insure-For Cost saved value is the same
 
-    Then On Order Details form, expect Tracking is Signature Required
-    Then On Order Details form, expect Tracking Cost saved value is correct
+    Then on Order Details form, expect Tracking is Signature Required
+    Then on Order Details form, expect Tracking Cost saved value is correct
 
-    Then On Order Details form, expect Reference Number is Update Orders To ShipStation
+    Then on Order Details form, expect Reference Number is Update Orders To ShipStation
 
     #Verify Orders Grid data was saved in ShipStation
     Then In Orders Grid, expect Store is Manual Orders
@@ -107,8 +107,8 @@ Feature:  Update Order to ShipStation
 
     Then In Orders Grid, expect Insured Value is $100.00
 
-    Then In Orders Toolbar, click Print button
-    Then In Print modal, click Close button
+    Then in Orders Toolbar, click Print button
+    Then in Print modal, click Close button
 
     Then Sign out
 

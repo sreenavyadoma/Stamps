@@ -18,6 +18,6 @@ Feature: Mail Sample Shipping Label - SDC-1200 - FCM Large Envelope
     Then Mail: Set Ounces to 1
     Then Mail Shipping Labels: Select service First-Class Mail Large Envelope-Flat
     Then Mail: Open Print Sample Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button Sample
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button Sample
     Then Sign out

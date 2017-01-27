@@ -1,5 +1,5 @@
 
-Then /^On Order Details form, Delete Ship-From address (\w+)$/ do |address|
+Then /^(?:O|o)n Order Details form, Delete Ship-From address (\w+)$/ do |address|
   #logger.step "On Order Details form, Delete Ship-From address #{address}"
   # not implemented
 end

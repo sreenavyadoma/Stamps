@@ -70,9 +70,9 @@ module Stamps
           column.should be_truthy
           case column
             when Symbol
-              element_helper.scroll_into_view browser,  browser.span(text: GRID_COLUMNS[column])
+              element_helper.scroll_into_view browser, browser.span(text: GRID_COLUMNS[column])
             when String
-              element_helper.scroll_into_view browser,  browser.span(text: column)
+              element_helper.scroll_into_view browser, browser.span(text: column)
             when Watir::Element
               element_helper.scroll_into_view browser, column
             else

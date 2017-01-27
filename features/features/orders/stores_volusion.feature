@@ -22,7 +22,7 @@ Feature:  Volusion Store Management
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
 
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
       Then Manage Stores: Select Store random
 
       # Reconnect Store
@@ -40,12 +40,12 @@ Feature:  Volusion Store Management
 
       Then Store Settings: Set Automatically Import New Orders to checked
       Then Store Settings: Save
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
 
       # Delete Store
       Then Manage Stores: Select Store random
       Then Manage Stores: Delete
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
 
       # Delete All Stores
       Then Manage Stores: Delete All Stores

@@ -114,7 +114,7 @@ FCMI Large Envelope/Flat (Varies)
 x-btn sdc-mainpanel-shiptolinkbtn form-field-button-link form-field-button-link-shipto x-unselectable x-box-item x-btn-default-medium x-noicon x-btn-noicon x-btn-default-medium-noicon
 
 
-Wchou@stamps.com,  hmaheryar@stamps.com, rcruz@stamps.com, eguzman@stamps.com, cchhay@stamps.com,
+Wchou@stamps.com, hmaheryar@stamps.com, rcruz@stamps.com, eguzman@stamps.com, cchhay@stamps.com,
 
 
 //QA/Automation/stamps-test-framework/... //c:\jenkins\workspace\AllBVTTests/Automation/stamps-test-framework/...

@@ -1,4 +1,4 @@
-Then /^In Orders Toolbar, Import$/ do
+Then /^(?:I|i)n Orders Toolbar, Import$/ do
   #logger.step "In Orders Toolbar, Import"
   @import_orders = stamps.orders.toolbar.import
 end

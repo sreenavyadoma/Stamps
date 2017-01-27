@@ -4,17 +4,17 @@ Then /^Paging: Set Per Page drop-down to 100$/ do
   stamps.orders.toolbar.per_page.text_box.text.should eql "100"
 end
 
-Then /^In Orders Toolbar,  Set Per Page drop-down to 250$/ do
+Then /^(?:I|i)n Orders Toolbar, set Per Page drop-down to 250$/ do
   stamps.orders.toolbar.per_page.x250
   stamps.orders.toolbar.per_page.text_box.text.should eql "250"
 end
 
-Then /^In Orders Toolbar,  Set Per Page drop-down to 500$/ do
+Then /^(?:I|i)n Orders Toolbar, set Per Page drop-down to 500$/ do
   stamps.orders.toolbar.per_page.x500
   stamps.orders.toolbar.per_page.text_box.text.should eql "500"
 end
 
-Then /^In Orders Toolbar, expect number of orders on page is correct$/ do
+Then /^(?:I|i)n Orders Toolbar, expect number of orders on page is correct$/ do
   stamps.orders.filter_panel.awaiting_shipment.select
   sleep 1
   stamps.orders.checkbox.check_all

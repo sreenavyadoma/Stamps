@@ -1,6 +1,6 @@
 
 Given /^(?:|(?:A|a) )(?:(?:v|V)alid |)(?:U|u)ser is signed in to Web Apps$/ do
-  step "I launched default browser"
+  step "I launch default browser"
   if param.health_check
     step "Health Check: Print - Web Batch"
     step "Health Check: Print - Address Book"
@@ -12,7 +12,7 @@ Given /^(?:|(?:A|a) )(?:(?:v|V)alid |)(?:U|u)ser is signed in to Web Apps$/ do
   end
 end
 
-Given /^Visit Orders Sign-in page$/ do
+Given /^(?:V|v)isit Orders Sign-in page$/ do
   stamps.load_page
   browser.url.should include "stamps.com"
 end
@@ -27,7 +27,7 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
   @market_place_modal = stamps.orders.landing_page.first_time_sign_in usr, password
 end
 
-Then /^Sign out$/ do
+Then /^(?:S|s)ign out$/ do
   begin
     step "Navigation Bar: Customer Balance"
   rescue

@@ -1,5 +1,5 @@
 
-Then /^On Order Details form, expect Total label is (.*)$/ do |expectation|
+Then /^(?:O|o)n Order Details form, expect Total label is (.*)$/ do |expectation|
   #logger.step "On Order Details form, expect Total Ship Cost exist and is in Bold letters"
   15.times do
     break if stamps.orders.order_details.footer.label.text == expectation
@@ -7,7 +7,7 @@ Then /^On Order Details form, expect Total label is (.*)$/ do |expectation|
   stamps.orders.order_details.footer.label.text.should eql expectation
 end
 
-Then /^On Order Details form, expect Ship Cost Total is correct$/ do
+Then /^(?:O|o)n Order Details form, expect Ship Cost Total is correct$/ do
   #logger.step "On Order Details form, expect Ship Cost Total is correct"
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
   test_data[:service_cost] = stamps.orders.order_details.service.cost
@@ -16,7 +16,7 @@ Then /^On Order Details form, expect Ship Cost Total is correct$/ do
   test_data[:total_ship_cost].to_f.round(2).should eql (test_data[:service_cost].to_f + test_data[:insure_for_cost].to_f + test_data[:tracking_cost].to_f).round(2)
 end
 
-Then /^On Order Details form, expect Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
+Then /^(?:O|o)n Order Details form, expect Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
   #logger.step "On Order Details form, expect Ship Cost Total is $#{expectation}"
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.multiple_order_cost
   test_data[:total_ship_cost].should eql expectation
@@ -56,7 +56,7 @@ Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
   end
 end
 
-Then /^In Print modal, expect Total Cost is \$([0-9.]*)$/ do |expectation|
+Then /^(?:I|i)n Print modal, expect Total Cost is \$([0-9.]*)$/ do |expectation|
   #logger.step "In Print modal, expect Total Cost is #{expectation}"
   begin
     print_window = stamps.orders.toolbar.print_btn.print_modal

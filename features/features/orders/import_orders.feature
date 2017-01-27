@@ -6,10 +6,10 @@ Feature: Import Orders
 
   @import_orders
   Scenario:  Import Orders
-    Then In Orders Toolbar, Import
+    Then in Orders Toolbar, Import
     #Then Import Orders: Download sample file
     Then Import Orders: Cancel
-    Then In Orders Toolbar, Import
+    Then in Orders Toolbar, Import
     Then Import Orders: Select CSV File
     Then Import Orders: File Upload: Set Filename to import_orders_test.csv
     Then Pause for 1 second

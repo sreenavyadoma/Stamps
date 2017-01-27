@@ -18,5 +18,5 @@ Feature: Stamps S Series - Specify Postage
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
+    Then Mail in Print modal, select Printer "factory"
     Then Sign out

@@ -10,7 +10,7 @@ Then /^Visit PAM Customer Search page$/ do
   @customer_search = pam.customer_search
 end
 
-Then /^On PAM Customer Search page, set username to (.*)$/ do |username|
+Then /^(?:O|o)n PAM Customer Search page, set username to (.*)$/ do |username|
   #logger.step "On PAM Customer Search page, set username to #{username}"
   test_data[:usr] = username unless username.downcase.include? "random"
   #logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
@@ -18,13 +18,13 @@ Then /^On PAM Customer Search page, set username to (.*)$/ do |username|
   sleep 1
 end
 
-Then /^On PAM Customer Search page, set 5.2 or lower$/ do
+Then /^(?:O|o)n PAM Customer Search page, set 5.2 or lower$/ do
   #logger.step "On PAM Customer Search page, set 5.2 or lower"
   @customer_search.user_5_2_or_lower
   @customer_search.user_5_2_or_lower
 end
 
-Then /^On PAM Customer Search page, click Search button$/ do
+Then /^(?:O|o)n PAM Customer Search page, click Search button$/ do
   #logger.step "On PAM Customer Search page, click Search button"
   @customer_profile = @customer_search.search
   if @customer_profile.instance_of? Pam::CustomerProfile
@@ -41,7 +41,7 @@ Then /^On PAM Customer Search page, click Search button$/ do
 end
 
 
-Then /^On PAM Customer Search page, Verify user is found$/ do
+Then /^(?:O|o)n PAM Customer Search page, Verify user is found$/ do
   expectation = "Customer was found"
 
   if @pam_customer_profile_found
@@ -59,20 +59,20 @@ Then /^On PAM Customer Search page, Verify user is found$/ do
   actual_value.should eql expectation
 end
 
-Then /^On PAM Customer Profile page, click Change Meter Limit link$/ do
+Then /^(?:O|o)n PAM Customer Profile page, click Change Meter Limit link$/ do
   @customer_profile.should be_truthy
   @change_meter_limit = @customer_profile.header.change_meter_limit
   # change meter limit if new limit is greater than current limit.
 end
 
-Then /^On PAM Change Meter Limit page, set New Meter Limit to \$(\d+)$/ do |new_limit|
+Then /^(?:O|o)n PAM Change Meter Limit page, set New Meter Limit to \$(\d+)$/ do |new_limit|
   #logger.step "On PAM Change Meter Limit page, set New Meter Limit to #{new_limit}"
   @change_meter_limit.should be_truthy
   @change_limit = new_limit.to_f > @change_meter_limit.current_meter_limit
   @change_meter_limit.new_meter_limit.set(new_limit) if @change_limit
 end
 
-Then /^On PAM Change Meter Limit page, set USPS approval to Checked$/ do
+Then /^(?:O|o)n PAM Change Meter Limit page, set USPS approval to Checked$/ do
   #logger.step "On PAM Change Meter Limit page, set USPS approval to Checked"
   if @change_limit
     @change_meter_limit.should be_truthy
@@ -80,7 +80,7 @@ Then /^On PAM Change Meter Limit page, set USPS approval to Checked$/ do
   end
 end
 
-Then /^On PAM Change Meter Limit page, set USPS approval to Unchecked$/ do
+Then /^(?:O|o)n PAM Change Meter Limit page, set USPS approval to Unchecked$/ do
   #logger.step "On PAM Change Meter Limit page, set USPS approval to Unchecked"
   if @change_limit
     @change_meter_limit.should be_truthy
@@ -88,7 +88,7 @@ Then /^On PAM Change Meter Limit page, set USPS approval to Unchecked$/ do
   end
 end
 
-Then /^On PAM Change Meter Limit page, click Submit$/ do
+Then /^(?:O|o)n PAM Change Meter Limit page, click Submit$/ do
   #logger.step "On PAM Change Meter Limit page, click Submit"
   if @change_limit
     @change_meter_limit.should be_truthy
@@ -100,13 +100,13 @@ Then /^On PAM Change Meter Limit page, click Submit$/ do
   @change_meter_limit.current_meter_limit.should eql @change_meter_limit.maximum_meter_limit
 end
 
-Then /^On PAM Customer Profile page, click ACH Credit link$/ do
+Then /^(?:O|o)n PAM Customer Profile page, click ACH Credit link$/ do
   #logger.step "On PAM Customer Profile page, click ACH Credit link"
   @customer_profile.should be_truthy
   @ach_credit = @customer_profile.header.ach_credit
 end
 
-Then /^On PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
+Then /^(?:O|o)n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   #logger.step "On PAM ACH Purchase page, set Amount to $#{dollars}.#{cents}"
   @ach_credit.should be_truthy
   dollar_amount = @ach_credit.dollar_amount
@@ -130,7 +130,7 @@ Then /^On PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, cen
   @ach_credit.submit.yes.ok
 end
 
-Then /^On PAM Customer Profile page, get Available Mail Amount$/ do
+Then /^(?:O|o)n PAM Customer Profile page, get Available Mail Amount$/ do
   #logger.step "On PAM Customer Profile page, get Available Mail Amount"
 
   logger.message "PAM: Available Mail ############################"
@@ -144,127 +144,127 @@ Then /^On PAM Customer Profile page, get Available Mail Amount$/ do
   logger.message "PAM: Available Mail ############################"
 end
 
-Then /^On PAM Customer Profile page, click  AppCap Overrides link$/ do
+Then /^(?:O|o)n PAM Customer Profile page, click  AppCap Overrides link$/ do
   #logger.step "On PAM Customer Profile page, click  AppCap Overrides link"
   @customer_profile.should be_truthy
   @appcapp_overrides = @customer_profile.header.appcapp_overrides
 end
 
-Then /^On PAM AppCap Overrides page, set Internet Mail Printing to Always On$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Internet Mail Printing to Always On$/ do
   #logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to Always On"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.internet_postage_printing.always_on
 end
 
-Then /^On PAM AppCap Overrides page, set Internet Mail Printing to Always Off$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Internet Mail Printing to Always Off$/ do
   #logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to Always Off"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.internet_postage_printing.always_off
 end
 
-Then /^On PAM AppCap Overrides page, set Internet Mail Printing to No Override$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Internet Mail Printing to No Override$/ do
   #logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to No Override"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.internet_postage_printing.no_override
 end
 
-Then /^On PAM AppCap Overrides page, set Netstamps Printing to Always On$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Netstamps Printing to Always On$/ do
   #logger.step "On PAM AppCap Overrides page, set Netstamps Printing to Always On"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.netstamps_printing.always_on
 end
 
-Then /^On PAM AppCap Overrides page, set Netstamps Printing to Always Off$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Netstamps Printing to Always Off$/ do
   #logger.step "On PAM AppCap Overrides page, set Netstamps Printing to Always Off"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.netstamps_printing.always_off
 end
 
-Then /^On PAM AppCap Overrides page, set Netstamps Printing to No Override$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Netstamps Printing to No Override$/ do
   #logger.step "On PAM AppCap Overrides page, set Netstamps Printing to No Override"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.netstamps_printing.no_override
 end
 
-Then /^On PAM AppCap Overrides page, set Shipping Label Printing to Always On$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Shipping Label Printing to Always On$/ do
   #logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Always On"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.shipping_label_printing.always_on
 end
 
-Then /^On PAM AppCap Overrides page, set Shipping Label Printing to Always Off$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Shipping Label Printing to Always Off$/ do
   #logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Always Off"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.shipping_label_printing.always_off
 end
 
-Then /^On PAM AppCap Overrides page, set Shipping Label Printing to Override$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Shipping Label Printing to Override$/ do
   #logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Override"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.shipping_label_printing.no_override
 end
 
-Then /^On PAM AppCap Overrides page, set International Shipping to Always On$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set International Shipping to Always On$/ do
   #logger.step "On PAM AppCap Overrides page, set International Shipping to Always On"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.international_shipping.always_on
 end
 
-Then /^On PAM AppCap Overrides page, set International Shipping to Always Off$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set International Shipping to Always Off$/ do
   #logger.step "On PAM AppCap Overrides page, set International Shipping to Always Off"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.international_shipping.always_off
 end
 
-Then /^On PAM AppCap Overrides page, set International Shipping to Override$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set International Shipping to Override$/ do
   #logger.step "On PAM AppCap Overrides page, set International Shipping to Override"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.international_shipping.no_override
 end
 
-Then /^On PAM AppCap Overrides page, set Allow High Risk Countries to Always On$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Allow High Risk Countries to Always On$/ do
   #logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Always On"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.allow_high_risk_countries.always_on
 end
 
-Then /^On PAM AppCap Overrides page, set Allow High Risk Countries to Always Off$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Allow High Risk Countries to Always Off$/ do
   #logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Always Off"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.allow_high_risk_countries.always_off
 end
 
-Then /^On PAM AppCap Overrides page, set Allow High Risk Countries to Override$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Allow High Risk Countries to Override$/ do
   #logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Override"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.allow_high_risk_countries.no_override
 end
 
-Then /^On PAM AppCap Overrides page, set Mailing Label Printing to Always On$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Mailing Label Printing to Always On$/ do
   #logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Always On"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.mailing_label_printing.always_on
 end
 
-Then /^On PAM AppCap Overrides page, set Mailing Label Printing to Always Off$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Mailing Label Printing to Always Off$/ do
   #logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Always Off"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.mailing_label_printing.always_off
 end
 
-Then /^On PAM AppCap Overrides page, set Mailing Label Printing to Override$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, set Mailing Label Printing to Override$/ do
   #logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Override"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.mailing_label_printing.no_override
 end
 
-Then /^On PAM AppCap Overrides page, Submit$/ do
+Then /^(?:O|o)n PAM AppCap Overrides page, Submit$/ do
   #logger.step "On PAM AppCap Overrides page, Submit"
   @appcapp_overrides.should be_truthy
   @appcapp_overrides.submit.ok
 end
 
-Then /^On WebReg Profile page, Send username to standard out$/ do
+Then /^(?:O|o)n WebReg Profile page, Send username to standard out$/ do
   logger.message " ############## NEW USER ID "
   logger.message " ############## #{test_data[:usr]}"
   logger.message " ############## #{test_data[:usr]}"

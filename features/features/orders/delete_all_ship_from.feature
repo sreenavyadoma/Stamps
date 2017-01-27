@@ -6,6 +6,6 @@ Feature:  Delete Ship From
 
   @delete_all_shipping_addresses
   Scenario: regression
-    Then In Orders Toolbar, click Add button
+    Then in Orders Toolbar, click Add button
     Then Ship-From: Delete all addresses
     Then Sign out

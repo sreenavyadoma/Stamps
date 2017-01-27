@@ -16,7 +16,7 @@ Feature: Orders Filter Panel
     Then In left filter panel, select On Hold
     Then In left filter panel, expect selected filter is On Hold
 
-    Then In Orders Toolbar, click Add button
+    Then in Orders Toolbar, click Add button
     Then In left filter panel, expect selected filter is Awaiting Shipment
 
     Then In Orders Grid, check saved Order ID

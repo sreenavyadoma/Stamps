@@ -4,16 +4,16 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Given a valid user is signed in to Web Apps
 
   Scenario: User Views Filter Panel - Panel Default
-    * In left filter panel, expect system displays expanded filters panel
-    * In left filter panel, select Shipped
-    * In left filter panel, expect selected filter is Shipped
-    * In Orders Toolbar,  Set Per Page drop-down to 500
-    * In Orders Toolbar, expect number of orders on page is correct
-    * Paging: Expect Total Number of Pages is 2
-    * In Orders Toolbar,  Set Per Page drop-down to 250
-    * Paging: Expect Total Number of Pages is 3
-    * In Orders Toolbar, expect number of orders on page is correct
-    * Paging: Set Per Page drop-down to 100
-    * Paging: Expect Total Number of Pages is 6
-    * In Orders Toolbar, expect number of orders on page is correct
-    * Sign out
+    Then in left filter panel, expect system displays expanded filters panel
+    Then In left filter panel, select Shipped
+    Then In left filter panel, expect selected filter is Shipped
+    Then in Orders Toolbar, set Per Page drop-down to 500
+    Then in Orders Toolbar, expect number of orders on page is correct
+    Then Paging: Expect Total Number of Pages is 2
+    Then in Orders Toolbar, set Per Page drop-down to 250
+    Then Paging: Expect Total Number of Pages is 3
+    Then in Orders Toolbar, expect number of orders on page is correct
+    Then Paging: Set Per Page drop-down to 100
+    Then Paging: Expect Total Number of Pages is 6
+    Then in Orders Toolbar, expect number of orders on page is correct
+    Then Sign out

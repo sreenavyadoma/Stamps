@@ -19,8 +19,8 @@ Feature: Mail Shipping Label - Right Side
     Then Mail Shipping Labels: Set service to Priority Mail Package
     Then Mail Shipping Labels: Select right side starting label
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out
 
   @mail_print_label_right_side
@@ -36,8 +36,8 @@ Feature: Mail Shipping Label - Right Side
     Then Mail Shipping Labels: Set service to Priority Mail Package
     Then Mail Shipping Labels: Select right side starting label
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out
 
   @mail_print_label_right_side
@@ -53,6 +53,6 @@ Feature: Mail Shipping Label - Right Side
     Then Mail Shipping Labels: Set service to Priority Mail Package
     Then Mail Shipping Labels: Select right side starting label
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out

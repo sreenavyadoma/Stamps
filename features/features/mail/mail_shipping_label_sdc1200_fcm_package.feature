@@ -22,6 +22,6 @@ Feature: Mail Shipping Label - SDC-1200 - FCM Package
     Then Mail Shipping Labels: Select service First-Class Mail Package-Thick Envelope
     Then Mail Shipping Labels: Select left side starting label
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out

@@ -15,15 +15,15 @@ Feature: International Shipping BVT
     Then Mail: Set Pounds to 0
     Then Mail: Set Ounces to 3
     Then Mail Shipping Labels: Edit Customs Form
-    #Then Mail On Customs form, set Package Contents to Gift
-    Then Mail On Customs form, set Non-Delivery Options to "Treat as abandoned"
-    Then Mail On Customs form, set Internal Transaction Number Requirement to "Required"
-    Then Mail On Customs form, set ITN Number to "12345"
-    Then Mail On Customs form, set More Info to "WP BVT Intl Shipping"
-    Then Mail On Customs form, Delete All Items
-    Then Mail On Customs form, add associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
-    Then Mail On Customs form, check I agree to the USPS Privacy Act Statement
-    Then Mail On Customs form, Save
+    #Then Mail on Customs form, set Package Contents to Gift
+    Then Mail on Customs form, set Non-Delivery Options to "Treat as abandoned"
+    Then Mail on Customs form, set Internal Transaction Number Requirement to "Required"
+    Then Mail on Customs form, set ITN Number to "12345"
+    Then Mail on Customs form, set More Info to "WP BVT Intl Shipping"
+    Then Mail on Customs form, Delete All Items
+    Then Mail on Customs form, add associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin Russia, Tariff 25
+    Then Mail on Customs form, check I agree to the USPS Privacy Act Statement
+    Then Mail on Customs form, Save
     Then Mail: Print International Postage
     Then Sign out
 

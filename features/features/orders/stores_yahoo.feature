@@ -28,10 +28,10 @@ Feature:  Yahoo Store Management
 
       Then Manage Stores: Close Modal
 
-      Then In Orders Toolbar, Refresh Orders
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
       Then In Orders Grid, check Order ID 637
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
       Then In left filter panel, select Shipped
       Then In left filter panel, select Awaiting Shipment
       Then In Orders Grid, expect Store is random
@@ -47,10 +47,10 @@ Feature:  Yahoo Store Management
       Then Yahoo Store: Reconnect
       Then Manage Stores: Close Modal
 
-      Then In Orders Toolbar, Refresh Orders
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
       Then In Orders Grid, check Order ID 637
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
       Then In left filter panel, select Shipped
       Then In left filter panel, select Awaiting Shipment
       Then In Orders Grid, expect Store is random
@@ -66,10 +66,10 @@ Feature:  Yahoo Store Management
 
       Then Manage Stores: Close Modal
 
-      Then In Orders Toolbar, Refresh Orders
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
       Then In Orders Grid, check Order ID 637
-      Then In Orders Toolbar, Refresh Orders
+      Then in Orders Toolbar, Refresh Orders
       Then In left filter panel, select Shipped
       Then In left filter panel, select Awaiting Shipment
       Then In Orders Grid, expect Store is random

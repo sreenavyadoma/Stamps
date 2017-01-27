@@ -24,7 +24,7 @@ Feature: Extra Services BVT
     #Then Mail Extra Services: Set Non-Rectangular to Checked
     Then Mail Extra Services: Click Save
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out
 

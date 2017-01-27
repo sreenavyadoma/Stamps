@@ -5,15 +5,15 @@ Feature: Set Print Ship Date to Today
 
   @print_dialog_ship_date_today
   Scenario: Set Ship Date to today
-    Then In Orders Toolbar, click Add button
-    Then On Order Details form, set Ship-From to default
-    Then On Order Details form, set Ship-To to Domestic Address PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
-    Then On Order Details form, set Ounces to 4
-    Then On Order Details form, select service PM Flat Rate Envelope
-    Then In Orders Toolbar, click Print button
-    Then In Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then In Print modal, set Printer to "factory"
-    Then In Print modal, click Print button
+    Then in Orders Toolbar, click Add button
+    Then on Order Details form, set Ship-From to default
+    Then on Order Details form, set Ship-To to Domestic Address PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
+    Then on Order Details form, set Ounces to 4
+    Then on Order Details form, select service PM Flat Rate Envelope
+    Then in Orders Toolbar, click Print button
+    Then in Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then in Print modal, set Printer to "factory"
+    Then in Print modal, click Print button
     Then In left filter panel, select Shipped
     Then In Orders Grid, expect Ship Date for this order is today
     Then In Orders Grid, expect Date Printed for this order is today

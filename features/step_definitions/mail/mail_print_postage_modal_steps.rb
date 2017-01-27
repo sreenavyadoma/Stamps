@@ -14,12 +14,12 @@ When /^Mail: Open Print Sample Modal$/ do
   @print_window = stamps.mail.footer.print_sample
 end
 
-Then /^Mail In Print modal, select Printer \"(.*)\"$/ do |printer|
+Then /^Mail in Print modal, select Printer \"(.*)\"$/ do |printer|
   #logger.step "Select Printer #{printer}"
   @print_window.printer.select printer
 end
 
-When /^Mail In Print modal, click Print button$/ do
+When /^Mail in Print modal, click Print button$/ do
   #logger.step "Print"
   print_postage_modal = stamps.mail.footer.print
   @printer = print_postage_modal.printer.text_box.text
@@ -27,7 +27,7 @@ When /^Mail In Print modal, click Print button$/ do
   @printing_error = print_postage_modal.print
 end
 
-When /^Mail In Print modal, click Print button Sample$/ do
+When /^Mail in Print modal, click Print button Sample$/ do
   #logger.step "Print Sample"
   print_postage_modal = stamps.mail.footer.print_sample
   @printer = print_postage_modal.printer.text_box.text
@@ -35,7 +35,7 @@ When /^Mail In Print modal, click Print button Sample$/ do
   @printing_error = print_postage_modal.print
 end
 
-Then /^Mail: In Print modal, Close$/ do
+Then /^Mail: in Print modal, Close$/ do
   #logger.step "Close Print Mail Print Modal"
   stamps.mail.stamps.mail.close
 end

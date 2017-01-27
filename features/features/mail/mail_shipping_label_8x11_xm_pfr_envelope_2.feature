@@ -22,6 +22,6 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - XM Padded Flat Rate Envel
     Then Mail Shipping Labels: Select service Priority Mail Express Padded Flat Rate Envelope
     Then Mail Shipping Labels: Select left side starting label
     Then Mail: Open Print Modal
-    Then Mail In Print modal, select Printer "factory"
-    Then Mail In Print modal, click Print button
+    Then Mail in Print modal, select Printer "factory"
+    Then Mail in Print modal, click Print button
     Then Sign out

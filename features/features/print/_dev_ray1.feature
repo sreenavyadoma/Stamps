@@ -22,17 +22,17 @@ Feature: FPO Shipping BVT
     Then Postage Roll: Select service Priority Mail Large-Thick Envelope
 
     Then Postage Shipping Labels: Edit Customs Form
-    Then Postage On Customs form, set Package Contents to Gift
-    Then Postage On Customs form, set Non-Delivery Options to "Treat as abandoned"
-    Then Postage On Customs form, set Internal Transaction Number Requirement to "Required"
-    Then Postage On Customs form, set ITN Number to "12345"
-    Then Postage On Customs form, set More Info to "WP BVT FPO Shipping"
-    Then Postage On Customs form, Delete All Items
-    Then Postage On Customs form, add associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin United States, Tariff 25
-    Then Postage On Customs form, check I agree to the USPS Privacy Act Statement
-    Then Postage On Customs form, Save
+    Then Postage on Customs form, set Package Contents to Gift
+    Then Postage on Customs form, set Non-Delivery Options to "Treat as abandoned"
+    Then Postage on Customs form, set Internal Transaction Number Requirement to "Required"
+    Then Postage on Customs form, set ITN Number to "12345"
+    Then Postage on Customs form, set More Info to "WP BVT FPO Shipping"
+    Then Postage on Customs form, Delete All Items
+    Then Postage on Customs form, add associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin United States, Tariff 25
+    Then Postage on Customs form, check I agree to the USPS Privacy Act Statement
+    Then Postage on Customs form, Save
 
     Then Postage: Open Print Sample Modal
-    Then Postage In Print modal, select Printer "ZDesigner"
-    Then Postage In Print modal, click Print button
+    Then Postage in Print modal, select Printer "ZDesigner"
+    Then Postage in Print modal, click Print button
     Then Sign out

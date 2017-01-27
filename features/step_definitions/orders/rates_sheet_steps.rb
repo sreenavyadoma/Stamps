@@ -1,6 +1,6 @@
 
-Then /^Rates: Load Rate File$/ do
-  logger.step "Rates: Load Rate File"
+Then /^(?:E|e)xcel rate sheet is loaded$/ do
+  logger.step "excel rate sheet is loaded"
   Spreadsheet.client_encoding = 'UTF-8'
   rate_file = data_for(:rates_test, {})['rate_file']
 
@@ -20,39 +20,32 @@ Then /^Rates: Load Rate File$/ do
   @rate_file.should_not be nil
 end
 
-Then /^Rates: Test PME Comm Base in Zone (\d+)$/ do |zone|
-  logger.step "Rates: Test PME Comm Base in Zone #{zone}"
+Then /^(?:R|r)un rate test PME Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_base']
-  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^Rates: Test PME Comm Plus in Zone (\d+)$/ do |zone|
-  logger.step "Rates: Test PME Comm Plus in Zone #{zone}"
+Then /^(?:R|r)un rate test PME Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_plus']
-  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^Rates: Test PM Comm Base in Zone (\d+)$/ do |zone|
-  logger.step "Rates: Test PME Comm Base in Zone #{zone}"
+Then /^(?:R|r)un rate test PM Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_base']
-  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^Rates: Test PM Comm Plus in Zone (\d+)$/ do |zone|
-  logger.step "Rates: Test PM Comm Plus in Zone #{zone}"
+Then /^(?:R|r)un rate test PM Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_plus']
-  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^Rates: Test Parcel Select Ground in Zone (\d+)$/ do |zone|
-  logger.step "Rates: Test Parcel Select Ground in Zone #{zone}"
+Then /^(?:R|r)un rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_parcel_select_ground']
-  step "Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
-  logger.step ""
-  logger.step "#{"*"*100} Rates: Test Sheet #{param_sheet} in Zone #{zone}"
+Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   zone = zone.to_i
 
   @result_file = Spreadsheet::Workbook.new
@@ -308,7 +301,6 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     when 9
       zone_column = @columns[:zone9]
     else
-      logger.step "Zone parameter (zone) should have a value between 1 through 9. #{zone} is an invalid selection. Check your test."
       expect(zone).to be_between(1, 9).inclusive
   end
 
