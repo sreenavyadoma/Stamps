@@ -2,7 +2,7 @@
 Feature:  Update International Orders to ShipStation
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation

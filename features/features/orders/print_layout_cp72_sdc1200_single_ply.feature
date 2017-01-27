@@ -1,7 +1,7 @@
 Feature: Print 1 Intl CP72 label on sdc1200 - right side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_cp72_sdc1200_single_ply
   Scenario: Print 1 Intl CP72 label on sdc1200 - right side

@@ -1,7 +1,7 @@
 Feature: Print Media - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_printing_on_4x6_sdc1200
   Scenario:  Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"

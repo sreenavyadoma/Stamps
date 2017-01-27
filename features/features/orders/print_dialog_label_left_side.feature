@@ -2,7 +2,7 @@
 Feature: Change Starting Label Position to Left Side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_label_left_side
   Scenario:  Print Label - Left Side

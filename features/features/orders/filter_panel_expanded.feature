@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want is able to Filter Panel - orders by status [B-01621]
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
    @filters
   Scenario: User Changes filters

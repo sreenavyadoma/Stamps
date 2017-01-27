@@ -1,7 +1,7 @@
 Feature: Print 1 single ply APO CP72 label on 4x6 roll
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_cp72_single_ply_apo_roll
   Scenario: Print 1 single ply APO CP72 label on 4x6 roll

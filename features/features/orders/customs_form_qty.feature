@@ -2,7 +2,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @customs_form_qty
   Scenario: Customs Form Qty

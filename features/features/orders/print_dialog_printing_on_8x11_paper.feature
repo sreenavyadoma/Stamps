@@ -1,7 +1,7 @@
 Feature: Print Media - Shipping Label: 8 ½" x 11" Paper
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_printing_on_8x11_paper
   Scenario:  Shipping Label: 8 ½" x 11" Paper

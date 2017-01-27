@@ -1,7 +1,7 @@
 Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_dpo_cp72_roll_single_ply
   Scenario: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll

@@ -1,7 +1,7 @@
 Feature:  Customs Form Item Grid - Edit/Delete
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @international_customs_form_edit_delete_item
   Scenario:  Customs Form Item Grid - Edit/Delete

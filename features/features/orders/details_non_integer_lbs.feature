@@ -1,7 +1,7 @@
 Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_non_integer_lb
   Scenario: User edits an order

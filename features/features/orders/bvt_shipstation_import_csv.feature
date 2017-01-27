@@ -2,7 +2,7 @@
 Feature: ShipStation BVT Import CSV
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @bvt_shipstation_import_csv
   Scenario:  ShipStation BVT Import CSV

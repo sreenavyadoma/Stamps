@@ -1,7 +1,7 @@
 Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_cp72_5x8_right
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 - right side

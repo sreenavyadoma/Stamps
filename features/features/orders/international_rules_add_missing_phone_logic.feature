@@ -1,7 +1,7 @@
 Feature: Add Missing Validation Logic for Phone and International Email
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rules_international @rules_international_dev
   Scenario: Add Missing Validation Logic for Phone and International Email

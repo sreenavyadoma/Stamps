@@ -4,7 +4,7 @@ Feature: Details Ship Cost Total
   2. Update Total Cost at Bottom of Details Panel
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_ship_cost_total
   Scenario: Ship Cost Total

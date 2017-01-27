@@ -1,7 +1,7 @@
 Feature:  Customs Form Data Tooltip Error
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @tooltip_customs_form
   Scenario:  Customs Form Data Error

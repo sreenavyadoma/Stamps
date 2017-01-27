@@ -2,7 +2,7 @@
 Feature:  Prompt User to Remove Orders in Error from Print Group
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @printing_error
   Scenario:  Printing

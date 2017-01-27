@@ -2,7 +2,7 @@
 Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Background:
-  Given A user is signed in to Orders
+  Given a valid user is signed in to Web Apps
 
   Scenario: Print - Shipping Label: 5 ½" x 8 ½"
     Then In Orders Toolbar, click Add button

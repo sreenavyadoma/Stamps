@@ -1,7 +1,7 @@
 Feature: In Print modal, click Print button Sample - Priority Mail Express Padded Flat Rate Envelope
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_sample_pme_padded_flat_rate_envelope
   Scenario:  Priority Mail Express Padded Flat Rate Envelope

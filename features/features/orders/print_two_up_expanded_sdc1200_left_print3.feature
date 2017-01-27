@@ -1,7 +1,7 @@
 Feature: User Prints 3 Domestic labels on SDC-1200 - left side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_expanded_sdc1200_left_print3
   Scenario: User Prints 3 Domestic labels on SDC-1200 - left side

@@ -2,7 +2,7 @@
 Feature: Show Cost of Order in Ship Cost Grid
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @grid_ship_cost
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid

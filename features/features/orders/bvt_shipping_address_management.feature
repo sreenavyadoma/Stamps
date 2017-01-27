@@ -2,7 +2,7 @@
 Feature:  BVT Address Management
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @bvt_shipping_address_management
   Scenario: BVT Shipping Address

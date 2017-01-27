@@ -1,7 +1,7 @@
 Feature:  service Selection & Order Grid Values
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @parcel_select
   Scenario:  Rename Parcel Select

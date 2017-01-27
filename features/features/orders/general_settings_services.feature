@@ -2,7 +2,7 @@
 Feature: Checkoxes Services, Print Confirm, USPS Terms, Contacts and Shipments
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @general_settings_t1
   Scenario: Services, Print Confirm, USPS Terms, Contacts and Shipments

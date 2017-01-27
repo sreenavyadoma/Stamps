@@ -1,7 +1,7 @@
 Feature: Total Cost of Multiple Orders
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @multiple_order_total_cost
   Scenario:  Total Cost Multiple Orders

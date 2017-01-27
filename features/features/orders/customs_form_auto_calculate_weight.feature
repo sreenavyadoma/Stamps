@@ -1,7 +1,7 @@
 Feature: Auto-Calculate Customs Form Weight
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @customs_form_auto_calculate_weight
   Scenario: Auto-Calculate Customs Form Weight

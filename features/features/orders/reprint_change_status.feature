@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" View [B-01639]
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @reprint_change_status @reprint
   Scenario: Allow User to Manually Change Order Status - User Reprints Order

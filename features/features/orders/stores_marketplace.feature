@@ -2,7 +2,7 @@
 Feature:  Store Management - Marketplace
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
     @marketplace
     Scenario: Store Management - Marketplace

@@ -1,7 +1,7 @@
 Feature: Internal Transaction Number Required for total over $2500
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rules_international @rules_international_over_2500
   Scenario: Customs Form Internal Transaction Number Required for total over $2500

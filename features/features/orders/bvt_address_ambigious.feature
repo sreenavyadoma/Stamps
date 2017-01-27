@@ -1,7 +1,7 @@
 Feature:  Ambigious Address
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @bvt_ambigious_address
   Scenario: Ambigious Address

@@ -949,8 +949,8 @@ module Stamps
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field(name: "servicePackage")
-          @drop_down = BrowserElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]")
+          @text_box = TextboxElement.new(browser.text_field(name: "Service"))
+          @drop_down = BrowserElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
           @blur_element = BlurOutElement.new(param)
         end
 

@@ -20,6 +20,30 @@ module Stamps
     end
   end
 
+  def webreg
+    begin
+      @webreg = WebReg::WebRegistration.new(param)
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
+  end
+
+  def pam
+    begin
+      @pam = Pam::PaymentAdministratorManager.new(param)
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
+    end
+  end
+
   def health
     begin
       HealthCheck.new(param)
@@ -46,70 +70,19 @@ module Stamps
   end
 
   def param
-    @test_param ||= BrowserParam.new
-    @test_param.browser = browser
-    @test_param.logger = logger
-    @test_param.scenario_name = test_helper.scenario_name
-    @test_param.test_env = ENV['URL']
-    @test_param.web_app = ENV['WEB_APP'].to_sym
-    @test_param
-  end
-
-  def webreg
-    begin
-      @webreg = WebReg::WebRegistration.new(param)
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      raise e
-    end
-  end
-
-  def pam
-    begin
-      @pam = Pam::PaymentAdministratorManager.new(param)
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      raise e
-    end
-  end
-
-  def volusion
-    begin
-      @volusion = Stores::VolusionLoginPage.new(param)
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      raise e
-    end
-  end
-
-  def test_data
-    @test_data
+    @param ||= TestParam.new
+    @param.browser = browser
+    @param.logger = logger
+    @param.scenario_name = test_helper.scenario_name
+    @param.test_env = ENV['URL']
+    @param.web_app = ENV['WEB_APP'].to_sym
+    @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
+    @param
   end
 
   def test_helper
     begin
       TestHelper
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
-    end
-  end
-
-  def param_helper
-    begin
-      ParameterHelper
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -125,6 +98,22 @@ module Stamps
 
   def browser
     test_helper.browser
+  end
+
+  def param_helper
+    begin
+      ParameterHelper
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      "#{e.backtrace.join("\n")}".should eql e.message
+    end
+  end
+
+  def test_data
+    @test_data ||= Hash.new
   end
 
   def webreg_user_parameter_file * args
@@ -150,6 +139,18 @@ module Stamps
       logger.error e.message
       logger.error e.backtrace.join("\n")
       "MagicData: Problem retrieving data. Check your format?".should eql e.message
+    end
+  end
+
+  def volusion
+    begin
+      @volusion = Stores::VolusionLoginPage.new(param)
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      raise e
     end
   end
 

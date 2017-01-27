@@ -1,7 +1,7 @@
 Feature: Sorting.
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @sort
   Scenario: Orders Grid Sorting

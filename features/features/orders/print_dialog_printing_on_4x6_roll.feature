@@ -1,7 +1,7 @@
 Feature: Print Media - Roll - 4 ⅛" x 6 ¼" Shipping Label
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_printing_on_4x6_roll
   Scenario:  Roll - 4 ⅛" x 6 ¼" Shipping Label

@@ -1,7 +1,7 @@
 Feature: Local Rating test for Zone 9
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rates_orders_zone_9
   Scenario: FCM Package

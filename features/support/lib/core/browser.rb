@@ -1,8 +1,8 @@
 module Stamps
   module Browser
 
-    class BrowserParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env
+    class TestParam
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check
     end
 
     class Modal
@@ -16,7 +16,6 @@ module Stamps
       end
     end
 
-    # ElementWrapper object is primarily used to wrap elements for used on step definitions.
     class BrowserElement
       attr_reader(:browser, :element_helper, :element, :error_qtip_element, :error_qtip_element_attribute)
       def initialize(*args)

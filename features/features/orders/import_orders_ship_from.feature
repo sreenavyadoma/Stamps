@@ -9,7 +9,7 @@ Feature: ORDERS-24 ShipStation Orders Should Import with a Ship From Address
   Subsequently-imported orders will include the new default Ship From address.
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @import_orders_ship_from_test
   Scenario:  Import Orders

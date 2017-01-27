@@ -2,7 +2,7 @@
 Feature: Order Details Form Negative Tests
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @weight_negative_tests
   Scenario:  Weight tooltip - negative test

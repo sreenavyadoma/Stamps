@@ -1,7 +1,7 @@
 Feature: Two character minimum for Name & Company
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rules_international @rules_international_name_stuff
   Scenario: Two character minimum for Name & Company

@@ -1,7 +1,7 @@
 Feature: Print 1 Intl CN22 label on 4x6 Roll
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_cn22_roll
   Scenario: Print 1 Intl CN22 label on 4x6 Roll

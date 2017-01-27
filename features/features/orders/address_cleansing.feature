@@ -2,7 +2,7 @@
 Feature: Address Cleansing
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @address_cleansing
   Scenario: Address Cleansing

@@ -2,7 +2,7 @@
 Feature: As a batch shipper, I want is able to create Then Print many orders automatically
 
   Background:
-    Given A user is signed in to Orders as auto_paginate/password1
+    Given a valid user is signed in to Web Apps as auto_paginate/password1
 
   @create_many_orders
   Scenario:  Print Specified Number of Orders

@@ -1,7 +1,7 @@
 Feature: North Korea Internal Transaction Number Required
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rules_international
   Scenario: North Korea Internal Transaction Number Required

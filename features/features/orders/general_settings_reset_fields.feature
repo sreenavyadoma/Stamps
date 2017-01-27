@@ -2,7 +2,7 @@
 Feature: Reset Fields
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @general_settings @general_settings_dev
   Scenario: Reset Fields

@@ -1,7 +1,7 @@
 Feature: Edit Order Details
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_edit_order
   Scenario: User edits an order

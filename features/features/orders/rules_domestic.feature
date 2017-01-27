@@ -1,7 +1,7 @@
 Feature:  service enabled/disabled tests
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rules_domestic
   Scenario:  First Class Mail over 16 ounces disabled

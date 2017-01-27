@@ -1,7 +1,7 @@
 Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_cp72_paper_single_ply
   Scenario: Print 1 single ply Intl CP72 label on 8.5x11 - left side

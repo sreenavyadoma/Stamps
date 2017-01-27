@@ -14,7 +14,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
   Priority Mail Express Legal Flat Rate Envelope
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_flat_rate_no_weight_domestic
   Scenario:  Domestic Flat

@@ -1,7 +1,7 @@
 Feature: ORDERSAUTO-30 Add Tracking Email Option in Print Dialog
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @email_tracking_details
   Scenario:  ORDERSAUTO-30

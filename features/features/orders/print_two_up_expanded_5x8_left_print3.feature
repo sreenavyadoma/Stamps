@@ -1,7 +1,7 @@
 Feature: Print 3 Domestic labels on 5.5x8.5 - left side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_expanded_5x8_left_print3
   Scenario: Print 3 Domestic labels on 5.5x8.5 - left side

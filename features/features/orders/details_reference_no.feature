@@ -3,7 +3,7 @@ Feature:  Order Details Form - Reference # Field
   Add Reference # Field and Print Reference # Checkbox
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_reference_no
   Scenario: Reference Number

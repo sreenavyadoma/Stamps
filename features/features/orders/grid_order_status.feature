@@ -2,7 +2,7 @@
 Feature: Order Status - Awaiting Shipment
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @grid_order_status
   Scenario: Order Status

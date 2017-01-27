@@ -5,7 +5,7 @@ Feature: PM Comm Base Rates
 
   @rates_pm_comm_base
   Scenario: PM Comm Base
-    And A user is signed in to Orders
+    And a valid user is signed in to Web Apps
     Then In Orders Toolbar, click Add button
     Then On Order Details form, set Ship-From to default
     Then Rates: Test PM Comm Base in Zone 1

@@ -1,7 +1,7 @@
 Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_expanded_paper_left_print1
   Scenario: User Prints 1 Domestic label on 8.5x11 - left side

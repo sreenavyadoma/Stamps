@@ -3,7 +3,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
   Move "Printing On" to top of the Print dialog
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_hide_postage_value
   Scenario:  Hide Mail Value Checkbox

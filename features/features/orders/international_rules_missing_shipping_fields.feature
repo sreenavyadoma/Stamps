@@ -1,7 +1,7 @@
 Feature: International Shipping fields and Customs Information fields validation
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rules_international @rules_international_customs_fields_validation
   Scenario: International Shipping fields and Customs Information fields validation

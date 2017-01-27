@@ -5,7 +5,7 @@ Feature: PME Comm Plus Rates
 
   @rates_pme_comm_plus
   Scenario: PME Comm Plus
-    And A user is signed in to Orders
+    And a valid user is signed in to Web Apps
     Then In Orders Toolbar, click Add button
     Then On Order Details form, set Ship-From to default
     Then Rates: Test PME Comm Plus in Zone 1

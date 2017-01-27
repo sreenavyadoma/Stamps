@@ -2,7 +2,7 @@
 Feature:  Requires x-number of label sheets
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_two_up_x_number_of_labels
   Scenario:  Printing

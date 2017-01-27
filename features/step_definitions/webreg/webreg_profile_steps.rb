@@ -12,13 +12,13 @@ end
 
 Then /^On WebReg Profile page, set User ID and Email to (.*)$/ do |usr|
   if usr.downcase.include? "random"
-    @webreg_data[:usr] = ParameterHelper.rand_username
+    test_data[:usr] = ParameterHelper.rand_username
   else
-    @webreg_data[:usr] = usr
+    test_data[:usr] = usr
   end
-  #logger.step "On WebReg Profile page, set User ID and Email to #{ @webreg_data[:usr]}"
-  step "On WebReg Profile page, set Email to #{ @webreg_data[:usr]}@mailinator.com"
-  step "On WebReg Profile page, set User ID to #{ @webreg_data[:usr]}"
+  #logger.step "On WebReg Profile page, set User ID and Email to #{ test_data[:usr]}"
+  step "On WebReg Profile page, set Email to #{ test_data[:usr]}@mailinator.com"
+  step "On WebReg Profile page, set User ID to #{ test_data[:usr]}"
 end
 
 Then /^On WebReg Profile page, set Email to (.*)$/ do |email|
@@ -28,14 +28,14 @@ end
 
 Then /^On WebReg Profile page, set User ID to (.*)$/ do |user_id|
   #logger.step "On WebReg Profile page, set User ID to #{user_id}"
-  @webreg_data[:usr] = user_id
+  test_data[:usr] = user_id
   webreg.profile.user_id.set user_id
 end
 
 Then /^On WebReg Profile page, set Password to (.*)$/ do |password|
   #logger.step "On WebReg Profile page, set Password to #{password}"
-  @webreg_data[:pw]=password
-  webreg.profile.password.set @webreg_data[:pw]
+  test_data[:pw]=password
+  webreg.profile.password.set test_data[:pw]
 end
 
 Then /^On WebReg Profile page, set Re-Type password to (.*)$/ do |password|
@@ -154,14 +154,14 @@ end
 
 Then /^On WebReg Profile page, set 1st Answer to (.*)$/ do |answer|
   #logger.step "On WebReg Profile page, set 1st Answer to #{answer}"
-  @webreg_data[:answer] = answer
-  webreg.profile.first_answer.set @webreg_data[:answer]
+  test_data[:answer] = answer
+  webreg.profile.first_answer.set test_data[:answer]
 end
 
 Then /^On WebReg Profile page, set 2nd Answer to (.*)$/ do |answer|
   #logger.step "On WebReg Profile page, set 2nd Answer to #{answer}"
-  @webreg_data[:answer_2] = answer
-  webreg.profile.second_answer.set @webreg_data[:answer_2]
+  test_data[:answer_2] = answer
+  webreg.profile.second_answer.set test_data[:answer_2]
 end
 
 Then /^On WebReg Profile page, set Send me special money-saving offers to checked$/ do

@@ -2,7 +2,7 @@ Feature:  Order Details Form Placeholder default values
   ORDERS-33 Item Row Quantity Field should have "Qty" Placeholder Text
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_placeholders
   Scenario:  Order Details Form Placeholder default values

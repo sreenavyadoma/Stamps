@@ -2,7 +2,7 @@
 Feature:  BVT Wonderment
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @wonderment_bvt
   Scenario:  Add a new order

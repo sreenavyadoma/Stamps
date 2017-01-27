@@ -3,7 +3,7 @@ Feature: Mail Balance
 
   @nav_postage_balance_update
   Scenario: Update Mail Balance After Each Print
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
     Then In Orders Toolbar, click Add button
     Then On Order Details form, set Ship-From to default
     Then On Order Details form, set Ship-To to address in Zone 1 through 4

@@ -2,7 +2,7 @@ Feature: Able to collapse and reopen details panel when click Add order
 
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_panel
   Scenario: B-01995 When Details Panel is Collapsed, Add Button Should Expand it

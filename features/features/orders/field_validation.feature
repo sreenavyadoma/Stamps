@@ -1,7 +1,7 @@
 Feature: Add Missing Field Validation
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields

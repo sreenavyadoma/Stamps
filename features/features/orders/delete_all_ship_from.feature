@@ -2,7 +2,7 @@
 Feature:  Delete Ship From
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @delete_all_shipping_addresses
   Scenario: regression

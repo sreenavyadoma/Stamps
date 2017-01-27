@@ -1,7 +1,7 @@
 Feature: Item Details
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @item_details
   Scenario:  Item Details

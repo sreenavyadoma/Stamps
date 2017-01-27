@@ -1,7 +1,7 @@
 Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_expanded_sdc1200_4x6_left_print1
   Scenario: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side

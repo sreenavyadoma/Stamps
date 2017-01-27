@@ -2,7 +2,7 @@
 Feature: BVT Purchasing
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @bvt_purchasing
   Scenario: Purchasing $10

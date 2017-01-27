@@ -2,7 +2,7 @@
 Feature: In Orders Grid, Tracking & Order Status
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @grid_insured_value
   Scenario: Tracking & Order Status

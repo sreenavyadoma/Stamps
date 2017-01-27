@@ -2,7 +2,7 @@
   Feature: Domestic USPS service used to fulfill an order.
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @shipstation_services
   Scenario:  ShipStation & Services

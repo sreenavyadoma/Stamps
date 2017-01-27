@@ -2,7 +2,7 @@
 Feature: User Views Price Next to service Dropdown
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @inline_service_rates
   Scenario:  User Views Price Next to service Dropdown

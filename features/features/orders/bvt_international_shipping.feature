@@ -1,7 +1,7 @@
 Feature:  BVT International Shipping
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @bvt_international_shipping
   Scenario: International Shipping

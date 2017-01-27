@@ -1,7 +1,7 @@
 Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_expanded_fpo_cn22_paper_right
   Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side

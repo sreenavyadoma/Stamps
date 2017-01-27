@@ -2,7 +2,7 @@
 Feature:  3DCart Store Management
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
     @3dcart
     Scenario: Store Management - 3DCart Store

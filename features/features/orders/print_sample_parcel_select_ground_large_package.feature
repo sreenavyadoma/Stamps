@@ -1,7 +1,7 @@
 Feature: In Print modal, click Print button Sample - Parcel Select Ground Large Package
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_sample_parcel_select_ground_large_package
   Scenario:  Parcel Select Ground Large Package

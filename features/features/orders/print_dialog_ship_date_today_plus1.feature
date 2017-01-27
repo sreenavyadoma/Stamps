@@ -1,7 +1,7 @@
 Feature: Set Print Ship Date to Today + 1
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_ship_date_today_plus1
   Scenario: Ship Date today + 1

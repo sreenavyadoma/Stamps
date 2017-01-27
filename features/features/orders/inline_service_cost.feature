@@ -2,7 +2,7 @@
 Feature: Ship-To Addresses
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @inline_service_rates
   Scenario:  System Calls GetRates When "Ship-To Address" is changed

@@ -1,7 +1,7 @@
 Feature:  Print Bonaire, Sint Eustatius, and Saba orders
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
      #User Able to Print with  new   country Country Bonaire, Sint Eustatius, and Saba
   @new_country_code @new_country_code_3

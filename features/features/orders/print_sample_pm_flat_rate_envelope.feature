@@ -1,7 +1,7 @@
 Feature: In Print modal, click Print button Sample - Priority Mail Flat Rate Envelope
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_sample_pm_flat_rate_envelope
   Scenario:  Priority Mail Flat Rate Envelope

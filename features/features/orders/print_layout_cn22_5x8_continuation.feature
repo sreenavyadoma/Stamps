@@ -1,7 +1,7 @@
 Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_cn22_5x8_continuation
   Scenario: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side

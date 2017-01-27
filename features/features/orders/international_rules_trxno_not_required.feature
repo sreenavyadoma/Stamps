@@ -1,7 +1,7 @@
 Feature: Internal Transaction # Not Required
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rules_international
   Scenario: Internal Transaction # Not Required

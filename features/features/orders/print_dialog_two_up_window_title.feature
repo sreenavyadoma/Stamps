@@ -2,7 +2,7 @@
 Feature:  Print Window Title - You have x-number of labels ready to print
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_two_up_window_title
   Scenario:  Printing

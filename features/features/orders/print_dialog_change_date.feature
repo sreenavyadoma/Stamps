@@ -13,7 +13,7 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Mail Rates"
   Verify that Ship Date still shows the value you selected.
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_change_date
   Scenario: Change Print Date

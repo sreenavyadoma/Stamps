@@ -1,7 +1,7 @@
 Feature:  Customs Form Totals
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @international_customs_form_totals
   Scenario:  Customs Form Grid - Add Items

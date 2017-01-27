@@ -5,7 +5,7 @@ Feature: PME Comm Base Rates
 
   @rates_pme_comm_base
   Scenario: PME Comm Base
-    And A user is signed in to Orders
+    And a valid user is signed in to Web Apps
     Then In Orders Toolbar, click Add button
     Then On Order Details form, set Ship-From to default
     Then Rates: Test PME Comm Base in Zone 1

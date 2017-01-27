@@ -1,7 +1,7 @@
 Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_printing_on_5x8_shipping_label
   Scenario:  Shipping Label: 5 ½" x 8 ½"

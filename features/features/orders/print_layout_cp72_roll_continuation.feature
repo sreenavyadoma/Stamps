@@ -1,7 +1,7 @@
 Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_layout_cp72_roll_continuation
   Scenario: Print 1 Intl CP72 label with continuation on on 4x6 Roll

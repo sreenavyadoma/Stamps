@@ -355,7 +355,7 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         step "On Order Details form, set Ounces to 0"
 
         # Set weight per spreadsheet
-        raise "weight_lb is empty" if row[@columns[:weight_lb]].nil?
+        row[@columns[:weight_lb]].should_not be nil
         weight_lb = row[@columns[:weight_lb]]
         logger.step "Column weight_lb: #{weight_lb}"
         if param_helper.is_whole_number?(weight_lb)
@@ -372,7 +372,7 @@ Then /^Rates: Test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         end
 
         # Set Service
-        raise "service is empty" if row[@columns[:service]].nil?
+        row[@columns[:service]].should_not be nil
         service = row[@columns[:service]]
         @result_sheet[row_num, @columns[:service]] = service
 

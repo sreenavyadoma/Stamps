@@ -2,7 +2,7 @@
 Feature: Order Pagination
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @page_count @pagination
   Scenario: B-01746 Set per page count

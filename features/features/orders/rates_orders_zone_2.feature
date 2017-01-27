@@ -1,7 +1,7 @@
 Feature: January 2017 Rates for Core User in Zone 2
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @rates_orders_zone_2
   Scenario: FCM Package

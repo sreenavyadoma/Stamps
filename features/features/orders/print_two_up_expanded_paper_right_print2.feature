@@ -1,7 +1,7 @@
 Feature: Print 2 Domestic labels on 8.5x11 - right side
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_expanded_paper_right_print2
   Scenario: Print 2 Domestic labels on 8.5x11 - right side

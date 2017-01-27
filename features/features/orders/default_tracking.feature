@@ -2,7 +2,7 @@
 Feature: Tracking
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @tracking_defaults
   Scenario:  Print - First-Class Mail Envelope

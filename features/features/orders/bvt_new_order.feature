@@ -1,7 +1,7 @@
 Feature:  BVT Order Creation
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @bvt_new_order
   Scenario:  Add a new order

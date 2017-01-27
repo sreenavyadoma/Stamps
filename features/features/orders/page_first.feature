@@ -1,7 +1,7 @@
 Feature: B-01746 Order Pagination
 
   Background:
-    Given A user is signed in to Orders as webbatch_0009/password1
+    Given a valid user is signed in to Web Apps
 
   @page_first
   Scenario: Go to first page

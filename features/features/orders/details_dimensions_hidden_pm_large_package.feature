@@ -3,7 +3,7 @@ Feature: Priority Mail and Large Dimensions
   Entering Dimensions too Large for Priority Mail Causes Dimensions to Vanish and be Stuck
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @details_dimensions_hidden_pm_large_package
   Scenario: Priority Mail and Large Dimensions

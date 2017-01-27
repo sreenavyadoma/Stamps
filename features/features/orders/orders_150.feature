@@ -1,7 +1,7 @@
 Feature: 150 orders
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @orders_150
   Scenario:  Inline Rates

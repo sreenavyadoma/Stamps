@@ -2,7 +2,7 @@
 Feature: 25 orders
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @orders_25 @jenkins_orders
   Scenario:  25 orders

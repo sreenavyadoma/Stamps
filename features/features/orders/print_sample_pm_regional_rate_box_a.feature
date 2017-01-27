@@ -1,7 +1,7 @@
 Feature: In Print modal, click Print button Sample - Priority Mail Regional Rate Box A
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_sample_pm_regional_rate_box_a
   Scenario:  Priority Mail Regional Rate Box A

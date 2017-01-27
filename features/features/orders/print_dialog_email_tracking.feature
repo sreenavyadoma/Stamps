@@ -1,7 +1,7 @@
 Feature: Select Email Tracking for order when printing
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_dialog_email_tracking
   Scenario: Email Tracking

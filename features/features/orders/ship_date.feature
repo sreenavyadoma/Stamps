@@ -2,7 +2,7 @@
 Feature: Ship Date
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @ship_date
   Scenario:  In Print modal, set Ship Date to today

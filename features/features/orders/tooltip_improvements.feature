@@ -2,7 +2,7 @@
 Feature: Tooltips Improvements
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @tooltips_improvements
   Scenario: Tooltips Improvements

@@ -1,7 +1,7 @@
 Feature:  As a batch shipper, I want is able to print multiple labels
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_expanded_cn22_sdc1200_left
   Scenario: User Prints 1 Intl CP72, 1 Intl CN22 label on SDC-1200 - left side

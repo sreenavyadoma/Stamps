@@ -1,7 +1,7 @@
 Feature:  User Able to Selects Curacao and Country Bonaire, Sint Eustatius, and Saba
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @new_country_code @new_country_code_1
   Scenario: User Able to Selects new Country Curacao

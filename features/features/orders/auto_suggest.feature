@@ -2,7 +2,7 @@
 Feature: Domestic Address
 
   Background:
-    Given A user is signed in to Orders
+    Given a valid user is signed in to Web Apps
 
   @auto_suggest
   Scenario: Auto Suggest for Domestic Addresses

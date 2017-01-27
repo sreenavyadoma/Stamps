@@ -12,9 +12,6 @@ include Spreadsheet
 
 Before do  |scenario|
   Stamps.init scenario.name
-  # test data store
-  @test_data = Hash.new
-  @webreg_data = Hash.new
   scenario.feature.name
   logger.message "-"
   logger.message "-"
