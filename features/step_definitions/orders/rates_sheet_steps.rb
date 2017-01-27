@@ -56,206 +56,231 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   # Set result sheet name to parameter sheet name
   @result_sheet.name = param_sheet
 
-  @columns = Hash.new
+  @rate_sheet_columns = Hash.new
   @result_sheet_columns = Hash.new
+  @result_sheet_column_offset = 8
 
   # map out parameter sheet column location
-  @rate_sheet_columns = @rate_sheet.row(0)
+  @rate_sheet_header = @rate_sheet.row(0)
   #result sheet columns
-  @result_sheet_columns = @result_sheet.row(0)
   @bold = Spreadsheet::Format.new(:weight => :bold)
 
-  @rate_sheet_columns.each_with_index do |column, row_num|
-    if column=='weight_lb'
-      @columns[:weight_lb] = row_num
-      @result_sheet_columns[row_num] = 'weight_lb'
-      @result_sheet.row(0).set_format(row_num, @bold)
+  @rate_sheet_header.each_with_index do |column_name, column_number|
+    if column_name=='weight_lb'
+      @rate_sheet_columns[:weight_lb] = column_number
+      @result_sheet_columns[:weight_lb] = column_number
+      @result_sheet.row(0)[column_number] = 'weight_lb'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone1'
-      @columns[:zone1] = row_num
-      @result_sheet_columns[row_num] = 'zone1'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone1'
+      @rate_sheet_columns[:zone1] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone1'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone2'
-      @columns[:zone2] = row_num
-      @result_sheet_columns[row_num] = 'zone2'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone2'
+      @rate_sheet_columns[:zone2] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone2'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone3'
-      @columns[:zone3] = row_num
-      @result_sheet_columns[row_num] = 'zone3'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone3'
+      @rate_sheet_columns[:zone3] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone3'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone4'
-      @columns[:zone4] = row_num
-      @result_sheet_columns[row_num] = 'zone4'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone4'
+      @rate_sheet_columns[:zone4] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone4'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone5'
-      @columns[:zone5] = row_num
-      @result_sheet_columns[row_num] = 'zone5'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone5'
+      @rate_sheet_columns[:zone5] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone5'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone6'
-      @columns[:zone6] = row_num
-      @result_sheet_columns[row_num] = 'zone6'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone6'
+      @rate_sheet_columns[:zone6] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone6'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone7'
-      @columns[:zone7] = row_num
-      @result_sheet_columns[row_num] = 'zone7'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone7'
+      @rate_sheet_columns[:zone7] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone7'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone8'
-      @columns[:zone8] = row_num
-      @result_sheet_columns[row_num] = 'zone8'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone8'
+      @rate_sheet_columns[:zone8] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone8'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='zone9'
-      @columns[:zone9] = row_num
-      @result_sheet_columns[row_num] = 'zone9'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='zone9'
+      @rate_sheet_columns[:zone9] = column_number
+      @result_sheet_columns[:zone] = 1
+      @result_sheet.row(0)[@result_sheet_columns[:zone]] = 'zone9'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='service'
-      @columns[:service] = row_num
-      @result_sheet_columns[row_num] = 'service'
-      @result_sheet.row(0).set_format(row_num, @bold)
+
+
+    if column_name=='service'
+      @rate_sheet_columns[:service] = column_number
+      @result_sheet_columns[:service] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:service]] = 'service'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='tracking'
-      @columns[:tracking] = row_num
-      @result_sheet_columns[row_num] = 'tracking'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='tracking'
+      @rate_sheet_columns[:tracking] = column_number
+      @result_sheet_columns[:tracking] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:tracking]] = 'tracking'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='execution_date'
-      @columns[:execution_date] = row_num
-      @result_sheet_columns[row_num] = 'execution_date'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='execution_date'
+      @rate_sheet_columns[:execution_date] = column_number
+      @result_sheet_columns[:execution_date] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:execution_date]] = 'execution_date'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='username'
-      @columns[:username] = row_num
-      @result_sheet_columns[row_num] = 'username'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='username'
+      @rate_sheet_columns[:username] = column_number
+      @result_sheet_columns[:username] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:username]] = 'username'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='ship_from'
-      @columns[:ship_from] = row_num
-      @result_sheet_columns[row_num] = 'ship_from'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='ship_from'
+      @rate_sheet_columns[:ship_from] = column_number
+      @result_sheet_columns[:ship_from] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:ship_from]] = 'ship_from'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='ship_to_domestic'
-      @columns[:ship_to_domestic] = row_num
-      @result_sheet_columns[row_num] = 'ship_to_domestic'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='ship_to_domestic'
+      @rate_sheet_columns[:ship_to_domestic] = column_number
+      @result_sheet_columns[:ship_to_domestic] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:ship_to_domestic]] = 'ship_to_domestic'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='weight'
-      @columns[:weight] = row_num
-      @result_sheet_columns[row_num] = 'weight'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='weight'
+      @rate_sheet_columns[:weight] = column_number
+      @result_sheet_columns[:weight] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:weight]] = 'weight'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='service_selected'
-      @columns[:service_selected] = row_num
-      @result_sheet_columns[row_num] = 'service_selected'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='service_selected'
+      @rate_sheet_columns[:service_selected] = column_number
+      @result_sheet_columns[:service_selected] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:service_selected]] = 'service_selected'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='tracking_selected'
-      @columns[:tracking_selected] = row_num
-      @result_sheet_columns[row_num] = 'tracking_selected'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='tracking_selected'
+      @rate_sheet_columns[:tracking_selected] = column_number
+      @result_sheet_columns[:tracking_selected] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:tracking_selected]] = 'tracking_selected'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='total_ship_cost'
-      @columns[:total_ship_cost] = row_num
-      @result_sheet_columns[row_num] = 'total_ship_cost'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='total_ship_cost'
+      @rate_sheet_columns[:total_ship_cost] = column_number
+      @result_sheet_columns[:total_ship_cost] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:total_ship_cost]] = 'total_ship_cost'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='results'
-      @columns[:results] = row_num
-      @result_sheet_columns[row_num] = 'results'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='results'
+      @rate_sheet_columns[:results] = column_number
+      @result_sheet_columns[:results] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:results]] = 'results'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='status'
-      @columns[:status] = row_num
-      @result_sheet_columns[row_num] = 'status'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='status'
+      @rate_sheet_columns[:status] = column_number
+      @result_sheet_columns[:status] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:status]] = 'status'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
-    if column=='error_msg'
-      @columns[:error_msg] = row_num
-      @result_sheet_columns[row_num] = 'error_msg'
-      @result_sheet.row(0).set_format(row_num, @bold)
+    if column_name=='error_msg'
+      @rate_sheet_columns[:error_msg] = column_number
+      @result_sheet_columns[:error_msg] = column_number - @result_sheet_column_offset
+      @result_sheet.row(0)[@result_sheet_columns[:error_msg]] = 'error_msg'
+      @result_sheet.row(0).set_format(column_number, @bold)
     end
   end
 
   # Verify all columns exists in parameter sheet
   missing_column = false
   # noinspection RubyScope
-  if @columns[:weight_lb].nil?
+  if @rate_sheet_columns[:weight_lb].nil?
     missing_column = true
     error_msg = "Column weight_lb does not exist in parameter sheet"
-  elsif @columns[:zone1].nil?
+  elsif @rate_sheet_columns[:zone1].nil?
     missing_column = true
     error_msg = "Column zone1 does not exist in parameter sheet"
-  elsif @columns[:zone2].nil?
+  elsif @rate_sheet_columns[:zone2].nil?
     missing_column = true
     error_msg = "Column zone2 does not exist in parameter sheet"
-  elsif @columns[:zone3].nil?
+  elsif @rate_sheet_columns[:zone3].nil?
     missing_column = true
     error_msg = "Column zone3 does not exist in parameter sheet"
-  elsif @columns[:zone4].nil?
+  elsif @rate_sheet_columns[:zone4].nil?
     missing_column = true
     error_msg = "Column zone4 does not exist in parameter sheet"
-  elsif @columns[:zone5].nil?
+  elsif @rate_sheet_columns[:zone5].nil?
     missing_column = true
     error_msg = "Column zone5 does not exist in parameter sheet"
-  elsif @columns[:zone6].nil?
+  elsif @rate_sheet_columns[:zone6].nil?
     missing_column = true
     error_msg = "Column zone6 does not exist in parameter sheet"
-  elsif @columns[:zone7].nil?
+  elsif @rate_sheet_columns[:zone7].nil?
     missing_column = true
     error_msg = "Column zone7 does not exist in parameter sheet"
-  elsif @columns[:zone8].nil?
+  elsif @rate_sheet_columns[:zone8].nil?
     missing_column = true
     error_msg = "Column zone8 does not exist in parameter sheet"
-  elsif @columns[:zone9].nil?
+  elsif @rate_sheet_columns[:zone9].nil?
     missing_column = true
     error_msg = "Column zone9 does not exist in parameter sheet"
-  elsif @columns[:service].nil?
+  elsif @rate_sheet_columns[:service].nil?
     missing_column = true
     error_msg = "Column service does not exist in parameter sheet"
-  elsif @columns[:tracking].nil?
+  elsif @rate_sheet_columns[:tracking].nil?
     missing_column = true
     error_msg = "Column tracking does not exist in parameter sheet"
-  elsif @columns[:execution_date].nil?
+  elsif @rate_sheet_columns[:execution_date].nil?
     missing_column = true
     error_msg = "Column execution_date does not exist in parameter sheet"
-  elsif @columns[:username].nil?
+  elsif @rate_sheet_columns[:username].nil?
     missing_column = true
     error_msg = "Column username does not exist in parameter sheet"
-  elsif @columns[:execution_date].nil?
+  elsif @rate_sheet_columns[:execution_date].nil?
     missing_column = true
     error_msg = "Column execution_date does not exist in parameter sheet"
-  elsif @columns[:ship_from].nil?
+  elsif @rate_sheet_columns[:ship_from].nil?
     missing_column = true
     error_msg = "Column ship_from does not exist in parameter sheet"
-  elsif @columns[:ship_to_domestic].nil?
+  elsif @rate_sheet_columns[:ship_to_domestic].nil?
     missing_column = true
     error_msg = "Column ship_to_domestic does not exist in parameter sheet"
-  elsif @columns[:weight].nil?
+  elsif @rate_sheet_columns[:weight].nil?
     missing_column = true
     error_msg = "Column weight does not exist in parameter sheet"
-  elsif @columns[:service_selected].nil?
+  elsif @rate_sheet_columns[:service_selected].nil?
     missing_column = true
     error_msg = "Column service_selected does not exist in parameter sheet"
-  elsif @columns[:tracking_selected].nil?
+  elsif @rate_sheet_columns[:tracking_selected].nil?
     missing_column = true
     error_msg = "Column tracking_selected does not exist in parameter sheet"
-  elsif @columns[:total_ship_cost].nil?
+  elsif @rate_sheet_columns[:total_ship_cost].nil?
     missing_column = true
     error_msg = "Column total_ship_cost does not exist in parameter sheet"
-  elsif @columns[:results].nil?
+  elsif @rate_sheet_columns[:results].nil?
     missing_column = true
     error_msg = "Column results does not exist in parameter sheet"
-  elsif @columns[:status].nil?
+  elsif @rate_sheet_columns[:status].nil?
     missing_column = true
     error_msg = "Column status does not exist in parameter sheet"
-  elsif @columns[:error_msg].nil?
+  elsif @rate_sheet_columns[:error_msg].nil?
     missing_column = true
     error_msg = "Column error_msg does not exist in parameter sheet"
   end
@@ -267,23 +292,23 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   zone.should_not be nil
   case zone
     when 1
-      zone_column = @columns[:zone1]
+      zone_column = @rate_sheet_columns[:zone1]
     when 2
-      zone_column = @columns[:zone2]
+      zone_column = @rate_sheet_columns[:zone2]
     when 3
-      zone_column = @columns[:zone3]
+      zone_column = @rate_sheet_columns[:zone3]
     when 4
-      zone_column = @columns[:zone4]
+      zone_column = @rate_sheet_columns[:zone4]
     when 5
-      zone_column = @columns[:zone5]
+      zone_column = @rate_sheet_columns[:zone5]
     when 6
-      zone_column = @columns[:zone6]
+      zone_column = @rate_sheet_columns[:zone6]
     when 7
-      zone_column = @columns[:zone7]
+      zone_column = @rate_sheet_columns[:zone7]
     when 8
-      zone_column = @columns[:zone8]
+      zone_column = @rate_sheet_columns[:zone8]
     when 9
-      zone_column = @columns[:zone9]
+      zone_column = @rate_sheet_columns[:zone9]
     else
       expect(zone).to be_between(1, 9).inclusive
   end
@@ -294,12 +319,13 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   fail_format = Spreadsheet::Format.new :color=> :red, :weight => :bold
   pass_format = Spreadsheet::Format.new :color=> :green, :weight => :bold
   # Set weight and services
-  @rate_sheet.each_with_index do |row, row_num|
+  @rate_sheet.each_with_index do |row, column_number|
     @row=row
+    @result_sheet.row(0)[@result_sheet_columns[:zone]] = "zone#{zone}"
     begin
-      if row_num > 0
+      if column_number > 0
         logger.step ""
-        logger.step"#{"#"*80} Starting Test for Zone #{zone} - Row #{row_num}"
+        logger.step"#{"#"*80} Starting Test for Zone #{zone} - Row #{column_number}"
         logger.step ""
 
         # set result sheet price for zone
@@ -320,106 +346,107 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         # spreadsheet price for zone
 
         if row[zone_column] == nil
-          @result_sheet.row(row_num).set_format(zone_column, format)
-          @result_sheet[row_num, @columns[:weight_lb]] = row[@columns[:weight_lb]]
-          @result_sheet[row_num, @columns[:username]] = "--"
-          @result_sheet[row_num, @columns[:ship_from]] = "--"
-          @result_sheet[row_num, @columns[:ship_to_domestic]] = "--"
-          @result_sheet[row_num, @columns[:weight]] = "--"
-          @result_sheet[row_num, @columns[:service]] = "--"
-          @result_sheet[row_num, @columns[:execution_date]] = "--"
-          @result_sheet[row_num, @columns[:service_selected]] = "--"
-          @result_sheet[row_num, @columns[:tracking_selected]] = "--"
-          @result_sheet[row_num, @columns[:total_ship_cost]] = "--"
-          @result_sheet[row_num, @columns[:status]] = "--"
-          @result_sheet[row_num, @columns[:results]] = "--"
+          @result_sheet.row(column_number).set_format(zone_column, format)
+          @result_sheet[column_number, @result_sheet_columns[:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
+          @result_sheet[column_number, @result_sheet_columns[:zone]] = row[zone_column]
+          @result_sheet[column_number, @result_sheet_columns[:username]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:ship_from]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:ship_to_domestic]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:weight]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:service]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:execution_date]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:service_selected]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:tracking_selected]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:total_ship_cost]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:status]] = "--"
+          @result_sheet[column_number, @result_sheet_columns[:results]] = "--"
 
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_num}. Test Skipped! Empty rates."
+          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{column_number}. Test Skipped! Empty rates."
 
         else
 
           price = (row[zone_column].to_f * 100).round / 100.0
 
           # set expectation column for this row to zone price
-          @result_sheet.row(row_num).set_format(zone_column, format)
-          @result_sheet[row_num, zone_column]= price
+          @result_sheet.row(column_number).set_format(zone_column, format)
+          @result_sheet[column_number, @result_sheet_columns[:zone]]= price
 
-          @result_sheet[row_num, @columns[:username]] = test_data[:username]
-          @result_sheet[row_num, @columns[:ship_from]] = test_data[:ship_from]
-          @result_sheet[row_num, @columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
+          @result_sheet[column_number, @result_sheet_columns[:username]] = test_data[:username]
+          @result_sheet[column_number, @result_sheet_columns[:ship_from]] = test_data[:ship_from]
+          @result_sheet[column_number, @result_sheet_columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
 
           # Set weight to 0
           #step "On Order Details form, set Pounds to 0"
           #step "On Order Details form, set Ounces to 0"
 
           # Set weight per spreadsheet
-          row[@columns[:weight_lb]].should_not be nil
-          weight_lb = row[@columns[:weight_lb]]
+          #row[@rate_sheet_columns[:weight_lb]].should_not be nil
+          weight_lb = row[@rate_sheet_columns[:weight_lb]]
           logger.step "Column weight_lb: #{weight_lb}"
           if param_helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
-            @result_sheet[row_num, @columns[:weight_lb]] = weight_lb
-            @result_sheet[row_num, @columns[:weight]] = "#{weight_lb} lb."
+            @result_sheet[column_number, @result_sheet_columns[:weight_lb]] = weight_lb
+            @result_sheet[column_number, @result_sheet_columns[:weight]] = "#{weight_lb} lb."
             #step "On Order Details form, set Pounds to #{weight_lb}"
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
             logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
-            @result_sheet[row_num, @columns[:weight]] = "#{weight_oz} oz."
-            @result_sheet[row_num, @columns[:weight_lb]] = weight_oz
+            @result_sheet[column_number, @result_sheet_columns[:weight]] = "#{weight_oz} oz."
+            @result_sheet[column_number, @result_sheet_columns[:weight_lb]] = weight_oz
             #step "On Order Details form, set Ounces to #{weight_oz}"
           end
 
           # Set Service
-          row[@columns[:service]].should_not be nil
-          service = row[@columns[:service]]
-          @result_sheet[row_num, @columns[:service]] = service
+          row[@rate_sheet_columns[:service]].should_not be nil
+          service = row[@rate_sheet_columns[:service]]
+          @result_sheet[column_number, @result_sheet_columns[:service]] = service
 
           # record execution time as time service was selected.
-          @result_sheet[row_num, @columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
+          @result_sheet[column_number, @result_sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
           #step "On Order Details form, select service #{service}"
-          @result_sheet[row_num, @columns[:service_selected]] = test_data[:service]
+          @result_sheet[column_number, @result_sheet_columns[:service_selected]] = test_data[:service]
 
           # Set Tracking
           begin
-            tracking = row[@columns[:tracking]]
+            tracking = row[@rate_sheet_columns[:tracking]]
             #step "On Order Details form, set Tracking to #{tracking}"
-          end unless row[@columns[:tracking]].nil?
+          end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           #step "On Order Details form, Store Tracking info to parameter"
-          @result_sheet[row_num, @columns[:tracking_selected]] = test_data[:tracking]
+          @result_sheet[column_number, @result_sheet_columns[:tracking_selected]] = test_data[:tracking]
 
           # get total cost actual value from UI
           #step "Save Test Data"
           #test_data[:total_ship_cost] = 21.64
-          @result_sheet[row_num, @columns[:total_ship_cost]] = (test_data[:total_ship_cost].to_f * 100).round / 100.0
+          @result_sheet[column_number, @result_sheet_columns[:total_ship_cost]] = (test_data[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
           #step "On Order Details form, set Pounds to 0"
           #step "On Order Details form, set Ounces to 0"
 
-          @result_sheet[row_num, zone_column].should_not be nil
-          @result_sheet[row_num, @columns[:total_ship_cost]].should_not be nil
+          @result_sheet[column_number, zone_column].should_not be nil
+          @result_sheet[column_number, @result_sheet_columns[:total_ship_cost]].should_not be nil
 
-          expectation_f = (@result_sheet[row_num, zone_column].to_f * 100).round / 100.0
-          total_ship_cost_f = (@result_sheet[row_num, @columns[:total_ship_cost]].to_f * 100).round / 100.0
+          expectation_f = (@result_sheet[column_number, zone_column].to_f * 100).round / 100.0
+          total_ship_cost_f = (@result_sheet[column_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
 
           if expectation_f == total_ship_cost_f
-            @result_sheet[row_num, @columns[:status]] = "Passed"
-            @result_sheet.row(row_num).set_format(@columns[:status], pass_format)
-            @result_sheet[row_num, @columns[:results]] = "#{@result_sheet[row_num, zone_column]} == #{@result_sheet[row_num, @columns[:total_ship_cost]]}"
+            @result_sheet[column_number, @result_sheet_columns[:status]] = "Passed"
+            @result_sheet.row(column_number).set_format(@result_sheet_columns[:status], pass_format)
+            @result_sheet[column_number, @result_sheet_columns[:results]] = "#{@result_sheet[column_number, zone_column]} == #{@result_sheet[column_number, @result_sheet_columns[:total_ship_cost]]}"
           else
-            @result_sheet[row_num, @columns[:status]] = "Failed"
-            @result_sheet.row(row_num).set_format(@columns[:status], fail_format)
-            @result_sheet[row_num, @columns[:results]] = "Expected #{@result_sheet[row_num, zone_column]}, Got #{@result_sheet[row_num, @columns[:total_ship_cost]]}"
+            @result_sheet[column_number, @result_sheet_columns[:status]] = "Failed"
+            @result_sheet.row(column_number).set_format(@result_sheet_columns[:status], fail_format)
+            @result_sheet[column_number, @result_sheet_columns[:results]] = "Expected #{@result_sheet[column_number, zone_column]}, Got #{@result_sheet[column_number, @result_sheet_columns[:total_ship_cost]]}"
           end
 
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_num}"
-          logger.step "#{"#"*10} Weight: #{@result_sheet[row_num, @columns[:weight]]}, Selected Service: #{@result_sheet[row_num, @columns[:service_selected]]}"
+          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{column_number}"
+          logger.step "#{"#"*10} Weight: #{@result_sheet[column_number, @result_sheet_columns[:weight]]}, Selected Service: #{@result_sheet[column_number, @result_sheet_columns[:service_selected]]}"
           logger.step "#{"#"*10} Ship-To Address: #{test_data[:name]}, #{test_data[:street_address]}, #{test_data[:city]}, #{test_data[:state]}, #{test_data[:zip]}"
-          logger.step "#{"#"*10} Test #{@result_sheet[row_num, @columns[:status]] } - Expected #{@result_sheet[row_num, zone_column]}, Got #{@result_sheet[row_num, @columns[:total_ship_cost]]}"
+          logger.step "#{"#"*10} Test #{@result_sheet[column_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[column_number, zone_column]}, Got #{@result_sheet[column_number, @result_sheet_columns[:total_ship_cost]]}"
           logger.step "#{"#"*10} "
         end
 
@@ -427,19 +454,19 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     rescue Exception=> e
       logger.step e.message
       logger.step e.backtrace.join("\n")
-      row[@columns[:error_msg]] = "Zone #{zone} - Row #{row_num}: #{e.message}"
+      row[@rate_sheet_columns[:error_msg]] = "Zone #{zone} - Row #{column_number}: #{e.message}"
     end
   end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
   @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
   @result_file.write @result_filename
-  @result_sheet.each_with_index do |row, row_num|
+  @result_sheet.each_with_index do |row, column_number|
     begin
-      if row_num > 0
-        if row[@columns[:status]] == "Failed"
+      if column_number > 0
+        if row[@rate_sheet_columns[:status]] == "Failed"
           @failed_test_count +=1
-          logger.step "Zone #{zone} - Row #{row_num} Failed"
+          logger.step "Zone #{zone} - Row #{column_number} Failed"
         end
       end
     end
