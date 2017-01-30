@@ -320,15 +320,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   pass_format = Spreadsheet::Format.new :color=> :green, :weight => :bold
   # Set weight and services
   @rate_sheet.each_with_index do |row, row_number|
-    test_data[:username] = "username"
-    test_data[:ship_from] = "ship_from"
-    test_data[:ship_to_domestic] = "ship_to_domestic"
-    test_data[:service] = "service"
-    test_data[:tracking_selected] = "tracking_selected"
-    test_data[:error_msg] = "error_msg"
-    test_data[:tracking] = "tracking"
-    test_data[:total_ship_cost] = 1.0
-
     @row=row
     @result_sheet.row(0)[@result_sheet_columns[:zone]] = "zone#{zone}"
     begin
@@ -337,24 +328,12 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         logger.step"#{"#"*80} Starting Test for Zone #{zone} - Row #{row_number}"
         logger.step ""
 
-        # set result sheet price for zone
-        #@result_sheet[row_num, zone_column] = price
-
-        # Set column zone being tested to bold
-        #@result_sheet.row(row_num).set_format(zone_column, format)
-        #@result_sheet[row_num, @columns[:zone1]] = row[@columns[:zone1]]
-        #@result_sheet[row_num, @columns[:zone2]] = row[@columns[:zone2]]
-        #@result_sheet[row_num, @columns[:zone3]] = row[@columns[:zone3]]
-        #@result_sheet[row_num, @columns[:zone4]] = row[@columns[:zone4]]
-        #@result_sheet[row_num, @columns[:zone5]] = row[@columns[:zone5]]
-        #@result_sheet[row_num, @columns[:zone6]] = row[@columns[:zone6]]
-        #@result_sheet[row_num, @columns[:zone7]] = row[@columns[:zone7]]
-        #@result_sheet[row_num, @columns[:zone8]] = row[@columns[:zone8]]
-        #@result_sheet[row_num, @columns[:zone9]] = row[@columns[:zone9]]
-
         # spreadsheet price for zone
 
         if row[zone_column] == nil
+          logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}. Test Skipped! Empty rates."
+
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
           @result_sheet[row_number, @result_sheet_columns[:zone]] = row[zone_column]
@@ -370,8 +349,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:status]] = "--"
           @result_sheet[row_number, @result_sheet_columns[:results]] = "--"
 
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}. Test Skipped! Empty rates."
 
         else
 
@@ -393,6 +370,8 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
           logger.step "Column weight_lb: #{weight_lb}"
+          logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}. Weight: #{weight_lb}, Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
           if param_helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_lb
