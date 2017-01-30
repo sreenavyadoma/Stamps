@@ -1,7 +1,7 @@
 
 Then /^(?:I|i)n Orders Toolbar, click Print button$/ do
   #logger.step "In Orders Toolbar, click Print button"
-  step "Save Test Data"
+  step "Save Order Details data"
   stamps.orders.toolbar.print_btn.print_modal
 end
 

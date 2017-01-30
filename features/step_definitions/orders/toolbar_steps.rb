@@ -2,8 +2,7 @@ Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
   begin
     test_data[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
-    test_data[:order_id] = stamps.orders.toolbar.add.order_details.toolbar.order_id
-    step "Save Test Data"
+    step "Save Order Details data"
   rescue Exception => e
     logger.error e.message
     logger.error e.backtrace.join("\n")
@@ -11,9 +10,12 @@ Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
   end
 end
 
-Then /^Save Test Data$/ do
+Then /^Save Order Details data$/ do
   stamps.orders.order_details.present?.should be true
+  test_data[:order_id] = stamps.orders.toolbar.add.order_details.toolbar.order_id
   test_data[:service_cost] = stamps.orders.order_details.service.cost
+  test_data[:service] = stamps.orders.order_details.service.text_box.text
+  test_data[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost if stamps.orders.order_details.tracking.present?
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost

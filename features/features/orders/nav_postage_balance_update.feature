@@ -12,7 +12,7 @@ Feature: Mail Balance
     Then on Order Details form, set Insure-For to $10.00
     Then on Order Details form, set Tracking to USPS Tracking
     Then Pause for 1 second
-    Then Save Test Data
+    Then Save Order Details data
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then in Print modal, set Printer to "factory"

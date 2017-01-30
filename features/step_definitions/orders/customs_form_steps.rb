@@ -263,13 +263,13 @@ Then /^(?:O|o)n Customs form, click Close button$/ do
   step "On Customs form, Save Total"
   stamps.orders.order_details.customs.edit_form.close.should be false
   step "On Order Details form, Blur out"
-  step "Save Test Data"
+  step "Save Order Details data"
 end
 
 Then /^Cancel Customs Form$/ do
   step "On Customs form, Blur out"
   stamps.orders.order_details.customs.edit_form.cancel.should be false
-  step "Save Test Data"
+  step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Customs form, expect USPS Privacy Act Warning is visible$/ do

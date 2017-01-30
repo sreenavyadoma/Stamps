@@ -304,9 +304,7 @@ Then /^(?:O|o)n Order Details form, set service to (.*)$/ do |service|
     break if stamps.orders.order_details.service.cost.to_f > 0
     step "On Order Details form, Blur out"
   end
-  test_data[:service] = stamps.orders.order_details.service.text_box.text
-  step "Save Test Data"
-  logger.message "*** service Cost: #{test_data[:service_cost]} ***"
+  step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, expect service to be(?:| ([\w ]+))$/ do |expectation|

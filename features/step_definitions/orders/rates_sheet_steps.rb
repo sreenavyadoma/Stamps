@@ -325,14 +325,17 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     begin
       if row_number > 0
         logger.step ""
-        logger.step"#{"#"*80} Starting Test for Zone #{zone} - Row #{row_number}"
-        logger.step ""
+        logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # spreadsheet price for zone
 
         if row[zone_column] == nil
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}. Test Skipped! Empty rates."
+          logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} Test Row #{row_number} Skipped. No rates found on sheet."
+          logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} "
+          logger.step"#{"#"*80}"
 
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
@@ -369,9 +372,12 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
-          logger.step "Column weight_lb: #{weight_lb}"
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}. Weight: #{weight_lb}, Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
+          logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} Test Row #{row_number}. Weight: #{weight_lb}, Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
+          logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} "
+          logger.step"#{"#"*80}"
           if param_helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_lb
@@ -402,11 +408,10 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             step "On Order Details form, set Tracking to #{tracking}"
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
-          step "On Order Details form, Store Tracking info to parameter"
           @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = test_data[:tracking]
 
           # get total cost actual value from UI
-          step "Save Test Data"
+          step "Save Order Details data"
           @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_data[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
