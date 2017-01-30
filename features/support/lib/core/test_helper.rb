@@ -137,7 +137,8 @@ module Stamps
       end
 
       def verbose
-        @verbose = ENV["VERBOSE"].downcase == "true"
+        return false if ENV["VERBOSE"].nil?
+        ENV["VERBOSE"].downcase == "true"
       end
 
       def os
