@@ -326,7 +326,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         # Set address to proper zone
         step "on Order Details form, set Ship-To to address in Zone #{zone}"
 
-
         # spreadsheet price for zone
 
         if row[zone_column] == nil
@@ -351,13 +350,10 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:status]] = "--"
           @result_sheet[row_number, @result_sheet_columns[:results]] = "--"
         else
-
           price = (row[zone_column].to_f * 100).round / 100.0
-
           # set expectation column for this row to zone price
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:zone]]= price
-
           @result_sheet[row_number, @result_sheet_columns[:username]] = test_data[:username]
           @result_sheet[row_number, @result_sheet_columns[:ship_from]] = test_data[:ship_from]
           @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
