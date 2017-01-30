@@ -411,9 +411,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           step "On Order Details form, set Pounds to 0"
           step "On Order Details form, set Ounces to 0"
 
-          #@result_sheet[row_number, zone_column].should_not be nil
-          #@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].should_not be nil
-
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
 
