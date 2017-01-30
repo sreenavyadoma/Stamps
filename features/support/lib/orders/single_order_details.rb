@@ -75,7 +75,6 @@ module Stamps
         def blur_out
           insure_for_label.safe_click
           insure_for_label.safe_double_click
-          insure_for_label.safe_click
         end
       end
 
@@ -949,7 +948,7 @@ module Stamps
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new(browser.text_field(name: "Service"))
+          @text_box = TextboxElement.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
           @drop_down = BrowserElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
           @blur_element = BlurOutElement.new(param)
         end

@@ -17,16 +17,6 @@ Given /^(?:V|v)isit Orders Sign-in page$/ do
   browser.url.should include "stamps.com"
 end
 
-Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
-  if username.downcase.include? "random"
-    usr = @username
-  else
-    usr = username
-    @username = username
-  end
-  @market_place_modal = stamps.orders.landing_page.first_time_sign_in usr, password
-end
-
 Then /^(?:S|s)ign out$/ do
   begin
     step "Navigation Bar: Customer Balance"
@@ -38,4 +28,14 @@ Then /^(?:S|s)ign out$/ do
   rescue
     #do nothing
   end
+end
+
+Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
+  if username.downcase.include? "random"
+    usr = @username
+  else
+    usr = username
+    @username = username
+  end
+  @market_place_modal = stamps.orders.landing_page.first_time_sign_in usr, password
 end
