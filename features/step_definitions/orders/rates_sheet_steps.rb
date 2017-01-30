@@ -383,7 +383,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             step "On Order Details form, set Pounds to #{weight_lb}"
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
-            logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
+            #logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             @result_sheet[row_number, @result_sheet_columns[:weight]] = "#{weight_oz} oz."
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_oz
             step "On Order Details form, set Ounces to #{weight_oz}"
