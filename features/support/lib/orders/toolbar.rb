@@ -681,7 +681,7 @@ module Stamps
 
               20.times do
                 sleep 1
-                break if details.present?
+                return details if details.present?
               end
 
               30.times do
@@ -694,7 +694,7 @@ module Stamps
                 end
               end
 
-              return details  if details.present?
+              return details if details.present?
               "Server Error: #{server_error.text}".should eql "" if server_error.present?
             rescue
               #ignore

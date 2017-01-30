@@ -2,6 +2,7 @@ Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
   begin
     test_data[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
+    stamps.orders.toolbar.add.order_details
     step "Save Order Details data"
   rescue Exception => e
     logger.error e.message
