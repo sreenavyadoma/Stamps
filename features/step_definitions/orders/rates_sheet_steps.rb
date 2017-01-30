@@ -321,7 +321,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     @result_sheet.row(0)[@result_sheet_columns[:zone]] = "zone#{zone}"
     begin
       if row_number > 0
-        logger.step ""
         logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
