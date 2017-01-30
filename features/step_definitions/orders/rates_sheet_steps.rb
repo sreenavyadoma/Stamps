@@ -337,7 +337,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           logger.step "#{"#"*10} "
           logger.step "#{"#"*10} "
           logger.step"#{"#"*80}"
-
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
           @result_sheet[row_number, @result_sheet_columns[:zone]] = row[zone_column]
@@ -352,8 +351,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = "--"
           @result_sheet[row_number, @result_sheet_columns[:status]] = "--"
           @result_sheet[row_number, @result_sheet_columns[:results]] = "--"
-
-
         else
 
           price = (row[zone_column].to_f * 100).round / 100.0

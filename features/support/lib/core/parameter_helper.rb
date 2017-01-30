@@ -78,15 +78,15 @@ module Stamps
           email = (email_addy.downcase.include? "random") ? ParameterHelper.random_email : address['email']
         end unless address['email'].nil?
 
-        logger.info "Ship-To Name: #{name}"
-        logger.info "Ship-To Company: #{company_name}"
-        logger.info "Ship-To Address: #{street_address}"
-        logger.info "Ship-To Address 2: #{street_address_2}"
-        logger.info "Ship-To City: #{city}"
-        logger.info "Ship-To State: #{state}"
-        logger.info "Ship-To Zip: #{zip}"
-        logger.info "Ship-To Phone: #{phone}" unless address['phone'].nil?
-        logger.info "Ship-To Email: #{email}" unless address['email'].nil?
+        #logger.info "Ship-To Name: #{name}"
+        #logger.info "Ship-To Company: #{company_name}"
+        #logger.info "Ship-To Address: #{street_address}"
+        #logger.info "Ship-To Address 2: #{street_address_2}"
+        #logger.info "Ship-To City: #{city}"
+        #logger.info "Ship-To State: #{state}"
+        #logger.info "Ship-To Zip: #{zip}"
+        #logger.info "Ship-To Phone: #{phone}" unless address['phone'].nil?
+        #logger.info "Ship-To Email: #{email}" unless address['email'].nil?
 
         formatted_address = "#{name}\n#{company_name}\n#{street_address} #{street_address_2}\n#{city} #{state} #{zip}"
         logger.info "Formatted Address: #{formatted_address}"
