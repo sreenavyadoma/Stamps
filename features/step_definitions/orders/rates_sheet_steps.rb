@@ -426,7 +426,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             @result_sheet.row(row_number).set_format(@result_sheet_columns[:status], fail_format)
             @result_sheet[row_number, @result_sheet_columns[:results]] = "Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]}"
           end
-
           logger.step "#{"#"*10} "
           logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
           logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}, Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
