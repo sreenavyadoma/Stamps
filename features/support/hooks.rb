@@ -26,8 +26,8 @@ Before do  |scenario|
   "".should eql "Environment variable BROWSER is not defined!" if (ENV['BROWSER'].nil? || ENV['BROWSER'].size==0)
   logger.message "-"
   logger.message "-"
-  logger.message "Verbose: #{ENV['VERBOSE']}"
-  ENV['VERBOSE'].should be_truthy
+  logger.message "Verbose: #{ENV['DEBUG']}"
+  ENV['DEBUG'].should be_truthy
   logger.message "Healthcheck: #{ENV['HEALTHCHECK']}"
   ENV['HEALTHCHECK'].should be_truthy
   logger.message "-"

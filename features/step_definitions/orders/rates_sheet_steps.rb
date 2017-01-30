@@ -319,14 +319,14 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   @rate_sheet.each_with_index do |row, row_number|
     @row=row
     @result_sheet.row(0)[@result_sheet_columns[:zone]] = "zone#{zone}"
-
-    # Set address to proper zone
-    step "on Order Details form, set Ship-To to address in Zone #{zone}"
-
     begin
       if row_number > 0
         logger.step ""
         logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
+
+        # Set address to proper zone
+        step "on Order Details form, set Ship-To to address in Zone #{zone}"
+
 
         # spreadsheet price for zone
 

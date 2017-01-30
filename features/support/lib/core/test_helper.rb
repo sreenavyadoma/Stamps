@@ -136,9 +136,9 @@ module Stamps
         @browser
       end
 
-      def verbose
-        return false if ENV["VERBOSE"].nil?
-        ENV["VERBOSE"].downcase == "true"
+      def debug
+        return true if ENV["DEBUG"].nil?
+        ENV["DEBUG"].downcase == "true"
       end
 
       def os

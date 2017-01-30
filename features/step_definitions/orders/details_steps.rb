@@ -401,7 +401,6 @@ Then /^(?:O|o)n Order Details form, set Ship-To to zone (.*)$/ do |zone|
   test_data[:name] = address['name']
   test_data[:company] = address['company']
 
-  test_data.each_key { |key_value_array| logger.step("#{key_value_array} : #{test_data[key_value_array]}") }
   # set Ship-To address
   test_data[:ship_to_domestic] = ParameterHelper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
