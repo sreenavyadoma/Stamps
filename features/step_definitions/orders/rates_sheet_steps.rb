@@ -312,9 +312,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     else
       expect(zone).to be_between(1, 9).inclusive
   end
-
-  # Set address to proper zone
-  step "On Order Details form, set Ship-To to address in Zone #{zone}"
   format = Spreadsheet::Format.new :color=> :blue, :pattern_fg_color => :yellow, :pattern => 1
   fail_format = Spreadsheet::Format.new :color=> :red, :weight => :bold
   pass_format = Spreadsheet::Format.new :color=> :green, :weight => :bold
@@ -322,6 +319,10 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   @rate_sheet.each_with_index do |row, row_number|
     @row=row
     @result_sheet.row(0)[@result_sheet_columns[:zone]] = "zone#{zone}"
+
+    # Set address to proper zone
+    step "on Order Details form, set Ship-To to address in Zone #{zone}"
+
     begin
       if row_number > 0
         logger.step ""
