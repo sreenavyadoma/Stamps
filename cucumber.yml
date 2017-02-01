@@ -1,7 +1,6 @@
 default: --profile cuke_reports --profile rob_stg
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
-
 #stgdmnmrv29j04 details_large_dimensions_pm cce5nk6k6068z stgi3eicvj8d7b SC-m9rqvdp97u5
 rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 
