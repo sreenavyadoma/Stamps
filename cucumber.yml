@@ -6,7 +6,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 
 rob_cc: --tags @rates_pm_comm_base WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
-rob_stg: --tags @rates_pm_comm_base WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
+rob_stg: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #yh95ws85j c2jinmzmu64 store parcel_select
 
 rob_mail_cc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
