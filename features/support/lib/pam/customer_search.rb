@@ -27,27 +27,27 @@ module Stamps
       end
 
       def wait_until_present
-        (BrowserElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")).wait_until_present 7
+        (StampsElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")).wait_until_present 7
       end
 
       def username
-        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
+        StampsTextbox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]")
       end
 
       def first_name
-        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+        StampsTextbox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
       end
 
       def last_name
-        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
+        StampsTextbox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]")
       end
 
       def phone
-        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
+        StampsTextbox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]")
       end
 
       def email
-        TextboxElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
+        StampsTextbox.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]")
       end
 
       def user_5_2_or_lower
@@ -57,15 +57,15 @@ module Stamps
       end
 
       def search
-        button = Stamps::Browser::BrowserElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
+        button = Stamps::Browser::StampsElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
         customer_profile = CustomerProfile.new(param)
         customer_profile_not__found = CustomerProfileNotFound.new(param)
         meter_info_unavailable = MeterInfoNotAvailableForAccount.new(param)
         count = 20
         count.times do |counter|
-          button.send_keys :enter
+          button.send_keys(:enter)
           button.safe_click
-          sleep 1
+          sleep(1)
           return customer_profile if customer_profile.present?
           if customer_profile_not__found.present?
             logger.info "PAM:  #{customer_profile_not__found.text}"

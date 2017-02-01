@@ -154,13 +154,13 @@ module Stamps
       def random_alpha_numeric *args
         case args.length
           when 0
-            @length = 10
+            length = 10
           when 1
-            @length = args[0]
+            length = args[0]
           else
             "Illegal number of arguments for random_alpha_numeric".should eql ""
         end
-        rand(36 ** @length - 1).to_s(36).rjust(@length, "0")
+        rand(36 ** length - 1).to_s(36).rjust(length, "0")
       end
 
       def random_string *args

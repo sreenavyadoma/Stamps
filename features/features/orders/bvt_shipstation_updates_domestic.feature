@@ -12,8 +12,8 @@ Feature:  Update Order to ShipStation
       | name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
       | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
-    #Then on Order Details form, set Phone to 888-888-8888
-    #Then on Order Details form, set Email to rtest@stamps.com
+    Then on Order Details form, set Phone to 888-888-8888
+    Then on Order Details form, set Email to rtest@stamps.com
     Then on Order Details form, set Pounds to 1
     Then on Order Details form, set Ounces to 1
     Then on Order Details form, select service PM Package
@@ -24,7 +24,6 @@ Feature:  Update Order to ShipStation
     Then on Order Details form, set Height to 1
 
     Then on Order Details form, set Reference Number to Update Orders To ShipStation
-
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
@@ -52,8 +51,8 @@ Feature:  Update Order to ShipStation
     Then on Order Details form, expect Ship-To Cleansed State is FL
     Then on Order Details form, expect Ship-To Cleansed Zip Plus 4 Code is 32801-1175
     Then on Order Details form, expect Ship-To Cleansed Zip Code is 32801
-    #Then on Order Details form, expect Ship-To Phone is 888-888-8888
-    #Then on Order Details form, expect Ship-To Email is rtest@stamps.com
+    Then on Order Details form, expect Ship-To Phone is 888-888-8888
+    Then on Order Details form, expect Ship-To Email is rtest@stamps.com
 
     Then on Order Details form, expect Pound is 1
     Then on Order Details form, expect Ounce is 1
@@ -87,8 +86,8 @@ Feature:  Update Order to ShipStation
     Then In Orders Grid, expect City is Orlando
     Then In Orders Grid, expect State is FL
     Then In Orders Grid, expect Zip is 32801-1175
-    #Then In Orders Grid, expect Phone is 888-888-8888
-    #Then In Orders Grid, expect Email is rtest@stamps.com
+    Then In Orders Grid, expect Phone is 888-888-8888
+    Then In Orders Grid, expect Email is rtest@stamps.com
 
     Then In Orders Grid, expect Qty. is 1
     Then In Orders Grid, expect Item SKU is Item 1 SKU

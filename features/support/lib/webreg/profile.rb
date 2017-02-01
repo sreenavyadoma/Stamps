@@ -261,7 +261,7 @@ module Stamps
 
     end
 
-    class ProfileEmail < TextboxElement
+    class ProfileEmail < StampsTextbox
       def help_element
         browser.span(css: "li[class='module webreg_email']>div>div>div>span")
       end
@@ -282,7 +282,7 @@ module Stamps
 
 
     #Added by Galina
-    class ProfileUserId < TextboxElement
+    class ProfileUserId < StampsTextbox
       def help_element
         browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(1)>div>span")
       end
@@ -297,7 +297,7 @@ module Stamps
     end
 
     #Added by Galina
-    class ProfilePassword < TextboxElement
+    class ProfilePassword < StampsTextbox
       def help_element
         browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(2)>div>span")
       end
@@ -308,7 +308,7 @@ module Stamps
     end
 
     #Added by Galina
-    class ProfileRetypePassword < TextboxElement
+    class ProfileRetypePassword < StampsTextbox
       def help_element
         browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(3)>div>span")
       end
@@ -319,7 +319,7 @@ module Stamps
     end
 
     #Added by Galina
-    class ProfileFirstAnswer < TextboxElement
+    class ProfileFirstAnswer < StampsTextbox
       def help_element
         browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(2)>div>span")
       end
@@ -330,7 +330,7 @@ module Stamps
     end
 
     #Added by Galina
-    class ProfileSecondAnswer < TextboxElement
+    class ProfileSecondAnswer < StampsTextbox
       def help_element
         browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(4)>div>span")
       end
@@ -358,8 +358,8 @@ module Stamps
         @first_answer = ProfileFirstAnswer.new browser.text_field(id: "secretAnswer1")
         @second_question = SecondQuestion.new(param)
         @second_answer = ProfileSecondAnswer.new browser.text_field(id: "secretAnswer2")
-        @send_promo = BrowserElement.new browser.text_field(id: "optIn")
-        @continue = BrowserElement.new browser.button(id: "next")
+        @send_promo = StampsElement.new browser.text_field(id: "optIn")
+        @continue = StampsElement.new browser.button(id: "next")
         @membership = Membership.new(param)
       end
 

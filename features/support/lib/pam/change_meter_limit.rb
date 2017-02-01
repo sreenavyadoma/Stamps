@@ -19,9 +19,9 @@ module Stamps
       def initialize(param)
         super(param)
         @usps_approval = USPSCheckbox.new(param)
-        @new_meter_limit = TextboxElement.new browser.text_field(name: "resetAmt")
-        @current_meter = BrowserElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
-        @maximum_meter = BrowserElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
+        @new_meter_limit = StampsTextbox.new browser.text_field(name: "resetAmt")
+        @current_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
+        @maximum_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
       end
 
       def present?
@@ -37,10 +37,10 @@ module Stamps
       end
 
       def submit
-        button = Stamps::Browser::BrowserElement.new browser.input(name: "submit")
+        button = Stamps::Browser::StampsElement.new browser.input(name: "submit")
         change_success = ChangeMeterLimitSuccess.new(param)
         5.times do
-          button.send_keys :enter
+          button.send_keys(:enter)
           button.safe_click
           change_success.wait_until_present 3
           if change_success.present?
@@ -57,16 +57,16 @@ module Stamps
       end
 
       def wait_until_present *args
-        (BrowserElement.new browser.td(text: "Change Meter Limit Success")).safely_wait_until_present *args
+        (StampsElement.new browser.td(text: "Change Meter Limit Success")).safely_wait_until_present *args
       end
 
       def text
-        (BrowserElement.new browser.td(text: "Change Meter Limit Success")).text
+        (StampsElement.new browser.td(text: "Change Meter Limit Success")).text
       end
 
       def ok
         profile = CustomerProfile.new(param)
-        button = BrowserElement.new browser.a(css: "a[href^=Profile]")
+        button = StampsElement.new browser.a(css: "a[href^=Profile]")
         5.times do
           button.safely_wait_until_present 2
           button.safe_click

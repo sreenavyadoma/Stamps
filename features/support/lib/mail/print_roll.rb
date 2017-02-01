@@ -4,7 +4,7 @@ module Stamps
 
     class RollFormView < MailForm
       def preview_image
-        image = BrowserElement.new browser.img css: "dimg[src*='Labelsample.gif']"
+        image = StampsElement.new browser.img css: "dimg[src*='Labelsample.gif']"
       end
 
       def hide_postage_value
@@ -12,7 +12,7 @@ module Stamps
         verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[5]
 
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_reference_number
@@ -20,11 +20,11 @@ module Stamps
         verify_fields = browser.inputs css: "table[id^=checkboxfield][class*=x-form-type-checkbox]"
         verify_field = verify_fields[6]
 
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def reference_number
-        TextboxElement.new browser.text_field name: "referenceNumber"
+        StampsTextbox.new browser.text_field name: "referenceNumber"
       end
 
       def cost_code

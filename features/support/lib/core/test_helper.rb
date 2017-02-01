@@ -60,9 +60,12 @@ module Stamps
 
           elsif browser_selection.ie?
             begin
-              system "taskkill /im iexplore.exe /f"
+              stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
+              logger.message status
+              #logger.info stdeerr
+              logger.message stdout
             rescue
-              # ignore
+              #ignore
             end
 
             driver = Watir::Browser.new :ie
@@ -70,7 +73,10 @@ module Stamps
 
           elsif browser_selection.chrome?
             begin
-              system "taskkill /im chrome.exe /f"
+              stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
+              logger.message status
+              #logger.info stdeerr
+              logger.message stdout
             rescue
               #ignore
             end
@@ -83,13 +89,17 @@ module Stamps
 
             logger.info "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
             logger.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
-
+=begin
             begin
               "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}".should eql ""
             end unless File.exist? chrome_data_dir
 
             driver = Watir::Browser.new :chrome, :switches => ["--disable-mail-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
             @browser_name = 'Google Chrome'
+=end
+            Selenium::WebDriver::Chrome.path = chrome_driver_path
+            driver = Selenium::WebDriver.for :chrome
+            browser = Watir::Browser.new dr
 
           elsif browser_selection.safari?
             driver = Watir::Browser.new :safari

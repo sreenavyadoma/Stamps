@@ -13,7 +13,6 @@ Feature: Print two labels on one sheet
     Then on Order Details form, select service PM Flat Rate Envelope
     Then on Order Details form, set Weight to 1 lb 1 oz
     Then on Order Details form, set Dimensions to Length 1 Width 1 Height 1
-    Then on Order Details form, set Insure-For to $50.25
     Then on Order Details form, set Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
@@ -21,7 +20,6 @@ Feature: Print two labels on one sheet
     Then on Order Details form, set Ship-To to address in Zone 1 through 4
     Then on Order Details form, select service PM Flat Rate Envelope
     Then on Order Details form, set Weight to 1 lb 1 oz
-    Then on Order Details form, set Insure-For to $10
     Then on Order Details form, set Tracking to Signature Required
 
     Then In Orders Grid, check row 2

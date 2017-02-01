@@ -300,7 +300,6 @@ Then /^(?:I|i)n Orders Grid, expect Weight\(oz\) is (.*)$/ do |expectation|
 end
 
 Then /^(?:I|i)n Orders Grid, expect Qty. is (.+)$/ do |expectation|
-  #logger.step "In Orders Grid, expect Qty. is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.qty.data(test_data[:order_id]).eql? expectation
   end
@@ -308,7 +307,6 @@ Then /^(?:I|i)n Orders Grid, expect Qty. is (.+)$/ do |expectation|
 end
 
 Then /^(?:I|i)n Orders Grid, expect Item SKU is (.+)$/ do |expectation|
-  #logger.step "In Orders Grid, expect SKU is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.item_sku.data(test_data[:order_id]).eql? expectation
   end
@@ -316,7 +314,6 @@ Then /^(?:I|i)n Orders Grid, expect Item SKU is (.+)$/ do |expectation|
 end
 
 Then /^(?:I|i)n Orders Grid, expect Item Name is (.+)$/ do |expectation|
-  #logger.step "In Orders Grid, expect Name is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.item_name.data(test_data[:order_id]).eql? expectation
   end
@@ -324,7 +321,6 @@ Then /^(?:I|i)n Orders Grid, expect Item Name is (.+)$/ do |expectation|
 end
 
 Then /^(?:I|i)n Orders Grid, expect Ship From is (.+)$/ do |expectation|
-  #logger.step "In Orders Grid, expect Ship is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.ship_from.data(test_data[:order_id]).eql? expectation
   end
@@ -332,7 +328,6 @@ Then /^(?:I|i)n Orders Grid, expect Ship From is (.+)$/ do |expectation|
 end
 
 Then /^(?:I|i)n Orders Grid, expect service is (.+)$/ do |expectation|
-  #logger.step "In Orders Grid, expect service is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.service.data(test_data[:order_id]).eql? expectation
   end
@@ -340,7 +335,6 @@ Then /^(?:I|i)n Orders Grid, expect service is (.+)$/ do |expectation|
 end
 
 Then /^(?:I|i)n Orders Grid, expect Insured Value is \$(.+)$/ do |expectation|
-  #logger.step "In Orders Grid, expect Insured Value is #{expectation}"
   10.times do
     break if stamps.orders.orders_grid.column.insured_value.data(test_data[:order_id]).eql? expectation
   end

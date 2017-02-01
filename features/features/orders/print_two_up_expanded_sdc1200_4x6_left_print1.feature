@@ -11,7 +11,6 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
     Then on Order Details form, select service PM Package
     Then on Order Details form, set Weight to 1 lb 1 oz
     Then on Order Details form, set Dimensions to Length 1 Width 1 Height 1
-    Then on Order Details form, set Insure-For to $1.09
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then in Print modal, set Printer to "factory"

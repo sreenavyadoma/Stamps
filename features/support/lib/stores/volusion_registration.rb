@@ -54,27 +54,27 @@ module Stamps
         end
 
         def first_name
-          TextboxElement.new browser.text_field(name: "ShipFirstName")
+          StampsTextbox.new browser.text_field(name: "ShipFirstName")
         end
 
         def last_name
-          TextboxElement.new browser.text_field(name: "ShipLastName")
+          StampsTextbox.new browser.text_field(name: "ShipLastName")
         end
 
         def company
-          TextboxElement.new browser.text_field(name: "ShipCompanyName")
+          StampsTextbox.new browser.text_field(name: "ShipCompanyName")
         end
 
         def address_1
-          TextboxElement.new browser.text_field(name: "ShipAddress1")
+          StampsTextbox.new browser.text_field(name: "ShipAddress1")
         end
 
         def address_2
-          TextboxElement.new browser.text_field(name: "ShipAddress2")
+          StampsTextbox.new browser.text_field(name: "ShipAddress2")
         end
 
         def city
-          TextboxElement.new browser.text_field(name: "ShipCity")
+          StampsTextbox.new browser.text_field(name: "ShipCity")
         end
 
         def country
@@ -86,11 +86,11 @@ module Stamps
         end
 
         def zip_code
-          TextboxElement.new browser.text_field(name: "ShipPostalCode")
+          StampsTextbox.new browser.text_field(name: "ShipPostalCode")
         end
 
         def phone_number
-          TextboxElement.new browser.text_field(name: "ShipPhoneNumber")
+          StampsTextbox.new browser.text_field(name: "ShipPhoneNumber")
         end
 
         def type_of_address
@@ -102,11 +102,11 @@ module Stamps
         end
 
         def continue
-          button = BrowserElement.new browser.text_field(name: "btnContinue")
+          button = StampsElement.new browser.text_field(name: "btnContinue")
           account_page = MyAccountPage.new(param)
           10.times do
             button.safe_click
-            sleep 1
+            sleep(1)
             return account_page if account_page.present?
           end
         end
@@ -153,11 +153,11 @@ module Stamps
         end
 
         def place_order
-          button = BrowserElement.new browser.button(id: "btnSubmitOrder")
-          order_num_field = BrowserElement.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
+          button = StampsElement.new browser.button(id: "btnSubmitOrder")
+          order_num_field = StampsElement.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
           10.times do
             button.safe_click
-            sleep 2
+            sleep(2)
             if order_num_field.present?
               order_number_str = order_num_field.text
               logger.info order_number_str
@@ -185,11 +185,11 @@ module Stamps
         end
 
         def proceed_to_checkout
-          button = BrowserElement.new browser.text_field(css: "input[name='btn_checkout_guest']")
+          button = StampsElement.new browser.text_field(css: "input[name='btn_checkout_guest']")
           checkout = VolusionCheckOut.new(param)
           10.times do
             button.safe_click
-            sleep 1
+            sleep(1)
             return checkout if checkout.present?
           end
           "Unable to proceed to checkout!".should eql ""
@@ -202,7 +202,7 @@ module Stamps
         end
 
         def qty_field
-          TextboxElement.new browser.text_field(name: 'QTY.SAMPLE1')
+          StampsTextbox.new browser.text_field(name: 'QTY.SAMPLE1')
         end
 
         def qty number
@@ -215,11 +215,11 @@ module Stamps
           qty_textbox = self.qty_field
           shopping_cart = VolusionCart.new(param)
           cart_count_b4_add = shopping_cart.count
-          button = BrowserElement.new browser.text_field(css: "input[alt='Add to cart']")
+          button = StampsElement.new browser.text_field(css: "input[alt='Add to cart']")
           2.times do
             button.safe_click
             break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
-            sleep 2
+            sleep(2)
             break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
             break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
           end
@@ -232,11 +232,11 @@ module Stamps
         end
 
         def sample_product_one
-          link = BrowserElement.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+          link = StampsElement.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
           product = VolusionProduct.new(param)
           10.times do
             link.safe_click
-            sleep 1
+            sleep(1)
             return product if product.present?
           end
         end
@@ -244,11 +244,11 @@ module Stamps
 
       class MyAccountPage < Browser::Modal
         def log_out
-          logged_out_field = BrowserElement.new browser.li(text: "You are now logged out.")
-          button = BrowserElement.new browser.a(css: "a[href*=logout]")
+          logged_out_field = StampsElement.new browser.li(text: "You are now logged out.")
+          button = StampsElement.new browser.a(css: "a[href*=logout]")
           5.times do
             button.safe_click
-            sleep 1
+            sleep(1)
             return VolusionLoginPage.new(param) if logged_out_field.present?
           end
         end
@@ -258,8 +258,8 @@ module Stamps
         end
 
         def my_account
-          link = BrowserElement.new browser.a(text: "My Account")
-          label = BrowserElement.new browser.b(text: "My Orders")
+          link = StampsElement.new browser.a(text: "My Account")
+          label = StampsElement.new browser.b(text: "My Orders")
           10.times do
             link.safe_click
             break if label.present?
@@ -273,11 +273,11 @@ module Stamps
         end
 
         def category_one
-          link = BrowserElement.new (browser.as(text: "CATEGORY ONE").last)
+          link = StampsElement.new(browser.as(text: "CATEGORY ONE").last)
           category_1 = VolusionCategoryOne.new(param)
           10.times do
             link.safe_click
-            sleep 1
+            sleep(1)
             return category_1 if category_1.present?
           end
         end
@@ -301,19 +301,19 @@ module Stamps
         end
 
         def email
-          TextboxElement.new browser.text_field(name: "Email")
+          StampsTextbox.new browser.text_field(name: "Email")
         end
 
         def email_again
-          TextboxElement.new browser.text_field(name: "Emailagain")
+          StampsTextbox.new browser.text_field(name: "Emailagain")
         end
 
         def password
-          TextboxElement.new browser.text_field(name: "password")
+          StampsTextbox.new browser.text_field(name: "password")
         end
 
         def password_again
-          TextboxElement.new browser.text_field(name: "passwordagain")
+          StampsTextbox.new browser.text_field(name: "passwordagain")
         end
 
         def receive_newsletter
@@ -321,11 +321,11 @@ module Stamps
         end
 
         def continue
-          button = BrowserElement.new browser.text_field(id: "btnContinue")
+          button = StampsElement.new browser.text_field(id: "btnContinue")
           shipping_address = VolusionShippingAddress.new(param)
           10.times do
             button.safe_click
-            sleep 1
+            sleep(1)
             return shipping_address if shipping_address.present?
           end
         end
@@ -341,23 +341,23 @@ module Stamps
         end
 
         def email
-          TextboxElement.new browser.text_field(name: "email")
+          StampsTextbox.new browser.text_field(name: "email")
         end
 
         def password
-          TextboxElement.new browser.text_field(name: "password")
+          StampsTextbox.new browser.text_field(name: "password")
         end
 
         def login
-          BrowserElement.new browser.text_field(css: "input[src*=btn_login]")
+          StampsElement.new browser.text_field(css: "input[src*=btn_login]")
         end
 
         def continue
-          button = BrowserElement.new browser.img(css: "img[src*=Continue]")
+          button = StampsElement.new browser.img(css: "img[src*=Continue]")
           webreg = VolusionRegistration.new(param)
           10.times do
             button.safe_click
-            sleep 1
+            sleep(1)
             return webreg if webreg.present?
           end
         end

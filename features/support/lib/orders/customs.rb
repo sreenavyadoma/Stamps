@@ -7,21 +7,21 @@ module Stamps
         def initialize(param, index)
           super(param)
           @index = index
-          @text_box = TextboxElement.new ((browser.text_fields name: "OriginCountryCode")[@index-1])
+          @text_box = StampsTextbox.new((browser.text_fields name: "OriginCountryCode")[@index-1])
         end
 
         def select(country)
           logger.info "Select Country #{country}"
-          drop_down = BrowserElement.new text_box.element.parent.parent.divs[1]
+          drop_down = StampsElement.new text_box.element.parent.parent.divs[1]
           drop_down.safe_click
-          sleep 1
+          sleep(1)
           drop_down.safe_click
           begin
             found = false
             li = nil
             20.times do
               drop_down.safe_click
-              sleep 1
+              sleep(1)
               countries = browser.lis(text: country)
               countries.each do |element|
                 if element_helper.text(element) == country
@@ -32,7 +32,7 @@ module Stamps
               break if found
             end
 
-            selection = BrowserElement.new(li)
+            selection = StampsElement.new(li)
 
             10.times {
               begin
@@ -57,8 +57,8 @@ module Stamps
           super(param)
           @customs_form = OrdersCustomsForm.new(param)
           @view_restrictions = Orders::Details::ViewRestrictions.new(param)
-          @edit_form_btn = BrowserElement.new browser.span text: 'Edit Form...'
-          @restrictions_btn = BrowserElement.new browser.span text: 'Restrictions...'
+          @edit_form_btn = StampsElement.new browser.span text: 'Edit Form...'
+          @restrictions_btn = StampsElement.new browser.span text: 'Restrictions...'
         end
 
         def edit_form
@@ -82,7 +82,7 @@ module Stamps
       class CustomsItemGrid < Browser::Modal
 
         def add_button
-          @add_button = BrowserElement.new (browser.spans text: "Add Item").last
+          @add_button = StampsElement.new(browser.spans text: "Add Item").last
         end
 
         def present?
@@ -98,7 +98,7 @@ module Stamps
 
           20.times{
             break if size >= number
-            sleep 1
+            sleep(1)
             break if size >= number
             add_button.safe_click if number > size
             logger.info "Item Count: #{size}"
@@ -120,10 +120,10 @@ module Stamps
           end
 
           def text_box
-            TextboxElement.new (browser.text_fields(css: "div[id*=customswindow] input[name=Quantity]")[@index-1]), "data-errorqtip"
+            StampsTextbox.new(browser.text_fields(css: "div[id*=customswindow] input[name=Quantity]")[@index-1])
           end
 
-          def set value
+          def set(value)
             text_field = text_box
             value = value.to_i
             max = value + text_field.text.to_i
@@ -137,19 +137,19 @@ module Stamps
               end
               break if value == current_value
             end
-            sleep 1
+            sleep(1)
             logger.info "Qty set to #{text_field.text}"
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+            button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+            button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
@@ -163,23 +163,23 @@ module Stamps
           end
 
           def text_box
-            TextboxElement.new ((browser.text_fields name: "Value")[@index-1]), "data-errorqtip"
+            StampsTextbox.new((browser.text_fields name: "Value")[@index-1])
           end
 
-          def set value
-            text_box.set value
+          def set(value)
+            text_box.set(value)
             logger.info "Ounces set to #{text_box.text}"
           end
 
           def increment value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+            button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
           end
 
           def decrement value
-            button = BrowserElement.new (browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+            button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
             value.to_i.times do
               button.safe_click
             end
@@ -190,12 +190,12 @@ module Stamps
 
         def initialize(param, number)
           super(param)
-          @delete = BrowserElement.new (browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[number-1]
-          @description = TextboxElement.new ((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1]), "data-errorqtip"
+          @delete = StampsElement.new(browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[number-1]
+          @description = StampsTextbox.new((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[number-1])
           @qty = Qty.new(param, number)
           @unit_price = UnitPrice.new(param, number)
           @made_in = Customs::OrdersMadeInCountry.new(param, number)
-          @hs_tariff = TextboxElement.new (browser.text_fields name: "TariffNo")[number-1]
+          @hs_tariff = StampsTextbox.new(browser.text_fields name: "TariffNo")[number-1]
         end
 
         def present?
@@ -208,7 +208,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = BrowserElement.new browser.div text: "USPS Privacy Act Statement"
+          @window_title = StampsElement.new browser.div text: "USPS Privacy Act Statement"
           @okay = browser.span(text: "OK")
         end
 
@@ -230,13 +230,13 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field name: "IsITNRequired"
-          @drop_down = BrowserElement.new browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          @text_box = StampsTextbox.new browser.text_field name: "IsITNRequired"
+          @drop_down = StampsElement.new browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
         end
 
-        def select selection
+        def select(selection)
           logger.info "Select Internal Transaction Number: #{selection}"
-          selection_label = BrowserElement.new browser.li(text: selection)
+          selection_label = StampsElement.new browser.li(text: selection)
           10.times {
             begin
               break if text_box.text.include? selection
@@ -258,13 +258,13 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field name: "CustomsContents"
-          @drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
+          @text_box = StampsTextbox.new browser.text_field name: "CustomsContents"
+          @drop_down = StampsElement.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
         end
 
-        def select selection
+        def select(selection)
           logger.info "Select Internal Transaction Number: #{selection}"
-          selection_label = BrowserElement.new browser.li(text: selection)
+          selection_label = StampsElement.new browser.li(text: selection)
           10.times {
             begin
               break if text_box.text.include? selection
@@ -286,13 +286,13 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field name: "NonDelivery"
-          @drop_down = BrowserElement.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
+          @text_box = StampsTextbox.new browser.text_field name: "NonDelivery"
+          @drop_down = StampsElement.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
         end
 
-        def select selection
+        def select(selection)
           logger.info "Select Internal Transaction Number: #{selection}"
-          selection_label = BrowserElement.new browser.li(text: selection)
+          selection_label = StampsElement.new browser.li(text: selection)
           10.times {
             begin
               break if text_box.text.include? selection
@@ -317,32 +317,32 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = BrowserElement.new browser.div(text: "Customs Information")
+          @window_title = StampsElement.new browser.div(text: "Customs Information")
           @item_grid = CustomsItemGrid.new(param)
           @package_contents = PackageContents.new(param)
           @non_delivery_options = NonDeliveryOptions.new(param)
           @internal_transaction = InternalTransaction.new(param)
 
-          @more_info = TextboxElement.new browser.text_field name: "CustomsComments"
-          @usps_privacy_act_warning = BrowserElement.new (browser.label text: "You must agree to the USPS Privacy Act Statement")
-          @itn_number = TextboxElement.new browser.text_field(name: "AES")
-          @license = TextboxElement.new browser.text_field(name: "CustomsLicenseNumber")
-          @certificate = TextboxElement.new browser.text_field(name: "CustomsCertificateNumber")
-          @invoice = TextboxElement.new browser.text_field(name: "CustomsInvoiceNumber")
-          @total_value_element = BrowserElement.new browser.div(css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div")
+          @more_info = StampsTextbox.new browser.text_field name: "CustomsComments"
+          @usps_privacy_act_warning = StampsElement.new(browser.label text: "You must agree to the USPS Privacy Act Statement")
+          @itn_number = StampsTextbox.new browser.text_field(name: "AES")
+          @license = StampsTextbox.new browser.text_field(name: "CustomsLicenseNumber")
+          @certificate = StampsTextbox.new browser.text_field(name: "CustomsCertificateNumber")
+          @invoice = StampsTextbox.new browser.text_field(name: "CustomsInvoiceNumber")
+          @total_value_element = StampsElement.new browser.div(css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div")
 
           field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
           verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
-          @i_agree = CheckboxElement.new field, verify_field, "class", "checked"
+          @i_agree = StampsCheckbox.new field, verify_field, "class", "checked"
 
           @privacy_statement = UspsPrivactActStatementModal.new(param)
-          @privacy_link = BrowserElement.new browser.span(text: "USPS Privacy Act Statement")
+          @privacy_link = StampsElement.new browser.span(text: "USPS Privacy Act Statement")
           @restrictions_link = RestrictionsAndProhibitionsModal.new(param)
-          @restrictions_prohibitions_link = BrowserElement.new browser.span(text: "Restrictions and Prohibitions")
+          @restrictions_prohibitions_link = StampsElement.new browser.span(text: "Restrictions and Prohibitions")
 
-          @close_button = BrowserElement.new browser.span(text: "Close")
-          @x_button = BrowserElement.new browser.image(css: "img[class*='x-tool-close']")
-          @total_label = BrowserElement.new browser.span(text: 'Total:')
+          @close_button = StampsElement.new browser.span(text: "Close")
+          @x_button = StampsElement.new browser.image(css: "img[class*='x-tool-close']")
+          @total_label = StampsElement.new browser.span(text: 'Total:')
         end
 
         def blur_out

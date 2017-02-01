@@ -16,7 +16,7 @@ module Stamps
           button = browser.spans(text: "OK").last
           element_helper.safe_click button
           element_helper.safe_click button
-          sleep 1
+          sleep(1)
           break unless present?
         end
       end
@@ -100,7 +100,7 @@ module Stamps
       end
 
       def ok
-        ok_btn = BrowserElement.new browser.span(text: "OK")
+        ok_btn = StampsElement.new browser.span(text: "OK")
         10.times{
           ok_btn.safe_click
           break unless ok_btn.present?
@@ -201,7 +201,7 @@ module Stamps
 
       public
       def present?
-        (BrowserElement.new window_title).present?
+        (StampsElement.new window_title).present?
       end
 
       def close

@@ -38,7 +38,7 @@ module Stamps
       end
 
       def collapse_button
-        BrowserElement.new browser.a id: "sdc-undefinedwindow-continuebtn"
+        StampsElement.new browser.a id: "sdc-undefinedwindow-continuebtn"
       end
 
       def present?
@@ -50,7 +50,7 @@ module Stamps
       end
 
       def window_title
-        BrowserElement.new browser.span(text: "Confirm Print")
+        StampsElement.new browser.span(text: "Confirm Print")
       end
 
       def dont_prompt_deducting_postage_again
@@ -58,10 +58,10 @@ module Stamps
       end
 
       def continue
-        sleep 1
+        sleep(1)
         6.times do
           collapse_button.safe_click
-          sleep 1
+          sleep(1)
           break unless collapse_button.present?
         end
       end
@@ -69,7 +69,7 @@ module Stamps
 
     class Printer < Browser::Modal
       def drop_down
-        BrowserElement.new browser.div css: "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
+        StampsElement.new browser.div css: "table[id^=sdc-printpostagewindow-printerdroplist-triggerWrap]>tbody>tr>td>div[class*=x-form-arrow-trigger]"
       end
 
       def text_box
@@ -82,19 +82,19 @@ module Stamps
 
         case printer.downcase
           when /fac/
-            selection_label = BrowserElement.new browser.li text: /fac/
+            selection_label = StampsElement.new browser.li text: /fac/
           when /kyocera/
-            selection_label = BrowserElement.new browser.li text: /Kyocera/
+            selection_label = StampsElement.new browser.li text: /Kyocera/
           when /epson/
-            selection_label = BrowserElement.new browser.li text: /EPSON/
+            selection_label = StampsElement.new browser.li text: /EPSON/
           when /brother/
-            selection_label = BrowserElement.new browser.li text: /Brother/
+            selection_label = StampsElement.new browser.li text: /Brother/
           when /officejet/
-            selection_label = BrowserElement.new browser.li text: /Officejet/
+            selection_label = StampsElement.new browser.li text: /Officejet/
           when /dymo/
-            selection_label = BrowserElement.new browser.li text: /DYMO/
+            selection_label = StampsElement.new browser.li text: /DYMO/
           when /zdesigner/
-            selection_label = BrowserElement.new browser.li text: /ZDesigner/
+            selection_label = StampsElement.new browser.li text: /ZDesigner/
 
 
           else
@@ -111,17 +111,17 @@ module Stamps
 
     class PaperTray < Browser::Modal
       def text_box
-        TextboxElement.new browser.input name: "paperTrays"
+        StampsTextbox.new browser.input name: "paperTrays"
       end
 
       def drop_down
-        BrowserElement.new (browser.divs css: "div[class*=x-form-trigger]")[10]
+        StampsElement.new(browser.divs css: "div[class*=x-form-trigger]")[10]
       end
 
-      def select selection
+      def select(selection)
         text_box = self.text_box
         drop_down = self.drop_down
-        selection_label = BrowserElement.new browser.li text: selection
+        selection_label = StampsElement.new browser.li text: selection
 
         5.times{
           drop_down.safe_click unless selection_label.present?
@@ -149,11 +149,11 @@ module Stamps
         button = print_button
         5.times {
           begin
-            sleep 1
+            sleep(1)
             button.safe_click
-            sleep 1
+            sleep(1)
             button.safe_click
-            sleep 1
+            sleep(1)
             printing_error = printing_error_check
             return printing_error if printing_error.length > 1
             break unless button.present?
@@ -240,12 +240,12 @@ module Stamps
 
       def printing_error_check
         @printing_error = ""
-        incomplete_order_window = BrowserElement.new(browser.div text: "Incomplete Order")
-        error_window = BrowserElement.new(browser.div text: "Error")
-        ok_button = BrowserElement.new(browser.span text: 'OK')
-        message_label = BrowserElement.new((browser.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
+        incomplete_order_window = StampsElement.new(browser.div text: "Incomplete Order")
+        error_window = StampsElement.new(browser.div text: "Error")
+        ok_button = StampsElement.new(browser.span text: 'OK')
+        message_label = StampsElement.new((browser.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
-        sleep 2
+        sleep(2)
 
         if error_window.present? || incomplete_order_window.present?
           window_text = error_window.text
@@ -280,7 +280,7 @@ module Stamps
       end
 
       def print_button
-        BrowserElement.new browser.span id: 'sdc-printwin-printbtn-btnIconEl'
+        StampsElement.new browser.span id: 'sdc-printwin-printbtn-btnIconEl'
       end
 
       def click_print_button

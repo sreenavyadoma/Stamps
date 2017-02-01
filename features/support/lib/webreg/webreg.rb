@@ -5,10 +5,10 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @header_elem = BrowserElement.new browser.h3(text: "An Error Occurred")
-        @top_message_elem = BrowserElement.new browser.p(id: "topMessage")
-        @error_code_elem = BrowserElement.new browser.p(id: "errorCode")
-        @error_description_elem = BrowserElement.new browser.p(id: "errorDescription")
+        @header_elem = StampsElement.new browser.h3(text: "An Error Occurred")
+        @top_message_elem = StampsElement.new browser.p(id: "topMessage")
+        @error_code_elem = StampsElement.new browser.p(id: "errorCode")
+        @error_description_elem = StampsElement.new browser.p(id: "errorDescription")
       end
 
       def present?
@@ -77,7 +77,7 @@ module Stamps
           break if browser.url.include? 'profile'
         end
         browser.url.should include "registration"
-        sign_up_for_new_account = BrowserElement.new browser.h1(text: "Sign up for a new account")
+        sign_up_for_new_account = StampsElement.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.safely_wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"
         "Success"

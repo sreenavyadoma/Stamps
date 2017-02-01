@@ -5,8 +5,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @ok_button = BrowserElement.new browser.a(css: "a[href*=AccountACHCredit]")
-        @title = BrowserElement.new browser.td(text: "ACH Credit Error")
+        @ok_button = StampsElement.new browser.a(css: "a[href*=AccountACHCredit]")
+        @title = StampsElement.new browser.td(text: "ACH Credit Error")
       end
 
       def present?
@@ -27,8 +27,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @title = BrowserElement.new browser.td(text: "ACH Credit Confirmation")
-        @ok_button = BrowserElement.new browser.a(css: "a[href^=Profile]")
+        @title = StampsElement.new browser.td(text: "ACH Credit Confirmation")
+        @ok_button = StampsElement.new browser.a(css: "a[href^=Profile]")
       end
 
       def present?
@@ -49,11 +49,11 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @title = BrowserElement.new browser.td(text: "ACH Purchase Verification")
+        @title = StampsElement.new browser.td(text: "ACH Purchase Verification")
         @confirmation = ACHCreditConfirmation.new(param)
         @ach_error = ACHCreditError.new(param)
-        @yes_button = BrowserElement.new browser.input(name: "YES")
-        @no_button = BrowserElement.new browser.text_field(name: "NO")
+        @yes_button = StampsElement.new browser.input(name: "YES")
+        @no_button = StampsElement.new browser.text_field(name: "NO")
       end
 
       def present?
@@ -66,9 +66,9 @@ module Stamps
 
       def yes
         5.times do
-          yes_button.send_keys :enter
+          yes_button.send_keys(:enter)
           yes_button.safe_click
-          sleep 1
+          sleep(1)
           if confirmation.present?
             logger.message confirmation.text
             logger.message confirmation.text
@@ -97,11 +97,11 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @dollar_amount = TextboxElement.new browser.text_field(name: "Amount")
-        @cents_amount = TextboxElement.new browser.text_field(name: "AmountFraction")
-        @comments = TextboxElement.new browser.text_field(name: "comments")
+        @dollar_amount = StampsTextbox.new browser.text_field(name: "Amount")
+        @cents_amount = StampsTextbox.new browser.text_field(name: "AmountFraction")
+        @comments = StampsTextbox.new browser.text_field(name: "comments")
         @purchase_verification = ACHPurchaseVerification.new(param)
-        @submit_button = BrowserElement.new browser.input(:value => "Submit")
+        @submit_button = StampsElement.new browser.input(:value => "Submit")
       end
 
       def present?
@@ -110,7 +110,7 @@ module Stamps
 
       def submit
         10.times do
-          submit_button.send_keys :enter
+          submit_button.send_keys(:enter)
           submit_button.safe_click
           if purchase_verification.present?
             logger.info purchase_verification.text

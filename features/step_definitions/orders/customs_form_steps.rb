@@ -383,7 +383,7 @@ Then /^(?:O|o)n Customs form, add associated Item (\d+), Description (.*), Qty (
   step "On Customs form, Blur out"
   item = stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i)
   test_data["customs_total_value"]
-  item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
+  item.description.set(description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
   step "On Customs form, Blur out"
   item.qty.set qty
   step "On Customs form, Blur out"
@@ -406,31 +406,31 @@ end
 
 Then /^(?:O|o)n Customs form, set Item Description to (.*)$/ do |value|
   step "On Customs form, Blur out"
-  @customs_item_grid_line_item.description.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  @customs_item_grid_line_item.description.set(value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, set Item Qty to (\d+)$/ do |value|
   step "On Customs form, Blur out"
-  @customs_item_grid_line_item.qty.set value
+  @customs_item_grid_line_item.qty.set(value)
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, set Item Unit Price to (.*)$/ do |value|
   step "On Customs form, Blur out"
-  @customs_item_grid_line_item.unit_price.set value
+  @customs_item_grid_line_item.unit_price.set(value)
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, set Item Made In Country to (.*)$/ do |value|
   step "On Customs form, Blur out"
-  @customs_item_grid_line_item.made_in.select value
+  @customs_item_grid_line_item.made_in.select(value)
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, set Item Tarriff to (.*)$/ do |value|
   step "On Customs form, Blur out"
-  @customs_item_grid_line_item.hs_tariff.set value
+  @customs_item_grid_line_item.hs_tariff.set(value)
   step "On Customs form, Save Total"
 end
 

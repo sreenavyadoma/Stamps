@@ -5,7 +5,7 @@ Feature: PM Comm Plus Rates
 
   @rates_pm_comm_plus
   Scenario: PM Comm Plus
-    And a valid user is signed in to Web Apps
+    And user is signed in to Web Apps
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
     Then run rate test PM Comm Plus in Zone 1

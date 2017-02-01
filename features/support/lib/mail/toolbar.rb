@@ -5,11 +5,11 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @settings = BrowserElement.new (browser.span css: "span[style*='settings.png']")
-        @reset = BrowserElement.new (browser.span css: "span[style*='reset.png']")
-        @help = BrowserElement.new (browser.span css: "span[style*='help.png']")
-        @feedback = BrowserElement.new (browser.span css: "span[style*='feedback.png']")
-        @classic = BrowserElement.new (browser.span css: "span[style*='classic.png']")
+        @settings = StampsElement.new(browser.span css: "span[style*='settings.png']")
+        @reset = StampsElement.new(browser.span css: "span[style*='reset.png']")
+        @help = StampsElement.new(browser.span css: "span[style*='help.png']")
+        @feedback = StampsElement.new(browser.span css: "span[style*='feedback.png']")
+        @classic = StampsElement.new(browser.span css: "span[style*='classic.png']")
       end
 
       def present?

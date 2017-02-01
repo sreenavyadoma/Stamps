@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class AmazonSettings < StoreSettings
         def window_title
-          BrowserElement.new browser.div(text: "Amazon Settings")
+          StampsElement.new browser.div(text: "Amazon Settings")
         end
 
         def present?
@@ -18,21 +18,21 @@ module Stamps
       class Amazon < Browser::Modal
         class OrderSource < Browser::Modal
           def text_box
-            TextboxElement.new (browser.text_field name: "AmazonMarketplace")
+            StampsTextbox.new(browser.text_field name: "AmazonMarketplace")
           end
 
           def drop_down
-            BrowserElement.new (browser.divs css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2]
+            StampsElement.new(browser.divs css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2]
           end
 
-          def select selection
+          def select(selection)
             dd = drop_down
             text_field = text_box
-            selection_field = BrowserElement.new (browser.li text: selection)
+            selection_field = StampsElement.new(browser.li text: selection)
 
             10.times do
               dd.safe_click unless selection_field.present?
-              sleep 1
+              sleep(1)
               selection_field.safe_click
               selection_field.safe_click
               break if text_field.text.include? selection
@@ -52,21 +52,21 @@ module Stamps
 
         class ProductIdentifier < Browser::Modal
           def text_box
-            TextboxElement.new (browser.text_field css: "input[name^=combo-][name$=-inputEl]")
+            StampsTextbox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
           end
 
           def drop_down
-            BrowserElement.new ((browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
+            StampsElement.new((browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
           end
 
-          def select selection
+          def select(selection)
             dd = drop_down
             text_field = text_box
-            selection_field = BrowserElement.new (browser.li text: selection)
+            selection_field = StampsElement.new(browser.li text: selection)
 
             10.times do
               dd.safe_click unless selection_field.present?
-              sleep 1
+              sleep(1)
               selection_field.safe_click
               selection_field.safe_click
               break if text_field.text.include? selection
@@ -86,7 +86,7 @@ module Stamps
         end
 
         def window_title
-          BrowserElement.new(browser.div text: "Connect your Amazon Store")
+          StampsElement.new(browser.div text: "Connect your Amazon Store")
         end
 
         def present?
@@ -94,7 +94,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new browser.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
+          button = StampsElement.new browser.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
           5.times do
             button.safe_click
             break unless present?
@@ -102,15 +102,15 @@ module Stamps
         end
 
         def seller_id
-          TextboxElement.new browser.text_field(name: "AmazonSellerID")
+          StampsTextbox.new browser.text_field(name: "AmazonSellerID")
         end
 
         def auth_token
-          TextboxElement.new browser.text_field(name: "AuthToken")
+          StampsTextbox.new browser.text_field(name: "AuthToken")
         end
 
         def verify_seller_id
-          button = BrowserElement.new (browser.span text: "Verify Seller ID")
+          button = StampsElement.new(browser.span text: "Verify Seller ID")
           3.times do
             button.safe_click
           end
@@ -125,7 +125,7 @@ module Stamps
         end
 
         def connect
-          button = BrowserElement.new browser.span(text: "Connect")
+          button = StampsElement.new browser.span(text: "Connect")
           server_error = Orders::Stores::ServerError.new(param)
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
@@ -151,7 +151,7 @@ module Stamps
         end
 
         def connect_expecting_store_settings
-          button = (BrowserElement.new(browser.span text: "Connect"))
+          button = (StampsElement.new(browser.span text: "Connect"))
           settings = AmazonSettings.new(param)
           server_error = Orders::Stores::ServerError.new(param)
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
@@ -185,7 +185,7 @@ module Stamps
       class ModifyAmazonStore < Amazon
 
         def window_title
-          BrowserElement.new(browser.div text: "Modify your Amazon Store Connection")
+          StampsElement.new(browser.div text: "Modify your Amazon Store Connection")
         end
 
         def present?

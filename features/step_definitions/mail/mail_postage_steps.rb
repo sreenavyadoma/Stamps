@@ -2,7 +2,7 @@
 
 Then /^Mail: Set Mail From to (.*)/ do |value|
   #logger.step "Mail: Set Mail From to #{value}"
-  stamps.mail.ship_from.select value
+  stamps.mail.ship_from.select(value)
   test_data[:ship_from] = value
 end
 
@@ -305,7 +305,7 @@ end
 
 Then /^Mail: Expect Label Image Preview is present$/ do
   #logger.step "Mail: Expect Label Image Preview is present"
-  sleep 2
+  sleep(2)
   stamps.mail.shipping_label.form_view.starting_label.left_label.present?.should be true
   stamps.mail.shipping_label.form_view.starting_label.right_label.present?.should be true
 end

@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class VolusionSettings < StoreSettings
         def window_title
-          BrowserElement.new browser.div text: "Volusion Settings"
+          StampsElement.new browser.div text: "Volusion Settings"
         end
 
         def present?
@@ -21,12 +21,12 @@ module Stamps
         end
 
         def api_url url
-          textbox = TextboxElement.new browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
+          textbox = StampsTextbox.new browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
           textbox.set url
         end
 
         def connect_button
-          BrowserElement.new browser.span(text: "Connect")
+          StampsElement.new browser.span(text: "Connect")
         end
 
         def connect
@@ -93,7 +93,7 @@ module Stamps
       class ModifyVolusionStore < Volusion
 
         def window_title
-          BrowserElement.new(browser.div text: "Modify your Volusion Store Connection")
+          StampsElement.new(browser.div text: "Modify your Volusion Store Connection")
         end
 
         def present?

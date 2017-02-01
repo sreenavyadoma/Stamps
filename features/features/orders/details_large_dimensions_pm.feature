@@ -25,7 +25,6 @@ Feature: Priority Mail and Large Dimensions
     * on Order Details form, set Length to 1
     * on Order Details form, set Width to 1
     * on Order Details form, set Height to 1
-    * on Order Details form, set Insure-For to $100.00
     * Pause for 2 seconds
     * on Order Details form, expect service Textbox is enabled
     * Pause for 1 second

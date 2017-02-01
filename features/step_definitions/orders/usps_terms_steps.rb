@@ -16,7 +16,7 @@ end
 
 Then /^Check Do Not Show Again checkbox in USPS Terms modal$/ do
   #logger.step "Check Do Not Show Again checkbox in USPS Terms modal"
-  sleep 2
+  sleep(2)
   stamps.orders.toolbar.usps_intl_terms.check_dont_show_again_checkbox
-  sleep 2
+  sleep(2)
 end

@@ -1,338 +1,189 @@
 module Stamps
   module Orders
-    class GeneralSettings < Browser::Modal
-      class ResetFields < Browser::Modal
-        class Weight < Browser::Modal
-          class Pounds < Browser::Modal
-            def text_box
-              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
-            end
+    module Settings
+      class Pounds < Browser::Modal
+        attr_reader :text_box, :inc_bthn, :dec_btn
 
-            def set value
-              text_field = text_box
-              text_field.set value
-              logger.info "Pounds set to #{text_field.text}"
-            end
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
+          @inc_bthn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]"))
+          @dec_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]"))
+        end
 
-            def increment value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
+        def text
+          text_box.text
+        end
 
-            def decrement value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-          end
+        def set(value)
+          text_box.set(value)
+          logger.info "Pounds set to #{text_box.text}"
+          text.should eql value
+        end
 
-          class Ounces < Browser::Modal
-            def text_box
-              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl')
-            end
-
-            def set value
-              text_box.set value
-              logger.info "Pounds set to #{text_box.text}"
-            end
-
-            def increment value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-
-            def decrement value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-          end
-
-          def enabled?
-            element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')
-          end
-
-          def checkbox
-            checkbox_field = browser.span id: "sdc-resetfieldswin-weightcheckbox-displayEl"
-            verify_field = checkbox_field.parent.parent.parent
-            attribute_name = "class"
-            attribute_value = "checked"
-            CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-          end
-
-          def lb
-            Pounds.new(param)
-          end
-
-          def oz
-            Ounces.new(param)
+        def increment value
+          value.to_i.times do
+            inc_bthn.safe_click
           end
         end
 
-        class Dimensions < Browser::Modal
-          class Length < Browser::Modal
-            def text_box
-              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
-            end
-
-            def set value
-              text_field = text_box
-=begin
-              value = value.to_i
-              max = value + text_field.text.to_i
-              max.times do
-                current_value = text_field.text.to_i
-                break if value == current_value
-                if value > current_value
-                  increment 1
-                else
-                  decrement 1
-                end
-                break if value == current_value
-              end
-              sleep 1
-=end
-              text_field.set value
-              logger.info "Pounds set to #{text_field.text}"
-            end
-
-            def increment value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-
-            def decrement value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
+        def decrement value
+          value.to_i.times do
+            dec_btn.safe_click
           end
+        end
+      end
 
-          class Width < Browser::Modal
-            def text_box
-              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
-            end
+      class Ounces < Browser::Modal
+        attr_reader :text_box, :inc_btn, :dec_btn
 
-            def set value
-              text_field = text_box
-=begin
-              value = value.to_i
-              max = value + text_field.text.to_i
-              max.times do
-                current_value = text_field.text.to_i
-                break if value == current_value
-                if value > current_value
-                  increment 1
-                else
-                  decrement 1
-                end
-                break if value == current_value
-              end
-              sleep 1
-=end
-              text_field.set value
-              logger.info "Pounds set to #{text_field.text}"
-            end
-
-            def increment value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-
-            def decrement value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-          end
-
-          class Height < Browser::Modal
-            def text_box
-              TextboxElement.new (browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
-            end
-
-            def set value
-              text_field = text_box
-=begin
-              value = value.to_i
-              max = value + text_field.text.to_i
-              max.times do
-                current_value = text_field.text.to_i
-                break if value == current_value
-                if value > current_value
-                  increment 1
-                else
-                  decrement 1
-                end
-                break if value == current_value
-              end
-              sleep 1
-=end
-              text_field.set value
-              logger.info "Pounds set to #{text_field.text}"
-            end
-
-            def increment value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-
-            def decrement value
-              button = BrowserElement.new (browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
-              value.to_i.times do
-                button.safe_click
-              end
-            end
-          end
-
-          def enabled?
-            element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
-          end
-
-          def checkbox
-            checkbox_field = browser.input id: "sdc-resetfieldswin-dimensionscheckbox-inputEl"
-            verify_field = checkbox_field.parent.parent.parent
-            attribute_name = "class"
-            attribute_value = "checked"
-            CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-          end
-
-          def length
-            Length.new(param)
-          end
-
-          def width
-            Width.new(param)
-          end
-
-          def height
-            Height.new(param)
-          end
-
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
+          @inc_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]"))
+          @dec_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]"))
         end
 
-        def present?
-          (browser.div text: "Reset Fields").present?
+        def text
+          text_box.text
         end
 
-        def service
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-servicecheckbox-inputEl"
+        def set(value)
+          text_box.set(value)
+          logger.info "Pounds set to #{text_box.text}"
+          text.should eql value
+        end
+
+        def increment value
+          value.to_i.times do
+            inc_btn.safe_click
+          end
+        end
+
+        def decrement value
+          value.to_i.times do
+            dec_btn.safe_click
+          end
+        end
+      end
+
+      class Weight < Browser::Modal
+        attr_reader :lb, :oz
+
+        def initialize(param)
+          super(param)
+          @lb = Pounds.new(param)
+          @oz = Ounces.new(param)
+        end
+
+        def enabled?
+          element_helper.enabled?(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
+        end
+
+        def checkbox
+          checkbox_field = browser.span(id: "sdc-resetfieldswin-weightcheckbox-displayEl")
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+      end
+
+      class Length < Browser::Modal
+        attr_reader :text_box, :inc_btn, :dec_btn
+
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
+          @inc_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
+          @dec_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
         end
 
-        def weight
-          Weight.new(param)
+        def text
+          text_box.text
         end
 
-        def dimensions
-          Dimensions.new(param)
+        def set(value)
+          text_box.set(value)
+          logger.info "Pounds set to #{text_box.text}"
+          text.should eql value
         end
 
-        def ship_to_address
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-shiptoaddresscheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def increment value
+          value.to_i.times do
+            inc_btn.safe_click
+          end
         end
 
-        def tracking
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-trackingcheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def decrement value
+          value.to_i.times do
+            dec_btn.safe_click
+          end
+        end
+      end
+
+      class Width < Browser::Modal
+        attr_reader :text_box, :inc_btn, :dec_btn
+
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
+          @inc_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
+          @dec_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
         end
 
-        def extra_services
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-extraservicescheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def text
+          text_box.text
         end
 
-        def insurance
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-insurancecheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def set(value)
+          text_box.set(value)
+          logger.info "Pounds set to #{text_box.text}"
+          text.should eql value
         end
 
-        def reference_numbers
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-referencenumberscheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def increment value
+          value.to_i.times do
+            inc_btn.safe_click
+          end
         end
 
-        def cost_code
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-costcodecheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def decrement value
+          value.to_i.times do
+            dec_btn.safe_click
+          end
+        end
+      end
+
+      class Height < Browser::Modal
+        attr_reader :text_box
+
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
         end
 
-        def customs
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-customscheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def text
+          text_box.text
         end
 
-        def quantity
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-quantitycheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+        def set(value)
+          text_box.set(value)
+          logger.info "Pounds set to #{text_box.text}"
+          text.should eql value
         end
 
-        def stamps_amount
-          checkbox_field = browser.text_field id: "sdc-resetfieldswin-stampsamountcheckbox-inputEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-        end
-
-        def auto_advance_label_position
-          parent = (browser.label :text=> "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
-          checkbox_field = parent.text_box
-          verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-        end
-
-        def close
-          button = BrowserElement.new (browser.span text: "Close")
-          5.times do
-            return unless button.present?
+        def increment value
+          button = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
+          value.to_i.times do
             button.safe_click
-            sleep 1
-            return unless present?
+          end
+        end
+
+        def decrement value
+          button = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
+          value.to_i.times do
+            button.safe_click
           end
         end
       end
@@ -342,12 +193,16 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
-          @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
+          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
+          @drop_down = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
-        def select selection
-          selection_label = BrowserElement.new browser.li(text: selection)
+        def text
+          text_box.text
+        end
+
+        def select(selection)
+          selection_label = StampsElement.new browser.li(text: selection)
           10.times do
             break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
@@ -386,12 +241,16 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
-          @drop_down = BrowserElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
+          @drop_down = StampsElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
-        def select selection
-          selection_label = BrowserElement.new browser.li text: selection
+        def text
+          text_box.text
+        end
+
+        def select(selection)
+          selection_label = StampsElement.new browser.li text: selection
           10.times do
             break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
@@ -502,12 +361,12 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = TextboxElement.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
-          @drop_down = BrowserElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
+          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
+          @drop_down = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
-        def select selection
-          selection_label = BrowserElement.new browser.li text: selection
+        def select(selection)
+          selection_label = StampsElement.new browser.li text: selection
           10.times do
             break if text_box.text.include? selection
             drop_down.safe_click unless selection_label.present?
@@ -545,88 +404,230 @@ module Stamps
         end
       end
 
-      def title
-        BrowserElement.new browser.div text: "Settings"
-      end
+      class Dimensions < Browser::Modal
+        def enabled?
+          element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+        end
 
-      def present?
-        title.present?
-      end
+        def checkbox
+          checkbox_field = browser.input id: "sdc-resetfieldswin-dimensionscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
 
-      def services
-        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute_name = "class"
-        attribute_value = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-      end
+        def length
+          Length.new(param)
+        end
 
-      def log_off
-        SettingsLogoffDropDown.new(param)
-      end
+        def width
+          Width.new(param)
+        end
 
-      def post_date
-        PostDateDropDown.new(param)
-      end
-
-      def postage_balance
-        PostageBalanceDropDown.new(param)
-      end
-
-      def print_confirm
-        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute_name = "class"
-        attribute_value = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-      end
-
-      def reset_fields
-        modal = ResetFields.new(param)
-        button = BrowserElement.new browser.span text: "Select..."
-        10.times do
-          button.safe_click unless modal.present?
-          return modal if modal.present?
+        def height
+          Height.new(param)
         end
       end
 
-      def usps_terms
-        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute_name = "class"
-        attribute_value = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-      end
+      class ResetFields < Browser::Modal
+        def present?
+          (browser.div text: "Reset Fields").present?
+        end
 
-      def contacts
-        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute_name = "class"
-        attribute_value = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-      end
+        def service
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-servicecheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
 
-      def shipments
-        checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
-        verify_field = checkbox_field.parent.parent.parent
-        attribute_name = "class"
-        attribute_value = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
-      end
+        def weight
+          Weight.new(param)
+        end
 
-      def save
-        button = BrowserElement.new (browser.span text: "Save")
-        10.times do
-          button.safe_click
-          return unless button.present?
+        def dimensions
+          Dimensions.new(param)
+        end
+
+        def ship_to_address
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-shiptoaddresscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def tracking
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-trackingcheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def extra_services
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-extraservicescheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def insurance
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-insurancecheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def reference_numbers
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-referencenumberscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def cost_code
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-costcodecheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def customs
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-customscheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def quantity
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-quantitycheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def stamps_amount
+          checkbox_field = browser.text_field id: "sdc-resetfieldswin-stampsamountcheckbox-inputEl"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def auto_advance_label_position
+          parent = (browser.label :text=> "Auto-Advance Label Position (NetStamps and Label Sheets)").parent
+          checkbox_field = parent.text_box
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def close
+          button = StampsElement.new(browser.span text: "Close")
+          5.times do
+            return unless button.present?
+            button.safe_click
+            sleep(1)
+            return unless present?
+          end
         end
       end
 
-      def close
-        button = BrowserElement.new (browser.img css: "img[class$=close]")
-        10.times do
-          button.safe_click
-          return unless button.present?
+      class GeneralSettings < Browser::Modal
+
+        def title
+          StampsElement.new browser.div text: "Settings"
+        end
+
+        def present?
+          title.present?
+        end
+
+        def services
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def log_off
+          SettingsLogoffDropDown.new(param)
+        end
+
+        def post_date
+          PostDateDropDown.new(param)
+        end
+
+        def postage_balance
+          PostageBalanceDropDown.new(param)
+        end
+
+        def print_confirm
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(6)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def reset_fields
+          modal = ResetFields.new(param)
+          button = StampsElement.new browser.span text: "Select..."
+          10.times do
+            button.safe_click unless modal.present?
+            return modal if modal.present?
+          end
+        end
+
+        def usps_terms
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(8)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def contacts
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(10)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def shipments
+          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(15)>div>div>div>div>div>div>div>span"
+          verify_field = checkbox_field.parent.parent.parent
+          attribute_name = "class"
+          attribute_value = "checked"
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+        end
+
+        def save
+          button = StampsElement.new(browser.span text: "Save")
+          10.times do
+            button.safe_click
+            return unless button.present?
+          end
+        end
+
+        def close
+          button = StampsElement.new(browser.img css: "img[class$=close]")
+          10.times do
+            button.safe_click
+            return unless button.present?
+          end
         end
       end
     end

@@ -24,7 +24,7 @@
       end
 
       def continue
-        button = ElementWrapper.new (browser.span text: "Continue")
+        button = ElementWrapper.new(browser.span text: "Continue")
         10.times{
           button.safe_click
           break unless button.present?

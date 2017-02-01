@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class ThreeDCartSettings < StoreSettings
         def window_title
-          BrowserElement.new browser.div(text: "3dcart Settings")
+          StampsElement.new browser.div(text: "3dcart Settings")
         end
 
         def present?
@@ -18,10 +18,10 @@ module Stamps
       class ThreeDCart < Browser::Modal
 
         class ProductWeightUnit < Browser::Modal
-          def select selection
-            drop_down = BrowserElement.new (browser.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
-            textbox = TextboxElement.new browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
-            selection_field = BrowserElement.new browser.li(text: "#{selection}")
+          def select(selection)
+            drop_down = StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
+            textbox = StampsTextbox.new browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
+            selection_field = StampsElement.new browser.li(text: "#{selection}")
             10.times do
               drop_down.safe_click unless selection_field.present?
               selection_field.safe_click
@@ -35,7 +35,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new (browser.imgs(css: "img[class*='x-tool-img x-tool-close']").last)
+          button = StampsElement.new(browser.imgs(css: "img[class*='x-tool-img x-tool-close']").last)
           5.times do
             button.safe_click
             break unless present?
@@ -43,11 +43,11 @@ module Stamps
         end
 
         def api_user_key
-          TextboxElement.new browser.text_field(css: "input[name^=textfield-][name$=-inputEl][type=password]")
+          StampsTextbox.new browser.text_field(css: "input[name^=textfield-][name$=-inputEl][type=password]")
         end
 
         def store_url
-          TextboxElement.new (browser.text_fields(css: "input[name^=textfield-][name$=-inputEl][type=text]").last)
+          StampsTextbox.new(browser.text_fields(css: "input[name^=textfield-][name$=-inputEl][type=text]").last)
         end
 
         def weight_unit
@@ -55,21 +55,21 @@ module Stamps
         end
 
         def connect_button
-          BrowserElement.new browser.span(text: "Connect")
+          StampsElement.new browser.span(text: "Connect")
         end
 
         def connect
-          button = BrowserElement.new browser.span(text: "Connect")
+          button = StampsElement.new browser.span(text: "Connect")
           settings = ThreeDCartSettings.new(param)
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
           server_error = Orders::Stores::ServerError.new(param)
-          connecting_button = BrowserElement.new browser.span(text: "Connecting...")
+          connecting_button = StampsElement.new browser.span(text: "Connecting...")
 
           max_server_error_retry_count = 5
 
           20.times do |counter|
             button.safe_click
-            sleep 1
+            sleep(1)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -87,17 +87,17 @@ module Stamps
         end
 
         def reconnect
-          button = BrowserElement.new browser.span(text: "Connect")
+          button = StampsElement.new browser.span(text: "Connect")
           manage_stores = ManageStores.new(param)
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
           server_error = Orders::Stores::ServerError.new(param)
-          connecting_button = BrowserElement.new browser.span(text: "Connecting...")
+          connecting_button = StampsElement.new browser.span(text: "Connecting...")
 
           max_server_error_retry_count = 5
 
           10.times do |counter|
             button.safe_click
-            sleep 1
+            sleep(1)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -117,7 +117,7 @@ module Stamps
       class Modify3DCartStore < ThreeDCart
 
         def window_title
-          BrowserElement.new(browser.div text: "Modify your 3DCart Store Connection")
+          StampsElement.new(browser.div text: "Modify your 3DCart Store Connection")
         end
 
         def present?

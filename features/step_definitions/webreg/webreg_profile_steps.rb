@@ -258,7 +258,7 @@ Then /^(?:O|o)n WebReg Profile page, continue to Mailing Information page$/ do
   #logger.step "On WebReg Profile page, continue to Mailing Information page"
   10.times do
     webreg.profile.continue.click
-    sleep 1
+    sleep(1)
     break if webreg.profile.membership.present?
   end
   "Unable to continue....".should eql "Mailing Information page Did not load." unless webreg.profile.membership.present?

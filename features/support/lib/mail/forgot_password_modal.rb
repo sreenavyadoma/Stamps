@@ -2,7 +2,7 @@ module Stamps
   module Mail
     class ForgotPasswordModal < Browser::Modal
       def window_x_button
-        BrowserElement.new (browser.imgs css: "img[class*='x-tool-close']")[0]
+        StampsElement.new(browser.imgs css: "img[class*='x-tool-close']")[0]
       end
 
       def close_window
@@ -55,7 +55,7 @@ module Stamps
         frame1 = browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
         confirmation = frame1.p(text: "Thank you. We have sent a temporary password in an email to you.")
         5.times do
-          sleep 1
+          sleep(1)
           return confirmation if confirmation.present?
         end
         "Unable to confirm password reset, check your code.".should eql "" unless confirmation.present?

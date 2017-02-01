@@ -397,8 +397,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
           # Set Tracking
           begin
-            tracking = row[@rate_sheet_columns[:tracking]]
-            step "On Order Details form, set Tracking to #{tracking}"
+            step "On Order Details form, set Tracking to #{row[@rate_sheet_columns[:tracking]]}"
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = test_data[:tracking]

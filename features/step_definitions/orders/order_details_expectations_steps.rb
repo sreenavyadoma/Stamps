@@ -7,42 +7,42 @@ Then /^(?:O|o)n Order Details form, expect Item (\d+) Qty is (\d+)$/ do |item_nu
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).qty.text_box.text.should eql expectation
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.text_box.text.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) ID is (.*)$/ do |item_number, expectation|
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).id.text.should eql expectation
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).id.text.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).description.text.should eql expectation
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).description.text.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).qty.text_box.placeholder.should eql expectation
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.text_box.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).id.placeholder.should eql expectation
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).id.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
   step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).description.placeholder.should eql expectation
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).description.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Address Placeholder is (.*)$/ do |expectation|
@@ -297,7 +297,7 @@ end
 Then /^(?:O|o)n Order Details form, expect service Cost is \$(.*)$/ do |expectation|
   expectation = expectation.to_f
   10.times do
-    sleep 1
+    sleep(1)
     break if stamps.orders.order_details.service.cost.to_f == expectation
   end
   stamps.orders.order_details.service.cost.to_f.should eql expectation

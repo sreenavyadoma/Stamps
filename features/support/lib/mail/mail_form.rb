@@ -4,11 +4,11 @@ module Stamps
 
     class PrintPostageCustoms < Browser::Modal
       def edit_form
-        button = BrowserElement.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"
+        button = StampsElement.new browser.span id: "sdc-mainpanel-editcustombtn-btnIconEl"
         customs_modal = CustomsForm.new(param)
         15.times do
           button.safe_click
-          sleep 1
+          sleep(1)
           return customs_modal if customs_modal.present?
         end
         "Unable to open Customs Modal, check your test".should eql 'Edit Customs Modal failed.'
@@ -35,7 +35,7 @@ module Stamps
         @ship_from = MailShipFrom.new(param)
         @ship_to = Stamps::Mail::ShipTo.new(param)
         @customs = PrintPostageCustoms.new(param)
-        @extra_services = BrowserElement.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
+        @extra_services = StampsElement.new browser.span id: "sdc-mainpanel-extraservicesbtn-btnIconEl"
       end
 
       def open_extra_services

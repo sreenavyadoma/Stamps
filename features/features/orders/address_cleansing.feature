@@ -14,7 +14,6 @@ Feature: Address Cleansing
     Then on Order Details form, select service PM Package
     Then on Order Details form, set Ounces to 1
     Then on Order Details form, set Pounds to 1
-    Then on Order Details form, set Insure-For to $200
     Then Pause for 2 seconds
     Then In Orders Grid, expect Zip is 90245
     Then In Orders Grid, expect Recipient is Address Cleansing

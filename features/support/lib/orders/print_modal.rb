@@ -6,38 +6,38 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @drop_down = BrowserElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
-        @text_box = TextboxElement.new browser.text_field css: "input[name^=printmediadroplist]"
+        @drop_down = StampsElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
+        @text_box = StampsTextbox.new browser.text_field css: "input[name^=printmediadroplist]"
       end
 
       def selection media
         case media
           # Shipping Label: 8 ½" x 11" Paper
           when /Paper/
-            return BrowserElement.new (browser.li text: /Paper/)
+            return StampsElement.new(browser.li text: /Paper/)
 
           # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
           when /SDC-1200/
-            return BrowserElement.new (browser.li text: /SDC-1200/)
+            return StampsElement.new(browser.li text: /SDC-1200/)
 
           # Shipping Label: 5 ½" x 8 ½"
           when /Shipping Label - 5 /
-            return BrowserElement.new (browser.li text: /Shipping Label - 5 /)
+            return StampsElement.new(browser.li text: /Shipping Label - 5 /)
 
           # Roll - 4 ⅛" x 6 ¼" Shipping Label
           when /Roll - 4/
-            return BrowserElement.new (browser.li text: /Roll - 4/)
+            return StampsElement.new(browser.li text: /Roll - 4/)
 
           # Roll - 4" x 6" Shipping Label
           when /Roll - 4 /
-            return BrowserElement.new (browser.li text: /Roll - 4 /)
+            return StampsElement.new(browser.li text: /Roll - 4 /)
           else
             "Don't know what to do with #{media}.".should eql "Invalid Print Media Selection."
         end
       end
 
       def label
-        BrowserElement.new browser.span(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
+        StampsElement.new browser.span(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
       end
 
       def select media
@@ -78,13 +78,13 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @drop_down = BrowserElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
-        @text_box = TextboxElement.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
+        @drop_down = StampsElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
+        @text_box = StampsTextbox.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
       end
 
-      def select selection
+      def select(selection)
         begin
-          selection_label = BrowserElement.new browser.li(text: selection)
+          selection_label = StampsElement.new browser.li(text: selection)
 
           15.times do
             return text_box.text  if text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
@@ -101,13 +101,13 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @drop_down = BrowserElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
-        @text_box = TextboxElement.new browser.text_field(name: "paperTrays")
+        @drop_down = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
+        @text_box = StampsTextbox.new browser.text_field(name: "paperTrays")
       end
 
-      def select selection
+      def select(selection)
         begin
-          selection_label = BrowserElement.new browser.li(text: selection)
+          selection_label = StampsElement.new browser.li(text: selection)
           5.times{
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
@@ -122,8 +122,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @left_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")
-        @right_label = BrowserElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")
+        @left_label = StampsElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")
+        @right_label = StampsElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")
       end
 
       def left
@@ -178,7 +178,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def email_tracking
@@ -186,7 +186,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def print_reference_no
@@ -194,7 +194,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        CheckboxElement.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
     end
 
@@ -204,7 +204,7 @@ module Stamps
       end
 
       def close
-        button = BrowserElement.new browser.img(css: "img[class*='x-tool-img x-tool-close']")
+        button = StampsElement.new browser.img(css: "img[class*='x-tool-img x-tool-close']")
         10.times do
           button.safe_click
           break unless button.present?
@@ -212,7 +212,7 @@ module Stamps
       end
 
       def ok
-        button = BrowserElement.new browser.span(text: "Ok")
+        button = StampsElement.new browser.span(text: "Ok")
         10.times do
           button.safe_click
           break unless button.present?
@@ -229,12 +229,12 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @i_agree = BrowserElement.new browser.span text: "I Agree"
-        @cancel = BrowserElement.new browser.span text: "Cancel"
+        @i_agree = StampsElement.new browser.span text: "I Agree"
+        @cancel = StampsElement.new browser.span text: "Cancel"
       end
 
       def present?
-        (BrowserElement.new browser.div text: "USPS Terms").present?
+        (StampsElement.new browser.div text: "USPS Terms").present?
       end
 
       def agree_and_dont_show_again
@@ -252,7 +252,7 @@ module Stamps
         attribute = "class"
         attrib_value_check = "checked"
 
-        dont_show_checkbox = Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, attribute, attrib_value_check
+        dont_show_checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
 
         if dont_show
           dont_show_checkbox.check
@@ -284,24 +284,24 @@ module Stamps
       end
 
       def now_month_dd
-        picker = BrowserElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
-        today = BrowserElement.new browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
+        picker = StampsElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
+        today = StampsElement.new browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
-          sleep 1
+          sleep(1)
           return ParameterHelper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
         "Unable to select today's date from date picker object in Print Modal.".should eql ""
       end
 
       def todays_date
-        picker = BrowserElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
-        today = BrowserElement.new BrowserElement.new browser.div css: "div[title=Today]"
+        picker = StampsElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
+        today = StampsElement.new StampsElement.new browser.div css: "div[title=Today]"
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
-          sleep 1
+          sleep(1)
           return ParameterHelper.now_plus_mon_dd 0
         }
         "Unable to select today's date from date picker object in Print Modal.".should eql ""
@@ -317,17 +317,17 @@ module Stamps
 
       def today_plus day
         day = day.to_i
-        date_picker_header = BrowserElement.new browser.div class: "x-datepicker-header"
-        picker_button = BrowserElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
-        ship_date_textbox = TextboxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
+        date_picker_header = StampsElement.new browser.div class: "x-datepicker-header"
+        picker_button = StampsElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
+        ship_date_textbox = StampsTextbox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
 
         ship_date_str = ParameterHelper.now_plus_month_dd day
         ship_date_mmddyy = ParameterHelper.now_plus_mm_dd_yy day
-        date_field = BrowserElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
+        date_field = StampsElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
 
         10.times{
           picker_button.safe_click unless date_picker_header.present?
-          sleep 1
+          sleep(1)
 
           if date_field.element.present?
             break
@@ -335,14 +335,14 @@ module Stamps
             day += 1
             ship_date_str = ParameterHelper.now_plus_month_dd day
             ship_date_mmddyy = ParameterHelper.now_plus_mm_dd_yy day
-            date_field = BrowserElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
+            date_field = StampsElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
           end
         }
 
         10.times {
           picker_button.safe_click unless date_field.present?
           date_field.safe_click
-          sleep 1
+          sleep(1)
           return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
         }
       end
@@ -378,13 +378,13 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @text_box = TextboxElement.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
-        @text_box_cc = TextboxElement.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
+        @text_box = StampsTextbox.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
+        @text_box_cc = StampsTextbox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
         @date_picker = DatePicker.new(param)
       end
 
       def text
-        sleep 1
+        sleep(1)
         5.times do
           return text_box.text if text_box.present?
           return text_box_cc.text if text_box_cc.present?
@@ -406,12 +406,12 @@ module Stamps
         @starting_label = StartingLabel.new(param)
         @print_options = PrintOptions.new(param)
 
-        @print_button = BrowserElement.new browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')
-        @print_sample_button = BrowserElement.new browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')
+        @print_button = StampsElement.new browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')
+        @print_sample_button = StampsElement.new browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')
       end
 
       def click
-        starting_label_tag = BrowserElement.new browser.span(text: "Starting Label:")
+        starting_label_tag = StampsElement.new browser.span(text: "Starting Label:")
         20.times do
           starting_label_tag.safe_click
         end
@@ -429,7 +429,7 @@ module Stamps
         15.times {
           begin
             print_button.safe_click
-            sleep 1
+            sleep(1)
             print_button.safe_click
             sleep(1)
             printing_error = printing_error_check
@@ -533,12 +533,12 @@ module Stamps
 
       def printing_error_check
         @printing_error = ""
-        incomplete_order_window = BrowserElement.new browser.div text: "Incomplete Order"
-        error_window = BrowserElement.new browser.div text: "Error"
-        ok_button = BrowserElement.new browser.span text: 'OK'
-        message_label = BrowserElement.new((browser.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
+        incomplete_order_window = StampsElement.new browser.div text: "Incomplete Order"
+        error_window = StampsElement.new browser.div text: "Error"
+        ok_button = StampsElement.new browser.span text: 'OK'
+        message_label = StampsElement.new((browser.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
 
-        sleep 2
+        sleep(2)
 
         if error_window.present? || incomplete_order_window.present?
           window_text = error_window.text
@@ -584,7 +584,7 @@ module Stamps
       end
 
       def reprint
-        button = BrowserElement.new browser.span(id: "sdc-printwin-printbtn-btnInnerEl")
+        button = StampsElement.new browser.span(id: "sdc-printwin-printbtn-btnInnerEl")
         10.times do
           button.safe_click
           button.safe_click

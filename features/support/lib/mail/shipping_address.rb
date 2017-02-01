@@ -6,8 +6,8 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @window_title = BrowserElement.new (browser.span text: "Manage Mailing Addresses")
-        @close_btn = BrowserElement.new browser.img(css: "img[class*=close]")
+        @window_title = StampsElement.new(browser.span text: "Manage Mailing Addresses")
+        @close_btn = StampsElement.new browser.img(css: "img[class*=close]")
       end
 
       def close

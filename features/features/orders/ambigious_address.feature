@@ -14,7 +14,6 @@ Feature: Ambigious Address
     Then In Exact Address Not Found module, select row 1
     Then on Order Details form, set Ounces to 1
     Then on Order Details form, set Pounds to 1
-    Then on Order Details form, set Insure-For to $200
     Then In Orders Grid, expect Recipient is Hillary Clinton
     Then In Orders Grid, expect Company is The White House
     Then In Orders Grid, expect City is San Francisco
