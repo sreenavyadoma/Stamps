@@ -33,6 +33,18 @@ orders_credentials:
     rob:
       usr: stgom0dqgzppy
       pw: pass111
+    rates_sheet_pme_comm_base_zone_3:
+      usr: stgo0e9lb9fpv
+      pw: pass111
+    bvt_shipstation_import_csv:
+      usr: stgp6389urwj4
+      pw: pass111
+    search_orders:
+      usr: stgo0e9lb9fpv
+      pw: pass111
+    bvt_shipstation_search:
+      usr: stgxz0386tftl1
+      pw: pass111
     rates_parcel_select_ground:
       usr: stgp6389urwj4
       pw: pass111
