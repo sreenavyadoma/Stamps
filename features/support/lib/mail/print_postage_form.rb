@@ -11,7 +11,7 @@ module Stamps
       end
 
       def select(selection)
-        selection_label = StampsElement.new browser.div text: selection
+        selection_label = StampsElement.new browser.div(text: selection)
         5.times {
           begin
             break if text_box.text.include? selection
@@ -318,7 +318,7 @@ module Stamps
 
       def select(selection)
         drop_down.safe_click
-        default_selection_field = (browser.divs css: "div[data-qtip*='Return To Address']")[0]
+        default_selection_field = browser.divs(css: "div[data-qtip*='Return To Address']")[0]
 
         if selection.downcase == "default"
           ship_from_selection_field = default_selection_field
@@ -404,7 +404,7 @@ module Stamps
       end
 
       def drop_down
-        StampsElement.new(browser.divs css: "div[class*=x-form-arrow-trigger]")[7]
+        StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[7])
       end
 
       def select(selection)
@@ -470,7 +470,7 @@ module Stamps
     class Contacts < Browser::Modal
 
       def link
-        StampsElement.new browser.a css: "[class*=sdc-mainpanel-shiptolinkbtn]"
+        StampsElement.new(browser.a(css: "[class*=sdc-mainpanel-shiptolinkbtn]"))
       end
 
       def open
@@ -532,14 +532,14 @@ module Stamps
       end
 
       def increment value
-        button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-up]")[7]
+        button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[7])
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-down]")[7]
+        button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[7])
         value.to_i.times do
           button.safe_click
         end

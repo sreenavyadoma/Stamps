@@ -1194,12 +1194,13 @@ module Stamps
       end
 
       class DetailsTracking < Browser::Modal
-        attr_reader :text_box, :drop_down, :blur_element
+        attr_reader :text_box, :drop_down, :blur_element, :cost_label
         def initialize(param)
           super(param)
           @text_box = StampsTextbox.new browser.text_field(name: 'Tracking')
           @drop_down = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
           @blur_element = BlurOutElement.new(param)
+          @cost_label = StampsElement.new(browser.label(css: "label[class*='selected_tracking_cost']"))
         end
 
         def present?
@@ -1258,15 +1259,6 @@ module Stamps
             end
             "Unable to fetch inline cost for #{selection}".should eql "Details - Tracking inline cost"
           end
-        end
-
-        def cost_label
-          labels = browser.label(text: "Tracking:").parent.labels
-          cost_element = nil
-          labels.each do |label|
-            cost_element = label if label.text.include?('.')
-          end
-          cost_element
         end
 
         def cost
@@ -1346,7 +1338,7 @@ module Stamps
           dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
           @item_qty = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Associated Item Quantity')
 
-          @item_id = StampsTextbox.new(browser.text_fields(name: "SKU")[index-1])
+          @item_id = StampsTextbox.new((browser.text_fields(name: "SKU")[index-1]))
           @delete = StampsElement.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index-1])
           @item_description = StampsTextbox.new(browser.text_fields(name: "Description")[index-1])
         end
@@ -1357,12 +1349,13 @@ module Stamps
       end
 
       class ItemsOrderedSection < Browser::Modal
-        attr_reader :add_btn, :drop_down
+        attr_reader :add_btn, :drop_down, :items_cache
 
         def initialize(param)
           super(param)
           @add_btn = StampsElement.new(browser.span(css: "span[class*=sdc-icon-add]"))
           @drop_down = StampsElement.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
+          @items_cache = Hash.new
         end
       
         def expand
@@ -1388,7 +1381,8 @@ module Stamps
         end
 
         def item(number)
-          item_details = AssociatedOrderItem.new(param, number)
+          items_cache[number] = AssociatedOrderItem.new(param, number) unless items_cache.has_key?(number)
+          item_details = items_cache[number]
           return item_details if item_details.present?
           10.times do
             return item_details if item_details.present?
@@ -1496,7 +1490,7 @@ module Stamps
         end
 
         def multiple_order_cost
-          cost_label = StampsElement.new(browser.labels css: "label[class*=total_cost]")[1]
+          cost_label = StampsElement.new(browser.labels(css: "label[class*=total_cost]")[1])
           10.times do
             begin
               cost = cost_label.text

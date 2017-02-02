@@ -77,7 +77,7 @@ module Stamps
 
     class SpecialContentsModal < Browser::Modal
       def window_x_button
-        StampsElement.new(browser.imgs css: "img[class*='x-tool-close']")[1]
+        StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']")[1])
       end
 
       def close_window
@@ -117,7 +117,7 @@ module Stamps
       end
 
       def drop_down
-        StampsElement.new(browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
+        StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[9])
       end
 
       def select(selection)
@@ -159,14 +159,14 @@ module Stamps
       end
 
       def increment value
-        button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-up]")[8]
+        button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[8])
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-down]")[8]
+        button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[8])
         value.to_i.times do
           button.safe_click
         end
@@ -175,15 +175,15 @@ module Stamps
 
     class COD < Browser::Modal
       def text_box
-        StampsTextbox.new browser.text_field id: 'sdc-extraserviceswin-codnumberfield-inputEl'
+        StampsTextbox.new(browser.text_field(id: 'sdc-extraserviceswin-codnumberfield-inputEl'))
       end
 
       def form_3816
-        StampsElement.new browser.span css: "span[id*=sdc-extraserviceswin-codformbtn-btnIconEl]"
+        StampsElement.new(browser.span(css: "span[id*=sdc-extraserviceswin-codformbtn-btnIconEl]"))
       end
 
       def label
-        StampsElement.new browser.label text: 'COD:'
+        StampsElement.new(browser.label(text: 'COD:'))
       end
 
       def set(value)
@@ -205,14 +205,14 @@ module Stamps
       end
 
       def increment value
-        button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-up]")[9]
+        button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[9])
         value.to_i.times do
           button.safe_click
         end
       end
 
       def decrement value
-        button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-down]")[9]
+        button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[9])
         value.to_i.times do
           button.safe_click
         end
@@ -221,18 +221,18 @@ module Stamps
 
     class Handling < Browser::Modal
       def text_box
-        StampsTextbox.new browser.text_field name: "contents"
+        StampsTextbox.new browser.text_field(name: "contents")
       end
 
       def drop_down
-        StampsElement.new(browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
+        StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[11])
       end
 
       def select(selection)
         logger.info "Select Handling: #{selection}"
         box = text_box
         button = drop_down
-        selection_label = StampsElement.new browser.div text: selection
+        selection_label = StampsElement.new(browser.div(text: selection))
         10.times {
           begin
             button.safe_click #unless selection_label.present?

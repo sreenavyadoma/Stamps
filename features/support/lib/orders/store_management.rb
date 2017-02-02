@@ -113,7 +113,7 @@ module Stamps
             end
 
             def delete
-              StampsElement.new(browser.spans css: "span[class*=sdc-icon-remove]")[@index]
+              StampsElement.new(browser.spans(css: "span[class*=sdc-icon-remove]")[@index])
             end
 
             def shipping_Service

@@ -26,19 +26,19 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then on Order Details form, click Edit Form button
 
-    Then on Customs form, add associated Item 1
-    Then on Customs form, set Item Description to item 1
-    Then on Customs form, set Item Qty to 5
-    Then on Customs form, set Item Unit Price to 11.11
-    Then on Customs form, set Item Made In Country to United States
-    Then on Customs form, set Item Tarriff to 5
+    Then on Customs form, add Associated Item 1
+    Then on Customs form, set Associated Item 1 Description to item 1
+    Then on Customs form, set Associated Item 1 Qty to 5
+    Then on Customs form, set Associated Item 1 Unit Price to 11.11
+    Then on Customs form, set Associated Item 1 Made In Country to United States
+    Then on Customs form, set Associated Item 1 Tarriff to 5
 
-    Then on Customs form, add associated Item 2
-    Then on Customs form, set Item Description to item 2
-    Then on Customs form, set Item Qty to 7
-    Then on Customs form, set Item Unit Price to 22.22
-    Then on Customs form, set Item Made In Country to United States
-    Then on Customs form, set Item Tarriff to 10
+    Then on Customs form, add Associated Item 2
+    Then on Customs form, set Associated Item 2 Description to item 2
+    Then on Customs form, set Associated Item 2 Qty to 7
+    Then on Customs form, set Associated Item 2 Unit Price to 22.22
+    Then on Customs form, set Associated Item 2 Made In Country to United States
+    Then on Customs form, set Associated Item 1 Tarriff to 10
 
     Then on Customs form, check I agree to the USPS Privacy Act Statement
 
@@ -49,11 +49,11 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then on Order Details form, click Edit Form button
     Then Pause for 2 seconds
-    Then on Customs form, expect Item 1 Description is item 1
-    Then on Customs form, expect Item 1 Quantity is 5
+    Then on Customs form, expect Associated Item 1 Description is item 1
+    Then on Customs form, expect Associated Item 1 Quantity is 5
 
-    Then on Customs form, expect Item 2 Description is item 2
-    Then on Customs form, expect Item 2 Quantity is 7
+    Then on Customs form, expect Associated Item 2 Description is item 2
+    Then on Customs form, expect Associated Item 2 Quantity is 7
 
     Then on Customs form, click Close button
 

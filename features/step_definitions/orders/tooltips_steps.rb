@@ -59,8 +59,8 @@ Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight is (.+)$/ do
   data_error_qtip.should include expectation
 end
 
-Then /^(?:O|o)n Customs form, expect Item Description Tooltip Error is (.*)$/ do |expectation|
-  #logger.step "On Customs form, expect Item Description Tooltip Error is #{expectation}"
+Then /^(?:O|o)n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
+  #logger.step "On Customs form, expect Associated Item Description Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
   data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).description.data_error_qtip
   #logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"

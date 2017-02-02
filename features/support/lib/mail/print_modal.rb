@@ -115,7 +115,7 @@ module Stamps
       end
 
       def drop_down
-        StampsElement.new(browser.divs css: "div[class*=x-form-trigger]")[10]
+        StampsElement.new(browser.divs(css: "div[class*=x-form-trigger]")[10])
       end
 
       def select(selection)

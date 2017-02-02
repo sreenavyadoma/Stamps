@@ -22,7 +22,7 @@ module Stamps
           end
 
           def drop_down
-            StampsElement.new(browser.divs css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2]
+            StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2])
           end
 
           def select(selection)

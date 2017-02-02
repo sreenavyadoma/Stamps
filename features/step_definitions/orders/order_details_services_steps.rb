@@ -300,9 +300,9 @@ end
 Then /^(?:O|o)n Order Details form, set service to (.*)$/ do |service|
   stamps.orders.order_details.service.select service
   15.times do
-    step "On Order Details form, Blur out"
+    step "On Order Details form, blur out"
     break if stamps.orders.order_details.service.cost.to_f > 0
-    step "On Order Details form, Blur out"
+    step "On Order Details form, blur out"
   end
   step "Save Order Details data"
 end

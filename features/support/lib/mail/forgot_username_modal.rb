@@ -2,7 +2,7 @@ module Stamps
   module Mail
     class ForgotUsernameModal < Browser::Modal
       def window_x_button
-        StampsElement.new(browser.imgs css: "img[class*='x-tool-close']")[0]
+        StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']")[0])
       end
 
       def close_window
@@ -10,7 +10,7 @@ module Stamps
       end
 
       def x_button_present?
-        ((browser.imgs css: "img[class*='x-tool-close']")[0]).present?
+        (browser.imgs(css: "img[class*='x-tool-close']")[0]).present?
       end
 
       def wait_until_present

@@ -193,14 +193,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-up]")[8]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[8])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-down]")[8]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[8])
           value.to_i.times do
             button.safe_click
           end
@@ -222,14 +222,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-up]")[9]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[9])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-down]")[9]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[9])
           value.to_i.times do
             button.safe_click
           end
@@ -239,7 +239,7 @@ module Stamps
 
       class Lbs  < Browser::Modal
         def text_box
-          StampsTextbox.new browser.text_field name: 'WeightLb'
+          StampsTextbox.new(browser.text_field(name: 'WeightLb'))
         end
 
         def set(value)
@@ -250,14 +250,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-up]")[10]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[10])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-down]")[10]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[10])
           value.to_i.times do
             button.safe_click
           end
@@ -278,14 +278,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-up]")[11]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[11])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[class*=x-form-spinner-down]")[11]
+          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[11])
           value.to_i.times do
             button.safe_click
           end
@@ -301,7 +301,7 @@ module Stamps
         end
 
         def drop_down
-          StampsElement.new(browser.divs css: "div[class*=x-form-arrow-trigger]")[12]
+          StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[12])
         end
 
         def select(selection)
@@ -330,7 +330,7 @@ module Stamps
       end
 
       def drop_down
-        StampsElement.new(browser.divs css: "div[class*=x-form-arrow-trigger]")[9]
+        StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[9])
       end
 
       def select(selection)
@@ -362,7 +362,7 @@ module Stamps
       end
 
       def drop_down
-        StampsElement.new(browser.divs css: "div[class*=x-form-arrow-trigger]")[10]
+        StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[10])
       end
 
       def select(selection)
@@ -394,7 +394,7 @@ module Stamps
       end
 
       def drop_down
-        StampsElement.new(browser.divs css: "div[class*=x-form-arrow-trigger]")[11]
+        StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[11])
       end
 
       def select(selection)
@@ -490,7 +490,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextbox.new((browser.text_fields css: "div[id*=customswindow] input[name=Quantity]")[@index-1])
+          StampsTextbox.new(browser.text_fields(css: "div[id*=customswindow] input[name=Quantity]")[@index-1])
         end
 
         def set(value)
@@ -512,14 +512,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=up]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(2)>div>div>div[id$=spinner]>div[class*=down]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
@@ -533,7 +533,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextbox.new((browser.text_fields name: "Value")[@index-1])
+          StampsTextbox.new(browser.text_fields(name: "Value")[@index-1])
         end
 
         def set(value)
@@ -542,14 +542,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(3)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
@@ -563,7 +563,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextbox.new((browser.text_fields name: "lb")[@index-1])
+          StampsTextbox.new(browser.text_fields(name: "lb")[@index-1])
         end
 
         def set(value)
@@ -585,14 +585,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=up]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(1)>div>div>div[id$=spinner]>div[class*=down]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
@@ -606,7 +606,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextbox.new((browser.text_fields name: "oz")[@index-1])
+          StampsTextbox.new(browser.text_fields(name: "oz")[@index-1])
         end
 
         def set(value)
@@ -628,14 +628,14 @@ module Stamps
         end
 
         def increment value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=up]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1]
+          button = StampsElement.new(browser.divs(css: "div[id^=singlecustomsitem][id$=targetEl]>div:nth-child(4)>div>div>div:nth-child(3)>div>div>div[id$=spinner]>div[class*=down]")[@index-1])
           value.to_i.times do
             button.safe_click
           end
@@ -652,11 +652,11 @@ module Stamps
       end
 
       def delete
-        StampsElement.new(browser.spans css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1]
+        StampsElement.new(browser.spans(css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index-1])
       end
 
       def description
-        StampsTextbox.new((browser.text_fields css: "div[class*=customs-description] input[name=Description]")[@index-1])
+        StampsTextbox.new((browser.text_fields(css: "div[class*=customs-description] input[name=Description]")[@index-1]))
       end
 
       def qty
@@ -680,7 +680,7 @@ module Stamps
       end
 
       def hs_tariff
-        StampsTextbox.new(browser.text_fields name: "TariffNo")[@index-1]
+        StampsTextbox.new(browser.text_fields(name: "TariffNo")[@index-1])
       end
 
     end

@@ -30,7 +30,7 @@ Feature: Iran Internal Transaction Number Required
     Then on Customs form, set Package Contents to Other
     Then Expect Customs Form Internal Transaction Number is Required
 
-    Then on Customs form, add associated Item 1, Description random, Qty 1, Price 3000, Origin United States, Tariff 10
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 3000, Origin United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
     Then on Customs form, set ITN Number to "random"
     Then on Customs form, check I agree to the USPS Privacy Act Statement

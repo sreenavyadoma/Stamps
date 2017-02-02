@@ -20,11 +20,11 @@ Then /^(?:O|o)n Order Details form, Add Item (\d+), Qty (\d+), ID (.+), Descript
   test_data[:item_id] = id
   test_data[:item_description] = description
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(qty)
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set((id.downcase.include?"random")?"#{ParameterHelper.random_alpha_numeric}":id)
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set((description.downcase.include?"random")?"#{ParameterHelper.random_alpha_numeric}":description)
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
@@ -147,19 +147,19 @@ end
 Then /^(?:O|o)n Order Details form, set Pounds to (\d+)$/ do |value|
   test_data[:lb] = value
   stamps.orders.order_details.weight.lb.set test_data[:lb]
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, set Ounces to (\d+)$/ do |value|
   test_data[:oz] = value
   stamps.orders.order_details.weight.oz.set test_data[:oz]
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
-Then /^(?:O|o)n Order Details form, Blur out$/ do
-  stamps.orders.order_details.blur_out
+Then /^(?:O|o)n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
+  ((count.nil?)?1:count.to_i).times {stamps.orders.order_details.blur_out}
 end
 
 Then /^(?:O|o)n Order Details form, set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
@@ -173,7 +173,7 @@ Then /^(?:O|o)n Order Details form, set Length to (\d*)$/ do |value|
   test_data[:length] = value
   stamps.orders.order_details.dimensions.length.present?.should be true
   stamps.orders.order_details.dimensions.length.set(value)
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
@@ -181,7 +181,7 @@ Then /^(?:O|o)n Order Details form, set Width to (\d*)$/ do |value|
   test_data[:width] = value
   stamps.orders.order_details.dimensions.width.present?.should be true
   stamps.orders.order_details.dimensions.width.set(value)
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
@@ -189,7 +189,7 @@ Then /^(?:O|o)n Order Details form, set Height to (\d*)$/ do |value|
   test_data[:height] = value
   stamps.orders.order_details.dimensions.height.present?.should be true
   stamps.orders.order_details.dimensions.height.set(value)
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
@@ -205,7 +205,7 @@ Then /^(?:O|o)n Order Details form, set Insure-For to \$(.*)$/ do |value|
   stamps.orders.order_details.insure_for.set_and_agree_to_terms(value)
   10.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > 0
-    step "On Order Details form, Blur out"
+    step "On Order Details form, blur out"
   end
   step "Save Order Details data"
 end
@@ -222,14 +222,14 @@ Then /^(?:O|o)n Order Details form, set Tracking to \"([\w ]*)\"$/ do |value|
   stamps.orders.order_details.tracking.select(value)
   10.times do
     break if stamps.orders.order_details.tracking.cost.to_f > 0
-    step "On Order Details form, Blur out"
+    step "On Order Details form, blur out"
   end
   step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, set Ship-From to (\w+)$/ do |value|
   stamps.orders.order_details.ship_from.select(value)
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
@@ -291,9 +291,6 @@ Then /^(?:O|o)n Order Details form, set Ship-To to Domestic Address$/ do |table|
     street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
   end
 
-  #phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  #email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
-
   state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
   zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
   country = (address_table['country'].size==0)?"United States":address_table['country']
@@ -309,9 +306,6 @@ Then /^(?:O|o)n Order Details form, set Ship-To to Domestic Address$/ do |table|
   test_data[:state] = state
   test_data[:zip] = zip
   test_data[:country] = country
-
-  #test_data[:phone] = phone
-  #test_data[:email] = email
 
   step "On Order Details form, set Ship-To Country to #{test_data[:country]}"
   step "On Order Details form, set Ship-To to Domestic Address #{test_data[:ship_to]}"
