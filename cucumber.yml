@@ -38,7 +38,6 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 
 search_orders: --tags @search_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=search_orders
-bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_search
 
 output_username: --tags @output_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=webreg
 generate_username: --tags @generate_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=webreg
@@ -72,6 +71,7 @@ bvt_printing: --tags @bvt_printing --guess DEBUG=false JENKINS=true HEALTHCHECK=
 bvt_purchasing: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_purchasing
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_updates_domestic
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_updates_international
+bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_search
 
 # PRINT TWO UP EXPANDED
 print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_two_up_expanded_sdc1200_left_print3

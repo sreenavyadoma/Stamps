@@ -71,7 +71,7 @@ module Stamps
         def initialize(param, index)
           super(param)
           @delete = StampsElement.new(browser.spans(css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[index-1])
-          @customs_item_description = StampsTextbox.new((browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[index-1]))
+          @customs_item_description = StampsTextbox.new(browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[index-1])
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[index-1]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[index-1]
@@ -113,14 +113,12 @@ module Stamps
         end
 
         def item(number)
-          items_cache[number] = SingleCustomsItem.new(param, number) unless items_cache.has_key?(number)
-          customs_item = items_cache[number]
-          return customs_item if customs_item.present?
-          10.times do
-            return customs_item if customs_item.present?
+          5.times do
+            sleep(0.5)
             add_btn.safe_click if number > size
-            sleep(1.5)
-            logger.info "Item Count: #{size}"
+            sleep(0.5)
+            items_cache[number] = SingleCustomsItem.new(param, number) unless items_cache.has_key?(number)
+            return items_cache[number] if items_cache[number].present?
           end
           customs_item
         end
