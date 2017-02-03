@@ -53,7 +53,7 @@ module Stamps
           logger.info "#{name} #{selection}"
           drop_down.safe_click
           unless text.include?(selection)
-            selection_element = StampsElement.new(browser.lis(text: selection)[index])
+            selection_element = StampsElement.new(browser.lis(text: selection)[index+1])
             10.times do
               drop_down.safe_click unless selection_element.present?
               selection_element.safe_click
@@ -178,7 +178,7 @@ module Stamps
         def initialize(param)
           super(param)
           @text_box = StampsTextbox.new browser.text_field(name: "CustomsContents")
-          @drop_down = StampsElement.new browser.div id:("sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
+          @drop_down = StampsElement.new browser.div(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
         end
 
         def select(selection)
@@ -206,7 +206,7 @@ module Stamps
         def initialize(param)
           super(param)
           @text_box = StampsTextbox.new browser.text_field name: "NonDelivery"
-          @drop_down = StampsElement.new browser.div id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker"
+          @drop_down = StampsElement.new browser.div(id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker")
         end
 
         def select(selection)
