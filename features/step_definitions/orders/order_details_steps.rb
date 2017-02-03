@@ -280,32 +280,22 @@ end
 Then /^(?:O|o)n Order Details form, set Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
 
-  name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
-  company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
-  city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
+  test_data[:name] = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  test_data[:company] = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  test_data[:street_address] = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
 
   if address_table['street_address_2'].nil?
-    street_address_2 = ""
+    test_data[:street_address_2] = ""
   else
-    street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
+    test_data[:street_address_2] = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
   end
 
-  state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
-  zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
-  country = (address_table['country'].size==0)?"United States":address_table['country']
+  test_data[:city] = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  test_data[:state] = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
+  test_data[:zip] = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
+  test_data[:country] = (address_table['country'].size==0)?"United States":address_table['country']
 
-  ship_to = "#{name},#{company},#{street_address},#{street_address_2} ,#{city} #{state} #{zip}"
-
-  test_data[:ship_to] = ship_to
-  test_data[:name] = name
-  test_data[:company] = company
-  test_data[:city] = city
-  test_data[:street_address] = street_address
-  test_data[:street_address_2] = street_address_2
-  test_data[:state] = state
-  test_data[:zip] = zip
-  test_data[:country] = country
+  test_data[:ship_to] = "#{test_data[:name]},#{test_data[:company]},#{test_data[:street_address]},#{test_data[:street_address_2]} ,#{test_data[:city]} #{test_data[:state]} #{test_data[:zip]}"
 
   step "On Order Details form, set Ship-To Country to #{test_data[:country]}"
   step "On Order Details form, set Ship-To to Domestic Address #{test_data[:ship_to]}"
@@ -314,28 +304,16 @@ end
 Then /^(?:O|o)n Order Details International form, set address to$/ do |table|
   address_table = table.hashes.first
 
-  country = address_table['country']
-  name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
-  company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
-  city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
-
-  street_address_1 = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
-  street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
-  province = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
-  postal_code = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
-
-  test_data[:country] = country
-  test_data[:name] = name
-  test_data[:company] = company
-  test_data[:street_address_1] = street_address_1
-  test_data[:street_address_2] = street_address_2
-  test_data[:city] = city
-  test_data[:province] = province
-  test_data[:postal_code] = postal_code
-  test_data[:phone] = phone
-  test_data[:email] = email
+  test_data[:country] = address_table['country']
+  test_data[:name] = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  test_data[:company] = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  test_data[:street_address_1] = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
+  test_data[:street_address_2] = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
+  test_data[:city] = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  test_data[:province] = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
+  test_data[:postal_code] = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
+  test_data[:phone] = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  test_data[:email] = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
 
   step "On Order Details form, set Ship-To Country to #{test_data[:country]}"
   step "On Order Details form, set International Ship-To Name to \"#{test_data[:name]}\""

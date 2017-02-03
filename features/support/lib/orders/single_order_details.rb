@@ -1349,13 +1349,12 @@ module Stamps
       end
 
       class ItemsOrderedSection < Browser::Modal
-        attr_reader :add_btn, :drop_down, :items_cache
+        attr_reader :add_btn, :drop_down
 
         def initialize(param)
           super(param)
           @add_btn = StampsElement.new(browser.span(css: "span[class*=sdc-icon-add]"))
           @drop_down = StampsElement.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
-          @items_cache = Hash.new
         end
       
         def expand
@@ -1381,16 +1380,14 @@ module Stamps
         end
 
         def item(number)
-          items_cache[number] = AssociatedOrderItem.new(param, number) unless items_cache.has_key?(number)
-          item_details = items_cache[number]
-          return item_details if item_details.present?
+          associated_item = AssociatedOrderItem.new(param, number)
           10.times do
-            return item_details if item_details.present?
+            return associated_item if associated_item.present?
+            sleep(0.5)
             add_btn.safe_click if number > size
-            sleep(1.5)
             logger.info "Item Count: #{size}"
           end
-          item_details
+          associated_item
         end
       end
 

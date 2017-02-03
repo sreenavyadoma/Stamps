@@ -432,7 +432,6 @@ module Stamps
       def set(value)
         text_box.set(value)
         logger.info "#{@name} set to #{text_box.text}"
-        text.should eql value
       end
 
       def increment(value)

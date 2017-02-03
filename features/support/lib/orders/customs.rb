@@ -96,11 +96,10 @@ module Stamps
       end
 
       class AssociatedCustomsItems < Browser::Modal
-        attr_reader :items_cache, :add_btn
+        attr_reader :add_btn
 
         def initialize(param)
           super(param)
-          @items_cache = Hash.new
           @add_btn = StampsElement.new(browser.span(css: "div[id^=associatedcustomsitems]>div[id^=toolbar]>div>div>a>span>span>span[class*=sdc-icon-add]"))
         end
 
@@ -113,12 +112,11 @@ module Stamps
         end
 
         def item(number)
+          customs_item = SingleCustomsItem.new(param, number)
           5.times do
-            sleep(0.5)
+            return customs_item if customs_item.present?
+            sleep(0.10)
             add_btn.safe_click if number > size
-            sleep(0.5)
-            items_cache[number] = SingleCustomsItem.new(param, number) unless items_cache.has_key?(number)
-            return items_cache[number] if items_cache[number].present?
           end
           customs_item
         end
@@ -179,8 +177,8 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new browser.text_field name: "CustomsContents"
-          @drop_down = StampsElement.new browser.div id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker"
+          @text_box = StampsTextbox.new browser.text_field(name: "CustomsContents")
+          @drop_down = StampsElement.new browser.div id:("sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
         end
 
         def select(selection)
