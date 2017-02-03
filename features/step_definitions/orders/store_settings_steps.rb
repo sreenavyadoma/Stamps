@@ -12,21 +12,21 @@ Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipp
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
 
   service_mapping_item =@store_settings.service_mapping.item item_number.to_i
-  service_mapping_item.requested_services.set (requested_services.downcase.include? "random")?ParameterHelper.random_alpha_numeric(20):requested_services
+  service_mapping_item.requested_services.set(requested_services.downcase.include? "random")?ParameterHelper.random_alpha_numeric(20):requested_services
   service_mapping_item.shipping_Service.select shipping_service
 end
 
 Then /^Store Settings: Set Automatically Import New Orders to checked$/ do
   #logger.step "Store Settings: Set Automatically Import New Orders to checked"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
-  sleep 1
+  sleep(1)
   @store_settings.automatically_import_new_web_apps.orders.check
 end
 
 Then /^Store Settings: Uncheck Automatically Import New Orders$/ do
   #logger.step "Store Settings: Uncheck Automatically Import New Orders"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
-  sleep 1
+  sleep(1)
   @store_settings.automatically_import_new_web_apps.orders.uncheck
 end
 

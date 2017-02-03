@@ -1,46 +1,47 @@
 Then /^(?:O|o)n Order Details form, Expand Manual Items Ordered pane$/ do
-  stamps.orders.order_details.item_grid.expand
+  stamps.orders.order_details.items_ordered.expand
 end
 
 Then /^(?:O|o)n Order Details form, Collapse Manual Items Ordered pane$/ do
-  stamps.orders.order_details.item_grid.collapse_item
+  stamps.orders.order_details.items_ordered.collapse
 end
 
 Then /^(?:O|o)n Order Details form, Expand Store Items Ordered pane$/ do
-  stamps.orders.order_details.item_grid.expand
+  stamps.orders.order_details.items_ordered.expand
 end
 
 Then /^(?:O|o)n Order Details form, Collapse Store Items Ordered pane$/ do
-  stamps.orders.order_details.item_grid.collapse_store_item
+  stamps.orders.order_details.items_ordered.collapse_store_item
 end
 
 Then /^(?:O|o)n Order Details form, Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
-  item = stamps.orders.order_details.item_grid.item item_number.to_i
-  step "On Order Details form, Blur out"
-  item.qty.set qty
-  step "On Order Details form, Blur out"
-  item.id.set (id.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : id
-  step "On Order Details form, Blur out"
-  item.description.set (description.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : description
-  step "On Order Details form, Blur out"
+  test_data[:item_number] = item_number.to_i
+  test_data[:item_qty] = qty
+  test_data[:item_id] = id
+  test_data[:item_description] = description
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(qty)
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set((id.downcase.include?"random")?"#{ParameterHelper.random_alpha_numeric}":id)
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set((description.downcase.include?"random")?"#{ParameterHelper.random_alpha_numeric}":description)
+  step "On Order Details form, blur out"
   step "Save Order Details data"
-  step "On Order Details form, Blur out"
 end
 
 Then /^(?:O|o)n Order Details form, Add Item (\d+)$/ do |value|
-  @details_line_item = stamps.orders.order_details.item_grid.item(value.to_i)
+  @details_line_item = stamps.orders.order_details.items_ordered.item(value.to_i)
 end
 
 Then /^(?:O|o)n Order Details form, set Qty to (\d+)$/ do |value|
-  @details_line_item.qty.set value
+  @details_line_item.qty.set(value)
 end
 
 Then /^(?:O|o)n Order Details form, set ID to (.*)$/ do |value|
-  @details_line_item.id.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  @details_line_item.id.set(value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^(?:O|o)n Order Details form, set Description to (.*)$/ do |value|
-  @details_line_item.description.set (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  @details_line_item.description.set(value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
 end
 
 Then /^(?:O|o)n Order Details form, set Ship-To Country to (.*)$/ do |country|
@@ -51,7 +52,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Name to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_name] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.name.send_keys :enter
+    stamps.orders.order_details.ship_to.international.name.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.name.set test_data[:int_ship_to_name]
   end
@@ -60,7 +61,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Company to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_company] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.company.send_keys :enter
+    stamps.orders.order_details.ship_to.international.company.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.company.set test_data[:int_ship_to_company]
   end
@@ -69,7 +70,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Address 1 to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_address_1] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.address_1.send_keys :enter
+    stamps.orders.order_details.ship_to.international.address_1.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.address_1.set test_data[:int_ship_to_address_1]
   end
@@ -78,7 +79,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Address 2 to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_address_2] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.address_2.send_keys :enter
+    stamps.orders.order_details.ship_to.international.address_2.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.address_2.set test_data[:int_ship_to_address_2]
   end
@@ -87,7 +88,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To City to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_city] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.city.send_keys :enter
+    stamps.orders.order_details.ship_to.international.city.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.city.set test_data[:int_ship_to_city]
   end
@@ -96,7 +97,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Province to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_province] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.province.send_keys :enter
+    stamps.orders.order_details.ship_to.international.province.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.province.set test_data[:int_ship_to_province]
   end
@@ -105,7 +106,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Postal Code to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_postal_code] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.postal_code.send_keys :enter
+    stamps.orders.order_details.ship_to.international.postal_code.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.postal_code.set test_data[:int_ship_to_postal_code]
   end
@@ -114,7 +115,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Phone to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_phone] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.phone.send_keys :enter
+    stamps.orders.order_details.ship_to.international.phone.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.phone.set test_data[:int_ship_to_phone]
   end
@@ -123,7 +124,7 @@ end
 Then /^(?:O|o)n Order Details form, set International Ship-To Email to \"(.*)\"$/ do |value|
   test_data[:int_ship_to_email] = ((value.downcase == "random")? ParameterHelper.random_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.email.send_keys :enter
+    stamps.orders.order_details.ship_to.international.email.send_keys(:enter)
   else
     stamps.orders.order_details.ship_to.international.email.set test_data[:int_ship_to_email]
   end
@@ -134,7 +135,7 @@ Then /^(?:O|o)n Order Details form, Expand panel$/ do
 end
 
 Then /^(?:O|o)n Order Details form, Delete Item (\d+)$/ do |item_number|
-  item = stamps.orders.order_details.item_grid.item item_number.to_i
+  item = stamps.orders.order_details.items_ordered.item item_number.to_i
   item.delete.safe_click
 end
 
@@ -146,19 +147,19 @@ end
 Then /^(?:O|o)n Order Details form, set Pounds to (\d+)$/ do |value|
   test_data[:lb] = value
   stamps.orders.order_details.weight.lb.set test_data[:lb]
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, set Ounces to (\d+)$/ do |value|
   test_data[:oz] = value
   stamps.orders.order_details.weight.oz.set test_data[:oz]
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
-Then /^(?:O|o)n Order Details form, Blur out$/ do
-  stamps.orders.order_details.blur_out
+Then /^(?:O|o)n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
+  ((count.nil?)?1:count.to_i).times {stamps.orders.order_details.blur_out}
 end
 
 Then /^(?:O|o)n Order Details form, set Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
@@ -171,21 +172,24 @@ end
 Then /^(?:O|o)n Order Details form, set Length to (\d*)$/ do |value|
   test_data[:length] = value
   stamps.orders.order_details.dimensions.length.present?.should be true
-  stamps.orders.order_details.dimensions.length.set value
+  stamps.orders.order_details.dimensions.length.set(value)
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, set Width to (\d*)$/ do |value|
   test_data[:width] = value
   stamps.orders.order_details.dimensions.width.present?.should be true
-  stamps.orders.order_details.dimensions.width.set value
+  stamps.orders.order_details.dimensions.width.set(value)
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, set Height to (\d*)$/ do |value|
   test_data[:height] = value
   stamps.orders.order_details.dimensions.height.present?.should be true
-  stamps.orders.order_details.dimensions.height.set value
+  stamps.orders.order_details.dimensions.height.set(value)
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
@@ -198,13 +202,11 @@ Then /^(?:O|o)n Order Details form, uncheck Insure-For checkbox$/ do
 end
 
 Then /^(?:O|o)n Order Details form, set Insure-For to \$(.*)$/ do |value|
-  test_data[:insure_for] = value
-  stamps.orders.order_details.insure_for.set_and_agree(test_data[:insure_for])
-  20.times do
+  stamps.orders.order_details.insure_for.set_and_agree_to_terms(value)
+  10.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > 0
-    step "On Order Details form, Blur out"
+    step "On Order Details form, blur out"
   end
-  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
   step "Save Order Details data"
 end
 
@@ -214,23 +216,20 @@ end
 
 Then /^(?:O|o)n Order Details form, set Tracking to Signature Required$/ do
   step "On Order Details form, set Tracking to \"Signature Required\""
-  step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, set Tracking to \"([\w ]*)\"$/ do |value|
-  stamps.orders.order_details.tracking.select value
+  stamps.orders.order_details.tracking.select(value)
   10.times do
     break if stamps.orders.order_details.tracking.cost.to_f > 0
-    step "On Order Details form, Blur out"
+    step "On Order Details form, blur out"
   end
-  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
-  test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
   step "Save Order Details data"
 end
 
 Then /^(?:O|o)n Order Details form, set Ship-From to (\w+)$/ do |value|
-  stamps.orders.order_details.ship_from.select value
-  step "On Order Details form, Blur out"
+  stamps.orders.order_details.ship_from.select(value)
+  step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
@@ -281,38 +280,22 @@ end
 Then /^(?:O|o)n Order Details form, set Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
 
-  name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
-  company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
-  city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  street_address = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
+  test_data[:name] = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  test_data[:company] = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  test_data[:street_address] = (address_table['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address']
 
   if address_table['street_address_2'].nil?
-    street_address_2 = ""
+    test_data[:street_address_2] = ""
   else
-    street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
+    test_data[:street_address_2] = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_string(2, 7) : address_table['street_address_2']
   end
 
-  #phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  #email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
+  test_data[:city] = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  test_data[:state] = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
+  test_data[:zip] = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
+  test_data[:country] = (address_table['country'].size==0)?"United States":address_table['country']
 
-  state = (address_table['state'].downcase.include? "random") ? ParameterHelper.random_string : address_table['state']
-  zip = (address_table['zip'].downcase.include? "random") ? ParameterHelper.random_string : address_table['zip']
-  country = (address_table['country'].size==0)?"United States":address_table['country']
-
-  ship_to = "#{name},#{company},#{street_address},#{street_address_2} ,#{city} #{state} #{zip}"
-
-  test_data[:ship_to] = ship_to
-  test_data[:name] = name
-  test_data[:company] = company
-  test_data[:city] = city
-  test_data[:street_address] = street_address
-  test_data[:street_address_2] = street_address_2
-  test_data[:state] = state
-  test_data[:zip] = zip
-  test_data[:country] = country
-
-  #test_data[:phone] = phone
-  #test_data[:email] = email
+  test_data[:ship_to] = "#{test_data[:name]},#{test_data[:company]},#{test_data[:street_address]},#{test_data[:street_address_2]} ,#{test_data[:city]} #{test_data[:state]} #{test_data[:zip]}"
 
   step "On Order Details form, set Ship-To Country to #{test_data[:country]}"
   step "On Order Details form, set Ship-To to Domestic Address #{test_data[:ship_to]}"
@@ -321,28 +304,16 @@ end
 Then /^(?:O|o)n Order Details International form, set address to$/ do |table|
   address_table = table.hashes.first
 
-  country = address_table['country']
-  name = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
-  company = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
-  city = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
-  phone = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
-  email = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
-
-  street_address_1 = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
-  street_address_2 = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
-  province = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
-  postal_code = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
-
-  test_data[:country] = country
-  test_data[:name] = name
-  test_data[:company] = company
-  test_data[:street_address_1] = street_address_1
-  test_data[:street_address_2] = street_address_2
-  test_data[:city] = city
-  test_data[:province] = province
-  test_data[:postal_code] = postal_code
-  test_data[:phone] = phone
-  test_data[:email] = email
+  test_data[:country] = address_table['country']
+  test_data[:name] = (address_table['name'].downcase.include? "random") ? ParameterHelper.random_name : address_table['name']
+  test_data[:company] = (address_table['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address_table['company']
+  test_data[:street_address_1] = (address_table['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address_table['street_address_1']
+  test_data[:street_address_2] = (address_table['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address_table['street_address_2']
+  test_data[:city] = (address_table['city'].downcase.include? "random") ? ParameterHelper.random_string : address_table['city']
+  test_data[:province] = (address_table['province'].downcase.include? "random") ? ParameterHelper.random_string : address_table['province']
+  test_data[:postal_code] = (address_table['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address_table['postal_code']
+  test_data[:phone] = (address_table['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address_table['phone']
+  test_data[:email] = (address_table['email'].downcase.include? "random") ? ParameterHelper.random_email : address_table['email']
 
   step "On Order Details form, set Ship-To Country to #{test_data[:country]}"
   step "On Order Details form, set International Ship-To Name to \"#{test_data[:name]}\""

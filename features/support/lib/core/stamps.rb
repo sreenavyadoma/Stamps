@@ -60,10 +60,10 @@ module Stamps
     begin
       @stamps ||= StampsCom.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      logger.message ""
+      logger.message "#{e.message}"
+      logger.message "#{e.backtrace.join "\n"}"
+      logger.message ""
       "#{e.backtrace.join("\n")}".should eql e.message
       #@google_home_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
     end

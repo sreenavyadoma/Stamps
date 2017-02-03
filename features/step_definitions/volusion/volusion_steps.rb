@@ -47,43 +47,43 @@ Then /^Volusion New to Mail Stamps: Click Continue$/ do
 end
 
 Then /^Volusion Shipping Address: Set First Name to (.*)$/ do |value|
-  @volusion_shipping_address.first_name.set (value.downcase == "random")?(ParameterHelper.random_name):value
+  @volusion_shipping_address.first_name.set(value.downcase == "random")?(ParameterHelper.random_name):value
 end
 
 Then /^Volusion Shipping Address: Set Last Name to (.*)$/ do |value|
-  @volusion_shipping_address.last_name.set (value.downcase == "random")?(ParameterHelper.random_name):value
+  @volusion_shipping_address.last_name.set(value.downcase == "random")?(ParameterHelper.random_name):value
 end
 
 Then /^Volusion Shipping Address: Set Company to (.*)$/ do |value|
-  @volusion_shipping_address.company.set (value.downcase == "random")?(ParameterHelper.random_name):value
+  @volusion_shipping_address.company.set(value.downcase == "random")?(ParameterHelper.random_name):value
 end
 
 Then /^Volusion Shipping Address: Set Address 1 to (.*)$/ do |value|
-  @volusion_shipping_address.address_1.set value
+  @volusion_shipping_address.address_1.set(value)
 end
 
 Then /^Volusion Shipping Address: Set Address 2 to (.*)$/ do |value|
-  @volusion_shipping_address.address_2.set value
+  @volusion_shipping_address.address_2.set(value)
 end
 
 Then /^Volusion Shipping Address: Set City to (.*)$/ do |value|
-  @volusion_shipping_address.city.set value
+  @volusion_shipping_address.city.set(value)
 end
 
 Then /^Volusion Shipping Address: Set Country to (.*)$/ do |value|
-  @volusion_shipping_address.country.select value
+  @volusion_shipping_address.country.select(value)
 end
 
 Then /^Volusion Shipping Address: Set State to (.*)$/ do |value|
-  @volusion_shipping_address.state.select value
+  @volusion_shipping_address.state.select(value)
 end
 
 Then /^Volusion Shipping Address: Set Zip Code to (.*)$/ do |value|
-  @volusion_shipping_address.zip_code.set value
+  @volusion_shipping_address.zip_code.set(value)
 end
 
 Then /^Volusion Shipping Address: Set Phone Number to (.*)$/ do |value|
-  @volusion_shipping_address.phone_number.set (value.downcase == "random")?(ParameterHelper.random_phone):value
+  @volusion_shipping_address.phone_number.set(value.downcase == "random")?(ParameterHelper.random_phone):value
 end
 
 Then /^Volusion Shipping Address: Type of address - residential$/ do

@@ -16,16 +16,15 @@ Feature: Priority Mail and Large Dimensions
     * on Order Details form, set Length to 20
     * on Order Details form, set Width to 35
     * on Order Details form, set Height to 20
-    * on Order Details form, Blur out
-    * on Order Details form, Blur out
+    * on Order Details form, blur out
+    * on Order Details form, blur out
     * on Order Details form, expect Dimensions are hidden
     * on Order Details form, expect service is an empty string
     * on Order Details form, select service PM Package
-    * on Order Details form, Blur out
+    * on Order Details form, blur out
     * on Order Details form, set Length to 1
     * on Order Details form, set Width to 1
     * on Order Details form, set Height to 1
-    * on Order Details form, set Insure-For to $100.00
     * Pause for 2 seconds
     * on Order Details form, expect service Textbox is enabled
     * Pause for 1 second

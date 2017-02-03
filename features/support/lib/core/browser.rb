@@ -16,7 +16,7 @@ module Stamps
       end
     end
 
-    class BrowserElement
+    class StampsElement
       attr_reader(:browser, :element_helper, :element, :error_qtip_element, :error_qtip_element_attribute)
       def initialize(*args)
         case args.length
@@ -238,7 +238,7 @@ module Stamps
       end
     end
 
-    class SelectionElement < BrowserElement
+    class StampsSelection < StampsElement
       attr_accessor(:verify_element, :attribute, :verify_element_attrib)
       def initialize(element, verify_element, attribute, verify_element_attrib)
         super element
@@ -265,7 +265,7 @@ module Stamps
       end
     end
 
-    class WatirCheckbox < BrowserElement
+    class WatirCheckbox < StampsElement
       def check
         10.times do
           element_helper.set(element)
@@ -285,10 +285,10 @@ module Stamps
       end
     end
 
-    class CheckboxElement < BrowserElement
+    class StampsCheckbox < StampsElement
       attr_accessor(:verify_element, :attribute, :attribute_value)
       def initialize(element, verify_element, attribute, attribute_value)
-        super element
+        super(element)
         @verify_element = verify_element
         @attribute = attribute
         @attribute_value = attribute_value
@@ -324,7 +324,7 @@ module Stamps
       end
     end
 
-    class RadioElement < BrowserElement
+    class StampsRadio < StampsElement
       attr_accessor(:verify_element, :attribute, :attribute_value)
       def initialize(element, verify_element, attribute, attribute_value)
         super element
@@ -350,7 +350,7 @@ module Stamps
       end
     end
 
-    class TextboxElement < BrowserElement
+    class StampsTextbox < StampsElement
       def set(text)
         element_helper.set(element, text)
         self
@@ -365,7 +365,7 @@ module Stamps
       end
     end
 
-    class DropDownElement < BrowserElement
+    class StampsDropDown < StampsElement
       attr_accessor :drop_down, :text_box, :html_tag
       def initialize(browser, drop_down, html_tag, text_box)
         super(browser)
@@ -407,6 +407,47 @@ module Stamps
       def data_qtip(selection)
         selection_element = expose_selection(selection)
         selection_element.attribute_value "data-qtip"
+      end
+    end
+
+    class StampsNumberField < Browser::Modal
+      attr_reader :text_box, :inc_btn, :dec_btn, :name
+
+      def initialize(param, textbox, inc_btn, dec_btn, name)
+        super(param)
+        @text_box = StampsTextbox.new(textbox)
+        @inc_btn = StampsElement.new(inc_btn)
+        @dec_btn = StampsElement.new(dec_btn)
+        @name = name
+      end
+
+      def present?
+        text_box.present?
+      end
+
+      def text
+        text_box.text
+      end
+
+      def set(value)
+        text_box.set(value)
+        logger.info "#{@name} set to #{text_box.text}"
+      end
+
+      def increment(value)
+        current_value = text_box.text.to_i
+        value.to_i.times do
+          inc_btn.safe_click
+        end
+        expect(current_value + value.to_i).to eql text_box.text.to_i
+      end
+
+      def decrement(value)
+        current_value = text_box.text.to_i
+        value.to_i.times do
+          dec_btn.safe_click
+        end
+        expect(current_value + value.to_i).to eql text_box.text.to_i
       end
     end
 

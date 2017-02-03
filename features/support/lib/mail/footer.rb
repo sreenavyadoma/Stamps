@@ -2,7 +2,7 @@ module Stamps
   module Mail
     class PrintingProblem < Browser::Modal
       def element
-        BrowserElement.new ((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
+        StampsElement.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end
 
       def present?
@@ -19,12 +19,12 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @total = BrowserElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
+        @total = StampsElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
         @print_postage_modal = PrintPostageModal.new(param)
         @confirm_window = ConfirmPrint.new(param)
         @windows_print = Windows::PrintWindow.new
-        @print_button = BrowserElement.new browser.a(css: "a[class*=sdc-printpanel-printpostagebtn]")
-        @sample_button = BrowserElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
+        @print_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printpostagebtn]")
+        @sample_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
         @printing_problem = PrintingProblem.new(param)
       end
 
@@ -56,10 +56,10 @@ module Stamps
           if windows_print.present?
             break
           else
-            sleep 1
+            sleep(1)
           end
         end
-        sleep 2
+        sleep(2)
         #raise "Unable to open international mail modal." unless windows_print.present?
         logger.info "LAST CHANCE!!! #{windows_print.present?}"
         windows_print.print

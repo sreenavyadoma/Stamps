@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class RakutenSettings < StoreSettings
         def window_title
-          BrowserElement.new browser.div text: "Rakuten Settings"
+          StampsElement.new browser.div text: "Rakuten Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Rakuten < Browser::Modal
 
         def window_title
-          BrowserElement.new(browser.div text: "Connect your Rakuten Store")
+          StampsElement.new(browser.div text: "Connect your Rakuten Store")
         end
 
         def present?
@@ -26,7 +26,7 @@ module Stamps
         end
 
         def close
-          button = BrowserElement.new browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
+          button = StampsElement.new browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
           5.times do
             button.safe_click
             break unless present?
@@ -34,15 +34,15 @@ module Stamps
         end
 
         def seller_id
-          TextboxElement.new browser.text_field(name: "RakutenSellerID")
+          StampsTextbox.new browser.text_field(name: "RakutenSellerID")
         end
 
         def ftp_username
-          TextboxElement.new (browser.text_fields(name: "AuthToken").first)
+          StampsTextbox.new(browser.text_fields(name: "AuthToken").first)
         end
 
         def ftp_password
-          TextboxElement.new (browser.text_fields(name: "AuthToken").last)
+          StampsTextbox.new(browser.text_fields(name: "AuthToken").last)
         end
 
         def map_rakuten_sku
@@ -50,21 +50,21 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          CheckboxElement.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def connect
-          button = BrowserElement.new browser.span(text: "Connect")
+          button = StampsElement.new browser.span(text: "Connect")
           settings = RakutenSettings.new(param)
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
           server_error = Orders::Stores::ServerError.new(param)
-          connecting_button = BrowserElement.new browser.span(text: "Connecting...")
+          connecting_button = StampsElement.new browser.span(text: "Connecting...")
 
           max_server_error_retry_count = 5
 
           15.times do |counter|
             button.safe_click
-            sleep 2
+            sleep(2)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -87,7 +87,7 @@ module Stamps
       class ModifyRakutenStore < Rakuten
 
         def window_title
-          BrowserElement.new(browser.div text: "Modify your Rakuten Store Connection")
+          StampsElement.new(browser.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?

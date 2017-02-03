@@ -2,7 +2,7 @@ module Stamps
   module WebReg
     class DownloadPage < Browser::Modal
       def element
-        BrowserElement.new browser.h1 css: "div>h1"
+        StampsElement.new browser.h1 css: "div>h1"
       end
 
       def present?

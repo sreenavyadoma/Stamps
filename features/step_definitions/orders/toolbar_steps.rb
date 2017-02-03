@@ -7,7 +7,7 @@ Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
   rescue Exception => e
     logger.error e.message
     logger.error e.backtrace.join("\n")
-    "Unable to add new orders".should eql e.message
+    e.message.should eql "Add new order"
   end
 end
 
@@ -18,10 +18,12 @@ Then /^Save Order Details data$/ do
   test_data[:service_cost] = stamps.orders.order_details.service.cost
   test_data[:service] = stamps.orders.order_details.service.text_box.text
   test_data[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
+  test_data[:insure_for] = stamps.orders.order_details.insure_for.value
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost if stamps.orders.order_details.tracking.present?
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
   test_data[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
 end
 
 Then /^(?:I|i)n Orders Toolbar, Refresh Orders$/ do
@@ -39,7 +41,7 @@ Then /^(?:I|i)n Print modal, click Print button$/ do
   @printer = print_modal.printer.text_box.text
   @printing_on = print_modal.printing_on.text_box.text
   @printing_error = print_modal.print
-  sleep 4
+  sleep(4)
 end
 
 Then /^(?:I|i)n Print modal, Open Reprint Modal$/ do

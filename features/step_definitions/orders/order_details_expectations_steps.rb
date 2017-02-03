@@ -4,86 +4,74 @@ Then /^(?:O|o)n Order Details form, expect Ship-From saved value is the same$/ d
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).qty.text_box.text.should eql expectation
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.text_box.text.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) ID is (.*)$/ do |item_number, expectation|
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).id.text.should eql expectation
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.text.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Description is (.*)$/ do |item_number, expectation|
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).description.text.should eql expectation
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.text.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).qty.text_box.placeholder.should eql expectation
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.text_box.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).id.placeholder.should eql expectation
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).id.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  step "On Order Details form, Blur out"
-  stamps.orders.order_details.item_grid.item(item_number.to_i).description.placeholder.should eql expectation
+  step "On Order Details form, blur out"
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).description.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Address Placeholder is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.domestic.text_area.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Phone Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.phone.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Email Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.domestic.email.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect service Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.service.text_box.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Name is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.name.text.should eql value
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Company is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.company.text.should eql value
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Address 1 is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.address_1.text.should eql value
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Address 2 is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.address_2.text.should eql value
 end
 
@@ -92,27 +80,27 @@ Then /^(?:O|o)n Order Details form, expect International Ship-To Province is (.*
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Postal Code is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.postal_code.text.should eql value
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Phone is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.phone.text.should eql value
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Email is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.email.text.should eql value
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Country is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.country.text_box.text.should eql value
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To City is (.*)/ do |value|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.city.text.should eql value
 end
 
@@ -130,83 +118,83 @@ end
 
 Then /^(?:O|o)n Order Details form, expect Domestic Ship-To fields are hidden$/ do
   stamps.orders.order_details.ship_to.domestic.show_address
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.domestic.text_area.present?.should be false
 end
 
 Then /^(?:O|o)n Order Details form, expect Customs Restrictions button is visible/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.customs.browser_restrictions_button.present?.should be true
   stamps.orders.order_details.customs.restrictions.ok
 end
 
 Then /^(?:O|o)n Order Details form, expect Customs Restrictions button is hidden/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.customs.browser_restrictions_button.present?.should be false
 end
 
 Then /^(?:O|o)n Order Details form, expect Customs Edit Form button is visible/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^(?:O|o)n Order Details form, expect Customs Edit Form button is hidden/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^(?:O|o)n Order Details form, expect Customs Edit Form button is enabled/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.customs.browser_edit_form_button.present?.should be true
 end
 
 Then /^(?:O|o)n Order Details form, expect Customs Edit Form button is disabled/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.customs.browser_edit_form_button.present?.should be false
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Name Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.name.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Company Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.company.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Address 1 Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.address_1.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Address 2 Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.address_2.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To City Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.city.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Province Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.province.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Postal Code Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.postal_code.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Phone Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.phone.placeholder.should eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Email Placeholder is (.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.ship_to.international.email.placeholder.should eql expectation
 end
 
@@ -229,7 +217,7 @@ end
 
 Then /^(?:O|o)n Order Details form, expect Insure-For is \$(.*)$/ do |expectation|
   stamps.orders.order_details.insure_for.checkbox.check
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   10.times do
     break if stamps.orders.order_details.insure_for.text_box.text.to_f == expectation.to_f
   end
@@ -237,12 +225,12 @@ Then /^(?:O|o)n Order Details form, expect Insure-For is \$(.*)$/ do |expectatio
 end
 
 Then /^(?:O|o)n Order Details form, expect Insure-For Cost saved value is the same$/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "On Order Details form, expect Insure-For Cost is $#{test_data[:insure_for_cost]}"
 end
 
 Then /^(?:O|o)n Order Details form, expect Insure-For Cost is \$(.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   5.times do
     break if stamps.orders.order_details.insure_for.cost == expectation
   end
@@ -250,7 +238,7 @@ Then /^(?:O|o)n Order Details form, expect Insure-For Cost is \$(.*)$/ do |expec
 end
 
 Then /^(?:O|o)n Order Details form, expect Insure-For Cost is greater than \$(.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   10.times do
     break if stamps.orders.order_details.insure_for.cost.to_f > expectation.to_f
   end
@@ -258,12 +246,12 @@ Then /^(?:O|o)n Order Details form, expect Insure-For Cost is greater than \$(.*
 end
 
 Then /^(?:O|o)n Order Details form, expect service \"(.*)\" is disabled/ do |service|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.service.disabled?(service).should be true
 end
 
 Then /^(?:O|o)n Order Details form, expect service \"(.*)\" is enabled/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   stamps.orders.order_details.service.enabled?(expectation).should be true
 end
 
@@ -297,7 +285,7 @@ end
 Then /^(?:O|o)n Order Details form, expect service Cost is \$(.*)$/ do |expectation|
   expectation = expectation.to_f
   10.times do
-    sleep 1
+    sleep(1)
     break if stamps.orders.order_details.service.cost.to_f == expectation
   end
   stamps.orders.order_details.service.cost.to_f.should eql expectation
@@ -385,7 +373,7 @@ Then /^(?:O|o)n Order Details form, expect Tracking is USPS Tracking$/ do
 end
 
 Then /^(?:O|o)n Order Details form, expect Tracking is \"([\w\s]*)\"$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   10.times do
     break if stamps.orders.order_details.tracking.text_box.text.include? expectation
   end
@@ -393,12 +381,12 @@ Then /^(?:O|o)n Order Details form, expect Tracking is \"([\w\s]*)\"$/ do |expec
 end
 
 Then /^(?:O|o)n Order Details form, expect Total Ship Cost saved value is correct$/ do
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   step "On Order Details form, expect Tracking Cost is $#{test_data[:tracking_cost]}"
 end
 
 Then /^(?:O|o)n Order Details form, expect Total Ship Cost is \$(.*)$/ do |expectation|
-  step "On Order Details form, Blur out"
+  step "On Order Details form, blur out"
   10.times do
     break if stamps.orders.order_details.footer.total_ship_cost.eql? expectation
   end

@@ -15,7 +15,6 @@ Feature: Priority Mail and Large Dimensions
     Then on Order Details form, set Length to 20
     Then on Order Details form, set Width to 35
     Then on Order Details form, set Height to 20
-    Then on Order Details form, set Insure-For to $100.00
     Then on Order Details form, set Ounces to 2
     Then on Order Details form, set Pounds to 1
     Then Pause for 2 seconds

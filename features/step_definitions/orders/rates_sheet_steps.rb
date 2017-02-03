@@ -326,7 +326,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         # Set address to proper zone
         step "on Order Details form, set Ship-To to address in Zone #{zone}"
 
-
         # spreadsheet price for zone
 
         if row[zone_column] == nil
@@ -351,13 +350,10 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:status]] = "--"
           @result_sheet[row_number, @result_sheet_columns[:results]] = "--"
         else
-
           price = (row[zone_column].to_f * 100).round / 100.0
-
           # set expectation column for this row to zone price
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:zone]]= price
-
           @result_sheet[row_number, @result_sheet_columns[:username]] = test_data[:username]
           @result_sheet[row_number, @result_sheet_columns[:ship_from]] = test_data[:ship_from]
           @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
@@ -370,11 +366,10 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
           logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} Weight: #{weight_lb}"
+          logger.step "#{"#"*10} Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Test Row #{row_number}. Weight: #{weight_lb}, Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} "
-          logger.step"#{"#"*80}"
+          logger.step"#{"#"*50}"
           if param_helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_lb
@@ -401,8 +396,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
           # Set Tracking
           begin
-            tracking = row[@rate_sheet_columns[:tracking]]
-            step "On Order Details form, set Tracking to #{tracking}"
+            step "On Order Details form, set Tracking to #{row[@rate_sheet_columns[:tracking]]}"
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = test_data[:tracking]
@@ -414,9 +408,6 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # Set weight to 0
           step "On Order Details form, set Pounds to 0"
           step "On Order Details form, set Ounces to 0"
-
-          #@result_sheet[row_number, zone_column].should_not be nil
-          #@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].should_not be nil
 
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
@@ -430,12 +421,11 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             @result_sheet.row(row_number).set_format(@result_sheet_columns[:status], fail_format)
             @result_sheet[row_number, @result_sheet_columns[:results]] = "Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]}"
           end
-
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
-          logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}, Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
+          logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
+          looger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
           logger.step "#{"#"*10} Ship-To Address: #{test_data[:name]}, #{test_data[:street_address]}, #{test_data[:city]}, #{test_data[:state]}, #{test_data[:zip]}"
-          logger.step "#{"#"*10} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]}"
+          logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
           logger.step "#{"#"*10} "
         end
 

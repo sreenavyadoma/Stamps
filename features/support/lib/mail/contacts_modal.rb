@@ -10,7 +10,7 @@ module Stamps
         frame1 = browser.iframe(css: 'iframe[class*=sdc-addressbookiframe]')
         frame1.a(text: 'View Contacts').click
 
-        sleep 3
+        sleep(3)
       end
 
       def wait_until_present
@@ -26,7 +26,7 @@ module Stamps
       end
 
       def window_title
-        BrowserElement.new (browser.span text: "Search Contacts")
+        StampsElement.new(browser.span text: "Search Contacts")
       end
 
       def search

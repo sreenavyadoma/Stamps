@@ -9,7 +9,6 @@ Feature: Mail Balance
     Then on Order Details form, set Ship-To to address in Zone 1 through 4
     Then on Order Details form, set Pounds to 1
     Then on Order Details form, select service PM Package
-    Then on Order Details form, set Insure-For to $10.00
     Then on Order Details form, set Tracking to USPS Tracking
     Then Pause for 1 second
     Then Save Order Details data

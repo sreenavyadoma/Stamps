@@ -176,7 +176,7 @@ Then /^Mail Shipping Labels: Expect Domestic Address field displays (.*)$/ do |v
       actual_stripped = actual.gsub(/ \n/,", ")
       actual_stripped_final = actual_stripped.gsub(/\n/,", ")
       break if actual_stripped_final == value
-      sleep 2
+      sleep(2)
     end
   }
   actual = stamps.mail.ship_to.text_area.text

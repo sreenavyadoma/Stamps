@@ -43,14 +43,14 @@ module Stamps
           scroll column
 
           column_span = browser.span text: GRID_COLUMNS[column]
-          column_field = BrowserElement.new column_span
+          column_field = StampsElement.new column_span
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
 
           10.times do
             column_field.scroll_into_view
             column_field.safe_click
             2.times do
-              sleep 1
+              sleep(1)
               return sort_order if column_span.parent.parent.parent.parent.parent.attribute_value("class").include? sort_order
             end
           end
@@ -175,7 +175,7 @@ module Stamps
           scroll_into_view
           8.times{
             break if size > 0
-            sleep 1
+            sleep(1)
           }
 
           if size == 0
@@ -273,7 +273,7 @@ module Stamps
 
         def data order_id
           scroll_into_view
-          sleep 1
+          sleep(1)
           grid_text_by_id :recipient, order_id
         end
 
@@ -781,7 +781,7 @@ module Stamps
       class GridCheckBox < Column
 
         def scroll_into_view
-          field = BrowserElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
+          field = StampsElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
           field.scroll_into_view
           field
         end
@@ -793,7 +793,7 @@ module Stamps
           check_verify_field = browser.div css: "div[class*=x-column-header-checkbox]"
           attribute = "class"
           attrib_value_check = "checker-on"
-          Stamps::Browser::CheckboxElement.new checkbox_field, check_verify_field, attribute, attrib_value_check
+          Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
         def check_all *args
@@ -846,7 +846,7 @@ module Stamps
         def checkbox_element(number)
           div = row_div(number)
           verify_field = div.parent.parent.parent.parent.parent #browser.table(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})")
-          CheckboxElement.new(div, verify_field, "class", "selected")
+          StampsCheckbox.new(div, verify_field, "class", "selected")
         end
 
         def check(number)
@@ -1035,7 +1035,7 @@ module Stamps
         def initialize(param)
           super(param)
           @column = GridColumns.new(param)
-          @grid_element = BrowserElement.new browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
+          @grid_element = StampsElement.new browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid]")
         end
 
         def present?

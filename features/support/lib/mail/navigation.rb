@@ -5,7 +5,7 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @username = BrowserElement.new browser.span id: "userNameText"
+        @username = StampsElement.new browser.span id: "userNameText"
       end
     end
   end

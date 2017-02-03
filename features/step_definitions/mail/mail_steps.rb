@@ -13,7 +13,7 @@ end
 
 Then /^Mail Stamps: Set Ship-From to (.*)/ do |value|
   #logger.step "Set Print Mail Ship-From to: \n #{value}"
-  stamps.mail.netstamps.ship_from.select value
+  stamps.mail.netstamps.ship_from.select(value)
 end
 
 Then /^Mail Stamps: Set Ship-To country to (.*)/ do |country|

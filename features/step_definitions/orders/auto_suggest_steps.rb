@@ -44,7 +44,7 @@ Then /^Expect Domestic Address is (.*)$/ do |value|
     actual = stamps.orders.order_details.ship_to.domestic.text_area.text
     actual_stripped = actual.gsub(/\n/,", ")
     break if actual_stripped == value
-    sleep 2
+    sleep(2)
   end}
   actual =  stamps.orders.order_details.ship_to.domestic.text_area.text
   actual_stripped = actual.gsub(/\n/,", ")

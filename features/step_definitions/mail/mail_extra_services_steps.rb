@@ -17,7 +17,7 @@ Then /^Mail Extra Services: Set Security to (.*)/ do |security|
 end
 
 Then /^Mail Extra Services: Set Security Value to \$(\d+)/ do |value|
-  @extra_services.security_value.set value
+  @extra_services.security_value.set(value)
 end
 
 Then /^Mail Extra Services: Set Handling to (.*)/ do |handling|
@@ -90,7 +90,7 @@ end
 Then /^Mail Extra Services: Set Non-Rectangular to Checked$/ do
   #logger.step "Mail Extra Services: Check Non-Rectangular"
   @extra_services.non_rectangular.checkbox.check
-  sleep 2
+  sleep(2)
 end
 
 Then /^Mail Extra Services: Set Non-Rectangular to Unchecked$/ do

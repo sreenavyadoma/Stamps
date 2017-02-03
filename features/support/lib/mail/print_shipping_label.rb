@@ -66,30 +66,30 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @reference_number = TextboxElement.new browser.text_field(name: "referenceNumber")
+        @reference_number = StampsTextbox.new browser.text_field(name: "referenceNumber")
 
       end
 
       def preview_image
-        image = BrowserElement.new browser.div css: "div[style*='Label_selection_and_view.gif']"
+        image = StampsElement.new browser.div css: "div[style*='Label_selection_and_view.gif']"
       end
 
       def hide_postage_value
         checkbox_field = browser.input(id: "hidePostageCheckbox")
         verify_field = checkbox_field.parent.parent.parent.parent
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_receipt
         checkbox_field = browser.input(id: "printreceiptcheckbox")
         verify_field = checkbox_field.parent.parent.parent.parent
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_reference_number
         checkbox_field = browser.input(id: "printreferencecheckbox")
         verify_field = checkbox_field.parent.parent.parent.parent
-        Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+        Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def cost_code

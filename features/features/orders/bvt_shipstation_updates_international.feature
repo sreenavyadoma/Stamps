@@ -7,6 +7,7 @@ Feature:  Update International Orders to ShipStation
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation
     Then in Orders Toolbar, click Add button
+    Then on Order Details form, blur out
     Then on Order Details form, set Ship-From to default
     Then on Order Details International form, set address to
       | name          | company          | street_address_1  | street_address_2 | city   | province | postal_code | country | phone         |  email            |
@@ -26,14 +27,14 @@ Feature:  Update International Orders to ShipStation
     Then on Customs form, set Non-Delivery Options to Treat as abandoned
     Then on Customs form, set Internal Transaction Number to Required
     Then on Customs form, set ITN Number to "ITN123"
-    Then on Customs form, add associated Item 1, Description Item 1, Qty 1, Price 20, Origin United States, Tariff 10
+    Then on Customs form, add Associated Item 1, Description Item 1, Qty 1, Price 3, Origin United States, Tariff 2
+    Then on Customs form, add Associated Item 2, Description Item 1, Qty 2, Price 4, Origin United States, Tariff 2
+    Then on Customs form, add Associated Item 3, Description Item 1, Qty 3, Price 5, Origin United States, Tariff 2
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
 
     Then Pause for 2 seconds
-    Then on Order Details form, Blur out
-    Then on Order Details form, Blur out
-    Then on Order Details form, Blur out
+    Then on Order Details form, blur out 3 times
     Then Pause for 3 seconds
 
     Then In Orders Grid, uncheck saved Order ID
@@ -79,11 +80,11 @@ Feature:  Update International Orders to ShipStation
     Then on Customs form, expect Non-Delivery Options is Treat as abandoned
     Then on Customs form, expect Internal Transaction Number is Required
     Then on Customs form, expect ITN Number is ITN123
-    Then on Customs form, expect Item 1 Description is Item 1
-    Then on Customs form, expect Item 1 Quantity is 1
-    Then on Customs form, expect Item 1 Unit Price is 20.00
-    Then on Customs form, expect Item 1 Origin Country is United States
-    Then on Customs form, expect Item 1 Tariff is 10
+    Then on Customs form, expect Associated Item 1 Description is Item 1
+    Then on Customs form, expect Associated Item 1 Quantity is 1
+    Then on Customs form, expect Associated Item 1 Unit Price is 3.00
+    Then on Customs form, expect Associated Item 1 Origin Country is United States
+    Then on Customs form, expect Associated Item 1 Tariff is 2
     Then on Customs form, expect I agree to the USPS Privacy Act Statement is checked
     Then on Customs form, expect Total saved value is the same
     Then on Customs form, click Close button

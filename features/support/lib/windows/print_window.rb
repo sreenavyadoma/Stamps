@@ -32,7 +32,7 @@ module Stamps
       def wait_until_present
         5.times do
           break if present?
-          sleep 1
+          sleep(1)
         end
       end
 
@@ -82,7 +82,7 @@ module Stamps
           "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie".should eql ""
         end
         logger.info "Windows in Print modal, click Print buttoning successful."
-        sleep 3
+        sleep(3)
       end
     end
   end

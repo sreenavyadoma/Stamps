@@ -59,9 +59,9 @@ Then /^More Info: Close More Info page$/ do
   logger.step @more_info_page.title
   logger.step @more_info_page.title
   logger.step @more_info_page.title
-  sleep 2
+  sleep(2)
   @more_info_page.close
-  sleep 3
+  sleep(3)
 end
 
 Then /^Mail Sign In: Set Remember Username to Checked$/ do

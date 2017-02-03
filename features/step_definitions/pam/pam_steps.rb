@@ -15,7 +15,7 @@ Then /^(?:O|o)n PAM Customer Search page, set username to (.*)$/ do |username|
   test_data[:usr] = username unless username.downcase.include? "random"
   #logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
   @customer_search.username.set test_data[:usr]
-  sleep 1
+  sleep(1)
 end
 
 Then /^(?:O|o)n PAM Customer Search page, set 5.2 or lower$/ do
@@ -94,9 +94,9 @@ Then /^(?:O|o)n PAM Change Meter Limit page, click Submit$/ do
     @change_meter_limit.should be_truthy
     @change_meter_limit.submit.ok
   end
-  sleep 2
+  sleep(2)
   step "On PAM Customer Profile page, click Change Meter Limit link"
-  sleep 2
+  sleep(2)
   @change_meter_limit.current_meter_limit.should eql @change_meter_limit.maximum_meter_limit
 end
 

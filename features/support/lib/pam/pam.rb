@@ -49,7 +49,7 @@ module Stamps
 
         30.times do
           #search.wait_until_present
-          sleep 2
+          sleep(2)
           return customer_search_page if customer_search_page.present?
         end
         customer_search_page.present?.should be true

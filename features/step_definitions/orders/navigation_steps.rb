@@ -76,7 +76,7 @@ end
 Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amount|
   #logger.step "Expect \$#{purchase_amount} is added to customer balance"
   10.times do
-    sleep 1
+    sleep(1)
     new_balance = stamps.navigation_bar.balance.amount
     actual_purchased_amount = new_balance.to_f - test_data[:old_balance].to_f
     break if actual_purchased_amount ==  purchase_amount.to_f
