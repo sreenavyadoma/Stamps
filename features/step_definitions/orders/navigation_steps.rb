@@ -74,6 +74,6 @@ Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amo
   end
   new_balance = stamps.navigation_bar.balance.amount
   actual_purchased_amount = new_balance.to_f - test_data[:old_balance].to_f
-  actual_purchased_amount.should eql  purchase_amount.to_f
+  actual_purchased_amount.round(2).should eql purchase_amount.to_f.round(2)
 end
 

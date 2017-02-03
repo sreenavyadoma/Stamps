@@ -309,7 +309,7 @@ module Stamps
           amount = balance_element.text
           amount_no_dollar_sign = amount.gsub("$","")
           amount_stripped_all = amount_no_dollar_sign.gsub(",","")
-          return amount_stripped_all if amount_stripped_all.length > 0
+          return amount_stripped_all.to_f.round(2) if amount_stripped_all.length > 0
         end
       end
 
