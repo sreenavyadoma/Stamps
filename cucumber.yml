@@ -17,6 +17,7 @@ eli_dev: --tags @item_details   --guess DEBUG=true JENKINS=false HEALTHCHECK=tru
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
+
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
@@ -24,6 +25,8 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
+
+jenkinsvm: --tags @authentication --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
 rates_pme_comm_base: --tags @rates_pme_comm_base --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_base
 rates_pm_comm_base: --tags @rates_pm_comm_base --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pm_comm_base
