@@ -4,7 +4,7 @@ Feature: Reset Fields
   Background:
     Given a valid user is signed in to Web Apps
 
-  @general_settings @general_settings_dev
+  @general_settings_reset_fields @general_settings_dev
   Scenario: Reset Fields
 
     Then Open Settings Modal

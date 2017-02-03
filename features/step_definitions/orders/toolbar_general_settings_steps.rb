@@ -191,7 +191,7 @@ Then /^(?:I|i)n Settings modal, set Postdate to 11:00 p.m.$/ do
 end
 
 Then /^(?:I|i)n Settings modal, Postdate Set (.*)$/ do |value|
-  logger.set "In Settings modal, Postdate Set #{value}"
+  logger.step "In Settings modal, Postdate Set #{value}"
   case value.downcase
     when "12:00 a.m."
       @general_settings.post_date.twelve_am
