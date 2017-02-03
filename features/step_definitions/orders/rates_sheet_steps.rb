@@ -366,11 +366,10 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
           logger.step "#{"#"*10} "
+          logger.step "#{"#"*10} Weight: #{weight_lb}"
+          logger.step "#{"#"*10} Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Test Row #{row_number}. Weight: #{weight_lb}, Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} "
-          logger.step"#{"#"*80}"
+          logger.step"#{"#"*50}"
           if param_helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_lb
@@ -423,10 +422,10 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             @result_sheet[row_number, @result_sheet_columns[:results]] = "Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]}"
           end
           logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
-          logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}, Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
+          logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
+          looger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
           logger.step "#{"#"*10} Ship-To Address: #{test_data[:name]}, #{test_data[:street_address]}, #{test_data[:city]}, #{test_data[:state]}, #{test_data[:zip]}"
-          logger.step "#{"#"*10} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]}"
+          logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
           logger.step "#{"#"*10} "
         end
 
