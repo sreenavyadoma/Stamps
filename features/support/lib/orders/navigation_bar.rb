@@ -262,7 +262,7 @@ module Stamps
           return confirm_transaction if confirm_transaction.present?
           purchase_button.safe_click
           confirm_transaction.wait_until_present 5
-          account_balance_limit.text.should eql account_balance_limit.window_title.text if account_balance_limit.present?
+          "#{account_balance_limit.window_title.text}:  #{account_balance_limit.text}".should eql "Confirm Transaction Modal" if account_balance_limit.present?
         end
       end
 
