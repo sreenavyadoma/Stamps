@@ -1,12 +1,13 @@
 module Stamps
   module Navigation #todo-rob Refactor to WebApps module
     class TransactionComplete < Browser::Modal
-      attr_reader :window_title, :text_area
+      attr_reader :window_title, :text_area, :ok_btn
 
       def initialize(param)
         super(param)
         @window_title = StampsElement.new browser.div(text: "Transaction Complete")
         @text_area = StampsElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
+        @ok_btn = StampsElement.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
       end
 
       def wait_until_present *args
@@ -21,13 +22,8 @@ module Stamps
         text_area.text
       end
 
-      def ok_button
-        StampsElement.new(param.web_app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
-      end
-
       def ok
-        ok_button.safely_wait_until_present 5
-        ok_button.click_while_present
+        ok_btn.click_while_present
       end
     end
 
