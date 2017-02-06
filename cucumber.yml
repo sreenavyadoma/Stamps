@@ -1,4 +1,4 @@
-default: --profile cuke_reports --profile developers
+default: --profile cuke_reports --profile web_apps_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
