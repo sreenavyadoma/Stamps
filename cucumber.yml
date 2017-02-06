@@ -77,7 +77,7 @@ bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --gue
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_updates_international
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_search
 
-dev_bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=false HEALTHCHECK=false WEB_APP=orders
+dev_bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=developers
 
 # PRINT TWO UP EXPANDED
 print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_two_up_expanded_sdc1200_left_print3
