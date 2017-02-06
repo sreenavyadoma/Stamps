@@ -74,7 +74,7 @@ Before do  |scenario|
     else
       "Valid values are WEB_APP=orders or WEB_APP=mail".should eql "WEB_APP=#{ENV['WEB_APP']} is not a valid value."
     end
-  end unless (ENV['USER_CREDENTIALS'] == 'healthcheck' || ENV['USER_CREDENTIALS'].include?('webreg') || ENV['USER_CREDENTIALS'].include?('pam') || ENV['USER_CREDENTIALS'].include?('intellij'))
+  end unless (ENV['USER_CREDENTIALS'] == 'healthcheck' || ENV['USER_CREDENTIALS'].include?('webreg') || ENV['USER_CREDENTIALS'].include?('pam') || ENV['USER_CREDENTIALS'].include?('intellij') || ENV['USER_CREDENTIALS'].include?('developers'))
 
   test_data[:username] = ENV['USR']
   test_data[:web_app] = ENV['WEB_APP']
