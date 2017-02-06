@@ -23,8 +23,6 @@ module Stamps
           url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         when /rating/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
-        when /\./
-          url = "http://#{param.test_env}.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         else
           url = "https://#{param.test_env}/webpostage/SignIn/Default.aspx?env=Orders"
       end
