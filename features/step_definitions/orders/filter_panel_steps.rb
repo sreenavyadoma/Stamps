@@ -63,26 +63,23 @@ Then /^(?:I|i)n left Filter Panel, expect saved Order ID exist in (.*)$/ do |fil
 end
 
 Then /^Filter Panel: Search saved Order ID$/ do
-  test_data[:order_id].should be_truthy
   step "Filter Panel: Search for #{test_data[:order_id]}"
 end
 
 Then /^Filter Panel: Search saved Ship Name$/ do
-  test_data[:name].should be_truthy
   step "Filter Panel: Search for #{test_data[:name]}"
 end
 
 Then /^Filter Panel: Search saved Ship Company$/ do
-  test_data[:company].should be_truthy
   step "Filter Panel: Search for #{test_data[:company]}"
 end
 
 Then /^Filter Panel: Search saved Email$/ do
-  test_data[:email].should be_truthy
   step "Filter Panel: Search for #{test_data[:email]}"
 end
 
 Then /^Filter Panel: Search for (.*)$/ do |str|
+  str.should be_truthy
   test_data[:orders_search_str] = str
   stamps.orders.filter_panel.search_orders test_data[:orders_search_str]
 end
