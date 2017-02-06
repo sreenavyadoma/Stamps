@@ -1,12 +1,10 @@
 
 Given /^Visit Mail sign in page$/ do
-  #logger.step "I visit mail sign-in page"
   stamps.load_page
   browser.url.downcase.should include "webpostage"
 end
 
 Given /^I am signed in as Mail shipper$/ do
-  #logger.step "I am signed in as a mail shipper"
   step "Launch default browser"
   if ParameterHelper.to_bool ENV['HEALTHCHECK']
     step "Health Check: Print - Web Batch"
@@ -18,7 +16,6 @@ Given /^I am signed in as Mail shipper$/ do
 end
 
 Given /^I am signed in as Mail shipper (.*)\/(.*)/ do |username, password|
-  #logger.step "I am signed in as mail shipper #{username}/#{password}"
   step "I launched default browser"
   step "Visit Mail sign in page"
   stamps.mail.sign_in_modal.sign_in username, password
