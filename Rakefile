@@ -72,8 +72,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:web_apps_dev) do |t|
-  t.profile = 'web_apps_dev'
+Cucumber::Rake::Task.new(:dev_bvt_new_order) do |t|
+  t.profile = 'dev_bvt_new_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 
