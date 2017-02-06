@@ -1,7 +1,7 @@
 Feature: Purchasing BVT
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_bvt_purchasing
   Scenario: Purchasing $10

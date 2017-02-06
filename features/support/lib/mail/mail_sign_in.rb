@@ -164,29 +164,24 @@ module Stamps
             @username = args[0]['username']
             @password = args[0]['password']
           when Array
-            if args.length == 2
-              @username = args[0]
-              @password = args[1]
-            else
-              logger.info "Using Default Sign-in Credentials: #{ENV["USR"]}"
-              @username = ENV["USR"]
-              @password = ENV["PW"]
-            end
-          else
+            expect(args.length).to eql 2
+            @username = args[0]
+            @password = args[1]
+          when :default
             logger.message "Using Default Sign-in Credentials."
             @username = ENV["USR"]
             @password = ENV["PW"]
-            logger.message "USERNAME: #{@username}, PASSWORD: #{@password}"
         end
+        logger.message "USERNAME: #{@username}, PASSWORD: #{@password}"
         [@username, @password]
       end
 
-      def sign_in *args
+      def mail_sign_in *args
         user_credentials *args
 
         10.times do
-          username @username
-          password @password
+          username(@username)
+          password(@password)
           login
           whats_new_modal.close if whats_new_modal.present?
 
@@ -208,13 +203,7 @@ module Stamps
 
           break if signed_in_user.present?
 
-          if invalid_msg.present?
-            $invalid_message = true
-            logger.info "Invalid message is #{invalid_msg.text}"
-            logger.info "Message present is #{$invalid_message}"
-            break
-          end
-
+          expect(invalid_msg.text).to eql "Invalid Username & Password. #{@username}/#{@password}" if invalid_msg.present?
         end
 
         whats_new_modal.close if whats_new_modal.present?
@@ -324,11 +313,7 @@ module Stamps
 
           break if signed_in_user.present?
 
-          if invalid_msg.present?
-            $invalid_message = invalid_msg.text
-            logger.info "Invalid message is #{$invalid_message}"
-            break
-          end
+          expect(invalid_msg.text).to eql "Invalid Username & Password. #{@username}/#{@password}" if invalid_msg.present?
 
         }
         logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"

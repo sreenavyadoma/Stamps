@@ -1,20 +1,15 @@
 
-Given /^(?:|(?:|(?:A|a) )(?:(?:v|V)alid |))(?:U|u)ser is signed in to Web Apps$/ do
-  step "I launch default browser"
-  if param.health_check
-    step "Health Check: Print - Web Batch"
-    step "Health Check: Print - Address Book"
-  end
-  if param.web_app == :orders
-    step "Visit Orders Sign-in page"
-    test_data[:username] = stamps.orders.landing_page.sign_in(:default)
-    step "Navigation Bar: Customer Balance"
-  end
+Given /^(?:L|l)oad Sign-in page$/ do
+  stamps.load_sign_in_page
 end
 
-Given /^(?:V|v)isit Orders Sign-in page$/ do
-  stamps.load_page
-  browser.url.should include "stamps.com"
+Given /^(?:|(?:|(?:A|a) )(?:(?:v|V)alid |))(?:U|u)ser is signed in to Web Apps$/ do
+  step "I launch default browser"
+  step "Health Check: Print - Web Batch" if param.health_check
+  step "load Sign-in page"
+  test_data[:username] = stamps.orders.landing_page.orders_sign_in(:default) if param.web_app == :orders
+  stamps.mail.sign_in_modal.mail_sign_in(:default) if param.web_app == :mail
+  step "Navigation Bar: Customer Balance"
 end
 
 Then /^(?:S|s)ign out$/ do

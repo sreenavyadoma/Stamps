@@ -1,7 +1,7 @@
 Feature: Extra Services BVT
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_print_shipping_label_right_panel
   Scenario: Shipping Label Right Panel

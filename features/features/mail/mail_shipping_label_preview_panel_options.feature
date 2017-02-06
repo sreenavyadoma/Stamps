@@ -3,7 +3,7 @@ Feature:Shipping Label Preview Panel
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_print_shipping_label_preview_panel_options

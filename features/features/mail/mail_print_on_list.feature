@@ -1,7 +1,7 @@
 Feature: Print On List Of Values
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_print_on_list_of_values
   Scenario: Print On List Of Values

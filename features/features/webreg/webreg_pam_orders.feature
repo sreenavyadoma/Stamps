@@ -4,7 +4,7 @@ Feature: WebReg
 
   @webreg_pam_orders
   Scenario:
-    Then Visit Orders Sign-in page
+    Then load Sign-in page
     Then WebReg: Load username and password from parameter file
     Then Orders: Sign-in using username and password from parameter file
     Then in Orders Toolbar, click Add button

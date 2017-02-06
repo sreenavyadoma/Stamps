@@ -70,6 +70,19 @@ module Stamps
   end
 
   def param
+    expect(ENV['BROWSER']).to be_truthy
+    expect(ENV['URL']).to be_truthy
+    expect(ENV['HEALTHCHECK']).to be_truthy
+    expect(ENV['JENKINS']).to be_truthy
+    expect(ENV['DEBUG']).to be_truthy
+    expect(ENV['USER_CREDENTIALS']).to be_truthy
+    expect(ENV['USR']).to be_truthy
+    expect(ENV['PW']).to be_truthy
+    expect(ENV['WEB_APP']).to be_truthy
+    expect(ENV['WEB_APP'].downcase).to eq('orders').or(eq('mail'))
+
+    ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+
     @param ||= TestParam.new
     @param.browser = browser
     @param.logger = logger

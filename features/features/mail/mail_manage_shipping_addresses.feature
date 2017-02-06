@@ -3,7 +3,7 @@ Feature: Manage Shipping Addresses
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_manage_shipping_addresses

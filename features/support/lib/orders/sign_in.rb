@@ -263,7 +263,7 @@ module Stamps
         "Market Place modal is not present".should eql "First Time Sign In" unless market_place.present?
       end
 
-      def sign_in *args
+      def orders_sign_in *args
         loading_orders = StampsElement.new browser.div(text: "Loading orders...")
         invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
         new_welcome = NewWelcomeModal.new(param)

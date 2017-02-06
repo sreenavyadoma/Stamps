@@ -1,7 +1,7 @@
 Feature: Envelope #10 - Print Only Return Address
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_print_envelope_10_return_address
   Scenario: Envelope #10

@@ -3,7 +3,7 @@ Feature: Envelope #10
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_print_envelope_10
   Scenario: Envelope #10

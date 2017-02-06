@@ -1,7 +1,7 @@
 Feature: Mail Roll - 4" x 6" - FCM Package
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_print_roll_4x6_fcm_package
   Scenario: Roll - 4" x 6" - FCM Package

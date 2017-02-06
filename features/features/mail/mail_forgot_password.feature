@@ -1,13 +1,11 @@
 Feature: Forgot Password
 
-
-
   Background:
     Given I launched default browser
 
   @mail_forgot_password
   Scenario: Forgot Password
-    Then Visit Mail sign in page
+    Then load Sign-in page
     Then Mail: Open Forgot Password Modal
     Then Mail: Set forgotten username to Win10gc1000
     Then Mail: Set secret answer 1 to stamps
