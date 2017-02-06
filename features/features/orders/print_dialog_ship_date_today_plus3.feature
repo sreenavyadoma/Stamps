@@ -15,7 +15,7 @@ Feature: Set Print Ship Date to Today + 3
     Then in Print modal, set Printer to "factory"
     Then in Print modal, set Ship Date to today plus 3
     Then in Print modal, click Print button
-    Then In left filter panel, select Shipped
+    Then In left Filter Panel, select Shipped
     Then In Orders Grid, expect Date Printed for this order is today
     Then In Orders Grid, expect Ship Date for this order is today plus 3
 

@@ -3,6 +3,7 @@ Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
     test_data[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
     stamps.orders.toolbar.add.order_details
+    test_data[:order_id] = stamps.orders.order_details.toolbar.order_id
     step "Save Order Details data"
   rescue Exception => e
     logger.error e.message
@@ -13,7 +14,6 @@ end
 
 Then /^Save Order Details data$/ do
   stamps.orders.order_details.present?.should be true
-  test_data[:order_id] = stamps.orders.order_details.toolbar.order_id
   test_data[:country] = stamps.orders.order_details.ship_to.country.text_box.text
   test_data[:service_cost] = stamps.orders.order_details.service.cost
   test_data[:service] = stamps.orders.order_details.service.text_box.text
@@ -66,19 +66,16 @@ end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Shipped$/ do
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.move_to_shipped.cancel
   stamps.orders.toolbar.move_drop_down.move_to_shipped.move
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Canceled$/ do
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.move_to_canceled.cancel
   stamps.orders.toolbar.move_drop_down.move_to_canceled.move
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Awaiting Shipment$/ do
   stamps.orders.toolbar.move_drop_down.enabled?.should be true
-  stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.cancel
   stamps.orders.toolbar.move_drop_down.move_to_awaiting_shipment.move
 end
 

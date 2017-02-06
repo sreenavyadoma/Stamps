@@ -872,7 +872,7 @@ module Stamps
           checkbox_element(number).checked?
         end
 
-        def order_checked?(order_number)
+        def order_id_checked?(order_number)
           scroll_into_view
           checked? row_number(order_number)
         end

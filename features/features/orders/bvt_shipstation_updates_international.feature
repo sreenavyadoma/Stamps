@@ -40,7 +40,7 @@ Feature:  Update International Orders to ShipStation
     Then In Orders Grid, uncheck saved Order ID
     Then Pause for 5 seconds
 
-    Then Refresh Browser
+    Then Refresh the browser
 
     Then Pause for 7 seconds
     Then In Orders Grid, check saved Order ID

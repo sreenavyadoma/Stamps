@@ -8,7 +8,7 @@ Given /^(?:|I )(?:L|l)aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default b
   test_helper.setup
 end
 
-Then /^Refresh Browser$/ do
+Then /^Refresh the browser$/ do
   begin
     browser.refresh
   rescue

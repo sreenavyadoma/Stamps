@@ -11,7 +11,7 @@ Feature: Ship Date
     Then on Order Details form, select service PM Package
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Ship Date to today
-    Then In left filter panel, expect Shipped Tab Ship Date is today
+    Then In left Filter Panel, expect Shipped Tab Ship Date is today
     Then in Print modal, click Print button
     Then Sign out
 
@@ -36,7 +36,7 @@ Feature: Ship Date
     Then on Order Details form, select service PM Package
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Ship Date to today plus 2
-    Then In left filter panel, expect Shipped Tab Ship Date is today plus 2
+    Then In left Filter Panel, expect Shipped Tab Ship Date is today plus 2
     Then in Print modal, click Print button
     Then Sign out
 
@@ -49,7 +49,7 @@ Feature: Ship Date
     Then on Order Details form, select service PM Package
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Ship Date to today plus 3
-    Then In left filter panel, expect Shipped Tab Ship Date is today plus 3
+    Then In left Filter Panel, expect Shipped Tab Ship Date is today plus 3
     Then in Print modal, click Print button
     Then Sign out
 

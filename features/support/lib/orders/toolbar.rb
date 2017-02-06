@@ -137,19 +137,19 @@ module Stamps
         end
 
         def move_to_shipped
-          select :shipped
+          select(:shipped)
         end
 
         def move_to_canceled
-          select :canceled
+          select(:canceled)
         end
 
         def move_to_awaiting_shipment
-          select :awaiting_shipment
+          select(:awaiting_shipment)
         end
 
         def move_to_on_hold
-          select :on_hold
+          select(:on_hold)
         end
 
         def select(selection)
@@ -179,8 +179,9 @@ module Stamps
           30.times{
             return modal if modal.present?
             drop_down.safe_click unless selection_item.present?
-            sleep(0.25)
+            sleep(0.50)
             selection_item.hover
+            sleep(0.25)
             selection_item.safe_click
           }
           "Unable to select #{selection}".should eql("Move Menu - Select")

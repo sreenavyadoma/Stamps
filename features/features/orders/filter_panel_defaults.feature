@@ -6,48 +6,48 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
 
   @filters
   Scenario: User Views Filter Panel - Panel Default
-    When In left filter panel, expect system displays expanded filters panel
-    Then In left filter panel, expect selected filter is Awaiting Shipment
+    When In left Filter Panel, expect system displays expanded filters panel
+    Then In left Filter Panel, expect selected filter is Awaiting Shipment
 
     Then Filter Panel: Click on panel
-    Then In left filter panel, expect Filters panel is close
-    Then In left filter panel, expect selected filter is Awaiting Shipment
-    Then In left filter panel, expect system shows an arrow above the Order Status Filter Panel - name
-    Then In left filter panel, expect panel arrow is pointing to the right direction
+    Then In left Filter Panel, expect Filters panel is close
+    Then In left Filter Panel, expect selected filter is Awaiting Shipment
+    Then In left Filter Panel, expect system shows an arrow above the Order Status Filter Panel - name
+    Then In left Filter Panel, expect panel arrow is pointing to the right direction
 
     Then Filter Panel: Click on panel
-    Then In left filter panel, expect Panel is open
-    Then In left filter panel, expect panel is hidden
-    Then In left filter panel, expect panel arrow is pointing to the left direction
+    Then In left Filter Panel, expect Panel is open
+    Then In left Filter Panel, expect panel is hidden
+    Then In left Filter Panel, expect panel arrow is pointing to the left direction
 
 
     Then Filter Panel: Click on panel
-    Then In left filter panel, expect Filters panel is close
-    Then In left filter panel, expect selected filter is Awaiting Shipment
-    Then In left filter panel, expect system shows an arrow above the Order Status Filter Panel - name
-    Then In left filter panel, expect panel arrow is pointing to the right direction
+    Then In left Filter Panel, expect Filters panel is close
+    Then In left Filter Panel, expect selected filter is Awaiting Shipment
+    Then In left Filter Panel, expect system shows an arrow above the Order Status Filter Panel - name
+    Then In left Filter Panel, expect panel arrow is pointing to the right direction
 
     Then Filter Panel: Click on the closed Filters panel
-    Then In left filter panel, expect Panel is open
-    Then In left filter panel, expect panel is hidden
-    Then In left filter panel, expect panel arrow is pointing to the left direction
+    Then In left Filter Panel, expect Panel is open
+    Then In left Filter Panel, expect panel is hidden
+    Then In left Filter Panel, expect panel arrow is pointing to the left direction
 
     Then Filter Panel: Click on panel
-    Then In left filter panel, expect Filters panel is close
-    Then In left filter panel, expect selected filter is Awaiting Shipment
-    Then In left filter panel, expect system shows an arrow above the Order Status Filter Panel - name
-    Then In left filter panel, expect panel arrow is pointing to the right direction
+    Then In left Filter Panel, expect Filters panel is close
+    Then In left Filter Panel, expect selected filter is Awaiting Shipment
+    Then In left Filter Panel, expect system shows an arrow above the Order Status Filter Panel - name
+    Then In left Filter Panel, expect panel arrow is pointing to the right direction
 
     Then Filter Panel: Click panel name
-    Then In left filter panel, expect Panel is open
-    Then In left filter panel, expect panel is hidden
-    Then In left filter panel, expect panel arrow is pointing to the left direction
+    Then In left Filter Panel, expect Panel is open
+    Then In left Filter Panel, expect panel is hidden
+    Then In left Filter Panel, expect panel arrow is pointing to the left direction
     Then Sign out
 
   @filters
   Scenario: User Changes filters
 
-    When In left filter panel, expect system displays expanded filters panel
+    When In left Filter Panel, expect system displays expanded filters panel
 
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
@@ -58,8 +58,8 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then on Order Details form, select service PM Package
     Then on Order Details form, set Ounces to 1
 
-    Then In left filter panel, select Awaiting Shipment
-    Then In left filter panel, expect selected filter is Awaiting Shipment
+    Then In left Filter Panel, select Awaiting Shipment
+    Then In left Filter Panel, expect selected filter is Awaiting Shipment
 
     Then on Order Details form, expect Order ID equals Grid Oder ID in row 1
     Then In Orders Grid, expect Recipient is James Test
@@ -76,8 +76,8 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then in Print modal, set Printer to "factory"
     Then in Print modal, click Print button
 
-    Then In left filter panel, select Shipped
-    Then In left filter panel, expect selected filter is Shipped
+    Then In left Filter Panel, select Shipped
+    Then In left Filter Panel, expect selected filter is Shipped
 
     Then In Orders Grid, expect Recipient is James Test
     Then In Orders Grid, expect Company is Domestic Company
@@ -90,7 +90,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
 
 
     Then in Orders Toolbar, click Add button
-    Then In left filter panel, expect selected filter is Awaiting Shipment
+    Then In left Filter Panel, expect selected filter is Awaiting Shipment
 
 
     Then Sign out
