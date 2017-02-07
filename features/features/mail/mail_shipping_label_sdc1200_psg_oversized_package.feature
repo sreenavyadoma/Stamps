@@ -3,7 +3,7 @@ Feature: Mail Shipping Label - SDC-1200 - PSG Oversized Package
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_print_shipping_label_sdc1200_psg_oversized_package

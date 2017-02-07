@@ -1,7 +1,7 @@
 Feature: Envelopes #12
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_print_envelope_12
   Scenario: Envelope #12

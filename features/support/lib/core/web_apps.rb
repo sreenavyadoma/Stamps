@@ -9,40 +9,22 @@ module Stamps
       @mail = WebMail.new(param)
     end
 
-    def load_page
-      browser.should_not be_nil
-      param.web_app.should eq(:mail).or(eq(:orders))
-      param.test_env.should_not be_nil
-
-      case param.web_app
-        when :orders
-          app_name ="orders"
-        when :mail
-          app_name ="webpostage"
-        else
-          #do nothing
-      end
-
-      param.test_env.should be_truthy
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
-
+    def load_sign_in_page
       case param.test_env.downcase
         when /ss/
-          url = "http://printss600.qacc.stamps.com/#{app_name}/"
+          url = "http://printss600.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         when /cc/
-          url = "http://printext.qacc.stamps.com/#{app_name}/"
-          #url = "http://printext.qacc.stamps.com/#{app_name}/default2.aspx" if ENV['web_app'].downcase == 'mail'
+          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
+          #url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /sc/
-          url = "http://printext.qasc.stamps.com/#{app_name}/"
-          url = "http://printext.qasc.stamps.com/#{app_name}/default2.aspx" if ENV['web_app'].downcase == 'mail'
+          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /stg/
-          url = "https://print.testing.stamps.com/#{app_name}/"
+          url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         when /rating/
-          url = "http://printext.qacc.stamps.com/#{app_name}/"
-        when /./
-          url = "http://#{param.test_env}.stamps.com/#{app_name}/"
+          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         else
-          url = param.test_env
+          url = "https://#{param.test_env}/webpostage/SignIn/Default.aspx?env=Orders"
       end
 
       logger.message "-"
@@ -58,6 +40,16 @@ module Stamps
       logger.message "-"
       logger.message "Page loaded: #{browser.url}"
       logger.message "-"
+
+      case param.web_app
+        when :orders
+          browser.url.should include "Orders"
+        when :mail
+          browser.url.downcase.should include "webpostage"
+        else
+          # do nothing
+      end
+
       browser.url
     end
   end

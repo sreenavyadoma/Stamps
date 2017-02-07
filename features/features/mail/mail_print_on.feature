@@ -1,7 +1,7 @@
 Feature: Envelopes BVT
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_services
   Scenario: Envelope

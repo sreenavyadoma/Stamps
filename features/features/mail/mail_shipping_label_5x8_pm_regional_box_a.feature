@@ -3,7 +3,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Regional Rate Box A
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_print_shipping_label_5x8_pm_regional_box_a

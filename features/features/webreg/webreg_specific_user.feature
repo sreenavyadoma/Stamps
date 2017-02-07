@@ -64,7 +64,7 @@ Feature: WebReg
 
     Then Health Check: Print - Web Batch
 
-    Then Visit Orders Sign-in page
+    Then load Sign-in page
     Then Orders: Sign-in as new user ss_sctest_b4/password1
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Add button

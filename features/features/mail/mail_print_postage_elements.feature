@@ -1,7 +1,7 @@
 Feature: Verify Mail Elements Are Present
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @mail_print_postage_elements
   Scenario: Print Mail Elements

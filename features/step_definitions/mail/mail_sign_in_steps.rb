@@ -1,37 +1,4 @@
 
-Given /^Visit Mail sign in page$/ do
-  #logger.step "I visit mail sign-in page"
-  stamps.load_page
-  browser.url.downcase.should include "webpostage"
-end
-
-Given /^I am signed in as Mail shipper$/ do
-  #logger.step "I am signed in as a mail shipper"
-  step "Launch default browser"
-  if ParameterHelper.to_bool ENV['HEALTHCHECK']
-    step "Health Check: Print - Web Batch"
-    step "Health Check: Print - Address Book"
-  end
-  step "Visit Mail sign in page"
-  stamps.mail.sign_in_modal.sign_in
-  step "Navigation Bar: Customer Balance"
-end
-
-Given /^I am signed in as Mail shipper (.*)\/(.*)/ do |username, password|
-  #logger.step "I am signed in as mail shipper #{username}/#{password}"
-  step "I launched default browser"
-  step "Visit Mail sign in page"
-  stamps.mail.sign_in_modal.sign_in username, password
-end
-
-Then /^I am signed in as Mail shipper for the first time(?:| with credentials (.*)\/(.*))$/ do |username, password|
-  #logger.step "I am signed in as Mail shipper for the first time #{username}/#{password}"
-  #logger.step "I am signed in as Mail shipper for the first time #{@username}/#{@password}"
-  @username = username unless username.nil?
-  @password = password unless password.nil?
-  #logger.step "I am signed in as Mail shipper for the first time #{@username}/#{@password}"
-  @whats_new_modal = stamps.mail.sign_in_modal.sign_in_first_time username, password
-end
 
 Then /^What's New: Expect modal is present$/ do
   stamps.mail.sign_in_modal.whats_new_modal.window_title.text.should eql "What’s new in Stamps.com Online"
@@ -73,7 +40,7 @@ end
 
 Then /^Mail Sign In: Check Remember Username$/ do
   #logger.step "Step: Mail Sign In: Check Remember Username #{ENV["USR"]}"
-  step "Visit Mail sign in page"
+  step "load Sign-in page"
   #todo-fix username
   fix me!
   stamps.mail.sign_in_modal.sign_in_username_check ENV["USR"]

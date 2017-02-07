@@ -3,7 +3,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Large Package
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_print_shipping_label_8x11_pm_large_package

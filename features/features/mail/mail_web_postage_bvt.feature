@@ -1,7 +1,7 @@
 Feature: Test Development
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   @print_postage_page_objects
   Scenario: Page Object Creation

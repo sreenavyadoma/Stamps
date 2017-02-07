@@ -65,7 +65,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Health Check: Print - Web Batch
 
     Then Pause for 2 seconds
-    Then Visit Orders Sign-in page
+    Then load Sign-in page
     Then Orders: Sign-in as new user random/pass111
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Add button

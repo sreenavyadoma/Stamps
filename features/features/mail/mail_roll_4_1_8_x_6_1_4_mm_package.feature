@@ -3,7 +3,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - MM Package
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_print_roll_4_1_8_x_6_1_4_mm_package

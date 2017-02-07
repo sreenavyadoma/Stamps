@@ -6,9 +6,10 @@ Given /^(?:|I )(?:L|l)aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default b
   #logger.step "I launched default browser #{selection}"
   ENV['BROWSER'] = selection unless selection.nil?
   test_helper.setup
+  browser.should_not be_nil
 end
 
-Then /^Refresh Browser$/ do
+Then /^Refresh the browser$/ do
   begin
     browser.refresh
   rescue

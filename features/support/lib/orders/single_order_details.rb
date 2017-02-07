@@ -988,15 +988,15 @@ module Stamps
         end
 
         def inline_cost service_name
-          cost_label = StampsElement.new browser.td css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"
+          cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
           10.times do
             begin
               drop_down.safe_click unless cost_label.present?
               if cost_label.present?
-                service_cost = ParameterHelper.remove_dollar_sign cost_label.text
+                service_cost = ParameterHelper.remove_dollar_sign(cost_label.text)
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                 drop_down.safe_click if cost_label.present?
-                return service_cost
+                return service_cost.to_f.round(2)
               end
             rescue
               #ignore
@@ -1014,7 +1014,7 @@ module Stamps
         end
 
         def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text)
+          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def tooltip selection
@@ -1151,15 +1151,17 @@ module Stamps
         end
 
         def set(value)
-          3.times do
+          15.times do
             check
             text_box.set(value)
-            10.times {blur_out}
-            break if text.to_f == value.to_f
+            sleep(0.25)
+            3.times {blur_out}
+            return true if text.to_f == value.to_f
           end
+          expect(text.to_f).to eql(value.to_f)
         end
 
-        def set_and_agree_to_terms value
+        def set_and_agree_to_terms(value)
           set(value)
           5.times do
             3.times {blur_out}
@@ -1189,7 +1191,7 @@ module Stamps
         end
 
         def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text)
+          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
       end
 
@@ -1211,7 +1213,7 @@ module Stamps
           blur_element.blur_out
         end
 
-        def tracking_selection selection
+        def tracking_selection(selection)
           if selection.downcase.include? "usps"
             browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
           elsif selection.downcase.include? "signature"
@@ -1241,7 +1243,7 @@ module Stamps
           text_box.text.should include selection
         end
 
-        def inline_cost selection
+        def inline_cost(selection)
           tds = tracking_selection(selection)
           tds.size.should equal 2
           selection_label = StampsElement.new tds.last
@@ -1262,17 +1264,16 @@ module Stamps
         end
 
         def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text)
+          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
-        def tooltip selection
-          button = drop_down
-          selection_label = browser.td text: selection
+        def tooltip(selection)
+          selection_label = browser.td(text: selection)
           5.times {
             begin
-              button.safe_click unless selection_label.present?
+              drop_down.safe_click unless selection_label.present?
               if selection_label.present?
-                qtip = selection_label.parent.parent.parent.parent.attribute_value "data-qtip"
+                qtip = selection_label.parent.parent.parent.parent.attribute_value("data-qtip")
                 logger.info "#{qtip}"
                 return qtip
               end
@@ -1429,12 +1430,11 @@ module Stamps
         end
 
         def tooltip
-          btn = drop_down
           tooltip_element = StampsElement.new(browser.div id: 'ext-quicktips-tip-innerCt')
-          btn.element.hover
-          btn.element.hover
+          drop_down.element.hover
+          drop_down.element.hover
           15.times do
-            btn.element.hover
+            drop_down.element.hover
             sleep(1)
             if tooltip_element.present?
               logger.info tooltip_element.text
@@ -1445,18 +1445,19 @@ module Stamps
       end
 
       class DetailsToolbar < Browser::Modal
+        attr_reader :menu
 
-        def menu
-          ToolbarMenu.new(param)
+        def initialize(param)
+          super(param)
+          @menu = ToolbarMenu.new(param)
         end
 
         def order_id
-          order_id_label = StampsElement.new browser.bs(css: "label>b").first
-          15.times{
+          order_id_label = StampsElement.new(browser.bs(css: "label>b").first)
+          20.times{
             begin
-              order_id_str = order_id_label.text
-              sleep(1)
-              return order_id_str.split('#').last if order_id_str.include? '#'
+              sleep(0.25)
+              return order_id_label.text.split('#').last if order_id_label.text.include? '#'
             rescue
               #ignroe
             end
@@ -1483,7 +1484,7 @@ module Stamps
               #ignore
             end
           end
-          ParameterHelper.remove_dollar_sign cost_label.text
+          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def multiple_order_cost
@@ -1497,7 +1498,7 @@ module Stamps
             end
             break unless cost.include? "$"
           end
-          ParameterHelper.remove_dollar_sign cost_label.text
+          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
       end
 

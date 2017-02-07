@@ -6,37 +6,41 @@ Feature: Orders Filter Panel
 
   @filter_panel
   Scenario: Filter Panel
-    Then In left filter panel, expect selected filter is Awaiting Shipment
-    Then In left filter panel, select Shipped
-    Then In left filter panel, expect selected filter is Shipped
-    Then In left filter panel, select Canceled
-    Then In left filter panel, expect selected filter is Canceled
-    Then In left filter panel, select Awaiting Shipment
-    Then In left filter panel, expect selected filter is Awaiting Shipment
-    Then In left filter panel, select On Hold
-    Then In left filter panel, expect selected filter is On Hold
+    Then in left Filter Panel, expect selected filter is Awaiting Shipment
+    Then in left Filter Panel, select Shipped
+    Then in left Filter Panel, expect selected filter is Shipped
+    Then in left Filter Panel, select Canceled
+    Then in left Filter Panel, expect selected filter is Canceled
+    Then in left Filter Panel, select Awaiting Shipment
+    Then in left Filter Panel, expect selected filter is Awaiting Shipment
+    Then in left Filter Panel, select On Hold
+    Then in left Filter Panel, expect selected filter is On Hold
 
     Then in Orders Toolbar, click Add button
-    Then In left filter panel, expect selected filter is Awaiting Shipment
+    Then in left Filter Panel, expect selected filter is Awaiting Shipment
+    Then in Orders Grid, expect saved Order ID is in Orders Grid row 1
 
-    Then In Orders Grid, check saved Order ID
-    Then In Orders Grid toolbar, select Move to Shipped
-    Then In left filter panel, select Shipped
-    Then In Orders Grid, expect saved Order ID is in Orders Grid row 1
-    Then In left filter panel, expect Awaiting Shipment count decreased by 1
+    Then in Orders Grid, check saved Order ID
+    Then in Orders Grid toolbar, select Move to Shipped
+    Then in left Filter Panel, select Shipped
+    Then in left Filter Panel, expect selected filter is Shipped
+    Then in left Filter Panel, expect saved Order ID is in Shipped
 
-    Then In Orders Grid, check saved Order ID
-    Then In Orders Grid toolbar, select Move to Canceled
-    Then In left filter panel, select Canceled
-    Then In Orders Grid, expect saved Order ID is in Orders Grid row 1
+    Then in Orders Grid, check saved Order ID
+    Then in Orders Grid toolbar, select Move to Canceled
+    Then in left Filter Panel, select Canceled
+    Then in left Filter Panel, expect selected filter is Canceled
+    Then in left Filter Panel, expect saved Order ID is in Canceled
 
-    Then In Orders Grid, check saved Order ID
-    Then In Orders Grid toolbar, select Move to On Hold until today plus 3
-    Then In left filter panel, select On Hold
-    Then In Orders Grid, expect saved Order ID is in Orders Grid row 1
+    Then in Orders Grid, check saved Order ID
+    Then in Orders Grid toolbar, select Move to On Hold until today plus 3
+    Then in left Filter Panel, select On Hold
+    Then in left Filter Panel, expect selected filter is On Hold
+    Then in left Filter Panel, expect saved Order ID is in On Hold
 
-    Then In Orders Grid, check saved Order ID
-    Then In Orders Grid toolbar, select Move to Awaiting Shipment
-    Then In Orders Grid, expect saved Order ID is in Orders Grid row 1
-    Then In left filter panel, expect Awaiting Shipment count increased by 1
+    Then in Orders Grid, check saved Order ID
+    Then in Orders Grid toolbar, select Move to Awaiting Shipment
+    Then in left Filter Panel, select Awaiting Shipment
+    Then in left Filter Panel, expect selected filter is Awaiting Shipment
+    Then in left Filter Panel, expect saved Order ID is in Awaiting Shipment
     Then Sign out

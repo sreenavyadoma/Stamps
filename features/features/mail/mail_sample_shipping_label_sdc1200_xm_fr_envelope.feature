@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - SDC-1200 - XM Flat Rate Envelope
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_print_sample_shipping_label_sdc1200_xm_fr_envelope

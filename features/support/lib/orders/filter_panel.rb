@@ -160,7 +160,8 @@ module Stamps
         end
 
         def select
-          30.times do
+          40.times do
+            element_helper.safe_double_click(element)
             element_helper.safe_click(element)
             sleep(0.25)
             break if selected?
@@ -228,10 +229,13 @@ module Stamps
         end
 
         def selected_filter
-          return awaiting_shipment.text if awaiting_shipment.selected?
-          return shipped.text if shipped.selected?
-          return canceled.text if canceled.selected?
-          return on_hold.text if on_hold.selected?
+          20.times do
+            sleep(0.25)
+            return awaiting_shipment.text if awaiting_shipment.selected?
+            return shipped.text if shipped.selected?
+            return canceled.text if canceled.selected?
+            return on_hold.text if on_hold.selected?
+          end
           "At least one filter should have been selected.".should eql "Unable to return selected_filter text."
         end
 

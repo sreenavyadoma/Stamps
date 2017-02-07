@@ -5,7 +5,7 @@ Feature: Invalid Credentials
 
   @mail_invalid_credentials_valid
   Scenario: Valid Username and Password
-    Then I am signed in as Mail shipper webpost_0017/pass111
+    Then a valid user is signed in to Web Apps webpost_0017/pass111
     Then Sign out
 
   @mail_invalid_credentials

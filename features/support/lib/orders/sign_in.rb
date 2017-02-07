@@ -263,7 +263,7 @@ module Stamps
         "Market Place modal is not present".should eql "First Time Sign In" unless market_place.present?
       end
 
-      def sign_in *args
+      def orders_sign_in *args
         loading_orders = StampsElement.new browser.div(text: "Loading orders...")
         invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
         new_welcome = NewWelcomeModal.new(param)
@@ -295,7 +295,7 @@ module Stamps
         username.safely_wait_until_present(8)
 
         signed_in_user = StampsElement.new(browser.span(text: usr))
-        6.times do
+        4.times do
           begin
             if username.present?
               username.set usr
@@ -317,7 +317,7 @@ module Stamps
               end
             end
 
-            8.times {sleep(1) if username.present?}
+            8.times {sleep(0.25) if username.present?}
 
             if invalid_username.present?
               logger.error invalid_username.text
@@ -352,6 +352,8 @@ module Stamps
             raise e
           end
         end
+
+        expect("Unable to sign-in with credentials usr=#{usr}, pw=#{pw}").to eql("Sign-in failed in #{param.test_env}") if username.present?
 
         logger.message "#"*15
         logger.message "Signed-in User: #{signed_in_user.text}"

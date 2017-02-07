@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Padded Flat Rat
 
 
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
 
   @mail_print_sample_shipping_label_8x11_pm_pfr_envelope

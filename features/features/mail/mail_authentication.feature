@@ -1,7 +1,7 @@
 @mail_authentication
 Feature: Mail Authentication Test
   Background:
-    Given I am signed in as Mail shipper
+    Given a valid user is signed in to Web Apps
 
   Scenario: Mail Authentication Test
     Then Sign out

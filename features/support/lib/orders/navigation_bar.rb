@@ -1,12 +1,13 @@
 module Stamps
   module Navigation #todo-rob Refactor to WebApps module
     class TransactionComplete < Browser::Modal
-      attr_reader :window_title, :text_area
+      attr_reader :window_title, :text_area, :ok_btn
 
       def initialize(param)
         super(param)
         @window_title = StampsElement.new browser.div(text: "Transaction Complete")
         @text_area = StampsElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
+        @ok_btn = StampsElement.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
       end
 
       def wait_until_present *args
@@ -21,13 +22,8 @@ module Stamps
         text_area.text
       end
 
-      def ok_button
-        StampsElement.new(param.web_app == :orders)?((browser.spans text: 'OK').last):(browser.span(id: 'sdc-undefinedwindow-okbtn-btnIconEl'))
-      end
-
       def ok
-        ok_button.safely_wait_until_present 5
-        ok_button.click_while_present
+        ok_btn.click_while_present
       end
     end
 
@@ -93,30 +89,53 @@ module Stamps
       end
     end
 
-    class AutoBuyPostageModal < Browser::Modal
-      attr_reader
+    class AccountBalanceLimit < Browser::Modal
+      attr_reader :body, :window_title
 
       def initialize(param)
         super(param)
+        @body = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
+        @window_title = StampsElement.new(browser.div(text: "Account Balance Limit"))
+      end
 
+      def present?
+        window_title.present?
+      end
+
+      def text
+        body.text
       end
     end
 
-    class BuyPostageModal < Browser::Modal
-      attr_reader :confirm_transaction, :auto_buy_postage_modal, :auto_buy_postage_link, :window_title
+    class AutoBuyPostageModal < Browser::Modal
+      attr_reader :window_title
+
+      def initialize(param)
+        super(param)
+        @window_title = StampsElement.new(browser.div(text: "Add Funds"))
+      end
+
+      def present?
+        window_title.present?
+      end
+    end
+
+    class AddFundsModal < Browser::Modal
+      attr_reader :confirm_transaction, :auto_add_funds_modal, :auto_buy_postage_link, :window_title, :account_balance_limit
 
       def initialize(param)
         super(param)
         @confirm_transaction = ConfirmTransaction.new(param)
-        @auto_buy_postage_modal = AutoBuyPostageModal.new(param)
+        @auto_add_funds_modal = AutoBuyPostageModal.new(param)
         @auto_buy_postage_link = StampsElement.new browser.span(text: "Auto-buy postage")
         @window_title = browser.div(text: "Add Funds")
+        @account_balance_limit = AccountBalanceLimit.new(param)
       end
 
       def auto_buy_postage
         10.times do
           auto_buy_postage_link.safe_click
-          return auto_buy_postage_modal if auto_buy_postage_modal.present?
+          return auto_add_funds_modal if auto_add_funds_modal.present?
         end
         "Auto-Buy Postage modal did not open.".should eql "Unable to open Auto-Buy Postage modal upon clicking Auto-buy postage link"
       end
@@ -238,9 +257,9 @@ module Stamps
         10.times do
           return confirm_transaction if confirm_transaction.present?
           purchase_button.safe_click
-          confirm_transaction.wait_until_present 6
+          confirm_transaction.wait_until_present 5
+          "#{account_balance_limit.window_title.text}:  #{account_balance_limit.text}".should eql "Confirm Transaction Modal" if account_balance_limit.present?
         end
-        raise "Confirm Purchase Modal did not open after clicking Purchase button on Buy Mail modal..." unless confirm_transaction.present?
       end
 
       def edit_payment_method
@@ -253,26 +272,25 @@ module Stamps
     end
 
     class BalanceDropDown < Browser::Modal
-      attr_reader :buy_postage_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
+      attr_reader :add_funds_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
 
       def initialize(param)
         super(param)
-
-        @buy_postage_modal = BuyPostageModal.new(param)
-        @buy_more_drop_down = StampsElement.new(browser.span class: "balanceLabel")
-        @buy_more_link = StampsElement.new(browser.a text: "Buy More")
-        @view_history_link = StampsElement.new(browser.a text: "View Purchase History")
-        @balance_element = StampsElement.new browser.span id: 'postageBalanceAmt'
+        @add_funds_modal = AddFundsModal.new(param)
+        @buy_more_drop_down = StampsElement.new(browser.span(class: "balanceLabel"))
+        @buy_more_link = StampsElement.new(browser.a(text: "Buy More"))
+        @view_history_link = StampsElement.new(browser.a(text: "View Purchase History"))
+        @balance_element = StampsElement.new(browser.span(id: 'postageBalanceAmt'))
       end
 
       def buy_more
         20.times do
-          return buy_postage_modal if buy_postage_modal.present?
+          return add_funds_modal if add_funds_modal.present?
           buy_more_drop_down.element.hover
           buy_more_drop_down.safe_click unless buy_more_link.present?
           buy_more_drop_down.element.hover
           buy_more_link.safe_click
-          return buy_postage_modal if buy_postage_modal.present?
+          return add_funds_modal if add_funds_modal.present?
         end
         "Unable to open Buy Postage Modal".should eql "buy_more failed"
       end
@@ -291,17 +309,17 @@ module Stamps
           amount = balance_element.text
           amount_no_dollar_sign = amount.gsub("$","")
           amount_stripped_all = amount_no_dollar_sign.gsub(",","")
-          return amount_stripped_all if amount_stripped_all.length > 0
+          return amount_stripped_all.to_f.round(2) if amount_stripped_all.length > 0
         end
       end
 
       def new_balance old_balance
         10.times do
-          balance = ParameterHelper.remove_dollar_sign balance_element.text
+          balance = ParameterHelper.remove_dollar_sign(balance_element.text).to_f.round(2)
           break unless balance.include? old_balance.to_s
           sleep(1)
         end
-        ParameterHelper.remove_dollar_sign balance_element.text
+        ParameterHelper.remove_dollar_sign(balance_element.text).to_f.round(2)
       end
     end
 
