@@ -27,7 +27,6 @@ module Stamps
           url = "https://#{param.test_env}/webpostage/SignIn/Default.aspx?env=Orders"
       end
 
-
       logger.message "-"
       logger.message "URL: #{url}"
       logger.message "-"
