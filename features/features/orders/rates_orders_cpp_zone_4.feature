@@ -11,7 +11,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service FCM Large Envelope
     Then on Order Details form, set Weight to 0 lb 1 oz
-    Then on Order Details form, expect service Cost is $0.98
+    Then on Order Details form, expect Service Cost is $0.98
     Then on Order Details form, expect Total Ship Cost is $0.98
 
 
@@ -23,7 +23,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service First-Class Mail Package/Thick Envelope
     Then on Order Details form, set Weight to 0 lb 5 oz
-    Then on Order Details form, expect service Cost is $2.77
+    Then on Order Details form, expect Service Cost is $2.77
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $2.77
 
@@ -36,7 +36,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Large Envelope
     Then on Order Details form, set Weight to 2 lb 8 oz
-    Then on Order Details form, expect service Cost is $7.86
+    Then on Order Details form, expect Service Cost is $7.86
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $7.86
 
@@ -49,7 +49,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Package
     Then on Order Details form, set Weight to 13 lb 0 oz
-    Then on Order Details form, expect service Cost is $15.11
+    Then on Order Details form, expect Service Cost is $15.11
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $15.11
 
@@ -62,7 +62,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Large Package
     Then on Order Details form, set Weight to 32 lb 0 oz
-    Then on Order Details form, expect service Cost is $34.64
+    Then on Order Details form, expect Service Cost is $34.64
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $34.64
 
@@ -75,7 +75,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Flat Rate Envelope
     Then on Order Details form, set Weight to 2 lb 3 oz
-    Then on Order Details form, expect service Cost is $5.95
+    Then on Order Details form, expect Service Cost is $5.95
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $5.95
 
@@ -88,7 +88,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Padded Flat Rate Envelope
     Then on Order Details form, set Weight to 12 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.50
+    Then on Order Details form, expect Service Cost is $6.50
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.50
 
@@ -101,7 +101,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Legal Flat Rate Envelope
     Then on Order Details form, set Weight to 5 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.25
+    Then on Order Details form, expect Service Cost is $6.25
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.25
 
@@ -114,7 +114,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Small Flat Rate Box
     Then on Order Details form, set Weight to 23 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.45
+    Then on Order Details form, expect Service Cost is $6.45
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.45
 
@@ -127,7 +127,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Medium Flat Rate Box
     Then on Order Details form, set Weight to 14 lb 0 oz
-    Then on Order Details form, expect service Cost is $12.40
+    Then on Order Details form, expect Service Cost is $12.40
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $12.40
 
@@ -140,7 +140,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Large Flat Rate Box
     Then on Order Details form, set Weight to 3 lb 0 oz
-    Then on Order Details form, expect service Cost is $17.05
+    Then on Order Details form, expect Service Cost is $17.05
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $17.05
 
@@ -153,7 +153,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Regional Rate Box A
     Then on Order Details form, set Weight to 7 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.83
+    Then on Order Details form, expect Service Cost is $6.83
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.83
 
@@ -166,7 +166,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PM Regional Rate Box B
     Then on Order Details form, set Weight to 18 lb 0 oz
-    Then on Order Details form, expect service Cost is $9.19
+    Then on Order Details form, expect Service Cost is $9.19
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $9.19
 
@@ -179,7 +179,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PME Package
     Then on Order Details form, set Weight to 26 lb 0 oz
-    Then on Order Details form, expect service Cost is $111.35
+    Then on Order Details form, expect Service Cost is $111.35
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $111.35
 
@@ -192,7 +192,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PME Flat Rate Envelope
     Then on Order Details form, set Weight to 1 lb 0 oz
-    Then on Order Details form, expect service Cost is $21.18
+    Then on Order Details form, expect Service Cost is $21.18
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $21.18
 
@@ -205,7 +205,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then on Order Details form, set Weight to 15 lb 0 oz
-    Then on Order Details form, expect service Cost is $21.64
+    Then on Order Details form, expect Service Cost is $21.64
     Then on Order Details form, set Tracking to Signature Required
     Then on Order Details form, expect Total Ship Cost is $21.64
 
@@ -218,7 +218,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PME Legal Flat Rate Envelope
     Then on Order Details form, set Weight to 6 lb 0 oz
-    Then on Order Details form, expect service Cost is $21.28
+    Then on Order Details form, expect Service Cost is $21.28
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $21.28
 
@@ -231,7 +231,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service MM Package
     Then on Order Details form, set Weight to 30 lb 0 oz
-    Then on Order Details form, expect service Cost is $16.61
+    Then on Order Details form, expect Service Cost is $16.61
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $16.61
 
@@ -244,7 +244,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PSG Package
     Then on Order Details form, set Weight to 45 lb 0 oz
-    Then on Order Details form, expect service Cost is $41.49
+    Then on Order Details form, expect Service Cost is $41.49
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $41.49
 
@@ -257,7 +257,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PSG Large Package
     Then on Order Details form, set Weight to 21 lb 0 oz
-    Then on Order Details form, expect service Cost is $20.35
+    Then on Order Details form, expect Service Cost is $20.35
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $20.35
 
@@ -270,7 +270,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
     Then on Order Details form, set Ship-To to address in Zone 4
     Then on Order Details form, select service PSG Oversized Package
     Then on Order Details form, set Weight to 13 lb 0 oz
-    Then on Order Details form, expect service Cost is $86.89
+    Then on Order Details form, expect Service Cost is $86.89
     Then on Order Details form, set Tracking to Signature Required
     Then on Order Details form, expect Total Ship Cost is $89.34
 

@@ -57,12 +57,12 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
     Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
-    Then In Orders Grid, check row 3
-    Then In Orders Grid, check row 4
-    Then In Orders Grid, check row 5
-    Then In Orders Grid, check row 6
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
+    Then in Orders Grid, check row 3
+    Then in Orders Grid, check row 4
+    Then in Orders Grid, check row 5
+    Then in Orders Grid, check row 6
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then in Print modal, set Printer to "factory"

@@ -14,7 +14,7 @@ module Stamps
           10.times do
             begin
               button.safe_click
-              sleep(1)
+              sleep(0.35)
               break unless button.present?
             rescue
               #ignore
@@ -27,7 +27,7 @@ module Stamps
           button.element.hover
           15.times do
             button.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text
@@ -49,7 +49,7 @@ module Stamps
           10.times do
             begin
               button.safe_click
-              sleep(1)
+              sleep(0.35)
               break unless button.present?
             rescue
               #ignore
@@ -62,7 +62,7 @@ module Stamps
           button.element.hover
           15.times do
             button.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text
@@ -130,13 +130,13 @@ module Stamps
               textbox.set str
               search_button.safe_click
               search_button.safe_click
-              sleep(1)
+              sleep(0.35)
               search_button.safe_click
               search_button.safe_click
-              sleep(1)
+              sleep(0.35)
               search_button.safe_click
               search_button.safe_click
-              sleep(1)
+              sleep(0.35)
             end
             return search_results if search_results.present?
           end

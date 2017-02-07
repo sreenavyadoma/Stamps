@@ -317,7 +317,7 @@ module Stamps
         10.times do
           balance = ParameterHelper.remove_dollar_sign(balance_element.text).to_f.round(2)
           break unless balance.include? old_balance.to_s
-          sleep(1)
+          sleep(0.35)
         end
         ParameterHelper.remove_dollar_sign(balance_element.text).to_f.round(2)
       end
@@ -354,11 +354,11 @@ module Stamps
 
       def sign_out
         5.times do
-          sleep(1)
+          sleep(0.35)
           username.safe_click unless sign_out_link.present?
           username.hover
           element_helper.safe_click sign_out_link if sign_out_link.present?
-          sleep(1)
+          sleep(0.35)
           return if browser.url.include? "SignIn"
         end
       end
@@ -403,7 +403,7 @@ module Stamps
             sign_out_link.safe_click
             signed_in_username.safe_click unless sign_out_link.present?
             sign_out_link.safe_click
-            sleep(1)
+            sleep(0.35)
             sign_out_link.safe_click
             break unless signed_in_username.present?
           rescue

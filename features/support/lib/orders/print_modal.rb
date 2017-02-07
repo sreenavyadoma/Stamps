@@ -289,7 +289,7 @@ module Stamps
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
-          sleep(1)
+          sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
         "Unable to select today's date from date picker object in Print Modal.".should eql ""
@@ -301,7 +301,7 @@ module Stamps
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
-          sleep(1)
+          sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0
         }
         "Unable to select today's date from date picker object in Print Modal.".should eql ""
@@ -327,7 +327,7 @@ module Stamps
 
         10.times{
           picker_button.safe_click unless date_picker_header.present?
-          sleep(1)
+          sleep(0.35)
 
           if date_field.element.present?
             break
@@ -342,7 +342,7 @@ module Stamps
         10.times {
           picker_button.safe_click unless date_field.present?
           date_field.safe_click
-          sleep(1)
+          sleep(0.35)
           return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
         }
       end
@@ -384,7 +384,7 @@ module Stamps
       end
 
       def text
-        sleep(1)
+        sleep(0.35)
         5.times do
           return text_box.text if text_box.present?
           return text_box_cc.text if text_box_cc.present?
@@ -429,9 +429,9 @@ module Stamps
         15.times {
           begin
             print_button.safe_click
-            sleep(1)
+            sleep(0.35)
             print_button.safe_click
-            sleep(1)
+            sleep(0.35)
             printing_error = printing_error_check
             return printing_error if printing_error.length > 1
             break unless print_button.present?

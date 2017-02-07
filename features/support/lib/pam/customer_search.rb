@@ -65,7 +65,7 @@ module Stamps
         count.times do |counter|
           button.send_keys(:enter)
           button.safe_click
-          sleep(1)
+          sleep(0.35)
           return customer_profile if customer_profile.present?
           if customer_profile_not__found.present?
             logger.info "PAM:  #{customer_profile_not__found.text}"

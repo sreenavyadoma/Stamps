@@ -50,33 +50,14 @@ module Stamps
               logger.info importing_order.message
               importing_order.ok
             end
-            sleep(1)
+            sleep(0.35)
             return settings if settings.present?
             return shopify if shopify.present?
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
             end
-            sleep(1)
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            return settings if settings.present?
-            return shopify if shopify.present?
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -95,7 +76,7 @@ module Stamps
             end
             return settings if settings.present?
             return shopify if shopify.present?
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -114,7 +95,26 @@ module Stamps
             end
             return settings if settings.present?
             return shopify if shopify.present?
-            sleep(1)
+            sleep(0.35)
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            return settings if settings.present?
+            return shopify if shopify.present?
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -153,31 +153,13 @@ module Stamps
               logger.info importing_order.message
               importing_order.ok
             end
-            sleep(1)
+            sleep(0.35)
             return manage_stores if manage_stores.present?
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
             end
-            sleep(1)
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            return manage_stores if manage_stores.present?
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -195,7 +177,7 @@ module Stamps
               importing_order.ok
             end
             return manage_stores if manage_stores.present?
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -213,7 +195,25 @@ module Stamps
               importing_order.ok
             end
             return manage_stores if manage_stores.present?
-            sleep(1)
+            sleep(0.35)
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            return manage_stores if manage_stores.present?
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok

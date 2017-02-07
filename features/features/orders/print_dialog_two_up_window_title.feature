@@ -20,8 +20,8 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then on Order Details form, select service PM Flat Rate Envelope
     Then on Order Details form, set Weight to 1 lb 1 oz
     Then on Order Details form, set Dimensions to Length 1 Width 1 Height 1
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Modal Title is "You have 2 label(s) ready to print"
     Then in Print modal, click Close button

@@ -76,12 +76,12 @@ module Stamps
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[index-1]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[index-1]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=down]")[index-1]
-          @customs_item_qty = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
+          @customs_item_qty = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>input[name=Value]")[index-1]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=up]")[index-1]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=down]")[index-1]
-          @customs_item_unit_price = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
+          @customs_item_unit_price = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")[index-1]
           drop_down = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[index-1]
@@ -149,16 +149,16 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new browser.text_field name: "IsITNRequired"
-          @drop_down = StampsElement.new browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          @text_box = StampsTextbox.new(browser.text_field(name: "IsITNRequired"))
+          @drop_down = StampsElement.new(browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"))
         end
 
         def select(selection)
           logger.info "Select Internal Transaction Number: #{selection}"
-          selection_label = StampsElement.new browser.li(text: selection)
+          selection_label = StampsElement.new(browser.li(text: selection))
           10.times {
             begin
-              break if text_box.text.include? selection
+              break if text_box.text.include?(selection)
               drop_down.safe_click unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.safe_click

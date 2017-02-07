@@ -1,5 +1,5 @@
 
-Feature: In Orders Grid, Tracking & Order Status
+Feature: in Orders Grid, Tracking & Order Status
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -14,14 +14,14 @@ Feature: In Orders Grid, Tracking & Order Status
     Then on Order Details form, set Insure-For to $52.99
     Then on Order Details form, select service PM Flat Rate Envelope
     Then Pause for 1 second
-    Then In Orders Grid, expect Insured Value is $52.99
+    Then in Orders Grid, expect Insured Value is $52.99
     Then Pause for 1 second
     Then on Order Details form, uncheck Insure-For checkbox
     Then on Order Details form, select service PM Package
     Then on Order Details form, uncheck Insure-For checkbox
     Then on Order Details form, set Tracking to Signature Required
     Then Pause for 2 seconds
-    Then In Orders Grid, expect Insured Value is $0.00
+    Then in Orders Grid, expect Insured Value is $0.00
     Then Pause for 1 second
     Then Sign out
 

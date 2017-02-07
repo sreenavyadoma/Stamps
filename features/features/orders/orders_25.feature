@@ -48,7 +48,7 @@ Feature: 25 orders
     Then on Order Details form, select service FCM Large Envelope
     Then on Order Details form, set Insure-For to $15.00
     Then on Order Details form, set Tracking to "None"
-    Then In Orders Grid, check row 1
+    Then in Orders Grid, check row 1
 
     Then in Orders Toolbar, click Add button
     Then on Order Details form, expect Order ID is truthy
@@ -61,14 +61,14 @@ Feature: 25 orders
     Then on Order Details form, select service First-Class Mail Package/Thick Envelope
     Then on Order Details form, set Insure-For to $45.00
     Then on Order Details form, set Tracking to USPS Tracking
-    Then In Orders Grid, check row 1
+    Then in Orders Grid, check row 1
 
     #Priority Mail
     Then in Orders Toolbar, click Add button
     Then on Order Details form, expect Order ID is truthy
     Then on Order Details form, set Ship-From to default
     Then on Order Details form, set Ship-To to address in Zone 1 through 4
-    Then In Orders Grid, check row 1
+    Then in Orders Grid, check row 1
     Then on Order Details form, set Ounces to 3
     Then on Order Details form, set Length to 1
     Then on Order Details form, set Width to 1

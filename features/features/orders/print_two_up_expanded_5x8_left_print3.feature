@@ -24,9 +24,9 @@ Feature: Print 3 Domestic labels on 5.5x8.5 - left side
     Then on Order Details form, set Ship-To to Domestic Address FCM Pkg-Thick Env, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then on Order Details form, select service First-Class Mail Package/Thick Envelope
     Then on Order Details form, set Ounces to 1
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
-    Then In Orders Grid, check row 3
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
+    Then in Orders Grid, check row 3
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then in Print modal, set Printer to "factory"

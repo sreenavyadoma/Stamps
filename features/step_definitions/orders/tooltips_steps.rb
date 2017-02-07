@@ -109,7 +109,7 @@ Then /^(?:O|o)n Order Details form, expect Domestic Address data error tooltip i
     text_box.scroll_into_view
     text_box.safe_double_click
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
@@ -130,7 +130,7 @@ Then /^(?:O|o)n Order Details form, expect Domestic Email data error tooltip is 
     text_box.scroll_into_view
     text_box.safe_double_click
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
@@ -150,7 +150,7 @@ Then /^(?:O|o)n Order Details form, expect Weight Lbs data error tooltip is \"(.
     stamps.orders.order_details.blur_out
     text_box.set "0"
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
@@ -176,7 +176,7 @@ Then /^(?:O|o)n Order Details form, expect Weight Oz data error tooltip is \"(.*
     text_box.set "0"
     text_box.scroll_into_view
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
@@ -199,7 +199,7 @@ Then /^(?:O|o)n Order Details form, expect service data error tooltip is \"(.*)\
     text_box.scroll_into_view
     text_box.safe_double_click
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
@@ -223,11 +223,11 @@ Then /^(?:O|o)n Order Details form, expect Dimensions Length data error tooltip 
     text_box.scroll_into_view
     text_box.safe_double_click
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -247,11 +247,11 @@ Then /^(?:O|o)n Order Details form, expect Dimensions Width data error tooltip i
     text_box.scroll_into_view
     text_box.safe_double_click
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -271,11 +271,11 @@ Then /^(?:O|o)n Order Details form, expect Dimensions Height data error tooltip 
     text_box.scroll_into_view
     text_box.safe_double_click
     stamps.orders.order_details.blur_out
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -304,11 +304,11 @@ Then /^(?:O|o)n Order Details form, expect International Name data error tooltip
     text_box.safe_double_click
     #web_apps.orders.order_details.ship_to.international.click_form
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -330,11 +330,11 @@ Then /^(?:O|o)n Order Details form, expect International Company data error tool
     text_box.safe_double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -355,11 +355,11 @@ Then /^(?:O|o)n Order Details form, expect International Address 1 data error to
     text_box.safe_double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -379,11 +379,11 @@ Then /^(?:O|o)n Order Details form, expect International City data error tooltip
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -404,11 +404,11 @@ Then /^(?:O|o)n Order Details form, expect International Phone data error toolti
     text_box.safe_double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
@@ -430,11 +430,11 @@ Then /^(?:O|o)n Order Details form, expect International Email data error toolti
     text_box.safe_double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    sleep(1)
+    sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
-      sleep(1)
+      sleep(0.35)
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end

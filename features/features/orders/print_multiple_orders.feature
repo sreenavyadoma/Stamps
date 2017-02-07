@@ -18,8 +18,8 @@ Feature: Print Multiple Orders
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then on Order Details form, set Ounces to 1
 
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
 
     Then in Print modal, click Print button
     Then Sign out

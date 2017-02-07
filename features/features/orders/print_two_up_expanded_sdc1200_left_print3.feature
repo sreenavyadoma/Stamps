@@ -20,9 +20,9 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
     Then on Order Details form, set Ship-To to Domestic Address PM RR Box A, SDC-1200, 4937 79th St., Sacramento CA 95820-6213
     Then on Order Details form, select service PM Regional Rate Box A
     Then on Order Details form, set Ounces to 1
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
-    Then In Orders Grid, check row 3
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
+    Then in Orders Grid, check row 3
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then in Print modal, set Printer to "factory"

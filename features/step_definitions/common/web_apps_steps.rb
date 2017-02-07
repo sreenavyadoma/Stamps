@@ -22,7 +22,7 @@ Then /^(?:S|s)ign out$/ do
 end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
-  if username.downcase.include? "random"
+  if username.downcase.include? 'random'
     usr = @username
   else
     usr = username

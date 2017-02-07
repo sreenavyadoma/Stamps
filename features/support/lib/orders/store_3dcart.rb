@@ -69,7 +69,7 @@ module Stamps
 
           20.times do |counter|
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -97,7 +97,7 @@ module Stamps
 
           10.times do |counter|
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok

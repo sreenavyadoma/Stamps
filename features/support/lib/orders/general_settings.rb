@@ -537,7 +537,7 @@ module Stamps
           5.times do
             return unless button.present?
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return unless present?
           end
         end

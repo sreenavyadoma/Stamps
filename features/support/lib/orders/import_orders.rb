@@ -50,7 +50,7 @@ module Stamps
         4.times do
           button.safe_click
           logger.info "Success modal is #{(success.present?)?"Present":"Not Present"}"
-          sleep(1)
+          sleep(0.35)
           return success if success.present?
           if server_error.present?
             error_str = server_error.message

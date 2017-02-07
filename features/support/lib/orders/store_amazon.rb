@@ -32,7 +32,7 @@ module Stamps
 
             10.times do
               dd.safe_click unless selection_field.present?
-              sleep(1)
+              sleep(0.35)
               selection_field.safe_click
               selection_field.safe_click
               break if text_field.text.include? selection
@@ -66,7 +66,7 @@ module Stamps
 
             10.times do
               dd.safe_click unless selection_field.present?
-              sleep(1)
+              sleep(0.35)
               selection_field.safe_click
               selection_field.safe_click
               break if text_field.text.include? selection

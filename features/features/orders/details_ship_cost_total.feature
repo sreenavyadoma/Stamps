@@ -11,7 +11,7 @@ Feature: Details Ship Cost Total
     Then in Orders Toolbar, click Add button
     Then on Order Details form, expect Total label is Total Ship Cost:
     Then on Order Details form, set Ship-From to default
-    Then on Order Details form, expect service Cost is $0.00
+    Then on Order Details form, expect Service Cost is $0.00
     Then on Order Details form, expect Insure-For Cost is $0.00
     Then on Order Details form, expect Tracking Cost is $0.00
     Then on Order Details form, expect Total Ship Cost is $0.00
@@ -25,7 +25,7 @@ Feature: Details Ship Cost Total
     Then on Order Details form, set Width to 1
     Then on Order Details form, set Height to 1
 
-    Then on Order Details form, expect service Cost is greater than $1.00
+    Then on Order Details form, expect Service Cost is greater than $1.00
     Then on Order Details form, expect Tracking Cost is greater than $1.00
     Then on Order Details form, expect Ship Cost Total is correct
 

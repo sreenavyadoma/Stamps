@@ -154,7 +154,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then on Order Details form, set Width to 1
     Then on Order Details form, set Height to 1
     Then on Order Details form, set Length to 1
-    Then In Orders Grid, check row 1
+    Then in Orders Grid, check row 1
 
     #Create order 2
     Then in Orders Toolbar, click Add button
@@ -165,7 +165,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then on Order Details form, set Width to 1
     Then on Order Details form, set Height to 1
     Then on Order Details form, set Length to 1
-    Then In Orders Grid, check row 1
+    Then in Orders Grid, check row 1
 
     #Create order 3
     Then in Orders Toolbar, click Add button
@@ -176,11 +176,11 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then on Order Details form, set Width to 1
     Then on Order Details form, set Height to 1
     Then on Order Details form, set Length to 1
-    Then In Orders Grid, check row 1
+    Then in Orders Grid, check row 1
 
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
-    Then In Orders Grid, check row 3
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
+    Then in Orders Grid, check row 3
 
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 5 ½" x 8 ½""

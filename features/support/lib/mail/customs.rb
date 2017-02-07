@@ -116,7 +116,7 @@ module Stamps
         rows = browser.trs css:  "tr[class*=x-grid-data-row]"
         for i in 0..1000
           break if rows[i].present? == false
-          sleep(1)
+          sleep(0.35)
           element_helper.safe_click rows[i]
           delete
         end
@@ -507,7 +507,7 @@ module Stamps
             end
             break if value == current_value
           end
-          sleep(1)
+          sleep(0.35)
           logger.info "Qty set to #{text_field.text}"
         end
 
@@ -580,7 +580,7 @@ module Stamps
             end
             break if value == current_value
           end
-          sleep(1)
+          sleep(0.35)
           logger.info "Pounds set to #{text_field.text}"
         end
 
@@ -623,7 +623,7 @@ module Stamps
             end
             break if value == current_value
           end
-          sleep(1)
+          sleep(0.35)
           logger.info "Ounces set to #{text_field.text}"
         end
 

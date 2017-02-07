@@ -35,12 +35,12 @@ Then /^Verify Local Rating$/ do |table|
 
     5.times do
       stamps.orders.order_details.blur_out
-      sleep(1)
+      sleep(0.5)
       total_ship_cost = stamps.orders.order_details.footer.total_ship_cost
       stamps.orders.order_details.blur_out
       stamps.orders.order_details.blur_out
-      sleep(1)
-      break if total_ship_cost.to_f == expected_total_amount.to_f
+      sleep(0.5)
+      break if total_ship_cost == expected_total_amount.to_f.round(2)
     end
 
     #logger.step "  --------------------------------------------------------------------------- "

@@ -32,7 +32,7 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
 
-    Then In Orders Grid, check row 2
+    Then in Orders Grid, check row 2
 
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""

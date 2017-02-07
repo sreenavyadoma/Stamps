@@ -16,8 +16,8 @@ Feature: Set Print Ship Date to Today + 1
     Then in Print modal, set Ship Date to today plus 1
     Then in Print modal, click Print button
     Then In left Filter Panel, select Shipped
-    Then In Orders Grid, expect Date Printed for this order is today
-    Then In Orders Grid, expect Ship Date for this order is today plus 1
+    Then in Orders Grid, expect Date Printed for this order is today
+    Then in Orders Grid, expect Ship Date for this order is today plus 1
     Then Sign out
 
 

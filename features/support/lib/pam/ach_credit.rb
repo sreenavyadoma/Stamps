@@ -68,7 +68,7 @@ module Stamps
         5.times do
           yes_button.send_keys(:enter)
           yes_button.safe_click
-          sleep(1)
+          sleep(0.35)
           if confirmation.present?
             logger.message confirmation.text
             logger.message confirmation.text

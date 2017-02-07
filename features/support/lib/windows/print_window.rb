@@ -32,7 +32,7 @@ module Stamps
       def wait_until_present
         5.times do
           break if present?
-          sleep(1)
+          sleep(0.35)
         end
       end
 

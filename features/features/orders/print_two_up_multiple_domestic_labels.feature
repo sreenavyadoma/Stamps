@@ -22,7 +22,7 @@ Feature: Print two labels on one sheet
     Then on Order Details form, set Weight to 1 lb 1 oz
     Then on Order Details form, set Tracking to Signature Required
 
-    Then In Orders Grid, check row 2
+    Then in Orders Grid, check row 2
 
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 5 ½" x 8 ½""

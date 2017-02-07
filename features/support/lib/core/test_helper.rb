@@ -147,7 +147,7 @@ module Stamps
       end
 
       def debug
-        return true if ENV["DEBUG"].nil?
+        return false if ENV["DEBUG"].nil?
         ENV["DEBUG"].downcase == "true"
       end
 

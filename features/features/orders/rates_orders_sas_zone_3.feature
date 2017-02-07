@@ -11,7 +11,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service FCM Large Envelope
     Then on Order Details form, set Weight to 0 lb 2 oz
-    Then on Order Details form, expect service Cost is $1.19
+    Then on Order Details form, expect Service Cost is $1.19
     Then on Order Details form, expect Total Ship Cost is $1.19
 
   @rates_orders_sas_zone_3
@@ -22,7 +22,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service First-Class Mail Package/Thick Envelope
     Then on Order Details form, set Weight to 0 lb 15 oz
-    Then on Order Details form, expect service Cost is $4.16
+    Then on Order Details form, expect Service Cost is $4.16
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $4.16
 
@@ -34,7 +34,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Large Envelope
     Then on Order Details form, set Weight to 1 lb 5 oz
-    Then on Order Details form, expect service Cost is $6.60
+    Then on Order Details form, expect Service Cost is $6.60
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.60
 
@@ -46,7 +46,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Package
     Then on Order Details form, set Weight to 3 lb 0 oz
-    Then on Order Details form, expect service Cost is $7.38
+    Then on Order Details form, expect Service Cost is $7.38
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $7.38
 
@@ -58,7 +58,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Large Package
     Then on Order Details form, set Weight to 12 lb 0 oz
-    Then on Order Details form, expect service Cost is $17.17
+    Then on Order Details form, expect Service Cost is $17.17
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $17.17
 
@@ -70,7 +70,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Flat Rate Envelope
     Then on Order Details form, set Weight to 5 lb 3 oz
-    Then on Order Details form, expect service Cost is $5.95
+    Then on Order Details form, expect Service Cost is $5.95
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $5.95
 
@@ -82,7 +82,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Padded Flat Rate Envelope
     Then on Order Details form, set Weight to 7 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.50
+    Then on Order Details form, expect Service Cost is $6.50
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.50
 
@@ -94,7 +94,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Legal Flat Rate Envelope
     Then on Order Details form, set Weight to 2 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.25
+    Then on Order Details form, expect Service Cost is $6.25
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.25
 
@@ -106,7 +106,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Small Flat Rate Box
     Then on Order Details form, set Weight to 8 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.45
+    Then on Order Details form, expect Service Cost is $6.45
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.45
 
@@ -118,7 +118,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Medium Flat Rate Box
     Then on Order Details form, set Weight to 13 lb 0 oz
-    Then on Order Details form, expect service Cost is $12.40
+    Then on Order Details form, expect Service Cost is $12.40
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $12.40
 
@@ -130,7 +130,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Large Flat Rate Box
     Then on Order Details form, set Weight to 15 lb 0 oz
-    Then on Order Details form, expect service Cost is $17.05
+    Then on Order Details form, expect Service Cost is $17.05
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $17.05
 
@@ -142,7 +142,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Regional Rate Box A
     Then on Order Details form, set Weight to 5 lb 0 oz
-    Then on Order Details form, expect service Cost is $6.60
+    Then on Order Details form, expect Service Cost is $6.60
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $6.60
 
@@ -154,7 +154,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PM Regional Rate Box B
     Then on Order Details form, set Weight to 6 lb 0 oz
-    Then on Order Details form, expect service Cost is $8.01
+    Then on Order Details form, expect Service Cost is $8.01
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $8.01
 
@@ -166,7 +166,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PME Package
     Then on Order Details form, set Weight to 11 lb 0 oz
-    Then on Order Details form, expect service Cost is $48.54
+    Then on Order Details form, expect Service Cost is $48.54
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $48.54
 
@@ -178,7 +178,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PME Flat Rate Envelope
     Then on Order Details form, set Weight to 1 lb 0 oz
-    Then on Order Details form, expect service Cost is $21.18
+    Then on Order Details form, expect Service Cost is $21.18
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $21.18
 
@@ -190,7 +190,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then on Order Details form, set Weight to 14 lb 0 oz
-    Then on Order Details form, expect service Cost is $21.64
+    Then on Order Details form, expect Service Cost is $21.64
     Then on Order Details form, set Tracking to Signature Required
     Then on Order Details form, expect Total Ship Cost is $21.64
 
@@ -202,7 +202,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PME Legal Flat Rate Envelope
     Then on Order Details form, set Weight to 4 lb 0 oz
-    Then on Order Details form, expect service Cost is $21.28
+    Then on Order Details form, expect Service Cost is $21.28
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $21.28
 
@@ -214,7 +214,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service MM Package
     Then on Order Details form, set Weight to 13 lb 0 oz
-    Then on Order Details form, expect service Cost is $8.45
+    Then on Order Details form, expect Service Cost is $8.45
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $8.45
 
@@ -226,7 +226,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PSG Package
     Then on Order Details form, set Weight to 23 lb 0 oz
-    Then on Order Details form, expect service Cost is $19.29
+    Then on Order Details form, expect Service Cost is $19.29
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $19.29
 
@@ -238,7 +238,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PSG Large Package
     Then on Order Details form, set Weight to 33 lb 0 oz
-    Then on Order Details form, expect service Cost is $26.46
+    Then on Order Details form, expect Service Cost is $26.46
     Then on Order Details form, set Tracking to USPS Tracking
     Then on Order Details form, expect Total Ship Cost is $26.46
 
@@ -250,7 +250,7 @@ Feature: January 2017 Rates for SAS User in Zone 3
     Then on Order Details form, set Ship-To to address in Zone 3
     Then on Order Details form, select service PSG Oversized Package
     Then on Order Details form, set Weight to 40 lb 0 oz
-    Then on Order Details form, expect service Cost is $67.94
+    Then on Order Details form, expect Service Cost is $67.94
     Then on Order Details form, set Tracking to Signature Required
     Then on Order Details form, expect Total Ship Cost is $70.39
 

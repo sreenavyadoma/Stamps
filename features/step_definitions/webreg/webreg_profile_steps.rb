@@ -11,7 +11,7 @@ Then /^(?:O|o)n WebReg Profile page, Continue to Mailing Information page$/ do
 end
 
 Then /^(?:O|o)n WebReg Profile page, set User ID and Email to (.*)$/ do |usr|
-  if usr.downcase.include? "random"
+  if usr.downcase.include? 'random'
     test_data[:usr] = ParameterHelper.rand_username
   else
     test_data[:usr] = usr
@@ -258,7 +258,7 @@ Then /^(?:O|o)n WebReg Profile page, continue to Mailing Information page$/ do
   #logger.step "On WebReg Profile page, continue to Mailing Information page"
   10.times do
     webreg.profile.continue.click
-    sleep(1)
+    sleep(0.35)
     break if webreg.profile.membership.present?
   end
   "Unable to continue....".should eql "Mailing Information page Did not load." unless webreg.profile.membership.present?

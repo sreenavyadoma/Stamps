@@ -24,8 +24,8 @@ module Stamps
           address_array.each_with_index { |element, index|
             if index==address_array.size-1 #if this is the last item in the string, don't append a new line
               formatted_address = formatted_address + element.to_s.strip
-            else #(param_hash['name'].downcase.include? "random") ? ParameterHelper.random_name : param_hash['name']
-              formatted_address = formatted_address + ((element.to_s.strip.downcase.include? "random") ? ParameterHelper.random_name : element.to_s.strip) + "\n"
+            else #(param_hash['name'].downcase.include? 'random') ? ParameterHelper.random_name : param_hash['name']
+              formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? ParameterHelper.random_name : element.to_s.strip) + "\n"
             end
           }
         else
@@ -56,8 +56,8 @@ module Stamps
       end
 
       def address_hash_to_str address
-        name = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
-        company_name = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
+        name = (address['name'].downcase.include? 'random') ? ParameterHelper.random_name : address['name']
+        company_name = (address['company'].downcase.include? 'random') ? ParameterHelper.random_company_name : address['company']
         street_address = address["street_address"]
 
         if address['street_address_2'].nil?
@@ -71,11 +71,11 @@ module Stamps
         zip = address["zip"]
         begin
           phone_num = address['phone']
-          phone = (phone_num.downcase.include? "random") ? ParameterHelper.random_phone : address['phone']
+          phone = (phone_num.downcase.include? 'random') ? ParameterHelper.random_phone : address['phone']
         end unless address['phone'].nil?
         begin
           email_addy = address['email']
-          email = (email_addy.downcase.include? "random") ? ParameterHelper.random_email : address['email']
+          email = (email_addy.downcase.include? 'random') ? ParameterHelper.random_email : address['email']
         end unless address['email'].nil?
 
         #logger.info "Ship-To Name: #{name}"

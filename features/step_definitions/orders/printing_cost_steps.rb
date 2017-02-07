@@ -1,6 +1,5 @@
 
 Then /^(?:O|o)n Order Details form, expect Total label is (.*)$/ do |expectation|
-  #logger.step "On Order Details form, expect Total Ship Cost exist and is in Bold letters"
   15.times do
     break if stamps.orders.order_details.footer.label.text == expectation
   end
@@ -8,7 +7,6 @@ Then /^(?:O|o)n Order Details form, expect Total label is (.*)$/ do |expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship Cost Total is correct$/ do
-  #logger.step "On Order Details form, expect Ship Cost Total is correct"
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
   test_data[:service_cost] = stamps.orders.order_details.service.cost
   test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
@@ -17,26 +15,22 @@ Then /^(?:O|o)n Order Details form, expect Ship Cost Total is correct$/ do
 end
 
 Then /^(?:O|o)n Order Details form, expect Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
-  #logger.step "On Order Details form, expect Ship Cost Total is $#{expectation}"
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.multiple_order_cost
   test_data[:total_ship_cost].should eql expectation
 end
 
 Then /^Expect Ship Cost equals Total amount$/ do
-  #logger.step "Expect Ship Cost equals Total amount"
   10.times {
     begin
-      break if stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id]).eql? stamps.orders.order_details.footer.total_ship_cost
+      break if stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id]).eql?(stamps.orders.order_details.footer.total_ship_cost)
     rescue
       #ignore
     end
   }
-  stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id]).should eql stamps.orders.order_details.footer.total_ship_cost
+  stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id]).should eql(stamps.orders.order_details.footer.total_ship_cost)
 end
 
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
-  #logger.step "Expect \$#{expected} is deducted from customer balance if printing is successful"
-  #logger.step "Old Balance: #{test_data[:old_balance]}"
   if @printing_error
     stamps.navigation_bar.balance.amount.to_f.should eql test_data[:old_balance].to_f
   else
@@ -45,9 +39,6 @@ Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is succe
 end
 
 Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
-  #logger.step "NavBar: Expect Customer Balance is deducted the Printing Cost"
-  #logger.step "Printing Error:  #{@printing_error}"
-  #logger.step "Old Balance: #{test_data[:old_balance]}"
   if @printing_error.length > 0
     stamps.navigation_bar.balance.amount.to_f.should eql test_data[:old_balance].to_f
   else
@@ -57,7 +48,6 @@ Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
 end
 
 Then /^(?:I|i)n Print modal, expect Total Cost is \$([0-9.]*)$/ do |expectation|
-  #logger.step "In Print modal, expect Total Cost is #{expectation}"
   begin
     print_window = stamps.orders.toolbar.print_btn.print_modal
     actual_value = print_window.total_cost

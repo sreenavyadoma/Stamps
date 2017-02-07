@@ -136,7 +136,7 @@ module Stamps
               row_text = element_helper.text element
               if row_text.include? order_id
                 logger.info "Order ID #{order_id}, Row #{index+1}"
-                sleep(1)
+                sleep(0.35)
                 return index + 1
               end
             end
@@ -175,7 +175,7 @@ module Stamps
           scroll_into_view
           8.times{
             break if size > 0
-            sleep(1)
+            sleep(0.35)
           }
 
           if size == 0
@@ -273,7 +273,7 @@ module Stamps
 
         def data(order_id)
           scroll_into_view
-          sleep(1)
+          sleep(0.35)
           grid_text_by_id(:recipient, order_id)
         end
 
@@ -455,7 +455,7 @@ module Stamps
         end
 
         def data(order_id)
-          grid_text_by_id(:qty, order_id)
+          grid_text_by_id(:qty, order_id).to_i
         end
       end
 
@@ -525,11 +525,11 @@ module Stamps
         end
 
         def lb order_id
-          data(order_id).scan(/\d+ lb./).first.scan(/\d/).first
+          data(order_id).scan(/\d+ lb./).first.scan(/\d/).first.to_i
         end
 
         def oz order_id
-          data(order_id).scan(/\d+ oz./).first.scan(/\d/).first
+          data(order_id).scan(/\d+ oz./).first.scan(/\d/).first.to_i
         end
       end
 

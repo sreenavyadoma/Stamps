@@ -27,7 +27,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then in Print modal, click Print button
 
     Then In left Filter Panel, select Shipped
-    Then In Orders Grid, check saved Order ID
+    Then in Orders Grid, check saved Order ID
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 

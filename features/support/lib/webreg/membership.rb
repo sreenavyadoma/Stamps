@@ -932,7 +932,7 @@ module Stamps
           break unless submit_button.present?
         end
         15.times do
-          sleep(1)
+          sleep(0.35)
           break if browser.url.include? "catalog"
         end
       end
@@ -946,7 +946,7 @@ module Stamps
 
       def tab
         browser.send_keys([:tab])
-        sleep(1)
+        sleep(0.35)
       end
     end
   end

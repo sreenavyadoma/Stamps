@@ -392,7 +392,7 @@ module Stamps
       # Added by Galina
       def tab
         browser.send_keys([:tab])
-        sleep(1)
+        sleep(0.35)
       end
 
   end

@@ -1,12 +1,11 @@
-default: --profile cuke_reports --profile rob_cc
+default: --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
-
 
 #stgdmnmrv29j04 details_large_dimensions_pm cce5nk6k6068z stgi3eicvj8d7b SC-m9rqvdp97u5
 rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 
-rob_cc: --tags @bvt_shipstation_updates_international WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @bvt_international_shipping WEB_APP=orders USER_CREDENTIALS=bvt_international_shipping JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #yh95ws85j c2jinmzmu64 store parcel_select
 
@@ -16,9 +15,9 @@ rob_mail_cc: --tags @mail_authentication WEB_APP=mail USER_CREDENTIALS=rob JENKI
 rob_mail_stg: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_mail_sc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #yh95ws85j c2jinmzmu64 store parcel_select
 
-eli_dev: --tags @item_details   --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=item_details URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=go45dhfhkw PW=pass111
-ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
-eva_dev: --tags @details_panel --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
+eli_dev: --tags @item_details   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=item_details URL=sc BROWSER=ff FIREFOX_PROFILE=selenium USR=go45dhfhkw PW=pass111
+ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
+eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
@@ -47,7 +46,7 @@ search_orders: --tags @search_orders --guess DEBUG=false JENKINS=true HEALTHCHEC
 output_username: --tags @output_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=webreg
 generate_username: --tags @generate_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=webreg
 
-healthcheck: --tags @healthcheck --guess DEBUG=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=healthcheck
+healthcheck: --tags @healthcheck --guess DEBUG=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=healthcheck
 authentication: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=authentication
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=customs_form_auto_calculate_weight
@@ -459,6 +458,6 @@ mail_invalid_credentials: --tags  @mail_invalid_credentials --guess DEBUG=false 
 mail_manage_shipping_addresses: --tags  @mail_manage_shipping_addresses --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_manage_shipping_addresses
 mail_remember_username: --tags  @mail_remember_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_remember_username
 mail_welcome: --tags  @mail_welcome --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_welcome
-mail_print_envelope_10_return_address: --tags  @mail_print_envelope_10_return_address --guess DEBUG=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_envelope_10_return_address
-mail_print_envelope_10_delivery_address: --tags  @mail_print_envelope_10_delivery_address --guess DEBUG=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_envelope_10_delivery_address
-mail_print_envelope_10_postage: --tags  @mail_print_envelope_10_postage --guess DEBUG=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_envelope_10_postage
+mail_print_envelope_10_return_address: --tags  @mail_print_envelope_10_return_address --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_envelope_10_return_address
+mail_print_envelope_10_delivery_address: --tags  @mail_print_envelope_10_delivery_address --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_envelope_10_delivery_address
+mail_print_envelope_10_postage: --tags  @mail_print_envelope_10_postage --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_envelope_10_postage

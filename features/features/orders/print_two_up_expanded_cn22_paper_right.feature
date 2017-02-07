@@ -29,8 +29,8 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - right side
     Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then in Print modal, set Printer to "factory"

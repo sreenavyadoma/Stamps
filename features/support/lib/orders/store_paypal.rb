@@ -7,7 +7,7 @@ module Stamps
           button = StampsElement.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             break unless button.present?
           end
         end
@@ -24,7 +24,7 @@ module Stamps
           button = StampsElement.new(browser.span(text: "OK"))
           5.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             break unless button.present?
           end
         end
@@ -48,7 +48,7 @@ module Stamps
           window = window_title
           3.times do
             break if window.present?
-            sleep(1)
+            sleep(0.35)
           end
         end
 
@@ -56,7 +56,7 @@ module Stamps
           button = StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']").last)
           5.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             break unless button.present?
           end
         end
@@ -84,7 +84,7 @@ module Stamps
           window = window_title
           5.times do
             break if window.present?
-            sleep(1)
+            sleep(0.35)
           end
         end
 
@@ -92,7 +92,7 @@ module Stamps
           button = StampsElement.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             break unless button.present?
           end
         end
@@ -143,7 +143,7 @@ module Stamps
           button = StampsElement.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             break unless button.present?
           end
         end

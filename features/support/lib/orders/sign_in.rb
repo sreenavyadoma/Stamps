@@ -161,8 +161,8 @@ module Stamps
         title.present?
       end
 
-      def wait_until_present *args
-        title.safely_wait_until_present *args
+      def wait_until_present(*args)
+        title.safely_wait_until_present(*args)
       end
 
       def close
@@ -332,7 +332,7 @@ module Stamps
               "Invalid Username: #{usr}/#{pw}".should eql invalid_username.text
             end
 
-            new_welcome.wait_until_present 3
+            new_welcome.wait_until_present(3)
             if new_welcome.present?
               logger.message new_welcome.message
               add_manual_order = new_welcome.next

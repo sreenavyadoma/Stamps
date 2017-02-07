@@ -76,7 +76,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Pause for 2 seconds
     Then Navigation Bar: Customer Balance
 
-    Then In Orders Grid, expect Column Country appears to left of Address
+    Then in Orders Grid, expect Column Country appears to left of Address
 
     Then Sign out
     Then On WebReg Profile page, Send username to standard out

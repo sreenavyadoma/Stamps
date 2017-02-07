@@ -18,7 +18,6 @@ Then /^Save Order Details data$/ do
   test_data[:service_cost] = stamps.orders.order_details.service.cost
   test_data[:service] = stamps.orders.order_details.service.text_box.text
   test_data[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
-  test_data[:insure_for] = stamps.orders.order_details.insure_for.value
   test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
   test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
   test_data[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count

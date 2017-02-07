@@ -58,10 +58,10 @@ module Stamps
       end
 
       def continue
-        sleep(1)
+        sleep(0.35)
         6.times do
           collapse_button.safe_click
-          sleep(1)
+          sleep(0.35)
           break unless collapse_button.present?
         end
       end
@@ -149,11 +149,11 @@ module Stamps
         button = print_button
         5.times {
           begin
-            sleep(1)
+            sleep(0.35)
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             printing_error = printing_error_check
             return printing_error if printing_error.length > 1
             break unless button.present?

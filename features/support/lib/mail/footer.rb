@@ -56,7 +56,7 @@ module Stamps
           if windows_print.present?
             break
           else
-            sleep(1)
+            sleep(0.35)
           end
         end
         sleep(2)

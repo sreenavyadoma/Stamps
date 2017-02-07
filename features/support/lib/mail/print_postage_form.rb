@@ -154,7 +154,7 @@ module Stamps
           end
           break if value == current_value
         end
-        sleep(1)
+        sleep(0.35)
         logger.info "Pounds set to #{text_box.text}"
       end
 
@@ -195,7 +195,7 @@ module Stamps
           end
           break if value == current_value
         end
-        sleep(1)
+        sleep(0.35)
         logger.info "Pounds set to #{text_field.text}"
       end
 
@@ -478,7 +478,7 @@ module Stamps
         contacts_modal = ContactsModal.new(param)
         5.times do
           button.safe_click
-          sleep(1)
+          sleep(0.35)
           return contacts_modal if contacts_modal.present?
         end
         "Unable to open Contacts Modal, check your code.".should eql "" unless contacts_modal.present?
@@ -501,7 +501,7 @@ module Stamps
         box = text_box
         button = drop_down
         selection_label = StampsElement.new browser.div text: selection
-        sleep(1)
+        sleep(0.35)
         10.times {
           begin
             button.safe_click #unless selection_label.present?

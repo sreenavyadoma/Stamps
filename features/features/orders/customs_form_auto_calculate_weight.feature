@@ -42,8 +42,8 @@ Feature: Auto-Calculate Customs Form Weight
 
     Then on Customs form, click Close button
 
-    Then In Orders Grid, expect Weight is 0 lb. 4 oz.
-    Then In Orders Grid, expect Weight(lb) is 0
-    Then In Orders Grid, expect Weight(oz) is 4
+    Then in Orders Grid, expect Weight is 0 lb. 4 oz.
+    Then in Orders Grid, expect Weight(lb) is 0
+    Then in Orders Grid, expect Weight(oz) is 4
 
     Then Sign out

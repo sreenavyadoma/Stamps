@@ -54,24 +54,24 @@ Then /^Mail: Set Ship-To to$/ do |table|
   test_data[:ship_to_country] = address['country']
   #logger.step "Ship-To Country:  #{test_data[:ship_to_country]}"
 
-  test_data[:ship_to_name] = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
-  test_data[:ship_to_company] = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
-  test_data[:ship_to_city] = (address['city'].downcase.include? "random") ? ParameterHelper.random_string : address['city']
+  test_data[:ship_to_name] = (address['name'].downcase.include? 'random') ? ParameterHelper.random_name : address['name']
+  test_data[:ship_to_company] = (address['company'].downcase.include? 'random') ? ParameterHelper.random_company_name : address['company']
+  test_data[:ship_to_city] = (address['city'].downcase.include? 'random') ? ParameterHelper.random_string : address['city']
 
   if test_data[:ship_to_country].downcase.include? "united states"
-    test_data[:ship_to_street_address] = (address['street_address'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address']
-    ship_to_state = (address['state'].downcase.include? "random") ? ParameterHelper.random_string : address['state']
-    ship_to_zip = (address['zip'].downcase.include? "random") ? ParameterHelper.random_string : address['zip']
+    test_data[:ship_to_street_address] = (address['street_address'].downcase.include? 'random') ? ParameterHelper.random_string : address['street_address']
+    ship_to_state = (address['state'].downcase.include? 'random') ? ParameterHelper.random_string : address['state']
+    ship_to_zip = (address['zip'].downcase.include? 'random') ? ParameterHelper.random_string : address['zip']
 
     ship_to_address = "#{test_data[:ship_to_name]},#{test_data[:ship_to_company]},#{ship_to_street_address},#{test_data[:ship_to_city]} #{ship_to_state} #{ship_to_zip}"
     #logger.step "Ship-To Address:  #{ship_to_address}"
     step "Mail: Set Ship-To address to #{ship_to_address}"
   else
-    ship_to_street_address_1 = (address['street_address_1'].downcase.include? "random") ? ParameterHelper.random_string : address['street_address_1']
-    ship_to_street_address_2 = (address['street_address_2'].downcase.include? "random") ? ParameterHelper.random_suite : address['street_address_2']
-    ship_to_province = (address['province'].downcase.include? "random") ? ParameterHelper.random_string : address['province']
-    ship_to_postal_code = (address['postal_code'].downcase.include? "random") ? ParameterHelper.random_alpha_numeric : address['postal_code']
-    ship_to_phone = (address['phone'].downcase.include? "random") ? ParameterHelper.random_phone : address['phone']
+    ship_to_street_address_1 = (address['street_address_1'].downcase.include? 'random') ? ParameterHelper.random_string : address['street_address_1']
+    ship_to_street_address_2 = (address['street_address_2'].downcase.include? 'random') ? ParameterHelper.random_suite : address['street_address_2']
+    ship_to_province = (address['province'].downcase.include? 'random') ? ParameterHelper.random_string : address['province']
+    ship_to_postal_code = (address['postal_code'].downcase.include? 'random')?ParameterHelper.random_alpha_numeric : address['postal_code']
+    ship_to_phone = (address['phone'].downcase.include? 'random') ? ParameterHelper.random_phone : address['phone']
 
     #logger.step "Ship-To Name: #{test_data[:ship_to_name]}"
     #logger.step "Ship-To Company: #{test_data[:ship_to_company]}"

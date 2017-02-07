@@ -193,7 +193,7 @@ module Stamps
           btn.element.hover
           15.times do
             btn.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text
@@ -559,7 +559,7 @@ module Stamps
 
               return window if window.present?
               print_order_btn.click
-              sleep(1)
+              sleep(0.35)
             rescue
               #ignore
             end
@@ -606,10 +606,10 @@ module Stamps
           end
 
           20.times do
-            sleep(1)
+            sleep(0.35)
             return modal if modal.present?
             dd.safe_click unless selection.present?
-            #sleep(1)
+            #sleep(0.35)
             selection.safe_click
             selection.safe_click
           end
@@ -681,7 +681,7 @@ module Stamps
               button.safe_click
 
               10.times do
-                sleep(1)
+                sleep(0.35)
                 return details if details.present?
               end
 
@@ -723,7 +723,7 @@ module Stamps
           button.element.hover
           15.times do
             button.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text
@@ -750,7 +750,7 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           button.safe_click
-          sleep(1)
+          sleep(0.35)
           if importing_order.present?
             logger.info importing_order.message
             importing_order.ok
@@ -764,7 +764,7 @@ module Stamps
             importing_order.ok
           end
           button.safe_click
-          sleep(1)
+          sleep(0.35)
           if importing_order.present?
             logger.info importing_order.message
             importing_order.ok

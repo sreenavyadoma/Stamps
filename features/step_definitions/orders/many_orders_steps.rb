@@ -24,6 +24,6 @@ Then /^Create (\d+) new orders with Address set to (.*) and service set to (.*)$
     #logger.step "On Order Details form, set Form service to #{service}"
     batch.order_details.service.select service
     #logger.step "Order #{iteration} created."
-    sleep(1)
+    sleep(0.35)
   }
 end

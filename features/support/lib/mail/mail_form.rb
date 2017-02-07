@@ -8,7 +8,7 @@ module Stamps
         customs_modal = CustomsForm.new(param)
         15.times do
           button.safe_click
-          sleep(1)
+          sleep(0.35)
           return customs_modal if customs_modal.present?
         end
         "Unable to open Customs Modal, check your test".should eql 'Edit Customs Modal failed.'

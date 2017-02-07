@@ -136,7 +136,7 @@ module Stamps
 
             20.times{
               break if size >= index
-              sleep(1)
+              sleep(0.35)
               break if size >= index
               add_button.safe_click if index > size
               logger.info "Service Mapping Item Count: #{size}"
@@ -282,7 +282,7 @@ module Stamps
           store = Etsy.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
           "Etsy Store Modal did not open.".should eql ""
@@ -297,7 +297,7 @@ module Stamps
           store = Shopify.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
           "Etsy Store Modal did not open.".should eql ""
@@ -312,7 +312,7 @@ module Stamps
           store = ThreeDCart.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
           "3dcart Store Modal did not open.".should eql ""
@@ -327,7 +327,7 @@ module Stamps
           store = Ebay.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
           "Etsy Store Modal did not open.".should eql ""
@@ -342,7 +342,7 @@ module Stamps
           store = Yahoo.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
           "Yahoo Store Modal did not open.".should eql ""
@@ -357,7 +357,7 @@ module Stamps
           store = BigCommerce.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
           "Big Commerce Store Modal did not open.".should eql ""
@@ -372,7 +372,7 @@ module Stamps
           store = PayPal.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
           "PayPal Store Modal did not open.".should eql ""
@@ -443,11 +443,11 @@ module Stamps
                     row.safe_click
                     row.safe_click
                     row.safe_click
-                    sleep(1)
+                    sleep(0.35)
                     del_btn.safe_click
                     break unless delete_modal.present?
                     break unless delete_modal.present?
-                    sleep(1)
+                    sleep(0.35)
                     delete_modal.delete
                     break unless delete_modal.present?
                   end
@@ -468,7 +468,7 @@ module Stamps
             3.times do
               begin
                 checkbox_field = browser.divs(text: store_name).last
-                sleep(1)
+                sleep(0.35)
                 check_verify_field = checkbox_field.parent
                 checkbox = StampsCheckbox.new checkbox_field, check_verify_field, "class", "focused"
                 checkbox.check
@@ -512,7 +512,7 @@ module Stamps
           store = market_place
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return store if store.present?
           end
         end
@@ -600,7 +600,7 @@ module Stamps
             button.safe_click
             return delete_modal if delete_modal.present?
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return delete_modal if delete_modal.present?
           end
         end

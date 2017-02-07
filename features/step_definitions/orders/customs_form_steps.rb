@@ -7,8 +7,8 @@ Then /^(?:O|o)n Customs form, Open Modal$/ do
   step "On Order Details form, click Edit Form button"
 end
 
-Then /^(?:O|o)n Customs form, blur out$/ do
-  stamps.orders.order_details.customs.edit_form.blur_out
+Then /^(?:O|o)n Customs form, blur out(?:| (\d+)(?:| times))$/ do |count|
+  ((count.nil?)?1:count.to_i).times { stamps.orders.order_details.customs.edit_form.blur_out }
 end
 
 Then /^(?:O|o)n Customs form, set Package Contents to Merchandise$/ do
@@ -148,7 +148,7 @@ Then /^(?:O|o)n Customs form, expect Internal Transaction Number is \"(.+)\"$/ d
 end
 
 Then /^(?:O|o)n Customs form, set More Info to \"(.+)\"$/ do |value|
-  test_data[:customs_more_info] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric(18): value
+  test_data[:customs_more_info] = (value.downcase.include? 'random') ? ParameterHelper.random_alpha_numeric(18): value
   stamps.orders.order_details.customs.edit_form.more_info.set test_data[:customs_more_info]
   step "On Customs form, Save Total"
 end
@@ -164,7 +164,7 @@ end
 
 Then /^(?:O|o)n Customs form, set ITN Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_itn_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  test_data[:customs_itn_no] = (value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value
   stamps.orders.order_details.customs.edit_form.itn_number.set test_data[:customs_itn_no]
   step "On Customs form, Save Total"
 end
@@ -180,7 +180,7 @@ end
 
 Then /^(?:O|o)n Customs form, set License Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_license_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
+  test_data[:customs_license_no] = ((value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value)
   stamps.orders.order_details.customs.edit_form.license.set test_data[:customs_license_no]
   step "On Customs form, Save Total"
 end
@@ -196,7 +196,7 @@ end
 
 Then /^(?:O|o)n Customs form, set Certificate Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_certificate_no] = ((value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value)
+  test_data[:customs_certificate_no] = ((value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value)
   stamps.orders.order_details.customs.edit_form.certificate.set test_data[:customs_certificate_no]
   step "On Customs form, Save Total"
 end
@@ -212,7 +212,7 @@ end
 
 Then /^(?:O|o)n Customs form, set Invoice Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_invoice_no] = (value.downcase.include? "random") ? ParameterHelper.random_alpha_numeric : value
+  test_data[:customs_invoice_no] = (value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value
   stamps.orders.order_details.customs.edit_form.invoice.set test_data[:customs_invoice_no]
   step "On Customs form, Save Total"
 end
@@ -259,7 +259,7 @@ end
 
 Then /^(?:O|o)n Customs form, click Close button$/ do
   step "Pause for 4 seconds"
-  step "On Customs form, blur out"
+  step "On Customs form, blur out 20 times"
   step "On Customs form, Save Total"
   stamps.orders.order_details.customs.edit_form.close.should be false
   step "On Order Details form, blur out"
@@ -393,7 +393,7 @@ Then /^(?:O|o)n Customs form, add Associated Item (\d+)$/ do |item_number|
 end
 
 Then /^(?:O|o)n Customs form, set Associated Item (\d+) Description to (.*)$/ do |item_number, value|
-  stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_description.set((value.downcase.include?("random")?(ParameterHelper.random_alpha_numeric):value))
+  stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_description.set((value.downcase.include?('random')?(ParameterHelper.random_alpha_numeric):value))
   step "On Customs form, Save Total"
 end
 
@@ -417,36 +417,26 @@ Then /^(?:O|o)n Customs form, set Associated Item (\d+) Tarriff to (.*)$/ do |it
 end
 
 Then /^(?:O|o)n Customs form, expect Associated Item (\d+) Description is (.*)$/ do |item_number, expectation|
-  10.times do
-    break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_description.text == expectation
-  end
+  20.times { break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_description.text == expectation }
   stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_description.text.should eql expectation
 end
 
 Then /^(?:O|o)n Customs form, expect Associated Item (\d+) Quantity is (\d+)$/ do |item_number, expectation|
-  10.times do
-    break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_qty.text_box.text.to_i == expectation.to_i
-  end
+  20.times { break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_qty.text_box.text.to_i == expectation.to_i }
   stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_qty.text_box.text.to_i.should eql expectation.to_i
 end
 
 Then /^(?:O|o)n Customs form, expect Associated Item (\d+) Unit Price is (.*)$/ do |item_number, expectation|
-  10.times do
-    break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_unit_price.text_box.text.to_f == expectation.to_f
-  end
+  20.times { break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_unit_price.text_box.text.to_f == expectation.to_f }
   stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_unit_price.text_box.text.to_f.should eql expectation.to_f
 end
 
 Then /^(?:O|o)n Customs form, expect Associated Item (\d+) Origin Country is (.*)$/ do |item_number, expectation|
-  10.times do
-    break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_origin.text_box.text == expectation
-  end
+  20.times { break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_origin.text_box.text == expectation }
   stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_origin.text_box.text.should eql expectation
 end
 
 Then /^(?:O|o)n Customs form, expect Associated Item (\d+) Tariff is (.*)$/ do |item_number, expectation|
-  10.times do
-    break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_hs_tariff.text.to_f == expectation.to_f
-  end
+  20.times { break if stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_hs_tariff.text.to_f == expectation.to_f }
   stamps.orders.order_details.customs.edit_form.item_grid.item(item_number.to_i).customs_item_hs_tariff.text.to_f.should eql expectation.to_f
 end

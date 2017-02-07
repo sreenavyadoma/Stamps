@@ -12,10 +12,10 @@ end
 
 Then /^(?:O|o)n PAM Customer Search page, set username to (.*)$/ do |username|
   #logger.step "On PAM Customer Search page, set username to #{username}"
-  test_data[:usr] = username unless username.downcase.include? "random"
+  test_data[:usr] = username unless username.downcase.include? 'random'
   #logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
   @customer_search.username.set test_data[:usr]
-  sleep(1)
+  sleep(0.35)
 end
 
 Then /^(?:O|o)n PAM Customer Search page, set 5.2 or lower$/ do

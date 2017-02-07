@@ -37,7 +37,7 @@ module Stamps
                 drop_down.safe_click unless selection.present?
                 selection.safe_scroll_into_view
                 selection.safe_click
-                sleep(1)
+                sleep(0.35)
                 return manage_shipping_adddress if manage_shipping_adddress.present?
               rescue Exception => e
                 logger.error e.message
@@ -55,7 +55,7 @@ module Stamps
               drop_down.safe_click unless selection.present?
               selection.safe_scroll_into_view
               selection.safe_click
-              sleep(1)
+              sleep(0.35)
               text_box_text = text_box.text
               return if text_box_text.include? service_text
             end
@@ -101,7 +101,7 @@ module Stamps
           6.times do
             text_fields.each do |element|
               text_field = element if element.present?
-              sleep(1)
+              sleep(0.35)
             end
             break unless text_field.nil?
           end
@@ -122,7 +122,7 @@ module Stamps
               dd = int_dd
               break
             end
-            sleep(1)
+            sleep(0.35)
           end
           dd.should_not be nil
           dd.present?.should be true
@@ -140,7 +140,7 @@ module Stamps
           logger.info "Select Country #{country}"
           begin
             dd.safe_click
-            sleep(1)
+            sleep(0.35)
             dd.safe_click
             dd.safe_click
             lis = browser.lis(text: country)
@@ -255,7 +255,7 @@ module Stamps
               text_field.set address
               return auto_suggest_box if auto_suggest_box.present?
               text_field.safe_click
-              sleep(1)
+              sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.safe_double_click
               return auto_suggest_box if auto_suggest_box.present?
@@ -516,7 +516,7 @@ module Stamps
               text_area.set address
               return auto_suggest_box if auto_suggest_box.present?
               text_area.safe_click
-              sleep(1)
+              sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.safe_double_click
               return auto_suggest_box if auto_suggest_box.present?
@@ -663,7 +663,7 @@ module Stamps
           10.times{
             begin
               element_helper.safe_click save_button
-              sleep(1)
+              sleep(0.35)
               break unless save_button.present?
             rescue
               #ignore
@@ -760,22 +760,22 @@ module Stamps
         end
 
         def name row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 1
         end
 
         def company row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 2
         end
 
         def city row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 3
         end
 
         def state row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 4
         end
 
@@ -923,7 +923,7 @@ module Stamps
         def close_window
           begin
             10.times{
-              sleep(1)
+              sleep(0.35)
               break unless close_button.present?
               element_helper.safe_click close_button
             }
@@ -961,7 +961,7 @@ module Stamps
           logger.info "Select service #{selection}"
 
           sel_arr = selection.split(/\s+/)
-          selection_substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
+          substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
 
           selected_service = ""
           @details_services = data_for(:orders_services, {})
@@ -975,7 +975,7 @@ module Stamps
               selection_label.safe_click
               blur_out
               logger.info "Selected service #{text_box.text} - #{(text_box.text.include? selection)?"success": "service not selected"}"
-              break if text_box.text.include? selection_substr
+              break if text_box.text.include?(substr)
             rescue
               #ignore
             end
@@ -983,7 +983,7 @@ module Stamps
           logger.info "#{text_box.text} service selected."
 
           # Test if selected service includes abbreviated selection.
-          text_box.text.should include selection_substr
+          text_box.text.should include substr
           text_box.text
         end
 
@@ -1019,13 +1019,13 @@ module Stamps
 
         def tooltip selection
           button = drop_down
-          selection_label = StampsElement.new browser.tr(css: "tr[data-qtip*='#{selection}']")
+          selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
           10.times {
             begin
               button.safe_click unless selection_label.present?
-              sleep(1)
+              sleep(0.35)
               if selection_label.present?
-                tooltip = selection_label.attribute_value "data-qtip"
+                tooltip = selection_label.attribute_value("data-qtip")
                 logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
                 return tooltip if tooltip.include? "<strong>"
               end
@@ -1046,14 +1046,14 @@ module Stamps
 
           10.times do |index|
             drop_down.safe_click unless selection_label.present?
-            sleep(1)
+            sleep(0.35)
             if selection_field.present?
               disabled_field = StampsElement.new(selection_field.parent.parent.parent)
               begin
                 if selection_label.present?
                   if disabled_field.present?
                     result = disabled_field.attribute_value("class").include? "disabled"
-                    sleep(1)
+                    sleep(0.35)
                     result = disabled_field.attribute_value("class").include? "disabled"
                     result = disabled_field.attribute_value("class").include? "disabled"
                     drop_down.safe_click
@@ -1064,7 +1064,7 @@ module Stamps
                 #ignore
               end
             else
-              sleep(1)
+              sleep(0.35)
               return true if index == 5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
             end
           end
@@ -1435,7 +1435,7 @@ module Stamps
           drop_down.element.hover
           15.times do
             drop_down.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text

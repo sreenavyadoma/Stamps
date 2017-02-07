@@ -18,7 +18,7 @@ Then /^(?:I|i)n Orders Grid, uncheck Order ID (.*)$/ do |order_id|
 end
 
 Then /^(?:I|i)n Orders Grid, expect Store is (.*)$/ do |expectation|
-  test_data[:store_name] = (expectation.downcase.include? "random")?test_data[:store_name]:expectation
+  test_data[:store_name] = (expectation.downcase.include? 'random')?test_data[:store_name]:expectation
   stamps.orders.orders_grid.column.store.data(test_data[:order_id]).should eql test_data[:store_name]
 end
 
@@ -34,9 +34,7 @@ Then /^(?:I|i)n Orders Grid, expect saved Order ID is in Orders Grid row (\d+)$/
 end
 
 Then /^(?:I|i)n Orders Grid, expect Ship Cost is the same as Details Form Ship Cost$/ do
-  details_ship_cost = stamps.orders.order_details.footer.total_ship_cost
-  grid_ship_cost = stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id])
-  details_ship_cost.should eql grid_ship_cost
+  stamps.orders.order_details.footer.total_ship_cost.should eql(stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id]))
 end
 
 Then /^Set Orders Grid Row (\d+) to uncheck$/ do |row|
@@ -79,70 +77,6 @@ Then /^(?:I|i)n Orders Grid, expect Ship Date for this order is today plus (\d+)
   stamps.orders.filter_panel.shipped.select.ship_date.data(test_data[:order_id]).should eql expectation
 end
 
-Then /^List all Grid column values for row (\d+)/ do |row|
-  order_id = stamps.orders.orders_grid.column.order_id.row row
-  step "List all Grid column values for Order ID #{order_id}"
-end
-
-Then /^List all Grid column values for Order ID (\w+)$/ do |order_id|
-  row2_order_id = stamps.orders.orders_grid.column.order_id.row 2
-  logger.step stamps.orders.orders_grid.column.checkbox.order_id_checked? row2_order_id
-
-  stamps.orders.orders_grid.column.checkbox.check 1
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 1
-  stamps.orders.orders_grid.column.checkbox.check 2
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 2
-  stamps.orders.orders_grid.column.checkbox.check 3
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 3
-
-  stamps.orders.orders_grid.column.checkbox.uncheck(1)
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 1
-  stamps.orders.orders_grid.column.checkbox.uncheck(2)
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 2
-  stamps.orders.orders_grid.column.checkbox.uncheck(3)
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 3
-
-  stamps.orders.orders_grid.column.checkbox.check 2
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 2
-  stamps.orders.orders_grid.column.checkbox.check 4
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 4
-  stamps.orders.orders_grid.column.checkbox.check 6
-  logger.step stamps.orders.orders_grid.column.checkbox.checked? 6
-
-  checked_hash = stamps.orders.orders_grid.column.checkbox.checked_rows
-
-  stamps.orders.orders_grid.column.checkbox.check_all
-  stamps.orders.orders_grid.column.checkbox.uncheck_all
-
-  stamps.orders.orders_grid.column.checkbox.check_all checked_hash
-
-  logger.step stamps.orders.orders_grid.column.item_name.data order_id
-  logger.step stamps.orders.orders_grid.column.ship_cost.data order_id
-  logger.step stamps.orders.orders_grid.column.age.data order_id
-  logger.step stamps.orders.orders_grid.column.order_date.data order_id
-  logger.step stamps.orders.orders_grid.column.recipient.data order_id
-  logger.step stamps.orders.orders_grid.column.company.data order_id
-  logger.step stamps.orders.orders_grid.column.address.data order_id
-  logger.step stamps.orders.orders_grid.column.city.data order_id
-  logger.step stamps.orders.orders_grid.column.state.data order_id
-  logger.step stamps.orders.orders_grid.column.zip.data order_id
-  logger.step stamps.orders.orders_grid.column.country.data order_id
-  logger.step stamps.orders.orders_grid.column.phone.data order_id
-  logger.step stamps.orders.orders_grid.column.email.data order_id
-  logger.step stamps.orders.orders_grid.column.qty.data order_id
-  logger.step stamps.orders.orders_grid.column.item_sku.data order_id
-  logger.step stamps.orders.orders_grid.column.ship_from.data order_id
-  logger.step stamps.orders.orders_grid.column.service.data order_id
-  logger.step stamps.orders.orders_grid.column.weight.data order_id
-  logger.step stamps.orders.orders_grid.column.insured_value.data order_id
-  logger.step stamps.orders.orders_grid.column.reference_no.data order_id
-  logger.step stamps.orders.orders_grid.column.cost_code.data order_id
-  logger.step stamps.orders.orders_grid.column.order_status.data order_id
-  logger.step stamps.orders.orders_grid.column.ship_date.data order_id
-  logger.step stamps.orders.orders_grid.column.tracking_no.data order_id
-  logger.step stamps.orders.orders_grid.column.order_total.data order_id
-end
-
 Then /^Expect Ship-To address is;$/ do |table|
   #logger.step "Expect Ship-To address is..."
   param_hash = table.hashes.first
@@ -168,68 +102,79 @@ Then /^(?:I|i)n Orders Grid, expect Order Date is populated$/ do
   stamps.orders.orders_grid.column.order_date.data(test_data[:order_id]).size.should be > 4
 end
 
-Then /^(?:I|i)n Orders Grid, expect Recipient is (.+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect Recipient (?:is (.*)|and saved Recipient are the same)$/ do |expectation|
+  expectation = test_data[:name] if expectation.nil?
   test_data[:order_id].should be_truthy
   10.times { break if stamps.orders.orders_grid.column.recipient.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.recipient.data(test_data[:order_id]).should eql expectation
 end
 
-Then /^(?:I|i)n Orders Grid, expect Company is (.+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect Company (?:is (.*)|and saved Company are the same)$/ do |expectation|
+  expectation = test_data[:company] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.column.company.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.company.data(test_data[:order_id]).should eql expectation
 end
 
-Then /^(?:I|i)n Orders Grid, expect Address is (.+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect Address (?:is (.*)|and saved Address are the same)$/ do |expectation|
+  expectation = "#{test_data[:street_address_1]}#{(test_data[:street_address_2].scan(/(\w+)/).size>0)?" #{test_data[:street_address_2]}":""}" if expectation.nil?
   10.times { break if stamps.orders.orders_grid.column.address.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.address.data(test_data[:order_id]).should eql expectation
 end
 
-Then /^(?:I|i)n Orders Grid, expect City is (.+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect City (?:is (.*)|and saved City are the same)$/ do |expectation|
+  expectation = test_data[:city] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.column.city.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.city.data(test_data[:order_id]).should eql expectation
 end
 
-Then /^(?:I|i)n Orders Grid, expect State is (.+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect State (?:is (.*)|and saved State are the same)$/ do |expectation|
+  expectation = test_data[:state] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.column.state.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.state.data(test_data[:order_id]).should eql expectation
 end
 
-Then /^(?:I|i)n Orders Grid, expect Zip is (.+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect Zip (?:is (.*)|and saved Zip are the same)$/ do |expectation|
+  expectation = test_data[:zip] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.column.zip.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.zip.data(test_data[:order_id]).should include expectation
 end
 
-Then /^(?:I|i)n Orders Grid, expect Country is (.+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect Country (?:is (.*)|and saved Country are the same)$/ do |expectation|
+  expectation = test_data[:country] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.column.country.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.country.data(test_data[:order_id]).should include expectation
+end
+
+Then /^(?:I|i)n Orders Grid, expect Email (?:is (.*)|and saved Email are the same)$/ do |expectation|
+  expectation = test_data[:email] if expectation.nil?
+  10.times { break if stamps.orders.orders_grid.column.email.data(test_data[:order_id]).eql? expectation }
+  stamps.orders.orders_grid.column.email.data(test_data[:order_id]).should eql expectation
+end
+
+Then /^(?:I|i)n Orders Grid, expect Phone (?:is (.*)|and saved Phone are the same)$/ do |expectation|
+  expectation = test_data[:phone] if expectation.nil?
+  10.times { break if stamps.orders.orders_grid.column.phone.data(test_data[:order_id]).eql? expectation }
+  stamps.orders.orders_grid.column.phone.data(test_data[:order_id]).should eql expectation
 end
 
 Then /^(?:I|i)n Orders Grid, expect Column (\w+) appears to left of (.+)$/ do |left_column, right_column|
   stamps.orders.orders_grid.column.is_next_to?(left_column, right_column).should be true
 end
 
-Then /^(?:I|i)n Orders Grid, expect Email is (.+)$/ do |expectation|
-  10.times { break if stamps.orders.orders_grid.column.email.data(test_data[:order_id]).eql? expectation }
-  stamps.orders.orders_grid.column.email.data(test_data[:order_id]).should eql expectation
-end
-
-Then /^(?:I|i)n Orders Grid, expect Phone is (.+)$/ do |expectation|
-  10.times { break if stamps.orders.orders_grid.column.phone.data(test_data[:order_id]).eql? expectation }
-  stamps.orders.orders_grid.column.phone.data(test_data[:order_id]).should eql expectation
-end
-
-Then /^(?:I|i)n Orders Grid, expect Pounds is (\d+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect Pounds (?:is (.*)|and saved Pounds are the same)$/ do |expectation|
+  expectation = test_data[:pounds] if expectation.nil?
   20.times { break if stamps.orders.orders_grid.column.weight.lb(test_data[:order_id]).eql? expectation }
-  stamps.orders.orders_grid.column.weight.lb(test_data[:order_id]).should eql expectation
+  stamps.orders.orders_grid.column.weight.lb(test_data[:order_id]).should eql expectation.to_i
 end
 
-Then /^(?:I|i)n Orders Grid, expect Ounces is (\d+)$/ do |expectation|
+Then /^(?:I|i)n Orders Grid, expect Ounces (?:is (.*)|and saved Ounces are the same)$/ do |expectation|
+  expectation = test_data[:ounces] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.column.weight.oz(test_data[:order_id]).eql? expectation }
-  stamps.orders.orders_grid.column.weight.oz(test_data[:order_id]).should eql expectation
+  stamps.orders.orders_grid.column.weight.oz(test_data[:order_id]).should eql expectation.to_i
 end
 
 Then /^(?:I|i)n Orders Grid, expect Weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
-  expectation = "#{pounds} lbs. #{ounces} oz." #1 lbs. 0 oz.
+  expectation = "#{pounds} lbs. #{ounces} oz."
   10.times { break if stamps.orders.orders_grid.column.weight.data(test_data[:order_id]).eql? expectation }
   stamps.orders.orders_grid.column.weight.data(test_data[:order_id]).should eql expectation
 end
@@ -246,7 +191,7 @@ end
 
 Then /^(?:I|i)n Orders Grid, expect Qty. is (.+)$/ do |expectation|
   10.times { break if stamps.orders.orders_grid.column.qty.data(test_data[:order_id]).eql? expectation }
-  stamps.orders.orders_grid.column.qty.data(test_data[:order_id]).should eql expectation
+  stamps.orders.orders_grid.column.qty.data(test_data[:order_id]).should eql expectation.to_i
 end
 
 Then /^(?:I|i)n Orders Grid, expect Item SKU is (.+)$/ do |expectation|
@@ -271,7 +216,7 @@ end
 
 Then /^(?:I|i)n Orders Grid, expect Insured Value is \$(.+)$/ do |expectation|
   10.times { break if stamps.orders.orders_grid.column.insured_value.data(test_data[:order_id]).eql? expectation }
-  stamps.orders.orders_grid.column.insured_value.data(test_data[:order_id]).should eql expectation
+  stamps.orders.orders_grid.column.insured_value.data(test_data[:order_id]).should eql expectation.to_f.round(2)
 end
 
 Then /^(?:I|i)n Orders Grid, expect Reference No. is (.+)$/ do |expectation|

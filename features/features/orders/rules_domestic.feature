@@ -24,22 +24,22 @@ Feature:  service enabled/disabled tests
   Scenario: Domestic Rules Engine Validation
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Email to bademail
-    Then In Orders Grid, uncheck saved Order ID
-    Then In Orders Grid, check saved Order ID
+    Then in Orders Grid, uncheck saved Order ID
+    Then in Orders Grid, check saved Order ID
     Then on Order Details form, expect Domestic Address data error tooltip is "Ship To address is required"
     Then on Order Details form, expect Domestic Email data error tooltip is "Please enter a valid email address"
     Then on Order Details form, expect Weight Lbs data error tooltip is "Weight cannot be 0"
     Then on Order Details form, expect Weight Oz data error tooltip is "Weight cannot be 0"
     Then on Order Details form, expect service data error tooltip is "Service is required"
-    Then In Orders Grid, check saved Order ID
+    Then in Orders Grid, check saved Order ID
     Then on Order Details form, set Ship-From to default
     Then on Order Details form, set Ship-To to Domestic Address random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then on Order Details form, set Email to random
     Then on Order Details form, set Phone to random
     Then on Order Details form, select service PM Large Package
     Then on Order Details form, set Pounds to 5
-    Then In Orders Grid, uncheck saved Order ID
-    Then In Orders Grid, check saved Order ID
+    Then in Orders Grid, uncheck saved Order ID
+    Then in Orders Grid, check saved Order ID
     Then on Order Details form, set Length to 0
     Then on Order Details form, set Width to 0
     Then on Order Details form, set Height to 0

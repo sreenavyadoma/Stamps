@@ -16,9 +16,9 @@ end
 
 Then /^(?:I|i)n Orders Toolbar, expect number of orders on page is correct$/ do
   stamps.orders.filter_panel.awaiting_shipment.select
-  sleep(1)
+  sleep(0.35)
   stamps.orders.checkbox.check_all
-  sleep(1)
+  sleep(0.35)
   awaiting_shipment_total_count = filter.awaiting_shipment.count
   multi_order_count = stamps.orders.multi_order.order_count
   per_page_count = stamps.orders.toolbar.per_page.text_box.text.to_i
@@ -29,7 +29,7 @@ Then /^(?:I|i)n Orders Toolbar, expect number of orders on page is correct$/ do
     max_order_count = per_page_count
   end
 
-  sleep(1)
+  sleep(0.35)
   stamps.orders.checkbox.uncheck_all
   #logger.step "Test #{(max_order_count == multi_order_count)?"Passed":"Failed"}"
   max_order_count.should eql multi_order_count
@@ -173,7 +173,7 @@ When /^Set Page Number to (\d*)$/ do |value|
     page_number = stamps.orders.toolbar.page_number.text
     #logger.step "Current page number #{page_number}"
     stamps.orders.toolbar.page_number.set(value)
-    sleep(1)
+    sleep(0.35)
     page_number_textbox = stamps.orders.toolbar.page_number
     page_number = page_number_textbox.text
     text_box_field = page_number_textbox.element

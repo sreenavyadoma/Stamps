@@ -41,7 +41,7 @@ module Stamps
       def more_info
         10.times do
           more_info_btn.safe_click
-          sleep(1)
+          sleep(0.35)
           return more_info_page if more_info_page.present?
         end
         raise "More Info page did not open."
@@ -50,7 +50,7 @@ module Stamps
       def continue
         10.times{
           continue_btn.safe_click
-          sleep(1)
+          sleep(0.35)
           break unless continue_btn.present?
         }
       end
@@ -149,7 +149,7 @@ module Stamps
         sign_in_button.safe_click
         open_sign_in_form
         sign_in_button.send_keys(:enter)
-        sleep(1)
+        sleep(0.35)
         open_sign_in_form
         "#{invalid_username_password.text}. #{@username}\\#{@password}".should eql "Valid Username" if invalid_username_password.present?
         open_sign_in_form
@@ -331,7 +331,7 @@ module Stamps
           5.times do
             sign_in_link.safe_click
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return forgot_username_modal if forgot_username_modal.present?
           end
           "Unable to open Forgot Username Modal, check your code.".should eql "" unless forgot_password_modal.present?
@@ -344,7 +344,7 @@ module Stamps
           5.times do
             sign_in_link.safe_click
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return forgot_password_modal if forgot_password_modal.present?
           end
           "Unable to open Forgot Password Modal, check your code.".should eql "" unless forgot_password_modal.present?
@@ -371,7 +371,7 @@ module Stamps
 
       def wait_until_url_loads
         20.times do
-          sleep(1)
+          sleep(0.35)
           break if browser.url.include? "stamps.com/Webpostage"
         end
       end

@@ -27,9 +27,9 @@ Feature: Total Cost of Multiple Orders
     Then on Order Details form, set Pounds to 1
     Then on Order Details form, set Ounces to 1
 
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
-    Then In Orders Grid, check row 3
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
+    Then in Orders Grid, check row 3
 
 
     Then on Order Details form, expect Multiple Order Total Cost is $17.25

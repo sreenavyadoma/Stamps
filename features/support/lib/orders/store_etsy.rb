@@ -54,17 +54,17 @@ module Stamps
               sign_in_page.password.set password
               page = sign_in_page.sign_in
               10.times do
-                sleep(1)
+                sleep(0.35)
                 break if page.present?
               end
               settings = page.allow_access
-              sleep(1)
+              sleep(0.35)
               return settings
             end
 
             if etsy_page.present?
               settings = etsy_page.allow_access
-              sleep(1)
+              sleep(0.35)
               return settings
             end
           end
@@ -84,17 +84,17 @@ module Stamps
               sign_in_page.password.set password
               page = sign_in_page.sign_in
               10.times do
-                sleep(1)
+                sleep(0.35)
                 break if page.present?
               end
               settings = page.allow_access_after_reconnect
-              sleep(1)
+              sleep(0.35)
               return settings
             end
 
             if etsy_page.present?
               settings = etsy_page.allow_access_after_reconnect
-              sleep(1)
+              sleep(0.35)
               return settings
             end
           end
