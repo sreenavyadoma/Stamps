@@ -315,11 +315,11 @@ module Stamps
 
       def new_balance old_balance
         10.times do
-          balance = ParameterHelper.remove_dollar_sign balance_element.text
+          balance = ParameterHelper.remove_dollar_sign(balance_element.text).to_f.round(2)
           break unless balance.include? old_balance.to_s
           sleep(1)
         end
-        ParameterHelper.remove_dollar_sign balance_element.text
+        ParameterHelper.remove_dollar_sign(balance_element.text).to_f.round(2)
       end
     end
 

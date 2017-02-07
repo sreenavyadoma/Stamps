@@ -494,7 +494,7 @@ module Stamps
       end
 
       def total_cost
-        ParameterHelper.remove_dollar_sign(element_helper.text(total_label, "total"))
+        ParameterHelper.remove_dollar_sign(element_helper.text(total_label, "total")).to_f.round(2)
       end
 
       def total_label

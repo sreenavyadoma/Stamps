@@ -256,14 +256,14 @@ module Stamps
         selection_label
       end
 
-      def cost selection
+      def cost(selection)
         button = drop_down
         cost_label = StampsElement.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
         10.times {
           begin
             button.safe_click unless cost_label.present?
             if cost_label.present?
-              service_cost = ParameterHelper.remove_dollar_sign cost_label.text
+              service_cost = ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
               logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
               return service_cost
             end
@@ -274,7 +274,7 @@ module Stamps
         blur_out
       end
 
-      def tooltip selection
+      def tooltip(selection)
         button = drop_down
         selection_label = StampsElement.new browser.tr css: "tr[data-qtip*='#{selection}']"
         5.times {
@@ -293,7 +293,7 @@ module Stamps
       end
 
       def price
-        StampsElement.new browser.label id: "sdc-mainpanel-servicepricelabel"
+        StampsElement.new(browser.label(id: "sdc-mainpanel-servicepricelabel"))
       end
 
     end
