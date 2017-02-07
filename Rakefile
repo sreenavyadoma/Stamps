@@ -67,13 +67,13 @@ Cucumber::Rake::Task.new(:dev_printing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:dev_domestic) do |t|
-  t.profile = 'dev_domestic'
+Cucumber::Rake::Task.new(:dev_domestic_order) do |t|
+  t.profile = 'dev_domestic_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:dev_international) do |t|
-  t.profile = 'dev_international'
+Cucumber::Rake::Task.new(:dev_international_order) do |t|
+  t.profile = 'dev_international_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 
