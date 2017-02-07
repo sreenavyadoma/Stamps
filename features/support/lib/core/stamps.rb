@@ -73,7 +73,6 @@ module Stamps
     expect(ENV['BROWSER']).to be_truthy
     expect(ENV['URL']).to be_truthy
     expect(ENV['HEALTHCHECK']).to be_truthy
-    expect(ENV['JENKINS']).to be_truthy
     expect(ENV['DEBUG']).to be_truthy
     expect(ENV['USER_CREDENTIALS']).to be_truthy
     expect(ENV['USR']).to be_truthy
