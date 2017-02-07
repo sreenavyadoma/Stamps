@@ -4,7 +4,7 @@ Feature: Postdate
   Background:
     Given a valid user is signed in to Web Apps
 
-  @general_settings_postdate
+  @general_settings
   Scenario: Postdate
 
     Then Open Settings Modal
