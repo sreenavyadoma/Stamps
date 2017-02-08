@@ -903,7 +903,7 @@ module Stamps
       end
 
       def submit_correct_errors webreg_data
-        webreg_data).to be_a(Hash)
+        expect(webreg_data).to be_a(Hash)
         10.times do
           submit
 
@@ -922,7 +922,7 @@ module Stamps
           if card_number.has_error?
             err_text = card_number.help_text
             logger.error err_text
-            "Card Number #{webreg_data[:card_number]} failed verification.").to eql(err_text) if err_text.include? "failed verification"
+            expect("Card Number #{webreg_data[:card_number]} failed verification.").to eql(err_text) if err_text.include? "failed verification"
              if err_text == "This field is required"
                card_number.set(webreg_data[:card_number])
                card_number.send_keys(webreg_data[:card_number])
@@ -939,7 +939,7 @@ module Stamps
 
       def submit
         submit_button.safely_wait_until_present 6
-        submit_button.present?).to be true
+        expect(submit_button.present?).to be true
         submit_button.safe_click
         submit_button.send_keys(:enter)
       end

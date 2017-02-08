@@ -167,7 +167,7 @@ end
 
 Then /^(?:I|i)n left Filter Panel, expect Filters panel is close$/ do
   actual = stamps.orders.filter_panel.is_filter_panel_present?
-  expect(expect(actual).to eql false
+  expect(actual).to eql false
 end
 
 Then /^(?:I|i)n left Filter Panel, expect system shows an arrow above the Order Status Filter Panel - name$/ do

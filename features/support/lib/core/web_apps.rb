@@ -43,9 +43,9 @@ module Stamps
 
       case param.web_app
         when :orders
-          browser.url).to include "Orders"
+          expect(browser.url).to include "Orders"
         when :mail
-          browser.url.downcase).to include "webpostage"
+          expect(browser.url.downcase).to include "webpostage"
         else
           # do nothing
       end

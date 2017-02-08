@@ -1,12 +1,12 @@
 Then /^WebReg: Load username and password from parameter file(?:| (.*))$/ do |filename|
   data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
   #logger.step "WebReg: Load user credentials from file #{data_file}"
-  File.exist?(data_file)).to be_truthy
+  expect(File.exist?(data_file)).to be_truthy
   CONFIG = YAML.load_file(data_file)
   test_data[:usr] = CONFIG['usr']
   test_data[:pw] = CONFIG['pw']
-  test_data[:usr]).to be_truthy
-  test_data[:pw]).to be_truthy
+  expect(test_data[:usr]).to be_truthy
+  expect(test_data[:pw]).to be_truthy
 end
 
 Then /^Orders: Sign-in using username and password from parameter file$/ do
@@ -44,7 +44,7 @@ Then /^WebReg: Store username to data file(?:| (.*))$/ do |filename|
   logger.message "WebReg: Store username to data file: #{data_file}"
   sleep(2)
   if File.exist? data_file
-    test_data[:usr]).to be_truthy
+    expect(test_data[:usr]).to be_truthy
     File.open(data_file, 'a+') {|f| f.write("#{test_data[:usr]}\n")} unless File.readlines(data_file).to_s.include? test_data[:usr]
   else
     File.open(data_file, 'w+') {|f| f.write("#{test_data[:usr]}\n")}

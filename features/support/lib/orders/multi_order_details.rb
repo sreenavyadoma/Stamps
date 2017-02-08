@@ -13,7 +13,7 @@ module Stamps
             logger.info "Teardown: Begin tearing down test"
             TestHelper.teardown
             logger.info "Teardown: Done!"
-            "Multi-order Count Label does not exist or Multi-order form not opened.").to eql ""
+            expect("Multi-order Count Label does not exist or Multi-order form not opened.").to eql ""
           end unless order_count_label.present?
           element_helper.text(order_count_label).gsub(/\d+/).first.to_i
         end

@@ -8,7 +8,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}").to eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -52,7 +52,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}").to eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -64,7 +64,7 @@ module Stamps
       logger.message "#{e.message}"
       logger.message "#{e.backtrace.join "\n"}"
       logger.message ""
-      "#{e.backtrace.join("\n")}").to eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
       #@google_home_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
     end
   end
@@ -103,7 +103,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}").to eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -123,7 +123,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}").to eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -143,7 +143,7 @@ module Stamps
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data from default.yml. Check your format?").to eql e.message
+      expect("MagicData: Problem retrieving data from default.yml. Check your format?").to eql e.message
     end
   end
 
@@ -153,7 +153,7 @@ module Stamps
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data. Check your format?").to eql e.message
+      expect("MagicData: Problem retrieving data. Check your format?").to eql e.message
     end
   end
 

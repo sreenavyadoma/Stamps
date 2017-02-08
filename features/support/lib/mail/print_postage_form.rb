@@ -481,7 +481,7 @@ module Stamps
           sleep(0.35)
           return contacts_modal if contacts_modal.present?
         end
-        "Unable to open Contacts Modal, check your code.").to eql "" unless contacts_modal.present?
+        expect("Unable to open Contacts Modal, check your code.").to eql "" unless contacts_modal.present?
       end
     end
 

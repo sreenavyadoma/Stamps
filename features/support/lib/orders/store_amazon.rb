@@ -140,14 +140,14 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{error_str}").to eql ""
+                expect("Server Error: \n#{error_str}").to eql ""
               end
             end
             break unless button.exist?
           end
 
           close if present? #close modal if it's present
-          server_error.message).to eql "" if server_error.present?
+          expect(server_error.message).to eql "" if server_error.present?
         end
 
         def connect_expecting_store_settings
@@ -163,7 +163,7 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{error_str}").to eql ""
+                expect("Server Error: \n#{error_str}").to eql ""
               end
               if importing_order.present?
                 logger.info importing_order.message
@@ -177,7 +177,7 @@ module Stamps
 
 
           self.close if self.present?
-          server_error.message).to eql "" if server_error.present?
+          expect(server_error.message).to eql "" if server_error.present?
           settings
         end
       end

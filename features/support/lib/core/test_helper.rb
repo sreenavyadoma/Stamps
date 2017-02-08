@@ -119,7 +119,7 @@ module Stamps
         rescue Exception => e
           err = e.backtrace.join("\n")
           logger.error e.backtrace.join("\n")
-          err).to eql ""
+          expect(err).to eql ""
         end
       end
 
@@ -164,7 +164,7 @@ module Stamps
             when /solaris|bsd/
               return :unix
             else
-              "OS #{host_os.inspect} is not defined").to eql ""
+              expect("OS #{host_os.inspect} is not defined").to eql ""
           end
         end
       end

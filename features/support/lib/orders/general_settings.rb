@@ -18,7 +18,7 @@ module Stamps
         def set(value)
           text_box.set(value)
           logger.info "Pounds set to #{text_box.text}"
-          text).to eql value
+          expect(text).to eql value
         end
 
         def increment value
@@ -51,7 +51,7 @@ module Stamps
         def set(value)
           text_box.set(value)
           logger.info "Pounds set to #{text_box.text}"
-          text).to eql value
+          expect(text).to eql value
         end
 
         def increment value
@@ -106,7 +106,7 @@ module Stamps
         def set(value)
           text_box.set(value)
           logger.info "Pounds set to #{text_box.text}"
-          text).to eql value
+          expect(text).to eql value
         end
 
         def increment value
@@ -139,7 +139,7 @@ module Stamps
         def set(value)
           text_box.set(value)
           logger.info "Pounds set to #{text_box.text}"
-          text).to eql value
+          expect(text).to eql value
         end
 
         def increment value
@@ -170,7 +170,7 @@ module Stamps
         def set(value)
           text_box.set(value)
           logger.info "Pounds set to #{text_box.text}"
-          text).to eql value
+          expect(text).to eql value
         end
 
         def increment value
@@ -208,7 +208,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          text_box.text).to include selection
+          expect(text_box.text).to include selection
         end
 
         def five_min
@@ -256,7 +256,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          text_box.text).to include selection
+          expect(text_box.text).to include selection
         end
 
         def twelve_am
@@ -372,7 +372,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          text_box.text).to include selection
+          expect(text_box.text).to include selection
         end
 
         def zero

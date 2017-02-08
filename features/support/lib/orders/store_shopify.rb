@@ -134,7 +134,7 @@ module Stamps
             return settings if settings.present?
             return shopify if shopify.present?
           end
-          "Shopify Store Connect failed.  Settings Modal did not open.  ").to eql ""
+          expect("Shopify Store Connect failed.  Settings Modal did not open.  ").to eql ""
         end
 
         def reconnect

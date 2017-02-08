@@ -151,11 +151,11 @@ module Stamps
         sign_in_button.send_keys(:enter)
         sleep(0.35)
         open_sign_in_form
-        "#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
+        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
         open_sign_in_form
-        "#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
+        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
         open_sign_in_form
-        "#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
+        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
       end
 
       def mail_sign_in *args
@@ -192,7 +192,7 @@ module Stamps
         signed_in_user.safely_wait_until_present 6
         whats_new_modal.close if whats_new_modal.present?
         logger.info "#{@username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-        "User #{@username} was unable to sign-in. Is #{param.test_env} up? *signed in user drop-down did not appear on the screen*").to eql "Sign-in Successful for #{@username} in #{param.test_env}" unless signed_in_user.present?
+        expect("User #{@username} was unable to sign-in. Is #{param.test_env} up? *signed in user drop-down did not appear on the screen*").to eql "Sign-in Successful for #{@username} in #{param.test_env}" unless signed_in_user.present?
         @username
       end
 
@@ -213,8 +213,8 @@ module Stamps
 
           return whats_new_modal if whats_new_modal.present?
         end
-        "").to eql "Unable to sign in to Mail with @credentials #{@username}/#{@password}" if sign_in_link.present?
-        "").to eql "What's New modal did not appear upon login"
+        expect("").to eql "Unable to sign in to Mail with @credentials #{@username}/#{@password}" if sign_in_link.present?
+        expect("").to eql "What's New modal did not appear upon login"
       end
 
       def sign_in_username_check *args
@@ -316,7 +316,7 @@ module Stamps
             sleep(0.35)
             return forgot_username_modal if forgot_username_modal.present?
           end
-          "Unable to open Forgot Username Modal, check your code.").to eql "" unless forgot_password_modal.present?
+          expect("Unable to open Forgot Username Modal, check your code.").to eql "" unless forgot_password_modal.present?
         end
 
         def forgot_password
@@ -329,7 +329,7 @@ module Stamps
             sleep(0.35)
             return forgot_password_modal if forgot_password_modal.present?
           end
-          "Unable to open Forgot Password Modal, check your code.").to eql "" unless forgot_password_modal.present?
+          expect("Unable to open Forgot Password Modal, check your code.").to eql "" unless forgot_password_modal.present?
         end
 
       end

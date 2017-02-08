@@ -4,15 +4,15 @@ module Stamps
 
     class PrintPostageModalObject < Browser::Modal
       def window_x_button
-        browser.img css: "img[class*='x-tool-img x-tool-close']"
+        browser.img(css: "img[class*='x-tool-img x-tool-close']") # todo-fix me!
       end
 
       def close_window
-        ElementHelper.click window_x_button, 'close_window'
+        #ElementHelper.click window_x_button, 'close_window'
       end
 
       def x_button_present?
-        ElementHelper.present? window_x_button
+        #ElementHelper.present? window_x_button
       end
 
       def wait_until_present
@@ -98,7 +98,7 @@ module Stamps
 
 
           else
-            "Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
+            expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
         end
 
         5.times do

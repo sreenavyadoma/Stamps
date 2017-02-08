@@ -67,7 +67,7 @@ module Stamps
         end
 
         def scroll_to_column(name)
-          name).to be_truthy
+          expect(name).to be_truthy
           case name
             when Symbol
               element_helper.scroll_into_view(browser, browser.span(text: GRID_COLUMNS[name]))
@@ -76,7 +76,7 @@ module Stamps
             when Watir::Element
               element_helper.scroll_into_view(browser, name)
             else
-              name).to be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
+              expect(name).to be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
           end
         end
 
@@ -120,8 +120,8 @@ module Stamps
                 end
               end
             rescue => e
-              e.backtrace.join("\n")).to eql "#{e.message}"
-              e.message).to eql "Grid error. Unable to find column number for #{column}"
+              expect(e.backtrace.join("\n")).to eql "#{e.message}"
+              expect(e.message).to eql "Grid error. Unable to find column number for #{column}"
             end
           end
           #"Column Name: #{column_name}").to eql "Unable to get column number for #{column_name}"
@@ -145,7 +145,7 @@ module Stamps
         end
 
         def row_div(number)
-          number).to be_truthy
+          expect(number).to be_truthy
           browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+(number.to_s)+")>tbody>tr>td>div>div[class=x-grid-row-checker]")
         end
       end
@@ -803,7 +803,7 @@ module Stamps
               rows = args[0]
               logger.info "Restoring #{} checked orders..."
             else
-              "Invalid parameter exception.  This method expects a Hash of Web Elements.").to eql ""
+              expect("Invalid parameter exception.  This method expects a Hash of Web Elements.").to eql ""
             end
             rows.each do |hash_element|
               row_number = hash_element[0]
@@ -853,9 +853,9 @@ module Stamps
           scroll_into_view
           if size > 0
             checkbox_element(number).check
-            checked?(number)).to be true
+            expect(checked?(number)).to be true
           else
-            "Unable to check order number #{number}").to eql "Grid is empty"
+            expect("Unable to check order number #{number}").to eql "Grid is empty"
           end
         end
 
@@ -863,7 +863,7 @@ module Stamps
           scroll_into_view
           if size > 0
             checkbox_element(number).uncheck
-            checked?(number)).to be false
+            expect(checked?(number)).to be false
           end
         end
 
@@ -1019,8 +1019,8 @@ module Stamps
           left_column_sym = GRID_COLUMNS.key left
           right_column_sym = GRID_COLUMNS.key right
 
-          left_column_sym).to be_truthy
-          right_column_sym).to be_truthy
+          expect(left_column_sym).to be_truthy
+          expect(right_column_sym).to be_truthy
 
           left_column_num = column_number left_column_sym
           right_column_num = column_number right_column_sym

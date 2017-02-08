@@ -14,6 +14,6 @@ Then /^Volusion Store: Reconnect$/ do
   @manage_stores = @store.reconnect
   expectation = "Reconnect was successful"
   expectation = "Reconnect was not successful, Manage Stores did not open or is nil" if @manage_stores.nil?
-  expectation).to eql "Reconnect was successful"
+  expect(expectation).to eql "Reconnect was successful"
 end
 

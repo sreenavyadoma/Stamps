@@ -18,7 +18,7 @@ module Stamps
             edit_form_btn.safe_click
             customs_form.wait_until_present 2
           end
-          customs_form.present?).to be true
+          expect(customs_form.present?).to be true
         end
 
         def restrictions
@@ -26,7 +26,7 @@ module Stamps
             return view_restrictions if view_restrictions.present?
             restrictions_btn.safe_click
           }
-          view_restrictions.present?).to be true
+          expect(view_restrictions.present?).to be true
         end
       end
 
@@ -59,7 +59,7 @@ module Stamps
               selection_element.safe_click
               break if text.include?(selection)
             end
-            text).to include selection
+            expect(text).to include selection
             logger.info "#{text} selected."
           end
         end
@@ -166,7 +166,7 @@ module Stamps
               #ignore
             end
           }
-          text_box.text).to include selection
+          expect(text_box.text).to include selection
           logger.info "#{selection} selected."
           selection_label
         end
@@ -194,7 +194,7 @@ module Stamps
               #ignore
             end
           }
-          text_box.text).to include selection
+          expect(text_box.text).to include selection
           logger.info "#{selection} selected."
           selection_label
         end
@@ -222,7 +222,7 @@ module Stamps
               #ignore
             end
           }
-          text_box.text).to include selection
+          expect(text_box.text).to include selection
           logger.info "#{selection} selected."
           selection_label
         end

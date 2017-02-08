@@ -30,7 +30,7 @@ module Stamps
             @error_qtip_element = args[1]
             @error_qtip_element_attribute = args[2]
           else
-            "Illegal number of arguments.  Unable to create element.").to eql ""
+            expect("Illegal number of arguments.  Unable to create element.").to eql ""
         end
         @browser = @element.browser
         @element_helper = ElementHelper
@@ -338,7 +338,7 @@ module Stamps
           break if selected?
           safe_click
         }
-        selected?).to be true
+        expect(selected?).to be true
       end
 
       def selected?
@@ -462,7 +462,7 @@ module Stamps
           end
         end
 
-        def text element
+        def text(element)
           begin
             text = element.text
             return text if text.size > 0
@@ -497,7 +497,7 @@ module Stamps
               text = args[1]
               element_name = args[2]
             else
-              "Wrong number of arguments for BrowserHelper.set_text method.").to eql ""
+              expect("Wrong number of arguments for BrowserHelper.set_text method.").to eql ""
           end
           2.times do
             begin
@@ -537,7 +537,7 @@ module Stamps
                 end
               end
             else
-              args.size).to be_between(1, 2).inclusive
+              expect(args.size).to be_between(1, 2).inclusive
           end
         end
 
@@ -591,7 +591,7 @@ module Stamps
               @element_attribute = args[1]
               @search_string = args[2]
             else
-              "Wrong number of arguments for enabled?").to eql ""
+              expect("Wrong number of arguments for enabled?").to eql ""
           end
           attribute_value = attribute_value(@disabled_element, @element_attribute)
           disabled = attribute_value.include?(@search_string)

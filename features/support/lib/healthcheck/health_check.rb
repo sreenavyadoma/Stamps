@@ -45,7 +45,7 @@ module Stamps
           logger.message "-"
 
         else
-          "#{param.test_env} is not a valid URL selection").to eql ""
+          expect("#{param.test_env} is not a valid URL selection").to eql ""
       end
 
       logger.message browser.text
@@ -61,7 +61,7 @@ module Stamps
       end
 
       logger.message browser.url
-      browser.text).to include "All tests passed"
+      expect(browser.text).to include "All tests passed"
     end
 
     def address_book
@@ -100,7 +100,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "#{param.test_env} is not a valid URL selection").to eql ""
+          expect("#{param.test_env} is not a valid URL selection").to eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -114,7 +114,7 @@ module Stamps
       end
 
       logger.info browser.url
-      browser.text).to include "All tests passed"
+      expect(browser.text).to include "All tests passed"
     end
 
     def or_reports
@@ -153,7 +153,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "#{param.test_env} is not a valid URL selection").to eql ""
+          expect("#{param.test_env} is not a valid URL selection").to eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -172,7 +172,7 @@ module Stamps
       end
 
       logger.info browser.url
-      browser.text).to include "All tests passed"
+      expect(browser.text).to include "All tests passed"
     end
 
     def or_postage_tools
@@ -211,7 +211,7 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "#{param.test_env} is not a valid URL selection").to eql ""
+          expect("#{param.test_env} is not a valid URL selection").to eql ""
       end
 
       if browser.text.include? "Server Error"
@@ -225,7 +225,7 @@ module Stamps
       end
 
       logger.info browser.url
-      browser.text).to include "All tests passed"
+      expect(browser.text).to include "All tests passed"
     end
   end
 
