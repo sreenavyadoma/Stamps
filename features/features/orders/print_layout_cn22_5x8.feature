@@ -16,7 +16,7 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
 
     Then on Order Details form, click Edit Form button
     Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
     Then in Orders Toolbar, click Print button

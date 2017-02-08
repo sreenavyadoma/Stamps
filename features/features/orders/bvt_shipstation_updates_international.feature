@@ -30,9 +30,9 @@ Feature:  Update International Orders to ShipStation
     Then on Customs form, set Internal Transaction Number to Required
     Then on Customs form, set ITN Number to "ITN123"
 
-    Then on Customs form, add Associated Item 1, Description Item 1, Qty 1, Price 1, Origin United States, Tariff 1
-    Then on Customs form, add Associated Item 2, Description Item 2, Qty 2, Price 2, Origin Japan, Tariff 2
-    Then on Customs form, add Associated Item 3, Description Item 3, Qty 3, Price 3, Origin Canada, Tariff 3
+    Then on Customs form, add Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then on Customs form, add Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
+    Then on Customs form, add Associated Item 3, Description Item 3, Qty 3, Price 3, Made In Canada, Tariff 3
 
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button

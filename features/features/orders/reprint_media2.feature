@@ -17,7 +17,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then on Order Details form, select service PSG Package
     Then on Order Details form, click Edit Form button
     Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Origin United States, Tariff 10
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
 

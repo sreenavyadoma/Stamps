@@ -379,7 +379,7 @@ Then /^(?:O|o)n Customs form, expect Total Value is (.+)$/ do |expectation|
   total_value.to_f.should eql expectation
 end
 
-Then /^(?:O|o)n Customs form, add Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Origin (.+), Tariff (.*)$/ do |item_number, description, qty, price, origin_country, tariff|
+Then /^(?:O|o)n Customs form, add Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, origin_country, tariff|
   step "on Customs form, add Associated Item #{item_number}"
   step "on Customs form, set Associated Item #{item_number} Description to #{description}"
   step "on Customs form, set Associated Item #{item_number} Qty to #{qty}"

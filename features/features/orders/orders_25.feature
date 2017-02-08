@@ -17,7 +17,7 @@ Feature: 25 orders
     Then on Order Details form, set Ounces to 2
     Then on Order Details form, set Pounds to 2
     Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
     Then on Order Details form, select service FCMI Large Envelope
@@ -31,7 +31,7 @@ Feature: 25 orders
     Then on Order Details form, set Ounces to 2
     Then on Order Details form, set Pounds to 2
     Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 100.50, Origin United States, Tariff 100
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then on Customs form, click Close button
     Then on Order Details form, select service PMI Flat Rate Envelope

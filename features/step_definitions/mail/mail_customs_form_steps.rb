@@ -32,7 +32,7 @@ Then /^Mail on Customs form, set Invoice Number to \"(.+)\"$/ do |value|
   @customs_form.invoice.set((value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value)
 end
 
-Then /^Mail on Customs form, add Associated Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Origin (.+), Tariff (\d+)$/ do |description, qty, value, lb, oz, origin_country, tariff|
+Then /^Mail on Customs form, add Associated Item - Description (\w+), Qty (\d+), Value ([\d.]+), Lbs (\d+), Oz (\d+), Made In (.+), Tariff (\d+)$/ do |description, qty, value, lb, oz, origin_country, tariff|
   @add_item_form = @customs_form.add_item
   @add_item_form.description.set((description.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : description)
   @add_item_form.qty.set(qty)
