@@ -119,8 +119,5 @@ After do |scenario|
   test_data.each do |key, value|
     logger.step "  --  #{key} : #{value}"
   end
-
-  logger.step "  --  Test Parameters"
-  test_data.each_key { |key_value_array| logger.step("#{key_value_array} : #{test_data[key_value_array]}") }
 end
 
