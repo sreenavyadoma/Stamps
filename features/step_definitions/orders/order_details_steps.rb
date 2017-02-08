@@ -171,7 +171,7 @@ end
 
 Then /^(?:O|o)n Order Details form, set Length to (\d*)$/ do |value|
   test_data[:length] = value
-  stamps.orders.order_details.dimensions.length.present?.should be true
+  expect(stamps.orders.order_details.dimensions.length.present?).to be true
   stamps.orders.order_details.dimensions.length.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -179,7 +179,7 @@ end
 
 Then /^(?:O|o)n Order Details form, set Width to (\d*)$/ do |value|
   test_data[:width] = value
-  stamps.orders.order_details.dimensions.width.present?.should be true
+  expect(stamps.orders.order_details.dimensions.width.present?).to be true
   stamps.orders.order_details.dimensions.width.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -187,7 +187,7 @@ end
 
 Then /^(?:O|o)n Order Details form, set Height to (\d*)$/ do |value|
   test_data[:height] = value
-  stamps.orders.order_details.dimensions.height.present?.should be true
+  expect(stamps.orders.order_details.dimensions.height.present?).to be true
   stamps.orders.order_details.dimensions.height.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -363,7 +363,7 @@ Then /^(?:O|o)n Order Details form, set Ship-To to zone (.*)$/ do |zone|
       address = ParameterHelper.rand_zone_9
       test_data[:zone] = 9
     else
-      "Invalid Zone Option".should eql "Zone #{zone} is not a valid zone. Valid options are from zone 1 through 8."
+      expect("Invalid Zone Option").to eql "Zone #{zone} is not a valid zone. Valid options are from zone 1 through 8."
   end
 
   test_data[:street_address] = address['street_address']
@@ -400,60 +400,60 @@ Then /^(?:O|o)n Order Details form, Show Ship-To fields$/ do
 end
 
 Then /^(?:O|o)n Order Details form, expect Order ID is truthy$/ do
-  test_data[:order_id].to_i.should be > 0
+  expect(test_data[:order_id].to_i).to be > 0
 end
 
 Then /^(?:O|o)n Order Details form, expect Order ID equals Grid Oder ID in row (\d+)$/ do |row|
-  stamps.orders.order_details.toolbar.order_id.should eql stamps.orders.orders_grid.column.order_id.row(row)
+  expect(stamps.orders.order_details.toolbar.order_id).to eql stamps.orders.orders_grid.column.order_id.row(row)
 end
 
 Then /^(?:O|o)n Order Details form, expect Order ID is the same as saved Order ID$/ do
-  stamps.orders.order_details.toolbar.order_id.should eql test_data[:order_id]
+  expect(stamps.orders.order_details.toolbar.order_id).to eql test_data[:order_id]
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Name is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.recipient_name.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.recipient_name).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Company Name is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.company_name.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.company_name).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Cleansed Street Address is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.street_address.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.street_address).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Cleansed City is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.city.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.city).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Cleansed State is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.state.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.state).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.zip_plus_4.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.zip_plus_4).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.zip_code.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.zip_code).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Phone is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.phone.text.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.phone.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Email is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.email.text.should eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.email.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, set Ship-To to ambiguous address$/ do |table|
@@ -550,12 +550,12 @@ end
 
 Then /^(?:O|o)n Order Details form, expect Domestic Ship-To Company is (.*)$/ do |company|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.text.should include company
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include company
 end
 
 Then /^(?:O|o)n Order Details form, expect Domestic Ship-To Name is (.*)$/ do |name|
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.text_area.text.should include name
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include name
 end
 
 

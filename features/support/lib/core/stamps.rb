@@ -8,7 +8,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      "#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -52,7 +52,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      "#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -64,7 +64,7 @@ module Stamps
       logger.message "#{e.message}"
       logger.message "#{e.backtrace.join "\n"}"
       logger.message ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      "#{e.backtrace.join("\n")}").to eql e.message
       #@google_home_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
     end
   end
@@ -89,6 +89,9 @@ module Stamps
     @param.test_env = ENV['URL']
     @param.web_app = ENV['WEB_APP'].to_sym
     @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
+    @param.usr = ENV['USR']
+    @param.pw = ENV['PW']
+    @param.url = ENV['URL']
     @param
   end
 
@@ -100,7 +103,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      "#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -120,7 +123,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      "#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -140,7 +143,7 @@ module Stamps
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+      "MagicData: Problem retrieving data from default.yml. Check your format?").to eql e.message
     end
   end
 
@@ -150,7 +153,7 @@ module Stamps
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data. Check your format?".should eql e.message
+      "MagicData: Problem retrieving data. Check your format?").to eql e.message
     end
   end
 

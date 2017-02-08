@@ -55,7 +55,7 @@ module Stamps
           when /stg/
             url = "https://registration.staging.stamps.com/registration"
           else
-            "#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
+            "#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
         end
 
         logger.info "Visit:  #{url}"
@@ -71,12 +71,12 @@ module Stamps
           logger.error error_occured.top_message
           logger.error error_occured.error_code
           logger.error error_occured.error_description
-          "#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ".should eql error_occured.header
+          "#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ").to eql error_occured.header
         end
         50.times do
           break if browser.url.include? 'profile'
         end
-        browser.url.should include "registration"
+        browser.url).to include "registration"
         sign_up_for_new_account = StampsElement.new browser.h1(text: "Sign up for a new account")
         sign_up_for_new_account.safely_wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"

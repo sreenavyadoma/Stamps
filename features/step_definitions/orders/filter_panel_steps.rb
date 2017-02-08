@@ -34,7 +34,7 @@ end
 
 Then /^(?:I|i)n left Filter Panel, expect selected filter to be (.*)$/ do |expectation|
   30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
-  stamps.orders.filter_panel.selected_filter.should eql expectation
+  expect(stamps.orders.filter_panel.selected_filter).to eql expectation
 end
 
 Then /^(?:I|i)n left Filter Panel, expect saved Order ID is in Awaiting Shipment$/ do
@@ -59,7 +59,7 @@ Then /^(?:I|i)n left Filter Panel, expect saved Order ID exist in (.*)$/ do |fil
     sleep(0.25);
     break if stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]) > 0
   end
-  stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
+  expect(stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id])).to be > 0
 end
 
 Then /^Filter Panel: Search saved Order ID$/ do
@@ -79,25 +79,25 @@ Then /^Filter Panel: Search saved Email$/ do
 end
 
 Then /^Filter Panel: Search for (.*)$/ do |str|
-  str.should be_truthy
+  expect(str).to be_truthy
   test_data[:orders_search_str] = str
   stamps.orders.filter_panel.search_orders test_data[:orders_search_str]
 end
 
 Then /^Filter Panel: Search results count should be (\d*)$/ do |count|
-  stamps.orders.filter_panel.search_results.count.should eql count
+  expect(stamps.orders.filter_panel.search_results.count).to eql count
 end
 
 Then /^Filter Panel: Search results should be more than (\d*)$/ do |count|
-  stamps.orders.filter_panel.search_results.count.should be > count
+  expect(stamps.orders.filter_panel.search_results.count).to be > count
 end
 
 Then /^Filter Panel: Search Results should be present$/ do
-  stamps.orders.filter_panel.search_results.present?.should be true
+  expect(stamps.orders.filter_panel.search_results.present?).to be true
 end
 
 Then /^Filter Panel: Search Results should not be present$/ do
-  stamps.orders.filter_panel.search_results.present?.should be false
+  expect(stamps.orders.filter_panel.search_results.present?).to be false
 end
 
 Then /^Filter Panel: Remove search results$/ do
@@ -128,37 +128,37 @@ end
 
 Then /^(?:I|i)n left Filter Panel, expect order moved to Shipped$/ do
   stamps.orders.filter_panel.shipped.select.order_date.sort_descending
-  stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
+  expect(stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id])).to be > 0
 end
 
 Then /^(?:I|i)n left Filter Panel, expect order moved to Canceled$/ do
   stamps.orders.filter_panel.canceled.select.order_date.sort_descending
-  stamps.orders.filter_panel.canceled.select.order_id.row_num(test_data[:order_id]).should be > 0
+  expect(stamps.orders.filter_panel.canceled.select.order_id.row_num(test_data[:order_id])).to be > 0
 end
 
 Then /^(?:I|i)n left Filter Panel, expect order moved to Awaiting Shipment$/ do
   stamps.orders.orders_grid.column.order_date.sort_descending
-  stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id]).should be > 0
+  expect(stamps.orders.orders_grid.column.order_id.row_num(test_data[:order_id])).to be > 0
 end
 
 Then /^(?:I|i)n left Filter Panel, expect Awaiting Shipment count increased by (\d+)$/ do |count|
-  stamps.orders.filter_panel.awaiting_shipment.count.should eql test_data[:awaiting_shipment_count].to_i + count.to_i
+  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql test_data[:awaiting_shipment_count].to_i + count.to_i
 end
 
 Then /^(?:I|i)n left Filter Panel, expect Awaiting Shipment count decreased by (\d+)$/ do |count|
-  stamps.orders.filter_panel.awaiting_shipment.count.should eql test_data[:awaiting_shipment_count].to_i - count.to_i
+  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql test_data[:awaiting_shipment_count].to_i - count.to_i
 end
 
 Then /^(?:I|i)n left Filter Panel, expect panel arrow is pointing to the (.*) direction$/ do |expectation|
-  stamps.orders.filter_panel.get_arrow_direction.should eql expectation
+  expect(stamps.orders.filter_panel.get_arrow_direction).to eql expectation
 end
 
 Then /^(?:I|i)n left Filter Panel, expect system updates the grid to show only orders that match the (.*) filter$/ do |expectation|
-  stamps.orders.filter_panel.is_order_grid_filtered(expectation).should be true
+  expect(stamps.orders.filter_panel.is_order_grid_filtered(expectation)).to be true
 end
 
 Then /^(?:I|i)n left Filter Panel, expect system displays expanded filters panel$/ do
-  stamps.orders.filter_panel.is_filter_panel_present?.should be true
+  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be true
 end
 
 Then /^Filter Panel: Click on panel$/ do
@@ -167,7 +167,7 @@ end
 
 Then /^(?:I|i)n left Filter Panel, expect Filters panel is close$/ do
   actual = stamps.orders.filter_panel.is_filter_panel_present?
-  actual.should eql false
+  expect(expect(actual).to eql false
 end
 
 Then /^(?:I|i)n left Filter Panel, expect system shows an arrow above the Order Status Filter Panel - name$/ do
@@ -175,11 +175,11 @@ Then /^(?:I|i)n left Filter Panel, expect system shows an arrow above the Order 
 end
 
 Then /^(?:I|i)n left Filter Panel, expect Panel is open$/ do
-  stamps.orders.filter_panel.is_filter_panel_present?.should be true
+  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be true
 end
 
 Then /^(?:I|i)n left Filter Panel, expect panel is hidden$/ do
-  stamps.orders.filter_panel.are_filter_links_present.should eql false
+  expect(stamps.orders.filter_panel.are_filter_links_present).to eql false
 end
 
 Then /^Filter Panel: Click panel name$/ do
@@ -206,13 +206,13 @@ end
 Then /^(?:I|i)n left Filter Panel, expect printed Order ID is in Shipped tab$/ do
   stamps.orders.filter_panel.shipped.select.order_id.sort_descending
   stamps.orders.filter_panel.shipped.select.order_id.sort_descending
-  stamps.orders.filter_panel.shipped.select.order_id.row(1).should eql test_data[:order_id]
+  expect(stamps.orders.filter_panel.shipped.select.order_id.row(1)).to eql test_data[:order_id]
 end
 
 Then /^(?:I|i)n left Filter Panel, expect all printed Order IDs are in Shipped tab$/ do
-  test_data[:order_id].should include grid.order_id.row(3)
-  test_data[:order_id_2].should include grid.order_id.row(2)
-  test_data[:order_id_3].should include grid.order_id.row(1)
+  expect(test_data[:order_id]).to include grid.order_id.row(3)
+  expect(test_data[:order_id_2]).to include grid.order_id.row(2)
+  expect(test_data[:order_id_3]).to include grid.order_id.row(1)
 end
 
 

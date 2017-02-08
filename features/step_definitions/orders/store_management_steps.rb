@@ -22,7 +22,7 @@ Then /^Manage Stores: Delete Row (\d+)$/ do |row|
   #logger.step "Grid Count before delete is #{size}"
   delete_modal = @manage_stores.stores_grid.delete_row row
   delete_modal.delete
-  delete_modal.present?.should be false
+  expect(delete_modal.present?).to be false
 end
 
 Then /^Manage Stores: Select Store (.*)$/ do |store_name|

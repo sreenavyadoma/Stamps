@@ -98,7 +98,7 @@ module Stamps
               return settings
             end
           end
-          "Etsy Store Connect failed. Settings Modal did not open.".should eql ""
+          "Etsy Store Connect failed. Settings Modal did not open.").to eql ""
         end
       end
 
@@ -173,7 +173,7 @@ module Stamps
             sleep(5)
             return settings if settings.present?
           end
-          "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal.".should eql ""
+          "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal.").to eql ""
         end
 
         def allow_access_after_reconnect
@@ -187,7 +187,7 @@ module Stamps
             sleep(5)
             return manage_stores if manage_stores.present?
           end
-          "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal.".should eql ""
+          "Etsy Page:  Clicking Allow Access did not open Etsy Store Settings modal.").to eql ""
         end
       end
 

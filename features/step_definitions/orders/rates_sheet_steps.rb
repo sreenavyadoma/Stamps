@@ -5,14 +5,14 @@ Then /^(?:E|e)xcel rate sheet is loaded$/ do
 
   @rate_file_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{rate_file}"
   logger.step "Rate File: #{@rate_file_loc}"
-  "Rate File: #{@rate_file_loc}".should eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
+  expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
 
   begin
     @rate_file = Spreadsheet.open @rate_file_loc
   rescue Exception => e
     logger.step e.message
     logger.step e.backtrace.join("\n")
-    e.message.should eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
+    expect(e.message).to eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
   end
 
   @failed_test_count = 0
@@ -285,7 +285,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     error_msg = "Column error_msg does not exist in parameter sheet"
   end
 
-  "Check your parameter sheet: #{@rate_file_loc}".should eql error_msg if missing_column
+  expect("Check your parameter sheet: #{@rate_file_loc}").to eql error_msg if missing_column
 
   # parameter zone is set in step "On Order Details form, set Ship-To to address in Zone xxx"
   # where xxx is a number between 1-9
@@ -472,7 +472,7 @@ Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
   logger.step "Number of Failed Tests: #{@failed_test_count}"
   logger.step "Number of Failed Tests: #{@failed_test_count}"
   logger.step "Number of Failed Tests: #{@failed_test_count}"
-  #@failed_test_count.should be < count
+  #@failed_test_count).to be < count
   logger.step "#{"*"*80}"
 end
 

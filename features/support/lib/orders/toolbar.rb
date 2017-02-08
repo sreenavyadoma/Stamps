@@ -184,7 +184,7 @@ module Stamps
             sleep(0.25)
             selection_item.safe_click
           }
-          "Unable to select #{selection}".should eql("Move Menu - Select")
+          "Unable to select #{selection}").to eql("Move Menu - Select")
         end
 
         def tooltip
@@ -378,7 +378,7 @@ module Stamps
             privacy_act.wait_until_present 2
             return privacy_act if privacy_act.present?
           end
-          privacy_act.present?.should be true
+          privacy_act.present?).to be true
         end
       end
 
@@ -449,7 +449,7 @@ module Stamps
               text = logger.error usps_terms_modal.text_p1
               logger.error usps_terms_modal.text_p2
               usps_terms_modal.cancel
-              text.should eql ""
+              text).to eql ""
             end
 
             if incomplete_order_modal.present?
@@ -457,7 +457,7 @@ module Stamps
               logger.error incomplete_order_modal.error_message_p2
               incomplete_order_modal.ok
 
-              incomplete_order_modal.error_message_p2.should eql ""
+              incomplete_order_modal.error_message_p2).to eql ""
             end
 
             if multi_order_some_error.present?
@@ -465,28 +465,28 @@ module Stamps
               text = multi_order_some_error.error_message_p2
               logger.error text
               multi_order_some_error.continue
-              text.should eql ""
+              text).to eql ""
             end
 
             if multi_order_all_error.present?
               text = multi_order_all_error.error_message
               logger.error text
               multi_order_all_error.ok
-              text.should eql ""
+              text).to eql ""
             end
 
             return orders_print_modal if orders_print_modal.present?
           end
 
           expectation = "Print Modal is NO present" unless orders_print_modal.present?
-          expectation.should eql "Print Modal is present"
+          expectation).to eql "Print Modal is present"
         end
 
         def usps_terms
           expectation = "USPS Terms Modal is present"
           modal = open_window usps_terms_modal
           expectation = "USPS Terms Modal is NO present." unless modal.present?
-          expectation.should eql "USPS Terms Modal is present"
+          expectation).to eql "USPS Terms Modal is present"
           modal
         end
 
@@ -566,11 +566,11 @@ module Stamps
 
             if install_plugin_error.present?
               install_plugin_error.close
-              window.present?.should be true
+              window.present?).to be true
             end
           end
 
-          window.present?.should be true
+          window.present?).to be true
         end
 
         def print_expecting_error *args
@@ -582,7 +582,7 @@ module Stamps
             when 1
               error_window.error_message.include? error_message
             else
-              "Illegal number of arguments.".should eql ""
+              "Illegal number of arguments.").to eql ""
           end
         end
 
@@ -602,7 +602,7 @@ module Stamps
               selection = StampsElement.new(browser.span text: "Add/Edit Stores")
               modal = Orders::Stores::ManageStores.new(param)
             else
-              "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.".should eql ""
+              "Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.").to eql ""
           end
 
           20.times do
@@ -613,7 +613,7 @@ module Stamps
             selection.safe_click
             selection.safe_click
           end
-          "Unable to Toolbar Settings Menu Selection - #{menu_item}".should eql ""
+          "Unable to Toolbar Settings Menu Selection - #{menu_item}").to eql ""
         end
 
         def general_settings
@@ -696,25 +696,25 @@ module Stamps
               end
 
               return details if details.present?
-              "#{server_error.text}".should eql "Server Error" if server_error.present?
+              "#{server_error.text}").to eql "Server Error" if server_error.present?
             rescue
               #ignore
             end
           end
 
-          "#{server_error.text}".should eql "Server Error" if server_error.present?
+          "#{server_error.text}").to eql "Server Error" if server_error.present?
 
           initializing_db.wait_until_present(15) if initializing_db.present?
 
           if initializing_db.present?
             message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}"
             logger.info message
-            message.should eql ""
+            message).to eql ""
           end
 
-          "#{server_error.text}".should eql "Server Error" if server_error.present?
+          "#{server_error.text}").to eql "Server Error" if server_error.present?
 
-          "Single Order Details Panel did not open upon clicking Add button.".should eql "Unable to Add new orders." unless details.present?
+          "Single Order Details Panel did not open upon clicking Add button.").to eql "Unable to Add new orders." unless details.present?
         end
 
         def tooltip

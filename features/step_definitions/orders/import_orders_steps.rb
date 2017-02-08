@@ -5,37 +5,37 @@ end
 
 Then /^Import Orders: Import$/ do
   #logger.step "Import Orders: Import"
-  @import_successful.should be_truthy
+  expect(@import_successful).to be_truthy
   @import_successful = @import_orders.orders.import
 end
 
 Then /^Import Orders: Select CSV File$/ do
   #logger.step "Import Orders: Select CSV File"
-  @import_successful.should be_truthy
+  expect(@import_successful).to be_truthy
   @open_file = @import_orders.orders.select_csv_file
-  @open_file.present?.should be true
+  expect(@open_file.present?).to be true
 end
 
 Then /^Import Orders: Expect Import is successful$/ do
-  @import_successful.should be_truthy
-  @import_successful.window_title.should eql "Success"
+  expect(@import_successful).to be_truthy
+  expect(@import_successful.window_title).to eql "Success"
 end
 
 Then /^Import Orders: Success: OK$/ do
   #logger.step "Import Orders: Success: OK"
-  @import_successful.should be_truthy
+  expect(@import_successful).to be_truthy
   @import_successful.ok
 end
 
 Then /^Import Orders: Cancel$/ do
   #logger.step "Import Orders: Cancel"
-  @import_successful.should be_truthy
+  expect(@import_successful).to be_truthy
   @import_orders.orders.cancel
 end
 
 Then /^Import Orders: Download sample file$/ do
   #logger.step "Import Orders: Download sample file"
-  @import_successful.should be_truthy
+  expect(@import_successful).to be_truthy
   @import_orders.orders.download_sample_file
 end
 
@@ -55,7 +55,7 @@ end
 Then /^Import Orders: Expect Imported Filename is (.*)$/ do |expectation|
   #logger.step "Import Import Filename is #{expectation}"
   actual_value = @import_orders.orders.filename_label
-  actual_value.should eql expectation
+  expect(actual_value).to eql expectation
 end
 
 

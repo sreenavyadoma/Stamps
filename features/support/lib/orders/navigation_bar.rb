@@ -56,7 +56,7 @@ module Stamps
         elsif param.web_app == :mail
           div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
-          "Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test.".should eql "Invalid Value"
+          "Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test.").to eql "Invalid Value"
         end
         StampsElement.new div
       end
@@ -71,7 +71,7 @@ module Stamps
           confirm_btn.safe_click
           transaction_complete.wait_until_present 6
         end
-        "Unable to click Confirm button on Confirm Transaction modal!".should eql "Confirm Transaction Modal"
+        "Unable to click Confirm button on Confirm Transaction modal!").to eql "Confirm Transaction Modal"
       end
     end
 
@@ -137,7 +137,7 @@ module Stamps
           auto_buy_postage_link.safe_click
           return auto_add_funds_modal if auto_add_funds_modal.present?
         end
-        "Auto-Buy Postage modal did not open.".should eql "Unable to open Auto-Buy Postage modal upon clicking Auto-buy postage link"
+        "Auto-Buy Postage modal did not open.").to eql "Unable to open Auto-Buy Postage modal upon clicking Auto-buy postage link"
       end
 
       def purchase_button
@@ -258,16 +258,16 @@ module Stamps
           return confirm_transaction if confirm_transaction.present?
           purchase_button.safe_click
           confirm_transaction.wait_until_present 5
-          "#{account_balance_limit.window_title.text}:  #{account_balance_limit.text}".should eql "Confirm Transaction Modal" if account_balance_limit.present?
+          "#{account_balance_limit.window_title.text}:  #{account_balance_limit.text}").to eql "Confirm Transaction Modal" if account_balance_limit.present?
         end
       end
 
       def edit_payment_method
-        "Edit Payment Method is not yet implemented.".should eql ""
+        "Edit Payment Method is not yet implemented.").to eql ""
       end
 
       def autobuy
-        "AutoBuy is not implemented".should eql ""
+        "AutoBuy is not implemented").to eql ""
       end
     end
 
@@ -292,7 +292,7 @@ module Stamps
           buy_more_link.safe_click
           return add_funds_modal if add_funds_modal.present?
         end
-        "Unable to open Buy Postage Modal".should eql "buy_more failed"
+        "Unable to open Buy Postage Modal").to eql "buy_more failed"
       end
 
       def purchase_history

@@ -43,9 +43,9 @@ module Stamps
 
       case param.web_app
         when :orders
-          browser.url.should include "Orders"
+          browser.url).to include "Orders"
         when :mail
-          browser.url.downcase.should include "webpostage"
+          browser.url.downcase).to include "webpostage"
         else
           # do nothing
       end
@@ -54,52 +54,31 @@ module Stamps
     end
   end
 
-  class StampsWebAppsSignIn < Browser::Modal
-    def visit page
-      browser.should_not be_nil
+  class StampsSignInBase < Browser::Modal
+    def user_credentials(*args)
+      case args
+        when Hash
+          @username = args[0]['username']
+          @password = args[0]['password']
+        when Array
+          case args.length
+            when 1
+              if args[0].is_a?(Symbol)
 
-      case page
-        when :orders
-          case param.test_env.downcase
-            when /ss/
-              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
-            when /cc/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
-            when /sc/
-              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
-            when /staging/
-              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
-            when /rating/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
-            when /./
-              url = "http://#{param.test_env}.stamps.com/webpostage/SignIn/Default.aspx?param.test_env=Orders&"
+              end
+            when 2
             else
-              url = param.test_env
+              expect(args.length).to be_between(1, 2).inclusive
           end
-        when :mail
-          case param.test_env.downcase
-            when /ss/
-              url = "http://printss600.qacc.stamps.com/webpostage/SignIn/Default.aspx"
-            when /cc/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx"
-            when /sc/
-              url = "http://printext.qasc.stamps.com/webpostage/SignIn/Default.aspx"
-            when /staging/
-              url = "https://print.testing.stamps.com/webpostage/SignIn/Default.aspx"
-            when /rating/
-              url = "http://printext.qacc.stamps.com/webpostage/SignIn/Default.aspx"
-            when /./
-              url = "http://#{param.test_env}.stamps.com/webpostage/SignIn/Default.aspx"
-            else
-              url = param.test_env
-          end
+          @username = args[0]
+          @password = args[1]
         else
-          #do nothing
+          logger.message "Using Default Sign-in Credentials."
+          @username = param.usr
+          @password = param.pw
       end
-
-      browser.goto url
-      logger.info "Page loaded: #{browser.url}"
+      logger.message "USERNAME: #{@username}, PASSWORD: #{@password}"
+      [@username, @password]
     end
   end
-
 end

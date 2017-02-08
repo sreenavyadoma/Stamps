@@ -56,7 +56,7 @@ module Stamps
             error_str = server_error.message
             logger.info error_str
             server_error.ok
-            "Server Error: \n#{error_str}".should eql ""
+            "Server Error: \n#{error_str}").to eql ""
           end
         end
       end

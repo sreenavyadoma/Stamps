@@ -168,7 +168,7 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{error_str}".should eql ""
+                "Server Error: \n#{error_str}").to eql ""
               end
               break unless present?
             end
@@ -255,7 +255,7 @@ module Stamps
             sleep(2)
             return store if store.present?
           end
-          "Volusion Store Modal did not open.".should eql ""
+          "Volusion Store Modal did not open.").to eql ""
         end
 
         def rakuten_button
@@ -270,7 +270,7 @@ module Stamps
             sleep(2)
             return store if store.present?
           end
-          "Rakuten Store Modal did not open.".should eql ""
+          "Rakuten Store Modal did not open.").to eql ""
         end
 
         def etsy_button
@@ -285,7 +285,7 @@ module Stamps
             sleep(0.35)
             return store if store.present?
           end
-          "Etsy Store Modal did not open.".should eql ""
+          "Etsy Store Modal did not open.").to eql ""
         end
 
         def shopify_button
@@ -300,7 +300,7 @@ module Stamps
             sleep(0.35)
             return store if store.present?
           end
-          "Etsy Store Modal did not open.".should eql ""
+          "Etsy Store Modal did not open.").to eql ""
         end
 
         def three_d_cart_button
@@ -315,7 +315,7 @@ module Stamps
             sleep(0.35)
             return store if store.present?
           end
-          "3dcart Store Modal did not open.".should eql ""
+          "3dcart Store Modal did not open.").to eql ""
         end
 
         def ebay_button
@@ -330,7 +330,7 @@ module Stamps
             sleep(0.35)
             return store if store.present?
           end
-          "Etsy Store Modal did not open.".should eql ""
+          "Etsy Store Modal did not open.").to eql ""
         end
 
         def yahoo_button
@@ -345,7 +345,7 @@ module Stamps
             sleep(0.35)
             return store if store.present?
           end
-          "Yahoo Store Modal did not open.".should eql ""
+          "Yahoo Store Modal did not open.").to eql ""
         end
 
         def big_commerce_button
@@ -360,7 +360,7 @@ module Stamps
             sleep(0.35)
             return store if store.present?
           end
-          "Big Commerce Store Modal did not open.".should eql ""
+          "Big Commerce Store Modal did not open.").to eql ""
         end
 
         def paypal_button
@@ -375,7 +375,7 @@ module Stamps
             sleep(0.35)
             return store if store.present?
           end
-          "PayPal Store Modal did not open.".should eql ""
+          "PayPal Store Modal did not open.").to eql ""
         end
 
       end
@@ -546,7 +546,7 @@ module Stamps
 
         def reconnect
           button = StampsElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
-          "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test".should eql "" unless button.present?
+          "No Store selected from Manage Store grid or Reconnect button is not present.  Check your test").to eql "" unless button.present?
 
           server_error = Orders::Stores::ServerError.new(param)
 
@@ -569,7 +569,7 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{server_error}".should eql ""
+                "Server Error: \n#{server_error}").to eql ""
               end
               return rakuten if rakuten.present?
               return volusion if volusion.present?

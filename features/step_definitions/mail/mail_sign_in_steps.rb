@@ -1,7 +1,7 @@
 
 
 Then /^What's New: Expect modal is present$/ do
-  stamps.mail.sign_in_modal.whats_new_modal.window_title.text.should eql "What’s new in Stamps.com Online"
+  expect(stamps.mail.sign_in_modal.whats_new_modal.window_title.text).to eql "What’s new in Stamps.com Online"
 end
 
 Then /^What's New: Click Continue button$/ do
@@ -16,7 +16,7 @@ Then /^More Info: Expect More Info page is present$/ do
   #logger.step "More Info: Expect More Info page is present"
   expectation = "A second browser window was opened"
   expectation = "A second browser window did not open." unless @more_info_page.present?
-  expectation.should eql "A second browser window was opened"
+  expect(expectation).to eql "A second browser window was opened"
 end
 
 Then /^More Info: Close More Info page$/ do
@@ -32,14 +32,12 @@ Then /^More Info: Close More Info page$/ do
 end
 
 Then /^Mail Sign In: Set Remember Username to Checked$/ do
-  #logger.step "Step: Mail Sign In: Set Remember Username to Checked"
   #todo-fix username
   fix me!
   stamps.mail.sign_in_modal.remember_username.check
 end
 
 Then /^Mail Sign In: Check Remember Username$/ do
-  #logger.step "Step: Mail Sign In: Check Remember Username #{ENV["USR"]}"
   step "load Sign-in page"
   #todo-fix username
   fix me!
@@ -47,30 +45,25 @@ Then /^Mail Sign In: Check Remember Username$/ do
 end
 
 Then /^Mail Sign In: Expect Remember Username is checked$/ do
-  #logger.step "Mail Sign In: Expect Remember Username is checked"
   fix me!
   #todo-fix username
-  actual_value.should eql expectation
+  expect(actual_value).to eql expectation
 end
 
 Then /^Mail Sign In: Set Remember Username to Unchecked$/ do
-  #logger.step "Step: Mail Sign In: Set Remember Username to Unchecked"
   fix me!
   #todo-fix username
   stamps.mail.sign_in_modal.sign_in
 end
 
 Then /^Mail Sign In: Expect Remember Username is unchecked$/ do
-  #logger.step "Postage Sign In: Expect Remember Username is unchecked"
   fix me
   #todo-fix username
-  actual_value.should eql expectation
+  expect(actual_value).to eql expectation
 end
 
 Then /^Mail Sign In: Expect WhatsNewModal is present$/ do
-  #logger.step "Sign In: Expect Welcome modal"
-
-  @whats_new.present?.should be true
+  expect(@whats_new.present?).to be true
 end
 
 Then /^Mail Sign In: Close WhatsNewModal$/ do

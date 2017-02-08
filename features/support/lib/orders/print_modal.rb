@@ -32,7 +32,7 @@ module Stamps
           when /Roll - 4 /
             return StampsElement.new(browser.li text: /Roll - 4 /)
           else
-            "Don't know what to do with #{media}.".should eql "Invalid Print Media Selection."
+            "Don't know what to do with #{media}.").to eql "Invalid Print Media Selection."
         end
       end
 
@@ -91,7 +91,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          "Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.".should eql ""
+          "Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.").to eql ""
         end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
       end
     end
@@ -244,10 +244,10 @@ module Stamps
 
       def dont_show_this_again dont_show
         checkbox_field = (browser.inputs css: "input[id^=checkbox-][id$=-inputEl]").last
-        "USPS Terms - Don't show this again checkbox is not present".should eql "" unless checkbox_field.present?
+        "USPS Terms - Don't show this again checkbox is not present").to eql "" unless checkbox_field.present?
 
         verify_field = browser.div css: "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
-        "USPS Terms - Don't show this again checkbox is not present".should eql "" unless verify_field.present?
+        "USPS Terms - Don't show this again checkbox is not present").to eql "" unless verify_field.present?
 
         attribute = "class"
         attrib_value_check = "checked"
@@ -292,7 +292,7 @@ module Stamps
           sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
-        "Unable to select today's date from date picker object in Print Modal.".should eql ""
+        "Unable to select today's date from date picker object in Print Modal.").to eql ""
       end
 
       def todays_date
@@ -304,7 +304,7 @@ module Stamps
           sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0
         }
-        "Unable to select today's date from date picker object in Print Modal.".should eql ""
+        "Unable to select today's date from date picker object in Print Modal.").to eql ""
       end
 
       def today_button

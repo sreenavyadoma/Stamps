@@ -100,7 +100,7 @@ module Stamps
         end
 
         def count
-          "Test Error: Check your test flow.".should be "Search Results is not present on Left Filter Panel.Did you forget to do a search first?" unless present?
+          "Test Error: Check your test flow.").to be "Search Results is not present on Left Filter Panel.Did you forget to do a search first?" unless present?
           count_label.text
         end
       end
@@ -140,7 +140,7 @@ module Stamps
             end
             return search_results if search_results.present?
           end
-          search_results.present?.should be true
+          search_results.present?).to be true
         end
       end
 
@@ -166,7 +166,7 @@ module Stamps
             sleep(0.25)
             break if selected?
           end
-          selected?.should be true
+          selected?).to be true
         end
 
         def selected?
@@ -236,7 +236,7 @@ module Stamps
             return canceled.text if canceled.selected?
             return on_hold.text if on_hold.selected?
           end
-          "At least one filter should have been selected.".should eql "Unable to return selected_filter text."
+          "At least one filter should have been selected.").to eql "Unable to return selected_filter text."
         end
 
         def collapse_panel

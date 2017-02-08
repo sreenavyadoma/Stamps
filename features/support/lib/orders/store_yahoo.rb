@@ -63,11 +63,11 @@ module Stamps
               error_str = server_error.message
               logger.info error_str
               server_error.ok
-              "Server Error: \n#{error_str}".should eql "" unless counter < max_server_error_retry_count
+              "Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
             return settings if settings.present?
           end
-          "Yahoo Store Connect failed.  Settings Modal did not open.  ".should eql ""
+          "Yahoo Store Connect failed.  Settings Modal did not open.  ").to eql ""
         end
 
         def reconnect
@@ -88,11 +88,11 @@ module Stamps
               error_str = server_error.message
               logger.info error_str
               server_error.ok
-              "Server Error: \n#{error_str}".should eql "" unless counter < max_server_error_retry_count
+              "Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
             return manage_stores if manage_stores.present?
           end
-          "Yahoo Store Connect failed. Settings Modal did not open.".should eql ""
+          "Yahoo Store Connect failed. Settings Modal did not open.").to eql ""
         end
 
         def reconnect_old

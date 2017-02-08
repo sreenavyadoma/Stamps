@@ -1,7 +1,7 @@
 Then /^Expect USPS Terms modal appears$/ do
   #logger.step "Expect USPS Terms modal appears"
   actual = stamps.orders.toolbar.usps_intl_terms.is_usps_terms_modal_present
-  actual.should be true
+  expect(actual).to be true
 end
 
 Then /^Click Cancel on USPS Terms modal$/ do

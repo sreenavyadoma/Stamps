@@ -48,9 +48,9 @@ Then /^Verify Local Rating$/ do |table|
     #logger.step "  --------------------------------------------------------------------------- "
 
     actual = stamps.orders.order_details.footer.total_ship_cost
-    actual.should eql expected_total_amount
+    expect(actual).to eql expected_total_amount
 
-    "".should eql "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lb"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |" if actual != expected_total_amount
+    expect("").to eql "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lb"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |" if actual != expected_total_amount
   end
 
 end
