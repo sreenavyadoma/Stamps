@@ -58,7 +58,7 @@ module Stamps
           sleep(0.35)
           return confirmation if confirmation.present?
         end
-        "Unable to confirm password reset, check your code.".should eql "" unless confirmation.present?
+        expect("Unable to confirm password reset, check your code.").to eql "" unless confirmation.present?
       end
     end
   end

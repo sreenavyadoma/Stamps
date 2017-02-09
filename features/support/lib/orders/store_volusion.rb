@@ -46,7 +46,7 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{error_msg}".should eql ""
+                expect("Server Error: \n#{error_msg}").to eql ""
               end
               break unless present?
             end
@@ -56,7 +56,7 @@ module Stamps
           end
 
           self.close if self.present?
-          server_error.message.should eql "" if server_error.present?
+          expect(server_error.message).to eql "" if server_error.present?
           settings
         end
 
@@ -77,7 +77,7 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{error_str}".should eql ""
+                expect("Server Error: \n#{error_str}").to eql ""
               end
               break unless present?
             end

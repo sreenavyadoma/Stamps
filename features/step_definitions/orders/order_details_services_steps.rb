@@ -317,5 +317,5 @@ Then /^(?:O|o)n Order Details form, expect service to be(?:| ([\w ]+))$/ do |exp
   10.times do
     break if stamps.orders.order_details.service.text_box.text.include? selection_substr
   end
-  stamps.orders.order_details.service.text_box.text.should include selection_substr
+  expect(stamps.orders.order_details.service.text_box.text).to include selection_substr
 end

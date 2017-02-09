@@ -192,7 +192,7 @@ module Stamps
             sleep(0.35)
             return checkout if checkout.present?
           end
-          "Unable to proceed to checkout!".should eql ""
+          expect("Unable to proceed to checkout!").to eql ""
         end
       end
 

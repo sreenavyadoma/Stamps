@@ -9,12 +9,12 @@ Then /^(?:I|i)n Print modal, click Print button Incomplete Order$/ do
   #logger.step "In Orders Toolbar, click Print button"
   @incomplete_order_modal = stamps.orders.toolbar.print_btn.print_modal
 
-  "Incomplete Order Modal did not open".should eql "In Print modal, click Print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+  expect("Incomplete Order Modal did not open").to eql "In Print modal, click Print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
 Then /^(?:I|i)n Print modal, expect Incomplete Order Error Message (.*)$/ do |expectation|
   #logger.step "In Print modal, expect Incomplete Order Error Message #{expectation}"
-  @incomplete_order_modal.error_message.should include expectation
+  expect(@incomplete_order_modal.error_message).to include expectation
 end
 
 Then /^(?:I|i)n Print modal, click Close button$/ do
@@ -58,7 +58,7 @@ Then /^(?:I|i)n Print modal, expect Hide Mail Value Checkbox is checked$/ do
     stamps.orders.toolbar.print_btn.print_modal.click
     break if stamps.orders.toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?
   end
-  stamps.orders.toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?.should be true
+  expect(stamps.orders.toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?).to be true
 end
 
 Then /^(?:I|i)n Print modal, check Email Tracking Details to Recipients$/ do
@@ -93,17 +93,17 @@ end
 
 Then /^(?:I|i)n Print modal, expect right-side label selected$/ do
   #logger.step "In Print modal, expect right-side label selected"
-  stamps.orders.toolbar.print_btn.print_modal.starting_label.right_selected?.should be true
+  expect(stamps.orders.toolbar.print_btn.print_modal.starting_label.right_selected?).to be true
 end
 
 Then /^(?:I|i)n Print modal, expect left-side label selected$/ do
   #logger.step "In Print modal, expect left-side label selected"
-  stamps.orders.toolbar.print_btn.print_modal.starting_label.left_selected?.should be true
+  expect(stamps.orders.toolbar.print_btn.print_modal.starting_label.left_selected?).to be true
 end
 
 Then /^(?:I|i)n Print modal, expect Ship Date is (\d+) day\(s\) from today/ do |day|
   #logger.step "In Print modal, expect Ship Date is #{day} day(s) from today"
-  stamps.orders.toolbar.print_btn.print_modal.ship_date.text.should eql ParameterHelper.date_printed(day)
+  expect(stamps.orders.toolbar.print_btn.print_modal.ship_date.text).to eql ParameterHelper.date_printed(day)
 end
 
 Then /^(?:I|i)n Print modal, set Print-On to \"(.*)\"$/ do |expectation|
@@ -113,7 +113,7 @@ end
 
 Then /^(?:I|i)n Print modal, expect Printing On Label is (.*)$/ do |expectation|
   #logger.step "In Print modal, set Print-On to #{expectation}"
-  stamps.orders.toolbar.print_btn.print_modal.printing_on.label.text.should eql expectation
+  expect(stamps.orders.toolbar.print_btn.print_modal.printing_on.label.text).to eql expectation
 end
 
 Then /^Select Printer \"(.*)\"$/ do |printer|
@@ -136,7 +136,7 @@ Then /^Print expecting error (.*)$/ do |error_message|
   modal = stamps.orders.toolbar.print_btn.print_modal.print_expecting_error
   actual = modal.error_message
   modal.ok
-  actual.should include error_message
+  expect(actual).to include error_message
 end
 
 Then /^Print expecting (.*) selected orders have errors and cannot be printed. To print the remaining orders, click Continue.$/ do |error_message|
@@ -144,7 +144,7 @@ Then /^Print expecting (.*) selected orders have errors and cannot be printed. T
   modal = stamps.orders.toolbar.print_btn.print_modal.print_expecting_error
   actual = modal.error_message
   modal.continue.print
-  actual.should eql "#{error_message} selected orders have errors and cannot be printed.\nTo mail the remaining orders, click Continue."
+  expect(actual).to eql "#{error_message} selected orders have errors and cannot be printed.\nTo mail the remaining orders, click Continue."
 end
 
 Then /^Print expecting invalid address error$/ do
@@ -157,7 +157,7 @@ When /^Print expecting rating error$/ do
   modal = stamps.orders.toolbar.print_btn.print_modal.print_expecting_rating_error
   actual = modal.error_message
   modal.close
-  actual.should include "An error occurred while attempting to rate your mail"
+  expect(actual).to include "An error occurred while attempting to rate your mail"
 end
 
 When /^Print expecting some orders can not be printed$/ do
@@ -165,24 +165,24 @@ When /^Print expecting some orders can not be printed$/ do
   modal = stamps.orders.toolbar.print_btn.print_modal.print_expecting_error
   actual = modal.error_message
   modal.continue.print
-  actual.should include "To mail the remaining orders, click Continue"
+  expect(actual).to include "To mail the remaining orders, click Continue"
 end
 
 Then /^(?:I|i)n Print modal, expect Modal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
   #logger.step "In Print modal, expect Modal Title is \"You have #{expectation} label\(s\) ready to mail\""
   actual = stamps.orders.toolbar.print_btn.print_modal.labels_ready_to_print
   stamps.orders.toolbar.print_btn.print_modal.close
-  "You have #{actual} label(s) ready to mail".should eql "You have #{expectation} label(s) ready to mail"
+  expect("You have #{actual} label(s) ready to mail").to eql "You have #{expectation} label(s) ready to mail"
 end
 
 Then /^(?:I|i)n Print modal, expect number of required label sheets is (\d+)$/ do |sheets|
   #logger.step "In Print modal, expect Requires #{sheets} label sheets"
-  stamps.orders.toolbar.print_btn.print_modal.label_sheet_required_count.should eql sheets
+  expect(stamps.orders.toolbar.print_btn.print_modal.label_sheet_required_count).to eql sheets
 end
 
 Then /^Print raises a Printing Error/ do
   #logger.step "Print raises a Printing Error"
-  stamps.orders.print.print_sample_expecting_error.should raise_error(PrintingError)
+  expect(stamps.orders.print.print_sample_expecting_error).to raise_error(PrintingError)
 end
 
 Then /^(?:I|i)n Print modal, click Print button Sample$/ do
@@ -192,7 +192,7 @@ end
 
 Then /^(?:I|i)n Print modal, click Print button Sample raises a Printing Error/ do
   #logger.step "In Print modal, click Print button Sample raises a Printing Error"
-  stamps.orders.toolbar.print_btn.print_modal.print_sample_expecting_error.should raise_error(PrintingError)
+  expect(stamps.orders.toolbar.print_btn.print_modal.print_sample_expecting_error).to raise_error(PrintingError)
 end
 
 Then /^Expect (.*) pane selected$/ do |value|

@@ -29,5 +29,6 @@ Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
     usr = username
     @username = username
   end
-  @market_place_modal = stamps.orders.landing_page.first_time_sign_in usr, password
+  @market_place_modal = stamps.orders.landing_page.first_time_sign_in(usr, password)
 end
+

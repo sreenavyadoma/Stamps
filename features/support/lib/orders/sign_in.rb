@@ -222,7 +222,7 @@ module Stamps
       end
 
       def remember_my_username
-        "Not yet implemented.".should eql "remember_my_username"
+        expect("Not yet implemented.").to eql "remember_my_username"
       end
 
       def validation_message
@@ -259,8 +259,8 @@ module Stamps
             return market_place
           end
         end
-        validation_message.should eql ""
-        "Market Place modal is not present".should eql "First Time Sign In" unless market_place.present?
+        expect(validation_message).to eql ""
+        expect("Market Place modal is not present").to eql "First Time Sign In" unless market_place.present?
       end
 
       def orders_sign_in *args
@@ -268,7 +268,7 @@ module Stamps
         invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
         new_welcome = NewWelcomeModal.new(param)
 
-        "Check that URL is valid: #{browser.url}".should eql "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
+        expect("Check that URL is valid: #{browser.url}").to eql "Orders Sign-in page is not loaded!" unless browser.url.include? "Orders"
 
         case args.length
           when 1
@@ -282,11 +282,11 @@ module Stamps
             usr = args[0]
             pw = args[1]
           else
-            "Invalid parameter. Usage: sign_in :default or sign_in username,password".should eql "Invalid Parameter: usr=#{usr}, pw=#{pw}"
+            expect("Invalid parameter. Usage: sign_in :default or sign_in username,password").to eql "Invalid Parameter: usr=#{usr}, pw=#{pw}"
         end
 
-        usr.should be_truthy
-        pw.should be_truthy
+        expect(usr).to be_truthy
+        expect(pw).to be_truthy
 
         logger.message "#"*15
         logger.message "Username: #{usr}"
@@ -313,7 +313,7 @@ module Stamps
                 logger.error invalid_username.text
                 logger.error invalid_username.text
                 logger.error invalid_username.text
-                "Invalid Username: #{usr}/#{pw}".should eql invalid_username.text
+                expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
               end
             end
 
@@ -329,20 +329,20 @@ module Stamps
               logger.error invalid_username.text
               logger.error invalid_username.text
               logger.error invalid_username.text
-              "Invalid Username: #{usr}/#{pw}".should eql invalid_username.text
+              expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
             end
 
             new_welcome.wait_until_present(3)
             if new_welcome.present?
               logger.message new_welcome.message
               add_manual_order = new_welcome.next
-              add_manual_order.present?.should be true
+              expect(add_manual_order.present?).to be true
               import_from_csv = add_manual_order.next
-              import_from_csv.present?.should be true
+              expect(import_from_csv.present?).to be true
               import_from_stores = import_from_csv.next
-              import_from_stores.present?.should be true
+              expect(import_from_stores.present?).to be true
               learn_more = import_from_stores.next
-              learn_more.present?.should be true
+              expect(learn_more.present?).to be true
               learn_more.close
             end
             signed_in_user.safely_wait_until_present(3)

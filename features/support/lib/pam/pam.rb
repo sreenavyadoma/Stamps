@@ -12,7 +12,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/"
           else
-            "#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
+            expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
         end
 
         logger.info "Visit: #{url}"
@@ -42,7 +42,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
           else
-            "#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!".should eql ""
+            expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
         end
 
         browser.goto url
@@ -52,7 +52,7 @@ module Stamps
           sleep(2)
           return customer_search_page if customer_search_page.present?
         end
-        customer_search_page.present?.should be true
+        expect(customer_search_page.present?).to be true
       end
     end
   end
