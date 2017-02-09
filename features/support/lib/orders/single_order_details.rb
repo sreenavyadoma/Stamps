@@ -987,7 +987,7 @@ module Stamps
           text_box.text
         end
 
-        def inline_cost service_name
+        def inline_cost(service_name)
           cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
           10.times do
             begin
@@ -1017,7 +1017,7 @@ module Stamps
           ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
-        def tooltip selection
+        def tooltip(selection)
           button = drop_down
           selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
           10.times {
@@ -1036,7 +1036,7 @@ module Stamps
           blur_out
         end
 
-        def disabled? service
+        def disabled?(service)
 
           @details_services = data_for(:details_services, {})
 
