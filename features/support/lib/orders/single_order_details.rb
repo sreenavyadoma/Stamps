@@ -37,13 +37,13 @@ module Stamps
                 drop_down.safe_click unless selection.present?
                 selection.safe_scroll_into_view
                 selection.safe_click
-                sleep(1)
+                sleep(0.35)
                 return manage_shipping_adddress if manage_shipping_adddress.present?
               rescue Exception => e
                 logger.error e.message
                 logger.error e.backtrace.join "\n"
               end
-              manage_shipping_adddress.present?.should be true
+              expect(manage_shipping_adddress.present?).to be true
             }
           else
             drop_down.safe_click unless selection.present?
@@ -55,12 +55,12 @@ module Stamps
               drop_down.safe_click unless selection.present?
               selection.safe_scroll_into_view
               selection.safe_click
-              sleep(1)
+              sleep(0.35)
               text_box_text = text_box.text
               return if text_box_text.include? service_text
             end
           end
-          "Unable to select service #{service}".should eql ""
+          expect("Unable to select service #{service}").to eql ""
         end
       end
 
@@ -101,12 +101,12 @@ module Stamps
           6.times do
             text_fields.each do |element|
               text_field = element if element.present?
-              sleep(1)
+              sleep(0.35)
             end
             break unless text_field.nil?
           end
           text_field.should_not be nil
-          text_field.present?.should be true
+          expect(text_field.present?).to be true
           StampsTextbox.new(text_field)
         end
 
@@ -122,10 +122,10 @@ module Stamps
               dd = int_dd
               break
             end
-            sleep(1)
+            sleep(0.35)
           end
           dd.should_not be nil
-          dd.present?.should be true
+          expect(dd.present?).to be true
           StampsElement.new(dd)
         end
 
@@ -140,11 +140,11 @@ module Stamps
           logger.info "Select Country #{country}"
           begin
             dd.safe_click
-            sleep(1)
+            sleep(0.35)
             dd.safe_click
             dd.safe_click
             lis = browser.lis(text: country)
-            lis.size.should be_between(1, 2).inclusive
+            expect(lis.size).to be_between(1, 2).inclusive
 
             case lis.size
               when 1
@@ -156,7 +156,7 @@ module Stamps
                   selection = StampsElement.new(lis[1])
                 end
               else
-                lis.size.should be_between(1, 2).inclusive
+                expect(lis.size).to be_between(1, 2).inclusive
             end
 
             10.times do
@@ -170,7 +170,7 @@ module Stamps
               break if text_field.text.include?(country)
             end
             logger.info "#{country} selected."
-            text_field.text.should include(country)
+            expect(text_field.text).to include(country)
           end unless text_field.text.include?(country)
         end
       end
@@ -255,7 +255,7 @@ module Stamps
               text_field.set address
               return auto_suggest_box if auto_suggest_box.present?
               text_field.safe_click
-              sleep(1)
+              sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.safe_double_click
               return auto_suggest_box if auto_suggest_box.present?
@@ -340,14 +340,14 @@ module Stamps
         def recipient_name
           address = full_address
           address_arr = address.split("\n")
-          address_arr.size.should be > 2
+          expect(address_arr.size).to be > 2
           address_arr[0].strip
         end
 
         def company_name
           address = full_address
           address_arr = address.split("\n")
-          address_arr.size.should be_between(4, 5).inclusive
+          expect(address_arr.size).to be_between(4, 5).inclusive
           address_arr[1].strip
         end
 
@@ -361,7 +361,7 @@ module Stamps
             addy = address_arr[2]
             addy.strip
           else
-            address_arr.size.should be > 2
+            expect(address_arr.size).to be > 2
           end
         end
 
@@ -375,10 +375,10 @@ module Stamps
           elsif address_arr.size == 5
             last_line = address_arr[4].strip
           else
-            address_arr.size.should be > 2
+            expect(address_arr.size).to be > 2
           end
           last_line_arr = last_line.split(",")
-          last_line_arr.size.should equal 2
+          expect(last_line_arr.size).to equal 2
           last_line_arr[0]
         end
 
@@ -392,10 +392,10 @@ module Stamps
           elsif address_arr.size == 5
             last_line = address_arr[4].strip
           else
-            address_arr.size.should be > 2
+            expect(address_arr.size).to be > 2
           end
           last_line_arr = last_line.split(",")
-          last_line_arr.size.should equal 2
+          expect(last_line_arr.size).to equal 2
           city_zip = last_line_arr[1].strip
           city_zip.split(" ").first
         end
@@ -410,16 +410,16 @@ module Stamps
           elsif address_arr.size == 5
             last_line = address_arr[4].strip
           else
-            address_arr.size.should be > 2
+            expect(address_arr.size).to be > 2
           end
           last_line_arr = last_line.split(",")
-          last_line_arr.size.should equal 2
+          expect(last_line_arr.size).to equal 2
           last_line_arr.last.strip.split(" ").last
         end
 
         def zip_code
           code = zip_plus_4.split("-")
-          code.size.should equal 2
+          expect(code.size).to equal 2
           code.first
         end
       end
@@ -485,10 +485,10 @@ module Stamps
             rescue Exception => e
               logger.error e.message
               logger.error e.backtrace.join("\n")
-              "Unable to Ship-To address to #{address}. Error: #{e.message}".should eql "Set Ship-To Address Failed"
+              expect("Unable to Ship-To address to #{address}. Error: #{e.message}").to eql "Set Ship-To Address Failed"
             end
           end
-          text_area.text.should include address.split(" ").last
+          expect(text_area.text).to include address.split(" ").last
         end
 
         def set_ambiguous address
@@ -498,7 +498,7 @@ module Stamps
             address_not_found.wait_until_present 4
             return address_not_found if address_not_found.present?
           end
-          "Exact Address Not Found module did not appear.".should eql ""
+          expect("Exact Address Not Found module did not appear.").to eql ""
         end
       end
 
@@ -516,7 +516,7 @@ module Stamps
               text_area.set address
               return auto_suggest_box if auto_suggest_box.present?
               text_area.safe_click
-              sleep(1)
+              sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.safe_double_click
               return auto_suggest_box if auto_suggest_box.present?
@@ -663,7 +663,7 @@ module Stamps
           10.times{
             begin
               element_helper.safe_click save_button
-              sleep(1)
+              sleep(0.35)
               break unless save_button.present?
             rescue
               #ignore
@@ -760,22 +760,22 @@ module Stamps
         end
 
         def name row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 1
         end
 
         def company row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 2
         end
 
         def city row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 3
         end
 
         def state row
-          sleep(1)
+          sleep(0.35)
           grid_cell_text row, 4
         end
 
@@ -813,11 +813,11 @@ module Stamps
               if address.is_a? Hash
                 delete_row(locate_ship_from(address['name'], address['company'], address['city']))
               else
-                "Address format is not yet supported for this delete call.".should eql ""
+                expect("Address format is not yet supported for this delete call.").to eql ""
               end
 
             else
-              "Parameter Exception: Paramter not supported.".should eql ""
+              expect("Parameter Exception: Paramter not supported.").to eql ""
           end
         end
 
@@ -845,7 +845,7 @@ module Stamps
               #ignore
             end
           end
-          "Unable to open Add Shipping Address modal.".should eql "Add Shipping Address"
+          expect("Unable to open Add Shipping Address modal.").to eql "Add Shipping Address"
         end
 
         def address_located? * args #name, company, city
@@ -857,14 +857,14 @@ module Stamps
                 company = address_hash['company']
                 city = address_hash['city']
               else
-                "Wrong number of arguments for locate_address".should eql "" unless args.length == 3
+                expect("Wrong number of arguments for locate_address").to eql "" unless args.length == 3
               end
             when 3
               name = args[0]
               company = args[1]
               city = args[2]
             else
-              "Wrong number of arguments for locate_address".should eql "" unless args.length == 3
+              expect("Wrong number of arguments for locate_address").to eql "" unless args.length == 3
           end
           locate_ship_from(name, company, city) > 0
         end
@@ -878,7 +878,7 @@ module Stamps
               return shipping_address if shipping_address.present?
             end
           end
-          "Row: #{row_num}".should eql "Unable to Select name: #{name}, company: #{company}, city: #{city}"
+          expect("Row: #{row_num}").to eql "Unable to Select name: #{name}, company: #{company}, city: #{city}"
         end
 
         def select_row(row_num)
@@ -923,7 +923,7 @@ module Stamps
         def close_window
           begin
             10.times{
-              sleep(1)
+              sleep(0.35)
               break unless close_button.present?
               element_helper.safe_click close_button
             }
@@ -961,7 +961,7 @@ module Stamps
           logger.info "Select service #{selection}"
 
           sel_arr = selection.split(/\s+/)
-          selection_substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
+          substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
 
           selected_service = ""
           @details_services = data_for(:orders_services, {})
@@ -975,7 +975,7 @@ module Stamps
               selection_label.safe_click
               blur_out
               logger.info "Selected service #{text_box.text} - #{(text_box.text.include? selection)?"success": "service not selected"}"
-              break if text_box.text.include? selection_substr
+              break if text_box.text.include?(substr)
             rescue
               #ignore
             end
@@ -983,11 +983,11 @@ module Stamps
           logger.info "#{text_box.text} service selected."
 
           # Test if selected service includes abbreviated selection.
-          text_box.text.should include selection_substr
+          expect(text_box.text).to include substr
           text_box.text
         end
 
-        def inline_cost service_name
+        def inline_cost(service_name)
           cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
           10.times do
             begin
@@ -1017,15 +1017,15 @@ module Stamps
           ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
-        def tooltip selection
+        def tooltip(selection)
           button = drop_down
-          selection_label = StampsElement.new browser.tr(css: "tr[data-qtip*='#{selection}']")
+          selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
           10.times {
             begin
               button.safe_click unless selection_label.present?
-              sleep(1)
+              sleep(0.35)
               if selection_label.present?
-                tooltip = selection_label.attribute_value "data-qtip"
+                tooltip = selection_label.attribute_value("data-qtip")
                 logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
                 return tooltip if tooltip.include? "<strong>"
               end
@@ -1036,7 +1036,7 @@ module Stamps
           blur_out
         end
 
-        def disabled? service
+        def disabled?(service)
 
           @details_services = data_for(:orders_services, {})
 
@@ -1046,14 +1046,14 @@ module Stamps
 
           10.times do |index|
             drop_down.safe_click unless selection_label.present?
-            sleep(1)
+            sleep(0.35)
             if selection_field.present?
               disabled_field = StampsElement.new(selection_field.parent.parent.parent)
               begin
                 if selection_label.present?
                   if disabled_field.present?
                     result = disabled_field.attribute_value("class").include? "disabled"
-                    sleep(1)
+                    sleep(0.35)
                     result = disabled_field.attribute_value("class").include? "disabled"
                     result = disabled_field.attribute_value("class").include? "disabled"
                     drop_down.safe_click
@@ -1064,7 +1064,7 @@ module Stamps
                 #ignore
               end
             else
-              sleep(1)
+              sleep(0.35)
               return true if index == 5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
             end
           end
@@ -1221,12 +1221,12 @@ module Stamps
           elsif selection.downcase.include? "none"
             browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
           else
-            "#{selection} is not a valid selection".should eql "Valid selections are USPS Tracking and Signature Required"
+            expect("#{selection} is not a valid selection").to eql "Valid selections are USPS Tracking and Signature Required"
           end
         end
 
         def select(selection)
-          drop_down.present?.should be true
+          expect(drop_down.present?).to be true
           20.times do
             begin
               drop_down.safe_click
@@ -1237,15 +1237,15 @@ module Stamps
             rescue Exception => e
               logger.error e.message
               logger.error e.backtrace.join("\n")
-              "Unable to select Tracking #{selection}. Error: #{e.message}".should eql "Select Tracking #{selection}"
+              expect("Unable to select Tracking #{selection}. Error: #{e.message}").to eql "Select Tracking #{selection}"
             end
           end
-          text_box.text.should include selection
+          expect(text_box.text).to include selection
         end
 
         def inline_cost(selection)
           tds = tracking_selection(selection)
-          tds.size.should equal 2
+          expect(tds.size).to equal 2
           selection_label = StampsElement.new tds.last
           5.times do
             begin
@@ -1259,7 +1259,7 @@ module Stamps
             rescue
               #ignore
             end
-            "Unable to fetch inline cost for #{selection}".should eql "Details - Tracking inline cost"
+            expect("Unable to fetch inline cost for #{selection}").to eql "Details - Tracking inline cost"
           end
         end
 
@@ -1435,7 +1435,7 @@ module Stamps
           drop_down.element.hover
           15.times do
             drop_down.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text
@@ -1462,7 +1462,7 @@ module Stamps
               #ignroe
             end
           }
-          "Unable to obtain Order ID from Single Order Details Form".should eql ""
+          expect("Unable to obtain Order ID from Single Order Details Form").to eql ""
         end
       end
 

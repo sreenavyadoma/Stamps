@@ -16,7 +16,7 @@ Feature:  BVT International Shipping
     Then on Order Details form, select service FCMI Large Envelope
 
     Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 400, Origin Japan, Tariff 100
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 400, Made In Japan, Tariff 100
     Then on Customs form, set Package Contents to Merchandise
     Then on Customs form, set Non-Delivery Options to Return to sender
     Then on Customs form, set Internal Transaction Number to Not required

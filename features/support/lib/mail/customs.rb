@@ -94,7 +94,7 @@ module Stamps
           element_helper.safe_click button
           return add_item_modal if add_item_modal.present?
         end
-        "Unable to open Add Item Modal, check your code.".should eql "" unless customs_modal.present?
+        expect("Unable to open Add Item Modal, check your code.").to eql "" unless customs_modal.present?
       end
 
       def edit_item
@@ -104,7 +104,7 @@ module Stamps
           element_helper.safe_click button
           return edit_item_modal if edit_item_modal.present?
         end
-        "Unable to open Edit Item Modal, check your code.".should eql "" unless customs_modal.present?
+        expect("Unable to open Edit Item Modal, check your code.").to eql "" unless customs_modal.present?
       end
 
       def delete
@@ -116,7 +116,7 @@ module Stamps
         rows = browser.trs css:  "tr[class*=x-grid-data-row]"
         for i in 0..1000
           break if rows[i].present? == false
-          sleep(1)
+          sleep(0.35)
           element_helper.safe_click rows[i]
           delete
         end
@@ -318,7 +318,7 @@ module Stamps
             end
           }
           logger.info "Origin Country selected: #{selection}"
-          text_box.text.should include selection
+          expect(text_box.text).to include selection
           selection_label
         end
       end
@@ -458,7 +458,7 @@ module Stamps
           edit_form_button.safe_click
           break if @customs_form.present?
         }
-        "Customs Information Modal is not visible.".should eql "" unless @customs_form.present?
+        expect("Customs Information Modal is not visible.").to eql "" unless @customs_form.present?
         @customs_form
       end
 
@@ -507,7 +507,7 @@ module Stamps
             end
             break if value == current_value
           end
-          sleep(1)
+          sleep(0.35)
           logger.info "Qty set to #{text_field.text}"
         end
 
@@ -580,7 +580,7 @@ module Stamps
             end
             break if value == current_value
           end
-          sleep(1)
+          sleep(0.35)
           logger.info "Pounds set to #{text_field.text}"
         end
 
@@ -623,7 +623,7 @@ module Stamps
             end
             break if value == current_value
           end
-          sleep(1)
+          sleep(0.35)
           logger.info "Ounces set to #{text_field.text}"
         end
 

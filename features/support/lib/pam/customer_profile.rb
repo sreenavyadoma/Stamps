@@ -27,7 +27,7 @@ module Stamps
         page = AppCapOverrides.new(param)
         5.times do
           link.safe_click
-          sleep(1)
+          sleep(0.35)
           return page if page.present?
         end
       end

@@ -168,7 +168,7 @@ Then /^Mail Roll: Expect Domestic Address field displays (.*)$/ do |value|
   actual = stamps.mail.ship_to.text_area.text
   actual_stripped = actual.gsub(/ \n/,", ")
   actual_stripped_final = actual_stripped.gsub(/\n/,", ")
-  actual_stripped_final.should eql value
+  expect(actual_stripped_final).to eql value
   logger.step 'Address Cleansed -- Expected Result Confirmed'
 end
 

@@ -54,7 +54,7 @@ module Stamps
 
           20.times do |counter|
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -63,11 +63,11 @@ module Stamps
               error_str = server_error.message
               logger.info error_str
               server_error.ok
-              "Server Error: \n#{error_str}".should eql "" unless counter < max_server_error_retry_count
+              expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
             return settings if settings.present?
           end
-          "Yahoo Store Connect failed.  Settings Modal did not open.  ".should eql ""
+          expect("Yahoo Store Connect failed.  Settings Modal did not open.  ").to eql ""
         end
 
         def reconnect
@@ -88,11 +88,11 @@ module Stamps
               error_str = server_error.message
               logger.info error_str
               server_error.ok
-              "Server Error: \n#{error_str}".should eql "" unless counter < max_server_error_retry_count
+              expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
             return manage_stores if manage_stores.present?
           end
-          "Yahoo Store Connect failed. Settings Modal did not open.".should eql ""
+          expect("Yahoo Store Connect failed. Settings Modal did not open.").to eql ""
         end
 
         def reconnect_old
@@ -111,31 +111,13 @@ module Stamps
               logger.info importing_order.message
               importing_order.ok
             end
-            sleep(1)
+            sleep(0.35)
             return manage_stores if manage_stores.present?
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
             end
-            sleep(1)
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            if importing_order.present?
-              logger.info importing_order.message
-              importing_order.ok
-            end
-            return manage_stores if manage_stores.present?
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -153,7 +135,7 @@ module Stamps
               importing_order.ok
             end
             return manage_stores if manage_stores.present?
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -171,7 +153,25 @@ module Stamps
               importing_order.ok
             end
             return manage_stores if manage_stores.present?
-            sleep(1)
+            sleep(0.35)
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            if importing_order.present?
+              logger.info importing_order.message
+              importing_order.ok
+            end
+            return manage_stores if manage_stores.present?
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok

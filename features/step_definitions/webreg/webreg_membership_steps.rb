@@ -311,25 +311,25 @@ end
 
 Then /^(?:O|o)n WebReg Membership page, set First Name to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set First Name to #{var}"
-  test_data[:first_name] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  test_data[:first_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.first_name.set test_data[:first_name]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Last Name to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Last Name to #{var}"
-  test_data[:last_name] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  test_data[:last_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.last_name.set test_data[:last_name]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Company to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Company to #{var}"
-  test_data[:company] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  test_data[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.company.set test_data[:company]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Address to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Address to #{var}"
-  test_data[:company] = (var.downcase.include? "random") ? ParameterHelper.random_string : var
+  test_data[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.address.set test_data[:company]
 end
 
@@ -347,26 +347,26 @@ end
 
 Then /^(?:O|o)n WebReg Membership page, set Phone to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Phone to #{var}"
-  test_data[:phone] = (var.downcase.include? "random") ? ParameterHelper.random_phone : var
+  test_data[:phone] = (var.downcase.include? 'random') ? ParameterHelper.random_phone : var
   phone = webreg.profile.membership.phone
   6.times do
     phone.send_keys test_data[:phone]
-    sleep(1)
+    sleep(0.35)
     ui_phone = phone.text
-    sleep(1)
+    sleep(0.35)
     break if ui_phone.include? '-' and (test_data[:phone][-4,4] == ui_phone[-4,4])
   end
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Extenion to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Extenion to #{var}"
-  test_data[:ext] = (var.downcase.include? "random") ? ParameterHelper.random_phone_extension : var
+  test_data[:ext] = (var.downcase.include? 'random') ? ParameterHelper.random_phone_extension : var
   webreg.profile.membership.ext.set test_data[:ext]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Cardholder name to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Cardholder name to #{var}"
-  test_data[:card_holder_name] = (var.downcase.include? "random") ? ParameterHelper.random_name : var
+  test_data[:card_holder_name] = (var.downcase.include? 'random') ? ParameterHelper.random_name : var
   webreg.profile.membership.card_holder_name.set test_data[:card_holder_name]
 end
 
@@ -464,7 +464,7 @@ end
 
 Then /^(?:O|o)n WebReg Membership page, click Back Button$/ do
   #logger.step "On WebReg Membership page, click Back Button"
-  "".should eql "Step Definition not yet implemented! - On WebReg Membership page, click Back Button"
+  expect("").to eql "Step Definition not yet implemented! - On WebReg Membership page, click Back Button"
 end
 
 Then /^(?:O|o)n WebReg Membership page, click Submit$/ do
@@ -503,86 +503,86 @@ end
 Then(/^(?:O|o)n WebReg Membership page, expect First Name Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect First Name Help Block is #{expectation}"
   help_text = webreg.profile.membership.first_name.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
   end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Last Name Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Last Name Help Block is #{expectation}"
   help_text = webreg.profile.membership.last_name.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
   end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Address Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Address Help Block is #{expectation}"
   help_text = webreg.profile.membership.address.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
   end
 
 Then(/^(?:O|o)n WebReg Membership page, expect City Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect City Help Block is #{expectation}"
   help_text = webreg.profile.membership.city.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect State Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect State Help Block is #{expectation}"
   help_text = webreg.profile.membership.state.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Phone Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Phone Help Block is #{expectation}"
   help_text = webreg.profile.membership.phone.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Cardhoder name Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Cardholder name Help Block is #{expectation}"
   help_text = webreg.profile.membership.card_holder_name.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Card number Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Card number Help Block is #{expectation}"
   help_text = webreg.profile.membership.card_number.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, Expires Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Expires Help Block is #{expectation}"
   help_text = webreg.profile.membership.expiration_month.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Billing Address Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Billing Address Help Block is #{expectation}"
   help_text = webreg.profile.membership.billing_address.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Billing City Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Billing City Help Block is #{expectation}"
   help_text = webreg.profile.membership.billing_city.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Billing State Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Billing State Help Block is #{expectation}"
   help_text = webreg.profile.membership.billing_state.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 
 Then(/^(?:O|o)n WebReg Membership page, expect Billing Zip Help Block is (.*)$/) do |expectation|
  #logger.step "On WebReg Membership page, Billing Zip Help Block is #{expectation}"
   help_text = webreg.profile.membership.billing_zip.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, expect Terms & Conditions Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Terms & Conditions Help Block is #{expectation}"
   help_text = webreg.profile.membership.terms_and_conditions.help_text
-  help_text.should eql expectation
+  expect(help_text).to eql expectation
 end
 
 Then(/^(?:O|o)n WebReg Membership page, Tab$/) do

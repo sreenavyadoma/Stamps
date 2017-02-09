@@ -12,7 +12,7 @@ Then /^Navigation Bar: Wait while balance less than (\d+)$/ do |expectation|
   for i in 0..30
       new_balance = stamps.navigation_bar.balance.amount.to_f
       logger.message "New Account Balance: $#{new_balance}"
-      sleep(1)
+      sleep(0.35)
       break if new_balance > expectation
       browser.refresh
   end

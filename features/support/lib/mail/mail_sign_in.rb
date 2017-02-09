@@ -41,7 +41,7 @@ module Stamps
       def more_info
         10.times do
           more_info_btn.safe_click
-          sleep(1)
+          sleep(0.35)
           return more_info_page if more_info_page.present?
         end
         raise "More Info page did not open."
@@ -50,7 +50,7 @@ module Stamps
       def continue
         10.times{
           continue_btn.safe_click
-          sleep(1)
+          sleep(0.35)
           break unless continue_btn.present?
         }
       end
@@ -149,31 +149,13 @@ module Stamps
         sign_in_button.safe_click
         open_sign_in_form
         sign_in_button.send_keys(:enter)
-        sleep(1)
+        sleep(0.35)
         open_sign_in_form
-        "#{invalid_username_password.text}. #{@username}\\#{@password}".should eql "Valid Username" if invalid_username_password.present?
+        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
         open_sign_in_form
-        "#{invalid_username_password.text}. #{@username}\\#{@password}".should eql "Valid Username" if invalid_username_password.present?
+        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
         open_sign_in_form
-        "#{invalid_username_password.text}. #{@username}\\#{@password}".should eql "Valid Username" if invalid_username_password.present?
-      end
-
-      def user_credentials *args
-        case args
-          when Hash
-            @username = args[0]['username']
-            @password = args[0]['password']
-          when Array
-            expect(args.length).to eql 2
-            @username = args[0]
-            @password = args[1]
-          when :default
-            logger.message "Using Default Sign-in Credentials."
-            @username = ENV["USR"]
-            @password = ENV["PW"]
-        end
-        logger.message "USERNAME: #{@username}, PASSWORD: #{@password}"
-        [@username, @password]
+        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
       end
 
       def mail_sign_in *args
@@ -210,7 +192,7 @@ module Stamps
         signed_in_user.safely_wait_until_present 6
         whats_new_modal.close if whats_new_modal.present?
         logger.info "#{@username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-        "User #{@username} was unable to sign-in. Is #{param.test_env} up? *signed in user drop-down did not appear on the screen*".should eql "Sign-in Successful for #{@username} in #{param.test_env}" unless signed_in_user.present?
+        expect("User #{@username} was unable to sign-in. Is #{param.test_env} up? *signed in user drop-down did not appear on the screen*").to eql "Sign-in Successful for #{@username} in #{param.test_env}" unless signed_in_user.present?
         @username
       end
 
@@ -231,8 +213,8 @@ module Stamps
 
           return whats_new_modal if whats_new_modal.present?
         end
-        "".should eql "Unable to sign in to Mail with @credentials #{@username}/#{@password}" if sign_in_link.present?
-        "".should eql "What's New modal did not appear upon login"
+        expect("").to eql "Unable to sign in to Mail with @credentials #{@username}/#{@password}" if sign_in_link.present?
+        expect("").to eql "What's New modal did not appear upon login"
       end
 
       def sign_in_username_check *args
@@ -331,10 +313,10 @@ module Stamps
           5.times do
             sign_in_link.safe_click
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return forgot_username_modal if forgot_username_modal.present?
           end
-          "Unable to open Forgot Username Modal, check your code.".should eql "" unless forgot_password_modal.present?
+          expect("Unable to open Forgot Username Modal, check your code.").to eql "" unless forgot_password_modal.present?
         end
 
         def forgot_password
@@ -344,10 +326,10 @@ module Stamps
           5.times do
             sign_in_link.safe_click
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return forgot_password_modal if forgot_password_modal.present?
           end
-          "Unable to open Forgot Password Modal, check your code.".should eql "" unless forgot_password_modal.present?
+          expect("Unable to open Forgot Password Modal, check your code.").to eql "" unless forgot_password_modal.present?
         end
 
       end
@@ -371,7 +353,7 @@ module Stamps
 
       def wait_until_url_loads
         20.times do
-          sleep(1)
+          sleep(0.35)
           break if browser.url.include? "stamps.com/Webpostage"
         end
       end

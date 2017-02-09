@@ -56,7 +56,7 @@ module Stamps
           if windows_print.present?
             break
           else
-            sleep(1)
+            sleep(0.35)
           end
         end
         sleep(2)
@@ -111,7 +111,7 @@ module Stamps
 
 
         return window if window.present?
-        "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.".should eql ""
+        expect("Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.").to eql ""
       end
 
       def open_sample_window window
@@ -156,7 +156,7 @@ module Stamps
 
 
         return window if window.present?
-        "Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.".should eql ""
+        expect("Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.").to eql ""
       end
     end
   end

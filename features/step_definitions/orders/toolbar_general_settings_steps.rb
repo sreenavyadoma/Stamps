@@ -90,7 +90,7 @@ Then /^(?:I|i)n Settings modal, Logoff set(.*)$/ do |value|
     when "2 hours"
       @general_settings.log_off.two_hours
     else
-      "Invalid Logoff Selection -  In Settings modal, Logoff #{value}".should eql "Settings"
+      expect("Invalid Logoff Selection -  In Settings modal, Logoff #{value}").to eql "Settings"
   end
 end
 
@@ -242,7 +242,7 @@ Then /^(?:I|i)n Settings modal, Postdate Set (.*)$/ do |value|
     when "11:00 p.m."
       @general_settings.post_date.eleven_pm
     else
-      "Invalid Postdate Selection -  In Settings modal, Postdate #{value}".should eql "Settings"
+      expect("Invalid Postdate Selection -  In Settings modal, Postdate #{value}").to eql "Settings"
   end
 end
 # Mail Balance
@@ -295,56 +295,56 @@ Then /^(?:I|i)n Settings modal, Mail Balance Set (.*)$/ do |value|
     when "500"
       @general_settings.postage_balance.five_hundred
     else
-      "Invalid Mail Balance Selection -  In Settings modal, Mail Balance #{value}".should eql "Settings"
+      expect("Invalid Mail Balance Selection -  In Settings modal, Mail Balance #{value}").to eql "Settings"
   end
 end
 
 # Expectations
 #  Services
 Then /^(?:I|i)n Settings modal, Expect Services Checked$/ do
-  @general_settings.services.checked?.should be true
+  expect(@general_settings.services.checked?).to be true
 end
 
 Then /^(?:I|i)n Settings modal, Expect Services Unchecked$/ do
-  @general_settings.services.checked?.should be false
+  expect(@general_settings.services.checked?).to be false
 end
 
 #  Print Confirm
 Then /^(?:I|i)n Settings modal, Expect Print Confirm Checked$/ do
-  @general_settings.print_confirm.checked?.should be true
+  expect(@general_settings.print_confirm.checked?).to be true
 end
 
 Then /^(?:I|i)n Settings modal, Expect Print Confirm Unchecked$/ do
-  @general_settings.print_confirm.checked?.should be false
+  expect(@general_settings.print_confirm.checked?).to be false
 end
 
 #  Print Confirm
 Then /^(?:I|i)n Settings modal, Expect USPS Terms Checked$/ do
-  @general_settings.usps_terms.checked?.should be true
+  expect(@general_settings.usps_terms.checked?).to be true
 end
 
 Then /^(?:I|i)n Settings modal, Expect USPS Terms Unchecked$/ do
-  @general_settings.usps_terms.checked?.should be false
+  expect(@general_settings.usps_terms.checked?).to be false
 end
 
 #  Contacts
 Then /^(?:I|i)n Settings modal, Expect Contacts Checked$/ do
-  @general_settings.contacts.checked?.should be true
+  expect(@general_settings.contacts.checked?).to be true
 end
 
 Then /^(?:I|i)n Settings modal, Expect Contacts Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  @general_settings.contacts.checked?.should be false
+  expect(@general_settings.contacts.checked?).to be false
 end
 
 #  Shipments
 Then /^(?:I|i)n Settings modal, Expect Shipments Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  @general_settings.shipments.checked?.should be true
+  expect(@general_settings.shipments.checked?).to be true
 end
 
 Then /^(?:I|i)n Settings modal, Expect Shipments Unchecked$/ do
-  @general_settings.shipments.checked?.should be false
+  expect(@general_settings.shipments.checked?).to be false
 end
 
 # Logoff
@@ -374,7 +374,7 @@ end
 
 Then /^(?:I|i)n Settings modal, Expect Logoff is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
-  @general_settings.log_off.text_box.text.should eql expectation
+  expect(@general_settings.log_off.text_box.text).to eql expectation
 end
 
 # Postadate
@@ -476,7 +476,7 @@ end
 
 Then /^(?:I|i)n Settings modal, Expect Postdate is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
-  @general_settings.post_date.text_box.text.should eql expectation
+  expect(@general_settings.post_date.text_box.text).to eql expectation
 end
 
 # Mail Balance
@@ -509,7 +509,7 @@ Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 500$/ do
 end
 
 Then /^(?:I|i)n Settings modal, Expect Mail Balance is (.*)$/ do |expectation|
-  @general_settings.postage_balance.text_box.text.should eql expectation
+  expect(@general_settings.postage_balance.text_box.text).to eql expectation
 end
 
 # Reset Fields
@@ -527,11 +527,11 @@ Then /^Reset Fields:  Uncheck Service$/ do
 end
 
 Then /^Reset Fields:  Expect service Checked$/ do
-  @reset_fields.service.checked?.should be true
+  expect(@reset_fields.service.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect service Unchecked$/ do
-  @reset_fields.service.checked?.should be false
+  expect(@reset_fields.service.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Weight$/ do
@@ -545,12 +545,12 @@ end
 
 Then /^Reset Fields:  Expect Weight Checked$/ do
   #logger.step "Reset Fields:  Expect Weight Checked"
-  @reset_fields.weight.checkbox.checked?.should be true
+  expect(@reset_fields.weight.checkbox.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Weight Unchecked$/ do
   #logger.step "Reset Fields:  Expect Weight Unchecked"
-  @reset_fields.weight.checkbox.checked?.should be false
+  expect(@reset_fields.weight.checkbox.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Dimensions$/ do
@@ -565,12 +565,12 @@ end
 
 Then /^Reset Fields:  Expect Dimensions Checked$/ do
   #logger.step "Reset Fields:  Expect Dimensions Checked"
-  @reset_fields.dimensions.checkbox.checked?.should be true
+  expect(@reset_fields.dimensions.checkbox.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Dimensions Unchecked$/ do
   #logger.step "Reset Fields:  Expect Dimensions Unchecked"
-  @reset_fields.dimensions.checkbox.checked?.should be false
+  expect(@reset_fields.dimensions.checkbox.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Ship to Address$/ do
@@ -586,12 +586,12 @@ end
 
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
   #logger.step "Reset Fields:  Expect Ship to Address Checked"
-  @reset_fields.ship_to_address.checked?.should be true
+  expect(@reset_fields.ship_to_address.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
   #logger.step "Reset Fields:  Expect Ship to Address Unchecked"
-  @reset_fields.ship_to_address.checked?.should be false
+  expect(@reset_fields.ship_to_address.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Tracking$/ do
@@ -606,12 +606,12 @@ end
 
 Then /^Reset Fields:  Expect Tracking Checked$/ do
   #logger.step "Reset Fields:  Expect Tracking Checked"
-  @reset_fields.tracking.checked?.should be true
+  expect(@reset_fields.tracking.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Tracking Unchecked$/ do
   #logger.step "Reset Fields:  Expect Tracking Unchecked"
-  @reset_fields.tracking.checked?.should be false
+  expect(@reset_fields.tracking.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Extra Services$/ do
@@ -626,13 +626,13 @@ end
 
 Then /^Reset Fields:  Expect Extra Services Checked$/ do
   #logger.step "Reset Fields:  Expect Extra Services Checked"
-  @reset_fields.extra_services.checked?.should be true
+  expect(@reset_fields.extra_services.checked?).to be true
 
 end
 
 Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
   #logger.step "Reset Fields:  Expect Extra Services Unchecked"
-  @reset_fields.extra_services.checked?.should be false
+  expect(@reset_fields.extra_services.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Insurance$/ do
@@ -647,12 +647,12 @@ end
 
 Then /^Reset Fields:  Expect Insurance Checked$/ do
   #logger.step "Reset Fields:  Expect Insurance Checked"
-  @reset_fields.insurance.checked?.should be true
+  expect(@reset_fields.insurance.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Insurance Unchecked$/ do
   #logger.step "Reset Fields:  Expect Insurance Unchecked"
-  @reset_fields.insurance.checked?.should be false
+  expect(@reset_fields.insurance.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Reference Numbers$/ do
@@ -667,13 +667,13 @@ end
 
 Then /^Reset Fields:  Expect Reference Numbers Checked$/ do
   #logger.step "Reset Fields:  Expect Reference Numbers Checked"
-  @reset_fields.reference_numbers.checked?.should be true
+  expect(@reset_fields.reference_numbers.checked?).to be true
 
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Unchecked$/ do
   #logger.step "Reset Fields:  Expect Reference Numbers Unchecked"
-  @reset_fields.reference_numbers.checked?.should be false
+  expect(@reset_fields.reference_numbers.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Cost Code$/ do
@@ -688,12 +688,12 @@ end
 
 Then /^Reset Fields:  Expect Cost Code Checked$/ do
   #logger.step "Reset Fields:  Expect Cost Code Checked"
-  @reset_fields.cost_code.checked?.should be true
+  expect(@reset_fields.cost_code.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Cost Code Unchecked$/ do
   #logger.step "Reset Fields:  Expect Cost Code Unchecked"
-  @reset_fields.cost_code.checked?.should be false
+  expect(@reset_fields.cost_code.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Customs$/ do
@@ -708,12 +708,12 @@ end
 
 Then /^Reset Fields:  Expect Customs Checked$/ do
   #logger.step "Reset Fields:  Expect Customs Checked"
-  @reset_fields.customs.checked?.should be true
+  expect(@reset_fields.customs.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Customs Unchecked$/ do
   #logger.step "Reset Fields:  Expect Customs Unchecked"
-  @reset_fields.customs.checked?.should be false
+  expect(@reset_fields.customs.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Quantity$/ do
@@ -728,12 +728,12 @@ end
 
 Then /^Reset Fields:  Expect Quantity Checked$/ do
   #logger.step "Reset Fields:  Expect Quantity Checked"
-  @reset_fields.quantity.checked?.should be true
+  expect(@reset_fields.quantity.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Quantity Unchecked$/ do
   #logger.step "Reset Fields:  Expect Quantity Unchecked"
-  @reset_fields.quantity.checked?.should be false
+  expect(@reset_fields.quantity.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Stamps Amount$/ do
@@ -748,12 +748,12 @@ end
 
 Then /^Reset Fields:  Expect Stamps Amount Checked$/ do
   #logger.step "Reset Fields:  Expect Stamps Amount Checked"
-  @reset_fields.stamps_amount.checked?.should be true
+  expect(@reset_fields.stamps_amount.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Stamps Amount Unchecked$/ do
   #logger.step "Reset Fields:  Expect Stamps Amount Unchecked"
-  @reset_fields.stamps_amount.checked?.should be false
+  expect(@reset_fields.stamps_amount.checked?).to be false
 end
 
 Then /^Reset Fields:  Check Auto-Advance Label Position$/ do
@@ -768,12 +768,12 @@ end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Checked$/ do
   #logger.step "Reset Fields:  Expect Auto-Advance Label Position Checked"
-  @reset_fields.auto_advance_label_position.checked?.should be true
+  expect(@reset_fields.auto_advance_label_position.checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
   #logger.step "Reset Fields:  Expect Auto-Advance Label Position Unchecked"
-  @reset_fields.auto_advance_label_position.checked?.should be false
+  expect(@reset_fields.auto_advance_label_position.checked?).to be false
 end
 
 Then /^Reset Fields:  Set Weight to (\d+) lb (\d+) oz$/ do |lb, oz|
@@ -787,13 +787,13 @@ Then /^Reset Fields:  Expect Weight lb equals (\d+)$/ do |lb|
   logger.step  "Reset Fields:  Expect Weight lb equals #{lb}"
 
   step "Reset Fields:  Check Weight"
-  @reset_fields.weight.lb.text_box.text.to_i.should eql lb.to_i
+  expect(@reset_fields.weight.lb.text_box.text.to_i).to eql lb.to_i
 end
 
 Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
   logger.step  "Reset Fields:  Expect Weight oz equals #{oz}"
   step "Reset Fields:  Check Weight"
-  @reset_fields.weight.oz.text_box.text.to_i.should eql oz.to_i
+  expect(@reset_fields.weight.oz.text_box.text.to_i).to eql oz.to_i
 end
 
 Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$/ do |length, width, height|
@@ -807,19 +807,19 @@ end
 Then /^Reset Fields:  Expect Dimensions to length equals (\d+)$/ do |length|
   logger.step  "Reset Fields:  Expect Dimensions to length equals #{length}"
   step "Reset Fields:  Check Dimensions"
-  @reset_fields.dimensions.length.text_box.text.to_i.should eql length.to_i
+  expect(@reset_fields.dimensions.length.text_box.text.to_i).to eql length.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to width equals (\d+)$/ do |width|
   logger.step  "Reset Fields:  Expect Dimensions to width equals #{width}"
   step "Reset Fields:  Check Dimensions"
-  @reset_fields.dimensions.width.text_box.text.to_i.should eql width.to_i
+  expect(@reset_fields.dimensions.width.text_box.text.to_i).to eql width.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
   logger.step  "Reset Fields:  Expect Dimensions to height equals #{height}"
   step "Reset Fields:  Check Dimensions"
-  @reset_fields.dimensions.height.text_box.text.to_i.should eql height.to_i
+  expect(@reset_fields.dimensions.height.text_box.text.to_i).to eql height.to_i
 end
 
 Then /^Reset Fields:  Close$/ do

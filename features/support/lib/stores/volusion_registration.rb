@@ -106,7 +106,7 @@ module Stamps
           account_page = MyAccountPage.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return account_page if account_page.present?
           end
         end
@@ -189,10 +189,10 @@ module Stamps
           checkout = VolusionCheckOut.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return checkout if checkout.present?
           end
-          "Unable to proceed to checkout!".should eql ""
+          expect("Unable to proceed to checkout!").to eql ""
         end
       end
 
@@ -236,7 +236,7 @@ module Stamps
           product = VolusionProduct.new(param)
           10.times do
             link.safe_click
-            sleep(1)
+            sleep(0.35)
             return product if product.present?
           end
         end
@@ -248,7 +248,7 @@ module Stamps
           button = StampsElement.new browser.a(css: "a[href*=logout]")
           5.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return VolusionLoginPage.new(param) if logged_out_field.present?
           end
         end
@@ -277,7 +277,7 @@ module Stamps
           category_1 = VolusionCategoryOne.new(param)
           10.times do
             link.safe_click
-            sleep(1)
+            sleep(0.35)
             return category_1 if category_1.present?
           end
         end
@@ -325,7 +325,7 @@ module Stamps
           shipping_address = VolusionShippingAddress.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return shipping_address if shipping_address.present?
           end
         end
@@ -357,7 +357,7 @@ module Stamps
           webreg = VolusionRegistration.new(param)
           10.times do
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             return webreg if webreg.present?
           end
         end

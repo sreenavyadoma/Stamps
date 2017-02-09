@@ -15,11 +15,11 @@ Feature: Internal Transaction Number Required for total over $2500
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then on Order Details form, select service FCMI Large Envelope
     Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 3000, Origin United States, Tariff 10
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Origin United States, Tariff 10
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Not required
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 2501, Origin United States, Tariff 10
+    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
     Then on Customs form, set ITN Number to "random"
     Then on Customs form, check I agree to the USPS Privacy Act Statement

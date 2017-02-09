@@ -8,7 +8,7 @@
   Scenario:  ShipStation & Services
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
-    Then In Orders Grid, check row 1
+    Then in Orders Grid, check row 1
 
     Then on Order Details form, set Ship-To to address in Zone 1 through 4
 

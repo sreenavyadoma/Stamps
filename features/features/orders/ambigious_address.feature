@@ -14,11 +14,11 @@ Feature: Ambigious Address
     Then In Exact Address Not Found module, select row 1
     Then on Order Details form, set Ounces to 1
     Then on Order Details form, set Pounds to 1
-    Then In Orders Grid, expect Recipient is Hillary Clinton
-    Then In Orders Grid, expect Company is The White House
-    Then In Orders Grid, expect City is San Francisco
-    Then In Orders Grid, expect State is CA
-    Then In Orders Grid, expect Zip is 94102
+    Then in Orders Grid, expect Recipient is Hillary Clinton
+    Then in Orders Grid, expect Company is The White House
+    Then in Orders Grid, expect City is San Francisco
+    Then in Orders Grid, expect State is CA
+    Then in Orders Grid, expect Zip is 94102
     Then on Order Details form, select service PM Package
     Then Sign out
 

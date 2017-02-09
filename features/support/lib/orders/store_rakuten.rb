@@ -73,14 +73,14 @@ module Stamps
               error_str = server_error.message
               logger.info error_str
               server_error.ok
-              "Server Error: \n#{error_str}".should eql "" unless counter < max_server_error_retry_count
+              expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
             if connecting_button.element.visible?
               logger.info connecting_button.text
             end
             return settings if settings.present?
           end
-          "Rakuten Store Connect failed.  Settings Modal did not open, unable to connect.".should eql ""
+          expect("Rakuten Store Connect failed.  Settings Modal did not open, unable to connect.").to eql ""
         end
       end
 

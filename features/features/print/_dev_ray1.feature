@@ -28,7 +28,7 @@ Feature: FPO Shipping BVT
     Then Postage on Customs form, set ITN Number to "12345"
     Then Postage on Customs form, set More Info to "WP BVT FPO Shipping"
     Then Postage on Customs form, Delete All Items
-    Then Postage on Customs form, add Associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Origin United States, Tariff 25
+    Then Postage on Customs form, add Associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Made In United States, Tariff 25
     Then Postage on Customs form, check I agree to the USPS Privacy Act Statement
     Then Postage on Customs form, Save
 

@@ -91,7 +91,7 @@ module Stamps
             logger.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
 =begin
             begin
-              "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}".should eql ""
+              "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}").to eql ""
             end unless File.exist? chrome_data_dir
 
             driver = Watir::Browser.new :chrome, :switches => ["--disable-mail-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
@@ -119,7 +119,7 @@ module Stamps
         rescue Exception => e
           err = e.backtrace.join("\n")
           logger.error e.backtrace.join("\n")
-          err.should eql ""
+          expect(err).to eql ""
         end
       end
 
@@ -147,7 +147,7 @@ module Stamps
       end
 
       def debug
-        return true if ENV["DEBUG"].nil?
+        return false if ENV["DEBUG"].nil?
         ENV["DEBUG"].downcase == "true"
       end
 
@@ -164,7 +164,7 @@ module Stamps
             when /solaris|bsd/
               return :unix
             else
-              "OS #{host_os.inspect} is not defined".should eql ""
+              expect("OS #{host_os.inspect} is not defined").to eql ""
           end
         end
       end

@@ -8,10 +8,10 @@ module Stamps
         customs_modal = CustomsForm.new(param)
         15.times do
           button.safe_click
-          sleep(1)
+          sleep(0.35)
           return customs_modal if customs_modal.present?
         end
-        "Unable to open Customs Modal, check your test".should eql 'Edit Customs Modal failed.'
+        expect("Unable to open Customs Modal, check your test").to eql 'Edit Customs Modal failed.'
       end
 
       def restrictions
@@ -45,7 +45,7 @@ module Stamps
           extra_services.wait_until_present 2
           return service_modal if service_modal.present?
         end
-        'Extra Services Modal is present.'.should eql 'Extra Services modal failed to open.' unless service_modal.present?
+        expect('Extra Services Modal is present.').to eql 'Extra Services modal failed to open.' unless service_modal.present?
       end
     end
   end

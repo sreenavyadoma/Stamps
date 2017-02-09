@@ -12,7 +12,7 @@ Then /^PayPal: Expect PayPal store modal is present$/ do
     expectation = "PayPal store modal is not present" unless @store.present?
   end
   #logger.step "Test #{(expectation=="PayPal store modal is present")?"Passed":"Failed"}"
-  expectation.should eql "PayPal store modal is present"
+  expect(expectation).to eql "PayPal store modal is present"
 end
 
 Then /^PayPal: Test Connection$/ do
@@ -29,7 +29,7 @@ Then /^PayPal Email Verification Required: Expect modal is present$/ do
     expectation = "Email Verification Required modal is not present" unless @verification_required.present?
   end
   #logger.step "Test #{(expectation=="Email Verification Required modal is not present")?"Passed":"Failed"}"
-  expectation.should eql "Email Verification Required modal is present"
+  expect(expectation).to eql "Email Verification Required modal is present"
 end
 
 Then /^PayPal Email Verification Required: Close modal$/ do
@@ -51,7 +51,7 @@ Then /^PayPal: Expect Email Verification Sent modal is present$/ do
     expectation = "Email Verification Sent modal is not present" unless @verification_sent.present?
   end
   #logger.step "Test #{(expectation=="Email Verification Sent modal is present")?"Passed":"Failed"}"
-  expectation.should eql "Email Verification Sent modal is present"
+  expect(expectation).to eql "Email Verification Sent modal is present"
 end
 
 Then /^PayPal: Expect Verification Email is sent to (.*)$/ do |expectation|
@@ -59,7 +59,7 @@ Then /^PayPal: Expect Verification Email is sent to (.*)$/ do |expectation|
   actual = @verification_sent.email
   @verification_sent.close
   #logger.step "Test #{(actual==expectation)?"Passed":"Failed"}"
-  actual.should eql expectation
+  expect(actual).to eql expectation
 end
 
 Then /^PayPal: Close modal$/ do

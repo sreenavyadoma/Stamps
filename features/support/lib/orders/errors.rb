@@ -16,7 +16,7 @@ module Stamps
           button = browser.spans(text: "OK").last
           element_helper.safe_click button
           element_helper.safe_click button
-          sleep(1)
+          sleep(0.35)
           break unless present?
         end
       end

@@ -14,7 +14,7 @@ Feature:  Basic Search
     Then on Order Details form, select service PM Package
     Then on Order Details form, set Weight to 1 lb 1 oz
 
-    Then In Orders Grid, uncheck saved Order ID
+    Then in Orders Grid, uncheck saved Order ID
 
     Then Pause for 3 seconds
     Then Refresh the browser
@@ -25,7 +25,7 @@ Feature:  Basic Search
     Then Filter Panel: Search Results should be present
     Then Filter Panel: Search results count should be 1
 
-    Then In Orders Grid, check saved Order ID
+    Then in Orders Grid, check saved Order ID
     Then on Order Details form, expect Order ID equals Grid Oder ID in row 1
     Then on Order Details form, expect Order ID is the same as saved Order ID
 

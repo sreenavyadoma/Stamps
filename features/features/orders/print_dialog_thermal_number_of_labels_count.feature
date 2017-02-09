@@ -29,9 +29,9 @@ Feature:  Requires x-number of label sheets
     Then on Order Details form, select service PM Small Flat Rate Box
     Then on Order Details form, set Weight to 1 lb 1 oz
 
-    Then In Orders Grid, check row 1
-    Then In Orders Grid, check row 2
-    Then In Orders Grid, check row 3
+    Then in Orders Grid, check row 1
+    Then in Orders Grid, check row 2
+    Then in Orders Grid, check row 3
 
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Roll - 4 ⅛" x 6 ¼" Shipping Label"

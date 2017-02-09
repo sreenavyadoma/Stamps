@@ -32,7 +32,7 @@ module Stamps
 
             10.times do
               dd.safe_click unless selection_field.present?
-              sleep(1)
+              sleep(0.35)
               selection_field.safe_click
               selection_field.safe_click
               break if text_field.text.include? selection
@@ -66,7 +66,7 @@ module Stamps
 
             10.times do
               dd.safe_click unless selection_field.present?
-              sleep(1)
+              sleep(0.35)
               selection_field.safe_click
               selection_field.safe_click
               break if text_field.text.include? selection
@@ -140,14 +140,14 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{error_str}".should eql ""
+                expect("Server Error: \n#{error_str}").to eql ""
               end
             end
             break unless button.exist?
           end
 
           close if present? #close modal if it's present
-          server_error.message.should eql "" if server_error.present?
+          expect(server_error.message).to eql "" if server_error.present?
         end
 
         def connect_expecting_store_settings
@@ -163,7 +163,7 @@ module Stamps
                 error_str = server_error.message
                 logger.info error_str
                 server_error.ok
-                "Server Error: \n#{error_str}".should eql ""
+                expect("Server Error: \n#{error_str}").to eql ""
               end
               if importing_order.present?
                 logger.info importing_order.message
@@ -177,7 +177,7 @@ module Stamps
 
 
           self.close if self.present?
-          server_error.message.should eql "" if server_error.present?
+          expect(server_error.message).to eql "" if server_error.present?
           settings
         end
       end

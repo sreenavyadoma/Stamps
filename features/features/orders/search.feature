@@ -16,7 +16,7 @@ Feature:  Basic Search
     Then on Order Details form, select service PM Package
     Then on Order Details form, set Weight to 1 lb 1 oz
 
-    Then In Orders Grid, uncheck saved Order ID
+    Then in Orders Grid, uncheck saved Order ID
 
     Then Pause for 3 seconds
     Then Refresh the browser

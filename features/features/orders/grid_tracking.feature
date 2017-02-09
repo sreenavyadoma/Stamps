@@ -1,5 +1,5 @@
 
-Feature: In Orders Grid, Tracking & Order Status
+Feature: in Orders Grid, Tracking & Order Status
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -8,7 +8,7 @@ Feature: In Orders Grid, Tracking & Order Status
   Scenario: Tracking & Order Status
 
     Then in Orders Toolbar, click Add button
-    Then In Orders Grid, expect Order Status is Awaiting Shipment
+    Then in Orders Grid, expect Order Status is Awaiting Shipment
     Then on Order Details form, set Ship-From to default
     Then on Order Details form, set Ship-To to address in Zone 1 through 4
     Then on Order Details form, set Ounces to 5
@@ -19,12 +19,12 @@ Feature: In Orders Grid, Tracking & Order Status
     Then in Print modal, set Printer to "factory"
     Then in Print modal, click Print button
     Then In left Filter Panel, select Shipped
-    #Then In Orders Grid, Sort Order ID in Descending Order
-    Then In Orders Grid, expect Tracking Number is populated
-    Then In Orders Grid, expect Order Status is Shipped
+    #Then in Orders Grid, Sort Order ID in Descending Order
+    Then in Orders Grid, expect Tracking Number is populated
+    Then in Orders Grid, expect Order Status is Shipped
 
     Then in Orders Toolbar, click Add button
-    Then In Orders Grid, expect Order Status is Awaiting Shipment
+    Then in Orders Grid, expect Order Status is Awaiting Shipment
     Then on Order Details form, set Ship-From to default
     Then on Order Details form, set Ship-To to address in Zone 1 through 4
     Then on Order Details form, set Ounces to 5
@@ -35,9 +35,9 @@ Feature: In Orders Grid, Tracking & Order Status
     Then in Print modal, set Printer to "factory"
     Then in Print modal, click Print button
     Then In left Filter Panel, select Shipped
-    #Then In Orders Grid, Sort Order ID in Descending Order
-    Then In Orders Grid, expect Tracking Number is populated
-    Then In Orders Grid, expect Order Status is Shipped
+    #Then in Orders Grid, Sort Order ID in Descending Order
+    Then in Orders Grid, expect Tracking Number is populated
+    Then in Orders Grid, expect Order Status is Shipped
 
     Then Sign out
 

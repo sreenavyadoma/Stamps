@@ -24,15 +24,15 @@ module Stamps
           address_array.each_with_index { |element, index|
             if index==address_array.size-1 #if this is the last item in the string, don't append a new line
               formatted_address = formatted_address + element.to_s.strip
-            else #(param_hash['name'].downcase.include? "random") ? ParameterHelper.random_name : param_hash['name']
-              formatted_address = formatted_address + ((element.to_s.strip.downcase.include? "random") ? ParameterHelper.random_name : element.to_s.strip) + "\n"
+            else #(param_hash['name'].downcase.include? 'random') ? ParameterHelper.random_name : param_hash['name']
+              formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? ParameterHelper.random_name : element.to_s.strip) + "\n"
             end
           }
         else
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "Unsupported address format.".should eql ""
+          expect("Unsupported address format.").to eql ""
         end
         logger.info "Formatted Shipping Address:  \n#{formatted_address}"
         formatted_address
@@ -51,13 +51,13 @@ module Stamps
           logger.info "Teardown: Begin tearing down test"
           TestHelper.teardown
           logger.info "Teardown: Done!"
-          "Unsupported address format.".should eql ""
+          expect("Unsupported address format.").to eql ""
         end
       end
 
       def address_hash_to_str address
-        name = (address['name'].downcase.include? "random") ? ParameterHelper.random_name : address['name']
-        company_name = (address['company'].downcase.include? "random") ? ParameterHelper.random_company_name : address['company']
+        name = (address['name'].downcase.include? 'random') ? ParameterHelper.random_name : address['name']
+        company_name = (address['company'].downcase.include? 'random') ? ParameterHelper.random_company_name : address['company']
         street_address = address["street_address"]
 
         if address['street_address_2'].nil?
@@ -71,11 +71,11 @@ module Stamps
         zip = address["zip"]
         begin
           phone_num = address['phone']
-          phone = (phone_num.downcase.include? "random") ? ParameterHelper.random_phone : address['phone']
+          phone = (phone_num.downcase.include? 'random') ? ParameterHelper.random_phone : address['phone']
         end unless address['phone'].nil?
         begin
           email_addy = address['email']
-          email = (email_addy.downcase.include? "random") ? ParameterHelper.random_email : address['email']
+          email = (email_addy.downcase.include? 'random') ? ParameterHelper.random_email : address['email']
         end unless address['email'].nil?
 
         #logger.info "Ship-To Name: #{name}"
@@ -139,7 +139,7 @@ module Stamps
             now = "#{month}/#{day}/#{new_date.year}"
             now
           else
-            "Illegal number of arguments for TestHelper.date_from_today".should eql ""
+            expect("Illegal number of arguments for TestHelper.date_from_today").to eql ""
         end
       end
 
@@ -158,7 +158,7 @@ module Stamps
           when 1
             length = args[0]
           else
-            "Illegal number of arguments for random_alpha_numeric".should eql ""
+            expect("Illegal number of arguments for random_alpha_numeric").to eql ""
         end
         rand(36 ** length - 1).to_s(36).rjust(length, "0")
       end

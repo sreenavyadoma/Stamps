@@ -69,7 +69,7 @@ module Stamps
 
           20.times do |counter|
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -78,12 +78,12 @@ module Stamps
               error_str = server_error.message
               logger.info error_str
               server_error.ok
-              "Server Error: \n#{error_str}".should eql "" unless counter < max_server_error_retry_count
+              expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
             logger.info connecting_button.text if connecting_button.element.visible?
             return settings if settings.present?
           end
-          "Rakuten Store Connect failed.  Settings Modal did not open.  ".should eql ""
+          expect("Rakuten Store Connect failed.  Settings Modal did not open.  ").to eql ""
         end
 
         def reconnect
@@ -97,7 +97,7 @@ module Stamps
 
           10.times do |counter|
             button.safe_click
-            sleep(1)
+            sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -106,7 +106,7 @@ module Stamps
               error_str = server_error.message
               logger.info error_str
               server_error.ok
-              "Server Error: \n#{error_str}".should eql "" unless counter < max_server_error_retry_count
+              expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
             logger.info connecting_button.text if connecting_button.element.visible?
             return manage_stores if manage_stores.present?

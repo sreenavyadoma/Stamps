@@ -32,7 +32,7 @@ module Stamps
           when /Roll - 4 /
             return StampsElement.new(browser.li text: /Roll - 4 /)
           else
-            "Don't know what to do with #{media}.".should eql "Invalid Print Media Selection."
+            expect("Don't know what to do with #{media}.").to eql "Invalid Print Media Selection."
         end
       end
 
@@ -91,7 +91,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          "Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.".should eql ""
+          expect("Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.").to eql ""
         end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
       end
     end
@@ -244,10 +244,10 @@ module Stamps
 
       def dont_show_this_again dont_show
         checkbox_field = (browser.inputs css: "input[id^=checkbox-][id$=-inputEl]").last
-        "USPS Terms - Don't show this again checkbox is not present".should eql "" unless checkbox_field.present?
+        expect("USPS Terms - Don't show this again checkbox is not present").to eql "" unless checkbox_field.present?
 
         verify_field = browser.div css: "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
-        "USPS Terms - Don't show this again checkbox is not present".should eql "" unless verify_field.present?
+        expect("USPS Terms - Don't show this again checkbox is not present").to eql "" unless verify_field.present?
 
         attribute = "class"
         attrib_value_check = "checked"
@@ -289,10 +289,10 @@ module Stamps
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
-          sleep(1)
+          sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
-        "Unable to select today's date from date picker object in Print Modal.".should eql ""
+        expect("Unable to select today's date from date picker object in Print Modal.").to eql ""
       end
 
       def todays_date
@@ -301,10 +301,10 @@ module Stamps
         10.times {
           picker.safe_click unless today.present?
           today.safe_click
-          sleep(1)
+          sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0
         }
-        "Unable to select today's date from date picker object in Print Modal.".should eql ""
+        expect("Unable to select today's date from date picker object in Print Modal.").to eql ""
       end
 
       def today_button
@@ -327,7 +327,7 @@ module Stamps
 
         10.times{
           picker_button.safe_click unless date_picker_header.present?
-          sleep(1)
+          sleep(0.35)
 
           if date_field.element.present?
             break
@@ -342,7 +342,7 @@ module Stamps
         10.times {
           picker_button.safe_click unless date_field.present?
           date_field.safe_click
-          sleep(1)
+          sleep(0.35)
           return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
         }
       end
@@ -384,7 +384,7 @@ module Stamps
       end
 
       def text
-        sleep(1)
+        sleep(0.35)
         5.times do
           return text_box.text if text_box.present?
           return text_box_cc.text if text_box_cc.present?
@@ -429,9 +429,9 @@ module Stamps
         15.times {
           begin
             print_button.safe_click
-            sleep(1)
+            sleep(0.35)
             print_button.safe_click
-            sleep(1)
+            sleep(0.35)
             printing_error = printing_error_check
             return printing_error if printing_error.length > 1
             break unless print_button.present?

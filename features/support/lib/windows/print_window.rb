@@ -22,7 +22,7 @@ module Stamps
             print_window.activate
             print_window.button(:value => "&Print").exists?
           else
-            "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie".should eql ""
+            expect("Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie").to eql ""
           end
         rescue
           false
@@ -32,7 +32,7 @@ module Stamps
       def wait_until_present
         5.times do
           break if present?
-          sleep(1)
+          sleep(0.35)
         end
       end
 
@@ -42,7 +42,7 @@ module Stamps
         logger.info "Print Window Present? #{print_window.present?}"
         if TestHelper.browser_selection.firefox?
           wait_until_present
-          "Print Window is not open".should eql "" unless present?
+          expect("Print Window is not open").to eql "" unless present?
           print_window.activate
           print_window.activate
 
@@ -55,7 +55,7 @@ module Stamps
 
         elsif TestHelper.browser_selection.chrome?
           wait_until_present
-          "Print Window is not open".should eql "" unless present?
+          expect("Print Window is not open").to eql "" unless present?
           print_window.activate
           print_window.activate
 
@@ -68,7 +68,7 @@ module Stamps
 
         elsif TestHelper.browser_selection.ie?
           wait_until_present
-          "Print Window is not open".should eql "" unless present?
+          expect("Print Window is not open").to eql "" unless present?
           print_window.activate
           print_window.activate
 
@@ -79,7 +79,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
           end
         else
-          "Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie".should eql ""
+          expect("Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie").to eql ""
         end
         logger.info "Windows in Print modal, click Print buttoning successful."
         sleep(3)

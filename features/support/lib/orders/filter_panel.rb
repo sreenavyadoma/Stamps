@@ -14,7 +14,7 @@ module Stamps
           10.times do
             begin
               button.safe_click
-              sleep(1)
+              sleep(0.35)
               break unless button.present?
             rescue
               #ignore
@@ -27,7 +27,7 @@ module Stamps
           button.element.hover
           15.times do
             button.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text
@@ -49,7 +49,7 @@ module Stamps
           10.times do
             begin
               button.safe_click
-              sleep(1)
+              sleep(0.35)
               break unless button.present?
             rescue
               #ignore
@@ -62,7 +62,7 @@ module Stamps
           button.element.hover
           15.times do
             button.element.hover
-            sleep(1)
+            sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text
               return tooltip_element.text
@@ -100,7 +100,7 @@ module Stamps
         end
 
         def count
-          "Test Error: Check your test flow.".should be "Search Results is not present on Left Filter Panel.Did you forget to do a search first?" unless present?
+          expect("Test Error: Check your test flow.").to be "Search Results is not present on Left Filter Panel.Did you forget to do a search first?" unless present?
           count_label.text
         end
       end
@@ -130,17 +130,17 @@ module Stamps
               textbox.set str
               search_button.safe_click
               search_button.safe_click
-              sleep(1)
+              sleep(0.35)
               search_button.safe_click
               search_button.safe_click
-              sleep(1)
+              sleep(0.35)
               search_button.safe_click
               search_button.safe_click
-              sleep(1)
+              sleep(0.35)
             end
             return search_results if search_results.present?
           end
-          search_results.present?.should be true
+          expect(search_results.present?).to be true
         end
       end
 
@@ -166,7 +166,7 @@ module Stamps
             sleep(0.25)
             break if selected?
           end
-          selected?.should be true
+          expect(selected?).to be true
         end
 
         def selected?
@@ -236,7 +236,7 @@ module Stamps
             return canceled.text if canceled.selected?
             return on_hold.text if on_hold.selected?
           end
-          "At least one filter should have been selected.".should eql "Unable to return selected_filter text."
+          expect("At least one filter should have been selected.").to eql "Unable to return selected_filter text."
         end
 
         def collapse_panel

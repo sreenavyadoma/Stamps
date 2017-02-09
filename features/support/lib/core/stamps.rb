@@ -8,7 +8,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -52,7 +52,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -64,7 +64,7 @@ module Stamps
       logger.message "#{e.message}"
       logger.message "#{e.backtrace.join "\n"}"
       logger.message ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
       #@google_home_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
     end
   end
@@ -73,7 +73,6 @@ module Stamps
     expect(ENV['BROWSER']).to be_truthy
     expect(ENV['URL']).to be_truthy
     expect(ENV['HEALTHCHECK']).to be_truthy
-    expect(ENV['JENKINS']).to be_truthy
     expect(ENV['DEBUG']).to be_truthy
     expect(ENV['USER_CREDENTIALS']).to be_truthy
     expect(ENV['USR']).to be_truthy
@@ -90,6 +89,9 @@ module Stamps
     @param.test_env = ENV['URL']
     @param.web_app = ENV['WEB_APP'].to_sym
     @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
+    @param.usr = ENV['USR']
+    @param.pw = ENV['PW']
+    @param.url = ENV['URL']
     @param
   end
 
@@ -101,7 +103,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -121,7 +123,7 @@ module Stamps
       logger.error "#{e.message}"
       logger.error "#{e.backtrace.join "\n"}"
       logger.error ""
-      "#{e.backtrace.join("\n")}".should eql e.message
+      expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
@@ -141,7 +143,7 @@ module Stamps
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data from default.yml. Check your format?".should eql e.message
+      expect("MagicData: Problem retrieving data from default.yml. Check your format?").to eql e.message
     end
   end
 
@@ -151,7 +153,7 @@ module Stamps
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
-      "MagicData: Problem retrieving data. Check your format?".should eql e.message
+      expect("MagicData: Problem retrieving data. Check your format?").to eql e.message
     end
   end
 
