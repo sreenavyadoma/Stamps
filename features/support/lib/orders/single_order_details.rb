@@ -1038,7 +1038,7 @@ module Stamps
 
         def disabled? service
 
-          @details_services = data_for(:details_services, {})
+          @details_services = data_for(:orders_services, {})
 
           selection_field = browser.li(id: "#{@details_services[service]}")
           #selection_element = browser.tr css: "tr[data-qtip*='#{service}']"

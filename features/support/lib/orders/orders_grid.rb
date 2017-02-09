@@ -977,7 +977,7 @@ module Stamps
         attr_reader :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient, :company,
                     :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
                     :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
-                    :tracking_service, :ship_date, :tracking_no, :requested_service, :source, :ship_from
+                    :tracking_service, :ship_date, :tracking_no, :requested_service, :source, :ship_from, :order_total
 
         def initialize(param)
           @checkbox = GridCheckBox.new(param)
