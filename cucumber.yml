@@ -5,7 +5,7 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 #stgdmnmrv29j04 details_large_dimensions_pm cce5nk6k6068z stgi3eicvj8d7b SC-m9rqvdp97u5
 rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 
-rob_cc: --tags @bvt_address_cleansing WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
+rob_cc: --tags @bvt_shipping_address_management WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #ddv8anvkb03l #hd9glvtoauago #cce5nk6k6068z #AUTOSUGGEST888 #ym3tcgykqt7ops # fawlz7jqdsx
 rob_stg: --tags @bvt_international_shipping WEB_APP=orders USER_CREDENTIALS=bvt_international_shipping JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false  #stgi3eicvj8d7b   #nhr9mm6m5l # #nhr9mm6m5l inline_service_rates
 rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false  #yh95ws85j c2jinmzmu64 store parcel_select
 
