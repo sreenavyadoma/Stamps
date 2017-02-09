@@ -6,9 +6,9 @@ Feature: Contacts BVT
   @mail_bvt_contacts
   Scenario: Contacts
 
-    Then Mail: Select Shipping Label - 5 ½” x 8 ½”
-    Then Mail: Set Mail From to default
-    Then Mail: Set Ship-To country to United States
-    Then Mail Shipping Labels: Open Contacts modal
+    Then on Shipping Label Print form, select Shipping Label - 5 ½” x 8 ½”
+    Then on Print form, set Mail From to default
+    Then on Print form, set Ship-To country to United States
+    Then on Shipping Label Print form, Open Contacts modal
     Then Contacts: Click Contacts Page Link
     Then Sign out

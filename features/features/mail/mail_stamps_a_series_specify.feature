@@ -8,7 +8,7 @@ Feature: Stamps A Series - Specify Postage
   @mail_print_stamps_regression
   @mail_print_stamps_a_series_specify
   Scenario: Stamps Regression A Series - Specify Postage
-    Then Mail: Select Stamps
+    Then on Print form, select Stamps
     Then Mail Stamps: Set Serial Number to A12345
     Then Mail Stamps: Select Specify Mail Amount
     Then Mail Stamps: Set Ship-From to default
@@ -18,6 +18,6 @@ Feature: Stamps A Series - Specify Postage
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
     Then Mail: Open Print Modal
-    Then Mail in Print modal, select Printer "factory"
-    Then Mail in Print modal, click Print button
+    Then in Mail Print modal, select Printer "factory"
+    Then in Mail Print modal, click Print button
     Then Sign out

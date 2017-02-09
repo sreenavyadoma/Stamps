@@ -130,13 +130,13 @@ module Stamps
 
       def calculate_postage_amount
         specify_radio.check
-        raise "Unabled to select radio button Specify Mail Amount" unless specify_radio.checked?
+        expect(specify_radio.checked?).to be true
         calculate_postage
       end
 
       def specify_postage_amount
         calculate_radio.check
-        raise "Unabled to select radio button Specify Mail Amount" unless calculate_radio.checked?
+        expect(calculate_radio.checked?).to be true
         specify_postage
       end
     end

@@ -1,6 +1,6 @@
 
-Then /^Mail: Set Ship-To country to (.*)/ do |country|
-  #logger.step "Mail: Set Ship-To country to #{country}"
+Then /^on Print form, set Ship-To country to (.*)/ do |country|
+  #logger.step "on Print form, set Ship-To country to #{country}"
   stamps.mail.ship_to.country.select country
 end
 

@@ -9,7 +9,7 @@ Feature: Forgot Username
   Scenario: Forgot Username
     Then load Sign-in page
     Then Mail: Open Forgot Username Modal
-    Then Mail: Set forgotten email to Win10FF1000@mailinator.com
+    Then on Print form, set forgotten email to Win10FF1000@mailinator.com
 
 
 

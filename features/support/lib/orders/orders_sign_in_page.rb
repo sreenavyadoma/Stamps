@@ -130,8 +130,6 @@ module Stamps
         logger.message "#"*15
 
         username.safely_wait_until_present(8)
-
-        signed_in_user = StampsElement.new(browser.span(text: sign_in_username))
         4.times do
           begin
             if username.present?

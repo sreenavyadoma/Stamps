@@ -17,7 +17,7 @@ module Stamps
           url = "http://printss600.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         when /cc/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
-          #url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
+          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /sc/
           url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
           url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
@@ -57,12 +57,13 @@ module Stamps
   end
 
   class StampsSignInBase < Browser::Modal
-    attr_accessor :sign_in_username, :sign_in_password
+    attr_accessor :sign_in_username, :sign_in_password, :signed_in_user
 
     def initialize(param)
       super(param)
       @sign_in_username = param.usr
       @sign_in_password = param.pw
+      @signed_in_user = StampsElement.new(browser.span(id: 'userNameText'))
     end
 
     def user_credentials(*args)
