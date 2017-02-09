@@ -80,7 +80,7 @@ module Stamps
       end
     end
 
-    class MailSignInModal < Browser::Modal
+    class MailSignInModal < StampsSignInBase
 
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
                   :signed_in_user, :invalid_msg, :remember_username_checkbox, :invalid_username_password
@@ -130,62 +130,39 @@ module Stamps
         remember_username_checkbox.checked?
       end
 
-      def username usr
-        @username = usr
+      def username(usr)
         open_sign_in_form
-        username_textbox.set @username
+        username_textbox.set usr
       end
 
-      def password pw
-        @password = pw
+      def password(pw)
         open_sign_in_form
-        password_textbox.set @password
+        password_textbox.set pw
       end
 
       def login
         open_sign_in_form
-        sign_in_button.safe_click
-        open_sign_in_form
-        sign_in_button.safe_click
-        open_sign_in_form
-        sign_in_button.send_keys(:enter)
-        sleep(0.35)
-        open_sign_in_form
-        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
-        open_sign_in_form
-        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
-        open_sign_in_form
-        expect("#{invalid_username_password.text}. #{@username}\\#{@password}").to eql "Valid Username" if invalid_username_password.present?
+        sign_in_button.click_while_present
       end
 
-      def mail_sign_in *args
-        user_credentials *args
-
+      def mail_sign_in
         10.times do
-          username(@username)
-          password(@password)
+          username(sign_in_username)
+          password(sign_in_password)
           login
-          whats_new_modal.close if whats_new_modal.present?
+
 
           50.times do
+            verifying_account_info.wait_until_present 2
             logger.message verifying_account_info.safe_text
             whats_new_modal.close if whats_new_modal.present?
-            verifying_account_info.wait_until_present 2
             whats_new_modal.close if whats_new_modal.present?
             break unless verifying_account_info.present?
-            whats_new_modal.close if whats_new_modal.present?
           end
 
           whats_new_modal.close if whats_new_modal.present?
 
           logger.info "Signed in username is #{signed_in_user.text}" if signed_in_user.present?
-          logger.info "#{@username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
-
-          whats_new_modal.close if whats_new_modal.present?
-
-          break if signed_in_user.present?
-
-          expect(invalid_msg.text).to eql "Invalid Username & Password. #{@username}/#{@password}" if invalid_msg.present?
         end
 
         whats_new_modal.close if whats_new_modal.present?

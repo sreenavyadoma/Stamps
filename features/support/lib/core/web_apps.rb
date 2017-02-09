@@ -4,6 +4,8 @@ module Stamps
 
     def initialize(param)
       super(param)
+      @sign_in_username = param.usr
+      @sign_in_password = param.pw
       @navigation_bar = Navigation::NavigationBar.new(param)
       @orders = WebOrders.new(param)
       @mail = WebMail.new(param)
@@ -55,30 +57,18 @@ module Stamps
   end
 
   class StampsSignInBase < Browser::Modal
-    def user_credentials(*args)
-      case args
-        when Hash
-          @username = args[0]['username']
-          @password = args[0]['password']
-        when Array
-          case args.length
-            when 1
-              if args[0].is_a?(Symbol)
+    attr_accessor :sign_in_username, :sign_in_password
 
-              end
-            when 2
-            else
-              expect(args.length).to be_between(1, 2).inclusive
-          end
-          @username = args[0]
-          @password = args[1]
-        else
-          logger.message "Using Default Sign-in Credentials."
-          @username = param.usr
-          @password = param.pw
-      end
-      logger.message "USERNAME: #{@username}, PASSWORD: #{@password}"
-      [@username, @password]
+    def initialize(param)
+      super(param)
+      @sign_in_username = param.usr
+      @sign_in_password = param.pw
+    end
+
+    def user_credentials(*args)
+      expect(args.length).to eql 2
+      @sign_in_username = args[0]
+      @sign_in_password = args[1]
     end
   end
 end
