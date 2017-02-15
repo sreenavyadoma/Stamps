@@ -1,8 +1,9 @@
 # encoding: utf-8
 module Stamps
   module Mail
+=begin
 
-    class StampsFormView < MailForm
+    class StampsFormView < PrintForm
       attr_reader :quantity, :reference_number, :cost_code
 
       def initialize(param)
@@ -112,7 +113,7 @@ module Stamps
       end
     end
 
-    class NetStamps < MailForm
+    class NetStamps < PrintForm
       attr_reader :specify_postage, :calculate_postage, :serial, :calculate_service_drop_list, :form_view, :specify_service_drop_list,
                   :specify_radio, :calculate_radio
 
@@ -121,7 +122,7 @@ module Stamps
         @specify_postage = SpecifyPostageAmount.new(param)
         @calculate_postage= CalculatePostageAmount.new(param)
         @serial = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl"))
-        @calculate_service_drop_list= MailServiceDropList.new(param)
+        @calculate_service_drop_list= MailService.new(param)
         @specify_service_drop_list = SpecifyServiceDropList.new(param)
         @form_view = StampsFormView.new(param)
         @specify_radio = StampsCheckbox.new(browser.input(id: 'sdc-mainpanel-calculatepostageradio-inputEl'), browser.table(id: 'sdc-mainpanel-calculatepostageradio'), "class", "checked")
@@ -140,5 +141,7 @@ module Stamps
         specify_postage
       end
     end
+
+=end
   end
 end

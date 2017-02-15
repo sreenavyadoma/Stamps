@@ -41,13 +41,13 @@ end
 
 Then /^(?:O|o)n Customs form, set Package Contents to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_package_contents] = value
-  stamps.orders.order_details.customs.edit_form.package_contents.select test_data[:customs_package_contents]
+  test_parameter[:customs_package_contents] = value
+  stamps.orders.order_details.customs.edit_form.package_contents.select test_parameter[:customs_package_contents]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect Package Contents saved value is the same$/ do
-  step "On Customs form, expect Package Contents is #{test_data[:customs_package_contents]}"
+  step "On Customs form, expect Package Contents is #{test_parameter[:customs_package_contents]}"
 end
 
 Then /^(?:O|o)n Customs form, expect Package Contents is Merchandise$/ do
@@ -93,13 +93,13 @@ end
 
 Then /^(?:O|o)n Customs form, set Non-Delivery Options to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_non_delivery_options] = value
-  stamps.orders.order_details.customs.edit_form.non_delivery_options.select test_data[:customs_non_delivery_options]
+  test_parameter[:customs_non_delivery_options] = value
+  stamps.orders.order_details.customs.edit_form.non_delivery_options.select test_parameter[:customs_non_delivery_options]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect Non-Delivery Options saved value is the same$/ do
-  step "On Customs form, expect Non-Delivery Options is #{test_data[:customs_non_delivery_options]}"
+  step "On Customs form, expect Non-Delivery Options is #{test_parameter[:customs_non_delivery_options]}"
 end
 
 Then /^(?:O|o)n Customs form, expect Non-Delivery Options is Treat as abandoned$/ do
@@ -125,13 +125,13 @@ end
 
 Then /^(?:O|o)n Customs form, set Internal Transaction Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_internal_transaction_no] = value
-  stamps.orders.order_details.customs.edit_form.internal_transaction.select test_data[:customs_internal_transaction_no]
+  test_parameter[:customs_internal_transaction_no] = value
+  stamps.orders.order_details.customs.edit_form.internal_transaction.select test_parameter[:customs_internal_transaction_no]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect Internal Transaction Number saved value is the same$/ do
-  step "On Customs form, expect Internal Transaction Number is #{test_data[:customs_internal_transaction_no]}"
+  step "On Customs form, expect Internal Transaction Number is #{test_parameter[:customs_internal_transaction_no]}"
 end
 
 Then /^(?:O|o)n Customs form, expect Internal Transaction Number is Not required$/ do
@@ -148,13 +148,13 @@ Then /^(?:O|o)n Customs form, expect Internal Transaction Number is \"(.+)\"$/ d
 end
 
 Then /^(?:O|o)n Customs form, set More Info to \"(.+)\"$/ do |value|
-  test_data[:customs_more_info] = (value.downcase.include? 'random') ? ParameterHelper.random_alpha_numeric(18): value
-  stamps.orders.order_details.customs.edit_form.more_info.set test_data[:customs_more_info]
+  test_parameter[:customs_more_info] = (value.downcase.include? 'random') ? ParameterHelper.random_alpha_numeric(18): value
+  stamps.orders.order_details.customs.edit_form.more_info.set test_parameter[:customs_more_info]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect More Info saved value is the same$/ do
-  step "On Customs form, expect More Info is #{test_data[:customs_more_info]}"
+  step "On Customs form, expect More Info is #{test_parameter[:customs_more_info]}"
 end
 
 Then /^(?:O|o)n Customs form, expect More Info is (.+)$/ do |expectation|
@@ -164,13 +164,13 @@ end
 
 Then /^(?:O|o)n Customs form, set ITN Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_itn_no] = (value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value
-  stamps.orders.order_details.customs.edit_form.itn_number.set test_data[:customs_itn_no]
+  test_parameter[:customs_itn_no] = (value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value
+  stamps.orders.order_details.customs.edit_form.itn_number.set test_parameter[:customs_itn_no]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect ITN Number saved value is the same$/ do
-  step "On Customs form, expect ITN Number is #{test_data[:customs_itn_no]}"
+  step "On Customs form, expect ITN Number is #{test_parameter[:customs_itn_no]}"
 end
 
 Then /^(?:O|o)n Customs form, expect ITN Number is (.+)$/ do |expectation|
@@ -180,13 +180,13 @@ end
 
 Then /^(?:O|o)n Customs form, set License Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_license_no] = ((value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value)
-  stamps.orders.order_details.customs.edit_form.license.set test_data[:customs_license_no]
+  test_parameter[:customs_license_no] = ((value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value)
+  stamps.orders.order_details.customs.edit_form.license.set test_parameter[:customs_license_no]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect License Number saved value is the same$/ do
-  step "On Customs form, expect License Number is #{test_data[:customs_license_no]}"
+  step "On Customs form, expect License Number is #{test_parameter[:customs_license_no]}"
 end
 
 Then /^(?:O|o)n Customs form, expect License Number is (.+)$/ do |expectation|
@@ -196,13 +196,13 @@ end
 
 Then /^(?:O|o)n Customs form, set Certificate Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_certificate_no] = ((value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value)
-  stamps.orders.order_details.customs.edit_form.certificate.set test_data[:customs_certificate_no]
+  test_parameter[:customs_certificate_no] = ((value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value)
+  stamps.orders.order_details.customs.edit_form.certificate.set test_parameter[:customs_certificate_no]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect Certificate Number saved value is the same$/ do
-  step "On Customs form, expect Certificate Number is #{test_data[:customs_certificate_no]}"
+  step "On Customs form, expect Certificate Number is #{test_parameter[:customs_certificate_no]}"
 end
 
 Then /^(?:O|o)n Customs form, expect Certificate Number is (.+)$/ do |expectation|
@@ -212,13 +212,13 @@ end
 
 Then /^(?:O|o)n Customs form, set Invoice Number to \"(.+)\"$/ do |value|
   step "On Customs form, blur out"
-  test_data[:customs_invoice_no] = (value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value
-  stamps.orders.order_details.customs.edit_form.invoice.set test_data[:customs_invoice_no]
+  test_parameter[:customs_invoice_no] = (value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric : value
+  stamps.orders.order_details.customs.edit_form.invoice.set test_parameter[:customs_invoice_no]
   step "On Customs form, Save Total"
 end
 
 Then /^(?:O|o)n Customs form, expect Invoice Number saved value is the same$/ do
-  step "On Customs form, expect Invoice Number is #{test_data[:customs_invoice_no]}"
+  step "On Customs form, expect Invoice Number is #{test_parameter[:customs_invoice_no]}"
 end
 
 Then /^(?:O|o)n Customs form, expect Invoice Number is (.+)$/ do |expectation|
@@ -361,11 +361,11 @@ Then /^(?:O|o)n Customs form, expect Associated Item Grid count is (.+)$/ do |ex
 end
 
 Then /^(?:O|o)n Customs form, Save Total$/ do
-  test_data[:customs_total_value] = stamps.orders.order_details.customs.edit_form.total_value
+  test_parameter[:customs_total_value] = stamps.orders.order_details.customs.edit_form.total_value
 end
 
 Then /^(?:O|o)n Customs form, expect Total saved value is the same$/ do
-  step "On Customs form, expect Total Value is #{test_data[:customs_total_value]}"
+  step "On Customs form, expect Total Value is #{test_parameter[:customs_total_value]}"
 end
 
 Then /^(?:O|o)n Customs form, expect Total Value is (.+)$/ do |expectation|

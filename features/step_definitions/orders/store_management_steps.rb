@@ -26,11 +26,11 @@ Then /^Manage Stores: Delete Row (\d+)$/ do |row|
 end
 
 Then /^Manage Stores: Select Store (.*)$/ do |store_name|
-  test_data[:store_name] = (store_name.downcase.include? 'random')?test_data[:store_name]:store_name
+  test_parameter[:store_name] = (store_name.downcase.include? 'random')?test_parameter[:store_name]:store_name
   #logger.step "Manage Stores: Select Store #{test_data[:store_name]}"
-  raise "Unble to select store name: #{test_data[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if test_data[:store_name].nil?
-  raise "Store name can't be nil or an empty String" if test_data[:store_name].nil? || test_data[:store_name].size == 0
-  @manage_stores.stores_grid.select(test_data[:store_name])
+  raise "Unble to select store name: #{test_parameter[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if test_parameter[:store_name].nil?
+  raise "Store name can't be nil or an empty String" if test_parameter[:store_name].nil? || test_parameter[:store_name].size == 0
+  @manage_stores.stores_grid.select(test_parameter[:store_name])
 end
 
 Then /^Manage Stores: Delete All Stores$/ do

@@ -77,10 +77,10 @@ module Stamps
       def initialize(param)
         super(param)
         @x_btn = StampsElement.new browser.img(class: 'x-tool-img x-tool-close')
-        @more_info_btn = StampsElement.new browser.span(css: 'a[class*=moreInfobtn]>span>span>span[id*=infobtn-btnInnerEl]')
-        @continue_btn = StampsElement.new browser.span(id: "sdc-undefinedwindow-continuebtn-btnIconEl")
+        @more_info_btn = StampsElement.new browser.span(text: 'More Info')
+        @continue_btn = StampsElement.new browser.span(text: "Continue")
         @more_info_page = MoreInfoPage.new(param)
-        @window_title = StampsElement.new browser.span css: "span[id^=dialoguemodal-][id$=_header_hd-textEl]"
+        @window_title = StampsElement.new browser.span(css: "div[id^=title][class*='x-window-header-title x-window-header-title-default']>div[id^=title-][id$=-textEl]")
       end
 
       def present?
@@ -154,21 +154,32 @@ module Stamps
 
       def login
         show_sign_in_modal
-        sign_in_button.click_while_present
+        sign_in_button.safe_click
+        sign_in_button.safe_click
       end
 
       def mail_sign_in
-        3.times do
+        5.times do
           break if signed_in_user.present?
           username(sign_in_username)
           password(sign_in_password)
           login
-          5.times do
-            signed_in_user.wait_until_present(2)
-             if whats_new_modal.present?
-               whats_new_modal.continue
-               break
-             end
+          50.times do
+            begin
+              logger.message(verifying_account_info.text)
+              break if signed_in_user.present?
+              if whats_new_modal.present?
+                whats_new_modal.continue
+                break
+              end
+            rescue
+              # do nothing
+            end
+          end
+          signed_in_user.wait_until_present(2)
+          if whats_new_modal.present?
+            whats_new_modal.continue
+            break
           end
           break if signed_in_user.present?
         end

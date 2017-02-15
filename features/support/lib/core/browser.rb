@@ -6,13 +6,14 @@ module Stamps
     end
 
     class Modal
-      attr_accessor :param, :browser, :logger, :element_helper
+      attr_accessor :param, :browser, :logger, :element_helper, :test_helper
 
       def initialize(param)
         @param = param
         @browser = param.browser
         @logger = param.logger
         @element_helper = ElementHelper
+        @test_helper = TestHelper
       end
     end
 
@@ -614,5 +615,15 @@ module Stamps
         end
       end
     end
+
+    class TestHelper
+      class << self
+        def first_half(str)
+          index = (str.size.to_f / 2).ceil
+          str[0, index]
+        end
+      end
+    end
+
   end
 end

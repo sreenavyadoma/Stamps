@@ -5,12 +5,12 @@ Feature: Verify Mail Elements Are Present
 
   @mail_print_postage_elements
   Scenario: Print Mail Elements
-    Then on Shipping Label Print form, select Shipping Label - 8 ½” x 11” Paper
+    Then select Print On Shipping Label - 8 x 11 Paper on Print form
     Then on Print form, expect Print On Field is present
     Then on Print form, expect Ship From Field is present
     Then on Print form, expect Ship To Link is present
     Then on Print form, expect Ship To Country Field is present
-    Then on Print form, set Ship-To country to United States
+    Then set Print form Mail to country to United States
     Then on Print form, expect Domestic Address Field is present
     Then on Print form, expect Email Check Box is present
     Then on Print form, expect Email Field is present
@@ -22,7 +22,7 @@ Feature: Verify Mail Elements Are Present
     Then on Print form, expect service Price is present
     Then on Print form, expect Insure For Field is present
     Then on Print form, expect Insure For Price is present
-    Then on Shipping Label Print form, select service Priority Mail Package
+    Then on Print form, select service Priority Mail Package
     Then on Print form, expect Tracking Field is present
     Then on Print form, expect Tracking Price is present
     Then on Print form, expect Extra Services Button is present
@@ -39,7 +39,7 @@ Feature: Verify Mail Elements Are Present
     Then on Print form, expect Mail Total is present
     Then on Print form, expect Print Sample Button is present
     Then on Print form, expect Print Button is present
-    Then on Print form, set Ship-To country to Canada
+    Then on Print form, set Mail To country to Canada
     Then on Print form, expect International Name Field is present
     Then on Print form, expect International Company Field is present
     Then on Print form, expect International Address 1 Field is present

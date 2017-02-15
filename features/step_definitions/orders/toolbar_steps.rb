@@ -1,9 +1,9 @@
 Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
   begin
-    test_data[:old_balance] = stamps.navigation_bar.balance.amount
+    test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
     stamps.orders.toolbar.add.order_details
-    test_data[:order_id] = stamps.orders.order_details.toolbar.order_id
+    test_parameter[:order_id] = stamps.orders.order_details.toolbar.order_id
     step "Save Order Details data"
   rescue Exception => e
     logger.error e.message
@@ -14,15 +14,15 @@ end
 
 Then /^Save Order Details data$/ do
   expect(stamps.orders.order_details.present?).to be true
-  test_data[:country] = stamps.orders.order_details.ship_to.country.text_box.text
-  test_data[:service_cost] = stamps.orders.order_details.service.cost
-  test_data[:service] = stamps.orders.order_details.service.text_box.text
-  test_data[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
-  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-  test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
-  test_data[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
-  test_data[:tracking] = stamps.orders.order_details.tracking.text_box.text
+  test_parameter[:country] = stamps.orders.order_details.ship_to.country.text_box.text
+  test_parameter[:service_cost] = stamps.orders.order_details.service.cost
+  test_parameter[:service] = stamps.orders.order_details.service.text_box.text
+  test_parameter[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
+  test_parameter[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  test_parameter[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+  test_parameter[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+  test_parameter[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  test_parameter[:tracking] = stamps.orders.order_details.tracking.text_box.text
 end
 
 Then /^(?:I|i)n Orders Toolbar, Refresh Orders$/ do

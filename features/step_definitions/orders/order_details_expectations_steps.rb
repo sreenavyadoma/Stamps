@@ -1,6 +1,6 @@
 
 Then /^(?:O|o)n Order Details form, expect Ship-From and Ship-From saved values are the same$/ do
-  expect(stamps.orders.order_details.ship_from.text_box.text).to eql test_data[:ship_from]
+  expect(stamps.orders.order_details.ship_from.text_box.text).to eql test_parameter[:ship_from]
 end
 
 Then /^(?:O|o)n Order Details form, expect Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
@@ -46,52 +46,52 @@ Then /^(?:O|o)n Order Details form, expect service Placeholder is (.*)$/ do |exp
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Name (?:is (.*)|and saved Name are the same)$/ do |expectation|
-  expectation = test_data[:name] if expectation.nil?
+  expectation = test_parameter[:name] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.name.text).to eql(expectation)
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Company (?:is (.*)|and saved Company are the same)$/ do |expectation|
-  expectation = test_data[:company] if expectation.nil?
+  expectation = test_parameter[:company] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.company.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Address 1 (?:is (.*)|and saved Address 1 are the same)$/ do |expectation|
-  expectation = test_data[:street_address_1] if expectation.nil?
+  expectation = test_parameter[:street_address_1] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.address_1.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Address 2 (?:is (.*)|and saved Address 2 are the same)$/ do |expectation|
-  expectation = test_data[:street_address_2] if expectation.nil?
+  expectation = test_parameter[:street_address_2] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.address_2.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Province (?:is (.*)|and saved Province are the same)$/ do |expectation|
-  expectation = test_data[:state] if expectation.nil?
+  expectation = test_parameter[:state] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.province.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Postal Code (?:is (.*)|and saved Postal Code are the same)$/ do |expectation|
-  expectation = test_data[:zip] if expectation.nil?
+  expectation = test_parameter[:zip] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.postal_code.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Phone (?:is (.*)|and saved Phone are the same)$/ do |expectation|
-  expectation = test_data[:phone] if expectation.nil?
+  expectation = test_parameter[:phone] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.phone.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To Email (?:is (.*)|and saved Email are the same)$/ do |expectation|
-  expectation = test_data[:email] if expectation.nil?
+  expectation = test_parameter[:email] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.email.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship-To Country (?:is (.*)|and saved Country are the same)$/ do |expectation|
-  expectation = test_data[:country] if expectation.nil?
+  expectation = test_parameter[:country] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.country.text_box.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Ship-To City (?:is (.*)|and saved City are the same)$/ do |expectation|
-  expectation = test_data[:city] if expectation.nil?
+  expectation = test_parameter[:city] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.city.text).to eql expectation
 end
 
@@ -186,12 +186,12 @@ Then /^Expect Exact Address Not Found module to appear/ do
 end
 
 Then /^(?:O|o)n Order Details form, expect Reference Number (?:is (.*)|and saved Reference Number are the same)$/ do |expectation|
-  expectation = test_data[:reference_no] if expectation.nil?
+  expectation = test_parameter[:reference_no] if expectation.nil?
   expect(stamps.orders.order_details.reference_no.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Insure-For (?:is \$(.*)|and saved Insure-For values are the same)$/ do |expectation|
-  expectation = test_data[:insure_for] if expectation.nil?
+  expectation = test_parameter[:insure_for] if expectation.nil?
   10.times do
     break if stamps.orders.order_details.insure_for.text_box.text.to_f.round(2) == expectation.to_f.round(2)
   end
@@ -199,7 +199,7 @@ Then /^(?:O|o)n Order Details form, expect Insure-For (?:is \$(.*)|and saved Ins
 end
 
 Then /^(?:O|o)n Order Details form, expect Insure-For Cost (?:is \$(.*)|and saved Insure-For Cost values are the same)$/ do |expectation|
-  expectation = test_data[:insure_for_cost] if expectation.nil?
+  expectation = test_parameter[:insure_for_cost] if expectation.nil?
   5.times do
     break if stamps.orders.order_details.insure_for.cost == expectation.to_f.round(2)
   end
@@ -245,11 +245,11 @@ Then /^(?:O|o)n Order Details form, expect service Tooltip for "(.*)" to include
 end
 
 Then /^(?:O|o)n Order Details form, expect Service Cost saved value is the same$/ do
-  step "On Order Details form, expect Service Cost is $#{test_data[:service_cost]}"
+  step "On Order Details form, expect Service Cost is $#{test_parameter[:service_cost]}"
 end
 
 Then /^(?:O|o)n Order Details form, expect Service Cost (?:is \$(.*)|and saved Service Cost values are the same)$/ do |expectation|
-  expectation = test_data[:service_cost] if expectation.nil?
+  expectation = test_parameter[:service_cost] if expectation.nil?
   10.times do
     sleep(0.25)
     break if stamps.orders.order_details.service.cost.to_f == expectation.to_f.round(2)
@@ -265,7 +265,7 @@ Then /^(?:O|o)n Order Details form, expect Service Cost is greater than \$([0-9.
 end
 
 Then /^(?:O|o)n Order Details form, expect Tracking Cost (?:is \$([0-9.]*)|and saved Tracking Cost values are the same)$/ do |expectation|
-  expectation = test_data[:tracking_cost] if expectation.nil?
+  expectation = test_parameter[:tracking_cost] if expectation.nil?
   10.times do
     break if stamps.orders.order_details.tracking.cost == expectation.to_f.round(2)
   end
@@ -280,13 +280,13 @@ Then /^(?:O|o)n Order Details form, expect Tracking Cost is greater than \$([0-9
 end
 
 Then /^(?:O|o)n Order Details form, expect Pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
-  expectation = test_data[:pounds] if expectation.nil?
+  expectation = test_parameter[:pounds] if expectation.nil?
   10.times { break if stamps.orders.order_details.weight.lb.text_box.text.to_f == expectation.to_f.round(2) }
   expect(stamps.orders.order_details.weight.lb.text_box.text.to_f).to eql expectation.to_f.round(2)
 end
 
 Then /^(?:O|o)n Order Details form, expect Ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |expectation|
-  expectation = test_data[:ounces] if expectation.nil?
+  expectation = test_parameter[:ounces] if expectation.nil?
   10.times { break if stamps.orders.order_details.weight.oz.text_box.text.to_f == expectation.to_f.round(2) }
   expect(stamps.orders.order_details.weight.oz.text_box.text.to_f).to eql expectation.to_f.round(2)
 end
@@ -332,7 +332,7 @@ Then /^(?:O|o)n Order Details form, expect Tracking is \"([\w\s]*)\"$/ do |expec
 end
 
 Then /^(?:O|o)n Order Details form, expect Total Ship Cost saved value is correct$/ do
-  step "On Order Details form, expect Tracking Cost is $#{test_data[:tracking_cost]}"
+  step "On Order Details form, expect Tracking Cost is $#{test_parameter[:tracking_cost]}"
 end
 
 Then /^(?:O|o)n Order Details form, expect Total Ship Cost is \$(.*)$/ do |expectation|

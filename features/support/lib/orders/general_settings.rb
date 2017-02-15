@@ -208,7 +208,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
         end
 
         def five_min
@@ -256,7 +256,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
         end
 
         def twelve_am
@@ -372,7 +372,7 @@ module Stamps
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
           end
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
         end
 
         def zero

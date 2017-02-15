@@ -14,7 +14,7 @@ module Stamps
       end
     end
 
-    class Footer < Browser::Modal
+    class MailFooter < Browser::Modal
       attr_reader :total, :print_postage_modal, :confirm_window, :windows_print, :print_button, :sample_button, :printing_problem
 
       def initialize(param)
@@ -33,39 +33,10 @@ module Stamps
       end
 
       def print
-        open_window print_postage_modal
+        open_window(print_postage_modal)
       end
 
-      def print_international
-
-        print_button.safe_click
-        confirm_window.wait_until_present 3
-        5.times do
-          if confirm_window.present?
-            logger.info "Confirm Print"
-            confirm_window.dont_prompt_deducting_postage_again
-            confirm_window.continue
-            confirm_window.continue
-          end
-          break if windows_print.present?
-        end
-
-        raise printing_problem.error_message if printing_problem.present?
-
-        8.times do
-          if windows_print.present?
-            break
-          else
-            sleep(0.35)
-          end
-        end
-        sleep(2)
-        #raise "Unable to open international mail modal." unless windows_print.present?
-        logger.info "LAST CHANCE!!! #{windows_print.present?}"
-        windows_print.print
-      end
-
-      def open_window window
+      def open_window(window)
         return window if window.present?
         print = print_button
 
@@ -157,6 +128,34 @@ module Stamps
 
         return window if window.present?
         expect("Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.").to eql ""
+      end
+
+      def print_international
+        print_button.safe_click
+        confirm_window.wait_until_present 3
+        5.times do
+          if confirm_window.present?
+            logger.info "Confirm Print"
+            confirm_window.dont_prompt_deducting_postage_again
+            confirm_window.continue
+            confirm_window.continue
+          end
+          break if windows_print.present?
+        end
+
+        raise printing_problem.error_message if printing_problem.present?
+
+        8.times do
+          if windows_print.present?
+            break
+          else
+            sleep(0.35)
+          end
+        end
+        sleep(2)
+        #raise "Unable to open international mail modal." unless windows_print.present?
+        logger.info "LAST CHANCE!!! #{windows_print.present?}"
+        windows_print.print
       end
     end
   end

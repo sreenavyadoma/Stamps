@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class CustomsForm < Browser::Modal
+    class MailCustomsForm < Browser::Modal
 
       def close
         element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
@@ -318,7 +318,7 @@ module Stamps
             end
           }
           logger.info "Origin Country selected: #{selection}"
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
           selection_label
         end
       end
@@ -452,7 +452,7 @@ module Stamps
       end
 
       def edit_form
-        @customs_form = CustomsForm.new(param)
+        @customs_form = MailCustomsForm.new(param)
         edit_form_button = browser_edit_form_button
         20.times{
           edit_form_button.safe_click

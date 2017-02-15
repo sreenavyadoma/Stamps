@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class Toolbar < Browser::Modal
+    class MailToolbar < Browser::Modal
       attr_reader :settings, :reset, :help, :feedback, :classic
 
       def initialize(param)

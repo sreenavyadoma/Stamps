@@ -59,7 +59,7 @@ module Stamps
               selection_element.safe_click
               break if text.include?(selection)
             end
-            expect(text).to include selection
+            expect(text).to include(selection)
             logger.info "#{text} selected."
           end
         end
@@ -166,7 +166,7 @@ module Stamps
               #ignore
             end
           }
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
           logger.info "#{selection} selected."
           selection_label
         end
@@ -194,7 +194,7 @@ module Stamps
               #ignore
             end
           }
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
           logger.info "#{selection} selected."
           selection_label
         end
@@ -222,7 +222,7 @@ module Stamps
               #ignore
             end
           }
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
           logger.info "#{selection} selected."
           selection_label
         end

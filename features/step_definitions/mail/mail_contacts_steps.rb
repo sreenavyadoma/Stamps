@@ -1,8 +1,8 @@
-Then /^Contacts: Search by group - (.*)/ do |filter|
+Then /^Contacts: Search by group - (.*)$/ do |filter|
 
 end
 
-Then /^Contacts: Search by cost code - (.*)/ do |filter|
+Then /^Contacts: Search by cost code - (.*)$/ do |filter|
 
 end
 

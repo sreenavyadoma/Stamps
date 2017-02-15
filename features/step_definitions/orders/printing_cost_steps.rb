@@ -7,43 +7,43 @@ Then /^(?:O|o)n Order Details form, expect Total label is (.*)$/ do |expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect Ship Cost Total is correct$/ do
-  test_data[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
-  test_data[:service_cost] = stamps.orders.order_details.service.cost
-  test_data[:tracking_cost] = stamps.orders.order_details.tracking.cost
-  test_data[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-  expect(test_data[:total_ship_cost].to_f.round(2)).to eql (test_data[:service_cost].to_f + test_data[:insure_for_cost].to_f + test_data[:tracking_cost].to_f).round(2)
+  test_parameter[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+  test_parameter[:service_cost] = stamps.orders.order_details.service.cost
+  test_parameter[:tracking_cost] = stamps.orders.order_details.tracking.cost
+  test_parameter[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+  expect(test_parameter[:total_ship_cost].to_f.round(2)).to eql (test_parameter[:service_cost].to_f + test_parameter[:insure_for_cost].to_f + test_parameter[:tracking_cost].to_f).round(2)
 end
 
 Then /^(?:O|o)n Order Details form, expect Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
-  test_data[:total_ship_cost] = stamps.orders.order_details.footer.multiple_order_cost
-  expect(test_data[:total_ship_cost]).to eql expectation
+  test_parameter[:total_ship_cost] = stamps.orders.order_details.footer.multiple_order_cost
+  expect(test_parameter[:total_ship_cost]).to eql expectation
 end
 
 Then /^Expect Ship Cost equals Total amount$/ do
   10.times {
     begin
-      break if stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id]).eql?(stamps.orders.order_details.footer.total_ship_cost)
+      break if stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id]).eql?(stamps.orders.order_details.footer.total_ship_cost)
     rescue
       #ignore
     end
   }
-  expect(stamps.orders.orders_grid.column.ship_cost.data(test_data[:order_id])).to eql(stamps.orders.order_details.footer.total_ship_cost)
+  expect(stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id])).to eql(stamps.orders.order_details.footer.total_ship_cost)
 end
 
 Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
   if @printing_error
-    expect(stamps.navigation_bar.balance.amount.to_f).to eql test_data[:old_balance].to_f
+    expect(stamps.navigation_bar.balance.amount.to_f).to eql test_parameter[:old_balance].to_f
   else
-    expect((stamps.navigation_bar.balance.amount.to_f + expected.to_f)).to eql test_data[:old_balance].to_f
+    expect((stamps.navigation_bar.balance.amount.to_f + expected.to_f)).to eql test_parameter[:old_balance].to_f
   end
 end
 
 Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
   if @printing_error.length > 0
-    expect(stamps.navigation_bar.balance.amount.to_f).to eql test_data[:old_balance].to_f
+    expect(stamps.navigation_bar.balance.amount.to_f).to eql test_parameter[:old_balance].to_f
   else
-    expect(test_data[:total_ship_cost].to_f.round(2)).to eql (test_data[:service_cost].to_f + test_data[:insure_for_cost].to_f + test_data[:tracking_cost].to_f).round(2)
-    expect(stamps.navigation_bar.balance.new_balance(test_data[:old_balance]).to_f.round(2)).to eql (test_data[:old_balance].to_f - (test_data[:service_cost].to_f + test_data[:tracking_cost].to_f)).round(2)
+    expect(test_parameter[:total_ship_cost].to_f.round(2)).to eql (test_parameter[:service_cost].to_f + test_parameter[:insure_for_cost].to_f + test_parameter[:tracking_cost].to_f).round(2)
+    expect(stamps.navigation_bar.balance.new_balance(test_parameter[:old_balance]).to_f.round(2)).to eql (test_parameter[:old_balance].to_f - (test_parameter[:service_cost].to_f + test_parameter[:tracking_cost].to_f)).round(2)
   end
 end
 

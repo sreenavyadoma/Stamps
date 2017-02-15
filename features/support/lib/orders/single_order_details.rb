@@ -957,24 +957,21 @@ module Stamps
           blur_element.blur_out
         end
 
-        def select(selection)
-          logger.info "Select service #{selection}"
+        def select(str)
+          logger.info "Select service #{str}"
 
-          sel_arr = selection.split(/\s+/)
+          sel_arr = str.split(/\s+/)
           substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
 
-          selected_service = ""
-          @details_services = data_for(:orders_services, {})
-
-          selection_label = StampsElement.new browser.td css: "li##{@details_services[selection]}>table>tbody>tr>td.x-boundlist-item-text"
+          selection = StampsElement.new browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
 
           20.times do
             begin
-              drop_down.safe_click unless selection_label.present?
-              selection_label.safe_scroll_into_view
-              selection_label.safe_click
+              drop_down.safe_click unless selection.present?
+              selection.safe_scroll_into_view
+              selection.safe_click
               blur_out
-              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? selection)?"success": "service not selected"}"
+              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
               break if text_box.text.include?(substr)
             rescue
               #ignore
@@ -1240,7 +1237,7 @@ module Stamps
               expect("Unable to select Tracking #{selection}. Error: #{e.message}").to eql "Select Tracking #{selection}"
             end
           end
-          expect(text_box.text).to include selection
+          expect(text_box.text).to include(selection)
         end
 
         def inline_cost(selection)

@@ -8,7 +8,7 @@ Feature: Stamps C Series - Specify Postage
   @mail_print_stamps_regression
   @mail_print_stamps_c_series_specify
   Scenario: Stamps Regression C Series - Specify Postage
-    Then on Print form, select Stamps
+    Then select Print form Print On Stamps
     Then Mail Stamps: Set Serial Number to C12345
     Then Mail Stamps: Select Specify Mail Amount
     Then Mail Stamps: Set Ship-From to default
@@ -17,7 +17,7 @@ Feature: Stamps C Series - Specify Postage
     Then Mail Stamps: Set Stamp Amount to $0.15
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
-    Then Mail: Open Print Modal
-    Then in Mail Print modal, select Printer "factory"
-    Then in Mail Print modal, click Print button
+    Then click Print form Print button
+    Then set Mail Print modal Printer to factory
+    Then click Print button on Mail Print modal
     Then Sign out

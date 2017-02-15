@@ -9,16 +9,16 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - PSG Large Package
   @mail_print_sample_shipping_label_5x8_psg_large_package
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - PSG Large Package
 
-    Then on Shipping Label Print form, select Shipping Label - 5 ½” x 8 ½”
+    Then select Print On Shipping Label - 5 x 8 on Print form
 
-    Then on Print form, set Mail From to default
-    Then on Print form, set Ship-To country to United States
-    Then on Print form, set Ship-To to Random Address Between Zone 5 through 8
-    Then on Print form, set Pounds to 0
-    Then on Print form, set Ounces to 1
-    Then on Shipping Label Print form, select service Parcel Select Ground Large Package
-    Then on Shipping Label Print form, select left side starting label
-    Then Mail: Open Print Sample Modal
-    Then in Mail Print modal, select Printer "factory"
-    Then in Mail Print modal, click Print button Sample
+    Then set Print form Mail From to default
+    Then set Print form Mail to country to United States
+    Then on Print form, set Mail To address to zone 5 through 8
+    Then set Print form Pounds to 0
+    Then set Print form Ounces to 1
+    Then on Print form, select service Parcel Select Ground Large Package
+    Then on Print form, select left side starting label
+    Then click Print Sample button on Print form
+    Then set Mail Print modal Printer to factory
+    Then click Print button on Mail Print modal Sample
     Then Sign out

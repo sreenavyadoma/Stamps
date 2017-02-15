@@ -1,12 +1,7 @@
 
-Then /^on Print form, set Ship-To country to (.*)/ do |country|
-  #logger.step "on Print form, set Ship-To country to #{country}"
-  stamps.mail.ship_to.country.select country
-end
 
-Then /^Mail International: Set Ship-To Name to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To Name to #{value}"
-  field = stamps.mail.ship_to.name
+Then /^Mail International: Set Ship-To Name to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.name
   if value.length == 0
     field.send_keys(:enter)
   else
@@ -14,9 +9,8 @@ Then /^Mail International: Set Ship-To Name to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Mail International: Set Ship-To Company to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To Company to #{value}"
-  field = stamps.mail.ship_to.company
+Then /^Mail International: Set Ship-To Company to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.company
   if value.length == 0
     field.send_keys(:enter)
   else
@@ -24,9 +18,8 @@ Then /^Mail International: Set Ship-To Company to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Mail International: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To Address 1 to #{value}"
-  field = stamps.mail.ship_to.address_1
+Then /^Mail International: Set Ship-To Address 1 to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.address_1
   if value.length == 0
     field.send_keys(:enter)
   else
@@ -34,9 +27,8 @@ Then /^Mail International: Set Ship-To Address 1 to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Mail International: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To Address 2 to #{value}"
-  field = stamps.mail.ship_to.address_2
+Then /^Mail International: Set Ship-To Address 2 to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.address_2
 
   if value.length == 0
     field.send_keys(:enter)
@@ -45,9 +37,8 @@ Then /^Mail International: Set Ship-To Address 2 to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Mail International: Set Ship-To City to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To City to #{value}"
-  field = stamps.mail.ship_to.city
+Then /^Mail International: Set Ship-To City to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.city
   if value.length == 0
     field.send_keys(:enter)
   else
@@ -55,9 +46,8 @@ Then /^Mail International: Set Ship-To City to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Mail International: Set Ship-To Province to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To Province to #{value}"
-  field = stamps.mail.ship_to.province
+Then /^Mail International: Set Ship-To Province to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.province
   if value.length == 0
     field.send_keys(:enter)
   else
@@ -65,9 +55,8 @@ Then /^Mail International: Set Ship-To Province to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Mail International: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To Postal Code to #{value}"
-  field = stamps.mail.ship_to.postal_code
+Then /^Mail International: Set Ship-To Postal Code to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.postal_code
   if value.length == 0
     field.send_keys(:enter)
   else
@@ -75,9 +64,8 @@ Then /^Mail International: Set Ship-To Postal Code to \"(.*)\"$/ do |value|
   end
 end
 
-Then /^Mail International: Set Ship-To Phone to \"(.*)\"$/ do |value|
-  #logger.step "Set Ship-To Phone to #{value}"
-  field = stamps.mail.ship_to.phone
+Then /^Mail International: Set Ship-To Phone to (.*)$/ do |value|
+  field = stamps.mail.print_form.ship_to.phone
   if value.length == 0
     field.send_keys(:enter)
   else

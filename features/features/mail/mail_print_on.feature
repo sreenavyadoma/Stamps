@@ -5,18 +5,18 @@ Feature: Envelopes BVT
 
   @mail_services
   Scenario: Envelope
-    Then on Print form, select Stamps
-    Then on Shipping Label Print form, select Shipping Label - 8 ½” x 11” Paper
-    Then on Shipping Label Print form, select Shipping Label - SDC-1200, 4 ¼” x 6 ¾”
-    Then on Shipping Label Print form, select Shipping Label - 5 ½” x 8 ½”
-    Then on Envelopes Print form, select Envelope - #10, 4 ⅛” x 9 ½”
-    Then on Envelopes Print form, select Envelope - #9, 3 ⅞” x 8 ⅞”
-    Then on Envelopes Print form, select Envelope - #A9, 5 ¾” x 8 ¾”
-    Then on Envelopes Print form, select Envelope - #6, 3 ⅝” x 6 ½”
-    Then on Envelopes Print form, select Envelope - #A2, 4 ⅜” x 5 ¾”
-    Then on Envelopes Print form, select Envelope - #7, 3 ⅞” x 7 ½”
-    Then on Envelopes Print form, select Envelope - #11, 4 ½” x 10 ⅜”
-    Then on Envelopes Print form, select Envelope - #12, 4 ¾” x 11”
+    Then select Print form Print On Stamps
+    Then select Print On Shipping Label - 8 x 11 Paper on Print form
+    Then select Print On Shipping Label - SDC-1200 Paper on Print form
+    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then on Print form, select Envelope 10
+    Then on Print form, select Envelope - #9
+    Then on Print form, select Envelope - #A9
+    Then on Print form, select Envelope - #6
+    Then on Print form, select Envelope - #A2, 4 ⅜” x 5 ¾”
+    Then on Print form, select Envelope - #7
+    Then on Print form, select Envelope - #11
+    Then on Print form, select Envelope - #12”
     Then on Print form, select Certified Mail Label - SDC-3610
     Then on Print form, select Certified Mail Label - SDC-3710
     Then on Print form, select Certified Mail Label - SDC-3910

@@ -72,7 +72,7 @@ Then /^Pagination control to go to previous page is (\w+)$/ do |previous_paginat
   end
 end
 
-Then /^Pagination control to go to page number is (\w+$)/ do |page_number_enabled|
+Then /^Pagination control to go to page number is (\w+$)$/ do |page_number_enabled|
   enabled = stamps.orders.toolbar.page_number.present?
   if page_number_enabled.downcase == "enabled"
     #logger.step "Pagination control to go to page number is enabled.  Test #{(enabled)?'Passed':'Failed'}"

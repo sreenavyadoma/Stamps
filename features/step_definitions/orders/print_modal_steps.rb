@@ -14,7 +14,7 @@ end
 
 Then /^(?:I|i)n Print modal, expect Incomplete Order Error Message (.*)$/ do |expectation|
   #logger.step "In Print modal, expect Incomplete Order Error Message #{expectation}"
-  expect(@incomplete_order_modal.error_message).to include expectation
+  expect(@incomplete_order_modal.error_message).to include(expectation)
 end
 
 Then /^(?:I|i)n Print modal, click Close button$/ do

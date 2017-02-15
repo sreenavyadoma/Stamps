@@ -51,7 +51,6 @@ module Stamps
         else
           # do nothing
       end
-
       browser.url
     end
   end

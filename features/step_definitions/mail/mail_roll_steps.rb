@@ -1,6 +1,6 @@
-Then /^Mail Roll: Set service to (.*)/ do |service|
+Then /^Mail Roll: Set service to (.*)$/ do |service|
   #logger.step "Roll - Set Print Mail service to: \n #{service}"
-  stamps.mail.service.select service
+  stamps.mail.print_form.service.select service
 end
 
 Then /^Mail Roll: Select service First-Class Mail Large Envelope-Flat$/ do
@@ -150,7 +150,7 @@ end
 
 Then /^Mail Roll: Open Contacts modal/ do
   #logger.step "Mail Roll: Open Contacts Modal"
-  @contacts = stamps.mail.ship_to.contacts.open
+  @contacts = stamps.mail.print_form.ship_to.contacts.open
 end
 
 Then /^Mail Roll: Expect Domestic Address field displays (.*)$/ do |value|
@@ -158,14 +158,14 @@ Then /^Mail Roll: Expect Domestic Address field displays (.*)$/ do |value|
 
   5.times{
     begin
-      actual = stamps.mail.ship_to.text_area.text
+      actual = stamps.mail.print_form.ship_to.text_area.text
       actual_stripped = actual.gsub(/ \n/,", ")
       actual_stripped_final = actual_stripped.gsub(/\n/,", ")
       break if actual_stripped_final == value
       sleep(2)
     end
   }
-  actual = stamps.mail.ship_to.text_area.text
+  actual = stamps.mail.print_form.ship_to.text_area.text
   actual_stripped = actual.gsub(/ \n/,", ")
   actual_stripped_final = actual_stripped.gsub(/\n/,", ")
   expect(actual_stripped_final).to eql value
@@ -196,13 +196,13 @@ Then /^Mail Roll: Set Print Reference Number to Unchecked$/ do
   stamps.mail.form_view.print_reference_number.uncheck
 end
 
-Then /^Mail Roll: Set Reference Number to (.*)/ do |ref_no|
+Then /^Mail Roll: Set Reference Number to (.*)$/ do |ref_no|
   #logger.step "Set Shipping Label Reference Number to #{ref_no}"
 
   stamps.mail.form_view.reference_number.set ref_no
 end
 
-Then /^Mail Roll: Set Cost Code to (.*)/ do |code|
+Then /^Mail Roll: Set Cost Code to (.*)$/ do |code|
   #logger.step "Mail Roll: Set Cost Code to \n #{code}"
 
   stamps.mail.form_view.cost_code.select code
