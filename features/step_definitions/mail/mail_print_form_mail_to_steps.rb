@@ -10,23 +10,19 @@ Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:I|i)nternational (?:M|m)ail 
 end
 
 Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:M|m)ail (?:T|t)o (?:|a )(?:|random )address(?: to| in|) (.*)$/ do |address|
-  stamps.mail.print_form.mail_to.set(address_helper(address))
+  stamps.mail.print_form.mail_to.domestic.text_area.set(address_helper(address))
 end
 
 Then /^on Shipping Label Print form, Expect Domestic Address field displays (.*)$/ do |value|
-  5.times{
-    begin
-      actual = stamps.mail.print_form.ship_to.text_area.text
-      actual_stripped = actual.gsub(/ \n/,", ")
-      actual_stripped_final = actual_stripped.gsub(/\n/,", ")
-      break if actual_stripped_final == value
-      sleep(2)
-    end
-  }
-  actual = stamps.mail.print_form.ship_to.text_area.text
-  actual_stripped = actual.gsub(/ \n/,", ")
-  actual_stripped_final = actual_stripped.gsub(/\n/,", ")
-  expect(actual_stripped_final).to eql value
+  50.times do
+    stamps.mail.print_form.mail_to.blur_out
+    stamps.mail.print_form.mail_to.blur_out
+    sleep(0.5);
+    stamps.mail.print_form.mail_to.blur_out
+    stamps.mail.print_form.mail_to.blur_out
+    break if (stamps.mail.print_form.mail_to.domestic.text_area.text).gsub(/ \n/,", ").gsub(/\n/,", ") == value
+  end
+  expect((stamps.mail.print_form.mail_to.domestic.text_area.text).gsub(/ \n/,", ").gsub(/\n/,", ")).to eql value
   logger.step 'Address Cleansed -- Expected Result Confirmed'
 end
 
