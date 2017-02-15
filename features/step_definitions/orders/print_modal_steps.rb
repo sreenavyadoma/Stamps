@@ -33,7 +33,7 @@ Then /^ReIn Print modal, Reprint$/ do
 end
 
 Then /^(?:I|i)n Print modal, set Ship Date to today$/ do
-  step "In Print modal, set Ship Date to today plus #{1}"
+  step "In Print modal, set Ship Date to today plus 0"
 end
 
 Then /^(?:I|i)n Print modal, set Ship Date to today plus (\d+)$/ do |day|

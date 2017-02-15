@@ -284,7 +284,7 @@ module Stamps
       end
 
       def now_month_dd
-        picker = StampsElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
+        picker = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
         today = StampsElement.new browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
         10.times {
           picker.safe_click unless today.present?
@@ -296,7 +296,7 @@ module Stamps
       end
 
       def todays_date
-        picker = StampsElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
+        picker = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
         today = StampsElement.new StampsElement.new browser.div css: "div[title=Today]"
         10.times {
           picker.safe_click unless today.present?
@@ -318,8 +318,8 @@ module Stamps
       def today_plus day
         day = day.to_i
         date_picker_header = StampsElement.new browser.div class: "x-datepicker-header"
-        picker_button = StampsElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
-        ship_date_textbox = StampsTextbox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
+        picker_button = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
+        ship_date_textbox = StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
 
         ship_date_str = ParameterHelper.now_plus_month_dd day
         ship_date_mmddyy = ParameterHelper.now_plus_mm_dd_yy day

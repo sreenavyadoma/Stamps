@@ -74,8 +74,7 @@ Then /^(?:I|i)n Settings modal, set Logoff to 2 hours$/ do
   step "In Settings modal, Logoff set 2 hours"
 end
 
-Then /^(?:I|i)n Settings modal, Logoff set(.*)$/ do |value|
-  #logger.step "In Settings modal, Logoff set #{value}"
+Then /^(?:I|i)n Settings modal, Logoff set (.*)$/ do |value|
   case value.downcase
     when "5 min"
       @general_settings.log_off.five_min
