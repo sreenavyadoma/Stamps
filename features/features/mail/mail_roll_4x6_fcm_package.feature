@@ -17,5 +17,5 @@ Feature: Mail Roll - 4" x 6" - FCM Package
     Then Mail Roll: Select service First-Class Mail Package-Thick Envelope
     Then click Print form Print button
     Then in Mail Print modal, select Printer "ZDesigner"
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

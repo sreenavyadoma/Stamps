@@ -21,5 +21,5 @@ Feature: Extra Services BVT
     Then on Shipping Label Print form, set Cost Code to None
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

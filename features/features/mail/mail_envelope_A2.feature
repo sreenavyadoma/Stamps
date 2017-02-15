@@ -14,5 +14,5 @@ Feature: Envelope a2
     Then on Envelope form, set service to First-Class Mail Letter
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

@@ -9,7 +9,7 @@ Feature: Envelopes BVT
     Then select Print On Shipping Label - 8 x 11 Paper on Print form
     Then select Print On Shipping Label - SDC-1200 Paper on Print form
     Then select Print On Shipping Label - 5 x 8 on Print form
-    Then on Print form, select Envelope 10
+    Then select Print form Print On Envelope - #10, 4 ⅛" x 9 ½"
     Then on Print form, select Envelope - #9
     Then on Print form, select Envelope - #A9
     Then on Print form, select Envelope - #6

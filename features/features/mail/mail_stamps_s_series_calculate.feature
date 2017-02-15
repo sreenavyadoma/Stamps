@@ -18,5 +18,5 @@ Feature: Stamps S Series - Calculate Postage
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
     Then click Print form Print button
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

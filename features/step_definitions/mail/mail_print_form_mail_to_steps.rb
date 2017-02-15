@@ -9,7 +9,7 @@ Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:I|i)nternational (?:M|m)ail 
   stamps.mail.print_form.mail_to.international.country.select(test_parameter[:mail_to_country])
 end
 
-Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:M|m)ail (?:T|t)o (?:|a )(?:|random )address(?: to| in|) (.*)$/ do |address|
+Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:M|m)ail (?:T|t)o to (?:|a )(?:|random )address(?: to| in|) (.*)$/ do |address|
   stamps.mail.print_form.mail_to.domestic.text_area.set(address_helper(address))
 end
 

@@ -19,5 +19,5 @@ Feature: Mail Sample Shipping Label - SDC-1200 - FCM Large Envelope
     Then select Print On FCM Package on Print form
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal Sample
+    Then click Mail Print modal Print button Sample
     Then Sign out

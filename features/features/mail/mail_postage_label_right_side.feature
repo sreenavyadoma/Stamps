@@ -20,7 +20,7 @@ Feature: Mail Shipping Label - Right Side
     Then on Print form, select right side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out
 
   @mail_print_label_right_side
@@ -37,7 +37,7 @@ Feature: Mail Shipping Label - Right Side
     Then on Print form, select right side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out
 
   @mail_print_label_right_side
@@ -54,5 +54,5 @@ Feature: Mail Shipping Label - Right Side
     Then on Print form, select right side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

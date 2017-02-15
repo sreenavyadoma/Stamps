@@ -23,5 +23,5 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - FCM Package
     Then on Print form, select left side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

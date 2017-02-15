@@ -21,5 +21,5 @@ Feature: Mail Roll - 4" x 6" - PSG Package
     Then Mail Roll: Select service Parcel Select Ground Package
     Then click Print form Print button
     Then in Mail Print modal, select Printer "ZDesigner"
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

@@ -22,7 +22,7 @@ Feature: Stamps BVT
     Then Mail Stamps: Set Cost Code to None
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out
 
   @mail_bvt_netstamps_calculate
@@ -36,6 +36,6 @@ Feature: Stamps BVT
     Then Mail Stamps: Select Calculate Mail service First-Class Mail Letter
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out
 

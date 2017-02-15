@@ -19,5 +19,5 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Regional Box A
     Then Mail Roll: Select service Priority Mail Regional Rate Box A
     Then click Print form Print button
     Then in Mail Print modal, select Printer "ZDesigner"
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out

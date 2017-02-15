@@ -19,5 +19,5 @@ Feature: Stamps C Series Calculate - Calculate Postage
     Then Mail Stamps: Set Cost Code to None
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal
+    Then click Mail Print modal Print button
     Then Sign out
