@@ -30,7 +30,6 @@ Then /^on Shipping Label Print form, Expect Domestic Address field displays (.*)
   logger.step 'Address Cleansed -- Expected Result Confirmed'
 end
 
-
 Then /^on Print form, set Ship-To to$/ do |table|
   address = table.hashes.first
 
