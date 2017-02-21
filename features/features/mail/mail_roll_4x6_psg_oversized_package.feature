@@ -10,7 +10,7 @@ Feature: Mail Roll - 4" x 6" - PSG Oversized Package
   Scenario: Roll - 4" x 6" - PSG Oversized Package
 
 
-    Then on Print form, select Roll - 4” x 6” Shipping Label
+    Then select Print On Roll - 4" x 6" Shipping Label
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

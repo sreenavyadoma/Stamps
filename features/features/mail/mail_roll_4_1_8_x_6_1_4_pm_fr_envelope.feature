@@ -9,7 +9,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM FR Envelope
   @mail_print_roll_4_1_8_x_6_1_4_pm_fr_envelope
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM FR Envelope
 
-    Then on Print form, select Roll - 4 ⅛” x 6 ¼” Shipping Label
+    Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

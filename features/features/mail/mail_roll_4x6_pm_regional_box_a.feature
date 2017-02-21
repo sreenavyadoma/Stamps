@@ -10,7 +10,7 @@ Feature: Mail Roll - 4" x 6" - PM Regional Box A
   Scenario: Roll - 4" x 6" - PM Regional Box A
 
 
-    Then on Print form, select Roll - 4” x 6” Shipping Label
+    Then select Print On Roll - 4" x 6" Shipping Label
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

@@ -1,68 +1,72 @@
 module Stamps
   module Mail
     module PrintFormPanel
+      module PrintFormBlurOut
+        def blur_out
+          @blur_out = StampsElement.new(browser.label(text: 'Print On:')) if @blur_out.nil? || !@blur_out.present?
+          expect(@blur_out.present?).to be true
+          3.times { @blur_out.safe_double_click }
+        end
+      end
 
-      module PrintFormMailFrom
+      module MailFrom
         def mail_from
-          @mail_from = MailFrom.new(param) if @mail_from.nil? || !@mail_from.present?
+          @mail_from = PrintFormMailFrom.new(param) if @mail_from.nil? || !@mail_from.present?
           expect(@mail_from.present?).to be true
           @mail_from
         end
       end
 
-      module PrintFormMailTo
+      module MailTo
         def mail_to
-          @mail_to = MailTo.new(param) if @mail_to.nil? || !@mail_to.present?
+          @mail_to = PrintFormMailTo.new(param) if @mail_to.nil? || !@mail_to.present?
           expect(@mail_to.present?).to be true
           @mail_to
         end
       end
 
-      module PrintFormMailWeight
+      module MailWeight
         def mail_weight
-          @mail_weight = MailWeight.new(param) if @mail_weight.nil? || !@mail_weight.present?
+          @mail_weight = PrintFormWeight.new(param) if @mail_weight.nil? || !@mail_weight.present?
           expect(@mail_weight.present?).to be true
           @mail_weight
         end
       end
 
-      module PrintFormMailService
+      module MailService
         def mail_service
-          @mail_service = MailService.new(param) if @mail_service.nil? || !@mail_service.present?
+          @mail_service = PrintFormService.new(param) if @mail_service.nil? || !@mail_service.present?
           expect(@mail_service.present?).to be true
           @mail_service
         end
       end
 
-      module Stamps
-        include PrintFormMailTo
-        include PrintFormMailWeight
-        include PrintFormMailService
+
+      module MailStamps
+        include MailTo
+        include MailWeight
+        include MailService
       end
 
       module CertifiedMail
-        include PrintFormMailFrom
-        include PrintFormMailTo
-        include PrintFormMailWeight
-        include PrintFormMailService
+        include MailFrom
+        include MailTo
+        include MailWeight
+        include MailService
       end
 
       module Rolls
-        include PrintFormMailFrom
-        include PrintFormMailTo
-        include PrintFormMailWeight
-        include PrintFormMailService
+        include MailFrom
+        include MailTo
+        include MailWeight
+        include MailService
       end
 
       module Envelopes
-        include PrintFormMailFrom
-        include PrintFormMailTo
-        include PrintFormMailWeight
-        include PrintFormMailService
-
-        def insure_for
-          DetailsInsureFor.new(param)
-        end
+        include MailFrom
+        include MailTo
+        include MailWeight
+        include MailService
 
         def ship_date
           ShipDate.new(param)
@@ -74,16 +78,11 @@ module Stamps
       end
 
       module ShippingLabels
-        include PrintFormMailFrom
-        include PrintFormMailTo
-        include PrintFormMailWeight
-        include PrintFormMailService
+        include MailFrom
+        include MailTo
+        include MailWeight
+        include MailService
 
-        def mail_insure_for
-          @mail_insure_for = DetailsInsureFor.new(param) if @mail_insure_for.nil? || !@mail_insure_for.present?
-          expect(@mail_insure_for.present?).to be true
-          @mail_insure_for
-        end
 
         def mail_tracking
           @mail_tracking = MailTracking.new(param) if @mail_insure_for.nil? || !@mail_insure_for.present?
@@ -115,15 +114,5 @@ module Stamps
         end
       end
     end
-
   end
 end
-
-=begin
-
-          @email_tracking = Email.new(param)
-          @tracking = Tracking.new(param)
-          @customs = PrintPostageCustoms.new(param)
-          @extra_services = StampsElement.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnIconEl"))
-          @service_modal = ExtraServices.new(param)
-=end

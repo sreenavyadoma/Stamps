@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Then /^(?:S|s)elect Print form Print On (.*)$/ do |media|
+Then /^(?:S|s)elect Print On (.*)$/ do |media|
   test_parameter[:print_on] = media
   stamps.mail.print_on(test_parameter[:print_on])
 end

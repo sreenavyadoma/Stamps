@@ -6,12 +6,12 @@ Feature: International Shipping BVT
   @mail_bvt_international
   Scenario: International Shipping
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail From to default
     Then on Print form, set Ship-To to
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |
-    Then on Print form, select service First-Class Mail International Package
+    Then select Mail Service First-Class Mail International Package
     Then set Print form Pounds to 0
     Then on Print form, set Ounces to 3
     Then on Shipping Label Print form, Edit Customs Form

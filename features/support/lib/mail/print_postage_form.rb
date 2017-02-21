@@ -146,24 +146,6 @@ module Stamps
 
     end
 
-    class Contacts < Browser::StampsHtmlField
-
-      def link
-        StampsElement.new(browser.a(css: "[class*=sdc-mainpanel-shiptolinkbtn]"))
-      end
-
-      def open
-        button = link
-        contacts_modal = ContactsModal.new(param)
-        5.times do
-          button.safe_click
-          sleep(0.35)
-          return contacts_modal if contacts_modal.present?
-        end
-        expect("Unable to open Contacts Modal, check your code.").to eql "" unless contacts_modal.present?
-      end
-    end
-
     class CostCode  < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new browser.text_field name: "costCodeId"

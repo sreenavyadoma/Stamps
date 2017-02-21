@@ -1,13 +1,6 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      module PrintFormBlurOut
-        def blur_out
-          @blur_out = StampsElement.new(browser.label(text: 'Print On:')) if @blur_out.nil? || !@blur_out.present?
-          expect(@blur_out.present?).to be true
-          3.times { @blur_out.safe_double_click }
-        end
-      end
 
       class PrintOn < Browser::StampsHtmlField
         attr_accessor :drop_down, :text_box
@@ -199,23 +192,11 @@ module Stamps
         end
       end
 
-      class MailTo < Browser::StampsHtmlField
-        attr_reader :domestic, :international, :contacts
-        include PrintFormBlurOut
-
-        def initialize(param)
-          super(param)
-          @domestic = MailToDom.new(param)
-          @international = MailToInt.new(param)
-          @contacts = Contacts.new(param)
-        end
-      end
-
-      class MailEmail < Browser::StampsHtmlField
+      class PrintFormEmail < Browser::StampsHtmlField
 
       end
 
-      class MailWeight < Browser::StampsHtmlField
+      class PrintFormWeight < Browser::StampsHtmlField
         attr_reader :auto_weigh, :weigh_button, :mail_pounds, :mail_ounces
         include PrintFormBlurOut
 
@@ -240,7 +221,7 @@ module Stamps
         end
       end
 
-      class MailFrom < Browser::StampsHtmlField
+      class PrintFormMailFrom < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down, :manage_shipping_address
         include PrintFormBlurOut
 
@@ -294,7 +275,7 @@ module Stamps
         end
       end
 
-      class MailService < Browser::StampsHtmlField
+      class PrintFormService < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down
         include PrintFormBlurOut
 
@@ -389,7 +370,7 @@ module Stamps
         end
       end
 
-      class MailEmail < Browser::StampsHtmlField
+      class PrintFormEmail < Browser::StampsHtmlField
         attr_reader :checkbox, :text_box
         def initialize(param)
           super(param)
@@ -439,7 +420,7 @@ module Stamps
         end
       end
 
-      class MailInsureFor < Browser::StampsHtmlField
+      class PrintFormInsureFor < Browser::StampsHtmlField
         def checkbox
 
         end
@@ -461,25 +442,7 @@ module Stamps
         end
       end
 
-      class MailContacts < Browser::StampsHtmlField
-
-        def link
-          StampsElement.new(browser.a(css: "[class*=sdc-mainpanel-shiptolinkbtn]"))
-        end
-
-        def open
-          button = link
-          contacts_modal = ContactsModal.new(param)
-          5.times do
-            button.safe_click
-            sleep(0.35)
-            return contacts_modal if contacts_modal.present?
-          end
-          expect("Unable to open Contacts Modal, check your code.").to eql "" unless contacts_modal.present?
-        end
-      end
-
-      class MailCostCode  < Browser::StampsHtmlField
+      class PrintFormCostCode < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new browser.text_field name: "costCodeId"
         end
@@ -514,7 +477,7 @@ module Stamps
 
       end
 
-      class MailQuantity < Browser::StampsHtmlField
+      class PrintFormQuantity < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
         end
@@ -566,6 +529,36 @@ module Stamps
         end
       end
 
+      class PrintFormMailToLink < Browser::StampsHtmlField
+        attr_accessor :link, :contacts_modal
+
+        def initialize(param)
+          super(param)
+          @link = StampsElement.new(browser.span(css: "label[class*=sdc-mainpanel-shiptolinkbtn]>span>span>span[id$=btnInnerEl]"))
+          @contacts_modal = MailSearchContactsModal.new(param)
+        end
+
+        def click
+          15.times do
+            sleep(0.35)
+            return contacts_modal if contacts_modal.present?
+            link.safe_click
+          end
+          expect(contacts_modal.present?).to be(true)
+        end
+      end
+
+      class PrintFormMailTo < Browser::StampsHtmlField
+        attr_reader :domestic, :international, :mail_to_link
+        include PrintFormBlurOut
+
+        def initialize(param)
+          super(param)
+          @domestic = MailToDom.new(param)
+          @international = MailToInt.new(param)
+          @mail_to_link = PrintFormMailToLink.new(param)
+        end
+      end
     end
   end
 end

@@ -9,7 +9,7 @@ Feature: Stamps ML Series - Calculate Postage
   @mail_print_stamps_ml_series_calculate
 
   Scenario: Stamps Regression Ml Series - Calculate Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to ML1234
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default

@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - XM Legal Flat Rate Envelope
   @mail_print_shipping_label_5x8_xm_lfr_envelope
   Scenario: Shipping Label - 5 ½” x 8 ½” - XM Legal Flat Rate Envelope
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
@@ -19,7 +19,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - XM Legal Flat Rate Envelope
 
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then on Print form, select service Priority Mail Express Legal Flat Rate Envelope
+    Then select Mail Service Priority Mail Express Legal Flat Rate Envelope
     Then on Print form, select left side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory

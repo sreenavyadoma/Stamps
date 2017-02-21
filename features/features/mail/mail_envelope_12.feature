@@ -5,7 +5,7 @@ Feature: Envelopes #12
 
   @mail_print_envelope_12
   Scenario: Envelope #12
-    Then on Print form, select Envelope - #12”
+    Then select Print On Envelope - #12, 4 ¾" x 11"
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
     Then on Print form, set Mail To address to zone 5 through 8

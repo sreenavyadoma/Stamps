@@ -5,7 +5,7 @@ Feature: Envelope #9
 
   @mail_print_envelope_9
   Scenario: Envelope #9
-    Then on Print form, select Envelope - #9
+    Then select Print On Envelope - #9, 3 ⅞" x 8 ⅞"
     Then set Print form Mail From to default
     Then on Envelope form, set Mail To country to United States
     Then on Print form, set Mail To address to zone 1 through 4

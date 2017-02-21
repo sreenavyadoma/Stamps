@@ -8,7 +8,7 @@ Feature: Stamps S Series - Specify Postage
   @mail_print_stamps_regression
   @mail_print_stamps_s_series_specify
   Scenario: Stamps Regression S Series - Specify Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to S12345
     Then Mail Stamps: Select Specify Mail Amount
     Then Mail Stamps: Set Ship-From to default

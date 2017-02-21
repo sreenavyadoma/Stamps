@@ -5,7 +5,7 @@ Feature: Envelopes BVT
 
   @mail_bvt_envelopes
   Scenario: Envelope
-    Then select Print form Print On Envelope - #10, 4 ⅛" x 9 ½"
+    Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
     Then set Print form Mail From to default
     Then set Label form Mail To to a random address in zone 1
     Then set Print form Pounds to 0
@@ -18,7 +18,7 @@ Feature: Envelopes BVT
 
   @mail_bvt_envelopes2
   Scenario: Envelope
-    Then select Print form Print On Envelope - #10, 4 ⅛" x 9 ½"
+    Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
     Then set Print form Mail From to default
     Then on Envelope form, set Mail To country to United States
     Then on Envelope form, set Mail To address to zone 1 through 4

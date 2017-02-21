@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Package
   @mail_print_shipping_label_5x8_pm_package
   Scenario: Shipping Label - 5 ½” x 8 ½” - PM Package
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
@@ -19,7 +19,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Package
 
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then on Print form, select service Priority Mail Package
+    Then select Mail Service Priority Mail Package
     Then on Print form, select left side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory

@@ -8,7 +8,7 @@ Feature: Stamps BVT
   @mail_bvt_netstamps_specify
 
   Scenario: Stamps Specify Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
 
     Then Mail Stamps: Set Serial Number to random
 
@@ -27,7 +27,7 @@ Feature: Stamps BVT
 
   @mail_bvt_netstamps_calculate
   Scenario: Stamps Calculate Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to random
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default

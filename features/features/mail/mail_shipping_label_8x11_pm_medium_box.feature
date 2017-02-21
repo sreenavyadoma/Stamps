@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Medium Flat Rate Box
   @mail_print_shipping_label_8x11_pm_medium_box
   Scenario: Shipping Label - 8 ½” x 11” Paper - PM Medium Flat Rate Box
 
-    Then select Print On Shipping Label - 8 x 11 Paper on Print form
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
@@ -19,7 +19,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Medium Flat Rate Box
 
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then on Print form, select service Priority Mail Medium Flat Rate Box
+    Then select Mail Service Priority Mail Medium Flat Rate Box
     Then on Print form, select left side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory

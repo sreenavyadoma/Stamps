@@ -9,7 +9,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - MM Package
   @mail_print_roll_4_1_8_x_6_1_4_mm_package
   Scenario: Roll - 4 ⅛” x 6 ¼” - MM Package
 
-    Then on Print form, select Roll - 4 ⅛” x 6 ¼” Shipping Label
+    Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

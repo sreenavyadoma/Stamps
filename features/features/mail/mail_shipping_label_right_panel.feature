@@ -6,7 +6,7 @@ Feature: Extra Services BVT
   @mail_print_shipping_label_right_panel
   Scenario: Shipping Label Right Panel
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

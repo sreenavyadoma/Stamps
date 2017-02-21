@@ -8,7 +8,7 @@ Feature: Stamps k Series - Specify Postage
   @mail_print_stamps_regression
   @mail_print_stamps_k_series_specify
   Scenario: Stamps Regression K Series - Specify Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to K12345
     Then Mail Stamps: Select Specify Mail Amount
     Then Mail Stamps: Set Ship-From to default

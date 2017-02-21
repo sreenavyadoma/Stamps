@@ -9,7 +9,7 @@ Feature: Stamps C Series Calculate - Calculate Postage
   @mail_print_stamps_c_series_calculate
 
   Scenario: Stamps Regression C Series - Calculate Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to C12345
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default

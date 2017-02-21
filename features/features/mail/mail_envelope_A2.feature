@@ -5,7 +5,7 @@ Feature: Envelope a2
 
   @mail_print_envelope_A2
   Scenario: Envelope #A2
-    Then on Print form, select Envelope - #A2, 4 ⅜” x 5 ¾”
+    Then select Print On Envelope - #A2, 4 ⅜" x 5 ¾"
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
     Then on Print form, set Mail To address to zone 5 through 8

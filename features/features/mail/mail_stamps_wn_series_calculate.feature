@@ -9,7 +9,7 @@ Feature: Stamps WN Series - Calculate Postage
   @mail_print_stamps_wn_series_calculate
 
   Scenario: Stamps Regression WN Series - Calculate Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to WN1234
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default

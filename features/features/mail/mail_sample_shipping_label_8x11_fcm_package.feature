@@ -9,7 +9,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - FCM Package
   @mail_print_sample_shipping_label_8x11_fcm_package
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper - FCM Package
 
-    Then select Print On Shipping Label - 8 x 11 Paper on Print form
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

@@ -6,9 +6,8 @@ Feature: Contacts BVT
   @mail_bvt_contacts
   Scenario: Contacts
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail From to default
-    Then set Print form Mail to country to United States
-    Then on Shipping Label Print form, Open Contacts modal
-    Then Contacts: Click Contacts Page Link
+    Then click Label Form Mail To link
+    Then click Search Contacts close button
     Then Sign out

@@ -9,7 +9,7 @@ Feature: Stamps R Series - Calculate Postage
   @mail_print_stamps_r_series_calculate
 
   Scenario: Stamps Regression R Series - Calculate Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to R12345
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default

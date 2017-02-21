@@ -13,8 +13,33 @@ Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:M|m)ail (?:T|t)o to (?:|a )(
   stamps.mail.print_form.mail_to.domestic.text_area.set(address_helper(address))
 end
 
+Then /^(?:C|c)lick (?:Envelope|Label|Roll|CM) Form Mail To link/ do
+  stamps.mail.print_form.mail_to.mail_to_link.click
+end
+
+Then /^(?:C|c)lick Search Contacts close button$/ do
+  stamps.mail.print_form.mail_to.mail_to_link.click.close
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Then /^on Shipping Label Print form, Expect Domestic Address field displays (.*)$/ do |value|
-  50.times do
+  20.times do
     stamps.mail.print_form.mail_to.blur_out
     stamps.mail.print_form.mail_to.blur_out
     sleep(0.5);

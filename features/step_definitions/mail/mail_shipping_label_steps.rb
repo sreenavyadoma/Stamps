@@ -1,12 +1,6 @@
 
 Then /^on Shipping Label Print form, Edit Customs Form$/ do
-  #logger.step "on Shipping Label Print form, Edit Customs Form"
   @customs_form = stamps.mail.customs.edit_form
-end
-
-Then /^on Shipping Label Print form, Open Contacts modal/ do
-  #logger.step "on Shipping Label Print form, Open Contacts Modal"
-  @contacts = stamps.mail.print_form.ship_to.contacts.open
 end
 
 Then /^on Print form, select left side starting label/ do
@@ -36,20 +30,14 @@ Then /^on Shipping Label Print form, set Print Receipt to Checked$/ do
 end
 
 Then /^on Shipping Label Print form, set Print Receipt to Unchecked$/ do
-  #logger.step "on Shipping Label Print form, Uncheck Print Receipt"
-  
   stamps.mail.shipping_labels.form_view.print_receipt.uncheck
 end
 
 Then /^on Shipping Label Print form, set Print Reference Number to Checked$/ do
-  #logger.step "on Shipping Label Print form, Check Print Reference Number"
-  
   stamps.mail.shipping_labels.form_view.print_reference_number.check
 end
 
 Then /^on Shipping Label Print form, set Print Reference Number to Unchecked$/ do
-  #logger.step "on Shipping Label Print form, Uncheck Print Reference Number"
-  
   stamps.mail.shipping_labels.form_view.print_reference_number.uncheck
 end
 

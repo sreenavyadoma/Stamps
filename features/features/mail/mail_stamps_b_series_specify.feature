@@ -8,7 +8,7 @@ Feature: Stamps B Series - Specify Postage
   @mail_print_stamps_regression
   @mail_print_stamps_b_series_specify
   Scenario: Stamps Regression B Series - Specify Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to B12345
     Then Mail Stamps: Select Specify Mail Amount
     Then Mail Stamps: Set Ship-From to default

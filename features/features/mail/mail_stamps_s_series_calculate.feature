@@ -9,7 +9,7 @@ Feature: Stamps S Series - Calculate Postage
   @mail_print_stamps_s_series_calculate
 
   Scenario: Stamps Regression S Series - Calculate Postage
-    Then select Print form Print On Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to S12345
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default

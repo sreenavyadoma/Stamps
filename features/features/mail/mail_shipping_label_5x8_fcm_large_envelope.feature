@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
   @mail_print_shipping_label_5x8_fcm_large_envelope
   Scenario: Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

@@ -5,7 +5,7 @@ Feature: Verify Mail Elements Are Present
 
   @mail_print_postage_elements
   Scenario: Print Mail Elements
-    Then select Print On Shipping Label - 8 x 11 Paper on Print form
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then on Print form, expect Print On Field is present
     Then on Print form, expect Ship From Field is present
     Then on Print form, expect Ship To Link is present
@@ -22,7 +22,7 @@ Feature: Verify Mail Elements Are Present
     Then on Print form, expect service Price is present
     Then on Print form, expect Insure For Field is present
     Then on Print form, expect Insure For Price is present
-    Then on Print form, select service Priority Mail Package
+    Then select Mail Service Priority Mail Package
     Then on Print form, expect Tracking Field is present
     Then on Print form, expect Tracking Price is present
     Then on Print form, expect Extra Services Button is present

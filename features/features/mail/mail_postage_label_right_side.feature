@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - Right Side
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label - 8 ½” x 11” Paper
 
-    Then select Print On Shipping Label - 8 x 11 Paper on Print form
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
@@ -26,7 +26,7 @@ Feature: Mail Shipping Label - Right Side
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label -  5 ½” x 8 ½”
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
@@ -43,7 +43,7 @@ Feature: Mail Shipping Label - Right Side
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label -  SDC-1200
 
-    Then select Print On Shipping Label - SDC-1200 Paper on Print form
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States

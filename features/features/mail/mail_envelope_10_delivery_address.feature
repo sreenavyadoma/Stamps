@@ -5,7 +5,7 @@ Feature: Envelope #10 - Print Only Delivery Address
 
   @mail_print_envelope_10_delivery_address
   Scenario: Envelope #10
-    Then select Print form Print On Envelope - #10, 4 ⅛" x 9 ½"
+    Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
     Then set Print form Mail From to default
     Then on Envelope form, set Mail To country to United States
     Then on Print form, set Mail To address to zone 1 through 4

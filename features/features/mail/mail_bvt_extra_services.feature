@@ -6,14 +6,14 @@ Feature: Extra Services BVT
   @mail_bvt_extra_services
   Scenario: Extra Services
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
     Then on Print form, set Mail To address to zone 1 through 4
     Then set Mail To address to zone 1 through 4 on Shipping Label
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then on Print form, select service Priority Mail Padded Flat Rate Envelope
+    Then select Mail Service Priority Mail Padded Flat Rate Envelope
     Then on Shipping Label Print form, set Hide Mail Value to Unchecked
 
     Then Mail: Open Extra Servicess

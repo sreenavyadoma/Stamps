@@ -9,7 +9,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM Package
   @mail_print_sample_shipping_label_5x8_fcm_package
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - FCM Package
 
-    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then select Print On Shipping Label - 5 ½" x 8 ½"
 
     Then set Print form Mail From to default
     Then set Print form Mail to country to United States
