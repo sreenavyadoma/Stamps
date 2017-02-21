@@ -60,7 +60,7 @@ When /^(?:I|i)n Orders Grid, uncheck row (\d+)$/ do |row|
 end
 
 Then /^(?:I|i)n Orders Grid, expect Date Printed for this order is today$/ do
-  stamps.orders.orders_grid.column.order_id.sort_descending
+  stamps.orders.orders_grid.column.order_date.sort_descending
   expect(stamps.orders.orders_grid.column.date_printed.data(test_data[:order_id])).to eql(Date.today.strftime "%b %-d")
 end
 
@@ -71,7 +71,7 @@ end
 Then /^(?:I|i)n Orders Grid, expect Ship Date for this order is today plus (\d+)$/ do |day|
   expectation = ParameterHelper.now_plus_mon_dd day
   10.times {
-    stamps.orders.orders_grid.column.order_id.sort_descending
+    stamps.orders.orders_grid.column.order_date.sort_descending
     break if stamps.orders.orders_grid.column.ship_date.data(test_data[:order_id]) == expectation
   }
   expect(stamps.orders.orders_grid.column.ship_date.data(test_data[:order_id])).to eql expectation
