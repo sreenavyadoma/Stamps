@@ -27,75 +27,75 @@ module Stamps
           drop_down.safe_click
           case str
             when /Paper/
-              print_form = :paper
+              param.print_form = :paper
               selected_sub_str = 'Paper'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[0]
             when /SDC-1200/
-              print_form = :paper
+              param.print_form = :paper
               selected_sub_str = 'SDC-1200'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[1]
             when /Shipping Label - 5 /
-              print_form = :paper
+              param.print_form = :paper
               selected_sub_str = 'Shipping Label - 5 '
               element = browser.lis(css: "li[class*=iconShippingLabel]")[2]
             when /Envelope - #10/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #10'
               element = browser.lis(css: "li[class*=iconEnvelope]")[0]
             when /Envelope - #9/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #9'
               element = browser.lis(css: "li[class*=iconEnvelope]")[1]
             when /Envelope - #A9/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #A9'
               element = browser.lis(css: "li[class*=iconEnvelope]")[2]
             when /Envelope - #6/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #6'
               element = browser.lis(css: "li[class*=iconEnvelope]")[3]
             when /Envelope - #A2/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #A2'
               element = browser.lis(css: "li[class*=iconEnvelope]")[4]
             when /Envelope - #7/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #7'
               element = browser.lis(css: "li[class*=iconEnvelope]")[5]
             when /Envelope - #11/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #11'
               element = browser.lis(css: "li[class*=iconEnvelope]")[6]
             when /Envelope - #12/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'Envelope - #12'
               element = browser.lis(css: "li[class*=iconEnvelope]")[7]
             when /SDC-3610/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'SDC-3610'
               element = browser.lis(css: "li[class*=iconCertified]")[0]
             when /SDC-3710/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'SDC-3710'
               element = browser.lis(css: "li[class*=iconCertified]")[1]
             when /SDC-3910/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'SDC-3910'
               element = browser.lis(css: "li[class*=iconCertified]")[2]
             when /SDC-3810/
-              print_form = :envelopes
+              param.print_form = :envelopes
               selected_sub_str = 'SDC-3810'
               element = browser.lis(css: "li[class*=iconCertified]")[3]
             when /Roll - 4" x 6"/
-              print_form = :rolls
+              param.print_form = :rolls
               selected_sub_str = 'Roll - 4'
               element = browser.lis(css: "li[class*=iconRoll]")[0]
             when /Roll - 4 /
-              print_form = :rolls
+              param.print_form = :rolls
               selected_sub_str = 'Roll - 4 '
               element = browser.lis(css: "li[class*=iconRoll]")[1]
             when /Stamps/
-              print_form = :stamps
+              param.print_form = :stamps
               selected_sub_str = 'Stamps'
               element = browser.li(css: "li[class*=iconNetStamps]")
             else
@@ -120,7 +120,7 @@ module Stamps
             sleep(0.15)
           end
           expect(text_box.text).to include(selected_sub_str)
-          print_form
+          param.print_form
         end
 
         def tooltip(selection)

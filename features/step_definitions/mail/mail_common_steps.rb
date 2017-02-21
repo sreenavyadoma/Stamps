@@ -172,7 +172,7 @@ Then /^on Print form, expect System Notification Banner is present$/ do
 end
 
 Then /^on Print form, expect Feedback Button is present$/ do
-  toolbar = Toolbar.new(param) # STUPID!
+  toolbar = Toolbar.new(param)
   expect(toolbar.feedback.present?).to be true
 end
 
@@ -182,15 +182,15 @@ Then /^on Print form, expect Classic Button is present$/ do
 end
 
 Then /^on Print form, expect Mail Total is present$/ do
-  expect(stamps.mail.mail_footer.total.present?).to be true
+  expect(stamps.mail.mail_toolbar.total.present?).to be true
 end
 
 Then /^on Print form, expect Print Sample Button is present$/ do
-  expect(stamps.mail.mail_footer.print_button.present?).to be true
+  expect(stamps.mail.mail_toolbar.print_button.present?).to be true
 end
 
 Then /^on Print form, expect Print Button is present$/ do
-  expect(stamps.mail.mail_footer.sample_button.present?).to be true
+  expect(stamps.mail.mail_toolbar.sample_button.present?).to be true
 end
 
 

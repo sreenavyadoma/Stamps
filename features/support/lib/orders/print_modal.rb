@@ -315,7 +315,7 @@ module Stamps
         today_plus 0
       end
 
-      def today_plus day
+      def today_plus(day)
         day = day.to_i
         date_picker_header = StampsElement.new browser.div class: "x-datepicker-header"
         picker_button = StampsElement.new browser.div(id: "sdc-printpostagewindow-shipdate-trigger-picker")
@@ -392,10 +392,12 @@ module Stamps
       end
     end
 
+
+
     class PrintModal < PrintModalObject
 
-      attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options, :print_button,
-                  :print_sample_button, :printer, :email_tracking_details
+      attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options,
+                  :print_sample_button, :printer, :email_tracking_details, :print_envelope_btn
 
       def initialize(param)
         super(param)
@@ -408,7 +410,11 @@ module Stamps
 
         @print_button = StampsElement.new browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')
         @print_sample_button = StampsElement.new browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')
+
+        @print_envelope_btn = StampsElement.new(browser.span(text: 'Print Envelope'))
       end
+
+
 
       def click
         starting_label_tag = StampsElement.new browser.span(text: "Starting Label:")

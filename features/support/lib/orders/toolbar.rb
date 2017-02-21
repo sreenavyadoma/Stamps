@@ -534,9 +534,7 @@ module Stamps
 
           usps_terms.i_agree if usps_terms_modal.present?
 
-          naws_plugin_error = NawsPluginError.new(param)
           error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
-          install_plugin_error = ErrorInstallPlugin.new(param)
 
           10.times do
             begin

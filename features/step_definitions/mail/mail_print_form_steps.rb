@@ -22,15 +22,10 @@ Then /^(?:S|s)elect Print form (?:S|s)ervice (.*)$/ do |service|
   stamps.mail.print_form.mail_service.select(service)
 end
 
-
-
-
-
-
 When /^(?:C|c)lick Print form Print button$/ do
-  stamps.mail.mail_footer.print
+  stamps.mail.mail_toolbar.print
 end
 
 When /^(?:C|c)lick Print Sample button on Print form$/ do
-  @print_window = stamps.mail.mail_footer.print_sample
+  @print_window = stamps.mail.mail_toolbar.print_sample
 end

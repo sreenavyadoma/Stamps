@@ -1,3 +1,4 @@
+
 Feature: Print Media Selection
 
   Background:
@@ -38,7 +39,7 @@ Feature: Print Media Selection
     # Stamps Services
     Then select Print form Print On Stamps
     Then select Print form service FCM Post Card
-    select Print form service FCM Letter
+    Then select Print form service FCM Letter
     Then select Print form service FCM Large Envelope
     Then select Print form service MM Package
     # Shipping Label Services
@@ -66,7 +67,7 @@ Feature: Print Media Selection
     Then select Print form service PSG Oversized Package
     # Envelope Services
     Then select Print form Print On Envelope - #10, 4 ⅛" x 9 ½"
-    select Print form service FCM Letter
+    Then select Print form service FCM Letter
     # Roll Services
     Then select Print form Print On Roll - 4" x 6" Shipping Label
     Then select Print form service FCM Large Envelope
@@ -90,4 +91,3 @@ Feature: Print Media Selection
     Then select Print form service PSG Package
     Then select Print form service PSG Large Package
     Then select Print form service PSG Oversized Package
-    

@@ -2,19 +2,18 @@
 module Stamps
   module Mail
     class WebMail < Browser::Modal
-      attr_accessor :sign_in_modal, :mail_toolbar, :mail_footer, :print_form_type, :print_form, :printing_on
+      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form_type, :print_form , :printing_on
 
       def initialize(param)
         super(param)
         @printing_on = PrintFormPanel::PrintOn.new(param)
         @sign_in_modal = MailSignInModal.new(param)
         @mail_toolbar = MailToolbar.new(param)
-        @mail_footer = MailFooter.new(param)
       end
 
       def print_on(selection)
-        print_form = printing_on.print_on(selection)
-        case print_form
+        param.print_form = printing_on.print_on(selection)
+        case param.print_form
           when :stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Stamps)
           when :paper
