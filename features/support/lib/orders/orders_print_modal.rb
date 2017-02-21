@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Orders
-    class PrintingOn < Browser::Modal
+    class PrintingOn < Browser::StampsHtmlField
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -73,7 +73,7 @@ module Stamps
       end
     end
 
-    class Printer < Browser::Modal
+    class Printer < Browser::StampsHtmlField
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -96,7 +96,7 @@ module Stamps
       end
     end
 
-    class PaperTray < Browser::Modal
+    class PaperTray < Browser::StampsHtmlField
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -117,7 +117,7 @@ module Stamps
       end
     end
 
-    class StartingLabel < Browser::Modal
+    class StartingLabel < Browser::StampsHtmlField
       attr_reader :left_label, :right_label
 
       def initialize(param)
@@ -172,7 +172,7 @@ module Stamps
       end
     end
 
-    class PrintOptions < Browser::Modal
+    class PrintOptions < Browser::StampsHtmlField
       def hide_postage_value
         checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
         verify_field = checkbox_field.parent.parent.parent
@@ -198,7 +198,7 @@ module Stamps
       end
     end
 
-    class LabelUnavailable < Browser::Modal
+    class LabelUnavailable < Browser::StampsHtmlField
       def present?
         browser.div(text: "Label Unavailable").present?
       end
@@ -224,7 +224,7 @@ module Stamps
       end
     end
 
-    class UspsTerms < Browser::Modal
+    class UspsTerms < Browser::StampsHtmlField
       attr_reader :i_agree, :cancel
 
       def initialize(param)
@@ -264,7 +264,7 @@ module Stamps
       end
     end
 
-    class DatePicker < Browser::Modal
+    class DatePicker < Browser::StampsHtmlField
 
       def todays_date_div
         browser.div css: "div[title='Today']"
@@ -348,32 +348,7 @@ module Stamps
       end
     end
 
-    class PrintModalObject < Browser::Modal
-      attr_reader :window_x_button
-
-      def initialize(param)
-        super(param)
-        @window_x_button = browser.img css: "img[class*='x-tool-img x-tool-close']"
-      end
-
-      def close_window
-        ElementHelper.click window_x_button, 'close_window'
-      end
-
-      def x_button_present?
-        ElementHelper.present? window_x_button
-      end
-
-      def wait_until_present
-        begin
-          window_x_button.wait_until_present
-        rescue
-          #ignore
-        end
-      end
-    end
-
-    class ShipDate < Browser::Modal
+    class ShipDate < Browser::StampsHtmlField
       attr_reader :text_box, :date_picker, :text_box_cc
 
       def initialize(param)
@@ -394,10 +369,10 @@ module Stamps
 
 
 
-    class PrintModal < PrintModalObject
+    class OrdersPrintModal < Browser::StampsHtmlField
 
-      attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options,
-                  :print_sample_button, :printer, :email_tracking_details, :print_envelope_btn
+      attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options, :window_x_button,
+                  :print_sample_button, :printer, :email_tracking_details, :print_envelope_btn, :print_button
 
       def initialize(param)
         super(param)
@@ -408,16 +383,18 @@ module Stamps
         @starting_label = StartingLabel.new(param)
         @print_options = PrintOptions.new(param)
 
-        @print_button = StampsElement.new browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')
-        @print_sample_button = StampsElement.new browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')
-
+        @print_button = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
+        @print_sample_button = StampsElement.new(browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl'))
         @print_envelope_btn = StampsElement.new(browser.span(text: 'Print Envelope'))
       end
 
 
+      def close_window
+        window_x_button.click_while_present
+      end
 
       def click
-        starting_label_tag = StampsElement.new browser.span(text: "Starting Label:")
+        starting_label_tag = StampsElement.new(browser.span(text: "Starting Label:"))
         20.times do
           starting_label_tag.safe_click
         end
@@ -427,12 +404,12 @@ module Stamps
         print_button.present?
       end
 
-      def wait_until_present *args
+      def wait_until_present(*args)
         print_button.safely_wait_until_present *args
       end
 
       def print
-        15.times {
+        15.times do
           begin
             print_button.safe_click
             sleep(0.35)
@@ -444,7 +421,7 @@ module Stamps
           rescue
             true
           end
-        }
+        end
         ""
       end
 
@@ -584,7 +561,7 @@ module Stamps
 
     end
 
-    class RePrintModal < PrintModal
+    class RePrintModal < OrdersPrintModal
       def present?
         browser.div(text: "Reprint Label").present?
       end

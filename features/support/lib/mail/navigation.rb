@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class NavBar < Browser::Modal
+    class NavBar < Browser::StampsHtmlField
       attr_reader :username
 
       def initialize(param)

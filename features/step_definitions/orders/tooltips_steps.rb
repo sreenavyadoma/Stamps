@@ -1,21 +1,21 @@
 
 Then /^(?:I|i)n Orders Toolbar, expect Print Tooltip to include (.*)$/ do |expectation|
   #logger.step "In Orders Toolbar, expect Print Tooltip to include #{expectation}"
-  actual = stamps.orders.toolbar.print_btn.tooltip
+  actual = stamps.orders.orders_toolbar.print_btn.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
 end
 
 Then /^(?:I|i)n Orders Toolbar, expect Move Tooltip to include (.*)$/ do |expectation|
   #logger.step "In Orders Toolbar, expect Move Tooltip to include #{expectation}"
-  actual = stamps.orders.toolbar.move_drop_down.tooltip
+  actual = stamps.orders.orders_toolbar.move_drop_down.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
 end
 
 Then /^(?:I|i)n Orders Toolbar, expect Add Tooltip to include (.*)$/ do |expectation|
   #logger.step "In Orders Toolbar, expect Add Tooltip to include #{expectation}"
-  actual = stamps.orders.toolbar.add.order_details.tooltip
+  actual = stamps.orders.orders_toolbar.add.order_details.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
 end
@@ -44,7 +44,7 @@ end
 Then /^Tooltips: Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |expectation, data_qtip|
   #logger.step "Tooltips: Expect Print Modal Print Media #{expectation} tooltip to include #{data_qtip}"
   tooltips = data_qtip.split "||"
-  actual_tooltip = stamps.orders.toolbar.print_btn.print_modal.printing_on.tooltip expectation
+  actual_tooltip = stamps.orders.orders_toolbar.print_btn.print_modal.printing_on.tooltip expectation
   tooltips.each do |tooltip|
     #logger.step "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     expect(actual_tooltip).to include tooltip

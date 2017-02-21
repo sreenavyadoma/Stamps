@@ -1,7 +1,7 @@
 
 Then /^Manage Stores: Open Modal$/ do
   #logger.step "Manage Stores: Open Modal"
-  @manage_stores = stamps.orders.toolbar.settings.manage_stores
+  @manage_stores = stamps.orders.orders_toolbar.settings.manage_stores
 end
 
 Then /^Manage Stores: Add$/ do

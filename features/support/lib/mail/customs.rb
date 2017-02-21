@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailCustomsForm < Browser::Modal
+    class MailCustomsForm < Browser::StampsHtmlField
 
       def close
         element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
@@ -124,7 +124,7 @@ module Stamps
 
     end
 
-    class AddItemModal < Browser::Modal
+    class AddItemModal < Browser::StampsHtmlField
       def close
         buttons = browser.imgs css: "img[class*='x-tool-img x-tool-close']"
         element_helper.safe_click buttons.last
@@ -180,7 +180,7 @@ module Stamps
 
       end
 
-      class Qty  < Browser::Modal
+      class Qty  < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new browser.text_field name: 'Quantity'
         end
@@ -209,7 +209,7 @@ module Stamps
 
       end
 
-      class Value  < Browser::Modal
+      class Value  < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new browser.text_field name: 'Value'
         end
@@ -237,7 +237,7 @@ module Stamps
 
       end
 
-      class Lbs  < Browser::Modal
+      class Lbs  < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new(browser.text_field(name: 'WeightLb'))
         end
@@ -265,7 +265,7 @@ module Stamps
 
       end
 
-      class Ounces  < Browser::Modal
+      class Ounces  < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new browser.text_field name: 'WeightOz'
         end
@@ -292,7 +292,7 @@ module Stamps
         end
       end
 
-      class Origin  < Browser::Modal
+      class Origin  < Browser::StampsHtmlField
         attr_reader :text_box
 
         def initialize(param)
@@ -324,7 +324,7 @@ module Stamps
       end
     end
 
-    class PackageContents < Browser::Modal
+    class PackageContents < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new browser.text_field name: "ContentType"
       end
@@ -356,7 +356,7 @@ module Stamps
 
     end
 
-    class NonDeliveryOptions < Browser::Modal
+    class NonDeliveryOptions < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new browser.text_field name: "NonDeliveryOption"
       end
@@ -388,7 +388,7 @@ module Stamps
 
     end
 
-    class InternalTransaction < Browser::Modal
+    class InternalTransaction < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new browser.text_field name: "isITNRequired"
       end
@@ -444,7 +444,7 @@ module Stamps
 
 
 
-    class CustomsFields < Browser::Modal
+    class CustomsFields < Browser::StampsHtmlField
 
       def browser_edit_form_button
         links = browser.links css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>a"
@@ -481,9 +481,9 @@ module Stamps
     end
 
 
-    class CustomsLineItem < Browser::Modal
+    class CustomsLineItem < Browser::StampsHtmlField
 
-      class Qty < Browser::Modal
+      class Qty < Browser::StampsHtmlField
         def initialize(param, number)
           super(param)
           @index = number
@@ -526,7 +526,7 @@ module Stamps
         end
       end
 
-      class UnitPrice < Browser::Modal
+      class UnitPrice < Browser::StampsHtmlField
         def initialize(param, number)
           super(param)
           @index = number
@@ -556,7 +556,7 @@ module Stamps
         end
       end
 
-      class UnitWeightLbs < Browser::Modal
+      class UnitWeightLbs < Browser::StampsHtmlField
         def initialize(param, number)
           super(param)
           @index = number
@@ -599,7 +599,7 @@ module Stamps
         end
       end
 
-      class UnitWeightOz < Browser::Modal
+      class UnitWeightOz < Browser::StampsHtmlField
         def initialize(param, number)
           super(param)
           @index = number
@@ -685,7 +685,7 @@ module Stamps
 
     end
 
-    class UspsPrivactActStatementModal < Browser::Modal
+    class UspsPrivactActStatementModal < Browser::StampsHtmlField
       def window_title
         StampsElement.new browser.div text: "USPS Privacy Act Statement"
       end
@@ -700,7 +700,7 @@ module Stamps
 
     end
 
-    class RestrictionsAndProhibitionsModal < Browser::Modal
+    class RestrictionsAndProhibitionsModal < Browser::StampsHtmlField
 
       def present?
 

@@ -1,7 +1,7 @@
 module Stamps
   module Mail
 
-    class MailToolbarPrintButton < Browser::Modal
+    class MailToolbarPrintButton < Browser::StampsHtmlField
       def present?
         print_button.present?
       end
@@ -34,7 +34,7 @@ module Stamps
       end
     end
 
-    class MailToolbar < Browser::Modal
+    class MailToolbar < Browser::StampsHtmlField
       attr_reader :total, :mail_print_modal, :confirm_window, :windows_print, :sample_button, :printing_problem, :insufficient_funds, :print_button
 
       def initialize(param)
@@ -151,7 +151,7 @@ module Stamps
     end
 
 
-    class PrintingProblem < Browser::Modal
+    class PrintingProblem < Browser::StampsHtmlField
       def element
         StampsElement.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end

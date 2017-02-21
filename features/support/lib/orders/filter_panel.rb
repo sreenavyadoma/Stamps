@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::Modal
+      class CollapseButton < Browser::StampsHtmlField
         attr_reader :button, :tooltip_element
 
         def initialize(param)
@@ -36,7 +36,7 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::Modal
+      class ExpandButton < Browser::StampsHtmlField
         attr_reader :button, :tooltip_element
 
         def initialize(param)
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::Modal
+      class FilterMenuItem < Browser::StampsHtmlField
         attr_reader :collapse, :expand
 
         def initialize(param)
@@ -81,7 +81,7 @@ module Stamps
         end
       end
 
-      class SearchResults < Browser::Modal
+      class SearchResults < Browser::StampsHtmlField
         attr_reader :label, :remove_button, :count_label
 
         def initialize(param)
@@ -105,7 +105,7 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::Modal
+      class SearchOrders < Browser::StampsHtmlField
         attr_reader :textbox, :search_button, :search_results
 
         def initialize(param)
@@ -144,7 +144,7 @@ module Stamps
         end
       end
 
-      class FilterTab < Browser::Modal
+      class FilterTab < Browser::StampsHtmlField
         attr_reader :index
         def initialize(param, index)
           super(param)
@@ -210,7 +210,7 @@ module Stamps
         end
       end
 
-      class FilterPanel < Browser::Modal
+      class FilterPanel < Browser::StampsHtmlField
         attr_reader :search_orders_modal, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
 
         def initialize(param)

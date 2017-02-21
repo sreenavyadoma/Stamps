@@ -5,7 +5,7 @@ module Stamps
       attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_form
     end
 
-    class Modal
+    class StampsHtmlField
       attr_accessor :param, :browser, :logger, :element_helper, :test_helper
 
       def initialize(param)
@@ -411,7 +411,7 @@ module Stamps
       end
     end
 
-    class StampsNumberField < Browser::Modal
+    class StampsNumberField < Browser::StampsHtmlField
       attr_reader :text_box, :inc_btn, :dec_btn, :name
 
       def initialize(param, textbox, inc_btn, dec_btn, name)

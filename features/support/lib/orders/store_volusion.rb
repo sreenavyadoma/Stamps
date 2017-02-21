@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Volusion < Browser::Modal
+      class Volusion < Browser::StampsHtmlField
         def present?
           connect_button.present?
         end

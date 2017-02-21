@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class ExtraServicesCM < Browser::Modal
+    class ExtraServicesCM < Browser::StampsHtmlField
 
       def cm_checkbox select
 
@@ -52,7 +52,7 @@ module Stamps
       end
     end
 
-    class CertifiedMail < Browser::Modal #< PrintForm
+    class CertifiedMail < Browser::StampsHtmlField #< PrintForm
       def insure_for
         DetailsInsureFor.new(param)
       end

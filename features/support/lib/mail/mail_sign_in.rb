@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MoreInfoPage < Browser::Modal
+    class MoreInfoPage < Browser::StampsHtmlField
       def present?
         browser.windows.size > 1
       end
@@ -15,7 +15,7 @@ module Stamps
     end
 
 
-    class RememberUsername < Browser::Modal
+    class RememberUsername < Browser::StampsHtmlField
       attr_reader :remember_user_element
 
       def initialize(param)
@@ -39,7 +39,7 @@ module Stamps
       end
     end
 
-    class MailLandingPage < Browser::Modal
+    class MailLandingPage < Browser::StampsHtmlField
       attr_reader :sign_in_modal
 
       def initialize(param)
@@ -71,7 +71,7 @@ module Stamps
       end
     end
 
-    class WhatsNewModal < Browser::Modal
+    class WhatsNewModal < Browser::StampsHtmlField
       attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
       def initialize(param)

@@ -49,7 +49,7 @@ end
 
 Then /^(?:I|i)n Print modal, expect Total Cost is \$([0-9.]*)$/ do |expectation|
   begin
-    print_window = stamps.orders.toolbar.print_btn.print_modal
+    print_window = stamps.orders.orders_toolbar.print_btn.print_modal
     actual_value = print_window.total_cost
     10.times { |counter|
       #log_expectation_eql "#{counter}. Print Window Total Cost", expectation, actual_value

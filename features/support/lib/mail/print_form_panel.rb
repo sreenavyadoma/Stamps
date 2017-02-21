@@ -104,7 +104,7 @@ module Stamps
         end
       end
 
-      class PrintForm < Browser::Modal
+      class PrintForm < Browser::StampsHtmlField
         def open_extra_services
           10.times do
             extra_services.safe_click

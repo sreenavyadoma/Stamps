@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     module PrintModal
-      class ConfirmPrintCheckbox < Browser::Modal
+      class ConfirmPrintCheckbox < Browser::StampsHtmlField
         def check
           browser.checkbox(name: 'dismissConfirm').set
           browser.checkbox(name: 'dismissConfirm').set
@@ -14,7 +14,7 @@ module Stamps
         end
       end
 
-      class PrintModalConfirmPrint < Browser::Modal
+      class PrintModalConfirmPrint < Browser::StampsHtmlField
         attr_accessor :window_title, :collapse_button
 
         def initialize(param)

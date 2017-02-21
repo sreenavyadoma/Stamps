@@ -1,7 +1,7 @@
 module Stamps
   module Orders
 
-    class ServerError < Browser::Modal
+    class ServerError < Browser::StampsHtmlField
       def present?
         (browser.divs(text: "Server Error").last).present?
       end
@@ -31,7 +31,7 @@ module Stamps
       end
     end
 
-    class OrderError < Browser::Modal
+    class OrderError < Browser::StampsHtmlField
 
       protected
 
@@ -76,7 +76,7 @@ module Stamps
 
     end
 
-    class IncompleteOrderError < Browser::Modal
+    class IncompleteOrderError < Browser::StampsHtmlField
       private
 
       def error_message_label
@@ -124,7 +124,7 @@ module Stamps
             #ignore
           end
         }
-        PrintModal.new(param)
+        OrdersPrintModal.new(param)
       end
 
       def cancel
@@ -147,7 +147,7 @@ module Stamps
 
     end
 
-    class RatingError < Browser::Modal
+    class RatingError < Browser::StampsHtmlField
       private
       def rating_error_p
         browser.p css: 'div[class=x-autocontainer-innerCt]>p:nth-child(1)'

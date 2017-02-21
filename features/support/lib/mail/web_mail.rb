@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class WebMail < Browser::Modal
+    class WebMail < Browser::StampsHtmlField
       attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form_type, :print_form , :printing_on
 
       def initialize(param)

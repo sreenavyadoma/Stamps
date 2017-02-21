@@ -1,5 +1,5 @@
 module Stamps
-  class HealthCheck < Browser::Modal
+  class HealthCheck < Browser::StampsHtmlField
 
     def health_check
       param.test_env = 'stg' if param.test_env.downcase == 'staging'

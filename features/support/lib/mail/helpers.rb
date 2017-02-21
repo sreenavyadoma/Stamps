@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module Mail
-      class PrintObject < Browser::Modal
+      class PrintObject < Browser::StampsHtmlField
       end
     end
   end

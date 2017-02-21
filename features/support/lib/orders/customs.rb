@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Customs
-      class OrdersCustomsFields < Browser::Modal
+      class OrdersCustomsFields < Browser::StampsHtmlField
         attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
         def initialize(param)
@@ -30,7 +30,7 @@ module Stamps
         end
       end
 
-      class StampsDropDownIndexed < Browser::Modal
+      class StampsDropDownIndexed < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down, :name, :index
 
         def initialize(param, text_box, drop_down, index, name)
@@ -65,7 +65,7 @@ module Stamps
         end
       end
 
-      class SingleCustomsItem < Browser::Modal
+      class SingleCustomsItem < Browser::StampsHtmlField
         attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :customs_item_origin, :customs_item_hs_tariff
 
         def initialize(param, index)
@@ -95,7 +95,7 @@ module Stamps
         end
       end
 
-      class AssociatedCustomsItems < Browser::Modal
+      class AssociatedCustomsItems < Browser::StampsHtmlField
         attr_reader :add_btn
 
         def initialize(param)
@@ -122,7 +122,7 @@ module Stamps
         end
       end
 
-      class UspsPrivactActStatementModal < Browser::Modal
+      class UspsPrivactActStatementModal < Browser::StampsHtmlField
         attr_reader :window_title, :okay
 
         def initialize(param)
@@ -136,7 +136,7 @@ module Stamps
         end
       end
 
-      class RestrictionsAndProhibitionsModal < Browser::Modal
+      class RestrictionsAndProhibitionsModal < Browser::StampsHtmlField
 
         def present?
 
@@ -144,7 +144,7 @@ module Stamps
 
       end
 
-      class InternalTransaction < Browser::Modal
+      class InternalTransaction < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -172,7 +172,7 @@ module Stamps
         end
       end
 
-      class PackageContents < Browser::Modal
+      class PackageContents < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -200,7 +200,7 @@ module Stamps
         end
       end
 
-      class NonDeliveryOptions < Browser::Modal
+      class NonDeliveryOptions < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -228,7 +228,7 @@ module Stamps
         end
       end
 
-      class OrdersCustomsForm < Browser::Modal
+      class OrdersCustomsForm < Browser::StampsHtmlField
 
         attr_reader :window_title, :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                     :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,

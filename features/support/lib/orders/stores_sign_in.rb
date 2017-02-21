@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class LearnMoreModal < Browser::Modal
+    class LearnMoreModal < Browser::StampsHtmlField
       attr_reader :title, :msg_container, :next_button, :cancel_button, :learn_button, :close_button
 
       def initialize(param)
@@ -34,7 +34,7 @@ module Stamps
       end
     end
 
-    class ImportFromStoresModal < Browser::Modal
+    class ImportFromStoresModal < Browser::StampsHtmlField
       attr_reader :title, :msg_container, :next_button, :close_button, :learn_more
 
       def initialize(param)
@@ -71,7 +71,7 @@ module Stamps
       end
     end
 
-    class ImportFromCsvModal < Browser::Modal
+    class ImportFromCsvModal < Browser::StampsHtmlField
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_stores
 
       def initialize(param)
@@ -108,7 +108,7 @@ module Stamps
       end
     end
 
-    class AddManualOrderModal < Browser::Modal
+    class AddManualOrderModal < Browser::StampsHtmlField
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_csv
 
       def initialize(param)

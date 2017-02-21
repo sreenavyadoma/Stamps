@@ -15,9 +15,9 @@ module Stamps
         end
       end
 
-      class ThreeDCart < Browser::Modal
+      class ThreeDCart < Browser::StampsHtmlField
 
-        class ProductWeightUnit < Browser::Modal
+        class ProductWeightUnit < Browser::StampsHtmlField
           def select(selection)
             drop_down = StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
             textbox = StampsTextbox.new browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")

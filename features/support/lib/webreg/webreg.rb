@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class AnErrorOccured < Browser::Modal
+    class AnErrorOccured < Browser::StampsHtmlField
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 
       def initialize(param)
@@ -36,7 +36,7 @@ module Stamps
       end
     end
 
-    class WebRegistration < Browser::Modal
+    class WebRegistration < Browser::StampsHtmlField
       attr_reader :profile, :error_occured
       def initialize(param)
         super(param)

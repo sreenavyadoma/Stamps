@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailInsufficientFunds < Browser::Modal
+    class MailInsufficientFunds < Browser::StampsHtmlField
       attr_reader :window_title, :body, :add_funds_btn, :close_btn
 
       def initialize(param)

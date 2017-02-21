@@ -9,7 +9,7 @@ module Stamps
         end
       end
 
-      class PrintOn < Browser::Modal
+      class PrintOn < Browser::StampsHtmlField
         attr_accessor :drop_down, :text_box
         include PrintFormBlurOut
 
@@ -99,9 +99,8 @@ module Stamps
               selected_sub_str = 'Stamps'
               element = browser.li(css: "li[class*=iconNetStamps]")
             else
-              expect("stamps, sdc-1200, 5 x 8, envelope 10, envelope 9,
-                      envelope A9, envelope 6, envelope A2, envelope 7, envelope 11,
-                      envelope 12, sdc-3610, sdc-3710, sdc-3910sdc-3810, roll - 4 x 6, roll - 418 x 614").to include(str.downcase)
+              expect(['Paper', 'SDC-1200', 'Shipping Label - 5 ', 'Envelope - #10', 'Envelope - #9', 'Envelope - #A9', 'Envelope - #7',
+                      'Envelope - #11', 'Envelope - #12', 'SDC-3610', 'SDC-3710', 'SDC-3910', 'SDC-3810', 'Roll - 4 ', 'Roll - 4', 'Stamps']).to include(str)
           end
 
           selection = StampsElement.new(element)
@@ -132,7 +131,7 @@ module Stamps
         end
       end
 
-      class MailToCountry < Browser::Modal
+      class MailToCountry < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down, :index
         include PrintFormBlurOut
 
@@ -159,7 +158,7 @@ module Stamps
         end
       end
 
-      class MailToInt < Browser::Modal
+      class MailToInt < Browser::StampsHtmlField
         attr_reader :country, :name, :company, :address_1, :address_2, :city, :province, :postal_code, :phone
         include PrintFormBlurOut
 
@@ -177,7 +176,7 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::Modal
+      class MailToDom < Browser::StampsHtmlField
         attr_reader :text_area, :country
         include PrintFormBlurOut
 
@@ -200,7 +199,7 @@ module Stamps
         end
       end
 
-      class MailTo < Browser::Modal
+      class MailTo < Browser::StampsHtmlField
         attr_reader :domestic, :international, :contacts
         include PrintFormBlurOut
 
@@ -212,11 +211,11 @@ module Stamps
         end
       end
 
-      class MailEmail < Browser::Modal
+      class MailEmail < Browser::StampsHtmlField
 
       end
 
-      class MailWeight < Browser::Modal
+      class MailWeight < Browser::StampsHtmlField
         attr_reader :auto_weigh, :weigh_button, :mail_pounds, :mail_ounces
         include PrintFormBlurOut
 
@@ -241,7 +240,7 @@ module Stamps
         end
       end
 
-      class MailFrom < Browser::Modal
+      class MailFrom < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down, :manage_shipping_address
         include PrintFormBlurOut
 
@@ -295,7 +294,7 @@ module Stamps
         end
       end
 
-      class MailService < Browser::Modal
+      class MailService < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down
         include PrintFormBlurOut
 
@@ -364,7 +363,7 @@ module Stamps
 
       end
 
-      class StampAmount < Browser::Modal
+      class StampAmount < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new(browser.text_field name: "stampAmount")
         end
@@ -390,7 +389,7 @@ module Stamps
         end
       end
 
-      class MailEmail < Browser::Modal
+      class MailEmail < Browser::StampsHtmlField
         attr_reader :checkbox, :text_box
         def initialize(param)
           super(param)
@@ -404,7 +403,7 @@ module Stamps
         end
       end
 
-      class MailTracking < Browser::Modal
+      class MailTracking < Browser::StampsHtmlField
 
         def text_box
           StampsTextbox.new browser.text_field name: "tracking"
@@ -440,7 +439,7 @@ module Stamps
         end
       end
 
-      class MailInsureFor < Browser::Modal
+      class MailInsureFor < Browser::StampsHtmlField
         def checkbox
 
         end
@@ -462,7 +461,7 @@ module Stamps
         end
       end
 
-      class MailContacts < Browser::Modal
+      class MailContacts < Browser::StampsHtmlField
 
         def link
           StampsElement.new(browser.a(css: "[class*=sdc-mainpanel-shiptolinkbtn]"))
@@ -480,7 +479,7 @@ module Stamps
         end
       end
 
-      class MailCostCode  < Browser::Modal
+      class MailCostCode  < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new browser.text_field name: "costCodeId"
         end
@@ -515,7 +514,7 @@ module Stamps
 
       end
 
-      class MailQuantity < Browser::Modal
+      class MailQuantity < Browser::StampsHtmlField
         def text_box
           StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
         end
@@ -541,7 +540,7 @@ module Stamps
         end
       end
 
-      class PrintPostageCustoms < Browser::Modal
+      class PrintPostageCustoms < Browser::StampsHtmlField
         attr_reader :button, :customs_form
 
         def initialize(param)
