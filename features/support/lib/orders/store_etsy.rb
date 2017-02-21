@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Etsy < Browser::Modal
+      class Etsy < Browser::StampsHtmlField
 
         def window_title
           StampsElement.new(browser.div text: "Connect your Etsy Store")
@@ -132,7 +132,7 @@ module Stamps
         end
       end
 
-      class EtsySignInPage < Browser::Modal
+      class EtsySignInPage < Browser::StampsHtmlField
         def present?
           browser.text_field(id: 'username-existing').present?
         end
@@ -157,7 +157,7 @@ module Stamps
         end
       end
 
-      class EtsyPage < Browser::Modal
+      class EtsyPage < Browser::StampsHtmlField
         def present?
           browser.url.include? "etsy.com"
         end

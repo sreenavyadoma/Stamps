@@ -2,17 +2,18 @@ module Stamps
   module Browser
 
     class TestParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_form
     end
 
-    class Modal
-      attr_accessor :param, :browser, :logger, :element_helper
+    class StampsHtmlField
+      attr_accessor :param, :browser, :logger, :element_helper, :test_helper
 
       def initialize(param)
         @param = param
         @browser = param.browser
         @logger = param.logger
         @element_helper = ElementHelper
+        @test_helper = TestHelper
       end
     end
 
@@ -410,7 +411,7 @@ module Stamps
       end
     end
 
-    class StampsNumberField < Browser::Modal
+    class StampsNumberField < Browser::StampsHtmlField
       attr_reader :text_box, :inc_btn, :dec_btn, :name
 
       def initialize(param, textbox, inc_btn, dec_btn, name)
@@ -614,5 +615,15 @@ module Stamps
         end
       end
     end
+
+    class TestHelper
+      class << self
+        def first_half(str)
+          index = (str.size.to_f / 2).ceil
+          str[0, index]
+        end
+      end
+    end
+
   end
 end

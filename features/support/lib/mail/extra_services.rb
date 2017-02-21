@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class ExtraServices < Browser::Modal
+    class ExtraServices < Browser::StampsHtmlField
 
       def close
         element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
@@ -75,7 +75,7 @@ module Stamps
 
     end
 
-    class SpecialContentsModal < Browser::Modal
+    class SpecialContentsModal < Browser::StampsHtmlField
       def window_x_button
         StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']")[1])
       end
@@ -111,7 +111,7 @@ module Stamps
       end
     end
 
-    class Security < Browser::Modal
+    class Security < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new browser.text_field name: "security"
       end
@@ -146,7 +146,7 @@ module Stamps
       end
     end
 
-    class SecurityValue < Browser::Modal
+    class SecurityValue < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new browser.text_field id: 'sdc-extraserviceswin-valuenumberfield-inputEl'
       end
@@ -173,7 +173,7 @@ module Stamps
       end
     end
 
-    class COD < Browser::Modal
+    class COD < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new(browser.text_field(id: 'sdc-extraserviceswin-codnumberfield-inputEl'))
       end
@@ -219,7 +219,7 @@ module Stamps
       end
     end
 
-    class Handling < Browser::Modal
+    class Handling < Browser::StampsHtmlField
       def text_box
         StampsTextbox.new browser.text_field(name: "contents")
       end
@@ -250,7 +250,7 @@ module Stamps
       end
     end
 
-    class ReturnReceipt < Browser::Modal
+    class ReturnReceipt < Browser::StampsHtmlField
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rrcheckbox-inputEl]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrcheckbox]"
@@ -262,7 +262,7 @@ module Stamps
       end
     end
 
-    class ElectronicReturnReceipt < Browser::Modal
+    class ElectronicReturnReceipt < Browser::StampsHtmlField
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rrecheckbox-inputEl]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrecheckbox]"
@@ -274,7 +274,7 @@ module Stamps
       end
     end
 
-    class RestrictedDelivery < Browser::Modal
+    class RestrictedDelivery < Browser::StampsHtmlField
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rdcheckbox-inputEl]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rdcheckbox]"
@@ -286,7 +286,7 @@ module Stamps
       end
     end
 
-    class NonDeliveryNotice < Browser::Modal
+    class NonDeliveryNotice < Browser::StampsHtmlField
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-nndcheckbox-inputEl]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-nndcheckbox]"
@@ -298,7 +298,7 @@ module Stamps
       end
     end
 
-    class Fragile < Browser::Modal
+    class Fragile < Browser::StampsHtmlField
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-shcheckbox-inputEl]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-shcheckbox]"
@@ -310,7 +310,7 @@ module Stamps
       end
     end
 
-    class MerchandiseReturnReceipt < Browser::Modal
+    class MerchandiseReturnReceipt < Browser::StampsHtmlField
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraserviceswin-rrmcheckbox-inputEl]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-rrmcheckbox]"
@@ -322,7 +322,7 @@ module Stamps
       end
     end
 
-    class NonRectangular < Browser::Modal
+    class NonRectangular < Browser::StampsHtmlField
       def checkbox
         checkbox_field = browser.text_field css: "input[id^=sdc-extraservices-nreccheckbox]"
         verify_field = browser.table css: "table[id^=sdc-extraserviceswin-notrectangularcheckbox]"

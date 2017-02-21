@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class USPSCheckbox < Browser::Modal
+    class USPSCheckbox < Browser::StampsHtmlField
       def check
         browser.checkbox(name: 'USPSApproved').set
         browser.checkbox(name: 'USPSApproved').set
@@ -13,7 +13,7 @@ module Stamps
       end
     end
 
-    class ChangeMeterLimit < Browser::Modal
+    class ChangeMeterLimit < Browser::StampsHtmlField
       attr_reader :usps_approval, :new_meter_limit, :current_meter, :maximum_meter
 
       def initialize(param)
@@ -51,7 +51,7 @@ module Stamps
       end
     end
 
-    class ChangeMeterLimitSuccess < Browser::Modal
+    class ChangeMeterLimitSuccess < Browser::StampsHtmlField
       def present?
         browser.td(text: "Change Meter Limit Success").present?
       end

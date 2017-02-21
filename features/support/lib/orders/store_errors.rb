@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class ServerError < Browser::Modal
+      class ServerError < Browser::StampsHtmlField
         def present?
           browser.div(text: "Server Error").present?
         end

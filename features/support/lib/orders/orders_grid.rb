@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Grid
-      class Column < Browser::Modal
+      class Column < Browser::StampsHtmlField
         MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
         TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
         GRID_COLUMNS = {
@@ -973,7 +973,7 @@ module Stamps
         end
       end
 
-      class GridColumns < Browser::Modal
+      class GridColumns < Browser::StampsHtmlField
         attr_reader :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient, :company,
                     :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
                     :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
@@ -1029,7 +1029,7 @@ module Stamps
       end
 
       # Orders Grid
-      class OrdersGrid < Browser::Modal
+      class OrdersGrid < Browser::StampsHtmlField
         attr_reader :grid_element, :column
 
         def initialize(param)

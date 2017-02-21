@@ -15,8 +15,8 @@ module Stamps
         end
       end
 
-      class Amazon < Browser::Modal
-        class OrderSource < Browser::Modal
+      class Amazon < Browser::StampsHtmlField
+        class OrderSource < Browser::StampsHtmlField
           def text_box
             StampsTextbox.new(browser.text_field name: "AmazonMarketplace")
           end
@@ -50,7 +50,7 @@ module Stamps
           end
         end
 
-        class ProductIdentifier < Browser::Modal
+        class ProductIdentifier < Browser::StampsHtmlField
           def text_box
             StampsTextbox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
           end

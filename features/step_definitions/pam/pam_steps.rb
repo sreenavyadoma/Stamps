@@ -12,9 +12,9 @@ end
 
 Then /^(?:O|o)n PAM Customer Search page, set username to (.*)$/ do |username|
   #logger.step "On PAM Customer Search page, set username to #{username}"
-  test_data[:usr] = username unless username.downcase.include? 'random'
+  test_parameter[:usr] = username unless username.downcase.include? 'random'
   #logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
-  @customer_search.username.set test_data[:usr]
+  @customer_search.username.set test_parameter[:usr]
   sleep(0.35)
 end
 
@@ -31,7 +31,7 @@ Then /^(?:O|o)n PAM Customer Search page, click Search button$/ do
     if @customer_profile.present?
       @pam_customer_profile_found = true
     else
-      step "On PAM Customer Search page, set username to #{test_data[:usr]}"
+      step "On PAM Customer Search page, set username to #{test_parameter[:usr]}"
       step "On PAM Customer Search page, set 5.2 or lower"
       step "On PAM Customer Search page, click Search button"
     end
@@ -125,7 +125,7 @@ Then /^(?:O|o)n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollar
   comments.safe_click
   comments.safe_click
   comments.safe_click
-  comments.set test_data[:usr]
+  comments.set test_parameter[:usr]
 
   @ach_credit.submit.yes.ok
 end
@@ -266,10 +266,10 @@ end
 
 Then /^(?:O|o)n WebReg Profile page, Send username to standard out$/ do
   logger.message " ############## NEW USER ID "
-  logger.message " ############## #{test_data[:usr]}"
-  logger.message " ############## #{test_data[:usr]}"
-  logger.message " ############## #{test_data[:usr]}"
-  logger.message " ############## #{test_data[:usr]}"
+  logger.message " ############## #{test_parameter[:usr]}"
+  logger.message " ############## #{test_parameter[:usr]}"
+  logger.message " ############## #{test_parameter[:usr]}"
+  logger.message " ############## #{test_parameter[:usr]}"
   logger.message " ############## NEW USER ID "
 end
 

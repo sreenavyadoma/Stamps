@@ -9,7 +9,7 @@ Feature: Stamps V Series - Calculate Postage
   @mail_print_stamps_v_series_calculate
 
   Scenario: Stamps Regression V Series - Calculate Postage
-    Then Mail: Select Stamps
+    Then select Print On Stamps
     Then Mail Stamps: Set Serial Number to V12345
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default
@@ -17,7 +17,7 @@ Feature: Stamps V Series - Calculate Postage
     Then Mail Stamps: Select Calculate Mail service First-Class Mail Letter
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
-    Then Mail: Open Print Modal
-    Then Mail in Print modal, select Printer "factory"
-    Then Mail in Print modal, click Print button
+    Then click Print form Print button
+    Then set Mail Print modal Printer to factory
+    Then click Mail Print modal Print button
     Then Sign out

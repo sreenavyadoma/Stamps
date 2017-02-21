@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Toolbar
 
-      class MoveToOnHold < Browser::Modal
+      class MoveToOnHold < Browser::StampsHtmlField
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
@@ -32,7 +32,7 @@ module Stamps
         end
       end
 
-      class MoveToCanceled < Browser::Modal
+      class MoveToCanceled < Browser::StampsHtmlField
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -61,7 +61,7 @@ module Stamps
         end
       end
 
-      class MoveToShipped < Browser::Modal
+      class MoveToShipped < Browser::StampsHtmlField
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -90,7 +90,7 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipment < Browser::Modal
+      class MoveToAwaitingShipment < Browser::StampsHtmlField
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -119,7 +119,7 @@ module Stamps
         end
       end
 
-      class MoveDropDown < Browser::Modal
+      class MoveDropDown < Browser::StampsHtmlField
         attr_reader :drop_down, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_element
 
         def initialize(param)
@@ -202,7 +202,7 @@ module Stamps
         end
       end
 
-      class PrintIncompleteOrderError < Browser::Modal
+      class PrintIncompleteOrderError < Browser::StampsHtmlField
         attr_reader :window_title, :ok_btn, :error_message_label
 
         def initialize(param)
@@ -237,7 +237,7 @@ module Stamps
         end
       end
 
-      class PrintMultiOrderError < Browser::Modal
+      class PrintMultiOrderError < Browser::StampsHtmlField
         attr_reader :window_title, :error_message_label
 
         def initialize(param)
@@ -302,7 +302,7 @@ module Stamps
         end
       end
 
-      class UspsPrivacyActStatement < Browser::Modal
+      class UspsPrivacyActStatement < Browser::StampsHtmlField
         attr_reader :window_title, :message_label, :ok_btn
 
         def initialize(param)
@@ -329,7 +329,7 @@ module Stamps
         end
       end
 
-      class USPSTerms < Browser::Modal
+      class USPSTerms < Browser::StampsHtmlField
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def initialize(param)
@@ -382,7 +382,7 @@ module Stamps
         end
       end
 
-      class ShipStationServerError < Browser::Modal
+      class ShipStationServerError < Browser::StampsHtmlField
         def window_title
           browser.divs(text: 'Server Error').first
         end
@@ -396,13 +396,13 @@ module Stamps
         end
       end
 
-      class ToolbarPrintButton < Browser::Modal
+      class ToolbarPrintButton < Browser::StampsHtmlField
         attr_reader :print_order_btn, :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
                     :multi_order_some_error, :multi_order_all_error
 
         def initialize(param)
           super(param)
-          @orders_print_modal = Stamps::Orders::PrintModal.new(param)
+          @orders_print_modal = Stamps::Orders::OrdersPrintModal.new(param)
           @print_order_btn = StampsElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
           @incomplete_order_modal = PrintIncompleteOrderError.new(param)
           @multi_order_some_error = PrintMultiOrderSomeHasError.new(param)
@@ -534,9 +534,7 @@ module Stamps
 
           usps_terms.i_agree if usps_terms_modal.present?
 
-          naws_plugin_error = NawsPluginError.new(param)
           error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
-          install_plugin_error = ErrorInstallPlugin.new(param)
 
           10.times do
             begin
@@ -591,7 +589,7 @@ module Stamps
         end
       end
 
-      class SettingsMenu < Browser::Modal
+      class SettingsMenu < Browser::StampsHtmlField
         def select menu_item
           dd = StampsElement.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
@@ -625,7 +623,7 @@ module Stamps
         end
       end
 
-      class PerPage < Browser::Modal
+      class PerPage < Browser::StampsHtmlField
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -657,7 +655,7 @@ module Stamps
         end
       end
 
-      class AddButton < Browser::Modal
+      class AddButton < Browser::StampsHtmlField
         attr_reader :button, :initializing_db, :loading_orders
 
         def initialize(param)
@@ -732,7 +730,7 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::Modal
+      class OrdersToolbar < Browser::StampsHtmlField
         attr_reader :print_btn, :add, :move_drop_down, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)

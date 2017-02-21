@@ -1,21 +1,33 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class WebMail < MailForm
-      attr_reader :sign_in_modal, :toolbar, :print_on, :footer, :shipping_label, :netstamps,
-                  :envelope, :certified_mail, :roll
+    class WebMail < Browser::StampsHtmlField
+      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form_type, :print_form , :printing_on
 
       def initialize(param)
         super(param)
+        @printing_on = PrintFormPanel::PrintOn.new(param)
         @sign_in_modal = MailSignInModal.new(param)
-        @toolbar = Toolbar.new(param)
-        @print_on = PrintOn.new(param)
-        @footer = Footer.new(param)
-        @shipping_label = ShippingLabel.new(param)
-        @netstamps = NetStamps.new(param)
-        @envelope = Envelope.new(param)
-        @certified_mail = CertifiedMail.new(param)
-        @roll = Roll.new(param)
+        @mail_toolbar = MailToolbar.new(param)
+      end
+
+      def print_on(selection)
+        param.print_form = printing_on.print_on(selection)
+        case param.print_form
+          when :stamps
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps)
+          when :paper
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabels)
+          when :envelopes
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelopes)
+          when :certified_mail
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail)
+          when :rolls
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls)
+          else
+            # do nothing
+        end
+        expect(@print_form.present?).to be(true)
       end
 
       def present?
@@ -25,24 +37,6 @@ module Stamps
       def wait_until_present *args
         toolbar.wait_until_present *args
       end
-=begin
-      def print_on selection
-        drop_down.select selection
-        if selection.include? 'Shipping Label'
-          shipping_label
-        elsif selection.include? 'Stamps'
-          netstamps
-        elsif selection.include? 'Envelope'
-          envelope
-        elsif selection.include? 'Certified Mail'
-          certified_mail
-        elsif selection.include? 'Roll'
-          roll
-        else
-          raise "#{selection} is not a valid Print Mail Print-On Selection"
-        end
-      end
-=end
     end
   end
 end

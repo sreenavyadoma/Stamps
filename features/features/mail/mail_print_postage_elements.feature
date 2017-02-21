@@ -5,49 +5,49 @@ Feature: Verify Mail Elements Are Present
 
   @mail_print_postage_elements
   Scenario: Print Mail Elements
-    Then Mail: Select Shipping Label - 8 ½” x 11” Paper
-    Then Mail: Expect Print On Field is present
-    Then Mail: Expect Ship From Field is present
-    Then Mail: Expect Ship To Link is present
-    Then Mail: Expect Ship To Country Field is present
-    Then Mail: Set Ship-To country to United States
-    Then Mail: Expect Domestic Address Field is present
-    Then Mail: Expect Email Check Box is present
-    Then Mail: Expect Email Field is present
-    Then Mail: Expect Pounds Field is present
-    Then Mail: Expect Ounces Field is present
-    Then Mail: Expect Weigh Button is present
-    Then Mail: Expect Auto Weigh check box is present
-    Then Mail: Expect service Field is present
-    Then Mail: Expect service Price is present
-    Then Mail: Expect Insure For Field is present
-    Then Mail: Expect Insure For Price is present
-    Then Mail Shipping Labels: Select service Priority Mail Package
-    Then Mail: Expect Tracking Field is present
-    Then Mail: Expect Tracking Price is present
-    Then Mail: Expect Extra Services Button is present
-    Then Mail: Expect Label Image Preview is present
-    Then Mail: Expect Hide Mail Value check box is present
-    Then Mail: Expect Print Receipt check box is present
-    Then Mail: Expect Print Reference Number check box is present
-    Then Mail: Expect Reference Number field is present
-    Then Mail: Expect Cost Code Field is present
-    Then Mail: Expect Reset Button is present
-    Then Mail: Expect Settings Button is present
-    Then Mail: Expect Feedback Button is present
-    Then Mail: Expect Classic Button is present
-    Then Mail: Expect Mail Total is present
-    Then Mail: Expect Print Sample Button is present
-    Then Mail: Expect Print Button is present
-    Then Mail: Set Ship-To country to Canada
-    Then Mail: Expect International Name Field is present
-    Then Mail: Expect International Company Field is present
-    Then Mail: Expect International Address 1 Field is present
-    Then Mail: Expect International Address 2 Field is present
-    Then Mail: Expect International City Field is present
-    Then Mail: Expect International Province Field is present
-    Then Mail: Expect International Postcode Field is present
-    Then Mail: Expect International Phone Field is present
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then on Print form, expect Print On Field is present
+    Then on Print form, expect Ship From Field is present
+    Then on Print form, expect Ship To Link is present
+    Then on Print form, expect Ship To Country Field is present
+    Then set Print form Mail to country to United States
+    Then on Print form, expect Domestic Address Field is present
+    Then on Print form, expect Email Check Box is present
+    Then on Print form, expect Email Field is present
+    Then on Print form, expect Pounds Field is present
+    Then on Print form, expect Ounces Field is present
+    Then on Print form, expect Weigh Button is present
+    Then on Print form, expect Auto Weigh check box is present
+    Then on Print form, expect service Field is present
+    Then on Print form, expect service Price is present
+    Then on Print form, expect Insure For Field is present
+    Then on Print form, expect Insure For Price is present
+    Then select Mail Service Priority Mail Package
+    Then on Print form, expect Tracking Field is present
+    Then on Print form, expect Tracking Price is present
+    Then on Print form, expect Extra Services Button is present
+    Then on Print form, expect Label Image Preview is present
+    Then on Print form, expect Hide Mail Value check box is present
+    Then on Print form, expect Print Receipt check box is present
+    Then on Print form, expect Print Reference Number check box is present
+    Then on Print form, expect Reference Number field is present
+    Then on Print form, expect Cost Code Field is present
+    Then on Print form, expect Reset Button is present
+    Then on Print form, expect Settings Button is present
+    Then on Print form, expect Feedback Button is present
+    Then on Print form, expect Classic Button is present
+    Then on Print form, expect Mail Total is present
+    Then on Print form, expect Print Sample Button is present
+    Then on Print form, expect Print Button is present
+    Then on Print form, set Mail To country to Canada
+    Then on Print form, expect International Name Field is present
+    Then on Print form, expect International Company Field is present
+    Then on Print form, expect International Address 1 Field is present
+    Then on Print form, expect International Address 2 Field is present
+    Then on Print form, expect International City Field is present
+    Then on Print form, expect International Province Field is present
+    Then on Print form, expect International Postcode Field is present
+    Then on Print form, expect International Phone Field is present
     Then Sign out
 
 

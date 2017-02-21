@@ -1,8 +1,9 @@
 # encoding: utf-8
 module Stamps
   module Mail
+=begin
 
-    class RollFormView < MailForm
+    class RollFormView < PrintForm
       def preview_image
         image = StampsElement.new browser.img css: "dimg[src*='Labelsample.gif']"
       end
@@ -32,7 +33,7 @@ module Stamps
       end
     end
 
-    class Roll < MailForm
+    class Rolls < PrintForm
       def insure_for
         DetailsInsureFor.new(param)
       end
@@ -45,5 +46,6 @@ module Stamps
         RollFormView.new(param)
       end
     end
+=end
   end
 end

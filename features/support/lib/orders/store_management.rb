@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::Modal
+      class ImportingOrdersModal < Browser::StampsHtmlField
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -19,7 +19,7 @@ module Stamps
         end
       end
 
-      class DeleteStoreModal < Browser::Modal
+      class DeleteStoreModal < Browser::StampsHtmlField
         def present?
           delete_btn.present?
         end
@@ -53,12 +53,12 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::Modal
-        class ServiceMappingGrid < Browser::Modal
+      class StoreSettings < Browser::StampsHtmlField
+        class ServiceMappingGrid < Browser::StampsHtmlField
 
-          class ServiceMappingLineItem < Browser::Modal
+          class ServiceMappingLineItem < Browser::StampsHtmlField
 
-            class ServiceMappingShippingService < Browser::Modal
+            class ServiceMappingShippingService < Browser::StampsHtmlField
 
               def initialize(param, index)
                 super(param)
@@ -192,7 +192,7 @@ module Stamps
         end
       end
 
-      class MarketPlace < Browser::Modal
+      class MarketPlace < Browser::StampsHtmlField
         attr_reader :window_title
 
         def initialize(param)
@@ -380,8 +380,8 @@ module Stamps
 
       end
 
-      class ManageStores < Browser::Modal
-        class ManageStoresGrid < Browser::Modal
+      class ManageStores < Browser::StampsHtmlField
+        class ManageStoresGrid < Browser::StampsHtmlField
 
           def size
             (browser.tables css: "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size

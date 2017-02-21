@@ -4,7 +4,7 @@ Then /^Mail: Open Extra Servicess$/ do
   @extra_services = stamps.mail.open_extra_services
 end
 
-Then /^Mail Extra Services: Set COD to \$(\d+)/ do |amount|
+Then /^Mail Extra Services: Set COD to \$(\d+)$/ do |amount|
   @extra_services.cod.set amount
 end
 
@@ -12,15 +12,15 @@ Then /^Mail Extra Services: Click Save/ do
   @extra_services.save
 end
 
-Then /^Mail Extra Services: Set Security to (.*)/ do |security|
+Then /^Mail Extra Services: Set Security to (.*)$/ do |security|
   @extra_services.security.select security
 end
 
-Then /^Mail Extra Services: Set Security Value to \$(\d+)/ do |value|
+Then /^Mail Extra Services: Set Security Value to \$(\d+)$/ do |value|
   @extra_services.security_value.set(value)
 end
 
-Then /^Mail Extra Services: Set Handling to (.*)/ do |handling|
+Then /^Mail Extra Services: Set Handling to (.*)$/ do |handling|
   @extra_services.handling.select handling
   if handling == 'Live Animal (with Fee)' || handling == 'Live Animal' || handling == 'Hazardous Materials'
     @extra_services.special_contents_modal.save

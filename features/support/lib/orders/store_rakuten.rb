@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Rakuten < Browser::Modal
+      class Rakuten < Browser::StampsHtmlField
 
         def window_title
           StampsElement.new(browser.div text: "Connect your Rakuten Store")

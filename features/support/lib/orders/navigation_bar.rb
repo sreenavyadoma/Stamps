@@ -1,6 +1,6 @@
 module Stamps
   module Navigation #todo-rob Refactor to WebApps module
-    class TransactionComplete < Browser::Modal
+    class TransactionComplete < Browser::StampsHtmlField
       attr_reader :window_title, :text_area, :ok_btn
 
       def initialize(param)
@@ -27,7 +27,7 @@ module Stamps
       end
     end
 
-    class ConfirmTransaction < Browser::Modal
+    class ConfirmTransaction < Browser::StampsHtmlField
       attr_reader :window_title, :transaction_complete, :confirm_btn
 
       def initialize(param)
@@ -75,7 +75,7 @@ module Stamps
       end
     end
 
-    class MinimumPurchaseAmountNotice < Browser::Modal
+    class MinimumPurchaseAmountNotice < Browser::StampsHtmlField
       def present?
 
       end
@@ -89,7 +89,7 @@ module Stamps
       end
     end
 
-    class AccountBalanceLimit < Browser::Modal
+    class AccountBalanceLimit < Browser::StampsHtmlField
       attr_reader :body, :window_title
 
       def initialize(param)
@@ -107,7 +107,7 @@ module Stamps
       end
     end
 
-    class AutoBuyPostageModal < Browser::Modal
+    class AutoBuyPostageModal < Browser::StampsHtmlField
       attr_reader :window_title
 
       def initialize(param)
@@ -120,7 +120,7 @@ module Stamps
       end
     end
 
-    class AddFundsModal < Browser::Modal
+    class AddFundsModal < Browser::StampsHtmlField
       attr_reader :confirm_transaction, :auto_add_funds_modal, :auto_buy_postage_link, :window_title, :account_balance_limit
 
       def initialize(param)
@@ -271,7 +271,7 @@ module Stamps
       end
     end
 
-    class BalanceDropDown < Browser::Modal
+    class BalanceDropDown < Browser::StampsHtmlField
       attr_reader :add_funds_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
 
       def initialize(param)
@@ -323,7 +323,7 @@ module Stamps
       end
     end
 
-    class UsernameDropDown < Browser::Modal
+    class UsernameDropDown < Browser::StampsHtmlField
       attr_reader :username, :sign_out_link
 
       def initialize(param)
@@ -364,7 +364,7 @@ module Stamps
       end
     end
 
-    class NavigationBar < Browser::Modal
+    class NavigationBar < Browser::StampsHtmlField
       attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
       def initialize(param)
@@ -375,8 +375,8 @@ module Stamps
         @signed_in_username = StampsElement.new browser.span(id: 'userNameText')
         @orders_link = StampsElement.new browser.a(text: 'Orders')
         @mail_link = StampsElement.new browser.a(text: 'Mail')
-        @web_mail = WebMail.new(param)
-        @web_orders = WebOrders.new(param)
+        #@web_mail = WebMail.new(param)
+        #@web_orders = WebOrders.new(param)
       end
 
       def orders

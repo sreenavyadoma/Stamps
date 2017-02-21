@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class DownloadPage < Browser::Modal
+    class DownloadPage < Browser::StampsHtmlField
       def element
         StampsElement.new browser.h1 css: "div>h1"
       end

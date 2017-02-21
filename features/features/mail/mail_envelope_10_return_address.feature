@@ -5,19 +5,19 @@ Feature: Envelope #10 - Print Only Return Address
 
   @mail_print_envelope_10_return_address
   Scenario: Envelope #10
-    Then Mail: Select Envelope - #10, 4 ⅛” x 9 ½”
-    Then Mail: Set Mail From to default
-    Then Mail: Set Ship-To country to United States
-    Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Mail: Set Pounds to 0
-    Then Mail: Set Ounces to 2
-    Then Mail Envelopes: Set service to First-Class Mail Letter
-    Then Mail Envelopes: Set Include Return Address to Checked
-    Then Mail Envelopes: Set Include Delivery Address to Unchecked
-    Then Mail Envelopes: Set Include Postage to Unchecked
-    Then Mail Envelopes: Set Reference Number to 12345
-    Then Mail Envelopes: Set Cost Code to None
-    Then Mail: Open Print Modal
-    Then Mail in Print modal, select Printer "factory"
-    Then Mail in Print modal, click Print button
+    Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
+    Then set Print form Mail From to default
+    Then on Envelope form, set Mail To country to United States
+    Then on Print form, set Mail To address to zone 1 through 4
+    Then set Print form Pounds to 0
+    Then on Print form, set Ounces to 2
+    Then on Envelope form, set service to First-Class Mail Letter
+    Then on Envelope form, set Include Return Address to Checked
+    Then on Envelope form, set Include Delivery Address to Unchecked
+    Then on Envelope form, set Include Postage to Unchecked
+    Then on Envelope form, set Reference Number to 12345
+    Then on Envelope form, set Cost Code to None
+    Then click Print form Print button
+    Then set Mail Print modal Printer to factory
+    Then click Mail Print modal Print button
     Then Sign out

@@ -2,8 +2,8 @@ module Stamps
   module Orders
     module Stores
 
-      class VolusionShippingAddress < Browser::Modal
-        class VolusionCountry < Browser::Modal
+      class VolusionShippingAddress < Browser::StampsHtmlField
+        class VolusionCountry < Browser::StampsHtmlField
           def select(country)
             begin
               browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
@@ -14,7 +14,7 @@ module Stamps
           end
         end
 
-        class VolusionState < Browser::Modal
+        class VolusionState < Browser::StampsHtmlField
           def select state
             begin
               browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
@@ -25,7 +25,7 @@ module Stamps
           end
         end
 
-        class VolusionTypeOfAddress < Browser::Modal
+        class VolusionTypeOfAddress < Browser::StampsHtmlField
           def residential
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
@@ -37,7 +37,7 @@ module Stamps
           end
         end
 
-        class VolusionBillingAddress < Browser::Modal
+        class VolusionBillingAddress < Browser::StampsHtmlField
           def yes
             browser.radio(css: 'input[name=alsobilling][value=Y]').set
             browser.radio(css: 'input[name=alsobilling][value=Y]').set
@@ -112,8 +112,8 @@ module Stamps
         end
       end
 
-      class VolusionCheckOut < Browser::Modal
-        class VolusionAddressType < Browser::Modal
+      class VolusionCheckOut < Browser::StampsHtmlField
+        class VolusionAddressType < Browser::StampsHtmlField
           def residential
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
@@ -169,7 +169,7 @@ module Stamps
         end
       end
 
-      class VolusionCart < Browser::Modal
+      class VolusionCart < Browser::StampsHtmlField
         def visit
           browser.goto "http://ywvmt.dmjeb.servertrust.com/shoppingcart.asp"
         end
@@ -196,7 +196,7 @@ module Stamps
         end
       end
 
-      class VolusionProduct < Browser::Modal
+      class VolusionProduct < Browser::StampsHtmlField
         def present?
           browser.text_field(css: "input[alt='Add to cart']").present?
         end
@@ -226,7 +226,7 @@ module Stamps
         end
       end
 
-      class VolusionCategoryOne < Browser::Modal
+      class VolusionCategoryOne < Browser::StampsHtmlField
         def present?
           browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']").present?
         end
@@ -242,7 +242,7 @@ module Stamps
         end
       end
 
-      class MyAccountPage < Browser::Modal
+      class MyAccountPage < Browser::StampsHtmlField
         def log_out
           logged_out_field = StampsElement.new browser.li(text: "You are now logged out.")
           button = StampsElement.new browser.a(css: "a[href*=logout]")
@@ -283,8 +283,8 @@ module Stamps
         end
       end
 
-      class VolusionRegistration < Browser::Modal
-        class ReceiveNewsLetterCheckbox < Browser::Modal
+      class VolusionRegistration < Browser::StampsHtmlField
+        class ReceiveNewsLetterCheckbox < Browser::StampsHtmlField
           def check
             browser.checkbox(name: 'emailsubscriber').set
             browser.checkbox(name: 'emailsubscriber').set
@@ -331,7 +331,7 @@ module Stamps
         end
       end
 
-      class VolusionLoginPage < Browser::Modal
+      class VolusionLoginPage < Browser::StampsHtmlField
         def visit
           browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
         end
