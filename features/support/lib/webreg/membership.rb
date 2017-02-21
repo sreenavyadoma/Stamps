@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class State < Browser::Modal
+    class State < Browser::StampsHtmlField
       def select state
         begin
           browser.select_list(:id, "state").option(text: state).when_present.select
@@ -269,7 +269,7 @@ module Stamps
     end
 
 
-    class ExpirationMonth < Browser::Modal
+    class ExpirationMonth < Browser::StampsHtmlField
       def select month
         begin
           browser.select_list(:id, "ccMonth").option(text: month).when_present.select
@@ -338,7 +338,7 @@ module Stamps
 
     end
 
-    class ExpirationYear < Browser::Modal
+    class ExpirationYear < Browser::StampsHtmlField
       def select year
         begin
           browser.select_list(:id, "ccYear").option(text: year).when_present.select
@@ -349,7 +349,7 @@ module Stamps
       end
     end
 
-    class TermsAndConditions < Browser::Modal
+    class TermsAndConditions < Browser::StampsHtmlField
       attr_reader :checkbox
       def initialize(param)
         super(param)
@@ -380,7 +380,7 @@ module Stamps
       end
     end
 
-    class UserIdTaken < Browser::Modal
+    class UserIdTaken < Browser::StampsHtmlField
       def present?
         (browser.h3 text: "User ID Taken").present?
       end
@@ -398,7 +398,7 @@ module Stamps
       end
     end
 
-    class MembershipError < Browser::Modal
+    class MembershipError < Browser::StampsHtmlField
       attr_reader :title, :top_message, :error_code, :error_description
 
       def initialize(param)
@@ -414,7 +414,7 @@ module Stamps
       end
     end
 
-    class WebRegError < Browser::Modal
+    class WebRegError < Browser::StampsHtmlField
       def present?
         browser.text.include? "An Error Occurred"
 
@@ -427,7 +427,7 @@ module Stamps
       end
     end
 
-    class WebRegSecureConnectionFailed < Browser::Modal
+    class WebRegSecureConnectionFailed < Browser::StampsHtmlField
       def present?
         browser.text.include? "Secure Connection Failed"
       end
@@ -542,7 +542,7 @@ module Stamps
       end
     end
 
-    class BillingState < Browser::Modal
+    class BillingState < Browser::StampsHtmlField
       def select state
         begin
           browser.select_list(:id, "billingState").option(text: state).when_present.select
@@ -838,7 +838,7 @@ module Stamps
       end
     end
 
-    class Membership < Browser::Modal
+    class Membership < Browser::StampsHtmlField
 
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
                   :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions, :back,

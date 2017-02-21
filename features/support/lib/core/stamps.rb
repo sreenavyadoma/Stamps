@@ -69,6 +69,10 @@ module Stamps
     end
   end
 
+  def test_parameter
+    @test_data ||= Hash.new
+  end
+
   def param
     expect(ENV['BROWSER']).to be_truthy
     expect(ENV['URL']).to be_truthy
@@ -93,6 +97,45 @@ module Stamps
     @param.pw = ENV['PW']
     @param.url = ENV['URL']
     @param
+  end
+
+  def address_helper(zone)
+    case zone.downcase
+      when /zone 1 (?:through|and) 4/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_1_4)
+      when /zone 5 (?:through|and) 8/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_5_8)
+      when /zone 1/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_1)
+      when /zone 2/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_2)
+      when /zone 3/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_3)
+      when /zone 4/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_4)
+      when /zone 5/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_5)
+      when /zone 6/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_6)
+      when /zone 7/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_7)
+      when /zone 8/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_8)
+      when /zone 9/
+        address = ParameterHelper.format_address(ParameterHelper.rand_zone_9)
+      else
+        test_parameter[:ship_to_domestic] = ParameterHelper.format_address(zone)
+        return test_parameter[:ship_to_domestic]
+    end
+
+    test_parameter[:street_address] = address['street_address']
+    test_parameter[:city] = address['city']
+    test_parameter[:state] = address['state']
+    test_parameter[:zip] = address['zip']
+    test_parameter[:name] = address['name']
+    test_parameter[:company] = address['company']
+    test_parameter[:ship_to_domestic] = ParameterHelper.format_address(address)
+    test_parameter[:ship_to_domestic]
   end
 
   def test_helper
@@ -125,10 +168,6 @@ module Stamps
       logger.error ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
-  end
-
-  def test_data
-    @test_data ||= Hash.new
   end
 
   def webreg_user_parameter_file * args

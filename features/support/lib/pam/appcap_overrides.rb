@@ -1,7 +1,7 @@
 module Stamps
   module Pam
 
-    class AppCapOverridesConfirmation < Browser::Modal
+    class AppCapOverridesConfirmation < Browser::StampsHtmlField
       attr_reader :title, :ok_button
 
       def initialize(param)
@@ -24,7 +24,7 @@ module Stamps
       end
     end
 
-    class InternetPostagePrinting < Browser::Modal
+    class InternetPostagePrinting < Browser::StampsHtmlField
       def always_on
         browser.radio(css: 'input[name=IBIP][value=On]').set
       end
@@ -38,7 +38,7 @@ module Stamps
       end
     end
 
-    class NetStampsPrinting < Browser::Modal
+    class NetStampsPrinting < Browser::StampsHtmlField
       def always_on
         browser.radio(css: 'input[name=NS][value=On]').set
       end
@@ -52,7 +52,7 @@ module Stamps
       end
     end
 
-    class ShippingLabelPrinting < Browser::Modal
+    class ShippingLabelPrinting < Browser::StampsHtmlField
       def always_on
         browser.radio(css: 'input[name=SL][value=On]').set
       end
@@ -66,7 +66,7 @@ module Stamps
       end
     end
 
-    class InternationalShipping < Browser::Modal
+    class InternationalShipping < Browser::StampsHtmlField
       def always_on
         browser.radio(css: 'input[name=IntlShipping][value=On]').set
       end
@@ -80,7 +80,7 @@ module Stamps
       end
     end
 
-    class AllowHighRiskCountries < Browser::Modal
+    class AllowHighRiskCountries < Browser::StampsHtmlField
       def always_on
         browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
       end
@@ -94,7 +94,7 @@ module Stamps
       end
     end
 
-    class MailingLabelPrinting < Browser::Modal
+    class MailingLabelPrinting < Browser::StampsHtmlField
       def always_on
         browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
       end
@@ -108,7 +108,7 @@ module Stamps
       end
     end
 
-    class AppCapOverrides < Browser::Modal
+    class AppCapOverrides < Browser::StampsHtmlField
       attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
                   :mailing_label_printing, :submit_button, :appcap_overrides
 

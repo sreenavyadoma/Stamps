@@ -1,6 +1,8 @@
 module Stamps
   module Mail
-    class EnvelopeFormView < MailForm
+
+=begin
+    class EnvelopeFormView < PrintForm
 
       def preview_image
         image = StampsElement.new browser.div id: "envelopePreview"
@@ -40,20 +42,15 @@ module Stamps
 
     end
 
-    class Envelope < MailForm
+    class Envelopes < PrintForm
+      attr_accessor :insure_for, :ship_date, :form_view
 
-      def insure_for
-        DetailsInsureFor.new(param)
+      def initialize(param)
+        @insure_for = DetailsInsureFor.new(param)
+        @ship_date = ShipDate.new(param)
+        @form_view = EnvelopeFormView.new(param)
       end
-
-      def ship_date
-        ShipDate.new(param)
-      end
-
-      def form_view
-        EnvelopeFormView.new(param)
-      end
-
     end
+=end
   end
 end

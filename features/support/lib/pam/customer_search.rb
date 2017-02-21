@@ -1,7 +1,7 @@
 module Stamps
   module Pam
 
-    class CustomerProfileNotFound < Browser::Modal
+    class CustomerProfileNotFound < Browser::StampsHtmlField
       def present?
         browser.text.include? 'No records found'
       end
@@ -11,7 +11,7 @@ module Stamps
       end
     end
 
-    class MeterInfoNotAvailableForAccount < Browser::Modal
+    class MeterInfoNotAvailableForAccount < Browser::StampsHtmlField
       def present?
         browser.text.include? 'Meter info not available'
       end
@@ -21,7 +21,7 @@ module Stamps
       end
     end
 
-    class CustomerSearch < Browser::Modal
+    class CustomerSearch < Browser::StampsHtmlField
       def present?
         browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").present?
       end

@@ -4,8 +4,8 @@ Given /^(?:|(?:|(?:A|a) )(?:(?:v|V)alid |))(?:U|u)ser is signed in to Web Apps$/
   step "Health Check: Print - Web Batch" if param.health_check
   step "Health Check: Print - Address Book" if param.health_check
   step "load Sign-in page"
-  test_data[:username] = stamps.orders.landing_page.orders_sign_in(:default) if param.web_app == :orders
-  test_data[:username] = stamps.mail.sign_in_modal.mail_sign_in(:default) if param.web_app == :mail
+  test_parameter[:username] = stamps.orders.landing_page.orders_sign_in if param.web_app == :orders
+  test_parameter[:username] = stamps.mail.sign_in_modal.mail_sign_in if param.web_app == :mail
   step "Navigation Bar: Customer Balance"
 end
 
@@ -22,7 +22,7 @@ Then /^(?:S|s)ign out$/ do
   end
 end
 
-Given /^Orders: Sign-in as new user (.*)\/(.*)/ do |username, password|
+Given /^Orders: Sign-in as new user (.*)\/(.*)$/ do |username, password|
   if username.downcase.include? 'random'
     usr = @username
   else

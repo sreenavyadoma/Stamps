@@ -9,7 +9,7 @@ Feature: Stamps L Series - Calculate Postage
   @mail_print_stamps_l_series_calculate
 
   Scenario: Stamps Regression L Series - Calculate Postage
-    Then Mail: Select Stamps
+    Then select Print form Print On Stamps
     Then Mail Stamps: Set Serial Number to L12345
     Then Mail Stamps: Select Calculate Mail Amount
     Then Mail Stamps: Set Ship-From to default
@@ -17,7 +17,7 @@ Feature: Stamps L Series - Calculate Postage
     Then Mail Stamps: Select Calculate Mail service First-Class Mail Large Envelope-Flat
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
-    Then Mail: Open Print Modal
-    Then Mail in Print modal, select Printer "factory"
-    Then Mail in Print modal, click Print button
+    Then click Print form Print button
+    Then set Mail Print modal Printer to factory
+    Then click Mail Print modal Print button
     Then Sign out

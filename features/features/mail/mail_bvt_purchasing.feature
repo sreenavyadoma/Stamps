@@ -14,8 +14,6 @@ Feature: Purchasing BVT
 
     Then Sign out
 
-
-
 #    Then on Add Funds modal, purchase 10
 #    Then on Add Funds modal, click Purchase button
 #    Then Buy Mail Confirm Transction: Click Confirm button

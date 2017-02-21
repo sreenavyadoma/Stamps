@@ -1,9 +1,11 @@
 module Stamps
-  class StampsCom < Browser::Modal
+  class StampsCom < Browser::StampsHtmlField
     attr_reader :orders, :mail, :navigation_bar
 
     def initialize(param)
       super(param)
+      @sign_in_username = param.usr
+      @sign_in_password = param.pw
       @navigation_bar = Navigation::NavigationBar.new(param)
       @orders = WebOrders.new(param)
       @mail = WebMail.new(param)
@@ -15,7 +17,7 @@ module Stamps
           url = "http://printss600.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         when /cc/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
-          #url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
+          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /sc/
           url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
           url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
@@ -49,36 +51,24 @@ module Stamps
         else
           # do nothing
       end
-
       browser.url
     end
   end
 
-  class StampsSignInBase < Browser::Modal
-    def user_credentials(*args)
-      case args
-        when Hash
-          @username = args[0]['username']
-          @password = args[0]['password']
-        when Array
-          case args.length
-            when 1
-              if args[0].is_a?(Symbol)
+  class StampsSignInBase < Browser::StampsHtmlField
+    attr_accessor :sign_in_username, :sign_in_password, :signed_in_user
 
-              end
-            when 2
-            else
-              expect(args.length).to be_between(1, 2).inclusive
-          end
-          @username = args[0]
-          @password = args[1]
-        else
-          logger.message "Using Default Sign-in Credentials."
-          @username = param.usr
-          @password = param.pw
-      end
-      logger.message "USERNAME: #{@username}, PASSWORD: #{@password}"
-      [@username, @password]
+    def initialize(param)
+      super(param)
+      @sign_in_username = param.usr
+      @sign_in_password = param.pw
+      @signed_in_user = StampsElement.new(browser.span(id: 'userNameText'))
+    end
+
+    def user_credentials(*args)
+      expect(args.length).to eql 2
+      @sign_in_username = args[0]
+      @sign_in_password = args[1]
     end
   end
 end

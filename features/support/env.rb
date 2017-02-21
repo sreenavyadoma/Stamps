@@ -28,7 +28,7 @@ require_relative 'lib/core/stamps_logger'
 
 # ParameterHelper module
 require_relative 'lib/orders/fields'
-require_relative 'lib/mail/mail_form'
+require_relative 'lib/mail/print_form'
 require_relative 'lib/windows/print_window'
 require_relative 'lib/orders/store_management'
 require_relative 'lib/orders/general_settings'

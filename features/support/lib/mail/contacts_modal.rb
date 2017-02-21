@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class ContactsModal < Browser::Modal
+    class ContactsModal < Browser::StampsHtmlField
       def close
         element_helper.safe_click (browser.img css: "img[class*='x-tool-img x-tool-close']")
       end
@@ -51,19 +51,19 @@ module Stamps
 
     end
 
-    class Search < Browser::Modal
+    class Search < Browser::StampsHtmlField
 
     end
 
-    class SearchByGroup < Browser::Modal
+    class SearchByGroup < Browser::StampsHtmlField
 
     end
 
-    class SearchByCostCode < Browser::Modal
+    class SearchByCostCode < Browser::StampsHtmlField
 
     end
 
-    class ViewBy < Browser::Modal
+    class ViewBy < Browser::StampsHtmlField
 
     end
 

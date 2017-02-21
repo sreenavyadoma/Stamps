@@ -1,6 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
+=begin
 
     class StartingLabel < Browser::Modal
       def label_divs
@@ -61,7 +62,7 @@ module Stamps
       end
     end
 
-    class ShippingLabelFormView < MailForm
+    class ShippingLabelPrintView < PrintForm
       attr_reader :reference_number
 
       def initialize(param)
@@ -101,7 +102,7 @@ module Stamps
       end
     end
 
-    class ShippingLabel < MailForm
+    class ShippingLabels < PrintForm
 
       def insure_for
         DetailsInsureFor.new(param)
@@ -112,9 +113,11 @@ module Stamps
       end
 
       def form_view
-        ShippingLabelFormView.new(param)
+        ShippingLabelPrintView.new(param)
       end
 
     end
+
+=end
   end
 end

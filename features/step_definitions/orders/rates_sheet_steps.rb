@@ -354,9 +354,9 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # set expectation column for this row to zone price
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:zone]]= price
-          @result_sheet[row_number, @result_sheet_columns[:username]] = test_data[:username]
-          @result_sheet[row_number, @result_sheet_columns[:ship_from]] = test_data[:ship_from]
-          @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = test_data[:ship_to_domestic]
+          @result_sheet[row_number, @result_sheet_columns[:username]] = test_parameter[:username]
+          @result_sheet[row_number, @result_sheet_columns[:ship_from]] = test_parameter[:ship_from]
+          @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = test_parameter[:ship_to_domestic]
 
           # Set weight to 0
           step "On Order Details form, set Pounds to 0"
@@ -392,18 +392,18 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
           step "On Order Details form, select service #{service}"
-          @result_sheet[row_number, @result_sheet_columns[:service_selected]] = test_data[:service]
+          @result_sheet[row_number, @result_sheet_columns[:service_selected]] = test_parameter[:service]
 
           # Set Tracking
           begin
             step "On Order Details form, set Tracking to #{row[@rate_sheet_columns[:tracking]]}"
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
-          @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = test_data[:tracking]
+          @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = test_parameter[:tracking]
 
           # get total cost actual value from UI
           step "Save Order Details data"
-          @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_data[:total_ship_cost].to_f * 100).round / 100.0
+          @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_parameter[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
           step "On Order Details form, set Pounds to 0"
@@ -424,7 +424,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           logger.step "#{"#"*10} "
           logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
           logger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
-          logger.step "#{"#"*10} Ship-To Address: #{test_data[:name]}, #{test_data[:street_address]}, #{test_data[:city]}, #{test_data[:state]}, #{test_data[:zip]}"
+          logger.step "#{"#"*10} Ship-To Address: #{test_parameter[:name]}, #{test_parameter[:street_address]}, #{test_parameter[:city]}, #{test_parameter[:state]}, #{test_parameter[:zip]}"
           logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
           logger.step "#{"#"*10} "
         end

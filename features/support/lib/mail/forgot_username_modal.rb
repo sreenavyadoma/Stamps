@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class ForgotUsernameModal < Browser::Modal
+    class ForgotUsernameModal < Browser::StampsHtmlField
       def window_x_button
         StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']")[0])
       end

@@ -5,14 +5,14 @@ Feature: Envelope #6
 
   @mail_print_envelope_6
   Scenario: Envelope #6
-    Then Mail: Select Envelope - #6, 3 ⅝” x 6 ½”
-    Then Mail: Set Mail From to default
-    Then Mail: Set Ship-To country to United States
-    Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
-    Then Mail: Set Pounds to 0
-    Then Mail: Set Ounces to 1
-    Then Mail Envelopes: Select service First-Class Mail Letter
-    Then Mail: Open Print Modal
-    Then Mail in Print modal, select Printer "factory"
-    Then Mail in Print modal, click Print button
+    Then on Print form, select Envelope - #6
+    Then set Print form Mail From to default
+    Then on Envelope form, set Mail To country to United States
+    Then on Print form, set Mail To address to zone 1 through 4
+    Then set Print form Pounds to 0
+    Then set Print form Ounces to 1
+    Then on Envelope form, set service to First-Class Mail Letter
+    Then click Print form Print button
+    Then set Mail Print modal Printer to factory
+    Then click Mail Print modal Print button
     Then Sign out

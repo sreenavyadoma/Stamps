@@ -6,15 +6,15 @@ Feature: International Shipping BVT
   @mail_bvt_international
   Scenario: International Shipping
 
-    Then Mail: Select Shipping Label - 5 ½” x 8 ½”
-    Then Mail: Set Mail From to default
-    Then Mail: Set Ship-To to
+    Then select Print On Shipping Label - 5 x 8 on Print form
+    Then set Print form Mail From to default
+    Then on Print form, set Ship-To to
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |
-    Then Mail Shipping Labels: Select service First-Class Mail International Package
-    Then Mail: Set Pounds to 0
-    Then Mail: Set Ounces to 3
-    Then Mail Shipping Labels: Edit Customs Form
+    Then on Print form, select service First-Class Mail International Package
+    Then set Print form Pounds to 0
+    Then on Print form, set Ounces to 3
+    Then on Shipping Label Print form, Edit Customs Form
     #Then Mail on Customs form, set Package Contents to Gift
     Then Mail on Customs form, set Non-Delivery Options to "Treat as abandoned"
     Then Mail on Customs form, set Internal Transaction Number Requirement to "Required"

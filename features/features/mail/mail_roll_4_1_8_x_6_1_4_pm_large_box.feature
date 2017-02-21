@@ -9,16 +9,16 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Large Box
   @mail_print_roll_4_1_8_x_6_1_4_pm_large_box
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM Large Box
 
-    Then Mail: Select Roll - 4 ⅛” x 6 ¼” Shipping Label
+    Then on Print form, select Roll - 4 ⅛” x 6 ¼” Shipping Label
 
-    Then Mail: Set Mail From to default
-    Then Mail: Set Ship-To country to United States
-    Then Mail: Set Ship-To to Random Address Between Zone 1 through 4
+    Then set Print form Mail From to default
+    Then set Print form Mail to country to United States
+    Then on Print form, set Mail To address to zone 1 through 4
 
-    Then Mail: Set Pounds to 0
-    Then Mail: Set Ounces to 1
+    Then set Print form Pounds to 0
+    Then set Print form Ounces to 1
     Then Mail Roll: Select service Priority Mail Large Flat Rate Box
-    Then Mail: Open Print Modal
-    Then Mail in Print modal, select Printer "ZDesigner"
-    Then Mail in Print modal, click Print button
+    Then click Print form Print button
+    Then in Mail Print modal, select Printer "ZDesigner"
+    Then click Mail Print modal Print button
     Then Sign out

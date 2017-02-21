@@ -311,69 +311,69 @@ end
 
 Then /^(?:O|o)n WebReg Membership page, set First Name to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set First Name to #{var}"
-  test_data[:first_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
-  webreg.profile.membership.first_name.set test_data[:first_name]
+  test_parameter[:first_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
+  webreg.profile.membership.first_name.set test_parameter[:first_name]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Last Name to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Last Name to #{var}"
-  test_data[:last_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
-  webreg.profile.membership.last_name.set test_data[:last_name]
+  test_parameter[:last_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
+  webreg.profile.membership.last_name.set test_parameter[:last_name]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Company to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Company to #{var}"
-  test_data[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
-  webreg.profile.membership.company.set test_data[:company]
+  test_parameter[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
+  webreg.profile.membership.company.set test_parameter[:company]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Address to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Address to #{var}"
-  test_data[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
-  webreg.profile.membership.address.set test_data[:company]
+  test_parameter[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
+  webreg.profile.membership.address.set test_parameter[:company]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set City to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set City to #{var}"
-  test_data[:membership] = var
-  webreg.profile.membership.city.set test_data[:membership]
+  test_parameter[:membership] = var
+  webreg.profile.membership.city.set test_parameter[:membership]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Zip Code to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Zip Code to #{var}"
-  test_data[:zip] = var
-  webreg.profile.membership.zip.set test_data[:zip]
+  test_parameter[:zip] = var
+  webreg.profile.membership.zip.set test_parameter[:zip]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Phone to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Phone to #{var}"
-  test_data[:phone] = (var.downcase.include? 'random') ? ParameterHelper.random_phone : var
+  test_parameter[:phone] = (var.downcase.include? 'random') ? ParameterHelper.random_phone : var
   phone = webreg.profile.membership.phone
   6.times do
-    phone.send_keys test_data[:phone]
+    phone.send_keys test_parameter[:phone]
     sleep(0.35)
     ui_phone = phone.text
     sleep(0.35)
-    break if ui_phone.include? '-' and (test_data[:phone][-4,4] == ui_phone[-4,4])
+    break if ui_phone.include? '-' and (test_parameter[:phone][-4, 4] == ui_phone[-4, 4])
   end
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Extenion to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Extenion to #{var}"
-  test_data[:ext] = (var.downcase.include? 'random') ? ParameterHelper.random_phone_extension : var
-  webreg.profile.membership.ext.set test_data[:ext]
+  test_parameter[:ext] = (var.downcase.include? 'random') ? ParameterHelper.random_phone_extension : var
+  webreg.profile.membership.ext.set test_parameter[:ext]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Cardholder name to (.*)$/ do |var|
   #logger.step "On WebReg Membership page, set Cardholder name to #{var}"
-  test_data[:card_holder_name] = (var.downcase.include? 'random') ? ParameterHelper.random_name : var
-  webreg.profile.membership.card_holder_name.set test_data[:card_holder_name]
+  test_parameter[:card_holder_name] = (var.downcase.include? 'random') ? ParameterHelper.random_name : var
+  webreg.profile.membership.card_holder_name.set test_parameter[:card_holder_name]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Card number to (.*)$/ do |var|
-  test_data[:card_number] = var
+  test_parameter[:card_number] = var
   #logger.step "On WebReg Membership page, set Card number to #{test_data[:card_number]}"
-  webreg.profile.membership.card_number.set test_data[:card_number]
+  webreg.profile.membership.card_number.set test_parameter[:card_number]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Expiration Month to January/ do
@@ -438,8 +438,8 @@ end
 
 Then /^(?:O|o)n WebReg Membership page, set Expiration Year to (\d+)$/ do |var|
   #logger.step "On WebReg Membership page, set Expiration Year to #{var}"
-  test_data[:expiration_year] = var
-  webreg.profile.membership.expiration_year.select test_data[:expiration_year]
+  test_parameter[:expiration_year] = var
+  webreg.profile.membership.expiration_year.select test_parameter[:expiration_year]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Billing address same as mailing address to Checked$/ do
@@ -470,7 +470,7 @@ end
 Then /^(?:O|o)n WebReg Membership page, click Submit$/ do
   #logger.step "On WebReg Membership page, click Submit"
   begin
-    webreg.profile.membership.submit_correct_errors test_data
+    webreg.profile.membership.submit_correct_errors test_parameter
   rescue Exception => e
     logger.error e.message
     logger.error e.backtrace.join("\n")
@@ -488,7 +488,7 @@ Then /^(?:O|o)n WebReg Membership page, click Submit and correct errors$/ do
         step "On WebReg Membership page, click Submit"
       when WebReg::MembershipCardNumber
         logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
-        step "On WebReg Membership page, set Card number to #{test_data[:card_number]}"
+        step "On WebReg Membership page, set Card number to #{test_parameter[:card_number]}"
         step "On WebReg Membership page, click Submit"
       when WebReg::ChooseSupplies
         break

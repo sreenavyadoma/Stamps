@@ -28,6 +28,527 @@ url_prefix:
   qasc: printext.qasc
   rating: printext.qacc
 
+mail_services:
+  FCM Post Card:
+    id: sdc-servicedroplist-fcpostcard
+    text_box: FCM Postcard
+  FCM Letter:
+    id: sdc-servicedroplist-fcletter
+    text_box: FCM Letter
+  FCM Large Envelope:
+    id: sdc-servicedroplist-fclargeenvelopeorflat
+    text_box: FCM Large Envelope/Flat
+  FCM Package:
+    id: sdc-servicedroplist-fcthickenvelope
+    text_box: FCM Package/Thick Envelope
+  PM Large Envelope:
+    id: sdc-servicedroplist-pmlargeenvelopeorflat
+    text_box: PM Large/Thick Envelope
+  PM Package:
+    id: sdc-servicedroplist-pmpackage
+    text_box: PM Package
+  PM Large Package:
+    id: sdc-servicedroplist-pmlargepackage
+    text_box: PM Large Package
+  PM Flat Rate Envelope:
+    id: sdc-servicedroplist-pmflatrateenvelope
+    text_box: PM Flat Rate Envelope
+  PM Padded Flat Rate Envelope:
+    id: sdc-servicedroplist-pmflatratepaddedenvelope
+    text_box: PM Padded Flat Rate Envelope
+  PM Legal Flat Rate Envelope:
+    id: sdc-servicedroplist-pmlegalflatrateenvelope
+    text_box: PM Legal Flat Rate Envelope
+  PM Small Flat Rate Box:
+    id: sdc-servicedroplist-pmsmallflatratebox
+    text_box: PM Small Flat Rate Box
+  PM Medium Flat Rate Box:
+    id: sdc-servicedroplist-pmflatratebox
+    text_box: PM Medium Flat Rate Box
+  PM Large Flat Rate Box:
+    id: sdc-servicedroplist-pmlargeflatratebox
+    text_box: PM Large Flat Rate Box
+  PM Regional Rate Box A:
+    id: sdc-servicedroplist-pmregionalrateboxa
+    text_box: PM Regional Rate Box A
+  PM Regional Rate Box B:
+    id: sdc-servicedroplist-pmregionalrateboxb
+    text_box: PM Regional Rate Box B
+  PME Package:
+    id: sdc-servicedroplist-xmpackage
+    text_box: PME Package/Flat/Thick Envelope
+  PME Flat Rate Envelope:
+    id: sdc-servicedroplist-xmflatrateenvelope
+    text_box: PME Flat Rate Envelope
+  PME Padded Flat Rate Envelope:
+    id: sdc-servicedroplist-xmflatratepaddedenvelope
+    text_box: PME Padded Flat Rate Envelope
+  PME Legal Flat Rate Envelope:
+    id: sdc-servicedroplist-xmlegalflatrateenvelope
+    text_box: PME Legal Flat Rate Envelope
+  MM Package:
+    id: sdc-servicedroplist-mmpackage
+    text_box: MM Package/Flat/Thick Envelope
+  PSG Package:
+    id: sdc-servicedroplist-pspackage
+    text_box: PSG Package/Flat/Thick Envelope
+  PSG Large Package:
+    id: sdc-servicedroplist-pslargepackage
+    text_box: PSG Large Package
+  PSG Oversized Package:
+    id: sdc-servicedroplist-psoversizedpackage
+    text_box: PSG Oversized Package
+
+orders_services:
+  FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
+  FCM Package: sdc-servicedroplist-fcthickenvelope
+  PM Large Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
+  PM Package: sdc-servicedroplist-pmpackage
+  PM Large Package: sdc-servicedroplist-pmlargepackage
+  PM Flat Rate Envelope: sdc-servicedroplist-pmflatrateenvelope
+  PM Padded Flat Rate Envelope: sdc-servicedroplist-pmflatratepaddedenvelope
+  PM Legal Flat Rate Envelope: sdc-servicedroplist-pmlegalflatrateenvelope
+  PM Small Flat Rate Box: sdc-servicedroplist-pmsmallflatratebox
+  PM Medium Flat Rate Box: sdc-servicedroplist-pmflatratebox
+  PM Large Flat Rate Box: sdc-servicedroplist-pmlargeflatratebox
+  PM Regional Rate Box A: sdc-servicedroplist-pmregionalrateboxa
+  PM Regional Rate Box B: sdc-servicedroplist-pmregionalrateboxb
+  PME Package: sdc-servicedroplist-xmpackage
+  PME Flat Rate Envelope: sdc-servicedroplist-xmflatrateenvelope
+  PME Padded Flat Rate Envelope: sdc-servicedroplist-xmflatratepaddedenvelope
+  PME Legal Flat Rate Envelope: sdc-servicedroplist-xmlegalflatrateenvelope
+  MM Package: sdc-servicedroplist-mmpackage
+  PSG Package: sdc-servicedroplist-pspackage
+  PSG Large Package: sdc-servicedroplist-pslargepackage
+  PSG Oversized Package: sdc-servicedroplist-psoversizedpackage
+  FCMI Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
+  FCMI Package: sdc-servicedroplist-fcithickenvelope
+  PMI Package: sdc-servicedroplist-pmipackage
+  PMI Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
+  PMI Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
+  PMI Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope
+  PMI Small Flat Rate Box: sdc-servicedroplist-pmismallflatratebox
+  PMI Medium Flat Rate Box: sdc-servicedroplist-pmiflatratebox
+  PMI Large Flat Rate Box: sdc-servicedroplist-pmilargeflatratebox
+  PMI Regional Rate Box A: sdc-servicedroplist-pmiregionalrateboxa
+  PMI Regional Rate Box B: sdc-servicedroplist-pmiregionalrateboxb
+  PMEI Package: sdc-servicedroplist-emipackage
+  PMEI Flat Rate Envelope: sdc-servicedroplist-emiflatrateenvelope
+  PMEI Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
+  PMEI Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope
+
+shipping_method:
+  usps_fcml:
+    text: USPS First-Class Mail Letter
+    code: 809
+
+zone_1_through_4:
+    zone1:
+      1:
+        street_address: 2791 Agoura Road
+        city: Thousand Oaks
+        state: CA
+        zip: 91361-3101
+      2:
+        street_address: 12280 Perris Blvd
+        city: Moreno Valley
+        state: CA
+        zip: 92557-7418
+      3:
+        street_address: 610 W Tefft St
+        city: Nipomo
+        state: CA
+        zip: 93444-9187
+      4:
+        street_address: 42136 Big Bear Blvd
+        city: Big Bear Lake
+        state: CA
+        zip: 92315-1530
+    zone2:
+      1:
+        street_address: 530 K Street
+        street_address_2: Unit 504
+        city: San Diego
+        state: CA
+        zip: 92101-7060
+      2:
+        street_address: 3217 Shasta Circle S.
+        city: Los Angeles
+        state: CA
+        zip: 90065-4807
+      3:
+        street_address: 618 Falconer Rd
+        city: Escondido
+        state: CA
+        zip: 92027-4229
+      4:
+        street_address: 4216 Laurel Glen Dr.
+        city: Moorpark
+        state: CA
+        zip: 93021-2725
+    zone3:
+      1:
+        street_address: 3555 Las Vegas Blvd S
+        city: Las Vegas
+        state: NV
+        zip: 89109-8901
+      2:
+        street_address: 7065 N Ingram Ave
+        city: Fresno
+        state: CA
+        zip: 93650-1083
+      3:
+        street_address: 1804 E Ashlan Ave
+        city: Fresno
+        state: CA
+        zip: 93726-2019
+      4:
+        street_address: 6301 W Charleston Blvd
+        city: Las Vegas
+        state: NV
+        zip: 89146-1124
+    zone4:
+      1:
+        street_address: PO Box 567
+        city: Kelseyville
+        state: CA
+        zip: 95451-0567
+      2:
+        street_address: 2105 Kietzke Ln
+        city: Reno
+        state: NV
+        zip: 89502-3602
+      3:
+        street_address: 4937 79th St.
+        city: Sacramento
+        state: CA
+        zip: 95820-6213
+      4:
+        street_address: 1406 Long Creek Way
+        city: Roseville
+        state: CA
+        zip: 95747-7312
+
+zone_5_through_8:
+    zone5:
+      1:
+        street_address: 530 9th Ave. N.
+        city: Buhl
+        state: ID
+        zip: 83316-1115
+      2:
+        street_address: 26930 NE 152nd St.
+        city: Duvall
+        state: WA
+        zip: 98019-8316
+      3:
+        street_address: 3232 SE 89th Ave.
+        city: Portland
+        state: OR
+        zip: 97266-1911
+      4:
+        street_address: 648 Gehr St.
+        city: Wenatchee
+        state: WA
+        zip: 98801-8011
+    zone6:
+      1:
+        street_address: 11 Laguna Madre Dr.
+        city: Laguna Vista
+        state: TX
+        zip: 78578-2602
+      2:
+        street_address: 204 Nursery Ln.
+        city: Ft Worth
+        state: TX
+        zip: 76114-4348
+      3:
+        street_address: 1327 Yates Dr.
+        city: Hurst
+        state: TX
+        zip: 76053-4038
+      4:
+        street_address: 2601 Avenue of the Stars
+        street_address_2: Ste 100
+        city: Frisco
+        state: TX
+        zip: 75034-9016
+    zone7:
+      1:
+        street_address: 9435 Pettit Rd.
+        city: Baker
+        state: LA
+        zip: 70714-6434
+      2:
+        street_address: 1071 Trelane Ave.
+        city: Saint Louis
+        state: MO
+        zip: 63126-1117
+      3:
+        street_address: 557 County Rd. H
+        city: Fredonia
+        state: WI
+        zip: 53021-9634
+      4:
+        street_address: 2215 Pelopidas St
+        city: New Orleans
+        state: LA
+        zip: 70122-4957
+    zone8:
+      1:
+        street_address: 2622 New Banner Ln.
+        city: Herndon
+        state: VA
+        zip: 20171-2659
+      2:
+        street_address: 401 Sherborne Dr.
+        city: Columbus
+        state: OH
+        zip: 43219-2971
+      3:
+        street_address: 2775 Stark Dr.
+        city: Willoughby Hills
+        state: OH
+        zip: 44094-9113
+      4:
+        street_address: 283 Chinquapin Rd.
+        city: Mocksville
+        state: NC
+        zip: 27028-4708
+
+non_domestic:
+    zone9:
+      1:
+        street_address: PO Box 659
+        city: Kosrae, FM 96944-0305
+        state: FM
+        zip: 96944
+      2:
+        street_address: PO Box 735
+        city: Majuro
+        state: MH
+        zip: 96960
+      3:
+        street_address: PO Box 1949
+        city: Pohnpei
+        state: FM
+        zip: 96941
+      4:
+        street_address: PO Box 8067
+        city: Palau
+        state: PW
+        zip: 96940
+
+us_states:
+  AL:	Alabama
+  AK:	Alaska
+  AZ:	Arizona
+  AR:	Arkansas
+  CA:	California
+  CO:	Colorado
+  CT:	Connecticut
+  DE:	Delaware
+  FL:	Florida
+  GA:	Georgia
+  HI:	Hawaii
+  ID:	Idaho
+  IL:	Illinois
+  IN:	Indiana
+  IA:	Iowa
+  KS:	Kansas
+  KY:	Kentucky
+  LA:	Louisiana
+  ME:	Maine
+  MD:	Maryland
+  MA:	Massachusetts
+  MI:	Michigan
+  MN:	Minnesota
+  MS:	Mississippi
+  MO:	Missouri
+  MT:	Montana
+  NE:	Nebraska
+  NV:	Nevada
+  NH:	New Hampshire
+  NJ:	New Jersey
+  NM:	New Mexico
+  NY:	New York
+  NC:	North Carolina
+  ND:	North Dakota
+  OH:	Ohio
+  OK:	Oklahoma
+  OR:	Oregon
+  PA:	Pennsylvania
+  RI:	Rhode Island
+  SC:	South Carolina
+  SD:	South Dakota
+  TN:	Tennessee
+  TX:	Texas
+  UT:	Utah
+  VT:	Vermont
+  VA:	Virginia
+  WA:	Washington
+  WV:	West Virginia
+  WI:	Wisconsin
+  WY:	Wyoming
+  AS:	American Samoa
+  DC:	District of Columbia
+  FM:	Federated States of Micronesia
+  GU:	Guam
+  MH:	Marshall Islands
+  MP:	Northern Mariana Islands
+  PW:	Palau
+  PR:	Puerto Rico
+  VI:	Virgin Islands
+  AE:	Armed Forces Africa
+  AA:	Armed Forces Americas
+  AE:	Armed Forces Canada
+  AE:	Armed Forces Europe
+  AE:	Armed Forces Middle East
+  AP:	Armed Forces Pacific
+
+login_fields:
+  sign_in_link_loc:
+    text: Sign In
+  username_loc:
+    id: UserNameTextBox
+  password_loc:
+    id: PasswordTextBox
+  sign_in_button_loc:
+    id: signInButton
+
+login_credentials:
+  qacc:
+    01:
+      username: auto01
+      password: 326tsetaqcdS!
+    02:
+      username: auto02
+      password: 326tsetaqcdS!
+    03:
+      username: auto03
+      password: 326tsetaqcdS!
+    04:
+      username: auto04
+      password: 326tsetaqcdS!
+    05:
+      username: auto05
+      password: 326tsetaqcdS!
+    06:
+      username: auto06
+      password: 326tsetaqcdS!
+    07:
+      username: auto07
+      password: 326tsetaqcdS!
+    08:
+      username: auto08
+      password: 326tsetaqcdS!
+    09:
+      username: auto09
+      password: 326tsetaqcdS!
+    10:
+      username: auto10
+      password: 326tsetaqcdS!
+    11:
+      username: auto11
+      password: 326tsetaqcdS!
+    12:
+      username: auto12
+      password: 326tsetaqcdS!
+    13:
+      username: auto13
+      password: 326tsetaqcdS!
+    14:
+      username: auto14
+      password: password1
+    15:
+      username: auto15
+      password: password1
+    16:
+      username: auto16
+      password: password1
+    17:
+      username: auto17
+      password: password1
+    18:
+      username: auto18
+      password: password1
+    19:
+      username: auto19
+      password: password1
+    20:
+      username: auto20
+      password: password1
+    21:
+      username: auto21
+      password: password1
+    22:
+      username: auto22
+      password: password1
+    23:
+      username: auto23
+      password: password1
+    24:
+      username: auto24
+      password: password1
+    25:
+      username: auto25
+      password: password1
+    26:
+      username: auto26
+      password: password1
+    27:
+      username: auto27
+      password: password1
+    28:
+      username: auto28
+      password: password1
+    29:
+      username: auto29
+      password: password1
+    30:
+      username: auto30
+      password: password1
+    31:
+      username: auto31
+      password: password1
+    32:
+      username: auto32
+      password: password1
+    33:
+      username: auto33
+      password: password1
+    34:
+      username: auto34
+      password: password1
+    35:
+      username: auto35
+      password: password1
+    36:
+      username: auto36
+      password: password1
+    37:
+      username: auto37
+      password: password1
+    38:
+      username: auto38
+      password: password1
+
+login_credentials_invalid:
+  qacc:
+    39:
+      username: auto39
+      password: password1
+    40:
+      username: auto40
+      password: password1
+
+  staging:
+    username: wc102_cc
+    password: password1
+  staging:
+    username: webbatch_0001
+    password: password1
+
 orders_credentials:
   stg:
     rob:
@@ -410,7 +931,7 @@ orders_credentials:
       usr: ccixjqr1mt
       pw: pass111
     rob:
-      usr: ccfw2jpdg
+      usr: ccspkvzy90
       pw: pass111
     bvt_shipstation_import_csv:
       usr: xxxxxxxxx
@@ -1789,7 +2310,7 @@ mail_credentials:
       pw: pass111
   cc:
     rob:
-      usr: ccd9zchlp
+      usr: ccoxrz0j1
       pw: pass111
     mail_authentication:
       usr: ccdvx25ja288
@@ -3142,496 +3663,6 @@ mail_credentials:
     mail_print_stamps_wn_series_specify:
       usr: scctk0sju9
       pw: pass111
-
-redesign_mail_services:
-  Stamps: 0
-  Shipping Label - 8 x 11 Paper:  1
-  Shipping Label - SDC-1200:  2
-  Shipping Label - 5 x 8: 3
-  Envelope 10: 4
-  Envelope 9: 5
-  Envelope A9: 6
-  Envelope 6: 7
-  Envelope A2: 8
-  Envelope 7: 9
-  Envelope 11: 10
-  Envelope 12: 11
-  Certified Mail Label - SDC-3610:  12
-  Certified Mail Label - SDC-3710:  13
-  Certified Mail Label - SDC-3910:  14
-  Certified Mail Label - SDC-3810:  15
-  Roll - 4 x 6: 16
-  Roll - 4 1/8 x 6 1/4: 17
-
-mail_services:
-  Stamps: sdc-printmediadroplist-ns
-  Shipping Label - 8 x 11 Paper:  sdc-printmediadroplist-shippinglabel812x11
-  Shipping Label - SDC-1200:  sdc-printmediadroplist-sdc1200
-  Shipping Label - 5 x 8: sdc-printmediadroplist-shippinglabel512x812
-  Envelope 10:  sdc-printmediadroplist-envelope10
-  Envelope 9: sdc-printmediadroplist-envelope9
-  Envelope A9: sdc-printmediadroplist-envelopea9
-  Envelope 6: sdc-printmediadroplist-envelope6
-  Envelope A2:  sdc-printmediadroplist-envelopea2
-  Envelope 7: sdc-printmediadroplist-envelope7
-  Envelope 11: sdc-printmediadroplist-envelope11
-  Envelope 12:  sdc-printmediadroplist-envelope12
-  Certified Mail Label - SDC-3610:  sdc-printmediadroplist-sdc3610
-  Certified Mail Label - SDC-3710:  sdc-printmediadroplist-sdc3710
-  Certified Mail Label - SDC-3910:  sdc-printmediadroplist-sdc3910
-  Certified Mail Label - SDC-3810:  sdc-printmediadroplist-sdc3810
-  Roll - 4 x 6: sdc-printmediadroplist-roll4x6
-  Roll - 4 1/8 x 6 1/4: sdc-printmediadroplist-roll418x614
-
-orders_services:
-  FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
-  FCM Package: sdc-servicedroplist-fcthickenvelope
-  PM Large Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
-  PM Package: sdc-servicedroplist-pmpackage
-  PM Large Package: sdc-servicedroplist-pmlargepackage
-  PM Flat Rate Envelope: sdc-servicedroplist-pmflatrateenvelope
-  PM Padded Flat Rate Envelope: sdc-servicedroplist-pmflatratepaddedenvelope
-  PM Legal Flat Rate Envelope: sdc-servicedroplist-pmlegalflatrateenvelope
-  PM Small Flat Rate Box: sdc-servicedroplist-pmsmallflatratebox
-  PM Medium Flat Rate Box: sdc-servicedroplist-pmflatratebox
-  PM Large Flat Rate Box: sdc-servicedroplist-pmlargeflatratebox
-  PM Regional Rate Box A: sdc-servicedroplist-pmregionalrateboxa
-  PM Regional Rate Box B: sdc-servicedroplist-pmregionalrateboxb
-  PME Package: sdc-servicedroplist-xmpackage
-  PME Flat Rate Envelope: sdc-servicedroplist-xmflatrateenvelope
-  PME Padded Flat Rate Envelope: sdc-servicedroplist-xmflatratepaddedenvelope
-  PME Legal Flat Rate Envelope: sdc-servicedroplist-xmlegalflatrateenvelope
-  MM Package: sdc-servicedroplist-mmpackage
-  PSG Package: sdc-servicedroplist-pspackage
-  PSG Large Package: sdc-servicedroplist-pslargepackage
-  PSG Oversized Package: sdc-servicedroplist-psoversizedpackage
-  FCMI Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
-  FCMI Package: sdc-servicedroplist-fcithickenvelope
-  PMI Package: sdc-servicedroplist-pmipackage
-  PMI Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
-  PMI Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
-  PMI Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope
-  PMI Small Flat Rate Box: sdc-servicedroplist-pmismallflatratebox
-  PMI Medium Flat Rate Box: sdc-servicedroplist-pmiflatratebox
-  PMI Large Flat Rate Box: sdc-servicedroplist-pmilargeflatratebox
-  PMI Regional Rate Box A: sdc-servicedroplist-pmiregionalrateboxa
-  PMI Regional Rate Box B: sdc-servicedroplist-pmiregionalrateboxb
-  PMEI Package: sdc-servicedroplist-emipackage
-  PMEI Flat Rate Envelope: sdc-servicedroplist-emiflatrateenvelope
-  PMEI Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
-  PMEI Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope
-
-shipping_method:
-  usps_fcml:
-    text: USPS First-Class Mail Letter
-    code: 809
-
-zone_1_through_4:
-    zone1:
-      1:
-        street_address: 2791 Agoura Road
-        city: Thousand Oaks
-        state: CA
-        zip: 91361-3101
-      2:
-        street_address: 12280 Perris Blvd
-        city: Moreno Valley
-        state: CA
-        zip: 92557-7418
-      3:
-        street_address: 610 W Tefft St
-        city: Nipomo
-        state: CA
-        zip: 93444-9187
-      4:
-        street_address: 42136 Big Bear Blvd
-        city: Big Bear Lake
-        state: CA
-        zip: 92315-1530
-    zone2:
-      1:
-        street_address: 530 K Street
-        street_address_2: Unit 504
-        city: San Diego
-        state: CA
-        zip: 92101-7060
-      2:
-        street_address: 3217 Shasta Circle S.
-        city: Los Angeles
-        state: CA
-        zip: 90065-4807
-      3:
-        street_address: 618 Falconer Rd
-        city: Escondido
-        state: CA
-        zip: 92027-4229
-      4:
-        street_address: 4216 Laurel Glen Dr.
-        city: Moorpark
-        state: CA
-        zip: 93021-2725
-    zone3:
-      1:
-        street_address: 3555 Las Vegas Blvd S
-        city: Las Vegas
-        state: NV
-        zip: 89109-8901
-      2:
-        street_address: 7065 N Ingram Ave
-        city: Fresno
-        state: CA
-        zip: 93650-1083
-      3:
-        street_address: 1804 E Ashlan Ave
-        city: Fresno
-        state: CA
-        zip: 93726-2019
-      4:
-        street_address: 6301 W Charleston Blvd
-        city: Las Vegas
-        state: NV
-        zip: 89146-1124
-    zone4:
-      1:
-        street_address: PO Box 567
-        city: Kelseyville
-        state: CA
-        zip: 95451-0567
-      2:
-        street_address: 2105 Kietzke Ln
-        city: Reno
-        state: NV
-        zip: 89502-3602
-      3:
-        street_address: 4937 79th St.
-        city: Sacramento
-        state: CA
-        zip: 95820-6213
-      4:
-        street_address: 1406 Long Creek Way
-        city: Roseville
-        state: CA
-        zip: 95747-7312
-zone_5_through_8:
-    zone5:
-      1:
-        street_address: 530 9th Ave. N.
-        city: Buhl
-        state: ID
-        zip: 83316-1115
-      2:
-        street_address: 26930 NE 152nd St.
-        city: Duvall
-        state: WA
-        zip: 98019-8316
-      3:
-        street_address: 3232 SE 89th Ave.
-        city: Portland
-        state: OR
-        zip: 97266-1911
-      4:
-        street_address: 648 Gehr St.
-        city: Wenatchee
-        state: WA
-        zip: 98801-8011
-    zone6:
-      1:
-        street_address: 11 Laguna Madre Dr.
-        city: Laguna Vista
-        state: TX
-        zip: 78578-2602
-      2:
-        street_address: 204 Nursery Ln.
-        city: Ft Worth
-        state: TX
-        zip: 76114-4348
-      3:
-        street_address: 1327 Yates Dr.
-        city: Hurst
-        state: TX
-        zip: 76053-4038
-      4:
-        street_address: 2601 Avenue of the Stars
-        street_address_2: Ste 100
-        city: Frisco
-        state: TX
-        zip: 75034-9016
-    zone7:
-      1:
-        street_address: 9435 Pettit Rd.
-        city: Baker
-        state: LA
-        zip: 70714-6434
-      2:
-        street_address: 1071 Trelane Ave.
-        city: Saint Louis
-        state: MO
-        zip: 63126-1117
-      3:
-        street_address: 557 County Rd. H
-        city: Fredonia
-        state: WI
-        zip: 53021-9634
-      4:
-        street_address: 2215 Pelopidas St
-        city: New Orleans
-        state: LA
-        zip: 70122-4957
-    zone8:
-      1:
-        street_address: 2622 New Banner Ln.
-        city: Herndon
-        state: VA
-        zip: 20171-2659
-      2:
-        street_address: 401 Sherborne Dr.
-        city: Columbus
-        state: OH
-        zip: 43219-2971
-      3:
-        street_address: 2775 Stark Dr.
-        city: Willoughby Hills
-        state: OH
-        zip: 44094-9113
-      4:
-        street_address: 283 Chinquapin Rd.
-        city: Mocksville
-        state: NC
-        zip: 27028-4708
-non_domestic:
-    zone9:
-      1:
-        street_address: PO Box 659
-        city: Kosrae, FM 96944-0305
-        state: FM
-        zip: 96944
-      2:
-        street_address: PO Box 735
-        city: Majuro
-        state: MH
-        zip: 96960
-      3:
-        street_address: PO Box 1949
-        city: Pohnpei
-        state: FM
-        zip: 96941
-      4:
-        street_address: PO Box 8067
-        city: Palau
-        state: PW
-        zip: 96940
-
-us_states:
-  AL:	Alabama
-  AK:	Alaska
-  AZ:	Arizona
-  AR:	Arkansas
-  CA:	California
-  CO:	Colorado
-  CT:	Connecticut
-  DE:	Delaware
-  FL:	Florida
-  GA:	Georgia
-  HI:	Hawaii
-  ID:	Idaho
-  IL:	Illinois
-  IN:	Indiana
-  IA:	Iowa
-  KS:	Kansas
-  KY:	Kentucky
-  LA:	Louisiana
-  ME:	Maine
-  MD:	Maryland
-  MA:	Massachusetts
-  MI:	Michigan
-  MN:	Minnesota
-  MS:	Mississippi
-  MO:	Missouri
-  MT:	Montana
-  NE:	Nebraska
-  NV:	Nevada
-  NH:	New Hampshire
-  NJ:	New Jersey
-  NM:	New Mexico
-  NY:	New York
-  NC:	North Carolina
-  ND:	North Dakota
-  OH:	Ohio
-  OK:	Oklahoma
-  OR:	Oregon
-  PA:	Pennsylvania
-  RI:	Rhode Island
-  SC:	South Carolina
-  SD:	South Dakota
-  TN:	Tennessee
-  TX:	Texas
-  UT:	Utah
-  VT:	Vermont
-  VA:	Virginia
-  WA:	Washington
-  WV:	West Virginia
-  WI:	Wisconsin
-  WY:	Wyoming
-  AS:	American Samoa
-  DC:	District of Columbia
-  FM:	Federated States of Micronesia
-  GU:	Guam
-  MH:	Marshall Islands
-  MP:	Northern Mariana Islands
-  PW:	Palau
-  PR:	Puerto Rico
-  VI:	Virgin Islands
-  AE:	Armed Forces Africa
-  AA:	Armed Forces Americas
-  AE:	Armed Forces Canada
-  AE:	Armed Forces Europe
-  AE:	Armed Forces Middle East
-  AP:	Armed Forces Pacific
-
-login_fields:
-  sign_in_link_loc:
-    text: Sign In
-  username_loc:
-    id: UserNameTextBox
-  password_loc:
-    id: PasswordTextBox
-  sign_in_button_loc:
-    id: signInButton
-
-login_credentials:
-  qacc:
-    01:
-      username: auto01
-      password: 326tsetaqcdS!
-    02:
-      username: auto02
-      password: 326tsetaqcdS!
-    03:
-      username: auto03
-      password: 326tsetaqcdS!
-    04:
-      username: auto04
-      password: 326tsetaqcdS!
-    05:
-      username: auto05
-      password: 326tsetaqcdS!
-    06:
-      username: auto06
-      password: 326tsetaqcdS!
-    07:
-      username: auto07
-      password: 326tsetaqcdS!
-    08:
-      username: auto08
-      password: 326tsetaqcdS!
-    09:
-      username: auto09
-      password: 326tsetaqcdS!
-    10:
-      username: auto10
-      password: 326tsetaqcdS!
-    11:
-      username: auto11
-      password: 326tsetaqcdS!
-    12:
-      username: auto12
-      password: 326tsetaqcdS!
-    13:
-      username: auto13
-      password: 326tsetaqcdS!
-    14:
-      username: auto14
-      password: password1
-    15:
-      username: auto15
-      password: password1
-    16:
-      username: auto16
-      password: password1
-    17:
-      username: auto17
-      password: password1
-    18:
-      username: auto18
-      password: password1
-    19:
-      username: auto19
-      password: password1
-    20:
-      username: auto20
-      password: password1
-    21:
-      username: auto21
-      password: password1
-    22:
-      username: auto22
-      password: password1
-    23:
-      username: auto23
-      password: password1
-    24:
-      username: auto24
-      password: password1
-    25:
-      username: auto25
-      password: password1
-    26:
-      username: auto26
-      password: password1
-    27:
-      username: auto27
-      password: password1
-    28:
-      username: auto28
-      password: password1
-    29:
-      username: auto29
-      password: password1
-    30:
-      username: auto30
-      password: password1
-    31:
-      username: auto31
-      password: password1
-    32:
-      username: auto32
-      password: password1
-    33:
-      username: auto33
-      password: password1
-    34:
-      username: auto34
-      password: password1
-    35:
-      username: auto35
-      password: password1
-    36:
-      username: auto36
-      password: password1
-    37:
-      username: auto37
-      password: password1
-    38:
-      username: auto38
-      password: password1
-
-login_credentials_invalid:
-  qacc:
-    39:
-      username: auto39
-      password: password1
-    40:
-      username: auto40
-      password: password1
-
-  staging:
-    username: wc102_cc
-    password: password1
-  staging:
-    username: webbatch_0001
-    password: password1
-
-
 
 rob:
   autobase: 326tsetaqcdS!

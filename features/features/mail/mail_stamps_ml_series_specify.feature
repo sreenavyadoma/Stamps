@@ -8,7 +8,7 @@ Feature: Stamps ML Series - Specify Postage
   @mail_print_stamps_regression
   @mail_print_stamps_ml_series_specify
   Scenario: Stamps Regression ML Series - Specify Postage
-    Then Mail: Select Stamps
+    Then select Print form Print On Stamps
     Then Mail Stamps: Set Serial Number to ML1234
     Then Mail Stamps: Select Specify Mail Amount
     Then Mail Stamps: Set Ship-From to default
@@ -17,7 +17,7 @@ Feature: Stamps ML Series - Specify Postage
     Then Mail Stamps: Set Stamp Amount to $0.15
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
-    Then Mail: Open Print Modal
-    Then Mail in Print modal, select Printer "factory"
-    Then Mail in Print modal, click Print button
+    Then click Print form Print button
+    Then set Mail Print modal Printer to factory
+    Then click Mail Print modal Print button
     Then Sign out

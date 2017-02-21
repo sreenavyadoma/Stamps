@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class ChooseSupplies < Browser::Modal
+    class ChooseSupplies < Browser::StampsHtmlField
       attr_reader :web_apps, :web_mail
 
       def initialize(param)

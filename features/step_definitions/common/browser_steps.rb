@@ -12,6 +12,7 @@ end
 Then /^Refresh the browser$/ do
   begin
     browser.refresh
+    sleep(2)
   rescue
     #ignore
   end

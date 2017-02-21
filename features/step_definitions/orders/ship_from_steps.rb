@@ -19,22 +19,22 @@ Then /^on Manage Shipping Address modal, edit address for name = \"(.*)\", compa
 end
 
 Then /^on Manage Shipping Address modal, add address$/ do |ship_from|
-  test_data[:ship_from_address] = ship_from.hashes.first
-  test_data[:ship_from_zip] = test_data[:ship_from_address]["ship_from_zip"]
-  test_data[:name] = test_data[:ship_from_address]['name']
-  test_data[:company] = test_data[:ship_from_address]['company']
-  test_data[:street_address] = test_data[:ship_from_address]["street_address"]
-  test_data[:street_address2] = test_data[:ship_from_address]["street_address2"]
-  test_data[:city] = test_data[:ship_from_address]['city']
-  test_data[:state] = test_data[:ship_from_address]["state"]
-  test_data[:zip] = test_data[:ship_from_address]["zip"]
-  test_data[:phone] = test_data[:ship_from_address]['phone']
-  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").add.ship_from_address(test_data[:ship_from_address])
+  test_parameter[:ship_from_address] = ship_from.hashes.first
+  test_parameter[:ship_from_zip] = test_parameter[:ship_from_address]["ship_from_zip"]
+  test_parameter[:name] = test_parameter[:ship_from_address]['name']
+  test_parameter[:company] = test_parameter[:ship_from_address]['company']
+  test_parameter[:street_address] = test_parameter[:ship_from_address]["street_address"]
+  test_parameter[:street_address2] = test_parameter[:ship_from_address]["street_address2"]
+  test_parameter[:city] = test_parameter[:ship_from_address]['city']
+  test_parameter[:state] = test_parameter[:ship_from_address]["state"]
+  test_parameter[:zip] = test_parameter[:ship_from_address]["zip"]
+  test_parameter[:phone] = test_parameter[:ship_from_address]['phone']
+  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").add.ship_from_address(test_parameter[:ship_from_address])
 end
 
 Then /^on Manage Shipping Address modal, add address (\w+)$/ do |address|
-  test_data[:ship_from_address] = (address.include?'random ship from zone 1 through 4')?(ParameterHelper.rand_ship_from_zone_1_4):address
-  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").add(test_data[:ship_from_address])
+  test_parameter[:ship_from_address] = (address.include? 'random ship from zone 1 through 4')?(ParameterHelper.rand_ship_from_zone_1_4):address
+  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses...").add(test_parameter[:ship_from_address])
 end
 
 Then /^on Manage Shipping Address modal, set Manage Shipping Addresses to$/ do

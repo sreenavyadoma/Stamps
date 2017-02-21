@@ -1,6 +1,6 @@
 Then /^(?:I|i)n Orders Toolbar, Import$/ do
   #logger.step "In Orders Toolbar, Import"
-  @import_orders = stamps.orders.toolbar.import
+  @import_orders = stamps.orders.orders_toolbar.import
 end
 
 Then /^Import Orders: Import$/ do

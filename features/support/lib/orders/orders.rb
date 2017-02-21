@@ -1,11 +1,11 @@
 module Stamps
   module Orders
-    class WebOrders < Browser::Modal
-      attr_reader :toolbar, :landing_page, :orders_grid, :styles, :order_details, :filter_panel, :multi_order
+    class WebOrders < Browser::StampsHtmlField
+      attr_reader :orders_toolbar, :landing_page, :orders_grid, :styles, :order_details, :filter_panel, :multi_order
 
       def initialize(param)
         super(param)
-        @toolbar = Toolbar::OrdersToolbar.new(param)
+        @orders_toolbar = Toolbar::OrdersToolbar.new(param)
         @landing_page = Orders::OrdersLandingPage.new(param)
         @orders_grid = Orders::Grid::OrdersGrid.new(param)
         @styles = PageStyles.new(param)
