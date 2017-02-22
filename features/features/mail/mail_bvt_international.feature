@@ -8,14 +8,12 @@ Feature: International Shipping BVT
 
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail From to default
-    Then on Print form, set Ship-To to
+    Then on Label form, set Ship-To to
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |
-    Then select Mail Service First-Class Mail International Package
-    Then set Print form Pounds to 0
-    Then on Print form, set Ounces to 3
-    Then on Shipping Label Print form, Edit Customs Form
-    #Then Mail on Customs form, set Package Contents to Gift
+    Then select Print form service FCMI Package
+    Then set Print form Ounces to 3
+    Then click Label form Edit Customs Form button
     Then Mail on Customs form, set Non-Delivery Options to "Treat as abandoned"
     Then Mail on Customs form, set Internal Transaction Number Requirement to "Required"
     Then Mail on Customs form, set ITN Number to "12345"

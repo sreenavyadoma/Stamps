@@ -574,23 +574,23 @@ end
 
 Then /^Reset Fields:  Check Ship to Address$/ do
   #logger.step "Reset Fields:  Check Ship to Address"
-  @reset_fields.ship_to_address.check
+  @reset_fields.test_parameter[:ship_to_address].check
 end
 
 Then /^Reset Fields:  Uncheck Ship to Address$/ do
   #logger.step "Reset Fields:  Uncheck Ship to Address"
-  @reset_fields.ship_to_address.uncheck
+  @reset_fields.test_parameter[:ship_to_address].uncheck
 end
 
 
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
   #logger.step "Reset Fields:  Expect Ship to Address Checked"
-  expect(@reset_fields.ship_to_address.checked?).to be true
+  expect(@reset_fields.test_parameter[:ship_to_address].checked?).to be true
 end
 
 Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
   #logger.step "Reset Fields:  Expect Ship to Address Unchecked"
-  expect(@reset_fields.ship_to_address.checked?).to be false
+  expect(@reset_fields.test_parameter[:ship_to_address].checked?).to be false
 end
 
 Then /^Reset Fields:  Check Tracking$/ do

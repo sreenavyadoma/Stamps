@@ -41,6 +41,14 @@ module Stamps
         end
       end
 
+      module MailCustoms
+        def mail_customs
+          @mail_customs = PrintFormCustoms.new(param) if @mail_customs.nil? || !@mail_customs.present?
+          expect(@mail_customs.present?).to be true
+          @mail_customs
+        end
+      end
+
 
       module MailStamps
         include MailTo
