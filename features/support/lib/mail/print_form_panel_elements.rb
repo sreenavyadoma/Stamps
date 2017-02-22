@@ -287,10 +287,10 @@ module Stamps
 
         def select(str)
           logger.info "Select service #{str}"
-          selection = StampsElement.new browser.td(css: "li[id='#{data_for(:mail_services, {})[str]['id']}']>table>tbody>tr>td[class*=text]")
+          selection = StampsElement.new browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=text]")
           10.times do
             begin
-              break if (text_box.safe_text).include? (data_for(:mail_services, {})[str]['text_box'])
+              break if (text_box.safe_text).include? str
               drop_down.safe_click unless selection.present?
               selection.scroll_into_view
               selection.safe_click
@@ -298,7 +298,7 @@ module Stamps
               #ignore
             end
           end
-          expect(text_box.safe_text).to include(data_for(:mail_services, {})[str]['text_box'])
+          expect(text_box.safe_text).to include(str)
           logger.info "#{text_box.safe_text} service selected."
           selection
         end
@@ -503,32 +503,6 @@ module Stamps
         end
       end
 
-      class PrintPostageCustoms < Browser::StampsHtmlField
-        attr_reader :button, :customs_form
-
-        def initialize(param)
-          super(param)
-          @button = StampsElement.new(browser.span(id: "sdc-mainpanel-editcustombtn-btnIconEl"))
-          @customs_form = MailCustomsForm.new(param)
-        end
-
-        def edit_form
-          15.times do
-            button.safe_click
-            sleep(0.35)
-            return customs_form if customs_form.present?
-          end
-          expect(customs_form.present?).to be true
-        end
-
-        def restrictions
-
-        end
-
-        def i_agree_to_insurance_terms
-        end
-      end
-
       class PrintFormMailToLink < Browser::StampsHtmlField
         attr_accessor :link, :contacts_modal
 
@@ -557,6 +531,32 @@ module Stamps
           @domestic = MailToDom.new(param)
           @international = MailToInt.new(param)
           @mail_to_link = PrintFormMailToLink.new(param)
+        end
+      end
+
+      class PrintFormCustoms < Browser::StampsHtmlField
+        attr_reader :button, :customs_form
+
+        def initialize(param)
+          super(param)
+          @button = StampsElement.new(browser.span(id: "sdc-mainpanel-editcustombtn-btnInnerEl"))
+          @customs_form = CustomsForm::MailCustomsForm.new(param)
+        end
+
+        def edit_form
+          15.times do
+            button.safe_click
+            sleep(0.35)
+            return customs_form if customs_form.present?
+          end
+          expect(customs_form.present?).to be true
+        end
+
+        def restrictions
+
+        end
+
+        def i_agree_to_insurance_terms
         end
       end
     end

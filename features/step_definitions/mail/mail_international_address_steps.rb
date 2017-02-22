@@ -1,75 +1,42 @@
 
 
-Then /^Mail International: Set Ship-To Name to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.name
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To Name to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.name.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.name.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 
-Then /^Mail International: Set Ship-To Company to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.company
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To Company to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.company.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.company.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 
-Then /^Mail International: Set Ship-To Address 1 to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.address_1
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To Address 1 to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.address_1.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.address_1.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 
-Then /^Mail International: Set Ship-To Address 2 to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.address_2
-
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To Address 2 to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.address_2.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.address_2.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 
-Then /^Mail International: Set Ship-To City to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.city
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To City to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.city.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.city.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 
-Then /^Mail International: Set Ship-To Province to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.province
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To Province to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.province.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.province.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 
-Then /^Mail International: Set Ship-To Postal Code to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.postal_code
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To Postal Code to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.postal_code.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.postal_code.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 
-Then /^Mail International: Set Ship-To Phone to (.*)$/ do |value|
-  field = stamps.mail.print_form.ship_to.phone
-  if value.length == 0
-    field.send_keys(:enter)
-  else
-    field.set((value.downcase == 'random')? ParameterHelper.random_name : value)
-  end
+Then /^set Label Mail To Phone to (?:tab|enter|(.*))$/ do |value|
+  stamps.mail.print_form.ship_to.phone.send_keys(:enter) if value.nil?
+  stamps.mail.print_form.ship_to.phone.set((value.downcase == 'random')? ParameterHelper.random_name : value)
 end
 

@@ -29,75 +29,44 @@ url_prefix:
   rating: printext.qacc
 
 mail_services:
-  FCM Post Card:
-    id: sdc-servicedroplist-fcpostcard
-    text_box: FCM Postcard
-  FCM Letter:
-    id: sdc-servicedroplist-fcletter
-    text_box: FCM Letter
-  FCM Large Envelope:
-    id: sdc-servicedroplist-fclargeenvelopeorflat
-    text_box: FCM Large Envelope/Flat
-  FCM Package:
-    id: sdc-servicedroplist-fcthickenvelope
-    text_box: FCM Package/Thick Envelope
-  PM Large Envelope:
-    id: sdc-servicedroplist-pmlargeenvelopeorflat
-    text_box: PM Large/Thick Envelope
-  PM Package:
-    id: sdc-servicedroplist-pmpackage
-    text_box: PM Package
-  PM Large Package:
-    id: sdc-servicedroplist-pmlargepackage
-    text_box: PM Large Package
-  PM Flat Rate Envelope:
-    id: sdc-servicedroplist-pmflatrateenvelope
-    text_box: PM Flat Rate Envelope
-  PM Padded Flat Rate Envelope:
-    id: sdc-servicedroplist-pmflatratepaddedenvelope
-    text_box: PM Padded Flat Rate Envelope
-  PM Legal Flat Rate Envelope:
-    id: sdc-servicedroplist-pmlegalflatrateenvelope
-    text_box: PM Legal Flat Rate Envelope
-  PM Small Flat Rate Box:
-    id: sdc-servicedroplist-pmsmallflatratebox
-    text_box: PM Small Flat Rate Box
-  PM Medium Flat Rate Box:
-    id: sdc-servicedroplist-pmflatratebox
-    text_box: PM Medium Flat Rate Box
-  PM Large Flat Rate Box:
-    id: sdc-servicedroplist-pmlargeflatratebox
-    text_box: PM Large Flat Rate Box
-  PM Regional Rate Box A:
-    id: sdc-servicedroplist-pmregionalrateboxa
-    text_box: PM Regional Rate Box A
-  PM Regional Rate Box B:
-    id: sdc-servicedroplist-pmregionalrateboxb
-    text_box: PM Regional Rate Box B
-  PME Package:
-    id: sdc-servicedroplist-xmpackage
-    text_box: PME Package/Flat/Thick Envelope
-  PME Flat Rate Envelope:
-    id: sdc-servicedroplist-xmflatrateenvelope
-    text_box: PME Flat Rate Envelope
-  PME Padded Flat Rate Envelope:
-    id: sdc-servicedroplist-xmflatratepaddedenvelope
-    text_box: PME Padded Flat Rate Envelope
-  PME Legal Flat Rate Envelope:
-    id: sdc-servicedroplist-xmlegalflatrateenvelope
-    text_box: PME Legal Flat Rate Envelope
-  MM Package:
-    id: sdc-servicedroplist-mmpackage
-    text_box: MM Package/Flat/Thick Envelope
-  PSG Package:
-    id: sdc-servicedroplist-pspackage
-    text_box: PSG Package/Flat/Thick Envelope
-  PSG Large Package:
-    id: sdc-servicedroplist-pslargepackage
-    text_box: PSG Large Package
-  PSG Oversized Package:
-    id: sdc-servicedroplist-psoversizedpackage
-    text_box: PSG Oversized Package
+  FCM Post Card: sdc-servicedroplist-fcpostcard
+  FCM Letter: sdc-servicedroplist-fcletter
+  FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
+  FCM Package: sdc-servicedroplist-fcthickenvelope
+  PM Large Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
+  PM Package: sdc-servicedroplist-pmpackage
+  PM Large Package: sdc-servicedroplist-pmlargepackage
+  PM Flat Rate Envelope: sdc-servicedroplist-pmflatrateenvelope
+  PM Padded Flat Rate Envelope: sdc-servicedroplist-pmflatratepaddedenvelope
+  PM Legal Flat Rate Envelope: sdc-servicedroplist-pmlegalflatrateenvelope
+  PM Small Flat Rate Box: sdc-servicedroplist-pmsmallflatratebox
+  PM Medium Flat Rate Box: sdc-servicedroplist-pmflatratebox
+  PM Large Flat Rate Box: sdc-servicedroplist-pmlargeflatratebox
+  PM Regional Rate Box A: sdc-servicedroplist-pmregionalrateboxa
+  PM Regional Rate Box B: sdc-servicedroplist-pmregionalrateboxb
+  PME Package: sdc-servicedroplist-xmpackage
+  PME Flat Rate Envelope: sdc-servicedroplist-xmflatrateenvelope
+  PME Padded Flat Rate Envelope: sdc-servicedroplist-xmflatratepaddedenvelope
+  PME Legal Flat Rate Envelope: sdc-servicedroplist-xmlegalflatrateenvelope
+  MM Package: sdc-servicedroplist-mmpackage
+  PSG Package: sdc-servicedroplist-pspackage
+  PSG Large Package: sdc-servicedroplist-pslargepackage
+  PSG Oversized Package: sdc-servicedroplist-psoversizedpackage
+  FCMI Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
+  FCMI Package: sdc-servicedroplist-fcithickenvelope
+  PMI Package: sdc-servicedroplist-pmipackage
+  PMI Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
+  PMI Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
+  PMI Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope
+  PMI Small Flat Rate Box: sdc-servicedroplist-pmismallflatratebox
+  PMI Medium Flat Rate Box: sdc-servicedroplist-pmiflatratebox
+  PMI Large Flat Rate Box: sdc-servicedroplist-pmilargeflatratebox
+  PMI Regional Rate Box A: sdc-servicedroplist-pmiregionalrateboxa
+  PMI Regional Rate Box B: sdc-servicedroplist-pmiregionalrateboxb
+  PMEI Package: sdc-servicedroplist-emipackage
+  PMEI Flat Rate Envelope: sdc-servicedroplist-emiflatrateenvelope
+  PMEI Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
+  PMEI Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope
 
 orders_services:
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat

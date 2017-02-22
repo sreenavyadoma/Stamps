@@ -451,7 +451,7 @@ module Stamps
           Dimensions.new(param)
         end
 
-        def ship_to_address
+        def test_parameter[:ship_to_address]
           checkbox_field = browser.span id: "sdc-resetfieldswin-shiptoaddresscheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
           attribute_name = "class"

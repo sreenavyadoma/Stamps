@@ -12,8 +12,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Legal Flat Rate Envelo
     Then select Print On Shipping Label - 8 ½" x 11" Paper
 
     Then set Print form Mail From to default
-    Then set Print form Mail to country to United States
-    Then on Print form, set Ship-To to
+    Then set Label form Mail To Country to United States
+    Then on Label form, set Ship-To to
       | name          | company       | street_address      | city          | state | zip    | country       |
       | random | random  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
 
