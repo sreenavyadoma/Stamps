@@ -13,18 +13,18 @@ Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
 end
 
 Then /^Save Order Details data$/ do
-  expect(stamps.orders.order_details.present?).to be true
-  test_parameter[:country] = stamps.orders.order_details.ship_to.country.text_box.text
-  test_parameter[:service_cost] = stamps.orders.order_details.service.cost
-  test_parameter[:service] = stamps.orders.order_details.service.text_box.text
-  test_parameter[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
-  test_parameter[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-  test_parameter[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
-  test_parameter[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-  test_parameter[:tracking_cost] = stamps.orders.order_details.tracking.cost
-  test_parameter[:tracking] = stamps.orders.order_details.tracking.text_box.text
+  if stamps.orders.order_details.present?
+    test_parameter[:country] = stamps.orders.order_details.ship_to.country.text_box.text
+    test_parameter[:service_cost] = stamps.orders.order_details.service.cost
+    test_parameter[:service] = stamps.orders.order_details.service.text_box.text
+    test_parameter[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
+    test_parameter[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+    test_parameter[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+    test_parameter[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+    test_parameter[:tracking_cost] = stamps.orders.order_details.tracking.cost
+    test_parameter[:tracking] = stamps.orders.order_details.tracking.text_box.text
+  end
 end
-
 Then /^(?:I|i)n Orders Toolbar, Refresh Orders$/ do
   stamps.orders.orders_toolbar.refresh_orders
 end
