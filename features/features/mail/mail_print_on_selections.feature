@@ -65,6 +65,23 @@ Feature: Print Media Selection
     Then select Print form service PSG Package
     Then select Print form service PSG Large Package
     Then select Print form service PSG Oversized Package
+
+    Then select Print form service FCMI Large Envelope
+    Then select Print form service FCMI Package
+    Then select Print form service PMI Package
+    Then select Print form service PMI Flat Rate Envelope
+    Then select Print form service PMI Padded Flat Rate Envelope
+    Then select Print form service PMI Legal Flat Rate Envelope
+    Then select Print form service PMI Small Flat Rate Box
+    Then select Print form service PMI Medium Flat Rate Box
+    Then select Print form service PMI Large Flat Rate Box
+    Then select Print form service PMI Regional Rate Box A
+    Then select Print form service PMI Regional Rate Box B
+    Then select Print form service PMEI Package
+    Then select Print form service PMEI Flat Rate Envelope
+    Then select Print form service PMEI Padded Flat Rate Envelope
+    Then select Print form service PMEI Legal Flat Rate Envelope
+
     # Envelope Services
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
     Then select Print form service FCM Letter

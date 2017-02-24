@@ -50,7 +50,7 @@ module Stamps
             column.scroll_into_view
             column.safe_click
             5.times do
-              sleep(0.12)
+              sleep(1)
               return sort_order if span.parent.parent.parent.parent.parent.attribute_value("class").include?(sort_order)
             end
           end
