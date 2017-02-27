@@ -2,7 +2,7 @@
 Feature: Print two labels on one sheet
 
   Background:
-    Given I launched browser ff
+    Given a valid user is signed in to Web Apps
 
   @print_two_up_multiple_domestic_labels
   Scenario: User Prints multiple Domestic labels
