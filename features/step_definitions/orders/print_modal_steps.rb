@@ -31,7 +31,7 @@ Then /^(?:I|i)n Print modal, set Ship Date to today$/ do
 end
 
 Then /^(?:I|i)n Print modal, set Ship Date to today plus (\d+)$/ do |day|
-  ship_date = ParameterHelper.now_plus_mon_dd day
+  ship_date = ParameterHelper.now_plus_mon_dd_excl_sunday day
   @ship_date = stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.date_picker.today_plus day
 end
 

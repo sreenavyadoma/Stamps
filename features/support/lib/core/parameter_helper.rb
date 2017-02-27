@@ -120,6 +120,13 @@ module Stamps
         (Date.today + day.to_i).strftime "%b %-d"
       end
 
+      def now_plus_mon_dd_excl_sunday day
+        if Date.today.wday + day.to_i == 7
+          return (Date.today + day.to_i + 1).strftime "%b %-d"
+        end
+        (Date.today + day.to_i).strftime "%b %-d"
+      end
+
       def date_printed *args
         case args.length
           when 0

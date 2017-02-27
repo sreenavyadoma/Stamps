@@ -69,7 +69,7 @@ Then /^(?:I|i)n Orders Grid, expect Ship Date for this order is today$/ do
 end
 
 Then /^(?:I|i)n Orders Grid, expect Ship Date for this order is today plus (\d+)$/ do |day|
-  expectation = ParameterHelper.now_plus_mon_dd day
+  expectation = ParameterHelper.now_plus_mon_dd_excl_sunday day
   10.times {
     stamps.orders.orders_grid.column.order_date.sort_descending
     break if stamps.orders.orders_grid.column.ship_date.data(test_parameter[:order_id]) == expectation
