@@ -14,7 +14,7 @@ rob_mail_cc: --tags @mail_bvt_international WEB_APP=mail USER_CREDENTIALS=rob JE
 rob_mail_stg: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_mail_sc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
-eli_dev: --tags @print_multiple_reprints   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=item_details URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=s8nxs3g PW=pass111
+eli_dev: --tags @general_settings1   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=item_details URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=s8nxs3g PW=pass111
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 
