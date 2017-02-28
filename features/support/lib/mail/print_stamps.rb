@@ -55,7 +55,7 @@ module Stamps
 
     end
 
-    class CalculatePostageAmount < Browser::Modal
+    class CalculatePostageAmount < Browser::StampsHtmlField
       attr_reader :weight, :extra_services
 
       def initialize(param)
@@ -65,7 +65,7 @@ module Stamps
       end
     end
 
-    class SpecifyPostageAmount < Browser::Modal
+    class SpecifyPostageAmount < Browser::StampsHtmlField
       attr_reader :stamp_amount
 
       def initialize(param)
@@ -74,7 +74,7 @@ module Stamps
       end
     end
 
-    class SpecifyServiceDropList < Browser::Modal
+    class SpecifyServiceDropList < Browser::StampsHtmlField
       attr_reader :text_box, :drop_down
 
       def initialize(param)

@@ -14,14 +14,14 @@ Feature: Internal Transaction Number Required for total over $2500
     Then on Order Details form, select service PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then on Order Details form, select service FCMI Large Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Not required
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
-    Then on Customs form, set ITN Number to "random"
+    Then set Customs form ITN Number to random
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then Sign out

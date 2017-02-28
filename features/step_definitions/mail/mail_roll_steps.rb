@@ -150,7 +150,7 @@ end
 
 Then /^Mail Roll: Open Contacts modal/ do
   #logger.step "Mail Roll: Open Contacts Modal"
-  @contacts = stamps.mail.print_form.ship_to.contacts.open
+  @contacts = stamps.mail.print_form.mail_to.contacts.open
 end
 
 Then /^Mail Roll: Expect Domestic Address field displays (.*)$/ do |value|
@@ -158,14 +158,14 @@ Then /^Mail Roll: Expect Domestic Address field displays (.*)$/ do |value|
 
   5.times{
     begin
-      actual = stamps.mail.print_form.ship_to.text_area.text
+      actual = stamps.mail.print_form.mail_to.text_area.text
       actual_stripped = actual.gsub(/ \n/,", ")
       actual_stripped_final = actual_stripped.gsub(/\n/,", ")
       break if actual_stripped_final == value
       sleep(2)
     end
   }
-  actual = stamps.mail.print_form.ship_to.text_area.text
+  actual = stamps.mail.print_form.mail_to.text_area.text
   actual_stripped = actual.gsub(/ \n/,", ")
   actual_stripped_final = actual_stripped.gsub(/\n/,", ")
   expect(actual_stripped_final).to eql value

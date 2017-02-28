@@ -1499,6 +1499,35 @@ module Stamps
         end
       end
 
+      class OrdersCustomsFields < Browser::StampsHtmlField
+        attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
+
+        def initialize(param)
+          super(param)
+          @customs_form = Stamps::Common::Customs::CustomsInformation.new(param)
+          @view_restrictions = Orders::Details::ViewRestrictions.new(param)
+          @edit_form_btn = StampsElement.new browser.span text: 'Edit Form...'
+          @restrictions_btn = StampsElement.new browser.span text: 'Restrictions...'
+        end
+
+        def edit_form
+          10.times do
+            return customs_form if customs_form.present?
+            edit_form_btn.safe_click
+            customs_form.wait_until_present(2)
+          end
+          expect(customs_form.present?).to be true
+        end
+
+        def restrictions
+          5.times do
+            return view_restrictions if view_restrictions.present?
+            restrictions_btn.safe_click
+          end
+          expect(view_restrictions.present?).to be true
+        end
+      end
+
       class SingleOrderDetails < Browser::StampsHtmlField
         attr_reader :toolbar, :ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
                     :footer, :customs, :items_ordered, :reference_no, :collapsed_details, :blur_element
@@ -1515,7 +1544,7 @@ module Stamps
           @reference_no = StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
           @dimensions = OrderDetailsDimensions.new(param)
           @items_ordered = ItemsOrderedSection.new(param)
-          @customs = Customs::OrdersCustomsFields.new(param)
+          @customs = OrdersCustomsFields.new(param)
           @blur_element = BlurOutElement.new(param)
           @body = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]"))
           @collapsed_details = DetailsCollapsible.new(param)

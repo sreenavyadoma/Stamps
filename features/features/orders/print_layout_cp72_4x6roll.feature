@@ -12,11 +12,11 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
     Then on Order Details form, select service PMI Package
     Then on Order Details form, set Ounces to 1
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Roll - 4" x 6" Shipping Label"
     Then in Print modal, click Print button Sample

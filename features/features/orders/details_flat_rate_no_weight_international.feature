@@ -25,10 +25,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail International Flat Rate Envelope
     Then on Order Details form, select service PMI Flat Rate Envelope
     Then on Order Details form, expect service is PMI Flat Rate Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail International
@@ -39,10 +39,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail International Padded Flat Rate Envelope
     Then on Order Details form, select service PMI Padded Flat Rate Envelope
     Then on Order Details form, expect service is PMI Padded Flat Rate Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail International
@@ -53,10 +53,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail International Legal Flat Rate Envelope
     Then on Order Details form, select service PMI Legal Flat Rate Envelope
     Then on Order Details form, expect service is PMI Legal Flat Rate Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail International
@@ -67,10 +67,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail International Small Flat Rate Box
     Then on Order Details form, select service PMI Small Flat Rate Box
     Then on Order Details form, expect service is PMI Small Flat Rate Box
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail International
@@ -81,10 +81,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail International Medium Flat Rate Box
     Then on Order Details form, select service PMI Medium Flat Rate Box
     Then on Order Details form, expect service is PMI Medium Flat Rate Box
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail International
@@ -95,10 +95,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail International Large Flat Rate Box
     Then on Order Details form, select service PMI Large Flat Rate Box
     Then on Order Details form, expect service is PMI Large Flat Rate Box
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail International
@@ -109,10 +109,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail Express International Flat Rate Envelope
     Then on Order Details form, select service PMEI Flat Rate Envelope
     Then on Order Details form, expect service is PMEI Flat Rate Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail Express International
@@ -123,10 +123,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail Express International Padded Flat Rate Envelope
     Then on Order Details form, select service PMEI Padded Flat Rate Envelope
     Then on Order Details form, expect service is PMEI Padded Flat Rate Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail Express International
@@ -137,10 +137,10 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     # Priority Mail Express International Legal Flat Rate Envelope
     Then on Order Details form, select service PMEI Legal Flat Rate Envelope
     Then on Order Details form, expect service is PMEI Legal Flat Rate Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
     Then in Orders Grid, expect service is Priority Mail Express International

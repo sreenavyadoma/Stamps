@@ -8,18 +8,11 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM Package
 
   @mail_print_shipping_label_5x8_mm_package
   Scenario: Shipping Label - 5 ½” x 8 ½” - MM Package
-
     Then select Print On Shipping Label - 5 ½" x 8 ½"
-
-    Then set Print form Mail From to default
-    Then set Label form Mail To Country to United States
-    Then on Label form, set Ship-To to
-      | name          | company       | street_address      | city          | state | zip    | country       |
-      | random | random  | 1350 Market Street  | San Francisco | CA    | 94102  | United States |
-
-    Then set Print form Pounds to 0
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Media Mail Package
+    Then select Print form service MM Package
     Then on Print form, select left side starting label
     Then click Print form Print button
     Then set Mail Print modal Printer to factory

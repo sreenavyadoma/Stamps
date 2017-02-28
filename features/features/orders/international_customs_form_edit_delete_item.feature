@@ -12,17 +12,17 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then on Order Details form, set Ounces to 5
     Then on Order Details form, select service PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, expect Associated Item Grid count is 1
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 1000, Made In Japan, Tariff 100
-    Then on Customs form, add Associated Item 2, Description random, Qty 2, Price 2000, Made In Afghanistan, Tariff 200
-    Then on Customs form, expect Associated Item Grid count is 2
-    Then on Customs form, add Associated Item 3, Description random, Qty 3, Price 3000, Made In Zimbabwe, Tariff 300
-    Then on Customs form, expect Associated Item Grid count is 3
-    Then on Customs form, Delete Item 3
-    Then on Customs form, expect Associated Item Grid count is 2
-    Then on Customs form, Delete Item 1
-    Then on Customs form, expect Associated Item Grid count is 1
+    Then click Order Details form Edit Form button
+    Then expect Customs form Associated Item Grid count is 1
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1000, Made In Japan, Tariff 100
+    Then add Customs form Associated Item 2, Description random, Qty 2, Price 2000, Made In Afghanistan, Tariff 200
+    Then expect Customs form Associated Item Grid count is 2
+    Then add Customs form Associated Item 3, Description random, Qty 3, Price 3000, Made In Zimbabwe, Tariff 300
+    Then expect Customs form Associated Item Grid count is 3
+    Then delete Customs form Associated Item 3
+    Then expect Customs form Associated Item Grid count is 2
+    Then delete Customs form Associated Item 1
+    Then expect Customs form Associated Item Grid count is 1
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then Sign out

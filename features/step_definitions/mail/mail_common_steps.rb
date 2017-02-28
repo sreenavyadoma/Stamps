@@ -27,55 +27,55 @@ Then /^on Print form, expect Ship From Field is present$/ do
 end
 
 Then /^on Print form, expect Ship To Link is present$/ do
-  expect(stamps.mail.print_form.ship_to.contacts.link.present?).to be true
+  expect(stamps.mail.print_form.mail_to.contacts.link.present?).to be true
 end
 
 Then /^on Print form, expect Ship To Country Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.country.text_box.present?).to be true
+  expect(stamps.mail.print_form.mail_to.country.text_box.present?).to be true
 end
 
 Then /^on Print form, expect Domestic Address Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.text_area.present?).to be true
+  expect(stamps.mail.print_form.mail_to.text_area.present?).to be true
 end
 
 Then /^on Print form, expect International Name Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.name.present?).to be true
+  expect(stamps.mail.print_form.mail_to.name.present?).to be true
 end
 
 Then /^on Print form, expect International Company Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.company.present?).to be true
+  expect(stamps.mail.print_form.mail_to.company.present?).to be true
 end
 
 Then /^on Print form, expect International Address 1 Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.address_1.present?).to be true
+  expect(stamps.mail.print_form.mail_to.address_1.present?).to be true
 end
 
 Then /^on Print form, expect International Address 2 Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.address_2.present?).to be true
+  expect(stamps.mail.print_form.mail_to.address_2.present?).to be true
 end
 
 Then /^on Print form, expect International City Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.city.present?).to be true
+  expect(stamps.mail.print_form.mail_to.city.present?).to be true
 end
 
 Then /^on Print form, expect International Province Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.province.present?).to be true
+  expect(stamps.mail.print_form.mail_to.province.present?).to be true
 end
 
 Then /^on Print form, expect International Postcode Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.postal_code.present?).to be true
+  expect(stamps.mail.print_form.mail_to.postal_code.present?).to be true
 end
 
 Then /^on Print form, expect International Phone Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.phone.present?).to be true
+  expect(stamps.mail.print_form.mail_to.phone.present?).to be true
 end
 
 Then /^on Print form, expect Email Check Box is present$/ do
-  expect(stamps.mail.print_form.ship_to.email.checkbox.present?).to be true
+  expect(stamps.mail.print_form.mail_to.email.checkbox.present?).to be true
 end
 
 Then /^on Print form, expect Email Field is present$/ do
-  expect(stamps.mail.print_form.ship_to.email.text_box.present?).to be true
+  expect(stamps.mail.print_form.mail_to.email.text_box.present?).to be true
 end
 
 Then /^on Print form, expect Pounds Field is present$/ do

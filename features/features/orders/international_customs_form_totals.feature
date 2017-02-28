@@ -14,11 +14,11 @@ Feature:  Customs Form Totals
     Then on Order Details form, set Pounds to 3
     Then on Order Details form, set Ounces to 3
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
-    Then on Customs form, expect Total Value is 100.50
-    Then on Customs form, add Associated Item 2, Description random, Qty 1, Price 100.25, Made In Afghanistan, Tariff 100
-    Then on Customs form, expect Total Value is 200.75
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
+    Then expect Customs form Total Value is 100.50
+    Then add Customs form Associated Item 2, Description random, Qty 1, Price 100.25, Made In Afghanistan, Tariff 100
+    Then expect Customs form Total Value is 200.75
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then Sign out

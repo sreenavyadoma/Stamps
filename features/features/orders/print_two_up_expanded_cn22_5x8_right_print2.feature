@@ -12,11 +12,11 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
       | FCMI Lg Env-Flat | 5.5x8.5 Right Side 2 | random           | random           | random | random  | random      | Croatia | random  | random  |
     Then on Order Details form, select service FCMI Large Envelope
     Then on Order Details form, set Ounces to 1
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
     Then on Order Details International form, set address to
@@ -24,11 +24,11 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
       | FCMI Pkg-Thick Env | 5.5x8.5 Right Side 1 | random           | random           | random | random  | random      | India | random  | random  |
     Then on Order Details form, select service FCMI Package
     Then on Order Details form, set Ounces to 1
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then in Orders Grid, check row 1
     Then in Orders Grid, check row 2
     Then in Orders Toolbar, click Print button

@@ -45,8 +45,6 @@ module Stamps
       end
 
       def visit
-        param.test_env = 'stg' if param.test_env.downcase == 'staging'
-
         case param.test_env.downcase
           when /cc/
             url = "https://qa-registration.stamps.com/registration"

@@ -11,9 +11,9 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - XM Legal Flat Rate Env
 
     Then select Print On Shipping Label - 5 ½" x 8 ½"
 
-    Then set Print form Mail From to default
-    Then set Label form Mail To Country to United States
-    Then set Label form Mail To to a random address in zone 5 through 8
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To Country to United States
+    Then set Label form Mail-To to a random address in zone 5 through 8
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Mail Service Priority Mail Express Legal Flat Rate Envelope

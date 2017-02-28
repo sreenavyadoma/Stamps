@@ -15,11 +15,11 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  |                | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
     Then on Order Details form, set Weight to 2 lb 1 oz
     Then on Order Details form, select service PSG Package
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
 
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Print button

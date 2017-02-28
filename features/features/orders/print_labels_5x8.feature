@@ -199,9 +199,9 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then on Order Details form, set Width to 1
     Then on Order Details form, set Height to 1
     Then on Order Details form, set Length to 1
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
-    Then on Customs form, click Close button
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
+    Then click Customs form Close button
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then in Print modal, click Print button
@@ -218,10 +218,10 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then on Order Details form, set Width to 1
     Then on Order Details form, set Height to 1
     Then on Order Details form, set Length to 1
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then in Print modal, click Print button

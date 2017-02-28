@@ -452,6 +452,57 @@ module Stamps
       end
     end
 
+    class StampsComboBox
+      attr_accessor :param, :browser, :text_box, :drop_down, :selection_type
+
+      def initialize(*args)
+        expect(args.length).to be_between(3, 4).inclusive
+        case args.length
+          when 3
+            @index = 0
+          when 3
+            @index = args[3]
+          else
+            #do nothing
+        end
+        @text_box = StampsTextbox.new(args[0][@index])
+        @drop_down = StampsTextbox.new(args[1][@index])
+        @selection_type = args[2]
+        expect([:li, :div]).to include(@selection_type)
+        @param = text_box.param
+        @browser = param.browser
+      end
+
+      def selection(str)
+        case selection_type
+          when :li
+            browser.lis(text: str)[@index]
+          when :div
+            browser.divs(text: str)[@index]
+          else
+            # do nothing
+        end
+      end
+
+      def select(str)
+        logger.info "Select #{str}"
+        selection = StampsElement.new(selection(str))
+        10.times do
+          begin
+            break if (text_box.text).include?(str)
+            drop_down.safe_click
+            selection.scroll_into_view
+            selection.safe_click
+            logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
+          rescue
+            #ignore
+          end
+        end
+        expect(text_box.text).to eql(str)
+        selection
+      end
+    end
+
     class ElementHelper
       class << self
 

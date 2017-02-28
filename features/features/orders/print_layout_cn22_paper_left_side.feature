@@ -12,11 +12,11 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
       | PMI PFR Envelope | 8.5x11 Left Side | random           | random           | random | random  | random      | Germany | random  | random  |
     Then on Order Details form, select service PMI Padded Flat Rate Envelope
     Then on Order Details form, set Ounces to 1
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
     Then in Orders Toolbar, click Add button
 
     Then on Order Details form, set Ship-From to default
@@ -25,11 +25,11 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
       | PMI LFR Envelope | 8.5x11 Right Side | random           | random           | random | random  | random      | Mexico | random  | random  |
     Then on Order Details form, select service PMI Legal Flat Rate Envelope
     Then on Order Details form, set Ounces to 1
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
 
     Then in Orders Grid, check row 1
     Then in Orders Grid, check row 2

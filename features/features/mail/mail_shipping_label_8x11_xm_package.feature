@@ -12,8 +12,8 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - XM Package
     Then select Print On Shipping Label - 8 ½" x 11" Paper
 
     Then on Shipping Label Print form, set Mail From to default
-    Then set Label form Mail To Country to United States
-    Then set Label form Mail To to a random address in zone 5 through 8
+    Then set Label form Mail-To Country to United States
+    Then set Label form Mail-To to a random address in zone 5 through 8
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Mail Service Priority Mail Express Package

@@ -13,11 +13,11 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
       | PMEI MFR Box | SDC-1200  | 234 Laurier Avenue West  | random     | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then on Order Details form, set Weight to 1 lb 1 oz
     Then on Order Details form, select service FCMI Large Envelope
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
 
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
@@ -26,11 +26,11 @@ Feature: Print 1 Intl CN22 and 1 Intl CP72 label on SDC-1200 - left side
       | FCMI Letter | SDC-1200  | random           | random           | random | random  | random      | Costa Rica | random  | random  |
     Then on Order Details form, select service PMI Flat Rate Envelope
     Then on Order Details form, set Weight to 1 lb 1 oz
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, set Package Contents to Merchandise
-    Then on Customs form, add Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then click Order Details form Edit Form button
+    Then set Customs form Package Contents to Merchandise
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
 
     Then in Orders Grid, check row 2
 

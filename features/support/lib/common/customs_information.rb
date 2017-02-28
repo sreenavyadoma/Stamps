@@ -1,33 +1,44 @@
 module Stamps
-  module Orders
+  module Common
     module Customs
-      class OrdersCustomsFields < Browser::StampsHtmlField
-        attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
-        def initialize(param)
-          super(param)
-          @customs_form = OrdersCustomsForm.new(param)
-          @view_restrictions = Orders::Details::ViewRestrictions.new(param)
-          @edit_form_btn = StampsElement.new browser.span text: 'Edit Form...'
-          @restrictions_btn = StampsElement.new browser.span text: 'Restrictions...'
+      module MoreInfo
+        def present?
+          more_info.present?
         end
 
-        def edit_form
-          10.times do
-            return customs_form if customs_form.present?
-            edit_form_btn.safe_click
-            customs_form.wait_until_present 2
-          end
-          expect(customs_form.present?).to be true
+        def more_info
+          @more_info = StampsTextbox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
+          expect(@more_info.present?).to be true
+          @more_info
+        end
+      end
+
+      module LicenseCertificateInvoice
+        def present?
+          (license.present? && certificate.present? && invoice.present?)
         end
 
-        def restrictions
-          5.times{
-            return view_restrictions if view_restrictions.present?
-            restrictions_btn.safe_click
-          }
-          expect(view_restrictions.present?).to be true
+        def license
+          @license = StampsTextbox.new(browser.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
+          expect(@license.present?).to be true
+          @license
         end
+
+        def certificate
+          @certificate = StampsTextbox.new(browser.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
+          expect(@license.present?).to be true
+          @certificate
+        end
+
+        def invoice
+          @invoice = StampsTextbox.new(browser.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
+          expect(@invoice.present?).to be true
+          @invoice
+        end
+      end
+
+      class PackageContentsDetails < Browser::StampsHtmlField
       end
 
       class StampsDropDownIndexed < Browser::StampsHtmlField
@@ -65,7 +76,7 @@ module Stamps
         end
       end
 
-      class SingleCustomsItem < Browser::StampsHtmlField
+      class AssociatedCustomsLineItem < Browser::StampsHtmlField
         attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :customs_item_origin, :customs_item_hs_tariff
 
         def initialize(param, index)
@@ -111,8 +122,8 @@ module Stamps
           browser.tables(css: "div[id^=associatedcustomsitems]>div[id^=singlecustomsitem]").size
         end
 
-        def item(number)
-          customs_item = SingleCustomsItem.new(param, number)
+        def item_number(number)
+          customs_item = AssociatedCustomsLineItem.new(param, number)
           5.times do
             return customs_item if customs_item.present?
             sleep(0.10)
@@ -127,7 +138,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = StampsElement.new browser.div text: "USPS Privacy Act Statement"
+          @window_title = StampsElement.new browser.div(text: "USPS Privacy Act Statement")
           @okay = browser.span(text: "OK")
         end
 
@@ -136,111 +147,59 @@ module Stamps
         end
       end
 
-      class RestrictionsAndProhibitionsModal < Browser::StampsHtmlField
-
-        def present?
-
-        end
-
-      end
-
-      class InternalTransaction < Browser::StampsHtmlField
-        attr_reader :text_box, :drop_down
+      class CustInfoPackageContents < Browser::StampsHtmlField
+        attr_accessor :combo_box, :contents
 
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new(browser.text_field(name: "IsITNRequired"))
-          @drop_down = StampsElement.new(browser.div(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker"))
+          text_boxes = browser.text_fields(name: "CustomsContents")
+          drop_downs = browser.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
+          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li)
+          @contents = PackageContentsDetails.new(param).extend(MoreInfo)
         end
 
-        def select(selection)
-          logger.info "Select Internal Transaction Number: #{selection}"
-          selection_label = StampsElement.new(browser.li(text: selection))
-          10.times {
-            begin
-              break if text_box.text.include?(selection)
-              drop_down.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
-            rescue
-              #ignore
-            end
-          }
-          expect(text_box.text).to include(selection)
-          logger.info "#{selection} selected."
-          selection_label
+        def select(str)
+          combo_box.select(str)
+          if str == 'Commercial Sample'
+            @contents = PackageContentsDetails.new(param).extend(LicenseCertificateInvoice)
+          else
+            @contents = PackageContentsDetails.new(param).extend(MoreInfo)
+          end
         end
       end
 
-      class PackageContents < Browser::StampsHtmlField
-        attr_reader :text_box, :drop_down
+      class CustInfoInternalTransaction < Browser::StampsHtmlField
+        attr_accessor :combo_box, :itn_number
 
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new browser.text_field(name: "CustomsContents")
-          @drop_down = StampsElement.new browser.div(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
+          text_boxes = browser.text_fields(name: "IsITNRequired")
+          drop_downs =  browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li)
+          @itn_number = StampsTextbox.new(browser.text_field(name: "AES"))
         end
 
-        def select(selection)
-          logger.info "Select Internal Transaction Number: #{selection}"
-          selection_label = StampsElement.new browser.li(text: selection)
-          10.times {
-            begin
-              break if text_box.text.include? selection
-              drop_down.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
-            rescue
-              #ignore
-            end
-          }
-          expect(text_box.text).to include(selection)
-          logger.info "#{selection} selected."
-          selection_label
+        def select(str)
+          combo_box.select(str)
         end
       end
 
-      class NonDeliveryOptions < Browser::StampsHtmlField
-        attr_reader :text_box, :drop_down
+      class CustomsInformation < Browser::StampsHtmlField
 
-        def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field name: "NonDelivery"
-          @drop_down = StampsElement.new browser.div(id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker")
-        end
-
-        def select(selection)
-          logger.info "Select Internal Transaction Number: #{selection}"
-          selection_label = StampsElement.new browser.li(text: selection)
-          10.times {
-            begin
-              break if text_box.text.include? selection
-              drop_down.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
-            rescue
-              #ignore
-            end
-          }
-          expect(text_box.text).to include(selection)
-          logger.info "#{selection} selected."
-          selection_label
-        end
-      end
-
-      class OrdersCustomsForm < Browser::StampsHtmlField
-
-        attr_reader :window_title, :item_grid, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
+        attr_reader :window_title, :associated_items, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                     :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
                     :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label, :certificate
 
         def initialize(param)
           super(param)
           @window_title = StampsElement.new browser.div(text: "Customs Information")
-          @item_grid = AssociatedCustomsItems.new(param)
-          @package_contents = PackageContents.new(param)
-          @non_delivery_options = NonDeliveryOptions.new(param)
-          @internal_transaction = InternalTransaction.new(param)
+
+          @associated_items = AssociatedCustomsItems.new(param)
+          @package_contents = CustInfoPackageContents.new(param)
+
+          text_boxes = browser.text_fields(name: "NonDelivery")
+          drop_downs = browser.divs(id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker")
+          @non_delivery_options = StampsComboBox.new(text_boxes, drop_downs, :li)
 
           @more_info = StampsTextbox.new browser.text_field name: "CustomsComments"
           @usps_privacy_act_warning = StampsElement.new(browser.label text: "You must agree to the USPS Privacy Act Statement")
@@ -256,7 +215,6 @@ module Stamps
 
           @privacy_statement = UspsPrivactActStatementModal.new(param)
           @privacy_link = StampsElement.new browser.span(text: "USPS Privacy Act Statement")
-          @restrictions_link = RestrictionsAndProhibitionsModal.new(param)
           @restrictions_prohibitions_link = StampsElement.new browser.span(text: "Restrictions and Prohibitions")
 
           @close_button = StampsElement.new browser.span(text: "Close")

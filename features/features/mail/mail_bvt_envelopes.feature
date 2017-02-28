@@ -6,8 +6,8 @@ Feature: Envelopes BVT
   @mail_bvt_envelopes
   Scenario: Envelope
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
-    Then set Print form Mail From to default
-    Then set Label form Mail To to a random address in zone 1
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To to a random address in zone 1
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
@@ -19,7 +19,7 @@ Feature: Envelopes BVT
   @mail_bvt_envelopes2
   Scenario: Envelope
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
-    Then set Print form Mail From to default
+    Then set Print form Mail-From to default
     Then on Envelope form, set Mail To country to United States
     Then on Envelope form, set Mail To address to zone 1 through 4
     Then on Envelope form, set Pounds to 0

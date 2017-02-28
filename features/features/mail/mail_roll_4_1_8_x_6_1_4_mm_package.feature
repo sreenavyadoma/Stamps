@@ -11,9 +11,9 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - MM Package
 
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
 
-    Then set Print form Mail From to default
-    Then set Label form Mail To Country to United States
-    Then set Label form Mail To to a random address in zone 1 through 4
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To Country to United States
+    Then set Label form Mail-To to a random address in zone 1 through 4
 
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1

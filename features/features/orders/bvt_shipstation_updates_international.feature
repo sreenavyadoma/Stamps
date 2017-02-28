@@ -20,22 +20,35 @@ Feature:  Update International Orders to ShipStation
     Then on Order Details form, Add Item 2, Qty 2, ID ID 2, Description Description 2
     Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description Description 3
     # Edit the customs form
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, expect I agree to the USPS Privacy Act Statement is unchecked
-    Then on Customs form, set Package Contents to Commercial Sample
-    Then on Customs form, set License Number to "a12346"
-    Then on Customs form, set Certificate Number to "certno1"
-    Then on Customs form, set Invoice Number to "Invoice123"
-    Then on Customs form, set Non-Delivery Options to Treat as abandoned
-    Then on Customs form, set Internal Transaction Number to Required
-    Then on Customs form, set ITN Number to "ITN123"
+    Then click Order Details form Edit Form button
+    Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
 
-    Then on Customs form, add Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
-    Then on Customs form, add Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
-    Then on Customs form, add Associated Item 3, Description Item 3, Qty 3, Price 3, Made In Canada, Tariff 3
+    Then set Customs form Package Contents to Commercial Sample
+    Then expect Customs form Package Contents is Commercial Sample
+    Then set Customs form License Number to a random string
+    Then expect Customs form License Number is correct
+    Then set Customs form Certificate Number to some random string
+    Then expect Customs form Certificate Number is correct
+    Then set Customs form Invoice Number to a random string
+    Then expect Customs form Invoice Number is correct
+
+    Then set Customs form Package Contents to Document
+    Then set Customs form More Info to some random string
+
+    Then set Customs form Non-Delivery Options to Treat as abandoned
+    Then expect Customs form Non-Delivery Options is Treat as abandoned
+
+    Then set Customs form Internal Transaction Number to Required
+    Then expect Customs form Internal Transaction Number is Required
+
+    Then set Customs form ITN Number to ITN123
+
+    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs form Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
+    Then add Customs form Associated Item 3, Description Item 3, Qty 3, Price 3, Made In Canada, Tariff 3
 
     Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then click Customs form Close button
 
     Then Pause for 2 seconds
     Then on Order Details form, blur out 3 times
@@ -83,38 +96,39 @@ Feature:  Update International Orders to ShipStation
 
     Then on Order Details form, expect Insure-For and saved Insure-For values are the same
     Then on Order Details form, expect Insure-For Cost and saved Insure-For Cost values are the same
-    Then on Order Details form, click Edit Form button
+    Then click Order Details form Edit Form button
     Then Pause for 1 second
-    Then on Customs form, expect Package Contents is Commercial Sample
-    Then on Customs form, expect License Number is a12346
-    Then on Customs form, expect Certificate Number is certno1
-    Then on Customs form, expect Invoice Number is Invoice123
+    Then expect Customs form Package Contents is Commercial Sample
+    Then expect Customs form License Number is correct
+    Then expect Customs form Certificate Number is correct
+    Then expect Customs form Invoice Number is correct
 
-    Then on Customs form, expect Non-Delivery Options is Treat as abandoned
-    Then on Customs form, expect Internal Transaction Number is Required
-    Then on Customs form, expect ITN Number is ITN123
+    Then expect Customs form Non-Delivery Options is Treat as abandoned
+    Then expect Customs form Internal Transaction Number is Required
+    Then expect Customs form ITN Number is correct
 
-    Then on Customs form, expect Associated Item 1 Description is Item 1
-    Then on Customs form, expect Associated Item 1 Quantity is 1
-    Then on Customs form, expect Associated Item 1 Unit Price is 1.00
-    Then on Customs form, expect Associated Item 1 Origin Country is United States
-    Then on Customs form, expect Associated Item 1 Tariff is 1
+    Then expect Customs form Associated Item 1 Description is Item 1
+    Then expect Customs form Associated Item 1 Quantity is 1
+    Then expect Customs form Associated Item 1 Unit Price is 1.00
+    Then expect Customs form Associated Item 1 Origin Country is United States
+    Then expect Customs form Associated Item 1 Tariff is 1
 
-    Then on Customs form, expect Associated Item 2 Description is Item 2
-    Then on Customs form, expect Associated Item 2 Quantity is 2
-    Then on Customs form, expect Associated Item 2 Unit Price is 2.00
-    Then on Customs form, expect Associated Item 2 Origin Country is Japan
-    Then on Customs form, expect Associated Item 2 Tariff is 2
+    Then expect Customs form Associated Item 2 Description is Item 2
+    Then expect Customs form Associated Item 2 Quantity is 2
+    Then expect Customs form Associated Item 2 Unit Price is 2.00
+    Then expect Customs form Associated Item 2 Origin Country is Japan
+    Then expect Customs form Associated Item 2 Tariff is 2
 
-    Then on Customs form, expect Associated Item 3 Description is Item 3
-    Then on Customs form, expect Associated Item 3 Quantity is 3
-    Then on Customs form, expect Associated Item 3 Unit Price is 3.00
-    Then on Customs form, expect Associated Item 3 Origin Country is Canada
-    Then on Customs form, expect Associated Item 3 Tariff is 3
+    Then expect Customs form Associated Item 3 Description is Item 3
+    Then expect Customs form Associated Item 3 Quantity is 3
+    Then expect Customs form Associated Item 3 Unit Price is 3.00
+    Then expect Customs form Associated Item 3 Origin Country is Canada
+    Then expect Customs form Associated Item 3 Tariff is 3
 
-    Then on Customs form, expect I agree to the USPS Privacy Act Statement is checked
-    Then on Customs form, expect Total saved value is the same
-    Then on Customs form, click Close button
+    Then expect Customs form I agree to the USPS Privacy Act Statement is checked
+    Then expect Customs form Total saved value is the same
+    Then click Customs form Close button
+    Then Blur out on Customs form 20 times
 
     Then in Orders Grid, expect Recipient and saved Recipient are the same
     Then in Orders Grid, expect Company and saved Company are the same

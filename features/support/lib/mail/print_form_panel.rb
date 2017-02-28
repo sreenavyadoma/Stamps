@@ -61,6 +61,7 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailCustoms
       end
 
       module Rolls
@@ -68,6 +69,7 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailCustoms
       end
 
       module Envelopes
@@ -90,6 +92,7 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailCustoms
 
 
         def mail_tracking

@@ -111,8 +111,8 @@ module Stamps
 
     class MailSignInModal < StampsSignInBase
 
-      attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info,
-                  :signed_in_user, :invalid_msg, :remember_username_checkbox, :invalid_username_password
+      attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info, :invalid_msg,
+                  :remember_username_checkbox, :invalid_username_password
 
       def initialize(param)
         super(param)
@@ -121,7 +121,6 @@ module Stamps
         @sign_in_button = StampsElement.new browser.button(id: "signInButton")
         @sign_in_link = StampsElement.new browser.a(css: "a[class*=signInLink]")
         @verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
-        @signed_in_user = StampsElement.new browser.span(id: "userNameText")
         @invalid_msg = StampsElement.new browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")
         @whats_new_modal = WhatsNewModal.new(param)
         @remember_username_checkbox = WatirCheckbox.new browser.checkbox(id: "rememberUser")
@@ -158,11 +157,12 @@ module Stamps
         sign_in_button.safe_click
       end
 
-      def mail_sign_in
+      def mail_sign_in(credentials)
+        user_credentials(credentials)
         5.times do
           break if signed_in_user.present?
-          username(sign_in_username)
-          password(sign_in_password)
+          username(usr)
+          password(pw)
           login
           50.times do
             begin
@@ -207,8 +207,8 @@ module Stamps
         remember_username_checkbox.checked?
       end
 
-      def sign_in_username_check *args
-        credentials = user_credentials *args
+      def usr_check(*args)
+        credentials = user_credentials(*args)
         username = credentials[0]
 
         #todo-fix username

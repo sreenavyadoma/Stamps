@@ -23,24 +23,24 @@ Feature: Auto-Calculate Customs Form Weight
     Then on Order Details form, set ID to random
     Then on Order Details form, set Description to random
 
-    Then on Order Details form, click Edit Form button
+    Then click Order Details form Edit Form button
 
-    Then on Customs form, add Associated Item 1
-    Then on Customs form, set Associated Item 1 Description to item 1
-    Then on Customs form, set Associated Item 1 Qty to 2
-    Then on Customs form, set Associated Item 1 Unit Price to 1
-    Then on Customs form, set Associated Item 1 Made In Country to United States
-    Then on Customs form, set Associated Item 1 Tarriff to 5
+    Then add Customs form Associated Item 1
+    Then set Customs form Associated Item 1 Description to item 1
+    Then set Customs form Associated Item 1 Qty to 2
+    Then set Customs form Associated Item 1 Unit Price to 1
+    Then set Customs form Associated Item 1 Made In Country to United States
+    Then set Customs form Associated Item 1 Tarriff to 5
 
-    Then on Customs form, add Associated Item 2
-    Then on Customs form, set Associated Item 2 Description to item 2
-    Then on Customs form, set Associated Item 2 Qty to 2
-    Then on Customs form, set Associated Item 2 Unit Price to 1
-    Then on Customs form, set Associated Item 2 Made In Country to United States
-    Then on Customs form, set Associated Item 2 Tarriff to 10
+    Then add Customs form Associated Item 2
+    Then set Customs form Associated Item 2 Description to item 2
+    Then set Customs form Associated Item 2 Qty to 2
+    Then set Customs form Associated Item 2 Unit Price to 1
+    Then set Customs form Associated Item 2 Made In Country to United States
+    Then set Customs form Associated Item 2 Tarriff to 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
 
-    Then on Customs form, click Close button
+    Then click Customs form Close button
 
     Then in Orders Grid, expect Weight is 0 lb. 4 oz.
     Then in Orders Grid, expect Weight(lb) is 0

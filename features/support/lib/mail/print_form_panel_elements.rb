@@ -125,29 +125,50 @@ module Stamps
       end
 
       class MailToCountry < Browser::StampsHtmlField
-        attr_reader :text_box, :drop_down, :index
+        attr_reader :text_box, :drop_down, :index, :geography, :dom_text_area, :int_drop_down
         include PrintFormBlurOut
 
-        def initialize(param, index)
+        def initialize(param)
           super(param)
-          @index = index
-          @text_box = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
-          @drop_down = StampsElement.new(browser.div(css: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
+          @dom_text_area = MailDomTextArea.new(param)
+          @int_drop_down = StampsElement.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
         end
 
-        def select(selection)
-          selection_label = StampsElement.new browser.lis(text: selection)[index]
-          20.times {
+        def domestic?
+          30.times do
+            return true if @dom_text_area.present?
+            return false if @int_drop_down.present?
+          end
+        end
+
+        def select(str)
+          @geography = :domestic
+          @geography = :international unless str.downcase == 'united states'
+
+          if domestic?
+            @index = 0
+            @text_box = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
+            @drop_down = StampsElement.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
+          else
+            @index = 1
+            @text_box = StampsTextbox.new(browser.text_field(name: "ShipCountryCode"))
+            @drop_down = int_drop_down
+          end
+
+          drop_down.safe_click
+          selection = StampsElement.new(browser.lis(text: str)[index])
+          10.times do
             begin
-              break if text_box.text.include?(selection)
-              drop_down.safe_click unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.safe_click
-              sleep(0.125)
+              break if text_box.text == str
+              drop_down.safe_click unless selection.present?
+              selection.scroll_into_view
+              selection.safe_click
             rescue
               #ignore
             end
-          }
+          end
+          expect(text_box.text).to eql(str)
+          @geography
         end
       end
 
@@ -157,7 +178,6 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @country = MailToCountry.new(param, 1)
           @name = StampsTextbox.new(browser.text_field(name: "ShipName"))
           @company = StampsTextbox.new(browser.text_field(name: "ShipCompany"))
           @address_1 = StampsTextbox.new(browser.text_field(name: "ShipStreet1"))
@@ -165,7 +185,13 @@ module Stamps
           @city = StampsTextbox.new(browser.text_field(name: "ShipCity"))
           @province = StampsTextbox.new(browser.text_field(name: "ShipState"))
           @postal_code = StampsTextbox.new(browser.text_field(name: "ShipPostalCode"))
-          @phone = StampsTextbox.new(browser.text_field(name: "ShipPhone"))
+          @phone = StampsTextbox.new(browser.text_field(css: "div[id=shiptoview-international-targetEl]>div>div>div>div>div>div>div>input[name=ShipPhone]"))
+        end
+      end
+
+      class MailDomTextArea < StampsTextbox
+        def initialize(param)
+          super(param.browser.textarea(id: "sdc-mainpanel-shiptotextarea-inputEl"))
         end
       end
 
@@ -175,8 +201,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @country = MailToCountry.new(param, 0)
-          @text_area = StampsTextbox.new(browser.textarea(id: "sdc-mainpanel-shiptotextarea-inputEl"))
+          @text_area = MailDomTextArea.new(param)
         end
 
         def set(address)
@@ -523,14 +548,21 @@ module Stamps
       end
 
       class PrintFormMailTo < Browser::StampsHtmlField
-        attr_reader :domestic, :international, :mail_to_link
+        attr_reader :address, :mail_to_link
         include PrintFormBlurOut
 
         def initialize(param)
           super(param)
-          @domestic = MailToDom.new(param)
-          @international = MailToInt.new(param)
+          @country = MailToCountry.new(param)
           @mail_to_link = PrintFormMailToLink.new(param)
+        end
+
+        def country(str)
+          geography = @country.select(str)
+          expect([:domestic, :international]).to include(geography)
+          # dymanically create appropriate form per geography
+          @address = MailToInt.new(param) if geography == :international
+          @address = MailToDom.new(param) if geography == :domestic
         end
       end
 
@@ -540,14 +572,14 @@ module Stamps
         def initialize(param)
           super(param)
           @button = StampsElement.new(browser.span(id: "sdc-mainpanel-editcustombtn-btnInnerEl"))
-          @customs_form = CustomsForm::MailCustomsForm.new(param)
+          @customs_form = CustomsForm::MailCustomsInformation.new(param)
         end
 
         def edit_form
           15.times do
-            button.safe_click
             sleep(0.35)
             return customs_form if customs_form.present?
+            button.safe_click
           end
           expect(customs_form.present?).to be true
         end
