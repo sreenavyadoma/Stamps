@@ -33,15 +33,15 @@ Then /^(?:O|o)n Order Details form, Add Item (\d+)$/ do |value|
 end
 
 Then /^(?:O|o)n Order Details form, set Qty to (\d+)$/ do |value|
-  @details_line_item.qty.set(value)
+  @details_line_item.item_qty.set(value)
 end
 
 Then /^(?:O|o)n Order Details form, set ID to (.*)$/ do |value|
-  @details_line_item.id.set(value.downcase.include?('random'))?ParameterHelper.random_alpha_numeric : value
+  @details_line_item.item_id.set ((value.downcase == 'random')? ParameterHelper.random_alpha_numeric : value)
 end
 
 Then /^(?:O|o)n Order Details form, set Description to (.*)$/ do |value|
-  @details_line_item.description.set(value.downcase.include?('random'))?ParameterHelper.random_alpha_numeric : value
+  @details_line_item.item_description.set ((value.downcase == 'random')? ParameterHelper.random_alpha_numeric : value)
 end
 
 Then /^(?:O|o)n Order Details form, set Ship-To Country to (.*)$/ do |country|
