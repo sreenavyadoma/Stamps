@@ -94,15 +94,15 @@ module Stamps
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=down]")[index-1]
           @customs_item_unit_price = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
 
-          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")[index-1]
-          drop_down = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[index-1]
-          @customs_item_origin = StampsDropDownIndexed.new(param, text_box, drop_down, index-1, "Made In")
+          text_boxes = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")
+          drop_downs = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")
+          @customs_item_origin = StampsComboBox.new(param, text_boxes, drop_downs, :li, index-1)
 
           @customs_item_hs_tariff = StampsTextbox.new(browser.text_fields(name: "TariffNo")[index-1])
         end
 
         def present?
-          delete.present?
+          customs_item_description.present?
         end
       end
 
@@ -154,17 +154,13 @@ module Stamps
           super(param)
           text_boxes = browser.text_fields(name: "CustomsContents")
           drop_downs = browser.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
-          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li)
+          @combo_box = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
           @contents = PackageContentsDetails.new(param).extend(MoreInfo)
         end
 
         def select(str)
           combo_box.select(str)
-          if str == 'Commercial Sample'
-            @contents = PackageContentsDetails.new(param).extend(LicenseCertificateInvoice)
-          else
-            @contents = PackageContentsDetails.new(param).extend(MoreInfo)
-          end
+          @contents = (str == 'Commercial Sample')?PackageContentsDetails.new(param).extend(LicenseCertificateInvoice):PackageContentsDetails.new(param).extend(MoreInfo)
         end
       end
 
@@ -175,7 +171,7 @@ module Stamps
           super(param)
           text_boxes = browser.text_fields(name: "IsITNRequired")
           drop_downs =  browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
-          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li)
+          @combo_box = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
           @itn_number = StampsTextbox.new(browser.text_field(name: "AES"))
         end
 
@@ -199,7 +195,11 @@ module Stamps
 
           text_boxes = browser.text_fields(name: "NonDelivery")
           drop_downs = browser.divs(id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker")
-          @non_delivery_options = StampsComboBox.new(text_boxes, drop_downs, :li)
+          @non_delivery_options = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
+
+          text_boxes = browser.text_fields(id: "sdc-customsFormWindow-internaltransactiondroplist-inputEl")
+          drop_downs = browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          @internal_transaction = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
 
           @more_info = StampsTextbox.new browser.text_field name: "CustomsComments"
           @usps_privacy_act_warning = StampsElement.new(browser.label text: "You must agree to the USPS Privacy Act Statement")

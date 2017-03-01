@@ -302,7 +302,7 @@ Then /^(?:O|o)n Order Details form, set Ship-To to Domestic Address$/ do |table|
   step "On Order Details form, set Ship-To to Domestic Address #{test_parameter[:ship_to]}"
 end
 
-Then /^(?:O|o)n Order Details International form, set address to$/ do |table|
+Then /^(?:S|s)et Order Details Ship-To International address to$/ do |table|
   address_table = table.hashes.first
 
   test_parameter[:country] = address_table['country']

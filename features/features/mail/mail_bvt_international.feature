@@ -42,7 +42,7 @@ Feature: International Shipping BVT
     Then Mail set Customs form ITN Number to 12345
     Then Mail set Customs form More Info to "WP BVT Intl Shipping"
     Then Mail on Customs form, Delete All Items
-    Then Mail add Customs form Associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Made In Russia, Tariff 25
+    Then Mail add Customs form Associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Made In is Russia, Tariff 25
     Then Mail on Customs form, check I agree to the USPS Privacy Act Statement
     Then Mail on Customs form, Save
     Then Mail: Print International Postage

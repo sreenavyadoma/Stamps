@@ -7,7 +7,7 @@ Feature: Internal Transaction # Not Required
   Scenario: Internal Transaction # Not Required
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
-    Then on Order Details International form, set address to
+    Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
     Then on Order Details form, set Ounces to 5

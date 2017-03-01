@@ -45,54 +45,54 @@ Then /^(?:O|o)n Order Details form, expect service Placeholder is (.*)$/ do |exp
   expect(stamps.orders.order_details.service.text_box.placeholder).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Name (?:is (.*)|and saved Name are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To Country is (?:correct|(.*))$/ do |expectation|
+  expectation = (expectation.nil?)?test_parameter[:country] : expectation
+  expect(stamps.orders.order_details.ship_to.country.text_box.text).to eql expectation
+end
+
+Then /^(?:E|e)xpect Order Details form Ship-To Name is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:name] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.name.text).to eql(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Company (?:is (.*)|and saved Company are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To Company is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:company] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.company.text).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Address 1 (?:is (.*)|and saved Address 1 are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To Address 1 is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:street_address_1] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.address_1.text).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Address 2 (?:is (.*)|and saved Address 2 are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To Address 2 is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:street_address_2] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.address_2.text).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Province (?:is (.*)|and saved Province are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To City is (?:correct|(.*))$/ do |expectation|
+  expectation = test_parameter[:city] if expectation.nil?
+  expect(stamps.orders.order_details.ship_to.international.city.text).to eql expectation
+end
+
+Then /^(?:E|e)xpect Order Details form Ship-To Province is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:state] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.province.text).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Postal Code (?:is (.*)|and saved Postal Code are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To Postal Code is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:zip] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.postal_code.text).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Phone (?:is (.*)|and saved Phone are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To Phone is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:phone] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.phone.text).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, expect International Ship-To Email (?:is (.*)|and saved Email are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Ship-To Email is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:email] if expectation.nil?
   expect(stamps.orders.order_details.ship_to.international.email.text).to eql expectation
-end
-
-Then /^(?:O|o)n Order Details form, expect Ship-To Country (?:is (.*)|and saved Country are the same)$/ do |expectation|
-  expectation = test_parameter[:country] if expectation.nil?
-  expect(stamps.orders.order_details.ship_to.country.text_box.text).to eql expectation
-end
-
-Then /^(?:O|o)n Order Details form, expect International Ship-To City (?:is (.*)|and saved City are the same)$/ do |expectation|
-  expectation = test_parameter[:city] if expectation.nil?
-  expect(stamps.orders.order_details.ship_to.international.city.text).to eql expectation
 end
 
 Then /^(?:O|o)n Order Details form, expect International Address fields are visible$/ do

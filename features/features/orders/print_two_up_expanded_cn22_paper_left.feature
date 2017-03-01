@@ -22,7 +22,7 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
 
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In is United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then in Orders Toolbar, click Print button

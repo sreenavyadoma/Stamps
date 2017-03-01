@@ -132,11 +132,11 @@ module Stamps
           logger.message "#"*15
 
           username.safely_wait_until_present(8)
-          4.times do
+          8.times do
             begin
               if username.present?
-                username.set usr
-                password.set pw
+                username.set(usr)
+                password.set(pw)
                 sign_in_btn.safe_send_keys(:enter)
 
                 30.times do
@@ -154,7 +154,7 @@ module Stamps
                 end
               end
 
-              8.times {sleep(0.25) if username.present?}
+              8.times { sleep(0.25) if username.present? }
 
               if invalid_username.present?
                 logger.error invalid_username.text
@@ -191,7 +191,7 @@ module Stamps
             usr
           end
 
-          expect(signed_in_user.present?).to be(true)
+          expect(signed_in_user.text).to eql(usr)
 
           logger.message "#"*15
           logger.message "Signed-in User: #{signed_in_user.text}"

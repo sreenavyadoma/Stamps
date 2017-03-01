@@ -298,7 +298,7 @@ Then /^(?:O|o)n Order Details form, expect service is an empty string$/ do
 end
 
 Then /^(?:O|o)n Order Details form, set service to (.*)$/ do |service|
-  stamps.orders.order_details.service.select service
+  stamps.orders.order_details.service.select(service)
   15.times do
     step "On Order Details form, blur out"
     break if stamps.orders.order_details.service.cost > 0

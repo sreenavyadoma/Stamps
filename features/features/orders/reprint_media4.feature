@@ -9,7 +9,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
-    Then on Order Details International form, set address to
+    Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | SDC-1200 | random           | random           | random | random  | random      | New Zealand | random  | random  |
     Then on Order Details form, select service PMI Large Flat Rate Box
@@ -17,7 +17,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In is United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
 

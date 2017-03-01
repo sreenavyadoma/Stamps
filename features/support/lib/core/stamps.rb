@@ -66,12 +66,13 @@ module Stamps
       logger.message ""
       logger.message ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
-      #@google_home_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
     end
   end
 
   def test_parameter
     @test_data ||= Hash.new
+    @test_data[:customs_associated_items] ||= Hash.new
+    @test_data
   end
 
   def param

@@ -162,7 +162,7 @@ module Stamps
           when 2
             (0...rand(args[0].to_i..args[1].to_i)).map { (65 + rand(26)).chr }.join
           else
-
+            # do nothing
         end
       end
 

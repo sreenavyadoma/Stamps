@@ -162,13 +162,13 @@ Feature:  Orders service Selection
   @details_services_int
   Scenario: service Selections for International Orders
     Then in Orders Toolbar, click Add button
-    Then on Order Details International form, set address to
+    Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
     Then on Order Details form, set Ounces to 1
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then click Order Details form Edit Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In Brazil, Tariff 1
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is Brazil, Tariff 1
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
 

@@ -7,14 +7,14 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
   Scenario: Print 1 single ply Intl CP72 label on 8.5x11 - left side
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
-    Then on Order Details International form, set address to
+    Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then on Order Details form, select service PMI Package
     Then on Order Details form, set Ounces to 1
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Document
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In is United States, Tariff 10
     Then on Customs form, check I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then in Orders Toolbar, click Print button

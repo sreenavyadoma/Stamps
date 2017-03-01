@@ -200,16 +200,16 @@ module Stamps
         element_helper.click_while_present(element)
       end
 
-      def safe_send_keys(special_char)
+      def safe_send_keys(key)
         begin
-          send_keys(special_char)
+          send_keys(key)
         rescue
           #ignore
         end
       end
 
-      def send_keys(special_char)
-        element_helper.send_keys(element, special_char)
+      def send_keys(key)
+        element_helper.send_keys(element, key)
       end
 
       def set_element
@@ -452,28 +452,21 @@ module Stamps
       end
     end
 
-    class StampsComboBox
-      attr_accessor :param, :browser, :text_box, :drop_down, :selection_type
+    class StampsComboBox < Browser::StampsHtmlField
+      attr_accessor :param, :text_box, :drop_down, :selection_type
 
-      def initialize(*args)
-        expect(args.length).to be_between(3, 4).inclusive
-        case args.length
-          when 3
-            @index = 0
-          when 3
-            @index = args[3]
-          else
-            #do nothing
-        end
-        @text_box = StampsTextbox.new(args[0][@index])
-        @drop_down = StampsTextbox.new(args[1][@index])
-        @selection_type = args[2]
-        expect([:li, :div]).to include(@selection_type)
+      def initialize(param, text_boxes, drop_downs, selection_type, index)
+        super(param)
+        @index = index
+        @text_box = StampsTextbox.new(text_boxes[@index])
+        @drop_down = StampsTextbox.new(drop_downs[@index])
+        @selection_type = selection_type
         @param = text_box.param
         @browser = param.browser
       end
 
       def selection(str)
+        expect([:li, :div]).to include(@selection_type)
         case selection_type
           when :li
             browser.lis(text: str)[@index]
@@ -486,20 +479,18 @@ module Stamps
 
       def select(str)
         logger.info "Select #{str}"
-        selection = StampsElement.new(selection(str))
         10.times do
           begin
             break if (text_box.text).include?(str)
-            drop_down.safe_click
-            selection.scroll_into_view
-            selection.safe_click
+            drop_down.safe_click unless selection(str).present?
+            element_helper.safe_click(selection(str))
             logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           rescue
             #ignore
           end
         end
         expect(text_box.text).to eql(str)
-        selection
+        text_box.text
       end
     end
 
@@ -516,44 +507,29 @@ module Stamps
 
         def text(element)
           begin
-            text = element.text
-            return text if text.size > 0
+            return element.text if element.text.size > 0
           rescue
             #ignore
           end
 
           begin
-            value = element.value
-            return value if value.size > 0
+            return element.value if element.value.size > 0
           rescue
             #ignore
           end
 
           begin
-            value = element.attribute_value('value')
-            return value if value.size > 0
+            return element.attribute_value('value') if element.attribute_value('value').size > 0
           rescue
             #ignore
           end
-          ""
+          ''
         end
 
-        def send_keys(*args)
-          case args.length
-            when 2
-              element = args[0]
-              text = args[1]
-              element_name = ""
-            when 3
-              element = args[0]
-              text = args[1]
-              element_name = args[2]
-            else
-              expect("Wrong number of arguments for BrowserHelper.set_text method.").to eql ""
-          end
+        def send_keys(element, key)
           2.times do
             begin
-              element.send_keys(text)
+              element.send_keys(key)
             rescue
               #ignore
             end
@@ -563,27 +539,17 @@ module Stamps
         def set(*args)
           case args.size
             when 1
-              element = args[0]
-              element.set
+              args[0].set('')
             when 2
               element = args[0]
               text = args[1]
               15.times do
                 begin
                   element.focus
-                  #element.clear
-
-                  # set element text
                   element.set(text)
-                  actual_value = text(element)
-                  break if actual_value == text
-                  break if actual_value == text
-
-                  #set element attribute value
+                  break if text(element) == text
                   set_attribute_value(element, "value", text)
-                  actual_value = text(element)
-                  break if actual_value == text
-                  break if actual_value == text
+                  break if text(element) == text
                 rescue
                   #ignore
                 end
@@ -602,10 +568,10 @@ module Stamps
         end
 
         def click_while_present(element)
-          30.times{
+          30.times do
             safe_click element
             break unless element.present?
-          }
+          end
         end
 
         def checked?(element)

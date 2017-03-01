@@ -705,9 +705,9 @@ module Stamps
           initializing_db.wait_until_present(15) if initializing_db.present?
 
           if initializing_db.present?
-            message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}"
+            message = "*****  #{initializing_db.text}  *****Ship Station might be down. USERNAME: #{nav_bar.username.text}"
             logger.info message
-            expect(message).to eql ""
+            expect(message).to eql "Initializing Database Error"
           end
 
           expect("#{server_error.text}").to eql "Server Error" if server_error.present?

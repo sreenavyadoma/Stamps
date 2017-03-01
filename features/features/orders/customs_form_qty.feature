@@ -8,7 +8,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
   Scenario: Customs Form Qty
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
-    Then on Order Details International form, set address to
+    Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
     Then on Order Details form, select service PMI Package
@@ -30,14 +30,14 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then set Customs form Associated Item 1 Description to item 1
     Then set Customs form Associated Item 1 Qty to 5
     Then set Customs form Associated Item 1 Unit Price to 11.11
-    Then set Customs form Associated Item 1 Made In Country to United States
+    Then set Customs form Associated Item 1 Made In is Country to United States
     Then set Customs form Associated Item 1 Tarriff to 5
 
     Then add Customs form Associated Item 2
     Then set Customs form Associated Item 2 Description to item 2
     Then set Customs form Associated Item 2 Qty to 7
     Then set Customs form Associated Item 2 Unit Price to 22.22
-    Then set Customs form Associated Item 2 Made In Country to United States
+    Then set Customs form Associated Item 2 Made In is Country to United States
     Then set Customs form Associated Item 1 Tarriff to 10
 
     Then on Customs form, check I agree to the USPS Privacy Act Statement
