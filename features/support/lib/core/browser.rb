@@ -568,8 +568,9 @@ module Stamps
         end
 
         def click_while_present(element)
-          30.times do
-            safe_click element
+          20.times do
+            safe_click(element)
+            sleep(0.05)
             break unless element.present?
           end
         end

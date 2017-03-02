@@ -123,33 +123,31 @@ Feature:  Update International Orders to ShipStation
     Then expect Customs form Associated Item 3 Quantity is correct
     Then expect Customs form Associated Item 3 Unit Price is correct
     Then expect Customs form Associated Item 3 Made In is correct
-    Then expect Customs form Associated Item 3 Tariff is 3
     Then expect Customs form Associated Item 3 Tariff is correct
 
     Then expect Customs form I agree to the USPS Privacy Act Statement is checked
     Then expect Customs form Total Value is correct
     Then click Customs form Close button
-    Then Blur out on Customs form 20 times
 
-    Then in Orders Grid, expect Recipient and saved Recipient are the same
-    Then in Orders Grid, expect Company and saved Company are the same
-    Then in Orders Grid, expect Country and saved Country are the same
-    Then in Orders Grid, expect Address and saved Address are the same
-    Then in Orders Grid, expect City and saved City are the same
-    Then in Orders Grid, expect State and saved State are the same
-    Then in Orders Grid, expect Zip and saved Zip are the same
-    Then in Orders Grid, expect Phone and saved Phone are the same
-    Then in Orders Grid, expect Email and saved Email are the same
+    Then expect Orders Grid Recipient is correct
+    Then expect Orders Grid Company is correct
+    Then expect Orders Grid Country is correct
+    Then expect Orders Grid Address is correct
+    Then expect Orders Grid City is correct
+    Then expect Orders Grid State is correct
+    Then expect Orders Grid Zip is correct
+    Then expect Orders Grid Phone is correct
+    Then expect Orders Grid Email is correct
 
-    Then in Orders Grid, expect Qty. is 6
-    Then in Orders Grid, expect Item SKU is Multiple
-    Then in Orders Grid, expect Item Name is Multiple
+    Then expect Orders Grid Qty. is 6
+    Then expect Orders Grid Item SKU is Multiple
+    Then expect Orders Grid Item Name is Multiple
 
-    Then in Orders Grid, expect service is Priority Mail International
-    Then in Orders Grid, expect Pounds and saved Pounds are the same
-    Then in Orders Grid, expect Ounces and saved Ounces are the same
+    Then expect Orders Grid service is Priority Mail International
+    Then expect Orders Grid Pounds is correct
+    Then expect Orders Grid Ounces is correct
     Then on Order Details form, expect Insure-For and saved Insure-For values are the same
-    Then in Orders Grid, expect Order Status is Awaiting Shipment
+    Then expect Orders Grid Order Status is Awaiting Shipment
 
     Then Pause for 2 second
     Then Sign out

@@ -285,15 +285,6 @@ Then /^(?:O|o)n Order Details form, expect Dimensions Height data error tooltip 
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:I|i)n Orders Grid, expect ship cost data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "In Orders Grid, expect ship cost data error tooltip is #{expectation}"
-  grid_order_id = stamps.orders.orders_grid.column.order_id.row 1
-  grid_ship_cost = stamps.orders.orders_grid.column.ship_cost.data grid_order_id
-  error = grid_ship_cost.attribute_expectation "data-errorqtip"
-  #logger.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
-  expect(error).to include(expectation)
-end
-
 Then /^(?:O|o)n Order Details form, expect International Name data error tooltip is \"(.*)\"$/ do |expectation|
   #logger.step "On Order Details form, expect International Name data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.name

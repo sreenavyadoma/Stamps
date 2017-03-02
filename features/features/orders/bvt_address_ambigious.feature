@@ -14,9 +14,9 @@ Feature:  Ambigious Address
     Then In Exact Address Not Found module, select row 2
     Then on Order Details form, select service PM Package
     Then in Orders Grid, check row 1
-    Then in Orders Grid, expect Recipient is Joseph Balancio
-    Then in Orders Grid, expect Company is Betfair
-    Then in Orders Grid, expect City is San Francisco
-    Then in Orders Grid, expect State is CA
-    Then in Orders Grid, expect Zip is 94102
+    Then expect Orders Grid Recipient is Joseph Balancio
+    Then expect Orders Grid Company is Betfair
+    Then expect Orders Grid City is San Francisco
+    Then expect Orders Grid State is CA
+    Then expect Orders Grid Zip is 94102
     Then Sign out

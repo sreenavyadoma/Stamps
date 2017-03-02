@@ -65,16 +65,16 @@ module Stamps
       end
 
       class BlurOutElement < Browser::StampsHtmlField
-        attr_reader :insure_for_label
+        attr_reader :element
 
         def initialize(param)
           super(param)
-          @insure_for_label = StampsElement.new browser.label(text: 'Insure For $:')
+          @element= StampsElement.new browser.label(text: 'Insure For $:')
         end
 
         def blur_out
-          insure_for_label.safe_click
-          insure_for_label.safe_double_click
+          element.safe_click
+          element.safe_double_click
         end
       end
 
@@ -1559,8 +1559,8 @@ module Stamps
           body.present?
         end
 
-        def wait_until_present *args
-          body.safely_wait_until_present *args
+        def wait_until_present(*args)
+          body.safely_wait_until_present(*args)
         end
 
         def expand

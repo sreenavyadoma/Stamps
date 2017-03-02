@@ -14,14 +14,14 @@ Feature: in Orders Grid, Tracking & Order Status
     Then on Order Details form, check Insure-For checkbox
     Then on Order Details form, set Insure-For to $52.99
     Then Pause for 1 second
-    Then in Orders Grid, expect Insured Value is $52.99
+    Then expect Orders Grid Insured Value is $52.99
     Then Pause for 1 second
     Then on Order Details form, uncheck Insure-For checkbox
     Then on Order Details form, select service PM Package
     Then on Order Details form, uncheck Insure-For checkbox
     Then on Order Details form, set Tracking to Signature Required
     Then Pause for 2 seconds
-    Then in Orders Grid, expect Insured Value is $0.00
+    Then expect Orders Grid Insured Value is $0.00
     Then Pause for 1 second
     Then Sign out
 

@@ -150,7 +150,7 @@ Then /^(?:O|o)n Customs form, uncheck I agree to the USPS Privacy Act Statement$
 end
 
 Then /^(?:E|e)xpect Customs form I agree to the USPS Privacy Act Statement is unchecked$/ do
-  sleep(0.5)
+  sleep(0.05)
   expect(stamps.orders.order_details.customs.edit_form.i_agree.checked?).to be(false) if param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_form.i_agree.checked?).to be(false) if param.web_app == :mail
 end
@@ -362,7 +362,7 @@ Then /^(?:E|e)xpect Customs form Associated Item (\d+) Made In is (?:correct|(.*
 end
 
 Then /^(?:E|e)xpect Customs form Associated Item (\d+) Tariff is (?:correct|(.*))$/ do |item_number, expectation|
-  expectation = (expectation.nil?)?test_parameter[:customs_associated_items][item_number][:tarriff] :expectation
+  expectation = ((expectation.nil?)?test_parameter[:customs_associated_items][item_number][:tarriff] :expectation).to_f
   sleep(0.5)
   expect((stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_hs_tariff.text).to_f).to eql(expectation.to_f) if param.web_app == :orders
   expect((stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_hs_tariff.text).to_f).to eql(expectation.to_f) if param.web_app == :mail

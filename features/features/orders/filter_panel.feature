@@ -18,7 +18,7 @@ Feature: Orders Filter Panel
 
     Then in Orders Toolbar, click Add button
     Then in left Filter Panel, expect selected filter is Awaiting Shipment
-    Then in Orders Grid, expect saved Order ID is in Orders Grid row 1
+    Then expect Orders Grid saved Order ID is in Orders Grid row 1
 
     Then in Orders Grid, check saved Order ID
     Then in Orders Grid toolbar, select Move to Shipped

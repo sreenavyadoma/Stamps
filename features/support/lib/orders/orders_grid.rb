@@ -85,9 +85,7 @@ module Stamps
         end
 
         def size
-          30.times do
-            break if browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size > 0
-          end
+          30.times {break if browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size > 0}
           browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
         end
 
@@ -95,12 +93,12 @@ module Stamps
           ParameterHelper
         end
 
-        def grid_text column, row
+        def grid_text(column, row)
           scroll_to_column(column)
-          element_helper.text grid_field(column, row)
+          element_helper.text(grid_element(column, row))
         end
 
-        def grid_field column_number, row
+        def grid_element(column_number, row)
           browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
         end
 
@@ -108,7 +106,7 @@ module Stamps
           grid_text(column_number(column_name), row)
         end
 
-        def column_number column
+        def column_number(column)
           5.times do
             begin
               columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
@@ -652,7 +650,7 @@ module Stamps
         def ship_cost_error(order_id)
           scroll_into_view
           begin
-            div = grid_field(:ship_cost, row_number(order_id)).div
+            div = grid_element(:ship_cost, row_number(order_id)).div
             data_error = div.attribute_value("data-qtip")
           rescue
             data_error = ""

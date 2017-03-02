@@ -231,8 +231,8 @@ module Stamps
           window_title.present?
         end
 
-        def wait_until_present *args
-          window_title.safely_wait_until_present *args
+        def wait_until_present(*args)
+          window_title.safely_wait_until_present(*args)
         end
 
         def total_value

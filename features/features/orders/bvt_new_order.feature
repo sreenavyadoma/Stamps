@@ -17,8 +17,8 @@ Feature:  BVT Order Creation
     Then on Order Details form, set Height to 1
     # Orders Grid Operations
     Then in Orders Grid, uncheck row 1
-    Then in Orders Grid, expect Pounds is 1
-    Then in Orders Grid, expect Ounces is 1
-    Then in Orders Grid, expect Weight is 1 lb. 1 oz.
-    Then in Orders Grid, expect Insured Value is $1.00
+    Then expect Orders Grid Pounds is 1
+    Then expect Orders Grid Ounces is 1
+    Then expect Orders Grid Weight is 1 lb. 1 oz.
+    Then expect Orders Grid Insured Value is $1.00
     Then Sign out

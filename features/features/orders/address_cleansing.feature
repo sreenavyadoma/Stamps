@@ -15,11 +15,11 @@ Feature: Address Cleansing
     Then on Order Details form, set Ounces to 1
     Then on Order Details form, set Pounds to 1
     Then Pause for 2 seconds
-    Then in Orders Grid, expect Zip is 90245
-    Then in Orders Grid, expect Recipient is Address Cleansing
-    Then in Orders Grid, expect Company is No Zip
-    Then in Orders Grid, expect City is El Segundo
-    Then in Orders Grid, expect State is CA
+    Then expect Orders Grid Zip is 90245
+    Then expect Orders Grid Recipient is Address Cleansing
+    Then expect Orders Grid Company is No Zip
+    Then expect Orders Grid City is El Segundo
+    Then expect Orders Grid State is CA
 
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-To to address in Zone 1 through 4

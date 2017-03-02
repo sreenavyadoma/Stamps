@@ -27,7 +27,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Flat Rate Envelope
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -37,7 +37,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Padded Flat Rate Envelope
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -47,7 +47,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Legal Flat Rate Envelope
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -57,7 +57,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Small Flat Rate Box
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -67,7 +67,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Medium Flat Rate Box
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -77,7 +77,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Large Flat Rate Box
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -87,7 +87,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Regional Rate Box A
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -97,7 +97,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PM Regional Rate Box B
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -107,7 +107,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PME Flat Rate Envelope
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail Express
+    Then expect Orders Grid service is Priority Mail Express
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -117,7 +117,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PME Padded Flat Rate Envelope
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail Express
+    Then expect Orders Grid service is Priority Mail Express
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button
@@ -127,7 +127,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PME Legal Flat Rate Envelope
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
-    Then in Orders Grid, expect service is Priority Mail Express
+    Then expect Orders Grid service is Priority Mail Express
     Then in Orders Toolbar, click Print button
     Then in Print modal, expect Print Modal is present
     Then in Print modal, click Close button

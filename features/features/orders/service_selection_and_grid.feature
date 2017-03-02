@@ -16,7 +16,7 @@ Feature:  service Selection & Order Grid Values
     Then in Print modal, set Printer to "factory"
     Then in Print modal, click Print button
     Then In left Filter Panel, select Shipped
-    Then in Orders Grid, expect service is Parcel Select Ground
+    Then expect Orders Grid service is Parcel Select Ground
 
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
@@ -28,7 +28,7 @@ Feature:  service Selection & Order Grid Values
     Then in Print modal, set Printer to "factory"
     Then in Print modal, click Print button
     Then In left Filter Panel, select Shipped
-    Then in Orders Grid, expect service is Parcel Select Ground
+    Then expect Orders Grid service is Parcel Select Ground
 
     Then in Orders Toolbar, click Add button
     Then on Order Details form, set Ship-From to default
@@ -40,7 +40,7 @@ Feature:  service Selection & Order Grid Values
     Then in Print modal, set Printer to "factory"
     Then in Print modal, click Print button
     Then In left Filter Panel, select Shipped
-    Then in Orders Grid, expect service is Parcel Select Ground
+    Then expect Orders Grid service is Parcel Select Ground
 
     Then Sign out
 

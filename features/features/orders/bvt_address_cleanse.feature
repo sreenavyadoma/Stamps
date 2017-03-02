@@ -15,12 +15,12 @@ Feature:  BVT Address Cleansing
     Then on Order Details form, set Ounces to 1
     Then on Order Details form, blur out
     Then Pause for 2 seconds
-    Then in Orders Grid, expect Recipient is Euan Davidson
-    Then in Orders Grid, expect Company is Betfair
-    Then in Orders Grid, expect Address is 1350 Market Street
-    Then in Orders Grid, expect City is San Francisco
-    Then in Orders Grid, expect State is CA
-    Then in Orders Grid, expect Zip is 94102
+    Then expect Orders Grid Recipient is Euan Davidson
+    Then expect Orders Grid Company is Betfair
+    Then expect Orders Grid Address is 1350 Market Street
+    Then expect Orders Grid City is San Francisco
+    Then expect Orders Grid State is CA
+    Then expect Orders Grid Zip is 94102
     Then Sign out
 
 

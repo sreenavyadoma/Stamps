@@ -74,37 +74,37 @@ Feature:  Update Order to ShipStation
     Then on Order Details form, expect Reference Number is Update Orders To ShipStation
 
     #Verify Orders Grid data was saved in ShipStation
-    Then in Orders Grid, expect Store is Manual Orders
-    Then in Orders Grid, expect Order ID is the same as Details Form Order ID
-    Then in Orders Grid, expect Ship Cost is the same as Details Form Ship Cost
-    Then in Orders Grid, expect Age is < 24 hours
-    Then in Orders Grid, expect Order Date is populated
+    Then expect Orders Grid Store is Manual Orders
+    Then expect Orders Grid Order ID is the same as Details Form Order ID
+    Then expect Orders Grid Ship Cost is the same as Details Form Ship Cost
+    Then expect Orders Grid Age is < 24 hours
+    Then expect Orders Grid Order Date is populated
 
-    Then in Orders Grid, expect Recipient is First Last
-    Then in Orders Grid, expect Company is Company Name
-    Then in Orders Grid, expect Address is 777 N Orange Ave Apt 100
-    Then in Orders Grid, expect City is Orlando
-    Then in Orders Grid, expect State is FL
-    Then in Orders Grid, expect Zip is 32801-1175
-    Then in Orders Grid, expect Phone is 888-888-8888
-    Then in Orders Grid, expect Email is rtest@stamps.com
+    Then expect Orders Grid Recipient is correct
+    Then expect Orders Grid Company is Company Name
+    Then expect Orders Grid Address is 777 N Orange Ave Apt 100
+    Then expect Orders Grid City is Orlando
+    Then expect Orders Grid State is FL
+    Then expect Orders Grid Zip is 32801-1175
+    Then expect Orders Grid Phone is 888-888-8888
+    Then expect Orders Grid Email is rtest@stamps.com
 
-    Then in Orders Grid, expect Qty. is 1
-    Then in Orders Grid, expect Item SKU is Item 1 SKU
-    Then in Orders Grid, expect Item Name is Item 1 Description
+    Then expect Orders Grid Qty. is 1
+    Then expect Orders Grid Item SKU is Item 1 SKU
+    Then expect Orders Grid Item Name is Item 1 Description
 
-    Then in Orders Grid, expect service is Priority Mail
+    Then expect Orders Grid service is Priority Mail
 
-    Then in Orders Grid, expect Weight is 1 lb. 1 oz.
+    Then expect Orders Grid Weight is 1 lb. 1 oz.
 
-    Then in Orders Grid, expect Tracking service is Signature Required
+    Then expect Orders Grid Tracking service is Signature Required
 
-    Then in Orders Grid, expect Order Status is Awaiting Shipment
+    Then expect Orders Grid Order Status is Awaiting Shipment
 
-    Then in Orders Grid, expect Pounds is 1
-    Then in Orders Grid, expect Ounces is 1
+    Then expect Orders Grid Pounds is 1
+    Then expect Orders Grid Ounces is 1
 
-    Then in Orders Grid, expect Insured Value is $100.00
+    Then expect Orders Grid Insured Value is $100.00
 
     Then in Orders Toolbar, click Print button
     Then in Print modal, click Close button

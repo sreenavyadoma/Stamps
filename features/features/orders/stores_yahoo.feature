@@ -34,7 +34,7 @@ Feature:  Yahoo Store Management
       Then in Orders Toolbar, Refresh Orders
       Then In left Filter Panel, select Shipped
       Then In left Filter Panel, select Awaiting Shipment
-      Then in Orders Grid, expect Store is random
+      Then expect Orders Grid Store is random
 
       Then Manage Stores: Open Modal
 
@@ -53,7 +53,7 @@ Feature:  Yahoo Store Management
       Then in Orders Toolbar, Refresh Orders
       Then In left Filter Panel, select Shipped
       Then In left Filter Panel, select Awaiting Shipment
-      Then in Orders Grid, expect Store is random
+      Then expect Orders Grid Store is random
 
       Then Manage Stores: Open Modal
 
@@ -72,7 +72,7 @@ Feature:  Yahoo Store Management
       Then in Orders Toolbar, Refresh Orders
       Then In left Filter Panel, select Shipped
       Then In left Filter Panel, select Awaiting Shipment
-      Then in Orders Grid, expect Store is random
+      Then expect Orders Grid Store is random
 
       Then Manage Stores: Open Modal
 

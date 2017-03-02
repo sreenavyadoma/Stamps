@@ -28,9 +28,9 @@ Feature: Ship-To Addresses
     Then on Order Details form, expect Service Cost inline price for "Parcel Select Ground Large Package" is greater than $0.01
     Then on Order Details form, expect Service Cost inline price for "Parcel Select Ground Oversized Package" is greater than $0.01
     Then on Order Details form, expect Service Cost inline price for "Media Mail Package" is greater than $0.01
-    Then in Orders Grid, expect Pounds is 0
-    Then in Orders Grid, expect Ounces is 0
-    Then in Orders Grid, expect Weight is 0 lb. 0 oz.
+    Then expect Orders Grid Pounds is 0
+    Then expect Orders Grid Ounces is 0
+    Then expect Orders Grid Weight is 0 lb. 0 oz.
     Then Sign out
 
 
