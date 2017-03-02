@@ -58,7 +58,7 @@ module Stamps
         def select(selection)
           logger.info "Made In #{selection}"
           drop_down.safe_click
-          selection_element = StampsElement.new(browser.lis(text: selection)[index])
+          selection_element = StampsElement.new(browser.lis(text: selection)[((param.web_app == :mail)?index+1:index)])
           10.times do
             drop_down.safe_click unless selection_element.present?
             selection_element.safe_click

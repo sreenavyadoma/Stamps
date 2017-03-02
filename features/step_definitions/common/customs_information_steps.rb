@@ -7,7 +7,7 @@ end
 Then /^(?:B|b)lur out on Customs form(?:| (\d+)(?:| times))$/ do |count|
   count = (count.nil?)?1:count.to_i
   count.times { stamps.orders.order_details.customs.edit_form.blur_out } if param.web_app == :orders
-  count.times { stamps.mail.print_form.mail_customs.edit_form.edit_form.blur_out } if param.web_app == :mail
+  count.times { stamps.mail.print_form.mail_customs.edit_form.blur_out } if param.web_app == :mail
 end
 
 Then /^(?:S|s)et Customs form Package Contents to (.*)$/ do |value|
