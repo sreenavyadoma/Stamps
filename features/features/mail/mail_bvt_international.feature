@@ -49,8 +49,8 @@ Feature: International Shipping BVT
 
     Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In is Japan, Tariff 1
 
-    Then Mail check Customs form I agree to the USPS Privacy Act Statement
-    Then Mail on Customs form, Save
+    Then check Customs form I agree to the USPS Privacy Act Statement
+    Then click Customs form Close button
     Then Mail: Print International Postage
     Then Sign out
 
