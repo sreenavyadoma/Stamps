@@ -6,7 +6,7 @@ Feature:  Customs Form Data Tooltip Error
   @tooltip_customs_form
   Scenario:  Customs Form Data Error
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
@@ -28,7 +28,7 @@ Feature:  Customs Form Data Tooltip Error
     Then expect Customs form Associated Item Description Tooltip Error is Description is a required field
     Then expect Customs form Qty Tooltip Error is Quantity must be greater than 0
     Then expect Customs form Unit Price Tooltip Error is Value must be greater than 0
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 50, Made In is United States, Tariff 100
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 50, Made In United States, Tariff 100
     Then Pause for 2 seconds
     Then click Customs form Close button
     Then Sign out

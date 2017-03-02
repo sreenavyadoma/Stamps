@@ -939,7 +939,7 @@ module Stamps
 
       def submit
         submit_button.safely_wait_until_present 6
-        expect(submit_button.present?).to be true
+        expect(submit_button.present?).to be(true)
         submit_button.safe_click
         submit_button.send_keys(:enter)
       end

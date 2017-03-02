@@ -153,7 +153,7 @@ module Stamps
         end
 
         def select(selection)
-          expect(enabled?).to be true
+          expect(enabled?).to be(true)
           expect([:shipped, :canceled, :awaiting_shipment, :on_hold]).to include(selection)
           selection_str = ""
           modal = nil
@@ -378,7 +378,7 @@ module Stamps
             privacy_act.wait_until_present 2
             return privacy_act if privacy_act.present?
           end
-          expect(privacy_act.present?).to be true
+          expect(privacy_act.present?).to be(true)
         end
       end
 
@@ -564,11 +564,11 @@ module Stamps
 
             if install_plugin_error.present?
               install_plugin_error.close
-              expect(window.present?).to be true
+              expect(window.present?).to be(true)
             end
           end
 
-          expect(window.present?).to be true
+          expect(window.present?).to be(true)
         end
 
         def print_expecting_error *args

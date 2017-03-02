@@ -7,22 +7,22 @@ Feature: Customs Form Qty > 99 is not saved correctly
   @customs_form_qty
   Scenario: Customs Form Qty
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
     Then on Order Details form, select service PMI Package
-    Then on Order Details form, set Ounces to 1
+    Then set Order Details form Ounces to 1
 
     Then on Order Details form, Add Item 1
-    Then on Order Details form, set Qty to 1
-    Then on Order Details form, set ID to random
-    Then on Order Details form, set Description to random
+    Then set Order Details form Qty to 1
+    Then set Order Details form ID to random
+    Then set Order Details form Description to random
 
     Then on Order Details form, Add Item 2
-    Then on Order Details form, set Qty to 2
-    Then on Order Details form, set ID to random
-    Then on Order Details form, set Description to random
+    Then set Order Details form Qty to 2
+    Then set Order Details form ID to random
+    Then set Order Details form Description to random
 
     Then click Order Details form Edit Form button
 

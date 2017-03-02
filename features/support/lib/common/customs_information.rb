@@ -9,7 +9,7 @@ module Stamps
 
         def more_info
           @more_info = StampsTextbox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
-          expect(@more_info.present?).to be true
+          expect(@more_info.present?).to be(true)
           @more_info
         end
       end
@@ -21,19 +21,19 @@ module Stamps
 
         def license
           @license = StampsTextbox.new(browser.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
-          expect(@license.present?).to be true
+          expect(@license.present?).to be(true)
           @license
         end
 
         def certificate
           @certificate = StampsTextbox.new(browser.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
-          expect(@license.present?).to be true
+          expect(@license.present?).to be(true)
           @certificate
         end
 
         def invoice
           @invoice = StampsTextbox.new(browser.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
-          expect(@invoice.present?).to be true
+          expect(@invoice.present?).to be(true)
           @invoice
         end
       end
@@ -41,15 +41,14 @@ module Stamps
       class PackageContentsDetails < Browser::StampsHtmlField
       end
 
-      class StampsDropDownIndexed < Browser::StampsHtmlField
-        attr_reader :text_box, :drop_down, :name, :index
+      class CustomsMadeIn < Browser::StampsHtmlField
+        attr_reader :text_box, :drop_down, :index
 
-        def initialize(param, text_box, drop_down, index, name)
+        def initialize(param, text_box, drop_down, index)
           super(param)
           @text_box = StampsTextbox.new(text_box)
           @drop_down = StampsElement.new(drop_down)
           @index = index
-          @name = name
         end
 
         def text
@@ -57,48 +56,43 @@ module Stamps
         end
 
         def select(selection)
-          select_lis(selection)
-        end
-
-        def select_lis(selection)
-          logger.info "#{name} #{selection}"
+          logger.info "Made In #{selection}"
           drop_down.safe_click
-          unless text.include?(selection)
-            selection_element = StampsElement.new(browser.lis(text: selection)[index+1])
-            10.times do
-              drop_down.safe_click unless selection_element.present?
-              selection_element.safe_click
-              break if text.include?(selection)
-            end
-            expect(text).to include(selection)
-            logger.info "#{text} selected."
+          selection_element = StampsElement.new(browser.lis(text: selection)[index])
+          10.times do
+            drop_down.safe_click unless selection_element.present?
+            selection_element.safe_click
+            break if text.include?(selection)
           end
+          expect(text).to include(selection)
+          logger.info "Made In #{selection} selected."
         end
       end
 
       class AssociatedCustomsLineItem < Browser::StampsHtmlField
-        attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :customs_item_origin, :customs_item_hs_tariff
+        attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :made_in, :customs_item_hs_tariff, :index
 
         def initialize(param, index)
           super(param)
-          @delete = StampsElement.new(browser.spans(css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[index-1])
-          @customs_item_description = StampsTextbox.new(browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[index-1])
+          @index = index - 1
+          @delete = StampsElement.new(browser.spans(css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index])
+          @customs_item_description = StampsTextbox.new(browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[@index])
 
-          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[index-1]
-          inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[index-1]
-          dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=down]")[index-1]
+          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[@index]
+          inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[@index]
+          dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=down]")[@index]
           @customs_item_qty = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
 
-          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>input[name=Value]")[index-1]
-          inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=up]")[index-1]
-          dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=down]")[index-1]
+          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>input[name=Value]")[@index]
+          inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=up]")[@index]
+          dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=down]")[@index]
           @customs_item_unit_price = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
 
-          text_boxes = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")
-          drop_downs = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")
-          @customs_item_origin = StampsComboBox.new(param, text_boxes, drop_downs, :li, index-1)
+          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")[@index]
+          drop_down = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[@index]
+          @made_in = CustomsMadeIn.new(param, text_box, drop_down, @index+1)
 
-          @customs_item_hs_tariff = StampsTextbox.new(browser.text_fields(name: "TariffNo")[index-1])
+          @customs_item_hs_tariff = StampsTextbox.new(browser.text_fields(name: "TariffNo")[@index])
         end
 
         def present?
@@ -263,6 +257,7 @@ module Stamps
           present?
         end
       end
+
     end
   end
 end

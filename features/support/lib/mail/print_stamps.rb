@@ -131,13 +131,13 @@ module Stamps
 
       def calculate_postage_amount
         specify_radio.check
-        expect(specify_radio.checked?).to be true
+        expect(specify_radio.checked?).to be(true)
         calculate_postage
       end
 
       def specify_postage_amount
         calculate_radio.check
-        expect(calculate_radio.checked?).to be true
+        expect(calculate_radio.checked?).to be(true)
         specify_postage
       end
     end

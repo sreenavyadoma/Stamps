@@ -43,7 +43,7 @@ module Stamps
                 logger.error e.message
                 logger.error e.backtrace.join "\n"
               end
-              expect(manage_shipping_adddress.present?).to be true
+              expect(manage_shipping_adddress.present?).to be(true)
             }
           else
             drop_down.safe_click unless selection.present?
@@ -106,7 +106,7 @@ module Stamps
             break unless text_field.nil?
           end
           text_field.should_not be nil
-          expect(text_field.present?).to be true
+          expect(text_field.present?).to be(true)
           StampsTextbox.new(text_field)
         end
 
@@ -125,7 +125,7 @@ module Stamps
             sleep(0.35)
           end
           dd.should_not be nil
-          expect(dd.present?).to be true
+          expect(dd.present?).to be(true)
           StampsElement.new(dd)
         end
 
@@ -1223,7 +1223,7 @@ module Stamps
         end
 
         def select(selection)
-          expect(drop_down.present?).to be true
+          expect(drop_down.present?).to be(true)
           20.times do
             begin
               drop_down.safe_click
@@ -1516,7 +1516,7 @@ module Stamps
             edit_form_btn.safe_click
             customs_form.wait_until_present(2)
           end
-          expect(customs_form.present?).to be true
+          expect(customs_form.present?).to be(true)
         end
 
         def restrictions
@@ -1524,7 +1524,7 @@ module Stamps
             return view_restrictions if view_restrictions.present?
             restrictions_btn.safe_click
           end
-          expect(view_restrictions.present?).to be true
+          expect(view_restrictions.present?).to be(true)
         end
       end
 

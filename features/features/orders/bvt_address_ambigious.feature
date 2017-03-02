@@ -6,8 +6,8 @@ Feature:  Ambigious Address
   @bvt_ambigious_address
   Scenario: Ambigious Address
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, set Ship-To to ambiguous address
+    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-To to ambiguous address
       | name            | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Joseph Balancio | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Exact Address Not Found module to appear

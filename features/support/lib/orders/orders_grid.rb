@@ -851,7 +851,7 @@ module Stamps
           scroll_into_view
           if size > 0
             checkbox_element(number).check
-            expect(checked?(number)).to be true
+            expect(checked?(number)).to be(true)
           else
             expect("Unable to check order number #{number}").to eql "Grid is empty"
           end
@@ -861,7 +861,7 @@ module Stamps
           scroll_into_view
           if size > 0
             checkbox_element(number).uncheck
-            expect(checked?(number)).to be false
+            expect(checked?(number)).to be(false)
           end
         end
 

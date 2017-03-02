@@ -8,14 +8,14 @@ Feature:  Update International Orders to ShipStation
   Scenario:  Update ShipStation
     Then in Orders Toolbar, click Add button
     Then on Order Details form, blur out
-    Then on Order Details form, set Ship-From to default
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
-    Then on Order Details form, set Weight to 2 lb 2 oz
+    Then set Order Details form Weight to 2 lb 2 oz
     Then on Order Details form, select service PMI Package
-    Then on Order Details form, set Insure-For to $100.25
-    Then on Order Details form, set Reference Number to Some random string
+    Then set Order Details form Insure-For to $100.25
+    Then set Order Details form Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
     Then on Order Details form, Add Item 2, Qty 2, ID ID 2, Description Description 2
     Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description Description 3
@@ -44,9 +44,9 @@ Feature:  Update International Orders to ShipStation
 
     Then set Customs form ITN Number to ITN123
 
-    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In is United States, Tariff 1
-    Then add Customs form Associated Item 2, Description Item 2, Qty 2, Price 2, Made In is Japan, Tariff 2
-    Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In is Canada, Tariff 3
+    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs form Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
+    Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
@@ -75,29 +75,29 @@ Feature:  Update International Orders to ShipStation
     Then expect Order Details form Ship-To Phone is correct
     Then expect Order Details form Ship-To Email is correct
 
-    Then on Order Details form, expect Reference Number and saved Reference Number are the same
+    Then expect Order Details form Reference Number and saved Reference Number are the same
 
-    Then on Order Details form, expect service is PMI Package
-    Then on Order Details form, expect Service Cost and saved Service Cost values are the same
+    Then expect Order Details form service is PMI Package
+    Then expect Order Details form Service Cost and saved Service Cost values are the same
 
-    Then on Order Details form, expect Pounds is 2
-    Then on Order Details form, expect Ounces is 2
+    Then expect Order Details form Pounds is 2
+    Then expect Order Details form Ounces is 2
 
-    Then on Order Details form, expect Item 1 Qty is 1
-    Then on Order Details form, expect Item 1 ID is ID 1
-    Then on Order Details form, expect Item 1 Description is Description 1
+    Then expect Order Details form Item 1 Qty is 1
+    Then expect Order Details form Item 1 ID is ID 1
+    Then expect Order Details form Item 1 Description is Description 1
 
-    Then on Order Details form, expect Item 2 Qty is 2
-    Then on Order Details form, expect Item 2 ID is ID 2
-    Then on Order Details form, expect Item 2 Description is Description 2
+    Then expect Order Details form Item 2 Qty is 2
+    Then expect Order Details form Item 2 ID is ID 2
+    Then expect Order Details form Item 2 Description is Description 2
 
 
-    Then on Order Details form, expect Item 3 Qty is 3
-    Then on Order Details form, expect Item 3 ID is ID 3
-    Then on Order Details form, expect Item 3 Description is Description 3
+    Then expect Order Details form Item 3 Qty is 3
+    Then expect Order Details form Item 3 ID is ID 3
+    Then expect Order Details form Item 3 Description is Description 3
 
-    Then on Order Details form, expect Insure-For and saved Insure-For values are the same
-    Then on Order Details form, expect Insure-For Cost and saved Insure-For Cost values are the same
+    Then expect Order Details form Insure-For and saved Insure-For values are the same
+    Then expect Order Details form Insure-For Cost and saved Insure-For Cost values are the same
     Then click Order Details form Edit Form button
     Then Pause for 1 second
     Then expect Customs form Package Contents is Commercial Sample
@@ -147,7 +147,7 @@ Feature:  Update International Orders to ShipStation
     Then expect Orders Grid service is Priority Mail International
     Then expect Orders Grid Pounds is correct
     Then expect Orders Grid Ounces is correct
-    Then on Order Details form, expect Insure-For and saved Insure-For values are the same
+    Then expect Order Details form Insure-For and saved Insure-For values are the same
     Then expect Orders Grid Order Status is Awaiting Shipment
 
     Then Pause for 2 second

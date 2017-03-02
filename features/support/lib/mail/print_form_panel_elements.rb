@@ -572,16 +572,16 @@ module Stamps
         def initialize(param)
           super(param)
           @button = StampsElement.new(browser.span(id: "sdc-mainpanel-editcustombtn-btnInnerEl"))
-          @customs_form = CustomsForm::MailCustomsInformation.new(param)
+          @customs_form = Stamps::Common::Customs::CustomsInformation.new(param)
         end
 
         def edit_form
           15.times do
-            sleep(0.35)
             return customs_form if customs_form.present?
             button.safe_click
+            sleep(0.35)
           end
-          expect(customs_form.present?).to be true
+          expect(customs_form.present?).to be(true)
         end
 
         def restrictions

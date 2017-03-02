@@ -7,23 +7,23 @@ Feature:  Update Order to ShipStation
   @bvt_shipstation_updates_domestic
   Scenario:  Update ShipStation
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, set Ship-To to Domestic Address
+    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-To to Domestic Address
       | name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
       | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
-    Then on Order Details form, set Phone to 888-888-8888
-    Then on Order Details form, set Email to rtest@stamps.com
-    Then on Order Details form, set Pounds to 1
-    Then on Order Details form, set Ounces to 1
+    Then set Order Details form Phone to 888-888-8888
+    Then set Order Details form Email to rtest@stamps.com
+    Then set Order Details form Pounds to 1
+    Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Package
-    Then on Order Details form, set Insure-For to $100.00
-    Then on Order Details form, set Tracking to Signature Required
-    Then on Order Details form, set Length to 1
-    Then on Order Details form, set Width to 1
-    Then on Order Details form, set Height to 1
+    Then set Order Details form Insure-For to $100.00
+    Then set Order Details form Tracking to Signature Required
+    Then set Order Details form Length to 1
+    Then set Order Details form Width to 1
+    Then set Order Details form Height to 1
 
-    Then on Order Details form, set Reference Number to Update Orders To ShipStation
+    Then set Order Details form Reference Number to Update Orders To ShipStation
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
@@ -42,36 +42,36 @@ Feature:  Update Order to ShipStation
     Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
-    Then on Order Details form, expect Ship-From and Ship-From saved values are the same
+    Then expect Order Details form Ship-From and Ship-From saved values are the same
 
-    Then on Order Details form, expect Ship-To Name is First Last
-    Then on Order Details form, expect Ship-To Company Name is Company Name
-    Then on Order Details form, expect Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
-    Then on Order Details form, expect Ship-To Cleansed City is Orlando
-    Then on Order Details form, expect Ship-To Cleansed State is FL
-    Then on Order Details form, expect Ship-To Cleansed Zip Plus 4 Code is 32801-1175
-    Then on Order Details form, expect Ship-To Cleansed Zip Code is 32801
-    Then on Order Details form, expect Ship-To Phone is 888-888-8888
-    Then on Order Details form, expect Ship-To Email is rtest@stamps.com
+    Then expect Order Details form Ship-To Name is First Last
+    Then expect Order Details form Ship-To Company Name is Company Name
+    Then expect Order Details form Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
+    Then expect Order Details form Ship-To Cleansed City is Orlando
+    Then expect Order Details form Ship-To Cleansed State is FL
+    Then expect Order Details form Ship-To Cleansed Zip Plus 4 Code is 32801-1175
+    Then expect Order Details form Ship-To Cleansed Zip Code is 32801
+    Then expect Order Details form Ship-To Phone is 888-888-8888
+    Then expect Order Details form Ship-To Email is rtest@stamps.com
 
-    Then on Order Details form, expect Pound is 1
-    Then on Order Details form, expect Ounce is 1
+    Then expect Order Details form Pound is 1
+    Then expect Order Details form Ounce is 1
 
-    Then on Order Details form, expect Length is 1
-    Then on Order Details form, expect Width is 1
-    Then on Order Details form, expect Height is 1
+    Then expect Order Details form Length is 1
+    Then expect Order Details form Width is 1
+    Then expect Order Details form Height is 1
 
-    #Then on Order Details form, expect Service Cost and saved Service Cost values are the same
-    Then on Order Details form, expect service is PM Package
-    Then on Order Details form, expect Service Cost and saved Service Cost values are the same
+    #Then expect Order Details form Service Cost and saved Service Cost values are the same
+    Then expect Order Details form service is PM Package
+    Then expect Order Details form Service Cost and saved Service Cost values are the same
 
-    Then on Order Details form, expect Insure-For is $100.00
-    Then on Order Details form, expect Insure-For Cost and saved Insure-For Cost values are the same
+    Then expect Order Details form Insure-For is $100.00
+    Then expect Order Details form Insure-For Cost and saved Insure-For Cost values are the same
 
-    Then on Order Details form, expect Tracking is Signature Required
-    Then on Order Details form, expect Tracking Cost and saved Tracking Cost values are the same
+    Then expect Order Details form Tracking is Signature Required
+    Then expect Order Details form Tracking Cost and saved Tracking Cost values are the same
 
-    Then on Order Details form, expect Reference Number is Update Orders To ShipStation
+    Then expect Order Details form Reference Number is Update Orders To ShipStation
 
     #Verify Orders Grid data was saved in ShipStation
     Then expect Orders Grid Store is Manual Orders

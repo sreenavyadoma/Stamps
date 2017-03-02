@@ -6,13 +6,13 @@ Feature: Internal Transaction # Not Required
   @rules_international
   Scenario: Internal Transaction # Not Required
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Philippines    | random  | random  |
-    Then on Order Details form, set Ounces to 5
+    Then set Order Details form Ounces to 5
     Then on Order Details form, select service PMI Flat Rate Envelope
-    Then on Order Details form, set Ounces to 5
+    Then set Order Details form Ounces to 5
     Then click Order Details form Edit Form button
     Then Expect Customs Form Internal Transaction Number is Not required
     Then set Customs form Package Contents to Commercial Sample

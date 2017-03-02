@@ -339,7 +339,7 @@ module Stamps
           break if selected?
           safe_click
         }
-        expect(selected?).to be true
+        expect(selected?).to be(true)
       end
 
       def selected?
@@ -479,6 +479,7 @@ module Stamps
 
       def select(str)
         logger.info "Select #{str}"
+        drop_down.safe_click
         10.times do
           begin
             break if (text_box.text).include?(str)

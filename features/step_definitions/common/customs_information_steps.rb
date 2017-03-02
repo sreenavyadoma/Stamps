@@ -10,7 +10,7 @@ Then /^(?:B|b)lur out on Customs form(?:| (\d+)(?:| times))$/ do |count|
   count.times { stamps.mail.print_form.mail_customs.edit_form.edit_form.blur_out } if param.web_app == :mail
 end
 
-Then /^(?:S|s)et Customs form Package Contents to (.+)$/ do |value|
+Then /^(?:S|s)et Customs form Package Contents to (.*)$/ do |value|
   test_parameter[:customs_package_contents] = value
   stamps.orders.order_details.customs.edit_form.package_contents.select(test_parameter[:customs_package_contents]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.package_contents.select(test_parameter[:customs_package_contents]) if param.web_app == :mail
@@ -65,7 +65,7 @@ Then /^(?:E|e)xpect Customs form More Info is (?:correct|(.*))$/ do |expectation
 end
 
 Then /^(?:S|s)et Customs form ITN Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  test_parameter[:customs_itn_no] = (value.downcase.include? 'random')?ParameterHelper.random_alpha_numeric(50): value
+  test_parameter[:customs_itn_no] = (value.nil?)?ParameterHelper.random_alpha_numeric(50):value
   stamps.orders.order_details.customs.edit_form.itn_number.set(test_parameter[:customs_itn_no]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.itn_number.set(test_parameter[:customs_itn_no]) if param.web_app == :mail
   step "Save Customs Information form Total amount"
@@ -280,12 +280,12 @@ Then /^(?:E|e)xpect Customs form Total Value is (?:correct|(.*))$/ do |expectati
   expect(stamps.mail.print_form.mail_customs.edit_form.total_value).to eql(expectation) if param.web_app == :mail
 end
 
-Then /^(?:A|a)dd Customs form Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Made In is (.+), Tariff (.*)$/ do |item_number, description, qty, price, origin_country, tariff|
+Then /^(?:A|a)dd Customs form Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
   step "add Customs form Associated Item #{item_number}"
   step "set Customs form Associated Item #{item_number} Description to #{description}"
   step "set Customs form Associated Item #{item_number} Qty to #{qty}"
   step "set Customs form Associated Item #{item_number} Unit Price to #{price}"
-  step "set Customs form Associated Item #{item_number} Made In is Country to #{origin_country}"
+  step "set Customs form Associated Item #{item_number} Made In is Country to #{made_in}"
   step "set Customs form Associated Item #{item_number} Tarriff to #{tariff}"
 end
 
@@ -321,8 +321,8 @@ end
 Then /^(?:S|s)et Customs form Associated Item (\d+) Made In is Country to (.*)$/ do |item_number, value|
   test_parameter[:customs_associated_items][item_number] = Hash.new unless test_parameter[:customs_associated_items].has_key?(item_number)
   test_parameter[:customs_associated_items][item_number][:made_in] = value
-  stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_origin.select(test_parameter[:customs_associated_items][item_number][:made_in]) if param.web_app == :orders
-  stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_origin.select(test_parameter[:customs_associated_items][item_number][:made_in]) if param.web_app == :mail
+  stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).made_in.select(test_parameter[:customs_associated_items][item_number][:made_in]) if param.web_app == :orders
+  stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).made_in.select(test_parameter[:customs_associated_items][item_number][:made_in]) if param.web_app == :mail
 end
 
 Then /^(?:S|s)et Customs form Associated Item (\d+) Tarriff to (.*)$/ do |item_number, value|
@@ -357,8 +357,8 @@ end
 Then /^(?:E|e)xpect Customs form Associated Item (\d+) Made In is (?:correct|(.*))$/ do |item_number, expectation|
   expectation = (expectation.nil?)?test_parameter[:customs_associated_items][item_number][:made_in] :expectation
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_origin.text_box.text).to eql(expectation) if param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_origin.text_box.text).to eql(expectation) if param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).made_in.text_box.text).to eql(expectation) if param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).made_in.text_box.text).to eql(expectation) if param.web_app == :mail
 end
 
 Then /^(?:E|e)xpect Customs form Associated Item (\d+) Tariff is (?:correct|(.*))$/ do |item_number, expectation|

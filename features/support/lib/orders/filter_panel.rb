@@ -140,7 +140,7 @@ module Stamps
             end
             return search_results if search_results.present?
           end
-          expect(search_results.present?).to be true
+          expect(search_results.present?).to be(true)
         end
       end
 
@@ -166,7 +166,7 @@ module Stamps
             sleep(0.25)
             break if selected?
           end
-          expect(selected?).to be true
+          expect(selected?).to be(true)
         end
 
         def selected?

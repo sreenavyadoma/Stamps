@@ -6,15 +6,15 @@ Feature:  BVT Order Creation
   @bvt_new_order
   Scenario:  Add a new order
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, set Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-To to address in Zone 5 through 8
     Then on Order Details form, select service PM Package
-    Then on Order Details form, set Pounds to 1
-    Then on Order Details form, set Ounces to 1
-    Then on Order Details form, set Insure-For to $1.00
-    Then on Order Details form, set Length to 1
-    Then on Order Details form, set Width to 1
-    Then on Order Details form, set Height to 1
+    Then set Order Details form Pounds to 1
+    Then set Order Details form Ounces to 1
+    Then set Order Details form Insure-For to $1.00
+    Then set Order Details form Length to 1
+    Then set Order Details form Width to 1
+    Then set Order Details form Height to 1
     # Orders Grid Operations
     Then in Orders Grid, uncheck row 1
     Then expect Orders Grid Pounds is 1

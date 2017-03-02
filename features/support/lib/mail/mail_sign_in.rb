@@ -183,9 +183,11 @@ module Stamps
           end
           break if signed_in_user.present?
         end
+        expect(signed_in_user.text).to eql(usr)
         logger.message "#"*15
         logger.message "Signed-in User: #{signed_in_user.text}"
         logger.message "#"*15
+        signed_in_user.text
       end
 
       # todo-rob revisit code below

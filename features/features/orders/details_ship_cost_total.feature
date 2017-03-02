@@ -9,25 +9,25 @@ Feature: Details Ship Cost Total
   @details_ship_cost_total
   Scenario: Ship Cost Total
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, expect Total label is Total Ship Cost:
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, expect Service Cost is $0.00
-    Then on Order Details form, expect Insure-For Cost is $0.00
-    Then on Order Details form, expect Tracking Cost is $0.00
-    Then on Order Details form, expect Total Ship Cost is $0.00
+    Then expect Order Details form Total label is Total Ship Cost:
+    Then set Order Details form Ship-From to default
+    Then expect Order Details form Service Cost is $0.00
+    Then expect Order Details form Insure-For Cost is $0.00
+    Then expect Order Details form Tracking Cost is $0.00
+    Then expect Order Details form Total Ship Cost is $0.00
 
-    Then on Order Details form, set Ship-To to address in Zone 8
+    Then set Order Details form Ship-To to address in Zone 8
     Then on Order Details form, select service PM Package
-    Then on Order Details form, set Ounces to 1
-    Then on Order Details form, set Pounds to 1
-    Then on Order Details form, set Tracking to Signature Required
-    Then on Order Details form, set Length to 1
-    Then on Order Details form, set Width to 1
-    Then on Order Details form, set Height to 1
+    Then set Order Details form Ounces to 1
+    Then set Order Details form Pounds to 1
+    Then set Order Details form Tracking to Signature Required
+    Then set Order Details form Length to 1
+    Then set Order Details form Width to 1
+    Then set Order Details form Height to 1
 
-    Then on Order Details form, expect Service Cost is greater than $1.00
-    Then on Order Details form, expect Tracking Cost is greater than $1.00
-    Then on Order Details form, expect Ship Cost Total is correct
+    Then expect Order Details form Service Cost is greater than $1.00
+    Then expect Order Details form Tracking Cost is greater than $1.00
+    Then expect Order Details form Ship Cost Total is correct
 
     Then Sign out
 

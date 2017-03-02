@@ -9,12 +9,12 @@ Feature:  Basic Search
 
     # Search for New Order ID
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, set Ship-To to address in Zone 1
-    Then on Order Details form, set Email to random
-    Then on Order Details form, set Phone to random
+    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-To to address in Zone 1
+    Then set Order Details form Email to random
+    Then set Order Details form Phone to random
     Then on Order Details form, select service PM Package
-    Then on Order Details form, set Weight to 1 lb 1 oz
+    Then set Order Details form Weight to 1 lb 1 oz
 
     Then in Orders Grid, uncheck saved Order ID
 

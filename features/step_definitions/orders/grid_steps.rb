@@ -5,7 +5,7 @@ end
 
 Then /^(?:I|i)n Orders Grid, check Order ID (.*)$/ do |order_id|
   stamps.orders.orders_grid.column.checkbox.check_order_id(order_id)
-  expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be true
+  expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(true)
 end
 
 Then /^(?:I|i)n Orders Grid, uncheck saved Order ID$/ do
@@ -14,7 +14,7 @@ end
 
 Then /^(?:I|i)n Orders Grid, uncheck Order ID (.*)$/ do |order_id|
   stamps.orders.orders_grid.column.checkbox.uncheck_order_id(order_id)
-  expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be false
+  expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(false)
 end
 
 Then /^(?:E|e)xpect Orders Grid Store is (.*)$/ do |expectation|
@@ -51,12 +51,12 @@ end
 
 When /^(?:I|i)n Orders Grid, check row (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.check row
-  expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be true
+  expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(true)
 end
 
 When /^(?:I|i)n Orders Grid, uncheck row (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
-  expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be false
+  expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(false)
 end
 
 Then /^(?:E|e)xpect Orders Grid Date Printed for this order is today$/ do
@@ -157,7 +157,7 @@ Then /^(?:E|e)xpect Orders Grid Phone is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^(?:E|e)xpect Orders Grid Column (\w+) appears to left of (.+)$/ do |left_column, right_column|
-  expect(stamps.orders.orders_grid.column.is_next_to?(left_column, right_column)).to be true
+  expect(stamps.orders.orders_grid.column.is_next_to?(left_column, right_column)).to be(true)
 end
 
 Then /^(?:E|e)xpect Orders Grid Pounds is (?:correct|(.*))$/ do |expectation|

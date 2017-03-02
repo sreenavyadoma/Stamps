@@ -13,7 +13,7 @@ Then /^Import Orders: Select CSV File$/ do
   #logger.step "Import Orders: Select CSV File"
   expect(@import_successful).to be_truthy
   @open_file = @import_orders.orders.select_csv_file
-  expect(@open_file.present?).to be true
+  expect(@open_file.present?).to be(true)
 end
 
 Then /^Import Orders: Expect Import is successful$/ do

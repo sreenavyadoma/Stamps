@@ -6,11 +6,11 @@ Feature: North Korea Internal Transaction Number Required
   @rules_international
   Scenario: North Korea Internal Transaction Number Required
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |
-    Then on Order Details form, set Ounces to 5
+    Then set Order Details form Ounces to 5
     Then on Order Details form, select service PMI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Commercial Sample
@@ -27,7 +27,7 @@ Feature: North Korea Internal Transaction Number Required
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form Package Contents to Other
     Then Expect Customs Form Internal Transaction Number is Required
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In is United States, Tariff 10
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
