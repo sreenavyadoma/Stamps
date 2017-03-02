@@ -38,7 +38,7 @@ Feature: Auto-Calculate Customs Form Weight
     Then set Customs form Associated Item 2 Unit Price to 1
     Then set Customs form Associated Item 2 Made In is Country to United States
     Then set Customs form Associated Item 2 Tarriff to 10
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
 
     Then click Customs form Close button
 

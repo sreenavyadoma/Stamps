@@ -17,13 +17,13 @@ Feature:  Customs Form Data Tooltip Error
     Then Cancel Customs Form
     Then Pause for 1 second
     Then click Order Details form Edit Form button
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
-    Then on Customs form, uncheck I agree to the USPS Privacy Act Statement
+    Then uncheck Customs form I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
-    Then on Customs form, uncheck I agree to the USPS Privacy Act Statement
+    Then uncheck Customs form I agree to the USPS Privacy Act Statement
 
     Then expect Customs form Associated Item Description Tooltip Error is Description is a required field
     Then expect Customs form Qty Tooltip Error is Quantity must be greater than 0

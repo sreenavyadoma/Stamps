@@ -31,6 +31,6 @@ Feature: Internal Transaction # Not Required
     Then Expect Customs Form Internal Transaction Number is Not required
     Then Expect Customs Form Internal Transaction Number is Not required
     Then set Customs form ITN Number to random
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then Sign out

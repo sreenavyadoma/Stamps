@@ -21,7 +21,7 @@ Feature:  BVT International Shipping
     Then set Customs form Non-Delivery Options to Return to sender
     Then set Customs form Internal Transaction Number to Not required
     Then set Customs form More Info to random
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
 
     Then in Orders Toolbar, click Print button

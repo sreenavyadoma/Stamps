@@ -78,7 +78,7 @@ Feature: International Shipping fields and Customs Information fields validation
     Then set Customs form Internal Transaction Number to Required
     Then set Customs form ITN Number to random
 
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, select service FCMI Large Envelope
     Then Sign out

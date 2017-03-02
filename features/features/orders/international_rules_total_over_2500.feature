@@ -22,6 +22,6 @@ Feature: Internal Transaction Number Required for total over $2500
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 2501, Made In is United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form ITN Number to random
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then Sign out

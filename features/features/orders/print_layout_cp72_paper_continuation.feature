@@ -45,7 +45,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then add Customs form Associated Item 29, Description random, Qty 1, Price 1, Made In is United States, Tariff 29
     Then add Customs form Associated Item 30, Description random, Qty 1, Price 1, Made In is United States, Tariff 30
     Then Pause for 2 seconds
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
     Then click Customs form Close button
     Then Pause for 2 seconds

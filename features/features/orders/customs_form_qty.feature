@@ -40,7 +40,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then set Customs form Associated Item 2 Made In is Country to United States
     Then set Customs form Associated Item 1 Tarriff to 10
 
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
 
     Then click Customs form Close button
 

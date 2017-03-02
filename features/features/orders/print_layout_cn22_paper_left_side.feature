@@ -15,7 +15,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In is United States, Tariff 10
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then in Orders Toolbar, click Add button
 
@@ -28,7 +28,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In is United States, Tariff 10
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
 
     Then in Orders Grid, check row 1

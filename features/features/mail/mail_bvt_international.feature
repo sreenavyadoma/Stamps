@@ -36,14 +36,20 @@ Feature: International Shipping BVT
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |
     Then select Print form service FCMI Package
     Then set Print form Ounces to 3
+
     Then click Label form Edit Customs Form button
-    Then Mail set Customs form Non-Delivery Options to "Treat as abandoned"
-    Then Mail set Customs form Internal Transaction Number Requirement to "Required"
-    Then Mail set Customs form ITN Number to 12345
-    Then Mail set Customs form More Info to "WP BVT Intl Shipping"
-    Then Mail on Customs form, Delete All Items
-    Then Mail add Customs form Associated Item - Description random, Qty 2, Value 90, Lbs 0, Oz 1, Made In is Russia, Tariff 25
-    Then Mail on Customs form, check I agree to the USPS Privacy Act Statement
+
+    Then set Customs form Package Contents to Commercial Sample
+    Then set Customs form License Number to a random string
+    Then set Customs form Certificate Number to some random string
+    Then set Customs form Invoice Number to a random string
+
+    Then set Customs form Internal Transaction Number to Required
+    Then set Customs form ITN Number to a random string
+
+    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In is Japan, Tariff 1
+
+    Then Mail check Customs form I agree to the USPS Privacy Act Statement
     Then Mail on Customs form, Save
     Then Mail: Print International Postage
     Then Sign out

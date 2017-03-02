@@ -23,6 +23,6 @@ Feature:  Customs Form Item Grid - Edit/Delete
     Then expect Customs form Associated Item Grid count is 2
     Then delete Customs form Associated Item 1
     Then expect Customs form Associated Item Grid count is 1
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then Sign out

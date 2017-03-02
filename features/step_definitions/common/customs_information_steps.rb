@@ -133,7 +133,7 @@ Then /^(?:D|d)elete Customs form Associated Item (\d+)$/ do |item_number|
   end
 end
 
-Then /^(?:O|o)n Customs form, check I agree to the USPS Privacy Act Statement$/ do
+Then /^(?:C|c)heck Customs form I agree to the USPS Privacy Act Statement$/ do
   stamps.orders.order_details.customs.edit_form.i_agree.check if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.i_agree.check if param.web_app == :mail
 end
@@ -144,7 +144,7 @@ Then /^(?:E|e)xpect Customs form I agree to the USPS Privacy Act Statement is ch
   expect(stamps.mail.print_form.mail_customs.edit_form.i_agree.checked?).to be(true) if param.web_app == :mail
 end
 
-Then /^(?:O|o)n Customs form, uncheck I agree to the USPS Privacy Act Statement$/ do
+Then /^(?:U|u)ncheck Customs form I agree to the USPS Privacy Act Statement$/ do
   stamps.orders.order_details.customs.edit_form.i_agree.uncheck if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.i_agree.uncheck if param.web_app == :mail
 end

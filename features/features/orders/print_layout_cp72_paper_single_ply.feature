@@ -15,7 +15,7 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Document
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In is United States, Tariff 10
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"

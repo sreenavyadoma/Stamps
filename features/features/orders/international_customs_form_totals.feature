@@ -19,6 +19,6 @@ Feature:  Customs Form Totals
     Then expect Customs form Total Value is 100.50
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 100.25, Made In is Afghanistan, Tariff 100
     Then expect Customs form Total Value is 200.75
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then Sign out

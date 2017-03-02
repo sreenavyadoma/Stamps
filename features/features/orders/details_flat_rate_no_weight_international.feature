@@ -27,7 +27,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -41,7 +41,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMI Padded Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -55,7 +55,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMI Legal Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -69,7 +69,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMI Small Flat Rate Box
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -83,7 +83,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMI Medium Flat Rate Box
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -97,7 +97,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMI Large Flat Rate Box
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -111,7 +111,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMEI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -125,7 +125,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMEI Padded Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0
@@ -139,7 +139,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then on Order Details form, expect service is PMEI Legal Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In is United States, Tariff 0
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then on Order Details form, expect Pounds is 0
     Then on Order Details form, expect Ounces is 0

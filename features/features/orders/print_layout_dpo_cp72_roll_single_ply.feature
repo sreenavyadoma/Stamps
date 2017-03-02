@@ -16,7 +16,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Other
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In is United States, Tariff 10
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then click Customs form Close button
     Then in Orders Toolbar, click Print button
     Then in Print modal, set Print-On to "Roll - 4 ⅛" x 6 ¼" Shipping Label"

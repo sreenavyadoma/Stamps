@@ -50,7 +50,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Pause for 4 seconds
     Then set Customs form ITN Number to random
     Then Pause for 4 seconds
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
+    Then check Customs form I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
     Then click Customs form Close button
 
