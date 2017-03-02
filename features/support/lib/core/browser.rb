@@ -480,6 +480,7 @@ module Stamps
       def select(str)
         logger.info "Select #{str}"
         drop_down.safe_click
+        drop_down.safe_click
         10.times do
           begin
             break if (text_box.text).include?(str)
