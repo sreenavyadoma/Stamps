@@ -555,6 +555,7 @@ module Stamps
           super(param)
           @country = MailToCountry.new(param)
           @mail_to_link = PrintFormMailToLink.new(param)
+          @address = MailToDom.new(param)
         end
 
         def country(str)
