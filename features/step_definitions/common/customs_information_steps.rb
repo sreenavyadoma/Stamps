@@ -19,7 +19,7 @@ end
 
 Then /^(?:E|e)xpect Customs form Package Contents is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_parameter[:customs_package_contents] : expectation
-  sleep(0.5)
+  sleep(0.15)
   expect(stamps.orders.order_details.customs.edit_form.package_contents.combo_box.text_box.text).to eql(expectation) if param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.combo_box.text_box.text).to eql(expectation) if param.web_app == :mail
 end
