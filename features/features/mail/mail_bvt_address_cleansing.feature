@@ -12,5 +12,5 @@ Feature: Address Cleansing BVT
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service PM Package
-    Then on Shipping Label Print form, Expect Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102
+    Then expect Label form Domestic Address field displays Address Cleansing, BVT, 1350 Market Street, San Francisco, CA 94102
     Then Sign out
