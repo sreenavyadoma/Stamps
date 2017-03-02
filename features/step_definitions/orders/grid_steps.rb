@@ -60,11 +60,8 @@ When /^(?:I|i)n Orders Grid, uncheck row (\d+)$/ do |row|
 end
 
 Then /^(?:E|e)xpect Orders Grid Date Printed for this order is today$/ do
-  grid = stamps.orders.filter_panel.shipped.select
-  grid.order_id.sort_descending
-  grid_print_date = grid.date_printed.data(test_parameter[:order_id]) # Dec 3
-  expectation_print_date = Date.today.strftime "%b %-d"
-  expect(grid_print_date).to eql expectation_print_date
+  stamps.orders.orders_grid.column.order_date.sort_descending
+  expect(stamps.orders.orders_grid.column.date_printed.data(test_parameter[:order_id])).to eql(Date.today.strftime "%b %-d")
 end
 
 Then /^(?:E|e)xpect Orders Grid Ship Date for this order is today$/ do
@@ -72,9 +69,12 @@ Then /^(?:E|e)xpect Orders Grid Ship Date for this order is today$/ do
 end
 
 Then /^(?:E|e)xpect Orders Grid Ship Date for this order is today plus (\d+)$/ do |day|
-  expectation = ParameterHelper.mmddyy_to_mondd @ship_date
-  10.times { stamps.orders.filter_panel.shipped.select.order_id.sort_descending ; break if stamps.orders.filter_panel.shipped.select.ship_date.data(test_parameter[:order_id]) == expectation }
-  expect(stamps.orders.filter_panel.shipped.select.ship_date.data(test_parameter[:order_id])).to eql expectation
+  expectation = ParameterHelper.now_plus_mon_dd_excl_sunday day
+  10.times {
+    stamps.orders.orders_grid.column.order_date.sort_descending
+    break if stamps.orders.orders_grid.column.ship_date.data(test_parameter[:order_id]) == expectation
+  }
+  expect(stamps.orders.orders_grid.column.ship_date.data(test_parameter[:order_id])).to eql expectation
 end
 
 Then /^Expect Ship-To address is;$/ do |table|

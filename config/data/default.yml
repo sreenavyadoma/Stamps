@@ -599,7 +599,7 @@ orders_credentials:
       usr: n5r1wleq
       pw: pass111
     import_orders:
-      usr: scscscscscscscscsc
+      usr: stgepefuut
       pw: pass111
     pagination:
       usr: scscscscscscscscsc
@@ -638,7 +638,7 @@ orders_credentials:
       usr: o6kzymy8rn94ax
       pw: pass111
     purchasing:
-      usr: v8r4q2nb3dbv
+      usr: stghc5jm4b
       pw: pass111
     change_settings:
       usr: scscscscscscscscsc
@@ -857,7 +857,7 @@ orders_credentials:
       usr: y619bx4cuj5
       pw: pass111
     print_two_up_expanded_cp72_paper_left:
-      usr: kehrq9e3q
+      usr: stgpsmuft2y
       pw: pass111
     print_two_up_expanded_cp72_paper_left_print3:
       usr: pj174e11wmg
@@ -883,6 +883,7 @@ orders_credentials:
     print_two_up_multiple_domestic_labels:
       usr: c1k4p8bga4cmg
       pw: pass111
+
   cc:
     rates_parcel_select_ground:
       usr: ccdwth36s
@@ -966,7 +967,7 @@ orders_credentials:
       usr: p74c4js
       pw: pass111
     import_orders:
-      usr: stgstgstg
+      usr: cctibua3epgnq
       pw: pass111
     pagination:
       usr: stgstgstg
@@ -1318,7 +1319,7 @@ orders_credentials:
       usr: n2eousu2klci
       pw: pass111
     import_orders:
-      usr: scscscscscscscscsc
+      usr: scpmnx1a727e87
       pw: pass111
     pagination:
       usr: scscscscscscscscsc
