@@ -582,38 +582,6 @@ Then /^Reset Fields:  Uncheck Ship to Address$/ do
   @reset_fields.ship_to_address.uncheck
 end
 
-# setting
-Then /^(?:S|s)et Customs form License Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  test_parameter[:customs_license_no] = ((value.nil?)?ParameterHelper.random_alpha_numeric(6): value)
-  case param.web_app
-    when :orders
-      license = stamps.orders.order_details.customs.edit_form.contents.license
-    when :mail
-      license = stamps.mail.print_form.mail_customs.edit_form.contents.license
-    else
-      # do nothing
-  end
-  expect(license.present?).to be true
-  license.set test_parameter[:customs_license_no]
-  step "On Customs form, Save Total"
-end
-
-#expectation
-Then /^(?:E|e)xpect Customs form License Number is (?:correct|(.*))$/ do |expectation|
-  expectation = (expectation.nil?)?test_parameter[:customs_license_no] : expectation
-  case param.web_app
-    when :orders
-      license = stamps.orders.order_details.customs.edit_form.contents.license
-    when :mail
-      license = stamps.mail.print_form.mail_customs.edit_form.contents.license
-    else
-      # do nothing
-  end
-  expect(license.present?).to be true
-  expect(license.text).to eql expectation
-end
-
-
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
   #logger.step "Reset Fields:  Expect Ship to Address Checked"
   expect(@reset_fields.ship_to_address.checked?).to be true

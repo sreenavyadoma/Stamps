@@ -295,7 +295,6 @@ Then /^(?:O|o)n Order Details form, set Ship-To to Domestic Address$/ do |table|
   test_parameter[:state] = (address_table['state'].downcase.include?('random')) ? ParameterHelper.random_string : address_table['state']
   test_parameter[:zip] = (address_table['zip'].downcase.include?('random')) ? ParameterHelper.random_string : address_table['zip']
   test_parameter[:country] = (address_table['country'].size==0)?"United States":address_table['country']
-
   test_parameter[:ship_to] = "#{test_parameter[:name]},#{test_parameter[:company]},#{test_parameter[:street_address]},#{test_parameter[:street_address_2]} ,#{test_parameter[:city]} #{test_parameter[:state]} #{test_parameter[:zip]}"
 
   step "On Order Details form, set Ship-To Country to #{test_parameter[:country]}"
