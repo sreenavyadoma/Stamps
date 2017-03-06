@@ -5,14 +5,12 @@ end
 
 Then /^Import Orders: Import$/ do
   #logger.step "Import Orders: Import"
-  expect(@import_successful).to be_truthy
-  @import_successful = @import_orders.orders.import
+  @import_successful = @import_orders.import
 end
 
 Then /^Import Orders: Select CSV File$/ do
   #logger.step "Import Orders: Select CSV File"
-  expect(@import_successful).to be_truthy
-  @open_file = @import_orders.orders.select_csv_file
+  @open_file = @import_orders.select_csv_file
   expect(@open_file.present?).to be true
 end
 
@@ -29,8 +27,7 @@ end
 
 Then /^Import Orders: Cancel$/ do
   #logger.step "Import Orders: Cancel"
-  expect(@import_successful).to be_truthy
-  @import_orders.orders.cancel
+  @import_orders.cancel
 end
 
 Then /^Import Orders: Download sample file$/ do
@@ -41,7 +38,7 @@ end
 
 Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename| #import_orders_test.csv
   #logger.step "Import Orders: File Upload: Set Filename"
-  step "In Orders Toolbar, Import" if @import_orders.orders.nil?
+  step "In Orders Toolbar, Import" if @import_orders.nil?
   step "Import Orders: Select CSV File" if (@open_file.nil? || !(@open_file.present?))
   @csv_import_filename = "\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
   #logger.step "Import File:  #{@csv_import_filename}"
@@ -54,7 +51,7 @@ end
 
 Then /^Import Orders: Expect Imported Filename is (.*)$/ do |expectation|
   #logger.step "Import Import Filename is #{expectation}"
-  actual_value = @import_orders.orders.filename_label
+  actual_value = @import_orders.filename_label
   expect(actual_value).to eql expectation
 end
 

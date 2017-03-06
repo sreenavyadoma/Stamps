@@ -76,7 +76,7 @@ module Stamps
         button = StampsElement.new browser.span(text: "Select CSV File")
         open_file = Windows::OpenFile.new
         10.times do
-          button.safe_click
+          button.element.parent.click
           button.send_keys(:enter)
           sleep(2)
           return open_file if open_file.present?

@@ -3,10 +3,10 @@ module Stamps
     class OpenFile
       def present?
         begin
-          if TestHelper.browser.firefox?
+          if TestHelper.browser_selection.firefox?
             exist = RAutomation::Window.new(:title => /File Upload/i).exists?
             return exist
-          elsif TestHelper.browser.chrome?
+          elsif TestHelper.browser_selection.chrome?
             exist = RAutomation::Window.new(:title => /&Open/i).exists?
             return exist
           else
@@ -25,7 +25,7 @@ module Stamps
       end
 
       def file_name filename
-        if Browser.firefox?
+        if TestHelper.browser_selection.firefox?
           print_window = RAutomation::Window.new(:title => /File Upload/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
@@ -36,7 +36,7 @@ module Stamps
           print_window.button(:value => "&Open").click
 
           #todo fix TestHelper.browser
-        elsif TestHelper.browser.chrome?
+        elsif TestHelper.browser_selection.chrome?
           print_window = RAutomation::Window.new(:title => /&Open/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
