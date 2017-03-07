@@ -60,7 +60,7 @@ Then /^Pagination control to go to first page is (\w+)$/ do |first_pagination_en
   enabled = stamps.orders.orders_toolbar.first_page.present?
   if first_pagination_enabled.downcase == "enabled"
     #logger.step "Pagination control to go to first page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
-    expect(enabled).to be true
+    expect(enabled).to be(true)
   end
 end
 
@@ -68,7 +68,7 @@ Then /^Pagination control to go to previous page is (\w+)$/ do |previous_paginat
   enabled = stamps.orders.orders_toolbar.previous_page.present?
   if previous_pagination_enabled.downcase == "enabled"
     #logger.step "Pagination control to go to previous page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
-    expect(enabled).to be true
+    expect(enabled).to be(true)
   end
 end
 
@@ -76,7 +76,7 @@ Then /^Pagination control to go to page number is (\w+$)$/ do |page_number_enabl
   enabled = stamps.orders.orders_toolbar.page_number.present?
   if page_number_enabled.downcase == "enabled"
     #logger.step "Pagination control to go to page number is enabled.  Test #{(enabled)?'Passed':'Failed'}"
-    expect(enabled).to be true
+    expect(enabled).to be(true)
   end
 end
 
@@ -85,7 +85,7 @@ Then /^Pagination control to go to next page is (\w+)$/ do |next_pagination_enab
   enabled = stamps.orders.orders_toolbar.next_page.present?
   if next_pagination_enabled.downcase == "enabled"
     #logger.step "Pagination control to go to next page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
-    expect(enabled).to be true
+    expect(enabled).to be(true)
   end
 end
 
@@ -94,7 +94,7 @@ Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enab
   enabled = stamps.orders.orders_toolbar.last_page.present?
   if last_pagination_enabled.downcase == "enabled"
     #logger.step "Pagination control to go to last page is enabled.  Test #{(enabled)?'Passed':'Failed'}"
-    expect(enabled).to be true
+    expect(enabled).to be(true)
   end
 end
 
@@ -192,7 +192,7 @@ Then /^Paging: Expect Total Number of Pages is (\d+)$/ do |total_number_of_pages
   #logger.step "DD value is #{browser_total_number_of_pages}"
   test_result = browser_total_number_of_pages.include? total_number_of_pages
   #logger.step "#{(test_result)?'Test Passed.':'Test Failed'}"
-  expect(test_result).to be true
+  expect(test_result).to be(true)
   #expect(total_number_of_pages)).to be eql expect(browser_total_number_of_pages)
 end
 

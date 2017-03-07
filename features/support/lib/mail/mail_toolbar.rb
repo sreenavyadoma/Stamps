@@ -1,7 +1,7 @@
 module Stamps
   module Mail
 
-    class MailToolbarPrintButton < Browser::StampsHtmlField
+    class MailToolbarPrintButton < Browser::StampsBrowserElement
       def present?
         print_button.present?
       end
@@ -11,13 +11,13 @@ module Stamps
       end
 
       def type
-        param.print_form
+        param.print_media
       end
 
       def instance
-        expect([:envelopes, :stamps, :labels, :rolls]).to include(param.print_form)
+        expect([:envelopes, :stamps, :labels, :rolls]).to include(param.print_media)
         if @print_button.nil? || !@print_button.present?
-          case param.print_form
+          case param.print_media
             when :envelopes
               @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
             when :stamps
@@ -34,8 +34,9 @@ module Stamps
       end
     end
 
-    class MailToolbar < Browser::StampsHtmlField
-      attr_reader :total, :mail_print_modal, :confirm_window, :windows_print, :sample_button, :printing_problem, :insufficient_funds, :print_button
+    class MailToolbar < Browser::StampsBrowserElement
+      attr_reader :total, :mail_print_modal, :confirm_window, :windows_print, :sample_button, :printing_problem, :insufficient_funds, :print_button,
+                  :print_label, :print_stamps, :print_envelope
 
       def initialize(param)
         super(param)
@@ -47,6 +48,10 @@ module Stamps
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)
         @print_button = MailToolbarPrintButton.new(param)
+
+        @print_label = StampsElement.new(browser.span(text: "Print Label"))
+        @print_stamps = StampsElement.new(browser.span(text: "Print Stamps"))
+        @print_envelope = StampsElement.new(browser.span(text: "Print Envelope"))
       end
 
       def print
@@ -151,7 +156,7 @@ module Stamps
     end
 
 
-    class PrintingProblem < Browser::StampsHtmlField
+    class PrintingProblem < Browser::StampsBrowserElement
       def element
         StampsElement.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end

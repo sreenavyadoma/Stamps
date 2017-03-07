@@ -6,8 +6,8 @@ Feature: Envelope #7
   @mail_print_envelope_7
   Scenario: Envelope #7
     Then select Print On Envelope - #7, 3 ⅞" x 7 ½"
-    Then set Print form Mail From to default
-    Then set Label form Mail To to a random address in zone 1 through 4
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then on Envelope form, set service to First-Class Mail Letter

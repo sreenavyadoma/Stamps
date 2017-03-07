@@ -19,5 +19,5 @@ Feature: Tooltips Improvements
     Then in Orders Toolbar, expect Print Tooltip to include Print labels for all selected orders.
     Then on Order Details form, Collapse Panel
     Then on Order Details form, Expand panel
-    Then on Order Details form, expect Toolbar Menu Tooltip is View more options
+    Then expect Order Details form Toolbar Menu Tooltip is View more options
 

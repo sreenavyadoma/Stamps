@@ -7,7 +7,7 @@ Feature: Parcel Select Ground Rates
   Scenario: Parcel Select Ground
     And a valid user is signed in to Web Apps
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
+    Then set Order Details form Ship-From to default
     Then run rate test Parcel Select Ground in Zone 1
     Then run rate test Parcel Select Ground in Zone 2
     Then run rate test Parcel Select Ground in Zone 3

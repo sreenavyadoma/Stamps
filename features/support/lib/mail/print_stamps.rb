@@ -55,7 +55,7 @@ module Stamps
 
     end
 
-    class CalculatePostageAmount < Browser::Modal
+    class CalculatePostageAmount < Browser::StampsHtmlField
       attr_reader :weight, :extra_services
 
       def initialize(param)
@@ -65,7 +65,7 @@ module Stamps
       end
     end
 
-    class SpecifyPostageAmount < Browser::Modal
+    class SpecifyPostageAmount < Browser::StampsHtmlField
       attr_reader :stamp_amount
 
       def initialize(param)
@@ -74,7 +74,7 @@ module Stamps
       end
     end
 
-    class SpecifyServiceDropList < Browser::Modal
+    class SpecifyServiceDropList < Browser::StampsHtmlField
       attr_reader :text_box, :drop_down
 
       def initialize(param)
@@ -131,13 +131,13 @@ module Stamps
 
       def calculate_postage_amount
         specify_radio.check
-        expect(specify_radio.checked?).to be true
+        expect(specify_radio.checked?).to be(true)
         calculate_postage
       end
 
       def specify_postage_amount
         calculate_radio.check
-        expect(calculate_radio.checked?).to be true
+        expect(calculate_radio.checked?).to be(true)
         specify_postage
       end
     end

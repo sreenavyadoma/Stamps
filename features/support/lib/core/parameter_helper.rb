@@ -21,18 +21,13 @@ module Stamps
         formatted_address = ""
 
         if address_array.is_a?(Array)
-          address_array.each_with_index { |element, index|
+          address_array.each_with_index do |element, index|
             if index==address_array.size-1 #if this is the last item in the string, don't append a new line
               formatted_address = formatted_address + element.to_s.strip
             else #(param_hash['name'].downcase.include? 'random') ? ParameterHelper.random_name : param_hash['name']
               formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? ParameterHelper.random_name : element.to_s.strip) + "\n"
             end
-          }
-        else
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          expect("Unsupported address format.").to eql ""
+          end
         end
         logger.info "Formatted Shipping Address:  \n#{formatted_address}"
         formatted_address
@@ -48,10 +43,7 @@ module Stamps
         elsif address.is_a?(String)
           address
         else
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          expect("Unsupported address format.").to eql ""
+          address
         end
       end
 
@@ -158,7 +150,7 @@ module Stamps
         "#{random_string}#{random_string}".split.map(&:capitalize).join(' ')
       end
 
-      def random_alpha_numeric *args
+      def random_alpha_numeric(*args)
         case args.length
           when 0
             length = 10
@@ -170,14 +162,14 @@ module Stamps
         rand(36 ** length - 1).to_s(36).rjust(length, "0")
       end
 
-      def random_string *args
+      def random_string(*args)
         case args.length
           when 0
             (0...rand(2..5)).map { (65 + rand(26)).chr }.join
           when 2
             (0...rand(args[0].to_i..args[1].to_i)).map { (65 + rand(26)).chr }.join
           else
-
+            # do nothing
         end
       end
 

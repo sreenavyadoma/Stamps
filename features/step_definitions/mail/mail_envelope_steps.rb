@@ -6,7 +6,7 @@ Then /^on Envelope form, set Include Return Address to Checked$/ do
 end
 
 Then /^Mail Envelopes: Expect Include Return Address is checked$/ do
-  expect(stamps.mail.envelopes.form_view.include_return_address.checked?).to be true
+  expect(stamps.mail.envelopes.form_view.include_return_address.checked?).to be(true)
 end
 
 Then /^on Envelope form, set Include Return Address to Unchecked$/ do

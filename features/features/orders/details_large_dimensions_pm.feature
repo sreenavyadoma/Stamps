@@ -8,34 +8,34 @@ Feature: Priority Mail and Large Dimensions
   @details_large_dimensions_pm
   Scenario: Priority Mail and Large Dimensions
     * in Orders Toolbar, click Add button
-    * on Order Details form, set Ship-To to address in Zone 8
-    * on Order Details form, set Ounces to 2
-    * on Order Details form, set Pounds to 1
+    * set Order Details form Ship-To to address in Zone 8
+    * set Order Details form Ounces to 2
+    * set Order Details form Pounds to 1
     * on Order Details form, select service PM Package
-    * on Order Details form, expect service is PM Package
-    * on Order Details form, set Length to 20
-    * on Order Details form, set Width to 35
-    * on Order Details form, set Height to 20
+    * expect Order Details form service is PM Package
+    * set Order Details form Length to 20
+    * set Order Details form Width to 35
+    * set Order Details form Height to 20
     * on Order Details form, blur out
     * on Order Details form, blur out
-    * on Order Details form, expect Dimensions are hidden
-    * on Order Details form, expect service is an empty string
+    * expect Order Details form Dimensions are hidden
+    * expect Order Details form service is an empty string
     * on Order Details form, select service PM Package
     * on Order Details form, blur out
-    * on Order Details form, set Length to 1
-    * on Order Details form, set Width to 1
-    * on Order Details form, set Height to 1
+    * set Order Details form Length to 1
+    * set Order Details form Width to 1
+    * set Order Details form Height to 1
     * Pause for 2 seconds
-    * on Order Details form, expect service Textbox is enabled
+    * expect Order Details form service Textbox is enabled
     * Pause for 1 second
-    * on Order Details form, expect service is PM Package
+    * expect Order Details form service is PM Package
     * Pause for 1 second
-    * on Order Details form, expect service "PM Package" is enabled
+    * expect Order Details form service "PM Package" is enabled
     * Pause for 1 second
     * on Order Details form, select service PM Package
     * Pause for 2 seconds
-    * on Order Details form, expect Length is 1
-    * on Order Details form, expect Height is 1
-    * on Order Details form, expect Width is 1
+    * expect Order Details form Length is 1
+    * expect Order Details form Height is 1
+    * expect Order Details form Width is 1
     * Sign out
 

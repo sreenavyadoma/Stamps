@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Toolbar
 
-      class MoveToOnHold < Browser::StampsHtmlField
+      class MoveToOnHold < Browser::StampsBrowserElement
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
@@ -32,7 +32,7 @@ module Stamps
         end
       end
 
-      class MoveToCanceled < Browser::StampsHtmlField
+      class MoveToCanceled < Browser::StampsBrowserElement
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -61,7 +61,7 @@ module Stamps
         end
       end
 
-      class MoveToShipped < Browser::StampsHtmlField
+      class MoveToShipped < Browser::StampsBrowserElement
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -90,7 +90,7 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipment < Browser::StampsHtmlField
+      class MoveToAwaitingShipment < Browser::StampsBrowserElement
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -119,7 +119,7 @@ module Stamps
         end
       end
 
-      class MoveDropDown < Browser::StampsHtmlField
+      class MoveDropDown < Browser::StampsBrowserElement
         attr_reader :drop_down, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_element
 
         def initialize(param)
@@ -153,7 +153,7 @@ module Stamps
         end
 
         def select(selection)
-          expect(enabled?).to be true
+          expect(enabled?).to be(true)
           expect([:shipped, :canceled, :awaiting_shipment, :on_hold]).to include(selection)
           selection_str = ""
           modal = nil
@@ -202,7 +202,7 @@ module Stamps
         end
       end
 
-      class PrintIncompleteOrderError < Browser::StampsHtmlField
+      class PrintIncompleteOrderError < Browser::StampsBrowserElement
         attr_reader :window_title, :ok_btn, :error_message_label
 
         def initialize(param)
@@ -237,7 +237,7 @@ module Stamps
         end
       end
 
-      class PrintMultiOrderError < Browser::StampsHtmlField
+      class PrintMultiOrderError < Browser::StampsBrowserElement
         attr_reader :window_title, :error_message_label
 
         def initialize(param)
@@ -302,7 +302,7 @@ module Stamps
         end
       end
 
-      class UspsPrivacyActStatement < Browser::StampsHtmlField
+      class UspsPrivacyActStatement < Browser::StampsBrowserElement
         attr_reader :window_title, :message_label, :ok_btn
 
         def initialize(param)
@@ -329,7 +329,7 @@ module Stamps
         end
       end
 
-      class USPSTerms < Browser::StampsHtmlField
+      class USPSTerms < Browser::StampsBrowserElement
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def initialize(param)
@@ -378,11 +378,11 @@ module Stamps
             privacy_act.wait_until_present 2
             return privacy_act if privacy_act.present?
           end
-          expect(privacy_act.present?).to be true
+          expect(privacy_act.present?).to be(true)
         end
       end
 
-      class ShipStationServerError < Browser::StampsHtmlField
+      class ShipStationServerError < Browser::StampsBrowserElement
         def window_title
           browser.divs(text: 'Server Error').first
         end
@@ -396,7 +396,7 @@ module Stamps
         end
       end
 
-      class ToolbarPrintButton < Browser::StampsHtmlField
+      class ToolbarPrintButton < Browser::StampsBrowserElement
         attr_reader :print_order_btn, :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
                     :multi_order_some_error, :multi_order_all_error
 
@@ -564,11 +564,11 @@ module Stamps
 
             if install_plugin_error.present?
               install_plugin_error.close
-              expect(window.present?).to be true
+              expect(window.present?).to be(true)
             end
           end
 
-          expect(window.present?).to be true
+          expect(window.present?).to be(true)
         end
 
         def print_expecting_error *args
@@ -589,7 +589,7 @@ module Stamps
         end
       end
 
-      class SettingsMenu < Browser::StampsHtmlField
+      class SettingsMenu < Browser::StampsBrowserElement
         def select menu_item
           dd = StampsElement.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
@@ -623,7 +623,7 @@ module Stamps
         end
       end
 
-      class PerPage < Browser::StampsHtmlField
+      class PerPage < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -655,7 +655,7 @@ module Stamps
         end
       end
 
-      class AddButton < Browser::StampsHtmlField
+      class AddButton < Browser::StampsBrowserElement
         attr_reader :button, :initializing_db, :loading_orders
 
         def initialize(param)
@@ -705,9 +705,9 @@ module Stamps
           initializing_db.wait_until_present(15) if initializing_db.present?
 
           if initializing_db.present?
-            message = "\n*****  #{initializing_db.text}  *****\nShip Station might be down. \nUSERNAME: #{nav_bar.username.text}"
+            message = "*****  #{initializing_db.text}  *****Ship Station might be down. USERNAME: #{nav_bar.username.text}"
             logger.info message
-            expect(message).to eql ""
+            expect(message).to eql "Initializing Database Error"
           end
 
           expect("#{server_error.text}").to eql "Server Error" if server_error.present?
@@ -730,7 +730,7 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::StampsHtmlField
+      class OrdersToolbar < Browser::StampsBrowserElement
         attr_reader :print_btn, :add, :move_drop_down, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)

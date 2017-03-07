@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class MailManageShippingAddresses < Browser::StampsHtmlField
+    class MailManageShippingAddresses < Browser::StampsBrowserElement
       attr_reader :window_title, :close_btn
 
       def initialize(param)

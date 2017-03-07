@@ -8,34 +8,48 @@ Feature:  Update International Orders to ShipStation
   Scenario:  Update ShipStation
     Then in Orders Toolbar, click Add button
     Then on Order Details form, blur out
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details International form, set address to
+    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-To International address to
       | name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
-    Then on Order Details form, set Weight to 2 lb 2 oz
+    Then set Order Details form Weight to 2 lb 2 oz
     Then on Order Details form, select service PMI Package
-    Then on Order Details form, set Insure-For to $100.25
-    Then on Order Details form, set Reference Number to Some random string
+    Then set Order Details form Insure-For to $100.25
+    Then set Order Details form Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
     Then on Order Details form, Add Item 2, Qty 2, ID ID 2, Description Description 2
     Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description Description 3
+
     # Edit the customs form
-    Then on Order Details form, click Edit Form button
-    Then on Customs form, expect I agree to the USPS Privacy Act Statement is unchecked
-    Then on Customs form, set Package Contents to Commercial Sample
-    Then on Customs form, set License Number to "a12346"
-    Then on Customs form, set Certificate Number to "certno1"
-    Then on Customs form, set Invoice Number to "Invoice123"
-    Then on Customs form, set Non-Delivery Options to Treat as abandoned
-    Then on Customs form, set Internal Transaction Number to Required
-    Then on Customs form, set ITN Number to "ITN123"
+    Then click Order Details form Edit Form button
+    Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
 
-    Then on Customs form, add Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
-    Then on Customs form, add Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
-    Then on Customs form, add Associated Item 3, Description Item 3, Qty 3, Price 3, Made In Canada, Tariff 3
+    Then set Customs form Package Contents to Document
+    Then set Customs form More Info to some random string
 
-    Then on Customs form, check I agree to the USPS Privacy Act Statement
-    Then on Customs form, click Close button
+    Then set Customs form Package Contents to Commercial Sample
+    Then expect Customs form Package Contents is Commercial Sample
+    Then set Customs form License Number to a random string
+    Then expect Customs form License Number is correct
+    Then set Customs form Certificate Number to some random string
+    Then expect Customs form Certificate Number is correct
+    Then set Customs form Invoice Number to a random string
+    Then expect Customs form Invoice Number is correct
+
+    Then set Customs form Non-Delivery Options to Treat as abandoned
+    Then expect Customs form Non-Delivery Options is Treat as abandoned
+
+    Then set Customs form Internal Transaction Number to Required
+    Then expect Customs form Internal Transaction Number is Required
+
+    Then set Customs form ITN Number to ITN123
+
+    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs form Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
+    Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
+
+    Then check Customs form I agree to the USPS Privacy Act Statement
+    Then click Customs form Close button
 
     Then Pause for 2 seconds
     Then on Order Details form, blur out 3 times
@@ -50,91 +64,91 @@ Feature:  Update International Orders to ShipStation
     Then in Orders Grid, check saved Order ID
     Then Pause for 1 second
 
-    Then on Order Details form, expect Ship-To Country and saved Country are the same
-    Then on Order Details form, expect International Ship-To Name and saved Name are the same
-    Then on Order Details form, expect International Ship-To Company and saved Company are the same
-    Then on Order Details form, expect International Ship-To Address 1 and saved Address 1 are the same
-    Then on Order Details form, expect International Ship-To Address 2 and saved Address 2 are the same
-    Then on Order Details form, expect International Ship-To City and saved City are the same
-    Then on Order Details form, expect International Ship-To Province and saved Province are the same
-    Then on Order Details form, expect International Ship-To Postal Code and saved Postal Code are the same
-    Then on Order Details form, expect International Ship-To Phone and saved Phone are the same
-    Then on Order Details form, expect International Ship-To Email and saved Email are the same
-    Then on Order Details form, expect Reference Number and saved Reference Number are the same
+    Then expect Order Details form Ship-To Country is correct
+    Then expect Order Details form Ship-To Name is correct
+    Then expect Order Details form Ship-To Company is correct
+    Then expect Order Details form Ship-To Address 1 is correct
+    Then expect Order Details form Ship-To Address 2 is correct
+    Then expect Order Details form Ship-To City is correct
+    Then expect Order Details form Ship-To Province is correct
+    Then expect Order Details form Ship-To Postal Code is correct
+    Then expect Order Details form Ship-To Phone is correct
+    Then expect Order Details form Ship-To Email is correct
 
-    Then on Order Details form, expect service is PMI Package
-    Then on Order Details form, expect Service Cost and saved Service Cost values are the same
+    Then expect Order Details form Reference Number and saved Reference Number are the same
 
-    Then on Order Details form, expect Pounds is 2
-    Then on Order Details form, expect Ounces is 2
+    Then expect Order Details form service is PMI Package
+    Then expect Order Details form Service Cost and saved Service Cost values are the same
 
-    Then on Order Details form, expect Item 1 Qty is 1
-    Then on Order Details form, expect Item 1 ID is ID 1
-    Then on Order Details form, expect Item 1 Description is Description 1
+    Then expect Order Details form Pounds is 2
+    Then expect Order Details form Ounces is 2
 
-    Then on Order Details form, expect Item 2 Qty is 2
-    Then on Order Details form, expect Item 2 ID is ID 2
-    Then on Order Details form, expect Item 2 Description is Description 2
+    Then expect Order Details form Item 1 Qty is 1
+    Then expect Order Details form Item 1 ID is ID 1
+    Then expect Order Details form Item 1 Description is Description 1
+
+    Then expect Order Details form Item 2 Qty is 2
+    Then expect Order Details form Item 2 ID is ID 2
+    Then expect Order Details form Item 2 Description is Description 2
 
 
-    Then on Order Details form, expect Item 3 Qty is 3
-    Then on Order Details form, expect Item 3 ID is ID 3
-    Then on Order Details form, expect Item 3 Description is Description 3
+    Then expect Order Details form Item 3 Qty is 3
+    Then expect Order Details form Item 3 ID is ID 3
+    Then expect Order Details form Item 3 Description is Description 3
 
-    Then on Order Details form, expect Insure-For and saved Insure-For values are the same
-    Then on Order Details form, expect Insure-For Cost and saved Insure-For Cost values are the same
-    Then on Order Details form, click Edit Form button
+    Then expect Order Details form Insure-For and saved Insure-For values are the same
+    Then expect Order Details form Insure-For Cost and saved Insure-For Cost values are the same
+    Then click Order Details form Edit Form button
     Then Pause for 1 second
-    Then on Customs form, expect Package Contents is Commercial Sample
-    Then on Customs form, expect License Number is a12346
-    Then on Customs form, expect Certificate Number is certno1
-    Then on Customs form, expect Invoice Number is Invoice123
+    Then expect Customs form Package Contents is Commercial Sample
+    Then expect Customs form License Number is correct
+    Then expect Customs form Certificate Number is correct
+    Then expect Customs form Invoice Number is correct
 
-    Then on Customs form, expect Non-Delivery Options is Treat as abandoned
-    Then on Customs form, expect Internal Transaction Number is Required
-    Then on Customs form, expect ITN Number is ITN123
+    Then expect Customs form Non-Delivery Options is Treat as abandoned
+    Then expect Customs form Internal Transaction Number is Required
+    Then expect Customs form ITN Number is correct
 
-    Then on Customs form, expect Associated Item 1 Description is Item 1
-    Then on Customs form, expect Associated Item 1 Quantity is 1
-    Then on Customs form, expect Associated Item 1 Unit Price is 1.00
-    Then on Customs form, expect Associated Item 1 Origin Country is United States
-    Then on Customs form, expect Associated Item 1 Tariff is 1
+    Then expect Customs form Associated Item 1 Description is correct
+    Then expect Customs form Associated Item 1 Quantity is correct
+    Then expect Customs form Associated Item 1 Unit Price is correct
+    Then expect Customs form Associated Item 1 Made In is correct
+    Then expect Customs form Associated Item 1 Tariff is correct
 
-    Then on Customs form, expect Associated Item 2 Description is Item 2
-    Then on Customs form, expect Associated Item 2 Quantity is 2
-    Then on Customs form, expect Associated Item 2 Unit Price is 2.00
-    Then on Customs form, expect Associated Item 2 Origin Country is Japan
-    Then on Customs form, expect Associated Item 2 Tariff is 2
+    Then expect Customs form Associated Item 2 Description is correct
+    Then expect Customs form Associated Item 2 Quantity is correct
+    Then expect Customs form Associated Item 2 Unit Price is correct
+    Then expect Customs form Associated Item 2 Made In is correct
 
-    Then on Customs form, expect Associated Item 3 Description is Item 3
-    Then on Customs form, expect Associated Item 3 Quantity is 3
-    Then on Customs form, expect Associated Item 3 Unit Price is 3.00
-    Then on Customs form, expect Associated Item 3 Origin Country is Canada
-    Then on Customs form, expect Associated Item 3 Tariff is 3
+    Then expect Customs form Associated Item 3 Description is correct
+    Then expect Customs form Associated Item 3 Quantity is correct
+    Then expect Customs form Associated Item 3 Unit Price is correct
+    Then expect Customs form Associated Item 3 Made In is correct
+    Then expect Customs form Associated Item 3 Tariff is correct
 
-    Then on Customs form, expect I agree to the USPS Privacy Act Statement is checked
-    Then on Customs form, expect Total saved value is the same
-    Then on Customs form, click Close button
+    Then expect Customs form I agree to the USPS Privacy Act Statement is checked
+    Then expect Customs form Total Value is correct
+    Then click Customs form Close button
 
-    Then in Orders Grid, expect Recipient and saved Recipient are the same
-    Then in Orders Grid, expect Company and saved Company are the same
-    Then in Orders Grid, expect Country and saved Country are the same
-    Then in Orders Grid, expect Address and saved Address are the same
-    Then in Orders Grid, expect City and saved City are the same
-    Then in Orders Grid, expect State and saved State are the same
-    Then in Orders Grid, expect Zip and saved Zip are the same
-    Then in Orders Grid, expect Phone and saved Phone are the same
-    Then in Orders Grid, expect Email and saved Email are the same
+    Then expect Orders Grid Recipient is correct
+    Then expect Orders Grid Company is correct
+    Then expect Orders Grid Country is correct
+    Then expect Orders Grid Address is correct
+    Then expect Orders Grid City is correct
+    Then expect Orders Grid State is correct
+    Then expect Orders Grid Zip is correct
+    Then expect Orders Grid Phone is correct
+    Then expect Orders Grid Email is correct
 
-    Then in Orders Grid, expect Qty. is 6
-    Then in Orders Grid, expect Item SKU is Multiple
-    Then in Orders Grid, expect Item Name is Multiple
+    Then expect Orders Grid Qty. is 6
+    Then expect Orders Grid Item SKU is Multiple
+    Then expect Orders Grid Item Name is Multiple
 
-    Then in Orders Grid, expect service is Priority Mail International
-    Then in Orders Grid, expect Pounds and saved Pounds are the same
-    Then in Orders Grid, expect Ounces and saved Ounces are the same
-    Then on Order Details form, expect Insure-For and saved Insure-For values are the same
-    Then in Orders Grid, expect Order Status is Awaiting Shipment
+    Then expect Orders Grid service is Priority Mail International
+    Then expect Orders Grid Pounds is correct
+    Then expect Orders Grid Ounces is correct
+    Then expect Order Details form Insure-For and saved Insure-For values are the same
+    Then expect Orders Grid Order Status is Awaiting Shipment
 
     Then Pause for 2 second
     Then Sign out

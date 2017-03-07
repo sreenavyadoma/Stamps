@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class SuccessModal < Browser::StampsHtmlField
+    class SuccessModal < Browser::StampsBrowserElement
       def window_title
         element_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")
       end
@@ -23,7 +23,7 @@ module Stamps
       end
     end
 
-    class ImportOrders < Browser::StampsHtmlField
+    class ImportOrders < Browser::StampsBrowserElement
       attr_reader :title
 
       def initialize(param)

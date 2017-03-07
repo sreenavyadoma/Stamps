@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::StampsHtmlField
+      class CollapseButton < Browser::StampsBrowserElement
         attr_reader :button, :tooltip_element
 
         def initialize(param)
@@ -36,7 +36,7 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::StampsHtmlField
+      class ExpandButton < Browser::StampsBrowserElement
         attr_reader :button, :tooltip_element
 
         def initialize(param)
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::StampsHtmlField
+      class FilterMenuItem < Browser::StampsBrowserElement
         attr_reader :collapse, :expand
 
         def initialize(param)
@@ -81,7 +81,7 @@ module Stamps
         end
       end
 
-      class SearchResults < Browser::StampsHtmlField
+      class SearchResults < Browser::StampsBrowserElement
         attr_reader :label, :remove_button, :count_label
 
         def initialize(param)
@@ -105,7 +105,7 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::StampsHtmlField
+      class SearchOrders < Browser::StampsBrowserElement
         attr_reader :textbox, :search_button, :search_results
 
         def initialize(param)
@@ -140,11 +140,11 @@ module Stamps
             end
             return search_results if search_results.present?
           end
-          expect(search_results.present?).to be true
+          expect(search_results.present?).to be(true)
         end
       end
 
-      class FilterTab < Browser::StampsHtmlField
+      class FilterTab < Browser::StampsBrowserElement
         attr_reader :index
         def initialize(param, index)
           super(param)
@@ -166,7 +166,7 @@ module Stamps
             sleep(0.25)
             break if selected?
           end
-          expect(selected?).to be true
+          expect(selected?).to be(true)
         end
 
         def selected?
@@ -210,7 +210,7 @@ module Stamps
         end
       end
 
-      class FilterPanel < Browser::StampsHtmlField
+      class FilterPanel < Browser::StampsBrowserElement
         attr_reader :search_orders_modal, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
 
         def initialize(param)

@@ -33,6 +33,7 @@ require_relative 'lib/windows/print_window'
 require_relative 'lib/orders/store_management'
 require_relative 'lib/orders/general_settings'
 require_relative 'lib/windows/open_file'
+require_relative '../../features/support/lib/common/customs_information'
 
 # require 'Win32API'
 # require 'win32/registry.rb'

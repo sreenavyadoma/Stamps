@@ -93,11 +93,11 @@ Then /^Filter Panel: Search results should be more than (\d*)$/ do |count|
 end
 
 Then /^Filter Panel: Search Results should be present$/ do
-  expect(stamps.orders.filter_panel.search_results.present?).to be true
+  expect(stamps.orders.filter_panel.search_results.present?).to be(true)
 end
 
 Then /^Filter Panel: Search Results should not be present$/ do
-  expect(stamps.orders.filter_panel.search_results.present?).to be false
+  expect(stamps.orders.filter_panel.search_results.present?).to be(false)
 end
 
 Then /^Filter Panel: Remove search results$/ do
@@ -154,11 +154,11 @@ Then /^(?:I|i)n left Filter Panel, expect panel arrow is pointing to the (.*) di
 end
 
 Then /^(?:I|i)n left Filter Panel, expect system updates the grid to show only orders that match the (.*) filter$/ do |expectation|
-  expect(stamps.orders.filter_panel.is_order_grid_filtered(expectation)).to be true
+  expect(stamps.orders.filter_panel.is_order_grid_filtered(expectation)).to be(true)
 end
 
 Then /^(?:I|i)n left Filter Panel, expect system displays expanded filters panel$/ do
-  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be true
+  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be(true)
 end
 
 Then /^Filter Panel: Click on panel$/ do
@@ -175,7 +175,7 @@ Then /^(?:I|i)n left Filter Panel, expect system shows an arrow above the Order 
 end
 
 Then /^(?:I|i)n left Filter Panel, expect Panel is open$/ do
-  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be true
+  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be(true)
 end
 
 Then /^(?:I|i)n left Filter Panel, expect panel is hidden$/ do

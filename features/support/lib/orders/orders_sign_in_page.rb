@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class NewWelcomeModal < Browser::StampsHtmlField
+    class NewWelcomeModal < Browser::StampsBrowserElement
       attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
       def initialize(param)
@@ -37,7 +37,7 @@ module Stamps
       end
     end
 
-    class WelcomeModal < Browser::StampsHtmlField
+    class WelcomeModal < Browser::StampsBrowserElement
       attr_reader :okay_button
 
       def initialize(param)
@@ -89,16 +89,16 @@ module Stamps
         title.safe_click
       end
 
-      def first_time_sign_in sign_in_username, sign_in_password
+      def first_time_sign_in usr, pw
         market_place = Orders::Stores::MarketPlace.new(param)
 
         username.safely_wait_until_present 6
 
         20.times do
           username.safely_wait_until_present 2
-          username.set sign_in_username
+          username.set usr
           blur_out
-          password.set sign_in_password
+          password.set pw
           blur_out
           sign_in_btn.safe_send_keys(:enter)
           blur_out
@@ -108,8 +108,8 @@ module Stamps
           market_place.wait_until_present 6
           if market_place.present?
             logger.message "-"
-            logger.message "Username: #{sign_in_username}"
-            logger.message "Username: #{sign_in_username}"
+            logger.message "Username: #{usr}"
+            logger.message "Username: #{usr}"
             logger.message "-"
             return market_place
           end
@@ -118,29 +118,43 @@ module Stamps
         expect("Market Place modal is not present").to eql "First Time Sign In" unless market_place.present?
       end
 
-      def orders_sign_in
-        loading_orders = StampsElement.new browser.div(text: "Loading orders...")
-        invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
-        new_welcome = NewWelcomeModal.new(param)
+      def orders_sign_in(credentials)
+        user_credentials(credentials)
+        begin
+          loading_orders = StampsElement.new browser.div(text: "Loading orders...")
+          invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
+          new_welcome = NewWelcomeModal.new(param)
 
-        expect(browser.url).to include "Orders"
+          expect(browser.url).to include "Orders"
 
-        logger.message "#"*15
-        logger.message "Username: #{sign_in_username}"
-        logger.message "#"*15
+          logger.message "#"*15
+          logger.message "Username: #{usr}"
+          logger.message "#"*15
 
-        username.safely_wait_until_present(8)
-        4.times do
-          begin
-            if username.present?
-              username.set sign_in_username
-              password.set sign_in_password
-              sign_in_btn.safe_send_keys(:enter)
+          username.safely_wait_until_present(8)
+          8.times do
+            begin
+              if username.present?
+                username.set(usr)
+                password.set(pw)
+                sign_in_btn.safe_send_keys(:enter)
 
-              30.times do
-                logger.message loading_orders.safe_text if loading_orders.present?
-                break unless loading_orders.present?
+                30.times do
+                  logger.message loading_orders.safe_text if loading_orders.present?
+                  break unless loading_orders.present?
+                end
+
+                if invalid_username.present?
+                  logger.error invalid_username.text
+                  logger.error invalid_username.text
+                  logger.error invalid_username.text
+                  logger.error invalid_username.text
+                  logger.error invalid_username.text
+                  expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
+                end
               end
+
+              8.times { sleep(0.25) if username.present? }
 
               if invalid_username.present?
                 logger.error invalid_username.text
@@ -148,53 +162,46 @@ module Stamps
                 logger.error invalid_username.text
                 logger.error invalid_username.text
                 logger.error invalid_username.text
-                expect("Invalid Username: #{sign_in_username}/#{sign_in_password}").to eql invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                logger.error invalid_username.text
+                expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
               end
-            end
 
-            8.times {sleep(0.25) if username.present?}
-
-            if invalid_username.present?
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              logger.error invalid_username.text
-              expect("Invalid Username: #{sign_in_username}/#{sign_in_password}").to eql invalid_username.text
+              new_welcome.wait_until_present(3)
+              if new_welcome.present?
+                logger.message new_welcome.message
+                add_manual_order = new_welcome.next
+                expect(add_manual_order.present?).to be(true)
+                import_from_csv = add_manual_order.next
+                expect(import_from_csv.present?).to be(true)
+                import_from_stores = import_from_csv.next
+                expect(import_from_stores.present?).to be(true)
+                learn_more = import_from_stores.next
+                expect(learn_more.present?).to be(true)
+                learn_more.close
+              end
+              signed_in_user.wait_until_present(4)
+              break if signed_in_user.present?
+            rescue Exception => e
+              logger.error e.backtrace.join "\n"
+              raise e
             end
-
-            new_welcome.wait_until_present(3)
-            if new_welcome.present?
-              logger.message new_welcome.message
-              add_manual_order = new_welcome.next
-              expect(add_manual_order.present?).to be true
-              import_from_csv = add_manual_order.next
-              expect(import_from_csv.present?).to be true
-              import_from_stores = import_from_csv.next
-              expect(import_from_stores.present?).to be true
-              learn_more = import_from_stores.next
-              expect(learn_more.present?).to be true
-              learn_more.close
-            end
-            signed_in_user.safely_wait_until_present(3)
-            break if signed_in_user.present?
-          rescue Exception => e
-            logger.error e.backtrace.join "\n"
-            raise e
+            usr
           end
+
+          expect(signed_in_user.text).to eql(usr)
+
+          logger.message "#"*15
+          logger.message "Signed-in User: #{signed_in_user.text}"
+          logger.message "#"*15
+
+          signed_in_user.text
+        rescue Exception => e
+          logger.message e.message
+          logger.message e.backtrace.join("\n")
         end
-
-        expect("Unable to sign-in with credentials usr=#{sign_in_username}, pw=#{sign_in_password}").to eql("Sign-in failed in #{param.test_env}") if username.present?
-
-        logger.message "#"*15
-        logger.message "Signed-in User: #{signed_in_user.text}"
-        logger.message "#"*15
-
-        signed_in_user.text
       end
     end
   end

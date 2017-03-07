@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     module PrintModal
-      class PrintPostageModalObject < Browser::StampsHtmlField
+      class PrintPostageModalObject < Browser::StampsBrowserElement
         def window_x_button
           StampsElement.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
         end
@@ -154,7 +154,7 @@ module Stamps
         end
       end
 
-      class Printer < Browser::StampsHtmlField
+      class Printer < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -192,7 +192,7 @@ module Stamps
         end
       end
 
-      class PaperTray < Browser::StampsHtmlField
+      class PaperTray < Browser::StampsBrowserElement
         def text_box
           StampsTextbox.new browser.input name: "paperTrays"
         end

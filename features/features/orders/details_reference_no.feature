@@ -8,23 +8,23 @@ Feature:  Order Details Form - Reference # Field
   @details_reference_no
   Scenario: Reference Number
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, set Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-To to address in Zone 1 through 4
     Then on Order Details form, select service PM Large Envelope
-    Then on Order Details form, set Ounces to 2
+    Then set Order Details form Ounces to 2
 
-    Then on Order Details form, set Reference Number to random
-    Then on Order Details form, expect Reference Number and saved Reference Number are the same
+    Then set Order Details form Reference Number to random
+    Then expect Order Details form Reference Number and saved Reference Number are the same
 
-    Then on Order Details form, set Reference Number to Rob
-    Then on Order Details form, expect Reference Number is Rob
+    Then set Order Details form Reference Number to Rob
+    Then expect Order Details form Reference Number is Rob
 
     Then in Orders Toolbar, click Print button
     Then in Print modal, uncheck Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
-    Then in Print modal, set Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then in Print modal, set Printer to "factory"
+    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Printer to "factory"
     Then in Print modal, click Print button
     Then Sign out
 

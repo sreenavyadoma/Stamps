@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class PaymentAdministratorManager < Browser::StampsHtmlField
+    class PaymentAdministratorManager < Browser::StampsBrowserElement
       def visit
         param.test_env = 'stg' if param.test_env.downcase == 'staging'
 
@@ -52,7 +52,7 @@ module Stamps
           sleep(2)
           return customer_search_page if customer_search_page.present?
         end
-        expect(customer_search_page.present?).to be true
+        expect(customer_search_page.present?).to be(true)
       end
     end
   end

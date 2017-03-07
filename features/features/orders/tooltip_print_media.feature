@@ -6,10 +6,10 @@ Feature: Print Media Tooltips
   @tooltip_print_media
   Scenario:  Verify tooltips for all Print Media selections
     Then in Orders Toolbar, click Add button
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, set Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-To to address in Zone 1 through 4
     Then on Order Details form, select service PM Package
-    Then on Order Details form, set Pounds to 1
+    Then set Order Details form Pounds to 1
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Print button
     Then Tooltips: Expect Print Modal Print Media "Shipping Label - 8 ½" x 11" Paper" tooltip to include "Use any letter-size sheet of plain paper to print up to two 4” x 6” shipping labels, including postage, addresses, tracking barcode, and customs form.||Use any letter-size sheet of plain paper to print up to two 4” x 6” shipping labels, including postage, addresses, tracking barcode, and customs form.<br><br>Can be used to ship Large Envelopes, Packages, USPS Flat Rate Envelopes or Boxes, or USPS Regional Rate Boxes to any U.S. or international destination."

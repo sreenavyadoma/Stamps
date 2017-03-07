@@ -3,7 +3,7 @@ module Stamps
   module Mail
 =begin
 
-    class StartingLabel < Browser::Modal
+    class StartingLabel < Browser::StampsHtmlField
       def label_divs
         browser.divs css: "div[class*='unprintedLabel']"
       end

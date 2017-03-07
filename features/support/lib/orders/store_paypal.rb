@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class Error400 < Browser::StampsHtmlField
+      class Error400 < Browser::StampsBrowserElement
 
         def close
           button = StampsElement.new(browser.imgs(css: "img[class*=x-tool-close]").last)
@@ -34,7 +34,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationSent < Browser::StampsHtmlField
+      class EmailVerificationSent < Browser::StampsBrowserElement
 
         def window_title
           StampsElement.new browser.div(text: "Email Verification Sent")
@@ -70,7 +70,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationRequired < Browser::StampsHtmlField
+      class EmailVerificationRequired < Browser::StampsBrowserElement
 
         def window_title
           StampsElement.new browser.div(text: "Email Verification Required")
@@ -115,7 +115,7 @@ module Stamps
         end
       end
 
-      class PayPal < Browser::StampsHtmlField
+      class PayPal < Browser::StampsBrowserElement
 
         def window_title
           StampsElement.new browser.div(text: "Connect your PayPal Store")

@@ -24,17 +24,17 @@ Feature: Print Media Selection
 
     # Mail To
     Then select Print On Shipping Label - 8 ½" x 11" Paper
-    Then set Label form Mail To to a random address in zone 1
-    Then set Label form Mail To to a random address in zone 2
-    Then set Label form Mail To to a random address in zone 3
-    Then set Label form Mail To to a random address in zone 4
-    Then set Label form Mail To to a random address in zone 5
-    Then set Label form Mail To to a random address in zone 6
-    Then set Label form Mail To to a random address in zone 7
-    Then set Label form Mail To to a random address in zone 8
-    Then set Label form Mail To to a random address in zone 9
-    Then set Label form Mail To to a random address in zone 1 through 4
-    Then set Label form Mail To to a random address in zone 5 through 8
+    Then set Label form Mail-To to a random address in zone 1
+    Then set Label form Mail-To to a random address in zone 2
+    Then set Label form Mail-To to a random address in zone 3
+    Then set Label form Mail-To to a random address in zone 4
+    Then set Label form Mail-To to a random address in zone 5
+    Then set Label form Mail-To to a random address in zone 6
+    Then set Label form Mail-To to a random address in zone 7
+    Then set Label form Mail-To to a random address in zone 8
+    Then set Label form Mail-To to a random address in zone 9
+    Then set Label form Mail-To to a random address in zone 1 through 4
+    Then set Label form Mail-To to a random address in zone 5 through 8
 
     # Stamps Services
     Then select Print On Stamps

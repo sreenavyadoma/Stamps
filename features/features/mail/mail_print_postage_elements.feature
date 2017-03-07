@@ -10,7 +10,7 @@ Feature: Verify Mail Elements Are Present
     Then on Print form, expect Ship From Field is present
     Then on Print form, expect Ship To Link is present
     Then on Print form, expect Ship To Country Field is present
-    Then set Label form Mail To Country to United States
+    Then set Label form Mail-To Country to United States
     Then on Print form, expect Domestic Address Field is present
     Then on Print form, expect Email Check Box is present
     Then on Print form, expect Email Field is present

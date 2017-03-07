@@ -1,11 +1,9 @@
 module Stamps
-  class StampsCom < Browser::StampsHtmlField
+  class StampsCom < Browser::StampsBrowserElement
     attr_reader :orders, :mail, :navigation_bar
 
     def initialize(param)
       super(param)
-      @sign_in_username = param.usr
-      @sign_in_password = param.pw
       @navigation_bar = Navigation::NavigationBar.new(param)
       @orders = WebOrders.new(param)
       @mail = WebMail.new(param)
@@ -51,24 +49,41 @@ module Stamps
         else
           # do nothing
       end
+
       browser.url
     end
   end
 
-  class StampsSignInBase < Browser::StampsHtmlField
-    attr_accessor :sign_in_username, :sign_in_password, :signed_in_user
+  class StampsSignInBase < Browser::StampsBrowserElement
+    attr_accessor :signed_in_user
 
     def initialize(param)
       super(param)
-      @sign_in_username = param.usr
-      @sign_in_password = param.pw
-      @signed_in_user = StampsElement.new(browser.span(id: 'userNameText'))
+      @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
     end
 
-    def user_credentials(*args)
-      expect(args.length).to eql 2
-      @sign_in_username = args[0]
-      @sign_in_password = args[1]
+    def user_credentials(credentials)
+      expect(credentials).to be(:default).or be(Hash)
+      case credentials
+        when :default
+          @usr = param.usr
+          @pw = param.pw
+        when Hash
+          @usr = credentials[:username]
+          @pw = credentials[:password]
+        else
+          # do nothing
+      end
+    end
+
+    def usr
+      user_credentials(:default) if @usr.nil?
+      @usr
+    end
+
+    def pw
+      user_credentials(:default) if @pw.nil?
+      @pw
     end
   end
 end

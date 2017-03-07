@@ -1,8 +1,8 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class WebMail < Browser::StampsHtmlField
-      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form_type, :print_form , :printing_on
+    class WebMail < Browser::StampsBrowserElement
+      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form , :printing_on
 
       def initialize(param)
         super(param)
@@ -12,8 +12,8 @@ module Stamps
       end
 
       def print_on(selection)
-        param.print_form = printing_on.print_on(selection)
-        case param.print_form
+        param.print_media = printing_on.print_on(selection)
+        case param.print_media
           when :stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps)
           when :paper
