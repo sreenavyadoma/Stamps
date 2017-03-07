@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Shopify < Browser::StampsHtmlField
+      class Shopify < Browser::StampsBrowserElement
 
         def window_title
           StampsElement.new(browser.div text: "Connect your Shopify Store")
@@ -250,7 +250,7 @@ module Stamps
         end
       end
 
-      class ShopifyPage < Browser::StampsHtmlField
+      class ShopifyPage < Browser::StampsBrowserElement
         def present?
           browser.url.include? "shopify.com"
         end

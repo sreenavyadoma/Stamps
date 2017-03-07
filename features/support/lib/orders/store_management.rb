@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::StampsHtmlField
+      class ImportingOrdersModal < Browser::StampsBrowserElement
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -19,7 +19,7 @@ module Stamps
         end
       end
 
-      class DeleteStoreModal < Browser::StampsHtmlField
+      class DeleteStoreModal < Browser::StampsBrowserElement
         def present?
           delete_btn.present?
         end
@@ -53,12 +53,12 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::StampsHtmlField
-        class ServiceMappingGrid < Browser::StampsHtmlField
+      class StoreSettings < Browser::StampsBrowserElement
+        class ServiceMappingGrid < Browser::StampsBrowserElement
 
-          class ServiceMappingLineItem < Browser::StampsHtmlField
+          class ServiceMappingLineItem < Browser::StampsBrowserElement
 
-            class ServiceMappingShippingService < Browser::StampsHtmlField
+            class ServiceMappingShippingService < Browser::StampsBrowserElement
 
               def initialize(param, index)
                 super(param)
@@ -188,11 +188,11 @@ module Stamps
           label = (browser.label text: "Automatically Import New Orders")
           checkbox_field = label.parent.text_box
           verify_field = label.parent.parent.parent
-          StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+          StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
         end
       end
 
-      class MarketPlace < Browser::StampsHtmlField
+      class MarketPlace < Browser::StampsBrowserElement
         attr_reader :window_title
 
         def initialize(param)
@@ -380,8 +380,8 @@ module Stamps
 
       end
 
-      class ManageStores < Browser::StampsHtmlField
-        class ManageStoresGrid < Browser::StampsHtmlField
+      class ManageStores < Browser::StampsBrowserElement
+        class ManageStoresGrid < Browser::StampsBrowserElement
 
           def size
             (browser.tables css: "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size

@@ -49,11 +49,31 @@ module Stamps
         end
       end
 
+      module MailAdvancedOptions
+        def advanced_options
+          case param.print_media
+            when :stamps
+              @advanced_options = AdvancedOptionsStamps.new(param) if @advanced_options.nil? || !@advanced_options.present?
+            when :paper
+              @advanced_options = AdvancedOptionsShippingLabel.new(param) if @advanced_options.nil? || !@advanced_options.present?
+            when :envelopes
+              @advanced_options = AdvancedOptionsEnvelope.new(param) if @advanced_options.nil? || !@advanced_options.present?
+            when :certified_mail
+              @advanced_options = AdvancedOptionsCertMail.new(param) if @advanced_options.nil? || !@advanced_options.present?
+            when :rolls
+              @advanced_options = AdvancedOptionsRolls.new(param) if @advanced_options.nil? || !@advanced_options.present?
+            else
+              # do nothing
+          end
+          @advanced_options
+        end
+      end
 
       module MailStamps
         include MailTo
         include MailWeight
         include MailService
+        include MailAdvancedOptions
       end
 
       module CertifiedMail
@@ -62,6 +82,7 @@ module Stamps
         include MailWeight
         include MailService
         include MailCustoms
+        include MailAdvancedOptions
       end
 
       module Rolls
@@ -70,6 +91,7 @@ module Stamps
         include MailWeight
         include MailService
         include MailCustoms
+        include MailAdvancedOptions
       end
 
       module Envelopes
@@ -77,6 +99,7 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailAdvancedOptions
 
         def ship_date
           ShipDate.new(param)
@@ -93,7 +116,7 @@ module Stamps
         include MailWeight
         include MailService
         include MailCustoms
-
+        include MailAdvancedOptions
 
         def mail_tracking
           @mail_tracking = MailTracking.new(param) if @mail_insure_for.nil? || !@mail_insure_for.present?
@@ -114,15 +137,7 @@ module Stamps
         end
       end
 
-      class PrintForm < Browser::StampsHtmlField
-        def open_extra_services
-          10.times do
-            extra_services.safe_click
-            extra_services.wait_until_present(2)
-            return service_modal if service_modal.present?
-          end
-          expect(service_modal.present?).to be(true)
-        end
+      class PrintForm < Browser::StampsBrowserElement
       end
     end
   end

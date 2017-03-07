@@ -23,8 +23,8 @@ Then /^(?:S|s)elect Print form (?:S|s)ervice (.*)$/ do |service|
   stamps.mail.print_form.mail_service.select(service)
 end
 
-When /^(?:C|c)lick Print form Print button$/ do
-  stamps.mail.mail_toolbar.print
+When /^(?:P|p)rint (?:L|l)abel$/ do
+  stamps.mail.mail_toolbar.print_label
 end
 
 When /^(?:C|c)lick Print Sample button on Print form$/ do
@@ -50,13 +50,13 @@ Then /^(?:C|c)lick (?:Label|Roll) form Edit Customs Form button$/ do
   stamps.mail.print_form.mail_customs.edit_form
 end
 
-Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:M|m)ail-(?:T|t)o (?:|to )(?:|a )(?:|random )address(?: to| in|) (.*)$/ do |address|
+Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:M|m)ail-(?:T|t)o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
   stamps.mail.print_form.mail_to.address.text_area.set(address_helper(address))
 end
 
 Then /^(?:S|s)et (?:Label|Roll|CM) form (?:M|m)ail-(?:T|t)o (?:C|c)ountry to (.*)$/ do |country|
   test_parameter[:mail_to_country] = country
-  stamps.mail.print_form.mail_to.country(test_parameter[:mail_to_country])
+  stamps.mail.print_form.mail_to.country((test_parameter[:mail_to_country]))
 end
 
 Then /^(?:S|s)et (?:Label|Roll) form Ship-To to international address$/ do |table|

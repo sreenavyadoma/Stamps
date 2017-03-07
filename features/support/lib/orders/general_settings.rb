@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Settings
-      class Pounds < Browser::StampsHtmlField
+      class Pounds < Browser::StampsBrowserElement
         attr_reader :text_box, :inc_bthn, :dec_btn
 
         def initialize(param)
@@ -34,7 +34,7 @@ module Stamps
         end
       end
 
-      class Ounces < Browser::StampsHtmlField
+      class Ounces < Browser::StampsBrowserElement
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -67,7 +67,7 @@ module Stamps
         end
       end
 
-      class Weight < Browser::StampsHtmlField
+      class Weight < Browser::StampsBrowserElement
         attr_reader :lb, :oz
 
         def initialize(param)
@@ -89,7 +89,7 @@ module Stamps
         end
       end
 
-      class Length < Browser::StampsHtmlField
+      class Length < Browser::StampsBrowserElement
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -122,7 +122,7 @@ module Stamps
         end
       end
 
-      class Width < Browser::StampsHtmlField
+      class Width < Browser::StampsBrowserElement
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -155,7 +155,7 @@ module Stamps
         end
       end
 
-      class Height < Browser::StampsHtmlField
+      class Height < Browser::StampsBrowserElement
         attr_reader :text_box
 
         def initialize(param)
@@ -188,7 +188,7 @@ module Stamps
         end
       end
 
-      class SettingsLogoffDropDown < Browser::StampsHtmlField
+      class SettingsLogoffDropDown < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -236,7 +236,7 @@ module Stamps
         end
       end
 
-      class PostDateDropDown < Browser::StampsHtmlField
+      class PostDateDropDown < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -356,7 +356,7 @@ module Stamps
         end
       end
 
-      class PostageBalanceDropDown < Browser::StampsHtmlField
+      class PostageBalanceDropDown < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -404,7 +404,7 @@ module Stamps
         end
       end
 
-      class Dimensions < Browser::StampsHtmlField
+      class Dimensions < Browser::StampsBrowserElement
         def enabled?
           element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
         end
@@ -430,7 +430,7 @@ module Stamps
         end
       end
 
-      class ResetFields < Browser::StampsHtmlField
+      class ResetFields < Browser::StampsBrowserElement
         def present?
           (browser.div text: "Reset Fields").present?
         end
@@ -543,7 +543,7 @@ module Stamps
         end
       end
 
-      class GeneralSettings < Browser::StampsHtmlField
+      class GeneralSettings < Browser::StampsBrowserElement
 
         def title
           StampsElement.new browser.div text: "Settings"

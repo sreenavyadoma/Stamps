@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class NewWelcomeModal < Browser::StampsHtmlField
+    class NewWelcomeModal < Browser::StampsBrowserElement
       attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
       def initialize(param)
@@ -37,7 +37,7 @@ module Stamps
       end
     end
 
-    class WelcomeModal < Browser::StampsHtmlField
+    class WelcomeModal < Browser::StampsBrowserElement
       attr_reader :okay_button
 
       def initialize(param)

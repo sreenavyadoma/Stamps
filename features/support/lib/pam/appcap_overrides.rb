@@ -1,7 +1,7 @@
 module Stamps
   module Pam
 
-    class AppCapOverridesConfirmation < Browser::StampsHtmlField
+    class AppCapOverridesConfirmation < Browser::StampsBrowserElement
       attr_reader :title, :ok_button
 
       def initialize(param)
@@ -24,7 +24,7 @@ module Stamps
       end
     end
 
-    class InternetPostagePrinting < Browser::StampsHtmlField
+    class InternetPostagePrinting < Browser::StampsBrowserElement
       def always_on
         browser.radio(css: 'input[name=IBIP][value=On]').set
       end
@@ -38,7 +38,7 @@ module Stamps
       end
     end
 
-    class NetStampsPrinting < Browser::StampsHtmlField
+    class NetStampsPrinting < Browser::StampsBrowserElement
       def always_on
         browser.radio(css: 'input[name=NS][value=On]').set
       end
@@ -52,7 +52,7 @@ module Stamps
       end
     end
 
-    class ShippingLabelPrinting < Browser::StampsHtmlField
+    class ShippingLabelPrinting < Browser::StampsBrowserElement
       def always_on
         browser.radio(css: 'input[name=SL][value=On]').set
       end
@@ -66,7 +66,7 @@ module Stamps
       end
     end
 
-    class InternationalShipping < Browser::StampsHtmlField
+    class InternationalShipping < Browser::StampsBrowserElement
       def always_on
         browser.radio(css: 'input[name=IntlShipping][value=On]').set
       end
@@ -80,7 +80,7 @@ module Stamps
       end
     end
 
-    class AllowHighRiskCountries < Browser::StampsHtmlField
+    class AllowHighRiskCountries < Browser::StampsBrowserElement
       def always_on
         browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
       end
@@ -94,7 +94,7 @@ module Stamps
       end
     end
 
-    class MailingLabelPrinting < Browser::StampsHtmlField
+    class MailingLabelPrinting < Browser::StampsBrowserElement
       def always_on
         browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
       end
@@ -108,7 +108,7 @@ module Stamps
       end
     end
 
-    class AppCapOverrides < Browser::StampsHtmlField
+    class AppCapOverrides < Browser::StampsBrowserElement
       attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
                   :mailing_label_printing, :submit_button, :appcap_overrides
 

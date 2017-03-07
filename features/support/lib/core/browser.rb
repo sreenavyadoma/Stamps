@@ -2,10 +2,10 @@ module Stamps
   module Browser
 
     class TestParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_form
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media
     end
 
-    class StampsHtmlField
+    class StampsBrowserElement
       attr_accessor :param, :browser, :logger, :element_helper, :test_helper
 
       def initialize(param)
@@ -35,6 +35,15 @@ module Stamps
         end
         @browser = @element.browser
         @element_helper = ElementHelper
+      end
+
+      def blur_out(*args)
+        count = 3 if args.length == 0
+        count = args[0].to_i if args.length > 0
+        count.to_i.times do
+          element_helper.safe_click(element)
+          element_helper.safe_double_click((element))
+        end
       end
 
       def url
@@ -296,18 +305,18 @@ module Stamps
       end
 
       def check
-        50.times{
+        50.times do
           break if checked?
           safe_click
-        }
+        end
       end
 
       def uncheck
         if checked?
-          50.times{
+          50.times do
             safe_click
             break unless checked?
-          }
+          end
         end
       end
 
@@ -411,7 +420,7 @@ module Stamps
       end
     end
 
-    class StampsNumberField < Browser::StampsHtmlField
+    class StampsNumberField < Browser::StampsBrowserElement
       attr_reader :text_box, :inc_btn, :dec_btn, :name
 
       def initialize(param, textbox, inc_btn, dec_btn, name)
@@ -452,7 +461,7 @@ module Stamps
       end
     end
 
-    class StampsComboBox < Browser::StampsHtmlField
+    class StampsComboBox < Browser::StampsBrowserElement
       attr_accessor :param, :text_box, :drop_down, :selection_type
 
       def initialize(param, text_boxes, drop_downs, selection_type, index)
@@ -463,6 +472,10 @@ module Stamps
         @selection_type = selection_type
         @param = text_box.param
         @browser = param.browser
+      end
+
+      def present?
+        text_box.present?
       end
 
       def selection(str)

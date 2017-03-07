@@ -2,7 +2,7 @@ module Stamps
   module Mail
     module PrintFormPanel
 
-      class PrintOn < Browser::StampsHtmlField
+      class PrintOn < Browser::StampsBrowserElement
         attr_accessor :drop_down, :text_box
         include PrintFormBlurOut
 
@@ -20,75 +20,75 @@ module Stamps
           drop_down.safe_click
           case str
             when /Paper/
-              param.print_form = :paper
+              param.print_media = :paper
               selected_sub_str = 'Paper'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[0]
             when /SDC-1200/
-              param.print_form = :paper
+              param.print_media = :paper
               selected_sub_str = 'SDC-1200'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[1]
             when /Shipping Label - 5 /
-              param.print_form = :paper
+              param.print_media = :paper
               selected_sub_str = 'Shipping Label - 5 '
               element = browser.lis(css: "li[class*=iconShippingLabel]")[2]
             when /Envelope - #10/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #10'
               element = browser.lis(css: "li[class*=iconEnvelope]")[0]
             when /Envelope - #9/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #9'
               element = browser.lis(css: "li[class*=iconEnvelope]")[1]
             when /Envelope - #A9/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #A9'
               element = browser.lis(css: "li[class*=iconEnvelope]")[2]
             when /Envelope - #6/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #6'
               element = browser.lis(css: "li[class*=iconEnvelope]")[3]
             when /Envelope - #A2/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #A2'
               element = browser.lis(css: "li[class*=iconEnvelope]")[4]
             when /Envelope - #7/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #7'
               element = browser.lis(css: "li[class*=iconEnvelope]")[5]
             when /Envelope - #11/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #11'
               element = browser.lis(css: "li[class*=iconEnvelope]")[6]
             when /Envelope - #12/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'Envelope - #12'
               element = browser.lis(css: "li[class*=iconEnvelope]")[7]
             when /SDC-3610/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'SDC-3610'
               element = browser.lis(css: "li[class*=iconCertified]")[0]
             when /SDC-3710/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'SDC-3710'
               element = browser.lis(css: "li[class*=iconCertified]")[1]
             when /SDC-3910/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'SDC-3910'
               element = browser.lis(css: "li[class*=iconCertified]")[2]
             when /SDC-3810/
-              param.print_form = :envelopes
+              param.print_media = :envelopes
               selected_sub_str = 'SDC-3810'
               element = browser.lis(css: "li[class*=iconCertified]")[3]
             when /Roll - 4" x 6"/
-              param.print_form = :rolls
+              param.print_media = :rolls
               selected_sub_str = 'Roll - 4'
               element = browser.lis(css: "li[class*=iconRoll]")[0]
             when /Roll - 4 /
-              param.print_form = :rolls
+              param.print_media = :rolls
               selected_sub_str = 'Roll - 4 '
               element = browser.lis(css: "li[class*=iconRoll]")[1]
             when /Stamps/
-              param.print_form = :stamps
+              param.print_media = :stamps
               selected_sub_str = 'Stamps'
               element = browser.li(css: "li[class*=iconNetStamps]")
             else
@@ -112,7 +112,7 @@ module Stamps
             sleep(0.15)
           end
           expect(text_box.text).to include(selected_sub_str)
-          param.print_form
+          param.print_media
         end
 
         def tooltip(selection)
@@ -124,7 +124,7 @@ module Stamps
         end
       end
 
-      class MailToCountry < Browser::StampsHtmlField
+      class MailToCountry < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down, :index, :geography, :dom_text_area, :int_drop_down
         include PrintFormBlurOut
 
@@ -168,11 +168,12 @@ module Stamps
             end
           end
           expect(text_box.text).to eql(str)
+          drop_down.safe_click if selection.present?
           @geography
         end
       end
 
-      class MailToInt < Browser::StampsHtmlField
+      class MailToInt < Browser::StampsBrowserElement
         attr_reader :country, :name, :company, :address_1, :address_2, :city, :province, :postal_code, :phone
         include PrintFormBlurOut
 
@@ -195,7 +196,7 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::StampsHtmlField
+      class MailToDom < Browser::StampsBrowserElement
         attr_reader :text_area, :country
         include PrintFormBlurOut
 
@@ -217,11 +218,11 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::StampsHtmlField
+      class PrintFormEmail < Browser::StampsBrowserElement
 
       end
 
-      class PrintFormWeight < Browser::StampsHtmlField
+      class PrintFormWeight < Browser::StampsBrowserElement
         attr_reader :auto_weigh, :weigh_button, :mail_pounds, :mail_ounces
         include PrintFormBlurOut
 
@@ -246,7 +247,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailFrom < Browser::StampsHtmlField
+      class PrintFormMailFrom < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down, :manage_shipping_address
         include PrintFormBlurOut
 
@@ -300,7 +301,7 @@ module Stamps
         end
       end
 
-      class PrintFormService < Browser::StampsHtmlField
+      class PrintFormService < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down
         include PrintFormBlurOut
 
@@ -369,7 +370,7 @@ module Stamps
 
       end
 
-      class StampAmount < Browser::StampsHtmlField
+      class StampAmount < Browser::StampsBrowserElement
         def text_box
           StampsTextbox.new(browser.text_field name: "stampAmount")
         end
@@ -395,7 +396,7 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::StampsHtmlField
+      class PrintFormEmail < Browser::StampsBrowserElement
         attr_reader :checkbox, :text_box
         def initialize(param)
           super(param)
@@ -409,7 +410,7 @@ module Stamps
         end
       end
 
-      class MailTracking < Browser::StampsHtmlField
+      class MailTracking < Browser::StampsBrowserElement
 
         def text_box
           StampsTextbox.new browser.text_field name: "tracking"
@@ -445,7 +446,7 @@ module Stamps
         end
       end
 
-      class PrintFormInsureFor < Browser::StampsHtmlField
+      class PrintFormInsureFor < Browser::StampsBrowserElement
         def checkbox
 
         end
@@ -467,7 +468,7 @@ module Stamps
         end
       end
 
-      class PrintFormCostCode < Browser::StampsHtmlField
+      class PrintFormCostCode < Browser::StampsBrowserElement
         def text_box
           StampsTextbox.new browser.text_field name: "costCodeId"
         end
@@ -502,7 +503,7 @@ module Stamps
 
       end
 
-      class PrintFormQuantity < Browser::StampsHtmlField
+      class PrintFormQuantity < Browser::StampsBrowserElement
         def text_box
           StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
         end
@@ -528,7 +529,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailToLink < Browser::StampsHtmlField
+      class PrintFormMailToLink < Browser::StampsBrowserElement
         attr_accessor :link, :contacts_modal
 
         def initialize(param)
@@ -547,7 +548,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailTo < Browser::StampsHtmlField
+      class PrintFormMailTo < Browser::StampsBrowserElement
         attr_reader :address, :mail_to_link
         include PrintFormBlurOut
 
@@ -567,7 +568,7 @@ module Stamps
         end
       end
 
-      class PrintFormCustoms < Browser::StampsHtmlField
+      class PrintFormCustoms < Browser::StampsBrowserElement
         attr_reader :button, :customs_form
 
         def initialize(param)

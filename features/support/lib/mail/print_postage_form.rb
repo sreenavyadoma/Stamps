@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class PostageCountry < Browser::StampsHtmlField
+    class PostageCountry < Browser::StampsBrowserElement
       attr_reader :text_box, :drop_down
 
       def initialize(param)
@@ -27,7 +27,7 @@ module Stamps
       end
     end
 
-    class Pounds < Browser::StampsHtmlField
+    class Pounds < Browser::StampsBrowserElement
       attr_reader :text_box, :increment_button, :decrement_button
 
       def initialize(param)
@@ -67,7 +67,7 @@ module Stamps
       end
     end
 
-    class Ounces < Browser::StampsHtmlField
+    class Ounces < Browser::StampsBrowserElement
       attr_reader :decrement_button, :text_box, :increment_button
 
       def initialize(param)
@@ -108,7 +108,7 @@ module Stamps
       end
     end
 
-    class StampAmount < Browser::StampsHtmlField
+    class StampAmount < Browser::StampsBrowserElement
       def text_box
         StampsTextbox.new(browser.text_field name: "stampAmount")
       end
@@ -134,7 +134,7 @@ module Stamps
       end
     end
 
-    class ShipDate < Browser::StampsHtmlField
+    class ShipDate < Browser::StampsBrowserElement
 
       def text_box
         StampsTextbox.new(browser.text_field id: "sdc-mainpanel-shipdatedatefield-inputEl")
@@ -146,7 +146,7 @@ module Stamps
 
     end
 
-    class CostCode  < Browser::StampsHtmlField
+    class CostCode  < Browser::StampsBrowserElement
       def text_box
         StampsTextbox.new browser.text_field name: "costCodeId"
       end
@@ -181,7 +181,7 @@ module Stamps
 
     end
 
-    class Quantity < Browser::StampsHtmlField
+    class Quantity < Browser::StampsBrowserElement
       def text_box
         StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
       end

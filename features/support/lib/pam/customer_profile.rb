@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class PamPageHeader < Browser::StampsHtmlField
+    class PamPageHeader < Browser::StampsBrowserElement
       def change_meter_limit
         link = Stamps::Browser::StampsElement.new browser.a(text: "Change Meter Limit")
         meter_limit_page = ChangeMeterLimit.new(param)
@@ -33,7 +33,7 @@ module Stamps
       end
     end
 
-    class CustomerProfile < Browser::StampsHtmlField
+    class CustomerProfile < Browser::StampsBrowserElement
       def present?
         browser.b(text: "Available Postage").present?
       end

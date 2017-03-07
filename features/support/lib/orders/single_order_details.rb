@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Details
-      class ShipFromAddress < Browser::StampsHtmlField
+      class ShipFromAddress < Browser::StampsBrowserElement
         attr_reader :drop_down, :text_box, :manage_shipping_adddress, :blur_element
 
         def initialize(param)
@@ -64,7 +64,7 @@ module Stamps
         end
       end
 
-      class BlurOutElement < Browser::StampsHtmlField
+      class BlurOutElement < Browser::StampsBrowserElement
         attr_reader :element
 
         def initialize(param)
@@ -78,7 +78,7 @@ module Stamps
         end
       end
 
-      class ShipToCountry < Browser::StampsHtmlField
+      class ShipToCountry < Browser::StampsBrowserElement
         attr_reader :ship_to_dd
 
         def initialize(param)
@@ -175,7 +175,7 @@ module Stamps
         end
       end
 
-      class ShipToCountryDropDown < Browser::StampsHtmlField
+      class ShipToCountryDropDown < Browser::StampsBrowserElement
         attr_reader :element
         def initialize(param)
           super(param)
@@ -183,7 +183,7 @@ module Stamps
         end
       end
 
-      class ShipToInternational < Browser::StampsHtmlField
+      class ShipToInternational < Browser::StampsBrowserElement
         attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :ship_to_dd
 
         def initialize(param)
@@ -213,7 +213,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestPopUp < Browser::StampsHtmlField
+      class AutoSuggestPopUp < Browser::StampsBrowserElement
         def present?
           name_fields[0].present?
         end
@@ -238,7 +238,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestInternational < Browser::StampsHtmlField
+      class AutoSuggestInternational < Browser::StampsBrowserElement
         #todo-rob FIX ME
         attr_reader :auto_suggest_box
 
@@ -266,7 +266,7 @@ module Stamps
         end
       end
 
-      class AddressNotFound < Browser::StampsHtmlField
+      class AddressNotFound < Browser::StampsBrowserElement
         attr_reader :window_title
 
         def initialize(param)
@@ -316,7 +316,7 @@ module Stamps
         end
       end
 
-      class AmbiguousAddress < Browser::StampsHtmlField
+      class AmbiguousAddress < Browser::StampsBrowserElement
         attr_reader :address_not_found
 
         def initialize(param)
@@ -424,7 +424,7 @@ module Stamps
         end
       end
 
-      class ShipToDomestic < Browser::StampsHtmlField
+      class ShipToDomestic < Browser::StampsBrowserElement
         attr_reader :ambiguous, :auto_suggest, :less_link, :ship_to_dd , :blur_element,
                     :address_not_found
 
@@ -502,7 +502,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestDomestic < Browser::StampsHtmlField
+      class AutoSuggestDomestic < Browser::StampsBrowserElement
         attr_reader :text_area, :auto_suggest_box
         def initialize(param, text_area)
           super(param)
@@ -528,7 +528,7 @@ module Stamps
         end
       end
 
-      class ShipTo < Browser::StampsHtmlField
+      class ShipTo < Browser::StampsBrowserElement
         attr_reader :country, :international, :domestic
         def initialize(param)
           super(param)
@@ -538,7 +538,7 @@ module Stamps
         end
       end
 
-      class AddEditShipFromModal < Browser::StampsHtmlField
+      class AddEditShipFromModal < Browser::StampsBrowserElement
         attr_reader :save_button, :origin_zip
 
         def initialize(param)
@@ -673,7 +673,7 @@ module Stamps
 
       end
 
-      class DeleteShippingAddress < Browser::StampsHtmlField
+      class DeleteShippingAddress < Browser::StampsBrowserElement
 
         def window_title
           browser.div text: "Delete Shipping Address"
@@ -712,7 +712,7 @@ module Stamps
         end
       end
 
-      class ViewRestrictions < Browser::StampsHtmlField
+      class ViewRestrictions < Browser::StampsBrowserElement
         def browser_ok_button
           StampsElement.new browser.span text: "OK"
         end
@@ -726,7 +726,7 @@ module Stamps
         end
       end
 
-      class ManageShippingAddresses < Browser::StampsHtmlField
+      class ManageShippingAddresses < Browser::StampsBrowserElement
         attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :shipping_address
 
         def initialize(param)
@@ -944,7 +944,7 @@ module Stamps
         end
       end
 
-      class DetailsService < Browser::StampsHtmlField
+      class DetailsService < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
@@ -1072,7 +1072,7 @@ module Stamps
         end
       end
 
-      class InsuranceTermsConditions < Browser::StampsHtmlField
+      class InsuranceTermsConditions < Browser::StampsBrowserElement
         def present?
           begin
             (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
@@ -1106,7 +1106,7 @@ module Stamps
         end
       end
 
-      class DetailsInsureFor < Browser::StampsHtmlField
+      class DetailsInsureFor < Browser::StampsBrowserElement
         attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :terms, :blur_element
 
         def initialize(param)
@@ -1192,7 +1192,7 @@ module Stamps
         end
       end
 
-      class DetailsTracking < Browser::StampsHtmlField
+      class DetailsTracking < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down, :blur_element, :cost_label
         def initialize(param)
           super(param)
@@ -1281,10 +1281,10 @@ module Stamps
         end
       end
 
-      class DetailsStoreItem < Browser::StampsHtmlField
+      class DetailsStoreItem < Browser::StampsBrowserElement
       end
 
-      class OrderDetailsWeight < Browser::StampsHtmlField
+      class OrderDetailsWeight < Browser::StampsBrowserElement
         attr_reader :lb, :oz
         def initialize(param)
           super(param)
@@ -1300,7 +1300,7 @@ module Stamps
         end
       end
 
-      class OrderDetailsDimensions < Browser::StampsHtmlField
+      class OrderDetailsDimensions < Browser::StampsBrowserElement
         attr_reader :length, :width, :height
         def initialize(param)
           super(param)
@@ -1325,7 +1325,7 @@ module Stamps
         end
       end
 
-      class AssociatedOrderItem < Browser::StampsHtmlField
+      class AssociatedOrderItem < Browser::StampsBrowserElement
         attr_reader :index, :item_qty, :item_id, :item_description, :delete
         def initialize(param, number)
           super(param)
@@ -1346,7 +1346,7 @@ module Stamps
         end
       end
 
-      class ItemsOrderedSection < Browser::StampsHtmlField
+      class ItemsOrderedSection < Browser::StampsBrowserElement
         attr_reader :add_btn, :drop_down
 
         def initialize(param)
@@ -1389,7 +1389,7 @@ module Stamps
         end
       end
 
-      class DetailsCollapsible < Browser::StampsHtmlField
+      class DetailsCollapsible < Browser::StampsBrowserElement
         attr_reader :field
         def initialize(param)
           super(param)
@@ -1408,7 +1408,7 @@ module Stamps
         end
       end
 
-      class ToolbarMenu < Browser::StampsHtmlField
+      class ToolbarMenu < Browser::StampsBrowserElement
         attr_reader :drop_down
         def initialize(param)
           super(param)
@@ -1441,7 +1441,7 @@ module Stamps
         end
       end
 
-      class DetailsToolbar < Browser::StampsHtmlField
+      class DetailsToolbar < Browser::StampsBrowserElement
         attr_reader :menu
 
         def initialize(param)
@@ -1463,7 +1463,7 @@ module Stamps
         end
       end
 
-      class DetailsFooter < Browser::StampsHtmlField
+      class DetailsFooter < Browser::StampsBrowserElement
         attr_reader :label
         def initialize(param)
           super(param)
@@ -1499,7 +1499,7 @@ module Stamps
         end
       end
 
-      class OrdersCustomsFields < Browser::StampsHtmlField
+      class OrdersCustomsFields < Browser::StampsBrowserElement
         attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
         def initialize(param)
@@ -1528,7 +1528,7 @@ module Stamps
         end
       end
 
-      class SingleOrderDetails < Browser::StampsHtmlField
+      class SingleOrderDetails < Browser::StampsBrowserElement
         attr_reader :toolbar, :ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
                     :footer, :customs, :items_ordered, :reference_no, :collapsed_details, :blur_element
 

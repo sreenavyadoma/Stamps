@@ -14,11 +14,11 @@ Feature: Extra Services BVT
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service PM Package
-    Then on Shipping Label Print form, set Hide Mail Value to Unchecked
-    Then on Shipping Label Print form, set Print Receipt to Checked
-    Then on Shipping Label Print form, set Print Reference Number to Checked
-    Then on Shipping Label Print form, set Reference Number to 12345
-    Then on Shipping Label Print form, set Cost Code to None
+    Then set Shipping Label Print form Hide Mail Value to Unchecked
+    Then set Shipping Label Print form Print Receipt to Checked
+    Then set Shipping Label Print form Print Reference Number to Checked
+    Then set Shipping Label Print form Reference Number to 12345
+    Then set Shipping Label Print form Cost Code to None
     Then click Print form Print button
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

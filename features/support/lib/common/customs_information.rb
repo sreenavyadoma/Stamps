@@ -38,10 +38,10 @@ module Stamps
         end
       end
 
-      class PackageContentsDetails < Browser::StampsHtmlField
+      class PackageContentsDetails < Browser::StampsBrowserElement
       end
 
-      class CustomsMadeIn < Browser::StampsHtmlField
+      class CustomsMadeIn < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down, :index
 
         def initialize(param, text_box, drop_down, index)
@@ -69,7 +69,7 @@ module Stamps
         end
       end
 
-      class AssociatedCustomsLineItem < Browser::StampsHtmlField
+      class AssociatedCustomsLineItem < Browser::StampsBrowserElement
         attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :made_in, :customs_item_hs_tariff, :index
 
         def initialize(param, index)
@@ -100,7 +100,7 @@ module Stamps
         end
       end
 
-      class AssociatedCustomsItems < Browser::StampsHtmlField
+      class AssociatedCustomsItems < Browser::StampsBrowserElement
         attr_reader :add_btn
 
         def initialize(param)
@@ -127,7 +127,7 @@ module Stamps
         end
       end
 
-      class UspsPrivactActStatementModal < Browser::StampsHtmlField
+      class UspsPrivactActStatementModal < Browser::StampsBrowserElement
         attr_reader :window_title, :okay
 
         def initialize(param)
@@ -141,7 +141,7 @@ module Stamps
         end
       end
 
-      class CustInfoPackageContents < Browser::StampsHtmlField
+      class CustInfoPackageContents < Browser::StampsBrowserElement
         attr_accessor :combo_box, :contents
 
         def initialize(param)
@@ -158,7 +158,7 @@ module Stamps
         end
       end
 
-      class CustInfoInternalTransaction < Browser::StampsHtmlField
+      class CustInfoInternalTransaction < Browser::StampsBrowserElement
         attr_accessor :combo_box, :itn_number
 
         def initialize(param)
@@ -174,7 +174,7 @@ module Stamps
         end
       end
 
-      class CustomsInformation < Browser::StampsHtmlField
+      class CustomsInformation < Browser::StampsBrowserElement
 
         attr_reader :window_title, :associated_items, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                     :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
