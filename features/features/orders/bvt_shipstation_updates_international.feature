@@ -65,15 +65,15 @@ Feature:  Update International Orders to ShipStation
     Then Pause for 1 second
 
     Then expect Order Details form Ship-To Country is correct
-    Then expect Order Details form Ship-To Name is correct
+    Then expect Order Details form International Ship-To Name is correct
     Then expect Order Details form International Ship-To Company is correct
     Then expect Order Details form International Ship-To Address 1 is correct
     Then expect Order Details form International Ship-To Address 2 is correct
     Then expect Order Details form International Ship-To City is correct
     Then expect Order Details form International Ship-To Province is correct
     Then expect Order Details form International Ship-To Postal Code is correct
-    Then expect Order Details form Ship-To Phone is correct
-    Then expect Order Details form Ship-To Email is correct
+    Then expect Order Details form International Ship-To Phone is correct
+    Then expect Order Details form International Ship-To Email is correct
 
     Then expect Order Details form Reference Number and saved Reference Number are the same
 

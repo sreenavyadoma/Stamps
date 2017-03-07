@@ -136,9 +136,9 @@ module Stamps
 
         def domestic?
           30.times do
-            return true if @dom_text_area.present?
-            return false if @int_drop_down.present?
+            dom_text_area.present?
           end
+          false
         end
 
         def select(str)
