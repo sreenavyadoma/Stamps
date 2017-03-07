@@ -25,12 +25,12 @@ Feature: Domestic Address
     Then on Order Details form, select Ship-To auto-suggest item 1
     Then set Order Details form International Ship-To auto-suggest address to partial name Flo
     Then on Order Details form, select Ship-To auto-suggest item 1
-    Then expect Order Details form International Ship-To Name is Venice Florence
-    Then expect Order Details form International Ship-To Company is CompanyNameInternational
-    Then expect Order Details form International Ship-To Address 1 is Italian Street address
-    Then expect Order Details form International Ship-To City is ItalianCity
-    Then expect Order Details form International Ship-To Province is Rome
-    Then expect Order Details form International Ship-To Postal Code is Pisa
-    Then expect Order Details form International Ship-To Phone is 41511111111
-    Then expect Order Details form International Ship-To Email is autosuggest001.2@mailinator.com
+    Then expect Order Details form Ship-To Name is Venice Florence
+    Then expect Order Details form Ship-To Company is CompanyNameInternational
+    Then expect Order Details form Ship-To Address 1 is Italian Street address
+    Then expect Order Details form Ship-To City is ItalianCity
+    Then expect Order Details form Ship-To Province is Rome
+    Then expect Order Details form Ship-To Postal Code is Pisa
+    Then expect Order Details form Ship-To Phone is 41511111111
+    Then expect Order Details form Ship-To Email is autosuggest001.2@mailinator.com
     Then Sign out

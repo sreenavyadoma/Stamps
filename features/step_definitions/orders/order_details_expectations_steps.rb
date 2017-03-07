@@ -62,55 +62,55 @@ Then /^(?:E|e)xpect Order Details form Ship-To Country is (?:correct|(.*))$/ do 
   expect(stamps.orders.order_details.ship_to.country.text_box.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Name is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Name is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:name] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.name.text).to eql(expectation)
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Company is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Company is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:company] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.company.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Address 1 is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Address 1 is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:street_address_1] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.address_1.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Address 2 is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Address 2 is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:street_address_2] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.address_2.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To City is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To City is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:city] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.city.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Province is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Province is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:state] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.province.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Postal Code is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Postal Code is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:zip] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.postal_code.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Phone is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Phone is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:phone] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.phone.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Email is (?:correct|(.*))$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form International Ship-To Email is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:email] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.email.text).to eql expectation

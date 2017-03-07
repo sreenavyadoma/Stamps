@@ -20,15 +20,15 @@ Feature:  Order Details Form Placeholder default values
 
     Then set Order Details form Ship-To Country to Curacao
 
-    Then expect Order Details form International Ship-To Name Placeholder is Name
-    Then expect Order Details form International Ship-To Company Placeholder is Company
-    Then expect Order Details form International Ship-To Address 1 Placeholder is Address 1
-    Then expect Order Details form International Ship-To Address 2 Placeholder is Address 2
-    Then expect Order Details form International Ship-To City Placeholder is City
-    Then expect Order Details form International Ship-To Province Placeholder is Province
-    Then expect Order Details form International Ship-To Postal Code Placeholder is Postal Code
-    Then expect Order Details form International Ship-To Phone Placeholder is Phone
-    Then expect Order Details form International Ship-To Email Placeholder is Email
+    Then expect Order Details form Ship-To Name Placeholder is Name
+    Then expect Order Details form Ship-To Company Placeholder is Company
+    Then expect Order Details form Ship-To Address 1 Placeholder is Address 1
+    Then expect Order Details form Ship-To Address 2 Placeholder is Address 2
+    Then expect Order Details form Ship-To City Placeholder is City
+    Then expect Order Details form Ship-To Province Placeholder is Province
+    Then expect Order Details form Ship-To Postal Code Placeholder is Postal Code
+    Then expect Order Details form Ship-To Phone Placeholder is Phone
+    Then expect Order Details form Ship-To Email Placeholder is Email
 
     Then Sign out
 
