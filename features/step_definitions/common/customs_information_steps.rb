@@ -87,7 +87,7 @@ end
 
 Then /^(?:E|e)xpect Customs form License Number is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_parameter[:customs_license_no] : expectation
-  sleep(0.5)
+  sleep(1)
   expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.license.text).to eql(expectation) if param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license.text).to eql(expectation) if param.web_app == :mail
   step "Save Customs Information form Total amount"
