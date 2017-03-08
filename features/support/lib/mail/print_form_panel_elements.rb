@@ -136,9 +136,10 @@ module Stamps
 
         def domestic?
           30.times do
-            dom_text_area.present?
+            sleep(0.05)
+            return true if dom_text_area.present?
           end
-          false
+          dom_text_area.present?
         end
 
         def select(str)
