@@ -137,8 +137,8 @@ Feature:  Update International Orders to ShipStation
     Then expect Orders Grid City is correct
     Then expect Orders Grid State is correct
     Then expect Orders Grid Zip is correct
-    Then expect Orders Grid Phone is correct
-    Then expect Orders Grid Email is correct
+    #Then expect Orders Grid Phone is correct
+    #Then expect Orders Grid Email is correct
 
     Then expect Orders Grid Qty. is 6
     Then expect Orders Grid Item SKU is Multiple
