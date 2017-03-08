@@ -222,7 +222,7 @@ module Stamps
         end
 
         def present?
-          package_contents.present?
+          package_contents.combo_box.present?
         end
 
         def wait_until_present(*args)
