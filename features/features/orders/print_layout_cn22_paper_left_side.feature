@@ -16,7 +16,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then in Orders Toolbar, click Add button
 
     Then set Order Details form Ship-From to default
@@ -29,7 +29,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then in Orders Grid, check row 1
     Then in Orders Grid, check row 2

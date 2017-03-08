@@ -222,7 +222,7 @@ module Stamps
         end
 
         def present?
-          window_title.present?
+          package_contents.present?
         end
 
         def wait_until_present(*args)
@@ -248,6 +248,7 @@ module Stamps
         end
 
         def close
+          close_button.click_while_present
           close_button.click_while_present
           present?
         end

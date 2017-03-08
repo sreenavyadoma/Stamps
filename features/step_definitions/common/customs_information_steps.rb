@@ -155,7 +155,7 @@ Then /^(?:E|e)xpect Customs form I agree to the USPS Privacy Act Statement is un
   expect(stamps.mail.print_form.mail_customs.edit_form.i_agree.checked?).to be(false) if param.web_app == :mail
 end
 
-Then /^(?:C|c)lick Customs form Close button$/ do
+Then /^(?:C|c)lose Customs Information form$/ do
   step "Pause for 4 seconds"
   step "Blur out on Customs form 20 times"
   step "Save Customs Information form Total amount"

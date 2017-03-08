@@ -28,7 +28,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail International
@@ -42,7 +42,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail International
@@ -56,7 +56,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail International
@@ -70,7 +70,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail International
@@ -84,7 +84,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail International
@@ -98,7 +98,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail International
@@ -112,7 +112,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail Express International
@@ -126,7 +126,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail Express International
@@ -140,7 +140,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
     Then expect Orders Grid service is Priority Mail Express International

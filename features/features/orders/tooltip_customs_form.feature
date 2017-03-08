@@ -30,7 +30,7 @@ Feature:  Customs Form Data Tooltip Error
     Then expect Customs form Unit Price Tooltip Error is Value must be greater than 0
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 50, Made In United States, Tariff 100
     Then Pause for 2 seconds
-    Then click Customs form Close button
+    Then close Customs Information form
     Then Sign out
 
 

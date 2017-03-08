@@ -52,7 +52,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then Pause for 4 seconds
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then Pause for 2 seconds
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Print button

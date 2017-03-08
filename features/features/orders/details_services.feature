@@ -170,7 +170,7 @@ Feature:  Orders service Selection
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In Brazil, Tariff 1
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then on Order Details form, select service FCMI Large Envelope
     Then expect Order Details form service is FCMI Large Envelope

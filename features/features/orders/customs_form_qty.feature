@@ -42,7 +42,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then check Customs form I agree to the USPS Privacy Act Statement
 
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then in Orders Grid, uncheck row 1
     Then in Orders Grid, check row 1
@@ -55,6 +55,6 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then expect Customs form Associated Item 2 Description is item 2
     Then expect Customs form Associated Item 2 Quantity is 7
 
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then Sign out

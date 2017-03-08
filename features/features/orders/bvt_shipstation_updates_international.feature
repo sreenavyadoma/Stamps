@@ -49,7 +49,7 @@ Feature:  Update International Orders to ShipStation
     Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then Pause for 2 seconds
     Then on Order Details form, blur out 3 times
@@ -128,7 +128,7 @@ Feature:  Update International Orders to ShipStation
 
     Then expect Customs form I agree to the USPS Privacy Act Statement is checked
     Then expect Customs form Total Value is correct
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then expect Orders Grid Recipient is correct
     Then expect Orders Grid Company is correct
