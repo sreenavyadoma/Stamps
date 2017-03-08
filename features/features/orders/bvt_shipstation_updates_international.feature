@@ -147,7 +147,7 @@ Feature:  Update International Orders to ShipStation
     Then expect Orders Grid service is Priority Mail International
     Then expect Orders Grid Pounds is correct
     Then expect Orders Grid Ounces is correct
-    Then expect Order Details form Insure-For and saved Insure-For values are the same
+    Then expect Order Details form Insure-For is correct
     Then expect Orders Grid Order Status is Awaiting Shipment
 
     Then Pause for 2 second
