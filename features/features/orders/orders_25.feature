@@ -19,7 +19,7 @@ Feature: 25 orders
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
@@ -33,7 +33,7 @@ Feature: 25 orders
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service PMI Flat Rate Envelope
 
     # First Class Mail

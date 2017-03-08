@@ -31,5 +31,5 @@ Feature: North Korea Internal Transaction Number Required
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then Sign out

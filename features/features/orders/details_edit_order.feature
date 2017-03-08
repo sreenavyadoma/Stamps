@@ -14,7 +14,7 @@ Feature: Edit Order Details
     Then set Order Details form Pounds to 2
     Then set Order Details form Insure-For to $100.00
     Then expect Order Details form Insure-For Cost is greater than $1
-    Then expect Order Details form Insure-For is $100
+    Then expect Order Details form Insure-For is 100
     Then set Order Details form Height to 1
     Then expect Order Details form Height is 1
     Then set Order Details form Length to 1
@@ -29,7 +29,7 @@ Feature: Edit Order Details
     Then expect Order Details form Pounds is 1
     Then set Order Details form Insure-For to $150
     Then expect Order Details form Insure-For Cost is greater than $1
-    Then expect Order Details form Insure-For is $150
+    Then expect Order Details form Insure-For is 150
     Then set Order Details form Height to 2
     Then set Order Details form Length to 3
     Then set Order Details form Width to 4

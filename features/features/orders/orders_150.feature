@@ -256,7 +256,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
@@ -277,7 +277,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service PMI Flat Rate Envelope
 
     # First Class Mail
@@ -530,7 +530,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
@@ -551,7 +551,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service PMI Flat Rate Envelope
 
     # First Class Mail
@@ -803,7 +803,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
@@ -824,7 +824,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service PMI Flat Rate Envelope
 
     # First Class Mail
@@ -1077,7 +1077,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
@@ -1098,7 +1098,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service PMI Flat Rate Envelope
 
     # First Class Mail
@@ -1351,7 +1351,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
@@ -1372,7 +1372,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service PMI Flat Rate Envelope
 
     # First Class Mail
@@ -1625,7 +1625,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
@@ -1646,7 +1646,7 @@ Feature: 150 orders
     Then set Customs form ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then on Order Details form, select service PMI Flat Rate Envelope
 
     Then Sign out

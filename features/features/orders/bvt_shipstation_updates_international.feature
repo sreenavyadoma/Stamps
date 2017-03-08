@@ -49,7 +49,7 @@ Feature:  Update International Orders to ShipStation
     Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
 
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then Pause for 2 seconds
     Then on Order Details form, blur out 3 times
@@ -75,10 +75,10 @@ Feature:  Update International Orders to ShipStation
     Then expect Order Details form International Ship-To Phone is correct
     Then expect Order Details form International Ship-To Email is correct
 
-    Then expect Order Details form Reference Number and saved Reference Number are the same
+    Then expect Order Details form Reference Number is correct
 
     Then expect Order Details form service is PMI Package
-    Then expect Order Details form Service Cost and saved Service Cost values are the same
+    Then expect Order Details form Service Cost is correct
 
     Then expect Order Details form Pounds is 2
     Then expect Order Details form Ounces is 2
@@ -96,8 +96,8 @@ Feature:  Update International Orders to ShipStation
     Then expect Order Details form Item 3 ID is ID 3
     Then expect Order Details form Item 3 Description is Description 3
 
-    Then expect Order Details form Insure-For and saved Insure-For values are the same
-    Then expect Order Details form Insure-For Cost and saved Insure-For Cost values are the same
+    Then expect Order Details form Insure-For is correct
+    Then expect Order Details form Insure-For Cost is correct
     Then click Order Details form Edit Form button
     Then Pause for 1 second
     Then expect Customs form Package Contents is Commercial Sample
@@ -128,7 +128,7 @@ Feature:  Update International Orders to ShipStation
 
     Then expect Customs form I agree to the USPS Privacy Act Statement is checked
     Then expect Customs form Total Value is correct
-    Then click Customs form Close button
+    Then close Customs Information form
 
     Then expect Orders Grid Recipient is correct
     Then expect Orders Grid Company is correct
@@ -137,8 +137,8 @@ Feature:  Update International Orders to ShipStation
     Then expect Orders Grid City is correct
     Then expect Orders Grid State is correct
     Then expect Orders Grid Zip is correct
-    Then expect Orders Grid Phone is correct
-    Then expect Orders Grid Email is correct
+    #Then expect Orders Grid Phone is correct
+    #Then expect Orders Grid Email is correct
 
     Then expect Orders Grid Qty. is 6
     Then expect Orders Grid Item SKU is Multiple
@@ -147,7 +147,7 @@ Feature:  Update International Orders to ShipStation
     Then expect Orders Grid service is Priority Mail International
     Then expect Orders Grid Pounds is correct
     Then expect Orders Grid Ounces is correct
-    Then expect Order Details form Insure-For and saved Insure-For values are the same
+    Then expect Order Details form Insure-For is correct
     Then expect Orders Grid Order Status is Awaiting Shipment
 
     Then Pause for 2 second

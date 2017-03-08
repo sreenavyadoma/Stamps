@@ -19,7 +19,7 @@ Feature:  BVT International Shipping
     Then set Customs form Internal Transaction Number to Not required
     Then set Customs form More Info to random
     Then check Customs form I agree to the USPS Privacy Act Statement
-    Then click Customs form Close button
+    Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then in Print modal, click Close button
     Then Sign out

@@ -9,7 +9,7 @@ Feature: User Views Price Next to service Dropdown
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to address in Zone 1 through 4
-    Then expect Order Details form Service Cost is $0.00
+    Then expect Order Details form Service Cost is 0.00
     Then expect Order Details form Service Cost inline price for "FCM Package" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "First-Class Mail Package/Thick Envelope" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "Priority Mail Large/Thick Envelope" is greater than $0.01

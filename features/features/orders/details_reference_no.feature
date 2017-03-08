@@ -14,7 +14,7 @@ Feature:  Order Details Form - Reference # Field
     Then set Order Details form Ounces to 2
 
     Then set Order Details form Reference Number to random
-    Then expect Order Details form Reference Number and saved Reference Number are the same
+    Then expect Order Details form Reference Number is correct
 
     Then set Order Details form Reference Number to Rob
     Then expect Order Details form Reference Number is Rob

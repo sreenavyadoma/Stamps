@@ -11,10 +11,10 @@ Feature: Details Ship Cost Total
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Total label is Total Ship Cost:
     Then set Order Details form Ship-From to default
-    Then expect Order Details form Service Cost is $0.00
-    Then expect Order Details form Insure-For Cost is $0.00
-    Then expect Order Details form Tracking Cost is $0.00
-    Then expect Order Details form Total Ship Cost is $0.00
+    Then expect Order Details form Service Cost is 0.00
+    Then expect Order Details form Insure-For Cost is 0.00
+    Then expect Order Details form Tracking Cost is 0.00
+    Then expect Order Details form Total Ship Cost is 0.00
 
     Then set Order Details form Ship-To to address in Zone 8
     Then on Order Details form, select service PM Package

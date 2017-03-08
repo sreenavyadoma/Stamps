@@ -153,6 +153,7 @@ module Stamps
         end
 
         def select(str)
+          combo_box.text_box.wait_until_present(3)
           combo_box.select(str)
           @contents = (str == 'Commercial Sample')?PackageContentsDetails.new(param).extend(LicenseCertificateInvoice):PackageContentsDetails.new(param).extend(MoreInfo)
         end
@@ -222,7 +223,7 @@ module Stamps
         end
 
         def present?
-          window_title.present?
+          package_contents.combo_box.present?
         end
 
         def wait_until_present(*args)
@@ -248,6 +249,7 @@ module Stamps
         end
 
         def close
+          close_button.click_while_present
           close_button.click_while_present
           present?
         end
