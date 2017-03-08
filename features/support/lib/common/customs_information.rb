@@ -153,6 +153,7 @@ module Stamps
         end
 
         def select(str)
+          combo_box.text_box.wait_until_present(3)
           combo_box.select(str)
           @contents = (str == 'Commercial Sample')?PackageContentsDetails.new(param).extend(LicenseCertificateInvoice):PackageContentsDetails.new(param).extend(MoreInfo)
         end
