@@ -61,19 +61,17 @@ Feature:  Update Order to ShipStation
     Then expect Order Details form Width is 1
     Then expect Order Details form Height is 1
 
-    #Then expect Order Details form Service Cost and saved Service Cost values are the same
     Then expect Order Details form service is PM Package
-    Then expect Order Details form Service Cost and saved Service Cost values are the same
+    Then expect Order Details form Service Cost is correct
 
-    Then expect Order Details form Insure-For is $100.00
-    Then expect Order Details form Insure-For Cost and saved Insure-For Cost values are the same
+    Then expect Order Details form Insure-For is 100.00
+    Then expect Order Details form Insure-For Cost is correct
 
     Then expect Order Details form Tracking is Signature Required
-    Then expect Order Details form Tracking Cost and saved Tracking Cost values are the same
+    Then expect Order Details form Tracking Cost is correct
 
-    Then expect Order Details form Reference Number is Update Orders To ShipStation
+    Then expect Order Details form Reference Number is correct
 
-    #Verify Orders Grid data was saved in ShipStation
     Then expect Orders Grid Store is Manual Orders
     Then expect Orders Grid Order ID is the same as Details Form Order ID
     Then expect Orders Grid Ship Cost is the same as Details Form Ship Cost

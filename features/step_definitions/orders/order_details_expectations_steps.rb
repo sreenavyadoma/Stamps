@@ -225,13 +225,13 @@ Then /^Expect Exact Address Not Found module to appear/ do
   expect(stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.window_title.text).to eql "Exact Address Not Found"
 end
 
-Then /^(?:E|e)xpect Order Details form Reference Number (?:is (.*)|and saved Reference Number are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Reference Number is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:reference_no] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.reference_no.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Insure-For (?:is \$(.*)|and saved Insure-For values are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Insure-For is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = test_parameter[:insure_for] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   10.times do
@@ -240,7 +240,7 @@ Then /^(?:E|e)xpect Order Details form Insure-For (?:is \$(.*)|and saved Insure-
   expect(stamps.orders.order_details.insure_for.text_box.text.to_f.round(2)).to eql expectation.to_f.round(2)
 end
 
-Then /^(?:E|e)xpect Order Details form Insure-For Cost (?:is \$(.*)|and saved Insure-For Cost values are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Insure-For Cost is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = test_parameter[:insure_for_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   5.times do
@@ -294,10 +294,10 @@ Then /^(?:E|e)xpect Order Details form service Tooltip for "(.*)" to include "(.
 end
 
 Then /^(?:E|e)xpect Order Details form Service Cost saved value is the same$/ do
-  step "expect Order Details form Service Cost is $#{test_parameter[:service_cost]}"
+  step "expect Order Details form Service Cost is #{test_parameter[:service_cost]}"
 end
 
-Then /^(?:E|e)xpect Order Details form Service Cost (?:is \$(.*)|and saved Service Cost values are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Service Cost is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = test_parameter[:service_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   10.times do
@@ -315,7 +315,7 @@ Then /^(?:E|e)xpect Order Details form Service Cost is greater than \$([0-9.]*)$
   expect(stamps.orders.order_details.service.cost).to be > expectation.to_f.round(2)
 end
 
-Then /^(?:E|e)xpect Order Details form Tracking Cost (?:is \$([0-9.]*)|and saved Tracking Cost values are the same)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Tracking Cost is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = test_parameter[:tracking_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   10.times do
@@ -391,11 +391,10 @@ Then /^(?:E|e)xpect Order Details form Tracking is \"([\w\s]*)\"$/ do |expectati
   expect(stamps.orders.order_details.tracking.text_box.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Total Ship Cost is \$(.*)$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Total Ship Cost is (?:correct|(\d+.\d*))$/ do |expectation|
+  expectation = test_parameter[:total_ship_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
-  10.times do
-    break if stamps.orders.order_details.footer.total_ship_cost.eql?(expectation.to_f.round(2))
-  end
+  10.times do break if stamps.orders.order_details.footer.total_ship_cost.eql?(expectation.to_f.round(2)) end
   expect(stamps.orders.order_details.footer.total_ship_cost).to eql(expectation.to_f.round(2))
 end
 

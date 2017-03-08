@@ -75,10 +75,10 @@ Feature:  Update International Orders to ShipStation
     Then expect Order Details form International Ship-To Phone is correct
     Then expect Order Details form International Ship-To Email is correct
 
-    Then expect Order Details form Reference Number and saved Reference Number are the same
+    Then expect Order Details form Reference Number is correct
 
     Then expect Order Details form service is PMI Package
-    Then expect Order Details form Service Cost and saved Service Cost values are the same
+    Then expect Order Details form Service Cost is correct
 
     Then expect Order Details form Pounds is 2
     Then expect Order Details form Ounces is 2
@@ -96,8 +96,8 @@ Feature:  Update International Orders to ShipStation
     Then expect Order Details form Item 3 ID is ID 3
     Then expect Order Details form Item 3 Description is Description 3
 
-    Then expect Order Details form Insure-For and saved Insure-For values are the same
-    Then expect Order Details form Insure-For Cost and saved Insure-For Cost values are the same
+    Then expect Order Details form Insure-For is correct
+    Then expect Order Details form Insure-For Cost is correct
     Then click Order Details form Edit Form button
     Then Pause for 1 second
     Then expect Customs form Package Contents is Commercial Sample
