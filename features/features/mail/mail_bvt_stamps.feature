@@ -11,12 +11,11 @@ Feature: Stamps BVT
     Then select Print On Stamps
 
     Then set Stamps Serial Number to random
-
     Then select Stamps Specify Postage Amount
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then select Print form service Media Mail
-    Then Mail Stamps: Set Stamp Amount to $4.65
+    Then set Stamps Amount to 4.65
     Then Mail Stamps: Set Quantity to 3
     Then Mail Stamps: Set Reference Number to Stamp3221
     Then Mail Stamps: Set Cost Code to None

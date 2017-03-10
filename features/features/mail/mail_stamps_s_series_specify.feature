@@ -14,7 +14,7 @@ Feature: Stamps S Series - Specify Postage
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then select Print form service Media Mail
-    Then Mail Stamps: Set Stamp Amount to $0.15
+    Then set Stamps Amount to 0.15
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
     Then Print Postage
