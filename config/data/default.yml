@@ -522,6 +522,9 @@ login_credentials_invalid:
 
 orders_credentials:
   stg:
+    mail_print_shipping_label_8x11:
+      usr: stgom0dqgzppy
+      pw: pass111
     rob:
       usr: stgom0dqgzppy
       pw: pass111
@@ -887,6 +890,9 @@ orders_credentials:
       pw: pass111
 
   cc:
+    mail_print_shipping_label_8x11:
+      usr: changeme
+      pw: pass111
     rates_parcel_select_ground:
       usr: ccdwth36s
       pw: pass111
@@ -1257,6 +1263,9 @@ orders_credentials:
       usr: p8rk9lk7e
       pw: pass111
   sc:
+    mail_print_shipping_label_8x11:
+      usr: changeme
+      pw: pass111
     rob:
       usr: scsxpeco6b90
       pw: pass111

@@ -10,4 +10,3 @@ Feature: Health Check
     Then Health Check: Print - Address Book
     Then Health Check: OR - Reports
     Then Health Check: OR - Postage Tools
-

@@ -12,8 +12,18 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_print_envelope) do |t|
-  t.profile = 'mail_print_envelope'
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11) do |t|
+  t.profile = 'mail_print_shipping_label_8x11'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4'
   t.cucumber_opts = "-p cuke_reports"
 end
 
