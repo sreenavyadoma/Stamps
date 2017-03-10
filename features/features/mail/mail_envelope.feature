@@ -25,5 +25,5 @@ Feature: Envelope #7
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
-
+    
     Then Sign out

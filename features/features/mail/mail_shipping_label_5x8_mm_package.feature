@@ -14,7 +14,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM Package
     Then set Print form Ounces to 1
     Then select Print form service MM Package
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
     Then Sign out

@@ -16,10 +16,10 @@ Feature: Mail Roll - 4" x 6" - XM PFR Envelope
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 5 through 8
 
-    Then set Print form Pounds to 0
+
     Then set Print form Ounces to 1
-    Then Mail Roll: Select service Priority Mail Express Padded Flat Rate Envelope
-    Then click Print form Print button
-    Then in Mail Print modal, select Printer "ZDesigner"
+    Then select Print form service PME Flat Rate Envelope
+    Then Print Postage
+    Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
     Then Sign out

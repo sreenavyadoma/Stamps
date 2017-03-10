@@ -14,7 +14,7 @@ Feature:Shipping Label Preview Panel
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
+
     Then set Print form Ounces to 1
     Then select Mail Service Priority Mail Package
     Then set Shipping Label Print form Hide Mail Value to Checked
@@ -25,7 +25,7 @@ Feature:Shipping Label Preview Panel
     Then set Shipping Label Print form Print Receipt to Unchecked
     Then set Shipping Label Print form Reference Number to test12435
     Then set Shipping Label Print form Cost Code to None
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
     Then Sign out

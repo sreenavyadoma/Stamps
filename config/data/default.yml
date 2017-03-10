@@ -29,6 +29,8 @@ url_prefix:
   rating: printext.qacc
 
 mail_services:
+  First Class: sdc-nsservices-fc
+  Media Mail: sdc-nsservices-mm
   FCM Post Card: sdc-servicedroplist-fcpostcard
   FCM Letter: sdc-servicedroplist-fcletter
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
@@ -1653,6 +1655,9 @@ mail_credentials:
       pw: pass111
     mail_manage_shipping_addresses:
       usr: b2vc5867
+      pw: pass111
+    mail_print_envelope:
+      usr: pxihh2exps
       pw: pass111
     mail_print_envelope_6:
       usr: pxihh2exps

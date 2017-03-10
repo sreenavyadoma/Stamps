@@ -11,11 +11,9 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM Large Envelope
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4
-
-    Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then Mail Roll: Select service First-Class Mail Large Envelope-Flat
-    Then click Print form Print button
-    Then in Mail Print modal, select Printer "ZDesigner"
+    Then select Print form service FCM Large Envelope
+    Then Print Postage
+    Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
     Then Sign out

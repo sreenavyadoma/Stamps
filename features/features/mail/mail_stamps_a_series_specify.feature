@@ -9,15 +9,15 @@ Feature: Stamps A Series - Specify Postage
   @mail_print_stamps_a_series_specify
   Scenario: Stamps Regression A Series - Specify Postage
     Then select Print On Stamps
-    Then Mail Stamps: Set Serial Number to A12345
-    Then Mail Stamps: Select Specify Mail Amount
-    Then Mail Stamps: Set Ship-From to default
-    Then Mail Stamps: Set Ship-To country to United States
+    Then set Stamps Serial Number to A12345
+    Then select Stamps Specify Postage Amount
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To Country to United States
     Then Mail Stamps: Select Specify Mail service First Class
-    Then Mail Stamps: Set Stamp Amount to $0.15
+    Then set Stamps Amount to 0.15
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
     Then Sign out
