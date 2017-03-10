@@ -13,11 +13,11 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
 
     Then set Print form Mail-From to default
     Then set Label form Mail-To to address to random, random, 1350 Market Street, San Francisco, CA
-    Then set Print form Pounds to 0
+
     Then set Print form Ounces to 1
     Then select Print On FCM Package on Print form
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
     Then Sign out

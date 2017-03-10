@@ -14,7 +14,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PSG Large Package
     Then set Print form Ounces to 1
     Then select Mail Service Parcel Select Ground Large Package
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
     Then Sign out

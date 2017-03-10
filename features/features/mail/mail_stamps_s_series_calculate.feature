@@ -10,13 +10,13 @@ Feature: Stamps S Series - Calculate Postage
 
   Scenario: Stamps Regression S Series - Calculate Postage
     Then select Print On Stamps
-    Then Mail Stamps: Set Serial Number to S12345
+    Then set Stamps Serial Number to S12345
     Then Mail Stamps: Select Calculate Mail Amount
-    Then Mail Stamps: Set Ship-From to default
-    Then Mail Stamps: Set Ship-To country to United States
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To Country to United States
     Then Mail Stamps: Select Calculate Mail service First-Class Mail Postcard
     Then Mail Stamps: Set Quantity to 1
     Then Mail Stamps: Set Cost Code to None
-    Then click Print form Print button
+    Then Print Postage
     Then click Mail Print modal Print button
     Then Sign out

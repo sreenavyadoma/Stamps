@@ -14,7 +14,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Large Package
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
+
     Then set Print form Ounces to 1
     Then select Mail Service Priority Mail Large Package
     Then on Print form, select left side starting label

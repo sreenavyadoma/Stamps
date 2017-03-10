@@ -2,46 +2,87 @@
 module Stamps
   module Mail
     module PrintModal
-      class PrintPostageModalObject < Browser::StampsBrowserElement
-        def window_x_button
-          StampsElement.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
+      class MailPrinterComboBox < Browser::StampsBrowserElement
+        attr_reader :text_box, :drop_down
+
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new(browser.text_field(name: "printers"))
+          @drop_down = StampsElement.new(browser.div(css: "div[id$=-body]>div[id^=printwindow-][id$=-innerCt]>div[id^=printwindow-][id$=-targetEl]>div>div>div>div>div>div>div[class*=x-form-arrow-trigger-default]"))
         end
 
-        def close_window
-          #ElementHelper.click window_x_button, 'close_window'
+        def select(printer)
+          case printer.downcase
+            when /fac/
+              selection = StampsElement.new(browser.li(text: 'factory'))
+            when /kyocera/
+              selection = StampsElement.new(browser.li(text: /Kyocera/))
+            when /epson/
+              selection = StampsElement.new(browser.li(text: /EPSON/))
+            when /brother/
+              selection = StampsElement.new(browser.li(text: /Brother/))
+            when /officejet/
+              selection = StampsElement.new(browser.li(text: /Officejet/))
+            when /dymo/
+              selection = StampsElement.new(browser.li(text: /DYMO/))
+            when /zdesigner/
+              selection = StampsElement.new(browser.li(text: /ZDesigner/))
+            else
+              expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
+          end
+
+          10.times do
+            drop_down.safe_click unless selection.present?
+            selection.safe_click
+            break if text_box.text.include?(printer)
+          end
+          expect(text_box.text).to include(printer)
+        end
+      end
+
+      class MailPaperTrayComboBox < Browser::StampsBrowserElement
+        attr_accessor :drop_down, :text_box
+
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new browser.input name: "paperTrays"
+          @drop_down = StampsElement(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
         end
 
-        def x_button_present?
-          #ElementHelper.present? window_x_button
-        end
-
-        def wait_until_present(*args)
-          begin
-            window_x_button.wait_until_present(args)
-          rescue
-            #ignore
+        def select(str)
+          selection_label = StampsElement.new(browser.li(text: str))
+          10.times do
+            drop_down.safe_click unless selection_label.present?
+            selection_label.safe_click
+            sleep(0.05)
+            break if text_box.text.include?(str)
           end
         end
       end
 
-      class MailPrintModal < PrintPostageModalObject
-        attr_accessor :paper_tray, :printer, :print_button, :reprint_link
+      class MailPrintModal < Browser::StampsBrowserElement
+        attr_accessor :paper_tray, :printer, :print_button, :reprint_link, :window_title
 
         def initialize(param)
           super(param)
-          @printer = Printer.new(param)
-          @paper_tray = PaperTray.new(param)
+          @window_title = StampsElement.new(browser.div(text: "Print"))
+          @printer = MailPrinterComboBox.new(param)
+          @paper_tray = MailPaperTrayComboBox.new(param)
           @print_button = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
           @reprint_link = StampsElement.new(browser.a(text: 'Reprint'))
         end
 
         def present?
-          print_button.present?
+          window_title.present?
+        end
+
+        def wait_until_present(*args)
+          window_title.safely_wait_until_present(*args)
         end
 
         def print
           print_button.click_while_present
-          reprint_link.wait_until_present(5)
+          reprint_link.wait_until_present(3)
           expect(reprint_link.text).to eql('Reprint')
         end
 
@@ -151,63 +192,6 @@ module Stamps
 
         def paper_tray_field
           browser.text_field name: 'paperTrays'
-        end
-      end
-
-      class Printer < Browser::StampsBrowserElement
-        attr_reader :text_box, :drop_down
-
-        def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(name: "printers"))
-          @drop_down = StampsElement.new(browser.div(css: "div[id$=-body]>div[id^=printwindow-][id$=-innerCt]>div[id^=printwindow-][id$=-targetEl]>div>div>div>div>div>div>div[class*=x-form-arrow-trigger-default]"))
-        end
-
-        def select(printer)
-          case printer.downcase
-            when /fac/
-              selection = StampsElement.new(browser.li(text: 'factory'))
-            when /kyocera/
-              selection = StampsElement.new(browser.li(text: /Kyocera/))
-            when /epson/
-              selection = StampsElement.new(browser.li(text: /EPSON/))
-            when /brother/
-              selection = StampsElement.new(browser.li(text: /Brother/))
-            when /officejet/
-              selection = StampsElement.new(browser.li(text: /Officejet/))
-            when /dymo/
-              selection = StampsElement.new(browser.li(text: /DYMO/))
-            when /zdesigner/
-              selection = StampsElement.new(browser.li(text: /ZDesigner/))
-            else
-              expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
-          end
-
-          10.times do
-            drop_down.safe_click unless selection.present?
-            selection.safe_click
-            break if text_box.text.include?(printer)
-          end
-          expect(text_box.text).to include(printer)
-        end
-      end
-
-      class PaperTray < Browser::StampsBrowserElement
-        def text_box
-          StampsTextbox.new browser.input name: "paperTrays"
-        end
-
-        def drop_down
-          StampsElement.new(browser.divs(css: "div[class*=x-form-trigger]")[10])
-        end
-
-        def select(selection)
-          selection_label = StampsElement.new(browser.li(text: selection))
-          5.times do
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
-            break if text_box.text.include?(selection)
-          end
         end
       end
     end

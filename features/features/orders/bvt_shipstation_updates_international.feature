@@ -48,6 +48,7 @@ Feature:  Update International Orders to ShipStation
     Then add Customs form Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
     Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
 
+
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 

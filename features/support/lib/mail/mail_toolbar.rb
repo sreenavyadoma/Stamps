@@ -1,20 +1,22 @@
 module Stamps
   module Mail
+    class MailToolbar < Browser::StampsBrowserElement
+      attr_reader :total, :mail_print_modal, :confirm_window, :please_wait, :windows_print, :sample_button, :printing_problem, :insufficient_funds,
+                  :print_label, :print_stamps, :print_envelope
 
-    class MailToolbarPrintButton < Browser::StampsBrowserElement
-      def present?
-        print_button.present?
+      def initialize(param)
+        super(param)
+        @total = StampsElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
+        @mail_print_modal = PrintModal::MailPrintModal.new(param)
+        @confirm_window = PrintModal::MailConfirmPrint.new(param)
+        @please_wait = PleaseWait.new(param)
+        @windows_print = Windows::PrintWindow.new
+        @sample_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
+        @printing_problem = PrintingProblem.new(param)
+        @insufficient_funds = MailInsufficientFunds.new(param)
       end
 
-      def text
-        print_button.text
-      end
-
-      def type
-        param.print_media
-      end
-
-      def instance
+      def print_button
         expect([:envelopes, :stamps, :labels, :rolls]).to include(param.print_media)
         if @print_button.nil? || !@print_button.present?
           case param.print_media
@@ -32,57 +34,37 @@ module Stamps
         end
         @print_button
       end
-    end
 
-    class MailToolbar < Browser::StampsBrowserElement
-      attr_reader :total, :mail_print_modal, :confirm_window, :windows_print, :sample_button, :printing_problem, :insufficient_funds, :print_button,
-                  :print_label, :print_stamps, :print_envelope
-
-      def initialize(param)
-        super(param)
-        @total = StampsElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
-        @mail_print_modal = PrintModal::MailPrintModal.new(param)
-        @confirm_window = PrintModal::PrintModalConfirmPrint.new(param)
-        @windows_print = Windows::PrintWindow.new
-        @sample_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
-        @printing_problem = PrintingProblem.new(param)
-        @insufficient_funds = MailInsufficientFunds.new(param)
-        @print_button = MailToolbarPrintButton.new(param)
-
-        @print_label = StampsElement.new(browser.span(text: "Print Label"))
-        @print_stamps = StampsElement.new(browser.span(text: "Print Stamps"))
-        @print_envelope = StampsElement.new(browser.span(text: "Print Envelope"))
+      def print_sample
+        open_sample_window mail_print_modal
       end
 
-      def print
+      def print_postage
         open_window(mail_print_modal)
       end
 
       def open_window(window)
         return window if window.present?
 
-        expect(print_button.instance.present?).to be(true)
+        expect(print_button.present?).to be(true)
         10.times do
           begin
-            print_button.instance.safe_click
-            mail_print_modal.wait_until_present(3)
-
-            expect(insufficient_funds.text).to eql('Insufficient Funds') if insufficient_funds.present?
-
-            if confirm_window.present?
-              logger.info "Confirm Print"
-              confirm_window.continue
+            print_button.safe_click
+            window.wait_until_present(2)
+            if please_wait.present?
+              logger.message(please_wait.paragraph)
+              please_wait.ok
+              sleep(0.125)
+              print_button.safe_click
             end
+            expect(insufficient_funds.text).to eql('Insufficient Funds') if insufficient_funds.present?
+            confirm_window.continue if confirm_window.present?
             return window if window.present?
           rescue
             #ignore
           end
         end
         expect(window.present?).to be(true)
-      end
-
-      def print_sample
-        open_sample_window mail_print_modal
       end
 
       def open_sample_window window

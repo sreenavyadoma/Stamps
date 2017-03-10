@@ -38,6 +38,8 @@ Feature: Print Media Selection
 
     # Stamps Services
     Then select Print On Stamps
+    Then select Print form service First Class
+    Then select Print form service Media Mail
     Then select Print form service FCM Post Card
     Then select Print form service FCM Letter
     Then select Print form service FCM Large Envelope
