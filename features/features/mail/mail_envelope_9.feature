@@ -7,7 +7,6 @@ Feature: Envelope #9
   Scenario: Envelope #9
     Then select Print On Envelope - #9, 3 ⅞" x 8 ⅞"
     Then set Print form Mail-From to default
-    Then on Envelope form, set Mail To country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4
 
     Then set Print form Ounces to 1

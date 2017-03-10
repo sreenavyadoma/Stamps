@@ -38,7 +38,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
+mail_print_envelope: --tags @mail_print_envelope --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 
 search_orders: --tags @search_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=search_orders
 
