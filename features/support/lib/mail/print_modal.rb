@@ -45,8 +45,8 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new browser.input name: "paperTrays"
-          @drop_down = StampsElement(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
+          @text_box = StampsTextbox.new(browser.input(name: "paperTrays"))
+          @drop_down = StampsElement.new(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
         end
 
         def select(str)

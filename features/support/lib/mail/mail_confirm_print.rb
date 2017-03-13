@@ -50,9 +50,7 @@ module Stamps
             break unless present?
           end
         end
-
       end
-
     end
   end
 end
