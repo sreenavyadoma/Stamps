@@ -70,10 +70,36 @@ module Stamps
       end
 
       module MailStamps
+        include MailFrom
         include MailTo
         include MailWeight
         include MailService
         include MailAdvancedOptions
+
+        def serial_number
+          @serial_number = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")) if @serial_number.nil? || !@serial_number.present?
+          @serial_number
+        end
+
+        def stamp_amount
+          if @stamp_amount.nil?
+            text_box = browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
+            inc_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]")
+            dec_btn = browser.divs(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")
+            @stamp_amount = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          end
+          @stamp_amount
+        end
+
+        def quantity
+          if @quantity.nil?
+            text_box = browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
+            inc_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")
+            dec_btn = browser.divs(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")
+            @quantity = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          end
+          @quantity
+        end
       end
 
       module CertifiedMail

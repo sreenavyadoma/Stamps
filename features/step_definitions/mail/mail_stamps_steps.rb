@@ -2,91 +2,108 @@
 
 Then /^set Stamps Serial Number to (.*)$/ do |str|
   if str.include?('random')
-    case str.downcase
-      when /a/
-        str = "A#{Random.rand(10000..99999)}"
-      when /b/
-        str = "B#{Random.rand(10000..99999)}"
-      when /c/
-        str = "c#{Random.rand(10000..99999)}"
-      when /d/
-        str = "D#{Random.rand(10000..99999)}"
-      when /k/
-        str = "K#{Random.rand(10000..99999)}"
-      when /l/
-        str = "L#{Random.rand(10000..99999)}"
-      when /ml/
-        str = "ML#{Random.rand(10000..99999)}"
-      when /p/
-        str = "P#{Random.rand(10000..99999)}"
-      when /r/
-        str = "R#{Random.rand(10000..99999)}"
-      when /s/
-        str = "S#{Random.rand(10000..99999)}"
-      when /v/
-        str = "V#{Random.rand(10000..99999)}"
-      when /wn/
-        str = "WN#{Random.rand(10000..99999)}"
+    case str
+      when /A/
+        serial = "A#{Random.rand(10000..99999)}"
+      when /B/
+        serial = "B#{Random.rand(10000..99999)}"
+      when /C/
+        serial = "c#{Random.rand(10000..99999)}"
+      when /D/
+        serial = "D#{Random.rand(10000..99999)}"
+      when /K/
+        serial = "K#{Random.rand(10000..99999)}"
+      when /L/
+        serial = "L#{Random.rand(10000..99999)}"
+      when /ML/
+        serial = "ML#{Random.rand(10000..99999)}"
+      when /P/
+        serial = "P#{Random.rand(10000..99999)}"
+      when /R/
+        serial = "R#{Random.rand(10000..99999)}"
+      when /S/
+        serial = "S#{Random.rand(10000..99999)}"
+      when /V/
+        serial = "V#{Random.rand(10000..99999)}"
+      when /WN/
+        serial = "WN#{Random.rand(10000..99999)}"
       else
-        expect(['a', 'b', 'c', 'd', 'k', 'l', 'ml', 'p', 'r', 'v', 'wn']).to include(str.downcase)
+        #do nothing
     end
+  else
+    serial = str
   end
-  stamps.mail.print_form.serial.set str
+  expect(['a', 'b', 'c', 'd', 'k', 'l', 'ml', 'p', 'r', 's', 'v', 'wn']).to include(serial.downcase[0])
+  stamps.mail.print_form.serial_number.set(serial)
 end
 
-Then /^Mail Stamps: Set Ounces to (.*)$/ do |ounces|
-  stamps.mail.netstamps.weight.oz.set ounces
+Then /^show Advanced Options$/ do
+  stamps.mail.print_form.advanced_options.show
 end
 
-Then /^Mail Stamps: Set Pounds to (.*)$/ do |pounds|
-  stamps.mail.netstamps.weight.lb.set pounds
+Then /^hide Advanced Options$/ do
+  stamps.mail.print_form.advanced_options.hide
 end
 
-Then /^Mail Stamps: Set Quantity to (.*)$/ do |qty|
-  stamps.mail.netstamps.form_view.quantity.set qty
+Then /^select Stamps Specify Postage Amount$/ do
+  step "show Advanced Options"
+  stamps.mail.print_form.advanced_options.specify_postage_amount.select
 end
+
+Then /^(?:E|e)xpect Stamps Specify Postage Amount is selected$/ do
+  step "show Advanced Options"
+  expect(stamps.mail.print_form.advanced_options.specify_postage_amount.selected?).to be(true)
+end
+
+Then /^select Stamps Calculate Postage Amount$/ do
+  step "show Advanced Options"
+  stamps.mail.print_form.advanced_options.calculate_postage_amount.select
+end
+
+Then /^(?:E|e)xpect Stamps Calculate Postage Amount is selected$/ do
+  step "show Advanced Options"
+  expect(stamps.mail.print_form.advanced_options.calculate_postage_amount.selected?).to be(true)
+end
+
+Then /^set Stamps Reference Number to (.*)$/ do |str|
+  test_parameter[:reference_number] = str
+  step "show Advanced Options"
+  stamps.mail.print_form.advanced_options.reference_number.set(test_parameter[:reference_number])
+end
+
+Then /^set Stamps Amount to (\d*.?\d+)$/ do |value|
+  test_parameter[:stamp_amount] = value
+  stamps.mail.print_form.stamp_amount.set(test_parameter[:stamp_amount])
+end
+
+Then /^set Stamps Quantity to (\d+)$/ do |value|
+  test_parameter[:quantity] = value
+  stamps.mail.print_form.quantity.set(test_parameter[:quantity])
+end
+
+
+
+
+
 
 Then /^Mail Stamps: Set Print All to Checked$/ do
-  stamps.mail.netstamps.form_view.print_all.check
+  stamps.mail.netstamps.form_view.print_all.check # todo rework
 end
 
 Then /^Mail Stamps: Set Print All to Unchecked$/ do
-  stamps.mail.netstamps.form_view.print_all.uncheck
-end
-
-Then /^Mail Stamps: Set Reference Number to (.*)$/ do |ref_no|
-  stamps.mail.netstamps.form_view.reference_number.set ref_no
+  stamps.mail.netstamps.form_view.print_all.uncheck # todo rework
 end
 
 Then /^Mail Stamps: Set Cost Code to (.*)$/ do |code|
-  stamps.mail.netstamps.form_view.cost_code.select(code)
-end
-
-Then /^select Stamps Specify Postage Amount/ do
-  stamps.mail.print_form.specify_postage_amount
-end
-
-Then /^set Stamps Amount to (.*)$/ do |value|
-  stamps.mail.print_form.specify_postage_amount.stamp_amount.set(value)
+  stamps.mail.netstamps.form_view.cost_code.select(code) # todo rework
 end
 
 
-Then /^Mail Stamps: Select Calculate Mail Amount/ do
-  stamps.mail.netstamps.calculate_postage_amount
-end
-
-Then /^Mail Stamps: Set Weight (\d+) lb (\d+) oz$/ do |lb, oz|
-  weight = stamps.mail.netstamps.calculate_postage_amount.weight
-  weight.lb.set lb
-  weight.oz.set oz
-end
-
-Then /^Mail Stamps: Open Extra Services$/ do
-
-end
 
 
-Then /^expect Label form Domestic Address field displays (.*)$/ do |value|
+
+
+Then /^(?:E|e)xpect Label form Domestic Address field displays (.*)$/ do |value|
   20.times do
     stamps.mail.print_form.mail_to.blur_out
     stamps.mail.print_form.mail_to.blur_out

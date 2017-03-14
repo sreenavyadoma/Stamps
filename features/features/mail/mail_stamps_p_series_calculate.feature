@@ -11,11 +11,11 @@ Feature: Stamps P Series - Calculate Postage
   Scenario: Stamps Regression P Series - Calculate Postage
     Then select Print On Stamps
     Then set Stamps Serial Number to P12345
-    Then Mail Stamps: Select Calculate Mail Amount
+    Then select Stamps Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then select Print form service FCM Letter
-    Then Mail Stamps: Set Quantity to 1
+    Then set Stamps Quantity to 1
     Then Mail Stamps: Set Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory

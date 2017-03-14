@@ -97,7 +97,7 @@ module Stamps
           end
 
           selection = StampsElement.new(element)
-          10.times do
+          30.times do
             begin
               if selection.present?
                 selection.scroll_into_view
@@ -235,12 +235,12 @@ module Stamps
           text_box = browser.text_field(name: "WeightLbs")
           inc_btn = browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-up]")
           dec_btn = browser.divs(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")
-          @mail_pounds = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Pounds')
+          @mail_pounds = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(name: "WeightOz")
           inc_btn = browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-up]")
           dec_btn = browser.divs(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")
-          @mail_ounces = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Ounces')
+          @mail_ounces = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
         end
 
         def present?
@@ -315,9 +315,9 @@ module Stamps
         def select(str)
           logger.info "Select service #{str}"
           selection = StampsElement.new browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=text]")
-          10.times do
+          20.times do
             begin
-              break if (text_box.safe_text).include? str
+              break if (text_box.safe_text).include?(str)
               drop_down.safe_click unless selection.present?
               selection.scroll_into_view
               selection.safe_click
@@ -332,7 +332,7 @@ module Stamps
 
         def cost(selection)
           cost_label = StampsElement.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
-          10.times {
+          20.times {
             begin
               drop_down.safe_click unless cost_label.present?
               if cost_label.present?
@@ -350,7 +350,7 @@ module Stamps
         def tooltip(selection)
           button = drop_down
           selection_label = StampsElement.new browser.tr css: "tr[data-qtip*='#{selection}']"
-          5.times {
+          10.times {
             begin
               button.safe_click unless selection_label.present?
               if selection_label.present?
@@ -561,6 +561,7 @@ module Stamps
         end
 
         def country(str)
+          expect(@country.present?).to be(true)
           geography = @country.select(str)
           expect([:domestic, :international]).to include(geography)
           # dymanically create appropriate form per geography
@@ -594,6 +595,8 @@ module Stamps
         def i_agree_to_insurance_terms
         end
       end
+
+
     end
   end
 end

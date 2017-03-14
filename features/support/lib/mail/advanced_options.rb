@@ -4,7 +4,7 @@ module Stamps
 
       module AdvancedOptionsExtraServices
         def extra_services
-          return @extra_services if (!@extra_services.nil? && @extra_services.present?)
+          return @extra_services if (!@extra_services.nil?)
           @select_button = StampsElement.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")) if @select_button.nil? || !@select_button.present?
           expect(@select_button.present?).to be(true)
           @extra_services = MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
@@ -16,8 +16,9 @@ module Stamps
 
       module AdvancedOptionsReferenceNumber
         def reference_number
-          @reference_number = StampsTextbox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) if @reference_number.nil? || !@reference_number.present?
-          expect(@reference_number.present?).to be(true)
+          if @reference_number.nil?
+            @reference_number = StampsTextbox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) if @reference_number.nil? || !@reference_number.present?
+          end
           @reference_number
         end
       end
@@ -69,7 +70,7 @@ module Stamps
 
       module AdvancedOptionsCostCode
         def cost_code
-          if @cost_code.nil? || !@cost_code.present?
+          if @cost_code.nil?
             text_boxes = browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
             drop_downs = browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
             @cost_code = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
@@ -117,16 +118,30 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
         def calculate_postage_amount
-
+          if @calculate_postage_amount.nil?
+            element = browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl')
+            verify_element = browser.div(id: 'sdc-mainpanel-calculatepostageradio')
+            @calculate_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
+          end
+          show
+          @calculate_postage_amount
         end
 
         def specify_postage_amount
-
+          if @specify_postage_amount.nil?
+            element = browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl')
+            verify_element = browser.div(id: 'sdc-mainpanel-specifypostageradio')
+            @specify_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
+          end
+          show
+          @specify_postage_amount
         end
+
       end
 
       class AdvancedOptionsShippingLabel < AdvancedOptionsBase
@@ -136,6 +151,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
@@ -159,6 +175,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
@@ -182,6 +199,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
@@ -198,6 +216,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 

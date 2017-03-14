@@ -421,14 +421,13 @@ module Stamps
     end
 
     class StampsNumberField < Browser::StampsBrowserElement
-      attr_reader :text_box, :inc_btn, :dec_btn, :name
+      attr_reader :text_box, :inc_btn, :dec_btn
 
-      def initialize(param, textbox, inc_btn, dec_btn, name)
+      def initialize(param, textbox, inc_btn, dec_btn)
         super(param)
         @text_box = StampsTextbox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
-        @name = name
       end
 
       def present?
@@ -441,7 +440,6 @@ module Stamps
 
       def set(value)
         text_box.set(value)
-        logger.info "#{@name} set to #{text_box.text}"
       end
 
       def increment(value)

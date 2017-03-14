@@ -51,12 +51,14 @@ module Stamps
           begin
             print_button.safe_click
             window.wait_until_present(2)
+=begin
             if please_wait.present?
               logger.message(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.safe_click
             end
+=end
             expect(insufficient_funds.text).to eql('Insufficient Funds') if insufficient_funds.present?
             confirm_window.continue if confirm_window.present?
             return window if window.present?
