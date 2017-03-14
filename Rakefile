@@ -1060,11 +1060,6 @@ Cucumber::Rake::Task.new(:mail_bvt_purchasing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_bvt_stamps_calculate) do |t|
-  t.profile = 'mail_bvt_stamps_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:mail_bvt_stamps) do |t|
   t.profile = 'mail_bvt_stamps'
   t.cucumber_opts = "-p cuke_reports"

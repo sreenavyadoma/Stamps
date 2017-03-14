@@ -241,7 +241,6 @@ mail_bvt_contacts: --tags  @mail_bvt_contacts --guess DEBUG=false JENKINS=true H
 mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_envelopes
 mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_extra_services
 mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_purchasing
-mail_bvt_stamps_calculate: --tags  @mail_bvt_stamps_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_stamps_calculate
 mail_bvt_stamps: --tags  @mail_bvt_stamps --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_stamps
 mail_bvt_international: --tags  @mail_bvt_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_international
 
