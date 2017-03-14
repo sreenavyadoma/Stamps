@@ -7,10 +7,10 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM FR Envelope
 
 
   @mail_print_shipping_label_8x11_pm_fr_envelope
-  Scenario: Shipping Label - 8 ½” x 11” Paper - PM FR Envelope
+  Scenario: Shipping Label - 8 ½” x 11” Paper
 
+    # Shipping Label - 8 ½” x 11” Paper - PM FR Envelope
     Then select Print On Shipping Label - 8 ½" x 11" Paper
-
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1

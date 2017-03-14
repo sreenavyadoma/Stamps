@@ -25,6 +25,7 @@ Then /^Save Order Details data$/ do
     test_parameter[:tracking] = stamps.orders.order_details.tracking.text_box.text
   end
 end
+
 Then /^(?:I|i)n Orders Toolbar, Refresh Orders$/ do
   stamps.orders.orders_toolbar.refresh_orders
 end

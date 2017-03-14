@@ -44,6 +44,18 @@ module Stamps
     end
   end
 
+  def google
+    begin
+      @google ||= Google.new(param)
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      expect("#{e.backtrace.join("\n")}").to eql e.message
+    end
+  end
+
   def health
     begin
       HealthCheck.new(param)

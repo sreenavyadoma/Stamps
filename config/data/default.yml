@@ -522,6 +522,9 @@ login_credentials_invalid:
 
 orders_credentials:
   stg:
+    mail_print_shipping_label_8x11:
+      usr: stgom0dqgzppy
+      pw: pass111
     rob:
       usr: stgom0dqgzppy
       pw: pass111
@@ -887,6 +890,9 @@ orders_credentials:
       pw: pass111
 
   cc:
+    mail_print_shipping_label_8x11:
+      usr: changeme
+      pw: pass111
     rates_parcel_select_ground:
       usr: ccdwth36s
       pw: pass111
@@ -1248,6 +1254,9 @@ orders_credentials:
       usr: ccyobxzc3gq
       pw: pass111
   sc:
+    mail_print_shipping_label_8x11:
+      usr: changeme
+      pw: pass111
     rob:
       usr: scsxpeco6b90
       pw: pass111
@@ -1657,7 +1666,7 @@ mail_credentials:
       usr: b2vc5867
       pw: pass111
     mail_print_envelope:
-      usr: pxihh2exps
+      usr: cclnlqaf8s
       pw: pass111
     mail_print_envelope_6:
       usr: pxihh2exps
@@ -2277,6 +2286,9 @@ mail_credentials:
   cc:
     rob:
       usr: ccoxrz0j1
+      pw: pass111
+    mail_print_envelope_6_7_9_11_12:
+      usr: cclnlqaf8s
       pw: pass111
     mail_authentication:
       usr: ccdvx25ja288
