@@ -29,8 +29,8 @@ url_prefix:
   rating: printext.qacc
 
 mail_services:
-  First Class: sdc-nsservices-fc
-  Media Mail: sdc-nsservices-mm
+  First Class: sdc-servicedroplist-fcletter
+  Media Mail: sdc-servicedroplist-mmpackage
   FCM Post Card: sdc-servicedroplist-fcpostcard
   FCM Letter: sdc-servicedroplist-fcletter
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat

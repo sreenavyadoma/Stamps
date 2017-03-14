@@ -118,6 +118,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
@@ -127,6 +128,7 @@ module Stamps
             verify_element = browser.div(id: 'sdc-mainpanel-calculatepostageradio')
             @calculate_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
           end
+          show
           @calculate_postage_amount
         end
 
@@ -136,8 +138,10 @@ module Stamps
             verify_element = browser.div(id: 'sdc-mainpanel-specifypostageradio')
             @specify_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
           end
+          show
           @specify_postage_amount
         end
+
       end
 
       class AdvancedOptionsShippingLabel < AdvancedOptionsBase
@@ -147,6 +151,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
@@ -170,6 +175,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
@@ -193,6 +199,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 
@@ -209,6 +216,7 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
+          show
           cost_code.present?
         end
 

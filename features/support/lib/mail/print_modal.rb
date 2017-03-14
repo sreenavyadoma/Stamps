@@ -34,6 +34,7 @@ module Stamps
           10.times do
             drop_down.safe_click unless selection.present?
             selection.safe_click
+            sleep(0.15)
             break if text_box.text.include?(printer)
           end
           expect(text_box.text).to include(printer)
@@ -54,7 +55,7 @@ module Stamps
           10.times do
             drop_down.safe_click unless selection_label.present?
             selection_label.safe_click
-            sleep(0.05)
+            sleep(0.15)
             break if text_box.text.include?(str)
           end
         end

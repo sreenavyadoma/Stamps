@@ -15,7 +15,7 @@ Feature: Stamps V Series - Specify Postage
     Then set Label form Mail-To Country to United States
     Then Mail Stamps: Select Specify Mail service First Class
     Then set Stamps Amount to 0.15
-    Then Mail Stamps: Set Quantity to 1
+    Then set Stamps Quantity to 1
     Then Mail Stamps: Set Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory

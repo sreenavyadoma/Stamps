@@ -1,10 +1,10 @@
 
-Then /^(?:S|s)et Extra Services COD to (\d*.\d+)$/ do |amount|
+Then /^(?:S|s)et Extra Services COD to (\d*.?\d+)$/ do |amount|
   expect(stamps.mail.print_form.advanced_options.extra_services.cod.present?).to be(true)
   stamps.mail.print_form.advanced_options.extra_services.cod.set(amount)
 end
 
-Then /^(?:E|e)xpect Extra Services COD Price to be (\d*.\d+)$/ do |expectation|
+Then /^(?:E|e)xpect Extra Services COD Price to be (\d*.?\d+)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.extra_services.cod_price_element.present?).to be(true)
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.cod_price == expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.cod_price).to eql(expectation.to_f.round(2))
@@ -20,13 +20,13 @@ Then /^(?:S|s)et Extra Services Security to (.*)$/ do |str|
   stamps.mail.print_form.advanced_options.extra_services.security.select(str)
 end
 
-Then /^(?:E|e)xpect Extra Services Security Price to be (\d*.\d+)$/ do |expectation|
+Then /^(?:E|e)xpect Extra Services Security Price to be (\d*.?\d+)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.extra_services.security_price_element.present?).to be(true)
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.security_price == expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.security_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^(?:S|s)et Extra Services Value to (\d*.\d+)$/ do |value|
+Then /^(?:S|s)et Extra Services Value to (\d*.?\d+)$/ do |value|
   expect(stamps.mail.print_form.advanced_options.extra_services.security.present?).to be(true)
   stamps.mail.print_form.advanced_options.extra_services.value.set(value)
 end
@@ -41,7 +41,7 @@ Then /^(?:C|c)heck Extra Services Return Receipt$/ do
   stamps.mail.print_form.advanced_options.extra_services.return_receipt.check
 end
 
-Then /^(?:E|e)xpect Extra Services Return Receipt Price to be (\d*.\d+)$/ do |expectation|
+Then /^(?:E|e)xpect Extra Services Return Receipt Price to be (\d*.?\d+)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_price_element.present?).to be(true)
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.return_receipt_price == expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_price).to eql(expectation.to_f.round(2))
@@ -67,7 +67,7 @@ Then /^(?:C|c)heck Extra Services Restricted Delivery$/ do
   stamps.mail.print_form.advanced_options.extra_services.restricted_delivery.check
 end
 
-Then /^(?:E|e)xpect Extra Services Restricted Delivery Price to be (\d*.\d+)$/ do |expectation|
+Then /^(?:E|e)xpect Extra Services Restricted Delivery Price to be (\d*.?\d+)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price_element.present?).to be(true)
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price == expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price).to eql(expectation.to_f.round(2))
@@ -83,7 +83,7 @@ Then /^(?:C|c)heck Extra Services Notice of Non-Delivery$/ do
   stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice.check
 end
 
-Then /^(?:E|e)xpect Extra Services Notice of Non-Delivery Price to be (\d*.\d+)$/ do |expectation|
+Then /^(?:E|e)xpect Extra Services Notice of Non-Delivery Price to be (\d*.?\d+)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price_element.present?).to be(true)
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price == expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price).to eql(expectation.to_f.round(2))
@@ -124,7 +124,7 @@ Then /^(?:U|u)ncheck Extra Services Non-Rectangular$/ do
   stamps.mail.print_form.advanced_options.extra_services.non_rectangular.uncheck
 end
 
-Then /^(?:E|e)xpect Extra Services Total Price to be (\d*.\d+)$/ do |expectation|
+Then /^(?:E|e)xpect Extra Services Total Price to be (\d*.?\d+)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.extra_services.total_price_element.present?).to be(true)
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.total_price == expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.total_price).to eql(expectation.to_f.round(2))

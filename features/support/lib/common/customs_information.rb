@@ -81,12 +81,12 @@ module Stamps
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[@index]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[@index]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=down]")[@index]
-          @customs_item_qty = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
+          @customs_item_qty = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>input[name=Value]")[@index]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=up]")[@index]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=down]")[@index]
-          @customs_item_unit_price = StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Single Customs Item Quantity')
+          @customs_item_unit_price = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")[@index]
           drop_down = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[@index]

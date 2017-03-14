@@ -12,15 +12,18 @@ Then /^(?:S|s)et Print form Mail-From to (.*)$/ do |value|
 end
 
 Then /^(?:S|s)et Print form Pounds to (\d+)$/ do |pounds|
-  stamps.mail.print_form.mail_weight.mail_pounds.set(pounds)
+  test_parameter[:pounds] = pounds
+  stamps.mail.print_form.mail_weight.mail_pounds.set(test_parameter[:pounds])
 end
 
 Then /^(?:S|s)et Print form Ounces to (\d+)$/ do |ounces|
-  stamps.mail.print_form.mail_weight.mail_ounces.set(ounces)
+  test_parameter[:ounces] = ounces
+  stamps.mail.print_form.mail_weight.mail_ounces.set(test_parameter[:ounces])
 end
 
 Then /^(?:S|s)elect Print form (?:S|s)ervice (.*)$/ do |service|
-  stamps.mail.print_form.mail_service.select(service)
+  test_parameter[:service] = service
+  stamps.mail.print_form.mail_service.select(test_parameter[:service])
 end
 
 When /^(?:P|p)rint (?:L|l)abel$/ do
@@ -34,8 +37,8 @@ end
 # These steps are form specific
 
 Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:I|i)nternational (?:M|m)ail (?:T|t)o (?:C|c)ountry to (.*)$/ do |country|
-  test_parameter[:mail_to_country] = country
-  stamps.mail.print_form.mail_to.country.select(test_parameter[:mail_to_country])
+  test_parameter[:country] = country
+  stamps.mail.print_form.mail_to.country.select(test_parameter[:country])
 end
 
 Then /^(?:C|c)lick (?:Envelope|Label|Roll|CM) Form Mail To link/ do
@@ -51,12 +54,13 @@ Then /^(?:C|c)lick (?:Label|Roll) form Edit Customs Form button$/ do
 end
 
 Then /^(?:S|s)et (?:Envelope|Label|Roll|CM) form (?:M|m)ail-(?:T|t)o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
-  stamps.mail.print_form.mail_to.address.text_area.set(address_helper(address))
+  test_parameter[:address] = address_helper(address)
+  stamps.mail.print_form.mail_to.address.text_area.set(test_parameter[:address])
 end
 
 Then /^(?:S|s)et (?:Label|Roll|CM) form (?:M|m)ail-(?:T|t)o (?:C|c)ountry to (.*)$/ do |country|
-  test_parameter[:mail_to_country] = country
-  stamps.mail.print_form.mail_to.country((test_parameter[:mail_to_country]))
+  test_parameter[:country] = country
+  stamps.mail.print_form.mail_to.country((test_parameter[:country]))
 end
 
 Then /^(?:S|s)et (?:Label|Roll) form Ship-To to international address$/ do |table|

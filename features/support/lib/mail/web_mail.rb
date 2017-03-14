@@ -2,17 +2,17 @@
 module Stamps
   module Mail
     class WebMail < Browser::StampsBrowserElement
-      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form , :printing_on
+      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form , :print_media
 
       def initialize(param)
         super(param)
-        @printing_on = PrintFormPanel::PrintOn.new(param)
+        @print_media = PrintFormPanel::PrintOn.new(param)
         @sign_in_modal = MailSignInModal.new(param)
         @mail_toolbar = MailToolbar.new(param)
       end
 
       def print_on(selection)
-        param.print_media = printing_on.print_on(selection)
+        param.print_media = print_media.print_on(selection)
         case param.print_media
           when :stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps)

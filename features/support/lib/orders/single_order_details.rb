@@ -1290,12 +1290,12 @@ module Stamps
           text_box = browser.text_field(name: 'WeightLbs')
           inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-          @lb = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Pounds')
+          @lb = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(name: 'WeightOz')
           inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-          @oz = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Ounces')
+          @oz = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
         end
       end
 
@@ -1306,17 +1306,17 @@ module Stamps
           text_box = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
-          @length = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Length')
+          @length = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]")
-          @width = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Width')
+          @width = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]")
-          @height = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Height')
+          @height = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
         end
 
         def present?
@@ -1333,7 +1333,7 @@ module Stamps
           text_box = browser.text_fields(name: "Quantity")[@index-1]
           inc_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
           dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
-          @item_qty = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn, 'Associated Item Quantity')
+          @item_qty = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
 
           @item_id = StampsTextbox.new((browser.text_fields(name: "SKU")[index-1]))
           @delete = StampsElement.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index-1])
