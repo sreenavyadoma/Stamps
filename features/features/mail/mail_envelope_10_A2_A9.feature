@@ -15,7 +15,7 @@ Feature: Envelope #10, #A2, #A9
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer to factory
-    #Then click Mail Print modal Print button
+    Then click Mail Print modal Print button
 
    #mail_print_envelope_10_delivery_address
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
@@ -24,11 +24,11 @@ Feature: Envelope #10, #A2, #A9
 
     Then set Print form Ounces to 3
     Then select Print form service FCM Letter
-    Then on Envelope form, set Include Return Address to Unchecked
-    Then on Envelope form, set Include Delivery Address to Checked
-    Then on Envelope form, set Include Postage to Unchecked
-    Then on Envelope form, set Reference Number to 12345
-    Then on Envelope form, set Cost Code to None
+    #Then on Envelope form, set Include Return Address to Unchecked
+    #Then on Envelope form, set Include Delivery Address to Checked
+    #Then on Envelope form, set Include Postage to Unchecked
+    #Then on Envelope form, set Reference Number to 12345
+    #Then on Envelope form, set Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
@@ -38,13 +38,13 @@ Feature: Envelope #10, #A2, #A9
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1 through 4
 
-    Then Mail Stamps: Set Ounces to 3
+    Then set Print form Ounces to 3
     Then select Print form service FCM Letter
-    Then on Envelope form, set Include Return Address to Unchecked
-    Then on Envelope form, set Include Delivery Address to Unchecked
-    Then on Envelope form, set Include Postage to Checked
-    Then on Envelope form, set Reference Number to 54321
-    Then on Envelope form, set Cost Code to None
+    #Then on Envelope form, set Include Return Address to Unchecked
+    #Then on Envelope form, set Include Delivery Address to Unchecked
+    #Then on Envelope form, set Include Postage to Checked
+    #Then on Envelope form, set Reference Number to 54321
+    #Then on Envelope form, set Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
@@ -56,11 +56,11 @@ Feature: Envelope #10, #A2, #A9
 
     Then set Print form Ounces to 2
     Then select Print form service FCM Letter
-    Then on Envelope form, set Include Return Address to Checked
-    Then on Envelope form, set Include Delivery Address to Unchecked
-    Then on Envelope form, set Include Postage to Unchecked
-    Then on Envelope form, set Reference Number to 12345
-    Then on Envelope form, set Cost Code to None
+    #Then on Envelope form, set Include Return Address to Checked
+    #Then on Envelope form, set Include Delivery Address to Unchecked
+    #Then on Envelope form, set Include Postage to Unchecked
+    #Then on Envelope form, set Reference Number to 12345
+    #Then on Envelope form, set Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
