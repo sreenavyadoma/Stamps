@@ -156,9 +156,6 @@ module Stamps
             @drop_down = int_drop_down
           end
 
-          expect(text_box.present?).to be(true)
-          expect(drop_down.present?).to be(true)
-
           drop_down.safe_click
           selection = StampsElement.new(browser.lis(text: str)[index])
           10.times do
