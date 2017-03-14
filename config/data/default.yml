@@ -921,52 +921,52 @@ orders_credentials:
       usr: xxxxxxxxxxxx
       pw: pass111
     details_edit_order:
-      usr: ccnik68agz7ulk
+      usr: txdq1khl
       pw: pass111
     details_services:
-      usr: ccnik68agz7ulk
+      usr: mpanilrcqgxmz
       pw: pass111
     grid_column_order:
       usr: stgstgstg
       pw: pass111
     details_flat_rate_no_weight_international:
-      usr: ccnik68agz7ulk
+      usr: lsv9xmm
       pw: pass111
     details_flat_rate_no_weight_domestic:
-      usr: ccnik68agz7ulk
+      usr: i18yzz9pt3
       pw: pass111
     details_large_dimensions_pm:
-      usr: ccnik68agz7ulk
+      usr: lmyc7on9t
       pw: pass111
     details_insure_for_box_unchecked_manual:
       usr: ryzymjfr0s
       pw: pass111
     international_customs_form_totals:
-      usr: ccyykg2nb
+      usr: ifkirzik55td4h
       pw: pass111
     international_customs_form_edit_delete_item:
-      usr: ccyykg2nb
+      usr: ybz43m9mrp6x
       pw: pass111
     tooltip_customs_form:
       usr: pbxeqimim
       pw: pass111
     details_reference_no:
-      usr: ccnik68agz7ulk
+      usr: uughc31aenj
       pw: pass111
     customs_form_qty:
-      usr: ccnik68agz7ulk
+      usr: w5s9lr2kett0
       pw: pass111
     grid_ship_cost:
-      usr: ccyykg2nb
+      usr: om8tabs4mx2
       pw: pass111
     details_placeholders:
       usr: za0xh2034rmu8
       pw: pass111
     grid_tracking:
-      usr: ccyykg2nb
+      usr: rxkuzwwclobat
       pw: pass111
     grid_insured_value:
-      usr: ccyykg2nb
+      usr: p74c4js
       pw: pass111
     import_orders:
       usr: cctibua3epgnq
@@ -978,13 +978,13 @@ orders_credentials:
       usr: scscscscscscscscs
       pw: pass111
     general_settings:
-      usr: ccnik68agz7ulk
+      usr: qp1z9dnytt62r
       pw: pass111
     details_ship_cost_total:
-      usr: ccnik68agz7ulk
+      usr: ales8sj
       pw: pass111
     nav_postage_balance_update:
-      usr: ccyykg2nb
+      usr: eubyiccm
       pw: pass111
     reprint:
       usr: swd4e1ai4lz
@@ -993,40 +993,40 @@ orders_credentials:
       usr: cm5jn67dm05
       pw: pass111
     tracking_defaults:
-      usr: ccyykg2nb
+      usr: pbgwtrqhe
       pw: pass111
     parcel_select:
-      usr: ccyykg2nb
+      usr: ma6sawp2uj
       pw: pass111
     tooltips_services:
       usr: scscscscscscscscsc
       pw: pass111
     filter_panel:
-      usr: ccnik68agz7ulk
+      usr: iuc75alcb8
       pw: pass111
     inline_service_rates:
-      usr: ccyykg2nb
+      usr: xha5o97
       pw: pass111
     purchasing:
-      usr: ccyykg2nb
+      usr: kulwyj9vs0f3kd
       pw: pass111
     change_settings:
       usr: scscscscscscscscsc
       pw: pass111
     sorting:
-      usr: ccyykg2nb
+      usr: mysfp0c9g
       pw: pass111
     auto_suggest:
-      usr: ccnik68agz7ulk
+      usr: AUTOSUGGEST888
       pw: pass111
     auto_suggest_international:
       usr: scscscscscscscscsc
       pw: pass111
     new_country_code:
-      usr: ccyykg2nb
+      usr: i92zdwav5
       pw: pass111
     details_panel:
-      usr: ccnik68agz7ulk
+      usr: iotkm2t8nbf3
       pw: pass111
     multiple_order_total_cost:
       usr: scscscscscscscscsc
@@ -1050,25 +1050,25 @@ orders_credentials:
       usr: ccslm4rnxg42q
       pw: pass111
     bvt_new_order:
-      usr: ccslm4rnxg42q
+      usr: u0d9jawgcqaj
       pw: pass111
     bvt_ambigious_address:
-      usr: ccslm4rnxg42q
+      usr: xk0v35wf9ndq
       pw: pass111
     authentication:
-      usr: ccnik68agz7ulk
+      usr: bz9005j1r2jx0
       pw: pass111
     bvt_address_cleansing:
-      usr: ccslm4rnxg42q
+      usr: knmeaba
       pw: pass111
     bvt_shipping_address_management:
-      usr: ccslm4rnxg42q
+      usr: ccje975fmb
       pw: pass111
     address_cleansing:
-      usr: ccnik68agz7ulk
+      usr: swv6wmuno
       pw: pass111
     address_management:
-      usr: ccnik68agz7ulk
+      usr: mc6ozi754o
       pw: pass111
     print_dialog_change_date:
       usr: ccx9sfswq05pm
@@ -2279,31 +2279,31 @@ mail_credentials:
       usr: ccoxrz0j1
       pw: pass111
     mail_authentication:
-      usr: ccwsq8231z1wa
+      usr: ccdvx25ja288
       pw: pass111
     mail_bvt_international:
-      usr: ccwsq8231z1wa
+      usr: ccpl6fec8e7
       pw: pass111
     mail_bvt_stamps:
-      usr: ccwsq8231z1wa
+      usr: ccpl6fec8e7
       pw: pass111
     mail_bvt_stamps_calculate:
-      usr: ccwsq8231z1wa
+      usr: ccpl6fec8e7
       pw: pass111
     mail_bvt_extra_services:
-      usr: ccwsq8231z1wa
+      usr: ccpl6fec8e7
       pw: pass111
     mail_bvt_envelopes:
-      usr: ccwsq8231z1wa
+      usr: ccpl6fec8e7
       pw: pass111
     mail_bvt_contacts:
-      usr: ccwsq8231z1wa
+      usr: cctpfqe5t
       pw: pass111
     mail_bvt_address_cleansing:
-      usr: ccwsq8231z1wa
+      usr: ccmnlxbv44hv0s
       pw: pass111
     mail_bvt_purchasing:
-      usr: ccwsq8231z1wa
+      usr: ccu0g3hf0ls
       pw: pass111
     free_user3:
       usr: cch3puafas7qr
@@ -2633,316 +2633,316 @@ mail_credentials:
       usr: cclnlqaf8s
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_mm_package:
-      usr: cjq8asez6rjtnr
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_fr_envelope:
-      usr: sztskcj3su33r
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_large_box:
-      usr: jr3f1spl
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_large_envelope:
-      usr: jytnbh2q
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_large_package:
-      usr: x29iebjejqd61
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_lfr_envelope:
-      usr: kyi69o4zgnyjp
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_medium_box:
-      usr: uqhxthkdw5y
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_package:
-      usr: zw71m6e7ofbsz
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_pfr_envelope:
-      usr: qamwfx2p9k05
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_regional_box_a:
-      usr: kf1tm0ojg5ov
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_regional_box_b:
-      usr: gnwynyx7
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_pm_small_box:
-      usr: luwlhfmg3d8n
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_psg_large_package:
-      usr: hjw9frzm5svg83
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_psg_oversized_package:
-      usr: i5r6dim2abi8
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_psg_package:
-      usr: zf22ms3jhoian
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_xm_fr_envelope:
-      usr: ug716gsuwrwznj
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_xm_lfr_envelope:
-      usr: iy209pg0yhh
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_xm_package:
-      usr: lg7esri9
+      usr: ccyykg2nb
       pw: pass111
     mail_print_sample_shipping_label_sdc1200_xm_pfr_envelope:
-      usr: hz2skalgiyuo5
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_fcm_large_envelope:
-      usr: fteunlpvl
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_fcm_package:
-      usr: svq01w4e
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_mm_package:
-      usr: pv1jcj823lc
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_fr_envelope:
-      usr: fo9fis25
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_large_box:
-      usr: kw3yoytvse
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_large_envelope:
-      usr: ou49h2i
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_large_package:
-      usr: x7c3bkw7vkov
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_lfr_envelope:
-      usr: ecdir63c
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_medium_box:
-      usr: wukb3byw
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_package:
-      usr: h35if8sgwefr
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_pfr_envelope:
-      usr: jb50gl3
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_regional_box_a:
-      usr: lc5gv8udz
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_regional_box_b:
-      usr: ggu5euo8a2
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_pm_small_box:
-      usr: n7sucm2e
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_psg_large_package:
-      usr: oydcxu5jx9
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_psg_oversized_package:
-      usr: wlovwexh72a
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_psg_package:
-      usr: ngll241xl49s
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_xm_fr_envelope:
-      usr: jnw0eyglzp
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_xm_lfr_envelope:
       usr: ovlx9jc4
       pw: pass111
     mail_print_shipping_label_5x8_xm_package:
-      usr: knkjc8adfi55u
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_5x8_xm_pfr_envelope:
-      usr: xx099uimjvp9
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_fcm_large_envelope:
-      usr: sj20rl925ac
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_fcm_package:
-      usr: mdy4gv5s17851
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_mm_package:
-      usr: kxngvb19
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_fr_envelope:
-      usr: gxhg9c6
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_large_box:
-      usr: e7imid923j0gs
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_large_envelope:
-      usr: n1t7zs6v8za
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_large_package:
-      usr: u4d1t7npzklsh
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_lfr_envelope:
-      usr: law46z405
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_medium_box:
-      usr: xxz7npxkg8p
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_package:
-      usr: c94iaxxgrr2b4
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_pfr_envelope:
-      usr: t31bzqfcg5ml0
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_regional_box_a:
-      usr: si0xwfb8
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_regional_box_b:
-      usr: cyo3fr2m
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_pm_small_box:
-      usr: lzagafbumece
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_psg_large_package:
-      usr: g26vp7n9
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_psg_oversized_package:
-      usr: ccdvx25ja288
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_psg_package:
-      usr: ccqx3kv9vj90
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_xm_fr_envelope:
-      usr: ccyvz97b297ol
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_xm_lfr_envelope:
-      usr: cco7a51np
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_xm_package:
-      usr: ccugnnbjwlmc
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_8x11_xm_pfr_envelope:
-      usr: cctcv8zmz8oxp
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_fcm_large_envelope:
-      usr: cci1x4k4fo
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_fcm_package:
-      usr: ccrpcnls7l2c
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_mm_package:
-      usr: cczomw6ilgan
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_fr_envelope:
-      usr: ccdbidybow
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_large_box:
-      usr: cczt9sjs550
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_large_envelope:
-      usr: cchw3qhqk
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_large_package:
-      usr: ccec1bdx3gees
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_lfr_envelope:
-      usr: ccfurzdk6coy
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_medium_box:
-      usr: cclv55sk045v
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_package:
-      usr: ccwgv8mbduywbq
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_pfr_envelope:
-      usr: cczjrtb087hl
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_regional_box_a:
-      usr: ccjhpzy0dh1
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_regional_box_b:
-      usr: ccjicx88o5tz
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_pm_small_box:
-      usr: ccixjqr1mt
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_psg_large_package:
-      usr: ccy1qzgbk3
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_psg_oversized_package:
-      usr: ccyygzhuv2
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_psg_package:
-      usr: ccdwth36s
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_xm_fr_envelope:
-      usr: ccutobb3lrg5
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_xm_lfr_envelope:
-      usr: ccd9i8vg8wc60
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_xm_package:
-      usr: cctibua3epgnq
+      usr: ccyykg2nb
       pw: pass111
     mail_print_shipping_label_sdc1200_xm_pfr_envelope:
-      usr: ccots3a2q52t9
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_a_series_calculate:
-      usr: cccodfy3lh
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_a_series_specify:
-      usr: ccw7l673yk
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_b_series_calculate:
-      usr: ccc4339n9hvws
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_b_series_specify:
-      usr: ccbwd5a4a8g
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_c_series_calculate:
-      usr: cckq6d8jjul60
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_c_series_specify:
-      usr: cch5ofuun3qf4
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_k_series_calculate:
-      usr: cctlxuo1jqa2cg
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_k_series_specify:
-      usr: cchb6cb5br3jck
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_l_series_calculate:
-      usr: ccx9sfswq05pm
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_l_series_specify:
-      usr: ccyobxzc3gq
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_ml_series_calculate:
-      usr: ccslm4rnxg42q
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_ml_series_specify:
-      usr: ccf2xzrn0u0gy
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_p_series_calculate:
-      usr: ccmyd949d33w
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_p_series_specify:
-      usr: cccn5ej0w
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_r_series_calculate:
-      usr: ccvr89xttjxw3
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_r_series_specify:
-      usr: cciq6ryb2y04
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_s_series_calculate:
-      usr: ccrqpxqfcldc1
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_s_series_specify:
-      usr: ccegdd77vwi
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_v_series_calculate:
-      usr: ccewap03sif1x
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_v_series_specify:
-      usr: ccugtlwd3jv
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_wn_series_calculate:
-      usr: ccg5x3fjbi
+      usr: ccyykg2nb
       pw: pass111
     mail_print_stamps_wn_series_specify:
-      usr: ccvoq0itap
+      usr: ccyykg2nb
       pw: pass111
   sc:
     rob:
