@@ -594,6 +594,8 @@ module Stamps
         def i_agree_to_insurance_terms
         end
       end
+
+
     end
   end
 end

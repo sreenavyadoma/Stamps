@@ -11,7 +11,7 @@ Feature: Stamps K Series - Calculate Postage
   Scenario: Stamps Regression K Series - Calculate Postage
     Then select Print On Stamps
     Then set Stamps Serial Number to K12345
-    Then Mail Stamps: Select Calculate Mail Amount
+    Then select Stamps Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then select Print form service FCM Letter

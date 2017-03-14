@@ -11,7 +11,7 @@ Feature: Extra Services BVT
     Then set Label form Mail-To to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
     Then set Print form Ounces to 1
     Then select Print form service PM Padded Flat Rate Envelope
-    Then select Extra Services
+    Then select Advanced Options Extra Services
 
     Then set Extra Services Security to Registered Mail
     Then expect Extra Services Security Price to be 11.70
@@ -35,7 +35,7 @@ Feature: Extra Services BVT
 
     Then save Extra Services
 
-    Then select Extra Services
+    Then select Advanced Options Extra Services
 
     Then expect Extra Services Security Price to be 12.50
     Then expect Extra Services Return Receipt Price to be 2.75

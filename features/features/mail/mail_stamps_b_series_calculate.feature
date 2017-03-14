@@ -11,7 +11,7 @@ Feature: Stamps B Series - Calculate Postage
   Scenario: Stamps Regression B Series - Calculate Postage
     Then select Print On Stamps
     Then set Stamps Serial Number to B12345
-    Then Mail Stamps: Select Calculate Mail Amount
+    Then select Stamps Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then Mail Stamps: Select Calculate Mail service First-Class Mail Large Envelope-Flat

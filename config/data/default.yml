@@ -1620,10 +1620,10 @@ mail_credentials:
     mail_bvt_international:
       usr: stgo5krbjtc
       pw: pass111
-    mail_bvt_netstamps_specify:
+    mail_bvt_stamps:
       usr: stgepefuut
       pw: pass111
-    mail_bvt_netstamps_calculate:
+    mail_bvt_stamps_calculate:
       usr: stgswz5afiev
       pw: pass111
     mail_bvt_purchasing:
@@ -2284,10 +2284,10 @@ mail_credentials:
     mail_bvt_international:
       usr: ccwsq8231z1wa
       pw: pass111
-    mail_bvt_netstamps_specify:
+    mail_bvt_stamps:
       usr: ccwsq8231z1wa
       pw: pass111
-    mail_bvt_netstamps_calculate:
+    mail_bvt_stamps_calculate:
       usr: ccwsq8231z1wa
       pw: pass111
     mail_bvt_extra_services:
@@ -2954,10 +2954,10 @@ mail_credentials:
     mail_bvt_international:
       usr: nk0cvx3290y
       pw: pass111
-    mail_bvt_netstamps_specify:
+    mail_bvt_stamps:
       usr: sitm74p
       pw: pass111
-    mail_bvt_netstamps_calculate:
+    mail_bvt_stamps_calculate:
       usr: e6kwio06so
       pw: pass111
     mail_bvt_purchasing:
@@ -2978,10 +2978,10 @@ mail_credentials:
     mail_bvt_international:
       usr: jho7vpgem5
       pw: pass111
-    mail_bvt_netstamps_specify:
+    mail_bvt_stamps:
       usr: sqpklsh7h
       pw: pass111
-    mail_bvt_netstamps_calculate:
+    mail_bvt_stamps_calculate:
       usr: c5mq9slp2
       pw: pass111
     mail_bvt_purchasing:
