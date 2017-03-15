@@ -37,7 +37,6 @@ mail_services:
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
   FCM Package: sdc-servicedroplist-fcthickenvelope
   PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
-  PM Large Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
   PM Large Package: sdc-servicedroplist-pmlargepackage
   PM Flat Rate Envelope: sdc-servicedroplist-pmflatrateenvelope
@@ -75,7 +74,7 @@ mail_services:
 orders_services:
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
   FCM Package: sdc-servicedroplist-fcthickenvelope
-  PM Large Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
+  PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
   PM Large Package: sdc-servicedroplist-pmlargepackage
   PM Flat Rate Envelope: sdc-servicedroplist-pmflatrateenvelope

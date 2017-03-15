@@ -34,7 +34,7 @@ Feature: January 2017 Rates for Core User in Zone 4
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to address in Zone 4
-    Then on Order Details form, select service PM Large Envelope
+    Then on Order Details form, select service PM Large/Thick Envelope
     Then set Order Details form Weight to 2 lb 8 oz
     Then expect Order Details form Service Cost is 7.86
     Then set Order Details form Tracking to USPS Tracking

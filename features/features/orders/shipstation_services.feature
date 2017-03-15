@@ -12,8 +12,8 @@
 
     Then set Order Details form Ship-To to address in Zone 1 through 4
 
-    Then on Order Details form, select service PM Large Envelope
-    Then expect Order Details form service is PM Large Envelope
+    Then on Order Details form, select service PM Large/Thick Envelope
+    Then expect Order Details form service is PM Large/Thick Envelope
 
     Then on Order Details form, select service PM Package
     Then expect Order Details form service is PM Package
