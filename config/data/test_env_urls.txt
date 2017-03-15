@@ -1,0 +1,24 @@
+registration:
+https://qa-registration.stamps.com/registration
+https://registrationext.qasc.stamps.com/registration
+https://registration.staging.stamps.com/registration/
+
+pam:
+http://qa-clientsite:82/pam/Default.asp
+http://site.qasc.stamps.com:82/pam/
+https://site.staging.stamps.com:82/pam/
+
+web client:
+https://printext.qacc.stamps.com/orders/
+pass111
+
+https://printext.qasc.stamps.com/orders/
+scg17bg9hz
+
+http://print.staging.stamps.com/orders/
+stggm2z3od6o5t
+
+https://printext.qacc.stamps.com/webpostage/default2.aspx
+https://naws.qacc.stamps.com/
+
+

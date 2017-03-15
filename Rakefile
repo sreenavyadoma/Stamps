@@ -12,8 +12,69 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_print_envelope) do |t|
-  t.profile = 'mail_print_envelope'
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_envelope_6_7_9_11_12) do |t|
+  t.profile = 'mail_print_envelope_6_7_9_11_12'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_envelope_10_A2_A9) do |t|
+  t.profile = 'mail_print_envelope_10_A2_A9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_fcm_psg) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_fcm_psg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_mm_xm) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_mm_xm'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_box) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_x_6_fcm_psg) do |t|
+  t.profile = 'mail_print_roll_4_x_6_fcm_psg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_x_6_mm_xm) do |t|
+  t.profile = 'mail_print_roll_4_x_6_mm_xm'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_x_6_pm_box) do |t|
+  t.profile = 'mail_print_roll_4_x_6_pm_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_x_6_pm_envelope_package) do |t|
+  t.profile = 'mail_print_roll_4_x_6_pm_envelope_package'
   t.cucumber_opts = "-p cuke_reports"
 end
 

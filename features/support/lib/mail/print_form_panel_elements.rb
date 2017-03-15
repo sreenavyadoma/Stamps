@@ -267,7 +267,7 @@ module Stamps
           drop_down.safe_click
 
           if str.downcase == 'default'
-            element = browser.li(css: "div[class*=floating]>div>ul>li[class*=selected]")
+            element = browser.li(css: "li[class*=x-boundlist-item][data-boundview^=boundlist][role=option]:nth-child(1)")
           elsif str.downcase.include? "manage shipping"
             element = browser.li(text: "Manage Mailing Addresses...")
           else
