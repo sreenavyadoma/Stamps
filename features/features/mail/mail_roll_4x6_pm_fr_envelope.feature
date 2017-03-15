@@ -1,4 +1,4 @@
-Feature: Mail Roll - 4" x 6" - MM Package
+Feature: Mail Roll - 4" x 6" - PM FR Envelope
 
 
 
@@ -6,8 +6,8 @@ Feature: Mail Roll - 4" x 6" - MM Package
     Given a valid user is signed in to Web Apps
 
 
-  @mail_print_roll_4x6_mm_package
-  Scenario: Roll - 4" x 6" - MM Package
+  @mail_print_roll_4x6_pm_fr_envelope
+  Scenario: Roll - 4" x 6" - PM FR Envelope
 
 
     Then select Print On Roll - 4" x 6" Shipping Label
@@ -18,7 +18,7 @@ Feature: Mail Roll - 4" x 6" - MM Package
 
 
     Then set Print form Ounces to 1
-    Then select Print form service MM Package
+    Then select Print form service PM Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button

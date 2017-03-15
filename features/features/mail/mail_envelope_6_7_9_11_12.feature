@@ -15,7 +15,7 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer to factory
-    Then Print Postage
+    Then click Mail Print modal Print button
 
    #mail_print_envelope_6
     Then select Print On Envelope - #6, 3 ⅝" x 6 ½"
@@ -25,7 +25,7 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then set Print form Ounces to 1
     Then Print Postage
     Then set Mail Print modal Printer to factory
-    Then Print Postage
+    Then click Mail Print modal Print button
 
    #mail_print_envelope_7
     Then select Print On Envelope - #7, 3 ⅞" x 7 ½"
@@ -36,7 +36,7 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer to factory
-    Then Print Postage
+    Then click Mail Print modal Print button
 
 
     Then select Print On Envelope - #9, 3 ⅞" x 8 ⅞"
@@ -47,7 +47,7 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer to factory
-    Then Print Postage
+    Then click Mail Print modal Print button
 
    #mail_print_envelope_11
     Then select Print On Envelope - #11, 4 ½" x 10 ⅜"
@@ -58,7 +58,7 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer to factory
-    Then Print Postage
+    Then click Mail Print modal Print button
 
    #mail_print_envelope_12
     Then select Print On Envelope - #12, 4 ¾" x 11"
@@ -69,6 +69,6 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer to factory
-    Then Print Postage
+    Then click Mail Print modal Print button
     
     Then Sign out

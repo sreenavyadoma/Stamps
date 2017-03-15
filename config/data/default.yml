@@ -1070,6 +1070,9 @@ orders_credentials:
     bvt_shipping_address_management:
       usr: ccje975fmb
       pw: pass111
+    bvt_import_orders:
+      usr: ccslm4rnxg42q
+      pw: pass111
     address_cleansing:
       usr: swv6wmuno
       pw: pass111
@@ -2290,6 +2293,36 @@ mail_credentials:
     mail_print_envelope_6_7_9_11_12:
       usr: cclnlqaf8s
       pw: pass111
+    mail_print_envelope_10_A2_A9:
+          usr: cclnlqaf8s
+          pw: pass111
+    mail_print_roll_4_1_8_x_6_1_4_fcm_psg:
+          usr: cclnlqaf8s
+          pw: pass111
+    mail_print_roll_4_1_8_x_6_1_4_mm_xm:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_roll_4_1_8_x_6_1_4_pm_box:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_roll_4_x_6_fcm_psg:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_roll_4_x_6_mm_xm:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_roll_4_x_6_pm_box:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_roll_4_x_6_pm_envelope_package:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_roll_4_1_8_x_6_1_4_pm_box:
+              usr: cclnlqaf8s
+              pw: pass111
     mail_authentication:
       usr: ccdvx25ja288
       pw: pass111
