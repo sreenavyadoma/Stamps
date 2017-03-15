@@ -35,13 +35,13 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = StampsElement.new(browser.div(css: "div[class*=resizable]>div[class*='draggable']>div>div>div>div"))
+          @window_title = StampsElement.new(browser.div(text: "Please Wait"))
           @paragraph = StampsElement.new(browser.div(css: "div[class*=resizable]>div[id^=dialoguemodal-][id$=-body]>div>div"))
-          @ok_btn = StampsElement.new(browser.span(css: "div[class*=resizable]>div[class*='panel-docked-bottom']>div>div>div>a>span>span>span[id$=btnInnerEl]"))
+          @ok_btn = StampsElement.new(browser.span(text: "OK"))
         end
 
         def present?
-          window_title.safe_text.eql("Please Wait")
+          window_title.present?
         end
 
         def ok
