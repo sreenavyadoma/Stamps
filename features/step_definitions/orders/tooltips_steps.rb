@@ -20,8 +20,8 @@ Then /^(?:I|i)n Orders Toolbar, expect Add Tooltip to include (.*)$/ do |expecta
   expect(actual).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Toolbar Menu Tooltip is (.*)$/ do |expectation|
-  #logger.step "On Order Details form, expect Toolbar Menu Tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Toolbar Menu Tooltip is (.*)$/ do |expectation|
+  #logger.step "expect Order Details form Toolbar Menu Tooltip is #{expectation}"
   actual = stamps.orders.order_details.toolbar.menu.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
@@ -60,47 +60,47 @@ Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight is (.+)$/ do
 end
 
 Then /^(?:O|o)n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
-  #logger.step "On Customs form, expect Associated Item Description Tooltip Error is #{expectation}"
+  #logger.step "expect Customs form Associated Item Description Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).description.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).description.data_error_qtip
   #logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^(?:O|o)n Customs form, expect Qty Tooltip Error is (.*)$/ do |expectation|
-  #logger.step "On Customs form, expect Qty Tooltip Error is #{expectation}"
+  #logger.step "expect Customs form Qty Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).qty.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).qty.text_box.data_error_qtip
   #logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^(?:O|o)n Customs form, expect Unit Price Tooltip Error is (.*)$/ do |expectation|
-  #logger.step "On Customs form, expect Unit Price Tooltip Error is #{expectation}"
+  #logger.step "expect Customs form Unit Price Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).unit_price.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).unit_price.text_box.data_error_qtip
   #logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^(?:O|o)n Customs form, expect Pounds Tooltip Error is (.*)$/ do |expectation|
-  #logger.step "On Customs form, expect Pounds Tooltip Error is #{expectation}"
+  #logger.step "expect Customs form Pounds Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).lb.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).lb.text_box.data_error_qtip
   #logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^(?:O|o)n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation|
-  #logger.step "On Customs form, expect Ounces Tooltip Error is #{expectation}"
+  #logger.step "expect Customs form Ounces Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.item_grid.item(1).oz.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).oz.text_box.data_error_qtip
   #logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(ddata_error_qtip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Domestic Address data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Domestic Address data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Domestic Address data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Domestic Address data error tooltip is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   text_box = stamps.orders.order_details.ship_to.domestic.text_area
   20.times do
@@ -120,8 +120,8 @@ Then /^(?:O|o)n Order Details form, expect Domestic Address data error tooltip i
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Domestic Email data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Domestic Email data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Domestic Email data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Domestic Email data error tooltip is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
   text_box = stamps.orders.order_details.ship_to.domestic.email
   20.times do
@@ -141,8 +141,8 @@ Then /^(?:O|o)n Order Details form, expect Domestic Email data error tooltip is 
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Weight Lbs data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Domestic  Weight lb data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Weight Lbs data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Domestic  Weight lb data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.weight.lb.text_box
   20.times do
     text_box.scroll_into_view
@@ -164,8 +164,8 @@ Then /^(?:O|o)n Order Details form, expect Weight Lbs data error tooltip is \"(.
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Weight Oz data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Weight Oz data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Weight Oz data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Weight Oz data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.weight.oz.text_box
   20.times do
     text_box.scroll_into_view
@@ -190,8 +190,8 @@ Then /^(?:O|o)n Order Details form, expect Weight Oz data error tooltip is \"(.*
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect service data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Weight Oz data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form service data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Weight Oz data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.service.text_box
   20.times do
     text_box.safe_double_click
@@ -213,8 +213,8 @@ Then /^(?:O|o)n Order Details form, expect service data error tooltip is \"(.*)\
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Dimensions Length data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Dimensions Length data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Dimensions Length data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Dimensions Length data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.dimensions.length.text_box
 
   20.times do
@@ -237,8 +237,8 @@ Then /^(?:O|o)n Order Details form, expect Dimensions Length data error tooltip 
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Dimensions Width data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Dimensions Width data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Dimensions Width data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Dimensions Width data error tooltip is #{expectation}"
   width_text_box = stamps.orders.order_details.dimensions.width.text_box
 
   20.times do
@@ -261,8 +261,8 @@ Then /^(?:O|o)n Order Details form, expect Dimensions Width data error tooltip i
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect Dimensions Height data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect Dimensions Height data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form Dimensions Height data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form Dimensions Height data error tooltip is #{expectation}"
   height_text_box = stamps.orders.order_details.dimensions.height.text_box
 
   20.times do
@@ -285,17 +285,8 @@ Then /^(?:O|o)n Order Details form, expect Dimensions Height data error tooltip 
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:I|i)n Orders Grid, expect ship cost data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "In Orders Grid, expect ship cost data error tooltip is #{expectation}"
-  grid_order_id = stamps.orders.orders_grid.column.order_id.row 1
-  grid_ship_cost = stamps.orders.orders_grid.column.ship_cost.data grid_order_id
-  error = grid_ship_cost.attribute_expectation "data-errorqtip"
-  #logger.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
-  expect(error).to include(expectation)
-end
-
-Then /^(?:O|o)n Order Details form, expect International Name data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect International Name data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form International Name data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form International Name data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.name
   20.times do
     text_box.safe_double_click
@@ -319,8 +310,8 @@ Then /^(?:O|o)n Order Details form, expect International Name data error tooltip
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect International Company data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect International Company data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form International Company data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form International Company data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.company
 
   20.times do
@@ -344,8 +335,8 @@ Then /^(?:O|o)n Order Details form, expect International Company data error tool
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect International Address 1 data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect International Address 1 data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form International Address 1 data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form International Address 1 data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.address_1
 
   20.times do
@@ -369,8 +360,8 @@ Then /^(?:O|o)n Order Details form, expect International Address 1 data error to
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect International City data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect International City data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form International City data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form International City data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.city
 
   20.times do
@@ -393,8 +384,8 @@ Then /^(?:O|o)n Order Details form, expect International City data error tooltip
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect International Phone data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect International Phone data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form International Phone data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form International Phone data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.phone
 
   20.times do
@@ -419,8 +410,8 @@ Then /^(?:O|o)n Order Details form, expect International Phone data error toolti
   expect(data_error_tooltip).to include(expectation)
 end
 
-Then /^(?:O|o)n Order Details form, expect International Email data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "On Order Details form, expect International Email data error tooltip is #{expectation}"
+Then /^(?:E|e)xpect Order Details form International Email data error tooltip is \"(.*)\"$/ do |expectation|
+  #logger.step "expect Order Details form International Email data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.email
 
   20.times do

@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class SuccessModal < Browser::StampsHtmlField
+    class SuccessModal < Browser::StampsBrowserElement
       def window_title
         element_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")
       end
@@ -23,7 +23,7 @@ module Stamps
       end
     end
 
-    class ImportOrders < Browser::StampsHtmlField
+    class ImportOrders < Browser::StampsBrowserElement
       attr_reader :title
 
       def initialize(param)
@@ -76,7 +76,7 @@ module Stamps
         button = StampsElement.new browser.span(text: "Select CSV File")
         open_file = Windows::OpenFile.new
         10.times do
-          button.safe_click
+          button.element.parent.click
           button.send_keys(:enter)
           sleep(2)
           return open_file if open_file.present?

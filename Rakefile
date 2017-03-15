@@ -17,6 +17,46 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_envelope_6_7_9_11_12) do |t|
+  t.profile = 'mail_print_envelope_6_7_9_11_12'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_shipping_label_8x11) do |t|
+  t.profile = 'mail_print_envelope_10_A2_A9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_fcm_psg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_mm_xm'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4) do |t|
+  t.profile = 'mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rates_pme_comm_base) do |t|
   t.profile = 'rates_pme_comm_base'
   t.cucumber_opts = "-p cuke_reports"
@@ -1060,13 +1100,8 @@ Cucumber::Rake::Task.new(:mail_bvt_purchasing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_bvt_netstamps_calculate) do |t|
-  t.profile = 'mail_bvt_netstamps_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_bvt_netstamps_specify) do |t|
-  t.profile = 'mail_bvt_netstamps_specify'
+Cucumber::Rake::Task.new(:mail_bvt_stamps) do |t|
+  t.profile = 'mail_bvt_stamps'
   t.cucumber_opts = "-p cuke_reports"
 end
 

@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class AnErrorOccured < Browser::StampsHtmlField
+    class AnErrorOccured < Browser::StampsBrowserElement
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 
       def initialize(param)
@@ -36,7 +36,7 @@ module Stamps
       end
     end
 
-    class WebRegistration < Browser::StampsHtmlField
+    class WebRegistration < Browser::StampsBrowserElement
       attr_reader :profile, :error_occured
       def initialize(param)
         super(param)
@@ -45,8 +45,6 @@ module Stamps
       end
 
       def visit
-        param.test_env = 'stg' if param.test_env.downcase == 'staging'
-
         case param.test_env.downcase
           when /cc/
             url = "https://qa-registration.stamps.com/registration"

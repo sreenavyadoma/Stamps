@@ -1,7 +1,7 @@
 module Stamps
   module WebReg
 
-    class ReferrerName < Browser::StampsHtmlField
+    class ReferrerName < Browser::StampsBrowserElement
 
       def present?
         (browser.label css: "label[for=referrerName]").present?
@@ -87,7 +87,7 @@ module Stamps
       end
     end
 
-    class UsageType < Browser::StampsHtmlField
+    class UsageType < Browser::StampsBrowserElement
 
       def mostly_mailing
         begin
@@ -146,7 +146,7 @@ module Stamps
 
     end
 
-    class FirstQuestion < Browser::StampsHtmlField
+    class FirstQuestion < Browser::StampsBrowserElement
       def select question
         select_element = browser.select_list(:name, "secretQuestion1")
 
@@ -200,7 +200,7 @@ module Stamps
       end
     end
 
-    class SecondQuestion < Browser::StampsHtmlField
+    class SecondQuestion < Browser::StampsBrowserElement
       def select question
         select_element = browser.select_list(:name, "secretQuestion2")
 
@@ -342,7 +342,7 @@ module Stamps
 
 
 
-      class Profile < Browser::StampsHtmlField
+      class Profile < Browser::StampsBrowserElement
       attr_reader :referrer_name, :email, :user_id, :password, :retype_password, :usage_type, :first_question,
                   :first_answer, :second_question, :second_answer, :send_promo, :continue, :membership
 

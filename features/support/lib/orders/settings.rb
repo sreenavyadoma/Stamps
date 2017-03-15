@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class SettingsModal < Browser::StampsHtmlField
+    class SettingsModal < Browser::StampsBrowserElement
       private
 
       def checkbox_status_array

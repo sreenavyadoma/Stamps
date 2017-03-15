@@ -25,11 +25,12 @@ Then /^Save Order Details data$/ do
     test_parameter[:tracking] = stamps.orders.order_details.tracking.text_box.text
   end
 end
+
 Then /^(?:I|i)n Orders Toolbar, Refresh Orders$/ do
   stamps.orders.orders_toolbar.refresh_orders
 end
 
-Then /^(?:I|i)n Print modal, expect Print Modal is present$/ do
+Then /^(?:E|e)xpect Print modal Print Modal is present$/ do
   expect(stamps.orders.orders_toolbar.print_btn.print_modal.present?).to be_truthy
 end
 
@@ -56,25 +57,25 @@ Then /^Label Unavailable:  Expect Visible$/ do
       #logger.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
       @reprint_modal.ok
       @reprint_modal.close
-      expect(label_unavailable_visible).to be true
+      expect(label_unavailable_visible).to be(true)
     else
       #logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
-      expect(@reprint_modal.present?).to be true
+      expect(@reprint_modal.present?).to be(true)
   end
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Shipped$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be true
+  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
   stamps.orders.orders_toolbar.move_drop_down.move_to_shipped.move
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Canceled$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be true
+  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
   stamps.orders.orders_toolbar.move_drop_down.move_to_canceled.move
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be true
+  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
   stamps.orders.orders_toolbar.move_drop_down.move_to_awaiting_shipment.move
 end
 
@@ -83,7 +84,7 @@ Then /^(?:I|i)n Orders Grid toolbar, select Move to On Hold until today plus (\d
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to On Hold until (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be true
+  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.cancel
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.hold_until.set("#{month}/#{day}/#{year}")
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.move

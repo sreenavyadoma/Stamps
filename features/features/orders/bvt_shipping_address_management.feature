@@ -12,7 +12,7 @@ Feature:  BVT Address Management
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, expect selection has random
     Then on Manage Shipping Address modal, delete all addresses
-    Then on Order Details form, set Ship-From to default
-    Then on Order Details form, set Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-To to address in Zone 1 through 4
     Then on Order Details form, select service PM Package
     Then Sign out

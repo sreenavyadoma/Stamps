@@ -1,103 +1,131 @@
 
-Then /^Mail: Open Extra Servicess$/ do
-  #logger.step "Mail: Open Extra Servicess"
-  @extra_services = stamps.mail.open_extra_services
+Then /^(?:S|s)et Extra Services COD to (\d*.?\d+)$/ do |amount|
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.cod.set(amount)
 end
 
-Then /^Mail Extra Services: Set COD to \$(\d+)$/ do |amount|
-  @extra_services.cod.set amount
+Then /^(?:E|e)xpect Extra Services COD Price to be (\d*.?\d+)$/ do |expectation|
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod_price_element.present?).to be(true)
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.cod_price == expectation.to_f.round(2) end
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^Mail Extra Services: Click Save/ do
-  @extra_services.save
+Then /^(?:S|s)ave Extra Services/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.save_element.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.save
 end
 
-Then /^Mail Extra Services: Set Security to (.*)$/ do |security|
-  @extra_services.security.select security
+Then /^(?:S|s)et Extra Services Security to (.*)$/ do |str|
+  expect(stamps.mail.print_form.advanced_options.extra_services.security.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.security.select(str)
 end
 
-Then /^Mail Extra Services: Set Security Value to \$(\d+)$/ do |value|
-  @extra_services.security_value.set(value)
+Then /^(?:E|e)xpect Extra Services Security Price to be (\d*.?\d+)$/ do |expectation|
+  expect(stamps.mail.print_form.advanced_options.extra_services.security_price_element.present?).to be(true)
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.security_price == expectation.to_f.round(2) end
+  expect(stamps.mail.print_form.advanced_options.extra_services.security_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^Mail Extra Services: Set Handling to (.*)$/ do |handling|
-  @extra_services.handling.select handling
-  if handling == 'Live Animal (with Fee)' || handling == 'Live Animal' || handling == 'Hazardous Materials'
-    @extra_services.special_contents_modal.save
-  end
+Then /^(?:S|s)et Extra Services Value to (\d*.?\d+)$/ do |value|
+  expect(stamps.mail.print_form.advanced_options.extra_services.security.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.value.set(value)
 end
 
-Then /^Mail Extra Services: Set Return Receipt to Checked$/ do
-  #logger.step "Mail Extra Services: Check Return Receipt"
-  @extra_services.return_receipt.checkbox.check
+Then /^(?:S|s)et Extra Services Handling to (.*)$/ do |str|
+  expect(stamps.mail.print_form.advanced_options.extra_services.handling.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.handling.select(str)
 end
 
-Then /^Mail Extra Services: Set Return Receipt to Unchecked$/ do
-  #logger.step "Mail Extra Services: Uncheck Return Receipt"
-  @extra_services.return_receipt.checkbox.uncheck
+Then /^(?:C|c)heck Extra Services Return Receipt$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.return_receipt.check
 end
 
-Then /^Mail Extra Services: Set Electronic Return Receipt to Checked$/ do
-  #logger.step "Mail Extra Services: Check Electronic Return Receipt"
-  @extra_services.electronic_return_receipt.checkbox.check
+Then /^(?:E|e)xpect Extra Services Return Receipt Price to be (\d*.?\d+)$/ do |expectation|
+  expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_price_element.present?).to be(true)
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.return_receipt_price == expectation.to_f.round(2) end
+  expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^Mail Extra Services: Set Electronic Return Receipt to Unchecked$/ do
-  #logger.step "Mail Extra Services: Electronic Uncheck Return Receipt"
-  @extra_services.electronic_return_receipt.checkbox.uncheck
+Then /^(?:U|u)ncheck Extra Services Return Receipt$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.return_receipt.uncheck
 end
 
-Then /^Mail Extra Services: Set Restricted Delivery to Checked$/ do
-  #logger.step "Mail Extra Services: Check Restricted Delivery"
-  @extra_services.restricted_delivery.checkbox.check
+Then /^(?:C|c)heck Extra Services Electronic Return Receipt$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.check
 end
 
-Then /^Mail Extra Services: Set Restricted Delivery to Unchecked$/ do
-  #logger.step "Mail Extra Services: Uncheck Restricted Delivery"
-  @extra_services.restricted_delivery.checkbox.uncheck
+Then /^(?:U|u)ncheck Extra Services Electronic Return Receipt$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.uncheck
 end
 
-Then /^Mail Extra Services: Set Notice of Non-Delivery to Checked$/ do
-  #logger.step "Mail Extra Services: Check Notice of Non-Delivery"
-  @extra_services.non_delivery_notice.checkbox.check
+Then /^(?:C|c)heck Extra Services Restricted Delivery$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.restricted_delivery.check
 end
 
-Then /^Mail Extra Services: Set Notice of Non-Delivery to Unchecked$/ do
-  #logger.step "Mail Extra Services: Uncheck Notice of Non-Delivery"
-  @extra_services.non_delivery_notice.checkbox.uncheck
+Then /^(?:E|e)xpect Extra Services Restricted Delivery Price to be (\d*.?\d+)$/ do |expectation|
+  expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price_element.present?).to be(true)
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price == expectation.to_f.round(2) end
+  expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^Mail Extra Services: Set Fragile to Checked$/ do
-  #logger.step "Mail Extra Services: Check Fragile"
-  @extra_services.fragile.checkbox.check
+Then /^(?:U|u)ncheck Extra Services Restricted Delivery$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.restricted_delivery.uncheck
 end
 
-Then /^Mail Extra Services: Set Fragile to Unchecked$/ do
-  #logger.step "Mail Extra Services: Uncheck Fragile"
-  @extra_services.fragile.checkbox.uncheck
+Then /^(?:C|c)heck Extra Services Notice of Non-Delivery$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice.check
 end
 
-Then /^Mail Extra Services: Set Return Receipt for Merchandise to Checked$/ do
-  #logger.step "Mail Extra Services: Check Return Receipt for Merchandise"
-  @extra_services.merchandise_return_receipt.checkbox.check
+Then /^(?:E|e)xpect Extra Services Notice of Non-Delivery Price to be (\d*.?\d+)$/ do |expectation|
+  expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price_element.present?).to be(true)
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price == expectation.to_f.round(2) end
+  expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^Mail Extra Services: Set Return Receipt for Merchandise to Unchecked$/ do
-  #logger.step "Mail Extra Services: Uncheck Return Receipt for Merchandise"
-  @extra_services.merchandise_return_receipt.checkbox.uncheck
+Then /^(?:U|u)ncheck Extra Services Notice of Non-Delivery$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice.uncheck
 end
 
-Then /^Mail Extra Services: Set Non-Rectangular to Checked$/ do
-  #logger.step "Mail Extra Services: Check Non-Rectangular"
-  @extra_services.non_rectangular.checkbox.check
-  sleep(2)
+Then /^(?:C|c)heck Extra Services Fragile$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.fragile.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.fragile.check
 end
 
-Then /^Mail Extra Services: Set Non-Rectangular to Unchecked$/ do
-  #logger.step "Mail Extra Services: Uncheck Non-Rectangular"
-  @extra_services.non_rectangular.checkbox.uncheck
-
+Then /^(?:U|u)ncheck Extra Services Fragile$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.fragile.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.fragile.uncheck
 end
 
+Then /^(?:C|c)heck Extra Services Return Receipt for Merchandise$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.merchandise_return_receipt.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.merchandise_return_receipt.check
+end
 
+Then /^(?:U|u)ncheck Extra Services Return Receipt for Merchandise$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.merchandise_return_receipt.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.merchandise_return_receipt.uncheck
+end
 
+Then /^(?:C|c)heck Extra Services Non-Rectangular$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.non_rectangular.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.non_rectangular.check
+end
+
+Then /^(?:U|u)ncheck Extra Services Non-Rectangular$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.non_rectangular.present?).to be(true)
+  stamps.mail.print_form.advanced_options.extra_services.non_rectangular.uncheck
+end
+
+Then /^(?:E|e)xpect Extra Services Total Price to be (\d*.?\d+)$/ do |expectation|
+  expect(stamps.mail.print_form.advanced_options.extra_services.total_price_element.present?).to be(true)
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.total_price == expectation.to_f.round(2) end
+  expect(stamps.mail.print_form.advanced_options.extra_services.total_price).to eql(expectation.to_f.round(2))
+end

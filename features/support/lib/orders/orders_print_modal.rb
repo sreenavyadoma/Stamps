@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Orders
-    class PrintingOn < Browser::StampsHtmlField
+    class PrintingOn < Browser::StampsBrowserElement
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -73,7 +73,7 @@ module Stamps
       end
     end
 
-    class Printer < Browser::StampsHtmlField
+    class Printer < Browser::StampsBrowserElement
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -96,7 +96,7 @@ module Stamps
       end
     end
 
-    class PaperTray < Browser::StampsHtmlField
+    class PaperTray < Browser::StampsBrowserElement
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -117,7 +117,7 @@ module Stamps
       end
     end
 
-    class StartingLabel < Browser::StampsHtmlField
+    class StartingLabel < Browser::StampsBrowserElement
       attr_reader :left_label, :right_label
 
       def initialize(param)
@@ -172,7 +172,7 @@ module Stamps
       end
     end
 
-    class PrintOptions < Browser::StampsHtmlField
+    class PrintOptions < Browser::StampsBrowserElement
       def hide_postage_value
         checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
         verify_field = checkbox_field.parent.parent.parent
@@ -198,7 +198,7 @@ module Stamps
       end
     end
 
-    class LabelUnavailable < Browser::StampsHtmlField
+    class LabelUnavailable < Browser::StampsBrowserElement
       def present?
         browser.div(text: "Label Unavailable").present?
       end
@@ -224,7 +224,7 @@ module Stamps
       end
     end
 
-    class UspsTerms < Browser::StampsHtmlField
+    class UspsTerms < Browser::StampsBrowserElement
       attr_reader :i_agree, :cancel
 
       def initialize(param)
@@ -264,7 +264,7 @@ module Stamps
       end
     end
 
-    class DatePicker < Browser::StampsHtmlField
+    class DatePicker < Browser::StampsBrowserElement
 
       def todays_date_div
         browser.div css: "div[title='Today']"
@@ -348,7 +348,7 @@ module Stamps
       end
     end
 
-    class ShipDate < Browser::StampsHtmlField
+    class ShipDate < Browser::StampsBrowserElement
       attr_reader :text_box, :date_picker, :text_box_cc
 
       def initialize(param)
@@ -369,7 +369,7 @@ module Stamps
 
 
 
-    class OrdersPrintModal < Browser::StampsHtmlField
+    class OrdersPrintModal < Browser::StampsBrowserElement
 
       attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options, :window_x_button,
                   :print_sample_button, :printer, :email_tracking_details, :print_envelope_btn, :print_button

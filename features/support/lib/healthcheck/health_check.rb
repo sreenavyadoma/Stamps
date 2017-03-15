@@ -1,5 +1,5 @@
 module Stamps
-  class HealthCheck < Browser::StampsHtmlField
+  class HealthCheck < Browser::StampsBrowserElement
 
     def health_check
       param.test_env = 'stg' if param.test_env.downcase == 'staging'
@@ -43,9 +43,8 @@ module Stamps
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
           logger.message "-"
           logger.message "-"
-
         else
-          expect("#{param.test_env} is not a valid URL selection").to eql ""
+          # do nothing
       end
 
       logger.message browser.text
@@ -96,11 +95,7 @@ module Stamps
           logger.message "-"
 
         else
-          logger.info "Invalid environment type!"
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          expect("#{param.test_env} is not a valid URL selection").to eql ""
+
       end
 
       if browser.text.include? "Server Error"
@@ -149,11 +144,7 @@ module Stamps
           logger.message "-"
 
         else
-          logger.info "Invalid environment type!"
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          expect("#{param.test_env} is not a valid URL selection").to eql ""
+          # do nothing
       end
 
       if browser.text.include? "Server Error"
@@ -207,11 +198,7 @@ module Stamps
           logger.message "-"
 
         else
-          logger.info "Invalid environment type!"
-          logger.info "Teardown: Begin tearing down test"
-          TestHelper.teardown
-          logger.info "Teardown: Done!"
-          expect("#{param.test_env} is not a valid URL selection").to eql ""
+          # do nothing
       end
 
       if browser.text.include? "Server Error"

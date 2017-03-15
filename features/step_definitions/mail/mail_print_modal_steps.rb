@@ -1,10 +1,14 @@
+Then /^Print (?:Postage|Label|Stamps|Envelope)$/ do
+  stamps.mail.mail_toolbar.print_postage
+end
 
 When /^(?:C|c)lick Mail Print modal Print button$/ do
-  stamps.mail.mail_toolbar.mail_print_modal.print
+  stamps.mail.mail_toolbar.print_postage.print
 end
 
 Then /^(?:S|s)et Mail Print modal Printer to (.*)$/ do |printer|
-  stamps.mail.mail_toolbar.mail_print_modal.printer.select(printer)
+  test_parameter[:printer] = printer
+  stamps.mail.mail_toolbar.print_postage.printer.select(test_parameter[:printer])
 end
 
 When /^Mail: Print International Postage$/ do
