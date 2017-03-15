@@ -36,7 +36,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to address in Zone 1 through 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large Envelope
+    * on Order Details form, select service PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -310,7 +310,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to address in Zone 1 through 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large Envelope
+    * on Order Details form, select service PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -584,7 +584,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to address in Zone 1 through 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large Envelope
+    * on Order Details form, select service PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -857,7 +857,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to address in Zone 1 through 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large Envelope
+    * on Order Details form, select service PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1131,7 +1131,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to address in Zone 1 through 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large Envelope
+    * on Order Details form, select service PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1405,7 +1405,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to address in Zone 1 through 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large Envelope
+    * on Order Details form, select service PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button

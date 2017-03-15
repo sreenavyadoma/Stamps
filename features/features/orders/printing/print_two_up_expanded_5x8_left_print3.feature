@@ -14,7 +14,7 @@ Feature: Print 3 Domestic labels on 5.5x8.5 - left side
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address PM Lg-Thick Env, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
-    Then on Order Details form, select service PM Large Envelope
+    Then on Order Details form, select service PM Large/Thick Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default

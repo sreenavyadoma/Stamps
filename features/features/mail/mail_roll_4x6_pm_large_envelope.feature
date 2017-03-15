@@ -1,4 +1,4 @@
-Feature: Mail Roll - 4" x 6" - PM Large Envelope
+Feature: Mail Roll - 4" x 6" - PM Large/Thick Envelope
 
 
 
@@ -7,7 +7,7 @@ Feature: Mail Roll - 4" x 6" - PM Large Envelope
 
 
   @mail_print_roll_4x6_pm_large_envelope
-  Scenario: Roll - 4" x 6" - PM Large Envelope
+  Scenario: Roll - 4" x 6" - PM Large/Thick Envelope
 
 
     Then select Print On Roll - 4" x 6" Shipping Label
@@ -18,7 +18,7 @@ Feature: Mail Roll - 4" x 6" - PM Large Envelope
 
 
     Then set Print form Ounces to 1
-    Then select Print form service PM Large Envelope
+    Then select Print form service PM Large/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
