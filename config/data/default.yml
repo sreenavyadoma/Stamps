@@ -34,7 +34,7 @@ mail_services:
   FCM Post Card: sdc-servicedroplist-fcpostcard
   FCM Letter: sdc-servicedroplist-fcletter
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
-  FCM Package: sdc-servicedroplist-fcthickenvelope
+  FCM Package/Thick Envelope: sdc-servicedroplist-fcthickenvelope
   PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Large Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
