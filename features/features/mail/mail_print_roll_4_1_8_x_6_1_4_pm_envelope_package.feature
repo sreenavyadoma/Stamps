@@ -16,7 +16,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope PACKAGE
 
 
     Then set Print form Ounces to 1
-    Then select Print form service PM Large Envelope
+    Then select Print form service PM Large/Thick Envelope
     Then Print Postage
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
