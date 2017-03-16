@@ -53,18 +53,7 @@ module Stamps
         server_error = Orders::Stores::ServerError.new(param)
 
         button.safe_click
-        test_parameter[:begin_time] = Time.now
-        success.wait_until_present
-        test_parameter[:end_time] = Time.now
-        test_parameter[:total_time]= test_parameter[:end_time] - test_parameter[:begin_time] # in seconds
-        logger.step "Success modal is present after #{test_parameter[:total_time]} seconds"
-
-        @import_timer_filename = "\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
-
-        csv_file = CSV.open(@import_timer_filename, "a")
-        csv_file.add_row([Time.now,test_parameter[:total_time]])
-
-        return success if success.present?
+        begin_time = Time.now
 
         if server_error.present?
           error_str = server_error.message
@@ -72,6 +61,16 @@ module Stamps
           server_error.ok
           expect("Server Error: \n#{error_str}").to eql ""
         end
+
+        success.wait_until_present
+        end_time = Time.now
+        import_time = end_time - begin_time # in seconds
+        import_time if success.present?
+      end
+
+      def confirm_success
+        success = SuccessModal.new(param)
+        success if success.present?
       end
 
       def cancel
