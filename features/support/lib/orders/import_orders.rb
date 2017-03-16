@@ -9,6 +9,10 @@ module Stamps
         browser.div(text: "Success").present?
       end
 
+      def wait_until_present
+          (browser.div(text: "Success")).wait_until_present(120)
+      end
+
       def message
         box = StampsTextbox.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         box.text
@@ -47,17 +51,26 @@ module Stamps
         success = SuccessModal.new(param)
         button = StampsElement.new browser.span(text: "Import")
         server_error = Orders::Stores::ServerError.new(param)
-        4.times do
-          button.safe_click
-          logger.info "Success modal is #{(success.present?)?"Present":"Not Present"}"
-          sleep(0.35)
-          return success if success.present?
-          if server_error.present?
-            error_str = server_error.message
-            logger.info error_str
-            server_error.ok
-            expect("Server Error: \n#{error_str}").to eql ""
-          end
+
+        button.safe_click
+        test_parameter[:begin_time] = Time.now
+        success.wait_until_present
+        test_parameter[:end_time] = Time.now
+        test_parameter[:total_time]= test_parameter[:end_time] - test_parameter[:begin_time] # in seconds
+        logger.step "Success modal is present after #{test_parameter[:total_time]} seconds"
+
+        @import_timer_filename = "\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
+
+        csv_file = CSV.open(@import_timer_filename, "a")
+        csv_file.add_row([Time.now,test_parameter[:total_time]])
+
+        return success if success.present?
+
+        if server_error.present?
+          error_str = server_error.message
+          logger.info error_str
+          server_error.ok
+          expect("Server Error: \n#{error_str}").to eql ""
         end
       end
 
