@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_sample_shipping_label_8x11_mm_xm
+  @mail_print_sample_shipping_label_8_x_11_mm_xm
   Scenario: Sample Shipping Label - 8 ½” x 11” MM XM Paper
 
    #mail_print_sample_shipping_label_8x11_mm_package

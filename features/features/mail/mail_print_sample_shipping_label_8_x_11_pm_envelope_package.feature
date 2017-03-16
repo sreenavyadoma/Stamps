@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM Envelope Package Paper
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_sample_shipping_label_8x11_pm_envelope_package
+  @mail_print_sample_shipping_label_8_x_11_pm_envelope_package
   Scenario: Sample Shipping Label - 8 ½” x 11” PPM Envelope Package Paper
 
    #mail_print_sample_shipping_label_8x11_pm_fr_envelope

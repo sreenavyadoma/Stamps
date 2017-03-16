@@ -2321,7 +2321,28 @@ mail_credentials:
     mail_print_roll_4_x_6_pm_envelope_package:
               usr: cclnlqaf8s
               pw: pass111
-    mail_print_roll_4_1_8_x_6_1_4_pm_box:
+    mail_print_sample_shipping_label_8_x_11_fcm_psg:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_sample_shipping_label_8_x_11_mm_xm:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_sample_shipping_label_8_x_11_pm_box:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_sample_shipping_label_8_x_11_pm_envelope_package:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_shipping_label_8_x_11_fcm_psg:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_shipping_label_8_x_11_mm_xm:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_shipping_label_8_x_11_pm_box:
+              usr: cclnlqaf8s
+              pw: pass111
+    mail_print_shipping_label_8_x_11_pm_envelope_package:
               usr: cclnlqaf8s
               pw: pass111
     mail_authentication:
