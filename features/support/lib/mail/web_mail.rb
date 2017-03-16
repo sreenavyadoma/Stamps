@@ -16,7 +16,7 @@ module Stamps
         case param.print_media
           when :stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps)
-          when :paper
+          when :label
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabels)
           when :envelopes
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelopes)
