@@ -3,7 +3,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_sample_shipping_label_8x11_fcm_psg
+  @mail_print_sample_shipping_label_8_x_11_fcm_psg
   Scenario: Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
 
    #mail_print_sample_shipping_label_8x11_fcm_large_envelope
