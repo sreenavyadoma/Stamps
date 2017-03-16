@@ -166,7 +166,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then expect Order Details form Total Ship Cost is 10.95
 
   @rates_orders_cpp_zone_5
-  Scenario: Priority Mail Express Package
+  Scenario: PME Package
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -178,7 +178,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then expect Order Details form Total Ship Cost is 51.38
 
   @rates_orders_cpp_zone_5
-  Scenario: Priority Mail Express Flat Rate Envelope
+  Scenario: PME Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -190,7 +190,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then expect Order Details form Total Ship Cost is 21.18
 
   @rates_orders_cpp_zone_5
-  Scenario: Priority Mail Express Padded Flat Rate Envelope
+  Scenario: PME Padded Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -202,7 +202,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then expect Order Details form Total Ship Cost is 21.64
 
   @rates_orders_cpp_zone_5
-  Scenario: Priority Mail Express Legal Flat Rate Envelope
+  Scenario: PME Legal Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States

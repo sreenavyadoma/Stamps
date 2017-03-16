@@ -14,7 +14,7 @@ Feature: Mail Shipping Label - SDC-1200 - PSG Large Package
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Parcel Select Ground Large Package
+    Then select Print form service Parcel Select Ground Large Package
     Then on Print form, select left side starting label
     Then Print Postage
     Then set Mail Print modal Printer to factory

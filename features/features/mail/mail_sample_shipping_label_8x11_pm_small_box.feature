@@ -16,9 +16,9 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper - PM Small Flat Rate
     Then set Label form Mail-To to a random address in zone 5 through 8
 
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Small Flat Rate Box
+    Then select Print form service PM Small Flat Rate Box
     Then on Print form, select left side starting label
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
-    Then click Mail Print modal Print button Sample
+    Then click Print button on Mail Print modal Sample
     Then Sign out

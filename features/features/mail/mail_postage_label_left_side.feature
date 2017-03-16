@@ -12,7 +12,7 @@ Feature: Mail Shipping Label - Left Side
     Then set Print form Mail To random address in zone 1
 
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Package
+    Then select Print form service Priority Mail Package
     Then select Print form service PM Package
     Then on Print form, select left side starting label
     Then Print Postage

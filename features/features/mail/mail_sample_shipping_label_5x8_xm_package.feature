@@ -16,9 +16,9 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - XM Package
     Then set Label form Mail-To to a random address in zone 1 through 4
 
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Package
+    Then select Print form service PME Package
     Then on Print form, select left side starting label
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
-    Then click Mail Print modal Print button Sample
+    Then click Print button on Mail Print modal Sample
     Then Sign out

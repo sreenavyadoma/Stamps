@@ -7,9 +7,9 @@ Feature: Don't Require weight for Flat/Regional Rate Services
   Priority Mail International Small Flat Rate Box
   Priority Mail International Medium Flat Rate Box
   Priority Mail International Large Flat Rate Box
-  Priority Mail Express International Flat Rate Envelope
-  Priority Mail Express International Padded Flat Rate Envelope
-  Priority Mail Express International Legal Flat Rate Envelope
+  PME International Flat Rate Envelope
+  PME International Padded Flat Rate Envelope
+  PME International Legal Flat Rate Envelope
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -106,7 +106,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    # Priority Mail Express International Flat Rate Envelope
+    # PME International Flat Rate Envelope
     Then on Order Details form, select service PMEI Flat Rate Envelope
     Then expect Order Details form service is PMEI Flat Rate Envelope
     Then click Order Details form Edit Form button
@@ -115,12 +115,12 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
-    Then expect Orders Grid service is Priority Mail Express International
+    Then expect Orders Grid service is PME International
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    # Priority Mail Express International Padded Flat Rate Envelope
+    # PME International Padded Flat Rate Envelope
     Then on Order Details form, select service PMEI Padded Flat Rate Envelope
     Then expect Order Details form service is PMEI Padded Flat Rate Envelope
     Then click Order Details form Edit Form button
@@ -129,12 +129,12 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
-    Then expect Orders Grid service is Priority Mail Express International
+    Then expect Orders Grid service is PME International
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    # Priority Mail Express International Legal Flat Rate Envelope
+    # PME International Legal Flat Rate Envelope
     Then on Order Details form, select service PMEI Legal Flat Rate Envelope
     Then expect Order Details form service is PMEI Legal Flat Rate Envelope
     Then click Order Details form Edit Form button
@@ -143,7 +143,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
-    Then expect Orders Grid service is Priority Mail Express International
+    Then expect Orders Grid service is PME International
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
