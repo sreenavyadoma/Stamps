@@ -12,8 +12,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper - PM Package
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Package
-    Then on Print form, select left side starting label
+    Then select Print form service Priority Mail Package
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

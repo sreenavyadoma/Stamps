@@ -54,7 +54,7 @@ module Stamps
           case param.print_media
             when :stamps
               @advanced_options = AdvancedOptionsStamps.new(param) if @advanced_options.nil? || !@advanced_options.present?
-            when :paper
+            when :labels
               @advanced_options = AdvancedOptionsShippingLabel.new(param) if @advanced_options.nil? || !@advanced_options.present?
             when :envelopes
               @advanced_options = AdvancedOptionsEnvelope.new(param) if @advanced_options.nil? || !@advanced_options.present?

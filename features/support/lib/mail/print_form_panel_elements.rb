@@ -20,15 +20,15 @@ module Stamps
           drop_down.safe_click
           case str
             when /Paper/
-              param.print_media = :paper
+              param.print_media = :labels
               selected_sub_str = 'Paper'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[0]
             when /SDC-1200/
-              param.print_media = :paper
+              param.print_media = :labels
               selected_sub_str = 'SDC-1200'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[1]
             when /Shipping Label - 5 /
-              param.print_media = :paper
+              param.print_media = :labels
               selected_sub_str = 'Shipping Label - 5 '
               element = browser.lis(css: "li[class*=iconShippingLabel]")[2]
             when /Envelope - #10/
@@ -267,7 +267,7 @@ module Stamps
           drop_down.safe_click
 
           if str.downcase == 'default'
-            element = browser.li(css: "div[class*=floating]>div>ul>li[class*=selected]")
+            element = browser.li(css: "li[class*=x-boundlist-item][data-boundview^=boundlist][role=option]:nth-child(1)")
           elsif str.downcase.include? "manage shipping"
             element = browser.li(text: "Manage Mailing Addresses...")
           else

@@ -32,7 +32,7 @@ Feature: January 2017 Rates for Core User in Zone 6
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to address in Zone 6
-    Then on Order Details form, select service PM Large Envelope
+    Then on Order Details form, select service PM Large/Thick Envelope
     Then set Order Details form Weight to 34 lb 0 oz
     Then expect Order Details form Service Cost is 54.18
     Then set Order Details form Tracking to USPS Tracking
@@ -174,7 +174,7 @@ Feature: January 2017 Rates for Core User in Zone 6
 
 
   @rates_orders_zone_6
-  Scenario: Priority Mail Express Package
+  Scenario: PME Package
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -187,7 +187,7 @@ Feature: January 2017 Rates for Core User in Zone 6
 
 
   @rates_orders_zone_6
-  Scenario: Priority Mail Express Flat Rate Envelope
+  Scenario: PME Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -200,7 +200,7 @@ Feature: January 2017 Rates for Core User in Zone 6
 
 
   @rates_orders_zone_6
-  Scenario: Priority Mail Express Padded Flat Rate Envelope
+  Scenario: PME Padded Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -213,7 +213,7 @@ Feature: January 2017 Rates for Core User in Zone 6
 
 
   @rates_orders_zone_6
-  Scenario: Priority Mail Express Legal Flat Rate Envelope
+  Scenario: PME Legal Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
