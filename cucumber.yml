@@ -86,7 +86,7 @@ bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=true HEALTHCHEC
 bvt_printing: --tags @bvt_printing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_printing
 bvt_purchasing: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_purchasing
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_updates_domestic
-bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_updates_international
+bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_updates_international
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_search
 
 dev_international_order: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
