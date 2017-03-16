@@ -17,7 +17,6 @@ Feature: Mail Sample Shipping Label - SDC-1200 - XM Flat Rate Envelope
 
     Then set Print form Ounces to 1
     Then select Print form service PME Flat Rate Envelope
-    Then on Print form, select left side starting label
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
     Then click Print button on Mail Print modal Sample

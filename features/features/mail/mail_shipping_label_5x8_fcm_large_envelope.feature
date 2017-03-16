@@ -16,7 +16,6 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - FCM Large Envelope
 
     Then set Print form Ounces to 1
     Then select Print On FCM Package
-    Then on Print form, select left side starting label
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

@@ -13,7 +13,6 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - XM Package
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
     Then select Print form service PME Package
-    Then on Print form, select left side starting label
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

@@ -17,7 +17,6 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - PM FR Envelope
 
     Then set Print form Ounces to 1
     Then select Print form service PM Flat Rate Envelope
-    Then on Print form, select left side starting label
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
     Then click Print button on Mail Print modal Sample
