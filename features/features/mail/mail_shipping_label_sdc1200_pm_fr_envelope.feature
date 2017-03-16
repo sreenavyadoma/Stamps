@@ -14,8 +14,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM FR Envelope
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Flat Rate Envelope
-    Then on Print form, select left side starting label
+    Then select Print form service PM Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

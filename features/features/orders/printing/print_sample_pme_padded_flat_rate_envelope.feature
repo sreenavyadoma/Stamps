@@ -1,10 +1,10 @@
-Feature: in Print modal, click Print button Sample - Priority Mail Express Padded Flat Rate Envelope
+Feature: in Print modal, click Print button Sample - PME Padded Flat Rate Envelope
 
   Background:
     Given a valid user is signed in to Web Apps
 
   @print_sample_pme_padded_flat_rate_envelope
-  Scenario:  Priority Mail Express Padded Flat Rate Envelope
+  Scenario:  PME Padded Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to address in Zone 1 through 4

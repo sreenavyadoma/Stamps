@@ -26,7 +26,7 @@ K1A 0G9
 Print On:
 Shipping Label 8 ½” x 11” Paper
 Services:
-Priority Mail Express International Package/Flat/Thick Envelope (3 5 Days)
+PME International Package/Flat/Thick Envelope (3 5 Days)
  
 ------------------------------------------------------------------------------
 
@@ -135,7 +135,7 @@ International CP 72
 DOMESTIC:
 Shipping Label 8 ½” x 11” Paper
 Services:
-Priority Mail Express Flat Rate Envelope (1-2 Days)
+PME Flat Rate Envelope (1-2 Days)
 
 Shipping Address:
 

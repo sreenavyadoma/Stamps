@@ -22,7 +22,7 @@ Feature: Verify Mail Elements Are Present
     Then on Print form, expect service Price is present
     Then on Print form, expect Insure For Field is present
     Then on Print form, expect Insure For Price is present
-    Then select Mail Service Priority Mail Package
+    Then select Print form service Priority Mail Package
     Then on Print form, expect Tracking Field is present
     Then on Print form, expect Tracking Price is present
     Then on Print form, expect Extra Services Button is present

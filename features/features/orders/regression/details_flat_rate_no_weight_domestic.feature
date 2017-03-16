@@ -9,9 +9,9 @@ Feature: Don't Require weight for Flat/Regional Rate Services
   Priority Mail Large Flat Rate Box
   Priority Mail Regional Rate Box A
   Priority Mail Regional Rate Box B
-  Priority Mail Express Flat Rate Envelope
-  Priority Mail Express Padded Flat Rate Envelope
-  Priority Mail Express Legal Flat Rate Envelope
+  PME Flat Rate Envelope
+  PME Padded Flat Rate Envelope
+  PME Legal Flat Rate Envelope
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -102,7 +102,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    # Priority Mail Express Flat Rate Envelope
+    # PME Flat Rate Envelope
     Then on Order Details form, select service PME Flat Rate Envelope
     Then expect Order Details form service is PME Flat Rate Envelope
     Then expect Order Details form Pounds is 0
@@ -112,7 +112,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    # Priority Mail Express Padded Flat Rate Envelope
+    # PME Padded Flat Rate Envelope
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then expect Order Details form service is PME Padded Flat Rate Envelope
     Then expect Order Details form Pounds is 0
@@ -122,7 +122,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    # Priority Mail Express Legal Flat Rate Envelope
+    # PME Legal Flat Rate Envelope
     Then on Order Details form, select service PME Legal Flat Rate Envelope
     Then expect Order Details form service is PME Legal Flat Rate Envelope
     Then expect Order Details form Pounds is 0

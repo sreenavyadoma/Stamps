@@ -36,7 +36,7 @@ Feature: January 2017 Rates for CPP User in Zone 2
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to address in Zone 2
-    Then on Order Details form, select service PM Large Envelope
+    Then on Order Details form, select service PM Large/Thick Envelope
     Then set Order Details form Weight to 0 lb 8 oz
     Then expect Order Details form Service Cost is 5.95
     Then set Order Details form Tracking to USPS Tracking
@@ -185,7 +185,7 @@ Feature: January 2017 Rates for CPP User in Zone 2
 
 
   @rates_orders_cpp_zone_2
-  Scenario: Priority Mail Express Package
+  Scenario: PME Package
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -199,7 +199,7 @@ Feature: January 2017 Rates for CPP User in Zone 2
 
 
   @rates_orders_cpp_zone_2
-  Scenario: Priority Mail Express Flat Rate Envelope
+  Scenario: PME Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -213,7 +213,7 @@ Feature: January 2017 Rates for CPP User in Zone 2
 
 
   @rates_orders_cpp_zone_2
-  Scenario: Priority Mail Express Padded Flat Rate Envelope
+  Scenario: PME Padded Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
@@ -227,7 +227,7 @@ Feature: January 2017 Rates for CPP User in Zone 2
 
 
   @rates_orders_cpp_zone_2
-  Scenario: Priority Mail Express Legal Flat Rate Envelope
+  Scenario: PME Legal Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States

@@ -17,11 +17,11 @@ Then /^(?:E|e)xpect Order Details form service is FCM Package$/ do
 end
 
 # Priority Mail
-Then /^(?:O|o)n Order Details form, select service PM Large Envelope$/ do
-  step "set Order Details form service to PM Large Envelope"
+Then /^(?:O|o)n Order Details form, select service PM Large\/Thick Envelope$/ do
+  step "set Order Details form service to PM Large/Thick Envelope"
 end
 
-Then /^(?:E|e)xpect Order Details form service is PM Large Envelope$/ do
+Then /^(?:E|e)xpect Order Details form service is PM Large\/Thick Envelope$/ do
   step "expect Order Details form service to be PM Large"
 end
 
