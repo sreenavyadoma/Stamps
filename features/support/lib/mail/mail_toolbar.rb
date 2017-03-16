@@ -60,7 +60,11 @@ module Stamps
             end
 
             expect(insufficient_funds.text).to eql('Insufficient Funds') if insufficient_funds.present?
-            confirm_window.continue if confirm_window.present?
+
+            if confirm_window.present?
+              confirm_window.do_not_prompt.check
+              confirm_window.continue
+            end
             return window if window.present?
           rescue
             #ignore
