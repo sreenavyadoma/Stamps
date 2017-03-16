@@ -24,7 +24,7 @@ Feature: Tracking
     #Then expect Order Details form Tracking is USPS Tracking
 
     #Then on Order Details form, select service PME Package
-    #Then expect Order Details form service is "Priority Mail Express Package"
+    #Then expect Order Details form service is "PME Package"
     #Then expect Order Details form Tracking is USPS Tracking
 
     Then on Order Details form, select service PM Large/Thick Envelope

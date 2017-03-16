@@ -23,10 +23,10 @@ Feature: User Views Price Next to service Dropdown
     Then expect Order Details form Service Cost inline price for "Priority Mail Large Flat Rate Box" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "Priority Mail Regional Rate Box A" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "Priority Mail Regional Rate Box B" is greater than $0.01
-    Then expect Order Details form Service Cost inline price for "Priority Mail Express Package" is greater than $0.01
-    Then expect Order Details form Service Cost inline price for "Priority Mail Express Flat Rate Envelope" is greater than $0.01
-    Then expect Order Details form Service Cost inline price for "Priority Mail Express Legal Flat Rate Envelope" is greater than $0.01
-    Then expect Order Details form Service Cost inline price for "Priority Mail Express Padded Flat Rate Envelope" is greater than $0.01
+    Then expect Order Details form Service Cost inline price for "PME Package" is greater than $0.01
+    Then expect Order Details form Service Cost inline price for "PME Flat Rate Envelope" is greater than $0.01
+    Then expect Order Details form Service Cost inline price for "PME Legal Flat Rate Envelope" is greater than $0.01
+    Then expect Order Details form Service Cost inline price for "PME Padded Flat Rate Envelope" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "Parcel Select Ground Package" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "Parcel Select Ground Large Package" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "Parcel Select Ground Oversized Package" is greater than $0.01

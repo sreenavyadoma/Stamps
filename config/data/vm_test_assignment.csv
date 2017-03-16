@@ -2,12 +2,31 @@ VM, USERNAME, TEST NAME
 jenkinsvmwin701, ccw7l673yk, mail_bvt_international
 jenkinsvm07, ccwsq8231z1wa, mail_bvt_envelopes
 jenkinsvm06, ccslm4rnxg42q, mail_bvt_stamps
+jenkins-cc4, ccnik68agz7ulk, mail_print_envelope_10_A2_A9
+jenkinsvm09, cclnlqaf8s, mail_print_envelope_6_7_9_11_12
+jenkinsvm08, ccyykg2nb, mail_print_sample_shipping_label_5x8_pm_fr_envelope
+jenkinsvm04, ccx9sfswq05pm, mail_print_sample_shipping_label_5x8_pm_large_envelope
+jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
+jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
+jenkins-stg1, xxxxxxxx, xxxxxxxx
+jenkins-stg2, ccp4fea0bt, xxxxxxxx
 
 
-jenkins-cc4, ccnik68agz7ulk, test_name
-jenkinsvm04, ccx9sfswq05pm, test_name
-jenkinsvm04, ccx9sfswq05pm, test_name
-jenkinsvm04, ccx9sfswq05pm, test_name
-jenkinsvm04, ccx9sfswq05pm, test_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+xxxxxxxx, xxxxxxxx, xxxxxxxx
 
 

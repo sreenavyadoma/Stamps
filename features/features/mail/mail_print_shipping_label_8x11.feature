@@ -1,10 +1,7 @@
 Feature: Mail Shipping Label - 8 ½” x 11” Paper
 
-
-
   Background:
     Given a valid user is signed in to Web Apps
-
 
   @mail_print_shipping_label_8x11
   Scenario: Shipping Label - 8 ½” x 11” Paper
@@ -14,9 +11,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Flat Rate Envelope
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service PM Flat Rate Envelope
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -25,9 +21,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print On FCM Package on Print form
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print On FCM Package
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -36,9 +31,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print On First Class Mail Package/Thick Envelope on Print form
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print On First Class Mail Package/Thick Envelope
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -48,8 +42,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
     Then select Print form service MM Package
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -58,9 +51,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Large Flat Rate Box
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Large Flat Rate Box
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -69,9 +61,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Large-Thick Envelope
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Large-Thick Envelope
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -81,9 +72,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Large Package
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Large Package
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -92,9 +82,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Legal Flat Rate Envelope
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Legal Flat Rate Envelope
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -103,9 +92,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Medium Flat Rate Box
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Medium Flat Rate Box
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -114,9 +102,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Package
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Package
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -126,8 +113,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
     Then select Print form service PM Padded Flat Rate Envelope
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -137,9 +123,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Regional Rate Box A
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Regional Rate Box A
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -148,9 +133,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Regional Rate Box B
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Priority Mail Regional Rate Box B
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -159,9 +143,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Small Flat Rate Box
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service PM Small Flat Rate Box
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -170,9 +153,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Parcel Select Ground Large Package
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Parcel Select Ground Large Package
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -181,9 +163,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Parcel Select Ground Oversized Package
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Parcel Select Ground Oversized Package
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -192,9 +173,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Parcel Select Ground Package
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service Parcel Select Ground Package
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -203,9 +183,8 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Flat Rate Envelope
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service PME Flat Rate Envelope
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -214,33 +193,30 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Legal Flat Rate Envelope
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service PME Legal Flat Rate Envelope
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_8x11_xm_package
     Then select Print On Shipping Label - 8 ½" x 11" Paper
-    Then set Shipping Label Print form Mail From to default
+    Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 5 through 8
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Package
-    Then on Print form, select left side starting label
+    Then select Print form service PME Package
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
-    Then click Mail Print modal Print button Sample
+    Then click Print button on Mail Print modal Sample
 
    #mail_print_shipping_label_8x11_xm_package
     Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Package
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service PME Package
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -251,20 +227,18 @@ Feature: Mail Shipping Label - 8 ½” x 11” Paper
     Then set Label form Mail-To to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Padded Flat Rate Envelope
-    Then on Print form, select left side starting label
+    Then select Print form service PME Padded Flat Rate Envelope
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
-    Then click Mail Print modal Print button Sample
+    Then click Print button on Mail Print modal Sample
 
    #mail_print_shipping_label_8x11_xm_pfr_envelope
     Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Padded Flat Rate Envelope
-    Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then select Print form service PME Padded Flat Rate Envelope
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 

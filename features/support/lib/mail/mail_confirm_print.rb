@@ -7,8 +7,8 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @window_title = StampsElement.new browser.span(text: "Confirm Print")
-          @continue_btn = StampsElement.new browser.span(text: "Continue")
+          @window_title = StampsElement.new(browser.div(text: "Confirm Print"))
+          @continue_btn = StampsElement.new(browser.span(text: "Continue"))
           @do_not_prompt = StampsCheckbox.new browser.span(css: "div[id^=dialoguemodal-][id$=-targetEl]>div>div>div>span"),
                              browser.div(css: "div[id^=dialoguemodal-][id$=-targetEl]>div[class*=checkbox]"), "class", "checked"
         end

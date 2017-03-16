@@ -12,8 +12,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - XM Padded Flat Rate Envelope
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Express Padded Flat Rate Envelope
-    Then on Print form, select left side starting label
+    Then select Print form service PME Padded Flat Rate Envelope
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
