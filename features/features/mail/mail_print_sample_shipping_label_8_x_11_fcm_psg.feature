@@ -26,7 +26,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service FCM Package/Thick Envelope
-    Then click Print Sample button on Print form
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -38,8 +38,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service PSG Large Package
-    Then on Print form, select left side starting label
-    Then click Print Sample button on Print form
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -51,8 +50,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service PSG Oversized Package
-    Then on Print form, select left side starting label
-    Then click Print Sample button on Print form
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -64,8 +62,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
     Then select Print form service PSG Package
-    Then on Print form, select left side starting label
-    Then click Print Sample button on Print form
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
