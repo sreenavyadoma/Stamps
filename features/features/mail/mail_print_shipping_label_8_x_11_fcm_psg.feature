@@ -11,9 +11,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print On FCM Package on Print form
+    Then select Print form service FCM Large Envelope
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -22,9 +22,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Print On First Class Mail Package/Thick Envelope on Print form
+    Then select Print form service FCM Package/Thick Envelope
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -33,9 +33,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Parcel Select Ground Large Package
+    Then select Print form service PSG Large Package
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -44,9 +44,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Parcel Select Ground Oversized Package
+    Then select Print form service PSG Oversized Package
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -55,9 +55,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Parcel Select Ground Package
+    Then select Print form service PSG Package
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 

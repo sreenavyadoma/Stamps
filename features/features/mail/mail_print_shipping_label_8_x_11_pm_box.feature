@@ -11,9 +11,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Large Flat Rate Box
+    Then select Print form service PM Large Flat Rate Box
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -22,9 +22,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Medium Flat Rate Box
+    Then select Print form service PM Medium Flat Rate Box
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -34,9 +34,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Regional Rate Box A
+    Then select Print form service PM Regional Rate Box A
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -45,9 +45,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Regional Rate Box B
+    Then select Print form service PM Regional Rate Box B
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -56,9 +56,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Small Flat Rate Box
+    Then select Print form service PM Small Flat Rate Box
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 

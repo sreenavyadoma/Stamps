@@ -11,7 +11,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Flat Rate Envelope
+    Then select Print form service PM Flat Rate Envelope
     Then on Print form, select left side starting label
     Then Print Postage
     Then set Mail Print modal Printer to factory
@@ -22,9 +22,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Large-Thick Envelope
+    Then select Print form service PM Large/Thick Envelope
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -34,9 +34,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Large Package
+    Then select Print form service PM Large Package
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -45,9 +45,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Legal Flat Rate Envelope
+    Then select Print form service PM Legal Flat Rate Envelope
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -56,9 +56,9 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To to a random address in zone 1
     Then set Print form Ounces to 1
-    Then select Mail Service Priority Mail Package
+    Then select Print form service PM Package
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
@@ -69,7 +69,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Padded Flat Rate Envelope
     Then on Print form, select left side starting label
-    Then click Print form Print button
+    Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
