@@ -21,6 +21,46 @@ Then /^(?:S|s)et Print form Ounces to (\d+)$/ do |ounces|
   stamps.mail.print_form.mail_weight.mail_ounces.set(test_parameter[:ounces])
 end
 
+
+
+
+
+
+
+Then /^(?:S|s)et Dimensions to length (\d+) width (\d+) height (\d+)$/ do |length, width, height|
+  step "set Label form Length to #{length}"
+end
+# dimension setters
+Then /^(?:S|s)et (?:Label|Roll|CM) form Length to (\d+)$/ do |length|
+  test_parameter[:length] = length
+  stamps.mail.print_form.dimensions.length.set(test_parameter[:length])
+end
+
+
+
+
+
+# dimension expectations
+Then /^(?:E|e)xpect Label form Length is (?:correct|(\d+))$/ do |length|
+  length = test_parameter[:length] if length.nil?
+  expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql(length.to_i)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Then /^(?:S|s)elect Print form (?:S|s)ervice (.*)$/ do |service|
   test_parameter[:service] = service
   stamps.mail.print_form.mail_service.select(test_parameter[:service])
