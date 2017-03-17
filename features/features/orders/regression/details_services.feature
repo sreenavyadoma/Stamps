@@ -18,8 +18,8 @@ Feature:  Orders service Selection
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then on Order Details form, select service PM Large Envelope
-    Then expect Order Details form service is PM Large Envelope
+    Then on Order Details form, select service PM Large/Thick Envelope
+    Then expect Order Details form service is PM Large/Thick Envelope
 
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present

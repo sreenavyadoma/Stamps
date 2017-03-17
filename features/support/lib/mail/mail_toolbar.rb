@@ -18,7 +18,7 @@ module Stamps
 
       def print_button
         expect([:envelopes, :stamps, :labels, :rolls]).to include(param.print_media)
-        if @print_button.nil? || !@print_button.present?
+        10.times do
           case param.print_media
             when :envelopes
               @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
@@ -31,7 +31,9 @@ module Stamps
             else
               # do nothing
           end
+          break if @print_button.present?
         end
+        expect(@print_button.present?).to be(true)
         @print_button
       end
 
@@ -60,7 +62,11 @@ module Stamps
             end
 
             expect(insufficient_funds.text).to eql('Insufficient Funds') if insufficient_funds.present?
-            confirm_window.continue if confirm_window.present?
+
+            if confirm_window.present?
+              confirm_window.do_not_prompt.check
+              confirm_window.continue
+            end
             return window if window.present?
           rescue
             #ignore

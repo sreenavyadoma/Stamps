@@ -1,10 +1,10 @@
-Feature: in Print modal, click Print button Sample - Priority Mail Express Package
+Feature: in Print modal, click Print button Sample - PME Package
 
   Background:
     Given a valid user is signed in to Web Apps
 
   @print_sample_pme_package
-  Scenario:  Priority Mail Express Package
+  Scenario:  PME Package
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to address in Zone 1 through 4

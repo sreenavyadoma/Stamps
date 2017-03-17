@@ -73,7 +73,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Large Envelope
+    Then on Order Details form, select service PM Large/Thick Envelope
     Then set Order Details form Tracking to USPS Tracking
 
     Then in Orders Toolbar, click Add button
