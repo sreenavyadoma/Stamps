@@ -138,6 +138,26 @@ Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_5x8_pm_envelope_packa
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_fcm_psg) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_fcm_psg'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_mm_xm) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_mm_xm'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_box) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_box'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_pm_envelope_package) do |t|
+  t.profile = 'mail_print_shipping_label_5x8_pm_envelope_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rates_pme_comm_base) do |t|
   t.profile = 'rates_pme_comm_base'
   t.cucumber_opts = "-p cuke_reports"
