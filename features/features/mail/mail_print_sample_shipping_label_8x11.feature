@@ -9,6 +9,73 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper
   @mail_print_sample_shipping_label_8x11
   Scenario: Sample Shipping Label - 8 ½” x 11” Paper
 
+   #mail_print_sample_shipping_label_8x11_psg_oversized_package
+    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then set Print form Mail-From to default
+    Then set Label form Mail-To Country to United States
+    Then set Label form Mail-To to a random address in zone 5 through 8
+    Then set Print form Ounces to 1
+    Then select Print form service PM Large Package
+
+
+
+    Then set Label form Length to 1
+    Then set Dimensions to length 2 width 2 height 2
+
+
+
+    Then expect Label form Length is correct
+    Then expect Label form Length is 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Then click Print Sample button on Print form
+    Then set Mail Print modal Printer to factory
+    Then click Print button on Mail Print modal Sample
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    #mail_print_sample_shipping_label_8x11_fcm_large_envelope
     Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
@@ -181,22 +248,9 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” Paper
     Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 1 through 4
-    Then set Print form Pounds to 0
+    Then set Label form Mail-To to a random address in zone 3
     Then set Print form Ounces to 1
     Then select Print form service Parcel Select Ground Large Package
-    Then click Print Sample button on Print form
-    Then set Mail Print modal Printer to factory
-    Then click Print button on Mail Print modal Sample
-
-   #mail_print_sample_shipping_label_8x11_psg_oversized_package
-    Then select Print On Shipping Label - 8 ½" x 11" Paper
-    Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 5 through 8
-    Then set Print form Pounds to 0
-    Then set Print form Ounces to 1
-    Then select Print form service Parcel Select Ground Oversized Package
     Then click Print Sample button on Print form
     Then set Mail Print modal Printer to factory
     Then click Print button on Mail Print modal Sample
