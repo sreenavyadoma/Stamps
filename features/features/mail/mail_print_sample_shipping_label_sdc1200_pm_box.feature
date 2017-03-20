@@ -4,10 +4,10 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Box
     Given a valid user is signed in to Web Apps
 
   @mail_print_sample_shipping_label_sdc1200_pm_box
-  Scenario: Sample Shipping Label - 5 ½” x 8 ½” - PM Box
+  Scenario: Sample Shipping Label - SDC-1200 - PM Box
 
-    #mail_print_sample_shipping_label_5x8_pm_large_box
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    #mail_print_sample_shipping_label_sdc1200_pm_large_box
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 5 through 8
@@ -17,8 +17,8 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Box
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_sample_shipping_label_5x8_pm_medium_box
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+   #mail_print_sample_shipping_label_sdc1200_pm_medium_box
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 5 through 8
@@ -28,8 +28,8 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Box
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_sample_shipping_label_5x8_pm_regional_box_a
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+   #mail_print_sample_shipping_label_sdc1200_pm_regional_box_a
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4
@@ -39,8 +39,8 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Box
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_sample_shipping_label_5x8_pm_regional_box_b
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+   #mail_print_sample_shipping_label_sdc1200_pm_regional_box_b
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 5 through 8
@@ -50,8 +50,8 @@ Feature: Mail Sample Shipping Label - SDC-1200 - PM Box
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_sample_shipping_label_5x8_pm_small_box
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+   #mail_print_sample_shipping_label_sdc1200_pm_small_box
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
     Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4

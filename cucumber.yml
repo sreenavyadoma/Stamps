@@ -17,7 +17,7 @@ web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers J
 eli_dev: --tags @mail_bvt_envelopes   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=item_details URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=s8nxs3g PW=pass111
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
-kaushal: --tags @mail_print_sample_shipping_label_8_x_11_pm_envelope_package WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+kaushal: --tags @mail_print_shipping_label_sdc1200_pm_envelope_package WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
@@ -69,6 +69,16 @@ mail_print_shipping_label_5x8_fcm_psg: --tags @mail_print_shipping_label_5x8_fcm
 mail_print_shipping_label_5x8_mm_xm: --tags @mail_print_shipping_label_5x8_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_shipping_label_5x8_mm_xm
 mail_print_shipping_label_5x8_pm_box: --tags @mail_print_shipping_label_5x8_pm_box --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_shipping_label_5x8_pm_box
 mail_print_shipping_label_5x8_pm_envelope_package: --tags @mail_print_shipping_label_5x8_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_shipping_label_5x8_pm_envelope_package
+
+mail_print_sample_shipping_label_sdc1200_fcm_psg: --tags @mail_print_sample_shipping_label_sdc1200_fcm_psg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_sample_shipping_label_sdc1200_fcm_psg
+mail_print_sample_shipping_label_sdc1200_mm_xm: --tags @mail_print_sample_shipping_label_sdc1200_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_sample_shipping_label_sdc1200_mm_xm
+mail_print_sample_shipping_label_sdc1200_pm_box: --tags @mail_print_sample_shipping_label_sdc1200_pm_box --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_sample_shipping_label_sdc1200_pm_box
+mail_print_sample_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_sample_shipping_label_sdc1200_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_sample_shipping_label_sdc1200_pm_envelope_package
+
+mail_print_shipping_label_sdc1200_fcm_psg: --tags @mail_print_shipping_label_sdc1200_fcm_psg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_shipping_label_sdc1200_fcm_psg
+mail_print_shipping_label_sdc1200_mm_xm: --tags @mail_print_shipping_label_sdc1200_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_shipping_label_sdc1200_mm_xm
+mail_print_shipping_label_sdc1200_pm_box: --tags @mail_print_shipping_label_sdc1200_pm_box --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_shipping_label_sdc1200_pm_box
+mail_print_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_shipping_label_sdc1200_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_shipping_label_sdc1200_pm_envelope_package
 
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 USER_CREDENTIALS=xxxxxxxxxx
