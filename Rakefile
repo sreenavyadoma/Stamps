@@ -198,8 +198,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_8x11_fcm_psg) do |t|
+  t.profile = 'mail_print_sample_shipping_label_8x11_fcm_psg'
   t.cucumber_opts = "-p cuke_reports"
 end
 
