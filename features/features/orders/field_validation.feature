@@ -5,12 +5,12 @@ Feature: Add Missing Field Validation
 
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
 
   #  Add Missing Validation Logic for Email
     Then set Order Details form Email to @@
-    Then on Order Details form, select service PM Large/Thick Envelope
+    Then set Order Details form service to PM Large/Thick Envelope
     Then expect Order Details form Domestic Email data error tooltip is "Please enter a valid email address"
     Then expect Orders Grid Ship Cost error to contain "Please enter a valid email address"
 
@@ -20,13 +20,13 @@ Feature: Add Missing Field Validation
       | name      | company    | street_address     | city    | state | zip        | country       | phone           |  email            |
       | Joe Shmoe | Seven Zone | 1925 Florence Ave  | Kingman | AZ    | 86401-4617 | United States | (415) 123-5555  | rtest@stamps.com  |
 
-    Then on Order Details form, select service PM Large/Thick Envelope
+    Then set Order Details form service to PM Large/Thick Envelope
     Then set Order Details form Length to 0
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then expect Order Details form Dimensions Length data error tooltip is "Each dimension must be greater than 0"
 
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Length to 0
     Then set Order Details form Width to 2
     Then set Order Details form Height to 2
@@ -34,13 +34,13 @@ Feature: Add Missing Field Validation
 
   #@validate_width
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where service = Priority Mail AND Zone > 5
-    Then on Order Details form, select service PM Large/Thick Envelope
+    Then set Order Details form service to PM Large/Thick Envelope
     Then set Order Details form Length to 3
     Then set Order Details form Width to 0
     Then set Order Details form Height to 3
     Then expect Order Details form Dimensions Width data error tooltip is "Each dimension must be greater than 0"
 
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Length to 4
     Then set Order Details form Width to 0
     Then set Order Details form Height to 4
@@ -48,13 +48,13 @@ Feature: Add Missing Field Validation
 
   #@validate_height
   #Scenario: Add Missing Validation Logic for Dimensions (Width) where service = Priority Mail Large Envelope/Thick Envelope AND Zone ? 5
-    Then on Order Details form, select service PM Large/Thick Envelope
+    Then set Order Details form service to PM Large/Thick Envelope
     Then set Order Details form Height to 0
     Then set Order Details form Length to 5
     Then set Order Details form Width to 5
     Then expect Order Details form Dimensions Height data error tooltip is "Each dimension must be greater than 0"
 
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Height to 0
     Then set Order Details form Length to 6
     Then set Order Details form Width to 6

@@ -6,12 +6,12 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
   @customs_form_qty
   Scenario: Customs Form Qty
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province | postal_code | country  | phone  |  email  |
       | random | random  | random           | random | random   | random      | random   | France | random  | random  |
-    Then on Order Details form, select service PMI Package
+    Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
 
     Then on Order Details form, Add Item 1
@@ -44,8 +44,8 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then close Customs Information form
 
-    Then in Orders Grid, uncheck row 1
-    Then in Orders Grid, check row 1
+    Then uncheck Orders Grid row 1
+    Then check Orders Grid row 1
 
     Then click Order Details form Edit Form button
     Then Pause for 2 seconds

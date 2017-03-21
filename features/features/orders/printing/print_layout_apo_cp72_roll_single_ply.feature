@@ -5,13 +5,13 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
 
   @print_layout_cp72_single_ply_apo_roll
   Scenario: Print 1 single ply APO CP72 label on 4x6 roll
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set Order Details form Weight to 2 lb 1 oz
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10

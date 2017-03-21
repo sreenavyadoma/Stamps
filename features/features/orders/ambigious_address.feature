@@ -5,7 +5,7 @@ Feature: Ambigious Address
 
   @ambigious_address
   Scenario: Exact Address Not Found
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to ambiguous address
       | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
@@ -19,6 +19,6 @@ Feature: Ambigious Address
     Then expect Orders Grid City is San Francisco
     Then expect Orders Grid State is CA
     Then expect Orders Grid Zip is 94102
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then Sign out
 

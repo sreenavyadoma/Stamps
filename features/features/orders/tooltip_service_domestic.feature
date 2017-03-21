@@ -6,7 +6,7 @@ Feature: service Tooltip
 
   @tooltips_services
   Scenario: International service Tooltip Tests
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to Canada
     Then expect Order Details form service Tooltip for "FCMI Large Envelope" to include "Ship up to 4 lb. and $400 worth of merchandise using your own large envelope or flat with pricing that varies by weight and country.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
@@ -28,7 +28,7 @@ Feature: service Tooltip
 
   @tooltips_services
   Scenario: Domestic service Tooltip Tests
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
 
     Then expect Order Details form service Tooltip for "FCM Package" to include "Ship up to 15.999 ounces using your own large envelope or flat with pricing that varies by weight, not distance.||Envelope requirements:||Min. Dimensions: Must be more than 11 1/2" long, or more than 6 1/8" high, or more than 1/4" thick||Max. Dimensions: 15" x 12" x 3/4""
     Then expect Order Details form service Tooltip for "First-Class Mail Package/Thick Envelope" to include "Ship up to 15.999 ounces using your own box or thick envelope with pricing that varies by weight, not distance.||Packaging requirements: ||Min. Dimensions: 3/4" thick||Max. Dimensions: Package must not exceed 22" in length, 18" in width, or 15" in thickness."

@@ -6,7 +6,7 @@ Feature: Verify Ship Works Integration
 
   @ship_works
   Scenario:  Order Details Form
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then expect Order Details form Ship-From Textbox is enabled
     Then expect Order Details form Ship-From drop-down be enabled
     Then expect Order Details form Ship-To Textbox is enabled

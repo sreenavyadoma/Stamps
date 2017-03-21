@@ -6,6 +6,6 @@ Feature: Order Status - Awaiting Shipment
 
   @grid_order_status
   Scenario: Order Status
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then expect Orders Grid Order Status is Awaiting Shipment
     Then Sign out

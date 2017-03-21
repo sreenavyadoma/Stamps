@@ -1,6 +1,6 @@
 module Stamps
 
-  def init scenario
+  def init(scenario)
     begin
       TestHelper.init scenario
     rescue Exception => e

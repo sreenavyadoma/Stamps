@@ -14,5 +14,7 @@ https://printext.qasc.stamps.com/orders/
 http://print.staging.stamps.com/orders/
 https://printext.qacc.stamps.com/webpostage/default2.aspx
 https://naws.qacc.stamps.com/
+https://swsim.qacc.stamps.com/swsim/swsimv59.js
+
 
 

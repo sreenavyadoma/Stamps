@@ -1,7 +1,6 @@
 Feature:Shipping Label Preview Panel 
 
 
-
   Background:
     Given a valid user is signed in to Web Apps
 
