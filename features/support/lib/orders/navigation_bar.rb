@@ -375,14 +375,12 @@ module Stamps
         @signed_in_username = StampsElement.new browser.span(id: 'userNameText')
         @orders_link = StampsElement.new browser.a(text: 'Orders')
         @mail_link = StampsElement.new browser.a(text: 'Mail')
-        #@web_mail = WebMail.new(param)
-        #@web_orders = WebOrders.new(param)
       end
 
       def orders
         10.times do
           orders_link.safe_click
-          web_orders.wait_until_present 8
+          web_orders.wait_until_present(8)
           return web_orders if grid.present?
         end
       end
@@ -390,13 +388,13 @@ module Stamps
       def mail
         10.times do
           mail_link.safe_click
-          web_mail.wait_until_present 8
+          web_mail.wait_until_present(8)
           return web_mail if grid.present?
         end
       end
 
       def sign_out
-        20.times {
+        20.times do
           begin
             signed_in_username.safe_click unless sign_out_link.present?
             sign_out_link.safe_click
@@ -409,7 +407,7 @@ module Stamps
           rescue
             #ignore
           end
-        }
+        end
         logger.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
       end
 

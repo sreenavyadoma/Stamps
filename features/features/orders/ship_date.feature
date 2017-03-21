@@ -6,9 +6,9 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to today
-    Then in Orders Toolbar, click Add button
-    Then set Order Details form Ship-To to address in Zone 1 through 4
-    Then on Order Details form, select service PM Package
+    Then click Orders Toolbar Add button
+    Then set Order Details form Ship-To to random address between zone 1 and 4
+    Then set Order Details form service to PM Package
     Then in Orders Toolbar, click Print button
     Then set Print modal Ship Date to today
     Then In left Filter Panel, expect Shipped Tab Ship Date is today
@@ -18,9 +18,9 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to 1 day from today
-    Then in Orders Toolbar, click Add button
-    Then set Order Details form Ship-To to address in Zone 1 through 4
-    Then on Order Details form, select service PM Package
+    Then click Orders Toolbar Add button
+    Then set Order Details form Ship-To to random address between zone 1 and 4
+    Then set Order Details form service to PM Package
     Then in Orders Toolbar, click Print button
     Then set Print modal Ship Date to today plus 1
     Then set Print modal Ship Date to today plus 3
@@ -30,10 +30,10 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to 1 day from today
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
-    Then on Order Details form, select service PM Package
+    Then set Order Details form Ship-To to random address between zone 1 and 4
+    Then set Order Details form service to PM Package
     Then in Orders Toolbar, click Print button
     Then set Print modal Ship Date to today plus 2
     Then In left Filter Panel, expect Shipped Tab Ship Date is today plus 2
@@ -43,10 +43,10 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to 1 day from today
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
-    Then on Order Details form, select service PM Package
+    Then set Order Details form Ship-To to random address between zone 1 and 4
+    Then set Order Details form service to PM Package
     Then in Orders Toolbar, click Print button
     Then set Print modal Ship Date to today plus 3
     Then In left Filter Panel, expect Shipped Tab Ship Date is today plus 3

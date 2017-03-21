@@ -8,7 +8,7 @@ Feature: Details Ship Cost Total
 
   @details_ship_cost_total
   Scenario: Ship Cost Total
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then expect Order Details form Total label is Total Ship Cost:
     Then set Order Details form Ship-From to default
     Then expect Order Details form Service Cost is 0.00
@@ -16,8 +16,8 @@ Feature: Details Ship Cost Total
     Then expect Order Details form Tracking Cost is 0.00
     Then expect Order Details form Total Ship Cost is 0.00
 
-    Then set Order Details form Ship-To to address in Zone 8
-    Then on Order Details form, select service PM Package
+    Then set Order Details form Ship-To to random address in zone 8
+    Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then set Order Details form Tracking to Signature Required

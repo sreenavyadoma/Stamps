@@ -5,12 +5,12 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
 
   @print_layout_cn22_5x8_continuation
   Scenario: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name      | company            | street_address_1 | street_address_2 | city   | province| postal_code | country     | phone   |  email  |
       | PMEI PFTE |  5.5x8.5 Left Side | random           | random           | random | random  | random      | Philippines | random  | random  |
-    Then on Order Details form, select service PMEI Package
+    Then set Order Details form service to PMEI Package
     Then set Order Details form Weight to 2 lb 0 oz
 
     Then click Order Details form Edit Form button

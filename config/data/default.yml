@@ -9,6 +9,8 @@ rates_test:
   test_dir: C:\watir-webdriver\rates\tests
   results_dir: C:\watir-webdriver\rates\results
 
+windows_files:
+  import_csv_file: \\\\rcruz-win7\\Public\\automation\\data\\import_times.csv #data_for(:rates_test, {})['rates_pme_comm_base']
 
 webreg:
   dev_usr_dir: C:\watir-webdriver
@@ -73,7 +75,7 @@ mail_services:
 
 orders_services:
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
-  FCM Package: sdc-servicedroplist-fcthickenvelope
+  FCM Package/Thick Envelope: sdc-servicedroplist-fcthickenvelope
   PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
   PM Large Package: sdc-servicedroplist-pmlargepackage

@@ -6,10 +6,10 @@ Feature:  B-01998 Reduce UpdateOrder Calls on Order Edit
   @details_non_integer_lb
   Scenario: User edits an order
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
-    Then on Order Details form, select service PM Flat Rate Envelope
+    Then set Order Details form Ship-To to random address between zone 5 and 8
+    Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Pounds to 3.5
     Then expect Order Details form Pounds is 3
     Then set Order Details form Pounds to 2.0

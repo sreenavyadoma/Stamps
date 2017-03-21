@@ -6,7 +6,7 @@ Feature: Domestic Address
 
   @auto_suggest
   Scenario: Auto Suggest for Domestic Addresses
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     #Matching first name
     Then set Order Details form Ship-To auto-suggest address to partial name Firstname
     Then expect Order Details form auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
@@ -17,7 +17,7 @@ Feature: Domestic Address
 
   @auto_suggest_international
   Scenario: Select International Address
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-To Country to Italy
     Then set Order Details form International Ship-To auto-suggest address to partial name Com
     Then expect Order Details form auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne

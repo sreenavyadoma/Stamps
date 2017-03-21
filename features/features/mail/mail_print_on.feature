@@ -24,3 +24,4 @@ Feature: Envelopes BVT
     Then select Print On Roll - 4" x 6" Shipping Label
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
 
+#set Order Details form Ship-To to a random address in Zone 1 through 4

@@ -6,10 +6,10 @@ Feature: Edit Order Details
   @details_edit_order
   Scenario: User edits an order
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 8
-    Then on Order Details form, select service PM Package
+    Then set Order Details form Ship-To to random address in zone 8
+    Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 3
     Then set Order Details form Pounds to 2
     Then set Order Details form Insure-For to $100.00
@@ -22,7 +22,7 @@ Feature: Edit Order Details
     Then set Order Details form Width to 1
     Then expect Order Details form Width is 1
 
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 2
     Then expect Order Details form Ounces is 2
     Then set Order Details form Pounds to 1

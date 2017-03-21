@@ -5,10 +5,10 @@ Feature: Print 1 Domestic label on 5.5x8.5 - left side
 
   @print_two_up_expanded_5x8_left
   Scenario: Print 1 Domestic label on 5.5x8.5 - left side
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
-    Then on Order Details form, select service PME Padded Flat Rate Envelope
+    Then set Order Details form Ship-To to PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
+    Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""

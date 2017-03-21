@@ -6,12 +6,12 @@ Feature: Address Cleansing
 
   @address_cleansing
   Scenario: Address Cleansing
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name              | company | street_address   | street_address_2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then Pause for 2 seconds
@@ -21,7 +21,7 @@ Feature: Address Cleansing
     Then expect Orders Grid City is El Segundo
     Then expect Orders Grid State is CA
 
-    Then in Orders Toolbar, click Add button
-    Then set Order Details form Ship-To to address in Zone 1 through 4
-    Then on Order Details form, select service PM Package
+    Then click Orders Toolbar Add button
+    Then set Order Details form Ship-To to random address between zone 1 and 4
+    Then set Order Details form service to PM Package
     Then Sign out
