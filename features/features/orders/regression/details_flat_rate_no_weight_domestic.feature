@@ -18,12 +18,12 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
   @details_flat_rate_no_weight_domestic
   Scenario:  Domestic Flat
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1
+    Then set Order Details form Ship-To to random address in zone 1
 
     # Priority Mail Flat Rate Envelope
-    Then on Order Details form, select service PM Flat Rate Envelope
+    Then set Order Details form service to PM Flat Rate Envelope
     Then expect Order Details form service is PM Flat Rate Envelope
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -33,7 +33,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail Padded Flat Rate Envelope
-    Then on Order Details form, select service PM Padded Flat Rate Envelope
+    Then set Order Details form service to PM Padded Flat Rate Envelope
     Then expect Order Details form service is PM Padded Flat Rate Envelope
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -43,7 +43,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail Legal Flat Rate Envelope
-    Then on Order Details form, select service PM Legal Flat Rate Envelope
+    Then set Order Details form service to PM Legal Flat Rate Envelope
     Then expect Order Details form service is PM Legal Flat Rate Envelope
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -53,7 +53,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail Small Flat Rate Box
-    Then on Order Details form, select service PM Small Flat Rate Box
+    Then set Order Details form service to PM Small Flat Rate Box
     Then expect Order Details form service is PM Small Flat Rate Box
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -63,7 +63,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail Medium Flat Rate Box
-    Then on Order Details form, select service PM Medium Flat Rate Box
+    Then set Order Details form service to PM Medium Flat Rate Box
     Then expect Order Details form service is PM Medium Flat Rate Box
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -73,7 +73,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail Large Flat Rate Box
-    Then on Order Details form, select service PM Large Flat Rate Box
+    Then set Order Details form service to PM Large Flat Rate Box
     Then expect Order Details form service is PM Large Flat Rate Box
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -83,7 +83,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail Regional Rate Box A
-    Then on Order Details form, select service PM Regional Rate Box A
+    Then set Order Details form service to PM Regional Rate Box A
     Then expect Order Details form service is PM Regional Rate Box A
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -93,7 +93,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail Regional Rate Box B
-    Then on Order Details form, select service PM Regional Rate Box B
+    Then set Order Details form service to PM Regional Rate Box B
     Then expect Order Details form service is PM Regional Rate Box B
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -103,7 +103,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # PME Flat Rate Envelope
-    Then on Order Details form, select service PME Flat Rate Envelope
+    Then set Order Details form service to PME Flat Rate Envelope
     Then expect Order Details form service is PME Flat Rate Envelope
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -113,7 +113,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # PME Padded Flat Rate Envelope
-    Then on Order Details form, select service PME Padded Flat Rate Envelope
+    Then set Order Details form service to PME Padded Flat Rate Envelope
     Then expect Order Details form service is PME Padded Flat Rate Envelope
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
@@ -123,7 +123,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # PME Legal Flat Rate Envelope
-    Then on Order Details form, select service PME Legal Flat Rate Envelope
+    Then set Order Details form service to PME Legal Flat Rate Envelope
     Then expect Order Details form service is PME Legal Flat Rate Envelope
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0

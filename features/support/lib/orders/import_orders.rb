@@ -9,6 +9,10 @@ module Stamps
         browser.div(text: "Success").present?
       end
 
+      def wait_until_present
+          (browser.div(text: "Success")).wait_until_present(120)
+      end
+
       def message
         box = StampsTextbox.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         box.text
@@ -47,18 +51,26 @@ module Stamps
         success = SuccessModal.new(param)
         button = StampsElement.new browser.span(text: "Import")
         server_error = Orders::Stores::ServerError.new(param)
-        4.times do
-          button.safe_click
-          logger.info "Success modal is #{(success.present?)?"Present":"Not Present"}"
-          sleep(0.35)
-          return success if success.present?
-          if server_error.present?
-            error_str = server_error.message
-            logger.info error_str
-            server_error.ok
-            expect("Server Error: \n#{error_str}").to eql ""
-          end
+
+        button.safe_click
+        begin_time = Time.now
+
+        if server_error.present?
+          error_str = server_error.message
+          logger.info error_str
+          server_error.ok
+          expect("Server Error: \n#{error_str}").to eql ""
         end
+
+        success.wait_until_present
+        end_time = Time.now
+        import_time = end_time - begin_time # in seconds
+        import_time if success.present?
+      end
+
+      def confirm_success
+        success = SuccessModal.new(param)
+        success if success.present?
       end
 
       def cancel

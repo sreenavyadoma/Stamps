@@ -248,6 +248,32 @@ module Stamps
         end
       end
 
+      class PrintFormDimensions < Browser::StampsBrowserElement
+        attr_accessor :length, :width, :height
+
+        def initialize(param)
+          super(param)
+          text_box = browser.text_field(name: "Length")
+          inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=up]")
+          dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
+          @length = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+
+
+          text_box = browser.text_field(name: "Width")
+          inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=up]")
+          dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=down]")
+          @width = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+
+          text_box = browser.text_field(name: "Height")
+          inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=up]")
+          dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=down]")
+          @height = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+        end
+
+
+
+      end
+
       class PrintFormMailFrom < Browser::StampsBrowserElement
         attr_reader :text_box, :drop_down, :manage_shipping_address
         include PrintFormBlurOut

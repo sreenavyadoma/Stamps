@@ -33,6 +33,14 @@ module Stamps
         end
       end
 
+      module MailDimensions
+        def dimensions
+          @dimensions = PrintFormDimensions.new(param) if @dimensions.nil? || !@dimensions.present?
+          expect(@dimensions.present?).to be(true)
+          @dimensions
+        end
+      end
+
       module MailService
         def mail_service
           @mail_service = PrintFormService.new(param) if @mail_service.nil? || !@mail_service.present?
@@ -109,6 +117,7 @@ module Stamps
         include MailService
         include MailCustoms
         include MailAdvancedOptions
+        include MailDimensions
       end
 
       module Rolls
@@ -118,6 +127,7 @@ module Stamps
         include MailService
         include MailCustoms
         include MailAdvancedOptions
+        include MailDimensions
       end
 
       module Envelopes
@@ -143,6 +153,7 @@ module Stamps
         include MailService
         include MailCustoms
         include MailAdvancedOptions
+        include MailDimensions
 
         def mail_tracking
           @mail_tracking = MailTracking.new(param) if @mail_insure_for.nil? || !@mail_insure_for.present?

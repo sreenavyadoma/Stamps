@@ -5,7 +5,16 @@ end
 
 Then /^Import Orders: Import$/ do
   #logger.step "Import Orders: Import"
-  @import_successful = @import_orders.import
+  import_time = @import_orders.import
+
+  logger.step "Success modal is present after #{import_time} seconds"
+
+  @import_timer_filename = "\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
+
+  csv_file = CSV.open(@import_timer_filename, "a")
+  csv_file.add_row([Time.now,import_time])
+  logger.step "Import Time Saved to CSV file"
+  csv_file.close
 end
 
 Then /^Import Orders: Select CSV File$/ do
@@ -15,6 +24,7 @@ Then /^Import Orders: Select CSV File$/ do
 end
 
 Then /^Import Orders: Expect Import is successful$/ do
+  @import_successful = @import_orders.confirm_success
   expect(@import_successful).to be_truthy
   expect(@import_successful.window_title).to eql "Success"
 end

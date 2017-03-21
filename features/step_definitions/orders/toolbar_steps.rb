@@ -1,4 +1,4 @@
-Then /^(?:I|i)n Orders Toolbar, click Add button$/ do
+Then /^(?:C|c)lick Orders Toolbar Add button$/ do
   begin
     test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)

@@ -9,14 +9,14 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then In left Filter Panel, select Shipped
     Then In left Filter Panel, select Awaiting Shipment
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
 
     Then In Orders Grid toolbar, select Move to Shipped
     Then In left Filter Panel, select Shipped
     Then In left Filter Panel, expect order moved to Shipped
 
     Then In left Filter Panel, select Shipped
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then in Print modal, Open Reprint Modal
     Then Label Unavailable:  Expect Visible
     Then Pause for 5 seconds

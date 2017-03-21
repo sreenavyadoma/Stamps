@@ -5,14 +5,14 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
 
   @new_country_code @new_country_code_3
   Scenario: Print Bonaire, Sincd t Eustatius, and Saba orders
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
 
     Then expect Order Details form Ship-To Country is Bonaire, Sint Eustatius and Saba
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
     Then set Order Details form Ounces to 2
     Then set Order Details form Pounds to 2
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description

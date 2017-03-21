@@ -6,14 +6,14 @@ Feature:  Update International Orders to ShipStation
 
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then on Order Details form, blur out
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
     Then set Order Details form Weight to 2 lb 2 oz
-    Then on Order Details form, select service PMI Package
+    Then set Order Details form service to PMI Package
     Then set Order Details form Insure-For to $100.25
     Then set Order Details form Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
@@ -56,13 +56,13 @@ Feature:  Update International Orders to ShipStation
     Then on Order Details form, blur out 3 times
     Then Pause for 3 seconds
 
-    Then in Orders Grid, uncheck saved Order ID
+    Then uncheck Orders Grid saved Order ID
     Then Pause for 2 seconds
 
     Then Refresh the browser
 
     Then Pause for 4 seconds
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then Pause for 1 second
 
     Then expect Order Details form Ship-To Country is correct

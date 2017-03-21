@@ -16,14 +16,14 @@ Feature: Don't Require weight for Flat/Regional Rate Services
 
   @details_flat_rate_no_weight_international
   Scenario:  International Flat
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | France  | random  | random  |
 
     # Priority Mail International Flat Rate Envelope
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then expect Order Details form service is PMI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -37,7 +37,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail International Padded Flat Rate Envelope
-    Then on Order Details form, select service PMI Padded Flat Rate Envelope
+    Then set Order Details form service to PMI Padded Flat Rate Envelope
     Then expect Order Details form service is PMI Padded Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -51,7 +51,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail International Legal Flat Rate Envelope
-    Then on Order Details form, select service PMI Legal Flat Rate Envelope
+    Then set Order Details form service to PMI Legal Flat Rate Envelope
     Then expect Order Details form service is PMI Legal Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -65,7 +65,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail International Small Flat Rate Box
-    Then on Order Details form, select service PMI Small Flat Rate Box
+    Then set Order Details form service to PMI Small Flat Rate Box
     Then expect Order Details form service is PMI Small Flat Rate Box
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -79,7 +79,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail International Medium Flat Rate Box
-    Then on Order Details form, select service PMI Medium Flat Rate Box
+    Then set Order Details form service to PMI Medium Flat Rate Box
     Then expect Order Details form service is PMI Medium Flat Rate Box
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -93,7 +93,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # Priority Mail International Large Flat Rate Box
-    Then on Order Details form, select service PMI Large Flat Rate Box
+    Then set Order Details form service to PMI Large Flat Rate Box
     Then expect Order Details form service is PMI Large Flat Rate Box
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -107,7 +107,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # PME International Flat Rate Envelope
-    Then on Order Details form, select service PMEI Flat Rate Envelope
+    Then set Order Details form service to PMEI Flat Rate Envelope
     Then expect Order Details form service is PMEI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -121,7 +121,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # PME International Padded Flat Rate Envelope
-    Then on Order Details form, select service PMEI Padded Flat Rate Envelope
+    Then set Order Details form service to PMEI Padded Flat Rate Envelope
     Then expect Order Details form service is PMEI Padded Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
@@ -135,7 +135,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then in Print modal, click Close button
 
     # PME International Legal Flat Rate Envelope
-    Then on Order Details form, select service PMEI Legal Flat Rate Envelope
+    Then set Order Details form service to PMEI Legal Flat Rate Envelope
     Then expect Order Details form service is PMEI Legal Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0

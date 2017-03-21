@@ -5,7 +5,7 @@ Feature: International Shipping fields and Customs Information fields validation
 
   @rules_international @rules_international_customs_fields_validation
   Scenario: International Shipping fields and Customs Information fields validation
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to Japan
 
@@ -19,7 +19,7 @@ Feature: International Shipping fields and Customs Information fields validation
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
 
     Then set Order Details form Ounces to 5
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
     Then click Order Details form Edit Form button
@@ -80,6 +80,6 @@ Feature: International Shipping fields and Customs Information fields validation
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
     Then Sign out
 

@@ -234,50 +234,6 @@ Then /^(?:S|s)et Order Details form Ship-From to (\w+)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 1$/ do
-  step "set Order Details form Ship-To to zone 1"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 2$/ do
-  step "set Order Details form Ship-To to zone 2"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 3$/ do
-  step "set Order Details form Ship-To to zone 3"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 4$/ do
-  step "set Order Details form Ship-To to zone 4"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 5$/ do
-  step "set Order Details form Ship-To to zone 5"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 6$/ do
-  step "set Order Details form Ship-To to zone 6"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 7$/ do
-  step "set Order Details form Ship-To to zone 7"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 8$/ do
-  step "set Order Details form Ship-To to zone 8"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 9$/ do
-  step "set Order Details form Ship-To to zone 9"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 1 through 4$/ do
-  step "set Order Details form Ship-To to zone 1 through 4"
-end
-
-Then /^(?:S|s)et Order Details form Ship-To to address in Zone 5 through 8$/ do
-  step "set Order Details form Ship-To to zone 5 through 8"
-end
-
 Then /^(?:S|s)et Order Details form Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
 
@@ -327,9 +283,10 @@ Then /^(?:S|s)et Order Details Ship-To International address to$/ do |table|
   step "set Order Details form International Ship-To Email to \"#{test_parameter[:email]}\""
 end
 
-Then /^(?:S|s)et Order Details form Ship-To to (.*)$/ do |zone|
+Then /^(?:S|s)et Order Details form Ship-To to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+  test_parameter[:address] = address_helper(address)
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.set(address_helper(zone))
+  stamps.orders.order_details.ship_to.domestic.set(test_parameter[:address])
   step "Save Order Details data"
 end
 

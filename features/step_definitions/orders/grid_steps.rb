@@ -1,18 +1,11 @@
 
-Then /^(?:I|i)n Orders Grid, check saved Order ID$/ do
-  step "In Orders Grid, check Order ID #{test_parameter[:order_id]}"
-end
 
-Then /^(?:I|i)n Orders Grid, check Order ID (.*)$/ do |order_id|
+Then /^(?:C|c)heck Orders Grid (?:saved Order ID|Order ID (.*))$/ do |order_id|
   stamps.orders.orders_grid.column.checkbox.check_order_id(order_id)
   expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(true)
 end
 
-Then /^(?:I|i)n Orders Grid, uncheck saved Order ID$/ do
-  step "In Orders Grid, uncheck Order ID #{test_parameter[:order_id]}"
-end
-
-Then /^(?:I|i)n Orders Grid, uncheck Order ID (.*)$/ do |order_id|
+Then /^(?:U|u)ncheck Orders Grid (?:saved Order ID|Order ID (.*))$/ do |order_id|
   stamps.orders.orders_grid.column.checkbox.uncheck_order_id(order_id)
   expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(false)
 end
@@ -49,12 +42,12 @@ When /^Edit Orders Grid row (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.check(row)
 end
 
-When /^(?:I|i)n Orders Grid, check row (\d+)$/ do |row|
+When /^(?:C|c)heck Orders Grid row (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.check row
   expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(true)
 end
 
-When /^(?:I|i)n Orders Grid, uncheck row (\d+)$/ do |row|
+When /^(?:U|u)ncheck Orders Grid row (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
   expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(false)
 end

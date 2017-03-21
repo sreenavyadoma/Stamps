@@ -12,7 +12,7 @@ Feature: Tooltips Improvements
     Then Filter Panel: Expand Panel
     Then in Orders Toolbar, expect Add Tooltip to include Add
     Then in Orders Toolbar, expect Add Tooltip to include Create a new, blank order.
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then in Orders Toolbar, expect Move Tooltip to include Move
     Then in Orders Toolbar, expect Move Tooltip to include Move all selected orders to a different status.
     Then in Orders Toolbar, expect Print Tooltip to include Print

@@ -5,14 +5,14 @@ Feature: Cuba Internal Transaction Number Required
 
   @rules_international @rules_international_cuba
   Scenario: Cuba Internal Transaction Number Required
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
     Then set Order Details form Ounces to 5
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Required

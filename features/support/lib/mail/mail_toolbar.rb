@@ -18,7 +18,7 @@ module Stamps
 
       def print_button
         expect([:envelopes, :stamps, :labels, :rolls]).to include(param.print_media)
-        if @print_button.nil? || !@print_button.present?
+        10.times do
           case param.print_media
             when :envelopes
               @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
@@ -31,7 +31,9 @@ module Stamps
             else
               # do nothing
           end
+          break if @print_button.present?
         end
+        expect(@print_button.present?).to be(true)
         @print_button
       end
 
