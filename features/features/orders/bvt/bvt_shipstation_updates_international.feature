@@ -6,7 +6,7 @@ Feature:  Update International Orders to ShipStation
 
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then on Order Details form, blur out
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
@@ -56,13 +56,13 @@ Feature:  Update International Orders to ShipStation
     Then on Order Details form, blur out 3 times
     Then Pause for 3 seconds
 
-    Then in Orders Grid, uncheck saved Order ID
+    Then uncheck Orders Grid saved Order ID
     Then Pause for 2 seconds
 
     Then Refresh the browser
 
     Then Pause for 4 seconds
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then Pause for 1 second
 
     Then expect Order Details form Ship-To Country is correct

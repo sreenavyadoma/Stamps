@@ -5,7 +5,7 @@ Feature: in Print modal, click Print button Sample - PME Package
 
   @print_sample_pme_package
   Scenario:  PME Package
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PME Package

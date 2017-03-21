@@ -6,7 +6,7 @@ Feature: Change Starting Label Position to Right Side
 
   @print_dialog_label_right_side
   Scenario:  Print Label - Right Side
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PME Padded Flat Rate Envelope
@@ -18,7 +18,7 @@ Feature: Change Starting Label Position to Right Side
     Then expect Print modal right-side label is selected
     Then in Print modal, click Print button
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package

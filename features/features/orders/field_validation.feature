@@ -5,7 +5,7 @@ Feature: Add Missing Field Validation
 
   @validate_domestic
   Scenario: Add Missing Validation Logic for Domestic Fields
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
 
   #  Add Missing Validation Logic for Email

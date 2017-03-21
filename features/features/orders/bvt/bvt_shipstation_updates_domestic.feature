@@ -6,7 +6,7 @@ Feature:  Update Order to ShipStation
 
   @bvt_shipstation_updates_domestic
   Scenario:  Update ShipStation
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
@@ -32,13 +32,13 @@ Feature:  Update Order to ShipStation
     Then on Order Details form, blur out
     Then Pause for 3 seconds
 
-    Then in Orders Grid, uncheck saved Order ID
+    Then uncheck Orders Grid saved Order ID
     Then Pause for 5 seconds
 
     Then Refresh the browser
 
     Then Pause for 7 seconds
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation

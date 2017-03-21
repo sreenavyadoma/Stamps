@@ -5,7 +5,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
   Given a valid user is signed in to Web Apps
 
   Scenario: Print - Shipping Label: 5 ½" x 8 ½"
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -25,7 +25,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   @print_labels_5x8
   Scenario: Print - Shipping Label: 8 ½" x 11" Paper
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -38,7 +38,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Print modal Printer to "factory"
     Then in Print modal, click Print button
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -50,7 +50,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Print modal Print-On to "Roll - 4 ⅛" x 6 ¼" Shipping Label"
     Then in Print modal, click Print button
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -63,7 +63,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then in Print modal, click Print button
 
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -75,7 +75,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Print modal Print-On to "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then in Print modal, click Print button
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -89,7 +89,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then Sign out
 
   Scenario: Print - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -103,7 +103,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then Sign out
 
   Scenario: Print - Shipping Label: 5 ½" x 8 ½"
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -117,7 +117,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then Sign out
 
   Scenario: Print - Roll - 4" x 6" Shipping Label
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -131,7 +131,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then Sign out
 
   Scenario: Print - Roll - 4 ⅛" x 6 ¼" Shipping Label
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -146,7 +146,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Scenario: Multi Order Printing - Shipping Label: 5 ½" x 8 ½"
     #Create order 1
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -154,10 +154,10 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
-    Then in Orders Grid, check row 1
+    Then check Orders Grid row 1
 
     #Create order 2
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -165,10 +165,10 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
-    Then in Orders Grid, check row 1
+    Then check Orders Grid row 1
 
     #Create order 3
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
@@ -176,11 +176,11 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
-    Then in Orders Grid, check row 1
+    Then check Orders Grid row 1
 
-    Then in Orders Grid, check row 1
-    Then in Orders Grid, check row 2
-    Then in Orders Grid, check row 3
+    Then check Orders Grid row 1
+    Then check Orders Grid row 2
+    Then check Orders Grid row 3
 
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
@@ -189,7 +189,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then Sign out
 
   Scenario:  User prints postage for CN22 Shipping Label 5.5 x 8.5
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name            | company                 | street_address      | street_address_2 |  city          | state | zip        | country       | phone  |  email |
@@ -208,7 +208,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then Sign out
 
   Scenario:  User prints postage for CP72 Shipping Label 5.5 x 8.5
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name            | company                 | street_address      | street_address_2| city          | state | zip        | country       | phone  |  email |

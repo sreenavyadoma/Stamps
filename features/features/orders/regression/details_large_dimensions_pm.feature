@@ -7,7 +7,7 @@ Feature: Priority Mail and Large Dimensions
 
   @details_large_dimensions_pm
   Scenario: Priority Mail and Large Dimensions
-    * in Orders Toolbar, click Add button
+    * click Orders Toolbar Add button
     * set Order Details form Ship-To to random address in zone 8
     * set Order Details form Ounces to 2
     * set Order Details form Pounds to 1

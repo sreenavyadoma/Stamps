@@ -5,7 +5,7 @@ Feature:  BVT Address Cleansing
 
   @bvt_address_cleansing
   Scenario: Address Cleansing
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name          | company      | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |

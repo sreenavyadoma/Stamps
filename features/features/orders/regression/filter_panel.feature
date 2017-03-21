@@ -16,29 +16,29 @@ Feature: Orders Filter Panel
     Then in left Filter Panel, select On Hold
     Then in left Filter Panel, expect selected filter is On Hold
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then in left Filter Panel, expect selected filter is Awaiting Shipment
     Then expect Orders Grid saved Order ID is in Orders Grid row 1
 
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then in Orders Grid toolbar, select Move to Shipped
     Then in left Filter Panel, select Shipped
     Then in left Filter Panel, expect selected filter is Shipped
     Then in left Filter Panel, expect saved Order ID is in Shipped
 
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then in Orders Grid toolbar, select Move to Canceled
     Then in left Filter Panel, select Canceled
     Then in left Filter Panel, expect selected filter is Canceled
     Then in left Filter Panel, expect saved Order ID is in Canceled
 
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then in Orders Grid toolbar, select Move to On Hold until today plus 3
     Then in left Filter Panel, select On Hold
     Then in left Filter Panel, expect selected filter is On Hold
     Then in left Filter Panel, expect saved Order ID is in On Hold
 
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then in Orders Grid toolbar, select Move to Awaiting Shipment
     Then in left Filter Panel, select Awaiting Shipment
     Then in left Filter Panel, expect selected filter is Awaiting Shipment

@@ -7,14 +7,14 @@ Feature: 10 orders
   Scenario:  Order Creation
 
     # First Class Mail
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form service to PM Package
     Then set Order Details form Insure-For to $15.00
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
@@ -24,28 +24,28 @@ Feature: 10 orders
 
     #Priority Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PM Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PM Large Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form service to PM Legal Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
@@ -55,14 +55,14 @@ Feature: 10 orders
 
     # Priority Mail Express
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PME Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 11
@@ -71,7 +71,7 @@ Feature: 10 orders
 
     # Media Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 3
@@ -81,7 +81,7 @@ Feature: 10 orders
 
     # Parcel Select
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 10
@@ -96,14 +96,14 @@ Feature: 10 orders
 
     # First Class Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form service to PM Package
     Then set Order Details form Insure-For to $15.00
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
@@ -113,28 +113,28 @@ Feature: 10 orders
 
     #Priority Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PM Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PM Large Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form service to PM Legal Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
@@ -144,14 +144,14 @@ Feature: 10 orders
 
     # Priority Mail Express
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PME Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 11
@@ -160,7 +160,7 @@ Feature: 10 orders
 
     # Media Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 3
@@ -170,7 +170,7 @@ Feature: 10 orders
 
     # Parcel Select
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 10
@@ -181,14 +181,14 @@ Feature: 10 orders
 
     # First Class Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form service to PM Package
     Then set Order Details form Insure-For to $15.00
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
@@ -198,28 +198,28 @@ Feature: 10 orders
 
     #Priority Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PM Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PM Large Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form service to PM Legal Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
@@ -229,14 +229,14 @@ Feature: 10 orders
 
     # Priority Mail Express
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form service to PME Package
     Then set Order Details form Tracking to Signature Required
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 11
@@ -245,7 +245,7 @@ Feature: 10 orders
 
     # Media Mail
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 3
@@ -255,7 +255,7 @@ Feature: 10 orders
 
     # Parcel Select
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 10

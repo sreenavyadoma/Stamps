@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
   @print_two_up_expanded_cp72_5x8_right_print1
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 - right side
     # 1 CP72 label 5 ½" x 8 ½" right side
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |

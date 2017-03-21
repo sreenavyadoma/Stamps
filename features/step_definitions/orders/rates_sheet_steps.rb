@@ -391,7 +391,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # record execution time as time service was selected.
           @result_sheet[row_number, @result_sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "On Order Details form, select service #{service}"
+          step "set Order Details form service to #{service}"
           @result_sheet[row_number, @result_sheet_columns[:service_selected]] = test_parameter[:service]
 
           # Set Tracking

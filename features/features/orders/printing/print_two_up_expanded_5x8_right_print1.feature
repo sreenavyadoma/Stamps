@@ -5,7 +5,7 @@ Feature: User Prints 1 Domestic label on 5.5x8.5 - right side
 
   @print_two_up_expanded_5x8_right_print1
   Scenario: User Prints 1 Domestic label on 5.5x8.5 - right side
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PS Package, 5.5x8.5 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
     Then set Order Details form service to PSG Package

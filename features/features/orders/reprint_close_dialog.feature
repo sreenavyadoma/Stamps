@@ -7,7 +7,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   @reprint_media_close @reprint
   Scenario: User Reprints Order - Closes Reprint Modal before reprint
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
@@ -20,7 +20,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then in Print modal, click Print button
 
     Then In left Filter Panel, select Shipped
-    Then in Orders Grid, check saved Order ID
+    Then check Orders Grid saved Order ID
     Then in Print modal, Open Reprint Modal
     Then Close Reprint Modal
     Then Sign out

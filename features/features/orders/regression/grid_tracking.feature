@@ -7,7 +7,7 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_tracking
   Scenario: Tracking & Order Status
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then expect Orders Grid Order Status is Awaiting Shipment
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
@@ -23,7 +23,7 @@ Feature: in Orders Grid, Tracking & Order Status
     Then expect Orders Grid Tracking Number is populated
     Then expect Orders Grid Order Status is Shipped
 
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then expect Orders Grid Order Status is Awaiting Shipment
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4

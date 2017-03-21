@@ -6,7 +6,7 @@ Feature: Tracking
 
   @tracking_defaults
   Scenario:  Print - First-Class Mail Envelope
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
 
     Then set Order Details form Ship-To to random address in zone 1

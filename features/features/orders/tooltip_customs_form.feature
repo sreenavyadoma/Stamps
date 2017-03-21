@@ -5,7 +5,7 @@ Feature:  Customs Form Data Tooltip Error
 
   @tooltip_customs_form
   Scenario:  Customs Form Data Error
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |

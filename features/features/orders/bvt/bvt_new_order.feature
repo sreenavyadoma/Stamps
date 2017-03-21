@@ -5,7 +5,7 @@ Feature:  BVT Order Creation
 
   @bvt_new_order
   Scenario:  Add a new order
-    Then in Orders Toolbar, click Add button
+    Then click Orders Toolbar Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form service to PM Package
@@ -16,7 +16,7 @@ Feature:  BVT Order Creation
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     # Orders Grid Operations
-    Then in Orders Grid, uncheck row 1
+    Then uncheck Orders Grid row 1
     Then expect Orders Grid Pounds is 1
     Then expect Orders Grid Ounces is 1
     Then expect Orders Grid Weight is 1 lb. 1 oz.
