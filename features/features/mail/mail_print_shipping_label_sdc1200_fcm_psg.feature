@@ -1,64 +1,59 @@
-Feature: Mail Roll - 4" x 6" - FCM PSG
+Feature: Mail Shipping Label - SDC-1200 - FCM PSG
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_roll_4_x_6_fcm_psg
-  Scenario: Roll - 4" x 6" - FCM PSG
+  @mail_print_shipping_label_sdc1200_fcm_psg
+  Scenario: Shipping Label - sdc1200 - FCM PSG Paper
 
-    #mail_print_roll_4x6_fcm_large_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+   #mail_print_shipping_label_sdc1200_fcm_large_envelope
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_roll_4x6_fcm_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+   #mail_print_shipping_label_sdc1200_fcm_package
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 1 through 4
+    Then set Label form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service FCM Package/Thick Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_roll_4x6_psg_large_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+   #mail_print_shipping_label_sdc1200_psg_large_package
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PSG Large Package
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_roll_4x6_psg_oversized_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+   #mail_print_shipping_label_sdc1200_psg_oversized_package
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
     Then set Label form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PSG Oversized Package
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_roll_4x6_psg_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+   #mail_print_shipping_label_sdc1200_psg_package
+    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 5 through 8
+    Then set Label form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PSG Package
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
     Then Sign out

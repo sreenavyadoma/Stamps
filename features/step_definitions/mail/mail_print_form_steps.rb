@@ -21,14 +21,10 @@ Then /^(?:S|s)et Print form Ounces to (\d+)$/ do |ounces|
   stamps.mail.print_form.mail_weight.mail_ounces.set(test_parameter[:ounces])
 end
 
-
-
-
-
-
-
 Then /^(?:S|s)et Dimensions to length (\d+) width (\d+) height (\d+)$/ do |length, width, height|
   step "set Label form Length to #{length}"
+  step "set Label form width to #{width}"
+  step "set Label form height to #{height}"
 end
 # dimension setters
 Then /^(?:S|s)et (?:Label|Roll|CM) form Length to (\d+)$/ do |length|
@@ -36,9 +32,15 @@ Then /^(?:S|s)et (?:Label|Roll|CM) form Length to (\d+)$/ do |length|
   stamps.mail.print_form.dimensions.length.set(test_parameter[:length])
 end
 
+Then /^(?:S|s)et (?:Label|Roll|CM) form width to (\d+)$/ do |width|
+  test_parameter[:width] = width
+  stamps.mail.print_form.dimensions.width.set(test_parameter[:width])
+end
 
-
-
+Then /^(?:S|s)et (?:Label|Roll|CM) form height to (\d+)$/ do |height|
+  test_parameter[:height] = height
+  stamps.mail.print_form.dimensions.height.set(test_parameter[:height])
+end
 
 # dimension expectations
 Then /^(?:E|e)xpect Label form Length is (?:correct|(\d+))$/ do |length|
@@ -46,20 +48,15 @@ Then /^(?:E|e)xpect Label form Length is (?:correct|(\d+))$/ do |length|
   expect(stamps.mail.print_form.dimensions.length.text.to_i).to eql(length.to_i)
 end
 
+Then /^(?:E|e)xpect Label form width is (?:correct|(\d+))$/ do |width|
+  width = test_parameter[:width] if width.nil?
+  expect(stamps.mail.print_form.dimensions.width.text.to_i).to eql(width.to_i)
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Then /^(?:E|e)xpect Label form height is (?:correct|(\d+))$/ do |height|
+  height = test_parameter[:height] if height.nil?
+  expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql(height.to_i)
+end
 
 Then /^(?:S|s)elect Print form (?:S|s)ervice (.*)$/ do |service|
   test_parameter[:service] = service

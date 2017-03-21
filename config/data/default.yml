@@ -37,7 +37,7 @@ mail_services:
   FCM Post Card: sdc-servicedroplist-fcpostcard
   FCM Letter: sdc-servicedroplist-fcletter
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
-  FCM Package: sdc-servicedroplist-fcthickenvelope
+  FCM Package/Thick Envelope: sdc-servicedroplist-fcthickenvelope
   PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
   PM Large Package: sdc-servicedroplist-pmlargepackage
@@ -2297,35 +2297,104 @@ mail_credentials:
       usr: cclnlqaf8s
       pw: pass111
     mail_print_envelope_10_A2_A9:
-          usr: cclnlqaf8s
-          pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_1_8_x_6_1_4_fcm_psg:
-          usr: cclnlqaf8s
-          pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_1_8_x_6_1_4_mm_xm:
-              usr: cclnlqaf8s
-              pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_1_8_x_6_1_4_pm_box:
-              usr: cclnlqaf8s
-              pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package:
-              usr: cclnlqaf8s
-              pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_x_6_fcm_psg:
-              usr: cclnlqaf8s
-              pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_x_6_mm_xm:
-              usr: cclnlqaf8s
-              pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_x_6_pm_box:
-              usr: cclnlqaf8s
-              pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
     mail_print_roll_4_x_6_pm_envelope_package:
-              usr: cclnlqaf8s
-              pw: pass111
-    mail_print_roll_4_1_8_x_6_1_4_pm_box:
-              usr: cclnlqaf8s
-              pw: pass111
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_8_x_11_fcm_psg:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_8_x_11_mm_xm:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_8_x_11_pm_box:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_8_x_11_pm_envelope_package:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_8_x_11_fcm_psg:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_8_x_11_mm_xm:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_8_x_11_pm_box:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_8_x_11_pm_envelope_package:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_fcm_psg:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_mm_xm:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_pm_box:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_pm_envelope_package:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_fcm_psg:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_mm_xm:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_pm_box:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_5x8_pm_envelope_package:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_sdc1200_fcm_psg:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_sdc1200_mm_xm:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_sdc1200_pm_box:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_sample_shipping_label_sdc1200_pm_envelope_package:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_sdc1200_fcm_psg:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_sdc1200_mm_xm:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_sdc1200_pm_box:
+      usr: cclnlqaf8s
+      pw: pass111
+    mail_print_shipping_label_sdc1200_pm_envelope_package:
+      usr: cclnlqaf8s
+      pw: pass111
     mail_authentication:
       usr: ccdvx25ja288
       pw: pass111
