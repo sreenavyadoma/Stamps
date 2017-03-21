@@ -8,7 +8,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service FCM Large Envelope
     Then set Order Details form Weight to 0 lb 2 oz
     Then expect Order Details form Service Cost is 1.19
@@ -19,7 +19,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service First-Class Mail Package/Thick Envelope
     Then set Order Details form Weight to 0 lb 15 oz
     Then expect Order Details form Service Cost is 4.16
@@ -31,7 +31,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Large/Thick Envelope
     Then set Order Details form Weight to 1 lb 5 oz
     Then expect Order Details form Service Cost is 6.60
@@ -43,7 +43,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Package
     Then set Order Details form Weight to 3 lb 0 oz
     Then expect Order Details form Service Cost is 7.38
@@ -55,7 +55,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Large Package
     Then set Order Details form Weight to 12 lb 0 oz
     Then expect Order Details form Service Cost is 17.17
@@ -67,7 +67,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Flat Rate Envelope
     Then set Order Details form Weight to 5 lb 3 oz
     Then expect Order Details form Service Cost is 5.95
@@ -79,7 +79,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Padded Flat Rate Envelope
     Then set Order Details form Weight to 7 lb 0 oz
     Then expect Order Details form Service Cost is 6.50
@@ -91,7 +91,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Legal Flat Rate Envelope
     Then set Order Details form Weight to 2 lb 0 oz
     Then expect Order Details form Service Cost is 6.25
@@ -103,7 +103,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Small Flat Rate Box
     Then set Order Details form Weight to 8 lb 0 oz
     Then expect Order Details form Service Cost is 6.45
@@ -115,7 +115,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Medium Flat Rate Box
     Then set Order Details form Weight to 13 lb 0 oz
     Then expect Order Details form Service Cost is 12.40
@@ -127,7 +127,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Large Flat Rate Box
     Then set Order Details form Weight to 15 lb 0 oz
     Then expect Order Details form Service Cost is 17.05
@@ -139,7 +139,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Regional Rate Box A
     Then set Order Details form Weight to 5 lb 0 oz
     Then expect Order Details form Service Cost is 6.60
@@ -151,7 +151,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PM Regional Rate Box B
     Then set Order Details form Weight to 6 lb 0 oz
     Then expect Order Details form Service Cost is 8.01
@@ -163,7 +163,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PME Package
     Then set Order Details form Weight to 11 lb 0 oz
     Then expect Order Details form Service Cost is 48.54
@@ -175,7 +175,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PME Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 0 oz
     Then expect Order Details form Service Cost is 21.18
@@ -187,7 +187,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then set Order Details form Weight to 14 lb 0 oz
     Then expect Order Details form Service Cost is 21.64
@@ -199,7 +199,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PME Legal Flat Rate Envelope
     Then set Order Details form Weight to 4 lb 0 oz
     Then expect Order Details form Service Cost is 21.28
@@ -211,7 +211,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service MM Package
     Then set Order Details form Weight to 13 lb 0 oz
     Then expect Order Details form Service Cost is 8.45
@@ -223,7 +223,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PSG Package
     Then set Order Details form Weight to 23 lb 0 oz
     Then expect Order Details form Service Cost is 19.29
@@ -235,7 +235,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PSG Large Package
     Then set Order Details form Weight to 33 lb 0 oz
     Then expect Order Details form Service Cost is 26.46
@@ -247,7 +247,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 3
+    Then set Order Details form Ship-To to random address in zone 3
     Then on Order Details form, select service PSG Oversized Package
     Then set Order Details form Weight to 40 lb 0 oz
     Then expect Order Details form Service Cost is 67.94

@@ -7,7 +7,7 @@ Feature: in Print modal, click Print button Sample - Priority Mail Flat Rate Env
   Scenario:  Priority Mail Flat Rate Envelope
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then on Order Details form, select service PM Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button

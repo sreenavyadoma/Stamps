@@ -7,12 +7,12 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - left side
   Scenario: Print 2 Domestic labels on 5.5x8.5 - left side
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address PS Large Package, 5.5x8.5, 530 K Street Unit 504, San Diego CA 92101-7060
+    Then set Order Details form Ship-To to PS Large Package, 5.5x8.5, 530 K Street Unit 504, San Diego CA 92101-7060
     Then on Order Details form, select service PSG Package
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address PS Large Package, 5.5x8.5, 7065 N Ingram Ave, Fresno CA 93650-1083
+    Then set Order Details form Ship-To to PS Large Package, 5.5x8.5, 7065 N Ingram Ave, Fresno CA 93650-1083
     Then on Order Details form, select service PSG Oversized Package
     Then set Order Details form Ounces to 1
     Then in Orders Grid, check row 1

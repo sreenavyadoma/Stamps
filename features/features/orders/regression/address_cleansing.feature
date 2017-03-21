@@ -22,6 +22,6 @@ Feature: Address Cleansing
     Then expect Orders Grid State is CA
 
     Then in Orders Toolbar, click Add button
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then on Order Details form, select service PM Package
     Then Sign out

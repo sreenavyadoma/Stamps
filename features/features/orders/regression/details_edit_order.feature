@@ -8,7 +8,7 @@ Feature: Edit Order Details
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 8
+    Then set Order Details form Ship-To to random address in zone 8
     Then on Order Details form, select service PM Package
     Then set Order Details form Ounces to 3
     Then set Order Details form Pounds to 2

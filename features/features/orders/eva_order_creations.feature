@@ -8,7 +8,7 @@ Feature:  Add Orders
   Scenario:  In Orders Toolbar, click Add button
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -19,7 +19,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -30,7 +30,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -41,7 +41,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -52,7 +52,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -63,7 +63,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -74,7 +74,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -85,7 +85,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -96,7 +96,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -107,7 +107,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -118,7 +118,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -129,7 +129,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -140,7 +140,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -151,7 +151,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -162,7 +162,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -173,7 +173,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -184,7 +184,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -195,7 +195,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -206,7 +206,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -217,7 +217,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -228,7 +228,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -239,7 +239,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -250,7 +250,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -261,7 +261,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -272,7 +272,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -283,7 +283,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -294,7 +294,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -305,7 +305,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -316,7 +316,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -327,7 +327,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -338,7 +338,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -349,7 +349,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -360,7 +360,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -371,7 +371,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -382,7 +382,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -393,7 +393,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -404,7 +404,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -415,7 +415,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -426,7 +426,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -437,7 +437,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -448,7 +448,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -459,7 +459,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -470,7 +470,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -481,7 +481,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -492,7 +492,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -503,7 +503,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -514,7 +514,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -525,7 +525,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -536,7 +536,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -547,7 +547,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -558,7 +558,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -569,7 +569,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -580,7 +580,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -591,7 +591,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -602,7 +602,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -613,7 +613,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -624,7 +624,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -635,7 +635,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -646,7 +646,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -657,7 +657,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -668,7 +668,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -679,7 +679,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -690,7 +690,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -701,7 +701,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -712,7 +712,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -723,7 +723,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -734,7 +734,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -745,7 +745,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -756,7 +756,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -767,7 +767,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -778,7 +778,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
@@ -789,7 +789,7 @@ Feature:  Add Orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package

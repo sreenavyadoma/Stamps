@@ -13,6 +13,6 @@ Feature:  BVT Address Management
     Then on Manage Shipping Address modal, expect selection has random
     Then on Manage Shipping Address modal, delete all addresses
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then on Order Details form, select service PM Package
     Then Sign out

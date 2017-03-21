@@ -8,7 +8,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service FCM Large Envelope
     Then set Order Details form Weight to 0 lb 4 oz
     Then expect Order Details form Service Cost is 1.61
@@ -20,7 +20,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service First-Class Mail Package/Thick Envelope
     Then set Order Details form Weight to 0 lb 10 oz
     Then expect Order Details form Service Cost is 3.46
@@ -33,7 +33,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Large/Thick Envelope
     Then set Order Details form Weight to 0 lb 8 oz
     Then expect Order Details form Service Cost is 9.89
@@ -46,7 +46,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Package
     Then set Order Details form Weight to 2 lb 0 oz
     Then expect Order Details form Service Cost is 15.14
@@ -59,7 +59,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Large Package
     Then set Order Details form Weight to 22 lb 0 oz
       Then set Order Details form Length to 30
@@ -75,7 +75,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Flat Rate Envelope
     Then set Order Details form Weight to 13 lb 3 oz
     Then expect Order Details form Service Cost is 5.95
@@ -88,7 +88,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Padded Flat Rate Envelope
     Then set Order Details form Weight to 3 lb 0 oz
     Then expect Order Details form Service Cost is 6.50
@@ -101,7 +101,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Legal Flat Rate Envelope
     Then set Order Details form Weight to 6 lb 0 oz
     Then expect Order Details form Service Cost is 6.25
@@ -114,7 +114,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Small Flat Rate Box
     Then set Order Details form Weight to 2 lb 0 oz
     Then expect Order Details form Service Cost is 6.45
@@ -127,7 +127,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Medium Flat Rate Box
     Then set Order Details form Weight to 6 lb 0 oz
     Then expect Order Details form Service Cost is 12.40
@@ -140,7 +140,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Large Flat Rate Box
     Then set Order Details form Weight to 15 lb 0 oz
     Then expect Order Details form Service Cost is 17.05
@@ -154,7 +154,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Regional Rate Box A
     Then set Order Details form Weight to 4 lb 0 oz
     Then expect Order Details form Service Cost is 15.14
@@ -167,7 +167,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PM Regional Rate Box B
     Then set Order Details form Weight to 12 lb 0 oz
     Then expect Order Details form Service Cost is 28.72
@@ -179,7 +179,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PME Package
     Then set Order Details form Weight to 9 lb 0 oz
     Then expect Order Details form Service Cost is 90.96
@@ -192,7 +192,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PME Flat Rate Envelope
     Then set Order Details form Weight to 7 lb 0 oz
     Then expect Order Details form Service Cost is 21.18
@@ -205,7 +205,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then set Order Details form Weight to 11 lb 0 oz
     Then expect Order Details form Service Cost is 21.64
@@ -218,7 +218,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PME Legal Flat Rate Envelope
     Then set Order Details form Weight to 16 lb 0 oz
     Then expect Order Details form Service Cost is 21.28
@@ -231,7 +231,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service MM Package
     Then set Order Details form Weight to 3 lb 0 oz
     Then expect Order Details form Service Cost is 3.61
@@ -244,7 +244,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PSG Package
     Then set Order Details form Weight to 6 lb 0 oz
     Then expect Order Details form Service Cost is 23.32
@@ -257,7 +257,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PSG Package
     Then set Order Details form Weight to 12 lb 0 oz
     Then expect Order Details form Service Cost is 57.74
@@ -270,7 +270,7 @@ Feature: Local Rating test for Zone 9
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to address in Zone 9
+    Then set Order Details form Ship-To to random address in zone 9
     Then on Order Details form, select service PSG Oversized Package
     Then set Order Details form Weight to 50 lb 0 oz
     Then expect Order Details form Service Cost is 173.87

@@ -9,14 +9,14 @@ Feature: 10 orders
     # First Class Mail
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Insure-For to $15.00
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Insure-For to $45.00
@@ -26,28 +26,28 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Large Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Legal Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Regional Rate Box A
     Then set Order Details form Insure-For to $105.00
@@ -57,14 +57,14 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PME Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 11
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
@@ -73,7 +73,7 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 3
     Then on Order Details form, select service MM Package
     Then set Order Details form Insure-For to $56.00
@@ -83,7 +83,7 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 10
     Then on Order Details form, select service PSG Package
     Then set Order Details form Insure-For to $235.00
@@ -98,14 +98,14 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Insure-For to $15.00
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Insure-For to $45.00
@@ -115,28 +115,28 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Large Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Legal Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Regional Rate Box A
     Then set Order Details form Insure-For to $105.00
@@ -146,14 +146,14 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PME Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 11
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
@@ -162,7 +162,7 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 3
     Then on Order Details form, select service MM Package
     Then set Order Details form Insure-For to $56.00
@@ -172,7 +172,7 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 10
     Then on Order Details form, select service PSG Package
     Then set Order Details form Insure-For to $235.00
@@ -183,14 +183,14 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Insure-For to $15.00
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Insure-For to $45.00
@@ -200,28 +200,28 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Large Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Legal Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PM Regional Rate Box A
     Then set Order Details form Insure-For to $105.00
@@ -231,14 +231,14 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then on Order Details form, select service PME Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 11
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
@@ -247,7 +247,7 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 3
     Then on Order Details form, select service MM Package
     Then set Order Details form Insure-For to $56.00
@@ -257,7 +257,7 @@ Feature: 10 orders
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 10
     Then on Order Details form, select service PSG Package
     Then set Order Details form Insure-For to $235.00

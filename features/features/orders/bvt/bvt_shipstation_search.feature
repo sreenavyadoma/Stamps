@@ -8,7 +8,7 @@ Feature:  Basic Search
   Scenario: Search order
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1
+    Then set Order Details form Ship-To to random address in zone 1
     Then set Order Details form Email to random
     Then set Order Details form Phone to random
     Then on Order Details form, select service PM Package

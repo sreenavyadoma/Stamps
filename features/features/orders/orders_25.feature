@@ -40,7 +40,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -53,7 +53,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 2
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -67,7 +67,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then in Orders Grid, check row 1
     Then set Order Details form Ounces to 3
     Then set Order Details form Length to 1
@@ -79,7 +79,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 4
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -90,7 +90,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 5
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -102,7 +102,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 6
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -113,7 +113,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 7
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -125,7 +125,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 8
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -136,7 +136,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 9
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -148,7 +148,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 10
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -160,7 +160,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 11
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -172,7 +172,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 12
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -184,7 +184,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 13
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -196,7 +196,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 14
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -208,7 +208,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 15
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -219,7 +219,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 16
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -230,7 +230,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 17
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -241,7 +241,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 18
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -252,7 +252,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 19
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -264,7 +264,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 20
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -277,7 +277,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 21
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -289,7 +289,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 22
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
@@ -301,7 +301,7 @@ Feature: 25 orders
     Then in Orders Toolbar, click Add button
     Then expect Order Details form Order ID is truthy
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 23
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1

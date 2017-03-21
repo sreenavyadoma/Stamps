@@ -287,7 +287,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
   expect("Check your parameter sheet: #{@rate_file_loc}").to eql error_msg if missing_column
 
-  # parameter zone is set in step "set Order Details form Ship-To to address in Zone xxx"
+  # parameter zone is set in step "set Order Details form Ship-To to a random address in Zone xxx"
   # where xxx is a number between 1-9
   zone.should_not be nil
   case zone
@@ -324,7 +324,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
-        step "set Order Details form Ship-To to address in Zone #{zone}"
+        step "set Order Details form Ship-To to a random address in Zone #{zone}"
 
         # spreadsheet price for zone
 

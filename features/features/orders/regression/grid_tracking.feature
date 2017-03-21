@@ -10,7 +10,7 @@ Feature: in Orders Grid, Tracking & Order Status
     Then in Orders Toolbar, click Add button
     Then expect Orders Grid Order Status is Awaiting Shipment
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 5
     Then on Order Details form, select service PM Large Package
     Then set Order Details form Tracking to USPS Tracking
@@ -26,7 +26,7 @@ Feature: in Orders Grid, Tracking & Order Status
     Then in Orders Toolbar, click Add button
     Then expect Orders Grid Order Status is Awaiting Shipment
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 5
     Then on Order Details form, select service PM Large Package
     Then set Order Details form Tracking to Signature Required

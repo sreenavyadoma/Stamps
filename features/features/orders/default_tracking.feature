@@ -9,7 +9,8 @@ Feature: Tracking
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
 
-    Then set Order Details form Ship-To to address in Zone 1
+    Then set Order Details form Ship-To to random address in zone 1
+    Then set Order Details form Ship-To to random address in zone 1
 
     #Then on Order Details form, select service PME Flat Rate Envelope
     #Then expect Order Details form service is PME Flat Rate Envelope

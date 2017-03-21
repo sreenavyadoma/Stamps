@@ -8,7 +8,7 @@ Feature:  Requires x-number of label sheets
   Scenario:  Printing
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then on Order Details form, select service PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz
     Then in Orders Toolbar, click Print button
@@ -17,7 +17,7 @@ Feature:  Requires x-number of label sheets
     Then in Print modal, click Close button
 
     Then in Orders Toolbar, click Add button
-    Then set Order Details form Ship-To to address in Zone 5 through 8
+    Then set Order Details form Ship-To to random address between zone 5 and 8
     Then on Order Details form, select service PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz
     Then set Order Details form Dimensions to Length 1 Width 1 Height 1
@@ -25,7 +25,7 @@ Feature:  Requires x-number of label sheets
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then on Order Details form, select service PM Small Flat Rate Box
     Then set Order Details form Weight to 1 lb 1 oz
 

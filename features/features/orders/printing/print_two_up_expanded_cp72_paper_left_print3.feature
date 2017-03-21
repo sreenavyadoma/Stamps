@@ -8,17 +8,17 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11 - left side
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
+    Then set Order Details form Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then on Order Details form, select service PME Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
+    Then set Order Details form Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then on Order Details form, select service PME Legal Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
+    Then set Order Details form Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then on Order Details form, select service PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Add button

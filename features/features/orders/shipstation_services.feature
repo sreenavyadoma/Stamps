@@ -10,7 +10,7 @@
     Then set Order Details form Ship-From to default
     Then in Orders Grid, check row 1
 
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
 
     Then on Order Details form, select service PM Large/Thick Envelope
     Then expect Order Details form service is PM Large/Thick Envelope

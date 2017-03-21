@@ -7,7 +7,7 @@ Feature: Print Media - Roll - 4" x 6" Shipping Label
   Scenario:  Roll - 4" x 6" Shipping Label
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then on Order Details form, select service PM Package
     Then set Order Details form Pounds to 1
     Then Pause for 2 seconds

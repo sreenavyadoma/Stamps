@@ -8,7 +8,7 @@ Feature: Select Email Tracking for order when printing
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
+    Then set Order Details form Ship-To to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
     Then on Order Details form, select service MM Package
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button

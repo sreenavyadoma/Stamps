@@ -8,7 +8,7 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
   Scenario:  Printing
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then in Orders Grid, check row 1
     Then Print expecting error A service must be selected before printing.
 
@@ -20,10 +20,10 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to address in Zone 1 through 4
+    Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form Ounces to 1
     Then on Order Details form, select service PM Regional Rate Box A
