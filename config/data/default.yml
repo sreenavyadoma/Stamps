@@ -10,6 +10,8 @@ rates_test:
   results_dir: C:\watir-webdriver\rates\results
 
 import_orders_test:
+  import_orders_dir: \\rcruz-win7\Public\automation\data
+  import_time_file: import_times.csv
 
 
 
