@@ -17,7 +17,7 @@ Feature: Details Ship Cost Total
     Then expect Order Details form Total Ship Cost is 0.00
 
     Then set Order Details form Ship-To to random address in zone 8
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1
     Then set Order Details form Pounds to 1
     Then set Order Details form Tracking to Signature Required

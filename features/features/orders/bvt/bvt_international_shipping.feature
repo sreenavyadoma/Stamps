@@ -11,7 +11,7 @@ Feature:  BVT International Shipping
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details form Ounces to 4
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 400, Made In Japan, Tariff 100
     Then set Customs form Package Contents to Merchandise

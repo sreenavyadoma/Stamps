@@ -23,7 +23,7 @@ Feature: Priority Mail and Large Dimensions
     Then Pause for 1 second
     Then expect Order Details form service "PM Package" is enabled
     Then Pause for 1 second
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then Pause for 2 seconds
     Then expect Order Details form Length is 0
     Then expect Order Details form Height is 0

@@ -11,7 +11,7 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI SFRB | 5.5x8.5  | random           | random           | random | random  | random      | Netherlands | random  | random  |
-    Then on Order Details form, select service PMI Small Flat Rate Box
+    Then set Order Details form service to PMI Small Flat Rate Box
     Then set Order Details form Ounces to 1
 
     Then click Order Details form Edit Form button

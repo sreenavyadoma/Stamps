@@ -75,7 +75,7 @@ mail_services:
 
 orders_services:
   FCM Large Envelope: sdc-servicedroplist-fclargeenvelopeorflat
-  FCM Package: sdc-servicedroplist-fcthickenvelope
+  FCM Package/Thick Envelope: sdc-servicedroplist-fcthickenvelope
   PM Large/Thick Envelope: sdc-servicedroplist-pmlargeenvelopeorflat
   PM Package: sdc-servicedroplist-pmpackage
   PM Large Package: sdc-servicedroplist-pmlargepackage

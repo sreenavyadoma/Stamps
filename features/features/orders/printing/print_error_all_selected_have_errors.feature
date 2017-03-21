@@ -26,7 +26,7 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 1
     Then set Order Details form Ounces to 1
-    Then on Order Details form, select service PM Regional Rate Box A
+    Then set Order Details form service to PM Regional Rate Box A
     Then in Orders Grid, check row 1
     Then in Orders Grid, check row 2
     Then Print expecting 1 of 2 selected orders have errors and cannot be printed. To print the remaining orders, click Continue.

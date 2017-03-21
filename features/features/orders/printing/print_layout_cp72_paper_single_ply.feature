@@ -10,7 +10,7 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then on Order Details form, select service PMI Package
+    Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Document

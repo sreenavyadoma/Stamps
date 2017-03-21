@@ -9,12 +9,12 @@ Feature: Print 2 Domestic labels on 5.5x8.5 - right side
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to MM Package, 5.5x8.5 Right Side 2, 4937 79th St., Sacramento CA 95820-6213
-    Then on Order Details form, select service MM Package
+    Then set Order Details form service to MM Package
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PM Large Package, 5.5x8.5 Right Side 1, 26930 NE 152nd St., Duvall WA 98019-8316
-    Then on Order Details form, select service PM Large Package
+    Then set Order Details form service to PM Large Package
     Then set Order Details form Ounces to 1
     Then set Order Details form Dimensions to Length 1 Width 1 Height 1
     Then in Orders Grid, check row 1

@@ -20,7 +20,7 @@ Feature: 25 orders
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
@@ -34,7 +34,7 @@ Feature: 25 orders
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
     # First Class Mail
     Then in Orders Toolbar, click Add button
@@ -45,7 +45,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service FCM Large Envelope
+    Then set Order Details form service to FCM Large Envelope
     Then set Order Details form Insure-For to $15.00
     Then set Order Details form Tracking to "None"
     Then in Orders Grid, check row 1
@@ -58,7 +58,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service First-Class Mail Package/Thick Envelope
+    Then set Order Details form service to First-Class Mail Package/Thick Envelope
     Then set Order Details form Insure-For to $45.00
     Then set Order Details form Tracking to USPS Tracking
     Then in Orders Grid, check row 1
@@ -73,7 +73,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Large/Thick Envelope
+    Then set Order Details form service to PM Large/Thick Envelope
     Then set Order Details form Tracking to USPS Tracking
 
     Then in Orders Toolbar, click Add button
@@ -84,7 +84,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
@@ -95,7 +95,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Large Package
+    Then set Order Details form service to PM Large Package
     Then set Order Details form Insure-For to $145.00
     Then set Order Details form Tracking to Signature Required
 
@@ -107,7 +107,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Flat Rate Envelope
+    Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
@@ -118,7 +118,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Padded Flat Rate Envelope
+    Then set Order Details form service to PM Padded Flat Rate Envelope
     Then set Order Details form Insure-For to $98.00
     Then set Order Details form Tracking to USPS Tracking
 
@@ -130,7 +130,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Legal Flat Rate Envelope
+    Then set Order Details form service to PM Legal Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
@@ -141,7 +141,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Small Flat Rate Box
+    Then set Order Details form service to PM Small Flat Rate Box
     Then set Order Details form Insure-For to $30.00
     Then set Order Details form Tracking to Signature Required
 
@@ -153,7 +153,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Medium Flat Rate Box
+    Then set Order Details form service to PM Medium Flat Rate Box
     Then set Order Details form Insure-For to $45.00
     Then set Order Details form Tracking to Signature Required
 
@@ -165,7 +165,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Large Flat Rate Box
+    Then set Order Details form service to PM Large Flat Rate Box
     Then set Order Details form Insure-For to $239.00
     Then set Order Details form Tracking to Signature Required
 
@@ -177,7 +177,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Regional Rate Box A
+    Then set Order Details form service to PM Regional Rate Box A
     Then set Order Details form Insure-For to $105.00
     Then set Order Details form Tracking to Signature Required
 
@@ -189,7 +189,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PM Regional Rate Box B
+    Then set Order Details form service to PM Regional Rate Box B
     Then set Order Details form Insure-For to $205.00
     Then set Order Details form Tracking to USPS Tracking
 
@@ -213,7 +213,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PME Package
+    Then set Order Details form service to PME Package
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
@@ -224,7 +224,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PME Flat Rate Envelope
+    Then set Order Details form service to PME Flat Rate Envelope
     Then set Order Details form Tracking to USPS Tracking
 
     Then in Orders Toolbar, click Add button
@@ -235,7 +235,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PME Padded Flat Rate Envelope
+    Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
     Then in Orders Toolbar, click Add button
@@ -246,7 +246,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PME Legal Flat Rate Envelope
+    Then set Order Details form service to PME Legal Flat Rate Envelope
     Then set Order Details form Tracking to USPS Tracking
 
     Then in Orders Toolbar, click Add button
@@ -257,7 +257,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PME Padded Flat Rate Envelope
+    Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Tracking to Signature Required
 
     # Media Mail
@@ -269,7 +269,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service MM Package
+    Then set Order Details form service to MM Package
     Then set Order Details form Insure-For to $56.00
     Then set Order Details form Tracking to Signature Required
 
@@ -282,7 +282,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     Then set Order Details form Insure-For to $345.00
     Then set Order Details form Tracking to USPS Tracking
 
@@ -294,7 +294,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     Then set Order Details form Insure-For to $456.00
     Then set Order Details form Tracking to Signature Required
 
@@ -306,7 +306,7 @@ Feature: 25 orders
     Then set Order Details form Length to 1
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
-    Then on Order Details form, select service PSG Oversized Package
+    Then set Order Details form service to PSG Oversized Package
     Then set Order Details form Insure-For to $567.00
     Then set Order Details form Tracking to Signature Required
     Then Sign out

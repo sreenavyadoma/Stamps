@@ -11,7 +11,7 @@ Feature: User Print 1 FPO CN22 Label on 8.5x11 - left side
       | name        | company             | street_address  | street_address_2| city | state | zip        | country       | phone  |  email |
       | PM RR Box B | Domestic FPO 8.5x11 | PSC 473 BOX 12  |                 | FPO  | AP    | 96349-0001 | United States | random | random |
 
-    Then on Order Details form, select service PM Regional Rate Box B
+    Then set Order Details form service to PM Regional Rate Box B
     Then set Order Details form Weight to 2 lb 1 oz
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then on Order Details form, Add Item 2, Qty 2, ID random, Description random

@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 14 oz
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise

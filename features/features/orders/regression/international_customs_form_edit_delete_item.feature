@@ -10,7 +10,7 @@ Feature:  Customs Form Item Grid - Edit/Delete
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
     Then set Order Details form Ounces to 5
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then click Order Details form Edit Form button
     Then expect Customs form Associated Item Grid count is 1

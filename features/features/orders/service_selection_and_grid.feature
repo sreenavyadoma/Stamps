@@ -8,7 +8,7 @@ Feature:  service Selection & Order Grid Values
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
 
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
@@ -21,7 +21,7 @@ Feature:  service Selection & Order Grid Values
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
@@ -33,7 +33,7 @@ Feature:  service Selection & Order Grid Values
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then on Order Details form, select service PSG Oversized Package
+    Then set Order Details form service to PSG Oversized Package
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"

@@ -11,7 +11,7 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | PM RR Box C | 8.5x11 Right Side 1 | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
     Then set Order Details form Weight to 2 lb 1 oz
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10

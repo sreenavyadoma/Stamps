@@ -12,7 +12,7 @@ Feature:  Print Curacao
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
 
     Then expect Order Details form Ship-To Country is Curacao
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
     Then set Order Details form Ounces to 2
     Then set Order Details form Pounds to 2
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description

@@ -8,12 +8,12 @@ Feature: Print 2 Domestic labels on 8.5x11 - right side
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PM LFR Envelope, 8.5x11 Right Side 2, 2775 Stark Dr., Willoughby Hills OH 44094-9113
-    Then on Order Details form, select service PM Legal Flat Rate Envelope
+    Then set Order Details form service to PM Legal Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PM SFR Box, 8.5x11 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
-    Then on Order Details form, select service PM Small Flat Rate Box
+    Then set Order Details form service to PM Small Flat Rate Box
     Then set Order Details form Ounces to 3
     Then in Orders Grid, check row 1
     Then in Orders Grid, check row 2

@@ -9,13 +9,13 @@ Feature: Print Multiple Orders
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then on Order Details form, select service PME Padded Flat Rate Envelope
+    Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then on Order Details form, select service PME Padded Flat Rate Envelope
+    Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
 
     Then in Orders Grid, check row 1

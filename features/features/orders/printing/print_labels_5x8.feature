@@ -9,7 +9,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -29,7 +29,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -42,7 +42,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -54,7 +54,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -67,7 +67,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -79,7 +79,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -93,7 +93,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -107,7 +107,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -121,7 +121,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -135,7 +135,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -150,7 +150,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -161,7 +161,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -172,7 +172,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form Ounces to 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
@@ -194,7 +194,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-To to Domestic Address
       | name            | company                 | street_address      | street_address_2 |  city          | state | zip        | country       | phone  |  email |
       | Jessie Joe      | The CN 22 House         | PSC 819 BOX 1       |                  | FPO           | AE    | 09645-0001 | United States |        |        |
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 5
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
@@ -213,7 +213,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Ship-To to Domestic Address
       | name            | company                 | street_address      | street_address_2| city          | state | zip        | country       | phone  |  email |
       | Tammmy Moo      | The CP72 House          | Unit 15324          |                 | APO           | AP    | 96205-5324 | United States |        |        |
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Pounds to 3
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1

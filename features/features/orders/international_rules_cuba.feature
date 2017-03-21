@@ -12,7 +12,7 @@ Feature: Cuba Internal Transaction Number Required
       | random | random  | random           | random           | random | random  | random      | Cuba    | random  | random  |
 
     Then set Order Details form Ounces to 5
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Required

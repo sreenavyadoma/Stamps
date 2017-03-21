@@ -12,7 +12,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | SDC-1200 | random           | random           | random | random  | random      | New Zealand | random  | random  |
-    Then on Order Details form, select service PMI Large Flat Rate Box
+    Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Ounces to 1
 
     Then click Order Details form Edit Form button

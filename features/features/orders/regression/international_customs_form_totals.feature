@@ -10,7 +10,7 @@ Feature:  Customs Form Totals
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Pounds to 3
     Then set Order Details form Ounces to 3
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random

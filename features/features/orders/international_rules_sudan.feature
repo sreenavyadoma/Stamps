@@ -13,9 +13,9 @@ Feature: Sudan Internal Transaction Number Required
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |
 
     Then set Order Details form Ounces to 5
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
-    #Then on Order Details form, select service FCMI Large Envelope
+    #Then set Order Details form service to FCMI Large Envelope
     Then click Order Details form Edit Form button
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form Package Contents to Commercial Sample

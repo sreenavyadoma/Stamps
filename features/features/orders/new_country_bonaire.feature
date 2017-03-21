@@ -12,7 +12,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
 
     Then expect Order Details form Ship-To Country is Bonaire, Sint Eustatius and Saba
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
     Then set Order Details form Ounces to 2
     Then set Order Details form Pounds to 2
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description

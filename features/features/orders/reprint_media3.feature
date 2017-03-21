@@ -12,7 +12,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | 5.5x8.5 | random           | random           | random | random  | random      | Norway | random  | random  |
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
     Then set Order Details form Ounces to 1
 
     Then click Order Details form Edit Form button

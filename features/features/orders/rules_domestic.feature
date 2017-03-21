@@ -36,7 +36,7 @@ Feature:  service enabled/disabled tests
     Then set Order Details form Ship-To to random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then set Order Details form Email to random
     Then set Order Details form Phone to random
-    Then on Order Details form, select service PM Large Package
+    Then set Order Details form service to PM Large Package
     Then set Order Details form Pounds to 5
     Then in Orders Grid, uncheck saved Order ID
     Then in Orders Grid, check saved Order ID

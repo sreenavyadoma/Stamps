@@ -14,7 +14,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
-    * on Order Details form, select service FCM Large Envelope
+    * set Order Details form service to FCM Large Envelope
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
@@ -24,7 +24,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
-    * on Order Details form, select service First-Class Mail Package/Thick Envelope
+    * set Order Details form service to First-Class Mail Package/Thick Envelope
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -36,7 +36,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large/Thick Envelope
+    * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -45,7 +45,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
-    * on Order Details form, select service PM Package
+    * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -54,7 +54,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
-    * on Order Details form, select service PM Large Package
+    * set Order Details form service to PM Large Package
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
@@ -64,7 +64,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
-    * on Order Details form, select service PM Flat Rate Envelope
+    * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -73,7 +73,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
-    * on Order Details form, select service PM Padded Flat Rate Envelope
+    * set Order Details form service to PM Padded Flat Rate Envelope
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -83,7 +83,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
-    * on Order Details form, select service PM Legal Flat Rate Envelope
+    * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -92,7 +92,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
-    * on Order Details form, select service PM Small Flat Rate Box
+    * set Order Details form service to PM Small Flat Rate Box
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
@@ -102,7 +102,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
-    * on Order Details form, select service PM Medium Flat Rate Box
+    * set Order Details form service to PM Medium Flat Rate Box
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
@@ -112,7 +112,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
-    * on Order Details form, select service PM Large Flat Rate Box
+    * set Order Details form service to PM Large Flat Rate Box
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
@@ -122,7 +122,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
-    * on Order Details form, select service PM Regional Rate Box A
+    * set Order Details form service to PM Regional Rate Box A
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
@@ -132,7 +132,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
-    * on Order Details form, select service PM Regional Rate Box B
+    * set Order Details form service to PM Regional Rate Box B
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -153,7 +153,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
-    Then on Order Details form, select service PME Package
+    Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -162,7 +162,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
-    * on Order Details form, select service PME Flat Rate Envelope
+    * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -171,7 +171,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -180,7 +180,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
-    * on Order Details form, select service PME Legal Flat Rate Envelope
+    * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -189,7 +189,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     # Media Mail
@@ -200,7 +200,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
-    * on Order Details form, select service MM Package
+    * set Order Details form service to MM Package
     * set Order Details form Insure-For to $56.00
     * set Order Details form Tracking to Signature Required
 
@@ -212,7 +212,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
-    * on Order Details form, select service PSG Package
+    * set Order Details form service to PSG Package
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -222,7 +222,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
@@ -232,7 +232,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
-    * on Order Details form, select service PSG Oversized Package
+    * set Order Details form service to PSG Oversized Package
     * set Order Details form Insure-For to $567.00
     * set Order Details form Tracking to Signature Required
 
@@ -257,7 +257,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
@@ -278,7 +278,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -288,7 +288,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
-    * on Order Details form, select service FCM Large Envelope
+    * set Order Details form service to FCM Large Envelope
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
@@ -298,7 +298,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
-    * on Order Details form, select service First-Class Mail Package/Thick Envelope
+    * set Order Details form service to First-Class Mail Package/Thick Envelope
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -310,7 +310,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large/Thick Envelope
+    * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -319,7 +319,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
-    * on Order Details form, select service PM Package
+    * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -328,7 +328,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
-    * on Order Details form, select service PM Large Package
+    * set Order Details form service to PM Large Package
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
@@ -338,7 +338,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
-    * on Order Details form, select service PM Flat Rate Envelope
+    * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -347,7 +347,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
-    * on Order Details form, select service PM Padded Flat Rate Envelope
+    * set Order Details form service to PM Padded Flat Rate Envelope
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -357,7 +357,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
-    * on Order Details form, select service PM Legal Flat Rate Envelope
+    * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -366,7 +366,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
-    * on Order Details form, select service PM Small Flat Rate Box
+    * set Order Details form service to PM Small Flat Rate Box
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
@@ -376,7 +376,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
-    * on Order Details form, select service PM Medium Flat Rate Box
+    * set Order Details form service to PM Medium Flat Rate Box
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
@@ -386,7 +386,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
-    * on Order Details form, select service PM Large Flat Rate Box
+    * set Order Details form service to PM Large Flat Rate Box
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
@@ -396,7 +396,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
-    * on Order Details form, select service PM Regional Rate Box A
+    * set Order Details form service to PM Regional Rate Box A
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
@@ -406,7 +406,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
-    * on Order Details form, select service PM Regional Rate Box B
+    * set Order Details form service to PM Regional Rate Box B
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -427,7 +427,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
-    Then on Order Details form, select service PME Package
+    Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -436,7 +436,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
-    * on Order Details form, select service PME Flat Rate Envelope
+    * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -445,7 +445,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -454,7 +454,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
-    * on Order Details form, select service PME Legal Flat Rate Envelope
+    * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -463,7 +463,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     # Media Mail
@@ -474,7 +474,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
-    * on Order Details form, select service MM Package
+    * set Order Details form service to MM Package
     * set Order Details form Insure-For to $56.00
     * set Order Details form Tracking to Signature Required
 
@@ -486,7 +486,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -496,7 +496,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
@@ -506,7 +506,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
-    * on Order Details form, select service PSG Oversized Package
+    * set Order Details form service to PSG Oversized Package
     * set Order Details form Insure-For to $567.00
     * set Order Details form Tracking to Signature Required
 
@@ -531,7 +531,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
@@ -552,7 +552,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -562,7 +562,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
-    * on Order Details form, select service FCM Large Envelope
+    * set Order Details form service to FCM Large Envelope
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
@@ -572,7 +572,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
-    * on Order Details form, select service First-Class Mail Package/Thick Envelope
+    * set Order Details form service to First-Class Mail Package/Thick Envelope
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -584,7 +584,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large/Thick Envelope
+    * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -593,7 +593,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
-    * on Order Details form, select service PM Package
+    * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -602,7 +602,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
-    * on Order Details form, select service PM Large Package
+    * set Order Details form service to PM Large Package
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
@@ -612,7 +612,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
-    * on Order Details form, select service PM Flat Rate Envelope
+    * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -621,7 +621,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
-    * on Order Details form, select service PM Padded Flat Rate Envelope
+    * set Order Details form service to PM Padded Flat Rate Envelope
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -631,7 +631,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
-    * on Order Details form, select service PM Legal Flat Rate Envelope
+    * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -640,7 +640,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
-    * on Order Details form, select service PM Small Flat Rate Box
+    * set Order Details form service to PM Small Flat Rate Box
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
@@ -650,7 +650,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
-    * on Order Details form, select service PM Medium Flat Rate Box
+    * set Order Details form service to PM Medium Flat Rate Box
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
@@ -660,7 +660,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
-    * on Order Details form, select service PM Large Flat Rate Box
+    * set Order Details form service to PM Large Flat Rate Box
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
@@ -670,7 +670,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
-    * on Order Details form, select service PM Regional Rate Box A
+    * set Order Details form service to PM Regional Rate Box A
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
@@ -680,7 +680,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
-    * on Order Details form, select service PM Regional Rate Box B
+    * set Order Details form service to PM Regional Rate Box B
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -700,7 +700,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
-    Then on Order Details form, select service PME Package
+    Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -709,7 +709,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
-    * on Order Details form, select service PME Flat Rate Envelope
+    * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -718,7 +718,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -727,7 +727,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
-    * on Order Details form, select service PME Legal Flat Rate Envelope
+    * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -736,7 +736,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     # Media Mail
@@ -747,7 +747,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
-    * on Order Details form, select service MM Package
+    * set Order Details form service to MM Package
     * set Order Details form Insure-For to $56.00
     * set Order Details form Tracking to Signature Required
 
@@ -759,7 +759,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -769,7 +769,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
@@ -779,7 +779,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
-    * on Order Details form, select service PSG Oversized Package
+    * set Order Details form service to PSG Oversized Package
     * set Order Details form Insure-For to $567.00
     * set Order Details form Tracking to Signature Required
 
@@ -804,7 +804,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
@@ -825,7 +825,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -835,7 +835,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
-    * on Order Details form, select service FCM Large Envelope
+    * set Order Details form service to FCM Large Envelope
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
@@ -845,7 +845,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
-    * on Order Details form, select service First-Class Mail Package/Thick Envelope
+    * set Order Details form service to First-Class Mail Package/Thick Envelope
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -857,7 +857,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large/Thick Envelope
+    * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -866,7 +866,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
-    * on Order Details form, select service PM Package
+    * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -875,7 +875,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
-    * on Order Details form, select service PM Large Package
+    * set Order Details form service to PM Large Package
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
@@ -885,7 +885,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
-    * on Order Details form, select service PM Flat Rate Envelope
+    * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -894,7 +894,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
-    * on Order Details form, select service PM Padded Flat Rate Envelope
+    * set Order Details form service to PM Padded Flat Rate Envelope
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -904,7 +904,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
-    * on Order Details form, select service PM Legal Flat Rate Envelope
+    * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -913,7 +913,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
-    * on Order Details form, select service PM Small Flat Rate Box
+    * set Order Details form service to PM Small Flat Rate Box
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
@@ -923,7 +923,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
-    * on Order Details form, select service PM Medium Flat Rate Box
+    * set Order Details form service to PM Medium Flat Rate Box
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
@@ -933,7 +933,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
-    * on Order Details form, select service PM Large Flat Rate Box
+    * set Order Details form service to PM Large Flat Rate Box
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
@@ -943,7 +943,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
-    * on Order Details form, select service PM Regional Rate Box A
+    * set Order Details form service to PM Regional Rate Box A
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
@@ -953,7 +953,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
-    * on Order Details form, select service PM Regional Rate Box B
+    * set Order Details form service to PM Regional Rate Box B
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -974,7 +974,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
-    Then on Order Details form, select service PME Package
+    Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -983,7 +983,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
-    * on Order Details form, select service PME Flat Rate Envelope
+    * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -992,7 +992,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1001,7 +1001,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
-    * on Order Details form, select service PME Legal Flat Rate Envelope
+    * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1010,7 +1010,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     # Media Mail
@@ -1021,7 +1021,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
-    * on Order Details form, select service MM Package
+    * set Order Details form service to MM Package
     * set Order Details form Insure-For to $56.00
     * set Order Details form Tracking to Signature Required
 
@@ -1033,7 +1033,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1043,7 +1043,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
@@ -1053,7 +1053,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
-    * on Order Details form, select service PSG Oversized Package
+    * set Order Details form service to PSG Oversized Package
     * set Order Details form Insure-For to $567.00
     * set Order Details form Tracking to Signature Required
 
@@ -1078,7 +1078,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
@@ -1099,7 +1099,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -1109,7 +1109,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
-    * on Order Details form, select service FCM Large Envelope
+    * set Order Details form service to FCM Large Envelope
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
@@ -1119,7 +1119,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
-    * on Order Details form, select service First-Class Mail Package/Thick Envelope
+    * set Order Details form service to First-Class Mail Package/Thick Envelope
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1131,7 +1131,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large/Thick Envelope
+    * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1140,7 +1140,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
-    * on Order Details form, select service PM Package
+    * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1149,7 +1149,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
-    * on Order Details form, select service PM Large Package
+    * set Order Details form service to PM Large Package
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
@@ -1159,7 +1159,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
-    * on Order Details form, select service PM Flat Rate Envelope
+    * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1168,7 +1168,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
-    * on Order Details form, select service PM Padded Flat Rate Envelope
+    * set Order Details form service to PM Padded Flat Rate Envelope
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1178,7 +1178,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
-    * on Order Details form, select service PM Legal Flat Rate Envelope
+    * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1187,7 +1187,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
-    * on Order Details form, select service PM Small Flat Rate Box
+    * set Order Details form service to PM Small Flat Rate Box
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
@@ -1197,7 +1197,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
-    * on Order Details form, select service PM Medium Flat Rate Box
+    * set Order Details form service to PM Medium Flat Rate Box
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
@@ -1207,7 +1207,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
-    * on Order Details form, select service PM Large Flat Rate Box
+    * set Order Details form service to PM Large Flat Rate Box
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
@@ -1217,7 +1217,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
-    * on Order Details form, select service PM Regional Rate Box A
+    * set Order Details form service to PM Regional Rate Box A
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
@@ -1227,7 +1227,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
-    * on Order Details form, select service PM Regional Rate Box B
+    * set Order Details form service to PM Regional Rate Box B
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1248,7 +1248,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
-    Then on Order Details form, select service PME Package
+    Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1257,7 +1257,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
-    * on Order Details form, select service PME Flat Rate Envelope
+    * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1266,7 +1266,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1275,7 +1275,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
-    * on Order Details form, select service PME Legal Flat Rate Envelope
+    * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1284,7 +1284,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     # Media Mail
@@ -1295,7 +1295,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
-    * on Order Details form, select service MM Package
+    * set Order Details form service to MM Package
     * set Order Details form Insure-For to $56.00
     * set Order Details form Tracking to Signature Required
 
@@ -1307,7 +1307,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1317,7 +1317,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
@@ -1327,7 +1327,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
-    * on Order Details form, select service PSG Oversized Package
+    * set Order Details form service to PSG Oversized Package
     * set Order Details form Insure-For to $567.00
     * set Order Details form Tracking to Signature Required
 
@@ -1352,7 +1352,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
@@ -1373,7 +1373,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
     # First Class Mail
 
@@ -1383,7 +1383,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
-    * on Order Details form, select service FCM Large Envelope
+    * set Order Details form service to FCM Large Envelope
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
@@ -1393,7 +1393,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
-    * on Order Details form, select service First-Class Mail Package/Thick Envelope
+    * set Order Details form service to First-Class Mail Package/Thick Envelope
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1405,7 +1405,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
-    * on Order Details form, select service PM Large/Thick Envelope
+    * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1414,7 +1414,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
-    * on Order Details form, select service PM Package
+    * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1423,7 +1423,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
-    * on Order Details form, select service PM Large Package
+    * set Order Details form service to PM Large Package
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
@@ -1433,7 +1433,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
-    * on Order Details form, select service PM Flat Rate Envelope
+    * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1442,7 +1442,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
-    * on Order Details form, select service PM Padded Flat Rate Envelope
+    * set Order Details form service to PM Padded Flat Rate Envelope
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1452,7 +1452,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
-    * on Order Details form, select service PM Legal Flat Rate Envelope
+    * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1461,7 +1461,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
-    * on Order Details form, select service PM Small Flat Rate Box
+    * set Order Details form service to PM Small Flat Rate Box
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
@@ -1471,7 +1471,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
-    * on Order Details form, select service PM Medium Flat Rate Box
+    * set Order Details form service to PM Medium Flat Rate Box
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
@@ -1481,7 +1481,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
-    * on Order Details form, select service PM Large Flat Rate Box
+    * set Order Details form service to PM Large Flat Rate Box
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
@@ -1491,7 +1491,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
-    * on Order Details form, select service PM Regional Rate Box A
+    * set Order Details form service to PM Regional Rate Box A
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
@@ -1501,7 +1501,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
-    * on Order Details form, select service PM Regional Rate Box B
+    * set Order Details form service to PM Regional Rate Box B
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1522,7 +1522,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
-    Then on Order Details form, select service PME Package
+    Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1531,7 +1531,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
-    * on Order Details form, select service PME Flat Rate Envelope
+    * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1540,7 +1540,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     * in Orders Toolbar, click Add button
@@ -1549,7 +1549,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
-    * on Order Details form, select service PME Legal Flat Rate Envelope
+    * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
     * in Orders Toolbar, click Add button
@@ -1558,7 +1558,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
-    * on Order Details form, select service PME Padded Flat Rate Envelope
+    * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
     # Media Mail
@@ -1569,7 +1569,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
-    * on Order Details form, select service MM Package
+    * set Order Details form service to MM Package
     * set Order Details form Insure-For to $56.00
     * set Order Details form Tracking to Signature Required
 
@@ -1581,7 +1581,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
@@ -1591,7 +1591,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
-    Then on Order Details form, select service PSG Package
+    Then set Order Details form service to PSG Package
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
@@ -1601,7 +1601,7 @@ Feature: 150 orders
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
-    * on Order Details form, select service PSG Oversized Package
+    * set Order Details form service to PSG Oversized Package
     * set Order Details form Insure-For to $567.00
     * set Order Details form Tracking to Signature Required
 
@@ -1626,7 +1626,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
 
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
@@ -1647,7 +1647,7 @@ Feature: 150 orders
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
 
     Then Sign out
 

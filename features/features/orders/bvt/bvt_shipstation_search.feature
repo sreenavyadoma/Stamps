@@ -11,7 +11,7 @@ Feature:  Basic Search
     Then set Order Details form Ship-To to random address in zone 1
     Then set Order Details form Email to random
     Then set Order Details form Phone to random
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Weight to 1 lb 1 oz
 
     Then in Orders Grid, uncheck saved Order ID

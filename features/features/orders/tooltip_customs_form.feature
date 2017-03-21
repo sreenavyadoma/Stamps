@@ -11,7 +11,7 @@ Feature:  Customs Form Data Tooltip Error
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
-    Then on Order Details form, select service PMI Flat Rate Envelope
+    Then set Order Details form service to PMI Flat Rate Envelope
     Then click Order Details form Edit Form button
     Then Pause for 1 second
     Then Cancel Customs Form

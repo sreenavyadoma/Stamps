@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then set Order Details Ship-To International address to
       | name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
-    Then on Order Details form, select service PMI Large Flat Rate Box
+    Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Weight to 2 lb 0 oz
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise

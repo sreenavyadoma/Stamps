@@ -10,7 +10,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Lg Env-Flat | 5.5x8.5 Right Side 2 | random           | random           | random | random  | random      | Croatia | random  | random  |
-    Then on Order Details form, select service FCMI Large Envelope
+    Then set Order Details form service to FCMI Large Envelope
     Then set Order Details form Ounces to 1
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise
@@ -22,7 +22,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5 - right side
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | FCMI Pkg-Thick Env | 5.5x8.5 Right Side 1 | random           | random           | random | random  | random      | India | random  | random  |
-    Then on Order Details form, select service FCMI Package
+    Then set Order Details form service to FCMI Package
     Then set Order Details form Ounces to 1
     Then click Order Details form Edit Form button
     Then set Customs form Package Contents to Merchandise

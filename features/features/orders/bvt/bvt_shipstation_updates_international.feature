@@ -13,7 +13,7 @@ Feature:  Update International Orders to ShipStation
       | name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
     Then set Order Details form Weight to 2 lb 2 oz
-    Then on Order Details form, select service PMI Package
+    Then set Order Details form service to PMI Package
     Then set Order Details form Insure-For to $100.25
     Then set Order Details form Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1

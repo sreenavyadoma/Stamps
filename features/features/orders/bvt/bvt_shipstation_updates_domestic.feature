@@ -16,7 +16,7 @@ Feature:  Update Order to ShipStation
     Then set Order Details form Email to rtest@stamps.com
     Then set Order Details form Pounds to 1
     Then set Order Details form Ounces to 1
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then set Order Details form Insure-For to $100.00
     Then set Order Details form Tracking to Signature Required
     Then set Order Details form Length to 1

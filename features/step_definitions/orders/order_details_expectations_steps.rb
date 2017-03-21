@@ -397,15 +397,7 @@ Then /^(?:E|e)xpect Order Details form Height is (\d+)$/ do |expectation|
   expect(stamps.orders.order_details.dimensions.height.text_box.text.to_i).to eql expectation.to_i
 end
 
-Then /^(?:E|e)xpect Order Details form Tracking is Signature Required$/ do
-  step "expect Order Details form Tracking is \"Signature Required\""
-end
-
-Then /^(?:E|e)xpect Order Details form Tracking is USPS Tracking$/ do
-  step "expect Order Details form Tracking is \"USPS Tracking\""
-end
-
-Then /^(?:E|e)xpect Order Details form Tracking is \"([\w\s]*)\"$/ do |expectation|
+Then /^(?:E|e)xpect Order Details form Tracking is (.*)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.tracking.text_box.text.include? expectation end
   expect(stamps.orders.order_details.tracking.text_box.text).to eql expectation

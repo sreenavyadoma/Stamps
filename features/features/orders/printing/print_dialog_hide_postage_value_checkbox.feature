@@ -10,7 +10,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address in zone 1
-    Then on Order Details form, select service PM Flat Rate Envelope
+    Then set Order Details form service to PM Flat Rate Envelope
 
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present
@@ -31,7 +31,7 @@ Feature: Add Hide Mail Value Checkbox to Print Dialog
     Then in Orders Toolbar, click Add button
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address in zone 1
-    Then on Order Details form, select service PM Flat Rate Envelope
+    Then set Order Details form service to PM Flat Rate Envelope
     Then in Orders Toolbar, click Print button
     Then in Print modal, uncheck Hide Mail Value
     Then in Print modal, click Print button

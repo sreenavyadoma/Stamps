@@ -19,6 +19,6 @@ Feature: Ambigious Address
     Then expect Orders Grid City is San Francisco
     Then expect Orders Grid State is CA
     Then expect Orders Grid Zip is 94102
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then Sign out
 

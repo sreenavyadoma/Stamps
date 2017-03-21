@@ -12,7 +12,7 @@ Feature:  Ambigious Address
       | Joseph Balancio | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Exact Address Not Found module to appear
     Then In Exact Address Not Found module, select row 2
-    Then on Order Details form, select service PM Package
+    Then set Order Details form service to PM Package
     Then in Orders Grid, check row 1
     Then expect Orders Grid Recipient is Joseph Balancio
     Then expect Orders Grid Company is Betfair
