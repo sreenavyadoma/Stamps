@@ -1196,58 +1196,16 @@ orders_credentials:
     print_sample_pme_padded_flat_rate_envelope:
       usr: ccyobxzc3gq
       pw: pass111
-    print_two_up_expanded_5x8_left:
+    print_two_up_expanded_5x8:
+      usr: cclnlqaf8s
+      pw: pass111
+    print_two_up_expanded_cn22:
       usr: ccyobxzc3gq
       pw: pass111
-    print_two_up_expanded_5x8_left_print2:
+    print_two_up_expanded_cp72:
       usr: ccyobxzc3gq
       pw: pass111
-    print_two_up_expanded_5x8_left_print3:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_5x8_right_print1:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_5x8_right_print2:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cn22_5x8_right_print2:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cn22_cp72_5x8_right_print2:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cn22_paper_left:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cn22_paper_right:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cn22_sdc1200_left:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cp72_5x8_left_print1:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cp72_5x8_right_print1:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cp72_paper_left:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_cp72_paper_left_print3:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_fpo_cn22_paper_right:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_paper_left_print1:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_paper_left_print2:
-      usr: ccyobxzc3gq
-      pw: pass111
-    print_two_up_expanded_paper_right_print2:
+    print_two_up_expanded_paper:
       usr: ccyobxzc3gq
       pw: pass111
     print_two_up_expanded_sdc1200_4x6_left_print1:
