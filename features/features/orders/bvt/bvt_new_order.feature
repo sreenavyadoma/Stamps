@@ -23,9 +23,6 @@ Feature:  BVT Order Creation
     Then expect Orders Grid Insured Value is $1.00
     Then Sign out
 
-
-
-
     #Then set Order Details form Ship-To to random address in zone 5
     #Then set Order Details form Ship-To to random,PO BOX 1257,Pohnpei, FM 96941-1257
     #Then set Order Details form Ship-To to random,PO BOX 1257,Pohnpei, FM 96941-1257
