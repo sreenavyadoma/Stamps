@@ -43,6 +43,16 @@ jenkinsvm10, stghy955swcbcm, mail_print_shipping_label_5x8_pm_small_box
 
 Regression
 orders_regression_cc
+
+jenkinsvmwin701, ccw7l673yk, @details_edit_order
+jenkinsvm07, ccwsq8231z1wa, @details_flat_rate_no_weight_domestic
+jenkinsvm06, ccslm4rnxg42q, @details_flat_rate_no_weight_international
+jenkinsvm09, cclnlqaf8s, @details_large_dimensions_pm
+jenkinsvm08, ccyykg2nb, @customs_form_qty
+jenkinsvm04, ccx9sfswq05pm, @address_cleansing, @address_management, @authentication, @auto_suggest, @
+jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
+jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
+
 orders_regression_stg
 orders_regression_sc
 

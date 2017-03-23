@@ -17,7 +17,7 @@ web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers J
 eli_dev: --tags @mail_bvt_envelopes   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=item_details URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=s8nxs3g PW=pass111
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
-kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+kaushal: --tags @print_layout_cp72 WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
@@ -122,15 +122,7 @@ print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess DEBUG=f
 print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_dialog_label_left_side
 print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_dialog_label_right_side
 # CP72 & CN22
-print_layout_cp72_sdc1200_single_ply: --tags @print_layout_cp72_sdc1200_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_sdc1200_single_ply
-print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_roll_continuation
-print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_4x6roll
-print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_5x8_left
-print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_5x8_right
-print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_5x8_single_ply
-print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_single_ply_apo_roll
-print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_paper_continuation
-print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_paper_single_ply
+print_layout_cp72: --tags @print_layout_cp72 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72
 print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_dpo_cp72_roll_single_ply
 print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_fsa_cp72_paper_single_ply
 print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cn22_5x8
