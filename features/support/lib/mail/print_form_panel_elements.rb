@@ -125,39 +125,36 @@ module Stamps
       end
 
       class MailToCountry < Browser::StampsBrowserElement
-        attr_reader :text_box, :drop_down, :index, :geography, :dom_text_area, :int_drop_down
+        attr_reader :dom_text_area
         include PrintFormBlurOut
 
         def initialize(param)
           super(param)
           @dom_text_area = MailDomTextArea.new(param)
-          @int_drop_down = StampsElement.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
         end
 
         def domestic?
-          30.times do
+          15.times do
             sleep(0.05)
             return true if dom_text_area.present?
           end
           dom_text_area.present?
         end
 
-        def select(str)
-          @geography = :domestic
-          @geography = :international unless str.downcase == 'united states'
+        def drop_down
+          StampsElement.new((domestic?)?browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"):browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
+        end
 
-          if domestic?
-            @index = 0
-            @text_box = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
-            @drop_down = StampsElement.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
-          else
-            @index = 1
-            @text_box = StampsTextbox.new(browser.text_field(name: "ShipCountryCode"))
-            @drop_down = int_drop_down
-          end
+        def text_box
+          StampsTextbox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.text_field(name: "ShipCountryCode"))
+        end
+
+        def select(str)
+          geography = :domestic
+          geography = :international unless str.downcase == 'united states'
 
           drop_down.safe_click
-          selection = StampsElement.new(browser.lis(text: str)[index])
+          selection = StampsElement.new(browser.lis(text: str)[(domestic?)?0:1])
           10.times do
             begin
               break if text_box.text == str
@@ -170,7 +167,7 @@ module Stamps
           end
           expect(text_box.text).to eql(str)
           drop_down.safe_click if selection.present?
-          @geography
+          geography
         end
       end
 

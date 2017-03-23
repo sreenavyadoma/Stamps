@@ -4,7 +4,7 @@ module Stamps
 
       module AdvancedOptionsExtraServices
         def extra_services
-          return @extra_services if (!@extra_services.nil?)
+          return @extra_services if !@extra_services.nil? && @extra_services.present?
           @select_button = StampsElement.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")) if @select_button.nil? || !@select_button.present?
           expect(@select_button.present?).to be(true)
           @extra_services = MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?

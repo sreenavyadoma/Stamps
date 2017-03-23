@@ -36,8 +36,8 @@ jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
 jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
 
 STG
-jenkins-stg1, stghy955swcbcm, mail_bvt_envelopes
-jenkins-stg2, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
+jenkinsvm11, stghy955swcbcm, mail_bvt_envelopes
+jenkinsvm12, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
 jenkinsvm02, stgld1uw4sroe7, mail_print_shipping_label_sdc1200_xm_package
 jenkinsvm10, stghy955swcbcm, mail_print_shipping_label_5x8_pm_small_box
 
@@ -66,8 +66,8 @@ jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
 jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
 
 STG
-jenkins-stg1, stghy955swcbcm, mail_bvt_envelopes
-jenkins-stg2, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
+jenkinsvm11, stghy955swcbcm, mail_bvt_envelopes
+jenkinsvm12, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
 jenkinsvm02, stgld1uw4sroe7, mail_print_shipping_label_sdc1200_xm_package
 jenkinsvm10, stghy955swcbcm, mail_print_shipping_label_5x8_pm_small_box
 
