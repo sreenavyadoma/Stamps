@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Box
     #mail_print_shipping_label_5x8_pm_large_box
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To to a random address in zone 5 through 8
+    Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PM Large Flat Rate Box
     Then Print Postage
@@ -19,7 +19,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Box
    #mail_print_shipping_label_5x8_pm_medium_box
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To to a random address in zone 5 through 8
+    Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PM Medium Flat Rate Box
     Then Print Postage
@@ -29,7 +29,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Box
    #mail_print_shipping_label_5x8_pm_regional_box_a
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To to a random address in zone 1 through 4
+    Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box A
     Then Print Postage
@@ -39,7 +39,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Box
    #mail_print_shipping_label_5x8_pm_regional_box_b
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To to a random address in zone 5 through 8
+    Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box B
     Then Print Postage
@@ -49,7 +49,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - PM Box
    #mail_print_shipping_label_5x8_pm_small_box
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To to a random address in zone 1 through 4
+    Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PM Small Flat Rate Box
     Then Print Postage

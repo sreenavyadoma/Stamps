@@ -95,7 +95,7 @@ Then /^(?:E|e)xpect Print modal Printing On Label is (.*)$/ do |expectation|
   expect(stamps.orders.orders_toolbar.print_btn.print_modal.printing_on.label.text).to eql expectation
 end
 
-Then /^Select Printer \"(.*)\"$/ do |printer|
+Then /^(?:S|s)elect Printer \"(.*)\"$/ do |printer|
   stamps.orders.orders_toolbar.print_btn.print_modal.printer.select(printer)
 end
 
@@ -161,11 +161,11 @@ Then /^(?:I|i)n Print modal, click Print button Sample raises a Printing Error/ 
   expect(stamps.orders.orders_toolbar.print_btn.print_modal.print_sample_expecting_error).to raise_error(PrintingError)
 end
 
-Then /^Expect (.*) pane selected$/ do |value|
+Then /^(?:E|e)xpect (.*) pane selected$/ do |value|
 
 end
 
-Then /^Select (.*) pane$/ do |value|
+Then /^(?:S|s)elect (.*) pane$/ do |value|
 
 end
 

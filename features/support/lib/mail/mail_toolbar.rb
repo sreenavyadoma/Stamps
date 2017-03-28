@@ -28,6 +28,8 @@ module Stamps
               @print_button = StampsElement.new(browser.span(text: 'Print Label'))
             when :rolls
               @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+            when :certified_mails
+              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
             else
               # do nothing
           end
@@ -109,8 +111,6 @@ module Stamps
             #ignore
           end
         end
-
-
 
         return window if window.present?
         expect("Unable to open Print Window.  There might be errors in printing or order is not ready for printing.  Check your TestHelper.").to eql ""

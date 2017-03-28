@@ -20,7 +20,7 @@ require 'yaml'
 require 'spreadsheet'
 require 'measured'
 
-# Stamps module
+# Print form module
 require_relative 'lib/core/browser'
 require_relative 'lib/core/stamps'
 require_relative 'lib/core/stamps_logger'

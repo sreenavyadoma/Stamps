@@ -23,21 +23,21 @@ Then /^(?:E|e)xpect Order Details form auto-suggest pop-up entry for Firstname (
   expect(@found_item).to be(true)
 end
 
-Then /^Expect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
+Then /^(?:E|e)xpect Auto Suggest name shows (.*) for entry (.*)$/ do |value, entry|
   actual =  stamps.orders.order_details.get_auto_suggest_name entry
   expect(actual).to eql value
 end
 
-Then /^Expect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry|
+Then /^(?:E|e)xpect Auto Suggest location shows (.*) for entry (.*)$/ do |value, entry|
   actual =  stamps.orders.order_details.get_auto_suggest_location entry
   expect(actual).to eql value
 end
 
-Then /^Select entry (.*) in the auto suggest drop down list$/ do |entry|
+Then /^(?:S|s)elect entry (.*) in the auto suggest drop down list$/ do |entry|
   stamps.orders.order_details.click_auto_suggest_name entry
 end
 
-Then /^Expect Domestic Address is (.*)$/ do |value|
+Then /^(?:E|e)xpect Domestic Address is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   5.times{
   begin
@@ -51,67 +51,67 @@ Then /^Expect Domestic Address is (.*)$/ do |value|
   expect(actual_stripped).to eql value
 end
 
-Then /^Expect Domestic Phone is (.*)$/ do |value|
+Then /^(?:E|e)xpect Domestic Phone is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   expect(actual).to eql value
 end
 
-Then /^Expect Domestic Email is (.*)$/ do |value|
+Then /^(?:E|e)xpect Domestic Email is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Name is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Name is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Company is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Company is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Address 1 is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Address 1 is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Address 2 is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Address 2 is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
-Then /^Expect International City is (.*)$/ do |value|
+Then /^(?:E|e)xpect International City is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Province is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Province is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Postal Code is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Postal Code is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Phone is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Phone is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
-Then /^Expect International Email is (.*)$/ do |value|
+Then /^(?:E|e)xpect International Email is (.*)$/ do |value|
   stamps.orders.order_details.ship_to.domestic.show_address
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value

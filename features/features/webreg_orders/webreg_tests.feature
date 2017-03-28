@@ -76,39 +76,39 @@ Feature: WebReg
     Then On WebReg Membership page, set State to West Virginia
     Then On WebReg Membership page, set State to Wyoming
 
-    Then On WebReg Profile page, set Referrer Name to Email from Stamps
-    Then On WebReg Profile page, set Referrer Name to Magazine Ad
-    Then On WebReg Profile page, set Referrer Name to Newspaper Ad
-    Then On WebReg Profile page, set Referrer Name to Other
-    Then On WebReg Profile page, set Referrer Name to Radio Podcast Streaming Audio
-    Then On WebReg Profile page, set Referrer Name to Received Mailer
-    Then On WebReg Profile page, set Referrer Name to Recommended by Friend
-    Then On WebReg Profile page, set Referrer Name to Recommended by USPS
-    Then On WebReg Profile page, set Referrer Name to Telephone Call
-    Then On WebReg Profile page, set Referrer Name to Television Commercial
-    Then On WebReg Profile page, set Referrer Name to Trade show convention
-    Then On WebReg Profile page, set Referrer Name to Web Banner
+    Then set WebReg Profile Referrer Name to Email from Stamps
+    Then set WebReg Profile Referrer Name to Magazine Ad
+    Then set WebReg Profile Referrer Name to Newspaper Ad
+    Then set WebReg Profile Referrer Name to Other
+    Then set WebReg Profile Referrer Name to Radio Podcast Streaming Audio
+    Then set WebReg Profile Referrer Name to Received Mailer
+    Then set WebReg Profile Referrer Name to Recommended by Friend
+    Then set WebReg Profile Referrer Name to Recommended by USPS
+    Then set WebReg Profile Referrer Name to Telephone Call
+    Then set WebReg Profile Referrer Name to Television Commercial
+    Then set WebReg Profile Referrer Name to Trade show convention
+    Then set WebReg Profile Referrer Name to Web Banner
 
-    Then On WebReg Profile page, set How will you use Stamps.com to Mostly Mailing
-    Then On WebReg Profile page, set How will you use Stamps.com to Mostly Shipping
-    Then On WebReg Profile page, set How will you use Stamps.com to Both Mailing and Shipping
-    Then On WebReg Profile page, set How will you use Stamps.com to Home Office
+    Then set WebReg Profile How will you use Stamps.com to Mostly Mailing
+    Then set WebReg Profile How will you use Stamps.com to Mostly Shipping
+    Then set WebReg Profile How will you use Stamps.com to Both Mailing and Shipping
+    Then set WebReg Profile How will you use Stamps.com to Home Office
 
-    Then On WebReg Profile page, set 1st Question to What is your mother's maiden name
-    Then On WebReg Profile page, set 1st Question to What is the make and model of your first car
-    Then On WebReg Profile page, set 1st Question to What is the name of your first school
-    Then On WebReg Profile page, set 1st Question to What is your city of birth
-    Then On WebReg Profile page, set 1st Question to What is your father's birthplace
-    Then On WebReg Profile page, set 1st Question to What is your pet's name
-    Then On WebReg Profile page, set 1st Question to What street did you grow up on
+    Then set WebReg Profile 1st Question to What is your mother's maiden name
+    Then set WebReg Profile 1st Question to What is the make and model of your first car
+    Then set WebReg Profile 1st Question to What is the name of your first school
+    Then set WebReg Profile 1st Question to What is your city of birth
+    Then set WebReg Profile 1st Question to What is your father's birthplace
+    Then set WebReg Profile 1st Question to What is your pet's name
+    Then set WebReg Profile 1st Question to What street did you grow up on
 
-    Then On WebReg Profile page, set 1st Question to What is your mother's maiden name
-    Then On WebReg Profile page, set 2nd Question to What is the make and model of your first car
-    Then On WebReg Profile page, set 2nd Question to What is the name of your first school
-    Then On WebReg Profile page, set 2nd Question to What is your city of birth
-    Then On WebReg Profile page, set 2nd Question to What is your father's birthplace
-    Then On WebReg Profile page, set 2nd Question to What is your pet's name
-    Then On WebReg Profile page, set 2nd Question to What street did you grow up on
-    Then On WebReg Profile page, set 2nd Question to What was your high school mascot
+    Then set WebReg Profile 1st Question to What is your mother's maiden name
+    Then set WebReg Profile 2nd Question to What is the make and model of your first car
+    Then set WebReg Profile 2nd Question to What is the name of your first school
+    Then set WebReg Profile 2nd Question to What is your city of birth
+    Then set WebReg Profile 2nd Question to What is your father's birthplace
+    Then set WebReg Profile 2nd Question to What is your pet's name
+    Then set WebReg Profile 2nd Question to What street did you grow up on
+    Then set WebReg Profile 2nd Question to What was your high school mascot
 
 

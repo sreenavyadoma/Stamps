@@ -254,7 +254,7 @@ Then /^(?:E|e)xpect Customs form ITN Number is visible$/ do
   expect(stamps.mail.print_form.mail_customs.edit_form.itn_number.enabled?).to be(true) if param.web_app == :mail
 end
 
-Then /^Expect Customs Form Internal Transaction Number is (.+)$/ do |expectation|
+Then /^(?:E|e)xpect Customs Form Internal Transaction Number is (.+)$/ do |expectation|
   step "Blur out on Customs form"
   sleep(0.5)
   expect(stamps.orders.order_details.customs.edit_form.internal_transaction.text_box.text).to eql(expectation) if param.web_app == :orders

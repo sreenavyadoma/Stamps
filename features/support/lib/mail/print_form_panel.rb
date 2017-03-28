@@ -61,15 +61,15 @@ module Stamps
         def advanced_options
           case param.print_media
             when :stamps
-              @advanced_options = AdvancedOptionsStamps.new(param) if @advanced_options.nil? || !@advanced_options.present?
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::StampsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.advanced_options != :stamps)
             when :labels
-              @advanced_options = AdvancedOptionsShippingLabel.new(param) if @advanced_options.nil? || !@advanced_options.present?
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.advanced_options != :stamps)
             when :envelopes
-              @advanced_options = AdvancedOptionsEnvelope.new(param) if @advanced_options.nil? || !@advanced_options.present?
-            when :certified_mail
-              @advanced_options = AdvancedOptionsCertMail.new(param) if @advanced_options.nil? || !@advanced_options.present?
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if @advanced_options.nil? || (@advanced_options.advanced_options != :envelopes)
+            when :certified_mails
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.advanced_options != :certified_mails)
             when :rolls
-              @advanced_options = AdvancedOptionsRolls.new(param) if @advanced_options.nil? || !@advanced_options.present?
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.advanced_options != :rolls)
             else
               # do nothing
           end
@@ -175,6 +175,12 @@ module Stamps
       end
 
       class PrintForm < Browser::StampsBrowserElement
+        attr_reader :print_media
+
+        def initialize(param)
+          super(param)
+          @print_media = param.print_media
+        end
       end
     end
   end

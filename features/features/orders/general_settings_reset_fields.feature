@@ -183,19 +183,19 @@ Feature: Reset Fields
     Then In Settings modal, Open Reset Fields Modal
     Then Reset Fields:  Expect Quantity Unchecked
 
-    Then Reset Fields:  Check Stamps Amount
+    Then Reset Fields:  Check Print form Amount
     Then Reset Fields:  Close
     Then In Settings modal, Save
     Then Open Settings Modal
     Then In Settings modal, Open Reset Fields Modal
-    Then Reset Fields:  Expect Stamps Amount Checked
+    Then Reset Fields:  Expect Print form Amount Checked
 
-    Then Reset Fields:  Uncheck Stamps Amount
+    Then Reset Fields:  Uncheck Print form Amount
     Then Reset Fields:  Close
     Then In Settings modal, Save
     Then Open Settings Modal
     Then In Settings modal, Open Reset Fields Modal
-    Then Reset Fields:  Expect Stamps Amount Unchecked
+    Then Reset Fields:  Expect Print form Amount Unchecked
 
     Then Reset Fields:  Check Auto-Advance Label Position
     Then Reset Fields:  Close

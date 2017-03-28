@@ -258,7 +258,7 @@ Then /^(?:E|e)xpect Order Details form Panel is present$/ do
   expect(stamps.orders.order_details.present?).to be(true)
 end
 
-Then /^Expect Exact Address Not Found module to appear/ do
+Then /^(?:E|e)xpect Exact Address Not Found module to appear/ do
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.window_title.text == "Exact Address Not Found" end
   expect(stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.window_title.text).to eql "Exact Address Not Found"
@@ -303,13 +303,13 @@ Then /^(?:E|e)xpect Order Details form service \"(.*)\" is enabled/ do |expectat
   expect(stamps.orders.order_details.service.enabled?(expectation)).to be(true)
 end
 
-Then /^Expect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
+Then /^(?:E|e)xpect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.pounds_max_value == expectation end
   expect(stamps.orders.order_details.pounds_max_value).to eql expectation
 end
 
-Then /^Expect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
+Then /^(?:E|e)xpect Ounces tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.ounces_max_value == expectation end
   expect(stamps.orders.order_details.ounces_max_value).to eql expectation
@@ -489,7 +489,7 @@ And /^(?:E|e)xpect Order Details form Insure-For Textbox is disabled$/ do
   expect(stamps.orders.order_details.insure_for.text_box.element.visible?).to be(true)
 end
 
-And /^Expect Order Detials Form Tracking Textbox is enabled$/ do
+And /^(?:E|e)xpect Order Detials Form Tracking Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.tracking.text_box.element.visible? == true end
   expect(stamps.orders.order_details.tracking.text_box.element.visible?).to be(true)
@@ -502,7 +502,7 @@ And /^(?:E|e)xpect Order Details form Tracking drop-down is enabled$/ do
 end
 
 
-Then /^Expect (\d+) orders selected$/ do |expectation|
+Then /^(?:E|e)xpect (\d+) orders selected$/ do |expectation|
   expect(stamps.orders.multi_web_apps.orders.order_count).to eql expectation
 end
 

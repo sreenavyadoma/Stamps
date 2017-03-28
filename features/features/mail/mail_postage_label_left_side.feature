@@ -8,8 +8,8 @@ Feature: Mail Shipping Label - Left Side
 
     Then select Print On Shipping Label - SDC-1200 Paper
     Then set Print form Mail-From to default
-    Then set Label form international mail to country to United States
-    Then set Label form Mail-To random address in zone 1
+    Then set Print form international mail to country to United States
+    Then set Print form Mail-To random address in zone 1
     Then set Print form Ounces to 1
     Then select Print form service Priority Mail Package
     Then select Print form service PM Package

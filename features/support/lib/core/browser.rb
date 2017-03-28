@@ -67,11 +67,7 @@ module Stamps
       end
 
       def present?
-        begin
-          element.present?
-        rescue
-          false
-        end
+        element.present?
       end
 
       def visible?

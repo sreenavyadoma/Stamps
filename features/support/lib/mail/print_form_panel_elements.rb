@@ -133,6 +133,10 @@ module Stamps
           @dom_text_area = MailDomTextArea.new(param)
         end
 
+        def enabled?
+
+        end
+
         def domestic?
           15.times do
             sleep(0.05)

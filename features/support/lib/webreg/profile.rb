@@ -149,10 +149,7 @@ module Stamps
     class FirstQuestion < Browser::StampsBrowserElement
       def select question
         select_element = browser.select_list(:name, "secretQuestion1")
-
         select_element.include? question
-
-        select_element.option(text: question).when_present.select
         select_element.option(text: question).when_present.select
         select_element.option(text: question).when_present.select
         raise "Unable to select First Question: #{question}" unless select_element.selected? question
@@ -163,7 +160,7 @@ module Stamps
       end
 
       def pets_name
-        select "What is your pet's name?"
+        select("What is your pet's name?")
       end
 
       def birth_city

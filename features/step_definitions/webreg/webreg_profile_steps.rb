@@ -10,242 +10,214 @@ Then /^(?:O|o)n WebReg Profile page, Continue to Mailing Information page$/ do
   webreg.profile.continue_to_mailing_info
 end
 
-Then /^(?:O|o)n WebReg Profile page, set User ID and Email to (.*)$/ do |usr|
+Then /^(?:S|s)et WebReg Profile User ID and Email to (.*)$/ do |usr|
   if usr.downcase.include? 'random'
     test_parameter[:usr] = ParameterHelper.rand_username
   else
     test_parameter[:usr] = usr
   end
-  #logger.step "On WebReg Profile page, set User ID and Email to #{ test_data[:usr]}"
-  step "On WebReg Profile page, set Email to #{ test_parameter[:usr]}@mailinator.com"
-  step "On WebReg Profile page, set User ID to #{ test_parameter[:usr]}"
+  #logger.step "set WebReg Profile User ID and Email to #{ test_data[:usr]}"
+  step "set WebReg Profile Email to #{ test_parameter[:usr]}@mailinator.com"
+  step "set WebReg Profile User ID to #{ test_parameter[:usr]}"
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Email to (.*)$/ do |email|
-  #logger.step "On WebReg Profile page, set Email to #{email}"
+Then /^(?:S|s)et WebReg Profile Email to (.*)$/ do |email|
+  #logger.step "set WebReg Profile Email to #{email}"
   webreg.profile.email.wait_until_present.set email
 end
 
-Then /^(?:O|o)n WebReg Profile page, set User ID to (.*)$/ do |user_id|
-  #logger.step "On WebReg Profile page, set User ID to #{user_id}"
+Then /^(?:S|s)et WebReg Profile User ID to (.*)$/ do |user_id|
+  #logger.step "set WebReg Profile User ID to #{user_id}"
   test_parameter[:usr] = user_id
   webreg.profile.user_id.set user_id
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Password to (.*)$/ do |password|
-  #logger.step "On WebReg Profile page, set Password to #{password}"
+Then /^(?:S|s)et WebReg Profile Password to (.*)$/ do |password|
   test_parameter[:pw]=password
   webreg.profile.password.set test_parameter[:pw]
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Re-Type password to (.*)$/ do |password|
-  #logger.step "On WebReg Profile page, set Re-Type password to #{password}"
+Then /^(?:S|s)et WebReg Profile Re-Type password to (.*)$/ do |password|
   webreg.profile.retype_password.set password
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Web Banner$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Web Banner"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Web Banner$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.web_banner if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Radio Podcast Streaming Audio$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Radio/Podcast/Streaming Audio"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Radio Podcast Streaming Audio$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.streaming_audio if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Television Commercial$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Television Commercial"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Television Commercial$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.television_commercial if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Telephone Call$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Telephone Call"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Telephone Call$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.telephone_call if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Other$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Other"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Other$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.other if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Recommended by Friend$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Recommended by Friend"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Recommended by Friend$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.recommended_by_friend if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Recommended by USPS$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Recommended by USPS"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Recommended by USPS$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.recommended_by_usps if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Newspaper Ad$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Newspaper Ad"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Newspaper Ad$/ do
   referrer_name = webreg.profile.referrer_name
   webreg.profile.referrer_name.newspapaer_ad if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Magazine Ad$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Magazine Ad"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Magazine Ad$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.magazine_ad if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Received Mailer$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Received Mailer"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Received Mailer$/ do
   referrer_name = webreg.profile.referrer_name
   webreg.profile.referrer_name.received_mailer if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Already used in office$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Already used in office"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Already used in office$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.already_used_in_office if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Trade show convention$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Trade show/convention"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Trade show convention$/ do
   referrer_name = webreg.profile.referrer_name
   webreg.profile.referrer_name.trade_show if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Web Search$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Web Search"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Web Search$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.web_search if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Referrer Name to Email from Stamps$/ do
-  #logger.step "On WebReg Profile page, set Referrer Name to Email from Stamps.com"
+Then /^(?:S|s)et WebReg Profile Referrer Name to Email from Stamps$/ do
   referrer_name = webreg.profile.referrer_name
   referrer_name.email_from_stamps if referrer_name.present?
 end
 
-Then /^(?:O|o)n WebReg Profile page, set How did you hear about us to Web Banner$/ do |how|
-  #logger.step "On WebReg Profile page, set Email to #{email}"
+Then /^(?:S|s)et WebReg Profile How did you hear about us to Web Banner$/ do
   webreg.profile.email.set email
 end
 
-Then /^(?:O|o)n WebReg Profile page, set How will you use Stamps.com to Mostly Mailing$/ do
-  #logger.step "On WebReg Profile page, set How will you use Stamps.com to Mostly Mailing"
+Then /^(?:S|s)et WebReg Profile How will you use Stamps.com to Mostly Mailing$/ do
   webreg.profile.usage_type.mostly_mailing
 end
 
-Then /^(?:O|o)n WebReg Profile page, set How will you use Stamps.com to Mostly Shipping$/ do
-  #logger.step "On WebReg Profile page, set How will you use Stamps.com to Mostly Shipping"
+Then /^(?:S|s)et WebReg Profile How will you use Stamps.com to Mostly Shipping$/ do
   webreg.profile.usage_type.mostly_shipping
 end
 
-Then /^(?:O|o)n WebReg Profile page, set How will you use Stamps.com to Both Mailing and Shipping$/ do
-  #logger.step "On WebReg Profile page, set How will you use Stamps.com to Both Mailing and Shipping"
+Then /^(?:S|s)et WebReg Profile How will you use Stamps.com to Both Mailing and Shipping$/ do
   webreg.profile.usage_type.mailing_and_shipping
 end
 
-Then /^(?:O|o)n WebReg Profile page, set How will you use Stamps.com to Home Office$/ do
-  #logger.step "On WebReg Profile page, set How will you use Stamps.com to Home Office"
+Then /^(?:S|s)et WebReg Profile How will you use Stamps.com to Home Office$/ do
   webreg.profile.usage_type.individual
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Answer to (.*)$/ do |answer|
-  #logger.step "On WebReg Profile page, set 1st Answer to #{answer}"
+Then /^(?:S|s)et WebReg Profile 1st Answer to (.*)$/ do |answer|
   test_parameter[:answer] = answer
   webreg.profile.first_answer.set test_parameter[:answer]
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Answer to (.*)$/ do |answer|
-  #logger.step "On WebReg Profile page, set 2nd Answer to #{answer}"
+Then /^(?:S|s)et WebReg Profile 2nd Answer to (.*)$/ do |answer|
   test_parameter[:answer_2] = answer
   webreg.profile.second_answer.set test_parameter[:answer_2]
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Send me special money-saving offers to checked$/ do
-  #logger.step "On WebReg Profile page, set Send me special money-saving offers to checked"
+Then /^(?:S|s)et WebReg Profile Send me special money-saving offers to checked$/ do
   webreg.profile.send_promo.click
 end
 
-Then /^(?:O|o)n WebReg Profile page, set Send me special money-saving offers to unchecked$/ do
-  #logger.step "On WebReg Profile page, set Send me special money-saving offers to unchecked"
+Then /^(?:S|s)et WebReg Profile Send me special money-saving offers to unchecked$/ do
   webreg.profile.send_promo.click
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Question to What is your mother's maiden name$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your mother's maiden name?"
+Then /^(?:S|s)et WebReg Profile 1st Question to What is your mother's maiden name$/ do
   webreg.profile.first_question.mothers_maiden_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Question to What is your pet's name$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your pet's name?"
+Then /^(?:S|s)et WebReg Profile 1st Question to What is your pet's name$/ do
   webreg.profile.first_question.pets_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Question to What is your city of birth$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your city of birth"
+Then /^(?:S|s)et WebReg Profile 1st Question to What is your city of birth$/ do
   webreg.profile.first_question.birth_city
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Question to What is your father's birthplace$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your father's birthplace"
+Then /^(?:S|s)et WebReg Profile 1st Question to What is your father's birthplace$/ do
+  #logger.step "set WebReg Profile 1st Question to What is your father's birthplace"
   webreg.profile.first_question.fathers_birth_place
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Question to What street did you grow up on$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What street did you grow up on"
+Then /^(?:S|s)et WebReg Profile 1st Question to What street did you grow up on$/ do
+  #logger.step "set WebReg Profile 1st Question to What street did you grow up on"
   webreg.profile.first_question.mothers_maiden_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Question to What is the name of your first school$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is the name of your first school"
+Then /^(?:S|s)et WebReg Profile 1st Question to What is the name of your first school$/ do
+  #logger.step "set WebReg Profile 1st Question to What is the name of your first school"
   webreg.profile.first_question.street_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 1st Question to What is the make and model of your first car$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is the make and model of your first car"
+Then /^(?:S|s)et WebReg Profile 1st Question to What is the make and model of your first car$/ do
+  #logger.step "set WebReg Profile 1st Question to What is the make and model of your first car"
   webreg.profile.first_question.first_cars_make_model
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What is your mother's maiden name$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your mother's maiden name?"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What is your mother's maiden name$/ do
+  #logger.step "set WebReg Profile 1st Question to What is your mother's maiden name?"
   webreg.profile.second_question.mothers_maiden_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What is your pet's name$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your pet's name?"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What is your pet's name$/ do
+  #logger.step "set WebReg Profile 1st Question to What is your pet's name?"
   webreg.profile.second_question.pets_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What is your city of birth$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your city of birth"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What is your city of birth$/ do
+  #logger.step "set WebReg Profile 1st Question to What is your city of birth"
   webreg.profile.second_question.birth_city
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What is your father's birthplace$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is your father's birthplace"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What is your father's birthplace$/ do
+  #logger.step "set WebReg Profile 1st Question to What is your father's birthplace"
   webreg.profile.second_question.fathers_birth_place
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What street did you grow up on$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What street did you grow up on"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What street did you grow up on$/ do
+  #logger.step "set WebReg Profile 1st Question to What street did you grow up on"
   webreg.profile.second_question.street_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What is the name of your first school$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is the name of your first school"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What is the name of your first school$/ do
+  #logger.step "set WebReg Profile 1st Question to What is the name of your first school"
   webreg.profile.second_question.street_name
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What is the make and model of your first car$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What is the make and model of your first car"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What is the make and model of your first car$/ do
+  #logger.step "set WebReg Profile 1st Question to What is the make and model of your first car"
   webreg.profile.second_question.first_cars_make_model
 end
 
-Then /^(?:O|o)n WebReg Profile page, set 2nd Question to What was your high school mascot$/ do
-  #logger.step "On WebReg Profile page, set 1st Question to What was your high school mascot"
+Then /^(?:S|s)et WebReg Profile 2nd Question to What was your high school mascot$/ do
+  #logger.step "set WebReg Profile 1st Question to What was your high school mascot"
   webreg.profile.second_question.high_school_mascot
 end
 

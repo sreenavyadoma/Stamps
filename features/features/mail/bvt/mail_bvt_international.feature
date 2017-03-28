@@ -7,35 +7,35 @@ Feature: International Shipping BVT
   Scenario: International Shipping
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail-From to default
-    Then set Label form Ship-To to international address
+    Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 1 through 4
-    Then set Label form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
-    Then set Label form Mail-To to address to random, random, 1350 Market Street, San Francisco, CA
-    Then set Label form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set Print form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
+    Then set Print form Mail-To to address to random, random, 1350 Market Street, San Francisco, CA
+    Then set Print form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA
 
-    Then set Label form Mail-To Country to Brazil
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 1 through 4
-    Then set Label form Mail-To Country to Canada
-    Then set Label form Mail-To Country to Japan
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To Country to Italy
-    Then set Label form Ship-To to international address
+    Then set Print form Mail-To Country to Brazil
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set Print form Mail-To Country to Canada
+    Then set Print form Mail-To Country to Japan
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To Country to Italy
+    Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 1 through 4
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
 
-    Then set Label form Ship-To to international address
+    Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone   |
       | random | random  | random           | random            | random | random   | random      | Brazil | random  |
     Then select Print form service FCMI Package
     Then set Print form Ounces to 3
 
-    Then click Label form Edit Customs Form button
+    Then click Print form Edit Customs Form button
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
 
     Then set Customs form Package Contents to Document
@@ -66,7 +66,7 @@ Feature: International Shipping BVT
     Then close Customs Information form
 
 
-    Then click Label form Edit Customs Form button
+    Then click Print form Edit Customs Form button
     Then Pause for 1 second
     Then expect Customs form Package Contents is Commercial Sample
     Then expect Customs form License Number is correct

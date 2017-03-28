@@ -7,8 +7,8 @@ Feature: Extra Services BVT
   Scenario: Extra Services
     Then select Print On Shipping Label - 5 ½" x 8 ½"
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to address random name, random company, 3217 Shasta Circle S., Los Angeles, CA 90065
     Then set Print form Ounces to 1
     Then select Print form service PM Padded Flat Rate Envelope
     Then select Advanced Options Extra Services

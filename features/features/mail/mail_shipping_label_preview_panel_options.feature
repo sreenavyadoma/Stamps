@@ -11,8 +11,8 @@ Feature:Shipping Label Preview Panel
     Then select Print On Shipping Label - 5 ½" x 8 ½"
 
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
-    Then set Label form Mail-To to a random address in zone 1 through 4
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
 
     Then set Print form Ounces to 1
     Then select Print form service Priority Mail Package
@@ -22,8 +22,8 @@ Feature:Shipping Label Preview Panel
     Then set Shipping Label Print form Print Reference Number to Unchecked
     Then set Shipping Label Print form Print Receipt to Checked
     Then set Shipping Label Print form Print Receipt to Unchecked
-    Then set Shipping Label Print form Reference Number to test12435
-    Then set Shipping Label Print form Cost Code to None
+    Then set Shipping Label Advanced Options Reference Number to test12435
+    Then set Shipping Label Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

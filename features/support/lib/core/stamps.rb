@@ -90,31 +90,32 @@ module Stamps
   def param
     if @param.nil?
       @param = TestParam.new
-      expect(ENV['BROWSER']).to be_truthy
-      expect(ENV['URL']).to be_truthy
-      expect(ENV['HEALTHCHECK']).to be_truthy
-      expect(ENV['DEBUG']).to be_truthy
-      expect(ENV['USER_CREDENTIALS']).to be_truthy
-      expect(ENV['USR']).to be_truthy
-      expect(ENV['PW']).to be_truthy
-      expect(ENV['WEB_APP']).to be_truthy
-      expect(ENV['WEB_APP'].downcase).to eq('orders').or(eq('mail'))
-      begin
-        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
-        @param.browser = browser
-        @param.logger = logger
-        @param.scenario_name = test_helper.scenario_name
-        @param.test_env = ENV['URL']
-        @param.web_app = (ENV['WEB_APP'].downcase).to_sym
-        expect([:orders, :mail]).to include(@param.web_app)
+
+      expect(ENV['WEB_APP']).to_not be_nil
+      @param.web_app = (ENV['WEB_APP'].downcase).to_sym
+      expect([:orders, :mail, :webreg]).to include(@param.web_app)
+
+      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+      @param.browser = browser
+      @param.logger = logger
+      @param.scenario_name = test_helper.scenario_name
+      @param.test_env = ENV['URL']
+
+      if @param.web_app == :mail || @param.web_app == :orders
         @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
         @param.usr = ENV['USR']
         @param.pw = ENV['PW']
         @param.url = ENV['URL']
         @param.developer = (ENV['DEVELOPER'].nil?)?false:ENV['DEVELOPER']
-      rescue Exception => e
-        logger.message e.message
-        logger.message e.backtrace.join("\n")
+
+        expect(ENV['BROWSER']).to be_truthy
+        expect(ENV['URL']).to be_truthy
+        expect(ENV['HEALTHCHECK']).to be_truthy
+        expect(ENV['DEBUG']).to be_truthy
+        expect(ENV['USR']).to be_truthy
+        expect(ENV['PW']).to be_truthy
+        expect(ENV['WEB_APP']).to be_truthy
+        expect(['orders', 'mail', 'webreg']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or webreg. Got #{ENV['WEB_APP']}"
       end
     end
     @param

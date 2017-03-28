@@ -52,7 +52,7 @@ module Stamps
       end
     end
 
-    class CertifiedMail < Browser::StampsBrowserElement #< PrintForm
+    class CertifiedMails < Browser::StampsBrowserElement #< PrintForm
       def insure_for
         DetailsInsureFor.new(param)
       end

@@ -19,7 +19,7 @@ Then /^(?:E|e)xpect Order Details form Multiple Order Total Cost is \$([0-9.]*)$
   expect(test_parameter[:total_ship_cost]).to eql expectation
 end
 
-Then /^Expect Ship Cost equals Total amount$/ do
+Then /^(?:E|e)xpect Ship Cost equals Total amount$/ do
   10.times {
     begin
       break if stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id]).eql?(stamps.orders.order_details.footer.total_ship_cost)
@@ -30,7 +30,7 @@ Then /^Expect Ship Cost equals Total amount$/ do
   expect(stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id])).to eql(stamps.orders.order_details.footer.total_ship_cost)
 end
 
-Then /^Expect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
+Then /^(?:E|e)xpect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
   if @printing_error
     expect(stamps.navigation_bar.balance.amount.to_f).to eql test_parameter[:old_balance].to_f
   else

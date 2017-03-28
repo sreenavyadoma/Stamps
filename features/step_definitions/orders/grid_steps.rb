@@ -30,11 +30,11 @@ Then /^(?:E|e)xpect Orders Grid Ship Cost is the same as Details Form Ship Cost$
   expect(stamps.orders.order_details.footer.total_ship_cost).to eql(stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id]))
 end
 
-Then /^Set Orders Grid Row (\d+) to uncheck$/ do |row|
+Then /^(?:S|s)et Orders Grid Row (\d+) to uncheck$/ do |row|
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
 end
 
-Then /^Set Orders Grid Row (\d+) to check$/ do |row|
+Then /^(?:S|s)et Orders Grid Row (\d+) to check$/ do |row|
   stamps.orders.orders_grid.column.checkbox.check(row)
 end
 
@@ -70,7 +70,7 @@ Then /^(?:E|e)xpect Orders Grid Ship Date for this order is today plus (\d+)$/ d
   expect(stamps.orders.orders_grid.column.ship_date.data(test_parameter[:order_id])).to eql expectation
 end
 
-Then /^Expect Ship-To address is;$/ do |table|
+Then /^(?:E|e)xpect Ship-To address is;$/ do |table|
   param_hash = table.hashes.first
   step "expect Orders Grid Recipient is #{param_hash[:name]}"
   step "expect Orders Grid Company is #{param_hash[:company]}"

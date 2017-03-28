@@ -322,13 +322,11 @@ Then /^(?:O|o)n WebReg Membership page, set Last Name to (.*)$/ do |var|
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Company to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Company to #{var}"
   test_parameter[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.company.set test_parameter[:company]
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Address to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Address to #{var}"
   test_parameter[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.address.set test_parameter[:company]
 end
@@ -340,7 +338,6 @@ Then /^(?:O|o)n WebReg Membership page, set City to (.*)$/ do |var|
 end
 
 Then /^(?:O|o)n WebReg Membership page, set Zip Code to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Zip Code to #{var}"
   test_parameter[:zip] = var
   webreg.profile.membership.zip.set test_parameter[:zip]
 end

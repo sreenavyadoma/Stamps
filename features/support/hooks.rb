@@ -21,7 +21,6 @@ Before do  |scenario|
   logger.message "URL: #{ENV['URL']}"
   expect("").to eql "Environment variable URL is not defined!" if (ENV['URL'].nil? || ENV['URL'].size==0)
   logger.message "Test Name: #{ENV['USER_CREDENTIALS']}"
-  expect("").to eql "Environment variable USER_CREDENTIALS is not defined!" if (ENV['USER_CREDENTIALS'].nil? || ENV['USER_CREDENTIALS'].size==0)
   logger.message "Browser: #{ENV['BROWSER']}"
   expect("").to eql "Environment variable BROWSER is not defined!" if (ENV['BROWSER'].nil? || ENV['BROWSER'].size==0)
   logger.message "-"
@@ -38,7 +37,6 @@ Before do  |scenario|
   # process username from default.yml
   begin
     expect(ENV['WEB_APP'].nil?).to_not be_nil, "Missing WEB_APP variable"
-    expect(['orders', 'mail', 'webreg']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP to be either orders, mail or webreg. Got #{ENV['WEB_APP']}"
 
     if (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail' || (ENV['WEB_APP'].downcase.include? 'reg'))
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default') || (ENV['USR'].downcase == 'jenkins')
@@ -74,7 +72,7 @@ Before do  |scenario|
     else
       expect("Valid values are WEB_APP=orders or WEB_APP=mail").to eql "WEB_APP=#{ENV['WEB_APP']} is not a valid value."
     end
-  end unless (ENV['USER_CREDENTIALS'] == 'healthcheck' || ENV['USER_CREDENTIALS'].include?('webreg') || ENV['USER_CREDENTIALS'].include?('pam') || ENV['USER_CREDENTIALS'].include?('intellij') || ENV['USER_CREDENTIALS'].include?('developers'))
+  end unless (ENV['USER_CREDENTIALS'].nil? || ENV['USER_CREDENTIALS'] == 'healthcheck' || ENV['USER_CREDENTIALS'].include?('webreg') || ENV['USER_CREDENTIALS'].include?('pam') || ENV['USER_CREDENTIALS'].include?('intellij') || ENV['USER_CREDENTIALS'].include?('developers'))
 
   test_parameter[:username] = ENV['USR']
   test_parameter[:web_app] = ENV['WEB_APP']

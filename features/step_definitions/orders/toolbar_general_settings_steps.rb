@@ -734,23 +734,23 @@ Then /^Reset Fields:  Expect Quantity Unchecked$/ do
   expect(@reset_fields.quantity.checked?).to be(false)
 end
 
-Then /^Reset Fields:  Check Stamps Amount$/ do
-  #logger.step "Reset Fields:  Check Stamps Amount"
+Then /^Reset Fields:  Check Print form Amount$/ do
+  #logger.step "Reset Fields:  Check Print form Amount"
   @reset_fields.stamps_amount.check
 end
 
-Then /^Reset Fields:  Uncheck Stamps Amount$/ do
-  #logger.step "Reset Fields:  Uncheck Stamps Amount"
+Then /^Reset Fields:  Uncheck Print form Amount$/ do
+  #logger.step "Reset Fields:  Uncheck Print form Amount"
   @reset_fields.stamps_amount.uncheck
 end
 
-Then /^Reset Fields:  Expect Stamps Amount Checked$/ do
-  #logger.step "Reset Fields:  Expect Stamps Amount Checked"
+Then /^Reset Fields:  Expect Print form Amount Checked$/ do
+  #logger.step "Reset Fields:  Expect Print form Amount Checked"
   expect(@reset_fields.stamps_amount.checked?).to be(true)
 end
 
-Then /^Reset Fields:  Expect Stamps Amount Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Stamps Amount Unchecked"
+Then /^Reset Fields:  Expect Print form Amount Unchecked$/ do
+  #logger.step "Reset Fields:  Expect Print form Amount Unchecked"
   expect(@reset_fields.stamps_amount.checked?).to be(false)
 end
 
