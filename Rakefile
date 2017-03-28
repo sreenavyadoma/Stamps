@@ -706,16 +706,6 @@ Cucumber::Rake::Task.new(:print_layout_cn22_5x8) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_layout_fsa_cp72_paper_single_ply) do |t|
-  t.profile = 'print_layout_fsa_cp72_paper_single_ply'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:print_layout_dpo_cp72_roll_single_ply) do |t|
-  t.profile = 'print_layout_dpo_cp72_roll_single_ply'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:print_layout_cp72) do |t|
   t.profile = 'print_layout_cp72'
   t.cucumber_opts = "-p cuke_reports"
@@ -1835,113 +1825,13 @@ Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_xm_pfr_envelo
 end
 
 
-Cucumber::Rake::Task.new(:mail_print_stamps_a_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_a_series_calculate'
+Cucumber::Rake::Task.new(:mail_stamps_series_a_b_c_k_l_ml) do |t|
+  t.profile = 'mail_stamps_series_a_b_c_k_l_ml'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_print_stamps_a_series_specify) do |t|
-  t.profile = 'mail_print_stamps_a_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_b_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_b_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_b_series_specify) do |t|
-  t.profile = 'mail_print_stamps_b_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_c_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_c_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_c_series_specify) do |t|
-  t.profile = 'mail_print_stamps_c_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_k_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_k_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_k_series_specify) do |t|
-  t.profile = 'mail_print_stamps_k_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_l_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_l_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_l_series_specify) do |t|
-  t.profile = 'mail_print_stamps_l_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_ml_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_ml_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_ml_series_specify) do |t|
-  t.profile = 'mail_print_stamps_ml_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_p_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_p_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_p_series_specify) do |t|
-  t.profile = 'mail_print_stamps_p_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_r_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_r_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_r_series_specify) do |t|
-  t.profile = 'mail_print_stamps_r_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_s_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_s_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_s_series_specify) do |t|
-  t.profile = 'mail_print_stamps_s_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_v_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_v_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_v_series_specify) do |t|
-  t.profile = 'mail_print_stamps_v_series_specify'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_wn_series_calculate) do |t|
-  t.profile = 'mail_print_stamps_wn_series_calculate'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_print_stamps_wn_series_specify) do |t|
-  t.profile = 'mail_print_stamps_wn_series_specify'
+Cucumber::Rake::Task.new(:mail_stamps_series_p_r_s_v_wn) do |t|
+  t.profile = 'mail_stamps_series_p_r_s_v_wn'
   t.cucumber_opts = "-p cuke_reports"
 end
 

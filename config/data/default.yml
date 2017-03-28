@@ -2934,72 +2934,13 @@ mail_credentials:
     mail_print_shipping_label_sdc1200_xm_pfr_envelope:
       usr: ccyykg2nb
       pw: pass111
-    mail_print_stamps_a_series_calculate:
+    mail_stamps_series_a_b_c_k_l_ml:
       usr: ccyykg2nb
       pw: pass111
-    mail_print_stamps_a_series_specify:
+    mail_stamps_series_p_r_s_v_wn:
       usr: ccyykg2nb
       pw: pass111
-    mail_print_stamps_b_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_b_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_c_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_c_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_k_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_k_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_l_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_l_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_ml_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_ml_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_p_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_p_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_r_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_r_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_s_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_s_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_v_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_v_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_wn_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_wn_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
+
   sc:
     rob:
       usr: scsxpeco6b90
