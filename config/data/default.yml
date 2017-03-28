@@ -1070,7 +1070,7 @@ orders_credentials:
       usr: xk0v35wf9ndq
       pw: pass111
     authentication:
-      usr: bz9005j1r2jx0
+      usr: ccx9sfswq05pm
       pw: pass111
     bvt_address_cleansing:
       usr: knmeaba
@@ -1085,7 +1085,7 @@ orders_credentials:
       usr: swv6wmuno
       pw: pass111
     address_management:
-      usr: mc6ozi754o
+      usr: ccx9sfswq05pm
       pw: pass111
     print_dialog_change_date:
       usr: ccx9sfswq05pm
@@ -1150,31 +1150,7 @@ orders_credentials:
     print_layout_cn22_roll:
       usr: ccx9sfswq05pm
       pw: pass111
-    print_layout_cp72_4x6roll:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_5x8_left:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_5x8_right:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_5x8_single_ply:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_paper_continuation:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_paper_single_ply:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_roll_continuation:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_sdc1200_single_ply:
-      usr: ccx9sfswq05pm
-      pw: pass111
-    print_layout_cp72_single_ply_apo_roll:
+    print_layout_cp72:
       usr: ccx9sfswq05pm
       pw: pass111
     print_layout_dpo_cp72_roll_single_ply:
@@ -2380,7 +2356,7 @@ mail_credentials:
       usr: cctpfqe5t
       pw: pass111
     mail_bvt_address_cleansing:
-      usr: ccmnlxbv44hv0s
+      usr: ccx9sfswq05pm
       pw: pass111
     mail_bvt_purchasing:
       usr: ccu0g3hf0ls
@@ -2958,72 +2934,13 @@ mail_credentials:
     mail_print_shipping_label_sdc1200_xm_pfr_envelope:
       usr: ccyykg2nb
       pw: pass111
-    mail_print_stamps_a_series_calculate:
+    mail_stamps_series_a_b_c_k_l_ml:
       usr: ccyykg2nb
       pw: pass111
-    mail_print_stamps_a_series_specify:
+    mail_stamps_series_p_r_s_v_wn:
       usr: ccyykg2nb
       pw: pass111
-    mail_print_stamps_b_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_b_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_c_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_c_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_k_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_k_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_l_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_l_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_ml_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_ml_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_p_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_p_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_r_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_r_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_s_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_s_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_v_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_v_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_wn_series_calculate:
-      usr: ccyykg2nb
-      pw: pass111
-    mail_print_stamps_wn_series_specify:
-      usr: ccyykg2nb
-      pw: pass111
+
   sc:
     rob:
       usr: scsxpeco6b90
