@@ -111,6 +111,7 @@ module Stamps
         @param.usr = ENV['USR']
         @param.pw = ENV['PW']
         @param.url = ENV['URL']
+        @param.developer = (ENV['DEVELOPER'].nil?)?false:ENV['DEVELOPER']
       rescue Exception => e
         logger.message e.message
         logger.message e.backtrace.join("\n")

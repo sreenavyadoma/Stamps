@@ -2,7 +2,7 @@ module Stamps
   module Browser
 
     class TestParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer
     end
 
     class StampsBrowserElement

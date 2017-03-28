@@ -37,9 +37,10 @@ Before do  |scenario|
 
   # process username from default.yml
   begin
-    if ENV['WEB_APP'].nil?
-      expect("cucumber.yml: Missing WEB_APP variable").to eql "WEB_APP is nil"
-    elsif (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail' || (ENV['WEB_APP'].downcase.include? 'reg'))
+    expect(ENV['WEB_APP'].nil?).to_not be_nil, "Missing WEB_APP variable"
+    expect(['orders', 'mail', 'webreg']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP to be either orders, mail or webreg. Got #{ENV['WEB_APP']}"
+
+    if (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail' || (ENV['WEB_APP'].downcase.include? 'reg'))
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default') || (ENV['USR'].downcase == 'jenkins')
         logger.message "Using Default Credentials from ../config/data/default.yml"
         begin
