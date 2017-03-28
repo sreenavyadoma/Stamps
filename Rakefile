@@ -1824,17 +1824,6 @@ Cucumber::Rake::Task.new(:mail_print_sample_shipping_label_sdc1200_xm_pfr_envelo
   t.cucumber_opts = "-p cuke_reports"
 end
 
-
-Cucumber::Rake::Task.new(:mail_stamps_series_a_b_c_k_l_ml) do |t|
-  t.profile = 'mail_stamps_series_a_b_c_k_l_ml'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:mail_stamps_series_p_r_s_v_wn) do |t|
-  t.profile = 'mail_stamps_series_p_r_s_v_wn'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope) do |t|
   t.profile = 'mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope'
   t.cucumber_opts = "-p cuke_reports"
@@ -2085,4 +2074,13 @@ Cucumber::Rake::Task.new(:mail_print_envelope_10_postage) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_stamps_series_a_b_c_k_l_ml) do |t|
+  t.profile = 'mail_stamps_series_a_b_c_k_l_ml'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_stamps_series_p_r_s_v_wn) do |t|
+  t.profile = 'mail_stamps_series_p_r_s_v_wn'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
