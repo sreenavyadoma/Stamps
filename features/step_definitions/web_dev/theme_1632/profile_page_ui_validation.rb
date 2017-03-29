@@ -6,75 +6,75 @@ Then /^verify Stamps logo exists in navigation bar$/ do
    registration.profile_ui_stampslogo
 end
 
-Then /^verify USPS logo exists on navigation bar$/
+Then /^verify USPS logo exists on navigation bar$/ do
   registration.profile_ui_uspslogo
 end
 
-Then /^verify progress bar exists on the page$/
+Then /^verify progress bar exists on the page$/ do
   registration.profile_ui_progressbar
 end
 
-Then/^verify header on the Page$/
+Then /^verify header on the Page$/ do
   registration.profile_ui_header
 end
 
-Then/^verify email textbox exists on the page$/
+Then /^verify email textbox exists on the page$/ do
   registration.profile_ui_email
 end
 
-Then /^verify username textbox exists on the page$/
+Then /^verify username textbox exists on the page$/ do
   registration.profile_ui_username
 end
 
-Then /^verify PASSWORD textbox exists on the page$/
+Then /^verify PASSWORD textbox exists on the page$/ do
   registration.profile_ui_password
 end
 
-Then/^verify RE-TYPE PASSWORD exists on the page$/
+Then /^verify RE-TYPE PASSWORD exists on the page$/ do
   registration.profile_ui_retypepassword
 end
 
-Then/^verify values in dropdown HOW WILL YOU USE STAMPS\.COM$/
+Then /^verify values in dropdown HOW WILL YOU USE STAMPS\.COM$/ do
    registration.profile_dropdown
 end
 
-Then/^verify PROMO CODE field textbox exists on the page$/
+Then /^verify PROMO CODE field textbox exists on the page$/ do
   registration.profile_ui_promocodefield
 end
 
-Then/^verify CONTINUE button exists on the page$/
+Then /^verify CONTINUE button exists on the page$/ do
   registration.profile_continuebutton
 end
 
-Then/^verify content under Why do I need to create an account? exists on the page$/
+Then /^verify content under Why do I need to create an account? exists on the page$/ do
     registration.profile_content_createanaccount
 end
 
-Then/^verify content under Money-saving offers and new products$/
+Then /^verify content under Money-saving offers and new products$/ do
   registration.profile_content_moneysavingoffers
 end
 
-Then/^verify Money-saving offers and new products checkbox is checkmarked on the page$/
+Then /^verify Money-saving offers and new products checkbox is checkmarked on the page$/ do
   registration.profile_moneysavingoffers_checkbox
 end
 
-Then/verify Privacy Policy link exists on the page and is clickable$/
+Then /^verify Privacy Policy link exists on the page and is clickable$/ do
   registration.profile_privacypolicylink
 end
 
-Then/^verify copyright link exists on the page and is clickable$/
+Then /^verify copyright link exists on the page and is clickable$/ do
   registration.profile_copyrightlink
 end
 
-Then/^verify Norton logo exists on the page$/
+Then /^verify Norton logo exists on the page$/ do
   registration.profile_nortonlogo
 end
 
-Then/^verify TRUSTe logo exists on the page$/
+Then /^verify TRUSTe logo exists on the page$/ do
   registration.profile_trustelogo
 end
 
-Then/^verify LIVE chat button exists on the page$/
+Then /^verify LIVE chat button exists on the page$/ do
   registration.profile_livechatbutton
 end
 
