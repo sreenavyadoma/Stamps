@@ -79,6 +79,3 @@ Then /^verify LIVE chat button exists on the page$/ do
 end
 
 
-
-
-
