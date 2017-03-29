@@ -8,9 +8,12 @@ Feature: WebReg Profile page validation theme_1632
     Then navigate to WebReg page
     Then verify Stamps logo exists in navigation bar
     Then verify USPS logo exists on navigation bar
-    Then verify bread crumb exist Profile
-    Then verify bread crumb exist Membership
-    Then verify bread crumb exist Choose Supplies
+    Then verify bread crumbs should contain
+    |Profile|
+    |Membership|
+    |Choose Supplies|
+   #Then verify bread crumb exist Membership
+   # Then verify bread crumb exist Choose Supplies
     Then verify Profile page header is Sign up for a new account
     Then verify Email textbox exists on profile page
     Then verify USERNAME textbox exists on the page

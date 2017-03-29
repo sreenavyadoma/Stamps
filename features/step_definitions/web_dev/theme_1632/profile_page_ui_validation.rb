@@ -1,4 +1,4 @@
-Then /^navigate to WebReg page$/ do
+Then /^[Nn]avigate to WebReg page$/ do
   webreg.load_page
 end
 
@@ -10,9 +10,11 @@ Then /^[Vv]erify USPS logo exists on navigation bar$/ do
   expect(registration.navigation.usps_logo.present?).to be(true)
 end
 
+#begin
 Then /^[Vv]erify progress bar exists on the page$/ do
   registration.profile_ui_progressbar
 end
+#end
 
 Then /^[Vv]erify bread crumb exist (.*)$/ do |str|
   expect(registration.bread_crumbs).to include(str), "Bread crumb #{str} does not exist "
@@ -27,11 +29,11 @@ Then /^[Vv]erify Email textbox exists on profile page$/ do
 end
 
 Then /^[Vv]erify username textbox exists on the page$/ do
-  registration.profile_ui_username
+  expect(registration.profile_ui_username.present?).to be (true)
 end
 
 Then /^[Vv]erify PASSWORD textbox exists on the page$/ do
-  registration.profile_ui_password
+  expect(registration.profile_ui_password.present?).to be (true)
 end
 
 Then /^[Vv]erify RE-TYPE PASSWORD exists on the page$/ do
