@@ -2,24 +2,28 @@ Then /^navigate to WebReg page$/ do
   webreg.load_page
 end
 
-Then /^verify Stamps logo exists in navigation bar$/ do
-   registration.profile_ui_stampslogo
+Then /^[Vv]erify Stamps logo exists in navigation bar$/ do
+   expect(registration.navigation.stamps_logo.present?).to be(true)
 end
 
 Then /^verify USPS logo exists on navigation bar$/ do
-  registration.profile_ui_uspslogo
+  expect(registration.navigation.usps_logo.present?).to be(true)
 end
 
 Then /^verify progress bar exists on the page$/ do
   registration.profile_ui_progressbar
 end
 
-Then /^verify header on the Page$/ do
-  registration.profile_ui_header
+Then /^[Vv]erify bread crumb exist (.*)$/ do |str|
+  expect(registration.bread_crumbs).to include(str), "Bread crumb #{str} does not exist "
 end
 
-Then /^verify email textbox exists on the page$/ do
-  registration.profile_ui_email
+Then /^[Vv]erify Profile page header is (.*)$/ do |str|
+  expect(registration.profile.header).to eql(str), "Profile page header is not #{str}"
+end
+
+Then /^verify Email textbox exists on profile page$/ do
+  expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
 end
 
 Then /^verify username textbox exists on the page$/ do
@@ -32,6 +36,10 @@ end
 
 Then /^verify RE-TYPE PASSWORD exists on the page$/ do
   registration.profile_ui_retypepassword
+end
+
+Then /^How will you use Stamps.com drop-down includes (.*)$/ do |str|
+
 end
 
 Then /^verify values in dropdown HOW WILL YOU USE STAMPS\.COM$/ do

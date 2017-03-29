@@ -7,14 +7,18 @@ Feature: WebReg Profile page validation theme_1632
   Scenario:
     Then navigate to WebReg page
     Then verify Stamps logo exists in navigation bar
-    Then verify USPS logo exists on navigation bar.
-    Then verify progress bar exists on the page.
-    Then verify header on the Page
-    Then verify EMAIL textbox exists on the page
+    Then verify USPS logo exists on navigation bar
+    Then verify bread crumb exist Profile
+    Then verify bread crumb exist Membership
+    Then verify bread crumb exist Choose Supplies
+    Then verify Profile page header is Sign up for a new account
+    Then verify Email textbox exists on profile page
     Then verify USERNAME textbox exists on the page
     Then verify PASSWORD textbox exists on the page
     Then verify RE-TYPE PASSWORD exists on the page
     Then verify values in dropdown for HOW WILL YOU USE STAMPS.COM?
+    Then How will you use Stamps.com drop-down includes Business use .. blah blah blah
+    Then How will you use Stamps.com drop-down includes ECommerce use .. blah blah blah
     Then verify PROMO CODE field textbox exists on the page
     Then verify CONTINUE button exists on the page
     Then verify content under <h3>Why do I need to create an account?</h3> exists on the page
