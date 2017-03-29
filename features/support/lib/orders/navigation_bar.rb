@@ -1,6 +1,6 @@
 module Stamps
   module Navigation #todo-rob Refactor to WebApps module
-    class TransactionComplete < Browser::StampsBrowserElement
+    class TransactionComplete < Browser::StampsModal
       attr_reader :window_title, :text_area, :ok_btn
 
       def initialize(param)
@@ -11,7 +11,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        window_title.safely_wait_until_present *args
+        window_title.wait_until_present *args
       end
 
       def present?
@@ -27,7 +27,7 @@ module Stamps
       end
     end
 
-    class ConfirmTransaction < Browser::StampsBrowserElement
+    class ConfirmTransaction < Browser::StampsModal
       attr_reader :window_title, :transaction_complete, :confirm_btn
 
       def initialize(param)
@@ -47,7 +47,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        window_title.safely_wait_until_present *args
+        window_title.wait_until_present *args
       end
 
       def text_area
@@ -68,14 +68,14 @@ module Stamps
       def confirm
         10.times do
           return transaction_complete if transaction_complete.present?
-          confirm_btn.safe_click
+          confirm_btn.click
           transaction_complete.wait_until_present 6
         end
         expect("Unable to click Confirm button on Confirm Transaction modal!").to eql "Confirm Transaction Modal"
       end
     end
 
-    class MinimumPurchaseAmountNotice < Browser::StampsBrowserElement
+    class MinimumPurchaseAmountNotice < Browser::StampsModal
       def present?
 
       end
@@ -89,7 +89,7 @@ module Stamps
       end
     end
 
-    class AccountBalanceLimit < Browser::StampsBrowserElement
+    class AccountBalanceLimit < Browser::StampsModal
       attr_reader :body, :window_title
 
       def initialize(param)
@@ -107,7 +107,7 @@ module Stamps
       end
     end
 
-    class AutoBuyPostageModal < Browser::StampsBrowserElement
+    class AutoBuyPostageModal < Browser::StampsModal
       attr_reader :window_title
 
       def initialize(param)
@@ -120,7 +120,7 @@ module Stamps
       end
     end
 
-    class AddFundsModal < Browser::StampsBrowserElement
+    class AddFundsModal < Browser::StampsModal
       attr_reader :confirm_transaction, :auto_add_funds_modal, :auto_buy_postage_link, :window_title, :account_balance_limit
 
       def initialize(param)
@@ -134,7 +134,7 @@ module Stamps
 
       def auto_buy_postage
         10.times do
-          auto_buy_postage_link.safe_click
+          auto_buy_postage_link.click
           return auto_add_funds_modal if auto_add_funds_modal.present?
         end
         expect("Auto-Buy Postage modal did not open.").to eql "Unable to open Auto-Buy Postage modal upon clicking Auto-buy postage link"
@@ -256,7 +256,7 @@ module Stamps
         return confirm_transaction if confirm_transaction.present?
         10.times do
           return confirm_transaction if confirm_transaction.present?
-          purchase_button.safe_click
+          purchase_button.click
           confirm_transaction.wait_until_present 5
           expect("#{account_balance_limit.window_title.text}:  #{account_balance_limit.text}").to eql "Confirm Transaction Modal" if account_balance_limit.present?
         end
@@ -271,7 +271,7 @@ module Stamps
       end
     end
 
-    class BalanceDropDown < Browser::StampsBrowserElement
+    class BalanceDropDown < Browser::StampsModal
       attr_reader :add_funds_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
 
       def initialize(param)
@@ -287,9 +287,9 @@ module Stamps
         20.times do
           return add_funds_modal if add_funds_modal.present?
           buy_more_drop_down.element.hover
-          buy_more_drop_down.safe_click unless buy_more_link.present?
+          buy_more_drop_down.click unless buy_more_link.present?
           buy_more_drop_down.element.hover
-          buy_more_link.safe_click
+          buy_more_link.click
           return add_funds_modal if add_funds_modal.present?
         end
         expect("Unable to open Buy Postage Modal").to eql "buy_more failed"
@@ -298,9 +298,9 @@ module Stamps
       def purchase_history
         2.times do
           buy_more_drop_down.element.hover
-          buy_more_drop_down.safe_click unless view_history_link.present?
+          buy_more_drop_down.click unless view_history_link.present?
           buy_more_drop_down.element.hover
-          view_history_link.safe_click
+          view_history_link.click
         end
       end
 
@@ -323,7 +323,7 @@ module Stamps
       end
     end
 
-    class UsernameDropDown < Browser::StampsBrowserElement
+    class UsernameDropDown < Browser::StampsModal
       attr_reader :username, :sign_out_link
 
       def initialize(param)
@@ -355,16 +355,16 @@ module Stamps
       def sign_out
         5.times do
           sleep(0.35)
-          username.safe_click unless sign_out_link.present?
+          username.click unless sign_out_link.present?
           username.hover
-          element_helper.safe_click sign_out_link if sign_out_link.present?
+          element_helper.click sign_out_link if sign_out_link.present?
           sleep(0.35)
           return if browser.url.include? "SignIn"
         end
       end
     end
 
-    class NavigationBar < Browser::StampsBrowserElement
+    class NavigationBar < Browser::StampsModal
       attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
       def initialize(param)
@@ -379,7 +379,7 @@ module Stamps
 
       def orders
         10.times do
-          orders_link.safe_click
+          orders_link.click
           web_orders.wait_until_present(8)
           return web_orders if grid.present?
         end
@@ -387,7 +387,7 @@ module Stamps
 
       def mail
         10.times do
-          mail_link.safe_click
+          mail_link.click
           web_mail.wait_until_present(8)
           return web_mail if grid.present?
         end
@@ -396,13 +396,13 @@ module Stamps
       def sign_out
         20.times do
           begin
-            signed_in_username.safe_click unless sign_out_link.present?
-            sign_out_link.safe_click
-            sign_out_link.safe_click
-            signed_in_username.safe_click unless sign_out_link.present?
-            sign_out_link.safe_click
+            signed_in_username.click unless sign_out_link.present?
+            sign_out_link.click
+            sign_out_link.click
+            signed_in_username.click unless sign_out_link.present?
+            sign_out_link.click
             sleep(0.35)
-            sign_out_link.safe_click
+            sign_out_link.click
             break unless signed_in_username.present?
           rescue
             #ignore

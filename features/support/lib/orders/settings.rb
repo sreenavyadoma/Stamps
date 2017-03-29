@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class SettingsModal < Browser::StampsBrowserElement
+    class SettingsModal < Browser::StampsModal
       private
 
       def checkbox_status_array
@@ -75,22 +75,22 @@ module Stamps
       public
 
       def save_changes
-        element_helper.safe_click save_button
+        element_helper.click save_button
       end
 
       def select_logoff_time(duration)
-        element_helper.safe_click logoff_time_combo
-        element_helper.safe_click browser.li text: duration
+        element_helper.click logoff_time_combo
+        element_helper.click browser.li text: duration
       end
 
       def select_postdate_time(time)
-        element_helper.safe_click postdate_time_combo
-        element_helper.safe_click browser.li text: time
+        element_helper.click postdate_time_combo
+        element_helper.click browser.li text: time
       end
 
       def select_balance_notification(amount)
-        element_helper.safe_click balance_notification_combo
-        element_helper.safe_click browser.li text: amount
+        element_helper.click balance_notification_combo
+        element_helper.click browser.li text: amount
       end
 
       def get_logoff_time
@@ -173,7 +173,7 @@ module Stamps
           if box_checked?(number)
             break
           else
-            element_helper.safe_click checkbox
+            element_helper.click checkbox
           end
         end
       end
@@ -190,7 +190,7 @@ module Stamps
 
         5.times do
           if box_checked?(number)
-            element_helper.safe_click checkbox
+            element_helper.click checkbox
           else
             break
           end

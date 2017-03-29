@@ -14,7 +14,7 @@
       def close
         button = ElementWrapper.new browser.img(css: 'img[class*=x-tool-close]')
         5.times do
-          button.safe_click
+          button.click
           break unless button.present?
         end
       end
@@ -26,7 +26,7 @@
       def continue
         button = ElementWrapper.new(browser.span text: "Continue")
         10.times{
-          button.safe_click
+          button.click
           break unless button.present?
         }
       end

@@ -15,16 +15,16 @@ module Stamps
         end
       end
 
-      class ThreeDCart < Browser::StampsBrowserElement
+      class ThreeDCart < Browser::StampsModal
 
-        class ProductWeightUnit < Browser::StampsBrowserElement
+        class ProductWeightUnit < Browser::StampsModal
           def select(selection)
             drop_down = StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
             textbox = StampsTextbox.new browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
             selection_field = StampsElement.new browser.li(text: "#{selection}")
             10.times do
-              drop_down.safe_click unless selection_field.present?
-              selection_field.safe_click
+              drop_down.click unless selection_field.present?
+              selection_field.click
               break if textbox.text.include? selection
             end
           end
@@ -37,7 +37,7 @@ module Stamps
         def close
           button = StampsElement.new(browser.imgs(css: "img[class*='x-tool-img x-tool-close']").last)
           5.times do
-            button.safe_click
+            button.click
             break unless present?
           end
         end
@@ -68,7 +68,7 @@ module Stamps
           max_server_error_retry_count = 5
 
           20.times do |counter|
-            button.safe_click
+            button.click
             sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
@@ -96,7 +96,7 @@ module Stamps
           max_server_error_retry_count = 5
 
           10.times do |counter|
-            button.safe_click
+            button.click
             sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message

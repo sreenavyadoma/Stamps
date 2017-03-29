@@ -9,11 +9,11 @@ Given /^(?:|(?:|(?:A|a) )(?:(?:v|V)alid |))(?:U|u)ser is signed in to Web Apps$/
   step "Navigation Bar: Customer Balance"
 end
 
-Given /^(?:L|l)oad Sign-in page$/ do
+Given /^[Ll]oad Sign-in page$/ do
   stamps.load_sign_in_page
 end
 
-Then /^(?:S|s)ign out$/ do
+Then /^[Ss]ign out$/ do
   begin
     step "Navigation Bar: Customer Balance"
     stamps.navigation_bar.username.sign_out

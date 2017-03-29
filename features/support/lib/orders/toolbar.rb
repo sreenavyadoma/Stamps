@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Toolbar
 
-      class MoveToOnHold < Browser::StampsBrowserElement
+      class MoveToOnHold < Browser::StampsModal
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
@@ -19,20 +19,20 @@ module Stamps
         def move
           move_btn = StampsElement.new(browser.spans(text: "Move").last)
           10.times do
-            move_btn.safe_click
+            move_btn.click
             break unless move_btn.present?
           end
         end
 
         def cancel
           10.times do
-            cancel_btn.safe_click
+            cancel_btn.click
             break unless cancel_btn.present?
           end
         end
       end
 
-      class MoveToCanceled < Browser::StampsBrowserElement
+      class MoveToCanceled < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -48,20 +48,20 @@ module Stamps
         def move
           move_btn = StampsElement.new(browser.spans(text: "Move").last)
           10.times do
-            move_btn.safe_click
+            move_btn.click
             break unless move_btn.present?
           end
         end
 
         def cancel
           10.times do
-            cancel_btn.safe_click
+            cancel_btn.click
             break unless cancel_btn.present?
           end
         end
       end
 
-      class MoveToShipped < Browser::StampsBrowserElement
+      class MoveToShipped < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -77,20 +77,20 @@ module Stamps
         def move
           btn = StampsElement.new(browser.spans(text: "Move to Shipped").last)
           10.times do
-            btn.safe_click
+            btn.click
             break unless btn.present?
           end
         end
 
         def cancel
           10.times do
-            cancel_btn.safe_click
+            cancel_btn.click
             break unless cancel_btn.present?
           end
         end
       end
 
-      class MoveToAwaitingShipment < Browser::StampsBrowserElement
+      class MoveToAwaitingShipment < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -106,20 +106,20 @@ module Stamps
         def move
           move_btn = StampsElement.new(browser.spans(text: "Move").last)
           10.times do
-            move_btn.safe_click
+            move_btn.click
             break unless move_btn.present?
           end
         end
 
         def cancel
           10.times do
-            cancel_btn.safe_click
+            cancel_btn.click
             break unless cancel_btn.present?
           end
         end
       end
 
-      class MoveDropDown < Browser::StampsBrowserElement
+      class MoveDropDown < Browser::StampsModal
         attr_reader :drop_down, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_element
 
         def initialize(param)
@@ -178,11 +178,11 @@ module Stamps
 
           30.times{
             return modal if modal.present?
-            drop_down.safe_click unless selection_item.present?
+            drop_down.click unless selection_item.present?
             sleep(0.50)
             selection_item.hover
             sleep(0.25)
-            selection_item.safe_click
+            selection_item.click
           }
           expect("Unable to select #{selection}").to eql("Move Menu - Select")
         end
@@ -202,7 +202,7 @@ module Stamps
         end
       end
 
-      class PrintIncompleteOrderError < Browser::StampsBrowserElement
+      class PrintIncompleteOrderError < Browser::StampsModal
         attr_reader :window_title, :ok_btn, :error_message_label
 
         def initialize(param)
@@ -217,7 +217,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          window_title.safely_wait_until_present *args
+          window_title.wait_until_present *args
         end
 
         def ok
@@ -237,7 +237,7 @@ module Stamps
         end
       end
 
-      class PrintMultiOrderError < Browser::StampsBrowserElement
+      class PrintMultiOrderError < Browser::StampsModal
         attr_reader :window_title, :error_message_label
 
         def initialize(param)
@@ -247,7 +247,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          window_title.safely_wait_until_present *args
+          window_title.wait_until_present *args
         end
 
         def error_message
@@ -302,7 +302,7 @@ module Stamps
         end
       end
 
-      class UspsPrivacyActStatement < Browser::StampsBrowserElement
+      class UspsPrivacyActStatement < Browser::StampsModal
         attr_reader :window_title, :message_label, :ok_btn
 
         def initialize(param)
@@ -317,7 +317,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          window_title.safely_wait_until_present *args
+          window_title.wait_until_present *args
         end
 
         def text
@@ -329,7 +329,7 @@ module Stamps
         end
       end
 
-      class USPSTerms < Browser::StampsBrowserElement
+      class USPSTerms < Browser::StampsModal
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def initialize(param)
@@ -345,7 +345,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          window_title.safely_wait_until_present *args
+          window_title.wait_until_present *args
         end
 
         def i_agree
@@ -374,7 +374,7 @@ module Stamps
         def usps_privacy_act_statement
           privacy_act = UspsPrivacyActStatement.new(param)
           10.times do
-            privacy_act_link.safe_click
+            privacy_act_link.click
             privacy_act.wait_until_present 2
             return privacy_act if privacy_act.present?
           end
@@ -382,7 +382,7 @@ module Stamps
         end
       end
 
-      class ShipStationServerError < Browser::StampsBrowserElement
+      class ShipStationServerError < Browser::StampsModal
         def window_title
           browser.divs(text: 'Server Error').first
         end
@@ -396,7 +396,7 @@ module Stamps
         end
       end
 
-      class ToolbarPrintButton < Browser::StampsBrowserElement
+      class ToolbarPrintButton < Browser::StampsModal
         attr_reader :print_order_btn, :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
                     :multi_order_some_error, :multi_order_all_error
 
@@ -415,7 +415,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          print_order_btn.safely_wait_until_present *args
+          print_order_btn.wait_until_present *args
         end
 
         def tooltip
@@ -589,7 +589,7 @@ module Stamps
         end
       end
 
-      class SettingsMenu < Browser::StampsBrowserElement
+      class SettingsMenu < Browser::StampsModal
         def select menu_item
           dd = StampsElement.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
@@ -606,10 +606,10 @@ module Stamps
           20.times do
             sleep(0.35)
             return modal if modal.present?
-            dd.safe_click unless selection.present?
+            dd.click unless selection.present?
             #sleep(0.35)
-            selection.safe_click
-            selection.safe_click
+            selection.click
+            selection.click
           end
           expect("Unable to Toolbar Settings Menu Selection - #{menu_item}").to eql ""
         end
@@ -623,7 +623,7 @@ module Stamps
         end
       end
 
-      class PerPage < Browser::StampsBrowserElement
+      class PerPage < Browser::StampsModal
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -636,8 +636,8 @@ module Stamps
           per_page = StampsElement.new(browser.li(text: selection))
           box = text_box
           10.times do
-            drop_down.safe_click unless per_page.present?
-            per_page.safe_click if per_page.present?
+            drop_down.click unless per_page.present?
+            per_page.click if per_page.present?
             return box.text if box.text.include?(selection)
           end
         end
@@ -655,7 +655,7 @@ module Stamps
         end
       end
 
-      class AddButton < Browser::StampsBrowserElement
+      class AddButton < Browser::StampsModal
         attr_reader :button, :initializing_db, :loading_orders
 
         def initialize(param)
@@ -676,7 +676,7 @@ module Stamps
 
           15.times do |count|
             begin
-              button.safe_click
+              button.click
 
               10.times do
                 sleep(0.35)
@@ -730,7 +730,7 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::StampsBrowserElement
+      class OrdersToolbar < Browser::StampsModal
         attr_reader :print_btn, :add, :move_drop_down, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)
@@ -747,7 +747,7 @@ module Stamps
           button = StampsElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
-          button.safe_click
+          button.click
           sleep(0.35)
           if importing_order.present?
             logger.info importing_order.message
@@ -761,7 +761,7 @@ module Stamps
             logger.info importing_order.message
             importing_order.ok
           end
-          button.safe_click
+          button.click
           sleep(0.35)
           if importing_order.present?
             logger.info importing_order.message
@@ -775,7 +775,7 @@ module Stamps
             logger.info importing_order.message
             importing_order.ok
           end
-          button.safe_click
+          button.click
           if importing_order.present?
             logger.info importing_order.message
             importing_order.ok
@@ -793,7 +793,7 @@ module Stamps
         def import
           5.times do
             return import_orders_modal if import_orders_modal.present?
-            import_button.safe_click
+            import_button.click
           end
         end
 
@@ -822,7 +822,7 @@ module Stamps
           15.times do
             return modal if modal.present?
             return label_unavailable if label_unavailable.present?
-            button.safe_click
+            button.click
           end
         end
 

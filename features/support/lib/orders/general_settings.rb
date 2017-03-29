@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Settings
-      class Pounds < Browser::StampsBrowserElement
+      class Pounds < Browser::StampsModal
         attr_reader :text_box, :inc_bthn, :dec_btn
 
         def initialize(param)
@@ -23,18 +23,18 @@ module Stamps
 
         def increment value
           value.to_i.times do
-            inc_bthn.safe_click
+            inc_bthn.click
           end
         end
 
         def decrement value
           value.to_i.times do
-            dec_btn.safe_click
+            dec_btn.click
           end
         end
       end
 
-      class Ounces < Browser::StampsBrowserElement
+      class Ounces < Browser::StampsModal
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -56,18 +56,18 @@ module Stamps
 
         def increment value
           value.to_i.times do
-            inc_btn.safe_click
+            inc_btn.click
           end
         end
 
         def decrement value
           value.to_i.times do
-            dec_btn.safe_click
+            dec_btn.click
           end
         end
       end
 
-      class Weight < Browser::StampsBrowserElement
+      class Weight < Browser::StampsModal
         attr_reader :lb, :oz
 
         def initialize(param)
@@ -89,7 +89,7 @@ module Stamps
         end
       end
 
-      class Length < Browser::StampsBrowserElement
+      class Length < Browser::StampsModal
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -111,18 +111,18 @@ module Stamps
 
         def increment value
           value.to_i.times do
-            inc_btn.safe_click
+            inc_btn.click
           end
         end
 
         def decrement value
           value.to_i.times do
-            dec_btn.safe_click
+            dec_btn.click
           end
         end
       end
 
-      class Width < Browser::StampsBrowserElement
+      class Width < Browser::StampsModal
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -144,18 +144,18 @@ module Stamps
 
         def increment value
           value.to_i.times do
-            inc_btn.safe_click
+            inc_btn.click
           end
         end
 
         def decrement value
           value.to_i.times do
-            dec_btn.safe_click
+            dec_btn.click
           end
         end
       end
 
-      class Height < Browser::StampsBrowserElement
+      class Height < Browser::StampsModal
         attr_reader :text_box
 
         def initialize(param)
@@ -176,19 +176,19 @@ module Stamps
         def increment value
           button = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=up]")
           value.to_i.times do
-            button.safe_click
+            button.click
           end
         end
 
         def decrement value
           button = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-heightnumberfield-trigger-spinner>div[class*=down]")
           value.to_i.times do
-            button.safe_click
+            button.click
           end
         end
       end
 
-      class SettingsLogoffDropDown < Browser::StampsBrowserElement
+      class SettingsLogoffDropDown < Browser::StampsModal
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -205,8 +205,8 @@ module Stamps
           selection_label = StampsElement.new browser.li(text: selection)
           10.times do
             break if text_box.text.include? selection
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
+            drop_down.click unless selection_label.present?
+            selection_label.click
           end
           expect(text_box.text).to include(selection)
         end
@@ -236,7 +236,7 @@ module Stamps
         end
       end
 
-      class PostDateDropDown < Browser::StampsBrowserElement
+      class PostDateDropDown < Browser::StampsModal
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -253,8 +253,8 @@ module Stamps
           selection_label = StampsElement.new browser.li text: selection
           10.times do
             break if text_box.text.include? selection
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
+            drop_down.click unless selection_label.present?
+            selection_label.click
           end
           expect(text_box.text).to include(selection)
         end
@@ -356,7 +356,7 @@ module Stamps
         end
       end
 
-      class PostageBalanceDropDown < Browser::StampsBrowserElement
+      class PostageBalanceDropDown < Browser::StampsModal
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -369,8 +369,8 @@ module Stamps
           selection_label = StampsElement.new browser.li text: selection
           10.times do
             break if text_box.text.include? selection
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
+            drop_down.click unless selection_label.present?
+            selection_label.click
           end
           expect(text_box.text).to include(selection)
         end
@@ -404,7 +404,7 @@ module Stamps
         end
       end
 
-      class Dimensions < Browser::StampsBrowserElement
+      class Dimensions < Browser::StampsModal
         def enabled?
           element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
         end
@@ -430,7 +430,7 @@ module Stamps
         end
       end
 
-      class ResetFields < Browser::StampsBrowserElement
+      class ResetFields < Browser::StampsModal
         def present?
           (browser.div text: "Reset Fields").present?
         end
@@ -536,14 +536,14 @@ module Stamps
           button = StampsElement.new(browser.span text: "Close")
           5.times do
             return unless button.present?
-            button.safe_click
+            button.click
             sleep(0.35)
             return unless present?
           end
         end
       end
 
-      class GeneralSettings < Browser::StampsBrowserElement
+      class GeneralSettings < Browser::StampsModal
 
         def title
           StampsElement.new browser.div text: "Settings"
@@ -585,7 +585,7 @@ module Stamps
           modal = ResetFields.new(param)
           button = StampsElement.new browser.span text: "Select..."
           10.times do
-            button.safe_click unless modal.present?
+            button.click unless modal.present?
             return modal if modal.present?
           end
         end
@@ -617,7 +617,7 @@ module Stamps
         def save
           button = StampsElement.new(browser.span text: "Save")
           10.times do
-            button.safe_click
+            button.click
             return unless button.present?
           end
         end
@@ -625,7 +625,7 @@ module Stamps
         def close
           button = StampsElement.new(browser.img css: "img[class$=close]")
           10.times do
-            button.safe_click
+            button.click
             return unless button.present?
           end
         end

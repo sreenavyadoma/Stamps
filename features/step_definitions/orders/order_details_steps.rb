@@ -32,24 +32,24 @@ Then /^(?:O|o)n Order Details form, Add Item (\d+)$/ do |value|
   @details_line_item = stamps.orders.order_details.items_ordered.item(value.to_i)
 end
 
-Then /^(?:S|s)et Order Details form Qty to (\d+)$/ do |value|
+Then /^[Ss]et Order Details form Qty to (\d+)$/ do |value|
   @details_line_item.item_qty.set(value)
 end
 
-Then /^(?:S|s)et Order Details form ID to (.*)$/ do |value|
+Then /^[Ss]et Order Details form ID to (.*)$/ do |value|
   @details_line_item.item_id.set ((value.downcase == 'random')? ParameterHelper.random_alpha_numeric : value)
 end
 
-Then /^(?:S|s)et Order Details form Description to (.*)$/ do |value|
+Then /^[Ss]et Order Details form Description to (.*)$/ do |value|
   @details_line_item.item_description.set ((value.downcase == 'random')? ParameterHelper.random_alpha_numeric : value)
 end
 
-Then /^(?:S|s)et Order Details form Ship-To Country to (.*)$/ do |country|
+Then /^[Ss]et Order Details form Ship-To Country to (.*)$/ do |country|
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.country.select country
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Name to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Name to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_name] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.name.send_keys(:enter)
@@ -58,7 +58,7 @@ Then /^(?:S|s)et Order Details form International Ship-To Name to \"(.*)\"$/ do 
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Company to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Company to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_company] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.company.send_keys(:enter)
@@ -67,7 +67,7 @@ Then /^(?:S|s)et Order Details form International Ship-To Company to \"(.*)\"$/ 
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Address 1 to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Address 1 to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_address_1] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_1.send_keys(:enter)
@@ -76,7 +76,7 @@ Then /^(?:S|s)et Order Details form International Ship-To Address 1 to \"(.*)\"$
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Address 2 to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Address 2 to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_address_2] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_2.send_keys(:enter)
@@ -85,7 +85,7 @@ Then /^(?:S|s)et Order Details form International Ship-To Address 2 to \"(.*)\"$
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To City to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To City to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_city] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.city.send_keys(:enter)
@@ -94,7 +94,7 @@ Then /^(?:S|s)et Order Details form International Ship-To City to \"(.*)\"$/ do 
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Province to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Province to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_province] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.province.send_keys(:enter)
@@ -103,7 +103,7 @@ Then /^(?:S|s)et Order Details form International Ship-To Province to \"(.*)\"$/
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Postal Code to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Postal Code to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_postal_code] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.postal_code.send_keys(:enter)
@@ -112,7 +112,7 @@ Then /^(?:S|s)et Order Details form International Ship-To Postal Code to \"(.*)\
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Phone to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Phone to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_phone] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.phone.send_keys(:enter)
@@ -121,7 +121,7 @@ Then /^(?:S|s)et Order Details form International Ship-To Phone to \"(.*)\"$/ do
   end
 end
 
-Then /^(?:S|s)et Order Details form International Ship-To Email to \"(.*)\"$/ do |value|
+Then /^[Ss]et Order Details form International Ship-To Email to \"(.*)\"$/ do |value|
   test_parameter[:int_ship_to_email] = ((value.downcase == 'random')? ParameterHelper.random_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.email.send_keys(:enter)
@@ -136,22 +136,22 @@ end
 
 Then /^(?:O|o)n Order Details form, Delete Item (\d+)$/ do |item_number|
   item = stamps.orders.order_details.items_ordered.item item_number.to_i
-  item.delete.safe_click
+  item.delete.click
 end
 
-Then /^(?:S|s)et Order Details form Weight to (\d+) lb (\d+) oz$/ do |pounds, ounces|
+Then /^[Ss]et Order Details form Weight to (\d+) lb (\d+) oz$/ do |pounds, ounces|
   step "set Order Details form Pounds to #{pounds}"
   step "set Order Details form Ounces to #{ounces}"
 end
 
-Then /^(?:S|s)et Order Details form Pounds to (\d+)$/ do |value|
+Then /^[Ss]et Order Details form Pounds to (\d+)$/ do |value|
   test_parameter[:pounds] = value
   stamps.orders.order_details.weight.lb.set test_parameter[:pounds]
   step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Ounces to (\d+)$/ do |value|
+Then /^[Ss]et Order Details form Ounces to (\d+)$/ do |value|
   test_parameter[:ounces] = value
   stamps.orders.order_details.weight.oz.set test_parameter[:ounces]
   step "On Order Details form, blur out"
@@ -162,14 +162,14 @@ Then /^(?:O|o)n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
   ((count.nil?)?1:count.to_i).times {stamps.orders.order_details.blur_out}
 end
 
-Then /^(?:S|s)et Order Details form Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
+Then /^[Ss]et Order Details form Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
   stamps.orders.order_details.dimensions.length.set length
   stamps.orders.order_details.dimensions.width.set width
   stamps.orders.order_details.dimensions.height.set height
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Length to (\d*)$/ do |value|
+Then /^[Ss]et Order Details form Length to (\d*)$/ do |value|
   test_parameter[:length] = value
   expect(stamps.orders.order_details.dimensions.length.present?).to be(true)
   stamps.orders.order_details.dimensions.length.set(value)
@@ -177,7 +177,7 @@ Then /^(?:S|s)et Order Details form Length to (\d*)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Width to (\d*)$/ do |value|
+Then /^[Ss]et Order Details form Width to (\d*)$/ do |value|
   test_parameter[:width] = value
   expect(stamps.orders.order_details.dimensions.width.present?).to be(true)
   stamps.orders.order_details.dimensions.width.set(value)
@@ -185,7 +185,7 @@ Then /^(?:S|s)et Order Details form Width to (\d*)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Height to (\d*)$/ do |value|
+Then /^[Ss]et Order Details form Height to (\d*)$/ do |value|
   test_parameter[:height] = value
   expect(stamps.orders.order_details.dimensions.height.present?).to be(true)
   stamps.orders.order_details.dimensions.height.set(value)
@@ -201,7 +201,7 @@ Then /^(?:O|o)n Order Details form, uncheck Insure-For checkbox$/ do
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
-Then /^(?:S|s)et Order Details form Insure-For to \$(.*)$/ do |value|
+Then /^[Ss]et Order Details form Insure-For to \$(.*)$/ do |value|
   test_parameter[:insure_for] = value.to_f.round(2)
   stamps.orders.order_details.insure_for.set_and_agree_to_terms(test_parameter[:insure_for])
   10.times do
@@ -211,15 +211,15 @@ Then /^(?:S|s)et Order Details form Insure-For to \$(.*)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Tracking to USPS Tracking$/ do
+Then /^[Ss]et Order Details form Tracking to USPS Tracking$/ do
   step "set Order Details form Tracking to \"USPS Tracking\""
 end
 
-Then /^(?:S|s)et Order Details form Tracking to Signature Required$/ do
+Then /^[Ss]et Order Details form Tracking to Signature Required$/ do
   step "set Order Details form Tracking to \"Signature Required\""
 end
 
-Then /^(?:S|s)et Order Details form Tracking to \"([\w ]*)\"$/ do |value|
+Then /^[Ss]et Order Details form Tracking to \"([\w ]*)\"$/ do |value|
   stamps.orders.order_details.tracking.select(value)
   10.times do
     break if stamps.orders.order_details.tracking.cost > 0
@@ -228,13 +228,13 @@ Then /^(?:S|s)et Order Details form Tracking to \"([\w ]*)\"$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Ship-From to (\w+)$/ do |value|
+Then /^[Ss]et Order Details form Ship-From to (\w+)$/ do |value|
   stamps.orders.order_details.ship_from.select(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Ship-To to Domestic Address$/ do |table|
+Then /^[Ss]et Order Details form Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
 
   test_parameter[:name] = (address_table['name'].downcase.include?('random')) ? ParameterHelper.random_name : address_table['name']
@@ -257,7 +257,7 @@ Then /^(?:S|s)et Order Details form Ship-To to Domestic Address$/ do |table|
   step "set Order Details form Ship-To to Domestic Address #{test_parameter[:ship_to]}"
 end
 
-Then /^(?:S|s)et Order Details Ship-To International address to$/ do |table|
+Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
   address_table = table.hashes.first
 
   test_parameter[:country] = address_table['country']
@@ -283,14 +283,14 @@ Then /^(?:S|s)et Order Details Ship-To International address to$/ do |table|
   step "set Order Details form International Ship-To Email to \"#{test_parameter[:email]}\""
 end
 
-Then /^(?:S|s)et Order Details form Ship-To to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+Then /^[Ss]et Order Details form Ship-To to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   test_parameter[:address] = address_helper(address)
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.set(test_parameter[:address])
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Ship-To to Domestic Address (.*)$/ do |address|
+Then /^[Ss]et Order Details form Ship-To to Domestic Address (.*)$/ do |address|
   test_parameter[:ship_to_domestic] = ParameterHelper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
   stamps.orders.order_details.ship_to.domestic.set test_parameter[:ship_to_domestic]
@@ -309,64 +309,64 @@ Then /^(?:O|o)n Order Details form, Show Ship-To fields$/ do
   stamps.orders.order_details.ship_to.domestic.show_address
 end
 
-Then /^(?:E|e)xpect Order Details form Order ID is truthy$/ do
+Then /^[Ee]xpect Order Details form Order ID is truthy$/ do
   expect(test_parameter[:order_id].to_i).to be > 0
 end
 
-Then /^(?:E|e)xpect Order Details form Order ID equals Grid Oder ID in row (\d+)$/ do |row|
+Then /^[Ee]xpect Order Details form Order ID equals Grid Oder ID in row (\d+)$/ do |row|
   expect(stamps.orders.order_details.toolbar.order_id).to eql stamps.orders.orders_grid.column.order_id.row(row)
 end
 
-Then /^(?:E|e)xpect Order Details form Order ID is the same as saved Order ID$/ do
+Then /^[Ee]xpect Order Details form Order ID is the same as saved Order ID$/ do
   expect(stamps.orders.order_details.toolbar.order_id).to eql test_parameter[:order_id]
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Name is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Name is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.recipient_name).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Company Name is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Company Name is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.company_name).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Cleansed Street Address is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Cleansed Street Address is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.street_address).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Cleansed City is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Cleansed City is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.city).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Cleansed State is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Cleansed State is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.state).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.zip_plus_4).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.zip_code).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Phone is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Phone is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.phone.text).to eql expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Ship-To Email is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form Ship-To Email is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.email.text).to eql expectation
 end
 
-Then /^(?:S|s)et Order Details form Ship-To to ambiguous address$/ do |table|
+Then /^[Ss]et Order Details form Ship-To to ambiguous address$/ do |table|
   ambiguous_address = ParameterHelper.format_address table.hashes.first
   stamps.orders.order_details.ship_to.domestic.set_ambiguous ambiguous_address
 end
@@ -375,7 +375,7 @@ Then /^(?:I|i)n Exact Address Not Found module, select row (\d+)$/ do |row|
   stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.row row
 end
 
-Then /^(?:S|s)et Order Details form Phone to (.*)$/ do |phone|
+Then /^[Ss]et Order Details form Phone to (.*)$/ do |phone|
   test_parameter[:phone] = (phone.to_s.strip.downcase.include?('random'))?(ParameterHelper.random_phone):phone
   stamps.orders.order_details.ship_to.domestic.show_address
   begin
@@ -384,7 +384,7 @@ Then /^(?:S|s)et Order Details form Phone to (.*)$/ do |phone|
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Email to (.*)$/ do |email|
+Then /^[Ss]et Order Details form Email to (.*)$/ do |email|
   test_parameter[:email] = (email.to_s.strip.downcase.include?('random'))?(ParameterHelper.random_email):email
   stamps.orders.order_details.ship_to.domestic.show_address
   begin
@@ -452,18 +452,18 @@ Then /^Decrement Order Details Insure-For by (\d*)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:S|s)et Order Details form Reference Number to (.*)$/ do |value|
+Then /^[Ss]et Order Details form Reference Number to (.*)$/ do |value|
   test_parameter[:reference_no] = (value.downcase.include?('random'))?ParameterHelper.random_alpha_numeric : value
   stamps.orders.order_details.reference_no.set test_parameter[:reference_no]
   step "Save Order Details data"
 end
 
-Then /^(?:E|e)xpect Order Details form Domestic Ship-To Company is (.*)$/ do |company|
+Then /^[Ee]xpect Order Details form Domestic Ship-To Company is (.*)$/ do |company|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include company
 end
 
-Then /^(?:E|e)xpect Order Details form Domestic Ship-To Name is (.*)$/ do |name|
+Then /^[Ee]xpect Order Details form Domestic Ship-To Name is (.*)$/ do |name|
   stamps.orders.order_details.ship_to.domestic.show_address
   expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include name
 end

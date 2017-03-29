@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Details
-      class ShipFromAddress < Browser::StampsBrowserElement
+      class ShipFromAddress < Browser::StampsModal
         attr_reader :drop_down, :text_box, :manage_shipping_adddress, :blur_element
 
         def initialize(param)
@@ -34,9 +34,9 @@ module Stamps
           if service.downcase.include? "manage shipping"
             15.times{
               begin
-                drop_down.safe_click unless selection.present?
+                drop_down.click unless selection.present?
                 selection.safe_scroll_into_view
-                selection.safe_click
+                selection.click
                 sleep(0.35)
                 return manage_shipping_adddress if manage_shipping_adddress.present?
               rescue Exception => e
@@ -46,15 +46,15 @@ module Stamps
               expect(manage_shipping_adddress.present?).to be(true)
             }
           else
-            drop_down.safe_click unless selection.present?
+            drop_down.click unless selection.present?
             if selection.present?
               selection.safe_scroll_into_view
               service_text = selection.text
             end
             10.times do
-              drop_down.safe_click unless selection.present?
+              drop_down.click unless selection.present?
               selection.safe_scroll_into_view
-              selection.safe_click
+              selection.click
               sleep(0.35)
               text_box_text = text_box.text
               return if text_box_text.include? service_text
@@ -64,7 +64,7 @@ module Stamps
         end
       end
 
-      class BlurOutElement < Browser::StampsBrowserElement
+      class BlurOutElement < Browser::StampsModal
         attr_reader :element
 
         def initialize(param)
@@ -73,12 +73,12 @@ module Stamps
         end
 
         def blur_out
-          element.safe_click
+          element.click
           element.safe_double_click
         end
       end
 
-      class ShipToCountry < Browser::StampsBrowserElement
+      class ShipToCountry < Browser::StampsModal
         attr_reader :ship_to_dd
 
         def initialize(param)
@@ -139,10 +139,10 @@ module Stamps
           text_field = text_box
           logger.info "Select Country #{country}"
           begin
-            dd.safe_click
+            dd.click
             sleep(0.35)
-            dd.safe_click
-            dd.safe_click
+            dd.click
+            dd.click
             lis = browser.lis(text: country)
             expect(lis.size).to be_between(1, 2).inclusive
 
@@ -161,10 +161,10 @@ module Stamps
 
             10.times do
               break if text_field.text.include?(country)
-              dd.safe_click unless selection.present?
+              dd.click unless selection.present?
               selection.safe_scroll_into_view
               selection.safe_scroll_into_view
-              selection.safe_click if selection.present?
+              selection.click if selection.present?
               logger.info "Selection #{text_field.text} - #{(text_field.text.include? country)?"was selected": "not selected"}"
               break if text_field.text.include?(country)
               break if text_field.text.include?(country)
@@ -175,7 +175,7 @@ module Stamps
         end
       end
 
-      class ShipToCountryDropDown < Browser::StampsBrowserElement
+      class ShipToCountryDropDown < Browser::StampsModal
         attr_reader :element
         def initialize(param)
           super(param)
@@ -183,7 +183,7 @@ module Stamps
         end
       end
 
-      class ShipToInternational < Browser::StampsBrowserElement
+      class ShipToInternational < Browser::StampsModal
         attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :ship_to_dd
 
         def initialize(param)
@@ -212,7 +212,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestPopUp < Browser::StampsBrowserElement
+      class AutoSuggestPopUp < Browser::StampsModal
         def present?
           name_fields[0].present?
         end
@@ -223,9 +223,9 @@ module Stamps
 
         def select number
           selection = StampsElement.new(name_fields[number.to_i-1])
-          selection.safe_click
-          selection.safe_click
-          selection.safe_click
+          selection.click
+          selection.click
+          selection.click
         end
 
         def name_fields
@@ -237,7 +237,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestInternational < Browser::StampsBrowserElement
+      class AutoSuggestInternational < Browser::StampsModal
         #todo-rob FIX ME
         attr_reader :auto_suggest_box
 
@@ -253,7 +253,7 @@ module Stamps
             begin
               text_field.set address
               return auto_suggest_box if auto_suggest_box.present?
-              text_field.safe_click
+              text_field.click
               sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.safe_double_click
@@ -265,7 +265,7 @@ module Stamps
         end
       end
 
-      class AddressNotFound < Browser::StampsBrowserElement
+      class AddressNotFound < Browser::StampsModal
         attr_reader :window_title
 
         def initialize(param)
@@ -278,7 +278,7 @@ module Stamps
         end
 
         def wait_until_present *args
-          window_title.safely_wait_until_present *args
+          window_title.wait_until_present *args
         end
 
         def row number
@@ -301,8 +301,8 @@ module Stamps
           30.times {
             begin
               item_label.click
-              country_drop_down.drop_down.safe_click
-              country_drop_down.drop_down.safe_click
+              country_drop_down.drop_down.click
+              country_drop_down.drop_down.click
               item_label.click
 
               break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
@@ -315,7 +315,7 @@ module Stamps
         end
       end
 
-      class AmbiguousAddress < Browser::StampsBrowserElement
+      class AmbiguousAddress < Browser::StampsModal
         attr_reader :address_not_found
 
         def initialize(param)
@@ -423,7 +423,7 @@ module Stamps
         end
       end
 
-      class ShipToDomestic < Browser::StampsBrowserElement
+      class ShipToDomestic < Browser::StampsModal
         attr_reader :ambiguous, :auto_suggest, :less_link, :ship_to_dd , :blur_element,
                     :address_not_found
 
@@ -501,7 +501,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestDomestic < Browser::StampsBrowserElement
+      class AutoSuggestDomestic < Browser::StampsModal
         attr_reader :text_area, :auto_suggest_box
         def initialize(param, text_area)
           super(param)
@@ -514,7 +514,7 @@ module Stamps
             begin
               text_area.set address
               return auto_suggest_box if auto_suggest_box.present?
-              text_area.safe_click
+              text_area.click
               sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.safe_double_click
@@ -527,7 +527,7 @@ module Stamps
         end
       end
 
-      class ShipTo < Browser::StampsBrowserElement
+      class ShipTo < Browser::StampsModal
         attr_reader :country, :international, :domestic
         def initialize(param)
           super(param)
@@ -537,7 +537,7 @@ module Stamps
         end
       end
 
-      class AddEditShipFromModal < Browser::StampsBrowserElement
+      class AddEditShipFromModal < Browser::StampsModal
         attr_reader :save_button, :origin_zip
 
         def initialize(param)
@@ -551,8 +551,8 @@ module Stamps
         end
 
         def wait_until_present *args
-          browser.div(text: "Edit Shipping Address").safely_wait_until_present(*args) if browser.div(text: "Edit Shipping Address").present?
-          browser.div(text: "Add Shipping Address").safely_wait_until_present(*args) if browser.div(text: "Add Shipping Address").present?
+          browser.div(text: "Edit Shipping Address").wait_until_present(*args) if browser.div(text: "Edit Shipping Address").present?
+          browser.div(text: "Add Shipping Address").wait_until_present(*args) if browser.div(text: "Add Shipping Address").present?
         end
 
         def ship_from_address table
@@ -631,7 +631,7 @@ module Stamps
         def state
           text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
           dd = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
-          StampsDropDown.new @browser, dd, :li, text_box
+          StampsDropDown.new(dd, :li, text_box)
         end
 
         def zip *args
@@ -661,7 +661,7 @@ module Stamps
         def save
           10.times{
             begin
-              element_helper.safe_click save_button
+              element_helper.click save_button
               sleep(0.35)
               break unless save_button.present?
             rescue
@@ -672,7 +672,7 @@ module Stamps
 
       end
 
-      class DeleteShippingAddress < Browser::StampsBrowserElement
+      class DeleteShippingAddress < Browser::StampsModal
 
         def window_title
           browser.div text: "Delete Shipping Address"
@@ -682,7 +682,7 @@ module Stamps
           5.times {
             begin
               logger.info "Delete Shipping Address :: #{message_field.text}"
-              element_helper.safe_click delete_button
+              element_helper.click delete_button
             rescue
               #ignore
             end
@@ -711,7 +711,7 @@ module Stamps
         end
       end
 
-      class ViewRestrictions < Browser::StampsBrowserElement
+      class ViewRestrictions < Browser::StampsModal
         def browser_ok_button
           StampsElement.new browser.span text: "OK"
         end
@@ -721,11 +721,11 @@ module Stamps
         end
 
         def ok
-          browser_ok_button.safe_click
+          browser_ok_button.click
         end
       end
 
-      class ManageShippingAddresses < Browser::StampsBrowserElement
+      class ManageShippingAddresses < Browser::StampsModal
         attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :shipping_address
 
         def initialize(param)
@@ -781,7 +781,7 @@ module Stamps
         def locate_ship_from name, company, city
           rows = shipping_address_count
           1.upto rows do |row|
-            element_helper.safe_click window_title
+            element_helper.click window_title
             grid_name = name row
             grid_company = company row
             grid_city = city row
@@ -798,8 +798,8 @@ module Stamps
 
         def click_delete_button
           begin
-            element_helper.safe_click delete_button if delete_button.present?
-            element_helper.safe_click window_title
+            element_helper.click delete_button if delete_button.present?
+            element_helper.click window_title
           rescue
             #ignore
           end
@@ -836,7 +836,7 @@ module Stamps
           5.times do
             begin
               return shipping_address if shipping_address.present?
-              add_button.safe_click
+              add_button.click
               shipping_address.wait_until_present 3
             rescue Exception => e
               logger.error e.message
@@ -873,7 +873,7 @@ module Stamps
           if row_num > 0
             select_row row_num
             15.times do
-              edit_button.safe_click
+              edit_button.click
               return shipping_address if shipping_address.present?
             end
           end
@@ -882,14 +882,14 @@ module Stamps
 
         def select_row(row_num)
           click_row_until_selected(row_num, "class", "x-grid-item-selected")
-          element_helper.safe_click window_title
+          element_helper.click window_title
         end
 
         def click_row_until_selected(row_num, attibute, attribute_value)
           cell = grid_cell(row_num, 1)
           5.times do
             begin
-              element_helper.safe_click cell
+              element_helper.click cell
               break if checked? row_num
             rescue
               #ignore
@@ -906,7 +906,7 @@ module Stamps
             count = shipping_address_count
             if count > 1
               for row in 1..(count)
-                element_helper.safe_click window_title
+                element_helper.click window_title
                 delete_row 1
                 logger.info "Row #{row} :: Deleting row 1..."
                 break if shipping_address_count == 1
@@ -924,7 +924,7 @@ module Stamps
             10.times{
               sleep(0.35)
               break unless close_button.present?
-              element_helper.safe_click close_button
+              element_helper.click close_button
             }
           rescue
             #ignore
@@ -943,7 +943,7 @@ module Stamps
         end
       end
 
-      class DetailsService < Browser::StampsBrowserElement
+      class DetailsService < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
@@ -966,9 +966,9 @@ module Stamps
 
           20.times do
             begin
-              drop_down.safe_click unless selection.present?
+              drop_down.click unless selection.present?
               selection.safe_scroll_into_view
-              selection.safe_click
+              selection.click
               blur_out
               logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
               break if text_box.text.include?(substr)
@@ -987,11 +987,11 @@ module Stamps
           cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
           10.times do
             begin
-              drop_down.safe_click unless cost_label.present?
+              drop_down.click unless cost_label.present?
               if cost_label.present?
                 service_cost = ParameterHelper.remove_dollar_sign(cost_label.text)
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
-                drop_down.safe_click if cost_label.present?
+                drop_down.click if cost_label.present?
                 return service_cost.to_f.round(2)
               end
             rescue
@@ -1018,7 +1018,7 @@ module Stamps
           selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
           10.times {
             begin
-              button.safe_click unless selection_label.present?
+              button.click unless selection_label.present?
               sleep(0.35)
               if selection_label.present?
                 tooltip = selection_label.attribute_value("data-qtip")
@@ -1041,7 +1041,7 @@ module Stamps
           selection_label = StampsElement.new selection_field
 
           10.times do |index|
-            drop_down.safe_click unless selection_label.present?
+            drop_down.click unless selection_label.present?
             sleep(0.35)
             if selection_field.present?
               disabled_field = StampsElement.new(selection_field.parent.parent.parent)
@@ -1052,7 +1052,7 @@ module Stamps
                     sleep(0.35)
                     result = disabled_field.attribute_value("class").include? "disabled"
                     result = disabled_field.attribute_value("class").include? "disabled"
-                    drop_down.safe_click
+                    drop_down.click
                     return result
                   end
                 end
@@ -1071,7 +1071,7 @@ module Stamps
         end
       end
 
-      class InsuranceTermsConditions < Browser::StampsBrowserElement
+      class InsuranceTermsConditions < Browser::StampsModal
         def present?
           begin
             (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
@@ -1084,7 +1084,7 @@ module Stamps
           10.times do
             begin
               browser.spans(text: "I Agree").each do |button|
-                element_helper.safe_click(button)
+                element_helper.click(button)
               end
             rescue
               #ignore
@@ -1096,7 +1096,7 @@ module Stamps
           10.times do
             begin
               browser.spans(text: "Cancel").each do |button|
-                element_helper.safe_click(button)
+                element_helper.click(button)
               end
             rescue
               #ignore
@@ -1105,7 +1105,7 @@ module Stamps
         end
       end
 
-      class DetailsInsureFor < Browser::StampsBrowserElement
+      class DetailsInsureFor < Browser::StampsModal
         attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :terms, :blur_element
 
         def initialize(param)
@@ -1167,13 +1167,13 @@ module Stamps
 
         def increment(value)
           value.to_i.times do
-            increment_trigger.safe_click
+            increment_trigger.click
           end
         end
 
         def decrement(value)
           value.to_i.times do
-            decrement_trigger.safe_click
+            decrement_trigger.click
           end
         end
 
@@ -1191,7 +1191,7 @@ module Stamps
         end
       end
 
-      class DetailsTracking < Browser::StampsBrowserElement
+      class DetailsTracking < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element, :cost_label
         def initialize(param)
           super(param)
@@ -1225,10 +1225,10 @@ module Stamps
           expect(drop_down.present?).to be(true)
           20.times do
             begin
-              drop_down.safe_click
+              drop_down.click
               selection_label = tracking_selection(selection).first
-              drop_down.safe_click unless selection_label.present?
-              element_helper.safe_click selection_label
+              drop_down.click unless selection_label.present?
+              element_helper.click selection_label
               break if text_box.text.include? selection
             rescue Exception => e
               logger.error e.message
@@ -1245,12 +1245,12 @@ module Stamps
           selection_label = StampsElement.new tds.last
           5.times do
             begin
-              drop_down.safe_click unless selection_label.present?
+              drop_down.click unless selection_label.present?
               return selection_label.text if selection_label.present?
 
-              drop_down.safe_click
+              drop_down.click
               selection_label = tracking_selection(selection).last
-              drop_down.safe_click unless selection_label.present?
+              drop_down.click unless selection_label.present?
               return element_helper.text selection_label if selection_label.present?
             rescue
               #ignore
@@ -1267,7 +1267,7 @@ module Stamps
           selection_label = browser.td(text: selection)
           5.times {
             begin
-              drop_down.safe_click unless selection_label.present?
+              drop_down.click unless selection_label.present?
               if selection_label.present?
                 qtip = selection_label.parent.parent.parent.parent.attribute_value("data-qtip")
                 logger.info "#{qtip}"
@@ -1280,10 +1280,10 @@ module Stamps
         end
       end
 
-      class DetailsStoreItem < Browser::StampsBrowserElement
+      class DetailsStoreItem < Browser::StampsModal
       end
 
-      class OrderDetailsWeight < Browser::StampsBrowserElement
+      class OrderDetailsWeight < Browser::StampsModal
         attr_reader :lb, :oz
         def initialize(param)
           super(param)
@@ -1299,7 +1299,7 @@ module Stamps
         end
       end
 
-      class OrderDetailsDimensions < Browser::StampsBrowserElement
+      class OrderDetailsDimensions < Browser::StampsModal
         attr_reader :length, :width, :height
         def initialize(param)
           super(param)
@@ -1324,7 +1324,7 @@ module Stamps
         end
       end
 
-      class AssociatedOrderItem < Browser::StampsBrowserElement
+      class AssociatedOrderItem < Browser::StampsModal
         attr_reader :index, :item_qty, :item_id, :item_description, :delete
         def initialize(param, number)
           super(param)
@@ -1345,7 +1345,7 @@ module Stamps
         end
       end
 
-      class ItemsOrderedSection < Browser::StampsBrowserElement
+      class ItemsOrderedSection < Browser::StampsModal
         attr_reader :add_btn, :drop_down
 
         def initialize(param)
@@ -1356,14 +1356,14 @@ module Stamps
       
         def expand
           5.times do
-            drop_down.safe_click
+            drop_down.click
             break if drop_down.element.attribute_value('class').include?('collapse-top')
           end
         end
 
         def collapse
           5.times do
-            drop_down.safe_click
+            drop_down.click
             break if drop_down.element.attribute_value('class').include?('expand-bottom')
           end
         end
@@ -1381,14 +1381,14 @@ module Stamps
           10.times do
             return associated_item if associated_item.present?
             sleep(0.5)
-            add_btn.safe_click if number > size
+            add_btn.click if number > size
             logger.info "Item Count: #{size}"
           end
           associated_item
         end
       end
 
-      class DetailsCollapsible < Browser::StampsBrowserElement
+      class DetailsCollapsible < Browser::StampsModal
         attr_reader :field
         def initialize(param)
           super(param)
@@ -1401,13 +1401,13 @@ module Stamps
 
         def open
           5.times do
-            element_helper.safe_click field
+            element_helper.click field
             break unless field.present?
           end
         end
       end
 
-      class ToolbarMenu < Browser::StampsBrowserElement
+      class ToolbarMenu < Browser::StampsModal
         attr_reader :drop_down
         def initialize(param)
           super(param)
@@ -1419,8 +1419,8 @@ module Stamps
           dd = drop_down
           collapsed_details = DetailsCollapsible.new(param)
           10.times do
-            dd.safe_click unless selection.present?
-            selection.safe_click
+            dd.click unless selection.present?
+            selection.click
             break if collapsed_details.present?
           end
         end
@@ -1440,7 +1440,7 @@ module Stamps
         end
       end
 
-      class DetailsToolbar < Browser::StampsBrowserElement
+      class DetailsToolbar < Browser::StampsModal
         attr_reader :menu
 
         def initialize(param)
@@ -1462,7 +1462,7 @@ module Stamps
         end
       end
 
-      class DetailsFooter < Browser::StampsBrowserElement
+      class DetailsFooter < Browser::StampsModal
         attr_reader :label
         def initialize(param)
           super(param)
@@ -1498,7 +1498,7 @@ module Stamps
         end
       end
 
-      class OrdersCustomsFields < Browser::StampsBrowserElement
+      class OrdersCustomsFields < Browser::StampsModal
         attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
         def initialize(param)
@@ -1512,7 +1512,7 @@ module Stamps
         def edit_form
           10.times do
             return customs_form if customs_form.present?
-            edit_form_btn.safe_click
+            edit_form_btn.click
             customs_form.wait_until_present(2)
           end
           expect(customs_form.present?).to be(true)
@@ -1521,13 +1521,13 @@ module Stamps
         def restrictions
           5.times do
             return view_restrictions if view_restrictions.present?
-            restrictions_btn.safe_click
+            restrictions_btn.click
           end
           expect(view_restrictions.present?).to be(true)
         end
       end
 
-      class SingleOrderDetails < Browser::StampsBrowserElement
+      class SingleOrderDetails < Browser::StampsModal
         attr_reader :toolbar, :ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
                     :footer, :customs, :items_ordered, :reference_no, :collapsed_details, :blur_element
 
@@ -1559,7 +1559,7 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          body.safely_wait_until_present(*args)
+          body.wait_until_present(*args)
         end
 
         def expand

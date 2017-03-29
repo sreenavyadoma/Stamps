@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     module PrintModal
-      class MailPrinterComboBox < Browser::StampsBrowserElement
+      class MailPrinterComboBox < Browser::StampsModal
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -32,8 +32,8 @@ module Stamps
           end
 
           10.times do
-            drop_down.safe_click unless selection.present?
-            selection.safe_click
+            drop_down.click unless selection.present?
+            selection.click
             sleep(0.15)
             break if text_box.text.include?(printer)
           end
@@ -41,7 +41,7 @@ module Stamps
         end
       end
 
-      class MailPaperTrayComboBox < Browser::StampsBrowserElement
+      class MailPaperTrayComboBox < Browser::StampsModal
         attr_accessor :drop_down, :text_box
 
         def initialize(param)
@@ -53,15 +53,15 @@ module Stamps
         def select(str)
           selection_label = StampsElement.new(browser.li(text: str))
           10.times do
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
+            drop_down.click unless selection_label.present?
+            selection_label.click
             sleep(0.15)
             break if text_box.text.include?(str)
           end
         end
       end
 
-      class MailPrintModal < Browser::StampsBrowserElement
+      class MailPrintModal < Browser::StampsModal
         attr_accessor :paper_tray, :printer, :print_button, :reprint_link, :window_title
 
         def initialize(param)
@@ -78,7 +78,7 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          window_title.safely_wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def print
@@ -172,9 +172,9 @@ module Stamps
 
           if ok_button.present?
             logger.info "Error Window OK button"
-            ok_button.safe_click
-            ok_button.safe_click
-            ok_button.safe_click
+            ok_button.click
+            ok_button.click
+            ok_button.click
           end
           @printing_error
         end

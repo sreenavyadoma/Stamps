@@ -20,6 +20,18 @@ module Stamps
     end
   end
 
+  def test_helper
+    begin
+      TestHelper
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      expect("#{e.backtrace.join("\n")}").to eql e.message
+    end
+  end
+
   def webreg
     begin
       @webreg = WebReg::WebRegistration.new(param)
@@ -72,11 +84,11 @@ module Stamps
     begin
       @stamps ||= StampsCom.new(param)
     rescue Exception => e
-      logger.message ""
-      logger.message "#{e.message}"
-      logger.message "\n#{e.backtrace.join "\n"}"
-      logger.message ""
-      logger.message ""
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "\n#{e.backtrace.join "\n"}"
+      logger.error ""
+      logger.error ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -158,18 +170,6 @@ module Stamps
     test_parameter[:company] = address['company']
     test_parameter[:ship_to_domestic] = ParameterHelper.format_address(address)
     test_parameter[:ship_to_domestic]
-  end
-
-  def test_helper
-    begin
-      TestHelper
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
   end
 
   def logger

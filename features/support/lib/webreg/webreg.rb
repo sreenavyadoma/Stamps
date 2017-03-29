@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class AnErrorOccured < Browser::StampsBrowserElement
+    class AnErrorOccured < Browser::StampsModal
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 
       def initialize(param)
@@ -16,7 +16,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        header_elem.safely_wait_until_present *args
+        header_elem.wait_until_present *args
       end
 
       def header
@@ -36,7 +36,7 @@ module Stamps
       end
     end
 
-    class WebRegistration < Browser::StampsBrowserElement
+    class WebRegistration < Browser::StampsModal
       attr_reader :profile, :error_occured
       def initialize(param)
         super(param)
@@ -76,7 +76,7 @@ module Stamps
         end
         expect(browser.url).to include "registration"
         sign_up_for_new_account = StampsElement.new browser.h1(text: "Sign up for a new account")
-        sign_up_for_new_account.safely_wait_until_present 8
+        sign_up_for_new_account.wait_until_present 8
         logger.info "Page loaded.  #{browser.url}"
         "Success"
       end

@@ -11,7 +11,7 @@ module Stamps
           return @extra_services if !@extra_services.nil? && @extra_services.present?
           expect(extra_services_select_button.present?).to be(true)
           @extra_services = MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
-          20.times do extra_services_select_button.safe_click unless @extra_services.present? end
+          20.times do extra_services_select_button.click unless @extra_services.present? end
           expect(@extra_services.present?).to be(true)
           @extra_services
         end
@@ -43,7 +43,7 @@ module Stamps
           @show_element = StampsElement.new(browser.span(text: "Show Advanced Options")) if @show_element.nil?
           @hide_element = StampsElement.new(browser.span(text: "Hide Advanced Options")) if @hide_element.nil?
           15.times do
-            @show_element.safe_click
+            @show_element.click
             break if @hide_element.present?
           end
           expect(@hide_element.present?).to be(true)
@@ -53,7 +53,7 @@ module Stamps
           @show_element = StampsElement.new(browser.span(text: "Show Advanced Options")) if @show_element.nil?
           @hide_element = StampsElement.new(browser.span(text: "Hide Advanced Options")) if @hide_element.nil?
           15.times do
-            @hide_element.safe_click
+            @hide_element.click
             break if @show_element.present?
           end
           expect(@show_element.present?).to be(true)

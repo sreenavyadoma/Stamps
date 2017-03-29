@@ -38,10 +38,10 @@ module Stamps
         end
       end
 
-      class PackageContentsDetails < Browser::StampsBrowserElement
+      class PackageContentsDetails < Browser::StampsModal
       end
 
-      class CustomsMadeIn < Browser::StampsBrowserElement
+      class CustomsMadeIn < Browser::StampsModal
         attr_reader :text_box, :drop_down, :index
 
         def initialize(param, text_box, drop_down, index)
@@ -57,11 +57,11 @@ module Stamps
 
         def select(selection)
           logger.info "Made In #{selection}"
-          drop_down.safe_click
+          drop_down.click
           selection_element = StampsElement.new(browser.lis(text: selection)[((param.web_app == :mail)?index+1:index)])
           10.times do
-            drop_down.safe_click unless selection_element.present?
-            selection_element.safe_click
+            drop_down.click unless selection_element.present?
+            selection_element.click
             break if text.include?(selection)
           end
           expect(text).to include(selection)
@@ -69,7 +69,7 @@ module Stamps
         end
       end
 
-      class AssociatedCustomsLineItem < Browser::StampsBrowserElement
+      class AssociatedCustomsLineItem < Browser::StampsModal
         attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :made_in, :customs_item_hs_tariff, :index
 
         def initialize(param, index)
@@ -100,7 +100,7 @@ module Stamps
         end
       end
 
-      class AssociatedCustomsItems < Browser::StampsBrowserElement
+      class AssociatedCustomsItems < Browser::StampsModal
         attr_reader :add_btn
 
         def initialize(param)
@@ -121,13 +121,13 @@ module Stamps
           5.times do
             return customs_item if customs_item.present?
             sleep(0.10)
-            add_btn.safe_click if number > size
+            add_btn.click if number > size
           end
           customs_item
         end
       end
 
-      class UspsPrivactActStatementModal < Browser::StampsBrowserElement
+      class UspsPrivactActStatementModal < Browser::StampsModal
         attr_reader :window_title, :okay
 
         def initialize(param)
@@ -141,7 +141,7 @@ module Stamps
         end
       end
 
-      class CustInfoPackageContents < Browser::StampsBrowserElement
+      class CustInfoPackageContents < Browser::StampsModal
         attr_accessor :combo_box, :contents
 
         def initialize(param)
@@ -159,7 +159,7 @@ module Stamps
         end
       end
 
-      class CustInfoInternalTransaction < Browser::StampsBrowserElement
+      class CustInfoInternalTransaction < Browser::StampsModal
         attr_accessor :combo_box, :itn_number
 
         def initialize(param)
@@ -175,7 +175,7 @@ module Stamps
         end
       end
 
-      class CustomsInformation < Browser::StampsBrowserElement
+      class CustomsInformation < Browser::StampsModal
 
         attr_reader :window_title, :associated_items, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                     :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
@@ -218,7 +218,7 @@ module Stamps
         end
 
         def blur_out
-          total_label.safe_click
+          total_label.click
           total_label.safe_double_click
         end
 
@@ -227,7 +227,7 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          window_title.safely_wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def total_value
@@ -236,14 +236,14 @@ module Stamps
 
         def usps_privacy_act_statement
           5.times{
-            privacy_link.safe_click
+            privacy_link.click
             return privacy_statement if privacy_statement.present?
           }
         end
 
         def restrictions_and_prohibitions
           5.times{
-            restrictions_prohibitions_link.safe_click
+            restrictions_prohibitions_link.click
             return restrictions_link if restrictions_link.present?
           }
         end

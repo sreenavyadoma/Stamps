@@ -1,7 +1,7 @@
 module Stamps
   module Orders
 
-    class ServerError < Browser::StampsBrowserElement
+    class ServerError < Browser::StampsModal
       def present?
         (browser.divs(text: "Server Error").last).present?
       end
@@ -14,8 +14,8 @@ module Stamps
       def ok
         20.times do
           button = browser.spans(text: "OK").last
-          element_helper.safe_click button
-          element_helper.safe_click button
+          element_helper.click button
+          element_helper.click button
           sleep(0.35)
           break unless present?
         end
@@ -31,7 +31,7 @@ module Stamps
       end
     end
 
-    class OrderError < Browser::StampsBrowserElement
+    class OrderError < Browser::StampsModal
 
       protected
 
@@ -56,7 +56,7 @@ module Stamps
       def ok
         5.times {
           begin
-            element_helper.safe_click ok_button_span
+            element_helper.click ok_button_span
             break unless ok_button_span.present?
           rescue
             #ignore
@@ -76,7 +76,7 @@ module Stamps
 
     end
 
-    class IncompleteOrderError < Browser::StampsBrowserElement
+    class IncompleteOrderError < Browser::StampsModal
       private
 
       def error_message_label
@@ -102,7 +102,7 @@ module Stamps
       def ok
         ok_btn = StampsElement.new browser.span(text: "OK")
         10.times{
-          ok_btn.safe_click
+          ok_btn.click
           break unless ok_btn.present?
         }
       end
@@ -118,7 +118,7 @@ module Stamps
       def continue
         5.times{
           begin
-            element_helper.safe_click continue_button
+            element_helper.click continue_button
             break unless continue_button.present?
           rescue
             #ignore
@@ -130,7 +130,7 @@ module Stamps
       def cancel
         5.times{
           begin
-            element_helper.safe_click cancel_button
+            element_helper.click cancel_button
             break unless cancel_button.present?
           rescue
             #ignore
@@ -140,14 +140,14 @@ module Stamps
 
       def close_window
         5.times{
-          element_helper.safe_click window_title
+          element_helper.click window_title
           brea
         }
       end
 
     end
 
-    class RatingError < Browser::StampsBrowserElement
+    class RatingError < Browser::StampsModal
       private
       def rating_error_p
         browser.p css: 'div[class=x-autocontainer-innerCt]>p:nth-child(1)'
@@ -176,7 +176,7 @@ module Stamps
         logger.info element_helper.text rating_error_p
         logger.info "----  Rating Error  ----"
         5.times {
-          element_helper.safe_click ok_button
+          element_helper.click ok_button
           break unless present?
         }
       end

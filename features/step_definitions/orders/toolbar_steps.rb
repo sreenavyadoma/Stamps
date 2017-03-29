@@ -1,4 +1,4 @@
-Then /^(?:C|c)lick Orders Toolbar Add button$/ do
+Then /^[Cc]lick Orders Toolbar Add button$/ do
   begin
     test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
@@ -30,7 +30,7 @@ Then /^(?:I|i)n Orders Toolbar, Refresh Orders$/ do
   stamps.orders.orders_toolbar.refresh_orders
 end
 
-Then /^(?:E|e)xpect Print modal Print Modal is present$/ do
+Then /^[Ee]xpect Print modal Print Modal is present$/ do
   expect(stamps.orders.orders_toolbar.print_btn.print_modal.present?).to be_truthy
 end
 

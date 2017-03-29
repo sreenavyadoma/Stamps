@@ -2,16 +2,16 @@ module Stamps
   module Mail
     module AdvancedOptions
 
-      class AdvancedOptionsContainer < Browser::StampsBrowserElement
-        attr_reader :advanced_options
+      class AdvancedOptionsContainer < Browser::StampsModal
+        attr_reader :print_media
 
         def initialize(param)
           super(param)
-          @advanced_options = param.print_media
+          @print_media = param.print_media
         end
       end
 
-      class CostCodeComboBox < Browser::StampsBrowserElement
+      class CostCodeComboBox < Browser::StampsModal
         attr_accessor :param, :text_box, :drop_down
 
         def initialize(param)
@@ -35,12 +35,12 @@ module Stamps
 
         def select(str)
           logger.info "Select #{str}"
-          drop_down.safe_click
+          drop_down.click
           10.times do
             begin
               break if (text_box.text).include?(str)
-              drop_down.safe_click unless selection(browser.lis(text: str)).present?
-              element_helper.safe_click(selection(str))
+              drop_down.click unless selection(browser.lis(text: str)).present?
+              element_helper.click(selection(str))
               logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
             rescue
               #ignore
@@ -58,28 +58,19 @@ module Stamps
         end
       end
 
-      class MailDatePicker < Browser::StampsBrowserElement
+      class MailDatePicker < Browser::StampsModal
         include MailDateTextbox
         def initialize(param)
           super(param)
           @trigger_picker = StampsElement.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
         end
 
-        def ship_date(day)
-          (Date.today+day).strftime("%m/%d/%Y")
-
-          # get today's date
-          # determine if today's date is sunday
-          # determine if today's date is a holiday
-          # return proper date
-        end
-
         def choose_date(element, day)
-          date = ship_date(day)
-          @trigger_picker.safe_click
+          date = valid_ship_date(day)
+          @trigger_picker.click
           20.times do
-            @trigger_picker.safe_click unless element.present?
-            element_helper.safe_click(element)
+            @trigger_picker.click unless element.present?
+            element_helper.click(element)
             break if text_box.text.include?(date)
           end
           expect(text_box.text).to eql(date)
@@ -118,7 +109,7 @@ module Stamps
         end
       end
 
-      class MailDate < Browser::StampsBrowserElement
+      class MailDate < Browser::StampsModal
         include MailDateTextbox
         attr_accessor :date_picker
 

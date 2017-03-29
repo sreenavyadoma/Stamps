@@ -111,20 +111,20 @@ Then /^(?:O|o)n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollar
   expect(@ach_credit).to be_truthy
   dollar_amount = @ach_credit.dollar_amount
   dollar_amount.set dollars
-  dollar_amount.safe_click
-  dollar_amount.safe_click
-  dollar_amount.safe_click
+  dollar_amount.click
+  dollar_amount.click
+  dollar_amount.click
 
   cents_amount = @ach_credit.cents_amount
-  cents_amount.safe_click
-  cents_amount.safe_click
-  cents_amount.safe_click
+  cents_amount.click
+  cents_amount.click
+  cents_amount.click
   cents_amount.set cents
 
   comments = @ach_credit.comments
-  comments.safe_click
-  comments.safe_click
-  comments.safe_click
+  comments.click
+  comments.click
+  comments.click
   comments.set test_parameter[:usr]
 
   @ach_credit.submit.yes.ok

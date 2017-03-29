@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::StampsBrowserElement
+      class CollapseButton < Browser::StampsModal
         attr_reader :button, :tooltip_element
 
         def initialize(param)
@@ -13,7 +13,7 @@ module Stamps
         def click
           10.times do
             begin
-              button.safe_click
+              button.click
               sleep(0.35)
               break unless button.present?
             rescue
@@ -36,7 +36,7 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::StampsBrowserElement
+      class ExpandButton < Browser::StampsModal
         attr_reader :button, :tooltip_element
 
         def initialize(param)
@@ -48,7 +48,7 @@ module Stamps
         def click
           10.times do
             begin
-              button.safe_click
+              button.click
               sleep(0.35)
               break unless button.present?
             rescue
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::StampsBrowserElement
+      class FilterMenuItem < Browser::StampsModal
         attr_reader :collapse, :expand
 
         def initialize(param)
@@ -81,7 +81,7 @@ module Stamps
         end
       end
 
-      class SearchResults < Browser::StampsBrowserElement
+      class SearchResults < Browser::StampsModal
         attr_reader :label, :remove_button, :count_label
 
         def initialize(param)
@@ -105,7 +105,7 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::StampsBrowserElement
+      class SearchOrders < Browser::StampsModal
         attr_reader :textbox, :search_button, :search_results
 
         def initialize(param)
@@ -122,20 +122,20 @@ module Stamps
         def search str
           20.times do
             textbox.set str
-            search_button.safe_click
-            search_button.safe_click
-            search_button.safe_click
+            search_button.click
+            search_button.click
+            search_button.click
             if str.include? '@'
               search_button.send_keys(:enter)
               textbox.set str
-              search_button.safe_click
-              search_button.safe_click
+              search_button.click
+              search_button.click
               sleep(0.35)
-              search_button.safe_click
-              search_button.safe_click
+              search_button.click
+              search_button.click
               sleep(0.35)
-              search_button.safe_click
-              search_button.safe_click
+              search_button.click
+              search_button.click
               sleep(0.35)
             end
             return search_results if search_results.present?
@@ -144,7 +144,7 @@ module Stamps
         end
       end
 
-      class FilterTab < Browser::StampsBrowserElement
+      class FilterTab < Browser::StampsModal
         attr_reader :index
         def initialize(param, index)
           super(param)
@@ -162,7 +162,7 @@ module Stamps
         def select
           40.times do
             element_helper.safe_double_click(element)
-            element_helper.safe_click(element)
+            element_helper.click(element)
             sleep(0.25)
             break if selected?
           end
@@ -210,7 +210,7 @@ module Stamps
         end
       end
 
-      class FilterPanel < Browser::StampsBrowserElement
+      class FilterPanel < Browser::StampsModal
         attr_reader :search_orders_modal, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
 
         def initialize(param)

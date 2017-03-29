@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MoreInfoPage < Browser::StampsBrowserElement
+    class MoreInfoPage < Browser::StampsModal
       def present?
         browser.windows.size > 1
       end
@@ -15,7 +15,7 @@ module Stamps
     end
 
 
-    class RememberUsername < Browser::StampsBrowserElement
+    class RememberUsername < Browser::StampsModal
       attr_reader :remember_user_element
 
       def initialize(param)
@@ -39,7 +39,7 @@ module Stamps
       end
     end
 
-    class MailLandingPage < Browser::StampsBrowserElement
+    class MailLandingPage < Browser::StampsModal
       attr_reader :sign_in_modal
 
       def initialize(param)
@@ -71,7 +71,7 @@ module Stamps
       end
     end
 
-    class WhatsNewModal < Browser::StampsBrowserElement
+    class WhatsNewModal < Browser::StampsModal
       attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
       def initialize(param)
@@ -88,7 +88,7 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        continue_btn.safely_wait_until_present(*args)
+        continue_btn.wait_until_present(*args)
       end
 
       def close
@@ -97,7 +97,7 @@ module Stamps
 
       def more_info
         10.times do
-          more_info_btn.safe_click
+          more_info_btn.click
           sleep(0.35)
           return more_info_page if more_info_page.present?
         end
@@ -134,11 +134,11 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        sign_in_link.safely_wait_until_present(*args)
+        sign_in_link.wait_until_present(*args)
       end
 
       def show_sign_in_modal
-        sign_in_link.safe_click unless username_textbox.present?
+        sign_in_link.click unless username_textbox.present?
       end
 
       def username(usr)
@@ -153,41 +153,48 @@ module Stamps
 
       def login
         show_sign_in_modal
-        sign_in_button.safe_click
-        sign_in_button.safe_click
+        sign_in_button.click
+        sign_in_button.click
       end
 
       def mail_sign_in(credentials)
-        user_credentials(credentials)
-        5.times do
-          break if signed_in_user.present?
-          username(usr)
-          password(pw)
-          login
-          50.times do
-            begin
-              logger.message(verifying_account_info.text)
-              break if signed_in_user.present?
-              if whats_new_modal.present?
-                whats_new_modal.continue
-                break
+        begin
+          user_credentials(credentials)
+          5.times do
+            break if signed_in_user.present?
+            username(usr)
+            password(pw)
+            login
+            50.times do
+              begin
+                logger.message(verifying_account_info.text)
+                break if signed_in_user.present?
+                if whats_new_modal.present?
+                  whats_new_modal.continue
+                  break
+                end
+              rescue
+                # do nothing
               end
-            rescue
-              # do nothing
             end
+            signed_in_user.wait_until_present(2)
+            if whats_new_modal.present?
+              whats_new_modal.continue
+              break
+            end
+            break if signed_in_user.present?
           end
-          signed_in_user.wait_until_present(2)
-          if whats_new_modal.present?
-            whats_new_modal.continue
-            break
-          end
-          break if signed_in_user.present?
+          expect(signed_in_user.text).to eql(usr)
+          logger.message "#"*15
+          logger.message "Signed-in User: #{signed_in_user.text}"
+          logger.message "#"*15
+          signed_in_user.text
+        rescue Exception => e
+          logger.error ""
+          logger.error "#{e.message}"
+          logger.error "\n#{e.backtrace.join "\n"}"
+          logger.error ""
         end
-        expect(signed_in_user.text).to eql(usr)
-        logger.message "#"*15
-        logger.message "Signed-in User: #{signed_in_user.text}"
-        logger.message "#"*15
-        signed_in_user.text
       end
 
       # todo-rob revisit code below
@@ -255,25 +262,25 @@ module Stamps
         invalid_msg = StampsElement.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
 
         10.times {
-          sign_in_link.safe_click unless username_textbox.present?
+          sign_in_link.click unless username_textbox.present?
           username_textbox.set username
 
-          sign_in_link.safe_click unless password_textbox.present?
+          sign_in_link.click unless password_textbox.present?
           password_textbox.set password
 
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
+          sign_in_link.click unless sign_in_button.present?
+          sign_in_button.click
           break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
+          sign_in_link.click unless sign_in_button.present?
+          sign_in_button.click
           break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
+          sign_in_link.click unless sign_in_button.present?
+          sign_in_button.click
           break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
-          sign_in_button.safe_click
+          sign_in_link.click unless sign_in_button.present?
+          sign_in_button.click
           break if signed_in_user.present?
-          sign_in_link.safe_click unless sign_in_button.present?
+          sign_in_link.click unless sign_in_button.present?
           break if signed_in_user.present?
 
           #logger.info "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
@@ -303,8 +310,8 @@ module Stamps
           button = StampsElement.new browser.a css: "a[class*=forgotUsername]"
           forgot_username_modal = ForgotUsernameModal.new(param)
           5.times do
-            sign_in_link.safe_click
-            button.safe_click
+            sign_in_link.click
+            button.click
             sleep(0.35)
             return forgot_username_modal if forgot_username_modal.present?
           end
@@ -316,8 +323,8 @@ module Stamps
           button = StampsElement.new browser.a css: "a[class*=forgotPassword]"
           forgot_password_modal = ForgotPasswordModal.new(param)
           5.times do
-            sign_in_link.safe_click
-            button.safe_click
+            sign_in_link.click
+            button.click
             sleep(0.35)
             return forgot_password_modal if forgot_password_modal.present?
           end

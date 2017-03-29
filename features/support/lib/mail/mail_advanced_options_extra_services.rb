@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::StampsBrowserElement
+      class MailExtraServices < Browser::StampsModal
         attr_accessor :window_title, :security, :value, :handling, :save_element, :close_element, :security_price_element, :return_receipt_price_element,
                       :restricted_delivery_price_element, :cod_price_element, :non_delivery_notice_price_element, :content_price_element,
                       :special_handling_price_element, :merchandise_return_receipt_element, :total_price_element

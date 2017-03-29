@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Details
-      class MultiOrderDetails < Browser::StampsBrowserElement
+      class MultiOrderDetails < Browser::StampsModal
         private
         def order_count_label
           browser.ps(css: 'b').last

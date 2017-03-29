@@ -15,8 +15,8 @@ module Stamps
         end
       end
 
-      class Amazon < Browser::StampsBrowserElement
-        class OrderSource < Browser::StampsBrowserElement
+      class Amazon < Browser::StampsModal
+        class OrderSource < Browser::StampsModal
           def text_box
             StampsTextbox.new(browser.text_field name: "AmazonMarketplace")
           end
@@ -31,10 +31,10 @@ module Stamps
             selection_field = StampsElement.new(browser.li text: selection)
 
             10.times do
-              dd.safe_click unless selection_field.present?
+              dd.click unless selection_field.present?
               sleep(0.35)
-              selection_field.safe_click
-              selection_field.safe_click
+              selection_field.click
+              selection_field.click
               break if text_field.text.include? selection
             end
 
@@ -50,7 +50,7 @@ module Stamps
           end
         end
 
-        class ProductIdentifier < Browser::StampsBrowserElement
+        class ProductIdentifier < Browser::StampsModal
           def text_box
             StampsTextbox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
           end
@@ -65,10 +65,10 @@ module Stamps
             selection_field = StampsElement.new(browser.li text: selection)
 
             10.times do
-              dd.safe_click unless selection_field.present?
+              dd.click unless selection_field.present?
               sleep(0.35)
-              selection_field.safe_click
-              selection_field.safe_click
+              selection_field.click
+              selection_field.click
               break if text_field.text.include? selection
             end
 
@@ -96,7 +96,7 @@ module Stamps
         def close
           button = StampsElement.new browser.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
           5.times do
-            button.safe_click
+            button.click
             break unless present?
           end
         end
@@ -112,7 +112,7 @@ module Stamps
         def verify_seller_id
           button = StampsElement.new(browser.span text: "Verify Seller ID")
           3.times do
-            button.safe_click
+            button.click
           end
         end
 
@@ -130,7 +130,7 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             5.times do
               if importing_order.present?
                 logger.info importing_order.message
@@ -157,7 +157,7 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
-            button.safe_click
+            button.click
             5.times do
               if server_error.present?
                 error_str = server_error.message

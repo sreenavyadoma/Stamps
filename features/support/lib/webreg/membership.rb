@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class State < Browser::StampsBrowserElement
+    class State < Browser::StampsModal
       def select state
         begin
           browser.select_list(:id, "state").option(text: state).when_present.select
@@ -269,7 +269,7 @@ module Stamps
     end
 
 
-    class ExpirationMonth < Browser::StampsBrowserElement
+    class ExpirationMonth < Browser::StampsModal
       def select month
         begin
           browser.select_list(:id, "ccMonth").option(text: month).when_present.select
@@ -338,7 +338,7 @@ module Stamps
 
     end
 
-    class ExpirationYear < Browser::StampsBrowserElement
+    class ExpirationYear < Browser::StampsModal
       def select year
         begin
           browser.select_list(:id, "ccYear").option(text: year).when_present.select
@@ -349,7 +349,7 @@ module Stamps
       end
     end
 
-    class TermsAndConditions < Browser::StampsBrowserElement
+    class TermsAndConditions < Browser::StampsModal
       attr_reader :checkbox
       def initialize(param)
         super(param)
@@ -380,7 +380,7 @@ module Stamps
       end
     end
 
-    class UserIdTaken < Browser::StampsBrowserElement
+    class UserIdTaken < Browser::StampsModal
       def present?
         (browser.h3 text: "User ID Taken").present?
       end
@@ -398,7 +398,7 @@ module Stamps
       end
     end
 
-    class MembershipError < Browser::StampsBrowserElement
+    class MembershipError < Browser::StampsModal
       attr_reader :title, :top_message, :error_code, :error_description
 
       def initialize(param)
@@ -414,7 +414,7 @@ module Stamps
       end
     end
 
-    class WebRegError < Browser::StampsBrowserElement
+    class WebRegError < Browser::StampsModal
       def present?
         browser.text.include? "An Error Occurred"
 
@@ -427,7 +427,7 @@ module Stamps
       end
     end
 
-    class WebRegSecureConnectionFailed < Browser::StampsBrowserElement
+    class WebRegSecureConnectionFailed < Browser::StampsModal
       def present?
         browser.text.include? "Secure Connection Failed"
       end
@@ -542,7 +542,7 @@ module Stamps
       end
     end
 
-    class BillingState < Browser::StampsBrowserElement
+    class BillingState < Browser::StampsModal
       def select state
         begin
           browser.select_list(:id, "billingState").option(text: state).when_present.select
@@ -838,7 +838,7 @@ module Stamps
       end
     end
 
-    class Membership < Browser::StampsBrowserElement
+    class Membership < Browser::StampsModal
 
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
                   :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions, :back,
@@ -908,7 +908,7 @@ module Stamps
           submit
 
           loading.wait_until_present 3
-          page_header.safely_wait_until_present 3
+          page_header.wait_until_present 3
 
           if phone.has_error?
             err_text = phone.help_text
@@ -938,9 +938,9 @@ module Stamps
       end
 
       def submit
-        submit_button.safely_wait_until_present 6
+        submit_button.wait_until_present 6
         expect(submit_button.present?).to be(true)
-        submit_button.safe_click
+        submit_button.click
         submit_button.send_keys(:enter)
       end
 

@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Shopify < Browser::StampsBrowserElement
+      class Shopify < Browser::StampsModal
 
         def window_title
           StampsElement.new(browser.div text: "Connect your Shopify Store")
@@ -40,12 +40,12 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
             end
-            button.safe_click
+            button.click
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -143,12 +143,12 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
             end
-            button.safe_click
+            button.click
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -250,7 +250,7 @@ module Stamps
         end
       end
 
-      class ShopifyPage < Browser::StampsBrowserElement
+      class ShopifyPage < Browser::StampsModal
         def present?
           browser.url.include? "shopify.com"
         end
@@ -268,7 +268,7 @@ module Stamps
           settings_page = ShopifySettings.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             sleep(5)
             return settings_page if settings_page.present?
           end

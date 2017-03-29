@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class LearnMoreModal < Browser::StampsBrowserElement
+    class LearnMoreModal < Browser::StampsModal
       attr_reader :title, :msg_container, :next_button, :cancel_button, :learn_button, :close_button
 
       def initialize(param)
@@ -17,7 +17,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        title.safely_wait_until_present *args
+        title.wait_until_present *args
       end
 
       def cancel
@@ -34,7 +34,7 @@ module Stamps
       end
     end
 
-    class ImportFromStoresModal < Browser::StampsBrowserElement
+    class ImportFromStoresModal < Browser::StampsModal
       attr_reader :title, :msg_container, :next_button, :close_button, :learn_more
 
       def initialize(param)
@@ -51,7 +51,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        title.safely_wait_until_present *args
+        title.wait_until_present *args
       end
 
       def close
@@ -65,13 +65,13 @@ module Stamps
       def next
         10.times do
           logger.message message
-          next_button.safe_click
+          next_button.click
           return learn_more if learn_more.present?
         end
       end
     end
 
-    class ImportFromCsvModal < Browser::StampsBrowserElement
+    class ImportFromCsvModal < Browser::StampsModal
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_stores
 
       def initialize(param)
@@ -88,7 +88,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        title.safely_wait_until_present *args
+        title.wait_until_present *args
       end
 
       def close
@@ -102,13 +102,13 @@ module Stamps
       def next
         10.times do
           logger.message message
-          next_button.safe_click
+          next_button.click
           return import_from_stores if import_from_stores.present?
         end
       end
     end
 
-    class AddManualOrderModal < Browser::StampsBrowserElement
+    class AddManualOrderModal < Browser::StampsModal
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_csv
 
       def initialize(param)
@@ -125,7 +125,7 @@ module Stamps
       end
 
       def wait_until_present *args
-        title.safely_wait_until_present *args
+        title.wait_until_present *args
       end
 
       def close
@@ -139,7 +139,7 @@ module Stamps
       def next
         10.times do
           logger.message message
-          next_button.safe_click
+          next_button.click
           return import_from_csv if import_from_csv.present?
         end
       end

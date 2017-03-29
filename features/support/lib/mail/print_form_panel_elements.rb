@@ -2,7 +2,7 @@ module Stamps
   module Mail
     module PrintFormPanel
 
-      class PrintOn < Browser::StampsBrowserElement
+      class PrintOn < Browser::StampsModal
         attr_accessor :drop_down, :text_box
         include PrintFormBlurOut
 
@@ -17,7 +17,7 @@ module Stamps
         end
 
         def print_on(str)
-          drop_down.safe_click
+          drop_down.click
           case str
             when /Paper/
               param.print_media = :labels
@@ -101,10 +101,10 @@ module Stamps
             begin
               if selection.present?
                 selection.scroll_into_view
-                selection.safe_click
+                selection.click
                 break if text_box.text.include?(selected_sub_str)
               else
-                drop_down.safe_click unless selection.present?
+                drop_down.click unless selection.present?
               end
             rescue
               #ignore
@@ -118,13 +118,13 @@ module Stamps
         def tooltip(selection)
           selection_field = StampsElement.new browser.div(text: selection)
           10.times do
-            drop_down.safe_click unless selection_field.present?
+            drop_down.click unless selection_field.present?
             return selection_field.attribute_value "data-qtip" if selection_field.present?
           end
         end
       end
 
-      class MailToCountry < Browser::StampsBrowserElement
+      class MailToCountry < Browser::StampsModal
         attr_reader :dom_text_area
         include PrintFormBlurOut
 
@@ -157,25 +157,25 @@ module Stamps
           geography = :domestic
           geography = :international unless str.downcase == 'united states'
 
-          drop_down.safe_click
+          drop_down.click
           selection = StampsElement.new(browser.lis(text: str)[(domestic?)?0:1])
           10.times do
             begin
               break if text_box.text == str
-              drop_down.safe_click unless selection.present?
+              drop_down.click unless selection.present?
               selection.scroll_into_view
-              selection.safe_click
+              selection.click
             rescue
               #ignore
             end
           end
           expect(text_box.text).to eql(str)
-          drop_down.safe_click if selection.present?
+          drop_down.click if selection.present?
           geography
         end
       end
 
-      class MailToInt < Browser::StampsBrowserElement
+      class MailToInt < Browser::StampsModal
         attr_reader :country, :name, :company, :address_1, :address_2, :city, :province, :postal_code, :phone
         include PrintFormBlurOut
 
@@ -198,7 +198,7 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::StampsBrowserElement
+      class MailToDom < Browser::StampsModal
         attr_reader :text_area, :country
         include PrintFormBlurOut
 
@@ -208,11 +208,11 @@ module Stamps
         end
 
         def set(address)
-          text_area.safe_click
+          text_area.click
           text_area.set(address)
-          text_area.safe_click
+          text_area.click
           text_area.safe_double_click
-          text_area.safe_click
+          text_area.click
           text_area.safe_double_click
           blur_out
           blur_out
@@ -220,11 +220,11 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::StampsBrowserElement
+      class PrintFormEmail < Browser::StampsModal
 
       end
 
-      class PrintFormWeight < Browser::StampsBrowserElement
+      class PrintFormWeight < Browser::StampsModal
         attr_reader :auto_weigh, :weigh_button, :mail_pounds, :mail_ounces
         include PrintFormBlurOut
 
@@ -249,7 +249,7 @@ module Stamps
         end
       end
 
-      class PrintFormDimensions < Browser::StampsBrowserElement
+      class PrintFormDimensions < Browser::StampsModal
         attr_accessor :length, :width, :height
 
         def initialize(param)
@@ -275,7 +275,7 @@ module Stamps
 
       end
 
-      class PrintFormMailFrom < Browser::StampsBrowserElement
+      class PrintFormMailFrom < Browser::StampsModal
         attr_reader :text_box, :drop_down, :manage_shipping_address
         include PrintFormBlurOut
 
@@ -291,7 +291,7 @@ module Stamps
         end
 
         def select(str)
-          drop_down.safe_click
+          drop_down.click
 
           if str.downcase == 'default'
             element = browser.li(css: "li[class*=x-boundlist-item][data-boundview^=boundlist][role=option]:nth-child(1)")
@@ -306,9 +306,9 @@ module Stamps
           if str.downcase.include? "manage shipping"
             10.times do
               begin
-                drop_down.safe_click unless selection.present?
+                drop_down.click unless selection.present?
                 selection.scroll_into_view
-                selection.safe_click
+                selection.click
                 return manage_shipping_address if manage_shipping_address.present?
               rescue
                 #ignore
@@ -316,10 +316,10 @@ module Stamps
             end
           else
             10.times do
-              drop_down.safe_click unless selection.present?
+              drop_down.click unless selection.present?
               selection.scroll_into_view
-              selection_text = selection.safe_text
-              selection.safe_click
+              selection_text = selection.text
+              selection.click
               text_val = text_box.text
               begin
                 break if text_val.include? selection_text
@@ -329,7 +329,7 @@ module Stamps
         end
       end
 
-      class PrintFormService < Browser::StampsBrowserElement
+      class PrintFormService < Browser::StampsModal
         attr_reader :text_box, :drop_down
         include PrintFormBlurOut
 
@@ -344,16 +344,16 @@ module Stamps
           selection = StampsElement.new browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=text]")
           20.times do
             begin
-              break if (text_box.safe_text).include?(str)
-              drop_down.safe_click unless selection.present?
+              break if (text_box.text).include?(str)
+              drop_down.click unless selection.present?
               selection.scroll_into_view
-              selection.safe_click
+              selection.click
             rescue
               #ignore
             end
           end
-          expect(text_box.safe_text).to include(str)
-          logger.info "#{text_box.safe_text} service selected."
+          expect(text_box.text).to include(str)
+          logger.info "#{text_box.text} service selected."
           selection
         end
 
@@ -361,7 +361,7 @@ module Stamps
           cost_label = StampsElement.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
           20.times {
             begin
-              drop_down.safe_click unless cost_label.present?
+              drop_down.click unless cost_label.present?
               if cost_label.present?
                 service_cost = ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
                 logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
@@ -379,7 +379,7 @@ module Stamps
           selection_label = StampsElement.new browser.tr css: "tr[data-qtip*='#{selection}']"
           10.times {
             begin
-              button.safe_click unless selection_label.present?
+              button.click unless selection_label.present?
               if selection_label.present?
                 tooltip = selection_label.attribute_value "data-qtip"
                 logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
@@ -398,7 +398,7 @@ module Stamps
 
       end
 
-      class StampAmount < Browser::StampsBrowserElement
+      class StampAmount < Browser::StampsModal
         def text_box
           StampsTextbox.new(browser.text_field name: "stampAmount")
         end
@@ -412,19 +412,19 @@ module Stamps
         def increment value
           button = StampsElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
           value.to_i.times do
-            button.safe_click
+            button.click
           end
         end
 
         def decrement value
           button = StampsElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
           value.to_i.times do
-            button.safe_click
+            button.click
           end
         end
       end
 
-      class PrintFormEmail < Browser::StampsBrowserElement
+      class PrintFormEmail < Browser::StampsModal
         attr_reader :checkbox, :text_box
         def initialize(param)
           super(param)
@@ -438,7 +438,7 @@ module Stamps
         end
       end
 
-      class MailTracking < Browser::StampsBrowserElement
+      class MailTracking < Browser::StampsModal
 
         def text_box
           StampsTextbox.new browser.text_field name: "tracking"
@@ -455,9 +455,9 @@ module Stamps
           selection_label = StampsElement.new browser.div text: selection
           10.times {
             begin
-              button.safe_click #unless selection_label.present?
+              button.click #unless selection_label.present?
               selection_label.scroll_into_view
-              selection_label.safe_click
+              selection_label.click
               selected_tracking = box.text
               logger.info "Selected Tracking #{selected_tracking} - #{(selected_tracking.include? selection)?"done": "tracking not selected"}"
               break if selected_tracking.include? selection
@@ -474,7 +474,7 @@ module Stamps
         end
       end
 
-      class PrintFormInsureFor < Browser::StampsBrowserElement
+      class PrintFormInsureFor < Browser::StampsModal
         def checkbox
 
         end
@@ -496,7 +496,7 @@ module Stamps
         end
       end
 
-      class PrintFormCostCode < Browser::StampsBrowserElement
+      class PrintFormCostCode < Browser::StampsModal
         def text_box
           StampsTextbox.new browser.text_field name: "costCodeId"
         end
@@ -515,9 +515,9 @@ module Stamps
           sleep(0.35)
           10.times {
             begin
-              button.safe_click #unless selection_label.present?
+              button.click #unless selection_label.present?
               selection_label.scroll_into_view
-              selection_label.safe_click
+              selection_label.click
               selected_cost_code = box.text
               logger.info "Selected Cost Code #{selected_cost_code} - #{(selected_cost_code.include? selection)?"done": "cost code not selected"}"
               break if selected_cost_code.include? selection
@@ -531,7 +531,7 @@ module Stamps
 
       end
 
-      class PrintFormQuantity < Browser::StampsBrowserElement
+      class PrintFormQuantity < Browser::StampsModal
         def text_box
           StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
         end
@@ -545,19 +545,19 @@ module Stamps
         def increment value
           button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[7])
           value.to_i.times do
-            button.safe_click
+            button.click
           end
         end
 
         def decrement value
           button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[7])
           value.to_i.times do
-            button.safe_click
+            button.click
           end
         end
       end
 
-      class PrintFormMailToLink < Browser::StampsBrowserElement
+      class PrintFormMailToLink < Browser::StampsModal
         attr_accessor :link, :contacts_modal
 
         def initialize(param)
@@ -570,13 +570,13 @@ module Stamps
           15.times do
             sleep(0.35)
             return contacts_modal if contacts_modal.present?
-            link.safe_click
+            link.click
           end
           expect(contacts_modal.present?).to be(true)
         end
       end
 
-      class PrintFormMailTo < Browser::StampsBrowserElement
+      class PrintFormMailTo < Browser::StampsModal
         attr_reader :address, :mail_to_link
         include PrintFormBlurOut
 
@@ -597,7 +597,7 @@ module Stamps
         end
       end
 
-      class PrintFormCustoms < Browser::StampsBrowserElement
+      class PrintFormCustoms < Browser::StampsModal
         attr_reader :button, :customs_form
 
         def initialize(param)
@@ -609,7 +609,7 @@ module Stamps
         def edit_form
           15.times do
             return customs_form if customs_form.present?
-            button.safe_click
+            button.click
             sleep(0.35)
           end
           expect(customs_form.present?).to be(true)

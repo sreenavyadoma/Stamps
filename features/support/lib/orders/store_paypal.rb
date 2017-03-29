@@ -1,12 +1,12 @@
 module Stamps
   module Orders
     module Stores
-      class Error400 < Browser::StampsBrowserElement
+      class Error400 < Browser::StampsModal
 
         def close
           button = StampsElement.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             break unless button.present?
           end
@@ -23,7 +23,7 @@ module Stamps
         def ok
           button = StampsElement.new(browser.span(text: "OK"))
           5.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             break unless button.present?
           end
@@ -34,7 +34,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationSent < Browser::StampsBrowserElement
+      class EmailVerificationSent < Browser::StampsModal
 
         def window_title
           StampsElement.new browser.div(text: "Email Verification Sent")
@@ -55,7 +55,7 @@ module Stamps
         def close
           button = StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']").last)
           5.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             break unless button.present?
           end
@@ -70,7 +70,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationRequired < Browser::StampsBrowserElement
+      class EmailVerificationRequired < Browser::StampsModal
 
         def window_title
           StampsElement.new browser.div(text: "Email Verification Required")
@@ -91,7 +91,7 @@ module Stamps
         def close
           button = StampsElement.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             break unless button.present?
           end
@@ -102,7 +102,7 @@ module Stamps
           verification_sent = EmailVerificationSent.new(param)
           error = Error400.new(param)
           10.times do
-            button.safe_click
+            button.click
             verification_sent.wait_until_present
             return verification_sent if verification_sent.present?
             if error.present?
@@ -115,7 +115,7 @@ module Stamps
         end
       end
 
-      class PayPal < Browser::StampsBrowserElement
+      class PayPal < Browser::StampsModal
 
         def window_title
           StampsElement.new browser.div(text: "Connect your PayPal Store")
@@ -133,7 +133,7 @@ module Stamps
           button = StampsElement.new browser.span(text: "Test Connection")
           verification_required = EmailVerificationRequired.new(param)
           10.times do
-            button.safe_click
+            button.click
             verification_required.wait_until_present
             return verification_required if verification_required.present?
           end
@@ -142,7 +142,7 @@ module Stamps
         def close
           button = StampsElement.new(browser.imgs(css: "img[class*=x-tool-close]").last)
           5.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             break unless button.present?
           end

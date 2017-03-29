@@ -10,6 +10,8 @@ Feature: Advanced Options BVT
     Then select Print On Stamps
     Then show Advanced Options
 
+    Then Expect Advanced Options Mail Date field is present
+
     Then expect Advanced Options Extra Services Button is visible
 
     Then expect Advanced Options Calculate Postage Amount radio button is present

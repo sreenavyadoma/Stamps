@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Grid
-      class Column < Browser::StampsBrowserElement
+      class Column < Browser::StampsModal
         MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
         TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
         GRID_COLUMNS = {
@@ -48,7 +48,7 @@ module Stamps
 
           10.times do
             column.scroll_into_view
-            column.safe_click
+            column.click
             5.times do
               sleep(1)
               return sort_order if span.parent.parent.parent.parent.parent.attribute_value("class").include?(sort_order)
@@ -971,7 +971,7 @@ module Stamps
         end
       end
 
-      class GridColumns < Browser::StampsBrowserElement
+      class GridColumns < Browser::StampsModal
         attr_reader :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient, :company,
                     :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
                     :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
@@ -1027,7 +1027,7 @@ module Stamps
       end
 
       # Orders Grid
-      class OrdersGrid < Browser::StampsBrowserElement
+      class OrdersGrid < Browser::StampsModal
         attr_reader :grid_element, :column
 
         def initialize(param)
@@ -1041,7 +1041,7 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          grid_element.safely_wait_until_present(*args)
+          grid_element.wait_until_present(*args)
         end
       end
     end
