@@ -495,8 +495,6 @@ Then /^(?:O|o)n WebReg Membership page, click Submit and correct errors$/ do
   end
 end
 
-#Added by Galina
-
 Then(/^(?:O|o)n WebReg Membership page, expect First Name Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect First Name Help Block is #{expectation}"
   help_text = webreg.profile.membership.first_name.help_text

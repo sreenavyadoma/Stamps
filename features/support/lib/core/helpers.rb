@@ -206,7 +206,6 @@ module Stamps
 
       end
 
-      # Added by Galina
       def clear_cookies
         logger.info "Clearing cookies"
         begin

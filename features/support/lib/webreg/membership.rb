@@ -460,14 +460,12 @@ module Stamps
       end
     end
 
-    #Added by Galina
     class MembershipCity < StampsTextbox
       def help_text
         StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipCardHolderName < StampsTextbox
       def help_text
         StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")).text
@@ -806,7 +804,6 @@ module Stamps
         checkbox_field = browser.input id: "useMailingAddressForBilling"
         @billing_same_as_mailing = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
 
-        #Added by Galina
         @billing_address = MembershipBillingAddress.new browser.text_field(id: "billingStreet")
         @billing_city = MembershipBillingAddress.new browser.text_field(id: "City")
         @billing_state = BillingState.new(param)
@@ -815,7 +812,7 @@ module Stamps
         @terms_and_conditions = TermsAndConditions.new(param)
         @back = StampsElement.new browser.button(id: "prev")
 
-        @submit_button = StampsElement.new browser.button(text: "Submit") #Change by Galina from "Submit"
+        @submit_button = StampsElement.new(browser.button(text: "Submit"))
         @supplies = ChooseSupplies.new(param)
         @userid_taken = UserIdTaken.new(param)
         @download_page = DownloadPage.new(param)
