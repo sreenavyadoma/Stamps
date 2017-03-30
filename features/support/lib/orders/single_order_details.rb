@@ -35,7 +35,7 @@ module Stamps
             15.times{
               begin
                 drop_down.click unless selection.present?
-                selection.safe_scroll_into_view
+                selection.scroll_into_view
                 selection.click
                 sleep(0.35)
                 return manage_shipping_adddress if manage_shipping_adddress.present?
@@ -48,12 +48,12 @@ module Stamps
           else
             drop_down.click unless selection.present?
             if selection.present?
-              selection.safe_scroll_into_view
+              selection.scroll_into_view
               service_text = selection.text
             end
             10.times do
               drop_down.click unless selection.present?
-              selection.safe_scroll_into_view
+              selection.scroll_into_view
               selection.click
               sleep(0.35)
               text_box_text = text_box.text
@@ -162,8 +162,8 @@ module Stamps
             10.times do
               break if text_field.text.include?(country)
               dd.click unless selection.present?
-              selection.safe_scroll_into_view
-              selection.safe_scroll_into_view
+              selection.scroll_into_view
+              selection.scroll_into_view
               selection.click if selection.present?
               logger.info "Selection #{text_field.text} - #{(text_field.text.include? country)?"was selected": "not selected"}"
               break if text_field.text.include?(country)
@@ -953,7 +953,7 @@ module Stamps
           20.times do
             begin
               drop_down.click unless selection.present?
-              selection.safe_scroll_into_view
+              selection.scroll_into_view
               selection.click
               blur_out
               logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
