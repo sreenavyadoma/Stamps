@@ -10,7 +10,7 @@ Feature: Advanced Options BVT
     Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then show Advanced Options
 
-    Then Expect Advanced Options Mail Date field is present
+    Then expect Advanced Options Mail Date field is present
 
     Then expect Advanced Options Extra Services Button is visible
 
