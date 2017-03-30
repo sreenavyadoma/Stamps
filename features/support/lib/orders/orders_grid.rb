@@ -70,11 +70,11 @@ module Stamps
           expect(name).to be_truthy
           case name
             when Symbol
-              element_helper.scroll_into_view(browser, browser.span(text: GRID_COLUMNS[name]))
+              StampsElement.new(browser.span(text: GRID_COLUMNS[name])).scroll_into_view
             when String
-              element_helper.scroll_into_view(browser, browser.span(text: name))
+              StampsElement.new(browser.span(text: name)).scroll_into_view
             when Watir::Element
-              element_helper.scroll_into_view(browser, name)
+              StampsElement.new(name).scroll_into_view
             else
               expect(name).to be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
           end
@@ -95,7 +95,7 @@ module Stamps
 
         def grid_text(column, row)
           scroll_to_column(column)
-          element_helper.text(grid_element(column, row))
+          StampsElement.new(grid_element(column, row)).text
         end
 
         def grid_element(column_number, row)
@@ -112,7 +112,7 @@ module Stamps
               columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
               columns.each_with_index do |element, index|
                 scroll_to_column element
-                if element_helper.text(element) == GRID_COLUMNS[column]
+                if StampsElement.new(element).text == GRID_COLUMNS[column]
                   #logger.message "In Orders Grid, -- #{GRID_COLUMNS[column]} is in column #{index+1}"
                   return index+1
                 end
@@ -131,7 +131,7 @@ module Stamps
             fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
             fields.each_with_index do |element, index|
               scroll_to_column element
-              row_text = element_helper.text element
+              row_text = StampsElement.new(element).text
               if row_text.include? order_id
                 logger.info "Order ID #{order_id}, Row #{index+1}"
                 sleep(0.35)
@@ -794,7 +794,7 @@ module Stamps
           Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
-        def check_all *args
+        def check_all(*args)
           scroll_into_view
           if args.length==1
             if args[0].is_a? Hash

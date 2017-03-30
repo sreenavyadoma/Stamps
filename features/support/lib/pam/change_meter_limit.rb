@@ -56,8 +56,8 @@ module Stamps
         browser.td(text: "Change Meter Limit Success").present?
       end
 
-      def wait_until_present *args
-        (StampsElement.new browser.td(text: "Change Meter Limit Success")).wait_until_present *args
+      def wait_until_present(*args)
+        (StampsElement.new browser.td(text: "Change Meter Limit Success")).wait_until_present(*args)
       end
 
       def text

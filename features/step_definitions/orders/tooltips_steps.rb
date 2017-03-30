@@ -104,10 +104,10 @@ Then /^[Ee]xpect Order Details form Domestic Address data error tooltip is \"(.*
   stamps.orders.order_details.ship_to.domestic.show_address
   text_box = stamps.orders.order_details.ship_to.domestic.text_area
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     text_box.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
@@ -125,10 +125,10 @@ Then /^[Ee]xpect Order Details form Domestic Email data error tooltip is \"(.*)\
   stamps.orders.order_details.ship_to.domestic.show_address
   text_box = stamps.orders.order_details.ship_to.domestic.email
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     text_box.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
@@ -170,9 +170,9 @@ Then /^[Ee]xpect Order Details form Weight Oz data error tooltip is \"(.*)\"$/ d
   20.times do
     text_box.scroll_into_view
     text_box.set "1"
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
-    text_box.safe_double_click
+    text_box.double_click
     text_box.set "0"
     text_box.scroll_into_view
     stamps.orders.order_details.blur_out
@@ -194,10 +194,10 @@ Then /^[Ee]xpect Order Details form service data error tooltip is \"(.*)\"$/ do 
   #logger.step "expect Order Details form Weight Oz data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.service.text_box
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     text_box.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
@@ -218,10 +218,10 @@ Then /^[Ee]xpect Order Details form Dimensions Length data error tooltip is \"(.
   text_box = stamps.orders.order_details.dimensions.length.text_box
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     text_box.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
@@ -242,10 +242,10 @@ Then /^[Ee]xpect Order Details form Dimensions Width data error tooltip is \"(.*
   width_text_box = stamps.orders.order_details.dimensions.width.text_box
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     text_box.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
@@ -266,10 +266,10 @@ Then /^[Ee]xpect Order Details form Dimensions Height data error tooltip is \"(.
   height_text_box = stamps.orders.order_details.dimensions.height.text_box
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     text_box.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
     data_error_tooltip = text_box.data_error_qtip
@@ -289,10 +289,10 @@ Then /^[Ee]xpect Order Details form International Name data error tooltip is \"(
   #logger.step "expect Order Details form International Name data error tooltip is #{expectation}"
   text_box = stamps.orders.order_details.ship_to.international.name
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     #web_apps.orders.order_details.ship_to.international.click_form
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
@@ -315,10 +315,10 @@ Then /^[Ee]xpect Order Details form International Company data error tooltip is 
   text_box = stamps.orders.order_details.ship_to.international.company
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
@@ -340,10 +340,10 @@ Then /^[Ee]xpect Order Details form International Address 1 data error tooltip i
   text_box = stamps.orders.order_details.ship_to.international.address_1
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
@@ -365,7 +365,7 @@ Then /^[Ee]xpect Order Details form International City data error tooltip is \"(
   text_box = stamps.orders.order_details.ship_to.international.city
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     stamps.orders.order_details.ship_to.international.blur_out
@@ -389,10 +389,10 @@ Then /^[Ee]xpect Order Details form International Phone data error tooltip is \"
   text_box = stamps.orders.order_details.ship_to.international.phone
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
@@ -415,10 +415,10 @@ Then /^[Ee]xpect Order Details form International Email data error tooltip is \"
   text_box = stamps.orders.order_details.ship_to.international.email
 
   20.times do
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.safe_double_click
+    text_box.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)

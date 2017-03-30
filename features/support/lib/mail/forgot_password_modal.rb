@@ -6,7 +6,7 @@ module Stamps
       end
 
       def close_window
-        element_helper.click window_x_button
+        window_x_button.click
       end
 
       def x_button_present?

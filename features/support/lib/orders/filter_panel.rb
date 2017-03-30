@@ -160,9 +160,10 @@ module Stamps
         end
 
         def select
+          element = StampsElement.new(element)
           40.times do
-            element_helper.safe_double_click(element)
-            element_helper.click(element)
+            element.double_click
+            element.click
             sleep(0.25)
             break if selected?
           end
@@ -178,7 +179,7 @@ module Stamps
         end
 
         def text
-          element_helper.text(element)
+          StampsElement.new(element).text
         end
       end
 
@@ -188,7 +189,7 @@ module Stamps
         end
 
         def count
-          element_helper.text(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).to_i
+          StampsElement.new(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).to_i.text
         end
       end
 

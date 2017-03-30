@@ -7,11 +7,11 @@ module Stamps
         end
 
         def message
-          element_helper.text browser.div(css: "div[id^=messagebox-][id$=-msg]")
+          StampsElement.new(browser.div(css: "div[id^=messagebox-][id$=-msg]")).text
         end
 
         def ok
-          button = StampsElement.new browser.span(text: "OK")
+          button = StampsElement.new(browser.span(text: "OK"))
           20.times do
             button.click
             break unless button.present?
@@ -204,8 +204,8 @@ module Stamps
           window_title.present?
         end
 
-        def wait_until_present *args
-          window_title.wait_until_present *args
+        def wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def contains store_name
@@ -428,13 +428,13 @@ module Stamps
                 row_to_delete = 0
                 begin
                   row = StampsElement.new tables[row_to_delete]
-                  grid_item_name = element_helper.text row
+                  grid_item_name = StampsElement.new(row).text
                   logger.info "#{index} Delete Item - #{grid_item_name}"
 
                   if grid_item_name.include? "Manual Orders"
                     logger.info "#{index} Skipping #{grid_item_name}"
                     row = StampsElement.new tables[row_to_delete+1]
-                    grid_item_name = element_helper.text row
+                    grid_item_name = StampsElement.new(row).text
                     logger.info "#{index} Delete Item - #{grid_item_name}"
                   end
 

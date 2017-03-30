@@ -179,7 +179,7 @@ module Stamps
         end
 
         def count
-          count = element_helper.text browser.span(css: "span[data-v-observable=cart-count]")
+          count = StampsElement.new(browser.span(css: "span[data-v-observable=cart-count]")).text
           logger.info "Volusion Cart Count: #{count}"
           count.to_i
         end

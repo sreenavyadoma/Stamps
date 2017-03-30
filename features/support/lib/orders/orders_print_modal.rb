@@ -220,7 +220,7 @@ module Stamps
       end
 
       def message
-        element_helper.text (browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last)
+        StampsElement.new(browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last).text
       end
     end
 
@@ -270,13 +270,12 @@ module Stamps
         browser.div css: "div[title='Today']"
       end
 
-      def date_field day
-        browser.td css: "td[aria-label='#{ParameterHelper.now_plus_month_dd day.to_i}']"
+      def date_field(day)
+        browser.td(css: "td[aria-label='#{ParameterHelper.now_plus_month_dd day.to_i}']")
       end
 
-      def date day
-        date = date_field day
-        element_helper.click date
+      def date(day)
+        StampsElement.new(date_field(day)).click
       end
 
       def present?
@@ -405,7 +404,7 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        print_button.wait_until_present *args
+        print_button.wait_until_present(*args)
       end
 
       def print
@@ -439,9 +438,7 @@ module Stamps
       end
 
       def title
-        div = browser.div css: "div[id^=printwindow]>div[id^=title]>div[id^=title]"
-        logger.info "Title: #{div}"
-        element_helper.text div
+        StampsElement.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
       end
 
       def print_sample
@@ -476,12 +473,9 @@ module Stamps
         end
       end
 
+      # todo-rob Test Print Total cost
       def total_cost
-        ParameterHelper.remove_dollar_sign(element_helper.text(total_label, "total")).to_f.round(2)
-      end
-
-      def total_label
-        browser.label(text: 'Total Cost:').parent.labels.last
+        ParameterHelper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
       end
 
       def check_naws_plugin_error
@@ -491,12 +485,7 @@ module Stamps
             @printing_error = true
             ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
             logger.info "-- Chrome NAWS Plugin Error --"
-            ptags.each {|p_tag|
-              if p_tag.present?
-                p_tag_text = element_helper.text p_tag
-                logger.info "\n#{p_tag_text}"
-              end
-            }
+            ptags.each do |p_tag| logger.info "\n#{StampsElement.new(p_tag).text}" end
             logger.info "-- Chrome NAWS Plugin Error --"
             if error_ok_button.present?
               error_message = self.error_message
@@ -556,7 +545,7 @@ module Stamps
       end
 
       def click_print_button
-        element_helper.click print_button
+        print_button.click
       end
 
     end

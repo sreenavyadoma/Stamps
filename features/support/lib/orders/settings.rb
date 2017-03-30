@@ -1,5 +1,6 @@
 module Stamps
   module Orders
+    #todo-rob updates SettingsModal tests
     class SettingsModal < Browser::StampsModal
       private
 
@@ -17,10 +18,6 @@ module Stamps
 
       def selection_array
         browser.inputs css: 'input[id*=combo][class*=x-form-text-default]'
-      end
-
-      def save_button
-        browser.span(text: 'Save')
       end
 
       def unavailable_services_checkbox
@@ -75,22 +72,22 @@ module Stamps
       public
 
       def save_changes
-        element_helper.click save_button
+        StampsElement.new(browser.span(text: 'Save')).click
       end
 
       def select_logoff_time(duration)
-        element_helper.click logoff_time_combo
-        element_helper.click browser.li text: duration
+        StampsElement.new(logoff_time_combo).click
+        StampsElement.new(browser.li(text: duration)).click
       end
 
       def select_postdate_time(time)
-        element_helper.click postdate_time_combo
-        element_helper.click browser.li text: time
+        StampsElement.new(postdate_time_combo).click
+        StampsElement.new(browser.li(text: time)).click
       end
 
       def select_balance_notification(amount)
-        element_helper.click balance_notification_combo
-        element_helper.click browser.li text: amount
+        StampsElement.new(balance_notification_combo).click
+        StampsElement.new(browser.li(text: amount)).click
       end
 
       def get_logoff_time
@@ -167,13 +164,14 @@ module Stamps
         self
       end
 
+      #todo-rob part of Settings
       def check_settings(number,checkbox)
-
+        checkbox = StampsElement.new(checkbox)
         5.times do
           if box_checked?(number)
             break
           else
-            element_helper.click checkbox
+            checkbox.click
           end
         end
       end
@@ -187,10 +185,10 @@ module Stamps
       end
 
       def uncheck_settings(number,checkbox)
-
+        checkbox = StampsElement.new(checkbox)
         5.times do
           if box_checked?(number)
-            element_helper.click checkbox
+            checkbox.click
           else
             break
           end

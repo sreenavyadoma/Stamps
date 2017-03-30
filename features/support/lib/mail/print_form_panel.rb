@@ -5,7 +5,7 @@ module Stamps
         def blur_out
           @blur_out = StampsElement.new(browser.label(text: 'Print On:')) if @blur_out.nil? || !@blur_out.present?
           expect(@blur_out.present?).to be(true)
-          3.times { @blur_out.safe_double_click }
+          3.times { @blur_out.double_click }
         end
       end
 
@@ -63,7 +63,7 @@ module Stamps
             when :stamps
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::StampsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :stamps)
             when :labels
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :stamps)
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :labels)
             when :envelopes
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :envelopes)
             when :certified_mails
@@ -94,7 +94,7 @@ module Stamps
             text_box = browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
             inc_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]")
             dec_btn = browser.divs(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")
-            @stamp_amount = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+            @stamp_amount = StampsNumberField.new(text_box, inc_btn, dec_btn)
           end
           @stamp_amount
         end
@@ -104,7 +104,7 @@ module Stamps
             text_box = browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
             inc_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")
             dec_btn = browser.divs(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")
-            @quantity = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+            @quantity = StampsNumberField.new(text_box, inc_btn, dec_btn)
           end
           @quantity
         end

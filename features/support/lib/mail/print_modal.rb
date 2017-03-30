@@ -96,16 +96,14 @@ module Stamps
         end
 
         def title
-          div = browser.div css: "div[id^=printwindow]>div[id^=title]>div[id^=title]"
-          logger.info "Title: #{div}"
-          element_helper.text div
+          StampsElement.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
         end
         def error_ok_button
           browser.span(text: 'OK')
         end
 
         def error_message
-          browser.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]').text
+          StampsElement.new(browser.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]')).text
         end
 
         def close
@@ -117,11 +115,7 @@ module Stamps
         end
 
         def total_cost
-          ParameterHelper.remove_dollar_sign(element_helper.text(total_label, "total")).to_f.round(2)
-        end
-
-        def total_label
-          browser.label(text: 'Total Cost:').parent.labels.last
+          ParameterHelper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last)).to_f.round(2)
         end
 
         def check_naws_plugin_error
@@ -131,12 +125,7 @@ module Stamps
               @printing_error = true
               ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
               logger.info "-- Chrome NAWS Plugin Error --"
-              ptags.each {|p_tag|
-                if p_tag.present?
-                  p_tag_text = element_helper.text p_tag
-                  logger.info "\n#{p_tag_text}"
-                end
-              }
+              ptags.each {|p_tag| logger.error "#{StampsElement.new(p_tag).text}" if p_tag.present? }
               logger.info "-- Chrome NAWS Plugin Error --"
               if error_ok_button.present?
                 error_message = self.error_message

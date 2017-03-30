@@ -74,7 +74,7 @@ module Stamps
 
         def blur_out
           element.click
-          element.safe_double_click
+          element.double_click
         end
       end
 
@@ -238,7 +238,7 @@ module Stamps
       end
 
       class AutoSuggestInternational < Browser::StampsModal
-        #todo-rob FIX ME
+        #todo-rob refactor auto-suggest internatinal
         attr_reader :auto_suggest_box
 
         def initialize(param)
@@ -256,7 +256,7 @@ module Stamps
               text_field.click
               sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
-              ship_to_area1.safe_double_click
+              ship_to_area1.double_click
               return auto_suggest_box if auto_suggest_box.present?
             rescue
               #ignore
@@ -277,8 +277,8 @@ module Stamps
           window_title.present?
         end
 
-        def wait_until_present *args
-          window_title.wait_until_present *args
+        def wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def row number
@@ -517,7 +517,7 @@ module Stamps
               text_area.click
               sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
-              ship_to_area1.safe_double_click
+              ship_to_area1.double_click
               return auto_suggest_box if auto_suggest_box.present?
             rescue Exception => e
               logger.error e.message
@@ -537,7 +537,7 @@ module Stamps
         end
       end
 
-      class AddEditShipFromModal < Browser::StampsModal
+      class ShippingAddress < Browser::StampsModal
         attr_reader :save_button, :origin_zip
 
         def initialize(param)
@@ -550,12 +550,13 @@ module Stamps
           browser.div(text: "Edit Shipping Address").present? || browser.div(text: "Add Shipping Address").present?
         end
 
-        def wait_until_present *args
+        def wait_until_present(*args)
           browser.div(text: "Edit Shipping Address").wait_until_present(*args) if browser.div(text: "Edit Shipping Address").present?
           browser.div(text: "Add Shipping Address").wait_until_present(*args) if browser.div(text: "Add Shipping Address").present?
         end
 
-        def ship_from_address table
+        #todo-rob refactor Ship-From address
+        def ship_from_address(table)
           origin_zip.set table["ship_from_zip"]
           name table['name']
           company table['company']
@@ -568,63 +569,68 @@ module Stamps
           save
         end
 
-        def name *args
-          field = (browser.text_fields name: 'FullName').last
+        def name(*args)
+          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
+          field = StampsElement.new((browser.text_fields name: 'FullName').last)
           case args.length
             when 0
-              element_helper.text field
+              field.text
             when 1
-              element_helper.set field, args[0]
+              field.set args[0]
             else
-              raise "Illegal number of arguments." if args.length > 2
+              # ignore
           end
         end
 
-        def company *args
-          field =(browser.text_fields name: 'Company').last
+        def company(*args)
+          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
+          field = StampsElement.new((browser.text_fields name: 'Company').last)
           case args.length
             when 0
-              element_helper.text field
+              field.text
             when 1
-              element_helper.set field, args[0]
+              field.set args[0]
             else
-              raise "Illegal number of arguments." if args.length > 2
+              # ignore
           end
         end
 
-        def street_address1 *args
-          field = browser.text_field name: 'Street1'
+        def street_address1(*args)
+          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
+          field = StampsElement.new(browser.text_field name: 'Street1')
           case args.length
             when 0
-              element_helper.text field
+              field.text
             when 1
-              element_helper.set field, args[0]
+              field.set args[0]
             else
-              raise "Illegal number of arguments." if args.length > 2
+              # ignore
           end
         end
 
-        def street_address2 *args
-          field = browser.text_field name: 'Street2'
+        def street_address2(*args)
+          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
+          field = StampsElement.new(browser.text_field name: 'Street2')
           case args.length
             when 0
-              element_helper.text field
+              field.text
             when 1
-              element_helper.set field, args[0]
+              field.set args[0]
             else
-              raise "Illegal number of arguments." if args.length > 2
+              # ignore
           end
         end
 
-        def city *args
-          field = (browser.text_fields name: 'City').last
+        def city(*args)
+          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
+          field = StampsElement.new((browser.text_fields name: 'City').last)
           case args.length
             when 0
-              element_helper.text field
+              field.text
             when 1
-              element_helper.set field, args[0]
+              field.set args[0]
             else
-              raise "Illegal number of arguments." if args.length > 2
+              # ignore
           end
         end
 
@@ -634,40 +640,42 @@ module Stamps
           StampsDropDown.new(dd, :li, text_box)
         end
 
-        def zip *args
-          field = browser.text_field name: 'Zip'
+        def zip(*args)
+          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
+          field = StampsElement.new(browser.text_field name: 'Zip')
           case args.length
             when 0
-              element_helper.text field
+              field.text
             when 1
-              element_helper.set field, args[0]
+              field.set args[0]
             else
-              raise "Illegal number of arguments." if args.length > 2
+              # ignore
           end
         end
 
-        def phone *args
-          field = (browser.text_fields css: "input[name=Phone]").last
+        def phone(*args)
+          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
+          field = StampsElement.new((browser.text_fields css: "input[name=Phone]").last)
           case args.length
             when 0
-              element_helper.text field
+              field.text
             when 1
-              element_helper.set field, args[0]
+              field.set args[0]
             else
-              raise "Illegal number of arguments." if args.length > 2
+              # ignore
           end
         end
 
         def save
-          10.times{
+          10.times do
             begin
-              element_helper.click save_button
+              save_button.click
               sleep(0.35)
               break unless save_button.present?
             rescue
               #ignore
             end
-          }
+          end
         end
 
       end
@@ -675,19 +683,15 @@ module Stamps
       class DeleteShippingAddress < Browser::StampsModal
 
         def window_title
-          browser.div text: "Delete Shipping Address"
+          browser.div(text: "Delete Shipping Address")
         end
 
         def delete
-          5.times {
-            begin
-              logger.info "Delete Shipping Address :: #{message_field.text}"
-              element_helper.click delete_button
-            rescue
-              #ignore
-            end
+          del_btn = StampsElement.new(browser.elements(text: 'Delete').last)
+          5.times do
+            del_btn.click
             break unless present?
-          }
+          end
         end
 
         def present?
@@ -703,17 +707,11 @@ module Stamps
         def message_field
           browser.div css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
         end
-
-        def delete_button
-          field = browser.elements(text: 'Delete').last
-          present = field.present?
-          field
-        end
       end
 
       class ViewRestrictions < Browser::StampsModal
         def browser_ok_button
-          StampsElement.new browser.span text: "OK"
+          StampsElement.new( browser.span(text: "OK"))
         end
 
         def present?
@@ -735,7 +733,7 @@ module Stamps
           @window_title = StampsElement.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
           @close_button = StampsElement.new browser.image(css: "img[class*='x-tool-close']")
           @delete_button = StampsElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
-          @shipping_address = AddEditShipFromModal.new(param)
+          @shipping_address = ShippingAddress.new(param)
         end
 
         def present?
@@ -747,7 +745,7 @@ module Stamps
         end
 
         def grid_cell_text(row, column)
-          element_helper.text grid_cell(row, column) #, "grid.row#{row}.column#{column})"
+          StampsElement.new(grid_cell(row, column)).text
         end
 
         def checked?(row)
@@ -778,10 +776,10 @@ module Stamps
           grid_cell_text row, 4
         end
 
-        def locate_ship_from name, company, city
+        def locate_ship_from(name, company, city)
           rows = shipping_address_count
           1.upto rows do |row|
-            element_helper.click window_title
+            window_title.click
             grid_name = name row
             grid_company = company row
             grid_city = city row
@@ -797,15 +795,11 @@ module Stamps
         end
 
         def click_delete_button
-          begin
-            element_helper.click delete_button if delete_button.present?
-            element_helper.click window_title
-          rescue
-            #ignore
-          end
+          delete_button.click
+          window_title.click
         end
 
-        def delete *args
+        def delete(*args)
           case args.length
             when 1
               address = args[0]
@@ -820,13 +814,13 @@ module Stamps
           end
         end
 
-        def delete_row number
+        def delete_row(number)
           @delete_shipping_address = DeleteShippingAddress.new(param)
-          5.times {
-            select_row number
+          5.times do
+            select_row(number)
             click_delete_button
             break if @delete_shipping_address.present?
-          }
+          end
           @delete_shipping_address.delete
           @delete_shipping_address.close if @delete_shipping_address.present?
           self
@@ -882,15 +876,15 @@ module Stamps
 
         def select_row(row_num)
           click_row_until_selected(row_num, "class", "x-grid-item-selected")
-          element_helper.click window_title
+          window_title.click
         end
 
         def click_row_until_selected(row_num, attibute, attribute_value)
-          cell = grid_cell(row_num, 1)
+          cell = StampsElement.new(grid_cell(row_num, 1))
           5.times do
             begin
-              element_helper.click cell
-              break if checked? row_num
+              cell.click
+              break if checked?(row_num)
             rescue
               #ignore
             end
@@ -906,7 +900,7 @@ module Stamps
             count = shipping_address_count
             if count > 1
               for row in 1..(count)
-                element_helper.click window_title
+                window_title.click
                 delete_row 1
                 logger.info "Row #{row} :: Deleting row 1..."
                 break if shipping_address_count == 1
@@ -920,15 +914,7 @@ module Stamps
         end
 
         def close_window
-          begin
-            10.times{
-              sleep(0.35)
-              break unless close_button.present?
-              element_helper.click close_button
-            }
-          rescue
-            #ignore
-          end
+          close_button.click_while_present
         end
 
         def wait_until_present
@@ -1080,11 +1066,12 @@ module Stamps
           end
         end
 
+        #todo-rob Updates to Insurance Terms and Conditions
         def agree
           10.times do
             begin
               browser.spans(text: "I Agree").each do |button|
-                element_helper.click(button)
+                StampsElement.new(button).click
               end
             rescue
               #ignore
@@ -1096,7 +1083,7 @@ module Stamps
           10.times do
             begin
               browser.spans(text: "Cancel").each do |button|
-                element_helper.click(button)
+                StampsElement.new(button).click
               end
             rescue
               #ignore
@@ -1221,37 +1208,30 @@ module Stamps
           end
         end
 
-        def select(selection)
+        # todo-rob Details Tracking selection fix
+        def select(str)
           expect(drop_down.present?).to be(true)
           20.times do
-            begin
-              drop_down.click
-              selection_label = tracking_selection(selection).first
-              drop_down.click unless selection_label.present?
-              element_helper.click selection_label
-              break if text_box.text.include? selection
-            rescue Exception => e
-              logger.error e.message
-              logger.error e.backtrace.join("\n")
-              expect("Unable to select Tracking #{selection}. Error: #{e.message}").to eql "Select Tracking #{selection}"
-            end
+            selection = StampsElement.new(tracking_selection(str).first)
+            drop_down.click unless selection.present?
+            selection.click
+            break if text_box.text.include?(str)
           end
-          expect(text_box.text).to include(selection)
+          expect(text_box.text).to include(str)
         end
 
         def inline_cost(selection)
           tds = tracking_selection(selection)
           expect(tds.size).to equal 2
-          selection_label = StampsElement.new tds.last
+          label = StampsElement.new(tds.last)
           5.times do
             begin
-              drop_down.click unless selection_label.present?
-              return selection_label.text if selection_label.present?
-
+              drop_down.click unless label.present?
+              return label.text if label.present?
               drop_down.click
-              selection_label = tracking_selection(selection).last
-              drop_down.click unless selection_label.present?
-              return element_helper.text selection_label if selection_label.present?
+              label = tracking_selection(selection).last
+              drop_down.click unless label.present?
+              return label.text if label.present?
             rescue
               #ignore
             end
@@ -1290,12 +1270,12 @@ module Stamps
           text_box = browser.text_field(name: 'WeightLbs')
           inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-          @lb = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(name: 'WeightOz')
           inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-          @oz = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
         end
       end
 
@@ -1306,17 +1286,17 @@ module Stamps
           text_box = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
-          @length = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @length = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]")
-          @width = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @width = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]")
-          @height = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @height = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
         end
 
         def present?
@@ -1333,7 +1313,7 @@ module Stamps
           text_box = browser.text_fields(name: "Quantity")[@index-1]
           inc_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
           dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
-          @item_qty = Stamps::Browser::StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @item_qty = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           @item_id = StampsTextbox.new((browser.text_fields(name: "SKU")[index-1]))
           @delete = StampsElement.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index-1])
@@ -1392,7 +1372,7 @@ module Stamps
         attr_reader :field
         def initialize(param)
           super(param)
-          @field = browser.img class: "x-tool-img x-tool-expand-left"
+          @field = StampsElement.new(browser.img(class: "x-tool-img x-tool-expand-left"))
         end
 
         def present?
@@ -1401,7 +1381,7 @@ module Stamps
 
         def open
           5.times do
-            element_helper.click field
+            field.click
             break unless field.present?
           end
         end

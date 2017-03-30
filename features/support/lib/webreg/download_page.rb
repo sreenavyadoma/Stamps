@@ -9,8 +9,8 @@ module Stamps
         element.present?
       end
 
-      def wait_until_present *args
-        element.wait_until_present *args
+      def wait_until_present(*args)
+        element.wait_until_present(*args)
       end
 
       def text

@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Settings
+      #todo-rob re-work changes to Settings Fields tests
       class Pounds < Browser::StampsModal
         attr_reader :text_box, :inc_bthn, :dec_btn
 
@@ -77,7 +78,7 @@ module Stamps
         end
 
         def enabled?
-          element_helper.enabled?(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
+          StampsElement.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl')).enabled?
         end
 
         def checkbox
@@ -405,28 +406,23 @@ module Stamps
       end
 
       class Dimensions < Browser::StampsModal
+        attr_reader :length, :width, :height
+
+        def initialize(param)
+          super(param)
+          @length = Length.new(param)
+          @width = Width.new(param)
+          @height = Height.new(param)
+        end
+
         def enabled?
-          element_helper.enabled? (browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl')
+          StampsElement.new(browser.text_field name: 'sdc-resetfieldswin-lengthnumberfield-inputEl').enabled?
         end
 
         def checkbox
-          checkbox_field = browser.span id: "sdc-resetfieldswin-dimensionscheckbox-displayEl"
+          checkbox_field = browser.span(id: "sdc-resetfieldswin-dimensionscheckbox-displayEl")
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
-        end
-
-        def length
-          Length.new(param)
-        end
-
-        def width
-          Width.new(param)
-        end
-
-        def height
-          Height.new(param)
+          StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
         end
       end
 
@@ -438,9 +434,7 @@ module Stamps
         def service
           checkbox_field = browser.span id: "sdc-resetfieldswin-servicecheckbox-displayEl"
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, v, "checked"
         end
 
         def weight
@@ -545,8 +539,9 @@ module Stamps
 
       class GeneralSettings < Browser::StampsModal
 
+
         def title
-          StampsElement.new browser.div text: "Settings"
+          StampsElement.new(browser.div text: "Settings")
         end
 
         def present?
@@ -554,11 +549,9 @@ module Stamps
         end
 
         def services
-          checkbox_field = browser.span css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span"
+          checkbox_field = browser.span(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(2)>div>div>div>div>div>div>div>span")
           verify_field = checkbox_field.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
-          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
         end
 
         def log_off

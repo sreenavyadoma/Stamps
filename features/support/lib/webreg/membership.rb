@@ -258,14 +258,9 @@ module Stamps
         select "WY Wyoming"
       end
 
-      #Added by Galina
-       def help_element
-          browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(6)>div>span")
-        end
-
-        def help_text
-          element_helper.text help_element
-        end
+      def help_text
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(6)>div>span")).text
+      end
     end
 
 
@@ -327,13 +322,8 @@ module Stamps
         select "Dec (12)"
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(3)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(3)>div>span")).text
       end
 
     end
@@ -370,13 +360,8 @@ module Stamps
         end
       end
 
-      # Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_terms]>div>div>div>div>span.help-block")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_terms]>div>div>div>div>span.help-block")).text
       end
     end
 
@@ -386,7 +371,7 @@ module Stamps
       end
 
       def message
-        element_helper.text ((browser.ps id: "topMessage").last)
+        StampsElement.new(((browser.ps id: "topMessage").last)).text
       end
 
       def user_id
@@ -457,88 +442,53 @@ module Stamps
       end
     end
 
-    #Added by Galina
     class MembershipFirstName < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(1)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(1)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipLastName < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(2)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(2)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipAddress < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(4)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(4)>div>span")).text
       end
     end
 
     #Added by Galina
     class MembershipCity < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")).text
       end
     end
 
     #Added by Galina
     class MembershipCardHolderName < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")).text
       end
     end
 
     class MembershipCardName< StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(2)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(2)>div>span")).text
       end
     end
 
     class MembershipBillingAddress < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(6)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(6)>div>span")).text
       end
     end
 
     class MembershipBillingCity< StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(7)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(7)>div>span")).text
       end
     end
 
@@ -800,24 +750,14 @@ module Stamps
         select "WY Wyoming"
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(8)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(8)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipBillingZip < StampsTextbox
-      def help_element
-      browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(9)>div>span")
-      end
-
       def help_text
-      element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(9)>div>span")).text
       end
     end
 
@@ -826,7 +766,7 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @help_element = StampsElement.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
+        @help_element = StampsElement.new(browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span'))
       end
 
       def help_text

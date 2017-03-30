@@ -19,8 +19,8 @@
         end
       end
 
-      def wait_until_present *args
-        (ElementWrapper.new browser.img(css: 'img[src*=whatsnew]')).wait_until_present *args
+      def wait_until_present(*args)
+        (ElementWrapper.new browser.img(css: 'img[src*=whatsnew]')).wait_until_present(*args)
       end
 
       def continue

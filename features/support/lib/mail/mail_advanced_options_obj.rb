@@ -37,14 +37,11 @@ module Stamps
           logger.info "Select #{str}"
           drop_down.click
           10.times do
-            begin
-              break if (text_box.text).include?(str)
-              drop_down.click unless selection(browser.lis(text: str)).present?
-              element_helper.click(selection(str))
-              logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
-            rescue
-              #ignore
-            end
+            selection = StampsElement.new(selection(str))
+            break if text_box.text.include?(str)
+            drop_down.click unless selection.present?
+            selection.click
+            logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           end
           expect(text_box.text).to eql(str)
           text_box.text
@@ -60,6 +57,8 @@ module Stamps
 
       class MailDatePicker < Browser::StampsModal
         include MailDateTextbox
+
+        attr_reader :trigger_picker
         def initialize(param)
           super(param)
           @trigger_picker = StampsElement.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
@@ -67,10 +66,11 @@ module Stamps
 
         def choose_date(element, day)
           date = valid_ship_date(day)
-          @trigger_picker.click
+          element = StampsElement.new(element)
+          trigger_picker.click
           20.times do
-            @trigger_picker.click unless element.present?
-            element_helper.click(element)
+            trigger_picker.click unless element.present?
+            element.click
             break if text_box.text.include?(date)
           end
           expect(text_box.text).to eql(date)

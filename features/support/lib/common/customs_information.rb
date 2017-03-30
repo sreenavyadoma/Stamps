@@ -81,12 +81,12 @@ module Stamps
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[@index]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[@index]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=down]")[@index]
-          @customs_item_qty = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @customs_item_qty = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>input[name=Value]")[@index]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=up]")[@index]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=down]")[@index]
-          @customs_item_unit_price = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @customs_item_unit_price = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")[@index]
           drop_down = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[@index]
@@ -148,7 +148,7 @@ module Stamps
           super(param)
           text_boxes = browser.text_fields(name: "CustomsContents")
           drop_downs = browser.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
-          @combo_box = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
+          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
           @contents = PackageContentsDetails.new(param).extend(MoreInfo)
         end
 
@@ -166,7 +166,7 @@ module Stamps
           super(param)
           text_boxes = browser.text_fields(name: "IsITNRequired")
           drop_downs =  browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
-          @combo_box = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
+          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
           @itn_number = StampsTextbox.new(browser.text_field(name: "AES"))
         end
 
@@ -190,11 +190,11 @@ module Stamps
 
           text_boxes = browser.text_fields(name: "NonDelivery")
           drop_downs = browser.divs(id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker")
-          @non_delivery_options = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
+          @non_delivery_options = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
 
           text_boxes = browser.text_fields(id: "sdc-customsFormWindow-internaltransactiondroplist-inputEl")
           drop_downs = browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
-          @internal_transaction = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
+          @internal_transaction = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
 
           @more_info = StampsTextbox.new browser.text_field name: "CustomsComments"
           @usps_privacy_act_warning = StampsElement.new(browser.label text: "You must agree to the USPS Privacy Act Statement")
@@ -219,7 +219,7 @@ module Stamps
 
         def blur_out
           total_label.click
-          total_label.safe_double_click
+          total_label.double_click
         end
 
         def present?

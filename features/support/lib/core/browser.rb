@@ -1,16 +1,166 @@
 module Stamps
+
   module Browser
 
-    class TestParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer
-    end
-
     class StampsElement
-      include ElementHelper
-      attr_reader :browser, :error_qtip_element, :error_qtip_element_attribute
+      attr_reader :element, :browser
       def initialize(element)
-        self.element = element
-        self.browser = element.browser
+        @element = element
+        @browser = element.browser
+      end
+
+      def url
+        browser.url
+      end
+
+      def disabled?
+        begin
+          element.disabled?
+        rescue
+          true
+        end
+      end
+
+      def exist?
+        begin
+          element.exist?
+        rescue
+          false
+        end
+      end
+
+      def present?
+        element.present?
+      end
+
+      def checked?
+        begin
+          element.checked?
+        rescue
+          return false
+        end
+      end
+
+      def visible?
+        begin
+          element.visible?
+        rescue
+          return false
+        end
+      end
+
+      def enabled?
+        begin
+          element.enabled?
+        rescue
+          return false
+        end
+      end
+
+      def hover
+        begin
+          element.hover
+        rescue
+          #ignore
+        end
+      end
+
+      def clear
+        begin
+          element.clear
+        rescue
+          #ignore
+        end
+      end
+
+      def wait_while_present(*args)
+        if args.length==1
+          element.wait_while_present(args[0].to_i)
+        else
+          element.wait_while_present
+        end
+      end
+
+      def wait_until_present(*args)
+        begin
+          if args.length==1
+            element.wait_until_present(args[0].to_i)
+          else
+            element.wait_until_present
+          end
+        rescue Exception => e
+          logger.error e.message
+          logger.error e.backtrace.join("\n")
+        end
+      end
+
+      def scroll_into_view
+        begin
+          browser.execute_script('arguments[0].scrollIntoView();', element)
+        rescue
+          # ignore
+        end
+      end
+
+      def text
+        begin
+          return element.text if element.text.size > 0
+        rescue
+          #ignore
+        end
+        begin
+          return element.value if element.value.size > 0
+        rescue
+          #ignore
+        end
+        begin
+          return attribute_value('value') if  attribute_value('value').size > 0
+        rescue
+          #ignore
+        end
+        ''
+      end
+
+      def attribute_value(attribute)
+        begin
+          element.attribute_value(attribute)
+        rescue
+          return ''
+        end
+      end
+
+      def send_keys(key)
+        2.times do
+          begin
+            element.send_keys(key)
+          rescue
+            #ignore
+          end
+        end
+      end
+
+      def click
+        begin
+          element.click
+        rescue
+          #ignore
+        end
+      end
+
+      def click_while_present
+        20.times do
+          click
+          sleep(0.05)
+          break unless element.present?
+        end
+      end
+
+      def double_click
+        begin
+          element.double_click
+        rescue
+          #ignore
+        end
       end
 
       def blur_out(*args)
@@ -18,63 +168,21 @@ module Stamps
         count = args[0].to_i if args.length > 0
         count.to_i.times do
           click
-          safe_double_click
+          double_click
         end
       end
-
-      def data_error_qtip
-        begin
-          # if data qtip element was not set or is nil, try to get data error qtip from the element representing this textbox.
-          if error_qtip_element.nil?
-            return element.attribute_value (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
-          else
-            return error_qtip_element.attribute_value (error_qtip_element_attribute.nil?)?"data-errorqtip":error_qtip_element_attribute
-          end
-        rescue
-          #if data error element does not exist, return an empty string
-          return ""
-        end
-      end
-
-      def data_error
-        element.attribute_value "data-errorqtip"
-      end
-
-      def attribute_value(*args)
-        case args.length
-          when 1
-            #fetch the attribute value of this element using specified name
-            attribute_name = args[0]
-            element.attribute_value attribute_name
-          when 2
-            attribute_name = args[0]
-            value = args[1]
-            element.attribute_value attribute_name, value
-          else
-            raise "Illegal number of arguments for attribute_value. Pass 1 argument to get the value of that element or pass 2 arguments to set the value of that element"
-        end
-      end
-
-      def placeholder
-        attribute_value "placeholder"
-      end
-
-      def style(property)
-        element.style(property)
-      end
-
     end
 
     class StampsTextbox < StampsElement
       def set(txt)
         15.times do
           begin
-            self.element.focus
+            element.focus
           rescue
             #ignore
           end
           begin
-            self.element.set(txt)
+            element.set(txt)
             break if text == txt
             set_attribute_value("value", txt)
             break if text == txt
@@ -85,7 +193,32 @@ module Stamps
       end
 
       def set_attribute_value(attribute_name, value)
-        self.browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", self.element)
+        browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", element)
+      end
+    end
+
+    class StampsTextboxHelpText < StampsTextbox
+      attr_reader :help_element
+
+      def initialize(element, help_element)
+        super(element)
+        @help_element = StampsElement.new((help_element.nil?)?element:help_element) #if help_element is nil, use element as help element
+      end
+
+      def help_text
+        help_element.text
+      end
+
+      def data_error
+        element.attribute_value("data-errorqtip")
+      end
+
+      def placeholder
+        attribute_value("placeholder")
+      end
+
+      def style(property)
+        element.style(property)
       end
     end
 
@@ -105,11 +238,12 @@ module Stamps
       end
     end
 
-    class StampsCheckbox < StampsElement
-      attr_accessor(:verify_element, :attribute, :attribute_value)
+    class StampsCheckbox
+      attr_accessor :element, :verify_element, :attribute, :attribute_value
+
       def initialize(element, verify_element, attribute, attribute_value)
-        super(element)
-        @verify_element = verify_element
+        @element = StampsElement.new(element)
+        @verify_element = StampsElement.new(verify_element)
         @attribute = attribute
         @attribute_value = attribute_value
       end
@@ -117,14 +251,14 @@ module Stamps
       def check
         50.times do
           break if checked?
-          click
+          element.click
         end
       end
 
       def uncheck
         if checked?
           50.times do
-            click
+            element.click
             break unless checked?
           end
         end
@@ -132,23 +266,20 @@ module Stamps
 
       def checked?
         begin
-          actual_attribute_value = verify_element.attribute_value(attribute)
-          if actual_attribute_value == "true" || actual_attribute_value == "false"
-            return actual_attribute_value == "true"
-          else
-            actual_attribute_value.include?(attribute_value)
-          end
+          result = verify_element.attribute_value(attribute)
+          return result == "true" if result == "true" || result == "false"
+          result.include?(attribute_value)
         rescue
           false
         end
       end
     end
 
-    class StampsRadio < StampsElement
-      attr_accessor(:verify_element, :attribute, :attribute_value)
+    class StampsRadio
+      attr_accessor :element, :verify_element, :attribute, :attribute_value
       def initialize(element, verify_element, attribute, attribute_value)
-        super element
-        @verify_element = verify_element
+        @element = StampsElement.new(element)
+        @verify_element = StampsElement.new(verify_element)
         @attribute = attribute
         @attribute_value = attribute_value
       end
@@ -156,14 +287,14 @@ module Stamps
       def select
         50.times{
           break if selected?
-          click
+          element.click
         }
         expect(selected?).to be(true)
       end
 
       def selected?
         begin
-          (verify_element.attribute_value attribute).include? attribute_value
+          verify_element.attribute_value(attribute).include?(attribute_value)
         rescue
           false
         end
@@ -216,25 +347,10 @@ module Stamps
       end
     end
 
-    # Modals
-
-    class StampsModal
-      include Stamps::StampsTestHelper
-      attr_accessor :param, :browser, :logger, :test_helper
-
-      def initialize(param)
-        @param = param
-        @browser = param.browser
-        @logger = param.logger
-        @test_helper = TestHelper
-      end
-    end
-
-    class StampsNumberField < Browser::StampsModal
+    class StampsNumberField
       attr_reader :text_box, :inc_btn, :dec_btn
 
-      def initialize(param, textbox, inc_btn, dec_btn)
-        super(param)
+      def initialize(textbox, inc_btn, dec_btn)
         @text_box = StampsTextbox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
@@ -269,17 +385,15 @@ module Stamps
       end
     end
 
-    class StampsComboBox < Browser::StampsModal
-      attr_accessor :param, :text_box, :drop_down, :selection_type
+    class StampsComboBox
+      attr_accessor :text_box, :drop_down, :selection_type
 
-      def initialize(param, text_boxes, drop_downs, selection_type, index)
-        super(param)
+      def initialize(text_boxes, drop_downs, selection_type, index)
         @index = index
         @text_box = StampsTextbox.new(text_boxes[@index])
         @drop_down = StampsTextbox.new(drop_downs[@index])
         @selection_type = selection_type
-        @param = text_box.param
-        @browser = param.browser
+        @browser = text_box.browser
       end
 
       def present?
@@ -301,12 +415,12 @@ module Stamps
       def select(str)
         logger.info "Select #{str}"
         drop_down.click
-        drop_down.click
         10.times do
+          selection = StampsElement.new(selection(str))
           begin
             break if (text_box.text).include?(str)
-            drop_down.click unless selection(str).present?
-            super.click(selection(str))
+            drop_down.click unless selection.present?
+            selection.click
             logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           rescue
             #ignore
@@ -317,6 +431,24 @@ module Stamps
       end
     end
 
+    # Modals
+
+    class ModalParam
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer
+    end
+
+    # StampsModal is a parent class for modals containing StampsElements
+    class StampsModal
+      include Stamps::StampsTestHelper
+      attr_accessor :param, :browser, :logger, :test_helper
+
+      def initialize(param)
+        @param = param
+        @browser = param.browser
+        @logger = param.logger
+        @test_helper = TestHelper
+      end
+    end
 
   end
 end

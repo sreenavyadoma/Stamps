@@ -15,8 +15,8 @@ module Stamps
         header_elem.present?
       end
 
-      def wait_until_present *args
-        header_elem.wait_until_present *args
+      def wait_until_present(*args)
+        header_elem.wait_until_present(*args)
       end
 
       def header

@@ -26,7 +26,7 @@ module Stamps
 
       module AdvancedOptionsCostCode
         def cost_code
-          @cost_code = StampsComboBox.new(param, browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"), browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]"), :li, 0) if @cost_code.nil?
+          @cost_code = StampsComboBox.new(browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"), browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]"), :li, 0) if @cost_code.nil?
           @cost_code
         end
       end

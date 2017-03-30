@@ -101,7 +101,7 @@ module Stamps
 
   def param
     if @param.nil?
-      @param = TestParam.new
+      @param = ModalParam.new
 
       expect(ENV['WEB_APP']).to_not be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
@@ -208,7 +208,7 @@ module Stamps
     end
   end
 
-  def webreg_data_store_filename *args
+  def webreg_data_store_filename(*args)
     begin
       "#{data_for(:webreg, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
     rescue Exception => e

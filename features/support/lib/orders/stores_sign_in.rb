@@ -16,8 +16,8 @@ module Stamps
         title.present?
       end
 
-      def wait_until_present *args
-        title.wait_until_present *args
+      def wait_until_present(*args)
+        title.wait_until_present(*args)
       end
 
       def cancel
@@ -50,8 +50,8 @@ module Stamps
         title.present?
       end
 
-      def wait_until_present *args
-        title.wait_until_present *args
+      def wait_until_present(*args)
+        title.wait_until_present(*args)
       end
 
       def close
@@ -87,8 +87,8 @@ module Stamps
         title.present?
       end
 
-      def wait_until_present *args
-        title.wait_until_present *args
+      def wait_until_present(*args)
+        title.wait_until_present(*args)
       end
 
       def close
@@ -124,8 +124,8 @@ module Stamps
         title.present?
       end
 
-      def wait_until_present *args
-        title.wait_until_present *args
+      def wait_until_present(*args)
+        title.wait_until_present(*args)
       end
 
       def close

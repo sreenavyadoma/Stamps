@@ -216,8 +216,8 @@ module Stamps
           window_title.present?
         end
 
-        def wait_until_present *args
-          window_title.wait_until_present *args
+        def wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def ok
@@ -225,33 +225,34 @@ module Stamps
         end
 
         def error_message
-          element_helper.text error_message_label
+          StampsElement.new(error_message_label).text
         end
 
         def error_message_p1
-          element_helper.text error_message_label.ps[0]
+          StampsElement.new(error_message_label.ps[0]).text
         end
 
         def error_message_p2
-          element_helper.text error_message_label.ps[1]
+          StampsElement.new(error_message_label.ps[1]).text
         end
       end
 
       class PrintMultiOrderError < Browser::StampsModal
         attr_reader :window_title, :error_message_label
 
+        #todo-rob update Print Multi Order Error tests
         def initialize(param)
           super(param)
-          @window_title = StampsElement.new browser.div(text: 'Order Error')
+          @window_title = StampsElement.new(browser.div(text: 'Order Error'))
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
 
-        def wait_until_present *args
-          window_title.wait_until_present *args
+        def wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def error_message
-          element_helper.text error_message_label
+          StampsElement.new(error_message_label).text
         end
       end
 
@@ -277,11 +278,11 @@ module Stamps
         end
 
         def error_message_p1
-          element_helper.text error_message_label.ps[0]
+          StampsElement.new(error_message_label.ps[0]).text
         end
 
         def error_message_p2
-          element_helper.text error_message_label.ps[1]
+          StampsElement.new(error_message_label.ps[1]).text
         end
       end
 
@@ -290,7 +291,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @ok_btn = StampsElement.new browser.span(text: "OK")
+          @ok_btn = StampsElement.new(browser.span(text: "OK"))
         end
 
         def present?
@@ -316,8 +317,8 @@ module Stamps
           window_title.present?
         end
 
-        def wait_until_present *args
-          window_title.wait_until_present *args
+        def wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def text
@@ -344,8 +345,8 @@ module Stamps
           window_title.present?
         end
 
-        def wait_until_present *args
-          window_title.wait_until_present *args
+        def wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def i_agree
@@ -358,11 +359,11 @@ module Stamps
 
         def text_p1
           #"One or more orders is missing the following acknowledgement. Please agree to the following prior to printing these orders:"
-          element_helper.text browser.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div").first
+          StampsElement.new(browser.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div").first).text
         end
 
         def text_p2
-          element_helper.text browser.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div")[1]
+          StampsElement.new(browser.divs(css: "div[id^=uspstermsdialog-][id$=-body]>div>div>div>div>div")[1]).text
         end
 
         def dont_show_this_again
@@ -392,7 +393,7 @@ module Stamps
         end
 
         def text
-          element_helper.text browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first
+          StampsElement.new(browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first).text
         end
       end
 
@@ -414,8 +415,8 @@ module Stamps
           print_order_btn.present?
         end
 
-        def wait_until_present *args
-          print_order_btn.wait_until_present *args
+        def wait_until_present(*args)
+          print_order_btn.wait_until_present(*args)
         end
 
         def tooltip
@@ -571,7 +572,7 @@ module Stamps
           expect(window.present?).to be(true)
         end
 
-        def print_expecting_error *args
+        def print_expecting_error(*args)
           error_window = IncompleteOrderError.new(param)
           open_window error_window
           case args.length
@@ -801,8 +802,8 @@ module Stamps
           print_btn.present?
         end
 
-        def wait_until_present *args
-          print_btn.wait_until_present *args
+        def wait_until_present(*args)
+          print_btn.wait_until_present(*args)
         end
 
         #============================

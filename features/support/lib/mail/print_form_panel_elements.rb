@@ -211,9 +211,9 @@ module Stamps
           text_area.click
           text_area.set(address)
           text_area.click
-          text_area.safe_double_click
+          text_area.double_click
           text_area.click
-          text_area.safe_double_click
+          text_area.double_click
           blur_out
           blur_out
           blur_out
@@ -236,12 +236,12 @@ module Stamps
           text_box = browser.text_field(name: "WeightLbs")
           inc_btn = browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-up]")
           dec_btn = browser.divs(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")
-          @mail_pounds = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @mail_pounds = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(name: "WeightOz")
           inc_btn = browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-up]")
           dec_btn = browser.divs(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")
-          @mail_ounces = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @mail_ounces = StampsNumberField.new(text_box, inc_btn, dec_btn)
         end
 
         def present?
@@ -257,18 +257,18 @@ module Stamps
           text_box = browser.text_field(name: "Length")
           inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=up]")
           dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
-          @length = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @length = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
 
           text_box = browser.text_field(name: "Width")
           inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=up]")
           dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=down]")
-          @width = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @width = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(name: "Height")
           inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=up]")
           dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=down]")
-          @height = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @height = StampsNumberField.new(text_box, inc_btn, dec_btn)
         end
 
 

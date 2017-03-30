@@ -10,8 +10,8 @@ module Stamps
         @ok_btn = StampsElement.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
       end
 
-      def wait_until_present *args
-        window_title.wait_until_present *args
+      def wait_until_present(*args)
+        window_title.wait_until_present(*args)
       end
 
       def present?
@@ -46,8 +46,8 @@ module Stamps
         window_title.present?
       end
 
-      def wait_until_present *args
-        window_title.wait_until_present *args
+      def wait_until_present(*args)
+        window_title.wait_until_present(*args)
       end
 
       def text_area
@@ -328,16 +328,16 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @username = StampsElement.new browser.span id: 'userNameText'
-        @sign_out_link = browser.a text: "Sign Out"
+        @username = StampsElement.new(browser.span id: 'userNameText')
+        @sign_out_link = StampsElement.new(browser.a(text: "Sign Out"))
       end
 
       def present?
         username.present?
       end
 
-      def wait_until_present *args
-        username.wait_until_present *args
+      def wait_until_present(*args)
+        username.wait_until_present(*args)
       end
 
       def text
@@ -357,7 +357,7 @@ module Stamps
           sleep(0.35)
           username.click unless sign_out_link.present?
           username.hover
-          element_helper.click sign_out_link if sign_out_link.present?
+          sign_out_link.click if sign_out_link.present?
           sleep(0.35)
           return if browser.url.include? "SignIn"
         end
@@ -371,10 +371,10 @@ module Stamps
         super(param)
         @balance = BalanceDropDown.new(param)
         @username = UsernameDropDown.new(param)
-        @sign_out_link = StampsElement.new browser.link(id: "signOutLink")
-        @signed_in_username = StampsElement.new browser.span(id: 'userNameText')
-        @orders_link = StampsElement.new browser.a(text: 'Orders')
-        @mail_link = StampsElement.new browser.a(text: 'Mail')
+        @sign_out_link = StampsElement.new(browser.link(id: "signOutLink"))
+        @signed_in_username = StampsElement.new(browser.span(id: 'userNameText'))
+        @orders_link = StampsElement.new(browser.a(text: 'Orders'))
+        @mail_link = StampsElement.new(browser.a(text: 'Mail'))
       end
 
       def orders
@@ -411,8 +411,8 @@ module Stamps
         logger.info "#{ENV["SIGNED_IN_USER"]}#{(signed_in_username.present?)?" - sign-out failed":" was signed out.  Goodbye."}"
       end
 
-      def wait_until_present *args
-        username.wait_until_present *args
+      def wait_until_present(*args)
+        username.wait_until_present(*args)
       end
 
       def present?

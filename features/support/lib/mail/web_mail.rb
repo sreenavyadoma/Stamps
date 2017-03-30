@@ -34,8 +34,8 @@ module Stamps
         toolbar.present?
       end
 
-      def wait_until_present *args
-        toolbar.wait_until_present *args
+      def wait_until_present(*args)
+        toolbar.wait_until_present(*args)
       end
     end
   end

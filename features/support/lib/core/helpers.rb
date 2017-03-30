@@ -12,13 +12,13 @@ module Stamps
       # add a day if today is Sunday, we don't ship on Sundays
       today += 1 if today.wday == 0
       # determine if today's date is a holiday and advance to next day if it is
-      10.times do
+      15.times do
         date = Date.civil(today.year,today.month,today.day)
         break if Holidays.on(date, :us).size == 0
         today += 1 if Holidays.on(date, :us).size > 0
       end
       # return proper date
-      (today).strftime("%m/%d/%Y")
+      today.strftime("%m/%d/%Y")
     end
   end
 
@@ -39,171 +39,6 @@ module Stamps
       "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
     end
   end
-
-
-  module ElementHelper
-    attr_accessor :element, :browser
-
-    def url
-      browser.url
-    end
-
-    def disabled?
-      begin
-        element.disabled?
-      rescue
-        true
-      end
-    end
-
-    def exist?
-      begin
-        element.exist?
-      rescue
-        false
-      end
-    end
-
-    def present?
-      element.present?
-    end
-
-    def checked?
-      begin
-        element.checked?
-      rescue
-        return false
-      end
-    end
-
-    def visible?
-      begin
-        element.visible?
-      rescue
-        return false
-      end
-    end
-
-    def enabled?
-      begin
-        element.enabled?
-      rescue
-        return false
-      end
-    end
-
-    def hover
-      begin
-        element.hover
-      rescue
-        #ignore
-      end
-    end
-
-    def clear
-      begin
-        element.clear
-      rescue
-        #ignore
-      end
-    end
-
-    def wait_while_present(*args)
-      if args.length==1
-        element.wait_while_present(args[0].to_i)
-      else
-        element.wait_while_present
-      end
-    end
-
-    def wait_until_present(*args)
-      begin
-        if args.length==1
-          element.wait_until_present(args[0].to_i)
-        else
-          element.wait_until_present
-        end
-      rescue Exception => e
-        logger.error e.message
-        logger.error e.backtrace.join("\n")
-      end
-    end
-
-    def scroll_into_view
-      begin
-        element.browser.execute_script('arguments[0].scrollIntoView();', element)
-      rescue
-        # ignore
-      end
-    end
-
-    def text
-      begin
-        return element.text if element.text.size > 0
-      rescue
-        #ignore
-      end
-
-      begin
-        return element.value if element.value.size > 0
-      rescue
-        #ignore
-      end
-
-      begin
-        return element.attribute_value('value') if element.attribute_value('value').size > 0
-      rescue
-        #ignore
-      end
-      ''
-    end
-
-    def element_send_keys(element, key)
-      begin
-        element.send_keys(key)
-      rescue
-        #ignroe
-      end
-    end
-
-    def send_keys(key)
-      2.times do
-        begin
-          element.send_keys(key)
-        rescue
-          #ignore
-        end
-      end
-    end
-
-    def click
-      begin
-        element.click
-      rescue
-        #ignore
-      end
-    end
-
-    def click_while_present
-      20.times do
-        click
-        sleep(0.05)
-        break unless element.present?
-      end
-    end
-    def safe_double_click
-      begin
-        element.double_click
-      rescue
-        #ignore
-      end
-    end
-
-  end
-
-
-
-
 
   class TestHelper
     include DataMagic
@@ -316,7 +151,7 @@ module Stamps
         logger.scenario_name = @test_name
       end
 
-      def url_prefix *args
+      def url_prefix(*args)
         @url_hash = data_for(:url_prefix, {})
         case args.length
           when 1

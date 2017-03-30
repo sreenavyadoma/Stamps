@@ -81,12 +81,11 @@ module Stamps
       end
 
       def validation_message
-        element_helper.text (browser.span id: 'InvalidUsernameMsg')
+        StampsElement.new(browser.span id: 'InvalidUsernameMsg').text
       end
 
       def blur_out
-        title.safe_double_click
-        title.click
+        title.blur_out
       end
 
       def first_time_sign_in usr, pw

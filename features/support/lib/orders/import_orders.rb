@@ -2,7 +2,7 @@ module Stamps
   module Orders
     class SuccessModal < Browser::StampsModal
       def window_title
-        element_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")
+        StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")).text
       end
 
       def present?
@@ -40,7 +40,7 @@ module Stamps
       end
 
       def filename_label
-        element_helper.text browser.label(id: "fileNameLabel")
+        StampsElement.new(browser.label(id: "fileNameLabel")).text
       end
 
       def text_box
@@ -96,7 +96,7 @@ module Stamps
       end
 
       def download_sample_file
-        element_helper.click browser.a(text: "Download sample file")
+        StampsElement.new(browser.a(text: "Download sample file")).click
       end
     end
   end

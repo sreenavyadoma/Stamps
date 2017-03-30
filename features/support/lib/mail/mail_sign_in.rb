@@ -66,8 +66,8 @@ module Stamps
         sign_in_modal.present?
       end
 
-      def wait_until_present *args
-        sign_in_modal.wait_until_present *args
+      def wait_until_present(*args)
+        sign_in_modal.wait_until_present(*args)
       end
     end
 
@@ -230,7 +230,7 @@ module Stamps
 
       end
 
-      def sign_in_and_remember *args
+      def sign_in_and_remember(*args)
         visit :print_postage
         case args
           when Hash
