@@ -29,15 +29,22 @@ Then /^[Vv]erify Email textbox exists on profile page$/ do
 end
 
 Then /^[Vv]erify username textbox exists on the page$/ do
-  expect(registration.profile_ui_username.present?).to be (true), "Username textbox does not exist on profile page"
+  expect(registration.profile.username.present?).to be (true), "Username textbox does not exist on profile page"
+  registration.profile.username.set "myusername"
+  registration.profile.username.text
+  registration.profile.username.enabled?
+  registration.profile.username.disabled?
+  registration.profile.username.place_holder
+  registration.profile.username.visible?
+  registration.profile.username.data_qtip
 end
 
 Then /^[Vv]erify PASSWORD textbox exists on the page$/ do
-  expect(registration.profile_ui_password.present?).to be (true), "Password textbox does not exist on profile page"
+  expect(registration.profile.password.present?).to be (true), "Password textbox does not exist on profile page"
 end
 
 Then /^[Vv]erify RE-TYPE PASSWORD exists on the page$/ do
-  expect(registration.profile_ui_retypepassword.present?).to be (true), "Retype password textbox does not exist on profile page"
+  expect(registration.profile.retype_password.present?).to be (true), "Retype password textbox does not exist on profile page"
 end
 
 Then /^[Hh]ow will you use Stamps.com drop-down includes (.*)$/ do |str|
@@ -45,11 +52,11 @@ Then /^[Hh]ow will you use Stamps.com drop-down includes (.*)$/ do |str|
 end
 
 Then /^[Vv]erify PROMO CODE field textbox exists on the page$/ do
-  expect(registration.profile_ui_promocodefield.present?).to be (true)
+  expect(registration.profile.promocode.present?).to be (true)
 end
 
   Then /^[Vv]erify CONTINUE button exists on the page$/ do
-  expect(registration.profile_continuebutton.present?).to be (true)
+  expect(registration.profile_continue_button.present?).to be (true)
 end
 
 Then /^[Vv]erify content under Why do I need to create an account\? includes (.*)$/ do |str|
@@ -57,7 +64,7 @@ Then /^[Vv]erify content under Why do I need to create an account\? includes (.*
 end
 
 Then /^[Vv]erify content under Money-saving offers and new products includes (.*)$/ do |str|
-  excpect(registration.profile_content_moneysavingoffers).to eql(str)
+  excpect(registration.profile_content_money_saving_offers).to eql(str)
 end
 
 Then /^[Vv]erify Money-saving offers and new products checkbox is checkmarked on the page$/ do

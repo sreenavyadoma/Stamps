@@ -8,22 +8,29 @@ Feature: WebReg Profile page validation theme_1632
     Then navigate to WebReg page
     Then verify Stamps logo exists in navigation bar
     Then verify USPS logo exists on navigation bar
-    Then verify bread crumbs should contain
-    |Profile|
-    |Membership|
-    |Choose Supplies|
+    Then expect WebReg Profile bread crumbs to contain Profile
+    Then expect WebReg Profile bread crumbs to contain Membership
+    Then expect WebReg Profile bread crumbs to contain Choose Supplies
    #Then verify bread crumb exist Membership
    # Then verify bread crumb exist Choose Supplies
     Then verify Profile page header is Sign up for a new account
     Then verify Email textbox exists on profile page
+    Then expect WebReg Profile Email textbox exists
     Then verify USERNAME textbox exists on the page
     Then verify PASSWORD textbox exists on the page
     Then verify RE-TYPE PASSWORD exists on the page
+
     Then verify values in dropdown for HOW WILL YOU USE STAMPS.COM should contain
     |Business Use - Mostly mailing (letters/postcards/flats|
     |Business/Ecommerce Use - Mostly shipping packages     |
     |Business Use - Both mailing and shipping|
     |Individual/Home Office                  |
+
+    Then expect WebReg Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
+    Then expect WebReg Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
+    Then expect WebReg Profile Usage Type list of values to contain Business Use - Both mailing and shipping
+    Then expect WebReg Profile Usage Type list of values to contain Individual/Home Office
+
     Then verify PROMO CODE field textbox exists on the page
     Then verify CONTINUE button exists on the page
     Then verify content under <h3>Why do I need to create an account?</h3> exists on the page
