@@ -11,8 +11,9 @@ module Stamps
       ship_date = Date.today
 
       day.times do
+        ship_date += 1
         date = Date.civil(ship_date.year,ship_date.month,ship_date.day)
-        break if Holidays.on(date, :us).size == 0 && today.wday != 0 # break if today is not a holiday and not a Sunday.
+        #break if Holidays.on(date, :us).size == 0 && ship_date.wday != 0 # break if today is not a holiday and not a Sunday.
         ship_date += 1 if Holidays.on(date, :us).size > 0 # add 1 if today is a holiday
         ship_date += 1 if ship_date.wday == 0 # add 1 if today is Sunday
       end
