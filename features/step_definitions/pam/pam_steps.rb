@@ -10,16 +10,16 @@ Then /^Visit PAM Customer Search page$/ do
   @customer_search = pam.customer_search
 end
 
-Then /^(?:O|o)n PAM Customer Search page, set username to (.*)$/ do |username|
-  #logger.step "On PAM Customer Search page, set username to #{username}"
+Then /^(?:S|s)et PAM Customer Search page username to (.*)$/ do |username|
+  #logger.step "set PAM Customer Search page username to #{username}"
   test_parameter[:usr] = username unless username.downcase.include? 'random'
-  #logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
+  #logger.step "set PAM Customer Search page username to #{test_data[:usr]}"
   @customer_search.username.set test_parameter[:usr]
   sleep(0.35)
 end
 
-Then /^(?:O|o)n PAM Customer Search page, set 5.2 or lower$/ do
-  #logger.step "On PAM Customer Search page, set 5.2 or lower"
+Then /^(?:S|s)et PAM Customer Search page 5.2 or lower$/ do
+  #logger.step "set PAM Customer Search page 5.2 or lower"
   @customer_search.user_5_2_or_lower
   @customer_search.user_5_2_or_lower
 end
@@ -31,8 +31,8 @@ Then /^(?:O|o)n PAM Customer Search page, click Search button$/ do
     if @customer_profile.present?
       @pam_customer_profile_found = true
     else
-      step "On PAM Customer Search page, set username to #{test_parameter[:usr]}"
-      step "On PAM Customer Search page, set 5.2 or lower"
+      step "set PAM Customer Search page username to #{test_parameter[:usr]}"
+      step "set PAM Customer Search page 5.2 or lower"
       step "On PAM Customer Search page, click Search button"
     end
   else

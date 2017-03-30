@@ -1,349 +1,349 @@
 
-Then /^(?:O|o)n WebReg Membership page, set State to Armed Forces Americas$/ do
-  #logger.step "On WebReg Membership page, set State to AA Armed Forces Americas"
+Then /^(?:S|s)et WebReg Membership page State to Armed Forces Americas$/ do
+  #logger.step "set WebReg Membership page State to AA Armed Forces Americas"
   webreg.profile.membership.state.armed_forces_americas
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Armed Forces$/ do
-  #logger.step "On WebReg Membership page, set State to AE Armed Forces"
+Then /^(?:S|s)et WebReg Membership page State to Armed Forces$/ do
+  #logger.step "set WebReg Membership page State to AE Armed Forces"
   webreg.profile.membership.state.armed_forces
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Alaska$/ do
-  #logger.step "On WebReg Membership page, set State to Alaska"
+Then /^(?:S|s)et WebReg Membership page State to Alaska$/ do
+  #logger.step "set WebReg Membership page State to Alaska"
   webreg.profile.membership.state.alaska
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Alabama$/ do
-  #logger.step "On WebReg Membership page, set State to AL Alabama"
+Then /^(?:S|s)et WebReg Membership page State to Alabama$/ do
+  #logger.step "set WebReg Membership page State to AL Alabama"
   webreg.profile.membership.state.alabama
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Armed Forces Pacific$/ do
-  #logger.step "On WebReg Membership page, set State to Armed Forces Pacific"
+Then /^(?:S|s)et WebReg Membership page State to Armed Forces Pacific$/ do
+  #logger.step "set WebReg Membership page State to Armed Forces Pacific"
   webreg.profile.membership.state.armed_forces_pacific
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Arkansas$/ do
-  #logger.step "On WebReg Membership page, set State to Arkansas"
+Then /^(?:S|s)et WebReg Membership page State to Arkansas$/ do
+  #logger.step "set WebReg Membership page State to Arkansas"
   webreg.profile.membership.state.arkansa
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to American Samoa$/ do
-  #logger.step "On WebReg Membership page, set State to American Samoa"
+Then /^(?:S|s)et WebReg Membership page State to American Samoa$/ do
+  #logger.step "set WebReg Membership page State to American Samoa"
   webreg.profile.membership.state.american_samoa
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Arizona$/ do
-  #logger.step "On WebReg Membership page, set State to Arizona"
+Then /^(?:S|s)et WebReg Membership page State to Arizona$/ do
+  #logger.step "set WebReg Membership page State to Arizona"
   webreg.profile.membership.state.arizona
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to California$/ do
-  #logger.step "On WebReg Membership page, set State to California"
+Then /^(?:S|s)et WebReg Membership page State to California$/ do
+  #logger.step "set WebReg Membership page State to California"
   webreg.profile.membership.state.california
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Colorado$/ do
-  #logger.step "On WebReg Membership page, set State to Colorado"
+Then /^(?:S|s)et WebReg Membership page State to Colorado$/ do
+  #logger.step "set WebReg Membership page State to Colorado"
   webreg.profile.membership.state.colorado
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Connecticut$/ do
-  #logger.step "On WebReg Membership page, set State to Connecticut"
+Then /^(?:S|s)et WebReg Membership page State to Connecticut$/ do
+  #logger.step "set WebReg Membership page State to Connecticut"
   webreg.profile.membership.state.connecticut
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Canal Zone$/ do
-  #logger.step "On WebReg Membership page, set State to Canal Zone"
+Then /^(?:S|s)et WebReg Membership page State to Canal Zone$/ do
+  #logger.step "set WebReg Membership page State to Canal Zone"
   webreg.profile.membership.state.canal_zone
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to District of Columbia$/ do
-  #logger.step "On WebReg Membership page, set State to District of Columbia"
+Then /^(?:S|s)et WebReg Membership page State to District of Columbia$/ do
+  #logger.step "set WebReg Membership page State to District of Columbia"
   webreg.profile.membership.state.district_of_columbia
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Delaware$/ do
-  #logger.step "On WebReg Membership page, set State to Delaware"
+Then /^(?:S|s)et WebReg Membership page State to Delaware$/ do
+  #logger.step "set WebReg Membership page State to Delaware"
   webreg.profile.membership.state.delaware
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Florida$/ do
-  #logger.step "On WebReg Membership page, set State to Florida"
+Then /^(?:S|s)et WebReg Membership page State to Florida$/ do
+  #logger.step "set WebReg Membership page State to Florida"
   webreg.profile.membership.state.florida
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Micronesia$/ do
-  #logger.step "On WebReg Membership page, set State to Micronesia"
+Then /^(?:S|s)et WebReg Membership page State to Micronesia$/ do
+  #logger.step "set WebReg Membership page State to Micronesia"
   webreg.profile.membership.state.micronesia
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Georgia$/ do
-  #logger.step "On WebReg Membership page, set State to Georgia"
+Then /^(?:S|s)et WebReg Membership page State to Georgia$/ do
+  #logger.step "set WebReg Membership page State to Georgia"
   webreg.profile.membership.state.georgia
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Guam$/ do
-  #logger.step "On WebReg Membership page, set State to Guam"
+Then /^(?:S|s)et WebReg Membership page State to Guam$/ do
+  #logger.step "set WebReg Membership page State to Guam"
   webreg.profile.membership.state.guam
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Hawaii$/ do
-  #logger.step "On WebReg Membership page, set State to Hawaii"
+Then /^(?:S|s)et WebReg Membership page State to Hawaii$/ do
+  #logger.step "set WebReg Membership page State to Hawaii"
   webreg.profile.membership.state.hawaii
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Iowa$/ do
-  #logger.step "On WebReg Membership page, set State to Iowa"
+Then /^(?:S|s)et WebReg Membership page State to Iowa$/ do
+  #logger.step "set WebReg Membership page State to Iowa"
   webreg.profile.membership.state.iowa
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Idaho$/ do
-  #logger.step "On WebReg Membership page, set State to Idaho"
+Then /^(?:S|s)et WebReg Membership page State to Idaho$/ do
+  #logger.step "set WebReg Membership page State to Idaho"
   webreg.profile.membership.state.idaho
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Illinois$/ do
-  #logger.step "On WebReg Membership page, set State to Illinois"
+Then /^(?:S|s)et WebReg Membership page State to Illinois$/ do
+  #logger.step "set WebReg Membership page State to Illinois"
   webreg.profile.membership.state.illinois
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Indiana$/ do
-  #logger.step "On WebReg Membership page, set State to Indiana"
+Then /^(?:S|s)et WebReg Membership page State to Indiana$/ do
+  #logger.step "set WebReg Membership page State to Indiana"
   webreg.profile.membership.state.indiana
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Kansas$/ do
-  #logger.step "On WebReg Membership page, set State to Kansas"
+Then /^(?:S|s)et WebReg Membership page State to Kansas$/ do
+  #logger.step "set WebReg Membership page State to Kansas"
   webreg.profile.membership.state.kansas
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Kentucky$/ do
-  #logger.step "On WebReg Membership page, set State to Kentucky"
+Then /^(?:S|s)et WebReg Membership page State to Kentucky$/ do
+  #logger.step "set WebReg Membership page State to Kentucky"
   webreg.profile.membership.state.kentucky
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Louisiana$/ do
-  #logger.step "On WebReg Membership page, set State to Louisiana"
+Then /^(?:S|s)et WebReg Membership page State to Louisiana$/ do
+  #logger.step "set WebReg Membership page State to Louisiana"
   webreg.profile.membership.state.louisiana
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Massachusetts$/ do
-  #logger.step "On WebReg Membership page, set State to Massachusetts"
+Then /^(?:S|s)et WebReg Membership page State to Massachusetts$/ do
+  #logger.step "set WebReg Membership page State to Massachusetts"
   webreg.profile.membership.state.massachusetts
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Maryland$/ do
-  #logger.step "On WebReg Membership page, set State to Maryland"
+Then /^(?:S|s)et WebReg Membership page State to Maryland$/ do
+  #logger.step "set WebReg Membership page State to Maryland"
   webreg.profile.membership.state.maryland
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Maine$/ do
-  #logger.step "On WebReg Membership page, set State to Maine"
+Then /^(?:S|s)et WebReg Membership page State to Maine$/ do
+  #logger.step "set WebReg Membership page State to Maine"
   webreg.profile.membership.state.maine
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Marshall Islands$/ do
-  #logger.step "On WebReg Membership page, set State to Marshall Islands"
+Then /^(?:S|s)et WebReg Membership page State to Marshall Islands$/ do
+  #logger.step "set WebReg Membership page State to Marshall Islands"
   webreg.profile.membership.state.marshall_islands
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Minnesota$/ do
-  #logger.step "On WebReg Membership page, set State to Minnesota"
+Then /^(?:S|s)et WebReg Membership page State to Minnesota$/ do
+  #logger.step "set WebReg Membership page State to Minnesota"
   webreg.profile.membership.state.minnesota
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Missouri$/ do
-  #logger.step "On WebReg Membership page, set State to Missouri"
+Then /^(?:S|s)et WebReg Membership page State to Missouri$/ do
+  #logger.step "set WebReg Membership page State to Missouri"
   webreg.profile.membership.state.missouri
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Mariana Islands$/ do
-  #logger.step "On WebReg Membership page, set State to Mariana Islands"
+Then /^(?:S|s)et WebReg Membership page State to Mariana Islands$/ do
+  #logger.step "set WebReg Membership page State to Mariana Islands"
   webreg.profile.membership.state.mariana_islands
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Mississippi$/ do
-  #logger.step "On WebReg Membership page, set State to Mississippi"
+Then /^(?:S|s)et WebReg Membership page State to Mississippi$/ do
+  #logger.step "set WebReg Membership page State to Mississippi"
   webreg.profile.membership.state.mississippi
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Montana$/ do
-  #logger.step "On WebReg Membership page, set State to Montana"
+Then /^(?:S|s)et WebReg Membership page State to Montana$/ do
+  #logger.step "set WebReg Membership page State to Montana"
   webreg.profile.membership.state.montana
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to North Carolina$/ do
-  #logger.step "On WebReg Membership page, set State to North Carolina"
+Then /^(?:S|s)et WebReg Membership page State to North Carolina$/ do
+  #logger.step "set WebReg Membership page State to North Carolina"
   webreg.profile.membership.state.north_carolina
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to North Dakota$/ do
-  #logger.step "On WebReg Membership page, set State to North Dakota"
+Then /^(?:S|s)et WebReg Membership page State to North Dakota$/ do
+  #logger.step "set WebReg Membership page State to North Dakota"
   webreg.profile.membership.state.north_dakota
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Nebraska$/ do
-  #logger.step "On WebReg Membership page, set State to Nebraska"
+Then /^(?:S|s)et WebReg Membership page State to Nebraska$/ do
+  #logger.step "set WebReg Membership page State to Nebraska"
   webreg.profile.membership.state.nebraska
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to New Hampshire$/ do
-  #logger.step "On WebReg Membership page, set State to New Hampshire"
+Then /^(?:S|s)et WebReg Membership page State to New Hampshire$/ do
+  #logger.step "set WebReg Membership page State to New Hampshire"
   webreg.profile.membership.state.new_hampshire
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to New Jersey$/ do
-  #logger.step "On WebReg Membership page, set State to New Jersey"
+Then /^(?:S|s)et WebReg Membership page State to New Jersey$/ do
+  #logger.step "set WebReg Membership page State to New Jersey"
   webreg.profile.membership.state.new_jersey
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to New Mexico$/ do
-  #logger.step "On WebReg Membership page, set State to New Mexico"
+Then /^(?:S|s)et WebReg Membership page State to New Mexico$/ do
+  #logger.step "set WebReg Membership page State to New Mexico"
   webreg.profile.membership.state.new_mexico
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Nevada$/ do
-  #logger.step "On WebReg Membership page, set State to Nevada"
+Then /^(?:S|s)et WebReg Membership page State to Nevada$/ do
+  #logger.step "set WebReg Membership page State to Nevada"
   webreg.profile.membership.state.nevada
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to New York$/ do
-  #logger.step "On WebReg Membership page, set State to New York"
+Then /^(?:S|s)et WebReg Membership page State to New York$/ do
+  #logger.step "set WebReg Membership page State to New York"
   webreg.profile.membership.state.new_york
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Ohio$/ do
-  #logger.step "On WebReg Membership page, set State to Ohio"
+Then /^(?:S|s)et WebReg Membership page State to Ohio$/ do
+  #logger.step "set WebReg Membership page State to Ohio"
   webreg.profile.membership.state.ohio
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Oklahoma$/ do
-  #logger.step "On WebReg Membership page, set State to Oklahoma"
+Then /^(?:S|s)et WebReg Membership page State to Oklahoma$/ do
+  #logger.step "set WebReg Membership page State to Oklahoma"
   webreg.profile.membership.state.oklahoma
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Oregon$/ do
-  #logger.step "On WebReg Membership page, set State to Oregon"
+Then /^(?:S|s)et WebReg Membership page State to Oregon$/ do
+  #logger.step "set WebReg Membership page State to Oregon"
   webreg.profile.membership.state.oregon
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Pennsylvania$/ do
-  #logger.step "On WebReg Membership page, set State to Pennsylvania"
+Then /^(?:S|s)et WebReg Membership page State to Pennsylvania$/ do
+  #logger.step "set WebReg Membership page State to Pennsylvania"
   webreg.profile.membership.state.pennsylvania
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Puerto Rico$/ do
-  #logger.step "On WebReg Membership page, set State to Puerto Rico"
+Then /^(?:S|s)et WebReg Membership page State to Puerto Rico$/ do
+  #logger.step "set WebReg Membership page State to Puerto Rico"
   webreg.profile.membership.state.puerto_rico
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Palau$/ do
-  #logger.step "On WebReg Membership page, set State to Palau"
+Then /^(?:S|s)et WebReg Membership page State to Palau$/ do
+  #logger.step "set WebReg Membership page State to Palau"
   webreg.profile.membership.state.palau
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Rhode Island$/ do
-  #logger.step "On WebReg Membership page, set State to Rhode Island"
+Then /^(?:S|s)et WebReg Membership page State to Rhode Island$/ do
+  #logger.step "set WebReg Membership page State to Rhode Island"
   webreg.profile.membership.state.rhode_island
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to South Carolina$/ do
-  #logger.step "On WebReg Membership page, set State to South Carolina"
+Then /^(?:S|s)et WebReg Membership page State to South Carolina$/ do
+  #logger.step "set WebReg Membership page State to South Carolina"
   webreg.profile.membership.state.south_carolina
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to South Dakota$/ do
-  #logger.step "On WebReg Membership page, set State to South Dakota"
+Then /^(?:S|s)et WebReg Membership page State to South Dakota$/ do
+  #logger.step "set WebReg Membership page State to South Dakota"
   webreg.profile.membership.state.south_dakota
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Tennessee$/ do
-  #logger.step "On WebReg Membership page, set State to Tennessee"
+Then /^(?:S|s)et WebReg Membership page State to Tennessee$/ do
+  #logger.step "set WebReg Membership page State to Tennessee"
   webreg.profile.membership.state.tennessee
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Texas$/ do
-  #logger.step "On WebReg Membership page, set State to Texas"
+Then /^(?:S|s)et WebReg Membership page State to Texas$/ do
+  #logger.step "set WebReg Membership page State to Texas"
   webreg.profile.membership.state.texas
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Utah$/ do
-  #logger.step "On WebReg Membership page, set State to Utah"
+Then /^(?:S|s)et WebReg Membership page State to Utah$/ do
+  #logger.step "set WebReg Membership page State to Utah"
   webreg.profile.membership.state.utah
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Virginia$/ do
-  #logger.step "On WebReg Membership page, set State to Virginia"
+Then /^(?:S|s)et WebReg Membership page State to Virginia$/ do
+  #logger.step "set WebReg Membership page State to Virginia"
   webreg.profile.membership.state.virginia
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Virgin Islands$/ do
-  #logger.step "On WebReg Membership page, set State to Virgin Islands"
+Then /^(?:S|s)et WebReg Membership page State to Virgin Islands$/ do
+  #logger.step "set WebReg Membership page State to Virgin Islands"
   webreg.profile.membership.state.virgin_islands
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Vermont$/ do
-  #logger.step "On WebReg Membership page, set State to Vermont"
+Then /^(?:S|s)et WebReg Membership page State to Vermont$/ do
+  #logger.step "set WebReg Membership page State to Vermont"
   webreg.profile.membership.state.vermont
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Washington$/ do
-  #logger.step "On WebReg Membership page, set State to Washington"
+Then /^(?:S|s)et WebReg Membership page State to Washington$/ do
+  #logger.step "set WebReg Membership page State to Washington"
   webreg.profile.membership.state.washington
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Wisconsin$/ do
-  #logger.step "On WebReg Membership page, set State to Wisconsin"
+Then /^(?:S|s)et WebReg Membership page State to Wisconsin$/ do
+  #logger.step "set WebReg Membership page State to Wisconsin"
   webreg.profile.membership.state.wisconsin
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to West Virginia$/ do
-  #logger.step "On WebReg Membership page, set State to West Virginia"
+Then /^(?:S|s)et WebReg Membership page State to West Virginia$/ do
+  #logger.step "set WebReg Membership page State to West Virginia"
   webreg.profile.membership.state.west_virginia
 end
 
-Then /^(?:O|o)n WebReg Membership page, set State to Wyoming$/ do
-  #logger.step "On WebReg Membership page, set State to Wyoming"
+Then /^(?:S|s)et WebReg Membership page State to Wyoming$/ do
+  #logger.step "set WebReg Membership page State to Wyoming"
   webreg.profile.membership.state.wyoming
 end
 
-Then /^(?:O|o)n WebReg Membership page, set First Name to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set First Name to #{var}"
+Then /^(?:S|s)et WebReg Membership page First Name to (.*)$/ do |var|
+  #logger.step "set WebReg Membership page First Name to #{var}"
   test_parameter[:first_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.first_name.set test_parameter[:first_name]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Last Name to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Last Name to #{var}"
+Then /^(?:S|s)et WebReg Membership page Last Name to (.*)$/ do |var|
+  #logger.step "set WebReg Membership page Last Name to #{var}"
   test_parameter[:last_name] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.last_name.set test_parameter[:last_name]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Company to (.*)$/ do |var|
+Then /^(?:S|s)et WebReg Membership page Company to (.*)$/ do |var|
   test_parameter[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.company.set test_parameter[:company]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Address to (.*)$/ do |var|
+Then /^(?:S|s)et WebReg Membership page Address to (.*)$/ do |var|
   test_parameter[:company] = (var.downcase.include? 'random') ? ParameterHelper.random_string : var
   webreg.profile.membership.address.set test_parameter[:company]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set City to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set City to #{var}"
+Then /^(?:S|s)et WebReg Membership page City to (.*)$/ do |var|
+  #logger.step "set WebReg Membership page City to #{var}"
   test_parameter[:membership] = var
   webreg.profile.membership.city.set test_parameter[:membership]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Zip Code to (.*)$/ do |var|
+Then /^(?:S|s)et WebReg Membership page Zip Code to (.*)$/ do |var|
   test_parameter[:zip] = var
   webreg.profile.membership.zip.set test_parameter[:zip]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Phone to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Phone to #{var}"
+Then /^(?:S|s)et WebReg Membership page Phone to (.*)$/ do |var|
+  #logger.step "set WebReg Membership page Phone to #{var}"
   test_parameter[:phone] = (var.downcase.include? 'random') ? ParameterHelper.random_phone : var
   phone = webreg.profile.membership.phone
   6.times do
@@ -355,107 +355,107 @@ Then /^(?:O|o)n WebReg Membership page, set Phone to (.*)$/ do |var|
   end
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Extenion to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Extenion to #{var}"
+Then /^(?:S|s)et WebReg Membership page Extenion to (.*)$/ do |var|
+  #logger.step "set WebReg Membership page Extenion to #{var}"
   test_parameter[:ext] = (var.downcase.include? 'random') ? ParameterHelper.random_phone_extension : var
   webreg.profile.membership.ext.set test_parameter[:ext]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Cardholder name to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Cardholder name to #{var}"
+Then /^(?:S|s)et WebReg Membership page Cardholder name to (.*)$/ do |var|
+  #logger.step "set WebReg Membership page Cardholder name to #{var}"
   test_parameter[:card_holder_name] = (var.downcase.include? 'random') ? ParameterHelper.random_name : var
   webreg.profile.membership.card_holder_name.set test_parameter[:card_holder_name]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Card number to (.*)$/ do |var|
+Then /^(?:S|s)et WebReg Membership page Card number to (.*)$/ do |var|
   test_parameter[:card_number] = var
-  #logger.step "On WebReg Membership page, set Card number to #{test_data[:card_number]}"
+  #logger.step "set WebReg Membership page Card number to #{test_data[:card_number]}"
   webreg.profile.membership.card_number.set test_parameter[:card_number]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to January/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to January"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to January/ do
+  #logger.step "set WebReg Membership page Expiration Month to January"
   webreg.profile.membership.expiration_month.jan
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to February$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to February"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to February$/ do
+  #logger.step "set WebReg Membership page Expiration Month to February"
   webreg.profile.membership.expiration_month.feb
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to March$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to March"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to March$/ do
+  #logger.step "set WebReg Membership page Expiration Month to March"
   webreg.profile.membership.expiration_month.mar
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to April$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to April"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to April$/ do
+  #logger.step "set WebReg Membership page Expiration Month to April"
   webreg.profile.membership.expiration_month.apr
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to May$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to May"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to May$/ do
+  #logger.step "set WebReg Membership page Expiration Month to May"
   webreg.profile.membership.expiration_month.may
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to June$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to June"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to June$/ do
+  #logger.step "set WebReg Membership page Expiration Month to June"
   webreg.profile.membership.expiration_month.jun
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to July$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to July"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to July$/ do
+  #logger.step "set WebReg Membership page Expiration Month to July"
   webreg.profile.membership.expiration_month.jul
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to August$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to August"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to August$/ do
+  #logger.step "set WebReg Membership page Expiration Month to August"
   webreg.profile.membership.expiration_month.aug
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to September$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to September"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to September$/ do
+  #logger.step "set WebReg Membership page Expiration Month to September"
   webreg.profile.membership.expiration_month.sep
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to October$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to October"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to October$/ do
+  #logger.step "set WebReg Membership page Expiration Month to October"
   webreg.profile.membership.expiration_month.oct
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to November$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to November"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to November$/ do
+  #logger.step "set WebReg Membership page Expiration Month to November"
   webreg.profile.membership.expiration_month.nov
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Month to December$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to December"
+Then /^(?:S|s)et WebReg Membership page Expiration Month to December$/ do
+  #logger.step "set WebReg Membership page Expiration Month to December"
   webreg.profile.membership.expiration_month.dec
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Expiration Year to (\d+)$/ do |var|
-  #logger.step "On WebReg Membership page, set Expiration Year to #{var}"
+Then /^(?:S|s)et WebReg Membership page Expiration Year to (\d+)$/ do |var|
+  #logger.step "set WebReg Membership page Expiration Year to #{var}"
   test_parameter[:expiration_year] = var
   webreg.profile.membership.expiration_year.select test_parameter[:expiration_year]
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Billing address same as mailing address to Checked$/ do
-  #logger.step "On WebReg Membership page, set Billing address same as mailing address to Checked"
+Then /^(?:S|s)et WebReg Membership page Billing address same as mailing address to Checked$/ do
+  #logger.step "set WebReg Membership page Billing address same as mailing address to Checked"
   webreg.profile.membership.billing_same_as_mailing.check
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Billing address same as mailing address to Unchecked$/ do
-  #logger.step "On WebReg Membership page, set Billing address same as mailing address to Unchecked"
+Then /^(?:S|s)et WebReg Membership page Billing address same as mailing address to Unchecked$/ do
+  #logger.step "set WebReg Membership page Billing address same as mailing address to Unchecked"
   webreg.profile.membership.billing_same_as_mailing.uncheck
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Terms & Conditions to Checked$/ do
-  #logger.step "On WebReg Membership page, set Terms & Conditions to Checked"
+Then /^(?:S|s)et WebReg Membership page Terms & Conditions to Checked$/ do
+  #logger.step "set WebReg Membership page Terms & Conditions to Checked"
   webreg.profile.membership.terms_and_conditions.check
 end
 
-Then /^(?:O|o)n WebReg Membership page, set Terms & Conditions to Unchecked$/ do
-  #logger.step "On WebReg Membership page, set Terms & Conditions to Unchecked"
+Then /^(?:S|s)et WebReg Membership page Terms & Conditions to Unchecked$/ do
+  #logger.step "set WebReg Membership page Terms & Conditions to Unchecked"
   webreg.profile.membership.terms_and_conditions.uncheck
 end
 
@@ -481,11 +481,11 @@ Then /^(?:O|o)n WebReg Membership page, click Submit and correct errors$/ do
       #when there's a failure, correct field and resubmit.
       when WebReg::MembershipPhone
         logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
-        step "On WebReg Membership page, set Phone to random"
+        step "set WebReg Membership page Phone to random"
         step "On WebReg Membership page, click Submit"
       when WebReg::MembershipCardNumber
         logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
-        step "On WebReg Membership page, set Card number to #{test_parameter[:card_number]}"
+        step "set WebReg Membership page Card number to #{test_parameter[:card_number]}"
         step "On WebReg Membership page, click Submit"
       when WebReg::ChooseSupplies
         break

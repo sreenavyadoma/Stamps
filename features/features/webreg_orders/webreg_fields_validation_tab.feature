@@ -75,7 +75,7 @@ Feature: WebReg Fields Validation when user tabs to next field
     Then On WebReg Membership page, Expires Help Block is This field is required
     Then On WebReg Membership page, Tab
     Then On WebReg Membership page, Tab
-    Then On WebReg Membership page, set Billing address same as mailing address to Unchecked
+    Then set WebReg Membership page Billing address same as mailing address to Unchecked
     Then On WebReg Membership page, Tab
     Then On WebReg Membership page, Tab
     Then On WebReg Membership page, expect Billing Address Help Block is This field is required
