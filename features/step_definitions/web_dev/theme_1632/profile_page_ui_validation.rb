@@ -16,8 +16,8 @@ Then /^[Vv]erify progress bar exists on the page$/ do
 end
 #end
 
-Then /^[Vv]erify bread crumb exist (.*)$/ do |str|
-  expect(registration.bread_crumbs).to include(str), "Bread crumb #{str} does not exist "
+Then /^[Vv]erify bread crumb should contain (.*)$/ do |str|
+  expect(registration.bread_crumbs).to include("Profile","Membership","Choose Supplies"), "Bread crumb #{str} does not exist "
 end
 
 Then /^[Vv]erify Profile page header is (.*)$/ do |str|
@@ -29,63 +29,59 @@ Then /^[Vv]erify Email textbox exists on profile page$/ do
 end
 
 Then /^[Vv]erify username textbox exists on the page$/ do
-  expect(registration.profile_ui_username.present?).to be (true)
+  expect(registration.profile_ui_username.present?).to be (true), "Username textbox does not exist on profile page"
 end
 
 Then /^[Vv]erify PASSWORD textbox exists on the page$/ do
-  expect(registration.profile_ui_password.present?).to be (true)
+  expect(registration.profile_ui_password.present?).to be (true), "Password textbox does not exist on profile page"
 end
 
 Then /^[Vv]erify RE-TYPE PASSWORD exists on the page$/ do
-  registration.profile_ui_retypepassword
+  expect(registration.profile_ui_retypepassword.present?).to be (true), "Retype password textbox does not exist on profile page"
 end
 
 Then /^[Hh]ow will you use Stamps.com drop-down includes (.*)$/ do |str|
-
-end
-
-Then /^[Vv]erify values in dropdown HOW WILL YOU USE STAMPS\.COM$/ do
-   registration.profile_dropdown
+  expect(registration.profile.dropdown).to eql(str)
 end
 
 Then /^[Vv]erify PROMO CODE field textbox exists on the page$/ do
-  registration.profile_ui_promocodefield
+  expect(registration.profile_ui_promocodefield.present?).to be (true)
 end
 
-Then /^[Vv]erify CONTINUE button exists on the page$/ do
-  registration.profile_continuebutton
+  Then /^[Vv]erify CONTINUE button exists on the page$/ do
+  expect(registration.profile_continuebutton.present?).to be (true)
 end
 
-Then /^[Vv]erify content under Why do I need to create an account? exists on the page$/ do
-    registration.profile_content_createanaccount
+Then /^[Vv]erify content under Why do I need to create an account\? includes (.*)$/ do |str|
+    expect(registration.profile_content_createanaccount).to eql(str)
 end
 
-Then /^[Vv]erify content under Money-saving offers and new products$/ do
-  registration.profile_content_moneysavingoffers
+Then /^[Vv]erify content under Money-saving offers and new products includes (.*)$/ do |str|
+  excpect(registration.profile_content_moneysavingoffers).to eql(str)
 end
 
 Then /^[Vv]erify Money-saving offers and new products checkbox is checkmarked on the page$/ do
-  registration.profile_moneysavingoffers_checkbox
+  expect(registration.profile_moneysavingoffers_checkbox.present?).to be (true)
 end
 
 Then /^[Vv]erify Privacy Policy link exists on the page and is clickable$/ do
-  registration.profile_privacypolicylink
+  expect(registration.profile_privacypolicylink.present?).to be (true)
 end
 
 Then /^[Vv]erify copyright link exists on the page and is clickable$/ do
-  registration.profile_copyrightlink
+  expect(registration.profile_copyrightlink.present?).to be (true)
 end
 
 Then /^[Vv]erify Norton logo exists on the page$/ do
-  registration.profile_nortonlogo
+  expect(registration.profile_nortonlogo.present?).to be (true)
 end
 
 Then /^[Vv]erify TRUSTe logo exists on the page$/ do
-  registration.profile_trustelogo
+  expect(registration.profile_trustelogo.present?).to be (true)
 end
 
 Then /^[Vv]erify LIVE chat button exists on the page$/ do
-  registration.profile_livechatbutton
+  expect(registration.profile_livechatbutton.present?).to be (true)
 end
 
 

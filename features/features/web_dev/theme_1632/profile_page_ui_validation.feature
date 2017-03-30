@@ -19,9 +19,11 @@ Feature: WebReg Profile page validation theme_1632
     Then verify USERNAME textbox exists on the page
     Then verify PASSWORD textbox exists on the page
     Then verify RE-TYPE PASSWORD exists on the page
-    Then verify values in dropdown for HOW WILL YOU USE STAMPS.COM?
-    Then How will you use Stamps.com drop-down includes Business use .. blah blah blah
-    Then How will you use Stamps.com drop-down includes ECommerce use .. blah blah blah
+    Then verify values in dropdown for HOW WILL YOU USE STAMPS.COM should contain
+    |Business Use - Mostly mailing (letters/postcards/flats|
+    |Business/Ecommerce Use - Mostly shipping packages     |
+    |Business Use - Both mailing and shipping|
+    |Individual/Home Office                  |
     Then verify PROMO CODE field textbox exists on the page
     Then verify CONTINUE button exists on the page
     Then verify content under <h3>Why do I need to create an account?</h3> exists on the page
