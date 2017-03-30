@@ -130,9 +130,9 @@ module Stamps
             column_num = column_number(:order_id)
             fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
             fields.each_with_index do |element, index|
-              scroll_to_column element
+              scroll_to_column(element)
               row_text = StampsElement.new(element).text
-              if row_text.include? order_id
+              if row_text.include?(order_id)
                 logger.info "Order ID #{order_id}, Row #{index+1}"
                 sleep(0.35)
                 return index + 1

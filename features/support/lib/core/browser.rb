@@ -108,17 +108,19 @@ module Stamps
         rescue
           #ignore
         end
+
         begin
           return element.value if element.value.size > 0
         rescue
           #ignore
         end
+
         begin
           return attribute_value('value') if  attribute_value('value').size > 0
         rescue
-          #ignore
+          return ""
         end
-        ''
+        ""
       end
 
       def attribute_value(attribute)
