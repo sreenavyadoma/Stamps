@@ -7,18 +7,16 @@ module Stamps
     end
 
     def valid_ship_date(day)
-      # get the date
-      today = Date.today+day
-      # add a day if today is Sunday, we don't ship on Sundays
-      today += 1 if today.wday == 0
-      # determine if today's date is a holiday and advance to next day if it is
-      15.times do
-        date = Date.civil(today.year,today.month,today.day)
-        break if Holidays.on(date, :us).size == 0
-        today += 1 if Holidays.on(date, :us).size > 0
+      day = day.to_i
+      ship_date = Date.today
+
+      day.times do
+        date = Date.civil(ship_date.year,ship_date.month,ship_date.day)
+        break if Holidays.on(date, :us).size == 0 && today.wday != 0 # break if today is not a holiday and not a Sunday.
+        ship_date += 1 if Holidays.on(date, :us).size > 0 # add 1 if today is a holiday
+        ship_date += 1 if ship_date.wday == 0 # add 1 if today is Sunday
       end
-      # return proper date
-      today.strftime("%m/%d/%Y")
+      ship_date.strftime("%m/%d/%Y")
     end
   end
 

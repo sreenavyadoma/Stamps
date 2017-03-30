@@ -23,7 +23,7 @@ end
 
 Then /^[Ss]et WebReg Profile Email to (.*)$/ do |email|
   #logger.step "set WebReg Profile Email to #{email}"
-  webreg.profile.email.wait_until_present.set email
+  webreg.profile.email.set email
 end
 
 Then /^[Ss]et WebReg Profile User ID to (.*)$/ do |user_id|

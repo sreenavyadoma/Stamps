@@ -210,7 +210,7 @@ module Stamps
       end
 
       def data_error
-        element.attribute_value("data-errorqtip")
+        attribute_value("data-errorqtip")
       end
 
       def placeholder

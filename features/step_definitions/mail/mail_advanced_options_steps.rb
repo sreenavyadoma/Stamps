@@ -43,12 +43,12 @@ Then /^[Ee]xpect Advanced Options Mail Date field is present$/ do
   stamps.mail.print_form.advanced_options.mail_date.text_box.text
   stamps.mail.print_form.advanced_options.mail_date.text_box.set("03/29/2017")
   stamps.mail.print_form.advanced_options.mail_date.date_picker.today
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_1
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_2
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_3
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_4
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_5
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(0)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(1)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(2)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(3)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(4)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(5)
 end
 
 
