@@ -189,7 +189,7 @@ module Stamps
         end
 
         def count
-          StampsElement.new(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).to_i.text
+          StampsElement.new(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).text.to_i
         end
       end
 
