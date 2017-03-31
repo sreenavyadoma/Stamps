@@ -22,13 +22,21 @@ Feature: WebReg Profile page validation theme_1632
     Then expect WebReg Profile Usage Type list of values to contain Individual/Home Office
     Then expect WebReg Profile promo code textbox exists
     Then expect WebReg Profile CONTINUE button exists
-    Then expect content under <h3>Why do I need to create an account?</h3> exists on the page
-    Then verify content under<h3>Money-saving offers and new products</h3>
-    Then verify Money-saving offers and new products checkbox is checkmarked on the page
-    Then verify CONTINUE button exists on the page
-    Then verify Privacy Policy link exists on the page and is clickable
-    Then verify copyright link exists on the page and is clickable
-    Then verify Norton logo exists on the page
-    Then TRUSTe logo exists on the page
-    Then verify LIVE chat button exists on the page
+    Then expect webReg Profile content under <h3>Why do I need to create an account?</h3> should contain:
+    """
+    The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
+    """
+    Then expect WebReg Profile content under<h3>Money-saving offers and new products</h3> should contain:
+    """
+    Send me special money-saving offers and information on new products and services from Stamps.com and its partners
+    """
+    Then expect WebReg Profile Money-saving offers and new products checkbox is checkmarked on the page
+    Then expect WebReg Profile CONTINUE button exists
+    Then expect WebReg Profile Privacy Policy link exists
+      and is clickable
+    Then expect WebReg Profile copyright link exists
+      and is clickable
+    Then expect WebReg Profile Norton logo exists
+    Then expect WebReg Profile TRUSTe logo exists
+    Then expect WebReg Profile LIVE chat button exists
 
