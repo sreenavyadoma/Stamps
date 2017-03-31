@@ -59,7 +59,7 @@ Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight is (.+)$/ do
   expect(data_error_qtip).to include(expectation)
 end
 
-Then /^(?:O|o)n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
+Then /^[Oo]n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
   #logger.step "expect Customs form Associated Item Description Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
   data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).description.data_error_qtip
@@ -67,7 +67,7 @@ Then /^(?:O|o)n Customs form, expect Associated Item Description Tooltip Error i
   expect(data_error_qtip).to include(expectation)
 end
 
-Then /^(?:O|o)n Customs form, expect Qty Tooltip Error is (.*)$/ do |expectation|
+Then /^[Oo]n Customs form, expect Qty Tooltip Error is (.*)$/ do |expectation|
   #logger.step "expect Customs form Qty Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
   data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).qty.text_box.data_error_qtip
@@ -75,7 +75,7 @@ Then /^(?:O|o)n Customs form, expect Qty Tooltip Error is (.*)$/ do |expectation
   expect(data_error_qtip).to include(expectation)
 end
 
-Then /^(?:O|o)n Customs form, expect Unit Price Tooltip Error is (.*)$/ do |expectation|
+Then /^[Oo]n Customs form, expect Unit Price Tooltip Error is (.*)$/ do |expectation|
   #logger.step "expect Customs form Unit Price Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
   data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).unit_price.text_box.data_error_qtip
@@ -83,7 +83,7 @@ Then /^(?:O|o)n Customs form, expect Unit Price Tooltip Error is (.*)$/ do |expe
   expect(data_error_qtip).to include(expectation)
 end
 
-Then /^(?:O|o)n Customs form, expect Pounds Tooltip Error is (.*)$/ do |expectation|
+Then /^[Oo]n Customs form, expect Pounds Tooltip Error is (.*)$/ do |expectation|
   #logger.step "expect Customs form Pounds Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
   data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).lb.text_box.data_error_qtip
@@ -91,7 +91,7 @@ Then /^(?:O|o)n Customs form, expect Pounds Tooltip Error is (.*)$/ do |expectat
   expect(data_error_qtip).to include(expectation)
 end
 
-Then /^(?:O|o)n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation|
+Then /^[Oo]n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation|
   #logger.step "expect Customs form Ounces Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
   data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).oz.text_box.data_error_qtip

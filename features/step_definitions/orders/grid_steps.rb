@@ -1,11 +1,13 @@
 
 
 Then /^[Cc]heck Orders Grid (?:saved Order ID|Order ID (.*))$/ do |order_id|
+  order_id = test_parameter[:order_id] if order_id.nil?
   stamps.orders.orders_grid.column.checkbox.check_order_id(order_id)
   expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(true)
 end
 
 Then /^(?:U|u)ncheck Orders Grid (?:saved Order ID|Order ID (.*))$/ do |order_id|
+  order_id = test_parameter[:order_id] if order_id.nil?
   stamps.orders.orders_grid.column.checkbox.uncheck_order_id(order_id)
   expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(false)
 end

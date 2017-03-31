@@ -280,7 +280,7 @@ Then /^[Ee]xpect Customs form Total Value is (?:correct|(.*))$/ do |expectation|
   expect(stamps.mail.print_form.mail_customs.edit_form.total_value).to eql(expectation) if param.web_app == :mail
 end
 
-Then /^(?:A|a)dd Customs form Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
+Then /^[Aa]dd Customs form Associated Item (\d+), Description (.*), Qty (\d+), Price (.+), Made In (.+), Tariff (.*)$/ do |item_number, description, qty, price, made_in, tariff|
   step "add Customs form Associated Item #{item_number}"
   step "set Customs form Associated Item #{item_number} Description to #{description}"
   step "set Customs form Associated Item #{item_number} Qty to #{qty}"
@@ -289,7 +289,7 @@ Then /^(?:A|a)dd Customs form Associated Item (\d+), Description (.*), Qty (\d+)
   step "set Customs form Associated Item #{item_number} Tarriff to #{tariff}"
 end
 
-Then /^(?:A|a)dd Customs form Associated Item (\d+)$/ do |item_number|
+Then /^[Aa]dd Customs form Associated Item (\d+)$/ do |item_number|
   stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i) if param.web_app == :mail
 end

@@ -1,47 +1,48 @@
-Then /^(?:O|o)n Order Details form, Expand Manual Items Ordered pane$/ do
+Then /^[Oo]n Order Details form, Expand Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
 end
 
-Then /^(?:O|o)n Order Details form, Collapse Manual Items Ordered pane$/ do
+Then /^[Oo]n Order Details form, Collapse Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.collapse
 end
 
-Then /^(?:O|o)n Order Details form, Expand Store Items Ordered pane$/ do
+Then /^[Oo]n Order Details form, Expand Store Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
 end
 
-Then /^(?:O|o)n Order Details form, Collapse Store Items Ordered pane$/ do
+Then /^[Oo]n Order Details form, Collapse Store Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.collapse_store_item
 end
 
-Then /^(?:O|o)n Order Details form, Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
-  test_parameter[:item_number] = item_number.to_i
-  test_parameter[:item_qty] = qty
-  test_parameter[:item_id] = id
-  test_parameter[:item_description] = description
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(qty)
-  step "On Order Details form, blur out"
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set((id.downcase.include?'random')?"#{ParameterHelper.random_alpha_numeric}":id)
-  step "On Order Details form, blur out"
-  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set((description.downcase.include?'random')?"#{ParameterHelper.random_alpha_numeric}":description)
-  step "On Order Details form, blur out"
+Then /^[Oo]n Order Details form, Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
+  step "set Order Details form Associated Item #{item_number} Qty to #{qty}"
+  step "set Order Details form Associated Item #{item_number} ID to #{id}"
+  step "set Order Details form Associated Item #{item_number} Description to #{description}"
+end
+
+Then /^[Aa]dd Order Details form Associated Item (\d+)$/ do |item_number|
+  stamps.orders.order_details.items_ordered.item(item_number.to_i)
+end
+
+Then /^[Ss]et Order Details form Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
+  test_parameter[:details_associated_items][item_number] = Hash.new unless test_parameter[:details_associated_items].has_key?(item_number)
+  test_parameter[:details_associated_items][item_number][:item_qty] = qty
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(test_parameter[:details_associated_items][item_number][:item_qty] )
   step "Save Order Details data"
 end
 
-Then /^(?:O|o)n Order Details form, Add Item (\d+)$/ do |value|
-  @details_line_item = stamps.orders.order_details.items_ordered.item(value.to_i)
+Then /^[Ss]et Order Details form Associated Item (\d+) ID to (.*)$/ do |item_number, str|
+  test_parameter[:details_associated_items][item_number] = Hash.new unless test_parameter[:details_associated_items].has_key?(item_number)
+  test_parameter[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random')?(ParameterHelper.random_alpha_numeric):str)
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(test_parameter[:details_associated_items][item_number][:item_id])
+  step "Save Order Details data"
 end
 
-Then /^[Ss]et Order Details form Qty to (\d+)$/ do |value|
-  @details_line_item.item_qty.set(value)
-end
-
-Then /^[Ss]et Order Details form ID to (.*)$/ do |value|
-  @details_line_item.item_id.set ((value.downcase == 'random')? ParameterHelper.random_alpha_numeric : value)
-end
-
-Then /^[Ss]et Order Details form Description to (.*)$/ do |value|
-  @details_line_item.item_description.set ((value.downcase == 'random')? ParameterHelper.random_alpha_numeric : value)
+Then /^[Ss]et Order Details form Associated Item (\d+) Description to (.*)$/ do |item_number, str|
+  test_parameter[:details_associated_items][item_number] = Hash.new unless test_parameter[:details_associated_items].has_key?(item_number)
+  test_parameter[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random')?(ParameterHelper.random_alpha_numeric):str)
+  stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(test_parameter[:details_associated_items][item_number][:item_description])
+  step "Save Order Details data"
 end
 
 Then /^[Ss]et Order Details form Ship-To Country to (.*)$/ do |country|
@@ -130,11 +131,11 @@ Then /^[Ss]et Order Details form International Ship-To Email to \"(.*)\"$/ do |v
   end
 end
 
-Then /^(?:O|o)n Order Details form, Expand panel$/ do
+Then /^[Oo]n Order Details form, Expand panel$/ do
   stamps.orders.order_details.expand
 end
 
-Then /^(?:O|o)n Order Details form, Delete Item (\d+)$/ do |item_number|
+Then /^[Oo]n Order Details form, Delete Item (\d+)$/ do |item_number|
   item = stamps.orders.order_details.items_ordered.item item_number.to_i
   item.delete.click
 end
@@ -158,7 +159,7 @@ Then /^[Ss]et Order Details form Ounces to (\d+)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:O|o)n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
+Then /^[Oo]n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
   ((count.nil?)?1:count.to_i).times {stamps.orders.order_details.blur_out}
 end
 
@@ -193,11 +194,11 @@ Then /^[Ss]et Order Details form Height to (\d*)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^(?:O|o)n Order Details form, check Insure-For checkbox$/ do
+Then /^[Oo]n Order Details form, check Insure-For checkbox$/ do
   stamps.orders.order_details.insure_for.checkbox.check
 end
 
-Then /^(?:O|o)n Order Details form, uncheck Insure-For checkbox$/ do
+Then /^[Oo]n Order Details form, uncheck Insure-For checkbox$/ do
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
@@ -297,15 +298,15 @@ Then /^[Ss]et Order Details form Ship-To to Domestic Address (.*)$/ do |address|
   step "Save Order Details data"
 end
 
-Then /^(?:O|o)n Order Details form, Hide Ship-To fields$/ do
+Then /^[Oo]n Order Details form, Hide Ship-To fields$/ do
   stamps.orders.order_details.ship_to.domestic.less
 end
 
-Then /^(?:O|o)n Order Details form, Hide International Ship-To fields$/ do
+Then /^[Oo]n Order Details form, Hide International Ship-To fields$/ do
   stamps.orders.order_details.ship_to.international.less
 end
 
-Then /^(?:O|o)n Order Details form, Show Ship-To fields$/ do
+Then /^[Oo]n Order Details form, Show Ship-To fields$/ do
   stamps.orders.order_details.ship_to.domestic.show_address
 end
 

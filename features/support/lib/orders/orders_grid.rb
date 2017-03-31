@@ -131,8 +131,7 @@ module Stamps
             fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
             fields.each_with_index do |element, index|
               scroll_to_column(element)
-              row_text = StampsElement.new(element).text
-              if row_text.include?(order_id)
+              if StampsElement.new(element).text.include?(order_id)
                 logger.info "Order ID #{order_id}, Row #{index+1}"
                 sleep(0.35)
                 return index + 1
@@ -834,11 +833,11 @@ module Stamps
         end
 
         def check_order_id(order_id)
-          check row_number(order_id)
+          check(row_number(order_id))
         end
 
         def uncheck_order_id(order_id)
-          uncheck row_number(order_id)
+          uncheck(row_number(order_id))
         end
 
         def checkbox_element(number)

@@ -96,6 +96,7 @@ module Stamps
   def test_parameter
     @test_data ||= Hash.new
     @test_data[:customs_associated_items] ||= Hash.new
+    @test_data[:details_associated_items] ||= Hash.new
     @test_data
   end
 

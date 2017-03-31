@@ -17,8 +17,8 @@ Feature:  Update International Orders to ShipStation
     Then set Order Details form Insure-For to $100.25
     Then set Order Details form Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
-    Then on Order Details form, Add Item 2, Qty 2, ID ID 2, Description Description 2
-    Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description Description 3
+    Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
+    Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description random string
 
     # Edit the customs form
     Then click Order Details form Edit Form button
@@ -84,18 +84,18 @@ Feature:  Update International Orders to ShipStation
     Then expect Order Details form Pounds is 2
     Then expect Order Details form Ounces is 2
 
-    Then expect Order Details form Item 1 Qty is 1
-    Then expect Order Details form Item 1 ID is ID 1
-    Then expect Order Details form Item 1 Description is Description 1
+    Then expect Order Details form Associated Item 1 Qty is 1
+    Then expect Order Details form Associated Item 1 ID is ID 1
+    Then expect Order Details form Associated Item 1 Description is Description 1
 
-    Then expect Order Details form Item 2 Qty is 2
-    Then expect Order Details form Item 2 ID is ID 2
-    Then expect Order Details form Item 2 Description is Description 2
+    Then expect Order Details form Associated Item 2 Qty is 2
+    Then expect Order Details form Associated Item 2 ID is correct
+    Then expect Order Details form Associated Item 2 Description is correct
 
 
-    Then expect Order Details form Item 3 Qty is 3
-    Then expect Order Details form Item 3 ID is ID 3
-    Then expect Order Details form Item 3 Description is Description 3
+    Then expect Order Details form Associated Item 3 Qty is 3
+    Then expect Order Details form Associated Item 3 ID is ID 3
+    Then expect Order Details form Associated Item 3 Description is correct
 
     Then expect Order Details form Insure-For is correct
     Then expect Order Details form Insure-For Cost is correct

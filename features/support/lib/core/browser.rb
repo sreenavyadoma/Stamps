@@ -104,19 +104,19 @@ module Stamps
 
       def text
         begin
-          return element.text if element.text.size > 0
+          return element.text if !element.text.nil? && element.text.size > 0
         rescue
           #ignore
         end
 
         begin
-          return element.value if element.value.size > 0
+          return element.value if !element.value.nil? && element.value.size > 0
         rescue
           #ignore
         end
 
         begin
-          return attribute_value('value') if  attribute_value('value').size > 0
+          return attribute_value('value') if !attribute_value('value').nil? && attribute_value('value').size > 0
         rescue
           return ""
         end

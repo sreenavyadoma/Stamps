@@ -8,9 +8,9 @@ Then /^[Ss]et Order Details form International Ship-To auto-suggest address to p
   @auto_suggest = stamps.orders.order_details.ship_to.international.auto_suggest.set @auto_suggest_partial_name
 end
 
-Then /^(?:O|o)n Order Details form, select Ship-To auto-suggest item (\d+)$/ do |item_number|
+Then /^[Oo]n Order Details form, select Ship-To auto-suggest item (\d+)$/ do |item_number|
   step "set Order Details form Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
-  @auto_suggest.select item_number
+  @auto_suggest.select(item_number)
 end
 
 Then /^[Ee]xpect Order Details form auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|

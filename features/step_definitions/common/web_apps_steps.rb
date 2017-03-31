@@ -1,5 +1,5 @@
 
-Given /^(?:|(?:|(?:A|a) )(?:(?:v|V)alid |))(?:U|u)ser is signed in to Web Apps$/ do
+Given /^(?:|(?:|[Aa] )(?:(?:v|V)alid |))(?:U|u)ser is signed in to Web Apps$/ do
   step "I launch default browser"
   step "Health Check: Print - Web Batch" if param.health_check
   step "Health Check: Print - Address Book" if param.health_check

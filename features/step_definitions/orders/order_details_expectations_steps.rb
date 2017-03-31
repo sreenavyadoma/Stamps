@@ -5,37 +5,40 @@ Then /^[Ee]xpect Order Details form Ship-From and Ship-From saved values are the
   expect(stamps.orders.order_details.ship_from.text_box.text).to eql test_parameter[:ship_from]
 end
 
-Then /^[Ee]xpect Order Details form Item (\d+) Qty is (\d+)$/ do |item_number, expectation|
+Then /^[Ee]xpect Order Details form Associated Item (\d+) Qty is (?:correct|(\d+))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
+  expectation = (expectation.nil?)?test_parameter[:details_associated_items][item_number][:item_qty] : expectation
   10.times do break if stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.text_box.text == expectation end
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.text_box.text).to eql expectation
 end
 
-Then /^[Ee]xpect Order Details form Item (\d+) ID is (.*)$/ do |item_number, expectation|
+Then /^[Ee]xpect Order Details form Associated Item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
+  expectation = (expectation.nil?)?test_parameter[:details_associated_items][item_number][:item_id] : expectation
   10.times do break if stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.text == expectation end
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.text).to eql expectation
 end
 
-Then /^[Ee]xpect Order Details form Item (\d+) Description is (.*)$/ do |item_number, expectation|
+Then /^[Ee]xpect Order Details form Associated Item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
+  expectation = (expectation.nil?)?test_parameter[:details_associated_items][item_number][:item_description] : expectation
   10.times do break if stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.text == expectation end
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.text).to eql expectation
 end
 
-Then /^[Ee]xpect Order Details form Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
+Then /^[Ee]xpect Order Details form Associated Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.text_box.placeholder == expectation end
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.text_box.placeholder).to eql expectation
 end
 
-Then /^[Ee]xpect Order Details form Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
+Then /^[Ee]xpect Order Details form Associated Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.items_ordered.item(item_number.to_i).id.placeholder == expectation end
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).id.placeholder).to eql expectation
 end
 
-Then /^[Ee]xpect Order Details form Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
+Then /^[Ee]xpect Order Details form Associated Item (\d+) Description Placeholder is (.*)$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   10.times do break if stamps.orders.order_details.items_ordered.item(item_number.to_i).description.placeholder == expectation end
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).description.placeholder).to eql expectation
@@ -248,7 +251,7 @@ Then /^[Ee]xpect Order Details form International Ship-To Email Placeholder is (
   expect(stamps.orders.order_details.ship_to.international.email.placeholder).to eql expectation
 end
 
-Then /^(?:O|o)n Order Details form, Collapse Panel$/ do
+Then /^[Oo]n Order Details form, Collapse Panel$/ do
   stamps.orders.order_details.toolbar.menu.collapse
 end
 

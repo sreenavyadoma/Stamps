@@ -5,7 +5,7 @@ Then /^Visit WebReg Registration Page$/ do
   expect(browser).to be_truthy
 end
 
-Then /^(?:O|o)n WebReg Profile page, Continue to Mailing Information page$/ do
+Then /^[Oo]n WebReg Profile page, Continue to Mailing Information page$/ do
   #logger.step "On WebReg Profile page, Continue to Mailing Information page"
   webreg.profile.continue_to_mailing_info
 end
@@ -221,12 +221,12 @@ Then /^[Ss]et WebReg Profile 2nd Question to What was your high school mascot$/ 
   webreg.profile.second_question.high_school_mascot
 end
 
-Then /^(?:O|o)n WebReg Profile page, Continue$/ do
+Then /^[Oo]n WebReg Profile page, Continue$/ do
   #logger.step "On WebReg Profile page, Continue"
   webreg.profile.continue.click
 end
 
-Then /^(?:O|o)n WebReg Profile page, continue to Mailing Information page$/ do
+Then /^[Oo]n WebReg Profile page, continue to Mailing Information page$/ do
   #logger.step "On WebReg Profile page, continue to Mailing Information page"
   10.times do
     webreg.profile.continue.click
@@ -263,73 +263,73 @@ Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ 
   end
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect Email Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect Email Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect Email Help Block is #{expectation}"
   help_text = webreg.profile.email.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect User ID Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect User ID Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect User ID Help Block is #{expectation}"
   help_text = webreg.profile.user_id.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect Password Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect Password Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect Password Help Block is #{expectation}"
   help_text = webreg.profile.password.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect Re\-Type Password Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect Re\-Type Password Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect Re-Type Help Block is #{expectation}"
   help_text = webreg.profile.password.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect How will you use Stamps\.com Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect How will you use Stamps\.com Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect How will you use Stamps.com Help Block is #{expectation}"
   help_text = webreg.profile.usage_type.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect How did you hear about us\? Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect How did you hear about us\? Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, How did you hear about us? Help Block is #{expectation}"
   referrer_name = webreg.profile.referrer_name
   help_text = webreg.profile.referrer_name.help_text if referrer_name.present?
   expect(help_text).to eql expectation if referrer_name.present?
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect 1st Question Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect 1st Question Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect 1st Question Help Block is #{expectation}"
   help_text = webreg.profile.first_question.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect 1st Answer Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect 1st Answer Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect 1st Answer Help Block is #{expectation}"
   help_text = webreg.profile.first_answer.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, expect 2nd Question Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Profile page, expect 2nd Question Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect 2n Question Help Block is #{expectation}"
   help_text = webreg.profile.second_question.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^^(?:O|o)n WebReg Profile page, expect 2nd Answer Help Block is (.*)$/) do |expectation|
+Then(/^^[Oo]n WebReg Profile page, expect 2nd Answer Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Profile page, expect 2nd Answer Help Block is #{expectation}"
   help_text = webreg.profile.second_answer.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Profile page, Tab from Email$/) do
+Then(/^[Oo]n WebReg Profile page, Tab from Email$/) do
   #logger.step "On WebReg Profile page, Tab from Email"
   browser.send_keys([:tab])
 end
 
-Then(/^(?:O|o)n WebReg Profile page, Tab$/) do
+Then(/^[Oo]n WebReg Profile page, Tab$/) do
   #logger.step "On WebReg Profile page, Tab"
   webreg.profile.tab
 end
