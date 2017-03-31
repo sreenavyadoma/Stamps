@@ -19,7 +19,7 @@ jenkinsvm05, ccyobxzc3gq,    @print_dialog_printing_on_4x6_sdc1200, @print_dialo
 jenkinsvm03, cccvajgfzkx5b,  @print_dialog_printing_on_4x6_shipping_label, @print_dialog_two_up_x_number_of_labels, @print_on_thermal, @print_two_up_expanded_cp72
 
 STG
-jenkinsvm11, stghy955swcbcm, @print_dialog_change_date, @print_dialog_label_right_side, @print_dialog_printing_on_5x8_shipping_label, @print_dialog_ship_date_today_plus2, @print_dialog_two_up_x_number_of_labels, @print_layout_cn22_roll
+jenkinsvm11, stgvw4zzd8jgj7, @print_dialog_change_date, @print_dialog_label_right_side, @print_dialog_printing_on_5x8_shipping_label, @print_dialog_ship_date_today_plus2, @print_dialog_two_up_x_number_of_labels, @print_layout_cn22_roll
                                 @print_on_thermal, @print_sample_pme_package, @print_two_up_expanded_cp72, @print_two_up_expanded_sdc1200_left_print3
 jenkinsvm12, stghi5sqaoe,    @print_dialog_email_tracking, @print_dialog_printing_on_4x6_roll, @print_dialog_printing_on_8x11_paper, @print_dialog_ship_date_today_plus3, @print_layout_cn22_5x8, @print_layout_cp72
                                 @print_sample_parcel_select_ground_large_package, @print_sample_pme_padded_flat_rate_envelope, @print_two_up_expanded_fpo_cn22_paper_right, @print_two_up_multiple_domestic_labels
@@ -54,7 +54,7 @@ jenkinsvm03, cccvajgfzkx5b,  @mail_print_roll_4_1_8_x_6_1_4_pm_box, @mail_print_
 
 Printing: STG
 
-jenkinsvm11, stghy955swcbcm, @mail_print_envelope_10_A2_A9, @mail_print_roll_4_1_8_x_6_1_4_mm_xm, @mail_print_roll_4_x_6_fcm_psg, @mail_print_roll_4_x_6_pm_envelope_package,
+jenkinsvm11, stgvw4zzd8jgj7, @mail_print_envelope_10_A2_A9, @mail_print_roll_4_1_8_x_6_1_4_mm_xm, @mail_print_roll_4_x_6_fcm_psg, @mail_print_roll_4_x_6_pm_envelope_package,
                                 @mail_print_sample_shipping_label_5x8_pm_box, @mail_print_sample_shipping_label_8_x_11_mm_xm, @mail_print_sample_shipping_label_sdc1200_fcm_psg, @mail_print_sample_shipping_label_sdc1200_pm_envelope_package
                                 @mail_print_shipping_label_5x8_pm_box, @mail_print_shipping_label_8_x_11_mm_xm, @mail_print_shipping_label_sdc1200_fcm_psg, @mail_print_shipping_label_sdc1200_pm_envelope_package, @mail_print_on_list_of_values
 jenkinsvm12, stghi5sqaoe, @mail_print_sample_shipping_label_8_x_11_pm_box, @mail_print_envelope_6_7_9_11_12, @mail_print_roll_4_1_8_x_6_1_4_pm_box, @mail_print_roll_4_x_6_mm_xm, @mail_print_sample_shipping_label_5x8_fcm_psg, @mail_print_sample_shipping_label_5x8_pm_envelope_package,
