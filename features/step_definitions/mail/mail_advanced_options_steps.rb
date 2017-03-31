@@ -1,5 +1,5 @@
 
-Then /^(?:S|s)how Advanced Options$/ do
+Then /^[Ss]how Advanced Options$/ do
   stamps.mail.print_form.advanced_options.show
 end
 
@@ -7,77 +7,77 @@ Then /^(?:H|h)ide Advanced Options$/ do
   stamps.mail.print_form.advanced_options.hide
 end
 
-Then /^(?:S|s)elect Advanced Options Extra Services$/ do
+Then /^[Ss]elect Advanced Options Extra Services$/ do
   stamps.mail.print_form.advanced_options.extra_services
 end
 
-Then /^(?:E|e)xpect Advanced Options Extra Services Button is visible$/ do
+Then /^[Ee]xpect Advanced Options Extra Services Button is visible$/ do
   expect(stamps.mail.print_form.advanced_options.extra_services_select_button.visible?).to be(true), "Extra Services Button is NOT disabled"
 end
 
-Then /^(?:S|s)elect Advanced Options Specify Postage Amount$/ do
+Then /^[Ss]elect Advanced Options Specify Postage Amount$/ do
   stamps.mail.print_form.advanced_options.specify_postage_amount.select
 end
 
-Then /^(?:E|e)xpect Advanced Options Specify Postage Amount is selected$/ do
+Then /^[Ee]xpect Advanced Options Specify Postage Amount is selected$/ do
   expect(stamps.mail.print_form.advanced_options.specify_postage_amount.selected?).to be(true), "Specify Postage Amount was NOT selected"
 end
 
-Then /^(?:E|e)xpect Advanced Options Calculate Postage Amount radio button is present$/ do
+Then /^[Ee]xpect Advanced Options Calculate Postage Amount radio button is present$/ do
   expect(stamps.mail.print_form.advanced_options.calculate_postage_amount.present?).to be(true), "Stamps Calculate Postage Amount radio button is NOT present"
 end
 
-Then /^(?:E|e)xpect Advanced Options Specify Postage Amount radio button is present$/ do
+Then /^[Ee]xpect Advanced Options Specify Postage Amount radio button is present$/ do
   expect(stamps.mail.print_form.advanced_options.specify_postage_amount.present?).to be(true), "Stamps Specify Postage Amount radio button is NOT present"
 end
 
-Then /^(?:S|s)elect Advanced Options Calculate Postage Amount$/ do
+Then /^[Ss]elect Advanced Options Calculate Postage Amount$/ do
   stamps.mail.print_form.advanced_options.calculate_postage_amount.select
 end
 
-Then /^(?:E|e)xpect Advanced Options Calculate Postage Amount is selected$/ do
+Then /^[Ee]xpect Advanced Options Calculate Postage Amount is selected$/ do
   expect(stamps.mail.print_form.advanced_options.calculate_postage_amount.selected?).to be(true), "Calculate Postage Amount was NOT selected"
 end
 
-Then /^(?:E|e)xpect Advanced Options Mail Date field is present$/ do
+Then /^[Ee]xpect Advanced Options Mail Date field is present$/ do
   stamps.mail.print_form.advanced_options.mail_date.text_box.text
   stamps.mail.print_form.advanced_options.mail_date.text_box.set("03/29/2017")
   stamps.mail.print_form.advanced_options.mail_date.date_picker.today
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_1
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_2
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_3
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_4
-  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus_5
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(0)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(1)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(2)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(3)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(4)
+  stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(5)
 end
 
 
 
 
 
-Then /^(?:S|s)et Advanced Options Reference Number to (?:(?:a |some |)random string|(.*))$/ do |str|
+Then /^[Ss]et Advanced Options Reference Number to (?:(?:a |some |)random string|(.*))$/ do |str|
   test_parameter[:reference_number] = (str.nil?)?ParameterHelper.random_string : str
   stamps.mail.print_form.advanced_options.reference_number.set(test_parameter[:reference_number])
 end
 
-Then /^(?:E|e)xpect Advanced Options Reference Number field is present$/ do
+Then /^[Ee]xpect Advanced Options Reference Number field is present$/ do
   expect(stamps.mail.print_form.advanced_options.reference_number.present?).to be(true), "Reference Number field is NOT present"
 end
 
-Then /^(?:E|e)xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|
+Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|
   expectation = test_parameter[:reference_number] if expectation.nil?
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), "Advanced Options Reference Number is incorrect"
 end
 
-Then /^(?:E|e)xpect Advanced Options Cost Code Field is present$/ do
+Then /^[Ee]xpect Advanced Options Cost Code Field is present$/ do
   expect(stamps.mail.print_form.advanced_options.cost_code.text_box.present?).to be(true), "Print form Cost Code Field is NOT present"
 end
 
-Then /^(?:S|s)et Advanced Options Cost Code to (.*)$/ do |str|
+Then /^[Ss]et Advanced Options Cost Code to (.*)$/ do |str|
   stamps.mail.print_form.advanced_options.cost_code.select(str)
 end
 
-Then /^(?:E|e)xpect Advanced Options Cost Code is (.*)$/ do |expectation|
+Then /^[Ee]xpect Advanced Options Cost Code is (.*)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.cost_code.text_box.text).to eql(expectation)
 end
 

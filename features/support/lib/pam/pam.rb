@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class PaymentAdministratorManager < Browser::StampsBrowserElement
+    class PaymentAdministratorManager < Browser::StampsModal
       def visit
         param.test_env = 'stg' if param.test_env.downcase == 'staging'
 

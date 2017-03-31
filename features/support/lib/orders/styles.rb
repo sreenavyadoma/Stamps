@@ -1,14 +1,14 @@
 module Stamps
   module Orders
-    class PageStyles < Browser::StampsBrowserElement
+    class PageStyles < Browser::StampsModal
       def general
         General.new(param)
       end
     end
 
-    class General < Browser::StampsBrowserElement
+    class General < Browser::StampsModal
 
-      class Links < Browser::StampsBrowserElement
+      class Links < Browser::StampsModal
         def color
           field = browser.link css: "a[rel=WebBatch]"
           field.wait_until_present 6
@@ -25,7 +25,7 @@ module Stamps
         end
       end
 
-      class NavigationHeader < Browser::StampsBrowserElement
+      class NavigationHeader < Browser::StampsModal
         def height
           field = browser.div class: "navbar-inner"
           field.wait_until_present 5
@@ -40,7 +40,7 @@ module Stamps
         end
       end
 
-      class Fonts < Browser::StampsBrowserElement
+      class Fonts < Browser::StampsModal
         def font_family
           browser.body.style "font-family"
         end
@@ -58,7 +58,7 @@ module Stamps
         end
       end
 
-      class Tooltip < Browser::StampsBrowserElement
+      class Tooltip < Browser::StampsModal
         def width
           field = browser.link css: "a[data-qtip*='Configure your settings']"
           field.wait_until_present 6

@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     module PrintModal
-      class MailConfirmPrint < Browser::StampsBrowserElement
+      class MailConfirmPrint < Browser::StampsModal
         attr_accessor :window_title, :do_not_prompt, :continue_btn
 
         def initialize(param)
@@ -18,19 +18,19 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          window_title.safely_wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def continue
           10.times do
-            continue_btn.safe_click
+            continue_btn.click
             sleep(0.125)
             break unless collapse_button.present?
           end
         end
       end
 
-      class PleaseWait < Browser::StampsBrowserElement
+      class PleaseWait < Browser::StampsModal
         attr_accessor :window_title, :paragraph, :ok_btn
 
         def initialize(param)
@@ -46,7 +46,7 @@ module Stamps
 
         def ok
           10.times do
-            ok_btn.safe_click
+            ok_btn.click
             break unless present?
           end
         end

@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class ACHCreditError < Browser::StampsBrowserElement
+    class ACHCreditError < Browser::StampsModal
       attr_reader :title, :ok_button
 
       def initialize(param)
@@ -22,7 +22,7 @@ module Stamps
       end
     end
 
-    class ACHCreditConfirmation < Browser::StampsBrowserElement
+    class ACHCreditConfirmation < Browser::StampsModal
       attr_reader :title, :ok_button
 
       def initialize(param)
@@ -44,7 +44,7 @@ module Stamps
       end
     end
 
-    class ACHPurchaseVerification < Browser::StampsBrowserElement
+    class ACHPurchaseVerification < Browser::StampsModal
       attr_reader :title, :confirmation, :ach_error, :yes_button, :no_button
 
       def initialize(param)
@@ -67,7 +67,7 @@ module Stamps
       def yes
         5.times do
           yes_button.send_keys(:enter)
-          yes_button.safe_click
+          yes_button.click
           sleep(0.35)
           if confirmation.present?
             logger.message confirmation.text
@@ -92,7 +92,7 @@ module Stamps
       end
     end
 
-    class ACHCredit < Browser::StampsBrowserElement
+    class ACHCredit < Browser::StampsModal
       attr_reader :dollar_amount, :cents_amount, :comments, :purchase_verification, :submit_button
 
       def initialize(param)
@@ -111,7 +111,7 @@ module Stamps
       def submit
         10.times do
           submit_button.send_keys(:enter)
-          submit_button.safe_click
+          submit_button.click
           if purchase_verification.present?
             logger.info purchase_verification.text
             return purchase_verification

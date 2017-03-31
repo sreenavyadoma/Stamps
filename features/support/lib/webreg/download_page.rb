@@ -1,6 +1,6 @@
 module Stamps
   module WebReg
-    class DownloadPage < Browser::StampsBrowserElement
+    class DownloadPage < Browser::StampsModal
       def element
         StampsElement.new browser.h1 css: "div>h1"
       end
@@ -9,8 +9,8 @@ module Stamps
         element.present?
       end
 
-      def wait_until_present *args
-        element.wait_until_present *args
+      def wait_until_present(*args)
+        element.wait_until_present(*args)
       end
 
       def text

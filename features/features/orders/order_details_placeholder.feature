@@ -14,9 +14,9 @@ Feature:  Order Details Form Placeholder default values
 
     Then on Order Details form, Add Item 1
 
-    Then expect Order Details form Item 1 Qty Placeholder is Qty
-    Then expect Order Details form Item 1 ID Placeholder is ID #
-    Then expect Order Details form Item 1 Description Placeholder is Description
+    Then expect Order Details form Associated Item 1 Qty Placeholder is Qty
+    Then expect Order Details form Associated Item 1 ID Placeholder is ID #
+    Then expect Order Details form Associated Item 1 Description Placeholder is Description
 
     Then set Order Details form Ship-To Country to Curacao
 

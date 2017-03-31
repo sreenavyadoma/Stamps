@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Etsy < Browser::StampsBrowserElement
+      class Etsy < Browser::StampsModal
 
         def window_title
           StampsElement.new(browser.div text: "Connect your Etsy Store")
@@ -31,14 +31,14 @@ module Stamps
 
         def find_my_shops
           button = StampsElement.new browser.span(text: "Find My Shops")
-          button.safe_click
-          button.safe_click
+          button.click
+          button.click
         end
 
         def available_shops
           button = StampsElement.new((browser.text_fields(css: "input[id^=combo-][id$=-inputEl]")).last)
-          button.safe_click
-          button.safe_click
+          button.click
+          button.click
         end
 
         def connect username, password
@@ -47,7 +47,7 @@ module Stamps
           sign_in_page = EtsySignInPage.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             sleep(2)
             if sign_in_page.present?
               sign_in_page.username.set username
@@ -77,7 +77,7 @@ module Stamps
           sign_in_page = EtsySignInPage.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             sleep(2)
             if sign_in_page.present?
               sign_in_page.username.set username
@@ -132,7 +132,7 @@ module Stamps
         end
       end
 
-      class EtsySignInPage < Browser::StampsBrowserElement
+      class EtsySignInPage < Browser::StampsModal
         def present?
           browser.text_field(id: 'username-existing').present?
         end
@@ -151,13 +151,13 @@ module Stamps
 
           10.times do
             button.send_keys(:enter)
-            button.safe_click
+            button.click
             return etsy_page if etsy_page.present?
           end
         end
       end
 
-      class EtsyPage < Browser::StampsBrowserElement
+      class EtsyPage < Browser::StampsModal
         def present?
           browser.url.include? "etsy.com"
         end
@@ -169,7 +169,7 @@ module Stamps
           3.times do
             browser.execute_script("window.scrollBy(0,400)")
             button.send_keys(:enter)
-            button.safe_click
+            button.click
             sleep(5)
             return settings if settings.present?
           end
@@ -183,7 +183,7 @@ module Stamps
           3.times do
             browser.execute_script("window.scrollBy(0,400)")
             button.send_keys(:enter)
-            button.safe_click
+            button.click
             sleep(5)
             return manage_stores if manage_stores.present?
           end

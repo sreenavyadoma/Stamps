@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Volusion < Browser::StampsBrowserElement
+      class Volusion < Browser::StampsModal
         def present?
           connect_button.present?
         end
@@ -36,7 +36,7 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
-            button.safe_click
+            button.click
             5.times do
               if importing_order.present?
                 logger.info importing_order.message
@@ -67,7 +67,7 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
-            button.safe_click
+            button.click
             5.times do
               if importing_order.present?
                 logger.info importing_order.message

@@ -2,16 +2,16 @@ module Stamps
   module Mail
     module AdvancedOptions
 
-      class AdvancedOptionsContainer < Browser::StampsBrowserElement
-        attr_reader :advanced_options
+      class AdvancedOptionsContainer < Browser::StampsModal
+        attr_reader :print_media
 
         def initialize(param)
           super(param)
-          @advanced_options = param.print_media
+          @print_media = param.print_media
         end
       end
 
-      class CostCodeComboBox < Browser::StampsBrowserElement
+      class CostCodeComboBox < Browser::StampsModal
         attr_accessor :param, :text_box, :drop_down
 
         def initialize(param)
@@ -35,16 +35,13 @@ module Stamps
 
         def select(str)
           logger.info "Select #{str}"
-          drop_down.safe_click
+          drop_down.click
           10.times do
-            begin
-              break if (text_box.text).include?(str)
-              drop_down.safe_click unless selection(browser.lis(text: str)).present?
-              element_helper.safe_click(selection(str))
-              logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
-            rescue
-              #ignore
-            end
+            selection = StampsElement.new(selection(str))
+            break if text_box.text.include?(str)
+            drop_down.click unless selection.present?
+            selection.click
+            logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           end
           expect(text_box.text).to eql(str)
           text_box.text
@@ -58,31 +55,13 @@ module Stamps
         end
       end
 
-      class MailDatePicker < Browser::StampsBrowserElement
+      class MailDatePicker < Browser::StampsModal
         include MailDateTextbox
+
+        attr_reader :trigger_picker
         def initialize(param)
           super(param)
           @trigger_picker = StampsElement.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
-        end
-
-        def ship_date(day)
-          (Date.today+day).strftime("%m/%d/%Y")
-
-          # get today's date
-          # determine if today's date is sunday
-          # determine if today's date is a holiday
-          # return proper date
-        end
-
-        def choose_date(element, day)
-          date = ship_date(day)
-          @trigger_picker.safe_click
-          20.times do
-            @trigger_picker.safe_click unless element.present?
-            element_helper.safe_click(element)
-            break if text_box.text.include?(date)
-          end
-          expect(text_box.text).to eql(date)
         end
 
         def mail_dates
@@ -93,32 +72,26 @@ module Stamps
           choose_date(browser.span(css: "div[class=x-datepicker-footer]>a>span>span>span[id$=btnInnerEl]"), 0)
         end
 
-        def todays_date
-          choose_date(mail_dates[0], 0)
+        def todays_date_plus(number)
+          number = number.to_i
+          choose_date(mail_dates[number], number)
         end
 
-        def todays_date_plus_1
-          choose_date(mail_dates[1], 1)
-        end
-
-        def todays_date_plus_2
-          choose_date(mail_dates[2], 2)
-        end
-
-        def todays_date_plus_3
-          choose_date(mail_dates[3], 3)
-        end
-
-        def todays_date_plus_4
-          choose_date(mail_dates[4], 4)
-        end
-
-        def todays_date_plus_5
-          choose_date(mail_dates[5], 5)
+        def choose_date(element, day)
+          date = valid_ship_date(day)
+          element = StampsElement.new(element)
+          trigger_picker.click
+          30.times do
+            trigger_picker.click unless element.present?
+            sleep(0.05)
+            element.click
+            break if text_box.text.include?(date)
+          end
+          expect(text_box.text).to eql(date)
         end
       end
 
-      class MailDate < Browser::StampsBrowserElement
+      class MailDate < Browser::StampsModal
         include MailDateTextbox
         attr_accessor :date_picker
 

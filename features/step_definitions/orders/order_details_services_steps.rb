@@ -1,5 +1,5 @@
 
-Then /^(?:S|s)et Order Details form service to (.*)$/ do |service|
+Then /^[Ss]et Order Details form service to (.*)$/ do |service|
   stamps.orders.order_details.service.select(service)
   15.times do
     step "On Order Details form, blur out"
@@ -9,7 +9,7 @@ Then /^(?:S|s)et Order Details form service to (.*)$/ do |service|
   step "Save Order Details data"
 end
 
-Then /^(?:E|e)xpect Order Details form service is (.*)$/ do |expectation|
+Then /^[Ee]xpect Order Details form service is (.*)$/ do |expectation|
   if expectation.nil?
     selection_substr = ""
   else

@@ -95,9 +95,9 @@ module Stamps
 
         10.times {
           begin
-            button.safe_click #unless selection_label.present?
+            button.click #unless selection_label.present?
             selection_label.scroll_into_view
-            selection_label.safe_click
+            selection_label.click
             selected_service = box.text
             if selected_service == "First Class (1 - 3 Days)"
               selected_service = "First Class Mail (1 - 3 Days)"

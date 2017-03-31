@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailInsufficientFunds < Browser::StampsBrowserElement
+    class MailInsufficientFunds < Browser::StampsModal
       attr_reader :window_title, :body, :add_funds_btn, :close_btn
 
       def initialize(param)
@@ -24,7 +24,7 @@ module Stamps
       end
 
       def add_funds
-        add_funds_btn.safe_click #todo-rob need to connect this to AddFundsModal
+        add_funds_btn.click #todo-rob need to connect this to AddFundsModal
       end
     end
   end

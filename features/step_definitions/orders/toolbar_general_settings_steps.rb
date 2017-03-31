@@ -1,5 +1,5 @@
 
-Then /^(?:O|o)pen Settings Modal$/ do
+Then /^[Oo]pen Settings Modal$/ do
   #logger.step "Open Settings Modal"
   @general_settings = stamps.orders.orders_toolbar.settings.general_settings #todo-Rob refactor General Settings.
 end

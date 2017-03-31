@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailToolbar < Browser::StampsBrowserElement
+    class MailToolbar < Browser::StampsModal
       attr_reader :total, :mail_print_modal, :confirm_window, :please_wait, :windows_print, :sample_button, :printing_problem, :insufficient_funds,
                   :print_label, :print_stamps, :print_envelope
 
@@ -53,14 +53,14 @@ module Stamps
         expect(print_button.present?).to be(true)
         10.times do
           begin
-            print_button.safe_click
+            print_button.click
             window.wait_until_present(2)
 
             if please_wait.present?
               logger.message(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
-              print_button.safe_click
+              print_button.click
             end
 
             expect(insufficient_funds.text).to eql('Insufficient Funds') if insufficient_funds.present?
@@ -117,7 +117,7 @@ module Stamps
       end
 
       def print_international
-        print_button.safe_click
+        print_button.click
         confirm_window.wait_until_present 3
         5.times do
           if confirm_window.present?
@@ -146,7 +146,7 @@ module Stamps
     end
 
 
-    class PrintingProblem < Browser::StampsBrowserElement
+    class PrintingProblem < Browser::StampsModal
       def element
         StampsElement.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end

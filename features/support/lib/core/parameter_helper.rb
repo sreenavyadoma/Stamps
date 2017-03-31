@@ -119,7 +119,7 @@ module Stamps
         (Date.today + day.to_i).strftime "%b %-d"
       end
 
-      def date_printed *args
+      def date_printed(*args)
         case args.length
           when 0
             now = Date.today

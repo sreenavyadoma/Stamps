@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-Then /^(?:S|s)et Print form Serial Number to (.*)$/ do |str|
+Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
   if str.include?('random')
     case str
       when /A/
@@ -37,17 +37,17 @@ Then /^(?:S|s)et Print form Serial Number to (.*)$/ do |str|
   stamps.mail.print_form.serial_number.set(serial)
 end
 
-Then /^(?:S|s)et Print form Amount to (\d*.?\d+)$/ do |value|
+Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
   test_parameter[:stamp_amount] = value
   stamps.mail.print_form.stamp_amount.set(test_parameter[:stamp_amount])
 end
 
-Then /^(?:S|s)et Print form Quantity to (\d+)$/ do |value|
+Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
   test_parameter[:quantity] = value
   stamps.mail.print_form.quantity.set(test_parameter[:quantity])
 end
 
-Then /^(?:E|e)xpect Print form Domestic Address field displays (.*)$/ do |value|
+Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
   20.times do
     stamps.mail.print_form.mail_to.blur_out
     stamps.mail.print_form.mail_to.blur_out
