@@ -10,10 +10,19 @@ Feature: Advanced Options BVT
     Then select Print On Shipping Label - 8 ½" x 11" Paper
     Then show Advanced Options
 
+    Then set Advanced Options Mail Date to 03/24/2017
+    Then set Advanced Options Mail Date to today
+    Then set Advanced Options Mail Date to tomorrow
+    Then set Advanced Options Mail Date to today plus 1
+    Then set Advanced Options Mail Date to today plus 2
+    Then set Advanced Options Mail Date to today plus 3
+    Then set Advanced Options Mail Date to asdfasdf
+
     Then expect Advanced Options Mail Date field is present
     Then expect Advanced Options Mail Date is correct
     Then expect Advanced Options Mail Date is 03/24/2017
     Then expect Advanced Options Mail Date is today
+    Then expect Advanced Options Mail Date is today plus 1
 
 
 

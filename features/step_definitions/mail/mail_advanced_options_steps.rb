@@ -51,8 +51,27 @@ Then /^[Ee]xpect Advanced Options Mail Date field is present$/ do
   stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(5)
 end
 
-Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|((?:today|tomorrow))?|(.*))$/ do |today, expectation|
-  logger.info "today is #{today}"
+Then /^[Ss]et Advanced Options Mail Date to ((?:today plus|tomorrow|today|))? ?(.*)?$/ do |day, expectation|
+
+  logger.info "today is #{day}"
+  logger.info "expectation is #{expectation}"
+
+  logger.info "today is #{day}"
+  logger.info "expectation is #{expectation}"
+end
+
+Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|((?:today plus|tomorrow|today|))?|) ?(.*)?$/ do |day, expectation|
+  case(day)
+    when nil
+    when /today plus/
+    when /tomorrow/
+    when /today/
+    else
+      #ignore
+  end
+
+
+  logger.info "today is #{day}"
   logger.info "expectation is #{expectation}"
 
 
