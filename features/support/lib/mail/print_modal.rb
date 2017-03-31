@@ -2,7 +2,7 @@
 module Stamps
   module Mail
     module PrintModal
-      class MailPrinterComboBox < Browser::StampsBrowserElement
+      class MailPrinterComboBox < Browser::StampsModal
         attr_reader :text_box, :drop_down
 
         def initialize(param)
@@ -32,8 +32,8 @@ module Stamps
           end
 
           10.times do
-            drop_down.safe_click unless selection.present?
-            selection.safe_click
+            drop_down.click unless selection.present?
+            selection.click
             sleep(0.15)
             break if text_box.text.include?(printer)
           end
@@ -41,7 +41,7 @@ module Stamps
         end
       end
 
-      class MailPaperTrayComboBox < Browser::StampsBrowserElement
+      class MailPaperTrayComboBox < Browser::StampsModal
         attr_accessor :drop_down, :text_box
 
         def initialize(param)
@@ -53,15 +53,15 @@ module Stamps
         def select(str)
           selection_label = StampsElement.new(browser.li(text: str))
           10.times do
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
+            drop_down.click unless selection_label.present?
+            selection_label.click
             sleep(0.15)
             break if text_box.text.include?(str)
           end
         end
       end
 
-      class MailPrintModal < Browser::StampsBrowserElement
+      class MailPrintModal < Browser::StampsModal
         attr_accessor :paper_tray, :printer, :print_button, :reprint_link, :window_title
 
         def initialize(param)
@@ -78,7 +78,7 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          window_title.safely_wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def print
@@ -96,16 +96,14 @@ module Stamps
         end
 
         def title
-          div = browser.div css: "div[id^=printwindow]>div[id^=title]>div[id^=title]"
-          logger.info "Title: #{div}"
-          element_helper.text div
+          StampsElement.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
         end
         def error_ok_button
           browser.span(text: 'OK')
         end
 
         def error_message
-          browser.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]').text
+          StampsElement.new(browser.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]')).text
         end
 
         def close
@@ -117,11 +115,7 @@ module Stamps
         end
 
         def total_cost
-          ParameterHelper.remove_dollar_sign(element_helper.text(total_label, "total")).to_f.round(2)
-        end
-
-        def total_label
-          browser.label(text: 'Total Cost:').parent.labels.last
+          ParameterHelper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last)).to_f.round(2)
         end
 
         def check_naws_plugin_error
@@ -131,12 +125,7 @@ module Stamps
               @printing_error = true
               ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
               logger.info "-- Chrome NAWS Plugin Error --"
-              ptags.each {|p_tag|
-                if p_tag.present?
-                  p_tag_text = element_helper.text p_tag
-                  logger.info "\n#{p_tag_text}"
-                end
-              }
+              ptags.each {|p_tag| logger.error "#{StampsElement.new(p_tag).text}" if p_tag.present? }
               logger.info "-- Chrome NAWS Plugin Error --"
               if error_ok_button.present?
                 error_message = self.error_message
@@ -172,9 +161,9 @@ module Stamps
 
           if ok_button.present?
             logger.info "Error Window OK button"
-            ok_button.safe_click
-            ok_button.safe_click
-            ok_button.safe_click
+            ok_button.click
+            ok_button.click
+            ok_button.click
           end
           @printing_error
         end

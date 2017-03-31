@@ -14,7 +14,7 @@ Then /^Orders: Sign-in using username and password from parameter file$/ do
   stamps.orders.landing_page.sign_in test_parameter[:usr], test_parameter[:pw]
 end
 
-Then /^(?:O|o)n PAM Customer Search page, set username from parameter file$/ do
+Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
   logger.info "On PAM Customer Search page, set username from parameter file"
   step "On PAM Customer Search page, set username to #{CONFIG['usr']}"
 end

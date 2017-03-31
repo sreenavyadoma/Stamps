@@ -1,25 +1,25 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::StampsBrowserElement
+      class ImportingOrdersModal < Browser::StampsModal
         def present?
           browser.div(text: "Importing Orders").present?
         end
 
         def message
-          element_helper.text browser.div(css: "div[id^=messagebox-][id$=-msg]")
+          StampsElement.new(browser.div(css: "div[id^=messagebox-][id$=-msg]")).text
         end
 
         def ok
-          button = StampsElement.new browser.span(text: "OK")
+          button = StampsElement.new(browser.span(text: "OK"))
           20.times do
-            button.safe_click
+            button.click
             break unless button.present?
           end
         end
       end
 
-      class DeleteStoreModal < Browser::StampsBrowserElement
+      class DeleteStoreModal < Browser::StampsModal
         def present?
           delete_btn.present?
         end
@@ -42,8 +42,8 @@ module Stamps
           end
 
           5.times do
-            button.safe_click
-            button.safe_click
+            button.click
+            button.click
             break unless present?
           end
         end
@@ -53,12 +53,12 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::StampsBrowserElement
-        class ServiceMappingGrid < Browser::StampsBrowserElement
+      class StoreSettings < Browser::StampsModal
+        class ServiceMappingGrid < Browser::StampsModal
 
-          class ServiceMappingLineItem < Browser::StampsBrowserElement
+          class ServiceMappingLineItem < Browser::StampsModal
 
-            class ServiceMappingShippingService < Browser::StampsBrowserElement
+            class ServiceMappingShippingService < Browser::StampsModal
 
               def initialize(param, index)
                 super(param)
@@ -85,9 +85,9 @@ module Stamps
 
                 10.times {
                   begin
-                    dd.safe_click unless selection.present?
+                    dd.click unless selection.present?
                     selection.scroll_into_view
-                    selection.safe_click
+                    selection.click
                     logger.info "Selection #{box.text} - #{(box.text.include? service)?"was selected": "not selected"}"
                     break if box.text.include? service
                   rescue
@@ -138,7 +138,7 @@ module Stamps
               break if size >= index
               sleep(0.35)
               break if size >= index
-              add_button.safe_click if index > size
+              add_button.click if index > size
               logger.info "Service Mapping Item Count: #{size}"
             }
 
@@ -158,7 +158,7 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           15.times do
-            button.safe_click
+            button.click
             5.times do
               if importing_order.present?
                 logger.info importing_order.message
@@ -192,7 +192,7 @@ module Stamps
         end
       end
 
-      class MarketPlace < Browser::StampsBrowserElement
+      class MarketPlace < Browser::StampsModal
         attr_reader :window_title
 
         def initialize(param)
@@ -204,8 +204,8 @@ module Stamps
           window_title.present?
         end
 
-        def wait_until_present *args
-          window_title.wait_until_present *args
+        def wait_until_present(*args)
+          window_title.wait_until_present(*args)
         end
 
         def contains store_name
@@ -237,7 +237,7 @@ module Stamps
           button = amazon_button
           store = Amazon.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(2)
             return store if store.present?
           end
@@ -251,7 +251,7 @@ module Stamps
           button = volusion_button
           store = Volusion.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(2)
             return store if store.present?
           end
@@ -266,7 +266,7 @@ module Stamps
           button = rakuten_button
           store = Rakuten.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(2)
             return store if store.present?
           end
@@ -281,7 +281,7 @@ module Stamps
           button = etsy_button
           store = Etsy.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -296,7 +296,7 @@ module Stamps
           button = shopify_button
           store = Shopify.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -311,7 +311,7 @@ module Stamps
           button = three_d_cart_button
           store = ThreeDCart.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -326,7 +326,7 @@ module Stamps
           button = etsy_button
           store = Ebay.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -341,7 +341,7 @@ module Stamps
           button = yahoo_button
           store = Yahoo.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -356,7 +356,7 @@ module Stamps
           button = big_commerce_button
           store = BigCommerce.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -371,7 +371,7 @@ module Stamps
           button = paypal_button
           store = PayPal.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -380,8 +380,8 @@ module Stamps
 
       end
 
-      class ManageStores < Browser::StampsBrowserElement
-        class ManageStoresGrid < Browser::StampsBrowserElement
+      class ManageStores < Browser::StampsModal
+        class ManageStoresGrid < Browser::StampsModal
 
           def size
             (browser.tables css: "div[id^=grid]>div[class^=x-grid-view]>div[class=x-grid-item-container]>table").size
@@ -407,10 +407,10 @@ module Stamps
             10.times do
               #select grid row item
               5.times do
-                grid_row_field.safe_click
+                grid_row_field.click
                 break if (grid_row_focused_field.attribute_value "class").include? "focused"
               end
-              del_btn.safe_click
+              del_btn.click
               return delete_modal if delete_modal.present?
             end
           end
@@ -428,23 +428,23 @@ module Stamps
                 row_to_delete = 0
                 begin
                   row = StampsElement.new tables[row_to_delete]
-                  grid_item_name = element_helper.text row
+                  grid_item_name = StampsElement.new(row).text
                   logger.info "#{index} Delete Item - #{grid_item_name}"
 
                   if grid_item_name.include? "Manual Orders"
                     logger.info "#{index} Skipping #{grid_item_name}"
                     row = StampsElement.new tables[row_to_delete+1]
-                    grid_item_name = element_helper.text row
+                    grid_item_name = StampsElement.new(row).text
                     logger.info "#{index} Delete Item - #{grid_item_name}"
                   end
 
                   3.times do
-                    row.safe_click
-                    row.safe_click
-                    row.safe_click
-                    row.safe_click
+                    row.click
+                    row.click
+                    row.click
+                    row.click
                     sleep(0.35)
-                    del_btn.safe_click
+                    del_btn.click
                     break unless delete_modal.present?
                     break unless delete_modal.present?
                     sleep(0.35)
@@ -490,7 +490,7 @@ module Stamps
         def close
           button = StampsElement.new browser.img(css: "div[id^=managestoreswindow-][id$=header-targetEl]>div>img")
           5.times do
-            button.safe_click
+            button.click
             return unless button.present?
           end
         end
@@ -511,7 +511,7 @@ module Stamps
           button = add_button
           store = market_place
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return store if store.present?
           end
@@ -532,7 +532,7 @@ module Stamps
           yahoo = YahooSettings.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             sleep(2)
             return rakuten if rakuten.present?
             return amazon if amazon.present?
@@ -559,7 +559,7 @@ module Stamps
           yahoo = ModifyYahooStore.new(param)
 
           15.times do
-            button.safe_click
+            button.click
             if server_error.present?
               logger.info server_error.message
               server_error.ok
@@ -593,13 +593,13 @@ module Stamps
           button = StampsElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
           delete_modal = DeleteStoreModal.new(param)
           10.times do
-            button.safe_click
+            button.click
             return delete_modal if delete_modal.present?
-            button.safe_click
+            button.click
             return delete_modal if delete_modal.present?
-            button.safe_click
+            button.click
             return delete_modal if delete_modal.present?
-            button.safe_click
+            button.click
             sleep(0.35)
             return delete_modal if delete_modal.present?
           end

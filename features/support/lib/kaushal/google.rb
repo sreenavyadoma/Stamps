@@ -1,5 +1,5 @@
 module Stamps
-  class Google < Browser::StampsBrowserElement
+  class Google < Browser::StampsModal
     attr_accessor :text_box, :search_btn, :url
 
     def initialize(param)
@@ -20,7 +20,7 @@ module Stamps
       text_box.set(str)
       search_btn.wait_until_present(3)
       #2 click search button
-      search_btn.safe_click
+      search_btn.click
     end
 
     def validate_result

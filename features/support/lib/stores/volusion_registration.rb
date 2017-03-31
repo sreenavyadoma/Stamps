@@ -2,8 +2,8 @@ module Stamps
   module Orders
     module Stores
 
-      class VolusionShippingAddress < Browser::StampsBrowserElement
-        class VolusionCountry < Browser::StampsBrowserElement
+      class VolusionShippingAddress < Browser::StampsModal
+        class VolusionCountry < Browser::StampsModal
           def select(country)
             begin
               browser.select_list(:id, "ShipCountry").option(text: country).when_present.select
@@ -14,7 +14,7 @@ module Stamps
           end
         end
 
-        class VolusionState < Browser::StampsBrowserElement
+        class VolusionState < Browser::StampsModal
           def select state
             begin
               browser.select_list(:id, "ShipState_dropdown").option(text: state).when_present.select
@@ -25,7 +25,7 @@ module Stamps
           end
         end
 
-        class VolusionTypeOfAddress < Browser::StampsBrowserElement
+        class VolusionTypeOfAddress < Browser::StampsModal
           def residential
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
@@ -37,7 +37,7 @@ module Stamps
           end
         end
 
-        class VolusionBillingAddress < Browser::StampsBrowserElement
+        class VolusionBillingAddress < Browser::StampsModal
           def yes
             browser.radio(css: 'input[name=alsobilling][value=Y]').set
             browser.radio(css: 'input[name=alsobilling][value=Y]').set
@@ -105,15 +105,15 @@ module Stamps
           button = StampsElement.new browser.text_field(name: "btnContinue")
           account_page = MyAccountPage.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return account_page if account_page.present?
           end
         end
       end
 
-      class VolusionCheckOut < Browser::StampsBrowserElement
-        class VolusionAddressType < Browser::StampsBrowserElement
+      class VolusionCheckOut < Browser::StampsModal
+        class VolusionAddressType < Browser::StampsModal
           def residential
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
             browser.radio(css: 'input[name=ShipResidential][value=Y]').set
@@ -156,7 +156,7 @@ module Stamps
           button = StampsElement.new browser.button(id: "btnSubmitOrder")
           order_num_field = StampsElement.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
           10.times do
-            button.safe_click
+            button.click
             sleep(2)
             if order_num_field.present?
               order_number_str = order_num_field.text
@@ -169,7 +169,7 @@ module Stamps
         end
       end
 
-      class VolusionCart < Browser::StampsBrowserElement
+      class VolusionCart < Browser::StampsModal
         def visit
           browser.goto "http://ywvmt.dmjeb.servertrust.com/shoppingcart.asp"
         end
@@ -179,7 +179,7 @@ module Stamps
         end
 
         def count
-          count = element_helper.text browser.span(css: "span[data-v-observable=cart-count]")
+          count = StampsElement.new(browser.span(css: "span[data-v-observable=cart-count]")).text
           logger.info "Volusion Cart Count: #{count}"
           count.to_i
         end
@@ -188,7 +188,7 @@ module Stamps
           button = StampsElement.new browser.text_field(css: "input[name='btn_checkout_guest']")
           checkout = VolusionCheckOut.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return checkout if checkout.present?
           end
@@ -196,7 +196,7 @@ module Stamps
         end
       end
 
-      class VolusionProduct < Browser::StampsBrowserElement
+      class VolusionProduct < Browser::StampsModal
         def present?
           browser.text_field(css: "input[alt='Add to cart']").present?
         end
@@ -217,7 +217,7 @@ module Stamps
           cart_count_b4_add = shopping_cart.count
           button = StampsElement.new browser.text_field(css: "input[alt='Add to cart']")
           2.times do
-            button.safe_click
+            button.click
             break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
             sleep(2)
             break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
@@ -226,7 +226,7 @@ module Stamps
         end
       end
 
-      class VolusionCategoryOne < Browser::StampsBrowserElement
+      class VolusionCategoryOne < Browser::StampsModal
         def present?
           browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']").present?
         end
@@ -235,19 +235,19 @@ module Stamps
           link = StampsElement.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
           product = VolusionProduct.new(param)
           10.times do
-            link.safe_click
+            link.click
             sleep(0.35)
             return product if product.present?
           end
         end
       end
 
-      class MyAccountPage < Browser::StampsBrowserElement
+      class MyAccountPage < Browser::StampsModal
         def log_out
           logged_out_field = StampsElement.new browser.li(text: "You are now logged out.")
           button = StampsElement.new browser.a(css: "a[href*=logout]")
           5.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return VolusionLoginPage.new(param) if logged_out_field.present?
           end
@@ -261,7 +261,7 @@ module Stamps
           link = StampsElement.new browser.a(text: "My Account")
           label = StampsElement.new browser.b(text: "My Orders")
           10.times do
-            link.safe_click
+            link.click
             break if label.present?
           end
 
@@ -276,15 +276,15 @@ module Stamps
           link = StampsElement.new(browser.as(text: "CATEGORY ONE").last)
           category_1 = VolusionCategoryOne.new(param)
           10.times do
-            link.safe_click
+            link.click
             sleep(0.35)
             return category_1 if category_1.present?
           end
         end
       end
 
-      class VolusionRegistration < Browser::StampsBrowserElement
-        class ReceiveNewsLetterCheckbox < Browser::StampsBrowserElement
+      class VolusionRegistration < Browser::StampsModal
+        class ReceiveNewsLetterCheckbox < Browser::StampsModal
           def check
             browser.checkbox(name: 'emailsubscriber').set
             browser.checkbox(name: 'emailsubscriber').set
@@ -324,14 +324,14 @@ module Stamps
           button = StampsElement.new browser.text_field(id: "btnContinue")
           shipping_address = VolusionShippingAddress.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return shipping_address if shipping_address.present?
           end
         end
       end
 
-      class VolusionLoginPage < Browser::StampsBrowserElement
+      class VolusionLoginPage < Browser::StampsModal
         def visit
           browser.goto "http://ywvmt.dmjeb.servertrust.com/myaccount.asp"
         end
@@ -356,7 +356,7 @@ module Stamps
           button = StampsElement.new browser.img(css: "img[src*=Continue]")
           webreg = VolusionRegistration.new(param)
           10.times do
-            button.safe_click
+            button.click
             sleep(0.35)
             return webreg if webreg.present?
           end

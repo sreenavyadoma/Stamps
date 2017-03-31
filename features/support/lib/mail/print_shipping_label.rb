@@ -19,7 +19,7 @@ module Stamps
       def left
         10.times{
           begin
-            element_helper.safe_click left_label
+            element_helper.click left_label
             return true if label_selected? left_label
           rescue
             #ignore
@@ -31,7 +31,7 @@ module Stamps
       def right
         10.times{
           begin
-            element_helper.safe_click right_label
+            element_helper.click right_label
             return true if label_selected? right_label
           rescue
             #ignore

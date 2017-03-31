@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Yahoo < Browser::StampsBrowserElement
+      class Yahoo < Browser::StampsModal
 
         def window_title
           StampsElement.new browser.div(text: "Connect your Yahoo Store")
@@ -53,7 +53,7 @@ module Stamps
           max_server_error_retry_count = 5
 
           20.times do |counter|
-            button.safe_click
+            button.click
             sleep(0.35)
             if importing_order.present?
               logger.info importing_order.message
@@ -79,7 +79,7 @@ module Stamps
           max_server_error_retry_count = 5
 
           20.times do |counter|
-            button.safe_click
+            button.click
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -101,12 +101,12 @@ module Stamps
           importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
             end
-            button.safe_click
+            button.click
             if importing_order.present?
               logger.info importing_order.message
               importing_order.ok
@@ -208,7 +208,7 @@ module Stamps
         end
       end
 
-      class YahooPage < Browser::StampsBrowserElement
+      class YahooPage < Browser::StampsModal
         def present?
           browser.url.include? "shopify.com"
         end
@@ -226,7 +226,7 @@ module Stamps
           settings_page = ShopifySettings.new(param)
 
           10.times do
-            button.safe_click
+            button.click
             sleep(5)
             return settings_page if settings_page.present?
           end

@@ -20,6 +20,18 @@ module Stamps
     end
   end
 
+  def test_helper
+    begin
+      TestHelper
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      expect("#{e.backtrace.join("\n")}").to eql e.message
+    end
+  end
+
   def webreg
     begin
       @webreg = WebReg::WebRegistration.new(param)
@@ -72,11 +84,11 @@ module Stamps
     begin
       @stamps ||= StampsCom.new(param)
     rescue Exception => e
-      logger.message ""
-      logger.message "#{e.message}"
-      logger.message "\n#{e.backtrace.join "\n"}"
-      logger.message ""
-      logger.message ""
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "\n#{e.backtrace.join "\n"}"
+      logger.error ""
+      logger.error ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -84,12 +96,13 @@ module Stamps
   def test_parameter
     @test_data ||= Hash.new
     @test_data[:customs_associated_items] ||= Hash.new
+    @test_data[:details_associated_items] ||= Hash.new
     @test_data
   end
 
   def param
     if @param.nil?
-      @param = TestParam.new
+      @param = ModalParam.new
 
       expect(ENV['WEB_APP']).to_not be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
@@ -160,18 +173,6 @@ module Stamps
     test_parameter[:ship_to_domestic]
   end
 
-  def test_helper
-    begin
-      TestHelper
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
-  end
-
   def logger
     test_helper.logger
   end
@@ -208,7 +209,7 @@ module Stamps
     end
   end
 
-  def webreg_data_store_filename *args
+  def webreg_data_store_filename(*args)
     begin
       "#{data_for(:webreg, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
     rescue Exception => e

@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::StampsBrowserElement
+      class MailExtraServices < Browser::StampsModal
         attr_accessor :window_title, :security, :value, :handling, :save_element, :close_element, :security_price_element, :return_receipt_price_element,
                       :restricted_delivery_price_element, :cod_price_element, :non_delivery_notice_price_element, :content_price_element,
                       :special_handling_price_element, :merchandise_return_receipt_element, :total_price_element
@@ -11,16 +11,16 @@ module Stamps
           @window_title = StampsElement.new(browser.div(text: "Extra Services"))
           text_boxes = browser.text_fields(id: "sdc-extraserviceswin-securitydroplist-inputEl")
           drop_downs = browser.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
-          @security = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
+          @security = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
 
           text_box = browser.text_field(id: "sdc-extraserviceswin-valuenumberfield-inputEl")
           inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=up]")
           dec_btn = browser.divs(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=down]")
-          @value = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+          @value = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_boxes = browser.text_fields(id: "sdc-extraserviceswin-contentdroplist-inputEl")
           drop_downs = browser.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
-          @handling = StampsComboBox.new(param, text_boxes, drop_downs, :li, 0)
+          @handling = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
 
           @save_element = StampsElement.new(browser.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
           @close_element = StampsElement.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
@@ -127,7 +127,7 @@ module Stamps
             text_box = browser.text_field(id: "sdc-extraserviceswin-codnumberfield-inputEl")
             inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=up]")
             dec_btn = browser.divs(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=down]")
-            @cod = StampsNumberField.new(param, text_box, inc_btn, dec_btn)
+            @cod = StampsNumberField.new(text_box, inc_btn, dec_btn)
           end
           @cod
         end

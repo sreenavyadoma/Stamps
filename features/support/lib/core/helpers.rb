@@ -1,4 +1,26 @@
 module Stamps
+
+  module StampsTestHelper
+    def first_half(str)
+      index = (str.size.to_f / 2).ceil
+      str[0, index]
+    end
+
+    def valid_ship_date(day)
+      day = day.to_i
+      ship_date = Date.today
+
+      day.times do
+        ship_date += 1
+        date = Date.civil(ship_date.year,ship_date.month,ship_date.day)
+        #break if Holidays.on(date, :us).size == 0 && ship_date.wday != 0 # break if today is not a holiday and not a Sunday.
+        ship_date += 1 if Holidays.on(date, :us).size > 0 # add 1 if today is a holiday
+        ship_date += 1 if ship_date.wday == 0 # add 1 if today is Sunday
+      end
+      ship_date.strftime("%m/%d/%Y")
+    end
+  end
+
   class BrowserSelection
     def firefox?
       "ff|firefox|mozilla".include? ENV['BROWSER'].downcase
@@ -23,7 +45,7 @@ module Stamps
     class << self
       attr_accessor :browser, :logger, :scenario_name, :browser_name
 
-      def init *args
+      def init(*args)
         scenario_name = 'Stamps Test'
         scenario_name = args[0] if args.length==1
         @logger = StampsLogger.new scenario_name
@@ -128,7 +150,7 @@ module Stamps
         logger.scenario_name = @test_name
       end
 
-      def url_prefix *args
+      def url_prefix(*args)
         @url_hash = data_for(:url_prefix, {})
         case args.length
           when 1
@@ -183,7 +205,6 @@ module Stamps
 
       end
 
-      # Added by Galina
       def clear_cookies
         logger.info "Clearing cookies"
         begin
@@ -192,7 +213,6 @@ module Stamps
           #ignore
         end
       end
-
 
     end
   end

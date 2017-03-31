@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Grid
-      class Column < Browser::StampsBrowserElement
+      class Column < Browser::StampsModal
         MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
         TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
         GRID_COLUMNS = {
@@ -48,7 +48,7 @@ module Stamps
 
           10.times do
             column.scroll_into_view
-            column.safe_click
+            column.click
             5.times do
               sleep(1)
               return sort_order if span.parent.parent.parent.parent.parent.attribute_value("class").include?(sort_order)
@@ -70,11 +70,11 @@ module Stamps
           expect(name).to be_truthy
           case name
             when Symbol
-              element_helper.scroll_into_view(browser, browser.span(text: GRID_COLUMNS[name]))
+              StampsElement.new(browser.span(text: GRID_COLUMNS[name])).scroll_into_view
             when String
-              element_helper.scroll_into_view(browser, browser.span(text: name))
+              StampsElement.new(browser.span(text: name)).scroll_into_view
             when Watir::Element
-              element_helper.scroll_into_view(browser, name)
+              StampsElement.new(name).scroll_into_view
             else
               expect(name).to be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
           end
@@ -85,7 +85,7 @@ module Stamps
         end
 
         def size
-          30.times {break if browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size > 0}
+          30.times do break if browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size > 0 end
           browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
         end
 
@@ -95,7 +95,7 @@ module Stamps
 
         def grid_text(column, row)
           scroll_to_column(column)
-          element_helper.text(grid_element(column, row))
+          StampsElement.new(grid_element(column, row)).text
         end
 
         def grid_element(column_number, row)
@@ -112,7 +112,7 @@ module Stamps
               columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
               columns.each_with_index do |element, index|
                 scroll_to_column element
-                if element_helper.text(element) == GRID_COLUMNS[column]
+                if StampsElement.new(element).text == GRID_COLUMNS[column]
                   #logger.message "In Orders Grid, -- #{GRID_COLUMNS[column]} is in column #{index+1}"
                   return index+1
                 end
@@ -130,9 +130,8 @@ module Stamps
             column_num = column_number(:order_id)
             fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
             fields.each_with_index do |element, index|
-              scroll_to_column element
-              row_text = element_helper.text element
-              if row_text.include? order_id
+              scroll_to_column(element)
+              if StampsElement.new(element).text.include?(order_id)
                 logger.info "Order ID #{order_id}, Row #{index+1}"
                 sleep(0.35)
                 return index + 1
@@ -794,7 +793,7 @@ module Stamps
           Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
-        def check_all *args
+        def check_all(*args)
           scroll_into_view
           if args.length==1
             if args[0].is_a? Hash
@@ -834,11 +833,11 @@ module Stamps
         end
 
         def check_order_id(order_id)
-          check row_number(order_id)
+          check(row_number(order_id))
         end
 
         def uncheck_order_id(order_id)
-          uncheck row_number(order_id)
+          uncheck(row_number(order_id))
         end
 
         def checkbox_element(number)
@@ -971,7 +970,7 @@ module Stamps
         end
       end
 
-      class GridColumns < Browser::StampsBrowserElement
+      class GridColumns < Browser::StampsModal
         attr_reader :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient, :company,
                     :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
                     :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
@@ -1027,7 +1026,7 @@ module Stamps
       end
 
       # Orders Grid
-      class OrdersGrid < Browser::StampsBrowserElement
+      class OrdersGrid < Browser::StampsModal
         attr_reader :grid_element, :column
 
         def initialize(param)
@@ -1041,7 +1040,7 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          grid_element.safely_wait_until_present(*args)
+          grid_element.wait_until_present(*args)
         end
       end
     end

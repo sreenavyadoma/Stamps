@@ -1,5 +1,5 @@
 
-Then /^(?:E|e)xcel rate sheet is loaded$/ do
+Then /^[Ee]xcel rate sheet is loaded$/ do
   Spreadsheet.client_encoding = 'UTF-8'
   rate_file = data_for(:rates_test, {})['rate_file']
 

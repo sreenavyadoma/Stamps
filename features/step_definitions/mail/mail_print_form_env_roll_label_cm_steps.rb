@@ -1,35 +1,35 @@
 
 # common Print form steps for Envelope|Label|Roll|CM
 
-Then /^(?:S|s)et Print form (?:I|i)nternational (?:M|m)ail (?:T|t)o (?:C|c)ountry to (.*)$/ do |country|
+Then /^[Ss]et Print form (?:I|i)nternational (?:M|m)ail (?:T|t)o (?:C|c)ountry to (.*)$/ do |country|
   test_parameter[:country] = country
   stamps.mail.print_form.mail_to.country.select(test_parameter[:country])
 end
 
-Then /^(?:S|s)et Print form (?:M|m)ail-(?:T|t)o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
+Then /^[Ss]et Print form (?:M|m)ail-(?:T|t)o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
   test_parameter[:address] = address_helper(address)
   stamps.mail.print_form.mail_to.address.text_area.set(test_parameter[:address])
 end
 
-Then /^(?:E|e)xpect Print form Mail To is disabled$/ do
+Then /^[Ee]xpect Print form Mail To is disabled$/ do
   expect(stamps.mail.print_form.mail_to.enabled?).to be(false), "Print form Mail To is NOT disabled"
 end
 
-Then /^(?:C|c)lick Print form Mail To link/ do
+Then /^[Cc]lick Print form Mail To link/ do
   stamps.mail.print_form.mail_to.mail_to_link.click
 end
 # dimension setters
-Then /^(?:S|s)et Print form Length to (\d+)$/ do |length|
+Then /^[Ss]et Print form Length to (\d+)$/ do |length|
   test_parameter[:length] = length
   stamps.mail.print_form.dimensions.length.set(test_parameter[:length])
 end
 
-Then /^(?:S|s)et Print form width to (\d+)$/ do |width|
+Then /^[Ss]et Print form width to (\d+)$/ do |width|
   test_parameter[:width] = width
   stamps.mail.print_form.dimensions.width.set(test_parameter[:width])
 end
 
-Then /^(?:S|s)et Print form height to (\d+)$/ do |height|
+Then /^[Ss]et Print form height to (\d+)$/ do |height|
   test_parameter[:height] = height
   stamps.mail.print_form.dimensions.height.set(test_parameter[:height])
 end
