@@ -51,6 +51,19 @@ Then /^[Ee]xpect Advanced Options Mail Date field is present$/ do
   stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(5)
 end
 
+Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|((?:today|tomorrow))?|(.*))$/ do |today, expectation|
+  logger.info "today is #{today}"
+  logger.info "expectation is #{expectation}"
+
+
+  #expectation = test_parameter[:reference_number] if expectation.nil?
+
+
+  #expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), "Advanced Options Reference Number is incorrect"
+end
+
+
+
 
 
 

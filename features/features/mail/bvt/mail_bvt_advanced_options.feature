@@ -11,6 +11,22 @@ Feature: Advanced Options BVT
     Then show Advanced Options
 
     Then expect Advanced Options Mail Date field is present
+    Then expect Advanced Options Mail Date is correct
+    Then expect Advanced Options Mail Date is 03/24/2017
+    Then expect Advanced Options Mail Date is today
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     Then expect Advanced Options Extra Services Button is visible
 

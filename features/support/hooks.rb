@@ -13,6 +13,17 @@ include Spreadsheet
 Before do  |scenario|
   Stamps.init scenario.name
   scenario.feature.name
+
+  step "expect Advanced Options Mail Date is 03/24/2017"
+  step "expect Advanced Options Mail Date is today"
+  step "expect Advanced Options Mail Date is tomorrow"
+  step "expect Advanced Options Mail Date is correct"
+
+  step "expect Advanced Options Mail Date is 03/24/2017"
+  step "expect Advanced Options Mail Date is today"
+  step "expect Advanced Options Mail Date is correct"
+
+
   logger.message "-"
   logger.message "-"
   logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"

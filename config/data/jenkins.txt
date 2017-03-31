@@ -1,0 +1,23 @@
+Script Console
+
+folderName="orders/sas_bvt/bvt/qasc/firefox" // change value `folder-a` for the full name of the folder you want to disable all jobs in
+
+Jenkins.instance.getItemByFullName(folderName).allJobs
+	.findAll { it instanceof AbstractProject }
+	.findAll { it.fullName == "${folderName}/${it.name}" }
+	.each {
+      it.disable()
+      println("Disabled job: [$it.fullName]")
+    }
+null
+
+mail/bvt/qasc/Firefox
+mail/printing/QASC/firefox
+orders/bvt/qasc/firefox
+orders/printing/qasc/firefox
+orders/regression/qasc/firefox
+orders/sas_bvt/bvt/qasc/Firefox
+web_reg/orders/qasc
+web_reg/orders/stg
+
+
