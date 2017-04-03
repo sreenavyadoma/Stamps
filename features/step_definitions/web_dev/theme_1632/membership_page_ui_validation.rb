@@ -30,16 +30,95 @@ Then /^[Ee]xpect WebReg navigation bar Stamps logo exists$/ do
   expect(registration.navigation.stamps_logo.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg navigationbar Stamps logo exists$/ do
-  expect(registration.navigation.stamps_logo.present?).to be(true)
+Then /^[Ee]xpect WebReg navigation bar USPS logo exists$/ do
+  expect(registration.navigation.usps_logo.present?).to be (true)
 end
 
-
-Then /^(?:S|s)et WebReg Profile Password to (.*)$/ do |password|
-  test_parameter[:pw]=password
-  webreg.profile.password.set test_parameter[:pw]
+Then /^[Ee]xpect WebReg Membership bread crumbs to contain (.*)$/ do |str|
+expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist"
 end
 
+Then /^[Ee]xpect WebReg Membership header contain (.*)$/ do |str|
+  expect(registration.membership.header).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership first name textbox exists$/ do
+  expect(registration.membership.first_name.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership last name textbox exists$/ do
+  expect(registration.membership.last_name.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership company textbox exists$/ do
+  expect(registration.membership.company.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership address textbox exists$/ do
+  expect(registration.membership.address.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership city textbox exists$/ do
+  expect(registration.membership.city.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership state dropdown exists$/ do
+  expect(registration.membership.city.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership zip textbox exists$/ do
+  expect(registration.membership.zip.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership phone textbox exists$/ do
+  expect(registration.membership.phone.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership stamps logo exists$/ do
+  expect(registration.membership.stamps_logo.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership usps logo exists$/ do
+  expect(registration.membership.usps_logo.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership paragraph to contain (.*)$/ do |str|
+  expect(registration.membership.paragraph).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership cardholders name textbox exists$/ do
+  expect(registration.membership.cardholders_name.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership credit card number textbox exists$/ do
+  expect(registration.membership.credit_card_number.present?). to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership month dropdown exists$/ do
+  expect(registration.membership.month_dropdown.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership year dropdown exists$/ do
+  expect(registration.membership.month_dropdown.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership Billing address same as mailing address checkbox exists$/ do
+  expect(registration.membership.billingaddress_sameas_mailing address.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership I agree to the Terms and conditions and Pricing details checkbox exists$/ do
+and is checkmarked
+
+######
 Then /^[Ee]xpect WebReg Profile email textbox exists$/ do
   expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
+end
+
+Then /^[Ee]xpect WebReg Profile bread crumbs to contain (.*)$/ do |str|
+  expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist "
+end
+
+
+Then /^[Ee]xpect WebReg navigationbar Stamps logo exists$/ do
+  expect(registration.navigation.stamps_logo.present?).to be(true)
 end

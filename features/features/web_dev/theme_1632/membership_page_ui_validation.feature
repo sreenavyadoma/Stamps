@@ -24,6 +24,7 @@ Feature: WebReg Membership page validation theme_1632
     Then expect WebReg Membership address textbox exists
     Then expect WebReg Membership city textbox exists
     Then expect WebReg Membership state dropdown exists
+    Then expect WebReg Membership zip textbox exists
     Then expect WebReg Membership phone textbox exists
     Then expect WebReg Membership stamps logo exists
     Then expect WebReg Membership usps logo exists
@@ -32,10 +33,11 @@ Feature: WebReg Membership page validation theme_1632
     Then expect WebReg Membership credit card number textbox exists
     Then expect WebReg Membership month dropdown exists
     Then expect WebReg Membership year dropdown exists
-    Then expect WebReg Membership Billing address same as mailing address checkbox exist
+    Then expect WebReg Membership Billing address same as mailing address checkbox exists
           and is checkmarked
-    Then expect WebReg Membership I agree to the Terms and conditions and Pricing details checkbox exist
+    Then expect WebReg Membership I agree to the Terms and conditions and Pricing details checkbox exists
           and is checkmarked
+
     Then expect WebReg Membership back button exists
     Then expect WebReg Membership submit button exists
     Then expect WebReg Membership why do you need my mailing information to contain:
