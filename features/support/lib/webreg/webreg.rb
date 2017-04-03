@@ -1,5 +1,5 @@
 module Stamps
-  module WebReg
+  module Registration
     class AnErrorOccured < Browser::StampsModal
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 

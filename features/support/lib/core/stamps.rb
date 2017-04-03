@@ -32,9 +32,9 @@ module Stamps
     end
   end
 
-  def webreg
+  def registration
     begin
-      @webreg = WebReg::WebRegistration.new(param)
+      @registration = WebReg::WebRegistration.new(param)
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -106,7 +106,7 @@ module Stamps
 
       expect(ENV['WEB_APP']).to_not be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
-      expect([:orders, :mail, :webreg]).to include(@param.web_app)
+      expect([:orders, :mail, :registration]).to include(@param.web_app)
 
       ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
       @param.browser = browser
@@ -196,9 +196,9 @@ module Stamps
   def webreg_user_parameter_file * args
     begin
       if ParameterHelper.to_bool(ENV['JENKINS'])
-        filename = "#{data_for(:webreg, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+        filename = "#{data_for(:registration, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       else
-        filename = "#{data_for(:webreg, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+        filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       end
       logger.message "WebReg parameter file: #{filename}"
       filename
@@ -211,7 +211,7 @@ module Stamps
 
   def webreg_data_store_filename(*args)
     begin
-      "#{data_for(:webreg, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
+      "#{data_for(:registration, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")
