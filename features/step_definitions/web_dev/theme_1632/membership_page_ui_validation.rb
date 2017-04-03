@@ -107,18 +107,65 @@ Then /^[Ee]xpect WebReg Membership Billing address same as mailing address check
 end
 
 Then /^[Ee]xpect WebReg Membership I agree to the Terms and conditions and Pricing details checkbox exists$/ do
-and is checkmarked
-
-######
-Then /^[Ee]xpect WebReg Profile email textbox exists$/ do
-  expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
+  expect(registration.membership.pricingandTnC.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Profile bread crumbs to contain (.*)$/ do |str|
-  expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist "
+Then /^[Ee]xpect WebReg Membership back button exists$/ do
+  expect(registration.membership.back_button.present?).to be (true)
 end
 
+Then /^[Ee]xpect WebReg Membership submit button exists$/ do
+  expect(registration.membership.submit_button.present?).to be (true)
+end
 
-Then /^[Ee]xpect WebReg navigationbar Stamps logo exists$/ do
-  expect(registration.navigation.stamps_logo.present?).to be(true)
+Then /^[Ee]xpect WebReg Membership why do you need my mailing information to contain: (.*)$/ do |str|
+  expect(registration.membership.why_do_you_need_mailingaddress).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership Can I use my Stamps.com account outside my office to contain: (.*)$/ do |str|
+  expect(registration.membership.can_I_use_stamps_outside_office).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership Is my credit card information safe to contain: (.*)$/ do |str|
+  expect(registration.membership.is_my_cc_info_safe).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership Pricing and billing details to contain: (.*)$/ do |str|
+  expect(registration.membership.pricingnbilling).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership Cancel anytime to contain: (.*)$/ do |str|
+  expect(registration.membership.membership_cancel_anytime).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership Cancel anytime to contain: (.*)$/ do |str|
+  expect(registration.membership.membership_cancel_anytime).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership Bonus Offer Details link exists$/ do
+  expect(registration.membership.offer_details_link.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership Privacy Policy link exists$/ do
+  expect(registration.membership.privacy_policy_link.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Membership Privacy Policy link exists$/ do
+  expect(registration.membership.privacy_policy_link.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Profile copyright link exists$/ do
+  expect(registration.profile_copyrightlink.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Profile Norton logo exists$/ do
+  expect(registration.profile_nortonlogo.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Profile TRUSTe logo exists$/ do
+  expect(registration.profile_trustelogo.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Profile LIVE chat button exists$/ do
+  expect(registration.profile_livechatbutton.present?).to be (true)
 end

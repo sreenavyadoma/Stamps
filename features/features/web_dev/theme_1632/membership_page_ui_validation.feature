@@ -37,7 +37,6 @@ Feature: WebReg Membership page validation theme_1632
           and is checkmarked
     Then expect WebReg Membership I agree to the Terms and conditions and Pricing details checkbox exists
           and is checkmarked
-
     Then expect WebReg Membership back button exists
     Then expect WebReg Membership submit button exists
     Then expect WebReg Membership why do you need my mailing information to contain:
