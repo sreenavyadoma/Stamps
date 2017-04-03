@@ -2,7 +2,7 @@ Then /^[Ll]oad WebReg Profile page$/ do
   webreg.load_page
 end
 
-Then /^[Ee]xpect WebReg navigationbar Stamps logo exists$/ do
+Then /^[Ee]xpect WebReg navigation bar Stamps logo exists$/ do
    expect(registration.navigation.stamps_logo.present?).to be(true)
 end
 
