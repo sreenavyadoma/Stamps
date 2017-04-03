@@ -6,7 +6,7 @@ Feature: WebReg Profile page validation theme_1632
   @profile_page_ui_validation
   Scenario:
     Then Load WebReg Profile page
-    Then expect WebReg navigationbar Stamps logo exists
+    Then expect WebReg navigation bar Stamps logo exists
     Then expect WebReg navigation bar USPS logo exists
     Then expect WebReg Profile bread crumbs to contain Profile
     Then expect WebReg Profile bread crumbs to contain Membership
