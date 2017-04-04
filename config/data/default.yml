@@ -683,6 +683,9 @@ orders_credentials:
     item_details:
       usr: scscscscscscscscsc
       pw: pass111
+    import_updated_orders:
+      usr: stgo0j3xg9kp2o
+      pw: pass111
     bvt_printing:
       usr: f32xij63p
       pw: pass111
