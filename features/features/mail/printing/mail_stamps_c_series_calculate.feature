@@ -14,7 +14,7 @@ Feature: Print form C Series Calculate - Calculate Postage
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
-    Then Mail Stamps: Select Calculate Mail service First-Class Mail Postcard
+    Then Mail Stamps: Select Calculate Mail service FCM Postcard
     Then set Print form Quantity to 1
     Then set Advanced Options Cost Code to None
     Then Print Postage
