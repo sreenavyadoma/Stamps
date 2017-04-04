@@ -10,8 +10,11 @@ rates_test:
   results_dir: C:\watir-webdriver\rates\results
 
 import_orders_test:
-  import_orders_dir: \\rcruz-win7\Public\automation\data
+  import_orders_dir: \\jenkinsvm05\Shared\CSV Import Files
   import_time_file: import_times.csv
+  import_old_file: import_orders_old.csv
+  import_existing_orders_time_file: import_existing_orders_times.csv
+
 
 
 windows_files:
@@ -124,8 +127,8 @@ shipping_method:
 zone_1_through_4:
     zone1:
       1:
-        street_address: 2791 Agoura Road
-        city: Thousand Oaks
+        street_address: 2791 Agoura Rd
+        city: Westlake Village
         state: CA
         zip: 91361-3101
       2:
@@ -145,13 +148,13 @@ zone_1_through_4:
         zip: 92315-1530
     zone2:
       1:
-        street_address: 530 K Street
+        street_address: 530 K St
         street_address_2: Unit 504
         city: San Diego
         state: CA
-        zip: 92101-7060
+        zip: 92101-7058
       2:
-        street_address: 3217 Shasta Circle S.
+        street_address: 3217 Shasta Cir S
         city: Los Angeles
         state: CA
         zip: 90065-4807
@@ -161,7 +164,7 @@ zone_1_through_4:
         state: CA
         zip: 92027-4229
       4:
-        street_address: 4216 Laurel Glen Dr.
+        street_address: 4216 Laurel Glen Dr
         city: Moorpark
         state: CA
         zip: 93021-2725
@@ -198,7 +201,7 @@ zone_1_through_4:
         state: NV
         zip: 89502-3602
       3:
-        street_address: 4937 79th St.
+        street_address: 4937 79th St
         city: Sacramento
         state: CA
         zip: 95820-6213
@@ -216,33 +219,33 @@ zone_5_through_8:
         state: ID
         zip: 83316-1115
       2:
-        street_address: 26930 NE 152nd St.
+        street_address: 26930 NE 152nd St
         city: Duvall
         state: WA
         zip: 98019-8316
       3:
-        street_address: 3232 SE 89th Ave.
+        street_address: 3232 SE 89th Ave
         city: Portland
         state: OR
         zip: 97266-1911
       4:
-        street_address: 648 Gehr St.
+        street_address: 648 Gehr St
         city: Wenatchee
         state: WA
         zip: 98801-8011
     zone6:
       1:
-        street_address: 11 Laguna Madre Dr.
+        street_address: 11 Laguna Madre Dr
         city: Laguna Vista
         state: TX
         zip: 78578-2602
       2:
-        street_address: 204 Nursery Ln.
+        street_address: 204 Nursery Ln
         city: Ft Worth
         state: TX
         zip: 76114-4348
       3:
-        street_address: 1327 Yates Dr.
+        street_address: 1327 Yates Dr
         city: Hurst
         state: TX
         zip: 76053-4038
@@ -254,12 +257,12 @@ zone_5_through_8:
         zip: 75034-9016
     zone7:
       1:
-        street_address: 9435 Pettit Rd.
+        street_address: 9435 Pettit Rd
         city: Baker
         state: LA
         zip: 70714-6434
       2:
-        street_address: 1071 Trelane Ave.
+        street_address: 1071 Trelane Ave
         city: Saint Louis
         state: MO
         zip: 63126-1117
@@ -275,17 +278,17 @@ zone_5_through_8:
         zip: 70122-4957
     zone8:
       1:
-        street_address: 2622 New Banner Ln.
+        street_address: 2622 New Banner Ln
         city: Herndon
         state: VA
         zip: 20171-2659
       2:
-        street_address: 401 Sherborne Dr.
+        street_address: 401 Sherborne Dr
         city: Columbus
         state: OH
         zip: 43219-2971
       3:
-        street_address: 2775 Stark Dr.
+        street_address: 2775 Stark Dr
         city: Willoughby Hills
         state: OH
         zip: 44094-9113

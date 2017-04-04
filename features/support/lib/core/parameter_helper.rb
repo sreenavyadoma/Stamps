@@ -306,6 +306,13 @@ module Stamps
         zone_addresses_values[rand(zone_addresses_values.size)]
       end
 
+      def format_weight str
+        #"1 lbs. 4 oz." -> "20"
+        weight_array = str.split(" ")
+        ((weight_array[0].to_i * 16) + weight_array[2].to_i).to_s
+      end
+
+
       def str_to_sym str
         str.downcase.tr('()', '').tr('/-', '_').strip.tr(' ', '_').to_sym
       end
