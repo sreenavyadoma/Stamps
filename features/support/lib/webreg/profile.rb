@@ -1,5 +1,5 @@
 module Stamps
-  module WebReg
+  module Registration
 
     class ReferrerName < Browser::StampsModal
 

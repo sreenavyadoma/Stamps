@@ -3,15 +3,16 @@ module Stamps
     module AdvancedOptions
 
       module AdvancedOptionsExtraServices
-        def extra_services_select_button
-          @extra_services_select_button = StampsElement.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")) if @extra_services_select_button.nil? || !@extra_services_select_button.present?
+        def extra_services_btn
+          @extra_services_btn = StampsElement.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")) if @extra_services_btn.nil?
+          @extra_services_btn
         end
 
         def extra_services
           return @extra_services if !@extra_services.nil? && @extra_services.present?
-          expect(extra_services_select_button.present?).to be(true)
-          @extra_services = MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
-          20.times do extra_services_select_button.click unless @extra_services.present? end
+          expect(extra_services_btn.present?).to be(true)
+          @extra_services = PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
+          20.times do extra_services_btn.click unless @extra_services.present? end
           expect(@extra_services.present?).to be(true)
           @extra_services
         end
@@ -35,6 +36,39 @@ module Stamps
         def mail_date
           @mail_date = MailDate.new(param) if @mail_date.nil?
           @mail_date
+        end
+      end
+
+      module AdvancedOptionsHideLabelValue
+        def hide_label_value
+          if @hide_label_value.nil?
+            input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(1)>div>div>span")
+            verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(1)")
+            @hide_label_value = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+          end
+          @hide_label_value
+        end
+      end
+
+      module AdvancedOptionsPrintReferenceNumberCheckbox
+        def print_reference_number
+          if @print_reference_number.nil?
+            input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)>div>div>span")
+            verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)")
+            @print_reference_number = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+          end
+          @print_reference_number
+        end
+      end
+
+      module AdvancedOptionsPrintReceipt
+        def print_receipt
+          if @print_receipt.nil?
+            input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)>div>div>span")
+            verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)")
+            @print_receipt = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+          end
+          @print_receipt
         end
       end
 
@@ -68,7 +102,6 @@ module Stamps
         include AdvancedOptionsCostCode
 
         def present?
-          show
           cost_code.present?
         end
 
@@ -88,7 +121,6 @@ module Stamps
             verify_element = browser.div(id: 'sdc-mainpanel-specifypostageradio')
             @specify_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
           end
-          show
           @specify_postage_amount
         end
 
@@ -100,25 +132,17 @@ module Stamps
         include AdvancedOptionsMailDate
         include AdvancedOptionsReferenceNumber
         include AdvancedOptionsCostCode
+        include AdvancedOptionsHideLabelValue
+        include AdvancedOptionsPrintReferenceNumberCheckbox
+        include AdvancedOptionsPrintReceipt
 
         def present?
           cost_code.present?
         end
-
-        def hide_label_value
-
-        end
-
-        def print_receipt
-
-        end
-
-        def print_reference_number
-
-        end
       end
 
       module EnvelopesAdvancedOptions
+        include AdvancedOptionsToggle
         include AdvancedOptionsExtraServices
         include AdvancedOptionsMailDate
         include AdvancedOptionsReferenceNumber
@@ -128,20 +152,36 @@ module Stamps
           cost_code.present?
         end
 
-        def include_return_address
-          #checkbox
+        def return_address
+          if @return_address.nil?
+            input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(2)>div>div>span")
+            verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(2)")
+            @return_address = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+          end
+          @return_address
         end
 
-        def include_delivery_address
-          #checkbox
+        def delivery_address
+          if @delivery_address.nil?
+            input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(3)>div>div>span")
+            verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(3)")
+            @delivery_address = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+          end
+          @delivery_address
         end
 
-        def include_postage
-          #checkbox
+        def postage
+          if @postage.nil?
+            input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)>div>div>span")
+            verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)")
+            @postage = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+          end
+          @postage
         end
       end
 
       module CertifiedMailsAdvancedOptions
+        include AdvancedOptionsToggle
         include AdvancedOptionsExtraServices
         include AdvancedOptionsMailDate
         include AdvancedOptionsReferenceNumber
@@ -161,12 +201,18 @@ module Stamps
       end
 
       module RollsAdvancedOptions
+        include AdvancedOptionsToggle
+        include AdvancedOptionsExtraServices
+        include AdvancedOptionsMailDate
+        include AdvancedOptionsReferenceNumber
         include AdvancedOptionsCostCode
+        include AdvancedOptionsHideLabelValue
+        include AdvancedOptionsPrintReferenceNumberCheckbox
+        include AdvancedOptionsPrintReceipt
 
         def present?
           cost_code.present?
         end
-
       end
 
     end

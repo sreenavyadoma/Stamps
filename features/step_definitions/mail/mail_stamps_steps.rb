@@ -2,6 +2,7 @@
 
 Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
   if str.include?('random')
+    expect(['a', 'b', 'c', 'd', 'k', 'l', 'ml', 'p', 'r', 's', 'v', 'wn']).to include(serial.downcase[0])
     case str
       when /A/
         serial = "A#{Random.rand(10000..99999)}"
@@ -33,7 +34,6 @@ Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
   else
     serial = str
   end
-  expect(['a', 'b', 'c', 'd', 'k', 'l', 'ml', 'p', 'r', 's', 'v', 'wn']).to include(serial.downcase[0])
   stamps.mail.print_form.serial_number.set(serial)
 end
 

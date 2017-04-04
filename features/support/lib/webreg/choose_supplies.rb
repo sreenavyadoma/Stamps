@@ -1,5 +1,5 @@
 module Stamps
-  module WebReg
+  module Registration
     class ChooseSupplies < Browser::StampsModal
       attr_reader :web_apps, :web_mail
 
@@ -43,3 +43,5 @@ module Stamps
     end
   end
 end
+
+

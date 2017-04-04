@@ -13,8 +13,8 @@ Feature: Print form ML Series - Calculate Postage
     Then set Print form Serial Number to ML1234
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then Mail Stamps: Select Calculate Mail service First-Class Mail Postcard
+    Then set Print form ounces to 1
+    Then select Print form service FCM Letter
     Then set Print form Quantity to 1
     Then set Advanced Options Cost Code to None
     Then Print Postage

@@ -1,5 +1,5 @@
 module Stamps
-  module WebReg
+  module Registration
     class State < Browser::StampsModal
       def select state
         begin

@@ -11,12 +11,12 @@ Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
   stamps.mail.print_form.mail_from.select(test_parameter[:ship_from])
 end
 
-Then /^[Ss]et Print form Pounds to (\d+)$/ do |pounds|
+Then /^[Ss]et Print form [Pp]ounds to (\d+)$/ do |pounds|
   test_parameter[:pounds] = pounds
   stamps.mail.print_form.mail_weight.mail_pounds.set(test_parameter[:pounds])
 end
 
-Then /^[Ss]et Print form Ounces to (\d+)$/ do |ounces|
+Then /^[Ss]et Print form [Oo]unces to (\d+)$/ do |ounces|
   test_parameter[:ounces] = ounces
   stamps.mail.print_form.mail_weight.mail_ounces.set(test_parameter[:ounces])
 end

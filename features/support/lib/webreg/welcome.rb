@@ -1,4 +1,4 @@
 module Stamps
-  module WebReg
+  module Registration
   end
 end
