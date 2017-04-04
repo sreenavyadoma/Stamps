@@ -10,24 +10,24 @@ Feature: Advanced Options BVT
     Then select Print On Stamps
     Then show Advanced Options
 
-    Then expect Advanced Options Extra Services Button is visible
+    # Calculate Postage
     Then expect Advanced Options Calculate Postage Amount radio button is present
     Then select Advanced Options Calculate Postage Amount
     Then expect Advanced Options Calculate Postage Amount is selected
+
+    # Specify Postage
     Then expect Advanced Options Specify Postage Amount radio button is present
     Then select Advanced Options Specify Postage Amount
     Then expect Advanced Options Specify Postage Amount is selected
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
 
     # Populate Stamps form
     Then set Print form Serial Number to random C series
-    Then select Advanced Options Specify Postage Amount
+    Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then select Print form service Media Mail
-    Then set Print form Amount to 2.85
+    Then set Print form Mail-To Country to United States
+    Then select Print form service FCM Letter
     Then set Print form Quantity to 1
+    Then set Advanced Options Cost Code to None
 
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible

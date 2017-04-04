@@ -10,10 +10,10 @@ module Stamps
 
         def extra_services
           return @extra_services if !@extra_services.nil? && @extra_services.present?
-          expect(extra_services_btn.present?).to be(true)
+          expect(extra_services_btn.present?).to be(true), "Extra Services button is not present."
           @extra_services = PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
           20.times do extra_services_btn.click unless @extra_services.present? end
-          expect(@extra_services.present?).to be(true)
+          expect(@extra_services.present?).to be(true), "Extra Services modal did not open."
           @extra_services
         end
       end
@@ -111,7 +111,6 @@ module Stamps
             verify_element = browser.div(id: 'sdc-mainpanel-calculatepostageradio')
             @calculate_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
           end
-          show
           @calculate_postage_amount
         end
 

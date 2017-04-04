@@ -2,7 +2,7 @@
 
 Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
   if str.include?('random')
-    expect(['a', 'b', 'c', 'd', 'k', 'l', 'ml', 'p', 'r', 's', 'v', 'wn']).to include(serial.downcase[0])
+    expect(['a', 'b', 'c', 'd', 'k', 'l', 'ml', 'p', 'r', 's', 'v', 'wn']).to include(str.downcase.scan( / (.*) /).last.first)
     case str
       when /A/
         serial = "A#{Random.rand(10000..99999)}"
@@ -29,7 +29,7 @@ Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
       when /WN/
         serial = "WN#{Random.rand(10000..99999)}"
       else
-        #do nothing
+        #
     end
   else
     serial = str
