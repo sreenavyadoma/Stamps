@@ -66,6 +66,14 @@ Then /^[Ss]et WebReg Membership credit card number textbox to (.*)$/ do |creditc
   registration.membership.credit_card_number.set creditcardnumber
 end
 
+Then /^[Ss]et WebReg Membership month dropdown to (.*)$/ do |month|
+  registration.membership.month.set month
+end
+
+Then /^[Ss]et WebReg Membership year to (.*)$/ do |year|
+  registration.membership.year.set year
+end
+
 
 
 
