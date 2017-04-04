@@ -13,7 +13,6 @@ include Spreadsheet
 Before do  |scenario|
   Stamps.init scenario.name
   scenario.feature.name
-
   logger.message "-"
   logger.message "-"
   logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"

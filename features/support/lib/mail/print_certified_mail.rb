@@ -3,8 +3,7 @@ module Stamps
   module Mail
     class ExtraServicesCM < Browser::StampsModal
 
-      def cm_checkbox select
-
+      def cm_checkbox(select)
         checkbox_field = browser.text_field id: "sdc-mainpanel-cmcheckbox-inputEl"
         verify_field = browser.table id: "sdc-mainpanel-cmcheckbox"
         checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"

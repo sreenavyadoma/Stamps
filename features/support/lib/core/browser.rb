@@ -176,6 +176,10 @@ module Stamps
     end
 
     class StampsTextbox < StampsElement
+      def present?
+        element.present?
+      end
+
       def set(txt)
         15.times do
           begin
@@ -241,26 +245,30 @@ module Stamps
     end
 
     class StampsCheckbox
-      attr_accessor :element, :verify_element, :attribute, :attribute_value
+      attr_accessor :input, :verify, :attribute, :attribute_value
 
-      def initialize(element, verify_element, attribute, attribute_value)
-        @element = StampsElement.new(element)
-        @verify_element = StampsElement.new(verify_element)
+      def initialize(input, verify, attribute, attribute_value)
+        @input = StampsElement.new(input)
+        @verify = StampsElement.new(verify)
         @attribute = attribute
         @attribute_value = attribute_value
+      end
+
+      def present?
+        input.present?
       end
 
       def check
         50.times do
           break if checked?
-          element.click
+          input.click
         end
       end
 
       def uncheck
         if checked?
           50.times do
-            element.click
+            input.click
             break unless checked?
           end
         end
@@ -268,7 +276,7 @@ module Stamps
 
       def checked?
         begin
-          result = verify_element.attribute_value(attribute)
+          result = verify.attribute_value(attribute)
           return result == "true" if result == "true" || result == "false"
           result.include?(attribute_value)
         rescue

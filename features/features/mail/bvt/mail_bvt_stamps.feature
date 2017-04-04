@@ -12,7 +12,7 @@ Feature: Print form BVT
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then select Print form service Media Mail
-    Then set Print form Amount to 2.85cd Stam
+    Then set Print form Amount to 2.85
     Then set Print form Quantity to 1
     Then set Advanced Options Reference Number to Stamp3221
     Then Print Postage

@@ -88,6 +88,7 @@ module Stamps
             break if text_box.text.include?(date)
           end
           expect(text_box.text).to eql(date)
+          date
         end
       end
 
