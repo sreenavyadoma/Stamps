@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class NewWelcomeModal < Browser::StampsBrowserElement
+    class NewWelcomeModal < Browser::StampsModal
       attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
       def initialize(param)
@@ -17,7 +17,7 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        title.safely_wait_until_present(*args)
+        title.wait_until_present(*args)
       end
 
       def close
@@ -31,13 +31,13 @@ module Stamps
       def next
         10.times do
           logger.message message
-          next_button.safe_click
+          next_button.click
           return add_manual_order if add_manual_order.present?
         end
       end
     end
 
-    class WelcomeModal < Browser::StampsBrowserElement
+    class WelcomeModal < Browser::StampsModal
       attr_reader :okay_button
 
       def initialize(param)
@@ -59,7 +59,7 @@ module Stamps
 
       def ok
         5.times{
-          okay_button.safe_click
+          okay_button.click
           break unless okay_button.present?
         }
       end
@@ -81,28 +81,27 @@ module Stamps
       end
 
       def validation_message
-        element_helper.text (browser.span id: 'InvalidUsernameMsg')
+        StampsElement.new(browser.span id: 'InvalidUsernameMsg').text
       end
 
       def blur_out
-        title.safe_double_click
-        title.safe_click
+        title.blur_out
       end
 
       def first_time_sign_in usr, pw
         market_place = Orders::Stores::MarketPlace.new(param)
 
-        username.safely_wait_until_present 6
+        username.wait_until_present 6
 
         20.times do
-          username.safely_wait_until_present 2
+          username.wait_until_present 2
           username.set usr
           blur_out
           password.set pw
           blur_out
-          sign_in_btn.safe_send_keys(:enter)
+          sign_in_btn.send_keys(:enter)
           blur_out
-          sign_in_btn.safe_click
+          sign_in_btn.click
           blur_out
 
           market_place.wait_until_present 6
@@ -131,16 +130,16 @@ module Stamps
           logger.message "Username: #{usr}"
           logger.message "#"*15
 
-          username.safely_wait_until_present(8)
+          username.wait_until_present(8)
           8.times do
             begin
               if username.present?
                 username.set(usr)
                 password.set(pw)
-                sign_in_btn.safe_send_keys(:enter)
+                sign_in_btn.send_keys(:enter)
 
                 30.times do
-                  logger.message loading_orders.safe_text if loading_orders.present?
+                  logger.message loading_orders.text if loading_orders.present?
                   break unless loading_orders.present?
                 end
 

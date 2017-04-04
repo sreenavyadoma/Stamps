@@ -1,4 +1,4 @@
-Feature: Stamps K Series - Calculate Postage
+Feature: Print form K Series - Calculate Postage
 
 
 
@@ -8,15 +8,15 @@ Feature: Stamps K Series - Calculate Postage
   @mail_print_stamps_regression
   @mail_print_stamps_k_series_calculate
 
-  Scenario: Stamps Regression K Series - Calculate Postage
+  Scenario: Print form Regression K Series - Calculate Postage
     Then select Print On Stamps
-    Then set Stamps Serial Number to K12345
-    Then select Stamps Calculate Postage Amount
+    Then set Print form Serial Number to K12345
+    Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
+    Then set Print form Mail-To Country to United States
     Then select Print form service FCM Letter
-    Then set Stamps Quantity to 1
-    Then Mail Stamps: Set Cost Code to None
+    Then set Print form Quantity to 1
+    Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

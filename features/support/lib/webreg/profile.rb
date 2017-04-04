@@ -1,7 +1,7 @@
 module Stamps
-  module WebReg
+  module Registration
 
-    class ReferrerName < Browser::StampsBrowserElement
+    class ReferrerName < Browser::StampsModal
 
       def present?
         (browser.label css: "label[for=referrerName]").present?
@@ -77,17 +77,12 @@ module Stamps
         referrer ""
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[id=survey]>div:nth-child(2)>div>div>span") #if present?
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[id=survey]>div:nth-child(2)>div>div>span")).text
       end
     end
 
-    class UsageType < Browser::StampsBrowserElement
+    class UsageType < Browser::StampsModal
 
       def mostly_mailing
         begin
@@ -127,13 +122,8 @@ module Stamps
 
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[class='module webreg_survey']>div>div>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class='module webreg_survey']>div>div>div>span")).text
       end
 
       def clear
@@ -146,13 +136,10 @@ module Stamps
 
     end
 
-    class FirstQuestion < Browser::StampsBrowserElement
+    class FirstQuestion < Browser::StampsModal
       def select question
         select_element = browser.select_list(:name, "secretQuestion1")
-
         select_element.include? question
-
-        select_element.option(text: question).when_present.select
         select_element.option(text: question).when_present.select
         select_element.option(text: question).when_present.select
         raise "Unable to select First Question: #{question}" unless select_element.selected? question
@@ -163,7 +150,7 @@ module Stamps
       end
 
       def pets_name
-        select "What is your pet's name?"
+        select("What is your pet's name?")
       end
 
       def birth_city
@@ -190,17 +177,12 @@ module Stamps
         select ""
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(1)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(1)>div>span")).text
       end
     end
 
-    class SecondQuestion < Browser::StampsBrowserElement
+    class SecondQuestion < Browser::StampsModal
       def select question
         select_element = browser.select_list(:name, "secretQuestion2")
 
@@ -250,24 +232,15 @@ module Stamps
         #browser.select_list(:name, "secretQuestion2").clear #you can only clear multi-selects (Watir::Exception::Error)
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(3)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(3)>div>span")).text
       end
 
     end
 
     class ProfileEmail < StampsTextbox
-      def help_element
-        browser.span(css: "li[class='module webreg_email']>div>div>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class='module webreg_email']>div>div>div>span")).text
       end
 
       def has_error?
@@ -279,16 +252,9 @@ module Stamps
       end
     end
 
-
-
-    #Added by Galina
     class ProfileUserId < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(1)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new( browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(1)>div>span")).text
       end
 
       def clear
@@ -296,53 +262,31 @@ module Stamps
       end
     end
 
-    #Added by Galina
     class ProfilePassword < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(2)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(2)>div>span")).text
       end
     end
 
-    #Added by Galina
     class ProfileRetypePassword < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(3)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_accountinfo]>div>div:nth-child(3)>div>span")).text
       end
     end
 
-    #Added by Galina
     class ProfileFirstAnswer < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(2)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(2)>div>span")).text
       end
     end
 
-    #Added by Galina
     class ProfileSecondAnswer < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(4)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_secretquestions]>div>:nth-child(4)>div>span")).text
       end
     end
 
-
-
-      class Profile < Browser::StampsBrowserElement
+    class Profile < Browser::StampsModal
       attr_reader :referrer_name, :email, :user_id, :password, :retype_password, :usage_type, :first_question,
                   :first_answer, :second_question, :second_answer, :send_promo, :continue, :membership
 
@@ -383,18 +327,18 @@ module Stamps
         button = continue
         next_page = membership
         10.times do
-          button.safe_click
+          button.click
           sleep1
           return next_page if next_page.present?
         end
       end
 
-      # Added by Galina
       def tab
         browser.send_keys([:tab])
         sleep(0.35)
       end
 
-  end
+    end
+
   end
 end

@@ -1,7 +1,7 @@
 module Stamps
   module Pam
 
-    class CustomerProfileNotFound < Browser::StampsBrowserElement
+    class CustomerProfileNotFound < Browser::StampsModal
       def present?
         browser.text.include? 'No records found'
       end
@@ -11,7 +11,7 @@ module Stamps
       end
     end
 
-    class MeterInfoNotAvailableForAccount < Browser::StampsBrowserElement
+    class MeterInfoNotAvailableForAccount < Browser::StampsModal
       def present?
         browser.text.include? 'Meter info not available'
       end
@@ -21,7 +21,7 @@ module Stamps
       end
     end
 
-    class CustomerSearch < Browser::StampsBrowserElement
+    class CustomerSearch < Browser::StampsModal
       def present?
         browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]").present?
       end
@@ -64,7 +64,7 @@ module Stamps
         count = 20
         count.times do |counter|
           button.send_keys(:enter)
-          button.safe_click
+          button.click
           sleep(0.35)
           return customer_profile if customer_profile.present?
           if customer_profile_not__found.present?

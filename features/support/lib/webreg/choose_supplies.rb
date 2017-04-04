@@ -1,6 +1,6 @@
 module Stamps
-  module WebReg
-    class ChooseSupplies < Browser::StampsBrowserElement
+  module Registration
+    class ChooseSupplies < Browser::StampsModal
       attr_reader :web_apps, :web_mail
 
       def initialize(param)
@@ -25,14 +25,14 @@ module Stamps
 
         download_page = DownloadPage.new(param)
         #@web_apps.mail.landing_page.whats_new_modal
-        place_order_button.safely_wait_until_present 10
+        place_order_button.wait_until_present 10
 
         logger.info "Registration Page has loaded: #{browser.url}"
         logger.info welcome_kit.text
         logger.info welcome_kit_message.text
 
         8.times do
-          place_order_button.safe_click
+          place_order_button.click
           download_page.wait_until_present 2
           web_mail.landing_page.whats_new_modal.wait_until_present 10
           return download_page if download_page.present?
@@ -43,3 +43,5 @@ module Stamps
     end
   end
 end
+
+

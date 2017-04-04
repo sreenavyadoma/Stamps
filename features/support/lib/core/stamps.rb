@@ -20,9 +20,21 @@ module Stamps
     end
   end
 
-  def webreg
+  def test_helper
     begin
-      @webreg = WebReg::WebRegistration.new(param)
+      TestHelper
+    rescue Exception => e
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "#{e.backtrace.join "\n"}"
+      logger.error ""
+      expect("#{e.backtrace.join("\n")}").to eql e.message
+    end
+  end
+
+  def registration
+    begin
+      @registration = WebReg::WebRegistration.new(param)
     rescue Exception => e
       logger.error ""
       logger.error "#{e.message}"
@@ -72,11 +84,11 @@ module Stamps
     begin
       @stamps ||= StampsCom.new(param)
     rescue Exception => e
-      logger.message ""
-      logger.message "#{e.message}"
-      logger.message "\n#{e.backtrace.join "\n"}"
-      logger.message ""
-      logger.message ""
+      logger.error ""
+      logger.error "#{e.message}"
+      logger.error "\n#{e.backtrace.join "\n"}"
+      logger.error ""
+      logger.error ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -84,36 +96,39 @@ module Stamps
   def test_parameter
     @test_data ||= Hash.new
     @test_data[:customs_associated_items] ||= Hash.new
+    @test_data[:details_associated_items] ||= Hash.new
     @test_data
   end
 
   def param
     if @param.nil?
-      @param = TestParam.new
-      expect(ENV['BROWSER']).to be_truthy
-      expect(ENV['URL']).to be_truthy
-      expect(ENV['HEALTHCHECK']).to be_truthy
-      expect(ENV['DEBUG']).to be_truthy
-      expect(ENV['USER_CREDENTIALS']).to be_truthy
-      expect(ENV['USR']).to be_truthy
-      expect(ENV['PW']).to be_truthy
-      expect(ENV['WEB_APP']).to be_truthy
-      expect(ENV['WEB_APP'].downcase).to eq('orders').or(eq('mail'))
-      begin
-        ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
-        @param.browser = browser
-        @param.logger = logger
-        @param.scenario_name = test_helper.scenario_name
-        @param.test_env = ENV['URL']
-        @param.web_app = (ENV['WEB_APP'].downcase).to_sym
-        expect([:orders, :mail]).to include(@param.web_app)
+      @param = ModalParam.new
+
+      expect(ENV['WEB_APP']).to_not be_nil
+      @param.web_app = (ENV['WEB_APP'].downcase).to_sym
+      expect([:orders, :mail, :registration]).to include(@param.web_app)
+
+      ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
+      @param.browser = browser
+      @param.logger = logger
+      @param.scenario_name = test_helper.scenario_name
+      @param.test_env = ENV['URL']
+
+      if @param.web_app == :mail || @param.web_app == :orders
         @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
         @param.usr = ENV['USR']
         @param.pw = ENV['PW']
         @param.url = ENV['URL']
-      rescue Exception => e
-        logger.message e.message
-        logger.message e.backtrace.join("\n")
+        @param.developer = (ENV['DEVELOPER'].nil?)?false:ENV['DEVELOPER']
+
+        expect(ENV['BROWSER']).to be_truthy
+        expect(ENV['URL']).to be_truthy
+        expect(ENV['HEALTHCHECK']).to be_truthy
+        expect(ENV['DEBUG']).to be_truthy
+        expect(ENV['USR']).to be_truthy
+        expect(ENV['PW']).to be_truthy
+        expect(ENV['WEB_APP']).to be_truthy
+        expect(['orders', 'mail', 'webreg']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or webreg. Got #{ENV['WEB_APP']}"
       end
     end
     @param
@@ -158,18 +173,6 @@ module Stamps
     test_parameter[:ship_to_domestic]
   end
 
-  def test_helper
-    begin
-      TestHelper
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
-  end
-
   def logger
     test_helper.logger
   end
@@ -193,9 +196,9 @@ module Stamps
   def webreg_user_parameter_file * args
     begin
       if ParameterHelper.to_bool(ENV['JENKINS'])
-        filename = "#{data_for(:webreg, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+        filename = "#{data_for(:registration, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       else
-        filename = "#{data_for(:webreg, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+        filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       end
       logger.message "WebReg parameter file: #{filename}"
       filename
@@ -206,9 +209,9 @@ module Stamps
     end
   end
 
-  def webreg_data_store_filename *args
+  def webreg_data_store_filename(*args)
     begin
-      "#{data_for(:webreg, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
+      "#{data_for(:registration, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
     rescue Exception => e
       logger.error e.message
       logger.error e.backtrace.join("\n")

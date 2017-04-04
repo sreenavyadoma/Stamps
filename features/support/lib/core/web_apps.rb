@@ -1,5 +1,5 @@
 module Stamps
-  class StampsCom < Browser::StampsBrowserElement
+  class StampsCom < Browser::StampsModal
     attr_reader :orders, :mail, :navigation_bar
 
     def initialize(param)
@@ -55,7 +55,7 @@ module Stamps
     end
   end
 
-  class StampsSignInBase < Browser::StampsBrowserElement
+  class StampsSignInBase < Browser::StampsModal
     attr_accessor :signed_in_user
 
     def initialize(param)

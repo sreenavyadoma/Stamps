@@ -98,7 +98,7 @@ Then /^Pagination control to go to last page is (\w+)$/ do |last_pagination_enab
   end
 end
 
-Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
+Then /^[Ee]xpect page toolbar First Page is (\w+)$/  do |expectation|
   #logger.step "Expect page toolbar First Page is #{expectation}"
   case expectation.downcase
     when "enabled"
@@ -112,7 +112,7 @@ Then /^Expect page toolbar First Page is (\w+)$/  do |expectation|
   end
 end
 
-Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
+Then /^[Ee]xpect page toolbar Previous Page is (\w+)$/  do |expectation|
   #logger.step "Expect page toolbar Previous Page is #{expectation}"
   case expectation.downcase
     when "enabled"
@@ -126,7 +126,7 @@ Then /^Expect page toolbar Previous Page is (\w+)$/  do |expectation|
   end
 end
 
-Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
+Then /^[Ee]xpect page toolbar Page Number is (\w+)$/  do |expectation|
   #logger.step "Expect page toolbar Page Number is #{expectation}"
   case expectation.downcase
     when "enabled"
@@ -137,7 +137,7 @@ Then /^Expect page toolbar Page Number is (\w+)$/  do |expectation|
   end
 end
 
-Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
+Then /^[Ee]xpect page toolbar Next Page is (\w+)$/  do |expectation|
   #logger.step "Expect page toolbar Next Page is #{expectation}"
   case expectation.downcase
     when "enabled"
@@ -151,7 +151,7 @@ Then /^Expect page toolbar Next Page is (\w+)$/  do |expectation|
   end
 end
 
-Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
+Then /^[Ee]xpect page toolbar Last Page is (\w+)$/  do |expectation|
   #logger.step "Expect page toolbar Last Page is #{expectation}"
   case expectation.downcase
     when "enabled"
@@ -165,7 +165,7 @@ Then /^Expect page toolbar Last Page is (\w+)$/  do |expectation|
   end
 end
 
-When /^Set Page Number to (\d*)$/ do |value|
+When /^[Ss]et Page Number to (\d*)$/ do |value|
   #logger.step "Set Page Number to #{value}"
   begin
     #logger.step "Set Page Number to \"#{value}\""

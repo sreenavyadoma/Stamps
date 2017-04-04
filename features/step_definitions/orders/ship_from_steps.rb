@@ -1,5 +1,5 @@
 
-Then /^(?:O|o)n Order Details form, Delete Ship-From address (\w+)$/ do |address|
+Then /^[Oo]n Order Details form, Delete Ship-From address (\w+)$/ do |address|
   # not implemented
 end
 

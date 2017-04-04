@@ -1,4 +1,4 @@
-Feature: Stamps L Series - Specify Postage
+Feature: Print form L Series - Specify Postage
 
 
 
@@ -7,16 +7,16 @@ Feature: Stamps L Series - Specify Postage
 
   @mail_print_stamps_regression
   @mail_print_stamps_l_series_specify
-  Scenario: Stamps Regression L Series - Specify Postage
+  Scenario: Print form Regression L Series - Specify Postage
     Then select Print On Stamps
-    Then set Stamps Serial Number to L12345
-    Then select Stamps Specify Postage Amount
+    Then set Print form Serial Number to L12345
+    Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
-    Then set Label form Mail-To Country to United States
+    Then set Print form Mail-To Country to United States
     Then Mail Stamps: Select Specify Mail service First Class
-    Then set Stamps Amount to 0.15
-    Then set Stamps Quantity to 1
-    Then Mail Stamps: Set Cost Code to None
+    Then set Print form Amount to 0.15
+    Then set Print form Quantity to 1
+    Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button

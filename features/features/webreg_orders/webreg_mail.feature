@@ -7,16 +7,16 @@ Feature: First time Mail sign in
     @whats_new
   Scenario: What's new modal
     Then Visit WebReg Registration Page
-    Then On WebReg Profile page, set User ID and Email to Random Value
+    Then set WebReg Profile User ID and Email to Random Value
 
-    Then On WebReg Profile page, set Password to pass111
-    Then On WebReg Profile page, set Re-Type password to pass111
-    Then On WebReg Profile page, set How will you use Stamps.com to Both Mailing and Shipping
-    Then On WebReg Profile page, set Referrer Name to Already used in office
-    Then On WebReg Profile page, set 1st Question to What is your mother's maiden name
-    Then On WebReg Profile page, set 1st Answer to stamps
-    Then On WebReg Profile page, set 2nd Question to What was your high school mascot
-    Then On WebReg Profile page, set 2nd Answer to stamps
+    Then set WebReg Profile Password to pass111
+    Then set WebReg Profile Re-Type password to pass111
+    Then set WebReg Profile How will you use Stamps.com to Both Mailing and Shipping
+    Then set WebReg Profile Referrer Name to Already used in office
+    Then set WebReg Profile 1st Question to What is your mother's maiden name
+    Then set WebReg Profile 1st Answer to stamps
+    Then set WebReg Profile 2nd Question to What was your high school mascot
+    Then set WebReg Profile 2nd Answer to stamps
 
     Then On WebReg Profile page, continue to Mailing Information page
     Then On WebReg Membership page, set First Name to random

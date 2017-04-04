@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Rakuten < Browser::StampsBrowserElement
+      class Rakuten < Browser::StampsModal
 
         def window_title
           StampsElement.new(browser.div text: "Connect your Rakuten Store")
@@ -28,7 +28,7 @@ module Stamps
         def close
           button = StampsElement.new browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
           5.times do
-            button.safe_click
+            button.click
             break unless present?
           end
         end
@@ -63,7 +63,7 @@ module Stamps
           max_server_error_retry_count = 5
 
           15.times do |counter|
-            button.safe_click
+            button.click
             sleep(2)
             if importing_order.present?
               logger.info importing_order.message

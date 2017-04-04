@@ -1,8 +1,8 @@
 module Stamps
   module Orders
-    class SuccessModal < Browser::StampsBrowserElement
+    class SuccessModal < Browser::StampsModal
       def window_title
-        element_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")
+        StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")).text
       end
 
       def present?
@@ -21,13 +21,13 @@ module Stamps
       def ok
         button = StampsElement.new(browser.spans(text: "OK").last)
         5.times do
-          button.safe_click
+          button.click
           break unless button.present?
         end
       end
     end
 
-    class ImportOrders < Browser::StampsBrowserElement
+    class ImportOrders < Browser::StampsModal
       attr_reader :title
 
       def initialize(param)
@@ -40,7 +40,7 @@ module Stamps
       end
 
       def filename_label
-        element_helper.text browser.label(id: "fileNameLabel")
+        StampsElement.new(browser.label(id: "fileNameLabel")).text
       end
 
       def text_box
@@ -52,7 +52,7 @@ module Stamps
         button = StampsElement.new browser.span(text: "Import")
         server_error = Orders::Stores::ServerError.new(param)
 
-        button.safe_click
+        button.click
         begin_time = Time.now
 
         if server_error.present?
@@ -76,10 +76,10 @@ module Stamps
       def cancel
         button = StampsElement.new browser.span(text: "Cancel")
         5.times do
-          button.safe_click
-          button.safe_click
-          button.safe_click
-          button.safe_click
+          button.click
+          button.click
+          button.click
+          button.click
           break unless present?
         end
       end
@@ -96,7 +96,7 @@ module Stamps
       end
 
       def download_sample_file
-        element_helper.safe_click browser.a(text: "Download sample file")
+        StampsElement.new(browser.a(text: "Download sample file")).click
       end
     end
   end

@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class PostageCountry < Browser::StampsBrowserElement
+    class PostageCountry < Browser::StampsModal
       attr_reader :text_box, :drop_down
 
       def initialize(param)
@@ -16,9 +16,9 @@ module Stamps
           begin
             break if text_box.text.include? selection
             break if text_box.text.include? selection
-            drop_down.safe_click unless selection_label.present?
+            drop_down.click unless selection_label.present?
             selection_label.scroll_into_view
-            selection_label.safe_click
+            selection_label.click
             break if text_box.text.include? selection
           rescue
             #ignore
@@ -27,7 +27,7 @@ module Stamps
       end
     end
 
-    class Pounds < Browser::StampsBrowserElement
+    class Pounds < Browser::StampsModal
       attr_reader :text_box, :increment_button, :decrement_button
 
       def initialize(param)
@@ -56,18 +56,18 @@ module Stamps
 
       def increment value
         value.to_i.times do
-          increment_button.safe_click
+          increment_button.click
         end
       end
 
       def decrement value
         value.to_i.times do
-          decrement_button.safe_click
+          decrement_button.click
         end
       end
     end
 
-    class Ounces < Browser::StampsBrowserElement
+    class Ounces < Browser::StampsModal
       attr_reader :decrement_button, :text_box, :increment_button
 
       def initialize(param)
@@ -97,18 +97,18 @@ module Stamps
 
       def increment value
         value.to_i.times do
-          increment_button.safe_click
+          increment_button.click
         end
       end
 
       def decrement value
         value.to_i.times do
-          decrement_button.safe_click
+          decrement_button.click
         end
       end
     end
 
-    class StampAmount < Browser::StampsBrowserElement
+    class StampAmount < Browser::StampsModal
       def text_box
         StampsTextbox.new(browser.text_field name: "stampAmount")
       end
@@ -122,19 +122,19 @@ module Stamps
       def increment value
         button = StampsElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
         value.to_i.times do
-          button.safe_click
+          button.click
         end
       end
 
       def decrement value
         button = StampsElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
         value.to_i.times do
-          button.safe_click
+          button.click
         end
       end
     end
 
-    class ShipDate < Browser::StampsBrowserElement
+    class ShipDate < Browser::StampsModal
 
       def text_box
         StampsTextbox.new(browser.text_field id: "sdc-mainpanel-shipdatedatefield-inputEl")
@@ -146,7 +146,7 @@ module Stamps
 
     end
 
-    class CostCode  < Browser::StampsBrowserElement
+    class CostCode  < Browser::StampsModal
       def text_box
         StampsTextbox.new browser.text_field name: "costCodeId"
       end
@@ -165,9 +165,9 @@ module Stamps
         sleep(0.35)
         10.times {
           begin
-            button.safe_click #unless selection_label.present?
+            button.click #unless selection_label.present?
             selection_label.scroll_into_view
-            selection_label.safe_click
+            selection_label.click
             selected_cost_code = box.text
             logger.info "Selected Cost Code #{selected_cost_code} - #{(selected_cost_code.include? selection)?"done": "cost code not selected"}"
             break if selected_cost_code.include? selection
@@ -181,7 +181,7 @@ module Stamps
 
     end
 
-    class Quantity < Browser::StampsBrowserElement
+    class Quantity < Browser::StampsModal
       def text_box
         StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
       end
@@ -195,14 +195,14 @@ module Stamps
       def increment value
         button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[7])
         value.to_i.times do
-          button.safe_click
+          button.click
         end
       end
 
       def decrement value
         button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[7])
         value.to_i.times do
-          button.safe_click
+          button.click
         end
       end
     end

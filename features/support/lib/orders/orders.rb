@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class WebOrders < Browser::StampsBrowserElement
+    class WebOrders < Browser::StampsModal
       attr_reader :orders_toolbar, :landing_page, :orders_grid, :styles, :order_details, :filter_panel, :multi_order
 
       def initialize(param)

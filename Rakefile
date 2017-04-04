@@ -375,7 +375,7 @@ Cucumber::Rake::Task.new(:whats_new) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg) do |t|
+Cucumber::Rake::Task.new(:registration) do |t|
   t.profile = 'webreg'
   t.cucumber_opts = "-p cuke_reports"
 end
