@@ -25,7 +25,7 @@ Then /^Import Orders: Import Existing Orders$/ do
   logger.step "Success modal is present after #{import_time} seconds"
 
   import_time_file = data_for(:import_orders_test, {})['import_existing_orders_time_file']
-  import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{import_time_file}"
+  import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
   logger.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
