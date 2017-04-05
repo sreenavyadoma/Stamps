@@ -1027,6 +1027,9 @@ orders_credentials:
     inline_service_rates:
       usr: xha5o97
       pw: pass111
+    import_updated_orders:
+      usr: ccshp1k9eg0qh
+      pw: pass111
     purchasing:
       usr: kulwyj9vs0f3kd
       pw: pass111
@@ -1339,6 +1342,9 @@ orders_credentials:
       pw: pass111
     import_orders:
       usr: scpmnx1a727e87
+      pw: pass111
+    import_updated_orders:
+      usr: scanul3ajn5
       pw: pass111
     pagination:
       usr: scscscscscscscscsc
