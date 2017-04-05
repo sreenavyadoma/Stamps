@@ -9,7 +9,7 @@ Then /^Import Orders: Import$/ do
   #import_timer_filename = "\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
 
   import_time_file = data_for(:import_orders_test, {})['import_time_file']
-  import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{import_time_file}"
+  import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
   logger.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
@@ -65,8 +65,9 @@ end
 Then /^Import Orders: Randomize data in (.*)$/ do |filename|
 
   import_old_file = data_for(:import_orders_test, {})['import_old_file']
-  import_new_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{filename}"
-  import_old_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{import_old_file}"
+  #logger.step "File location is #{'import_orders_dir'+ENV['URL']}"
+  import_new_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
+  import_old_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_old_file}"
 
   CSV.open(import_new_loc, "w+") do |csv_out|
     old_csv = CSV.read(import_old_loc)
@@ -101,7 +102,7 @@ end
 
 Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in grid$/ do |num_orders, filename|
 
-  import_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{filename}"
+  import_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
 
   num_orders = num_orders.to_i
   counter = 0
@@ -113,16 +114,16 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
     if index  != 0
       counter += 1
       step "Filter Panel: Search for #{row[4]}"
-      expect(stamps.orders.orders_grid.column.requested_service.data(order_id)).to eql(row[3]), "#{}"
-      expect(stamps.orders.orders_grid.column.recipient.data(order_id)).to eql(row[4])
-      expect(stamps.orders.orders_grid.column.company.data(order_id)).to eql(row[5])
-      expect(stamps.orders.orders_grid.column.address.data(order_id).downcase).to eql((row[6]).downcase)
-      expect(stamps.orders.orders_grid.column.city.data(order_id).downcase).to eql((row[9]).downcase)
-      expect(stamps.orders.orders_grid.column.state.data(order_id)).to eql(row[10])
-      expect(stamps.orders.orders_grid.column.zip.data(order_id)).to eql(row[11])
-      expect(stamps.orders.orders_grid.column.phone.data(order_id)).to eql(row[13])
-      expect(stamps.orders.orders_grid.column.email.data(order_id)).to eql(row[14])
-      expect(ParameterHelper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))).to eql(row[15])
+      expect(stamps.orders.orders_grid.column.requested_service.data(order_id)).to eql(row[3]), "Expected Service for order #{row[0]} is #{row[3]}, Service in orders grid is #{stamps.orders.orders_grid.column.requested_service.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.recipient.data(order_id)).to eql(row[4]), "Expected Recipient for order #{row[0]} is #{row[4]}, Recipient in orders grid is #{stamps.orders.orders_grid.column.recipient.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.company.data(order_id)).to eql(row[5]), "Expected Company for order #{row[0]} is #{row[5]}, Company in orders grid is #{stamps.orders.orders_grid.column.company.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.address.data(order_id).downcase).to eql((row[6]).downcase), "Expected Address for order #{row[0]} is #{row[6]}, Address in orders grid is #{stamps.orders.orders_grid.column.address.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.city.data(order_id).downcase).to eql((row[9]).downcase), "Expected City for order #{row[0]} is #{row[9]}, City in orders grid is #{stamps.orders.orders_grid.column.city.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.state.data(order_id)).to eql(row[10]), "Expected State for order #{row[0]} is #{row[10]}, State in orders grid is #{stamps.orders.orders_grid.column.state.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.zip.data(order_id)).to eql(row[11]), "Expected Zip for order #{row[0]} is #{row[11]}, Zip in orders grid is #{stamps.orders.orders_grid.column.zip.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.phone.data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.column.phone.data(order_id)}"
+      expect(stamps.orders.orders_grid.column.email.data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.column.email.data(order_id)}"
+      expect(ParameterHelper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{ParameterHelper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))}"
       logger.step "Order # #{order_id} verified in Orders Grid"
     end
     break if counter >= num_orders
@@ -134,7 +135,7 @@ Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename|
   step "In Orders Toolbar, Import" if stamps.orders.orders_toolbar.import.nil?
   step "Import Orders: Select CSV File" if (stamps.orders.orders_toolbar.import.select_csv_file.nil? || !(stamps.orders.orders_toolbar.import.select_csv_file.present?))
 
-  import_orders_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{filename}"
+  import_orders_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
 
   #@csv_import_filename = "\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
   #logger.step "Import File:  #{@csv_import_filename}"
