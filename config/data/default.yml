@@ -937,9 +937,6 @@ orders_credentials:
     rates_orders_zone_3:
       usr: xxxxx
       pw: pass111
-    search_orders:
-      usr: xxxxxxxxxxxx
-      pw: pass111
     details_edit_order:
       usr: txdq1khl
       pw: pass111
