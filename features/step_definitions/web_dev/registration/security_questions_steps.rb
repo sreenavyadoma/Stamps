@@ -1,24 +1,5 @@
 
 
-Then /^[Ss]et WebReg Profile email textbox to email to (.*)$/ do |email|
-  registration.profile.email.set email
-end
-
-Then /^[Ss]et WebReg Profile username textbox to username to (.*)$/ do |username|
-  registration.profile.username.set username
-end
-
-Then /^[Ss]et WebReg Profile password textbox to (.*)$/ do |password|
-  registration.profile.password.set password
-end
-
-Then /^[Ss]et WebReg Profile retype password textbox to (.*)$/ do |password|
-  registration.profile.retype_password.set password
-end
-
-Then /^[Ss]et WebReg Profile Usage Type list of values to contain (.*)$/ do |str|
-  registration.profile.usage_type.set str
-end
 
 Then /^[Oo]n WebReg Profile page, continue to Membership page$/ do
   registration.profile.continue_button
@@ -96,11 +77,6 @@ Then /^[Ee]xpect WebReg navigation bar USPS logo exists$/ do
   expect(registration.navigation.usps_logo.present?).to be (true)
 end
 
-
-
-Then /^[Ee]xpect WebReg Membership header contain (.*)$/ do |str|
-  expect(registration.membership.header).to eql(str)
-end
 
 
 

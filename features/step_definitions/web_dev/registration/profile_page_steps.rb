@@ -37,7 +37,7 @@ Then /^[Ss]et WebReg Profile Password to (.*)$/ do |password|
   registration.profile.password.set test_parameter[:pw]
 end
 
-Then /^[Ss]et WebReg Profile Re-Type password to (.*)$/ do |password|
+Then /^[Ss]et WebReg Profile retype password to (.*)$/ do |password|
   registration.profile.retype_password.set password
 end
 
@@ -333,7 +333,7 @@ Then(/^Clear 2nd Question$/) do
 end
 
 
-Then /^[Ee]xpect WebReg Profile bread crumbs to contain (.*)$/ do |str|
+Then /^[Ee]xpect WebReg bread crumbs to contain (.*)$/ do |str|
   expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist "
 end
 
@@ -350,11 +350,11 @@ Then /^[Ee]xpect WebReg Profile username exists$/ do
   expect(registration.profile.username.present?).to be (true), "Username textbox does not exist on profile page"
 end
 
-Then /^[Ee]xpect WebReg Profile password textbox exists$/ do
+Then /^[Ee]xpect WebReg Profile password exists$/ do
   expect(registration.profile.password.present?).to be (true), "Password textbox does not exist on profile page"
 end
 
-Then /^[Ee]xpect WebReg Profile retype password textbox exists$/ do
+Then /^[Ee]xpect WebReg Profile retype password exists$/ do
   expect(registration.profile.retype_password.present?).to be (true), "Retype password textbox does not exist on profile page"
 end
 

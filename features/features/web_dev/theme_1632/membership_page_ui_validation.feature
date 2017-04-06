@@ -8,29 +8,29 @@ Feature: WebReg Membership page validation theme_1632
     Then Load WebReg Profile page
     Then set WebReg Profile email to email
     Then set WebReg Profile username to username
-    Then set WebReg Profile password textbox to password
-    Then set WebReg Profile retype password textbox to password
+    Then set WebReg Profile password to password
+    Then set WebReg Profile retype password to password
     Then set WebReg Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
     Then on WebReg Profile page, continue to Membership page
     Then expect WebReg navigation bar Stamps logo exists
     Then expect WebReg navigation bar USPS logo exists
-    Then expect WebReg Membership bread crumbs to contain Profile
-    Then expect WebReg Membership bread crumbs to contain Membership
-    Then expect WebReg Membership bread crumbs to contain Choose Supplies
+    Then expect WebReg bread crumbs to contain Profile
+    Then expect WebReg bread crumbs to contain Membership
+    Then expect WebReg bread crumbs to contain Choose Supplies
     Then expect WebReg Membership header contain Set up your personal Post Office
-    Then expect WebReg Membership first name textbox exists
-    Then expect WebReg Membership last name textbox exists
-    Then expect WebReg Membership company textbox exists
-    Then expect WebReg Membership address textbox exists
-    Then expect WebReg Membership city textbox exists
+    Then expect WebReg Membership first name exists
+    Then expect WebReg Membership last name exists
+    Then expect WebReg Membership company exists
+    Then expect WebReg Membership address exists
+    Then expect WebReg Membership city exists
     Then expect WebReg Membership state dropdown exists
-    Then expect WebReg Membership zip textbox exists
-    Then expect WebReg Membership phone textbox exists
+    Then expect WebReg Membership zip exists
+    Then expect WebReg Membership phone exists
     Then expect WebReg Membership stamps logo exists
     Then expect WebReg Membership usps logo exists
     Then expect WebReg Membership paragraph to contain Postage Account Credit Card Authorization
-    Then expect WebReg Membership cardholders name textbox exists
-    Then expect WebReg Membership credit card number textbox exists
+    Then expect WebReg Membership cardholders name exists
+    Then expect WebReg Membership credit card number exists
     Then expect WebReg Membership month dropdown exists
     Then expect WebReg Membership year dropdown exists
     Then expect WebReg Membership Billing address same as mailing address checkbox exists

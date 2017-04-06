@@ -13,14 +13,14 @@ Feature: WebReg Profile page validation theme_1632
     Then Load WebReg Profile page
     Then expect WebReg navigation bar Stamps logo exists
     Then expect WebReg navigation bar USPS logo exists
-    Then expect WebReg Profile bread crumbs to contain Profile
-    Then expect WebReg Profile bread crumbs to contain Membership
-    Then expect WebReg Profile bread crumbs to contain Choose Supplies
+    Then expect WebReg bread crumbs to contain Profile
+    Then expect WebReg bread crumbs to contain Membership
+    Then expect WebReg bread crumbs to contain Choose Supplies
     Then expect WebReg Profile header contain Sign up for a new account
     Then expect WebReg Profile email exists
     Then expect WebReg Profile username exists
-    Then expect WebReg Profile password textbox exists
-    Then expect WebReg Profile retype password textbox exists
+    Then expect WebReg Profile password exists
+    Then expect WebReg Profile retype password exists
     Then expect WebReg Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
     Then expect WebReg Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
     Then expect WebReg Profile Usage Type list of values to contain Business Use - Both mailing and shipping
@@ -40,7 +40,6 @@ Feature: WebReg Profile page validation theme_1632
     Then expect WebReg Profile Privacy Policy link exists
       and is clickable
     Then expect WebReg Profile copyright link exists
-      and is clickable
     Then expect WebReg Profile Norton logo exists
     Then expect WebReg Profile TRUSTe logo exists
     Then expect WebReg Profile LIVE chat button exists

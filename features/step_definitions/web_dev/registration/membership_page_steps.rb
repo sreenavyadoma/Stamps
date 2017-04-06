@@ -2,7 +2,7 @@ Then /^[Ss]et WebReg Profile email to email to (.*)$/ do |email|
   registration.profile.email.set email
 end
 
-Then /^[Ss]et WebReg Profile username to username to (.*)$/ do |username|
+Then /^[Ss]et WebReg Profile username to (.*)$/ do |username|
   registration.profile.username.set username
 end
 
@@ -26,23 +26,23 @@ Then /^[Ee]xpect WebReg Membership header contain (.*)$/ do |str|
   expect(registration.membership.header).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Membership first name textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership first name exists$/ do
   expect(registration.membership.first_name.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership last name textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership last name exists$/ do
   expect(registration.membership.last_name.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership company textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership company exists$/ do
   expect(registration.membership.company.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership address textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership address exists$/ do
   expect(registration.membership.address.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership city textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership city exists$/ do
   expect(registration.membership.city.present?).to be (true)
 end
 
@@ -50,11 +50,11 @@ Then /^[Ee]xpect WebReg Membership state dropdown exists$/ do
   expect(registration.membership.city.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership zip textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership zip exists$/ do
   expect(registration.membership.zip.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership phone textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership phone exists$/ do
   expect(registration.membership.phone.present?).to be (true)
 end
 
@@ -70,11 +70,11 @@ Then /^[Ee]xpect WebReg Membership paragraph to contain (.*)$/ do |str|
   expect(registration.membership.paragraph).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Membership cardholders name textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership cardholders name exists$/ do
   expect(registration.membership.cardholders_name.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership credit card number textbox exists$/ do
+Then /^[Ee]xpect WebReg Membership credit card number exists$/ do
   expect(registration.membership.credit_card_number.present?). to be (true)
 end
 
