@@ -22,7 +22,7 @@ Then /^[Ss]et WebReg Profile Usage Type list of values to contain (.*)$/ do |str
   registration.profile.usage_type.set str
 end
 
-Then /^[Oo]n WebReg Profile page, continue to Membership page/ do
+Then /^[Oo]n WebReg Profile page, continue to Membership page$/ do
   registration.profile.continue_button
 end
 
@@ -74,8 +74,35 @@ Then /^[Ss]et WebReg Membership year to (.*)$/ do |year|
   registration.membership.year.set year
 end
 
+Then /^[Ss]et set WebReg Membership billing address same as mailing address$/ do
+  registration.membership.billingadd_same_as_mailingadd
+end
+
+Then /^[Ss]et WebReg Membership terms and condition$/ do
+  registration.membership.termsnconditions
+end
+
+Then /^[Oo]n WebReg Membership page continue to Choose Supplies page$/ do
+  registration.membership.submit_button
+end
+
+Then /^[Oo]n WebReg ATG page continue to WebReg Security questions page$/ do
+  registration.membership.atg_placeorderbutton
+end
+
+Then /^[Ee]xpect WebReg navigation bar Stamps logo exists$/ do
+  expect(registration.navigation.stamps_logo.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg navigation bar USPS logo exists$/ do
+  expect(registration.navigation.usps_logo.present?).to be (true)
+end
 
 
+
+Then /^[Ee]xpect WebReg Membership header contain (.*)$/ do |str|
+  expect(registration.membership.header).to eql(str)
+end
 
 
 
