@@ -3,7 +3,7 @@ Feature: WebReg Profile page validation theme_1632
   Background:
     Given I launched default browser
 
-  @profile_page_ui_validation
+  @registration_profile_page_ui_validation
   Scenario: SDCWR-721 WebReg Profile Page Validation
     Then Load WebReg Profile page
     Then expect WebReg navigation bar Stamps logo exists
