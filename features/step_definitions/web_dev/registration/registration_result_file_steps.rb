@@ -10,13 +10,14 @@ Then /^WebReg: Load username and password from parameter file(?:| (.*))$/ do |fi
 end
 
 Then /^Orders: Sign-in using username and password from parameter file$/ do
-  #logger.step "Orders: Sign in"
   stamps.orders.landing_page.sign_in test_parameter[:usr], test_parameter[:pw]
 end
 
 Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
   logger.info "On PAM Customer Search page, set username from parameter file"
   step "On PAM Customer Search page, set username to #{CONFIG['usr']}"
+end
+
 Then /^(?:S|s)et PAM Customer Search page username from parameter file$/ do
   logger.info "set PAM Customer Search page username from parameter file"
   step "set PAM Customer Search page username to #{CONFIG['usr']}"
