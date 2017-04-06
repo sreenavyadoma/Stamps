@@ -386,6 +386,7 @@ end
 
 Then /^[Ee]xpect WebReg Profile email textbox exists$/ do
   expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
+  registration.profile.email.present?
 end
 
 Then /^[Ee]xpect WebReg Profile username textbox exists$/ do
