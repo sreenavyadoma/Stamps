@@ -1044,6 +1044,10 @@ Cucumber::Rake::Task.new(:item_details) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:import_updated_orders) do |t|
+  t.profile = 'import_updated_orders'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 
 
