@@ -1,8 +1,4 @@
 Feature: WebReg Security questions page validation theme_1632
-  # 1. Fix all steps in .feature files that does not have associated step definitions
-  # 2. Remove all step definition duplicates. When you ctrl-click a step in a feature file it should go to exactly one implementation/step defintion.
-  # delete all #logger.something
-  # 3. Look at existing page objects for registration and start using it and building on it.
 
   Background:
     Given I launched default browser

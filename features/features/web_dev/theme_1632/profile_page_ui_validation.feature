@@ -1,4 +1,9 @@
 Feature: WebReg Profile page validation theme_1632
+  #  Fix all steps in .feature files that does not have associated step definitions
+  #  Remove all step definition duplicates. When you ctrl-click a step in a feature file it should go to exactly one implementation/step defintion.
+  #  Run registration_profile_page_ui_validation
+  # delete all #logger.something
+  # Look at existing page objects for registration and start using it and building on it.
 
   Background:
     Given I launched default browser
