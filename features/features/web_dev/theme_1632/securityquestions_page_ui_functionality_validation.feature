@@ -24,8 +24,8 @@ Feature: WebReg Security questions page validation theme_1632
     Then set WebReg Membership credit card number textbox to creditcardnumber
     Then set WebReg Membership month dropdown to month
     Then set WebReg Membership year to year
-    Then set WebReg Membership billing address same as mailing address to checkmarked
-    Then set WebReg Membership terms and condition to checkmarked
+    Then set WebReg Membership billing address same as mailing address
+    Then set WebReg Membership terms and condition
     Then on WebReg Membership page continue to Choose Supplies page
     Then on WebReg ATG page continue to WebReg Security questions page
     Then expect WebReg navigation bar Stamps logo exists
