@@ -1,6 +1,4 @@
-Then /^[Ll]oad WebReg Profile page$/ do
-  webreg.load_page
-end
+
 
 Then /^[Ss]et WebReg Profile email textbox to email to (.*)$/ do |email|
   registration.profile.email.set email

@@ -40,7 +40,7 @@ module Stamps
       attr_reader :profile, :error_occured
       def initialize(param)
         super(param)
-        @profile = Profile.new(param)
+        @profile = RegistrionProfilePage.new(param)
         @error_occured = AnErrorOccured.new(param)
       end
 

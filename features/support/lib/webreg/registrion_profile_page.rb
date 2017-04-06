@@ -286,7 +286,7 @@ module Stamps
       end
     end
 
-    class Profile < Browser::StampsModal
+    class RegistrionProfilePage < Browser::StampsModal
       attr_reader :referrer_name, :email, :user_id, :password, :retype_password, :usage_type, :first_question,
                   :first_answer, :second_question, :second_answer, :send_promo, :continue, :membership
 
