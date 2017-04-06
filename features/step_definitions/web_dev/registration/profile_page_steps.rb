@@ -341,12 +341,12 @@ Then /^[Ee]xpect WebReg Profile header contain (.*)$/ do |str|
   expect(registration.profile.header).to eql(str), "Profile header #{str} does not exist "
 end
 
-Then /^[Ee]xpect WebReg Profile email textbox exists$/ do
+Then /^[Ee]xpect WebReg Profile email exists$/ do
   expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
   registration.profile.email.present?
 end
 
-Then /^[Ee]xpect WebReg Profile username textbox exists$/ do
+Then /^[Ee]xpect WebReg Profile username exists$/ do
   expect(registration.profile.username.present?).to be (true), "Username textbox does not exist on profile page"
 end
 

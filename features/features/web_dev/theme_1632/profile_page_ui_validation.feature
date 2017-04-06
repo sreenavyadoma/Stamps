@@ -17,8 +17,8 @@ Feature: WebReg Profile page validation theme_1632
     Then expect WebReg Profile bread crumbs to contain Membership
     Then expect WebReg Profile bread crumbs to contain Choose Supplies
     Then expect WebReg Profile header contain Sign up for a new account
-    Then expect WebReg Profile email textbox exists
-    Then expect WebReg Profile username textbox exists
+    Then expect WebReg Profile email exists
+    Then expect WebReg Profile username exists
     Then expect WebReg Profile password textbox exists
     Then expect WebReg Profile retype password textbox exists
     Then expect WebReg Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
