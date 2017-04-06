@@ -1,6 +1,6 @@
 Then /^WebReg: Load username and password from parameter file(?:| (.*))$/ do |filename|
   data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
-  #logger.step "WebReg: Load user credentials from file #{data_file}"
+
   expect(File.exist?(data_file)).to be_truthy
   CONFIG = YAML.load_file(data_file)
   test_parameter[:usr] = CONFIG['usr']

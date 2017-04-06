@@ -6,8 +6,8 @@ Feature: WebReg Membership page validation theme_1632
   @membership_page_ui_validation
   Scenario:
     Then Load WebReg Profile page
-    Then set WebReg Profile email textbox to email
-    Then set WebReg Profile username textbox to username
+    Then set WebReg Profile email to email
+    Then set WebReg Profile username to username
     Then set WebReg Profile password textbox to password
     Then set WebReg Profile retype password textbox to password
     Then set WebReg Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
@@ -68,7 +68,6 @@ Feature: WebReg Membership page validation theme_1632
     Then expect WebReg Membership Privacy Policy link exists
       and is clickable
     Then expect WebReg Membership copyright link exists
-      and is clickable
     Then expect WebReg Profile Norton logo exists
     Then expect WebReg Profile TRUSTe logo exists
     Then expect WebReg Profile LIVE chat button exists

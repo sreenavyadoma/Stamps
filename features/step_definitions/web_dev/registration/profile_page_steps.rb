@@ -9,7 +9,7 @@ Then /^Visit WebReg Registration Page$/ do
 end
 
 Then /^[Oo]n WebReg Profile page, Continue to Mailing Information page$/ do
-  #logger.step "On WebReg Profile page, Continue to Mailing Information page"
+
   registration.profile.continue_to_mailing_info
 end
 
@@ -28,7 +28,6 @@ Then /^[Ss]et WebReg Profile Email to (.*)$/ do |email|
 end
 
 Then /^[Ss]et WebReg Profile User ID to (.*)$/ do |user_id|
-  #logger.step "set WebReg Profile User ID to #{user_id}"
   test_parameter[:usr] = user_id
   registration.profile.user_id.set user_id
 end
@@ -163,47 +162,38 @@ Then /^[Ss]et WebReg Profile 1st Question to What is your city of birth$/ do
 end
 
 Then /^[Ss]et WebReg Profile 1st Question to What is your father's birthplace$/ do
-  #logger.step "set WebReg Profile 1st Question to What is your father's birthplace"
   registration.profile.first_question.fathers_birth_place
 end
 
 Then /^[Ss]et WebReg Profile 1st Question to What street did you grow up on$/ do
-  #logger.step "set WebReg Profile 1st Question to What street did you grow up on"
   registration.profile.first_question.mothers_maiden_name
 end
 
 Then /^[Ss]et WebReg Profile 1st Question to What is the name of your first school$/ do
-  #logger.step "set WebReg Profile 1st Question to What is the name of your first school"
   registration.profile.first_question.street_name
 end
 
 Then /^[Ss]et WebReg Profile 1st Question to What is the make and model of your first car$/ do
-  #logger.step "set WebReg Profile 1st Question to What is the make and model of your first car"
   registration.profile.first_question.first_cars_make_model
 end
 
 Then /^[Ss]et WebReg Profile 2nd Question to What is your mother's maiden name$/ do
-  #logger.step "set WebReg Profile 1st Question to What is your mother's maiden name?"
   registration.profile.second_question.mothers_maiden_name
 end
 
 Then /^[Ss]et WebReg Profile 2nd Question to What is your pet's name$/ do
-  #logger.step "set WebReg Profile 1st Question to What is your pet's name?"
   registration.profile.second_question.pets_name
 end
 
 Then /^[Ss]et WebReg Profile 2nd Question to What is your city of birth$/ do
-  #logger.step "set WebReg Profile 1st Question to What is your city of birth"
   registration.profile.second_question.birth_city
 end
 
 Then /^[Ss]et WebReg Profile 2nd Question to What is your father's birthplace$/ do
-  #logger.step "set WebReg Profile 1st Question to What is your father's birthplace"
   registration.profile.second_question.fathers_birth_place
 end
 
 Then /^[Ss]et WebReg Profile 2nd Question to What street did you grow up on$/ do
-  #logger.step "set WebReg Profile 1st Question to What street did you grow up on"
   registration.profile.second_question.street_name
 end
 
@@ -213,22 +203,18 @@ Then /^[Ss]et WebReg Profile 2nd Question to What is the name of your first scho
 end
 
 Then /^[Ss]et WebReg Profile 2nd Question to What is the make and model of your first car$/ do
-  #logger.step "set WebReg Profile 1st Question to What is the make and model of your first car"
   registration.profile.second_question.first_cars_make_model
 end
 
 Then /^[Ss]et WebReg Profile 2nd Question to What was your high school mascot$/ do
-  #logger.step "set WebReg Profile 1st Question to What was your high school mascot"
   registration.profile.second_question.high_school_mascot
 end
 
 Then /^[Oo]n WebReg Profile page, Continue$/ do
-  #logger.step "On WebReg Profile page, Continue"
   registration.profile.continue.click
 end
 
 Then /^[Oo]n WebReg Profile page, continue to Mailing Information page$/ do
-  #logger.step "On WebReg Profile page, continue to Mailing Information page"
   10.times do
     registration.profile.continue.click
     sleep(0.35)
@@ -242,7 +228,6 @@ Then /^Registration Choose Supplies: Place Order$/ do
   case @webreg_result
     when WebReg::UserIdTaken
       message = @webreg_result.message
-      #logger.step "USER ID IS TAKEN!  #{message}"
       raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @webreg_result.present?
@@ -265,107 +250,87 @@ Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ 
 end
 
 Then(/^[Oo]n WebReg Profile page, expect Email Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect Email Help Block is #{expectation}"
   help_text = registration.profile.email.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect User ID Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect User ID Help Block is #{expectation}"
   help_text = registration.profile.user_id.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect Password Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect Password Help Block is #{expectation}"
   help_text = registration.profile.password.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect Re\-Type Password Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect Re-Type Help Block is #{expectation}"
   help_text = registration.profile.password.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect How will you use Stamps\.com Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect How will you use Stamps.com Help Block is #{expectation}"
   help_text = registration.profile.usage_type.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect How did you hear about us\? Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, How did you hear about us? Help Block is #{expectation}"
   referrer_name = registration.profile.referrer_name
   help_text = registration.profile.referrer_name.help_text if referrer_name.present?
   expect(help_text).to eql expectation if referrer_name.present?
 end
 
 Then(/^[Oo]n WebReg Profile page, expect 1st Question Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect 1st Question Help Block is #{expectation}"
   help_text = registration.profile.first_question.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect 1st Answer Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect 1st Answer Help Block is #{expectation}"
   help_text = registration.profile.first_answer.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect 2nd Question Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect 2n Question Help Block is #{expectation}"
   help_text = registration.profile.second_question.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^^[Oo]n WebReg Profile page, expect 2nd Answer Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Profile page, expect 2nd Answer Help Block is #{expectation}"
   help_text = registration.profile.second_answer.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, Tab from Email$/) do
-  #logger.step "On WebReg Profile page, Tab from Email"
   browser.send_keys([:tab])
 end
 
 Then(/^[Oo]n WebReg Profile page, Tab$/) do
-  #logger.step "On WebReg Profile page, Tab"
   registration.profile.tab
 end
 
 Then(/^Clear Email Field$/) do
-  #logger.step "Clear Email Field"
   registration.profile.email.clear
 end
 
 Then(/^Clear User ID Field$/) do
-  #logger.step "Clear User ID Field"
   registration.profile.user_id.clear
 end
 
 Then(/^Clear How will you use Stamps\.com\?$/) do
-  #logger.step "Clear How will you use Stamps.com?"
   registration.profile.usage_type.clear
 end
 
 Then(/^Clear How did you hear about us\?/) do
-  #logger.step "Clear How did you hear about us?"
   registration.profile.referrer_name.clear if registration.profile.referrer_name.present?
 end
 
 Then(/^Clear 1st Question$/) do
-  #logger.step "Clear 1st Question Selection"
   registration.profile.first_question.clear
 end
 
 Then(/^Clear 2nd Question$/) do
-  #logger.step "Clear 1st Question Selection"
   registration.profile.second_question.clear
 end
-
-
 
 
 Then /^[Ee]xpect WebReg Profile bread crumbs to contain (.*)$/ do |str|
@@ -405,11 +370,11 @@ end
   expect(registration.profile_continue_button.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Profile content under Why do I need to create an account should contain (.*)$/ do |str|
+Then /^[Ee]xpect WebReg Profile content under Why do I need to create an account "([^\"]*)"$/ do |str|
     expect(registration.profile_content_createanaccount).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Profile content under Money-saving offers and new products should contain (.*)$/ do |str|
+Then /^[Ee]xpect WebReg Profile content under Money-saving offers and new products "([^\"]*)"$/ do |str|
   expect(registration.profile_content_money_saving_offers).to eql(str)
 end
 

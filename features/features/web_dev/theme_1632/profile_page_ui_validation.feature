@@ -27,11 +27,11 @@ Feature: WebReg Profile page validation theme_1632
     Then expect WebReg Profile Usage Type list of values to contain Individual/Home Office
     Then expect WebReg Profile promo code textbox exists
     Then expect WebReg Profile CONTINUE button exists
-    Then expect WebReg Profile content under Why do I need to create an account should contain:
+    Then expect WebReg Profile content under Why do I need to create an account
     """
     The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
     """
-    Then expect WebReg Profile content under Money-saving offers and new products should contain:
+    Then expect WebReg Profile content under Money-saving offers and new products
     """
     Send me special money-saving offers and information on new products and services from Stamps.com and its partners
     """
