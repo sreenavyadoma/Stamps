@@ -4,7 +4,7 @@ Feature: WebReg Profile page validation theme_1632
     Given I launched default browser
 
   @profile_page_ui_validation
-  Scenario:
+  Scenario: SDCWR-721 WebReg Profile Page Validation
     Then Load WebReg Profile page
     Then expect WebReg navigation bar Stamps logo exists
     Then expect WebReg navigation bar USPS logo exists
