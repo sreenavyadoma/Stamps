@@ -5,7 +5,6 @@ Feature: Advanced Options BVT
 
   @mail_bvt_advanced_options
   Scenario: Advanced Options BVT
-
     # ------------------------------------------------------------ Stamps Advanced Options
     Then select Print On Stamps
     Then show Advanced Options
