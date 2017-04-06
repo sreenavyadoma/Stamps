@@ -368,13 +368,6 @@ end
 
 
 
-Then /^[Ee]xpect WebReg navigation bar Stamps logo exists$/ do
-   expect(registration.navigation.stamps_logo.present?).to be(true)
-end
-
-Then /^[Ee]xpect WebReg navigation bar USPS logo exists$/ do
-  expect(registration.navigation.usps_logo.present?).to be(true)
-end
 
 Then /^[Ee]xpect WebReg Profile bread crumbs to contain (.*)$/ do |str|
   expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist "
