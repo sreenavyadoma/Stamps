@@ -25,3 +25,4 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
     Then in Print modal, click Print button Sample
     Then in Print modal, click Print button
     Then Sign out
+

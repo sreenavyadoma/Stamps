@@ -5,8 +5,9 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
 
   @mail_print_stamps_regression
   @mail_stamps_series_p_r_s_v_wn
-  Scenario: Stamps Regression Series #P, #R, #S, #V, #WN
 
+  @mail_stamps_series_wn
+  Scenario: Stamps Regression Series #WN
    #mail_print_stamps_wn_series_calculate
     Then select Print On Stamps
     Then set Print form Serial Number to WN1234
@@ -33,6 +34,8 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
+  @mail_stamps_series_v
+  Scenario: Stamps Regression Series #V
    #mail_print_stamps_v_series_calculate
     Then select Print On Stamps
     Then set Print form Serial Number to V12345
@@ -59,6 +62,8 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
+  @mail_stamps_series_r
+  Scenario: Stamps Regression Series #R
     #mail_print_stamps_r_series_calculate
     Then select Print On Stamps
     Then set Print form Serial Number to R12345
@@ -85,6 +90,8 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
+  @mail_stamps_series_s
+  Scenario: Stamps Regression Series #S
     #mail_print_stamps_s_series_calculate
     Then select Print On Stamps
     Then set Print form Serial Number to S12345
@@ -111,6 +118,8 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
 
+  @mail_stamps_series_p
+  Scenario: Stamps Regression Series #P
    #mail_print_stamps_p_series_calculate
     Then select Print On Stamps
     Then set Print form Serial Number to P12345

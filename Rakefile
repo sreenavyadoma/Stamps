@@ -2088,3 +2088,7 @@ Cucumber::Rake::Task.new(:mail_stamps_series_p_r_s_v_wn) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:print_two_up_expanded_fpo_cn22_paper_right) do |t|
+  t.profile = 'print_two_up_expanded_fpo_cn22_paper_right'
+  t.cucumber_opts = "-p cuke_reports"
+end
