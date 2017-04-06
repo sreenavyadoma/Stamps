@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Orders
-    class PrintingOn < Browser::StampsBrowserElement
+    class PrintingOn < Browser::StampsModal
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -45,8 +45,8 @@ module Stamps
           lov_item = selection(media)
           10.times do
             break if text_box.text.include? media
-            drop_down.safe_click unless lov_item.present?
-            lov_item.safe_click
+            drop_down.click unless lov_item.present?
+            lov_item.click
           end
         end unless text_box.text.include? media
       end
@@ -57,12 +57,12 @@ module Stamps
 
         10.times do
           begin
-            drop_down.safe_click unless media_selection.present?
+            drop_down.click unless media_selection.present?
             if media_selection.present?
               tooltip = media_selection.attribute_value "data-qtip"
               logger.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
               if tooltip.include? "<strong>"
-                drop_down.safe_click if media_selection.present?
+                drop_down.click if media_selection.present?
                 return tooltip
               end
             end
@@ -73,7 +73,7 @@ module Stamps
       end
     end
 
-    class Printer < Browser::StampsBrowserElement
+    class Printer < Browser::StampsModal
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -88,15 +88,15 @@ module Stamps
 
           15.times do
             return text_box.text  if text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
+            drop_down.click unless selection_label.present?
+            selection_label.click
           end
           expect("Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.").to eql ""
         end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
       end
     end
 
-    class PaperTray < Browser::StampsBrowserElement
+    class PaperTray < Browser::StampsModal
       attr_reader :drop_down, :text_box
 
       def initialize(param)
@@ -109,15 +109,15 @@ module Stamps
         begin
           selection_label = StampsElement.new browser.li(text: selection)
           5.times{
-            drop_down.safe_click unless selection_label.present?
-            selection_label.safe_click
+            drop_down.click unless selection_label.present?
+            selection_label.click
             break if text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
           }
         end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
       end
     end
 
-    class StartingLabel < Browser::StampsBrowserElement
+    class StartingLabel < Browser::StampsModal
       attr_reader :left_label, :right_label
 
       def initialize(param)
@@ -129,7 +129,7 @@ module Stamps
       def left
         10.times{
           begin
-            left_label.safe_click
+            left_label.click
             break if (left_label.attribute_value "class").include? 'selected'
           rescue
             false
@@ -141,7 +141,7 @@ module Stamps
       def right
         10.times{
           begin
-            right_label.safe_click
+            right_label.click
             break if (right_label.attribute_value "class").include? 'selected'
           rescue
             false
@@ -172,7 +172,7 @@ module Stamps
       end
     end
 
-    class PrintOptions < Browser::StampsBrowserElement
+    class PrintOptions < Browser::StampsModal
       def hide_postage_value
         checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
         verify_field = checkbox_field.parent.parent.parent
@@ -198,7 +198,7 @@ module Stamps
       end
     end
 
-    class LabelUnavailable < Browser::StampsBrowserElement
+    class LabelUnavailable < Browser::StampsModal
       def present?
         browser.div(text: "Label Unavailable").present?
       end
@@ -206,7 +206,7 @@ module Stamps
       def close
         button = StampsElement.new browser.img(css: "img[class*='x-tool-img x-tool-close']")
         10.times do
-          button.safe_click
+          button.click
           break unless button.present?
         end
       end
@@ -214,17 +214,17 @@ module Stamps
       def ok
         button = StampsElement.new browser.span(text: "Ok")
         10.times do
-          button.safe_click
+          button.click
           break unless button.present?
         end
       end
 
       def message
-        element_helper.text (browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last)
+        StampsElement.new(browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last).text
       end
     end
 
-    class UspsTerms < Browser::StampsBrowserElement
+    class UspsTerms < Browser::StampsModal
       attr_reader :i_agree, :cancel
 
       def initialize(param)
@@ -264,19 +264,18 @@ module Stamps
       end
     end
 
-    class DatePicker < Browser::StampsBrowserElement
+    class DatePicker < Browser::StampsModal
 
       def todays_date_div
         browser.div css: "div[title='Today']"
       end
 
-      def date_field day
-        browser.td css: "td[aria-label='#{ParameterHelper.now_plus_month_dd day.to_i}']"
+      def date_field(day)
+        browser.td(css: "td[aria-label='#{ParameterHelper.now_plus_month_dd day.to_i}']")
       end
 
-      def date day
-        date = date_field day
-        element_helper.safe_click date
+      def date(day)
+        StampsElement.new(date_field(day)).click
       end
 
       def present?
@@ -287,8 +286,8 @@ module Stamps
         picker = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
         today = StampsElement.new browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
         10.times {
-          picker.safe_click unless today.present?
-          today.safe_click
+          picker.click unless today.present?
+          today.click
           sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
@@ -299,8 +298,8 @@ module Stamps
         picker = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
         today = StampsElement.new StampsElement.new browser.div css: "div[title=Today]"
         10.times {
-          picker.safe_click unless today.present?
-          today.safe_click
+          picker.click unless today.present?
+          today.click
           sleep(0.35)
           return ParameterHelper.now_plus_mon_dd 0
         }
@@ -326,7 +325,7 @@ module Stamps
         date_field = StampsElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
 
         10.times{
-          picker_button.safe_click unless date_picker_header.present?
+          picker_button.click unless date_picker_header.present?
           sleep(0.35)
 
           if date_field.element.present?
@@ -340,15 +339,15 @@ module Stamps
         }
 
         10.times {
-          picker_button.safe_click unless date_field.present?
-          date_field.safe_click
+          picker_button.click unless date_field.present?
+          date_field.click
           sleep(0.35)
           return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
         }
       end
     end
 
-    class ShipDate < Browser::StampsBrowserElement
+    class ShipDate < Browser::StampsModal
       attr_reader :text_box, :date_picker, :text_box_cc
 
       def initialize(param)
@@ -369,7 +368,7 @@ module Stamps
 
 
 
-    class OrdersPrintModal < Browser::StampsBrowserElement
+    class OrdersPrintModal < Browser::StampsModal
 
       attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options, :window_x_button,
                   :print_sample_button, :printer, :email_tracking_details, :print_envelope_btn, :print_button
@@ -396,7 +395,7 @@ module Stamps
       def click
         starting_label_tag = StampsElement.new(browser.span(text: "Starting Label:"))
         20.times do
-          starting_label_tag.safe_click
+          starting_label_tag.click
         end
       end
 
@@ -405,15 +404,15 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        print_button.safely_wait_until_present *args
+        print_button.wait_until_present(*args)
       end
 
       def print
         15.times do
           begin
-            print_button.safe_click
+            print_button.click
             sleep(0.35)
-            print_button.safe_click
+            print_button.click
             sleep(0.35)
             printing_error = printing_error_check
             return printing_error if printing_error.length > 1
@@ -439,14 +438,12 @@ module Stamps
       end
 
       def title
-        div = browser.div css: "div[id^=printwindow]>div[id^=title]>div[id^=title]"
-        logger.info "Title: #{div}"
-        element_helper.text div
+        StampsElement.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
       end
 
       def print_sample
         begin
-          print_sample_button.safe_click
+          print_sample_button.click
           printing_error_check
         rescue
           #ignroe
@@ -476,12 +473,9 @@ module Stamps
         end
       end
 
+      # todo-rob Test Print Total cost
       def total_cost
-        ParameterHelper.remove_dollar_sign(element_helper.text(total_label, "total")).to_f.round(2)
-      end
-
-      def total_label
-        browser.label(text: 'Total Cost:').parent.labels.last
+        ParameterHelper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
       end
 
       def check_naws_plugin_error
@@ -491,12 +485,7 @@ module Stamps
             @printing_error = true
             ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
             logger.info "-- Chrome NAWS Plugin Error --"
-            ptags.each {|p_tag|
-              if p_tag.present?
-                p_tag_text = element_helper.text p_tag
-                logger.info "\n#{p_tag_text}"
-              end
-            }
+            ptags.each do |p_tag| logger.info "\n#{StampsElement.new(p_tag).text}" end
             logger.info "-- Chrome NAWS Plugin Error --"
             if error_ok_button.present?
               error_message = self.error_message
@@ -532,9 +521,9 @@ module Stamps
 
         if ok_button.present?
           logger.info "Error Window OK button"
-          ok_button.safe_click
-          ok_button.safe_click
-          ok_button.safe_click
+          ok_button.click
+          ok_button.click
+          ok_button.click
         end
         @printing_error
       end
@@ -556,7 +545,7 @@ module Stamps
       end
 
       def click_print_button
-        element_helper.safe_click print_button
+        print_button.click
       end
 
     end
@@ -569,8 +558,8 @@ module Stamps
       def reprint
         button = StampsElement.new browser.span(id: "sdc-printwin-printbtn-btnInnerEl")
         10.times do
-          button.safe_click
-          button.safe_click
+          button.click
+          button.click
           break unless present?
         end
       end

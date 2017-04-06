@@ -1,6 +1,6 @@
 module Stamps
   class StampsLogger
-    def initialize *args
+    def initialize(*args)
       case args.length
         when 0
           @test_name = ""

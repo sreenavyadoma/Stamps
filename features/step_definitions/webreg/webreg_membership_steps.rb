@@ -1,7 +1,6 @@
 
 Then /^(?:S|s)et WebReg Membership page State to Armed Forces Americas$/ do
-  #logger.step "set WebReg Membership page State to AA Armed Forces Americas"
-  webreg.profile.membership.state.armed_forces_americas
+  registration.profile.membership.state.armed_forces_americas
 end
 
 Then /^(?:S|s)et WebReg Membership page State to Armed Forces$/ do
@@ -97,6 +96,8 @@ end
 Then /^(?:S|s)et WebReg Membership page State to Iowa$/ do
   #logger.step "set WebReg Membership page State to Iowa"
   webreg.profile.membership.state.iowa
+Then /^[Oo]n WebReg Membership page, set State to Iowa$/ do
+  registration.profile.membership.state.iowa
 end
 
 Then /^(?:S|s)et WebReg Membership page State to Idaho$/ do
@@ -147,6 +148,8 @@ end
 Then /^(?:S|s)et WebReg Membership page State to Marshall Islands$/ do
   #logger.step "set WebReg Membership page State to Marshall Islands"
   webreg.profile.membership.state.marshall_islands
+Then /^[Oo]n WebReg Membership page, set State to Marshall Islands$/ do
+  registration.profile.membership.state.marshall_islands
 end
 
 Then /^(?:S|s)et WebReg Membership page State to Minnesota$/ do
@@ -495,96 +498,94 @@ Then /^(?:O|o)n WebReg Membership page, click Submit and correct errors$/ do
   end
 end
 
-#Added by Galina
-
-Then(/^(?:O|o)n WebReg Membership page, expect First Name Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect First Name Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect First Name Help Block is #{expectation}"
-  help_text = webreg.profile.membership.first_name.help_text
+  help_text = registration.profile.membership.first_name.help_text
   expect(help_text).to eql expectation
   end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Last Name Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Last Name Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Last Name Help Block is #{expectation}"
-  help_text = webreg.profile.membership.last_name.help_text
+  help_text = registration.profile.membership.last_name.help_text
   expect(help_text).to eql expectation
   end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Address Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Address Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Address Help Block is #{expectation}"
-  help_text = webreg.profile.membership.address.help_text
+  help_text = registration.profile.membership.address.help_text
   expect(help_text).to eql expectation
   end
 
-Then(/^(?:O|o)n WebReg Membership page, expect City Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect City Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect City Help Block is #{expectation}"
-  help_text = webreg.profile.membership.city.help_text
+  help_text = registration.profile.membership.city.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect State Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect State Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect State Help Block is #{expectation}"
-  help_text = webreg.profile.membership.state.help_text
+  help_text = registration.profile.membership.state.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Phone Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Phone Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Phone Help Block is #{expectation}"
-  help_text = webreg.profile.membership.phone.help_text
+  help_text = registration.profile.membership.phone.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Cardhoder name Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Cardhoder name Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Cardholder name Help Block is #{expectation}"
-  help_text = webreg.profile.membership.card_holder_name.help_text
+  help_text = registration.profile.membership.card_holder_name.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Card number Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Card number Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, expect Card number Help Block is #{expectation}"
-  help_text = webreg.profile.membership.card_number.help_text
+  help_text = registration.profile.membership.card_number.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, Expires Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, Expires Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Expires Help Block is #{expectation}"
-  help_text = webreg.profile.membership.expiration_month.help_text
+  help_text = registration.profile.membership.expiration_month.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Billing Address Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Billing Address Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Billing Address Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_address.help_text
+  help_text = registration.profile.membership.billing_address.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Billing City Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Billing City Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Billing City Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_city.help_text
+  help_text = registration.profile.membership.billing_city.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Billing State Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Billing State Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Billing State Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_state.help_text
+  help_text = registration.profile.membership.billing_state.help_text
   expect(help_text).to eql expectation
 end
 
 
-Then(/^(?:O|o)n WebReg Membership page, expect Billing Zip Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Billing Zip Help Block is (.*)$/) do |expectation|
  #logger.step "On WebReg Membership page, Billing Zip Help Block is #{expectation}"
-  help_text = webreg.profile.membership.billing_zip.help_text
+  help_text = registration.profile.membership.billing_zip.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, expect Terms & Conditions Help Block is (.*)$/) do |expectation|
+Then(/^[Oo]n WebReg Membership page, expect Terms & Conditions Help Block is (.*)$/) do |expectation|
   #logger.step "On WebReg Membership page, Terms & Conditions Help Block is #{expectation}"
-  help_text = webreg.profile.membership.terms_and_conditions.help_text
+  help_text = registration.profile.membership.terms_and_conditions.help_text
   expect(help_text).to eql expectation
 end
 
-Then(/^(?:O|o)n WebReg Membership page, Tab$/) do
+Then(/^[Oo]n WebReg Membership page, Tab$/) do
   #logger.step "On WebReg Membership page, Tab"
-  webreg.profile.membership.tab
+  registration.profile.membership.tab
 end
 
 

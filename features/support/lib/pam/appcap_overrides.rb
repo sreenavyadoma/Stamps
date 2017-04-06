@@ -1,7 +1,7 @@
 module Stamps
   module Pam
 
-    class AppCapOverridesConfirmation < Browser::StampsBrowserElement
+    class AppCapOverridesConfirmation < Browser::StampsModal
       attr_reader :title, :ok_button
 
       def initialize(param)
@@ -24,7 +24,7 @@ module Stamps
       end
     end
 
-    class InternetPostagePrinting < Browser::StampsBrowserElement
+    class InternetPostagePrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=IBIP][value=On]').set
       end
@@ -38,7 +38,7 @@ module Stamps
       end
     end
 
-    class NetStampsPrinting < Browser::StampsBrowserElement
+    class NetStampsPrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=NS][value=On]').set
       end
@@ -52,7 +52,7 @@ module Stamps
       end
     end
 
-    class ShippingLabelPrinting < Browser::StampsBrowserElement
+    class ShippingLabelPrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=SL][value=On]').set
       end
@@ -66,7 +66,7 @@ module Stamps
       end
     end
 
-    class InternationalShipping < Browser::StampsBrowserElement
+    class InternationalShipping < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=IntlShipping][value=On]').set
       end
@@ -80,7 +80,7 @@ module Stamps
       end
     end
 
-    class AllowHighRiskCountries < Browser::StampsBrowserElement
+    class AllowHighRiskCountries < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
       end
@@ -94,7 +94,7 @@ module Stamps
       end
     end
 
-    class MailingLabelPrinting < Browser::StampsBrowserElement
+    class MailingLabelPrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
       end
@@ -108,7 +108,7 @@ module Stamps
       end
     end
 
-    class AppCapOverrides < Browser::StampsBrowserElement
+    class AppCapOverrides < Browser::StampsModal
       attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
                   :mailing_label_printing, :submit_button, :appcap_overrides
 
@@ -130,7 +130,7 @@ module Stamps
 
       def submit
         5.times do
-          submit_button.safe_click
+          submit_button.click
           if appcap_overrides.present?
             logger.message appcap_overrides.text
             logger.message appcap_overrides.text

@@ -1,6 +1,6 @@
 module Stamps
-  module WebReg
-    class State < Browser::StampsBrowserElement
+  module Registration
+    class State < Browser::StampsModal
       def select state
         begin
           browser.select_list(:id, "state").option(text: state).when_present.select
@@ -258,18 +258,13 @@ module Stamps
         select "WY Wyoming"
       end
 
-      #Added by Galina
-       def help_element
-          browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(6)>div>span")
-        end
-
-        def help_text
-          element_helper.text help_element
-        end
+      def help_text
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(6)>div>span")).text
+      end
     end
 
 
-    class ExpirationMonth < Browser::StampsBrowserElement
+    class ExpirationMonth < Browser::StampsModal
       def select month
         begin
           browser.select_list(:id, "ccMonth").option(text: month).when_present.select
@@ -327,18 +322,13 @@ module Stamps
         select "Dec (12)"
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(3)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(3)>div>span")).text
       end
 
     end
 
-    class ExpirationYear < Browser::StampsBrowserElement
+    class ExpirationYear < Browser::StampsModal
       def select year
         begin
           browser.select_list(:id, "ccYear").option(text: year).when_present.select
@@ -349,7 +339,7 @@ module Stamps
       end
     end
 
-    class TermsAndConditions < Browser::StampsBrowserElement
+    class TermsAndConditions < Browser::StampsModal
       attr_reader :checkbox
       def initialize(param)
         super(param)
@@ -370,23 +360,18 @@ module Stamps
         end
       end
 
-      # Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_terms]>div>div>div>div>span.help-block")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_terms]>div>div>div>div>span.help-block")).text
       end
     end
 
-    class UserIdTaken < Browser::StampsBrowserElement
+    class UserIdTaken < Browser::StampsModal
       def present?
         (browser.h3 text: "User ID Taken").present?
       end
 
       def message
-        element_helper.text ((browser.ps id: "topMessage").last)
+        StampsElement.new(((browser.ps id: "topMessage").last)).text
       end
 
       def user_id
@@ -398,7 +383,7 @@ module Stamps
       end
     end
 
-    class MembershipError < Browser::StampsBrowserElement
+    class MembershipError < Browser::StampsModal
       attr_reader :title, :top_message, :error_code, :error_description
 
       def initialize(param)
@@ -414,7 +399,7 @@ module Stamps
       end
     end
 
-    class WebRegError < Browser::StampsBrowserElement
+    class WebRegError < Browser::StampsModal
       def present?
         browser.text.include? "An Error Occurred"
 
@@ -427,7 +412,7 @@ module Stamps
       end
     end
 
-    class WebRegSecureConnectionFailed < Browser::StampsBrowserElement
+    class WebRegSecureConnectionFailed < Browser::StampsModal
       def present?
         browser.text.include? "Secure Connection Failed"
       end
@@ -457,92 +442,55 @@ module Stamps
       end
     end
 
-    #Added by Galina
     class MembershipFirstName < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(1)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(1)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipLastName < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(2)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(2)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipAddress < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(4)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(4)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipCity < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_personalinfo]>div>:nth-child(5)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipCardHolderName < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(1)>div>span")).text
       end
     end
 
     class MembershipCardName< StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(2)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(2)>div>span")).text
       end
     end
 
     class MembershipBillingAddress < StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(6)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(6)>div>span")).text
       end
     end
 
     class MembershipBillingCity< StampsTextbox
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(7)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(7)>div>span")).text
       end
     end
 
-    class BillingState < Browser::StampsBrowserElement
+    class BillingState < Browser::StampsModal
       def select state
         begin
           browser.select_list(:id, "billingState").option(text: state).when_present.select
@@ -800,24 +748,14 @@ module Stamps
         select "WY Wyoming"
       end
 
-      #Added by Galina
-      def help_element
-        browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(8)>div>span")
-      end
-
       def help_text
-        element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(8)>div>span")).text
       end
     end
 
-    #Added by Galina
     class MembershipBillingZip < StampsTextbox
-      def help_element
-      browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(9)>div>span")
-      end
-
       def help_text
-      element_helper.text help_element
+        StampsElement.new(browser.span(css: "li[class*=webreg_creditcard]>div>:nth-child(9)>div>span")).text
       end
     end
 
@@ -826,7 +764,7 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @help_element = StampsElement.new browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span')
+        @help_element = StampsElement.new(browser.span(css: 'li.webreg_creditcard>div>div:nth-child(2)>div>span'))
       end
 
       def help_text
@@ -838,7 +776,7 @@ module Stamps
       end
     end
 
-    class Membership < Browser::StampsBrowserElement
+    class Membership < Browser::StampsModal
 
       attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone, :ext, :card_holder_name,
                   :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions, :back,
@@ -866,7 +804,6 @@ module Stamps
         checkbox_field = browser.input id: "useMailingAddressForBilling"
         @billing_same_as_mailing = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
 
-        #Added by Galina
         @billing_address = MembershipBillingAddress.new browser.text_field(id: "billingStreet")
         @billing_city = MembershipBillingAddress.new browser.text_field(id: "City")
         @billing_state = BillingState.new(param)
@@ -875,7 +812,7 @@ module Stamps
         @terms_and_conditions = TermsAndConditions.new(param)
         @back = StampsElement.new browser.button(id: "prev")
 
-        @submit_button = StampsElement.new browser.button(text: "Submit") #Change by Galina from "Submit"
+        @submit_button = StampsElement.new(browser.button(text: "Submit"))
         @supplies = ChooseSupplies.new(param)
         @userid_taken = UserIdTaken.new(param)
         @download_page = DownloadPage.new(param)
@@ -908,7 +845,7 @@ module Stamps
           submit
 
           loading.wait_until_present 3
-          page_header.safely_wait_until_present 3
+          page_header.wait_until_present 3
 
           if phone.has_error?
             err_text = phone.help_text
@@ -938,9 +875,9 @@ module Stamps
       end
 
       def submit
-        submit_button.safely_wait_until_present 6
+        submit_button.wait_until_present 6
         expect(submit_button.present?).to be(true)
-        submit_button.safe_click
+        submit_button.click
         submit_button.send_keys(:enter)
       end
 

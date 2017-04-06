@@ -1,13 +1,13 @@
 module Stamps
   module Pam
-    class PamPageHeader < Browser::StampsBrowserElement
+    class PamPageHeader < Browser::StampsModal
       def change_meter_limit
         link = Stamps::Browser::StampsElement.new browser.a(text: "Change Meter Limit")
         meter_limit_page = ChangeMeterLimit.new(param)
         change_meter_limit_header = Browser::StampsElement.new browser.td(text: "Change Meter Limit")
         5.times do
-          link.safe_click
-          change_meter_limit_header.safely_wait_until_present 4
+          link.click
+          change_meter_limit_header.wait_until_present 4
           return meter_limit_page if meter_limit_page.present?
         end
       end
@@ -16,8 +16,8 @@ module Stamps
         ach_credit_link = Stamps::Browser::StampsElement.new browser.a(text: "ACH Credit")
         ach_credit_page = ACHCredit.new(param)
         5.times do
-          ach_credit_link.safely_wait_until_present 4
-          ach_credit_link.safe_click
+          ach_credit_link.wait_until_present 4
+          ach_credit_link.click
           return ach_credit_page if ach_credit_page.present?
         end
       end
@@ -26,14 +26,14 @@ module Stamps
         link = Stamps::Browser::StampsElement.new browser.a(text: "AppCap Overrides")
         page = AppCapOverrides.new(param)
         5.times do
-          link.safe_click
+          link.click
           sleep(0.35)
           return page if page.present?
         end
       end
     end
 
-    class CustomerProfile < Browser::StampsBrowserElement
+    class CustomerProfile < Browser::StampsModal
       def present?
         browser.b(text: "Available Postage").present?
       end

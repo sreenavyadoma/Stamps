@@ -1,12 +1,12 @@
 module Stamps
   module Mail
-    class ForgotPasswordModal < Browser::StampsBrowserElement
+    class ForgotPasswordModal < Browser::StampsModal
       def window_x_button
         StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']")[0])
       end
 
       def close_window
-        element_helper.safe_click window_x_button
+        window_x_button.click
       end
 
       def x_button_present?

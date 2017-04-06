@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class USPSCheckbox < Browser::StampsBrowserElement
+    class USPSCheckbox < Browser::StampsModal
       def check
         browser.checkbox(name: 'USPSApproved').set
         browser.checkbox(name: 'USPSApproved').set
@@ -13,7 +13,7 @@ module Stamps
       end
     end
 
-    class ChangeMeterLimit < Browser::StampsBrowserElement
+    class ChangeMeterLimit < Browser::StampsModal
       attr_reader :usps_approval, :new_meter_limit, :current_meter, :maximum_meter
 
       def initialize(param)
@@ -41,7 +41,7 @@ module Stamps
         change_success = ChangeMeterLimitSuccess.new(param)
         5.times do
           button.send_keys(:enter)
-          button.safe_click
+          button.click
           change_success.wait_until_present 3
           if change_success.present?
             logger.info change_success.text
@@ -51,13 +51,13 @@ module Stamps
       end
     end
 
-    class ChangeMeterLimitSuccess < Browser::StampsBrowserElement
+    class ChangeMeterLimitSuccess < Browser::StampsModal
       def present?
         browser.td(text: "Change Meter Limit Success").present?
       end
 
-      def wait_until_present *args
-        (StampsElement.new browser.td(text: "Change Meter Limit Success")).safely_wait_until_present *args
+      def wait_until_present(*args)
+        (StampsElement.new browser.td(text: "Change Meter Limit Success")).wait_until_present(*args)
       end
 
       def text
@@ -68,8 +68,8 @@ module Stamps
         profile = CustomerProfile.new(param)
         button = StampsElement.new browser.a(css: "a[href^=Profile]")
         5.times do
-          button.safely_wait_until_present 2
-          button.safe_click
+          button.wait_until_present 2
+          button.click
           return profile if profile.present?
         end
       end

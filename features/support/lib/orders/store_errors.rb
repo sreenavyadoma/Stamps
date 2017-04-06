@@ -1,13 +1,13 @@
 module Stamps
   module Orders
     module Stores
-      class ServerError < Browser::StampsBrowserElement
+      class ServerError < Browser::StampsModal
         def present?
           browser.div(text: "Server Error").present?
         end
 
         def message
-          element_helper.text browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
         end
 
         def ok
