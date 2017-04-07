@@ -93,6 +93,7 @@ Then /^Filter Panel: Search results should be more than (\d*)$/ do |count|
 end
 
 Then /^Filter Panel: Search Results should be present$/ do
+  sleep 1
   expect(stamps.orders.filter_panel.search_results.present?).to be(true)
 end
 
