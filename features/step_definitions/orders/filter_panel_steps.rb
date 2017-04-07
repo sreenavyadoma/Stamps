@@ -56,7 +56,7 @@ end
 Then /^(?:I|i)n left Filter Panel, expect saved Order ID exist in (.*)$/ do |filter|
   50.times do
     step "in left Filter Panel, select #{filter}"
-    sleep(0.25);
+    sleep(0.25)
     break if stamps.orders.orders_grid.column.order_id.row_num(test_parameter[:order_id]) > 0
   end
   expect(stamps.orders.orders_grid.column.order_id.row_num(test_parameter[:order_id])).to be > 0
@@ -67,7 +67,7 @@ Then /^Filter Panel: Search saved Order ID$/ do
 end
 
 Then /^Filter Panel: Search saved Ship Name$/ do
-  step "Filter Panel: Search for #{test_parameter[:name]}"
+   step "Filter Panel: Search for #{test_parameter[:name]}"
 end
 
 Then /^Filter Panel: Search saved Ship Company$/ do
@@ -79,7 +79,7 @@ Then /^Filter Panel: Search saved Email$/ do
 end
 
 Then /^Filter Panel: Search for (.*)$/ do |str|
-  expect(str).to be_truthy
+  expect(str.nil?).to be(false), "Search string can not be nil"
   test_parameter[:orders_search_str] = str
   stamps.orders.filter_panel.search_orders test_parameter[:orders_search_str]
 end
