@@ -65,9 +65,9 @@ Feature: WebReg Membership page validation theme_1632
     """
     Then expect WebReg Membership Bonus Offer Details link exists
       and is clickable
-    Then expect WebReg Membership Privacy Policy link exists
-      and is clickable
-    Then expect WebReg Membership copyright link exists
+    Then expect WebReg Profile Privacy Policy link exists
+  and is clickable
+    Then expect WebReg Profile copyright link exists
     Then expect WebReg Profile Norton logo exists
     Then expect WebReg Profile TRUSTe logo exists
     Then expect WebReg Profile LIVE chat button exists
