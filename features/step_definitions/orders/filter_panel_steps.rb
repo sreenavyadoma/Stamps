@@ -98,6 +98,7 @@ Then /^Filter Panel: Search Results should be present$/ do
 end
 
 Then /^Filter Panel: Search Results should not be present$/ do
+  sleep 1
   expect(stamps.orders.filter_panel.search_results.present?).to be(false)
 end
 
