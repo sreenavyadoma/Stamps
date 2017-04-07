@@ -1,10 +1,6 @@
 
 
 
-Then /^[Oo]n WebReg Profile page, continue to Membership page$/ do
-  registration.profile.continue_button
-end
-
 Then /^[Ss]et WebReg Membership first name text box to (.*)$/ do |firstname|
   registration.membership.first_name.set firstname
 end
@@ -53,7 +49,7 @@ Then /^[Ss]et WebReg Membership year to (.*)$/ do |year|
   registration.membership.year.set year
 end
 
-Then /^[Ss]et set WebReg Membership billing address same as mailing address$/ do
+Then /^[Ss]et WebReg Membership billing address same as mailing address$/ do
   registration.membership.billingadd_same_as_mailingadd
 end
 
@@ -69,15 +65,11 @@ Then /^[Oo]n WebReg ATG page continue to WebReg Security questions page$/ do
   registration.membership.atg_placeorderbutton
 end
 
-Then /^[Ee]xpect WebReg navigation bar Stamps logo exists$/ do
-  expect(registration.navigation.stamps_logo.present?).to be (true)
-end
-
-Then /^[Ee]xpect WebReg navigation bar USPS logo exists$/ do
-  expect(registration.navigation.usps_logo.present?).to be (true)
+Then /^[Ee]xpect WebReg Securityquestions first secret question dropup to contain (.*)$/ do |str|
+  registration.firstsecretquestion.
 end
 
 
-
+Then /^[Ss]et WebReg Profile Usage Type list of values to contain (.*)$/ do |str|
 
 

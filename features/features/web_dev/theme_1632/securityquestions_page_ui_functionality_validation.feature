@@ -8,16 +8,10 @@ Feature: WebReg Security questions page validation theme_1632
     Then Load WebReg Profile page
     Then set WebReg Profile email to email
     Then set WebReg Profile username to username
-#
-    Then set WebReg Profile password textbox to password
-#
-#
-    Then set WebReg Profile email to email
     Then set WebReg Profile password to password
-#
     Then set WebReg Profile retype password textbox to password
     Then set WebReg Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-    Then on WebReg Profile page continue to Membership page
+    Then on WebReg Profile page, continue to Membership page
     Then set WebReg Membership first name text box to firstname
     Then set WebReg Membership last name text box to lastname
     Then set WebReg Membership company text box to company
