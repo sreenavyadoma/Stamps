@@ -44,13 +44,13 @@ Then /^WebReg: Save password to parameter file(?:| (.*))$/ do |filename|
 end
 
 Then /^WebReg: Store username to data file(?:| (.*))$/ do |filename|
-  data_file = (filename.nil?)? webreg_data_store_filename : webreg_data_store_filename(filename)
-  logger.message "WebReg: Store username to data file: #{data_file}"
-  sleep(2)
-  if File.exist? data_file
-    expect(test_parameter[:usr]).to be_truthy
-    File.open(data_file, 'a+') {|f| f.write("#{test_parameter[:usr]}\n")} unless File.readlines(data_file).to_s.include? test_parameter[:usr]
-  else
-    File.open(data_file, 'w+') {|f| f.write("#{test_parameter[:usr]}\n")}
+    data_file = (filename.nil?)? webreg_data_store_filename : webreg_data_store_filename(filename)
+    logger.message "WebReg: Store username to data file: #{data_file}"
+    sleep(2)
+    if File.exist? data_file
+      expect(test_parameter[:usr]).to be_truthy
+      File.open(data_file, 'a+') {|f| f.write("#{test_parameter[:usr]}\n")} unless File.readlines(data_file).to_s.include? test_parameter[:usr]
+    else
+      File.open(data_file, 'w+') {|f| f.write("#{test_parameter[:usr]}\n")}
   end
 end
