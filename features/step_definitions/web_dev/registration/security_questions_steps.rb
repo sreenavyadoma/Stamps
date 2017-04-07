@@ -61,15 +61,35 @@ Then /^[Oo]n WebReg Membership page continue to Choose Supplies page$/ do
   registration.membership.submit_button
 end
 
+Then /^[Ee]xpect WebReg Security questions header contain (.*)$/ do |str|
+  expect(registration.securityquestion.header).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Security questions subheader contain (.*)$/ do |str|
+  expect(registration.securityquestion.subheader).to eql(str)
+end
+
+
+Then /^[Ee]xpect WebReg Security questions header contain (.*)$/ do |str|
+  expect(registration.securityquestion.header).to eql(str)
+end
+
+
 Then /^[Oo]n WebReg ATG page continue to WebReg Security questions page$/ do
   registration.membership.atg_placeorderbutton
 end
 
 Then /^[Ee]xpect WebReg Securityquestions first secret question dropup to contain (.*)$/ do |str|
-  registration.firstsecretquestion.
+  expect(registration.securityquestion.firstsecret_question_dropup). to eql(str)
 end
 
+Then /^[Ee]xpect WebReg Securityquestions second secret question dropup to contain (.*)$/ do |str|
+  expect(registration.securityquestion.secondsecret_question_dropup). to eql(str)
+end
 
-Then /^[Ss]et WebReg Profile Usage Type list of values to contain (.*)$/ do |str|
+Then /^[Ex]xpect WebReg Securityquestions get started button exists/ do
+  registration.securityquestion.getstarted_button
+end
+
 
 

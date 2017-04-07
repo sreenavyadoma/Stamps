@@ -49,10 +49,9 @@ Feature: WebReg Security questions page validation theme_1632
     Then expect WebReg Securityquestions second secret question dropup to contain what is the name of your first school?
     Then expect WebReg Securityquestions second secret question dropup to contain what is the make and model of your first car?
     Then expect WebReg Securityquestions get started button exists
-    Then expect WebReg Membership Privacy Policy link exists
-#  and is clickable
-    Then expect WebReg Membership copyright link exists
-#  and is clickable
+
+    Then expect WebReg Profile Privacy Policy link exists
+    Then expect WebReg Profile copyright link exists
     Then expect WebReg Profile Norton logo exists
     Then expect WebReg Profile TRUSTe logo exists
     Then expect WebReg Profile LIVE chat button exists
