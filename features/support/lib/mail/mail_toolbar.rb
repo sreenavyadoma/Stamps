@@ -2,7 +2,7 @@ module Stamps
   module Mail
     class MailToolbar < Browser::StampsModal
       attr_reader :total, :mail_print_modal, :confirm_window, :please_wait, :windows_print, :sample_button, :printing_problem, :insufficient_funds,
-                  :print_label, :print_stamps, :print_envelope
+                  :print_label, :print_stamps, :print_envelope, :print_quantity_warning
 
       def initialize(param)
         super(param)
@@ -14,6 +14,7 @@ module Stamps
         @sample_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)
+        @print_quantity_warning = PrintQuantityWarning.new(param)
       end
 
       def print_button
@@ -54,7 +55,26 @@ module Stamps
         10.times do
           begin
             print_button.click
+
             window.wait_until_present(2)
+
+            #check for quantity dialog box to appear
+            # if quantity dialog box is present, click Agree and something
+
+            if print_quantity_warning.present?
+              5.times {
+              print_quantity_warning.agree_and_continue_btn
+              sleep(0.120)
+              agree_and_continue_btn.click
+              }
+            end
+
+
+
+
+
+
+
 
             if please_wait.present?
               logger.message(please_wait.paragraph)
