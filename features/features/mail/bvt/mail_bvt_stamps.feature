@@ -8,7 +8,7 @@ Feature: Print form BVT
   Scenario: Print form Specify Postage
     Then select Print On Stamps
 
-    Then set Print form Serial Number to random C series
+    Then set Print form Serial Number to C12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then select Print form service Media Mail
@@ -19,7 +19,7 @@ Feature: Print form BVT
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-    Then set Print form Serial Number to random B series
+    Then set Print form Serial Number to B12345
     Then select Advanced Options Calculate Postage Amount
     Then set Print form Mail-From to default
     Then set Print form Ounces to 1
