@@ -285,9 +285,18 @@ Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
 end
 
 Then /^[Ss]et Order Details form Ship-To to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  test_parameter[:address] = address_helper(address)
+  address = address_helper_zone(address)
+
+  test_parameter[:street_address] = address['street_address']
+  test_parameter[:city] = address['city']
+  test_parameter[:state] = address['state']
+  test_parameter[:zip] = address['zip']
+  test_parameter[:name] = address['name']
+  test_parameter[:company] = address['company']
+  test_parameter[:ship_to_domestic] = ParameterHelper.format_address(address)
+
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.set(test_parameter[:address])
+  stamps.orders.order_details.ship_to.domestic.set(test_parameter[:ship_to_domestic])
   step "Save Order Details data"
 end
 

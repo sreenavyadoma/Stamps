@@ -134,43 +134,38 @@ module Stamps
     @param
   end
 
-  def address_helper(zone)
+  def address_helper_zone(zone)
     case zone.downcase
       when /zone 1 (?:through|and) 4/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_1_4)
+        ParameterHelper.rand_zone_1_4
       when /zone 5 (?:through|and) 8/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_5_8)
+        ParameterHelper.rand_zone_5_8
       when /zone 1/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_1)
+        ParameterHelper.rand_zone_1
       when /zone 2/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_2)
+        ParameterHelper.rand_zone_2
       when /zone 3/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_3)
+        ParameterHelper.rand_zone_3
       when /zone 4/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_4)
+        ParameterHelper.rand_zone_4
       when /zone 5/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_5)
+        ParameterHelper.rand_zone_5
       when /zone 6/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_6)
+        ParameterHelper.rand_zone_6
       when /zone 7/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_7)
+        ParameterHelper.rand_zone_7
       when /zone 8/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_8)
+        ParameterHelper.rand_zone_8
       when /zone 9/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_9)
+        ParameterHelper.rand_zone_9
       else
-        test_parameter[:ship_to_domestic] = ParameterHelper.format_address(zone)
-        return test_parameter[:ship_to_domestic]
+        return zone
     end
+  end
 
-    test_parameter[:street_address] = address['street_address']
-    test_parameter[:city] = address['city']
-    test_parameter[:state] = address['state']
-    test_parameter[:zip] = address['zip']
-    test_parameter[:name] = address['name']
-    test_parameter[:company] = address['company']
-    test_parameter[:ship_to_domestic] = ParameterHelper.format_address(address)
-    test_parameter[:ship_to_domestic]
+  def address_helper(zone)
+    return ParameterHelper.format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
+    return ParameterHelper.format_address(zone)
   end
 
   def logger

@@ -19,7 +19,7 @@ require 'open3'
 require 'yaml'
 require 'spreadsheet'
 require 'measured'
-require 'holidays'
+
 
 # Print form module
 require_relative 'lib/core/helpers'
