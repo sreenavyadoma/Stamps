@@ -19,5 +19,3 @@ Feature: Set Print Ship Date to Today
     Then expect Orders Grid Ship Date for this order is today
     Then expect Orders Grid Date Printed for this order is today
     Then Sign out
-
-

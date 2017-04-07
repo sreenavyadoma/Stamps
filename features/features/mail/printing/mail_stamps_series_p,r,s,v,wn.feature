@@ -1,10 +1,11 @@
+
+@mail_stamps_series_p_r_s_v_wn
 Feature: Stamps Series #P, #R, #S, #V, #WN
 
   Background:
     Given a valid user is signed in to Web Apps
 
   @mail_print_stamps_regression
-  @mail_stamps_series_p_r_s_v_wn
 
   @mail_stamps_series_wn
   Scenario: Stamps Regression Series #WN
