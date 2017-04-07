@@ -7,7 +7,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
 
   @mail_print_stamps_regression
   @mail_stamps_series_p_r_s_v_wn
-  @mail_stamps_series_wn
+
   Scenario: Stamps Regression Series #WN
    #mail_print_stamps_wn_series_calculate
     Then select Print On Stamps
@@ -35,7 +35,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-  @mail_stamps_series_v
+
   Scenario: Stamps Regression Series #V
    #mail_print_stamps_v_series_calculate
     Then select Print On Stamps
