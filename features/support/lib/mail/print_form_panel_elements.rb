@@ -64,21 +64,25 @@ module Stamps
               selected_sub_str = 'Envelope - #12'
               element = browser.lis(css: "li[class*=iconEnvelope]")[7]
             when /SDC-3610/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails
               selected_sub_str = 'SDC-3610'
               element = browser.lis(css: "li[class*=iconCertified]")[0]
             when /SDC-3710/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails
               selected_sub_str = 'SDC-3710'
               element = browser.lis(css: "li[class*=iconCertified]")[1]
             when /SDC-3910/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails_3910_3930
               selected_sub_str = 'SDC-3910'
               element = browser.lis(css: "li[class*=iconCertified]")[2]
-            when /SDC-3810/
-              param.print_media = :envelopes
-              selected_sub_str = 'SDC-3810'
+            when /SDC-3930/
+              param.print_media = :certified_mails_3910_3930
+              selected_sub_str = 'SDC-3930'
               element = browser.lis(css: "li[class*=iconCertified]")[3]
+            when /SDC-3810/
+              param.print_media = :certified_mails_3810
+              selected_sub_str = 'SDC-3810'
+              element = browser.lis(css: "li[class*=iconCertified]")[4]
             when /Roll - 4" x 6"/
               param.print_media = :rolls
               selected_sub_str = 'Roll - 4'
@@ -111,7 +115,7 @@ module Stamps
             end
             sleep(0.15)
           end
-          expect(text_box.text).to include(selected_sub_str)
+          expect(text_box.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{text_box.text}\""
           param.print_media
         end
 

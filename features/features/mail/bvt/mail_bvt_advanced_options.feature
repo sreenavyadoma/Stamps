@@ -6,20 +6,194 @@ Feature: Advanced Options BVT
   @mail_bvt_advanced_options
   Scenario: Advanced Options BVT
 
+    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3810
+    Then select Print On Certified Mail #11 Envelope - Stamps.com SDC-3810
+
+    Then expect Print Form Certified Mail is checked
+    Then expect Print Form Certified Mail is present
+
+    Then expect Print Form Return Receipt is present
+    Then expect Print Form Return Receipt is checked
+
+    Then expect Print Form Electronic Return Receipt is present
+    Then check Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is checked
+    Then uncheck Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is unchecked
+
+    Then expect Advanced Options Restricted Delivery is present
+    Then check Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is checked
+    Then uncheck Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is unchecked
+
+    Then expect Advanced Options Mail Date field is present
+
+    # Reference Number Textbox
+    Then expect Advanced Options Reference Number field is present
+    Then set Advanced Options Reference Number to random string
+    Then expect Advanced Options Reference Number is correct
+
+    # Cost Code Textbox
+    Then expect Advanced Options Cost Code Field is present
+    Then set Advanced Options Cost Code to None
+    Then expect Advanced Options Cost Code is None
+
+    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3610
+    Then select Print On Certified Mail Label - SDC-3610
+
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To to a random address in zone 1
+    Then select Print form service PM Package
+
+    Then show Advanced Options
+
+    Then expect Print Form Certified Mail is checked
+    Then expect Print Form Certified Mail is present
+
+    Then expect Print Form Return Receipt is not visible
+
+    Then expect Print Form Electronic Return Receipt is present
+    Then check Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is checked
+    Then uncheck Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is unchecked
+
+    Then expect Advanced Options Restricted Delivery is present
+    Then check Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is checked
+    Then uncheck Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is unchecked
+
+    Then expect Advanced Options Mail Date field is present
+
+    # Reference Number Textbox
+    Then expect Advanced Options Reference Number field is present
+    Then set Advanced Options Reference Number to random string
+    Then expect Advanced Options Reference Number is correct
+
+    # Cost Code Textbox
+    Then expect Advanced Options Cost Code Field is present
+    Then set Advanced Options Cost Code to None
+    Then expect Advanced Options Cost Code is None
+
+    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3710
+    Then select Print On Stamps.com SDC-3710
+
+    Then show Advanced Options
+
+    Then expect Print Form Certified Mail is checked
+    Then expect Print Form Certified Mail is present
+
+    Then expect Print Form Return Receipt is not visible
+
+    Then expect Print Form Electronic Return Receipt is present
+    Then check Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is checked
+    Then uncheck Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is unchecked
+
+    Then expect Advanced Options Restricted Delivery is present
+    Then check Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is checked
+    Then uncheck Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is unchecked
+
+    Then expect Advanced Options Mail Date field is present
+
+    # Reference Number Textbox
+    Then expect Advanced Options Reference Number field is present
+    Then set Advanced Options Reference Number to random string
+    Then expect Advanced Options Reference Number is correct
+
+    # Cost Code Textbox
+    Then expect Advanced Options Cost Code Field is present
+    Then set Advanced Options Cost Code to None
+    Then expect Advanced Options Cost Code is None
+
+    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3910
+    Then select Print On Certified Mail Label - Stamps.com SDC-3910
+
+    Then expect Print Form Certified Mail is checked
+    Then expect Print Form Certified Mail is present
+
+    Then expect Print Form Return Receipt is present
+    Then check Print Form Return Receipt
+    Then expect Print Form Return Receipt is checked
+    Then uncheck Print Form Return Receipt
+    Then expect Print Form Return Receipt is unchecked
+
+    Then expect Print Form Electronic Return Receipt is present
+    Then check Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is checked
+    Then uncheck Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is unchecked
+
+    Then expect Advanced Options Restricted Delivery is present
+    Then check Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is checked
+    Then uncheck Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is unchecked
+
+    Then expect Advanced Options Mail Date field is present
+
+    # Reference Number Textbox
+    Then expect Advanced Options Reference Number field is present
+    Then set Advanced Options Reference Number to random string
+    Then expect Advanced Options Reference Number is correct
+
+    # Cost Code Textbox
+    Then expect Advanced Options Cost Code Field is present
+    Then set Advanced Options Cost Code to None
+    Then expect Advanced Options Cost Code is None
+
+    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3930
+    Then select Print On Certified Mail Label - Stamps.com SDC-3930
+
+    Then expect Print Form Certified Mail is checked
+    Then expect Print Form Certified Mail is present
+
+    Then expect Print Form Return Receipt is present
+    Then check Print Form Return Receipt
+    Then expect Print Form Return Receipt is checked
+    Then uncheck Print Form Return Receipt
+    Then expect Print Form Return Receipt is unchecked
+
+    Then expect Print Form Electronic Return Receipt is present
+    Then check Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is checked
+    Then uncheck Print Form Electronic Return Receipt
+    Then expect Print Form Electronic Return Receipt is unchecked
+
+    Then expect Advanced Options Restricted Delivery is present
+    Then check Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is checked
+    Then uncheck Advanced Options Restricted Delivery
+    Then expect Advanced Options Restricted Delivery is unchecked
+
+    Then expect Advanced Options Mail Date field is present
+
+    # Reference Number Textbox
+    Then expect Advanced Options Reference Number field is present
+    Then set Advanced Options Reference Number to random string
+    Then expect Advanced Options Reference Number is correct
+
+    # Cost Code Textbox
+    Then expect Advanced Options Cost Code Field is present
+    Then set Advanced Options Cost Code to None
+    Then expect Advanced Options Cost Code is None
+
     # ------------------------------------------------------------ Stamps Advanced Options
     Then select Print On Stamps
     Then show Advanced Options
-
     # Calculate Postage
     Then expect Advanced Options Calculate Postage Amount radio button is present
     Then select Advanced Options Calculate Postage Amount
     Then expect Advanced Options Calculate Postage Amount is selected
-
     # Specify Postage
     Then expect Advanced Options Specify Postage Amount radio button is present
     Then select Advanced Options Specify Postage Amount
     Then expect Advanced Options Specify Postage Amount is selected
-
     # Populate Stamps form
     Then set Print form Serial Number to random C series
     Then select Advanced Options Calculate Postage Amount
@@ -28,18 +202,15 @@ Feature: Advanced Options BVT
     Then select Print form service FCM Letter
     Then set Print form Quantity to 1
     Then set Advanced Options Cost Code to None
-
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
     Then select Advanced Options Extra Services
     Then expect Extra Services is present
     Then close Extra Services
-
     # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
     Then expect Advanced Options Reference Number is correct
-
     # Cost Code Textbox
     Then expect Advanced Options Cost Code Field is present
     Then set Advanced Options Cost Code to None

@@ -190,13 +190,15 @@ module Stamps
           cost_code.present?
         end
 
-        def hide_label_value
-          #checkbox
+        def restricted_delivery
+          if @restricted_delivery.nil?
+            clickable_element = browser.span(css: "span[class*=sdc-mainpanel-rdcheckbox]")
+            verify = browser.div(css: "div[id^=certifiedmailview-][id$=-innerCt]>div>div>div>div>div>div:nth-child(4)>div>div>div[class*=checkbox ]")
+            @restricted_delivery = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+          end
+          @restricted_delivery
         end
 
-        def print_reference_number
-          #checkbox
-        end
       end
 
       module RollsAdvancedOptions

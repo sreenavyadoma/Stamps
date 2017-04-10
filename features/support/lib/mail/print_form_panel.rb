@@ -66,8 +66,8 @@ module Stamps
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :labels)
             when :envelopes
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :envelopes)
-            when :certified_mails
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :certified_mails)
+            when :certified_mails, :certified_mails_3910_3930, :certified_mails_3810
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil? || ((@advanced_options.print_media != :certified_mails) && (@advanced_options.print_media != :certified_mails_3910_3930) && (@advanced_options.print_media != :certified_mails_3810))
             when :rolls
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :rolls)
             else
@@ -110,7 +110,7 @@ module Stamps
         end
       end
 
-      module CertifiedMail
+      module CertifiedMails
         include MailFrom
         include MailTo
         include MailWeight
@@ -118,6 +118,51 @@ module Stamps
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
+
+
+        def certified_mail
+          if @certified_mail.nil?
+            clickable_element = browser.span(id: "sdc-mainpanel-cmcheckbox")
+            verify = browser.div(id: "sdc-mainpanel-cmcheckbox")
+            @certified_mail = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+          end
+          @certified_mail
+        end
+
+        def electronic_return_receipt
+          if @electronic_return_receipt.nil?
+            clickable_element = browser.span(id: "sdc-mainpanel-rrecheckbox-displayEl")
+            verify = browser.div(id: "sdc-mainpanel-rrecheckbox")
+            @electronic_return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+          end
+          @electronic_return_receipt
+        end
+
+      end
+
+      module CertifiedMails3810
+        include CertifiedMails
+
+        def return_receipt
+          if @return_receipt.nil?
+            clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox")
+            verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
+            @return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+          end
+          @return_receipt
+        end
+      end
+
+      module CertifiedMails39103930
+        include CertifiedMails
+        def return_receipt
+          if @return_receipt.nil?
+            clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox-displayEl")
+            verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
+            @return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+          end
+          @return_receipt
+        end
       end
 
       module Rolls
@@ -138,7 +183,8 @@ module Stamps
         include MailAdvancedOptions
 
         def ship_date
-          ShipDate.new(param)
+          @ship_date = ShipDate.new(param) if @ship_date.nil? || !@ship_date.present?
+          @ship_date
         end
 
         def form_view

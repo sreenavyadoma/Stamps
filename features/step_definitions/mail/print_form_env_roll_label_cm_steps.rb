@@ -18,7 +18,8 @@ end
 Then /^[Cc]lick Print form Mail To link/ do
   stamps.mail.print_form.mail_to.mail_to_link.click
 end
-# dimension setters
+
+# Dimensions setters
 Then /^[Ss]et Print form Length to (\d+)$/ do |length|
   test_parameter[:length] = length
   stamps.mail.print_form.dimensions.length.set(test_parameter[:length])

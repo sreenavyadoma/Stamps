@@ -17,10 +17,10 @@ Feature: Envelopes BVT
     Then select Print On Envelope - #7, 3 ⅞" x 7 ½"
     Then select Print On Envelope - #11, 4 ½" x 10 ⅜"
     Then select Print On Envelope - #12, 4 ¾" x 11"
-    Then on Print form, select Certified Mail Label - SDC-3610
-    Then on Print form, select Certified Mail Label - SDC-3710
-    Then on Print form, select Certified Mail Label - SDC-3910
-    Then on Print form, select Certified Mail Label - SDC-3810
+    Then select Print On Certified Mail Label - SDC-3610
+    Then select Print On Certified Mail Label - SDC-3710
+    Then select Print On Certified Mail Label - SDC-3910
+    Then select Print On Certified Mail Label - SDC-3810
     Then select Print On Roll - 4" x 6" Shipping Label
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
 

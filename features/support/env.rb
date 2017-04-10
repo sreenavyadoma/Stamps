@@ -26,11 +26,10 @@ require_relative 'lib/core/helpers'
 require_relative 'lib/core/browser'
 require_relative 'lib/core/stamps'
 require_relative 'lib/core/stamps_logger'
-#require_relative 'lib/stamps/whats_new_modal'
 
 # ParameterHelper module
 require_relative 'lib/orders/fields'
-require_relative 'lib/mail/print_form'
+require_relative 'lib/mail/print_form_panel'
 require_relative 'lib/windows/print_window'
 require_relative 'lib/orders/store_management'
 require_relative 'lib/orders/general_settings'
