@@ -20,7 +20,7 @@ web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers J
 eli_dev: --tags @import_updated_orders   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=item_details URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=hal9000qa10 PW=password1
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=selenium USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
-kaushal: --tags @mail_print_envelope_10_A2_A9 WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+kaushal: --tags @mail_print_roll_4_1_8_x_6_1_4_fcm_psg WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
