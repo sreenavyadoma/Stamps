@@ -100,6 +100,89 @@ end
 
 
 
+# Certified Mail
+Then /^[Ee]xpect Advanced Options Restricted Delivery is present$/ do
+  expect(stamps.mail.print_form.advanced_options.restricted_delivery.present?).to be(true), "Advanced Options include Restricted Delivery is NOT present"
+end
+
+Then /^[Cc]heck Advanced Options Restricted Delivery$/ do
+  stamps.mail.print_form.advanced_options.restricted_delivery.check
+end
+
+Then /^[Ee]xpect Advanced Options Restricted Delivery is checked$/ do
+  expect(stamps.mail.print_form.advanced_options.restricted_delivery.checked?).to be(true), "Advanced Options include Restricted Delivery is NOT checked"
+end
+
+Then /^[Uu]ncheck Advanced Options Restricted Delivery$/ do
+  stamps.mail.print_form.advanced_options.restricted_delivery.uncheck
+end
+
+Then /^[Ee]xpect Advanced Options Restricted Delivery is unchecked$/ do
+  expect(stamps.mail.print_form.advanced_options.restricted_delivery.checked?).to be(false), "Advanced Options include Restricted Delivery is NOT unchecked"
+end
+
+Then /^[Ee]xpect Print Form Electronic Return Receipt is present$/ do
+  expect(stamps.mail.print_form.electronic_return_receipt.present?).to be(true), "Print form include Electronic Return Receipt is NOT present"
+end
+
+Then /^[Cc]heck Print Form Electronic Return Receipt$/ do
+  stamps.mail.print_form.electronic_return_receipt.check
+end
+
+Then /^[Ee]xpect Print Form Electronic Return Receipt is checked$/ do
+  expect(stamps.mail.print_form.electronic_return_receipt.checked?).to be(true), "Print form include Electronic Return Receipt is NOT checked"
+end
+
+Then /^[Uu]ncheck Print Form Electronic Return Receipt$/ do
+  stamps.mail.print_form.electronic_return_receipt.uncheck
+end
+
+Then /^[Ee]xpect Print Form Electronic Return Receipt is unchecked$/ do
+  expect(stamps.mail.print_form.electronic_return_receipt.checked?).to be(false), "Print form include Electronic Return Receipt is NOT unchecked"
+end
+
+
+
+
+
+
+
+
+
+Then /^[Ee]xpect Print Form Return Receipt is present$/ do
+  expect(stamps.mail.print_form.return_receipt.present?).to be(true), "Print form include Return Receipt is NOT present"
+end
+
+Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
+  expect{stamps.mail.print_form.return_receipt.present?}.to raise_exception(NoMethodError)
+end
+
+Then /^[Cc]heck Print Form Return Receipt$/ do
+  stamps.mail.print_form.return_receipt.check
+end
+
+Then /^[Ee]xpect Print Form Return Receipt is checked$/ do
+  expect(stamps.mail.print_form.return_receipt.checked?).to be(true), "Print form include Return Receipt is NOT checked"
+end
+
+Then /^[Uu]ncheck Print Form Return Receipt$/ do
+  stamps.mail.print_form.return_receipt.uncheck
+end
+
+Then /^[Ee]xpect Print Form Return Receipt is unchecked$/ do
+  expect(stamps.mail.print_form.return_receipt.checked?).to be(false), "Print form include Return Receipt is NOT unchecked"
+end
+
+
+
+Then /^[Ee]xpect Print Form Certified Mail is checked$/ do
+  expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Return Receipt is NOT checked"
+end
+Then /^[Ee]xpect Print Form Certified Mail is present$/ do
+  expect(stamps.mail.print_form.certified_mail.present?).to be(true), "Print form include Return Receipt is NOT present"
+end
+
+
 
 
 

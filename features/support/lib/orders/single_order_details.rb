@@ -16,23 +16,13 @@ module Stamps
           blur_element.blur_out
         end
 
-        def select service
+        def select(str)
           return manage_shipping_adddress if manage_shipping_adddress.present?
+          drop_down.click
+          selection = StampsElement.new(browser.div(text: /str/))
 
-          default_element = browser.li(css: "ul[id^=boundlist-]>li[data-recordindex='0']")
-
-          if service.downcase == "default"
-            element = default_element
-          elsif service.downcase.include? "manage shipping"
-            element = browser.li(text: "Manage Shipping Addresses...")
-          else
-            element = browser.div(text: "#{service}")
-          end
-
-          selection = StampsElement.new element
-          service_text = ""
-          if service.downcase.include? "manage shipping"
-            15.times{
+          if str.downcase.include? "manage shipping"
+            15.times do
               begin
                 drop_down.click unless selection.present?
                 selection.scroll_into_view
@@ -44,23 +34,19 @@ module Stamps
                 logger.error e.backtrace.join "\n"
               end
               expect(manage_shipping_adddress.present?).to be(true)
-            }
-          else
-            drop_down.click unless selection.present?
-            if selection.present?
-              selection.scroll_into_view
-              service_text = selection.text
             end
+          else
+            selection_txt = (selection.present?)?selection.text : ""
             10.times do
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
               sleep(0.35)
               text_box_text = text_box.text
-              return if text_box_text.include? service_text
+              return if text_box_text.include?(selection_txt)
             end
           end
-          expect("Unable to select service #{service}").to eql ""
+          expect("Unable to select service #{str}").to eql ""
         end
       end
 

@@ -71,7 +71,7 @@ module Stamps
             # Launch Firefox
             if ENV['FIREFOX_PROFILE'].nil? || ENV['FIREFOX_PROFILE'].downcase == 'selenium'
               #driver = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
-              driver = Watir::Browser.new :firefox, :profile => 'selenium'
+              driver = Watir::Browser.new(:firefox, :profile => 'selenium')
             elsif ENV['FIREFOX_PROFILE'].downcase == 'new'
               driver = Watir::Browser.new :firefox
             else

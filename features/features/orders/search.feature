@@ -9,7 +9,7 @@ Feature:  Basic Search
 
     # Search for New Order ID
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address in zone 1
     Then set Order Details form Email to random
     Then set Order Details form Phone to random

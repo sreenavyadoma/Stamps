@@ -7,7 +7,7 @@ Feature: Edit Order Details
   Scenario: User edits an order
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address in zone 8
     Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 3

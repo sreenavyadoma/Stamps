@@ -64,21 +64,25 @@ module Stamps
               selected_sub_str = 'Envelope - #12'
               element = browser.lis(css: "li[class*=iconEnvelope]")[7]
             when /SDC-3610/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails
               selected_sub_str = 'SDC-3610'
               element = browser.lis(css: "li[class*=iconCertified]")[0]
             when /SDC-3710/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails
               selected_sub_str = 'SDC-3710'
               element = browser.lis(css: "li[class*=iconCertified]")[1]
             when /SDC-3910/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails_3910_3930
               selected_sub_str = 'SDC-3910'
               element = browser.lis(css: "li[class*=iconCertified]")[2]
-            when /SDC-3810/
-              param.print_media = :envelopes
-              selected_sub_str = 'SDC-3810'
+            when /SDC-3930/
+              param.print_media = :certified_mails_3910_3930
+              selected_sub_str = 'SDC-3930'
               element = browser.lis(css: "li[class*=iconCertified]")[3]
+            when /SDC-3810/
+              param.print_media = :certified_mails_3810
+              selected_sub_str = 'SDC-3810'
+              element = browser.lis(css: "li[class*=iconCertified]")[4]
             when /Roll - 4" x 6"/
               param.print_media = :rolls
               selected_sub_str = 'Roll - 4'
@@ -111,7 +115,7 @@ module Stamps
             end
             sleep(0.15)
           end
-          expect(text_box.text).to include(selected_sub_str)
+          expect(text_box.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{text_box.text}\""
           param.print_media
         end
 
@@ -293,15 +297,7 @@ module Stamps
         def select(str)
           drop_down.click
 
-          if str.downcase == 'default'
-            element = browser.li(css: "li[class*=x-boundlist-item][data-boundview^=boundlist][role=option]:nth-child(1)")
-          elsif str.downcase.include? "manage shipping"
-            element = browser.li(text: "Manage Mailing Addresses...")
-          else
-            element = browser.div(text: "#{str}")
-          end
-
-          selection = StampsElement.new(element)
+          selection = StampsElement.new(browser.div(text: /str/))
 
           if str.downcase.include? "manage shipping"
             10.times do
@@ -320,10 +316,7 @@ module Stamps
               selection.scroll_into_view
               selection_text = selection.text
               selection.click
-              text_val = text_box.text
-              begin
-                break if text_val.include? selection_text
-              end unless selection_text.nil? || text_val.nil?
+              break if text_box.text.include?(selection_text) unless selection_text.nil? || text_box.text.nil?
             end
           end
         end

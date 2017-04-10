@@ -17,7 +17,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
   @details_flat_rate_no_weight_international
   Scenario:  International Flat
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | France  | random  | random  |

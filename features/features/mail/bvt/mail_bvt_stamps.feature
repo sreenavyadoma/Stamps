@@ -10,7 +10,7 @@ Feature: Print form BVT
 
     Then set Print form Serial Number to C12345
     Then select Advanced Options Specify Postage Amount
-    Then set Print form Mail-From to default
+    Then set Print form Mail-From to El Segundo
     Then select Print form service Media Mail
     Then set Print form Amount to 2.85
     Then set Print form Quantity to 1
@@ -21,7 +21,7 @@ Feature: Print form BVT
 
     Then set Print form Serial Number to B12345
     Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to default
+    Then set Print form Mail-From to El Segundo
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print Postage

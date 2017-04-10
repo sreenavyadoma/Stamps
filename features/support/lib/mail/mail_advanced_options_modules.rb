@@ -10,10 +10,10 @@ module Stamps
 
         def extra_services
           return @extra_services if !@extra_services.nil? && @extra_services.present?
-          expect(extra_services_btn.present?).to be(true)
+          expect(extra_services_btn.present?).to be(true), "Extra Services button is not present."
           @extra_services = PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
           20.times do extra_services_btn.click unless @extra_services.present? end
-          expect(@extra_services.present?).to be(true)
+          expect(@extra_services.present?).to be(true), "Extra Services modal did not open."
           @extra_services
         end
       end
@@ -111,7 +111,6 @@ module Stamps
             verify_element = browser.div(id: 'sdc-mainpanel-calculatepostageradio')
             @calculate_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
           end
-          show
           @calculate_postage_amount
         end
 
@@ -191,13 +190,15 @@ module Stamps
           cost_code.present?
         end
 
-        def hide_label_value
-          #checkbox
+        def restricted_delivery
+          if @restricted_delivery.nil?
+            clickable_element = browser.span(css: "span[class*=sdc-mainpanel-rdcheckbox]")
+            verify = browser.div(css: "div[id^=certifiedmailview-][id$=-innerCt]>div>div>div>div>div>div:nth-child(4)>div>div>div[class*=checkbox ]")
+            @restricted_delivery = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+          end
+          @restricted_delivery
         end
 
-        def print_reference_number
-          #checkbox
-        end
       end
 
       module RollsAdvancedOptions

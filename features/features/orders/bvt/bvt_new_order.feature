@@ -6,7 +6,7 @@ Feature:  BVT Order Creation
   @bvt_new_order
   Scenario:  Add a new order
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form service to PM Package
     Then set Order Details form Pounds to 1

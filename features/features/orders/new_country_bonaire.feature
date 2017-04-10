@@ -6,7 +6,7 @@ Feature:  Print Bonaire, Sint Eustatius, and Saba orders
   @new_country_code @new_country_code_3
   Scenario: Print Bonaire, Sincd t Eustatius, and Saba orders
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |

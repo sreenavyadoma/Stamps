@@ -7,7 +7,7 @@ Feature: PME Comm Base Rates
   Scenario: PME Comm Base
     And a valid user is signed in to Web Apps
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then run rate test PME Comm Base in Zone 1
     Then run rate test PME Comm Base in Zone 2
     Then run rate test PME Comm Base in Zone 3
