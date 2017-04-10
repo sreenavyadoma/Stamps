@@ -50,7 +50,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     When In left Filter Panel, expect system displays expanded filters panel
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to Domestic Address
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |

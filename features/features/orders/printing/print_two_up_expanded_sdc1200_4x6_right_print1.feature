@@ -6,7 +6,7 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾" right side
   @print_two_up_expanded_sdc1200_4x6_right_print1
   Scenario: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾" right side
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to PM Package, SDC-1200 Right Side 1, 5912 83rd St., Lubbock TX 79424-3608
     Then set Order Details form service to PM Package
     Then set Order Details form Weight to 1 lb 1 oz

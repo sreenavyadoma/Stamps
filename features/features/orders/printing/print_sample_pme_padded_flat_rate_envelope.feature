@@ -6,7 +6,7 @@ Feature: in Print modal, click Print button Sample - PME Padded Flat Rate Envelo
   @print_sample_pme_padded_flat_rate_envelope
   Scenario:  PME Padded Flat Rate Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1

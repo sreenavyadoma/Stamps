@@ -19,7 +19,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
   @details_flat_rate_no_weight_domestic
   Scenario:  Domestic Flat
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address in zone 1
 
     # Priority Mail Flat Rate Envelope

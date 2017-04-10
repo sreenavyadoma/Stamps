@@ -9,7 +9,7 @@ Feature: in Orders Grid, Tracking & Order Status
 
     Then click Orders Toolbar Add button
     Then expect Orders Grid Order Status is Awaiting Shipment
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 5
     Then set Order Details form service to PM Large Package
@@ -25,7 +25,7 @@ Feature: in Orders Grid, Tracking & Order Status
 
     Then click Orders Toolbar Add button
     Then expect Orders Grid Order Status is Awaiting Shipment
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 5
     Then set Order Details form service to PM Large Package

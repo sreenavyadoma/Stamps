@@ -8,7 +8,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
 
     #print_two_up_expanded_cp72_5x8_left_print1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
@@ -29,7 +29,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
    #print_two_up_expanded_cp72_5x8_right_print1
     # 1 CP72 label 5 ½" x 8 ½" right side
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
@@ -49,22 +49,22 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
 
    #print_two_up_expanded_cp72_paper_left
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then set Order Details form service to PME Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then set Order Details form service to PME Legal Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
@@ -76,7 +76,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
@@ -88,7 +88,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
@@ -114,22 +114,22 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
 
    #print_two_up_expanded_cp72_paper_left_print3
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then set Order Details form service to PME Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then set Order Details form service to PME Legal Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
@@ -141,7 +141,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
@@ -153,7 +153,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |

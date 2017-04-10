@@ -297,26 +297,23 @@ module Stamps
         def select(str)
           drop_down.click
 
-          selection = StampsElement.new(browser.div(text: /str/))
+          selection = StampsElement.new(browser.li(text: /#{str}/))
 
           if str.downcase.include? "manage shipping"
             10.times do
               begin
-                drop_down.click unless selection.present?
-                selection.scroll_into_view
                 selection.click
                 return manage_shipping_address if manage_shipping_address.present?
+                drop_down.click unless selection.present?
               rescue
                 #ignore
               end
             end
           else
             10.times do
-              drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection_text = selection.text
               selection.click
-              break if text_box.text.include?(selection_text) unless selection_text.nil? || text_box.text.nil?
+              break if text_box.text.include?(str)
+              drop_down.click unless selection.present?
             end
           end
         end

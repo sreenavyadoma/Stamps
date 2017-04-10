@@ -7,7 +7,7 @@ Feature: Sudan Internal Transaction Number Required
   @international_rogue_countries @rules_international
   Scenario: Sudan Internal Transaction Number Required
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Sudan    | random  | random  |

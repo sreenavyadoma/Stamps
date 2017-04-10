@@ -7,7 +7,7 @@ Feature: Parcel Select Ground Rates
   Scenario: Parcel Select Ground
     And a valid user is signed in to Web Apps
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then run rate test Parcel Select Ground in Zone 1
     Then run rate test Parcel Select Ground in Zone 2
     Then run rate test Parcel Select Ground in Zone 3

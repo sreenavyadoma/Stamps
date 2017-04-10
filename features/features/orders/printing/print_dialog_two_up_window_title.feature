@@ -7,7 +7,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
   @print_dialog_two_up_window_title
   Scenario:  Printing
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz

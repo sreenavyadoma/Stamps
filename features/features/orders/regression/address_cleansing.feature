@@ -7,7 +7,7 @@ Feature: Address Cleansing
   @address_cleansing
   Scenario: Address Cleansing
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to Domestic Address
       | name              | company | street_address   | street_address_2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |

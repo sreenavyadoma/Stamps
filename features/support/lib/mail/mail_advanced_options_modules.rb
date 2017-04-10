@@ -173,7 +173,7 @@ module Stamps
           if @postage.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)>div>div>span")
             verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)")
-            @postage = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+            @postage = Stamps::Browser::StampsCheckbox.new(input,verify, "class", "checked")
           end
           @postage
         end

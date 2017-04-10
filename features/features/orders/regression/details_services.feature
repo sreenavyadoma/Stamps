@@ -7,7 +7,7 @@ Feature:  Orders service Selection
   @details_services_dom
   Scenario: service Selections for Domestic Orders
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address in zone 1
     Then set Order Details form Ounces to 1
 

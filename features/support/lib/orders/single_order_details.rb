@@ -19,7 +19,7 @@ module Stamps
         def select(str)
           return manage_shipping_adddress if manage_shipping_adddress.present?
           drop_down.click
-          selection = StampsElement.new(browser.div(text: /str/))
+          selection = StampsElement.new(browser.li(text: /#{str}/))
 
           if str.downcase.include? "manage shipping"
             15.times do
@@ -31,19 +31,17 @@ module Stamps
                 return manage_shipping_adddress if manage_shipping_adddress.present?
               rescue Exception => e
                 logger.error e.message
-                logger.error e.backtrace.join "\n"
+                logger.error e.backtrace.join("\n")
               end
               expect(manage_shipping_adddress.present?).to be(true)
             end
           else
-            selection_txt = (selection.present?)?selection.text : ""
             10.times do
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              text_box_text = text_box.text
-              return if text_box_text.include?(selection_txt)
+              return if text_box.text.include?(str)
             end
           end
           expect("Unable to select service #{str}").to eql ""

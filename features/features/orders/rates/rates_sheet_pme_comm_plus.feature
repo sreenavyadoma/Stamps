@@ -7,7 +7,7 @@ Feature: PME Comm Plus Rates
   Scenario: PME Comm Plus
     And a valid user is signed in to Web Apps
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then run rate test PME Comm Plus in Zone 1
     Then run rate test PME Comm Plus in Zone 2
     Then run rate test PME Comm Plus in Zone 3

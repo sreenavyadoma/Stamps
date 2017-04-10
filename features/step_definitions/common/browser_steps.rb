@@ -20,7 +20,7 @@ end
 
 Then /^Pause for (\d+) seconds?$/ do |seconds|
   begin
-    sleep seconds.to_i
+    sleep(seconds.to_i)
   rescue
     #ignore
   end

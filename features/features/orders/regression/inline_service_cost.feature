@@ -7,7 +7,7 @@ Feature: Ship-To Addresses
   @inline_service_rates
   Scenario:  System Calls GetRates When "Ship-To Address" is changed
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then expect Order Details form Service Cost inline price for "Priority Mail Large/Thick Envelope" is greater than $0.01
     Then expect Order Details form Service Cost inline price for "PM Package" is greater than $0.01

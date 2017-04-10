@@ -6,7 +6,7 @@ Feature: in Print modal, click Print button Sample - PME Package
   @print_sample_pme_package
   Scenario:  PME Package
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PME Package
     Then set Order Details form Ounces to 1

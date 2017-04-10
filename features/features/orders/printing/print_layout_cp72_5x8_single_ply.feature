@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
   @print_layout_cp72_5x8_single_ply
   Scenario: Print 1 single ply Intl CP72 label on 5.5x8.5 - left side
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo
+    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFRB |  5.5x8.5 Left Side | random       | random           | random | random  | random      | Australia | random  | random  |
