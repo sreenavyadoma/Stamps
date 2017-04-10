@@ -6,36 +6,6 @@ Feature: Advanced Options BVT
   @mail_bvt_advanced_options
   Scenario: Advanced Options BVT
 
-    # ------------------------------------------------------------ Stamps Advanced Options
-    Then select Print On Stamps
-    Then show Advanced Options
-    # Calculate Postage
-    Then expect Advanced Options Calculate Postage Amount radio button is present
-    Then select Advanced Options Calculate Postage Amount
-    Then expect Advanced Options Calculate Postage Amount is selected
-    # Specify Postage
-    Then expect Advanced Options Specify Postage Amount radio button is present
-    Then select Advanced Options Specify Postage Amount
-    Then expect Advanced Options Specify Postage Amount is selected
-    # Populate Stamps form
-    Then set Print form Serial Number to random C series
-    Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to El Segundo
-    Then set Print form Mail-To Country to United States
-    Then select Print form service FCM Letter
-    Then set Print form Quantity to 1
-    Then set Advanced Options Cost Code to None
-    # Extra Services
-    Then expect Advanced Options Extra Services Button is visible
-    # Reference Number Textbox
-    Then expect Advanced Options Reference Number field is present
-    Then set Advanced Options Reference Number to random string
-    Then expect Advanced Options Reference Number is correct
-    # Cost Code Textbox
-    Then expect Advanced Options Cost Code Field is present
-    Then set Advanced Options Cost Code to None
-    Then expect Advanced Options Cost Code is None
-
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3810
     Then select Print On Certified Mail #11 Envelope - Stamps.com SDC-3810
 
@@ -213,6 +183,39 @@ Feature: Advanced Options BVT
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
 
+    # ------------------------------------------------------------ Stamps Advanced Options
+    Then select Print On Stamps
+    Then show Advanced Options
+    # Calculate Postage
+    Then expect Advanced Options Calculate Postage Amount radio button is present
+    Then select Advanced Options Calculate Postage Amount
+    Then expect Advanced Options Calculate Postage Amount is selected
+    # Specify Postage
+    Then expect Advanced Options Specify Postage Amount radio button is present
+    Then select Advanced Options Specify Postage Amount
+    Then expect Advanced Options Specify Postage Amount is selected
+    # Populate Stamps form
+    Then set Print form Serial Number to random C series
+    Then select Advanced Options Calculate Postage Amount
+    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-To Country to United States
+    Then select Print form service FCM Letter
+    Then set Print form Quantity to 1
+    Then set Advanced Options Cost Code to None
+    # Extra Services
+    Then expect Advanced Options Extra Services Button is visible
+    Then select Advanced Options Extra Services
+    Then expect Extra Services is present
+    Then close Extra Services
+    # Reference Number Textbox
+    Then expect Advanced Options Reference Number field is present
+    Then set Advanced Options Reference Number to random string
+    Then expect Advanced Options Reference Number is correct
+    # Cost Code Textbox
+    Then expect Advanced Options Cost Code Field is present
+    Then set Advanced Options Cost Code to None
+    Then expect Advanced Options Cost Code is None
+
     # ------------------------------------------------------------ Rolls Advanced Options
     Then select Print On Roll - 4" x 6" Shipping Label
 
@@ -223,6 +226,10 @@ Feature: Advanced Options BVT
 
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
+    Then select Advanced Options Extra Services
+    Then expect Extra Services is present
+    Then close Extra Services
+
     # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
     Then set Advanced Options Mail Date to date 04/04/2017
@@ -276,6 +283,10 @@ Feature: Advanced Options BVT
 
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
+    Then select Advanced Options Extra Services
+    Then expect Extra Services is present
+    Then close Extra Services
+
     # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
     Then set Advanced Options Mail Date to date 04/04/2017
@@ -339,6 +350,10 @@ Feature: Advanced Options BVT
 
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
+    Then select Advanced Options Extra Services
+    Then expect Extra Services is present
+    Then close Extra Services
+
     # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
     Then set Advanced Options Mail Date to date 04/04/2017
