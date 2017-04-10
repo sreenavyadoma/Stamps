@@ -10,7 +10,7 @@ Feature: Details Ship Cost Total
   Scenario: Ship Cost Total
     Then click Orders Toolbar Add button
     Then expect Order Details form Total label is Total Ship Cost:
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then expect Order Details form Service Cost is 0.00
     Then expect Order Details form Insure-For Cost is 0.00
     Then expect Order Details form Tracking Cost is 0.00

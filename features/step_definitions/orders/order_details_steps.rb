@@ -229,7 +229,7 @@ Then /^[Ss]et Order Details form Tracking to \"([\w ]*)\"$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^[Ss]et Order Details form Ship-From to (\w+)$/ do |value|
+Then /^[Ss]et Order Details form Ship-From to (.+)$/ do |value|
   stamps.orders.order_details.ship_from.select(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"

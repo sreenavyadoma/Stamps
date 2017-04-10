@@ -8,7 +8,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
 
    #mail_print_roll_4x6_pm_large_box
     Then select Print On Roll - 4" x 6" Shipping Label
-    Then set Print form Mail-From to default
+    Then set Print form Mail-From to El Segundo
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
@@ -19,7 +19,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
 
    #mail_print_roll_4x6_pm_medium_box
     Then select Print On Roll - 4" x 6" Shipping Label
-    Then set Print form Mail-From to default
+    Then set Print form Mail-From to El Segundo
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
@@ -30,7 +30,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
 
    #mail_print_roll_4x6_pm_regional_box_a
     Then select Print On Roll - 4" x 6" Shipping Label
-    Then set Print form Mail-From to default
+    Then set Print form Mail-From to El Segundo
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
@@ -41,7 +41,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
 
    #mail_print_roll_4x6_pm_regional_box_b
     Then select Print On Roll - 4" x 6" Shipping Label
-    Then set Print form Mail-From to default
+    Then set Print form Mail-From to El Segundo
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
@@ -52,7 +52,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
 
    #mail_print_roll_4x6_pm_small_box
     Then select Print On Roll - 4" x 6" Shipping Label
-    Then set Print form Mail-From to default
+    Then set Print form Mail-From to El Segundo
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1

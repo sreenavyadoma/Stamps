@@ -8,7 +8,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - US Territory | CP72
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to Domestic Address
       | name         | company            | street_address | street_address_2| city | state | zip        | country       | phone  |  email |

@@ -6,7 +6,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: FCM Package
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to FCM Large Envelope
@@ -18,7 +18,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: First-Class Mail Package/Thick Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to First-Class Mail Package/Thick Envelope
@@ -31,7 +31,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Large/Thick Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Large/Thick Envelope
@@ -44,7 +44,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Package
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Package
@@ -60,7 +60,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Large Package
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Large Package
@@ -76,7 +76,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Flat Rate Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Flat Rate Envelope
@@ -89,7 +89,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Padded Flat Rate Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Padded Flat Rate Envelope
@@ -102,7 +102,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Legal Flat Rate Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Legal Flat Rate Envelope
@@ -115,7 +115,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Small Flat Rate Box
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Small Flat Rate Box
@@ -128,7 +128,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Medium Flat Rate Box
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Medium Flat Rate Box
@@ -141,7 +141,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Priority Mail Large Flat Rate Box
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PM Large Flat Rate Box
@@ -154,7 +154,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: PME Package
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PME Package
@@ -167,7 +167,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: PME Flat Rate Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PME Flat Rate Envelope
@@ -180,7 +180,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: PME Padded Flat Rate Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PME Padded Flat Rate Envelope
@@ -193,7 +193,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: PME Legal Flat Rate Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PME Legal Flat Rate Envelope
@@ -206,7 +206,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: MM Package
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to MM Package
@@ -219,7 +219,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PSG Package
@@ -232,7 +232,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PSG Package
@@ -245,7 +245,7 @@ Feature: January 2017 Rates for CPP User in Zone 9
   @rates_orders_cpp_zone_9
   Scenario: Parcel Select Ground Oversized Package
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
     Then set Order Details form service to PSG Oversized Package

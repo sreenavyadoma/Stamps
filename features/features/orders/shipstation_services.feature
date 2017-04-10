@@ -7,7 +7,7 @@
   @shipstation_services
   Scenario:  ShipStation & Services
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then check Orders Grid row 1
 
     Then set Order Details form Ship-To to random address between zone 1 and 4

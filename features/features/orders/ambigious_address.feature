@@ -6,7 +6,7 @@ Feature: Ambigious Address
   @ambigious_address
   Scenario: Exact Address Not Found
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to ambiguous address
       | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |

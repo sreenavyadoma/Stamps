@@ -297,15 +297,7 @@ module Stamps
         def select(str)
           drop_down.click
 
-          if str.downcase == 'default'
-            element = browser.li(css: "li[class*=x-boundlist-item][data-boundview^=boundlist][role=option]:nth-child(1)")
-          elsif str.downcase.include? "manage shipping"
-            element = browser.li(text: "Manage Mailing Addresses...")
-          else
-            element = browser.div(text: "#{str}")
-          end
-
-          selection = StampsElement.new(element)
+          selection = StampsElement.new(browser.div(text: /str/))
 
           if str.downcase.include? "manage shipping"
             10.times do
@@ -324,10 +316,7 @@ module Stamps
               selection.scroll_into_view
               selection_text = selection.text
               selection.click
-              text_val = text_box.text
-              begin
-                break if text_val.include? selection_text
-              end unless selection_text.nil? || text_val.nil?
+              break if text_box.text.include?(selection_text) unless selection_text.nil? || text_box.text.nil?
             end
           end
         end

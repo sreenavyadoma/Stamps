@@ -6,7 +6,7 @@ Feature: Set Print Ship Date to Today + 1
   @print_dialog_ship_date_today_plus1
   Scenario: Ship Date today + 1
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set Order Details form Ounces to 4
     Then set Order Details form service to PM Flat Rate Envelope

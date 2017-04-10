@@ -88,9 +88,8 @@ module Stamps
           else
             element.wait_until_present
           end
-        rescue Exception => e
-          logger.error e.message
-          logger.error e.backtrace.join("\n")
+        rescue
+          #ignore
         end
       end
 

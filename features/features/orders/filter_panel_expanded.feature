@@ -10,7 +10,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     When In left Filter Panel, expect system displays expanded filters panel
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to Domestic Address
       | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |

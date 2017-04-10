@@ -6,13 +6,13 @@ Feature: Two character minimum for Name & Company
   @rules_international @rules_international_name_stuff
   Scenario: Two character minimum for Name & Company
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To Country to Antigua & Barbuda
     Then set Order Details form International Ship-To Name to "a"
     Then expect Order Details form International Name data error tooltip is "A first and last name of at least two characters each is required"
 
 
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form International Ship-To Name to "abc def"
     Then expect Order Details form International Name data error tooltip is ""
     #Then expect Order Details form International Company data error tooltip is ""

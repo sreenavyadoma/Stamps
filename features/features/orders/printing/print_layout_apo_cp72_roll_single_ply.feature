@@ -6,7 +6,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
   @print_layout_cp72_single_ply_apo_roll
   Scenario: Print 1 single ply APO CP72 label on 4x6 roll
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to Domestic Address
       | name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |

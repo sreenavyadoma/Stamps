@@ -9,7 +9,7 @@ Feature: 25 orders
 
     # International
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
@@ -23,7 +23,7 @@ Feature: 25 orders
     Then set Order Details form service to FCMI Large Envelope
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
@@ -39,7 +39,7 @@ Feature: 25 orders
     # First Class Mail
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 1
     Then set Order Details form Length to 1
@@ -52,7 +52,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 2
     Then set Order Details form Length to 1
@@ -66,7 +66,7 @@ Feature: 25 orders
     #Priority Mail
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then check Orders Grid row 1
     Then set Order Details form Ounces to 3
@@ -78,7 +78,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 4
     Then set Order Details form Length to 1
@@ -89,7 +89,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 5
     Then set Order Details form Length to 1
@@ -101,7 +101,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 6
     Then set Order Details form Length to 1
@@ -112,7 +112,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 7
     Then set Order Details form Length to 1
@@ -124,7 +124,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 8
     Then set Order Details form Length to 1
@@ -135,7 +135,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 9
     Then set Order Details form Length to 1
@@ -147,7 +147,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 10
     Then set Order Details form Length to 1
@@ -159,7 +159,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 11
     Then set Order Details form Length to 1
@@ -171,7 +171,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 12
     Then set Order Details form Length to 1
@@ -183,7 +183,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 13
     Then set Order Details form Length to 1
@@ -195,7 +195,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 14
     Then set Order Details form Length to 1
@@ -207,7 +207,7 @@ Feature: 25 orders
     # Priority Mail Express
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 15
     Then set Order Details form Length to 1
@@ -218,7 +218,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 16
     Then set Order Details form Length to 1
@@ -229,7 +229,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 17
     Then set Order Details form Length to 1
@@ -240,7 +240,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 18
     Then set Order Details form Length to 1
@@ -251,7 +251,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 19
     Then set Order Details form Length to 1
@@ -263,7 +263,7 @@ Feature: 25 orders
     # Media Mail
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 20
     Then set Order Details form Length to 1
@@ -276,7 +276,7 @@ Feature: 25 orders
     # Parcel Select
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 21
     Then set Order Details form Length to 1
@@ -288,7 +288,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 22
     Then set Order Details form Length to 1
@@ -300,7 +300,7 @@ Feature: 25 orders
 
     Then click Orders Toolbar Add button
     Then expect Order Details form Order ID is truthy
-    Then set Order Details form Ship-From to default
+    Then set Order Details form Ship-From to El Segundo
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Pounds to 23
     Then set Order Details form Length to 1
