@@ -539,9 +539,6 @@ orders_credentials:
     mail_print_shipping_label_8x11:
       usr: stgom0dqgzppy
       pw: pass111
-    mail_bvt_advanced_options:
-      usr: stgyvngqz27b66
-      pw: pass111
     rates_sheet_pme_comm_base_zone_3:
       usr: stgo0e9lb9fpv
       pw: pass111
@@ -1577,6 +1574,9 @@ orders_credentials:
 
 mail_credentials:
   stg:
+    mail_bvt_advanced_options:
+      usr: stgyvngqz27b66
+      pw: pass111
     rob:
       usr: stgom0dqgzppy
       pw: pass111
@@ -2955,7 +2955,6 @@ mail_credentials:
     mail_stamps_series_p_r_s_v_wn:
       usr: ccyykg2nb
       pw: pass111
-
   sc:
     rob:
       usr: scsxpeco6b90
