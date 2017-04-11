@@ -521,145 +521,49 @@ module Stamps
         end
       end
 
-      class ShippingAddress < Browser::StampsModal
-        attr_reader :save_button, :origin_zip
+      class AddShippingAddress < Browser::StampsModal
+        attr_reader :save_btn, :origin_zip, :name, :company, :street_address_1, :street_address_2, :city, :state, :zip, :phone
+        attr_accessor :address_hash
 
         def initialize(param)
           super(param)
-          @save_button = StampsElement.new browser.span(text: 'Save')
+          @save_btn = StampsElement.new browser.span(text: 'Save')
           @origin_zip = StampsTextbox.new browser.text_field(name: 'OriginZip')
+          @name = StampsTextbox.new(browser.text_field(name: 'FullName'))
+          @company = StampsTextbox.new(browser.text_field(name: 'Company'))
+          @street_address_1 = StampsTextbox.new(browser.text_field name: 'Street1')
+          @street_address_2 = StampsTextbox.new(browser.text_field name: 'Street2')
+          @city = StampsTextbox.new(browser.text_field(name: 'City'))
+          @state = StampsDropDown.new(browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]"), :li, browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]'))
+          @zip = StampsTextbox.new(browser.text_field(name: 'Zip'))
+          @phone = StampsTextbox.new(browser.text_field(name: "Phone"))
         end
 
         def present?
-          browser.div(text: "Edit Shipping Address").present? || browser.div(text: "Add Shipping Address").present?
+          origin_zip.present?
         end
 
         def wait_until_present(*args)
-          browser.div(text: "Edit Shipping Address").wait_until_present(*args) if browser.div(text: "Edit Shipping Address").present?
-          browser.div(text: "Add Shipping Address").wait_until_present(*args) if browser.div(text: "Add Shipping Address").present?
+          origin_zip.wait_until_present(*args)
         end
 
-        #todo-rob refactor Ship-From address
         def ship_from_address(table)
+          @address_hash = table
           origin_zip.set table["ship_from_zip"]
-          name table['name']
-          company table['company']
-          street_address1 table["street_address"]
-          street_address2 table["street_address2"]
-          city table['city']
-          state.select table["state"]
-          zip table["zip"]
-          phone table['phone']
+          name.set(table['name'])
+          company.set(table['company'])
+          street_address_1.set(table["street_address"])
+          street_address_2.set(table["street_address2"])
+          city.set(table['city'])
+          state.select(table["state"])
+          zip.set(table["zip"])
+          phone.set(table['phone'])
           save
         end
 
-        def name(*args)
-          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
-          field = StampsElement.new((browser.text_fields name: 'FullName').last)
-          case args.length
-            when 0
-              field.text
-            when 1
-              field.set args[0]
-            else
-              # ignore
-          end
-        end
-
-        def company(*args)
-          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
-          field = StampsElement.new((browser.text_fields name: 'Company').last)
-          case args.length
-            when 0
-              field.text
-            when 1
-              field.set args[0]
-            else
-              # ignore
-          end
-        end
-
-        def street_address1(*args)
-          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
-          field = StampsElement.new(browser.text_field name: 'Street1')
-          case args.length
-            when 0
-              field.text
-            when 1
-              field.set args[0]
-            else
-              # ignore
-          end
-        end
-
-        def street_address2(*args)
-          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
-          field = StampsElement.new(browser.text_field name: 'Street2')
-          case args.length
-            when 0
-              field.text
-            when 1
-              field.set args[0]
-            else
-              # ignore
-          end
-        end
-
-        def city(*args)
-          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
-          field = StampsElement.new((browser.text_fields name: 'City').last)
-          case args.length
-            when 0
-              field.text
-            when 1
-              field.set args[0]
-            else
-              # ignore
-          end
-        end
-
-        def state
-          text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
-          dd = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
-          StampsDropDown.new(dd, :li, text_box)
-        end
-
-        def zip(*args)
-          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
-          field = StampsElement.new(browser.text_field name: 'Zip')
-          case args.length
-            when 0
-              field.text
-            when 1
-              field.set args[0]
-            else
-              # ignore
-          end
-        end
-
-        def phone(*args)
-          expect(args.length).to be > 2, "args.length should be less than 2, got #{args.length}"
-          field = StampsElement.new((browser.text_fields css: "input[name=Phone]").last)
-          case args.length
-            when 0
-              field.text
-            when 1
-              field.set args[0]
-            else
-              # ignore
-          end
-        end
-
         def save
-          10.times do
-            begin
-              save_button.click
-              sleep(0.35)
-              break unless save_button.present?
-            rescue
-              #ignore
-            end
-          end
+          save_btn.click_while_present
+          expect(save_btn.present?).to be(false), "Add Shipping Address failed to save Return Address: #{address_hash.each do |key, value| "#{key}:#{value}" end}"
         end
 
       end
@@ -708,7 +612,7 @@ module Stamps
       end
 
       class ManageShippingAddresses < Browser::StampsModal
-        attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :shipping_address
+        attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
 
         def initialize(param)
           super(param)
@@ -717,7 +621,7 @@ module Stamps
           @window_title = StampsElement.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
           @close_button = StampsElement.new browser.image(css: "img[class*='x-tool-close']")
           @delete_button = StampsElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
-          @shipping_address = ShippingAddress.new(param)
+          @add_shipping_address = AddShippingAddress.new(param)
         end
 
         def present?
@@ -813,9 +717,9 @@ module Stamps
         def add
           5.times do
             begin
-              return shipping_address if shipping_address.present?
+              return add_shipping_address if add_shipping_address.present?
               add_button.click
-              shipping_address.wait_until_present 3
+              add_shipping_address.wait_until_present(3)
             rescue Exception => e
               logger.error e.message
               logger.error e.backtrace.join("\n")
@@ -852,7 +756,7 @@ module Stamps
             select_row row_num
             15.times do
               edit_button.click
-              return shipping_address if shipping_address.present?
+              return add_shipping_address if add_shipping_address.present?
             end
           end
           expect("Row: #{row_num}").to eql "Unable to Select name: #{name}, company: #{company}, city: #{city}"
