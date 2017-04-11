@@ -37,8 +37,9 @@ rates_pm_comm_base: --tags @rates_pm_comm_base --guess DEBUG=false JENKINS=true 
 rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_plus
 rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pm_comm_plus
 rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground
+
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
+mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options
 
 
 

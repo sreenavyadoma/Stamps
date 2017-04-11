@@ -533,11 +533,14 @@ login_credentials_invalid:
 
 orders_credentials:
   stg:
+    rob:
+      usr: stgom0dqgzppy
+      pw: pass111
     mail_print_shipping_label_8x11:
       usr: stgom0dqgzppy
       pw: pass111
-    rob:
-      usr: stgom0dqgzppy
+    mail_bvt_advanced_options:
+      usr: stgyvngqz27b66
       pw: pass111
     rates_sheet_pme_comm_base_zone_3:
       usr: stgo0e9lb9fpv
@@ -2956,6 +2959,9 @@ mail_credentials:
   sc:
     rob:
       usr: scsxpeco6b90
+      pw: pass111
+    mail_bvt_advanced_options:
+      usr: xxxx
       pw: pass111
     mail_authentication:
       usr: scxzc76ola293
