@@ -204,9 +204,6 @@ Feature: Advanced Options BVT
     Then set Advanced Options Cost Code to None
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
-    Then select Advanced Options Extra Services
-    Then expect Extra Services is present
-    Then close Extra Services
     # Reference Number Textbox
     Then expect Advanced Options Reference Number field is present
     Then set Advanced Options Reference Number to random string
@@ -226,9 +223,6 @@ Feature: Advanced Options BVT
 
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
-    Then select Advanced Options Extra Services
-    Then expect Extra Services is present
-    Then close Extra Services
 
     # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
@@ -283,9 +277,6 @@ Feature: Advanced Options BVT
 
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
-    Then select Advanced Options Extra Services
-    Then expect Extra Services is present
-    Then close Extra Services
 
     # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
@@ -350,9 +341,6 @@ Feature: Advanced Options BVT
 
     # Extra Services
     Then expect Advanced Options Extra Services Button is visible
-    Then select Advanced Options Extra Services
-    Then expect Extra Services is present
-    Then close Extra Services
 
     # Mail Date Picker
     Then expect Advanced Options Mail Date field is present
