@@ -17,8 +17,8 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:mail_bvt_advanced_options) do |t|
+  t.profile = 'mail_bvt_advanced_options'
   t.cucumber_opts = "-p cuke_reports"
 end
 

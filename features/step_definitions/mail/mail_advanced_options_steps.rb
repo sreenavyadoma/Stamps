@@ -96,10 +96,6 @@ Then /^[Ee]xpect Advanced Options Cost Code is (.*)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.cost_code.text_box.text).to eql(expectation)
 end
 
-
-
-
-
 # Certified Mail
 Then /^[Ee]xpect Advanced Options Restricted Delivery is present$/ do
   expect(stamps.mail.print_form.advanced_options.restricted_delivery.present?).to be(true), "Advanced Options include Restricted Delivery is NOT present"
@@ -141,14 +137,6 @@ Then /^[Ee]xpect Print Form Electronic Return Receipt is unchecked$/ do
   expect(stamps.mail.print_form.electronic_return_receipt.checked?).to be(false), "Print form include Electronic Return Receipt is NOT unchecked"
 end
 
-
-
-
-
-
-
-
-
 Then /^[Ee]xpect Print Form Return Receipt is present$/ do
   expect(stamps.mail.print_form.return_receipt.present?).to be(true), "Print form include Return Receipt is NOT present"
 end
@@ -173,20 +161,13 @@ Then /^[Ee]xpect Print Form Return Receipt is unchecked$/ do
   expect(stamps.mail.print_form.return_receipt.checked?).to be(false), "Print form include Return Receipt is NOT unchecked"
 end
 
-
-
 Then /^[Ee]xpect Print Form Certified Mail is checked$/ do
   expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Return Receipt is NOT checked"
 end
+
 Then /^[Ee]xpect Print Form Certified Mail is present$/ do
   expect(stamps.mail.print_form.certified_mail.present?).to be(true), "Print form include Return Receipt is NOT present"
 end
-
-
-
-
-
-
 
 Then /^[Ee]xpect Advanced Options include Return Address is present$/ do
   expect(stamps.mail.print_form.advanced_options.return_address.present?).to be(true), "Advanced Options include Return Address is NOT present"

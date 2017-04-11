@@ -2,14 +2,49 @@ module Stamps
   module Mail
     module PrintFormPanel
 
+      class UpgradePlan < Browser::StampsModal
+        attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_element
+
+        def initialize(param)
+          super(param)
+          @window_title = StampsElement.new(browser.div(text: "Upgrade Plan"))
+          @close_btn = StampsElement.new(browser.img(text: "img[class*=close]"))
+          @upgrade_now_btn = StampsElement.new(browser.span(text: "Upgrade Now"))
+          @not_yet_btn = StampsElement.new(browser.span(text: "Not Yet"))
+          @paragraph_element = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]"))
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def close
+          close_btn.click_while_present
+        end
+
+        def paragraph
+          paragraph_element.text
+        end
+
+        def not_yet
+          not_yet_btn.click_while_present
+        end
+
+        def upgrade_now
+          upgrade_now_btn.click_while_present
+          expect(browser.url).to include(param.test_env), "User rerouted to an external URL. You are no longer in #{param.test_env}. Check URL #{browser.url}"
+        end
+      end
+
       class PrintOn < Browser::StampsModal
-        attr_accessor :drop_down, :text_box
+        attr_accessor :drop_down, :text_box, :upgrade_plan
         include PrintFormBlurOut
 
         def initialize(param)
           super(param)
           @drop_down = StampsElement.new(browser.div(id: "printmediadroplist-1036-trigger-picker"))
           @text_box = StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist-][name$=inputEl]"))
+          @upgrade_plan = UpgradePlan.new(param)
         end
 
         def present?
@@ -107,6 +142,7 @@ module Stamps
                 selection.scroll_into_view
                 selection.click
                 break if text_box.text.include?(selected_sub_str)
+                expect(upgrade_plan.present?).to be(false), "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
               else
                 drop_down.click unless selection.present?
               end
