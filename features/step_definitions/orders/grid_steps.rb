@@ -51,7 +51,7 @@ end
 
 When /^(?:U|u)ncheck Orders Grid row (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
-  expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(false)
+  expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(false), "Can't uncheck Orders Grid row #{row}"
 end
 
 Then /^[Ee]xpect Orders Grid Date Printed for this order is today$/ do
