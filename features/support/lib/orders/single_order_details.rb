@@ -19,21 +19,21 @@ module Stamps
         def select(str)
           return manage_shipping_adddress if manage_shipping_adddress.present?
           drop_down.click
+          lovs = []
+          browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
+
+          expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
+
           selection = StampsElement.new(browser.li(text: /#{str}/))
 
           if str.downcase.include? "manage shipping"
             15.times do
-              begin
-                drop_down.click unless selection.present?
-                selection.scroll_into_view
-                selection.click
-                sleep(0.35)
-                return manage_shipping_adddress if manage_shipping_adddress.present?
-              rescue Exception => e
-                logger.error e.message
-                logger.error e.backtrace.join("\n")
-              end
-              expect(manage_shipping_adddress.present?).to be(true)
+              drop_down.click unless selection.present?
+              selection.scroll_into_view
+              selection.click
+              sleep(0.35)
+              return manage_shipping_adddress if manage_shipping_adddress.present?
+              expect(manage_shipping_adddress.present?).to be(true), "Manage Shipping Address modal did not come up."
             end
           else
             10.times do
@@ -44,7 +44,7 @@ module Stamps
               return if text_box.text.include?(str)
             end
           end
-          expect("Unable to select service #{str}").to eql ""
+          expect(text_box.text).to include(str), "Unable to select Ship-From selection #{str}"
         end
       end
 

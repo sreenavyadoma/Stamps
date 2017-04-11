@@ -6,7 +6,6 @@ Feature:  BVT Address Cleansing
   @bvt_address_cleansing
   Scenario: Address Cleansing
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
     Then set Order Details form Ship-To to Domestic Address
       | name          | company      | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
