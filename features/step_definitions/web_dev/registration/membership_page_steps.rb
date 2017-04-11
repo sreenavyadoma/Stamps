@@ -102,27 +102,27 @@ Then /^[Ee]xpect WebReg Membership submit button exists$/ do
   expect(registration.membership.submit_button.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Membership why do you need my mailing information to contain: (.*)$/ do |str|
+Then /^[Ee]xpect WebReg Membership why do you need my mailing information to contain:$/ do |str|
   expect(registration.membership.why_do_you_need_mailingaddress).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Membership Can I use my Stamps.com account outside my office to contain: (.*)$/ do |str|
+Then /^[Ee]xpect WebReg Membership Can I change my mailing address to contain:$/ do |str|
+  expect(registration.membership.why_do_you_need_mailingaddress).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Membership Can I use my Stamps.com account outside my office to contain:$/ do |str|
   expect(registration.membership.can_I_use_stamps_outside_office).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Membership Is my credit card information safe to contain: (.*)$/ do |str|
+Then /^[Ee]xpect WebReg Membership Is my credit card information safe to contain:$/ do |str|
   expect(registration.membership.is_my_cc_info_safe).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Membership Pricing and billing details to contain: (.*)$/ do |str|
+Then /^[Ee]xpect WebReg Membership Pricing and billing details to contain:$/ do |str|
   expect(registration.membership.pricingnbilling).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Membership Cancel anytime to contain: (.*)$/ do |str|
-  expect(registration.membership.membership_cancel_anytime).to eql(str)
-end
-
-Then /^[Ee]xpect WebReg Membership Cancel anytime to contain: (.*)$/ do |str|
+Then /^[Ee]xpect WebReg Membership Cancel anytime to contain:$/ do |str|
   expect(registration.membership.membership_cancel_anytime).to eql(str)
 end
 

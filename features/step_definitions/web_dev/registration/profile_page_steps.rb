@@ -370,11 +370,11 @@ end
   expect(registration.profile_continue_button.present?).to be (true)
 end
 
-Then /^[Ee]xpect WebReg Profile content under Why do I need to create an account "([^\"]*)"$/ do |str|
+Then /^[Ee]xpect WebReg Profile content under Why do I need to create an account$/ do |str|
     expect(registration.profile_content_createanaccount).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Profile content under Money-saving offers and new products "([^\"]*)"$/ do |str|
+Then /^[Ee]xpect WebReg Profile content under Money-saving offers and new products$/ do |str|
   expect(registration.profile_content_money_saving_offers).to eql(str)
 end
 

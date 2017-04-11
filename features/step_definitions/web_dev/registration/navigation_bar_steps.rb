@@ -6,3 +6,4 @@ end
 Then /^[Ee]xpect WebReg navigation bar USPS logo exists$/ do
   expect(registration.navigation.usps_logo.present?).to be(true)
 end
+
