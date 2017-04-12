@@ -179,7 +179,6 @@ Then /^[Ee]xpect Print Form Return Receipt is present$/ do
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
-  step "Expect Print form responds to Return Receipt (return_receipt)"
   expect{stamps.mail.print_form.return_receipt.present?}.to raise_exception(NoMethodError)
 end
 
