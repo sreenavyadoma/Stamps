@@ -145,7 +145,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Restricted Delivery is unchecked$/ do
   step "Expect Advanced Options responds to Restricted Delivery (restricted_delivery)"
-  expect(stamps.mail.print_form.advanced_options.restricted_delivery).to be_checked, "Advanced Options include Restricted Delivery is NOT unchecked"
+  expect(stamps.mail.print_form.advanced_options.restricted_delivery).not_to be_checked, "Advanced Options include Restricted Delivery is NOT unchecked"
 end
 
 Then /^[Ee]xpect Print Form Electronic Return Receipt is present$/ do
@@ -199,7 +199,7 @@ end
 
 Then /^[Ee]xpect Print Form Return Receipt is unchecked$/ do
   step "Expect Print form responds to Return Receipt (return_receipt)"
-  expect(stamps.mail.print_form.return_receipt).to be_checked, "Print form include Return Receipt is NOT unchecked"
+  expect(stamps.mail.print_form.return_receipt).not_to be_checked, "Print form include Return Receipt is NOT unchecked"
 end
 
 Then /^[Ee]xpect Print Form Certified Mail is checked$/ do
