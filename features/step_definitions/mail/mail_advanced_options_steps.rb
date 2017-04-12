@@ -4,12 +4,16 @@ Then /^[Ss]how Advanced Options$/ do
   expect(stamps.mail.print_form.advanced_options).to be_present, "Print media #{param.print_media} does not have Advanced Options. Check your feature file workflow."
 end
 
-Then /^(?:H|h)ide Advanced Options$/ do
+Then /^[Hh]ide Advanced Options$/ do
   stamps.mail.print_form.advanced_options.hide
 end
 
-Then /^[Ee]xpect Advanced Options responds to (.+) \((.+)\)$/ do |advanced_option_name, method|
-  expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media: #{param.print_media} - Advanced Options #{advanced_option_name} does not respond to #{advanced_option_name}. Check your feature file workflow."
+Then /^[Ee]xpect Advanced Options responds to (.+) \((.+)\)$/ do |method_description, method|
+  expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media: #{param.print_media}. Advanced Options does not respond to #{method_description} (#{method})"
+end
+
+Then /^[Ee]xpect Print form responds to (.+) \((.+)\)$/ do |method_description, method|
+  expect(stamps.mail.print_form).to respond_to(method.to_sym), "Print media: #{param.print_media}. Print form does not respond to #{method_description} (#{method})"
 end
 
 Then /^[Ss]elect Advanced Options Extra Services$/ do
@@ -145,67 +149,67 @@ Then /^[Ee]xpect Advanced Options Restricted Delivery is unchecked$/ do
 end
 
 Then /^[Ee]xpect Print Form Electronic Return Receipt is present$/ do
-  step "Expect Advanced Options responds to Electronic Return Receipt (electronic_return_receipt)"
+  step "Expect Print form responds to Electronic Return Receipt (electronic_return_receipt)"
   expect(stamps.mail.print_form.electronic_return_receipt).to be_present, "Print form include Electronic Return Receipt is NOT present"
 end
 
 Then /^[Cc]heck Print Form Electronic Return Receipt$/ do
-  step "Expect Advanced Options responds to Electronic Return Receipt (electronic_return_receipt)"
+  step "Expect Print form responds to Electronic Return Receipt (electronic_return_receipt)"
   stamps.mail.print_form.electronic_return_receipt.check
 end
 
 Then /^[Ee]xpect Print Form Electronic Return Receipt is checked$/ do
-  step "Expect Advanced Options responds to Electronic Return Receipt (electronic_return_receipt)"
+  step "Expect Print form responds to Electronic Return Receipt (electronic_return_receipt)"
   expect(stamps.mail.print_form.electronic_return_receipt).to be_checked, "Print form include Electronic Return Receipt is NOT checked"
 end
 
 Then /^[Uu]ncheck Print Form Electronic Return Receipt$/ do
-  step "Expect Advanced Options responds to Electronic Return Receipt (electronic_return_receipt)"
+  step "Expect Print form responds to Electronic Return Receipt (electronic_return_receipt)"
   stamps.mail.print_form.electronic_return_receipt.uncheck
 end
 
 Then /^[Ee]xpect Print Form Electronic Return Receipt is unchecked$/ do
-  step "Expect Advanced Options responds to Electronic Return Receipt (electronic_return_receipt)"
+  step "Expect Print form responds to Electronic Return Receipt (electronic_return_receipt)"
   expect(stamps.mail.print_form.electronic_return_receipt).not_to be_checked, "Print form include Electronic Return Receipt is NOT unchecked"
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is present$/ do
-  step "Expect Advanced Options responds to Return Receipt (return_receipt)"
+  step "Expect Print form responds to Return Receipt (return_receipt)"
   expect(stamps.mail.print_form.return_receipt).to be_present, "Print form include Return Receipt is NOT present"
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
-  step "Expect Advanced Options responds to Return Receipt (return_receipt)"
+  step "Expect Print form responds to Return Receipt (return_receipt)"
   expect{stamps.mail.print_form.return_receipt.present?}.to raise_exception(NoMethodError)
 end
 
 Then /^[Cc]heck Print Form Return Receipt$/ do
-  step "Expect Advanced Options responds to Return Receipt (return_receipt)"
+  step "Expect Print form responds to Return Receipt (return_receipt)"
   stamps.mail.print_form.return_receipt.check
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is checked$/ do
-  step "Expect Advanced Options responds to Return Receipt (return_receipt)"
+  step "Expect Print form responds to Return Receipt (return_receipt)"
   expect(stamps.mail.print_form.return_receipt).to be_checked, "Print form include Return Receipt is NOT checked"
 end
 
 Then /^[Uu]ncheck Print Form Return Receipt$/ do
-  step "Expect Advanced Options responds to Return Receipt (return_receipt)"
+  step "Expect Print form responds to Return Receipt (return_receipt)"
   stamps.mail.print_form.return_receipt.uncheck
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is unchecked$/ do
-  step "Expect Advanced Options responds to Return Receipt (return_receipt)"
+  step "Expect Print form responds to Return Receipt (return_receipt)"
   expect(stamps.mail.print_form.return_receipt).to be_checked, "Print form include Return Receipt is NOT unchecked"
 end
 
 Then /^[Ee]xpect Print Form Certified Mail is checked$/ do
-  step "Expect Advanced Options responds to Certified Mail (certified_mail)"
+  step "Expect Print form responds to Certified Mail (certified_mail)"
   expect(stamps.mail.print_form.certified_mail).to be_checked, "Print form include Return Receipt is NOT checked"
 end
 
 Then /^[Ee]xpect Print Form Certified Mail is present$/ do
-  step "Expect Advanced Options responds to Certified Mail (certified_mail)"
+  step "Expect Print form responds to Certified Mail (certified_mail)"
   expect(stamps.mail.print_form.certified_mail).to be_present, "Print form include Return Receipt is NOT present"
 end
 
