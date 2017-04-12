@@ -119,7 +119,6 @@ module Stamps
         include MailAdvancedOptions
         include MailDimensions
 
-
         def certified_mail
           if @certified_mail.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-cmcheckbox")
@@ -227,6 +226,8 @@ module Stamps
           super(param)
           @print_media = param.print_media
         end
+
+
       end
     end
   end

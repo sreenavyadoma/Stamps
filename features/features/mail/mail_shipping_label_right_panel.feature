@@ -8,7 +8,7 @@ Feature: Extra Services BVT
 
     Then select Print On Shipping Label - 5 ½" x 8 ½"
 
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
 

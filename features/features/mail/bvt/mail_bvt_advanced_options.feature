@@ -6,14 +6,20 @@ Feature: Advanced Options BVT
   @mail_bvt_advanced_options
   Scenario: Advanced Options BVT
 
-    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3810
-    Then select Print On Certified Mail #11 Envelope - Stamps.com SDC-3810
+    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3610
+    Then select Print On Certified Mail Label - SDC-3610
+    Then expect Print Form Return Receipt is present
+
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To to a random address in zone 1
+    Then select Print form service PM Package
+
+    Then show Advanced Options
 
     Then expect Print Form Certified Mail is checked
     Then expect Print Form Certified Mail is present
 
-    Then expect Print Form Return Receipt is present
-    Then expect Print Form Return Receipt is checked
+    Then expect Print Form Return Receipt is not visible
 
     Then expect Print Form Electronic Return Receipt is present
     Then check Print Form Electronic Return Receipt
@@ -39,19 +45,14 @@ Feature: Advanced Options BVT
     Then set Advanced Options Cost Code to None
     Then expect Advanced Options Cost Code is None
 
-    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3610
-    Then select Print On Certified Mail Label - SDC-3610
-
-    Then set Print form Mail-From to El Segundo
-    Then set Print form Mail-To to a random address in zone 1
-    Then select Print form service PM Package
-
-    Then show Advanced Options
+    # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3810
+    Then select Print On Certified Mail #11 Envelope - Stamps.com SDC-3810
 
     Then expect Print Form Certified Mail is checked
     Then expect Print Form Certified Mail is present
 
-    Then expect Print Form Return Receipt is not visible
+    Then expect Print Form Return Receipt is present
+    Then expect Print Form Return Receipt is checked
 
     Then expect Print Form Electronic Return Receipt is present
     Then check Print Form Electronic Return Receipt
@@ -186,7 +187,7 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Shipping Labels Advanced Options
     Then select Print On Shipping Label - 8 ½" x 11" Paper
 
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
     Then select Print form service PM Package
     Then show Advanced Options
@@ -260,7 +261,7 @@ Feature: Advanced Options BVT
     # Populate Stamps form
     Then set Print form Serial Number to random C series
     Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then select Print form service FCM Letter
     Then set Print form Quantity to 1
@@ -279,7 +280,7 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Rolls Advanced Options
     Then select Print On Roll - 4" x 6" Shipping Label
 
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
     Then select Print form service PM Package
     Then show Advanced Options
@@ -336,7 +337,7 @@ Feature: Advanced Options BVT
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
 
     # Populate Envelope form
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 2
     Then select Print form service FCM Letter

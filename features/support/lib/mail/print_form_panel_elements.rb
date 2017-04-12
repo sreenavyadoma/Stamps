@@ -334,6 +334,7 @@ module Stamps
           drop_down.click
 
           selection = StampsElement.new(browser.li(text: /#{str}/))
+          selection = StampsElement.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]) if str.downcase.include?('default')
 
           if str.downcase.include? "manage shipping"
             10.times do

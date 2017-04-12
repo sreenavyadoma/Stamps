@@ -12,7 +12,7 @@ Feature: Print form L Series - Calculate Postage
     Then select Print On Stamps
     Then set Print form Serial Number to L12345
     Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then Mail Stamps: Select Calculate Mail service First-Class Mail Large Envelope-Flat
     Then set Print form Quantity to 1

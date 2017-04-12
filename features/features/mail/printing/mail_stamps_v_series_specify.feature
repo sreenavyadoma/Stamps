@@ -11,9 +11,9 @@ Feature: Print form V Series - Specify Postage
     Then select Print On Stamps
     Then set Print form Serial Number to V12345
     Then select Advanced Options Specify Postage Amount
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
-    Then Mail Stamps: Select Specify Mail service First Class
+    Then select Print form service FCM Letter
     Then set Print form Amount to 0.15
     Then set Print form Quantity to 1
     Then set Advanced Options Cost Code to None

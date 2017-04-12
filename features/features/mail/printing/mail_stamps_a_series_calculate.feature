@@ -12,7 +12,7 @@ Feature: Print form A Series - Calculate Postage
     Then select Print On Stamps
     Then set Print form Serial Number to A12345
     Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then select Print form service FCM Letter
     Then set Print form Quantity to 1

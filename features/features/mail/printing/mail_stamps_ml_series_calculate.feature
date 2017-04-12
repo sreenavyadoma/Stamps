@@ -12,7 +12,7 @@ Feature: Print form ML Series - Calculate Postage
     Then select Print On Stamps
     Then set Print form Serial Number to ML1234
     Then select Advanced Options Calculate Postage Amount
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form ounces to 1
     Then select Print form service FCM Letter
     Then set Print form Quantity to 1

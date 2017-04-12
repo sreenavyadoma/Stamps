@@ -8,7 +8,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
 
    #mail_print_shipping_label_sdc1200_fcm_large_envelope
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope
@@ -18,7 +18,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
 
    #mail_print_shipping_label_sdc1200_fcm_package
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service FCM Package/Thick Envelope
@@ -28,7 +28,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
 
    #mail_print_shipping_label_sdc1200_psg_large_package
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PSG Large Package
@@ -38,7 +38,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
 
    #mail_print_shipping_label_sdc1200_psg_oversized_package
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PSG Oversized Package
@@ -48,7 +48,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
 
    #mail_print_shipping_label_sdc1200_psg_package
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PSG Package

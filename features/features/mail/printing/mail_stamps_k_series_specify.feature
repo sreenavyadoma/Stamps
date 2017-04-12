@@ -11,7 +11,7 @@ Feature: Print form k Series - Specify Postage
     Then select Print On Stamps
     Then set Print form Serial Number to K12345
     Then select Advanced Options Specify Postage Amount
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then select Print form service Media Mail
     Then set Print form Amount to 0.15

@@ -2,7 +2,7 @@ module Stamps
   module Mail
     module AdvancedOptions
 
-      module AdvancedOptionsExtraServices
+      module AdvOptExtraServices
         def extra_services_btn
           @extra_services_btn = StampsElement.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")) if @extra_services_btn.nil?
           @extra_services_btn
@@ -10,36 +10,36 @@ module Stamps
 
         def extra_services
           return @extra_services if !@extra_services.nil? && @extra_services.present?
-          expect(extra_services_btn.present?).to be(true), "Extra Services button is not present."
+          expect(extra_services_btn).to be_present, "Extra Services button is not present."
           @extra_services = PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
           20.times do extra_services_btn.click unless @extra_services.present? end
-          expect(@extra_services.present?).to be(true), "Extra Services modal did not open."
+          expect(@extra_services).to be_present, "Extra Services modal did not open."
           @extra_services
         end
       end
 
-      module AdvancedOptionsReferenceNumber
+      module AdvOptReferenceNumber
         def reference_number
           @reference_number = StampsTextbox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) if @reference_number.nil? || !@reference_number.present?
           @reference_number
         end
       end
 
-      module AdvancedOptionsCostCode
+      module AdvOptCostCode
         def cost_code
           @cost_code = StampsComboBox.new(browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"), browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]"), :li, 0) if @cost_code.nil?
           @cost_code
         end
       end
 
-      module AdvancedOptionsMailDate
+      module AdvOptMailDate
         def mail_date
           @mail_date = MailDate.new(param) if @mail_date.nil?
           @mail_date
         end
       end
 
-      module AdvancedOptionsHideLabelValue
+      module AdvOptHideLabelValue
         def hide_label_value
           if @hide_label_value.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(1)>div>div>span")
@@ -50,7 +50,7 @@ module Stamps
         end
       end
 
-      module AdvancedOptionsPrintReferenceNumberCheckbox
+      module AdvOptPrintReferenceNumber
         def print_reference_number
           if @print_reference_number.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)>div>div>span")
@@ -61,7 +61,7 @@ module Stamps
         end
       end
 
-      module AdvancedOptionsPrintReceipt
+      module AdvOptPrintReceipt
         def print_receipt
           if @print_receipt.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)>div>div>span")
@@ -72,7 +72,7 @@ module Stamps
         end
       end
 
-      module AdvancedOptionsToggle
+      module AdvOptToggle
         def show
           @show_element = StampsElement.new(browser.span(text: "Show Advanced Options")) if @show_element.nil?
           @hide_element = StampsElement.new(browser.span(text: "Hide Advanced Options")) if @hide_element.nil?
@@ -96,10 +96,10 @@ module Stamps
       end
 
       module StampsAdvancedOptions
-        include AdvancedOptionsToggle
-        include AdvancedOptionsExtraServices
-        include AdvancedOptionsReferenceNumber
-        include AdvancedOptionsCostCode
+        include AdvOptToggle
+        include AdvOptExtraServices
+        include AdvOptReferenceNumber
+        include AdvOptCostCode
 
         def present?
           cost_code.present?
@@ -126,14 +126,14 @@ module Stamps
       end
 
       module LabelsAdvancedOptions
-        include AdvancedOptionsToggle
-        include AdvancedOptionsExtraServices
-        include AdvancedOptionsMailDate
-        include AdvancedOptionsReferenceNumber
-        include AdvancedOptionsCostCode
-        include AdvancedOptionsHideLabelValue
-        include AdvancedOptionsPrintReferenceNumberCheckbox
-        include AdvancedOptionsPrintReceipt
+        include AdvOptToggle
+        include AdvOptExtraServices
+        include AdvOptMailDate
+        include AdvOptReferenceNumber
+        include AdvOptCostCode
+        include AdvOptHideLabelValue
+        include AdvOptPrintReferenceNumber
+        include AdvOptPrintReceipt
 
         def present?
           cost_code.present?
@@ -141,11 +141,11 @@ module Stamps
       end
 
       module EnvelopesAdvancedOptions
-        include AdvancedOptionsToggle
-        include AdvancedOptionsExtraServices
-        include AdvancedOptionsMailDate
-        include AdvancedOptionsReferenceNumber
-        include AdvancedOptionsCostCode
+        include AdvOptToggle
+        include AdvOptExtraServices
+        include AdvOptMailDate
+        include AdvOptReferenceNumber
+        include AdvOptCostCode
 
         def present?
           cost_code.present?
@@ -180,11 +180,11 @@ module Stamps
       end
 
       module CertifiedMailsAdvancedOptions
-        include AdvancedOptionsToggle
-        include AdvancedOptionsExtraServices
-        include AdvancedOptionsMailDate
-        include AdvancedOptionsReferenceNumber
-        include AdvancedOptionsCostCode
+        include AdvOptToggle
+        include AdvOptExtraServices
+        include AdvOptMailDate
+        include AdvOptReferenceNumber
+        include AdvOptCostCode
 
         def present?
           cost_code.present?
@@ -202,14 +202,14 @@ module Stamps
       end
 
       module RollsAdvancedOptions
-        include AdvancedOptionsToggle
-        include AdvancedOptionsExtraServices
-        include AdvancedOptionsMailDate
-        include AdvancedOptionsReferenceNumber
-        include AdvancedOptionsCostCode
-        include AdvancedOptionsHideLabelValue
-        include AdvancedOptionsPrintReferenceNumberCheckbox
-        include AdvancedOptionsPrintReceipt
+        include AdvOptToggle
+        include AdvOptExtraServices
+        include AdvOptMailDate
+        include AdvOptReferenceNumber
+        include AdvOptCostCode
+        include AdvOptHideLabelValue
+        include AdvOptPrintReferenceNumber
+        include AdvOptPrintReceipt
 
         def present?
           cost_code.present?

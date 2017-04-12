@@ -8,7 +8,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
 
     #mail_print_shipping_label_sdc1200_pm_large_box
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PM Large Flat Rate Box
@@ -18,7 +18,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
 
    #mail_print_shipping_label_sdc1200_pm_medium_box
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PM Medium Flat Rate Box
@@ -28,7 +28,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
 
    #mail_print_shipping_label_sdc1200_pm_regional_box_a
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box A
@@ -38,7 +38,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
 
    #mail_print_shipping_label_sdc1200_pm_regional_box_b
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box B
@@ -48,7 +48,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Box
 
    #mail_print_shipping_label_sdc1200_pm_small_box
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-    Then set Print form Mail-From to El Segundo
+    Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
     Then select Print form service PM Small Flat Rate Box
