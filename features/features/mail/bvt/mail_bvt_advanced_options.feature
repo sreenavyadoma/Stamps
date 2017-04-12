@@ -8,7 +8,6 @@ Feature: Advanced Options BVT
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3610
     Then select Print On Certified Mail Label - SDC-3610
-    Then expect Print Form Return Receipt is present
 
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1

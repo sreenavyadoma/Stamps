@@ -349,7 +349,7 @@ module Stamps
           else
             10.times do
               selection.click
-              break if text_box.text.include?(str)
+              break if text_box.text.length > 0
               drop_down.click unless selection.present?
             end
           end
