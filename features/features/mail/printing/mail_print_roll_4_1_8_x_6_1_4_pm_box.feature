@@ -1,10 +1,12 @@
+
+@mail_print_roll_4_1_8_x_6_1_4_pm_box
 Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
 
   Background:
     Given a valid user is signed in to Web Apps
 
   @mail_print_roll_4_1_8_x_6_1_4_pm_box
-  Scenario: Roll - 4 ⅛” x 6 ¼” - PM Box
+  Scenario: Print On: Roll - 4 ⅛” x 6 ¼” - PM Box
 
    #mail_print_roll_4_1_8_x_6_1_4_pm_small_box
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
@@ -38,6 +40,9 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then Print Postage
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
+
+  @mail_print_roll_4_1_8_x_6_1_4_pm_regional_box
+  Scenario: Print On: Roll - 4 ⅛” x 6 ¼” - PM Regional Box
 
    #mail_print_roll_4_1_8_x_6_1_4_pm_regional_box_a
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
