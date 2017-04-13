@@ -1,9 +1,8 @@
-Then /^[Ee]xpect WebReg Profile Privacy Policy link exists$/ do
-  expect(registration.profile.privacy_policy.present?).to be (true)
-end
+
 
 Then /^[Ee]xpect WebReg Profile copyright link exists$/ do
   expect(registration.footer.copyright_link.present?).to be (true)
+  #expect(registration.footer.copyright_link).to be_present
 end
 
 Then /^[Ee]xpect WebReg Profile Norton logo exists$/ do
