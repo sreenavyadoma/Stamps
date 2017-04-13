@@ -7,7 +7,7 @@ Then /^Settings: Check Services$/ do
   @general_settings.services.check
 end
 
-Then /^(?:I|i)n Settings modal, Uncheck Services$/ do
+Then /^[Ii]n Settings modal, Uncheck Services$/ do
   @general_settings.services.uncheck
 end
 
@@ -49,31 +49,31 @@ end
 
 # Set Logoff
 
-Then /^(?:I|i)n Settings modal, set Logoff to 5 min.$/ do
+Then /^[Ii]n Settings modal, set Logoff to 5 min.$/ do
   step "In Settings modal, Logoff set 5 min"
 end
 
-Then /^(?:I|i)n Settings modal, set Logoff to 10 min.$/ do
+Then /^[Ii]n Settings modal, set Logoff to 10 min.$/ do
   step "In Settings modal, Logoff set 10 min"
 end
 
-Then /^(?:I|i)n Settings modal, set Logoff to 15 min.$/ do
+Then /^[Ii]n Settings modal, set Logoff to 15 min.$/ do
   step "In Settings modal, Logoff set 15 min"
 end
 
-Then /^(?:I|i)n Settings modal, set Logoff to 30 min.$/ do
+Then /^[Ii]n Settings modal, set Logoff to 30 min.$/ do
   step "In Settings modal, Logoff set 30 min"
 end
 
-Then /^(?:I|i)n Settings modal, set Logoff to 1 hour.$/ do
+Then /^[Ii]n Settings modal, set Logoff to 1 hour.$/ do
   step "In Settings modal, Logoff set 1 hour"
 end
 
-Then /^(?:I|i)n Settings modal, set Logoff to 2 hours$/ do
+Then /^[Ii]n Settings modal, set Logoff to 2 hours$/ do
   step "In Settings modal, Logoff set 2 hours"
 end
 
-Then /^(?:I|i)n Settings modal, Logoff set (.*)$/ do |value|
+Then /^[Ii]n Settings modal, Logoff set (.*)$/ do |value|
   case value.downcase
     when "5 min"
       @general_settings.log_off.five_min
@@ -92,103 +92,103 @@ Then /^(?:I|i)n Settings modal, Logoff set (.*)$/ do |value|
   end
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 12:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 12:00 a.m.$/ do
   step "In Settings modal, Postdate Set 12:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 1:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 1:00 a.m.$/ do
   step "In Settings modal, Postdate Set 1:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 2:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 2:00 a.m.$/ do
   step "In Settings modal, Postdate Set 2:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 3:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 3:00 a.m.$/ do
   step "In Settings modal, Postdate Set 3:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 4:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 4:00 a.m.$/ do
   step "In Settings modal, Postdate Set 4:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 5:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 5:00 a.m.$/ do
   step "In Settings modal, Postdate Set 5:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 6:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 6:00 a.m.$/ do
   step "In Settings modal, Postdate Set 6:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 7:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 7:00 a.m.$/ do
   step "In Settings modal, Postdate Set 7:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 8:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 8:00 a.m.$/ do
   step "In Settings modal, Postdate Set 8:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 9:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 9:00 a.m.$/ do
   step "In Settings modal, Postdate Set 9:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 10:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 10:00 a.m.$/ do
   step "In Settings modal, Postdate Set 10:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 11:00 a.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 11:00 a.m.$/ do
   step "In Settings modal, Postdate Set 11:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 12:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 12:00 p.m.$/ do
   step "In Settings modal, Postdate Set 12:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 1:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 1:00 p.m.$/ do
   step "In Settings modal, Postdate Set 1:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 2:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 2:00 p.m.$/ do
   step "In Settings modal, Postdate Set 2:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 3:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 3:00 p.m.$/ do
   step "In Settings modal, Postdate Set 3:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 4:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 4:00 p.m.$/ do
   step "In Settings modal, Postdate Set 4:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 5:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 5:00 p.m.$/ do
   step "In Settings modal, Postdate Set 5:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 6:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 6:00 p.m.$/ do
   step "In Settings modal, Postdate Set 6:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 7:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 7:00 p.m.$/ do
   step "In Settings modal, Postdate Set 7:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 8:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 8:00 p.m.$/ do
   step "In Settings modal, Postdate Set 8:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 9:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 9:00 p.m.$/ do
   step "In Settings modal, Postdate Set 9:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 10:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 10:00 p.m.$/ do
   step "In Settings modal, Postdate Set 10:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, set Postdate to 11:00 p.m.$/ do
+Then /^[Ii]n Settings modal, set Postdate to 11:00 p.m.$/ do
   step "In Settings modal, Postdate Set 11:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Postdate Set (.*)$/ do |value|
+Then /^[Ii]n Settings modal, Postdate Set (.*)$/ do |value|
   logger.step "In Settings modal, Postdate Set #{value}"
   case value.downcase
     when "12:00 a.m."
@@ -244,38 +244,38 @@ Then /^(?:I|i)n Settings modal, Postdate Set (.*)$/ do |value|
   end
 end
 # Mail Balance
-Then /^(?:I|i)n Settings modal, set Mail Balance to 0$/ do
+Then /^[Ii]n Settings modal, set Mail Balance to 0$/ do
   step 'In Settings modal, Mail Balance Set 0'
 end
 
-Then /^(?:I|i)n Settings modal, set Mail Balance to 10$/ do
+Then /^[Ii]n Settings modal, set Mail Balance to 10$/ do
   step 'In Settings modal, Mail Balance Set 10'
 end
 
-Then /^(?:I|i)n Settings modal, set Mail Balance to 25$/ do
+Then /^[Ii]n Settings modal, set Mail Balance to 25$/ do
   step 'In Settings modal, Mail Balance Set 25'
 end
 
-Then /^(?:I|i)n Settings modal, set Mail Balance to 50$/ do
+Then /^[Ii]n Settings modal, set Mail Balance to 50$/ do
   step 'In Settings modal, Mail Balance Set 50'
 end
 
 
-Then /^(?:I|i)n Settings modal, set Mail Balance to 100$/ do
+Then /^[Ii]n Settings modal, set Mail Balance to 100$/ do
   step 'In Settings modal, Mail Balance Set 100'
 end
 
 
-Then /^(?:I|i)n Settings modal, set Mail Balance to 250$/ do
+Then /^[Ii]n Settings modal, set Mail Balance to 250$/ do
   step 'In Settings modal, Mail Balance Set 250'
 end
 
 
-Then /^(?:I|i)n Settings modal, set Mail Balance to 500$/ do
+Then /^[Ii]n Settings modal, set Mail Balance to 500$/ do
   step 'In Settings modal, Mail Balance Set 500'
 end
 
-Then /^(?:I|i)n Settings modal, Mail Balance Set (.*)$/ do |value|
+Then /^[Ii]n Settings modal, Mail Balance Set (.*)$/ do |value|
   case value.downcase
     when "0"
       @general_settings.postage_balance.zero
@@ -298,220 +298,220 @@ end
 
 # Expectations
 #  Services
-Then /^(?:I|i)n Settings modal, Expect Services Checked$/ do
+Then /^[Ii]n Settings modal, Expect Services Checked$/ do
   expect(@general_settings.services).to be_checked
 end
 
-Then /^(?:I|i)n Settings modal, Expect Services Unchecked$/ do
+Then /^[Ii]n Settings modal, Expect Services Unchecked$/ do
   expect(@general_settings.services).not_to be_checked
 end
 
 #  Print Confirm
-Then /^(?:I|i)n Settings modal, Expect Print Confirm Checked$/ do
+Then /^[Ii]n Settings modal, Expect Print Confirm Checked$/ do
   expect(@general_settings.print_confirm).to be_checked
 end
 
-Then /^(?:I|i)n Settings modal, Expect Print Confirm Unchecked$/ do
+Then /^[Ii]n Settings modal, Expect Print Confirm Unchecked$/ do
   expect(@general_settings.print_confirm).not_to be_checked
 end
 
 #  Print Confirm
-Then /^(?:I|i)n Settings modal, Expect USPS Terms Checked$/ do
+Then /^[Ii]n Settings modal, Expect USPS Terms Checked$/ do
   expect(@general_settings.usps_terms).to be_checked
 end
 
-Then /^(?:I|i)n Settings modal, Expect USPS Terms Unchecked$/ do
+Then /^[Ii]n Settings modal, Expect USPS Terms Unchecked$/ do
   expect(@general_settings.usps_terms).not_to be_checked
 end
 
 #  Contacts
-Then /^(?:I|i)n Settings modal, Expect Contacts Checked$/ do
+Then /^[Ii]n Settings modal, Expect Contacts Checked$/ do
   expect(@general_settings.contacts).to be_checked
 end
 
-Then /^(?:I|i)n Settings modal, Expect Contacts Unchecked$/ do
+Then /^[Ii]n Settings modal, Expect Contacts Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   expect(@general_settings.contacts).not_to be_checked
 end
 
 #  Shipments
-Then /^(?:I|i)n Settings modal, Expect Shipments Checked$/ do
+Then /^[Ii]n Settings modal, Expect Shipments Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
   expect(@general_settings.shipments).to be_checked
 end
 
-Then /^(?:I|i)n Settings modal, Expect Shipments Unchecked$/ do
+Then /^[Ii]n Settings modal, Expect Shipments Unchecked$/ do
   expect(@general_settings.shipments).not_to be_checked
 end
 
 # Logoff
-Then /^(?:I|i)n Settings modal, Expect Logoff is set for 5 min.$/ do
+Then /^[Ii]n Settings modal, Expect Logoff is set for 5 min.$/ do
   step "In Settings modal, Expect Logoff is 5 min."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Logoff is set for 10 min.$/ do
+Then /^[Ii]n Settings modal, Expect Logoff is set for 10 min.$/ do
   step "In Settings modal, Expect Logoff is 10 min."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Logoff is set for 15 min.$/ do
+Then /^[Ii]n Settings modal, Expect Logoff is set for 15 min.$/ do
   step "In Settings modal, Expect Logoff is 15 min."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Logoff is set for 30 min.$/ do
+Then /^[Ii]n Settings modal, Expect Logoff is set for 30 min.$/ do
   step "In Settings modal, Expect Logoff is 30 min."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Logoff is set for 1 hour$/ do
+Then /^[Ii]n Settings modal, Expect Logoff is set for 1 hour$/ do
   step "In Settings modal, Expect Logoff is 1 hour"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Logoff is set for 2 hours$/ do
+Then /^[Ii]n Settings modal, Expect Logoff is set for 2 hours$/ do
   step "In Settings modal, Expect Logoff is 2 hours"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Logoff is (.*)$/ do |expectation|
+Then /^[Ii]n Settings modal, Expect Logoff is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
   expect(@general_settings.log_off.text_box.text).to eql expectation
 end
 
 # Postadate
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 12:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 12:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 12:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 1:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 1:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 1:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 2:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 2:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 2:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 3:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 3:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 3:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 4:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 4:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 4:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 5:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 5:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 5:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 6:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 6:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 6:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 7:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 7:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 7:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 8:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 8:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 8:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 9:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 9:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 9:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 10:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 10:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 10:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 11:00 a.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 11:00 a.m.$/ do
   step "In Settings modal, Expect Postdate is 11:00 a.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 12:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 12:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 12:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 1:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 1:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 1:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 2:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 2:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 2:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 3:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 3:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 3:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 4:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 4:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 4:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 5:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 5:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 5:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 6:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 6:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 6:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 7:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 7:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 7:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 8:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 8:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 8:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 9:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 9:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 9:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 10:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 10:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 10:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate set to 11:00 p.m.$/ do
+Then /^[Ii]n Settings modal, Expect Postdate set to 11:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 11:00 p.m."
 end
 
-Then /^(?:I|i)n Settings modal, Expect Postdate is (.*)$/ do |expectation|
+Then /^[Ii]n Settings modal, Expect Postdate is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
   expect(@general_settings.post_date.text_box.text).to eql expectation
 end
 
 # Mail Balance
-Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 0$/ do
+Then /^[Ii]n Settings modal, Expect Mail Balance set to 0$/ do
   step "In Settings modal, Expect Mail Balance is $0"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 10$/ do
+Then /^[Ii]n Settings modal, Expect Mail Balance set to 10$/ do
   step "In Settings modal, Expect Mail Balance is $10"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 25$/ do
+Then /^[Ii]n Settings modal, Expect Mail Balance set to 25$/ do
   step "In Settings modal, Expect Mail Balance is $25"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 50$/ do
+Then /^[Ii]n Settings modal, Expect Mail Balance set to 50$/ do
   step "In Settings modal, Expect Mail Balance is $50"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 100$/ do
+Then /^[Ii]n Settings modal, Expect Mail Balance set to 100$/ do
   step "In Settings modal, Expect Mail Balance is $100"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 250$/ do
+Then /^[Ii]n Settings modal, Expect Mail Balance set to 250$/ do
   step "In Settings modal, Expect Mail Balance is $250"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Mail Balance set to 500$/ do
+Then /^[Ii]n Settings modal, Expect Mail Balance set to 500$/ do
   step "In Settings modal, Expect Mail Balance is $500"
 end
 
-Then /^(?:I|i)n Settings modal, Expect Mail Balance is (.*)$/ do |expectation|
+Then /^[Ii]n Settings modal, Expect Mail Balance is (.*)$/ do |expectation|
   expect(@general_settings.postage_balance.text_box.text).to eql expectation
 end
 
 # Reset Fields
 
-Then /^(?:I|i)n Settings modal, Open Reset Fields Modal$/ do
+Then /^[Ii]n Settings modal, Open Reset Fields Modal$/ do
   @reset_fields = @general_settings.reset_fields
 end
 
@@ -776,13 +776,13 @@ Then /^Reset Fields:  Close$/ do
   @reset_fields.close
 end
 
-Then /^(?:I|i)n Settings modal, Save$/ do
+Then /^[Ii]n Settings modal, Save$/ do
   step "Open Settings Modal" if @general_settings.nil?
   #logger.step "In Settings modal, Save"
   @general_settings.save
 end
 
-Then /^(?:I|i)n Settings modal, Close$/ do
+Then /^[Ii]n Settings modal, Close$/ do
   step "Open Settings Modal" if @general_settings.nil?
   #logger.step "In Settings modal, Close"
   @general_settings.close

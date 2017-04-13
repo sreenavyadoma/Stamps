@@ -381,7 +381,7 @@ Then /^[Ss]et Order Details form Ship-To to ambiguous address$/ do |table|
   stamps.orders.order_details.ship_to.domestic.set_ambiguous ambiguous_address
 end
 
-Then /^(?:I|i)n Exact Address Not Found module, select row (\d+)$/ do |row|
+Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
   stamps.orders.order_details.ship_to.domestic.ambiguous.address_not_found.row row
 end
 

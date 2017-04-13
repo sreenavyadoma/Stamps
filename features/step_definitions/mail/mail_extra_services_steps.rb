@@ -51,7 +51,7 @@ Then /^[Ee]xpect Extra Services Return Receipt Price to be (\d*.?\d+)$/ do |expe
   expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^(?:U|u)ncheck Extra Services Return Receipt$/ do
+Then /^[Uu]ncheck Extra Services Return Receipt$/ do
   stamps.mail.print_form.advanced_options.extra_services.return_receipt.uncheck
 end
 
@@ -59,7 +59,7 @@ Then /^[Cc]heck Extra Services Electronic Return Receipt$/ do
   stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.check
 end
 
-Then /^(?:U|u)ncheck Extra Services Electronic Return Receipt$/ do
+Then /^[Uu]ncheck Extra Services Electronic Return Receipt$/ do
   stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.uncheck
 end
 
@@ -72,7 +72,7 @@ Then /^[Ee]xpect Extra Services Restricted Delivery Price to be (\d*.?\d+)$/ do 
   expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^(?:U|u)ncheck Extra Services Restricted Delivery$/ do
+Then /^[Uu]ncheck Extra Services Restricted Delivery$/ do
   stamps.mail.print_form.advanced_options.extra_services.restricted_delivery.uncheck
 end
 
@@ -85,7 +85,7 @@ Then /^[Ee]xpect Extra Services Notice of Non-Delivery Price to be (\d*.?\d+)$/ 
   expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price).to eql(expectation.to_f.round(2))
 end
 
-Then /^(?:U|u)ncheck Extra Services Notice of Non-Delivery$/ do
+Then /^[Uu]ncheck Extra Services Notice of Non-Delivery$/ do
   stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice.uncheck
 end
 
@@ -93,7 +93,7 @@ Then /^[Cc]heck Extra Services Fragile$/ do
   stamps.mail.print_form.advanced_options.extra_services.fragile.check
 end
 
-Then /^(?:U|u)ncheck Extra Services Fragile$/ do
+Then /^[Uu]ncheck Extra Services Fragile$/ do
   stamps.mail.print_form.advanced_options.extra_services.fragile.uncheck
 end
 
@@ -101,7 +101,7 @@ Then /^[Cc]heck Extra Services Return Receipt for Merchandise$/ do
   stamps.mail.print_form.advanced_options.extra_services.merchandise_return_receipt.check
 end
 
-Then /^(?:U|u)ncheck Extra Services Return Receipt for Merchandise$/ do
+Then /^[Uu]ncheck Extra Services Return Receipt for Merchandise$/ do
   stamps.mail.print_form.advanced_options.extra_services.merchandise_return_receipt.uncheck
 end
 
@@ -109,7 +109,7 @@ Then /^[Cc]heck Extra Services Non-Rectangular$/ do
   stamps.mail.print_form.advanced_options.extra_services.non_rectangular.check
 end
 
-Then /^(?:U|u)ncheck Extra Services Non-Rectangular$/ do
+Then /^[Uu]ncheck Extra Services Non-Rectangular$/ do
   stamps.mail.print_form.advanced_options.extra_services.non_rectangular.uncheck
 end
 

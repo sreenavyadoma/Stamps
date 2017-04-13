@@ -144,7 +144,7 @@ Then /^[Ee]xpect Customs form I agree to the USPS Privacy Act Statement is check
   expect(stamps.mail.print_form.mail_customs.edit_form.i_agree).to be_checked if param.web_app == :mail
 end
 
-Then /^(?:U|u)ncheck Customs form I agree to the USPS Privacy Act Statement$/ do
+Then /^[Uu]ncheck Customs form I agree to the USPS Privacy Act Statement$/ do
   stamps.orders.order_details.customs.edit_form.i_agree.uncheck if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.i_agree.uncheck if param.web_app == :mail
 end
@@ -268,7 +268,7 @@ Then /^[Ee]xpect Customs form Associated Item Grid count is (.+)$/ do |expectati
   expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.size).to eql(expectation.to_i) if param.web_app == :mail
 end
 
-Then /^[Ss]ave Customs Information form (?:T|t)otal amount$/ do
+Then /^[Ss]ave Customs Information form [Tt]otal amount$/ do
   test_parameter[:customs_total_value] = stamps.orders.order_details.customs.edit_form.total_value if param.web_app == :orders
   test_parameter[:customs_total_value] = stamps.mail.print_form.mail_customs.edit_form.total_value if param.web_app == :mail
 end

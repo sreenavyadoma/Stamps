@@ -1,12 +1,12 @@
 
 # common Print form steps for Envelope|Label|Roll|CM
 
-Then /^[Ss]et Print form (?:I|i)nternational (?:M|m)ail (?:T|t)o (?:C|c)ountry to (.*)$/ do |country|
+Then /^[Ss]et Print form [Ii]nternational [Mm]ail [Tt]o [Cc]ountry to (.*)$/ do |country|
   test_parameter[:country] = country
   stamps.mail.print_form.mail_to.country.select(test_parameter[:country])
 end
 
-Then /^[Ss]et Print form (?:M|m)ail-(?:T|t)o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
+Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
   test_parameter[:address] = address_helper(address)
   stamps.mail.print_form.mail_to.address.text_area.set(test_parameter[:address])
 end

@@ -6,7 +6,7 @@ Then /^[Cc]heck Orders Grid (?:saved Order ID|Order ID (.*))$/ do |order_id|
   expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(true)
 end
 
-Then /^(?:U|u)ncheck Orders Grid (?:saved Order ID|Order ID (.*))$/ do |order_id|
+Then /^[Uu]ncheck Orders Grid (?:saved Order ID|Order ID (.*))$/ do |order_id|
   order_id = test_parameter[:order_id] if order_id.nil?
   stamps.orders.orders_grid.column.checkbox.uncheck_order_id(order_id)
   expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(order_id)).to be(false)
@@ -49,7 +49,7 @@ When /^[Cc]heck Orders Grid row (\d+)$/ do |row|
   expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(true)
 end
 
-When /^(?:U|u)ncheck Orders Grid row (\d+)$/ do |row|
+When /^[Uu]ncheck Orders Grid row (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.uncheck(row)
   expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(false), "Can't uncheck Orders Grid row #{row}"
 end

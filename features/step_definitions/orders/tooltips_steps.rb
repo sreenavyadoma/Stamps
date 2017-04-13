@@ -1,19 +1,19 @@
 
-Then /^(?:I|i)n Orders Toolbar, expect Print Tooltip to include (.*)$/ do |expectation|
+Then /^[Ii]n Orders Toolbar, expect Print Tooltip to include (.*)$/ do |expectation|
   #logger.step "In Orders Toolbar, expect Print Tooltip to include #{expectation}"
   actual = stamps.orders.orders_toolbar.print_btn.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
 end
 
-Then /^(?:I|i)n Orders Toolbar, expect Move Tooltip to include (.*)$/ do |expectation|
+Then /^[Ii]n Orders Toolbar, expect Move Tooltip to include (.*)$/ do |expectation|
   #logger.step "In Orders Toolbar, expect Move Tooltip to include #{expectation}"
   actual = stamps.orders.orders_toolbar.move_drop_down.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
 end
 
-Then /^(?:I|i)n Orders Toolbar, expect Add Tooltip to include (.*)$/ do |expectation|
+Then /^[Ii]n Orders Toolbar, expect Add Tooltip to include (.*)$/ do |expectation|
   #logger.step "In Orders Toolbar, expect Add Tooltip to include #{expectation}"
   actual = stamps.orders.orders_toolbar.add.order_details.tooltip
   #logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"

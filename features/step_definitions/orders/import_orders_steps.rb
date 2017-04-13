@@ -1,4 +1,4 @@
-Then /^(?:I|i)n Orders Toolbar, Import$/ do
+Then /^[Ii]n Orders Toolbar, Import$/ do
   stamps.orders.orders_toolbar.import
 end
 

@@ -43,12 +43,12 @@ Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |height|
   expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql(height.to_i)
 end
 
-Then /^[Ss]elect Print form (?:S|s)ervice (.*)$/ do |service|
+Then /^[Ss]elect Print form [Ss]ervice (.*)$/ do |service|
   test_parameter[:service] = service
   stamps.mail.print_form.mail_service.select(test_parameter[:service])
 end
 
-When /^(?:P|p)rint [Ll]abel$/ do
+When /^[Pp]rint [Ll]abel$/ do
   stamps.mail.mail_toolbar.print_label
 end
 
@@ -60,7 +60,7 @@ Then /^[Cc]lick Search Contacts close button$/ do
   stamps.mail.print_form.mail_to.mail_to_link.click.close
 end
 
-Then /^[Ss]et Print form (?:M|m)ail-(?:T|t)o (?:C|c)ountry to (.*)$/ do |country|
+Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   test_parameter[:country] = country
   stamps.mail.print_form.mail_to.country((test_parameter[:country]))
 end
