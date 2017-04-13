@@ -7,7 +7,7 @@ Feature: Change Starting Label Position to Right Side
   @print_dialog_label_right_side
   Scenario:  Print Label - Right Side
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
@@ -19,7 +19,7 @@ Feature: Change Starting Label Position to Right Side
     Then in Print modal, click Print button
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1

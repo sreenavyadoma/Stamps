@@ -36,7 +36,7 @@ module Stamps
           end
           break if @print_button.present?
         end
-        expect(@print_button.present?).to be(true)
+        expect(@print_button).to be_present
         @print_button
       end
 
@@ -51,7 +51,7 @@ module Stamps
       def open_window(window)
         return window if window.present?
 
-        expect(print_button.present?).to be(true)
+        expect(print_button).to be_present
         10.times do
           begin
             print_button.click
@@ -94,7 +94,7 @@ module Stamps
             #ignore
           end
         end
-        expect(window.present?).to be(true)
+        expect(window).to be_present
       end
 
       def open_sample_window window

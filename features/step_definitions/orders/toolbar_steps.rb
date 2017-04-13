@@ -60,22 +60,22 @@ Then /^Label Unavailable:  Expect Visible$/ do
       expect(label_unavailable_visible).to be(true)
     else
       #logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
-      expect(@reprint_modal.present?).to be(true)
+      expect(@reprint_modal).to be_present
   end
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Shipped$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
+  expect(stamps.orders.orders_toolbar.move_drop_down).to be_enabled
   stamps.orders.orders_toolbar.move_drop_down.move_to_shipped.move
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Canceled$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
+  expect(stamps.orders.orders_toolbar.move_drop_down).to be_enabled
   stamps.orders.orders_toolbar.move_drop_down.move_to_canceled.move
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
+  expect(stamps.orders.orders_toolbar.move_drop_down).to be_enabled
   stamps.orders.orders_toolbar.move_drop_down.move_to_awaiting_shipment.move
 end
 
@@ -84,7 +84,7 @@ Then /^(?:I|i)n Orders Grid toolbar, select Move to On Hold until today plus (\d
 end
 
 Then /^(?:I|i)n Orders Grid toolbar, select Move to On Hold until (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
+  expect(stamps.orders.orders_toolbar.move_drop_down).to be_enabled
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.cancel
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.hold_until.set("#{month}/#{day}/#{year}")
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.move

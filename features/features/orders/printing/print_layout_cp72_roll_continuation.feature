@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
   @print_layout_cp72_roll_continuation
   Scenario: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |

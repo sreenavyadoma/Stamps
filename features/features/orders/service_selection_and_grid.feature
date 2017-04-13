@@ -6,7 +6,7 @@ Feature:  service Selection & Order Grid Values
   @parcel_select
   Scenario:  Rename Parcel Select
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PSG Package
 
@@ -19,7 +19,7 @@ Feature:  service Selection & Order Grid Values
     Then expect Orders Grid service is Parcel Select Ground
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PSG Package
     Then set Order Details form Ounces to 1
@@ -31,7 +31,7 @@ Feature:  service Selection & Order Grid Values
     Then expect Orders Grid service is Parcel Select Ground
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PSG Oversized Package
     Then set Order Details form Ounces to 1

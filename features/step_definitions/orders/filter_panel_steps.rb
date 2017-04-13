@@ -94,12 +94,12 @@ end
 
 Then /^Filter Panel: Search Results should be present$/ do
   sleep 1
-  expect(stamps.orders.filter_panel.search_results.present?).to be(true)
+  expect(stamps.orders.filter_panel.search_results).to be_present
 end
 
 Then /^Filter Panel: Search Results should not be present$/ do
   sleep 1
-  expect(stamps.orders.filter_panel.search_results.present?).to be(false)
+  expect(stamps.orders.filter_panel.search_results).not_to be_present
 end
 
 Then /^Filter Panel: Remove search results$/ do

@@ -6,7 +6,7 @@ end
 
 =begin
 Then click Orders Toolbar Add button
-Then set Order Details form Ship-From to El Segundo, CA
+Then set Order Details form Ship-From to default
 Then set Order Details form Ship-To to a random address in Zone 5 through 8
 Then set Order Details form service to PM Package
 Then set Order Details form Ounces to 1

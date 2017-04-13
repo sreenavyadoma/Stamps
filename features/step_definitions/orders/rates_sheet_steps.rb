@@ -1,5 +1,6 @@
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
+  expect(param.web_app)
   Spreadsheet.client_encoding = 'UTF-8'
   rate_file = data_for(:rates_test, {})['rate_file']
 
@@ -8,7 +9,7 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
 
   begin
-    @rate_file = Spreadsheet.open @rate_file_loc
+    @rate_file = Spreadsheet.open(@rate_file_loc)
   rescue Exception => e
     logger.step e.message
     logger.step e.backtrace.join("\n")
@@ -19,32 +20,32 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   @rate_file.should_not be nil
 end
 
-Then /^(?:R|r)un rate test PME Comm Base in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PME Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_base']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test PME Comm Plus in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PME Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_plus']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test PM Comm Base in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PM Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_base']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test PM Comm Plus in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PM Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_plus']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_parcel_select_ground']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
+Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   zone = zone.to_i
 
   @result_file = Spreadsheet::Workbook.new

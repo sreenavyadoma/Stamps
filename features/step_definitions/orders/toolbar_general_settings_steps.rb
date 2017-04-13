@@ -1,6 +1,5 @@
 
 Then /^[Oo]pen Settings Modal$/ do
-  #logger.step "Open Settings Modal"
   @general_settings = stamps.orders.orders_toolbar.settings.general_settings #todo-Rob refactor General Settings.
 end
 # Services checkbox
@@ -277,7 +276,6 @@ Then /^(?:I|i)n Settings modal, set Mail Balance to 500$/ do
 end
 
 Then /^(?:I|i)n Settings modal, Mail Balance Set (.*)$/ do |value|
-  #logger.step "In Settings modal, Mail Balance Set #{value}"
   case value.downcase
     when "0"
       @general_settings.postage_balance.zero
@@ -301,49 +299,49 @@ end
 # Expectations
 #  Services
 Then /^(?:I|i)n Settings modal, Expect Services Checked$/ do
-  expect(@general_settings.services.checked?).to be(true)
+  expect(@general_settings.services).to be_checked
 end
 
 Then /^(?:I|i)n Settings modal, Expect Services Unchecked$/ do
-  expect(@general_settings.services.checked?).to be(false)
+  expect(@general_settings.services).not_to be_checked
 end
 
 #  Print Confirm
 Then /^(?:I|i)n Settings modal, Expect Print Confirm Checked$/ do
-  expect(@general_settings.print_confirm.checked?).to be(true)
+  expect(@general_settings.print_confirm).to be_checked
 end
 
 Then /^(?:I|i)n Settings modal, Expect Print Confirm Unchecked$/ do
-  expect(@general_settings.print_confirm.checked?).to be(false)
+  expect(@general_settings.print_confirm).not_to be_checked
 end
 
 #  Print Confirm
 Then /^(?:I|i)n Settings modal, Expect USPS Terms Checked$/ do
-  expect(@general_settings.usps_terms.checked?).to be(true)
+  expect(@general_settings.usps_terms).to be_checked
 end
 
 Then /^(?:I|i)n Settings modal, Expect USPS Terms Unchecked$/ do
-  expect(@general_settings.usps_terms.checked?).to be(false)
+  expect(@general_settings.usps_terms).not_to be_checked
 end
 
 #  Contacts
 Then /^(?:I|i)n Settings modal, Expect Contacts Checked$/ do
-  expect(@general_settings.contacts.checked?).to be(true)
+  expect(@general_settings.contacts).to be_checked
 end
 
 Then /^(?:I|i)n Settings modal, Expect Contacts Unchecked$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.contacts.checked?).to be(false)
+  expect(@general_settings.contacts).not_to be_checked
 end
 
 #  Shipments
 Then /^(?:I|i)n Settings modal, Expect Shipments Checked$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.shipments.checked?).to be(true)
+  expect(@general_settings.shipments).to be_checked
 end
 
 Then /^(?:I|i)n Settings modal, Expect Shipments Unchecked$/ do
-  expect(@general_settings.shipments.checked?).to be(false)
+  expect(@general_settings.shipments).not_to be_checked
 end
 
 # Logoff
@@ -526,11 +524,11 @@ Then /^Reset Fields:  Uncheck Service$/ do
 end
 
 Then /^Reset Fields:  Expect service Checked$/ do
-  expect(@reset_fields.service.checked?).to be(true)
+  expect(@reset_fields.service).to be_checked
 end
 
 Then /^Reset Fields:  Expect service Unchecked$/ do
-  expect(@reset_fields.service.checked?).to be(false)
+  expect(@reset_fields.service).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Weight$/ do
@@ -538,240 +536,193 @@ Then /^Reset Fields:  Check Weight$/ do
 end
 
 Then /^Reset Fields:  Uncheck Weight$/ do
-  #logger.step "Reset Fields:  Uncheck Weight"
   @reset_fields.weight.checkbox.uncheck
 end
 
 Then /^Reset Fields:  Expect Weight Checked$/ do
-  #logger.step "Reset Fields:  Expect Weight Checked"
-  expect(@reset_fields.weight.checkbox.checked?).to be(true)
+  expect(@reset_fields.weight.checkbox).to be_checked
 end
 
 Then /^Reset Fields:  Expect Weight Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Weight Unchecked"
-  expect(@reset_fields.weight.checkbox.checked?).to be(false)
+  expect(@reset_fields.weight.checkbox).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Dimensions$/ do
-  #logger.step "Reset Fields:  Check Weight"
   @reset_fields.dimensions.checkbox.check
 end
 
 Then /^Reset Fields:  Uncheck Dimensions$/ do
-  #logger.step "Reset Fields:  Uncheck Weight"
   @reset_fields.dimensions.checkbox.uncheck
 end
 
 Then /^Reset Fields:  Expect Dimensions Checked$/ do
-  #logger.step "Reset Fields:  Expect Dimensions Checked"
-  expect(@reset_fields.dimensions.checkbox.checked?).to be(true)
+  expect(@reset_fields.dimensions.checkbox).to be_checked
 end
 
 Then /^Reset Fields:  Expect Dimensions Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Dimensions Unchecked"
-  expect(@reset_fields.dimensions.checkbox.checked?).to be(false)
+  expect(@reset_fields.dimensions.checkbox).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Ship to Address$/ do
-  #logger.step "Reset Fields:  Check Ship to Address"
   @reset_fields.ship_to_address.check
 end
 
 Then /^Reset Fields:  Uncheck Ship to Address$/ do
-  #logger.step "Reset Fields:  Uncheck Ship to Address"
   @reset_fields.ship_to_address.uncheck
 end
 
 Then /^Reset Fields:  Expect Ship to Address Checked$/ do
-  #logger.step "Reset Fields:  Expect Ship to Address Checked"
-  expect(@reset_fields.ship_to_address.checked?).to be(true)
+  expect(@reset_fields.ship_to_address).to be_checked
 end
 
 Then /^Reset Fields:  Expect Ship to Address Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Ship to Address Unchecked"
-  expect(@reset_fields.ship_to_address.checked?).to be(false)
+  expect(@reset_fields.ship_to_address).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Tracking$/ do
-  #logger.step "Reset Fields:  Check Tracking"
   @reset_fields.tracking.check
 end
 
 Then /^Reset Fields:  Uncheck Tracking$/ do
-  #logger.step "Reset Fields:  Uncheck Tracking"
   @reset_fields.tracking.uncheck
 end
 
 Then /^Reset Fields:  Expect Tracking Checked$/ do
-  #logger.step "Reset Fields:  Expect Tracking Checked"
-  expect(@reset_fields.tracking.checked?).to be(true)
+  expect(@reset_fields.tracking).to be_checked
 end
 
 Then /^Reset Fields:  Expect Tracking Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Tracking Unchecked"
-  expect(@reset_fields.tracking.checked?).to be(false)
+  expect(@reset_fields.tracking).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Extra Services$/ do
-    #logger.step "Reset Fields:  Check Extra Services"
   @reset_fields.extra_services.check
 end
 
 Then /^Reset Fields:  Uncheck Extra Services$/ do
-  #logger.step "Reset Fields:  Uncheck Extra Services"
   @reset_fields.extra_services.uncheck
 end
 
 Then /^Reset Fields:  Expect Extra Services Checked$/ do
-  #logger.step "Reset Fields:  Expect Extra Services Checked"
-  expect(@reset_fields.extra_services.checked?).to be(true)
+  expect(@reset_fields.extra_services).to be_checked
 
 end
 
 Then /^Reset Fields:  Expect Extra Services Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Extra Services Unchecked"
-  expect(@reset_fields.extra_services.checked?).to be(false)
+  expect(@reset_fields.extra_services).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Insurance$/ do
-  #logger.step "Reset Fields:  Check Insurance"
   @reset_fields.insurance.check
 end
 
 Then /^Reset Fields:  Uncheck Insurance$/ do
-  #logger.step "Reset Fields:  Uncheck Insurance"
   @reset_fields.insurance.uncheck
 end
 
 Then /^Reset Fields:  Expect Insurance Checked$/ do
-  #logger.step "Reset Fields:  Expect Insurance Checked"
-  expect(@reset_fields.insurance.checked?).to be(true)
+  expect(@reset_fields.insurance).to be_checked
 end
 
 Then /^Reset Fields:  Expect Insurance Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Insurance Unchecked"
-  expect(@reset_fields.insurance.checked?).to be(false)
+  expect(@reset_fields.insurance).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Reference Numbers$/ do
-  #logger.step "Reset Fields:  Check Reference Number"
   @reset_fields.reference_numbers.check
 end
 
 Then /^Reset Fields:  Uncheck Reference Numbers$/ do
-  #logger.step "Reset Fields:  Uncheck Reference Numbers"
   @reset_fields.reference_numbers.uncheck
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Checked$/ do
-  #logger.step "Reset Fields:  Expect Reference Numbers Checked"
-  expect(@reset_fields.reference_numbers.checked?).to be(true)
+  expect(@reset_fields.reference_numbers).to be_checked
 
 end
 
 Then /^Reset Fields:  Expect Reference Numbers Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Reference Numbers Unchecked"
-  expect(@reset_fields.reference_numbers.checked?).to be(false)
+  expect(@reset_fields.reference_numbers).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Cost Code$/ do
-  #logger.step "Reset Fields:  Check Cost Code"
   @reset_fields.cost_code.check
 end
 
 Then /^Reset Fields:  Uncheck Cost Code$/ do
-  #logger.step "Reset Fields:  Uncheck Cost Code"
   @reset_fields.cost_code.uncheck
 end
 
 Then /^Reset Fields:  Expect Cost Code Checked$/ do
-  #logger.step "Reset Fields:  Expect Cost Code Checked"
-  expect(@reset_fields.cost_code.checked?).to be(true)
+  expect(@reset_fields.cost_code).to be_checked
 end
 
 Then /^Reset Fields:  Expect Cost Code Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Cost Code Unchecked"
-  expect(@reset_fields.cost_code.checked?).to be(false)
+  expect(@reset_fields.cost_code).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Customs$/ do
-  #logger.step "Reset Fields:  Check Customs"
   @reset_fields.customs.check
 end
 
 Then /^Reset Fields:  Uncheck Customs$/ do
-  #logger.step "Reset Fields:  Uncheck Customs"
   @reset_fields.customs.uncheck
 end
 
 Then /^Reset Fields:  Expect Customs Checked$/ do
-  #logger.step "Reset Fields:  Expect Customs Checked"
-  expect(@reset_fields.customs.checked?).to be(true)
+  expect(@reset_fields.customs).to be_checked
 end
 
 Then /^Reset Fields:  Expect Customs Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Customs Unchecked"
-  expect(@reset_fields.customs.checked?).to be(false)
+  expect(@reset_fields.customs).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Quantity$/ do
-  #logger.step "Reset Fields:  Check Quantity"
   @reset_fields.quantity.check
 end
 
 Then /^Reset Fields:  Uncheck Quantity$/ do
-  #logger.step "Reset Fields:  Uncheck Quantity"
   @reset_fields.quantity.uncheck
 end
 
 Then /^Reset Fields:  Expect Quantity Checked$/ do
-  #logger.step "Reset Fields:  Expect Quantity Checked"
-  expect(@reset_fields.quantity.checked?).to be(true)
+  expect(@reset_fields.quantity).to be_checked
 end
 
 Then /^Reset Fields:  Expect Quantity Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Quantity Unchecked"
-  expect(@reset_fields.quantity.checked?).to be(false)
+  expect(@reset_fields.quantity).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Print form Amount$/ do
-  #logger.step "Reset Fields:  Check Print form Amount"
   @reset_fields.stamps_amount.check
 end
 
 Then /^Reset Fields:  Uncheck Print form Amount$/ do
-  #logger.step "Reset Fields:  Uncheck Print form Amount"
   @reset_fields.stamps_amount.uncheck
 end
 
 Then /^Reset Fields:  Expect Print form Amount Checked$/ do
-  #logger.step "Reset Fields:  Expect Print form Amount Checked"
-  expect(@reset_fields.stamps_amount.checked?).to be(true)
+  expect(@reset_fields.stamps_amount).to be_checked
 end
 
 Then /^Reset Fields:  Expect Print form Amount Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Print form Amount Unchecked"
-  expect(@reset_fields.stamps_amount.checked?).to be(false)
+  expect(@reset_fields.stamps_amount).not_to be_checked
 end
 
 Then /^Reset Fields:  Check Auto-Advance Label Position$/ do
-  #logger.step "Reset Fields:  Check Auto-Advance Label Position"
   @reset_fields.auto_advance_label_position.check
 end
 
 Then /^Reset Fields:  Uncheck Auto-Advance Label Position$/ do
-  #logger.step "Reset Fields:  Uncheck Auto-Advance Label Position"
   @reset_fields.auto_advance_label_position.uncheck
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Checked$/ do
-  #logger.step "Reset Fields:  Expect Auto-Advance Label Position Checked"
-  expect(@reset_fields.auto_advance_label_position.checked?).to be(true)
+  expect(@reset_fields.auto_advance_label_position).to be_checked
 end
 
 Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
-  #logger.step "Reset Fields:  Expect Auto-Advance Label Position Unchecked"
-  expect(@reset_fields.auto_advance_label_position.checked?).to be(false)
+  expect(@reset_fields.auto_advance_label_position).not_to be_checked
 end
 
 Then /^Reset Fields:  Set Weight to (\d+) lb (\d+) oz$/ do |lb, oz|

@@ -9,7 +9,7 @@ module Stamps
 
         public
         def order_count
-          expect(order_count_label.present?).to be(true)
+          expect(order_count_label).to be_present
           StampsElement.new(order_count_label).text.gsub(/\d+/).first.to_i
         end
       end

@@ -48,7 +48,7 @@ Then /^[Ee]xpect Print modal Hide Mail Value Checkbox is checked$/ do
     stamps.orders.orders_toolbar.print_btn.print_modal.click
     break if stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?
   end
-  expect(stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?).to be(true)
+  expect(stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value).to be_checked
 end
 
 Then /^(?:I|i)n Print modal, check Email Tracking Details to Recipients$/ do

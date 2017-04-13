@@ -6,7 +6,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
   @print_layout_cn22_paper_left_side
   Scenario: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI PFR Envelope | 8.5x11 Left Side | random           | random           | random | random  | random      | Germany | random  | random  |
@@ -19,7 +19,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then close Customs Information form
     Then click Orders Toolbar Add button
 
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Envelope | 8.5x11 Right Side | random           | random           | random | random  | random      | Mexico | random  | random  |

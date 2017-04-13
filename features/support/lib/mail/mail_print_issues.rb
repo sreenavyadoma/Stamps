@@ -48,7 +48,7 @@ module Stamps
 
       def agree_and_continue
         agree_and_continue_btn.click_while_present
-        expect(agree_and_continue_btn.present?).to be(false)
+        expect(agree_and_continue_btn).not_to be_present
       end
 
     end

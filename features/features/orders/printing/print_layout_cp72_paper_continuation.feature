@@ -6,7 +6,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
   @print_layout_cp72_paper_continuation
   Scenario: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |

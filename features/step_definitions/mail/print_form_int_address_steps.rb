@@ -63,38 +63,38 @@ Then /^[Ss]et Print form Phone to (?:tab|enter|(.*))$/ do |value|
 end
 
 Then /^[Ee]xpect Print form Domestic Address Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.text_area.present?).to be(true), "Print form Domestic Address Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.text_area).to be_present, "Print form Domestic Address Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Name Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.name.present?).to be(true), "Print form International Name Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.name).to be_present, "Print form International Name Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Company Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.company.present?).to be(true), "Print form International Company Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.company).to be_present, "Print form International Company Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Address 1 Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.address_1.present?).to be(true), "Print form International Address 1 Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.address_1).to be_present, "Print form International Address 1 Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Address 2 Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.address_2.present?).to be(true), "Print form International Address 2 Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.address_2).to be_present, "Print form International Address 2 Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International City Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.city.present?).to be(true), "Print form International City Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.city).to be_present, "Print form International City Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Province Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.province.present?).to be(true), "Print form International Province Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.province).to be_present, "Print form International Province Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Postcode Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.postal_code.present?).to be(true), "Print form International Postcode Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.postal_code).to be_present, "Print form International Postcode Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Phone Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.phone.present?).to be(true), "Print form International Phone Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.phone).to be_present, "Print form International Phone Field is NOT present"
 end
 

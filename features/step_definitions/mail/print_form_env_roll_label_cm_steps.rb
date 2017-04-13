@@ -12,7 +12,7 @@ Then /^[Ss]et Print form (?:M|m)ail-(?:T|t)o (?:|to )(?:|a )(?:|random )address(
 end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
-  expect(stamps.mail.print_form.mail_to.enabled?).to be(false), "Print form Mail To is NOT disabled"
+  expect(stamps.mail.print_form.mail_to).to be_enabled, "Print form Mail To is NOT disabled"
 end
 
 Then /^[Cc]lick Print form Mail To link/ do

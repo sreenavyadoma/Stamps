@@ -63,7 +63,7 @@ Then /^Mail Sign In: Expect Remember Username is unchecked$/ do
 end
 
 Then /^Mail Sign In: Expect WhatsNewModal is present$/ do
-  expect(@whats_new.present?).to be(true)
+  expect(@whats_new).to be_present
 end
 
 Then /^Mail Sign In: Close WhatsNewModal$/ do

@@ -6,7 +6,7 @@ Feature: Print Media - Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
   @print_dialog_printing_on_4x6_sdc1200
   Scenario:  Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
     Then set Order Details form Pounds to 1

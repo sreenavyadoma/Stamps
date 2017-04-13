@@ -6,7 +6,7 @@ Feature: Add Missing Validation Logic for Phone and International Email
   @rules_international @rules_international_dev
   Scenario: Add Missing Validation Logic for Phone and International Email
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to Australia
     Then check Orders Grid row 1
 
