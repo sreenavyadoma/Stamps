@@ -1,0 +1,44 @@
+
+Theme1632 72 days (Firefox)
+	UI Field Validation (Feature file, Step Definitions, Page Objects, Jenkins Tests, Test Execution/Results Analysis) ~26 days (best case)
+		Profile Page 8-9
+		Membership Page 9-10
+		Choose Supplies 3-4
+		Security Questions 3-4
+		Download Page 2-3
+		Install Instructions Page 1-2
+
+	UI Field Negative Tests	~29-days
+		Profile Page 10-12
+		Membership Page  12-13
+		Choose Supplies 2-3
+		Security Questions 2-3
+		Download Page 2-3
+		Install Instructions Page 1-2
+
+	Test Workflow
+		Windows Happy Path 6-7 days
+		Windows Dpawr Offers
+		Windows Non-Dpawr offers
+		Windows Test Target Campaigns
+			- path to Web Client
+			- path to Download Page
+			- path to Stamps Connect
+		Mac Happy Path
+		Mac Dpawr Offers
+		Mac Non-Dpawr offers
+		Mac Test Target Campaigns
+			- path to Web Client
+			- path to Unsupported OS/Browser page
+			- path to Stamps Connect
+
+
+Jenkins Server & Plugin Configuration (3)
+Jenkins Execution Node VMs (2 QACC, 2 STG, 2 QASC) 3-4 days
+
+Different Browsers:
+	Firefox
+	Chrome - ???
+	IE 11 - ???
+	Edge - ???
+	Safari - ???

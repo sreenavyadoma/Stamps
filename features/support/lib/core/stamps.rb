@@ -1,45 +1,33 @@
 module Stamps
-
-  def init(scenario)
+  
+  def config
     begin
-      TestHelper.init scenario
+      @config ||= StampsTestConfig.new
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
 
-  def teardown
-    begin
-      TestHelper.teardown
-    rescue
-      #ignore
-    end
+  def logger
+    config.logger
   end
 
-  def test_helper
-    begin
-      TestHelper
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
+  def browser
+    config.browser
   end
 
   def registration
     begin
       @registration = WebReg::WebRegistration.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       raise e
     end
   end
@@ -48,10 +36,10 @@ module Stamps
     begin
       @pam = Pam::PaymentAdministratorManager.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       raise e
     end
   end
@@ -60,10 +48,10 @@ module Stamps
     begin
       @google ||= Google.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -72,10 +60,10 @@ module Stamps
     begin
       HealthCheck.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -84,11 +72,11 @@ module Stamps
     begin
       @stamps ||= StampsCom.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "\n#{e.backtrace.join "\n"}"
-      logger.error ""
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "\n#{e.backtrace.join "\n"}"
+      p ""
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -99,20 +87,22 @@ module Stamps
     @test_data[:details_associated_items] ||= Hash.new
     @test_data
   end
-
+  
   def param
+    expect(browser).not_to be_nil
     if @param.nil?
       @param = ModalParam.new
 
-      expect(ENV['WEB_APP']).to_not be_nil
+      expect(ENV['WEB_APP']).not_to be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
       expect([:orders, :mail, :registration]).to include(@param.web_app)
 
       ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
       @param.browser = browser
       @param.logger = logger
-      @param.scenario_name = test_helper.scenario_name
+      @param.scenario_name = config.scenario_name
       @param.test_env = ENV['URL']
+      @param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 
       if @param.web_app == :mail || @param.web_app == :orders
         @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
@@ -168,22 +158,14 @@ module Stamps
     return ParameterHelper.format_address(zone)
   end
 
-  def logger
-    test_helper.logger
-  end
-
-  def browser
-    test_helper.browser
-  end
-
   def param_helper
     begin
       ParameterHelper
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -198,8 +180,8 @@ module Stamps
       logger.message "WebReg parameter file: #{filename}"
       filename
     rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
+      p e.message
+      p e.backtrace.join("\n")
       expect("MagicData: Problem retrieving data from default.yml. Check your format?").to eql e.message
     end
   end
@@ -208,8 +190,8 @@ module Stamps
     begin
       "#{data_for(:registration, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
     rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
+      p e.message
+      p e.backtrace.join("\n")
       expect("MagicData: Problem retrieving data. Check your format?").to eql e.message
     end
   end
@@ -218,10 +200,10 @@ module Stamps
     begin
       @volusion = Stores::VolusionLoginPage.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       raise e
     end
   end

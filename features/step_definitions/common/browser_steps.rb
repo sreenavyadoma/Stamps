@@ -1,12 +1,11 @@
 Then /^Teardown$/ do
-  test_helper.teardown
+  test_config.teardown
 end
 
 Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |selection|
-  #logger.step "I launched default browser #{selection}"
   ENV['BROWSER'] = selection unless selection.nil?
-  test_helper.setup
-  expect(browser).to_not be_nil
+  config.setup
+  expect(browser).not_to be_nil
 end
 
 Then /^Refresh the browser$/ do
@@ -27,7 +26,7 @@ Then /^Pause for (\d+) seconds?$/ do |seconds|
 end
 
 Then(/^Close the browser and clear cookies$/) do #Clear Cookies
-  test_helper.clear_cookies
+  config.clear_cookies
 end
 
 

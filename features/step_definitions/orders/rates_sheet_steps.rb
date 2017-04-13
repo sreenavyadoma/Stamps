@@ -1,6 +1,6 @@
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
-  expect(param.web_app)
+  expect([:orders, :mail]).to include(param.web_app)
   Spreadsheet.client_encoding = 'UTF-8'
   rate_file = data_for(:rates_test, {})['rate_file']
 

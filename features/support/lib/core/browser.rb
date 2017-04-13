@@ -443,19 +443,18 @@ module Stamps
     # Modals
 
     class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug
     end
 
     # StampsModal is a parent class for modals containing StampsElements
     class StampsModal
       include Stamps::StampsTestHelper
-      attr_accessor :param, :browser, :logger, :test_helper
+      attr_accessor :param, :browser, :logger
 
       def initialize(param)
         @param = param
         @browser = param.browser
         @logger = param.logger
-        @test_helper = TestHelper
       end
     end
 

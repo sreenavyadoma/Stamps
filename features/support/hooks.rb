@@ -11,7 +11,7 @@ include RAutomation
 include Spreadsheet
 
 Before do  |scenario|
-  Stamps.init scenario.name
+  test_config.init(scenario.name)
   scenario.feature.name
   logger.message "-"
   logger.message "-"
@@ -36,7 +36,7 @@ Before do  |scenario|
 
   # process username from default.yml
   begin
-    expect(ENV['WEB_APP'].nil?).to_not be_nil, "Missing WEB_APP variable"
+    expect(ENV['WEB_APP'].nil?).not_to be_nil, "Missing WEB_APP variable"
 
     if (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail' || (ENV['WEB_APP'].downcase.include? 'reg'))
       if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default') || (ENV['USR'].downcase == 'jenkins')
@@ -105,7 +105,7 @@ After do |scenario|
   logger.message "-"
   logger.message "-"
 
-  Stamps.teardown
+  test_config.teardown
 
   if scenario.failed?
     logger.error "#{scenario.feature}"

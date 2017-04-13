@@ -3,21 +3,27 @@ module Stamps
     class PrintWindow
       include RAutomation
 
+      attr_accessor :browser_selection
+
+      def initialize
+        @browser_selection = BrowserSelection.new
+      end
+
       def present?
         print_window = RAutomation::Window.new(:title => /Print/i)
         logger.info "Print Window Present? #{print_window.present?}"
         logger.info "Print Window Present? #{print_window.present?}"
         begin
-          if TestHelper.browser_selection.firefox?
+          if browser_selection.firefox?
             print_window.activate
             logger.info "print_window.button(:value => \"OK\").exists? #{print_window.button(:value => "OK").exists?}"
             print_window.activate
             print_window.button(:value => "OK").exists?
-          elsif TestHelper.browser_selection.chrome?
+          elsif browser_selection.chrome?
             logger.info "print_window.button(:value => \"&Print\").exists? #{print_window.button(:value => "&Print").exists?}"
             print_window.activate
             print_window.button(:value => "&Print").exists?
-          elsif TestHelper.browser_selection.ie?
+          elsif browser_selection.ie?
             logger.info "return print_window.button(:value => \"&Print\").exists? #{return print_window.button(:value => "&Print").exists?}"
             print_window.activate
             print_window.button(:value => "&Print").exists?
@@ -40,7 +46,7 @@ module Stamps
         print_window = RAutomation::Window.new(:title => /Print/i)
         logger.info "Print Window Present? #{print_window.present?}"
         logger.info "Print Window Present? #{print_window.present?}"
-        if TestHelper.browser_selection.firefox?
+        if StampsTestConfig.browser_selection.firefox?
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
@@ -53,7 +59,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present.\n#{e.backtrace.join "\n"}"
           end
 
-        elsif TestHelper.browser_selection.chrome?
+        elsif StampsTestConfig.browser_selection.chrome?
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
@@ -66,7 +72,7 @@ module Stamps
             raise "Unable to click on OK button in Windows Print dialog. Windows print modal might not have been present." + e
           end
 
-        elsif TestHelper.browser_selection.ie?
+        elsif StampsTestConfig.browser_selection.ie?
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate
