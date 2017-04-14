@@ -8,7 +8,7 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -18,7 +18,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -30,7 +30,7 @@ Feature: 150 orders
 
     #Priority Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -39,7 +39,7 @@ Feature: 150 orders
     * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -48,7 +48,7 @@ Feature: 150 orders
     * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -58,7 +58,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -67,7 +67,7 @@ Feature: 150 orders
     * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -77,7 +77,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -86,7 +86,7 @@ Feature: 150 orders
     * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -96,7 +96,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -106,7 +106,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -116,7 +116,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -126,7 +126,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -136,7 +136,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -147,7 +147,7 @@ Feature: 150 orders
 
     # Priority Mail Express
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -156,7 +156,7 @@ Feature: 150 orders
     Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -165,7 +165,7 @@ Feature: 150 orders
     * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -174,7 +174,7 @@ Feature: 150 orders
     * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -183,7 +183,7 @@ Feature: 150 orders
     * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -194,7 +194,7 @@ Feature: 150 orders
 
     # Media Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -206,7 +206,7 @@ Feature: 150 orders
 
     # Parcel Select
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -216,7 +216,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -226,7 +226,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -238,7 +238,7 @@ Feature: 150 orders
 
     # International
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -259,7 +259,7 @@ Feature: 150 orders
     Then close Customs Information form
     Then set Order Details form service to FCMI Large Envelope
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -282,7 +282,7 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -292,7 +292,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -304,7 +304,7 @@ Feature: 150 orders
 
     #Priority Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -313,7 +313,7 @@ Feature: 150 orders
     * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -322,7 +322,7 @@ Feature: 150 orders
     * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -332,7 +332,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -341,7 +341,7 @@ Feature: 150 orders
     * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -351,7 +351,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -360,7 +360,7 @@ Feature: 150 orders
     * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -370,7 +370,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -380,7 +380,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -390,7 +390,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -400,7 +400,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -410,7 +410,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -421,7 +421,7 @@ Feature: 150 orders
 
     # Priority Mail Express
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -430,7 +430,7 @@ Feature: 150 orders
     Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -439,7 +439,7 @@ Feature: 150 orders
     * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -448,7 +448,7 @@ Feature: 150 orders
     * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -457,7 +457,7 @@ Feature: 150 orders
     * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -468,7 +468,7 @@ Feature: 150 orders
 
     # Media Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -480,7 +480,7 @@ Feature: 150 orders
 
     # Parcel Select
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -490,7 +490,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -500,7 +500,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -512,7 +512,7 @@ Feature: 150 orders
 
     # International
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -533,7 +533,7 @@ Feature: 150 orders
     Then close Customs Information form
     Then set Order Details form service to FCMI Large Envelope
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -556,7 +556,7 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -566,7 +566,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -578,7 +578,7 @@ Feature: 150 orders
 
     #Priority Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -587,7 +587,7 @@ Feature: 150 orders
     * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -596,7 +596,7 @@ Feature: 150 orders
     * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -606,7 +606,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -615,7 +615,7 @@ Feature: 150 orders
     * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -625,7 +625,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -634,7 +634,7 @@ Feature: 150 orders
     * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -644,7 +644,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -654,7 +654,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -664,7 +664,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -674,7 +674,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -684,7 +684,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -694,7 +694,7 @@ Feature: 150 orders
 
     # Priority Mail Express
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -703,7 +703,7 @@ Feature: 150 orders
     Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -712,7 +712,7 @@ Feature: 150 orders
     * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -721,7 +721,7 @@ Feature: 150 orders
     * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -730,7 +730,7 @@ Feature: 150 orders
     * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -741,7 +741,7 @@ Feature: 150 orders
 
     # Media Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -753,7 +753,7 @@ Feature: 150 orders
 
     # Parcel Select
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -763,7 +763,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -773,7 +773,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -785,7 +785,7 @@ Feature: 150 orders
 
     # International
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -806,7 +806,7 @@ Feature: 150 orders
     Then close Customs Information form
     Then set Order Details form service to FCMI Large Envelope
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -829,7 +829,7 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -839,7 +839,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -851,7 +851,7 @@ Feature: 150 orders
 
     #Priority Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -860,7 +860,7 @@ Feature: 150 orders
     * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -869,7 +869,7 @@ Feature: 150 orders
     * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -879,7 +879,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -888,7 +888,7 @@ Feature: 150 orders
     * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -898,7 +898,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -907,7 +907,7 @@ Feature: 150 orders
     * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -917,7 +917,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -927,7 +927,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -937,7 +937,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -947,7 +947,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -957,7 +957,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -968,7 +968,7 @@ Feature: 150 orders
 
     # Priority Mail Express
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -977,7 +977,7 @@ Feature: 150 orders
     Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -986,7 +986,7 @@ Feature: 150 orders
     * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -995,7 +995,7 @@ Feature: 150 orders
     * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1004,7 +1004,7 @@ Feature: 150 orders
     * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1015,7 +1015,7 @@ Feature: 150 orders
 
     # Media Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1027,7 +1027,7 @@ Feature: 150 orders
 
     # Parcel Select
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1037,7 +1037,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1047,7 +1047,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1059,7 +1059,7 @@ Feature: 150 orders
 
     # International
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -1080,7 +1080,7 @@ Feature: 150 orders
     Then close Customs Information form
     Then set Order Details form service to FCMI Large Envelope
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -1103,7 +1103,7 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1113,7 +1113,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1125,7 +1125,7 @@ Feature: 150 orders
 
     #Priority Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1134,7 +1134,7 @@ Feature: 150 orders
     * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1143,7 +1143,7 @@ Feature: 150 orders
     * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1153,7 +1153,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1162,7 +1162,7 @@ Feature: 150 orders
     * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1172,7 +1172,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1181,7 +1181,7 @@ Feature: 150 orders
     * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1191,7 +1191,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1201,7 +1201,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1211,7 +1211,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1221,7 +1221,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1231,7 +1231,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1242,7 +1242,7 @@ Feature: 150 orders
 
     # Priority Mail Express
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1251,7 +1251,7 @@ Feature: 150 orders
     Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1260,7 +1260,7 @@ Feature: 150 orders
     * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1269,7 +1269,7 @@ Feature: 150 orders
     * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1278,7 +1278,7 @@ Feature: 150 orders
     * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1289,7 +1289,7 @@ Feature: 150 orders
 
     # Media Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1301,7 +1301,7 @@ Feature: 150 orders
 
     # Parcel Select
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1311,7 +1311,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1321,7 +1321,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1333,7 +1333,7 @@ Feature: 150 orders
 
     # International
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -1354,7 +1354,7 @@ Feature: 150 orders
     Then close Customs Information form
     Then set Order Details form service to FCMI Large Envelope
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -1377,7 +1377,7 @@ Feature: 150 orders
 
     # First Class Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1387,7 +1387,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $15.00
     * set Order Details form Tracking to "None"
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1399,7 +1399,7 @@ Feature: 150 orders
 
     #Priority Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1408,7 +1408,7 @@ Feature: 150 orders
     * set Order Details form service to PM Large/Thick Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1417,7 +1417,7 @@ Feature: 150 orders
     * set Order Details form service to PM Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1427,7 +1427,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $145.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1436,7 +1436,7 @@ Feature: 150 orders
     * set Order Details form service to PM Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1446,7 +1446,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $98.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1455,7 +1455,7 @@ Feature: 150 orders
     * set Order Details form service to PM Legal Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1465,7 +1465,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $30.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1475,7 +1475,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $45.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1485,7 +1485,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $239.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1495,7 +1495,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $105.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1505,7 +1505,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $205.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1516,7 +1516,7 @@ Feature: 150 orders
 
     # Priority Mail Express
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1525,7 +1525,7 @@ Feature: 150 orders
     Then set Order Details form service to PME Package
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1534,7 +1534,7 @@ Feature: 150 orders
     * set Order Details form service to PME Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1543,7 +1543,7 @@ Feature: 150 orders
     * set Order Details form service to PME Padded Flat Rate Envelope
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1552,7 +1552,7 @@ Feature: 150 orders
     * set Order Details form service to PME Legal Flat Rate Envelope
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1563,7 +1563,7 @@ Feature: 150 orders
 
     # Media Mail
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1575,7 +1575,7 @@ Feature: 150 orders
 
     # Parcel Select
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1585,7 +1585,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $345.00
     * set Order Details form Tracking to USPS Tracking
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1595,7 +1595,7 @@ Feature: 150 orders
     * set Order Details form Insure-For to $456.00
     * set Order Details form Tracking to Signature Required
 
-    * click Orders Toolbar Add button
+    * add new order
     * expect Order Details form Order ID is truthy
     * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
@@ -1607,7 +1607,7 @@ Feature: 150 orders
 
     # International
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
@@ -1628,7 +1628,7 @@ Feature: 150 orders
     Then close Customs Information form
     Then set Order Details form service to FCMI Large Envelope
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to

@@ -5,7 +5,7 @@ Then /^on Add Funds modal, purchase 10$/ do
 end
 
 =begin
-Then click Orders Toolbar Add button
+Then add new order
 Then set Order Details form Ship-From to default
 Then set Order Details form Ship-To to a random address in Zone 5 through 8
 Then set Order Details form service to PM Package

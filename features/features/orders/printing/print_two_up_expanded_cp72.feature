@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
   Scenario: Print 1 Intl CP72 label on 5.5x8.5
 
     #print_two_up_expanded_cp72_5x8_left_print1
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -28,7 +28,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
 
    #print_two_up_expanded_cp72_5x8_right_print1
     # 1 CP72 label 5 ½" x 8 ½" right side
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -48,22 +48,22 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then in Print modal, click Print button
 
    #print_two_up_expanded_cp72_paper_left
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then set Order Details form service to PME Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then set Order Details form service to PME Legal Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -75,7 +75,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -87,7 +87,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -113,22 +113,22 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then in Print modal, click Print button
 
    #print_two_up_expanded_cp72_paper_left_print3
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
     Then set Order Details form service to PME Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
     Then set Order Details form service to PME Legal Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -140,7 +140,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -152,7 +152,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |

@@ -7,7 +7,7 @@ Feature: Print 1 Intl CP72 label
   Scenario: Print 1 Intl CP72 label
 
     #print_layout_cp72_4x6roll
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -25,7 +25,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
     #print_layout_cp72_5x8_left
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -48,7 +48,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_cp72_5x8_right
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name              | company   | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -67,7 +67,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
     #print_layout_cp72_5x8_single_ply
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -87,7 +87,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_cp72_paper_continuation
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -140,7 +140,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_cp72_paper_single_ply
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -161,7 +161,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_cp72_roll_continuation
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
@@ -209,7 +209,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_cp72_sdc1200_single_ply
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -229,7 +229,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_dpo_cp72_roll_single_ply
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to Domestic Address
@@ -248,7 +248,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_fsa_cp72_paper_single_ply
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
@@ -272,7 +272,7 @@ Feature: Print 1 Intl CP72 label
     Then in Print modal, click Print button
 
    #print_layout_cp72_single_ply_apo_roll
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |

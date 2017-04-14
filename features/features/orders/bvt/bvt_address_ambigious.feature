@@ -5,7 +5,7 @@ Feature:  Ambigious Address
 
   @bvt_ambigious_address
   Scenario: Ambigious Address
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-To to ambiguous address
       | name            | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Joseph Balancio | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |

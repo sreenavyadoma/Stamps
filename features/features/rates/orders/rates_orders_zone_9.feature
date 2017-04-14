@@ -5,7 +5,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: FCM Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -17,7 +17,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: First-Class Mail Package/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -30,7 +30,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Large/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -43,7 +43,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -56,7 +56,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Large Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -72,7 +72,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -85,7 +85,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Padded Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -98,7 +98,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Legal Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -111,7 +111,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Small Flat Rate Box
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -124,7 +124,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Medium Flat Rate Box
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -137,7 +137,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Large Flat Rate Box
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -151,7 +151,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Regional Rate Box A
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -164,7 +164,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Priority Mail Regional Rate Box B
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -176,7 +176,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -189,7 +189,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -202,7 +202,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Padded Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -215,7 +215,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: PME Legal Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -228,7 +228,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: MM Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -241,7 +241,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -254,7 +254,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9
@@ -267,7 +267,7 @@ Feature: Local Rating test for Zone 9
 
   @rates_orders_zone_9
   Scenario: Parcel Select Ground Oversized Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 9

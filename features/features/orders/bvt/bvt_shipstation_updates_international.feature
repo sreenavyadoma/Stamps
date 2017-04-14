@@ -6,7 +6,7 @@ Feature:  Update International Orders to ShipStation
 
   @bvt_shipstation_updates_international
   Scenario:  Update ShipStation
-    Then click Orders Toolbar Add button
+    Then add new order
     Then on Order Details form, blur out
     Then set Order Details Ship-To International address to
       | name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |

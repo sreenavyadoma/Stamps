@@ -6,7 +6,7 @@ Feature: User Views Price Next to service Dropdown
 
   @inline_service_rates
   Scenario:  User Views Price Next to service Dropdown
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then expect Order Details form Service Cost is 0.00

@@ -6,7 +6,7 @@ Feature:  Basic Search
 
   @bvt_shipstation_search
   Scenario: Search order
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-To to random address in zone 1
     Then set Order Details form Email to random
     Then set Order Details form Phone to random

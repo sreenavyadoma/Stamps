@@ -5,7 +5,7 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
 
   @print_two_up_expanded_fpo_cn22_paper_right
   Scenario: User Prints 1 FPO CN22 label on 8.5x11 - right side
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |

@@ -5,7 +5,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: FCM Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -17,7 +17,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: First-Class Mail Package/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -30,7 +30,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Large/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -43,7 +43,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -59,7 +59,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Large Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -75,7 +75,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -88,7 +88,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Padded Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -101,7 +101,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Legal Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -114,7 +114,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Small Flat Rate Box
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -127,7 +127,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Medium Flat Rate Box
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -140,7 +140,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Priority Mail Large Flat Rate Box
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -153,7 +153,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: PME Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -166,7 +166,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: PME Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -179,7 +179,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: PME Padded Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -192,7 +192,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: PME Legal Flat Rate Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -205,7 +205,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: MM Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -218,7 +218,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -231,7 +231,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
@@ -244,7 +244,7 @@ Feature: January 2017 Rates for SAS User in Zone 7
 
   @rates_orders_sas_zone_7
   Scenario: Parcel Select Ground Oversized Package
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to random address in zone 7
