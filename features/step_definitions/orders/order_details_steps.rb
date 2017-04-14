@@ -148,11 +148,13 @@ end
 Then /^[Ss]et Order Details form Pounds to (\d+)$/ do |value|
   parameter[:pounds] = value
   stamps.orders.order_details.weight.lb.set parameter[:pounds]
+  step "On Order Details form, blur out"
 end
 
 Then /^[Ss]et Order Details form Ounces to (\d+)$/ do |value|
   parameter[:ounces] = value
   stamps.orders.order_details.weight.oz.set parameter[:ounces]
+  step "On Order Details form, blur out"
 end
 
 Then /^[Oo]n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
