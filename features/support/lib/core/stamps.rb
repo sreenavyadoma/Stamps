@@ -21,7 +21,7 @@ module Stamps
   end
   
   def helper
-    @helper ||= StampsTestHelper.new
+    @helper ||= StampsTestHelper.new(config.logger)
   end
 
   def registration

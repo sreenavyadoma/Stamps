@@ -1,6 +1,11 @@
 module Stamps
 
   class StampsTestHelper
+    attr_reader :logger
+    def initialize(logger)
+      @logger = logger
+    end
+
     def first_half(str)
       index = (str.size.to_f / 2).ceil
       str[0, index]
@@ -362,23 +367,6 @@ module Stamps
     def to_bool(str)
       str.downcase == 'true'
     end
-  end
-
-  class helper
-    class << self
-
-    end
-
-
-
-
-
-
-
-
-
-
-
   end
 
   class BrowserType

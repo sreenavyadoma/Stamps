@@ -454,7 +454,7 @@ module Stamps
         @param = param
         @browser = param.browser
         @logger = param.logger
-        @helper = StampsTestHelper.new
+        @helper = StampsTestHelper.new(logger)
       end
     end
 

@@ -23,10 +23,10 @@ require 'holidays'
 
 
 # Print form module
-require_relative 'lib/core/helpers'
 require_relative 'lib/core/browser'
 require_relative 'lib/core/stamps'
 require_relative 'lib/core/stamps_logger'
+require_relative 'lib/core/helpers'
 
 # helper module
 require_relative 'lib/orders/fields'
