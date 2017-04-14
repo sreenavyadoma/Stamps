@@ -6,7 +6,7 @@
 
   @shipstation_services
   Scenario:  ShipStation & Services
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then check Orders Grid row 1
 

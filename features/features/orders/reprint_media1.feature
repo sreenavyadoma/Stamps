@@ -7,7 +7,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   @reprint_media @reprint @reprint_media_dev
   Scenario: User Reprints Order - Domestic
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to Domestic Address

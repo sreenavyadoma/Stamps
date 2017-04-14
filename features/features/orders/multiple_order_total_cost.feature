@@ -5,7 +5,7 @@ Feature: Total Cost of Multiple Orders
 
   @multiple_order_total_cost
   Scenario:  Total Cost Multiple Orders
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope
@@ -13,14 +13,14 @@ Feature: Total Cost of Multiple Orders
     Then set Order Details form Ounces to 1
 
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Pounds to 1
     Then set Order Details form Ounces to 1
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope
