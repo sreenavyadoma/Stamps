@@ -314,11 +314,11 @@ module Stamps
 
       def new_balance old_balance
         10.times do
-          balance = (ParameterHelper.remove_dollar_sign(balance_element.text).gsub(',', '').to_f.round(2)).to_s
+          balance = (helper.remove_dollar_sign(balance_element.text).gsub(',', '').to_f.round(2)).to_s
           break unless balance.include? old_balance.to_s
           sleep(0.35)
         end
-        (ParameterHelper.remove_dollar_sign(balance_element.text).gsub(',', '').to_f.round(2)).to_s
+        (helper.remove_dollar_sign(balance_element.text).gsub(',', '').to_f.round(2)).to_s
       end
     end
 

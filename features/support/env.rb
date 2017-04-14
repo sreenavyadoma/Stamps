@@ -28,7 +28,7 @@ require_relative 'lib/core/browser'
 require_relative 'lib/core/stamps'
 require_relative 'lib/core/stamps_logger'
 
-# ParameterHelper module
+# helper module
 require_relative 'lib/orders/fields'
 require_relative 'lib/mail/print_form_panel'
 require_relative 'lib/windows/print_window'

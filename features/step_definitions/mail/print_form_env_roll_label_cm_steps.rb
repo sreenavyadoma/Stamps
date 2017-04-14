@@ -2,13 +2,13 @@
 # common Print form steps for Envelope|Label|Roll|CM
 
 Then /^[Ss]et Print form [Ii]nternational [Mm]ail [Tt]o [Cc]ountry to (.*)$/ do |country|
-  test_parameter[:country] = country
-  stamps.mail.print_form.mail_to.country.select(test_parameter[:country])
+  parameter[:country] = country
+  stamps.mail.print_form.mail_to.country.select(parameter[:country])
 end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
-  test_parameter[:address] = address_helper(address)
-  stamps.mail.print_form.mail_to.address.text_area.set(test_parameter[:address])
+  parameter[:address] = address_helper(address)
+  stamps.mail.print_form.mail_to.address.text_area.set(parameter[:address])
 end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do
@@ -21,16 +21,16 @@ end
 
 # Dimensions setters
 Then /^[Ss]et Print form Length to (\d+)$/ do |length|
-  test_parameter[:length] = length
-  stamps.mail.print_form.dimensions.length.set(test_parameter[:length])
+  parameter[:length] = length
+  stamps.mail.print_form.dimensions.length.set(parameter[:length])
 end
 
 Then /^[Ss]et Print form width to (\d+)$/ do |width|
-  test_parameter[:width] = width
-  stamps.mail.print_form.dimensions.width.set(test_parameter[:width])
+  parameter[:width] = width
+  stamps.mail.print_form.dimensions.width.set(parameter[:width])
 end
 
 Then /^[Ss]et Print form height to (\d+)$/ do |height|
-  test_parameter[:height] = height
-  stamps.mail.print_form.dimensions.height.set(test_parameter[:height])
+  parameter[:height] = height
+  stamps.mail.print_form.dimensions.height.set(parameter[:height])
 end

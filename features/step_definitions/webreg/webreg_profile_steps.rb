@@ -10,12 +10,12 @@ end
 
 Then /^[Ss]et WebReg Profile User ID and Email to (.*)$/ do |usr|
   if usr.downcase.include? 'random'
-    test_parameter[:usr] = ParameterHelper.rand_username
+    parameter[:usr] = helper.rand_username
   else
-    test_parameter[:usr] = usr
+    parameter[:usr] = usr
   end
-  step "set WebReg Profile Email to #{ test_parameter[:usr]}@mailinator.com"
-  step "set WebReg Profile User ID to #{ test_parameter[:usr]}"
+  step "set WebReg Profile Email to #{ parameter[:usr]}@mailinator.com"
+  step "set WebReg Profile User ID to #{ parameter[:usr]}"
 end
 
 Then /^[Ss]et WebReg Profile Email to (.*)$/ do |email|
@@ -23,13 +23,13 @@ Then /^[Ss]et WebReg Profile Email to (.*)$/ do |email|
 end
 
 Then /^[Ss]et WebReg Profile User ID to (.*)$/ do |user_id|
-  test_parameter[:usr] = user_id
+  parameter[:usr] = user_id
   registration.profile.user_id.set(user_id)
 end
 
 Then /^[Ss]et WebReg Profile Password to (.*)$/ do |password|
-  test_parameter[:pw]=password
-  registration.profile.password.set(test_parameter[:pw])
+  parameter[:pw]=password
+  registration.profile.password.set(parameter[:pw])
 end
 
 Then /^[Ss]et WebReg Profile Re-Type password to (.*)$/ do |password|
@@ -127,13 +127,13 @@ Then /^[Ss]et WebReg Profile How will you use Stamps.com to Home Office$/ do
 end
 
 Then /^[Ss]et WebReg Profile 1st Answer to (.*)$/ do |answer|
-  test_parameter[:answer] = answer
-  registration.profile.first_answer.set test_parameter[:answer]
+  parameter[:answer] = answer
+  registration.profile.first_answer.set parameter[:answer]
 end
 
 Then /^[Ss]et WebReg Profile 2nd Answer to (.*)$/ do |answer|
-  test_parameter[:answer_2] = answer
-  registration.profile.second_answer.set test_parameter[:answer_2]
+  parameter[:answer_2] = answer
+  registration.profile.second_answer.set parameter[:answer_2]
 end
 
 Then /^[Ss]et WebReg Profile Send me special money-saving offers to checked$/ do

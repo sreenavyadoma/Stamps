@@ -448,13 +448,13 @@ module Stamps
 
     # StampsModal is a parent class for modals containing StampsElements
     class StampsModal
-      include Stamps::StampsTestHelper
-      attr_accessor :param, :browser, :logger
+      attr_accessor :param, :browser, :logger, :helper
 
       def initialize(param)
         @param = param
         @browser = param.browser
         @logger = param.logger
+        @helper = StampsTestHelper.new
       end
     end
 

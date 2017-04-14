@@ -73,10 +73,10 @@ Before do  |scenario|
     end
   end unless (ENV['USER_CREDENTIALS'].nil? || ENV['USER_CREDENTIALS'] == 'healthcheck' || ENV['USER_CREDENTIALS'].include?('webreg') || ENV['USER_CREDENTIALS'].include?('pam') || ENV['USER_CREDENTIALS'].include?('intellij') || ENV['USER_CREDENTIALS'].include?('developers'))
 
-  test_parameter[:username] = ENV['USR']
-  test_parameter[:web_app] = ENV['WEB_APP']
-  test_parameter[:url] = ENV['URL']
-  test_parameter[:test] = ENV['USER_CREDENTIALS']
+  parameter[:username] = ENV['USR']
+  parameter[:web_app] = ENV['WEB_APP']
+  parameter[:url] = ENV['URL']
+  parameter[:test] = ENV['USER_CREDENTIALS']
   config.logger.message "-"
   config.logger.message "Running Tests..."
   config.logger.message "-"
@@ -112,7 +112,7 @@ After do |scenario|
     config.logger.error "#{scenario.feature}"
   end
   config.logger.step "  --  Test Parameters"
-  test_parameter.each do |key, value|
+  parameter.each do |key, value|
     config.logger.step "  --  #{key} : #{value}"
   end
 end

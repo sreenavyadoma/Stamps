@@ -73,25 +73,25 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
     old_csv = CSV.read(import_old_loc)
     old_csv.each_with_index do |row, index|
       if index != 0
-        address = ParameterHelper.rand_zone_1_4
+        address = helper.rand_zone_1_4
         row[2] = Random.rand(1..10)
-        row[3] = ParameterHelper.random_name
-        row[4] = ParameterHelper.random_name
-        row[5] = ParameterHelper.random_company_name
+        row[3] = helper.random_name
+        row[4] = helper.random_name
+        row[5] = helper.random_company_name
         row[6] = address['street_address']
         row[9] = address['city']
         row[10] = address['state']
         row[11] = address['zip']
-        row[13] = ParameterHelper.random_phone
-        row[14] = ParameterHelper.random_email
+        row[13] = helper.random_phone
+        row[14] = helper.random_email
         row[15] = Random.rand(1..10)
         row[16] = Random.rand(1..10)
         row[17] = Random.rand(1..10)
         row[18] = Random.rand(1..10)
-        row[19] = ParameterHelper.random_name
-        row[20] = ParameterHelper.random_name
+        row[19] = helper.random_name
+        row[20] = helper.random_name
         row[21] = [true, false].sample
-        row[22] = ParameterHelper.random_name
+        row[22] = helper.random_name
       end
       csv_out << row
     end
@@ -123,7 +123,7 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
       expect(stamps.orders.orders_grid.column.zip.data(order_id)).to eql(row[11]), "Expected Zip for order #{row[0]} is #{row[11]}, Zip in orders grid is #{stamps.orders.orders_grid.column.zip.data(order_id)}"
       expect(stamps.orders.orders_grid.column.phone.data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.column.phone.data(order_id)}"
       expect(stamps.orders.orders_grid.column.email.data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.column.email.data(order_id)}"
-      expect(ParameterHelper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{ParameterHelper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))}"
+      expect(helper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{helper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))}"
       config.logger.step "Order # #{order_id} verified in Orders Grid"
     end
     break if counter >= num_orders

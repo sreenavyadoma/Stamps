@@ -12,8 +12,16 @@ module Stamps
     end
   end
 
-  def logger
-
+  def parameter
+    @test_data ||= Hash.new
+    @test_data[:customs_associated_items] ||= Hash.new
+    @test_data[:details_associated_items] ||= Hash.new
+    @test_data[:order_id] ||= Hash.new
+    @test_data
+  end
+  
+  def helper
+    @helper ||= StampsTestHelper.new
   end
 
   def registration
@@ -76,14 +84,8 @@ module Stamps
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
-
-  def test_parameter
-    @test_data ||= Hash.new
-    @test_data[:customs_associated_items] ||= Hash.new
-    @test_data[:details_associated_items] ||= Hash.new
-    @test_data[:order_id] ||= Hash.new
-    @test_data
-  end
+  
+  
   
   def param
     if @param.nil?
@@ -99,7 +101,7 @@ module Stamps
       @param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 
       if @param.web_app == :mail || @param.web_app == :orders
-        @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
+        @param.health_check = helper.to_bool ENV['HEALTHCHECK']
         @param.usr = ENV['USR']
         @param.pw = ENV['PW']
         @param.url = ENV['URL']
@@ -124,40 +126,40 @@ module Stamps
   def address_helper_zone(zone)
     case zone.downcase
       when /zone 1 (?:through|and) 4/
-        ParameterHelper.rand_zone_1_4
+        helper.rand_zone_1_4
       when /zone 5 (?:through|and) 8/
-        ParameterHelper.rand_zone_5_8
+        helper.rand_zone_5_8
       when /zone 1/
-        ParameterHelper.rand_zone_1
+        helper.rand_zone_1
       when /zone 2/
-        ParameterHelper.rand_zone_2
+        helper.rand_zone_2
       when /zone 3/
-        ParameterHelper.rand_zone_3
+        helper.rand_zone_3
       when /zone 4/
-        ParameterHelper.rand_zone_4
+        helper.rand_zone_4
       when /zone 5/
-        ParameterHelper.rand_zone_5
+        helper.rand_zone_5
       when /zone 6/
-        ParameterHelper.rand_zone_6
+        helper.rand_zone_6
       when /zone 7/
-        ParameterHelper.rand_zone_7
+        helper.rand_zone_7
       when /zone 8/
-        ParameterHelper.rand_zone_8
+        helper.rand_zone_8
       when /zone 9/
-        ParameterHelper.rand_zone_9
+        helper.rand_zone_9
       else
         return zone
     end
   end
 
   def address_helper(zone)
-    return ParameterHelper.format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
-    return ParameterHelper.format_address(zone)
+    return helper.format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
+    return helper.format_address(zone)
   end
 
   def param_helper
     begin
-      ParameterHelper
+      helper
     rescue Exception => e
       p ""
       p "#{e.message}"
@@ -169,7 +171,7 @@ module Stamps
 
   def webreg_user_parameter_file * args
     begin
-      if ParameterHelper.to_bool(ENV['JENKINS'])
+      if helper.to_bool(ENV['JENKINS'])
         filename = "#{data_for(:registration, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       else
         filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
