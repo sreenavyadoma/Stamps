@@ -16,23 +16,27 @@ module Stamps
           blur_element.blur_out
         end
 
-        def select(str)
-          return manage_shipping_adddress if manage_shipping_adddress.present?
-
-          drop_down.click
-
+        def selection_element(str)
           if str.downcase.include?('default')
-            selection = StampsElement.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0])
+            selection = browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]
           else
             # verify str is in Ship-From drop-down list of values
             lovs = []
             browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
             expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
-            selection = StampsElement.new(browser.li(text: /#{str}/))
+            selection = browser.li(text: /#{str}/)
           end
+          StampsElement.new(selection)
+        end
+
+        def select(str)
+          return manage_shipping_adddress if manage_shipping_adddress.present?
+
+          drop_down.click
 
           if str.downcase.include?("manage shipping")
             15.times do
+              selection = selection_element(str)
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
@@ -42,11 +46,12 @@ module Stamps
             end
           else
             10.times do
+              selection = selection_element(str)
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              return if text_box.text.include?(str)
+              return if (str.downcase.include?('default'))?text_box.text.size>0:text_box.text.include?(str)
             end
           end
           expect(text_box.text).to include(str), "Unable to select Ship-From selection #{str}"

@@ -4,7 +4,7 @@ Then /^[Oo]n Order Details form, Delete Ship-From address (\w+)$/ do |address|
 end
 
 Then /^on Manage Shipping Address modal, delete all addresses$/ do
-  #logger.step "on Manage Shipping Address modal, delete all addresses"
+  #config.logger.step "on Manage Shipping Address modal, delete all addresses"
   stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").delete_all.close_window
 end
 

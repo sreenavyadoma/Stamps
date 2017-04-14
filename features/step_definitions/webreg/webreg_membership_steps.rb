@@ -1,81 +1,81 @@
 
 Then /^[Oo]n WebReg Membership page, set State to Armed Forces Americas$/ do
-  #logger.step "On WebReg Membership page, set State to AA Armed Forces Americas"
+  #config.logger.step "On WebReg Membership page, set State to AA Armed Forces Americas"
   registration.profile.membership.state.armed_forces_americas
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Armed Forces$/ do
-  #logger.step "On WebReg Membership page, set State to AE Armed Forces"
+  #config.logger.step "On WebReg Membership page, set State to AE Armed Forces"
   registration.profile.membership.state.armed_forces
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Alaska$/ do
-  #logger.step "On WebReg Membership page, set State to Alaska"
+  #config.logger.step "On WebReg Membership page, set State to Alaska"
   registration.profile.membership.state.alaska
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Alabama$/ do
-  #logger.step "On WebReg Membership page, set State to AL Alabama"
+  #config.logger.step "On WebReg Membership page, set State to AL Alabama"
   registration.profile.membership.state.alabama
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Armed Forces Pacific$/ do
-  #logger.step "On WebReg Membership page, set State to Armed Forces Pacific"
+  #config.logger.step "On WebReg Membership page, set State to Armed Forces Pacific"
   registration.profile.membership.state.armed_forces_pacific
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Arkansas$/ do
-  #logger.step "On WebReg Membership page, set State to Arkansas"
+  #config.logger.step "On WebReg Membership page, set State to Arkansas"
   registration.profile.membership.state.arkansa
 end
 
 Then /^[Oo]n WebReg Membership page, set State to American Samoa$/ do
-  #logger.step "On WebReg Membership page, set State to American Samoa"
+  #config.logger.step "On WebReg Membership page, set State to American Samoa"
   registration.profile.membership.state.american_samoa
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Arizona$/ do
-  #logger.step "On WebReg Membership page, set State to Arizona"
+  #config.logger.step "On WebReg Membership page, set State to Arizona"
   registration.profile.membership.state.arizona
 end
 
 Then /^[Oo]n WebReg Membership page, set State to California$/ do
-  #logger.step "On WebReg Membership page, set State to California"
+  #config.logger.step "On WebReg Membership page, set State to California"
   registration.profile.membership.state.california
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Colorado$/ do
-  #logger.step "On WebReg Membership page, set State to Colorado"
+  #config.logger.step "On WebReg Membership page, set State to Colorado"
   registration.profile.membership.state.colorado
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Connecticut$/ do
-  #logger.step "On WebReg Membership page, set State to Connecticut"
+  #config.logger.step "On WebReg Membership page, set State to Connecticut"
   registration.profile.membership.state.connecticut
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Canal Zone$/ do
-  #logger.step "On WebReg Membership page, set State to Canal Zone"
+  #config.logger.step "On WebReg Membership page, set State to Canal Zone"
   registration.profile.membership.state.canal_zone
 end
 
 Then /^[Oo]n WebReg Membership page, set State to District of Columbia$/ do
-  #logger.step "On WebReg Membership page, set State to District of Columbia"
+  #config.logger.step "On WebReg Membership page, set State to District of Columbia"
   registration.profile.membership.state.district_of_columbia
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Delaware$/ do
-  #logger.step "On WebReg Membership page, set State to Delaware"
+  #config.logger.step "On WebReg Membership page, set State to Delaware"
   registration.profile.membership.state.delaware
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Florida$/ do
-  #logger.step "On WebReg Membership page, set State to Florida"
+  #config.logger.step "On WebReg Membership page, set State to Florida"
   registration.profile.membership.state.florida
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Micronesia$/ do
-  #logger.step "On WebReg Membership page, set State to Micronesia"
+  #config.logger.step "On WebReg Membership page, set State to Micronesia"
   registration.profile.membership.state.micronesia
 end
 
@@ -240,7 +240,7 @@ Then /^[Oo]n WebReg Membership page, set State to Virginia$/ do
 end
 
 Then /^[Oo]n WebReg Membership page, set State to Virgin Islands$/ do
-  #logger.step "On WebReg Membership page, set State to Virgin Islands"
+  #config.logger.step "On WebReg Membership page, set State to Virgin Islands"
   registration.profile.membership.state.virgin_islands
 end
 
@@ -307,121 +307,121 @@ Then /^[Oo]n WebReg Membership page, set Phone to (.*)$/ do |var|
 end
 
 Then /^[Oo]n WebReg Membership page, set Extenion to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Extenion to #{var}"
+  #config.logger.step "On WebReg Membership page, set Extenion to #{var}"
   test_parameter[:ext] = (var.downcase.include? 'random') ? ParameterHelper.random_phone_extension : var
   registration.profile.membership.ext.set test_parameter[:ext]
 end
 
 Then /^[Oo]n WebReg Membership page, set Cardholder name to (.*)$/ do |var|
-  #logger.step "On WebReg Membership page, set Cardholder name to #{var}"
+  #config.logger.step "On WebReg Membership page, set Cardholder name to #{var}"
   test_parameter[:card_holder_name] = (var.downcase.include? 'random') ? ParameterHelper.random_name : var
   registration.profile.membership.card_holder_name.set test_parameter[:card_holder_name]
 end
 
 Then /^[Oo]n WebReg Membership page, set Card number to (.*)$/ do |var|
   test_parameter[:card_number] = var
-  #logger.step "On WebReg Membership page, set Card number to #{test_data[:card_number]}"
+  #config.logger.step "On WebReg Membership page, set Card number to #{test_data[:card_number]}"
   registration.profile.membership.card_number.set test_parameter[:card_number]
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to January/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to January"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to January"
   registration.profile.membership.expiration_month.jan
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to February$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to February"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to February"
   registration.profile.membership.expiration_month.feb
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to March$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to March"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to March"
   registration.profile.membership.expiration_month.mar
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to April$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to April"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to April"
   registration.profile.membership.expiration_month.apr
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to May$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to May"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to May"
   registration.profile.membership.expiration_month.may
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to June$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to June"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to June"
   registration.profile.membership.expiration_month.jun
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to July$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to July"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to July"
   registration.profile.membership.expiration_month.jul
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to August$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to August"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to August"
   registration.profile.membership.expiration_month.aug
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to September$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to September"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to September"
   registration.profile.membership.expiration_month.sep
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to October$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to October"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to October"
   registration.profile.membership.expiration_month.oct
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to November$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to November"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to November"
   registration.profile.membership.expiration_month.nov
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Month to December$/ do
-  #logger.step "On WebReg Membership page, set Expiration Month to December"
+  #config.logger.step "On WebReg Membership page, set Expiration Month to December"
   registration.profile.membership.expiration_month.dec
 end
 
 Then /^[Oo]n WebReg Membership page, set Expiration Year to (\d+)$/ do |var|
-  #logger.step "On WebReg Membership page, set Expiration Year to #{var}"
+  #config.logger.step "On WebReg Membership page, set Expiration Year to #{var}"
   test_parameter[:expiration_year] = var
   registration.profile.membership.expiration_year.select test_parameter[:expiration_year]
 end
 
 Then /^[Oo]n WebReg Membership page, set Billing address same as mailing address to Checked$/ do
-  #logger.step "On WebReg Membership page, set Billing address same as mailing address to Checked"
+  #config.logger.step "On WebReg Membership page, set Billing address same as mailing address to Checked"
   registration.profile.membership.billing_same_as_mailing.check
 end
 
 Then /^[Oo]n WebReg Membership page, set Billing address same as mailing address to Unchecked$/ do
-  #logger.step "On WebReg Membership page, set Billing address same as mailing address to Unchecked"
+  #config.logger.step "On WebReg Membership page, set Billing address same as mailing address to Unchecked"
   registration.profile.membership.billing_same_as_mailing.uncheck
 end
 
 Then /^[Oo]n WebReg Membership page, set Terms & Conditions to Checked$/ do
-  #logger.step "On WebReg Membership page, set Terms & Conditions to Checked"
+  #config.logger.step "On WebReg Membership page, set Terms & Conditions to Checked"
   registration.profile.membership.terms_and_conditions.check
 end
 
 Then /^[Oo]n WebReg Membership page, set Terms & Conditions to Unchecked$/ do
-  #logger.step "On WebReg Membership page, set Terms & Conditions to Unchecked"
+  #config.logger.step "On WebReg Membership page, set Terms & Conditions to Unchecked"
   registration.profile.membership.terms_and_conditions.uncheck
 end
 
 Then /^[Oo]n WebReg Membership page, click Back Button$/ do
-  #logger.step "On WebReg Membership page, click Back Button"
+  #config.logger.step "On WebReg Membership page, click Back Button"
   expect("").to eql "Step Definition not yet implemented! - On WebReg Membership page, click Back Button"
 end
 
 Then /^[Oo]n WebReg Membership page, click Submit$/ do
-  #logger.step "On WebReg Membership page, click Submit"
+  #config.logger.step "On WebReg Membership page, click Submit"
   begin
     registration.profile.membership.submit_correct_errors test_parameter
   rescue Exception => e
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+    config.logger.error e.message
+    config.logger.error e.backtrace.join("\n")
   end
 end
 
@@ -431,11 +431,11 @@ Then /^[Oo]n WebReg Membership page, click Submit and correct errors$/ do
     case @webreg_result
       #when there's a failure, correct field and resubmit.
       when WebReg::MembershipPhone
-        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
+        config.logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
         step "On WebReg Membership page, set Phone to random"
         step "On WebReg Membership page, click Submit"
       when WebReg::MembershipCardNumber
-        logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
+        config.logger.error "Membership Phone Textbox has error: #{@webreg_result.help_text}"
         step "On WebReg Membership page, set Card number to #{test_parameter[:card_number]}"
         step "On WebReg Membership page, click Submit"
       when WebReg::ChooseSupplies
@@ -447,92 +447,92 @@ Then /^[Oo]n WebReg Membership page, click Submit and correct errors$/ do
 end
 
 Then(/^[Oo]n WebReg Membership page, expect First Name Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect First Name Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect First Name Help Block is #{expectation}"
   help_text = registration.profile.membership.first_name.help_text
   expect(help_text).to eql expectation
   end
 
 Then(/^[Oo]n WebReg Membership page, expect Last Name Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect Last Name Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect Last Name Help Block is #{expectation}"
   help_text = registration.profile.membership.last_name.help_text
   expect(help_text).to eql expectation
   end
 
 Then(/^[Oo]n WebReg Membership page, expect Address Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect Address Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect Address Help Block is #{expectation}"
   help_text = registration.profile.membership.address.help_text
   expect(help_text).to eql expectation
   end
 
 Then(/^[Oo]n WebReg Membership page, expect City Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect City Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect City Help Block is #{expectation}"
   help_text = registration.profile.membership.city.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect State Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect State Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect State Help Block is #{expectation}"
   help_text = registration.profile.membership.state.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect Phone Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect Phone Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect Phone Help Block is #{expectation}"
   help_text = registration.profile.membership.phone.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect Cardhoder name Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect Cardholder name Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect Cardholder name Help Block is #{expectation}"
   help_text = registration.profile.membership.card_holder_name.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect Card number Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, expect Card number Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, expect Card number Help Block is #{expectation}"
   help_text = registration.profile.membership.card_number.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, Expires Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, Expires Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, Expires Help Block is #{expectation}"
   help_text = registration.profile.membership.expiration_month.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect Billing Address Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, Billing Address Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, Billing Address Help Block is #{expectation}"
   help_text = registration.profile.membership.billing_address.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect Billing City Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, Billing City Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, Billing City Help Block is #{expectation}"
   help_text = registration.profile.membership.billing_city.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect Billing State Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, Billing State Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, Billing State Help Block is #{expectation}"
   help_text = registration.profile.membership.billing_state.help_text
   expect(help_text).to eql expectation
 end
 
 
 Then(/^[Oo]n WebReg Membership page, expect Billing Zip Help Block is (.*)$/) do |expectation|
- #logger.step "On WebReg Membership page, Billing Zip Help Block is #{expectation}"
+ #config.logger.step "On WebReg Membership page, Billing Zip Help Block is #{expectation}"
   help_text = registration.profile.membership.billing_zip.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, expect Terms & Conditions Help Block is (.*)$/) do |expectation|
-  #logger.step "On WebReg Membership page, Terms & Conditions Help Block is #{expectation}"
+  #config.logger.step "On WebReg Membership page, Terms & Conditions Help Block is #{expectation}"
   help_text = registration.profile.membership.terms_and_conditions.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Membership page, Tab$/) do
-  #logger.step "On WebReg Membership page, Tab"
+  #config.logger.step "On WebReg Membership page, Tab"
   registration.profile.membership.tab
 end
 

@@ -38,8 +38,7 @@ module Stamps
       end
 
       def exit
-        button = StampsElement.new(browser.imgs class: "x-tool-img x-tool-close").last
-        button.click_while_present
+        StampsElement.new(browser.imgs(class: "x-tool-img x-tool-close").last).click_while_present
       end
 
       def present?

@@ -371,113 +371,97 @@ module Stamps
     end
   end
 
-  class BrowserSelection
-    def firefox?
-      "ff|firefox|mozilla".include? ENV['BROWSER'].downcase
-    end
-
-    def chrome?
-      "chrome|gc|google".include? ENV['BROWSER'].downcase
-    end
-
-    def ie?
-      "ie|explorer|internet explorer".include? ENV['BROWSER'].downcase
-    end
-
-    def safari?
-      "apple|osx|safari|mac".include? ENV['BROWSER'].downcase
+  class BrowserType
+    attr_reader :browser_sym
+    
+    def initialize(browser_sym)
+      expect("ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge").to include(browser_sym), 
+                                                                                                               "Invalid browser selection: #{browser_sym}. Valid values for browser are ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge"
+      @browser_sym = :firefox if "ff|firefox|mozilla".include? browser_sym.downcase
+      @browser_sym = :chrome if "chrome|gc|google".include? browser_sym.downcase
+      @browser_sym = :ie if "ie|explorer|internet explorer".include? browser_sym.downcase
+      @browser_sym = :safari if "apple|osx|safari|mac".include? browser_sym.downcase
+      @browser_sym = :edge if "edge".include? browser_sym.downcase      
     end
   end
 
   class StampsTestConfig
-    attr_accessor :browser, :logger, :scenario_name, :browser_name, :browser_selection
+    attr_accessor :scenario_name, :browser_name
+    attr_reader :browser, :logger, :browser_sym, :firefox_profile, :windows_user
 
-    def init(*args)
-      scenario_name = 'Stamps Test'
-      scenario_name = args[0] if args.length==1
-      @logger = StampsLogger.new scenario_name
+    def init(scenario_name, browser_sym, firefox_profile, windows_user)
       @scenario_name = scenario_name
-      @browser_selection = BrowserSelection.new
+      @browser_sym = BrowserType.new(browser_sym).browser_sym
+      @firefox_profile = firefox_profile
+      @windows_user = windows_user
+      @logger = StampsLogger.new(@scenario_name)
     end
 
     def setup
       begin
         Watir::always_locate = true
 
-        logger.info "Browser Selection: #{ENV['BROWSER']}"
-
-        if browser_selection.firefox?
-          begin
-            stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
-            logger.message status
-            #logger.info stdeerr
-            logger.message stdout
-          rescue
-            #ignore
-          end
-
-          # Launch Firefox
-          if ENV['FIREFOX_PROFILE'].nil? || ENV['FIREFOX_PROFILE'].downcase == 'selenium'
-            #driver = Watir::Browser.new :firefox, profile: data_for(:profile, {})['firefox']
-            driver = Watir::Browser.new(:firefox, :profile => 'selenium')
-          elsif ENV['FIREFOX_PROFILE'].downcase == 'new'
-            driver = Watir::Browser.new :firefox
-          else
-            driver = Watir::Browser.new :firefox, profile: ENV['FIREFOX_PROFILE']
-          end
-
-          @browser_name = 'Mozilla Firefox'
-
-        elsif browser_selection.ie?
-          begin
-            stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
-            logger.message status
-            #logger.info stdeerr
-            logger.message stdout
-          rescue
-            #ignore
-          end
-
-          driver = Watir::Browser.new :ie
-          @browser_name = 'Internet Explorer'
-
-        elsif browser_selection.chrome?
-          begin
-            stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
-            logger.message status
-            #logger.info stdeerr
-            logger.message stdout
-          rescue
-            #ignore
-          end
-
-          temp_data_dir1 = File.join("C:", "Users", ENV['USERNAME'], "AppData", "Local", "Google", "Chrome", "User Data", "Default")
-          temp_data_dir2 = File.join("C:", "Users", "#{ENV['USERNAME']}.CORP", "AppData", "Local", "Google", "Chrome", "User Data", "Default")
-
-          chrome_data_dir = (File.exist? temp_data_dir1)?temp_data_dir1:temp_data_dir2
-          chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
-
-          logger.info "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
-          logger.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
-=begin
+        logger.info "Browser Selection: #{browser_sym}"
+        case(browser_sym)
+          when :firefox
             begin
-              "Chrome Data Directory does not exist on this execution node:  #{chrome_data_dir}").to eql ""
-            end unless File.exist? chrome_data_dir
+              stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
+              logger.message status
+              #logger.info stdeerr
+              logger.message stdout
+            rescue
+              #ignore
+            end
 
-            driver = Watir::Browser.new :chrome, :switches => ["--disable-mail-preview", "--user-data-dir=#{chrome_data_dir}", "--ignore-certificate-errors", "--disable-popup-blocking", "--disable-translate"]
-            @browser_name = 'Google Chrome'
-=end
-          Selenium::WebDriver::Chrome.path = chrome_driver_path
-          driver = Selenium::WebDriver.for :chrome
-          browser = Watir::Browser.new dr
+            # Launch Firefox
+            if firefox_profile.nil? || firefox_profile.downcase == 'selenium'
+              driver = Watir::Browser.new(:firefox, :profile => 'selenium')
+            elsif firefox_profile.downcase == 'new'
+              driver = Watir::Browser.new :firefox
+            else
+              driver = Watir::Browser.new :firefox, profile: firefox_profile
+            end
+            @browser_name = 'Mozilla Firefox'
+          when :chrome
+            begin
+              stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
+              logger.message status
+              #logger.info stdeerr
+              logger.message stdout
+            rescue
+              #ignore
+            end
+            temp_data_dir1 = File.join("C:", "Users", windows_user, "AppData", "Local", "Google", "Chrome", "User Data", "Default")
+            temp_data_dir2 = File.join("C:", "Users", "#{windows_user}.CORP", "AppData", "Local", "Google", "Chrome", "User Data", "Default")
 
-        elsif browser_selection.safari?
-          driver = Watir::Browser.new :safari
-          @browser_name = 'Mac OS X - Safari'
-        else
-          driver = Watir::Browser.new :ie
-          @browser_name = 'Internet Explorer'
+            chrome_data_dir = (File.exist? temp_data_dir1)?temp_data_dir1:temp_data_dir2
+            chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
+
+            logger.info "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
+            logger.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
+
+            Selenium::WebDriver::Chrome.path = chrome_driver_path
+            driver = Selenium::WebDriver.for :chrome
+            browser = Watir::Browser.new (driver)
+          when :ie
+            begin
+              stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
+              logger.message status
+              #logger.info stdeerr
+              logger.message stdout
+            rescue
+              #ignore
+            end
+
+            driver = Watir::Browser.new :ie
+            @browser_name = 'Internet Explorer'
+          when :safari
+            driver = Watir::Browser.new :safari
+            @browser_name = 'Mac OS X - Safari'
+          else
+            # do nothing.
         end
+
         #driver.window.move_to 0, 0
         #driver.window.resize_to 1000, 800
         #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || ParameterHelper.to_bool(ENV['MAX_WINDOW']))

@@ -13,11 +13,7 @@ module Stamps
   end
 
   def logger
-    config.logger
-  end
 
-  def browser
-    config.browser
   end
 
   def registration
@@ -89,18 +85,15 @@ module Stamps
   end
   
   def param
-    expect(browser).not_to be_nil
     if @param.nil?
       @param = ModalParam.new
-
+      @param.browser_sym = config.browser_sym
+      @param.firefox_profile  = ENV['FIREFOX_PROFILE'].downcase
       expect(ENV['WEB_APP']).not_to be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
       expect([:orders, :mail, :registration]).to include(@param.web_app)
 
       ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
-      @param.browser = browser
-      @param.logger = logger
-      @param.scenario_name = config.scenario_name
       @param.test_env = ENV['URL']
       @param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 
@@ -121,6 +114,9 @@ module Stamps
         expect(['orders', 'mail', 'webreg']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or webreg. Got #{ENV['WEB_APP']}"
       end
     end
+    @param.browser = config.browser
+    @param.logger = config.logger
+    @param.scenario_name = config.scenario_name
     @param
   end
 
@@ -177,7 +173,7 @@ module Stamps
       else
         filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       end
-      logger.message "WebReg parameter file: #{filename}"
+      config.logger.message "WebReg parameter file: #{filename}"
       filename
     rescue Exception => e
       p e.message

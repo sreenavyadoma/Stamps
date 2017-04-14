@@ -443,7 +443,7 @@ module Stamps
     # Modals
 
     class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :browser_sym, :firefox_profile
     end
 
     # StampsModal is a parent class for modals containing StampsElements

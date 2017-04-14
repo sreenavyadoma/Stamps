@@ -265,10 +265,10 @@ Then /^[Ee]xpect Orders Grid Ship Cost error to contain \"(.*)\"$/ do |expectati
 end
 
 Then /^[Ee]xpect Orders Grid ship cost data error tooltip is \"(.*)\"$/ do |expectation|
-  #logger.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
+  #config.logger.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
   grid_order_id = stamps.orders.orders_grid.column.order_id.row 1
   grid_ship_cost = stamps.orders.orders_grid.column.ship_cost.data grid_order_id
   error = grid_ship_cost.attribute_expectation "data-errorqtip"
-  #logger.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
+  #config.logger.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
   expect(error).to include(expectation)
 end

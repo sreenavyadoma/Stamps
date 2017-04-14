@@ -1,16 +1,15 @@
 Then /^Teardown$/ do
-  test_config.teardown
+  config.teardown
 end
 
 Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |selection|
   ENV['BROWSER'] = selection unless selection.nil?
   config.setup
-  expect(browser).not_to be_nil
 end
 
 Then /^Refresh the browser$/ do
   begin
-    browser.refresh
+    config.browser.refresh
     sleep(2)
   rescue
     #ignore

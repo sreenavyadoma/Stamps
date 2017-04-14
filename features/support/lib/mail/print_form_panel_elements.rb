@@ -330,9 +330,7 @@ module Stamps
           text_box.present?
         end
 
-        def select(str)
-          drop_down.click
-
+        def selection_element(str)
           if str.downcase.include?('default')
             selection = StampsElement.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0])
           else
@@ -342,10 +340,16 @@ module Stamps
             expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
             selection = StampsElement.new(browser.li(text: /#{str}/))
           end
+          StampsElement.new(selection)
+        end
+
+        def select(str)
+          drop_down.click
 
           if str.downcase.include? "manage shipping"
             10.times do
               begin
+                selection = selection_element(str)
                 selection.click
                 return manage_shipping_address if manage_shipping_address.present?
                 drop_down.click unless selection.present?
@@ -355,6 +359,7 @@ module Stamps
             end
           else
             10.times do
+              selection = selection_element(str)
               selection.click
               break if text_box.text.length > 0
               drop_down.click unless selection.present?
