@@ -142,7 +142,7 @@ module Stamps
                 selection.scroll_into_view
                 selection.click
                 break if text_box.text.include?(selected_sub_str)
-                expect(upgrade_plan.present?).to be(false), "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
+                expect(upgrade_plan).not_to be_present, "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
               else
                 drop_down.click unless selection.present?
               end
@@ -330,15 +330,26 @@ module Stamps
           text_box.present?
         end
 
+        def selection_element(str)
+          if str.downcase.include?('default')
+            selection = StampsElement.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0])
+          else
+            # verify str is in Ship-From drop-down list of values
+            lovs = []
+            browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
+            expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
+            selection = StampsElement.new(browser.li(text: /#{str}/))
+          end
+          StampsElement.new(selection)
+        end
+
         def select(str)
           drop_down.click
-
-          selection = StampsElement.new(browser.li(text: /#{str}/))
-          selection = StampsElement.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]) if str.downcase.include?('default')
 
           if str.downcase.include? "manage shipping"
             10.times do
               begin
+                selection = selection_element(str)
                 selection.click
                 return manage_shipping_address if manage_shipping_address.present?
                 drop_down.click unless selection.present?
@@ -348,6 +359,7 @@ module Stamps
             end
           else
             10.times do
+              selection = selection_element(str)
               selection.click
               break if text_box.text.length > 0
               drop_down.click unless selection.present?
@@ -390,7 +402,7 @@ module Stamps
             begin
               drop_down.click unless cost_label.present?
               if cost_label.present?
-                service_cost = ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
+                service_cost = helper.remove_dollar_sign(cost_label.text).to_f.round(2)
                 logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
                 return service_cost
               end
@@ -599,7 +611,7 @@ module Stamps
             return contacts_modal if contacts_modal.present?
             link.click
           end
-          expect(contacts_modal.present?).to be(true)
+          expect(contacts_modal).to be_present
         end
       end
 
@@ -615,7 +627,7 @@ module Stamps
         end
 
         def country(str)
-          expect(@country.present?).to be(true)
+          expect(@country).to be_present
           geography = @country.select(str)
           expect([:domestic, :international]).to include(geography)
           # dymanically create appropriate form per geography
@@ -639,7 +651,7 @@ module Stamps
             button.click
             sleep(0.35)
           end
-          expect(customs_form.present?).to be(true)
+          expect(customs_form).to be_present
         end
 
         def restrictions

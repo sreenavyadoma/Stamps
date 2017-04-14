@@ -6,7 +6,7 @@ Feature: Print Media Tooltips
   @tooltip_print_media
   Scenario:  Verify tooltips for all Print Media selections
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
     Then set Order Details form Pounds to 1

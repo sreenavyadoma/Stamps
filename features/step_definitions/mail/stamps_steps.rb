@@ -37,13 +37,13 @@ Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
 end
 
 Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
-  test_parameter[:stamp_amount] = value
-  stamps.mail.print_form.stamp_amount.set(test_parameter[:stamp_amount])
+  parameter[:stamp_amount] = value
+  stamps.mail.print_form.stamp_amount.set(parameter[:stamp_amount])
 end
 
 Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
-  test_parameter[:quantity] = value
-  stamps.mail.print_form.quantity.set(test_parameter[:quantity])
+  parameter[:quantity] = value
+  stamps.mail.print_form.quantity.set(parameter[:quantity])
 end
 
 Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
@@ -56,7 +56,7 @@ Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
     break if (stamps.mail.print_form.mail_to.address.text_area.text).gsub(/ \n/,", ").gsub(/\n/,", ") == value
   end
   expect((stamps.mail.print_form.mail_to.address.text_area.text).gsub(/ \n/,", ").gsub(/\n/,", ")).to eql value
-  logger.step 'Address Cleansed -- Expected Result Confirmed'
+  config.logger.step 'Address Cleansed -- Expected Result Confirmed'
 end
 
 

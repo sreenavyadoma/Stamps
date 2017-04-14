@@ -6,7 +6,7 @@ Feature: International Shipping fields and Customs Information fields validation
   @rules_international @rules_international_customs_fields_validation
   Scenario: International Shipping fields and Customs Information fields validation
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to Japan
 
     Then expect Order Details form International Address fields are visible

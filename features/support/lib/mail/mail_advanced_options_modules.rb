@@ -80,7 +80,7 @@ module Stamps
             @show_element.click
             break if @hide_element.present?
           end
-          expect(@hide_element.present?).to be(true)
+          expect(@hide_element).to be_present
         end
 
         def hide
@@ -90,7 +90,7 @@ module Stamps
             @hide_element.click
             break if @show_element.present?
           end
-          expect(@show_element.present?).to be(true)
+          expect(@show_element).to be_present
           self
         end
       end

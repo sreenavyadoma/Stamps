@@ -12,6 +12,6 @@ end
 
 Then /^Volusion Store: Reconnect$/ do
   @manage_stores = @store.reconnect
-  expect(@manage_stores.nil?).to_not be_nil
+  expect(@manage_stores.nil?).not_to be_nil
 end
 

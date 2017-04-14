@@ -2,7 +2,7 @@
 Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
   @market_place.should_not be_nil
   actual = @market_place.contains expectation
-  #logger.step "Test #{(actual==expectation)?"Passed":"Failed"}"
+  #config.logger.step "Test #{(actual==expectation)?"Passed":"Failed"}"
   expect(actual).to eql expectation
 end
 

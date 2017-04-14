@@ -10,7 +10,7 @@ module Stamps
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
         @please_wait = PrintModal::PleaseWait.new(param)
-        @windows_print = Windows::PrintWindow.new
+        @windows_print = Windows::PrintWindow.new(param.browser_sym)
         @sample_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)
@@ -36,7 +36,7 @@ module Stamps
           end
           break if @print_button.present?
         end
-        expect(@print_button.present?).to be(true)
+        expect(@print_button).to be_present
         @print_button
       end
 
@@ -51,7 +51,7 @@ module Stamps
       def open_window(window)
         return window if window.present?
 
-        expect(print_button.present?).to be(true)
+        expect(print_button).to be_present
         10.times do
           begin
             print_button.click
@@ -94,7 +94,7 @@ module Stamps
             #ignore
           end
         end
-        expect(window.present?).to be(true)
+        expect(window).to be_present
       end
 
       def open_sample_window window

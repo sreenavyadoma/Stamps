@@ -10,7 +10,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
@@ -20,7 +20,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
@@ -32,7 +32,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
@@ -41,7 +41,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
@@ -50,7 +50,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
@@ -60,7 +60,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
@@ -69,7 +69,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
@@ -79,7 +79,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
@@ -88,7 +88,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
@@ -98,7 +98,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
@@ -108,7 +108,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
@@ -118,7 +118,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
@@ -128,7 +128,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
@@ -138,7 +138,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 14
@@ -149,7 +149,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
@@ -158,7 +158,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
@@ -167,7 +167,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
@@ -176,7 +176,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
@@ -185,7 +185,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
@@ -196,7 +196,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
@@ -208,7 +208,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
@@ -218,7 +218,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
@@ -228,7 +228,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
@@ -239,7 +239,7 @@ Feature: 150 orders
     # International
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -260,7 +260,7 @@ Feature: 150 orders
     Then set Order Details form service to FCMI Large Envelope
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -284,7 +284,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
@@ -294,7 +294,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
@@ -306,7 +306,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
@@ -315,7 +315,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
@@ -324,7 +324,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
@@ -334,7 +334,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
@@ -343,7 +343,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
@@ -353,7 +353,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
@@ -362,7 +362,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
@@ -372,7 +372,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
@@ -382,7 +382,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
@@ -392,7 +392,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
@@ -402,7 +402,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
@@ -412,7 +412,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 14
@@ -423,7 +423,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
@@ -432,7 +432,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
@@ -441,7 +441,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
@@ -450,7 +450,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
@@ -459,7 +459,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
@@ -470,7 +470,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
@@ -482,7 +482,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
@@ -492,7 +492,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
@@ -502,7 +502,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
@@ -513,7 +513,7 @@ Feature: 150 orders
     # International
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country | phone       |  email           |
@@ -534,7 +534,7 @@ Feature: 150 orders
     Then set Order Details form service to FCMI Large Envelope
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -558,7 +558,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
@@ -568,7 +568,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
@@ -580,7 +580,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
@@ -589,7 +589,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
@@ -598,7 +598,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
@@ -608,7 +608,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
@@ -617,7 +617,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
@@ -627,7 +627,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
@@ -636,7 +636,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
@@ -646,7 +646,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
@@ -656,7 +656,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
@@ -666,7 +666,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
@@ -676,7 +676,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
@@ -686,7 +686,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
     * set Order Details form Ounces to 14
     * set Order Details form Insure-For to $305.00
@@ -696,7 +696,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
@@ -705,7 +705,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
@@ -714,7 +714,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
@@ -723,7 +723,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
@@ -732,7 +732,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
@@ -743,7 +743,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
@@ -755,7 +755,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
@@ -765,7 +765,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
@@ -775,7 +775,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
@@ -786,7 +786,7 @@ Feature: 150 orders
     # International
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -807,7 +807,7 @@ Feature: 150 orders
     Then set Order Details form service to FCMI Large Envelope
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -831,7 +831,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
@@ -841,7 +841,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
@@ -853,7 +853,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
@@ -862,7 +862,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
@@ -871,7 +871,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
@@ -881,7 +881,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
@@ -890,7 +890,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
@@ -900,7 +900,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
@@ -909,7 +909,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
@@ -919,7 +919,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
@@ -929,7 +929,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
@@ -939,7 +939,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
@@ -949,7 +949,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
@@ -959,7 +959,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 14
@@ -970,7 +970,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
@@ -979,7 +979,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
@@ -988,7 +988,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
@@ -997,7 +997,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
@@ -1006,7 +1006,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
@@ -1017,7 +1017,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
@@ -1029,7 +1029,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
@@ -1039,7 +1039,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
@@ -1049,7 +1049,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
@@ -1060,7 +1060,7 @@ Feature: 150 orders
     # International
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country     | phone       |  email  |
@@ -1081,7 +1081,7 @@ Feature: 150 orders
     Then set Order Details form service to FCMI Large Envelope
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1105,7 +1105,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
@@ -1115,7 +1115,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
@@ -1127,7 +1127,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
@@ -1136,7 +1136,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
@@ -1145,7 +1145,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
@@ -1155,7 +1155,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
@@ -1164,7 +1164,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
@@ -1174,7 +1174,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
@@ -1183,7 +1183,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
@@ -1193,7 +1193,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
@@ -1203,7 +1203,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
@@ -1213,7 +1213,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
@@ -1223,7 +1223,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
@@ -1233,7 +1233,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 14
@@ -1244,7 +1244,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
@@ -1253,7 +1253,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
@@ -1262,7 +1262,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
@@ -1271,7 +1271,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
@@ -1280,7 +1280,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
@@ -1291,7 +1291,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
@@ -1303,7 +1303,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
@@ -1313,7 +1313,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
@@ -1323,7 +1323,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
@@ -1334,7 +1334,7 @@ Feature: 150 orders
     # International
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -1355,7 +1355,7 @@ Feature: 150 orders
     Then set Order Details form service to FCMI Large Envelope
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
@@ -1379,7 +1379,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 1
@@ -1389,7 +1389,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 2
@@ -1401,7 +1401,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 3
@@ -1410,7 +1410,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 4
@@ -1419,7 +1419,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 5
@@ -1429,7 +1429,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 6
@@ -1438,7 +1438,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 7
@@ -1448,7 +1448,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 8
@@ -1457,7 +1457,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 9
@@ -1467,7 +1467,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 10
@@ -1477,7 +1477,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 11
@@ -1487,7 +1487,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 12
@@ -1497,7 +1497,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 13
@@ -1507,7 +1507,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 14
@@ -1518,7 +1518,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Ounces to 15
@@ -1527,7 +1527,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 16
@@ -1536,7 +1536,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 17
@@ -1545,7 +1545,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 18
@@ -1554,7 +1554,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 19
@@ -1565,7 +1565,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 20
@@ -1577,7 +1577,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 21
@@ -1587,7 +1587,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 22
@@ -1597,7 +1597,7 @@ Feature: 150 orders
 
     * click Orders Toolbar Add button
     * expect Order Details form Order ID is truthy
-    * set Order Details form Ship-From to El Segundo, CA
+    * set Order Details form Ship-From to default
     * set Order Details form Ship-To to random address between zone 1 and 4
 
     * set Order Details form Pounds to 23
@@ -1608,7 +1608,7 @@ Feature: 150 orders
     # International
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country   | phone       |  email  |
@@ -1629,7 +1629,7 @@ Feature: 150 orders
     Then set Order Details form service to FCMI Large Envelope
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country  | phone   |  email  |

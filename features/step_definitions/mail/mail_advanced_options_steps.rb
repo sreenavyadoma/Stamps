@@ -68,14 +68,14 @@ Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|)
     when /date/
       valid_date = Date.strptime(value, "%m/%d/%Y") rescue nil
       expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{value}"
-      test_parameter[:mail_date] = value
-      test_parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.text_box.set(test_parameter[:mail_date])
+      parameter[:mail_date] = value
+      parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.text_box.set(parameter[:mail_date])
     when /today plus/
-      test_parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
+      parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
     when /today/
-      test_parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.today
+      parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.today
     when /tomorrow/
-      test_parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
+      parameter[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
     else
       valid_date = Date.strptime(value, "%m/%d/%Y") rescue nil
       expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{value}"
@@ -84,7 +84,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|(.*))$/ do |expectation|
   step "Expect Advanced Options responds to Mail Date (mail_date)"
-  expectation = test_parameter[:mail_date] if expectation.nil?
+  expectation = parameter[:mail_date] if expectation.nil?
   valid_date = Date.strptime(expectation, "%m/%d/%Y") rescue nil
   expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{expectation}"
   expect(stamps.mail.print_form.advanced_options.mail_date.text_box.text).to eql(expectation), "Advanced Options Mail Date is not #{expectation}"
@@ -92,8 +92,8 @@ end
 
 Then /^[Ss]et Advanced Options Reference Number to (?:(?:a |some |)random string|(.*))$/ do |str|
   step "Expect Advanced Options responds to Reference Number (reference_number)"
-  test_parameter[:reference_number] = (str.nil?)?ParameterHelper.random_string : str
-  stamps.mail.print_form.advanced_options.reference_number.set(test_parameter[:reference_number])
+  parameter[:reference_number] = (str.nil?)?helper.random_string : str
+  stamps.mail.print_form.advanced_options.reference_number.set(parameter[:reference_number])
 end
 
 Then /^[Ee]xpect Advanced Options Reference Number field is present$/ do
@@ -103,7 +103,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|
   step "Expect Advanced Options responds to Reference Number (reference_number)"
-  expectation = test_parameter[:reference_number] if expectation.nil?
+  expectation = parameter[:reference_number] if expectation.nil?
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), "Advanced Options Reference Number is incorrect"
 end
 

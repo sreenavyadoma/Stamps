@@ -4,7 +4,7 @@ module Stamps
       module PrintFormBlurOut
         def blur_out
           @blur_out = StampsElement.new(browser.label(text: 'Print On:')) if @blur_out.nil? || !@blur_out.present?
-          expect(@blur_out.present?).to be(true)
+          expect(@blur_out).to be_present
           3.times { @blur_out.double_click }
         end
       end
@@ -12,7 +12,7 @@ module Stamps
       module MailFrom
         def mail_from
           @mail_from = PrintFormMailFrom.new(param) if @mail_from.nil? || !@mail_from.present?
-          expect(@mail_from.present?).to be(true)
+          expect(@mail_from).to be_present
           @mail_from
         end
       end
@@ -20,7 +20,7 @@ module Stamps
       module MailTo
         def mail_to
           @mail_to = PrintFormMailTo.new(param) if @mail_to.nil? || !@mail_to.present?
-          expect(@mail_to.present?).to be(true)
+          expect(@mail_to).to be_present
           @mail_to
         end
       end
@@ -28,7 +28,7 @@ module Stamps
       module MailWeight
         def mail_weight
           @mail_weight = PrintFormWeight.new(param) if @mail_weight.nil? || !@mail_weight.present?
-          expect(@mail_weight.present?).to be(true)
+          expect(@mail_weight).to be_present
           @mail_weight
         end
       end
@@ -36,7 +36,7 @@ module Stamps
       module MailDimensions
         def dimensions
           @dimensions = PrintFormDimensions.new(param) if @dimensions.nil? || !@dimensions.present?
-          expect(@dimensions.present?).to be(true)
+          expect(@dimensions).to be_present
           @dimensions
         end
       end
@@ -44,7 +44,7 @@ module Stamps
       module MailService
         def mail_service
           @mail_service = PrintFormService.new(param) if @mail_service.nil? || !@mail_service.present?
-          expect(@mail_service.present?).to be(true)
+          expect(@mail_service).to be_present
           @mail_service
         end
       end
@@ -52,7 +52,7 @@ module Stamps
       module MailCustoms
         def mail_customs
           @mail_customs = PrintFormCustoms.new(param) if @mail_customs.nil? || !@mail_customs.present?
-          expect(@mail_customs.present?).to be(true)
+          expect(@mail_customs).to be_present
           @mail_customs
         end
       end
@@ -202,19 +202,19 @@ module Stamps
 
         def mail_tracking
           @mail_tracking = MailTracking.new(param) if @mail_insure_for.nil? || !@mail_insure_for.present?
-          expect(@mail_insure_for.present?).to be(true)
+          expect(@mail_insure_for).to be_present
           @mail_insure_for
         end
 
         def mail_ship_date
           @mail_ship_date = ShipDate.new(param) if @mail_ship_date.nil? || !@mail_ship_date.present?
-          expect(@mail_ship_date.present?).to be(true)
+          expect(@mail_ship_date).to be_present
           @mail_ship_date
         end
 
         def form_view
           @form_view = ShippingLabelPrintView.new(param) if @form_view.nil? || !@form_view.present?
-          expect(@form_view.present?).to be(true)
+          expect(@form_view).to be_present
           @form_view
         end
       end

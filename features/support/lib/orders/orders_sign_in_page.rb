@@ -172,13 +172,13 @@ module Stamps
               if new_welcome.present?
                 logger.message new_welcome.message
                 add_manual_order = new_welcome.next
-                expect(add_manual_order.present?).to be(true)
+                expect(add_manual_order).to be_present
                 import_from_csv = add_manual_order.next
-                expect(import_from_csv.present?).to be(true)
+                expect(import_from_csv).to be_present
                 import_from_stores = import_from_csv.next
-                expect(import_from_stores.present?).to be(true)
+                expect(import_from_stores).to be_present
                 learn_more = import_from_stores.next
-                expect(learn_more.present?).to be(true)
+                expect(learn_more).to be_present
                 learn_more.close
               end
               signed_in_user.wait_until_present(4)

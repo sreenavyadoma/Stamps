@@ -8,7 +8,7 @@ Feature: Print two labels on one sheet
   Scenario: User Prints multiple Domestic labels
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz
@@ -16,7 +16,7 @@ Feature: Print two labels on one sheet
     Then set Order Details form Tracking to Signature Required
 
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz

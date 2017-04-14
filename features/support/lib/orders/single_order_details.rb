@@ -16,32 +16,42 @@ module Stamps
           blur_element.blur_out
         end
 
+        def selection_element(str)
+          if str.downcase.include?('default')
+            selection = browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]
+          else
+            # verify str is in Ship-From drop-down list of values
+            lovs = []
+            browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
+            expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
+            selection = browser.li(text: /#{str}/)
+          end
+          StampsElement.new(selection)
+        end
+
         def select(str)
           return manage_shipping_adddress if manage_shipping_adddress.present?
+
           drop_down.click
-          lovs = []
-          browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
 
-          expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
-
-          selection = StampsElement.new(browser.li(text: /#{str}/))
-
-          if str.downcase.include? "manage shipping"
+          if str.downcase.include?("manage shipping")
             15.times do
+              selection = selection_element(str)
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
               sleep(0.35)
               return manage_shipping_adddress if manage_shipping_adddress.present?
-              expect(manage_shipping_adddress.present?).to be(true), "Manage Shipping Address modal did not come up."
+              expect(manage_shipping_adddress).to be_present, "Manage Shipping Address modal did not come up."
             end
           else
             10.times do
+              selection = selection_element(str)
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              return if text_box.text.include?(str)
+              return if (str.downcase.include?('default'))?text_box.text.size>0:text_box.text.include?(str)
             end
           end
           expect(text_box.text).to include(str), "Unable to select Ship-From selection #{str}"
@@ -90,7 +100,7 @@ module Stamps
             break unless text_field.nil?
           end
           text_field.should_not be nil
-          expect(text_field.present?).to be(true)
+          expect(text_field).to be_present
           StampsTextbox.new(text_field)
         end
 
@@ -109,7 +119,7 @@ module Stamps
             sleep(0.35)
           end
           dd.should_not be nil
-          expect(dd.present?).to be(true)
+          expect(dd).to be_present
           StampsElement.new(dd)
         end
 
@@ -281,7 +291,7 @@ module Stamps
           form = SingleOrderDetails.new(param)
           form.validate_address_link
           country_drop_down = self.country
-          form.ship_to.set ParameterHelper.format_address(partial_address_hash)
+          form.ship_to.set helper.format_address(partial_address_hash)
           30.times {
             begin
               item_label.click
@@ -563,7 +573,7 @@ module Stamps
 
         def save
           save_btn.click_while_present
-          expect(save_btn.present?).to be(false), "Add Shipping Address failed to save Return Address: #{address_hash.each do |key, value| "#{key}:#{value}" end}"
+          expect(save_btn).not_to be_present, "Add Shipping Address failed to save Return Address: #{address_hash.each do |key, value| "#{key}:#{value}" end}"
         end
 
       end
@@ -853,7 +863,7 @@ module Stamps
           logger.info "#{text_box.text} service selected."
 
           # Test if selected service includes abbreviated selection.
-          expect(text_box.text).to include substr
+          expect(text_box.text).to include(substr)
           text_box.text
         end
 
@@ -863,7 +873,7 @@ module Stamps
             begin
               drop_down.click unless cost_label.present?
               if cost_label.present?
-                service_cost = ParameterHelper.remove_dollar_sign(cost_label.text)
+                service_cost = helper.remove_dollar_sign(cost_label.text)
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                 drop_down.click if cost_label.present?
                 return service_cost.to_f.round(2)
@@ -884,7 +894,7 @@ module Stamps
         end
 
         def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def tooltip(selection)
@@ -1062,7 +1072,7 @@ module Stamps
         end
 
         def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
       end
 
@@ -1098,7 +1108,7 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(drop_down.present?).to be(true)
+          expect(drop_down).to be_present
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
             drop_down.click unless selection.present?
@@ -1128,7 +1138,7 @@ module Stamps
         end
 
         def cost
-          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def tooltip(selection)
@@ -1348,7 +1358,7 @@ module Stamps
               #ignore
             end
           end
-          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def multiple_order_cost
@@ -1362,7 +1372,7 @@ module Stamps
             end
             break unless cost.include? "$"
           end
-          ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
       end
 
@@ -1383,7 +1393,7 @@ module Stamps
             edit_form_btn.click
             customs_form.wait_until_present(2)
           end
-          expect(customs_form.present?).to be(true)
+          expect(customs_form).to be_present
         end
 
         def restrictions
@@ -1391,7 +1401,7 @@ module Stamps
             return view_restrictions if view_restrictions.present?
             restrictions_btn.click
           end
-          expect(view_restrictions.present?).to be(true)
+          expect(view_restrictions).to be_present
         end
       end
 

@@ -6,7 +6,7 @@ Feature:  service enabled/disabled tests
   @rules_domestic
   Scenario:  First Class Mail over 16 ounces disabled
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 17
     Then expect Order Details form service "FCM Package" is disabled
@@ -14,7 +14,7 @@ Feature:  service enabled/disabled tests
 
     #First Class Mail up to 15.9 ounces enabled
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form Ounces to 15.9
     Then expect Order Details form service "First-Class Mail Package/Thick Envelope" is enabled
@@ -32,7 +32,7 @@ Feature:  service enabled/disabled tests
     Then expect Order Details form Weight Oz data error tooltip is "Weight cannot be 0"
     Then expect Order Details form service data error tooltip is "Service is required"
     Then check Orders Grid saved Order ID
-    Then set Order Details form Ship-From to El Segundo, CA
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then set Order Details form Email to random
     Then set Order Details form Phone to random

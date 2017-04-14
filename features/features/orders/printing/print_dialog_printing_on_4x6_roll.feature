@@ -6,7 +6,7 @@ Feature: Print Media - Roll - 4 ⅛" x 6 ¼" Shipping Label
   @print_dialog_printing_on_4x6_roll
   Scenario:  Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then click Orders Toolbar Add button
-    Then set Order Details form Ship-From to Bulk Update Order 1
+    Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
     Then set Order Details form Pounds to 1
