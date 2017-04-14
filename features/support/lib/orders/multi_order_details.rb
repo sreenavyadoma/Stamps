@@ -2,12 +2,13 @@ module Stamps
   module Orders
     module Details
       class MultiOrderDetails < Browser::StampsModal
-        attr_reader :ship_from, :weight
+        attr_reader :ship_from, :weight, :domesticservice
 
         def initialize(param)
           super(param)
           @ship_from = ShipFromAddress.new(param)
           @weight = MultiOrderDetailsWeight.new(param)
+          @domesticservice = DomesticService.new(param)
         end
 
         def blur_out
@@ -105,16 +106,17 @@ module Stamps
         end
       end
 
-      class ShipTo < Browser::StampsModal
-        attr_reader :country, :international, :domestic
+      class DomesticService < Browser::StampsModal
+        attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
-          @country = ShipToCountry.new(param)
-          @domestic = ShipToDomestic.new(param)
-          @international = ShipToInternational.new(param)
+          @text_box = StampsTextbox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
+          @drop_down = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
+          @blur_element = BlurOutElement.new(param)
         end
-      end
 
+    end
     end
   end
 end
+
