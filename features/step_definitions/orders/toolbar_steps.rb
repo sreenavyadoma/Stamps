@@ -1,9 +1,10 @@
-Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add Order )(.*)?$/ do |order_count|
+Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |order_count|
   begin
     test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
     stamps.orders.orders_toolbar.add.order_details
-    test_parameter[:order_id][1][(order_count.nil?||order_count.length==0)?1:order_count] = stamps.orders.order_details.toolbar.order_id
+    order_count = (order_count.nil?)?0:order_count.to_i
+    test_parameter[:order_id][order_count] = stamps.orders.order_details.toolbar.order_id
     step "Save Order Details data"
   rescue Exception => e
     config.logger.error e.message

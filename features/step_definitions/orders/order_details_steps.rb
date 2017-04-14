@@ -320,7 +320,7 @@ Then /^[Oo]n Order Details form, Show Ship-To fields$/ do
 end
 
 Then /^[Ee]xpect Order Details form Order ID is truthy$/ do
-  expect(test_parameter[:order_id][1].to_i).to be > 0
+  expect(test_parameter[:order_id][0].to_i).to be > 0
 end
 
 Then /^[Ee]xpect Order Details form Order ID equals Grid Oder ID in row (\d+)$/ do |row|
@@ -328,7 +328,7 @@ Then /^[Ee]xpect Order Details form Order ID equals Grid Oder ID in row (\d+)$/ 
 end
 
 Then /^[Ee]xpect Order Details form Order ID is the same as saved Order ID$/ do
-  expect(stamps.orders.order_details.toolbar.order_id).to eql test_parameter[:order_id][1]
+  expect(stamps.orders.order_details.toolbar.order_id).to eql test_parameter[:order_id][0]
 end
 
 Then /^[Ee]xpect Order Details form Ship-To Name is (.*)$/ do |expectation|

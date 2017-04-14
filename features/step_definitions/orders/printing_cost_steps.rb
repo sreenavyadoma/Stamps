@@ -22,12 +22,12 @@ end
 Then /^[Ee]xpect Ship Cost equals Total amount$/ do
   10.times {
     begin
-      break if stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id][1]).eql?(stamps.orders.order_details.footer.total_ship_cost)
+      break if stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id][0]).eql?(stamps.orders.order_details.footer.total_ship_cost)
     rescue
       #ignore
     end
   }
-  expect(stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id][1])).to eql(stamps.orders.order_details.footer.total_ship_cost)
+  expect(stamps.orders.orders_grid.column.ship_cost.data(test_parameter[:order_id][0])).to eql(stamps.orders.order_details.footer.total_ship_cost)
 end
 
 Then /^[Ee]xpect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
