@@ -97,6 +97,7 @@ module Stamps
     @test_data ||= Hash.new
     @test_data[:customs_associated_items] ||= Hash.new
     @test_data[:details_associated_items] ||= Hash.new
+    @test_data[:order_id] ||= Hash.new
     @test_data
   end
 
