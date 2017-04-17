@@ -5,7 +5,7 @@ Feature: Ambigious Address
 
   @ambigious_address
   Scenario: Exact Address Not Found
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to ambiguous address
       | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |

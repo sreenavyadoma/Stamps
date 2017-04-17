@@ -2,14 +2,49 @@ module Stamps
   module Mail
     module PrintFormPanel
 
+      class UpgradePlan < Browser::StampsModal
+        attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_element
+
+        def initialize(param)
+          super(param)
+          @window_title = StampsElement.new(browser.div(text: "Upgrade Plan"))
+          @close_btn = StampsElement.new(browser.img(text: "img[class*=close]"))
+          @upgrade_now_btn = StampsElement.new(browser.span(text: "Upgrade Now"))
+          @not_yet_btn = StampsElement.new(browser.span(text: "Not Yet"))
+          @paragraph_element = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]"))
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def close
+          close_btn.click_while_present
+        end
+
+        def paragraph
+          paragraph_element.text
+        end
+
+        def not_yet
+          not_yet_btn.click_while_present
+        end
+
+        def upgrade_now
+          upgrade_now_btn.click_while_present
+          expect(browser.url).to include(param.test_env), "User rerouted to an external URL. You are no longer in #{param.test_env}. Check URL #{browser.url}"
+        end
+      end
+
       class PrintOn < Browser::StampsModal
-        attr_accessor :drop_down, :text_box
+        attr_accessor :drop_down, :text_box, :upgrade_plan
         include PrintFormBlurOut
 
         def initialize(param)
           super(param)
           @drop_down = StampsElement.new(browser.div(id: "printmediadroplist-1036-trigger-picker"))
           @text_box = StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist-][name$=inputEl]"))
+          @upgrade_plan = UpgradePlan.new(param)
         end
 
         def present?
@@ -64,21 +99,25 @@ module Stamps
               selected_sub_str = 'Envelope - #12'
               element = browser.lis(css: "li[class*=iconEnvelope]")[7]
             when /SDC-3610/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails
               selected_sub_str = 'SDC-3610'
               element = browser.lis(css: "li[class*=iconCertified]")[0]
             when /SDC-3710/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails
               selected_sub_str = 'SDC-3710'
               element = browser.lis(css: "li[class*=iconCertified]")[1]
             when /SDC-3910/
-              param.print_media = :envelopes
+              param.print_media = :certified_mails_3910_3930
               selected_sub_str = 'SDC-3910'
               element = browser.lis(css: "li[class*=iconCertified]")[2]
-            when /SDC-3810/
-              param.print_media = :envelopes
-              selected_sub_str = 'SDC-3810'
+            when /SDC-3930/
+              param.print_media = :certified_mails_3910_3930
+              selected_sub_str = 'SDC-3930'
               element = browser.lis(css: "li[class*=iconCertified]")[3]
+            when /SDC-3810/
+              param.print_media = :certified_mails_3810
+              selected_sub_str = 'SDC-3810'
+              element = browser.lis(css: "li[class*=iconCertified]")[4]
             when /Roll - 4" x 6"/
               param.print_media = :rolls
               selected_sub_str = 'Roll - 4'
@@ -103,6 +142,7 @@ module Stamps
                 selection.scroll_into_view
                 selection.click
                 break if text_box.text.include?(selected_sub_str)
+                expect(upgrade_plan).not_to be_present, "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
               else
                 drop_down.click unless selection.present?
               end
@@ -111,7 +151,7 @@ module Stamps
             end
             sleep(0.15)
           end
-          expect(text_box.text).to include(selected_sub_str)
+          expect(text_box.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{text_box.text}\""
           param.print_media
         end
 
@@ -290,40 +330,39 @@ module Stamps
           text_box.present?
         end
 
+        def selection_element(str)
+          if str.downcase.include?('default')
+            selection = StampsElement.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0])
+          else
+            # verify str is in Ship-From drop-down list of values
+            lovs = []
+            browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
+            expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
+            selection = StampsElement.new(browser.li(text: /#{str}/))
+          end
+          StampsElement.new(selection)
+        end
+
         def select(str)
           drop_down.click
-
-          if str.downcase == 'default'
-            element = browser.li(css: "li[class*=x-boundlist-item][data-boundview^=boundlist][role=option]:nth-child(1)")
-          elsif str.downcase.include? "manage shipping"
-            element = browser.li(text: "Manage Mailing Addresses...")
-          else
-            element = browser.div(text: "#{str}")
-          end
-
-          selection = StampsElement.new(element)
 
           if str.downcase.include? "manage shipping"
             10.times do
               begin
-                drop_down.click unless selection.present?
-                selection.scroll_into_view
+                selection = selection_element(str)
                 selection.click
                 return manage_shipping_address if manage_shipping_address.present?
+                drop_down.click unless selection.present?
               rescue
                 #ignore
               end
             end
           else
             10.times do
-              drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection_text = selection.text
+              selection = selection_element(str)
               selection.click
-              text_val = text_box.text
-              begin
-                break if text_val.include? selection_text
-              end unless selection_text.nil? || text_val.nil?
+              break if text_box.text.length > 0
+              drop_down.click unless selection.present?
             end
           end
         end
@@ -363,7 +402,7 @@ module Stamps
             begin
               drop_down.click unless cost_label.present?
               if cost_label.present?
-                service_cost = ParameterHelper.remove_dollar_sign(cost_label.text).to_f.round(2)
+                service_cost = helper.remove_dollar_sign(cost_label.text).to_f.round(2)
                 logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
                 return service_cost
               end
@@ -572,7 +611,7 @@ module Stamps
             return contacts_modal if contacts_modal.present?
             link.click
           end
-          expect(contacts_modal.present?).to be(true)
+          expect(contacts_modal).to be_present
         end
       end
 
@@ -588,7 +627,7 @@ module Stamps
         end
 
         def country(str)
-          expect(@country.present?).to be(true)
+          expect(@country).to be_present
           geography = @country.select(str)
           expect([:domestic, :international]).to include(geography)
           # dymanically create appropriate form per geography
@@ -612,7 +651,7 @@ module Stamps
             button.click
             sleep(0.35)
           end
-          expect(customs_form.present?).to be(true)
+          expect(customs_form).to be_present
         end
 
         def restrictions

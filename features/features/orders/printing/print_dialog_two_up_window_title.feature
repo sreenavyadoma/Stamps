@@ -6,7 +6,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
 
   @print_dialog_two_up_window_title
   Scenario:  Printing
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope
@@ -15,7 +15,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then expect Print modal Modal Title is "You have 1 label(s) ready to print"
     Then in Print modal, click Close button
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz

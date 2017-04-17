@@ -1,12 +1,13 @@
+
+@mail_print_envelope_10_A2_A9
 Feature: Envelope #10, #A2, #A9
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_envelope_10_A2_A9
-  Scenario: Envelope #10, #A2, #A9
+  @mail_print_envelope_10
+  Scenario: Print On: Envelope #10
 
-   #mail_print_envelope_10
     Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
@@ -61,7 +62,9 @@ Feature: Envelope #10, #A2, #A9
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_envelope_A9
+  @mail_print_envelope_A9
+  Scenario: Print On: Envelope #A9
+
     Then select Print On Envelope - #A9, 5 ¾" x 8 ¾"
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -71,7 +74,9 @@ Feature: Envelope #10, #A2, #A9
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-   #mail_print_envelope_A2
+  @mail_print_envelope_A2
+  Scenario: Print On: Envelope #A2
+
     Then select Print On Envelope - #A2, 4 ⅜" x 5 ¾"
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8

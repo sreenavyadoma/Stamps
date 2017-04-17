@@ -1,18 +1,18 @@
 default: --backtrace --profile sap
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
-#robcm=ccpryiihrjz
+#robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
 rob_webreg_cc: --tags @webreg WEB_APP=webreg URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
-
+#ccfb311osps4x
 rob_dev: --tags @bvt_new_order DEVELOPER=true WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
-rob_cc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=cclv55sk045v PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+rob_cc: --tags @rates_pm_comm_base WEB_APP=orders USER_CREDENTIALS=rates_pm_comm_base JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 rob_stg: --tags @rates_pme_comm_plus WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_plus JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
-rob_mail_cc: --tags @mail_print_stamps_ml_series_calculate WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options JENKINS=true USR=cclv55sk045v PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
-rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob_mail_cc: --tags @mail_bvt_advanced_options WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=ccfb311osps4x PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+rob_mail_stg: --tags @mail_bvt_advanced_options WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_mail_sc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=kaushal JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
@@ -22,6 +22,7 @@ ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HE
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=selenium USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 sap: --tags @registration_profile_page_ui_validation WEB_APP=webreg USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+kaushal: --tags @print_multiple_orders WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
@@ -38,8 +39,9 @@ rates_pm_comm_base: --tags @rates_pm_comm_base --guess DEBUG=false JENKINS=true 
 rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_plus
 rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pm_comm_plus
 rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground
+
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
+mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options
 
 
 
@@ -126,17 +128,7 @@ print_dialog_email_tracking: --tags @print_dialog_email_tracking --guess DEBUG=f
 print_dialog_label_left_side: --tags @print_dialog_label_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_dialog_label_left_side
 print_dialog_label_right_side: --tags @print_dialog_label_right_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_dialog_label_right_side
 # CP72 & CN22
-print_layout_cp72_sdc1200_single_ply: --tags @print_layout_cp72_sdc1200_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_sdc1200_single_ply
-print_layout_cp72_roll_continuation: --tags @print_layout_cp72_roll_continuation --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_roll_continuation
-print_layout_cp72_4x6roll: --tags @print_layout_cp72_4x6roll --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_4x6roll
-print_layout_cp72_5x8_left: --tags @print_layout_cp72_5x8_left --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_5x8_left
-print_layout_cp72_5x8_right: --tags @print_layout_cp72_5x8_right --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_5x8_right
-print_layout_cp72_5x8_single_ply: --tags @print_layout_cp72_5x8_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_5x8_single_ply
-print_layout_cp72_single_ply_apo_roll: --tags @print_layout_cp72_single_ply_apo_roll --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_single_ply_apo_roll
-print_layout_cp72_paper_continuation: --tags @print_layout_cp72_paper_continuation --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_paper_continuation
-print_layout_cp72_paper_single_ply: --tags @print_layout_cp72_paper_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72_paper_single_ply
-print_layout_dpo_cp72_roll_single_ply: --tags @print_layout_dpo_cp72_roll_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_dpo_cp72_roll_single_ply
-print_layout_fsa_cp72_paper_single_ply: --tags @print_layout_fsa_cp72_paper_single_ply --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_fsa_cp72_paper_single_ply
+print_layout_cp72: --tags @print_layout_cp72 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cp72
 print_layout_cn22_5x8: --tags @print_layout_cn22_5x8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cn22_5x8
 print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cn22_5x8_continuation
 print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cn22_paper_left_side
@@ -289,28 +281,8 @@ mail_print_shipping_label_preview_panel_options: --tags  @mail_print_shipping_la
 mail_forgot_username: --tags  @mail_forgot_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_forgot_username
 mail_forgot_password: --tags  @mail_forgot_password --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_forgot_password
 
-mail_print_stamps_a_series_calculate: --tags  @mail_print_stamps_a_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_a_series_calculate
-mail_print_stamps_a_series_specify: --tags  @mail_print_stamps_a_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_a_series_specify
-mail_print_stamps_b_series_calculate: --tags  @mail_print_stamps_b_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_b_series_calculate
-mail_print_stamps_b_series_specify: --tags  @mail_print_stamps_b_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_b_series_specify
-mail_print_stamps_c_series_calculate: --tags  @mail_print_stamps_c_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_c_series_calculate
-mail_print_stamps_c_series_specify: --tags  @mail_print_stamps_c_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_c_series_specify
-mail_print_stamps_k_series_calculate: --tags  @mail_print_stamps_k_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_k_series_calculate
-mail_print_stamps_k_series_specify: --tags  @mail_print_stamps_k_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_k_series_specify
-mail_print_stamps_l_series_calculate: --tags  @mail_print_stamps_l_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_l_series_calculate
-mail_print_stamps_l_series_specify: --tags  @mail_print_stamps_l_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_l_series_specify
-mail_print_stamps_ml_series_calculate: --tags  @mail_print_stamps_ml_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_ml_series_calculate
-mail_print_stamps_ml_series_specify: --tags  @mail_print_stamps_ml_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_ml_series_specify
-mail_print_stamps_p_series_calculate: --tags  @mail_print_stamps_p_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_p_series_calculate
-mail_print_stamps_p_series_specify: --tags  @mail_print_stamps_p_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_p_series_specify
-mail_print_stamps_r_series_calculate: --tags  @mail_print_stamps_r_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_r_series_calculate
-mail_print_stamps_r_series_specify: --tags  @mail_print_stamps_r_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_r_series_specify
-mail_print_stamps_s_series_calculate: --tags  @mail_print_stamps_s_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_s_series_calculate
-mail_print_stamps_s_series_specify: --tags  @mail_print_stamps_s_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_s_series_specify
-mail_print_stamps_v_series_calculate: --tags  @mail_print_stamps_v_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_v_series_calculate
-mail_print_stamps_v_series_specify: --tags  @mail_print_stamps_v_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_v_series_specify
-mail_print_stamps_wn_series_calculate: --tags  @mail_print_stamps_wn_series_calculate --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_wn_series_calculate
-mail_print_stamps_wn_series_specify: --tags  @mail_print_stamps_wn_series_specify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_stamps_wn_series_specify
+mail_stamps_series_a_b_c_k_l_ml: --tags  @mail_stamps_series_a_b_c_k_l_ml --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_stamps_series_a_b_c_k_l_ml
+mail_stamps_series_p_r_s_v_wn: --tags  @mail_stamps_series_p_r_s_v_wn --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_stamps_series_p_r_s_v_wn
 
 mail_print_on_list_of_values: --tags  @mail_print_on_list_of_values --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_on_list_of_values
 mail_print_postage_elements: --tags  @mail_print_postage_elements --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_postage_elements

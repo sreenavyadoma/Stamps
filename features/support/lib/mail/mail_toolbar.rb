@@ -2,7 +2,7 @@ module Stamps
   module Mail
     class MailToolbar < Browser::StampsModal
       attr_reader :total, :mail_print_modal, :confirm_window, :please_wait, :windows_print, :sample_button, :printing_problem, :insufficient_funds,
-                  :print_label, :print_stamps, :print_envelope
+                  :print_label, :print_stamps, :print_envelope, :print_quantity_warning
 
       def initialize(param)
         super(param)
@@ -10,10 +10,11 @@ module Stamps
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
         @please_wait = PrintModal::PleaseWait.new(param)
-        @windows_print = Windows::PrintWindow.new
+        @windows_print = Windows::PrintWindow.new(param.browser_sym)
         @sample_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)
+        @print_quantity_warning = PrintQuantityWarning.new(param)
       end
 
       def print_button
@@ -35,7 +36,7 @@ module Stamps
           end
           break if @print_button.present?
         end
-        expect(@print_button.present?).to be(true)
+        expect(@print_button).to be_present
         @print_button
       end
 
@@ -50,11 +51,30 @@ module Stamps
       def open_window(window)
         return window if window.present?
 
-        expect(print_button.present?).to be(true)
+        expect(print_button).to be_present
         10.times do
           begin
             print_button.click
+
             window.wait_until_present(2)
+
+            #check for quantity dialog box to appear
+            # if quantity dialog box is present, click Agree and something
+
+            if print_quantity_warning.present?
+              5.times {
+              print_quantity_warning.agree_and_continue_btn
+              sleep(0.120)
+              agree_and_continue_btn.click
+              }
+            end
+
+
+
+
+
+
+
 
             if please_wait.present?
               logger.message(please_wait.paragraph)
@@ -74,7 +94,7 @@ module Stamps
             #ignore
           end
         end
-        expect(window.present?).to be(true)
+        expect(window).to be_present
       end
 
       def open_sample_window window

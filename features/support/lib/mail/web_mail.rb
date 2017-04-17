@@ -22,12 +22,16 @@ module Stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelopes) if @print_form.nil? || @print_form.print_media != :envelopes
           when :certified_mails
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails) if @print_form.nil? || @print_form.print_media != :certified_mails
+          when :certified_mails_3910_3930
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails39103930) if @print_form.nil? || @print_form.print_media != :certified_mails_3910_3930
+          when :certified_mails_3810
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil? || @print_form.print_media != :certified_mails_3810
           when :rolls
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls) if @print_form.nil? || @print_form.print_media != :rolls
           else
             # do nothing
         end
-        expect(@print_form.present?).to be(true)
+        expect(@print_form).to be_present
       end
 
       def present?

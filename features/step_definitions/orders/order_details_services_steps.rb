@@ -3,8 +3,8 @@ Then /^[Ss]et Order Details form service to (.*)$/ do |service|
   stamps.orders.order_details.service.select(service)
   15.times do
     step "On Order Details form, blur out"
+    sleep(0.025)
     break if stamps.orders.order_details.service.cost > 0
-    step "On Order Details form, blur out"
   end
   step "Save Order Details data"
 end

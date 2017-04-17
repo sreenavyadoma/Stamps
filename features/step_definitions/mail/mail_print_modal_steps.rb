@@ -7,8 +7,8 @@ When /^[Cc]lick Mail Print modal Print button$/ do
 end
 
 Then /^[Ss]et Mail Print modal Printer to (.*)$/ do |printer|
-  test_parameter[:printer] = printer
-  stamps.mail.mail_toolbar.print_postage.printer.select(test_parameter[:printer])
+  parameter[:printer] = printer
+  stamps.mail.mail_toolbar.print_postage.printer.select(parameter[:printer])
 end
 
 When /^Mail: Print International Postage$/ do

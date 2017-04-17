@@ -5,7 +5,7 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
 
   @print_layout_fsa_cp72_paper_single_ply
   Scenario: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |

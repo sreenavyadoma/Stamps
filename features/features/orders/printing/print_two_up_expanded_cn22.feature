@@ -7,7 +7,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
   Scenario: Print 2 Intl CN22 labels on 5.5x8.5
 
    #print_two_up_expanded_cn22_5x8_right_print2
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
@@ -19,7 +19,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
@@ -41,7 +41,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then in Print modal, click Print button
 
   #print_two_up_expanded_cn22_cp72_5x8_right_print2
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -54,7 +54,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
@@ -77,7 +77,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then in Print modal, click Print button
 
    #print_two_up_expanded_cn22_paper_left
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
       | name        | company             | street_address  | street_address_2| city | state | zip        | country       | phone  |  email |
@@ -105,7 +105,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then in Print modal, click Print button
 
    #print_two_up_expanded_cn22_paper_right
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -117,7 +117,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -139,7 +139,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then in Print modal, click Print button
 
    #print_two_up_expanded_cn22_sdc1200_left
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
@@ -151,7 +151,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |

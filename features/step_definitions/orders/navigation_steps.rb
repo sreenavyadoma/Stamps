@@ -1,11 +1,11 @@
 Then /^on Add Funds modal, purchase 10$/ do
-  #logger.step "on Add Funds modal, purchase 10"
-  test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
+  #config.logger.step "on Add Funds modal, purchase 10"
+  parameter[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_10.select
 end
 
 =begin
-Then click Orders Toolbar Add button
+Then add new order
 Then set Order Details form Ship-From to default
 Then set Order Details form Ship-To to a random address in Zone 5 through 8
 Then set Order Details form service to PM Package
@@ -20,22 +20,22 @@ Then in Print modal, click Print button
 =end
 
 Then /^on Add Funds modal, purchase 25$/ do
-  test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
+  parameter[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_25.select
 end
 
 Then /^on Add Funds modal, purchase 50$/ do
-  test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
+  parameter[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_50.select
 end
 
 Then /^on Add Funds modal, purchase 100$/ do
-  test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
+  parameter[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_100.select
 end
 
 Then /^on Add Funds modal, purchase Other Amount (\d+)$/ do |amount|
-  test_parameter[:old_balance] = stamps.navigation_bar.balance.amount
+  parameter[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_other amount
 end
 
@@ -69,11 +69,11 @@ Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amo
   10.times do
     sleep(0.35)
     new_balance = stamps.navigation_bar.balance.amount
-    actual_purchased_amount = new_balance.to_f - test_parameter[:old_balance].to_f
+    actual_purchased_amount = new_balance.to_f - parameter[:old_balance].to_f
     break if actual_purchased_amount ==  purchase_amount.to_f
   end
   new_balance = stamps.navigation_bar.balance.amount
-  actual_purchased_amount = new_balance.to_f - test_parameter[:old_balance].to_f
+  actual_purchased_amount = new_balance.to_f - parameter[:old_balance].to_f
   expect(actual_purchased_amount.round(2)).to eql purchase_amount.to_f.round(2)
 end
 
