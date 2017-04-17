@@ -6,11 +6,10 @@ Feature: WebReg Profile page validation theme_1632
   # Look at existing page objects for registration and start using it and building on it.
 
   Background:
-    Given I launched default browser
+    Given Load WebReg Profile Theme 1632
 
   @registration_profile_page_ui_validation
   Scenario: SDCWR-721 WebReg Profile Page Validation
-    Then Load WebReg Profile page
     Then expect WebReg navigation bar Stamps logo exists
     Then expect WebReg navigation bar USPS logo exists
     Then expect WebReg bread crumbs to contain Profile

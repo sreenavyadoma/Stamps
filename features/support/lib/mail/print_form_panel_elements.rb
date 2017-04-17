@@ -275,12 +275,12 @@ module Stamps
 
           text_box = browser.text_field(name: "WeightLbs")
           inc_btn = browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-up]")
-          dec_btn = browser.divs(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")
+          dec_btn = browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")
           @mail_pounds = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(name: "WeightOz")
           inc_btn = browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-up]")
-          dec_btn = browser.divs(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")
+          dec_btn = browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")
           @mail_ounces = StampsNumberField.new(text_box, inc_btn, dec_btn)
         end
 

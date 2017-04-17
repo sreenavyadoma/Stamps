@@ -103,9 +103,7 @@ Then /^[Ee]xpect WebReg Membership submit button exists$/ do
 end
 
 Then /^[Ee]xpect WebReg Membership why do you need my mailing information to contain:$/ do |str|
-   p str
-   p str
-  #expect(registration.membership.why_do_you_need_mailingaddress).to eql(str)
+  expect(registration.membership.why_do_you_need_mailingaddress).to eql(str)
 end
 
 Then /^[Ee]xpect WebReg Membership Can I change my mailing address to contain:$/ do |str|

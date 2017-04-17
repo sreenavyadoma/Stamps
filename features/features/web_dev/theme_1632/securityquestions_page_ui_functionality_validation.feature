@@ -1,11 +1,10 @@
 Feature: WebReg Security questions page validation theme_1632
 
   Background:
-    Given I launched default browser
+    Given Load WebReg Profile Theme 1632
 
   @securityquestions_page_ui_validation
   Scenario:
-    Then Load WebReg Profile page
     Then set WebReg Profile email to email
     Then set WebReg Profile username to username
     Then set WebReg Profile password to password

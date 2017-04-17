@@ -53,39 +53,4 @@ mail_bvt_cc
 mail_bvt_stg
 mail_bvt_sc
 
-Printing Tests
-CC
-jenkinsvmwin701, ccw7l673yk, some_printing_test_cc
-jenkinsvm07, ccwsq8231z1wa, some_printing_test_cc
-jenkinsvm06, ccslm4rnxg42q, some_printing_test_cc
-jenkins-cc4, ccnik68agz7ulk, some_printing_test_cc
-jenkinsvm09, cclnlqaf8s, some_printing_test_cc
-jenkinsvm08, ccyykg2nb, some_printing_test_cc
-jenkinsvm04, ccx9sfswq05pm, mail_print_sample_shipping_label_5x8_pm_large_envelope
-jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
-jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
-
-STG
-jenkinsvm11, stghy955swcbcm, mail_bvt_envelopes
-jenkinsvm12, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
-jenkinsvm02, stgld1uw4sroe7, mail_print_shipping_label_sdc1200_xm_package
-jenkinsvm10, stghy955swcbcm, mail_print_shipping_label_5x8_pm_small_box
-
-Regression
-mail_regression_cc
-mail_regression_stg
-mail_regression_sc
-
-
-
-
-
-
-
-
-
-
-
-xxxxxxxx, xxxxxxxx, xxxxxxxx
-
 

@@ -1,7 +1,6 @@
-Then /^[Ll]oad WebReg Profile page$/ do
+Then /^[Ll]oad WebReg Profile (.*)$/ do |str| #Theme 1632
   registration.load_page
 end
-
 
 Then /^Visit WebReg Registration Page$/ do
   registration.visit

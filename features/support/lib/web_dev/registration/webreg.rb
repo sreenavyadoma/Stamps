@@ -47,14 +47,21 @@ module Stamps
         @error_occured = AnErrorOccured.new(param)
       end
 
-      def visit
+      def load_theme(theme)
+        case theme
+          when /1632/
+            theme = 'theme_1632'
+          else # default theme
+            theme = 'theme_1632'
+        end
+
         case param.test_env.downcase
           when /cc/
-            url = "https://qa-registration.stamps.com/registration"
+            url = "https://qa-registration.stamps.com/registration/?theme=#{theme}" #theme_1632
           when /sc/
-            url = "https://registrationext.qasc.stamps.com/registration"
+            url = "https://registrationext.qasc.stamps.com/registration/?theme=#{theme}"
           when /stg/
-            url = "https://registration.staging.stamps.com/registration"
+            url = "https://registration.staging.stamps.com/registration/?theme=#{theme}"
           else
             expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
         end

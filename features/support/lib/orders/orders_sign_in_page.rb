@@ -131,7 +131,7 @@ module Stamps
           logger.message "#"*15
 
           username.wait_until_present(8)
-          8.times do
+          20.times do
             begin
               if username.present?
                 username.set(usr)
