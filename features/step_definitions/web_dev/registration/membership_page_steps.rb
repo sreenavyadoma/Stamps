@@ -103,7 +103,9 @@ Then /^[Ee]xpect WebReg Membership submit button exists$/ do
 end
 
 Then /^[Ee]xpect WebReg Membership why do you need my mailing information to contain:$/ do |str|
-  expect(registration.membership.why_do_you_need_mailingaddress).to eql(str)
+   p str
+   p str
+  #expect(registration.membership.why_do_you_need_mailingaddress).to eql(str)
 end
 
 Then /^[Ee]xpect WebReg Membership Can I change my mailing address to contain:$/ do |str|
@@ -126,8 +128,15 @@ Then /^[Ee]xpect WebReg Membership Cancel anytime to contain:$/ do |str|
   expect(registration.membership.membership_cancel_anytime).to eql(str)
 end
 
-Then /^[Ee]xpect WebReg Membership Bonus Offer Details link exists$/ do
+Then /^[Ee]xpect WebReg Membership Bonus Offer Details link exists and is clickable$/ do
   expect(registration.membership.offer_details_link.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Profile Privacy Policy link exists and is clickable$/ do
+  # pending
+  # 1. check for presence
+  # 2. click if it is.
+  # 3. close module if it opens one up or go back to previous page and restore state.
 end
 
 

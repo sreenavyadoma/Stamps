@@ -1,10 +1,15 @@
-#Feature: WebReg Membership page validation theme_1632
-#
-#  Background:
-#    Given I launched default browser
-#
-#  @membership_page_ui_validation
-#  Scenario:
+Feature: WebReg Membership page validation theme_1632
+
+  #Background:
+    #Given I launched default browser
+
+  @membership_page_ui_validation
+  Scenario:
+    Then expect WebReg Membership why do you need my mailing information to contain:
+    """
+    Since you are being issued a license to print official U.S. postage, the USPS requires you to register the name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account and to calculate the correct postage rates. Rest assured, your information is safe with us. We take identity protection seriously. Our advanced encryption technology keeps your information safe and secure.
+    """
+
 #    Then Load WebReg Profile page
 #    Then set WebReg Profile email to email
 #    Then set WebReg Profile username to username
@@ -63,28 +68,27 @@
 #    """
 #    Cancel online or simply call us toll-free at 1-855-608-2677, M-F, 6am-6pm PST
 #    """
-#    Then expect WebReg Membership Bonus Offer Details link exists
-#      and is clickable
-#    Then expect WebReg Profile Privacy Policy link exists
-#      and is clickable
+#    Then expect WebReg Membership Bonus Offer Details link exists and is clickable
+#
+#    Then expect WebReg Profile Privacy Policy link exists and is clickable
 #    Then expect WebReg Profile copyright link exists
 #    Then expect WebReg Profile Norton logo exists
 #    Then expect WebReg Profile TRUSTe logo exists
 #    Then expect WebReg Profile LIVE chat button exists
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#
-#  T
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  T
