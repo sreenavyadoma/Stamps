@@ -349,8 +349,6 @@ module Stamps
         @usps_logo = StampsElement.new(browser.img(css: "img[src*=logo_usps_vendor_white]"))
       end
     end
-
-
   end
 end
 
@@ -360,9 +358,22 @@ class Registrationfooter < Browser::StampsModal
 
   def initialize(param)
       super(param)
-      @privacy_policy = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[1]")).click
-      @copyright_link = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[2]")).click
+      @privacy_policy = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[1]"))
+      @copyright_link = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[2]"))
       @trust_elogo = StampsElement.new(browser.img(id: "webreg/images/global/logo_truste.png"))
       @live_chat_button = StampsElement.new(browser.link(text: "Live Chat"))
   end
 end
+
+class RegistrationNavigation < Browser::StampsModal
+  attr_reader :breadcrumb_profile, :breadcrumb_membership, :breadcrumb_choose_supplies
+
+  def initialize(param)
+    super(param)
+    @breadcrumb_profile = StampsElement.new(browser.li(id: "breadcrumb_Profile"))
+    @breadcrumb_membership = StampsElement.new(browser.li(id: "breadcrumb_Membership"))
+    @breadcrumb_choose_supplies = StampsElement.new(browser.li(id: "breadcrumb_ChooseSupplies"))
+  end
+end
+
+

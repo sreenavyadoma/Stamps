@@ -40,9 +40,11 @@ module Stamps
       attr_reader :profile, :error_occured, :navigation
       def initialize(param)
         super(param)
-        @profile = RegistrationProfilePage.new(param)
-        @error_occured = AnErrorOccured.new(param)
         @navigation = RegistrationNavigation.new(param)
+        @bread_crumbs = Registrationbread_crumbs.new(param)
+        @profile = RegistrationProfilePage.new(param)
+        @footer = RegistrationFooter.new(param)
+        @error_occured = AnErrorOccured.new(param)
       end
 
       def visit
@@ -82,16 +84,5 @@ module Stamps
         "Success"
       end
     end
-  end
-end
-
-
-class WebRegistration < Browser::StampsModal
-  attr_reader :profile, :error_occured, :footer
-  def initialize(param)
-    super(param)
-    @profile = RegistrationProfilePage.new(param)
-    @error_occured = AnErrorOccured.new(param)
-    @footer = RegistrationFooter.new(param)
   end
 end
