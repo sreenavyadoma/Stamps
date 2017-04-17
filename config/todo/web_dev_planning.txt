@@ -1,4 +1,3 @@
-
 Theme1632 ~ 85 days (on Win10 - Firefox) 1 person
 	UI Field Validation (Feature file, Step Definitions, Page Objects, Jenkins Tests, Test Execution/Results Analysis) ~26 days (best case)
 		Profile Page 8-9
