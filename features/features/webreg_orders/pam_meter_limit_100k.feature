@@ -7,8 +7,8 @@ Feature: WebReg
     Then PAM: Load PAM Page
     Then Visit PAM Customer Search page
     Then WebReg: Load username and password from parameter file webreg_meter_limit_100k
-    Then On PAM Customer Search page, set username from parameter file
-    Then On PAM Customer Search page, set 5.2 or lower
+    Then set PAM Customer Search page username from parameter file
+    Then set PAM Customer Search page 5.2 or lower
     Then On PAM Customer Search page, click Search button
 
     Then On PAM Customer Profile page, click Change Meter Limit link

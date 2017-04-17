@@ -7,74 +7,74 @@ Feature: WebReg
     Then On WebReg Profile page, Continue
     #Then On WebReg Membership page, click Back Button
 
-    Then On WebReg Membership page, set Terms & Conditions to Unchecked
-    Then On WebReg Membership page, set Terms & Conditions to Checked
+    Then set WebReg Membership page Terms & Conditions to Unchecked
+    Then set WebReg Membership page Terms & Conditions to Checked
 
-    Then On WebReg Membership page, set Billing address same as mailing address to Unchecked
-    Then On WebReg Membership page, set Billing address same as mailing address to Checked
+    Then set WebReg Membership page Billing address same as mailing address to Unchecked
+    Then set WebReg Membership page Billing address same as mailing address to Checked
 
-    Then On WebReg Membership page, set State to Armed Forces Americas
-    Then On WebReg Membership page, set State to Armed Forces
-    Then On WebReg Membership page, set State to Alaska
-    Then On WebReg Membership page, set State to Alabama
-    Then On WebReg Membership page, set State to Armed Forces Pacific
-    Then On WebReg Membership page, set State to Arkansas
-    Then On WebReg Membership page, set State to American Samoa
-    Then On WebReg Membership page, set State to Arizona
-    Then On WebReg Membership page, set State to California
-    Then On WebReg Membership page, set State to Colorado
-    Then On WebReg Membership page, set State to Connecticut
-    Then On WebReg Membership page, set State to Canal Zone
-    Then On WebReg Membership page, set State to District of Columbia
-    Then On WebReg Membership page, set State to Delaware
-    Then On WebReg Membership page, set State to Florida
-    Then On WebReg Membership page, set State to Micronesia
-    Then On WebReg Membership page, set State to Georgia
-    Then On WebReg Membership page, set State to Guam
-    Then On WebReg Membership page, set State to Hawaii
-    Then On WebReg Membership page, set State to Iowa
-    Then On WebReg Membership page, set State to Idaho
-    Then On WebReg Membership page, set State to Illinois
-    Then On WebReg Membership page, set State to Indiana
-    Then On WebReg Membership page, set State to Kansas
-    Then On WebReg Membership page, set State to Kentucky
-    Then On WebReg Membership page, set State to Louisiana
-    Then On WebReg Membership page, set State to Massachusetts
-    Then On WebReg Membership page, set State to Maryland
-    Then On WebReg Membership page, set State to Maine
-    Then On WebReg Membership page, set State to Marshall Islands
-    Then On WebReg Membership page, set State to Minnesota
-    Then On WebReg Membership page, set State to Missouri
-    Then On WebReg Membership page, set State to Mariana Islands
-    Then On WebReg Membership page, set State to Mississippi
-    Then On WebReg Membership page, set State to Montana
-    Then On WebReg Membership page, set State to North Carolina
-    Then On WebReg Membership page, set State to North Dakota
-    Then On WebReg Membership page, set State to Nebraska
-    Then On WebReg Membership page, set State to New Hampshire
-    Then On WebReg Membership page, set State to New Jersey
-    Then On WebReg Membership page, set State to New Mexico
-    Then On WebReg Membership page, set State to Nevada
-    Then On WebReg Membership page, set State to New York
-    Then On WebReg Membership page, set State to Ohio
-    Then On WebReg Membership page, set State to Oklahoma
-    Then On WebReg Membership page, set State to Oregon
-    Then On WebReg Membership page, set State to Pennsylvania
-    Then On WebReg Membership page, set State to Puerto Rico
-    Then On WebReg Membership page, set State to Palau
-    Then On WebReg Membership page, set State to Rhode Island
-    Then On WebReg Membership page, set State to South Carolina
-    Then On WebReg Membership page, set State to South Dakota
-    Then On WebReg Membership page, set State to Tennessee
-    Then On WebReg Membership page, set State to Texas
-    Then On WebReg Membership page, set State to Utah
-    Then On WebReg Membership page, set State to Virginia
-    Then On WebReg Membership page, set State to Virgin Islands
-    Then On WebReg Membership page, set State to Vermont
-    Then On WebReg Membership page, set State to Washington
-    Then On WebReg Membership page, set State to Wisconsin
-    Then On WebReg Membership page, set State to West Virginia
-    Then On WebReg Membership page, set State to Wyoming
+    Then set WebReg Membership page State to Armed Forces Americas
+    Then set WebReg Membership page State to Armed Forces
+    Then set WebReg Membership page State to Alaska
+    Then set WebReg Membership page State to Alabama
+    Then set WebReg Membership page State to Armed Forces Pacific
+    Then set WebReg Membership page State to Arkansas
+    Then set WebReg Membership page State to American Samoa
+    Then set WebReg Membership page State to Arizona
+    Then set WebReg Membership page State to California
+    Then set WebReg Membership page State to Colorado
+    Then set WebReg Membership page State to Connecticut
+    Then set WebReg Membership page State to Canal Zone
+    Then set WebReg Membership page State to District of Columbia
+    Then set WebReg Membership page State to Delaware
+    Then set WebReg Membership page State to Florida
+    Then set WebReg Membership page State to Micronesia
+    Then set WebReg Membership page State to Georgia
+    Then set WebReg Membership page State to Guam
+    Then set WebReg Membership page State to Hawaii
+    Then set WebReg Membership page State to Iowa
+    Then set WebReg Membership page State to Idaho
+    Then set WebReg Membership page State to Illinois
+    Then set WebReg Membership page State to Indiana
+    Then set WebReg Membership page State to Kansas
+    Then set WebReg Membership page State to Kentucky
+    Then set WebReg Membership page State to Louisiana
+    Then set WebReg Membership page State to Massachusetts
+    Then set WebReg Membership page State to Maryland
+    Then set WebReg Membership page State to Maine
+    Then set WebReg Membership page State to Marshall Islands
+    Then set WebReg Membership page State to Minnesota
+    Then set WebReg Membership page State to Missouri
+    Then set WebReg Membership page State to Mariana Islands
+    Then set WebReg Membership page State to Mississippi
+    Then set WebReg Membership page State to Montana
+    Then set WebReg Membership page State to North Carolina
+    Then set WebReg Membership page State to North Dakota
+    Then set WebReg Membership page State to Nebraska
+    Then set WebReg Membership page State to New Hampshire
+    Then set WebReg Membership page State to New Jersey
+    Then set WebReg Membership page State to New Mexico
+    Then set WebReg Membership page State to Nevada
+    Then set WebReg Membership page State to New York
+    Then set WebReg Membership page State to Ohio
+    Then set WebReg Membership page State to Oklahoma
+    Then set WebReg Membership page State to Oregon
+    Then set WebReg Membership page State to Pennsylvania
+    Then set WebReg Membership page State to Puerto Rico
+    Then set WebReg Membership page State to Palau
+    Then set WebReg Membership page State to Rhode Island
+    Then set WebReg Membership page State to South Carolina
+    Then set WebReg Membership page State to South Dakota
+    Then set WebReg Membership page State to Tennessee
+    Then set WebReg Membership page State to Texas
+    Then set WebReg Membership page State to Utah
+    Then set WebReg Membership page State to Virginia
+    Then set WebReg Membership page State to Virgin Islands
+    Then set WebReg Membership page State to Vermont
+    Then set WebReg Membership page State to Washington
+    Then set WebReg Membership page State to Wisconsin
+    Then set WebReg Membership page State to West Virginia
+    Then set WebReg Membership page State to Wyoming
 
     Then set WebReg Profile Referrer Name to Email from Stamps
     Then set WebReg Profile Referrer Name to Magazine Ad

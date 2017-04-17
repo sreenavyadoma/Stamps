@@ -1,3 +1,7 @@
+Then /^[Ll]oad WebReg Profile page$/ do
+  registration.load_page
+end
+
 
 Then /^Visit WebReg Registration Page$/ do
   registration.visit
@@ -222,7 +226,6 @@ Then /^Registration Choose Supplies: Place Order$/ do
   case @webreg_result
     when WebReg::UserIdTaken
       message = @webreg_result.message
-      #config.logger.step "USER ID IS TAKEN!  #{message}"
       raise "USER ID IS TAKEN!  #{message}"
     when WebReg::ChooseSupplies
       if @webreg_result.present?
@@ -245,104 +248,137 @@ Then /^Registration Result: Wait for Download Page or Webpostage page to load$/ 
 end
 
 Then(/^[Oo]n WebReg Profile page, expect Email Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect Email Help Block is #{expectation}"
   help_text = registration.profile.email.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect User ID Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect User ID Help Block is #{expectation}"
   help_text = registration.profile.user_id.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect Password Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect Password Help Block is #{expectation}"
   help_text = registration.profile.password.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect Re\-Type Password Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect Re-Type Help Block is #{expectation}"
   help_text = registration.profile.password.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect How will you use Stamps\.com Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect How will you use Stamps.com Help Block is #{expectation}"
   help_text = registration.profile.usage_type.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect How did you hear about us\? Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, How did you hear about us? Help Block is #{expectation}"
   referrer_name = registration.profile.referrer_name
   help_text = registration.profile.referrer_name.help_text if referrer_name.present?
   expect(help_text).to eql expectation if referrer_name.present?
 end
 
 Then(/^[Oo]n WebReg Profile page, expect 1st Question Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect 1st Question Help Block is #{expectation}"
   help_text = registration.profile.first_question.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect 1st Answer Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect 1st Answer Help Block is #{expectation}"
   help_text = registration.profile.first_answer.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, expect 2nd Question Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect 2n Question Help Block is #{expectation}"
   help_text = registration.profile.second_question.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^^[Oo]n WebReg Profile page, expect 2nd Answer Help Block is (.*)$/) do |expectation|
-  #config.logger.step "On WebReg Profile page, expect 2nd Answer Help Block is #{expectation}"
   help_text = registration.profile.second_answer.help_text
   expect(help_text).to eql expectation
 end
 
 Then(/^[Oo]n WebReg Profile page, Tab from Email$/) do
-  #config.logger.step "On WebReg Profile page, Tab from Email"
-  config.browser.send_keys([:tab])
+  browser.send_keys([:tab])
 end
 
 Then(/^[Oo]n WebReg Profile page, Tab$/) do
-  #config.logger.step "On WebReg Profile page, Tab"
   registration.profile.tab
 end
 
 Then(/^Clear Email Field$/) do
-  #config.logger.step "Clear Email Field"
   registration.profile.email.clear
 end
 
 Then(/^Clear User ID Field$/) do
-  #config.logger.step "Clear User ID Field"
   registration.profile.user_id.clear
 end
 
 Then(/^Clear How will you use Stamps\.com\?$/) do
-  #config.logger.step "Clear How will you use Stamps.com?"
   registration.profile.usage_type.clear
 end
 
 Then(/^Clear How did you hear about us\?/) do
-  #config.logger.step "Clear How did you hear about us?"
   registration.profile.referrer_name.clear if registration.profile.referrer_name.present?
 end
 
 Then(/^Clear 1st Question$/) do
-  #config.logger.step "Clear 1st Question Selection"
   registration.profile.first_question.clear
 end
 
 Then(/^Clear 2nd Question$/) do
-  #config.logger.step "Clear 1st Question Selection"
   registration.profile.second_question.clear
 end
+
+
+Then /^[Ee]xpect WebReg bread crumbs to contain (.*)$/ do |str|
+  expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist "
+end
+
+Then /^[Ee]xpect WebReg Profile header contain (.*)$/ do |str|
+  expect(registration.profile.header).to eql(str), "Profile header #{str} does not exist "
+end
+
+Then /^[Ee]xpect WebReg Profile email exists$/ do
+  expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
+  registration.profile.email.present?
+end
+
+Then /^[Ee]xpect WebReg Profile username exists$/ do
+  expect(registration.profile.username.present?).to be (true), "Username textbox does not exist on profile page"
+end
+
+Then /^[Ee]xpect WebReg Profile password exists$/ do
+  expect(registration.profile.password.present?).to be (true), "Password textbox does not exist on profile page"
+end
+
+Then /^[Ee]xpect WebReg Profile retype password exists$/ do
+  expect(registration.profile.retype_password.present?).to be (true), "Retype password textbox does not exist on profile page"
+end
+
+Then /^[Ee]xpect WebReg Profile Usage Type list of values to contain (.*)$/ do |str|
+  expect(registration.profile.dropdown).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Profile promo code textbox exists$/ do
+  expect(registration.profile.promocode.present?).to be (true)
+end
+
+  Then /^[Ee]xpect WebReg Profile CONTINUE button exists$/ do
+  expect(registration.profile_continue_button.present?).to be (true)
+end
+
+Then /^[Ee]xpect WebReg Profile content under Why do I need to create an account$/ do |str|
+    expect(registration.profile_content_createanaccount).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Profile content under Money-saving offers and new products$/ do |str|
+  expect(registration.profile_content_money_saving_offers).to eql(str)
+end
+
+Then /^[Ee]xpect WebReg Profile Money-saving offers and new products checkbox exist$/ do
+  expect(registration.profile_moneysavingoffers_checkbox.present?).to be (true)
+end
+
 
 

@@ -1,15 +1,7 @@
 module Stamps
   
   def config
-    begin
-      @config ||= StampsTestConfig.new
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "#{e.backtrace.join "\n"}"
-      p ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
+    @config ||= StampsTestConfig.new
   end
 
   def parameter
@@ -91,7 +83,7 @@ module Stamps
     if @param.nil?
       @param = ModalParam.new
       @param.browser_sym = config.browser_sym
-      @param.firefox_profile  = ENV['FIREFOX_PROFILE'].downcase
+      @param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
       expect([:orders, :mail, :registration]).to include(@param.web_app)
@@ -155,18 +147,6 @@ module Stamps
   def address_helper(zone)
     return helper.format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
     return helper.format_address(zone)
-  end
-
-  def param_helper
-    begin
-      helper
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "#{e.backtrace.join "\n"}"
-      p ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
   end
 
   def webreg_user_parameter_file * args

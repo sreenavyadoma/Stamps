@@ -67,8 +67,11 @@ module Stamps
         end
 
         def blur_out
-          element.click
-          element.double_click
+          2.times do
+            element.click
+            element.double_click
+            element.click
+          end
         end
       end
 

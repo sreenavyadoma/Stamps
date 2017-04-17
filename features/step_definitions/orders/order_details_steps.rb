@@ -147,16 +147,14 @@ end
 
 Then /^[Ss]et Order Details form Pounds to (\d+)$/ do |value|
   parameter[:pounds] = value
-  stamps.orders.order_details.weight.lb.set parameter[:pounds]
+  stamps.orders.order_details.weight.lb.set(parameter[:pounds])
   step "On Order Details form, blur out"
-  step "Save Order Details data"
 end
 
 Then /^[Ss]et Order Details form Ounces to (\d+)$/ do |value|
   parameter[:ounces] = value
   stamps.orders.order_details.weight.oz.set parameter[:ounces]
   step "On Order Details form, blur out"
-  step "Save Order Details data"
 end
 
 Then /^[Oo]n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
@@ -207,7 +205,7 @@ Then /^[Ss]et Order Details form Insure-For to \$(.*)$/ do |value|
   stamps.orders.order_details.insure_for.set_and_agree_to_terms(parameter[:insure_for])
   10.times do
     break if stamps.orders.order_details.insure_for.cost > 0
-    step "On Order Details form, blur out"
+    step "On Order Details form, blur out 3"
   end
   step "Save Order Details data"
 end

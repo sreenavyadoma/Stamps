@@ -104,7 +104,7 @@ After do |scenario|
   config.logger.message "-"
   config.logger.message "-"
 
-  test_config.teardown
+  config.teardown
 
   if scenario.failed?
     config.logger.error "#{scenario.feature}"

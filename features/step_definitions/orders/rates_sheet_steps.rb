@@ -371,7 +371,8 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           config.logger.step "#{"#"*10} Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
           config.logger.step "#{"#"*10} "
           config.logger.step"#{"#"*50}"
-          if param_helper.is_whole_number?(weight_lb)
+
+          if helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_lb
             @result_sheet[row_number, @result_sheet_columns[:weight]] = "#{weight_lb} lb."
@@ -383,6 +384,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_oz
             step "set Order Details form Ounces to #{weight_oz}"
           end
+          sleep(0.025)
 
           # Set Service
           row[@rate_sheet_columns[:service]].should_not be nil
@@ -409,6 +411,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # Set weight to 0
           step "set Order Details form Pounds to 0"
           step "set Order Details form Ounces to 0"
+          step "On Order Details form, blur out"
 
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0

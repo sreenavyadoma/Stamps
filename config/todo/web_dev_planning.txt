@@ -1,27 +1,34 @@
-It will take approximately 86 days or 8.5 sprints to finish Web Reg automation with 1 automation expert resource.
 
-Theme1632 ~ 86 days (on Win10 - Firefox) 1 person
-	UI Field Validation (Feature file, Step Definitions, Page Objects, Jenkins Tests, Test Execution/Results Analysis) ~26 days (best case)
+Each items below will have a component of the following;
+    Feature file
+    Step Definitions
+    Page Objects
+    Jenkins Test Creation
+    Test Execution/Results Analysis
+
+
+Theme 1632
+	UI Field Validation ~25 days (best case)
 		Profile Page 8-9
-		Membership Page 9-10
+		Membership Page (including Side Mailing Info) 9-10
 		Choose Supplies 3-4
 		Security Questions 3-4
-		Download Page 2-3
+		Download Page 1-2
 		Install Instructions Page 1-2
 
-	UI Fields - Negative Tests	~26-days
-		Profile Page 10-12
-		Membership Page  12-13
+	UI Fields - Negative Tests	~18-days
+		Profile Page 6-7
+		Membership Page (including Side Mailing Info) 7-8
 		Choose Supplies 2-3
-		Security Questions 2-3
-		Download Page 2-3
+		Security Questions 1-2
+		Download Page 1-2
 		Install Instructions Page 1-2
 
 	Test Workflow ~34 days
-		Windows Happy Path 6-7 days
+		Windows Happy Path 6-7 days (Orders Web Reg automation for old theme)
 		Windows Dpawr Offers 6-7 days
 		Windows Non-Dpawr offers 6-7 days
-		Windows Test Target Campaigns 12-13 days
+		Windows Test Target Campaigns 10-11 days
 			- path to Web Client
 			- path to Download Page
 			- path to Stamps Connect
@@ -32,6 +39,7 @@ Theme1632 ~ 86 days (on Win10 - Firefox) 1 person
 			- path to Web Client
 			- path to Unsupported OS/Browser page
 			- path to Stamps Connect
+			- path to Bonus Offer Details
 
 Jenkins Server & Plugin Configuration (1)
 Jenkins Execution Node VMs (2 QACC, 2 STG, 2 QASC) 2-3 days
@@ -42,3 +50,8 @@ Different Browsers:
 	IE 11 - ???
 	Edge - ???
 	Safari - ???
+
+~ 77 days (on Win10 - Firefox) 1 person
+
+It will take approximately 77 days or 7.5 sprints to finish Web Reg automation with 1 automation expert resource.
+

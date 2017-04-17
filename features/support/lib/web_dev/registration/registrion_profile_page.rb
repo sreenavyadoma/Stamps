@@ -286,7 +286,7 @@ module Stamps
       end
     end
 
-    class Profile < Browser::StampsModal
+    class RegistrionProfilePage < Browser::StampsModal
       attr_reader :referrer_name, :email, :user_id, :password, :retype_password, :usage_type, :first_question,
                   :first_answer, :second_question, :second_answer, :send_promo, :continue, :membership
 
@@ -340,5 +340,29 @@ module Stamps
 
     end
 
+    class RegistrationNavigation < Browser::StampsModal
+      attr_reader :stamps_logo, :usps_logo
+
+      def initialize(param)
+        super(param)
+        @stamps_logo = StampsElement.new(browser.img(id: "sdc-logo"))
+        @usps_logo = StampsElement.new(browser.img(css: "img[src*=logo_usps_vendor_white]"))
+      end
+    end
+
+
+  end
+end
+
+
+class Registrationfooter < Browser::StampsModal
+  attr_reader :privacy_policy, :copyright_link, :trust_elogo, :live_chat_button
+
+  def initialize(param)
+      super(param)
+      @privacy_policy = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[1]")).click
+      @copyright_link = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[2]")).click
+      @trust_elogo = StampsElement.new(browser.img(id: "webreg/images/global/logo_truste.png"))
+      @live_chat_button = StampsElement.new(browser.link(text: "Live Chat"))
   end
 end

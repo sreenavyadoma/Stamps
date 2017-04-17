@@ -1,6 +1,6 @@
 Then /^WebReg: Load username and password from parameter file(?:| (.*))$/ do |filename|
   data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
-  #config.logger.step "WebReg: Load user credentials from file #{data_file}"
+
   expect(File.exist?(data_file)).to be_truthy
   CONFIG = YAML.load_file(data_file)
   parameter[:usr] = CONFIG['usr']
@@ -10,13 +10,17 @@ Then /^WebReg: Load username and password from parameter file(?:| (.*))$/ do |fi
 end
 
 Then /^Orders: Sign-in using username and password from parameter file$/ do
-  #config.logger.step "Orders: Sign in"
-  stamps.orders.landing_page.sign_in parameter[:usr], parameter[:pw]
+  stamps.orders.landing_page.sign_in test_parameter[:usr], test_parameter[:pw]
 end
 
 Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
   config.logger.info "On PAM Customer Search page, set username from parameter file"
   step "On PAM Customer Search page, set username to #{CONFIG['usr']}"
+end
+
+Then /^(?:S|s)et PAM Customer Search page username from parameter file$/ do
+  logger.info "set PAM Customer Search page username from parameter file"
+  step "set PAM Customer Search page username to #{CONFIG['usr']}"
 end
 
 Then /^WebReg: Save username and password to parameter file(?:| (.*))$/ do |filename|
