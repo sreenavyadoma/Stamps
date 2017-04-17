@@ -1,45 +1,32 @@
 VM, USERNAME, TEST NAME
-CC
-jenkinsvmwin701, ccw7l673yk, mail_bvt_international
-jenkinsvm07, ccwsq8231z1wa, mail_bvt_envelopes
-jenkinsvm06, ccslm4rnxg42q, mail_bvt_stamps
-jenkins-cc4, ccnik68agz7ulk, mail_print_envelope_10_A2_A9
-jenkinsvm09, cclnlqaf8s, mail_print_envelope_6_7_9_11_12
-jenkinsvm08, ccyykg2nb, mail_print_sample_shipping_label_5x8_pm_fr_envelope
-jenkinsvm04, ccx9sfswq05pm, mail_print_sample_shipping_label_5x8_pm_large_envelope
-jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
-jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
-
-
-STG
-jenkins-stg1, stghy955swcbcm, mail_bvt_envelopes
-jenkins-stg2, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
-jenkinsvm02, stgld1uw4sroe7, mail_print_shipping_label_sdc1200_xm_package
-jenkinsvm10, stghy955swcbcm, mail_print_shipping_label_5x8_pm_small_box
 
 Orders
+
 BVT/Smoke
 orders_bvt_cc
 orders_bvt_stg
 orders_bvt_sc
 
-Printing Tests
+Printing
 CC
-jenkinsvmwin701, ccw7l673yk, mail_bvt_international - cm ok
-jenkinsvm07, ccwsq8231z1wa, mail_bvt_envelopes
-jenkinsvm06, ccslm4rnxg42q, mail_bvt_stamps
-jenkins-cc4, ccnik68agz7ulk, mail_print_envelope_10_A2_A9
-jenkinsvm09, cclnlqaf8s, mail_print_envelope_6_7_9_11_12
-jenkinsvm08, ccyykg2nb, mail_print_sample_shipping_label_5x8_pm_fr_envelope
-jenkinsvm04, ccx9sfswq05pm, mail_print_sample_shipping_label_5x8_pm_large_envelope
-jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
-jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
+jenkinsvmwin701, ccw7l673yk, @print_dialog_change_date, @print_dialog_printing_on_5x8_shipping_label, @print_layout_cn22_5x8, @print_sample_parcel_select_ground_large_package
+jenkinsvm07, ccwsq8231z1wa,  @print_dialog_email_tracking, @print_dialog_printing_on_8x11_paper, @print_layout_cn22_5x8_continuation, @print_sample_pm_flat_rate_envelope, @print_two_up_expanded_fpo_cn22_paper_right
+jenkinsvm06, ccslm4rnxg42q,  @print_dialog_hide_postage_value, @print_dialog_ship_date_today, @print_layout_cn22_paper_left_side. @print_sample_pm_regional_rate_box_a, @print_two_up_expanded_paper
+jenkinsvm09, cclnlqaf8s,     @print_dialog_label_left_side, @print_dialog_ship_date_today_plus1, @print_layout_cn22_roll, @print_sample_pme_package, @print_two_up_expanded_sdc1200_4x6_left_print1
+jenkinsvm08, ccyykg2nb,      @print_dialog_label_right_side, @print_dialog_ship_date_today_plus2, @print_layout_cp72, @print_sample_pme_padded_flat_rate_envelope, @print_two_up_expanded_sdc1200_left_print3
+jenkinsvm04, ccx9sfswq05pm,  @print_dialog_printing_on_4x6_roll, @print_dialog_thermal_number_of_labels_count, @print_multiple_orders, @print_two_up_expanded_5x8, @print_two_up_multiple_domestic_labels
+jenkinsvm05, ccyobxzc3gq,    @print_dialog_printing_on_4x6_sdc1200, @print_dialog_two_up_window_title, @print_multiple_reprints, @print_two_up_expanded_cn22
+jenkinsvm03, cccvajgfzkx5b,  @print_dialog_printing_on_4x6_shipping_label, @print_dialog_two_up_x_number_of_labels, @print_on_thermal, @print_two_up_expanded_cp72
 
 STG
-jenkinsvm11, stghy955swcbcm, mail_bvt_envelopes
-jenkinsvm12, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
-jenkinsvm02, stgld1uw4sroe7, mail_print_shipping_label_sdc1200_xm_package
-jenkinsvm10, stghy955swcbcm, mail_print_shipping_label_5x8_pm_small_box
+jenkinsvm11, stgvw4zzd8jgj7, @print_dialog_change_date, @print_dialog_label_right_side, @print_dialog_printing_on_5x8_shipping_label, @print_dialog_ship_date_today_plus2, @print_dialog_two_up_x_number_of_labels, @print_layout_cn22_roll
+                                @print_on_thermal, @print_sample_pme_package, @print_two_up_expanded_cp72, @print_two_up_expanded_sdc1200_left_print3
+jenkinsvm12, stghi5sqaoe,    @print_dialog_email_tracking, @print_dialog_printing_on_4x6_roll, @print_dialog_printing_on_8x11_paper, @print_dialog_ship_date_today_plus3, @print_layout_cn22_5x8, @print_layout_cp72
+                                @print_sample_parcel_select_ground_large_package, @print_sample_pme_padded_flat_rate_envelope, @print_two_up_expanded_fpo_cn22_paper_right, @print_two_up_multiple_domestic_labels
+jenkinsvm02, stgld1uw4sroe7, @print_dialog_hide_postage_value, @print_dialog_printing_on_4x6_sdc1200, @print_dialog_ship_date_today, @print_dialog_thermal_number_of_labels_count, @print_layout_cn22_5x8_continuation, @print_multiple_orders
+                                @print_sample_pm_flat_rate_envelope, @print_two_up_expanded_5x8, @print_two_up_expanded_paper
+jenkinsvm10, stghy955swcbcm, @print_dialog_label_left_side, @print_dialog_printing_on_4x6_shipping_label, @print_dialog_ship_date_today_plus1, @print_dialog_two_up_window_title, @print_layout_cn22_paper_left_side, @print_multiple_reprints
+                                @print_sample_pm_regional_rate_box_a, @print_two_up_expanded_cn22, @print_two_up_expanded_sdc1200_4x6_left_print1
 
 Regression
 orders_regression_cc
@@ -48,42 +35,34 @@ orders_regression_sc
 
 
 Mail
+
 BVT/Smoke
 mail_bvt_cc
 mail_bvt_stg
 mail_bvt_sc
 
-Printing Tests
-CC
-jenkinsvmwin701, ccw7l673yk, some_printing_test_cc
-jenkinsvm07, ccwsq8231z1wa, some_printing_test_cc
-jenkinsvm06, ccslm4rnxg42q, some_printing_test_cc
-jenkins-cc4, ccnik68agz7ulk, some_printing_test_cc
-jenkinsvm09, cclnlqaf8s, some_printing_test_cc
-jenkinsvm08, ccyykg2nb, some_printing_test_cc
-jenkinsvm04, ccx9sfswq05pm, mail_print_sample_shipping_label_5x8_pm_large_envelope
-jenkinsvm05, ccyobxzc3gq, mail_print_shipping_label_5x8_pm_small_box
-jenkinsvm03, cccvajgfzkx5b, mail_print_shipping_label_sdc1200_xm_package
+Printing: CC
 
-STG
-jenkinsvm11, stghy955swcbcm, mail_bvt_envelopes
-jenkinsvm12, stghi5sqaoe, mail_print_sample_shipping_label_5x8_pm_fr_envelope
-jenkinsvm02, stgld1uw4sroe7, mail_print_shipping_label_sdc1200_xm_package
-jenkinsvm10, stghy955swcbcm, mail_print_shipping_label_5x8_pm_small_box
+jenkinsvmwin701, ccw7l673yk, @healthcheck, @mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package, @mail_print_sample_shipping_label_8_x_11_fcm_psg, @mail_print_shipping_label_5x8_mm_xm, @mail_print_shipping_label_sdc1200_pm_box
+jenkinsvm07, ccwsq8231z1wa,  @mail_authentication, @mail_print_roll_4_x_6_fcm_psg, @mail_print_sample_shipping_label_8_x_11_mm_xm, @mail_print_shipping_label_5x8_pm_box, @mail_print_shipping_label_sdc1200_pm_envelope_package
+jenkinsvm06, ccslm4rnxg42q,  @mail_print_envelope_10_A2_A9, @mail_print_roll_4_x_6_mm_xm, @mail_print_sample_shipping_label_8_x_11_pm_box, @mail_print_shipping_label_5x8_pm_envelope_package, @mail_stamps_series_a_b_c_k_l_ml
+jenkinsvm09, cclnlqaf8s,     @mail_print_on_list_of_values, @mail_print_roll_4_x_6_pm_envelope_package, @mail_print_sample_shipping_label_sdc1200_fcm_psg, @mail_print_shipping_label_8_x_11_mm_xm, @mail_stamps_series_p_r_s_v_wn
+jenkinsvm08, ccyykg2nb,      @mail_print_postage_elements, @mail_print_sample_shipping_label_5x8_fcm_psg, @mail_print_sample_shipping_label_sdc1200_mm_xm, @mail_print_shipping_label_8_x_11_pm_box, @mail_print_envelope_6_7_9_11_12
+jenkinsvm04, ccx9sfswq05pm,  @mail_print_roll_4_1_8_x_6_1_4_fcm_psg, @mail_print_sample_shipping_label_5x8_mm_xm, @mail_print_sample_shipping_label_sdc1200_pm_box, @mail_print_shipping_label_8_x_11_pm_envelope_package, @mail_print_roll_4_x_6_pm_box
+jenkinsvm05, ccyobxzc3gq,    @mail_print_roll_4_1_8_x_6_1_4_mm_xm, @mail_print_sample_shipping_label_5x8_pm_box, @mail_print_sample_shipping_label_sdc1200_pm_envelope_package, @mail_print_shipping_label_sdc1200_fcm_psg, @mail_print_sample_shipping_label_8_x_11_pm_envelope_package
+jenkinsvm03, cccvajgfzkx5b,  @mail_print_roll_4_1_8_x_6_1_4_pm_box, @mail_print_sample_shipping_label_5x8_pm_envelope_package, @mail_print_shipping_label_5x8_fcm_psg, @mail_print_shipping_label_sdc1200_mm_xm, @mail_print_shipping_label_8_x_11_fcm_psg
 
-Regression
-mail_regression_cc
-mail_regression_stg
-mail_regression_sc
+Printing: STG
 
-
-
-
-
-
-
-
-
+jenkinsvm11, stgvw4zzd8jgj7, @mail_print_envelope_10_A2_A9, @mail_print_roll_4_1_8_x_6_1_4_mm_xm, @mail_print_roll_4_x_6_fcm_psg, @mail_print_roll_4_x_6_pm_envelope_package,
+                                @mail_print_sample_shipping_label_5x8_pm_box, @mail_print_sample_shipping_label_8_x_11_mm_xm, @mail_print_sample_shipping_label_sdc1200_fcm_psg, @mail_print_sample_shipping_label_sdc1200_pm_envelope_package
+                                @mail_print_shipping_label_5x8_pm_box, @mail_print_shipping_label_8_x_11_mm_xm, @mail_print_shipping_label_sdc1200_fcm_psg, @mail_print_shipping_label_sdc1200_pm_envelope_package, @mail_print_on_list_of_values
+jenkinsvm12, stghi5sqaoe, @mail_print_sample_shipping_label_8_x_11_pm_box, @mail_print_envelope_6_7_9_11_12, @mail_print_roll_4_1_8_x_6_1_4_pm_box, @mail_print_roll_4_x_6_mm_xm, @mail_print_sample_shipping_label_5x8_fcm_psg, @mail_print_sample_shipping_label_5x8_pm_envelope_package,
+                                @mail_print_sample_shipping_label_sdc1200_mm_xm, @mail_print_shipping_label_5x8_fcm_psg, @mail_print_shipping_label_5x8_pm_envelope_package, @mail_print_shipping_label_8_x_11_pm_box
+                                @mail_print_shipping_label_sdc1200_mm_xm, @mail_stamps_series_a_b_c_k_l_ml, @mail_stamps_series_p_r_s_v_wn, @mail_authentication
+jenkinsvm10, stghy955swcbcm, @mail_print_roll_4_1_8_x_6_1_4_fcm_psg, @mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package, @mail_print_roll_4_x_6_pm_box, @mail_print_sample_shipping_label_5x8_mm_xm,
+                                @mail_print_sample_shipping_label_8_x_11_fcm_psg, @mail_print_sample_shipping_label_8_x_11_pm_envelope_package, @mail_print_sample_shipping_label_sdc1200_pm_box, @mail_print_shipping_label_5x8_mm_xm, @mail_print_shipping_label_8_x_11_fcm_psg
+                                @mail_print_shipping_label_8_x_11_pm_envelope_package, @mail_print_shipping_label_sdc1200_pm_box, @healthcheck, @mail_print_postage_elements
 
 
 xxxxxxxx, xxxxxxxx, xxxxxxxx
