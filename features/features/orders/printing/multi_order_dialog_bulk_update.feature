@@ -22,12 +22,12 @@ Feature: Multi Order Detail: Bulk Update
     Then check Orders Grid row 2
     #Updating order details
     Then set Multi Order Details Form Ship From to Bulk Update Order 1
-    Then set Multi Order Details Form Pounds to 5
+    Then set Multi Order Details Form Pounds to 3
     Then set Multi Order Details Form Domestic service to PM Package
     Then set Multi Order Details Form tracking to USPS Tracking
     Then in Multi Order Form, click Update Orders
     #validating updates
-    #Then expect Multi Order Ship From is Bulk Update Order 1
-    #Then Form: Expect tracking is USPS Tracking
+    Then expect Multi Order Ship From is Bulk Update Order 1
+    Then Form: Expect tracking is USPS Tracking
     Then Sign out
 
