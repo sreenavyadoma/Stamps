@@ -147,7 +147,7 @@ end
 
 Then /^[Ss]et Order Details form Pounds to (\d+)$/ do |value|
   parameter[:pounds] = value
-  stamps.orders.order_details.weight.lb.set parameter[:pounds]
+  stamps.orders.order_details.weight.lb.set(parameter[:pounds])
   step "On Order Details form, blur out"
 end
 
