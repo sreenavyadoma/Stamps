@@ -52,8 +52,10 @@ module Stamps
           when /1632/
             theme = 'theme_1632'
           else # default theme
-            theme = 'theme_1632'
+            # do nothing
         end
+
+        expect(['theme_1632', 'def']).to include(theme), "Registration Theme #{theme} is not supported. We curently only support Theme 1632"
 
         case param.test_env.downcase
           when /cc/
@@ -63,7 +65,7 @@ module Stamps
           when /stg/
             url = "https://registration.staging.stamps.com/registration/?theme=#{theme}"
           else
-            expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
+            #do nothing
         end
 
         logger.info "Visit:  #{url}"
