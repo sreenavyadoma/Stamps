@@ -384,8 +384,7 @@ module Stamps
   end
 
   class StampsTestConfig
-    attr_accessor :scenario_name, :browser_name
-    attr_reader :browser, :logger, :browser_sym, :firefox_profile, :windows_user
+    attr_accessor :browser, :logger, :browser_sym, :firefox_profile, :windows_user, :scenario_name, :browser_name
 
     def init(scenario_name, browser_sym, firefox_profile, windows_user)
       @scenario_name = scenario_name
@@ -412,7 +411,7 @@ module Stamps
             end
 
             # Launch Firefox
-            if firefox_profile.downcase == 'selenium'
+            if firefox_profile.nil? || firefox_profile.downcase == 'selenium'
               driver = Watir::Browser.new(:firefox, :profile => 'selenium')
             elsif firefox_profile.downcase == 'new'
               driver = Watir::Browser.new :firefox
