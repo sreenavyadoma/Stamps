@@ -35,10 +35,8 @@ Feature: WebReg Profile page validation theme_1632
     """
     Send me special money-saving offers and information on new products and services from Stamps.com and its partners
     """
-    Then expect WebReg Profile Money-saving offers and new products checkbox exist
-      and is checkmarked
-    Then expect WebReg Profile Privacy Policy link exists
-      and is clickable
+    Then expect WebReg Profile Money-saving offers and new products checkbox exist and is checkmarked
+    Then expect WebReg Profile Privacy Policy link exists and is clickable
     Then expect WebReg Profile copyright link exists
     Then expect WebReg Profile Norton logo exists
     Then expect WebReg Profile TRUSTe logo exists
