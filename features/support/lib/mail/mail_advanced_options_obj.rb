@@ -87,6 +87,9 @@ module Stamps
             element.click
             break if text_box.text.include?(date)
           end
+          trigger_picker.click
+          sleep(0.8)
+          trigger_picker.click
           expect(text_box.text).to eql(date)
           date
         end

@@ -9,7 +9,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then In left Filter Panel, select Shipped
     Then In left Filter Panel, select Awaiting Shipment
 
-    Then click Orders Toolbar Add button
+    Then add new order
 
     Then In Orders Grid toolbar, select Move to Shipped
     Then In left Filter Panel, select Shipped

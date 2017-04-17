@@ -8,7 +8,7 @@ Feature: Details Ship Cost Total
 
   @details_ship_cost_total
   Scenario: Ship Cost Total
-    Then click Orders Toolbar Add button
+    Then add new order
     Then expect Order Details form Total label is Total Ship Cost:
     Then set Order Details form Ship-From to default
     Then expect Order Details form Service Cost is 0.00

@@ -5,7 +5,7 @@ Feature: in Print modal, click Print button Sample - Priority Mail Regional Rate
 
   @print_sample_pm_regional_rate_box_a
   Scenario:  Priority Mail Regional Rate Box A
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Regional Rate Box A

@@ -1,10 +1,10 @@
 
-Then /^(?:I|i)n Orders Toolbar, click Print button$/ do
+Then /^[Ii]n Orders Toolbar, click Print button$/ do
   step "Save Order Details data"
   stamps.orders.orders_toolbar.print_btn.print_modal
 end
 
-Then /^(?:I|i)n Print modal, click Print button Incomplete Order$/ do
+Then /^[Ii]n Print modal, click Print button Incomplete Order$/ do
   @incomplete_order_modal = stamps.orders.orders_toolbar.print_btn.print_modal
 
   expect("Incomplete Order Modal did not open").to eql "In Print modal, click Print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
@@ -14,7 +14,7 @@ Then /^[Ee]xpect Print modal Incomplete Order Error Message (.*)$/ do |expectati
   expect(@incomplete_order_modal.error_message).to include(expectation)
 end
 
-Then /^(?:I|i)n Print modal, click Close button$/ do
+Then /^[Ii]n Print modal, click Close button$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.close
 end
 
@@ -31,15 +31,15 @@ Then /^[Ss]et Print modal Ship Date to today$/ do
 end
 
 Then /^[Ss]et Print modal Ship Date to today plus (\d+)$/ do |day|
-  ship_date = ParameterHelper.now_plus_mon_dd_excl_sunday day
+  ship_date = helper.now_plus_mon_dd_excl_sunday day
   @ship_date = stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.date_picker.today_plus day
 end
 
-Then /^(?:I|i)n Print modal, check Hide Mail Value$/ do
+Then /^[Ii]n Print modal, check Hide Mail Value$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.check
 end
 
-Then /^(?:I|i)n Print modal, uncheck Hide Mail Value$/ do
+Then /^[Ii]n Print modal, uncheck Hide Mail Value$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.uncheck
 end
 
@@ -48,22 +48,22 @@ Then /^[Ee]xpect Print modal Hide Mail Value Checkbox is checked$/ do
     stamps.orders.orders_toolbar.print_btn.print_modal.click
     break if stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?
   end
-  expect(stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?).to be(true)
+  expect(stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value).to be_checked
 end
 
-Then /^(?:I|i)n Print modal, check Email Tracking Details to Recipients$/ do
+Then /^[Ii]n Print modal, check Email Tracking Details to Recipients$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_options.email_tracking.check
 end
 
-Then /^(?:I|i)n Print modal, uncheck Email Tracking Details to Recipients$/ do
+Then /^[Ii]n Print modal, uncheck Email Tracking Details to Recipients$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_options.email_tracking.uncheck
 end
 
-Then /^(?:I|i)n Print modal, uncheck Print Reference # on Shipping Label$/ do
+Then /^[Ii]n Print modal, uncheck Print Reference # on Shipping Label$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_options.print_reference_no.uncheck
 end
 
-Then /^(?:I|i)n Print modal, check Print Reference # on Shipping Label$/ do
+Then /^[Ii]n Print modal, check Print Reference # on Shipping Label$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_options.print_reference_no.check
 end
 
@@ -84,7 +84,7 @@ Then /^[Ee]xpect Print modal left-side label is selected$/ do
 end
 
 Then /^[Ee]xpect Print modal Ship Date is (\d+) day\(s\) from today/ do |day|
-  expect(stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.text).to eql ParameterHelper.date_printed(day)
+  expect(stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.text).to eql helper.date_printed(day)
 end
 
 Then /^[Ss]et Print modal Print-On to \"(.*)\"$/ do |expectation|
@@ -153,11 +153,11 @@ Then /^Print raises a Printing Error/ do
   expect(stamps.orders.print.print_sample_expecting_error).to raise_error(PrintingError)
 end
 
-Then /^(?:I|i)n Print modal, click Print button Sample$/ do
+Then /^[Ii]n Print modal, click Print button Sample$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_sample
 end
 
-Then /^(?:I|i)n Print modal, click Print button Sample raises a Printing Error/ do
+Then /^[Ii]n Print modal, click Print button Sample raises a Printing Error/ do
   expect(stamps.orders.orders_toolbar.print_btn.print_modal.print_sample_expecting_error).to raise_error(PrintingError)
 end
 

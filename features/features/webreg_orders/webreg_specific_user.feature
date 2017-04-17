@@ -67,7 +67,7 @@ Feature: WebReg
     Then load Sign-in page
     Then Orders: Sign-in as new user ss_sctest_b4/password1
     Then Pause for 2 seconds
-    Then click Orders Toolbar Add button
+    Then add new order
     Then Pause for 1 second
     Then Open Settings Modal
     Then In Settings modal, set Logoff to 2 hours

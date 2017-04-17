@@ -7,7 +7,7 @@ Feature: Print two labels on one sheet
   @print_two_up_multiple_domestic_labels
   Scenario: User Prints multiple Domestic labels
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form service to PM Flat Rate Envelope
@@ -15,7 +15,7 @@ Feature: Print two labels on one sheet
     Then set Order Details form Dimensions to Length 1 Width 1 Height 1
     Then set Order Details form Tracking to Signature Required
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope

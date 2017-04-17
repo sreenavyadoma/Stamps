@@ -1,38 +1,38 @@
 
 Then /^PAM: Load PAM Page$/ do
-  #logger.step "PAM: Load PAM Page"
+  #config.logger.step "PAM: Load PAM Page"
   pam.visit
 end
 
 Then /^Visit PAM Customer Search page$/ do
-  #logger.step "Visit PAM Customer Search page"
+  #config.logger.step "Visit PAM Customer Search page"
   step "PAM: Load PAM Page" if @customer_search.nil?
   @customer_search = pam.customer_search
 end
 
-Then /^(?:S|s)et PAM Customer Search page username to (.*)$/ do |username|
-  #logger.step "set PAM Customer Search page username to #{username}"
-  test_parameter[:usr] = username unless username.downcase.include? 'random'
-  #logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
-  @customer_search.username.set test_parameter[:usr]
+Then /^[Oo]n PAM Customer Search page, set username to (.*)$/ do |username|
+  #config.logger.step "On PAM Customer Search page, set username to #{username}"
+  parameter[:usr] = username unless username.downcase.include? 'random'
+  #config.logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
+  @customer_search.username.set parameter[:usr]
   sleep(0.35)
 end
 
-Then /^(?:S|s)et PAM Customer Search page 5.2 or lower$/ do
-  #logger.step "set PAM Customer Search page 5.2 or lower"
+Then /^[Oo]n PAM Customer Search page, set 5.2 or lower$/ do
+  #config.logger.step "On PAM Customer Search page, set 5.2 or lower"
   @customer_search.user_5_2_or_lower
   @customer_search.user_5_2_or_lower
 end
 
 Then /^[Oo]n PAM Customer Search page, click Search button$/ do
-  #logger.step "On PAM Customer Search page, click Search button"
+  #config.logger.step "On PAM Customer Search page, click Search button"
   @customer_profile = @customer_search.search
   if @customer_profile.instance_of? Pam::CustomerProfile
     if @customer_profile.present?
       @pam_customer_profile_found = true
     else
-      step "set PAM Customer Search page username to #{test_parameter[:usr]}"
-      step "set PAM Customer Search page 5.2 or lower"
+      step "On PAM Customer Search page, set username to #{parameter[:usr]}"
+      step "On PAM Customer Search page, set 5.2 or lower"
       step "On PAM Customer Search page, click Search button"
     end
   else
@@ -66,14 +66,14 @@ Then /^[Oo]n PAM Customer Profile page, click Change Meter Limit link$/ do
 end
 
 Then /^[Oo]n PAM Change Meter Limit page, set New Meter Limit to \$(\d+)$/ do |new_limit|
-  #logger.step "On PAM Change Meter Limit page, set New Meter Limit to #{new_limit}"
+  #config.logger.step "On PAM Change Meter Limit page, set New Meter Limit to #{new_limit}"
   expect(@change_meter_limit).to be_truthy
   @change_limit = new_limit.to_f > @change_meter_limit.current_meter_limit
   @change_meter_limit.new_meter_limit.set(new_limit) if @change_limit
 end
 
 Then /^[Oo]n PAM Change Meter Limit page, set USPS approval to Checked$/ do
-  #logger.step "On PAM Change Meter Limit page, set USPS approval to Checked"
+  #config.logger.step "On PAM Change Meter Limit page, set USPS approval to Checked"
   if @change_limit
     expect(@change_meter_limit).to be_truthy
     @change_meter_limit.usps_approval.check
@@ -81,7 +81,7 @@ Then /^[Oo]n PAM Change Meter Limit page, set USPS approval to Checked$/ do
 end
 
 Then /^[Oo]n PAM Change Meter Limit page, set USPS approval to Unchecked$/ do
-  #logger.step "On PAM Change Meter Limit page, set USPS approval to Unchecked"
+  #config.logger.step "On PAM Change Meter Limit page, set USPS approval to Unchecked"
   if @change_limit
     expect(@change_meter_limit).to be_truthy
     @change_meter_limit.usps_approval.uncheck
@@ -89,7 +89,7 @@ Then /^[Oo]n PAM Change Meter Limit page, set USPS approval to Unchecked$/ do
 end
 
 Then /^[Oo]n PAM Change Meter Limit page, click Submit$/ do
-  #logger.step "On PAM Change Meter Limit page, click Submit"
+  #config.logger.step "On PAM Change Meter Limit page, click Submit"
   if @change_limit
     expect(@change_meter_limit).to be_truthy
     @change_meter_limit.submit.ok
@@ -101,13 +101,13 @@ Then /^[Oo]n PAM Change Meter Limit page, click Submit$/ do
 end
 
 Then /^[Oo]n PAM Customer Profile page, click ACH Credit link$/ do
-  #logger.step "On PAM Customer Profile page, click ACH Credit link"
+  #config.logger.step "On PAM Customer Profile page, click ACH Credit link"
   expect(@customer_profile).to be_truthy
   @ach_credit = @customer_profile.header.ach_credit
 end
 
 Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
-  #logger.step "On PAM ACH Purchase page, set Amount to $#{dollars}.#{cents}"
+  #config.logger.step "On PAM ACH Purchase page, set Amount to $#{dollars}.#{cents}"
   expect(@ach_credit).to be_truthy
   dollar_amount = @ach_credit.dollar_amount
   dollar_amount.set dollars
@@ -125,152 +125,152 @@ Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, 
   comments.click
   comments.click
   comments.click
-  comments.set test_parameter[:usr]
+  comments.set parameter[:usr]
 
   @ach_credit.submit.yes.ok
 end
 
 Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
-  #logger.step "On PAM Customer Profile page, get Available Mail Amount"
+  #config.logger.step "On PAM Customer Profile page, get Available Mail Amount"
 
-  logger.message "PAM: Available Mail ############################"
-  logger.message "PAM: Available Mail ############################"
-  logger.message "PAM: Available Mail ############################"
-  logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
-  logger.message "PAM: Available Mail ############################"
-  logger.message "PAM: Available Mail ############################"
-  logger.message "PAM: Available Mail ############################"
+  config.logger.message "PAM: Available Mail ############################"
+  config.logger.message "PAM: Available Mail ############################"
+  config.logger.message "PAM: Available Mail ############################"
+  config.logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  config.logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  config.logger.message "PAM: Available Mail $#{@customer_profile.available_postage.text}"
+  config.logger.message "PAM: Available Mail ############################"
+  config.logger.message "PAM: Available Mail ############################"
+  config.logger.message "PAM: Available Mail ############################"
 end
 
 Then /^[Oo]n PAM Customer Profile page, click  AppCap Overrides link$/ do
-  #logger.step "On PAM Customer Profile page, click  AppCap Overrides link"
+  #config.logger.step "On PAM Customer Profile page, click  AppCap Overrides link"
   expect(@customer_profile).to be_truthy
   @appcapp_overrides = @customer_profile.header.appcapp_overrides
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always On$/ do
-  #logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to Always On"
+  #config.logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to Always On"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.internet_postage_printing.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always Off$/ do
-  #logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to Always Off"
+  #config.logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to Always Off"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.internet_postage_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to No Override$/ do
-  #logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to No Override"
+  #config.logger.step "On PAM AppCap Overrides page, set Internet Mail Printing to No Override"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.internet_postage_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always On$/ do
-  #logger.step "On PAM AppCap Overrides page, set Netstamps Printing to Always On"
+  #config.logger.step "On PAM AppCap Overrides page, set Netstamps Printing to Always On"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.netstamps_printing.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always Off$/ do
-  #logger.step "On PAM AppCap Overrides page, set Netstamps Printing to Always Off"
+  #config.logger.step "On PAM AppCap Overrides page, set Netstamps Printing to Always Off"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.netstamps_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to No Override$/ do
-  #logger.step "On PAM AppCap Overrides page, set Netstamps Printing to No Override"
+  #config.logger.step "On PAM AppCap Overrides page, set Netstamps Printing to No Override"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.netstamps_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always On$/ do
-  #logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Always On"
+  #config.logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Always On"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.shipping_label_printing.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always Off$/ do
-  #logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Always Off"
+  #config.logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Always Off"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.shipping_label_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Override$/ do
-  #logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Override"
+  #config.logger.step "On PAM AppCap Overrides page, set Shipping Label Printing to Override"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.shipping_label_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always On$/ do
-  #logger.step "On PAM AppCap Overrides page, set International Shipping to Always On"
+  #config.logger.step "On PAM AppCap Overrides page, set International Shipping to Always On"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.international_shipping.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always Off$/ do
-  #logger.step "On PAM AppCap Overrides page, set International Shipping to Always Off"
+  #config.logger.step "On PAM AppCap Overrides page, set International Shipping to Always Off"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.international_shipping.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Override$/ do
-  #logger.step "On PAM AppCap Overrides page, set International Shipping to Override"
+  #config.logger.step "On PAM AppCap Overrides page, set International Shipping to Override"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.international_shipping.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always On$/ do
-  #logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Always On"
+  #config.logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Always On"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.allow_high_risk_countries.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always Off$/ do
-  #logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Always Off"
+  #config.logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Always Off"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.allow_high_risk_countries.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Override$/ do
-  #logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Override"
+  #config.logger.step "On PAM AppCap Overrides page, set Allow High Risk Countries to Override"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.allow_high_risk_countries.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always On$/ do
-  #logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Always On"
+  #config.logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Always On"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.mailing_label_printing.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always Off$/ do
-  #logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Always Off"
+  #config.logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Always Off"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.mailing_label_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Override$/ do
-  #logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Override"
+  #config.logger.step "On PAM AppCap Overrides page, set Mailing Label Printing to Override"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.mailing_label_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
-  #logger.step "On PAM AppCap Overrides page, Submit"
+  #config.logger.step "On PAM AppCap Overrides page, Submit"
   expect(@appcapp_overrides).to be_truthy
   @appcapp_overrides.submit.ok
 end
 
 Then /^[Oo]n WebReg Profile page, Send username to standard out$/ do
-  logger.message " ############## NEW USER ID "
-  logger.message " ############## #{test_parameter[:usr]}"
-  logger.message " ############## #{test_parameter[:usr]}"
-  logger.message " ############## #{test_parameter[:usr]}"
-  logger.message " ############## #{test_parameter[:usr]}"
-  logger.message " ############## NEW USER ID "
+  config.logger.message " ############## NEW USER ID "
+  config.logger.message " ############## #{parameter[:usr]}"
+  config.logger.message " ############## #{parameter[:usr]}"
+  config.logger.message " ############## #{parameter[:usr]}"
+  config.logger.message " ############## #{parameter[:usr]}"
+  config.logger.message " ############## NEW USER ID "
 end
 
 

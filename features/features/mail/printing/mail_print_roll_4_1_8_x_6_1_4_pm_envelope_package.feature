@@ -1,10 +1,12 @@
+
+@mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package
 Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope PACKAGE
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package
-  Scenario: Roll - 4 ⅛” x 6 ¼” - PM Envelope Package
+  @mail_print_roll_4_1_8_x_6_1_4_pm_package
+  Scenario: Roll - 4 ⅛” x 6 ¼” - PM Package
 
    #mail_print_roll_4_1_8_x_6_1_4_pm_large/thick_envelope
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
@@ -39,6 +41,9 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope PACKAGE
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
 
+  @mail_print_roll_4_1_8_x_6_1_4_pm_envelope
+  Scenario: Roll - 4 ⅛” x 6 ¼” - PM Envelope
+
     #mail_print_roll_4_1_8_x_6_1_4_pm_fr_envelope
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then set Print form Mail-From to default
@@ -60,7 +65,6 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope PACKAGE
     Then Print Postage
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
-
    #mail_print_roll_4_1_8_x_6_1_4_pm_lfr_envelope
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then set Print form Mail-From to default
