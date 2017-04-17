@@ -94,3 +94,4 @@ class WebRegistration < Browser::StampsModal
     @error_occured = AnErrorOccured.new(param)
     @footer = RegistrationFooter.new(param)
   end
+end

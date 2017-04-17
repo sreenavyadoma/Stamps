@@ -363,6 +363,6 @@ class Registrationfooter < Browser::StampsModal
       @privacy_policy = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[1]")).click
       @copyright_link = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[2]")).click
       @trust_elogo = StampsElement.new(browser.img(id: "webreg/images/global/logo_truste.png"))
-      @live_chat_button = StampsElement.new(browser.link(text:, "Live Chat").click
+      @live_chat_button = StampsElement.new(browser.link(text: "Live Chat"))
   end
 end
