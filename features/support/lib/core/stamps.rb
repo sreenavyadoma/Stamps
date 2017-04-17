@@ -83,7 +83,7 @@ module Stamps
     if @param.nil?
       @param = ModalParam.new
       @param.browser_sym = config.browser_sym
-      @param.firefox_profile  = ENV['FIREFOX_PROFILE'].downcase
+      @param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
       expect([:orders, :mail, :registration]).to include(@param.web_app)
