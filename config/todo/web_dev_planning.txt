@@ -1,6 +1,6 @@
 
 Theme 1632
-	UI Field Validation (Feature file, Step Definitions, Page Objects, Jenkins Tests, Test Execution/Results Analysis) ~26 days (best case)
+	UI Field Validation (Feature file, Step Definitions, Page Objects, Jenkins Tests, Test Execution/Results Analysis) ~25 days (best case)
 		Profile Page 8-9
 		Membership Page (including Side Mailing Info) 9-10
 		Choose Supplies 3-4
@@ -16,7 +16,7 @@ Theme 1632
 		Download Page 1-2
 		Install Instructions Page 1-2
 
-	Test Workflow ~30 days
+	Test Workflow ~34 days
 		Windows Happy Path 6-7 days (Orders Web Reg automation for old theme)
 		Windows Dpawr Offers 6-7 days
 		Windows Non-Dpawr offers 6-7 days
@@ -43,6 +43,7 @@ Different Browsers:
 	Edge - ???
 	Safari - ???
 
-~ 76 days (on Win10 - Firefox) 1 person
+~ 77 days (on Win10 - Firefox) 1 person
 
-It will take approximately 76 days or 7.5 sprints to finish Web Reg automation with 1 automation expert resource.
+It will take approximately 77 days or 7.5 sprints to finish Web Reg automation with 1 automation expert resource.
+
