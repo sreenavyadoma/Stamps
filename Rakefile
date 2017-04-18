@@ -1087,11 +1087,6 @@ Cucumber::Rake::Task.new(:mail_authentication) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_bvt_address_cleansing) do |t|
-  t.profile = 'mail_bvt_address_cleansing'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:print_dialog_email_tracking) do |t|
   t.profile = 'print_dialog_email_tracking'
   t.cucumber_opts = "-p cuke_reports"
