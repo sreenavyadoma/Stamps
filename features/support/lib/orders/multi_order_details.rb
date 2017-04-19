@@ -417,7 +417,7 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @element= StampsElement.new browser.label(text: 'Insure For $:')
+          @element= StampsElement.new browser.label(text: 'Insurance')
         end
 
         def blur_out

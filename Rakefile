@@ -2087,3 +2087,8 @@ Cucumber::Rake::Task.new(:print_two_up_expanded_fpo_cn22_paper_right) do |t|
   t.profile = 'print_two_up_expanded_fpo_cn22_paper_right'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:mail_bvt_address_cleansing) do |t|
+  t.profile = 'mail_bvt_address_cleansing'
+  t.cucumber_opts = "-p cuke_reports"
+end
