@@ -6,11 +6,11 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @ship_from_multi = ShipFromAddress.new(param)
+          @ship_from_multi = MultiShipFromAddress.new(param)
           @weight = MultiOrderDetailsWeight.new(param)
-          @domesticservice = DomesticService.new(param)
-          @intlService = InternationalService.new(param)
-          @insurance = DetailsInsureFor.new(param)
+          @domestic_service = MultiDomesticService.new(param)
+          @int_service = MultiInternationalService.new(param)
+          @insurance = MultiDetailsInsureFor.new(param)
           @tracking = MultiOrderDetailsTracking.new(param)
           @dimensions = MultiOrderDetailsDimensions.new(param)
           @buttons = MultiUpdateController.new(param)
@@ -48,7 +48,7 @@ module Stamps
       end
    end
 
-      class ShipFromAddress < Browser::StampsModal
+      class MultiShipFromAddress < Browser::StampsModal
           attr_reader :drop_down, :text_box, :blur_element
 
           def initialize(param)
@@ -111,7 +111,7 @@ module Stamps
         end
       end
 
-      class DomesticService < Browser::StampsModal
+      class MultiDomesticService < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
@@ -239,7 +239,7 @@ module Stamps
         end
       end
 
-      class InternationalService < Browser::StampsModal
+      class MultiInternationalService < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
@@ -250,7 +250,7 @@ module Stamps
 
       end
 
-      class DetailsInsureFor < Browser::StampsModal
+      class MultiDetailsInsureFor < Browser::StampsModal
         attr_reader :text_box, :increment_trigger, :decrement_trigger, :blur_element, :drop_down
 
         def initialize(param)
@@ -412,8 +412,6 @@ module Stamps
           expect(view_restrictions).to be_present
         end
       end
-
-
 
     end
   end
