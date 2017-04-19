@@ -11,7 +11,7 @@ module Stamps
         @styles = PageStyles.new(param)
         @order_details = Orders::Details::SingleOrderDetails.new(param)
         @filter_panel = Orders::LeftPanel::FilterPanel.new(param)
-        @multi_order = Orders::Details::MultiOrderDetails.new(param)
+        @multi_order = Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param)
       end
 
       def present?

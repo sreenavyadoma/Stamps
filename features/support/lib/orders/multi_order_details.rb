@@ -384,32 +384,48 @@ module Stamps
       end
 
       class MultiUpdateController < Browser::StampsModal
-        attr_reader :update_orders_button, :save_as_present_btn, :updating_orders
+        attr_reader :update_orders_btn, :save_as_present_btn, :updating_orders
 
         def initialize(param)
           super(param)
-          @update_orders_button = StampsElement.new browser.span(text: 'Update Orders')
+          @update_orders_btn = StampsElement.new browser.span(text: 'Update Orders')
           @save_as_present_btn = StampsElement.new browser.span(text: 'Save as Preset')
           @updating_orders = StampsElement.new(browser.div(text: "Updating Orders"))
         end
 
         def present?
-          update_orders_button.present?
+          update_orders_btn.present?
         end
 
-        def update_Orders
-          update_orders_button.click
-          update_orders_button.click
+        def update_orders_btn
+          update_orders_btn.click
+          update_orders_btn.click
           expect(updating_orders).to be_present
           updating_orders.wait_while_present(2.5)
         end
 
-        def Save_as_Preset
+        def save_as_present_btn
           5.times do
             return view_restrictions if view_restrictions.present?
             restrictions_btn.click
           end
-          expect(view_restrictions).to be_present
+        end
+      end
+
+      class BlurOutElement < Browser::StampsModal
+        attr_reader :element
+
+        def initialize(param)
+          super(param)
+          @element= StampsElement.new browser.label(text: 'Insure For $:')
+        end
+
+        def blur_out
+          2.times do
+            element.click
+            element.double_click
+            element.click
+          end
         end
       end
 

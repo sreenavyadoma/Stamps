@@ -395,7 +395,7 @@ module Stamps
     end
 
     class StampsComboBox
-      attr_accessor :text_box, :drop_down, :selection_type
+      attr_accessor :browser, :text_box, :drop_down, :selection_type
 
       def initialize(text_boxes, drop_downs, selection_type, index)
         @index = index
