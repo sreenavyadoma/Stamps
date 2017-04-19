@@ -1,8 +1,8 @@
 module Stamps
   module Orders
-    module Details
-      class MultiOrderDetails < Browser::StampsModal
-        attr_reader :ship_from_multi, :weight, :domesticservice, :intlService, :insurance
+    module MultiOrderDetails
+      class MultiOrderDetailsForm < Browser::StampsModal
+        attr_reader :ship_from_multi, :weight, :domestic_service, :int_service, :insurance, :tracking, :dimensions, :buttons
 
         def initialize(param)
           super(param)
@@ -11,6 +11,9 @@ module Stamps
           @domesticservice = DomesticService.new(param)
           @intlService = InternationalService.new(param)
           @insurance = DetailsInsureFor.new(param)
+          @tracking = MultiOrderDetailsTracking.new(param)
+          @dimensions = MultiOrderDetailsDimensions.new(param)
+          @buttons = MultiUpdateController.new(param)
         end
 
         def blur_out
@@ -296,6 +299,121 @@ module Stamps
         end
 
       end
+
+      class MultiOrderDetailsTracking < Browser::StampsModal
+        attr_reader :text_box, :drop_down, :blur_element
+        def initialize(param)
+          super(param)
+          @text_box = StampsTextbox.new browser.text_field(name: 'Tracking')
+          @drop_down = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
+          @blur_element = BlurOutElement.new(param)
+        end
+
+        def present?
+          text_box.present?
+        end
+
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def tracking_selection(selection)
+          if selection.downcase.include? "usps"
+            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "signature"
+            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
+          elsif selection.downcase.include? "none"
+            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
+          else
+            expect("#{selection} is not a valid selection").to eql "Valid selections are USPS Tracking and Signature Required"
+          end
+        end
+
+        # todo-rob Details Tracking selection fix
+        def select(str)
+          expect(drop_down).to be_present
+          20.times do
+            selection = StampsElement.new(tracking_selection(str).first)
+            drop_down.click unless selection.present?
+            selection.click
+            break if text_box.text.include?(str)
+          end
+          expect(text_box.text).to include(str)
+        end
+
+        def tooltip(selection)
+          selection_label = browser.td(text: selection)
+          5.times {
+            begin
+              drop_down.click unless selection_label.present?
+              if selection_label.present?
+                qtip = selection_label.parent.parent.parent.parent.attribute_value("data-qtip")
+                logger.info "#{qtip}"
+                return qtip
+              end
+            rescue
+              #ignore
+            end
+          }
+        end
+      end
+
+      class MultiOrderDetailsDimensions < Browser::StampsModal
+        attr_reader :length, :width, :height
+        def initialize(param)
+          super(param)
+          text_box = browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
+          inc_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
+          dec_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
+          @length = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
+          text_box = browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
+          inc_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]")
+          dec_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]")
+          @width = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
+          text_box = browser.text_field(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
+          inc_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]")
+          dec_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]")
+          @height = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+        end
+
+        def present?
+          length.present? && width.present? && height.present?
+        end
+      end
+
+      class MultiUpdateController < Browser::StampsModal
+        attr_reader :update_orders_button, :save_as_present_btn, :updating_orders
+
+        def initialize(param)
+          super(param)
+          @update_orders_button = StampsElement.new browser.span(text: 'Update Orders')
+          @save_as_present_btn = StampsElement.new browser.span(text: 'Save as Preset')
+          @updating_orders = StampsElement.new(browser.div(text: "Updating Orders"))
+        end
+
+        def present?
+          update_orders_button.present?
+        end
+
+        def update_Orders
+          update_orders_button.click
+          update_orders_button.click
+          expect(updating_orders).to be_present
+          updating_orders.wait_while_present(2.5)
+        end
+
+        def Save_as_Preset
+          5.times do
+            return view_restrictions if view_restrictions.present?
+            restrictions_btn.click
+          end
+          expect(view_restrictions).to be_present
+        end
+      end
+
+
 
     end
   end

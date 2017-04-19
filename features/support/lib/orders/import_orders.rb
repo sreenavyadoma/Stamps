@@ -32,7 +32,7 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @title = StampsElement.new browser.div(text: "Import Orders")
+        @title = StampsElement.new(browser.div(text: "Import Orders"))
       end
 
       def present?

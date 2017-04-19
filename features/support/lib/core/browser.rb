@@ -422,7 +422,7 @@ module Stamps
       end
 
       def select(str)
-        logger.info "Select #{str}"
+        #logger.info "Select #{str}"
         drop_down.click
         10.times do
           selection = StampsElement.new(selection(str))
@@ -430,7 +430,7 @@ module Stamps
             break if (text_box.text).include?(str)
             drop_down.click unless selection.present?
             selection.click
-            logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
+            #logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           rescue
             #ignore
           end
