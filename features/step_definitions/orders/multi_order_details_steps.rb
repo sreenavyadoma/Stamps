@@ -19,38 +19,38 @@ Then /^[Ss]et Multi Order Details form Ounces to (\d+)$/ do |value|
 end
 
 Then /^[Ss]et Multi Order Details form Domestic service to (.*)$/ do |service|
-  stamps.orders.multi_order.service.select(service)
+  stamps.orders.multi_order.domesticservice.select(service)
   15.times do
     step "On Order Details form, blur out"
-    break if stamps.orders.order_details.service.cost > 0
+    break if stamps.orders.multi_order.domesticservice.cost > 0
     step "On Order Details form, blur out"
   end
   step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details form International service to (.*)$/ do |service|
-  stamps.orders.multi_order.service.select(service)
+  stamps.orders.multi_order.intlService.select(service)
   15.times do
     step "On Order Details form, blur out"
-    break if stamps.orders.order_details.service.cost > 0
+    break if stamps.orders.multi_order.intlService.cost > 0
     step "On Order Details form, blur out"
   end
   step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form Insurance to (.+)$/ do |value|
-  stamps.orders.multi_order.ship_from.select(value)
+  stamps.orders.multi_order.insurance.select(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form Insure Amount to (.+)$/ do |value|
-  stamps.orders.multi_order.ship_from.select(value)
+  stamps.orders.multi_order.insurance.select(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
 end
 
-Then /^[Ss]et Multi Order Details form Tracking to USPS Tracking$/ do
+Then /^[Ss]et Multi Order Details form Tracking to (.+)$/ do |value|
   step "set Order Details form Tracking to \"USPS Tracking\""
 end
 
@@ -62,21 +62,9 @@ Then /^[Ss]et Multi Order Details form Dimensions to Length (\d+) Width (\d+) He
 end
 
 Then /^(?:I|i)n Multi Order Form, click Update Orders$/ do
-  print_modal = stamps.orders.orders_toolbar.print_btn.print_modal
-  @ship_date = print_modal.ship_date.text
-  @paper_tray = print_modal.paper_tray.text_box.text
-  @printer = print_modal.printer.text_box.text
-  @printing_on = print_modal.printing_on.text_box.text
-  @printing_error = print_modal.print
-  sleep(4)
+
 end
 
 Then /^(?:I|i)n Multi Order Form, click Save as Present$/ do
-  print_modal = stamps.orders.orders_toolbar.print_btn.print_modal
-  @ship_date = print_modal.ship_date.text
-  @paper_tray = print_modal.paper_tray.text_box.text
-  @printer = print_modal.printer.text_box.text
-  @printing_on = print_modal.printing_on.text_box.text
-  @printing_error = print_modal.print
-  sleep(4)
+
 end
