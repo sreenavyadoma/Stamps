@@ -6,7 +6,7 @@ Feature:  Orders service Selection
   @details_services
   @details_services_dom
   Scenario: service Selections for Domestic Orders
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address in zone 1
     Then set Order Details form Ounces to 1
@@ -161,7 +161,7 @@ Feature:  Orders service Selection
   @details_services
   @details_services_int
   Scenario: service Selections for International Orders
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |

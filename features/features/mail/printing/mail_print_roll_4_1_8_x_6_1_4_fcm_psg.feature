@@ -1,10 +1,12 @@
+
+@mail_print_roll_4_1_8_x_6_1_4_fcm_psg
 Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_roll_4_1_8_x_6_1_4_fcm_psg
-  Scenario: Roll - 4 ⅛” x 6 ¼” - FCM_PSG
+  @mail_print_roll_4_1_8_x_6_1_4_fcm
+  Scenario: Print on: Roll - 4 ⅛” x 6 ¼” - FCM
 
    #mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
@@ -28,7 +30,9 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - FCM_PSG
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
 
-   #mail_print_roll_4_1_8_x_6_1_4_psg_large_package
+  @mail_print_roll_4_1_8_x_6_1_4_psg
+  Scenario: Print On: Roll - 4 ⅛” x 6 ¼” - PSG
+
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States

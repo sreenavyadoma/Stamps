@@ -52,7 +52,7 @@ module Stamps
           sleep(2)
           return customer_search_page if customer_search_page.present?
         end
-        expect(customer_search_page.present?).to be(true)
+        expect(customer_search_page).to be_present
       end
     end
   end

@@ -88,9 +88,8 @@ module Stamps
           else
             element.wait_until_present
           end
-        rescue Exception => e
-          logger.error e.message
-          logger.error e.backtrace.join("\n")
+        rescue
+          #ignore
         end
       end
 
@@ -176,6 +175,10 @@ module Stamps
     end
 
     class StampsTextbox < StampsElement
+      def present?
+        element.present?
+      end
+
       def set(txt)
         15.times do
           begin
@@ -241,26 +244,30 @@ module Stamps
     end
 
     class StampsCheckbox
-      attr_accessor :element, :verify_element, :attribute, :attribute_value
+      attr_accessor :clickable_element, :verify_element, :attribute, :attribute_value
 
-      def initialize(element, verify_element, attribute, attribute_value)
-        @element = StampsElement.new(element)
+      def initialize(clickable_element, verify_element, attribute, attribute_value)
+        @clickable_element = StampsElement.new(clickable_element)
         @verify_element = StampsElement.new(verify_element)
         @attribute = attribute
         @attribute_value = attribute_value
       end
 
+      def present?
+        clickable_element.present?
+      end
+
       def check
         50.times do
           break if checked?
-          element.click
+          clickable_element.click
         end
       end
 
       def uncheck
         if checked?
           50.times do
-            element.click
+            clickable_element.click
             break unless checked?
           end
         end
@@ -388,7 +395,7 @@ module Stamps
     end
 
     class StampsComboBox
-      attr_accessor :text_box, :drop_down, :selection_type
+      attr_accessor :browser, :text_box, :drop_down, :selection_type
 
       def initialize(text_boxes, drop_downs, selection_type, index)
         @index = index
@@ -415,7 +422,7 @@ module Stamps
       end
 
       def select(str)
-        logger.info "Select #{str}"
+        #logger.info "Select #{str}"
         drop_down.click
         10.times do
           selection = StampsElement.new(selection(str))
@@ -423,7 +430,7 @@ module Stamps
             break if (text_box.text).include?(str)
             drop_down.click unless selection.present?
             selection.click
-            logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
+            #logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           rescue
             #ignore
           end
@@ -436,19 +443,18 @@ module Stamps
     # Modals
 
     class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :browser_sym, :firefox_profile
     end
 
     # StampsModal is a parent class for modals containing StampsElements
     class StampsModal
-      include Stamps::StampsTestHelper
-      attr_accessor :param, :browser, :logger, :test_helper
+      attr_accessor :param, :browser, :logger, :helper
 
       def initialize(param)
         @param = param
         @browser = param.browser
         @logger = param.logger
-        @test_helper = TestHelper
+        @helper = StampsTestHelper.new(logger)
       end
     end
 

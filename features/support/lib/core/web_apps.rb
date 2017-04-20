@@ -32,7 +32,7 @@ module Stamps
       logger.message "URL: #{url}"
       logger.message "-"
 
-      browser.goto url
+      browser.goto(url)
       if browser.text.include? "Server Error"
         logger.error browser.text
         raise browser.text

@@ -1,45 +1,29 @@
 module Stamps
-
-  def init(scenario)
-    begin
-      TestHelper.init scenario
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
+  
+  def config
+    @config ||= StampsTestConfig.new
   end
 
-  def teardown
-    begin
-      TestHelper.teardown
-    rescue
-      #ignore
-    end
+  def parameter
+    @test_data ||= Hash.new
+    @test_data[:customs_associated_items] ||= Hash.new
+    @test_data[:details_associated_items] ||= Hash.new
+    @test_data[:order_id] ||= Hash.new
+    @test_data
+  end
+  
+  def helper
+    @helper ||= StampsTestHelper.new(config.logger)
   end
 
-  def test_helper
+  def registration
     begin
-      TestHelper
+      @registration = WebReg::WebRegistration.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
-  end
-
-  def webreg
-    begin
-      @webreg = WebReg::WebRegistration.new(param)
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       raise e
     end
   end
@@ -48,10 +32,10 @@ module Stamps
     begin
       @pam = Pam::PaymentAdministratorManager.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       raise e
     end
   end
@@ -60,10 +44,10 @@ module Stamps
     begin
       @google ||= Google.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -72,10 +56,10 @@ module Stamps
     begin
       HealthCheck.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
@@ -84,38 +68,32 @@ module Stamps
     begin
       @stamps ||= StampsCom.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "\n#{e.backtrace.join "\n"}"
-      logger.error ""
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "\n#{e.backtrace.join "\n"}"
+      p ""
+      p ""
       expect("#{e.backtrace.join("\n")}").to eql e.message
     end
   end
-
-  def test_parameter
-    @test_data ||= Hash.new
-    @test_data[:customs_associated_items] ||= Hash.new
-    @test_data[:details_associated_items] ||= Hash.new
-    @test_data
-  end
-
+  
+  
+  
   def param
     if @param.nil?
       @param = ModalParam.new
-
-      expect(ENV['WEB_APP']).to_not be_nil
+      @param.browser_sym = config.browser_sym
+      @param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
+      expect(ENV['WEB_APP']).not_to be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
-      expect([:orders, :mail, :webreg]).to include(@param.web_app)
+      expect([:orders, :mail, :registration]).to include(@param.web_app)
 
       ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
-      @param.browser = browser
-      @param.logger = logger
-      @param.scenario_name = test_helper.scenario_name
       @param.test_env = ENV['URL']
+      @param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 
       if @param.web_app == :mail || @param.web_app == :orders
-        @param.health_check = ParameterHelper.to_bool ENV['HEALTHCHECK']
+        @param.health_check = helper.to_bool ENV['HEALTHCHECK']
         @param.usr = ENV['USR']
         @param.pw = ENV['PW']
         @param.url = ENV['URL']
@@ -131,90 +109,68 @@ module Stamps
         expect(['orders', 'mail', 'webreg']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or webreg. Got #{ENV['WEB_APP']}"
       end
     end
+    @param.browser = config.browser
+    @param.logger = config.logger
+    @param.scenario_name = config.scenario_name
     @param
   end
 
-  def address_helper(zone)
+  def address_helper_zone(zone)
     case zone.downcase
       when /zone 1 (?:through|and) 4/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_1_4)
+        helper.rand_zone_1_4
       when /zone 5 (?:through|and) 8/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_5_8)
+        helper.rand_zone_5_8
       when /zone 1/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_1)
+        helper.rand_zone_1
       when /zone 2/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_2)
+        helper.rand_zone_2
       when /zone 3/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_3)
+        helper.rand_zone_3
       when /zone 4/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_4)
+        helper.rand_zone_4
       when /zone 5/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_5)
+        helper.rand_zone_5
       when /zone 6/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_6)
+        helper.rand_zone_6
       when /zone 7/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_7)
+        helper.rand_zone_7
       when /zone 8/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_8)
+        helper.rand_zone_8
       when /zone 9/
-        address = ParameterHelper.format_address(ParameterHelper.rand_zone_9)
+        helper.rand_zone_9
       else
-        test_parameter[:ship_to_domestic] = ParameterHelper.format_address(zone)
-        return test_parameter[:ship_to_domestic]
+        return zone
     end
-
-    test_parameter[:street_address] = address['street_address']
-    test_parameter[:city] = address['city']
-    test_parameter[:state] = address['state']
-    test_parameter[:zip] = address['zip']
-    test_parameter[:name] = address['name']
-    test_parameter[:company] = address['company']
-    test_parameter[:ship_to_domestic] = ParameterHelper.format_address(address)
-    test_parameter[:ship_to_domestic]
   end
 
-  def logger
-    test_helper.logger
-  end
-
-  def browser
-    test_helper.browser
-  end
-
-  def param_helper
-    begin
-      ParameterHelper
-    rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
+  def address_helper(zone)
+    return helper.format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
+    return helper.format_address(zone)
   end
 
   def webreg_user_parameter_file * args
     begin
-      if ParameterHelper.to_bool(ENV['JENKINS'])
-        filename = "#{data_for(:webreg, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+      if helper.to_bool(ENV['JENKINS'])
+        filename = "#{data_for(:registration, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       else
-        filename = "#{data_for(:webreg, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+        filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
       end
-      logger.message "WebReg parameter file: #{filename}"
+      config.logger.message "WebReg parameter file: #{filename}"
       filename
     rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
+      p e.message
+      p e.backtrace.join("\n")
       expect("MagicData: Problem retrieving data from default.yml. Check your format?").to eql e.message
     end
   end
 
   def webreg_data_store_filename(*args)
     begin
-      "#{data_for(:webreg, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
+      "#{data_for(:registration, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
     rescue Exception => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
+      p e.message
+      p e.backtrace.join("\n")
       expect("MagicData: Problem retrieving data. Check your format?").to eql e.message
     end
   end
@@ -223,10 +179,10 @@ module Stamps
     begin
       @volusion = Stores::VolusionLoginPage.new(param)
     rescue Exception => e
-      logger.error ""
-      logger.error "#{e.message}"
-      logger.error "#{e.backtrace.join "\n"}"
-      logger.error ""
+      p ""
+      p "#{e.message}"
+      p "#{e.backtrace.join "\n"}"
+      p ""
       raise e
     end
   end

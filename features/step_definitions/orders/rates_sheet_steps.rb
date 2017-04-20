@@ -1,17 +1,18 @@
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
+  expect([:orders, :mail]).to include(param.web_app)
   Spreadsheet.client_encoding = 'UTF-8'
   rate_file = data_for(:rates_test, {})['rate_file']
 
   @rate_file_loc = "#{data_for(:rates_test, {})['test_dir']}\\#{rate_file}"
-  logger.step "Rate File: #{@rate_file_loc}"
+  config.logger.step "Rate File: #{@rate_file_loc}"
   expect("Rate File: #{@rate_file_loc}").to eql "Rate File does not exist!" unless File.exist?(@rate_file_loc)
 
   begin
-    @rate_file = Spreadsheet.open @rate_file_loc
+    @rate_file = Spreadsheet.open(@rate_file_loc)
   rescue Exception => e
-    logger.step e.message
-    logger.step e.backtrace.join("\n")
+    config.logger.step e.message
+    config.logger.step e.backtrace.join("\n")
     expect(e.message).to eql "Excel Rate File is opened by someone at a computer somewhere. Close the excel sheet before running the test again."
   end
 
@@ -19,32 +20,32 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   @rate_file.should_not be nil
 end
 
-Then /^(?:R|r)un rate test PME Comm Base in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PME Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_base']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test PME Comm Plus in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PME Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pme_comm_plus']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test PM Comm Base in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PM Comm Base in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_base']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test PM Comm Plus in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test PM Comm Plus in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_pm_comm_plus']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
+Then /^[Rr]un rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
   param_sheet = data_for(:rates_test, {})['rates_parcel_select_ground']
-  step "run rate test Sheet #{param_sheet} in Zone #{zone}"
+  step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
-Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
+Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   zone = zone.to_i
 
   @result_file = Spreadsheet::Workbook.new
@@ -321,7 +322,7 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     @result_sheet.row(0)[@result_sheet_columns[:zone]] = "zone#{zone}"
     begin
       if row_number > 0
-        logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
+        config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
         step "set Order Details form Ship-To to a random address in Zone #{zone}"
@@ -329,12 +330,12 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         # spreadsheet price for zone
 
         if row[zone_column] == nil
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Test Row #{row_number} Skipped. No rates found on sheet."
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} "
-          logger.step"#{"#"*80}"
+          config.logger.step "#{"#"*10} "
+          config.logger.step "#{"#"*10} "
+          config.logger.step "#{"#"*10} Test Row #{row_number} Skipped. No rates found on sheet."
+          config.logger.step "#{"#"*10} "
+          config.logger.step "#{"#"*10} "
+          config.logger.step"#{"#"*80}"
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
           @result_sheet[row_number, @result_sheet_columns[:zone]] = row[zone_column]
@@ -354,9 +355,9 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # set expectation column for this row to zone price
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:zone]]= price
-          @result_sheet[row_number, @result_sheet_columns[:username]] = test_parameter[:username]
-          @result_sheet[row_number, @result_sheet_columns[:ship_from]] = test_parameter[:ship_from]
-          @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = test_parameter[:ship_to_domestic]
+          @result_sheet[row_number, @result_sheet_columns[:username]] = parameter[:username]
+          @result_sheet[row_number, @result_sheet_columns[:ship_from]] = parameter[:ship_from]
+          @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = parameter[:ship_to_domestic]
 
           # Set weight to 0
           step "set Order Details form Pounds to 0"
@@ -365,23 +366,25 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
           weight_lb = row[@rate_sheet_columns[:weight_lb]]
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Weight: #{weight_lb}"
-          logger.step "#{"#"*10} Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
-          logger.step "#{"#"*10} "
-          logger.step"#{"#"*50}"
-          if param_helper.is_whole_number?(weight_lb)
+          config.logger.step "#{"#"*10} "
+          config.logger.step "#{"#"*10} Weight: #{weight_lb}"
+          config.logger.step "#{"#"*10} Price: #{@result_sheet[row_number, @result_sheet_columns[:zone]]}"
+          config.logger.step "#{"#"*10} "
+          config.logger.step"#{"#"*50}"
+
+          if helper.is_whole_number?(weight_lb)
             weight_lb = weight_lb.to_i
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_lb
             @result_sheet[row_number, @result_sheet_columns[:weight]] = "#{weight_lb} lb."
             step "set Order Details form Pounds to #{weight_lb}"
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
-            #logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
+            #config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             @result_sheet[row_number, @result_sheet_columns[:weight]] = "#{weight_oz} oz."
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_oz
             step "set Order Details form Ounces to #{weight_oz}"
           end
+          sleep(0.025)
 
           # Set Service
           row[@rate_sheet_columns[:service]].should_not be nil
@@ -392,22 +395,23 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
           step "set Order Details form service to #{service}"
-          @result_sheet[row_number, @result_sheet_columns[:service_selected]] = test_parameter[:service]
+          @result_sheet[row_number, @result_sheet_columns[:service_selected]] = parameter[:service]
 
           # Set Tracking
           begin
             step "set Order Details form Tracking to #{row[@rate_sheet_columns[:tracking]]}"
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
-          @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = test_parameter[:tracking]
+          @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = parameter[:tracking]
 
           # get total cost actual value from UI
           step "Save Order Details data"
-          @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_parameter[:total_ship_cost].to_f * 100).round / 100.0
+          @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (parameter[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
           step "set Order Details form Pounds to 0"
           step "set Order Details form Ounces to 0"
+          step "On Order Details form, blur out"
 
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
@@ -421,18 +425,18 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             @result_sheet.row(row_number).set_format(@result_sheet_columns[:status], fail_format)
             @result_sheet[row_number, @result_sheet_columns[:results]] = "Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]}"
           end
-          logger.step "#{"#"*10} "
-          logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
-          logger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
-          logger.step "#{"#"*10} Ship-To Address: #{test_parameter[:name]}, #{test_parameter[:street_address]}, #{test_parameter[:city]}, #{test_parameter[:state]}, #{test_parameter[:zip]}"
-          logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
-          logger.step "#{"#"*10} "
+          config.logger.step "#{"#"*10} "
+          config.logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
+          config.logger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
+          config.logger.step "#{"#"*10} Ship-To Address: #{parameter[:name]}, #{parameter[:street_address]}, #{parameter[:city]}, #{parameter[:state]}, #{parameter[:zip]}"
+          config.logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
+          config.logger.step "#{"#"*10} "
         end
 
       end
     rescue Exception=> e
-      logger.step e.message
-      logger.step e.backtrace.join("\n")
+      config.logger.step e.message
+      config.logger.step e.backtrace.join("\n")
       row[@rate_sheet_columns[:error_msg]] = "Zone #{zone} - Row #{row_number}: #{e.message}"
     end
   end
@@ -445,35 +449,35 @@ Then /^(?:R|r)un rate test Sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
       if row_number > 0
         if row[@rate_sheet_columns[:status]] == "Failed"
           @failed_test_count +=1
-          logger.step "Zone #{zone} - Row #{row_number} Failed"
+          config.logger.step "Zone #{zone} - Row #{row_number} Failed"
         end
       end
     end
   end
-  logger.step "#{"*"*80}"
-  logger.step "#{"*"*80}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "#{"*"*80}"
-  logger.step "#{"*"*80}"
+  config.logger.step "#{"*"*80}"
+  config.logger.step "#{"*"*80}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "#{"*"*80}"
+  config.logger.step "#{"*"*80}"
 end
 
 Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
-  logger.step "#{"*"*80}"
-  logger.step "Rates: Number of failed test should be less than #{count}"
+  config.logger.step "#{"*"*80}"
+  config.logger.step "Rates: Number of failed test should be less than #{count}"
   count = count.to_i
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
-  logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
+  config.logger.step "Number of Failed Tests: #{@failed_test_count}"
   #@failed_test_count).to be < count
-  logger.step "#{"*"*80}"
+  config.logger.step "#{"*"*80}"
 end
 
 

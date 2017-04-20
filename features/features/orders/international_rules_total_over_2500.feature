@@ -5,7 +5,7 @@ Feature: Internal Transaction Number Required for total over $2500
 
   @rules_international @rules_international_over_2500
   Scenario: Customs Form Internal Transaction Number Required for total over $2500
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
       | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |

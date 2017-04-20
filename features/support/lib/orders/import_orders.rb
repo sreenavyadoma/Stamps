@@ -32,7 +32,7 @@ module Stamps
 
       def initialize(param)
         super(param)
-        @title = StampsElement.new browser.div(text: "Import Orders")
+        @title = StampsElement.new(browser.div(text: "Import Orders"))
       end
 
       def present?
@@ -86,7 +86,7 @@ module Stamps
 
       def select_csv_file
         button = StampsElement.new browser.span(text: "Select CSV File")
-        open_file = Windows::OpenFile.new
+        open_file = Windows::OpenFile.new(param.browser_sym)
         10.times do
           button.element.parent.click
           button.send_keys(:enter)

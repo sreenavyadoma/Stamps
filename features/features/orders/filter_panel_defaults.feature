@@ -49,7 +49,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
 
     When In left Filter Panel, expect system displays expanded filters panel
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to Domestic Address
@@ -89,7 +89,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then expect Orders Grid Email is test@stamps.com
 
 
-    Then click Orders Toolbar Add button
+    Then add new order
     Then In left Filter Panel, expect selected filter is Awaiting Shipment
 
 

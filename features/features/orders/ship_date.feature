@@ -6,7 +6,7 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to today
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
     Then in Orders Toolbar, click Print button
@@ -18,7 +18,7 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to 1 day from today
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
     Then in Orders Toolbar, click Print button
@@ -30,7 +30,7 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to 1 day from today
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package
@@ -43,7 +43,7 @@ Feature: Ship Date
 
   @ship_date
   Scenario:  set Print modal Ship Date to 1 day from today
-    Then click Orders Toolbar Add button
+    Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Package

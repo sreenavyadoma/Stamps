@@ -63,7 +63,7 @@ module Stamps
         end
 
         def row_count
-          browser.tables(css: "div[id^=ordersGrid]>div>div>table").size.to_i
+          browser.tables(css: "div[id^=OrdersGrid-body]>div>div>table").size.to_i
         end
 
         def scroll_to_column(name)
@@ -85,12 +85,12 @@ module Stamps
         end
 
         def size
-          30.times do break if browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size > 0 end
-          browser.tables(:css=>"div[id^=ordersGrid]>div>div>table").size
+          30.times do break if browser.tables(:css=>"div[id^=OrdersGrid-body]>div>div>table").size > 0 end
+          browser.tables(:css=>"div[id^=OrdersGrid-body]>div>div>table").size
         end
 
         def parameter_helper
-          ParameterHelper
+          helper
         end
 
         def grid_text(column, row)
@@ -99,7 +99,7 @@ module Stamps
         end
 
         def grid_element(column_number, row)
-          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
+          browser.div(css: "div[id^=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
         end
 
         def grid_field_column_name(column_name, row)
@@ -128,7 +128,7 @@ module Stamps
         def row_number(order_id)
           5.times do
             column_num = column_number(:order_id)
-            fields = browser.divs(css: "div[id^=ordersGrid]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
+            fields = browser.divs(css: "div[id^=OrdersGrid-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
             fields.each_with_index do |element, index|
               scroll_to_column(element)
               if StampsElement.new(element).text.include?(order_id)
@@ -139,11 +139,6 @@ module Stamps
             end
           end
           #"Unable to obtain row number for Order ID #{order_id}").to eql "" if row == 0
-        end
-
-        def row_div(number)
-          expect(number).to be_truthy
-          browser.div(css: "div[id^=ordersGrid]>div>div>table:nth-child("+(number.to_s)+")>tbody>tr>td>div>div[class=x-grid-row-checker]")
         end
       end
 
@@ -548,7 +543,7 @@ module Stamps
         end
 
         def data(order_id)
-          ParameterHelper.remove_dollar_sign(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
+          helper.remove_dollar_sign(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
         end
       end
 
@@ -643,7 +638,7 @@ module Stamps
 
         def data(order_id)
           cost = grid_text_by_id(:ship_cost, order_id)
-          (cost.include? "$")?ParameterHelper.remove_dollar_sign(cost).to_f.round(2):cost
+          (cost.include? "$")?helper.remove_dollar_sign(cost).to_f.round(2):cost
         end
 
         def ship_cost_error(order_id)
@@ -840,38 +835,38 @@ module Stamps
           uncheck(row_number(order_id))
         end
 
-        def checkbox_element(number)
-          div = row_div(number)
-          verify_field = div.parent.parent.parent.parent.parent #browser.table(css: "div[id^=ordersGrid]>div>div>table:nth-child(#{number})")
+        def checkbox_element(row)
+          div = browser.div(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td>div>div[class=x-grid-row-checker]")
+          verify_field = browser.table(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})")
           StampsCheckbox.new(div, verify_field, "class", "selected")
         end
 
-        def check(number)
+        def check(row)
           scroll_into_view
           if size > 0
-            checkbox_element(number).check
-            expect(checked?(number)).to be(true)
+            checkbox_element(row).check
+            expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
           else
-            expect("Unable to check order number #{number}").to eql "Grid is empty"
+            expect("Unable to check order number #{row}").to eql "Grid is empty"
           end
         end
 
-        def uncheck(number)
+        def uncheck(row)
           scroll_into_view
           if size > 0
-            checkbox_element(number).uncheck
-            expect(checked?(number)).to be(false)
+            checkbox_element(row).uncheck
+            expect(checked?(row)).to be(false), "Unable to uncheck checkbox row #{row}"
           end
         end
 
-        def checked?(number)
+        def checked?(row)
           scroll_into_view
-          checkbox_element(number).checked?
+          checkbox_element(row).checked?
         end
 
         def order_id_checked?(order_number)
           scroll_into_view
-          checked? row_number(order_number)
+          checked?(row_number(order_number))
         end
 
         def checked_rows(*args)
@@ -1032,7 +1027,7 @@ module Stamps
         def initialize(param)
           super(param)
           @column = GridColumns.new(param)
-          @grid_element = StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid]"))
+          @grid_element = StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=OrdersGrid-body]"))
         end
 
         def present?
