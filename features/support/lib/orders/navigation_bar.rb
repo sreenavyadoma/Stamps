@@ -163,7 +163,7 @@ module Stamps
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
         elsif param.web_app == :mail
-          checkbox_element = browser.input id: "sdc-purchasewin-10dradio"
+          checkbox_element = browser.input(id: "sdc-purchasewin-10dradio")
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
