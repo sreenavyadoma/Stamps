@@ -17,76 +17,29 @@ module Stamps
   end
 
   def registration
-    begin
-      @registration = WebReg::WebRegistration.new(param)
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "#{e.backtrace.join "\n"}"
-      p ""
-      raise e
-    end
+    @registration ||= Stamps::Registration::WebRegistration.new(param)
   end
 
   def pam
-    begin
-      @pam = Pam::PaymentAdministratorManager.new(param)
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "#{e.backtrace.join "\n"}"
-      p ""
-      raise e
-    end
-  end
-
-  def google
-    begin
-      @google ||= Google.new(param)
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "#{e.backtrace.join "\n"}"
-      p ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
+    @pam ||= Pam::PaymentAdministratorManager.new(param)
   end
 
   def health
-    begin
-      HealthCheck.new(param)
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "#{e.backtrace.join "\n"}"
-      p ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
+    @health ||= HealthCheck.new(param)
   end
 
   def stamps
-    begin
-      @stamps ||= StampsCom.new(param)
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "\n#{e.backtrace.join "\n"}"
-      p ""
-      p ""
-      expect("#{e.backtrace.join("\n")}").to eql e.message
-    end
+    @stamps ||= StampsCom.new(param)
   end
-  
-  
-  
+
   def param
     if @param.nil?
-      @param = ModalParam.new
+      @param ||= ModalParam.new
       @param.browser_sym = config.browser_sym
       @param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
       @param.web_app = (ENV['WEB_APP'].downcase).to_sym
-      expect([:orders, :mail, :registration]).to include(@param.web_app)
+      expect([:orders, :mail, :registration]).to include(@param.web_app), "Invalid paramter WEB_APP=#{@param.web_app}. Valid values are mail, registration"
 
       ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
       @param.test_env = ENV['URL']
@@ -106,9 +59,10 @@ module Stamps
         expect(ENV['USR']).to be_truthy
         expect(ENV['PW']).to be_truthy
         expect(ENV['WEB_APP']).to be_truthy
-        expect(['orders', 'mail', 'webreg']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or webreg. Got #{ENV['WEB_APP']}"
+        expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
       end
     end
+
     @param.browser = config.browser
     @param.logger = config.logger
     @param.scenario_name = config.scenario_name
@@ -146,17 +100,17 @@ module Stamps
 
   def address_helper(zone)
     return helper.format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
-    return helper.format_address(zone)
+    helper.format_address(zone)
   end
 
-  def webreg_user_parameter_file * args
+  def registration_user_parameter_file * args
     begin
       if helper.to_bool(ENV['JENKINS'])
-        filename = "#{data_for(:registration, {})['webreg_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+        filename = "#{data_for(:registration, {})['registration_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"Registration":"#{args[0]}"}.yml"
       else
-        filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.yml"
+        filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"Registration":"#{args[0]}"}.yml"
       end
-      config.logger.message "WebReg parameter file: #{filename}"
+      config.logger.message "Registration parameter file: #{filename}"
       filename
     rescue Exception => e
       p e.message
@@ -165,9 +119,9 @@ module Stamps
     end
   end
 
-  def webreg_data_store_filename(*args)
+  def registration_data_store_filename(*args)
     begin
-      "#{data_for(:registration, {})['webreg_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"webreg":"#{args[0]}"}.txt"
+      "#{data_for(:registration, {})['registration_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"Registration":"#{args[0]}"}.txt"
     rescue Exception => e
       p e.message
       p e.backtrace.join("\n")
@@ -176,15 +130,8 @@ module Stamps
   end
 
   def volusion
-    begin
-      @volusion = Stores::VolusionLoginPage.new(param)
-    rescue Exception => e
-      p ""
-      p "#{e.message}"
-      p "#{e.backtrace.join "\n"}"
-      p ""
-      raise e
-    end
+    @volusion = Stores::VolusionLoginPage.new(param)
   end
 
 end
+

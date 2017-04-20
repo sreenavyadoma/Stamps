@@ -6,8 +6,8 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(name: "printers"))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(name: "printers"))
           @drop_down = StampsElement.new(browser.div(css: "div[id$=-body]>div[id^=printwindow-][id$=-innerCt]>div[id^=printwindow-][id$=-targetEl]>div>div>div>div>div>div>div[class*=x-form-arrow-trigger-default]"))
         end
 
@@ -45,8 +45,8 @@ module Stamps
         attr_accessor :drop_down, :text_box
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.input(name: "paperTrays"))
+          super
+          @text_box = StampsTextBox.new(browser.input(name: "paperTrays"))
           @drop_down = StampsElement.new(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
         end
 
@@ -65,7 +65,7 @@ module Stamps
         attr_accessor :paper_tray, :printer, :print_button, :reprint_link, :window_title
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(text: "Print"))
           @printer = MailPrinterComboBox.new(param)
           @paper_tray = MailPaperTrayComboBox.new(param)

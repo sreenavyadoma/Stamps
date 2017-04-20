@@ -5,7 +5,7 @@ module Stamps
                   :print_label, :print_stamps, :print_envelope, :print_quantity_warning
 
       def initialize(param)
-        super(param)
+        super
         @total = StampsElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)

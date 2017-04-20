@@ -20,10 +20,10 @@ import_orders_test:
 windows_files:
   import_csv_file: \\\\rcruz-win7\\Public\\automation\\data\\import_times.csv #data_for(:rates_test, {})['rates_pme_comm_base']
 
-webreg:
+Registration:
   dev_usr_dir: C:\watir-webdriver
-  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\webreg
-  webreg_usr_list_dir: \\jenkins01\Hudson\jenkins\webreg
+  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\Registration
+  registration_usr_list_dir: \\jenkins01\Hudson\jenkins\Registration
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty
@@ -620,7 +620,7 @@ orders_credentials:
     pagination:
       usr: scscscscscscscscsc
       pw: pass111
-    webreg_specify_username_jenkins:
+    registration_specify_username_jenkins:
       usr: scscscscscscscscsc
       pw: pass111
     general_settings:
@@ -991,7 +991,7 @@ orders_credentials:
     pagination:
       usr: stgstgstg
       pw: pass111
-    webreg_specify_username_jenkins:
+    registration_specify_username_jenkins:
       usr: scscscscscscscscs
       pw: pass111
     general_settings:
@@ -1280,7 +1280,7 @@ orders_credentials:
     pagination:
       usr: scscscscscscscscsc
       pw: pass111
-    webreg_specify_username_jenkins:
+    registration_specify_username_jenkins:
       usr: scscscscscscscscsc
       pw: pass111
     general_settings:

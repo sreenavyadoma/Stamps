@@ -7,7 +7,7 @@ module Stamps
                       :special_handling_price_element, :merchandise_return_receipt_element, :total_price_element
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(text: "Extra Services"))
           text_boxes = browser.text_fields(id: "sdc-extraserviceswin-securitydroplist-inputEl")
           drop_downs = browser.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")

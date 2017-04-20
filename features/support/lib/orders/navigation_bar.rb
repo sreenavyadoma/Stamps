@@ -4,7 +4,7 @@ module Stamps
       attr_reader :window_title, :text_area, :ok_btn
 
       def initialize(param)
-        super(param)
+        super
         @window_title = StampsElement.new browser.div(text: "Transaction Complete")
         @text_area = StampsElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
         @ok_btn = StampsElement.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
@@ -31,7 +31,7 @@ module Stamps
       attr_reader :window_title, :transaction_complete, :confirm_btn
 
       def initialize(param)
-        super(param)
+        super
         @window_title = StampsElement.new browser.div(text: 'Confirm Transaction')
         @confirm_btn = StampsElement.new browser.span(text: "Confirm")
         @transaction_complete = TransactionComplete.new(param)
@@ -92,7 +92,7 @@ module Stamps
       attr_reader :body, :window_title
 
       def initialize(param)
-        super(param)
+        super
         @body = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-body]>div>div[id^=dialoguemodal-][id$=-innerCt]"))
         @window_title = StampsElement.new(browser.div(text: "Account Balance Limit"))
       end
@@ -110,7 +110,7 @@ module Stamps
       attr_reader :window_title
 
       def initialize(param)
-        super(param)
+        super
         @window_title = StampsElement.new(browser.div(text: "Add Funds"))
       end
 
@@ -123,7 +123,7 @@ module Stamps
       attr_reader :confirm_transaction, :auto_add_funds_modal, :auto_buy_postage_link, :window_title, :account_balance_limit
 
       def initialize(param)
-        super(param)
+        super
         @confirm_transaction = ConfirmTransaction.new(param)
         @auto_add_funds_modal = AutoBuyPostageModal.new(param)
         @auto_buy_postage_link = StampsElement.new browser.span(text: "Auto-buy postage")
@@ -245,7 +245,7 @@ module Stamps
           "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
 
-        textbox = StampsTextbox.new(browser.text_field id: "sdc-purchasewin-otheramount")
+        textbox = StampsTextBox.new(browser.text_field id: "sdc-purchasewin-otheramount")
 
         checkbox.select
         textbox.set(value)
@@ -274,7 +274,7 @@ module Stamps
       attr_reader :add_funds_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
 
       def initialize(param)
-        super(param)
+        super
         @add_funds_modal = AddFundsModal.new(param)
         @buy_more_drop_down = StampsElement.new(browser.span(class: "balanceLabel"))
         @buy_more_link = StampsElement.new(browser.a(text: "Buy More"))
@@ -326,7 +326,7 @@ module Stamps
       attr_reader :username, :sign_out_link
 
       def initialize(param)
-        super(param)
+        super
         @username = StampsElement.new(browser.span id: 'userNameText')
         @sign_out_link = StampsElement.new(browser.a(text: "Sign Out"))
       end
@@ -367,7 +367,7 @@ module Stamps
       attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
       def initialize(param)
-        super(param)
+        super
         @balance = BalanceDropDown.new(param)
         @username = UsernameDropDown.new(param)
         @sign_out_link = StampsElement.new(browser.link(id: "signOutLink"))

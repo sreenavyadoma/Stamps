@@ -2,7 +2,7 @@ Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
   #config.logger.step "Store Settings: Set Store Nickname to #{nickname}"
   raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
   #config.logger.step "Old Amazon Store Name:#{test_data[:store_name]}"
-  parameter[:store_name] = (nickname.downcase.include? 'random')?helper.random_alpha_numeric(20):nickname
+  parameter[:store_name] = (nickname.downcase.include? 'random')?helper.random_string(20):nickname
   #config.logger.step "Store Nickname: #{test_data[:store_name]}"
   @store_settings.store_nickname.set parameter[:store_name]
 end
@@ -12,7 +12,7 @@ Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipp
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
 
   service_mapping_item =@store_settings.service_mapping.item item_number.to_i
-  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random')?helper.random_alpha_numeric(20):requested_services
+  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random')?helper.random_string(20):requested_services
   service_mapping_item.shipping_Service.select shipping_service
 end
 

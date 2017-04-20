@@ -174,7 +174,7 @@ module Stamps
       end
     end
 
-    class StampsTextbox < StampsElement
+    class StampsTextBox < StampsElement
       def present?
         element.present?
       end
@@ -195,6 +195,10 @@ module Stamps
             #ignore
           end
         end
+
+        def clear
+          element.clear
+        end
       end
 
       def set_attribute_value(attribute_name, value)
@@ -202,16 +206,22 @@ module Stamps
       end
     end
 
-    class StampsTextboxHelpText < StampsTextbox
-      attr_reader :help_element
+    class StampsTextBoxModule < StampsTextBox
+      attr_reader :help_element_collection
 
-      def initialize(element, help_element)
-        super(element)
-        @help_element = StampsElement.new((help_element.nil?)?element:help_element) #if help_element is nil, use element as help element
+      def initialize(text_box_element, help_element_collection)
+        super(text_box_element)
+        @help_element = help_element_collection
       end
 
-      def help_text
-        help_element.text
+      def help_text(*args)
+        return "" if help_element_collection.size == 0
+        index = (args.size=0)?0:(args[0].to_i-1)
+        help_element_collection[index].text
+      end
+
+      def has_error?
+        help_element_collection.size > 0
       end
 
       def data_error
@@ -227,7 +237,7 @@ module Stamps
       end
     end
 
-    class WatirCheckbox < StampsElement
+    class WatirCheckboxWrapper < StampsElement
       def check
         10.times do
           click
@@ -317,7 +327,7 @@ module Stamps
         @browser = drop_down.browser
         @drop_down = StampsElement.new(drop_down)
         @html_tag = html_tag
-        @text_box = StampsTextbox.new(text_box)
+        @text_box = StampsTextBox.new(text_box)
       end
 
       def expose_selection(selection)
@@ -360,7 +370,7 @@ module Stamps
       attr_reader :text_box, :inc_btn, :dec_btn
 
       def initialize(textbox, inc_btn, dec_btn)
-        @text_box = StampsTextbox.new(textbox)
+        @text_box = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
       end
@@ -399,8 +409,8 @@ module Stamps
 
       def initialize(text_boxes, drop_downs, selection_type, index)
         @index = index
-        @text_box = StampsTextbox.new(text_boxes[@index])
-        @drop_down = StampsTextbox.new(drop_downs[@index])
+        @text_box = StampsTextBox.new(text_boxes[@index])
+        @drop_down = StampsTextBox.new(drop_downs[@index])
         @selection_type = selection_type
         @browser = text_box.browser
       end

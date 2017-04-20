@@ -88,7 +88,7 @@ module Stamps
         include MailAdvancedOptions
 
         def serial_number
-          @serial_number = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")) if @serial_number.nil? || !@serial_number.present?
+          @serial_number = StampsTextBox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")) if @serial_number.nil? || !@serial_number.present?
           @serial_number
         end
 
@@ -226,7 +226,7 @@ module Stamps
         attr_reader :print_media
 
         def initialize(param)
-          super(param)
+          super
           @print_media = param.print_media
         end
 

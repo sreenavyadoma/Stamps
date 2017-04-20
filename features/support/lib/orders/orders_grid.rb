@@ -1025,7 +1025,7 @@ module Stamps
         attr_reader :grid_element, :column
 
         def initialize(param)
-          super(param)
+          super
           @column = GridColumns.new(param)
           @grid_element = StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=OrdersGrid-body]"))
         end

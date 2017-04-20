@@ -14,7 +14,7 @@ module Stamps
       end
 
       def message
-        box = StampsTextbox.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+        box = StampsTextBox.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         box.text
       end
 
@@ -31,7 +31,7 @@ module Stamps
       attr_reader :title
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.div(text: "Import Orders")
       end
 
@@ -44,7 +44,7 @@ module Stamps
       end
 
       def text_box
-        StampsTextbox.new browser.text_field(id: "files-inputEl")
+        StampsTextBox.new browser.text_field(id: "files-inputEl")
       end
 
       def import

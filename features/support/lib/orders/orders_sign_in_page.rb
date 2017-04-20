@@ -4,7 +4,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.div(text: 'Welcome!')
         @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = StampsElement.new browser.span(text: 'Next')
@@ -41,7 +41,7 @@ module Stamps
       attr_reader :okay_button
 
       def initialize(param)
-        super(param)
+        super
         @okay_button = StampsElement.new browser.span(text: 'OK')
       end
 
@@ -69,9 +69,9 @@ module Stamps
       attr_reader :username, :password, :sign_in_btn, :title
 
       def initialize(param)
-        super(param)
-        @username = StampsTextbox.new browser.text_field(id: "UserNameTextBox")
-        @password = StampsTextbox.new browser.text_field(id: "PasswordTextBox")
+        super
+        @username = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
+        @password = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
         @sign_in_btn = StampsElement.new browser.button(id: "signInButton")
         @title = StampsElement.new browser.h1(text: 'Sign In')
       end

@@ -7,7 +7,7 @@ Feature: PAM page
   Scenario: PAM page
     Then PAM: Load PAM Page
     Then Visit PAM Customer Search page
-    Then WebReg: Load username and password from parameter file
+    Then Registration: Load username and password from parameter file
     Then set PAM Customer Search page username from parameter file
     Then set PAM Customer Search page 5.2 or lower
     Then On PAM Customer Search page, click Search button
@@ -27,7 +27,7 @@ Feature: PAM page
     Then On PAM AppCap Overrides page, set International Shipping to Always On
     Then On PAM AppCap Overrides page, set Allow High Risk Countries to Always On
     Then On PAM AppCap Overrides page, Submit
-    Then WebReg: Store username to data file webreg_pam
+    Then Registration: Store username to data file registration_pam
     Then Pause for 4 seconds
 
 

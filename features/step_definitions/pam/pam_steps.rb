@@ -264,7 +264,7 @@ Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
   @appcapp_overrides.submit.ok
 end
 
-Then /^[Oo]n WebReg Profile page, Send username to standard out$/ do
+Then /^[Oo]n [Rr]egistration [Pp]rofile page, Send username to standard out$/ do
   config.logger.message " ############## NEW USER ID "
   config.logger.message " ############## #{parameter[:usr]}"
   config.logger.message " ############## #{parameter[:usr]}"

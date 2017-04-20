@@ -5,7 +5,7 @@ module Stamps
         attr_reader :button, :tooltip_element
 
         def initialize(param)
-          super(param)
+          super
           @button = StampsElement.new(browser.span css: "span[id^=menuitem-][id$=-textEl]")
           @tooltip_element = StampsElement.new(browser.div id: 'ext-quicktips-tip-innerCt')
         end
@@ -40,7 +40,7 @@ module Stamps
         attr_reader :button, :tooltip_element
 
         def initialize(param)
-          super(param)
+          super
           @button = StampsElement.new(browser.img css: 'img[class*=tool-expand-right]')
           @tooltip_element = StampsElement.new(browser.div id: 'ext-quicktips-tip-innerCt')
         end
@@ -75,7 +75,7 @@ module Stamps
         attr_reader :collapse, :expand
 
         def initialize(param)
-          super(param)
+          super
           @collapse = CollapseButton.new(param)
           @expand = ExpandButton.new(param)
         end
@@ -85,7 +85,7 @@ module Stamps
         attr_reader :label, :remove_button, :count_label
 
         def initialize(param)
-          super(param)
+          super
           @label = StampsElement.new browser.div(text: "Search Results")
           @remove_button = StampsElement.new browser.a(css: "a[data-qtip=Remove]")
           @count_label = StampsElement.new browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div")
@@ -109,8 +109,8 @@ module Stamps
         attr_reader :textbox, :search_button, :search_results
 
         def initialize(param)
-          super(param)
-          @textbox = StampsTextbox.new browser.text_field(css: "input[placeholder='Search Orders']")
+          super
+          @textbox = StampsTextBox.new browser.text_field(css: "input[placeholder='Search Orders']")
           @search_button = StampsElement.new browser.div(css: "div[id^=textfield-][id$=-trigger-search]")
           @search_results = SearchResults.new(param)
         end
@@ -147,7 +147,7 @@ module Stamps
       class FilterTab < Browser::StampsModal
         attr_reader :index
         def initialize(param, index)
-          super(param)
+          super
           @index = index
         end
 
@@ -215,7 +215,7 @@ module Stamps
         attr_reader :search_orders_modal, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
 
         def initialize(param)
-          super(param)
+          super
           @awaiting_shipment = AwaitingShipmentTab.new(param)
           @shipped = ShippedTab.new(param)
           @canceled = CanceledTab.new(param)

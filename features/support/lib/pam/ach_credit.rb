@@ -4,7 +4,7 @@ module Stamps
       attr_reader :title, :ok_button
 
       def initialize(param)
-        super(param)
+        super
         @ok_button = StampsElement.new browser.a(css: "a[href*=AccountACHCredit]")
         @title = StampsElement.new browser.td(text: "ACH Credit Error")
       end
@@ -26,7 +26,7 @@ module Stamps
       attr_reader :title, :ok_button
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.td(text: "ACH Credit Confirmation")
         @ok_button = StampsElement.new browser.a(css: "a[href^=Profile]")
       end
@@ -48,7 +48,7 @@ module Stamps
       attr_reader :title, :confirmation, :ach_error, :yes_button, :no_button
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.td(text: "ACH Purchase Verification")
         @confirmation = ACHCreditConfirmation.new(param)
         @ach_error = ACHCreditError.new(param)
@@ -96,10 +96,10 @@ module Stamps
       attr_reader :dollar_amount, :cents_amount, :comments, :purchase_verification, :submit_button
 
       def initialize(param)
-        super(param)
-        @dollar_amount = StampsTextbox.new browser.text_field(name: "Amount")
-        @cents_amount = StampsTextbox.new browser.text_field(name: "AmountFraction")
-        @comments = StampsTextbox.new browser.text_field(name: "comments")
+        super
+        @dollar_amount = StampsTextBox.new browser.text_field(name: "Amount")
+        @cents_amount = StampsTextBox.new browser.text_field(name: "AmountFraction")
+        @comments = StampsTextBox.new browser.text_field(name: "comments")
         @purchase_verification = ACHPurchaseVerification.new(param)
         @submit_button = StampsElement.new browser.input(:value => "Submit")
       end

@@ -25,7 +25,7 @@ module Stamps
       end
 
       def reference_number
-        StampsTextbox.new browser.text_field name: "referenceNumber"
+        StampsTextBox.new browser.text_field name: "referenceNumber"
       end
 
       def cost_code

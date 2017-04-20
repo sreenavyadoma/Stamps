@@ -66,8 +66,8 @@ module Stamps
       attr_reader :reference_number
 
       def initialize(param)
-        super(param)
-        @reference_number = StampsTextbox.new browser.text_field(name: "referenceNumber")
+        super
+        @reference_number = StampsTextBox.new browser.text_field(name: "referenceNumber")
 
       end
 

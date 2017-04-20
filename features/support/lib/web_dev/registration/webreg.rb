@@ -4,7 +4,7 @@ module Stamps
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 
       def initialize(param)
-        super(param)
+        super
         @header_elem = StampsElement.new browser.h3(text: "An Error Occurred")
         @top_message_elem = StampsElement.new browser.p(id: "topMessage")
         @error_code_elem = StampsElement.new browser.p(id: "errorCode")
@@ -37,13 +37,14 @@ module Stamps
     end
 
     class WebRegistration < Browser::StampsModal
-      attr_reader :profile, :error_occured, :navigation
+      attr_reader :navigation, :profile, :error_occured, :footer
       def initialize(param)
-        super(param)
-        @navigation = RegistrationNavigation.new(param)
-        @bread_crumbs = Registrationbread_crumbs.new(param)
-        @profile = RegistrationProfilePage.new(param)
-        @footer = RegistrationFooter.new(param)
+        super
+        #@navigation = RegistrationNavigation.new(param)
+        #@bread_crumbs = Registrationbread_crumbs.new(param)
+        @profile = Profile::ProfilePage.new(param)
+        #@footer = RegistrationFooter.new(param)
+        @footer = Footer::ProfileFooter.new(param)
         @error_occured = AnErrorOccured.new(param)
       end
 
@@ -59,21 +60,18 @@ module Stamps
 
         case param.test_env.downcase
           when /cc/
-            url = "https://qa-registration.stamps.com/registration/?theme=#{theme}" #theme_1632
+            url = "https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           when /sc/
-            url = "https://registrationext.qasc.stamps.com/registration/?theme=#{theme}"
+            url = "https://registrationext.qasc.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           when /stg/
-            url = "https://registration.staging.stamps.com/registration/?theme=#{theme}"
+            url = "https://registration.staging.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           else
             #do nothing
         end
 
         logger.info "Visit:  #{url}"
 
-        5.times do
-          browser.goto url
-          break if browser.url.include? 'registration'
-        end
+        browser.goto(url)
 
         error_occured.wait_until_present 1
         if error_occured.present?

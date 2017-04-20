@@ -4,7 +4,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :cancel_button, :learn_button, :close_button
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.div(text: 'Learn More')
         @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @close_button = StampsElement.new browser.span(text: 'Close')
@@ -38,7 +38,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :learn_more
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.div(text: 'Import from Stores')
         @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = StampsElement.new browser.span(text: 'Next')
@@ -75,7 +75,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_stores
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.div(text: 'Import from CSV')
         @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = StampsElement.new browser.span(text: 'Next')
@@ -112,7 +112,7 @@ module Stamps
       attr_reader :title, :msg_container, :next_button, :close_button, :import_from_csv
 
       def initialize(param)
-        super(param)
+        super
         @title = StampsElement.new browser.div(text: 'Add Manual Order')
         @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
         @next_button = StampsElement.new browser.span(text: 'Next')

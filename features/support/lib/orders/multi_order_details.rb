@@ -5,7 +5,7 @@ module Stamps
         attr_reader :ship_from, :weight
 
         def initialize(param)
-          super(param)
+          super
           @ship_from = ShipFromAddress.new(param)
           @weight = MultiOrderDetailsWeight.new(param)
         end
@@ -46,8 +46,8 @@ module Stamps
           attr_reader :drop_down, :text_box, :manage_shipping_adddress, :blur_element
 
           def initialize(param)
-            super(param)
-            @text_box = StampsTextbox.new browser.text_field(name: "ShipFrom")
+            super
+            @text_box = StampsTextBox.new browser.text_field(name: "ShipFrom")
             @drop_down = StampsElement.new browser.div(css: "div[id^=shipfromdroplist][id$=trigger-picker]")
             @manage_shipping_adddress = ManageShippingAddresses.new(param)
             @blur_element = BlurOutElement.new(param)
@@ -92,7 +92,7 @@ module Stamps
       class MultiOrderDetailsWeight < Browser::StampsModal
         attr_reader :lb, :oz
         def initialize(param)
-          super(param)
+          super
           text_box = browser.text_field(name: 'WeightLbs')
           inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
@@ -108,7 +108,7 @@ module Stamps
       class ShipTo < Browser::StampsModal
         attr_reader :country, :international, :domestic
         def initialize(param)
-          super(param)
+          super
           @country = ShipToCountry.new(param)
           @domestic = ShipToDomestic.new(param)
           @international = ShipToInternational.new(param)
