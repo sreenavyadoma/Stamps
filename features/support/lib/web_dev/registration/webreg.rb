@@ -1,5 +1,61 @@
 module Stamps
   module Registration
+
+    class WebRegistration < Browser::StampsModal
+      attr_reader :navigation, :profile, :error_occured, :footer
+      def initialize(param)
+        super
+        #@navigation = RegistrationNavigation.new(param)
+        #@bread_crumbs = Registrationbread_crumbs.new(param)
+        @profile = Profile::ProfilePage.new(param)
+        #@footer = RegistrationFooter.new(param)
+        @footer = Footer::ProfileFooter.new(param)
+        @error_occured = AnErrorOccured.new(param)
+      end
+
+      def load_theme(theme)
+        case theme
+          when /1632/
+            theme = 'theme_1632'
+          else
+            # do nothing
+        end
+
+        #expect(['theme_1632', 'default']).to include(theme), "Registration Theme #{theme} is not supported. We curently only support Theme 1632"
+
+        case param.test_env.downcase
+          when /cc/
+            url = "https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
+          when /sc/
+            url = "https://registrationext.qasc.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
+          when /stg/
+            url = "https://registration.staging.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
+          else
+            #do nothing
+        end
+        logger.info "Visit:  #{url}"
+        browser.goto(url)
+
+        error_occured.wait_until_present 1
+        if error_occured.present?
+          logger.error error_occured.header
+          logger.error error_occured.top_message
+          logger.error error_occured.error_code
+          logger.error error_occured.error_description
+          expect("#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ").to eql error_occured.header
+        end
+        50.times do
+          break if browser.url.include? 'profile'
+        end
+        expect(browser.url).to include "registration"
+        sign_up_for_new_account = StampsElement.new browser.h1(text: "Sign up for a new account")
+        sign_up_for_new_account.wait_until_present 8
+        logger.info "Page loaded.  #{browser.url}"
+        "Success"
+      end
+
+    end
+
     class AnErrorOccured < Browser::StampsModal
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 
@@ -36,60 +92,5 @@ module Stamps
       end
     end
 
-    class WebRegistration < Browser::StampsModal
-      attr_reader :navigation, :profile, :error_occured, :footer
-      def initialize(param)
-        super
-        #@navigation = RegistrationNavigation.new(param)
-        #@bread_crumbs = Registrationbread_crumbs.new(param)
-        @profile = Profile::ProfilePage.new(param)
-        #@footer = RegistrationFooter.new(param)
-        @footer = Footer::ProfileFooter.new(param)
-        @error_occured = AnErrorOccured.new(param)
-      end
-
-      def load_theme(theme)
-        case theme
-          when /1632/
-            theme = 'theme_1632'
-          else # default theme
-            # do nothing
-        end
-
-        expect(['theme_1632', 'def']).to include(theme), "Registration Theme #{theme} is not supported. We curently only support Theme 1632"
-
-        case param.test_env.downcase
-          when /cc/
-            url = "https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
-          when /sc/
-            url = "https://registrationext.qasc.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
-          when /stg/
-            url = "https://registration.staging.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
-          else
-            #do nothing
-        end
-
-        logger.info "Visit:  #{url}"
-
-        browser.goto(url)
-
-        error_occured.wait_until_present 1
-        if error_occured.present?
-          logger.error error_occured.header
-          logger.error error_occured.top_message
-          logger.error error_occured.error_code
-          logger.error error_occured.error_description
-          expect("#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ").to eql error_occured.header
-        end
-        50.times do
-          break if browser.url.include? 'profile'
-        end
-        expect(browser.url).to include "registration"
-        sign_up_for_new_account = StampsElement.new browser.h1(text: "Sign up for a new account")
-        sign_up_for_new_account.wait_until_present 8
-        logger.info "Page loaded.  #{browser.url}"
-        "Success"
-      end
-    end
   end
 end

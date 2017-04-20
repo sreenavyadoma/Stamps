@@ -1,7 +1,16 @@
 Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|default )[Rr]egistration(?: [Pp]age| [Tt]heme (.*))$/ do |str|
-  parameter[:registration_theme] = (str.nil?)?'theme_1632':str
+  parameter[:registration_theme] = str
   step "I launch default browser"
   registration.load_theme(parameter[:registration_theme])
+end
+
+Then /^(?:|[Ii] )[Ll]oad(?:|ed) SDC Website$/ do
+  step "I launch default browser"
+  sdc_website.load_page
+end
+
+Then /^click on Get Started$/ do
+  registration = sdc_website.get_started
 end
 
 Then /^[Ss]et [Rr]egistration [Pp]rofile [Ee]mail to (?:random value|(.*))$/ do |str|
@@ -44,9 +53,10 @@ Then /^set [Rr]egistration [Pp]rofile [Pp]romo [Cc]ode to (.*)$/ do |str|
   registration.profile.promo_code.show_promo_code.set(parameter[:promo_code])
 end
 
-Then /^[Ee]xpect [Rr]egistration [Pp]rofile [Pp]romo [Cc]ode  is (?:correct|(.*))$/ do |str|
+Then /^[Ee]xpect [Rr]egistration [Pp]rofile [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
   str = (str.nil?)?parameter[:promo_code]:str
   expect(registration.promo_code.show_promo_code.text).to eql(str)
+  str
 end
 
 Then /^select [Rr]egistration [Pp]rofile Security Question 1 (.*)$/ do |str|

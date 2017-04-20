@@ -1,10 +1,11 @@
 Feature: Test Workflow - Theme 1632 Happy Path
 
   Background:
-    Given I loaded default registration page
+    Given I loaded SDC Website
 
   @registration_theme_1632_happy_path
   Scenario: Theme 1632 Happy Path
+    Then click on Get Started
     Then set Registration Profile Email to random value
     Then expect Registration Profile Email is correct
 
@@ -20,3 +21,4 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Registration Profile Survey Question to Individual
 
     Then set Registration Profile Promo Code to PR33-NH77
+    Then expect Registration Profile Promo Code is correct
