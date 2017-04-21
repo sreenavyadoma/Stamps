@@ -108,7 +108,7 @@ module Stamps
           if @return_receipt.nil? || !@return_receipt.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-rrcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-rrcheckbox')
-            @return_receipt = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @return_receipt = StampsCheckBox.new(checkbox, verify, "class", "checked")
           end
           @return_receipt
         end
@@ -117,7 +117,7 @@ module Stamps
           if @restricted_delivery.nil? || !@restricted_delivery.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-rdcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-rdcheckbox')
-            @restricted_delivery = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @restricted_delivery = StampsCheckBox.new(checkbox, verify, "class", "checked")
           end
           @restricted_delivery
         end
@@ -136,7 +136,7 @@ module Stamps
           if @non_delivery_notice.nil? || !@non_delivery_notice.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-nndcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-nndcheckbox')
-            @non_delivery_notice = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @non_delivery_notice = StampsCheckBox.new(checkbox, verify, "class", "checked")
           end
           @non_delivery_notice
         end
@@ -145,7 +145,7 @@ module Stamps
           if @fragile.nil? || !@fragile.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-shcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-shcheckbox')
-            @fragile = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @fragile = StampsCheckBox.new(checkbox, verify, "class", "checked")
           end
           @fragile
         end
@@ -154,7 +154,7 @@ module Stamps
           if @non_rectangular.nil? || !@non_rectangular.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-notrectangularcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-notrectangularcheckbox')
-            @non_rectangular = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @non_rectangular = StampsCheckBox.new(checkbox, verify, "class", "checked")
           end
           @non_rectangular
         end
@@ -163,7 +163,7 @@ module Stamps
           if @return_receipt_merchandise.nil? || !@return_receipt_merchandise.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-rrmcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-rrmcheckbox')
-            @return_receipt_merchandise = StampsCheckbox.new(checkbox, verify, "class", "checked")
+            @return_receipt_merchandise = StampsCheckBox.new(checkbox, verify, "class", "checked")
           end
           @return_receipt_merchandise
         end

@@ -33,7 +33,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
     * Expect Customs Form field License # behavior is correct
     * Expect Customs Form field Certificate # behavior is correct
     * Expect Customs Form field Invoice # behavior is correct
-    * Expect Customs Form field Privacy Act Statement Checkbox behavior is correct
+    * Expect Customs Form field Privacy Act Statement CheckBox behavior is correct
     * Expect Customs Form field Item Description behavior is correct
     * Expect Customs Form field Qty. behavior is correct
     * Expect Customs Form field Unit Price behavior is correct

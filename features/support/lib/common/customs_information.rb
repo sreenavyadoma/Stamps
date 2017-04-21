@@ -206,7 +206,7 @@ module Stamps
 
           field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
           verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
-          @i_agree = StampsCheckbox.new field, verify_field, "class", "checked"
+          @i_agree = StampsCheckBox.new field, verify_field, "class", "checked"
 
           @privacy_statement = UspsPrivactActStatementModal.new(param)
           @privacy_link = StampsElement.new browser.span(text: "USPS Privacy Act Statement")

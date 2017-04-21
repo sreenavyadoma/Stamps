@@ -115,25 +115,6 @@ module Stamps
         end
       end
 
-      class SideAccount < Browser::StampsModal
-        attr_reader :header, :paragraph
-        def initialize(param)
-          super
-          @header = StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3"))
-          @paragraph = StampsElement.new(browser.p(css: "li[id=sideaccount]>p"))
-        end
-      end
-
-      class SideOptIn < Browser::StampsModal
-        attr_reader :header, :opt_in, :paragraph
-        def initialize(param)
-          super
-          @header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
-          @opt_in = WatirCheckboxWrapper.new(browser.checkbox(name: 'optIn'))
-          @paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
-        end
-      end
-
       class PromoCode < Browser::StampsModal
         attr_reader :promo_code_link, :text_box
         def initialize(param)
@@ -153,8 +134,36 @@ module Stamps
         end
       end
 
+      class SideAccount < Browser::StampsModal
+        attr_reader :header, :paragraph
+        def initialize(param)
+          super
+          @header = StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3"))
+          @paragraph = StampsElement.new(browser.p(css: "li[id=sideaccount]>p"))
+        end
+      end
+
+      class MoneySavingOffers < Browser::StampsModal
+        attr_reader :header, :money_saving_offers, :paragraph
+        def initialize(param)
+          super
+          @header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
+          @money_saving_offers = WatirCheckBoxWrapper.new(browser.checkbox(name: 'optIn'))
+          @paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
+        end
+      end
+
+      class SideContent < Browser::StampsModal
+        attr_reader :money_saving_offers, :side_account
+        def initialize(param)
+          super
+          @money_saving_offers = MoneySavingOffers.new(param)
+          @side_account = SideAccount.new(param)
+        end
+      end
+
       class ProfilePage < Browser::StampsModal
-        attr_reader :header, :email, :account_info, :survey_question, :promo_code, :security_questions, :side_opt_in, :side_account, :continue_btn, :membership
+        attr_reader :header, :email, :account_info, :survey_question, :promo_code, :security_questions, :side_content, :continue_btn, :membership
         def initialize(param)
           super
           @header = StampsElement.new(browser.h1(text: "Sign up for a new account"))
@@ -167,9 +176,8 @@ module Stamps
           help_collection = browser.lis(css: "li[id=promocode]>div>div>div>div[class*=help]>span>ul>li")
           @promo_code = PromoCode.new(param)
           @security_questions = SecretQuestions.new(param)
-          @side_opt_in = SideOptIn.new(param)
-          @side_account = SideAccount.new(param)
           @continue_btn = StampsElement.new(browser.button(id: "next"))
+          @side_content = SideContent.new(param)
           #@membership = Membership::MembershipPage.new(param)
         end
 

@@ -1,6 +1,6 @@
 
 Feature:  Order Details Form - Reference # Field
-  Add Reference # Field and Print Reference # Checkbox
+  Add Reference # Field and Print Reference # CheckBox
 
   Background:
     Given a valid user is signed in to Web Apps

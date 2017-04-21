@@ -554,7 +554,7 @@ module Stamps
           @expiration_month = ExpirationMonth.new(param)
           @expiration_year = ExpirationYear.new(param)
           checkbox_field = browser.input id: "useMailingAddressForBilling"
-          @billing_same_as_mailing = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
+          @billing_same_as_mailing = StampsCheckBox.new checkbox_field, checkbox_field, "checked", "checked"
 
           @billing_address = MembershipBillingAddress.new browser.text_field(id: "billingStreet")
           @billing_city = MembershipBillingAddress.new browser.text_field(id: "City")

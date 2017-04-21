@@ -43,7 +43,7 @@ Then /^[Ii]n Print modal, uncheck Hide Mail Value$/ do
   stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.uncheck
 end
 
-Then /^[Ee]xpect Print modal Hide Mail Value Checkbox is checked$/ do
+Then /^[Ee]xpect Print modal Hide Mail Value CheckBox is checked$/ do
   30.times do
     stamps.orders.orders_toolbar.print_btn.print_modal.click
     break if stamps.orders.orders_toolbar.print_btn.print_modal.print_options.hide_postage_value.checked?

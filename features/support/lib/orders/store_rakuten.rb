@@ -50,7 +50,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckBox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def connect

@@ -282,7 +282,7 @@ module Stamps
           row = number.to_i<=0?0:number.to_i-1
           checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
 
-          checkbox = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
+          checkbox = StampsCheckBox.new checkbox_field, checkbox_field, "checked", "checked"
           checkbox.check
 
           accept_button = StampsElement.new browser.span text: "Accept"
@@ -1004,7 +1004,7 @@ module Stamps
 
           field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
           verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
-          @checkbox = StampsCheckbox.new(field, verify, "class", "checked")
+          @checkbox = StampsCheckBox.new(field, verify, "class", "checked")
           @terms = InsuranceTermsConditions.new(param)
           @blur_element = BlurOutElement.new(param)
         end

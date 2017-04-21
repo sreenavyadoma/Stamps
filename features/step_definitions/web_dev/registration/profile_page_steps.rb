@@ -65,8 +65,40 @@ end
 Then /^[Ee]xpect [Pp]rofile [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
   str = (str.nil?)?parameter[:promo_code]:str
   expect(registration.profile.promo_code.text_box.text).to eql(str)
-  str
 end
+
+Then /^check [Pp]rofile [Mm]oney-saving offers and new products$/ do
+  registration.profile.side_content.money_saving_offers.check
+end
+
+Then /^[Ee]xpect [Pp]rofile [Mm]oney-saving offers and new products is checked$/ do
+  expect(registration.profile.side_content.money_saving_offers).to be_checked
+end
+
+Then /^uncheck [Pp]rofile [Mm]oney-saving offers and new products$/ do
+  registration.profile.side_content.money_saving_offers.uncheck
+end
+
+Then /^[Ee]xpect [Pp]rofile [Mm]oney-saving offers and new products is unchecked$/ do
+  expect(registration.profile.side_content.money_saving_offers).to be_unchecked
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# legacy
 
 Then /^select [Pp]rofile Security Question 1 (.*)$/ do |str|
 

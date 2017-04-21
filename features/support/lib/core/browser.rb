@@ -237,7 +237,7 @@ module Stamps
       end
     end
 
-    class WatirCheckboxWrapper < StampsElement
+    class WatirCheckBoxWrapper < StampsElement
       def check
         10.times do
           click
@@ -253,7 +253,7 @@ module Stamps
       end
     end
 
-    class StampsCheckbox
+    class StampsCheckBox
       attr_accessor :clickable_element, :verify_element, :attribute, :attribute_value
 
       def initialize(clickable_element, verify_element, attribute, attribute_value)

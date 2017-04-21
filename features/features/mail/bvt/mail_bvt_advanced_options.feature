@@ -215,21 +215,21 @@ Feature: Advanced Options BVT
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    # Hide Label Value Checkbox
+    # Hide Label Value CheckBox
     Then expect Advanced Options Hide Label Value is present
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then uncheck Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is unchecked
 
-    # Print Receipt Checkbox
+    # Print Receipt CheckBox
     Then expect Advanced Options Print Receipt is present
     Then check Advanced Options Print Receipt
     Then expect Advanced Options Print Receipt is checked
     Then uncheck Advanced Options Print Receipt
     Then expect Advanced Options Print Receipt is unchecked
 
-    # Reference # Checkbox
+    # Reference # CheckBox
     Then expect Advanced Options Print Reference # is present
     Then check Advanced Options Print Reference #
     Then expect Advanced Options Print Reference # is checked
@@ -308,14 +308,14 @@ Feature: Advanced Options BVT
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    # Hide Label Value Checkbox
+    # Hide Label Value CheckBox
     Then expect Advanced Options Hide Label Value is present
     Then check Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is checked
     Then uncheck Advanced Options Hide Label Value
     Then expect Advanced Options Hide Label Value is unchecked
 
-    # Reference # Checkbox
+    # Reference # CheckBox
     Then expect Advanced Options Print Reference # is present
     Then check Advanced Options Print Reference #
     Then expect Advanced Options Print Reference # is checked
@@ -367,21 +367,21 @@ Feature: Advanced Options BVT
     Then set Advanced Options Mail Date to today plus 5
     Then expect Advanced Options Mail Date is correct
 
-    # include Return Address Checkbox
+    # include Return Address CheckBox
     Then expect Advanced Options include Return Address is present
     Then check Advanced Options include Return Address
     Then expect Advanced Options include Return Address is checked
     Then uncheck Advanced Options include Return Address
     Then expect Advanced Options include Return Address is unchecked
 
-    # include Delivery Address Checkbox
+    # include Delivery Address CheckBox
     Then expect Advanced Options include Delivery Address is present
     Then check Advanced Options include Delivery Address
     Then expect Advanced Options include Delivery Address is checked
     Then uncheck Advanced Options include Delivery Address
     Then expect Advanced Options include Delivery Address is unchecked
 
-    # include Postage Checkbox
+    # include Postage CheckBox
     Then expect Advanced Options include Postage is present
     Then check Advanced Options include Postage
     Then expect Advanced Options include Postage is checked

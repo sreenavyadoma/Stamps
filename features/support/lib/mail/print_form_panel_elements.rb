@@ -270,7 +270,7 @@ module Stamps
 
         def initialize(param)
           super
-          @auto_weigh = StampsCheckbox.new browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
+          @auto_weigh = StampsCheckBox.new browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
           @weigh_btn = StampsElement.new browser.span(text: "Weigh")
 
           text_box = browser.text_field(name: "WeightLbs")
@@ -467,7 +467,7 @@ module Stamps
         attr_reader :checkbox, :text_box
         def initialize(param)
           super
-          @checkbox = StampsCheckbox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
+          @checkbox = StampsCheckBox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
           @text_box = StampsTextBox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
         end
 

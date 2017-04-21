@@ -284,7 +284,7 @@ module Stamps
       end
 
       class VolusionRegistration < Browser::StampsModal
-        class ReceiveNewsLetterCheckbox < Browser::StampsModal
+        class ReceiveNewsLetterCheckBox < Browser::StampsModal
           def check
             browser.checkbox(name: 'emailsubscriber').set
             browser.checkbox(name: 'emailsubscriber').set
@@ -317,7 +317,7 @@ module Stamps
         end
 
         def receive_newsletter
-          ReceiveNewsLetterCheckbox.new(param)
+          ReceiveNewsLetterCheckBox.new(param)
         end
 
         def continue

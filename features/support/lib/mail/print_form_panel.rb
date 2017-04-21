@@ -126,7 +126,7 @@ module Stamps
           if @certified_mail.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-cmcheckbox")
             verify = browser.div(id: "sdc-mainpanel-cmcheckbox")
-            @certified_mail = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @certified_mail = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @certified_mail
         end
@@ -135,7 +135,7 @@ module Stamps
           if @electronic_return_receipt.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-rrecheckbox-displayEl")
             verify = browser.div(id: "sdc-mainpanel-rrecheckbox")
-            @electronic_return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @electronic_return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @electronic_return_receipt
         end
@@ -149,7 +149,7 @@ module Stamps
           if @return_receipt.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox")
             verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
-            @return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @return_receipt
         end
@@ -161,7 +161,7 @@ module Stamps
           if @return_receipt.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox-displayEl")
             verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
-            @return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @return_receipt
         end

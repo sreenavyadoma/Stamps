@@ -188,7 +188,7 @@ module Stamps
           label = (browser.label text: "Automatically Import New Orders")
           checkbox_field = label.parent.text_box
           verify_field = label.parent.parent.parent
-          StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
+          StampsCheckBox.new(checkbox_field, verify_field, "class", "checked")
         end
       end
 
@@ -470,7 +470,7 @@ module Stamps
                 checkbox_field = browser.divs(text: store_name).last
                 sleep(0.35)
                 check_verify_field = checkbox_field.parent
-                checkbox = StampsCheckbox.new checkbox_field, check_verify_field, "class", "focused"
+                checkbox = StampsCheckBox.new checkbox_field, check_verify_field, "class", "focused"
                 checkbox.check
                 checkbox.check
                 checkbox.check

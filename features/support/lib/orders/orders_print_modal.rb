@@ -178,7 +178,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def email_tracking
@@ -186,7 +186,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def print_reference_no
@@ -194,7 +194,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
     end
 
@@ -252,7 +252,7 @@ module Stamps
         attribute = "class"
         attrib_value_check = "checked"
 
-        dont_show_checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
+        dont_show_checkbox = Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, attribute, attrib_value_check
 
         if dont_show
           dont_show_checkbox.check

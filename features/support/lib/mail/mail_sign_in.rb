@@ -32,7 +32,7 @@ module Stamps
         browser.checkbox(css: "input[id=rememberUser]").set
       end
 
-      #Stamps::Browser::CheckboxElement.new checkbox_field, verify_field, "class", "checked"
+      #Stamps::Browser::CheckBoxElement.new checkbox_field, verify_field, "class", "checked"
       def uncheck
         browser.checkbox(css: "input[id=rememberUser]").clear
         browser.checkbox(css: "input[id=rememberUser]").clear
@@ -123,7 +123,7 @@ module Stamps
         @verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
         @invalid_msg = StampsElement.new browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")
         @whats_new_modal = WhatsNewModal.new(param)
-        @remember_username_checkbox = WatirCheckboxWrapper.new browser.checkbox(id: "rememberUser")
+        @remember_username_checkbox = WatirCheckBoxWrapper.new browser.checkbox(id: "rememberUser")
         @invalid_username_password = StampsElement.new browser.div(id: "InvalidUsernamePasswordMsg")
         @username = ""
         @password = ""
@@ -255,7 +255,7 @@ module Stamps
         sign_in_link = StampsElement.new browser.link(text: "Sign In")
         username_textbox = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
         password_textbox = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
-        remember_username = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
+        remember_username = Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
         sign_in_button = StampsElement.new browser.button(id: "signInButton")
         verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
         signed_in_user = StampsElement.new browser.span(id: "userNameText")

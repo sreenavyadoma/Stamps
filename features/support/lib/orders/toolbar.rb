@@ -369,7 +369,7 @@ module Stamps
         def dont_show_this_again
           field = browser.label(text: "Don't show this again.")
           verify_field = field.parent.parent.parent
-          StampsCheckbox.new field, verify_field, "class", "checked"
+          StampsCheckBox.new field, verify_field, "class", "checked"
         end
 
         def usps_privacy_act_statement
