@@ -2,19 +2,18 @@ module Stamps
   module Registration
     class SdcWebsite < Browser::StampsModal
       attr_reader :get_started_btn, :registration
-
       def initialize(param)
         super
         @get_started_btn = StampsElement.new(browser.button(css: "div[id=left-content]>button[class*=register]"))
-        @registration ||= Stamps::Registration::WebRegistration.new(param)
+        @registration = WebRegistration.new(param)
       end
 
       def load_page
         case param.test_env.downcase
           when /cc/
-            url = "http://sdcwebsite.qasc.stamps.com/"
-          when /sc/
             url = "http://sdcwebsite.qacc.stamps.com/"
+          when /sc/
+            url = "http://sdcwebsite.qasc.stamps.com/"
           when /stg/
             url = "http://sdcwebsite.staging.stamps.com/"
           else
@@ -29,7 +28,7 @@ module Stamps
       def get_started
         5.times do
           get_started_btn.click
-          registration.wait_until_present(2.5)
+          registration.wait_until_present(4)
           return registration if registration.present?
         end
       end

@@ -13,6 +13,14 @@ module Stamps
         @error_occured = AnErrorOccured.new(param)
       end
 
+      def present?
+        navigation.present?
+      end
+
+      def wait_until_present(*args)
+        navigation.wait_until_present(*args)
+      end
+
       def load_theme(theme)
         case theme
           when /1632/
