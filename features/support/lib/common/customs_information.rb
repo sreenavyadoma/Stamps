@@ -45,7 +45,7 @@ module Stamps
         attr_reader :text_box, :drop_down, :index
 
         def initialize(param, text_box, drop_down, index)
-          super
+          super(param)
           @text_box = StampsTextBox.new(text_box)
           @drop_down = StampsElement.new(drop_down)
           @index = index
@@ -73,7 +73,7 @@ module Stamps
         attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :made_in, :customs_item_hs_tariff, :index
 
         def initialize(param, index)
-          super
+          super(param)
           @index = index - 1
           @delete = StampsElement.new(browser.spans(css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index])
           @customs_item_description = StampsTextBox.new(browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[@index])

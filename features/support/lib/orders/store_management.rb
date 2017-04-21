@@ -61,7 +61,7 @@ module Stamps
             class ServiceMappingShippingService < Browser::StampsModal
 
               def initialize(param, index)
-                super
+                super(param)
                 @index = index
               end
 
@@ -99,7 +99,7 @@ module Stamps
             end
 
             def initialize(param, index)
-              super
+              super(param)
               @index = index
             end
 

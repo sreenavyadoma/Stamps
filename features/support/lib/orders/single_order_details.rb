@@ -501,7 +501,7 @@ module Stamps
       class AutoSuggestDomestic < Browser::StampsModal
         attr_reader :text_area, :auto_suggest_box
         def initialize(param, text_area)
-          super
+          super(param)
           @text_area = text_area
           @auto_suggest_box = AutoSuggestPopUp.new(param)
         end
@@ -1208,7 +1208,7 @@ module Stamps
       class AssociatedOrderItem < Browser::StampsModal
         attr_reader :index, :item_qty, :item_id, :item_description, :delete
         def initialize(param, number)
-          super
+          super(param)
           @index = number
 
           text_box = browser.text_fields(name: "Quantity")[@index-1]

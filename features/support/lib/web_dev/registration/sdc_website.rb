@@ -22,13 +22,15 @@ module Stamps
         end
         logger.info "Visit:  #{url}"
         browser.goto(url)
+        get_started_btn.wait_until_present(3)
+        expect(get_started_btn).to be_present
       end
 
       def get_started
-        10.times do
+        5.times do
           get_started_btn.click
-          sleep(1)
-          return get_started_btn if get_started_btn.present?
+          registration.wait_until_present(2.5)
+          return registration if registration.present?
         end
       end
     end

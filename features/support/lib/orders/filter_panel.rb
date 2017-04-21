@@ -147,7 +147,7 @@ module Stamps
       class FilterTab < Browser::StampsModal
         attr_reader :index
         def initialize(param, index)
-          super
+          super(param)
           @index = index
         end
 

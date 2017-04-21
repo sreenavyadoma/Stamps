@@ -5,10 +5,12 @@ module Stamps
   end
 
   def parameter
-    @test_data ||= Hash.new
-    @test_data[:customs_associated_items] ||= Hash.new
-    @test_data[:details_associated_items] ||= Hash.new
-    @test_data[:order_id] ||= Hash.new
+    if @test_data.nil?
+      @test_data ||= Hash.new
+      @test_data[:customs_associated_items] ||= Hash.new
+      @test_data[:details_associated_items] ||= Hash.new
+      @test_data[:order_id] ||= Hash.new
+    end
     @test_data
   end
   
