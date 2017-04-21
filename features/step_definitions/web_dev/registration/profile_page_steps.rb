@@ -72,7 +72,7 @@ Then /^check [Pp]rofile [Mm]oney-saving offers and new products$/ do
 end
 
 Then /^[Ee]xpect [Pp]rofile [Mm]oney-saving offers and new products is checked$/ do
-  expect(registration.profile.side_content.money_saving_offers.checkbox).to be_checked
+  expect(registration.profile.side_content.money_saving_offers.checkbox).to be_checked, "Profile Money-saving offers and new products is not checked. Got checked"
 end
 
 Then /^uncheck [Pp]rofile [Mm]oney-saving offers and new products$/ do
@@ -80,7 +80,7 @@ Then /^uncheck [Pp]rofile [Mm]oney-saving offers and new products$/ do
 end
 
 Then /^[Ee]xpect [Pp]rofile [Mm]oney-saving offers and new products is unchecked$/ do
-  expect(registration.profile.side_content.money_saving_offers.checkbox).to be_unchecked
+  expect(registration.profile.side_content.money_saving_offers.checkbox).not_to be_checked, "Expected Profile Money-saving offers and new products is checked. Got unchecked"
 end
 
 

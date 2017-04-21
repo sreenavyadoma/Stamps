@@ -148,7 +148,7 @@ module Stamps
         def initialize(param)
           super
           @header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
-          @checkbox = WatirCheckBoxWrapper.new(browser.checkbox(name: 'optIn'))
+          @checkbox = WatirCheckBoxWrapper.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn'))
           @paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
         end
       end
