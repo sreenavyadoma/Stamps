@@ -11,14 +11,19 @@ module Stamps
         end
 
         def element(str)
+          drop_down.click
+          sleep(0.25)
           elements = browser.spans(css: "li[id=survey]>div>div>div>div>div>ul>li>a>span:nth-child(1)")
+          5.times do
+            drop_down.click if elements.size == 0
+            break unless elements.size == 0
+          end
           expect(elements.size).to eql(5)
           selection = nil
           5.times do
             elements.each { |span|
               selection = StampsElement.new(span)
-              p selection.text
-              return selection if selection.text.downcase.include?(str)
+              return selection if selection.text.downcase.include?(str.downcase)
             }
             return selection if !selection.nil? && selection.text.downcase.include?(str)
           end
@@ -26,15 +31,14 @@ module Stamps
         end
 
         def select(str)
-          drop_down.click
           selection = element(str)
-          expect(selection).not_to be_nil, "Invalid Survey Question selection: #{str}. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individua."
+          expect(selection).not_to be_nil, "Survey Question #{str} is invalid. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individua."
           10.times do
             drop_down.click unless selection.present?
             selection.click
-            return text_box.text if text_box.text.downcase.include?(str)
+            return text_box.text if text_box.text.downcase.include?(str.downcase)
           end
-          expect(text_box.text).to include(str), "Invalid Survey Question selection: #{str}. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individual."
+          expect(text_box.downcase.text).to include(str.downcase), "Survey Question #{str} is invalid. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individual."
         end
       end
 
@@ -131,26 +135,26 @@ module Stamps
       end
 
       class PromoCode < Browser::StampsModal
-        attr_reader :promocode_link, :promo_code
+        attr_reader :promo_code_link, :text_box
         def initialize(param)
           super
-          @promocode_link = StampsElement.new(browser.a(id: 'showPromoCode'))
-          text_box = browser.text_field(id: 'promoCodeHidden')
+          @promo_code_link = StampsElement.new(browser.a(id: 'showPromoCode'))
+          text_box = browser.text_field(id: 'promoCode')
           help_collection = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
-          @promo_code = StampsTextBoxModule.new(text_box, help_collection)
+          @text_box = StampsTextBoxModule.new(text_box, help_collection)
         end
 
         def show_promo_code
-          10.times do
-            promocode_link.click if promocode_link.present?
-            promo_code if promo_code.present?
+          20.times do
+            promo_code_link.click unless text_box.present?
+            return text_box if text_box.present?
           end
-          expect(promo_code).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
+          expect(text_box).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
         end
       end
 
       class ProfilePage < Browser::StampsModal
-        attr_reader :header, :email, :account_info, :survey_questions, :promo_code, :security_questions, :side_opt_in, :side_account, :continue_btn, :membership
+        attr_reader :header, :email, :account_info, :survey_question, :promo_code, :security_questions, :side_opt_in, :side_account, :continue_btn, :membership
         def initialize(param)
           super
           @header = StampsElement.new(browser.h1(text: "Sign up for a new account"))
