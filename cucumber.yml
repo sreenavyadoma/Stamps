@@ -1,4 +1,4 @@
-default: --backtrace --profile kaushal
+default: --backtrace --profile rob_mail_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -49,8 +49,8 @@ mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess D
 
 search_orders: --tags @search_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=search_orders
 
-output_username: --tags @output_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=webreg
-generate_username: --tags @generate_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=webreg
+output_username: --tags @output_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=Registration
+generate_username: --tags @generate_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=Registration
 
 healthcheck: --tags @healthcheck --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=healthcheck
 
@@ -59,14 +59,14 @@ authentication: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCH
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=customs_form_auto_calculate_weight
 whats_new: --tags @whats_new --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=whats_new
 
-webreg: --tags @webreg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=webreg USER_CREDENTIALS=webreg
+Registration: --tags @Registration --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration USER_CREDENTIALS=Registration
 pam: --tags @pam --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=pam USER_CREDENTIALS=pam
-webreg_pam_orders: --tags @webreg_pam_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=webreg USER_CREDENTIALS=webreg
+registration_pam_orders: --tags @registration_pam_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration USER_CREDENTIALS=Registration
 
-webreg_ach_purchase_100k: --tags @webreg_ach_purchase_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=webreg USER_CREDENTIALS=webreg
-pam_ach_purchase_100k: --tags @pam_ach_purchase_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=webreg USER_CREDENTIALS=webreg
-webreg_meter_limit_100k: --tags @webreg_meter_limit_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=webreg USER_CREDENTIALS=webreg
-pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=webreg USER_CREDENTIALS=webreg
+registration_ach_purchase_100k: --tags @registration_ach_purchase_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration USER_CREDENTIALS=Registration
+pam_ach_purchase_100k: --tags @pam_ach_purchase_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration USER_CREDENTIALS=Registration
+registration_meter_limit_100k: --tags @registration_meter_limit_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration USER_CREDENTIALS=Registration
+pam_meter_limit_100k: --tags @pam_meter_limit_100k --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration USER_CREDENTIALS=Registration
 
 details_non_integer_lb: --tags @details_non_integer_lb --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_non_integer_lb
 grid_order_status: --tags @grid_order_status --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=grid_order_status
@@ -176,7 +176,7 @@ import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKIN
 grid_column_order: --tags @grid_column_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=grid_column_order
 import_orders: --tags @import_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=import_orders
 pagination: --tags @pagination --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=pagination
-webreg_specify_username_jenkins: --tags @webreg_specify_username_jenkins --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=webreg_specify_username_jenkins
+registration_specify_username_jenkins: --tags @registration_specify_username_jenkins --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=registration_specify_username_jenkins
 # DOES NOT EXIST
 print_label_position: --tags @print_label_position --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_label_position
 print_media: --tags @print_media --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_media

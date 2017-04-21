@@ -5,8 +5,8 @@ module Stamps
         attr_reader :drop_down, :text_box, :manage_shipping_adddress, :blur_element
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field(name: "ShipFrom")
+          super
+          @text_box = StampsTextBox.new browser.text_field(name: "ShipFrom")
           @drop_down = StampsElement.new browser.div(css: "div[id^=shipfromdroplist][id$=trigger-picker]")
           @manage_shipping_adddress = ManageShippingAddresses.new(param)
           @blur_element = BlurOutElement.new(param)
@@ -62,7 +62,7 @@ module Stamps
         attr_reader :element
 
         def initialize(param)
-          super(param)
+          super
           @element= StampsElement.new browser.label(text: 'Insure For $:')
         end
 
@@ -79,7 +79,7 @@ module Stamps
         attr_reader :ship_to_dd
 
         def initialize(param)
-          super(param)
+          super
           @ship_to_dd = ShipToCountryDropDown.new(param)
         end
 
@@ -104,7 +104,7 @@ module Stamps
           end
           text_field.should_not be nil
           expect(text_field).to be_present
-          StampsTextbox.new(text_field)
+          StampsTextBox.new(text_field)
         end
 
         def  drop_down
@@ -175,7 +175,7 @@ module Stamps
       class ShipToCountryDropDown < Browser::StampsModal
         attr_reader :element
         def initialize(param)
-          super(param)
+          super
           @element = StampsElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
         end
       end
@@ -184,16 +184,16 @@ module Stamps
         attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :ship_to_dd
 
         def initialize(param)
-          super(param)
-          @name = StampsTextbox.new(browser.text_field(name: "ShipName"))
-          @company = StampsTextbox.new(browser.text_field(name: "ShipCompany"))
-          @address_1 = StampsTextbox.new(browser.text_field(name: "ShipStreet1"))
-          @address_2 = StampsTextbox.new(browser.text_field(name: "ShipStreet2"))
-          @city = StampsTextbox.new(browser.text_field(name: "ShipCity"))
-          @phone = StampsTextbox.new(browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"))
-          @province = StampsTextbox.new(browser.text_field(name: "ShipState"))
-          @postal_code = StampsTextbox.new(browser.text_field(name: "ShipPostalCode"))
-          @email = StampsTextbox.new(browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]"))
+          super
+          @name = StampsTextBox.new(browser.text_field(name: "ShipName"))
+          @company = StampsTextBox.new(browser.text_field(name: "ShipCompany"))
+          @address_1 = StampsTextBox.new(browser.text_field(name: "ShipStreet1"))
+          @address_2 = StampsTextBox.new(browser.text_field(name: "ShipStreet2"))
+          @city = StampsTextBox.new(browser.text_field(name: "ShipCity"))
+          @phone = StampsTextBox.new(browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"))
+          @province = StampsTextBox.new(browser.text_field(name: "ShipState"))
+          @postal_code = StampsTextBox.new(browser.text_field(name: "ShipPostalCode"))
+          @email = StampsTextBox.new(browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]"))
           @auto_suggest = AutoSuggestInternational.new(param)
           @blur_element = BlurOutElement.new(param)
           @less_link = StampsElement.new(browser.span(css: "div[id*=international]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]"))
@@ -239,7 +239,7 @@ module Stamps
         attr_reader :auto_suggest_box
 
         def initialize(param)
-          super(param)
+          super
           @auto_suggest_box = AutoSuggestPopUp.new(param)
         end
 
@@ -266,7 +266,7 @@ module Stamps
         attr_reader :window_title
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div(text: 'Exact Address Not Found')
         end
 
@@ -316,7 +316,7 @@ module Stamps
         attr_reader :address_not_found
 
         def initialize(param)
-          super(param)
+          super
           @address_not_found = AddressNotFound.new(param)
         end
 
@@ -325,7 +325,7 @@ module Stamps
         end
       end
 
-      class ShipToTextArea < StampsTextbox
+      class ShipToTextArea < StampsTextBox
         def full_address
           50.times do
             break if element.attribute_value("value").size > 0
@@ -425,14 +425,14 @@ module Stamps
                     :address_not_found
 
         def initialize(param)
-          super(param)
+          super
           @less_link = StampsElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
           @ship_to_dd  = ShipToCountryDropDown.new(param)
           @blur_element = BlurOutElement.new(param)
           @address_not_found = AddressNotFound.new(param)
           @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
-          @email = StampsTextbox.new browser.text_field(name: 'BuyerEmail')
-          @phone = StampsTextbox.new browser.text_field(name: "ShipPhone")
+          @email = StampsTextBox.new browser.text_field(name: 'BuyerEmail')
+          @phone = StampsTextBox.new browser.text_field(name: "ShipPhone")
 
           @ambiguous = AmbiguousAddress.new(param)
           @auto_suggest = AutoSuggestDomestic.new(param, @text_area)
@@ -527,7 +527,7 @@ module Stamps
       class ShipTo < Browser::StampsModal
         attr_reader :country, :international, :domestic
         def initialize(param)
-          super(param)
+          super
           @country = ShipToCountry.new(param)
           @domestic = ShipToDomestic.new(param)
           @international = ShipToInternational.new(param)
@@ -539,17 +539,17 @@ module Stamps
         attr_accessor :address_hash
 
         def initialize(param)
-          super(param)
+          super
           @save_btn = StampsElement.new browser.span(text: 'Save')
-          @origin_zip = StampsTextbox.new browser.text_field(name: 'OriginZip')
-          @name = StampsTextbox.new(browser.text_field(name: 'FullName'))
-          @company = StampsTextbox.new(browser.text_field(name: 'Company'))
-          @street_address_1 = StampsTextbox.new(browser.text_field name: 'Street1')
-          @street_address_2 = StampsTextbox.new(browser.text_field name: 'Street2')
-          @city = StampsTextbox.new(browser.text_field(name: 'City'))
+          @origin_zip = StampsTextBox.new browser.text_field(name: 'OriginZip')
+          @name = StampsTextBox.new(browser.text_field(name: 'FullName'))
+          @company = StampsTextBox.new(browser.text_field(name: 'Company'))
+          @street_address_1 = StampsTextBox.new(browser.text_field name: 'Street1')
+          @street_address_2 = StampsTextBox.new(browser.text_field name: 'Street2')
+          @city = StampsTextBox.new(browser.text_field(name: 'City'))
           @state = StampsDropDown.new(browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]"), :li, browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]'))
-          @zip = StampsTextbox.new(browser.text_field(name: 'Zip'))
-          @phone = StampsTextbox.new(browser.text_field(name: "Phone"))
+          @zip = StampsTextBox.new(browser.text_field(name: 'Zip'))
+          @phone = StampsTextBox.new(browser.text_field(name: "Phone"))
         end
 
         def present?
@@ -628,7 +628,7 @@ module Stamps
         attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
 
         def initialize(param)
-          super(param)
+          super
           @edit_button = StampsElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
           @add_button = StampsElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
           @window_title = StampsElement.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
@@ -833,8 +833,8 @@ module Stamps
       class DetailsService < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
           @drop_down = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
           @blur_element = BlurOutElement.new(param)
         end
@@ -997,8 +997,8 @@ module Stamps
         attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :terms, :blur_element
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
+          super
+          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
           @decrement_trigger = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
 
@@ -1082,8 +1082,8 @@ module Stamps
       class DetailsTracking < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element, :cost_label
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field(name: 'Tracking')
+          super
+          @text_box = StampsTextBox.new browser.text_field(name: 'Tracking')
           @drop_down = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
           @blur_element = BlurOutElement.new(param)
           @cost_label = StampsElement.new(browser.label(css: "label[class*='selected_tracking_cost']"))
@@ -1167,7 +1167,7 @@ module Stamps
       class OrderDetailsWeight < Browser::StampsModal
         attr_reader :lb, :oz
         def initialize(param)
-          super(param)
+          super
           text_box = browser.text_field(name: 'WeightLbs')
           inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
@@ -1183,7 +1183,7 @@ module Stamps
       class OrderDetailsDimensions < Browser::StampsModal
         attr_reader :length, :width, :height
         def initialize(param)
-          super(param)
+          super
           text_box = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
@@ -1216,9 +1216,9 @@ module Stamps
           dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
           @item_qty = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
 
-          @item_id = StampsTextbox.new((browser.text_fields(name: "SKU")[index-1]))
+          @item_id = StampsTextBox.new((browser.text_fields(name: "SKU")[index-1]))
           @delete = StampsElement.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index-1])
-          @item_description = StampsTextbox.new(browser.text_fields(name: "Description")[index-1])
+          @item_description = StampsTextBox.new(browser.text_fields(name: "Description")[index-1])
         end
 
         def present?
@@ -1230,7 +1230,7 @@ module Stamps
         attr_reader :add_btn, :drop_down
 
         def initialize(param)
-          super(param)
+          super
           @add_btn = StampsElement.new(browser.span(css: "span[class*=sdc-icon-add]"))
           @drop_down = StampsElement.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
         end
@@ -1272,7 +1272,7 @@ module Stamps
       class DetailsCollapsible < Browser::StampsModal
         attr_reader :field
         def initialize(param)
-          super(param)
+          super
           @field = StampsElement.new(browser.img(class: "x-tool-img x-tool-expand-left"))
         end
 
@@ -1291,7 +1291,7 @@ module Stamps
       class ToolbarMenu < Browser::StampsModal
         attr_reader :drop_down
         def initialize(param)
-          super(param)
+          super
           @drop_down = StampsElement.new(browser.spans(css: "span[class*='sdc-icon-more']").first)
         end
 
@@ -1325,7 +1325,7 @@ module Stamps
         attr_reader :menu
 
         def initialize(param)
-          super(param)
+          super
           @menu = ToolbarMenu.new(param)
         end
 
@@ -1346,7 +1346,7 @@ module Stamps
       class DetailsFooter < Browser::StampsModal
         attr_reader :label
         def initialize(param)
-          super(param)
+          super
           @label = StampsElement.new browser.strong(text: 'Total Ship Cost:')
         end
 
@@ -1383,7 +1383,7 @@ module Stamps
         attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
 
         def initialize(param)
-          super(param)
+          super
           @customs_form = Stamps::Common::Customs::CustomsInformation.new(param)
           @view_restrictions = Orders::Details::ViewRestrictions.new(param)
           @edit_form_btn = StampsElement.new browser.span text: 'Edit Form...'
@@ -1413,7 +1413,7 @@ module Stamps
                     :footer, :customs, :items_ordered, :reference_no, :collapsed_details, :blur_element
 
         def initialize(param)
-          super(param)
+          super
           @toolbar = DetailsToolbar.new(param)
           @ship_from = ShipFromAddress.new(param)
           @ship_to = ShipTo.new(param)
@@ -1421,7 +1421,7 @@ module Stamps
           @service = DetailsService.new(param)
           @insure_for = DetailsInsureFor.new(param)
           @tracking = DetailsTracking.new(param)
-          @reference_no = StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
+          @reference_no = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
           @dimensions = OrderDetailsDimensions.new(param)
           @items_ordered = ItemsOrderedSection.new(param)
           @customs = OrdersCustomsFields.new(param)

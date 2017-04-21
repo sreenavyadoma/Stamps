@@ -376,7 +376,7 @@ Cucumber::Rake::Task.new(:whats_new) do |t|
 end
 
 Cucumber::Rake::Task.new(:registration) do |t|
-  t.profile = 'webreg'
+  t.profile = 'Registration'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -390,8 +390,8 @@ Cucumber::Rake::Task.new(:orders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_meter_limit_100k) do |t|
-  t.profile = 'webreg_meter_limit_100k'
+Cucumber::Rake::Task.new(:registration_meter_limit_100k) do |t|
+  t.profile = 'registration_meter_limit_100k'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -400,8 +400,8 @@ Cucumber::Rake::Task.new(:pam_meter_limit_100k) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_ach_purchase_100k) do |t|
-  t.profile = 'webreg_ach_purchase_100k'
+Cucumber::Rake::Task.new(:registration_ach_purchase_100k) do |t|
+  t.profile = 'registration_ach_purchase_100k'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -776,8 +776,8 @@ Cucumber::Rake::Task.new(:amazon) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:webreg_specify_username_jenkins) do |t|
-  t.profile = 'webreg_specify_username_jenkins'
+Cucumber::Rake::Task.new(:registration_specify_username_jenkins) do |t|
+  t.profile = 'registration_specify_username_jenkins'
   t.cucumber_opts = "-p cuke_reports"
 end
 

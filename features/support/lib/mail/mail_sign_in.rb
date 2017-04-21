@@ -19,7 +19,7 @@ module Stamps
       attr_reader :remember_user_element
 
       def initialize(param)
-        super(param)
+        super
         @remember_user_element = StampsElement.new browser.checkbox(id: "rememberUser")
       end
 
@@ -43,7 +43,7 @@ module Stamps
       attr_reader :sign_in_modal
 
       def initialize(param)
-        super(param)
+        super
         @sign_in_modal = MailSignInModal.new(param)
       end
 
@@ -75,7 +75,7 @@ module Stamps
       attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
       def initialize(param)
-        super(param)
+        super
         @x_btn = StampsElement.new browser.img(class: 'x-tool-img x-tool-close')
         @more_info_btn = StampsElement.new browser.span(text: 'More Info')
         @continue_btn = StampsElement.new browser.span(text: "Continue")
@@ -115,15 +115,15 @@ module Stamps
                   :remember_username_checkbox, :invalid_username_password
 
       def initialize(param)
-        super(param)
-        @username_textbox = StampsTextbox.new browser.text_field(id: "UserNameTextBox")
-        @password_textbox = StampsTextbox.new browser.text_field(id: "PasswordTextBox")
+        super
+        @username_textbox = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
+        @password_textbox = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
         @sign_in_button = StampsElement.new browser.button(id: "signInButton")
         @sign_in_link = StampsElement.new browser.a(css: "a[class*=signInLink]")
         @verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
         @invalid_msg = StampsElement.new browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")
         @whats_new_modal = WhatsNewModal.new(param)
-        @remember_username_checkbox = WatirCheckbox.new browser.checkbox(id: "rememberUser")
+        @remember_username_checkbox = WatirCheckboxWrapper.new browser.checkbox(id: "rememberUser")
         @invalid_username_password = StampsElement.new browser.div(id: "InvalidUsernamePasswordMsg")
         @username = ""
         @password = ""
@@ -253,8 +253,8 @@ module Stamps
         end
 
         sign_in_link = StampsElement.new browser.link(text: "Sign In")
-        username_textbox = StampsTextbox.new browser.text_field(id: "UserNameTextBox")
-        password_textbox = StampsTextbox.new browser.text_field(id: "PasswordTextBox")
+        username_textbox = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
+        password_textbox = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
         remember_username = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
         sign_in_button = StampsElement.new browser.button(id: "signInButton")
         verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")

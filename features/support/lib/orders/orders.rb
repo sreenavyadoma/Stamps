@@ -4,7 +4,7 @@ module Stamps
       attr_reader :orders_toolbar, :landing_page, :orders_grid, :styles, :order_details, :filter_panel, :multi_order
 
       def initialize(param)
-        super(param)
+        super
         @orders_toolbar = Toolbar::OrdersToolbar.new(param)
         @landing_page = Orders::OrdersLandingPage.new(param)
         @orders_grid = Orders::Grid::OrdersGrid.new(param)

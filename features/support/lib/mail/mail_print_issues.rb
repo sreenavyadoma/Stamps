@@ -4,7 +4,7 @@ module Stamps
       attr_reader :window_title, :body, :add_funds_btn, :close_btn
 
       def initialize(param)
-        super(param)
+        super
         @window_title = StampsElement.new(browser.div(text: 'Insufficient Funds'))
         @body = StampsElement.new(browser.div(text: 'div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]'))
         @add_funds_btn = StampsElement.new(browser.span(text: 'Add Funds'))
@@ -32,7 +32,7 @@ module Stamps
       attr_reader :agree_and_continue_btn, :close, :cancel
 
       def initialize(param)
-        super(param)
+        super
         @close = StampsElement.new(browser.div(text: 'span[id^=button-1248-btnInnerEl]'))
         @cancel = StampsElement.new(browser.div(text: 'span[id^=button-1249-btnInnerEl]'))
         #@agree_and_continue_btn = StampsElement.new()

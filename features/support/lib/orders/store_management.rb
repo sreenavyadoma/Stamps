@@ -74,7 +74,7 @@ module Stamps
               end
 
               def text_box
-                StampsTextbox.new text_box_field
+                StampsTextBox.new text_box_field
               end
 
               def select service
@@ -109,7 +109,7 @@ module Stamps
 
             def requested_services
               text_field = browser.text_fields(name: "ServiceKey")[@index]
-              StampsTextbox.new text_field
+              StampsTextBox.new text_field
             end
 
             def delete
@@ -181,7 +181,7 @@ module Stamps
         end
 
         def store_nickname
-          StampsTextbox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
+          StampsTextBox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
         end
 
         def automatically_import_new_orders
@@ -196,7 +196,7 @@ module Stamps
         attr_reader :window_title
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div text: "Add your Store or Marketplace"
         end
 
@@ -222,7 +222,7 @@ module Stamps
         end
 
         def search_textbox
-          StampsTextbox.new(browser.text_fields css: "input[placeholder='Search by Name']").last
+          StampsTextBox.new(browser.text_fields css: "input[placeholder='Search by Name']").last
         end
 
         def search search_str

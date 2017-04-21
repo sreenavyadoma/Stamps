@@ -34,15 +34,15 @@ module Stamps
         end
 
         def seller_id
-          StampsTextbox.new browser.text_field(name: "RakutenSellerID")
+          StampsTextBox.new browser.text_field(name: "RakutenSellerID")
         end
 
         def ftp_username
-          StampsTextbox.new(browser.text_fields(name: "AuthToken").first)
+          StampsTextBox.new(browser.text_fields(name: "AuthToken").first)
         end
 
         def ftp_password
-          StampsTextbox.new(browser.text_fields(name: "AuthToken").last)
+          StampsTextBox.new(browser.text_fields(name: "AuthToken").last)
         end
 
         def map_rakuten_sku

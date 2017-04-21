@@ -6,7 +6,7 @@ module Stamps
         attr_accessor :window_title, :do_not_prompt, :continue_btn
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(text: "Confirm Print"))
           @continue_btn = StampsElement.new(browser.span(text: "Continue"))
           @do_not_prompt = StampsCheckbox.new browser.span(css: "div[id^=dialoguemodal-][id$=-targetEl]>div>div>div>span"),
@@ -34,7 +34,7 @@ module Stamps
         attr_accessor :window_title, :paragraph, :ok_btn
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(text: "Please Wait"))
           @paragraph = StampsElement.new(browser.div(css: "div[class*=resizable]>div[id^=dialoguemodal-][id$=-body]>div>div"))
           @ok_btn = StampsElement.new(browser.span(text: "OK"))

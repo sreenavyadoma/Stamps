@@ -51,7 +51,7 @@ Then /^[Ee]xpect Customs form Internal Transaction Number is (?:correct|(.*))$/ 
 end
 
 Then /^[Ss]et Customs form More Info to (?:(?:a|some) random string|(.*))$/ do |value|
-  parameter[:customs_more_info] = (value.nil?)?helper.random_alpha_numeric(18):value
+  parameter[:customs_more_info] = (value.nil?)?helper.random_string(18):value
   stamps.orders.order_details.customs.edit_form.package_contents.contents.more_info.set(parameter[:customs_more_info]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info.set(parameter[:customs_more_info]) if param.web_app == :mail
   step "Save Customs Information form Total amount"
@@ -65,7 +65,7 @@ Then /^[Ee]xpect Customs form More Info is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^[Ss]et Customs form ITN Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  parameter[:customs_itn_no] = (value.nil?)?helper.random_alpha_numeric(50):value
+  parameter[:customs_itn_no] = (value.nil?)?helper.random_string(50):value
   stamps.orders.order_details.customs.edit_form.itn_number.set(parameter[:customs_itn_no]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.itn_number.set(parameter[:customs_itn_no]) if param.web_app == :mail
   step "Save Customs Information form Total amount"
@@ -79,7 +79,7 @@ Then /^[Ee]xpect Customs form ITN Number is (?:correct|(.*))$/ do |expectation|
 end
 
 Then /^[Ss]et Customs form License Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  parameter[:customs_license_no] = ((value.nil?)?helper.random_alpha_numeric(6): value)
+  parameter[:customs_license_no] = ((value.nil?)?helper.random_string(6): value)
   stamps.orders.order_details.customs.edit_form.package_contents.contents.license.set(parameter[:customs_license_no]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license.set(parameter[:customs_license_no]) if param.web_app == :mail
   step "Save Customs Information form Total amount"
@@ -94,7 +94,7 @@ Then /^[Ee]xpect Customs form License Number is (?:correct|(.*))$/ do |expectati
 end
 
 Then /^[Ss]et Customs form Certificate Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  parameter[:customs_certificate_no] = ((value.nil?)?helper.random_alpha_numeric(8):value)
+  parameter[:customs_certificate_no] = ((value.nil?)?helper.random_string(8):value)
   stamps.orders.order_details.customs.edit_form.package_contents.contents.certificate.set(parameter[:customs_certificate_no]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.certificate.set(parameter[:customs_certificate_no]) if param.web_app == :mail
   step "Save Customs Information form Total amount"
@@ -108,7 +108,7 @@ Then /^[Ee]xpect Customs form Certificate Number is (?:correct|(.*))$/ do |expec
 end
 
 Then /^[Ss]et Customs form Invoice Number to (?:(?:a|some) random string|(.*))$/ do |value|
-  parameter[:customs_invoice_no] = (value.nil?)?helper.random_alpha_numeric(10):value
+  parameter[:customs_invoice_no] = (value.nil?)?helper.random_string(10):value
   stamps.orders.order_details.customs.edit_form.package_contents.contents.invoice.set(parameter[:customs_invoice_no]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice.set(parameter[:customs_invoice_no]) if param.web_app == :mail
   step "Save Customs Information form Total amount"
@@ -296,7 +296,7 @@ end
 
 Then /^[Ss]et Customs form Associated Item (\d+) Description to (.*)$/ do |item_number, value|
   parameter[:customs_associated_items][item_number] = Hash.new unless parameter[:customs_associated_items].has_key?(item_number)
-  parameter[:customs_associated_items][item_number][:description] = (value.downcase.include?('random')?(helper.random_alpha_numeric):value)
+  parameter[:customs_associated_items][item_number][:description] = (value.downcase.include?('random')?(helper.random_string):value)
   stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_description.set(parameter[:customs_associated_items][item_number][:description]) if param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_description.set(parameter[:customs_associated_items][item_number][:description]) if param.web_app == :mail
   step "Save Customs Information form Total amount"

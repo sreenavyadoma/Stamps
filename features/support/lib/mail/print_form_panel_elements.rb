@@ -6,7 +6,7 @@ module Stamps
         attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_element
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(text: "Upgrade Plan"))
           @close_btn = StampsElement.new(browser.img(text: "img[class*=close]"))
           @upgrade_now_btn = StampsElement.new(browser.span(text: "Upgrade Now"))
@@ -41,9 +41,9 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
+          super
           @drop_down = StampsElement.new(browser.div(id: "printmediadroplist-1036-trigger-picker"))
-          @text_box = StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist-][name$=inputEl]"))
+          @text_box = StampsTextBox.new(browser.text_field(css: "input[name^=printmediadroplist-][name$=inputEl]"))
           @upgrade_plan = UpgradePlan.new(param)
         end
 
@@ -169,7 +169,7 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
+          super
           @dom_text_area = MailDomTextArea.new(param)
         end
 
@@ -190,7 +190,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextbox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.text_field(name: "ShipCountryCode"))
+          StampsTextBox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.text_field(name: "ShipCountryCode"))
         end
 
         def select(str)
@@ -220,19 +220,19 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
-          @name = StampsTextbox.new(browser.text_field(name: "ShipName"))
-          @company = StampsTextbox.new(browser.text_field(name: "ShipCompany"))
-          @address_1 = StampsTextbox.new(browser.text_field(name: "ShipStreet1"))
-          @address_2 = StampsTextbox.new(browser.text_field(name: "ShipStreet2"))
-          @city = StampsTextbox.new(browser.text_field(name: "ShipCity"))
-          @province = StampsTextbox.new(browser.text_field(name: "ShipState"))
-          @postal_code = StampsTextbox.new(browser.text_field(name: "ShipPostalCode"))
-          @phone = StampsTextbox.new(browser.text_field(css: "div[id=shiptoview-international-targetEl]>div>div>div>div>div>div>div>input[name=ShipPhone]"))
+          super
+          @name = StampsTextBox.new(browser.text_field(name: "ShipName"))
+          @company = StampsTextBox.new(browser.text_field(name: "ShipCompany"))
+          @address_1 = StampsTextBox.new(browser.text_field(name: "ShipStreet1"))
+          @address_2 = StampsTextBox.new(browser.text_field(name: "ShipStreet2"))
+          @city = StampsTextBox.new(browser.text_field(name: "ShipCity"))
+          @province = StampsTextBox.new(browser.text_field(name: "ShipState"))
+          @postal_code = StampsTextBox.new(browser.text_field(name: "ShipPostalCode"))
+          @phone = StampsTextBox.new(browser.text_field(css: "div[id=shiptoview-international-targetEl]>div>div>div>div>div>div>div>input[name=ShipPhone]"))
         end
       end
 
-      class MailDomTextArea < StampsTextbox
+      class MailDomTextArea < StampsTextBox
         def initialize(param)
           super(param.browser.textarea(id: "sdc-mainpanel-shiptotextarea-inputEl"))
         end
@@ -243,7 +243,7 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
+          super
           @text_area = MailDomTextArea.new(param)
         end
 
@@ -269,7 +269,7 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
+          super
           @auto_weigh = StampsCheckbox.new browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
           @weigh_btn = StampsElement.new browser.span(text: "Weigh")
 
@@ -293,7 +293,7 @@ module Stamps
         attr_accessor :length, :width, :height
 
         def initialize(param)
-          super(param)
+          super
           text_box = browser.text_field(name: "Length")
           inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=up]")
           dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
@@ -320,8 +320,8 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
           @drop_down = StampsElement.new(browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker"))
           @manage_shipping_address = MailManageShippingAddresses.new(param)
         end
@@ -373,8 +373,8 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
+          super
+          @text_box = StampsTextBox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
           @drop_down = StampsElement.new browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")
         end
 
@@ -439,7 +439,7 @@ module Stamps
 
       class StampAmount < Browser::StampsModal
         def text_box
-          StampsTextbox.new(browser.text_field name: "stampAmount")
+          StampsTextBox.new(browser.text_field name: "stampAmount")
         end
 
         def set(value)
@@ -466,9 +466,9 @@ module Stamps
       class PrintFormEmail < Browser::StampsModal
         attr_reader :checkbox, :text_box
         def initialize(param)
-          super(param)
+          super
           @checkbox = StampsCheckbox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
-          @text_box = StampsTextbox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
+          @text_box = StampsTextBox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
         end
 
         def set(value)
@@ -480,7 +480,7 @@ module Stamps
       class MailTracking < Browser::StampsModal
 
         def text_box
-          StampsTextbox.new browser.text_field name: "tracking"
+          StampsTextBox.new browser.text_field name: "tracking"
         end
 
         def drop_down
@@ -519,7 +519,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextbox.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
+          StampsTextBox.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
         end
 
         def increment value
@@ -537,7 +537,7 @@ module Stamps
 
       class PrintFormCostCode < Browser::StampsModal
         def text_box
-          StampsTextbox.new browser.text_field name: "costCodeId"
+          StampsTextBox.new browser.text_field name: "costCodeId"
         end
 
         def drop_down
@@ -572,7 +572,7 @@ module Stamps
 
       class PrintFormQuantity < Browser::StampsModal
         def text_box
-          StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
+          StampsTextBox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
         end
 
         def set(value)
@@ -600,7 +600,7 @@ module Stamps
         attr_accessor :link, :contacts_modal
 
         def initialize(param)
-          super(param)
+          super
           @link = StampsElement.new(browser.span(css: "label[class*=sdc-mainpanel-shiptolinkbtn]>span>span>span[id$=btnInnerEl]"))
           @contacts_modal = MailSearchContactsModal.new(param)
         end
@@ -620,7 +620,7 @@ module Stamps
         include PrintFormBlurOut
 
         def initialize(param)
-          super(param)
+          super
           @country = MailToCountry.new(param)
           @mail_to_link = PrintFormMailToLink.new(param)
           @address = MailToDom.new(param)
@@ -640,7 +640,7 @@ module Stamps
         attr_reader :button, :customs_form
 
         def initialize(param)
-          super(param)
+          super
           @button = StampsElement.new(browser.span(id: "sdc-mainpanel-editcustombtn-btnInnerEl"))
           @customs_form = Stamps::Common::Customs::CustomsInformation.new(param)
         end

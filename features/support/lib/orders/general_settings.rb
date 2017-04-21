@@ -6,8 +6,8 @@ module Stamps
         attr_reader :text_box, :inc_bthn, :dec_btn
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
           @inc_bthn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]"))
           @dec_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]"))
         end
@@ -39,8 +39,8 @@ module Stamps
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
           @inc_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]"))
           @dec_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]"))
         end
@@ -72,7 +72,7 @@ module Stamps
         attr_reader :lb, :oz
 
         def initialize(param)
-          super(param)
+          super
           @lb = Pounds.new(param)
           @oz = Ounces.new(param)
         end
@@ -94,8 +94,8 @@ module Stamps
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
           @inc_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
           @dec_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
         end
@@ -127,8 +127,8 @@ module Stamps
         attr_reader :text_box, :inc_btn, :dec_btn
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
+          super
+          @text_box = StampsTextBox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
           @inc_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
           @dec_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
         end
@@ -160,8 +160,8 @@ module Stamps
         attr_reader :text_box
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
+          super
+          @text_box = StampsTextBox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
         end
 
         def text
@@ -193,8 +193,8 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
+          super
+          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
           @drop_down = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
@@ -241,8 +241,8 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
+          super
+          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
           @drop_down = StampsElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
@@ -361,8 +361,8 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
+          super
+          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
           @drop_down = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
@@ -409,7 +409,7 @@ module Stamps
         attr_reader :length, :width, :height
 
         def initialize(param)
-          super(param)
+          super
           @length = Length.new(param)
           @width = Width.new(param)
           @height = Height.new(param)

@@ -33,14 +33,14 @@ end
 
 Then /^[Ss]et Order Details form Associated Item (\d+) ID to (.*)$/ do |item_number, str|
   parameter[:details_associated_items][item_number] = Hash.new unless parameter[:details_associated_items].has_key?(item_number)
-  parameter[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random')?(helper.random_alpha_numeric):str)
+  parameter[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random')?(helper.random_string):str)
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(parameter[:details_associated_items][item_number][:item_id])
   step "Save Order Details data"
 end
 
 Then /^[Ss]et Order Details form Associated Item (\d+) Description to (.*)$/ do |item_number, str|
   parameter[:details_associated_items][item_number] = Hash.new unless parameter[:details_associated_items].has_key?(item_number)
-  parameter[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random')?(helper.random_alpha_numeric):str)
+  parameter[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random')?(helper.random_string):str)
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(parameter[:details_associated_items][item_number][:item_description])
   step "Save Order Details data"
 end
@@ -266,7 +266,7 @@ Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
   parameter[:street_address_2] = (address_table['street_address_2'].downcase.include?('random')) ? helper.random_suite : address_table['street_address_2']
   parameter[:city] = (address_table['city'].downcase.include?('random')) ? helper.random_string : address_table['city']
   parameter[:state] = (address_table['province'].downcase.include?('random')) ? helper.random_string : address_table['province']
-  parameter[:zip] = (address_table['postal_code'].downcase.include?('random'))?helper.random_alpha_numeric : address_table['postal_code']
+  parameter[:zip] = (address_table['postal_code'].downcase.include?('random'))?helper.random_string : address_table['postal_code']
   parameter[:phone] = (address_table['phone'].downcase.include?('random')) ? helper.random_phone : address_table['phone']
   parameter[:email] = (address_table['email'].downcase.include?('random')) ? helper.random_email : address_table['email']
 
@@ -461,7 +461,7 @@ Then /^Decrement Order Details Insure-For by (\d*)$/ do |value|
 end
 
 Then /^[Ss]et Order Details form Reference Number to (.*)$/ do |value|
-  parameter[:reference_no] = (value.downcase.include?('random'))?helper.random_alpha_numeric : value
+  parameter[:reference_no] = (value.downcase.include?('random'))?helper.random_string : value
   stamps.orders.order_details.reference_no.set parameter[:reference_no]
   step "Save Order Details data"
 end
