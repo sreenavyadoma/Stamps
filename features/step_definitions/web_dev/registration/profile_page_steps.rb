@@ -64,7 +64,7 @@ end
 
 Then /^[Ee]xpect [Rr]egistration [Pp]rofile [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
   str = (str.nil?)?parameter[:promo_code]:str
-  expect(registration.promo_code.text_box.text).to eql(str)
+  expect(registration.profile.promo_code.text_box.text).to eql(str)
   str
 end
 
