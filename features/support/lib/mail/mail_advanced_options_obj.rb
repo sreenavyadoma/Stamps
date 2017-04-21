@@ -58,7 +58,7 @@ module Stamps
       class MailDatePicker < Browser::StampsModal
         include MailDateTextbox
 
-        attr_reader :trigger_picker
+        attr_reader :trigger_picker, :valid_ship_date
         def initialize(param)
           super(param)
           @trigger_picker = StampsElement.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))

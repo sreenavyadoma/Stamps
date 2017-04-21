@@ -28,6 +28,8 @@ jenkinsvm02, stgld1uw4sroe7, @print_dialog_hide_postage_value, @print_dialog_pri
 jenkinsvm10, stghy955swcbcm, @print_dialog_label_left_side, @print_dialog_printing_on_4x6_shipping_label, @print_dialog_ship_date_today_plus1, @print_dialog_two_up_window_title, @print_layout_cn22_paper_left_side, @print_multiple_reprints
                                 @print_sample_pm_regional_rate_box_a, @print_two_up_expanded_cn22, @print_two_up_expanded_sdc1200_4x6_left_print1
 
+jenkinsvm16, stgrym5ihjq8ct,
+
 Regression
 orders_regression_cc
 orders_regression_stg
@@ -64,6 +66,7 @@ jenkinsvm10, stghy955swcbcm, @mail_print_roll_4_1_8_x_6_1_4_fcm_psg, @mail_print
                                 @mail_print_sample_shipping_label_8_x_11_fcm_psg, @mail_print_sample_shipping_label_8_x_11_pm_envelope_package, @mail_print_sample_shipping_label_sdc1200_pm_box, @mail_print_shipping_label_5x8_mm_xm, @mail_print_shipping_label_8_x_11_fcm_psg
                                 @mail_print_shipping_label_8_x_11_pm_envelope_package, @mail_print_shipping_label_sdc1200_pm_box, @healthcheck, @mail_print_postage_elements
 
+jenkinsvm16, stgrym5ihjq8ct,
 
 xxxxxxxx, xxxxxxxx, xxxxxxxx
 
