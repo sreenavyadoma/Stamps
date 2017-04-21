@@ -14,11 +14,11 @@ module Stamps
       end
 
       def present?
-        navigation.present?
+        footer.present?
       end
 
       def wait_until_present(*args)
-        navigation.wait_until_present(*args)
+        footer.wait_until_present(*args)
       end
 
       def load_theme(theme)

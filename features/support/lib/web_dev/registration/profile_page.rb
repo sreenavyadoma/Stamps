@@ -34,7 +34,7 @@ module Stamps
             selection.click
             return text_box.text if text_box.text.downcase.include?(str)
           end
-          expect(text_box.text).to include(str), "Invalid Survey Question selection: #{str}. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individua."
+          expect(text_box.text).to include(str), "Invalid Survey Question selection: #{str}. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individual."
         end
       end
 

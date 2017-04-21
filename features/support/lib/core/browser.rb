@@ -207,21 +207,21 @@ module Stamps
     end
 
     class StampsTextBoxModule < StampsTextBox
-      attr_reader :help_element_collection
+      attr_reader :help_collection
 
-      def initialize(text_box_element, help_element_collection)
-        super(text_box_element)
-        @help_element = help_element_collection
+      def initialize(text_box, help_collection)
+        super(text_box)
+        @help_collection = help_collection
       end
 
       def help_text(*args)
-        return "" if help_element_collection.size == 0
+        return "" if help_collection.size == 0
         index = (args.size=0)?0:(args[0].to_i-1)
-        help_element_collection[index].text
+        help_collection[index].text
       end
 
       def has_error?
-        help_element_collection.size > 0
+        help_collection.size > 0
       end
 
       def data_error
