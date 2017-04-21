@@ -130,12 +130,12 @@ zone_1_through_4:
         street_address: 2791 Agoura Rd
         city: Westlake Village
         state: CA
-        zip: 91361-3101
+        zip: 91361
       2:
         street_address: 12280 Perris Blvd
         city: Moreno Valley
         state: CA
-        zip: 92557-7418
+        zip: 92557
       3:
         street_address: 610 W Tefft St
         city: Nipomo
@@ -145,71 +145,71 @@ zone_1_through_4:
         street_address: 42136 Big Bear Blvd
         city: Big Bear Lake
         state: CA
-        zip: 92315-1530
+        zip: 92315
     zone2:
       1:
         street_address: 530 K St
         street_address_2: Unit 504
         city: San Diego
         state: CA
-        zip: 92101-7058
+        zip: 92101
       2:
         street_address: 3217 Shasta Cir S
         city: Los Angeles
         state: CA
-        zip: 90065-4807
+        zip: 90065
       3:
         street_address: 618 Falconer Rd
         city: Escondido
         state: CA
-        zip: 92027-4229
+        zip: 92027
       4:
         street_address: 4216 Laurel Glen Dr
         city: Moorpark
         state: CA
-        zip: 93021-2725
+        zip: 93021
     zone3:
       1:
         street_address: 3555 Las Vegas Blvd S
         city: Las Vegas
         state: NV
-        zip: 89109-8901
+        zip: 89109
       2:
         street_address: 7065 N Ingram Ave
         city: Fresno
         state: CA
-        zip: 93650-1083
+        zip: 93650
       3:
         street_address: 1804 E Ashlan Ave
         city: Fresno
         state: CA
-        zip: 93726-2019
+        zip: 93726
       4:
         street_address: 6301 W Charleston Blvd
         city: Las Vegas
         state: NV
-        zip: 89146-1124
+        zip: 89146
     zone4:
       1:
         street_address: PO Box 567
         city: Kelseyville
         state: CA
-        zip: 95451-0567
+        zip: 95451
       2:
         street_address: 2105 Kietzke Ln
         city: Reno
         state: NV
-        zip: 89502-3602
+        zip: 89502
       3:
         street_address: 4937 79th St
         city: Sacramento
         state: CA
-        zip: 95820-6213
+        zip: 95820
       4:
         street_address: 1406 Long Creek Way
         city: Roseville
         state: CA
-        zip: 95747-7312
+        zip: 95747
 
 zone_5_through_8:
     zone5:
@@ -217,92 +217,92 @@ zone_5_through_8:
         street_address: 530 9th Ave. N.
         city: Buhl
         state: ID
-        zip: 83316-1115
+        zip: 83316
       2:
         street_address: 26930 NE 152nd St
         city: Duvall
         state: WA
-        zip: 98019-8316
+        zip: 98019
       3:
         street_address: 3232 SE 89th Ave
         city: Portland
         state: OR
-        zip: 97266-1911
+        zip: 97266
       4:
         street_address: 648 Gehr St
         city: Wenatchee
         state: WA
-        zip: 98801-8011
+        zip: 98801
     zone6:
       1:
         street_address: 11 Laguna Madre Dr
         city: Laguna Vista
         state: TX
-        zip: 78578-2602
+        zip: 78578
       2:
         street_address: 204 Nursery Ln
         city: Ft Worth
         state: TX
-        zip: 76114-4348
+        zip: 76114
       3:
         street_address: 1327 Yates Dr
         city: Hurst
         state: TX
-        zip: 76053-4038
+        zip: 76053
       4:
         street_address: 2601 Avenue of the Stars
         street_address_2: Ste 100
         city: Frisco
         state: TX
-        zip: 75034-9016
+        zip: 75034
     zone7:
       1:
         street_address: 9435 Pettit Rd
         city: Baker
         state: LA
-        zip: 70714-6434
+        zip: 70714
       2:
         street_address: 1071 Trelane Ave
         city: Saint Louis
         state: MO
-        zip: 63126-1117
+        zip: 63126
       3:
         street_address: 557 County Rd. H
         city: Fredonia
         state: WI
-        zip: 53021-9634
+        zip: 53021
       4:
         street_address: 2215 Pelopidas St
         city: New Orleans
         state: LA
-        zip: 70122-4957
+        zip: 70122
     zone8:
       1:
         street_address: 2622 New Banner Ln
         city: Herndon
         state: VA
-        zip: 20171-2659
+        zip: 20171
       2:
         street_address: 401 Sherborne Dr
         city: Columbus
         state: OH
-        zip: 43219-2971
+        zip: 43219
       3:
         street_address: 2775 Stark Dr
         city: Willoughby Hills
         state: OH
-        zip: 44094-9113
+        zip: 44094
       4:
         street_address: 283 Chinquapin Rd.
         city: Mocksville
         state: NC
-        zip: 27028-4708
+        zip: 27028
 
 non_domestic:
     zone9:
       1:
         street_address: PO Box 659
-        city: Kosrae, FM 96944-0305
+        city: Kosrae, FM 96944
         state: FM
         zip: 96944
       2:
