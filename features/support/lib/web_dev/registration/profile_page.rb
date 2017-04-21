@@ -144,11 +144,11 @@ module Stamps
       end
 
       class MoneySavingOffers < Browser::StampsModal
-        attr_reader :header, :money_saving_offers, :paragraph
+        attr_reader :header, :checkbox, :paragraph
         def initialize(param)
           super
           @header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
-          @money_saving_offers = WatirCheckBoxWrapper.new(browser.checkbox(name: 'optIn'))
+          @checkbox = WatirCheckBoxWrapper.new(browser.checkbox(name: 'optIn'))
           @paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
         end
       end

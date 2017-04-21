@@ -68,19 +68,19 @@ Then /^[Ee]xpect [Pp]rofile [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
 end
 
 Then /^check [Pp]rofile [Mm]oney-saving offers and new products$/ do
-  registration.profile.side_content.money_saving_offers.check
+  registration.profile.side_content.money_saving_offers.checkbox.check
 end
 
 Then /^[Ee]xpect [Pp]rofile [Mm]oney-saving offers and new products is checked$/ do
-  expect(registration.profile.side_content.money_saving_offers).to be_checked
+  expect(registration.profile.side_content.money_saving_offers.checkbox).to be_checked
 end
 
 Then /^uncheck [Pp]rofile [Mm]oney-saving offers and new products$/ do
-  registration.profile.side_content.money_saving_offers.uncheck
+  registration.profile.side_content.money_saving_offers.checkbox.uncheck
 end
 
 Then /^[Ee]xpect [Pp]rofile [Mm]oney-saving offers and new products is unchecked$/ do
-  expect(registration.profile.side_content.money_saving_offers).to be_unchecked
+  expect(registration.profile.side_content.money_saving_offers.checkbox).to be_unchecked
 end
 
 
