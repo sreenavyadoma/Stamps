@@ -10,7 +10,7 @@ Feature: Registration
     Then add new order
     Then Registration: Store username to data file registration_pam_ord
     Then Pause for 5 seconds
-    Then On Registration Profile page, Send username to standard out
+    Then On Profile page, Send username to standard out
 
     Then Sign out
 

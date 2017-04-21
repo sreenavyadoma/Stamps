@@ -4,7 +4,7 @@ Feature: Registration
     Given I loaded default registration profile page
 
   Scenario:
-    Then On Registration Profile page, Continue
+    Then On Profile page, Continue
     #Then On Registration Membership page, click Back Button
 
     Then set Registration Membership page Terms & Conditions to Unchecked
@@ -76,39 +76,39 @@ Feature: Registration
     Then set Registration Membership page State to West Virginia
     Then set Registration Membership page State to Wyoming
 
-    Then set Registration Profile Referrer Name to Email from Stamps
-    Then set Registration Profile Referrer Name to Magazine Ad
-    Then set Registration Profile Referrer Name to Newspaper Ad
-    Then set Registration Profile Referrer Name to Other
-    Then set Registration Profile Referrer Name to Radio Podcast Streaming Audio
-    Then set Registration Profile Referrer Name to Received Mailer
-    Then set Registration Profile Referrer Name to Recommended by Friend
-    Then set Registration Profile Referrer Name to Recommended by USPS
-    Then set Registration Profile Referrer Name to Telephone Call
-    Then set Registration Profile Referrer Name to Television Commercial
-    Then set Registration Profile Referrer Name to Trade show convention
-    Then set Registration Profile Referrer Name to Web Banner
+    Then set Profile Referrer Name to Email from Stamps
+    Then set Profile Referrer Name to Magazine Ad
+    Then set Profile Referrer Name to Newspaper Ad
+    Then set Profile Referrer Name to Other
+    Then set Profile Referrer Name to Radio Podcast Streaming Audio
+    Then set Profile Referrer Name to Received Mailer
+    Then set Profile Referrer Name to Recommended by Friend
+    Then set Profile Referrer Name to Recommended by USPS
+    Then set Profile Referrer Name to Telephone Call
+    Then set Profile Referrer Name to Television Commercial
+    Then set Profile Referrer Name to Trade show convention
+    Then set Profile Referrer Name to Web Banner
 
-    Then set Registration Profile How will you use Stamps.com to Mostly Mailing
-    Then set Registration Profile How will you use Stamps.com to Mostly Shipping
-    Then set Registration Profile How will you use Stamps.com to Both Mailing and Shipping
-    Then set Registration Profile How will you use Stamps.com to Home Office
+    Then set Profile How will you use Stamps.com to Mostly Mailing
+    Then set Profile How will you use Stamps.com to Mostly Shipping
+    Then set Profile How will you use Stamps.com to Both Mailing and Shipping
+    Then set Profile How will you use Stamps.com to Home Office
 
-    Then set Registration Profile 1st Question to What is your mother's maiden name
-    Then set Registration Profile 1st Question to What is the make and model of your first car
-    Then set Registration Profile 1st Question to What is the name of your first school
-    Then set Registration Profile 1st Question to What is your city of birth
-    Then set Registration Profile 1st Question to What is your father's birthplace
-    Then set Registration Profile 1st Question to What is your pet's name
-    Then set Registration Profile 1st Question to What street did you grow up on
+    Then set Profile 1st Question to What is your mother's maiden name
+    Then set Profile 1st Question to What is the make and model of your first car
+    Then set Profile 1st Question to What is the name of your first school
+    Then set Profile 1st Question to What is your city of birth
+    Then set Profile 1st Question to What is your father's birthplace
+    Then set Profile 1st Question to What is your pet's name
+    Then set Profile 1st Question to What street did you grow up on
 
-    Then set Registration Profile 1st Question to What is your mother's maiden name
-    Then set Registration Profile 2nd Question to What is the make and model of your first car
-    Then set Registration Profile 2nd Question to What is the name of your first school
-    Then set Registration Profile 2nd Question to What is your city of birth
-    Then set Registration Profile 2nd Question to What is your father's birthplace
-    Then set Registration Profile 2nd Question to What is your pet's name
-    Then set Registration Profile 2nd Question to What street did you grow up on
-    Then set Registration Profile 2nd Question to What was your high school mascot
+    Then set Profile 1st Question to What is your mother's maiden name
+    Then set Profile 2nd Question to What is the make and model of your first car
+    Then set Profile 2nd Question to What is the name of your first school
+    Then set Profile 2nd Question to What is your city of birth
+    Then set Profile 2nd Question to What is your father's birthplace
+    Then set Profile 2nd Question to What is your pet's name
+    Then set Profile 2nd Question to What street did you grow up on
+    Then set Profile 2nd Question to What was your high school mascot
 
 

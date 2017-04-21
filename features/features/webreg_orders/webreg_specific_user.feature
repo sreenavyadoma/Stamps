@@ -5,18 +5,18 @@ Feature: Registration
 
   @registration_specify_username
   Scenario:
-    Then set Registration Profile User ID and Email to ss_new2
+    Then set Profile User ID and Email to ss_new2
 
-    Then set Registration Profile Password to pass111
-    Then set Registration Profile Re-Type password to pass111
-    Then set Registration Profile How will you use Stamps.com to Both Mailing and Shipping
-    Then set Registration Profile Referrer Name to Already used in office
-    Then set Registration Profile 1st Question to What is your mother's maiden name
-    Then set Registration Profile 1st Answer to stamps
-    Then set Registration Profile 2nd Question to What was your high school mascot
-    Then set Registration Profile 2nd Answer to stamps
+    Then set Profile Password to pass111
+    Then set Profile Re-Type password to pass111
+    Then set Profile How will you use Stamps.com to Both Mailing and Shipping
+    Then set Profile Referrer Name to Already used in office
+    Then set Profile 1st Question to What is your mother's maiden name
+    Then set Profile 1st Answer to stamps
+    Then set Profile 2nd Question to What was your high school mascot
+    Then set Profile 2nd Answer to stamps
 
-    Then On Registration Profile page, continue to Mailing Information page
+    Then On Profile page, continue to Mailing Information page
     Then set Registration Membership page First Name to random
     Then set Registration Membership page Last Name to random
     Then set Registration Membership page Company to random
@@ -75,5 +75,5 @@ Feature: Registration
     Then Navigation Bar: Customer Balance
     Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
-    Then On Registration Profile page, Send username to standard out
+    Then On Profile page, Send username to standard out
     Then Pause for 1 second

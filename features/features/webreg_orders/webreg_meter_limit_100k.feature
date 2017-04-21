@@ -5,18 +5,18 @@ Feature: Registration
   @registration_meter_limit_100k
   Scenario:
     Then I loaded default registration profile page
-    Then set Registration Profile User ID and Email to random
-    Then On Registration Profile page, Send username to standard out
-    Then set Registration Profile Password to pass111
-    Then set Registration Profile Re-Type password to pass111
-    Then set Registration Profile How will you use Stamps.com to Both Mailing and Shipping
-    Then set Registration Profile Referrer Name to Already used in office
-    Then set Registration Profile 1st Question to What is your mother's maiden name
-    Then set Registration Profile 1st Answer to stamps
-    Then set Registration Profile 2nd Question to What was your high school mascot
-    Then set Registration Profile 2nd Answer to stamps
+    Then set Profile User ID and Email to random
+    Then On Profile page, Send username to standard out
+    Then set Profile Password to pass111
+    Then set Profile Re-Type password to pass111
+    Then set Profile How will you use Stamps.com to Both Mailing and Shipping
+    Then set Profile Referrer Name to Already used in office
+    Then set Profile 1st Question to What is your mother's maiden name
+    Then set Profile 1st Answer to stamps
+    Then set Profile 2nd Question to What was your high school mascot
+    Then set Profile 2nd Answer to stamps
 
-    Then On Registration Profile page, continue to Mailing Information page
+    Then On Profile page, continue to Mailing Information page
     Then set Registration Membership page First Name to random
     Then set Registration Membership page Last Name to random
     Then set Registration Membership page Company to random
@@ -37,4 +37,4 @@ Feature: Registration
     Then On Registration Membership page, click Submit
     Then Registration: Save username and password to parameter file registration_meter_limit_100k
     Then Registration: Store username to data file registration_meter_limit_100k
-    Then On Registration Profile page, Send username to standard out
+    Then On Profile page, Send username to standard out

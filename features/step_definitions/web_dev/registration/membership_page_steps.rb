@@ -112,7 +112,7 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership Bonus Offer Details link exists a
   expect(registration.membership.offer_details_link.present?).to be (true)
 end
 
-Then /^[Ee]xpect [Rr]egistration [Pp]rofile Privacy Policy link exists and is clickable$/ do
+Then /^[Ee]xpect [Pp]rofile Privacy Policy link exists and is clickable$/ do
   # pending
   # 1. check for presence
   # 2. click if it is.

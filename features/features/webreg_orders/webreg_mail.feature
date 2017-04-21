@@ -7,18 +7,18 @@ Feature: First time Mail sign in
     @whats_new
   Scenario: What's new modal
     Then I loaded default registration profile page
-    Then set Registration Profile User ID and Email to Random Value
+    Then set Profile User ID and Email to Random Value
 
-    Then set Registration Profile Password to pass111
-    Then set Registration Profile Re-Type password to pass111
-    Then set Registration Profile How will you use Stamps.com to Both Mailing and Shipping
-    Then set Registration Profile Referrer Name to Already used in office
-    Then set Registration Profile 1st Question to What is your mother's maiden name
-    Then set Registration Profile 1st Answer to stamps
-    Then set Registration Profile 2nd Question to What was your high school mascot
-    Then set Registration Profile 2nd Answer to stamps
+    Then set Profile Password to pass111
+    Then set Profile Re-Type password to pass111
+    Then set Profile How will you use Stamps.com to Both Mailing and Shipping
+    Then set Profile Referrer Name to Already used in office
+    Then set Profile 1st Question to What is your mother's maiden name
+    Then set Profile 1st Answer to stamps
+    Then set Profile 2nd Question to What was your high school mascot
+    Then set Profile 2nd Answer to stamps
 
-    Then On Registration Profile page, continue to Mailing Information page
+    Then On Profile page, continue to Mailing Information page
     Then set Registration Membership page First Name to random
     Then set Registration Membership page Last Name to random
     Then set Registration Membership page Company to random
@@ -39,7 +39,7 @@ Feature: First time Mail sign in
     Then On Registration Membership page, click Submit and correct errors
     Then Registration Choose Supplies: Place Order
     Then Registration: Expect Web Registration result page is either Download page or Webpostage
-    Then On Registration Profile page, Send username to standard out
+    Then On Profile page, Send username to standard out
 
     Then What's New: Expect modal is present
     Then What's new: Click More Info
