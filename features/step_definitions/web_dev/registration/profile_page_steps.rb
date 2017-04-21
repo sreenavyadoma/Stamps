@@ -15,6 +15,7 @@ end
 
 Then /^[Ss]et [Rr]egistration [Pp]rofile [Ee]mail to (?:random value|(.*))$/ do |str|
   parameter[:email] = (str.nil?)?(helper.random_email):str
+  registration.profile.email.wait_until_present(10)
   registration.profile.email.set(parameter[:email])
 end
 
@@ -25,21 +26,30 @@ end
 
 Then /^[Ss]et [Rr]egistration [Pp]rofile [Uu]sername to (?:random value|(.*))$/ do |str|
   parameter[:username] = (str.nil?)?(helper.random_string):str
-  registration.profile.account_info.username.set(parameter[:usr])
+  registration.profile.account_info.account_username.set(parameter[:username])
 end
 
 Then /^[Ee]xpect [Rr]egistration [Pp]rofile [Uu]sername is (?:correct|(.*))$/ do |str|
   str = (str.nil?)?parameter[:username]:str
-  expect(registration.profile.account_info.username.text).to eql(str)
+  expect(registration.profile.account_info.account_username.text).to eql(str)
 end
 
 Then /^[Ss]et [Rr]egistration [Pp]rofile [Pp]assword to (?:random value|(.*))$/ do |str|
   parameter[:password] = (str.nil?)?(helper.random_password):str
-  registration.profile.account_info.password.set(parameter[:pw])
+  registration.profile.account_info.account_password.set(parameter[:password])
 end
 
-Then /^[Ss]et [Rr]egistration [Pp]rofile [Rr]e-[Tt]ype password to (?:random value|(.*))$/ do |str|
+Then /^[Ee]xpect [Rr]egistration [Pp]rofile [Pp]assword is (?:correct|(.*))$/ do |str|
+  str = (str.nil?)?parameter[:password]:str
+  expect(registration.profile.account_info.account_password.text).to eql(str)
+end
+
+Then /^[Ss]et [Rr]egistration [Pp]rofile [Rr]e-[Tt]ype [Pp]assword to (?:random value|(.*))$/ do |str|
   registration.profile.account_info.retype_password.set((str.nil?)?(parameter[:password]):str)
+end
+
+Then /^[Ee]xpect [Rr]egistration [Pp]rofile [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |str|
+  expect(registration.profile.account_info.retype_password.text).to eql(parameter[:password])
 end
 
 Then /^set [Rr]egistration [Pp]rofile [Ss]urvey [Qq]uestion to (.*)$/ do |str|

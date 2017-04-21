@@ -13,7 +13,10 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then expect Registration Profile Username is correct
 
     Then set Registration Profile Password to random value
+    Then expect Registration Profile Password is correct
+
     Then set Registration profile Re-type password to random value
+    Then expect Registration Profile Re-Type password is correct
 
     Then set Registration Profile Survey Question to Mostly mailing
     Then set Registration Profile Survey Question to Mostly shipping

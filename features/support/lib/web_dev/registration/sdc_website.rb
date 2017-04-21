@@ -26,9 +26,9 @@ module Stamps
       end
 
       def get_started
-        5.times do
+        3.times do
           get_started_btn.click
-          registration.wait_until_present(7)
+          registration.wait_until_present(10)
           return registration if registration.present?
         end
       end

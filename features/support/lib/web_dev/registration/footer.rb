@@ -7,7 +7,7 @@ module Stamps
 
         def initialize(param)
           super
-          @privacy_policy_link = StampsElement.new(browser.a(id: "a[data-pgtitle='Privacy Policy']"))
+          @privacy_policy_link = StampsElement.new(browser.a(css: "a[data-pgtitle='Privacy Policy']"))
           @copyright_link = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[2]"))
           @trust_elogo = StampsElement.new(browser.img(id: "Registration/images/global/logo_truste.png"))
           @live_chat_button = StampsElement.new(browser.link(text: "Live Chat"))

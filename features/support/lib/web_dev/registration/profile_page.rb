@@ -39,17 +39,17 @@ module Stamps
       end
 
       class AccountInfo < Browser::StampsModal
-        attr_reader :username, :password, :retype_password
+        attr_reader :account_username, :account_password, :retype_password
 
         def initialize(param)
           super
-          text_box = browser.text_field(id: "username")
+          text_box = browser.text_field(name: "username")
           help_collection = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
-          @username = StampsTextBoxModule.new(text_box, help_collection)
+          @account_username = StampsTextBoxModule.new(text_box, help_collection)
 
           text_box = browser.text_field(id: "password")
           help_collection = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
-          @password = StampsTextBoxModule.new(text_box, help_collection)
+          @account_password = StampsTextBoxModule.new(text_box, help_collection)
 
           text_box = browser.text_field(id: "confirmPassword")
           help_collection = browser.lis(css: "")
@@ -175,6 +175,7 @@ module Stamps
 
         def wait_until_present(*args)
           header.wait_until_present(*args)
+          email.wait_until_present(*args)
         end
 
         def continue
