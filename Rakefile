@@ -475,6 +475,11 @@ Cucumber::Rake::Task.new(:bvt_new_order) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:dev_bvt_new_order) do |t|
+  t.profile = 'dev_bvt_new_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_printing) do |t|
   t.profile = 'bvt_printing'
   t.cucumber_opts = "-p cuke_reports"
