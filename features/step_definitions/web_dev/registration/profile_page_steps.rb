@@ -88,8 +88,13 @@ Then /^[Cc]ontinue to [Mm]embership page$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Ff]irst [Ff]ame to (?:random value|(.*))$/ do |str|
-  parameter[:first_name] = (str.nil?)?(helper.random_alpha_capitalize):str
-  registration.membership.first_name
+  parameter[:first_name] = (str.nil?)?(helper.random_alpha_capitalize(2,8)):str
+  registration.membership.first_name(parameter[:first_name])
+end
+
+Then /^[Ss]et [Mm]embership [Ll]ast [Ff]ame to (?:random value|(.*))$/ do |str|
+  parameter[:last_name] = (str.nil?)?(helper.random_alpha_capitalize(3, 10)):str
+  registration.membership.last_name(parameter[:last_name])
 end
 
 

@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem waitr
 gem 'watir-webdriver', '0.9.3'
 gem 'selenium-webdriver', '2.53.4'
 gem 'gherkin'
