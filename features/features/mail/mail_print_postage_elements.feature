@@ -25,11 +25,11 @@ Feature: Verify Mail Elements Are Present
     Then select Print form service Priority Mail Package
     Then expect Print form Tracking Field is present
     Then expect Print form Tracking Price is present
-    Then expect Print form Extra Services Button is present
+    #Then expect Print form Extra Services Button is present
     Then expect Print form Label Image Preview is present
     Then expect Print form Hide Mail Value check box is present
     Then expect Print form Print Receipt check box is present
-    Then expect Print form Print Reference Number check box is present
+    #Then expect Print form Print Reference Number check box is present
     Then expect Advanced Options Reference Number field is present
     Then expect Advanced Options Cost Code Field is present
     Then expect Print form Reset Button is present
@@ -39,7 +39,7 @@ Feature: Verify Mail Elements Are Present
     Then expect Print form Mail Total is present
     Then expect Print form Print Sample Button is present
     Then expect Print form Print Button is present
-    Then on Print form, set Mail To country to Canada
+    #Then on Print form, set Mail To country to Canada
     Then expect Print form International Name Field is present
     Then expect Print form International Company Field is present
     Then expect Print form International Address 1 Field is present
