@@ -485,6 +485,11 @@ Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:dev_import_orders) do |t|
+  t.profile = 'dev_import_orders'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:dev_bvt_shipping_address_management) do |t|
   t.profile = 'dev_bvt_shipping_address_management'
   t.cucumber_opts = "-p cuke_reports"
