@@ -51,7 +51,7 @@ Then /^[Ss]et Order Details form Ship-To Country to (.*)$/ do |country|
 end
 
 Then /^[Ss]et Order Details form International Ship-To Name to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_name] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_name] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.name.send_keys(:enter)
   else
@@ -60,7 +60,7 @@ Then /^[Ss]et Order Details form International Ship-To Name to \"(.*)\"$/ do |va
 end
 
 Then /^[Ss]et Order Details form International Ship-To Company to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_company] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_company] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.company.send_keys(:enter)
   else
@@ -69,7 +69,7 @@ Then /^[Ss]et Order Details form International Ship-To Company to \"(.*)\"$/ do 
 end
 
 Then /^[Ss]et Order Details form International Ship-To Address 1 to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_address_1] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_address_1] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_1.send_keys(:enter)
   else
@@ -78,7 +78,7 @@ Then /^[Ss]et Order Details form International Ship-To Address 1 to \"(.*)\"$/ d
 end
 
 Then /^[Ss]et Order Details form International Ship-To Address 2 to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_address_2] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_address_2] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.address_2.send_keys(:enter)
   else
@@ -87,7 +87,7 @@ Then /^[Ss]et Order Details form International Ship-To Address 2 to \"(.*)\"$/ d
 end
 
 Then /^[Ss]et Order Details form International Ship-To City to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_city] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_city] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.city.send_keys(:enter)
   else
@@ -96,7 +96,7 @@ Then /^[Ss]et Order Details form International Ship-To City to \"(.*)\"$/ do |va
 end
 
 Then /^[Ss]et Order Details form International Ship-To Province to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_province] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_province] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.province.send_keys(:enter)
   else
@@ -105,7 +105,7 @@ Then /^[Ss]et Order Details form International Ship-To Province to \"(.*)\"$/ do
 end
 
 Then /^[Ss]et Order Details form International Ship-To Postal Code to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_postal_code] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_postal_code] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.postal_code.send_keys(:enter)
   else
@@ -114,7 +114,7 @@ Then /^[Ss]et Order Details form International Ship-To Postal Code to \"(.*)\"$/
 end
 
 Then /^[Ss]et Order Details form International Ship-To Phone to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_phone] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_phone] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.phone.send_keys(:enter)
   else
@@ -123,7 +123,7 @@ Then /^[Ss]et Order Details form International Ship-To Phone to \"(.*)\"$/ do |v
 end
 
 Then /^[Ss]et Order Details form International Ship-To Email to \"(.*)\"$/ do |value|
-  parameter[:int_ship_to_email] = ((value.downcase == 'random')? helper.random_name : value)
+  parameter[:int_ship_to_email] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
     stamps.orders.order_details.ship_to.international.email.send_keys(:enter)
   else
@@ -236,7 +236,7 @@ end
 Then /^[Ss]et Order Details form Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
 
-  parameter[:name] = (address_table['name'].downcase.include?('random')) ? helper.random_name : address_table['name']
+  parameter[:name] = (address_table['name'].downcase.include?('random')) ? helper.random_full_name : address_table['name']
   parameter[:company] = (address_table['company'].downcase.include?('random')) ? helper.random_company_name : address_table['company']
   parameter[:street_address] = address_table['street_address']
 
@@ -260,7 +260,7 @@ Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
   address_table = table.hashes.first
 
   parameter[:country] = address_table['country']
-  parameter[:name] = (address_table['name'].downcase.include?('random')) ? helper.random_name : address_table['name']
+  parameter[:name] = (address_table['name'].downcase.include?('random')) ? helper.random_full_name : address_table['name']
   parameter[:company] = (address_table['company'].downcase.include?('random')) ? helper.random_company_name : address_table['company']
   parameter[:street_address_1] = (address_table['street_address_1'].downcase.include?('random')) ? helper.random_string : address_table['street_address_1']
   parameter[:street_address_2] = (address_table['street_address_2'].downcase.include?('random')) ? helper.random_suite : address_table['street_address_2']

@@ -83,7 +83,14 @@ Then /^[Ee]xpect [Pp]rofile [Mm]oney-saving offers and new products is unchecked
   expect(registration.profile.side_content.money_saving_offers.checkbox).not_to be_checked, "Expected Profile Money-saving offers and new products is checked. Got unchecked"
 end
 
+Then /^[Cc]ontinue to [Mm]embership page$/ do
+  registration.profile.continue
+end
 
+Then /^[Ss]et [Mm]embership [Ff]irst [Ff]ame to (?:random value|(.*))$/ do |str|
+  parameter[:first_name] = (str.nil?)?(helper.random_alpha_capitalize):str
+  registration.membership.first_name
+end
 
 
 

@@ -4,7 +4,7 @@ module Stamps
       attr_reader :get_started_btn, :registration
       def initialize(param)
         super
-        @get_started_btn = StampsElement.new(browser.button(css: "div[id=left-content]>button[class*=register]"))
+        @get_started_btn = StampsElement.new(browser.button(css: "div[class*='pull-right']>button[class*=register]"))
         @registration = WebRegistration.new(param)
       end
 
@@ -28,7 +28,7 @@ module Stamps
       def get_started
         3.times do
           get_started_btn.click
-          registration.wait_until_present(10)
+          registration.wait_until_present(12)
           return registration if registration.present?
         end
       end

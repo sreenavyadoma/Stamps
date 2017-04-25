@@ -1,19 +1,20 @@
 module Stamps
 
   module RandomGenerators
-    def random_name
-      "#{random_alpha} #{random_alpha}".split.map(&:capitalize).join(' ')
+    def random_full_name
+      "#{random_alpha_capitalize(2, 8)} #{random_alpha_capitalize(3, 10)}"
     end
 
-    def random_company_name
-      "#{random_alpha}#{random_alpha}".split.map(&:capitalize).join(' ')
+    def random_alpha_capitalize(*args)
+      random_alpha(args).capitalize
+    end
+
+    def random_company_name(*args)
+      "#{random_alpha_numeric(5, 16)}".split.map(&:capitalize).join(' ')
     end
 
     def random_alpha(*args)
       case args.length
-        when 0
-          min = 2
-          max = 10
         when 1
           min = 2
           max = args[0].to_i
@@ -22,16 +23,17 @@ module Stamps
           max = args[1].to_i - 1
         else
           min = 2
-          max = 13
+          max = 10
       end
       Array.new(rand(min..max)){[*"a".."z"].sample}.join
     end
 
+    def random_alpha_numeric(*args)
+      random_string(args)
+    end
+
     def random_string(*args)
       case args.length
-        when 0
-          min = 5
-          max = 13
         when 1
           min = 2
           max = args[0].to_i
@@ -101,7 +103,7 @@ module Stamps
           if index==address_array.size-1 #if this is the last item in the string, don't append a new line
             formatted_address = formatted_address + element.to_s.strip
           else #(param_hash['name'].downcase.include? 'random') ? helper.random_name : param_hash['name']
-            formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? helper.random_name : element.to_s.strip) + "\n"
+            formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? helper.random_full_name : element.to_s.strip) + "\n"
           end
         end
       end
@@ -124,7 +126,7 @@ module Stamps
     end
 
     def address_hash_to_str(address)
-      name = (address['name'].downcase.include? 'random') ? helper.random_name : address['name']
+      name = (address['name'].downcase.include? 'random') ? helper.random_full_name : address['name']
       company_name = (address['company'].downcase.include? 'random') ? helper.random_company_name : address['company']
       street_address = address["street_address"]
 
@@ -314,7 +316,7 @@ module Stamps
 
     def rand_zone_processing address
       shipping =  address[rand(address.size)]
-      shipping['name'] = helper.random_name
+      shipping['name'] = helper.random_full_name
       shipping['company'] = helper.random_company_name
       #shipping['phone'] = helper.random_phone
       #shipping['email'] = helper.random_email
@@ -323,7 +325,7 @@ module Stamps
 
     def rand_zone_1_4
       shipping = data_rand_zone_1_4
-      shipping['name'] = helper.random_name
+      shipping['name'] = helper.random_full_name
       shipping['company'] = helper.random_company_name
       #shipping['phone'] = helper.random_phone
       #shipping['email'] = helper.random_email
@@ -332,7 +334,7 @@ module Stamps
 
     def rand_zone_5_8
       shipping = data_rand_zone_5_8
-      shipping['name'] = helper.random_name
+      shipping['name'] = helper.random_full_name
       shipping['company'] = helper.random_company_name
       #shipping['phone'] = helper.random_phone
       #shipping['email'] = helper.random_email
@@ -343,7 +345,7 @@ module Stamps
       us_states = data_for(:us_states, {}) if us_states.nil?
       shipping = data_rand_zone_1_4
       shipping["ship_from_zip"] = shipping["zip"]
-      shipping['name'] = random_name
+      shipping['name'] = random_full_name
       shipping['company'] = random_company_name
       #shipping['phone'] = random_phone
       #shipping['email'] = random_email
@@ -357,7 +359,7 @@ module Stamps
       us_states = data_for(:us_states, {}) if us_states.nil?
       shipping = data_rand_zone_5_8
       shipping["ship_from_zip"] = shipping["zip"]
-      shipping['name'] = random_name
+      shipping['name'] = random_full_name
       shipping['company'] = random_company_name
       #shipping['phone'] = random_phone
       #shipping['email'] = random_email

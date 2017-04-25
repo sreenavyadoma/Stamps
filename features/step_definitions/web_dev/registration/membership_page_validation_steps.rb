@@ -52,7 +52,7 @@ Then /^[Ss]et [Rr]egistration [Mm]embership page Extenion to (.*)$/ do |var|
 end
 
 Then /^[Ss]et [Rr]egistration [Mm]embership page Cardholder name to (.*)$/ do |var|
-  test_parameter[:card_holder_name] = (var.downcase.include? 'random') ? helper.random_name : var
+  test_parameter[:card_holder_name] = (var.downcase.include? 'random') ? helper.random_full_name : var
   registration.profile.membership.card_holder_name.set test_parameter[:card_holder_name]
 end
 

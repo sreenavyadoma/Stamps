@@ -75,8 +75,8 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
       if index != 0
         address = helper.rand_zone_1_4
         row[2] = Random.rand(1..10)
-        row[3] = helper.random_name
-        row[4] = helper.random_name
+        row[3] = helper.random_full_name
+        row[4] = helper.random_full_name
         row[5] = helper.random_company_name
         row[6] = address['street_address']
         row[9] = address['city']
@@ -88,10 +88,10 @@ Then /^Import Orders: Randomize data in (.*)$/ do |filename|
         row[16] = Random.rand(1..10)
         row[17] = Random.rand(1..10)
         row[18] = Random.rand(1..10)
-        row[19] = helper.random_name
-        row[20] = helper.random_name
+        row[19] = helper.random_full_name
+        row[20] = helper.random_full_name
         row[21] = [true, false].sample
-        row[22] = helper.random_name
+        row[22] = helper.random_full_name
       end
       csv_out << row
     end
