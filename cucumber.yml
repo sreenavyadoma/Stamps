@@ -1,4 +1,4 @@
-default: --backtrace --profile dev_bvt_new_order
+default: --backtrace --profile kaushal
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -23,6 +23,8 @@ eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=tru
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 sap: --tags @registration_profile_page_ui_validation WEB_APP=registration USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 kaushal: --tags @multi_order_dialog_bulk_update WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+sap: --tags @registration_profile_page_ui_validation WEB_APP=webreg USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
+kaushal: --tags @mail_bvt_extra_services WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=selenium MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
@@ -88,7 +90,6 @@ dev_bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=true HEALTH
 dev_international_order: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
 dev_domestic_order: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
 dev_printing: --tags @bvt_printing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
-
 
 # PRINT TWO UP EXPANDED
 print_two_up_expanded_sdc1200_left_print3: --tags @print_two_up_expanded_sdc1200_left_print3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_two_up_expanded_sdc1200_left_print3
