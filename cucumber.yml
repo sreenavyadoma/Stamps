@@ -84,10 +84,18 @@ bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --gue
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_updates_international
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bvt_shipstation_search
 
-dev_bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=bvt_new_order
-dev_international_order: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
-dev_domestic_order: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
-dev_printing: --tags @bvt_printing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_address_cleansing: --tags @bvt_address_cleansing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_international_shipping: --tags @bvt_international_shipping --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_printing: --tags @bvt_printing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_purchasing: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+dev_import_orders: --tags @import_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders USER_CREDENTIALS=developers
+
+
 
 
 # PRINT TWO UP EXPANDED
@@ -232,6 +240,15 @@ mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess DEBUG=false JE
 mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_purchasing
 mail_bvt_stamps: --tags  @mail_bvt_stamps --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_stamps
 mail_bvt_international: --tags  @mail_bvt_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_international
+
+dev_mail_authentication: --tags  @mail_authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
+dev_mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
+dev_mail_bvt_contacts: --tags  @mail_bvt_contacts --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
+dev_mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
+dev_mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
+dev_mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
+dev_mail_bvt_stamps: --tags  @mail_bvt_stamps --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
+dev_mail_bvt_international: --tags  @mail_bvt_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail USER_CREDENTIALS=developers
 
 mail_print_label_left_side: --tags  @mail_print_label_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_label_left_side
 mail_print_label_right_side: --tags  @mail_print_label_right_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_print_label_right_side
