@@ -371,6 +371,7 @@ module Stamps
         @text_box = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
+
       end
 
       def present?

@@ -15,7 +15,7 @@ module Stamps
 
           text_box = browser.text_field(id: "sdc-extraserviceswin-valuenumberfield-inputEl")
           inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=up]")
-          dec_btn = browser.divs(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=down]")
+          dec_btn = browser.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=down]")
           @value = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_boxes = browser.text_fields(id: "sdc-extraserviceswin-contentdroplist-inputEl")
