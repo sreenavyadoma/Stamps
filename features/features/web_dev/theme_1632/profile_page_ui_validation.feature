@@ -13,7 +13,7 @@ Feature: Profile page validation theme_1632
     Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
-#    Then expect Registration bread crumbs to contain Profile
+    Then expect Registration bread crumbs to contain Profile
 #    Then expect Registration bread crumbs to contain Membership
 #    Then expect Registration bread crumbs to contain Choose Supplies
 #    Then expect Profile header contain Sign up for a new account
