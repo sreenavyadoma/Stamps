@@ -18,7 +18,6 @@ module Stamps
             drop_down.click if elements.size == 0
             break unless elements.size == 0
           end
-          expect(elements.size).to eql(5)
           selection = nil
           5.times do
             elements.each { |span|
