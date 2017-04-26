@@ -25,7 +25,7 @@ Then /^[Ee]xpect [Pp]rofile [Ee]mail is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Uu]sername to (?:random value|(.*))$/ do |str|
-  parameter[:username] = (str.nil?)?(helper.random_string):str
+  parameter[:username] = (str.nil?)?(helper.random_alpha_numeric):str
   registration.profile.account_info.account_username.set(parameter[:username])
 end
 

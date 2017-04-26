@@ -168,6 +168,7 @@ module Stamps
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
+
         else
           #
         end

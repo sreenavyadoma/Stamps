@@ -17,7 +17,7 @@ Then /^Volusion Login:  Set Password to (.*)$/ do |password|
 end
 
 Then /^Volusion New to Mail Stamps: Set email address to (.*)$/ do |email|
-  @volusion_email = (email.downcase == 'random')? "#{helper.random_string}@mailinator.com":email
+  @volusion_email = (email.downcase == 'random')? "#{helper.random_alpha_numeric}@mailinator.com":email
   @volusion_reg.email.set @volusion_email
 end
 

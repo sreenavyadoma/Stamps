@@ -28,7 +28,9 @@ module Stamps
 
 
 
-          @state = State.new(param)
+          @state = MembershipState.new(param)
+
+
           @zip = StampsTextBox.new browser.text_field(id: "zip")
           @phone = MembershipPhone.new browser.text_field(id: "phone")
         end
@@ -104,7 +106,7 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          browser.text_field(id: "firstName").wait_until_present(args)
+          browser.text_field(id: "firstName").wait_until_present(args[0])
         end
 
         def present?

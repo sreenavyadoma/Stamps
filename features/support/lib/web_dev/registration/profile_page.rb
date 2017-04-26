@@ -32,13 +32,13 @@ module Stamps
 
         def select(str)
           selection = element(str)
-          expect(selection).not_to be_nil, "Survey Question #{str} is invalid. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individua."
+          expect(selection).not_to be_nil, "Invalid Selection: #{str}"
           10.times do
             drop_down.click unless selection.present?
             selection.click
             return text_box.text if text_box.text.downcase.include?(str.downcase)
           end
-          expect(text_box.downcase.text).to include(str.downcase), "Survey Question #{str} is invalid. Valid options are Mostly mailing, Mostly shipping, Both mailing and shipping and Individual."
+          expect(text_box.downcase.text).to include(str.downcase), "Invalid Selection: #{str}"
         end
       end
 
@@ -77,7 +77,7 @@ module Stamps
             selection.click
             break if text_box.text.downcase.include?(str)
           end
-          expect(text_box.text).to include(str), "Invalid Secret Question selection: #{str}. Check your feature file."
+          expect(text_box.text).to include(str), "Invalid selection: #{str}. Check your page object."
         end
       end
 
