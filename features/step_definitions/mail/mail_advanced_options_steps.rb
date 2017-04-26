@@ -92,7 +92,7 @@ end
 
 Then /^[Ss]et Advanced Options Reference Number to (?:(?:a |some |)random string|(.*))$/ do |str|
   step "Expect Advanced Options responds to Reference Number (reference_number)"
-  parameter[:reference_number] = (str.nil?)?helper.random_string : str
+  parameter[:reference_number] = (str.nil?)?helper.random_alpha_numeric : str
   stamps.mail.print_form.advanced_options.reference_number.set(parameter[:reference_number])
 end
 
