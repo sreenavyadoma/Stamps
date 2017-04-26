@@ -7,7 +7,7 @@ Then /^[Ss]et Print form [Ii]nternational [Mm]ail [Tt]o [Cc]ountry to (.*)$/ do 
 end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
-  parameter[:address] = address_helper(address)
+  parameter[:address] = helper.address_helper(address)
   stamps.mail.print_form.mail_to.address.text_area.set(parameter[:address])
 end
 

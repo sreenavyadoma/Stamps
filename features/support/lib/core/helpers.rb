@@ -121,6 +121,11 @@ module Stamps
       end
     end
 
+    def address_helper(zone)
+      return format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
+      format_address(zone)
+    end
+
     def address_hash_to_str(address)
       name = (address['name'].downcase.include? 'random') ? helper.random_full_name : address['name']
       company_name = (address['company'].downcase.include? 'random') ? helper.random_company_name : address['company']
