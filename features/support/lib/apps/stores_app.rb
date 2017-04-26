@@ -1,7 +1,6 @@
-module Stamps
-  module StoresApp
-    def volusion
-      @volusion = Stores::VolusionLoginPage.new(param)
-    end
+
+module StoresApp
+  def volusion
+    @volusion = Stores::VolusionLoginPage.new(param)
   end
 end
