@@ -1,26 +1,26 @@
 module Stamps
 
   module RandomGenerators
-    def random_full_name
-      "#{random_alpha_capitalize(2, 8)} #{random_alpha_capitalize(3, 10)}"
-    end
-
-    def random_alpha_capitalize(*args)
-      random_alpha(args).capitalize
+    def random_full_name(*args)
+      "#{random_alpha_capitalize(*args)} #{random_alpha_capitalize(*args)}"
     end
 
     def random_company_name(*args)
-      "#{random_alpha_numeric(5, 16)}".split.map(&:capitalize).join(' ')
+      "#{random_alpha_numeric(*args)}".split.map(&:capitalize).join(' ')
+    end
+
+    def random_alpha_capitalize(*args)
+      random_alpha(*args).capitalize
     end
 
     def random_alpha(*args)
       case args.length
         when 1
           min = 2
-          max = args[0].to_i
+          max = args[0]
         when 2
-          min = args[0].to_i
-          max = args[1].to_i - 1
+          min = args[0]
+          max = args[1]
         else
           min = 2
           max = 10
@@ -28,21 +28,21 @@ module Stamps
       Array.new(rand(min..max)){[*"a".."z"].sample}.join
     end
 
-    def random_alpha_numeric(*args)
-      random_string(args)
+    def random_password
+      random_alpha_numeric(6, 13)
     end
 
-    def random_string(*args)
+    def random_alpha_numeric(*args)
       case args.length
         when 1
           min = 2
-          max = args[0].to_i
+          max = args[0]
         when 2
-          min = args[0].to_i
-          max = args[1].to_i - 1
+          min = args[0]
+          max = args[1]
         else
           min = 2
-          max = 13
+          max = 10
       end
       Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max)){[*"0".."9", *"A".."Z", *"0".."9", *"a".."z", *"0".."9"].sample}.join
     end
@@ -56,11 +56,7 @@ module Stamps
     end
 
     def random_email
-      "#{random_string}@mailinator.com".downcase
-    end
-
-    def random_password()
-      Array.new(([*6..13].sample)){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
+      "#{random_alpha_numeric(4, 14)}@mailinator.com".downcase
     end
 
     def random_suite
@@ -398,15 +394,15 @@ module Stamps
 
   class BrowserType
     attr_reader :browser_sym
-    
+
     def initialize(browser_sym)
-      expect("ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge").to include(browser_sym), 
+      expect("ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge").to include(browser_sym),
                                                                                                                "Invalid browser selection: #{browser_sym}. Valid values for browser are ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge"
       @browser_sym = :firefox if "ff|firefox|mozilla".include? browser_sym.downcase
       @browser_sym = :chrome if "chrome|gc|google".include? browser_sym.downcase
       @browser_sym = :ie if "ie|explorer|internet explorer".include? browser_sym.downcase
       @browser_sym = :safari if "apple|osx|safari|mac".include? browser_sym.downcase
-      @browser_sym = :edge if "edge".include? browser_sym.downcase      
+      @browser_sym = :edge if "edge".include? browser_sym.downcase
     end
   end
 

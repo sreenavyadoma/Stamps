@@ -1,7 +1,5 @@
 module Stamps
-
   module Browser
-
     class StampsElement
       attr_reader :element, :browser
       def initialize(element)
@@ -373,6 +371,7 @@ module Stamps
         @text_box = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
+
       end
 
       def present?
@@ -432,7 +431,6 @@ module Stamps
       end
 
       def select(str)
-        #logger.info "Select #{str}"
         drop_down.click
         10.times do
           selection = StampsElement.new(selection(str))
@@ -440,7 +438,6 @@ module Stamps
             break if (text_box.text).include?(str)
             drop_down.click unless selection.present?
             selection.click
-            #logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           rescue
             #ignore
           end
@@ -451,7 +448,6 @@ module Stamps
     end
 
     # Modals
-
     class ModalParam
       attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :browser_sym, :firefox_profile
     end
@@ -467,6 +463,5 @@ module Stamps
         @helper = StampsTestHelper.new(logger)
       end
     end
-
   end
 end

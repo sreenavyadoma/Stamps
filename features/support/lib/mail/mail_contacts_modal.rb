@@ -14,7 +14,7 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        window_title.wait_until_present(args)
+        window_title.wait_until_present(args[0])
       end
 
       def present?

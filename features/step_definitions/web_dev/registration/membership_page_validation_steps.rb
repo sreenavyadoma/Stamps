@@ -5,22 +5,22 @@ Then /^[Ss]et [Rr]egistration [Mm]embership page State to (.*)$/ do |str|
 end
 
 Then /^[Ss]et [Rr]egistration [Mm]embership page First Name to (.*)$/ do |var|
-  test_parameter[:first_name] = (var.downcase.include? 'random') ? helper.random_string : var
+  test_parameter[:first_name] = (var.downcase.include? 'random') ? helper.random_alpha_numeric : var
   registration.profile.membership.first_name.set test_parameter[:first_name]
 end
 
 Then /^[Ss]et [Rr]egistration [Mm]embership page Last Name to (.*)$/ do |var|
-  test_parameter[:last_name] = (var.downcase.include? 'random') ? helper.random_string : var
+  test_parameter[:last_name] = (var.downcase.include? 'random') ? helper.random_alpha_numeric : var
   registration.profile.membership.last_name.set test_parameter[:last_name]
 end
 
 Then /^[Ss]et [Rr]egistration [Mm]embership page Company to (.*)$/ do |var|
-  test_parameter[:company] = (var.downcase.include? 'random') ? helper.random_string : var
+  test_parameter[:company] = (var.downcase.include? 'random') ? helper.random_alpha_numeric : var
   registration.profile.membership.company.set test_parameter[:company]
 end
 
 Then /^[Ss]et [Rr]egistration [Mm]embership page Address to (.*)$/ do |var|
-  test_parameter[:company] = (var.downcase.include? 'random') ? helper.random_string : var
+  test_parameter[:company] = (var.downcase.include? 'random') ? helper.random_alpha_numeric : var
   registration.profile.membership.address.set test_parameter[:company]
 end
 

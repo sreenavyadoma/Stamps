@@ -25,7 +25,7 @@ module Stamps
         when /rating/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         else
-          url = "https://#{param.test_env}/webpostage/SignIn/Default.aspx?env=Orders"
+          url = "http://#{param.test_env}/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
       end
 
       logger.message "-"

@@ -485,6 +485,51 @@ Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:dev_import_orders) do |t|
+  t.profile = 'dev_import_orders'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_shipping_address_management) do |t|
+  t.profile = 'dev_bvt_shipping_address_management'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_address_cleansing) do |t|
+  t.profile = 'dev_bvt_address_cleansing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_international_shipping) do |t|
+  t.profile = 'dev_bvt_international_shipping'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_new_order) do |t|
+  t.profile = 'dev_bvt_new_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_printing) do |t|
+  t.profile = 'dev_bvt_printing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_purchasing) do |t|
+  t.profile = 'dev_bvt_purchasing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_shipstation_updates_international) do |t|
+  t.profile = 'dev_bvt_shipstation_updates_international'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_bvt_shipstation_updates_domestic) do |t|
+  t.profile = 'dev_bvt_shipstation_updates_domestic'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:details_services) do |t|
   t.profile = 'details_services'
   t.cucumber_opts = "-p cuke_reports"
@@ -1124,6 +1169,46 @@ end
 
 Cucumber::Rake::Task.new(:mail_bvt_international) do |t|
   t.profile = 'mail_bvt_international'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_authentication) do |t|
+  t.profile = 'dev_mail_authentication'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_bvt_contacts) do |t|
+  t.profile = 'dev_mail_bvt_contacts'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_bvt_envelopes) do |t|
+  t.profile = 'dev_mail_bvt_envelopes'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_bvt_extra_services) do |t|
+  t.profile = 'dev_mail_bvt_extra_services'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_bvt_purchasing) do |t|
+  t.profile = 'dev_mail_bvt_purchasing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_bvt_stamps) do |t|
+  t.profile = 'dev_mail_bvt_stamps'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_bvt_international) do |t|
+  t.profile = 'dev_mail_bvt_international'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:dev_mail_bvt_address_cleansing) do |t|
+  t.profile = 'dev_mail_bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
