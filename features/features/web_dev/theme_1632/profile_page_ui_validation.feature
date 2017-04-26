@@ -13,20 +13,21 @@ Feature: Profile page validation theme_1632
     Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
+    Then expect Side content account text is Why do I need to create an account?
 
     #begin
     Then expect Registration bread crumbs is Profile
     Then expect Registration bread crumbs is Membership
     Then expect Registration bread crumbs is Choose Supplies
-    Then expect Profile header is Sign up for a new account
-    Then expect Profile email exists
-    Then expect Profile username exists
-    Then expect Profile password exists
-    Then expect Profile retype password exists
-    Then expect Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-    Then expect Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
-    Then expect Profile Usage Type list of values to contain Business Use - Both mailing and shipping
-    Then expect Profile Usage Type list of values to contain Individual/Home Office
+    Then expect Profile header is Sign up and avoid trips to the Post Office
+#    Then expect Profile email exists
+#    Then expect Profile username exists
+#    Then expect Profile password exists
+#    Then expect Profile retype password exists
+#    Then expect Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
+#    Then expect Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
+#    Then expect Profile Usage Type list of values to contain Business Use - Both mailing and shipping
+#    Then expect Profile Usage Type list of values to contain Individual/Home Office
   #end
 #    Then expect Profile promo code textbox exists
 #    Then expect Profile CONTINUE button exists

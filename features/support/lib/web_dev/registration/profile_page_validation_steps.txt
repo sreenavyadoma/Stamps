@@ -14,7 +14,9 @@ module Stamps
           @usage_type = StampsElement.new (browser.select_list (id: "usageType")).select ("Individual/Home Office")
           @promo_code = StampsElement.new (id: "promoCode")
           @profile_moneysavingoffers_checkbox = StampsElement.new (browser.checkbox(id: 'optIn').set?).to be_truthy
-          @profile_continue_button = StampsElement.new (browser.button(id: "next")).present?).to be_truthy
+          @profile_moneysavingoffers_checkbox = StampsElement.new (browser.checkbox(id: 'optIn'))
+          @profile_continue_button = StampsElement.new (browser.button(id: "next"))
+          @profile_continue_button = StampsElement.new (browser.button(id: "next"))
 
 
          # @profile_content_createanaccount = expect StampsElement.new(browser.text) to include (str)

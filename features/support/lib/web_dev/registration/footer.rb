@@ -11,6 +11,7 @@ module Stamps
           @copyright_link = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[2]"))
           @trust_elogo = StampsElement.new(browser.img(id: "Registration/images/global/logo_truste.png"))
           @live_chat_button = StampsElement.new(browser.link(text: "Live Chat"))
+
         end
 
         def present?
