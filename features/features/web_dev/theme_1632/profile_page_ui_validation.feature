@@ -13,18 +13,21 @@ Feature: Profile page validation theme_1632
     Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
-    Then expect Registration bread crumbs to contain Profile
-#    Then expect Registration bread crumbs to contain Membership
-#    Then expect Registration bread crumbs to contain Choose Supplies
-#    Then expect Profile header contain Sign up for a new account
-#    Then expect Profile email exists
-#    Then expect Profile username exists
-#    Then expect Profile password exists
-#    Then expect Profile retype password exists
-#    Then expect Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-#    Then expect Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
-#    Then expect Profile Usage Type list of values to contain Business Use - Both mailing and shipping
-#    Then expect Profile Usage Type list of values to contain Individual/Home Office
+
+    #begin
+    Then expect Registration bread crumbs is Profile
+    Then expect Registration bread crumbs is Membership
+    Then expect Registration bread crumbs is Choose Supplies
+    Then expect Profile header is Sign up for a new account
+    Then expect Profile email exists
+    Then expect Profile username exists
+    Then expect Profile password exists
+    Then expect Profile retype password exists
+    Then expect Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
+    Then expect Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
+    Then expect Profile Usage Type list of values to contain Business Use - Both mailing and shipping
+    Then expect Profile Usage Type list of values to contain Individual/Home Office
+  #end
 #    Then expect Profile promo code textbox exists
 #    Then expect Profile CONTINUE button exists
 #    Then expect Profile content under Why do I need to create an account

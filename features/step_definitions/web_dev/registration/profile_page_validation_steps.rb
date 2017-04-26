@@ -1,13 +1,22 @@
 # Profile Page Validation Steps
 
 
-Then /^[Ee]xpect [Rr]egistration bread crumbs to contain (.*)$/ do |str|
-  expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist "
+Then /^[Ee]xpect [Rr]egistration bread crumbs is Profile$/ do
+  expect(registration.bread_crumbs.breadcrumb_profile).to eql('Profile'), "Bread crumb #{str} does not exist "
 end
 
-Then /^[Ee]xpect [Pp]rofile header contain (.*)$/ do |str|
-  expect(registration.profile.header).to eql(str), "Profile header #{str} does not exist "
+Then /^[Ee]xpect Registration bread crumbs is Membership$/
+  expect(registration.bread_crumbs.breadcrumb_membership).to eql('Membership'), "Profile header 'Membership' does not exist "
 end
+
+Then /^[Ee]xpect Registration bread crumbs is Choose Supplies$/
+expect(registration.bread_crumbs.breadcrumb_Choosesupplies).to eql('Choose Supplies'), "Profile header #{str} does not exist "
+end
+
+Then /^[Ee]xpect Profile header is Sign up for a new account(.*)$/ do
+  expect(registration.profile.profile_header).to eql('Sign up and avoid trips to the Post Office')
+end
+
 
 Then /^[Ee]xpect [Pp]rofile email exists$/ do
   expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
