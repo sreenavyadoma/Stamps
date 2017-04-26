@@ -116,29 +116,22 @@ module Stamps
       end
 
       class PromoCode < Browser::StampsModal
-        attr_reader :promo_code_link
+        attr_reader :promo_code_link, :promo_code, :hidden_promo_code
         def initialize(param)
           super
           @promo_code_link = StampsElement.new(browser.a(id: 'showPromoCode'))
           help_collection = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
-          @text_box = StampsTextBoxModule.new(text_box, help_collection)
-        end
-
-        def text_box
-          promo_code = browser.text_field(id: 'promoCode')
-          hidden_promo_code = browser.text_field(id: 'promoCodeHidden')
-          20.times do
-            return promo_code if promo_code.present?
-            return hidden_promo_code if hidden_promo_code.present?
-          end
+          @promo_code = StampsTextBoxModule.new(browser.text_field(id: 'promoCode'), help_collection)
+          @hidden_promo_code = StampsTextBoxModule.new(browser.text_field(id: 'promoCodeHidden'), help_collection)
         end
 
         def show_promo_code
           20.times do
-            return text_box if text_box.present?
-            promo_code_link.click unless text_box.present?
+            return hidden_promo_code if hidden_promo_code.present?
+            return promo_code if promo_code.present?
+            promo_code_link.click unless hidden_promo_code.present?
           end
-          expect(text_box).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
+          expect(hidden_promo_code).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
         end
       end
 
