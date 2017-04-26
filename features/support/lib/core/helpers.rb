@@ -28,6 +28,10 @@ module Stamps
       Array.new(rand(min..max)){[*"a".."z"].sample}.join
     end
 
+    def random_password
+      random_alpha_numeric(6, 13)
+    end
+
     def random_alpha_numeric(*args)
       case args.length
         when 1
@@ -52,11 +56,7 @@ module Stamps
     end
 
     def random_email
-      "#{random_alpha_numeric}@mailinator.com".downcase
-    end
-
-    def random_password()
-      Array.new(([*6..13].sample)){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
+      "#{random_alpha_numeric(4, 14)}@mailinator.com".downcase
     end
 
     def random_suite
