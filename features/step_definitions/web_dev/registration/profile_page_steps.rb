@@ -9,7 +9,7 @@ Then /^(?:|[Ii] )[Ll]oad(?:|ed) SDC Website$/ do
   sdc_website.load_page
 end
 
-Then /^click on Get Started$/ do
+Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
   registration = sdc_website.get_started
 end
 

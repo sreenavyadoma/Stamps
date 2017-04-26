@@ -27,12 +27,15 @@ module Stamps
 
 
 
-
           @state = MembershipState.new(param)
 
 
           @zip = StampsTextBox.new browser.text_field(id: "zip")
           @phone = MembershipPhone.new browser.text_field(id: "phone")
+        end
+
+        def present?
+
         end
       end
 

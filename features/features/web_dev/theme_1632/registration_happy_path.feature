@@ -31,6 +31,6 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then uncheck Profile Money-saving offers and new products
     Then expect Profile Money-saving offers and new products is unchecked
 
-    #Then continue to Membership page
+    Then continue to Membership page
 
 

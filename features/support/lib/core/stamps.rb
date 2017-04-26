@@ -1,7 +1,12 @@
 module Stamps
+  include RegistrationApp
   
   def config
     @config ||= StampsTestConfig.new
+  end
+
+  def helper
+    @helper ||= StampsTestHelper.new(config.logger)
   end
 
   def parameter
@@ -13,26 +18,8 @@ module Stamps
     end
     @test_data
   end
-  
-  def helper
-    @helper ||= StampsTestHelper.new(config.logger)
-  end
 
-  def registration
-    @registration ||= Stamps::Registration::WebRegistration.new(param)
-  end
 
-  def registration=registration
-    @registration ||= registration
-  end
-
-  def sdc_website
-    @sdc_website ||= Stamps::Registration::SdcWebsite.new(param)
-  end
-
-  def pam
-    @pam ||= Pam::PaymentAdministratorManager.new(param)
-  end
 
   def health
     @health ||= HealthCheck.new(param)
@@ -72,40 +59,10 @@ module Stamps
         expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
       end
     end
-
     @param.browser = config.browser
     @param.logger = config.logger
     @param.scenario_name = config.scenario_name
     @param
-  end
-
-  def address_helper_zone(zone)
-    case zone.downcase
-      when /zone 1 (?:through|and) 4/
-        helper.rand_zone_1_4
-      when /zone 5 (?:through|and) 8/
-        helper.rand_zone_5_8
-      when /zone 1/
-        helper.rand_zone_1
-      when /zone 2/
-        helper.rand_zone_2
-      when /zone 3/
-        helper.rand_zone_3
-      when /zone 4/
-        helper.rand_zone_4
-      when /zone 5/
-        helper.rand_zone_5
-      when /zone 6/
-        helper.rand_zone_6
-      when /zone 7/
-        helper.rand_zone_7
-      when /zone 8/
-        helper.rand_zone_8
-      when /zone 9/
-        helper.rand_zone_9
-      else
-        return zone
-    end
   end
 
   def address_helper(zone)

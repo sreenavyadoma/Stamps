@@ -274,6 +274,35 @@ module Stamps
   end
 
   module DefaultYmlData
+    def address_helper_zone(zone)
+      case zone.downcase
+        when /zone 1 (?:through|and) 4/
+          rand_zone_1_4
+        when /zone 5 (?:through|and) 8/
+          rand_zone_5_8
+        when /zone 1/
+          rand_zone_1
+        when /zone 2/
+          rand_zone_2
+        when /zone 3/
+          helper.rand_zone_3
+        when /zone 4/
+          rand_zone_4
+        when /zone 5/
+          rand_zone_5
+        when /zone 6/
+          rand_zone_6
+        when /zone 7/
+          rand_zone_7
+        when /zone 8/
+          rand_zone_8
+        when /zone 9/
+          rand_zone_9
+        else
+          return zone
+      end
+    end
+
     def rand_zone_1
       rand_zone_processing data_for(:zone_1_through_4, {})['zone1'].values
     end
