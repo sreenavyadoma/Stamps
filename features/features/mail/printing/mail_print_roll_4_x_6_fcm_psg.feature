@@ -1,10 +1,12 @@
+
+@mail_print_roll_4_x_6_fcm_psg
 Feature: Mail Roll - 4" x 6" - FCM PSG
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_roll_4_x_6_fcm_psg
-  Scenario: Roll - 4" x 6" - FCM PSG
+  @mail_print_roll_4_x_6_fcm
+  Scenario: Roll - 4" x 6" - FCM
 
     #mail_print_roll_4x6_fcm_large_envelope
     Then select Print On Roll - 4" x 6" Shipping Label
@@ -27,6 +29,9 @@ Feature: Mail Roll - 4" x 6" - FCM PSG
     Then Print Postage
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
+
+  @mail_print_roll_4_x_6_psg
+  Scenario: Roll - 4" x 6" - PSG
 
    #mail_print_roll_4x6_psg_large_package
     Then select Print On Roll - 4" x 6" Shipping Label
