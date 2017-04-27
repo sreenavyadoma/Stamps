@@ -365,13 +365,13 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :text_box, :inc_btn, :dec_btn
+      attr_reader :browser, :text_box, :inc_btn, :dec_btn
 
       def initialize(textbox, inc_btn, dec_btn)
         @text_box = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
-
+        @browser = text_box.browser
       end
 
       def present?
@@ -392,6 +392,18 @@ module Stamps
           inc_btn.click
         end
         expect(current_value + value.to_i).to eql text_box.text.to_i
+      end
+
+      def selection(str)
+        expect([:li, :div]).to include(@selection_type)
+        case selection_type
+          when :li
+            browser.lis(text: str)
+          when :div
+            browser.divs(text: str)
+          else
+            # do nothing
+        end
       end
 
       def decrement(value)

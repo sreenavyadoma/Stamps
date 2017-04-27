@@ -8,6 +8,19 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
   @mail_print_stamps_regression
   @mail_stamps_series_wn
   Scenario: Stamps Regression Series #WN
+    #mail_print_stamps_wn_series_specify
+    Then select Print On Stamps
+    Then set Print form Serial Number to WN1234
+    Then select Advanced Options Specify Postage Amount
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then select Print form service Media Mail
+    Then set Print form Amount to 0.15
+    Then set Advanced Options Cost Code to None
+    Then Print Postage
+    Then set Mail Print modal Printer to factory
+    Then click Mail Print modal Print button
+
    #mail_print_stamps_wn_series_calculate
     Then select Print On Stamps
     Then set Print form Serial Number to WN1234
@@ -16,19 +29,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope
-    Then set Advanced Options Cost Code to None
-    Then Print Postage
-    Then set Mail Print modal Printer to factory
-    Then click Mail Print modal Print button
-
-   #mail_print_stamps_wn_series_specify
-    Then select Print On Stamps
-    Then set Print form Serial Number to WN1234
-    Then select Advanced Options Specify Postage Amount
-    Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
-    Then select Print form service Media Mail
-    Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then set Mail Print modal Printer to factory
