@@ -16,7 +16,7 @@ Feature: Profile page validation theme_1632
 
     Then expect Registration bread crumbs is Profile
     Then expect Registration bread crumbs is Membership
-    Then expect Registration bread crumbs is Special Offer
+    #Then expect Registration bread crumbs is Special Offer
     Then expect Profile header contain Sign up for a new account
     Then expect Profile email exists
     Then expect Profile username exists

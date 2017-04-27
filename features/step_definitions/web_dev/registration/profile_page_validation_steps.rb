@@ -1,7 +1,7 @@
 # Profile Page Validation Steps
 
 Then /^[Ee]xpect [Pp]rofile header contain (.*)$/ do |str|
-  expect(registration.profile.header).to eql(str), "Profile header #{str} does not exist "
+  expect(registration.profile.header.text).to eql(str)
 end
 
 Then /^[Ee]xpect [Pp]rofile email exists$/ do
@@ -22,7 +22,7 @@ Then /^[Ee]xpect [Pp]rofile retype password exists$/ do
 end
 
 Then /^[Ee]xpect [Pp]rofile promo code textbox exists$/ do
-  expect(registration.profile.promocode.present?).to be (true)
+  expect(registration.profile.promocode.present?).to be (true), "expect Profile promo code textbox does not exist"
 end
 
 Then /^[Ee]xpect [Pp]rofile CONTINUE button exists$/ do
