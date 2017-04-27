@@ -5,9 +5,9 @@ module Stamps
 
       def initialize(param)
         super
-        @bread_crumb_profile = StampsElement.new(browser.li(id: "breadcrumb_Profile"))
-        @bread_crumb_membership = StampsElement.new(browser.li(id: "breadcrumb_Membership"))
-        @bread_crumb_special_offer = StampsElement.new(browser.li(id: "breadcrumb_ChooseSupplies"))
+        @bread_crumb_profile = StampsElement.new(browser.span(css: "li[id=breadcrumb_Profile]>span"))
+        @bread_crumb_membership = StampsElement.new(browser.span(css: "li[id=breadcrumb_Membership]>span"))
+        @bread_crumb_special_offer = StampsElement.new(browser.span(css: "li[id=breadcrumb_sm_ChooseSupplies]>span"))
       end
     end
   end
