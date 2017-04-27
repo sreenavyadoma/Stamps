@@ -12,7 +12,7 @@ Feature:  Ambigious Address
     Then Expect Exact Address Not Found module to appear
     Then In Exact Address Not Found module, select row 2
     Then set Order Details form service to PM Package
-    Then check Orders Grid row 1
+    Then Pause for 2 seconds
     Then expect Orders Grid Recipient is Joseph Balancio
     Then expect Orders Grid Company is Betfair
     Then expect Orders Grid City is San Francisco

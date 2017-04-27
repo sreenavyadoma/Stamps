@@ -23,19 +23,30 @@ require 'holidays'
 
 
 # Print form module
-require_relative 'lib/core/browser'
-require_relative 'lib/core/stamps'
-require_relative 'lib/core/stamps_logger'
-require_relative 'lib/core/helpers'
 
-# helper module
-require_relative 'lib/orders/fields'
-require_relative 'lib/mail/print_form_panel'
-require_relative 'lib/windows/print_window'
+require_relative 'lib/apps/registration_app'
+require_relative 'lib/apps/stores_app'
+require_relative 'lib/apps/test_helpers'
+require_relative 'lib/apps/web_apps'
+require_relative 'lib/apps/stamps'
+require_relative 'lib/core/browser'
+require_relative 'lib/core/helpers'
+require_relative 'lib/core/stamps_logger'
+require_relative 'lib/common/stamps_dot_com'
+require_relative 'lib/orders/orders'
+require_relative 'lib/mail/mail_sign_in'
 require_relative 'lib/orders/store_management'
-require_relative 'lib/orders/general_settings'
-require_relative 'lib/windows/open_file'
-require_relative '../../features/support/lib/common/customs_information'
+
+
+#
+# # helper module
+# require_relative 'lib/orders/fields'
+# require_relative 'lib/mail/print_form_panel'
+# require_relative 'lib/windows/print_window'
+# require_relative 'lib/orders/store_management'
+# require_relative 'lib/orders/general_settings'
+# require_relative 'lib/windows/open_file'
+# require_relative '../../features/support/lib/common/customs_information'
 
 # require 'Win32API'
 # require 'win32/registry.rb'

@@ -1,5 +1,30 @@
 module Stamps
   module Browser
+    module HelpBlockElement
+      attr_accessor :help_elements
+      def help_text(*args)
+        expect(help_elements).not_to be_nil, "help_elements cannot be nil. Set Object.help_elements=some_element_collection before calling help_text."
+        return "" if help_elements.size == 0 # there are no help elements, return an empty string
+        index = (args.size=0)?0:(args[0].to_i-1)
+        begin
+          help_elements[index].text
+        rescue Exception => e
+          p e.message
+          p e.backtrace.join("\n")
+          return ""
+        end
+      end
+
+      def has_error?
+        expect(help_elements).not_to be_nil, "help_elements cannot be nil. Set Object.help_elements=some_element_collection before calling help_text."
+        begin
+          help_elements.size > 0
+        rescue
+          return false
+        end
+      end
+    end
+
     class StampsElement
       attr_reader :element, :browser
       def initialize(element)
@@ -173,6 +198,8 @@ module Stamps
     end
 
     class StampsTextBox < StampsElement
+      include HelpBlockElement
+
       def present?
         element.present?
       end
@@ -201,25 +228,6 @@ module Stamps
 
       def set_attribute_value(attribute_name, value)
         browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", element)
-      end
-    end
-
-    class StampsTextBoxModule < StampsTextBox
-      attr_reader :help_collection
-
-      def initialize(text_box, help_collection)
-        super(text_box)
-        @help_collection = help_collection
-      end
-
-      def help_text(*args)
-        return "" if help_collection.size == 0
-        index = (args.size=0)?0:(args[0].to_i-1)
-        help_collection[index].text
-      end
-
-      def has_error?
-        help_collection.size > 0
       end
 
       def data_error
@@ -318,7 +326,7 @@ module Stamps
       end
     end
 
-    class StampsDropDown
+    class StampsOldDropDown #TODO-Rob refactor this to StampsGenericDropDown
       attr_accessor :browser, :drop_down, :text_box, :html_tag
 
       def initialize(drop_down, html_tag, text_box)
@@ -364,14 +372,69 @@ module Stamps
       end
     end
 
+    class StampsDropDown < StampsTextBox
+      attr_reader :drop_down
+      attr_accessor :html_tag, :list_of_values
+
+      def initialize(text_box, drop_down)
+        super(text_box)
+        @drop_down = drop_down
+        @html_tag = html_tag
+      end
+
+      def select_from_lov(str)
+        drop_down.click
+        sleep(0.25)
+        expect(list_of_values).not_to be_nil, "Error: Set list_of_values before calling select_from_lov."
+        10.times do
+          drop_down.click if list_of_values.size == 0
+          break unless list_of_values.size == 0
+        end
+        selection = nil
+        10.times do
+          list_of_values.each do |element|
+            selection = StampsElement.new(element)
+            return selection if !selection.nil? && selection.text.downcase.include?(str)
+          end
+        end
+        nil
+      end
+
+      def select(str)
+        drop_down.click
+        expect(html_tag).not_to be_nil, "Error: Set html_tag before calling select."
+        case html_tag
+          when :span
+            selection = StampsElement.new(browser.span(text: str))
+          when :li
+            selection = StampsElement.new(browser.li(text: str))
+          when :div
+            selection = StampsElement.new(browser.div(text: str))
+          else
+            # do nothing
+        end
+        select_element(str, selection)
+      end
+
+      def select_element(str, selection)
+        20.times do
+          drop_down.click unless selection.present?
+          selection.click
+          break if element.text.downcase.include?(str)
+        end
+        expect(element.text).to include(str), "Invalid selection: #{str}. Check your page object."
+
+      end
+    end
+
     class StampsNumberField
-      attr_reader :text_box, :inc_btn, :dec_btn
+      attr_reader :browser, :text_box, :inc_btn, :dec_btn
 
       def initialize(textbox, inc_btn, dec_btn)
         @text_box = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
-
+        @browser = text_box.browser
       end
 
       def present?
@@ -392,6 +455,18 @@ module Stamps
           inc_btn.click
         end
         expect(current_value + value.to_i).to eql text_box.text.to_i
+      end
+
+      def selection(str)
+        expect([:li, :div]).to include(@selection_type)
+        case selection_type
+          when :li
+            browser.lis(text: str)
+          when :div
+            browser.divs(text: str)
+          else
+            # do nothing
+        end
       end
 
       def decrement(value)
