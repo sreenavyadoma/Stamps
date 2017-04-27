@@ -125,7 +125,7 @@ module Stamps
           @continue_btn = StampsElement.new(browser.button(id: "next"))
           @side_content = SideContent.new(param)
 
-          @membership = Membership::MembershipPage.new(param)
+          #@membership = Membership::MembershipPage.new(param)
         end
 
         def present?
