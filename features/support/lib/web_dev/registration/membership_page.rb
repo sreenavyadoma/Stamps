@@ -2,60 +2,79 @@ module Stamps
   module Registration
     module Membership
 
-      class MembershipPersonalInfo < Browser::StampsModal
+      class MemberPersonalInfo < Browser::StampsModal
         attr_reader :first_name, :last_name, :company, :address, :city, :state, :zip, :phone
 
         def initialize(param)
           super
-          text_box = browser.text_field(id: "firstName")
-          help_collection = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")
-          @first_name = StampsTextBoxModule.new(text_box, help_collection)
+          @first_name = StampsTextBox.new(browser.text_field(id: "firstName"))
+          @first_name.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")
 
-          text_box = browser.text_field(id: "lastName")
-          help_collection = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span")
-          @last_name = StampsTextBoxModule.new(text_box, help_collection)
+          @last_name = StampsTextBox.new(browser.text_field(id: "lastName"))
+          @last_name.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span")
 
           @company = StampsTextBox.new(browser.text_field(id: "companyName"))
 
-          text_box = browser.text_field(id: "street")
-          help_collection = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span")
-          @address = StampsTextBoxModule.new(text_box, help_collection)
+          @address = StampsTextBox.new(browser.text_field(id: "street"))
+          @address.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span")
 
-          text_box = browser.text_field(id: "city")
-          help_collection = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span")
-          @city = StampsTextBoxModule.new(text_box, help_collection)
+          @city = StampsTextBox.new(browser.text_field(id: "city"))
+          @city.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span")
 
+          element = browser.span(css: "button[data-id=state]>span")
+          @state = StampsDropDown.new(element, element)
+          @state.list_of_values = browser.spans(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>div[class*=menu]>ul>li>a>span[class=text]")
 
+          @zip = StampsTextBox.new(browser.text_field(id: "zip"))
 
-          @state = MembershipState.new(param)
-
-
-          @zip = StampsTextBox.new browser.text_field(id: "zip")
-          @phone = MembershipPhone.new browser.text_field(id: "phone")
+          @phone = StampsTextBox.new(browser.text_field(id: "phone"))
+          @phone.help_elements = browser.spans(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span")
         end
 
         def present?
+          first_name.present?
+        end
 
+        def wait_until_present(*args)
+          first_name.wait_until_present(*args)
         end
       end
 
-      class MembershipCreditCard < Browser::StampsModal
-        attr_reader :card_holder_name, :card_number, :expiration_month, :expiration_year, :billing_same_as_mailing, :terms_and_conditions
-
+      class MemberCreditCard < Browser::StampsModal
+        attr_reader :cc_holder_name, :cc_number, :cc_month, :cc_year, :billing_same_as_mailing
         def initialize(param)
           super
-          @card_holder_name = MembershipCardHolderName.new browser.text_field(id: "ccName")
-          @card_holder_name = StampsTextBox.new browser.text_field(id: "ccName")
-          @card_number = MembershipCardNumber.new browser.text_field(id: "ccNumber")
-          @expiration_month = ExpirationMonth.new(param)
-          @expiration_year = ExpirationYear.new(param)
-          checkbox_field = browser.input id: "useMailingAddressForBilling"
-          @billing_same_as_mailing = StampsCheckBox.new checkbox_field, checkbox_field, "checked", "checked"
+          @cc_holder_name = StampsTextBox.new(browser.text_field(id: "ccName"))
+          @cc_holder_name.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span")
 
-          @billing_address = MembershipBillingAddress.new browser.text_field(id: "billingStreet")
-          @billing_city = MembershipBillingAddress.new browser.text_field(id: "City")
-          @billing_state = BillingState.new(param)
-          @billing_zip = MembershipBillingZip.new browser.text_field(id: "billingZip")
+          @cc_number = StampsTextBox.new(browser.text_field(id: "ccNumber"))
+          @cc_number.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span")
+
+          element = browser.span(css: "button[data-id=ccMonth]>span")
+          @cc_month = StampsDropDown.new(element, element)
+          @cc_month.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=select]>div>ul>li>a>span[class=text]")
+          @cc_month.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span")
+
+          element = browser.span(css: "button[data-id=ccYear]>span")
+          @cc_year = StampsDropDown.new(element, element)
+          @cc_year.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=select]>div>ul>li>a>span[class=text]")
+          @cc_year.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span")
+
+          @billing_same_as_mailing = WatirCheckBoxWrapper.new(browser.checkbox(id: 'useMailingAddressFormBilling'))
+
+          @cc_address = StampsTextBox.new(browser.text_field(id: "billingStreet"))
+          @cc_address.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span")
+
+          @cc_city = StampsTextBox.new(browser.text_field(id: "billingCity"))
+          @cc_city.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span")
+
+          element = browser.span(css: "button[data-id=billingState]>span")
+          @cc_state = StampsDropDown.new(element, element)
+          @cc_state.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div[class*=select]>div>ul>li>a>span[class=text]")
+          @cc_state.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span")
+
+          @cc_zip = StampsTextBox.new(browser.text_field(id: "billingZip"))
+          @cc_zip.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span")
         end
       end
 
@@ -89,10 +108,12 @@ module Stamps
 
         def initialize(param)
           super
-          @personal_info = MembershipPersonalInfo.new(param)
-          @credit_card = MembershipCreditCard.new(param)
+          @personal_info = MemberPersonalInfo.new(param)
+          @credit_card = MemberCreditCard.new(param)
           @terms = MembershipTerms.new(param)
           @pagination = MembershipPagination.new(param)
+
+
 
 
           @supplies = ChooseSupplies.new(param)

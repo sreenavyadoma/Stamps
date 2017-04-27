@@ -52,19 +52,43 @@ Then /^[Ee]xpect [Pp]rofile [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |
   expect(registration.profile.account_info.retype_password.text).to eql(parameter[:password])
 end
 
-Then /^set [Pp]rofile [Ss]urvey [Qq]uestion to (.*)$/ do |str|
+# Business Use - Mostly mailing (letters/postcards/flats)
+# Business/Ecommerce Use - Mostly shipping packages
+# Business Use - Both mailing and shipping
+# Individual/Home Office
+Then /^[Ss]et [Pp]rofile [Ss]urvey [Qq]uestion to (.*)$/ do |str|
   parameter[:survey_question] = str
-  parameter[:survey_question_selected] = registration.profile.survey_question.select(str)
+  parameter[:survey_question_selected] = registration.profile.survey_question.select_from_lov(parameter[:survey_question])
 end
 
-Then /^set [Pp]rofile [Pp]romo [Cc]ode to (.*)$/ do |str|
+#Magazine Ad
+#Radio/Podcast/Streaming Audio
+#Television Commercial
+#Telephone Call
+#Web Search
+#Web Banner
+#Trade show/convention
+#Recommended by USPS
+#Recommended by Friend
+#Other
+#Newspaper Ad
+#Received Mailer
+#Received Mailer
+#Email from Stamps.com
+# Already used in office
+Then /^[Ss]et [Pp]rofile Referer Name to (.*)$/ do |str|
+  parameter[:referer_name] = str
+  parameter[:survey_question_selected] = registration.profile.referer_name.select_from_lov(parameter[:referer_name])
+end
+
+Then /^[Ss]et [Pp]rofile [Pp]romo [Cc]ode to (.*)$/ do |str|
   parameter[:promo_code] = str
   registration.profile.promo_code.show_promo_code.set(parameter[:promo_code])
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
   str = (str.nil?)?parameter[:promo_code]:str
-  expect(registration.profile.show_promo_code.text).to eql(str)
+  expect(registration.profile.promo_code.show_promo_code.text).to eql(str)
 end
 
 Then /^check [Pp]rofile [Mm]oney-saving offers and new products$/ do
