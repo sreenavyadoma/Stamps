@@ -5,9 +5,9 @@ Then /^[Ee]xpect [Pp]rofile copyright link exists$/ do
   #expect(registration.footer.copyright_link).to be_present
 end
 
-Then /^[Ee]xpect [Pp]rofile Norton logo exists$/ do
-  expect(registration.footer.norton_logo.present?).to be (true)
-end
+#Then /^[Ee]xpect [Pp]rofile Norton logo exists$/ do
+  #expect(registration.footer.norton_logo.present?).to be (true)
+#end
 
 Then /^[Ee]xpect [Pp]rofile TRUSTe logo exists$/ do
   expect(registration.profile.trust_elogo.present?).to be (true)

@@ -7,10 +7,11 @@ module Stamps
         super
         @bread_crumb_profile = StampsElement.new(browser.li(id: "breadcrumb_Profile"))
         @bread_crumb_membership = StampsElement.new(browser.li(id: "breadcrumb_Membership"))
-        @bread_crumb_choose_supplies = StampsElement.new(browser.li(id: "breadcrumb_ChooseSupplies"))
+        @bread_crumb_special_offer = StampsElement.new(browser.li(id: "breadcrumb_ChooseSupplies"))
       end
     end
   end
 end
+
 
 

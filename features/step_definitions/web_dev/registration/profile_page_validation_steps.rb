@@ -8,8 +8,8 @@ end
 
 
 Then /^[Ee]xpect [Pp]rofile email exists$/ do
-  expect(registration.profile.email.present?).to be(true), "Email textbox does not exists on profile page"
-  registration.profile.email.present?
+  expect(registration.profile.profile_email.present?).to be(true), "Email textbox does not exists on profile page"
+  registration.profile.profile_email.present?
 end
 
 Then /^[Ee]xpect [Pp]rofile username exists$/ do
@@ -25,15 +25,15 @@ Then /^[Ee]xpect [Pp]rofile retype password exists$/ do
 end
 
 Then /^[Ee]xpect [Pp]rofile Usage Type list of values to contain (.*)$/ do |str|
-  expect(registration.profile.dropdown).to eql(str)
+  expect(registration.profile.usage_type).to eql(str)
 end
 
 Then /^[Ee]xpect [Pp]rofile promo code textbox exists$/ do
-  expect(registration.profile.promocode.present?).to be (true)
+  expect(registration.profile.promo_code.present?).to be (true)
 end
 
 Then /^[Ee]xpect [Pp]rofile CONTINUE button exists$/ do
-  expect(registration.profile_continue_button.present?).to be (true)
+  expect(registration.profile.profile_continue_button.present?).to be (true)
 end
 
 Then /^[Ee]xpect [Pp]rofile content under Why do I need to create an account$/ do |str|

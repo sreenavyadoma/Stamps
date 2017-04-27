@@ -13,24 +13,31 @@ Feature: Profile page validation theme_1632
     Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
-    Then expect Side content account text is Why do I need to create an account?
-
-    #begin
     Then expect Registration bread crumbs is Profile
     Then expect Registration bread crumbs is Membership
-    Then expect Registration bread crumbs is Choose Supplies
+    Then expect Registration bread crumbs is Special Offer
     Then expect Profile header is Sign up and avoid trips to the Post Office
-#    Then expect Profile email exists
-#    Then expect Profile username exists
-#    Then expect Profile password exists
-#    Then expect Profile retype password exists
-#    Then expect Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-#    Then expect Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
-#    Then expect Profile Usage Type list of values to contain Business Use - Both mailing and shipping
-#    Then expect Profile Usage Type list of values to contain Individual/Home Office
-  #end
-#    Then expect Profile promo code textbox exists
-#    Then expect Profile CONTINUE button exists
+    Then expect Profile email exists
+    Then expect Profile username exists
+    Then expect Profile password exists
+    Then expect Profile retype password exists
+    Then expect Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
+    Then expect Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
+    Then expect Profile Usage Type list of values to contain Business Use - Both mailing and shipping
+    Then expect Profile Usage Type list of values to contain Individual/Home Office
+    Then expect Profile promo code textbox exists
+    Then expect Profile CONTINUE button exists
+    Then expect Profile copyright link exists
+    Then expect Profile Norton logo exists
+    Then expect Profile TRUSTe logo exists
+    Then expect Profile LIVE chat button exists
+
+
+
+   # Then expect Side content account text is Why do I need to create an account?
+    #Then expect Side content account text is Why do I need to create an account?
+
+#
 #    Then expect Profile content under Why do I need to create an account
 #    """
 #    The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
@@ -40,9 +47,10 @@ Feature: Profile page validation theme_1632
 #    Send me special money-saving offers and information on new products and services from Stamps.com and its partners
 #    """
 #    Then expect Profile Money-saving offers and new products checkbox exist and is checkmarked
+  #  Then expect Profile CONTINUE button exists
 #    Then expect Profile Privacy Policy link exists and is clickable
-#    Then expect Profile copyright link exists
-#    Then expect Profile Norton logo exists
-#    Then expect Profile TRUSTe logo exists
-#    Then expect Profile LIVE chat button exists
+    Then expect Profile copyright link exists
+    Then expect Profile Norton logo exists
+    Then expect Profile TRUSTe logo exists
+    Then expect Profile LIVE chat button exists
 
