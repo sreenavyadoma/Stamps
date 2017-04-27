@@ -28,10 +28,6 @@ Then /^[Ee]xpect [Pp]rofile retype password exists$/ do
   expect(registration.profile.retype_password.present?).to be (true), "Retype password textbox does not exist on profile page"
 end
 
-Then /^[Ee]xpect [Pp]rofile Usage Type list of values to contain (.*)$/ do |str|
-  expect(registration.profile.dropdown).to eql(str)
-end
-
 Then /^[Ee]xpect [Pp]rofile promo code textbox exists$/ do
   expect(registration.profile.promocode.present?).to be (true)
 end
