@@ -18,11 +18,6 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Profile Re-type password to random value
     Then expect Profile Re-Type password is correct
 
-    Then set Profile Survey Question to Mostly mailing
-    Then set Profile Survey Question to Mostly shipping
-    Then set Profile Survey Question to Both mailing and shipping
-    Then set Profile Survey Question to Individual
-
     Then set Profile Referer Name to Magazine Ad
     Then set Profile Referer Name to Streaming Audio
     Then set Profile Referer Name to Television Commercial

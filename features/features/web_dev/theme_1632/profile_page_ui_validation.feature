@@ -21,10 +21,12 @@ Feature: Profile page validation theme_1632
 #    Then expect Profile username exists
 #    Then expect Profile password exists
 #    Then expect Profile retype password exists
-#    Then expect Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-#    Then expect Profile Usage Type list of values to contain Business/Ecommerce Use - Mostly shipping packages
-#    Then expect Profile Usage Type list of values to contain Business Use - Both mailing and shipping
-#    Then expect Profile Usage Type list of values to contain Individual/Home Office
+
+    Then set Profile Survey Question to Mostly mailing
+    Then set Profile Survey Question to Mostly shipping
+    Then set Profile Survey Question to Both mailing and shipping
+    Then set Profile Survey Question to Individual
+
 #    Then expect Profile promo code textbox exists
 #    Then expect Profile CONTINUE button exists
 #    Then expect Profile content under Why do I need to create an account
