@@ -3,7 +3,7 @@ module Stamps
     attr_reader :orders, :mail, :navigation_bar
 
     def initialize(param)
-      super(param)
+      super
       @navigation_bar = Navigation::NavigationBar.new(param)
       @orders = WebOrders.new(param)
       @mail = WebMail.new(param)
@@ -25,7 +25,7 @@ module Stamps
         when /rating/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         else
-          url = "https://#{param.test_env}/webpostage/SignIn/Default.aspx?env=Orders"
+          url = "http://#{param.test_env}/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
       end
 
       logger.message "-"
@@ -59,7 +59,7 @@ module Stamps
     attr_accessor :signed_in_user
 
     def initialize(param)
-      super(param)
+      super
       @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
     end
 

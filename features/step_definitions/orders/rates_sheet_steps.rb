@@ -335,7 +335,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           config.logger.step "#{"#"*10} Test Row #{row_number} Skipped. No rates found on sheet."
           config.logger.step "#{"#"*10} "
           config.logger.step "#{"#"*10} "
-          config.logger.step"#{"#"*80}"
+          config.logger.step"#{"#"*80} "
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = row[@rate_sheet_columns[:weight_lb]]
           @result_sheet[row_number, @result_sheet_columns[:zone]] = row[zone_column]

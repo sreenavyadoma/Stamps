@@ -5,9 +5,9 @@ module Stamps
       attr_reader :drop_down, :text_box
 
       def initialize(param)
-        super(param)
+        super
         @drop_down = StampsElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
-        @text_box = StampsTextbox.new browser.text_field css: "input[name^=printmediadroplist]"
+        @text_box = StampsTextBox.new browser.text_field css: "input[name^=printmediadroplist]"
       end
 
       def selection media
@@ -77,9 +77,9 @@ module Stamps
       attr_reader :drop_down, :text_box
 
       def initialize(param)
-        super(param)
+        super
         @drop_down = StampsElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
-        @text_box = StampsTextbox.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
+        @text_box = StampsTextBox.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
       end
 
       def select(selection)
@@ -100,9 +100,9 @@ module Stamps
       attr_reader :drop_down, :text_box
 
       def initialize(param)
-        super(param)
+        super
         @drop_down = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
-        @text_box = StampsTextbox.new browser.text_field(name: "paperTrays")
+        @text_box = StampsTextBox.new browser.text_field(name: "paperTrays")
       end
 
       def select(selection)
@@ -121,7 +121,7 @@ module Stamps
       attr_reader :left_label, :right_label
 
       def initialize(param)
-        super(param)
+        super
         @left_label = StampsElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")
         @right_label = StampsElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")
       end
@@ -178,7 +178,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def email_tracking
@@ -186,7 +186,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
 
       def print_reference_no
@@ -194,7 +194,7 @@ module Stamps
         verify_field = checkbox_field.parent.parent.parent
         attribute = "class"
         verify_field_attrib = "checked"
-        StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
+        StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
       end
     end
 
@@ -228,7 +228,7 @@ module Stamps
       attr_reader :i_agree, :cancel
 
       def initialize(param)
-        super(param)
+        super
         @i_agree = StampsElement.new browser.span text: "I Agree"
         @cancel = StampsElement.new browser.span text: "Cancel"
       end
@@ -252,7 +252,7 @@ module Stamps
         attribute = "class"
         attrib_value_check = "checked"
 
-        dont_show_checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
+        dont_show_checkbox = Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, attribute, attrib_value_check
 
         if dont_show
           dont_show_checkbox.check
@@ -318,7 +318,7 @@ module Stamps
         day = day.to_i
         date_picker_header = StampsElement.new browser.div class: "x-datepicker-header"
         picker_button = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
-        ship_date_textbox = StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
+        ship_date_textbox = StampsTextBox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
 
         ship_date_str = helper.now_plus_month_dd day
         ship_date_mmddyy = helper.now_plus_mm_dd_yy day
@@ -351,9 +351,9 @@ module Stamps
       attr_reader :text_box, :date_picker, :text_box_cc
 
       def initialize(param)
-        super(param)
-        @text_box = StampsTextbox.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
-        @text_box_cc = StampsTextbox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
+        super
+        @text_box = StampsTextBox.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
+        @text_box_cc = StampsTextBox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
         @date_picker = DatePicker.new(param)
       end
 
@@ -374,7 +374,7 @@ module Stamps
                   :print_sample_button, :printer, :email_tracking_details, :print_envelope_btn, :print_button
 
       def initialize(param)
-        super(param)
+        super
         @printing_on = PrintingOn.new(param)
         @printer = Printer.new(param)
         @paper_tray = PaperTray.new(param)

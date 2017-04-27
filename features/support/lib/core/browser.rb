@@ -1,7 +1,5 @@
 module Stamps
-
   module Browser
-
     class StampsElement
       attr_reader :element, :browser
       def initialize(element)
@@ -174,7 +172,7 @@ module Stamps
       end
     end
 
-    class StampsTextbox < StampsElement
+    class StampsTextBox < StampsElement
       def present?
         element.present?
       end
@@ -195,6 +193,10 @@ module Stamps
             #ignore
           end
         end
+
+        def clear
+          element.clear
+        end
       end
 
       def set_attribute_value(attribute_name, value)
@@ -202,16 +204,22 @@ module Stamps
       end
     end
 
-    class StampsTextboxHelpText < StampsTextbox
-      attr_reader :help_element
+    class StampsTextBoxModule < StampsTextBox
+      attr_reader :help_collection
 
-      def initialize(element, help_element)
-        super(element)
-        @help_element = StampsElement.new((help_element.nil?)?element:help_element) #if help_element is nil, use element as help element
+      def initialize(text_box, help_collection)
+        super(text_box)
+        @help_collection = help_collection
       end
 
-      def help_text
-        help_element.text
+      def help_text(*args)
+        return "" if help_collection.size == 0
+        index = (args.size=0)?0:(args[0].to_i-1)
+        help_collection[index].text
+      end
+
+      def has_error?
+        help_collection.size > 0
       end
 
       def data_error
@@ -227,7 +235,7 @@ module Stamps
       end
     end
 
-    class WatirCheckbox < StampsElement
+    class WatirCheckBoxWrapper < StampsElement
       def check
         10.times do
           click
@@ -243,7 +251,7 @@ module Stamps
       end
     end
 
-    class StampsCheckbox
+    class StampsCheckBox
       attr_accessor :clickable_element, :verify_element, :attribute, :attribute_value
 
       def initialize(clickable_element, verify_element, attribute, attribute_value)
@@ -317,7 +325,7 @@ module Stamps
         @browser = drop_down.browser
         @drop_down = StampsElement.new(drop_down)
         @html_tag = html_tag
-        @text_box = StampsTextbox.new(text_box)
+        @text_box = StampsTextBox.new(text_box)
       end
 
       def expose_selection(selection)
@@ -357,12 +365,13 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :text_box, :inc_btn, :dec_btn
+      attr_reader :browser, :text_box, :inc_btn, :dec_btn
 
       def initialize(textbox, inc_btn, dec_btn)
-        @text_box = StampsTextbox.new(textbox)
+        @text_box = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
+        @browser = text_box.browser
       end
 
       def present?
@@ -385,6 +394,18 @@ module Stamps
         expect(current_value + value.to_i).to eql text_box.text.to_i
       end
 
+      def selection(str)
+        expect([:li, :div]).to include(@selection_type)
+        case selection_type
+          when :li
+            browser.lis(text: str)
+          when :div
+            browser.divs(text: str)
+          else
+            # do nothing
+        end
+      end
+
       def decrement(value)
         current_value = text_box.text.to_i
         value.to_i.times do
@@ -399,8 +420,8 @@ module Stamps
 
       def initialize(text_boxes, drop_downs, selection_type, index)
         @index = index
-        @text_box = StampsTextbox.new(text_boxes[@index])
-        @drop_down = StampsTextbox.new(drop_downs[@index])
+        @text_box = StampsTextBox.new(text_boxes[@index])
+        @drop_down = StampsTextBox.new(drop_downs[@index])
         @selection_type = selection_type
         @browser = text_box.browser
       end
@@ -422,7 +443,6 @@ module Stamps
       end
 
       def select(str)
-        #logger.info "Select #{str}"
         drop_down.click
         10.times do
           selection = StampsElement.new(selection(str))
@@ -430,7 +450,6 @@ module Stamps
             break if (text_box.text).include?(str)
             drop_down.click unless selection.present?
             selection.click
-            #logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
           rescue
             #ignore
           end
@@ -441,7 +460,6 @@ module Stamps
     end
 
     # Modals
-
     class ModalParam
       attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :browser_sym, :firefox_profile
     end
@@ -457,6 +475,5 @@ module Stamps
         @helper = StampsTestHelper.new(logger)
       end
     end
-
   end
 end

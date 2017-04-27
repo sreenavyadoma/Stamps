@@ -74,7 +74,7 @@ module Stamps
               end
 
               def text_box
-                StampsTextbox.new text_box_field
+                StampsTextBox.new text_box_field
               end
 
               def select service
@@ -109,7 +109,7 @@ module Stamps
 
             def requested_services
               text_field = browser.text_fields(name: "ServiceKey")[@index]
-              StampsTextbox.new text_field
+              StampsTextBox.new text_field
             end
 
             def delete
@@ -181,14 +181,14 @@ module Stamps
         end
 
         def store_nickname
-          StampsTextbox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
+          StampsTextBox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
         end
 
         def automatically_import_new_orders
           label = (browser.label text: "Automatically Import New Orders")
           checkbox_field = label.parent.text_box
           verify_field = label.parent.parent.parent
-          StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
+          StampsCheckBox.new(checkbox_field, verify_field, "class", "checked")
         end
       end
 
@@ -196,7 +196,7 @@ module Stamps
         attr_reader :window_title
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div text: "Add your Store or Marketplace"
         end
 
@@ -222,7 +222,7 @@ module Stamps
         end
 
         def search_textbox
-          StampsTextbox.new(browser.text_fields css: "input[placeholder='Search by Name']").last
+          StampsTextBox.new(browser.text_fields css: "input[placeholder='Search by Name']").last
         end
 
         def search search_str
@@ -470,7 +470,7 @@ module Stamps
                 checkbox_field = browser.divs(text: store_name).last
                 sleep(0.35)
                 check_verify_field = checkbox_field.parent
-                checkbox = StampsCheckbox.new checkbox_field, check_verify_field, "class", "focused"
+                checkbox = StampsCheckBox.new checkbox_field, check_verify_field, "class", "focused"
                 checkbox.check
                 checkbox.check
                 checkbox.check

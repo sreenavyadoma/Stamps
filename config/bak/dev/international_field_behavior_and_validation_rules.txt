@@ -13,7 +13,7 @@ Feature:  B-01813 - Allow Int'l and APO/FPO Printing (CN22 and CP72)
 
     * Open Customs Form
 
-    * Expect Customs Form Checkbox "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is visible
+    * Expect Customs Form CheckBox "I agree to the USPS Privacy Act Statement and Restrictions and Prohibitions" is visible
     * Expect Customs Form Add Item tooltip to be "Add another item"
     * Expect Customs Form Package Contents to be Merchandise
     * Expect Customs Form Non-Delivery Options to be Return to Sender

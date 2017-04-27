@@ -5,7 +5,7 @@ module Stamps
       attr_reader :window_title, :close_btn
 
       def initialize(param)
-        super(param)
+        super
         @window_title = StampsElement.new(browser.span text: "Manage Mailing Addresses")
         @close_btn = StampsElement.new browser.img(css: "img[class*=close]")
       end

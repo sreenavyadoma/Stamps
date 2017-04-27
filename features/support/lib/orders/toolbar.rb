@@ -6,10 +6,10 @@ module Stamps
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(css: "div[id^=movetohold-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
-          @hold_until = StampsTextbox.new(browser.text_field(css: "input[placeholder='Select a Date']"))
+          @hold_until = StampsTextBox.new(browser.text_field(css: "input[placeholder='Select a Date']"))
         end
 
         def present?
@@ -36,7 +36,7 @@ module Stamps
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
         end
@@ -65,7 +65,7 @@ module Stamps
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
         end
@@ -94,7 +94,7 @@ module Stamps
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
         end
@@ -123,7 +123,7 @@ module Stamps
         attr_reader :drop_down, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_element
 
         def initialize(param)
-          super(param)
+          super
           @drop_down = StampsElement.new(browser.span(text: "Move"))
           @shipped = MoveToShipped.new(param)
           @canceled = MoveToCanceled.new(param)
@@ -206,7 +206,7 @@ module Stamps
         attr_reader :window_title, :ok_btn, :error_message_label
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div(text: 'Incomplete Order')
           @ok_btn = StampsElement.new browser.span(text: "OK")
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
@@ -242,7 +242,7 @@ module Stamps
 
         #todo-rob update Print Multi Order Error tests
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new(browser.div(text: 'Order Error'))
           @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
@@ -260,7 +260,7 @@ module Stamps
         attr_reader :continue_btn, :cancel_btn
 
         def initialize(param)
-          super(param)
+          super
           @continue_btn = StampsElement.new browser.span(text: 'Continue')
           @cancel_btn = StampsElement.new browser.span(text: 'Cancel')
         end
@@ -290,7 +290,7 @@ module Stamps
         attr_reader :ok_btn
 
         def initialize(param)
-          super(param)
+          super
           @ok_btn = StampsElement.new(browser.span(text: "OK"))
         end
 
@@ -307,7 +307,7 @@ module Stamps
         attr_reader :window_title, :message_label, :ok_btn
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div(text: 'USPS Privacy Act Statement')
           @message_label = StampsElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
           @ok_btn = StampsElement.new browser.span(text: "OK")
@@ -334,7 +334,7 @@ module Stamps
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div(text: 'USPS Terms')
           @i_agree_btn = StampsElement.new browser.span(text: "I Agree")
           @cancel_btn = StampsElement.new browser.span(text: "Cancel")
@@ -369,7 +369,7 @@ module Stamps
         def dont_show_this_again
           field = browser.label(text: "Don't show this again.")
           verify_field = field.parent.parent.parent
-          StampsCheckbox.new field, verify_field, "class", "checked"
+          StampsCheckBox.new field, verify_field, "class", "checked"
         end
 
         def usps_privacy_act_statement
@@ -402,7 +402,7 @@ module Stamps
                     :multi_order_some_error, :multi_order_all_error
 
         def initialize(param)
-          super(param)
+          super
           @orders_print_modal = Stamps::Orders::OrdersPrintModal.new(param)
           @print_order_btn = StampsElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
           @incomplete_order_modal = PrintIncompleteOrderError.new(param)
@@ -628,8 +628,8 @@ module Stamps
         attr_reader :text_box, :drop_down
 
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
           @drop_down = StampsElement.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
         end
 
@@ -660,7 +660,7 @@ module Stamps
         attr_reader :button, :initializing_db, :loading_orders
 
         def initialize(param)
-          super(param)
+          super
           @button = StampsElement.new(browser.span(text: 'Add'))
           @initializing_db = StampsElement.new(browser.div(text: "Initializing Order Database"))
           @loading_orders = StampsElement.new(browser.div(text: "Loading orders..."))
@@ -735,7 +735,7 @@ module Stamps
         attr_reader :print_btn, :add, :move_drop_down, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)
-          super(param)
+          super
           @import_button = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]"))
           @print_btn = ToolbarPrintButton.new(param)
           @add = AddButton.new(param)
@@ -841,7 +841,7 @@ module Stamps
 
         def page_number
           field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-          text_box = StampsTextbox.new field
+          text_box = StampsTextBox.new field
           text_box
         end
 

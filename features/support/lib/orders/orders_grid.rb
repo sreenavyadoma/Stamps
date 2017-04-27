@@ -785,7 +785,7 @@ module Stamps
           check_verify_field = browser.div css: "div[class*=x-column-header-checkbox]"
           attribute = "class"
           attrib_value_check = "checker-on"
-          Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
+          Stamps::Browser::StampsCheckBox.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
         def check_all(*args)
@@ -838,7 +838,7 @@ module Stamps
         def checkbox_element(row)
           div = browser.div(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td>div>div[class=x-grid-row-checker]")
           verify_field = browser.table(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})")
-          StampsCheckbox.new(div, verify_field, "class", "selected")
+          StampsCheckBox.new(div, verify_field, "class", "selected")
         end
 
         def check(row)
@@ -1025,7 +1025,7 @@ module Stamps
         attr_reader :grid_element, :column
 
         def initialize(param)
-          super(param)
+          super
           @column = GridColumns.new(param)
           @grid_element = StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=OrdersGrid-body]"))
         end

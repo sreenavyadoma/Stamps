@@ -8,7 +8,7 @@ module Stamps
         end
 
         def more_info
-          @more_info = StampsTextbox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
+          @more_info = StampsTextBox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
           expect(@more_info).to be_present
           @more_info
         end
@@ -20,19 +20,19 @@ module Stamps
         end
 
         def license
-          @license = StampsTextbox.new(browser.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
+          @license = StampsTextBox.new(browser.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
           expect(@license).to be_present
           @license
         end
 
         def certificate
-          @certificate = StampsTextbox.new(browser.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
+          @certificate = StampsTextBox.new(browser.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
           expect(@license).to be_present
           @certificate
         end
 
         def invoice
-          @invoice = StampsTextbox.new(browser.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
+          @invoice = StampsTextBox.new(browser.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
           expect(@invoice).to be_present
           @invoice
         end
@@ -46,7 +46,7 @@ module Stamps
 
         def initialize(param, text_box, drop_down, index)
           super(param)
-          @text_box = StampsTextbox.new(text_box)
+          @text_box = StampsTextBox.new(text_box)
           @drop_down = StampsElement.new(drop_down)
           @index = index
         end
@@ -76,7 +76,7 @@ module Stamps
           super(param)
           @index = index - 1
           @delete = StampsElement.new(browser.spans(css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index])
-          @customs_item_description = StampsTextbox.new(browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[@index])
+          @customs_item_description = StampsTextBox.new(browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[@index])
 
           text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[@index]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[@index]
@@ -92,7 +92,7 @@ module Stamps
           drop_down = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[@index]
           @made_in = CustomsMadeIn.new(param, text_box, drop_down, @index+1)
 
-          @customs_item_hs_tariff = StampsTextbox.new(browser.text_fields(name: "TariffNo")[@index])
+          @customs_item_hs_tariff = StampsTextBox.new(browser.text_fields(name: "TariffNo")[@index])
         end
 
         def present?
@@ -104,7 +104,7 @@ module Stamps
         attr_reader :add_btn
 
         def initialize(param)
-          super(param)
+          super
           @add_btn = StampsElement.new(browser.span(css: "div[id^=associatedcustomsitems]>div[id^=toolbar]>div>div>a>span>span>span[class*=sdc-icon-add]"))
         end
 
@@ -131,7 +131,7 @@ module Stamps
         attr_reader :window_title, :okay
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div(text: "USPS Privacy Act Statement")
           @okay = browser.span(text: "OK")
         end
@@ -145,7 +145,7 @@ module Stamps
         attr_accessor :combo_box, :contents
 
         def initialize(param)
-          super(param)
+          super
           text_boxes = browser.text_fields(name: "CustomsContents")
           drop_downs = browser.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
           @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
@@ -163,11 +163,11 @@ module Stamps
         attr_accessor :combo_box, :itn_number
 
         def initialize(param)
-          super(param)
+          super
           text_boxes = browser.text_fields(name: "IsITNRequired")
           drop_downs =  browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
           @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
-          @itn_number = StampsTextbox.new(browser.text_field(name: "AES"))
+          @itn_number = StampsTextBox.new(browser.text_field(name: "AES"))
         end
 
         def select(str)
@@ -182,7 +182,7 @@ module Stamps
                     :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label, :certificate
 
         def initialize(param)
-          super(param)
+          super
           @window_title = StampsElement.new browser.div(text: "Customs Information")
 
           @associated_items = AssociatedCustomsItems.new(param)
@@ -196,17 +196,17 @@ module Stamps
           drop_downs = browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
           @internal_transaction = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
 
-          @more_info = StampsTextbox.new browser.text_field name: "CustomsComments"
+          @more_info = StampsTextBox.new browser.text_field name: "CustomsComments"
           @usps_privacy_act_warning = StampsElement.new(browser.label text: "You must agree to the USPS Privacy Act Statement")
-          @itn_number = StampsTextbox.new browser.text_field(name: "AES")
-          @license = StampsTextbox.new browser.text_field(name: "CustomsLicenseNumber")
-          @certificate = StampsTextbox.new browser.text_field(name: "CustomsCertificateNumber")
-          @invoice = StampsTextbox.new browser.text_field(name: "CustomsInvoiceNumber")
+          @itn_number = StampsTextBox.new browser.text_field(name: "AES")
+          @license = StampsTextBox.new browser.text_field(name: "CustomsLicenseNumber")
+          @certificate = StampsTextBox.new browser.text_field(name: "CustomsCertificateNumber")
+          @invoice = StampsTextBox.new browser.text_field(name: "CustomsInvoiceNumber")
           @total_value_element = StampsElement.new browser.div(css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div")
 
           field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
           verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
-          @i_agree = StampsCheckbox.new field, verify_field, "class", "checked"
+          @i_agree = StampsCheckBox.new field, verify_field, "class", "checked"
 
           @privacy_statement = UspsPrivactActStatementModal.new(param)
           @privacy_link = StampsElement.new browser.span(text: "USPS Privacy Act Statement")

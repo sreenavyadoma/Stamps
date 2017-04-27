@@ -4,7 +4,7 @@ module Stamps
       attr_reader :web_apps, :web_mail
 
       def initialize(param)
-        super(param)
+        super
         @web_apps = StampsCom.new(param)
         @web_mail = @web_apps.mail
       end

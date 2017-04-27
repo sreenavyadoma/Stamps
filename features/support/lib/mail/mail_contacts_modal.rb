@@ -4,7 +4,7 @@ module Stamps
       attr_accessor :window_title, :x_btn
 
       def initialize(param)
-        super(param)
+        super
         @window_title = StampsElement.new(browser.div(text: 'Search Contacts'))
         @x_btn = StampsElement.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
       end
@@ -14,7 +14,7 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        window_title.wait_until_present(args)
+        window_title.wait_until_present(args[0])
       end
 
       def present?

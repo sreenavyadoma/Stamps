@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class USPSCheckbox < Browser::StampsModal
+    class USPSCheckBox < Browser::StampsModal
       def check
         browser.checkbox(name: 'USPSApproved').set
         browser.checkbox(name: 'USPSApproved').set
@@ -17,9 +17,9 @@ module Stamps
       attr_reader :usps_approval, :new_meter_limit, :current_meter, :maximum_meter
 
       def initialize(param)
-        super(param)
-        @usps_approval = USPSCheckbox.new(param)
-        @new_meter_limit = StampsTextbox.new browser.text_field(name: "resetAmt")
+        super
+        @usps_approval = USPSCheckBox.new(param)
+        @new_meter_limit = StampsTextBox.new browser.text_field(name: "resetAmt")
         @current_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
         @maximum_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
       end

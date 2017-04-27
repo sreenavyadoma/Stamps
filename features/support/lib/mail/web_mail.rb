@@ -5,7 +5,7 @@ module Stamps
       attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form , :print_media
 
       def initialize(param)
-        super(param)
+        super
         @print_media = PrintFormPanel::PrintOn.new(param)
         @sign_in_modal = MailSignInModal.new(param)
         @mail_toolbar = MailToolbar.new(param)

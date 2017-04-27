@@ -88,7 +88,7 @@ module Stamps
         include MailAdvancedOptions
 
         def serial_number
-          @serial_number = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")) if @serial_number.nil? || !@serial_number.present?
+          @serial_number = StampsTextBox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")) if @serial_number.nil? || !@serial_number.present?
           @serial_number
         end
 
@@ -96,7 +96,7 @@ module Stamps
           if @stamp_amount.nil?
             text_box = browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
             inc_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]")
-            dec_btn = browser.divs(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")
+            dec_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")
             @stamp_amount = StampsNumberField.new(text_box, inc_btn, dec_btn)
           end
           @stamp_amount
@@ -106,7 +106,7 @@ module Stamps
           if @quantity.nil?
             text_box = browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
             inc_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")
-            dec_btn = browser.divs(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")
+            dec_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")
             @quantity = StampsNumberField.new(text_box, inc_btn, dec_btn)
           end
           @quantity
@@ -126,7 +126,7 @@ module Stamps
           if @certified_mail.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-cmcheckbox")
             verify = browser.div(id: "sdc-mainpanel-cmcheckbox")
-            @certified_mail = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @certified_mail = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @certified_mail
         end
@@ -135,7 +135,7 @@ module Stamps
           if @electronic_return_receipt.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-rrecheckbox-displayEl")
             verify = browser.div(id: "sdc-mainpanel-rrecheckbox")
-            @electronic_return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @electronic_return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @electronic_return_receipt
         end
@@ -149,7 +149,7 @@ module Stamps
           if @return_receipt.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox")
             verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
-            @return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @return_receipt
         end
@@ -161,7 +161,7 @@ module Stamps
           if @return_receipt.nil?
             clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox-displayEl")
             verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
-            @return_receipt = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @return_receipt
         end
@@ -226,7 +226,7 @@ module Stamps
         attr_reader :print_media
 
         def initialize(param)
-          super(param)
+          super
           @print_media = param.print_media
         end
 

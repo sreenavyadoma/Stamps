@@ -17,7 +17,7 @@ Then /^Volusion Login:  Set Password to (.*)$/ do |password|
 end
 
 Then /^Volusion New to Mail Stamps: Set email address to (.*)$/ do |email|
-  @volusion_email = (email.downcase == 'random')? "#{helper.rand_username}@mailinator.com":email
+  @volusion_email = (email.downcase == 'random')? "#{helper.random_alpha_numeric}@mailinator.com":email
   @volusion_reg.email.set @volusion_email
 end
 
@@ -47,15 +47,15 @@ Then /^Volusion New to Mail Stamps: Click Continue$/ do
 end
 
 Then /^Volusion Shipping Address: Set First Name to (.*)$/ do |value|
-  @volusion_shipping_address.first_name.set(value.downcase == 'random')?(helper.random_name):value
+  @volusion_shipping_address.first_name.set(value.downcase == 'random')?(helper.random_full_name):value
 end
 
 Then /^Volusion Shipping Address: Set Last Name to (.*)$/ do |value|
-  @volusion_shipping_address.last_name.set(value.downcase == 'random')?(helper.random_name):value
+  @volusion_shipping_address.last_name.set(value.downcase == 'random')?(helper.random_full_name):value
 end
 
 Then /^Volusion Shipping Address: Set Company to (.*)$/ do |value|
-  @volusion_shipping_address.company.set(value.downcase == 'random')?(helper.random_name):value
+  @volusion_shipping_address.company.set(value.downcase == 'random')?(helper.random_full_name):value
 end
 
 Then /^Volusion Shipping Address: Set Address 1 to (.*)$/ do |value|

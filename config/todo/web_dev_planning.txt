@@ -6,7 +6,6 @@ Each items below will have a component of the following;
     Jenkins Test Creation
     Test Execution/Results Analysis
 
-
 Theme 1632
 	UI Field Validation ~25 days (best case)
 		Profile Page 8-9

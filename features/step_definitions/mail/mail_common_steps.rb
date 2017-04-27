@@ -18,8 +18,7 @@ Then /^[Ee]xpect Print form Ship-To address is (.*)$/ do |address|
 end
 #todo major rework here
 Then /^[Ee]xpect Print form Print On Field is present$/ do
-  print_on = PrintOn.new(param)
-  expect(print_on.text_box).to be_present
+  expect(stamps.mail.print_on).to be_present
 end
 
 Then /^[Ee]xpect Print form Ship From Field is present$/ do

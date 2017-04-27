@@ -20,7 +20,7 @@ module Stamps
 
       module AdvOptReferenceNumber
         def reference_number
-          @reference_number = StampsTextbox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) if @reference_number.nil? || !@reference_number.present?
+          @reference_number = StampsTextBox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) if @reference_number.nil? || !@reference_number.present?
           @reference_number
         end
       end
@@ -44,7 +44,7 @@ module Stamps
           if @hide_label_value.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(1)>div>div>span")
             verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(1)")
-            @hide_label_value = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+            @hide_label_value = Stamps::Browser::StampsCheckBox.new(input, verify, "class", "checked")
           end
           @hide_label_value
         end
@@ -55,7 +55,7 @@ module Stamps
           if @print_reference_number.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)>div>div>span")
             verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)")
-            @print_reference_number = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+            @print_reference_number = Stamps::Browser::StampsCheckBox.new(input, verify, "class", "checked")
           end
           @print_reference_number
         end
@@ -66,7 +66,7 @@ module Stamps
           if @print_receipt.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)>div>div>span")
             verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)")
-            @print_receipt = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+            @print_receipt = Stamps::Browser::StampsCheckBox.new(input, verify, "class", "checked")
           end
           @print_receipt
         end
@@ -155,7 +155,7 @@ module Stamps
           if @return_address.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(2)>div>div>span")
             verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(2)")
-            @return_address = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+            @return_address = Stamps::Browser::StampsCheckBox.new(input, verify, "class", "checked")
           end
           @return_address
         end
@@ -164,7 +164,7 @@ module Stamps
           if @delivery_address.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(3)>div>div>span")
             verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(3)")
-            @delivery_address = Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
+            @delivery_address = Stamps::Browser::StampsCheckBox.new(input, verify, "class", "checked")
           end
           @delivery_address
         end
@@ -173,7 +173,7 @@ module Stamps
           if @postage.nil?
             input = browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)>div>div>span")
             verify = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)")
-            @postage = Stamps::Browser::StampsCheckbox.new(input,verify, "class", "checked")
+            @postage = Stamps::Browser::StampsCheckBox.new(input, verify, "class", "checked")
           end
           @postage
         end
@@ -194,7 +194,7 @@ module Stamps
           if @restricted_delivery.nil?
             clickable_element = browser.span(css: "span[class*=sdc-mainpanel-rdcheckbox]")
             verify = browser.div(css: "div[id^=certifiedmailview-][id$=-innerCt]>div>div>div>div>div>div:nth-child(4)>div>div>div[class*=checkbox ]")
-            @restricted_delivery = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "checked")
+            @restricted_delivery = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @restricted_delivery
         end

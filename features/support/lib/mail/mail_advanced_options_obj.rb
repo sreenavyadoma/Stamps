@@ -6,7 +6,7 @@ module Stamps
         attr_reader :print_media
 
         def initialize(param)
-          super(param)
+          super
           @print_media = param.print_media
         end
       end
@@ -15,7 +15,7 @@ module Stamps
         attr_accessor :param, :text_box, :drop_down
 
         def initialize(param)
-          super(param)
+          super
           @index = index
           @text_box = browser.text_field(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
           @drop_down = browser.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
@@ -50,7 +50,7 @@ module Stamps
 
       module MailDateTextbox
         def text_box
-          @text_box = StampsTextbox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @text_box.nil?
+          @text_box = StampsTextBox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @text_box.nil?
           @text_box
         end
       end
@@ -60,7 +60,7 @@ module Stamps
 
         attr_reader :trigger_picker, :valid_ship_date
         def initialize(param)
-          super(param)
+          super
           @trigger_picker = StampsElement.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
         end
 
@@ -100,7 +100,7 @@ module Stamps
         attr_accessor :date_picker
 
         def initialize(param)
-          super(param)
+          super
           @date_picker = MailDatePicker.new(param)
         end
       end

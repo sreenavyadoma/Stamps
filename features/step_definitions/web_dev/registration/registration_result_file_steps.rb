@@ -1,5 +1,5 @@
-Then /^WebReg: Load username and password from parameter file(?:| (.*))$/ do |filename|
-  data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
+Then /^Registration: Load username and password from parameter file(?:| (.*))$/ do |filename|
+  data_file = (filename.nil?)? registration_user_parameter_file : registration_user_parameter_file(filename)
 
   expect(File.exist?(data_file)).to be_truthy
   CONFIG = YAML.load_file(data_file)
@@ -18,34 +18,34 @@ Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
   step "On PAM Customer Search page, set username to #{CONFIG['usr']}"
 end
 
-Then /^(?:S|s)et PAM Customer Search page username from parameter file$/ do
+Then /^[Ss]et PAM Customer Search page username from parameter file$/ do
   logger.info "set PAM Customer Search page username from parameter file"
   step "set PAM Customer Search page username to #{CONFIG['usr']}"
 end
 
-Then /^WebReg: Save username and password to parameter file(?:| (.*))$/ do |filename|
-  step "WebReg: Save username to parameter file #{filename}"
-  step "WebReg: Save password to parameter file #{filename}"
+Then /^Registration: Save username and password to parameter file(?:| (.*))$/ do |filename|
+  step "Registration: Save username to parameter file #{filename}"
+  step "Registration: Save password to parameter file #{filename}"
 end
 
-Then /^WebReg: Save username to parameter file(?:| (.*))$/ do |filename|
-  data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
-  config.logger.message "WebReg: Save username to parameter file: #{data_file}"
+Then /^Registration: Save username to parameter file(?:| (.*))$/ do |filename|
+  data_file = (filename.nil?)? registration_user_parameter_file : registration_user_parameter_file(filename)
+  config.logger.message "Registration: Save username to parameter file: #{data_file}"
   sleep(0.35)
   File.open(data_file, 'w+') {|f| f.write("usr: #{parameter[:usr]}\n")}
-  step "WebReg: Store username to data file #{filename}"
+  step "Registration: Store username to data file #{filename}"
 end
 
-Then /^WebReg: Save password to parameter file(?:| (.*))$/ do |filename|
-  data_file = (filename.nil?)? webreg_user_parameter_file : webreg_user_parameter_file(filename)
-  config.logger.message "WebReg: Save password to parameter file: #{data_file}"
+Then /^Registration: Save password to parameter file(?:| (.*))$/ do |filename|
+  data_file = (filename.nil?)? registration_user_parameter_file : registration_user_parameter_file(filename)
+  config.logger.message "Registration: Save password to parameter file: #{data_file}"
   sleep(0.35)
   File.open(data_file, 'a+') {|f| f.write("pw: #{parameter[:pw]}\n")}
 end
 
-Then /^WebReg: Store username to data file(?:| (.*))$/ do |filename|
-  data_file = (filename.nil?)? webreg_data_store_filename : webreg_data_store_filename(filename)
-  config.logger.message "WebReg: Store username to data file: #{data_file}"
+Then /^Registration: Store username to data file(?:| (.*))$/ do |filename|
+  data_file = (filename.nil?)? registration_data_store_filename : registration_data_store_filename(filename)
+  config.logger.message "Registration: Store username to data file: #{data_file}"
   sleep(2)
   if File.exist? data_file
     expect(parameter[:usr]).to be_truthy

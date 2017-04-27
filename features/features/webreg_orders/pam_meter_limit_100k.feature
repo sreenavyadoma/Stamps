@@ -1,4 +1,4 @@
-Feature: WebReg
+Feature: Registration
   Background:
     Given I launched default browser
 
@@ -6,7 +6,7 @@ Feature: WebReg
   Scenario:
     Then PAM: Load PAM Page
     Then Visit PAM Customer Search page
-    Then WebReg: Load username and password from parameter file webreg_meter_limit_100k
+    Then Registration: Load username and password from parameter file registration_meter_limit_100k
     Then set PAM Customer Search page username from parameter file
     Then set PAM Customer Search page 5.2 or lower
     Then On PAM Customer Search page, click Search button
@@ -23,6 +23,6 @@ Feature: WebReg
     Then On PAM AppCap Overrides page, set International Shipping to Always On
     Then On PAM AppCap Overrides page, set Allow High Risk Countries to Always On
     Then On PAM AppCap Overrides page, Submit
-    Then WebReg: Save username and password to parameter file pam_meter_limit_100k
-    Then WebReg: Store username to data file pam_meter_limit_100k
+    Then Registration: Save username and password to parameter file pam_meter_limit_100k
+    Then Registration: Store username to data file pam_meter_limit_100k
 
