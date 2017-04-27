@@ -1,9 +1,11 @@
 # Profile Page Validation Steps
 
 
+=begin
 Then /^[Ee]xpect [Rr]egistration bread crumbs to contain (.*)$/ do |str|
   expect(registration.bread_crumbs).to eql(str), "Bread crumb #{str} does not exist "
 end
+=end
 
 Then /^[Ee]xpect [Pp]rofile header contain (.*)$/ do |str|
   expect(registration.profile.header).to eql(str), "Profile header #{str} does not exist "

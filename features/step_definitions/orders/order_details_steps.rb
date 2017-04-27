@@ -283,7 +283,7 @@ Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
 end
 
 Then /^[Ss]et Order Details form Ship-To to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address = address_helper_zone(address)
+  address = helper.address_helper_zone(address)
 
   parameter[:street_address] = address['street_address']
   parameter[:city] = address['city']
