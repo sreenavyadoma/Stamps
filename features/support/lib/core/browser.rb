@@ -379,7 +379,6 @@ module Stamps
       def initialize(text_box, drop_down)
         super(text_box)
         @drop_down = drop_down
-        @html_tag = html_tag
       end
 
       def select_from_lov(str)
