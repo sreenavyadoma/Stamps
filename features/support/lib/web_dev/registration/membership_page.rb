@@ -60,7 +60,7 @@ module Stamps
           @cc_year.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=select]>div>ul>li>a>span[class=text]")
           @cc_year.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span")
 
-          @billing_same_as_mailing = WatirCheckBoxWrapper.new(browser.checkbox(id: 'useMailingAddressFormBilling'))
+          @billing_same_as_mailing = StampsWatirCheckBox.new(browser.checkbox(id: 'useMailingAddressFormBilling'))
 
           @cc_address = StampsTextBox.new(browser.text_field(id: "billingStreet"))
           @cc_address.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span")

@@ -243,7 +243,7 @@ module Stamps
       end
     end
 
-    class WatirCheckBoxWrapper < StampsElement
+    class StampsWatirCheckBox < StampsElement
       def check
         10.times do
           click
