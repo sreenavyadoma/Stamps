@@ -24,7 +24,7 @@ Feature:  Basic Search
     Then Filter Panel: Search Results should be present
     Then Filter Panel: Search results count should be 1
 
-    Then check Orders Grid saved Order ID
+    #Then check Orders Grid saved Order ID
     Then expect Order Details form Order ID equals Grid Oder ID in row 1
     Then expect Order Details form Order ID is the same as saved Order ID
 

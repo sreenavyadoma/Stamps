@@ -836,8 +836,8 @@ module Stamps
         end
 
         def checkbox_element(row)
-          div = browser.div(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td>div>div[class=x-grid-row-checker]")
-          verify_field = browser.table(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})")
+          div = browser.div(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td>div>div[class=x-grid-row-checker]")
+          verify_field = browser.table(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})")
           StampsCheckBox.new(div, verify_field, "class", "selected")
         end
 

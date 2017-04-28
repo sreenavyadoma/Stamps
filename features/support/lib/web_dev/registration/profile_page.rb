@@ -105,7 +105,7 @@ module Stamps
         attr_reader :header, :email, :account_info, :survey_question, :referer_name, :promo_code, :security_questions, :side_content, :continue_btn, :membership
         def initialize(param)
           super
-          @header = StampsElement.new(browser.h1(text: "Sign up for a new account"))
+          @header = StampsElement.new(browser.h1(css: "div[id=page]>div>div>h1"))
 
           @email = StampsTextBox.new(browser.text_field(id: "email"))
           @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
