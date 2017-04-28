@@ -40,3 +40,4 @@ end
 Then /^[Ee]xpect [Pp]rofile Money-saving offers and new products checkbox exist$/ do
   expect(registration.profile_moneysavingoffers_checkbox.present?).to be (true)
 end
+
