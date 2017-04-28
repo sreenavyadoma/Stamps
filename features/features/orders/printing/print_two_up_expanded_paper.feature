@@ -1,10 +1,12 @@
+
+@print_two_up_expanded_paper
 Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @print_two_up_expanded_paper
-  Scenario: User Prints 1 Domestic label on 8.5x11
+  @print_two_up_expanded_paper_left_print1
+  Scenario: User Prints 1 Domestic label left
 
     #print_two_up_expanded_paper_left_print1
     Then add new order
@@ -18,6 +20,9 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then in Print modal, click Print button
+
+  @print_two_up_expanded_paper_left_print2
+  Scenario: User Prints 2 Domestic label left
 
    #print_two_up_expanded_paper_left_print2
     Then add new order
@@ -38,6 +43,9 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then in Print modal, click Print button
+
+  @print_two_up_expanded_paper_left_print2
+  Scenario: User Prints 2 Domestic label right
 
    #print_two_up_expanded_paper_right_print2
     Then add new order

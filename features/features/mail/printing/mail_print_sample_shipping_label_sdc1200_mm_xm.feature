@@ -1,12 +1,14 @@
-Feature: Mail Sample Shipping Label - SDC-1200 MM XM 
+
+@mail_print_sample_shipping_label_sdc1200_mm_xm
+Feature: Mail Sample Shipping Label - SDC-1200 MM XM
   
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_sample_shipping_label_sdc1200_mm_xm
-  Scenario: Sample Shipping Label - SDC-1200 - MM XM 
+  @mail_print_sample_shipping_label_sdc1200_mm
+  Scenario: Sample Shipping Label - SDC-1200 - MM
 
-   #mail_print_sample_shipping_label_sdc1200_mm_xm
+   #mail_print_sample_shipping_label_sdc1200_mm
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
@@ -17,7 +19,10 @@ Feature: Mail Sample Shipping Label - SDC-1200 MM XM
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
-    #mail_print_sample_shipping_label_sdc1200_xm_fr_envelope
+  @mail_print_sample_shipping_label_sdc1200_xm
+  Scenario: Sample Shipping Label - SDC-1200 - XM
+
+   #mail_print_sample_shipping_label_sdc1200_xm_fr_envelope
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
