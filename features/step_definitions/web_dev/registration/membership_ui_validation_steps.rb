@@ -124,7 +124,7 @@ end
 
 
 
-Then /^[Oo]n [Rr]egistration [Mm]embership page, click Submit and correct errors$/ do
+Then /^[Oo]n [Mm]embership [Pp]age, click Submit and correct errors$/ do
   step "On Registration Membership page, click Submit"
   10.times do
     case @registration_result

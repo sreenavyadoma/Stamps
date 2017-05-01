@@ -35,7 +35,6 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Profile page Referer Name to Other
     Then set Profile page Referer Name to Newspaper Ad
     Then set Profile page Referer Name to Received Mailer
-    Then set Profile page Referer Name to Received Mailer
     Then set Profile page Referer Name to Email from Stamps.com
     Then set Profile page Referer Name to Already used in office
 
@@ -49,6 +48,58 @@ Feature: Test Workflow - Theme 1632 Happy Path
 
     Then continue to Membership page
     
-    Then set Membership First Name
+    Then set Membership page First Name to random value
+    Then expect Membership page First Name is correct
+
+    Then set Membership page Last Name to random value
+    Then expect Membership page Last Name is correct
+
+    Then set Membership page Company to random value
+    Then expect Membership page Company is correct
+
+    Then set Membership page Address to random value
+    Then expect Membership page Address is correct
+
+    Then set Membership page City to random value
+    Then expect Membership page City is correct
+
+    Then set Membership page State to CA
+    Then expect Membership page State is correct
+
+    Then set Membership page Zip to 94105
+    Then expect Membership page Zip is correct
+
+    Then set Membership page Phone to random value
+    Then expect Membership page Phone is correct
+
+    Then set Membership page Cardholder's Name to random value
+    Then expect Membership page Cardholder's Name is correct
+
+    Then set Membership page Month to random value
+    Then expect Membership page Month is correct
+
+    Then set Membership page Year to random value
+    Then expect Membership page Year is correct
+
+    Then set Membership page xxxxxxxx to random value
+    Then expect Membership page xxxxxxxx is correct
+
+    Then set Membership page xxxxxxxx to random value
+    Then expect Membership page xxxxxxxx is correct
+
+    Then set Membership page xxxxxxxx to random value
+    Then expect Membership page xxxxxxxx is correct
+
+    Then set Membership page xxxxxxxx to random value
+    Then expect Membership page xxxxxxxx is correct
+
+    Then set Membership page xxxxxxxx to random value
+    Then expect Membership page xxxxxxxx is correct
+
+    Then set Membership page xxxxxxxx to random value
+    Then expect Membership page xxxxxxxx is correct
+
+    Then set Membership page xxxxxxxx to random value
+    Then expect Membership page xxxxxxxx is correct
 
 

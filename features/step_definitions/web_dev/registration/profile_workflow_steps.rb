@@ -140,11 +140,11 @@ Then /^select [Pp]rofile [Pp]age Security Question 1 (.*)$/ do |str|
 
 end
 
-Then /^[Oo]n [Pp]rofile [Pp]age page, Continue$/ do
+Then /^[Oo]n [Pp]rofile [Pp]age, Continue$/ do
   registration.profile.continue.click
 end
 
-Then /^[Oo]n [Pp]rofile [Pp]age page, continue to Mailing Information page$/ do
+Then /^[Oo]n [Pp]rofile [Pp]age, continue to Mailing Information page$/ do
   10.times do
     registration.profile.continue.click
     sleep(0.35)
