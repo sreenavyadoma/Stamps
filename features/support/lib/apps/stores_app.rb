@@ -1,6 +1,6 @@
 
 module StoresApp
   def volusion
-    @volusion = Stores::VolusionLoginPage.new(modal_param)
+    @volusion = Stores::VolusionLoginPage.new(param)
   end
 end

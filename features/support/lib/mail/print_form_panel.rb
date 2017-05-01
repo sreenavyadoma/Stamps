@@ -14,7 +14,7 @@ module Stamps
 
       module MailFrom
         def mail_from
-          @mail_from = PrintFormMailFrom.new(modal_param) if @mail_from.nil? || !@mail_from.present?
+          @mail_from = PrintFormMailFrom.new(param) if @mail_from.nil? || !@mail_from.present?
           expect(@mail_from).to be_present
           @mail_from
         end
@@ -22,7 +22,7 @@ module Stamps
 
       module MailTo
         def mail_to
-          @mail_to = PrintFormMailTo.new(modal_param) if @mail_to.nil? || !@mail_to.present?
+          @mail_to = PrintFormMailTo.new(param) if @mail_to.nil? || !@mail_to.present?
           expect(@mail_to).to be_present
           @mail_to
         end
@@ -30,7 +30,7 @@ module Stamps
 
       module MailWeight
         def mail_weight
-          @mail_weight = PrintFormWeight.new(modal_param) if @mail_weight.nil? || !@mail_weight.present?
+          @mail_weight = PrintFormWeight.new(param) if @mail_weight.nil? || !@mail_weight.present?
           expect(@mail_weight).to be_present
           @mail_weight
         end
@@ -38,7 +38,7 @@ module Stamps
 
       module MailDimensions
         def dimensions
-          @dimensions = PrintFormDimensions.new(modal_param) if @dimensions.nil? || !@dimensions.present?
+          @dimensions = PrintFormDimensions.new(param) if @dimensions.nil? || !@dimensions.present?
           expect(@dimensions).to be_present
           @dimensions
         end
@@ -46,7 +46,7 @@ module Stamps
 
       module MailService
         def mail_service
-          @mail_service = PrintFormService.new(modal_param) if @mail_service.nil? || !@mail_service.present?
+          @mail_service = PrintFormService.new(param) if @mail_service.nil? || !@mail_service.present?
           expect(@mail_service).to be_present
           @mail_service
         end
@@ -54,7 +54,7 @@ module Stamps
 
       module MailCustoms
         def mail_customs
-          @mail_customs = PrintFormCustoms.new(modal_param) if @mail_customs.nil? || !@mail_customs.present?
+          @mail_customs = PrintFormCustoms.new(param) if @mail_customs.nil? || !@mail_customs.present?
           expect(@mail_customs).to be_present
           @mail_customs
         end
@@ -62,17 +62,17 @@ module Stamps
 
       module MailAdvancedOptions
         def advanced_options
-          case modal_param.print_media
+          case param.print_media
             when :stamps
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(modal_param).extend(AdvancedOptions::StampsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :stamps)
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::StampsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :stamps)
             when :labels
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(modal_param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :labels)
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :labels)
             when :envelopes
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(modal_param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :envelopes)
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :envelopes)
             when :certified_mails, :certified_mails_3910_3930, :certified_mails_3810
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(modal_param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil? || ((@advanced_options.print_media != :certified_mails) && (@advanced_options.print_media != :certified_mails_3910_3930) && (@advanced_options.print_media != :certified_mails_3810))
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil? || ((@advanced_options.print_media != :certified_mails) && (@advanced_options.print_media != :certified_mails_3910_3930) && (@advanced_options.print_media != :certified_mails_3810))
             when :rolls
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(modal_param).extend(AdvancedOptions::RollsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :rolls)
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :rolls)
             else
               # do nothing
           end
@@ -185,12 +185,12 @@ module Stamps
         include MailAdvancedOptions
 
         def ship_date
-          @ship_date = ShipDate.new(modal_param) if @ship_date.nil? || !@ship_date.present?
+          @ship_date = ShipDate.new(param) if @ship_date.nil? || !@ship_date.present?
           @ship_date
         end
 
         def form_view
-          EnvelopeFormView.new(modal_param)
+          EnvelopeFormView.new(param)
         end
       end
 
@@ -204,19 +204,19 @@ module Stamps
         include MailDimensions
 
         def mail_tracking
-          @mail_tracking = MailTracking.new(modal_param) if @mail_insure_for.nil? || !@mail_insure_for.present?
+          @mail_tracking = MailTracking.new(param) if @mail_insure_for.nil? || !@mail_insure_for.present?
           expect(@mail_insure_for).to be_present
           @mail_insure_for
         end
 
         def mail_ship_date
-          @mail_ship_date = ShipDate.new(modal_param) if @mail_ship_date.nil? || !@mail_ship_date.present?
+          @mail_ship_date = ShipDate.new(param) if @mail_ship_date.nil? || !@mail_ship_date.present?
           expect(@mail_ship_date).to be_present
           @mail_ship_date
         end
 
         def form_view
-          @form_view = ShippingLabelPrintView.new(modal_param) if @form_view.nil? || !@form_view.present?
+          @form_view = ShippingLabelPrintView.new(param) if @form_view.nil? || !@form_view.present?
           expect(@form_view).to be_present
           @form_view
         end

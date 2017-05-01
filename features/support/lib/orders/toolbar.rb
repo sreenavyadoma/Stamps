@@ -373,7 +373,7 @@ module Stamps
         end
 
         def usps_privacy_act_statement
-          privacy_act = UspsPrivacyActStatement.new(modal_param)
+          privacy_act = UspsPrivacyActStatement.new(param)
           10.times do
             privacy_act_link.click
             privacy_act.wait_until_present 2
@@ -535,7 +535,7 @@ module Stamps
 
           usps_terms.i_agree if usps_terms_modal.present?
 
-          error_connecting_to_plugin = ErrorConnectingToPlugin.new(modal_param)
+          error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
 
           10.times do
             begin
@@ -573,7 +573,7 @@ module Stamps
         end
 
         def print_expecting_error(*args)
-          error_window = IncompleteOrderError.new(modal_param)
+          error_window = IncompleteOrderError.new(param)
           open_window error_window
           case args.length
             when 0
@@ -586,7 +586,7 @@ module Stamps
         end
 
         def print_invalid_address
-          open_window InvalidAddressError.new(modal_param)
+          open_window InvalidAddressError.new(param)
         end
       end
 
@@ -596,10 +596,10 @@ module Stamps
           case menu_item.downcase
             when /settings/
               selection = StampsElement.new(browser.span text: "General Settings")
-              modal = Orders::Settings::GeneralSettings.new(modal_param)
+              modal = Orders::Settings::GeneralSettings.new(param)
             when /stores/
               selection = StampsElement.new(browser.span text: "Add/Edit Stores")
-              modal = Orders::Stores::ManageStores.new(modal_param)
+              modal = Orders::Stores::ManageStores.new(param)
             else
               expect("Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.").to eql ""
           end
@@ -671,9 +671,9 @@ module Stamps
         end
 
         def order_details
-          details = Orders::Details::SingleOrderDetails.new(modal_param)
-          nav_bar = Navigation::NavigationBar.new(modal_param)
-          server_error = ShipStationServerError.new(modal_param)
+          details = Orders::Details::SingleOrderDetails.new(param)
+          nav_bar = Navigation::NavigationBar.new(param)
+          server_error = ShipStationServerError.new(param)
 
           15.times do |count|
             begin
@@ -746,7 +746,7 @@ module Stamps
 
         def refresh_orders
           button = StampsElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
-          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           button.click
           sleep(0.35)
@@ -809,17 +809,17 @@ module Stamps
         #============================
 
         def per_page
-          PerPage.new(modal_param)
+          PerPage.new(param)
         end
 
         def settings
-          SettingsMenu.new(modal_param)
+          SettingsMenu.new(param)
         end
 
         def reprint
           button = StampsElement.new browser.span(text: "Reprint")
-          modal = RePrintModal.new(modal_param)
-          label_unavailable = LabelUnavailable.new(modal_param)
+          modal = RePrintModal.new(param)
+          label_unavailable = LabelUnavailable.new(param)
           15.times do
             return modal if modal.present?
             return label_unavailable if label_unavailable.present?
@@ -832,7 +832,7 @@ module Stamps
         end
 
         def settings_modal
-          SettingsModal.new(modal_param)
+          SettingsModal.new(param)
         end
 
         def page_count

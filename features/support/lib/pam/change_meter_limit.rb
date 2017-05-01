@@ -38,7 +38,7 @@ module Stamps
 
       def submit
         button = Stamps::Browser::StampsElement.new browser.input(name: "submit")
-        change_success = ChangeMeterLimitSuccess.new(modal_param)
+        change_success = ChangeMeterLimitSuccess.new(param)
         5.times do
           button.send_keys(:enter)
           button.click
@@ -65,7 +65,7 @@ module Stamps
       end
 
       def ok
-        profile = CustomerProfile.new(modal_param)
+        profile = CustomerProfile.new(param)
         button = StampsElement.new browser.a(css: "a[href^=Profile]")
         5.times do
           button.wait_until_present 2

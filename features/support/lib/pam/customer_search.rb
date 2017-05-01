@@ -58,9 +58,9 @@ module Stamps
 
       def search
         button = Stamps::Browser::StampsElement.new browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]")
-        customer_profile = CustomerProfile.new(modal_param)
-        customer_profile_not__found = CustomerProfileNotFound.new(modal_param)
-        meter_info_unavailable = MeterInfoNotAvailableForAccount.new(modal_param)
+        customer_profile = CustomerProfile.new(param)
+        customer_profile_not__found = CustomerProfileNotFound.new(param)
+        meter_info_unavailable = MeterInfoNotAvailableForAccount.new(param)
         count = 20
         count.times do |counter|
           button.send_keys(:enter)

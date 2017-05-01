@@ -17,7 +17,7 @@ module TestHelper
     @test_data
   end
 
-  def modal_param
+  def param
     if @param.nil?
       @param ||= ModalParam.new
       @param.browser_sym = config.browser_sym

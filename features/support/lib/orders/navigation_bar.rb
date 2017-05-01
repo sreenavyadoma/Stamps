@@ -50,12 +50,12 @@ module Stamps
       end
 
       def text_area
-        if modal_param.web_app == :orders
+        if param.web_app == :orders
           div = browser.div(class: 'sdc-dialoguemodal-confirm-purchase')
-        elsif modal_param.web_app == :mail
+        elsif param.web_app == :mail
           div = browser.divs(css: "div[id^=dialoguemodal-][id$=-innerCt]").last
         else
-          expect("Purchase Button failure. #{modal_param.web_app} is not a valid value for param.web_app, check your test.").to eql "Invalid Value"
+          expect("Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test.").to eql "Invalid Value"
         end
         StampsElement.new div
       end
@@ -140,12 +140,12 @@ module Stamps
       end
 
       def purchase_button
-        if modal_param.web_app == :orders
+        if param.web_app == :orders
           button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
-        elsif modal_param.web_app == :mail
+        elsif param.web_app == :mail
           button = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
         else
-          "raise Purchase Button failure. #{modal_param.web_app} is not a valid value for param.web_app, check your test."
+          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
         StampsElement.new button
       end
@@ -155,14 +155,14 @@ module Stamps
       end
 
       def buy_10
-        modal_param.web_app.should_not be nil
-        if modal_param.web_app == :orders
+        param.web_app.should_not be nil
+        if param.web_app == :orders
           checkbox_element = browser.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif modal_param.web_app == :mail
+        elsif param.web_app == :mail
           checkbox_element = browser.input(id: "sdc-purchasewin-10dradio")
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
@@ -175,75 +175,75 @@ module Stamps
       end
 
       def buy_25
-        if modal_param.web_app == :orders
+        if param.web_app == :orders
           checkbox_element = browser.label(css: "label[for=sdc-purchasewin-25dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif modal_param.web_app == :mail
+        elsif param.web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-25dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{modal_param.web_app} is not a valid value for param.web_app, check your test."
+          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
 
       end
 
       def buy_50
-        if modal_param.web_app == :orders
+        if param.web_app == :orders
           checkbox_element = browser.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif modal_param.web_app == :mail
+        elsif param.web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-50dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{modal_param.web_app} is not a valid value for param.web_app, check your test."
+          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
       end
 
       def buy_100
-        if modal_param.web_app == :orders
+        if param.web_app == :orders
           checkbox_element = browser.label(css: "label[for=sdc-purchasewin-100dradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif modal_param.web_app == :mail
+        elsif param.web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-100dradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{modal_param.web_app} is not a valid value for param.web_app, check your test."
+          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
       end
 
       def buy_other value
-        if modal_param.web_app == :orders
+        if param.web_app == :orders
           checkbox_element = browser.label(css: "label[for=sdc-purchasewin-otherdradio][id$=boxLabelEl]")
           verify_element = checkbox_element.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           checkbox = StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
-        elsif modal_param.web_app == :mail
+        elsif param.web_app == :mail
           checkbox_element = browser.input id: "sdc-purchasewin-otherdradio"
           verify_element = checkbox_element.parent.parent.parent.parent
           attribute = "class"
           verify_element_attrib = "checked"
           checkbox = StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
         else
-          "raise Purchase Button failure. #{modal_param.web_app} is not a valid value for param.web_app, check your test."
+          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
 
         textbox = StampsTextBox.new(browser.text_field id: "sdc-purchasewin-otheramount")

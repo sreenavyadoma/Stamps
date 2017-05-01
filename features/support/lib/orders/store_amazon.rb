@@ -117,17 +117,17 @@ module Stamps
         end
 
         def order_source
-          OrderSource.new(modal_param)
+          OrderSource.new(param)
         end
 
         def product_identifier
-          ProductIdentifier.new(modal_param)
+          ProductIdentifier.new(param)
         end
 
         def connect
           button = StampsElement.new browser.span(text: "Connect")
-          server_error = Orders::Stores::ServerError.new(modal_param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -152,9 +152,9 @@ module Stamps
 
         def connect_expecting_store_settings
           button = (StampsElement.new(browser.span text: "Connect"))
-          settings = AmazonSettings.new(modal_param)
-          server_error = Orders::Stores::ServerError.new(modal_param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
+          settings = AmazonSettings.new(param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.click

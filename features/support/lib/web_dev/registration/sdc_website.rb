@@ -9,7 +9,7 @@ module Stamps
       end
 
       def load_page
-        case modal_param.test_env.downcase
+        case param.test_env.downcase
           when /cc/
             url = "http://sdcwebsite.qacc.stamps.com/"
           when /sc/

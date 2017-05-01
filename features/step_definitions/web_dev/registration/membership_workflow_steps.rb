@@ -1,56 +1,66 @@
 # Membership Page validation steps
 
-Then /^[Ss]et [Mm]embership [Pp]age First Name to (?:random value|(.*))$/ do |str|
-  test_param[:first_name] = (str.nil?)?(helper.random_email):str
+Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
+  test_param[:first_name] = (str.nil?)?(helper.random_alpha ):str
   registration.profile.membership.personal_info.first_name.set(test_param[:first_name])
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age First Name is (?:correct|(.*))$/ do |str|
+Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do |str|
   str = (str.nil?)?test_param[:first_name]:str
-  expect(registration.profile.membership.personal_info.first_name.text).to eql(test_param[:first_name])
+  expect(registration.profile.membership.personal_info.first_name.text).to eql(str)
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Last Name to (.*)$/ do |str|
-  test_param[:last_name] = (str.downcase.include? 'random') ? helper.random_alpha : str
+Then /^[Ss]et [Mm]embership [Pp]age [Ll]ast [Nn]ame to (?:random value|(.*))$/ do |str|
+  test_param[:last_name] = (str.nil?)?(helper.random_alpha ):str
   registration.profile.membership.personal_info.last_name.set(test_param[:last_name])
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Company to (.*)$/ do |str|
+Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do |str|
+  str = (str.nil?)?test_param[:last_name]:str
+  expect(registration.profile.membership.personal_info.last_name.text).to eql(str)
+end
+
+Then /^[Ss]et [Mm]embership [Pp]age [Cc]ompany to (.*)$/ do |str|
   test_param[:company] = (str.downcase.include? 'random') ? helper.random_alpha_numeric : str
   registration.profile.membership.personal_info.company.set(test_param[:company])
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Address to (.*)$/ do |str|
-  test_param[:company] = (str.downcase.include? 'random') ? helper.random_alpha_numeric : str
-  registration.profile.membership.personal_info.address.set(test_param[:company])
+Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ompany is (?:correct|(.*))$/ do |str|
+  str = (str.nil?)?test_param[:company]:str
+  expect(registration.profile.membership.personal_info.company.text).to eql(str)
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age City to (.*)$/ do |str|
-  test_param[:membership] = str
-  registration.profile.membership.personal_info.city.set(test_param[:membership])
+Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
+  test_param[:address] = str
+  registration.profile.membership.personal_info.address.set(test_param[:address])
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age State to (.*)$/ do |str|
+Then /^[Ss]et [Mm]embership [Pp]age [Cc]ity to (.*)$/ do |str|
+  test_param[:city] = str
+  registration.profile.membership.personal_info.city.set(test_param[:city])
+end
+
+Then /^[Ss]et [Mm]embership [Pp]age [Ss]tate to (.*)$/ do |str|
   test_param[:state] = str
   registration.profile.membership.personal_info.state.select(test_param[:state])
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Zip to (.*)$/ do |str|
+Then /^[Ss]et [Mm]embership [Pp]age [Zz]ip to (.*)$/ do |str|
   test_param[:zip] = str
   registration.profile.membership.personal_info.zip.set(test_param[:zip])
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Phone to (.*)$/ do |str|
+Then /^[Ss]et [Mm]embership [Pp]age [Pp]hone to (.*)$/ do |str|
   test_param[:phone] = (str.downcase.include? 'random') ? helper.random_phone : str
 
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Extenion to (.*)$/ do |str|
+Then /^[Ss]et [Mm]embership [Pp]age [Ee]xtenion to (.*)$/ do |str|
   test_param[:ext] = (str.downcase.include? 'random') ? helper.random_phone_extension : str
   registration.profile.membership.ext.set test_param[:ext]
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Cardholder name to (.*)$/ do |str|
+Then /^[Ss]et [Mm]embership [Pp]age [Cc]ardholder's name to (.*)$/ do |str|
   test_param[:card_holder_name] = (str.downcase.include? 'random') ? helper.random_full_name : str
   registration.profile.membership.card_holder_name.set test_param[:card_holder_name]
 end
