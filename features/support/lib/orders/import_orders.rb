@@ -48,9 +48,9 @@ module Stamps
       end
 
       def import
-        success = SuccessModal.new(param)
+        success = SuccessModal.new(modal_param)
         button = StampsElement.new browser.span(text: "Import")
-        server_error = Orders::Stores::ServerError.new(param)
+        server_error = Orders::Stores::ServerError.new(modal_param)
 
         button.click
         begin_time = Time.now
@@ -69,7 +69,7 @@ module Stamps
       end
 
       def confirm_success
-        success = SuccessModal.new(param)
+        success = SuccessModal.new(modal_param)
         success if success.present?
       end
 
@@ -86,7 +86,7 @@ module Stamps
 
       def select_csv_file
         button = StampsElement.new browser.span(text: "Select CSV File")
-        open_file = Windows::OpenFile.new(param.browser_sym)
+        open_file = Windows::OpenFile.new(modal_param.browser_sym)
         10.times do
           button.element.parent.click
           button.send_keys(:enter)

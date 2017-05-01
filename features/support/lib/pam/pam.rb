@@ -2,9 +2,9 @@ module Stamps
   module Pam
     class PaymentAdministratorManager < Browser::StampsModal
       def visit
-        param.test_env = 'stg' if param.test_env.downcase == 'staging'
+        modal_param.test_env = 'stg' if modal_param.test_env.downcase == 'staging'
 
-        case param.test_env.downcase
+        case modal_param.test_env.downcase
           when /cc/
             url = "http://qa-clientsite:82/pam/Default.asp"
           when /sc/
@@ -12,7 +12,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/"
           else
-            expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
+            expect("#{modal_param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
         end
 
         logger.info "Visit: #{url}"
@@ -30,11 +30,11 @@ module Stamps
       end
 
       def customer_search
-        param.test_env = 'stg' if param.test_env.downcase == 'staging'
+        modal_param.test_env = 'stg' if modal_param.test_env.downcase == 'staging'
 
-        customer_search_page = Pam::CustomerSearch.new(param)
+        customer_search_page = Pam::CustomerSearch.new(modal_param)
 
-        case param.test_env.downcase
+        case modal_param.test_env.downcase
           when /cc/
             url = "http://qa-clientsite:82/pam/AccountSearch.asp"
           when /sc/
@@ -42,7 +42,7 @@ module Stamps
           when /stg/
             url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
           else
-            expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
+            expect("#{modal_param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
         end
 
         browser.goto url

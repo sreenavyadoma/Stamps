@@ -1,9 +1,11 @@
+
+@print_two_up_expanded_cn22
 Feature: Print 2 Intl CN22 labels on 5.5x8.5
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @print_two_up_expanded_cn22
+  @print_two_up_expanded_cn22_5x8_right_print2
   Scenario: Print 2 Intl CN22 labels on 5.5x8.5
 
    #print_two_up_expanded_cn22_5x8_right_print2
@@ -39,6 +41,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then in Print modal, click Print button
+
+  @print_two_up_expanded_cn22_5x8_cp72_right_print2
+  Scenario: Print 2 Intl CN22 labels on 5.5x8.5 right
 
   #print_two_up_expanded_cn22_cp72_5x8_right_print2
     Then add new order
@@ -76,6 +81,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then expect Print modal left-side label is selected
     Then in Print modal, click Print button
 
+  @print_two_up_expanded_cn22_left_print2
+  Scenario: Print 2 Intl CN22 labels Left
+
    #print_two_up_expanded_cn22_paper_left
     Then add new order
     Then set Order Details form Ship-From to default
@@ -103,6 +111,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then in Print modal, click Print button
+
+  @print_two_up_expanded_cn22_right_print2
+  Scenario: Print 2 Intl CN22 labels right
 
    #print_two_up_expanded_cn22_paper_right
     Then add new order
@@ -137,6 +148,9 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then in Print modal, click Print button
+
+  @print_two_up_expanded_cn22_sdc1200_left_print2
+  Scenario: Print 2 Intl CN22 labels on sdc 1200 left
 
    #print_two_up_expanded_cn22_sdc1200_left
     Then add new order

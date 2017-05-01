@@ -426,7 +426,7 @@ module Stamps
 
       def print_expecting_rating_error
         postage
-        RatingError.new(param).wait_until_present
+        RatingError.new(modal_param).wait_until_present
       end
 
       def labels_ready_to_print

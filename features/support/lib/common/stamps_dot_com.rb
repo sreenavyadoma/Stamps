@@ -10,22 +10,22 @@ module Stamps
     end
 
     def load_sign_in_page
-      case param.test_env.downcase
+      case modal_param.test_env.downcase
         when /ss/
-          url = "http://printss600.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://printss600.qacc.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/"
         when /cc/
-          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
-          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
+          url = "http://printext.qacc.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://printext.qacc.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if modal_param.web_app == :mail
         when /sc/
-          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
-          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
+          url = "http://printext.qasc.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://printext.qasc.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if modal_param.web_app == :mail
         when /stg/
-          url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
-          url = "http://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
+          url = "https://print.testing.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://print.testing.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if modal_param.web_app == :mail
         when /rating/
-          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://printext.qacc.stamps.com/#{(modal_param.web_app==:orders)?'orders':'webpostage'}/"
         else
-          url = "http://#{param.test_env}/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+          url = "http://#{modal_param.test_env}/#{(modal_param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
       end
 
       logger.message "-"
@@ -42,7 +42,7 @@ module Stamps
       logger.message "Page loaded: #{browser.url}"
       logger.message "-"
 
-      case param.web_app
+      case modal_param.web_app
         when :orders
           expect(browser.url).to include "Orders"
         when :mail
@@ -67,8 +67,8 @@ module Stamps
       expect(credentials).to be(:default).or be(Hash)
       case credentials
         when :default
-          @usr = param.usr
-          @pw = param.pw
+          @usr = modal_param.usr
+          @pw = modal_param.pw
         when Hash
           @usr = credentials[:username]
           @pw = credentials[:password]

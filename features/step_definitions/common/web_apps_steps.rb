@@ -1,11 +1,11 @@
 
 Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "I launch default browser"
-  step "Health Check: Print - Web Batch" if param.health_check
-  step "Health Check: Print - Address Book" if param.health_check
+  step "Health Check: Print - Web Batch" if modal_param.health_check
+  step "Health Check: Print - Address Book" if modal_param.health_check
   step "load Sign-in page"
-  parameter[:username] = stamps.orders.landing_page.orders_sign_in(:default) if param.web_app == :orders
-  parameter[:username] = stamps.mail.sign_in_modal.mail_sign_in(:default) if param.web_app == :mail
+  test_param[:username] = stamps.orders.landing_page.orders_sign_in(:default) if modal_param.web_app == :orders
+  test_param[:username] = stamps.mail.sign_in_modal.mail_sign_in(:default) if modal_param.web_app == :mail
   step "Navigation Bar: Customer Balance"
 end
 

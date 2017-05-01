@@ -32,7 +32,7 @@ module Stamps
 
         def upgrade_now
           upgrade_now_btn.click_while_present
-          expect(browser.url).to include(param.test_env), "User rerouted to an external URL. You are no longer in #{param.test_env}. Check URL #{browser.url}"
+          expect(browser.url).to include(modal_param.test_env), "User rerouted to an external URL. You are no longer in #{modal_param.test_env}. Check URL #{browser.url}"
         end
       end
 
@@ -55,79 +55,79 @@ module Stamps
           drop_down.click
           case str
             when /Paper/
-              param.print_media = :labels
+              modal_param.print_media = :labels
               selected_sub_str = 'Paper'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[0]
             when /SDC-1200/
-              param.print_media = :labels
+              modal_param.print_media = :labels
               selected_sub_str = 'SDC-1200'
               element = browser.lis(css: "li[class*=iconShippingLabel]")[1]
             when /Shipping Label - 5 /
-              param.print_media = :labels
+              modal_param.print_media = :labels
               selected_sub_str = 'Shipping Label - 5 '
               element = browser.lis(css: "li[class*=iconShippingLabel]")[2]
             when /Envelope - #10/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #10'
               element = browser.lis(css: "li[class*=iconEnvelope]")[0]
             when /Envelope - #9/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #9'
               element = browser.lis(css: "li[class*=iconEnvelope]")[1]
             when /Envelope - #A9/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #A9'
               element = browser.lis(css: "li[class*=iconEnvelope]")[2]
             when /Envelope - #6/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #6'
               element = browser.lis(css: "li[class*=iconEnvelope]")[3]
             when /Envelope - #A2/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #A2'
               element = browser.lis(css: "li[class*=iconEnvelope]")[4]
             when /Envelope - #7/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #7'
               element = browser.lis(css: "li[class*=iconEnvelope]")[5]
             when /Envelope - #11/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #11'
               element = browser.lis(css: "li[class*=iconEnvelope]")[6]
             when /Envelope - #12/
-              param.print_media = :envelopes
+              modal_param.print_media = :envelopes
               selected_sub_str = 'Envelope - #12'
               element = browser.lis(css: "li[class*=iconEnvelope]")[7]
             when /SDC-3610/
-              param.print_media = :certified_mails
+              modal_param.print_media = :certified_mails
               selected_sub_str = 'SDC-3610'
               element = browser.lis(css: "li[class*=iconCertified]")[0]
             when /SDC-3710/
-              param.print_media = :certified_mails
+              modal_param.print_media = :certified_mails
               selected_sub_str = 'SDC-3710'
               element = browser.lis(css: "li[class*=iconCertified]")[1]
             when /SDC-3910/
-              param.print_media = :certified_mails_3910_3930
+              modal_param.print_media = :certified_mails_3910_3930
               selected_sub_str = 'SDC-3910'
               element = browser.lis(css: "li[class*=iconCertified]")[2]
             when /SDC-3930/
-              param.print_media = :certified_mails_3910_3930
+              modal_param.print_media = :certified_mails_3910_3930
               selected_sub_str = 'SDC-3930'
               element = browser.lis(css: "li[class*=iconCertified]")[3]
             when /SDC-3810/
-              param.print_media = :certified_mails_3810
+              modal_param.print_media = :certified_mails_3810
               selected_sub_str = 'SDC-3810'
               element = browser.lis(css: "li[class*=iconCertified]")[4]
             when /Roll - 4" x 6"/
-              param.print_media = :rolls
+              modal_param.print_media = :rolls
               selected_sub_str = 'Roll - 4'
               element = browser.lis(css: "li[class*=iconRoll]")[0]
             when /Roll - 4 /
-              param.print_media = :rolls
+              modal_param.print_media = :rolls
               selected_sub_str = 'Roll - 4 '
               element = browser.lis(css: "li[class*=iconRoll]")[1]
             when /Stamps/
-              param.print_media = :stamps
+              modal_param.print_media = :stamps
               selected_sub_str = 'Stamps'
               element = browser.li(css: "li[class*=iconNetStamps]")
             else
@@ -142,7 +142,7 @@ module Stamps
                 selection.scroll_into_view
                 selection.click
                 break if text_box.text.include?(selected_sub_str)
-                expect(upgrade_plan).not_to be_present, "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
+                expect(upgrade_plan).not_to be_present, "Username #{modal_param.usr} is not provisioned to print Certified Mail in PAM #{modal_param.test_env} - #{upgrade_plan.paragraph}"
               else
                 drop_down.click unless selection.present?
               end
@@ -152,7 +152,7 @@ module Stamps
             sleep(0.15)
           end
           expect(text_box.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{text_box.text}\""
-          param.print_media
+          modal_param.print_media
         end
 
         def tooltip(selection)
@@ -631,8 +631,8 @@ module Stamps
           geography = @country.select(str)
           expect([:domestic, :international]).to include(geography)
           # dymanically create appropriate form per geography
-          @address = MailToInt.new(param) if geography == :international
-          @address = MailToDom.new(param) if geography == :domestic
+          @address = MailToInt.new(modal_param) if geography == :international
+          @address = MailToDom.new(modal_param) if geography == :domestic
         end
       end
 

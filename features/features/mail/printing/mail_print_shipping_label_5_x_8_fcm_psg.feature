@@ -1,10 +1,12 @@
+
+@mail_print_shipping_label_5x8_fcm_psg
 Feature: Mail Shipping Label - 5 ½” x 8 ½” - FCM PSG
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_shipping_label_5x8_fcm_psg
-  Scenario: Shipping Label - 5 ½” x 8 ½” - FCM PSG
+  @mail_print_shipping_label_5x8_fcm
+  Scenario: Shipping Label - 5 ½” x 8 ½” - FCM
 
     #mail_print_shipping_label_5x8_fcm_large_envelope
     Then select Print On Shipping Label - 5 ½" x 8 ½"
@@ -25,6 +27,9 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - FCM PSG
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
+
+  @mail_print_shipping_label_5x8_psg
+  Scenario: Shipping Label - 5 ½” x 8 ½” - PSG
 
    #mail_print_shipping_label_5x8_psg_large_package
     Then select Print On Shipping Label - 5 ½" x 8 ½"

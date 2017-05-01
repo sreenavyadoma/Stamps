@@ -291,7 +291,7 @@ module Stamps
 
         def set partial_address_hash
           exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
-          form = SingleOrderDetails.new(param)
+          form = SingleOrderDetails.new(modal_param)
           form.validate_address_link
           country_drop_down = self.country
           form.ship_to.set helper.format_address(partial_address_hash)
@@ -716,7 +716,7 @@ module Stamps
         end
 
         def delete_row(number)
-          @delete_shipping_address = DeleteShippingAddress.new(param)
+          @delete_shipping_address = DeleteShippingAddress.new(modal_param)
           5.times do
             select_row(number)
             click_delete_button
@@ -1258,7 +1258,7 @@ module Stamps
         end
 
         def item(number)
-          associated_item = AssociatedOrderItem.new(param, number)
+          associated_item = AssociatedOrderItem.new(modal_param, number)
           10.times do
             return associated_item if associated_item.present?
             sleep(0.5)
@@ -1298,7 +1298,7 @@ module Stamps
         def collapse
           selection = StampsElement.new browser.span(text: "Collapse Panel")
           dd = drop_down
-          collapsed_details = DetailsCollapsible.new(param)
+          collapsed_details = DetailsCollapsible.new(modal_param)
           10.times do
             dd.click unless selection.present?
             selection.click

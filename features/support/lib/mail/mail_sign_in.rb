@@ -123,7 +123,7 @@ module Stamps
         @verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
         @invalid_msg = StampsElement.new browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")
         @whats_new_modal = WhatsNewModal.new(param)
-        @remember_username_checkbox = WatirCheckBoxWrapper.new browser.checkbox(id: "rememberUser")
+        @remember_username_checkbox = StampsWatirCheckBox.new browser.checkbox(id: "rememberUser")
         @invalid_username_password = StampsElement.new browser.div(id: "InvalidUsernamePasswordMsg")
         @username = ""
         @password = ""
@@ -308,7 +308,7 @@ module Stamps
         def forgot_username
           sign_in_link = StampsElement.new browser.link(text: "Sign In")
           button = StampsElement.new browser.a css: "a[class*=forgotUsername]"
-          forgot_username_modal = ForgotUsernameModal.new(param)
+          forgot_username_modal = ForgotUsernameModal.new(modal_param)
           5.times do
             sign_in_link.click
             button.click
@@ -321,7 +321,7 @@ module Stamps
         def forgot_password
           sign_in_link = StampsElement.new browser.link(text: "Sign In")
           button = StampsElement.new browser.a css: "a[class*=forgotPassword]"
-          forgot_password_modal = ForgotPasswordModal.new(param)
+          forgot_password_modal = ForgotPasswordModal.new(modal_param)
           5.times do
             sign_in_link.click
             button.click

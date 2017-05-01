@@ -438,11 +438,11 @@ module Stamps
         end
 
         def weight
-          Weight.new(param)
+          Weight.new(modal_param)
         end
 
         def dimensions
-          Dimensions.new(param)
+          Dimensions.new(modal_param)
         end
 
         def ship_to_address
@@ -555,15 +555,15 @@ module Stamps
         end
 
         def log_off
-          SettingsLogoffDropDown.new(param)
+          SettingsLogoffDropDown.new(modal_param)
         end
 
         def post_date
-          PostDateDropDown.new(param)
+          PostDateDropDown.new(modal_param)
         end
 
         def postage_balance
-          PostageBalanceDropDown.new(param)
+          PostageBalanceDropDown.new(modal_param)
         end
 
         def print_confirm
@@ -575,7 +575,7 @@ module Stamps
         end
 
         def reset_fields
-          modal = ResetFields.new(param)
+          modal = ResetFields.new(modal_param)
           button = StampsElement.new browser.span text: "Select..."
           10.times do
             button.click unless modal.present?

@@ -60,7 +60,7 @@ module Stamps
           @cc_year.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=select]>div>ul>li>a>span[class=text]")
           @cc_year.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span")
 
-          @billing_same_as_mailing = WatirCheckBoxWrapper.new(browser.checkbox(id: 'useMailingAddressFormBilling'))
+          @billing_same_as_mailing = StampsWatirCheckBox.new(browser.checkbox(id: 'useMailingAddressFormBilling'))
 
           @cc_address = StampsTextBox.new(browser.text_field(id: "billingStreet"))
           @cc_address.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span")
@@ -98,35 +98,25 @@ module Stamps
 
       end
 
-
       class MembershipPage < Browser::StampsModal
-
-        attr_reader :personal_info, :credit_card, :terms,
-                    :back,
-                    :submit_button, :supplies, :userid_taken, :download_page, :membership_error, :billing_address,
-                    :billing_city, :billing_state, :billing_zip, :loading, :page_header, :error_occured, :connection_failed
+        attr_reader :personal_info, :credit_card, :membership_terms, :pagination
 
         def initialize(param)
           super
           @personal_info = MemberPersonalInfo.new(param)
           @credit_card = MemberCreditCard.new(param)
-          @terms = MembershipTerms.new(param)
+          @membership_terms = MembershipTerms.new(param)
           @pagination = MembershipPagination.new(param)
 
-
-
-
-          @supplies = ChooseSupplies.new(param)
-          @userid_taken = UserIdTaken.new(param)
-          @download_page = DownloadPage.new(param)
-          @membership_error = MembershipError.new(param)
-
-          @loading = StampsElement.new browser.button(text: "Loading...")
-          @page_header = StampsElement.new browser.h1(text: 'Customize your Welcome Kit')
-
-          @error_occured = RegistrationError.new(param)
-          @connection_failed = RegistrationSecureConnectionFailed.new(param)
-
+          # @supplies = ChooseSupplies.new(param)
+          # @userid_taken = UserIdTaken.new(param)
+          # @download_page = DownloadPage.new(param)
+          #
+          # @loading = StampsElement.new browser.button(text: "Loading...")
+          # @page_header = StampsElement.new browser.h1(text: 'Customize your Welcome Kit')
+          #
+          # @error_occured = RegistrationError.new(param)
+          # @connection_failed = RegistrationSecureConnectionFailed.new(param)
         end
 
         def wait_until_present(*args)
@@ -135,41 +125,6 @@ module Stamps
 
         def present?
           browser.h1(text: "Please enter your mailing information").present?
-        end
-
-        def submit_correct_errors registration_data
-          expect(registration_data).to be_a(Hash)
-          10.times do
-            submit
-
-            loading.wait_until_present 3
-            page_header.wait_until_present 3
-
-            if phone.has_error?
-              err_text = phone.help_text
-              if err_text == "This field is required"
-                logger.error err_text
-                phone.set registration_data[:phone]
-                phone.send_keys registration_data[:phone]
-              end
-            end
-
-            if card_number.has_error?
-              err_text = card_number.help_text
-              logger.error err_text
-              expect("Card Number #{registration_data[:card_number]} failed verification.").to eql(err_text) if err_text.include? "failed verification"
-              if err_text == "This field is required"
-                card_number.set(registration_data[:card_number])
-                card_number.send_keys(registration_data[:card_number])
-              end
-            end
-
-            break unless submit_button.present?
-          end
-          15.times do
-            sleep(0.35)
-            break if browser.url.include? "catalog"
-          end
         end
 
         def submit

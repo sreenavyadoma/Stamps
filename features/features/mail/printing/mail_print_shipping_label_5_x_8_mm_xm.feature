@@ -1,10 +1,12 @@
+
+@mail_print_shipping_label_5x8_mm_xm
 Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_shipping_label_5x8_mm_xm
-  Scenario: Shipping Label - 5 ½” x 8 ½” - MM XM
+  @mail_print_shipping_label_5x8_mm
+  Scenario: Shipping Label - 5 ½” x 8 ½” - MM
 
     #mail_print_shipping_label_5x8_mm_package
     Then select Print On Shipping Label - 5 ½" x 8 ½"
@@ -15,6 +17,9 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
+
+  @mail_print_shipping_label_5x8_xm
+  Scenario: Shipping Label - 5 ½” x 8 ½” - XM
 
    #mail_print_shipping_label_5x8_xm_fr_envelope
     Then select Print On Shipping Label - 5 ½" x 8 ½"

@@ -58,7 +58,7 @@ module Stamps
         def select(selection)
           logger.info "Made In #{selection}"
           drop_down.click
-          selection_element = StampsElement.new(browser.lis(text: selection)[((param.web_app == :mail)?index+1:index)])
+          selection_element = StampsElement.new(browser.lis(text: selection)[((modal_param.web_app == :mail)?index+1:index)])
           10.times do
             drop_down.click unless selection_element.present?
             selection_element.click
@@ -117,7 +117,7 @@ module Stamps
         end
 
         def item_number(number)
-          customs_item = AssociatedCustomsLineItem.new(param, number)
+          customs_item = AssociatedCustomsLineItem.new(modal_param, number)
           5.times do
             return customs_item if customs_item.present?
             sleep(0.10)
@@ -155,7 +155,7 @@ module Stamps
         def select(str)
           combo_box.text_box.wait_until_present(3)
           combo_box.select(str)
-          @contents = (str == 'Commercial Sample')?PackageContentsDetails.new(param).extend(LicenseCertificateInvoice):PackageContentsDetails.new(param).extend(MoreInfo)
+          @contents = (str == 'Commercial Sample')?PackageContentsDetails.new(modal_param).extend(LicenseCertificateInvoice):PackageContentsDetails.new(modal_param).extend(MoreInfo)
         end
       end
 
