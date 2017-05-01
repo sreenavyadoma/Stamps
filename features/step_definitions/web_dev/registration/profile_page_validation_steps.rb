@@ -1,6 +1,7 @@
 # Profile Page Validation Steps
 
 Then /^[Ee]xpect [Pp]rofile header contain (.*)$/ do |str|
+  registration.profile.header.wait_until_present(7)
   expect(registration.profile.header.text).to eql(str)
 end
 
