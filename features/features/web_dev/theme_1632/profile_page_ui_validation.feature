@@ -16,17 +16,20 @@ Feature: Profile page validation theme_1632
 
     Then expect Registration bread crumbs is Profile
     Then expect Registration bread crumbs is Membership
-    #Then expect Registration bread crumbs is Special Offer
-    Then expect Profile page header contain Sign up for a new account
+    Then expect Profile page header contain Sign up and avoid trips to the Post Office
     Then expect Profile page email exists
-    Then expect Profile page username exists
-    Then expect Profile page password exists
-    Then expect Profile page retype password exists
 
-    Then set Profile page Survey Question to Mostly mailing
-    Then set Profile page Survey Question to Mostly shipping
-    Then set Profile page Survey Question to Both mailing and shipping
-    Then set Profile page Survey Question to Individual
+    #Then expect Registration bread crumbs is Special Offer
+#    Then expect Profile page header contain Sign up for a new account
+#    Then expect Profile page email exists
+#    Then expect Profile page username exists
+#    Then expect Profile page password exists
+#    Then expect Profile page retype password exists
+
+#    Then set Profile page Survey Question to Mostly mailing
+#    Then set Profile page Survey Question to Mostly shipping
+#    Then set Profile page Survey Question to Both mailing and shipping
+#    Then set Profile page Survey Question to Individual
 
 #    Then expect Profile page promo code textbox exists
 #    Then expect Profile page CONTINUE button exists
