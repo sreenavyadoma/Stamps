@@ -6,7 +6,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age header contain (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age email exists$/ do
-  expect(registration.profile.account_info.email).to be_present, "Email textbox does not exists on profile page"
+  expect(registration.profile.email).to be_present, "Email textbox does not exists on profile page"
   registration.profile.email.present?
 end
 
