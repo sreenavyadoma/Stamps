@@ -1,10 +1,12 @@
+
+@print_two_up_expanded_cp72
 Feature: Print 1 Intl CP72 label on 5.5x8.5
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @print_two_up_expanded_cp72
-  Scenario: Print 1 Intl CP72 label on 5.5x8.5
+  @print_two_up_expanded_cp72_5x8_left
+  Scenario: Print 1 Intl CP72 label on 5.5x8.5 left
 
     #print_two_up_expanded_cp72_5x8_left_print1
     Then add new order
@@ -26,6 +28,9 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then expect Print modal left-side label is selected
     Then in Print modal, click Print button
 
+  @print_two_up_expanded_cp72_5x8_right
+  Scenario: Print 1 Intl CP72 label on 5.5x8.5 right
+
    #print_two_up_expanded_cp72_5x8_right_print1
     # 1 CP72 label 5 ½" x 8 ½" right side
     Then add new order
@@ -46,6 +51,9 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then in Print modal, click Print button
+
+  @print_two_up_expanded_cp72_left
+  Scenario: Print 2 Intl CP72 label left
 
    #print_two_up_expanded_cp72_paper_left
     Then add new order
@@ -111,6 +119,9 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then in Print modal, click Print button
+
+  @print_two_up_expanded_cp72_left_print3
+  Scenario: Print 3 Intl CP72 label left
 
    #print_two_up_expanded_cp72_paper_left_print3
     Then add new order

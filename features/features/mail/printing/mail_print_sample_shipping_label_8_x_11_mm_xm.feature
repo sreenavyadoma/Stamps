@@ -1,10 +1,12 @@
+
+@mail_print_sample_shipping_label_8_x_11_mm_xm
 Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_sample_shipping_label_8_x_11_mm_xm
-  Scenario: Sample Shipping Label - 8 ½” x 11” MM XM Paper
+  @mail_print_sample_shipping_label_8_x_11_mm
+  Scenario: Sample Shipping Label - 8 ½” x 11” MM Paper
 
    #mail_print_sample_shipping_label_8x11_mm_package
     Then select Print On Shipping Label - 8 ½" x 11" Paper
@@ -17,6 +19,9 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” MM XM Paper
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
+
+  @mail_print_sample_shipping_label_8_x_11_xm
+  Scenario: Sample Shipping Label - 8 ½” x 11” XM Paper
 
     #mail_print_sample_shipping_label_8x11_xm_fr_envelope
     Then select Print On Shipping Label - 8 ½" x 11" Paper
