@@ -125,7 +125,7 @@ module Stamps
           @continue_btn = StampsElement.new(browser.button(id: "next"))
           @side_content = SideContent.new(param)
 
-          #@membership = Membership::MembershipPage.new(param)
+          @membership = Stamps::Registration::Membership::MembershipPage.new(param)
         end
 
         def present?
@@ -133,22 +133,19 @@ module Stamps
         end
 
         def wait_until_present(*args)
-          header.wait_until_present(*args)
           email.wait_until_present(*args)
         end
 
         def continue
-          10.times do
+          5.times do
             return membership if membership.present?
             continue_btn.click
-            sleep(0.5)
+            membership.wait_until_present(3)
           end
         end
-
-      end
-
-    end
-  end
+      end #ProfilePage
+    end #Profile module
+  end #Registration module
 end
 
 

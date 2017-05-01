@@ -23,21 +23,6 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Profile page Survey Question to Both mailing and shipping
     Then set Profile page Survey Question to Individual
 
-    Then set Profile page Referer Name to Magazine Ad
-    Then set Profile page Referer Name to Streaming Audio
-    Then set Profile page Referer Name to Television Commercial
-    Then set Profile page Referer Name to Telephone Call
-    Then set Profile page Referer Name to Web Search
-    Then set Profile page Referer Name to Web Banner
-    Then set Profile page Referer Name to Trade show
-    Then set Profile page Referer Name to Recommended by USPS
-    Then set Profile page Referer Name to Recommended by Friend
-    Then set Profile page Referer Name to Other
-    Then set Profile page Referer Name to Newspaper Ad
-    Then set Profile page Referer Name to Received Mailer
-    Then set Profile page Referer Name to Email from Stamps.com
-    Then set Profile page Referer Name to Already used in office
-
     Then set Profile page Promo Code to PR33-NH77
     Then expect Profile page Promo Code is correct
 
@@ -57,16 +42,16 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Company to random value
     Then expect Membership page Company is correct
 
-    Then set Membership page Address to random value
+    Then set Membership page Address to 1350 Market Street Apt 2901
     Then expect Membership page Address is correct
 
-    Then set Membership page City to random value
+    Then set Membership page City to San Francisco
     Then expect Membership page City is correct
 
     Then set Membership page State to CA
     Then expect Membership page State is correct
 
-    Then set Membership page Zip to 94105
+    Then set Membership page Zip to 94102
     Then expect Membership page Zip is correct
 
     Then set Membership page Phone to random value
@@ -75,36 +60,57 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Cardholder's Name to random value
     Then expect Membership page Cardholder's Name is correct
 
-    Then set Membership page Month to random value
+    Then set Membership page Credit Card Number to default value
+    Then expect Membership page Credit Card Number is correct
+
+    Then set Membership page Month to May (05)
     Then expect Membership page Month is correct
 
-    Then set Membership page Year to random value
+    Then set Membership page Year to 2027
     Then expect Membership page Year is correct
 
-    Then check Membership page Billing address same as mailing address
-    Then expect Membership page Billing address same as mailing address is checked
-    Then expect Billing Address form is present
-    Then uncheck Membership page Billing address same as mailing address
-    Then expect Membership page Billing address same as mailing address is unchecked
-    Then expect Billing Address form is not present
+#    Then check Membership page Billing address same as mailing address
+#    Then expect Membership page Billing address same as mailing address is checked
+#    Then expect Billing Address form is present
+#    Then uncheck Membership page Billing address same as mailing address
+#    Then expect Membership page Billing address same as mailing address is unchecked
+#    Then expect Billing Address form is not present
 
-    Then set Membership page Billing Address to random value
-    Then expect Membership page Billing Address is correct
+#    Then set Membership page Billing Address to random value
+#    Then expect Membership page Billing Address is correct
+#
+#    Then set Membership page Billing City to random value
+#    Then expect Membership page Billing City is correct
+#
+#    Then set Membership page Billing State to random value
+#    Then expect Membership page Billing State is correct
+#
+#    Then set Membership page Billing Zip to random value
+#    Then expect Membership page Billing Zip is correct
+#
+#    Then check Membership page Terms & Conditions
+#    Then expect Membership page Terms & Conditions is checked
+#
+#    Then uncheck Membership page Terms & Conditions
+#    Then expect Membership page Terms & Conditions is unchecked
+#
+#    Then check Membership page Terms & Conditions
 
-    Then set Membership page Billing City to random value
-    Then expect Membership page Billing City is correct
 
-    Then set Membership page Billing State to random value
-    Then expect Membership page Billing State is correct
 
-    Then set Membership page Billing Zip to random value
-    Then expect Membership page Billing Zip is correct
 
-    Then check Membership page Terms & Conditions
-    Then expect Membership page Terms & Conditions is checked
 
-    Then uncheck Membership page Terms & Conditions
-    Then expect Membership page Terms & Conditions is unchecked
-
-    Then check Membership page Terms & Conditions
-
+#    Then set Profile page Referer Name to Magazine Ad
+#    Then set Profile page Referer Name to Streaming Audio
+#    Then set Profile page Referer Name to Television Commercial
+#    Then set Profile page Referer Name to Telephone Call
+#    Then set Profile page Referer Name to Web Search
+#    Then set Profile page Referer Name to Web Banner
+#    Then set Profile page Referer Name to Trade show
+#    Then set Profile page Referer Name to Recommended by USPS
+#    Then set Profile page Referer Name to Recommended by Friend
+#    Then set Profile page Referer Name to Other
+#    Then set Profile page Referer Name to Newspaper Ad
+#    Then set Profile page Referer Name to Received Mailer
+#    Then set Profile page Referer Name to Email from Stamps.com
+#    Then set Profile page Referer Name to Already used in office

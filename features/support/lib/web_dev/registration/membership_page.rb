@@ -63,7 +63,7 @@ module Stamps
           @billing_same_as_mailing = StampsWatirCheckBox.new(browser.checkbox(id: 'useMailingAddressFormBilling'))
 
           @cc_address = StampsTextBox.new(browser.text_field(id: "billingStreet"))
-          @cc_address.list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span")
+          @cc_address.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span")
 
           @cc_city = StampsTextBox.new(browser.text_field(id: "billingCity"))
           @cc_city.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span")

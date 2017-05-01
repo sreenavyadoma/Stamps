@@ -390,12 +390,18 @@ module Stamps
           break unless list_of_values.size == 0
         end
         selection = nil
+        text = ""
         10.times do
           list_of_values.each do |element|
             selection = StampsElement.new(element)
-            return selection if !selection.nil? && selection.text.downcase.include?(str)
+            if !selection.nil? && selection.text.downcase.include?(str.downcase)
+              text = selection.text
+              selection.click
+              return text
+            end
           end
         end
+        expect(text.downcase).to include(str.downcase)
         nil
       end
 
