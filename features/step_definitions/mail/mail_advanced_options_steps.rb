@@ -1,7 +1,7 @@
 
 Then /^[Ss]how Advanced Options$/ do
   stamps.mail.print_form.advanced_options.show
-  expect(stamps.mail.print_form.advanced_options).to be_present, "Print media #{param.print_media} does not have Advanced Options. Check your feature file workflow."
+  expect(stamps.mail.print_form.advanced_options).to be_present, "Print media #{modal_param.print_media} does not have Advanced Options. Check your feature file workflow."
 end
 
 Then /^[Hh]ide Advanced Options$/ do
@@ -9,11 +9,11 @@ Then /^[Hh]ide Advanced Options$/ do
 end
 
 Then /^[Ee]xpect Advanced Options responds to (.+) \((.+)\)$/ do |method_description, method|
-  expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media: #{param.print_media}. Advanced Options does not respond to #{method_description} (#{method})"
+  expect(stamps.mail.print_form.advanced_options).to respond_to(method.to_sym), "Print media: #{modal_param.print_media}. Advanced Options does not respond to #{method_description} (#{method})"
 end
 
 Then /^[Ee]xpect Print form responds to (.+) \((.+)\)$/ do |method_description, method|
-  expect(stamps.mail.print_form).to respond_to(method.to_sym), "Print media: #{param.print_media}. Print form does not respond to #{method_description} (#{method})"
+  expect(stamps.mail.print_form).to respond_to(method.to_sym), "Print media: #{modal_param.print_media}. Print form does not respond to #{method_description} (#{method})"
 end
 
 Then /^[Ss]elect Advanced Options Extra Services$/ do
