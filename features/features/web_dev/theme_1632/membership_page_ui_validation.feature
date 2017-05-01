@@ -5,12 +5,12 @@ Feature: Registration Membership page validation Theme 1632
 
   @membership_page_ui_validation
   Scenario: Theme 1632
-    Then set Profile email to email
-    Then set Profile username to username
-    Then set Profile password to password
-    #Then set Profile retype password to password
-    Then set Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-    Then on Profile page, continue to Membership page
+    Then set Profile page email to email
+    Then set Profile page username to username
+    Then set Profile page password to password
+    #Then set Profile page retype password to password
+    Then set Profile page Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
+    Then on Profile page page, continue to Membership page
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
     Then expect Registration bread crumbs to contain Profile
@@ -61,11 +61,11 @@ Feature: Registration Membership page validation Theme 1632
     Cancel online or simply call us toll-free at 1-855-608-2677, M-F, 6am-6pm PST
     """
     Then expect Registration Membership Bonus Offer Details link exists and is clickable
-    Then expect Profile Privacy Policy link exists and is clickable
-    Then expect Profile copyright link exists
-    Then expect Profile Norton logo exists
-    Then expect Profile TRUSTe logo exists
-    Then expect Profile LIVE chat button exists
+    Then expect Profile page Privacy Policy link exists and is clickable
+    Then expect Profile page copyright link exists
+    Then expect Profile page Norton logo exists
+    Then expect Profile page TRUSTe logo exists
+    Then expect Profile page LIVE chat button exists
 
 
 

@@ -243,7 +243,7 @@ module Stamps
       end
     end
 
-    class WatirCheckBoxWrapper < StampsElement
+    class StampsWatirCheckBox < StampsElement
       def check
         10.times do
           click
@@ -379,7 +379,6 @@ module Stamps
       def initialize(text_box, drop_down)
         super(text_box)
         @drop_down = drop_down
-        @html_tag = html_tag
       end
 
       def select_from_lov(str)

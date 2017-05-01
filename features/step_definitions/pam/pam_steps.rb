@@ -12,9 +12,9 @@ end
 
 Then /^[Oo]n PAM Customer Search page, set username to (.*)$/ do |username|
   #config.logger.step "On PAM Customer Search page, set username to #{username}"
-  parameter[:usr] = username unless username.downcase.include? 'random'
+  test_param[:usr] = username unless username.downcase.include? 'random'
   #config.logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
-  @customer_search.username.set parameter[:usr]
+  @customer_search.username.set test_param[:usr]
   sleep(0.35)
 end
 
@@ -31,7 +31,7 @@ Then /^[Oo]n PAM Customer Search page, click Search button$/ do
     if @customer_profile.present?
       @pam_customer_profile_found = true
     else
-      step "On PAM Customer Search page, set username to #{parameter[:usr]}"
+      step "On PAM Customer Search page, set username to #{test_param[:usr]}"
       step "On PAM Customer Search page, set 5.2 or lower"
       step "On PAM Customer Search page, click Search button"
     end
@@ -125,7 +125,7 @@ Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, 
   comments.click
   comments.click
   comments.click
-  comments.set parameter[:usr]
+  comments.set test_param[:usr]
 
   @ach_credit.submit.yes.ok
 end
@@ -264,12 +264,12 @@ Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
   @appcapp_overrides.submit.ok
 end
 
-Then /^[Oo]n [Pp]rofile page, Send username to standard out$/ do
+Then /^[Oo]n [Pp]rofile [Pp]age, Send username to standard out$/ do
   config.logger.message " ############## NEW USER ID "
-  config.logger.message " ############## #{parameter[:usr]}"
-  config.logger.message " ############## #{parameter[:usr]}"
-  config.logger.message " ############## #{parameter[:usr]}"
-  config.logger.message " ############## #{parameter[:usr]}"
+  config.logger.message " ############## #{test_param[:usr]}"
+  config.logger.message " ############## #{test_param[:usr]}"
+  config.logger.message " ############## #{test_param[:usr]}"
+  config.logger.message " ############## #{test_param[:usr]}"
   config.logger.message " ############## NEW USER ID "
 end
 

@@ -37,13 +37,13 @@ Then /^[Ss]et Print form Serial Number to (.*)$/ do |str|
 end
 
 Then /^[Ss]et Print form Amount to (\d*.?\d+)$/ do |value|
-  parameter[:stamp_amount] = value
-  stamps.mail.print_form.stamp_amount.set(parameter[:stamp_amount])
+  test_param[:stamp_amount] = value
+  stamps.mail.print_form.stamp_amount.set(test_param[:stamp_amount])
 end
 
 Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
-  parameter[:quantity] = value
-  stamps.mail.print_form.quantity.set(parameter[:quantity])
+  test_param[:quantity] = value
+  stamps.mail.print_form.quantity.set(test_param[:quantity])
 end
 
 Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
