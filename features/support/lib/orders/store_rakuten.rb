@@ -55,9 +55,9 @@ module Stamps
 
         def connect
           button = StampsElement.new browser.span(text: "Connect")
-          settings = RakutenSettings.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
+          settings = RakutenSettings.new(modal_param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
+          server_error = Orders::Stores::ServerError.new(modal_param)
           connecting_button = StampsElement.new browser.span(text: "Connecting...")
 
           max_server_error_retry_count = 5

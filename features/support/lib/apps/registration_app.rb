@@ -1,7 +1,7 @@
 
 module RegistrationApp
   def registration
-    @registration ||= Stamps::Registration::WebRegistration.new(param)
+    @registration ||= Stamps::Registration::WebRegistration.new(modal_param)
   end
 
   def registration=registration
@@ -9,11 +9,11 @@ module RegistrationApp
   end
 
   def sdc_website
-    @sdc_website ||= Stamps::Registration::SdcWebsite.new(param)
+    @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)
   end
 
   def pam
-    @pam ||= Pam::PaymentAdministratorManager.new(param)
+    @pam ||= Pam::PaymentAdministratorManager.new(modal_param)
   end
 
   def registration_user_parameter_file(*args)

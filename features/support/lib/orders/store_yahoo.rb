@@ -46,9 +46,9 @@ module Stamps
 
         def connect
           button = StampsElement.new browser.span(text: "Connect")
-          settings = YahooSettings.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          settings = YahooSettings.new(modal_param)
+          server_error = Orders::Stores::ServerError.new(modal_param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
 
           max_server_error_retry_count = 5
 
@@ -72,9 +72,9 @@ module Stamps
 
         def reconnect
           button = StampsElement.new browser.span(text: "Connect")
-          server_error = Orders::Stores::ServerError.new(param)
-          manage_stores = ManageStores.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          server_error = Orders::Stores::ServerError.new(modal_param)
+          manage_stores = ManageStores.new(modal_param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
 
           max_server_error_retry_count = 5
 
@@ -97,8 +97,8 @@ module Stamps
 
         def reconnect_old
           button = StampsElement.new browser.span(text: "Connect")
-          manage_stores = ManageStores.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          manage_stores = ManageStores.new(modal_param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
 
           10.times do
             button.click
@@ -223,7 +223,7 @@ module Stamps
 
         def sign_in
           button = StampsElement.new browser.text_field(css: "input[value='Log in']")
-          settings_page = ShopifySettings.new(param)
+          settings_page = ShopifySettings.new(modal_param)
 
           10.times do
             button.click

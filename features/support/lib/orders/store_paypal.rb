@@ -99,8 +99,8 @@ module Stamps
 
         def send_email_verification
           button = StampsElement.new(browser.spans(text: "Send Email Verification").last)
-          verification_sent = EmailVerificationSent.new(param)
-          error = Error400.new(param)
+          verification_sent = EmailVerificationSent.new(modal_param)
+          error = Error400.new(modal_param)
           10.times do
             button.click
             verification_sent.wait_until_present
@@ -131,7 +131,7 @@ module Stamps
 
         def test_connection
           button = StampsElement.new browser.span(text: "Test Connection")
-          verification_required = EmailVerificationRequired.new(param)
+          verification_required = EmailVerificationRequired.new(modal_param)
           10.times do
             button.click
             verification_required.wait_until_present

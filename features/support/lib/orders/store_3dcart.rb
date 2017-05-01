@@ -51,7 +51,7 @@ module Stamps
         end
 
         def weight_unit
-          ProductWeightUnit.new(param)
+          ProductWeightUnit.new(modal_param)
         end
 
         def connect_button
@@ -60,9 +60,9 @@ module Stamps
 
         def connect
           button = StampsElement.new browser.span(text: "Connect")
-          settings = ThreeDCartSettings.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
+          settings = ThreeDCartSettings.new(modal_param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
+          server_error = Orders::Stores::ServerError.new(modal_param)
           connecting_button = StampsElement.new browser.span(text: "Connecting...")
 
           max_server_error_retry_count = 5
@@ -88,9 +88,9 @@ module Stamps
 
         def reconnect
           button = StampsElement.new browser.span(text: "Connect")
-          manage_stores = ManageStores.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
+          manage_stores = ManageStores.new(modal_param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
+          server_error = Orders::Stores::ServerError.new(modal_param)
           connecting_button = StampsElement.new browser.span(text: "Connecting...")
 
           max_server_error_retry_count = 5

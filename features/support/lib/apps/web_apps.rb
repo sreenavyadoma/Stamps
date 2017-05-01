@@ -1,9 +1,9 @@
 module WebApp
   def health
-    @health ||= HealthCheck.new(param)
+    @health ||= HealthCheck.new(modal_param)
   end
 
   def stamps
-    @stamps ||= StampsCom.new(param)
+    @stamps ||= StampsCom.new(modal_param)
   end
 end

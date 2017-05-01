@@ -81,25 +81,30 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Year to random value
     Then expect Membership page Year is correct
 
-    Then set Membership page xxxxxxxx to random value
-    Then expect Membership page xxxxxxxx is correct
+    Then check Membership page Billing address same as mailing address
+    Then expect Membership page Billing address same as mailing address is checked
+    Then expect Billing Address form is present
+    Then uncheck Membership page Billing address same as mailing address
+    Then expect Membership page Billing address same as mailing address is unchecked
+    Then expect Billing Address form is not present
 
-    Then set Membership page xxxxxxxx to random value
-    Then expect Membership page xxxxxxxx is correct
+    Then set Membership page Billing Address to random value
+    Then expect Membership page Billing Address is correct
 
-    Then set Membership page xxxxxxxx to random value
-    Then expect Membership page xxxxxxxx is correct
+    Then set Membership page Billing City to random value
+    Then expect Membership page Billing City is correct
 
-    Then set Membership page xxxxxxxx to random value
-    Then expect Membership page xxxxxxxx is correct
+    Then set Membership page Billing State to random value
+    Then expect Membership page Billing State is correct
 
-    Then set Membership page xxxxxxxx to random value
-    Then expect Membership page xxxxxxxx is correct
+    Then set Membership page Billing Zip to random value
+    Then expect Membership page Billing Zip is correct
 
-    Then set Membership page xxxxxxxx to random value
-    Then expect Membership page xxxxxxxx is correct
+    Then check Membership page Terms & Conditions
+    Then expect Membership page Terms & Conditions is checked
 
-    Then set Membership page xxxxxxxx to random value
-    Then expect Membership page xxxxxxxx is correct
+    Then uncheck Membership page Terms & Conditions
+    Then expect Membership page Terms & Conditions is unchecked
 
+    Then check Membership page Terms & Conditions
 

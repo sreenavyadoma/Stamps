@@ -88,7 +88,7 @@ module Stamps
         end
 
         def print_expecting_rating_error
-          RatingError.new(param).wait_until_present
+          RatingError.new(modal_param).wait_until_present
         end
 
         def label_sheet_required_count

@@ -32,7 +32,7 @@ module Stamps
 
         #expect(['theme_1632', 'default']).to include(theme), "Registration Theme #{theme} is not supported. We curently only support Theme 1632"
 
-        case param.test_env.downcase
+        case modal_param.test_env.downcase
           when /cc/
             url = "https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           when /sc/

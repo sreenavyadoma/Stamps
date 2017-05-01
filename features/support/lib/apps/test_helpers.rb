@@ -7,7 +7,7 @@ module TestHelper
     @helper ||= StampsTestHelper.new(config.logger)
   end
 
-  def parameter
+  def test_param
     if @test_data.nil?
       @test_data ||= Hash.new
       @test_data[:customs_associated_items] ||= Hash.new
@@ -17,7 +17,7 @@ module TestHelper
     @test_data
   end
 
-  def param
+  def modal_param
     if @param.nil?
       @param ||= ModalParam.new
       @param.browser_sym = config.browser_sym

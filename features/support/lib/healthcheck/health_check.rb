@@ -2,9 +2,9 @@ module Stamps
   class HealthCheck < Browser::StampsModal
 
     def health_check
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      modal_param.test_env = 'stg' if modal_param.test_env.downcase == 'staging'
 
-      case param.test_env.downcase
+      case modal_param.test_env.downcase
         when /sc/
           url = "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
@@ -64,9 +64,9 @@ module Stamps
     end
 
     def address_book
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      modal_param.test_env = 'stg' if modal_param.test_env.downcase == 'staging'
 
-      case param.test_env.downcase
+      case modal_param.test_env.downcase
         when /sc/
           logger.message "Print - Address Book"
           browser.goto "https://printext.qasc.stamps.com/addressbook/healthcheck.aspx"
@@ -113,9 +113,9 @@ module Stamps
     end
 
     def or_reports
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      modal_param.test_env = 'stg' if modal_param.test_env.downcase == 'staging'
 
-      case param.test_env.downcase
+      case modal_param.test_env.downcase
         when /sc/
           logger.message "OR - Reports"
           browser.goto "https://orext.qasc.stamps.com/ORReports/healthcheck.aspx"
@@ -167,9 +167,9 @@ module Stamps
     end
 
     def or_postage_tools
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      modal_param.test_env = 'stg' if modal_param.test_env.downcase == 'staging'
 
-      case param.test_env.downcase
+      case modal_param.test_env.downcase
         when /sc/
           logger.message "OR - Postage Tools"
           browser.goto "https://orext.qasc.stamps.com/postagetools/healthcheck.aspx"

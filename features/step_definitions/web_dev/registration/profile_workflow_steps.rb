@@ -1,7 +1,7 @@
 Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|default )[Rr]egistration(?: [Pp]age| [Tt]heme (.*))$/ do |str|
-  parameter[:registration_theme] = str
+  test_param[:registration_theme] = str
   step "I launch default browser"
-  registration.load_theme(parameter[:registration_theme])
+  registration.load_theme(test_param[:registration_theme])
 end
 
 Then /^(?:|[Ii] )[Ll]oad(?:|ed) SDC Website$/ do
@@ -14,42 +14,42 @@ Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
-  parameter[:email] = (str.nil?)?(helper.random_email):str
+  test_param[:email] = (str.nil?)?(helper.random_email):str
   registration.profile.email.wait_until_present(10)
-  registration.profile.email.set(parameter[:email])
+  registration.profile.email.set(test_param[:email])
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?parameter[:email]:str
+  str = (str.nil?)?test_param[:email]:str
   expect(registration.profile.email.text).to eql(str)
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  parameter[:username] = (str.nil?)?(helper.random_alpha_numeric):str
-  registration.profile.account_info.account_username.set(parameter[:username])
+  test_param[:username] = (str.nil?)?(helper.random_alpha_numeric):str
+  registration.profile.account_info.account_username.set(test_param[:username])
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?parameter[:username]:str
+  str = (str.nil?)?test_param[:username]:str
   expect(registration.profile.account_info.account_username.text).to eql(str)
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
-  parameter[:password] = (str.nil?)?(helper.random_password):str
-  registration.profile.account_info.account_password.set(parameter[:password])
+  test_param[:password] = (str.nil?)?(helper.random_password):str
+  registration.profile.account_info.account_password.set(test_param[:password])
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?parameter[:password]:str
+  str = (str.nil?)?test_param[:password]:str
   expect(registration.profile.account_info.account_password.text).to eql(str)
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword to (?:random value|(.*))$/ do |str|
-  registration.profile.account_info.retype_password.set((str.nil?)?(parameter[:password]):str)
+  registration.profile.account_info.retype_password.set((str.nil?)?(test_param[:password]):str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.account_info.retype_password.text).to eql(parameter[:password])
+  expect(registration.profile.account_info.retype_password.text).to eql(test_param[:password])
 end
 
 # Business Use - Mostly mailing (letters/postcards/flats)
@@ -57,8 +57,8 @@ end
 # Business Use - Both mailing and shipping
 # Individual/Home Office
 Then /^[Ss]et [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion to (.*)$/ do |str|
-  parameter[:survey_question] = str
-  parameter[:survey_question_selected] = registration.profile.survey_question.select_from_lov(parameter[:survey_question])
+  test_param[:survey_question] = str
+  test_param[:survey_question_selected] = registration.profile.survey_question.select_from_lov(test_param[:survey_question])
 end
 
 #Magazine Ad
@@ -77,17 +77,17 @@ end
 #Email from Stamps.com
 # Already used in office
 Then /^[Ss]et [Pp]rofile [Pp]age Referer Name to (.*)$/ do |str|
-  parameter[:referer_name] = str
-  parameter[:survey_question_selected] = registration.profile.referer_name.select_from_lov(parameter[:referer_name])
+  test_param[:referer_name] = str
+  test_param[:survey_question_selected] = registration.profile.referer_name.select_from_lov(test_param[:referer_name])
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (.*)$/ do |str|
-  parameter[:promo_code] = str
-  registration.profile.promo_code.show_promo_code.set(parameter[:promo_code])
+  test_param[:promo_code] = str
+  registration.profile.promo_code.show_promo_code.set(test_param[:promo_code])
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?parameter[:promo_code]:str
+  str = (str.nil?)?test_param[:promo_code]:str
   expect(registration.profile.promo_code.show_promo_code.text).to eql(str)
 end
 
@@ -112,13 +112,13 @@ Then /^[Cc]ontinue to [Mm]embership page$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Ff]irst [Ff]ame to (?:random value|(.*))$/ do |str|
-  parameter[:first_name] = (str.nil?)?(helper.random_alpha_capitalize(2,8)):str
-  registration.membership.first_name(parameter[:first_name])
+  test_param[:first_name] = (str.nil?)?(helper.random_alpha_capitalize(2, 8)):str
+  registration.membership.first_name(test_param[:first_name])
 end
 
 Then /^[Ss]et [Mm]embership [Ll]ast [Ff]ame to (?:random value|(.*))$/ do |str|
-  parameter[:last_name] = (str.nil?)?(helper.random_alpha_capitalize(3, 10)):str
-  registration.membership.last_name(parameter[:last_name])
+  test_param[:last_name] = (str.nil?)?(helper.random_alpha_capitalize(3, 10)):str
+  registration.membership.last_name(test_param[:last_name])
 end
 
 

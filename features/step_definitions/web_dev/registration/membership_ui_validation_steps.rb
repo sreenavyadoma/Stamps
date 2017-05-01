@@ -135,7 +135,7 @@ Then /^[Oo]n [Mm]embership [Pp]age, click Submit and correct errors$/ do
         step "On Registration Membership page, click Submit"
       when Registration::MembershipCardNumber
         logger.error "Membership Phone Textbox has error: #{@registration_result.help_text}"
-        step "set Registration Membership page Card number to #{test_parameter[:card_number]}"
+        step "set Registration Membership page Card number to #{test_param[:card_number]}"
         step "On Registration Membership page, click Submit"
       when Registration::ChooseSupplies
         break

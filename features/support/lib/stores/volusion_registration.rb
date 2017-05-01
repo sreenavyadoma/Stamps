@@ -78,11 +78,11 @@ module Stamps
         end
 
         def country
-          VolusionCountry.new(param)
+          VolusionCountry.new(modal_param)
         end
 
         def state
-          VolusionState.new(param)
+          VolusionState.new(modal_param)
         end
 
         def zip_code
@@ -94,16 +94,16 @@ module Stamps
         end
 
         def type_of_address
-          VolusionTypeOfAddress.new(param)
+          VolusionTypeOfAddress.new(modal_param)
         end
 
         def is_this_your_billing_address
-          VolusionBillingAddress.new(param)
+          VolusionBillingAddress.new(modal_param)
         end
 
         def continue
           button = StampsElement.new browser.text_field(name: "btnContinue")
-          account_page = MyAccountPage.new(param)
+          account_page = MyAccountPage.new(modal_param)
           10.times do
             button.click
             sleep(0.35)
@@ -137,7 +137,7 @@ module Stamps
 
 
         def address_type
-          VolusionAddressType.new(param)
+          VolusionAddressType.new(modal_param)
         end
 
         def shipping_method method
@@ -186,7 +186,7 @@ module Stamps
 
         def proceed_to_checkout
           button = StampsElement.new browser.text_field(css: "input[name='btn_checkout_guest']")
-          checkout = VolusionCheckOut.new(param)
+          checkout = VolusionCheckOut.new(modal_param)
           10.times do
             button.click
             sleep(0.35)
@@ -213,7 +213,7 @@ module Stamps
 
         def add_to_bag
           qty_textbox = self.qty_field
-          shopping_cart = VolusionCart.new(param)
+          shopping_cart = VolusionCart.new(modal_param)
           cart_count_b4_add = shopping_cart.count
           button = StampsElement.new browser.text_field(css: "input[alt='Add to cart']")
           2.times do
@@ -233,7 +233,7 @@ module Stamps
 
         def sample_product_one
           link = StampsElement.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
-          product = VolusionProduct.new(param)
+          product = VolusionProduct.new(modal_param)
           10.times do
             link.click
             sleep(0.35)
@@ -249,7 +249,7 @@ module Stamps
           5.times do
             button.click
             sleep(0.35)
-            return VolusionLoginPage.new(param) if logged_out_field.present?
+            return VolusionLoginPage.new(modal_param) if logged_out_field.present?
           end
         end
 
@@ -266,7 +266,7 @@ module Stamps
           end
 
           def cart
-            shopping_cart = VolusionCart.new(param)
+            shopping_cart = VolusionCart.new(modal_param)
             shopping_cart.visit
             shopping_cart
           end
@@ -274,7 +274,7 @@ module Stamps
 
         def category_one
           link = StampsElement.new(browser.as(text: "CATEGORY ONE").last)
-          category_1 = VolusionCategoryOne.new(param)
+          category_1 = VolusionCategoryOne.new(modal_param)
           10.times do
             link.click
             sleep(0.35)
@@ -317,12 +317,12 @@ module Stamps
         end
 
         def receive_newsletter
-          ReceiveNewsLetterCheckBox.new(param)
+          ReceiveNewsLetterCheckBox.new(modal_param)
         end
 
         def continue
           button = StampsElement.new browser.text_field(id: "btnContinue")
-          shipping_address = VolusionShippingAddress.new(param)
+          shipping_address = VolusionShippingAddress.new(modal_param)
           10.times do
             button.click
             sleep(0.35)
@@ -354,7 +354,7 @@ module Stamps
 
         def continue
           button = StampsElement.new browser.img(css: "img[src*=Continue]")
-          registration = VolusionRegistration.new(param)
+          registration = VolusionRegistration.new(modal_param)
           10.times do
             button.click
             sleep(0.35)

@@ -1,63 +1,68 @@
 # Membership Page validation steps
 
-Then /^[Ss]et [Mm]embership [Pp]age First Name to (.*)$/ do |str|
-  test_parameter[:first_name] = (str.downcase.include? 'random') ? helper.random_alpha : str
-  registration.profile.membership.personal_info.first_name.set(test_parameter[:first_name])
+Then /^[Ss]et [Mm]embership [Pp]age First Name to (?:random value|(.*))$/ do |str|
+  test_param[:first_name] = (str.nil?)?(helper.random_email):str
+  registration.profile.membership.personal_info.first_name.set(test_param[:first_name])
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age First Name is (?:correct|(.*))$/ do |str|
+  str = (str.nil?)?test_param[:first_name]:str
+  expect(registration.profile.membership.personal_info.first_name.text).to eql(test_param[:first_name])
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Last Name to (.*)$/ do |str|
-  test_parameter[:last_name] = (str.downcase.include? 'random') ? helper.random_alpha : str
-  registration.profile.membership.personal_info.last_name.set(test_parameter[:last_name])
+  test_param[:last_name] = (str.downcase.include? 'random') ? helper.random_alpha : str
+  registration.profile.membership.personal_info.last_name.set(test_param[:last_name])
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Company to (.*)$/ do |str|
-  test_parameter[:company] = (str.downcase.include? 'random') ? helper.random_alpha_numeric : str
-  registration.profile.membership.personal_info.company.set(test_parameter[:company])
+  test_param[:company] = (str.downcase.include? 'random') ? helper.random_alpha_numeric : str
+  registration.profile.membership.personal_info.company.set(test_param[:company])
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Address to (.*)$/ do |str|
-  test_parameter[:company] = (str.downcase.include? 'random') ? helper.random_alpha_numeric : str
-  registration.profile.membership.personal_info.address.set(test_parameter[:company])
+  test_param[:company] = (str.downcase.include? 'random') ? helper.random_alpha_numeric : str
+  registration.profile.membership.personal_info.address.set(test_param[:company])
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age City to (.*)$/ do |str|
-  test_parameter[:membership] = str
-  registration.profile.membership.personal_info.city.set(test_parameter[:membership])
+  test_param[:membership] = str
+  registration.profile.membership.personal_info.city.set(test_param[:membership])
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age State to (.*)$/ do |str|
-  test_parameter[:state] = str
-  registration.profile.membership.personal_info.state.select(test_parameter[:state])
+  test_param[:state] = str
+  registration.profile.membership.personal_info.state.select(test_param[:state])
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Zip to (.*)$/ do |str|
-  test_parameter[:zip] = str
-  registration.profile.membership.personal_info.zip.set(test_parameter[:zip])
+  test_param[:zip] = str
+  registration.profile.membership.personal_info.zip.set(test_param[:zip])
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Phone to (.*)$/ do |str|
-  test_parameter[:phone] = (str.downcase.include? 'random') ? helper.random_phone : str
+  test_param[:phone] = (str.downcase.include? 'random') ? helper.random_phone : str
 
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Extenion to (.*)$/ do |str|
-  test_parameter[:ext] = (str.downcase.include? 'random') ? helper.random_phone_extension : str
-  registration.profile.membership.ext.set test_parameter[:ext]
+  test_param[:ext] = (str.downcase.include? 'random') ? helper.random_phone_extension : str
+  registration.profile.membership.ext.set test_param[:ext]
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Cardholder name to (.*)$/ do |str|
-  test_parameter[:card_holder_name] = (str.downcase.include? 'random') ? helper.random_full_name : str
-  registration.profile.membership.card_holder_name.set test_parameter[:card_holder_name]
+  test_param[:card_holder_name] = (str.downcase.include? 'random') ? helper.random_full_name : str
+  registration.profile.membership.card_holder_name.set test_param[:card_holder_name]
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Card number to (.*)$/ do |str|
-  test_parameter[:card_number] = str
-  registration.profile.membership.card_number.set test_parameter[:card_number]
+  test_param[:card_number] = str
+  registration.profile.membership.card_number.set test_param[:card_number]
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Expiration Year to (\d+)$/ do |str|
-  test_parameter[:expiration_year] = str
-  registration.profile.membership.expiration_year.select test_parameter[:expiration_year]
+  test_param[:expiration_year] = str
+  registration.profile.membership.expiration_year.select test_param[:expiration_year]
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Billing address same as mailing address to Checked$/ do
@@ -82,7 +87,7 @@ end
 
 Then /^[Oo]n [Mm]embership [Pp]age, click Submit$/ do
   begin
-    registration.profile.membership.submit_correct_errors test_parameter
+    registration.profile.membership.submit_correct_errors test_param
   rescue Exception => e
     logger.error e.message
     logger.error e.backtrace.join("\n")

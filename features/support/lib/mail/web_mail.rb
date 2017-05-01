@@ -12,22 +12,22 @@ module Stamps
       end
 
       def print_on(selection)
-        param.print_media = print_media.print_on(selection)
-        case param.print_media
+        modal_param.print_media = print_media.print_on(selection)
+        case modal_param.print_media
           when :stamps
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if @print_form.nil? || @print_form.print_media != :stamps
+            @print_form = PrintFormPanel::PrintForm.new(modal_param).extend(PrintFormPanel::MailStamps) if @print_form.nil? || @print_form.print_media != :stamps
           when :labels
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabels) if @print_form.nil? || @print_form.print_media != :labels
+            @print_form = PrintFormPanel::PrintForm.new(modal_param).extend(PrintFormPanel::ShippingLabels) if @print_form.nil? || @print_form.print_media != :labels
           when :envelopes
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelopes) if @print_form.nil? || @print_form.print_media != :envelopes
+            @print_form = PrintFormPanel::PrintForm.new(modal_param).extend(PrintFormPanel::Envelopes) if @print_form.nil? || @print_form.print_media != :envelopes
           when :certified_mails
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails) if @print_form.nil? || @print_form.print_media != :certified_mails
+            @print_form = PrintFormPanel::PrintForm.new(modal_param).extend(PrintFormPanel::CertifiedMails) if @print_form.nil? || @print_form.print_media != :certified_mails
           when :certified_mails_3910_3930
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails39103930) if @print_form.nil? || @print_form.print_media != :certified_mails_3910_3930
+            @print_form = PrintFormPanel::PrintForm.new(modal_param).extend(PrintFormPanel::CertifiedMails39103930) if @print_form.nil? || @print_form.print_media != :certified_mails_3910_3930
           when :certified_mails_3810
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil? || @print_form.print_media != :certified_mails_3810
+            @print_form = PrintFormPanel::PrintForm.new(modal_param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil? || @print_form.print_media != :certified_mails_3810
           when :rolls
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls) if @print_form.nil? || @print_form.print_media != :rolls
+            @print_form = PrintFormPanel::PrintForm.new(modal_param).extend(PrintFormPanel::Rolls) if @print_form.nil? || @print_form.print_media != :rolls
           else
             # do nothing
         end

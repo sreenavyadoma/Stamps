@@ -1,6 +1,6 @@
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
-  expect([:orders, :mail]).to include(param.web_app)
+  expect([:orders, :mail]).to include(modal_param.web_app)
   Spreadsheet.client_encoding = 'UTF-8'
   rate_file = data_for(:rates_test, {})['rate_file']
 
@@ -355,9 +355,9 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # set expectation column for this row to zone price
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:zone], format)
           @result_sheet[row_number, @result_sheet_columns[:zone]]= price
-          @result_sheet[row_number, @result_sheet_columns[:username]] = parameter[:username]
-          @result_sheet[row_number, @result_sheet_columns[:ship_from]] = parameter[:ship_from]
-          @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = parameter[:ship_to_domestic]
+          @result_sheet[row_number, @result_sheet_columns[:username]] = test_param[:username]
+          @result_sheet[row_number, @result_sheet_columns[:ship_from]] = test_param[:ship_from]
+          @result_sheet[row_number, @result_sheet_columns[:ship_to_domestic]] = test_param[:ship_to_domestic]
 
           # Set weight to 0
           step "set Order Details form Pounds to 0"
@@ -395,18 +395,18 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
           step "set Order Details form service to #{service}"
-          @result_sheet[row_number, @result_sheet_columns[:service_selected]] = parameter[:service]
+          @result_sheet[row_number, @result_sheet_columns[:service_selected]] = test_param[:service]
 
           # Set Tracking
           begin
             step "set Order Details form Tracking to #{row[@rate_sheet_columns[:tracking]]}"
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
-          @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = parameter[:tracking]
+          @result_sheet[row_number, @result_sheet_columns[:tracking_selected]] = test_param[:tracking]
 
           # get total cost actual value from UI
           step "Save Order Details data"
-          @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (parameter[:total_ship_cost].to_f * 100).round / 100.0
+          @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
           step "set Order Details form Pounds to 0"
@@ -428,7 +428,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           config.logger.step "#{"#"*10} "
           config.logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
           config.logger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
-          config.logger.step "#{"#"*10} Ship-To Address: #{parameter[:name]}, #{parameter[:street_address]}, #{parameter[:city]}, #{parameter[:state]}, #{parameter[:zip]}"
+          config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:name]}, #{test_param[:street_address]}, #{test_param[:city]}, #{test_param[:state]}, #{test_param[:zip]}"
           config.logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
           config.logger.step "#{"#"*10} "
         end

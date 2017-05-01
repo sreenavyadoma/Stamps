@@ -1,24 +1,24 @@
 
 Then /^[Ee]xpect Order Details form Ship-From and Ship-From saved values are the same$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_from.text_box.text).to eql(parameter[:ship_from])
+  expect(stamps.orders.order_details.ship_from.text_box.text).to eql(test_param[:ship_from])
 end
 
 Then /^[Ee]xpect Order Details form Associated Item (\d+) Qty is (?:correct|(\d+))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expectation = (expectation.nil?)?parameter[:details_associated_items][item_number][:item_qty] : expectation
+  expectation = (expectation.nil?)?test_param[:details_associated_items][item_number][:item_qty] : expectation
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.text_box.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form Associated Item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expectation = (expectation.nil?)?parameter[:details_associated_items][item_number][:item_id] : expectation
+  expectation = (expectation.nil?)?test_param[:details_associated_items][item_number][:item_id] : expectation
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form Associated Item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expectation = (expectation.nil?)?parameter[:details_associated_items][item_number][:item_description] : expectation
+  expectation = (expectation.nil?)?test_param[:details_associated_items][item_number][:item_description] : expectation
   expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.text).to eql expectation
 end
 
@@ -60,61 +60,61 @@ Then /^[Ee]xpect Order Details form service Placeholder is (.*)$/ do |expectatio
 end
 
 Then /^[Ee]xpect Order Details form Ship-To Country is (?:correct|(.*))$/ do |expectation|
-  expectation = (expectation.nil?)?parameter[:country] : expectation
+  expectation = (expectation.nil?)?test_param[:country] : expectation
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.country.text_box.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Name is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:name] if expectation.nil?
+  expectation = test_param[:name] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.name.text).to eql(expectation)
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Company is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:company] if expectation.nil?
+  expectation = test_param[:company] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.company.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Address 1 is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:street_address_1] if expectation.nil?
+  expectation = test_param[:street_address_1] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.address_1.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Address 2 is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:street_address_2] if expectation.nil?
+  expectation = test_param[:street_address_2] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.address_2.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To City is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:city] if expectation.nil?
+  expectation = test_param[:city] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.city.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Province is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:state] if expectation.nil?
+  expectation = test_param[:state] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.province.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Postal Code is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:zip] if expectation.nil?
+  expectation = test_param[:zip] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.postal_code.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Phone is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:phone] if expectation.nil?
+  expectation = test_param[:phone] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.phone.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Email is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:email] if expectation.nil?
+  expectation = test_param[:email] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.email.text).to eql expectation
 end
@@ -229,19 +229,19 @@ Then /^[Ee]xpect Exact Address Not Found module to appear/ do
 end
 
 Then /^[Ee]xpect Order Details form Reference Number is (?:correct|(.*))$/ do |expectation|
-  expectation = parameter[:reference_no] if expectation.nil?
+  expectation = test_param[:reference_no] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.reference_no.text).to eql expectation
 end
 
 Then /^[Ee]xpect Order Details form Insure-For is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = parameter[:insure_for] if expectation.nil?
+  expectation = test_param[:insure_for] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.insure_for.text_box.text.to_f.round(2)).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect Order Details form Insure-For Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = parameter[:insure_for_cost] if expectation.nil?
+  expectation = test_param[:insure_for_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.insure_for.cost).to eql expectation.to_f.round(2)
 end
@@ -285,11 +285,11 @@ Then /^[Ee]xpect Order Details form service Tooltip for "(.*)" to include "(.*)"
 end
 
 Then /^[Ee]xpect Order Details form Service Cost saved value is the same$/ do
-  step "expect Order Details form Service Cost is #{parameter[:service_cost]}"
+  step "expect Order Details form Service Cost is #{test_param[:service_cost]}"
 end
 
 Then /^[Ee]xpect Order Details form Service Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = parameter[:service_cost] if expectation.nil?
+  expectation = test_param[:service_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.service.cost.to_f).to eql expectation.to_f.round(2)
 end
@@ -300,7 +300,7 @@ Then /^[Ee]xpect Order Details form Service Cost is greater than \$([0-9.]*)$/ d
 end
 
 Then /^[Ee]xpect Order Details form Tracking Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = parameter[:tracking_cost] if expectation.nil?
+  expectation = test_param[:tracking_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.tracking.cost).to eql expectation.to_f.round(2)
 end
@@ -311,13 +311,13 @@ Then /^[Ee]xpect Order Details form Tracking Cost is greater than \$([0-9.]*)$/ 
 end
 
 Then /^[Ee]xpect Order Details form Pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
-  expectation = parameter[:pounds] if expectation.nil?
+  expectation = test_param[:pounds] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.weight.lb.text_box.text.to_f).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect Order Details form Ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |expectation|
-  expectation = parameter[:ounces] if expectation.nil?
+  expectation = test_param[:ounces] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.weight.oz.text_box.text.to_f).to eql expectation.to_f.round(2)
 end
@@ -347,7 +347,7 @@ Then /^[Ee]xpect Order Details form Tracking is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect Order Details form Total Ship Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = parameter[:total_ship_cost] if expectation.nil?
+  expectation = test_param[:total_ship_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.footer.total_ship_cost).to eql(expectation.to_f.round(2))
 end

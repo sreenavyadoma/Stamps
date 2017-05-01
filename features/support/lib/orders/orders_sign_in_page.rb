@@ -89,7 +89,7 @@ module Stamps
       end
 
       def first_time_sign_in usr, pw
-        market_place = Orders::Stores::MarketPlace.new(param)
+        market_place = Orders::Stores::MarketPlace.new(modal_param)
 
         username.wait_until_present 6
 
@@ -122,7 +122,7 @@ module Stamps
         begin
           loading_orders = StampsElement.new browser.div(text: "Loading orders...")
           invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
-          new_welcome = NewWelcomeModal.new(param)
+          new_welcome = NewWelcomeModal.new(modal_param)
 
           expect(browser.url).to include "Orders"
 
