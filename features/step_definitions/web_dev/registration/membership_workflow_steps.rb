@@ -36,7 +36,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Aa]ddress is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:company]:str
+  str = (str.nil?)?test_param[:address]:str
   expect(registration.profile.membership.personal_info.address.text).to eql(str)
 end
 

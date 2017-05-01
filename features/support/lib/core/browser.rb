@@ -372,13 +372,13 @@ module Stamps
       end
     end
 
-    class StampsDropDown < StampsTextBox
-      attr_reader :drop_down
-      attr_accessor :html_tag, :list_of_values
+    class StampsDropDownLov < StampsTextBox
+      attr_accessor :list_of_values
 
-      def initialize(text_box, drop_down)
+      def initialize(text_box, drop_down, list_of_values)
         super(text_box)
         @drop_down = drop_down
+        @list_of_values = list_of_values
       end
 
       def select_from_lov(str)
@@ -404,6 +404,16 @@ module Stamps
         expect(text.downcase).to include(str.downcase)
         nil
       end
+    end
+
+    class StampsDropDown < StampsTextBox
+      attr_accessor :html_tag
+
+      def initialize(text_box, drop_down, html_tag)
+        super(text_box)
+        @drop_down = drop_down
+        @html_tag = html_tag
+      end
 
       def select(str)
         drop_down.click
@@ -418,17 +428,13 @@ module Stamps
           else
             # do nothing
         end
-        select_element(str, selection)
-      end
 
-      def select_element(str, selection)
         20.times do
           drop_down.click unless selection.present?
           selection.click
           break if element.text.downcase.include?(str)
         end
         expect(element.text).to include(str), "Invalid selection: #{str}. Check your page object."
-
       end
     end
 

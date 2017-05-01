@@ -119,12 +119,12 @@ module Stamps
           # @connection_failed = RegistrationSecureConnectionFailed.new(param)
         end
 
-        def wait_until_present(*args)
-          browser.text_field(id: "firstName").wait_until_present(args[0])
+        def present?
+          personal_info.present?
         end
 
-        def present?
-          browser.h1(text: "Please enter your mailing information").present?
+        def wait_until_present(*args)
+          personal_info.wait_until_present(*args)
         end
 
         def submit

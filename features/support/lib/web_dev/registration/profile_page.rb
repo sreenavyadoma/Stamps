@@ -110,7 +110,7 @@ module Stamps
           @email = StampsTextBox.new(browser.text_field(id: "email"))
           @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
 
-          @account_info = AccountInfo.new(param)
+          @account_info ||= AccountInfo.new(param)
 
           element = browser.span(css: "button[data-id=usageType]>span")
           @survey_question = StampsDropDown.new(element, element)
@@ -120,12 +120,12 @@ module Stamps
           @referer_name = StampsDropDown.new(element, element)
           @referer_name.list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(2)>div>div>div>ul>li>a>span[class=text]")
 
-          @promo_code = PromoCode.new(param)
-          @security_questions = SecretQuestions.new(param)
+          @promo_code ||= PromoCode.new(param)
+          @security_questions ||= SecretQuestions.new(param)
           @continue_btn = StampsElement.new(browser.button(id: "next"))
-          @side_content = SideContent.new(param)
+          @side_content ||= SideContent.new(param)
 
-          @membership = Stamps::Registration::Membership::MembershipPage.new(param)
+          @membership ||= Stamps::Registration::Membership::MembershipPage.new(param)
         end
 
         def present?
@@ -140,7 +140,7 @@ module Stamps
           5.times do
             return membership if membership.present?
             continue_btn.click
-            membership.wait_until_present(3)
+            membership.wait_until_present(5)
           end
         end
       end #ProfilePage

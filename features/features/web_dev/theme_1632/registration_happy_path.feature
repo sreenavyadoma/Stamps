@@ -18,6 +18,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Profile page Re-type password to random value
     Then expect Profile page Re-Type password is correct
 
+    Then set Profile page Survey Question to Business Use - Mostly mailing (letters/postcards/flats)
     Then set Profile page Survey Question to Mostly mailing
     Then set Profile page Survey Question to Mostly shipping
     Then set Profile page Survey Question to Both mailing and shipping
