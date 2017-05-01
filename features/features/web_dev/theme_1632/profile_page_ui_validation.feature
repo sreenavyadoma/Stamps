@@ -1,4 +1,4 @@
-Feature: Profile page page validation theme_1632
+Feature: Profile page validation theme_1632
   #  Fix all steps in .feature files that does not have associated step definitions
   #  Remove all step definition duplicates. When you ctrl-click a step in a feature file it should go to exactly one implementation/step defintion.
   #  Run registration_profile_page_ui_validation
@@ -9,24 +9,27 @@ Feature: Profile page page validation theme_1632
     Given I loaded SDC Website
 
   @registration_profile_page_ui_validation
-  Scenario: SDCWR-721 Profile page Page Validation
+  Scenario: SDCWR-721 Profile Page Validation
     Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
 
     Then expect Registration bread crumbs is Profile
     Then expect Registration bread crumbs is Membership
-    #Then expect Registration bread crumbs is Special Offer
-    Then expect Profile page header contain Sign up for a new account
+    Then expect Profile page header contain Sign up and avoid trips to the Post Office
     Then expect Profile page email exists
-    Then expect Profile page username exists
-    Then expect Profile page password exists
-    Then expect Profile page retype password exists
 
-    Then set Profile page Survey Question to Mostly mailing
-    Then set Profile page Survey Question to Mostly shipping
-    Then set Profile page Survey Question to Both mailing and shipping
-    Then set Profile page Survey Question to Individual
+    #Then expect Registration bread crumbs is Special Offer
+#    Then expect Profile page header contain Sign up for a new account
+#    Then expect Profile page email exists
+#    Then expect Profile page username exists
+#    Then expect Profile page password exists
+#    Then expect Profile page retype password exists
+
+#    Then set Profile page Survey Question to Mostly mailing
+#    Then set Profile page Survey Question to Mostly shipping
+#    Then set Profile page Survey Question to Both mailing and shipping
+#    Then set Profile page Survey Question to Individual
 
 #    Then expect Profile page promo code textbox exists
 #    Then expect Profile page CONTINUE button exists
