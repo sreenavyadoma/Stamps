@@ -1,7 +1,7 @@
 Then /^[Ss]et Multi Order Details Form Ship From to (.+)$/ do |value|
   stamps.orders.multi_order.ship_from_multi.select(value)
- # step "On Multi Order Details form, blur out"
- # step "Save Multi Order Details data"
+  step "On Multi Order Details form, blur out"
+  step "Save Multi Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form Pounds to (\d+)$/ do |value|
