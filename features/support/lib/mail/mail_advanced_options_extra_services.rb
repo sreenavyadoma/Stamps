@@ -10,7 +10,7 @@ module Stamps
           super
           @window_title = StampsElement.new(browser.div(text: "Extra Services"))
           text_boxes = browser.text_fields(id: "sdc-extraserviceswin-securitydroplist-inputEl")
-          drop_downs = browser.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
+          drop_downs = browser.div(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
           @security = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
 
           text_box = browser.text_field(id: "sdc-extraserviceswin-valuenumberfield-inputEl")
@@ -19,7 +19,7 @@ module Stamps
           @value = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_boxes = browser.text_fields(id: "sdc-extraserviceswin-contentdroplist-inputEl")
-          drop_downs = browser.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
+          drop_downs = browser.div(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
           @handling = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
 
           @save_element = StampsElement.new(browser.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
@@ -126,7 +126,7 @@ module Stamps
           if @cod.nil? || !@cod.present?
             text_box = browser.text_field(id: "sdc-extraserviceswin-codnumberfield-inputEl")
             inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=up]")
-            dec_btn = browser.divs(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=down]")
+            dec_btn = browser.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=down]")
             @cod = StampsNumberField.new(text_box, inc_btn, dec_btn)
           end
           @cod
