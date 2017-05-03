@@ -113,13 +113,19 @@ module Stamps
       end
 
       class MembershipTermsAndConditions < Browser::StampsModal
-        attr_reader :i_agree, :terms_conditions_link, :terms_label
+        attr_reader :i_agree, :terms_conditions_link, :pricing_billing_details
         def initialize(param)
           super
           @i_agree = StampsWatirCheckBox.new(browser.checkbox(name: 'termsConditions'))
-          browser.lis(css: "div[class=terms-msg]>span>span>ul>li")
+          @i_agree.help_elements = browser.lis(css: "div[class=terms-msg]>span>span>ul>li")
+          @terms_conditions_link = StampsElement.new(browser.a(css: "a[class*='termsLabel terms-conditions-link'"))
+          @terms_label_1 = StampsElement.new(browser.span(css: "label[for=termsConditions]>span"))
+          @terms_label_2 = StampsElement.new(browser.span(class: "termsLabel"))
         end
 
+        def terms_label
+          "#{terms_label_1.text} #{terms_conditions_link.text} #{terms_label_2.text}"
+        end
       end
 
       class MembershipPagination < Browser::StampsModal

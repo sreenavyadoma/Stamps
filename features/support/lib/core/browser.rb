@@ -233,6 +233,7 @@ module Stamps
     end
 
     class StampsWatirCheckBox < StampsElement
+      include HelpBlockElement
       def check
         10.times do
           set
@@ -570,7 +571,7 @@ module Stamps
       attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :browser_sym, :firefox_profile
     end
 
-    # StampsModal is a parent class for modals containing StampsElements
+    # StampsModal - base class for modals containing StampsElements
     class StampsModal
       attr_accessor :param, :browser, :logger, :helper
 
