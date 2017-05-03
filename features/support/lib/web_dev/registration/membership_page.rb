@@ -113,12 +113,13 @@ module Stamps
       end
 
       class MembershipTermsAndConditions < Browser::StampsModal
-        attr_reader :i_agree, :terms_conditions_link, :pricing_billing_details
+        attr_reader :i_agree, :terms_conditions_link, :pricing_billing_details_link
         def initialize(param)
           super
           @i_agree = StampsWatirCheckBox.new(browser.checkbox(name: 'termsConditions'))
           @i_agree.help_elements = browser.lis(css: "div[class=terms-msg]>span>span>ul>li")
           @terms_conditions_link = StampsElement.new(browser.a(css: "a[class*='termsLabel terms-conditions-link'"))
+          @pricing_billing_details_link = StampsElement.new(browser.a(class: "pricing-billing-link"))
           @terms_label_1 = StampsElement.new(browser.span(css: "label[for=termsConditions]>span"))
           @terms_label_2 = StampsElement.new(browser.span(class: "termsLabel"))
         end
@@ -129,12 +130,22 @@ module Stamps
       end
 
       class MembershipPagination < Browser::StampsModal
-        attr_reader
+        attr_reader :back_btn, :submit_btn
 
         def initialize(param)
           super
-          @back = StampsElement.new browser.button(id: "prev")
-          @submit_btn = StampsElement.new(browser.button(text: "Submit"))
+          @back_btn = StampsElement.new browser.button(id: "prev")
+          @submit_btn = StampsElement.new(browser.button(id: "next"))
+        end
+
+        def back
+          back_btn.click_while_present
+        end
+
+
+        def submit
+          submit_btn.click_while_present
+          sleep(4)
         end
 
       end
