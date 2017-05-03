@@ -163,7 +163,7 @@ module Stamps
           # @supplies = ChooseSupplies.new(param)
           # @userid_taken = UserIdTaken.new(param)
           # @download_page = DownloadPage.new(param)
-          #
+
           # @loading = StampsElement.new browser.button(text: "Loading...")
           # @page_header = StampsElement.new browser.h1(text: 'Customize your Welcome Kit')
           #

@@ -43,7 +43,7 @@ rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess DEBUG=fal
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options
 
-
+registration_theme_1632_happy_path: --tags @registration_theme_1632_happy_path WEB_APP=registration URL=cc --guess DEBUG=true MAX_WINDOW=true
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 USER_CREDENTIALS=xxxxxxxxxx
 
