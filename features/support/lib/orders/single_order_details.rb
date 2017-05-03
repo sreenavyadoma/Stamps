@@ -547,7 +547,10 @@ module Stamps
           @street_address_1 = StampsTextBox.new(browser.text_field name: 'Street1')
           @street_address_2 = StampsTextBox.new(browser.text_field name: 'Street2')
           @city = StampsTextBox.new(browser.text_field(name: 'City'))
-          @state = StampsOldDropDown.new(browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]"), :li, browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]'))
+
+          drop_down = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
+          text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
+          @state = StampsDropDown.new(text_box, drop_down, :li)
           @zip = StampsTextBox.new(browser.text_field(name: 'Zip'))
           @phone = StampsTextBox.new(browser.text_field(name: "Phone"))
         end

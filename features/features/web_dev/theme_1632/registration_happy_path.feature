@@ -70,25 +70,28 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Year to 2027
     Then expect Membership page Year is correct
 
-#    Then check Membership page Billing address same as mailing address
-#    Then expect Membership page Billing address same as mailing address is checked
-#    Then expect Billing Address form is present
-#    Then uncheck Membership page Billing address same as mailing address
-#    Then expect Membership page Billing address same as mailing address is unchecked
-#    Then expect Billing Address form is not present
+    Then uncheck Membership page Billing address same as mailing address
+    Then expect Membership page Billing address same as mailing address is unchecked
+    Then expect Billing Address form is present
 
-#    Then set Membership page Billing Address to random value
-#    Then expect Membership page Billing Address is correct
-#
-#    Then set Membership page Billing City to random value
-#    Then expect Membership page Billing City is correct
-#
-#    Then set Membership page Billing State to random value
-#    Then expect Membership page Billing State is correct
-#
-#    Then set Membership page Billing Zip to random value
-#    Then expect Membership page Billing Zip is correct
-#
+    Then check Membership page Billing address same as mailing address
+    Then expect Membership page Billing address same as mailing address is checked
+    Then expect Billing Address form is not present
+
+    Then uncheck Membership page Billing address same as mailing address
+
+    Then set Membership page Billing Address to 1350 Market Street Apt 2901
+    Then expect Membership page Billing Address is correct
+
+    Then set Membership page Billing City to San Francisco
+    Then expect Membership page Billing City is correct
+
+    Then set Membership page Billing State to CA
+    Then expect Membership page Billing State is correct
+
+    Then set Membership page Billing Zip to 94102
+    Then expect Membership page Billing Zip is correct
+
 #    Then check Membership page Terms & Conditions
 #    Then expect Membership page Terms & Conditions is checked
 #

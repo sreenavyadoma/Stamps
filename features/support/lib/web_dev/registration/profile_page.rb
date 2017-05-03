@@ -2,6 +2,29 @@ module Stamps
   module Registration
     module Profile
 
+      class AccountInfoPassword < StampsTextBox
+        def initialize(text_box)
+          super
+          self.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
+        end
+
+        def help_text_1
+          return "" if help_elements.nil? || help_elements[0].nil?
+          help_elements[0].text
+        end
+
+        def help_text_2
+          return "" if help_elements.nil? || help_elements[1].nil?
+          help_elements[1].text
+        end
+
+        def help_text_3
+          return "" if help_elements.nil? || help_elements[2].nil?
+          help_elements[2].text
+        end
+      end
+
+
       class AccountInfo < Browser::StampsModal
         attr_reader :account_username, :account_password, :retype_password
 
@@ -10,8 +33,7 @@ module Stamps
           @account_username = StampsTextBox.new(browser.text_field(name: "username"))
           @account_username.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
 
-          @account_password = StampsTextBox.new(browser.text_field(id: "password"))
-          @account_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
+          @account_password = AccountInfoPassword.new(browser.text_field(id: "password"))
 
           @retype_password = StampsTextBox.new(browser.text_field(id: "confirmPassword"))
           @retype_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span")
@@ -113,12 +135,12 @@ module Stamps
           @account_info ||= AccountInfo.new(param)
 
           element = browser.span(css: "button[data-id=usageType]>span")
-          @survey_question = StampsDropDown.new(element, element)
-          @survey_question.list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(1)>div>div>div>ul>li>a>span[class=text]")
+          list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(1)>div>div>div>ul>li>a>span[class=text]")
+          @survey_question = StampsDropDownLovSubStr.new(element, element, list_of_values)
 
           element = browser.span(css: "button[data-id=referrerName]>span")
-          @referer_name = StampsDropDown.new(element, element)
-          @referer_name.list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(2)>div>div>div>ul>li>a>span[class=text]")
+          list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(2)>div>div>div>ul>li>a>span[class=text]")
+          @referer_name = StampsDropDownLovSubStr.new(element, element, list_of_values)
 
           @promo_code ||= PromoCode.new(param)
           @security_questions ||= SecretQuestions.new(param)

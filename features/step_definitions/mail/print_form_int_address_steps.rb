@@ -58,7 +58,7 @@ end
 
 Then /^[Ss]et Print form Phone to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.phone.send_keys(:enter) if value.nil?
-  test_param[:mail_to_phone] = (value.downcase == 'random')? helper.random_phone : value
+  test_param[:mail_to_phone] = (value.downcase == 'random')? helper.random_phone_number : value
   stamps.mail.print_form.mail_to.address.phone.set(test_param[:mail_to_phone])
 end
 

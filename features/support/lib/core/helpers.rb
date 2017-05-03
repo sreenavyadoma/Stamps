@@ -44,11 +44,15 @@ module Stamps
           min = 2
           max = 10
       end
-      Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max)){[*"0".."9", *"A".."Z", *"0".."9", *"a".."z", *"0".."9"].sample}.join
+      Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max-2)){[*"0".."9", *"A".."Z", *"0".."9", *"a".."z", *"0".."9"].sample}.join
     end
 
-    def random_phone
+    def random_phone_number
       "#{Random.rand(100..999)}#{Random.rand(100..999)}#{Random.rand(1000..9999)}"
+    end
+
+    def random_phone_number_format
+      "(#{Random.rand(100..999)}) #{Random.rand(100..999)}-#{Random.rand(1000..9999)}"
     end
 
     def random_phone_extension
@@ -142,7 +146,7 @@ module Stamps
       zip = address["zip"]
       begin
         phone_num = address['phone']
-        phone = (phone_num.downcase.include? 'random') ? helper.random_phone : address['phone']
+        phone = (phone_num.downcase.include? 'random') ? helper.random_phone_number : address['phone']
       end unless address['phone'].nil?
       begin
         email_addy = address['email']
