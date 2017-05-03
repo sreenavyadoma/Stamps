@@ -176,7 +176,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Ss]tate to (.*)$/ do |str|
   test_param[:billing_state] = str
   registration.profile.membership.credit_card.billing_address.billing_state.select(test_param[:billing_state])
-  step "blur_out on membership page"
+
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Ss]tate is (?:correct|(.*))$/ do |str|
@@ -187,7 +187,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Zz]ip to (.*)$/ do |str|
   test_param[:billing_zip] = (str.nil?)?(helper.random_alpha_capitalize ):str
   registration.profile.membership.credit_card.billing_address.billing_zip.set(test_param[:billing_zip])
-  step "blur_out on membership page"
+
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ do |str|
