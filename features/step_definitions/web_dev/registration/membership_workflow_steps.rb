@@ -193,9 +193,6 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ d
   expect(registration.profile.membership.credit_card.billing_address.billing_zip.text).to eql(str)
 end
 
-
-
-
 Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do
   registration.profile.membership.terms_and_conditions.i_agree.check
 end
@@ -210,6 +207,10 @@ end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do
   expect(registration.profile.membership.terms_and_conditions.i_agree).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
+end
+
+Then /^[Ss]ubmit [Mm]embership [Pp]age$/ do
+  registration.profile.membership.pagination.submit
 end
 
 

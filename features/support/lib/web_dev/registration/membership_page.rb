@@ -145,7 +145,7 @@ module Stamps
 
         def submit
           submit_btn.click_while_present
-          sleep(4)
+          sleep(6)
         end
 
       end

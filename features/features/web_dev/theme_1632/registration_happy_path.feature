@@ -100,6 +100,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
 
     Then check Membership page Terms & Conditions
 
+    Then submit Membership Page
 
 
 
