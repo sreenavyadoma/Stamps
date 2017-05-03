@@ -59,8 +59,8 @@ module Stamps
       "#{Random.rand(10..999)}"
     end
 
-    def random_email
-      "#{random_alpha_numeric(4, 14)}@mailinator.com".downcase
+    def random_email(*ags)
+      "#{random_alpha_numeric(*ags)}@mailinator.com".downcase
     end
 
     def random_suite

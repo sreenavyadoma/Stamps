@@ -127,27 +127,27 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Yy]ear is (?:correct|(.*))$/ do |str|
   expect(registration.profile.membership.credit_card.cc_year.text).to eql(str)
 end
 
-Then /^check Membership page Billing address same as mailing address$/ do
+Then /^[Cc]heck [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress$/ do
   registration.profile.membership.credit_card.billing_address_same_as_mailing.check
 end
 
-Then /^expect Membership page Billing address same as mailing address is checked$/ do
+Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress is checked$/ do
   expect(registration.profile.membership.credit_card.billing_address_same_as_mailing).to be_checked, "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
 end
 
-Then /^expect Billing Address form is present$/ do
-  expect(registration.profile.membership.credit_card.billing_address).to be_present, "Billing Address form is NOT present but it should be PRESENT"
-end
-
-Then /^uncheck Membership page Billing address same as mailing address$/ do
+Then /^[Uu]ncheck [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress$/ do
   registration.profile.membership.credit_card.billing_address_same_as_mailing.uncheck
 end
 
-Then /^expect Membership page Billing address same as mailing address is unchecked$/ do
+Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress is unchecked$/ do
   expect(registration.profile.membership.credit_card.billing_address_same_as_mailing).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
 end
 
-Then /^expect Billing Address form is not present$/ do
+Then /^[Ee]xpect Billing Address form is present$/ do
+  expect(registration.profile.membership.credit_card.billing_address).to be_present, "Billing Address form is NOT present but it should be PRESENT"
+end
+
+Then /^[Ee]xpect Billing Address form is not present$/ do
   expect(registration.profile.membership.credit_card.billing_address).not_to be_present, "Billing Address form is PRESENT and it should NOT be PRESENT"
 end
 
@@ -176,7 +176,6 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Ss]tate to (.*)$/ do |str|
   test_param[:billing_state] = str
   registration.profile.membership.credit_card.billing_address.billing_state.select(test_param[:billing_state])
-
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Ss]tate is (?:correct|(.*))$/ do |str|
@@ -187,11 +186,30 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Zz]ip to (.*)$/ do |str|
   test_param[:billing_zip] = (str.nil?)?(helper.random_alpha_capitalize ):str
   registration.profile.membership.credit_card.billing_address.billing_zip.set(test_param[:billing_zip])
-
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ do |str|
   str = (str.nil?)?test_param[:billing_zip]:str
   expect(registration.profile.membership.credit_card.billing_address.billing_zip.text).to eql(str)
 end
+
+
+
+
+Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do
+  registration.profile.membership.terms_and_conditions.i_agree.check
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is checked$/ do
+  expect(registration.profile.membership.terms_and_conditions.i_agree).to be_checked, "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
+end
+
+Then /^[Uu]ncheck [Mm]embership [Pp]age Terms & Conditions$/ do
+  registration.profile.membership.terms_and_conditions.i_agree.uncheck
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do
+  expect(registration.profile.membership.terms_and_conditions.i_agree).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
+end
+
 

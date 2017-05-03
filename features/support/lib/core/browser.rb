@@ -57,14 +57,6 @@ module Stamps
         element.present?
       end
 
-      def checked?
-        begin
-          element.checked?
-        rescue
-          return false
-        end
-      end
-
       def visible?
         begin
           element.visible?
@@ -84,14 +76,6 @@ module Stamps
       def hover
         begin
           element.hover
-        rescue
-          #ignore
-        end
-      end
-
-      def clear
-        begin
-          element.clear
         rescue
           #ignore
         end
@@ -223,7 +207,11 @@ module Stamps
         end
 
         def clear
-          element.clear
+          begin
+            text_box.clear
+          rescue
+            #ignore
+          end
         end
       end
 
@@ -247,7 +235,7 @@ module Stamps
     class StampsWatirCheckBox < StampsElement
       def check
         10.times do
-          click
+          set
           break if checked?
         end
       end
@@ -258,11 +246,42 @@ module Stamps
           break unless checked?
         end
       end
+
+      def set
+        begin
+          check_box.set
+        rescue
+          #ignore
+        end
+      end
+
+      def clear
+        begin
+          check_box.clear
+        rescue
+          #ignore
+        end
+      end
+
+      def checked?
+        begin
+          check_box.checked?
+        rescue
+          return false
+        end
+      end
+
+      def set?
+        begin
+          check_box.set?
+        rescue
+          return false
+        end
+      end
     end
 
     class StampsCheckBox
       attr_accessor :check_box, :check_verify, :attribute, :attribute_value
-
       def initialize(check_box, check_verify, attribute, attribute_value)
         @check_box = StampsElement.new(check_box)
         @check_verify = StampsElement.new(check_verify)

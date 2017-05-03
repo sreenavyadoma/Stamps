@@ -92,13 +92,13 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Billing Zip to 94102
     Then expect Membership page Billing Zip is correct
 
-#    Then check Membership page Terms & Conditions
-#    Then expect Membership page Terms & Conditions is checked
-#
-#    Then uncheck Membership page Terms & Conditions
-#    Then expect Membership page Terms & Conditions is unchecked
-#
-#    Then check Membership page Terms & Conditions
+    Then check Membership page Terms & Conditions
+    Then expect Membership page Terms & Conditions is checked
+
+    Then uncheck Membership page Terms & Conditions
+    Then expect Membership page Terms & Conditions is unchecked
+
+    Then check Membership page Terms & Conditions
 
 
 

@@ -112,10 +112,12 @@ module Stamps
         end
       end
 
-      class MembershipTerms < Browser::StampsModal
-        attr_reader
+      class MembershipTermsAndConditions < Browser::StampsModal
+        attr_reader :i_agree, :terms_conditions_link, :terms_label
         def initialize(param)
           super
+          @i_agree = StampsWatirCheckBox.new(browser.checkbox(name: 'termsConditions'))
+          browser.lis(css: "div[class=terms-msg]>span>span>ul>li")
         end
 
       end
@@ -132,14 +134,14 @@ module Stamps
       end
 
       class MembershipPage < Browser::StampsModal
-        attr_reader :personal_info, :credit_card, :membership_terms, :pagination, :header
+        attr_reader :personal_info, :credit_card, :terms_and_conditions, :pagination, :header
 
         def initialize(param)
           super
           @header = StampsElement.new(browser.h1(css: "div[id=page]>div>div>h1"))
           @personal_info = MemberPersonalInfo.new(param)
           @credit_card = MemberCreditCard.new(param)
-          @membership_terms = MembershipTerms.new(param)
+          @terms_and_conditions = MembershipTermsAndConditions.new(param)
           @pagination = MembershipPagination.new(param)
           # @supplies = ChooseSupplies.new(param)
           # @userid_taken = UserIdTaken.new(param)
