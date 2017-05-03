@@ -5,9 +5,9 @@ module Stamps
       attr_reader :bread_crumbs, :navigation, :profile, :error_occured, :footer
       def initialize(param)
         super
-        @navigation = Navigation::RegistrationNavigationBar.new(param)
-        @bread_crumbs = RegistrationBreadCrumbs.new(param)
-        @profile = Profile::ProfilePage.new(param)
+        @navigation ||= Navigation::RegistrationNavigationBar.new(param)
+        @bread_crumbs ||= RegistrationBreadCrumbs.new(param)
+        @profile ||= Profile::ProfilePage.new(param)
 
         #@footer = RegistrationFooter.new(param)
         @footer = Footer::ProfileFooter.new(param)
