@@ -1330,16 +1330,16 @@ module Stamps
         end
 
         def order_id
-          order_id_label = StampsElement.new(browser.bs(css: "label>b").first)
           20.times{
             begin
+              order_id_label = StampsElement.new(browser.b(css: "div[id^=singleOrderDetailsForm][class*=singleorder-detailsform]>div[id^=toolbar]>div[id^=toolbar]>div[id^=toolbar]>label>b"))
               sleep(0.25)
               return order_id_label.text.split('#').last if order_id_label.text.include? '#'
             rescue
               #ignroe
             end
           }
-          expect("Unable to obtain Order ID from Single Order Details Form").to eql ""
+          ""
         end
       end
 
