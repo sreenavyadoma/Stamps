@@ -1,7 +1,12 @@
 
 module RegistrationApp
   def registration
-    @registration ||= Stamps::Registration::WebRegistration.new(modal_param)
+    begin
+      @registration ||= Stamps::Registration::WebRegistration.new(modal_param)
+    rescue Exception => e
+      config.logger.error e.message
+      config.logger.error e.backtrace.join("\n")
+    end
   end
 
   def registration=registration
@@ -9,7 +14,12 @@ module RegistrationApp
   end
 
   def sdc_website
-    @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)
+    begin
+      @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)
+    rescue Exception => e
+      config.logger.error e.message
+      config.logger.error e.backtrace.join("\n")
+    end
   end
 
   def pam

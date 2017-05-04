@@ -83,7 +83,7 @@ Then /^Volusion Shipping Address: Set Zip Code to (.*)$/ do |value|
 end
 
 Then /^Volusion Shipping Address: Set Phone Number to (.*)$/ do |value|
-  @volusion_shipping_address.phone_number.set(value.downcase == 'random')?(helper.random_phone):value
+  @volusion_shipping_address.phone_number.set(value.downcase == 'random')?(helper.random_phone_number):value
 end
 
 Then /^Volusion Shipping Address: Type of address - residential$/ do
