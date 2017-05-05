@@ -12,13 +12,18 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then expect Profile page Username is correct
     Then set Profile page Password to random value
     Then expect Profile page Password is correct
-    Then set Profile page Re-type password to random value
+    Then set Profile page Re-type password to same as previous password
     Then expect Profile page Re-Type password is correct
     Then set Profile page Survey Question to Business Use - Mostly mailing (letters/postcards/flats)
+    Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Mostly mailing
+    Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Mostly shipping
+    Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Both mailing and shipping
+    Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Individual
+    Then expect Profile page Survey Question is correct
     Then set Profile page Promo Code to PR33-NH77
     Then expect Profile page Promo Code is correct
     Then check Profile page Money-saving offers and new products

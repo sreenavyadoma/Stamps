@@ -5,75 +5,61 @@ Then /^[Bb]lur_out on [Mm]embership [Pp]age$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
-  test_param[:first_name] = (str.nil?)?(helper.random_alpha_capitalize ):str
-  registration.profile.membership.personal_info.first_name.set(test_param[:first_name])
+  registration.profile.membership.personal_info.first_name.set(test_param[:first_name] = (str.nil?)?(helper.random_alpha_capitalize ):str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:first_name]:str
-  expect(registration.profile.membership.personal_info.first_name.text).to eql(str)
+  expect(registration.profile.membership.personal_info.first_name.text).to eql((str.nil?)?test_param[:first_name]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ll]ast [Nn]ame to (?:random value|(.*))$/ do |str|
-  test_param[:last_name] = (str.nil?)?(helper.random_alpha_capitalize ):str
-  registration.profile.membership.personal_info.last_name.set(test_param[:last_name])
+  registration.profile.membership.personal_info.last_name.set(test_param[:last_name] = (str.nil?)?(helper.random_alpha_capitalize ):str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:last_name]:str
-  expect(registration.profile.membership.personal_info.last_name.text).to eql(str)
+  expect(registration.profile.membership.personal_info.last_name.text).to eql((str.nil?)?test_param[:last_name]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ompany to (?:random value|(.*))$/ do |str|
-  test_param[:company] = (str.nil?)?(helper.random_alpha ):str
-  registration.profile.membership.personal_info.company.set(test_param[:company])
+  registration.profile.membership.personal_info.company.set(test_param[:company] = (str.nil?)?(helper.random_alpha ):str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ompany is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:company]:str
-  expect(registration.profile.membership.personal_info.company.text).to eql(str)
+  expect(registration.profile.membership.personal_info.company.text).to eql((str.nil?)?test_param[:company]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
-  test_param[:address] = str
-  registration.profile.membership.personal_info.address.set(test_param[:address])
+  registration.profile.membership.personal_info.address.set(test_param[:address] = str)
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Aa]ddress is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:address]:str
-  expect(registration.profile.membership.personal_info.address.text).to eql(str)
+  expect(registration.profile.membership.personal_info.address.text).to eql((str.nil?)?test_param[:address]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ity to (.*)$/ do |str|
-  test_param[:city] = str
-  registration.profile.membership.personal_info.city.set(test_param[:city])
+  registration.profile.membership.personal_info.city.set(test_param[:city] = str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ity is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:city]:str
-  expect(registration.profile.membership.personal_info.city.text).to eql(str)
+  expect(registration.profile.membership.personal_info.city.text).to eql((str.nil?)?test_param[:city]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ss]tate to (.*)$/ do |str|
-  test_param[:state] = str
-  registration.profile.membership.personal_info.state.select(test_param[:state])
+  registration.profile.membership.personal_info.state.select(test_param[:state] = str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ss]tate is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:state]:str
-  expect(registration.profile.membership.personal_info.state.text).to eql(str)
+  expect(registration.profile.membership.personal_info.state.text).to eql((str.nil?)?test_param[:state]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Zz]ip to (.*)$/ do |str|
-  test_param[:zip] = str
-  registration.profile.membership.personal_info.zip.set(test_param[:zip])
+  registration.profile.membership.personal_info.zip.set(test_param[:zip] = str)
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Zz]ip is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:zip]:str
-  expect(registration.profile.membership.personal_info.zip.text).to eql(str)
+  expect(registration.profile.membership.personal_info.zip.text).to eql((str.nil?)?test_param[:zip]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Pp]hone to (?:random value|(.*))$/ do |str|
