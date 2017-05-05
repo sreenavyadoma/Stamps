@@ -46,6 +46,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options
 
 registration_theme_1632_happy_path: --tags @registration_theme_1632_happy_path WEB_APP=registration --guess DEBUG=true MAX_WINDOW=true
+registration_profile_page_ui_validation: --tags @registration_profile_page_ui_validation WEB_APP=registration --guess DEBUG=true MAX_WINDOW=true
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 USER_CREDENTIALS=xxxxxxxxxx
 
