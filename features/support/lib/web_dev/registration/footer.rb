@@ -7,10 +7,10 @@ module Stamps
 
         def initialize(param)
           super
-          @privacy_policy_link = StampsElement.new(browser.a(css: "a[data-pgtitle='Privacy Policy']"))
-          @copyright_link = StampsElement.new(browser.link(id: "'profile-page']/footer/div/small/a[2]"))
-          @trust_elogo = StampsElement.new(browser.img(id: "Registration/images/global/logo_truste.png"))
-          @live_chat_button = StampsElement.new(browser.link(text: "Live Chat"))
+          @privacy_policy_link = StampsElement.new(browser.link( :text, "Privacy Policy"))
+          @copyright_link = StampsElement.new(browser.link(css: "'profile-page']/footer/div/small/a[2]"))
+          @trust_elogo = StampsElement.new(browser.img(css: "img[src$='logo_truste.png']"))
+          @live_chat_button = StampsElement.new(browser.button(value: "Live Chat"))
 
         end
 
@@ -26,3 +26,4 @@ module Stamps
     end
   end
 end
+

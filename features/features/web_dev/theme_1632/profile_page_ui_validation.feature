@@ -20,31 +20,34 @@ Feature: Profile page validation theme_1632
     Then expect Profile page email exists
 
     #Then expect Registration bread crumbs is Special Offer
-#    Then expect Profile page header contain Sign up for a new account
-#    Then expect Profile page email exists
-#    Then expect Profile page username exists
-#    Then expect Profile page password exists
-#    Then expect Profile page retype password exists
+    Then expect Profile page username exists
+    Then expect Profile page password exists
+    Then expect Profile page retype password exists
+    #Then expect Profile page Survey Question to contain Mostly mailing
+    #Then expect Profile page Survey Question to contain Mostly shipping
+    #Then expect Profile page Survey Question to contain Both mailing and shipping
+    #Then expect Profile page Survey Question to contain Individual
 
-#    Then set Profile page Survey Question to Mostly mailing
-#    Then set Profile page Survey Question to Mostly shipping
-#    Then set Profile page Survey Question to Both mailing and shipping
-#    Then set Profile page Survey Question to Individual
+     Then expect Profile page promo code textbox exists
 
-#    Then expect Profile page promo code textbox exists
-#    Then expect Profile page CONTINUE button exists
-#    Then expect Profile page content under Why do I need to create an account
-#    """
-#    The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
-#    """
+     Then expect Profile page SideContent Side Account header is "Why do I need to create an account?"
+
+     #Then expect Profile page SideContent Side Account paragraph is
+
+     #"""
+     #The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
+     #"""
+
+
 #    Then expect Profile page content under Money-saving offers and new products
 #    """
 #    Send me special money-saving offers and information on new products and services from Stamps.com and its partners
 #    """
-#    Then expect Profile page Money-saving offers and new products checkbox exist and is checkmarked
-#    Then expect Profile page Privacy Policy link exists and is clickable
-#    Then expect Profile page copyright link exists
-#    Then expect Profile page Norton logo exists
-#    Then expect Profile page TRUSTe logo exists
-#    Then expect Profile page LIVE chat button exists
+     Then expect Profile page Money-saving offers and new products header is "Money-saving offers and new products"
+     Then expect Profile page CONTINUE button exists
+     #Then expect Profile page Privacy Policy link exists
+     #Then expect Profile page copyright link exists
+
+     Then expect Profile page TRUSTe logo exists
+     #Then expect Profile page LIVE chat button exists
 

@@ -74,21 +74,21 @@ module Stamps
       end
 
       class SideAccount < Browser::StampsModal
-        attr_reader :header, :paragraph
+        attr_reader :side_account_header, :side_account_paragraph
         def initialize(param)
           super
-          @header = StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3"))
-          @paragraph = StampsElement.new(browser.p(css: "li[id=sideaccount]>p"))
+          @side_account_header = StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3"))
+          @side_account_paragraph = StampsElement.new(browser.p(css: "li[id=sideaccount]>p"))
         end
       end
 
       class MoneySavingOffers < Browser::StampsModal
-        attr_reader :header, :checkbox, :paragraph
+        attr_reader :money_saving_offers_header, :money_saving_offers_checkbox, :money_saving_offers_paragraph
         def initialize(param)
           super
-          @header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
-          @checkbox = StampsWatirCheckBox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn'))
-          @paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
+          @money_saving_offers_header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
+          @money_saving_offers_checkbox = StampsWatirCheckBox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn'))
+          @money_saving_offers_paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
         end
       end
 
@@ -124,6 +124,7 @@ module Stamps
           @security_questions = SecretQuestions.new(param)
           @continue_btn = StampsElement.new(browser.button(id: "next"))
           @side_content = SideContent.new(param)
+
 
           #@membership = Membership::MembershipPage.new(param)
         end

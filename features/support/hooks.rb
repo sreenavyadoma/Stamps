@@ -12,7 +12,6 @@ include Spreadsheet
 
 Before do  |scenario|
   config.init(scenario.name, ENV["BROWSER"], ENV["FIREFOX_PROFILE"], nil)
-
   config.logger.message "-"
   config.logger.message "-"
   config.logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"
