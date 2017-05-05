@@ -9,13 +9,13 @@ Feature: Registration Membership page validation Theme 1632
     Then set Profile page username to username
     Then set Profile page password to password
     #Then set Profile page retype password to password
-    Then set Profile page Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-    Then on Profile page page, continue to Membership page
+    #Then set Profile page Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
+    #Then on Profile page page, continue to Membership page
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
-    Then expect Registration bread crumbs to contain Profile
-    Then expect Registration bread crumbs to contain Membership
-    Then expect Registration bread crumbs to contain Choose Supplies
+    #Then expect Registration bread crumbs to contain Profile
+    #Then expect Registration bread crumbs to contain Membership
+    #Then expect Registration bread crumbs to contain Choose Supplies
     Then expect Registration Membership header contain Set up your personal Post Office
     Then expect Registration Membership first name exists
     Then expect Registration Membership last name exists
@@ -63,7 +63,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Registration Membership Bonus Offer Details link exists and is clickable
     Then expect Profile page Privacy Policy link exists and is clickable
     Then expect Profile page copyright link exists
-    Then expect Profile page Norton logo exists
+    #Then expect Profile page Norton logo exists
     Then expect Profile page TRUSTe logo exists
     Then expect Profile page LIVE chat button exists
 
