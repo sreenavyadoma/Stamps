@@ -159,6 +159,22 @@ Then /^[Ee]xpect Billing Address form is not present$/ do
   expect(registration.profile.membership.credit_card.billing_address).not_to be_present, "Billing Address form is PRESENT and it should NOT be PRESENT"
 end
 
+Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+  address = helper.address_helper_zone(address) #combine this
+
+  test_param[:street_address] = address['street_address']
+  test_param[:city] = address['city']
+  test_param[:state] = address['state']
+  test_param[:zip] = address['zip']
+  test_param[:phone_number_format] = address['phone_number_format']
+
+  step "set Membership page Billing Address to #{test_param[:street_address]}"
+  step "set Membership page Billing City to #{test_param[:city]}"
+  step "set Membership page Billing State to #{test_param[:state]}"
+  step "set Membership page Billing Zip to #{test_param[:zip]}"
+  step "set Membership page Phone to #{test_param[:phone_number_format]}"
+end
+
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Aa]ddress to (.*)$/ do |str|
   test_param[:billing_address] = (str.nil?)?(helper.random_alpha_capitalize ):str
   registration.profile.membership.credit_card.billing_address.billing_address.set(test_param[:billing_address])

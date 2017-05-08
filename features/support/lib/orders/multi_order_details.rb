@@ -14,8 +14,8 @@ module Stamps
           @tracking = MultiOrderDetailsTracking.new(param)
           @dimensions = MultiOrderDetailsDimensions.new(param)
           @buttons = MultiUpdateController.new(param)
-          @manage_shipping_add = MultiManageShippingAddresses.new(param)
-          @add_shipping_add = MultiAddShippingAddress.new(param)
+          @manage_shipping_add = MultiManageShippingAddresses.new(param) #todo-kaushal change this
+          @add_shipping_add = MultiAddShippingAddress.new(param) #todo-kaushal change this
           @delete_shipping_add = MultiDeleteShippingAddress.new(param)
         end
 
