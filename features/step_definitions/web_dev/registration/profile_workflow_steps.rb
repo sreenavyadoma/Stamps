@@ -78,19 +78,19 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |s
 end
 
 Then /^check [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  registration.profile.side_content.money_saving_offers.checkbox.check
+  registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox.check
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
-  expect(registration.profile.side_content.money_saving_offers.checkbox).to be_checked, "Profile Money-saving offers and new products is not checked. Got checked"
+  expect(registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox).to be_checked, "Profile Money-saving offers and new products is not checked. Got checked"
 end
 
 Then /^uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  registration.profile.side_content.money_saving_offers.checkbox.uncheck
+  registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox.uncheck
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
-  expect(registration.profile.side_content.money_saving_offers.checkbox).not_to be_checked, "Expected Profile Money-saving offers and new products is checked. Got unchecked"
+  expect(registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox).not_to be_checked, "Expected Profile Money-saving offers and new products is checked. Got unchecked"
 end
 
 Then /^[Cc]ontinue to [Mm]embership page$/ do
