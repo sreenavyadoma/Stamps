@@ -67,7 +67,7 @@ Then /^Filter Panel: Search saved Order ID$/ do
 end
 
 Then /^Filter Panel: Search saved Ship Name$/ do
-   step "Filter Panel: Search for #{test_param[:name]}"
+   step "Filter Panel: Search for #{test_param[:full_name]}"
 end
 
 Then /^Filter Panel: Search saved Ship Company$/ do

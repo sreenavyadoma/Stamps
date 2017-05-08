@@ -241,7 +241,7 @@ module Stamps
           @drop_down = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(7)>div>div>div>div[id^=combo-][id$=bodyEl]>div>div[id$=picker]")
           @decrement_trigger = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
-          @blur_element = BlurOutElement.new(param)
+          @blur_element = BlurOutElement.new(param) # This blur out element is for single order details form. Must create a blur out element for multi order details
         end
 
         def text
@@ -491,7 +491,7 @@ module Stamps
             when 1
               address = args[0]
               if address.is_a? Hash
-                delete_row(locate_ship_from(address['name'], address['company'], address['city']))
+                delete_row(locate_ship_from(address['full_name'], address['company'], address['city']))
               else
                 expect("Address format is not yet supported for this delete call.").to eql ""
               end
@@ -533,7 +533,7 @@ module Stamps
             when 1
               if args[0].is_a? Hash
                 address_hash = args[0]
-                name = address_hash['name']
+                name = address_hash['full_name']
                 company = address_hash['company']
                 city = address_hash['city']
               else
@@ -645,7 +645,7 @@ module Stamps
         def ship_from_address(table)
           @address_hash = table
           origin_zip.set table["ship_from_zip"]
-          name.set(table['name'])
+          name.set(table['full_name'])
           company.set(table['company'])
           street_address_1.set(table["street_address"])
           street_address_2.set(table["street_address2"])
@@ -661,7 +661,7 @@ module Stamps
           expect(save_btn).not_to be_present, "Add Shipping Address failed to save Return Address: #{address_hash.each do |key, value| "#{key}:#{value}" end}"
         end
 
-      end
+      end # This is redundant code and is probably unnecessary
 
       class MultiDeleteShippingAddress < Browser::StampsModal
 
@@ -690,7 +690,7 @@ module Stamps
         def message_field
           browser.div css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
         end
-      end
+      end # redundant code.
 
     end
   end

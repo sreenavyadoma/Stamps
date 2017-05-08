@@ -66,7 +66,7 @@ Then /^[Ee]xpect Order Details form Ship-To Country is (?:correct|(.*))$/ do |ex
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Name is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:name] if expectation.nil?
+  expectation = test_param[:full_name] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   expect(stamps.orders.order_details.ship_to.international.name.text).to eql(expectation)
 end

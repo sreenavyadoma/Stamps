@@ -8,7 +8,7 @@ Feature:  Print Curacao
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
 
     Then expect Order Details form Ship-To Country is Curacao

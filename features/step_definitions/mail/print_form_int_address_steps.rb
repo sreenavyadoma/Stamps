@@ -4,7 +4,7 @@
 Then /^[Ss]et Print form Ship-To to international address$/ do |table|
   address = table.hashes.first
   step "set Print form Mail-To Country to #{address['country']}"
-  step "set Print form Name to #{address['name']}"
+  step "set Print form Name to #{address['full_name']}"
   step "set Print form Company to #{address['company']}"
   step "set Print form Address 1 to #{address['street_address_1']}"
   step "set Print form Address 2 to #{address['street_address_2']}"

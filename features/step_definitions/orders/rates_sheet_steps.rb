@@ -428,7 +428,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           config.logger.step "#{"#"*10} "
           config.logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
           config.logger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
-          config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:name]}, #{test_param[:street_address]}, #{test_param[:city]}, #{test_param[:state]}, #{test_param[:zip]}"
+          config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:full_name]}, #{test_param[:street_address]}, #{test_param[:city]}, #{test_param[:state]}, #{test_param[:zip]}"
           config.logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
           config.logger.step "#{"#"*10} "
         end

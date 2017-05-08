@@ -4,6 +4,28 @@ Then /^[Bb]lur_out on [Mm]embership [Pp]age$/ do
   registration.profile.membership.header.blur_out
 end
 
+Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+  address = helper.address_helper_zone(address) #combine this
+
+  test_param[:first_name] = address['first_name'] #combine this in address_helper_zone
+  test_param[:last_name] = address['last_name']
+  test_param[:street_address] = address['street_address']
+  test_param[:city] = address['city']
+  test_param[:state] = address['state']
+  test_param[:zip] = address['zip']
+  test_param[:company] = address['company']
+  test_param[:ship_to_domestic] = helper.format_address(address)
+  test_param[:phone_number_format] = address['phone_number_format']
+
+  step "set Membership page First Name to  #{test_param[:first_name]}"
+  step "set Membership page Last Name to #{test_param[:last_name]}"
+  step "set Membership page Billing Address to #{test_param[:street_address]}"
+  step "set Membership page Billing City to #{test_param[:city]}"
+  step "set Membership page Billing State to #{test_param[:state]}"
+  step "set Membership page Billing Zip to #{test_param[:zip]}"
+  step "set Membership page Phone to #{test_param[:phone_number_format]}"
+end
+
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
   registration.profile.membership.personal_info.first_name.set(test_param[:first_name] = (str.nil?)?(helper.random_alpha_capitalize ):str)
 end

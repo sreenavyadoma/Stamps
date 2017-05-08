@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
@@ -28,7 +28,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
@@ -51,7 +51,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name              | company   | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name              | company   | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
     Then set Order Details form service to PMEI Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
@@ -70,7 +70,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFRB |  5.5x8.5 Left Side | random       | random           | random | random  | random      | Australia | random  | random  |
     Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Ounces to 1
@@ -90,7 +90,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 14 oz
@@ -143,7 +143,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
@@ -164,7 +164,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+      | full_name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
     Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Weight to 2 lb 0 oz
@@ -212,7 +212,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
     Then set Order Details form service to PMEI Package
     Then set Order Details form Ounces to 1
@@ -233,7 +233,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to Domestic Address
-      | name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
+      | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then set Order Details form Weight to 3 lb 2 oz
     Then set Order Details form service to PSG Package
@@ -251,7 +251,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
-      | name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
+      | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
     Then set Order Details form Weight to 1 lb 2 oz
     Then set Order Details form service to MM Package
@@ -275,7 +275,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
-      | name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set Order Details form Weight to 2 lb 1 oz
     Then set Order Details form service to PSG Package

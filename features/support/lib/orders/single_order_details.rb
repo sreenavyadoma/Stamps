@@ -551,6 +551,7 @@ module Stamps
           drop_down = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
           text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
           @state = StampsDropDown.new(text_box, drop_down, :li)
+
           @zip = StampsTextBox.new(browser.text_field(name: 'Zip'))
           @phone = StampsTextBox.new(browser.text_field(name: "Phone"))
         end
@@ -566,7 +567,7 @@ module Stamps
         def ship_from_address(table)
           @address_hash = table
           origin_zip.set table["ship_from_zip"]
-          name.set(table['name'])
+          name.set(table['full_name'])
           company.set(table['company'])
           street_address_1.set(table["street_address"])
           street_address_2.set(table["street_address2"])
@@ -708,7 +709,7 @@ module Stamps
             when 1
               address = args[0]
               if address.is_a? Hash
-                delete_row(locate_ship_from(address['name'], address['company'], address['city']))
+                delete_row(locate_ship_from(address['full_name'], address['company'], address['city']))
               else
                 expect("Address format is not yet supported for this delete call.").to eql ""
               end
@@ -750,7 +751,7 @@ module Stamps
             when 1
               if args[0].is_a? Hash
                 address_hash = args[0]
-                name = address_hash['name']
+                name = address_hash['full_name']
                 company = address_hash['company']
                 city = address_hash['city']
               else

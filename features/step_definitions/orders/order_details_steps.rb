@@ -236,7 +236,7 @@ end
 Then /^[Ss]et Order Details form Ship-To to Domestic Address$/ do |table|
   address_table = table.hashes.first
 
-  test_param[:name] = (address_table['name'].downcase.include?('random')) ? helper.random_full_name : address_table['name']
+  test_param[:full_name] = (address_table['full_name'].downcase.include?('random')) ? helper.random_full_name : address_table['full_name']
   test_param[:company] = (address_table['company'].downcase.include?('random')) ? helper.random_company_name : address_table['company']
   test_param[:street_address] = address_table['street_address']
 
@@ -250,7 +250,7 @@ Then /^[Ss]et Order Details form Ship-To to Domestic Address$/ do |table|
   test_param[:state] = (address_table['state'].downcase.include?('random')) ? helper.random_alpha_numeric : address_table['state']
   test_param[:zip] = (address_table['zip'].downcase.include?('random')) ? helper.random_alpha_numeric : address_table['zip']
   test_param[:country] = (address_table['country'].size==0)?"United States":address_table['country']
-  test_param[:ship_to] = "#{test_param[:name]},#{test_param[:company]},#{test_param[:street_address]},#{test_param[:street_address_2]} ,#{test_param[:city]} #{test_param[:state]} #{test_param[:zip]}"
+  test_param[:ship_to] = "#{test_param[:full_name]},#{test_param[:company]},#{test_param[:street_address]},#{test_param[:street_address_2]} ,#{test_param[:city]} #{test_param[:state]} #{test_param[:zip]}"
 
   step "set Order Details form Ship-To Country to #{test_param[:country]}"
   step "set Order Details form Ship-To to Domestic Address #{test_param[:ship_to]}"
@@ -260,7 +260,7 @@ Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
   address_table = table.hashes.first
 
   test_param[:country] = address_table['country']
-  test_param[:name] = (address_table['name'].downcase.include?('random')) ? helper.random_full_name : address_table['name']
+  test_param[:full_name] = (address_table['full_name'].downcase.include?('random')) ? helper.random_full_name : address_table['full_name']
   test_param[:company] = (address_table['company'].downcase.include?('random')) ? helper.random_company_name : address_table['company']
   test_param[:street_address_1] = (address_table['street_address_1'].downcase.include?('random')) ? helper.random_alpha_numeric : address_table['street_address_1']
   test_param[:street_address_2] = (address_table['street_address_2'].downcase.include?('random')) ? helper.random_suite : address_table['street_address_2']
@@ -271,7 +271,7 @@ Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
   test_param[:email] = (address_table['email'].downcase.include?('random')) ? helper.random_email : address_table['email']
 
   step "set Order Details form Ship-To Country to #{test_param[:country]}"
-  step "set Order Details form International Ship-To Name to \"#{test_param[:name]}\""
+  step "set Order Details form International Ship-To Name to \"#{test_param[:full_name]}\""
   step "set Order Details form International Ship-To Company to \"#{test_param[:company]}\""
   step "set Order Details form International Ship-To Address 1 to \"#{test_param[:street_address_1]}\""
   step "set Order Details form International Ship-To Address 2 to \"#{test_param[:street_address_2]}\""
@@ -289,7 +289,7 @@ Then /^[Ss]et Order Details form Ship-To to(?: a |)(?: random address |)(?:to|in
   test_param[:city] = address['city']
   test_param[:state] = address['state']
   test_param[:zip] = address['zip']
-  test_param[:name] = address['name']
+  test_param[:full_name] = address['full_name']
   test_param[:company] = address['company']
   test_param[:ship_to_domestic] = helper.format_address(address)
 

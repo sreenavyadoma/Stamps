@@ -1,4 +1,4 @@
-Then /^on Add Funds modal, purchase 10$/ do
+Then /^[Oo]n Add Funds modal, purchase 10$/ do
   #config.logger.step "on Add Funds modal, purchase 10"
   test_param[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_10.select
@@ -19,27 +19,27 @@ Then set Print modal Printer to "factory"
 Then in Print modal, click Print button
 =end
 
-Then /^on Add Funds modal, purchase 25$/ do
+Then /^[Oo]n Add Funds modal, purchase 25$/ do
   test_param[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_25.select
 end
 
-Then /^on Add Funds modal, purchase 50$/ do
+Then /^[Oo]n Add Funds modal, purchase 50$/ do
   test_param[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_50.select
 end
 
-Then /^on Add Funds modal, purchase 100$/ do
+Then /^[Oo]n Add Funds modal, purchase 100$/ do
   test_param[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_100.select
 end
 
-Then /^on Add Funds modal, purchase Other Amount (\d+)$/ do |amount|
+Then /^[Oo]n Add Funds modal, purchase Other Amount (\d+)$/ do |amount|
   test_param[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_other amount
 end
 
-Then /^on Add Funds modal, click Purchase button$/ do
+Then /^[Oo]n Add Funds modal, click Purchase button$/ do
   stamps.navigation_bar.balance.buy_more.purchase
 end
 

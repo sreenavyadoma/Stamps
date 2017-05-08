@@ -242,7 +242,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | 0123456789  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -263,7 +263,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
+      | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Australia | 9876543210  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -516,7 +516,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country | phone       |  email           |
+      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country | phone       |  email           |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Germany | 0123456789  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -537,7 +537,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
+      | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | France    | 9876543210  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -789,7 +789,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Brazil | 0123456789  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -810,7 +810,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
+      | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Mexico    | 9876543210  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -1063,7 +1063,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country     | phone       |  email  |
+      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country     | phone       |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Philippines | 0123456789  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -1084,7 +1084,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
+      | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | India     | 9876543210  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -1337,7 +1337,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Poland | 0123456789  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -1358,7 +1358,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
+      | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country   | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Singapore | 9876543210  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -1611,7 +1611,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country   | phone       |  email  |
+      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country   | phone       |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Hong Kong | 0123456789  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
@@ -1632,7 +1632,7 @@ Feature: 150 orders
     Then set Order Details form Ship-From to default
 
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country  | phone   |  email  |
+      | full_name   | company | street_address_1    | street_address_2 | city   | province | postal_code  | country  | phone   |  email  |
       | random | random  | 123 Kangaroo Court  | random           | Perth  | Wallaby  | DEF 0C4      | Thailand | 9876543210  | junk@stamps.com  |
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random

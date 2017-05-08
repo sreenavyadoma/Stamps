@@ -173,9 +173,7 @@ module Stamps
       end
 
       def blur_out(*args)
-        count = 3 if args.length == 0
-        count = args[0].to_i if args.length > 0
-        count.to_i.times do
+        ((args.nil? || args.length==0)?2:args[0].to_i).times do
           click
           double_click
         end
@@ -403,8 +401,6 @@ module Stamps
       end
 
       def select(str)
-        selection = nil
-        text = ""
         drop_down.click
         sleep(0.25)
         expect(list_of_values).not_to be_nil, "Error: Set list_of_values before calling select_from_lov."
@@ -421,9 +417,8 @@ module Stamps
             list_of_values.each do |item_selection|
               selection = StampsElement.new(item_selection)
               if !selection.nil? && selection.text.downcase.include?(str.downcase)
-                text = selection.text
                 selection.click
-                return text if text_box.text.downcase.include?(str.downcase)
+                return text if text.downcase.include?(str.downcase)
               end
             end
           rescue
@@ -462,12 +457,13 @@ module Stamps
           begin
             drop_down.click unless selection.present?
             selection.click
-            break if element.text.downcase.include?(str)
+            break if text.downcase.include?(str.downcase)
           rescue
             # ignore
           end
         end
-        expect(element.text).to include(str), "Invalid selection: #{str}. Check your page object."
+        expect(text.downcase).to include(str.downcase)
+        text
       end
     end
 
