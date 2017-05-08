@@ -2,7 +2,7 @@ module Stamps
   module Orders
     class PageStyles < Browser::StampsModal
       def general
-        General.new(modal_param)
+        General.new(param)
       end
     end
 
@@ -79,19 +79,19 @@ module Stamps
       end
 
       def fonts
-        Fonts.new(modal_param)
+        Fonts.new(param)
       end
 
       def tooltip
-        Tooltip.new(modal_param)
+        Tooltip.new(param)
       end
 
       def navigation_header
-        @navigation_header = NavigationHeader.new(modal_param)
+        @navigation_header = NavigationHeader.new(param)
       end
 
       def links
-        @links = Links.new(modal_param)
+        @links = Links.new(param)
       end
     end
   end

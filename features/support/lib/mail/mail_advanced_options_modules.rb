@@ -11,7 +11,7 @@ module Stamps
         def extra_services
           return @extra_services if !@extra_services.nil? && @extra_services.present?
           expect(extra_services_btn).to be_present, "Extra Services button is not present."
-          @extra_services = PrintFormPanel::MailExtraServices.new(modal_param) if @extra_services.nil? || !@extra_services.present?
+          @extra_services = PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
           20.times do extra_services_btn.click unless @extra_services.present? end
           expect(@extra_services).to be_present, "Extra Services modal did not open."
           @extra_services
@@ -34,7 +34,7 @@ module Stamps
 
       module AdvOptMailDate
         def mail_date
-          @mail_date = MailDate.new(modal_param) if @mail_date.nil?
+          @mail_date = MailDate.new(param) if @mail_date.nil?
           @mail_date
         end
       end

@@ -102,7 +102,7 @@ module Stamps
             #ignore
           end
         }
-        OrdersPrintModal.new(modal_param)
+        OrdersPrintModal.new(param)
       end
 
       def cancel

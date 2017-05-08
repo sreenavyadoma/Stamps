@@ -20,6 +20,7 @@ Feature:  Basic Search
     Then Pause for 5 seconds
 
     # Search for new order
+    Then check Orders Grid saved Order ID
     Then Filter Panel: Search saved Order ID
     Then Filter Panel: Search Results should be present
     Then Filter Panel: Search results count should be 1

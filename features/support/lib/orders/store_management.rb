@@ -117,7 +117,7 @@ module Stamps
             end
 
             def shipping_Service
-              ServiceMappingShippingService.new(modal_param, @index)
+              ServiceMappingShippingService.new(param, @index)
             end
           end
 
@@ -144,18 +144,18 @@ module Stamps
 
             logger.info "User Entered Number: #{index}. Actual Item Count: #{size}"
 
-            ServiceMappingLineItem.new(modal_param, index-1)
+            ServiceMappingLineItem.new(param, index-1)
           end
         end
 
         def service_mapping
-          ServiceMappingGrid.new(modal_param)
+          ServiceMappingGrid.new(param)
         end
 
         def save
           button = StampsElement.new(browser.span text: "Save")
-          server_error = Orders::Stores::ServerError.new(modal_param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(modal_param)
+          server_error = Orders::Stores::ServerError.new(param)
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
 
           15.times do
             button.click
@@ -235,7 +235,7 @@ module Stamps
 
         def amazon
           button = amazon_button
-          store = Amazon.new(modal_param)
+          store = Amazon.new(param)
           10.times do
             button.click
             sleep(2)
@@ -249,7 +249,7 @@ module Stamps
 
         def volusion
           button = volusion_button
-          store = Volusion.new(modal_param)
+          store = Volusion.new(param)
           10.times do
             button.click
             sleep(2)
@@ -264,7 +264,7 @@ module Stamps
 
         def rakuten
           button = rakuten_button
-          store = Rakuten.new(modal_param)
+          store = Rakuten.new(param)
           10.times do
             button.click
             sleep(2)
@@ -279,7 +279,7 @@ module Stamps
 
         def etsy
           button = etsy_button
-          store = Etsy.new(modal_param)
+          store = Etsy.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -294,7 +294,7 @@ module Stamps
 
         def shopify
           button = shopify_button
-          store = Shopify.new(modal_param)
+          store = Shopify.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -309,7 +309,7 @@ module Stamps
 
         def three_d_cart
           button = three_d_cart_button
-          store = ThreeDCart.new(modal_param)
+          store = ThreeDCart.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -324,7 +324,7 @@ module Stamps
 
         def ebay
           button = etsy_button
-          store = Ebay.new(modal_param)
+          store = Ebay.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -339,7 +339,7 @@ module Stamps
 
         def yahoo
           button = yahoo_button
-          store = Yahoo.new(modal_param)
+          store = Yahoo.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -354,7 +354,7 @@ module Stamps
 
         def big_commerce
           button = big_commerce_button
-          store = BigCommerce.new(modal_param)
+          store = BigCommerce.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -369,7 +369,7 @@ module Stamps
 
         def paypal
           button = paypal_button
-          store = PayPal.new(modal_param)
+          store = PayPal.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -402,7 +402,7 @@ module Stamps
             grid_row_field = StampsElement.new grid_row_item
 
             del_btn = self.delete
-            delete_modal = DeleteStoreModal.new(modal_param)
+            delete_modal = DeleteStoreModal.new(param)
 
             10.times do
               #select grid row item
@@ -417,7 +417,7 @@ module Stamps
 
           def delete_all
             del_btn = delete
-            delete_modal = DeleteStoreModal.new(modal_param)
+            delete_modal = DeleteStoreModal.new(param)
             stores_grid = browser.divs(css: "div[class*='x-grid-item-container']").last
             tables = stores_grid.tables
             grid_size = tables.size
@@ -484,7 +484,7 @@ module Stamps
         end
 
         def stores_grid
-          ManageStoresGrid.new(modal_param)
+          ManageStoresGrid.new(param)
         end
 
         def close
@@ -518,18 +518,18 @@ module Stamps
         end
 
         def market_place
-          MarketPlace.new(modal_param)
+          MarketPlace.new(param)
         end
 
         def edit
           button = StampsElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(2)>span>span>span[id$=btnInnerEl]")
-          rakuten = RakutenSettings.new(modal_param)
-          amazon = AmazonSettings.new(modal_param)
-          volusion = VolusionSettings.new(modal_param)
-          etsy = EtsySettings.new(modal_param)
-          shopify = ShopifySettings.new(modal_param)
-          three_d_cart = ThreeDCartSettings.new(modal_param)
-          yahoo = YahooSettings.new(modal_param)
+          rakuten = RakutenSettings.new(param)
+          amazon = AmazonSettings.new(param)
+          volusion = VolusionSettings.new(param)
+          etsy = EtsySettings.new(param)
+          shopify = ShopifySettings.new(param)
+          three_d_cart = ThreeDCartSettings.new(param)
+          yahoo = YahooSettings.new(param)
 
           10.times do
             button.click
@@ -548,15 +548,15 @@ module Stamps
           button = StampsElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(3)>span>span>span[id$=btnInnerEl]")
           expect("No Store selected from Manage Store grid or Reconnect button is not present.  Check your test").to eql "" unless button.present?
 
-          server_error = Orders::Stores::ServerError.new(modal_param)
+          server_error = Orders::Stores::ServerError.new(param)
 
-          amazon = ModifyAmazonStore.new(modal_param)
-          volusion = ModifyVolusionStore.new(modal_param)
-          rakuten = ModifyRakutenStore.new(modal_param)
-          etsy = ModifyEtsyStore.new(modal_param)
-          shopify = ModifyShopifyStore.new(modal_param)
-          three_d_cart = Modify3DCartStore.new(modal_param)
-          yahoo = ModifyYahooStore.new(modal_param)
+          amazon = ModifyAmazonStore.new(param)
+          volusion = ModifyVolusionStore.new(param)
+          rakuten = ModifyRakutenStore.new(param)
+          etsy = ModifyEtsyStore.new(param)
+          shopify = ModifyShopifyStore.new(param)
+          three_d_cart = Modify3DCartStore.new(param)
+          yahoo = ModifyYahooStore.new(param)
 
           15.times do
             button.click
@@ -591,7 +591,7 @@ module Stamps
 
         def delete_item
           button = StampsElement.new browser.span(css: "div[componentid^=managestoreswindow]>div[id^=toolbar]>div>div>a:nth-child(4)>span>span>span[id$=btnInnerEl]")
-          delete_modal = DeleteStoreModal.new(modal_param)
+          delete_modal = DeleteStoreModal.new(param)
           10.times do
             button.click
             return delete_modal if delete_modal.present?

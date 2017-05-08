@@ -126,7 +126,7 @@ module Stamps
           if @cod.nil? || !@cod.present?
             text_box = browser.text_field(id: "sdc-extraserviceswin-codnumberfield-inputEl")
             inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=up]")
-            dec_btn = browser.divs(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=down]")
+            dec_btn = browser.div(css: "div[id=sdc-extraserviceswin-codnumberfield-trigger-spinner]>div[class*=down]")
             @cod = StampsNumberField.new(text_box, inc_btn, dec_btn)
           end
           @cod

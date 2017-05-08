@@ -5,10 +5,10 @@ module Stamps
 
       def initialize(param)
         super
-        @title = StampsElement.new browser.div(text: 'Welcome!')
-        @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = StampsElement.new browser.span(text: 'Next')
-        @close_button = StampsElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = StampsElement.new(browser.div(text: 'Welcome!'))
+        @msg_container = StampsElement.new(browser.div(id: 'sdc-window-tutorial-innerCt'))
+        @next_button = StampsElement.new(browser.span(text: 'Next'))
+        @close_button = StampsElement.new(browser.img(css: 'img[class$=x-tool-close]'))
         @add_manual_order = AddManualOrderModal.new(param)
       end
 
@@ -89,7 +89,7 @@ module Stamps
       end
 
       def first_time_sign_in usr, pw
-        market_place = Orders::Stores::MarketPlace.new(modal_param)
+        market_place = Orders::Stores::MarketPlace.new(param)
 
         username.wait_until_present 6
 
@@ -122,7 +122,7 @@ module Stamps
         begin
           loading_orders = StampsElement.new browser.div(text: "Loading orders...")
           invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
-          new_welcome = NewWelcomeModal.new(modal_param)
+          new_welcome = NewWelcomeModal.new(param)
 
           expect(browser.url).to include "Orders"
 

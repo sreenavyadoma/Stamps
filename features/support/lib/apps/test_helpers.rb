@@ -18,24 +18,24 @@ module TestHelper
   end
 
   def modal_param
-    if @param.nil?
-      @param ||= ModalParam.new
-      @param.browser_sym = config.browser_sym
-      @param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
+    if @modal_param.nil?
+      @modal_param ||= ModalParam.new
+      @modal_param.browser_sym = config.browser_sym
+      @modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
-      @param.web_app = (ENV['WEB_APP'].downcase).to_sym
-      expect([:orders, :mail, :registration]).to include(@param.web_app), "Invalid paramter WEB_APP=#{@param.web_app}. Valid values are mail, registration"
+      @modal_param.web_app = (ENV['WEB_APP'].downcase).to_sym
+      expect([:orders, :mail, :registration]).to include(@modal_param.web_app), "Invalid modal_paramter WEB_APP=#{@modal_param.web_app}. Valid values are mail, registration"
 
       ENV['URL'] = 'stg' if ENV['URL'].downcase == 'staging'
-      @param.test_env = ENV['URL']
-      @param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
+      @modal_param.test_env = ENV['URL']
+      @modal_param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 
-      if @param.web_app == :mail || @param.web_app == :orders
-        @param.health_check = helper.to_bool ENV['HEALTHCHECK']
-        @param.usr = ENV['USR']
-        @param.pw = ENV['PW']
-        @param.url = ENV['URL']
-        @param.developer = (ENV['DEVELOPER'].nil?)?false:ENV['DEVELOPER']
+      if @modal_param.web_app == :mail || @modal_param.web_app == :orders
+        @modal_param.health_check = helper.to_bool ENV['HEALTHCHECK']
+        @modal_param.usr = ENV['USR']
+        @modal_param.pw = ENV['PW']
+        @modal_param.url = ENV['URL']
+        @modal_param.developer = (ENV['DEVELOPER'].nil?)?false:ENV['DEVELOPER']
 
         expect(ENV['BROWSER']).to be_truthy
         expect(ENV['URL']).to be_truthy
@@ -47,9 +47,9 @@ module TestHelper
         expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
       end
     end
-    @param.browser = config.browser
-    @param.logger = config.logger
-    @param.scenario_name = config.scenario_name
-    @param
+    @modal_param.browser = config.browser
+    @modal_param.logger = config.logger
+    @modal_param.scenario_name = config.scenario_name
+    @modal_param
   end
 end

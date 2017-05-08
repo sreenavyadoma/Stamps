@@ -267,7 +267,7 @@ Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
   test_param[:city] = (address_table['city'].downcase.include?('random')) ? helper.random_alpha_numeric : address_table['city']
   test_param[:state] = (address_table['province'].downcase.include?('random')) ? helper.random_alpha_numeric : address_table['province']
   test_param[:zip] = (address_table['postal_code'].downcase.include?('random'))?helper.random_alpha_numeric : address_table['postal_code']
-  test_param[:phone] = (address_table['phone'].downcase.include?('random')) ? helper.random_phone : address_table['phone']
+  test_param[:phone] = (address_table['phone'].downcase.include?('random')) ? helper.random_phone_number : address_table['phone']
   test_param[:email] = (address_table['email'].downcase.include?('random')) ? helper.random_email : address_table['email']
 
   step "set Order Details form Ship-To Country to #{test_param[:country]}"
@@ -384,7 +384,7 @@ Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
 end
 
 Then /^[Ss]et Order Details form Phone to (.*)$/ do |phone|
-  test_param[:phone] = (phone.to_s.strip.downcase.include?('random'))?(helper.random_phone):phone
+  test_param[:phone] = (phone.to_s.strip.downcase.include?('random'))?(helper.random_phone_number):phone
   stamps.orders.order_details.ship_to.domestic.show_address
   begin
     stamps.orders.order_details.ship_to.domestic.phone.set test_param[:phone]

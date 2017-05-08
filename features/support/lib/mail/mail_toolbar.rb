@@ -18,9 +18,9 @@ module Stamps
       end
 
       def print_button
-        expect([:envelopes, :stamps, :labels, :rolls]).to include(modal_param.print_media)
+        expect([:envelopes, :stamps, :labels, :rolls]).to include(param.print_media)
         10.times do
-          case modal_param.print_media
+          case param.print_media
             when :envelopes
               @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
             when :stamps

@@ -308,7 +308,7 @@ module Stamps
         def forgot_username
           sign_in_link = StampsElement.new browser.link(text: "Sign In")
           button = StampsElement.new browser.a css: "a[class*=forgotUsername]"
-          forgot_username_modal = ForgotUsernameModal.new(modal_param)
+          forgot_username_modal = ForgotUsernameModal.new(param)
           5.times do
             sign_in_link.click
             button.click
@@ -321,7 +321,7 @@ module Stamps
         def forgot_password
           sign_in_link = StampsElement.new browser.link(text: "Sign In")
           button = StampsElement.new browser.a css: "a[class*=forgotPassword]"
-          forgot_password_modal = ForgotPasswordModal.new(modal_param)
+          forgot_password_modal = ForgotPasswordModal.new(param)
           5.times do
             sign_in_link.click
             button.click

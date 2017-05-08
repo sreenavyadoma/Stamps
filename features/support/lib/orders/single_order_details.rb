@@ -291,7 +291,7 @@ module Stamps
 
         def set partial_address_hash
           exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
-          form = SingleOrderDetails.new(modal_param)
+          form = SingleOrderDetails.new(param)
           form.validate_address_link
           country_drop_down = self.country
           form.ship_to.set helper.format_address(partial_address_hash)
@@ -547,7 +547,10 @@ module Stamps
           @street_address_1 = StampsTextBox.new(browser.text_field name: 'Street1')
           @street_address_2 = StampsTextBox.new(browser.text_field name: 'Street2')
           @city = StampsTextBox.new(browser.text_field(name: 'City'))
-          @state = StampsOldDropDown.new(browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]"), :li, browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]'))
+
+          drop_down = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
+          text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
+          @state = StampsDropDown.new(text_box, drop_down, :li)
           @zip = StampsTextBox.new(browser.text_field(name: 'Zip'))
           @phone = StampsTextBox.new(browser.text_field(name: "Phone"))
         end
@@ -716,7 +719,7 @@ module Stamps
         end
 
         def delete_row(number)
-          @delete_shipping_address = DeleteShippingAddress.new(modal_param)
+          @delete_shipping_address = DeleteShippingAddress.new(param)
           5.times do
             select_row(number)
             click_delete_button
@@ -1258,7 +1261,7 @@ module Stamps
         end
 
         def item(number)
-          associated_item = AssociatedOrderItem.new(modal_param, number)
+          associated_item = AssociatedOrderItem.new(param, number)
           10.times do
             return associated_item if associated_item.present?
             sleep(0.5)
@@ -1298,7 +1301,7 @@ module Stamps
         def collapse
           selection = StampsElement.new browser.span(text: "Collapse Panel")
           dd = drop_down
-          collapsed_details = DetailsCollapsible.new(modal_param)
+          collapsed_details = DetailsCollapsible.new(param)
           10.times do
             dd.click unless selection.present?
             selection.click
@@ -1330,16 +1333,16 @@ module Stamps
         end
 
         def order_id
-          order_id_label = StampsElement.new(browser.bs(css: "label>b").first)
           20.times{
             begin
+              order_id_label = StampsElement.new(browser.b(css: "div[id^=singleOrderDetailsForm][class*=singleorder-detailsform]>div[id^=toolbar]>div[id^=toolbar]>div[id^=toolbar]>label>b"))
               sleep(0.25)
               return order_id_label.text.split('#').last if order_id_label.text.include? '#'
             rescue
               #ignroe
             end
           }
-          expect("Unable to obtain Order ID from Single Order Details Form").to eql ""
+          ""
         end
       end
 
