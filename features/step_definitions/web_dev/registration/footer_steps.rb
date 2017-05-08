@@ -1,4 +1,4 @@
-Then /^[Ee]xpect [Pp]rofile [Pp]age privacy policy link exists$/ do
+Then /^[Ee]xpect Profile page Privacy Policy link exists$/ do
   expect(registration.footer.privacy_policy_link).to be_present
 end
 
