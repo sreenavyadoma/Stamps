@@ -9,7 +9,7 @@ Feature: Priority Mail and Large Dimensions
   Scenario: Priority Mail and Large Dimensions
     Then add new order
     Then set Order Details form Ship-To to Domestic Address
-      | name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
+      | full_name   | company      | street_address    | city | state | zip    | country       | phone  |  email |
       | random | Domestic FPO | PSC 473 BOX 12  | FPO  | AP     |  96349-0001  | United States | random | random |
 
     Then set Order Details form Length to 20

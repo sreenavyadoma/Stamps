@@ -9,7 +9,7 @@ Feature:  Update International Orders to ShipStation
     Then add new order
     Then on Order Details form, blur out
     Then set Order Details Ship-To International address to
-      | name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
+      | full_name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
     Then set Order Details form Weight to 2 lb 2 oz
     Then set Order Details form service to PMI Package

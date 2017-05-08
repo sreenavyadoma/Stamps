@@ -173,9 +173,7 @@ module Stamps
       end
 
       def blur_out(*args)
-        count = 3 if args.length == 0
-        count = args[0].to_i if args.length > 0
-        count.to_i.times do
+        ((args.nil? || args.length==0)?2:args[0].to_i).times do
           click
           double_click
         end

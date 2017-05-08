@@ -97,7 +97,7 @@ Then /^[Ee]xpect Orders Grid Order Date is populated$/ do
 end
 
 Then /^[Ee]xpect Orders Grid Recipient is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:name] if expectation.nil?
+  expectation = test_param[:full_name] if expectation.nil?
   expect(test_param[:order_id][0]).to be_truthy
   10.times { break if stamps.orders.orders_grid.column.recipient.data(test_param[:order_id][0]).eql? expectation }
   expect(stamps.orders.orders_grid.column.recipient.data(test_param[:order_id][0])).to eql expectation

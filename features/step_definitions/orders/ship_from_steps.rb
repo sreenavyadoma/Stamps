@@ -21,7 +21,7 @@ end
 Then /^on Manage Shipping Address modal, add address$/ do |ship_from|
   test_param[:ship_from_address] = ship_from.hashes.first
   test_param[:ship_from_zip] = test_param[:ship_from_address]["ship_from_zip"]
-  test_param[:name] = test_param[:ship_from_address]['name']
+  test_param[:full_name] = test_param[:ship_from_address]['full_name']
   test_param[:company] = test_param[:ship_from_address]['company']
   test_param[:street_address] = test_param[:ship_from_address]["street_address"]
   test_param[:street_address2] = test_param[:ship_from_address]["street_address2"]

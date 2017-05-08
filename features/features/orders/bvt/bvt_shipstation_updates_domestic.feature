@@ -8,7 +8,7 @@ Feature:  Update Order to ShipStation
   Scenario:  Update ShipStation
     Then add new order
     Then set Order Details form Ship-To to Domestic Address
-      | name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
+      | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
       | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
     Then set Order Details form Phone to 888-888-8888

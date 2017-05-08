@@ -7,12 +7,16 @@ Feature:  BVT International Shipping
   Scenario: International Shipping
     Then add new order
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
+      | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details form Ounces to 4
     Then set Order Details form service to FCMI Large Envelope
     Then click Order Details form Edit Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 400, Made In Japan, Tariff 100
+    Then set Customs form Package Contents to Commercial Sample
+    Then set Customs form Package Contents to Gift
+    Then set Customs form Package Contents to Document
+    Then set Customs form Package Contents to Humanitarian Donation
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
     Then set Customs form Internal Transaction Number to Not required
