@@ -552,8 +552,6 @@ module Stamps
           text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
           @state = StampsDropDown.new(text_box, drop_down, :li)
 
-
-
           @zip = StampsTextBox.new(browser.text_field(name: 'Zip'))
           @phone = StampsTextBox.new(browser.text_field(name: "Phone"))
         end
