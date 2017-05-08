@@ -96,6 +96,17 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page member address to random address between zone 6
     Then set Membership page member address to random address between zone 7
     Then set Membership page member address to random address between zone 8
+
+    Then set Membership page member billing address to random address between zone 1 and 4
+    Then set Membership page member billing address to random address between zone 5 and 8
+    Then set Membership page member billing address to random address between zone 1
+    Then set Membership page member billing address to random address between zone 2
+    Then set Membership page member billing address to random address between zone 3
+    Then set Membership page member billing address to random address between zone 4
+    Then set Membership page member billing address to random address between zone 5
+    Then set Membership page member billing address to random address between zone 6
+    Then set Membership page member billing address to random address between zone 7
+    Then set Membership page member billing address to random address between zone 8
     Then expect Membership page Billing Address is correct
     Then expect Membership page Billing City is correct
     Then expect Membership page Billing State is correct

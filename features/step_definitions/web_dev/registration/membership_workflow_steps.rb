@@ -17,12 +17,12 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random ad
   test_param[:ship_to_domestic] = helper.format_address(address)
   test_param[:phone_number_format] = address['phone_number_format']
 
-  step "set Membership page First Name to  #{test_param[:first_name]}"
+  step "set Membership page First Name to #{test_param[:first_name]}"
   step "set Membership page Last Name to #{test_param[:last_name]}"
-  step "set Membership page Billing Address to #{test_param[:street_address]}"
-  step "set Membership page Billing City to #{test_param[:city]}"
-  step "set Membership page Billing State to #{test_param[:state]}"
-  step "set Membership page Billing Zip to #{test_param[:zip]}"
+  step "set Membership page Address to #{test_param[:street_address]}"
+  step "set Membership page City to #{test_param[:city]}"
+  step "set Membership page State to #{test_param[:state]}"
+  step "set Membership page Zip to #{test_param[:zip]}"
   step "set Membership page Phone to #{test_param[:phone_number_format]}"
 end
 
