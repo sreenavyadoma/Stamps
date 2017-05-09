@@ -53,9 +53,8 @@ module Stamps
 
       class MultiShipFromAddress < Browser::StampsModal
           attr_reader :drop_down, :text_box, :blur_element, :manage_shipping_add
-
           def initialize(param)
-            super(param)
+            super
             @text_box = StampsTextbox.new browser.text_field(name: "ShipFrom")
             @drop_down = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(3)>div>div>div>div[id^=shipfromdroplist][id$=bodyEl]>div>div[id$=picker]")
             @manage_shipping_add = MultiManageShippingAddresses.new(param)
@@ -385,7 +384,7 @@ module Stamps
           updating_orders.wait_while_present(2.5)
         end
 
-        def save_as_present_btn
+        def save_as_present
           5.times do
             return view_restrictions if view_restrictions.present?
             restrictions_btn.click
@@ -414,7 +413,7 @@ module Stamps
         attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
 
         def initialize(param)
-          super(param)
+          super
           @edit_button = StampsElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
           @add_button = StampsElement.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
           @window_title = StampsElement.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
