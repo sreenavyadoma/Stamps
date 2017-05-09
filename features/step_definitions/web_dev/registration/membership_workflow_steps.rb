@@ -21,7 +21,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random ad
   step "set Membership page Last Name to #{test_param[:last_name]}"
   step "set Membership page Address to #{test_param[:street_address]}"
   step "set Membership page City to #{test_param[:city]}"
-  step "set Membership page State to #{test_param[:state]}"
+  step "select Membership page State #{test_param[:state]}"
   step "set Membership page Zip to #{test_param[:zip]}"
   step "set Membership page Phone to #{test_param[:phone_number_format]}"
 end
@@ -67,7 +67,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ity is (?:correct|(.*))$/ do |str|
   expect(registration.profile.membership.personal_info.city.text).to eql((str.nil?)?test_param[:city]:str)
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age [Ss]tate to (.*)$/ do |str|
+Then /^[Ss]elect [Mm]embership [Pp]age [Ss]tate (.*)$/ do |str|
   registration.profile.membership.personal_info.state.select(test_param[:state] = str)
 end
 
@@ -170,51 +170,43 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?
 
   step "set Membership page Billing Address to #{test_param[:street_address]}"
   step "set Membership page Billing City to #{test_param[:city]}"
-  step "set Membership page Billing State to #{test_param[:state]}"
+  step "select Membership page Billing State #{test_param[:state]}"
   step "set Membership page Billing Zip to #{test_param[:zip]}"
   step "set Membership page Phone to #{test_param[:phone_number_format]}"
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Aa]ddress to (.*)$/ do |str|
-  test_param[:billing_address] = (str.nil?)?(helper.random_alpha_capitalize ):str
-  registration.profile.membership.credit_card.billing_address.billing_address.set(test_param[:billing_address])
+  registration.profile.membership.credit_card.billing_address.billing_address.set(test_param[:billing_address] = (str.nil?)?(helper.random_alpha_capitalize ):str)
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:billing_address]:str
-  expect(registration.profile.membership.credit_card.billing_address.billing_address.text).to eql(str)
+  expect(registration.profile.membership.credit_card.billing_address.billing_address.text).to eql((str.nil?)?test_param[:billing_address]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Cc]ity to (.*)$/ do |str|
-  test_param[:billing_city] = (str.nil?)?(helper.random_alpha_capitalize ):str
-  registration.profile.membership.credit_card.billing_address.billing_city.set(test_param[:billing_city])
+  registration.profile.membership.credit_card.billing_address.billing_city.set(test_param[:billing_city] = (str.nil?)?(helper.random_alpha_capitalize ):str)
   step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Cc]ity is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:billing_city]:str
-  expect(registration.profile.membership.credit_card.billing_address.billing_city.text).to eql(str)
+  expect(registration.profile.membership.credit_card.billing_address.billing_city.text).to eql((str.nil?)?test_param[:billing_city]:str)
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Ss]tate to (.*)$/ do |str|
-  test_param[:billing_state] = str
-  registration.profile.membership.credit_card.billing_address.billing_state.select(test_param[:billing_state])
+Then /^[Ss]elect [Mm]embership [Pp]age [Bb]illing [Ss]tate (.*)$/ do |str|
+  registration.profile.membership.credit_card.billing_address.billing_state.select(test_param[:billing_state] = str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Ss]tate is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:billing_state]:str
-  expect(registration.profile.membership.credit_card.billing_address.billing_state.text).to eql(str)
+  expect(registration.profile.membership.credit_card.billing_address.billing_state.text).to eql((str.nil?)?test_param[:billing_state]:str)
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Zz]ip to (.*)$/ do |str|
-  test_param[:billing_zip] = (str.nil?)?(helper.random_alpha_capitalize ):str
-  registration.profile.membership.credit_card.billing_address.billing_zip.set(test_param[:billing_zip])
+  registration.profile.membership.credit_card.billing_address.billing_zip.set(test_param[:billing_zip] = (str.nil?)?(helper.random_alpha_capitalize ):str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ do |str|
-  str = (str.nil?)?test_param[:billing_zip]:str
-  expect(registration.profile.membership.credit_card.billing_address.billing_zip.text).to eql(str)
+  expect(registration.profile.membership.credit_card.billing_address.billing_zip.text).to eql((str.nil?)?test_param[:billing_zip]:str)
 end
 
 Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do

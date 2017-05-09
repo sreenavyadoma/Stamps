@@ -29,7 +29,33 @@ module Stamps
     end
 
     def random_password
-      random_alpha_numeric(6, 13)
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ('!'..'?').to_a
+      [extract_pass(down), extract_pass(up), extract_pass(digits), extract_pass(special)].concat(((down+up+digits).sample(Random.rand(2..10)))).shuffle.join
+    end
+
+    def extract_pass(arr)
+      i = arr.size.times.to_a.sample
+      c = arr[i]
+      arr.delete_at(i)
+      c
+    end
+
+    def random_alpha_numeric_special(*args)
+      case args.length
+        when 1
+          min = (args[0].to_i>2)?2:args[0]
+          max = args[0]
+        when 2
+          min = args[0]
+          max = args[1]
+        else
+          min = 6
+          max = 13
+      end
+      Array.new(rand(min..max)){[*"0".."9", *"A".."z", *'!'..'?'].sample}.join
     end
 
     def random_alpha_numeric(*args)
@@ -44,7 +70,7 @@ module Stamps
           min = 2
           max = 10
       end
-      Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max-2)){[*"0".."9", *"A".."Z", *"0".."9", *"a".."z", *"0".."9"].sample}.join
+      Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max-2)){[*"0".."9", *"A".."Z", *"a".."z"].sample}.join
     end
 
     def random_phone_number

@@ -14,16 +14,18 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then expect Profile page Password is correct
     Then set Profile page Re-type password to same as previous password
     Then expect Profile page Re-Type password is correct
-    Then set Profile page Survey Question to Business Use - Mostly mailing (letters/postcards/flats)
-    Then expect Profile page Survey Question is correct
-    Then set Profile page Survey Question to Mostly mailing
+
+    Then set Profile page Survey Question to Individual
     Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Mostly shipping
     Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Both mailing and shipping
     Then expect Profile page Survey Question is correct
+    Then set Profile page Survey Question to Business Use - Mostly mailing (letters/postcards/flats)
+    Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Individual
     Then expect Profile page Survey Question is correct
+
     Then set Profile page Promo Code to PR33-NH77
     Then expect Profile page Promo Code is correct
     Then check Profile page Money-saving offers and new products
@@ -43,7 +45,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page City to San Francisco
     Then expect Membership page City is correct
 
-    Then set Membership page State to CA
+    Then select Membership page State CA
     Then expect Membership page State is correct
 
     Then set Membership page Zip to 94102
@@ -58,10 +60,23 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Credit Card Number to default value
     Then expect Membership page Credit Card Number is correct
 
+    Then set Membership page Month to Dec (12)
+    Then set Membership page Month to Nov (11)
+    Then set Membership page Month to Oct (10)
+    Then set Membership page Month to Sep (09)
+    Then set Membership page Month to Aug (08)
+    Then set Membership page Month to Jul (07)
+    Then set Membership page Month to Jun (06)
     Then set Membership page Month to May (05)
+    Then set Membership page Month to Apr (04)
+    Then set Membership page Month to Mar (03)
+    Then set Membership page Month to Feb (02)
+    Then set Membership page Month to Jan (01)
+
     Then expect Membership page Month is correct
 
     Then set Membership page Year to 2027
+    Then set Membership page Year to 2026
     Then expect Membership page Year is correct
 
     Then uncheck Membership page Billing address same as mailing address
@@ -80,7 +95,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Billing City to San Francisco
     Then expect Membership page Billing City is correct
 
-    Then set Membership page Billing State to CA
+    Then select Membership page Billing State CA
     Then expect Membership page Billing State is correct
 
     Then set Membership page Billing Zip to 94102

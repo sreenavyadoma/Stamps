@@ -456,13 +456,14 @@ module Stamps
         20.times do
           begin
             drop_down.click unless selection.present?
+            selection.scroll_into_view
             selection.click
-            break if text.downcase.include?(str.downcase)
+            break if text == str
           rescue
             # ignore
           end
         end
-        expect(text.downcase).to include(str.downcase)
+        expect(text).to eql(str)
         text
       end
     end

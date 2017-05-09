@@ -1,3 +1,23 @@
 @grid_tracking
 @pagination
 
+((0..9).to_a + ('A'..'Z').to_a + ('a'..'z').to_a + ('!'..'?').to_a).shuffle[6..16].join
+
+
+
+def extract_pass(arr)
+  i = arr.size.times.to_a.sample
+  c = arr[i]
+  arr.delete_at(i)
+  c
+end
+
+down   = ('a'..'z').to_a
+up     = ('A'..'Z').to_a
+digits = ('0'..'9').to_a
+special = ('!'..'?').to_a
+
+[extract_pass(down), extract_pass(up), extract_pass(digits), extract_pass(special)].concat(((down+up+digits).sample(8))).shuffle.join
+
+
+
