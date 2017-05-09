@@ -92,13 +92,13 @@ module Stamps
       "#{Random.rand(10..999)}"
     end
 
-    def random_email(*ags)
+    def random_email
       ('a'..'z').to_a +
       down = ('a'..'z').to_a
       up = ('A'..'Z').to_a
       digits = ('0'..'9').to_a
       special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
-      email = [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..10)))).shuffle.join
+      email = [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..10)))).shuffle.join + ((0..9).to_a + ('A'..'z').to_a ).shuffle[1..1].join
       "#{email}@mailinator.com".downcase
     end
 
