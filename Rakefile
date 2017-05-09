@@ -28,8 +28,8 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:membership_page_ui_validation) do |t|
-  t.profile = 'membership_page_ui_validation'
+Cucumber::Rake::Task.new(:registration_membership_page_ui_validation) do |t|
+  t.profile = 'registration_membership_page_ui_validation'
   t.cucumber_opts = "-p cuke_reports"
 end
 
