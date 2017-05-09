@@ -5,7 +5,7 @@ end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.wait_until_present(3)
-  registration.profile.email.set(test_param[:email] = (str.nil?)?(helper.random_email(5, 14)):str)
+  registration.profile.email.set(test_param[:email] = (str.nil?)?(helper.random_email):str)
   step "blur out on profile page"
 end
 
