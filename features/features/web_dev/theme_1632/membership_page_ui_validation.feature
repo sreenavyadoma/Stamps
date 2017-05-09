@@ -1,7 +1,7 @@
 Feature: Registration Membership page validation Theme 1632
 
   Background:
-    Given I loaded registration theme 1632
+    Given I loaded SDC Website
 
   @registration_membership_page_ui_validation
   Scenario: Memebership Page Validation
