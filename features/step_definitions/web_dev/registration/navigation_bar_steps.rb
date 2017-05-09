@@ -7,3 +7,4 @@ Then /^[Ee]xpect [Rr]egistration navigation bar USPS logo exists$/ do
   expect(registration.navigation.usps_logo).to be_present
 end
 
+

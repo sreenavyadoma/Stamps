@@ -2,15 +2,14 @@ module Stamps
   module Registration
 
     class WebRegistration < Browser::StampsModal
-      attr_reader :navigation, :profile, :error_occured, :footer
+      attr_reader :bread_crumbs, :navigation, :profile, :error_occured, :footer
       def initialize(param)
         super
         @navigation = Navigation::RegistrationNavigationBar.new(param)
         @bread_crumbs = RegistrationBreadCrumbs.new(param)
         @profile = Profile::ProfilePage.new(param)
-        #@footer = RegistrationFooter.new(param)
         @footer = Footer::ProfileFooter.new(param)
-        @error_occured = AnErrorOccured.new(param)
+        #@error_occured = AnErrorOccured.new(param)
       end
 
       def present?
@@ -31,7 +30,7 @@ module Stamps
 
         #expect(['theme_1632', 'default']).to include(theme), "Registration Theme #{theme} is not supported. We curently only support Theme 1632"
 
-        case param.test_env.downcase
+        case modal_param.test_env.downcase
           when /cc/
             url = "https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           when /sc/

@@ -163,7 +163,7 @@ Feature:  Orders service Selection
   Scenario: service Selections for International Orders
     Then add new order
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
     Then set Order Details form Ounces to 1
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random

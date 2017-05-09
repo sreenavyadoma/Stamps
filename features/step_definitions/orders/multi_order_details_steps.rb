@@ -1,19 +1,19 @@
 Then /^[Ss]et Multi Order Details Form Ship From to (.+)$/ do |value|
   stamps.orders.multi_order.ship_from_multi.select(value)
- # step "On Multi Order Details form, blur out"
- # step "Save Multi Order Details data"
+  step "On Multi Order Details form, blur out"
+  step "Save Multi Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form Pounds to (\d+)$/ do |value|
-  parameter[:pounds] = value
-  stamps.orders.multi_order.weight.lb.set parameter[:pounds]
+  test_param[:pounds] = value
+  stamps.orders.multi_order.weight.lb.set test_param[:pounds]
   #step "On Order Details form, blur out"
   #step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details form Ounces to (\d+)$/ do |value|
-  parameter[:ounces] = value
-  stamps.orders.multi_order.weight.oz.set parameter[:ounces]
+  test_param[:ounces] = value
+  stamps.orders.multi_order.weight.oz.set test_param[:ounces]
   #step "On Order Details form, blur out"
   #step "Save Order Details data"
 end

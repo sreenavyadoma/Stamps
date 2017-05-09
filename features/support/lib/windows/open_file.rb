@@ -30,7 +30,7 @@ module Stamps
         end
       end
 
-      def file_name filename
+      def file_name(filename)
         if browser_sym == :firefox
           print_window = RAutomation::Window.new(:title => /File Upload/i)
           wait_until_present
@@ -38,11 +38,10 @@ module Stamps
           print_window_mouse = RAutomation::Adapter::Win32::Mouse.new(print_window)
           print_window_mouse.click
 
-          print_window.text_field(class: "Edit", :index => 0).set filename
+          print_window.text_field(class: "Edit", :index => 0).set(filename)
 
           print_window.button(:value => "&Open").click
 
-          #todo fix TestHelper.browser
         elsif browser_sym == :chrome
           print_window = RAutomation::Window.new(:title => /&Open/i)
           wait_until_present

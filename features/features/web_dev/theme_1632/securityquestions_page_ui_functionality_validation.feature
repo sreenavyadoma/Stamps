@@ -5,12 +5,12 @@ Feature: Registration Security questions page validation theme_1632
 
   @securityquestions_page_ui_validation
   Scenario:
-    Then set Profile email to email
-    Then set Profile username to username
-    Then set Profile password to password
-    Then set Profile retype password textbox to password
-    Then set Profile Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-    Then on Profile page, continue to Membership page
+    Then set Profile page email to email
+    Then set Profile page username to username
+    Then set Profile page password to password
+    Then set Profile page retype password textbox to password
+    Then set Profile page Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
+    Then on Profile page page, continue to Membership page
     Then set Registration Membership first name text box to firstname
     Then set Registration Membership last name text box to lastname
     Then set Registration Membership company text box to company
@@ -49,11 +49,11 @@ Feature: Registration Security questions page validation theme_1632
     Then expect Registration Securityquestions second secret question dropup to contain what is the make and model of your first car?
     Then expect Registration Securityquestions get started button exists
 
-    Then expect Profile Privacy Policy link exists
-    Then expect Profile copyright link exists
-    Then expect Profile Norton logo exists
-    Then expect Profile TRUSTe logo exists
-    Then expect Profile LIVE chat button exists
+    Then expect Profile page Privacy Policy link exists
+    Then expect Profile page copyright link exists
+    Then expect Profile page Norton logo exists
+    Then expect Profile page TRUSTe logo exists
+    Then expect Profile page LIVE chat button exists
 
 
 

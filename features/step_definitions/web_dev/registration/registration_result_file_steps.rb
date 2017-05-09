@@ -3,14 +3,14 @@ Then /^Registration: Load username and password from parameter file(?:| (.*))$/ 
 
   expect(File.exist?(data_file)).to be_truthy
   CONFIG = YAML.load_file(data_file)
-  parameter[:usr] = CONFIG['usr']
-  parameter[:pw] = CONFIG['pw']
-  expect(parameter[:usr]).to be_truthy
-  expect(parameter[:pw]).to be_truthy
+  test_param[:usr] = CONFIG['usr']
+  test_param[:pw] = CONFIG['pw']
+  expect(test_param[:usr]).to be_truthy
+  expect(test_param[:pw]).to be_truthy
 end
 
 Then /^Orders: Sign-in using username and password from parameter file$/ do
-  stamps.orders.landing_page.sign_in test_parameter[:usr], test_parameter[:pw]
+  stamps.orders.landing_page.sign_in test_param[:usr], test_param[:pw]
 end
 
 Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
@@ -32,7 +32,7 @@ Then /^Registration: Save username to parameter file(?:| (.*))$/ do |filename|
   data_file = (filename.nil?)? registration_user_parameter_file : registration_user_parameter_file(filename)
   config.logger.message "Registration: Save username to parameter file: #{data_file}"
   sleep(0.35)
-  File.open(data_file, 'w+') {|f| f.write("usr: #{parameter[:usr]}\n")}
+  File.open(data_file, 'w+') {|f| f.write("usr: #{test_param[:usr]}\n")}
   step "Registration: Store username to data file #{filename}"
 end
 
@@ -40,7 +40,7 @@ Then /^Registration: Save password to parameter file(?:| (.*))$/ do |filename|
   data_file = (filename.nil?)? registration_user_parameter_file : registration_user_parameter_file(filename)
   config.logger.message "Registration: Save password to parameter file: #{data_file}"
   sleep(0.35)
-  File.open(data_file, 'a+') {|f| f.write("pw: #{parameter[:pw]}\n")}
+  File.open(data_file, 'a+') {|f| f.write("pw: #{test_param[:pw]}\n")}
 end
 
 Then /^Registration: Store username to data file(?:| (.*))$/ do |filename|
@@ -48,9 +48,9 @@ Then /^Registration: Store username to data file(?:| (.*))$/ do |filename|
   config.logger.message "Registration: Store username to data file: #{data_file}"
   sleep(2)
   if File.exist? data_file
-    expect(parameter[:usr]).to be_truthy
-    File.open(data_file, 'a+') {|f| f.write("#{parameter[:usr]}\n")} unless File.readlines(data_file).to_s.include? parameter[:usr]
+    expect(test_param[:usr]).to be_truthy
+    File.open(data_file, 'a+') {|f| f.write("#{test_param[:usr]}\n")} unless File.readlines(data_file).to_s.include? test_param[:usr]
   else
-    File.open(data_file, 'w+') {|f| f.write("#{parameter[:usr]}\n")}
+    File.open(data_file, 'w+') {|f| f.write("#{test_param[:usr]}\n")}
   end
 end

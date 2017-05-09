@@ -57,7 +57,7 @@ Then /^[Ss]et [Rr]egistration [Mm]embership terms and condition$/ do
   registration.membership.termsnconditions
 end
 
-Then /^[Oo]n [Rr]egistration [Mm]embership page continue to Choose Supplies page$/ do
+Then /^[Oo]n [Mm]embership [Pp]age continue to Choose Supplies page$/ do
   registration.membership.submit_button
 end
 

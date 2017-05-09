@@ -1,9 +1,10 @@
+
+@multi_order_dialog_bulk_update
 Feature: Multi Order Detail: Bulk Update
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @multi_order_dialog_bulk_update
   Scenario:  Multi Order Detail: Bulk Update
     #Adding 1st order
     #Then add Order 1

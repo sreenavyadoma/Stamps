@@ -7,6 +7,15 @@ Feature:  BVT Order Creation
   Scenario:  Add a new order
     Then add new order
     Then set Order Details form Ship-To to random address between zone 5 and 8
+    Then set Order Details form Ship-To to random address between zone 1 and 4
+    Then set Order Details form Ship-To to random address between zone 1
+    Then set Order Details form Ship-To to random address between zone 2
+    Then set Order Details form Ship-To to random address between zone 3
+    Then set Order Details form Ship-To to random address between zone 4
+    Then set Order Details form Ship-To to random address between zone 5
+    Then set Order Details form Ship-To to random address between zone 6
+    Then set Order Details form Ship-To to random address between zone 7
+    Then set Order Details form Ship-To to random address between zone 8
     Then set Order Details form service to PM Package
     Then set Order Details form Pounds to 1
     Then set Order Details form Ounces to 1

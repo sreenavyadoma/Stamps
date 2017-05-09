@@ -1,10 +1,12 @@
+
+@mail_print_shipping_label_sdc1200_fcm_psg
 Feature: Mail Shipping Label - SDC-1200 - FCM PSG
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_shipping_label_sdc1200_fcm_psg
-  Scenario: Shipping Label - sdc1200 - FCM PSG Paper
+  @mail_print_shipping_label_sdc1200_fcm
+  Scenario: Shipping Label - sdc1200 - FCM Paper
 
    #mail_print_shipping_label_sdc1200_fcm_large_envelope
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
@@ -25,6 +27,9 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
     Then Print Postage
     Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
+
+  @mail_print_shipping_label_sdc1200_psg
+  Scenario: Shipping Label - sdc1200 - PSG Paper
 
    #mail_print_shipping_label_sdc1200_psg_large_package
     Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"

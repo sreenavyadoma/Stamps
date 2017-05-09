@@ -63,7 +63,7 @@ module Stamps
         end
 
         def row_count
-          browser.tables(css: "div[id^=OrdersGrid-body]>div>div>table").size.to_i
+          browser.tables(css: "div[id^=ordersGrid-][id$=-body]>div>div>table").size.to_i
         end
 
         def scroll_to_column(name)
@@ -85,8 +85,8 @@ module Stamps
         end
 
         def size
-          30.times do break if browser.tables(:css=>"div[id^=OrdersGrid-body]>div>div>table").size > 0 end
-          browser.tables(:css=>"div[id^=OrdersGrid-body]>div>div>table").size
+          30.times do break if browser.tables(:css=>"div[id^=ordersGrid-][id$=-body]>div>div>table").size > 0 end
+          browser.tables(:css=>"div[id^=ordersGrid-][id$=-body]>div>div>table").size
         end
 
         def parameter_helper
@@ -99,7 +99,7 @@ module Stamps
         end
 
         def grid_element(column_number, row)
-          browser.div(css: "div[id^=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
+          browser.div(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td:nth-child(#{column_number(column_number).to_s})>div")
         end
 
         def grid_field_column_name(column_name, row)
@@ -128,7 +128,7 @@ module Stamps
         def row_number(order_id)
           5.times do
             column_num = column_number(:order_id)
-            fields = browser.divs(css: "div[id^=OrdersGrid-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
+            fields = browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
             fields.each_with_index do |element, index|
               scroll_to_column(element)
               if StampsElement.new(element).text.include?(order_id)
@@ -836,8 +836,8 @@ module Stamps
         end
 
         def checkbox_element(row)
-          div = browser.div(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td>div>div[class=x-grid-row-checker]")
-          verify_field = browser.table(css: "div[id=OrdersGrid-body]>div>div>table:nth-child(#{row.to_s})")
+          div = browser.div(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td>div>div[class=x-grid-row-checker]")
+          verify_field = browser.table(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})")
           StampsCheckBox.new(div, verify_field, "class", "selected")
         end
 
@@ -1027,7 +1027,7 @@ module Stamps
         def initialize(param)
           super
           @column = GridColumns.new(param)
-          @grid_element = StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=OrdersGrid-body]"))
+          @grid_element = StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid-][id$=-body]"))
         end
 
         def present?

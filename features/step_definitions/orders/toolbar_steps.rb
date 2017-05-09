@@ -1,10 +1,10 @@
 Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |order_count|
   begin
-    parameter[:old_balance] = stamps.navigation_bar.balance.amount
+    test_param[:old_balance] = stamps.navigation_bar.balance.amount
     stamps.orders.orders_grid.column.checkbox.uncheck(1)
     stamps.orders.orders_toolbar.add.order_details
     order_count = (order_count.nil?)?0:order_count.to_i
-    parameter[:order_id][order_count] = stamps.orders.order_details.toolbar.order_id
+    test_param[:order_id][order_count] = stamps.orders.order_details.toolbar.order_id
     step "Save Order Details data"
   rescue Exception => e
     config.logger.error e.message
@@ -15,15 +15,15 @@ end
 
 Then /^Save Order Details data$/ do
   if stamps.orders.order_details.present?
-    parameter[:country] = stamps.orders.order_details.ship_to.country.text_box.text
-    parameter[:service_cost] = stamps.orders.order_details.service.cost
-    parameter[:service] = stamps.orders.order_details.service.text_box.text
-    parameter[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
-    parameter[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-    parameter[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
-    parameter[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-    parameter[:tracking_cost] = stamps.orders.order_details.tracking.cost
-    parameter[:tracking] = stamps.orders.order_details.tracking.text_box.text
+    test_param[:country] = stamps.orders.order_details.ship_to.country.text_box.text
+    test_param[:service_cost] = stamps.orders.order_details.service.cost
+    test_param[:service] = stamps.orders.order_details.service.text_box.text
+    test_param[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
+    test_param[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
+    test_param[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+    test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+    test_param[:tracking_cost] = stamps.orders.order_details.tracking.cost
+    test_param[:tracking] = stamps.orders.order_details.tracking.text_box.text
   end
 end
 
