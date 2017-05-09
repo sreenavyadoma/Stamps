@@ -29,21 +29,14 @@ module Stamps
     end
 
     def random_password
-      down = ('a'..'z').to_a
-      up = ('A'..'Z').to_a
-      digits = ('0'..'9').to_a
-      special = ('!'..'?').to_a
-      [extract_pass(down), extract_pass(up), extract_pass(digits), extract_pass(special)].concat(((down+up+digits).sample(Random.rand(2..10)))).shuffle.join
+      rand_alpha_num_special(5, 10)
     end
 
-    def extract_pass(arr)
-      i = arr.size.times.to_a.sample
-      c = arr[i]
-      arr.delete_at(i)
-      c
+    def random_username
+      rand_alpha_num_special(2, 10)
     end
 
-    def random_alpha_numeric_special(*args)
+    def rand_alpha_num_special(*args)
       case args.length
         when 1
           min = (args[0].to_i>2)?2:args[0]
@@ -52,10 +45,21 @@ module Stamps
           min = args[0]
           max = args[1]
         else
-          min = 6
-          max = 13
+          min = 2
+          max = 10
       end
-      Array.new(rand(min..max)){[*"0".."9", *"A".."z", *'!'..'?'].sample}.join
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ('!'..'?').to_a
+      [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(min..max)))).shuffle.join
+    end
+
+    def rand_samp_str(arr)
+      i = arr.size.times.to_a.sample
+      c = arr[i]
+      arr.delete_at(i)
+      c
     end
 
     def random_alpha_numeric(*args)
@@ -70,7 +74,10 @@ module Stamps
           min = 2
           max = 10
       end
-      Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max-2)){[*"0".."9", *"A".."Z", *"a".."z"].sample}.join
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat(((down+up+digits).sample(Random.rand(min..max)))).shuffle.join
     end
 
     def random_phone_number
@@ -86,7 +93,13 @@ module Stamps
     end
 
     def random_email(*ags)
-      "#{random_alpha_numeric(*ags)}@mailinator.com".downcase
+      ('a'..'z').to_a +
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
+      email = [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..10)))).shuffle.join
+      "#{email}@mailinator.com".downcase
     end
 
     def random_suite

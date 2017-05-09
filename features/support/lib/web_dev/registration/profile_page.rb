@@ -32,9 +32,7 @@ module Stamps
           super
           @account_username = StampsTextBox.new(browser.text_field(name: "username"))
           @account_username.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
-
           @account_password = AccountInfoPassword.new(browser.text_field(id: "password"))
-
           @retype_password = StampsTextBox.new(browser.text_field(id: "confirmPassword"))
           @retype_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span")
         end

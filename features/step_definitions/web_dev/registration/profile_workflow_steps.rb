@@ -4,7 +4,7 @@ Then /^[Bb]lur out on [Pp]rofile [Pp]age$/ do
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
-  registration.profile.email.wait_until_present(10)
+  registration.profile.email.wait_until_present(3)
   registration.profile.email.set(test_param[:email] = (str.nil?)?(helper.random_email(5, 14)):str)
   step "blur out on profile page"
 end
@@ -14,7 +14,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_info.account_username.set((test_param[:username] = (str.nil?)?(helper.random_alpha_numeric(7, 14)):str))
+  registration.profile.account_info.account_username.set((test_param[:username] = (str.nil?)?(helper.random_username):str))
   step "blur out on profile page"
 end
 
