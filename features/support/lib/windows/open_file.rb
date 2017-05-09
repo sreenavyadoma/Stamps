@@ -35,7 +35,8 @@ module Stamps
           print_window = RAutomation::Window.new(:title => /File Upload/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
-          print_window.activate
+          print_window_mouse = RAutomation::Adapter::Win32::Mouse.new(print_window)
+          print_window_mouse.click
 
           print_window.text_field(class: "Edit", :index => 0).set(filename)
 
