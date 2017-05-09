@@ -9,7 +9,7 @@ Feature: Profile page validation theme_1632
     Given I loaded SDC Website
 
   @registration_profile_page_ui_validation
-  Scenario: SDCWR-721 Profile Page Validation
+  Scenario: Profile Page UI Validation
     Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
