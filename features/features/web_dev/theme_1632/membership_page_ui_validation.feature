@@ -10,6 +10,7 @@ Feature: Registration Membership page validation Theme 1632
     Then set Profile page Password to random value
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Individual
+    Then set Profile page Survey Question to Both mailing and shipping
     Then set Profile page Promo Code to PR33-NH77
     Then continue to Membership page
 
