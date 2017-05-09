@@ -3,7 +3,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
   Background:
     Given I loaded SDC Website
 
-  @registration_theme_1632_happy_path
+  @registration_normal_workflow
   Scenario: Theme 1632 Happy Path
     Then click on Get Started
 
