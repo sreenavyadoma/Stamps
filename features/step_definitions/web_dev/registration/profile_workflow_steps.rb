@@ -71,7 +71,7 @@ Then /^[Ss]et [Pp]rofile [Pp]age Referer Name to (.*)$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ do |str|
-  registration.profile.promo_code.show_promo_code.set(test_param[:promo_code] = (str.nil?"":str))
+  registration.profile.promo_code.show_promo_code.set(test_param[:promo_code] = (str.nil?)?'':str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
