@@ -15,6 +15,8 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Individual
     Then set Profile page Promo Code to PR33-NH77
+    Then set Profile page Promo Code to an empty string
+    Then expect profile page promo code is PR33-NH77
     Then continue to Membership page
 
     # Membership Page

@@ -14,9 +14,8 @@ module Stamps
       end
 
       def has_error?
-        expect(help_elements).not_to be_nil, "help_elements cannot be nil. Set Object.help_elements=some_element_collection before calling help_text."
         begin
-          help_elements.size > 0
+          help_elements.nil?false:help_elements.size > 0
         rescue
           return false
         end
