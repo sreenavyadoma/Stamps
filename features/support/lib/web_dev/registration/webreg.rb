@@ -13,11 +13,11 @@ module Stamps
       end
 
       def present?
-        footer.present?
+        profile.present?
       end
 
       def wait_until_present(*args)
-        footer.wait_until_present(*args)
+        profile.wait_until_present(*args)
       end
 
       def load_theme(theme)

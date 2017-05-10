@@ -149,7 +149,7 @@ module Stamps
         end
 
         def present?
-          header.present?
+          email.present?
         end
 
         def wait_until_present(*args)
