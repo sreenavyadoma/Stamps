@@ -9,10 +9,6 @@ module RegistrationApp
     end
   end
 
-  def registration=registration
-    @registration ||= registration
-  end
-
   def sdc_website
     begin
       @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)

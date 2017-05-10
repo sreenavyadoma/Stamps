@@ -10,5 +10,6 @@ Then /^(?:|[Ii] )[Ll]oad(?:|ed) SDC Website$/ do
 end
 
 Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
-  registration = sdc_website.get_started
+  sdc_website.get_started
+  expect(config.browser.url).to include('profile')
 end
