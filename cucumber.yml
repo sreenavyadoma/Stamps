@@ -181,7 +181,7 @@ import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKIN
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=grid_column_order
-import_orders: --tags @import_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=import_orders
+import_orders: --tags @import_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=import_orders FIREFOX_PROFILE=selenium
 pagination: --tags @pagination --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=pagination
 registration_specify_username_jenkins: --tags @registration_specify_username_jenkins --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=registration_specify_username_jenkins
 # DOES NOT EXIST
