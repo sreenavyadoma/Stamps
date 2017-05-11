@@ -3,6 +3,8 @@ Then /^[Bb]lur out on [Pp]rofile [Pp]age$/ do
   registration.profile.header.blur_out
 end
 
+
+
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.wait_until_present(3)
   expect(registration.profile.email).to be_present, "Profile page did not load properly, check your test."
