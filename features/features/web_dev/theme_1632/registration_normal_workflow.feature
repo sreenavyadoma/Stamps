@@ -29,6 +29,8 @@ Feature: Test Workflow - Theme 1632 Happy Path
 
     Then submit Membership Page
 
+    Then save sign-in credentials to parameter file normal_workflow
+
 
 
 

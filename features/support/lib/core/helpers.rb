@@ -33,7 +33,15 @@ module Stamps
     end
 
     def random_username
-      rand_alpha_num_special(2, 10)
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
+      ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..8)))).shuffle.join + ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join
+    end
+
+    def random_email
+      "#{random_username}@mailinator.com".downcase
     end
 
     def rand_alpha_num_special(*args)
@@ -78,15 +86,6 @@ module Stamps
       up = ('A'..'Z').to_a
       digits = ('0'..'9').to_a
       [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat(((down+up+digits).sample(Random.rand(min..max)))).shuffle.join
-    end
-
-    def random_email
-      down = ('a'..'z').to_a
-      up = ('A'..'Z').to_a
-      digits = ('0'..'9').to_a
-      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
-      email = [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..9)))).shuffle.join + ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join
-      "#{email}@mailinator.com".downcase
     end
 
     def random_phone_number

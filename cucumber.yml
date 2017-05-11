@@ -46,9 +46,9 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options
 
 
-registration_normal_workflow: --tags @registration_normal_workflow WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true FIREFOX_PROFILE=new
-registration_profile_page_ui_validation: --tags @registration_profile_page_ui_validation WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true FIREFOX_PROFILE=new
-registration_membership_page_ui_validation: --tags @registration_membership_page_ui_validation WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true FIREFOX_PROFILE=new
+registration_normal_workflow: --tags @registration_normal_workflow WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true FIREFOX_PROFILE=new JENKINS=true
+registration_profile_page_ui_validation: --tags @registration_profile_page_ui_validation WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true FIREFOX_PROFILE=new JENKINS=true
+registration_membership_page_ui_validation: --tags @registration_membership_page_ui_validation WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true FIREFOX_PROFILE=new JENKINS=true
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 USER_CREDENTIALS=xxxxxxxxxx
 

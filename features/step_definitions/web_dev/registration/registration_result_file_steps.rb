@@ -1,4 +1,4 @@
-Then /^load username and password from (?:default parameter file|parameter file (.*))$/ do |filename|
+Then /^load sign-in credentials(?:| from file (.*))$/ do |filename|
   data_file = registration_parameter_file(filename)
 
   expect(File.exist?(data_file)).to be_truthy
@@ -7,6 +7,20 @@ Then /^load username and password from (?:default parameter file|parameter file 
   test_param[:password] = yml_file['password']
   expect(test_param[:username]).to be_truthy
   expect(test_param[:password]).to be_truthy
+end
+
+Then /^save sign-in credentials(?:| to parameter file (.*))$/ do |str|
+  if str.nil?
+    step "save username to default parameter file"
+    step "save password to default parameter file"
+    step "store username to default data store file"
+    step "send username to standard out"
+  else
+    step "save username to parameter file #{str}"
+    step "save password to parameter file #{str}"
+    step "store username to data store file #{str}"
+    step "send username to standard out"
+  end
 end
 
 Then /^store username to (?:default data store file|data store file (.*))$/ do |filename|
