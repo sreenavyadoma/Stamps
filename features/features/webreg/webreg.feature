@@ -1,13 +1,10 @@
-Feature: Test Workflow - Theme 1632 Happy Path
-
+Feature: Registration
   Background:
-    Given I loaded SDC Website
+    Given load default registration page
 
   @registration_normal_workflow
   Scenario: Theme 1632 Normal Test Workflow
-    Then click on Get Started
-
-    # Profile Page
+  # Profile Page
     Then set Profile page Email to random value
     Then set Profile page Username to random value
     Then set Membership page Company to random value
@@ -18,7 +15,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then expect profile page promo code is PR33-NH77
     Then continue to Membership page
 
-    # Membership Page
+  # Membership Page
     Then set Membership page member address to random address between zone 1 and 4
     Then set Membership page Phone to random value
     Then set Membership page Cardholder's Name to random value
@@ -29,9 +26,11 @@ Feature: Test Workflow - Theme 1632 Happy Path
 
     Then submit Membership Page
 
-    Then save sign-in credentials to parameter file normal_workflow
+    Then save sign-in credentials
+#    Then load sign-in credentials
 
+#    Then save sign-in credentials to parameter file registration_ach_purchase_100k
+#    Then load sign-in credentials from file registration_ach_purchase_100k
 
-
-
+#    Then send username to standard out
 

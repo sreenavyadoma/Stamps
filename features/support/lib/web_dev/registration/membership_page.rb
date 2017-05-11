@@ -35,6 +35,10 @@ module Stamps
         def wait_until_present(*args)
           first_name.wait_until_present(*args)
         end
+
+        def wait_while_present(*args)
+          first_name.wait_while_present(*args)
+        end
       end
 
       class MemberBillingAddress < Browser::StampsModal
@@ -142,7 +146,8 @@ module Stamps
 
         def submit
           submit_btn.click_while_present
-          sleep(6)
+          back_btn.wait_while_present(10)
+          sleep(4)
         end
 
       end
@@ -176,10 +181,16 @@ module Stamps
           personal_info.wait_until_present(*args)
         end
 
+        def wait_while_present(*args)
+          personal_info.wait_while_present(*args)
+        end
+
         def submit
           submit_button.wait_until_present 7
           expect(submit_button).to be_present
           submit_button.click
+          wait_until_present(15)
+          sleep(3)
         end
 
         def tab
