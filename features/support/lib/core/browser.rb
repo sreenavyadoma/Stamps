@@ -416,6 +416,7 @@ module Stamps
             list_of_values.each do |item_selection|
               selection = StampsElement.new(item_selection)
               if !selection.nil? && selection.text.downcase.include?(str.downcase)
+                sleep(0.05)
                 selection.click
                 return text if text.downcase.include?(str.downcase)
               end

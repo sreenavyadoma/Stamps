@@ -6,7 +6,7 @@ Feature: Registration
   Scenario:
     Then PAM: Load PAM Page
     Then Visit PAM Customer Search page
-    Then Registration: Load username and password from parameter file registration_meter_limit_100k
+    Then load username and password from parameter file registration_meter_limit_100k
     Then set PAM Customer Search page username from parameter file
     Then set PAM Customer Search page 5.2 or lower
     Then On PAM Customer Search page, click Search button
@@ -23,6 +23,7 @@ Feature: Registration
     Then On PAM AppCap Overrides page, set International Shipping to Always On
     Then On PAM AppCap Overrides page, set Allow High Risk Countries to Always On
     Then On PAM AppCap Overrides page, Submit
-    Then Registration: Save username and password to parameter file pam_meter_limit_100k
-    Then Registration: Store username to data file pam_meter_limit_100k
+    Then save username to parameter file pam_meter_limit_100k
+    Then save password to parameter file pam_meter_limit_100k
+    Then store username to data file pam_meter_limit_100k
 

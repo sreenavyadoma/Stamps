@@ -1,43 +1,42 @@
 Feature: Registration
   Background:
-    Given I launched default browser
+#    Given I loaded SDC Website
 
-  @Registration
+  @registration
   Scenario:
-    Then I loaded default registration profile page
-    Then set Profile User ID and Email to random
-    Then On Profile page, Send username to standard out
-    Then set Profile Password to pass111
-    Then set Profile Re-Type password to pass111
-    Then set Profile How will you use Stamps.com to Both Mailing and Shipping
-    Then set Profile Referrer Name to Already used in office
-    Then set Profile 1st Question to What is your mother's maiden name
-    Then set Profile 1st Answer to stamps
-    Then set Profile 2nd Question to What was your high school mascot
-    Then set Profile 1st Question to What is your city of birth
-    Then set Profile 1st Question to What is your father's birthplace
-    Then set Profile 2nd Answer to stamps
+#    Then click on Get Started
+#
+#    # Profile Page
+#    Then set Profile page Email to random value
+#    Then set Profile page Username to random value
+#    Then set Membership page Company to random value
+#    Then set Profile page Password to random value
+#    Then set Profile page Re-type password to same as previous password
+#    Then set Profile page Survey Question to Individual
+#    Then set Profile page Promo Code to PR33-NH77
+#    Then expect profile page promo code is PR33-NH77
+#    Then continue to Membership page
+#
+#    # Membership Page
+#    Then set Membership page member address to random address between zone 1 and 4
+#    Then set Membership page Phone to random value
+#    Then set Membership page Cardholder's Name to random value
+#    Then set Membership page Credit Card Number to default value
+#    Then set Membership page Month to Dec (12)
+#    Then set Membership page Year to 2026
+#    Then check Membership page Terms & Conditions
+#
+#    Then submit Membership Page
 
-    Then On Profile page, continue to Mailing Information page
-    Then set Registration Membership page First Name to random
-    Then set Registration Membership page First Name to random
-    Then set Registration Membership page Last Name to random
-    Then set Registration Membership page Company to random
-    Then set Registration Membership page Address to 1990 East Grand Avenue
-    Then set Registration Membership page City to El Segundo
-    Then set Registration Membership page State to California
-    Then set Registration Membership page Zip Code to 90245
-    Then set Registration Membership page Phone to random
-    Then set Registration Membership page Extenion to random
+    Then save username to default parameter file
+    Then save password to default parameter file
+    Then store username to default data store file
+    Then send username to standard out
+    Then load username and password from default parameter file
 
-    Then set Registration Membership page Cardholder name to random
-    Then set Registration Membership page Card number to 4111111111111111
-    Then set Registration Membership page Expiration Month to February
-    Then set Registration Membership page Expiration Year to 2019
-    Then set Registration Membership page Billing address same as mailing address to Checked
-    Then set Registration Membership page Terms & Conditions to Checked
-
-    Then On Registration Membership page, click Submit
-    Then Registration: Save username and password to parameter file
-    Then On Profile page, Send username to standard out
+    Then save username to parameter file registration_ach_purchase_100k
+    Then save password to parameter file registration_ach_purchase_100k
+    Then store username to data store file registration_ach_purchase_100k
+    Then send username to standard out
+    Then load username and password from parameter file registration_ach_purchase_100k
 

@@ -80,6 +80,15 @@ module Stamps
       [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat(((down+up+digits).sample(Random.rand(min..max)))).shuffle.join
     end
 
+    def random_email
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
+      email = [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..9)))).shuffle.join + ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join
+      "#{email}@mailinator.com".downcase
+    end
+
     def random_phone_number
       "#{Random.rand(100..999)}#{Random.rand(100..999)}#{Random.rand(1000..9999)}"
     end
@@ -90,16 +99,6 @@ module Stamps
 
     def random_phone_extension
       "#{Random.rand(10..999)}"
-    end
-
-    def random_email
-      ('a'..'z').to_a +
-      down = ('a'..'z').to_a
-      up = ('A'..'Z').to_a
-      digits = ('0'..'9').to_a
-      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
-      email = [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..9)))).shuffle.join + ((0..9).to_a + ('A'..'z').to_a ).shuffle[1..1].join
-      "#{email}@mailinator.com".downcase
     end
 
     def random_suite
@@ -315,7 +314,7 @@ module Stamps
     end
 
     def to_bool(str)
-      str.downcase == 'true'
+      (str.nil?)?false:str.downcase=='true'
     end
   end
 
