@@ -65,6 +65,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope PACKAGE
     Then Print Postage
     Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
+
    #mail_print_roll_4_1_8_x_6_1_4_pm_lfr_envelope
     Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then set Print form Mail-From to default

@@ -4,7 +4,7 @@ Then /^Mail: Open Forgot Username Modal/ do
 
 end
 
-Then /^on Print form, set forgotten email to (.*)$/ do |email|
+Then /^[Oo]n Print form, set forgotten email to (.*)$/ do |email|
   #config.logger.step "on Print form, enter forgotten email: \n #{email}"
   @forgot_username = stamps.mail.sign_in_modal.forgot_username if @forgot_username.nil?
   @forgot_username.email.set email
@@ -17,20 +17,20 @@ Then /^Mail: Open Forgot Password Modal/ do
   @forgot_password = stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?
 end
 
-Then /^on Print form, set forgotten username to (.*)$/ do |username|
+Then /^[Oo]n Print form, set forgotten username to (.*)$/ do |username|
   #config.logger.step "on Print form, enter forgotten username: \n #{username}"
   @forgot_password = stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?
   @forgot_password.username.set username
   @forgot_password.continue
 end
 
-Then /^on Print form, set secret answer 1 to (.*)$/ do |answer|
+Then /^[Oo]n Print form, set secret answer 1 to (.*)$/ do |answer|
   #config.logger.step "on Print form, set secret answer 1 to: \n #{answer}"
   @forgot_password = stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?
   @forgot_password.secret_answer_1.set answer
 end
 
-Then /^on Print form, set secret answer 2 to (.*)$/ do |answer|
+Then /^[Oo]n Print form, set secret answer 2 to (.*)$/ do |answer|
   #config.logger.step "on Print form, set secret answer 1 to: \n #{answer}"
   @forgot_password = stamps.mail.sign_in_modal.forgot_password if @forgot_password.nil?
   @forgot_password.secret_answer_2.set answer

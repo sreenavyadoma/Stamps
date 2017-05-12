@@ -14,7 +14,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
-    Then select Print form service Media Mail
+    Then select Print form service First Class
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage

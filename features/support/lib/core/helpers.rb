@@ -29,7 +29,45 @@ module Stamps
     end
 
     def random_password
-      random_alpha_numeric(6, 13)
+      rand_alpha_num_special(5, 10)
+    end
+
+    def random_username
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
+      ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..8)))).shuffle.join + ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join
+    end
+
+    def random_email
+      "#{random_username}@mailinator.com".downcase
+    end
+
+    def rand_alpha_num_special(*args)
+      case args.length
+        when 1
+          min = (args[0].to_i>2)?2:args[0]
+          max = args[0]
+        when 2
+          min = args[0]
+          max = args[1]
+        else
+          min = 2
+          max = 10
+      end
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ('!'..'?').to_a
+      [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(min..max)))).shuffle.join
+    end
+
+    def rand_samp_str(arr)
+      i = arr.size.times.to_a.sample
+      c = arr[i]
+      arr.delete_at(i)
+      c
     end
 
     def random_alpha_numeric(*args)
@@ -44,19 +82,22 @@ module Stamps
           min = 2
           max = 10
       end
-      Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max)){[*"0".."9", *"A".."Z", *"0".."9", *"a".."z", *"0".."9"].sample}.join
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat(((down+up+digits).sample(Random.rand(min..max)))).shuffle.join
     end
 
-    def random_phone
+    def random_phone_number
       "#{Random.rand(100..999)}#{Random.rand(100..999)}#{Random.rand(1000..9999)}"
+    end
+
+    def random_phone_number_format
+      "(#{Random.rand(100..999)}) #{Random.rand(100..999)}-#{Random.rand(1000..9999)}"
     end
 
     def random_phone_extension
       "#{Random.rand(10..999)}"
-    end
-
-    def random_email
-      "#{random_alpha_numeric(4, 14)}@mailinator.com".downcase
     end
 
     def random_suite
@@ -98,7 +139,7 @@ module Stamps
         address_array.each_with_index do |element, index|
           if index==address_array.size-1 #if this is the last item in the string, don't append a new line
             formatted_address = formatted_address + element.to_s.strip
-          else #(param_hash['name'].downcase.include? 'random') ? helper.random_name : param_hash['name']
+          else #(param_hash['full_name'].downcase.include? 'random') ? helper.random_name : param_hash['full_name']
             formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? helper.random_full_name : element.to_s.strip) + "\n"
           end
         end
@@ -121,8 +162,13 @@ module Stamps
       end
     end
 
+    def address_helper(zone)
+      return format_address(address_helper_zone(zone)) if zone.downcase.include?('zone')
+      format_address(zone)
+    end
+
     def address_hash_to_str(address)
-      name = (address['name'].downcase.include? 'random') ? helper.random_full_name : address['name']
+      name = (address['full_name'].downcase.include? 'random') ? helper.random_full_name : address['full_name']
       company_name = (address['company'].downcase.include? 'random') ? helper.random_company_name : address['company']
       street_address = address["street_address"]
 
@@ -137,7 +183,7 @@ module Stamps
       zip = address["zip"]
       begin
         phone_num = address['phone']
-        phone = (phone_num.downcase.include? 'random') ? helper.random_phone : address['phone']
+        phone = (phone_num.downcase.include? 'random') ? helper.random_phone_number : address['phone']
       end unless address['phone'].nil?
       begin
         email_addy = address['email']
@@ -217,19 +263,17 @@ module Stamps
     end
 
     def data_rand_zone_1_4
-      shipping_addresses_zones = data_for(:zone_1_through_4, {})
-      zones = shipping_addresses_zones.values
-      zone_addresses = zones[rand(zones.size)]
-      zone_addresses_values = zone_addresses.values
-      zone_addresses_values[rand(zone_addresses_values.size)]
+      data = data_for(:zone_1_through_4, {}).values
+      zones = data[rand(data.size)]
+      addresses = zones.values
+      addresses[rand(addresses.size)]
     end
 
     def data_rand_zone_5_8
-      shipping_addresses_zones = data_for(:zone_5_through_8, {})
-      zones = shipping_addresses_zones.values
-      zone_addresses = zones[rand(zones.size)]
-      zone_addresses_values = zone_addresses.values
-      zone_addresses_values[rand(zone_addresses_values.size)]
+      data = data_for(:zone_5_through_8, {}).values
+      zones = data[rand(data.size)]
+      addresses = zones.values
+      addresses[rand(addresses.size)]
     end
 
     def format_weight(str)
@@ -269,82 +313,92 @@ module Stamps
     end
 
     def to_bool(str)
-      str.downcase == 'true'
+      (str.nil?)?false:str.downcase=='true'
     end
   end
 
   module DefaultYmlData
+    def address_helper_zone(zone)
+      case zone.downcase
+        when /zone 1 (?:through|and) 4/
+          rand_zone_1_4
+        when /zone 5 (?:through|and) 8/
+          rand_zone_5_8
+        when /zone 1/
+          rand_zone_1
+        when /zone 2/
+          rand_zone_2
+        when /zone 3/
+          helper.rand_zone_3
+        when /zone 4/
+          rand_zone_4
+        when /zone 5/
+          rand_zone_5
+        when /zone 6/
+          rand_zone_6
+        when /zone 7/
+          rand_zone_7
+        when /zone 8/
+          rand_zone_8
+        when /zone 9/
+          rand_zone_9
+        else
+          return zone
+      end
+    end
+
     def rand_zone_1
-      rand_zone_processing data_for(:zone_1_through_4, {})['zone1'].values
+      rand_zone_processing(data_for(:zone_1_through_4, {})['zone1'].values)
     end
 
     def rand_zone_2
-      rand_zone_processing data_for(:zone_1_through_4, {})['zone2'].values
+      rand_zone_processing(data_for(:zone_1_through_4, {})['zone2'].values)
     end
 
     def rand_zone_3
-      rand_zone_processing data_for(:zone_1_through_4, {})['zone3'].values
+      rand_zone_processing(data_for(:zone_1_through_4, {})['zone3'].values)
     end
 
     def rand_zone_4
-      rand_zone_processing data_for(:zone_1_through_4, {})['zone4'].values
+      rand_zone_processing(data_for(:zone_1_through_4, {})['zone4'].values)
     end
 
     def rand_zone_5
-      rand_zone_processing data_for(:zone_5_through_8, {})['zone5'].values
+      rand_zone_processing(data_for(:zone_5_through_8, {})['zone5'].values)
     end
 
     def rand_zone_6
-      rand_zone_processing data_for(:zone_5_through_8, {})['zone6'].values
+      rand_zone_processing(data_for(:zone_5_through_8, {})['zone6'].values)
     end
 
     def rand_zone_7
-      rand_zone_processing data_for(:zone_5_through_8, {})['zone7'].values
+      rand_zone_processing(data_for(:zone_5_through_8, {})['zone7'].values)
     end
 
     def rand_zone_8
-      rand_zone_processing data_for(:zone_5_through_8, {})['zone8'].values
+      rand_zone_processing(data_for(:zone_5_through_8, {})['zone8'].values)
     end
 
     def rand_zone_9
-      rand_zone_processing data_for(:non_domestic, {})['zone9'].values
+      rand_zone_processing(data_for(:non_domestic, {})['zone9'].values)
     end
 
     def rand_zone_processing address
-      shipping =  address[rand(address.size)]
-      shipping['name'] = helper.random_full_name
-      shipping['company'] = helper.random_company_name
-      #shipping['phone'] = helper.random_phone
-      #shipping['email'] = helper.random_email
-      shipping
+      rand_shipping_data(address[rand(address.size)])
     end
 
     def rand_zone_1_4
-      shipping = data_rand_zone_1_4
-      shipping['name'] = helper.random_full_name
-      shipping['company'] = helper.random_company_name
-      #shipping['phone'] = helper.random_phone
-      #shipping['email'] = helper.random_email
-      shipping
+      rand_shipping_data(data_rand_zone_1_4)
     end
 
     def rand_zone_5_8
-      shipping = data_rand_zone_5_8
-      shipping['name'] = helper.random_full_name
-      shipping['company'] = helper.random_company_name
-      #shipping['phone'] = helper.random_phone
-      #shipping['email'] = helper.random_email
-      shipping
+      rand_shipping_data(data_rand_zone_5_8)
     end
 
     def rand_ship_from_zone_1_4
       us_states = data_for(:us_states, {}) if us_states.nil?
-      shipping = data_rand_zone_1_4
+      shipping = rand_shipping_data(data_rand_zone_1_4)
       shipping["ship_from_zip"] = shipping["zip"]
-      shipping['name'] = random_full_name
-      shipping['company'] = random_company_name
-      #shipping['phone'] = random_phone
-      #shipping['email'] = random_email
       shipping["state_abbrev"] = shipping["state"]
       shipping["state"] = us_states[shipping["state_abbrev"]]
       shipping["street_address2"] = random_suite
@@ -353,16 +407,23 @@ module Stamps
 
     def rand_ship_from_zone_5_8
       us_states = data_for(:us_states, {}) if us_states.nil?
-      shipping = data_rand_zone_5_8
+      shipping = rand_shipping_data(data_rand_zone_5_8)
       shipping["ship_from_zip"] = shipping["zip"]
-      shipping['name'] = random_full_name
-      shipping['company'] = random_company_name
-      #shipping['phone'] = random_phone
-      #shipping['email'] = random_email
       shipping["state_abbrev"] = shipping["state"]
       shipping["state"] = us_states[shipping["state_abbrev"]]
       shipping["street_address2"] = random_suite
       shipping
+    end
+
+    def rand_shipping_data(hash_data)
+      hash_data['first_name'] = random_alpha
+      hash_data['last_name'] = random_alpha
+      hash_data['full_name'] = "#{hash_data['first_name']} #{hash_data['last_name']}"
+      hash_data['company'] = random_company_name
+      hash_data['phone'] = random_phone_number
+      hash_data['phone_number_format'] = random_phone_number_format
+      hash_data['email'] = random_email
+      hash_data
     end
 
     def rand_login_credentials

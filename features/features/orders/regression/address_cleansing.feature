@@ -9,7 +9,7 @@ Feature: Address Cleansing
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to Domestic Address
-      | name              | company | street_address   | street_address_2 | city       | state | zip | country       |
+      | full_name              | company | street_address   | street_address_2 | city       | state | zip | country       |
       | Address Cleansing | No Zip  | 1990 E Grand Ave |                  | El Segundo | CA    |     | United States |
     Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1

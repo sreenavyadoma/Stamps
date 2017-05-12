@@ -5,10 +5,10 @@ module Stamps
 
       def initialize(param)
         super
-        @title = StampsElement.new browser.div(text: 'Welcome!')
-        @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = StampsElement.new browser.span(text: 'Next')
-        @close_button = StampsElement.new browser.img(css: 'img[class$=x-tool-close]')
+        @title = StampsElement.new(browser.div(text: 'Welcome!'))
+        @msg_container = StampsElement.new(browser.div(id: 'sdc-window-tutorial-innerCt'))
+        @next_button = StampsElement.new(browser.span(text: 'Next'))
+        @close_button = StampsElement.new(browser.img(css: 'img[class$=x-tool-close]'))
         @add_manual_order = AddManualOrderModal.new(param)
       end
 

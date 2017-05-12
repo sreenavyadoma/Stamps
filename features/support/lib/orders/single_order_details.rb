@@ -547,7 +547,11 @@ module Stamps
           @street_address_1 = StampsTextBox.new(browser.text_field name: 'Street1')
           @street_address_2 = StampsTextBox.new(browser.text_field name: 'Street2')
           @city = StampsTextBox.new(browser.text_field(name: 'City'))
-          @state = StampsDropDown.new(browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]"), :li, browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]'))
+
+          drop_down = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
+          text_box = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
+          @state = StampsDropDown.new(text_box, drop_down, :li)
+
           @zip = StampsTextBox.new(browser.text_field(name: 'Zip'))
           @phone = StampsTextBox.new(browser.text_field(name: "Phone"))
         end
@@ -563,7 +567,7 @@ module Stamps
         def ship_from_address(table)
           @address_hash = table
           origin_zip.set table["ship_from_zip"]
-          name.set(table['name'])
+          name.set(table['full_name'])
           company.set(table['company'])
           street_address_1.set(table["street_address"])
           street_address_2.set(table["street_address2"])
@@ -579,7 +583,7 @@ module Stamps
           expect(save_btn).not_to be_present, "Add Shipping Address failed to save Return Address: #{address_hash.each do |key, value| "#{key}:#{value}" end}"
         end
 
-      end
+      end #todo-kaushal refactor this onto its own file.
 
       class DeleteShippingAddress < Browser::StampsModal
 
@@ -647,7 +651,7 @@ module Stamps
 
         def grid_cell_text(row, column)
           StampsElement.new(grid_cell(row, column)).text
-        end
+      end
 
         def checked?(row)
           field = browser.table css: "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
@@ -705,7 +709,7 @@ module Stamps
             when 1
               address = args[0]
               if address.is_a? Hash
-                delete_row(locate_ship_from(address['name'], address['company'], address['city']))
+                delete_row(locate_ship_from(address['full_name'], address['company'], address['city']))
               else
                 expect("Address format is not yet supported for this delete call.").to eql ""
               end
@@ -747,7 +751,7 @@ module Stamps
             when 1
               if args[0].is_a? Hash
                 address_hash = args[0]
-                name = address_hash['name']
+                name = address_hash['full_name']
                 company = address_hash['company']
                 city = address_hash['city']
               else
@@ -1330,16 +1334,16 @@ module Stamps
         end
 
         def order_id
-          order_id_label = StampsElement.new(browser.bs(css: "label>b").first)
           20.times{
             begin
+              order_id_label = StampsElement.new(browser.b(css: "div[id^=singleOrderDetailsForm][class*=singleorder-detailsform]>div[id^=toolbar]>div[id^=toolbar]>div[id^=toolbar]>label>b"))
               sleep(0.25)
               return order_id_label.text.split('#').last if order_id_label.text.include? '#'
             rescue
               #ignroe
             end
           }
-          expect("Unable to obtain Order ID from Single Order Details Form").to eql ""
+          ""
         end
       end
 

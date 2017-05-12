@@ -1,6 +1,6 @@
 
 Then /^[Ii]n left Filter Panel, select Awaiting Shipment$/ do
-  parameter[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
+  test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
   stamps.orders.filter_panel.awaiting_shipment.select
 end
 
@@ -57,31 +57,31 @@ Then /^[Ii]n left Filter Panel, expect saved Order ID exist in (.*)$/ do |filter
   50.times do
     step "in left Filter Panel, select #{filter}"
     sleep(0.25)
-    break if stamps.orders.orders_grid.column.order_id.row_num(parameter[:order_id][0]) > 0
+    break if stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0]) > 0
   end
-  expect(stamps.orders.orders_grid.column.order_id.row_num(parameter[:order_id][0])).to be > 0
+  expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0])).to be > 0
 end
 
 Then /^Filter Panel: Search saved Order ID$/ do
-  step "Filter Panel: Search for #{parameter[:order_id][0]}"
+  step "Filter Panel: Search for #{test_param[:order_id][0]}"
 end
 
 Then /^Filter Panel: Search saved Ship Name$/ do
-   step "Filter Panel: Search for #{parameter[:name]}"
+   step "Filter Panel: Search for #{test_param[:full_name]}"
 end
 
 Then /^Filter Panel: Search saved Ship Company$/ do
-  step "Filter Panel: Search for #{parameter[:company]}"
+  step "Filter Panel: Search for #{test_param[:company]}"
 end
 
 Then /^Filter Panel: Search saved Email$/ do
-  step "Filter Panel: Search for #{parameter[:email]}"
+  step "Filter Panel: Search for #{test_param[:email]}"
 end
 
 Then /^Filter Panel: Search for (.*)$/ do |str|
   expect(str.nil?).to be(false), "Search string can not be nil"
-  parameter[:orders_search_str] = str
-  stamps.orders.filter_panel.search_orders parameter[:orders_search_str]
+  test_param[:orders_search_str] = str
+  stamps.orders.filter_panel.search_orders test_param[:orders_search_str]
 end
 
 Then /^Filter Panel: Search results count should be (\d*)$/ do |count|
@@ -130,25 +130,25 @@ end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Shipped$/ do
   stamps.orders.filter_panel.shipped.select.order_date.sort_descending
-  expect(stamps.orders.orders_grid.column.order_id.row_num(parameter[:order_id][0])).to be > 0
+  expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0])).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Canceled$/ do
   stamps.orders.filter_panel.canceled.select.order_date.sort_descending
-  expect(stamps.orders.filter_panel.canceled.select.order_id.row_num(parameter[:order_id][0])).to be > 0
+  expect(stamps.orders.filter_panel.canceled.select.order_id.row_num(test_param[:order_id][0])).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Awaiting Shipment$/ do
   stamps.orders.orders_grid.column.order_date.sort_descending
-  expect(stamps.orders.orders_grid.column.order_id.row_num(parameter[:order_id][0])).to be > 0
+  expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0])).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect Awaiting Shipment count increased by (\d+)$/ do |count|
-  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql parameter[:awaiting_shipment_count].to_i + count.to_i
+  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql test_param[:awaiting_shipment_count].to_i + count.to_i
 end
 
 Then /^[Ii]n left Filter Panel, expect Awaiting Shipment count decreased by (\d+)$/ do |count|
-  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql parameter[:awaiting_shipment_count].to_i - count.to_i
+  expect(stamps.orders.filter_panel.awaiting_shipment.count).to eql test_param[:awaiting_shipment_count].to_i - count.to_i
 end
 
 Then /^[Ii]n left Filter Panel, expect panel arrow is pointing to the (.*) direction$/ do |expectation|
@@ -196,25 +196,25 @@ end
 Then /^[Ii]n left Filter Panel, expect printed Order ID is not in Awaiting Shipment tab$/ do
   grid = stamps.orders.filter_panel.awaiting_shipment.select
   row1_order_id = grid.order_id.row(1)
-  expect((parameter[:order_id][0]).include? row1_order_id).is false
+  expect((test_param[:order_id][0]).include? row1_order_id).is false
 end
 
 Then /^[Ii]n left Filter Panel, expect all printed Order IDs not in Awaiting Shipment tab$/ do
-  parameter[:order_id][0].should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(1)
-  parameter[:order_id][0].should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(2)
-  parameter[:order_id][0].should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(3)
+  test_param[:order_id][0].should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(1)
+  test_param[:order_id][0].should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(2)
+  test_param[:order_id][0].should_not include stamps.orders.filter_panel.awaiting_shipment.select.order_id.row(3)
 end
 
 Then /^[Ii]n left Filter Panel, expect printed Order ID is in Shipped tab$/ do
   stamps.orders.filter_panel.shipped.select.order_id.sort_descending
   stamps.orders.filter_panel.shipped.select.order_id.sort_descending
-  expect(stamps.orders.filter_panel.shipped.select.order_id.row(1)).to eql parameter[:order_id][0]
+  expect(stamps.orders.filter_panel.shipped.select.order_id.row(1)).to eql test_param[:order_id][0]
 end
 
 Then /^[Ii]n left Filter Panel, expect all printed Order IDs are in Shipped tab$/ do
-  expect(parameter[:order_id][0]).to include grid.order_id.row(3)
-  expect(parameter[:order_id_2]).to include grid.order_id.row(2)
-  expect(parameter[:order_id_3]).to include grid.order_id.row(1)
+  expect(test_param[:order_id][0]).to include grid.order_id.row(3)
+  expect(test_param[:order_id_2]).to include grid.order_id.row(2)
+  expect(test_param[:order_id_3]).to include grid.order_id.row(1)
 end
 
 

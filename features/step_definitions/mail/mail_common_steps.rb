@@ -117,17 +117,17 @@ Then /^[Ee]xpect Print form Print Receipt check box is present$/ do
 end
 
 Then /^[Ee]xpect Print form Reset Button is present$/ do
-  toolbar = Toolbar.new(param)
+  toolbar = Toolbar.new(modal_param)
   expect(toolbar.reset).to be_present
 end
 
 Then /^[Ee]xpect Print form Settings Button is present$/ do
-  toolbar = Toolbar.new(param)
+  toolbar = Toolbar.new(modal_param)
   expect(toolbar.settings).to be_present
 end
 
 Then /^[Ee]xpect Print form Help Button is present$/ do
-  toolbar = Toolbar.new(param)
+  toolbar = Toolbar.new(modal_param)
   expect(toolbar.help).to be_present
 end
 
@@ -140,12 +140,12 @@ Then /^[Ee]xpect Print form System Notification Banner is present$/ do
 end
 
 Then /^[Ee]xpect Print form Feedback Button is present$/ do
-  toolbar = Toolbar.new(param)
+  toolbar = Toolbar.new(modal_param)
   expect(toolbar.feedback).to be_present
 end
 
 Then /^[Ee]xpect Print form Classic Button is present$/ do
-  toolbar = Toolbar.new(param)
+  toolbar = Toolbar.new(modal_param)
   expect(toolbar.classic).to be_present
 end
 

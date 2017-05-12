@@ -1,83 +1,40 @@
 module Stamps
   module Registration
     module Profile
-      class SurveyQuestion < Browser::StampsModal
-        attr_reader :drop_down, :text_box
 
-        def initialize(param)
+      class AccountInfoPassword < StampsTextBox
+        def initialize(text_box)
           super
-          @drop_down = StampsElement.new(browser.button(css: "li[id=survey]>div>div>div>div>button"))
-          @text_box = StampsElement.new(browser.span(css: "li[id=survey]>div>div>div>div>button>span[class*=filter-option]"))
+          self.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
         end
 
-        def element(str)
-          drop_down.click
-          sleep(0.25)
-          elements = browser.spans(css: "li[id=survey]>div>div>div>div>div>ul>li>a>span:nth-child(1)")
-          5.times do
-            drop_down.click if elements.size == 0
-            break unless elements.size == 0
-          end
-          expect(elements.size).to eql(5)
-          selection = nil
-          5.times do
-            elements.each { |span|
-              selection = StampsElement.new(span)
-              return selection if selection.text.downcase.include?(str.downcase)
-            }
-            return selection if !selection.nil? && selection.text.downcase.include?(str)
-          end
-          nil
+        def help_text_1
+          return "" if help_elements.nil? || help_elements[0].nil?
+          help_elements[0].text
         end
 
-        def select(str)
-          selection = element(str)
-          expect(selection).not_to be_nil, "Invalid Selection: #{str}"
-          10.times do
-            drop_down.click unless selection.present?
-            selection.click
-            return text_box.text if text_box.text.downcase.include?(str.downcase)
-          end
-          expect(text_box.downcase.text).to include(str.downcase), "Invalid Selection: #{str}"
+        def help_text_2
+          return "" if help_elements.nil? || help_elements[1].nil?
+          help_elements[1].text
+        end
+
+        def help_text_3
+          return "" if help_elements.nil? || help_elements[2].nil?
+          help_elements[2].text
         end
       end
+
 
       class AccountInfo < Browser::StampsModal
         attr_reader :account_username, :account_password, :retype_password
 
         def initialize(param)
           super
-          text_box = browser.text_field(name: "username")
-          help_collection = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
-          @account_username = StampsTextBoxModule.new(text_box, help_collection)
-
-          text_box = browser.text_field(id: "password")
-          help_collection = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
-          @account_password = StampsTextBoxModule.new(text_box, help_collection)
-
-          text_box = browser.text_field(id: "confirmPassword")
-          help_collection = browser.lis(css: "")
-          @retype_password = StampsTextBoxModule.new(text_box, help_collection)
-        end
-      end
-
-      class ProfileSecretQuestion
-        attr_reader :drop_down, :text_box
-
-        def initialize(drop_down, text_box)
-          @drop_down = drop_down
-          @text_box = text_box
-        end
-
-        def select(str)
-          drop_down.click
-          selection = StampsElement.new(browser.span(text: str))
-          10.times do
-            drop_down.click unless selection.present?
-            selection.click
-            break if text_box.text.downcase.include?(str)
-          end
-          expect(text_box.text).to include(str), "Invalid selection: #{str}. Check your page object."
+          @account_username = StampsTextBox.new(browser.text_field(name: "username"))
+          @account_username.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
+          @account_password = AccountInfoPassword.new(browser.text_field(id: "password"))
+          @retype_password = StampsTextBox.new(browser.text_field(id: "confirmPassword"))
+          @retype_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span")
         end
       end
 
@@ -99,19 +56,17 @@ module Stamps
 
           drop_down = StampsElement.new(browser.button(css: "li[id=secretquestions]>div>div:nth-child(2)>div>div>button"))
           text_box = StampsElement.new(browser.span(css: "li[id=secretquestions]>div>div:nth-child(2)>div>div[class*=secret]>button>span[class*=option]"))
-          @secret_question_1 = ProfileSecretQuestion.new(drop_down, text_box)
+          #@secret_question_1 = StampsDropDown.new(drop_down, text_box)
 
-          text_box = browser.text_field(id: "secretAnswer1")
-          help_collection = browser.lis(css: "li[id=secretquestions]>div>div:nth-child(2)>div>span>span")
-          @secret_answer_1 = StampsTextBoxModule.new(text_box, help_collection)
+          @secret_answer_1 = StampsTextBox.new(browser.text_field(id: "secretAnswer1"))
+          @secret_answer_1.help_elements = browser.lis(css: "li[id=secretquestions]>div>div:nth-child(2)>div>span>span")
 
-          drop_down = StampsElement.new(browser.button(css: "li[id=secretquestions]>div>div:nth-child(3)>div>div>button"))
-          text_box = StampsElement.new(browser.span(css: "li[id=secretquestions]>div>div:nth-child(3)>div>div[class*=secret]>button>span[class*=option]"))
-          @secret_question_2 = ProfileSecretQuestion.new(drop_down, text_box)
+          #drop_down = StampsElement.new(browser.button(css: "li[id=secretquestions]>div>div:nth-child(3)>div>div>button"))
+          #text_box = StampsElement.new(browser.span(css: "li[id=secretquestions]>div>div:nth-child(3)>div>div[class*=secret]>button>span[class*=option]"))
+          #@secret_question_2 = StampsDropDown.new(drop_down, text_box)
 
-          text_box = browser.text_field(id: "secretAnswer2")
-          help_collection = browser.lis(css: "li[id=secretquestions]>div>div:nth-child(3)>div>span>span")
-          @secret_answer_2 = StampsTextBoxModule.new(text_box, help_collection)
+          @secret_answer_2 = StampsTextBox.new(browser.text_field(id: "secretAnswer2"))
+          @secret_answer_2.help_elements = browser.lis(css: "li[id=secretquestions]>div>div:nth-child(3)>div>span>span")
         end
       end
 
@@ -120,9 +75,12 @@ module Stamps
         def initialize(param)
           super
           @promo_code_link = StampsElement.new(browser.a(id: 'showPromoCode'))
-          help_collection = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
-          @promo_code = StampsTextBoxModule.new(browser.text_field(id: 'promoCode'), help_collection)
-          @hidden_promo_code = StampsTextBoxModule.new(browser.text_field(id: 'promoCodeHidden'), help_collection)
+
+          @promo_code = StampsTextBox.new(browser.text_field(id: 'promoCode'))
+          @promo_code.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
+
+          @hidden_promo_code = StampsTextBox.new(browser.text_field(id: 'promoCodeHidden'))
+          @hidden_promo_code.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
         end
 
         def show_promo_code
@@ -136,21 +94,21 @@ module Stamps
       end
 
       class SideAccount < Browser::StampsModal
-        attr_reader :header, :paragraph
+        attr_reader :side_account_header, :side_account_paragraph
         def initialize(param)
           super
-          @header = StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3"))
-          @paragraph = StampsElement.new(browser.p(css: "li[id=sideaccount]>p"))
+          @side_account_header = StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3"))
+          @side_account_paragraph = StampsElement.new(browser.p(css: "li[id=sideaccount]>p"))
         end
       end
 
       class MoneySavingOffers < Browser::StampsModal
-        attr_reader :header, :checkbox, :paragraph
+        attr_reader :money_saving_offers_header, :money_saving_offers_checkbox, :money_saving_offers_paragraph
         def initialize(param)
           super
-          @header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
-          @checkbox = WatirCheckBoxWrapper.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn'))
-          @paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
+          @money_saving_offers_header = StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
+          @money_saving_offers_checkbox = StampsWatirCheckBox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn'))
+          @money_saving_offers_paragraph = StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
         end
       end
 
@@ -164,45 +122,50 @@ module Stamps
       end
 
       class ProfilePage < Browser::StampsModal
-        attr_reader :header, :email, :account_info, :survey_question, :promo_code, :security_questions, :side_content, :continue_btn, :membership
+        attr_reader :header, :email, :account_info, :survey_question, :referer_name, :promo_code, :security_questions, :side_content, :continue_btn, :membership
         def initialize(param)
           super
-          @header = StampsElement.new(browser.h1(text: "Sign up for a new account"))
-          text_box = browser.text_field(id: "email")
-          help_collection = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
-          @email = StampsTextBoxModule.new(text_box, help_collection)
-          @account_info = AccountInfo.new(param)
-          @survey_question = SurveyQuestion.new(param)
-          text_box = browser.text_field(id: "promoCode")
-          help_collection = browser.lis(css: "li[id=promocode]>div>div>div>div[class*=help]>span>ul>li")
-          @promo_code = PromoCode.new(param)
-          @security_questions = SecretQuestions.new(param)
+          @header = StampsElement.new(browser.h1(css: "div[id=page]>div>div>h1"))
+
+          @email = StampsTextBox.new(browser.text_field(id: "email"))
+          @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
+
+          @account_info ||= AccountInfo.new(param)
+
+          element = browser.span(css: "button[data-id=usageType]>span")
+          list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(1)>div>div>div>ul>li>a>span[class=text]")
+          @survey_question = StampsDropDownLovSubStr.new(element, element, list_of_values)
+
+          element = browser.span(css: "button[data-id=referrerName]>span")
+          list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(2)>div>div>div>ul>li>a>span[class=text]")
+          @referer_name = StampsDropDownLovSubStr.new(element, element, list_of_values)
+
+          @promo_code ||= PromoCode.new(param)
+          @security_questions ||= SecretQuestions.new(param)
           @continue_btn = StampsElement.new(browser.button(id: "next"))
-          @side_content = SideContent.new(param)
-          #@membership = Membership::MembershipPage.new(param)
+          @side_content ||= SideContent.new(param)
+
+          @membership ||= Stamps::Registration::Membership::MembershipPage.new(param)
         end
 
         def present?
-          header.present?
+          email.present?
         end
 
         def wait_until_present(*args)
-          header.wait_until_present(*args)
           email.wait_until_present(*args)
         end
 
         def continue
-          10.times do
+          5.times do
             return membership if membership.present?
             continue_btn.click
-            sleep(0.5)
+            membership.wait_until_present(5)
           end
         end
-
-      end
-
-    end
-  end
+      end #ProfilePage
+    end #Profile module
+  end #Registration module
 end
 
 

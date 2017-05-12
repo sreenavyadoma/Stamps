@@ -1,5 +1,5 @@
 module Stamps
-  module Navigation #todo-rob Refactor to WebApps module
+  module Navigation
     class TransactionComplete < Browser::StampsModal
       attr_reader :window_title, :text_area, :ok_btn
 

@@ -296,18 +296,18 @@ module Stamps
           super
           text_box = browser.text_field(name: "Length")
           inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=up]")
-          dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
+          dec_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
           @length = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
 
           text_box = browser.text_field(name: "Width")
           inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=up]")
-          dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=down]")
+          dec_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=down]")
           @width = StampsNumberField.new(text_box, inc_btn, dec_btn)
 
           text_box = browser.text_field(name: "Height")
           inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=up]")
-          dec_btn = browser.divs(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=down]")
+          dec_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=down]")
           @height = StampsNumberField.new(text_box, inc_btn, dec_btn)
         end
 

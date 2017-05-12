@@ -123,7 +123,7 @@ module Stamps
         @verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
         @invalid_msg = StampsElement.new browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")
         @whats_new_modal = WhatsNewModal.new(param)
-        @remember_username_checkbox = WatirCheckBoxWrapper.new browser.checkbox(id: "rememberUser")
+        @remember_username_checkbox = StampsWatirCheckBox.new browser.checkbox(id: "rememberUser")
         @invalid_username_password = StampsElement.new browser.div(id: "InvalidUsernamePasswordMsg")
         @username = ""
         @password = ""
