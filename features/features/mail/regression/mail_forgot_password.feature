@@ -5,7 +5,7 @@ Feature: Forgot Password
 
   @mail_forgot_password
   Scenario: Forgot Password
-    Then load Sign-in page
+    Then load Web Apps Sign-in page
     Then Mail: Open Forgot Password Modal
     Then on Print form, set forgotten username to Win10gc1000
     Then on Print form, set secret answer 1 to stamps

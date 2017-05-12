@@ -1,12 +1,13 @@
-Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|default )[Rr]egistration(?: [Pp]age| [Tt]heme (.*))$/ do |str|
-  test_param[:registration_theme] = str
-  step "I launch default browser"
-  registration.load_theme(test_param[:registration_theme])
-end
-
-Then /^load default registration page$/ do
-  step "load SDC Website"
-  step "click on Get Started"
+Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|the default |default )[Rr]egistration(?: [Pp]age| [Tt]heme (.*))$/ do |str|
+  if str.nil?
+    test_param[:registration_theme] = str
+    step "I launch default browser"
+    registration.load_theme(test_param[:registration_theme])
+  else
+    step "I launch default browser"
+    step "load SDC Website"
+    step "click on Get Started"
+  end
 end
 
 Then /^(?:|[Ii] )[Ll]oad(?:|ed) SDC Website$/ do
