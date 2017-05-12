@@ -1,4 +1,7 @@
 
+setup:
+  firebug: \\jenkinsvmwin701\watir-webdriver\data\firefox\firebug-2.0.xpi
+
 rates_test:
   rate_file: rate_file.xls
   rates_pme_comm_base: PME Comm Base

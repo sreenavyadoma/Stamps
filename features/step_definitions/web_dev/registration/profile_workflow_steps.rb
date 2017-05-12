@@ -3,7 +3,14 @@ Then /^[Bb]lur out on [Pp]rofile [Pp]age$/ do
   registration.profile.header.blur_out
 end
 
-
+Then /^[Pp]opulate all [Pp]rofile page required fields$/ do
+  step "set Profile page Email to random value"
+  step "set Profile page Username to random value"
+  step "set Membership page Company to random value"
+  step "set Profile page Password to random value"
+  step "set Profile page Re-type password to same as previous password"
+  step "set Profile page Survey Question to Individual"
+end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.wait_until_present(3)

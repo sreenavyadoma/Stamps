@@ -4,7 +4,7 @@ Feature: Registration
 
   @registration_pam_orders
   Scenario:
-    Then load Sign-in page
+    Then load Web Apps Sign-in page
     Then load username and password from parameter file
     Then Orders: Sign-in using username and password from parameter file
     Then add new order

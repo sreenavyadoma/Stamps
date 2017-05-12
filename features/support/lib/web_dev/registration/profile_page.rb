@@ -132,8 +132,8 @@ module Stamps
 
           @account_info ||= AccountInfo.new(param)
 
-          element = browser.span(css: "button[data-id=usageType]>span")
-          list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(1)>div>div>div>ul>li>a>span[class=text]")
+          element = browser.span(css: "button[data-id=usageType]>span[class*=option]")
+          list_of_values = browser.spans(css: "li[id=survey]>div>div>div>div[class*=select]>div>ul>li>a>span[class=text]")
           @survey_question = StampsDropDownLovSubStr.new(element, element, list_of_values)
 
           element = browser.span(css: "button[data-id=referrerName]>span")

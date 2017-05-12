@@ -495,12 +495,19 @@ module Stamps
             end
 
             # Launch Firefox
-            if firefox_profile.nil? || firefox_profile.downcase == 'selenium'
+            if firefox_profile.nil? || firefox_profile.downcase == 'new'
+              profile = Selenium::WebDriver::Firefox::Profile.new
+              profile.assume_untrusted_certificate_issuer = false
+              driver = Watir::Browser.new(:firefox, profile: profile)
+            elsif firefox_profile.downcase == 'new_with_firebug'
+              profile = Selenium::WebDriver::Firefox::Profile.new
+              profile.assume_untrusted_certificate_issuer = false
+              profile.add_extension(data_for(:setup, {})['firebug'])
+              driver = Watir::Browser.new(:firefox, profile: profile)
+            elsif firefox_profile.downcase == 'selenium'
               driver = Watir::Browser.new(:firefox, :profile => 'selenium')
-            elsif firefox_profile.downcase == 'new'
-              driver = Watir::Browser.new :firefox
             else
-              driver = Watir::Browser.new :firefox, profile: firefox_profile
+              driver = Watir::Browser.new(:firefox, profile: firefox_profile)
             end
             @browser_name = 'Mozilla Firefox'
           when :chrome
