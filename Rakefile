@@ -18,13 +18,28 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:registration_membership_page_ui_validation) do |t|
+  t.profile = 'registration_membership_page_ui_validation'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:registration_profile_page_ui_validation) do |t|
   t.profile = 'registration_profile_page_ui_validation'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:registration_theme_1632_happy_path) do |t|
-  t.profile = 'registration_theme_1632_happy_path'
+Cucumber::Rake::Task.new(:registration_normal_workflow) do |t|
+  t.profile = 'registration_normal_workflow'
   t.cucumber_opts = "-p cuke_reports"
 end
 # END WEB REG

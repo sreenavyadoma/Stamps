@@ -9,10 +9,6 @@ module RegistrationApp
     end
   end
 
-  def registration=registration
-    @registration ||= registration
-  end
-
   def sdc_website
     begin
       @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)
@@ -26,29 +22,22 @@ module RegistrationApp
     @pam ||= Pam::PaymentAdministratorManager.new(modal_param)
   end
 
-  def registration_user_modal_parameter_file(*args)
-    begin
-      if helper.to_bool(ENV['JENKINS'])
-        filename = "#{data_for(:registration, {})['registration_modal_param_dir']}\\#{ENV['URL']}_#{(args.length==0)?"Registration":"#{args[0]}"}.yml"
-      else
-        filename = "#{data_for(:registration, {})['dev_usr_dir']}\\#{ENV['URL']}_#{(args.length==0)?"Registration":"#{args[0]}"}.yml"
-      end
-      config.logger.message "Registration modal_parameter file: #{filename}"
-      filename
-    rescue Exception => e
-      p e.message
-      p e.backtrace.join("\n")
-      expect("MagicData: Problem retrieving data from default.yml. Check your format?").to eql e.message
-    end
+  def registration_parameter_file(*args)
+    directory = "#{data_for(:registration, {})['development_dir']}"
+    directory = "#{data_for(:registration, {})['jenkins_dir']}" if helper.to_bool(ENV['JENKINS'])
+    FileUtils.mkdir_p(directory)
+    return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if helper.to_bool(ENV['JENKINS'])
+    "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml"
   end
 
-  def registration_data_store_filename(*args)
-    begin
-      "#{data_for(:registration, {})['registration_data_store_dir']}\\#{ENV['URL']}_#{(args.length==0)?"Registration":"#{args[0]}"}.txt"
-    rescue Exception => e
-      p e.message
-      p e.backtrace.join("\n")
-      expect("MagicData: Problem retrieving data. Check your format?").to eql e.message
-    end
+  def registration_data_store_file(*args)
+    directory = "#{data_for(:registration, {})['jenkins_dir']}"
+    FileUtils.mkdir_p(directory)
+    "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_data_store_file']:"#{args[0]}"}.txt"
+  end
+
+  def reg_yml_data_file(*args)
+    @reg_yml_data_file ||= args[0] if args.length>0
+    @reg_yml_data_file
   end
 end

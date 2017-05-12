@@ -21,8 +21,7 @@ module Stamps
           @city.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span")
 
           element = browser.span(css: "button[data-id=state]>span")
-          list_of_values = browser.spans(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>div[class*=menu]>ul>li>a>span[class=text]")
-          @state = StampsDropDownLovSubStr.new(element, element, list_of_values)
+          @state = StampsDropDown.new(element, element, :span)
 
           @zip = StampsTextBox.new(browser.text_field(id: "zip"))
           @phone = StampsTextBox.new(browser.text_field(id: "phone"))
@@ -35,6 +34,10 @@ module Stamps
 
         def wait_until_present(*args)
           first_name.wait_until_present(*args)
+        end
+
+        def wait_while_present(*args)
+          first_name.wait_while_present(*args)
         end
       end
 
@@ -81,14 +84,12 @@ module Stamps
           @cc_number.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span")
 
           element = browser.span(css: "button[data-id=ccMonth]>span")
-          list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=select]>div>ul>li>a>span[class=text]")
-          @cc_month = StampsDropDownLovSubStr.new(element, element, list_of_values)
+          @cc_month = StampsDropDown.new(element, element, :span)
 
           @cc_month.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span")
 
           element = browser.span(css: "button[data-id=ccYear]>span[class*=option]")
-          list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=select]>div>ul>li>a>span[class=text]")
-          @cc_year = StampsDropDownLovSubStr.new(element, element, list_of_values)
+          @cc_year = StampsDropDown.new(element, element, :span)
 
           @cc_year.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span")
 
@@ -145,7 +146,8 @@ module Stamps
 
         def submit
           submit_btn.click_while_present
-          sleep(6)
+          back_btn.wait_while_present(10)
+          sleep(4)
         end
 
       end
@@ -179,11 +181,16 @@ module Stamps
           personal_info.wait_until_present(*args)
         end
 
+        def wait_while_present(*args)
+          personal_info.wait_while_present(*args)
+        end
+
         def submit
-          submit_button.wait_until_present 6
+          submit_button.wait_until_present 7
           expect(submit_button).to be_present
           submit_button.click
-          submit_button.send_keys(:enter)
+          wait_until_present(15)
+          sleep(3)
         end
 
         def tab

@@ -26,11 +26,12 @@ module Stamps
       end
 
       def get_started
-        3.times do
+        10.times do
           get_started_btn.click
-          registration.wait_until_present(12)
+          registration.wait_until_present(5)
           return registration if registration.present?
         end
+        expect(browser.url).to include('profile')
       end
     end
   end
