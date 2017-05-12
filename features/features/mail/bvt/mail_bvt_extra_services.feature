@@ -26,7 +26,7 @@ Feature: Extra Services BVT
     Then expect Extra Services Return Receipt Price to be 2.75
 
     Then check Extra Services Restricted Delivery
-    Then expect Extra Services Restricted Delivery Price to be 5.00
+    Then expect Extra Services Restricted Delivery Price to be 4.95
 
     Then check Extra Services Notice of Non-Delivery
     Then expect Extra Services Notice of Non-Delivery Price to be 0.00
