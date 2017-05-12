@@ -11,8 +11,7 @@ Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|the default |default )[Rr]egistration(?: [Pp
 end
 
 Then /^(?:|[Ii] )[Ll]oad(?:|ed) SDC Website$/ do
-  step "I launch default browser"
-  sdc_website.load_page
+ sdc_website.load_page
 end
 
 Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
