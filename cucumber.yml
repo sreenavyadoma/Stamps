@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_registration_cc
+default: --backtrace --profile eva_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -19,7 +19,7 @@ web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers J
 
 eli_dev: --tags @import_updated_orders   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=item_details URL=cc BROWSER=ff FIREFOX_PROFILE=new USR=hal9000qa10 PW=password1
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff FIREFOX_PROFILE=new USR=default PW=pass111
-eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=new USR=ss_cctest3 PW=password1
+eva_dev: --tags @mail_bvt_extra_services --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff FIREFOX_PROFILE=new USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new MAX_WINDOW=false
 sap: --tags @registration_profile_page_ui_validation WEB_APP=registration USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new MAX_WINDOW=false
 kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new MAX_WINDOW=false
