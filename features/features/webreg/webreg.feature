@@ -9,10 +9,11 @@ Feature: Registration
     Then populate all Membership page required fields
     Then submit Membership Page
     Then save sign-in credentials
+    Then load sign-in credentials
     Then load Web Apps Orders then sign-in
     Then add new order
 
-#    Then load sign-in credentials
+#
 
 #    Then save sign-in credentials to parameter file registration_ach_purchase_100k
 #    Then load sign-in credentials from file registration_ach_purchase_100k
