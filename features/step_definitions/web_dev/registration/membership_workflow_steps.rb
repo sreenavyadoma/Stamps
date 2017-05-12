@@ -4,6 +4,16 @@ Then /^[Bb]lur_out on [Mm]embership [Pp]age$/ do
   registration.profile.membership.header.blur_out
 end
 
+Then /^[Pp]opulate all [Mm]embership [Pp]age required fields$/ do
+  step "set Membership page member address to random address between zone 1 and 4"
+  step "set Membership page Phone to random value"
+  step "set Membership page Cardholder's Name to random value"
+  step "set Membership page Credit Card Number to default value"
+  step "set Membership page Month to Dec (12)"
+  step "set Membership page Year to 2026"
+  step "check Membership page Terms & Conditions"
+end
+
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   address = helper.address_helper_zone(address) #combine this
 
