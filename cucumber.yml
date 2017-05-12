@@ -1,10 +1,10 @@
-default: --backtrace --profile rob_cc
+default: --backtrace --profile rob_registration_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new MAX_WINDOW=false
 
-rob_registration_cc: --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new MAX_WINDOW=false JENKINS=true
+rob_registration_cc: --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new_with_firebug MAX_WINDOW=false JENKINS=true
 #ccfb311osps4x
 rob_dev: --tags @bvt_new_order DEVELOPER=true WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new_with_firebug MAX_WINDOW=false
 rob_cc: --tags @bvt_shipstation_updates_international WEB_APP=orders USER_CREDENTIALS=rates_pm_comm_base JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff FIREFOX_PROFILE=new_with_firebug MAX_WINDOW=false
