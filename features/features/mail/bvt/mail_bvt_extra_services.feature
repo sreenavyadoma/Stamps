@@ -31,7 +31,7 @@ Feature: Extra Services BVT
     Then check Extra Services Notice of Non-Delivery
     Then expect Extra Services Notice of Non-Delivery Price to be 0.00
 
-    Then expect Extra Services Total Price to be 25.90
+    Then expect Extra Services Total Price to be 25.85
 
     Then save Extra Services
 
