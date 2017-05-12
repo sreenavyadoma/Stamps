@@ -6,7 +6,7 @@ Feature: Registration
   Scenario:
     Then I loaded default registration profile page
     Then set Profile User ID and Email to random
-    Then On Profile page, Send username to standard out
+    Then send username to standard out
     Then set Profile Password to pass111
     Then set Profile Re-Type password to pass111
     Then set Profile How will you use Stamps.com to Both Mailing and Shipping
@@ -35,6 +35,7 @@ Feature: Registration
     Then set Registration Membership page Terms & Conditions to Checked
 
     Then On Registration Membership page, click Submit
-    Then Registration: Save username and password to parameter file registration_ach_purchase_100k
-    Then Registration: Store username to data file registration_ach_purchase_100k
-    Then On Profile page, Send username to standard out
+    Then save username to parameter file registration_ach_purchase_100k
+    Then save password to parameter file registration_ach_purchase_100k
+    Then store username to data file registration_ach_purchase_100k
+    Then send username to standard out

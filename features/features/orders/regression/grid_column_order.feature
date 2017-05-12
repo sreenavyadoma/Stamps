@@ -79,7 +79,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then expect Orders Grid Column Country appears to left of Address
 
     Then Sign out
-    Then On Profile page, Send username to standard out
+    Then send username to standard out
 
 
 

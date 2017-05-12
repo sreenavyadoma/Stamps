@@ -29,7 +29,45 @@ module Stamps
     end
 
     def random_password
-      random_alpha_numeric(6, 13)
+      rand_alpha_num_special(5, 10)
+    end
+
+    def random_username
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
+      ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(2..8)))).shuffle.join + ((0..9).to_a + ('a'..'z').to_a + ('A'..'Z').to_a ).shuffle[1..1].join
+    end
+
+    def random_email
+      "#{random_username}@mailinator.com".downcase
+    end
+
+    def rand_alpha_num_special(*args)
+      case args.length
+        when 1
+          min = (args[0].to_i>2)?2:args[0]
+          max = args[0]
+        when 2
+          min = args[0]
+          max = args[1]
+        else
+          min = 2
+          max = 10
+      end
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      special = ('!'..'?').to_a
+      [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(min..max)))).shuffle.join
+    end
+
+    def rand_samp_str(arr)
+      i = arr.size.times.to_a.sample
+      c = arr[i]
+      arr.delete_at(i)
+      c
     end
 
     def random_alpha_numeric(*args)
@@ -44,7 +82,10 @@ module Stamps
           min = 2
           max = 10
       end
-      Array.new(1){[*"A".."Z", *"a".."z"].sample}.join+Array.new(rand(min..max-2)){[*"0".."9", *"A".."Z", *"0".."9", *"a".."z", *"0".."9"].sample}.join
+      down = ('a'..'z').to_a
+      up = ('A'..'Z').to_a
+      digits = ('0'..'9').to_a
+      [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat(((down+up+digits).sample(Random.rand(min..max)))).shuffle.join
     end
 
     def random_phone_number
@@ -57,10 +98,6 @@ module Stamps
 
     def random_phone_extension
       "#{Random.rand(10..999)}"
-    end
-
-    def random_email(*ags)
-      "#{random_alpha_numeric(*ags)}@mailinator.com".downcase
     end
 
     def random_suite
@@ -276,7 +313,7 @@ module Stamps
     end
 
     def to_bool(str)
-      str.downcase == 'true'
+      (str.nil?)?false:str.downcase=='true'
     end
   end
 

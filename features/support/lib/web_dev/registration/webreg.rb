@@ -2,7 +2,7 @@ module Stamps
   module Registration
 
     class WebRegistration < Browser::StampsModal
-      attr_reader :bread_crumbs, :navigation, :profile, :error_occured, :footer
+      attr_reader :bread_crumbs, :navigation, :profile, :footer
       def initialize(param)
         super
         @navigation = Navigation::RegistrationNavigationBar.new(param)
@@ -13,11 +13,11 @@ module Stamps
       end
 
       def present?
-        footer.present?
+        profile.present?
       end
 
       def wait_until_present(*args)
-        footer.wait_until_present(*args)
+        profile.wait_until_present(*args)
       end
 
       def load_theme(theme)
@@ -27,8 +27,6 @@ module Stamps
           else
             # do nothing
         end
-
-        #expect(['theme_1632', 'default']).to include(theme), "Registration Theme #{theme} is not supported. We curently only support Theme 1632"
 
         case modal_param.test_env.downcase
           when /cc/
@@ -42,23 +40,7 @@ module Stamps
         end
         logger.info "Visit:  #{url}"
         browser.goto(url)
-
-        error_occured.wait_until_present 1
-        if error_occured.present?
-          logger.error error_occured.header
-          logger.error error_occured.top_message
-          logger.error error_occured.error_code
-          logger.error error_occured.error_description
-          expect("#{error_occured.header} #{error_occured.top_message} #{error_occured.error_code} #{error_occured.error_description} ").to eql error_occured.header
-        end
-        50.times do
-          break if browser.url.include? 'profile'
-        end
-        expect(browser.url).to include "registration"
-        sign_up_for_new_account = StampsElement.new browser.h1(text: "Sign up for a new account")
-        sign_up_for_new_account.wait_until_present 8
-        logger.info "Page loaded.  #{browser.url}"
-        "Success"
+        wait_until_present(10)
       end
 
     end

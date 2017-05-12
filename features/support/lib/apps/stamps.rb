@@ -1,7 +1,8 @@
 module Stamps
-  include RegistrationApp
-  include WebApp
   include TestHelper
+  include TestParameters
+  include WebApp
+  include RegistrationApp
   include StoresApp
 end
 
