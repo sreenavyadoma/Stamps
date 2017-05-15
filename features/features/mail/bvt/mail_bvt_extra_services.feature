@@ -31,7 +31,7 @@ Feature: Extra Services BVT
     Then check Extra Services Notice of Non-Delivery
     Then expect Extra Services Notice of Non-Delivery Price to be 0.00
 
-    Then expect Extra Services Total Price to be 25.90
+    Then expect Extra Services Total Price to be 25.85
 
     Then save Extra Services
 
@@ -39,10 +39,10 @@ Feature: Extra Services BVT
 
     Then expect Extra Services Security Price to be 12.50
     Then expect Extra Services Return Receipt Price to be 2.75
-    Then expect Extra Services Restricted Delivery Price to be 5.00
+    Then expect Extra Services Restricted Delivery Price to be 4.95
     Then expect Extra Services COD Price to be 5.65
     Then expect Extra Services Notice of Non-Delivery Price to be 0.00
-    Then expect Extra Services Total Price to be 25.90
+    Then expect Extra Services Total Price to be 25.85
 
     Then save Extra Services
     Then Sign out

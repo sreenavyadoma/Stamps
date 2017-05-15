@@ -502,7 +502,7 @@ module Stamps
             elsif firefox_profile.downcase == 'new_with_firebug'
               profile = Selenium::WebDriver::Firefox::Profile.new
               profile.assume_untrusted_certificate_issuer = false
-              profile.add_extension "\\\\jenkinsvmwin701\\watir-webdriver\\data\\firefox\\firebug-2.0.xpi"
+              profile.add_extension(data_for(:setup, {})['firebug'])
               driver = Watir::Browser.new(:firefox, profile: profile)
             elsif firefox_profile.downcase == 'selenium'
               driver = Watir::Browser.new(:firefox, :profile => 'selenium')
