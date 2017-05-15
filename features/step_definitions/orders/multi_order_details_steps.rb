@@ -1,4 +1,4 @@
-Then /^[Ss]et Multi Order Details Form Ship From to (.+)$/ do |value|
+Then /^[Ss]et Multi Order Details Form Ship From to (.*)$/ do |value|
   stamps.orders.multi_order.ship_from_multi.select(value)
   step "On Multi Order Details form, blur out"
   step "Save Multi Order Details data"

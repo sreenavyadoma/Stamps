@@ -7,7 +7,7 @@ module Stamps
         def initialize(param)
           super(param)
           @ship_from_multi = Stamps::Orders::ShipFrom::ShipFromAddress.new(param)
-          # @weight = MultiOrderDetailsWeight.new(param)
+           #@weight = MultiOrderDetailsWeight.new(param)
           # @domestic_service = MultiDomesticService.new(param)
           # @int_service = MultiInternationalService.new(param)
           # @insurance = MultiDetailsInsureFor.new(param)
