@@ -1,21 +1,15 @@
 Then /^[Ss]et Multi Order Details Form Ship From to (.*)$/ do |value|
   stamps.orders.multi_order.ship_from_multi.select(value)
-  step "On Multi Order Details form, blur out"
-  step "Save Multi Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form Pounds to (\d+)$/ do |value|
   test_param[:pounds] = value
   stamps.orders.multi_order.weight.lb.set test_param[:pounds]
-  #step "On Order Details form, blur out"
-  #step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details form Ounces to (\d+)$/ do |value|
   test_param[:ounces] = value
   stamps.orders.multi_order.weight.oz.set test_param[:ounces]
-  #step "On Order Details form, blur out"
-  #step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form Domestic service to (.*)$/ do |service|
@@ -28,14 +22,10 @@ end
 
 Then /^[Ss]et Multi Order Details Form Insurance to (.+)$/ do |value|
   stamps.orders.multi_order.insurance.select(value)
-  #step "On Order Details form, blur out"
-  #step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form Insure Amount to (.+)$/ do |value|
   stamps.orders.multi_order.insurance.select(value)
-  #step "On Order Details form, blur out"
-  #step "Save Order Details data"
 end
 
 Then /^[Ss]et Multi Order Details Form tracking to (.+)$/ do |value|
@@ -55,4 +45,8 @@ end
 
 Then /^(?:I|i)n Multi Order Form, click Save as Present$/ do
 
+end
+
+Then /^(?:E|e)xpect Multi Order Ship From is (.*)$/ do |expectation|
+  expect(stamps.orders.multi_order.ship_from_multi.text_box.text).to eql expectation
 end

@@ -4,52 +4,48 @@ module Stamps
       class ShipFromAddress < Browser::StampsModal
         attr_reader :drop_down, :text_box, :manage_shipping_adddress, :blur_element
 
-        def initialize(param)
-          super
-          @text_box = StampsTextBox.new browser.text_field(name: "ShipFrom")
-          @drop_down = StampsElement.new browser.div(css: "div[id^=shipfromdroplist][id$=trigger-picker]")
-          @manage_shipping_adddress = ManageShippingAddresses.new(param)
-        end
-
-        def selection_element(str)
-          if str.downcase.include?('default')
-            selection = browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]
-          else
-            # verify str is in Ship-From drop-down list of values
-            lovs = []
-            browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
-            expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
-            selection = browser.li(text: /#{str}/)
+        def initialize(param, form_type)
+          super(param)
+          case form_type
+            when :single_order
+              @text_box = StampsTextBox.new browser.text_fields(name: "ShipFrom")[0]
+              @drop_down = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[0]
+            when :multi_order
+              @text_box = StampsTextBox.new browser.text_fields(name: "ShipFrom")[1]
+              @drop_down = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[1]
+            else
+              # invalid selection.
+              expect([:single_order, :multi_order]).to include(form_type)
           end
-          StampsElement.new(selection)
+          @manage_shipping_adddress = ManageShippingAddresses.new(param)
         end
 
         def select(str)
           return manage_shipping_adddress if manage_shipping_adddress.present?
-
           drop_down.click
+          sleep(1)
+          selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]:browser.li(text: /#{str}/))
+          sleep(1)
 
           if str.downcase.include?("manage shipping")
             15.times do
-              selection = selection_element(str)
+              sleep(0.35)
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
-              sleep(0.35)
               return manage_shipping_adddress if manage_shipping_adddress.present?
               expect(manage_shipping_adddress).to be_present, "Manage Shipping Address modal did not come up."
             end
           else
-            10.times do
-              selection = selection_element(str)
+            15.times do
+              sleep(0.35)
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              return if (str.downcase.include?('default'))?text_box.text.size>0:text_box.text.include?(str)
+              return if text_box.text.downcase.include?(str.downcase)
             end
           end
-          expect(text_box.text).to include(str), "Unable to select Ship-From selection #{str}"
         end
       end
 

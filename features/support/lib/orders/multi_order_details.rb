@@ -6,14 +6,14 @@ module Stamps
 
         def initialize(param)
           super(param)
-          @ship_from_multi = Stamps::Orders::ShipFrom::ShipFromAddress.new(param)
+          @ship_from_multi = Stamps::Orders::ShipFrom::ShipFromAddress.new(param, :multi_order)
            #@weight = MultiOrderDetailsWeight.new(param)
-          # @domestic_service = MultiDomesticService.new(param)
+          #  @domestic_service = MultiDomesticService.new(param)
           # @int_service = MultiInternationalService.new(param)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
           # @dimensions = MultiOrderDetailsDimensions.new(param)
-          # @buttons = MultiUpdateController.new(param)
+          @buttons = MultiUpdateController.new(param)
         end
 
         def blur_out
@@ -322,8 +322,9 @@ module Stamps
 
         def update_orders
           update_orders_btn.click
+          sleep(2)
           expect(updating_orders).to be_present
-          updating_orders.wait_while_present(2.5)
+          updating_orders.wait_while_present(5)
         end
 
         def save_as_present
