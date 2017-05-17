@@ -6,7 +6,7 @@ module Stamps
 
         def initialize(param)
           super
-          @ship_from_multi = Stamps::Orders::ShipFrom::ShipFromAddress.new(param, :multi_order)
+          @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
            #@weight = MultiOrderDetailsWeight.new(param)
           @domestic_service = MultiDomesticService.new(param)
           # @int_service = MultiInternationalService.new(param)
@@ -17,15 +17,15 @@ module Stamps
         end
 
         def blur_out
-          blur_element.blur_out
+          #multi_blur_element.blur_out #todo-kaushal remove this
         end
 
         def present?
-          body.present?
+          #multi_blur_element.present? #todo-kaushal remove this
         end
 
         def wait_until_present(*args)
-          body.wait_until_present(*args)
+          #multi_blur_element.wait_until_present(*args) #todo-kaushal remove this
         end
 
         def expand

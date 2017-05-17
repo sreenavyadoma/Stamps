@@ -1076,7 +1076,7 @@ module Stamps
         def initialize(param)
           super
           @toolbar = DetailsToolbar.new(param)
-          @ship_from = Stamps::Orders::ShipFrom::ShipFromAddress.new(param, :single_order)
+          @ship_from = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :single_order)
           @ship_to = ShipTo.new(param)
           @weight = OrderDetailsWeight.new(param)
           @service = DetailsService.new(param)
