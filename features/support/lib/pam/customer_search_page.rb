@@ -1,6 +1,14 @@
 module Stamps
   module Pam
     module CustomerSearch
+      def present?
+        username.present?
+      end
+
+      def wait_until_present(*args)
+        username.wait_until_present(*args)
+      end
+
       def username
         @username ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]"))
       end
@@ -32,38 +40,32 @@ module Stamps
       def user_5_2_or_lower
 
       end
+    end
+
+    class CustomerSearchPage < Browser::StampsModal
+      include CustomerSearch
+      attr_accessor :customer_profile_page
 
       def search
-        customer_profile = CustomerProfilePage.new(param)
+        customer_profile_found = CustomerProfilePage.new(param)
         customer_profile_not_found = CustomerProfileNotFound.new(param)
-        30.times do |counter|
+        20.times do |counter|
           search_btn.send_keys(:enter)
           search_btn.click
           sleep(0.5)
-          return customer_profile if customer_profile.present?
+          return @customer_profile_page = customer_profile_found if customer_profile_found.present?
           if customer_profile_not_found.present?
-            logger.error "PAM:  #{customer_profile_not_found.account_status}"
+            logger.error "PAM:  #{customer_profile_not_found.status_reason}"
             browser.back
           end
         end
         search_btn.send_keys(:enter)
         search_btn.click
-        return customer_profile if customer_profile.present?
-        return customer_profile_not_found if customer_profile_not_found.present?
-        expect(customer_profile.present? || customer_profile_not_found.present?).to be_true, "Customer Profile or Customer Not Found page did not appear."
+        return @customer_profile_page = customer_profile_not_found if customer_profile_not_found.present?
+        return @customer_profile_page = customer_profile_found if customer_profile_found.present?
+        expect(customer_profile_found.present? || customer_profile_not_found.present?).to be_true, "Customer Profile or Customer Not Found page did not appear."
       end
 
-      def present?
-        username.present?
-      end
-
-      def wait_until_present(*args)
-        username.wait_until_present(*args)
-      end
-    end
-
-    class CustomerSearchPage < Browser::StampsModal
-      include CustomerSearch
       def visit
         case param.test_env.downcase
           when /cc/

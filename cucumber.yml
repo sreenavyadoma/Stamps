@@ -1,4 +1,4 @@
-default: --backtrace --profile kaushal_orders
+default: --backtrace --profile rob_registration_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x

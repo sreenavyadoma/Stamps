@@ -28,11 +28,11 @@ module Stamps
 
     module CustomerProfileAccountStatus
       def status_reason
-        @status_reason ||= StampsElement.new(browser.td(css: "form[name=FrmOne]>table:nth-child(1)>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)"))
+        StampsElement.new(browser.td(css: "form[name=FrmOne]>table:nth-child(1)>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")).text
       end
 
       def license_status
-        @license_status ||= StampsElement.new(browser.td(css: "form[name=FrmOne]>table:nth-child(1)>tbody>tr>td>table>tbody>tr:nth-child(5)>td:nth-child(2)"))
+        StampsElement.new(browser.td(css: "form[name=FrmOne]>table:nth-child(1)>tbody>tr>td>table>tbody>tr:nth-child(5)>td:nth-child(2)")).text
       end
 
       def present?

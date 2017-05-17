@@ -5,8 +5,6 @@ end
 
 Then /^[Vv]isit PAM [Cc]ustomer [Ss]earch page$/ do
   pam.customer_search_page.visit
-  test_param[:username] = "xxxxx"
-  test_param[:password] = "pass111"
 end
 
 Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*))$/ do |str|

@@ -48,8 +48,8 @@ Then /^[Bb]lur blur out of Profile Page$/ do
 end
 =end
 
-Then set Profile Page Email to sa
-Then blur out of Profile Page
+#Then set Profile Page Email to sa
+#Then blur out of Profile Page
 
 =begin
 
@@ -80,7 +80,7 @@ Then /^[Ss]et Profile Page Email to (.*)$/ do |str|
 end
 =end
 
-Then set Profile page email to qawebdevelopment@stamps.com
+#Then set Profile page email to qawebdevelopment@stamps.com
 
 =begin
 
@@ -100,16 +100,6 @@ end
 Then /^[Ee]xpect Profile page username help text is (.*)$/ do |str|
   expect(registration.profile.account_info.account_username.help_text).to eql(str)
 end
-
-Then /^[Ss]et Profile Page username to (.*)$/ do |str|
-
-end
-
-
-Then /^[Ss]et Profile Page password to (.*)$/ do |str|
-
-end
-
 
 
 Then /^[Ee]xpect Profile page Password help text (\d+) is (.*)$/ do |number, str|

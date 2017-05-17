@@ -5,8 +5,7 @@ module Stamps
       def initialize(param)
         super
         @header = StampsElement.new(browser.h5(text: "Customer Search"))
-        @customer_search_page = CustomerSearchPage.new(param)
-        @customer_profile_page = CustomerProfilePage.new(param)
+        @customer_search_page ||= CustomerSearchPage.new(param)
       end
 
       def visit

@@ -11,7 +11,7 @@ module Stamps
         browser.text.include?(status_text)
       end
 
-      def account_status
+      def status_reason
         return status_text if present?
         'OK'
       end

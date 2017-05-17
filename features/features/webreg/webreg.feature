@@ -17,7 +17,6 @@ Feature: Registration
     Then visit PAM Customer Search page
     Then set PAM Customer Search page username to cached value
     Then click PAM Customer Search page Search button
-    #Then expect PAM Customer search result Status is OK
     Then expect PAM Customer Profile Page Status Reason is OK
     Then expect PAM Customer Profile Page Username is correct
 

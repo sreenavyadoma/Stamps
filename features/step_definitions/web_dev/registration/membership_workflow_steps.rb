@@ -39,6 +39,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random ad
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
+  registration.membership.first_name.wait_until_present(10)
   expect(registration.membership.first_name).to be_present
   registration.membership.first_name.set(test_param[:first_name] = (str.nil?)?(helper.random_alpha_capitalize ):str)
 end
