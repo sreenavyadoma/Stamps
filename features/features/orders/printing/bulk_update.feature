@@ -5,7 +5,7 @@ Feature: ORDERSAUTO-836 Bulk Update: Ship-From controller
   Background:
     Given a valid user is signed in to Web Apps
 
-    @bulk_update_ship_from
+    @bulk_update
     Scenario: Bulk Update: Ship-From controller
       #Adding 1st order
       Then add Order 1
