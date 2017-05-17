@@ -33,7 +33,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
-  registration.profile.account_password.set(test_param[:password] = (str.nil?)?(helper.random_password):str)
+  registration.profile.account_password.set(test_param[:password] = (str.nil?)?"pass111":str) #helper.random_password
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|
