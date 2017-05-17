@@ -8,17 +8,17 @@ Feature: ORDERSAUTO-836 Bulk Update: Ship-From controller
     @bulk_update_ship_from
     Scenario: Bulk Update: Ship-From controller
       #Adding 1st order
-      #Then add Order 1
-      #Then set Order Details form Ship-From to default
-      #Then set Order Details form Ship-To to random address between zone 1 and 4
-      #Then set Order Details form service to PM Package
-      #Then set Order Details form Pounds to 1
+      Then add Order 1
+      Then set Order Details form Ship-From to default
+      Then set Order Details form Ship-To to random address between zone 1 and 4
+      Then set Order Details form service to PM Package
+      Then set Order Details form Pounds to 1
       #Adding 2nd order
-      #Then add Order 2
-      #Then set Order Details form Ship-From to default
-      #Then set Order Details form Ship-To to random address between zone 1 and 4
-      #Then set Order Details form service to PSG Package
-      #Then set Order Details form Pounds to 1
+      Then add Order 2
+      Then set Order Details form Ship-From to default
+      Then set Order Details form Ship-To to random address between zone 1 and 4
+      Then set Order Details form service to PSG Package
+      Then set Order Details form Pounds to 1
       #Check 1st two orders
       Then check Orders Grid row 1
       Then check Orders Grid row 2
