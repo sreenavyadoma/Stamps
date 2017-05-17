@@ -157,9 +157,10 @@ module Stamps
         sign_in_button.click
       end
 
-      def mail_sign_in(credentials)
+      def mail_sign_in(username, password)
+        self.usr = username
+        self.pw = password
         begin
-          user_credentials(credentials)
           5.times do
             break if signed_in_user.present?
             username(usr)
@@ -167,7 +168,7 @@ module Stamps
             login
             50.times do
               begin
-                logger.message(verifying_account_info.text)
+                logger.message(verifying_text)
                 break if signed_in_user.present?
                 if whats_new_modal.present?
                   whats_new_modal.continue
@@ -283,10 +284,10 @@ module Stamps
           sign_in_link.click unless sign_in_button.present?
           break if signed_in_user.present?
 
-          #logger.info "Verifying account info... #{(verifying_account_info.present?)?"true":"false"}"
-          if verifying_account_info.present?
-            #logger.info "#{(verifying_account_info.present?)?"Verifying account info....":"Verifying account info done or not visible"}"
-            verifying_account_info.wait_while_present
+          #logger.info "Verifying account info... #{(verifying_present?)?"true":"false"}"
+          if verifying_present?
+            #logger.info "#{(verifying_present?)?"Verifying account info....":"Verifying account info done or not visible"}"
+            verifying_wait_while_present
             signed_in_user.wait_until_present
             logger.info "Signed in username is #{signed_in_user.text}"
           end

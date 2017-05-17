@@ -26,6 +26,7 @@ module Stamps
       attr_reader :element, :browser
       alias_method :text_box, :element
       alias_method :check_box, :element
+      alias_method :radio, :element
 
       def initialize(element)
         @element = element
@@ -156,7 +157,7 @@ module Stamps
       end
 
       def click_while_present(*args)
-        ((args.nil? || args.length==0)?12:args[0].to_i).times do
+        ((args.nil? || args.length==0)?20:args[0].to_i).times do
           click
           sleep(0.05)
           break unless element.present?
@@ -228,6 +229,9 @@ module Stamps
         element.style(property)
       end
     end
+
+    #class StampsWatirRadio < StampsWatirCheckBox
+    #end
 
     class StampsWatirCheckBox < StampsElement
       include HelpBlockElement
@@ -395,7 +399,7 @@ module Stamps
 
       def initialize(text_box, drop_down, list_of_values)
         super(text_box)
-        @drop_down = drop_down
+        @drop_down = StampsElement.new(drop_down)
         @list_of_values = list_of_values
       end
 
@@ -435,7 +439,7 @@ module Stamps
 
       def initialize(text_box, drop_down, html_tag)
         super(text_box)
-        @drop_down = drop_down
+        @drop_down = StampsElement.new(drop_down)
         @html_tag = html_tag
       end
 

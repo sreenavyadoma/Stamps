@@ -26,6 +26,7 @@ Theme 1632
 	Test Workflow ~34 days
 		Windows Happy Path 6-7 days (Orders Web Reg automation for old theme) - done 5/8
 		Windows Dpawr Offers 6-7 days - Link to spreadsheet from Sapna. Plans & Offers spreadsheet.
+		Google auto-complete (Membership page) Billing & Mailing.
 		Windows Non-Dpawr offers 6-7 days
 		Windows Test Target Campaigns 10-11 days
 			- path to Web Client

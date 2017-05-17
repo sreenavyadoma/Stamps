@@ -225,11 +225,11 @@ module Stamps
     end
 
     class UspsTerms < Browser::StampsModal
-      attr_reader :i_agree, :cancel
+      attr_reader :agree_to_terms, :cancel
 
       def initialize(param)
         super
-        @i_agree = StampsElement.new browser.span text: "I Agree"
+        @agree_to_terms = StampsElement.new browser.span text: "I Agree"
         @cancel = StampsElement.new browser.span text: "Cancel"
       end
 
@@ -239,7 +239,7 @@ module Stamps
 
       def agree_and_dont_show_again
         dont_show_this_again true
-        i_agree.click_while_present
+        agree_to_terms.click_while_present
       end
 
       def dont_show_this_again dont_show

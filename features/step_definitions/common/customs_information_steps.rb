@@ -134,25 +134,25 @@ Then /^[Dd]elete Customs form Associated Item (\d+)$/ do |item_number|
 end
 
 Then /^[Cc]heck Customs form I agree to the USPS Privacy Act Statement$/ do
-  stamps.orders.order_details.customs.edit_form.i_agree.check if modal_param.web_app == :orders
-  stamps.mail.print_form.mail_customs.edit_form.i_agree.check if modal_param.web_app == :mail
+  stamps.orders.order_details.customs.edit_form.agree_to_terms.check if modal_param.web_app == :orders
+  stamps.mail.print_form.mail_customs.edit_form.agree_to_terms.check if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form I agree to the USPS Privacy Act Statement is checked$/ do
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.i_agree).to be_checked if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.i_agree).to be_checked if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.agree_to_terms).to be_checked if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.agree_to_terms).to be_checked if modal_param.web_app == :mail
 end
 
 Then /^[Uu]ncheck Customs form I agree to the USPS Privacy Act Statement$/ do
-  stamps.orders.order_details.customs.edit_form.i_agree.uncheck if modal_param.web_app == :orders
-  stamps.mail.print_form.mail_customs.edit_form.i_agree.uncheck if modal_param.web_app == :mail
+  stamps.orders.order_details.customs.edit_form.agree_to_terms.uncheck if modal_param.web_app == :orders
+  stamps.mail.print_form.mail_customs.edit_form.agree_to_terms.uncheck if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form I agree to the USPS Privacy Act Statement is unchecked$/ do
   sleep(0.05)
-  expect(stamps.orders.order_details.customs.edit_form.i_agree).not_to be_checked if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.i_agree).not_to be_checked if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.agree_to_terms).not_to be_checked if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.agree_to_terms).not_to be_checked if modal_param.web_app == :mail
 end
 
 Then /^[Cc]lose Customs Information form$/ do

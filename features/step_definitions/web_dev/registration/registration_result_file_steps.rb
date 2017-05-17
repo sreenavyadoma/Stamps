@@ -31,8 +31,6 @@ Then /^store username to (?:default data store file|data store file (.*))$/ do |
 end
 
 Then /^save username to (?:default parameter file|parameter file (.*))$/ do |filename|
-  test_param[:username] = helper.random_username
-  test_param[:password] = helper.random_username
   data_file = registration_parameter_file(filename)
   sleep(0.25)
   File.open(data_file, 'w+') {|f| f.write("username: #{test_param[:username]}\n")}
@@ -43,18 +41,6 @@ Then /^save password to (?:default parameter file|parameter file (.*))$/ do |fil
   sleep(0.25)
   File.open(data_file, 'a+') {|f| f.write("password: #{test_param[:password]}\n")}
 end
-
-
-
-
-
-
-
-
-
-
-
-
 
 Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
   config.logger.info "On PAM Customer Search page, set username from parameter file"

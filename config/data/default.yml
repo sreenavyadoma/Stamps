@@ -1,6 +1,6 @@
 
 setup:
-  firebug: \\jenkinsvmwin701\watir-webdriver\data\firefox\firebug-2.0.xpi
+  firebug: C:\watir-webdriver\firebug.xpi
 
 rates_test:
   rate_file: rate_file.xls
@@ -26,6 +26,10 @@ registration:
   default_data_store_file: default_data_store_file
   development_dir: C:\watir-webdriver\test_data\webreg
   jenkins_dir: \\jenkinsvmwin701\test_data\webreg
+
+pam:
+  admin_username: lab
+  admin_password: Sdcqatest623
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty
