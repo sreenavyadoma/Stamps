@@ -5,10 +5,10 @@ module Stamps
         attr_reader :ship_from_multi, :weight, :domestic_service, :int_service, :insurance, :tracking, :dimensions, :buttons, :manage_shipping_add, :add_shipping_add, :delete_shipping_add
 
         def initialize(param)
-          super(param)
+          super
           @ship_from_multi = Stamps::Orders::ShipFrom::ShipFromAddress.new(param, :multi_order)
            #@weight = MultiOrderDetailsWeight.new(param)
-          #  @domestic_service = MultiDomesticService.new(param)
+          @domestic_service = MultiDomesticService.new(param)
           # @int_service = MultiInternationalService.new(param)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
@@ -67,14 +67,10 @@ module Stamps
       class MultiDomesticService < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
-          super(param)
-          @text_box = StampsTextbox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
+          super
+          @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
           @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
           @blur_element = BlurOutElement.new(param)
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def select(str)
@@ -103,70 +99,13 @@ module Stamps
           expect(text_box.text).to include(substr)
           text_box.text
         end
-
-        def tooltip(selection)
-          button = drop_down
-          selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
-          10.times {
-            begin
-              button.click unless selection_label.present?
-              sleep(0.35)
-              if selection_label.present?
-                tooltip = selection_label.attribute_value("data-qtip")
-                logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
-                return tooltip if tooltip.include? "<strong>"
-              end
-            rescue
-              #ignore
-            end
-          }
-          blur_out
-        end
-
-        def disabled?(service)
-
-          @details_services = data_for(:orders_services, {})
-
-          selection_field = browser.li(id: "#{@details_services[service]}")
-          #selection_element = browser.tr css: "tr[data-qtip*='#{service}']"
-          selection_label = StampsElement.new selection_field
-
-          10.times do |index|
-            drop_down.click unless selection_label.present?
-            sleep(0.35)
-            if selection_field.present?
-              disabled_field = StampsElement.new(selection_field.parent.parent.parent)
-              begin
-                if selection_label.present?
-                  if disabled_field.present?
-                    result = disabled_field.attribute_value("class").include? "disabled"
-                    sleep(0.35)
-                    result = disabled_field.attribute_value("class").include? "disabled"
-                    result = disabled_field.attribute_value("class").include? "disabled"
-                    drop_down.click
-                    return result
-                  end
-                end
-              rescue
-                #ignore
-              end
-            else
-              sleep(0.35)
-              return true if index == 5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
-            end
-          end
-        end
-
-        def enabled? service
-          !(disabled? service)
-        end
       end
 
       class MultiInternationalService < Browser::StampsModal
         attr_reader :text_box, :drop_down, :blur_element
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
+          @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
           @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
           @blur_element = BlurOutElement.new(param)
         end
