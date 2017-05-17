@@ -8,7 +8,7 @@ Each items below will have a component of the following;
 
 Theme 1632
 	UI Field Validation ~25 days (best case)
-		Profile Page 8-9
+		Profile Page 8-9 - Done 5/8
 		Membership Page (including Side Mailing Info) 9-10
 		Choose Supplies 3-4
 		Security Questions 3-4
@@ -16,7 +16,7 @@ Theme 1632
 		Install Instructions Page 1-2
 
 	UI Fields - Negative Tests	~18-days
-		Profile Page 6-7
+		Profile Page 6-7 - Sapna
 		Membership Page (including Side Mailing Info) 7-8
 		Choose Supplies 2-3
 		Security Questions 1-2
@@ -24,8 +24,9 @@ Theme 1632
 		Install Instructions Page 1-2
 
 	Test Workflow ~34 days
-		Windows Happy Path 6-7 days (Orders Web Reg automation for old theme)
-		Windows Dpawr Offers 6-7 days
+		Windows Happy Path 6-7 days (Orders Web Reg automation for old theme) - done 5/8
+		Windows Dpawr Offers 6-7 days - Link to spreadsheet from Sapna. Plans & Offers spreadsheet.
+		Google auto-complete (Membership page) Billing & Mailing.
 		Windows Non-Dpawr offers 6-7 days
 		Windows Test Target Campaigns 10-11 days
 			- path to Web Client

@@ -38,7 +38,7 @@ Then /^Mail Sign In: Set Remember Username to Checked$/ do
 end
 
 Then /^Mail Sign In: Check Remember Username$/ do
-  step "load Sign-in page"
+  step "load Web Apps Sign-in page"
   #todo-fix username
   fix me!
   stamps.mail.sign_in_modal.sign_in_username_check ENV["USR"]

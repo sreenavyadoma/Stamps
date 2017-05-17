@@ -1,4 +1,7 @@
 
+setup:
+  firebug: C:\watir-webdriver\firebug.xpi
+
 rates_test:
   rate_file: rate_file.xls
   rates_pme_comm_base: PME Comm Base
@@ -15,15 +18,18 @@ import_orders_test:
   import_old_file: import_orders_old.csv
   import_existing_orders_time_file: import_existing_orders_times.csv
 
-
-
 windows_files:
   import_csv_file: \\\\rcruz-win7\\Public\\automation\\data\\import_times.csv #data_for(:rates_test, {})['rates_pme_comm_base']
 
-Registration:
-  dev_usr_dir: C:\watir-webdriver
-  jenkins_usr_dir: \\jenkins01\Hudson\jenkins\Registration
-  registration_usr_list_dir: \\jenkins01\Hudson\jenkins\Registration
+registration:
+  default_parameter_file: default_parameter
+  default_data_store_file: default_data_store_file
+  development_dir: C:\watir-webdriver\test_data\webreg
+  jenkins_dir: \\jenkinsvmwin701\test_data\webreg
+
+pam:
+  admin_username: lab
+  admin_password: Sdcqatest623
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty

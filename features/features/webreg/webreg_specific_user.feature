@@ -40,7 +40,7 @@ Feature: Registration
     Then Visit PAM Customer Search page
     Then set PAM Customer Search page username to random
     Then set PAM Customer Search page 5.2 or lower
-    Then On PAM Customer Search page, click Search button
+    Then click PAM Customer Search page Search button
 
     Then On PAM Customer Profile page, click Change Meter Limit link
     Then On PAM Change Meter Limit page, set USPS approval to Checked
@@ -64,7 +64,7 @@ Feature: Registration
 
     Then Health Check: Print - Web Batch
 
-    Then load Sign-in page
+    Then load Web Apps Sign-in page
     Then Orders: Sign-in as new user ss_sctest_b4/password1
     Then Pause for 2 seconds
     Then add new order
@@ -75,5 +75,5 @@ Feature: Registration
     Then Navigation Bar: Customer Balance
     Then Navigation Bar: Wait while balance less than 5000
     Then Sign out
-    Then On Profile page, Send username to standard out
+    Then send username to standard out
     Then Pause for 1 second

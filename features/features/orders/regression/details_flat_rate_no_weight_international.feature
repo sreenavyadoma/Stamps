@@ -19,7 +19,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details Ship-To International address to
-      | name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | France  | random  | random  |
 
     # Priority Mail International Flat Rate Envelope

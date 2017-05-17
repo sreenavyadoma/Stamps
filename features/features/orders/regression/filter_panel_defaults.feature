@@ -53,7 +53,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form Ship-To to Domestic Address
-      | name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
+      | full_name   | company      | street_address      | city | state | zip        | country       | phone  |  email |
       | James Test | Domestic Company | 600 Front St Apt 220 | San Diego | CA | 92101-6733 | United States | 8885551212 | test@stamps.com |
     Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1

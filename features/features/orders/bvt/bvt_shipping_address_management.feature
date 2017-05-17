@@ -8,7 +8,7 @@ Feature:  BVT Address Management
   Scenario: BVT Shipping Address
     Then add new order
     Then on Manage Shipping Address modal, add address
-      |ship_from_zip  | name  | company    | street_address     | street_address2 | city          | state       | zip    | country       | phone           |
+      |ship_from_zip  | full_name  | company    | street_address     | street_address2 | city          | state       | zip    | country       | phone           |
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, expect selection has random
     Then on Manage Shipping Address modal, delete all addresses

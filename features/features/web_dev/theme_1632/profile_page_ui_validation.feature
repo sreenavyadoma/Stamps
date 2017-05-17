@@ -9,7 +9,7 @@ Feature: Profile page validation theme_1632
     Given I loaded SDC Website
 
   @registration_profile_page_ui_validation
-  Scenario: SDCWR-721 Profile Page Validation
+  Scenario: Profile Page UI Validation
     Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
@@ -50,4 +50,31 @@ Feature: Profile page validation theme_1632
 
      Then expect Profile page TRUSTe logo exists
      #Then expect Profile page LIVE chat button exists
+
+    Then set Profile page Email to random value
+    Then expect Profile page Email is correct
+    Then set Profile page Username to random value
+    Then expect Profile page Username is correct
+    Then set Profile page Password to random value
+    Then expect Profile page Password is correct
+    Then set Profile page Re-type password to same as previous password
+    Then expect Profile page Re-Type password is correct
+
+    Then set Profile page Survey Question to Individual
+    Then expect Profile page Survey Question is correct
+    Then set Profile page Survey Question to Both mailing and shipping
+    Then expect Profile page Survey Question is correct
+    Then set Profile page Survey Question to Mostly shipping
+    Then expect Profile page Survey Question is correct
+    Then set Profile page Survey Question to Both mailing and shipping
+    Then expect Profile page Survey Question is correct
+    Then set Profile page Survey Question to Business Use - Mostly mailing (letters/postcards/flats)
+    Then expect Profile page Survey Question is correct
+    Then set Profile page Survey Question to Individual
+    Then expect Profile page Survey Question is correct
+
+    Then check Profile page Money-saving offers and new products
+    Then expect Profile page Money-saving offers and new products is checked
+    Then uncheck Profile page Money-saving offers and new products
+    Then expect Profile page Money-saving offers and new products is unchecked
 

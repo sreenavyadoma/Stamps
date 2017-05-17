@@ -40,7 +40,7 @@ Feature: Registration
     Then Registration Profile:  Send username to standard out
     Then Registration: Expect Web Registration result page is either Download page or Webpostage
 
-    Then PAM: Load PAM Page
+    Then load PAM Page
     Then PAM: Load Customer Search Page
     Then PAM Customer Search: Set username to random
     Then PAM Customer Search: Set 5.2 or lower

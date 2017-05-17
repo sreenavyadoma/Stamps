@@ -1,58 +1,44 @@
 module Stamps
   module Pam
     class PaymentAdministratorManager < Browser::StampsModal
-      def visit
-        param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      attr_reader :header, :customer_search_page, :customer_profile_page
+      def initialize(param)
+        super
+        @header = StampsElement.new(browser.h5(text: "Customer Search"))
+        @customer_search_page = CustomerSearchPage.new(param)
+        @customer_profile_page = CustomerProfilePage.new(param)
+      end
 
+      def visit
         case param.test_env.downcase
           when /cc/
-            url = "http://qa-clientsite:82/pam/Default.asp"
+            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/Default.asp"
           when /sc/
-            url = "http://site.qasc.stamps.com:82/pam/"
+            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/Default.asp"
           when /stg/
-            url = "https://site.staging.stamps.com:82/pam/"
+            url = "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/Default.asp"
           else
-            expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
+            url = nil
         end
-
+        expect(url).not_to be_nil, "URL is nil. Check your ENV['URL'] parameter."
         logger.info "Visit: #{url}"
-        browser.goto url
+        browser.goto(url)
         logger.info "Visited: #{browser.url}"
         self
       end
 
       def present?
-        browser.h5(text: "Customer Search").present?
+        header.present?
       end
 
-      def wait_until_present
-        browser.h5(text: "Customer Search").wait_until_present 6
+      def wait_until_present(*args)
+        header.wait_until_present(*args)
       end
 
       def customer_search
-        param.test_env = 'stg' if param.test_env.downcase == 'staging'
-
-        customer_search_page = Pam::CustomerSearch.new(param)
-
-        case param.test_env.downcase
-          when /cc/
-            url = "http://qa-clientsite:82/pam/AccountSearch.asp"
-          when /sc/
-            url = "http://site.qasc.stamps.com:82/pam/AccountSearch.asp"
-          when /stg/
-            url = "https://site.staging.stamps.com:82/pam/AccountSearch.asp"
-          else
-            expect("#{param.test_env} is not a valid Registration URL prefix selection.  Check your test!").to eql ""
-        end
-
-        browser.goto url
-
-        30.times do
-          #search.wait_until_present
-          sleep(2)
-          return customer_search_page if customer_search_page.present?
-        end
-        expect(customer_search_page).to be_present
+        StampsElement.new(browser.a(css: 'a[href*=AccountSearch]')).click_while_present
+        expect(customer_search_page).to be_present, "PAM Customer Search page did not load."
+        customer_search_page
       end
     end
   end

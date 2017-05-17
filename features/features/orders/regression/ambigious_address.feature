@@ -8,7 +8,7 @@ Feature: Ambigious Address
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to ambiguous address
-      | name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
+      | full_name            | company                 | street_address      | city          | state | zip   | country       | phone  |  email |
       | Hillary Clinton | The White House         | 1390 Market Street  | San Francisco | CA    | 94102 | United States |        |        |
     Then Expect Exact Address Not Found module to appear
     Then In Exact Address Not Found module, select row 1

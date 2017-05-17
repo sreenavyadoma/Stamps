@@ -14,9 +14,8 @@ module Stamps
       end
 
       def has_error?
-        expect(help_elements).not_to be_nil, "help_elements cannot be nil. Set Object.help_elements=some_element_collection before calling help_text."
         begin
-          help_elements.size > 0
+          help_elements.nil?false:help_elements.size > 0
         rescue
           return false
         end
@@ -27,6 +26,7 @@ module Stamps
       attr_reader :element, :browser
       alias_method :text_box, :element
       alias_method :check_box, :element
+      alias_method :radio, :element
 
       def initialize(element)
         @element = element
@@ -157,7 +157,7 @@ module Stamps
       end
 
       def click_while_present(*args)
-        ((args.nil? || args.length==0)?12:args[0].to_i).times do
+        ((args.nil? || args.length==0)?20:args[0].to_i).times do
           click
           sleep(0.05)
           break unless element.present?
@@ -173,9 +173,7 @@ module Stamps
       end
 
       def blur_out(*args)
-        count = 3 if args.length == 0
-        count = args[0].to_i if args.length > 0
-        count.to_i.times do
+        ((args.nil? || args.length==0)?2:args[0].to_i).times do
           click
           double_click
         end
@@ -231,6 +229,9 @@ module Stamps
         element.style(property)
       end
     end
+
+    #class StampsWatirRadio < StampsWatirCheckBox
+    #end
 
     class StampsWatirCheckBox < StampsElement
       include HelpBlockElement
@@ -398,13 +399,11 @@ module Stamps
 
       def initialize(text_box, drop_down, list_of_values)
         super(text_box)
-        @drop_down = drop_down
+        @drop_down = StampsElement.new(drop_down)
         @list_of_values = list_of_values
       end
 
       def select(str)
-        selection = nil
-        text = ""
         drop_down.click
         sleep(0.25)
         expect(list_of_values).not_to be_nil, "Error: Set list_of_values before calling select_from_lov."
@@ -421,9 +420,9 @@ module Stamps
             list_of_values.each do |item_selection|
               selection = StampsElement.new(item_selection)
               if !selection.nil? && selection.text.downcase.include?(str.downcase)
-                text = selection.text
+                sleep(0.05)
                 selection.click
-                return text if text_box.text.downcase.include?(str.downcase)
+                return text if text.downcase.include?(str.downcase)
               end
             end
           rescue
@@ -440,7 +439,7 @@ module Stamps
 
       def initialize(text_box, drop_down, html_tag)
         super(text_box)
-        @drop_down = drop_down
+        @drop_down = StampsElement.new(drop_down)
         @html_tag = html_tag
       end
 
@@ -461,13 +460,15 @@ module Stamps
         20.times do
           begin
             drop_down.click unless selection.present?
+            selection.scroll_into_view
             selection.click
-            break if element.text.downcase.include?(str)
+            break if text == str
           rescue
             # ignore
           end
         end
-        expect(element.text).to include(str), "Invalid selection: #{str}. Check your page object."
+        expect(text).to eql(str)
+        text
       end
     end
 

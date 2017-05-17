@@ -349,7 +349,7 @@ module Stamps
           window_title.wait_until_present(*args)
         end
 
-        def i_agree
+        def agree_to_terms
           i_agree_btn.click_while_present
         end
 
@@ -533,7 +533,7 @@ module Stamps
           return multi_order_some_error if multi_order_some_error.present?
           return usps_terms_modal if usps_terms_modal.present?
 
-          usps_terms.i_agree if usps_terms_modal.present?
+          usps_terms.agree_to_terms if usps_terms_modal.present?
 
           error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
 
