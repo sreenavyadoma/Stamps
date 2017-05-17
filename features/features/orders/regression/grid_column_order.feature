@@ -42,7 +42,7 @@ Feature: "Country" grid column should appear to left of "Address" column by defa
     Then Visit PAM Customer Search page
     Then set PAM Customer Search page username to random
     Then set PAM Customer Search page 5.2 or lower
-    Then On PAM Customer Search page, click Search button
+    Then click PAM Customer Search page Search button
 
     Then On PAM Customer Profile page, click Change Meter Limit link
     Then On PAM Change Meter Limit page, set USPS approval to Checked

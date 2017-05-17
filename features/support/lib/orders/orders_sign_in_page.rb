@@ -117,8 +117,7 @@ module Stamps
         expect("Market Place modal is not present").to eql "First Time Sign In" unless market_place.present?
       end
 
-      def orders_sign_in(credentials)
-        user_credentials(credentials)
+      def orders_sign_in(usr, pw)
         begin
           loading_orders = StampsElement.new browser.div(text: "Loading orders...")
           invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
@@ -187,7 +186,7 @@ module Stamps
               logger.error e.backtrace.join "\n"
               raise e
             end
-            usr
+            signed_in_user.text
           end
 
           expect(signed_in_user.text).to eql(usr)

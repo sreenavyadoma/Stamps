@@ -65,7 +65,7 @@ module Stamps
       end
 
       def ok
-        profile = CustomerProfile.new(param)
+        profile = CustomerProfilePage.new(param)
         button = StampsElement.new browser.a(css: "a[href^=Profile]")
         5.times do
           button.wait_until_present 2

@@ -1,45 +1,8 @@
 
-Then /^PAM: Load PAM Page$/ do
-  #config.logger.step "PAM: Load PAM Page"
-  pam.visit
-end
-
-Then /^Visit PAM Customer Search page$/ do
-  #config.logger.step "Visit PAM Customer Search page"
-  step "PAM: Load PAM Page" if @customer_search.nil?
-  @customer_search = pam.customer_search
-end
-
-Then /^[Oo]n PAM Customer Search page, set username to (.*)$/ do |username|
-  #config.logger.step "On PAM Customer Search page, set username to #{username}"
-  test_param[:username] = username unless username.downcase.include? 'random'
-  #config.logger.step "On PAM Customer Search page, set username to #{test_data[:usr]}"
-  @customer_search.username.set test_param[:username]
-  sleep(0.35)
-end
 
 Then /^[Oo]n PAM Customer Search page, set 5.2 or lower$/ do
-  #config.logger.step "On PAM Customer Search page, set 5.2 or lower"
-  @customer_search.user_5_2_or_lower
-  @customer_search.user_5_2_or_lower
+  pam.customer_search_page.customer_search.user_5_2_or_lower
 end
-
-Then /^[Oo]n PAM Customer Search page, click Search button$/ do
-  #config.logger.step "On PAM Customer Search page, click Search button"
-  @customer_profile = @customer_search.search
-  if @customer_profile.instance_of? Pam::CustomerProfile
-    if @customer_profile.present?
-      @pam_customer_profile_found = true
-    else
-      step "On PAM Customer Search page, set username to #{test_param[:username]}"
-      step "On PAM Customer Search page, set 5.2 or lower"
-      step "On PAM Customer Search page, click Search button"
-    end
-  else
-    @pam_customer_profile_found = false
-  end
-end
-
 
 Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do
   expectation = "Customer was found"
@@ -272,18 +235,6 @@ Then /^send username to standard out$/ do
   config.logger.message " ############## #{test_param[:username]}"
   config.logger.message " ############## NEW USER ID "
 end
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

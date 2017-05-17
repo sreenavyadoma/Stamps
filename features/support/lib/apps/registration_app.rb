@@ -18,10 +18,6 @@ module RegistrationApp
     end
   end
 
-  def pam
-    @pam ||= Pam::PaymentAdministratorManager.new(modal_param)
-  end
-
   def registration_parameter_file(*args)
     directory = "#{data_for(:registration, {})['development_dir']}"
     directory = "#{data_for(:registration, {})['jenkins_dir']}" if helper.to_bool(ENV['JENKINS'])

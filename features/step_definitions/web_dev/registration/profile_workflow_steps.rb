@@ -24,28 +24,28 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_info.account_username.set((test_param[:username] = (str.nil?)?(helper.random_username):str))
+  registration.profile.account_username.set((test_param[:username] = (str.nil?)?(helper.random_username):str))
   step "blur out on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.account_info.account_username.text).to eql((str.nil?)?test_param[:username]:str)
+  expect(registration.profile.account_username.text).to eql((str.nil?)?test_param[:username]:str)
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
-  registration.profile.account_info.account_password.set(test_param[:password] = (str.nil?)?(helper.random_password):str)
+  registration.profile.account_password.set(test_param[:password] = (str.nil?)?(helper.random_password):str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.account_info.account_password.text).to eql((str.nil?)?test_param[:password]:str)
+  expect(registration.profile.account_password.text).to eql((str.nil?)?test_param[:password]:str)
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword to (?:same as previous password|(.*))$/ do |str|
-  registration.profile.account_info.retype_password.set(test_param[:retype_password] = (str.nil?)?(test_param[:password]):str)
+  registration.profile.retype_password.set(test_param[:retype_password] = (str.nil?)?(test_param[:password]):str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Rr]e-[Tt]ype [Pp]assword is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.account_info.retype_password.text).to eql((str.nil?)?test_param[:retype_password]:str)
+  expect(registration.profile.retype_password.text).to eql((str.nil?)?test_param[:retype_password]:str)
 end
 
 # Business Use - Mostly mailing (letters/postcards/flats)
@@ -57,7 +57,7 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion is (?:correct|(.*))$/ do |str|
-  test_param[:survey_question_selected] = registration.profile.survey_question.select((str.nil?)?test_param[:survey_question]:str)
+  expect(registration.profile.survey_question.text).to eql((str.nil?)?test_param[:survey_question]:str)
 end
 
 #Magazine Ad
@@ -75,32 +75,36 @@ end
 #Received Mailer
 #Email from Stamps.com
 # Already used in office
-Then /^[Ss]et [Pp]rofile [Pp]age Referer Name to (.*)$/ do |str|
-  test_param[:survey_question_selected] = registration.profile.referer_name.select(test_param[:referer_name] = str)
+Then /^[Ss]et How did you hear about us\? to (.*)$/ do |str|
+  test_param[:survey_question_selected] = registration.profile.referer_name.select(test_param[:referer_name] = str) if registration.profile.referer_name.present?
+end
+
+Then /^[Ee]xpect How did you hear about us\? is (?:correct|(.*))$/ do |str|
+  expect(registration.profile.referer_name.text).to eql((str.nil?)?test_param[:referer_name]:str) if registration.profile.referer_name.present?
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ do |str|
-  registration.profile.promo_code.show_promo_code.set(test_param[:promo_code] = (str.nil?)?'':str)
+  registration.profile.show_promo_code.set(test_param[:promo_code] = (str.nil?)?'':str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.promo_code.show_promo_code.text).to eql((str.nil?)?test_param[:promo_code]:str)
+  expect(registration.profile.show_promo_code.text).to eql((str.nil?)?test_param[:promo_code]:str)
 end
 
 Then /^check [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox.check
+  registration.profile.money_saving_offers_checkbox.check
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
-  expect(registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox).to be_checked, "Profile Money-saving offers and new products is not checked. Got checked"
+  expect(registration.profile.money_saving_offers_checkbox).to be_checked, "Profile Money-saving offers and new products is not checked. Got checked"
 end
 
 Then /^uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
-  registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox.uncheck
+  registration.profile.money_saving_offers_checkbox.uncheck
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
-  expect(registration.profile.side_content.money_saving_offers.money_saving_offers_checkbox).not_to be_checked, "Expected Profile Money-saving offers and new products is checked. Got unchecked"
+  expect(registration.profile.money_saving_offers_checkbox).not_to be_checked, "Expected Profile Money-saving offers and new products is checked. Got unchecked"
 end
 
 Then /^[Cc]ontinue to [Mm]embership page$/ do

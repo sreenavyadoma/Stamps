@@ -178,7 +178,7 @@ module Stamps
       class CustomsInformation < Browser::StampsModal
 
         attr_reader :window_title, :associated_items, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
-                    :more_info, :itn_number, :license, :invoice, :total_value_element, :i_agree, :privacy_statement, :privacy_link,
+                    :more_info, :itn_number, :license, :invoice, :total_value_element, :agree_to_terms, :privacy_statement, :privacy_link,
                     :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label, :certificate
 
         def initialize(param)
@@ -206,7 +206,7 @@ module Stamps
 
           field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
           verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
-          @i_agree = StampsCheckBox.new field, verify_field, "class", "checked"
+          @agree_to_terms = StampsCheckBox.new field, verify_field, "class", "checked"
 
           @privacy_statement = UspsPrivactActStatementModal.new(param)
           @privacy_link = StampsElement.new browser.span(text: "USPS Privacy Act Statement")

@@ -22,6 +22,8 @@ require 'measured'
 require 'holidays'
 
 require_relative 'lib/apps/registration_app'
+require_relative 'lib/apps/pam_app'
+require_relative 'lib/pam/pam_page_header'
 require_relative 'lib/apps/stores_app'
 require_relative 'lib/apps/test_helpers'
 require_relative 'lib/apps/test_parameters'
