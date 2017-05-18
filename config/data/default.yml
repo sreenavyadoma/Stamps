@@ -979,7 +979,7 @@ orders_credentials:
       usr: stgbh3mebdk6
       pw: pass111
     rates_pmei_comm_base:
-      usr: pmei_com_base
+      usr: pmei_com_base1
       pw: password1
     rates_pmei_comm_plus:
       usr: pmei_com_plus
