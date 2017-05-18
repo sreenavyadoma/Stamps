@@ -477,9 +477,12 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          step "set Order Details form Pounds to 0"
-          step "set Order Details form Ounces to 0"
-          step "On Order Details form, blur out"
+          step "set Order Details form Pounds to 0" if modal_param.test_env == :orders
+          step "set Order Details form Ounces to 0" if modal_param.test_env == :orders
+          step "On Order Details form, blur out" if modal_param.test_env == :orders
+
+          step "execute code for setting pounds on mail" if modal_param.test_env == :mail
+          step "execute code for setting ounces on mail" if modal_param.test_env == :mail
 
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:group]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
