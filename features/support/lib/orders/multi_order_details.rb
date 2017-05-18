@@ -8,7 +8,7 @@ module Stamps
           super
           @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
            #@weight = MultiOrderDetailsWeight.new(param)
-          @domestic_service = MultiDomesticService.new(param)
+          @domestic_service = Stamps::Orders::OrderDetailsCommon::Service.new(param, :multi_order)
           # @int_service = MultiInternationalService.new(param)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
@@ -16,16 +16,8 @@ module Stamps
           @buttons = MultiUpdateController.new(param)
         end
 
-        def blur_out
-          #multi_blur_element.blur_out #todo-kaushal remove this
-        end
-
-        def present?
-          #multi_blur_element.present? #todo-kaushal remove this
-        end
-
-        def wait_until_present(*args)
-          #multi_blur_element.wait_until_present(*args) #todo-kaushal remove this
+        def present
+          ship_from_multi.present?
         end
 
         def expand
@@ -38,12 +30,6 @@ module Stamps
         private
         def order_count_label
           browser.ps(css: 'b').last
-        end
-
-        public
-        def order_count
-          expect(order_count_label).to be_present
-          StampsElement.new(order_count_label).text.gsub(/\d+/).first.to_i
         end
       end
    end
@@ -61,43 +47,6 @@ module Stamps
           inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
           @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-        end
-      end
-
-      class MultiDomesticService < Browser::StampsModal
-        attr_reader :text_box, :drop_down, :blur_element
-        def initialize(param)
-          super
-          @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
-          @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
-          @blur_element = BlurOutElement.new(param)
-        end
-
-        def select(str)
-          logger.info "Select service #{str}"
-
-          sel_arr = str.split(/\s+/)
-          substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
-
-          selection = StampsElement.new browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
-
-          20.times do
-            begin
-              drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection.click
-              blur_out
-              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
-              break if text_box.text.include?(substr)
-            rescue
-              #ignore
-            end
-          end
-          logger.info "#{text_box.text} service selected."
-
-          # Test if selected service includes abbreviated selection.
-          expect(text_box.text).to include(substr)
-          text_box.text
         end
       end
 
