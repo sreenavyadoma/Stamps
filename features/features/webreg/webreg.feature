@@ -26,10 +26,4 @@ Feature: Registration
     Then expect Order Details form Order ID is the same as saved Order ID
     Then Sign out
 
-#
-
-#    Then save sign-in credentials to parameter file registration_ach_purchase_100k
-#    Then load sign-in credentials from file registration_ach_purchase_100k
-
-#    Then send username to standard out
 
