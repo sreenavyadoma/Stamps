@@ -19,7 +19,6 @@ require 'open3'
 require 'yaml'
 require 'spreadsheet'
 require 'measured'
-require 'holidays'
 
 require_relative 'lib/apps/registration_app'
 require_relative 'lib/apps/stores_app'
