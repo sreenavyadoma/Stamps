@@ -9,6 +9,8 @@ rates_test:
   rates_pm_comm_base: PM Comm Base
   rates_pm_comm_plus: PM Comm Plus
   rates_parcel_select_ground: Parcel Select Ground
+  rates_pmei_comm_base: PMEI Comm Base
+  rates_pmei_comm_plus: PMEI Comm Plus
   test_dir: C:\watir-webdriver\rates\tests
   results_dir: C:\watir-webdriver\rates\results
 
@@ -129,6 +131,417 @@ shipping_method:
   usps_fcml:
     text: USPS First-Class Mail Letter
     code: 809
+
+country_groups_PMEI:
+  group1:
+    1: Canada
+  group2:
+    1: Mexico
+  group3:
+    1: Hong Kong
+    2: Republic of (South) Korea
+  group4:
+    1:  Albania
+    2:  Armenia
+    3:  Azerbaijan
+    4:  Belarus
+    5:  Bosnia-Herzegovina
+    6:  Bulgaria
+    7:  Croatia
+    8:  Cyprus
+    9:  Czech Republic
+    10: Estonia
+    11: Republic Of Georgia
+    12: Hungary
+    13: Latvia
+    14: Lithuania
+    15: Republic Of Macedonia
+    16: Moldova
+    17: Poland
+    18: Romania
+    19: Russia
+    20: Turkey
+    21: Ukraine
+  group5:
+    1:  Andorra
+    2:  Austria
+    3:  Belgium
+    4:  Denmark
+    5:  Faroe Islands
+    6:  Finland
+    7:  Greece
+    8:  Iceland
+    9:  Ireland
+    10: Italy
+    11: Liechtenstein
+    12: Luxembourg
+    13: Malta
+    14: Norway
+    15: Portugal
+    16: San Marino
+    17: Republic of Serbia
+    18: Slovak Republic (Slovakia)
+    19: Slovenia
+    20: Spain
+    21: Sweden
+    22: Switzerland
+    23: Vatican City
+  group6:
+    1:  Bangladesh
+    2:  Bhutan
+    3:  Brunei Darussalam
+    4:  Burma (Myanmar)
+    5:  Cambodia
+    6:  Fiji
+    7:  French Polynesia
+    8:  India
+    9:  Indonesia
+    10: Kazakhstan
+    11: Kiribati
+    12: Kyrgyzstan
+    13: Laos
+    14: Macao
+    15: Malaysia
+    16: Maldives
+    17: Mongolia
+    18: Nauru
+    19: Nepal
+    20: New Caledonia
+    21: Pakistan
+    22: Papua New Guinea
+    23: Phillipines
+    24: Samoa
+    25: Singapore
+    26: Solomon Islands
+    27: Sri Lanka
+    28: Taiwan
+    29: Tajikistan
+    30: Thailand
+    31: Tonga
+    32: Turkmenistan
+    33: Uzbekistan
+    34: Vanuatu
+    35: Vietnam
+  group7:
+    1:  Angola
+    2:  Benin
+    3:  Botswana
+    4:  Burkina Faso
+    5:  Burundi
+    6:  Cameroon
+    7:  Cape Verde
+    8:  Central African Republic
+    9:  Chad
+    10: Republic Of The Congo
+    11: Cote d'Ivoire (Ivory Coast)
+    12: Djibouti
+    13: Equatorial Guinea
+    14: Eritrea
+    15: Gabon
+    16: Ghana
+    17: Guinea
+    18: Guinea-Bissau
+    19: Kenya
+    20: Lesotho
+    21: Liberia
+    22: Madagascar
+    23: Malawi
+    24: Mali
+    25: Mauritania
+    26: Mauritius
+    27: Mozambique
+    28: Namibia
+    29: Niger
+    30: Nigeria
+    31: Rwanda
+    32: Sao Tome & Principe
+    33: Senegal
+    34: Seychelles
+    35: Sierra Leone
+    36: South Africa
+    37: Sudan
+    38: Swaziland
+    39: Tanzania
+    40: Togo
+    41: Uganda
+    42: Zambia
+    43: Zimbabwe
+  group8:
+    1:  Algeria
+    2:  Bahrain
+    3:  Eqypt
+    4:  Ethiopia
+    5:  Iraq
+    6:  Israel
+    7:  Jordan
+    8:  Kuwait
+    9:  Lebanon
+    10: Morocco
+    11: Oman
+    12: Qatar
+    13: Saudi Arabia
+    14: Syria
+    15: Tunisia
+    16: United Arab Emirates
+    17: Yemen
+  group9:
+    1:  Anguilla
+    2:  Argentina
+    3:  Aruba
+    4:  Bahamas
+    5:  Barbados
+    6:  Belize
+    7:  Bermuda
+    8:  Bolivia
+    9:  Bonaire, Sint Eustatius and Saba
+    10: Cayman Islands
+    11: Chile
+    12: Colombia
+    13: Costa Rica
+    14: Cuba
+    15: Curacao
+    16: Dominica
+    17: Dominican Republic
+    18: Ecuador
+    19: El Salvador
+    20: French Guiana
+    21: Grenada
+    22: Guadeloupe
+    23: Guatemala
+    24: Guyana
+    25: Haiti
+    26: Honduras
+    27: Jamaica
+    28: Martinique
+    29: Nicaragua
+    30: Panama
+    31: Paraguay
+    32: Peru
+    33: St. Christopher (St. Kitts) & Nevis
+    34: Saint Lucia
+    35: Saint Vincent & Grenadines
+    36: Trinidad & Tobago
+    37: Turks & Caicos Islands
+    38: Uruguay
+    39: Venezuela
+  group10:
+    1:  Australia
+    2:  New Zealand
+  group11:
+    1:  Great Britain
+  group12:
+    1:  Japan
+  group13:
+    1:  France
+  group14:
+    1:  China
+  group15:
+    1:  Brazil
+  group16:
+    1:  Germany
+  group17:
+    1:  Nertherlands
+
+country_groups_PMEI_flat_rate:
+  group1:
+    1: Canada
+  group2:
+    1:  Argentina
+    2:  Bolivia
+    3:  Brazil
+    4:  Chile
+    5:  Colombia
+    6:  Dominican Repubilc
+    7:  Ecuador
+    8:  Guatemala
+    9:  Guyana
+    10: Mexico
+    11: Paraguay
+    12: Peru
+    13: Uruguay
+    14: Venezuela
+  group3:
+    1:  China
+    2:  Hong Kong
+    3:  Indonesia
+    4:  Japan
+    5:  Republic of (South) Korea
+    6:  Mongolia
+    7:  Phillipines
+    8:  Singapore
+    9:  Thailand
+    10: Vietnam
+  group4:
+    1:  Austria
+    2:  Belgium
+    3:  Denmark
+    4:  Finland
+    5:  France
+    6:  Germany
+    7:  Great Britain
+    8:  Ireland
+    9:  Italy
+    10: Luxembourg
+    11: Netherlands
+    12: Norway
+    13: Portugal
+    14: Slovak Republic (Slovakia)
+    15: Slovenia
+    16: Spain
+    17: Sweden
+    18: Switzerland
+  group5:
+    1:  India
+  group6:
+    1:  Australia
+    2:  New Zealand
+  group7:
+    1:  Egypt
+    2:  Iraq
+    3:  Israel
+    4:  Jordan
+    5:  Saudi Arabia
+    6:  Turkey
+    7:  United Arab Emirates
+    8:  Yemen
+  group8:
+    1:  Albania
+    2:  Algeria
+    3:  Andorra
+    4:  Angola
+    5:  Anguilla
+    6:  Armenia
+    7:  Aruba
+    8:  Azerbaijan
+    9:  Bahamas
+    10: Bahrain
+    11: Bangladesh
+    12: Barbados
+    13: Belarus
+    14: Belize
+    15: Benin
+    16: Bermuda
+    17: Bhutan
+    18: Bonaire, Sint Eustatius and Saba
+    19: Bosnia-Herzegovina
+    20: Botswana
+    21: Brunei Darussalam
+    22: Bulgaria
+    23: Burkina Faso
+    24: Burma (Myanmar)
+    25: Burundi
+    26: Cambodia
+    27: Cameroon
+    28: Cape Verde
+    29: Cayman Islands
+    30: Central African Republic
+    31: Democratic Republic Of The Congo
+    32: Republic Of The Congo
+    33: Costa Rica
+    34: Cote d'Ivoire (Ivory Coast)
+    35: Croatia
+    36: Cuba
+    37: Curacao
+    38: Cyprus
+    39: Czech Republic
+    40: Djibouti
+    41: Dominica
+    42: El Salvador
+    43: Equatorial Guinea
+    44: Eritrea
+    45: Estonia
+    46: Ethiopia
+    47: Faroe Islands
+    48: Fiji
+    49: French Guiana
+    50: French Polynesia
+    51: Gabon
+    52: Republic Of Georgia
+    53: Ghana
+    54: Greece
+    55: Grenada
+    56: Guadeloupe
+    57: Guinea
+    58: Guinea-Bissau
+    59: Haiti
+    50: Honduras
+    51: Hungary
+    52: Iceland
+    53: Jamaica
+    54: Kazakhstan
+    55: Kenya
+    56: Kiribati
+    57: Kuwait
+    58: Kyrgyzstan
+    59: Laos
+    60: Latvia
+    61: Lebanon
+    62: Lesotho
+    63: Liberia
+    64: Liechtenstein
+    65: Lithuania
+    66: Macao
+    67: Republic Of Macedonia
+    68: Madagascar
+    69: Malawi
+    70: Malaysia
+    71: Maldives
+    72: Mali
+    73: Malta
+    74: Martinique
+    75: Mauritania
+    76: Mauritius
+    77: Moldova
+    78: Morocco
+    79: Mozambique
+    80: Namibia
+    81: Nauru
+    82: Nepal
+    83: New Caledonia
+    84: Nicaragua
+    85: Niger
+    86: Nigeria
+    87: Oman
+    88: Pakistan
+    89: Panama
+    90: Papua New Guinea
+    91: Poland
+    92: Qatar
+    93: Romania
+    94: Russia
+    95: Rwanda
+    96: St. Christopher (St. Kitts) & Nevis
+    97: Saint Lucia
+    98: Saint Vincent & Grenadines
+    99: Samoa
+    100: San Marino
+    101: Sao Tome & Principe
+    102: Senegal
+    103: Republic of Serbia
+    104: Seychelles
+    105: Sierra Leone
+    106: Solomon Islands
+    107: South Africa
+    108: Sri Lanka
+    109: Sudan
+    100: Swaziland
+    101: Syria
+    112: Taiwan
+    113: Tajikistan
+    114: Tanzania
+    115: Togo
+    116: Tonga
+    117: Trinidad & Tobago
+    118: Tunisia
+    119: Turkmenistan
+    120: Turks & Caicos Islands
+    121: Uganda
+    122: Ukraine
+    123: Uzbekistan
+    124: Vanuatu
+    125: Vatican City
+    126: Zambia
+    127: Zimbabwe
 
 zone_1_through_4:
     zone1:
@@ -572,6 +985,12 @@ orders_credentials:
     rates_pm_comm_base:
       usr: stgbh3mebdk6
       pw: pass111
+    rates_pmei_comm_base:
+      usr: pmei_com_base1
+      pw: password1
+    rates_pmei_comm_plus:
+      usr: pmei_com_plus
+      pw: pass111
     search_orders:
       usr: stgi3eicvj8d7b
       pw: pass111
@@ -927,6 +1346,12 @@ orders_credentials:
       pw: pass111
     rates_pm_comm_base:
       usr: ccixjqr1mt
+      pw: pass111
+    rates_pmei_comm_base:
+      usr: pmei_com_base
+      pw: pass111
+    rates_pmei_comm_plus:
+      usr: pmei_com_plus
       pw: pass111
     rob:
       usr: ccspkvzy90

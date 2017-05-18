@@ -256,6 +256,18 @@ Then /^[Ss]et Order Details form Ship-To to Domestic Address$/ do |table|
   step "set Order Details form Ship-To to Domestic Address #{test_param[:ship_to]}"
 end
 
+Then /^[Ss]et Order Details Ship-To Country to a random country in PMEI price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMEI, {})["group" + group].values
+  test_param[:country] = country_list[rand(country_list.size)]
+  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+end
+
+Then /^[Ss]et Order Details Ship-To Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
+  test_param[:country] = country_list[rand(country_list.size)]
+  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+end
+
 Then /^[Ss]et Order Details Ship-To International address to$/ do |table|
   address_table = table.hashes.first
 
