@@ -432,7 +432,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           @result_sheet.row(row_number).set_format(@result_sheet_columns[:group], format)
           @result_sheet[row_number, @result_sheet_columns[:group]]= price
           @result_sheet[row_number, @result_sheet_columns[:username]] = test_param[:username]
-          @result_sheet[row_number, @result_sheet_columns[:ship_to_country]] = test_param[:ship_to_country]
+          @result_sheet[row_number, @result_sheet_columns[:ship_to_country]] = test_param[:country]
 
           # Set weight to 0
           step "set Order Details form Pounds to 0"
