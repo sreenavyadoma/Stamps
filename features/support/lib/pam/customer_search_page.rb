@@ -49,13 +49,13 @@ module Stamps
       def search
         customer_profile_found = CustomerProfilePage.new(param)
         customer_profile_not_found = CustomerProfileNotFound.new(param)
-        20.times do |counter|
+        50.times do |counter|
           search_btn.send_keys(:enter)
           search_btn.click
           sleep(0.5)
           return @customer_profile_page = customer_profile_found if customer_profile_found.present?
           if customer_profile_not_found.present?
-            logger.error "PAM:  #{customer_profile_not_found.status_reason}"
+            logger.step "PAM:  #{customer_profile_not_found.status_reason}"
             browser.back
           end
         end

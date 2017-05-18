@@ -23,18 +23,6 @@ Then /^[Ee]xpect Profile Page Survey question help text is (.*)$/ do |str|
 end
 
 =begin
-Then /^[Ss]et Profile Page Email to (.*)$/ do |str|
-
-end
-
-Then /^[Bb]lur blur out of Profile Page$/ do
-
-end
-=end
-
-
-
-=begin
 Then /^[Ee]xpect Profile page Email help text (\d+) is (.*)$/ do |number, str|
   expect(registration.profile.email.help_text(number.to_i)).to eql(str))
 end
@@ -112,27 +100,11 @@ Then /^[Ee]xpect Profile page password help text is (.*)$/ do |number, str|
   expect(registration.profile.account_info.account_password.help_text(number.to_i)). to eql(str)
 end
 
-
-=begin
-
-Then /^[Ss]et Profile page retype password field to (.*)$/ do |str|
-
-end
-
-Then /^[Bb]lur blur out of Profile Page$/ do
-
-end
-=end
-
 Then /^[Ee]xpect Profile page retype password help text is (.*)$/ do |str|
   expect(registration.profile.account_info.retype_password.help_text). to eql(str)
 end
 
 Then /^[Ss]et Profile page retype password field to (.*)$/ do |str|
-
-end
-
-Then /^[Ss]et Profile page survey question to (.*)$/ do |str|
 
 end
 

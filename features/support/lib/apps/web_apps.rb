@@ -4,6 +4,6 @@ module WebApp
   end
 
   def stamps
-    @stamps ||= StampsCom.new(modal_param)
+    @stamps ||= StampsDotCom.new(modal_param)
   end
 end

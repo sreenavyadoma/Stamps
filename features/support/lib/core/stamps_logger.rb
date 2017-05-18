@@ -55,7 +55,7 @@ module Stamps
     def warn message
       begin
         message = repeat message, 25 if message.size==1
-        (@logger.warn "#{@test_name} :: #{message}") if StampsTestConfig.debug
+        (@logger.warn "#{@test_name} :: #{message}")
       rescue
         # ignore
       end
@@ -65,7 +65,7 @@ module Stamps
     def error message
       begin
         message = repeat message, 25 if message.size==1
-        (@logger.error "#{@test_name} :: #{message}") if StampsTestConfig.debug
+        (@logger.error "#{@test_name} :: #{message}")
       rescue
         # ignore
       end
@@ -75,7 +75,7 @@ module Stamps
     def fatal message
       begin
         message = repeat message, 25 if message.size==1
-        (@logger.fatal "#{@test_name} :: #{message}") if StampsTestConfig.debug
+        (@logger.fatal "#{@test_name} :: #{message}")
       rescue
         # ignore
       end

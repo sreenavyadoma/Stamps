@@ -5,7 +5,7 @@ module Stamps
 
       def initialize(param)
         super
-        @web_apps = StampsCom.new(param)
+        @web_apps = StampsDotCom.new(param)
         @web_mail = @web_apps.mail
       end
 

@@ -6,7 +6,7 @@ module Stamps
       def initialize(param)
         super
         @orders_toolbar = Toolbar::OrdersToolbar.new(param)
-        @landing_page = Orders::OrdersLandingPage.new(param)
+        @landing_page = Orders::Authentication::OrdersLandingPage.new(param)
         @orders_grid = Orders::Grid::OrdersGrid.new(param)
         @styles = PageStyles.new(param)
         @order_details = Orders::Details::SingleOrderDetails.new(param)
