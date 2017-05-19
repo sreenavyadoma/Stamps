@@ -79,8 +79,9 @@ module Stamps
         end
         expect(url).not_to be_nil, "URL is nil. Check your ENV['URL'] parameter."
         logger.info "Visit: #{url}"
+        sleep(1)
         browser.goto(url)
-        logger.info "Visited: #{browser.url}"
+        sleep(1.5)
         self
       end
     end
