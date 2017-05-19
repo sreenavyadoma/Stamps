@@ -110,7 +110,6 @@ module Stamps
     end
 
     class MailSignInModal < StampsSignInBase
-
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info, :invalid_msg,
                   :remember_username_checkbox, :invalid_username_password
 

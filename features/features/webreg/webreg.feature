@@ -21,7 +21,7 @@ Feature: Registration
     Then expect PAM Customer Profile Page Username is correct
 
     # Verify new user is able to sign-in to Web Apps
-    Then load Web Apps Orders then sign-in
+    Then load Web Apps Orders then sign-in expecting Security Questions
     Then add new order
     Then expect Order Details form Order ID is the same as saved Order ID
     Then Sign out

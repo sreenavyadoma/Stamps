@@ -14,6 +14,36 @@ Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in$/ do
   step "sign-in to Web Apps as #{test_param[:username]}, #{test_param[:password]}"
 end
 
+Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in expecting Security Questions$/ do
+  modal_param.web_app = :orders
+  step "load Web Apps Sign-in page"
+  modal[:security_quesstions] = stamps.orders.landing_page.orders_sign_in(username, password)
+end
+
+Then /^[Ss]elect Security Questions 1st security question (.*)$/ do |str|
+  modal[:security_quesstions].first_security_question.select(str)
+end
+
+Then /^[Ss]et Security Questions 1st security answer to (?:random value|(.*))$/ do |str|
+  modal[:security_quesstions].first_security_answer.set(test_param[:first_security_answer] = (str.nil?)?'automation':str)
+end
+
+Then /^[Ee]xpect Security Questions 1st security answer is (?:correct|(.*))$/ do |str|
+  expect(modal[:security_quesstions].first_security_answer.text).to eql((str.nil?)?test_param[:first_security_answer]:str)
+end
+
+Then /^[Ss]elect Security Questions 2nd security question (.*)$/ do |str|
+  modal[:security_quesstions].second_security_question.select(str)
+end
+
+Then /^[Ss]et Security Questions 2nd security answer to (?:random value|(.*))$/ do |str|
+  modal[:security_quesstions].second_security_question.set(test_param[:first_security_answer] = (str.nil?)?'automation':str)
+end
+
+Then /^[Ee]xpect Security Questions 2nd security answer is (?:correct|(.*))$/ do |str|
+  expect(modal[:security_quesstions].second_security_question.text).to eql((str.nil?)?test_param[:first_security_answer]:str)
+end
+
 Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
   modal_param.web_app = :mail
   step "load Web Apps Sign-in page"

@@ -63,7 +63,6 @@ module Stamps
 
         def first_time_sign_in usr, pw
           market_place = Orders::Stores::MarketPlace.new(param)
-
           username.wait_until_present 6
 
           20.times do
@@ -95,6 +94,7 @@ module Stamps
             loading_orders = StampsElement.new browser.div(text: "Loading orders...")
             invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
             new_welcome = NewWelcomeModal.new(param)
+            security_questions = SecurityQuestions.new(param)
 
             expect(browser.url).to include "Orders"
 
@@ -109,6 +109,9 @@ module Stamps
                   username.set(usr)
                   password.set(pw)
                   sign_in_btn.send_keys(:enter)
+
+                  security_questions.wait_until_present(2)
+                  return security_questions if security_questions.present?
 
                   30.times do
                     logger.message loading_orders.text if loading_orders.present?
@@ -173,10 +176,6 @@ module Stamps
             logger.message e.message
             logger.message e.backtrace.join("\n")
           end
-        end
-
-        def orders_sign_in_expecting_sq(usr,pw)
-
         end
       end
     end

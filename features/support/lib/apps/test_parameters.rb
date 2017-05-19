@@ -1,11 +1,9 @@
 module TestParameters
   def test_param
-    if @test_data.nil?
-      @test_data ||= Hash.new
-      @test_data[:customs_associated_items] ||= Hash.new
-      @test_data[:details_associated_items] ||= Hash.new
-      @test_data[:order_id] ||= Hash.new
-    end
+    @test_data ||= Hash.new
+    @test_data[:customs_associated_items] ||= Hash.new
+    @test_data[:details_associated_items] ||= Hash.new
+    @test_data[:order_id] ||= Hash.new
     @test_data
   end
 
@@ -43,5 +41,9 @@ module TestParameters
     @modal_param.logger = config.logger
     @modal_param.scenario_name = config.scenario_name
     @modal_param
+  end
+
+  def modal
+    @modal ||= Hash.new
   end
 end
