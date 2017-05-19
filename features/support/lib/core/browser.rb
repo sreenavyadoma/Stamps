@@ -82,10 +82,14 @@ module Stamps
       end
 
       def wait_while_present(*args)
-        if args.length==1
-          element.wait_while_present(args[0].to_i)
-        else
-          element.wait_while_present
+        begin
+          if args.length==1
+            element.wait_while_present(args[0].to_i)
+          else
+            element.wait_while_present
+          end
+        rescue
+          #ignore
         end
       end
 
