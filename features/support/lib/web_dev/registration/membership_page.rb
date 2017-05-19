@@ -195,7 +195,7 @@ module Stamps
         def submit
           submit_btn = StampsElement.new(browser.button(id: "next"))
           submit_btn.click_while_present
-          submit_btn.wait_while_present(10)
+          submit_btn.wait_while_present(20)
           sleep(5)
         end
       end
