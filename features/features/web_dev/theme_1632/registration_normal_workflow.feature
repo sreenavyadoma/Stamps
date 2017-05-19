@@ -40,11 +40,11 @@ Feature: Test Workflow - Theme 1632 Happy Path
 
     # Verify new user is able to sign-in to Web Apps
     Then load Web Apps Orders then sign-in expecting Security Questions
-    Then select Security Questions 1st security Question What is your mother's maiden name?
+    Then select Security Questions 1st security question What is your mother's maiden name?
     Then set Security Questions 1st security answer to random value
     Then expect Security Questions 1st security answer is correct
 
-    Then select Security Questions 2nd security Question What is your pet's name?
+    Then select Security Questions 2nd security question What is your pet's name?
     Then set Security Questions 2nd security answer to random value
     Then expect Security Questions 2nd security answer is correct
 

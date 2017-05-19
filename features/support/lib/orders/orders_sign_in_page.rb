@@ -177,6 +177,28 @@ module Stamps
             logger.message e.backtrace.join("\n")
           end
         end
+
+        def orders_sign_in_sec_questions(usr, pw)
+          security_questions = SecurityQuestions.new(param)
+
+          expect(browser.url).to include "Orders"
+
+          logger.message "#"*15
+          logger.message "Username: #{usr}"
+          logger.message "#"*15
+
+          username.wait_until_present(8)
+          20.times do
+              if username.present?
+                username.set(usr)
+                password.set(pw)
+                sign_in_btn.send_keys(:enter)
+                security_questions.wait_until_present(2)
+                return security_questions if security_questions.present?
+              end
+          end
+          expect(security_questions).to be_present, ""
+        end
       end
     end
   end
