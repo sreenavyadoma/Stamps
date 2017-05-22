@@ -209,11 +209,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Aa]ddress to (.*)$/ do |str|
   registration.membership.billing_address.click
   step "blur_out on membership page"
   registration.membership.billing_address.double_click
-  registration.membership.billing_address..click
-  step "blur_out on membership page"
-  registration.membership.address.double_click
-  registration.membership.address.click
-  registration.membership.address.click
+  registration.membership.billing_address.click
   step "blur_out on membership page"
 end
 
