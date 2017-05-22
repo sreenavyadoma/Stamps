@@ -437,7 +437,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set weight to 0
           step "set Order Details form Pounds to 0"
           step "set Order Details form Ounces to 0"
-          step "on Order Details form, blur out"
+          step "Open Settings Modal"
+          step "In Settings modal, Close"
 
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
