@@ -529,7 +529,7 @@ module Stamps
 
             Selenium::WebDriver::Chrome.path = chrome_driver_path
             driver = Selenium::WebDriver.for :chrome
-            browser = Watir::Browser.new (driver)
+            browser = Watir::Browser.new (driver), switches: ['--ignore-certificate-errors']
           when :ie
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
