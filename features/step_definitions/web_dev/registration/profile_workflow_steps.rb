@@ -57,7 +57,7 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.survey_question.text).to eql((str.nil?)?test_param[:survey_question]:str)
+  expect(registration.profile.survey_question.text).to include((str.nil?)?test_param[:survey_question]:str)
 end
 
 #Magazine Ad
