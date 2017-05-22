@@ -43,6 +43,9 @@ module Stamps
 
         def initialize(param)
           super
+          browser.text_field(css: "input[class*=x-form-checkbox]")
+          browser.a(text: "Download Software for Windows")
+
           @username = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
           @password = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
           @sign_in_btn = StampsElement.new browser.button(id: "signInButton")
@@ -61,22 +64,22 @@ module Stamps
           title.blur_out
         end
 
-        def first_time_sign_in usr, pw
+        def first_time_sign_in(usr, pw)
           market_place = Orders::Stores::MarketPlace.new(param)
-          username.wait_until_present 6
+          username.wait_until_present(6)
 
           20.times do
-            username.wait_until_present 2
-            username.set usr
+            username.wait_until_present(2)
+            username.set(usr)
             blur_out
-            password.set pw
+            password.set(pw)
             blur_out
             sign_in_btn.send_keys(:enter)
             blur_out
             sign_in_btn.click
             blur_out
 
-            market_place.wait_until_present 6
+            market_place.wait_until_present(6)
             if market_place.present?
               logger.message "-"
               logger.message "Username: #{usr}"
