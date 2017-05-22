@@ -74,13 +74,6 @@ Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
   registration.membership.address.click
   registration.membership.address.click
   step "blur_out on membership page"
-  registration.membership.address.click
-  step "blur_out on membership page"
-  registration.membership.address.double_click
-  registration.membership.address.click
-  registration.membership.address.click
-  step "blur_out on membership page"
-  step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Aa]ddress is (?:correct|(.*))$/ do |str|
