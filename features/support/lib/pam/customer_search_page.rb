@@ -46,7 +46,7 @@ module Stamps
       include CustomerSearch
       attr_accessor :customer_profile_page
 
-      def search
+      def search_username(str)
         customer_profile_found = CustomerProfilePage.new(param)
         customer_profile_not_found = CustomerProfileNotFound.new(param)
         50.times do |counter|
@@ -57,6 +57,8 @@ module Stamps
           if customer_profile_not_found.present?
             logger.step "PAM:  #{customer_profile_not_found.status_reason}"
             browser.back
+            sleep(0.25)
+            username.set(str)
           end
         end
         search_btn.send_keys(:enter)

@@ -13,7 +13,7 @@ Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*)
 end
 
 Then /^[Cc]lick PAM [Cc]ustomer [Ss]earch page [Ss]earch button$/ do
-  test_param[:pam_search_result] = pam.customer_search_page.search
+  test_param[:pam_search_result] = pam.customer_search_page.search_username(test_param[:username])
 end
 
 
