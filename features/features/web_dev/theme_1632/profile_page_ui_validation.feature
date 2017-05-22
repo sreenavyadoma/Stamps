@@ -27,8 +27,6 @@ Feature: Profile page validation theme_1632
     #Then expect Profile page Survey Question to contain Both mailing and shipping
     #Then expect Profile page Survey Question to contain Individual
 
-     Then expect Profile page promo code textbox exists
-
      Then expect Profile page SideContent Side Account header is "Why do I need to create an account?"
 
      #Then expect Profile page SideContent Side Account paragraph is

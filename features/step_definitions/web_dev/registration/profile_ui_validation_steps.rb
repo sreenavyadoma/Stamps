@@ -6,26 +6,26 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age header contain (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age email exists$/ do
-  expect(registration.profile.email).to be_present, "Email textbox does not exists on profile page"
+  expect(registration.profile.email).to be_present, "Email textbox DOES NOT exists on profile page"
   registration.profile.email.present?
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age username exists$/ do
-  expect(registration.profile.account_username).to be_present, "Username textbox does not exist on profile page"
+  expect(registration.profile.account_username).to be_present, "Username textbox DOES NOT exist on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age password exists$/ do
-  expect(registration.profile.account_password).to be_present, "Password textbox does not exist on profile page"
+  expect(registration.profile.account_password).to be_present, "Password textbox DOES NOT exist on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age retype password exists$/ do
-  expect(registration.profile.retype_password).to be_present, "Retype password textbox does not exist on profile page"
+  expect(registration.profile.retype_password).to be_present, "Retype password textbox DOES NOT exist on profile page"
 end
 
 
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age promo code textbox exists$/ do
-  expect(registration.profile.promo_code).to be_present, "expect Profile promo code textbox does not exist"
+  expect(registration.profile.promo_code).to be_present, "Profile promo code textbox DOES NOT exist"
 end
 
 
