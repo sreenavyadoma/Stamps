@@ -6,11 +6,10 @@ Feature: Profile page validation theme_1632
   # Look at existing page objects for registration and start using it and building on it.
 
   Background:
-    Given I loaded SDC Website
+    Given I loaded the default registration page
 
   @registration_profile_page_ui_validation
   Scenario: Profile Page UI Validation
-    Then click on Get Started
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
 
