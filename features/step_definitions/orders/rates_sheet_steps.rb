@@ -437,6 +437,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set weight to 0
           step "set Order Details form Pounds to 0"
           step "set Order Details form Ounces to 0"
+          step "Open Settings Modal"
+          step "In Settings modal, Save"
 
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
@@ -500,7 +502,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           config.logger.step "#{"#"*10} Weight: #{@result_sheet[row_number, @result_sheet_columns[:weight]]}"
           config.logger.step "#{"#"*10} Selected Service: #{@result_sheet[row_number, @result_sheet_columns[:service_selected]]}"
           config.logger.step "#{"#"*10} Country: #{test_param[:country]}"
-          config.logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:zone]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
+          config.logger.step "#{"#"*10} #{"*"*5} Test #{@result_sheet[row_number, @result_sheet_columns[:status]] } - Expected #{@result_sheet[row_number, @result_sheet_columns[:group]]}, Got #{@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]]} #{"*"*5}"
           config.logger.step "#{"#"*10} "
         end
 
