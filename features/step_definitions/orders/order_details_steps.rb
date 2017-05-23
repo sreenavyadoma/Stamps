@@ -170,7 +170,7 @@ end
 
 Then /^[Ss]et Order Details form Length to (\d*)$/ do |value|
   test_param[:length] = value
-  expect(stamps.orders.order_details.dimensions.length).to be_present
+  expect(stamps.orders.order_details.dimensions.length).to be_present, "Order Details form Length is not present"
   stamps.orders.order_details.dimensions.length.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -178,7 +178,7 @@ end
 
 Then /^[Ss]et Order Details form Width to (\d*)$/ do |value|
   test_param[:width] = value
-  expect(stamps.orders.order_details.dimensions.width).to be_present
+  expect(stamps.orders.order_details.dimensions.width).to be_present, "Order Details form Width is not present"
   stamps.orders.order_details.dimensions.width.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -186,7 +186,7 @@ end
 
 Then /^[Ss]et Order Details form Height to (\d*)$/ do |value|
   test_param[:height] = value
-  expect(stamps.orders.order_details.dimensions.height).to be_present
+  expect(stamps.orders.order_details.dimensions.height).to be_present, "Order Details form Height is not present"
   stamps.orders.order_details.dimensions.height.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -200,9 +200,8 @@ Then /^[Oo]n Order Details form, uncheck Insure-For checkbox$/ do
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
-Then /^[Ss]et Order Details form Insure-For to \$(.*)$/ do |value|
-  test_param[:insure_for] = value.to_f.round(2)
-  stamps.orders.order_details.insure_for.set_and_agree_to_terms(test_param[:insure_for])
+Then /^[Ss]et Order Details form Insure-For to \$(.*)$/ do |str|
+  stamps.orders.order_details.insure_for.set_and_agree_to_terms(test_param[:insure_for] = str.to_f.round(2))
   10.times do
     break if stamps.orders.order_details.insure_for.cost > 0
     step "On Order Details form, blur out 3"
