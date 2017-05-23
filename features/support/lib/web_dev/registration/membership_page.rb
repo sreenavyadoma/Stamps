@@ -199,8 +199,7 @@ module Stamps
 
         def continue_to_next_page
           continue_btn.click_while_present
-          continue_btn.wait_while_present(20)
-          sleep(5)
+          continue_btn.wait_while_present(3)
         end
 
         def continue

@@ -82,6 +82,9 @@ module Stamps
       end
 
       def wait_while_present(*args)
+        #args.nil?5:args[0].to_i
+
+
         begin
           if args.length==1
             element.wait_while_present(args[0].to_i)
