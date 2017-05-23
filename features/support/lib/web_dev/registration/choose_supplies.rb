@@ -14,7 +14,7 @@ module Stamps
       end
 
       def wait_until_present
-        browser.button(text: "Place Order").wait_until_present 6
+        #browser.button(text: "Place Order").wait_until_present 6
       end
 
       def place_order
