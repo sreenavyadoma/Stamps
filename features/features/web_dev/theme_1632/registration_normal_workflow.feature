@@ -8,7 +8,6 @@ Feature: Test Workflow - Theme 1632 Happy Path
     # Profile Page
     Then set Profile page Email to random value
     Then set Profile page Username to random value
-    Then set Membership page Company to random value
     Then set Profile page Password to random value
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Individual
