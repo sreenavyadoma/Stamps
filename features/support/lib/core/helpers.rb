@@ -1,5 +1,4 @@
 module Stamps
-
   module RandomGenerators
     def random_full_name(*args)
       "#{random_alpha_capitalize(*args)} #{random_alpha_capitalize(*args)}"
@@ -465,5 +464,4 @@ module Stamps
       @browser_sym = :edge if "edge".include? browser_sym.downcase
     end
   end
-
 end
