@@ -45,11 +45,10 @@ module Stamps
           super
           browser.text_field(css: "input[class*=x-form-checkbox]")
           browser.a(text: "Download Software for Windows")
-
-          @username = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
-          @password = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
-          @sign_in_btn = StampsElement.new browser.button(id: "signInButton")
-          @title = StampsElement.new browser.h1(text: 'Sign In')
+          @username = StampsTextBox.new browser.text_field(css: "input[placeholder=USERNAME]")
+          @password = StampsTextBox.new browser.text_field(css: "input[placeholder=PASSWORD]")
+          @sign_in_btn = StampsElement.new browser.span(id: "div[id^=app-main-][id$=-targetEl]>div>div>div>div>div:nth-child(6)>div>div>a>span>span>span[id$=btnInnerEl]")
+          @title = StampsElement.new browser.div(text: 'Sign In')
         end
 
         def remember_my_username
