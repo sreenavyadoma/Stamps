@@ -111,6 +111,8 @@ module Stamps
                   username.set(usr)
                   password.set(pw)
                   sign_in_btn.send_keys(:enter)
+                  sign_in_btn.click
+                  sign_in_btn.click
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
