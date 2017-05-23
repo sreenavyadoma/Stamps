@@ -7,7 +7,7 @@ Feature: Registration
     Then populate all Profile page required fields
     Then continue to Membership page
     Then populate all Membership page required fields
-    Then submit Membership Page
+    Then click Membership page Continue button
 
     Then save sign-in credentials to parameter file normal_workflow
     Then save sign-in credentials

@@ -84,10 +84,16 @@ Then /^[Ee]xpect How did you hear about us\? is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ do |str|
-  registration.profile.show_promo_code.set(test_param[:promo_code] = (str.nil?)?'':str)
+  step "show profile page promo code textbox"
+  registration.profile.promo_code.set(test_param[:promo_code] = (str.nil?)?'':str)
+end
+
+Then /^[Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode [Tt]extbox$/ do
+  registration.profile.show_promo_code
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |str|
+  step "show profile page promo code textbox"
   expect(registration.profile.show_promo_code.text).to eql((str.nil?)?test_param[:promo_code]:str)
 end
 
