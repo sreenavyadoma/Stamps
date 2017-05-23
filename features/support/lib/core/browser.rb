@@ -151,7 +151,7 @@ module Stamps
       end
 
       def click_while_present(*args)
-        ((args.nil? || args.length==0)?20:args[0].to_i).times do
+        ((args.nil?)?20:args[0].to_i).times do
           click
           sleep(0.05)
           break unless element.present?
