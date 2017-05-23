@@ -45,24 +45,11 @@ module Stamps
             rescue
               #ignore
             end
-            temp_data_dir1 = File.join("C:", "Users", windows_user, "AppData", "Local", "Google", "Chrome", "User Data", "Default")
-            temp_data_dir2 = File.join("C:", "Users", "#{windows_user}.CORP", "AppData", "Local", "Google", "Chrome", "User Data", "Default")
-
-            chrome_data_dir = (File.exist? temp_data_dir1)?temp_data_dir1:temp_data_dir2
-            chrome_driver_path = File.join("C:", "watir-webdriver", "drivers", "chromedriver.exe")
-
-            logger.info "chrome_driver path:  #{chrome_driver_path} - #{(File.exist? chrome_driver_path)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'} "
-            logger.info "chrome_data_dir path:  #{chrome_data_dir}  #{(File.exist? chrome_data_dir)?'Exist':'DOES NOT EXIST IN THIS MACHINE!'}"
-
-            Selenium::WebDriver::Chrome.path = chrome_driver_path
-            driver = Selenium::WebDriver.for :chrome
-            browser = Watir::Browser.new (driver), switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
-
+            driver = Watir::Browser.new :chrome, switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
           when :ie
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
               logger.message status
-              #logger.info stdeerr
               logger.message stdout
             rescue
               #ignore
