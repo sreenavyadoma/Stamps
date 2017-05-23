@@ -56,7 +56,7 @@ module Stamps
 
             Selenium::WebDriver::Chrome.path = chrome_driver_path
             driver = Selenium::WebDriver.for :chrome
-            browser = Watir::Browser.new (driver), switches: ['--ignore-certificate-errors']
+            browser = Watir::Browser.new (driver), switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
 
           when :ie
             begin
