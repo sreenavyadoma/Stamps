@@ -1,3 +1,13 @@
+Then /^[Pp]repare environment for ratings test$/ do
+  if @modal_param.web_app == :mail
+    step "select Print On Shipping Label - 8 ½\" x 11\" Paper"
+    step "set Print form Mail-From to default"
+  else
+    step "add new order"
+    set "Order Details form Ship-From to default"
+  end
+end
+
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
   expect([:orders, :mail]).to include(modal_param.web_app)
@@ -396,14 +406,12 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
         # Set country to proper group
         if (row[@rate_sheet_columns[:service]]).include? "Flat Rate"
-          step "Set Order Details Ship-To Country to a random country in PMEI Flat Rate price group #{group}"
+          step "Set Order Details Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :orders
+          step "Set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :mail
         else
-          step "Set Order Details Ship-To Country to a random country in PMEI price group #{group}"
+          step "Set Order Details Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :orders
+          step "Set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :mail
         end
-
-
-
-
 
         # spreadsheet price for group
 
@@ -435,8 +443,14 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           @result_sheet[row_number, @result_sheet_columns[:ship_to_country]] = test_param[:country]
 
           # Set weight to 0
-          step "set Order Details form Pounds to 0"
-          step "set Order Details form Ounces to 0"
+
+          if @modal_param.web_app == :mail
+            step "set Order Details form Pounds to 0"
+            step "set Order Details form Ounces to 0"
+          elsif @modal_param.web_app == :orders
+            step "set Print form Pounds to 0"
+            step "set Print form Ounces to 0"
+          end
           step "Open Settings Modal"
           step "In Settings modal, Save"
 
@@ -453,13 +467,15 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             weight_lb = weight_lb.to_i
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_lb
             @result_sheet[row_number, @result_sheet_columns[:weight]] = "#{weight_lb} lb."
-            step "set Order Details form Pounds to #{weight_lb}"
+            step "set Order Details form Pounds to 0" if @modal_param.web_app == :orders
+            step "set Print form Pounds to 0" if @modal_param.web_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
             #config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             @result_sheet[row_number, @result_sheet_columns[:weight]] = "#{weight_oz} oz."
             @result_sheet[row_number, @result_sheet_columns[:weight_lb]] = weight_oz
-            step "set Order Details form Ounces to #{weight_oz}"
+            step "set Order Details form Ounces to 0" if @modal_param.web_app == :orders
+            step "set Print form Ounces to 0" if @modal_param.web_app == :mail
           end
           sleep(0.025)
 
@@ -471,20 +487,23 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # record execution time as time service was selected.
           @result_sheet[row_number, @result_sheet_columns[:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details form service to #{service}"
+          step "set Order Details form service to #{service}" if @modal_param.web_app == :orders
+          step "select Print form service #{service}" if @modal_param.web_app == :mail
           @result_sheet[row_number, @result_sheet_columns[:service_selected]] = test_param[:service]
 
           # get total cost actual value from UI
-          step "Save Order Details data"
+          step "Save Order Details data" if @modal_param.web_app == :orders
+          step "Save Print Form Total Cost" if @modal_param.web_app == :mail
           @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          step "set Order Details form Pounds to 0" if modal_param.test_env == :orders
-          step "set Order Details form Ounces to 0" if modal_param.test_env == :orders
-          step "On Order Details form, blur out" if modal_param.test_env == :orders
-
-          step "execute code for setting pounds on mail" if modal_param.test_env == :mail
-          step "execute code for setting ounces on mail" if modal_param.test_env == :mail
+          if modal_param.test_env == :orders
+            step "set Order Details form Pounds to 0"
+            step "set Order Details form Ounces to 0"
+          elsif modal_param.test_env == :mail
+            step "set Print form Pounds to 0"
+            step "set Print form Ounces to 0"
+          end
 
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:group]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
@@ -907,10 +926,13 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           @result_sheet[row_number, @result_sheet_columns[:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          step "set Order Details form Pounds to 0"
-          step "set Order Details form Ounces to 0"
-          step "On Order Details form, blur out"
-
+          if @modal_param.web_app == :mail
+            step "set Order Details form Pounds to 0"
+            step "set Order Details form Ounces to 0"
+          elsif @modal_param.web_app == :orders
+            step "set Print form Pounds to 0"
+            step "set Print form Ounces to 0"
+          end
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
 

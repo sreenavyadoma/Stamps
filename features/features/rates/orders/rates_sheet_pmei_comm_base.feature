@@ -6,8 +6,7 @@ Feature: PMEI Comm Base Rates
   @rates_pmei_comm_base
   Scenario: PMEI Comm Base
     And a valid user is signed in to Web Apps
-    Then add new order
-    Then set Order Details form Ship-From to default
+    Then prepare environment for ratings test
     Then run rate test PMEI Comm Base in Country Price Group 1
     Then run rate test PMEI Comm Base in Country Price Group 2
     Then run rate test PMEI Comm Base in Country Price Group 3
