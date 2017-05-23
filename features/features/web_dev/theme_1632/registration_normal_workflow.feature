@@ -25,7 +25,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set Membership page Year to 2026
     Then check Membership page Terms & Conditions
 
-    Then submit Membership Page
+    Then click Membership page Continue button
 
     Then save sign-in credentials to parameter file normal_workflow
     Then save sign-in credentials

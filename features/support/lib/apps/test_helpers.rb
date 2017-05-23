@@ -1,6 +1,6 @@
 module TestHelper
   def config
-    @config ||= StampsTestConfig.new
+    @config ||= StampsTestSetup.new
   end
 
   def helper

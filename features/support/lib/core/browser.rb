@@ -194,11 +194,6 @@ module Stamps
       def set(txt)
         15.times do
           begin
-            text_box.focus
-          rescue
-            #ignore
-          end
-          begin
             text_box.set(txt)
             break if text == txt
             set_attribute_value("value", txt)
