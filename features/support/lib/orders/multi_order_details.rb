@@ -7,9 +7,9 @@ module Stamps
         def initialize(param)
           super
           @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
-           #@weight = MultiOrderDetailsWeight.new(param)
+          @weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
           @domestic_service = Stamps::Orders::OrderDetailsCommon::Service.new(param, :multi_order)
-          # @int_service = MultiInternationalService.new(param)
+          @int_service = Stamps::Orders::OrderDetailsCommon::Service.new(param, :multi_order_international)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
           # @dimensions = MultiOrderDetailsDimensions.new(param)
@@ -33,33 +33,6 @@ module Stamps
         end
       end
    end
-
-      class MultiOrderDetailsWeight < Browser::StampsModal
-        attr_reader :lb, :oz
-        def initialize(param)
-          super(param)
-          text_box = browser.text_field(name: 'WeightLbs')
-          inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
-          @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-          text_box = browser.text_field(name: 'WeightOz')
-          inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
-          @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-        end
-      end
-
-      class MultiInternationalService < Browser::StampsModal
-        attr_reader :text_box, :drop_down, :blur_element
-        def initialize(param)
-          super(param)
-          @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
-          @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
-          @blur_element = BlurOutElement.new(param)
-        end
-
-      end
 
       class MultiDetailsInsureFor < Browser::StampsModal
         attr_reader :text_box, :increment_trigger, :decrement_trigger, :blur_element, :drop_down

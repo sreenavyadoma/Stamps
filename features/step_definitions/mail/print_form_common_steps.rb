@@ -1,11 +1,6 @@
 # encoding: utf-8
 
 # These browser elements exists on all forms (i.e. Stamps, Envelopes, Shipping Label and Certified Mail)
-Then /^[Ss]elect Print On1 (.*)$/ do |abc|
-  test_param[:print_on] = abc
-  stamps.mail.print_on(test_param[:print_on])
-end
-
 Then /^[Ss]elect Print On (.*)$/ do |media|
   test_param[:print_on] = media
   stamps.mail.print_on(test_param[:print_on])
