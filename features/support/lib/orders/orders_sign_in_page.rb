@@ -47,7 +47,7 @@ module Stamps
           browser.a(text: "Download Software for Windows")
           @username = StampsTextBox.new browser.text_field(css: "input[placeholder=USERNAME]")
           @password = StampsTextBox.new browser.text_field(css: "input[placeholder=PASSWORD]")
-          @sign_in_btn = StampsElement.new browser.span(id: "div[id^=app-main-][id$=-targetEl]>div>div>div>div>div:nth-child(6)>div>div>a>span>span>span[id$=btnInnerEl]")
+          @sign_in_btn = StampsElement.new browser.span(css: "div[id^=app-main-][id$=-targetEl]>div>div>div>div>div:nth-child(6)>div>div>a>span>span>span[id$=btnInnerEl]")
           @title = StampsElement.new browser.div(text: 'Sign In')
         end
 
