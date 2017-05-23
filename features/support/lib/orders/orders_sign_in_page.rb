@@ -111,6 +111,8 @@ module Stamps
                   username.set(usr)
                   password.set(pw)
                   sign_in_btn.send_keys(:enter)
+                  sign_in_btn.click
+                  sign_in_btn.click
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
@@ -175,8 +177,8 @@ module Stamps
 
             signed_in_user.text
           rescue Exception => e
-            logger.message e.message
-            logger.message e.backtrace.join("\n")
+            logger.error e.message
+            logger.error e.backtrace.join("\n")
           end
         end
 
