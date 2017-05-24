@@ -1,3 +1,34 @@
-VM Upgrade Steps:
-- Uninstall Ruby 2.22 (through control panel and deletion of folder on c: drive)
-- Install Ruby 2.3 and dev kit. Install files are found here \\rcruz-win7\Public\automation\install\watir\ruby
+PC/VM Watir 6.2 Upgrade Steps:
+1.	RDC to VM and disconnect your VM from Jenkins
+2.	Uninstall Ruby 2.22 (through control panel and deletion of folder on c: drive)
+3.	Install Ruby 2.3 and dev kit. Install files are found here \\rcruz-win7\Public\automation\install\watir\ruby
+    a.	Ruby install directory: C:\Ruby23
+    b.	Devki install directory: C:\Ruby23\devkit
+    c.	Open command prompt and go to C:\Ruby23\devkit then execute the following commands;
+        i.	ruby dk.rb init
+        ii.	ruby dk.rb install.
+4.	Open a command prompt and type the following commands;
+    a.	cd c:\
+    b.	c:\>git clone https://github.com/robcruz/Stamps
+    c.	c:\>cd Stamps
+    d.	c:\Stamps>gem install bundler
+e.	c:\Stamps>bundle install
+5.	Copy 32 bit geckodriver and chromedriver from \\rcruz-win7\Public\automation\install\watir\drivers\32bit to your C:\Stamps\binaries
+6.	Add C:\Ruby23\ and C:\Stamps\binaries to your environment variable Path on Windows.
+7.	Uninstall Firefox.
+8.	Uninstall Chrome.
+9.	Install Firefox 53 32 bit from \\rcruz-win7\Public\automation\install\watir\firefox\32bit
+10.	Install Chrome 56 32 bit from \\rcruz-win7\Public\automation\install\watir\chrome\32bit
+11.	Restart your VM/PC.
+12.	Execute the following commands;
+    a.	c:\Stamps>rake poc_stg_chrome
+    b.	c:\Stamps>rake poc_stg_firefox
+    c.	c:\Stamps>rake poc_cc_chrome
+    d.	c:\Stamps>rake poc_cc_firefox
+    e.	Make sure all these tests passes.
+13.	Connect your VM back to Jenkins.
+
+Issues with Watir 6.2 + Chromedriver + Gheckodriver;
+API wait_until_present and wait_while_present spits out error;
+This code has slept for the duration of the default timeout waiting for an Element to exist. If the test is still passing, consider using Element#exists? instead of rescuing UnknownObjectException
+Let me know if you see these errors.
