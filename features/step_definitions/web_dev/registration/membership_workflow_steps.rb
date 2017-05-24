@@ -139,6 +139,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]onth to (.*)$/ do |str|
   test_param[:card_holder_name] = str
   registration.membership.cc_month.select(test_param[:card_holder_name])
+  step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Mm]onth is (?:correct|(.*))$/ do |str|
@@ -149,6 +150,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to (.*)$/ do |str|
   test_param[:cc_year] = str
   registration.membership.cc_year.select(test_param[:cc_year])
+  step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Yy]ear is (?:correct|(.*))$/ do |str|

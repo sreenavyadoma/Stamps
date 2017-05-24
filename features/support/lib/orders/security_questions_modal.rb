@@ -36,6 +36,14 @@ module Stamps
           @success_modal = SecurityQuestionsSuccess.new(param)
         end
 
+        def present?
+          success_modal.present?
+        end
+
+        def wait_until_present(*args)
+          success_modal.wait_until_present(*args)
+        end
+
         def first_security_question
           drop_down = browser.divs(css: "div[class^=x-trigger-index-0]")[0]
           text_box = browser.text_fields(css: "input[placeholder='<Please Select>']")[0]

@@ -81,10 +81,10 @@ module Stamps
 
         def continue
           @membership ||= Stamps::Registration::Membership::MembershipPage.new(param)
-          5.times do
-            return @membership if @membership.present?
+          10.times do
             continue_btn.click
-            @membership.wait_until_present(5)
+            @membership.wait_until_present(1)
+            return @membership if @membership.present?
           end
         end
 
