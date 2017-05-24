@@ -1,0 +1,3 @@
+VM Upgrade Steps:
+- Uninstall Ruby 2.22 (through control panel and deletion of folder on c: drive)
+- Install Ruby 2.3 and dev kit. Install files are found here \\rcruz-win7\Public\automation\install\watir\ruby
