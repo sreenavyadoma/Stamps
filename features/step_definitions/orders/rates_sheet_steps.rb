@@ -4,7 +4,7 @@ Then /^[Pp]repare environment for ratings test$/ do
     step "set Print form Mail-From to default"
   else
     step "add new order"
-    set "Order Details form Ship-From to default"
+    step "set Order Details form Ship-From to default"
   end
 end
 
