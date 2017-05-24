@@ -214,7 +214,7 @@ country_groups_PMEI:
     21: Pakistan
     22: Papua New Guinea
     23: Phillipines
-    24: Samoa
+    24: Western Samoa
     25: Singapore
     26: Solomon Islands
     27: Sri Lanka
@@ -236,7 +236,7 @@ country_groups_PMEI:
     7:  Cape Verde
     8:  Central African Republic
     9:  Chad
-    10: Republic Of The Congo
+    10: Democratic Republic Of The Congo
     11: Cote d'Ivoire (Ivory Coast)
     12: Djibouti
     13: Equatorial Guinea
@@ -270,6 +270,7 @@ country_groups_PMEI:
     41: Uganda
     42: Zambia
     43: Zimbabwe
+    44: Republic Of The Congo
   group8:
     1:  Algeria
     2:  Bahrain
@@ -344,7 +345,7 @@ country_groups_PMEI:
   group16:
     1:  Germany
   group17:
-    1:  Nertherlands
+    1:  Netherlands
 
 country_groups_PMEI_flat_rate:
   group1:
