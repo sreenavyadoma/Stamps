@@ -444,10 +444,10 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
           # Set weight to 0
 
-          if @modal_param.web_app == :mail
+          if @modal_param.web_app == :orders
             step "set Order Details form Pounds to 0"
             step "set Order Details form Ounces to 0"
-          elsif @modal_param.web_app == :orders
+          elsif @modal_param.web_app == :mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
           end
