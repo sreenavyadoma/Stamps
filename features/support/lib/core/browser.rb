@@ -132,16 +132,6 @@ module Stamps
         end
       end
 
-      def send_keys(key)
-        2.times do
-          begin
-            element.send_keys(key)
-          rescue
-            #ignore
-          end
-        end
-      end
-
       def click
         begin
           element.click

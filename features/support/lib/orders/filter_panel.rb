@@ -126,7 +126,7 @@ module Stamps
             search_button.click
             search_button.click
             if str.include? '@'
-              search_button.send_keys(:enter)
+              search_button.click
               textbox.set str
               search_button.click
               search_button.click

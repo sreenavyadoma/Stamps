@@ -177,8 +177,8 @@ When /^[Ss]et Page Number to (\d*)$/ do |value|
     page_number_textbox = stamps.orders.orders_toolbar.page_number
     page_number = page_number_textbox.text
     text_box_field = page_number_textbox.element
-    text_box_field.send_keys :return
-    text_box_field.send_keys :return
+    text_box_field.click
+    text_box_field.click
     #config.logger.step "New page number #{page_number}"
     page_two_order_id = stamps.orders.orders_grid.column.order_id.row 1
     page_one_order_id.should_not eql page_two_order_id

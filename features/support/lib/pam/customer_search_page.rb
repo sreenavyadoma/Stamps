@@ -50,7 +50,7 @@ module Stamps
         customer_profile_found = CustomerProfilePage.new(param)
         customer_profile_not_found = CustomerProfileNotFound.new(param)
         50.times do |counter|
-          search_btn.send_keys(:enter)
+          search_btn.click
           search_btn.click
           sleep(0.5)
           return @customer_profile_page = customer_profile_found if customer_profile_found.present?
@@ -61,7 +61,7 @@ module Stamps
             username.set(str)
           end
         end
-        search_btn.send_keys(:enter)
+        search_btn.click
         search_btn.click
         return @customer_profile_page = customer_profile_not_found if customer_profile_not_found.present?
         return @customer_profile_page = customer_profile_found if customer_profile_found.present?
