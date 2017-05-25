@@ -104,7 +104,7 @@ module Stamps
             logger.message "Username: #{usr}"
             logger.message "#"*15
 
-            username.wait_until_present(8)
+            username.wait_until_present(3)
             20.times do
               begin
                 if username.present?
