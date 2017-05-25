@@ -927,11 +927,11 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
           # Set weight to 0
           if @modal_param.web_app == :mail
-            step "set Order Details form Pounds to 0"
-            step "set Order Details form Ounces to 0"
-          elsif @modal_param.web_app == :orders
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
+          elsif @modal_param.web_app == :orders
+            step "set Order Details form Pounds to 0"
+            step "set Order Details form Ounces to 0"
           end
           expectation_f = (@result_sheet[row_number, @result_sheet_columns[:zone]].to_f * 100).round / 100.0
           total_ship_cost_f = (@result_sheet[row_number, @result_sheet_columns[:total_ship_cost]].to_f * 100).round / 100.0
