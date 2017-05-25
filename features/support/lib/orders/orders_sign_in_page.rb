@@ -73,7 +73,7 @@ module Stamps
             blur_out
             password.set(pw)
             blur_out
-            sign_in_btn.send_keys(:enter)
+            sign_in_btn.click
             blur_out
             sign_in_btn.click
             blur_out
@@ -110,11 +110,10 @@ module Stamps
                 if username.present?
                   username.set(usr)
                   password.set(pw)
-                  sign_in_btn.send_keys(:enter)
                   sign_in_btn.click
                   sign_in_btn.click
 
-                  security_questions.wait_until_present(2)
+                  security_questions.wait_until_present(8)
                   return security_questions if security_questions.present?
 
                   30.times do
@@ -198,7 +197,7 @@ module Stamps
               if username.present?
                 username.set(usr)
                 password.set(pw)
-                sign_in_btn.send_keys(:enter)
+                sign_in_btn.click
                 security_questions.wait_until_present(2)
                 return security_questions if security_questions.present?
               end

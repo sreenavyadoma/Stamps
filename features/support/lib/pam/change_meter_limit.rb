@@ -40,7 +40,7 @@ module Stamps
         button = Stamps::Browser::StampsElement.new browser.input(name: "submit")
         change_success = ChangeMeterLimitSuccess.new(param)
         5.times do
-          button.send_keys(:enter)
+          button.click
           button.click
           change_success.wait_until_present 3
           if change_success.present?

@@ -66,7 +66,7 @@ module Stamps
 
       def yes
         5.times do
-          yes_button.send_keys(:enter)
+          yes_button.click
           yes_button.click
           sleep(0.35)
           if confirmation.present?
@@ -110,7 +110,7 @@ module Stamps
 
       def submit
         10.times do
-          submit_button.send_keys(:enter)
+          submit_button.click
           submit_button.click
           if purchase_verification.present?
             logger.info purchase_verification.text

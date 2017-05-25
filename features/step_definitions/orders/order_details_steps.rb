@@ -53,7 +53,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Name to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_name] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.name.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.name.click
   else
     stamps.orders.order_details.ship_to.international.name.set test_param[:int_ship_to_name]
   end
@@ -62,7 +62,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Company to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_company] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.company.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.company.click
   else
     stamps.orders.order_details.ship_to.international.company.set test_param[:int_ship_to_company]
   end
@@ -71,7 +71,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Address 1 to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_address_1] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.address_1.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.address_1.click
   else
     stamps.orders.order_details.ship_to.international.address_1.set test_param[:int_ship_to_address_1]
   end
@@ -80,7 +80,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Address 2 to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_address_2] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.address_2.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.address_2.click
   else
     stamps.orders.order_details.ship_to.international.address_2.set test_param[:int_ship_to_address_2]
   end
@@ -89,7 +89,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To City to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_city] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.city.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.city.click
   else
     stamps.orders.order_details.ship_to.international.city.set test_param[:int_ship_to_city]
   end
@@ -98,7 +98,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Province to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_province] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.province.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.province.click
   else
     stamps.orders.order_details.ship_to.international.province.set test_param[:int_ship_to_province]
   end
@@ -107,7 +107,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Postal Code to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_postal_code] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.postal_code.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.postal_code.click
   else
     stamps.orders.order_details.ship_to.international.postal_code.set test_param[:int_ship_to_postal_code]
   end
@@ -116,7 +116,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Phone to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_phone] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.phone.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.phone.click
   else
     stamps.orders.order_details.ship_to.international.phone.set test_param[:int_ship_to_phone]
   end
@@ -125,7 +125,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Email to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_email] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.email.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.email.click
   else
     stamps.orders.order_details.ship_to.international.email.set test_param[:int_ship_to_email]
   end
