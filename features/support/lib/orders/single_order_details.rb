@@ -885,6 +885,10 @@ module Stamps
         def present?
           ((browser.text_fields name: "SKU")[@index-1]).present?
         end
+
+        def scroll_into_view
+          item_description.scroll_into_view
+        end
       end
 
       class ItemsOrderedSection < Browser::StampsModal
@@ -921,6 +925,7 @@ module Stamps
         def item(number)
           associated_item = AssociatedOrderItem.new(param, number)
           10.times do
+            associated_item.scroll_into_view
             return associated_item if associated_item.present?
             sleep(0.5)
             add_btn.click if number > size
@@ -1054,6 +1059,7 @@ module Stamps
         def edit_form
           10.times do
             return customs_form if customs_form.present?
+            edit_form_btn.scroll_into_view
             edit_form_btn.click
             customs_form.wait_until_present(2)
           end
