@@ -696,11 +696,11 @@ module Stamps
         end
 
         def set(value)
-          15.times do
+          10.times do
             check
             text_box.set(value)
-            sleep(0.25)
-            3.times {blur_out}
+            sleep(0.025)
+            2.times {blur_out}
             return true if text.to_f == value.to_f
           end
           expect(text.to_f).to eql(value.to_f)
@@ -708,8 +708,8 @@ module Stamps
 
         def set_and_agree_to_terms(value)
           set(value)
-          5.times do
-            3.times {blur_out}
+          3.times do
+            2.times {blur_out}
             terms.agree if terms.present?
           end
         end
