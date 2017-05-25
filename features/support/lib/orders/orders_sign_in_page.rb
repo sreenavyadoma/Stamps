@@ -73,7 +73,7 @@ module Stamps
             blur_out
             password.set(pw)
             blur_out
-            sign_in_btn.send_keys(:enter)
+            sign_in_btn.click
             blur_out
             sign_in_btn.click
             blur_out
@@ -104,17 +104,16 @@ module Stamps
             logger.message "Username: #{usr}"
             logger.message "#"*15
 
-            username.wait_until_present(8)
+            username.wait_until_present(3)
             20.times do
               begin
                 if username.present?
                   username.set(usr)
                   password.set(pw)
-                  sign_in_btn.send_keys(:enter)
                   sign_in_btn.click
                   sign_in_btn.click
 
-                  security_questions.wait_until_present(2)
+                  security_questions.wait_until_present(8)
                   return security_questions if security_questions.present?
 
                   30.times do
@@ -163,6 +162,7 @@ module Stamps
                 signed_in_user.wait_until_present(4)
                 break if signed_in_user.present?
               rescue Exception => e
+                logger.error e.message
                 logger.error e.backtrace.join "\n"
                 raise e
               end
@@ -177,8 +177,9 @@ module Stamps
 
             signed_in_user.text
           rescue Exception => e
-            logger.message e.message
-            logger.message e.backtrace.join("\n")
+            logger.error e.message
+            logger.error e.backtrace.join("\n")
+            raise e
           end
         end
 
@@ -196,7 +197,7 @@ module Stamps
               if username.present?
                 username.set(usr)
                 password.set(pw)
-                sign_in_btn.send_keys(:enter)
+                sign_in_btn.click
                 security_questions.wait_until_present(2)
                 return security_questions if security_questions.present?
               end

@@ -150,7 +150,7 @@ module Stamps
           etsy_page = EtsyPage.new(param)
 
           10.times do
-            button.send_keys(:enter)
+            button.click
             button.click
             return etsy_page if etsy_page.present?
           end
@@ -168,7 +168,7 @@ module Stamps
 
           3.times do
             browser.execute_script("window.scrollBy(0,400)")
-            button.send_keys(:enter)
+            button.click
             button.click
             sleep(5)
             return settings if settings.present?
@@ -182,7 +182,7 @@ module Stamps
 
           3.times do
             browser.execute_script("window.scrollBy(0,400)")
-            button.send_keys(:enter)
+            button.click
             button.click
             sleep(5)
             return manage_stores if manage_stores.present?

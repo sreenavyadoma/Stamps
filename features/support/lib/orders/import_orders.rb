@@ -89,7 +89,7 @@ module Stamps
         open_file = Windows::OpenFile.new(param.browser_sym)
         10.times do
           button.element.parent.click
-          button.send_keys(:enter)
+          button.click
           sleep(2)
           return open_file if open_file.present?
         end

@@ -19,7 +19,7 @@ module Stamps
       end
 
       def ok
-        ok_button.send_keys(:enter)
+        ok_button.click
         ok_button.click_while_present
       end
     end

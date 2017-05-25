@@ -4,8 +4,9 @@ $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
 require 'data_magic'
 require 'rake'
-require 'watir-webdriver'
-require 'selenium-webdriver'
+require 'watir'
+#require 'watir-webdriver'
+#require 'selenium-webdriver'
 require 'log4r'
 require 'rspec'
 require 'date'

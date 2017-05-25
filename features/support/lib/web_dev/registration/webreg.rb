@@ -8,7 +8,7 @@ module Stamps
         @navigation = Navigation::RegistrationNavigationBar.new(param)
         @bread_crumbs = RegistrationBreadCrumbs.new(param)
         @profile = Profile::ProfilePage.new(param)
-        @membership ||= Stamps::Registration::Membership::MembershipPage.new(param)
+        @membership ||= Membership::MembershipPage.new(param)
         @footer = Footer::ProfileFooter.new(param)
         #@error_occured = AnErrorOccured.new(param)
       end

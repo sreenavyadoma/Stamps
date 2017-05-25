@@ -53,7 +53,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Name to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_name] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.name.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.name.click
   else
     stamps.orders.order_details.ship_to.international.name.set test_param[:int_ship_to_name]
   end
@@ -62,7 +62,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Company to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_company] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.company.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.company.click
   else
     stamps.orders.order_details.ship_to.international.company.set test_param[:int_ship_to_company]
   end
@@ -71,7 +71,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Address 1 to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_address_1] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.address_1.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.address_1.click
   else
     stamps.orders.order_details.ship_to.international.address_1.set test_param[:int_ship_to_address_1]
   end
@@ -80,7 +80,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Address 2 to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_address_2] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.address_2.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.address_2.click
   else
     stamps.orders.order_details.ship_to.international.address_2.set test_param[:int_ship_to_address_2]
   end
@@ -89,7 +89,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To City to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_city] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.city.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.city.click
   else
     stamps.orders.order_details.ship_to.international.city.set test_param[:int_ship_to_city]
   end
@@ -98,7 +98,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Province to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_province] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.province.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.province.click
   else
     stamps.orders.order_details.ship_to.international.province.set test_param[:int_ship_to_province]
   end
@@ -107,7 +107,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Postal Code to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_postal_code] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.postal_code.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.postal_code.click
   else
     stamps.orders.order_details.ship_to.international.postal_code.set test_param[:int_ship_to_postal_code]
   end
@@ -116,7 +116,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Phone to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_phone] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.phone.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.phone.click
   else
     stamps.orders.order_details.ship_to.international.phone.set test_param[:int_ship_to_phone]
   end
@@ -125,7 +125,7 @@ end
 Then /^[Ss]et Order Details form International Ship-To Email to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_email] = ((value.downcase == 'random')? helper.random_full_name : value)
   if value.length == 0
-    stamps.orders.order_details.ship_to.international.email.send_keys(:enter)
+    stamps.orders.order_details.ship_to.international.email.click
   else
     stamps.orders.order_details.ship_to.international.email.set test_param[:int_ship_to_email]
   end
@@ -170,7 +170,7 @@ end
 
 Then /^[Ss]et Order Details form Length to (\d*)$/ do |value|
   test_param[:length] = value
-  expect(stamps.orders.order_details.dimensions.length).to be_present
+  expect(stamps.orders.order_details.dimensions.length).to be_present, "Order Details form Length is not present"
   stamps.orders.order_details.dimensions.length.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -178,7 +178,7 @@ end
 
 Then /^[Ss]et Order Details form Width to (\d*)$/ do |value|
   test_param[:width] = value
-  expect(stamps.orders.order_details.dimensions.width).to be_present
+  expect(stamps.orders.order_details.dimensions.width).to be_present, "Order Details form Width is not present"
   stamps.orders.order_details.dimensions.width.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -186,7 +186,7 @@ end
 
 Then /^[Ss]et Order Details form Height to (\d*)$/ do |value|
   test_param[:height] = value
-  expect(stamps.orders.order_details.dimensions.height).to be_present
+  expect(stamps.orders.order_details.dimensions.height).to be_present, "Order Details form Height is not present"
   stamps.orders.order_details.dimensions.height.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -200,9 +200,8 @@ Then /^[Oo]n Order Details form, uncheck Insure-For checkbox$/ do
   stamps.orders.order_details.insure_for.checkbox.uncheck
 end
 
-Then /^[Ss]et Order Details form Insure-For to \$(.*)$/ do |value|
-  test_param[:insure_for] = value.to_f.round(2)
-  stamps.orders.order_details.insure_for.set_and_agree_to_terms(test_param[:insure_for])
+Then /^[Ss]et Order Details form Insure-For to \$(.*)$/ do |str|
+  stamps.orders.order_details.insure_for.set_and_agree_to_terms(test_param[:insure_for] = str.to_f.round(2))
   10.times do
     break if stamps.orders.order_details.insure_for.cost > 0
     step "On Order Details form, blur out 3"
