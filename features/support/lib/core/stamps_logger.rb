@@ -45,7 +45,7 @@ module Stamps
     def info message
       begin
         message = repeat message, 25 if message.size==1
-        (@logger.info "#{@test_name} :: #{message}") if StampsTestConfig.debug
+        (@logger.info "#{@test_name} :: #{message}") if StampsTestSetup.debug
       rescue
         # ignore
       end

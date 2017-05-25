@@ -57,11 +57,11 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do 
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ompany to (?:random value|(.*))$/ do |str|
-  registration.membership.company.set(test_param[:company] = (str.nil?)?(helper.random_alpha ):str)
+  registration.membership.company.set(test_param[:company] = (str.nil?)?(helper.random_alpha ):str) if registration.membership.company.present?
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ompany is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.company.text).to eql((str.nil?)?test_param[:company]:str)
+  expect(registration.membership.company.text).to eql((str.nil?)?test_param[:company]:str) if registration.membership.company.present?
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
@@ -139,6 +139,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]onth to (.*)$/ do |str|
   test_param[:card_holder_name] = str
   registration.membership.cc_month.select(test_param[:card_holder_name])
+  step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Mm]onth is (?:correct|(.*))$/ do |str|
@@ -149,6 +150,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to (.*)$/ do |str|
   test_param[:cc_year] = str
   registration.membership.cc_year.select(test_param[:cc_year])
+  step "blur_out on membership page"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Yy]ear is (?:correct|(.*))$/ do |str|
@@ -157,19 +159,19 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Yy]ear is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Cc]heck [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress$/ do
-  registration.membership.billing_address_same_as_mailing.check
+  registration.membership.use_mailing_for_billing.check
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress is checked$/ do
-  expect(registration.membership.billing_address_same_as_mailing).to be_checked, "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
+  expect(registration.membership.use_mailing_for_billing).to be_checked, "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
 end
 
 Then /^[Uu]ncheck [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress$/ do
-  registration.membership.billing_address_same_as_mailing.uncheck
+  registration.membership.use_mailing_for_billing.uncheck
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress is unchecked$/ do
-  expect(registration.membership.billing_address_same_as_mailing).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
+  expect(registration.membership.use_mailing_for_billing).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
 end
 
 Then /^[Ee]xpect Billing Address form is present$/ do
@@ -251,8 +253,8 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do
   expect(registration.membership.agree_to_terms).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
 end
 
-Then /^[Ss]ubmit [Mm]embership [Pp]age$/ do
-  registration.membership.submit
+Then /^[Cc]lick [Mm]embership [Pp]age [Cc]ontinue button$/ do
+  registration.membership.continue_to_next_page
 end
 
 

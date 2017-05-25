@@ -7,42 +7,40 @@ module Stamps
         end
 
         def promo_code
-          @promo_code ||= StampsTextBox.new(browser.text_field(id: 'promoCode'))
-          @help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
+          50.times do
+            @promo_code = StampsTextBox.new(browser.text_field(id: 'promoCodeHidden'))
+            alt_promo_code = StampsTextBox.new(browser.text_field(id: 'promoCode'))
+            @promo_code = alt_promo_code if alt_promo_code.present?
+            break if @promo_code.present?
+          end
+          @promo_code.help_elements = browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")
           @promo_code
-        end
-
-        def hidden_promo_code
-          @hidden_promo_code ||= StampsTextBox.new(browser.text_field(id: 'promoCodeHidden'))
-          @hidden_promo_code.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
-          @hidden_promo_code
         end
 
         def show_promo_code
           20.times do
-            return hidden_promo_code if hidden_promo_code.present?
+            promo_code_link.click
             return promo_code if present?
-            promo_code_link.click unless hidden_promo_code.present?
           end
-          expect(hidden_promo_code).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
+          expect(promo_code).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
         end
       end
 
       module AccountInfo
         def account_username
-          @account_username ||= StampsTextBox.new(browser.text_field(name: "username"))
+          @account_username = StampsTextBox.new(browser.text_field(name: "username"))
           @account_username.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
           @account_username
         end
 
         def account_password
-          @account_password ||= StampsTextBox.new(browser.text_field(name: "password"))
+          @account_password = StampsTextBox.new(browser.text_field(name: "password"))
           @account_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
           @account_password
         end
 
         def retype_password
-          @retype_password ||= StampsTextBox.new(browser.text_field(id: "confirmPassword"))
+          @retype_password = StampsTextBox.new(browser.text_field(id: "confirmPassword"))
           @retype_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span")
           @retype_password
         end
@@ -83,10 +81,10 @@ module Stamps
 
         def continue
           @membership ||= Stamps::Registration::Membership::MembershipPage.new(param)
-          5.times do
-            return @membership if @membership.present?
+          10.times do
             continue_btn.click
-            @membership.wait_until_present(5)
+            @membership.wait_until_present(1)
+            return @membership if @membership.present?
           end
         end
 

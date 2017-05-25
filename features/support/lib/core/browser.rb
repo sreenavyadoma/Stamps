@@ -82,26 +82,16 @@ module Stamps
       end
 
       def wait_while_present(*args)
-        begin
-          if args.length==1
-            element.wait_while_present(args[0].to_i)
-          else
-            element.wait_while_present
-          end
-        rescue
-          #ignore
+        ((args.nil?)?2:args[0].to_i).times do
+          sleep(1)
+          break unless element.present?
         end
       end
 
       def wait_until_present(*args)
-        begin
-          if args.length==1
-            element.wait_until_present(args[0].to_i)
-          else
-            element.wait_until_present
-          end
-        rescue
-          #ignore
+        ((args.nil?)?2:args[0].to_i).times do
+          sleep(1)
+          break if element.present?
         end
       end
 
@@ -161,7 +151,7 @@ module Stamps
       end
 
       def click_while_present(*args)
-        ((args.nil? || args.length==0)?20:args[0].to_i).times do
+        ((args.nil?)?20:args[0].to_i).times do
           click
           sleep(0.05)
           break unless element.present?
@@ -193,11 +183,6 @@ module Stamps
 
       def set(txt)
         15.times do
-          begin
-            text_box.focus
-          rescue
-            #ignore
-          end
           begin
             text_box.set(txt)
             break if text == txt

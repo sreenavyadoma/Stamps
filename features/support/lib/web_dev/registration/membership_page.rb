@@ -89,9 +89,6 @@ module Stamps
           @billing_zip
         end
 
-
-
-
         def present?
           billing_address.present?
         end
@@ -154,8 +151,8 @@ module Stamps
           @cc_zip
         end
 
-        def billing_address_same_as_mailing
-          @billing_address_same_as_mailing ||= StampsWatirCheckBox.new(browser.checkbox(name: 'useMailingAddressForBilling'))
+        def use_mailing_for_billing
+          StampsWatirCheckBox.new(browser.checkbox(name: 'useMailingAddressForBilling'))
         end
       end
 
@@ -188,15 +185,25 @@ module Stamps
       end
 
       module MembershipPagination
-        def back
-          StampsElement.new(browser.button(id: "prev")).click_while_present
+        def back_btn
+          StampsElement.new(browser.button(id: "prev"))
         end
 
-        def submit
-          submit_btn = StampsElement.new(browser.button(id: "next"))
-          submit_btn.click_while_present
-          submit_btn.wait_while_present(20)
-          sleep(5)
+        def back
+          back_btn.click_while_present
+        end
+
+        def continue_btn
+          StampsElement.new(browser.button(id: "next"))
+        end
+
+        def continue_to_next_page
+          continue_btn.click_while_present
+          continue_btn.wait_while_present(3)
+        end
+
+        def continue
+          continue_btn.click
         end
       end
 

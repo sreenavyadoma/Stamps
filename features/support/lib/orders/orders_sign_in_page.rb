@@ -177,8 +177,8 @@ module Stamps
 
             signed_in_user.text
           rescue Exception => e
-            logger.message e.message
-            logger.message e.backtrace.join("\n")
+            logger.error e.message
+            logger.error e.backtrace.join("\n")
           end
         end
 
