@@ -104,7 +104,7 @@ module Stamps
             logger.message "Username: #{usr}"
             logger.message "#"*15
 
-            username.wait_until_present(8)
+            username.wait_until_present(3)
             20.times do
               begin
                 if username.present?
@@ -163,6 +163,7 @@ module Stamps
                 signed_in_user.wait_until_present(4)
                 break if signed_in_user.present?
               rescue Exception => e
+                logger.error e.message
                 logger.error e.backtrace.join "\n"
                 raise e
               end
@@ -179,6 +180,7 @@ module Stamps
           rescue Exception => e
             logger.error e.message
             logger.error e.backtrace.join("\n")
+            raise e
           end
         end
 

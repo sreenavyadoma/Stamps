@@ -83,15 +83,15 @@ module Stamps
 
       def wait_while_present(*args)
         ((args.nil?)?2:args[0].to_i).times do
-          sleep(1)
           break unless element.present?
+          sleep(1)
         end
       end
 
       def wait_until_present(*args)
         ((args.nil?)?2:args[0].to_i).times do
-          sleep(1)
           break if element.present?
+          sleep(1)
         end
       end
 
