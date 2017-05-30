@@ -8,8 +8,8 @@ module Stamps
           super
           @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
           @weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
-          @domestic_service = Stamps::Orders::OrderDetailsCommon::Service.new(param, :multi_order)
-          @int_service = Stamps::Orders::OrderDetailsCommon::Service.new(param, :multi_order_international)
+          @domestic_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order)
+          @int_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_international)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
           # @dimensions = MultiOrderDetailsDimensions.new(param)
@@ -192,23 +192,6 @@ module Stamps
           5.times do
             return view_restrictions if view_restrictions.present?
             restrictions_btn.click
-          end
-        end
-      end
-
-      class BlurOutElement < Browser::StampsModal
-        attr_reader :element
-
-        def initialize(param)
-          super(param)
-          @element= StampsElement.new browser.label(text: 'Insurance')
-        end
-
-        def blur_out
-          2.times do
-            element.click
-            element.double_click
-            element.click
           end
         end
       end
