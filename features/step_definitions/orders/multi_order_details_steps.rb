@@ -47,11 +47,3 @@ Then /^(?:I|i)n Multi Order Form, click Save as Present$/ do
 
 end
 
-#validating
-Then /^(?:E|e)xpect Multi Order Ship From is (.*)$/ do |expectation|
-  expect(stamps.orders.multi_order.ship_from_multi.text_box.text).to eql expectation
-end
-
-Then /^(?:E|e)xpect Multi Order Domestic service is (.*)$/ do |expectation|
-  expect(stamps.orders.multi_order.domestic_service.text_box.text).to eql expectation
-end

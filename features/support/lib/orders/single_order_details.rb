@@ -491,134 +491,6 @@ module Stamps
         end
       end
 
-      class DetailsService < Browser::StampsModal
-        attr_reader :text_box, :drop_down, :blur_element
-        def initialize(param)
-          super
-          @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
-          @drop_down = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
-          @blur_element = BlurOutElement.new(param)
-        end
-
-        def blur_out
-          blur_element.blur_out
-        end
-
-        def select(str)
-          logger.info "Select service #{str}"
-
-          sel_arr = str.split(/\s+/)
-          substr = (sel_arr.size>=2?"#{sel_arr[0]} #{sel_arr[1]}":"#{sel_arr[0]}")
-
-          selection = StampsElement.new browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
-
-          20.times do
-            begin
-              drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection.click
-              blur_out
-              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
-              break if text_box.text.include?(substr)
-            rescue
-              #ignore
-            end
-          end
-          logger.info "#{text_box.text} service selected."
-
-          # Test if selected service includes abbreviated selection.
-          expect(text_box.text).to include(substr)
-          text_box.text
-        end
-
-        def inline_cost(service_name)
-          cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
-          10.times do
-            begin
-              drop_down.click unless cost_label.present?
-              if cost_label.present?
-                service_cost = helper.remove_dollar_sign(cost_label.text)
-                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
-                drop_down.click if cost_label.present?
-                return service_cost.to_f.round(2)
-              end
-            rescue
-              #ignore
-            end
-          end
-        end
-
-        def cost_label
-          labels = browser.label(text: "Service:").parent.labels
-          cost_element = nil
-          labels.each do |label|
-            cost_element = label if label.text.include?('.')
-          end
-          cost_element
-        end
-
-        def cost
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
-        end
-
-        def tooltip(selection)
-          button = drop_down
-          selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
-          10.times {
-            begin
-              button.click unless selection_label.present?
-              sleep(0.35)
-              if selection_label.present?
-                tooltip = selection_label.attribute_value("data-qtip")
-                logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
-                return tooltip if tooltip.include? "<strong>"
-              end
-            rescue
-              #ignore
-            end
-          }
-          blur_out
-        end
-
-        def disabled?(service)
-
-          @details_services = data_for(:orders_services, {})
-
-          selection_field = browser.li(id: "#{@details_services[service]}")
-          #selection_element = browser.tr css: "tr[data-qtip*='#{service}']"
-          selection_label = StampsElement.new selection_field
-
-          10.times do |index|
-            drop_down.click unless selection_label.present?
-            sleep(0.35)
-            if selection_field.present?
-              disabled_field = StampsElement.new(selection_field.parent.parent.parent)
-              begin
-                if selection_label.present?
-                  if disabled_field.present?
-                    result = disabled_field.attribute_value("class").include? "disabled"
-                    sleep(0.35)
-                    result = disabled_field.attribute_value("class").include? "disabled"
-                    result = disabled_field.attribute_value("class").include? "disabled"
-                    drop_down.click
-                    return result
-                  end
-                end
-              rescue
-                #ignore
-              end
-            else
-              sleep(0.35)
-              return true if index == 5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
-            end
-          end
-        end
-
-        def enabled? service
-          !(disabled? service)
-        end
-      end
-
       class InsuranceTermsConditions < Browser::StampsModal
         def present?
           begin
@@ -823,22 +695,6 @@ module Stamps
       end
 
       class DetailsStoreItem < Browser::StampsModal
-      end
-
-      class OrderDetailsWeight < Browser::StampsModal
-        attr_reader :lb, :oz
-        def initialize(param)
-          super
-          text_box = browser.text_field(name: 'WeightLbs')
-          inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-          @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-          text_box = browser.text_field(name: 'WeightOz')
-          inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-          @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-        end
       end
 
       class OrderDetailsDimensions < Browser::StampsModal
@@ -1084,8 +940,8 @@ module Stamps
           @toolbar = DetailsToolbar.new(param)
           @ship_from = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :single_order)
           @ship_to = ShipTo.new(param)
-          @weight = OrderDetailsWeight.new(param)
-          @service = DetailsService.new(param)
+          @weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :single_order)
+          @service = Stamps::Orders::OrderDetailsCommon::Service.new(param, :single_order)
           @insure_for = DetailsInsureFor.new(param)
           @tracking = DetailsTracking.new(param)
           @reference_no = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
