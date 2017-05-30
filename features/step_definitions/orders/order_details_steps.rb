@@ -295,7 +295,6 @@ end
 
 Then /^[Ss]et Order Details form Ship-To to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   address = helper.address_helper_zone(address)
-
   test_param[:street_address] = address['street_address']
   test_param[:city] = address['city']
   test_param[:state] = address['state']

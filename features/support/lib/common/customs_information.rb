@@ -10,6 +10,7 @@ module Stamps
         def more_info
           @more_info = StampsTextBox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
           expect(@more_info).to be_present
+          expect(@more_info.present?).to be true
           @more_info
         end
       end

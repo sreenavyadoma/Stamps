@@ -5,6 +5,7 @@ setup:
     chromedriver: C:\Stamps\binaries\chromedriver.exe
   mac:
     geckodriver: tbd
+    chromedriver: tbd
 
 rates_test:
   rate_file: rate_file.xls
