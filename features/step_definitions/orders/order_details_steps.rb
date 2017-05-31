@@ -162,10 +162,9 @@ Then /^[Oo]n Order Details form, blur out(?:| (\d+)(?:| times))$/ do |count|
 end
 
 Then /^[Ss]et Order Details form Dimensions to Length (\d+) Width (\d+) Height (\d+)$/ do |length, width, height|
-  stamps.orders.order_details.dimensions.length.set length
-  stamps.orders.order_details.dimensions.width.set width
-  stamps.orders.order_details.dimensions.height.set height
-  step "Save Order Details data"
+  step "set Order Details form Length to #{length}"
+  step "set Order Details form Width to #{width}"
+  step "set Order Details form Height to #{height}"
 end
 
 Then /^[Ss]et Order Details form Length to (\d*)$/ do |value|
