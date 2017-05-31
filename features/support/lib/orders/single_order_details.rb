@@ -517,7 +517,7 @@ module Stamps
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
-              blur_out
+              #blur_out
               logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
               break if text_box.text.include?(substr)
             rescue
