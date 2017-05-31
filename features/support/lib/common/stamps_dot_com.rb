@@ -10,7 +10,7 @@ module Stamps
     end
 
     def load_sign_in_page
-      case param.test_env.downcase
+      case param.test_env
         when /ss/
           url = "http://printss600.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         when /cc/
