@@ -65,5 +65,9 @@ Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   stamps.mail.print_form.mail_to.country((test_param[:country]))
 end
 
+Then /^[Ss]ave Print Form Total Cost$/ do
+test_param[:total_ship_cost] = stamps.mail.mail_toolbar.total
+end
+
 
 
