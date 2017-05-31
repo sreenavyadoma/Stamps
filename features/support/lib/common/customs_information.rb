@@ -9,8 +9,8 @@ module Stamps
 
         def more_info
           @more_info = StampsTextBox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
-          expect(@more_info).to be_present
-          expect(@more_info.present?).to be true
+          expect(@more_info.present?).to be(true)
+          expect(@more_info.present?).to be(true)
           @more_info
         end
       end
@@ -22,19 +22,19 @@ module Stamps
 
         def license
           @license = StampsTextBox.new(browser.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
-          expect(@license).to be_present
+          expect(@license.present?).to be(true)
           @license
         end
 
         def certificate
           @certificate = StampsTextBox.new(browser.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
-          expect(@license).to be_present
+          expect(@license.present?).to be(true)
           @certificate
         end
 
         def invoice
           @invoice = StampsTextBox.new(browser.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
-          expect(@invoice).to be_present
+          expect(@invoice.present?).to be(true)
           @invoice
         end
       end

@@ -22,7 +22,7 @@ module Stamps
         logger.info "Visit:  #{url}"
         browser.goto(url)
         get_started_btn.wait_until_present(5)
-        expect(get_started_btn).to be_present
+        expect(get_started_btn.present?).to be(true)
       end
 
       def get_started

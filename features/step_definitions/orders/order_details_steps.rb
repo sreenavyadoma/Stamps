@@ -170,7 +170,7 @@ end
 
 Then /^[Ss]et Order Details form Length to (\d*)$/ do |value|
   test_param[:length] = value
-  expect(stamps.orders.order_details.dimensions.length).to be_present, "Order Details form Length is not present"
+  expect(stamps.orders.order_details.dimensions.length.present?).to be(true), "Order Details form Length is not present"
   stamps.orders.order_details.dimensions.length.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -178,7 +178,7 @@ end
 
 Then /^[Ss]et Order Details form Width to (\d*)$/ do |value|
   test_param[:width] = value
-  expect(stamps.orders.order_details.dimensions.width).to be_present, "Order Details form Width is not present"
+  expect(stamps.orders.order_details.dimensions.width.present?).to be(true), "Order Details form Width is not present"
   stamps.orders.order_details.dimensions.width.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"
@@ -186,7 +186,7 @@ end
 
 Then /^[Ss]et Order Details form Height to (\d*)$/ do |value|
   test_param[:height] = value
-  expect(stamps.orders.order_details.dimensions.height).to be_present, "Order Details form Height is not present"
+  expect(stamps.orders.order_details.dimensions.height.present?).to be(true), "Order Details form Height is not present"
   stamps.orders.order_details.dimensions.height.set(value)
   step "On Order Details form, blur out"
   step "Save Order Details data"

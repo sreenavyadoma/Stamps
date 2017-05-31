@@ -379,7 +379,7 @@ module Stamps
             privacy_act.wait_until_present 2
             return privacy_act if privacy_act.present?
           end
-          expect(privacy_act).to be_present
+          expect(privacy_act.present?).to be(true)
         end
       end
 
@@ -565,11 +565,11 @@ module Stamps
 
             if install_plugin_error.present?
               install_plugin_error.close
-              expect(window).to be_present
+              expect(window.present?).to be(true)
             end
           end
 
-          expect(window).to be_present
+          expect(window.present?).to be(true)
         end
 
         def print_expecting_error(*args)

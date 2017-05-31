@@ -12,7 +12,7 @@ Feature:  BVT International Shipping
     Then set Order Details form Ounces to 4
     Then set Order Details form service to FCMI Large Envelope
     Then click Order Details form Edit Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 400, Made In Japan, Tariff 100
+    Then add Customs form Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs form Package Contents to Commercial Sample
     Then set Customs form Package Contents to Gift
     Then set Customs form Package Contents to Document

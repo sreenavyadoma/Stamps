@@ -46,7 +46,7 @@ module Stamps
             break unless text_field.nil?
           end
           text_field.should_not be nil
-          expect(text_field).to be_present
+          expect(text_field.present?).to be(true)
           StampsTextBox.new(text_field)
         end
 
@@ -65,7 +65,7 @@ module Stamps
             sleep(0.35)
           end
           dd.should_not be nil
-          expect(dd).to be_present
+          expect(dd.present?).to be(true)
           StampsElement.new(dd)
         end
 
@@ -644,7 +644,7 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(drop_down).to be_present
+          expect(drop_down.present?).to be(true)
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
             drop_down.click unless selection.present?
@@ -919,7 +919,7 @@ module Stamps
             edit_form_btn.click
             customs_form.wait_until_present(2)
           end
-          expect(customs_form).to be_present
+          expect(customs_form.present?).to be(true)
         end
 
         def restrictions
@@ -927,7 +927,7 @@ module Stamps
             return view_restrictions if view_restrictions.present?
             restrictions_btn.click
           end
-          expect(view_restrictions).to be_present
+          expect(view_restrictions.present?).to be(true)
         end
       end
 

@@ -1,31 +1,31 @@
 
 Then /^[Ss]et Extra Services COD to (\d*.?\d+)$/ do |amount|
-  expect(stamps.mail.print_form.advanced_options.extra_services.cod).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod.present?).to be(true)
   stamps.mail.print_form.advanced_options.extra_services.cod.set(amount)
 end
 
 Then /^[Ee]xpect Extra Services COD Price to be (\d*.?\d+)$/ do |expectation|
-  expect(stamps.mail.print_form.advanced_options.extra_services.cod_price_element).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod_price_element.present?).to be(true)
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.cod_price == expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.cod_price).to eql(expectation.to_f.round(2))
 end
 
 Then /^[Ss]ave Extra Services$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services.save_element).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.save_element.present?).to be(true)
   stamps.mail.print_form.advanced_options.extra_services.save
 end
 
 Then /^[Ee]xpect Extra Services is present$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.present?).to be(true)
 end
 
 Then /^[Cc]lose Extra Services$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services.save_element).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.save_element.present?).to be(true)
   stamps.mail.print_form.advanced_options.extra_services.close
 end
 
 Then /^[Ss]et Extra Services Security to (.*)$/ do |str|
-  expect(stamps.mail.print_form.advanced_options.extra_services.security).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.security.present?).to be(true)
   stamps.mail.print_form.advanced_options.extra_services.security.select(str)
 end
 

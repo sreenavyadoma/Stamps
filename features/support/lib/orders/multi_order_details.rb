@@ -115,7 +115,7 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(drop_down).to be_present
+          expect(drop_down.present?).to be(true)
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
             drop_down.click unless selection.present?
@@ -184,7 +184,7 @@ module Stamps
         def update_orders
           update_orders_btn.click
           sleep(2)
-          expect(updating_orders).to be_present
+          expect(updating_orders.present?).to be(true)
           updating_orders.wait_while_present(5)
         end
 

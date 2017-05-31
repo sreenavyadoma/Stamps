@@ -253,7 +253,7 @@ module Stamps
 
         def save
           save_btn.click_while_present
-          expect(save_btn).not_to be_present, "Add Shipping Address failed to save Return Address: #{address_hash.each do |key, value| "#{key}:#{value}" end}"
+          expect(save_btn.present?).not_to be(true), "Add Shipping Address failed to save Return Address: #{address_hash.each do |key, value| "#{key}:#{value}" end}"
         end
 
       end

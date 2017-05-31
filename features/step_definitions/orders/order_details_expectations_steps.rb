@@ -121,52 +121,52 @@ end
 
 Then /^[Ee]xpect Order Details form International Address fields are visible$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_to.international.name).to be_present
-  expect(stamps.orders.order_details.ship_to.international.company).to be_present
-  expect(stamps.orders.order_details.ship_to.international.address_1).to be_present
-  expect(stamps.orders.order_details.ship_to.international.address_2).to be_present
-  expect(stamps.orders.order_details.ship_to.international.city).to be_present
-  expect(stamps.orders.order_details.ship_to.international.province).to be_present
-  expect(stamps.orders.order_details.ship_to.international.postal_code).to be_present
-  expect(stamps.orders.order_details.ship_to.international.phone).to be_present
-  expect(stamps.orders.order_details.ship_to.international.email).to be_present
+  expect(stamps.orders.order_details.ship_to.international.name.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.company.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.address_1.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.address_2.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.city.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.province.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.postal_code.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.phone.present?).to be(true)
+  expect(stamps.orders.order_details.ship_to.international.email.present?).to be(true)
 end
 
 Then /^[Ee]xpect Order Details form Domestic Ship-To fields are hidden$/ do
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area).not_to be_present
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.present?).not_to be(true)
 end
 
 Then /^[Ee]xpect Order Details form Customs Restrictions button is visible/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.customs.browser_restrictions_button).to be_present
+  expect(stamps.orders.order_details.customs.browser_restrictions_button.present?).to be(true)
   stamps.orders.order_details.customs.restrictions.ok
 end
 
 Then /^[Ee]xpect Order Details form Customs Restrictions button is hidden/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.customs.browser_restrictions_button).not_to be_present
+  expect(stamps.orders.order_details.customs.browser_restrictions_button.present?).not_to be(true)
 end
 
 Then /^[Ee]xpect Order Details form Customs Edit Form button is visible/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.customs.edit_form_btn).to be_present
+  expect(stamps.orders.order_details.customs.edit_form_btn.present?).to be(true)
 end
 
 Then /^[Ee]xpect Order Details form Customs Edit Form button is hidden/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.customs.edit_form_btn).not_to be_present
+  expect(stamps.orders.order_details.customs.edit_form_btn.present?).not_to be(true)
 end
 
 Then /^[Ee]xpect Order Details form Customs Edit Form button is enabled/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.customs.edit_form_btn).to be_present
+  expect(stamps.orders.order_details.customs.edit_form_btn.present?).to be(true)
 end
 
 Then /^[Ee]xpect Order Details form Customs Edit Form button is disabled/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.customs.edit_form_btn).not_to be_present
+  expect(stamps.orders.order_details.customs.edit_form_btn.present?).not_to be(true)
 end
 
 Then /^[Ee]xpect Order Details form International Ship-To Name Placeholder is (.*)$/ do |expectation|
@@ -220,7 +220,7 @@ end
 
 Then /^[Ee]xpect Order Details form Panel is present$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details).to be_present
+  expect(stamps.orders.order_details.present?).to be(true)
 end
 
 Then /^[Ee]xpect Exact Address Not Found module to appear/ do
@@ -324,7 +324,7 @@ end
 
 Then /^[Ee]xpect Order Details form Dimensions are hidden$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.dimensions).not_to be_present
+  expect(stamps.orders.order_details.dimensions.present?).not_to be(true)
 end
 
 Then /^[Ee]xpect Order Details form Length is (\d+)$/ do |expectation|
@@ -354,80 +354,80 @@ end
 
 And /^[Ee]xpect Order Details form Ship-From Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_from.text_box.element).to be_visible
+  expect(stamps.orders.order_details.ship_from.text_box.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Ship-From drop-down be enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_from.drop_down.element).to be_visible
+  expect(stamps.orders.order_details.ship_from.drop_down.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Ship-To Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.element).to be_visible
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Ship-To drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_to.country.drop_down.element).to be_visible
+  expect(stamps.orders.order_details.ship_to.country.drop_down.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Ship-To text area is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.element).to be_visible
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Phone Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.phone.element).to be_visible
+  expect(stamps.orders.order_details.ship_to.domestic.phone.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Email Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_to.domestic.email.element).to be_visible
+  expect(stamps.orders.order_details.ship_to.domestic.email.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Pounds Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.weight.lb.element).to be_visible
+  expect(stamps.orders.order_details.weight.lb.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Ounces Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.weight.oz.element).to be_visible
+  expect(stamps.orders.order_details.weight.oz.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form service Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.service.text_box.element).to be_visible
+  expect(stamps.orders.order_details.service.text_box.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form service drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.service.drop_down.element).to be_visible
+  expect(stamps.orders.order_details.service.drop_down.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Insure-For Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.insure_for.text_box.element).to be_visible
+  expect(stamps.orders.order_details.insure_for.text_box.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Insure-For Textbox is disabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.insure_for.text_box.element).to be_visible
+  expect(stamps.orders.order_details.insure_for.text_box.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Detials Form Tracking Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.tracking.text_box.element).to be_visible
+  expect(stamps.orders.order_details.tracking.text_box.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Details form Tracking drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.tracking.drop_down.element).to be_visible
+  expect(stamps.orders.order_details.tracking.drop_down.element.visible?).to be(true)
 end
 
 

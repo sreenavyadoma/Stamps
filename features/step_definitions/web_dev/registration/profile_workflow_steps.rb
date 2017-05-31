@@ -14,7 +14,7 @@ end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.wait_until_present(3)
-  expect(registration.profile.email).to be_present, "Profile page did not load properly, check your test."
+  expect(registration.profile.email.present?).to be(true), "Profile page did not load properly, check your test."
   registration.profile.email.set(test_param[:email] = (str.nil?)?(helper.random_email):str)
   step "blur out on profile page"
 end
@@ -102,7 +102,7 @@ Then /^check [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is checked$/ do
-  expect(registration.profile.money_saving_offers_checkbox).to be_checked, "Profile Money-saving offers and new products is not checked. Got checked"
+  expect(registration.profile.money_saving_offers_checkbox.checked?).to be(true), "Profile Money-saving offers and new products is not checked. Got checked"
 end
 
 Then /^uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
@@ -110,7 +110,7 @@ Then /^uncheck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is unchecked$/ do
-  expect(registration.profile.money_saving_offers_checkbox).not_to be_checked, "Expected Profile Money-saving offers and new products is checked. Got unchecked"
+  expect(registration.profile.money_saving_offers_checkbox.checked?).not_to be(true), "Expected Profile Money-saving offers and new products is checked. Got unchecked"
 end
 
 Then /^[Cc]ontinue to [Mm]embership page$/ do

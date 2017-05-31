@@ -42,64 +42,64 @@ module Stamps
 
         def close
           close_element.click_while_present
-          expect(close_element).not_to be_present
+          expect(close_element.present?).not_to be(true)
         end
 
         def save
           save_element.click_while_present
-          expect(save_element).not_to be_present
+          expect(save_element.present?).not_to be(true)
         end
 
         def security_price
-          expect(security_price_element).to be_present
+          expect(security_price_element.present?).to be(true)
           security_price_element.blur_out(3)
           helper.remove_dollar_sign(security_price_element.text).to_f.round(2)
         end
 
         def return_receipt_price
-          expect(return_receipt_price_element).to be_present
+          expect(return_receipt_price_element.present?).to be(true)
           return_receipt_price_element.blur_out(3)
           helper.remove_dollar_sign(return_receipt_price_element.text).to_f.round(2)
         end
 
         def restricted_delivery_price
-          expect(restricted_delivery_price_element).to be_present
+          expect(restricted_delivery_price_element.present?).to be(true)
           restricted_delivery_price_element.blur_out(3)
           helper.remove_dollar_sign(restricted_delivery_price_element.text).to_f.round(2)
         end
 
         def cod_price
-          expect(cod_price_element).to be_present
+          expect(cod_price_element.present?).to be(true)
           cod_price_element.blur_out(3)
           helper.remove_dollar_sign(cod_price_element.text).to_f.round(2)
         end
 
         def non_delivery_notice_price
-          expect(non_delivery_notice_price_element).to be_present
+          expect(non_delivery_notice_price_element.present?).to be(true)
           non_delivery_notice_price_element.blur_out(3)
           helper.remove_dollar_sign(non_delivery_notice_price_element.text).to_f.round(2)
         end
 
         def content_price
-          expect(content_price_element).to be_present
+          expect(content_price_element.present?).to be(true)
           content_price_element.blur_out(3)
           helper.remove_dollar_sign(content_price_element.text).to_f.round(2)
         end
 
         def special_handling_price
-          expect(special_handling_price_element).to be_present
+          expect(special_handling_price_element.present?).to be(true)
           special_handling_price_element.blur_out(3)
           helper.remove_dollar_sign(special_handling_price_element.text).to_f.round(2)
         end
 
         def merchandise_return_receipt
-          expect(merchandise_return_receipt_element).to be_present
+          expect(merchandise_return_receipt_element.present?).to be(true)
           merchandise_return_receipt_element.blur_out(3)
           helper.remove_dollar_sign(merchandise_return_receipt_element.text).to_f.round(2)
         end
 
         def total_price
-          expect(total_price_element).to be_present
+          expect(total_price_element.present?).to be(true)
           total_price_element.blur_out(3)
           helper.remove_dollar_sign(total_price_element.text).to_f.round(2)
         end

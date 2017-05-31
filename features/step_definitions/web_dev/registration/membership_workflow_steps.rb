@@ -40,7 +40,7 @@ end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
   registration.membership.first_name.wait_until_present(10)
-  expect(registration.membership.first_name).to be_present
+  expect(registration.membership.first_name.present?).to be(true)
   registration.membership.first_name.set(test_param[:first_name] = (str.nil?)?(helper.random_alpha_capitalize ):str)
 end
 
@@ -163,7 +163,7 @@ Then /^[Cc]heck [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress is checked$/ do
-  expect(registration.membership.use_mailing_for_billing).to be_checked, "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
+  expect(registration.membership.use_mailing_for_billing.checked?).to be(true), "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
 end
 
 Then /^[Uu]ncheck [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress$/ do
@@ -171,15 +171,15 @@ Then /^[Uu]ncheck [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing [Aa]ddress is unchecked$/ do
-  expect(registration.membership.use_mailing_for_billing).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
+  expect(registration.membership.use_mailing_for_billing.checked?).not_to be(true), "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
 end
 
 Then /^[Ee]xpect Billing Address form is present$/ do
-  expect(registration.membership.billing_address).to be_present, "Billing Address form is NOT present but it should be PRESENT"
+  expect(registration.membership.billing_address.present?).to be(true), "Billing Address form is NOT present but it should be PRESENT"
 end
 
 Then /^[Ee]xpect Billing Address form is not present$/ do
-  expect(registration.membership.billing_address).not_to be_present, "Billing Address form is PRESENT and it should NOT be PRESENT"
+  expect(registration.membership.billing_address.present?).not_to be(true), "Billing Address form is PRESENT and it should NOT be PRESENT"
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
@@ -242,7 +242,7 @@ Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is checked$/ do
-  expect(registration.membership.agree_to_terms).to be_checked, "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
+  expect(registration.membership.agree_to_terms.checked?).to be(true), "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
 end
 
 Then /^[Uu]ncheck [Mm]embership [Pp]age Terms & Conditions$/ do
@@ -250,7 +250,7 @@ Then /^[Uu]ncheck [Mm]embership [Pp]age Terms & Conditions$/ do
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do
-  expect(registration.membership.agree_to_terms).not_to be_checked, "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
+  expect(registration.membership.agree_to_terms.checked?).not_to be(true), "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age [Cc]ontinue button$/ do

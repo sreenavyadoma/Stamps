@@ -140,7 +140,7 @@ module Stamps
             end
             return search_results if search_results.present?
           end
-          expect(search_results).to be_present
+          expect(search_results.present?).to be(true)
         end
       end
 

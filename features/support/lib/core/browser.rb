@@ -82,14 +82,14 @@ module Stamps
       end
 
       def wait_while_present(*args)
-        ((args.nil?)?2:args[0].to_i).times do
+        ((args.nil? || args.size==0)?2:args[0].to_i).times do
           break unless element.present?
           sleep(1)
         end
       end
 
       def wait_until_present(*args)
-        ((args.nil?)?2:args[0].to_i).times do
+        ((args.nil? || args.size==0)?2:args[0].to_i).times do
           break if element.present?
           sleep(1)
         end
@@ -134,14 +134,14 @@ module Stamps
 
       def click
         begin
-          element.click
+          element.click if element.present?
         rescue
           #ignore
         end
       end
 
       def click_while_present(*args)
-        ((args.nil?)?20:args[0].to_i).times do
+        ((args.nil? || args.size==0)?10:args[0].to_i).times do
           click
           sleep(0.05)
           break unless element.present?

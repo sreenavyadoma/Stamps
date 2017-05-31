@@ -140,8 +140,8 @@ end
 
 Then /^[Ee]xpect Customs form I agree to the USPS Privacy Act Statement is checked$/ do
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.agree_to_terms).to be_checked if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.agree_to_terms).to be_checked if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.agree_to_terms.checked?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.agree_to_terms.checked?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Uu]ncheck Customs form I agree to the USPS Privacy Act Statement$/ do
@@ -151,16 +151,17 @@ end
 
 Then /^[Ee]xpect Customs form I agree to the USPS Privacy Act Statement is unchecked$/ do
   sleep(0.05)
-  expect(stamps.orders.order_details.customs.edit_form.agree_to_terms).not_to be_checked if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.agree_to_terms).not_to be_checked if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.agree_to_terms.checked?).not_to be(true) if modal_param.web_app == :orders
+  expect(stamps.orders.order_details.customs.edit_form.agree_to_terms.checked?).not_to be(true)
+  expect(stamps.mail.print_form.mail_customs.edit_form.agree_to_terms.checked?).not_to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Cc]lose Customs Information form$/ do
   step "Pause for 4 seconds"
   step "Blur out on Customs form 20 times"
   step "Save Customs Information form Total amount"
-  expect(stamps.orders.order_details.customs.edit_form.close).to be(false) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.close).to be(false) if modal_param.web_app == :mail
+  stamps.orders.order_details.customs.edit_form.close if modal_param.web_app == :orders
+  stamps.mail.print_form.mail_customs.edit_form.close if modal_param.web_app == :mail
   step "On Order Details form, blur out"
   step "Save Order Details data"
 end
@@ -175,8 +176,8 @@ end
 Then /^[Ee]xpect Customs form USPS Privacy Act Warning is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.usps_privacy_act_warning).to be_visible if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.usps_privacy_act_warning).to be_visible if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.usps_privacy_act_warning.visible?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.usps_privacy_act_warning.visible?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form USPS Privacy Act Warning is hidden$/ do
@@ -189,69 +190,69 @@ end
 Then /^[Ee]xpect Customs form More Info is hidden$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.more_info).not_to be_present if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info).not_to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.more_info.present?).not_to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info.present?).not_to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form More Info is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.more_info).to be_present if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info).to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.more_info.present?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info.present?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form License Number is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.license).to be_present if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license).to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.license.present?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license.present?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form License Number is hidden$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.license).not_to be_present if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license).not_to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.license.present?).not_to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license.present?).not_to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Certificate Number is hidden$/ do
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.certificate).not_to be_present if modal_param.web_app == :orders
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.certificate).not_to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.certificate.present?).not_to be(true) if modal_param.web_app == :orders
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.certificate.present?).not_to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Certificate Number is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.certificate).to be_present if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.certificate).to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.certificate.present?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.certificate.present?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Invoice Number is hidden$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.invoice).not_to be_present if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice).not_to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.invoice.present?).not_to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice.present?).not_to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Invoice Number is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.invoice).to be_present if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice).to be_present if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.contents.invoice.present?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice.present?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form ITN Number is hidden$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.itn_number).to be_enabled if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.itn_number).to be_enabled if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.itn_number.enabled?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.itn_number.enabled?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form ITN Number is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.itn_number).to be_enabled if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.itn_number).to be_enabled if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.itn_number.enabled?).to be(true) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.itn_number.enabled?).to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs Form Internal Transaction Number is (.+)$/ do |expectation|

@@ -142,7 +142,7 @@ module Stamps
                 selection.scroll_into_view
                 selection.click
                 break if text_box.text.include?(selected_sub_str)
-                expect(upgrade_plan).not_to be_present, "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
+                expect(upgrade_plan.present?).not_to be(true), "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
               else
                 drop_down.click unless selection.present?
               end
@@ -611,7 +611,7 @@ module Stamps
             return contacts_modal if contacts_modal.present?
             link.click
           end
-          expect(contacts_modal).to be_present
+          expect(contacts_modal.present?).to be(true)
         end
       end
 
@@ -627,7 +627,7 @@ module Stamps
         end
 
         def country(str)
-          expect(@country).to be_present
+          expect(@country.present?).to be(true)
           geography = @country.select(str)
           expect([:domestic, :international]).to include(geography)
           # dymanically create appropriate form per geography
@@ -651,7 +651,7 @@ module Stamps
             button.click
             sleep(0.35)
           end
-          expect(customs_form).to be_present
+          expect(customs_form.present?).to be(true)
         end
 
         def restrictions

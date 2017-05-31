@@ -37,7 +37,7 @@ module Stamps
 
       def customer_search
         StampsElement.new(browser.a(css: 'a[href*=AccountSearch]')).click_while_present
-        expect(customer_search_page).to be_present, "PAM Customer Search page did not load."
+        expect(customer_search_page.present?).to be(true), "PAM Customer Search page did not load."
         customer_search_page
       end
     end

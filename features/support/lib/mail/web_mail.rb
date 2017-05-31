@@ -31,7 +31,7 @@ module Stamps
           else
             # do nothing
         end
-        expect(@print_form).to be_present
+        expect(@print_form.present?).to be(true)
       end
 
       def present?
