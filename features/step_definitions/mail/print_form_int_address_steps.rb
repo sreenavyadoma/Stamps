@@ -14,6 +14,18 @@ Then /^[Ss]et Print form Ship-To to international address$/ do |table|
   step "set Print form Phone to #{address['phone']}"
 end
 
+Then /^[Ss]et Print Form Ship-To Country to a random country in PMEI price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMEI, {})["group" + group].values
+  test_param[:country] = country_list[rand(country_list.size)]
+  step "set Print form Mail-To Country to #{test_param[:country]}"
+end
+
+Then /^[Ss]et Print Form Ship-To Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
+  test_param[:country] = country_list[rand(country_list.size)]
+  step "set Print form Mail-To Country to #{test_param[:country]}"
+end
+
 Then /^[Ss]et Print form Name to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.name.click if value.nil?
   test_param[:mail_to_name] = (value.downcase == 'random')? helper.random_full_name : value

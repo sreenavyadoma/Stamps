@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_cc
+default: --backtrace --profile eli_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -18,7 +18,7 @@ rob_mail_sc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=kaushal JENKINS=
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 
-eli_dev: --tags @rates_pmei_comm_base   --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=item_details URL=stg BROWSER=ff USR=hal9000stage25 PW=password1
+eli_dev: --tags @rates_pmei_comm_base --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=item_details URL=stg BROWSER=chrome USR=hal9000stage24 PW=password1
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
@@ -50,6 +50,43 @@ rates_pme_comm_plus: --tags @rates_pme_comm_plus --guess DEBUG=false JENKINS=tru
 rates_pm_comm_plus: --tags @rates_pm_comm_plus --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pm_comm_plus
 rates_parcel_select_ground: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground
 rates_pmei_comm_base:  --tags @rates_pmei_comm_base --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base
+rates_pmei_comm_base_group_1:  --tags @rates_pmei_comm_base_group_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_1
+rates_pmei_comm_base_group_2:  --tags @rates_pmei_comm_base_group_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_2
+rates_pmei_comm_base_group_3:  --tags @rates_pmei_comm_base_group_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_3
+rates_pmei_comm_base_group_4:  --tags @rates_pmei_comm_base_group_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_4
+rates_pmei_comm_base_group_5:  --tags @rates_pmei_comm_base_group_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_5
+rates_pmei_comm_base_group_6:  --tags @rates_pmei_comm_base_group_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_6
+rates_pmei_comm_base_group_7:  --tags @rates_pmei_comm_base_group_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_7
+rates_pmei_comm_base_group_8:  --tags @rates_pmei_comm_base_group_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_8
+rates_pmei_comm_base_group_9:  --tags @rates_pmei_comm_base_group_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_9
+rates_pmei_comm_base_group_10:  --tags @rates_pmei_comm_base_group_10 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_10
+rates_pmei_comm_base_group_11:  --tags @rates_pmei_comm_base_group_11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_11
+rates_pmei_comm_base_group_12:  --tags @rates_pmei_comm_base_group_12 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_12
+rates_pmei_comm_base_group_13:  --tags @rates_pmei_comm_base_group_13 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_13
+rates_pmei_comm_base_group_14:  --tags @rates_pmei_comm_base_group_14 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_14
+rates_pmei_comm_base_group_15:  --tags @rates_pmei_comm_base_group_15 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_15
+rates_pmei_comm_base_group_16:  --tags @rates_pmei_comm_base_group_16 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_16
+rates_pmei_comm_base_group_17:  --tags @rates_pmei_comm_base_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_17
+rates_pmei_comm_plus_group_1:  --tags @rates_pmei_comm_plus_group_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_1
+rates_pmei_comm_plus_group_2:  --tags @rates_pmei_comm_plus_group_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_2
+rates_pmei_comm_plus_group_3:  --tags @rates_pmei_comm_plus_group_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_3
+rates_pmei_comm_plus_group_4:  --tags @rates_pmei_comm_plus_group_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_4
+rates_pmei_comm_plus_group_5:  --tags @rates_pmei_comm_plus_group_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_5
+rates_pmei_comm_plus_group_6:  --tags @rates_pmei_comm_plus_group_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_6
+rates_pmei_comm_plus_group_7:  --tags @rates_pmei_comm_plus_group_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_7
+rates_pmei_comm_plus_group_8:  --tags @rates_pmei_comm_plus_group_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_8
+rates_pmei_comm_plus_group_9:  --tags @rates_pmei_comm_plus_group_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_9
+rates_pmei_comm_plus_group_10:  --tags @rates_pmei_comm_plus_group_10 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_10
+rates_pmei_comm_plus_group_11:  --tags @rates_pmei_comm_plus_group_11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_11
+rates_pmei_comm_plus_group_12:  --tags @rates_pmei_comm_plus_group_12 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_12
+rates_pmei_comm_plus_group_13:  --tags @rates_pmei_comm_plus_group_13 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_13
+rates_pmei_comm_plus_group_14:  --tags @rates_pmei_comm_plus_group_14 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_14
+rates_pmei_comm_plus_group_15:  --tags @rates_pmei_comm_plus_group_15 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_15
+rates_pmei_comm_plus_group_16:  --tags @rates_pmei_comm_plus_group_16 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_16
+rates_pmei_comm_plus_group_17:  --tags @rates_pmei_comm_plus_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_17
+
+
+
 rates_pmei_comm_plus:  --tags @rates_pmei_comm_base --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
