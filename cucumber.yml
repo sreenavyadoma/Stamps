@@ -66,7 +66,7 @@ rates_pmei_comm_base_group_13:  --tags @rates_pmei_comm_base_group_13 --guess DE
 rates_pmei_comm_base_group_14:  --tags @rates_pmei_comm_base_group_14 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_14
 rates_pmei_comm_base_group_15:  --tags @rates_pmei_comm_base_group_15 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_15
 rates_pmei_comm_base_group_16:  --tags @rates_pmei_comm_base_group_16 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_16
-rates_pmei_comm_base_group_17:  --tags @rates_pmei_comm_base_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_base_group_17
+rates_pmei_comm_base_group_17:  --tags @rates_pmei_comm_base_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pmei_comm_base_group_17
 rates_pmei_comm_plus_group_1:  --tags @rates_pmei_comm_plus_group_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_1
 rates_pmei_comm_plus_group_2:  --tags @rates_pmei_comm_plus_group_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_2
 rates_pmei_comm_plus_group_3:  --tags @rates_pmei_comm_plus_group_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_3
@@ -83,7 +83,7 @@ rates_pmei_comm_plus_group_13:  --tags @rates_pmei_comm_plus_group_13 --guess DE
 rates_pmei_comm_plus_group_14:  --tags @rates_pmei_comm_plus_group_14 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_14
 rates_pmei_comm_plus_group_15:  --tags @rates_pmei_comm_plus_group_15 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_15
 rates_pmei_comm_plus_group_16:  --tags @rates_pmei_comm_plus_group_16 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_16
-rates_pmei_comm_plus_group_17:  --tags @rates_pmei_comm_plus_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pmei_comm_plus_group_17
+rates_pmei_comm_plus_group_17:  --tags @rates_pmei_comm_plus_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pmei_comm_plus_group_17
 
 
 
