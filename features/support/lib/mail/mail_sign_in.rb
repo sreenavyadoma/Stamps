@@ -167,8 +167,10 @@ module Stamps
             login
             50.times do
               begin
-                logger.message(verifying_text)
-                break if signed_in_user.present?
+                if signed_in_user.present?
+                  logger.message("Signed-in user: #{signed_in_user.text}")
+                  break
+                end
                 if whats_new_modal.present?
                   whats_new_modal.continue
                   break
