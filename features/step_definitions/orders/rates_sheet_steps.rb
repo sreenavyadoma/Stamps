@@ -1,10 +1,8 @@
 Then /^[Pp]repare environment for ratings test$/ do
   if @modal_param.web_app == :mail
     step "select Print On Shipping Label - 8 ½\" x 11\" Paper"
-    step "set Print form Mail-From to default"
   elsif @modal_param.web_app == :orders
     step "add new order"
-    step "set Order Details form Ship-From to default"
   end
 end
 
