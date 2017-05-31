@@ -15,8 +15,8 @@ rates_test:
   rates_parcel_select_ground: Parcel Select Ground
   rates_pmei_comm_base: PMEI Comm Base
   rates_pmei_comm_plus: PMEI Comm Plus
-  test_dir: C:\watir-webdriver\rates\tests
-  results_dir: C:\watir-webdriver\rates\results
+  test_dir: \\rcruz-win7\Public\share\rates_test_data\tests
+  results_dir: \\rcruz-win7\Public\share\rates_test_data\results
 
 import_orders_test:
   import_orders_dir: \\jenkinsvm05\Shared\CSV Import Files
@@ -990,9 +990,109 @@ orders_credentials:
     rates_pm_comm_base:
       usr: stgbh3mebdk6
       pw: pass111
-    rates_pmei_comm_base:
-      usr: pmei_com_base1
-      pw: password1
+    rates_pmei_comm_base_group_1:
+      usr: stgxz0386tftl1
+      pw: pass111
+    rates_pmei_comm_base_group_2:
+      usr: stgo0e9lb9fpv
+      pw: pass111
+    rates_pmei_comm_base_group_3:
+      usr: stgzom0awk67
+      pw: pass111
+    rates_pmei_comm_base_group_4:
+      usr: stgp6389urwj4
+      pw: pass111
+    rates_pmei_comm_base_group_5:
+      usr: stgyvngqz27b66
+      pw: pass111
+    rates_pmei_comm_base_group_6:
+      usr: stgtx2t22766vg
+      pw: pass111
+    rates_pmei_comm_base_group_7:
+      usr: stgom0dqgzppy
+      pw: pass111
+    rates_pmei_comm_base_group_8:
+      usr: stggm2z3od6o5t
+      pw: pass111
+    rates_pmei_comm_base_group_9:
+      usr: stgo162k9hy
+      pw: pass111
+    rates_pmei_comm_base_group_10:
+      usr: stgvoc0kcnt6rw
+      pw: pass111
+    rates_pmei_comm_base_group_11:
+      usr: stgnhscvwnf
+      pw: pass111
+    rates_pmei_comm_base_group_12:
+      usr: stgqklz1vjekq6
+      pw: pass111
+    rates_pmei_comm_base_group_13:
+      usr: stgih31vmh
+      pw: pass111
+    rates_pmei_comm_base_group_14:
+      usr: stge7x4xybj
+      pw: pass111
+    rates_pmei_comm_base_group_15:
+      usr: stghwb2ojyi
+      pw: pass111
+    rates_pmei_comm_base_group_16:
+      usr: stgs8713b6h
+      pw: pass111
+    rates_pmei_comm_base_group_17:
+      usr: stglu3dg6e4n
+      pw: pass111
+    rates_pmei_comm_plus_group_1:
+      usr: stgsc35s82cmlv
+      pw: pass111
+    rates_pmei_comm_plus_group_2:
+      usr: stguspu8o4655f
+      pw: pass111
+    rates_pmei_comm_plus_group_3:
+      usr: stgo5krbjtc
+      pw: pass111
+    rates_pmei_comm_plus_group_4:
+      usr: stgepefuut
+      pw: pass111
+    rates_pmei_comm_plus_group_5:
+      usr: stgswz5afiev
+      pw: pass111
+    rates_pmei_comm_plus_group_6:
+      usr: stgsqtuz7x2
+      pw: pass111
+    rates_pmei_comm_plus_group_7:
+      usr: stgld1uw4sroe7
+      pw: pass111
+    rates_pmei_comm_plus_group_8:
+      usr: stghy955swcbcm
+      pw: pass111
+    rates_pmei_comm_plus_group_9:
+      usr: stghi5sqaoe
+      pw: pass111
+    rates_pmei_comm_plus_group_10:
+      usr: stgvw4zzd8jgj7
+      pw: pass111
+    rates_pmei_comm_plus_group_11:
+      usr: stgbt9h9oleseq
+      pw: pass111
+    rates_pmei_comm_plus_group_12:
+      usr: stgy8vviww576v
+      pw: pass111
+    rates_pmei_comm_plus_group_13:
+      usr: stgo0j3xg9kp2o
+      pw: pass111
+    rates_pmei_comm_plus_group_14:
+      usr: stgrym5ihjq8ct
+      pw: pass111
+    rates_pmei_comm_plus_group_15:
+      usr: stgtvq2xfm85et
+      pw: pass111
+    rates_pmei_comm_plus_group_16:
+      usr: stgmxelasxpm
+      pw: pass111
+    rates_pmei_comm_plus_group_17:
+      usr: stgp91jwqgvj
+      pw: pass111
+
     rates_pmei_comm_plus:
       usr: pmei_com_plus
       pw: pass111

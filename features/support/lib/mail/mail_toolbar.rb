@@ -6,7 +6,6 @@ module Stamps
 
       def initialize(param)
         super
-        @total = StampsElement.new browser.label(id: "sdc-printpanel-totalcostlabel")
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
         @please_wait = PrintModal::PleaseWait.new(param)
@@ -15,6 +14,10 @@ module Stamps
         @printing_problem = PrintingProblem.new(param)
         @insufficient_funds = MailInsufficientFunds.new(param)
         @print_quantity_warning = PrintQuantityWarning.new(param)
+      end
+
+      def total
+        (StampsElement.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2)
       end
 
       def print_button
