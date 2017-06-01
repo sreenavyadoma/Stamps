@@ -190,7 +190,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextBox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.text_field(name: "ShipCountryCode"))
+          StampsTextBox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.inputs(name: "ShipCountryCode")[1])
         end
 
         def select(str)
