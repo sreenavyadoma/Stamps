@@ -3,10 +3,10 @@ Feature: Bulk Update Domestic
   Background:
     Given a valid user is signed in to Web Apps
 
-    @bulk_update_domestic
+    @print_bulk_update_domestic
     Scenario: Bulk Update: Ship-From controller
       #Adding 1st order
-        #Then add Order 1
+        Then add Order 1
         Then set Order Details form Ship-From to default
         Then set Order Details form Ship-To to random address between zone 1 and 4
         Then set Order Details form service to PM Package
