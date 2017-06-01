@@ -2,14 +2,14 @@ Then /^[Ss]et Multi Order Details Form Ship From to (.*)$/ do |value|
   stamps.orders.multi_order.ship_from_multi.select(value)
 end
 
-Then /^[Ss]et Multi Order Details Form Pounds to (\d+)$/ do |value|
+Then /^[Ss]et Multi Order Details Form Pounds to (.*)$/ do |value|
   test_param[:pounds] = value
-  stamps.orders.multi_order.weight.lb.set test_param[:pounds]
+  stamps.orders.multi_order.weight.lb.set(test_param[:pounds])
 end
 
-Then /^[Ss]et Multi Order Details form Ounces to (\d+)$/ do |value|
+Then /^[Ss]et Multi Order Details Form Ounces to (.*)$/ do |value|
   test_param[:ounces] = value
-  stamps.orders.multi_order.weight.oz.set test_param[:ounces]
+  stamps.orders.multi_order.weight.oz.set(test_param[:ounces])
 end
 
 Then /^[Ss]et Multi Order Details Form Domestic service to (.*)$/ do |service|
@@ -17,7 +17,7 @@ Then /^[Ss]et Multi Order Details Form Domestic service to (.*)$/ do |service|
 end
 
 Then /^[Ss]et Multi Order Details Form International service to (.*)$/ do |service|
-  stamps.orders.multi_order.int_service.select(service)
+  stamps.orders.multi_order.intl_service.select(service)
 end
 
 Then /^[Ss]et Multi Order Details Form Insurance to (.+)$/ do |value|
@@ -39,7 +39,7 @@ Then /^[Ss]et Multi Order Details form Dimensions to Length (\d+) Width (\d+) He
   #step "Save Order Details data"
 end
 
-Then /^(?:I|i)n Multi Order Form, click Update Orders button$/ do
+Then /^(?:C|c)lick Multi Order Form Update Orders button$/ do
   stamps.orders.multi_order.buttons.update_orders
 end
 
