@@ -888,8 +888,8 @@ Cucumber::Rake::Task.new(:print_multiple_orders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:bulk_update_domestic) do |t|
-  t.profile = 'bulk_update_domestic'
+Cucumber::Rake::Task.new(:print_bulk_update_domestic) do |t|
+  t.profile = 'print_bulk_update_domestic'
   t.cucumber_opts = "-p cuke_reports"
 end
 
