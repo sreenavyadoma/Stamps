@@ -624,7 +624,9 @@ module Stamps
 
         def country(str)
           expect(@country.present?).to be(true)
+          blur_out
           geography = @country.select(str)
+          blur_out
           expect([:domestic, :international]).to include(geography)
           # dymanically create appropriate form per geography
           @address = MailToInt.new(param) if geography == :international
