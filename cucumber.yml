@@ -193,7 +193,7 @@ print_layout_cn22_5x8_continuation: --tags @print_layout_cn22_5x8_continuation -
 print_layout_cn22_paper_left_side: --tags @print_layout_cn22_paper_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cn22_paper_left_side
 print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_layout_cn22_roll
 #PRINT BULK UPDATE
-print_bulk_update_domestic:  --tags @bulk_update_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bulk_update_domestic
+print_bulk_update_domestic:  --tags @print_bulk_update_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bulk_update_domestic
 # CHECK IF THESE ARE IN JENKINS
 reprint: --tags @reprint --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=reprint
 print_multiple_reprints: --tags @print_multiple_reprints --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=print_multiple_reprints
