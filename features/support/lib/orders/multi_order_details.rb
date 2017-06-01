@@ -2,14 +2,14 @@ module Stamps
   module Orders
     module MultiOrderDetails
       class MultiOrderDetailsForm < Browser::StampsModal
-        attr_reader :ship_from_multi, :weight, :domestic_service, :int_service, :insurance, :tracking, :dimensions, :buttons, :manage_shipping_add, :add_shipping_add, :delete_shipping_add
+        attr_reader :ship_from_multi, :weight, :domestic_service, :intl_service, :insurance, :tracking, :dimensions, :buttons
 
         def initialize(param)
           super
           @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
-          @weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
-          @domestic_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order)
-          @int_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_international)
+          #@weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
+          #@domestic_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order)
+          #@intl_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_international)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
           # @dimensions = MultiOrderDetailsDimensions.new(param)

@@ -488,11 +488,14 @@ Then /^[Ee]xpect Order Details form Domestic Ship-To Name is (.*)$/ do |name|
 end
 
 #validating
-Then /^(?:E|e)xpect Order Details form Ship From is (.*)$/ do |expectation|
-  expect(stamps.orders.multi_order.ship_from_multi.text_box.text).to eql expectation
+Then /^[E|e]xpect Order Details form Ship From is (.*)$/ do |expectation|
+  expect(stamps.orders.order_details.ship_from.text_box.text).to include expectation
 end
 
-Then /^(?:E|e)xpect Order Details form Domestic service is (.*)$/ do |expectation|
-  expect(stamps.orders.multi_order.domestic_service.text_box.text).to eql expectation
+Then /^[E|e]xpect Order Details form Domestic service is (.*)$/ do |expectation|
+  expect(stamps.orders.order_details.service.text_box.text).to include expectation
 end
 
+Then /^[E|e]xpect Order Details form International service is (.*)$/ do |expectation|
+  expect(stamps.orders.order_details.service.text_box.text).to include expectation
+end
