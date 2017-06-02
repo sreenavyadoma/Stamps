@@ -49,38 +49,6 @@ module Stamps
         end
       end
 
-      class OrderDetailsWeight < Browser::StampsModal
-        attr_reader :lb, :oz
-        def initialize(param, form_type)
-          super(param)
-          case form_type
-            when :single_order
-              text_box = browser.text_field(name: 'WeightLbs')
-              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-              text_box = browser.text_field(name: 'WeightOz')
-              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-            when :multi_order
-              text_box = browser.text_field(name: 'WeightLbs')
-              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-              text_box = browser.text_field(name: 'WeightOz')
-              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-            else
-              expect([:single_order, :multi_order]).to include(form_type)
-          end
-        end
-      end
-
       module ServiceCost
         def cost_label
           labels = browser.label(text: "Service:").parent.labels
@@ -206,6 +174,38 @@ module Stamps
 
         def enabled? service
           !(disabled? service)
+        end
+      end
+
+      class OrderDetailsWeight < Browser::StampsModal
+        attr_reader :lb, :oz
+        def initialize(param, form_type)
+          super(param)
+          case form_type
+            when :single_order
+              text_box = browser.text_field(name: 'WeightLbs')
+              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
+              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
+              text_box = browser.text_field(name: 'WeightOz')
+              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
+              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
+            when :multi_order
+              text_box = browser.text_field(name: 'WeightLbs')
+              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
+              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
+              text_box = browser.text_field(name: 'WeightOz')
+              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
+              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+            else
+              expect([:single_order, :multi_order]).to include(form_type)
+          end
         end
       end
     end
