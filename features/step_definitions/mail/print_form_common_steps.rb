@@ -62,6 +62,7 @@ end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   test_param[:country] = country
+  config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
   stamps.mail.print_form.mail_to.country((test_param[:country]))
 end
 

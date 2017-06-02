@@ -14,7 +14,7 @@ module Stamps
         when /ss/
           url = "http://printss600.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
         when /cc/
-          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
           #url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /sc/
           url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
@@ -23,7 +23,7 @@ module Stamps
           url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
           #url = "http://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /rating/
-          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
+          url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
         else
           url = "http://#{param.test_env}/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
       end

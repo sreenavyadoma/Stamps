@@ -42,7 +42,7 @@ module Stamps
 
         def initialize(param)
           super
-          @drop_down = StampsElement.new(browser.div(id: "printmediadroplist-1036-trigger-picker"))
+          @drop_down = StampsElement.new(browser.div(css: "table[id^=printmediadroplist-][id$=-triggerWrap]>tbody>tr>td>div[class*=trigger]"))
           @text_box = StampsTextBox.new(browser.text_field(css: "input[name^=printmediadroplist-][name$=inputEl]"))
           @upgrade_plan = UpgradePlan.new(param)
         end
@@ -52,6 +52,7 @@ module Stamps
         end
 
         def print_on(str)
+          drop_down.wait_until_present(4)
           drop_down.click
           case str
             when /Paper/
@@ -144,7 +145,7 @@ module Stamps
                 break if text_box.text.include?(selected_sub_str)
                 expect(upgrade_plan.present?).not_to be(true), "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
               else
-                drop_down.click unless selection.present?
+                drop_down.click
               end
             rescue
               #ignore
@@ -190,7 +191,7 @@ module Stamps
         end
 
         def text_box
-          StampsTextBox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.text_field(name: "ShipCountryCode"))
+          StampsTextBox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.inputs(name: "ShipCountryCode")[1])
         end
 
         def select(str)
@@ -624,7 +625,9 @@ module Stamps
 
         def country(str)
           expect(@country.present?).to be(true)
+          blur_out
           geography = @country.select(str)
+          blur_out
           expect([:domestic, :international]).to include(geography)
           # dymanically create appropriate form per geography
           @address = MailToInt.new(param) if geography == :international

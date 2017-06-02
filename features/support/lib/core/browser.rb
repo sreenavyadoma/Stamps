@@ -126,7 +126,7 @@ module Stamps
 
       def attribute_value(attribute)
         begin
-          element.attribute_value(attribute)
+          element.attribute_value(attribute) if present?
         rescue
           return ''
         end
@@ -134,7 +134,7 @@ module Stamps
 
       def click
         begin
-          element.click if element.present?
+          element.click if present?
         rescue
           #ignore
         end
@@ -174,9 +174,9 @@ module Stamps
       def set(txt)
         15.times do
           begin
-            text_box.set(txt)
+            text_box.set(txt) if present?
             break if text == txt
-            set_attribute_value("value", txt)
+            set_attribute_value("value", txt)  if present?
             break if text == txt
           rescue
             #ignore
@@ -185,7 +185,7 @@ module Stamps
 
         def clear
           begin
-            text_box.clear
+            text_box.clear if present?
           rescue
             #ignore
           end
