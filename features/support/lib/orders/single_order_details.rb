@@ -957,7 +957,7 @@ module Stamps
           @ship_from = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :single_order)
           @ship_to = ShipTo.new(param)
           @weight = OrderDetailsWeight.new(param)
-          @service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :single_order)
+          @service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :single_order).extend(Stamps::Orders::OrderDetailsCommon::ServiceCost)
           @insure_for = DetailsInsureFor.new(param)
           @tracking = DetailsTracking.new(param)
           @reference_no = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))

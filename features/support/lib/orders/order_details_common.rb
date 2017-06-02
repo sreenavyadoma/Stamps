@@ -81,6 +81,38 @@ module Stamps
         end
       end
 
+      module ServiceCost
+        def cost_label
+          labels = browser.label(text: "Service:").parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
+          end
+          cost_element
+        end
+
+        def cost
+          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+        end
+
+        def inline_cost(service_name)
+          cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
+          10.times do
+            begin
+              drop_down.click unless cost_label.present?
+              if cost_label.present?
+                service_cost = helper.remove_dollar_sign(cost_label.text)
+                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                drop_down.click if cost_label.present?
+                return service_cost.to_f.round(2)
+              end
+            rescue
+              #ignore
+            end
+          end
+        end
+      end
+
       class OrdersService < Browser::StampsModal
         attr_reader :text_box, :drop_down
         def initialize(param, form_type)
@@ -109,45 +141,14 @@ module Stamps
           logger.info "Select service #{str}"
           sleep(0.35)
           selection = StampsElement.new browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
-
-            begin
-              sleep(0.35)
-              drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection.click
-              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
-              return if text_box.text.size > 1
+          begin
+            sleep(0.35)
+            drop_down.click unless selection.present?
+            selection.scroll_into_view
+            selection.click
+            logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
+            return if text_box.text.size > 1
           end
-        end
-
-        def inline_cost(service_name)
-          cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
-          10.times do
-            begin
-              drop_down.click unless cost_label.present?
-              if cost_label.present?
-                service_cost = helper.remove_dollar_sign(cost_label.text)
-                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
-                drop_down.click if cost_label.present?
-                return service_cost.to_f.round(2)
-              end
-            rescue
-              #ignore
-            end
-          end
-        end
-
-        def cost_label
-          labels = browser.label(text: "Service:").parent.labels
-          cost_element = nil
-          labels.each do |label|
-            cost_element = label if label.text.include?('.')
-          end
-          cost_element
-        end
-
-        def cost
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def tooltip(selection)

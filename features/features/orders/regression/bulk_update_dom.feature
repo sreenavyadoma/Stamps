@@ -3,7 +3,7 @@ Feature: Bulk Update Domestic
   Background:
     Given a valid user is signed in to Web Apps
 
-    @print_bulk_update_domestic
+    @bulk_update_dom
     Scenario: Bulk Update Domestic
       #Adding 1st order
         Then add Order 1
