@@ -4,11 +4,12 @@ Feature: Bulk Update International
   Background:
     Given a valid user is signed in to Web Apps
 
-    @bulk_update_intl
-    Scenario: Bulk Update: Ship-From controller
+    @print_bulk_update_intl
+    Scenario: Bulk Update International
 
       #Adding 1st order
          Then add new order
+         Then set Multi Order Details Form Ship From to default
          Then set Order Details Ship-To International address to
             | full_name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
             | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
@@ -17,6 +18,7 @@ Feature: Bulk Update International
 
       #Adding 2nd order
          Then add new order
+         Then set Multi Order Details Form Ship From to default
          Then set Order Details Ship-To International address to
           | full_name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
           | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
@@ -29,24 +31,24 @@ Feature: Bulk Update International
          Then check Orders Grid row 2
 
       #Updating order details
-        #Then set Multi Order Details Form Ship From to Bulk Update Order 1
+         Then set Multi Order Details Form Ship From to Bulk Update Order 1
         #Then set Multi Order Details form Pounds to 3
          Then set Multi Order Details Form International service to PMI Package
-         Then in Multi Order Form, click Update Orders button
+         Then click Multi Order Form Update Orders button
          Then Pause for 2 seconds
          Then Refresh the browser
 
       #verify fields in 1st order
          Then check Orders Grid row 1
-        #Then expect Order Details form Ship From is Bulk Update Order 1
-        #Then expect Order Details form Pound is 2
+         Then expect Order Details form Ship From is Bulk Update Order 1
+        #Then expect Order Details form Pound is 3
          Then expect Order Details form International service is PMI Package
          Then uncheck Orders Grid row 1
 
       #verify fields in 2nd order
          Then check Orders Grid row 2
-        #Then expect Order Details form Ship From is Bulk Update Order 1
-        #Then expect Order Details form Pound is 2
+         Then expect Order Details form Ship From is Bulk Update Order 1
+        #Then expect Order Details form Pound is 3
          Then expect Order Details form International service is PMI Package
 
       Then Sign out

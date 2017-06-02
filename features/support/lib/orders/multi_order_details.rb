@@ -7,9 +7,9 @@ module Stamps
         def initialize(param)
           super
           @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
-          #@weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
-          #@domestic_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order)
-          #@intl_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_international)
+          @weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
+          @domestic_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order)
+          @intl_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_international)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
           # @dimensions = MultiOrderDetailsDimensions.new(param)
@@ -195,7 +195,6 @@ module Stamps
           end
         end
       end
-
     end
   end
 end

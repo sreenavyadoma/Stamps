@@ -893,6 +893,11 @@ Cucumber::Rake::Task.new(:print_bulk_update_domestic) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:print_bulk_update_intl) do |t|
+  t.profile = 'print_bulk_update_intl'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_dialog_label_right_side) do |t|
   t.profile = 'print_dialog_label_right_side'
   t.cucumber_opts = "-p cuke_reports"
