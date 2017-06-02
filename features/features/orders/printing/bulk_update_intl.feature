@@ -32,7 +32,7 @@ Feature: Bulk Update International
         #Then set Multi Order Details Form Ship From to Bulk Update Order 1
         #Then set Multi Order Details form Pounds to 3
          Then set Multi Order Details Form International service to PMI Package
-         Then in Multi Order Form, click Update Orders button
+         Then click Multi Order Form Update Orders button
          Then Pause for 2 seconds
          Then Refresh the browser
 
