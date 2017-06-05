@@ -6,6 +6,10 @@ Then /^[Ss]elect Print On (.*)$/ do |media|
   stamps.mail.print_on(test_param[:print_on])
 end
 
+Then /^[Bb]lur out on [Pp]rint [Ff]orm$/ do
+  stamps.mail.print_form.blur_out
+end
+
 Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
   test_param[:ship_from] = value
   stamps.mail.print_form.mail_from.select(test_param[:ship_from])

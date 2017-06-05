@@ -142,11 +142,13 @@ module Stamps
 
       def username(usr)
         show_sign_in_modal
+        username_textbox.click
         username_textbox.set(usr)
       end
 
       def password(pw)
         show_sign_in_modal
+        password_textbox.click
         password_textbox.set(pw)
       end
 
@@ -160,12 +162,12 @@ module Stamps
         self.usr = username
         self.pw = password
         begin
-          5.times do
+          10.times do
             break if signed_in_user.present?
             username(usr)
             password(pw)
             login
-            50.times do
+            5.times do
               begin
                 if signed_in_user.present?
                   logger.message("Signed-in user: #{signed_in_user.text}")
