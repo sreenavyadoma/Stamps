@@ -174,7 +174,8 @@ module Stamps
       def set(txt)
         15.times do
           begin
-            text_box.set(txt)
+            clear
+            text_box.set(txt) if present?
             break if text == txt
             set_attribute_value("value", txt)
             break if text == txt
@@ -185,7 +186,7 @@ module Stamps
 
         def clear
           begin
-            text_box.clear
+            text_box.clear if present?
           rescue
             #ignore
           end
