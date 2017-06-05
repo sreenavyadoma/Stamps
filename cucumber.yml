@@ -8,7 +8,7 @@ rob_registration: --tags @registration_orders WEB_APP=registration URL=cc --gues
 
 #ccfb311osps4x
 rob_dev: --tags @bvt_new_order DEVELOPER=true WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-rob_cc: --tags @bvt_international_shipping WEB_APP=orders USER_CREDENTIALS=bvt_new_order JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_cc: --tags @healthcheck WEB_APP=orders USER_CREDENTIALS=bvt_new_order JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 rob_stg: --tags @bvt_ambigious_address WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_plus JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 
