@@ -164,6 +164,8 @@ module Stamps
           5.times do
             break if signed_in_user.present?
             username(usr)
+            username(usr)
+            username(usr)
             password(pw)
             login
             50.times do

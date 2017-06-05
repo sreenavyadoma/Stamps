@@ -113,8 +113,10 @@ module Stamps
             username.wait_until_present(4)
             20.times do
               begin
-                username.click
                 if username.present?
+                  username.click
+                  username.set(usr)
+                  username.set(usr)
                   username.set(usr)
                   password.set(pw)
                   sign_in_btn.click

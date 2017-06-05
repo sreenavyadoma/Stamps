@@ -1,32 +1,32 @@
-default: --backtrace --profile rob_registration
+default: --backtrace --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
-rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 rob_registration: --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 #ccfb311osps4x
-rob_dev: --tags @bvt_new_order DEVELOPER=true WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_cc: --tags @bvt_international_shipping WEB_APP=orders USER_CREDENTIALS=bvt_new_order JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_stg: --tags @bvt_ambigious_address WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_plus JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium
+rob_dev: --tags @bvt_new_order DEVELOPER=true WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_cc: --tags @bvt_international_shipping WEB_APP=orders USER_CREDENTIALS=bvt_new_order JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_stg: --tags @bvt_ambigious_address WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_plus JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 
-rob_mail_cc: --tags @mail_bvt_envelopes WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=ccfb311osps4x PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_mail_stg: --tags @rates_pmei_comm_base_group_8 WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_mail_sc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=kaushal JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob_mail_cc: --tags @mail_bvt_envelopes WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=ccfb311osps4x PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_mail_stg: --tags @rates_pmei_comm_base_group_8 WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_mail_sc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=kaushal JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 eli_dev: --tags @rates_pmei_comm_base_group_8 --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=item_details URL=cc BROWSER=chrome USR=hal9000qa1 PW=password2
-ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=ff USR=default PW=pass111
-eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=ff USR=ss_cctest3 PW=password1
-kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-sap: --tags @registration_profile_page_negative_tests WEB_APP=registration USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-sap: --tags @registration_profile_page_ui_validation WEB_APP=webreg USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-kaushal_mail: --tags @mail_print_roll_4_1_8_x_6_1_4_fcm WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-kaushal_orders: --tags @bulk_update_dom WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=gc USR=default PW=pass111
+eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=gc USR=ss_cctest3 PW=password1
+kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+sap: --tags @registration_profile_page_negative_tests WEB_APP=registration USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+sap: --tags @registration_profile_page_ui_validation WEB_APP=webreg USER_CREDENTIALS=sap JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+kaushal_mail: --tags @mail_print_roll_4_1_8_x_6_1_4_fcm WEB_APP=mail USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+kaushal_orders: --tags @bulk_update_dom WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
@@ -37,11 +37,11 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
 
 poc_stg_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=authentication URL=stg BROWSER=chrome
-poc_stg_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=authentication URL=stg BROWSER=ff
+poc_stg_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=authentication URL=stg BROWSER=gc
 poc_cc_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=authentication URL=cc BROWSER=chrome
-poc_cc_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=authentication URL=cc BROWSER=ff
+poc_cc_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=authentication URL=cc BROWSER=gc
 
-jenkinsvm: --tags @healthcheck --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=stg BROWSER=ff USR=ss_cctest3 PW=password1
+jenkinsvm: --tags @healthcheck --guess DEBUG=true JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=stg BROWSER=gc USR=ss_cctest3 PW=password1
 
 rates_pme_comm_base_mail: --tags @rates_pme_comm_base --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=rates_pme_comm_base
 rates_pme_comm_base: --tags @rates_pme_comm_base --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_base
