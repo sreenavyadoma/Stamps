@@ -31,8 +31,6 @@ module TestParameters
         expect(ENV['URL']).to be_truthy
         expect(ENV['HEALTHCHECK']).to be_truthy
         expect(ENV['DEBUG']).to be_truthy
-        expect(ENV['USR']).to be_truthy
-        expect(ENV['PW']).to be_truthy
         expect(ENV['WEB_APP']).to be_truthy
         expect(['orders', 'mail', 'Registration']).to include(ENV['WEB_APP'].downcase), "Expected WEB_APP value to be either orders, mail or Registration. Got #{ENV['WEB_APP']}"
       end
