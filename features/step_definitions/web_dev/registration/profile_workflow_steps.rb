@@ -13,7 +13,7 @@ Then /^[Pp]opulate all [Pp]rofile page required fields$/ do
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
-  registration.profile.email.wait_until_present(3)
+  registration.profile.email.wait_until_present(5)
   expect(registration.profile.email.present?).to be(true), "Profile page did not load properly, check your test."
   registration.profile.email.set(test_param[:email] = (str.nil?)?(helper.random_email):str)
   step "blur out on profile page"
