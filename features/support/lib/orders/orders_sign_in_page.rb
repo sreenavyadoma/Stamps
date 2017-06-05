@@ -110,9 +110,10 @@ module Stamps
             logger.message "Username: #{usr}"
             logger.message "#"*15
 
-            username.wait_until_present(3)
+            username.wait_until_present(4)
             20.times do
               begin
+                username.click
                 if username.present?
                   username.set(usr)
                   password.set(pw)
@@ -135,21 +136,21 @@ module Stamps
                     logger.error invalid_username.text
                     expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
                   end
-                end
 
-                8.times { sleep(0.25) if username.present? }
+                  8.times { sleep(0.25) if username.present? }
 
-                if invalid_username.present?
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  logger.error invalid_username.text
-                  expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
+                  if invalid_username.present?
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    logger.error invalid_username.text
+                    expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
+                  end
                 end
 
                 new_welcome.wait_until_present(3)

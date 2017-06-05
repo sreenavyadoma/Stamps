@@ -157,6 +157,7 @@ module Stamps
       end
 
       def mail_sign_in(username, password)
+        wait_until_present(3)
         self.usr = username
         self.pw = password
         begin
