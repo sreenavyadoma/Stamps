@@ -493,6 +493,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           step "set Order Details form service to #{service}" if @modal_param.web_app == :orders
           step "select Print form service #{service}" if @modal_param.web_app == :mail
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]] = test_param[:service]
+          sleep(0.525)
 
           # get total cost actual value from UI
           step "Save Order Details data" if @modal_param.web_app == :orders
@@ -542,7 +543,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
-  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
+  @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
   test_param[:result_file].write @result_filename
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
@@ -928,7 +929,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:tracking_selected]] = test_param[:tracking]
-
+          sleep(0.525)
           # get total cost actual value from UI
           step "Save Order Details data"
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
