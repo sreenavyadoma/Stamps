@@ -17,3 +17,4 @@ disable google update service
 5. Perform the same action and set also the Google Update Service (gupdatem) service to disabled (if the service exists)
 disable google auto update service
 6. Restart your computer.
+
