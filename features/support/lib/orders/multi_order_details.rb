@@ -9,7 +9,7 @@ module Stamps
           @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
           #@weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
           @domestic_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_dom)
-          #@int_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_int)
+          @int_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_int)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
           # @dimensions = MultiOrderDetailsDimensions.new(param)
