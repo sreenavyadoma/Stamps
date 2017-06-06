@@ -1,8 +1,9 @@
 Then /^Navigation Bar: Customer Balance$/ do
   #config.logger.step "Navigation Bar: Customer Balance"
+  test_param[:customer_starting_balance] = stamps.navigation_bar.balance.amount
   config.logger.message " ############## CUSTOMER BALANCE "
-  config.logger.message " ############## #{stamps.navigation_bar.balance.amount}"
-  config.logger.message " ############## #{stamps.navigation_bar.balance.amount}"
+  config.logger.message " ############## #{test_param[:customer_starting_balance]}"
+  config.logger.message " ############## #{test_param[:customer_starting_balance]}"
   config.logger.message " ############## CUSTOMER BALANCE "
 end
 

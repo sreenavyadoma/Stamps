@@ -1,12 +1,12 @@
 
-Then /^[Ee]xpect Order Details form Total label is (.*)$/ do |expectation|
+Then /^[Ee]xpect [Oo]rder [Dd]etails form Total label is (.*)$/ do |expectation|
   15.times do
     break if stamps.orders.order_details.footer.label.text == expectation
   end
   expect(stamps.orders.order_details.footer.label.text).to eql expectation
 end
 
-Then /^[Ee]xpect Order Details form Ship Cost Total is correct$/ do
+Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship Cost Total is correct$/ do
   test_param[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
   test_param[:service_cost] = stamps.orders.order_details.service.cost
   test_param[:tracking_cost] = stamps.orders.order_details.tracking.cost
@@ -14,7 +14,7 @@ Then /^[Ee]xpect Order Details form Ship Cost Total is correct$/ do
   expect(test_param[:total_ship_cost].to_f.round(2)).to eql (test_param[:service_cost].to_f + test_param[:insure_for_cost].to_f + test_param[:tracking_cost].to_f).round(2)
 end
 
-Then /^[Ee]xpect Order Details form Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
+Then /^[Ee]xpect [Oo]rder [Dd]etails form Multiple Order Total Cost is \$([0-9.]*)$/ do |expectation|
   test_param[:total_ship_cost] = stamps.orders.order_details.footer.multiple_order_cost
   expect(test_param[:total_ship_cost]).to eql expectation
 end

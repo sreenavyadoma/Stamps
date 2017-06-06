@@ -148,7 +148,7 @@ module Stamps
                   password(pw)
                   login
 
-                  security_questions.wait_until_present(8)
+                  security_questions.wait_until_present(4)
                   return security_questions if security_questions.present?
 
                   30.times do
@@ -165,7 +165,7 @@ module Stamps
                     expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
                   end
 
-                  8.times { sleep(0.25) if username.present? }
+                  8.times { sleep(0.25) if present? }
 
                   if invalid_username.present?
                     logger.error invalid_username.text
@@ -181,7 +181,7 @@ module Stamps
                   end
                 end
 
-                new_welcome.wait_until_present(3)
+                new_welcome.wait_until_present(2)
                 if new_welcome.present?
                   logger.message new_welcome.message
                   add_manual_order = new_welcome.next
