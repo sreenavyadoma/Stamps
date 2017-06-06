@@ -12,7 +12,7 @@ Feature:  BVT Address Cleansing
 
     Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1
-    Then on Order Details form, blur out
+    Then blur out on Order Details form
     Then Pause for 2 seconds
     Then expect Orders Grid Recipient is Euan Davidson
     Then expect Orders Grid Company is Betfair

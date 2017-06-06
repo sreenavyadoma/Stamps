@@ -991,6 +991,12 @@ orders_credentials:
     rates_pm_comm_base:
       usr: stgbh3mebdk6
       pw: pass111
+    rates_pmei_comm_base:
+      usr: stggyotwzye
+      pw: pass111
+    rates_pmei_comm_plus:
+      usr: stgnagml24
+      pw: pass111
     rates_pmei_comm_base_group_1:
       usr: stgxz0386tftl1
       pw: pass111
@@ -1004,7 +1010,7 @@ orders_credentials:
       usr: stgp6389urwj4
       pw: pass111
     rates_pmei_comm_base_group_5:
-      usr: stgyvngqz27b66
+      usr: stgpa86i6exeaq
       pw: pass111
     rates_pmei_comm_base_group_6:
       usr: stgtx2t22766vg
@@ -1452,6 +1458,12 @@ orders_credentials:
       pw: pass111
     rates_pm_comm_base:
       usr: ccixjqr1mt
+      pw: pass111
+    rates_pmei_comm_base:
+      usr: cciknhgc217
+      pw: pass111
+    rates_pmei_comm_plus:
+      usr: cczehokrt6b
       pw: pass111
     rates_pmei_comm_base_group_1:
       usr: ccbrbh9chkhq
@@ -2873,6 +2885,12 @@ mail_credentials:
     mail_print_stamps_wn_series_specify:
       usr: fmaxzis6mr36
       pw: pass111
+    rates_pmei_comm_base:
+      usr: stgjtrllcyav5k
+      pw: pass111
+    rates_pmei_comm_plus:
+      usr: stgokrvxzrsvln
+      pw: pass111
     rates_pmei_comm_base_group_1:
       usr: stgxz0386tftl1
       pw: pass111
@@ -3791,6 +3809,12 @@ mail_credentials:
       pw: pass111
     rates_pmei_comm_plus_group_17:
       usr: ccwwuzm7n84
+      pw: pass111
+    rates_pmei_comm_base:
+      usr: cczy9gykn0lyxc
+      pw: pass111
+    rates_pmei_comm_plus:
+      usr: cck7alwzp
       pw: pass111
   sc:
     rob:

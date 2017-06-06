@@ -224,13 +224,12 @@ module Stamps
 
       class PrintForm < Browser::StampsModal
         attr_reader :print_media
+        include PrintFormBlurOut
 
         def initialize(param)
           super
           @print_media = param.print_media
         end
-
-
       end
     end
   end

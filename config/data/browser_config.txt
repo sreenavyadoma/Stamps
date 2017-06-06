@@ -1,0 +1,20 @@
+
+Firefox:
+about:config
+Open a new tab, paste about:config into the address bar and hit enter.
+If you see the “This Might Void Your Warranty” page, click the blue “I accept the risk!” button. Understand we are manually modifying Firefox’s default settings.
+In the Search box at the top, paste security.insecure_field_warning.contextual.enabled
+Double click the setting to change it to “false”, to disable Firefox’s insecure password warning.
+
+Chrome:
+Press Windows image_thumb8 + R keys to open the run command box.
+2. Type: services.msc and press Enter. (Accept the UAC warning if appears).
+Disable Chrome Automatic Update
+3. Right click at Google Update Service (gupdate) and choose Properties.
+google update disable
+4. Set the Startup Type to Disabled and click OK.
+disable google update service
+5. Perform the same action and set also the Google Update Service (gupdatem) service to disabled (if the service exists)
+disable google auto update service
+6. Restart your computer.
+
