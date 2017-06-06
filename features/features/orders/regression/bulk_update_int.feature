@@ -15,7 +15,7 @@ Feature: Bulk Update International
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
     Then set Order Details form Weight to 2 lb 2 oz
     Then set Order Details form service to PMEI Package
-    Then on Order Details form, blur out 2 times
+    Then blur out on Order Details form 2 times
     Then Pause for 1 second
 
     #Adding 2nd order
@@ -26,7 +26,7 @@ Feature: Bulk Update International
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | Canada  | Random phone | Random email  |
     Then set Order Details form Weight to 2 lb 2 oz
     Then set Order Details form service to PMEI Package
-    Then on Order Details form, blur out 2 times
+    Then blur out on Order Details form 2 times
     Then Pause for 1 seconds
 
     #Check 1st two orders

@@ -141,17 +141,17 @@ module Stamps
             logger.message "#"*15
 
             wait_until_present(4)
-            20.times do
+            10.times do
               begin
                 if present?
                   username(usr)
                   password(pw)
                   login
 
-                  security_questions.wait_until_present(4)
+                  security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
 
-                  30.times do
+                  15.times do
                     logger.message loading_orders.text if loading_orders.present?
                     break unless loading_orders.present?
                   end
