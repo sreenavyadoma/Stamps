@@ -105,13 +105,13 @@ module Stamps
 
       def text
         begin
-          return element.text if !element.text.nil? && element.text.size > 0
+          return element.value if !element.value.nil? && element.value.size > 0
         rescue
           #ignore
         end
 
         begin
-          return element.value if !element.value.nil? && element.value.size > 0
+          return element.text if !element.text.nil? && element.text.size > 0
         rescue
           #ignore
         end
@@ -126,7 +126,7 @@ module Stamps
 
       def attribute_value(attribute)
         begin
-          element.attribute_value(attribute)
+          element.attribute_value(attribute) if present?
         rescue
           return ''
         end
@@ -134,7 +134,7 @@ module Stamps
 
       def click
         begin
-          element.click if element.present?
+          element.click if present?
         rescue
           #ignore
         end
@@ -177,7 +177,7 @@ module Stamps
             clear
             text_box.set(txt) if present?
             break if text == txt
-            set_attribute_value("value", txt)
+            set_attribute_value("value", txt)  if present?
             break if text == txt
           rescue
             #ignore

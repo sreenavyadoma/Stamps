@@ -270,6 +270,16 @@ Cucumber::Rake::Task.new(:rates_parcel_select_ground) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:rates_pmei_comm_base) do |t|
+  t.profile = 'rates_pmei_comm_base'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmei_comm_plus) do |t|
+  t.profile = 'rates_pmei_comm_plus'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:rates_pmei_comm_base_group_1) do |t|
   t.profile = 'rates_pmei_comm_base_group_1'
   t.cucumber_opts = "-p cuke_reports"
@@ -885,6 +895,16 @@ end
 
 Cucumber::Rake::Task.new(:print_multiple_orders) do |t|
   t.profile = 'print_multiple_orders'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bulk_update_dom) do |t|
+  t.profile = 'bulk_update_dom'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bulk_update_int) do |t|
+  t.profile = 'bulk_update_int'
   t.cucumber_opts = "-p cuke_reports"
 end
 

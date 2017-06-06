@@ -17,7 +17,7 @@ Then /^[Ss]et Multi Order Details Form Domestic service to (.*)$/ do |service|
 end
 
 Then /^[Ss]et Multi Order Details Form International service to (.*)$/ do |service|
-  stamps.orders.multi_order.intl_service.select(service)
+  stamps.orders.multi_order.int_service.select(service)
 end
 
 Then /^[Ss]et Multi Order Details Form Insurance to (.+)$/ do |value|

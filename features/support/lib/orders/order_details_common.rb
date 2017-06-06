@@ -49,39 +49,20 @@ module Stamps
         end
       end
 
-      class OrderDetailsWeight < Browser::StampsModal
-        attr_reader :lb, :oz
-        def initialize(param, form_type)
-          super(param)
-          case form_type
-            when :single_order
-              text_box = browser.text_field(name: 'WeightLbs')
-              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-              text_box = browser.text_field(name: 'WeightOz')
-              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-            when :multi_order
-              text_box = browser.text_field(name: 'WeightLbs')
-              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-              text_box = browser.text_field(name: 'WeightOz')
-              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
-              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-            else
-              expect([:single_order, :multi_order]).to include(form_type)
+      module ServiceCost
+        def cost_label
+          labels = browser.label(text: "Service:").parent.labels
+          cost_element = nil
+          labels.each do |label|
+            cost_element = label if label.text.include?('.')
           end
+          cost_element
         end
-      end
 
-      module SingleDetailsService
+        def cost
+          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+        end
+
         def inline_cost(service_name)
           cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
           10.times do
@@ -98,18 +79,44 @@ module Stamps
             end
           end
         end
+      end
 
-        def cost_label
-          labels = browser.label(text: "Service:").parent.labels
-          cost_element = nil
-          labels.each do |label|
-            cost_element = label if label.text.include?('.')
+      class OrdersService < Browser::StampsModal
+        attr_reader :text_box, :drop_down
+        def initialize(param, form_type)
+          super(param)
+          case form_type
+            when :single_order
+              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
+              @drop_down = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
+            when :multi_order_dom
+              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
+              @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
+            when :multi_order_int
+              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
+              @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
+            else
+              expect([:single_order, :multi_order_dom, :multi_order_int]).to include(form_type)
           end
-          cost_element
+          @blur_element = Stamps::Orders::Details::BlurOutElement.new(param)
         end
 
-        def cost
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+        def blur_out
+          blur_element.blur_out
+        end
+
+        def select(str)
+          logger.info "Select service #{str}"
+          sleep(0.35)
+          selection = StampsElement.new browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
+          begin
+            sleep(0.35)
+            drop_down.click unless selection.present?
+            selection.scroll_into_view
+            selection.click
+            logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
+            return if text_box.text.size > 1
+          end
         end
 
         def tooltip(selection)
@@ -168,49 +175,39 @@ module Stamps
         def enabled? service
           !(disabled? service)
         end
-
       end
 
-      class OrdersService < Browser::StampsModal
-        attr_reader :text_box, :drop_down
+      class OrderDetailsWeight < Browser::StampsModal
+        attr_reader :lb, :oz
         def initialize(param, form_type)
           super(param)
           case form_type
             when :single_order
-              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
-              @drop_down = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
+              text_box = browser.text_field(name: 'WeightLbs')
+              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
+              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
+              text_box = browser.text_field(name: 'WeightOz')
+              inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
+              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
             when :multi_order
-              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
-              @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
-            when :multi_order_international
-              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
-              @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
+              text_box = browser.text_field(name: 'WeightLbs')
+              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
+              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+
+              text_box = browser.text_field(name: 'WeightOz')
+              inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
+              dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
+              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
             else
-              expect([:single_order, :multi_order, :multi_order_international]).to include(form_type)
-          end
-          @blur_element = Stamps::Orders::Details::BlurOutElement.new(param)
-        end
-
-        def blur_out
-          blur_element.blur_out
-        end
-
-        def select(str)
-          logger.info "Select service #{str}"
-          sleep(0.35)
-          selection = StampsElement.new browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
-
-            begin
-              sleep(0.35)
-              drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection.click
-              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
-              return if text_box.text.size > 1
+              expect([:single_order, :multi_order]).to include(form_type)
           end
         end
       end
-
     end
   end
 end

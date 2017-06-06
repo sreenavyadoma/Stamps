@@ -76,7 +76,7 @@ module Stamps
 
       def initialize(param)
         super
-        @x_btn = StampsElement.new browser.img(class: 'x-tool-img x-tool-close')
+        @x_btn = StampsElement.new browser.img(css: 'div[id^=dialoguemodal]>div>img[class*=x-tool-close]')
         @more_info_btn = StampsElement.new browser.span(text: 'More Info')
         @continue_btn = StampsElement.new browser.span(text: "Continue")
         @more_info_page = MoreInfoPage.new(param)
@@ -159,11 +159,14 @@ module Stamps
       end
 
       def mail_sign_in(username, password)
+        wait_until_present(3)
         self.usr = username
         self.pw = password
         begin
           10.times do
             break if signed_in_user.present?
+            username(usr)
+            username(usr)
             username(usr)
             password(pw)
             login
@@ -175,6 +178,7 @@ module Stamps
                 end
                 if whats_new_modal.present?
                   whats_new_modal.continue
+                  whats_new_modal.close
                   break
                 end
               rescue
