@@ -971,8 +971,6 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
   result_sheet = param_sheet.gsub(/\s+/, "")
   @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
-  ENV['WEB_APP'].downcase
-  ENV['URL'].downcase
   test_param[:result_file].write @result_filename
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
