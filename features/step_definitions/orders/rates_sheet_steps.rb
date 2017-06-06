@@ -408,12 +408,12 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
         # Set country to proper group
         if (row[@rate_sheet_columns[:service]]).include? "Flat Rate"
           if group < 9
-            step "Set [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :orders
-            step "Set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :mail
+            step "set Order Details Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :mail
           end
         else
-          step "Set [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :orders
-          step "Set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :mail
+          step "set Order Details Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :orders
+          step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :mail
         end
 
         # spreadsheet price for group
