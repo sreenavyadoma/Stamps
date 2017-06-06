@@ -162,7 +162,7 @@ Then /^[Cc]lose Customs Information form$/ do
   step "Save Customs Information form Total amount"
   stamps.orders.order_details.customs.edit_form.close if modal_param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form.close if modal_param.web_app == :mail
-  step "On Order Details form, blur out"
+  step "blur out on Order Details form"
   step "Save Order Details data"
 end
 

@@ -35,7 +35,6 @@ require_relative 'lib/core/helpers'
 require_relative 'lib/core/stamps_logger'
 require_relative 'lib/common/stamps_dot_com'
 require_relative 'lib/orders/orders'
-require_relative 'lib/common/authentication'
 require_relative 'lib/mail/mail_sign_in'
 require_relative 'lib/orders/store_management'
 

@@ -1,5 +1,5 @@
 
-Then /^[Oo]n Order Details form, Delete Ship-From address (\w+)$/ do |address|
+Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Ship-From address (\w+)$/ do |address|
   # not implemented
 end
 
@@ -42,6 +42,6 @@ Then /^[Oo]n Manage Shipping Address modal, set Manage Shipping Addresses to$/ d
 end
 
 Then /^[Oo]n Manage Shipping Address modal, expect selection has (.*)$/ do |address|
-  step "On Order Details form, blur out"
+  step "blur out on Order Details form"
   #stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").address_located?(test_data[:ship_from_address])).to be(true)
 end

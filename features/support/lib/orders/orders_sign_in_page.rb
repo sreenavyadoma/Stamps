@@ -38,15 +38,15 @@ module Stamps
         end
       end
 
-      class OrdersLandingPage < StampsSignInBase
-        attr_reader :username, :password, :sign_in_btn, :title
+      class OrdersLandingPage < Browser::StampsModal
+        attr_reader :username_textbox, :password_textbox, :sign_in_btn, :title, :signed_in_user
 
         def initialize(param)
           super
           browser.text_field(css: "input[class*=x-form-checkbox]")
           browser.a(text: "Download Software for Windows")
-          @username = StampsTextBox.new browser.text_field(css: "input[placeholder=USERNAME]")
-          @password = StampsTextBox.new browser.text_field(css: "input[placeholder=PASSWORD]")
+          @username_textbox = StampsTextBox.new browser.text_field(css: "input[placeholder=USERNAME]")
+          @password_textbox = StampsTextBox.new browser.text_field(css: "input[placeholder=PASSWORD]")
           @sign_in_btn = StampsElement.new browser.span(css: "div[id^=app-main-][id$=-targetEl]>div>div>div>div>div:nth-child(6)>div>div>a>span>span>span[id$=btnInnerEl]")
 
           if param.url.to_sym == :stg
@@ -55,6 +55,7 @@ module Stamps
             @sign_in_btn = StampsElement.new browser.button(id: "signInButton")
           end
           @title = StampsElement.new browser.div(text: 'Sign In')
+          @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
         end
 
         def remember_my_username
@@ -67,6 +68,35 @@ module Stamps
 
         def blur_out
           title.blur_out
+        end
+
+        def present?
+          username_textbox.present?
+        end
+
+        def wait_until_present(*args)
+          username_textbox.wait_until_present(*args)
+        end
+
+        def username(str)
+          username_textbox.click
+          username_textbox.clear
+          username_textbox.set(str)
+          username_textbox.set(str)
+          username_textbox.set(str)
+        end
+
+        def password(str)
+          password_textbox.click
+          password_textbox.clear
+          password_textbox.set(str)
+          password_textbox.set(str)
+        end
+
+        def login
+          sign_in_btn.click
+          sign_in_btn.click
+          sign_in_btn.click
         end
 
         def first_time_sign_in(usr, pw)
@@ -110,19 +140,15 @@ module Stamps
             logger.message "Username: #{usr}"
             logger.message "#"*15
 
-            username.wait_until_present(4)
+            wait_until_present(4)
             20.times do
               begin
-                if username.present?
-                  username.click
-                  username.set(usr)
-                  username.set(usr)
-                  username.set(usr)
-                  password.set(pw)
-                  sign_in_btn.click
-                  sign_in_btn.click
+                if present?
+                  username(usr)
+                  password(pw)
+                  login
 
-                  security_questions.wait_until_present(8)
+                  security_questions.wait_until_present(4)
                   return security_questions if security_questions.present?
 
                   30.times do
@@ -139,7 +165,7 @@ module Stamps
                     expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
                   end
 
-                  8.times { sleep(0.25) if username.present? }
+                  8.times { sleep(0.25) if present? }
 
                   if invalid_username.present?
                     logger.error invalid_username.text
@@ -155,7 +181,7 @@ module Stamps
                   end
                 end
 
-                new_welcome.wait_until_present(3)
+                new_welcome.wait_until_present(2)
                 if new_welcome.present?
                   logger.message new_welcome.message
                   add_manual_order = new_welcome.next

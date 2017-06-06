@@ -16,12 +16,12 @@ Feature: Priority Mail and Large Dimensions
     * set Order Details form Length to 20
     * set Order Details form Width to 35
     * set Order Details form Height to 20
-    * on Order Details form, blur out
-    * on Order Details form, blur out
+    * blur out on Order Details form
+    * blur out on Order Details form
     * expect Order Details form Dimensions are hidden
     * expect Order Details form service is an empty string
     * set Order Details form service to PM Package
-    * on Order Details form, blur out
+    * blur out on Order Details form
     * set Order Details form Length to 1
     * set Order Details form Width to 1
     * set Order Details form Height to 1
