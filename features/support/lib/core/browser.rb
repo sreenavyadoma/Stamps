@@ -183,13 +183,13 @@ module Stamps
             #ignore
           end
         end
+      end
 
-        def clear
-          begin
-            text_box.clear if present?
-          rescue
-            #ignore
-          end
+      def clear
+        begin
+          text_box.clear if present?
+        rescue
+          #ignore
         end
       end
 

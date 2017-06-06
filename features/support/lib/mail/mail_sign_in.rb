@@ -109,9 +109,9 @@ module Stamps
       end
     end
 
-    class MailSignInModal < StampsSignInBase
+    class MailSignInModal < Browser::StampsModal
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info, :invalid_msg,
-                  :remember_username_checkbox, :invalid_username_password
+                  :remember_username_checkbox, :invalid_username_password, :signed_in_user
 
       def initialize(param)
         super
@@ -126,6 +126,7 @@ module Stamps
         @invalid_username_password = StampsElement.new browser.div(id: "InvalidUsernamePasswordMsg")
         @username = ""
         @password = ""
+        @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
       end
 
       def present?
@@ -140,16 +141,22 @@ module Stamps
         sign_in_link.click unless username_textbox.present?
       end
 
-      def username(usr)
+      def username(str)
         show_sign_in_modal
         username_textbox.click
-        username_textbox.set(usr)
+        username_textbox.clear
+        username_textbox.set(str)
+        username_textbox.set(str)
+        username_textbox.set(str)
       end
 
-      def password(pw)
+      def password(str)
         show_sign_in_modal
         password_textbox.click
-        password_textbox.set(pw)
+        password_textbox.clear
+        password_textbox.set(str)
+        password_textbox.set(str)
+        password_textbox.set(str)
       end
 
       def login
@@ -158,15 +165,11 @@ module Stamps
         sign_in_button.click
       end
 
-      def mail_sign_in(username, password)
+      def mail_sign_in(usr, pw)
         wait_until_present(3)
-        self.usr = username
-        self.pw = password
         begin
           10.times do
             break if signed_in_user.present?
-            username(usr)
-            username(usr)
             username(usr)
             password(pw)
             login
