@@ -84,6 +84,8 @@ module Stamps
           username_textbox.set(str)
           username_textbox.set(str)
           username_textbox.set(str)
+          username_textbox.click
+          username_textbox.click
         end
 
         def password(str)
@@ -91,6 +93,8 @@ module Stamps
           password_textbox.clear
           password_textbox.set(str)
           password_textbox.set(str)
+          password_textbox.click
+          password_textbox.click
         end
 
         def login
