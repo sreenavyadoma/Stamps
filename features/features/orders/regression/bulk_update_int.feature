@@ -29,7 +29,6 @@ Feature: Bulk Update International
     Then check Orders Grid row 1
 
     #Check 1st two orders
-    Then Refresh the browser
     Then check Orders Grid row 1
     Then check Orders Grid row 2
 
