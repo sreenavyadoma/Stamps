@@ -26,7 +26,7 @@ Feature: Bulk Update International
     Then set Order Details form service to PMEI Package
     Then blur out on Order Details form 2 times
     Then Pause for 1 seconds
-    #Then check Orders Grid row 1
+    Then check Orders Grid row 1
 
     #Check 1st two orders
     Then check Orders Grid row 1
@@ -34,6 +34,7 @@ Feature: Bulk Update International
 
     #Updating order details
     Then set Multi Order Details Form Ship From to Bulk Update Order 1
+    Then Pause for 2 seconds
     Then set Multi Order Details Form International service to PMI Package
     #Then set Multi Order Details form Pounds to 3
     Then click Multi Order Form Update Orders button
