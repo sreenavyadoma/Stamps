@@ -108,24 +108,29 @@ module Stamps
         def select(str)
           logger.info "Select service #{str}"
           sleep(0.35)
-          selection = StampsElement.new browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
-          begin
-            sleep(0.35)
-            drop_down.click unless selection.present?
-            selection.scroll_into_view
-            selection.click
-            logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
-            return if text_box.text.size > 1
+          selection = StampsElement.new(browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text"))
+          10.times do
+            begin
+              drop_down.click unless selection.present?
+              selection.scroll_into_view
+              selection.click
+              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
+              sleep(0.15)
+              break if text_box.text.include?(str)
+            rescue
+              #ignore
+            end
           end
+          expect(text_box.text).to include(str)
         end
 
         def tooltip(selection)
           button = drop_down
           selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
-          10.times {
+          10.times do
             begin
               button.click unless selection_label.present?
-              sleep(0.35)
+              sleep(0.15)
               if selection_label.present?
                 tooltip = selection_label.attribute_value("data-qtip")
                 logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
@@ -134,7 +139,7 @@ module Stamps
             rescue
               #ignore
             end
-          }
+          end
           blur_out
         end
 

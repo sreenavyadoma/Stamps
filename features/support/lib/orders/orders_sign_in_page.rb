@@ -165,7 +165,7 @@ module Stamps
                     expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
                   end
 
-                  8.times { sleep(0.25) if present? }
+                  20.times { sleep(0.025) if present? }
 
                   if invalid_username.present?
                     logger.error invalid_username.text
@@ -194,7 +194,7 @@ module Stamps
                   expect(learn_more.present?).to be(true)
                   learn_more.close
                 end
-                signed_in_user.wait_until_present(4)
+                signed_in_user.wait_until_present(2)
                 break if signed_in_user.present?
               rescue Exception => e
                 logger.error e.message

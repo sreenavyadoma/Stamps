@@ -471,31 +471,31 @@ Then /^Decrement [Oo]rder [Dd]etails Insure-For by (\d*)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form Reference Number to (.*)$/ do |value|
-  test_param[:reference_no] = (value.downcase.include?('random'))?helper.random_alpha_numeric : value
+Then /^[Ss]et [Oo]rder [Dd]etails form Reference Number to (.*)$/ do |str|
+  test_param[:reference_no] = (str.downcase.include?('random'))?helper.random_alpha_numeric : str
   stamps.orders.order_details.reference_no.set test_param[:reference_no]
   step "Save Order Details data"
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Company is (.*)$/ do |company|
+Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Company is (.*)$/ do |str|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include company
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include str
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Name is (.*)$/ do |name|
+Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Name is (.*)$/ do |str|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include name
+  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include str
 end
 
 #validating
-Then /^[E|e]xpect [Oo]rder [Dd]etails form Ship From is (.*)$/ do |expectation|
-  expect(stamps.orders.order_details.ship_from.text_box.text).to include expectation
+Then /^[E|e]xpect [Oo]rder [Dd]etails form Ship From is (.*)$/ do |str|
+  expect(stamps.orders.order_details.ship_from.text_box.text).to include str
 end
 
-Then /^[E|e]xpect [Oo]rder [Dd]etails form Domestic service is (.*)$/ do |expectation|
-  expect(stamps.orders.order_details.service.text_box.text).to include expectation
+Then /^[E|e]xpect [Oo]rder [Dd]etails form Domestic service is (.*)$/ do |str|
+  expect(stamps.orders.order_details.service.text_box.text).to include str
 end
 
-Then /^[E|e]xpect [Oo]rder [Dd]etails form International service is (.*)$/ do |expectation|
-  expect(stamps.orders.order_details.service.text_box.text).to include expectation
+Then /^[E|e]xpect [Oo]rder [Dd]etails form International service is (.*)$/ do |str|
+  expect(stamps.orders.order_details.service.text_box.text).to include str
 end

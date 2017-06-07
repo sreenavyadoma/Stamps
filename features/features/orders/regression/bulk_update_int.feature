@@ -9,7 +9,6 @@ Feature: Bulk Update International
 
     #Adding 1st order
     Then add new order
-    Then set Multi Order Details Form Ship From to default
     Then set Order Details Ship-To International address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
@@ -20,10 +19,9 @@ Feature: Bulk Update International
 
     #Adding 2nd order
     Then add new order
-    Then set Multi Order Details Form Ship From to default
     Then set Order Details Ship-To International address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
-      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | Canada  | Random phone | Random email  |
+      | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set Order Details form Weight to 2 lb 2 oz
     Then set Order Details form service to PMEI Package
     Then blur out on Order Details form 2 times
