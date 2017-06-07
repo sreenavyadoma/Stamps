@@ -1681,6 +1681,9 @@ orders_credentials:
     sorting:
       usr: mysfp0c9g
       pw: pass111
+    bulk_update_int:
+      usr: mysfp0c9g
+      pw: pass111
     auto_suggest:
       usr: AUTOSUGGEST888
       pw: pass111
