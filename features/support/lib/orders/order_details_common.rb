@@ -26,7 +26,6 @@ module Stamps
           drop_down.click
           sleep(1)
           selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]:browser.li(text: /#{str}/))
-
           if str.downcase.include?("manage shipping")
             15.times do
               sleep(0.35)
