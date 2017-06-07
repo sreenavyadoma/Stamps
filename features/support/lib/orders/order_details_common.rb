@@ -82,9 +82,10 @@ module Stamps
       end
 
       class OrdersService < Browser::StampsModal
-        attr_reader :text_box, :drop_down
+        attr_reader :text_box, :drop_down, :form_type
         def initialize(param, form_type)
           super(param)
+          @form_type = form_type
           case form_type
             when :single_order
               @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
@@ -108,8 +109,13 @@ module Stamps
         def select(str)
           logger.info "Select service #{str}"
           sleep(0.35)
-          selection = StampsElement.new(browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text"))
-          10.times do
+          if form_type==:multi_order_int
+            selection = StampsElement.new((browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text").last))
+          else
+            selection = StampsElement.new(browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text"))
+          end
+
+          20.times do
             begin
               drop_down.click unless selection.present?
               selection.scroll_into_view

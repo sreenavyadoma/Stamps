@@ -697,22 +697,6 @@ module Stamps
       class DetailsStoreItem < Browser::StampsModal
       end
 
-      class OrderDetailsWeight < Browser::StampsModal
-        attr_reader :lb, :oz
-        def initialize(param)
-          super
-          text_box = browser.text_field(name: 'WeightLbs')
-          inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-          @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-
-          text_box = browser.text_field(name: 'WeightOz')
-          inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-          @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
-        end
-      end
-
       class OrderDetailsDimensions < Browser::StampsModal
         attr_reader :length, :width, :height
         def initialize(param)
@@ -956,7 +940,7 @@ module Stamps
           @toolbar = DetailsToolbar.new(param)
           @ship_from = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :single_order)
           @ship_to = ShipTo.new(param)
-          @weight = OrderDetailsWeight.new(param)
+          @weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :single_order)
           @service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :single_order).extend(Stamps::Orders::OrderDetailsCommon::ServiceCost)
           @insure_for = DetailsInsureFor.new(param)
           @tracking = DetailsTracking.new(param)
