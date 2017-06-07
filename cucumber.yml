@@ -86,8 +86,53 @@ rates_pmei_comm_plus_group_15:  --tags @rates_pmei_comm_plus_group_15 --guess DE
 rates_pmei_comm_plus_group_16:  --tags @rates_pmei_comm_plus_group_16 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pmei_comm_plus_group_16
 rates_pmei_comm_plus_group_17:  --tags @rates_pmei_comm_plus_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pmei_comm_plus_group_17
 
+rates_pme_comm_base_zone_1:  --tags @rates_pme_comm_base_zone_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_1
+rates_pme_comm_base_zone_2:  --tags @rates_pme_comm_base_zone_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_2
+rates_pme_comm_base_zone_3:  --tags @rates_pme_comm_base_zone_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_3
+rates_pme_comm_base_zone_4:  --tags @rates_pme_comm_base_zone_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_4
+rates_pme_comm_base_zone_5:  --tags @rates_pme_comm_base_zone_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_5
+rates_pme_comm_base_zone_6:  --tags @rates_pme_comm_base_zone_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_6
+rates_pme_comm_base_zone_7:  --tags @rates_pme_comm_base_zone_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_7
+rates_pme_comm_base_zone_8:  --tags @rates_pme_comm_base_zone_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_8
+rates_pme_comm_base_zone_9:  --tags @rates_pme_comm_base_zone_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_base_zone_9
+rates_pme_comm_plus_zone_1:  --tags @rates_pme_comm_plus_zone_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_1
+rates_pme_comm_plus_zone_2:  --tags @rates_pme_comm_plus_zone_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_2
+rates_pme_comm_plus_zone_3:  --tags @rates_pme_comm_plus_zone_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_3
+rates_pme_comm_plus_zone_4:  --tags @rates_pme_comm_plus_zone_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_4
+rates_pme_comm_plus_zone_5:  --tags @rates_pme_comm_plus_zone_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_5
+rates_pme_comm_plus_zone_6:  --tags @rates_pme_comm_plus_zone_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_6
+rates_pme_comm_plus_zone_7:  --tags @rates_pme_comm_plus_zone_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_7
+rates_pme_comm_plus_zone_8:  --tags @rates_pme_comm_plus_zone_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_8
+rates_pme_comm_plus_zone_9:  --tags @rates_pme_comm_plus_zone_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pme_comm_plus_zone_9
 
+rates_pm_comm_base_zone_1:  --tags @rates_pm_comm_base_zone_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_1
+rates_pm_comm_base_zone_2:  --tags @rates_pm_comm_base_zone_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_2
+rates_pm_comm_base_zone_3:  --tags @rates_pm_comm_base_zone_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_3
+rates_pm_comm_base_zone_4:  --tags @rates_pm_comm_base_zone_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_4
+rates_pm_comm_base_zone_5:  --tags @rates_pm_comm_base_zone_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_5
+rates_pm_comm_base_zone_6:  --tags @rates_pm_comm_base_zone_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_6
+rates_pm_comm_base_zone_7:  --tags @rates_pm_comm_base_zone_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_7
+rates_pm_comm_base_zone_8:  --tags @rates_pm_comm_base_zone_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_8
+rates_pm_comm_base_zone_9:  --tags @rates_pm_comm_base_zone_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_base_zone_9
+rates_pm_comm_plus_zone_1:  --tags @rates_pm_comm_plus_zone_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_1
+rates_pm_comm_plus_zone_2:  --tags @rates_pm_comm_plus_zone_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_2
+rates_pm_comm_plus_zone_3:  --tags @rates_pm_comm_plus_zone_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_3
+rates_pm_comm_plus_zone_4:  --tags @rates_pm_comm_plus_zone_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_4
+rates_pm_comm_plus_zone_5:  --tags @rates_pm_comm_plus_zone_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_5
+rates_pm_comm_plus_zone_6:  --tags @rates_pm_comm_plus_zone_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_6
+rates_pm_comm_plus_zone_7:  --tags @rates_pm_comm_plus_zone_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_7
+rates_pm_comm_plus_zone_8:  --tags @rates_pm_comm_plus_zone_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_8
+rates_pm_comm_plus_zone_9:  --tags @rates_pm_comm_plus_zone_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_pm_comm_plus_zone_9
 
+rates_parcel_select_ground_zone_1:  --tags @rates_parcel_select_ground_zone_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_1
+rates_parcel_select_ground_zone_2:  --tags @rates_parcel_select_ground_zone_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_2
+rates_parcel_select_ground_zone_3:  --tags @rates_parcel_select_ground_zone_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_3
+rates_parcel_select_ground_zone_4:  --tags @rates_parcel_select_ground_zone_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_4
+rates_parcel_select_ground_zone_5:  --tags @rates_parcel_select_ground_zone_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_5
+rates_parcel_select_ground_zone_6:  --tags @rates_parcel_select_ground_zone_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_6
+rates_parcel_select_ground_zone_7:  --tags @rates_parcel_select_ground_zone_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_7
+rates_parcel_select_ground_zone_8:  --tags @rates_parcel_select_ground_zone_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_8
+rates_parcel_select_ground_zone_9:  --tags @rates_parcel_select_ground_zone_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true USER_CREDENTIALS=rates_parcel_select_ground_zone_9
 
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx USER_CREDENTIALS=xxxxxxxxxx
