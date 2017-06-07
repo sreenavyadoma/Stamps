@@ -1099,6 +1099,141 @@ orders_credentials:
     rates_pmei_comm_plus_group_17:
       usr: stgp91jwqgvj
       pw: pass111
+    rates_pme_comm_base_zone_1:
+      usr: stgrvoewgc201t
+      pw: pass111
+    rates_pme_comm_base_zone_2:
+      usr: stgj8i2z4hkb1
+      pw: pass111
+    rates_pme_comm_base_zone_3:
+      usr: stgmyq420argi2
+      pw: pass111
+    rates_pme_comm_base_zone_4:
+      usr: stguqdqnih
+      pw: pass111
+    rates_pme_comm_base_zone_5:
+      usr: stgw0k8dhzo
+      pw: pass111
+    rates_pme_comm_base_zone_6:
+      usr: stgd76d5a6an2
+      pw: pass111
+    rates_pme_comm_base_zone_7:
+      usr: stgwcbp7zfwh
+      pw: pass111
+    rates_pme_comm_base_zone_8:
+      usr: stgx3slcgzx7y
+      pw: pass111
+    rates_pme_comm_base_zone_9:
+      usr: stgmvjak5bfr1
+      pw: pass111
+    rates_pme_comm_plus_zone_1:
+      usr: stgodca4qsozo
+      pw: pass111
+    rates_pme_comm_plus_zone_2:
+      usr: stgm2w98o9cerb
+      pw: pass111
+    rates_pme_comm_plus_zone_3:
+      usr: stgvrjacmfiat
+      pw: pass111
+    rates_pme_comm_plus_zone_4:
+      usr: stgozl1gt0sm7g
+      pw: pass111
+    rates_pme_comm_plus_zone_5:
+      usr: stgtwyde44v3
+      pw: pass111
+    rates_pme_comm_plus_zone_6:
+      usr: stgriysbcbw7zy
+      pw: pass111
+    rates_pme_comm_plus_zone_7:
+      usr: stged0k1dq
+      pw: pass111
+    rates_pme_comm_plus_zone_8:
+      usr: stgk093al8hji3
+      pw: pass111
+    rates_pme_comm_plus_zone_9:
+      usr: stgm8tbgv5ubu
+      pw: pass111
+    rates_pm_comm_base_zone_1:
+      usr: stgd62qmfx
+      pw: pass111
+    rates_pm_comm_base_zone_2:
+      usr: stgccoqkot
+      pw: pass111
+    rates_pm_comm_base_zone_3:
+      usr: stgdbah0hr
+      pw: pass111
+    rates_pm_comm_base_zone_4:
+      usr: stgssw8nb3zpho
+      pw: pass111
+    rates_pm_comm_base_zone_5:
+      usr: stgs9dz6diu
+      pw: pass111
+    rates_pm_comm_base_zone_6:
+      usr: stgfwpmg4qp
+      pw: pass111
+    rates_pm_comm_base_zone_7:
+      usr: stgsbwtcsf0e6
+      pw: pass111
+    rates_pm_comm_base_zone_8:
+      usr: stgbgvuyj1ypvg
+      pw: pass111
+    rates_pm_comm_base_zone_9:
+      usr: stgti8jxq8cm
+      pw: pass111
+    rates_pm_comm_plus_zone_1:
+      usr: stgw0kxjmvgd
+      pw: pass111
+    rates_pm_comm_plus_zone_2:
+      usr: stgue5hryv
+      pw: pass111
+    rates_pm_comm_plus_zone_3:
+      usr: stgag0dpqqp19
+      pw: pass111
+    rates_pm_comm_plus_zone_4:
+      usr: stgxmprkalp44
+      pw: pass111
+    rates_pm_comm_plus_zone_5:
+      usr: stgum4i835po21
+      pw: pass111
+    rates_pm_comm_plus_zone_6:
+      usr: stgpoa24o3xe
+      pw: pass111
+    rates_pm_comm_plus_zone_7:
+      usr: stgbxeq2w5x6b
+      pw: pass111
+    rates_pm_comm_plus_zone_8:
+      usr: stggmsyc7t
+      pw: pass111
+    rates_pm_comm_plus_zone_9:
+      usr: stgswgrj575eoa
+      pw: pass111
+    rates_parcel_select_ground_zone_1:
+      usr: stgzv5o8oqv23s
+      pw: pass111
+    rates_parcel_select_ground_zone_2:
+      usr: stgwgxvcjkucm
+      pw: pass111
+    rates_parcel_select_ground_zone_3:
+      usr: stgupr2smgtub
+      pw: pass111
+    rates_parcel_select_ground_zone_4:
+      usr: stggx2jnf6n
+      pw: pass111
+    rates_parcel_select_ground_zone_5:
+      usr: stgghi616t
+      pw: pass111
+    rates_parcel_select_ground_zone_6:
+      usr: stghkgtpwkxhk8
+      pw: pass111
+    rates_parcel_select_ground_zone_7:
+      usr: stgonw7nzydeio
+      pw: pass111
+    rates_parcel_select_ground_zone_8:
+      usr: stgir6pm3goo
+      pw: pass111
+    rates_parcel_select_ground_zone_9:
+      usr: stgzieusp1q
+      pw: pass111
 
     rates_pmei_comm_plus:
       usr: pmei_com_plus
@@ -1566,6 +1701,141 @@ orders_credentials:
       pw: pass111
     rates_pmei_comm_plus_group_17:
       usr: ccwwuzm7n84
+      pw: pass111
+    rates_pme_comm_base_zone_1:
+      usr: cczehokrt6b
+      pw: pass111
+    rates_pme_comm_base_zone_2:
+      usr: ccli81gjyf
+      pw: pass111
+    rates_pme_comm_base_zone_3:
+      usr: ccpdwyxzxrfuuo
+      pw: pass111
+    rates_pme_comm_base_zone_4:
+      usr: ccq89mdqfkohn
+      pw: pass111
+    rates_pme_comm_base_zone_5:
+      usr: ccrqt0njv22
+      pw: pass111
+    rates_pme_comm_base_zone_6:
+      usr: ccm8n1m8u2f5t8
+      pw: pass111
+    rates_pme_comm_base_zone_7:
+      usr: ccbzmbc5mf
+      pw: pass111
+    rates_pme_comm_base_zone_8:
+      usr: ccdfdsygmdgh2
+      pw: pass111
+    rates_pme_comm_base_zone_9:
+      usr: ccjrofky09rja
+      pw: pass111
+    rates_pme_comm_plus_zone_1:
+      usr: ccehzjlux
+      pw: pass111
+    rates_pme_comm_plus_zone_2:
+      usr: ccumrgb1h
+      pw: pass111
+    rates_pme_comm_plus_zone_3:
+      usr: ccd06hnjx
+      pw: pass111
+    rates_pme_comm_plus_zone_4:
+      usr: ccuxufnwdzmb
+      pw: pass111
+    rates_pme_comm_plus_zone_5:
+      usr: ccl0ks2wfjqcn
+      pw: pass111
+    rates_pme_comm_plus_zone_6:
+      usr: ccg33w4232
+      pw: pass111
+    rates_pme_comm_plus_zone_7:
+      usr: cchph0q864mh
+      pw: pass111
+    rates_pme_comm_plus_zone_8:
+      usr: ccos8dfb746cg
+      pw: pass111
+    rates_pme_comm_plus_zone_9:
+      usr: cci86p81ndb99c
+      pw: pass111
+    rates_pm_comm_base_zone_1:
+      usr: ccoizuae8iffnw
+      pw: pass111
+    rates_pm_comm_base_zone_2:
+      usr: ccf3uo9cjoq
+      pw: pass111
+    rates_pm_comm_base_zone_3:
+      usr: cchzi36ay6wcv
+      pw: pass111
+    rates_pm_comm_base_zone_4:
+      usr: ccz1gs3sfjzunr
+      pw: pass111
+    rates_pm_comm_base_zone_5:
+      usr: ccbj4iufpz
+      pw: pass111
+    rates_pm_comm_base_zone_6:
+      usr: cct6sj1z4g
+      pw: pass111
+    rates_pm_comm_base_zone_7:
+      usr: ccuoptg6rv
+      pw: pass111
+    rates_pm_comm_base_zone_8:
+      usr: ccfj3szid2zced
+      pw: pass111
+    rates_pm_comm_base_zone_9:
+      usr: ccr5818iu
+      pw: pass111
+    rates_pm_comm_plus_zone_1:
+      usr: ccck9bat9u272
+      pw: pass111
+    rates_pm_comm_plus_zone_2:
+      usr: ccvm40okp12
+      pw: pass111
+    rates_pm_comm_plus_zone_3:
+      usr: cco80r376
+      pw: pass111
+    rates_pm_comm_plus_zone_4:
+      usr: ccgf87kzhm75wy
+      pw: pass111
+    rates_pm_comm_plus_zone_5:
+      usr: ccm229brshq
+      pw: pass111
+    rates_pm_comm_plus_zone_6:
+      usr: ccaz98jidd
+      pw: pass111
+    rates_pm_comm_plus_zone_7:
+      usr: ccqqoz4mj99m
+      pw: pass111
+    rates_pm_comm_plus_zone_8:
+      usr: ccy0q8392o6w8d
+      pw: pass111
+    rates_pm_comm_plus_zone_9:
+      usr: ccrtgih2soz
+      pw: pass111
+    rates_parcel_select_ground_zone_1:
+      usr: ccppytzzy6u
+      pw: pass111
+    rates_parcel_select_ground_zone_2:
+      usr: ccdch4ew8q
+      pw: pass111
+    rates_parcel_select_ground_zone_3:
+      usr: ccxbyitaewqm3r
+      pw: pass111
+    rates_parcel_select_ground_zone_4:
+      usr: ccg0vet7k7
+      pw: pass111
+    rates_parcel_select_ground_zone_5:
+      usr: cch59tjlcq7y3
+      pw: pass111
+    rates_parcel_select_ground_zone_6:
+      usr: ccjn80bm61vb
+      pw: pass111
+    rates_parcel_select_ground_zone_7:
+      usr: ccyvjxopxznj
+      pw: pass111
+    rates_parcel_select_ground_zone_8:
+      usr: ccz9aa8h5ygxd
+      pw: pass111
+    rates_parcel_select_ground_zone_9:
+      usr: ccpy9a5szb9
       pw: pass111
     rob:
       usr: ccspkvzy90
