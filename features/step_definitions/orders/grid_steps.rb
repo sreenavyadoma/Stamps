@@ -45,7 +45,7 @@ When /^Edit Orders Grid row (\d+)$/ do |row|
 end
 
 When /^[Cc]heck Orders Grid row (\d+)$/ do |row|
-  stamps.orders.orders_grid.column.checkbox.check row
+  stamps.orders.orders_grid.column.checkbox.check(row)
   expect(stamps.orders.orders_grid.column.checkbox.checked?(row)).to be(true)
 end
 
