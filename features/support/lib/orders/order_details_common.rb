@@ -109,15 +109,15 @@ module Stamps
         def select(str)
           logger.info "Select service #{str}"
           sleep(0.35)
-          if form_type==:multi_order_int
-            selection = StampsElement.new((browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text").last))
-          else
-            selection = StampsElement.new(browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text"))
-          end
 
           20.times do
             begin
               drop_down.click unless selection.present?
+              if form_type==:multi_order_int
+                selection = StampsElement.new((browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text").last))
+              else
+                selection = StampsElement.new(browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text"))
+              end
               selection.scroll_into_view
               selection.click
               logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
