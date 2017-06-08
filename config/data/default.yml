@@ -1954,6 +1954,9 @@ orders_credentials:
     bulk_update_int:
       usr: mysfp0c9g
       pw: pass111
+    add_manage_shipping_address:
+      usr: kulwyj9vs0f3kd
+      pw: pass111
     auto_suggest:
       usr: AUTOSUGGEST888
       pw: pass111

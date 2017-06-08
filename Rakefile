@@ -1134,6 +1134,11 @@ Cucumber::Rake::Task.new(:bulk_update_int) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:add_manage_shipping_address) do |t|
+  t.profile = 'add_manage_shipping_address'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_dialog_label_right_side) do |t|
   t.profile = 'print_dialog_label_right_side'
   t.cucumber_opts = "-p cuke_reports"
