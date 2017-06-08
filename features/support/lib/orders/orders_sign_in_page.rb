@@ -78,6 +78,10 @@ module Stamps
           username_textbox.wait_until_present(*args)
         end
 
+        def wait_while_present(*args)
+          username_textbox.wait_while_present(*args)
+        end
+
         def username(str)
           username_textbox.click
           username_textbox.clear
@@ -107,7 +111,7 @@ module Stamps
           market_place = Orders::Stores::MarketPlace.new(param)
           username.wait_until_present(6)
 
-          20.times do
+          10.times do
             username.wait_until_present(2)
             username.set(usr)
             blur_out
@@ -151,14 +155,13 @@ module Stamps
                   username(usr)
                   password(pw)
                   login
+                  wait_while_present(20)
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
 
-                  15.times do
-                    logger.message loading_orders.text if loading_orders.present?
-                    break unless loading_orders.present?
-                  end
+                  logger.message loading_orders.text if loading_orders.present?
+                  loading_orders.wait_while_present(6)
 
                   if invalid_username.present?
                     logger.error invalid_username.text
@@ -168,8 +171,6 @@ module Stamps
                     logger.error invalid_username.text
                     expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
                   end
-
-                  10.times { sleep(0.025) if present? }
 
                   if invalid_username.present?
                     logger.error invalid_username.text
