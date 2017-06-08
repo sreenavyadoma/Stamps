@@ -169,7 +169,7 @@ module Stamps
                     expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
                   end
 
-                  20.times { sleep(0.025) if present? }
+                  10.times { sleep(0.025) if present? }
 
                   if invalid_username.present?
                     logger.error invalid_username.text
