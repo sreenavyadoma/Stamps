@@ -8,7 +8,6 @@ Feature: Add Manage Shipping Addresses
   Scenario: Add Manage Shipping Addresses
 
     Then add new order
-    #
     Then Add random Ship-from address from zone 1
     Then Add random Ship-from address from zone 2
     Then Add random Ship-from address from zone 3
