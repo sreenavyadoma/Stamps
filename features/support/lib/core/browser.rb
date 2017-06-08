@@ -105,19 +105,19 @@ module Stamps
 
       def text
         begin
-          return element.value if !element.value.nil? && element.present?
+          return element.value if element.present? && !element.value.nil? && element.value.size > 0
         rescue
           #ignore
         end
 
         begin
-          return element.text if !element.text.nil? && element.present?
+          return element.text if element.present? && !element.text.nil? && element.text.size > 0
         rescue
           #ignore
         end
 
         begin
-          return attribute_value('value') if !attribute_value('value').nil? && attribute_value('value').size > 0
+          return attribute_value('value') if element.present? && !attribute_value('value').nil? && attribute_value('value').size > 0
         rescue
           return ""
         end
@@ -167,7 +167,7 @@ module Stamps
     class StampsTextBox < StampsElement
       include HelpBlockElement
       def set(txt)
-        15.times do
+        3.times do
           begin
             clear
             text_box.set(txt) if present?
@@ -211,7 +211,7 @@ module Stamps
     class StampsWatirCheckBox < StampsElement
       include HelpBlockElement
       def check
-        10.times do
+        5.times do
           set
           break if checked?
         end
