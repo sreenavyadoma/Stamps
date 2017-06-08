@@ -21,13 +21,13 @@ end
 Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
   test_param[:ship_from_address] = helper.address_helper_zone(address)
 
-  test_param[:ship_from_zip] = test_param[:ship_from_address]["ship_from_zip"]
+  test_param[:ship_from_zip] = test_param[:ship_from_address]["zip"]
   test_param[:full_name] = test_param[:ship_from_address]['full_name']
   test_param[:company] = test_param[:ship_from_address]['company']
   test_param[:street_address] = test_param[:ship_from_address]["street_address"]
   test_param[:street_address2] = test_param[:ship_from_address]["street_address2"]
   test_param[:city] = test_param[:ship_from_address]['city']
-  test_param[:state] = test_param[:ship_from_address]["state"]
+  test_param[:state] = helper.state_fullname(test_param[:ship_from_address]["state"])
   test_param[:zip] = test_param[:ship_from_address]["zip"]
   test_param[:phone] = test_param[:ship_from_address]['phone']
 

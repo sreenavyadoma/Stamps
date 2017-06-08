@@ -105,6 +105,14 @@ module Stamps
   end
 
   module ParameterHelper
+    def state_fullname
+      if @states.nil?
+        @states = Hash.new
+        @states["CA"] = "California"
+      end
+      @states
+    end
+
     def first_half(str)
       index = (str.size.to_f / 2).ceil
       str[0, index]
