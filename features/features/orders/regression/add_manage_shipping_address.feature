@@ -8,6 +8,10 @@ Feature: Add Manage Shipping Addresses
   Scenario: Add Manage Shipping Addresses
 
     Then add new order
+    #
+    Then Add random Ship-from address from zone 1
+    Then Add random Ship-from address from zone 2
+    Then Add random Ship-from address from zone 3
     #address 1
     Then on Manage Shipping Address modal, add address
       |ship_from_zip  | full_name | company | street_address     | street_address2 | city          | state       | zip    | country       | phone           |

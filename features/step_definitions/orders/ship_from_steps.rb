@@ -18,7 +18,24 @@ Then /^[Oo]n Manage Shipping Address modal, edit address for name = \"(.*)\", co
   add_shipping_address.ship_from_address new_address.hashes.first
 end
 
+Then /^Add random Ship-from address from zone (\+d)$/ do |zone|
+  # 1. generate a random adddress in zone xxx
+  address = helper.address_helper_zone(address)
+  test_param[:street_address] = address['street_address']
+  test_param[:city] = address['city']
+  test_param[:state] = address['state']
+  test_param[:zip] = address['zip']
+  test_param[:full_name] = address['full_name']
+  test_param[:company] = address['company']
+  test_param[:ship_to_domestic] = helper.format_address(address)
+
+  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").add.ship_from_address(test_param[:ship_from_address])
+end
+
 Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
+
+
+
   test_param[:ship_from_address] = ship_from.hashes.first
   test_param[:ship_from_zip] = test_param[:ship_from_address]["ship_from_zip"]
   test_param[:full_name] = test_param[:ship_from_address]['full_name']
