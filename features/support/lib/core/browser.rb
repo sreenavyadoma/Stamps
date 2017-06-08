@@ -105,13 +105,13 @@ module Stamps
 
       def text
         begin
-          return element.value if !element.value.nil? && element.present? && element.value.size > 0
+          return element.value if !element.value.nil? && element.present?
         rescue
           #ignore
         end
 
         begin
-          return element.text if !element.text.nil? && element.present? && element.text.size > 0
+          return element.text if !element.text.nil? && element.present?
         rescue
           #ignore
         end
