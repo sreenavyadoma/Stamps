@@ -75,7 +75,7 @@ module Stamps
 
       def hover
         begin
-          element.hover
+          element.hover if present?
         rescue
           #ignore
         end
@@ -97,7 +97,7 @@ module Stamps
 
       def scroll_into_view
         begin
-          browser.execute_script('arguments[0].scrollIntoView();', element)
+          browser.execute_script('arguments[0].scrollIntoView();', element) if present?
         rescue
           # ignore
         end
@@ -150,7 +150,7 @@ module Stamps
 
       def double_click
         begin
-          element.double_click
+          element.double_click if present?
         rescue
           #ignore
         end
@@ -166,11 +166,6 @@ module Stamps
 
     class StampsTextBox < StampsElement
       include HelpBlockElement
-
-      def present?
-        text_box.present?
-      end
-
       def set(txt)
         15.times do
           begin
@@ -194,7 +189,7 @@ module Stamps
       end
 
       def set_attribute_value(attribute_name, value)
-        browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", element)
+        browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", element) if present?
       end
 
       def data_error
