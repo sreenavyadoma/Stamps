@@ -6,14 +6,13 @@ module Stamps
 
         def initialize(param)
           super
-          @element= StampsElement.new browser.label(text: 'Insure For $:')
+          @element = StampsElement.new(browser.label(text: 'Insure For $:'))
         end
 
         def blur_out
           2.times do
-            element.click
-            element.double_click
-            element.click
+            element.click if element.present?
+            element.double_click if element.present?
           end
         end
       end

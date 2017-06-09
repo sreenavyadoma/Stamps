@@ -54,7 +54,11 @@ module Stamps
       end
 
       def present?
-        element.present?
+        begin
+          element.exist? && element.visible?
+        rescue
+          return false
+        end
       end
 
       def visible?
@@ -71,6 +75,10 @@ module Stamps
         rescue
           return false
         end
+      end
+
+      def truthy?
+        !element.nil? && exist?
       end
 
       def hover
@@ -105,13 +113,13 @@ module Stamps
 
       def text
         begin
-          return element.value if !element.nil? && element.present? && !element.value.nil? && element.value.size > 0
+          return element.value if truthy? && !element.value.nil? && element.value.size > 0
         rescue
           #ignore
         end
 
         begin
-          return element.text if !element.nil? && element.present? && !element.text.nil? && element.text.size > 0
+          return element.text if truthy? && !element.text.nil? && element.text.size > 0
         rescue
           #ignore
         end
