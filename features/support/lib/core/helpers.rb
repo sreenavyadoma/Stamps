@@ -105,7 +105,8 @@ module Stamps
   end
 
   module ParameterHelper
-    def state_fullname
+
+    def state_fullname(state)
       if @states.nil?
         @states = Hash.new
         @states["CA"] = "California"
