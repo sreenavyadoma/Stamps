@@ -42,7 +42,7 @@ module Stamps
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              return if text_box.text.downcase.include?(str.downcase)
+              return if text_box.text.size > 2
             end
           end
         end
