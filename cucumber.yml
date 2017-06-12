@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_stg
+default: --backtrace --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -7,7 +7,7 @@ rob: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=filter_panel JENKINS=t
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 #ccfb311osps4x
-rob_cc: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=bvt_new_order JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_cc: --tags @bvt_shipstation_updates_international WEB_APP=orders USER_CREDENTIALS=bvt_new_order JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 rob_stg: --tags @print_dialog_printing_on_4x6_shipping_label WEB_APP=orders USER_CREDENTIALS=rates_pme_comm_plus JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
