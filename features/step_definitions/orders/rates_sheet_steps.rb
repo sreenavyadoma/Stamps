@@ -851,8 +851,9 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
-        step "set Order Details form Ship-To to a random address in Zone #{zone}"
-
+        step "set Order Details form Ship-To to a random address in Zone #{zone}"  if @modal_param.web_app == :orders
+        step "set Print form Mail-To to a random address in zone #{zone}" if @modal_param.web_app == :mail
+        step "save Print Form Mail From" if @modal_param.web_app == :mail
         # spreadsheet price for zone
 
         if row[zone_column] == nil
@@ -883,11 +884,15 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]= price
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:username]] = test_param[:username]
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_from]] = test_param[:ship_from]
-          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_to_domestic]] = test_param[:ship_to_domestic]
+          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_to_domestic]] = test_param[:ship_to_domestic]  if @modal_param.web_app == :orders
+          test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_to_domestic]] = test_param[:address]  if @modal_param.web_app == :mail
 
           # Set weight to 0
-          step "set Order Details form Pounds to 0"
-          step "set Order Details form Ounces to 0"
+          step "set Order Details form Pounds to 0" if @modal_param.web_app == :orders
+          step "set Order Details form Ounces to 0" if @modal_param.web_app == :orders
+
+          step "set Print form Pounds to 0" if @modal_param.web_app == :mail
+          step "set Print form Ounces to 0" if @modal_param.web_app == :mail
 
           # Set weight per spreadsheet
           #row[@rate_sheet_columns[:weight_lb]].should_not be nil
@@ -902,13 +907,15 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             weight_lb = weight_lb.to_i
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = weight_lb
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "#{weight_lb} lb."
-            step "set Order Details form Pounds to #{weight_lb}"
+            step "set Order Details form Pounds to #{weight_lb}"  if @modal_param.web_app == :orders
+            step "set Print form Pounds to #{weight_lb}"  if @modal_param.web_app == :mail
           else
             weight_oz = Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
             #config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]] = "#{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]] = weight_oz
-            step "set Order Details form Ounces to #{weight_oz}"
+            step "set Order Details form Ounces to #{weight_oz}"  if @modal_param.web_app == :orders
+            step "set Print form Ounces to #{weight_oz}"  if @modal_param.web_app == :mail
           end
           sleep(0.025)
 
@@ -920,18 +927,21 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # record execution time as time service was selected.
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:execution_date]] = Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details form service to #{service}"
+          step "set Order Details form service to #{service}" if @modal_param.web_app == :orders
+          step "select Print form service #{service}" if @modal_param.web_app == :mail
+
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]] = test_param[:service]
 
           # Set Tracking
           begin
-            step "set Order Details form Tracking to #{row[@rate_sheet_columns[:tracking]]}"
+            step "set Order Details form Tracking to #{row[@rate_sheet_columns[:tracking]]}"  if @modal_param.web_app == :orders
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:tracking_selected]] = test_param[:tracking]
           sleep(0.525)
           # get total cost actual value from UI
-          step "Save Order Details data"
+          step "Save Order Details data" if @modal_param.web_app == :orders
+          step "save Print Form Total Cost" if @modal_param.web_app == :mail
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
@@ -957,7 +967,8 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           config.logger.step "#{"#"*10} "
           config.logger.step "#{"#"*10} Weight: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]}"
           config.logger.step "#{"#"*10} Selected Service: #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]}"
-          config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:full_name]}, #{test_param[:street_address]}, #{test_param[:city]}, #{test_param[:state]}, #{test_param[:zip]}"
+          config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:address]}" if @modal_param.web_app == :mail
+          config.logger.step "#{"#"*10} Ship-To Address: #{test_param[:full_name]}, #{test_param[:street_address]}, #{test_param[:city]}, #{test_param[:state]}, #{test_param[:zip]}" if @modal_param.web_app == :orders
           config.logger.step "#{"#"*10} #{"*"*5} Test #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:status]] } - Expected #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]]}, Got #{test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]]} #{"*"*5}"
           config.logger.step "#{"#"*10} "
         end
