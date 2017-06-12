@@ -74,5 +74,12 @@ Then /^[Ss]ave Print Form Total Cost$/ do
 test_param[:total_ship_cost] = stamps.mail.mail_toolbar.total
 end
 
+Then /^[Ss]ave Print Form Mail From$/ do
+  test_param[:ship_from] = stamps.mail.print_form.mail_from.text_box.text
+end
+
+
+
+
 
 

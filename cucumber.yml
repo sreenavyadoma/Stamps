@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_mail_cc
+default: --backtrace --profile rob_stg
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -12,13 +12,13 @@ rob_stg: --tags @print_dialog_printing_on_4x6_shipping_label WEB_APP=orders USER
 rob_sc: --tags @filter_panel WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders USER_CREDENTIALS=rob JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-rob_mail_cc: --tags @mail_bvt_envelopes WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=ccfb311osps4x PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob_mail_cc: --tags @bvt_new_order WEB_APP=mail USER_CREDENTIALS=rob JENKINS=true USR=ccfb311osps4x PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail USER_CREDENTIALS=mail_bvt_advanced_options JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 rob_mail_sc: --tags @filter_panel WEB_APP=mail USER_CREDENTIALS=kaushal JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders USER_CREDENTIALS=developers JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @rates_pmei_comm_base_group_8 --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=item_details URL=cc BROWSER=chrome USR=hal9000qa1 PW=password2
+eli_dev: --tags @rates_pme_comm_base_zone_8 --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail USER_CREDENTIALS=item_details URL=stg BROWSER=chrome USR=hal9000stage25 PW=password1
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=rates_parcel_select_ground URL=stg BROWSER=gc USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel URL=cc BROWSER=gc USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders USER_CREDENTIALS=Kaushal JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
