@@ -149,6 +149,9 @@ module Stamps
         username_textbox.set(str)
         username_textbox.set(str)
         username_textbox.set(str)
+        sign_in_form.click
+        sign_in_form.double_click
+        sign_in_form.click
       end
 
       def password(str)
