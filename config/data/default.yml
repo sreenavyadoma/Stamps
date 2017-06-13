@@ -139,214 +139,214 @@ shipping_method:
 
 country_groups_PMEI:
   group1:
-    1: Canada
+    1: Canada|66
   group2:
-    1: Mexico
+    1: Mexico|70
   group3:
-    1: Hong Kong
-    2: Republic of (South) Korea
+    1: Hong Kong|66
+    2: Republic of (South) Korea|66
   group4:
-    1:  Albania
-    2:  Armenia
-    3:  Azerbaijan
-    4:  Belarus
-    5:  Bosnia-Herzegovina
-    6:  Bulgaria
-    7:  Croatia
-    8:  Cyprus
-    9:  Czech Republic
-    10: Estonia
-    11: Republic Of Georgia
-    12: Hungary
-    13: Latvia
-    14: Lithuania
-    15: Republic Of Macedonia
-    16: Moldova
-    17: Poland
-    18: Romania
-    19: Russia
-    20: Turkey
-    21: Ukraine
+    1:  Albania|66
+    2:  Armenia|44
+    3:  Azerbaijan|70
+    4:  Belarus|44
+    5:  Bosnia-Herzegovina|66
+    6:  Bulgaria|66
+    7:  Croatia|66
+    8:  Cyprus|70
+    9:  Czech Republic|70
+    10: Estonia|66
+    11: Republic Of Georgia|66
+    12: Hungary|66
+    13: Latvia|66
+    14: Lithuania|70
+    15: Republic Of Macedonia|66
+    16: Moldova|70
+    17: Poland|44
+    18: Romania|70
+    19: Russia|70
+    20: Turkey|66
+    21: Ukraine|44
   group5:
-    1:  Andorra
-    2:  Austria
-    3:  Belgium
-    4:  Denmark
-    5:  Faroe Islands
-    6:  Finland
-    7:  Greece
-    8:  Iceland
-    9:  Ireland
-    10: Italy
-    11: Liechtenstein
-    12: Luxembourg
-    13: Malta
-    14: Norway
-    15: Portugal
-    16: San Marino
-    17: Republic of Serbia
-    18: Slovak Republic (Slovakia)
-    19: Slovenia
-    20: Spain
-    21: Sweden
-    22: Switzerland
-    23: Vatican City
+    1:  Andorra|66
+    2:  Austria|66
+    3:  Belgium|66
+    4:  Denmark|66
+    5:  Faroe Islands|44
+    6:  Finland|66
+    7:  Greece|66
+    8:  Iceland|66
+    9:  Ireland|66
+    10: Italy|66
+    11: Liechtenstein|66
+    12: Luxembourg|66
+    13: Malta|44
+    14: Norway|66
+    15: Portugal|66
+    16: San Marino|66
+    17: Republic of Serbia|66
+    18: Slovak Republic (Slovakia)|66
+    19: Slovenia|66
+    20: Spain|66
+    21: Sweden|66
+    22: Switzerland|66
+    23: Vatican City|66
   group6:
-    1:  Bangladesh
-    2:  Bhutan
-    3:  Brunei Darussalam
-    4:  Burma (Myanmar)
-    5:  Cambodia
-    6:  Fiji
-    7:  French Polynesia
-    8:  India
-    9:  Indonesia
-    10: Kazakhstan
-    11: Kiribati
-    12: Kyrgyzstan
-    13: Laos
-    14: Macao
-    15: Malaysia
-    16: Maldives
-    17: Mongolia
-    18: Nauru
-    19: Nepal
-    20: New Caledonia
-    21: Pakistan
-    22: Papua New Guinea
-    23: Phillipines
-    24: Western Samoa
-    25: Singapore
-    26: Solomon Islands
-    27: Sri Lanka
-    28: Taiwan
-    29: Tajikistan
-    30: Thailand
-    31: Tonga
-    32: Turkmenistan
-    33: Uzbekistan
-    34: Vanuatu
-    35: Vietnam
+    1:  Bangladesh|44
+    2:  Bhutan|66
+    3:  Brunei Darussalam|66
+    4:  Burma (Myanmar)|44
+    5:  Cambodia|66
+    6:  Fiji|66
+    7:  French Polynesia|66
+    8:  India|70
+    9:  Indonesia|66
+    10: Kazakhstan|66
+    11: Kiribati|66
+    12: Kyrgyzstan|66
+    13: Laos|66
+    14: Macao|44
+    15: Malaysia|66
+    16: Maldives|66
+    17: Mongolia|66
+    18: Nauru|44
+    19: Nepal|69
+    20: New Caledonia|66
+    21: Pakistan|66
+    22: Papua New Guinea|55
+    23: Philippines|44
+    24: Western Samoa|44
+    25: Singapore|66
+    26: Solomon Islands|66
+    27: Sri Lanka|66
+    28: Taiwan|33
+    29: Tajikistan|66
+    30: Thailand|66
+    31: Tonga|66
+    32: Turkmenistan|66
+    33: Uzbekistan|66
+    34: Vanuatu|55
+    35: Vietnam|66
   group7:
-    1:  Angola
-    2:  Benin
-    3:  Botswana
-    4:  Burkina Faso
-    5:  Burundi
-    6:  Cameroon
-    7:  Cape Verde
-    8:  Central African Republic
-    9:  Chad
-    10: Democratic Republic Of The Congo
-    11: Cote d'Ivoire (Ivory Coast)
-    12: Djibouti
-    13: Equatorial Guinea
-    14: Eritrea
-    15: Gabon
-    16: Ghana
-    17: Guinea
-    18: Guinea-Bissau
-    19: Kenya
-    20: Lesotho
-    21: Liberia
-    22: Madagascar
-    23: Malawi
-    24: Mali
-    25: Mauritania
-    26: Mauritius
-    27: Mozambique
-    28: Namibia
-    29: Niger
-    30: Nigeria
-    31: Rwanda
-    32: Sao Tome & Principe
-    33: Senegal
-    34: Seychelles
-    35: Sierra Leone
-    36: South Africa
-    37: Sudan
-    38: Swaziland
-    39: Tanzania
-    40: Togo
-    41: Uganda
-    42: Zambia
-    43: Zimbabwe
-    44: Republic Of The Congo
+    1:  Angola|44
+    2:  Benin|66
+    3:  Botswana|66
+    4:  Burkina Faso|70
+    5:  Burundi|66
+    6:  Cameroon|44
+    7:  Cape Verde|66
+    8:  Central African Republic|66
+    9:  Chad|66
+    10: Democratic Republic Of The Congo|66
+    11: Cote d'Ivoire (Ivory Coast)|66
+    12: Djibouti|44
+    13: Equatorial Guinea|44
+    14: Eritrea|66
+    15: Gabon|66
+    16: Ghana|66
+    17: Guinea|44
+    18: Guinea-Bissau|44
+    19: Kenya|70
+    20: Lesotho|66
+    21: Liberia|44
+    22: Madagascar|66
+    23: Malawi|44
+    24: Mali|66
+    25: Mauritania|66
+    26: Mauritius|66
+    27: Mozambique|66
+    28: Namibia|22
+    29: Niger|70
+    30: Nigeria|66
+    31: Rwanda|66
+    32: Sao Tome & Principe|66
+    33: Senegal|66
+    34: Seychelles|66
+    35: Sierra Leone|66
+    36: South Africa|66
+    37: Sudan|66
+    38: Swaziland|66
+    39: Tanzania|66
+    40: Togo|66
+    41: Uganda|66
+    42: Zambia|66
+    43: Zimbabwe|44
+    44: Republic Of The Congo|66
   group8:
-    1:  Algeria
-    2:  Bahrain
-    3:  Eqypt
-    4:  Ethiopia
-    5:  Iraq
-    6:  Israel
-    7:  Jordan
-    8:  Kuwait
-    9:  Lebanon
-    10: Morocco
-    11: Oman
-    12: Qatar
-    13: Saudi Arabia
-    14: Syria
-    15: Tunisia
-    16: United Arab Emirates
-    17: Yemen
+    1:  Algeria|44
+    2:  Bahrain|44
+    3:  Egypt|44
+    4:  Ethiopia|66
+    5:  Iraq|44
+    6:  Israel|44
+    7:  Jordan|66
+    8:  Kuwait|66
+    9:  Lebanon|66
+    10: Morocco|68
+    11: Oman|66
+    12: Qatar|66
+    13: Saudi Arabia|66
+    14: Syria|44
+    15: Tunisia|66
+    16: United Arab Emirates|70
+    17: Yemen|66
   group9:
-    1:  Anguilla
-    2:  Argentina
-    3:  Aruba
-    4:  Bahamas
-    5:  Barbados
-    6:  Belize
-    7:  Bermuda
-    8:  Bolivia
-    9:  Bonaire, Sint Eustatius and Saba
-    10: Cayman Islands
-    11: Chile
-    12: Colombia
-    13: Costa Rica
-    14: Cuba
-    15: Curacao
-    16: Dominica
-    17: Dominican Republic
-    18: Ecuador
-    19: El Salvador
-    20: French Guiana
-    21: Grenada
-    22: Guadeloupe
-    23: Guatemala
-    24: Guyana
-    25: Haiti
-    26: Honduras
-    27: Jamaica
-    28: Martinique
-    29: Nicaragua
-    30: Panama
-    31: Paraguay
-    32: Peru
-    33: St. Christopher (St. Kitts) & Nevis
-    34: Saint Lucia
-    35: Saint Vincent & Grenadines
-    36: Trinidad & Tobago
-    37: Turks & Caicos Islands
-    38: Uruguay
-    39: Venezuela
+    1:  Anguilla|55
+    2:  Argentina|44
+    3:  Aruba|44
+    4:  Bahamas|22
+    5:  Barbados|66
+    6:  Belize|66
+    7:  Bermuda|44
+    8:  Bolivia|66
+    9:  Bonaire, Sint Eustatius and Saba|66
+    10: Cayman Islands|44
+    11: Chile|66
+    12: Colombia|44
+    13: Costa Rica|66
+    14: Cuba|22
+    15: Curacao|66
+    16: Dominica|44
+    17: Dominican Republic|66
+    18: Ecuador|66
+    19: El Salvador|66
+    20: French Guiana|66
+    21: Grenada|66
+    22: Guadeloupe|66
+    23: Guatemala|66
+    24: Guyana|66
+    25: Haiti|66
+    26: Honduras|44
+    27: Jamaica|66
+    28: Martinique|66
+    29: Nicaragua|55
+    30: Panama|66
+    31: Paraguay|55
+    32: Peru|70
+    33: St. Christopher (St. Kitts) & Nevis|66
+    34: Saint Lucia|44
+    35: Saint Vincent & Grenadines|44
+    36: Trinidad & Tobago|66
+    37: Turks & Caicos Islands|66
+    38: Uruguay|44
+    39: Venezuela|66
   group10:
-    1:  Australia
-    2:  New Zealand
+    1:  Australia|66
+    2:  New Zealand|66
   group11:
-    1:  Great Britain
+    1:  Great Britain|66
   group12:
-    1:  Japan
+    1:  Japan|66
   group13:
-    1:  France
+    1:  France|66
   group14:
-    1:  China
+    1:  China|66
   group15:
-    1:  Brazil
+    1:  Brazil|66
   group16:
-    1:  Germany
+    1:  Germany|66
   group17:
-    1:  Netherlands
+    1:  Netherlands|66
 
 country_groups_PMEI_flat_rate:
   group1:
@@ -3266,6 +3266,141 @@ mail_credentials:
     rates_pmei_comm_plus_group_17:
       usr: stgp91jwqgvj
       pw: pass111
+    rates_pme_comm_base_zone_1:
+      usr: stgoamrunpps1
+      pw: pass111
+    rates_pme_comm_base_zone_2:
+      usr: stgnbfi8iji5
+      pw: pass111
+    rates_pme_comm_base_zone_3:
+      usr: stgdpv0gi463m1
+      pw: pass111
+    rates_pme_comm_base_zone_4:
+      usr: stgl8xo7d2m
+      pw: pass111
+    rates_pme_comm_base_zone_5:
+      usr: stgefre6ob
+      pw: pass111
+    rates_pme_comm_base_zone_6:
+      usr: stgg2fucfn9x1r
+      pw: pass111
+    rates_pme_comm_base_zone_7:
+      usr: stgb6pkxiheait
+      pw: pass111
+    rates_pme_comm_base_zone_8:
+      usr: stgxcue4i3gxw
+      pw: pass111
+    rates_pme_comm_base_zone_9:
+      usr: stgwzcmdcui
+      pw: pass111
+    rates_pme_comm_plus_zone_1:
+      usr: stgn50ph9qd
+      pw: pass111
+    rates_pme_comm_plus_zone_2:
+      usr: stgw7ofp9cujxl
+      pw: pass111
+    rates_pme_comm_plus_zone_3:
+      usr: stglimcquz0u1
+      pw: pass111
+    rates_pme_comm_plus_zone_4:
+      usr: stga4emwmu
+      pw: pass111
+    rates_pme_comm_plus_zone_5:
+      usr: stgviwn2v5
+      pw: pass111
+    rates_pme_comm_plus_zone_6:
+      usr: stggdhcgcmq
+      pw: pass111
+    rates_pme_comm_plus_zone_7:
+      usr: stgckpq00g2z0u
+      pw: pass111
+    rates_pme_comm_plus_zone_8:
+      usr: stgjdsfs7bgf0w
+      pw: pass111
+    rates_pme_comm_plus_zone_9:
+      usr: stgbbjjr6da
+      pw: pass111
+    rates_pm_comm_base_zone_1:
+      usr: stgh94gpor
+      pw: pass111
+    rates_pm_comm_base_zone_2:
+      usr: stgfsqs7xujqyo
+      pw: pass111
+    rates_pm_comm_base_zone_3:
+      usr: stgkqixm8g03n7
+      pw: pass111
+    rates_pm_comm_base_zone_4:
+      usr: stgrg7jb4nu
+      pw: pass111
+    rates_pm_comm_base_zone_5:
+      usr: stgzlohip7f
+      pw: pass111
+    rates_pm_comm_base_zone_6:
+      usr: stgk31vy1ju9
+      pw: pass111
+    rates_pm_comm_base_zone_7:
+      usr: stge10jjulxa69
+      pw: pass111
+    rates_pm_comm_base_zone_8:
+      usr: stgtux6k7tta7q
+      pw: pass111
+    rates_pm_comm_base_zone_9:
+      usr: stgn1tefjf
+      pw: pass111
+    rates_pm_comm_plus_zone_1:
+      usr: stgtzx5hc26867
+      pw: pass111
+    rates_pm_comm_plus_zone_2:
+      usr: stgpkm6ml2ec
+      pw: pass111
+    rates_pm_comm_plus_zone_3:
+      usr: stgzqw3k9y5cpy
+      pw: pass111
+    rates_pm_comm_plus_zone_4:
+      usr: stgut3jk2tm
+      pw: pass111
+    rates_pm_comm_plus_zone_5:
+      usr: stgpzw4zcd42
+      pw: pass111
+    rates_pm_comm_plus_zone_6:
+      usr: stgxe9m4ucwfa3
+      pw: pass111
+    rates_pm_comm_plus_zone_7:
+      usr: stgegjynxa4
+      pw: pass111
+    rates_pm_comm_plus_zone_8:
+      usr: stgc34blhzy3jr
+      pw: pass111
+    rates_pm_comm_plus_zone_9:
+      usr: stgiwz4ojxg5
+      pw: pass111
+    rates_parcel_select_ground_zone_1:
+      usr: stgjty5xy9l7ar
+      pw: pass111
+    rates_parcel_select_ground_zone_2:
+      usr: stgoxnarhb7pq
+      pw: pass111
+    rates_parcel_select_ground_zone_3:
+      usr: stgb4ixl00j2qc
+      pw: pass111
+    rates_parcel_select_ground_zone_4:
+      usr: stgf37urmcgsh
+      pw: pass111
+    rates_parcel_select_ground_zone_5:
+      usr: stgyu0tdiivwri
+      pw: pass111
+    rates_parcel_select_ground_zone_6:
+      usr: stgsblt6xuujea
+      pw: pass111
+    rates_parcel_select_ground_zone_7:
+      usr: stgs7o0szef0
+      pw: pass111
+    rates_parcel_select_ground_zone_8:
+      usr: stgdl6cni8zd8n
+      pw: pass111
+    rates_parcel_select_ground_zone_9:
+      usr: stgzyd3618avsm
+      pw: pass111
   cc:
     rob:
       usr: ccoxrz0j1
@@ -4083,6 +4218,142 @@ mail_credentials:
     rates_pmei_comm_plus_group_17:
       usr: ccwwuzm7n84
       pw: pass111
+    rates_pme_comm_base_zone_1:
+      usr: ccvejpr9i950ad
+      pw: pass111
+    rates_pme_comm_base_zone_2:
+      usr: ccyenfz6nv
+      pw: pass111
+    rates_pme_comm_base_zone_3:
+      usr: cclpy1xstncg
+      pw: pass111
+    rates_pme_comm_base_zone_4:
+      usr: cczmx0m4d6u2e
+      pw: pass111
+    rates_pme_comm_base_zone_5:
+      usr: ccmm1f5h2euo
+      pw: pass111
+    rates_pme_comm_base_zone_6:
+      usr: ccpc7jrc8nf
+      pw: pass111
+    rates_pme_comm_base_zone_7:
+      usr: ccb5upb2gq8n
+      pw: pass111
+    rates_pme_comm_base_zone_8:
+      usr: ccbavszn8payok
+      pw: pass111
+    rates_pme_comm_base_zone_9:
+      usr: cchu0zt3h4
+      pw: pass111
+    rates_pme_comm_plus_zone_1:
+      usr: ccpoa20a5
+      pw: pass111
+    rates_pme_comm_plus_zone_2:
+      usr: cchr18gt9j33j
+      pw: pass111
+    rates_pme_comm_plus_zone_3:
+      usr: cchs5mn2qv3n
+      pw: pass111
+    rates_pme_comm_plus_zone_4:
+      usr: ccpezpfw8jcff7
+      pw: pass111
+    rates_pme_comm_plus_zone_5:
+      usr: ccff8elqtu42d
+      pw: pass111
+    rates_pme_comm_plus_zone_6:
+      usr: ccxrvar6q3
+      pw: pass111
+    rates_pme_comm_plus_zone_7:
+      usr: cck2w9ghvpjp21
+      pw: pass111
+    rates_pme_comm_plus_zone_8:
+      usr: ccads5t8l2
+      pw: pass111
+    rates_pme_comm_plus_zone_9:
+      usr: cctjlokj3qx3
+      pw: pass111
+    rates_pm_comm_base_zone_1:
+      usr: ccumyr61y
+      pw: pass111
+    rates_pm_comm_base_zone_2:
+      usr: ccdr4smnat8qn6
+      pw: pass111
+    rates_pm_comm_base_zone_3:
+      usr: cci6s7mqo7v0d
+      pw: pass111
+    rates_pm_comm_base_zone_4:
+      usr: ccy4o784jezvy
+      pw: pass111
+    rates_pm_comm_base_zone_5:
+      usr: ccqmnba5u8
+      pw: pass111
+    rates_pm_comm_base_zone_6:
+      usr: ccfsw0mhjrt3
+      pw: pass111
+    rates_pm_comm_base_zone_7:
+      usr: ccpvayrg9ym
+      pw: pass111
+    rates_pm_comm_base_zone_8:
+      usr: cclq0yutvt9m
+      pw: pass111
+    rates_pm_comm_base_zone_9:
+      usr: ccd9pemt2lgi
+      pw: pass111
+    rates_pm_comm_plus_zone_1:
+      usr: ccgwduxsxm9g
+      pw: pass111
+    rates_pm_comm_plus_zone_2:
+      usr: cclglha7b
+      pw: pass111
+    rates_pm_comm_plus_zone_3:
+      usr: ccoas0lid9
+      pw: pass111
+    rates_pm_comm_plus_zone_4:
+      usr: ccize47fznkd
+      pw: pass111
+    rates_pm_comm_plus_zone_5:
+      usr: ccp3cryswh653b
+      pw: pass111
+    rates_pm_comm_plus_zone_6:
+      usr: ccrtgy8qy
+      pw: pass111
+    rates_pm_comm_plus_zone_7:
+      usr: ccqj1bn9el
+      pw: pass111
+    rates_pm_comm_plus_zone_8:
+      usr: ccxatj3xayf
+      pw: pass111
+    rates_pm_comm_plus_zone_9:
+      usr: ccun8a5t0
+      pw: pass111
+    rates_parcel_select_ground_zone_1:
+      usr: ccgwduxsxm9g
+      pw: pass111
+    rates_parcel_select_ground_zone_2:
+      usr: cclglha7b
+      pw: pass111
+    rates_parcel_select_ground_zone_3:
+      usr: ccoas0lid9
+      pw: pass111
+    rates_parcel_select_ground_zone_4:
+      usr: ccize47fznkd
+      pw: pass111
+    rates_parcel_select_ground_zone_5:
+      usr: ccp3cryswh653b
+      pw: pass111
+    rates_parcel_select_ground_zone_6:
+      usr: ccrtgy8qy
+      pw: pass111
+    rates_parcel_select_ground_zone_7:
+      usr: ccqj1bn9el
+      pw: pass111
+    rates_parcel_select_ground_zone_8:
+      usr: ccxatj3xayf
+      pw: pass111
+    rates_parcel_select_ground_zone_9:
+      usr: ccun8a5t0
+      pw: pass111
+
     rates_pmei_comm_base:
       usr: cczy9gykn0lyxc
       pw: pass111

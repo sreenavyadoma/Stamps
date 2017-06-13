@@ -16,7 +16,21 @@ end
 
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMEI price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI, {})["group" + group].values
-  test_param[:country] = country_list[rand(country_list.size)]
+  country_array = (country_list[rand(country_list.size)]).split("|")
+  country_name = country_array[0]
+  country_pounds = country_array[1].to_i
+  200.times do
+    if !test_param[:pounds].nil?
+      if test_param[:pounds] > country_pounds
+        country_array = country_list[rand(country_list.size)].split("|")
+        country_name = country_array[0]
+        country_pounds = country_array[1].to_i
+      else
+        break
+      end
+    end
+  end
+  test_param[:country] = country_name
   step "set Print form Mail-To Country to #{test_param[:country]}"
 end
 
