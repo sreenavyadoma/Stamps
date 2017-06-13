@@ -105,7 +105,7 @@ module Stamps
 
       def scroll_into_view
         begin
-          browser.execute_script('arguments[0].scrollIntoView();', element) if present?
+          browser.execute_script('arguments[0].scrollIntoView();', element)
         rescue
           # ignore
         end
