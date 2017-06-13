@@ -254,16 +254,30 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To to Domestic Address$/ do |table|
   step "set Order Details form Ship-To to Domestic Address #{test_param[:ship_to]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI price group (.*)$/ do |group|
-  country_list = data_for(:country_groups_PMEI, {})["group" + group].values
+Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
   test_param[:country] = country_list[rand(country_list.size)]
   config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
   step "set Order Details form Ship-To Country to #{test_param[:country]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
-  country_list = data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
-  test_param[:country] = country_list[rand(country_list.size)]
+Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMEI, {})["group" + group].values
+  country_array = (country_list[rand(country_list.size)]).split("|")
+  country_name = country_array[0]
+  country_pounds = country_array[1].to_i
+  200.times do
+    if !test_param[:pounds].nil?
+      if test_param[:pounds] > country_pounds
+        country_array = country_list[rand(country_list.size)].split("|")
+        country_name = country_array[0]
+        country_pounds = country_array[1].to_i
+      else
+        break
+      end
+    end
+  end
+  test_param[:country] = country_name
   config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
   step "set Order Details form Ship-To Country to #{test_param[:country]}"
 end

@@ -405,7 +405,11 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
       if row_number > 0
         config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
 
+        #Set weight for country weight limit check
+        test_param[:pounds] = (row[@rate_sheet_columns[:weight_lb]]).to_i
+
         # Set country to proper group
+
         if (row[@rate_sheet_columns[:service]]).include? "Flat Rate"
           if group < 9
             step "set Order Details Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :orders
