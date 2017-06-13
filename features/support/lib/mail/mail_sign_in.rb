@@ -111,7 +111,7 @@ module Stamps
 
     class MailSignInModal < Browser::StampsModal
       attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info, :invalid_msg,
-                  :remember_username_checkbox, :invalid_username_password, :signed_in_user
+                  :remember_username_checkbox, :invalid_username_password, :signed_in_user, :sign_in_form
 
       def initialize(param)
         super
@@ -127,6 +127,7 @@ module Stamps
         @username = ""
         @password = ""
         @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
+        @sign_in_form = StampsElement.new(browser.form(css: "form[class=form-signin]"))
       end
 
       def present?
@@ -148,6 +149,9 @@ module Stamps
         username_textbox.set(str)
         username_textbox.set(str)
         username_textbox.set(str)
+        sign_in_form.click
+        sign_in_form.double_click
+        sign_in_form.click
       end
 
       def password(str)
@@ -156,7 +160,9 @@ module Stamps
         password_textbox.clear
         password_textbox.set(str)
         password_textbox.set(str)
-        password_textbox.set(str)
+        sign_in_form.click
+        sign_in_form.double_click
+        sign_in_form.click
       end
 
       def login

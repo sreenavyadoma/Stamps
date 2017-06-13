@@ -29,7 +29,7 @@ jenkinsvm10, stghy955swcbcm, @print_dialog_label_left_side, @print_dialog_printi
                                 @print_sample_pm_regional_rate_box_a, @print_two_up_expanded_cn22, @print_two_up_expanded_sdc1200_4x6_left_print1
 jenkinsvm16, stgrym5ihjq8ct,
 
-jenkinsvm14,
+jenkinsvm14, stgv3mck0frko
 
 Regression
 orders_regression_cc
