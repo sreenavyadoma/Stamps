@@ -970,6 +970,12 @@ orders_credentials:
     bvt_shipstation_import_csv:
       usr: stgp6389urwj4
       pw: pass111
+    bulk_update_dom:
+      usr: stgom0dqgzppy
+      pw: pass111
+    bulk_update_int:
+      usr: stgo0e9lb9fpv
+      pw: pass111
     search_orders:
       usr: stgo0e9lb9fpv
       pw: pass111
@@ -2164,6 +2170,12 @@ orders_credentials:
       pw: pass111
     details_large_dimensions_pm:
       usr: pv79wdn
+      pw: pass111
+    bulk_update_dom:
+      usr: bbpvue382w
+      pw: pass111
+    bulk_update_int:
+      usr: ni53o49pxe
       pw: pass111
     international_customs_form_totals:
       usr: isgscuub9pfxxu

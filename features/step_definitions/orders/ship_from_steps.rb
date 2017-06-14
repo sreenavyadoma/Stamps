@@ -21,7 +21,7 @@ end
 Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
   test_param[:ship_from_address] = helper.address_helper_zone(address)
 
-  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").add.ship_from_address1(test_param[:ship_from_address])
+  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").add.ship_from_address(test_param[:ship_from_address])
 end
 
 Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
