@@ -971,10 +971,10 @@ orders_credentials:
       usr: stgp6389urwj4
       pw: pass111
     bulk_update_dom:
-      usr: stgom0dqgzppy
+      usr: stgp6389urwj4
       pw: pass111
     bulk_update_int:
-      usr: stgo0e9lb9fpv
+      usr: stgp6389urwj4
       pw: pass111
     search_orders:
       usr: stgo0e9lb9fpv
