@@ -279,6 +279,8 @@ auto_suggest: --tags @auto_suggest --guess DEBUG=false JENKINS=true HEALTHCHECK=
 new_country_code: --tags  @new_country_code --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=new_country_code
 details_panel: --tags  @details_panel --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=details_panel
 import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=import_updated_orders
+bulk_update_dom: --tags @bulk_update_dom --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bulk_update_dom
+bulk_update_int: --tags @bulk_update_int --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=bulk_update_int
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USER_CREDENTIALS=grid_column_order
