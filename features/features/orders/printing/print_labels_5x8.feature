@@ -1,4 +1,5 @@
 # encoding: utf-8
+@print_labels_5x8
 Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
 
   Background:
@@ -23,7 +24,6 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then in Print modal, click Print button
     Then Sign out
 
-  @print_labels_5x8
   Scenario: Print - Shipping Label: 8 ½" x 11" Paper
     Then add new order
     Then set Order Details form Ship-From to default
