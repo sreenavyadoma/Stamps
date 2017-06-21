@@ -151,10 +151,6 @@ Then /^[Ee]xpect Orders Grid Phone is (?:correct|(.*))$/ do |expectation|
   expect(stamps.orders.orders_grid.column.phone.data(test_param[:order_id][0])).to eql expectation
 end
 
-Then /^[Ee]xpect Orders Grid Column (\w+) appears to left of (.+)$/ do |left_column, right_column|
-  expect(stamps.orders.orders_grid.column.is_next_to?(left_column, right_column)).to be(true)
-end
-
 Then /^[Ee]xpect Orders Grid Pounds is (?:correct|(.*))$/ do |expectation|
   expectation = test_param[:pounds] if expectation.nil?
   20.times { break if stamps.orders.orders_grid.column.weight.lb(test_param[:order_id][0]).eql? expectation }

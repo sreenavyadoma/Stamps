@@ -16,10 +16,11 @@ module TestParameters
       @modal_param.web_app = (ENV['WEB_APP'].downcase).to_sym
       expect([:orders, :mail, :registration]).to include(@modal_param.web_app), "Invalid modal_paramter WEB_APP=#{@modal_param.web_app}. Valid values are mail, registration"
 
+      @modal_param.test_env = ENV['URL']
       @modal_param.test_env = 'stg' if ENV['URL'].downcase == 'staging'
-      @modal_param.test_env = 'qacc' if ENV['URL'].downcase == 'cc'
-      @modal_param.test_env = 'qacc' if ENV['URL'].downcase == 'sc'
-      @modal_param.test_env = 'qacc' if ENV['URL'].downcase == 'rating'
+      @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('cc')
+      @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('sc')
+      @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('rating')
 
       @modal_param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 

@@ -86,9 +86,11 @@ After do |scenario|
   test_config.logger.message "-"
   test_config.logger.message "-"
 
-  statement = test_param[:mysql_connection].prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?")
-  statement.execute(test_param[:username])
-  test_param[:mysql_connection].close
+  begin
+    statement = test_param[:mysql_connection].prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?")
+    statement.execute(test_param[:username])
+    test_param[:mysql_connection].close
+  end unless (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
 
   test_config.logger.message "---------------- Feature: #{scenario.feature}"
   test_config.logger.message "---------------- Scenario: #{scenario.name}"
