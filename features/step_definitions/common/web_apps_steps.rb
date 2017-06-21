@@ -4,7 +4,7 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "Health Check: Print - Web Batch" if modal_param.health_check
   step "Health Check: Print - Address Book" if modal_param.health_check
   step "load Web Apps Sign-in page"
-  step "sign-in to Web Apps as #{modal_param.usr}, #{modal_param.pw}"
+  step "sign-in to Web Apps as #{test_param[:username]}, #{test_param[:password]}"
   step "Navigation Bar: Customer Balance"
 end
 
