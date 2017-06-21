@@ -134,11 +134,6 @@ module Stamps
         end
       end
 
-
-
-
-
-
       class OrderId < Column
         def exist? order_id
           row_number(order_id) > 0
