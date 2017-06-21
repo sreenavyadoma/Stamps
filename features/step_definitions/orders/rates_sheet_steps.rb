@@ -505,10 +505,10 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]] = (test_param[:total_ship_cost].to_f * 100).round / 100.0
 
           # Set weight to 0
-          if modal_param.test_env == :orders
+          if modal_param.web_app == :orders
             step "set Order Details form Pounds to 0"
             step "set Order Details form Ounces to 0"
-          elsif modal_param.test_env == :mail
+          elsif modal_param.web_app == :mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
           end

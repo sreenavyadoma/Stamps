@@ -58,7 +58,6 @@ Before do  |scenario|
       if rand_num==index
         test_param[:username] = row['username']
         test_param[:password] = row['password']
-        p test_param[:username]
       end
     end
     statement = test_param[:mysql_client].prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_date=CURDATE() where username=?")
