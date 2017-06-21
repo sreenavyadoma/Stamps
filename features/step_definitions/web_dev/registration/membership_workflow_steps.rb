@@ -15,16 +15,16 @@ Then /^[Pp]opulate all [Mm]embership [Pp]age required fields$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address = helper.address_helper_zone(address) #combine this
+  address = test_helper.address_test_helper_zone(address) #combine this
 
-  test_param[:first_name] = address['first_name'] #combine this in address_helper_zone
+  test_param[:first_name] = address['first_name'] #combine this in address_test_helper_zone
   test_param[:last_name] = address['last_name']
   test_param[:street_address] = address['street_address']
   test_param[:city] = address['city']
   test_param[:state] = address['state']
   test_param[:zip] = address['zip']
   test_param[:company] = address['company']
-  test_param[:ship_to_domestic] = helper.format_address(address)
+  test_param[:ship_to_domestic] = test_helper.format_address(address)
   test_param[:phone_number_format] = address['phone_number_format']
 
   step "set Membership page First Name to #{test_param[:first_name]}"
@@ -41,7 +41,7 @@ end
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
   registration.membership.first_name.wait_until_present(10)
   expect(registration.membership.first_name.present?).to be(true)
-  registration.membership.first_name.set(test_param[:first_name] = (str.nil?)?(helper.random_alpha_capitalize ):str)
+  registration.membership.first_name.set(test_param[:first_name] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do |str|
@@ -49,7 +49,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ll]ast [Nn]ame to (?:random value|(.*))$/ do |str|
-  registration.membership.last_name.set(test_param[:last_name] = (str.nil?)?(helper.random_alpha_capitalize ):str)
+  registration.membership.last_name.set(test_param[:last_name] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do |str|
@@ -57,7 +57,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Ll]ast [Nn]ame is (?:correct|(.*))$/ do 
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ompany to (?:random value|(.*))$/ do |str|
-  registration.membership.company.set(test_param[:company] = (str.nil?)?(helper.random_alpha ):str) if registration.membership.company.present?
+  registration.membership.company.set(test_param[:company] = (str.nil?)?(test_helper.random_alpha ):str) if registration.membership.company.present?
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ompany is (?:correct|(.*))$/ do |str|
@@ -106,7 +106,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Zz]ip is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Pp]hone to (?:random value|(.*))$/ do |str|
-  test_param[:phone] = (str.nil?)?(helper.random_phone_number_format ):str
+  test_param[:phone] = (str.nil?)?(test_helper.random_phone_number_format ):str
   registration.membership.phone.set(test_param[:phone])
 end
 
@@ -116,7 +116,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Pp]hone is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Cc]ardholder's [Nn]ame to (?:random value|(.*))$/ do |str|
-  test_param[:card_holder_name] = (str.nil?)?(helper.random_full_name ):str
+  test_param[:card_holder_name] = (str.nil?)?(test_helper.random_full_name ):str
   registration.membership.cc_holder_name .set test_param[:card_holder_name]
 end
 
@@ -183,7 +183,7 @@ Then /^[Ee]xpect Billing Address form is not present$/ do
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address = helper.address_helper_zone(address) #combine this
+  address = test_helper.address_test_helper_zone(address) #combine this
 
   test_param[:street_address] = address['street_address']
   test_param[:city] = address['city']
@@ -199,7 +199,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Bb]illing [Aa]ddress to(?: a |)(?
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Aa]ddress to (.*)$/ do |str|
-  registration.membership.billing_address.set(test_param[:billing_address] = (str.nil?)?(helper.random_alpha_capitalize ):str)
+  registration.membership.billing_address.set(test_param[:billing_address] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
   step "blur_out on membership page"
   registration.membership.billing_address.click
   step "blur_out on membership page"
@@ -213,7 +213,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress is (?:correct|(.*))
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Cc]ity to (.*)$/ do |str|
-  registration.membership.billing_city.set(test_param[:billing_city] = (str.nil?)?(helper.random_alpha_capitalize ):str)
+  registration.membership.billing_city.set(test_param[:billing_city] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
   step "blur_out on membership page"
 end
 
@@ -230,7 +230,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Ss]tate is (?:correct|(.*))$/
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Bb]illing [Zz]ip to (.*)$/ do |str|
-  registration.membership.billing_zip.set(test_param[:billing_zip] = (str.nil?)?(helper.random_alpha_capitalize ):str)
+  registration.membership.billing_zip.set(test_param[:billing_zip] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ do |str|

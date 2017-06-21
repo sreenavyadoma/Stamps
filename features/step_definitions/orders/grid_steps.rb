@@ -64,7 +64,7 @@ Then /^[Ee]xpect Orders Grid Ship Date for this order is today$/ do
 end
 
 Then /^[Ee]xpect Orders Grid Ship Date for this order is today plus (\d+)$/ do |day|
-  expectation = helper.now_plus_mon_dd_excl_sunday day
+  expectation = test_helper.now_plus_mon_dd_excl_sunday day
   10.times {
     stamps.orders.orders_grid.column.order_date.sort_descending
     break if stamps.orders.orders_grid.column.ship_date.data(test_param[:order_id][0]) == expectation
@@ -265,10 +265,10 @@ Then /^[Ee]xpect Orders Grid Ship Cost error to contain \"(.*)\"$/ do |expectati
 end
 
 Then /^[Ee]xpect Orders Grid ship cost data error tooltip is \"(.*)\"$/ do |expectation|
-  #config.logger.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
+  #test_config.logger.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
   grid_order_id = stamps.orders.orders_grid.column.order_id.row 1
   grid_ship_cost = stamps.orders.orders_grid.column.ship_cost.data grid_order_id
   error = grid_ship_cost.attribute_expectation "data-errorqtip"
-  #config.logger.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
+  #test_config.logger.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
   expect(error).to include(expectation)
 end

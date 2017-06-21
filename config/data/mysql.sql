@@ -1,11 +1,15 @@
 CREATE DATABASE stamps;
+GRANT ALL ON stamps.* TO rcruz;
+UPDATE user_credentials SET user_credentials.in_use = 0 where username = 'cchrvv6qp';
+select * from user_credentials where username = 'cchrvv6qp';
 
 CREATE TABLE user_credentials (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
 	username CHAR(16) NOT NULL UNIQUE, 
-	password CHAR(16) NOT NULL, 	
-	environment CHAR(5) NOT NULL,
+	password CHAR(16) NOT NULL,
+  test_env CHAR(5) NOT NULL,
 	in_use TINYINT unsigned NOT NULL,
+  in_use_date DATE NOT NULL,
 	account_status TINYINT unsigned NOT NULL,
 	user_status CHAR(20) NOT NULL, 
 	user_role CHAR(100) NOT NULL, 
@@ -150,7 +154,6 @@ INSERT INTO user_credentials (id, username, password, environment, in_use, user_
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'swv6wmuno', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ccx9sfswq05pm', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ccyobxzc3gq', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ccmzk4brh5qgm', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ccpwx5l3y86b', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'cccy2r7bkbl0vp', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
@@ -161,150 +164,177 @@ INSERT INTO user_credentials (id, username, password, environment, in_use, user_
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ccfw2jpdg', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ccjepoq84ze', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ccfoe2dgmz91ad', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
-INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xxxxxx', 'pass111', 'qacc', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 
 
+#STAGING
+
+
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgom0dqgzppy', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgo0e9lb9fpv', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgp6389urwj4', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgxz0386tftl1', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stge7x4xybj', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgih31vmh', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgi0jkgbdy3xs', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgbh3mebdk6', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stggyotwzye', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgnagml24', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgzom0awk67', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgp6389urwj4', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgpa86i6exeaq', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgtx2t22766vg', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stggm2z3od6o5t', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgo162k9hy', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgvoc0kcnt6rw', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgnhscvwnf', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgqklz1vjekq6', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgih31vmh', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stghwb2ojyi', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgs8713b6h', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stglu3dg6e4n', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgsc35s82cmlv', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stguspu8o4655f', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgo5krbjtc', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgswz5afiev', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgsqtuz7x2', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgld1uw4sroe7', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stghy955swcbcm', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stghi5sqaoe', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgvw4zzd8jgj7', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgbt9h9oleseq', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgy8vviww576v', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgo0j3xg9kp2o', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgrym5ihjq8ct', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgtvq2xfm85et', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgmxelasxpm', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgp91jwqgvj', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgrvoewgc201t', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgj8i2z4hkb1', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgmyq420argi2', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stguqdqnih', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgw0k8dhzo', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgd76d5a6an2', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgwcbp7zfwh', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgx3slcgzx7y', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgmvjak5bfr1', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgodca4qsozo', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgm2w98o9cerb', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgvrjacmfiat', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgozl1gt0sm7g', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgtwyde44v3', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgriysbcbw7zy', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stged0k1dq', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgk093al8hji3', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgm8tbgv5ubu', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgd62qmfx', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgccoqkot', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgdbah0hr', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgssw8nb3zpho', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgs9dz6diu', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgfwpmg4qp', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgsbwtcsf0e6', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgbgvuyj1ypvg', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgti8jxq8cm', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgw0kxjmvgd', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgue5hryv', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgag0dpqqp19', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgxmprkalp44', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgum4i835po21', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgpoa24o3xe', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgbxeq2w5x6b', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stggmsyc7t', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgswgrj575eoa', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgzv5o8oqv23s', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgwgxvcjkucm', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgupr2smgtub', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stggx2jnf6n', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgghi616t', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stghkgtpwkxhk8', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgonw7nzydeio', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgir6pm3goo', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgzieusp1q', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgi3eicvj8d7b', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'i992vss4lipq', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'mwn2ghor', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgsj7lchcx30q', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'qksd97py', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ssk059sth', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'b0vffjuv', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'hh8tfayv0', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'qqn9ee7v', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'hfqxnmkdsi', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 's0ca2y0on9r6', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'jb47pt7wc', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'pxzip2a0mshfa', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'rp9qdyawdqqx8', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'm1imyz6hwk0lrn', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'n5r1wleq', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'pm5lf5804', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'bpgjftki', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'td4wcrwb6f8mi', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'paxok4qecrbv', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'enpdd08aew5', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'tv3td1cp6', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xg6ar0zae', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'o6kzymy8rn94ax', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'x31q76qtkucf', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'q5bfct2', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'wwelioo2e0nlf', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'mwnp2cwefg', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'vncmsvqa1', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'lngmwr21', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'fhix7qqr9', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'b25wtqtq3nvk5v', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'j2i75rsxxtj', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'uk6oxddbk16', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'dks7plhj', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'lxowg9cu', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'b9avaywj', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 't8jnj7r4rwc1n', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'r185heirbqv76l', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'xa4sk9jsk', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'wmzvi1kmzab7', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'h12wjdrskuyu', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'sm0z7fnr', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'dgskuwa16ion4m', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'q5z9uzb', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'enmsmy77n', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ehe96944qsb8', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'nnrvo1u9bpr', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'rappxugbk', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ko5cwhazj9csh', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'gazqbag62', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 't243vtu', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'rb5cc5xtkq', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'urgnhlodv7zyvz', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 's582uohx', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'tkyf6l0', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgyoxkifp15', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'tc7lbuuldm7gud', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'gsw1raa5', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'mi6cu3n0', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'n7n9kolwtc', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'qwjsdoq', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'yfq03xbol', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'z53ocf1', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'chzeav3fsz', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'z46dgktbl', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'w8u81mj', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'w6x3pwfwy', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'gl3ippf3slyiod', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'mtyni6ic0zcs', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'y619bx4cuj5', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgpsmuft2y', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'pj174e11wmg', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'htlylt2', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'uc7p0o9c3x6j8u', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'ubjr6w9i4eom5z', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'jr118nj7pf35', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'c1k4p8bga4cmg', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgyvngqz27b66', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'kocp1opzgz', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'stgsaufv05k13n', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
+INSERT INTO user_credentials (id, username, password, environment, in_use, user_status, user_role, comment, date_added) VALUES (NULL, 'b2vc5867', 'pass111', 'stg', 0, 'Active', 'Meter Admin, Meter User', NULL, NOW());
 
 
 
@@ -325,22 +355,3 @@ INSERT INTO user_credentials (id, username, password, environment, in_use, user_
 
 
 
-
-
-
-
-
-
-	account_status CHAR(20) NOT NULL, 
-	account_type CHAR(16) NOT NULL, 
-	last_name CHAR(20), NOT NULL 
-	first_name CHAR(20) NOT NULL, 
-	middle_name CHAR(20), 
-	account_no CHAR(20), 
-	meter_no CHAR(20), 
-	account_info CHAR(20), 
-	status_reason CHAR(20), 	
-	email CHAR(20), 
-	billing_address CHAR(20), 
-	company_name CHAR(20), 
-	phone_no CHAR(20), 

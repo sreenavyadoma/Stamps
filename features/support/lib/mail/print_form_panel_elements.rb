@@ -399,7 +399,7 @@ module Stamps
             begin
               drop_down.click unless cost_label.present?
               if cost_label.present?
-                service_cost = helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+                service_cost = test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
                 logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
                 return service_cost
               end

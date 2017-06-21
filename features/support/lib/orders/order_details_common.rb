@@ -59,7 +59,7 @@ module Stamps
         end
 
         def cost
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def inline_cost(service_name)
@@ -68,7 +68,7 @@ module Stamps
             begin
               drop_down.click unless cost_label.present?
               if cost_label.present?
-                service_cost = helper.remove_dollar_sign(cost_label.text)
+                service_cost = test_helper.remove_dollar_sign(cost_label.text)
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                 drop_down.click if cost_label.present?
                 return service_cost.to_f.round(2)

@@ -42,49 +42,49 @@ end
 
 Then /^[Ss]et Print form Name to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.name.click if value.nil?
-  test_param[:mail_to_name] = (value.downcase == 'random')? helper.random_full_name : value
+  test_param[:mail_to_name] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.name.set(test_param[:mail_to_name])
 end
 
 Then /^[Ss]et Print form Company to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.company.click if value.nil?
-  test_param[:mail_to_company] = (value.downcase == 'random')? helper.random_full_name : value
+  test_param[:mail_to_company] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.company.set(test_param[:mail_to_company])
 end
 
 Then /^[Ss]et Print form Address 1 to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.address_1.click if value.nil?
-  test_param[:mail_to_street_address_1] = (value.downcase == 'random')? helper.random_full_name : value
+  test_param[:mail_to_street_address_1] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.address_1.set(test_param[:mail_to_street_address_1])
 end
 
 Then /^[Ss]et Print form Address 2 to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.address_2.click if value.nil?
-  test_param[:mail_to_street_address_2] = (value.downcase == 'random')? helper.random_full_name : value
+  test_param[:mail_to_street_address_2] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.address_2.set(test_param[:mail_to_street_address_2])
 end
 
 Then /^[Ss]et Print form City to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.city.click if value.nil?
-  test_param[:mail_to_city] = (value.downcase == 'random')? helper.random_full_name : value
+  test_param[:mail_to_city] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.city.set(test_param[:mail_to_city])
 end
 
 Then /^[Ss]et Print form Province to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.province.click if value.nil?
-  test_param[:mail_to_province] = (value.downcase == 'random')? helper.random_full_name : value
+  test_param[:mail_to_province] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.province.set(test_param[:mail_to_province])
 end
 
 Then /^[Ss]et Print form Postal Code to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.postal_code.click if value.nil?
-  test_param[:mail_to_postal_code] = (value.downcase == 'random')? helper.random_full_name : value
+  test_param[:mail_to_postal_code] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.postal_code.set(test_param[:mail_to_postal_code])
 end
 
 Then /^[Ss]et Print form Phone to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.phone.click if value.nil?
-  test_param[:mail_to_phone] = (value.downcase == 'random')? helper.random_phone_number : value
+  test_param[:mail_to_phone] = (value.downcase == 'random')? test_helper.random_phone_number : value
   stamps.mail.print_form.mail_to.address.phone.set(test_param[:mail_to_phone])
 end
 

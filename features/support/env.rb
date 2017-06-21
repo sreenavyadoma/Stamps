@@ -5,6 +5,7 @@ $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 require 'data_magic'
 require 'rake'
 require 'watir'
+require 'mysql2'
 #require 'watir-webdriver'
 #require 'selenium-webdriver'
 require 'log4r'

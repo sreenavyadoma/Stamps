@@ -15,7 +15,7 @@ end
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   registration.profile.email.wait_until_present(5)
   expect(registration.profile.email.present?).to be(true), "Profile page did not load properly, check your test."
-  registration.profile.email.set(test_param[:email] = (str.nil?)?(helper.random_email):str)
+  registration.profile.email.set(test_param[:email] = (str.nil?)?(test_helper.random_email):str)
   step "blur out on profile page"
 end
 
@@ -24,7 +24,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
-  registration.profile.account_username.set((test_param[:username] = (str.nil?)?(helper.random_username):str))
+  registration.profile.account_username.set((test_param[:username] = (str.nil?)?(test_helper.random_username):str))
   step "blur out on profile page"
 end
 
@@ -33,7 +33,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|
-  registration.profile.account_password.set(test_param[:password] = (str.nil?)?"pass111":str) #helper.random_password
+  registration.profile.account_password.set(test_param[:password] = (str.nil?)?"pass111":str) #test_helper.random_password
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]assword is (?:correct|(.*))$/ do |str|

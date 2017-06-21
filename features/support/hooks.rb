@@ -11,109 +11,117 @@ include RAutomation
 include Spreadsheet
 
 Before do  |scenario|
-  config.init(scenario.name, ENV["BROWSER"], ENV["FIREFOX_PROFILE"], nil)
-  config.logger.message "-"
-  config.logger.message "-"
-  config.logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"
-  config.logger.message "-"
-  config.logger.message "-"
-  config.logger.message "URL: #{ENV['URL']}"
+  test_config.init(scenario.name, ENV["BROWSER"], ENV["FIREFOX_PROFILE"], nil)
+
+  test_config.logger.message "-"
+  test_config.logger.message "-"
+  test_config.logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"
+  test_config.logger.message "-"
+  test_config.logger.message "-"
+  test_config.logger.message "URL: #{ENV['URL']}"
   expect("").to eql "Environment variable URL is not defined!" if (ENV['URL'].nil? || ENV['URL'].size==0)
-  config.logger.message "Test Name: #{ENV['USER_CREDENTIALS']}"
-  config.logger.message "Browser: #{ENV['BROWSER']}"
+  test_config.logger.message "Test Name: #{ENV['USER_CREDENTIALS']}"
+  test_config.logger.message "Browser: #{ENV['BROWSER']}"
   expect("").to eql "Environment variable BROWSER is not defined!" if (ENV['BROWSER'].nil? || ENV['BROWSER'].size==0)
-  config.logger.message "-"
-  config.logger.message "-"
-  config.logger.message "Verbose: #{ENV['DEBUG']}"
+  test_config.logger.message "-"
+  test_config.logger.message "-"
+  test_config.logger.message "Verbose: #{ENV['DEBUG']}"
   expect(ENV['DEBUG']).to be_truthy
-  config.logger.message "Healthcheck: #{ENV['HEALTHCHECK']}"
+  test_config.logger.message "Healthcheck: #{ENV['HEALTHCHECK']}"
   expect(ENV['HEALTHCHECK']).to be_truthy
-  config.logger.message "-"
-  config.logger.message "-"
-  config.logger.message "-"
-  config.logger.message "USER CREDENTIALS"
+  test_config.logger.message "-"
+  test_config.logger.message "-"
+  test_config.logger.message "-"
 
-  # process username from default.yml
-  begin
-    expect(ENV['WEB_APP'].nil?).not_to be_nil, "Missing WEB_APP variable on default.yml file or Jenkins parameter list."
-
-    if (ENV['WEB_APP'].downcase == 'orders') || (ENV['WEB_APP'].downcase == 'mail' || (ENV['WEB_APP'].downcase.include? 'reg'))
-      if (ENV['USR'].nil?) || (ENV['USR'].size==0) || (ENV['USR'].downcase == 'default') || (ENV['USR'].downcase == 'jenkins')
-        config.logger.message "Using Default Credentials from ../config/data/default.yml"
-        begin
-          if ENV['WEB_APP'].downcase == 'orders'
-            ENV['USR'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['usr']
-          elsif ENV['WEB_APP'].downcase== 'mail'
-            ENV['USR'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['usr']
-          else
-            expect("Valid WEB_APP values are orders and mail. You may add to the list, see hooks.rb").to eql "Invalid WEB_APP selection. #{ENV['WEB_APP']} is not recognized."
-          end
-        rescue => e
-          if e.message.include? "mapping values are not allowed"
-            expect("Formatting issues in default.yml file").to eql "default.yml - #{e.message.split(':').last}}"
-          else
-            expect("There are no user credentials in default.yml file for WEB_APP=#{ENV['WEB_APP']}, #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['USER_CREDENTIALS']}").to eql "Missing credentials in default.yml #{(ENV['WEB_APP'].downcase=='orders')?"orders_credentials":"mail_credentials"}:#{ENV['URL']}:#{ENV['USER_CREDENTIALS']} - #{e.message}"
-          end
-        end
-        begin
-          if ENV['WEB_APP'].downcase == 'orders'
-            ENV['PW'] = data_for(:orders_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['pw']
-          else
-            ENV['PW'] = data_for(:mail_credentials, {})[ENV['URL']][ENV['USER_CREDENTIALS']]['pw']
-          end
-        rescue => e
-          expect("Missing credentials in #{ENV['WEB_APP']} Parameter credentials #{ENV['URL']}:#{ENV['USER_CREDENTIALS']}").to eql "There are no user credentials defined in default.yml file for URL:#{ENV['URL']} USER_CREDENTIALS:#{ENV['USER_CREDENTIALS']} usr:#{ENV['usr']} - #{e.message}"
-        end
-        config.logger.message "#{ENV['WEB_APP']} Default Username: #{ENV['USR']}"
-      else
-        config.logger.message "Environment Variable Username (USR) is defined: #{ENV['USR']}"
+  if (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
+    test_param[:username] = ENV['USR']
+    test_param[:password] = ENV['PW']
+  else
+    # connect to mysql
+    test_param[:mysql_client] = Mysql2::Client.new(host: "172.16.13.237",
+                                                   username: "rcruz",
+                                                   password: 'Mysql#524113',
+                                                   database: 'stamps')
+    # reset old usernames
+    test_param[:mysql_results] = test_param[:mysql_client].query("select * from user_credentials where in_use=1 and in_use_date != CURDATE()")
+    if test_param[:mysql_results].size > 0
+      test_param[:mysql_results].each do |row|
+        statement = test_param[:mysql_client].prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?")
+        statement.execute(row['username'])
       end
-    else
-      expect("Valid values are WEB_APP=orders or WEB_APP=mail").to eql "WEB_APP=#{ENV['WEB_APP']} is not a valid value."
     end
-  end unless (ENV['USER_CREDENTIALS'].nil? || ENV['USER_CREDENTIALS'] == 'healthcheck' || ENV['USER_CREDENTIALS'].include?('Registration') || ENV['USER_CREDENTIALS'].include?('pam') || ENV['USER_CREDENTIALS'].include?('intellij') || ENV['USER_CREDENTIALS'].include?('developers'))
 
-  test_param[:username] = ENV['USR']
+    # get username
+    test_param[:mysql_results] = test_param[:mysql_client].query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'  and in_use=0")
+    rand_num = rand(test_param[:mysql_results].size)
+    test_param[:mysql_results].each_with_index do |row, index|
+      if rand_num==index
+        test_param[:username] = row['username']
+        test_param[:password] = row['password']
+        p test_param[:username]
+      end
+    end
+    statement = test_param[:mysql_client].prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_date=CURDATE() where username=?")
+    statement.execute(test_param[:username])
+  end
+
   test_param[:web_app] = ENV['WEB_APP']
   test_param[:url] = ENV['URL']
   test_param[:test] = ENV['USER_CREDENTIALS']
-  config.logger.message "-"
-  config.logger.message "Running Tests..."
-  config.logger.message "-"
-  config.logger.message "-"
-  config.logger.message "---------------- Feature: #{scenario.feature}"
-  config.logger.message "---------------- Scenario: #{scenario.name}"
-  config.logger.message "---------------- Tags:"
-  scenario.tags.each_with_index {|tag, index| config.logger.message "---------------- Tag #{index+1}: #{tag.name}" }
-  config.logger.message "---------------- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index| config.logger.message "---------------- Step #{index+1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
-  config.logger.message "-"
-  config.logger.message "-"
+  test_config.logger.message "-"
+  test_config.logger.message "Running Tests..."
+  test_config.logger.message "-"
+  test_config.logger.message "-"
+  test_config.logger.message "---------------- Feature: #{scenario.feature}"
+  test_config.logger.message "---------------- Scenario: #{scenario.name}"
+  test_config.logger.message "---------------- Tags:"
+  scenario.tags.each_with_index {|tag, index| test_config.logger.message "---------------- Tag #{index+1}: #{tag.name}" }
+  test_config.logger.message "---------------- Steps:"
+  scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index+1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
+  test_config.logger.message "-"
+  test_config.logger.message "-"
 end
 
 After do |scenario|
-  config.logger.message "Teardown Tests..."
-  config.logger.message "-"
-  config.logger.message "-"
-  config.logger.message "---------------- Feature: #{scenario.feature}"
-  config.logger.message "---------------- Scenario: #{scenario.name}"
-  config.logger.message "---------------- Tags:"
-  scenario.tags.each_with_index {|tag, index| config.logger.message "---------------- Tag #{index+1}: #{tag.name}" }
-  config.logger.message "---------------- Steps:"
-  scenario.test_steps.each_with_index { |test_step, index| config.logger.message "---------------- Step #{index}: #{test_step.source.last.keyword}#{test_step.source.last.name}" if index>0}
-  config.logger.message "-"
-  config.logger.message "-"
+  test_config.logger.message "Teardown Tests..."
+  test_config.logger.message "-"
+  test_config.logger.message "-"
 
-  config.teardown
+  statement = test_param[:mysql_client].prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?")
+  statement.execute(test_param[:username])
+
+  test_config.logger.message "---------------- Feature: #{scenario.feature}"
+  test_config.logger.message "---------------- Scenario: #{scenario.name}"
+  test_config.logger.message "---------------- Tags:"
+  scenario.tags.each_with_index {|tag, index| test_config.logger.message "---------------- Tag #{index+1}: #{tag.name}" }
+  test_config.logger.message "---------------- Steps:"
+  scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index}: #{test_step.source.last.keyword}#{test_step.source.last.name}" if index>0}
+  test_config.logger.message "-"
+  test_config.logger.message "-"
+
+  test_config.teardown
 
   if scenario.failed?
-    config.logger.error "#{scenario.feature}"
-    config.logger.error "#{scenario.feature} USER_CREDENTIALS FAILED! #{scenario.exception.message}"
-    config.logger.error "#{scenario.feature}"
+    test_config.logger.error "#{scenario.feature}"
+    test_config.logger.error "#{scenario.feature} USER_CREDENTIALS FAILED! #{scenario.exception.message}"
+    test_config.logger.error "#{scenario.feature}"
   end
-  config.logger.step "  --  Test Parameters"
+  test_config.logger.step "  --  Test Parameters"
   test_param.each do |key, value|
-    config.logger.step "  --  #{key} : #{value}"
+    test_config.logger.step "  --  #{key} : #{value}"
   end
 end
+
+
+
+
+# test_param[:mysql_results] = test_param[:mysql_client].query("select * from user_credentials where test_env = 'stg' and in_use=1 and in_use_date = #{Time.now.to_date}")
+#
+# test_param[:mysql_results].each_with_index do |row, index|
+#   if row['in_use_date']==Time.now.to_date
+#     p row['username']
+#     break
+#   end
+# end
+
 

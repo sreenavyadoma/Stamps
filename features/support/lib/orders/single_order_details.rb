@@ -236,7 +236,7 @@ module Stamps
           form = SingleOrderDetails.new(param)
           form.validate_address_link
           country_drop_down = self.country
-          form.ship_to.set helper.format_address(partial_address_hash)
+          form.ship_to.set test_helper.format_address(partial_address_hash)
           30.times {
             begin
               item_label.click
@@ -607,7 +607,7 @@ module Stamps
         end
 
         def cost
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
       end
 
@@ -673,7 +673,7 @@ module Stamps
         end
 
         def cost
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def tooltip(selection)
@@ -882,7 +882,7 @@ module Stamps
               #ignore
             end
           end
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def multiple_order_cost
@@ -896,7 +896,7 @@ module Stamps
             end
             break unless cost.include? "$"
           end
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
       end
 

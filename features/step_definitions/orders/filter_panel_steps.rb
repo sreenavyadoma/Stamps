@@ -115,7 +115,7 @@ Then /^Filter Panel: Expand Panel$/ do
 end
 
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Date Printed is today$/ do
-  today = helper.now_plus_mon_dd 0
+  today = test_helper.now_plus_mon_dd 0
   stamps.orders.filter_panel.shipped.select.date_printed.sort_descending
   actual_print_date = stamps.orders.filter_panel.shipped.select.date_printed.row 1
 end

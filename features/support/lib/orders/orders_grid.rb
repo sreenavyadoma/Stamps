@@ -543,7 +543,7 @@ module Stamps
         end
 
         def data(order_id)
-          helper.remove_dollar_sign(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
+          test_helper.remove_dollar_sign(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
         end
       end
 
@@ -638,7 +638,7 @@ module Stamps
 
         def data(order_id)
           cost = grid_text_by_id(:ship_cost, order_id)
-          (cost.include? "$")?helper.remove_dollar_sign(cost).to_f.round(2):cost
+          (cost.include? "$")?test_helper.remove_dollar_sign(cost).to_f.round(2):cost
         end
 
         def ship_cost_error(order_id)

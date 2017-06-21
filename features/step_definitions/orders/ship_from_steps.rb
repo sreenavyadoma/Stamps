@@ -4,7 +4,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Ship-From address (\w+)$/ do |addr
 end
 
 Then /^[Oo]n Manage Shipping Address modal, delete all addresses$/ do
-  #config.logger.step "on Manage Shipping Address modal, delete all addresses"
+  #test_config.logger.step "on Manage Shipping Address modal, delete all addresses"
   stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").delete_all.close_window
 end
 
@@ -33,7 +33,7 @@ Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
 end
 
 Then /^[Oo]n Manage Shipping Address modal, add address (\w+)$/ do |address|
-  test_param[:ship_from_address] = (address.include? 'random ship from zone 1 through 4')?(helper.rand_ship_from_zone_1_4):address
+  test_param[:ship_from_address] = (address.include? 'random ship from zone 1 through 4')?(test_helper.rand_ship_from_zone_1_4):address
   stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").add(test_param[:ship_from_address])
 end
 

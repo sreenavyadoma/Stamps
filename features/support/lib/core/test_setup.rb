@@ -66,7 +66,7 @@ module Stamps
 
         #driver.window.move_to 0, 0
         #driver.window.resize_to 1000, 800
-        #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || helper.to_bool(ENV['MAX_WINDOW']))
+        #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || test_helper.to_bool(ENV['MAX_WINDOW']))
         driver.window.maximize
         logger.message "-"
         logger.message "BROWSER: #{@browser_name}"
