@@ -9,10 +9,10 @@ include RSpec::Matchers
 include DataMagic
 include RAutomation
 include Spreadsheet
+include DatabaseHelper
 
 Before do  |scenario|
   test_config.init(scenario.name, ENV["BROWSER"], ENV["FIREFOX_PROFILE"], nil)
-
   test_config.logger.message "-"
   test_config.logger.message "-"
   test_config.logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"
@@ -37,31 +37,24 @@ Before do  |scenario|
     test_param[:username] = ENV['USR']
     test_param[:password] = ENV['PW']
   else
-    # connect to mysql
-    test_param[:mysql_connection] = Mysql2::Client.new(host: "172.16.13.237",
-                                                   username: "rcruz",
-                                                   password: 'Mysql#524113',
-                                                   database: 'stamps')
     # reset old usernames
-    test_param[:mysql_results] = test_param[:mysql_connection].query("select * from user_credentials where in_use=1 and in_use_date != CURDATE()")
-    if test_param[:mysql_results].size > 0
-      test_param[:mysql_results].each do |row|
-        statement = test_param[:mysql_connection].prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?")
-        statement.execute(row['username'])
+    result = db_connection.query("select * from user_credentials where in_use=1 and in_use_date != CURDATE()")
+    if result.size > 0
+      result.each do |row|
+        db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?").execute(row['username'])
       end
     end
 
     # get username
-    test_param[:mysql_results] = test_param[:mysql_connection].query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'  and in_use=0")
-    rand_num = rand(test_param[:mysql_results].size)
-    test_param[:mysql_results].each_with_index do |row, index|
+    result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'  and in_use=0")
+    rand_num = rand(result.size)
+    result.each_with_index do |row, index|
       if rand_num==index
         test_param[:username] = row['username']
         test_param[:password] = row['password']
       end
     end
-    statement = test_param[:mysql_connection].prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_date=CURDATE() where username=?")
-    statement.execute(test_param[:username])
+    db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_date=CURDATE() where username=?").execute(test_param[:username])
   end
 
   test_param[:web_app] = ENV['WEB_APP']
@@ -87,9 +80,12 @@ After do |scenario|
   test_config.logger.message "-"
 
   begin
-    statement = test_param[:mysql_connection].prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?")
-    statement.execute(test_param[:username])
-    test_param[:mysql_connection].close
+    begin
+      db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?").execute(test_param[:username])
+      db_connection.close
+    rescue
+      #do nothing
+    end
   end unless (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
 
   test_config.logger.message "---------------- Feature: #{scenario.feature}"
@@ -117,9 +113,9 @@ end
 
 
 
-# test_param[:mysql_results] = test_param[:mysql_connection].query("select * from user_credentials where test_env = 'stg' and in_use=1 and in_use_date = #{Time.now.to_date}")
+# result = db_connection.query("select * from user_credentials where test_env = 'stg' and in_use=1 and in_use_date = #{Time.now.to_date}")
 #
-# test_param[:mysql_results].each_with_index do |row, index|
+# result.each_with_index do |row, index|
 #   if row['in_use_date']==Time.now.to_date
 #     p row['username']
 #     break

@@ -22,6 +22,8 @@ require 'yaml'
 require 'spreadsheet'
 require 'measured'
 
+require_relative 'lib/core/scoped_attr_accessor'
+require_relative 'lib/apps/db_helper'
 require_relative 'lib/apps/registration_app'
 require_relative 'lib/apps/pam_app'
 require_relative 'lib/pam/pam_page_header'

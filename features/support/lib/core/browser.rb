@@ -23,6 +23,7 @@ module Stamps
     end
 
     class StampsElement
+      include ScopedAttrAccessor
       attr_reader :element, :browser
       alias_method :text_box, :element
       alias_method :check_box, :element

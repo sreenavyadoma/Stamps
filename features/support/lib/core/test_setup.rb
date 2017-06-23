@@ -1,4 +1,3 @@
-
 module Stamps
   class StampsTestSetup
     attr_accessor :browser, :logger, :browser_sym, :firefox_profile, :windows_user, :scenario_name, :browser_name

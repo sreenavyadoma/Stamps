@@ -38,6 +38,13 @@ pam:
   admin_username: lab
   admin_password: Sdcqatest623
 
+database:
+  mysql:
+    host: 172.16.13.237
+    username: jenkins
+    password: Jenkins123!
+
+
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty
 

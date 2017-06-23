@@ -1,5 +1,7 @@
 CREATE DATABASE stamps;
+ALTER TABLE user_credentials ADD COLUMN in_use_time TIMESTAMP NOT NULL AFTER in_use;
 GRANT ALL ON stamps.* TO rcruz;
+
 UPDATE user_credentials SET user_credentials.in_use = 0 where username = 'cchrvv6qp';
 select * from user_credentials where username = 'cchrvv6qp';
 
@@ -10,6 +12,7 @@ CREATE TABLE user_credentials (
   test_env CHAR(5) NOT NULL,
 	in_use TINYINT unsigned NOT NULL,
   in_use_date DATE NOT NULL,
+  in_use_time DATE NOT NULL,
 	account_status TINYINT unsigned NOT NULL,
 	user_status CHAR(20) NOT NULL, 
 	user_role CHAR(100) NOT NULL, 
