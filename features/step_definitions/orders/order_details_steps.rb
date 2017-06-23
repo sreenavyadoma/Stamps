@@ -309,7 +309,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Ship-To International address to$/ do |table|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address = test_helper.address_test_helper_zone(address)
+  address = test_helper.address_helper_zone(address)
   test_param[:street_address] = address['street_address']
   test_param[:city] = address['city']
   test_param[:state] = address['state']
