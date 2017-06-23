@@ -1,4 +1,3 @@
-
 module Stamps
   class StampsTestSetup
     attr_accessor :browser, :logger, :browser_sym, :firefox_profile, :windows_user, :scenario_name, :browser_name
@@ -45,7 +44,7 @@ module Stamps
             rescue
               #ignore
             end
-            driver = Watir::Browser.new :chrome, switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+            driver = Watir::Browser.new :chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate) #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
           when :ie
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
@@ -66,7 +65,7 @@ module Stamps
 
         #driver.window.move_to 0, 0
         #driver.window.resize_to 1000, 800
-        #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || helper.to_bool(ENV['MAX_WINDOW']))
+        #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || test_helper.to_bool(ENV['MAX_WINDOW']))
         driver.window.maximize
         logger.message "-"
         logger.message "BROWSER: #{@browser_name}"

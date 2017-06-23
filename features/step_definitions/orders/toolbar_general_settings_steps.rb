@@ -189,7 +189,7 @@ Then /^[Ii]n Settings modal, set Postdate to 11:00 p.m.$/ do
 end
 
 Then /^[Ii]n Settings modal, Postdate Set (.*)$/ do |value|
-  config.logger.step "In Settings modal, Postdate Set #{value}"
+  test_config.logger.step "In Settings modal, Postdate Set #{value}"
   case value.downcase
     when "12:00 a.m."
       @general_settings.post_date.twelve_am
@@ -726,27 +726,27 @@ Then /^Reset Fields:  Expect Auto-Advance Label Position Unchecked$/ do
 end
 
 Then /^Reset Fields:  Set Weight to (\d+) lb (\d+) oz$/ do |lb, oz|
-  #config.logger.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
+  #test_config.logger.step "Reset Fields:  Set Weight to #{lb} lb #{oz} oz"
   step "Reset Fields:  Check Weight"
   @reset_fields.weight.lb.set lb
   @reset_fields.weight.oz.set oz
 end
 
 Then /^Reset Fields:  Expect Weight lb equals (\d+)$/ do |lb|
-  config.logger.step  "Reset Fields:  Expect Weight lb equals #{lb}"
+  test_config.logger.step  "Reset Fields:  Expect Weight lb equals #{lb}"
 
   step "Reset Fields:  Check Weight"
   expect(@reset_fields.weight.lb.text_box.text.to_i).to eql lb.to_i
 end
 
 Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
-  config.logger.step  "Reset Fields:  Expect Weight oz equals #{oz}"
+  test_config.logger.step  "Reset Fields:  Expect Weight oz equals #{oz}"
   step "Reset Fields:  Check Weight"
   expect(@reset_fields.weight.oz.text_box.text.to_i).to eql oz.to_i
 end
 
 Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$/ do |length, width, height|
-  config.logger.step  "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
+  test_config.logger.step  "Reset Fields:  Set Dimensions to length #{length}, width #{width}, height #{height}"
   step "Reset Fields:  Check Dimensions"
   @reset_fields.dimensions.length.set length
   @reset_fields.dimensions.width.set width
@@ -754,37 +754,37 @@ Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$
 end
 
 Then /^Reset Fields:  Expect Dimensions to length equals (\d+)$/ do |length|
-  config.logger.step  "Reset Fields:  Expect Dimensions to length equals #{length}"
+  test_config.logger.step  "Reset Fields:  Expect Dimensions to length equals #{length}"
   step "Reset Fields:  Check Dimensions"
   expect(@reset_fields.dimensions.length.text_box.text.to_i).to eql length.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to width equals (\d+)$/ do |width|
-  config.logger.step  "Reset Fields:  Expect Dimensions to width equals #{width}"
+  test_config.logger.step  "Reset Fields:  Expect Dimensions to width equals #{width}"
   step "Reset Fields:  Check Dimensions"
   expect(@reset_fields.dimensions.width.text_box.text.to_i).to eql width.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
-  config.logger.step  "Reset Fields:  Expect Dimensions to height equals #{height}"
+  test_config.logger.step  "Reset Fields:  Expect Dimensions to height equals #{height}"
   step "Reset Fields:  Check Dimensions"
   expect(@reset_fields.dimensions.height.text_box.text.to_i).to eql height.to_i
 end
 
 Then /^Reset Fields:  Close$/ do
-  #config.logger.step "Reset Fields:  Close"
+  #test_config.logger.step "Reset Fields:  Close"
   @reset_fields.close
 end
 
 Then /^[Ii]n Settings modal, Save$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  #config.logger.step "In Settings modal, Save"
+  #test_config.logger.step "In Settings modal, Save"
   @general_settings.save
 end
 
 Then /^[Ii]n Settings modal, Close$/ do
   step "Open Settings Modal" if @general_settings.nil?
-  #config.logger.step "In Settings modal, Close"
+  #test_config.logger.step "In Settings modal, Close"
   @general_settings.close
 end
 

@@ -232,7 +232,7 @@ module Stamps
         end
 
         def total_value
-          helper.remove_dollar_sign(total_value_element.text).to_f.round(2)
+          test_helper.remove_dollar_sign(total_value_element.text).to_f.round(2)
         end
 
         def usps_privacy_act_statement

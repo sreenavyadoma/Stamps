@@ -138,8 +138,8 @@ module Stamps
         address_array.each_with_index do |element, index|
           if index==address_array.size-1 #if this is the last item in the string, don't append a new line
             formatted_address = formatted_address + element.to_s.strip
-          else #(param_hash['full_name'].downcase.include? 'random') ? helper.random_name : param_hash['full_name']
-            formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? helper.random_full_name : element.to_s.strip) + "\n"
+          else #(param_hash['full_name'].downcase.include? 'random') ? test_helper.random_name : param_hash['full_name']
+            formatted_address = formatted_address + ((element.to_s.strip.downcase.include? 'random') ? test_helper.random_full_name : element.to_s.strip) + "\n"
           end
         end
       end
@@ -167,8 +167,8 @@ module Stamps
     end
 
     def address_hash_to_str(address)
-      name = (address['full_name'].downcase.include? 'random') ? helper.random_full_name : address['full_name']
-      company_name = (address['company'].downcase.include? 'random') ? helper.random_company_name : address['company']
+      name = (address['full_name'].downcase.include? 'random') ? test_helper.random_full_name : address['full_name']
+      company_name = (address['company'].downcase.include? 'random') ? test_helper.random_company_name : address['company']
       street_address = address["street_address"]
 
       if address['street_address_2'].nil?
@@ -182,11 +182,11 @@ module Stamps
       zip = address["zip"]
       begin
         phone_num = address['phone']
-        phone = (phone_num.downcase.include? 'random') ? helper.random_phone_number : address['phone']
+        phone = (phone_num.downcase.include? 'random') ? test_helper.random_phone_number : address['phone']
       end unless address['phone'].nil?
       begin
         email_addy = address['email']
-        email = (email_addy.downcase.include? 'random') ? helper.random_email : address['email']
+        email = (email_addy.downcase.include? 'random') ? test_helper.random_email : address['email']
       end unless address['email'].nil?
 
       #logger.info "Ship-To Name: #{name}"
@@ -328,7 +328,7 @@ module Stamps
         when /zone 2/
           rand_zone_2
         when /zone 3/
-          helper.rand_zone_3
+          test_helper.rand_zone_3
         when /zone 4/
           rand_zone_4
         when /zone 5/

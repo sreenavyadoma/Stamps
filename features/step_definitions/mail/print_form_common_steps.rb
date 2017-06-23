@@ -66,13 +66,20 @@ end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   test_param[:country] = country
-  config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
+  test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
   stamps.mail.print_form.mail_to.country((test_param[:country]))
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do
 test_param[:total_ship_cost] = stamps.mail.mail_toolbar.total
 end
+
+Then /^[Ss]ave Print Form Mail From$/ do
+  test_param[:ship_from] = stamps.mail.print_form.mail_from.text_box.text
+end
+
+
+
 
 
 

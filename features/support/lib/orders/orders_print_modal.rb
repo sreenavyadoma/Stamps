@@ -271,7 +271,7 @@ module Stamps
       end
 
       def date_field(day)
-        browser.td(css: "td[aria-label='#{helper.now_plus_month_dd day.to_i}']")
+        browser.td(css: "td[aria-label='#{test_helper.now_plus_month_dd day.to_i}']")
       end
 
       def date(day)
@@ -289,7 +289,7 @@ module Stamps
           picker.click unless today.present?
           today.click
           sleep(0.35)
-          return helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
+          return test_helper.now_plus_mon_dd 0 #get ship date text box value and return it in correct format or not...
         }
         expect("Unable to select today's date from date picker object in Print Modal.").to eql ""
       end
@@ -301,7 +301,7 @@ module Stamps
           picker.click unless today.present?
           today.click
           sleep(0.35)
-          return helper.now_plus_mon_dd 0
+          return test_helper.now_plus_mon_dd 0
         }
         expect("Unable to select today's date from date picker object in Print Modal.").to eql ""
       end
@@ -320,8 +320,8 @@ module Stamps
         picker_button = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
         ship_date_textbox = StampsTextBox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
 
-        ship_date_str = helper.now_plus_month_dd day
-        ship_date_mmddyy = helper.now_plus_mm_dd_yy day
+        ship_date_str = test_helper.now_plus_month_dd day
+        ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
         date_field = StampsElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
 
         10.times{
@@ -332,8 +332,8 @@ module Stamps
             break
           else
             day += 1
-            ship_date_str = helper.now_plus_month_dd day
-            ship_date_mmddyy = helper.now_plus_mm_dd_yy day
+            ship_date_str = test_helper.now_plus_month_dd day
+            ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
             date_field = StampsElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
           end
         }
@@ -475,7 +475,7 @@ module Stamps
 
       # todo-rob Test Print Total cost
       def total_cost
-        helper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
+        test_helper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
       end
 
       def check_naws_plugin_error

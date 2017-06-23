@@ -25,7 +25,7 @@ Feature: Bulk Update International
     Then set Order Details form Weight to 2 lb 2 oz
     Then set Order Details form service to PMEI Package
     Then blur out on Order Details form 2 times
-    Then Pause for 1 seconds
+    Then Pause for 1 second
     Then check Orders Grid row 1
 
     #Check 1st two orders

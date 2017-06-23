@@ -1,9 +1,9 @@
 module TestHelper
-  def config
+  def test_config
     @config ||= StampsTestSetup.new
   end
 
-  def helper
-    @helper ||= StampsTestHelper.new(config.logger)
+  def test_helper
+    @helper ||= StampsTestHelper.new(test_config.logger)
   end
 end
