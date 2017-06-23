@@ -19,7 +19,7 @@ module TestParameters
       @modal_param.test_env = ENV['URL']
       @modal_param.test_env = 'stg' if ENV['URL'].downcase == 'staging'
       @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('cc')
-      @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('sc')
+      @modal_param.test_env = 'qasc' if ENV['URL'].downcase.include?('sc')
       @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('rating')
 
       @modal_param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"

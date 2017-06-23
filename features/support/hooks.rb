@@ -15,46 +15,31 @@ Before do  |scenario|
   test_config.init(scenario.name, ENV["BROWSER"], ENV["FIREFOX_PROFILE"], nil)
   test_config.logger.message "-"
   test_config.logger.message "-"
-  test_config.logger.message "Cucumber Test: #{ENV['USER_CREDENTIALS']}"
-  test_config.logger.message "-"
-  test_config.logger.message "-"
-  test_config.logger.message "URL: #{ENV['URL']}"
-  expect("").to eql "Environment variable URL is not defined!" if (ENV['URL'].nil? || ENV['URL'].size==0)
-  test_config.logger.message "Test Name: #{ENV['USER_CREDENTIALS']}"
-  test_config.logger.message "Browser: #{ENV['BROWSER']}"
-  expect("").to eql "Environment variable BROWSER is not defined!" if (ENV['BROWSER'].nil? || ENV['BROWSER'].size==0)
-  test_config.logger.message "-"
-  test_config.logger.message "-"
-  test_config.logger.message "Verbose: #{ENV['DEBUG']}"
-  expect(ENV['DEBUG']).to be_truthy
-  test_config.logger.message "Healthcheck: #{ENV['HEALTHCHECK']}"
-  expect(ENV['HEALTHCHECK']).to be_truthy
-  test_config.logger.message "-"
-  test_config.logger.message "-"
-  test_config.logger.message "-"
 
-  if (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
-    test_param[:username] = ENV['USR']
-    test_param[:password] = ENV['PW']
-  else
-    # reset old usernames
-    result = db_connection.query("select * from user_credentials where in_use=1 and in_use_date != CURDATE()")
-    if result.size > 0
-      result.each do |row|
-        db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?").execute(row['username'])
+  if modal_param.web_app == :mail || modal_param.web_app == :orders
+    if (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
+      test_param[:username] = ENV['USR']
+      test_param[:password] = ENV['PW']
+    else
+      # reset old usernames
+      result = db_connection.query("select * from user_credentials where in_use=1 and in_use_date != CURDATE()")
+      if result.size > 0
+        result.each do |row|
+          db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?").execute(row['username'])
+        end
       end
-    end
 
-    # get username
-    result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'  and in_use=0")
-    rand_num = rand(result.size)
-    result.each_with_index do |row, index|
-      if rand_num==index
-        test_param[:username] = row['username']
-        test_param[:password] = row['password']
+      # get username
+      result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'  and in_use=0")
+      rand_num = rand(result.size)
+      result.each_with_index do |row, index|
+        if rand_num==index
+          test_param[:username] = row['username']
+          test_param[:password] = row['password']
+        end
       end
+      db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_date=CURDATE() where username=?").execute(test_param[:username])
     end
-    db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_date=CURDATE() where username=?").execute(test_param[:username])
   end
 
   test_param[:web_app] = ENV['WEB_APP']
@@ -79,14 +64,16 @@ After do |scenario|
   test_config.logger.message "-"
   test_config.logger.message "-"
 
-  begin
+  if modal_param.web_app == :mail || modal_param.web_app == :orders
     begin
-      db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?").execute(test_param[:username])
-      db_connection.close
-    rescue
-      #do nothing
-    end
-  end unless (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
+      begin
+        db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?").execute(test_param[:username])
+        db_connection.close
+      rescue
+        #do nothing
+      end
+    end unless (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
+  end
 
   test_config.logger.message "---------------- Feature: #{scenario.feature}"
   test_config.logger.message "---------------- Scenario: #{scenario.name}"
