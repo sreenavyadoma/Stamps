@@ -16,6 +16,6 @@ end
 
 Then /^[Cc]lick on [Gg]et [Ss]tarted$/ do
   sdc_website.get_started
-  expect(config.browser.url).to include('profile')
+  expect(test_config.browser.url).to include('profile')
 end
 

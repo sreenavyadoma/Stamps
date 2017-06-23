@@ -43,13 +43,13 @@ Then /^save password to (?:default parameter file|parameter file (.*))$/ do |fil
 end
 
 Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
-  config.logger.info "On PAM Customer Search page, set username from parameter file"
-  step "On PAM Customer Search page, set username to #{CONFIG['username']}"
+  test_config.logger.info "On PAM Customer Search page, set username from parameter file"
+  step "On PAM Customer Search page, set username to #{test_config['username']}"
 end
 
 Then /^[Ss]et PAM Customer Search page username from parameter file$/ do
   logger.info "set PAM Customer Search page username from parameter file"
-  step "set PAM Customer Search page username to #{CONFIG['username']}"
+  step "set PAM Customer Search page username to #{test_config['username']}"
 end
 
 Then /^Orders: Sign-in using username and password from parameter file$/ do

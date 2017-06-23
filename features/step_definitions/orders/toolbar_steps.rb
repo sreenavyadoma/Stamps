@@ -7,8 +7,8 @@ Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/
     test_param[:order_id][order_count] = stamps.orders.order_details.toolbar.order_id
     step "Save Order Details data"
   rescue Exception => e
-    config.logger.error e.message
-    config.logger.error e.backtrace.join("\n")
+    test_config.logger.error e.message
+    test_config.logger.error e.backtrace.join("\n")
     expect(e.message).to eql "Add new order"
   end
 end
@@ -50,17 +50,17 @@ Then /^[Ii]n Print modal, Open Reprint Modal$/ do
 end
 
 Then /^Label Unavailable:  Expect Visible$/ do
-  #config.logger.step "Label Unavailable:  Expect Visible"
+  #test_config.logger.step "Label Unavailable:  Expect Visible"
   case @reprint_modal
     when LabelUnavailable
-      config.logger.step @reprint_modal.message
+      test_config.logger.step @reprint_modal.message
       label_unavailable_visible = @reprint_modal.present?
-      #config.logger.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
+      #test_config.logger.step "Test #{(label_unavailable_visible)?"Passed":"Failed"}"
       @reprint_modal.ok
       @reprint_modal.close
       expect(label_unavailable_visible).to be(true)
     else
-      #config.logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
+      #test_config.logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
       expect(@reprint_modal.present?).to be(true)
   end
 end

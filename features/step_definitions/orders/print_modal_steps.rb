@@ -31,7 +31,7 @@ Then /^[Ss]et Print modal Ship Date to today$/ do
 end
 
 Then /^[Ss]et Print modal Ship Date to today plus (\d+)$/ do |day|
-  ship_date = helper.now_plus_mon_dd_excl_sunday day
+  ship_date = test_helper.now_plus_mon_dd_excl_sunday day
   @ship_date = stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.date_picker.today_plus day
 end
 
@@ -84,7 +84,7 @@ Then /^[Ee]xpect Print modal left-side label is selected$/ do
 end
 
 Then /^[Ee]xpect Print modal Ship Date is (\d+) day\(s\) from today/ do |day|
-  expect(stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.text).to eql helper.date_printed(day)
+  expect(stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.text).to eql test_helper.date_printed(day)
 end
 
 Then /^[Ss]et Print modal Print-On to \"(.*)\"$/ do |expectation|

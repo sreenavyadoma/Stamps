@@ -1,0 +1,98 @@
+{
+   "client_urls": [
+      "https://print.staging.stamps.com/webpostage/",
+      "https://print.staging.stamps.com/webpostage/",
+      "https://print.staging.stamps.com/webpostage/",
+      "https://print.staging.stamps.com/webpostage/",
+      "https://print.staging.stamps.com/webpostage/",
+      "https://print.staging.stamps.com/webpostage/"
+   ],
+   "NOTE": "All times are in milliseconds unless otherwise noted",
+   "chrome": {
+      "plugin_path_windows-x": "",
+      "plugin_path_mac-x": "~//Library/Internet Plug-Ins",
+      "file_check_delay": 1000, 
+      "rescan_period": 10000,
+      "sqlite_retries": 3,
+      "sqlite_delay": 500,
+      "uri_tag": "stamps:",
+	  "monitor_nawsinfo_dat": false
+	  
+   },
+   "allbrowser":{
+   "sdc_naws_url":"wss://naws.staging.stamps.com/WSHandlerV2.ashx"
+   },
+
+   "helpurl":{
+   "webpostage_main":"https://print.staging.stamps.com/webpostage",
+   "webpostage_fun":"https://print.staging.stamps.com/webpostage/signin/",
+   "webpostage_fpw":"https://print.staging.stamps.com/webpostage/signin/",
+   "webpostage_mainl":"https://print.staging.stamps.com/webpostage/?authenticator="
+   },
+
+   "creds":{
+   "user_name":"USER-NAME",
+   "pass_word":"PASSWORD",
+   "token":"1234567890"
+   },
+
+   "ResourceURI":{
+   "AuthenticateDevice":"https://naws.staging.stamps.com/APIV1/AuthenticateDevice",
+   "GoOffline":"https://naws.staging.stamps.com/APIV1/GoOffline"
+   },
+
+   "connection": {
+      "ping_interval": 60000,
+      "socket_poll_timeout": 500,
+      "reconnect_retries": 3,
+      "reconnect_delay": 1000,
+      "keep_alive": true,
+      "receive_timeout": 60000,
+      "send_timeout": 60000,
+      "idle_timeout_minutes": 15,
+      "random_id_expiration_minutes": 5
+   },
+   "message_box": false,
+   "plugin": {
+      "result_caching": {
+         "initialize": true,
+         "updatePrinters": true,
+         "getPrinterInfo": true,
+         "printImage": true
+      },
+      "result_logging": {
+         "getPrinterInfo": false
+      },
+      "log_result_separately": false
+   },
+   "logging": {
+      "valid_log_levels": [
+         { "none": "0 - turns off logging" },
+         { "fatal": "1 - A fatal error. The application will most likely terminate. This is the highest priority." },
+         { "critical": "2 - A critical error. The application might not be able to continue running successfully." },
+         { "error": "3 - An error. An operation did not complete successfully, but the application as a whole is not affected." },
+         { "warning": "4 - A warning. An operation completed with an unexpected result." },
+         { "notice": "5 - A notice, which is an information with just a higher priority." },
+         { "information": "6 - An informational message, usually denoting the successful completion of an operation." },
+         { "debug": "7 - A debugging message." },
+         { "trace": "8 - A tracing message. This is the lowest priority." }
+      ],
+      "error_codes": [
+         { "NAWS_ERROR_NONE": 0 },
+         { "NAWS_GENERAL_ERROR": 1000 },
+         { "NAWS_LOCAL_STORAGE_ERROR": 1001 },
+         { "NAWS_SQL_ERROR": 1002 },
+         { "NAWS_INFO_ERROR": 1003 },
+         { "NAWS_SOCKET_ERROR": 1004 },
+         { "NAWS_CONNECTION_ERROR": 1005 },
+         { "NAWS_AUTHENTICATION_ERROR": 1006 },
+         { "NAWS_SERVER_ERROR": 1007 },
+         { "NAWS_PLUGIN_ERROR": 1008 },
+         { "NAWS_JSON_ERROR": 1009 }
+      ],
+      "level": "information",
+      "always_log_level": "error",
+      "log_to_server_level": "information",
+      "log_to_server_path": "NativeAppErrorLogger.aspx"
+   }
+}

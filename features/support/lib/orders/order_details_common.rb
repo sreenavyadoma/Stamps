@@ -26,7 +26,6 @@ module Stamps
           drop_down.click
           sleep(1)
           selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]:browser.li(text: /#{str}/))
-
           if str.downcase.include?("manage shipping")
             15.times do
               sleep(0.35)
@@ -43,7 +42,7 @@ module Stamps
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              return if text_box.text.downcase.include?(str.downcase)
+              return if text_box.text.size > 2
             end
           end
         end
@@ -60,7 +59,7 @@ module Stamps
         end
 
         def cost
-          helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
         end
 
         def inline_cost(service_name)
@@ -69,7 +68,7 @@ module Stamps
             begin
               drop_down.click unless cost_label.present?
               if cost_label.present?
-                service_cost = helper.remove_dollar_sign(cost_label.text)
+                service_cost = test_helper.remove_dollar_sign(cost_label.text)
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                 drop_down.click if cost_label.present?
                 return service_cost.to_f.round(2)

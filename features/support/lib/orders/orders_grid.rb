@@ -2,9 +2,8 @@ module Stamps
   module Orders
     module Grid
       class Column < Browser::StampsModal
-        MONTH_ARRAY = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-        TIME_UNITS_ARRAY = ['minute','minutes','hour','hours','day','days']
-        GRID_COLUMNS = {
+        @@column_number_hash = Hash.new
+        @@grid_columns = {
             check_box: " ",
             store: "Store",
             ship_cost: "Ship Cost",
@@ -42,7 +41,7 @@ module Stamps
         def sort_order(column, sort_order)
           scroll_to_column(column)
 
-          span = browser.span(text: GRID_COLUMNS[column])
+          span = browser.span(text: @@grid_columns[column])
           column = StampsElement.new(span)
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
 
@@ -70,7 +69,7 @@ module Stamps
           expect(name).to be_truthy
           case name
             when Symbol
-              StampsElement.new(browser.span(text: GRID_COLUMNS[name])).scroll_into_view
+              StampsElement.new(browser.span(text: @@grid_columns[name])).scroll_into_view
             when String
               StampsElement.new(browser.span(text: name)).scroll_into_view
             when Watir::Element
@@ -107,22 +106,15 @@ module Stamps
         end
 
         def column_number(column)
-          5.times do
-            begin
-              columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
-              columns.each_with_index do |element, index|
-                scroll_to_column element
-                if StampsElement.new(element).text == GRID_COLUMNS[column]
-                  #logger.message "In Orders Grid, -- #{GRID_COLUMNS[column]} is in column #{index+1}"
-                  return index+1
-                end
-              end
-            rescue => e
-              expect(e.backtrace.join("\n")).to eql "#{e.message}"
-              expect(e.message).to eql "Grid error. Unable to find column number for #{column}"
+          if @@column_number_hash[column].nil?
+            columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
+            columns.each_with_index do |element, index|
+              scroll_to_column(element)
+              @@column_number_hash[@@grid_columns.key(StampsElement.new(element).text)] = index+1
             end
+
           end
-          #"Column Name: #{column_name}").to eql "Unable to get column number for #{column_name}"
+          @@column_number_hash[column]
         end
 
         def row_number(order_id)
@@ -543,7 +535,7 @@ module Stamps
         end
 
         def data(order_id)
-          helper.remove_dollar_sign(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
+          test_helper.remove_dollar_sign(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
         end
       end
 
@@ -638,7 +630,7 @@ module Stamps
 
         def data(order_id)
           cost = grid_text_by_id(:ship_cost, order_id)
-          (cost.include? "$")?helper.remove_dollar_sign(cost).to_f.round(2):cost
+          (cost.include? "$")?test_helper.remove_dollar_sign(cost).to_f.round(2):cost
         end
 
         def ship_cost_error(order_id)
@@ -970,7 +962,6 @@ module Stamps
                     :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
                     :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
                     :tracking_service, :ship_date, :tracking_no, :requested_service, :source, :ship_from, :order_total
-
         def initialize(param)
           @checkbox = GridCheckBox.new(param)
           @store = Store.new(param)
@@ -1005,18 +996,6 @@ module Stamps
           # todo-rob These two are no longer a column in orders grid
           @reference_no = ReferenceNo.new(param)
           @cost_code = CostCode.new(param)
-        end
-
-        def is_next_to?(left, right)
-          left_column_sym = GRID_COLUMNS.key left
-          right_column_sym = GRID_COLUMNS.key right
-
-          expect(left_column_sym).to be_truthy
-          expect(right_column_sym).to be_truthy
-
-          left_column_num = column_number left_column_sym
-          right_column_num = column_number right_column_sym
-          left_column_num + 1 == right_column_num
         end
       end
 

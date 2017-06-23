@@ -1,6 +1,7 @@
-Script Console
+Jenkins Script Console
 
-folderName="orders/sas_bvt/bvt/qasc/firefox" // change value `folder-a` for the full name of the folder you want to disable all jobs in
+
+folderName="winclient" // change value `folder-a` for the full name of the folder you want to disable all jobs in
 
 Jenkins.instance.getItemByFullName(folderName).allJobs
 	.findAll { it instanceof AbstractProject }
@@ -11,13 +12,97 @@ Jenkins.instance.getItemByFullName(folderName).allJobs
     }
 null
 
-mail/bvt/qasc/Firefox
-mail/printing/QASC/firefox
-orders/bvt/qasc/firefox
-orders/printing/qasc/firefox
-orders/regression/qasc/firefox
-orders/sas_bvt/bvt/qasc/Firefox
-web_reg/orders/qasc
-web_reg/orders/stg
+=====================
+
+How to disable all jobs in a specific folder
+September 02, 2016 09:10
+Follow
+Issue
+
+I would like to disable all the jobs under a folder. Is there a way to do this?
+Environment
+
+    CloudBees Jenkins Enterprise
+    CloudBees Folders Plugin
+
+Resolution
+
+Currently, there is JENKINS-27735 tracking this.
+
+In the meantime, you can use the following script from the Jenkins Script Console ( JENKINS_URL/script)
+
+To explain this.
+
+Say I have a job hierarchy like this:
+
+.
+├── folder-a
+│   └── jobs
+│       ├── a_freestyle
+│       ├── a_maven
+│       ├── a_pipeline
+│       └── folder-a_b
+│           └── jobs
+│               ├── a_b_freestyle
+│               ├── a_b_maven
+│               └── a_b_pipeline
+├── folder-b
+│   └── jobs
+│       └── b_freestyle
+├── freestyle
+├── maven
+└── pipeline
+
+If I traverse this and print the full name of each job (folders are jobs as well), I get:
+
+folder-a/a_freestyle
+folder-a/a_maven
+folder-a/folder-a_b/a_b_freestyle
+folder-a/folder-a_b/a_b_maven
+folder-b/b_freestyle
+freestyle
+maven
+
+So using the following script, if I wanted to disable all jobs in folder-a I would specify folderName="folder-a", as its a top level folder.
+
+If I wanted to disable all jobs in nested folder folder-a/folder-a_b, I would specify folderName="folder-a/folder-a_b".
+
+NOTE: Some job types don’t support disabling. They are excluded in the script.
+
+NOTE: Make sure your user has run script permissions.
+
+NOTE: Change folderName value for the full name of the folder you want to disable jobs in.
+
+Example that does not traverse child folders:
+
+folderName="folder-a" // change value `folder-a` for the full name of the folder you want to disable all jobs in
+
+Jenkins.instance.getItemByFullName(folderName).allJobs
+	.findAll { it instanceof AbstractProject }
+	.findAll { it.fullName == "${folderName}/${it.name}" }
+	.each {
+      it.disable()
+      println("Disabled job: [$it.fullName]")
+    }
+null
+
+Example that does traverse child folders:
+
+folderName="folder-a" // change value `folder-a` for the full name of the folder you want to disable all jobs in
+
+Jenkins.instance.getItemByFullName(folderName).allJobs
+	.findAll { it instanceof AbstractProject }
+	.each {
+      it.disable()
+      println("Disabled job: [$it.fullName]")
+    }
+null
+
+You can perform a dry run by commenting out the disable line, i,e:
+
+      //it.disable()
+
+This will result in the names of the jobs that would be disabled being printed, but not disabled.
+
 
 

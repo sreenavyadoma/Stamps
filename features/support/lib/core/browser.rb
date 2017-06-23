@@ -23,6 +23,7 @@ module Stamps
     end
 
     class StampsElement
+      include ScopedAttrAccessor
       attr_reader :element, :browser
       alias_method :text_box, :element
       alias_method :check_box, :element
@@ -54,7 +55,11 @@ module Stamps
       end
 
       def present?
-        element.present?
+        begin
+          element.exist? && element.visible?
+        rescue
+          return false
+        end
       end
 
       def visible?
@@ -73,9 +78,13 @@ module Stamps
         end
       end
 
+      def truthy?
+        !element.nil? && exist?
+      end
+
       def hover
         begin
-          element.hover
+          element.hover if present?
         rescue
           #ignore
         end
@@ -84,14 +93,14 @@ module Stamps
       def wait_while_present(*args)
         ((args.nil? || args.size==0)?2:args[0].to_i).times do
           break unless element.present?
-          sleep(1)
+          sleep(0.25)
         end
       end
 
       def wait_until_present(*args)
         ((args.nil? || args.size==0)?2:args[0].to_i).times do
           break if element.present?
-          sleep(1)
+          sleep(0.25)
         end
       end
 
@@ -105,19 +114,19 @@ module Stamps
 
       def text
         begin
-          return element.value if !element.value.nil? && element.value.size > 0
+          return element.value if truthy? && !element.value.nil? && element.value.size > 0
         rescue
           #ignore
         end
 
         begin
-          return element.text if !element.text.nil? && element.text.size > 0
+          return element.text if truthy? && !element.text.nil? && element.text.size > 0
         rescue
           #ignore
         end
 
         begin
-          return attribute_value('value') if !attribute_value('value').nil? && attribute_value('value').size > 0
+          return attribute_value('value') if element.present? && !attribute_value('value').nil? && attribute_value('value').size > 0
         rescue
           return ""
         end
@@ -150,7 +159,7 @@ module Stamps
 
       def double_click
         begin
-          element.double_click
+          element.double_click if present?
         rescue
           #ignore
         end
@@ -166,13 +175,8 @@ module Stamps
 
     class StampsTextBox < StampsElement
       include HelpBlockElement
-
-      def present?
-        text_box.present?
-      end
-
       def set(txt)
-        15.times do
+        3.times do
           begin
             clear
             text_box.set(txt) if present?
@@ -194,7 +198,7 @@ module Stamps
       end
 
       def set_attribute_value(attribute_name, value)
-        browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", element)
+        browser.execute_script("return arguments[0].#{attribute_name}='#{value}'", element) if present?
       end
 
       def data_error
@@ -216,7 +220,7 @@ module Stamps
     class StampsWatirCheckBox < StampsElement
       include HelpBlockElement
       def check
-        10.times do
+        5.times do
           set
           break if checked?
         end

@@ -4,8 +4,8 @@ module RegistrationApp
     begin
       @registration ||= Stamps::Registration::WebRegistration.new(modal_param)
     rescue Exception => e
-      config.logger.error e.message
-      config.logger.error e.backtrace.join("\n")
+      test_config.logger.error e.message
+      test_config.logger.error e.backtrace.join("\n")
     end
   end
 
@@ -13,16 +13,16 @@ module RegistrationApp
     begin
       @sdc_website ||= Stamps::Registration::SdcWebsite.new(modal_param)
     rescue Exception => e
-      config.logger.error e.message
-      config.logger.error e.backtrace.join("\n")
+      test_config.logger.error e.message
+      test_config.logger.error e.backtrace.join("\n")
     end
   end
 
   def registration_parameter_file(*args)
     directory = "#{data_for(:registration, {})['development_dir']}"
-    directory = "#{data_for(:registration, {})['jenkins_dir']}" if helper.to_bool(ENV['JENKINS'])
+    directory = "#{data_for(:registration, {})['jenkins_dir']}" if test_helper.to_bool(ENV['JENKINS'])
     FileUtils.mkdir_p(directory)
-    return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if helper.to_bool(ENV['JENKINS'])
+    return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if test_helper.to_bool(ENV['JENKINS'])
     "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml"
   end
 
