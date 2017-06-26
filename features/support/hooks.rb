@@ -22,7 +22,7 @@ Before do  |scenario|
       test_param[:password] = ENV['PW']
     else
       # reset old usernames
-      result = db_connection.query("select * from user_credentials where in_use=1 and in_use_date != CURDATE()")
+      result = db_connection.query("select * from user_credentials where in_use=1 and date_add(in_use_time, INTERVAL 4 HOUR) < (CURTIME())")
       if result.size > 0
         result.each do |row|
           db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?").execute(row['username'])
@@ -30,7 +30,7 @@ Before do  |scenario|
       end
 
       # get username
-      result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'  and in_use=0")
+      result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active' and in_use=0")
       rand_num = rand(result.size)
       result.each_with_index do |row, index|
         if rand_num==index
@@ -38,7 +38,7 @@ Before do  |scenario|
           test_param[:password] = row['password']
         end
       end
-      db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_date=CURDATE() where username=?").execute(test_param[:username])
+      db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_time=CURTIME(), user_credentials.in_use_date=CURDATE() where username=?").execute(test_param[:username])
     end
   end
 

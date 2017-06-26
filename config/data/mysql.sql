@@ -12,7 +12,7 @@ CREATE TABLE user_credentials (
   test_env CHAR(5) NOT NULL,
 	in_use TINYINT unsigned NOT NULL,
   in_use_date DATE NOT NULL,
-  in_use_time DATE NOT NULL,
+  in_use_time TIME NOT NULL,
 	account_status TINYINT unsigned NOT NULL,
 	user_status CHAR(20) NOT NULL, 
 	user_role CHAR(100) NOT NULL, 
