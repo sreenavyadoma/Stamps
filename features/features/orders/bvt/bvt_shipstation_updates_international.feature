@@ -11,6 +11,9 @@ Feature:  Update International Orders to ShipStation
     Then set Order Details Ship-To International address to
       | full_name          | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
+
+    Then expect Order Details form Ship-To Country is correct
+
     Then set Order Details form Weight to 2 lb 2 oz
     Then set Order Details form service to PMI Package
     Then set Order Details form Insure-For to $100.25
@@ -63,7 +66,6 @@ Feature:  Update International Orders to ShipStation
     Then check Orders Grid saved Order ID
     Then Pause for 1 second
 
-    Then expect Order Details form Ship-To Country is correct
     Then expect Order Details form International Ship-To Name is correct
     Then expect Order Details form International Ship-To Company is correct
     Then expect Order Details form International Ship-To Address 1 is correct
