@@ -15,9 +15,6 @@ Before do  |scenario|
   test_config.init(scenario.name, ENV["BROWSER"], ENV["FIREFOX_PROFILE"], nil)
   test_config.logger.message "-"
   test_config.logger.message "-"
-
-  user_credentials.setup
-
   test_param[:web_app] = ENV['WEB_APP']
   test_param[:url] = ENV['URL']
   test_param[:test] = ENV['USER_CREDENTIALS']
@@ -33,24 +30,22 @@ Before do  |scenario|
   scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index+1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
   test_config.logger.message "-"
   test_config.logger.message "-"
+  if modal_param.web_app == :mail || modal_param.web_app == :orders
+    if (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
+      test_param[:username] = ENV['USR']
+      test_param[:password] = ENV['PW']
+    else
+      user = user_credentials.setup
+      test_param[:username] = user[:username]
+      test_param[:password] = user[:password]
+    end
+  end
 end
 
 After do |scenario|
   test_config.logger.message "Teardown Tests..."
   test_config.logger.message "-"
   test_config.logger.message "-"
-
-  if modal_param.web_app == :mail || modal_param.web_app == :orders
-    begin
-      begin
-        db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?").execute(test_param[:username])
-        db_connection.close
-      rescue
-        #do nothing
-      end
-    end unless (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
-  end
-
   test_config.logger.message "---------------- Feature: #{scenario.feature}"
   test_config.logger.message "---------------- Scenario: #{scenario.name}"
   test_config.logger.message "---------------- Tags:"
@@ -60,7 +55,7 @@ After do |scenario|
   test_config.logger.message "-"
   test_config.logger.message "-"
 
-  test_config.teardown
+  test_config.teardown if (modal_param.web_app == :mail || modal_param.web_app == :orders) && !((!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?))
 
   if scenario.failed?
     test_config.logger.error "#{scenario.feature}"

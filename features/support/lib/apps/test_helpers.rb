@@ -8,6 +8,6 @@ module TestHelper
   end
 
   def user_credentials
-    @user_credentials ||= StampsUserCredentials.new(db_connection, modal_param)
+    @user_credentials ||= StampsUserCredentials.new(db_connection)
   end
 end
