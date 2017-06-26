@@ -28,7 +28,7 @@ module Stamps
       user_credentials
     end
 
-    def teardown
+    def close
       db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use = 0 where username = ?").execute(user_credentials[:username])
       db_connection.close
     end
