@@ -37,12 +37,12 @@ module Stamps
           show_address
           text_field = nil
           text_fields = browser.text_fields(css: "input[name=ShipCountryCode]")
-          6.times do
+          50.times do
             text_fields.each do |element|
+              sleep(0.25)
               text_field = element if element.present?
-              sleep(0.35)
             end
-            break unless text_field.nil?
+            break if !text_field.nil? && text_field.present?
           end
           text_field.should_not be nil
           expect(text_field.present?).to be(true)
