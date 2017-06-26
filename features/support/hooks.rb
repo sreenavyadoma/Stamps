@@ -22,7 +22,7 @@ Before do  |scenario|
       test_param[:password] = ENV['PW']
     else
       # reset old usernames
-      result = db_connection.query("select * from user_credentials where in_use=1 and date_add(in_use_time, INTERVAL 4 HOUR) < (CURTIME())")
+      result = db_connection.query("select * from user_credentials where in_use=1 and date_add(in_use_time, INTERVAL 2 HOUR) < (CURTIME())")
       if result.size > 0
         result.each do |row|
           db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=0 where username=?").execute(row['username'])
