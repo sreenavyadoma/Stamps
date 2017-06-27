@@ -122,7 +122,7 @@ Feature:  Update International Orders to ShipStation
     Then expect Customs form Associated Item 3 Made In is correct
     Then expect Customs form Associated Item 3 Tariff is correct
 
-    Then expect Customs form I agree to the USPS Privacy Act Statement is checked
+    #Then expect Customs form I agree to the USPS Privacy Act Statement is checked
     Then expect Customs form Total Value is correct
     Then close Customs Information form
 
