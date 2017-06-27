@@ -275,82 +275,76 @@ module Stamps
           element.attribute_value("value")
         end
 
+        def address_arr
+          if @address_arr.nil?
+            @address_arr = full_address.split("\n")
+            expect(address_arr.size).to be > 2
+          end
+          @address_arr
+        end
+
         def recipient_name
-          address = full_address
-          address_arr = address.split("\n")
-          expect(address_arr.size).to be > 2
+          #expect(address_arr.size).to be > 2
           address_arr[0].strip
         end
 
         def company_name
-          address = full_address
-          address_arr = address.split("\n")
           expect(address_arr.size).to be_between(4, 5).inclusive
           address_arr[1].strip
         end
 
         def street_address
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            addy = address_arr[1]
-            addy.strip
+            address_arr[1].strip
           elsif address_arr.size == 4 || address_arr.size == 5
-            addy = address_arr[2]
-            addy.strip
+            address_arr[2].strip
           else
-            expect(address_arr.size).to be > 2
+            #ignore
           end
         end
 
         def city
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            last_line = address_arr[2].strip
+            @city_arr = address_arr[2].strip
           elsif address_arr.size == 4
-            last_line = address_arr[3].strip
+            @city_arr = address_arr[3].strip
           elsif address_arr.size == 5
-            last_line = address_arr[4].strip
+            @city_arr = address_arr[4].strip
           else
-            expect(address_arr.size).to be > 2
+            #ignore
           end
-          last_line_arr = last_line.split(",")
+          last_line_arr = @city_arr.split(",")
           expect(last_line_arr.size).to equal 2
           last_line_arr[0]
         end
 
         def state
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            last_line = address_arr[2].strip
+            @state_arr = address_arr[2].strip
           elsif address_arr.size == 4
-            last_line = address_arr[3].strip
+            @state_arr = address_arr[3].strip
           elsif address_arr.size == 5
-            last_line = address_arr[4].strip
+            @state_arr = address_arr[4].strip
           else
             expect(address_arr.size).to be > 2
           end
-          last_line_arr = last_line.split(",")
+          last_line_arr = @state_arr.split(",")
           expect(last_line_arr.size).to equal 2
           city_zip = last_line_arr[1].strip
           city_zip.split(" ").first
         end
 
         def zip_plus_4
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            last_line = address_arr[2].strip
+            @zip_arr = address_arr[2].strip
           elsif address_arr.size == 4
-            last_line = address_arr[3].strip
+            @zip_arr = address_arr[3].strip
           elsif address_arr.size == 5
-            last_line = address_arr[4].strip
+            @zip_arr = address_arr[4].strip
           else
             expect(address_arr.size).to be > 2
           end
-          last_line_arr = last_line.split(",")
+          last_line_arr = @zip_arr.split(",")
           expect(last_line_arr.size).to equal 2
           last_line_arr.last.strip.split(" ").last
         end
