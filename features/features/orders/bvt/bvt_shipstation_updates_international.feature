@@ -103,7 +103,7 @@ Feature:  Update International Orders to ShipStation
 
     #Then expect Customs form Non-Delivery Options is Treat as abandoned
     #Then expect Customs form Internal Transaction Number is Required
-    Then expect Customs form ITN Number is correct
+    #Then expect Customs form ITN Number is correct
 
     Then expect Customs form Associated Item 1 Description is correct
     Then expect Customs form Associated Item 1 Quantity is correct
