@@ -13,7 +13,6 @@ Feature:  Update International Orders to ShipStation
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone  | Random email  |
 
     Then expect Order Details form Ship-To Country is correct
-
     Then set Order Details form Weight to 2 lb 2 oz
     Then set Order Details form service to PMI Package
     Then set Order Details form Insure-For to $100.25
