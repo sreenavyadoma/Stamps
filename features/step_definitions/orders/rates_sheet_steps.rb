@@ -451,10 +451,10 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
           # Set weight to 0
           test_config.logger.step "#{"#"*10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
-          if @modal_param.web_app == :mail
+          if @modal_param.web_app == :orders
             step "set Order Details form Pounds to 0"
             step "set Order Details form Ounces to 0"
-          elsif @modal_param.web_app == :orders
+          elsif @modal_param.web_app == :mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
           end
@@ -537,7 +537,6 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
     rescue Exception=> e
       test_config.logger.step e.message
       test_config.logger.step e.backtrace.join("\n")
-      #row[@rate_sheet_columns[:error_msg]] = "Group #{group} - Row #{row_number}: #{e.message}"
       test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]] = "Group #{group} - Row #{row_number}: #{e.message}"
     end
   end
@@ -982,7 +981,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
     rescue Exception=> e
       test_config.logger.step e.message
       test_config.logger.step e.backtrace.join("\n")
-      row[@rate_sheet_columns[:error_msg]] = "Zone #{zone} - Row #{row_number}: #{e.message}"
+      test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]] = "Zone #{zone} - Row #{row_number}: #{e.message}"
     end
   end
 
