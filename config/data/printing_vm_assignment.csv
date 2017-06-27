@@ -17,7 +17,7 @@ jenkinsvm08, ccyykg2nb,      @print_dialog_label_right_side, @print_dialog_ship_
 jenkinsvm04, ccx9sfswq05pm,  @print_dialog_printing_on_4x6_roll, @print_dialog_thermal_number_of_labels_count, @print_multiple_orders, @print_two_up_expanded_5x8, @print_two_up_multiple_domestic_labels
 jenkinsvm05, ccyobxzc3gq,    @print_dialog_printing_on_4x6_sdc1200, @print_dialog_two_up_window_title, @print_multiple_reprints, @print_two_up_expanded_cn22
 jenkinsvm03, cccvajgfzkx5b,  @print_dialog_printing_on_4x6_shipping_label, @print_dialog_two_up_x_number_of_labels, @print_on_thermal, @print_two_up_expanded_cp72
-jenkinsvmwin701, ccgb58jlp
+jenkinsvmwin701, ccgb58jlp @bvt_printing
 
 STG
 jenkinsvm11, stgvw4zzd8jgj7, @print_dialog_change_date, @print_dialog_label_right_side, @print_dialog_printing_on_5x8_shipping_label, @print_dialog_ship_date_today_plus2, @print_dialog_two_up_x_number_of_labels, @print_layout_cn22_roll
