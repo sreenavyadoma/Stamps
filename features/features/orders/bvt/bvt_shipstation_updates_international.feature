@@ -53,18 +53,13 @@ Feature:  Update International Orders to ShipStation
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-    Then Pause for 2 seconds
-    Then blur out on Order Details form 3 times
-    Then Pause for 3 seconds
-
-    Then uncheck Orders Grid saved Order ID
-    Then Pause for 2 seconds
-
-    #Then Refresh the browser
-
-    Then Pause for 4 seconds
-    Then check Orders Grid saved Order ID
     Then Pause for 1 second
+    Then blur out on Order Details form 3 times
+    Then uncheck Orders Grid saved Order ID
+    #Then Refresh the browser
+    Then Pause for 3 seconds
+    Then check Orders Grid saved Order ID
+    Then Pause for 2 seconds
 
     Then expect Order Details form International Ship-To Name is correct
     Then expect Order Details form International Ship-To Company is correct
@@ -100,15 +95,15 @@ Feature:  Update International Orders to ShipStation
     Then expect Order Details form Insure-For is correct
     Then expect Order Details form Insure-For Cost is correct
     Then click Order Details form Edit Form button
-    Then Pause for 1 second
+    Then Pause for 2 second
     Then expect Customs form Package Contents is Commercial Sample
     Then expect Customs form License Number is correct
     Then expect Customs form Certificate Number is correct
     Then expect Customs form Invoice Number is correct
 
-    Then expect Customs form Non-Delivery Options is Treat as abandoned
-    Then expect Customs form Internal Transaction Number is Required
-    Then expect Customs form ITN Number is correct
+    #Then expect Customs form Non-Delivery Options is Treat as abandoned
+    #Then expect Customs form Internal Transaction Number is Required
+    #Then expect Customs form ITN Number is correct
 
     Then expect Customs form Associated Item 1 Description is correct
     Then expect Customs form Associated Item 1 Quantity is correct
@@ -127,7 +122,7 @@ Feature:  Update International Orders to ShipStation
     Then expect Customs form Associated Item 3 Made In is correct
     Then expect Customs form Associated Item 3 Tariff is correct
 
-    Then expect Customs form I agree to the USPS Privacy Act Statement is checked
+    #Then expect Customs form I agree to the USPS Privacy Act Statement is checked
     Then expect Customs form Total Value is correct
     Then close Customs Information form
 
