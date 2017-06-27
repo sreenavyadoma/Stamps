@@ -87,7 +87,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
    #print_two_up_expanded_cn22_paper_left
     Then add new order
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address
+    Then set Order Details form Ship-To Domestic address to
       | full_name        | company             | street_address  | street_address_2| city | state | zip        | country       | phone  |  email |
       | PM RR Box B | Domestic FPO 8.5x11 | PSC 473 BOX 12  |                 | FPO  | AP    | 96349-0001 | United States | random | random |
 
