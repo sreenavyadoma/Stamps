@@ -270,15 +270,15 @@ module Stamps
       class ShipToTextArea < StampsTextBox
         def full_address
           200.times do
-            break if element.attribute_value("value").size > 5
+            break if text.size > 5
           end
-          element.attribute_value("value")
+          text
         end
 
         def address_arr
           if @address_arr.nil?
             @address_arr = full_address.split("\n")
-            #expect(address_arr.size).to be > 2
+            expect(address_arr.size).to be > 2
           end
           @address_arr
         end
