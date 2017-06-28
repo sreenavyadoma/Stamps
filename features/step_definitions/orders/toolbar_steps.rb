@@ -1,16 +1,10 @@
 Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |order_count|
-  begin
-    test_param[:old_balance] = stamps.navigation_bar.balance.amount
-    stamps.orders.orders_grid.column.checkbox.uncheck(1)
-    stamps.orders.orders_toolbar.add.order_details
-    order_count = (order_count.nil?)?0:order_count.to_i
-    test_param[:order_id][order_count] = stamps.orders.order_details.toolbar.order_id
-    step "Save Order Details data"
-  rescue Exception => e
-    test_config.logger.error e.message
-    test_config.logger.error e.backtrace.join("\n")
-    expect(e.message).to eql "Add new order"
-  end
+  test_param[:old_balance] = stamps.navigation_bar.balance.amount
+  stamps.orders.orders_grid.column.checkbox.uncheck(1)
+  stamps.orders.orders_toolbar.add.order_details
+  order_count = (order_count.nil?)?0:order_count.to_i
+  test_param[:order_id][order_count] = stamps.orders.order_details.toolbar.order_id
+  step "Save Order Details data"
 end
 
 Then /^Save Order Details data$/ do

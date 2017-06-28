@@ -3,11 +3,12 @@ module Stamps
     module OrderDetailsCommon
 
       class ShipFromAddress < Browser::StampsModal
-        attr_reader :manage_shipping_address
+        attr_reader :manage_shipping_address, :form_type
 
         def initialize(param, form_type)
           super(param)
           @manage_shipping_address = ShipFrom::ManageShippingAddresses.new(param)
+          @form_type = form_type
         end
 
         def text_box
