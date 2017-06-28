@@ -26,17 +26,16 @@ Feature:  Update Order to ShipStation
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
-    Then blur out on Order Details form
-    Then blur out on Order Details form
-    Then blur out on Order Details form
+    Then blur out on Order Details form 20 times
     Then Pause for 3 seconds
 
     Then uncheck Orders Grid saved Order ID
-    Then Pause for 5 seconds
+    Then Pause for 2 seconds
 
     Then Refresh the browser
 
-    Then Pause for 7 seconds
+    Then Pause for 2 seconds
+    Then blur out on Order Details form 20 times
     Then check Orders Grid saved Order ID
     Then Pause for 2 seconds
 
