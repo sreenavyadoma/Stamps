@@ -4,6 +4,7 @@ ALTER TABLE user_credentials ADD COLUMN web_app CHAR(50) AFTER test_env;
 ALTER TABLE user_credentials ADD COLUMN test_tag CHAR(50) AFTER web_app;
 ALTER TABLE user_credentials DROP COLUMN web_app;
 GRANT ALL ON stamps.* TO rcruz;
+mysql --host=172.16.13.237 --user=rcruz --password=Mysql#524113 stamps
 
 UPDATE user_credentials SET user_credentials.in_use = 0 where username = 'cchrvv6qp';
 select * from user_credentials where username = 'cchrvv6qp';

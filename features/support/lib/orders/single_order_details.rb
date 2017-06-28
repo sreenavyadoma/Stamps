@@ -18,19 +18,12 @@ module Stamps
       end
 
       class ShipToCountry < Browser::StampsModal
-        attr_reader :ship_to_dd
-
-        def initialize(param)
-          super
-          @ship_to_dd = ShipToCountryDropDown.new(param)
-        end
-
         def present?
           drop_down.present?
         end
 
         def show_address
-          ship_to_dd.element.click_while_present
+          StampsElement.new(browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")).click_while_present
         end
 
         def text_box
@@ -114,16 +107,9 @@ module Stamps
         end
       end
 
-      class ShipToCountryDropDown < Browser::StampsModal
-        attr_reader :element
-        def initialize(param)
-          super
-          @element = StampsElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
-        end
-      end
 
       class ShipToInternational < Browser::StampsModal
-        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :ship_to_dd
+        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link
 
         def initialize(param)
           super
@@ -139,7 +125,6 @@ module Stamps
           @auto_suggest = AutoSuggestInternational.new(param)
           @blur_element = BlurOutElement.new(param)
           @less_link = StampsElement.new(browser.span(css: "div[id*=international]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]"))
-          @ship_to_dd = ShipToCountryDropDown.new(param)
         end
 
         def blur_out
@@ -356,13 +341,12 @@ module Stamps
       end
 
       class ShipToDomestic < Browser::StampsModal
-        attr_reader :ambiguous, :auto_suggest, :less_link, :ship_to_dd , :blur_element,
+        attr_reader :ambiguous, :auto_suggest, :less_link, :blur_element,
                     :address_not_found
 
         def initialize(param)
           super
           @less_link = StampsElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @ship_to_dd  = ShipToCountryDropDown.new(param)
           @blur_element = BlurOutElement.new(param)
           @address_not_found = AddressNotFound.new(param)
           @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
@@ -401,7 +385,7 @@ module Stamps
         end
 
         def show_address
-          ship_to_dd.element.click_while_present
+          StampsElement.new(browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")).click_while_present
         end
 
         def set address
