@@ -191,7 +191,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
   Scenario:  User prints postage for CN22 Shipping Label 5.5 x 8.5
     Then add new order
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address
+    Then set Order Details form Ship-To Domestic address to
       | full_name            | company                 | street_address      | street_address_2 |  city          | state | zip        | country       | phone  |  email |
       | Jessie Joe      | The CN 22 House         | PSC 819 BOX 1       |                  | FPO           | AE    | 09645-0001 | United States |        |        |
     Then set Order Details form service to PM Package
@@ -210,7 +210,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
   Scenario:  User prints postage for CP72 Shipping Label 5.5 x 8.5
     Then add new order
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address
+    Then set Order Details form Ship-To Domestic address to
       | full_name            | company                 | street_address      | street_address_2| city          | state | zip        | country       | phone  |  email |
       | Tammmy Moo      | The CP72 House          | Unit 15324          |                 | APO           | AP    | 96205-5324 | United States |        |        |
     Then set Order Details form service to PM Package

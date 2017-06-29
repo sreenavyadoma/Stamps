@@ -647,6 +647,7 @@ module Stamps
         def edit_form
           15.times do
             return customs_form if customs_form.present?
+            button.scroll_into_view
             button.click
             sleep(0.35)
           end

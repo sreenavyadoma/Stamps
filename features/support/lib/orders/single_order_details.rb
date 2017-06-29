@@ -18,31 +18,24 @@ module Stamps
       end
 
       class ShipToCountry < Browser::StampsModal
-        attr_reader :ship_to_dd
-
-        def initialize(param)
-          super
-          @ship_to_dd = ShipToCountryDropDown.new(param)
-        end
-
         def present?
           drop_down.present?
         end
 
         def show_address
-          ship_to_dd.element.click_while_present
+          StampsElement.new(browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")).click_while_present
         end
 
         def text_box
           show_address
           text_field = nil
           text_fields = browser.text_fields(css: "input[name=ShipCountryCode]")
-          6.times do
+          50.times do
             text_fields.each do |element|
+              sleep(0.25)
               text_field = element if element.present?
-              sleep(0.35)
             end
-            break unless text_field.nil?
+            break if !text_field.nil? && text_field.present?
           end
           text_field.should_not be nil
           expect(text_field.present?).to be(true)
@@ -114,16 +107,9 @@ module Stamps
         end
       end
 
-      class ShipToCountryDropDown < Browser::StampsModal
-        attr_reader :element
-        def initialize(param)
-          super
-          @element = StampsElement.new browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")
-        end
-      end
 
       class ShipToInternational < Browser::StampsModal
-        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link, :ship_to_dd
+        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link
 
         def initialize(param)
           super
@@ -139,7 +125,6 @@ module Stamps
           @auto_suggest = AutoSuggestInternational.new(param)
           @blur_element = BlurOutElement.new(param)
           @less_link = StampsElement.new(browser.span(css: "div[id*=international]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]"))
-          @ship_to_dd = ShipToCountryDropDown.new(param)
         end
 
         def blur_out
@@ -269,88 +254,81 @@ module Stamps
 
       class ShipToTextArea < StampsTextBox
         def full_address
-          50.times do
-            break if element.attribute_value("value").size > 0
+          200.times do
+            break if text.size > 5
           end
-          element.attribute_value("value")
+          text
+        end
+
+        def address_arr
+          if @address_arr.nil?
+            @address_arr = full_address.split("\n")
+            expect(address_arr.size).to be > 2
+          end
+          @address_arr
         end
 
         def recipient_name
-          address = full_address
-          address_arr = address.split("\n")
-          expect(address_arr.size).to be > 2
           address_arr[0].strip
         end
 
         def company_name
-          address = full_address
-          address_arr = address.split("\n")
           expect(address_arr.size).to be_between(4, 5).inclusive
           address_arr[1].strip
         end
 
         def street_address
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            addy = address_arr[1]
-            addy.strip
+            address_arr[1].strip
           elsif address_arr.size == 4 || address_arr.size == 5
-            addy = address_arr[2]
-            addy.strip
+            address_arr[2].strip
           else
-            expect(address_arr.size).to be > 2
+            #ignore
           end
         end
 
         def city
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            last_line = address_arr[2].strip
+            @city_arr = address_arr[2].strip
           elsif address_arr.size == 4
-            last_line = address_arr[3].strip
+            @city_arr = address_arr[3].strip
           elsif address_arr.size == 5
-            last_line = address_arr[4].strip
+            @city_arr = address_arr[4].strip
           else
-            expect(address_arr.size).to be > 2
+            #ignore
           end
-          last_line_arr = last_line.split(",")
+          last_line_arr = @city_arr.split(",")
           expect(last_line_arr.size).to equal 2
           last_line_arr[0]
         end
 
         def state
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            last_line = address_arr[2].strip
+            @state_arr = address_arr[2].strip
           elsif address_arr.size == 4
-            last_line = address_arr[3].strip
+            @state_arr = address_arr[3].strip
           elsif address_arr.size == 5
-            last_line = address_arr[4].strip
+            @state_arr = address_arr[4].strip
           else
             expect(address_arr.size).to be > 2
           end
-          last_line_arr = last_line.split(",")
+          last_line_arr = @state_arr.split(",")
           expect(last_line_arr.size).to equal 2
           city_zip = last_line_arr[1].strip
           city_zip.split(" ").first
         end
 
         def zip_plus_4
-          address = full_address
-          address_arr = address.split("\n")
           if address_arr.size == 3
-            last_line = address_arr[2].strip
+            @zip_arr = address_arr[2].strip
           elsif address_arr.size == 4
-            last_line = address_arr[3].strip
+            @zip_arr = address_arr[3].strip
           elsif address_arr.size == 5
-            last_line = address_arr[4].strip
+            @zip_arr = address_arr[4].strip
           else
             expect(address_arr.size).to be > 2
           end
-          last_line_arr = last_line.split(",")
+          last_line_arr = @zip_arr.split(",")
           expect(last_line_arr.size).to equal 2
           last_line_arr.last.strip.split(" ").last
         end
@@ -363,13 +341,12 @@ module Stamps
       end
 
       class ShipToDomestic < Browser::StampsModal
-        attr_reader :ambiguous, :auto_suggest, :less_link, :ship_to_dd , :blur_element,
+        attr_reader :ambiguous, :auto_suggest, :less_link, :blur_element,
                     :address_not_found
 
         def initialize(param)
           super
           @less_link = StampsElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @ship_to_dd  = ShipToCountryDropDown.new(param)
           @blur_element = BlurOutElement.new(param)
           @address_not_found = AddressNotFound.new(param)
           @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
@@ -408,7 +385,7 @@ module Stamps
         end
 
         def show_address
-          ship_to_dd.element.click_while_present
+          StampsElement.new(browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")).click_while_present
         end
 
         def set address
