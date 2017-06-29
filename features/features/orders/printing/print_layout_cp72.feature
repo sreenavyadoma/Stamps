@@ -232,7 +232,7 @@ Feature: Print 1 Intl CP72 label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To to Domestic Address
+    Then set Order Details form Ship-To Domestic address to
       | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then set Order Details form Weight to 3 lb 2 oz
@@ -250,7 +250,7 @@ Feature: Print 1 Intl CP72 label
    #print_layout_fsa_cp72_paper_single_ply
     Then add new order
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address
+    Then set Order Details form Ship-To Domestic address to
       | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
     Then set Order Details form Weight to 1 lb 2 oz
@@ -274,7 +274,7 @@ Feature: Print 1 Intl CP72 label
    #print_layout_cp72_single_ply_apo_roll
     Then add new order
     Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to Domestic Address
+    Then set Order Details form Ship-To Domestic address to
       | full_name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set Order Details form Weight to 2 lb 1 oz

@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_stg
+default: --backtrace --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -6,8 +6,8 @@ rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=def
 
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
-rob_cc: --tags @bvt_shipstation_updates_international WEB_APP=orders JENKINS=true USR=cctab48rnrsi PW=pass111 URL=cc DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-rob_stg: --tags @bvt_new_order WEB_APP=orders JENKINS=true PW=pass111 URL=stg DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false #USR=stgv3mck0frko
+rob_cc: --tags @bvt_shipstation_updates_domestic WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=cctab48rnrsi PW=pass111
+rob_stg: --tags @bvt_shipstation_updates_international WEB_APP=orders JENKINS=true PW=pass111 URL=stg DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false #USR=stgv3mck0frko
 rob_sc: --tags @filter_panel WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
@@ -17,7 +17,7 @@ rob_mail_sc: --tags @filter_panel WEB_APP=mail JENKINS=true USR=default PW=pass1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @rates_pme_comm_base_zone_8 --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=chrome USR=hal9000stage25 PW=password1
+eli_dev: --tags @rates_pmei_comm_base_group_3 --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=chrome USR=hal9000stage24 PW=password1
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
@@ -175,7 +175,8 @@ bvt_address_cleansing: --tags @bvt_address_cleansing --guess DEBUG=false JENKINS
 bvt_international_shipping: --tags @bvt_international_shipping --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 bvt_printing: --tags @bvt_printing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-bvt_purchasing: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+bvt_purchasing_cc: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USR=cchrvv6qp PW=pass111
+bvt_purchasing_stg: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USR=stgugqex0q4 PW=pass111
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=falsepa WEB_APP=orders 
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders 
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 

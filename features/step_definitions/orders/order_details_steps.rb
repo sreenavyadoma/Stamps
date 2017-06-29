@@ -231,29 +231,6 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Ship-From to (.+)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To to Domestic Address$/ do |table|
-  address_table = table.hashes.first
-
-  test_param[:full_name] = (address_table['full_name'].downcase.include?('random')) ? test_helper.random_full_name : address_table['full_name']
-  test_param[:company] = (address_table['company'].downcase.include?('random')) ? test_helper.random_company_name : address_table['company']
-  test_param[:street_address] = address_table['street_address']
-
-  if address_table['street_address_2'].nil?
-    test_param[:street_address_2] = ""
-  else
-    test_param[:street_address_2] = (address_table['street_address_2'].downcase.include?('random')) ? test_helper.random_alpha_numeric(2, 7) : address_table['street_address_2']
-  end
-
-  test_param[:city] = (address_table['city'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['city']
-  test_param[:state] = (address_table['state'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['state']
-  test_param[:zip] = (address_table['zip'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['zip']
-  test_param[:country] = (address_table['country'].size==0)?"United States":address_table['country']
-  test_param[:ship_to] = "#{test_param[:full_name]},#{test_param[:company]},#{test_param[:street_address]},#{test_param[:street_address_2]} ,#{test_param[:city]} #{test_param[:state]} #{test_param[:zip]}"
-
-  step "set Order Details form Ship-To Country to #{test_param[:country]}"
-  step "set Order Details form Ship-To to Domestic Address #{test_param[:ship_to]}"
-end
-
 Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
   test_param[:country] = country_list[rand(country_list.size)]
@@ -323,10 +300,33 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To to(?: a |)(?: random address |)(?
   step "Save Order Details data"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To to Domestic Address (.*)$/ do |address|
+Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To Domestic address to$/ do |table|
+  address_table = table.hashes.first
+
+  test_param[:full_name] = (address_table['full_name'].downcase.include?('random')) ? test_helper.random_full_name : address_table['full_name']
+  test_param[:company] = (address_table['company'].downcase.include?('random')) ? test_helper.random_company_name : address_table['company']
+  test_param[:street_address] = address_table['street_address']
+
+  if address_table['street_address_2'].nil?
+    test_param[:street_address_2] = ""
+  else
+    test_param[:street_address_2] = (address_table['street_address_2'].downcase.include?('random')) ? test_helper.random_alpha_numeric(2, 7) : address_table['street_address_2']
+  end
+
+  test_param[:city] = (address_table['city'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['city']
+  test_param[:state] = (address_table['state'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['state']
+  test_param[:zip] = (address_table['zip'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['zip']
+  test_param[:country] = (address_table['country'].size==0)?"United States":address_table['country']
+  test_param[:ship_to] = "#{test_param[:full_name]},#{test_param[:company]},#{test_param[:street_address]},#{test_param[:street_address_2]} ,#{test_param[:city]} #{test_param[:state]} #{test_param[:zip]}"
+
+  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+  step "set order details form Ship-To text area to #{test_param[:ship_to]}"
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To text area to (.*)$/ do |address|
   test_param[:ship_to_domestic] = test_helper.format_address(address)
   stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.domestic.set test_param[:ship_to_domestic]
+  stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic])
   step "Save Order Details data"
 end
 

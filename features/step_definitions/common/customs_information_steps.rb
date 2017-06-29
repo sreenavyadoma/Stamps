@@ -32,6 +32,19 @@ end
 
 Then /^[Ee]xpect Customs form Non-Delivery Options is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_param[:customs_non_delivery_options] : expectation
+  actual = ""
+  10.times do
+    if modal_param.web_app == :orders
+      actual = stamps.orders.order_details.customs.edit_form.non_delivery_options.text_box.text
+      break if actual == expectation
+    end
+    if modal_param.web_app == :mail
+      actual = stamps.mail.print_form.mail_customs.edit_form.non_delivery_options.text_box.text
+      break if actual == expectation
+    end
+  end
+  test_config.logger.message "Expectation: #{expectation}"
+  test_config.logger.message "Got: #{actual}"
   expect(stamps.orders.order_details.customs.edit_form.non_delivery_options.text_box.text).to eql(expectation) if modal_param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_form.non_delivery_options.text_box.text).to eql(expectation) if modal_param.web_app == :mail
 end

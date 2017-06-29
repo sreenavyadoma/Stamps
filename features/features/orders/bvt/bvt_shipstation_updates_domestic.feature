@@ -5,10 +5,10 @@ Feature:  Update Order to ShipStation
     Given a valid user is signed in to Web Apps
 
   @bvt_shipstation_updates_domestic
-  Scenario:  Update ShipStation
+  Scenario: Update ShipStation
     Then add new order
-    Then set Order Details form Ship-To to Domestic Address
-      | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country       |
+    Then set Order Details form Ship-To Domestic address to
+      | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country  |
       | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
     Then set Order Details form Phone to 888-888-8888
@@ -26,17 +26,16 @@ Feature:  Update Order to ShipStation
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
-    Then blur out on Order Details form
-    Then blur out on Order Details form
-    Then blur out on Order Details form
+    Then blur out on Order Details form 20 times
     Then Pause for 3 seconds
 
     Then uncheck Orders Grid saved Order ID
-    Then Pause for 5 seconds
+    Then Pause for 2 seconds
 
     Then Refresh the browser
 
-    Then Pause for 7 seconds
+    Then Pause for 2 seconds
+    Then blur out on Order Details form 20 times
     Then check Orders Grid saved Order ID
     Then Pause for 2 seconds
 

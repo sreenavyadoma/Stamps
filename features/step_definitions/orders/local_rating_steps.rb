@@ -10,7 +10,7 @@ Then /^Verify Local Rating$/ do |table|
     #test_config.logger.step "  Test #{index}  ||  #{element["ship_from"]} ||  #{element["ship_to"]} ||  #{element["weight_oz"]} ||  #{element["weight_lb"]} ||  #{element["length"]} ||  #{element["height"]} ||  #{element["width"]} ||  #{element["service"]} ||  #{element["tracking"]}"
     #test_config.logger.step "  --------------------------------------------------------------------------- "
     step "set Order Details form Ship-From to #{element["ship_from"]}"
-    step "set Order Details form Ship-To to Domestic Address #{element["ship_to"]}"
+    step "set Order Details form Ship-To Domestic address to #{element["ship_to"]}"
     step "set Order Details form Ounces to #{element["weight_oz"]}"
     step "set Order Details form Pounds to #{element["weight_lb"]}"
     step "set Order Details form Length to #{element["length"]}"
