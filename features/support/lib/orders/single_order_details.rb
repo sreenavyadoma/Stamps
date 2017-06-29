@@ -7,6 +7,8 @@ module Stamps
         def initialize(param)
           super
           @element = StampsElement.new(browser.label(text: 'Insure For $:'))
+          @weight_element = StampsElement.new(browser.label(text: 'Weight:'))
+          @weight_element = StampsElement.new(browser.label(text: 'Weight:'))
         end
 
         def blur_out
