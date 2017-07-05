@@ -16,6 +16,7 @@ rates_test:
   rates_parcel_select_ground: Parcel Select Ground
   rates_pmei_comm_base: PMEI Comm Base
   rates_pmei_comm_plus: PMEI Comm Plus
+  rates_pmi_comm_base: PMI Comm Base
   test_dir: \\rcruz-win7\Public\share\rates_test_data\tests
   results_dir: \\rcruz-win7\Public\share\rates_test_data\results
 
@@ -143,6 +144,457 @@ shipping_method:
   usps_fcml:
     text: USPS First-Class Mail Letter
     code: 809
+
+country_groups_PMI:
+  group1:
+    1: Canada|66
+  group2:
+    1: Mexico|70
+  group3:
+    1: Hong Kong|66
+    2: Republic of (South) Korea|44
+  group4:
+    1:  Albania|66
+    2:  Armenia|44
+    3:  Azerbaijan|70
+    4:  Belarus|66
+    5:  Bosnia-Herzegovina|44
+    6:  Bulgaria|70
+    7:  Croatia|66
+    8:  Cyprus|70
+    9:  Czech Republic|70
+    10: Estonia|70
+    11: Republic Of Georgia|44
+    12: Hungary|44
+    13: Latvia|70
+    14: Lithuania|70
+    15: Republic Of Macedonia|66
+    16: Moldova|70
+    17: Poland|44
+    18: Romania|70
+    19: Russia|44
+    20: Turkey|66
+    21: Ukraine|66
+    22: Saint Pierre & Miquelon|66
+  group5:
+    1:  Andorra|66
+    2:  Austria|66
+    3:  Belgium|66
+    4:  Denmark|66
+    5:  Faroe Islands|70
+    6:  Finland|70
+    7:  Greece|44
+    8:  Iceland|70
+    9:  Ireland|66
+    10: Italy|66
+    11: Liechtenstein|66
+    12: Luxembourg|66
+    13: Malta|66
+    14: Norway|66
+    15: Portugal|66
+    16: San Marino|66
+    17: Republic of Serbia|70
+    18: Slovak Republic (Slovakia)|66
+    19: Slovenia|66
+    20: Spain|44
+    21: Sweden|66
+    22: Switzerland|66
+    23: Vatican City|44
+    24: Gibraltar|44
+    25: Greenland|66
+    26: Kosovo|70
+    27: Montenegro|70
+  group6:
+    1:  Bangladesh|44
+    2:  Bhutan|66
+    3:  Brunei Darussalam|44
+    4:  Burma (Myanmar)|22
+    5:  Cambodia|66
+    6:  Fiji|44
+    7:  French Polynesia|66
+    8:  India|44
+    9:  Indonesia|66
+    10: Kazakhstan|44
+    11: Kiribati|44
+    12: Kyrgyzstan|44
+    13: Laos|44
+    14: Macao|70
+    15: Malaysia|66
+    16: Maldives|66
+    17: Mongolia|66
+    18: Nauru|44
+    19: Nepal|44
+    20: New Caledonia|66
+    21: Pakistan|70
+    22: Papua New Guinea|44
+    23: Philippines|44
+    24: Western Samoa|44
+    25: Singapore|66
+    26: Solomon Islands|44
+    27: Sri Lanka|66
+    28: Taiwan|44
+    29: Tajikistan|66
+    30: Thailand|66
+    31: Tonga|44
+    32: Turkmenistan|44
+    33: Uzbekistan|70
+    34: Vanuatu|44
+    35: Vietnam|70
+    36: Afghanistan|66
+    37: Pitcairn Island|22
+    38: Tuvalu|55
+    39: Wallis & Futuna|66
+  group7:
+    1:  Angola|44
+    2:  Benin|66
+    3:  Botswana|66
+    4:  Burkina Faso|66
+    5:  Burundi|66
+    6:  Cameroon|66
+    7:  Cape Verde|44
+    8:  Central African Republic|66
+    9:  Chad|44
+    10: Democratic Republic Of The Congo|66
+    11: Cote d'Ivoire (Ivory Coast)|66
+    12: Djibouti|44
+    13: Equatorial Guinea|22
+    14: Eritrea|44
+    15: Gabon|44
+    16: Ghana|66
+    17: Guinea|66
+    18: Guinea-Bissau|66
+    19: Kenya|70
+    20: Lesotho|44
+    21: Liberia|44
+    22: Madagascar|44
+    23: Malawi|66
+    24: Mali|66
+    25: Mauritania|44
+    26: Mauritius|44
+    27: Mozambique|66
+    28: Namibia|44
+    29: Niger|70
+    30: Nigeria|66
+    31: Rwanda|66
+    32: Sao Tome & Principe|44
+    33: Senegal|66
+    34: Seychelles|70
+    35: Sierra Leone|66
+    36: South Africa|66
+    37: Sudan|44
+    38: Swaziland|44
+    39: Tanzania|66
+    40: Togo|70
+    41: Uganda|66
+    42: Zambia|66
+    43: Zimbabwe|44
+    44: Republic Of The Congo|44
+    45: Saint Helena|44
+    46: Comoros|44
+    47: Gambia|66
+  group8:
+    1:  Algeria|44
+    2:  Bahrain|44
+    3:  Egypt|66
+    4:  Ethiopia|66
+    5:  Iraq|44
+    6:  Israel|44
+    7:  Jordan|66
+    8:  Kuwait|66
+    9:  Lebanon|66
+    10: Morocco|66
+    11: Oman|44
+    12: Qatar|70
+    13: Saudi Arabia|66
+    14: Syria|70
+    15: Tunisia|66
+    16: United Arab Emirates|70
+    17: Yemen|66
+    18: Iran|44
+    19: Libya|44
+  group9:
+    1:  Anguilla|22
+    2:  Argentina|44
+    3:  Aruba|44
+    4:  Bahamas|22
+    5:  Barbados|44
+    6:  Belize|44
+    7:  Bermuda|44
+    8:  Venezuela|66
+    9:  Bonaire, Sint Eustatius and Saba|44
+    10: Cayman Islands|44
+    11: Chile|44
+    12: Colombia|66
+    13: Costa Rica|66
+    14: Cuba|22
+    15: Curacao|44
+    16: Dominica|44
+    17: Dominican Republic|44
+    18: Ecuador|66
+    19: El Salvador|44
+    20: French Guiana|66
+    21: Grenada|44
+    22: Guadeloupe|66
+    23: Guatemala|44
+    24: Guyana|44
+    25: Haiti|55
+    26: Honduras|44
+    27: Jamaica|22
+    28: Martinique|66
+    29: Nicaragua|66
+    30: Panama|70
+    31: Paraguay|66
+    32: Peru|70
+    33: St. Christopher (St. Kitts) & Nevis|44
+    34: Saint Lucia|44
+    35: Saint Vincent & Grenadines|22
+    36: Trinidad & Tobago|44
+    37: Turks & Caicos Islands|44
+    38: Uruguay|66
+    39: British Virgin Islands|44
+    40: Montserrat|44
+    41: Reunion|66
+    42: Suriname|44
+    43: Antigua & Barbuda|22
+    44: Sint Maarten|44
+  group10:
+    1:  Australia|66
+    2:  New Zealand|66
+  group11:
+    1:  Great Britain|66
+  group12:
+    1:  Japan|66
+  group13:
+    1:  France|66
+  group14:
+    1:  China|66
+  group15:
+    1:  Brazil|66
+  group16:
+    1:  Germany|70
+  group17:
+    1:  Netherlands|66
+
+country_groups_PMI_flat_rate:
+  group1:
+    1: Canada
+  group2:
+    1:  Argentina
+    2:  Venezuela
+    3:  Brazil
+    4:  Chile
+    5:  Colombia
+    6:  Dominican Repubilc
+    7:  Ecuador
+    8:  Guatemala
+    9:  Guyana
+    10: Mexico
+    11: Paraguay
+    12: Peru
+    13: Uruguay
+  group3:
+    1:  China
+    2:  Hong Kong
+    3:  Indonesia
+    4:  Japan
+    5:  Republic of (South) Korea
+    6:  Mongolia
+    7:  Phillipines
+    8:  Singapore
+    9:  Thailand
+    10: Vietnam
+  group4:
+    1:  Austria
+    2:  Belgium
+    3:  Denmark
+    4:  Finland
+    5:  France
+    6:  Germany
+    7:  Great Britain
+    8:  Ireland
+    9:  Italy
+    10: Luxembourg
+    11: Netherlands
+    12: Norway
+    13: Portugal
+    14: Slovak Republic (Slovakia)
+    15: Slovenia
+    16: Spain
+    17: Sweden
+    18: Switzerland
+  group5:
+    1:  India
+  group6:
+    1:  Australia
+    2:  New Zealand
+  group7:
+    1:  Egypt
+    2:  Iraq
+    3:  Israel
+    4:  Jordan
+    5:  Saudi Arabia
+    6:  Turkey
+    7:  United Arab Emirates
+    8:  Yemen
+  group8:
+    1:  Albania
+    2:  Algeria
+    3:  Andorra
+    4:  Angola
+    5:  Anguilla
+    6:  Armenia
+    7:  Aruba
+    8:  Azerbaijan
+    9:  Bahamas
+    10: Bahrain
+    11: Bangladesh
+    12: Barbados
+    13: Belarus
+    14: Belize
+    15: Benin
+    16: Bermuda
+    17: Bhutan
+    18: Bonaire, Sint Eustatius and Saba
+    19: Bosnia-Herzegovina
+    20: Botswana
+    21: Brunei Darussalam
+    22: Bulgaria
+    23: Burkina Faso
+    24: Burma (Myanmar)
+    25: Burundi
+    26: Cambodia
+    27: Cameroon
+    28: Cape Verde
+    29: Cayman Islands
+    30: Central African Republic
+    31: Democratic Republic Of The Congo
+    32: Republic Of The Congo
+    33: Costa Rica
+    34: Cote d'Ivoire (Ivory Coast)
+    35: Croatia
+    36: Cuba
+    37: Curacao
+    38: Cyprus
+    39: Czech Republic
+    40: Djibouti
+    41: Dominica
+    42: El Salvador
+    43: Equatorial Guinea
+    44: Eritrea
+    45: Estonia
+    46: Ethiopia
+    47: Faroe Islands
+    48: Fiji
+    49: French Guiana
+    50: French Polynesia
+    51: Gabon
+    52: Republic Of Georgia
+    53: Ghana
+    54: Greece
+    55: Grenada
+    56: Guadeloupe
+    57: Guinea
+    58: Guinea-Bissau
+    59: Haiti
+    50: Honduras
+    51: Hungary
+    52: Iceland
+    53: Jamaica
+    54: Kazakhstan
+    55: Kenya
+    56: Kiribati
+    57: Kuwait
+    58: Kyrgyzstan
+    59: Laos
+    60: Latvia
+    61: Lebanon
+    62: Lesotho
+    63: Liberia
+    64: Liechtenstein
+    65: Lithuania
+    66: Macao
+    67: Republic Of Macedonia
+    68: Madagascar
+    69: Malawi
+    70: Malaysia
+    71: Maldives
+    72: Mali
+    73: Malta
+    74: Martinique
+    75: Mauritania
+    76: Mauritius
+    77: Moldova
+    78: Morocco
+    79: Mozambique
+    80: Namibia
+    81: Nauru
+    82: Nepal
+    83: New Caledonia
+    84: Nicaragua
+    85: Niger
+    86: Nigeria
+    87: Oman
+    88: Pakistan
+    89: Panama
+    90: Papua New Guinea
+    91: Poland
+    92: Qatar
+    93: Romania
+    94: Russia
+    95: Rwanda
+    96: St. Christopher (St. Kitts) & Nevis
+    97: Saint Lucia
+    98: Saint Vincent & Grenadines
+    99: Samoa
+    100: San Marino
+    101: Sao Tome & Principe
+    102: Senegal
+    103: Republic of Serbia
+    104: Seychelles
+    105: Sierra Leone
+    106: Solomon Islands
+    107: South Africa
+    108: Sri Lanka
+    109: Sudan
+    100: Swaziland
+    101: Syria
+    112: Taiwan
+    113: Tajikistan
+    114: Tanzania
+    115: Togo
+    116: Tonga
+    117: Trinidad & Tobago
+    118: Tunisia
+    119: Turkmenistan
+    120: Turks & Caicos Islands
+    121: Uganda
+    122: Ukraine
+    123: Uzbekistan
+    124: Vanuatu
+    125: Vatican City
+    126: Zambia
+    127: Zimbabwe
+    128: Afghanistan
+    129: Antigua & Barbuda
+    130: British Virgin Islands
+    131: Comoros
+    132: Gambia
+    133: Gibraltar
+    134: Greenland
+    135: Iran
+    136: Kosovo
+    137: Libya
+    138: Montenegro
+    139: Montserrat
+    140: Pitcairn Island
+    141: Reunion
+    142: Saint Helena
+    143: Saint Pierre & Miquelon
+    144: Suriname
+    145: Tuvalu
+    146: Wallis & Futuna
+    147: Sint Maarten
+
 
 country_groups_PMEI:
   group1:
@@ -337,6 +789,7 @@ country_groups_PMEI:
     37: Turks & Caicos Islands|66
     38: Uruguay|44
     39: Venezuela|66
+    40: Sint Maarten|66
   group10:
     1:  Australia|66
     2:  New Zealand|66
@@ -555,6 +1008,7 @@ country_groups_PMEI_flat_rate:
     125: Vatican City
     126: Zambia
     127: Zimbabwe
+    128: Sint Maarten
 
 zone_1_through_4:
     zone1:

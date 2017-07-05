@@ -259,6 +259,34 @@ Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMEI pr
   step "set Order Details form Ship-To Country to #{test_param[:country]}"
 end
 
+Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
+  test_param[:country] = country_list[rand(country_list.size)]
+  test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
+  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails Ship-To Country to a random country in PMI price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMI, {})["group" + group].values
+  country_array = (country_list[rand(country_list.size)]).split("|")
+  country_name = country_array[0]
+  country_pounds = country_array[1].to_i
+  200.times do
+    if !test_param[:pounds].nil?
+      if test_param[:pounds] > country_pounds
+        country_array = country_list[rand(country_list.size)].split("|")
+        country_name = country_array[0]
+        country_pounds = country_array[1].to_i
+      else
+        break
+      end
+    end
+  end
+  test_param[:country] = country_name
+  test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
+  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+end
+
 Then /^[Ss]et [Oo]rder [Dd]etails Ship-To International address to$/ do |table|
   address_table = table.hashes.first
 
