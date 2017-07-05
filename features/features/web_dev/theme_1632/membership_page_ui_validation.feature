@@ -4,7 +4,7 @@ Feature: Registration Membership page validation Theme 1632
     Given I loaded the default registration page
 
   @registration_membership_page_ui_validation
-  Scenario: Memebership Page Validation
+  Scenario: Membership Page Validation
     Then set Profile page Email to random value
     Then set Profile page Username to random value
     Then set Profile page Password to random value

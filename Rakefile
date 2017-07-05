@@ -3,8 +3,8 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 # BEGIN WEB REG
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:registration_security_questions_happy_path) do |t|
+  t.profile = 'registration_security_questions_happy_path'
   t.cucumber_opts = "-p cuke_reports"
 end
 

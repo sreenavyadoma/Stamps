@@ -2,14 +2,17 @@ module Stamps
   module Registration
 
     class WebRegistration < Browser::StampsModal
-      attr_reader :bread_crumbs, :navigation, :profile, :membership, :footer
+      attr_reader :bread_crumbs, :navigation, :profile, :membership, :footer, :choose_supplies, :security_first_question, :security_second_question
       def initialize(param)
         super
         @navigation = Navigation::RegistrationNavigationBar.new(param)
         @bread_crumbs = RegistrationBreadCrumbs.new(param)
         @profile = Profile::ProfilePage.new(param)
         @membership ||= Membership::MembershipPage.new(param)
+        @choose_supplies = ChooseSupplies.new(param)
         @footer = Footer::ProfileFooter.new(param)
+        @security_first_question = SecurityFirstQuestion.new(param)
+        @security_second_question = SecuritySecondQuestion.new(param)
         #@error_occured = AnErrorOccured.new(param)
       end
 
