@@ -405,6 +405,7 @@ module Stamps
               expect("Unable to Ship-To address to #{address}. Error: #{e.message}").to eql "Set Ship-To Address Failed"
             end
           end
+          expect(less_link.present?).to be(true), "Less link did not appear on Single Order Details form. Unable to save Ship-To data."
           expect(text_area.text).to include address.split(" ").last
         end
 
