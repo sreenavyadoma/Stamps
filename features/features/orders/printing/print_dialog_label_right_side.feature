@@ -14,6 +14,7 @@ Feature: Change Starting Label Position to Right Side
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Print modal Printer to "factory"
+    Then expect Print modal right-side label is selected
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then in Print modal, click Print button
