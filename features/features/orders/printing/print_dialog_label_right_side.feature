@@ -4,7 +4,7 @@ Feature: Change Starting Label Position to Right Side
   Background:
     Given a valid user is signed in to Web Apps
 
-  @print_dialog_label_right_side
+  @print_dialog_label_sides
   Scenario:  Print Label - Right Side
     Then add new order
     Then set Order Details form Ship-From to default

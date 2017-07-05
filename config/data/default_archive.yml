@@ -710,10 +710,10 @@ orders_credentials:
     print_dialog_hide_postage_value:
       usr: lngmwr21
       pw: pass111
-    print_dialog_label_left_side:
+    print_dialog_label_sides:
       usr: fhix7qqr9
       pw: pass111
-    print_dialog_label_right_side:
+    print_dialog_label_sides:
       usr: b25wtqtq3nvk5v
       pw: pass111
     print_dialog_printing_on_4x6_roll:
@@ -1078,10 +1078,10 @@ orders_credentials:
     print_dialog_hide_postage_value:
       usr: x9qpc1svshbn
       pw: pass111
-    print_dialog_label_left_side:
+    print_dialog_label_sides:
       usr: tq0n8vxqotdn
       pw: pass111
-    print_dialog_label_right_side:
+    print_dialog_label_sides:
       usr: bty8o0janwt
       pw: pass111
     print_dialog_printing_on_4x6_roll:
@@ -1436,10 +1436,10 @@ orders_credentials:
     print_dialog_hide_postage_value:
       usr: aog9r8ll
       pw: pass111
-    print_dialog_label_left_side:
+    print_dialog_label_sides:
       usr: cwgcof36wy
       pw: pass111
-    print_dialog_label_right_side:
+    print_dialog_label_sides:
       usr: fvv5a0uux3g
       pw: pass111
     print_dialog_printing_on_4x6_roll:
