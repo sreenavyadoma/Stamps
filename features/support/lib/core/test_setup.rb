@@ -45,6 +45,7 @@ module Stamps
               #ignore
             end
             driver = Watir::Browser.new :chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate) #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+            @browser_name = 'Google Chrome'
           when :ie
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")

@@ -6,7 +6,7 @@ module Stamps
       @user_credentials = Hash.new
     end
 
-    def setup
+    def fetch(cuke_tag)
       # reset old usernames
       result = db_connection.query("select * from user_credentials where in_use=1 and date_add(in_use_time, INTERVAL 2 HOUR) < (CURTIME())")
       if result.size > 0
@@ -15,8 +15,19 @@ module Stamps
         end
       end
 
-      # get username
-      result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active' and in_use=0")
+      case(cuke_tag)
+        when /purchasing/
+          db_credentials('purchasing')
+        when /comm_plus/
+          db_credentials('comm_plus')
+        else
+          db_credentials('all')
+      end
+    end
+
+    def db_credentials(test_tag)
+      result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
+      expect(result.size).to be > 0, "There's no available users in the Database for test #{test_tag} in #{modal_param.test_env}. Try again later or add more users to the database."
       rand_num = rand(result.size)
       result.each_with_index do |row, index|
         if rand_num==index
