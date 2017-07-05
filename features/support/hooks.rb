@@ -35,9 +35,9 @@ Before do  |scenario|
       test_param[:username] = ENV['USR']
       test_param[:password] = ENV['PW']
     else
-      user = user_credentials.setup
-      test_param[:username] = user[:username]
-      test_param[:password] = user[:password]
+      credentials = user_credentials.fetch(scenario.tags[0].name)
+      test_param[:username] = credentials[:username]
+      test_param[:password] = credentials[:password]
     end
   end
 end

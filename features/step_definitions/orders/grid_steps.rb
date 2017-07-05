@@ -180,7 +180,7 @@ Then /^[Ee]xpect Orders Grid Weight\(oz\) is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect Orders Grid Qty. is (.+)$/ do |expectation|
-  10.times { break if stamps.orders.orders_grid.column.qty.data(test_param[:order_id][0]).eql? expectation }
+  20.times { break if stamps.orders.orders_grid.column.qty.data(test_param[:order_id][0]).eql? expectation }
   expect(stamps.orders.orders_grid.column.qty.data(test_param[:order_id][0])).to eql expectation.to_i
 end
 
