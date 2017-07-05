@@ -31,4 +31,3 @@ Feature: Change Starting Label Position to Right Side
     Then in Print modal, click Print button
 
     Then Sign out
-#
