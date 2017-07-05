@@ -5,7 +5,7 @@ Feature: Change Starting Label Position to Left Side
     Given a valid user is signed in to Web Apps
 
   @print_dialog_label_sides
-  Scenario:  Print Label - Left Side
+  Scenario:  Print left & right side label
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
