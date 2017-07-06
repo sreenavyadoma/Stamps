@@ -53,6 +53,11 @@ Then /^[Rr]un rate test Parcel Select Ground in Zone (\d+)$/ do |zone|
   step "run rate sheet #{param_sheet} in Zone #{zone}"
 end
 
+Then /^[Rr]un rate test PMI Comm Base in Country Price Group (\d+)$/ do |group|
+  param_sheet = data_for(:rates_test, {})['rates_pmi_comm_base']
+  step "run rate sheet #{param_sheet} in Country Price Group #{group}"
+end
+
 Then /^[Rr]un rate test PMEI Comm Base in Country Price Group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmei_comm_base']
   step "run rate sheet #{param_sheet} in Country Price Group #{group}"
@@ -410,15 +415,26 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
         # Set country to proper group
 
-        if (row[@rate_sheet_columns[:service]]).include? "Flat Rate"
+        if (row[@rate_sheet_columns[:service]]).include? "PMEI Flat Rate"
           if group < 9
             step "set Order Details Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :orders
             step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app == :mail
           end
-        else
+        elsif (row[@rate_sheet_columns[:service]]).include? "PMEI Package"
           step "set Order Details Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :orders
           step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app == :mail
         end
+
+        if (row[@rate_sheet_columns[:service]]).include? "PMI Flat Rate"
+          if group < 9
+            step "set Order Details Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app == :orders
+            step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app == :mail
+          end
+        elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package"
+          step "set Order Details Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app == :orders
+          step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app == :mail
+        end
+
 
         # spreadsheet price for group
 
