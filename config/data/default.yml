@@ -292,6 +292,7 @@ country_groups_PMI:
     45: Saint Helena|44
     46: Comoros|44
     47: Gambia|66
+    48: Tristan da Cuhna|22
   group8:
     1:  Algeria|44
     2:  Bahrain|44
@@ -594,6 +595,7 @@ country_groups_PMI_flat_rate:
     145: Tuvalu
     146: Wallis & Futuna
     147: Sint Maarten
+    148: Tristan da Cuhna
 
 
 country_groups_PMEI:
