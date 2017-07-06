@@ -11,10 +11,12 @@ module Stamps
         end
 
         def blur_out
-          service_element.click
-          weight_element.click
-          service_element.double_click
-          weight_element.double_click
+          2.times do
+            service_element.click
+            weight_element.click
+            service_element.double_click
+            weight_element.double_click
+          end
         end
       end
 
