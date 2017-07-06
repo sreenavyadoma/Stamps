@@ -2,21 +2,19 @@ module Stamps
   module Orders
     module Details
       class BlurOutElement < Browser::StampsModal
-        attr_reader :element, :weight_element
+        attr_reader :service_element, :weight_element
 
         def initialize(param)
           super
-          @element = StampsElement.new(browser.label(text: 'Insure For $:'))
+          @service_element = StampsElement.new(browser.label(text: 'Service:'))
           @weight_element = StampsElement.new(browser.label(text: 'Weight:'))
         end
 
         def blur_out
-          2.times do
-            element.click
-            element.double_click
-            weight_element.click
-            weight_element.double_click
-          end
+          service_element.click
+          weight_element.click
+          service_element.double_click
+          weight_element.double_click
         end
       end
 
