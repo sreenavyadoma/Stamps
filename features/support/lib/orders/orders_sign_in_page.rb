@@ -80,8 +80,8 @@ module Stamps
         def username(str)
           username_textbox.click
           username_textbox.clear
-          username_textbox.set(str)
           username_textbox.click
+          username_textbox.set(str)
           username_textbox.click
         end
 
