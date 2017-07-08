@@ -1309,13 +1309,8 @@ Cucumber::Rake::Task.new(:bulk_update_int) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_dialog_label_right_side) do |t|
-  t.profile = 'print_dialog_label_right_side'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:print_dialog_label_left_side) do |t|
-  t.profile = 'print_dialog_label_left_side'
+Cucumber::Rake::Task.new(:print_dialog_label_sides) do |t|
+  t.profile = 'print_dialog_label_sides'
   t.cucumber_opts = "-p cuke_reports"
 end
 

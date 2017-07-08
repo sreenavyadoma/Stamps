@@ -80,17 +80,14 @@ module Stamps
         def username(str)
           username_textbox.click
           username_textbox.clear
-          username_textbox.set(str)
-          username_textbox.set(str)
-          username_textbox.set(str)
           username_textbox.click
+          username_textbox.set(str)
           username_textbox.click
         end
 
         def password(str)
           password_textbox.click
           password_textbox.clear
-          password_textbox.set(str)
           password_textbox.set(str)
           password_textbox.click
           password_textbox.click
@@ -150,34 +147,27 @@ module Stamps
                   username(usr)
                   password(pw)
                   login
-                  wait_while_present(20)
+                  wait_while_present(5)
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
 
-                  logger.message loading_orders.text if loading_orders.present?
-                  loading_orders.wait_while_present(6)
-
-                  if invalid_username.present?
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
+                  50.times do
+                    logger.message loading_orders.text
+                    sleep(0.20)
+                    break unless loading_orders.present?
                   end
 
-                  if invalid_username.present?
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    logger.error invalid_username.text
-                    expect("Invalid Username: #{usr}/#{pw}").to eql invalid_username.text
+                  50.times do
+                    break unless loading_orders.present?
+                    logger.message loading_orders.text
+                    sleep(0.20)
+                  end
+
+                  50.times do
+                    break unless invalid_username.present?
+                    logger.message invalid_username.text
+                    sleep(0.20)
                   end
                 end
 
@@ -204,7 +194,7 @@ module Stamps
               signed_in_user.text
             end
 
-            expect(signed_in_user.text).to eql(usr)
+            expect(signed_in_user.text).to eql(usr), "Unable to sign-in to Orders in #{param.test_env}"
 
             logger.message "#"*15
             logger.message "Signed-in User: #{signed_in_user.text}"
