@@ -17,6 +17,7 @@ rates_test:
   rates_pmei_comm_base: PMEI Comm Base
   rates_pmei_comm_plus: PMEI Comm Plus
   rates_pmi_comm_base: PMI Comm Base
+  rates_pmi_comm_plus: PMI Comm Plus
   test_dir: \\rcruz-win7\Public\share\rates_test_data\tests
   results_dir: \\rcruz-win7\Public\share\rates_test_data\results
 

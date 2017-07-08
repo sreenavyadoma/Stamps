@@ -58,6 +58,11 @@ Then /^[Rr]un rate test PMI Comm Base in Country Price Group (\d+)$/ do |group|
   step "run rate sheet #{param_sheet} in Country Price Group #{group}"
 end
 
+Then /^[Rr]un rate test PMI Comm Plus in Country Price Group (\d+)$/ do |group|
+  param_sheet = data_for(:rates_test, {})['rates_pmi_comm_plus']
+  step "run rate sheet #{param_sheet} in Country Price Group #{group}"
+end
+
 Then /^[Rr]un rate test PMEI Comm Base in Country Price Group (\d+)$/ do |group|
   param_sheet = data_for(:rates_test, {})['rates_pmei_comm_base']
   step "run rate sheet #{param_sheet} in Country Price Group #{group}"

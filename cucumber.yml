@@ -17,7 +17,7 @@ rob_mail_sc: --tags @filter_panel WEB_APP=mail JENKINS=true USR=default PW=pass1
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @rates_pm_comm_plus_zone_4 --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=chrome USR=default PW=password1
+eli_dev: --tags @rates_pmi_comm_plus_group_7 --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=chrome USR=default PW=password1
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
@@ -149,6 +149,24 @@ rates_pmi_comm_base_group_14:  --tags @rates_pmi_comm_base_group_14 --guess DEBU
 rates_pmi_comm_base_group_15:  --tags @rates_pmi_comm_base_group_15 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 rates_pmi_comm_base_group_16:  --tags @rates_pmi_comm_base_group_16 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 rates_pmi_comm_base_group_17:  --tags @rates_pmi_comm_base_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+
+rates_pmi_comm_plus_group_1:  --tags @rates_pmi_comm_plus_group_1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_2:  --tags @rates_pmi_comm_plus_group_2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_3:  --tags @rates_pmi_comm_plus_group_3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_4:  --tags @rates_pmi_comm_plus_group_4 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_5:  --tags @rates_pmi_comm_plus_group_5 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_6:  --tags @rates_pmi_comm_plus_group_6 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_7:  --tags @rates_pmi_comm_plus_group_7 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_8:  --tags @rates_pmi_comm_plus_group_8 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_9:  --tags @rates_pmi_comm_plus_group_9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_10:  --tags @rates_pmi_comm_plus_group_10 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_11:  --tags @rates_pmi_comm_plus_group_11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_12:  --tags @rates_pmi_comm_plus_group_12 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_13:  --tags @rates_pmi_comm_plus_group_13 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_14:  --tags @rates_pmi_comm_plus_group_14 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_15:  --tags @rates_pmi_comm_plus_group_15 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_16:  --tags @rates_pmi_comm_plus_group_16 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
+rates_pmi_comm_plus_group_17:  --tags @rates_pmi_comm_plus_group_17 --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
