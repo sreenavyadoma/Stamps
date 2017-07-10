@@ -5,7 +5,7 @@ Feature:  Requires x-number of label sheets
     Given a valid user is signed in to Web Apps
 
   @print_dialog_two_up_x_number_of_labels
-  Scenario:  Printing
+  Scenario:  Requires x-number of label sheets
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
