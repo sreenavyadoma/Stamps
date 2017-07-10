@@ -17,8 +17,8 @@ Feature: in Orders Grid, Tracking & Order Status
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Print modal Printer to "factory"
-    Then in Print modal, click Print button
-    Then In left Filter Panel, select Shipped
+    Then click print modal print button
+    Then click Filter Panel Shipped tab
     #Then in Orders Grid, Sort Order ID in Descending Order
     Then expect Orders Grid Tracking Number is populated
     Then expect Orders Grid Order Status is Shipped
@@ -33,8 +33,8 @@ Feature: in Orders Grid, Tracking & Order Status
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Print modal Printer to "factory"
-    Then in Print modal, click Print button
-    Then In left Filter Panel, select Shipped
+    Then click print modal print button
+    Then click Filter Panel Shipped tab
     #Then in Orders Grid, Sort Order ID in Descending Order
     Then expect Orders Grid Tracking Number is populated
     Then expect Orders Grid Order Status is Shipped

@@ -7,7 +7,7 @@ end
 Then /^[Ii]n Print modal, click Print button Incomplete Order$/ do
   @incomplete_order_modal = stamps.orders.orders_toolbar.print_btn.print_modal
 
-  expect("Incomplete Order Modal did not open").to eql "In Print modal, click Print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+  expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
 Then /^[Ee]xpect Print modal Incomplete Order Error Message (.*)$/ do |expectation|

@@ -40,7 +40,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_cn22_5x8_cp72_right_print2
   Scenario: Print 2 Intl CN22 labels on 5.5x8.5 right
@@ -79,7 +79,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_cn22_left_print2
   Scenario: Print 2 Intl CN22 labels Left
@@ -110,7 +110,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_cn22_right_print2
   Scenario: Print 2 Intl CN22 labels right
@@ -147,7 +147,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_cn22_sdc1200_left_print2
   Scenario: Print 2 Intl CN22 labels on sdc 1200 left
@@ -184,6 +184,6 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then Sign out

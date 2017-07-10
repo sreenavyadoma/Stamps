@@ -55,7 +55,6 @@ When /^[Uu]ncheck Orders Grid row (\d+)$/ do |row|
 end
 
 Then /^[Ee]xpect Orders Grid Date Printed for this order is today$/ do
-  stamps.orders.orders_grid.column.order_date.sort_descending
   expect(stamps.orders.orders_grid.column.date_printed.data(test_param[:order_id][0])).to eql(Date.today.strftime "%b %-d")
 end
 

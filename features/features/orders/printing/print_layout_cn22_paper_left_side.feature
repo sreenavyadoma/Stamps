@@ -38,5 +38,5 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
     Then Sign out

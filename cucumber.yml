@@ -7,7 +7,7 @@ rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=def
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 rob_cc: --tags @print_dialog_label_sides WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=cctruer0u PW=pass111
-rob_stg: --tags @print_dialog_label_sides WEB_APP=orders JENKINS=true PW=pass111 URL=stg DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=stgv3mck0frko PW=pass111
+rob_stg: --tags @print_dialog_ship_date_today WEB_APP=orders JENKINS=true PW=pass111 URL=stg DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false USR=stgv3mck0frko PW=pass111
 rob_sc: --tags @filter_panel WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
@@ -212,11 +212,8 @@ print_sample_pme_package: --tags @print_sample_pme_package --guess DEBUG=false J
 print_sample_pm_regional_rate_box_a: --tags @print_sample_pm_regional_rate_box_a --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_select_ground_large_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-print_multiple_orders: --tags @print_multiple_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+print_multiple_orders: --tags @print_multiple_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 # PRINT SHIP DATE
-print_dialog_ship_date_today_plus3: --tags @print_dialog_ship_date_today_plus3 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-print_dialog_ship_date_today_plus2: --tags @print_dialog_ship_date_today_plus2 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-print_dialog_ship_date_today_plus1: --tags @print_dialog_ship_date_today_plus1 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 print_dialog_ship_date_today: --tags @print_dialog_ship_date_today --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 # PRINT MEDIA
 tooltip_print_media: --tags @tooltip_print_media --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders

@@ -28,8 +28,8 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button Sample
-    Then in Print modal, click Print button
+    Then click print modal print button Sample
+    Then click print modal print button
     Then Pause for 6 seconds
 
     Then Sign out

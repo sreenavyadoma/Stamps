@@ -26,7 +26,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_cp72_5x8_right
   Scenario: Print 1 Intl CP72 label on 5.5x8.5 right
@@ -50,7 +50,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_cp72_left
   Scenario: Print 2 Intl CP72 label left
@@ -118,7 +118,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_cp72_left_print3
   Scenario: Print 3 Intl CP72 label left
@@ -186,7 +186,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then Sign out
 
