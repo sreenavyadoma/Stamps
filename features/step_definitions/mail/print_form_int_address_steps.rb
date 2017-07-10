@@ -40,6 +40,32 @@ Then /^[Ss]et Print Form Ship-To Country to a random country in PMEI Flat Rate p
   step "set Print form Mail-To Country to #{test_param[:country]}"
 end
 
+Then /^[Ss]et Print Form Ship-To Country to a random country in PMI price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMI, {})["group" + group].values
+  country_array = (country_list[rand(country_list.size)]).split("|")
+  country_name = country_array[0]
+  country_pounds = country_array[1].to_i
+  200.times do
+    if !test_param[:pounds].nil?
+      if test_param[:pounds] > country_pounds
+        country_array = country_list[rand(country_list.size)].split("|")
+        country_name = country_array[0]
+        country_pounds = country_array[1].to_i
+      else
+        break
+      end
+    end
+  end
+  test_param[:country] = country_name
+  step "set Print form Mail-To Country to #{test_param[:country]}"
+end
+
+Then /^[Ss]et Print Form Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
+  test_param[:country] = country_list[rand(country_list.size)]
+  step "set Print form Mail-To Country to #{test_param[:country]}"
+end
+
 Then /^[Ss]et Print form Name to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.name.click if value.nil?
   test_param[:mail_to_name] = (value.downcase == 'random')? test_helper.random_full_name : value
