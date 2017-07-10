@@ -17,7 +17,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
    #print_two_up_expanded_5x8_left_print2
     Then add new order
@@ -37,7 +37,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
    #print_two_up_expanded_5x8_left_print3
     Then add new order
@@ -63,7 +63,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
    #print_two_up_expanded_5x8_right_print1
     Then add new order
@@ -76,7 +76,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   #print_two_up_expanded_5x8_right_print2
     Then add new order
@@ -97,6 +97,6 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then Sign out

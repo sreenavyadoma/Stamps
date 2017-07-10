@@ -4,12 +4,12 @@ Then /^[Ee]xpect USPS Terms modal appears$/ do
   expect(actual).to be(true)
 end
 
-Then /^Click Cancel on USPS Terms modal$/ do
+Then /^[Cc]lick Cancel on USPS Terms modal$/ do
   #test_config.logger.step "Click Cancel on USPS Terms modal"
   stamps.orders.orders_toolbar.usps_intl_terms.click_cancel_button
 end
 
-Then /^Click I Agree on USPS Terms modal$/ do
+Then /^[Cc]lick I Agree on USPS Terms modal$/ do
   #test_config.logger.step "Click I Agree on USPS Terms modal"
   stamps.orders.orders_toolbar.usps_intl_terms.click_i_agree_button
 end

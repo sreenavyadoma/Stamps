@@ -54,6 +54,6 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button Sample
-    Then in Print modal, click Print button
+    Then click print modal print button Sample
+    Then click print modal print button
     Then Sign out

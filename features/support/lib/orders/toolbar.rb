@@ -478,9 +478,7 @@ module Stamps
 
             return orders_print_modal if orders_print_modal.present?
           end
-
-          expectation = "Print Modal is NO present" unless orders_print_modal.present?
-          expect(expectation).to eql "Print Modal is present"
+          expect(orders_print_modal.present?).to be(true), "Print Modal is NOT present"
         end
 
         def usps_terms

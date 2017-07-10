@@ -32,8 +32,8 @@ Feature:  Yahoo Store Management
       Then in Orders Toolbar, Refresh Orders
       Then check Orders Grid Order ID 637
       Then in Orders Toolbar, Refresh Orders
-      Then In left Filter Panel, select Shipped
-      Then In left Filter Panel, select Awaiting Shipment
+      Then click Filter Panel Shipped tab
+      Then click Filter Panel Awaiting Shipment tab
       Then expect Orders Grid Store is random
 
       Then Manage Stores: Open Modal
@@ -51,8 +51,8 @@ Feature:  Yahoo Store Management
       Then in Orders Toolbar, Refresh Orders
       Then check Orders Grid Order ID 637
       Then in Orders Toolbar, Refresh Orders
-      Then In left Filter Panel, select Shipped
-      Then In left Filter Panel, select Awaiting Shipment
+      Then click Filter Panel Shipped tab
+      Then click Filter Panel Awaiting Shipment tab
       Then expect Orders Grid Store is random
 
       Then Manage Stores: Open Modal
@@ -70,8 +70,8 @@ Feature:  Yahoo Store Management
       Then in Orders Toolbar, Refresh Orders
       Then check Orders Grid Order ID 637
       Then in Orders Toolbar, Refresh Orders
-      Then In left Filter Panel, select Shipped
-      Then In left Filter Panel, select Awaiting Shipment
+      Then click Filter Panel Shipped tab
+      Then click Filter Panel Awaiting Shipment tab
       Then expect Orders Grid Store is random
 
       Then Manage Stores: Open Modal

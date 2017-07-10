@@ -17,7 +17,7 @@ Feature: Change Starting Label Position
     Then expect Print modal left-side label is selected
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then add new order
     Then set Order Details form Ship-From to default
@@ -29,6 +29,6 @@ Feature: Change Starting Label Position
     Then expect Print modal left-side label is selected
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then Sign out

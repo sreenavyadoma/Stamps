@@ -1,4 +1,4 @@
-Feature: in Print modal, click Print button Sample - PME Package
+Feature: click print modal print button Sample - PME Package
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -13,4 +13,4 @@ Feature: in Print modal, click Print button Sample - PME Package
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Print modal Printer to "factory"
-    Then in Print modal, click Print button Sample
+    Then click print modal print button Sample
