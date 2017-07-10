@@ -5,6 +5,8 @@ Feature: Set Print Ship Date to Today
     Given a valid user is signed in to Web Apps
 
   Scenario: Set Ship Date to today
+
+  # Ship Date today
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
