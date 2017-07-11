@@ -330,7 +330,7 @@ module Stamps
         end
       end
 
-      class USPSTerms < Browser::StampsModal
+      class USPSTermsOrders < Browser::StampsModal
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def initialize(param)
@@ -351,6 +351,10 @@ module Stamps
 
         def agree_to_terms
           i_agree_btn.click_while_present
+        end
+
+        def i_gree
+          agree_to_terms
         end
 
         def cancel
@@ -408,7 +412,7 @@ module Stamps
           @incomplete_order_modal = PrintIncompleteOrderError.new(param)
           @multi_order_some_error = PrintMultiOrderSomeHasError.new(param)
           @multi_order_all_error = PrintMultiOrderAllHaveError.new(param)
-          @usps_terms_modal = USPSTerms.new(param)
+          @usps_terms_modal = USPSTermsOrders.new(param)
         end
 
         def present?
@@ -425,33 +429,15 @@ module Stamps
         end
 
         def print_modal
-          return orders_print_modal if orders_print_modal.present?
-
-          expectation = "Print Modal is present"
-          if orders_print_modal.present?
-            logger.info "Print Modal is Present"
-            return orders_print_modal
-          else
-            logger.info "Print Modal is not yet Present"
-          end
-
           15.times do |count|
             begin
+              return orders_print_modal if orders_print_modal.present?
               print_order_btn.click
-              orders_print_modal.wait_until_present 3
-              if orders_print_modal.present?
-                logger.info "Print Modal is Present"
-                return orders_print_modal
-              else
-                logger.info "Print Modal is not yet Present... try ##{count+1}"
-              end
+              orders_print_modal.wait_until_present(3)
 
-              if usps_terms_modal.present?
-                #usps_terms_modal.cancel_btn
-                text = logger.error usps_terms_modal.text_p1
-                logger.error usps_terms_modal.text_p2
-                usps_terms_modal.cancel
-                expect(text).to eql ""
+              30.times do
+                usps_terms_modal.i_gree if usps_terms_modal.present?
+                break unless usps_terms_modal.present?
               end
 
               if incomplete_order_modal.present?
@@ -486,10 +472,8 @@ module Stamps
         end
 
         def usps_terms
-          expectation = "USPS Terms Modal is present"
-          modal = open_window usps_terms_modal
-          expectation = "USPS Terms Modal is NO present." unless modal.present?
-          expect(expectation).to eql "USPS Terms Modal is present"
+          modal = open_window(usps_terms_modal)
+          expect(modal.present?).to be(true), "USPS Terms Modal is NOT present"
           modal
         end
 
@@ -743,7 +727,7 @@ module Stamps
           @add = AddButton.new(param)
           @move_drop_down = MoveDropDown.new(param)
           @import_orders_modal = ImportOrders.new(param)
-          @usps_intl_terms = USPSTerms.new(param)
+          @usps_intl_terms = USPSTermsOrders.new(param)
         end
 
         def refresh_orders
