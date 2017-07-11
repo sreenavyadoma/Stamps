@@ -436,8 +436,8 @@ module Stamps
               orders_print_modal.wait_until_present(3)
 
               30.times do
-                usps_terms_modal.i_gree if usps_terms_modal.present?
                 break unless usps_terms_modal.present?
+                usps_terms_modal.i_gree if usps_terms_modal.present?
               end
 
               if incomplete_order_modal.present?
@@ -453,13 +453,6 @@ module Stamps
                 text = multi_order_some_error.error_message_p2
                 logger.error text
                 multi_order_some_error.continue
-                expect(text).to eql ""
-              end
-
-              if multi_order_all_error.present?
-                text = multi_order_all_error.error_message
-                logger.error text
-                multi_order_all_error.ok
                 expect(text).to eql ""
               end
 
