@@ -436,47 +436,51 @@ module Stamps
           end
 
           15.times do |count|
-            print_order_btn.click
-            orders_print_modal.wait_until_present 3
-            if orders_print_modal.present?
-              logger.info "Print Modal is Present"
-              return orders_print_modal
-            else
-              logger.info "Print Modal is not yet Present... try ##{count+1}"
+            begin
+              print_order_btn.click
+              orders_print_modal.wait_until_present 3
+              if orders_print_modal.present?
+                logger.info "Print Modal is Present"
+                return orders_print_modal
+              else
+                logger.info "Print Modal is not yet Present... try ##{count+1}"
+              end
+
+              if usps_terms_modal.present?
+                #usps_terms_modal.cancel_btn
+                text = logger.error usps_terms_modal.text_p1
+                logger.error usps_terms_modal.text_p2
+                usps_terms_modal.cancel
+                expect(text).to eql ""
+              end
+
+              if incomplete_order_modal.present?
+                logger.error incomplete_order_modal.error_message_p1
+                logger.error incomplete_order_modal.error_message_p2
+                incomplete_order_modal.ok
+
+                expect(incomplete_order_modal.error_message_p2).to eql ""
+              end
+
+              if multi_order_some_error.present?
+                logger.error multi_order_some_error.error_message_p1
+                text = multi_order_some_error.error_message_p2
+                logger.error text
+                multi_order_some_error.continue
+                expect(text).to eql ""
+              end
+
+              if multi_order_all_error.present?
+                text = multi_order_all_error.error_message
+                logger.error text
+                multi_order_all_error.ok
+                expect(text).to eql ""
+              end
+
+              return orders_print_modal if orders_print_modal.present?
+            rescue
+              #ignore
             end
-
-            if usps_terms_modal.present?
-              #usps_terms_modal.cancel_btn
-              text = logger.error usps_terms_modal.text_p1
-              logger.error usps_terms_modal.text_p2
-              usps_terms_modal.cancel
-              expect(text).to eql ""
-            end
-
-            if incomplete_order_modal.present?
-              logger.error incomplete_order_modal.error_message_p1
-              logger.error incomplete_order_modal.error_message_p2
-              incomplete_order_modal.ok
-
-              expect(incomplete_order_modal.error_message_p2).to eql ""
-            end
-
-            if multi_order_some_error.present?
-              logger.error multi_order_some_error.error_message_p1
-              text = multi_order_some_error.error_message_p2
-              logger.error text
-              multi_order_some_error.continue
-              expect(text).to eql ""
-            end
-
-            if multi_order_all_error.present?
-              text = multi_order_all_error.error_message
-              logger.error text
-              multi_order_all_error.ok
-              expect(text).to eql ""
-            end
-
-            return orders_print_modal if orders_print_modal.present?
           end
           expect(orders_print_modal.present?).to be(true), "Print Modal is NOT present"
         end
