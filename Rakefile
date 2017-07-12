@@ -846,6 +846,11 @@ Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_17) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:rates_fcm_package) do |t|
+  t.profile = 'rates_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
   t.cucumber_opts = "-p cuke_reports"
