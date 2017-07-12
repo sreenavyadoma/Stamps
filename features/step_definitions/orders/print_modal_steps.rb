@@ -31,8 +31,8 @@ Then /^[Ss]et Print modal Ship Date to today$/ do
 end
 
 Then /^[Ss]et Print modal Ship Date to today plus (\d+)$/ do |day|
-  ship_date = test_helper.now_plus_mon_dd_excl_sunday day
-  @ship_date = stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.date_picker.today_plus day
+  ship_date = test_helper.now_plus_mon_dd_excl_sunday(day)
+  @ship_date = stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.date_picker.today_plus(day)
 end
 
 Then /^[Ii]n Print modal, check Hide Mail Value$/ do

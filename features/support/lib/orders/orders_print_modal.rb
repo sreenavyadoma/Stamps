@@ -36,6 +36,10 @@ module Stamps
         end
       end
 
+      def present?
+        text_box.present?
+      end
+
       def label
         StampsElement.new browser.span(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
       end
@@ -387,6 +391,9 @@ module Stamps
         @print_envelope_btn = StampsElement.new(browser.span(text: 'Print Envelope'))
       end
 
+      def present?
+        printing_on.present?
+      end
 
       def close_window
         window_x_button.click_while_present
@@ -397,10 +404,6 @@ module Stamps
         20.times do
           starting_label_tag.click
         end
-      end
-
-      def present?
-        print_button.present?
       end
 
       def wait_until_present(*args)
