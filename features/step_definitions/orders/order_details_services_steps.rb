@@ -9,7 +9,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails form service to (.*)$/ do |service|
   step "Save Order Details data"
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails form service is (.*)$/ do |expectation|
+Then /^[Ee]xpect [Oo]rder [Dd]etails form service is (?:an empty string|(.*))$/ do |expectation|
   if expectation.nil?
     selection_substr = ""
   else
