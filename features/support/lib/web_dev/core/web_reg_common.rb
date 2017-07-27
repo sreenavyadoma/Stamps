@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class SecurityQuestions < Browser::StampsModal
+    class SecurityQuestions1 < Browser::StampsModal
       attr_reader :element
 
       def initialize(element)

@@ -265,17 +265,3 @@ Feature: Registration Membership page validation Theme 1632
 #    Then expect Profile page copyright link exists
 #    Then expect Profile page TRUSTe logo exists
 #    Then expect Profile page LIVE chat button exists
-
-
-
-
-
-
-
-
-
-
-
-
-
-

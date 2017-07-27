@@ -11,9 +11,8 @@ module Stamps
         @membership ||= Membership::MembershipPage.new(param)
         @choose_supplies = ChooseSupplies.new(param)
         @footer = Footer::ProfileFooter.new(param)
-        @security_first_question = SecurityFirstQuestion.new(param)
-        @security_second_question = SecuritySecondQuestion.new(param)
-        #@error_occured = AnErrorOccured.new(param)
+        @security_questions = SecurityQuestionsRegistration.new(param)
+
       end
 
       def present?

@@ -31,9 +31,12 @@ Feature: Registration Security questions page happy path
     Then expect welcome_kit_message exists
     Then in Choose Supplies page, click Place Order button
 
-    #select security quetions and answers
-    Then set Security questions page select first question & answer
-    Then set Security questions page select second question & answer
+    # Select security quetions and answers
+    Then set Security questions page select first question to What is your city of birth?
+    Then set Security questions page select first answer to Auto11
+    Then set Security questions page select second question to What was your high school mascot?
+    Then set Security questions page select second answer to Auto11
     Then click Get Started button
 
+    # Validate newly created account welcome page
     Then expect congratulations message exists

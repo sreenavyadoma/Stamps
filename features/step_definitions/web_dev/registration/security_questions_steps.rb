@@ -55,12 +55,20 @@ Then /^[Ss]et [Rr]egistration [Mm]embership terms and condition$/ do
   registration.membership.termsnconditions
 end
 
-Then /^[Ss]et Security questions page select first question & answer$/ do
-  registration.security_first_question.select
+Then /^[Ss]et Security questions page select first question to (.*)$/ do |str|
+  registration.security_questions.first_question.select(str)
 end
 
-Then /^[Ss]et Security questions page select second question & answer$/ do
-  registration.security_second_question.select
+Then /^[Ss]et Security questions page select first answer to (.*)$/ do |str|
+  registration.security_questions.first_answer.set str
+end
+
+Then /^[Ss]et Security questions page select second question to (.*)$/ do |str|
+  registration.security_questions.second_question.select(str)
+end
+
+Then /^[Ss]et Security questions page select second answer to (.*)$/ do |str|
+  registration.security_questions.second_answer.set str
 end
 
 Then /^[Cc]lick Get Started button$/ do
