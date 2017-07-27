@@ -30,7 +30,7 @@ Feature: Print two labels on one sheet
 
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then Pause for 6 seconds
     Then Sign out

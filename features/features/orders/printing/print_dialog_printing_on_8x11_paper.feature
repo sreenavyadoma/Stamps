@@ -15,6 +15,6 @@ Feature: Print Media - Shipping Label: 8 ½" x 11" Paper
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Print modal Printer to "factory"
-    Then in Print modal, click Print button
+    Then click print modal print button
     Then Sign out
 

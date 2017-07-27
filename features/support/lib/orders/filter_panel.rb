@@ -144,32 +144,8 @@ module Stamps
         end
       end
 
-      class FilterTab < Browser::StampsModal
-        attr_reader :index
-        def initialize(param, index)
-          super(param)
-          @index = index
-        end
-
-        def tabs
-          browser.divs(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=sdc-badgebutton-text]")
-        end
-
-        def element
-          tabs[index]
-        end
-
-        def select
-          element = StampsElement.new(element)
-          40.times do
-            element.double_click
-            element.click
-            sleep(0.25)
-            break if selected?
-          end
-          expect(selected?).to be(true)
-        end
-
+      module FilterTabHelper
+        attr_accessor :element, :panel_name
         def selected?
           begin
             element.parent.parent.parent.parent.attribute_value("class").include?('selected')
@@ -181,11 +157,26 @@ module Stamps
         def text
           StampsElement.new(element).text
         end
+
+        def select
+          tab = StampsElement.new(element)
+          40.times do
+            tab.double_click
+            tab.click
+            sleep(0.25)
+            break if selected?
+          end
+          expect(selected?).to be(true), "Unable to select Filter Panel: #{panel_name}"
+          logger.info "Selected Filter Panel: #{panel_name}"
+        end
       end
 
-      class AwaitingShipmentTab < FilterTab
+      class AwaitingShipmentTab < Browser::StampsModal
+        include FilterTabHelper
         def initialize(param)
-          super(param, 0)
+          super
+          @panel_name = "Awaiting Shipment"
+          @element = browser.divs(text: @panel_name).first
         end
 
         def count
@@ -193,21 +184,30 @@ module Stamps
         end
       end
 
-      class ShippedTab < FilterTab
+      class ShippedTab < Browser::StampsModal
+        include FilterTabHelper
         def initialize(param)
-          super(param, 1)
+          super
+          @panel_name = "Shipped"
+          @element = browser.divs(text: @panel_name).first
         end
       end
 
-      class CanceledTab < FilterTab
+      class CanceledTab < Browser::StampsModal
+        include FilterTabHelper
         def initialize(param)
-          super(param, 2)
+          super
+          @panel_name = "Canceled"
+          @element = browser.divs(text: @panel_name).first
         end
       end
 
-      class OnHoldTab < FilterTab
+      class OnHoldTab < Browser::StampsModal
+        include FilterTabHelper
         def initialize(param)
-          super(param, 3)
+          super
+          @panel_name = "On Hold"
+          @element = browser.divs(text: @panel_name).first
         end
       end
 

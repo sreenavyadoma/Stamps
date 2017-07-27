@@ -34,5 +34,5 @@ Feature: FPO Shipping BVT
 
     Then Postage: Open Print Sample Modal
     Then Postage select Print modal Printer "ZDesigner"
-    Then Postage in Print modal, click Print button
+    Then Postage click print modal print button
     Then Sign out

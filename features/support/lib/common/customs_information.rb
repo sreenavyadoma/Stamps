@@ -179,7 +179,7 @@ module Stamps
       class CustomsInformation < Browser::StampsModal
 
         attr_reader :window_title, :associated_items, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
-                    :more_info, :itn_number, :license, :invoice, :total_value_element, :agree_to_terms, :privacy_statement, :privacy_link,
+                    :more_info, :itn_number, :license, :invoice, :total_value_element, :privacy_statement, :privacy_link,
                     :restrictions_link, :restrictions_prohibitions_link, :x_button, :total_label, :certificate
 
         def initialize(param)
@@ -205,10 +205,6 @@ module Stamps
           @invoice = StampsTextBox.new browser.text_field(name: "CustomsInvoiceNumber")
           @total_value_element = StampsElement.new browser.div(css: "div[id^=customswindow-][id$=-body]>div>div[id^=panel]>div>div>div>div[id^=displayfield]>div>div")
 
-          field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
-          verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
-          @agree_to_terms = StampsCheckBox.new field, verify_field, "class", "checked"
-
           @privacy_statement = UspsPrivactActStatementModal.new(param)
           @privacy_link = StampsElement.new browser.span(text: "USPS Privacy Act Statement")
           @restrictions_prohibitions_link = StampsElement.new browser.span(text: "Restrictions and Prohibitions")
@@ -229,6 +225,12 @@ module Stamps
 
         def wait_until_present(*args)
           window_title.wait_until_present(*args)
+        end
+
+        def agree_to_terms
+          field = browser.input(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div>div>div>input")
+          verify_field = browser.div(css: "div[id^=customswindow-][id$=-body]>div>div:nth-child(3)>div>div>div>div>div>div>div>div>div>div[id^=checkbox]")
+          StampsCheckBox.new(field, verify_field, "class", "checked")
         end
 
         def total_value

@@ -115,7 +115,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
-    Then expect Orders Grid service is PME International
+    Then expect Orders Grid service is Priority Mail Express International
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
@@ -129,7 +129,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
-    Then expect Orders Grid service is PME International
+    Then expect Orders Grid service is Priority Mail Express International
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
@@ -143,7 +143,7 @@ Feature: Don't Require weight for Flat/Regional Rate Services
     Then close Customs Information form
     Then expect Order Details form Pounds is 0
     Then expect Order Details form Ounces is 0
-    Then expect Orders Grid service is PME International
+    Then expect Orders Grid service is Priority Mail Express International
     Then in Orders Toolbar, click Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button

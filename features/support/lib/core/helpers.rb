@@ -337,7 +337,7 @@ module Stamps
         when /zone 2/
           rand_zone_2
         when /zone 3/
-          test_helper.rand_zone_3
+          rand_zone_3
         when /zone 4/
           rand_zone_4
         when /zone 5/

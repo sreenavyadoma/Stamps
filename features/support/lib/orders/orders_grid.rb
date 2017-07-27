@@ -44,16 +44,22 @@ module Stamps
           span = browser.span(text: @@grid_columns[column])
           column = StampsElement.new(span)
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
+          sort_order_span = span.parent.parent.parent.parent.parent
 
           10.times do
             column.scroll_into_view
-            column.click
             5.times do
               sleep(1)
-              return sort_order if span.parent.parent.parent.parent.parent.attribute_value("class").include?(sort_order)
+              if sort_order_span.attribute_value("class").include?(sort_order)
+                break;
+              else
+                column.click
+              end
             end
           end
-          sort_order
+          return "ASC" if  sort_order_span.attribute_value("class").include?("ASC")
+          return "DESC" if  sort_order_span.attribute_value("class").include?("DESC")
+          "Something went wrong."
         end
 
         def grid_text_by_id(column, order_id)

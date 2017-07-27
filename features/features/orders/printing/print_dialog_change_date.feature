@@ -29,7 +29,7 @@ Feature:  Changing Print Date Causes Page to get Stuck on "Verifying Mail Rates"
     Then set Print modal Printer to "factory"
     Then set Print modal Ship Date to today plus 2
     Then Pause for 2 seconds
-    Then in Print modal, click Print button
+    Then click print modal print button
     Then Pause for 1 second
     Then Sign out
 
