@@ -22,7 +22,7 @@ Feature: User Prints 1 FPO CN22 label on 8.5x11 - right side
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button Sample
-    Then in Print modal, click Print button
+    Then click print modal print button Sample
+    Then click print modal print button
     Then Sign out
 

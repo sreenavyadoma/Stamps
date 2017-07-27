@@ -19,7 +19,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_paper_left_print2
   Scenario: User Prints 2 Domestic label left
@@ -42,7 +42,7 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
   @print_two_up_expanded_paper_left_print2
   Scenario: User Prints 2 Domestic label right
@@ -65,6 +65,6 @@ Feature: Print 3 Domestic, 3 Intl CP72 labels on 8.5x11
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then Sign out

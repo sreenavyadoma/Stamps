@@ -21,5 +21,5 @@ Feature: Print Multiple Orders
     Then check Orders Grid row 1
     Then check Orders Grid row 2
 
-    Then in Print modal, click Print button
+    Then click print modal print button
     Then Sign out

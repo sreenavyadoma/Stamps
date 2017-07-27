@@ -81,7 +81,7 @@ module Stamps
         else
           expect("Invalid browser selection.  #{browser_sym} is not recognized.  User :firefox, :chrome or :ie").to eql ""
         end
-        logger.info "Windows in Print modal, click Print buttoning successful."
+        logger.info "Windows click print modal print buttoning successful."
         sleep(3)
       end
     end

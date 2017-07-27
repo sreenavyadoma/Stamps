@@ -2,19 +2,20 @@ module Stamps
   module Orders
     module Details
       class BlurOutElement < Browser::StampsModal
-        attr_reader :element
+        attr_reader :service_element, :weight_element
 
         def initialize(param)
           super
-          @element = StampsElement.new(browser.label(text: 'Insure For $:'))
-          @weight_element = StampsElement.new(browser.label(text: 'Weight:'))
+          @service_element = StampsElement.new(browser.label(text: 'Service:'))
           @weight_element = StampsElement.new(browser.label(text: 'Weight:'))
         end
 
         def blur_out
           2.times do
-            element.click if element.present?
-            element.double_click if element.present?
+            service_element.click
+            weight_element.double_click
+            weight_element.click
+            service_element.double_click
           end
         end
       end
@@ -393,7 +394,7 @@ module Stamps
         def set address
           10.times do
             begin
-              text_area.set address
+              text_area.set(address)
               15.times do
                 blur_out
                 break if less_link.present?

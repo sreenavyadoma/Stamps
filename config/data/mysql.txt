@@ -43,3 +43,18 @@ CREATE TABLE states (
     UNIQUE KEY(state)
 );
 
+gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\Program Files (x86)\MySQL\MySQL Connector C 6.1\lib" --with-mysql-include="C:\Program Files (x86)\MySQL\MySQL Connector C 6.1\include"'
+
+https://downloads.mysql.com/archives/c-c/
+https://stackoverflow.com/questions/29368332/failed-to-load-libmysql-dll-file-using-ruby-on-rails-3
+
+Uninstall your mysql2 gem by gem uninstall mysql2 and remove all mysql2 package
+Download a "MySQL Connector/C NoInstall" from MySQL which version should lower than 6.1, in my case is 6.0.2(mysql-connector-c-noinstall-6.0.2-win32.zip), and unzip to a path, such like "D:\MySQLConn"
+
+Install mysql2 by this command:
+gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\Program Files (x86)\MySQL\MySQL Connector C 6.1\lib" --with-mysql-include="C:\Program Files (x86)\MySQL\MySQL Connector C 6.1\include"'
+
+Run Redmine's install `bundle install --without development test'
+Check mysql2 gem gem list mysql2
+
+

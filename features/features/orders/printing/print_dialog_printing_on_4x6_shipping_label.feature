@@ -13,4 +13,4 @@ Feature: Print Media - Roll - 4" x 6" Shipping Label
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
-    Then in Print modal, click Print button
+    Then click print modal print button

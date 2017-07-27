@@ -14,15 +14,15 @@ Feature: Multiple Reprints
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Print modal Printer to "factory"
-    Then in Print modal, click Print button
+    Then click print modal print button
 
-    Then In left Filter Panel, select Shipped
+    Then click Filter Panel Shipped tab
     Then In Orders Grid, Sort Order Date in Descending Order
     Then Pause for 2 seconds
     Then check Orders Grid saved Order ID
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
-    Then In left Filter Panel, select Shipped
+    Then click Filter Panel Shipped tab
     Then Pause for 2 seconds
     Then check Orders Grid saved Order ID
     Then in Print modal, Open Reprint Modal

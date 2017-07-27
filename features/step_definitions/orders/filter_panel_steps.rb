@@ -1,18 +1,18 @@
 
-Then /^[Ii]n left Filter Panel, select Awaiting Shipment$/ do
+Then /^[Cc]lick Filter Panel Awaiting Shipment tab$/ do
   test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
   stamps.orders.filter_panel.awaiting_shipment.select
 end
 
-Then /^[Ii]n left Filter Panel, select Shipped$/ do
+Then /^[Cc]lick Filter Panel Shipped tab$/ do
   stamps.orders.filter_panel.shipped.select
 end
 
-Then /^[Ii]n left Filter Panel, select Canceled$/ do
+Then /^[Cc]lick Filter Panel Canceled tab$/ do
   stamps.orders.filter_panel.canceled.select
 end
 
-Then /^[Ii]n left Filter Panel, select On Hold$/ do
+Then /^[Cc]lick Filter Panel On Hold tab$/ do
   stamps.orders.filter_panel.on_hold.select
 end
 

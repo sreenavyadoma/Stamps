@@ -25,11 +25,11 @@ Then /^[Ii]n Orders Toolbar, Refresh Orders$/ do
   stamps.orders.orders_toolbar.refresh_orders
 end
 
-Then /^[Ee]xpect Print modal Print Modal is present$/ do
+Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is present$/ do
   expect(stamps.orders.orders_toolbar.print_btn.print_modal.present?).to be_truthy
 end
 
-Then /^[Ii]n Print modal, click Print button$/ do
+Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint button$/ do
   print_modal = stamps.orders.orders_toolbar.print_btn.print_modal
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.text_box.text
