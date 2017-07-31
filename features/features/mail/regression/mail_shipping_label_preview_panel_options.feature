@@ -8,7 +8,7 @@ Feature:Shipping Label Preview Panel
   @mail_print_shipping_label_preview_panel_options
   Scenario: Shipping Label Preview Panel
 
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Shipping Label - 5x8
 
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States

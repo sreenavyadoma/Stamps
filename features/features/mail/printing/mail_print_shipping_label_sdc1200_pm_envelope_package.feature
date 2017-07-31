@@ -9,7 +9,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
   Scenario: Shipping Label - SDC-1200 - PM Envelope
 
    #mail_print_shipping_label_sdc1200_pm_fr_envelope
-    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
@@ -19,7 +19,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_large_envelope
-    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
@@ -29,7 +29,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_lfr_envelope
-    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
@@ -39,7 +39,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_pfr_envelope
-    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
@@ -52,7 +52,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
   Scenario: Shipping Label - SDC-1200 - PM Package
 
     #mail_print_shipping_label_sdc1200_pm_large_package
-    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
@@ -63,7 +63,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_package
-    Then select Print On Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then select Print On Shipping Label - SDC-1200
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1

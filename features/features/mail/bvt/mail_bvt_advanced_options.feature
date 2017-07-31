@@ -148,7 +148,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Certified Mail Advanced Options SDC-3930
-    Then select Print On Certified Mail Label - Stamps.com SDC-3930
+    Then select Print On Certified Mail Label - SDC-3930
 
     Then expect Print Form Certified Mail is checked
     Then expect Print Form Certified Mail is present
@@ -184,7 +184,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Shipping Labels Advanced Options
-    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - Paper
 
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
@@ -277,7 +277,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Rolls Advanced Options
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
 
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
@@ -333,7 +333,7 @@ Feature: Advanced Options BVT
     Then expect Advanced Options Cost Code is None
 
     # ------------------------------------------------------------ Envelopes Advanced Options
-    Then select Print On Envelope - #10, 4 ⅛" x 9 ½"
+    Then select Print On Envelope - 10
 
     # Populate Envelope form
     Then set Print form Mail-From to default
