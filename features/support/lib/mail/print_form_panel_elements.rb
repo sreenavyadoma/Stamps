@@ -42,7 +42,7 @@ module Stamps
 
         def initialize(param)
           super
-          @drop_down = StampsElement.new(browser.div(css: "table[id^=printmediadroplist-][id$=-triggerWrap]>tbody>tr>td>div[class*=trigger]"))
+          @drop_down = StampsElement.new(browser.div(css: "div[id^=printmediadroplist-][id$=-trigger-picker]"))
           @text_box = StampsTextBox.new(browser.text_field(css: "input[name^=printmediadroplist-][name$=inputEl]"))
           @upgrade_plan = UpgradePlan.new(param)
         end

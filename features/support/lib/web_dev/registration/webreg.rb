@@ -2,7 +2,7 @@ module Stamps
   module Registration
 
     class WebRegistration < Browser::StampsModal
-      attr_reader :bread_crumbs, :navigation, :profile, :membership, :footer, :choose_supplies, :security_first_question, :security_second_question
+      attr_reader :bread_crumbs, :navigation, :profile, :membership, :footer, :choose_supplies, :security_questions
       def initialize(param)
         super
         @navigation = Navigation::RegistrationNavigationBar.new(param)

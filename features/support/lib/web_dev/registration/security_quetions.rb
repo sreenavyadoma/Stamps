@@ -4,28 +4,28 @@ module Stamps
     class SecurityFirstQuestion < Browser::StampsModal
 
       def element
-        StampsElement.new(browser.spans(text: "What is your city of birth?")[0])
+        StampsTextBox.new(browser.spans(css: "button[title='1ST QUESTION']>span[class*=filter-option]")[0])
       end
 
       def select(str)
-        selection = StampsElement.new(browser.spans(text: str).first)
+        selection = StampsElement.new(browser.spans(text: str))
         15.times do
           return element.text if element.text.include?(str)
           element.click unless selection.present?
           selection.click
         end
-        expect(element.text).to include(str)
+        expect(selection.text).to include(str)
       end
     end
 
     class SecuritySecondQuestion < Browser::StampsModal
 
       def element
-        StampsTextBox.new(browser.span(text: "What was your high school mascot?")[1])
+        StampsTextBox.new(browser.spans(css: "button[title='2ND QUESTION']>span[class*=filter-option]"))
       end
 
       def select(str)
-        selection = StampsElement.new(browser.spans(text: str).last)
+        selection = StampsElement.new(browser.spans(text: str))
         15.times do
           return element.text if element.text.include?(str)
           element.click unless selection.present?
@@ -40,6 +40,8 @@ module Stamps
     end
 
     class SecurityQuestionsRegistration < Browser::StampsModal
+      attr_reader :first_question, :first_answer, :second_question, :second_answer, :get_started
+
       def initialize(param)
         super
         @first_question = SecurityFirstQuestion.new(param)

@@ -21,7 +21,7 @@ module Stamps
         place_order_button = StampsElement.new browser.button text: "Place Order"
         page_header = browser.h1 text: 'Customize your Welcome Kit'
         welcome_kit = StampsElement.new page_header
-        welcome_kit_message = StampsElement.neenw page_header.parent.p
+        welcome_kit_message = StampsElement.new page_header.parent.p
 
         download_page = DownloadPage.new(param)
         #@web_apps.mail.landing_page.whats_new_modal
@@ -33,10 +33,10 @@ module Stamps
 
         8.times do
           place_order_button.click
-          download_page.wait_until_present 2
-          web_mail.landing_page.whats_new_modal.wait_until_present 10
-          return download_page if download_page.present?
-          return web_mail if web_mail.landing_page.whats_new_modal.present?
+          #download_page.wait_until_present 2
+          #web_mail.landing_page.whats_new_modal.wait_until_present 10
+          #return download_page if download_page.present?
+          #return web_mail if web_mail.landing_page.whats_new_modal.present?
         end
         nil
       end
