@@ -18,7 +18,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
    #mail_print_stamps_wn_series_calculate
@@ -31,7 +30,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
   @mail_stamps_series_v
@@ -46,7 +44,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
    #mail_print_stamps_v_series_specify
@@ -59,7 +56,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
   @mail_stamps_series_r
@@ -74,7 +70,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
    #mail_print_stamps_r_series_specify
@@ -87,7 +82,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
   @mail_stamps_series_s
@@ -130,7 +124,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
    #mail_print_stamps_p_series_specify
@@ -143,7 +136,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
     Then click Mail Print modal Print button
 
     Then Sign out
