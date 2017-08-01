@@ -23,7 +23,7 @@ Feature:  Order Details Form - Reference # Field
     Then in Print modal, uncheck Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
-    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Print-On to Shipping Label - Paper
     Then set Print modal Printer to "factory"
     Then click print modal print button
     Then Sign out

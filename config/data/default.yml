@@ -62,6 +62,27 @@ url_prefix:
   qasc: printext.qasc
   rating: printext.qacc
 
+mail_print_media:
+  Stamps: 0
+  Shipping Label - Paper: 1
+  Shipping Label - SDC-1200: 2
+  Shipping Label - 5x8: 3
+  Envelope - 10: 4
+  Envelope - 9: 5
+  Envelope - A9: 6
+  Envelope - 6: 7
+  Envelope - A2: 8
+  Envelope - 7: 9
+  Envelope - 11: 10
+  Envelope - 12: 11
+  Certified Mail Label - SDC-3610: 12
+  Certified Mail Label - SDC-3710: 13
+  Certified Mail Label - SDC-3910: 14
+  Certified Mail Label - SDC-3930: 15
+  Certified Mail Label - SDC-3810: 16
+  Roll 4x6: 17
+  Roll 418x614: 18
+
 mail_services:
   First Class: sdc-servicedroplist-fcletter
   Media Mail: sdc-servicedroplist-mmpackage

@@ -5,7 +5,7 @@ Feature: International Shipping BVT
 
   @mail_bvt_international
   Scenario: International Shipping
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |

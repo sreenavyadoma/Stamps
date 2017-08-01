@@ -72,13 +72,6 @@ module Stamps
               }
             end
 
-
-
-
-
-
-
-
             if please_wait.present?
               logger.message(please_wait.paragraph)
               please_wait.ok

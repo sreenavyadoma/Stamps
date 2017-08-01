@@ -118,7 +118,7 @@ module Stamps
         @username_textbox = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
         @password_textbox = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
         @sign_in_button = StampsElement.new browser.button(id: "signInButton")
-        @sign_in_link = StampsElement.new browser.a(css: "a[class*=signInLink]")
+        @sign_in_link = StampsElement.new browser.a(css: "a[class$=signInLink]")
         @verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
         @invalid_msg = StampsElement.new browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")
         @whats_new_modal = WhatsNewModal.new(param)
@@ -139,7 +139,7 @@ module Stamps
       end
 
       def show_sign_in_modal
-        sign_in_link.click unless username_textbox.present?
+        sign_in_link.hover unless username_textbox.present?
       end
 
       def username(str)
@@ -147,15 +147,12 @@ module Stamps
         username_textbox.click
         username_textbox.clear
         username_textbox.set(str)
-        username_textbox.set(str)
-        username_textbox.set(str)
       end
 
       def password(str)
         show_sign_in_modal
         password_textbox.click
         password_textbox.clear
-        password_textbox.set(str)
         password_textbox.set(str)
         sign_in_form.click
         sign_in_form.double_click
