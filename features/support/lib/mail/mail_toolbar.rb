@@ -55,10 +55,10 @@ module Stamps
         return window if window.present?
 
         expect(print_button.present?).to be(true)
-        10.times do
+        30.times do
           begin
             print_button.click
-            window.wait_until_present(2)
+            window.wait_until_present(7)
             return window if window.present?
 
             #check for quantity dialog box to appear
@@ -90,7 +90,7 @@ module Stamps
             #ignore
           end
         end
-        expect(window.present?).to be(true)
+        expect(window.present?).to be(true), "Unable to open Mail Print Modal"
       end
 
       def open_sample_window window
