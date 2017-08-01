@@ -31,7 +31,7 @@ module Stamps
           else
             # do nothing
         end
-        expect(@print_form.present?).to be(true)
+        expect(@print_form.present?).to be(true), "#(selection) form is not present."
       end
 
       def present?

@@ -9,7 +9,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM Box Size
 
    #mail_print_roll_4x6_pm_large_box
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -20,7 +20,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_pm_medium_box
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -31,7 +31,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then click Mail Print modal Print button
 
     #mail_print_roll_4x6_pm_small_box
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -45,7 +45,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM Regional Box
 
    #mail_print_roll_4x6_pm_regional_box_a
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -56,7 +56,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_pm_regional_box_b
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4

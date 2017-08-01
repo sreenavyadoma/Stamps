@@ -9,7 +9,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - FCM
 
     #mail_print_sample_shipping_label_5x8_fcm_large_envelope
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -20,7 +20,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_5x8_fcm_package
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -34,7 +34,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
   Scenario: Sample Shipping Label - 5 ½” x 8 ½” - PSG
 
    #mail_print_sample_shipping_label_5x8_psg_large_package
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -45,7 +45,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_5x8_psg_oversized_package
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -56,7 +56,7 @@ Feature: Mail Sample Shipping Label - 5 ½” x 8 ½” - FCM PSG
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_5x8_psg_package
-    Then select Print On Shipping Label - 5 ½" x 8 ½"
+    Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8

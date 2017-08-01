@@ -31,7 +31,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then expect Orders Grid Email is test@stamps.com
 
     Then in Orders Toolbar, click Print button
-    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Print-On to Shipping Label - Paper
     Then set Print modal Printer to "factory"
     Then click print modal print button
 

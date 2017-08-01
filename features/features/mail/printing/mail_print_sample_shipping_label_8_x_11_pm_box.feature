@@ -9,7 +9,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
   Scenario: Sample Shipping Label - 8 ½” x 11” PM BOX Size Paper
 
     #mail_print_sample_shipping_label_8x11_pm_large_box
-    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -21,7 +21,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_8x11_pm_medium_box
-    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -33,7 +33,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then click Mail Print modal Print button
 
     #mail_print_sample_shipping_label_8x11_pm_small_box
-    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -48,7 +48,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
   Scenario: Sample Shipping Label - 8 ½” x 11” PM Regional BOX Paper
 
    #mail_print_sample_shipping_label_8x11_pm_regional_box_a
-    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -60,7 +60,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM BOX Paper
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_8x11_pm_regional_box_b
-    Then select Print On Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4

@@ -83,7 +83,7 @@ module Stamps
 
         def print
           print_button.click_while_present
-          reprint_link.wait_until_present(3)
+          reprint_link.wait_until_present(10)
           expect(reprint_link.text).to eql('Reprint')
         end
 

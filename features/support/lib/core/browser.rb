@@ -122,13 +122,13 @@ module Stamps
 
       def text
         begin
-          return element.value if truthy? && !element.value.nil? && element.value.size > 0
+          return element.text if truthy? && !element.text.nil? && element.text.size > 0
         rescue
           #ignore
         end
 
         begin
-          return element.text if truthy? && !element.text.nil? && element.text.size > 0
+          return element.value if truthy? && !element.value.nil? && element.value.size > 0
         rescue
           #ignore
         end
