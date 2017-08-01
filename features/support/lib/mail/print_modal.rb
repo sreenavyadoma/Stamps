@@ -12,32 +12,34 @@ module Stamps
         end
 
         def select(printer)
-          case printer.downcase
-            when /fac/
-              selection = StampsElement.new(browser.li(text: 'factory'))
-            when /kyocera/
-              selection = StampsElement.new(browser.li(text: /Kyocera/))
-            when /epson/
-              selection = StampsElement.new(browser.li(text: /EPSON/))
-            when /brother/
-              selection = StampsElement.new(browser.li(text: /Brother/))
-            when /officejet/
-              selection = StampsElement.new(browser.li(text: /Officejet/))
-            when /dymo/
-              selection = StampsElement.new(browser.li(text: /DYMO/))
-            when /zdesigner/
-              selection = StampsElement.new(browser.li(text: /ZDesigner/))
-            else
-              expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
-          end
+          begin
+            case printer.downcase
+              when /fac/
+                selection = StampsElement.new(browser.li(text: 'factory'))
+              when /kyocera/
+                selection = StampsElement.new(browser.li(text: /Kyocera/))
+              when /epson/
+                selection = StampsElement.new(browser.li(text: /EPSON/))
+              when /brother/
+                selection = StampsElement.new(browser.li(text: /Brother/))
+              when /officejet/
+                selection = StampsElement.new(browser.li(text: /Officejet/))
+              when /dymo/
+                selection = StampsElement.new(browser.li(text: /DYMO/))
+              when /zdesigner/
+                selection = StampsElement.new(browser.li(text: /ZDesigner/))
+              else
+                expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
+            end
 
-          10.times do
-            drop_down.click unless selection.present?
-            selection.click
-            sleep(0.15)
-            break if text_box.text.include?(printer)
-          end
-          expect(text_box.text).to include(printer)
+            10.times do
+              drop_down.click unless selection.present?
+              selection.click
+              sleep(0.15)
+              break if text_box.text.include?(printer)
+            end
+            expect(text_box.text).to include(printer)
+          end unless text_box.text.include?(printer)
         end
       end
 
