@@ -85,8 +85,8 @@ module Stamps
 
         def print
           print_button.click_while_present
-          reprint_link.wait_until_present(10)
-          expect(reprint_link.text).to eql('Reprint')
+          print_button.wait_while_present(5)
+          expect(print_button.present?).to be(false), "Unable to click Print button on Mail Print Modal."
         end
 
         def print_expecting_rating_error
