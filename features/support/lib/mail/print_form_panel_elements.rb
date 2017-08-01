@@ -36,6 +36,19 @@ module Stamps
         end
       end
 
+      class ManagePrintOptionsModal < Browser::StampsModal
+        attr_accessor :stamps
+
+        def initialize(param)
+          super
+
+        end
+
+        def search(str)
+
+        end
+      end
+
       class PrintOn < Browser::StampsModal
         attr_accessor :drop_down, :text_box, :upgrade_plan
         include PrintFormBlurOut
@@ -49,10 +62,6 @@ module Stamps
 
         def present?
           text_box.present?
-        end
-
-        def lov_look_up(str)
-
         end
 
         def print_on(str)
@@ -116,6 +125,9 @@ module Stamps
             when /Roll 418x614/
               param.print_media = :rolls
               selected_sub_str = 'Roll - 4 '
+            when /Manage Printing Options/
+              param.print_media = :manage_printing_options
+              selected_sub_str = 'Manage Printing Option...'
             else
               #ignore
           end
@@ -130,7 +142,11 @@ module Stamps
               if selection.present?
                 selection.scroll_into_view
                 selection.click
-                break if text_box.text.include?(selected_sub_str)
+                if str == 'Manage Printing Options'
+
+                else
+                  break if text_box.text.include?(selected_sub_str)
+                end
                 expect(upgrade_plan.present?).not_to be(true), "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
               end
             rescue
@@ -152,12 +168,16 @@ module Stamps
       end
 
       class MailToCountry < Browser::StampsModal
-        attr_reader :dom_text_area
+        attr_reader :dom_text_area, :dom_dd, :int_dd, :dom_textbox, :int_textbox
         include PrintFormBlurOut
 
         def initialize(param)
           super
           @dom_text_area = MailDomTextArea.new(param)
+          @dom_dd = StampsTextBox.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
+          @int_dd = StampsTextBox.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
+          @dom_textbox = StampsTextBox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
+          @int_textbox = StampsTextBox.new(browser.inputs(name: "ShipCountryCode")[1])
         end
 
         def enabled?
@@ -165,40 +185,42 @@ module Stamps
         end
 
         def domestic?
-          15.times do
-            sleep(0.05)
-            return true if dom_text_area.present?
+          30.times do
+            return true if dom_dd.present?
+            sleep(0.025)
+            return false if int_dd.present?
+            sleep(0.025)
           end
-          dom_text_area.present?
+          expect(dom_dd.present? || int_dd.present?).to be(true), "Unable to determine if Mail-To Country dropdown is for domestic or international."
         end
 
         def drop_down
-          StampsElement.new((domestic?)?browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"):browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
+          StampsTextBox.new((domestic?)? dom_dd : int_dd)
         end
 
         def text_box
-          StampsTextBox.new((domestic?)?browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"):browser.inputs(name: "ShipCountryCode")[1])
+          StampsTextBox.new((domestic?)? dom_textbox : int_textbox)
         end
 
         def select(str)
-          geography = :domestic
-          geography = :international unless str.downcase == 'united states'
-
-          drop_down.click
-          selection = StampsElement.new(browser.lis(text: str)[(domestic?)?0:1])
-          10.times do
-            begin
-              break if text_box.text == str
-              drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection.click
-            rescue
-              #ignore
+          begin
+            drop_down.click
+            selection = StampsElement.new(browser.lis(text: str)[(domestic?)? 0 : 1])
+            30.times do
+              begin
+                drop_down.click unless selection.present?
+                selection.scroll_into_view
+                selection.click
+                blur_out
+                break if text_box.text == str
+              rescue
+                #ignore
+              end
             end
-          end
+          end unless text_box.text == str
+
           expect(text_box.text).to eql(str)
-          drop_down.click if selection.present?
-          geography
+          blur_out
         end
       end
 
@@ -248,7 +270,6 @@ module Stamps
       end
 
       class PrintFormEmail < Browser::StampsModal
-
       end
 
       class PrintFormWeight < Browser::StampsModal
@@ -599,25 +620,26 @@ module Stamps
       end
 
       class PrintFormMailTo < Browser::StampsModal
-        attr_reader :address, :mail_to_link
+        attr_reader :address, :mail_to_link, :mail_to_country
         include PrintFormBlurOut
 
         def initialize(param)
           super
-          @country = MailToCountry.new(param)
+          @mail_to_country = MailToCountry.new(param)
           @mail_to_link = PrintFormMailToLink.new(param)
           @address = MailToDom.new(param)
         end
 
         def country(str)
-          expect(@country.present?).to be(true)
+          expect(mail_to_country.present?).to be(true)
           blur_out
-          geography = @country.select(str)
+          mail_to_country.select(str)
           blur_out
-          expect([:domestic, :international]).to include(geography)
-          # dymanically create appropriate form per geography
-          @address = MailToInt.new(param) if geography == :international
-          @address = MailToDom.new(param) if geography == :domestic
+          if mail_to_country.domestic?
+            @address = MailToInt.new(param)
+          else
+            @address = MailToDom.new(param)
+          end
         end
       end
 
