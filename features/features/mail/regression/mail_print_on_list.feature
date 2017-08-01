@@ -23,5 +23,5 @@ Feature: Print On List Of Values
     Then select Print On Certified Mail Label - SDC-3930
     Then select Print On Certified Mail Label - SDC-3810
     Then select Print On Roll 4x6
-    Then select Print On Roll 418x614
+    Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
     Then Sign out
