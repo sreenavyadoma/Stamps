@@ -58,19 +58,19 @@ module Stamps
         10.times do
           begin
             print_button.click
-
             window.wait_until_present(2)
+            return window if window.present?
 
             #check for quantity dialog box to appear
             # if quantity dialog box is present, click Agree and something
 
-            if print_quantity_warning.present?
-              5.times {
-              print_quantity_warning.agree_and_continue_btn
-              sleep(0.120)
-              agree_and_continue_btn.click
-              }
-            end
+            # if print_quantity_warning.present?
+            #   5.times do
+            #     print_quantity_warning.agree_and_continue_btn
+            #     sleep(0.120)
+            #     agree_and_continue_btn.click
+            #   end
+            # end
 
             if please_wait.present?
               logger.message(please_wait.paragraph)
