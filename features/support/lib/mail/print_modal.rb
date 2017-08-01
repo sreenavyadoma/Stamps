@@ -84,8 +84,10 @@ module Stamps
         end
 
         def print
+          wait_until_present(8)
+          expect(present?).to be(true), "Print button on Mail Print Modal is not present."
           print_button.click_while_present
-          print_button.wait_while_present(5)
+          print_button.wait_while_present(8)
           expect(print_button.present?).to be(false), "Unable to click Print button on Mail Print Modal."
         end
 
