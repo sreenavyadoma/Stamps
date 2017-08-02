@@ -64,15 +64,18 @@ module Stamps
       end
 
       class MailPrintModal < Browser::StampsModal
-        attr_accessor :paper_tray, :printer, :print_button, :reprint_link, :window_title
+        attr_accessor :paper_tray, :printer, :print_button, :reprint_link
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(text: "Print"))
           @printer = MailPrinterComboBox.new(param)
           @paper_tray = MailPaperTrayComboBox.new(param)
           @print_button = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
           @reprint_link = StampsElement.new(browser.a(text: 'Reprint'))
+        end
+
+        def window_title
+          StampsElement.new(browser.div(text: "Print"))
         end
 
         def present?
@@ -87,6 +90,8 @@ module Stamps
           wait_until_present(8)
           expect(present?).to be(true), "Print button on Mail Print Modal is not present."
           5.times do
+            print_button.click
+            print_button.click
             print_button.click
             sleep(0.75)
             break unless print_button.present?
