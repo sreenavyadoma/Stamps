@@ -43,7 +43,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
 
    #mail_print_stamps_s_series_specify
@@ -56,7 +55,6 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
     Then click Mail Print modal Print button
     Then Sign out
 
