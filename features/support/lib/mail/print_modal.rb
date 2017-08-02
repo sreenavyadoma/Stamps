@@ -111,6 +111,7 @@ module Stamps
         def title
           StampsElement.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
         end
+
         def error_ok_button
           browser.span(text: 'OK')
         end
