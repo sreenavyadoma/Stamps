@@ -24,9 +24,8 @@ Feature: Registration Security questions page happy path
     Then set Membership page Credit Card Number to default value
     Then set Membership page Month to Dec (12)
     Then set Membership page Year to 2026
+    Then check Membership page Terms & Conditions
     Then click Membership page Continue button
-
-    #Then Pause for 5 second
 
     # Choose supplies Page
     #Then expect welcome_kit_message exists

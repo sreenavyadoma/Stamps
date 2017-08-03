@@ -4,11 +4,11 @@ module Stamps
     class SecurityFirstQuestion < Browser::StampsModal
 
       def element
-        StampsTextBox.new(browser.spans(css: "button[title='1ST QUESTION']>span[class*=filter-option]")[0])
+        StampsTextBox.new(browser.spans(css: "button[title='1ST QUESTION']>span[class*=filter-option]"))
       end
 
       def select(str)
-        selection = StampsElement.new(browser.spans(text: str))
+        selection = StampsElement.new(browser.spans(text: str).first)
         15.times do
           return element.text if element.text.include?(str)
           element.click unless selection.present?
@@ -25,7 +25,7 @@ module Stamps
       end
 
       def select(str)
-        selection = StampsElement.new(browser.spans(text: str))
+        selection = StampsElement.new(browser.spans(text: str).last)
         15.times do
           return element.text if element.text.include?(str)
           element.click unless selection.present?

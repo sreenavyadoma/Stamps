@@ -238,7 +238,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ d
 end
 
 Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do
-  registration.membership.agree_to_termss.click
+  registration.membership.agree_to_terms.click
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is checked$/ do

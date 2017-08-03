@@ -157,10 +157,10 @@ module Stamps
       end
 
       module MembershipTermsAndConditions
-        def agree_to_termss
-          @agree_to_termss = StampsWatirCheckBox.new(browser.checkbox(name: 'termsConditions'))
-          @agree_to_termss.help_elements = browser.lis(css: "div[class=terms-msg]>span")
-          @agree_to_termss
+        def agree_to_terms
+          @agree_to_terms = StampsWatirCheckBox.new(browser.checkbox(name: 'termsConditions'))
+          @agree_to_terms.help_elements = browser.lis(css: "div[class=terms-msg]>span")
+          @agree_to_terms
         end
 
         def terms_conditions_link
