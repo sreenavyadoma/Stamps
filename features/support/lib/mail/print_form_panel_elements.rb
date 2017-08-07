@@ -882,26 +882,29 @@ module Stamps
       end
 
       class PrintFormMailTo < Browser::StampsModal
-        attr_reader :address, :mail_to_link, :mail_to_country
+        attr_reader :mail_to_link, :mail_to_country
         include PrintFormBlurOut
 
         def initialize(param)
           super
           @mail_to_country = MailToCountry.new(param)
           @mail_to_link = PrintFormMailToLink.new(param)
-          @address = MailToDom.new(param)
+        end
+
+        def address
+          blur_out
+          if mail_to_country.domestic?
+            @address = MailToDom.new(param)
+          else
+            @address = MailToInt.new(param)
+          end
         end
 
         def country(str)
           expect(mail_to_country.present?).to be(true)
           blur_out
           mail_to_country.select(str)
-          blur_out
-          if mail_to_country.domestic?
-            @address = MailToInt.new(param)
-          else
-            @address = MailToDom.new(param)
-          end
+          address
         end
       end
 
