@@ -18,7 +18,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Print button
-    Then set Print modal Print-On to "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then set Print modal Print-On to "Roll 418x614"
     Then click print modal print button
 
     Then click Filter Panel Shipped tab

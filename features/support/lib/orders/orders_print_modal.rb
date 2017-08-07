@@ -24,7 +24,7 @@ module Stamps
           when /Shipping Label - 5 /
             return StampsElement.new(browser.li text: /Shipping Label - 5 /)
 
-          # Roll - 4 ⅛" x 6 ¼" Shipping Label
+          # Roll 418x614
           when /Roll - 4/
             return StampsElement.new(browser.li text: /Roll - 4/)
 

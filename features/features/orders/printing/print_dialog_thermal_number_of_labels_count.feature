@@ -34,7 +34,7 @@ Feature:  Requires x-number of label sheets
     Then check Orders Grid row 3
 
     Then in Orders Toolbar, click Print button
-    Then set Print modal Print-On to "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then set Print modal Print-On to "Roll 418x614"
     Then Pause for 1 second
     Then expect Print modal number of required label sheets is 3
     Then in Print modal, click Close button
