@@ -204,12 +204,17 @@ end
 
 Then /^[Ee]xpect Print Form Certified Mail is checked$/ do
   step "Expect Print form responds to Certified Mail (certified_mail)"
-  expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Return Receipt is NOT checked"
+  expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Certified Mail is NOT checked"
 end
 
-Then /^[Ee]xpect Print Form Certified Mail is present$/ do
+Then /^[Ee]xpect Print Form Certified Mail is visible$/ do
   step "Expect Print form responds to Certified Mail (certified_mail)"
-  expect(stamps.mail.print_form.certified_mail.present?).to be(true), "Print form include Return Receipt is NOT present"
+  expect(stamps.mail.print_form.certified_mail.visible?).to be(true), "Print form include Certified Mail is NOT visible"
+end
+
+Then /^[Ee]xpect Print Form Certified Mail is disabled$/ do
+  step "Expect Print form responds to Certified Mail (certified_mail)"
+  expect(stamps.mail.print_form.certified_mail.enabled?).to be(false), "Print form include Certified Mail is enabled"
 end
 
 Then /^[Ee]xpect Advanced Options include Return Address is present$/ do
