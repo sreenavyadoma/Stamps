@@ -922,7 +922,7 @@ module Stamps
             return customs_form if customs_form.present?
             button.scroll_into_view
             button.click
-            sleep(0.35)
+            sleep(0.2)
           end
           expect(customs_form.present?).to be(true)
         end
