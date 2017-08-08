@@ -17,10 +17,21 @@ module Stamps
         browser.button(text: "Confirm").wait_until_present 6
       end
 
-     # def amount_radio_button
-     #       @ten_dollars =
-      #      @twenty_dollars =    sta
-     # end
+      def buy_postage_10
+        checkbox_element = browser.input(css: "input[value='1:10.0']")
+        verify_element = checkbox_element.parent.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
+      end
+
+      def buy_postage_20
+        checkbox_element = browser.input(css: "input[value='2:20.0']")
+        verify_element = checkbox_element.parent.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
+      end
 
       def confirm
         confirm_button = StampsElement.new browser.button text: "Confirm"

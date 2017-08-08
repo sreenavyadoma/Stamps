@@ -56,7 +56,7 @@ Then /^[Ss]et [Rr]egistration [Mm]embership terms and condition$/ do
 end
 
 Then /^[Ss]et Security questions page select first question to (.*)$/ do |str|
-  registration.security_questions.first_question.select(str)
+  registration.security_questions.first_question.select
 end
 
 Then /^[Ss]et Security questions page select first answer to (.*)$/ do |str|

@@ -4,14 +4,13 @@ module Stamps
     class SecurityFirstQuestion < Browser::StampsModal
 
       def element
-        StampsTextBox.new(browser.spans(css: "button[title='1ST QUESTION']>span[class*=filter-option]"))
+        StampsElement.new(browser.span(css: "button[title*='1ST QUESTION']>span[class*=filter-option]"))
       end
 
-      def select(str)
-        selection = StampsElement.new(browser.spans(text: str).first)
+      def select
+        element.click
+        selection = StampsElement.new(browser.span(css: "li[id=newsecretquestions]>div:nth-child(2)>div>div>div>div>div>div>ul>li:nth-child(4)"))
         15.times do
-          return element.text if element.text.include?(str)
-          element.click unless selection.present?
           selection.click
         end
         expect(selection.text).to include(str)
@@ -21,14 +20,13 @@ module Stamps
     class SecuritySecondQuestion < Browser::StampsModal
 
       def element
-        StampsTextBox.new(browser.spans(css: "button[title='2ND QUESTION']>span[class*=filter-option]"))
+        StampsElement.new(browser.span(css: "button[title*='2ND QUESTION']>span[class*=filter-option]"))
       end
 
       def select(str)
-        selection = StampsElement.new(browser.spans(text: str).last)
+        element.click
+        selection = StampsElement.new(browser.spans(css: "li[id=newsecretquestions]>div:nth-child(2)>div>div>div>div>div>div>ul>li:nth-child(4)"))
         15.times do
-          return element.text if element.text.include?(str)
-          element.click unless selection.present?
           selection.click
         end
         expect(element.text).to include(str)

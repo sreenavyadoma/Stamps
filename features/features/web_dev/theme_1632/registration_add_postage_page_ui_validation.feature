@@ -1,9 +1,9 @@
-Feature: Registration Security questions page happy path
+Feature: Registration Add Postage page UI validation
 
   Background:
     Given I loaded the default registration page
 
-  @registration_security_questions_happy_path
+  @registration_add_postage_page_ui_validation
   Scenario: Registration Security questions page happy path
 
     # Profile Page
@@ -31,14 +31,8 @@ Feature: Registration Security questions page happy path
     Then in Choose Supplies page, click Place Order button
 
     # Add Postage Page
-    Then in Add Postage page, click Confirm button
+    Then expect add_postage_to_account message exists
+    Then expect Confirm button exists
+    Then expect buy postage 10 radio button exists
+    Then expect buy postage 20 radio button exists
 
-    # Select security quetions and answers
-    Then set Security questions page select first question to What is your city of birth?
-    Then set Security questions page select first answer to Auto11
-    Then set Security questions page select second question to What was your high school mascot?
-    Then set Security questions page select second answer to Auto11
-    Then click Get Started button
-
-    # Validate newly created account welcome page
-    Then expect congratulations message exists
