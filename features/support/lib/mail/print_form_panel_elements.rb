@@ -46,7 +46,7 @@ module Stamps
             when /Certified Mail Label - SDC-3910/
               print_media = :certified_mails_3910_3930
             when /Certified Mail Label - SDC-3930/
-              print_media = :certified_mails_3910_39300
+              print_media = :certified_mails_3910_3930
             when /Certified Mail Label - SDC-3810/
               print_media = :certified_mails_3810
             when /Shipping Label/
