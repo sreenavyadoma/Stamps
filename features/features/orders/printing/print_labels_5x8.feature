@@ -47,7 +47,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
     Then in Orders Toolbar, click Print button
-    Then set Print modal Print-On to "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then set Print modal Print-On to "Roll 418x614"
     Then click print modal print button
 
     Then add new order
@@ -130,7 +130,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then click print modal print button
     Then Sign out
 
-  Scenario: Print - Roll - 4 ⅛" x 6 ¼" Shipping Label
+  Scenario: Print - Roll 418x614
     Then add new order
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 5 and 8
@@ -140,7 +140,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
     Then in Orders Toolbar, click Print button
-    Then set Print modal Print-On to "Roll - 4 ⅛" x 6 ¼" Shipping Label"
+    Then set Print modal Print-On to "Roll 418x614"
     Then click print modal print button
     Then Sign out
 

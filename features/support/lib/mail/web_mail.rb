@@ -28,6 +28,8 @@ module Stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil? || @print_form.print_media != :certified_mails_3810
           when :rolls
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls) if @print_form.nil? || @print_form.print_media != :rolls
+          when :manage_printing_options
+            @print_form
           else
             # do nothing
         end
