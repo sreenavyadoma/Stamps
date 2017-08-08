@@ -28,7 +28,6 @@ Feature: Registration Security questions page happy path
     Then click Membership page Continue button
 
     # Choose supplies Page
-    #Then expect welcome_kit_message exists
     Then in Choose Supplies page, click Place Order button
 
     # Select security quetions and answers
