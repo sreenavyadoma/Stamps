@@ -59,7 +59,7 @@ module Stamps
         def select(selection)
           logger.info "Made In #{selection}"
           drop_down.click
-          selection_element = StampsElement.new(browser.lis(text: selection)[((param.web_app == :mail)?index+1:index)])
+          selection_element = StampsElement.new(browser.lis(text: selection)[index])
           10.times do
             drop_down.click unless selection_element.present?
             selection_element.click

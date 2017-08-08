@@ -5,8 +5,13 @@ Feature: Print On List Of Values
 
   @mail_print_on_list_of_values
   Scenario: Print On List Of Values
-    Then select Print On Shipping Label - Paper
+    #Then select Print On Manage Printing Options
+    #Then expect Manage Print Options modal is present
+    #Then search Manage Print Options for Shipping Label - Paper
+
+
     Then select Print On Stamps
+    Then select Print On Shipping Label - Paper
     Then select Print On Shipping Label - SDC-1200
     Then select Print On Shipping Label - 5x8
     Then select Print On Envelope - 10
@@ -23,5 +28,5 @@ Feature: Print On List Of Values
     Then select Print On Certified Mail Label - SDC-3930
     Then select Print On Certified Mail Label - SDC-3810
     Then select Print On Roll 4x6
-    Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
+    Then select Print On Roll 418x614
     Then Sign out

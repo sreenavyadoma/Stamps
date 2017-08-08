@@ -36,126 +36,388 @@ module Stamps
         end
       end
 
+      module PrintMediaHelper
+        def print_media(str)
+          case str
+            when /Stamps/
+              print_media = :stamps
+            when /Shipping Label/
+              print_media = :labels
+            when /Envelope/
+              print_media = :envelopes
+            when /Certified Mail/
+              print_media = :certified_mails
+            when /Roll/
+              print_media = :rolls
+            when /Manage Printing Options/
+              print_media = :manage_printing_options
+            else
+              #ignore
+          end
+          expect([:stamps, :labels, :envelopes, :certified_mails, :rolls, :manage_printing_options]).to include(print_media)
+          print_media
+        end
+
+        def selected_sub_str(str)
+          case str
+            when /Stamps/
+              return 'Stamps'
+            when /Shipping Label - Paper/
+              return 'Paper'
+            when /Shipping Label - SDC-1200/
+              return 'SDC-1200'
+            when /Shipping Label - 5x8/
+              return 'Shipping Label - 5 '
+            when /Envelope - 10/
+              return 'Envelope - #10'
+            when /Envelope - 9/
+              return 'Envelope - #9'
+            when /Envelope - A9/
+              return 'Envelope - #A9'
+            when /Envelope - 6/
+              return 'Envelope - #6'
+            when /Envelope - A2/
+              return 'Envelope - #A2'
+            when /Envelope - 7/
+              return 'Envelope - #7'
+            when /Envelope - 11/
+              return 'Envelope - #11'
+            when /Envelope - 12/
+              return 'Envelope - #12'
+            when /Certified Mail Label - SDC-3610/
+              return 'SDC-3610'
+            when /Certified Mail Label - SDC-3710/
+              return 'SDC-3710'
+            when /Certified Mail Label - SDC-3910/
+              return 'SDC-3910'
+            when /Certified Mail Label - SDC-3930/
+              return 'SDC-3930'
+            when /Certified Mail Label - SDC-3810/
+              return 'SDC-3810'
+            when /Roll 4x6/
+              return 'Roll - 4'
+            when /Roll 418x614/
+              return 'Roll - 4 '
+            when /Manage Printing Options/
+              return 'Manage Printing Option...'
+            else
+              #ignore
+          end
+        end
+
+        def mpo_search_str(str)
+          case str
+            when /Stamps/
+              return 'stamps'
+            when /Shipping Label - Paper/
+              return 'Shipping Label - 8 '
+            when /Shipping Label - SDC-1200/
+              return 'Shipping Label - Stamps.com SDC-1200'
+            when /Shipping Label - 5x8/
+              return 'Shipping Label - 5 '
+            when /Envelope - 10/
+              return 'Envelope - #10'
+            when /Envelope - 9/
+              return 'Envelope - #9'
+            when /Envelope - A9/
+              return 'Envelope - #A9'
+            when /Envelope - 6/
+              return 'Envelope - #6'
+            when /Envelope - A2/
+              return 'Envelope - #A2'
+            when /Envelope - 7/
+              return 'Envelope - #7'
+            when /Envelope - 11/
+              return 'Envelope - #11'
+            when /Envelope - 12/
+              return 'Envelope - #12'
+            when /Certified Mail Label - SDC-3610/
+              return 'Certified Mail Label - Stamps.com SDC-3610'
+            when /Certified Mail Label - SDC-3710/
+              return 'Certified Mail Label - Stamps.com SDC-3710'
+            when /Certified Mail Label - SDC-3910/
+              return 'Certified Mail Label - Stamps.com SDC-3910'
+            when /Certified Mail Label - SDC-3930/
+              return 'Certified Mail Label - Stamps.com SDC-3930'
+            when /Certified Mail Label - SDC-3810/
+              return 'Certified Mail #11 Envelope - Stamps.com SDC-3810'
+            when /Roll 4x6/
+              return 'Roll - 4" x 6" Shipping Label'
+            when /Roll 418x614/
+              return 'Roll - 4 '
+            else
+              #ignore
+          end
+        end
+
+        def selection_element(str)
+          case str
+            when /Stamps/
+              return 'stamps'
+            when /Shipping Label - Paper/
+              return 'Shipping Label - 8 '
+            when /Shipping Label - SDC-1200/
+              return 'Shipping Label - Stamps.com SDC-1200'
+            when /Shipping Label - 5x8/
+              return 'Shipping Label - 5 '
+            when /Envelope - 10/
+              return 'Envelope - #10'
+            when /Envelope - 9/
+              return 'Envelope - #9'
+            when /Envelope - A9/
+              return 'Envelope - #A9'
+            when /Envelope - 6/
+              return 'Envelope - #6'
+            when /Envelope - A2/
+              return 'Envelope - #A2'
+            when /Envelope - 7/
+              return 'Envelope - #7'
+            when /Envelope - 11/
+              return 'Envelope - #11'
+            when /Envelope - 12/
+              return 'Envelope - #12'
+            when /Certified Mail Label - SDC-3610/
+              return 'Certified Mail Label - Stamps.com SDC-3610'
+            when /Certified Mail Label - SDC-3710/
+              return 'Certified Mail Label - Stamps.com SDC-3710'
+            when /Certified Mail Label - SDC-3910/
+              return 'Certified Mail Label - Stamps.com SDC-3910'
+            when /Certified Mail Label - SDC-3930/
+              return 'Certified Mail Label - Stamps.com SDC-3930'
+            when /Certified Mail Label - SDC-3810/
+              return 'Certified Mail #11 Envelope - Stamps.com SDC-3810'
+            when /Roll 4x6/
+              return 'Roll - 4" x 6" Shipping Label'
+            when /Roll 418x614/
+              return 'Roll - 4 '
+            else
+              #ignore
+          end
+        end
+      end
+
       class ManagePrintOptionsModal < Browser::StampsModal
-        attr_accessor :stamps
+        include PrintMediaHelper
+
+        attr_accessor :stamps, :search_field, :search_result, :save_button, :close_button
 
         def initialize(param)
           super
+          @search_field = StampsTextBox.new(browser.text_field(css: "[placeholder='Search']"))
+          @save_button = StampsElement.new(browser.span(text: "Save"))
+          @close_button = StampsElement.new(browser.img(class: "x-tool-img x-tool-close"))
+        end
 
+        def present?
+          search_field.present?
+        end
+
+        def wait_until_present(*args)
+          search_field.wait_until_present(*args)
+        end
+
+        def show_all
+          show_stamps
+          show_shipping_label_paper
+          show_shipping_label_sdc1200
+          show_shipping_label_5x8
+          show_envelope_10
+          show_envelope_9
+          show_envelope_a9
+          show_envelope_6
+          show_envelope_a2
+          show_envelope_7
+          show_envelope_11
+          show_envelope_12
+          show_certified_mail_sdc3610
+          show_certified_mail_sdc3710
+          show_certified_mail_sdc3910
+          show_certified_mail_sdc3930
+          show_certified_mail_sdc3810
+          show_roll_4x6
+          show_roll_418x614
+          save
+        end
+
+        def show_stamps
+          show("Stamps")
+        end
+
+        def show_shipping_label_paper
+          show("Shipping Label - Paper")
+        end
+
+        def show_shipping_label_sdc1200
+          show("Shipping Label - SDC-1200")
+        end
+
+        def show_shipping_label_5x8
+          show("Shipping Label - 5x8")
+        end
+
+        def show_envelope_10
+          show("Envelope - 10")
+        end
+
+        def show_envelope_9
+          show("Envelope - 9")
+        end
+
+        def show_envelope_a9
+          show("Envelope - A9")
+        end
+
+        def show_envelope_6
+          show("Envelope - 6")
+        end
+
+        def show_envelope_a2
+          show("Envelope - A2")
+        end
+
+        def show_envelope_7
+          show("Envelope - 7")
+        end
+
+        def show_envelope_11
+          show("Envelope - 11")
+        end
+
+        def show_envelope_12
+          show("Envelope - 12")
+        end
+
+        def show_certified_mail_sdc3610
+          show("Certified Mail Label - SDC-3610")
+        end
+
+        def show_certified_mail_sdc3710
+          show("Certified Mail Label - SDC-3710")
+        end
+
+        def show_certified_mail_sdc3910
+          show("Certified Mail Label - SDC-3910")
+        end
+
+        def show_certified_mail_sdc3930
+          show("Certified Mail Label - SDC-3930")
+        end
+
+        def show_certified_mail_sdc3810
+          show("Certified Mail Label - SDC-3810")
+        end
+
+        def show_roll_4x6
+          show("Roll 4x6")
+        end
+
+        def show_roll_418x614
+          show("Roll 418x614")
+        end
+
+        def show(str)
+          search(str).check
         end
 
         def search(str)
+          search_field.set(mpo_search_str(str))
+          30.times do
+            sleep(0.05)
+            break if browser.divs(css: "[class=x-grid-row-checker]").size == 1
+          end
+          search_result_count = browser.divs(css: "[class=x-grid-row-checker]").size
+          expect(search_result_count).to eql(1), "Search Results yield more than 1. Got #{search_result_count}"
 
+          clickable_element = browser.div(css: "[class=x-grid-row-checker]")
+          verify = browser.div(css: "[class=x-grid-row-checker]").parent.parent.parent.parent.parent
+          @search_result = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "selected")
+        end
+
+        def save
+          save_button.click_while_present
+          sleep(1)
+          expect(save_button.present?).to be(false), "Failed to save Manage Print Options, modal might still be open. Check your test."
+        end
+
+        def close
+          close_button.click_while_present
+          sleep(1)
+          expect(close_button.present?).to be(false), "Failed to close Manage Print Options, modal might still be open. Check your test."
         end
       end
 
       class PrintOn < Browser::StampsModal
-        attr_accessor :drop_down, :text_box, :upgrade_plan
         include PrintFormBlurOut
+        include PrintMediaHelper
+
+        attr_accessor :drop_down, :text_box, :upgrade_plan, :manage_printing_options_lov, :manage_printing_options
 
         def initialize(param)
           super
           @drop_down = StampsElement.new(browser.div(css: "div[id^=printmediadroplist-][id$=-trigger-picker]"))
           @text_box = StampsTextBox.new(browser.text_field(name: "PrintMedia"))
           @upgrade_plan = UpgradePlan.new(param)
+          @manage_printing_options_lov = StampsElement.new(browser.li(text: 'Manage Printing Options...'))
+          @manage_printing_options = ManagePrintOptionsModal.new(param)
         end
 
         def present?
           text_box.present?
         end
 
+        def manage_printing_options_modal
+          # Open Mange Print Options modal
+          begin
+            10.times do
+              break if manage_printing_options.present?
+              drop_down.click unless manage_printing_options_lov.present?
+              manage_printing_options_lov.click
+              sleep(0.25)
+            end
+            expect(manage_printing_options.present?).to be(true), "Unable to open Manage Printing Options modal"
+          end unless manage_printing_options.present?
+          manage_printing_options
+        end
+
+        def show_all_print_media
+          drop_down.click unless manage_printing_options_lov.present?
+          5.times do
+            break if browser.lis(css: "li[class*=x-boundlist-item]").size == 20
+          end
+          manage_printing_options_modal.show_all if browser.lis(css: "li[class*=x-boundlist-item]").size < 20
+        end
+
         def print_on(str)
           drop_down.wait_until_present(4)
           drop_down.click
-          case str
-            when /Stamps/
-              param.print_media = :stamps
-              selected_sub_str = 'Stamps'
-            when /Shipping Label - Paper/
-              param.print_media = :labels
-              selected_sub_str = 'Paper'
-            when /Shipping Label - SDC-1200/
-              param.print_media = :labels
-              selected_sub_str = 'SDC-1200'
-            when /Shipping Label - 5x8/
-              param.print_media = :labels
-              selected_sub_str = 'Shipping Label - 5 '
-            when /Envelope - 10/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #10'
-            when /Envelope - 9/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #9'
-            when /Envelope - A9/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #A9'
-            when /Envelope - 6/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #6'
-            when /Envelope - A2/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #A2'
-            when /Envelope - 7/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #7'
-            when /Envelope - 11/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #11'
-            when /Envelope - 12/
-              param.print_media = :envelopes
-              selected_sub_str = 'Envelope - #12'
-            when /Certified Mail Label - SDC-3610/
-              param.print_media = :certified_mails
-              selected_sub_str = 'SDC-3610'
-            when /Certified Mail Label - SDC-3710/
-              param.print_media = :certified_mails
-              selected_sub_str = 'SDC-3710'
-            when /Certified Mail Label - SDC-3910/
-              param.print_media = :certified_mails_3910_3930
-              selected_sub_str = 'SDC-3910'
-            when /Certified Mail Label - SDC-3930/
-              param.print_media = :certified_mails_3910_3930
-              selected_sub_str = 'SDC-3930'
-            when /Certified Mail Label - SDC-3810/
-              param.print_media = :certified_mails_3810
-              selected_sub_str = 'SDC-3810'
-            when /Roll 4x6/
-              param.print_media = :rolls
-              selected_sub_str = 'Roll - 4'
-            when /Roll 418x614/
-              param.print_media = :rolls
-              selected_sub_str = 'Roll - 4 '
-            when /Manage Printing Options/
-              param.print_media = :manage_printing_options
-              selected_sub_str = 'Manage Printing Option...'
-            else
-              #ignore
-          end
+          param.print_media = print_media(str)
+          selected_sub_str = selected_sub_str(str)
+          mpo_search_str = mpo_search_str(str)
 
-          expect(['Paper', 'SDC-1200', 'Shipping Label - 5 ', 'Envelope - #6', 'Envelope - #A2', 'Envelope - #7', 'Envelope - #10', 'Envelope - #9', 'Envelope - #A9',
-                  'Envelope - #11', 'Envelope - #12', 'SDC-3610', 'SDC-3710', 'SDC-3910', 'SDC-3930', 'SDC-3810', 'Roll - 4 ', 'Roll - 4', 'Stamps']).to include(selected_sub_str)
-
-          selection = StampsElement.new(browser.li(css: "li[data-recordindex='#{data_for(:mail_print_media, {})[str]}']"))
-          30.times do
+          10.times do
             begin
-              drop_down.click unless selection.present?
+              if text_box.text.include?(selected_sub_str)
+                drop_down.click if manage_printing_options_lov.present?
+                return param.print_media
+              end
+
+              selection = StampsElement.new(browser.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
+              drop_down.click unless manage_printing_options_lov.present?
               if selection.present?
                 selection.scroll_into_view
                 selection.click
-                if str == 'Manage Printing Options'
-
-                else
-                  break if text_box.text.include?(selected_sub_str)
-                end
-                expect(upgrade_plan.present?).not_to be(true), "Username #{param.usr} is not provisioned to print Certified Mail in PAM #{param.test_env} - #{upgrade_plan.paragraph}"
+                selection.click
+              elsif manage_printing_options_lov.present? && !selection.present?
+                show_all_print_media
               end
             rescue
               #ignore
             end
             sleep(0.15)
           end
+          drop_down.click unless manage_printing_options_lov.present?
+          expect(selection.present?).to be(true), "Print On selection #{selection} is not in the Print On dropdown List of Values. Manually add it in Manage Printing Options modal." if manage_printing_options_lov.present?
           expect(text_box.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{text_box.text}\""
-          param.print_media
         end
 
         def tooltip(selection)
@@ -620,26 +882,29 @@ module Stamps
       end
 
       class PrintFormMailTo < Browser::StampsModal
-        attr_reader :address, :mail_to_link, :mail_to_country
+        attr_reader :mail_to_link, :mail_to_country
         include PrintFormBlurOut
 
         def initialize(param)
           super
           @mail_to_country = MailToCountry.new(param)
           @mail_to_link = PrintFormMailToLink.new(param)
-          @address = MailToDom.new(param)
+        end
+
+        def address
+          blur_out
+          if mail_to_country.domestic?
+            @address = MailToDom.new(param)
+          else
+            @address = MailToInt.new(param)
+          end
         end
 
         def country(str)
           expect(mail_to_country.present?).to be(true)
           blur_out
           mail_to_country.select(str)
-          blur_out
-          if mail_to_country.domestic?
-            @address = MailToInt.new(param)
-          else
-            @address = MailToDom.new(param)
-          end
+          address
         end
       end
 
@@ -653,11 +918,12 @@ module Stamps
         end
 
         def edit_form
-          15.times do
+          30.times do
             return customs_form if customs_form.present?
             button.scroll_into_view
             button.click
-            sleep(0.35)
+            button.click
+            sleep(0.2)
           end
           expect(customs_form.present?).to be(true)
         end

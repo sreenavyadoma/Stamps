@@ -22,6 +22,6 @@ Feature: Envelopes BVT
     Then select Print On Certified Mail Label - SDC-3910
     Then select Print On Certified Mail Label - SDC-3810
     Then select Print On Roll 4x6
-    Then select Print On Roll - 4 ⅛" x 6 ¼" Shipping Label
+    Then select Print On Roll 418x614
 
 #set Order Details form Ship-To to a random address in Zone 1 through 4
