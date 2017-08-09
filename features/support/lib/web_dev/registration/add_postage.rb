@@ -33,6 +33,15 @@ module Stamps
         StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
       end
 
+      def no_thanks
+        checkbox_element = browser.input(css: "input[value='5:0.0']")
+        verify_element = checkbox_element.parent.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
+      end
+
+
       def confirm
         confirm_button = StampsElement.new browser.button text: "Confirm"
         logger.info "Add Postage Page has loaded: #{browser.url}"
