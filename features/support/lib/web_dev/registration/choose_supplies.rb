@@ -9,12 +9,12 @@ module Stamps
         @web_mail = @web_apps.mail
       end
 
-      def present?
-        browser.h1(text: "Customize your Welcome Kit").present?
-      end
-
       def wait_until_present
         #browser.button(text: "Place Order").wait_until_present 6
+      end
+
+      def welcome_kit_message
+        browser.h1(text: "Customize your Welcome Kit").wait_until_present 10
       end
 
       def place_order

@@ -9,12 +9,12 @@ module Stamps
         @web_mail = @web_apps.mail
       end
 
-      def present?
-        browser.h2(text: "Help us customize your Stamps.com experience.").present?
+      def header_message
+        browser.h2(text: "Help us customize your Stamps.com experience.").wait_until_present 10
       end
 
       def wait_until_present
-        browser.button(text: "Submit").wait_until_present 6
+        #browser.button(text: "Submit").wait_until_present 6
       end
 
       def element_drop_down

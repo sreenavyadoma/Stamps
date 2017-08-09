@@ -4,7 +4,7 @@ Then /^[Ii]n Choose Supplies page, click Place Order button$/ do
 end
 
 Then /^[Ee]xpect welcome_kit_message exists$/ do
-  expect(registration.choose_supplies.present?).to be(true), "Welcome kit Message DOES NOT exists on choose supplies page"
+  expect(registration.choose_supplies.welcome_kit_message.present?).to be(true), "Welcome kit Message DOES NOT exists on choose supplies page"
 end
 
 Then /^[Ee]xpect Place order button exists$/ do

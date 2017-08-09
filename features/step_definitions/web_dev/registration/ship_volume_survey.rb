@@ -3,7 +3,7 @@ Then /^[Ii]n Ship Volume Survey page, click Submit button$/ do
 end
 
 Then /^[Ee]xpect header message exists$/ do
-  expect(registration.ship_volume_survey.present?).to be(true), "Message DOES NOT exists on Ship Volume Survey page"
+  expect(registration.ship_volume_survey.header_message.present?).to be(true), "Message DOES NOT exists on Ship Volume Survey page"
 end
 
 Then /^[Ee]xpect Submit button exists$/ do
