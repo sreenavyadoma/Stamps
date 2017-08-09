@@ -39,29 +39,35 @@ module Stamps
       module PrintMediaHelper
         def print_media(str)
           case str
-            when /Stamps/
-              print_media = :stamps
+            when /Certified Mail Label - SDC-3610/
+              print_media = :certified_mails
+            when /Certified Mail Label - SDC-3710/
+              print_media = :certified_mails
+            when /Certified Mail Label - SDC-3910/
+              print_media = :certified_mails_3910_3930
+            when /Certified Mail Label - SDC-3930/
+              print_media = :certified_mails_3910_3930
+            when /Certified Mail Label - SDC-3810/
+              print_media = :certified_mails_3810
             when /Shipping Label/
               print_media = :labels
             when /Envelope/
               print_media = :envelopes
-            when /Certified Mail/
-              print_media = :certified_mails
             when /Roll/
               print_media = :rolls
             when /Manage Printing Options/
               print_media = :manage_printing_options
+            when /Stamps/
+              print_media = :stamps
             else
               #ignore
           end
-          expect([:stamps, :labels, :envelopes, :certified_mails, :rolls, :manage_printing_options]).to include(print_media)
+          expect([:stamps, :labels, :envelopes, :certified_mails, :certified_mails_3810, :certified_mails_3910_3930, :rolls, :manage_printing_options]).to include(print_media)
           print_media
         end
 
         def selected_sub_str(str)
           case str
-            when /Stamps/
-              return 'Stamps'
             when /Shipping Label - Paper/
               return 'Paper'
             when /Shipping Label - SDC-1200/
@@ -100,6 +106,8 @@ module Stamps
               return 'Roll - 4 '
             when /Manage Printing Options/
               return 'Manage Printing Option...'
+            when /Stamps/
+              return 'Stamps'
             else
               #ignore
           end
@@ -152,8 +160,6 @@ module Stamps
 
         def selection_element(str)
           case str
-            when /Stamps/
-              return 'stamps'
             when /Shipping Label - Paper/
               return 'Shipping Label - 8 '
             when /Shipping Label - SDC-1200/
@@ -190,6 +196,8 @@ module Stamps
               return 'Roll - 4" x 6" Shipping Label'
             when /Roll 418x614/
               return 'Roll - 4 '
+            when /Stamps/
+              return 'stamps'
             else
               #ignore
           end
