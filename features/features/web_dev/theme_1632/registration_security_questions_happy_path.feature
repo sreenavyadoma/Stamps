@@ -31,7 +31,11 @@ Feature: Registration Security questions page happy path
     Then in Choose Supplies page, click Place Order button
 
     # Add Postage Page
+    Then expect add_postage_to_account message exists
     Then in Add Postage page, click Confirm button
+
+    # Ship Volume Survey Page
+    Then in Ship Volume Survey page, click Submit button
 
     # Select security quetions and answers
     Then set Security questions page select first question to What is your city of birth?
