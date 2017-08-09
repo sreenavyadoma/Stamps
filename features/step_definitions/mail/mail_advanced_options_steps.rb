@@ -75,7 +75,7 @@ Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|)
     when /today/
       test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.today
     when /tomorrow/
-      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
+      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(1)
     else
       valid_date = Date.strptime(value, "%m/%d/%Y") rescue nil
       expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{value}"
@@ -176,6 +176,16 @@ end
 Then /^[Ee]xpect Print Form Return Receipt is present$/ do
   step "Expect Print form responds to Return Receipt (return_receipt)"
   expect(stamps.mail.print_form.return_receipt.present?).to be(true), "Print form include Return Receipt is NOT present"
+end
+
+Then /^[Ee]xpect Print Form Return Receipt is visible$/ do
+  step "Expect Print form responds to Return Receipt (return_receipt)"
+  expect(stamps.mail.print_form.return_receipt.visible?).to be(true), "Print form include Return Receipt is NOT visible"
+end
+
+Then /^[Ee]xpect Print Form Return Receipt is disabled$/ do
+  step "Expect Print form responds to Return Receipt (return_receipt)"
+  expect(stamps.mail.print_form.return_receipt.enabled?).to be(false), "Print form include Return Receipt is enabled"
 end
 
 Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
