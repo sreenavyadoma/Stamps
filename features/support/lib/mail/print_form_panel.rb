@@ -124,7 +124,7 @@ module Stamps
 
         def certified_mail
           if @certified_mail.nil?
-            clickable_element = browser.span(id: "sdc-mainpanel-cmcheckbox")
+            clickable_element = browser.input(id: "sdc-mainpanel-cmcheckbox-inputEl")
             verify = browser.div(id: "sdc-mainpanel-cmcheckbox")
             @certified_mail = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
@@ -147,7 +147,7 @@ module Stamps
 
         def return_receipt
           if @return_receipt.nil?
-            clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox")
+            clickable_element = browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl")
             verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
             @return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end

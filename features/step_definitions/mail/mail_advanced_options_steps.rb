@@ -75,7 +75,7 @@ Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|)
     when /today/
       test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.today
     when /tomorrow/
-      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
+      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(1)
     else
       valid_date = Date.strptime(value, "%m/%d/%Y") rescue nil
       expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{value}"
@@ -178,6 +178,16 @@ Then /^[Ee]xpect Print Form Return Receipt is present$/ do
   expect(stamps.mail.print_form.return_receipt.present?).to be(true), "Print form include Return Receipt is NOT present"
 end
 
+Then /^[Ee]xpect Print Form Return Receipt is visible$/ do
+  step "Expect Print form responds to Return Receipt (return_receipt)"
+  expect(stamps.mail.print_form.return_receipt.visible?).to be(true), "Print form include Return Receipt is NOT visible"
+end
+
+Then /^[Ee]xpect Print Form Return Receipt is disabled$/ do
+  step "Expect Print form responds to Return Receipt (return_receipt)"
+  expect(stamps.mail.print_form.return_receipt.enabled?).to be(false), "Print form include Return Receipt is enabled"
+end
+
 Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
   expect{stamps.mail.print_form.return_receipt.present?}.to raise_exception(NoMethodError)
 end
@@ -204,12 +214,17 @@ end
 
 Then /^[Ee]xpect Print Form Certified Mail is checked$/ do
   step "Expect Print form responds to Certified Mail (certified_mail)"
-  expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Return Receipt is NOT checked"
+  expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Certified Mail is NOT checked"
 end
 
-Then /^[Ee]xpect Print Form Certified Mail is present$/ do
+Then /^[Ee]xpect Print Form Certified Mail is visible$/ do
   step "Expect Print form responds to Certified Mail (certified_mail)"
-  expect(stamps.mail.print_form.certified_mail.present?).to be(true), "Print form include Return Receipt is NOT present"
+  expect(stamps.mail.print_form.certified_mail.visible?).to be(true), "Print form include Certified Mail is NOT visible"
+end
+
+Then /^[Ee]xpect Print Form Certified Mail is disabled$/ do
+  step "Expect Print form responds to Certified Mail (certified_mail)"
+  expect(stamps.mail.print_form.certified_mail.enabled?).to be(false), "Print form include Certified Mail is enabled"
 end
 
 Then /^[Ee]xpect Advanced Options include Return Address is present$/ do
