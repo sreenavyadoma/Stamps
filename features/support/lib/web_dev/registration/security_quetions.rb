@@ -7,10 +7,11 @@ module Stamps
         StampsElement.new(browser.span(css: "button[title*='1ST QUESTION']>span[class*=filter-option]"))
       end
 
-      def select
-        element.click
-        selection = StampsElement.new(browser.span(css: "li[id=newsecretquestions]>div:nth-child(2)>div>div>div>div>div>div>ul>li:nth-child(4)"))
+      def select(str)
+        selection = StampsElement.new(browser.span(text: 'What is your city of birth?'))
         15.times do
+          element.click
+          selection.scroll_into_view
           selection.click
         end
         expect(selection.text).to include(str)
@@ -19,17 +20,18 @@ module Stamps
 
     class SecuritySecondQuestion < Browser::StampsModal
 
-      def element
-        StampsElement.new(browser.span(css: "button[title*='2ND QUESTION']>span[class*=filter-option]"))
+      def drop_down
+        StampsElement.new(browser.spans(css: "button[title*='2ND QUESTION']>span[class*=filter-option]"))
       end
 
       def select(str)
-        element.click
-        selection = StampsElement.new(browser.spans(css: "li[id=newsecretquestions]>div:nth-child(2)>div>div>div>div>div>div>ul>li:nth-child(4)"))
+        selection = StampsElement.new(browser.span(text: 'What was your high school mascot?'))
         15.times do
+          drop_down.click
+          selection.scroll_into_view
           selection.click
         end
-        expect(element.text).to include(str)
+        expect(selection.text).to include(str)
       end
 
       def present?
@@ -43,9 +45,9 @@ module Stamps
       def initialize(param)
         super
         @first_question = SecurityFirstQuestion.new(param)
-        @first_answer = StampsTextBox.new(browser.text_field(class: "li[id=newsecretquestions]>div>div>div>div>div>input[id=secretAnswer1]"))
+        @first_answer = StampsTextBox.new(browser.text_field(id: 'secretAnswer1'))
         @second_question = SecuritySecondQuestion.new(param)
-        @second_answer = StampsTextBox.new(browser.text_field(class: "li[id=newsecretquestions]>div>div>div>div>div>input[id=secretAnswer2]"))
+        @second_answer = StampsTextBox.new(browser.text_field(id: 'secretAnswer2'))
         @get_started = StampsElement.new(browser.button(id: "li[id=pagination]>div>div>button[id=startPrinting]"))
       end
 

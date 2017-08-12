@@ -56,11 +56,11 @@ Then /^[Ss]et [Rr]egistration [Mm]embership terms and condition$/ do
 end
 
 Then /^[Ss]et Security questions page select first question to (.*)$/ do |str|
-  registration.security_questions.first_question.select
+  registration.security_questions.first_question.select(str)
 end
 
 Then /^[Ss]et Security questions page select first answer to (.*)$/ do |str|
-  registration.security_questions.first_answer.set str
+  registration.security_questions.first_answer.set(str)
 end
 
 Then /^[Ss]et Security questions page select second question to (.*)$/ do |str|
