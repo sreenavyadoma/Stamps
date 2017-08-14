@@ -642,6 +642,28 @@ module Stamps
         end
       end
 
+      class MailServiceSelection < Browser::StampsElement
+        include ParameterHelper
+        attr_reader :field, :amount_field
+
+        def initialize(mail_service)
+          super(@field = browser.td(css: "li[id='#{data_for(:mail_services, {})[mail_service]}']>table>tbody>tr>td[class*=text]"))
+          @amount_field = browser.td(css: "li[id='#{data_for(:mail_services, {})[mail_service]}']>table>tbody>tr>td[class*=amount]")
+        end
+
+        def amount_text
+          remove_dollar_sign(amount_field)
+        end
+
+        def is_numeric?
+          ParameterHelper.is_numeric?(amount_text)
+        end
+
+        def amount
+          (is_numeric?)?amount_field.text.to_f: 0
+        end
+      end
+
       class PrintFormService < Browser::StampsModal
         attr_reader :text_box, :drop_down
         include PrintFormBlurOut
@@ -654,18 +676,19 @@ module Stamps
 
         def select(str)
           logger.info "Select service #{str}"
-          selection = StampsElement.new browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=text]")
+          selection = MailServiceSelection.new(str)
           20.times do
             begin
               break if (text_box.text).include?(str)
               drop_down.click unless selection.present?
-              selection.scroll_into_view
-              selection.click
+              expect(selection.amount_text).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env}.  #{param.test_env} has rating problems." if selection.field.present?
+              selection.field.scroll_into_view
+              selection.field.click
             rescue
               #ignore
             end
           end
-          expect(text_box.text).to include(str)
+          expect(text_box.text).to include(str), "Unable to select Mail Service #{str}"
           logger.info "#{text_box.text} service selected."
           selection
         end
