@@ -124,11 +124,15 @@ module Stamps
       ship_date.strftime("%m/%d/%Y")
     end
 
-    def is_whole_number?(variable)
-      variable % 1 == 0
+    def is_whole_number?(number)
+      number % 1 == 0
     end
 
-    def remove_dollar_sign str
+    def is_numeric?(str)
+      !!Float(str) rescue false
+    end
+
+    def remove_dollar_sign(str)
       strip str, '$', ''
     end
 
@@ -328,7 +332,7 @@ module Stamps
         when /zone 2/
           rand_zone_2
         when /zone 3/
-          test_helper.rand_zone_3
+          rand_zone_3
         when /zone 4/
           rand_zone_4
         when /zone 5/

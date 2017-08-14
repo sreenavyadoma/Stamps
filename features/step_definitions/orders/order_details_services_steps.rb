@@ -1,15 +1,15 @@
 
 Then /^[Ss]et [Oo]rder [Dd]etails form service to (.*)$/ do |service|
   stamps.orders.order_details.service.select(service)
-  15.times do
+  50.times do
     step "blur out on Order Details form"
-    sleep(0.025)
+    sleep(0.015)
     break if stamps.orders.order_details.service.cost > 0
   end
   step "Save Order Details data"
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails form service is (.*)$/ do |expectation|
+Then /^[Ee]xpect [Oo]rder [Dd]etails form service is (?:an empty string|(.*))$/ do |expectation|
   if expectation.nil?
     selection_substr = ""
   else

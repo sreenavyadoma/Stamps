@@ -24,5 +24,5 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then in Print modal, click Print button
+    Then click print modal print button
     Then Sign out

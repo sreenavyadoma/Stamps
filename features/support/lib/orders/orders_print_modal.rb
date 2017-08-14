@@ -24,7 +24,7 @@ module Stamps
           when /Shipping Label - 5 /
             return StampsElement.new(browser.li text: /Shipping Label - 5 /)
 
-          # Roll - 4 ⅛" x 6 ¼" Shipping Label
+          # Roll 418x614
           when /Roll - 4/
             return StampsElement.new(browser.li text: /Roll - 4/)
 
@@ -34,6 +34,10 @@ module Stamps
           else
             expect("Don't know what to do with #{media}.").to eql "Invalid Print Media Selection."
         end
+      end
+
+      def present?
+        text_box.present?
       end
 
       def label
@@ -387,6 +391,9 @@ module Stamps
         @print_envelope_btn = StampsElement.new(browser.span(text: 'Print Envelope'))
       end
 
+      def present?
+        printing_on.present?
+      end
 
       def close_window
         window_x_button.click_while_present
@@ -397,10 +404,6 @@ module Stamps
         20.times do
           starting_label_tag.click
         end
-      end
-
-      def present?
-        print_button.present?
       end
 
       def wait_until_present(*args)

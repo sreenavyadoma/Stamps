@@ -26,7 +26,7 @@ Feature: Add Hide Mail Value CheckBox to Print Dialog
     Then in Print modal, uncheck Hide Mail Value
     Then in Print modal, check Hide Mail Value
     Then in Print modal, uncheck Hide Mail Value
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then add new order
     Then set Order Details form Ship-From to default
@@ -34,7 +34,7 @@ Feature: Add Hide Mail Value CheckBox to Print Dialog
     Then set Order Details form service to PM Flat Rate Envelope
     Then in Orders Toolbar, click Print button
     Then in Print modal, uncheck Hide Mail Value
-    Then in Print modal, click Print button
+    Then click print modal print button
 
     Then Sign out
 

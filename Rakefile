@@ -8,8 +8,8 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:rob_mail_cc) do |t|
+  t.profile = 'rob_mail_cc'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -676,6 +676,181 @@ Cucumber::Rake::Task.new(:rates_parcel_select_ground_zone_9) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_1) do |t|
+  t.profile = 'rates_pmi_comm_base_group_1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_2) do |t|
+  t.profile = 'rates_pmi_comm_base_group_2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_3) do |t|
+  t.profile = 'rates_pmi_comm_base_group_3'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_4) do |t|
+  t.profile = 'rates_pmi_comm_base_group_4'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_5) do |t|
+  t.profile = 'rates_pmi_comm_base_group_5'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_6) do |t|
+  t.profile = 'rates_pmi_comm_base_group_6'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_7) do |t|
+  t.profile = 'rates_pmi_comm_base_group_7'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_8) do |t|
+  t.profile = 'rates_pmi_comm_base_group_8'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_9) do |t|
+  t.profile = 'rates_pmi_comm_base_group_9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_10) do |t|
+  t.profile = 'rates_pmi_comm_base_group_10'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_11) do |t|
+  t.profile = 'rates_pmi_comm_base_group_11'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_12) do |t|
+  t.profile = 'rates_pmi_comm_base_group_12'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_13) do |t|
+  t.profile = 'rates_pmi_comm_base_group_13'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_14) do |t|
+  t.profile = 'rates_pmi_comm_base_group_14'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_15) do |t|
+  t.profile = 'rates_pmi_comm_base_group_15'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_16) do |t|
+  t.profile = 'rates_pmi_comm_base_group_16'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_base_group_17) do |t|
+  t.profile = 'rates_pmi_comm_base_group_17'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_1) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_1'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_2) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_2'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_3) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_3'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_4) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_4'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_5) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_5'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_6) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_6'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_7) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_7'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_8) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_8'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_9) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_9'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_10) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_10'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_11) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_11'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_12) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_12'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_13) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_13'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_14) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_14'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_15) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_15'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_16) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_16'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_pmi_comm_plus_group_17) do |t|
+  t.profile = 'rates_pmi_comm_plus_group_17'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rates_fcm_package) do |t|
+  t.profile = 'rates_fcm_package'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
   t.cucumber_opts = "-p cuke_reports"
@@ -1139,28 +1314,8 @@ Cucumber::Rake::Task.new(:bulk_update_int) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_dialog_label_right_side) do |t|
-  t.profile = 'print_dialog_label_right_side'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:print_dialog_label_left_side) do |t|
-  t.profile = 'print_dialog_label_left_side'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:print_dialog_ship_date_today_plus3) do |t|
-  t.profile = 'print_dialog_ship_date_today_plus3'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:print_dialog_ship_date_today_plus2) do |t|
-  t.profile = 'print_dialog_ship_date_today_plus2'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:print_dialog_ship_date_today_plus1) do |t|
-  t.profile = 'print_dialog_ship_date_today_plus1'
+Cucumber::Rake::Task.new(:print_dialog_label_sides) do |t|
+  t.profile = 'print_dialog_label_sides'
   t.cucumber_opts = "-p cuke_reports"
 end
 

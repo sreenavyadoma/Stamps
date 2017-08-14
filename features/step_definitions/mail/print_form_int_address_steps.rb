@@ -4,7 +4,7 @@
 Then /^[Ss]et Print form Ship-To to international address$/ do |table|
   address = table.hashes.first
   step "set Print form Mail-To Country to #{address['country']}"
-  step "set Print form Name to #{address['full_name']}"
+  step "set Print form Name to #{address['name']}"
   step "set Print form Company to #{address['company']}"
   step "set Print form Address 1 to #{address['street_address_1']}"
   step "set Print form Address 2 to #{address['street_address_2']}"
@@ -36,6 +36,32 @@ end
 
 Then /^[Ss]et Print Form Ship-To Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
+  test_param[:country] = country_list[rand(country_list.size)]
+  step "set Print form Mail-To Country to #{test_param[:country]}"
+end
+
+Then /^[Ss]et Print Form Ship-To Country to a random country in PMI price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMI, {})["group" + group].values
+  country_array = (country_list[rand(country_list.size)]).split("|")
+  country_name = country_array[0]
+  country_pounds = country_array[1].to_i
+  200.times do
+    if !test_param[:pounds].nil?
+      if test_param[:pounds] > country_pounds
+        country_array = country_list[rand(country_list.size)].split("|")
+        country_name = country_array[0]
+        country_pounds = country_array[1].to_i
+      else
+        break
+      end
+    end
+  end
+  test_param[:country] = country_name
+  step "set Print form Mail-To Country to #{test_param[:country]}"
+end
+
+Then /^[Ss]et Print Form Ship-To Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
+  country_list = data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
   test_param[:country] = country_list[rand(country_list.size)]
   step "set Print form Mail-To Country to #{test_param[:country]}"
 end

@@ -122,13 +122,13 @@ module Stamps
 
       def text
         begin
-          return element.value if truthy? && !element.value.nil? && element.value.size > 0
+          return element.text if truthy? && !element.text.nil? && element.text.size > 0
         rescue
           #ignore
         end
 
         begin
-          return element.text if truthy? && !element.text.nil? && element.text.size > 0
+          return element.value if truthy? && !element.value.nil? && element.value.size > 0
         rescue
           #ignore
         end
@@ -287,6 +287,28 @@ module Stamps
         check_box.present?
       end
 
+      def enabled?
+        check_box.enabled?
+      end
+
+      def visible?
+        check_box.visible?
+      end
+
+      def exist?
+        check_box.visible?
+      end
+
+      def checked?
+        begin
+          result = check_verify.attribute_value(attribute)
+          return result == "true" if result == "true" || result == "false"
+          result.include?(attribute_value)
+        rescue
+          false
+        end
+      end
+
       def check
         50.times do
           break if checked?
@@ -300,16 +322,6 @@ module Stamps
             check_box.click
             break unless checked?
           end
-        end
-      end
-
-      def checked?
-        begin
-          result = check_verify.attribute_value(attribute)
-          return result == "true" if result == "true" || result == "false"
-          result.include?(attribute_value)
-        rescue
-          false
         end
       end
     end

@@ -9,7 +9,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope Package
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM Envelope
 
    #mail_print_roll_4x6_pm_fr_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -20,7 +20,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope Package
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_pm_large_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -31,7 +31,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope Package
     Then click Mail Print modal Print button
 
     #mail_print_roll_4x6_pm_lfr_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -42,7 +42,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope Package
     Then click Mail Print modal Print button
 
     #mail_print_roll_4x6_pm_pfr_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -56,7 +56,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope Package
   Scenario: Roll - 4 ⅛” x 6 ¼” - PM Package
 
    #mail_print_roll_4x6_pm_large_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -67,7 +67,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Envelope Package
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_pm_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4

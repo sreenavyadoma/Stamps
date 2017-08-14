@@ -14,5 +14,5 @@ Feature: Select Email Tracking for order when printing
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then in Print modal, check Email Tracking Details to Recipients
-    Then in Print modal, click Print button
+    Then click print modal print button
     Then Sign out
