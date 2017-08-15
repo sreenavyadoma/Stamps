@@ -22,7 +22,13 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age retype password exists$/ do
   expect(registration.profile.retype_password.present?).to be(true), "Retype password textbox DOES NOT exist on profile page"
 end
 
+Then /^[Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion exists$/ do
+  expect(registration.profile.survey_question.present?).to be(true), "Survey Question DOES NOT exist on profile page"
+end
 
+Then /^[Ee]xpect [Pp]rofile [Pp]age promo code link exists$/ do
+  expect(registration.profile.promo_code_link.present?).to be(true), "Promo code link DOES NOT exist on profile page"
+end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age promo code textbox exists$/ do
   expect(registration.profile.promo_code.present?).to be(true), "Profile promo code textbox DOES NOT exist"
