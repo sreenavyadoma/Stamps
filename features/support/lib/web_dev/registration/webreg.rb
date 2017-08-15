@@ -14,7 +14,6 @@ module Stamps
         @ship_volume_survey = ShipVolumeSurvey.new(param)
         @footer = Footer::ProfileFooter.new(param)
         @security_questions = SecurityQuestionsRegistration.new(param)
-
       end
 
       def present?

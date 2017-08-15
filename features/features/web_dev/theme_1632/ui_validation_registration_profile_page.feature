@@ -5,6 +5,7 @@ Feature: Profile page validation theme_1632
 
   @registration_profile_page_ui_validation
   Scenario: Profile Page UI Validation
+
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
     Then expect Registration bread crumbs is Profile
@@ -23,6 +24,8 @@ Feature: Profile page validation theme_1632
     Then expect Profile page retype password exists
     Then expect Profile page Survey Question exists
     Then expect Profile page promo code link exists
+    Then show profile page promo code textbox
+    Then expect Profile page promo code textbox exists
     Then expect Profile page CONTINUE button exists
     Then expect Profile page Privacy Policy link exists
     Then expect Profile page copyright link exists
@@ -46,6 +49,8 @@ Feature: Profile page validation theme_1632
     Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Individual
     Then expect Profile page Survey Question is correct
+
+    Then set Profile page promo code to PR33-NH77
 
 
 
