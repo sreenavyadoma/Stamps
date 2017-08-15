@@ -246,7 +246,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is checked$/ do
 end
 
 Then /^[Uu]ncheck [Mm]embership [Pp]age Terms & Conditions$/ do
-  registration.membership.agree_to_terms.uncheck
+  registration.membership.agree_to_terms.click
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do

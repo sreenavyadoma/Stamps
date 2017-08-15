@@ -25,10 +25,18 @@ Feature: Registration Security questions page validation theme_1632
     Then set Membership page Month to Dec (12)
     Then set Membership page Year to 2026
     Then check Membership page Terms & Conditions
-
     Then click Membership page Continue button
 
-    Then on Registration ATG page continue to Registration Security questions page
+    # Choose supplies Page
+    Then in Choose Supplies page, click Place Order button
+
+    # Add Postage Page
+    Then in Add Postage page, click Confirm button
+
+    # Ship Volume Survey Page
+    Then in Ship Volume Survey page, click Submit button
+
+    # Verify all security questions present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
     Then expect Registration Security questions header contain Before you start printing postage, make sure your account is protected.
