@@ -3,9 +3,10 @@ Feature: Profile page validation theme_1632
   Background:
     Given I loaded the default registration page
 
-  @registration_profile_page_ui_validation
+  @registration_ui_validation_profile_page
   Scenario: Profile Page UI Validation
 
+    # Verifying all contents present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
     Then expect Registration bread crumbs is Profile
@@ -40,7 +41,7 @@ Feature: Profile page validation theme_1632
     Then set Profile page Re-type password to same as previous password
     Then expect Profile page Re-Type password is correct
 
-    # Validate Survey Quetion options
+    # Validate Survey Question options
     Then set Profile page Survey Question to Mostly shipping
     Then expect Profile page Survey Question is correct
     Then set Profile page Survey Question to Both mailing and shipping
@@ -51,6 +52,4 @@ Feature: Profile page validation theme_1632
     Then expect Profile page Survey Question is correct
 
     Then set Profile page promo code to PR33-NH77
-
-
 

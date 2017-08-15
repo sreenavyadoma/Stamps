@@ -3,7 +3,7 @@ Feature: Registration Add Postage page UI validation
   Background:
     Given I loaded the default registration page
 
-  @registration_add_postage_page_ui_validation
+  @registration_ui_validation_add_postage_page
   Scenario: Registration Security questions page happy path
 
     # Profile Page

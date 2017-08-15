@@ -19,10 +19,6 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   step "blur out on profile page"
 end
 
-Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.email.text).to eql((str.nil?)?test_param[:email]:str)
-end
-
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
   registration.profile.account_username.set((test_param[:username] = (str.nil?)?(test_helper.random_username):str))
   step "blur out on profile page"

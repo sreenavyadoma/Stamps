@@ -3,7 +3,7 @@ Feature: Registration Security questions page validation theme_1632
   Background:
     Given I loaded the default registration page
 
-  @securityquestions_page_ui_validation
+  @registration_ui_validation_security_questions_page
   Scenario:
 
     # Profile Page

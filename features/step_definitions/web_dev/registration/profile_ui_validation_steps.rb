@@ -57,3 +57,6 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age CONTINUE button exists$/ do
   expect(registration.profile.continue_btn.present?).to be(true)
 end
 
+Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
+  expect(registration.profile.email.text).to eql((str.nil?)?test_param[:email]:str)
+end
