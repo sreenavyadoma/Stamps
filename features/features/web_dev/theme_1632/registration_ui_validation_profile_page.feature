@@ -6,6 +6,19 @@ Feature: Profile page validation theme_1632
   @registration_ui_validation_profile_page
   Scenario: Profile Page UI Validation
 
+
+    # Validate tooltips for various values
+    Then set Profile page Password to we
+    #Then expect Profile page Password tooltip count is 2
+    Then expect Profile page Password tooltip 1 to be 6 character minimum
+    Then expect Profile page Password tooltip 2 to be At least 1 number required
+    #Then expect Profile page Password tooltip 3 to be Cannot match username
+
+
+
+
+
+
     # Verifying all contents present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
@@ -33,10 +46,11 @@ Feature: Profile page validation theme_1632
     Then expect Profile page Privacy Policy link exists
     Then expect Profile page copyright link exists
 
-    # Validate Password tooltips for various values
+    # Validate tooltips for various values
+    Then set Profile page Password to we
     #Then expect Profile page email tooltip count is 3
     Then expect Profile page email tooltip 1 to be 6 character minimum
-    #Then expect Profile page email tooltip 2 to be At least 1 number required
+    Then expect Profile page email tooltip 2 to be At least 1 number required
     #Then expect Profile page email tooltip 3 to be Cannot match username
 
     #1. This field is required
