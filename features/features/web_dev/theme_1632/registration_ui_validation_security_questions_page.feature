@@ -61,7 +61,7 @@ Feature: Registration Security questions page validation theme_1632
 
     Then expect Profile page Privacy Policy link exists
     Then expect Profile page copyright link exists
-   # Then expect Profile page Norton logo exists
+   #Then expect Profile page Norton logo exists
     Then expect Profile page TRUSTe logo exists
     Then expect Profile page LIVE chat button exists
 
