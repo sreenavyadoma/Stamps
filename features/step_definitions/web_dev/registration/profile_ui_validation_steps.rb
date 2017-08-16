@@ -7,7 +7,10 @@ end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age email exists$/ do
   expect(registration.profile.email.present?).to be(true), "Email textbox DOES NOT exists on profile page"
-  registration.profile.email.present?
+end
+
+Then /^[Ee]xpect Profile page email tooltip (\d+) to be (.*)$/ do |tooltip_index, tooltip|
+  expect(registration.profile.email.help_block(tooltip_index)).to eql(tooltip)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age username exists$/ do

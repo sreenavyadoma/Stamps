@@ -70,6 +70,14 @@ module Stamps
         end
       end
 
+      class RegProfileEmail < Stamps::Browser::StampsTextBox
+        def help_block(index)
+          lis = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
+          expect(lis.size).to be <= index, "Wrong blah blah blah"
+          StampsElement.new(lis[index]).text
+        end
+      end
+
       module MainContent
         def present?
           email.present?
@@ -89,7 +97,7 @@ module Stamps
         end
 
         def email
-          @email ||= StampsTextBox.new(browser.text_field(id: "email"))
+          @email ||= RegProfileEmail.new(browser.text_field(id: "email"))
           @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
           @email
         end
