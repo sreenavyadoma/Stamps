@@ -6,28 +6,15 @@ Feature: Profile page validation theme_1632
   @registration_ui_validation_profile_page
   Scenario: Profile Page UI Validation
 
-
-    # Validate tooltips for various values
-    Then set Profile page Password to we
-    #Then expect Profile page Password tooltip count is 2
-    Then expect Profile page Password tooltip 1 to be 6 character minimum
-    Then expect Profile page Password tooltip 2 to be At least 1 number required
-    #Then expect Profile page Password tooltip 3 to be Cannot match username
-
-
-
-
-
-
     # Verifying all contents present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
     Then expect Registration bread crumbs is Profile
     Then expect Profile page header contain Sign up and avoid trips to the Post Office
-  #The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
-    Then expect Profile page SideContent Side Account header is "Why do I need to create an account?"
+    Then expect Profile page paragraph contain The USPS requires you to register your name, telephone number and physical address from which your postage will be printed. This information will be used to create your Stamps.com account.
+    Then expect Profile page SideContent Side Account header is Why do I need to create an account?
     Then expect Profile page Money-saving offers and new products header is "Money-saving offers and new products"
-    #Send me special money-saving offers and information on new products and services from Stamps.com and its partners.
+    Then expect Profile page content under Money-saving offers and new products Send me special money-saving offers and information on new products and services from Stamps.com and its partners.
     Then check Profile page Money-saving offers and new products
     Then expect Profile page Money-saving offers and new products is checked
     Then uncheck Profile page Money-saving offers and new products
@@ -48,16 +35,14 @@ Feature: Profile page validation theme_1632
 
     # Validate tooltips for various values
     Then set Profile page Password to we
-    #Then expect Profile page email tooltip count is 3
-    Then expect Profile page email tooltip 1 to be 6 character minimum
-    Then expect Profile page email tooltip 2 to be At least 1 number required
-    #Then expect Profile page email tooltip 3 to be Cannot match username
+    #Then expect Profile page Password tooltip count is 2
+    Then expect Profile page Password tooltip 1 to be 6 character minimum
+    #Then expect Profile page Password tooltip 2 to be At least 1 number required
+    #Then expect Profile page Password tooltip 3 to be Cannot match username
 
-    #1. This field is required
-    #2.  6 character minimum
-    #    At least 1 number required
-    #    Cannot match username
 
+    #Then expect Profile page Username tooltip to be This field is required
+    #Then expect Profile page Re-Password tooltip to be This field is required
 
     # Validating all fields
     Then set Profile page Email to random value

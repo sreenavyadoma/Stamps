@@ -28,7 +28,7 @@ module Stamps
 
       module AccountInfo
         def account_username
-          @account_username = StampsTextBox.new(browser.text_field(name: "username"))
+          @account_username = RegProfileUsername.new(browser.text_field(name: "username"))
           @account_username.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
           @account_username
         end
@@ -40,7 +40,7 @@ module Stamps
         end
 
         def retype_password
-          @retype_password = StampsTextBox.new(browser.text_field(id: "confirmPassword"))
+          @retype_password = RegProfilePassword.new(browser.text_field(id: "confirmPassword"))
           @retype_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span")
           @retype_password
         end
@@ -88,15 +88,28 @@ module Stamps
         end
       end
 
+      class RegProfileEmail < Stamps::Browser::StampsTextBox
+        def help_block
+          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li"))
+        end
+      end
+
+      class RegProfileUsername < Stamps::Browser::StampsTextBox
+        def help_block(index)
+          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
+        end
+      end
+
+
       class RegProfilePassword < Stamps::Browser::StampsTextBox
         def help_block
           RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
         end
       end
 
-      class RegProfileEmail < Stamps::Browser::StampsTextBox
-        def help_block(index)
-          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
+      class RegProfileReTypePassword < Stamps::Browser::StampsTextBox
+        def help_block
+          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
         end
       end
 
@@ -120,7 +133,7 @@ module Stamps
 
         def email
           @email ||= RegProfileEmail.new(browser.text_field(id: "email"))
-          @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
+          @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span")
           @email
         end
 
