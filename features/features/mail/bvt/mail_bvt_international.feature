@@ -10,6 +10,8 @@ Feature: International Shipping BVT
     Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
+    Then select Print form service FCMI Package
+
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Mail-To to address to Address Cleansing, BVT, 1350 Market Street, San Francisco, CA

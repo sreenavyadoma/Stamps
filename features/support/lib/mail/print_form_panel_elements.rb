@@ -642,60 +642,72 @@ module Stamps
         end
       end
 
-      class MailServiceSelection < Browser::StampsElement
+      class MailServiceSelection
         include ParameterHelper
-        attr_reader :field, :amount_field
+        attr_accessor :browser, :service_str, :service_field, :cost_field
 
-        def initialize(mail_service)
-          super(@field = browser.td(css: "li[id='#{data_for(:mail_services, {})[mail_service]}']>table>tbody>tr>td[class*=text]"))
-          @amount_field = browser.td(css: "li[id='#{data_for(:mail_services, {})[mail_service]}']>table>tbody>tr>td[class*=amount]")
+        def initialize(browser)
+          @browser = browser
         end
 
-        def amount_text
-          remove_dollar_sign(amount_field)
+        def service(str)
+          @service_str = str
+          self.service_field = Browser::StampsElement(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=text]"))
+          self.cost_field = Browser::StampsElement(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=amount]"))
+          self
         end
 
-        def is_numeric?
-          ParameterHelper.is_numeric?(amount_text)
+        def cost_str
+          remove_dollar_sign(cost_field.text)
         end
 
-        def amount
-          (is_numeric?)?amount_field.text.to_f: 0
+        def selection_is_numeric?
+          is_numeric?(cost_str)
+        end
+
+        def service_cost
+          (selection_is_numeric?)?cost_field.text.to_f: 0
         end
       end
 
       class PrintFormService < Browser::StampsModal
-        attr_reader :text_box, :drop_down
+        attr_reader :text_box, :drop_down, :service_selection
         include PrintFormBlurOut
 
         def initialize(param)
           super
           @text_box = StampsTextBox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
           @drop_down = StampsElement.new browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")
+          @service_selection = MailServiceSelection.new(browser)
         end
 
         def select(str)
           logger.info "Select service #{str}"
-          selection = MailServiceSelection.new(str)
-          20.times do
-            begin
-              break if (text_box.text).include?(str)
-              drop_down.click unless selection.present?
-              expect(selection.amount_text).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env}.  #{param.test_env} has rating problems." if selection.field.present?
-              selection.field.scroll_into_view
-              selection.field.click
-            rescue
-              #ignore
-            end
+          service_selection.service(str)
+          service_field = service_selection.service_field
+          15.times do
+            break if (text_box.text).include?(str)
+            drop_down.click unless service_field.present?
+            browser.refresh unless service_selection.selection_is_numeric?
+            sleep(2)
+            drop_down.wait_until_present(4)
+            service_field.scroll_into_view
+            service_field.click
           end
-          expect(text_box.text).to include(str), "Unable to select Mail Service #{str}"
+          drop_down.click unless service_field.present?
+          if service_field.present?
+            expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems."
+            drop_down.click
+          end
+          expectation = text_box.text
+          expect(expectation).to include(str), "Unable to select Mail Service #{str}. Expected Service textbox to contain #{str}, got #{expectation}"
           logger.info "#{text_box.text} service selected."
           selection
         end
 
         def cost(selection)
           cost_label = StampsElement.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
-          20.times {
+          20.times do
             begin
               drop_down.click unless cost_label.present?
               if cost_label.present?
@@ -706,7 +718,7 @@ module Stamps
             rescue
               #ignore
             end
-          }
+          end
           blur_out
         end
 
