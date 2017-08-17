@@ -49,6 +49,7 @@ end
 
 Then /^[Ss]elect Print form [Ss]ervice (.*)$/ do |service|
   test_param[:service] = service
+  step "blur out on print form"
   stamps.mail.print_form.mail_service.select(test_param[:service])
 end
 
@@ -67,7 +68,9 @@ end
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   test_param[:country] = country
   test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
+  step "blur out on print form"
   stamps.mail.print_form.mail_to.country((test_param[:country]))
+  step "blur out on print form"
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do

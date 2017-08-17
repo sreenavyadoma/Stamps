@@ -46,6 +46,25 @@ module Stamps
       include CustomerSearch
       attr_accessor :customer_profile_page
 
+      def visit
+        case param.test_env.downcase
+          when /cc/
+            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/AccountSearch.asp"
+          when /sc/
+            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/AccountSearch.asp"
+          when /stg/
+            url = "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/AccountSearch.asp"
+          else
+            url = nil
+        end
+        expect(url).not_to be_nil, "URL is nil. Check your ENV['URL'] parameter."
+        logger.info "Visit: #{url}"
+        sleep(1)
+        browser.goto(url)
+        sleep(1.5)
+        self
+      end
+
       def search_username(str)
         customer_profile_found = CustomerProfilePage.new(param)
         customer_profile_not_found = CustomerProfileNotFound.new(param)
@@ -66,25 +85,6 @@ module Stamps
         return @customer_profile_page = customer_profile_not_found if customer_profile_not_found.present?
         return @customer_profile_page = customer_profile_found if customer_profile_found.present?
         expect(customer_profile_found.present? || customer_profile_not_found.present?).to be_true, "Customer Profile or Customer Not Found page did not appear."
-      end
-
-      def visit
-        case param.test_env.downcase
-          when /cc/
-            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/AccountSearch.asp"
-          when /sc/
-            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/AccountSearch.asp"
-          when /stg/
-            url = "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/AccountSearch.asp"
-          else
-            url = nil
-        end
-        expect(url).not_to be_nil, "URL is nil. Check your ENV['URL'] parameter."
-        logger.info "Visit: #{url}"
-        sleep(1)
-        browser.goto(url)
-        sleep(1.5)
-        self
       end
     end
   end

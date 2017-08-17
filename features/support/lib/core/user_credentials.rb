@@ -17,15 +17,15 @@ module Stamps
 
       case(cuke_tag)
         when /purchasing/
-          db_credentials('purchasing')
+          random_credentials('purchasing')
         when /comm_plus/
-          db_credentials('comm_plus')
+          random_credentials('comm_plus')
         else
-          db_credentials('all')
+          random_credentials('all')
       end
     end
 
-    def db_credentials(test_tag)
+    def random_credentials(test_tag)
       result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
       expect(result.size).to be > 0, "There's no available users in the Database for test #{test_tag} in #{modal_param.test_env}. Try again later or add more users to the database."
       rand_num = rand(result.size)
@@ -36,6 +36,17 @@ module Stamps
         end
       end
       db_connection.prepare("UPDATE user_credentials SET user_credentials.in_use=1, user_credentials.in_use_time=CURTIME(), user_credentials.in_use_date=CURDATE() where username=?").execute(user_credentials[:username])
+      user_credentials
+    end
+
+    def all_user_credentials
+      results = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'")
+      results.each_with_index do |row, index|
+        credentials_hash = Hash.new
+        credentials_hash[:username] = row['username']
+        credentials_hash[:password] = row['password']
+        user_credentials[index] = credentials_hash
+      end
       user_credentials
     end
 

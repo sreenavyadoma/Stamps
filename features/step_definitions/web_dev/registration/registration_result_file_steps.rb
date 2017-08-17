@@ -48,7 +48,6 @@ Then /^[Oo]n PAM Customer Search page, set username from parameter file$/ do
 end
 
 Then /^[Ss]et PAM Customer Search page username from parameter file$/ do
-  logger.info "set PAM Customer Search page username from parameter file"
   step "set PAM Customer Search page username to #{test_config['username']}"
 end
 
