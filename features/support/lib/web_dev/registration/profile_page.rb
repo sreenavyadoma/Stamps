@@ -109,7 +109,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegSingleFieldRequiredHelpBlock.new(browser.span(css: "li[id=email]>div>div>div>div>span"))
+          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=email]>div>div>div>div>span"))
         end
       end
 
@@ -119,7 +119,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegSingleFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
+          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
         end
       end
 
@@ -129,7 +129,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegSingleFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span"))
+          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span"))
         end
       end
 
@@ -139,7 +139,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegSingleFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
+          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
         end
       end
 

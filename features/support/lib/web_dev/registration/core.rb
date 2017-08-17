@@ -17,7 +17,7 @@ module Stamps
         end
       end
 
-      class RegSingleFieldRequiredHelpBlock
+      class RegFieldRequiredHelpBlock
         attr_accessor :help_elements
         def initialize(help_elements)
           @help_elements = help_elements
