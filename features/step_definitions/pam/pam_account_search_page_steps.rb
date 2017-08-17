@@ -4,6 +4,7 @@ Then /^load PAM [Pp]age$/ do
 end
 
 Then /^[Vv]isit PAM [Cc]ustomer [Ss]earch page$/ do
+  step "I launched default browser" if test_config.browser.nil?
   pam.customer_search_page.visit
 end
 

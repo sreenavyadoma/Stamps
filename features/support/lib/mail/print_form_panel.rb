@@ -15,7 +15,7 @@ module Stamps
       module MailFrom
         def mail_from
           @mail_from = PrintFormMailFrom.new(param) if @mail_from.nil? || !@mail_from.present?
-          expect(@mail_from.present?).to be(true)
+          expect(@mail_from.present?).to be(true), "Mail-From drop"
           @mail_from
         end
       end
