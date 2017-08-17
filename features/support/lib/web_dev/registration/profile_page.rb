@@ -29,7 +29,7 @@ module Stamps
       module AccountInfo
         def account_username
           @account_username = RegProfileUsername.new(browser.text_field(name: "username"))
-          @account_username.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
+          @help_elements = StampsTextBox.browser.span(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span")
           @account_username
         end
 
@@ -78,12 +78,12 @@ module Stamps
         end
 
         def size
-          help_elements.size
+          help_elements.size.to_s
         end
 
         def tooltip(tooltip_index)
           tooltip_index = tooltip_index.to_i
-          expect(size).to be >= tooltip_index, "There are only #{size} tooltips found in the UI, user is requesting #{tooltip_index}. Check your test"
+          #expect(size).to be >= tooltip_index, "There are only #{size} tooltips found in the UI, user is requesting #{tooltip_index}. Check your test"
           StampsElement.new(help_elements[tooltip_index]).text
         end
       end
@@ -94,22 +94,9 @@ module Stamps
         end
       end
 
-      class RegProfileUsername < Stamps::Browser::StampsTextBox
-        def help_block(index)
-          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
-        end
-      end
-
-
       class RegProfilePassword < Stamps::Browser::StampsTextBox
         def help_block
           RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
-        end
-      end
-
-      class RegProfileReTypePassword < Stamps::Browser::StampsTextBox
-        def help_block
-          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
         end
       end
 

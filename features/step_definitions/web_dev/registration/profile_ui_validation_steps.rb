@@ -72,11 +72,15 @@ Then /^[Ee]xpect Profile page Email tooltip (\d+) to be (.*)$/ do |tooltip_index
 end
 
 Then /^[Ee]xpect Profile page Username tooltip to be (.*)$/ do |str|
-  expect(registration.profile.user_tooltip.text).to eql(str)
+  expect(registration.profile.sd).to eql(str)
 end
 
 Then /^[Ee]xpect Profile page Password tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
   expect(registration.profile.account_password.help_block.tooltip(tooltip_index)).to eql(str)
+end
+
+Then /^[Ee]xpect Profile page Password tooltip to be (.*)$/ do |str|
+  expect(registration.profile.account_password).to eql(str)
 end
 
 Then /^[Ee]xpect Profile page Re-Password tooltip to be (.*)$/ do |str|
