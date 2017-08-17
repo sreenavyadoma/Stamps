@@ -695,10 +695,9 @@ module Stamps
             expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems."
             drop_down.click
           end
-          expectation = text_box.text
-          expect(expectation).to include(str), "Unable to select Mail Service #{str}. Expected Service textbox to contain #{str}, got #{expectation}"
+          expect(text_box.text).to include(str), "Unable to select Mail Service #{str}. Expected Service textbox to contain #{str}, got #{text_box.text}"
           logger.info "#{text_box.text} service selected."
-          selection
+          text_box.text
         end
 
         def cost(selection)
