@@ -8,7 +8,7 @@ module Stamps
 
         def promo_code
           50.times do
-            @promo_code = StampsTextBox.new(browser.text_field(id: 'promoCodeHidden'))
+            @promo_code = RegProfilePromoCode.new(browser.text_field(id: 'promoCodeHidden'))
             alt_promo_code = StampsTextBox.new(browser.text_field(id: 'promoCode'))
             @promo_code = alt_promo_code if alt_promo_code.present?
             break if @promo_code.present?
@@ -29,20 +29,14 @@ module Stamps
       module AccountInfo
         def account_username
           @account_username = RegProfileUsername.new(browser.text_field(name: "username"))
-          @help_elements = StampsTextBox.browser.span(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span")
-          @account_username
         end
 
         def account_password
           @account_password = RegProfilePassword.new(browser.text_field(name: "password"))
-          @account_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
-          @account_password
         end
 
         def retype_password
-          @retype_password = RegProfilePassword.new(browser.text_field(id: "confirmPassword"))
-          @retype_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span")
-          @retype_password
+          @retype_password = RegProfileReTypePassword.new(browser.text_field(id: "confirmPassword"))
         end
       end
 
@@ -70,36 +64,6 @@ module Stamps
         end
       end
 
-      class RegProfileHelpBlock
-        attr_accessor :browser, :help_elements
-        def initialize(browser, help_elements)
-          @help_elements = help_elements
-          @browser = browser
-        end
-
-        def size
-          help_elements.size.to_s
-        end
-
-        def tooltip(tooltip_index)
-          tooltip_index = tooltip_index.to_i
-          #expect(size).to be >= tooltip_index, "There are only #{size} tooltips found in the UI, user is requesting #{tooltip_index}. Check your test"
-          StampsElement.new(help_elements[tooltip_index]).text
-        end
-      end
-
-      class RegProfileEmail < Stamps::Browser::StampsTextBox
-        def help_block
-          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li"))
-        end
-      end
-
-      class RegProfilePassword < Stamps::Browser::StampsTextBox
-        def help_block
-          RegProfileHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
-        end
-      end
-
       module MainContent
         def present?
           email.present?
@@ -120,8 +84,6 @@ module Stamps
 
         def email
           @email ||= RegProfileEmail.new(browser.text_field(id: "email"))
-          @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span")
-          @email
         end
 
         def survey_question
@@ -138,6 +100,36 @@ module Stamps
 
         def continue_btn
           @continue_btn ||= StampsElement.new(browser.button(id: "next"))
+        end
+      end
+
+      class RegProfileEmail < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li"))
+        end
+      end
+
+      class RegProfileUsername < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li"))
+        end
+      end
+
+      class RegProfilePassword < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
+        end
+      end
+
+      class RegProfileReTypePassword < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li"))
+        end
+      end
+
+      class RegProfilePromoCode < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
         end
       end
 

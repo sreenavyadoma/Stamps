@@ -13,6 +13,10 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age email exists$/ do
   expect(registration.profile.email.present?).to be(true), "Email textbox DOES NOT exists on profile page"
 end
 
+Then /^[Ee]xpect Profile page Email tooltip count is (.*)$/ do |count|
+  expect(registration.profile.email.help_block.size).to eql(count)
+end
+
 Then /^[Ee]xpect Profile page Password tooltip count is (.*)$/ do |count|
   expect(registration.profile.account_password.help_block.size).to eql(count)
 end
@@ -72,7 +76,7 @@ Then /^[Ee]xpect Profile page Email tooltip (\d+) to be (.*)$/ do |tooltip_index
 end
 
 Then /^[Ee]xpect Profile page Username tooltip to be (.*)$/ do |str|
-  expect(registration.profile.sd).to eql(str)
+  expect(registration.profile.account_username.help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect Profile page Password tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
@@ -83,6 +87,6 @@ Then /^[Ee]xpect Profile page Password tooltip to be (.*)$/ do |str|
   expect(registration.profile.account_password).to eql(str)
 end
 
-Then /^[Ee]xpect Profile page Re-Password tooltip to be (.*)$/ do |str|
-  expect(registration.profile.retype_password.text).to eql(str)
+Then /^[Ee]xpect Profile page Re-Password tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
+  expect(registration.profile.retype_password.help_block.tooltip(tooltip_index)).to eql(str)
 end

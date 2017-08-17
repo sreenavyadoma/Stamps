@@ -6,19 +6,6 @@ Feature: Profile page validation theme_1632
   @registration_ui_validation_profile_page
   Scenario: Profile Page UI Validation
 
-     # Validate tooltips for various values
-    #Then set Profile page Password to we
-    Then continue to Membership page
-    #Then expect Profile page Password tooltip count is 2
-    #Then expect Profile page Password tooltip 0 to be 6 character minimum
-    #Then expect Profile page Password tooltip 1 to be At least 1 number required
-    #Then expect Profile page Password tooltip 3 to be Cannot match username
-
-    Then expect Profile page Username tooltip to be This field is required
-    Then expect Profile page password tooltip to be This field is required
-    Then expect Profile page Re-Password tooltip to be This field is required
-
-
     # Verifying all contents present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
@@ -35,23 +22,38 @@ Feature: Profile page validation theme_1632
 
     # Verifying all fields present
     Then expect Profile page email exists
+    Then set Profile page Email to kk
     Then expect Profile page username exists
+    Then set Profile page Username to r
     Then expect Profile page password exists
+    Then set Profile page Password to r
     Then expect Profile page retype password exists
+    Then set Profile page Re-type password to k
     Then expect Profile page Survey Question exists
     Then expect Profile page promo code link exists
     Then show profile page promo code textbox
     Then expect Profile page promo code textbox exists
+    Then set Profile page promo code to PR
     Then expect Profile page CONTINUE button exists
     Then expect Profile page Privacy Policy link exists
     Then expect Profile page copyright link exists
 
     # Validate tooltips for various values
-    Then set Profile page Password to we
-    Then expect Profile page Password tooltip count is 2
+    #Validate Email tooltips
+    Then expect Profile page Email tooltip count is 2
+    Then expect Profile page Email tooltip 0 to be 5 character minimum
+    Then expect Profile page Email tooltip 1 to be Valid email address required
+    #Validate Username tooltips
+    Then expect Profile page Username tooltip 0 to be 2 character minimum
+    #Validate Password tooltips
+    Then expect Profile page Password tooltip count is 3
     Then expect Profile page Password tooltip 0 to be 6 character minimum
     Then expect Profile page Password tooltip 1 to be At least 1 number required
-    #Then expect Profile page Password tooltip 3 to be Cannot match username
+    Then expect Profile page Password tooltip 2 to be Cannot match username
+    #Validate Re-type password tooltips
+    Then expect Profile page Re-Password tooltip 0 to be Passwords don't match
+    #Validate promo code tooltips
+    Then expect Profile page promo code tooltip 0 to be Passwords don't match
 
     #Then expect Profile page Username tooltip to be This field is required
     #Then expect Profile page Re-Password tooltip to be This field is required
