@@ -18,20 +18,14 @@ module Stamps
       end
 
       class RegSingleFieldRequiredHelpBlock
-        attr_accessor :browser, :help_elements
-        def initialize(browser, help_elements)
+        attr_accessor :help_elements
+        def initialize(help_elements)
           @help_elements = help_elements
-          @browser = browser
-        end
-
-        def size
-          help_elements.size.to_s
         end
 
         def tooltip
           StampsElement.new(help_elements).text
         end
       end
-
   end
 end

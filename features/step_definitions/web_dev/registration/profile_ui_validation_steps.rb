@@ -75,18 +75,30 @@ Then /^[Ee]xpect Profile page Email tooltip (\d+) to be (.*)$/ do |tooltip_index
   expect(registration.profile.email.help_block.tooltip(tooltip_index)).to eql(str)
 end
 
-Then /^[Ee]xpect Profile page Username tooltip to be (.*)$/ do |str|
-  expect(registration.profile.account_username.help_block.tooltip).to eql(str)
-end
-
 Then /^[Ee]xpect Profile page Password tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
   expect(registration.profile.account_password.help_block.tooltip(tooltip_index)).to eql(str)
 end
 
-Then /^[Ee]xpect Profile page Password tooltip to be (.*)$/ do |str|
-  expect(registration.profile.account_password).to eql(str)
-end
-
 Then /^[Ee]xpect Profile page Re-Password tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
   expect(registration.profile.retype_password.help_block.tooltip(tooltip_index)).to eql(str)
+end
+
+Then /^[Ee]xpect Profile page Email tooltip to be (.*)$/ do |str|
+  expect(registration.profile.email.single_field_help_block.tooltip).to eql(str)
+end
+
+Then /^[Ee]xpect Profile page [Uu]sername tooltip to be (.*)$/ do |str|
+  expect(registration.profile.account_username.single_field_help_block.tooltip).to eql(str)
+end
+
+Then /^[Ee]xpect Profile page [Pp]assword tooltip to be (.*)$/ do |str|
+  expect(registration.profile.account_password.single_field_help_block.tooltip).to eql(str)
+end
+
+Then /^[Ee]xpect Profile page Re-Password tooltip to be (.*)$/ do |str|
+  expect(registration.profile.retype_password.single_field_help_block.tooltip).to eql(str)
+end
+
+Then /^[Ee]xpect Profile page Survey Question tooltip to be (.*)$/ do |str|
+  expect(registration.profile.survey_question.single_field_help_block.tooltip).to eql(str)
 end

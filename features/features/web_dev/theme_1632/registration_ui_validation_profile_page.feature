@@ -6,7 +6,7 @@ Feature: Profile page validation theme_1632
   @registration_ui_validation_profile_page
   Scenario: Profile Page UI Validation
 
-    # Verifying all contents present
+    # Verifying all content present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
     Then expect Registration bread crumbs is Profile
@@ -20,8 +20,15 @@ Feature: Profile page validation theme_1632
     Then uncheck Profile page Money-saving offers and new products
     Then expect Profile page Money-saving offers and new products is unchecked
 
-    # Verifying all fields present
+    # Validate Single Help block tooltips
+    Then continue to Membership page
     Then expect Profile page email exists
+    Then expect Profile page Email tooltip to be This field is required
+    Then expect Profile page Username tooltip to be This field is required
+    Then expect Profile page password tooltip to be This field is required
+    Then expect Profile page Re-Password tooltip to be This field is required
+
+    # Verifying all fields present and set Negative values for tooltip Validation
     Then set Profile page Email to kk
     Then expect Profile page username exists
     Then set Profile page Username to r
@@ -55,10 +62,7 @@ Feature: Profile page validation theme_1632
     #Validate promo code tooltips
     Then expect Profile page promo code tooltip 0 to be Passwords don't match
 
-    #Then expect Profile page Username tooltip to be This field is required
-    #Then expect Profile page Re-Password tooltip to be This field is required
-
-    # Validating all fields
+    # Validating all fields with correct values
     Then set Profile page Email to random value
     Then expect Profile page Email is correct
     Then set Profile page Username to random value
@@ -79,4 +83,3 @@ Feature: Profile page validation theme_1632
     Then expect Profile page Survey Question is correct
 
     Then set Profile page promo code to PR33-NH77
-
