@@ -40,6 +40,10 @@ module Stamps
         expect(customer_search_page.present?).to be(true), "PAM Customer Search page did not load."
         customer_search_page
       end
+
+      def appcap_overrides
+
+      end
     end
   end
 end

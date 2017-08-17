@@ -642,18 +642,14 @@ module Stamps
         end
       end
 
-      class MailServiceSelection
+      class MailServiceSelection < Browser::StampsModal
         include ParameterHelper
         attr_accessor :browser, :service_str, :service_field, :cost_field
 
-        def initialize(browser)
-          @browser = browser
-        end
-
         def service(str)
           @service_str = str
-          self.service_field = Browser::StampsElement(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=text]"))
-          self.cost_field = Browser::StampsElement(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=amount]"))
+          @service_field = StampsElement.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=text]"))
+          @cost_field = StampsElement.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=amount]"))
           self
         end
 
@@ -678,7 +674,7 @@ module Stamps
           super
           @text_box = StampsTextBox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
           @drop_down = StampsElement.new browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")
-          @service_selection = MailServiceSelection.new(browser)
+          @service_selection = MailServiceSelection.new(param)
         end
 
         def select(str)
