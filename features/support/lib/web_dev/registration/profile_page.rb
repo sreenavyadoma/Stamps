@@ -109,7 +109,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=email]>div>div>div>div>span"))
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span"))
         end
       end
 
@@ -119,7 +119,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
+          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
         end
       end
 
@@ -129,7 +129,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span"))
+          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span"))
         end
       end
 
@@ -139,7 +139,7 @@ module Stamps
         end
 
         def single_field_help_block
-          RegFieldRequiredHelpBlock.new(browser.span(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
+          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
         end
       end
 
@@ -151,7 +151,7 @@ module Stamps
 
       class RegProfileSurveyQuetion < Stamps::Browser::StampsDropDownLovSubStr
         def single_field_help_block
-          RegSingleFieldRequiredHelpBlock.new(browser.lis(css: "li[id=survey]>div>div:nth-child(1)>div>div>span"))
+          RegHelpBlock.new(browser,browser.lis(css: "li[id=survey]>div>div:nth-child(1)>div>div>span"))
         end
       end
 

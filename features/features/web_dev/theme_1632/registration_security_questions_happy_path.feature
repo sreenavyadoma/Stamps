@@ -44,7 +44,7 @@ Feature: Registration Security questions page happy path
     Then Pause for 10 second
     Then set Security questions page select second question to What was your high school mascot?
     Then set Security questions page select second answer to Auto11
-    Then Pause for 60 second
+    Then Pause for 10 second
     Then click Get Started button
 
     # Validate newly created account welcome page

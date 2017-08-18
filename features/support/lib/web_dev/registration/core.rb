@@ -11,20 +11,13 @@ module Stamps
           help_elements.size.to_s
         end
 
-        def tooltip(tooltip_index)
-          tooltip_index = tooltip_index.to_i
+        def tooltip(*args)
+          if args.length == 0
+            tooltip_index = 0
+          else
+            tooltip_index = args[0].to_i
+          end
           StampsElement.new(help_elements[tooltip_index]).text
-        end
-      end
-
-      class RegFieldRequiredHelpBlock
-        attr_accessor :help_elements
-        def initialize(help_elements)
-          @help_elements = help_elements
-        end
-
-        def tooltip
-          StampsElement.new(help_elements).text
         end
       end
   end

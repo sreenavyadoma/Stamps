@@ -46,20 +46,20 @@ Feature: Profile page validation theme_1632
     Then expect Profile page copyright link exists
 
     # Validate tooltips for various values
-    #Validate Email tooltips
+    # Validate Email tooltips
     Then expect Profile page Email tooltip count is 2
     Then expect Profile page Email tooltip 0 to be 5 character minimum
     Then expect Profile page Email tooltip 1 to be Valid email address required
-    #Validate Username tooltips
+    # Validate Username tooltips
     Then expect Profile page Username tooltip 0 to be 2 character minimum
-    #Validate Password tooltips
+    # Validate Password tooltips
     Then expect Profile page Password tooltip count is 3
     Then expect Profile page Password tooltip 0 to be 6 character minimum
     Then expect Profile page Password tooltip 1 to be At least 1 number required
     Then expect Profile page Password tooltip 2 to be Cannot match username
-    #Validate Re-type password tooltips
+    # Validate Re-type password tooltips
     Then expect Profile page Re-Password tooltip 0 to be Passwords don't match
-    #Validate promo code tooltips
+    # Validate promo code tooltips
     Then expect Profile page promo code tooltip 0 to be Passwords don't match
 
     # Validating all fields with correct values
