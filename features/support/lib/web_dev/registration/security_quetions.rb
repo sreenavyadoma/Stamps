@@ -32,7 +32,7 @@ module Stamps
       def select(str)
         begin
           drop_down.click
-          selection = StampsElement.new(browser.lis(css: "li[id='newsecretquestions']>div>div>div>div>div>div>div>ul>li>a>span[class=text]")[15])
+          selection = StampsElement.new(browser.span(text: 'What was your high school mascot?'))
           15.times do
             begin
               drop_down.click unless selection.present?

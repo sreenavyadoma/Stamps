@@ -39,10 +39,10 @@ Feature: Registration Security questions page happy path
     Then in Ship Volume Survey page, click Submit button
 
     # Select security quetions and answers
-    Then set Security questions page select first question to What is your city of birth?
+    Then set Security questions page select first question to What was your high school mascot?
     Then set Security questions page select first answer to Auto11
     Then Pause for 10 second
-    Then set Security questions page select second question to What was your high school mascot?
+    Then set Security questions page select second question to What is your father's birthplace?
     Then set Security questions page select second answer to Auto11
     Then Pause for 10 second
     Then click Get Started button
