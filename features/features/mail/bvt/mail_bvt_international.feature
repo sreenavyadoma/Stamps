@@ -17,9 +17,11 @@ Feature: International Shipping BVT
     Then select Print form service FCMI Package
 
     Then click Print form Edit Customs Form button
+
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
 
     Then set Customs form Package Contents to Document
+
     Then set Customs form More Info to some random string
 
     Then set Customs form Package Contents to Commercial Sample
