@@ -8,30 +8,40 @@ module Stamps
       end
 
       def select(str)
-        selection = StampsElement.new(browser.span(text: 'What is your city of birth?'))
-        15.times do
+        begin
           element.click
-          selection.scroll_into_view
-          selection.click
-        end
+          selection = StampsElement.new(browser.span(text: 'What is your city of birth?').first)
+          15.times do
+            begin
+              element.click unless selection.present?
+              selection.scroll_into_view
+              selection.click
+            end
+          end
         expect(selection.text).to include(str)
+        end
       end
     end
 
     class SecuritySecondQuestion < Browser::StampsModal
 
       def drop_down
-        StampsElement.new(browser.spans(css: "button[title*='2ND QUESTION']>span[class*=filter-option]"))
+        StampsElement.new(browser.span(css: "button[title*='2ND QUESTION']>span[class*=filter-option]"))
       end
 
       def select(str)
-        selection = StampsElement.new(browser.span(text: 'What was your high school mascot?'))
-        15.times do
+        begin
           drop_down.click
-          selection.scroll_into_view
-          selection.click
+          selection = StampsElement.new(browser.span(text: 'What was your high school mascot?').last)
+          15.times do
+            begin
+              drop_down.click unless selection.present?
+              selection.scroll_into_view
+              selection.click
+            end
+          end
+          expect(selection.text).to include(str)
         end
-        expect(selection.text).to include(str)
       end
 
       def present?

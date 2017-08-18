@@ -68,7 +68,7 @@ Then /^[Ss]et Security questions page select second question to (.*)$/ do |str|
 end
 
 Then /^[Ss]et Security questions page select second answer to (.*)$/ do |str|
-  registration.security_questions.second_answer.set str
+  registration.security_questions.second_answer.set(str)
 end
 
 Then /^[Cc]lick Get Started button$/ do

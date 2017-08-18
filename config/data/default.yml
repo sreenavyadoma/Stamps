@@ -1059,11 +1059,10 @@ zone_1_through_4:
         zip: 92315
     zone2:
       1:
-        street_address: 200 West Arbor Drive
-        street_address_2: Unit 504
+        street_address: 9310 Kearny Mesa Rd
         city: San Diego
         state: CA
-        zip: 92103
+        zip: 92126
       2:
         street_address: 3217 Shasta Cir S
         city: Los Angeles
