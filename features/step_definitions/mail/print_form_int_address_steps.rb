@@ -8,8 +8,8 @@ Then /^[Ss]et Print form Ship-To to international address$/ do |table|
   step "set Print form Company to #{address['company']}"
   step "set Print form Address 1 to #{address['street_address_1']}"
   step "set Print form Address 2 to #{address['street_address_2']}"
-  step "set Print form City to #{address['city']}"
   step "set Print form Province to #{address['province']}"
+  step "set Print form City to #{address['city']}"
   step "set Print form Postal Code to #{address['postal_code']}"
   step "set Print form Phone to #{address['phone']}"
 end
@@ -94,18 +94,21 @@ Then /^[Ss]et Print form City to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.city.click if value.nil?
   test_param[:mail_to_city] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.city.set(test_param[:mail_to_city])
+  step "blur out on print form"
 end
 
 Then /^[Ss]et Print form Province to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.province.click if value.nil?
   test_param[:mail_to_province] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.province.set(test_param[:mail_to_province])
+  step "blur out on print form"
 end
 
 Then /^[Ss]et Print form Postal Code to (?:tab|enter|(.*))$/ do |value|
   stamps.mail.print_form.mail_to.address.postal_code.click if value.nil?
   test_param[:mail_to_postal_code] = (value.downcase == 'random')? test_helper.random_full_name : value
   stamps.mail.print_form.mail_to.address.postal_code.set(test_param[:mail_to_postal_code])
+  step "blur out on print form"
 end
 
 Then /^[Ss]et Print form Phone to (?:tab|enter|(.*))$/ do |value|

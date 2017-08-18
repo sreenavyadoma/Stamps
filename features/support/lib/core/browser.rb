@@ -38,6 +38,10 @@ module Stamps
         browser.url
       end
 
+      def flash
+        element.flash
+      end
+
       def disabled?
         begin
           element.disabled?
@@ -175,8 +179,9 @@ module Stamps
 
       def blur_out(*args)
         ((args.nil? || args.length==0)?2:args[0].to_i).times do
-          click
+          flash
           double_click
+          click
         end
       end
     end
@@ -194,6 +199,14 @@ module Stamps
           rescue
             #ignore
           end
+        end
+      end
+
+      def append(txt)
+        begin
+          text_box.append(txt) if present?
+        rescue
+          #ignore
         end
       end
 
