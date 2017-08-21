@@ -1,19 +1,18 @@
-
 module Stamps
   module Registration
     class SecurityFirstQuestion < Browser::StampsModal
 
-      def element
+      def drop_down
         StampsElement.new(browser.span(css: "button[title*='1ST QUESTION']>span[class*=filter-option]"))
       end
 
       def select(str)
         begin
-          element.click
+          drop_down.click
           selection = StampsElement.new(browser.lis(css: "li[id='newsecretquestions']>div>div>div>div>div>div>div>ul>li>a>span[class=text]")[3])
           15.times do
             begin
-              element.click unless selection.present?
+              drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
             end
