@@ -5,7 +5,7 @@ Feature: Registration
   @pam_meter_limit_100k
   Scenario:
     Then load PAM Page
-    Then Visit PAM Customer Search page
+    Then load PAM Customer Search page
     Then load username and password from parameter file registration_meter_limit_100k
     Then set PAM Customer Search page username from parameter file
     Then set PAM Customer Search page 5.2 or lower

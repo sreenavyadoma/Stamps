@@ -1,11 +1,19 @@
 module Stamps
   module Pam
     class PaymentAdministratorManager < Browser::StampsModal
-      attr_reader :header, :customer_search_page, :customer_profile_page
+      attr_reader :header, :customer_search_link, :appcap_overrides_link, :customer_search_page, :customer_profile_page, :appcap_overrides_page
+
       def initialize(param)
         super
         @header = StampsElement.new(browser.h5(text: "Customer Search"))
-        @customer_search_page ||= CustomerSearchPage.new(param)
+        # links
+        @customer_search_link = StampsElement.new(browser.a(css: 'a[href*=AccountSearch]'))
+        @appcap_overrides_link = StampsElement.new browser.a(text: "AppCap Overrides")
+
+        # PAM pages
+        @customer_search_page = CustomerSearchPage.new(param)
+        @customer_profile_page = CustomerProfilePage.new(param)
+        @appcap_overrides_page = AppCapOverridesPage.new(param)
       end
 
       def visit
@@ -33,16 +41,6 @@ module Stamps
 
       def wait_until_present(*args)
         header.wait_until_present(*args)
-      end
-
-      def customer_search
-        StampsElement.new(browser.a(css: 'a[href*=AccountSearch]')).click_while_present
-        expect(customer_search_page.present?).to be(true), "PAM Customer Search page did not load."
-        customer_search_page
-      end
-
-      def appcap_overrides
-
       end
     end
   end

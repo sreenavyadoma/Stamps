@@ -6,7 +6,7 @@ Feature: PAM page
   @pam
   Scenario: PAM page
     Then load PAM Page
-    Then Visit PAM Customer Search page
+    Then load PAM Customer Search page
     Then load username and password from parameter file
     Then set PAM Customer Search page username from parameter file
     Then set PAM Customer Search page 5.2 or lower

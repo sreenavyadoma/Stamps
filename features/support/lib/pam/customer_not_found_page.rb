@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class CustomerProfileNotFound < Browser::StampsModal
+    class CustomerNotFoundPage < Browser::StampsModal
       attr_reader :status_text
       def initialize(param)
         super

@@ -122,7 +122,7 @@ module Stamps
       end
     end
 
-    class AppCapOverrides < Browser::StampsModal
+    class AppCapOverridesPage < Browser::StampsModal
       attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
                   :mailing_label_printing, :submit_button, :appcap_overrides
 

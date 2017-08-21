@@ -24,12 +24,13 @@ module Stamps
 
       def appcapp_overrides
         link = StampsElement.new browser.a(text: "AppCap Overrides")
-        page = AppCapOverrides.new(param)
+        page = AppCapOverridesPage.new(param)
         5.times do
           link.click
           sleep(0.35)
           return page if page.present?
         end
+        expect(page.present?).to be(true), "Unable to open AppCap Overrides Page, it is not present."
       end
     end
   end

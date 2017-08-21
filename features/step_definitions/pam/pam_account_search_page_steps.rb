@@ -1,23 +1,12 @@
 
-Then /^load PAM [Pp]age$/ do
+Then /^[Ll]oad PAM [Pp]age$/ do
+  step "I launched default browser" if test_config.browser.nil?
   pam.visit
 end
 
-Then /^[Vv]isit PAM [Cc]ustomer [Ss]earch page$/ do
+Then /^[Ll]oad PAM [Cc]ustomer [Ss]earch page$/ do
   step "I launched default browser" if test_config.browser.nil?
-  pam.customer_search_page.visit
+  pam.load_customer_search_page
 end
-
-Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*))$/ do |str|
-  test_param[:username] = str unless str.nil?
-  pam.customer_search_page.username.set(test_param[:username])
-end
-
-Then /^[Cc]lick PAM [Cc]ustomer [Ss]earch page [Ss]earch button$/ do
-  test_param[:pam_search_result] = pam.customer_search_page.search_username(test_param[:username])
-end
-
-
-
 
 

@@ -37,7 +37,7 @@ Feature: Registration
     Then On Registration Membership page, click Submit and correct errors
     Then Registration Choose Supplies: Place Order
 
-    Then Visit PAM Customer Search page
+    Then load PAM Customer Search page
     Then set PAM Customer Search page username to random
     Then set PAM Customer Search page 5.2 or lower
     Then click PAM Customer Search page Search button

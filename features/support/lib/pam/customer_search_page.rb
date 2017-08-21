@@ -44,7 +44,7 @@ module Stamps
 
     class CustomerSearchPage < Browser::StampsModal
       include CustomerSearch
-      attr_accessor :customer_profile_page
+      attr_accessor :customer_profile
 
       def visit
         case param.test_env.downcase
@@ -67,14 +67,14 @@ module Stamps
 
       def search_username(str)
         customer_profile_found = CustomerProfilePage.new(param)
-        customer_profile_not_found = CustomerProfileNotFound.new(param)
+        customer_not_found_page = CustomerNotFoundPage.new(param)
         50.times do |counter|
           search_btn.click
           search_btn.click
           sleep(0.5)
-          return @customer_profile_page = customer_profile_found if customer_profile_found.present?
-          if customer_profile_not_found.present?
-            logger.step "PAM:  #{customer_profile_not_found.status_reason}"
+          return @customer_profile = customer_profile_found if customer_profile_found.present?
+          if customer_not_found_page.present?
+            logger.step "PAM:  #{customer_not_found_page.status_reason}"
             browser.back
             sleep(0.25)
             username.set(str)
@@ -82,9 +82,9 @@ module Stamps
         end
         search_btn.click
         search_btn.click
-        return @customer_profile_page = customer_profile_not_found if customer_profile_not_found.present?
-        return @customer_profile_page = customer_profile_found if customer_profile_found.present?
-        expect(customer_profile_found.present? || customer_profile_not_found.present?).to be_true, "Customer Profile or Customer Not Found page did not appear."
+        return @customer_profile = customer_not_found_page if customer_not_found_page.present?
+        return @customer_profile = customer_profile_found if customer_profile_found.present?
+        expect(customer_profile_found.present? || customer_not_found_page.present?).to be_true, "Customer Profile or Customer Not Found page did not appear."
       end
     end
   end
