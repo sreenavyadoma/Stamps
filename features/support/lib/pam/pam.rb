@@ -2,25 +2,25 @@ module Stamps
   module Pam
     class PamHeader < Browser::StampsModal
       def search_link
-        @search_link ||= StampsElement.new(browser.a(css: 'a[href*=AccountSearch]'))
+        StampsElement.new(browser.a(css: 'a[href*=AccountSearch]'))
       end
 
       def customer_profile_link
-        @customer_profile_link ||= StampsElement.new(browser.a(css: 'a[href*=Profile]'))
+        StampsElement.new(browser.a(css: 'a[href*=Profile]'))
       end
 
       def change_meter_limit_link
-        @change_meter_link ||= StampsElement.new(browser.a(css: 'a[href*=MeterLimit]'))
+        StampsElement.new(browser.a(css: 'a[href*=MeterLimit]'))
       end
 
       def appcapp_overrides_link
-        @appcapp_overrides_link ||= StampsElement.new(browser.a(css: 'a[href*=AppCapOverride]'))
+        StampsElement.new(browser.a(css: 'a[href*=AppCapOverride]'))
       end
     end
 
     class PaymentAdministratorManager < Browser::StampsModal
       def page_title
-        @page_title ||= StampsElement.new(browser.h5(text: "Customer Search"))
+        StampsElement.new(browser.h5(text: "Customer Search"))
       end
 
       def visit
@@ -55,23 +55,23 @@ module Stamps
       end
 
       def customer_search_page
-        @customer_search_page ||= CustomerSearchPage.new(param)
+        CustomerSearchPage.new(param)
       end
 
       def appcap_overrides_page
-        @appcap_overrides_page ||= AppCapOverridesPage.new(param)
+        AppCapOverridesPage.new(param)
       end
 
       def customer_profile_page
-        @customer_profile_page ||= CustomerProfilePage.new(param)
+        CustomerProfilePage.new(param)
       end
 
       def customer_not_found_page
-        @customer_not_found_page ||= CustomerNotFoundPage.new(param)
+        CustomerNotFoundPage.new(param)
       end
 
       def meter_info_not_available
-        @meter_info_not_available ||= MeterInfoNotAvailable.new(param)
+        MeterInfoNotAvailable.new(param)
       end
     end
   end

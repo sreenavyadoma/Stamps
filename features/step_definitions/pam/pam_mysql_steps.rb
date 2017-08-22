@@ -1,6 +1,7 @@
 Then /^[Ss]et PAM AppCap Overrides to Always On for all Required Fields for all users in the database$/ do
   credentials_list = user_credentials.all_user_credentials
   credentials_list.each_with_index do |row, index|
+    step "load PAM Customer Search page"
     step "search PAM Customer Search page for username #{row[:username]}"
     step "click PAM AppCap Overrides link"
     step "set PAM AppCap Overrides Allow High Risk Countries to Always On"

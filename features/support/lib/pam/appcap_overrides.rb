@@ -151,7 +151,7 @@ module Stamps
         AppCapMailingLabelPrinting.new(param)
       end
 
-      def certifield_mail
+      def certified_mail
         AppCapCertifiedMail.new(param)
       end
 

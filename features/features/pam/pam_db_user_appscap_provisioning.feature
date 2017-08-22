@@ -3,7 +3,7 @@
 Feature: PAM AppCap Provisioning
 
   Background:
-    Given load PAM Customer Search page
+    Given I launch the default browser
 
   Scenario:
     Then set PAM AppCap Overrides to Always On for all Required Fields for all users in the database

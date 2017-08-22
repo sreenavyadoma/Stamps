@@ -100,63 +100,63 @@ Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always Off$/ do
-  pam.appcapp_overrides.netstamps_printing.always_off
+  pam.appcap_overrides_page.netstamps_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to No Override$/ do
-  pam.appcapp_overrides.netstamps_printing.no_override
+  pam.appcap_overrides_page.netstamps_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always On$/ do
-  pam.appcapp_overrides.shipping_label_printing.always_on
+  pam.appcap_overrides_page.shipping_label_printing.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always Off$/ do
-  pam.appcapp_overrides.shipping_label_printing.always_off
+  pam.appcap_overrides_page.shipping_label_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Override$/ do
-  pam.appcapp_overrides.shipping_label_printing.no_override
+  pam.appcap_overrides_page.shipping_label_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always On$/ do
-  pam.appcapp_overrides.international_shipping.always_on
+  pam.appcap_overrides_page.international_shipping.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always Off$/ do
-  pam.appcapp_overrides.international_shipping.always_off
+  pam.appcap_overrides_page.international_shipping.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Override$/ do
-  pam.appcapp_overrides.international_shipping.no_override
+  pam.appcap_overrides_page.international_shipping.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always On$/ do
-  pam.appcapp_overrides.allow_high_risk_countries.always_on
+  pam.appcap_overrides_page.allow_high_risk_countries.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always Off$/ do
-  pam.appcapp_overrides.allow_high_risk_countries.always_off
+  pam.appcap_overrides_page.allow_high_risk_countries.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Override$/ do
-  pam.appcapp_overrides.allow_high_risk_countries.no_override
+  pam.appcap_overrides_page.allow_high_risk_countries.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always On$/ do
-  pam.appcapp_overrides.mailing_label_printing.always_on
+  pam.appcap_overrides_page.mailing_label_printing.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always Off$/ do
-  pam.appcapp_overrides.mailing_label_printing.always_off
+  pam.appcap_overrides_page.mailing_label_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Override$/ do
-  pam.appcapp_overrides.mailing_label_printing.no_override
+  pam.appcap_overrides_page.mailing_label_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
-  pam.appcapp_overrides.submit.ok
+  pam.appcap_overrides_page.submit.ok
 end
 
 Then /^send username to standard out$/ do
