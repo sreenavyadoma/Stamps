@@ -99,31 +99,6 @@ Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
   test_config.logger.message "PAM: Available Mail ############################"
 end
 
-Then /^[Oo]n PAM Customer Profile page, click  AppCap Overrides link$/ do
-  pam.header.appcapp_overrides
-end
-
-
-Then /^[Ss]et PAM AppCap Overrides Allow High Risk Countries to Always On$/ do
-  pam.appcapp_overrides.certified_mail.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always On$/ do
-  pam.appcapp_overrides.internet_postage_printing.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always Off$/ do
-  pam.appcapp_overrides.internet_postage_printing.always_off
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to No Override$/ do
-  pam.appcapp_overrides.internet_postage_printing.no_override
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always On$/ do
-  pam.appcapp_overrides.netstamps_printing.always_on
-end
-
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always Off$/ do
   pam.appcapp_overrides.netstamps_printing.always_off
 end

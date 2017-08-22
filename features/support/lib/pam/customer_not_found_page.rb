@@ -1,19 +1,26 @@
 module Stamps
   module Pam
     class CustomerNotFoundPage < Browser::StampsModal
-      attr_reader :status_text
-      def initialize(param)
-        super
-        @status_text = 'No records found'
+      def status_reason
+        @status_reason ||= StampsElement.new(browser.td(:css, '[class=TD3][align=middle]'))
       end
 
       def present?
-        browser.text.include?(status_text)
+        status_reason.present?
+      end
+    end
+
+    class MeterInfoNotAvailable < Browser::StampsModal
+      def page_title
+        @status_reason ||= StampsElement.new(browser.td(:text, 'Error'))
       end
 
-      def status_reason
-        return status_text if present?
-        'OK'
+      def error_message
+        @status_reason ||= StampsElement.new(browser.td(:css, 'td.TD3:nth-child(2)'))
+      end
+
+      def present?
+        page_title.present?
       end
     end
   end

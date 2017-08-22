@@ -54,7 +54,7 @@ Feature: Registration
     Then On PAM Customer Profile page, get Available Mail Amount
     Then On PAM Customer Profile page, get Available Mail Amount
 
-    Then On PAM Customer Profile page, click  AppCap Overrides link
+    Then click PAM AppCap Overrides link
     Then On PAM AppCap Overrides page, set Internet Mail Printing to Always On
     Then On PAM AppCap Overrides page, set Netstamps Printing to Always On
     Then On PAM AppCap Overrides page, set Shipping Label Printing to Always On

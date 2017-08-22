@@ -80,9 +80,8 @@ module Stamps
         def delete(*args)
           case args.length
             when 1
-              address = args[0]
-              if address.is_a? Hash
-                delete_row(locate_ship_from(address['full_name'], address['company'], address['city']))
+              if args.first.is_a? Hash
+                delete_row(locate_ship_from(args.first['full_name'], args.first['company'], args.first['city']))
               else
                 expect("Address format is not yet supported for this delete call.").to eql ""
               end
@@ -119,7 +118,7 @@ module Stamps
           expect("Unable to open Add Shipping Address modal.").to eql "Add Shipping Address"
         end
 
-        def address_located? * args #name, company, city
+        def address_located?(*args) #name, company, city)
           case args.length
             when 1
               if args[0].is_a? Hash

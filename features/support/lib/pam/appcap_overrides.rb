@@ -2,12 +2,12 @@ module Stamps
   module Pam
 
     class AppCapOverridesConfirmation < Browser::StampsModal
-      attr_reader :title, :ok_button
+      def title
+        @title ||= StampsElement.new browser.td(text: 'AppCap Overrides')
+      end
 
-      def initialize(param)
-        super
-        @title = StampsElement.new browser.td(text: 'AppCap Overrides')
-        @ok_button = StampsElement.new browser.a(css: 'a[href*=Profile]')
+      def ok_button
+        @ok_button ||= StampsElement.new browser.a(css: 'a[href*=Profile]')
       end
 
       def text
@@ -123,20 +123,40 @@ module Stamps
     end
 
     class AppCapOverridesPage < Browser::StampsModal
-      attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
-                  :mailing_label_printing, :submit_button, :appcap_overrides
+      def internet_postage_printing
+        @internet_postage_printing ||= AppCapInternetPostagePrinting.new(param)
+      end
 
-      def initialize(param)
-        super
-        @internet_postage_printing = AppCapInternetPostagePrinting.new(param)
-        @netstamps_printing = AppCapNetStampsPrinting.new(param)
-        @shipping_label_printing = AppCapShippingLabelPrinting.new(param)
-        @international_shipping = AppCapInternationalShipping.new(param)
-        @allow_high_risk_countries = AppCapAllowHighRiskCountries.new(param)
-        @mailing_label_printing = AppCapMailingLabelPrinting.new(param)
+      def netstamps_printing
+        @netstamps_printing ||= AppCapNetStampsPrinting.new(param)
+      end
+
+      def shipping_label_printing
+        @shipping_label_printing ||= AppCapShippingLabelPrinting.new(param)
+      end
+
+      def international_shipping
+        @international_shipping ||= AppCapInternationalShipping.new(param)
+      end
+
+      def allow_high_risk_countries
+        @allow_high_risk_countries ||= AppCapAllowHighRiskCountries.new(param)
+      end
+
+      def mailing_label_printing
+        @mailing_label_printing ||= AppCapMailingLabelPrinting.new(param)
+      end
+
+      def certifield_mail
         @certifield_mail =AppCapCertifiedMail.new(param)
-        @appcap_overrides = AppCapOverridesConfirmation.new(param)
-        @submit_button = StampsElement.new browser.input(name: 'submit')
+      end
+
+      def appcap_overrides
+        @appcap_overrides ||= AppCapOverridesConfirmation.new(param)
+      end
+
+      def submit_button
+        @submit_button ||= StampsElement.new browser.input(name: 'submit')
       end
 
       def present?

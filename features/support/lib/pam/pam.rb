@@ -1,19 +1,26 @@
 module Stamps
   module Pam
+    class PamHeader < Browser::StampsModal
+      def search_link
+        @search_link ||= StampsElement.new(browser.a(css: 'a[href*=AccountSearch]'))
+      end
+
+      def customer_profile_link
+        @customer_profile_link ||= StampsElement.new(browser.a(css: 'a[href*=Profile]'))
+      end
+
+      def change_meter_limit_link
+        @change_meter_link ||= StampsElement.new(browser.a(css: 'a[href*=MeterLimit]'))
+      end
+
+      def appcapp_overrides_link
+        @appcapp_overrides_link ||= StampsElement.new(browser.a(css: 'a[href*=AppCapOverride]'))
+      end
+    end
+
     class PaymentAdministratorManager < Browser::StampsModal
-      attr_reader :header, :customer_search_link, :appcap_overrides_link, :customer_search_page, :customer_profile_page, :appcap_overrides_page
-
-      def initialize(param)
-        super
-        @header = StampsElement.new(browser.h5(text: "Customer Search"))
-        # links
-        @customer_search_link = StampsElement.new(browser.a(css: 'a[href*=AccountSearch]'))
-        @appcap_overrides_link = StampsElement.new browser.a(text: "AppCap Overrides")
-
-        # PAM pages
-        @customer_search_page = CustomerSearchPage.new(param)
-        @customer_profile_page = CustomerProfilePage.new(param)
-        @appcap_overrides_page = AppCapOverridesPage.new(param)
+      def page_title
+        @page_title ||= StampsElement.new(browser.h5(text: "Customer Search"))
       end
 
       def visit
@@ -36,11 +43,35 @@ module Stamps
       end
 
       def present?
-        header.present?
+        page_title.present?
       end
 
       def wait_until_present(*args)
-        header.wait_until_present(*args)
+        page_title.wait_until_present(*args)
+      end
+
+      def pam_header
+        @pam_header = PamHeader.new(param)
+      end
+
+      def customer_search_page
+        @customer_search_page ||= CustomerSearchPage.new(param)
+      end
+
+      def appcap_overrides_page
+        @appcap_overrides_page ||= AppCapOverridesPage.new(param)
+      end
+
+      def customer_profile_page
+        @customer_profile_page ||= CustomerProfilePage.new(param)
+      end
+
+      def customer_not_found_page
+        @customer_not_found_page ||= CustomerNotFoundPage.new(param)
+      end
+
+      def meter_info_not_available
+        @meter_info_not_available ||= MeterInfoNotAvailable.new(param)
       end
     end
   end

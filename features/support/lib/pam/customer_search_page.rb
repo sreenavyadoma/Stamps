@@ -1,51 +1,6 @@
 module Stamps
   module Pam
-    module CustomerSearch
-      def present?
-        username.present?
-      end
-
-      def wait_until_present(*args)
-        username.wait_until_present(*args)
-      end
-
-      def username
-        @username ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]"))
-      end
-
-      def first_name
-        @first_name ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
-      end
-
-      def last_name
-        @last_name ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
-      end
-
-      def phone
-        @phone ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]"))
-      end
-
-      def email
-        @email ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]"))
-      end
-
-      def search_btn
-        @search_btn ||= StampsElement.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]"))
-      end
-
-      def user_5_2_radio
-        @user_5_2_radio ||= browser.radio(css: "input[name=v6usr][value='0']")
-      end
-
-      def user_5_2_or_lower
-
-      end
-    end
-
     class CustomerSearchPage < Browser::StampsModal
-      include CustomerSearch
-      attr_accessor :customer_profile
-
       def visit
         case param.test_env.downcase
           when /cc/
@@ -65,26 +20,44 @@ module Stamps
         self
       end
 
-      def search_username(str)
-        customer_profile_found = CustomerProfilePage.new(param)
-        customer_not_found_page = CustomerNotFoundPage.new(param)
-        50.times do |counter|
-          search_btn.click
-          search_btn.click
-          sleep(0.5)
-          return @customer_profile = customer_profile_found if customer_profile_found.present?
-          if customer_not_found_page.present?
-            logger.step "PAM:  #{customer_not_found_page.status_reason}"
-            browser.back
-            sleep(0.25)
-            username.set(str)
-          end
-        end
-        search_btn.click
-        search_btn.click
-        return @customer_profile = customer_not_found_page if customer_not_found_page.present?
-        return @customer_profile = customer_profile_found if customer_profile_found.present?
-        expect(customer_profile_found.present? || customer_not_found_page.present?).to be_true, "Customer Profile or Customer Not Found page did not appear."
+      def present?
+        username.present?
+      end
+
+      def wait_until_present(*args)
+        username.wait_until_present(*args)
+      end
+
+      def username
+        StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=uname]"))
+      end
+
+      def first_name
+        @first_name ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
+      end
+
+      def last_name
+        @last_name ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=fname]"))
+      end
+
+      def phone
+        @phone ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=phone]"))
+      end
+
+      def email
+        @email ||= StampsTextBox.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>input[name=email]"))
+      end
+
+      def search_btn
+        StampsElement.new(browser.text_field(css: "form[name=searchForm]>table>tbody>tr>td>p>input[name=Input]"))
+      end
+
+      def user_5_2_radio
+        @user_5_2_radio ||= browser.radio(css: "input[name=v6usr][value='0']")
+      end
+
+      def user_5_2_or_lower
+
       end
     end
   end
