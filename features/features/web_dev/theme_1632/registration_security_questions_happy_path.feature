@@ -28,11 +28,9 @@ Feature: Registration Security questions page happy path
     Then click Membership page Continue button
 
     # Choose supplies Page
-    Then expect welcome_kit_message exists
     Then in Choose Supplies page, click Place Order button
 
     # Add Postage Page
-    #Then expect add_postage_to_account message exists
     #Then in Add Postage page, click Confirm button
 
     # Ship Volume Survey Page
