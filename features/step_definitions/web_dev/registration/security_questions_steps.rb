@@ -72,7 +72,7 @@ Then /^[Ss]et Security questions page select second answer to (.*)$/ do |str|
 end
 
 Then /^[Cc]lick Get Started button$/ do
-  registration.security_second_question.get_started_btn
+  registration.security_questions.get_started.click
 end
 
 Then /^[Oo]n [Mm]embership [Pp]age continue to Choose Supplies page$/ do
