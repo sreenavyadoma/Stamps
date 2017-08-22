@@ -35,9 +35,9 @@ Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
       test_config.browser.back unless index == iteration-1
     end
   end
-  expect(pam.customer_not_found_page.status_reason.text).to eql("OK"), "Customer Search page can't find username #{test_param[:username]}" if pam.customer_not_found_page.present?
-  expect(pam.meter_info_not_available.error_message.text).to eql("OK"), "Customer Search page can't find username #{test_param[:username]}. PAM(#{modal_param.url}) might be down" if pam.meter_info_not_available.present?
-  expect(pam.customer_profile_page.username.text).to eql(test_param[:username]), "Unable to find username #{test_param[:username]}"
+  expect(pam.customer_not_found_page.status_reason.text).to eql("OK") if pam.customer_not_found_page.present?
+  expect(pam.meter_info_not_available.error_message.text).to eql("OK") if pam.meter_info_not_available.present?
+  expect(pam.customer_profile_page.username.text).to eql(test_param[:username])
 end
 
 Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*))$/ do |str|

@@ -2,7 +2,7 @@ module Stamps
   module Pam
     class CustomerNotFoundPage < Browser::StampsModal
       def status_reason
-        @status_reason ||= StampsElement.new(browser.td(:css, '[class=TD3][align=middle]'))
+        StampsElement.new(browser.td(:css, '[class=TD3][align=middle]'))
       end
 
       def present?
@@ -12,11 +12,11 @@ module Stamps
 
     class MeterInfoNotAvailable < Browser::StampsModal
       def page_title
-        @status_reason ||= StampsElement.new(browser.td(:text, 'Error'))
+        StampsElement.new(browser.td(:text, 'Error'))
       end
 
       def error_message
-        @status_reason ||= StampsElement.new(browser.td(:css, 'td.TD3:nth-child(2)'))
+        StampsElement.new(browser.td(:css, 'td.TD3:nth-child(2)'))
       end
 
       def present?
