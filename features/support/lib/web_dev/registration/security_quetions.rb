@@ -7,18 +7,14 @@ module Stamps
       end
 
       def select(str)
-        begin
           drop_down.click
-          selection = StampsElement.new(browser.lis(css: "li[id='newsecretquestions']>div>div>div>div>div>div>div>ul>li>a>span[class=text]")[3])
+          selection = StampsElement.new(browser.spans(text: str).first)
           15.times do
-            begin
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
-            end
           end
         expect(selection.text).to include(str)
-        end
       end
     end
 
@@ -29,18 +25,14 @@ module Stamps
       end
 
       def select(str)
-        begin
           drop_down.click
-          selection = StampsElement.new(browser.span(text: 'What was your high school mascot?'))
+          selection = StampsElement.new(browser.spans(text: str).last)
           15.times do
-            begin
               drop_down.click unless selection.present?
               selection.scroll_into_view
               selection.click
-            end
           end
           expect(selection.text).to include(str)
-        end
       end
 
       def present?
