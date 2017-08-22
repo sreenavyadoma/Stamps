@@ -24,8 +24,9 @@ Then /^[Ss]earch PAM [Cc]ustomer [Ss]earch page for username (.*)$/ do |str|
     pam.customer_search_page.username.set(test_param[:username] = str)
     pam.customer_search_page.search_btn.click
     pam.customer_profile_page.wait_until_present(2)
-    break if pam.customer_profile_page.present?
-    if pam.customer_not_found_page.present?
+    if pam.customer_profile_page.present?
+      break
+    elsif pam.customer_not_found_page.present?
       test_config.logger.step "PAM:  #{pam.customer_not_found_page.status_reason.text}"
       test_config.browser.back unless index == iteration-1
       sleep(0.25)
@@ -59,21 +60,21 @@ Then /^[Cc]lick PAM AppCap Overrides link$/ do
 end
 
 Then /^[Ss]et PAM AppCap Overrides Allow High Risk Countries to Always On$/ do
-  pam.appcapp_overrides.certified_mail.always_on
+  pam.appcap_overrides_page.certified_mail.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always On$/ do
-  pam.appcapp_overrides.internet_postage_printing.always_on
+  pam.appcap_overrides_page.internet_postage_printing.always_on
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always Off$/ do
-  pam.appcapp_overrides.internet_postage_printing.always_off
+  pam.appcap_overrides_page.internet_postage_printing.always_off
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to No Override$/ do
-  pam.appcapp_overrides.internet_postage_printing.no_override
+  pam.appcap_overrides_page.internet_postage_printing.no_override
 end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always On$/ do
-  pam.appcapp_overrides.netstamps_printing.always_on
+  pam.appcap_overrides_page.netstamps_printing.always_on
 end

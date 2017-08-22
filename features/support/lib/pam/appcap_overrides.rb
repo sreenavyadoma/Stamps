@@ -123,40 +123,44 @@ module Stamps
     end
 
     class AppCapOverridesPage < Browser::StampsModal
+      def username
+        StampsElement.new(browser.a(css: "tbody>tr:nth-child(2)>td:nth-child(2)>a"))
+      end
+
       def internet_postage_printing
-        @internet_postage_printing ||= AppCapInternetPostagePrinting.new(param)
+        AppCapInternetPostagePrinting.new(param)
       end
 
       def netstamps_printing
-        @netstamps_printing ||= AppCapNetStampsPrinting.new(param)
+        AppCapNetStampsPrinting.new(param)
       end
 
       def shipping_label_printing
-        @shipping_label_printing ||= AppCapShippingLabelPrinting.new(param)
+        AppCapShippingLabelPrinting.new(param)
       end
 
       def international_shipping
-        @international_shipping ||= AppCapInternationalShipping.new(param)
+        AppCapInternationalShipping.new(param)
       end
 
       def allow_high_risk_countries
-        @allow_high_risk_countries ||= AppCapAllowHighRiskCountries.new(param)
+        AppCapAllowHighRiskCountries.new(param)
       end
 
       def mailing_label_printing
-        @mailing_label_printing ||= AppCapMailingLabelPrinting.new(param)
+        AppCapMailingLabelPrinting.new(param)
       end
 
       def certifield_mail
-        @certifield_mail =AppCapCertifiedMail.new(param)
+        AppCapCertifiedMail.new(param)
       end
 
       def appcap_overrides
-        @appcap_overrides ||= AppCapOverridesConfirmation.new(param)
+        AppCapOverridesConfirmation.new(param)
       end
 
       def submit_button
-        @submit_button ||= StampsElement.new browser.input(name: 'submit')
+        StampsElement.new browser.input(name: 'submit')
       end
 
       def present?
