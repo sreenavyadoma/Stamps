@@ -44,4 +44,4 @@ Feature: Registration Security questions page happy path
     Then click Get Started button
 
     # Validate newly created account welcome page
-    #Then expect congratulations message exists
+    Then expect congratulations message exists

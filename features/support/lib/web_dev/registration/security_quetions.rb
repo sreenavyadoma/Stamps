@@ -8,9 +8,11 @@ module Stamps
       def select(str)
         drop_down.click
         selection = StampsElement.new(browser.spans(text: str).first)
+         15.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
+        end
       end
     end
 
@@ -22,9 +24,11 @@ module Stamps
       def select(str)
         drop_down.click
         selection = StampsElement.new(browser.spans(text: str).last)
-            drop_down.click unless selection.present?
-            selection.scroll_into_view
-            selection.click
+         15.times do
+           drop_down.click unless selection.present?
+           selection.scroll_into_view
+           selection.click
+        end
       end
     end
 
