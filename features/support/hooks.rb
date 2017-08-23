@@ -30,16 +30,20 @@ Before do  |scenario|
   scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index+1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
   test_config.logger.message "-"
   test_config.logger.message "-"
-  if modal_param.web_app == :mail || modal_param.web_app == :orders
-    if (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
-      test_param[:username] = ENV['USR']
-      test_param[:password] = ENV['PW']
-    else
-      credentials = user_credentials.fetch(scenario.tags[0].name)
-      test_param[:username] = credentials[:username]
-      test_param[:password] = credentials[:password]
+
+  # MySql
+  begin
+    if modal_param.web_app == :mail || modal_param.web_app == :orders
+      if (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
+        test_param[:username] = ENV['USR']
+        test_param[:password] = ENV['PW']
+      else
+        credentials = user_credentials.fetch(scenario.tags[0].name)
+        test_param[:username] = credentials[:username]
+        test_param[:password] = credentials[:password]
+      end
     end
-  end
+  end unless modal_param.web_app == :registration
 end
 
 After do |scenario|
