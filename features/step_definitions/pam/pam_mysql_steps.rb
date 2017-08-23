@@ -1,6 +1,6 @@
 Then /^[Ss]et PAM AppCap Overrides to Always On for all Required Fields for all users in the database$/ do
   credentials_list = user_credentials.all_user_credentials
-  test_config.logger.step "There are #{credentials_list.size}"
+  test_config.logger.step "Number of users in the database: #{credentials_list.size}"
   credentials_list.each_with_index do |row, index|
     step "load PAM Customer Search page"
     step "search PAM Customer Search page for username #{row[:username]}"
@@ -79,4 +79,65 @@ end
 
 Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always On$/ do
   pam.appcap_overrides_page.netstamps_printing.always_on
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always Off$/ do
+  pam.appcap_overrides_page.netstamps_printing.always_off
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to No Override$/ do
+  pam.appcap_overrides_page.netstamps_printing.no_override
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always On$/ do
+  pam.appcap_overrides_page.shipping_label_printing.always_on
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always Off$/ do
+  pam.appcap_overrides_page.shipping_label_printing.always_off
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Override$/ do
+  pam.appcap_overrides_page.shipping_label_printing.no_override
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always On$/ do
+  pam.appcap_overrides_page.international_shipping.always_on
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always Off$/ do
+  pam.appcap_overrides_page.international_shipping.always_off
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Override$/ do
+  pam.appcap_overrides_page.international_shipping.no_override
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always On$/ do
+  pam.appcap_overrides_page.allow_high_risk_countries.always_on
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always Off$/ do
+  pam.appcap_overrides_page.allow_high_risk_countries.always_off
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Override$/ do
+  pam.appcap_overrides_page.allow_high_risk_countries.no_override
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always On$/ do
+  pam.appcap_overrides_page.mailing_label_printing.always_on
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always Off$/ do
+  pam.appcap_overrides_page.mailing_label_printing.always_off
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Override$/ do
+  pam.appcap_overrides_page.mailing_label_printing.no_override
+end
+
+Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
+  result = pam.appcap_overrides_page.submit.ok
+  test_config.logger.message " ############## #{test_param[:username]}: #{result}"
 end

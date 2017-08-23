@@ -173,6 +173,9 @@ rates_fcm_package:   --tags @rates_fcm_package --guess DEBUG=false JENKINS=true 
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 
+# PAM
+pam_db_user_appscap_provisioning: --tags @pam_db_user_appscap_provisioning --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=pam BROWSER=ff
+
 mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 
 registration_normal_workflow: --tags @registration_normal_workflow WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true

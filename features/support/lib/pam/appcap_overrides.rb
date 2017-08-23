@@ -3,15 +3,15 @@ module Stamps
 
     class AppCapOverridesConfirmation < Browser::StampsModal
       def title
-        @title ||= StampsElement.new browser.td(text: 'AppCap Overrides')
+        StampsElement.new browser.td(text: 'AppCap Overrides')
       end
 
       def ok_button
-        @ok_button ||= StampsElement.new browser.a(css: 'a[href*=Profile]')
+        StampsElement.new browser.a(css: 'a[href*=Profile]')
       end
 
       def text
-        title.text
+        StampsElement.new(browser.td(css: "tbody:nth-child(1)>tr:nth-child(2)>td:nth-child(2)")).text
       end
 
       def present?
@@ -21,6 +21,7 @@ module Stamps
       def ok
         ok_button.click
         ok_button.click_while_present
+        text
       end
     end
 

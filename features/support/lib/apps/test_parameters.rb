@@ -14,7 +14,7 @@ module TestParameters
       @modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
       @modal_param.web_app = (ENV['WEB_APP'].downcase).to_sym
-      expect([:orders, :mail, :registration]).to include(@modal_param.web_app), "Invalid modal_paramter WEB_APP=#{@modal_param.web_app}. Valid values are mail, registration"
+      expect([:orders, :mail, :registration, :pam]).to include(@modal_param.web_app), "Invalid modal_paramter WEB_APP=#{@modal_param.web_app}. Valid values are mail, registration"
 
       @modal_param.test_env = ENV['URL']
       @modal_param.test_env = 'stg' if ENV['URL'].downcase == 'staging'
