@@ -3,7 +3,7 @@
 Feature: PAM AppCap Provisioning
 
   Background:
-    Given Visit PAM Customer Search page
+    Given I launch the default browser
 
   Scenario:
     Then set PAM AppCap Overrides to Always On for all Required Fields for all users in the database
@@ -16,8 +16,8 @@ Feature: PAM AppCap Provisioning
 #    Then On PAM Change Meter Limit page, set New Meter Limit to $100000
 #    Then On PAM Change Meter Limit page, set USPS approval to Checked
 #    Then On PAM Change Meter Limit page, click Submit
-#
-#    Then On PAM Customer Profile page, click  AppCap Overrides link
+
+#    Then click PAM AppCap Overrides link
 #    Then On PAM AppCap Overrides page, set Internet Mail Printing to Always On
 #    Then On PAM AppCap Overrides page, set Netstamps Printing to Always On
 #    Then On PAM AppCap Overrides page, set Shipping Label Printing to Always On

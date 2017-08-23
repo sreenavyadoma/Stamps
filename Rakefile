@@ -64,8 +64,8 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
-  t.profile = 'xxxxxxxxxx'
+Cucumber::Rake::Task.new(:pam_db_user_appscap_provisioning) do |t|
+  t.profile = 'pam_db_user_appscap_provisioning'
   t.cucumber_opts = "-p cuke_reports"
 end
 

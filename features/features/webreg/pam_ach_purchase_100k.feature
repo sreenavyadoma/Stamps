@@ -5,7 +5,7 @@ Feature: Registration
   @pam_ach_purchase_100k
   Scenario:
     Then load PAM Page
-    Then Visit PAM Customer Search page
+    Then load PAM Customer Search page
     Then load username and password from parameter file registration_ach_purchase_100k
     Then set PAM Customer Search page username from parameter file
     Then set PAM Customer Search page to 5.2 or lower
@@ -19,7 +19,7 @@ Feature: Registration
     Then On PAM Customer Profile page, click ACH Credit link
     Then On PAM ACH Purchase page, set Amount to $100000.00
 
-    Then On PAM Customer Profile page, click  AppCap Overrides link
+    Then click PAM AppCap Overrides link
     Then On PAM AppCap Overrides page, set Internet Mail Printing to Always On
     Then On PAM AppCap Overrides page, set Netstamps Printing to Always On
     Then On PAM AppCap Overrides page, set Shipping Label Printing to Always On

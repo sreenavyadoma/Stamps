@@ -37,7 +37,7 @@ Feature: Registration
     Then On Registration Membership page, click Submit and correct errors
     Then Registration Choose Supplies: Place Order
 
-    Then Visit PAM Customer Search page
+    Then load PAM Customer Search page
     Then set PAM Customer Search page username to random
     Then set PAM Customer Search page 5.2 or lower
     Then click PAM Customer Search page Search button
@@ -54,7 +54,7 @@ Feature: Registration
     Then On PAM Customer Profile page, get Available Mail Amount
     Then On PAM Customer Profile page, get Available Mail Amount
 
-    Then On PAM Customer Profile page, click  AppCap Overrides link
+    Then click PAM AppCap Overrides link
     Then On PAM AppCap Overrides page, set Internet Mail Printing to Always On
     Then On PAM AppCap Overrides page, set Netstamps Printing to Always On
     Then On PAM AppCap Overrides page, set Shipping Label Printing to Always On

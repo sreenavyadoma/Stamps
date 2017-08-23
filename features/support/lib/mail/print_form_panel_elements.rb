@@ -451,7 +451,6 @@ module Stamps
         end
 
         def enabled?
-
         end
 
         def domestic?
@@ -479,6 +478,7 @@ module Stamps
             30.times do
               begin
                 drop_down.click unless selection.present?
+                sleep(0.5)
                 selection.scroll_into_view
                 selection.click
                 blur_out
@@ -677,6 +677,36 @@ module Stamps
           @service_selection = MailServiceSelection.new(param)
         end
 
+        def has_rates?
+          case(param.print_media)
+            when :certified_mails
+              default_service = 'FCMI Package'
+            when :labels
+              default_service = 'PM Flat Rate Envelope'
+              default_int_service = 'PMI Flat Rate Envelope'
+            when :envelopes
+              default_service = 'FCM Letter'
+            when :rolls
+              default_service = 'PME Flat Rate Envelope'
+              default_int_service = 'PMI Flat Rate Envelope'
+            when :stamps
+              default_service = 'FCM Letter'
+            else
+              #do nothing
+          end
+          has_rates = false
+          5.times do
+            if service_selection.service(default_service).service_field.present? || service_selection.service(default_int_service).service_field.present?
+              has_rates = service_selection.service(default_service).selection_is_numeric? || service_selection.service(default_int_service).selection_is_numeric?
+              drop_down.click if service_selection.service(default_service).service_field.present? || service_selection.service(default_int_service).service_field.present?
+              break
+            else
+              drop_down.click
+            end
+          end
+          has_rates
+        end
+
         def select(str)
           logger.info "Select service #{str}"
           service_selection.service(str)
@@ -684,11 +714,17 @@ module Stamps
           15.times do
             break if (text_box.text).include?(str)
             drop_down.click unless service_field.present?
-            browser.refresh unless service_selection.selection_is_numeric?
+            begin
+              drop_down.click
+              browser.refresh
+            end unless service_selection.selection_is_numeric?
             sleep(2)
             drop_down.wait_until_present(4)
+            blur_out
+            drop_down.click unless service_field.present?
             service_field.scroll_into_view
             service_field.click
+            blur_out
           end
           drop_down.click unless service_field.present?
           if service_field.present?
@@ -959,7 +995,6 @@ module Stamps
           30.times do
             return customs_form if customs_form.present?
             button.scroll_into_view
-            button.click
             button.click
             sleep(0.2)
           end

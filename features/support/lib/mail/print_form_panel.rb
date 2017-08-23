@@ -7,6 +7,7 @@ module Stamps
           expect(@blur_out.present?).to be(true)
           2.times do
             @blur_out.double_click
+            @blur_out.flash
             @blur_out.click
           end
         end

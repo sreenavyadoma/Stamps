@@ -1,7 +1,7 @@
 
 
 Then /^[Oo]n PAM Customer Search page, set 5.2 or lower$/ do
-  pam.customer_search_page.customer_search.user_5_2_or_lower
+  pam.customer_search.customer_search.user_5_2_or_lower
 end
 
 Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do
@@ -11,7 +11,7 @@ Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do
     actual_value = expectation
   else
     case @customer_profile
-      when Pam::CustomerProfileNotFound
+      when Pam::CustomerNotFoundPage
         actual_value = @customer_profile.text
       when Pam::MeterInfoNotAvailableForAccount
         actual_value = @customer_profile.text
@@ -99,117 +99,8 @@ Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
   test_config.logger.message "PAM: Available Mail ############################"
 end
 
-Then /^[Oo]n PAM Customer Profile page, click  AppCap Overrides link$/ do
-  expect(@customer_profile).to be_truthy
-  @appcapp_overrides = @customer_profile.header.appcapp_overrides
-end
-
-
-Then /^[Ss]et PAM AppCap Overrides Allow High Risk Countries to Always On$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.certified_mail.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always On$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.internet_postage_printing.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to Always Off$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.internet_postage_printing.always_off
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Internet Mail Printing to No Override$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.internet_postage_printing.no_override
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always On$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.netstamps_printing.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to Always Off$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.netstamps_printing.always_off
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Netstamps Printing to No Override$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.netstamps_printing.no_override
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always On$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.shipping_label_printing.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Always Off$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.shipping_label_printing.always_off
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Shipping Label Printing to Override$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.shipping_label_printing.no_override
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always On$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.international_shipping.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Always Off$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.international_shipping.always_off
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set International Shipping to Override$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.international_shipping.no_override
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always On$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.allow_high_risk_countries.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Always Off$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.allow_high_risk_countries.always_off
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Allow High Risk Countries to Override$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.allow_high_risk_countries.no_override
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always On$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.mailing_label_printing.always_on
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Always Off$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.mailing_label_printing.always_off
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, set Mailing Label Printing to Override$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.mailing_label_printing.no_override
-end
-
-Then /^[Oo]n PAM AppCap Overrides page, Submit$/ do
-  expect(@appcapp_overrides).to be_truthy
-  @appcapp_overrides.submit.ok
-end
-
 Then /^send username to standard out$/ do
-  test_config.logger.message " ############## NEW USER ID "
-  test_config.logger.message " ############## #{test_param[:username]}"
-  test_config.logger.message " ############## #{test_param[:username]}"
-  test_config.logger.message " ############## #{test_param[:username]}"
+  test_config.logger.step " ############## NEW USER ID "
   test_config.logger.message " ############## #{test_param[:username]}"
   test_config.logger.message " ############## NEW USER ID "
 end

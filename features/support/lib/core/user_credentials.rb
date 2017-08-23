@@ -41,13 +41,9 @@ module Stamps
 
     def all_user_credentials
       results = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active'")
-      results.each_with_index do |row, index|
-        credentials_hash = Hash.new
-        credentials_hash[:username] = row['username']
-        credentials_hash[:password] = row['password']
-        user_credentials[index] = credentials_hash
-      end
-      user_credentials
+      credentials = Array.new(results.size){Hash.new}
+      results.each_with_index do |row, index| credentials[index] = {:username => row['username'], :password => row['password']} end
+      credentials
     end
 
     def close
