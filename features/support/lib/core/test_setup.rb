@@ -71,6 +71,7 @@ module Stamps
         logger.message "-"
         logger.message "BROWSER: #{@browser_name}"
         logger.message "-"
+        driver.cookies.clear
         @browser = driver
       rescue Exception => e
         err = e.backtrace.join("\n")

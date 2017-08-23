@@ -1,11 +1,26 @@
 module Stamps
   module Pam
+    class PamHeader < Browser::StampsModal
+      def search_link
+        StampsElement.new(browser.a(css: 'a[href*=AccountSearch]'))
+      end
+
+      def customer_profile_link
+        StampsElement.new(browser.a(css: 'a[href*=Profile]'))
+      end
+
+      def change_meter_limit_link
+        StampsElement.new(browser.a(css: 'a[href*=MeterLimit]'))
+      end
+
+      def appcapp_overrides_link
+        StampsElement.new(browser.a(css: 'a[href*=AppCapOverride]'))
+      end
+    end
+
     class PaymentAdministratorManager < Browser::StampsModal
-      attr_reader :header, :customer_search_page, :customer_profile_page
-      def initialize(param)
-        super
-        @header = StampsElement.new(browser.h5(text: "Customer Search"))
-        @customer_search_page ||= CustomerSearchPage.new(param)
+      def page_title
+        StampsElement.new(browser.h5(text: "Customer Search"))
       end
 
       def visit
@@ -28,21 +43,35 @@ module Stamps
       end
 
       def present?
-        header.present?
+        page_title.present?
       end
 
       def wait_until_present(*args)
-        header.wait_until_present(*args)
+        page_title.wait_until_present(*args)
       end
 
-      def customer_search
-        StampsElement.new(browser.a(css: 'a[href*=AccountSearch]')).click_while_present
-        expect(customer_search_page.present?).to be(true), "PAM Customer Search page did not load."
-        customer_search_page
+      def pam_header
+        @pam_header = PamHeader.new(param)
       end
 
-      def appcap_overrides
+      def customer_search_page
+        CustomerSearchPage.new(param)
+      end
 
+      def appcap_overrides_page
+        AppCapOverridesPage.new(param)
+      end
+
+      def customer_profile_page
+        CustomerProfilePage.new(param)
+      end
+
+      def customer_not_found_page
+        CustomerNotFoundPage.new(param)
+      end
+
+      def meter_info_not_available
+        MeterInfoNotAvailable.new(param)
       end
     end
   end

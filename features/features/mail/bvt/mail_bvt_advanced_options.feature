@@ -39,6 +39,7 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Rolls Advanced Options
     Then select Print On Roll 4x6
 
+    Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
     Then select Print form service PM Package
@@ -95,6 +96,7 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Envelopes Advanced Options
     Then select Print On Envelope - 10
 
+    Then set Advanced Options Mail Date to today
     # Populate Envelope form
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -344,6 +346,7 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Shipping Labels Advanced Options
     Then select Print On Shipping Label - Paper
 
+    Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
     Then select Print form service PM Package

@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_mail_cc
+default: --backtrace --profile rob_mail_stg
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -11,8 +11,8 @@ rob_stg: --tags @mail_bvt_envelopes WEB_APP=orders JENKINS=true PW=pass111 URL=s
 rob_sc: --tags @filter_panel WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-rob_mail_cc: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_mail_stg: --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_mail_cc: --tags @pam_db_user_appscap_provisioning WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob_mail_stg: --tags @pam_db_user_appscap_provisioning WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_mail_sc: --tags @filter_panel WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
@@ -172,6 +172,9 @@ rates_fcm_package:   --tags @rates_fcm_package --guess DEBUG=false JENKINS=true 
 
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
+
+# PAM
+pam_db_user_appscap_provisioning: --tags @pam_db_user_appscap_provisioning --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=pam BROWSER=ff
 
 mail_bvt_advanced_options: --tags @mail_bvt_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 
