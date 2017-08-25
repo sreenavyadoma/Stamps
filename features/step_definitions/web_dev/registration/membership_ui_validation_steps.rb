@@ -141,64 +141,64 @@ Then /^[Oo]n [Mm]embership [Pp]age, click Submit and correct errors$/ do
 end
 
 #to do
-Then /^[Ee]xpect [Mm]embership [Pp]age First Name tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age First Name tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Last Name tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Last Name tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Address tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Address tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age City tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age City tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age State tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age State tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Phone tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Phone tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Cardholder's Name tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Cardholder's Name tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Month tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Month tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Year tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Year tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Billing Address tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Billing Address tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Billing City tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Billing City tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Billing State tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Billing State tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Billing Zip tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Billing Zip tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions tooltip to be This field is required$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions tooltip to be (.*)$/ do |str|
+  expect(registration.membership.offer_details_link.present?).to eql(str)
 end
 
 
