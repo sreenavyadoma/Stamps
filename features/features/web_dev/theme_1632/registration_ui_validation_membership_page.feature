@@ -14,6 +14,29 @@ Feature: Registration Membership page validation Theme 1632
     Then continue to Membership page
 
     # Membership Page
+
+    # Membership Page Validate Single Help block tooltips
+    Then uncheck Membership page Billing address same as mailing address
+    Then expect Membership page First Name tooltip to be This field is required
+    Then expect Membership page Last Name tooltip to be This field is required
+    Then expect Membership page Address tooltip to be This field is required
+    Then expect Membership page City tooltip to be This field is required
+    Then expect Membership page State tooltip to be This field is required
+    Then expect Membership page Phone tooltip to be This field is required
+    Then expect Membership page Cardholder's Name tooltip to be This field is required
+    Then expect Membership page Credit Card Number tooltip to be This field is required
+    Then expect Membership page Month tooltip to be This field is required
+    Then expect Membership page Year tooltip to be This field is required
+
+    # Membership Page Billing Address Single Help block tooltips
+    Then expect Membership page Billing Address tooltip to be This field is required
+    Then expect Membership page Billing City tooltip to be This field is required
+    Then expect Membership page Billing State tooltip to be This field is required
+    Then expect Membership page Billing Zip tooltip to be This field is required
+
+    Then expect Membership page Terms & Conditions tooltip to be This field is required
+
+
     Then set Membership page First Name to random value
     Then expect Membership page First Name is correct
     Then set Membership page Last Name to random value

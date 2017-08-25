@@ -3,14 +3,12 @@ module Stamps
     module Membership
       module MemberPersonalInfo
         def first_name
-          @first_name ||= StampsTextBox.new(browser.text_field(id: "firstName"))
-          @first_name.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")
-          @first_name
+          @first_name ||= RegMembershipFirstName.new(browser.text_field(id: "firstName"))
         end
 
         def last_name
-          @last_name ||= StampsTextBox.new(browser.text_field(id: "lastName"))
-          @last_name.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span")
+          @last_name ||= RegMembershipLastName.new(browser.text_field(id: "lastName"))
+          @last_name.help_elements = browser.lis(css: "")
           @last_name
         end
 
@@ -19,20 +17,16 @@ module Stamps
         end
 
         def address
-          @address ||= StampsTextBox.new(browser.text_field(id: "street"))
-          @address.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span")
-          @address
+          @address ||= RegMembershipAddress.new(browser.text_field(id: "street"))
         end
 
         def city
-          @city ||= StampsTextBox.new(browser.text_field(id: "city"))
-          @city.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span")
-          @city
+          @city ||= RegMembershipCity.new(browser.text_field(id: "city"))
         end
 
         def state
-          element = browser.span(css: "button[data-id=state]>span")
-          @state ||= StampsDropDown.new(element, element, :span)
+          element = browser.spans(css: "button[data-id=state]>span").first
+          @state ||= RegMembershipState.new(element, element, :span)
         end
 
         def zip
@@ -40,7 +34,7 @@ module Stamps
         end
 
         def phone
-          @phone ||= StampsTextBox.new(browser.text_field(id: "phone"))
+          @phone ||= RegMembershipPhone.new(browser.text_field(id: "phone"))
           @phone.help_elements = browser.spans(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span")
           @phone
         end
@@ -100,55 +94,39 @@ module Stamps
 
       module MemberCreditCard
         def cc_holder_name
-          @cc_holder_name ||= StampsTextBox.new(browser.text_field(id: "ccName"))
-          @cc_holder_name.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span")
-          @cc_holder_name
+          @cc_holder_name ||= RegMembershipCardHolderName.new(browser.text_field(id: "ccName"))
         end
 
         def cc_number
-          @cc_number ||= StampsTextBox.new(browser.text_field(id: "ccNumber"))
-          @cc_number.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span")
-          @cc_number
+          @cc_number ||= RegMembershipCreditCardNumber.new(browser.text_field(id: "ccNumber"))
         end
 
         def cc_month
           element = browser.span(css: "button[data-id=ccMonth]>span")
-          @cc_month ||= StampsDropDown.new(element, element, :span)
-          @cc_month.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span")
-          @cc_month
+          @cc_month ||= RegMembershipMonth.new(element, element, :span)
         end
 
         def cc_year
           element = browser.span(css: "button[data-id=ccYear]>span[class*=option]")
-          @cc_year ||= StampsDropDown.new(element, element, :span)
-          @cc_year.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span")
-          @cc_year
+          @cc_year ||= RegMembershipYear.new(element, element, :span)
         end
 
         def cc_address
-          @cc_address ||= StampsTextBox.new(browser.text_field(id: "billingStreet"))
-          @cc_address.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span")
-          @cc_address
+          @cc_address ||= RegMembershipBillingAddress.new(browser.text_field(id: "billingStreet"))
         end
 
         def cc_city
-          @cc_city ||= StampsTextBox.new(browser.text_field(id: "billingCity"))
-          @cc_city.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span")
-          @cc_city
+          @cc_city ||= RegMembershipBillingCity.new(browser.text_field(id: "billingCity"))
         end
 
         def cc_state
           element = browser.span(css: "button[data-id=billingState]>span")
           list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div[class*=select]>div>ul>li>a>span[class=text]")
-          @cc_state ||= StampsDropDownLovSubStr.new(element, element, list_of_values)
-          @cc_state.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span")
-          @cc_state
+          @cc_state ||= RegMembershipBillingState.new(element, element, list_of_values)
         end
 
         def cc_zip
-          @cc_zip ||= StampsTextBox.new(browser.text_field(id: "billingZip"))
-          @cc_zip.help_elements = browser.spans(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span")
-          @cc_zip
+          @cc_zip ||= RegMembershipBillingZip.new(browser.text_field(id: "billingZip"))
         end
 
         def use_mailing_for_billing
@@ -158,9 +136,7 @@ module Stamps
 
       module MembershipTermsAndConditions
         def agree_to_terms
-          @agree_to_terms = StampsWatirCheckBox.new(browser.input(name: 'termsConditions'))
-          @agree_to_terms.help_elements = browser.lis(css: "div[class=terms-msg]>span")
-          @agree_to_terms
+          @agree_to_terms = RegMembershipTerms.new(browser.input(name: 'termsConditions'))
         end
 
         def terms_conditions_link
@@ -204,6 +180,157 @@ module Stamps
 
         def continue
           continue_btn.click
+        end
+      end
+
+
+      class RegMembershipFirstName < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span"))
+        end
+      end
+
+      class RegMembershipLastName < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span"))
+        end
+      end
+
+      class RegMembershipAddress < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span"))
+        end
+      end
+
+      class RegMembershipCity < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span"))
+        end
+      end
+
+      class RegMembershipState < Stamps::Browser::StampsDropDown
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "button[data-id=state]>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "button[data-id=state]>span"))
+        end
+      end
+
+      class RegMembershipPhone < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span"))
+        end
+      end
+
+      class RegMembershipCardHolderName < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span"))
+        end
+      end
+
+      class RegMembershipCreditCardNumber < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span"))
+        end
+      end
+
+      class RegMembershipMonth < Stamps::Browser::StampsDropDown
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span"))
+        end
+      end
+
+      class RegMembershipYear < Stamps::Browser::StampsDropDown
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span"))
+        end
+      end
+
+      class RegMembershipBillingAddress < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span"))
+        end
+      end
+
+      class RegMembershipBillingCity < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span"))
+        end
+      end
+
+      class RegMembershipBillingState < Stamps::Browser::StampsDropDownLovSubStr
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span"))
+        end
+      end
+
+      class RegMembershipBillingZip < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span"))
+        end
+      end
+
+      class RegMembershipTerms < Stamps::Browser::StampsWatirCheckBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "div[class=terms-msg]>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "div[class=terms-msg]>span"))
         end
       end
 

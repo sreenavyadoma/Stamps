@@ -19,6 +19,8 @@ Feature: Profile page validation theme_1632
     Then expect Profile page Money-saving offers and new products is checked
     Then uncheck Profile page Money-saving offers and new products
     Then expect Profile page Money-saving offers and new products is unchecked
+    Then expect Profile page Privacy Policy link exists
+    Then expect Profile page copyright link exists
 
     # Validate Single Help block tooltips
     Then continue to Membership page
@@ -42,8 +44,6 @@ Feature: Profile page validation theme_1632
     Then expect Profile page promo code textbox exists
     Then set Profile page promo code to PR
     Then expect Profile page CONTINUE button exists
-    Then expect Profile page Privacy Policy link exists
-    Then expect Profile page copyright link exists
 
     # Validate tooltips for various values
     # Validate Email tooltips
@@ -60,7 +60,7 @@ Feature: Profile page validation theme_1632
     # Validate Re-type password tooltips
     Then expect Profile page Re-Password tooltip 0 to be Passwords don't match
     # Validate promo code tooltips
-    Then expect Profile page promo code tooltip 0 to be Passwords don't match
+    Then expect Profile page promo code tooltip 0 to be Invalid promo code
 
     # Validating all fields with correct values
     Then set Profile page Email to random value

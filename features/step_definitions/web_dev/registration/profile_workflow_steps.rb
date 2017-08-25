@@ -89,7 +89,7 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ 
 end
 
 Then /^[Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
-  expect(registration.profile.retype_password.help_block.tooltip(tooltip_index)).to eql(str)
+  expect(registration.profile.promo_code.help_block.tooltip(tooltip_index)).to eql(str)
 end
 
 Then /^[Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode [Tt]extbox$/ do
