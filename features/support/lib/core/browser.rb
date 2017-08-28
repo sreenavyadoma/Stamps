@@ -35,7 +35,7 @@ module Stamps
       end
 
       def clickable?
-        exist? && visible? && enabled?
+        truthy? && present? && enabled?
       end
 
       def visible?

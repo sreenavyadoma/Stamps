@@ -23,7 +23,7 @@ Then /^[Ee]xpect Orders Grid Order ID is the same as Details Form Order ID$/ do
   expect(details_order_id).to eql grid_order_id
 end
 
-Then /^[Ee]xpect Orders Grid saved Order ID is in Orders Grid row (\d+)$/ do |row|
+Then /^[Ee]xpect saved Order ID is in Orders Grid row (\d+)$/ do |row|
   30.times { sleep(0.25); break if stamps.orders.orders_grid.column.order_id.row(row) == test_param[:order_id][0] }
   expect(stamps.orders.orders_grid.column.order_id.row(row)).to eql test_param[:order_id][0]
 end
