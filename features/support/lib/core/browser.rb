@@ -18,42 +18,51 @@ module Stamps
 
       def disabled?
         begin
-          element.disabled?
+          return element.disabled?
         rescue
-          true
+          #ignore
         end
-      end
-
-      def exist?
-        begin
-          element.exist?
-        rescue
-          false
-        end
+        true
       end
 
       def present?
         begin
-          element.exist? && element.visible?
+          return exist? && visible?
         rescue
-          return false
+          #ignore
         end
+        false
+      end
+
+      def clickable?
+        exist? && visible? && enabled?
       end
 
       def visible?
         begin
-          element.visible?
+          return element.visible?
         rescue
-          return false
+          #ignore
         end
+        false
+      end
+
+      def exist?
+        begin
+          return element.exist?
+        rescue
+          #ignore
+        end
+        false
       end
 
       def enabled?
         begin
-          element.enabled?
+          return element.enabled?
         rescue
-          return false
+          #ignore
         end
+        false
       end
 
       def truthy?
@@ -124,7 +133,7 @@ module Stamps
 
       def attribute_value(attribute)
         begin
-          element.attribute_value(attribute) if present?
+          element.attribute_value(attribute)
         rescue
           #ignore
         end
@@ -133,7 +142,7 @@ module Stamps
 
       def click
         begin
-          element.click if present?
+          element.click if clickable?
         rescue
           #ignore
         end
@@ -195,7 +204,7 @@ module Stamps
 
       def checked?
         begin
-          input.checked?
+          return input.checked?
         rescue
           #ignore
         end
@@ -267,7 +276,7 @@ module Stamps
 
       def set?
         begin
-          radio.set?
+          return radio.set?
         rescue
           #ignore
         end
@@ -312,18 +321,20 @@ module Stamps
 
       def checked?
         begin
-          checkbox.checked?
+          return checkbox.checked?
         rescue
-          return false
+          #ignore
         end
+        false
       end
 
       def set?
         begin
-          checkbox.set?
+          return checkbox.set?
         rescue
-          return false
+          #ignore
         end
+        false
       end
     end
 
@@ -331,7 +342,7 @@ module Stamps
       attr_accessor :checkbox, :check_verify, :attribute, :attribute_value
       def initialize(checkbox, check_verify, attribute, attribute_value)
         @checkbox = StampsElement.new(checkbox)
-        @check_verify = StampsElement.new(check_verify)
+        @check_verify = check_verify
         @attribute = attribute
         @attribute_value = attribute_value
       end
@@ -349,14 +360,14 @@ module Stamps
       end
 
       def exist?
-        checkbox.visible?
+        checkbox.exist?
       end
 
       def checked?
         begin
           result = check_verify.attribute_value(attribute)
           return result == "true" if result == "true" || result == "false"
-          result.include?(attribute_value)
+          return result.include?(attribute_value)
         rescue
           #ignore
         end
@@ -386,7 +397,7 @@ module Stamps
       attr_accessor :radio, :check_verify, :attribute, :attribute_value
       def initialize(radio, check_verify, attribute, attribute_value)
         @radio = StampsElement.new(radio)
-        @check_verify = StampsElement.new(check_verify)
+        @check_verify = check_verify
         @attribute = attribute
         @attribute_value = attribute_value
       end
@@ -402,7 +413,7 @@ module Stamps
 
       def selected?
         begin
-          check_verify.attribute_value(attribute).include?(attribute_value)
+          return check_verify.attribute_value(attribute).include?(attribute_value)
         rescue
           #ignore
         end
