@@ -19,7 +19,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Print modal Printer to "factory"
     Then click print modal print button
 
-    Then click Filter Panel Shipped tab
+    Then select Filter Panel Shipped tab
     Then check Orders Grid saved Order ID
     Then in Print modal, Open Reprint Modal
     Then Close Reprint Modal
