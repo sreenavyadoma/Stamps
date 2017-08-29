@@ -140,69 +140,69 @@ Then /^[Oo]n [Mm]embership [Pp]age, click Submit and correct errors$/ do
   end
 end
 
-#to do
+# Single Field Tooltips
 Then /^[Ee]xpect [Mm]embership [Pp]age First Name tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.first_name.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Last Name tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.last_name.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.address.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age City tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.city.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age State tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.state.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Phone tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.phone.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Cardholder's Name tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.cc_holder_name.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.cc_number.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Month tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.cc_month.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Year tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.cc_year.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Billing Address tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.billing_address.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Billing City tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.billing_city.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Billing State tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.billing_state.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Billing Zip tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.billing_zip.single_field_help_block.tooltip).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions tooltip to be (.*)$/ do |str|
-  expect(registration.membership.offer_details_link.present?).to eql(str)
+  expect(registration.membership.agree_to_terms.single_field_help_block.tooltip).to eql(str)
 end
 
 
-
+# Tooltips
 
 
 

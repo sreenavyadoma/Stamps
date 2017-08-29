@@ -13,8 +13,7 @@ module Stamps
             @promo_code = alt_promo_code if alt_promo_code.present?
             break if @promo_code.present?
           end
-          @promo_code.help_elements = browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")
-          @promo_code
+           @promo_code
         end
 
         def show_promo_code
@@ -145,7 +144,7 @@ module Stamps
 
       class RegProfilePromoCode < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li"))
         end
       end
 

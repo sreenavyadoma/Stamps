@@ -8,7 +8,6 @@ module Stamps
 
         def last_name
           @last_name ||= RegMembershipLastName.new(browser.text_field(id: "lastName"))
-          @last_name.help_elements = browser.lis(css: "")
           @last_name
         end
 
@@ -35,7 +34,6 @@ module Stamps
 
         def phone
           @phone ||= RegMembershipPhone.new(browser.text_field(id: "phone"))
-          @phone.help_elements = browser.spans(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span")
           @phone
         end
 
@@ -54,32 +52,24 @@ module Stamps
 
       module MemberBillingAddress
         def billing_address
-          @billing_address = StampsTextBox.new(browser.text_field(id: "billingStreet"))
-          @billing_address.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")
-          @billing_address.index = 0
+          @billing_address = RegMembershipBillingAddress.new(browser.text_field(id: "billingStreet"))
           @billing_address
         end
 
         def billing_city
-          @billing_city = StampsTextBox.new(browser.text_field(id: "billingCity"))
-          @billing_city.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")
-          @billing_city.index = 1
+          @billing_city = RegMembershipBillingCity.new(browser.text_field(id: "billingCity"))
           @billing_city
         end
 
         def billing_state
           element = browser.span(css: "button[data-id=billingState]>span")
           list_of_values = browser.spans(css: "li[id=creditcard]>div>div>div[class*=billingAddressForm]>div>div[class*=menu]>ul>li>a>span[class=text]")
-          @billing_state = StampsDropDownLovSubStr.new(element, element, list_of_values)
-          @billing_state.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")
-          @billing_state.index = 2
+          @billing_state = RegMembershipBillingState.new(element, element, list_of_values)
           @billing_state
         end
 
         def billing_zip
-          @billing_zip = StampsTextBox.new(browser.text_field(id: "billingZip"))
-          @billing_zip.help_elements = browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")
-          @billing_zip.index = 3
+          @billing_zip = RegMembershipBillingZip.new(browser.text_field(id: "billingZip"))
           @billing_zip
         end
 
@@ -226,11 +216,11 @@ module Stamps
 
       class RegMembershipState < Stamps::Browser::StampsDropDown
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "button[data-id=state]>span>ul>li"))
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>span>ul>li"))
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "button[data-id=state]>span"))
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>span"))
         end
       end
 
