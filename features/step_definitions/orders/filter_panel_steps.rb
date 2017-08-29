@@ -28,7 +28,7 @@ end
 
 Then /^[Ee]xpect saved Order ID is [Ff]iltered in (.*)$/ do |filter|
   50.times do
-    sleep(0.25)
+    sleep(0.10)
     break if stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0]) > 0
   end
   expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0])).to be > 0
