@@ -129,7 +129,12 @@ module Stamps
     end
 
     def is_numeric?(str)
-      !!Float(str) rescue false
+      begin
+        return !!Float(str.to_f)
+      rescue
+        #ignore
+      end
+      false
     end
 
     def remove_dollar_sign(str)

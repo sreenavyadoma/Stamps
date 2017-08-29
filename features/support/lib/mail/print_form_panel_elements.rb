@@ -456,9 +456,9 @@ module Stamps
         def domestic?
           30.times do
             return true if dom_dd.present?
-            sleep(0.025)
+            sleep(0.1)
             return false if int_dd.present?
-            sleep(0.025)
+            sleep(0.1)
           end
           expect(dom_dd.present? || int_dd.present?).to be(true), "Unable to determine if Mail-To Country dropdown is for domestic or international."
         end
@@ -728,7 +728,7 @@ module Stamps
           end
           drop_down.click unless service_field.present?
           if service_field.present?
-            expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems."
+            expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems. Got rate #{service_selection.cost_str}"
             drop_down.click
           end
           expect(text_box.text).to include(str), "Unable to select Mail Service #{str}. Expected Service textbox to contain #{str}, got #{text_box.text}"

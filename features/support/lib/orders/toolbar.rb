@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Toolbar
 
-      class MoveToOnHold < Browser::StampsModal
+      class MoveToOnHoldModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
@@ -32,7 +32,7 @@ module Stamps
         end
       end
 
-      class MoveToCanceled < Browser::StampsModal
+      class MoveToCanceledModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -61,7 +61,7 @@ module Stamps
         end
       end
 
-      class MoveToShipped < Browser::StampsModal
+      class MoveToShippedModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -90,7 +90,7 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipment < Browser::StampsModal
+      class MoveToAwaitingShipmentModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -125,10 +125,10 @@ module Stamps
         def initialize(param)
           super
           @drop_down = StampsElement.new(browser.span(text: "Move"))
-          @shipped = MoveToShipped.new(param)
-          @canceled = MoveToCanceled.new(param)
-          @on_hold = MoveToOnHold.new(param)
-          @awaiting_shipment = MoveToAwaitingShipment.new(param)
+          @shipped = MoveToShippedModal.new(param)
+          @canceled = MoveToCanceledModal.new(param)
+          @on_hold = MoveToOnHoldModal.new(param)
+          @awaiting_shipment = MoveToAwaitingShipmentModal.new(param)
           @tooltip_element = StampsElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
         end
 

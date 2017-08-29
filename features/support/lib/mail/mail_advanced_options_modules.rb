@@ -111,9 +111,10 @@ module Stamps
 
         def calculate_postage_amount
           if @calculate_postage_amount.nil?
-            element = browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl')
+            radio = browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl')
             verify_element = browser.div(id: 'sdc-mainpanel-calculatepostageradio')
-            @calculate_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
+            #radio, check_verify, attribute, attribute_value
+            @calculate_postage_amount = StampsRadio.new(radio, verify_element, "class", "checked")
           end
           @calculate_postage_amount
         end

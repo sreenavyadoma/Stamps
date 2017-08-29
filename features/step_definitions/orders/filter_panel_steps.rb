@@ -4,59 +4,31 @@ Then /^[Cc]lick Filter Panel Awaiting Shipment tab$/ do
   stamps.orders.filter_panel.awaiting_shipment.select
 end
 
-Then /^[Cc]lick Filter Panel Shipped tab$/ do
-  stamps.orders.filter_panel.shipped.select
-end
-
-Then /^[Cc]lick Filter Panel Canceled tab$/ do
-  stamps.orders.filter_panel.canceled.select
-end
-
-Then /^[Cc]lick Filter Panel On Hold tab$/ do
-  stamps.orders.filter_panel.on_hold.select
-end
-
-Then /^[Ii]n left Filter Panel, expect selected filter is Awaiting Shipment$/ do
-  step "In left Filter Panel, expect selected filter to be Awaiting Shipment"
-end
-
-Then /^[Ii]n left Filter Panel, expect selected filter is Shipped$/ do
-  step "In left Filter Panel, expect selected filter to be Shipped"
-end
-
-Then /^[Ii]n left Filter Panel, expect selected filter is Canceled$/ do
-  step "In left Filter Panel, expect selected filter to be Canceled"
-end
-
-Then /^[Ii]n left Filter Panel, expect selected filter is On Hold$/ do
-  step "In left Filter Panel, expect selected filter to be On Hold"
-end
-
-Then /^[Ii]n left Filter Panel, expect selected filter to be (.*)$/ do |expectation|
+Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
   30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
   expect(stamps.orders.filter_panel.selected_filter).to eql expectation
 end
 
-Then /^[Ii]n left Filter Panel, expect saved Order ID is in Awaiting Shipment$/ do
-  step "in left Filter Panel, expect saved Order ID exist in Awaiting Shipment"
+Then /^[Ss]elect [Ff]ilter [Pp]anel (.*) tab$/ do |filter|
+  expect(['Shipped', 'Canceled', 'On Hold', 'Awaiting Shipment']).to include(filter)
+  case filter
+    when /Shipped/
+      stamps.orders.filter_panel.shipped.select
+    when /Canceled/
+      stamps.orders.filter_panel.canceled.select
+    when /On Hold/
+      stamps.orders.filter_panel.on_hold.select
+    when /Awaiting Shipment/
+      stamps.orders.filter_panel.awaiting_shipment.select
+    else
+      #ignore
+  end
+  step "expect selected filter is #{filter}"
 end
 
-Then /^[Ii]n left Filter Panel, expect saved Order ID is in Shipped$/ do
-  step "in left Filter Panel, expect saved Order ID exist in Shipped"
-end
-
-Then /^[Ii]n left Filter Panel, expect saved Order ID is in Canceled$/ do
-  step "in left Filter Panel, expect saved Order ID exist in Canceled"
-end
-
-Then /^[Ii]n left Filter Panel, expect saved Order ID is in On Hold$/ do
-  step "in left Filter Panel, expect saved Order ID exist in On Hold"
-end
-
-Then /^[Ii]n left Filter Panel, expect saved Order ID exist in (.*)$/ do |filter|
+Then /^[Ee]xpect saved Order ID is [Ff]iltered in (.*)$/ do |filter|
   50.times do
-    step "in left Filter Panel, select #{filter}"
-    sleep(0.25)
+    sleep(0.10)
     break if stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0]) > 0
   end
   expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0])).to be > 0
