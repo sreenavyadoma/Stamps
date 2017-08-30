@@ -217,11 +217,18 @@ end
 
 # Multi Match Address
 
-Then /^[Ee]xpect [Mm]embership [Pp]age pop up header is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.billing_address.text).to eql((str.nil?)?test_param[:billing_address]:str)
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header is (?:correct|(.*))$/ do |str|
+  expect(registration.membership.header1.text).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age pop up header instructions is (?:correct|(.*))$/ do |str|
-  expect(registration.membership.billing_address.text).to eql((str.nil?)?test_param[:billing_address]:str)
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header instructions is (?:correct|(.*))$/ do |str|
+  expect(registration.membership.header_instructions.text).to eql(str)
 end
 
+Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do
+  registration.membership.cancel.click
+end
+
+Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Continue button$/ do
+  registration.membership.continue.click
+end

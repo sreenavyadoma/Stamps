@@ -174,25 +174,24 @@ module Stamps
       end
 
       module MemberAddressValidationModel
-        def header
+        def header1
           StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3"))
         end
 
         def header_instructions
-          StampsElement.new(browser.text_field(id: "instructions"))
+          StampsElement.new(browser.p(id: "instructions"))
         end
 
         def cancel
-          #to-do
-          StampsElement.new(browser.div(css: "instructions"))
+          StampsElement.new(browser.divs(css: "div[class='modal-footer']>button").first)
         end
 
         def continue
-          #to do
+          StampsElement.new(browser.divs(css: "div[class='modal-footer']>button").last)
         end
 
-        def address
-          StampsElement.new(browser.divs(css: "div[id='multipleMatch']>table>tbody>tr").first)
+        def address_list
+          StampsElement.new(browser.divs(css: "div[id='multipleMatch']>table>tbody>tr>td>input").first)
         end
       end
 

@@ -5,6 +5,8 @@ Feature: Registration Membership page validation Theme 1632
 
   @registration_ui_validation_membership_page
   Scenario: Membership Page Validation
+
+    # Profile Page
     Then set Profile page Email to random value
     Then set Profile page Username to random value
     Then set Profile page Password to random value
@@ -14,6 +16,34 @@ Feature: Registration Membership page validation Theme 1632
     Then continue to Membership page
 
     # Membership Page
+
+
+
+     #Multi match Address Validation Model
+    Then set Membership page First Name to random value
+    Then set Membership page Last Name to random value
+    Then set Membership page Company to random value
+    Then set Membership page Address to World Way
+    Then set Membership page City to Los Angeles
+    Then select Membership page State CA
+    Then set Membership page Zip to 90045
+    Then set Membership page Phone to random value
+    Then set Membership page Cardholder's Name to random value
+    Then set Membership page Credit Card Number to default value
+    Then set Membership page Month to Dec (12)
+    Then set Membership page Year to 2026
+    Then check Membership page Terms & Conditions
+
+    Then click Membership page Continue button
+
+    Then expect Membership page Address validation model pop up header is Exact address not found
+    Then expect Membership page Address validation model pop up header instructions is The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
+    Then click Membership page Address validation model pop up Cancel button
+    Then click Membership page Address validation model pop up Continue button
+
+
+
+
 
     # Membership Page Validate Single Help block tooltips
     Then uncheck Membership page Billing address same as mailing address
@@ -261,13 +291,3 @@ Feature: Registration Membership page validation Theme 1632
 
 
 
-    #Multi match Address Validation Model
-    Then set Membership page Address to World Way
-    Then set Membership page City to Los Angeles
-    Then select Membership page State CA
-    Then set Membership page Zip to 90045
-
-    Then click Membership page Continue button
-
-    Then expect Membership page pop up header is correct
-    Then expect Membership page pop up header instructions is correct
