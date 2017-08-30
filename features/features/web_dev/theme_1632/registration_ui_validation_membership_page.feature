@@ -37,13 +37,26 @@ Feature: Registration Membership page validation Theme 1632
 
     Then expect Membership page Terms & Conditions tooltip to be You must agree to the Terms & Conditions to proceed.
 
+    # Membership Page tooltips with In-valid inputs
+    Then set Membership page First Name to 1
+    Then set Membership page Last Name to 2
+    Then set Membership page Phone to 128889
+    Then set Membership page Credit Card Number to 1234
+    Then expect Membership page First Name tooltip 0 to be Invalid character in name
+    Then expect Membership page Last Name tooltip 0 to be Invalid character in name
+    Then expect Membership page Phone tooltip to be This field is required
+    Then expect Membership page Credit Card Number tooltip 0 to be Invalid credit card number
 
+    # Membership Page Valid Inputs
     Then set Membership page First Name to random value
     Then expect Membership page First Name is correct
+
     Then set Membership page Last Name to random value
     Then expect Membership page Last Name is correct
+
     Then set Membership page Company to random value
     Then expect Membership page Company is correct
+
     Then set Membership page Address to 1350 Market Street Apt 2901
     Then expect Membership page Address is correct
 
@@ -84,6 +97,7 @@ Feature: Registration Membership page validation Theme 1632
     Then set Membership page Year to 2026
     Then expect Membership page Year is correct
 
+    # Verify Billing Address present and Validate fields
     Then uncheck Membership page Billing address same as mailing address
     Then expect Membership page Billing address same as mailing address is unchecked
     Then expect Billing Address form is present
@@ -106,6 +120,7 @@ Feature: Registration Membership page validation Theme 1632
     Then set Membership page Billing Zip to 94102
     Then expect Membership page Billing Zip is correct
 
+    # Verify Address and Billing Address Zone wise
     Then set Membership page member address to random address between zone 1 and 4
     Then expect Membership page City is correct
     Then expect Membership page City is correct

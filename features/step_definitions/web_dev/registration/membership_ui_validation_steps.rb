@@ -201,10 +201,18 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions tooltip to be (.*)$/ d
   expect(registration.membership.agree_to_terms.single_field_help_block.tooltip).to eql(str)
 end
 
-
 # Tooltips
 
+Then /^[Ee]xpect [Mm]embership [Pp]age First Name tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
+  expect(registration.membership.first_name.help_block.tooltip(tooltip_index)).to eql(str)
+end
 
+Then /^[Ee]xpect [Mm]embership [Pp]age Last Name tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
+  expect(registration.membership.last_name.help_block.tooltip(tooltip_index)).to eql(str)
+end
 
+Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
+  expect(registration.membership.cc_number.help_block.tooltip(tooltip_index)).to eql(str)
+end
 
 
