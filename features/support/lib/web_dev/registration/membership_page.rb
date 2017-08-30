@@ -173,6 +173,29 @@ module Stamps
         end
       end
 
+      module MemberAddressValidationModel
+        def header
+          StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3"))
+        end
+
+        def header_instructions
+          StampsElement.new(browser.text_field(id: "instructions"))
+        end
+
+        def cancel
+          #to-do
+          StampsElement.new(browser.div(css: "instructions"))
+        end
+
+        def continue
+          #to do
+        end
+
+        def address
+          StampsElement.new(browser.divs(css: "div[id='multipleMatch']>table>tbody>tr").first)
+        end
+      end
+
 
       class RegMembershipFirstName < Stamps::Browser::StampsTextBox
         def help_block
@@ -330,6 +353,7 @@ module Stamps
         include MemberBillingAddress
         include MembershipPagination
         include MembershipTermsAndConditions
+        include MemberAddressValidationModel
         attr_reader :header
         def initialize(param)
           super

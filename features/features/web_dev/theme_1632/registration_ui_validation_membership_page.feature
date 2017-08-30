@@ -254,3 +254,20 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Terms & Conditions is unchecked
 
     Then check Membership page Terms & Conditions
+
+
+
+
+
+
+
+    #Multi match Address Validation Model
+    Then set Membership page Address to World Way
+    Then set Membership page City to Los Angeles
+    Then select Membership page State CA
+    Then set Membership page Zip to 90045
+
+    Then click Membership page Continue button
+
+    Then expect Membership page pop up header is correct
+    Then expect Membership page pop up header instructions is correct

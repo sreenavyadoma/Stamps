@@ -215,4 +215,13 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip (\d+) to be (.
   expect(registration.membership.cc_number.help_block.tooltip(tooltip_index)).to eql(str)
 end
 
+# Multi Match Address
+
+Then /^[Ee]xpect [Mm]embership [Pp]age pop up header is (?:correct|(.*))$/ do |str|
+  expect(registration.membership.billing_address.text).to eql((str.nil?)?test_param[:billing_address]:str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age pop up header instructions is (?:correct|(.*))$/ do |str|
+  expect(registration.membership.billing_address.text).to eql((str.nil?)?test_param[:billing_address]:str)
+end
 
