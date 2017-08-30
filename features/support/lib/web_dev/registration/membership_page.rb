@@ -175,7 +175,8 @@ module Stamps
 
       module MemberAddressValidationModel
         def header1
-          StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3"))
+          @header1 ||= StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3"))
+          @header1
         end
 
         def header_instructions
