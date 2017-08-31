@@ -40,20 +40,23 @@ Then /^[Cc]lick Move to Canceled modal move button$/ do
 end
 
 # Moved to On Hold modal
-Then /^[Ii]n Orders Grid toolbar, select Move to On Hold until today plus (\d+)$/ do |day|
-  step "select Grid Toolbar Move menu item Move to On Hold until #{(Date.today + day.to_i).strftime("%m/%d/%Y")}"
+Then /^[Ss]et Move to On Hold modal Hold Until date to today plus (\d+)$/ do |day|
+  step "set Move to On Hold modal Hold Until date to #{(Date.today + day.to_i).strftime("%m/%d/%Y")}"
 end
 
-Then /^[Ii]n Orders Grid toolbar, select Move to On Hold until (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.cancel
+Then /^[Ss]et Move to On Hold modal Hold Until date to (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
+  expect(stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.present?).to be(true), "Move to Move to On Hold modal is not present"
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.hold_until.set("#{month}/#{day}/#{year}")
+end
+
+Then /^[Cc]lick Move to On Hold modal move button$/ do
+  expect(stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.present?).to be(true), "Move to Move to On Hold modal is not present"
   stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.move
 end
-
 
 # Moved to Awaiting Shipment modal
 Then /^[Cc]lick Move to Awaiting Shipment modal move button$/ do
   expect(stamps.orders.orders_toolbar.move_drop_down.move_to_awaiting_shipment.present?).to be(true), "Move to Awaiting Shipment modal is not present"
   stamps.orders.orders_toolbar.move_drop_down.move_to_awaiting_shipment.move
 end
+
