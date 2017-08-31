@@ -140,6 +140,7 @@ Then /^[Oo]n [Mm]embership [Pp]age, click Submit and correct errors$/ do
   end
 end
 
+
 # Single Field Tooltips
 Then /^[Ee]xpect [Mm]embership [Pp]age First Name tooltip to be (.*)$/ do |str|
   expect(registration.membership.first_name.single_field_help_block.tooltip).to eql(str)
@@ -201,6 +202,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions tooltip to be (.*)$/ d
   expect(registration.membership.agree_to_terms.single_field_help_block.tooltip).to eql(str)
 end
 
+
 # Tooltips
 
 Then /^[Ee]xpect [Mm]embership [Pp]age First Name tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
@@ -215,14 +217,23 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip (\d+) to be (.
   expect(registration.membership.cc_number.help_block.tooltip(tooltip_index)).to eql(str)
 end
 
+
 # Multi Match Address
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header is (.*)$/ do |str|
-  expect(registration.membership.header1).to eql(str)
+  expect(registration.membership.model_header).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header instructions is (.*)$/ do |str|
-  expect(registration.membership.header_instructions1).to eql(str)
+  expect(registration.membership.model_header_instructions).to eql(str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button is exist$/ do
+  expect(registration.membership.cancel.present?).to be(true)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button is exist$/ do
+  expect(registration.membership.continue.present?).to be(true)
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do

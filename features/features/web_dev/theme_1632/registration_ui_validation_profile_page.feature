@@ -24,13 +24,13 @@ Feature: Profile page validation theme_1632
 
     # Validate Single Help block tooltips
     Then continue to Membership page
-    Then expect Profile page email exists
     Then expect Profile page Email tooltip to be This field is required
     Then expect Profile page Username tooltip to be This field is required
     Then expect Profile page password tooltip to be This field is required
     Then expect Profile page Re-Password tooltip to be This field is required
 
     # Verifying all fields present and set Negative values for tooltip Validation
+    Then expect Profile page email exists
     Then set Profile page Email to kk
     Then expect Profile page username exists
     Then set Profile page Username to r

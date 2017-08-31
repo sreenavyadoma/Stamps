@@ -17,34 +17,6 @@ Feature: Registration Membership page validation Theme 1632
 
     # Membership Page
 
-
-
-     #Multi match Address Validation Model
-    Then set Membership page First Name to random value
-    Then set Membership page Last Name to random value
-    Then set Membership page Company to random value
-    Then set Membership page Address to World Way
-    Then set Membership page City to Los Angeles
-    Then select Membership page State CA
-    Then set Membership page Zip to 90045
-    Then set Membership page Phone to random value
-    Then set Membership page Cardholder's Name to random value
-    Then set Membership page Credit Card Number to default value
-    Then set Membership page Month to Dec (12)
-    Then set Membership page Year to 2026
-    Then check Membership page Terms & Conditions
-
-    Then click Membership page Continue button
-
-    Then expect Membership page Address validation model pop up header is Exact address not found
-    Then expect Membership page Address validation model pop up header instructions is The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
-    Then click Membership page Address validation model pop up Cancel button
-    Then click Membership page Address validation model pop up Continue button
-
-
-
-
-
     # Membership Page Validate Single Help block tooltips
     Then uncheck Membership page Billing address same as mailing address
     Then click Membership page Continue button
@@ -123,8 +95,9 @@ Feature: Registration Membership page validation Theme 1632
 
     Then expect Membership page Month is correct
 
-    Then set Membership page Year to 2027
-    Then set Membership page Year to 2026
+    Then set Membership page Year to this year plus 1
+    Then set Membership page Year to this year plus 2
+    Then set Membership page Year to year 2026
     Then expect Membership page Year is correct
 
     # Verify Billing Address present and Validate fields
@@ -284,6 +257,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Terms & Conditions is unchecked
 
     Then check Membership page Terms & Conditions
+
 
 
 

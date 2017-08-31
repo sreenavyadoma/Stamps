@@ -23,7 +23,7 @@ Feature: Registration Add Postage page UI validation
     Then set Membership page Cardholder's Name to random value
     Then set Membership page Credit Card Number to default value
     Then set Membership page Month to Dec (12)
-    Then set Membership page Year to 2026
+    Then set Membership page Year to this year plus 1
     Then check Membership page Terms & Conditions
     Then click Membership page Continue button
 

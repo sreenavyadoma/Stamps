@@ -174,12 +174,11 @@ module Stamps
       end
 
       module MemberAddressValidationModel
-        def header1
-          @header1 ||= StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3")).text
-          @header1
+        def model_header
+          StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3")).text
         end
 
-        def header_instructions1
+        def model_header_instructions
           StampsElement.new(browser.p(id: "instructions")).text
         end
 
