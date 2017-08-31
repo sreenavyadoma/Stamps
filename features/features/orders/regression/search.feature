@@ -16,7 +16,7 @@ Feature:  Basic Search
     Then set Order Details form service to PM Package
     Then set Order Details form Weight to 1 lb 1 oz
 
-    Then uncheck Orders Grid saved Order ID
+    Then uncheck Orders Grid for cached Order ID
 
     Then Pause for 3 seconds
     Then Refresh the browser

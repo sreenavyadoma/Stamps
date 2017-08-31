@@ -24,22 +24,22 @@ Feature:  service enabled/disabled tests
   Scenario: Domestic Rules Engine Validation
     Then add new order
     Then set Order Details form Email to bademail
-    Then uncheck Orders Grid saved Order ID
-    Then check Orders Grid saved Order ID
+    Then uncheck Orders Grid for cached Order ID
+    Then check Orders Grid for cached Order ID
     Then expect Order Details form Domestic Address data error tooltip is "Ship To address is required"
     Then expect Order Details form Domestic Email data error tooltip is "Please enter a valid email address"
     Then expect Order Details form Weight Lbs data error tooltip is "Weight cannot be 0"
     Then expect Order Details form Weight Oz data error tooltip is "Weight cannot be 0"
     Then expect Order Details form service data error tooltip is "Service is required"
-    Then check Orders Grid saved Order ID
+    Then check Orders Grid for cached Order ID
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random,PO BOX 1257,Pohnpei, FM 96941-1257
     Then set Order Details form Email to random
     Then set Order Details form Phone to random
     Then set Order Details form service to PM Large Package
     Then set Order Details form Pounds to 5
-    Then uncheck Orders Grid saved Order ID
-    Then check Orders Grid saved Order ID
+    Then uncheck Orders Grid for cached Order ID
+    Then check Orders Grid for cached Order ID
     Then set Order Details form Length to 0
     Then set Order Details form Width to 0
     Then set Order Details form Height to 0

@@ -15,7 +15,7 @@ Feature:  service Selection & Order Grid Values
     Then set Print modal Print-On to Shipping Label - Paper
     Then set Print modal Printer to "factory"
     Then click print modal print button
-    Then select Filter Panel Shipped tab
+    Then select Filter Panel tab Shipped
     Then expect Orders Grid service is Parcel Select Ground
 
     Then add new order
@@ -27,7 +27,7 @@ Feature:  service Selection & Order Grid Values
     Then set Print modal Print-On to Shipping Label - Paper
     Then set Print modal Printer to "factory"
     Then click print modal print button
-    Then select Filter Panel Shipped tab
+    Then select Filter Panel tab Shipped
     Then expect Orders Grid service is Parcel Select Ground
 
     Then add new order
@@ -39,7 +39,7 @@ Feature:  service Selection & Order Grid Values
     Then set Print modal Print-On to Shipping Label - Paper
     Then set Print modal Printer to "factory"
     Then click print modal print button
-    Then select Filter Panel Shipped tab
+    Then select Filter Panel tab Shipped
     Then expect Orders Grid service is Parcel Select Ground
 
     Then Sign out
