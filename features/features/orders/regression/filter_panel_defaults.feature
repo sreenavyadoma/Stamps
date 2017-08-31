@@ -58,7 +58,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1
 
-    Then select Filter Panel Awaiting Shipment tab
+    Then select Filter Panel tab Awaiting Shipment
     Then expect selected Filter is Awaiting Shipment
 
     Then expect Order Details form Order ID equals Grid Oder ID in row 1
@@ -76,7 +76,7 @@ Feature: As a batch shipper, I want is able to Filter Panel - orders by status [
     Then set Print modal Printer to "factory"
     Then click print modal print button
 
-    Then select Filter Panel Shipped tab
+    Then select Filter Panel tab Shipped
     Then expect selected Filter is Shipped
 
     Then expect Orders Grid Recipient is James Test

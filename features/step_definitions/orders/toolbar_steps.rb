@@ -59,30 +59,4 @@ Then /^Label Unavailable:  Expect Visible$/ do
   end
 end
 
-Then /^[Ii]n Orders Grid toolbar, select Move to Shipped$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_shipped.move
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to Canceled$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_canceled.move
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_awaiting_shipment.move
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to On Hold until today plus (\d+)$/ do |day|
-  step "In Orders Grid toolbar, select Move to On Hold until #{(Date.today + day.to_i).strftime("%m/%d/%Y")}"
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to On Hold until (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.cancel
-  stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.hold_until.set("#{month}/#{day}/#{year}")
-  stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.move
-end
-
 

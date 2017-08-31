@@ -9,9 +9,9 @@ Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
   expect(stamps.orders.filter_panel.selected_filter).to eql expectation
 end
 
-Then /^[Ss]elect [Ff]ilter [Pp]anel (.*) tab$/ do |filter|
-  expect(['Shipped', 'Canceled', 'On Hold', 'Awaiting Shipment']).to include(filter)
-  case filter
+Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
+  expect(['Shipped', 'Canceled', 'On Hold', 'Awaiting Shipment']).to include(str)
+  case str
     when /Shipped/
       stamps.orders.filter_panel.shipped.select
     when /Canceled/
@@ -23,10 +23,10 @@ Then /^[Ss]elect [Ff]ilter [Pp]anel (.*) tab$/ do |filter|
     else
       #ignore
   end
-  step "expect selected filter is #{filter}"
+  step "expect selected filter is #{str}"
 end
 
-Then /^[Ee]xpect saved Order ID is [Ff]iltered in (.*)$/ do |filter|
+Then /^[Ee]xpect saved Order ID exist in the selected filter$/ do
   50.times do
     sleep(0.10)
     break if stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0]) > 0
