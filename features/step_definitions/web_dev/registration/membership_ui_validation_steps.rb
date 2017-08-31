@@ -218,11 +218,11 @@ end
 # Multi Match Address
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header is (.*)$/ do |str|
-  expect(registration.membership.header1.text).to eql(str)
+  expect(registration.membership.header1).to eql(str)
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header instructions is (.*)$/ do |str|
-  expect(registration.membership.header_instructions.text).to eql(str)
+  expect(registration.membership.header_instructions1).to eql(str)
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do

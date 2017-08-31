@@ -175,12 +175,12 @@ module Stamps
 
       module MemberAddressValidationModel
         def header1
-          @header1 ||= StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3"))
+          @header1 ||= StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3")).text
           @header1
         end
 
-        def header_instructions
-          StampsElement.new(browser.p(id: "instructions"))
+        def header_instructions1
+          StampsElement.new(browser.p(id: "instructions")).text
         end
 
         def cancel
