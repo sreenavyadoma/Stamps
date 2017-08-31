@@ -257,11 +257,3 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Terms & Conditions is unchecked
 
     Then check Membership page Terms & Conditions
-
-
-
-
-
-
-
-
