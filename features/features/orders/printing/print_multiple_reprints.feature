@@ -16,15 +16,15 @@ Feature: Multiple Reprints
     Then set Print modal Printer to "factory"
     Then click print modal print button
 
-    Then select Filter Panel Shipped tab
+    Then select Filter Panel tab Shipped
     Then In Orders Grid, Sort Order Date in Descending Order
     Then Pause for 2 seconds
-    Then check Orders Grid saved Order ID
+    Then check Orders Grid for cached Order ID
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
-    Then select Filter Panel Shipped tab
+    Then select Filter Panel tab Shipped
     Then Pause for 2 seconds
-    Then check Orders Grid saved Order ID
+    Then check Orders Grid for cached Order ID
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 

@@ -74,12 +74,18 @@ module Stamps
           window_title.present?
         end
 
-        def move
-          btn = StampsElement.new(browser.spans(text: "Move to Shipped").last)
-          10.times do
-            btn.click
-            break unless btn.present?
+        def order_number
+          StampsElement.new(browser.label(css: "[id^=thirdcolcell-]>label")).text
+        end
+
+        def move_to_shipped
+          ord_num = order_number
+          move_to_shipped_btn = StampsElement.new(browser.spans(text: "Move to Shipped").last)
+          30.times do
+            move_to_shipped_btn.click
+            break unless move_to_shipped_btn.present?
           end
+          expect(move_to_shipped_btn.present?).to be(false), "Unable to move order number #{ord_num} to Shipped"
         end
 
         def cancel
@@ -174,10 +180,9 @@ module Stamps
               #do nothing.
           end
 
-          selection_item = StampsElement.new(browser.span(text: selection_str))
-
           30.times{
             return modal if modal.present?
+            selection_item = StampsElement.new(browser.span(text: selection_str))
             drop_down.click unless selection_item.present?
             sleep(0.50)
             selection_item.hover

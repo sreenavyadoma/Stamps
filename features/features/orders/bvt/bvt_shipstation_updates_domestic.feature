@@ -29,14 +29,14 @@ Feature:  Update Order to ShipStation
     Then blur out on Order Details form 20 times
     Then Pause for 3 seconds
 
-    Then uncheck Orders Grid saved Order ID
+    Then uncheck Orders Grid for cached Order ID
     Then Pause for 2 seconds
 
     Then Refresh the browser
 
     Then Pause for 2 seconds
     Then blur out on Order Details form 20 times
-    Then check Orders Grid saved Order ID
+    Then check Orders Grid for cached Order ID
     Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
