@@ -147,7 +147,11 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Mm]onth is (?:correct|(.*))$/ do |str|
   expect(registration.membership.cc_month.text).to eql(str)
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to (.*)$/ do |str|
+Then /^set Membership page Year to this year plus (\d+)$/ do |year|
+  step "set Membership page Year to year #{Date.today.year + year.to_i}"
+end
+
+Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to year (.*)$/ do |str|
   test_param[:cc_year] = str
   registration.membership.cc_year.select(test_param[:cc_year])
   step "blur_out on membership page"
@@ -238,7 +242,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Zz]ip is (?:correct|(.*))$/ d
 end
 
 Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do
-  registration.membership.agree_to_terms.check
+  registration.membership.agree_to_terms.click
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is checked$/ do
@@ -246,7 +250,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is checked$/ do
 end
 
 Then /^[Uu]ncheck [Mm]embership [Pp]age Terms & Conditions$/ do
-  registration.membership.agree_to_terms.uncheck
+  registration.membership.agree_to_terms.click
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do
@@ -257,4 +261,7 @@ Then /^[Cc]lick [Mm]embership [Pp]age [Cc]ontinue button$/ do
   registration.membership.continue_to_next_page
 end
 
+Then /^[Cc]lick [Mm]embership [Pp]age [Ss]ubmit button$/ do
+  registration.membership.continue_btn.click
+end
 

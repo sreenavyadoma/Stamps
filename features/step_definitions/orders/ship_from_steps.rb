@@ -18,7 +18,14 @@ Then /^[Oo]n Manage Shipping Address modal, edit address for name = \"(.*)\", co
   add_shipping_address.ship_from_address new_address.hashes.first
 end
 
+Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
+  test_param[:ship_from_address] = helper.address_helper_zone(address)
+
+  stamps.orders.order_details.ship_from.select("Manage Shipping Addresses").add.ship_from_address(test_param[:ship_from_address])
+end
+
 Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
+
   test_param[:ship_from_address] = ship_from.hashes.first
   test_param[:ship_from_zip] = test_param[:ship_from_address]["ship_from_zip"]
   test_param[:full_name] = test_param[:ship_from_address]['full_name']
