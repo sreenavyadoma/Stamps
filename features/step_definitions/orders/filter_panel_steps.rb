@@ -34,50 +34,6 @@ Then /^[Ee]xpect saved Order ID exist in the selected filter$/ do
   expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0])).to be > 0
 end
 
-Then /^Filter Panel: Search saved Order ID$/ do
-  step "Filter Panel: Search for #{test_param[:order_id][0]}"
-end
-
-Then /^Filter Panel: Search saved Ship Name$/ do
-   step "Filter Panel: Search for #{test_param[:full_name]}"
-end
-
-Then /^Filter Panel: Search saved Ship Company$/ do
-  step "Filter Panel: Search for #{test_param[:company]}"
-end
-
-Then /^Filter Panel: Search saved Email$/ do
-  step "Filter Panel: Search for #{test_param[:email]}"
-end
-
-Then /^Filter Panel: Search for (.*)$/ do |str|
-  expect(str.nil?).to be(false), "Search string can not be nil"
-  test_param[:orders_search_str] = str
-  stamps.orders.filter_panel.search_orders test_param[:orders_search_str]
-end
-
-Then /^Filter Panel: Search results count should be (\d*)$/ do |count|
-  expect(stamps.orders.filter_panel.search_results.count).to eql count
-end
-
-Then /^Filter Panel: Search results should be more than (\d*)$/ do |count|
-  expect(stamps.orders.filter_panel.search_results.count).to be > count
-end
-
-Then /^Filter Panel: Search Results should be present$/ do
-  sleep 1
-  expect(stamps.orders.filter_panel.search_results.present?).to be(true)
-end
-
-Then /^Filter Panel: Search Results should not be present$/ do
-  sleep 1
-  expect(stamps.orders.filter_panel.search_results.present?).not_to be(true)
-end
-
-Then /^Filter Panel: Remove search results$/ do
-  stamps.orders.filter_panel.search_results.remove
-end
-
 Then /^Filter Panel: Collapse Panel$/ do
   stamps.orders.filter_panel.menu_item.collapse.click
 end

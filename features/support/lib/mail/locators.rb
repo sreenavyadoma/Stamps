@@ -16,7 +16,7 @@ module Stamps
       end
 
       class FormBody
-        def self.print_on_drop_down_divs
+        def self.print_on_dropdown_divs
           {css: "div[class*=x-form-trigger]"}
         end
 

@@ -1,13 +1,13 @@
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-From and Ship-From saved values are the same$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_from.text_box.text).to eql(test_param[:ship_from])
+  expect(stamps.orders.order_details.ship_from.textbox.text).to eql(test_param[:ship_from])
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Associated Item (\d+) Qty is (?:correct|(\d+))$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
   expectation = (expectation.nil?)?test_param[:details_associated_items][item_number][:item_qty] : expectation
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.text_box.text).to eql expectation
+  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.textbox.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Associated Item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|
@@ -24,7 +24,7 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Associated Item (\d+) Qty Placeholder is (.*)$/ do |item_number, expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.text_box.placeholder).to eql expectation
+  expect(stamps.orders.order_details.items_ordered.item(item_number.to_i).qty.textbox.placeholder).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Associated Item (\d+) ID Placeholder is (.*)$/ do |item_number, expectation|
@@ -40,7 +40,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Address Placeholder is (.*)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.placeholder).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.placeholder).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Phone Placeholder is (.*)$/ do |expectation|
@@ -56,13 +56,13 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form service Placeholder is (.*)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.service.text_box.placeholder).to eql expectation
+  expect(stamps.orders.order_details.service.textbox.placeholder).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Country is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_param[:country] : expectation
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_to.country.text_box.text).to eql expectation
+  expect(stamps.orders.order_details.ship_to.country.textbox.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form International Ship-To Name is (?:correct|(.*))$/ do |expectation|
@@ -135,7 +135,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To fields are hidden$/ do
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.present?).not_to be(true)
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.present?).not_to be(true)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Customs Restrictions button is visible/ do
@@ -237,7 +237,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Insure-For is (?:correct|(\d+.\d*))$/ do |expectation|
   expectation = test_param[:insure_for] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.insure_for.text_box.text.to_f.round(2)).to eql expectation.to_f.round(2)
+  expect(stamps.orders.order_details.insure_for.textbox.text.to_f.round(2)).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Insure-For Cost is (?:correct|(\d+.\d*))$/ do |expectation|
@@ -313,13 +313,13 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
   expectation = test_param[:pounds] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.weight.lb.text_box.text.to_f).to eql expectation.to_f.round(2)
+  expect(stamps.orders.order_details.weight.lb.textbox.text.to_f).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |expectation|
   expectation = test_param[:ounces] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.weight.oz.text_box.text.to_f).to eql expectation.to_f.round(2)
+  expect(stamps.orders.order_details.weight.oz.textbox.text.to_f).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Dimensions are hidden$/ do
@@ -329,7 +329,7 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Length is (\d+)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.dimensions.length.text_box.text.to_f).to eql expectation.to_f.round(2)
+  expect(stamps.orders.order_details.dimensions.length.textbox.text.to_f).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Width is (\d+)$/ do |expectation|
@@ -338,12 +338,12 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Height is (\d+)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.dimensions.height.text_box.text.to_i).to eql expectation.to_i
+  expect(stamps.orders.order_details.dimensions.height.textbox.text.to_i).to eql expectation.to_i
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Tracking is (.*)$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.tracking.text_box.text).to eql expectation
+  expect(stamps.orders.order_details.tracking.textbox.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Total Ship Cost is (?:correct|(\d+.\d*))$/ do |expectation|
@@ -354,29 +354,29 @@ end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Ship-From Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_from.text_box.element.visible?).to be(true)
+  expect(stamps.orders.order_details.ship_from.textbox.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Ship-From drop-down be enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_from.drop_down.element.visible?).to be(true)
+  expect(stamps.orders.order_details.ship_from.dropdown.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.element.visible?).to be(true)
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.ship_to.country.drop_down.element.visible?).to be(true)
+  expect(stamps.orders.order_details.ship_to.country.dropdown.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To text area is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.element.visible?).to be(true)
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Phone Textbox is enabled$/ do
@@ -402,32 +402,32 @@ end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form service Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.service.text_box.element.visible?).to be(true)
+  expect(stamps.orders.order_details.service.textbox.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form service drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.service.drop_down.element.visible?).to be(true)
+  expect(stamps.orders.order_details.service.dropdown.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Insure-For Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.insure_for.text_box.element.visible?).to be(true)
+  expect(stamps.orders.order_details.insure_for.textbox.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Insure-For Textbox is disabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.insure_for.text_box.element.visible?).to be(true)
+  expect(stamps.orders.order_details.insure_for.textbox.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect Order Detials Form Tracking Textbox is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.tracking.text_box.element.visible?).to be(true)
+  expect(stamps.orders.order_details.tracking.textbox.element.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails form Tracking drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
-  expect(stamps.orders.order_details.tracking.drop_down.element.visible?).to be(true)
+  expect(stamps.orders.order_details.tracking.dropdown.element.visible?).to be(true)
 end
 
 

@@ -43,25 +43,25 @@ module Stamps
       end
 
       class CustomsMadeIn < Browser::StampsModal
-        attr_reader :text_box, :drop_down, :index
+        attr_reader :textbox, :dropdown, :index
 
-        def initialize(param, text_box, drop_down, index)
+        def initialize(param, textbox, dropdown, index)
           super(param)
-          @text_box = StampsTextBox.new(text_box)
-          @drop_down = StampsElement.new(drop_down)
+          @textbox = StampsTextBox.new(textbox)
+          @dropdown = StampsElement.new(dropdown)
           @index = index
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def select(selection)
           logger.info "Made In #{selection}"
-          drop_down.click
+          dropdown.click
           selection_element = StampsElement.new(browser.lis(text: selection)[index])
           10.times do
-            drop_down.click unless selection_element.present?
+            dropdown.click unless selection_element.present?
             selection_element.click
             break if text.include?(selection)
           end
@@ -79,19 +79,19 @@ module Stamps
           @delete = StampsElement.new(browser.spans(css: "div[id*=customswindow] span[class*=sdc-icon-remove]")[@index])
           @customs_item_description = StampsTextBox.new(browser.text_fields(css: "div[class*=customs-description]>div>div>div>input[name=Description]")[@index])
 
-          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[@index]
+          textbox = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>input[name=Quantity]")[@index]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=up]")[@index]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[class*=down]")[@index]
-          @customs_item_qty = StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @customs_item_qty = StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>input[name=Value]")[@index]
+          textbox = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>input[name=Value]")[@index]
           inc_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=up]")[@index]
           dec_btn = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div>div>div>div[class*=down]")[@index]
-          @customs_item_unit_price = StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @customs_item_unit_price = StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          text_box = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")[@index]
-          drop_down = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[@index]
-          @made_in = CustomsMadeIn.new(param, text_box, drop_down, @index+1)
+          textbox = browser.text_fields(css: "div[id^=singlecustomsitem]>div>div>div>div>input[name=OriginCountryCode]")[@index]
+          dropdown = browser.divs(css: "div[id^=singlecustomsitem]>div>div>div>div>div[id$=picker]")[@index]
+          @made_in = CustomsMadeIn.new(param, textbox, dropdown, @index+1)
 
           @customs_item_hs_tariff = StampsTextBox.new(browser.text_fields(name: "TariffNo")[@index])
         end
@@ -143,36 +143,36 @@ module Stamps
       end
 
       class CustInfoPackageContents < Browser::StampsModal
-        attr_accessor :combo_box, :contents
+        attr_accessor :combobox, :contents
 
         def initialize(param)
           super
-          text_boxes = browser.text_fields(name: "CustomsContents")
-          drop_downs = browser.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
-          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
+          textboxes = browser.text_fields(name: "CustomsContents")
+          dropdowns = browser.divs(id: "sdc-customsFormWindow-packagecontentsdroplist-trigger-picker")
+          @combobox = StampsComboBox.new(textboxes, dropdowns, :li, 0)
           @contents = PackageContentsDetails.new(param).extend(MoreInfo)
         end
 
         def select(str)
-          combo_box.text_box.wait_until_present(3)
-          combo_box.select(str)
+          combobox.textbox.wait_until_present(3)
+          combobox.select(str)
           @contents = (str == 'Commercial Sample')?PackageContentsDetails.new(param).extend(LicenseCertificateInvoice):PackageContentsDetails.new(param).extend(MoreInfo)
         end
       end
 
       class CustInfoInternalTransaction < Browser::StampsModal
-        attr_accessor :combo_box, :itn_number
+        attr_accessor :combobox, :itn_number
 
         def initialize(param)
           super
-          text_boxes = browser.text_fields(name: "IsITNRequired")
-          drop_downs =  browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
-          @combo_box = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
+          textboxes = browser.text_fields(name: "IsITNRequired")
+          dropdowns =  browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          @combobox = StampsComboBox.new(textboxes, dropdowns, :li, 0)
           @itn_number = StampsTextBox.new(browser.text_field(name: "AES"))
         end
 
         def select(str)
-          combo_box.select(str)
+          combobox.select(str)
         end
       end
 
@@ -189,13 +189,13 @@ module Stamps
           @associated_items = AssociatedCustomsItems.new(param)
           @package_contents = CustInfoPackageContents.new(param)
 
-          text_boxes = browser.text_fields(name: "NonDelivery")
-          drop_downs = browser.divs(id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker")
-          @non_delivery_options = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
+          textboxes = browser.text_fields(name: "NonDelivery")
+          dropdowns = browser.divs(id: "sdc-customsFormWindow-nondeliveryoptionsdroplist-trigger-picker")
+          @non_delivery_options = StampsComboBox.new(textboxes, dropdowns, :li, 0)
 
-          text_boxes = browser.text_fields(id: "sdc-customsFormWindow-internaltransactiondroplist-inputEl")
-          drop_downs = browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
-          @internal_transaction = StampsComboBox.new(text_boxes, drop_downs, :li, 0)
+          textboxes = browser.text_fields(id: "sdc-customsFormWindow-internaltransactiondroplist-inputEl")
+          dropdowns = browser.divs(id: "sdc-customsFormWindow-internaltransactiondroplist-trigger-picker")
+          @internal_transaction = StampsComboBox.new(textboxes, dropdowns, :li, 0)
 
           @more_info = StampsTextBox.new browser.text_field name: "CustomsComments"
           @usps_privacy_act_warning = StampsElement.new(browser.label text: "You must agree to the USPS Privacy Act Statement")
@@ -220,7 +220,7 @@ module Stamps
         end
 
         def present?
-          package_contents.combo_box.present?
+          package_contents.combobox.present?
         end
 
         def wait_until_present(*args)

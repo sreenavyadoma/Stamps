@@ -11,23 +11,23 @@ module Stamps
           @form_type = form_type
         end
 
-        def text_box
+        def textbox
           case form_type
             when :single_order
-              @text_box = StampsTextBox.new browser.text_fields(name: "ShipFrom")[0]
+              @textbox = StampsTextBox.new browser.text_fields(name: "ShipFrom")[0]
             when :multi_order
-              @text_box = StampsTextBox.new browser.text_fields(name: "ShipFrom")[1]
+              @textbox = StampsTextBox.new browser.text_fields(name: "ShipFrom")[1]
             else
               # invalid selection.
           end
         end
 
-        def drop_down
+        def dropdown
           case form_type
             when :single_order
-              @drop_down = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[0]
+              @dropdown = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[0]
             when :multi_order
-              @drop_down = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[1]
+              @dropdown = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[1]
             else
               # invalid selection.
               expect([:single_order, :multi_order]).to include(form_type)
@@ -37,13 +37,13 @@ module Stamps
 
         def select(str)
           return manage_shipping_address if manage_shipping_address.present?
-          drop_down.click
+          dropdown.click
           sleep(1)
           selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]:browser.li(text: /#{str}/))
           if str.downcase.include?("manage shipping")
             15.times do
               sleep(0.35)
-              drop_down.click unless selection.present?
+              dropdown.click unless selection.present?
               selection.scroll_into_view
               selection.click
               return manage_shipping_address if manage_shipping_address.present?
@@ -52,11 +52,11 @@ module Stamps
           else
             15.times do
               sleep(0.35)
-              drop_down.click unless selection.present?
+              dropdown.click unless selection.present?
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              return if text_box.text.size > 2
+              return if textbox.text.size > 2
             end
           end
         end
@@ -80,11 +80,11 @@ module Stamps
           cost_label = StampsElement.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
           10.times do
             begin
-              drop_down.click unless cost_label.present?
+              dropdown.click unless cost_label.present?
               if cost_label.present?
                 service_cost = test_helper.remove_dollar_sign(cost_label.text)
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
-                drop_down.click if cost_label.present?
+                dropdown.click if cost_label.present?
                 return service_cost.to_f.round(2)
               end
             rescue
@@ -95,20 +95,20 @@ module Stamps
       end
 
       class OrdersService < Browser::StampsModal
-        attr_reader :text_box, :drop_down, :form_type
+        attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
           super(param)
           @form_type = form_type
           case form_type
             when :single_order
-              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
-              @drop_down = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
+              @textbox = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
+              @dropdown = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
             when :multi_order_dom
-              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
-              @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
+              @textbox = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
+              @dropdown = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
             when :multi_order_int
-              @text_box = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
-              @drop_down = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
+              @textbox = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
+              @dropdown = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
             else
               expect([:single_order, :multi_order_dom, :multi_order_int]).to include(form_type)
           end
@@ -123,7 +123,7 @@ module Stamps
           logger.info "Select service #{str}"
           sleep(0.35)
 
-          drop_down.click
+          dropdown.click
           10.times do
             begin
               if form_type==:multi_order_int
@@ -131,22 +131,22 @@ module Stamps
               else
                 selection = StampsElement.new(browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text"))
               end
-              drop_down.click unless selection.present?
+              dropdown.click unless selection.present?
               selection.scroll_into_view
               sleep(0.15)
               selection.click
-              logger.info "Selected service #{text_box.text} - #{(text_box.text.include? str)?"success": "service not selected"}"
+              logger.info "Selected service #{textbox.text} - #{(textbox.text.include? str)?"success": "service not selected"}"
               sleep(0.15)
-              break if text_box.text.include?(str)
+              break if textbox.text.include?(str)
             rescue
               #ignore
             end
           end
-          expect(text_box.text).to include(str)
+          expect(textbox.text).to include(str)
         end
 
         def tooltip(selection)
-          button = drop_down
+          button = dropdown
           selection_label = StampsElement.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
           10.times do
             begin
@@ -173,7 +173,7 @@ module Stamps
           selection_label = StampsElement.new selection_field
 
           10.times do |index|
-            drop_down.click unless selection_label.present?
+            dropdown.click unless selection_label.present?
             sleep(0.35)
             if selection_field.present?
               disabled_field = StampsElement.new(selection_field.parent.parent.parent)
@@ -184,7 +184,7 @@ module Stamps
                     sleep(0.35)
                     result = disabled_field.attribute_value("class").include? "disabled"
                     result = disabled_field.attribute_value("class").include? "disabled"
-                    drop_down.click
+                    dropdown.click
                     return result
                   end
                 end
@@ -209,26 +209,26 @@ module Stamps
           super(param)
           case form_type
             when :single_order
-              text_box = browser.text_field(name: 'WeightLbs')
+              textbox = browser.text_field(name: 'WeightLbs')
               inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=pounds]>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+              @lb = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-              text_box = browser.text_field(name: 'WeightOz')
+              textbox = browser.text_field(name: 'WeightOz')
               inc_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+              @oz = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
             when :multi_order
-              text_box = browser.text_field(name: 'WeightLbs')
+              textbox = browser.text_field(name: 'WeightLbs')
               inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
-              @lb = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+              @lb = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-              text_box = browser.text_field(name: 'WeightOz')
+              textbox = browser.text_field(name: 'WeightOz')
               inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
-              @oz = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+              @oz = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
             else
               expect([:single_order, :multi_order]).to include(form_type)
           end

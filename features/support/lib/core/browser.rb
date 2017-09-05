@@ -222,7 +222,7 @@ module Stamps
     end
 
     class StampsTextBox < StampsWatirInput
-      def text_box
+      def textbox
         element
       end
 
@@ -230,7 +230,7 @@ module Stamps
         iteration.to_i.times do
           begin
             clear
-            text_box.set(str) if present?
+            textbox.set(str) if present?
             break if text == str
             set_attribute_value("value", str)  if present?
             break if text == str
@@ -243,7 +243,7 @@ module Stamps
 
       def append(txt)
         begin
-          text_box.append(txt) if present?
+          textbox.append(txt) if present?
         rescue
           #ignore
         end
@@ -252,7 +252,7 @@ module Stamps
 
       def clear
         begin
-          text_box.clear if present?
+          textbox.clear if present?
         rescue
           #ignore
         end
@@ -422,13 +422,13 @@ module Stamps
     end
 
     class StampsOldDropDown #TODO-Rob refactor this to StampsGenericDropDown
-      attr_accessor :browser, :drop_down, :text_box, :html_tag
+      attr_accessor :browser, :dropdown, :textbox, :html_tag
 
-      def initialize(drop_down, html_tag, text_box)
-        @browser = drop_down.browser
-        @drop_down = StampsElement.new(drop_down)
+      def initialize(dropdown, html_tag, textbox)
+        @browser = dropdown.browser
+        @dropdown = StampsElement.new(dropdown)
         @html_tag = html_tag
-        @text_box = StampsTextBox.new(text_box)
+        @textbox = StampsTextBox.new(textbox)
       end
 
       def expose_selection(selection)
@@ -440,7 +440,7 @@ module Stamps
         end
 
         5.times do
-          drop_down.click
+          dropdown.click
           return selection_element if selection_element.present?
         end
         expect(selection_element.present?).to be(true), "Drop-down selection #{selection} is not in the list of values."
@@ -452,7 +452,7 @@ module Stamps
           when String
             10.times do
               selection_element.click
-              break if text_box.text.include?(selection)
+              break if textbox.text.include?(selection)
             end
 
           else
@@ -469,21 +469,21 @@ module Stamps
     end
 
     class StampsDropDownLovSubStr < StampsTextBox
-      attr_accessor :list_of_values, :drop_down
+      attr_accessor :list_of_values, :dropdown
 
-      def initialize(text_box, drop_down, list_of_values)
-        super(text_box)
-        @drop_down = StampsElement.new(drop_down)
+      def initialize(textbox, dropdown, list_of_values)
+        super(textbox)
+        @dropdown = StampsElement.new(dropdown)
         @list_of_values = list_of_values
       end
 
       def select(str)
-        drop_down.click
+        dropdown.click
         sleep(0.25)
         expect(list_of_values).not_to be_nil, "Error: Set list_of_values before calling select_from_lov."
         10.times do
           begin
-            drop_down.click if list_of_values.size == 0
+            dropdown.click if list_of_values.size == 0
             break unless list_of_values.size == 0
           rescue
             #ignore
@@ -509,16 +509,16 @@ module Stamps
     end
 
     class StampsDropDown < StampsTextBox
-      attr_accessor :html_tag, :drop_down
+      attr_accessor :html_tag, :dropdown
 
-      def initialize(text_box, drop_down, html_tag)
-        super(text_box)
-        @drop_down = StampsElement.new(drop_down)
+      def initialize(textbox, dropdown, html_tag)
+        super(textbox)
+        @dropdown = StampsElement.new(dropdown)
         @html_tag = html_tag
       end
 
       def select(str)
-        drop_down.click
+        dropdown.click
         expect(html_tag).not_to be_nil, "Error: Set html_tag before calling select."
         case html_tag
           when :span
@@ -533,7 +533,7 @@ module Stamps
 
         20.times do
           begin
-            drop_down.click unless selection.present?
+            dropdown.click unless selection.present?
             selection.scroll_into_view
             selection.click
             break if text == str
@@ -547,33 +547,33 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :browser, :text_box, :inc_btn, :dec_btn
+      attr_reader :browser, :textbox, :inc_btn, :dec_btn
 
       def initialize(textbox, inc_btn, dec_btn)
-        @text_box = StampsTextBox.new(textbox)
+        @textbox = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
-        @browser = text_box.browser
+        @browser = textbox.browser
       end
 
       def present?
-        text_box.present?
+        textbox.present?
       end
 
       def text
-        text_box.text
+        textbox.text
       end
 
       def set(value)
-        text_box.set(value)
+        textbox.set(value)
       end
 
       def increment(value)
-        current_value = text_box.text.to_i
+        current_value = textbox.text.to_i
         value.to_i.times do
           inc_btn.click
         end
-        expect(current_value + value.to_i).to eql text_box.text.to_i
+        expect(current_value + value.to_i).to eql textbox.text.to_i
       end
 
       def selection(str)
@@ -589,27 +589,27 @@ module Stamps
       end
 
       def decrement(value)
-        current_value = text_box.text.to_i
+        current_value = textbox.text.to_i
         value.to_i.times do
           dec_btn.click
         end
-        expect(current_value + value.to_i).to eql text_box.text.to_i
+        expect(current_value + value.to_i).to eql textbox.text.to_i
       end
     end
 
     class StampsComboBox
-      attr_accessor :browser, :text_box, :drop_down, :selection_type
+      attr_accessor :browser, :textbox, :dropdown, :selection_type
 
-      def initialize(text_boxes, drop_downs, selection_type, index)
+      def initialize(textboxes, dropdowns, selection_type, index)
         @index = index
-        @text_box = StampsTextBox.new(text_boxes[@index])
-        @drop_down = StampsTextBox.new(drop_downs[@index])
+        @textbox = StampsTextBox.new(textboxes[@index])
+        @dropdown = StampsTextBox.new(dropdowns[@index])
         @selection_type = selection_type
-        @browser = text_box.browser
+        @browser = textbox.browser
       end
 
       def present?
-        text_box.present?
+        textbox.present?
       end
 
       def selection(str)
@@ -625,19 +625,19 @@ module Stamps
       end
 
       def select(str)
-        drop_down.click
+        dropdown.click
         10.times do
           selection = StampsElement.new(selection(str))
           begin
-            break if (text_box.text).include?(str)
-            drop_down.click unless selection.present?
+            break if (textbox.text).include?(str)
+            dropdown.click unless selection.present?
             selection.click
           rescue
             #ignore
           end
         end
-        expect(text_box.text).to eql(str)
-        text_box.text
+        expect(textbox.text).to eql(str)
+        textbox.text
       end
     end
 

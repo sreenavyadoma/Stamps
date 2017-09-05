@@ -21,15 +21,15 @@ Feature:  Basic Search
 
     # Search for new order
     Then check Orders Grid for cached Order ID
-    Then Filter Panel: Search saved Order ID
+    Then search filtered Orders for cached Order ID
     Then Filter Panel: Search Results should be present
-    Then Filter Panel: Search results count should be 1
+    Then expect Filter Panel search result count is 1
 
     #Then check Orders Grid for cached Order ID
     Then expect Order Details form Order ID equals Grid Oder ID in row 1
     Then expect Order Details form Order ID is the same as saved Order ID
 
-    Then Filter Panel: Search results should be more than 0
+    Then expect Filter Panel search result count is greater than 0
     Then Filter Panel: Remove search results
     Then Filter Panel: Search Results should not be present
 

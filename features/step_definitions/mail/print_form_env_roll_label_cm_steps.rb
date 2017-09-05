@@ -8,7 +8,7 @@ end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
   test_param[:address] = test_helper.address_helper(address)
-  stamps.mail.print_form.mail_to.address.text_area.set(test_param[:address])
+  stamps.mail.print_form.mail_to.address.textarea.set(test_param[:address])
 end
 
 Then /^[Ee]xpect Print form Mail To is disabled$/ do

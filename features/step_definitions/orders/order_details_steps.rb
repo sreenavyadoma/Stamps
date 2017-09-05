@@ -384,37 +384,37 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Name is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.recipient_name).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.recipient_name).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Company Name is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.company_name).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.company_name).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed Street Address is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.street_address).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.street_address).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed City is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.city).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.city).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed State is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.state).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.state).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.zip_plus_4).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_plus_4).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.zip_code).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_code).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Phone is (.*)$/ do |expectation|
@@ -521,23 +521,23 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Company is (.*)$/ do |str|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include str
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include str
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Name is (.*)$/ do |str|
   stamps.orders.order_details.ship_to.domestic.show_address
-  expect(stamps.orders.order_details.ship_to.domestic.text_area.text).to include str
+  expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include str
 end
 
 #validating
 Then /^[E|e]xpect [Oo]rder [Dd]etails form Ship From is (.*)$/ do |str|
-  expect(stamps.orders.order_details.ship_from.text_box.text).to include str
+  expect(stamps.orders.order_details.ship_from.textbox.text).to include str
 end
 
 Then /^[E|e]xpect [Oo]rder [Dd]etails form Domestic service is (.*)$/ do |str|
-  expect(stamps.orders.order_details.service.text_box.text).to include str
+  expect(stamps.orders.order_details.service.textbox.text).to include str
 end
 
 Then /^[E|e]xpect [Oo]rder [Dd]etails form International service is (.*)$/ do |str|
-  expect(stamps.orders.order_details.service.text_box.text).to include str
+  expect(stamps.orders.order_details.service.textbox.text).to include str
 end

@@ -118,7 +118,7 @@ Then /^[Ss]et Print form Phone to (?:tab|enter|(.*))$/ do |value|
 end
 
 Then /^[Ee]xpect Print form Domestic Address Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.text_area.present?).to be(true), "Print form Domestic Address Field is NOT present"
+  expect(stamps.mail.print_form.mail_to.textarea.present?).to be(true), "Print form Domestic Address Field is NOT present"
 end
 
 Then /^[Ee]xpect Print form International Name Field is present$/ do

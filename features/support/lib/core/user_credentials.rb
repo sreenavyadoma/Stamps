@@ -26,7 +26,7 @@ module Stamps
     end
 
     def random_credentials(test_tag)
-      result = db_connection.query("select * from user_credentials where test_env='#{modal_param.test_env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
+      result = db_connection.query("select * from user_credentials where test_env='#{(modal_param.test_env.include?('sc'))?'qacc':modal_param.test_env}' and user_status='Active' and test_tag='#{test_tag}' and in_use=0")
       expect(result.size).to be > 0, "There's no available users in the Database for test #{test_tag} in #{modal_param.test_env}. Try again later or add more users to the database."
       rand_num = rand(result.size)
       result.each_with_index do |row, index|

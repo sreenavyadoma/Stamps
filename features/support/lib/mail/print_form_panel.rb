@@ -95,20 +95,20 @@ module Stamps
 
         def stamp_amount
           if @stamp_amount.nil?
-            text_box = browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
+            textbox = browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
             inc_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]")
             dec_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")
-            @stamp_amount = StampsNumberField.new(text_box, inc_btn, dec_btn)
+            @stamp_amount = StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @stamp_amount
         end
 
         def quantity
           if @quantity.nil?
-            text_box = browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
+            textbox = browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
             inc_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")
             dec_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")
-            @quantity = StampsNumberField.new(text_box, inc_btn, dec_btn)
+            @quantity = StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @quantity
         end

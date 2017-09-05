@@ -1,12 +1,13 @@
-default: --backtrace --profile rob_cc
+default: --backtrace --profile rob_sc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-rob_cc: --tags @filter_panel WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111
-rob_stg: --tags @mail_bvt_envelopes WEB_APP=orders JENKINS=true PW=pass111 URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgld1uw4sroe7 PW=pass111
-rob_sc: --tags @filter_panel WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
+rob_cc: --tags @search_orders WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111
+rob_stg: --tags @search_orders WEB_APP=orders JENKINS=true URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgld1uw4sroe7 PW=pass111
+rob_sc: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=c2jinmzmu64 PW=pass111
+
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 rob_mail_cc:  --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false

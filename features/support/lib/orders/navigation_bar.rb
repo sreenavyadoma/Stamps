@@ -1,12 +1,12 @@
 module Stamps
   module Navigation
     class TransactionComplete < Browser::StampsModal
-      attr_reader :window_title, :text_area, :ok_btn
+      attr_reader :window_title, :textarea, :ok_btn
 
       def initialize(param)
         super
         @window_title = StampsElement.new browser.div(text: "Transaction Complete")
-        @text_area = StampsElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
+        @textarea = StampsElement.new browser.div(css: "div[componentid^=dialoguemodal-]>div[id$=body]>div>div")
         @ok_btn = StampsElement.new(browser.span(css: "div[id^=panel-][id$=-innerCt]>a>span>span>span[id$=btnInnerEl]"))
       end
 
@@ -19,7 +19,7 @@ module Stamps
       end
 
       def text
-        text_area.text
+        textarea.text
       end
 
       def ok
@@ -49,7 +49,7 @@ module Stamps
         window_title.wait_until_present(*args)
       end
 
-      def text_area
+      def textarea
         if param.web_app == :orders
           div = browser.div(class: 'sdc-dialoguemodal-confirm-purchase')
         elsif param.web_app == :mail
@@ -61,7 +61,7 @@ module Stamps
       end
 
       def text
-        text_area.text
+        textarea.text
       end
 
       def confirm
@@ -272,12 +272,12 @@ module Stamps
     end
 
     class BalanceDropDown < Browser::StampsModal
-      attr_reader :add_funds_modal, :buy_more_drop_down, :buy_more_link, :view_history_link, :balance_element
+      attr_reader :add_funds_modal, :buy_more_dropdown, :buy_more_link, :view_history_link, :balance_element
 
       def initialize(param)
         super
         @add_funds_modal = AddFundsModal.new(param)
-        @buy_more_drop_down = StampsElement.new(browser.span(class: "balanceLabel"))
+        @buy_more_dropdown = StampsElement.new(browser.span(class: "balanceLabel"))
         @buy_more_link = StampsElement.new(browser.a(text: "Buy More"))
         @view_history_link = StampsElement.new(browser.a(text: "View Purchase History"))
         @balance_element = StampsElement.new(browser.span(id: 'postageBalanceAmt'))
@@ -286,9 +286,9 @@ module Stamps
       def buy_more
         20.times do
           return add_funds_modal if add_funds_modal.present?
-          buy_more_drop_down.element.hover
-          buy_more_drop_down.click unless buy_more_link.present?
-          buy_more_drop_down.element.hover
+          buy_more_dropdown.element.hover
+          buy_more_dropdown.click unless buy_more_link.present?
+          buy_more_dropdown.element.hover
           buy_more_link.click
           return add_funds_modal if add_funds_modal.present?
         end
@@ -297,9 +297,9 @@ module Stamps
 
       def purchase_history
         2.times do
-          buy_more_drop_down.element.hover
-          buy_more_drop_down.click unless view_history_link.present?
-          buy_more_drop_down.element.hover
+          buy_more_dropdown.element.hover
+          buy_more_dropdown.click unless view_history_link.present?
+          buy_more_dropdown.element.hover
           view_history_link.click
         end
       end

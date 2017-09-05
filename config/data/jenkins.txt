@@ -12,6 +12,18 @@ Jenkins.instance.getItemByFullName(folderName).allJobs
     }
 null
 
+--------------------
+folderName="winclient" // change value `folder-a` for the full name of the folder you want to disable all jobs in
+
+Jenkins.instance.getItemByFullName(folderName).allJobs
+	.findAll { it instanceof AbstractProject }
+	.findAll { it.fullName == "${folderName}/${it.name}" }
+	.each {
+      it.enable()
+      println("Enabled job: [$it.fullName]")
+    }
+null
+
 =====================
 
 How to disable all jobs in a specific folder

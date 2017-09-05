@@ -65,23 +65,23 @@ module Stamps
                 @index = index
               end
 
-              def drop_down
-                StampsElement.new text_box_field.parent.parent.divs[1]
+              def dropdown
+                StampsElement.new textbox_field.parent.parent.divs[1]
               end
 
-              def text_box_field
+              def textbox_field
                 browser.text_fields(name: "servicePackage")[@index]
               end
 
-              def text_box
-                StampsTextBox.new text_box_field
+              def textbox
+                StampsTextBox.new textbox_field
               end
 
               def select service
                 logger.info "Select Shipping service #{service}"
                 selection = StampsElement.new(browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
-                box = text_box
-                dd = drop_down
+                box = textbox
+                dd = dropdown
 
                 10.times {
                   begin
@@ -186,7 +186,7 @@ module Stamps
 
         def automatically_import_new_orders
           label = (browser.label text: "Automatically Import New Orders")
-          checkbox_field = label.parent.text_box
+          checkbox_field = label.parent.textbox
           verify_field = label.parent.parent.parent
           StampsCheckBox.new(checkbox_field, verify_field, "class", "checked")
         end

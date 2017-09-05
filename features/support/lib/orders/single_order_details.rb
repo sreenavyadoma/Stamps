@@ -22,14 +22,14 @@ module Stamps
 
       class ShipToCountry < Browser::StampsModal
         def present?
-          drop_down.present?
+          dropdown.present?
         end
 
         def show_address
           StampsElement.new(browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")).click_while_present
         end
 
-        def text_box
+        def textbox
           show_address
           text_field = nil
           text_fields = browser.text_fields(css: "input[name=ShipCountryCode]")
@@ -45,7 +45,7 @@ module Stamps
           StampsTextBox.new(text_field)
         end
 
-        def  drop_down
+        def  dropdown
           dd = nil
           dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
           int_dd = browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
@@ -65,13 +65,13 @@ module Stamps
         end
 
         def selected?(country)
-          text_box.text == country
+          textbox.text == country
         end
 
         def select(country)
           show_address
-          dd = drop_down
-          text_field = text_box
+          dd = dropdown
+          text_field = textbox
           logger.info "Select Country #{country}"
           begin
             dd.click
@@ -223,13 +223,13 @@ module Stamps
           exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
           form = SingleOrderDetails.new(param)
           form.validate_address_link
-          country_drop_down = self.country
+          country_dropdown = self.country
           form.ship_to.set test_helper.format_address(partial_address_hash)
           30.times {
             begin
               item_label.click
-              country_drop_down.drop_down.click
-              country_drop_down.drop_down.click
+              country_dropdown.dropdown.click
+              country_dropdown.dropdown.click
               item_label.click
 
               break if (exact_address_not_found_field.present?) || (form.validate_address_link.present?)
@@ -251,7 +251,7 @@ module Stamps
         end
 
         def data_error
-          text_area.data_error_qtip
+          textarea.data_error_qtip
         end
       end
 
@@ -352,17 +352,17 @@ module Stamps
           @less_link = StampsElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
           @blur_element = BlurOutElement.new(param)
           @address_not_found = AddressNotFound.new(param)
-          @text_area = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
+          @textarea = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
           @email = StampsTextBox.new browser.text_field(name: 'BuyerEmail')
           @phone = StampsTextBox.new browser.text_field(name: "ShipPhone")
 
           @ambiguous = AmbiguousAddress.new(param)
-          @auto_suggest = AutoSuggestDomestic.new(param, @text_area)
+          @auto_suggest = AutoSuggestDomestic.new(param, @textarea)
         end
 
-        def text_area
+        def textarea
           show_address
-          @text_area
+          @textarea
         end
 
         def email
@@ -380,7 +380,7 @@ module Stamps
         end
 
         def present?
-          dom_text_area.present?
+          dom_textarea.present?
         end
 
         def less
@@ -394,7 +394,7 @@ module Stamps
         def set address
           10.times do
             begin
-              text_area.set(address)
+              textarea.set(address)
               15.times do
                 blur_out
                 break if less_link.present?
@@ -407,12 +407,12 @@ module Stamps
             end
           end
           expect(less_link.present?).to be(true), "Less link did not appear on Single Order Details form. Unable to save Ship-To data."
-          expect(text_area.text).to include address.split(" ").last
+          expect(textarea.text).to include address.split(" ").last
         end
 
         def set_ambiguous address
           10.times do
-            text_area.set address
+            textarea.set address
             blur_out
             address_not_found.wait_until_present 4
             return address_not_found if address_not_found.present?
@@ -422,19 +422,19 @@ module Stamps
       end
 
       class AutoSuggestDomestic < Browser::StampsModal
-        attr_reader :text_area, :auto_suggest_box
-        def initialize(param, text_area)
+        attr_reader :textarea, :auto_suggest_box
+        def initialize(param, textarea)
           super(param)
-          @text_area = text_area
+          @textarea = textarea
           @auto_suggest_box = AutoSuggestPopUp.new(param)
         end
 
         def set(address)
           20.times{
             begin
-              text_area.set address
+              textarea.set address
               return auto_suggest_box if auto_suggest_box.present?
-              text_area.click
+              textarea.click
               sleep(0.35)
               return auto_suggest_box if auto_suggest_box.present?
               ship_to_area1.double_click
@@ -507,11 +507,11 @@ module Stamps
       end
 
       class DetailsInsureFor < Browser::StampsModal
-        attr_reader :checkbox, :text_box, :increment_trigger, :decrement_trigger, :terms, :blur_element
+        attr_reader :checkbox, :textbox, :increment_trigger, :decrement_trigger, :terms, :blur_element
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
+          @textbox = StampsTextBox.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
           @decrement_trigger = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
 
@@ -535,7 +535,7 @@ module Stamps
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def value
@@ -550,7 +550,7 @@ module Stamps
         def set(value)
           10.times do
             check
-            text_box.set(value)
+            textbox.set(value)
             sleep(0.025)
             2.times {blur_out}
             return true if text.to_f == value.to_f
@@ -593,17 +593,17 @@ module Stamps
       end
 
       class DetailsTracking < Browser::StampsModal
-        attr_reader :text_box, :drop_down, :blur_element, :cost_label
+        attr_reader :textbox, :dropdown, :blur_element, :cost_label
         def initialize(param)
           super
-          @text_box = StampsTextBox.new browser.text_field(name: 'Tracking')
-          @drop_down = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
+          @textbox = StampsTextBox.new browser.text_field(name: 'Tracking')
+          @dropdown = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
           @blur_element = BlurOutElement.new(param)
           @cost_label = StampsElement.new(browser.label(css: "label[class*='selected_tracking_cost']"))
         end
 
         def present?
-          text_box.present?
+          textbox.present?
         end
 
         def blur_out
@@ -624,14 +624,14 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(drop_down.present?).to be(true)
+          expect(dropdown.present?).to be(true)
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
-            drop_down.click unless selection.present?
+            dropdown.click unless selection.present?
             selection.click
-            break if text_box.text.include?(str)
+            break if textbox.text.include?(str)
           end
-          expect(text_box.text).to include(str)
+          expect(textbox.text).to include(str)
         end
 
         def inline_cost(selection)
@@ -640,11 +640,11 @@ module Stamps
           label = StampsElement.new(tds.last)
           5.times do
             begin
-              drop_down.click unless label.present?
+              dropdown.click unless label.present?
               return label.text if label.present?
-              drop_down.click
+              dropdown.click
               label = tracking_selection(selection).last
-              drop_down.click unless label.present?
+              dropdown.click unless label.present?
               return label.text if label.present?
             rescue
               #ignore
@@ -661,7 +661,7 @@ module Stamps
           selection_label = browser.td(text: selection)
           5.times {
             begin
-              drop_down.click unless selection_label.present?
+              dropdown.click unless selection_label.present?
               if selection_label.present?
                 qtip = selection_label.parent.parent.parent.parent.attribute_value("data-qtip")
                 logger.info "#{qtip}"
@@ -681,20 +681,20 @@ module Stamps
         attr_reader :length, :width, :height
         def initialize(param)
           super
-          text_box = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
+          textbox = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
-          @length = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @length = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          text_box = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
+          textbox = browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]")
-          @width = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @width = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          text_box = browser.text_field(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
+          textbox = browser.text_field(css: 'div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
           inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]")
-          @height = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @height = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
         end
 
         def present?
@@ -708,10 +708,10 @@ module Stamps
           super(param)
           @index = number
 
-          text_box = browser.text_fields(name: "Quantity")[@index-1]
+          textbox = browser.text_fields(name: "Quantity")[@index-1]
           inc_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index-1]
           dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
-          @item_qty = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @item_qty = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
           @item_id = StampsTextBox.new((browser.text_fields(name: "SKU")[index-1]))
           @delete = StampsElement.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index-1])
@@ -728,25 +728,25 @@ module Stamps
       end
 
       class ItemsOrderedSection < Browser::StampsModal
-        attr_reader :add_btn, :drop_down
+        attr_reader :add_btn, :dropdown
 
         def initialize(param)
           super
           @add_btn = StampsElement.new(browser.span(css: "span[class*=sdc-icon-add]"))
-          @drop_down = StampsElement.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
+          @dropdown = StampsElement.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
         end
       
         def expand
           5.times do
-            drop_down.click
-            break if drop_down.element.attribute_value('class').include?('collapse-top')
+            dropdown.click
+            break if dropdown.element.attribute_value('class').include?('collapse-top')
           end
         end
 
         def collapse
           5.times do
-            drop_down.click
-            break if drop_down.element.attribute_value('class').include?('expand-bottom')
+            dropdown.click
+            break if dropdown.element.attribute_value('class').include?('expand-bottom')
           end
         end
 
@@ -791,15 +791,15 @@ module Stamps
       end
 
       class ToolbarMenu < Browser::StampsModal
-        attr_reader :drop_down
+        attr_reader :dropdown
         def initialize(param)
           super
-          @drop_down = StampsElement.new(browser.spans(css: "span[class*='sdc-icon-more']").first)
+          @dropdown = StampsElement.new(browser.spans(css: "span[class*='sdc-icon-more']").first)
         end
 
         def collapse
           selection = StampsElement.new browser.span(text: "Collapse Panel")
-          dd = drop_down
+          dd = dropdown
           collapsed_details = DetailsCollapsible.new(param)
           10.times do
             dd.click unless selection.present?
@@ -810,10 +810,10 @@ module Stamps
 
         def tooltip
           tooltip_element = StampsElement.new(browser.div id: 'ext-quicktips-tip-innerCt')
-          drop_down.element.hover
-          drop_down.element.hover
+          dropdown.element.hover
+          dropdown.element.hover
           15.times do
-            drop_down.element.hover
+            dropdown.element.hover
             sleep(0.35)
             if tooltip_element.present?
               logger.info tooltip_element.text

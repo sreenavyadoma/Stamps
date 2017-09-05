@@ -8,7 +8,7 @@ end
 
 Then /^[Ii]n Orders Toolbar, expect Move Tooltip to include (.*)$/ do |expectation|
   #test_config.logger.step "In Orders Toolbar, expect Move Tooltip to include #{expectation}"
-  actual = stamps.orders.orders_toolbar.move_drop_down.tooltip
+  actual = stamps.orders.orders_toolbar.move_dropdown.tooltip
   #test_config.logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
 end
@@ -70,7 +70,7 @@ end
 Then /^[Oo]n Customs form, expect Qty Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Qty Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).qty.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).qty.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
@@ -78,7 +78,7 @@ end
 Then /^[Oo]n Customs form, expect Unit Price Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Unit Price Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).unit_price.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).unit_price.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
@@ -86,7 +86,7 @@ end
 Then /^[Oo]n Customs form, expect Pounds Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Pounds Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).lb.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).lb.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
@@ -94,7 +94,7 @@ end
 Then /^[Oo]n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Ounces Tooltip Error is #{expectation}"
   stamps.orders.order_details.customs.edit_form.should_not be_nil
-  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).oz.text_box.data_error_qtip
+  data_error_qtip = stamps.orders.order_details.customs.edit_form.associated_items.item_number(1).oz.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(ddata_error_qtip).to include(expectation)
 end
@@ -102,20 +102,20 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Address data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Domestic Address data error tooltip is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
-  text_box = stamps.orders.order_details.ship_to.domestic.text_area
+  textbox = stamps.orders.order_details.ship_to.domestic.textarea
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.blur_out
-    text_box.scroll_into_view
-    text_box.double_click
+    textbox.scroll_into_view
+    textbox.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
@@ -123,108 +123,108 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Email data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Domestic Email data error tooltip is #{expectation}"
   stamps.orders.order_details.ship_to.domestic.show_address
-  text_box = stamps.orders.order_details.ship_to.domestic.email
+  textbox = stamps.orders.order_details.ship_to.domestic.email
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.blur_out
-    text_box.scroll_into_view
-    text_box.double_click
+    textbox.scroll_into_view
+    textbox.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Weight Lbs data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Domestic  Weight lb data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.weight.lb.text_box
+  textbox = stamps.orders.order_details.weight.lb.textbox
   20.times do
-    text_box.scroll_into_view
-    text_box.set "1"
+    textbox.scroll_into_view
+    textbox.set "1"
     stamps.orders.order_details.blur_out
-    text_box.set "0"
+    textbox.set "0"
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
 
-  text_box.scroll_into_view
+  textbox.scroll_into_view
   sleep(2)
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Weight Oz data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Weight Oz data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.weight.oz.text_box
+  textbox = stamps.orders.order_details.weight.oz.textbox
   20.times do
-    text_box.scroll_into_view
-    text_box.set "1"
-    text_box.double_click
+    textbox.scroll_into_view
+    textbox.set "1"
+    textbox.double_click
     stamps.orders.order_details.blur_out
-    text_box.double_click
-    text_box.set "0"
-    text_box.scroll_into_view
+    textbox.double_click
+    textbox.set "0"
+    textbox.scroll_into_view
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
 
-  text_box.scroll_into_view
+  textbox.scroll_into_view
   sleep(2)
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form service data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Weight Oz data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.service.text_box
+  textbox = stamps.orders.order_details.service.textbox
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.blur_out
-    text_box.scroll_into_view
-    text_box.double_click
+    textbox.scroll_into_view
+    textbox.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
 
-  text_box.scroll_into_view
+  textbox.scroll_into_view
   sleep(2)
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Dimensions Length data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Dimensions Length data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.dimensions.length.text_box
+  textbox = stamps.orders.order_details.dimensions.length.textbox
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.blur_out
-    text_box.scroll_into_view
-    text_box.double_click
+    textbox.scroll_into_view
+    textbox.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.name.scroll_into_view
       sleep(0.35)
@@ -232,23 +232,23 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Dimensions Length data error tooltip i
     end unless data_error_tooltip.nil?
   end
   stamps.orders.order_details.name.scroll_into_view
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Dimensions Width data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Dimensions Width data error tooltip is #{expectation}"
-  width_text_box = stamps.orders.order_details.dimensions.width.text_box
+  width_textbox = stamps.orders.order_details.dimensions.width.textbox
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.blur_out
-    text_box.scroll_into_view
-    text_box.double_click
+    textbox.scroll_into_view
+    textbox.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.name.scroll_into_view
       sleep(0.35)
@@ -256,23 +256,23 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Dimensions Width data error tooltip is
     end unless data_error_tooltip.nil?
   end
   stamps.orders.order_details.name.scroll_into_view
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Dimensions Height data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form Dimensions Height data error tooltip is #{expectation}"
-  height_text_box = stamps.orders.order_details.dimensions.height.text_box
+  height_textbox = stamps.orders.order_details.dimensions.height.textbox
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.blur_out
-    text_box.scroll_into_view
-    text_box.double_click
+    textbox.scroll_into_view
+    textbox.double_click
     stamps.orders.order_details.blur_out
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.name.scroll_into_view
       sleep(0.35)
@@ -280,23 +280,23 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Dimensions Height data error tooltip i
     end unless data_error_tooltip.nil?
   end
   stamps.orders.order_details.name.scroll_into_view
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form International Name data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form International Name data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.international.name
+  textbox = stamps.orders.order_details.ship_to.international.name
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.double_click
+    textbox.double_click
     #web_apps.orders.order_details.ship_to.international.click_form
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
@@ -305,24 +305,24 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International Name data error tooltip 
   end
   stamps.orders.order_details.ship_to.international.name.scroll_into_view
   sleep(2)
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form International Company data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form International Company data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.international.company
+  textbox = stamps.orders.order_details.ship_to.international.company
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
@@ -330,24 +330,24 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International Company data error toolt
     end unless data_error_tooltip.nil?
   end
   stamps.orders.order_details.ship_to.international.name.scroll_into_view
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form International Address 1 data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form International Address 1 data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.international.address_1
+  textbox = stamps.orders.order_details.ship_to.international.address_1
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
@@ -355,23 +355,23 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International Address 1 data error too
     end unless data_error_tooltip.nil?
   end
   stamps.orders.order_details.ship_to.international.name.scroll_into_view
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form International City data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form International City data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.international.city
+  textbox = stamps.orders.order_details.ship_to.international.city
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
@@ -379,24 +379,24 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International City data error tooltip 
     end unless data_error_tooltip.nil?
   end
   stamps.orders.order_details.ship_to.international.name.scroll_into_view
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form International Phone data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form International Phone data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.international.phone
+  textbox = stamps.orders.order_details.ship_to.international.phone
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
@@ -405,24 +405,24 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International Phone data error tooltip
   end
   stamps.orders.order_details.ship_to.international.name.scroll_into_view
   sleep(2)
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form International Email data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Order Details form International Email data error tooltip is #{expectation}"
-  text_box = stamps.orders.order_details.ship_to.international.email
+  textbox = stamps.orders.order_details.ship_to.international.email
 
   20.times do
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
-    text_box.double_click
+    textbox.double_click
     stamps.orders.order_details.ship_to.international.blur_out
     stamps.orders.order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
-    data_error_tooltip = text_box.data_error_qtip
+    data_error_tooltip = textbox.data_error_qtip
     begin
       stamps.orders.order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
@@ -430,7 +430,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International Email data error tooltip
     end unless data_error_tooltip.nil?
   end
   stamps.orders.order_details.ship_to.international.name.scroll_into_view
-  data_error_tooltip = text_box.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end

@@ -95,13 +95,16 @@ module Stamps
           label.present?
         end
 
+        def wait_while_present(*args)
+          remove_button.wait_while_present(*args)
+        end
+
         def remove
           remove_button.click_while_present
         end
 
         def count
-          expect("Test Error: Check your test flow.").to be "Search Results is not present on Left Filter Panel.Did you forget to do a search first?" unless present?
-          count_label.text
+          count_label.text.to_i
         end
       end
 
@@ -117,30 +120,6 @@ module Stamps
 
         def present?
           search_button.present?
-        end
-
-        def search str
-          20.times do
-            textbox.set str
-            search_button.click
-            search_button.click
-            search_button.click
-            if str.include? '@'
-              search_button.click
-              textbox.set str
-              search_button.click
-              search_button.click
-              sleep(0.35)
-              search_button.click
-              search_button.click
-              sleep(0.35)
-              search_button.click
-              search_button.click
-              sleep(0.35)
-            end
-            return search_results if search_results.present?
-          end
-          expect(search_results.present?).to be(true)
         end
       end
 
@@ -212,7 +191,7 @@ module Stamps
       end
 
       class FilterPanel < Browser::StampsModal
-        attr_reader :search_orders_modal, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
+        attr_reader :search_orders, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
 
         def initialize(param)
           super
@@ -220,21 +199,20 @@ module Stamps
           @shipped = ShippedTab.new(param)
           @canceled = CanceledTab.new(param)
           @on_hold = OnHoldTab.new(param)
-          @search_orders_modal = SearchOrders.new(param)
+          @search_orders = SearchOrders.new(param)
           @menu_item = FilterMenuItem.new(param)
           @search_results = SearchResults.new(param)
         end
 
-        def search_orders(str)
-          search_orders_modal.search(str)
-        end
-
         def selected_filter
           20.times do
-            sleep(0.25)
+            sleep(0.05)
             return awaiting_shipment.text if awaiting_shipment.selected?
+            sleep(0.05)
             return shipped.text if shipped.selected?
+            sleep(0.05)
             return canceled.text if canceled.selected?
+            sleep(0.05)
             return on_hold.text if on_hold.selected?
           end
           expect("At least one filter should have been selected.").to eql "Unable to return selected_filter text."

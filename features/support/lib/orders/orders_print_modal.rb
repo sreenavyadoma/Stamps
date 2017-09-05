@@ -2,12 +2,12 @@
 module Stamps
   module Orders
     class PrintingOn < Browser::StampsModal
-      attr_reader :drop_down, :text_box
+      attr_reader :dropdown, :textbox
 
       def initialize(param)
         super
-        @drop_down = StampsElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
-        @text_box = StampsTextBox.new browser.text_field css: "input[name^=printmediadroplist]"
+        @dropdown = StampsElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
+        @textbox = StampsTextBox.new browser.text_field css: "input[name^=printmediadroplist]"
       end
 
       def selection media
@@ -37,7 +37,7 @@ module Stamps
       end
 
       def present?
-        text_box.present?
+        textbox.present?
       end
 
       def label
@@ -48,25 +48,25 @@ module Stamps
         begin
           lov_item = selection(media)
           10.times do
-            break if text_box.text.include? media
-            drop_down.click unless lov_item.present?
+            break if textbox.text.include? media
+            dropdown.click unless lov_item.present?
             lov_item.click
           end
-        end unless text_box.text.include? media
+        end unless textbox.text.include? media
       end
 
       def tooltip media
-        drop_down = self.drop_down
+        dropdown = self.dropdown
         media_selection = selection media
 
         10.times do
           begin
-            drop_down.click unless media_selection.present?
+            dropdown.click unless media_selection.present?
             if media_selection.present?
               tooltip = media_selection.attribute_value "data-qtip"
               logger.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
               if tooltip.include? "<strong>"
-                drop_down.click if media_selection.present?
+                dropdown.click if media_selection.present?
                 return tooltip
               end
             end
@@ -78,12 +78,12 @@ module Stamps
     end
 
     class Printer < Browser::StampsModal
-      attr_reader :drop_down, :text_box
+      attr_reader :dropdown, :textbox
 
       def initialize(param)
         super
-        @drop_down = StampsElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
-        @text_box = StampsTextBox.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
+        @dropdown = StampsElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
+        @textbox = StampsTextBox.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
       end
 
       def select(selection)
@@ -91,33 +91,33 @@ module Stamps
           selection_label = StampsElement.new browser.li(text: selection)
 
           15.times do
-            return text_box.text  if text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
-            drop_down.click unless selection_label.present?
+            return textbox.text  if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+            dropdown.click unless selection_label.present?
             selection_label.click
           end
           expect("Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.").to eql ""
-        end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+        end unless textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
       end
     end
 
     class PaperTray < Browser::StampsModal
-      attr_reader :drop_down, :text_box
+      attr_reader :dropdown, :textbox
 
       def initialize(param)
         super
-        @drop_down = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
-        @text_box = StampsTextBox.new browser.text_field(name: "paperTrays")
+        @dropdown = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
+        @textbox = StampsTextBox.new browser.text_field(name: "paperTrays")
       end
 
       def select(selection)
         begin
           selection_label = StampsElement.new browser.li(text: selection)
           5.times{
-            drop_down.click unless selection_label.present?
+            dropdown.click unless selection_label.present?
             selection_label.click
-            break if text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+            break if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
           }
-        end unless text_box.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+        end unless textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
       end
     end
 
@@ -352,20 +352,20 @@ module Stamps
     end
 
     class ShipDate < Browser::StampsModal
-      attr_reader :text_box, :date_picker, :text_box_cc
+      attr_reader :textbox, :date_picker, :textbox_cc
 
       def initialize(param)
         super
-        @text_box = StampsTextBox.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
-        @text_box_cc = StampsTextBox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
+        @textbox = StampsTextBox.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
+        @textbox_cc = StampsTextBox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
         @date_picker = DatePicker.new(param)
       end
 
       def text
         sleep(0.35)
         5.times do
-          return text_box.text if text_box.present?
-          return text_box_cc.text if text_box_cc.present?
+          return textbox.text if textbox.present?
+          return textbox_cc.text if textbox_cc.present?
         end
       end
     end
