@@ -1,27 +1,27 @@
 
-Then /^search filtered Orders for cached Order ID$/ do
+Then /^[Ss]earch filtered Orders for cached Order ID$/ do
   step "search Orders for #{test_param[:order_id][0]} expecting to find at least 1"
 end
 
-Then /search filtered Orders for cached Ship-To full name$/ do
+Then /^[Ss]earch filtered Orders for cached Ship-To full name$/ do
   step "search Orders for #{test_param[:full_name]} expecting to find at least 1"
 end
 
-Then /^search filtered Orders for cached Ship-To Company name$/ do
+Then /^[Ss]earch filtered Orders for cached Ship-To Company name$/ do
   step "search Orders for #{test_param[:company]} expecting to find at least 1"
 end
 
-Then /^search filtered Orders for cached Ship-To email$/ do
+Then /^[Ss]earch filtered Orders for cached Ship-To email$/ do
   step "search Orders for #{test_param[:email].split('@').first} expecting to find at least 1"
 end
 
-Then /^search Orders for (.*) expecting to find at least (\d+)$/ do |search_str, count|
+Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |search_str, count|
   begin
     15.times do
       step "set Filter Panel Search textbox to #{search_str}"
       sleep(1)
       step "click Filter Panel Search button"
-      sleep(2)
+      sleep(1)
       break if stamps.orders.filter_panel.search_orders.search_results.count >= count.to_i
     end
     expect(stamps.orders.filter_panel.search_orders.search_results.present?).to be(true), "Couldn't find #{search_str} in Orders Grid"
@@ -29,37 +29,34 @@ Then /^search Orders for (.*) expecting to find at least (\d+)$/ do |search_str,
 
 end
 
-Then /^set Filter Panel Search textbox to (.*)$/ do |str|
+Then /^[Ss]et Filter Panel Search textbox to (.*)$/ do |str|
   test_param[:filter_panel_search_str] = str
   stamps.orders.filter_panel.search_orders.textbox.set(test_param[:filter_panel_search_str])
 end
 
-Then /^click Filter Panel Search button$/ do
+Then /^[Cc]lick Filter Panel Search button$/ do
   stamps.orders.filter_panel.search_orders.search_button.click
 end
 
-Then /^expect Filter Panel search result count is (\d+)$/ do |count|
+Then /^[Ee]xpect Filter Panel search result count is (\d+)$/ do |count|
   expect(stamps.orders.filter_panel.search_orders.search_results.count).to eql count.to_i
 end
 
-Then /^expect Filter Panel search result count is greater than (\d+)$/ do |count|
+Then /^[Ee]xpect Filter Panel search result count is greater than (\d+)$/ do |count|
   expect(stamps.orders.filter_panel.search_results.count).to be > count.to_i
 end
 
-
-
-
-Then /^expect Filter Panel search results tab is present$/ do
+Then /^[Ee]xpect Filter Panel search results tab is present$/ do
   sleep 1
   expect(stamps.orders.filter_panel.search_results.present?).to be(true)
 end
 
-Then /^expect Filter Panel search results tab is not present$/ do
+Then /^[Ee]xpect Filter Panel search results tab is not present$/ do
   sleep 1
   expect(stamps.orders.filter_panel.search_results.present?).not_to be(true)
 end
 
-Then /^remove Filter Panel search results tab$/ do
+Then /^[Rr]emove Filter Panel search results tab$/ do
   stamps.orders.filter_panel.search_results.remove
   sleep(0.5)
   stamps.orders.filter_panel.search_results.wait_while_present(3)

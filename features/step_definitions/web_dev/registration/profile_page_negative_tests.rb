@@ -136,11 +136,11 @@ end
 
 
 ##########################
-#Then /^expect Profile Page Email help text (\d+) is (.*)$/ do |number, str|
+#Then /^[Ee]xpect Profile Page Email help text (\d+) is (.*)$/ do |number, str|
   #expect(registration.profile.email.help_text(number.to_i-1)).to eql(str)
 #end
 
-#Then /^expect Profile Page Username help text is (.*)$/ do |str|
+#Then /^[Ee]xpect Profile Page Username help text is (.*)$/ do |str|
  # expect(registration.profile.username.help_text).to eql(str)
 #end
 

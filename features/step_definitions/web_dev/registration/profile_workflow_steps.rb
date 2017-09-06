@@ -101,7 +101,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |s
   expect(registration.profile.show_promo_code.text).to eql((str.nil?)?test_param[:promo_code]:str)
 end
 
-Then /^check [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
+Then /^[Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
   registration.profile.money_saving_offers_checkbox.check
 end
 

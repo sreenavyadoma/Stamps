@@ -147,7 +147,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Mm]onth is (?:correct|(.*))$/ do |str|
   expect(registration.membership.cc_month.text).to eql(str)
 end
 
-Then /^set Membership page Year to this year plus (\d+)$/ do |year|
+Then /^[Ss]et Membership page Year to this year plus (\d+)$/ do |year|
   step "set Membership page Year to year #{Date.today.year + year.to_i}"
 end
 

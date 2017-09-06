@@ -1,4 +1,4 @@
-Then /^run rate test FCM Package$/ do
+Then /^[Rr]un rate test FCM Package$/ do
   param_sheet = data_for(:rates_test, {})['rates_fcm_package']
   step "run rate sheet #{param_sheet}"
 end
