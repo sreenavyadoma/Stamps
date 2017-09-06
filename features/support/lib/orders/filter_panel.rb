@@ -113,8 +113,8 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextBox.new browser.text_field(css: "input[placeholder='Search Orders']")
-          @search_button = StampsElement.new browser.div(css: "div[id^=textfield-][id$=-trigger-search]")
+          @textbox = StampsTextBox.new browser.text_field(css: "[placeholder='Search Orders']")
+          @search_button = StampsElement.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
           @search_results = SearchResults.new(param)
         end
 
@@ -131,6 +131,10 @@ module Stamps
           rescue
             false
           end
+        end
+
+        def element
+          browser.divs(text: panel_name).first
         end
 
         def text
@@ -155,7 +159,6 @@ module Stamps
         def initialize(param)
           super
           @panel_name = "Awaiting Shipment"
-          @element = browser.divs(text: @panel_name).first
         end
 
         def count
@@ -168,7 +171,6 @@ module Stamps
         def initialize(param)
           super
           @panel_name = "Shipped"
-          @element = browser.divs(text: @panel_name).first
         end
       end
 
@@ -177,7 +179,6 @@ module Stamps
         def initialize(param)
           super
           @panel_name = "Canceled"
-          @element = browser.divs(text: @panel_name).first
         end
       end
 
@@ -186,7 +187,6 @@ module Stamps
         def initialize(param)
           super
           @panel_name = "On Hold"
-          @element = browser.divs(text: @panel_name).first
         end
       end
 

@@ -1,3 +1,13 @@
+
+
+Then /^[Hh]ide [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
+  stamps.orders.order_details.ship_to.domestic.hide_ship_to_details
+end
+
+Then /^[Ss]how [Oo]rder [Dd]etails [Ff]orm [Ss]hip-[Tt]o [Ff]ields$/ do
+  stamps.orders.order_details.ship_to.domestic.show_ship_to_details
+end
+
 Then /^[Oo]n [Oo]rder [Dd]etails form, Expand Manual Items Ordered pane$/ do
   stamps.orders.order_details.items_ordered.expand
 end
@@ -25,6 +35,7 @@ Then /^[Aa]dd [Oo]rder [Dd]etails form Associated Item (\d+)$/ do |item_number|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
+  step "expect order details form is present"
   test_param[:details_associated_items][item_number] = Hash.new unless test_param[:details_associated_items].has_key?(item_number)
   test_param[:details_associated_items][item_number][:item_qty] = qty
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_qty.set(test_param[:details_associated_items][item_number][:item_qty] )
@@ -32,6 +43,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) Qty to (.*)$/ do |i
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) ID to (.*)$/ do |item_number, str|
+  step "expect order details form is present"
   test_param[:details_associated_items][item_number] = Hash.new unless test_param[:details_associated_items].has_key?(item_number)
   test_param[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random')?(test_helper.random_alpha_numeric):str)
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(test_param[:details_associated_items][item_number][:item_id])
@@ -39,6 +51,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) ID to (.*)$/ do |it
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) Description to (.*)$/ do |item_number, str|
+  step "expect order details form is present"
   test_param[:details_associated_items][item_number] = Hash.new unless test_param[:details_associated_items].has_key?(item_number)
   test_param[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random')?(test_helper.random_alpha_numeric):str)
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(test_param[:details_associated_items][item_number][:item_description])
@@ -46,8 +59,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) Description to (.*)
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To Country to (.*)$/ do |country|
-  stamps.orders.order_details.ship_to.domestic.show_address
-  stamps.orders.order_details.ship_to.country.select country
+  step "show order details form ship-to fields"
+  stamps.orders.order_details.ship_to.country.select(country)
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form [Ii]nternational [Ss]hip-[Tt]o Name to \"(.*)\"$/ do |value|
@@ -208,15 +221,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails form [Ii]nsure-[Ff]or to \$(.*)$/ do |str|
   step "Save Order Details data"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form Tracking to USPS Tracking$/ do
-  step "set Order Details form Tracking to \"USPS Tracking\""
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails form Tracking to Signature Required$/ do
-  step "set Order Details form Tracking to \"Signature Required\""
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails form Tracking to \"([\w ]*)\"$/ do |value|
+Then /^[Ss]et [Oo]rder [Dd]etails form Tracking to (.*)$/ do |value|
   stamps.orders.order_details.tracking.select(value)
   10.times do
     break if stamps.orders.order_details.tracking.cost > 0
@@ -323,9 +328,10 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To to(?: a |)(?: random address |)(?
   test_param[:company] = address['company']
   test_param[:ship_to_domestic] = test_helper.format_address(address)
 
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic])
   step "Save Order Details data"
+  step "hide order details form Ship-To fields"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To Domestic address to$/ do |table|
@@ -353,21 +359,13 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To text area to (.*)$/ do |address|
   test_param[:ship_to_domestic] = test_helper.format_address(address)
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic])
   step "Save Order Details data"
 end
 
-Then /^[Oo]n [Oo]rder [Dd]etails form, Hide Ship-To fields$/ do
-  stamps.orders.order_details.ship_to.domestic.less
-end
-
 Then /^[Oo]n [Oo]rder [Dd]etails form, Hide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
-  stamps.orders.order_details.ship_to.international.less
-end
-
-Then /^[Oo]n [Oo]rder [Dd]etails form, Show Ship-To fields$/ do
-  stamps.orders.order_details.ship_to.domestic.show_address
+  stamps.orders.order_details.ship_to.international.hide_ship_to_details
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is truthy$/ do
@@ -383,51 +381,61 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is the same as saved Order ID
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Name is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.recipient_name).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Company Name is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.company_name).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed Street Address is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.street_address).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed City is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.city).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed State is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.state).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed Zip Plus 4 Code is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_plus_4).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Cleansed Zip Code is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.zip_code).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Phone is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.phone.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Ship-To Email is (.*)$/ do |expectation|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "expect order details form is present"
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.email.text).to eql expectation
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To to ambiguous address$/ do |table|
+  step "expect order details form is present"
   ambiguous_address = test_helper.format_address table.hashes.first
   stamps.orders.order_details.ship_to.domestic.set_ambiguous ambiguous_address
 end
@@ -438,16 +446,14 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Phone to (.*)$/ do |phone|
   test_param[:phone] = (phone.to_s.strip.downcase.include?('random'))?(test_helper.random_phone_number):phone
-  stamps.orders.order_details.ship_to.domestic.show_address
-  begin
-    stamps.orders.order_details.ship_to.domestic.phone.set test_param[:phone]
-  end unless test_param[:phone].length == 0
+  step "show order details form ship-to fields"
+  stamps.orders.order_details.ship_to.domestic.phone.set(test_param[:phone]) unless test_param[:phone].length == 0
   step "Save Order Details data"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Email to (.*)$/ do |email|
   test_param[:email] = (email.to_s.strip.downcase.include?('random'))?(test_helper.random_email):email
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   begin
     stamps.orders.order_details.ship_to.domestic.email.set test_param[:email]
   end unless test_param[:email].length == 0
@@ -520,12 +526,12 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Reference Number to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Company is (.*)$/ do |str|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include str
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Ship-To Name is (.*)$/ do |str|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   expect(stamps.orders.order_details.ship_to.domestic.textarea.text).to include str
 end
 

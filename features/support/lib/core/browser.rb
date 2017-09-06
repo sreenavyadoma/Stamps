@@ -226,7 +226,7 @@ module Stamps
         element
       end
 
-      def set(str, iteration=3)
+      def set(str, iteration=1)
         iteration.to_i.times do
           begin
             clear

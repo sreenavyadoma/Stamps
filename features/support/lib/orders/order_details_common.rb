@@ -112,11 +112,6 @@ module Stamps
             else
               expect([:single_order, :multi_order_dom, :multi_order_int]).to include(form_type)
           end
-          @blur_element = Stamps::Orders::Details::BlurOutElement.new(param)
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def select(str)

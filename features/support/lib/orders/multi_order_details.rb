@@ -43,7 +43,6 @@ module Stamps
           @dropdown = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(7)>div>div>div>div[id^=combo-][id$=bodyEl]>div>div[id$=picker]")
           @decrement_trigger = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
-          @blur_element = BlurOutElement.new(param) # This blur out element is for single order details form. Must create a blur out element for multi order details
         end
 
         def text
@@ -53,10 +52,6 @@ module Stamps
         def value
           text.to_f if checked?
           0
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def set(value)
@@ -85,20 +80,15 @@ module Stamps
       end
 
       class MultiOrderDetailsTracking < Browser::StampsModal
-        attr_reader :textbox, :dropdown, :blur_element
+        attr_reader :textbox, :dropdown
         def initialize(param)
           super(param)
           @textbox = StampsTextbox.new browser.text_field(name: 'Tracking')
           @dropdown = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
-          @blur_element = BlurOutElement.new(param)
         end
 
         def present?
           textbox.present?
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def tracking_selection(selection)

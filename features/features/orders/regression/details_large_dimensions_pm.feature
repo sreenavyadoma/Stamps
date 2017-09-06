@@ -8,6 +8,7 @@ Feature: Priority Mail and Large Dimensions
   @details_large_dimensions_pm
   Scenario: Priority Mail and Large Dimensions
     * add new order
+    * expect Order Details form service is an empty string
     * set Order Details form Ship-To to random address in zone 8
     * set Order Details form Ounces to 2
     * set Order Details form Pounds to 1
@@ -19,7 +20,6 @@ Feature: Priority Mail and Large Dimensions
     * blur out on Order Details form
     * blur out on Order Details form
     * expect Order Details form Dimensions are hidden
-    * expect Order Details form service is an empty string
     * set Order Details form service to PM Package
     * blur out on Order Details form
     * set Order Details form Length to 1

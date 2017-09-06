@@ -22,7 +22,7 @@ Feature:  Basic Search
     # Search for new order
     Then check Orders Grid for cached Order ID
     Then search filtered Orders for cached Order ID
-    Then Filter Panel: Search Results should be present
+    Then expect Filter Panel search results tab is present
     Then expect Filter Panel search result count is 1
 
     #Then check Orders Grid for cached Order ID
@@ -30,8 +30,8 @@ Feature:  Basic Search
     Then expect Order Details form Order ID is the same as saved Order ID
 
     Then expect Filter Panel search result count is greater than 0
-    Then Filter Panel: Remove search results
-    Then Filter Panel: Search Results should not be present
+    Then remove Filter Panel search results tab
+    Then expect Filter Panel search results tab is not present
 
     Then Sign out
 

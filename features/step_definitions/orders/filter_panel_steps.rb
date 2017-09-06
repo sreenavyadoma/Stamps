@@ -1,14 +1,4 @@
 
-Then /^[Cc]lick Filter Panel Awaiting Shipment tab$/ do
-  test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-  stamps.orders.filter_panel.awaiting_shipment.select
-end
-
-Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
-  30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
-  expect(stamps.orders.filter_panel.selected_filter).to eql expectation
-end
-
 Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
   expect(['Shipped', 'Canceled', 'On Hold', 'Awaiting Shipment']).to include(str)
   case str
@@ -24,6 +14,11 @@ Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
       #ignore
   end
   step "expect selected filter is #{str}"
+end
+
+Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
+  30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
+  expect(stamps.orders.filter_panel.selected_filter).to eql expectation
 end
 
 Then /^[Ee]xpect saved Order ID exist in the selected filter$/ do

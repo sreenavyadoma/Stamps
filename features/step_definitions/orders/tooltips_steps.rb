@@ -100,8 +100,7 @@ Then /^[Oo]n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Address data error tooltip is \"(.*)\"$/ do |expectation|
-  #test_config.logger.step "expect Order Details form Domestic Address data error tooltip is #{expectation}"
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   textbox = stamps.orders.order_details.ship_to.domestic.textarea
   20.times do
     textbox.double_click
@@ -115,14 +114,11 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Address data error tooltip is
       break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
-  data_error_tooltip = textbox.data_error_qtip
-  #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
-  expect(data_error_tooltip).to include(expectation)
+  expect(textbox.data_error_qtip).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Domestic Email data error tooltip is \"(.*)\"$/ do |expectation|
-  #test_config.logger.step "expect Order Details form Domestic Email data error tooltip is #{expectation}"
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   textbox = stamps.orders.order_details.ship_to.domestic.email
   20.times do
     textbox.double_click

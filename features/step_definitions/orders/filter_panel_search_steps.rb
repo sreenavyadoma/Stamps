@@ -12,18 +12,19 @@ Then /^search filtered Orders for cached Ship-To Company name$/ do
 end
 
 Then /^search filtered Orders for cached Ship-To email$/ do
-  step "search Orders for #{test_param[:email]} expecting to find at least 1"
+  step "search Orders for #{test_param[:email].split('@').first} expecting to find at least 1"
 end
 
 Then /^search Orders for (.*) expecting to find at least (\d+)$/ do |search_str, count|
   begin
-    30.times do
+    15.times do
       step "set Filter Panel Search textbox to #{search_str}"
+      sleep(1)
       step "click Filter Panel Search button"
       sleep(2)
       break if stamps.orders.filter_panel.search_orders.search_results.count >= count.to_i
     end
-    expect(stamps.orders.filter_panel.search_orders.search_results.present?).to be(true)
+    expect(stamps.orders.filter_panel.search_orders.search_results.present?).to be(true), "Couldn't find #{search_str} in Orders Grid"
   end unless search_str.nil? || search_str.size == 0
 
 end
@@ -48,17 +49,17 @@ end
 
 
 
-Then /^Filter Panel: Search Results should be present$/ do
+Then /^expect Filter Panel search results tab is present$/ do
   sleep 1
   expect(stamps.orders.filter_panel.search_results.present?).to be(true)
 end
 
-Then /^Filter Panel: Search Results should not be present$/ do
+Then /^expect Filter Panel search results tab is not present$/ do
   sleep 1
   expect(stamps.orders.filter_panel.search_results.present?).not_to be(true)
 end
 
-Then /^Filter Panel: Remove search results$/ do
+Then /^remove Filter Panel search results tab$/ do
   stamps.orders.filter_panel.search_results.remove
   sleep(0.5)
   stamps.orders.filter_panel.search_results.wait_while_present(3)

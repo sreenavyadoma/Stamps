@@ -1,166 +1,83 @@
 module Stamps
   module Orders
     module Details
-      class BlurOutElement < Browser::StampsModal
-        attr_reader :service_element, :weight_element
-
-        def initialize(param)
-          super
-          @service_element = StampsElement.new(browser.label(text: 'Service:'))
-          @weight_element = StampsElement.new(browser.label(text: 'Weight:'))
-        end
-
-        def blur_out
-          2.times do
-            service_element.click
-            weight_element.double_click
-            weight_element.click
-            service_element.double_click
+      module BlurOutElement
+        def blur_out(count=1)
+          @service_blur_out_element = StampsElement.new(browser.label(text: 'Service:')) if @service_blur_out_element.nil? || !@service_blur_out_element.present?
+          @weight_blur_out_element = StampsElement.new(browser.label(text: 'Weight:')) if @weight_blur_out_element.nil? || !@weight_blur_out_element.present?
+          count.to_i.times do
+            @service_blur_out_element.click
+            @weight_blur_out_element.double_click
+            @weight_blur_out_element.click
+            @service_blur_out_element.double_click
           end
         end
       end
-
-      class ShipToCountry < Browser::StampsModal
-        def present?
-          dropdown.present?
-        end
-
-        def show_address
-          StampsElement.new(browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")).click_while_present
-        end
-
-        def textbox
-          show_address
-          text_field = nil
-          text_fields = browser.text_fields(css: "input[name=ShipCountryCode]")
-          50.times do
-            text_fields.each do |element|
-              sleep(0.25)
-              text_field = element if element.present?
-            end
-            break if !text_field.nil? && text_field.present?
-          end
-          text_field.should_not be nil
-          expect(text_field.present?).to be(true)
-          StampsTextBox.new(text_field)
-        end
-
-        def  dropdown
-          dd = nil
-          dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
-          int_dd = browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
-          10.times do
-            if dom_dd.present?
-              dd = dom_dd
-              break
-            elsif int_dd.present?
-              dd = int_dd
-              break
-            end
-            sleep(0.35)
-          end
-          dd.should_not be nil
-          expect(dd.present?).to be(true)
-          StampsElement.new(dd)
-        end
-
-        def selected?(country)
-          textbox.text == country
-        end
-
-        def select(country)
-          show_address
-          dd = dropdown
-          text_field = textbox
-          logger.info "Select Country #{country}"
-          begin
-            dd.click
-            sleep(0.35)
-            dd.click
-            dd.click
-            lis = browser.lis(text: country)
-            expect(lis.size).to be_between(1, 2).inclusive
-
-            case lis.size
-              when 1
-                selection = StampsElement.new(lis[0])
-              when 2
-                if lis[0].text.size > 0
-                  selection = StampsElement.new(lis[0])
-                else
-                  selection = StampsElement.new(lis[1])
-                end
-              else
-                expect(lis.size).to be_between(1, 2).inclusive
-            end
-
-            10.times do
-              break if text_field.text.include?(country)
-              dd.click unless selection.present?
-              selection.scroll_into_view
-              selection.scroll_into_view
-              selection.click if selection.present?
-              logger.info "Selection #{text_field.text} - #{(text_field.text.include? country)?"was selected": "not selected"}"
-              break if text_field.text.include?(country)
-              break if text_field.text.include?(country)
-            end
-            logger.info "#{country} selected."
-            expect(text_field.text).to include(country)
-          end unless text_field.text.include?(country)
-        end
-      end
-
 
       class ShipToInternational < Browser::StampsModal
-        attr_reader :name, :company, :address_1, :address_2, :city, :phone, :province, :postal_code, :email, :auto_suggest, :blur_element, :less_link
-
-        def initialize(param)
-          super
-          @name = StampsTextBox.new(browser.text_field(name: "ShipName"))
-          @company = StampsTextBox.new(browser.text_field(name: "ShipCompany"))
-          @address_1 = StampsTextBox.new(browser.text_field(name: "ShipStreet1"))
-          @address_2 = StampsTextBox.new(browser.text_field(name: "ShipStreet2"))
-          @city = StampsTextBox.new(browser.text_field(name: "ShipCity"))
-          @phone = StampsTextBox.new(browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=ShipPhone]"))
-          @province = StampsTextBox.new(browser.text_field(name: "ShipState"))
-          @postal_code = StampsTextBox.new(browser.text_field(name: "ShipPostalCode"))
-          @email = StampsTextBox.new(browser.text_field(css: "div#shiptoview-international-targetEl>div>div>div>div>div>div>div>input[name=BuyerEmail]"))
-          @auto_suggest = AutoSuggestInternational.new(param)
-          @blur_element = BlurOutElement.new(param)
-          @less_link = StampsElement.new(browser.span(css: "div[id*=international]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]"))
-        end
-
-        def blur_out
-          blur_element.blur_out
-        end
-
+        include BlurOutElement
         def present?
           name.present?
         end
-      end
 
-      class AutoSuggestPopUp < Browser::StampsModal
-        def present?
-          name_fields[0].present?
+        def auto_suggest
+          @auto_suggest = AutoSuggestInternational.new(param) if @auto_suggest.nil? || !@auto_suggest.present?
         end
 
-        def size
-          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
+        def name
+          @name = StampsTextBox.new(browser.text_field(name: "ShipName")) if @name.nil? || !@name.present?
+          @name
         end
 
-        def select number
-          selection = StampsElement.new(name_fields[number.to_i-1])
-          selection.click
-          selection.click
-          selection.click
+        def company
+          @company = StampsTextBox.new(browser.text_field(name: "ShipCompany")) if @company.nil? || !@company.present?
+          @company
         end
 
-        def name_fields
-          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
+        def address_1
+          @address_1 = StampsTextBox.new(browser.text_field(name: "ShipStreet1")) if @address_1.nil? || !@address_1.present?
+          @address_1
         end
 
-        def address_fields
-          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
+        def address_2
+          @address_2 = StampsTextBox.new(browser.text_field(name: "ShipStreet2")) if @address_2.nil? || !@address_2.present?
+          @address_2
+        end
+
+        def email
+          @email = StampsTextBox.new(browser.text_field(css: "[id*=shiptoview-international] [name=BuyerEmail]")) if @email.nil? || !@email.present?
+          @email
+        end
+
+        def city
+          @city = StampsTextBox.new(browser.text_field(name: "ShipCity")) if @city.nil? || !@city.present?
+          @city
+        end
+
+        def phone
+          @phone = StampsTextBox.new(browser.text_field(css: "[id*=shiptoview-international] [name=ShipPhone]")) if @phone.nil? || !@phone.present?
+          @phone
+        end
+
+        def postal_code
+          @postal_code = StampsTextBox.new(browser.text_field(name: "ShipPostalCode")) if @xxxx.nil? || !@xxxx.present?
+        end
+
+        def province
+          @province = StampsTextBox.new(browser.text_field(name: "ShipState")) if @xxxx.nil? || !@xxxx.present?
+        end
+
+        def less_link
+          @less_link = StampsElement.new browser.span(css: "[id*=shiptoview-international] [class*=sdc-icon-up-arrow]") if @less_link.nil? || !@less_link.present?
+          @less_link
+        end
+
+        def hide_ship_to_details
+          20.times do
+            break unless less_link.present?
+            less_link.click
+            sleep(0.05)
+          end
         end
       end
 
@@ -192,6 +109,31 @@ module Stamps
         end
       end
 
+      class AutoSuggestPopUp < Browser::StampsModal
+        def present?
+          name_fields[0].present?
+        end
+
+        def size
+          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]").size
+        end
+
+        def select number
+          selection = StampsElement.new(name_fields[number.to_i-1])
+          selection.click
+          selection.click
+          selection.click
+        end
+
+        def name_fields
+          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=main]")
+        end
+
+        def address_fields
+          browser.lis(css: "ul[class*='x-list-plain x-combo-list-ul']>li>div[class*=sub]")
+        end
+      end
+
       class AddressNotFound < Browser::StampsModal
         attr_reader :window_title
 
@@ -208,7 +150,7 @@ module Stamps
           window_title.wait_until_present(*args)
         end
 
-        def row number
+        def row(number)
           row = number.to_i<=0?0:number.to_i-1
           checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
 
@@ -343,60 +285,158 @@ module Stamps
         end
       end
 
+      module ShowShipToDetails
+        def show_ship_to_details
+          @show_ship_to_details_link = StampsElement.new(browser.span(css: "[id*=shipto] [class*=down]")) if @show_ship_to_details_link.nil? || !@show_ship_to_details_link.present?
+          15.times do
+            break unless @show_ship_to_details_link.present?
+            @show_ship_to_details_link.click
+            sleep(0.05)
+          end
+        end
+      end
+
+      class ShipToCountry < Browser::StampsModal
+        include ShowShipToDetails
+
+        def dropdown
+          dd = nil
+          dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
+          int_dd = browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
+          10.times do
+            if dom_dd.present?
+              dd = dom_dd
+              break
+            elsif int_dd.present?
+              dd = int_dd
+              break
+            end
+            sleep(0.35)
+          end
+          dd.should_not be nil
+          expect(dd.present?).to be(true), "Ship-To Country drop-down is not present"
+          StampsElement.new(dd)
+        end
+
+        def present?
+          dropdown.present?
+        end
+
+        def textbox
+          show_ship_to_details
+          text_field = nil
+          text_fields = browser.text_fields(name: "ShipCountryCode")
+          50.times do
+            text_fields.each do |element|
+              sleep(0.25)
+              text_field = element if element.present?
+            end
+            break if !text_field.nil? && text_field.present?
+          end
+          expect(text_field.present?).to be(true), "Ship-To Country is not present."
+          StampsTextBox.new(text_field)
+        end
+
+        def selected?(country)
+          textbox.text == country
+        end
+
+        def select(country)
+          show_ship_to_details
+          dd = dropdown
+          text_field = textbox
+          logger.info "Select Country #{country}"
+          begin
+            dd.click
+            sleep(0.35)
+            dd.click
+            dd.click
+            lis = browser.lis(text: country)
+            expect(lis.size).to be_between(1, 2).inclusive
+
+            case lis.size
+              when 1
+                selection = StampsElement.new(lis[0])
+              when 2
+                if lis[0].text.size > 0
+                  selection = StampsElement.new(lis[0])
+                else
+                  selection = StampsElement.new(lis[1])
+                end
+              else
+                expect(lis.size).to be_between(1, 2).inclusive
+            end
+
+            10.times do
+              break if text_field.text.include?(country)
+              dd.click unless selection.present?
+              selection.scroll_into_view
+              selection.scroll_into_view
+              selection.click if selection.present?
+              logger.info "Selection #{text_field.text} - #{(text_field.text.include? country)?"was selected": "not selected"}"
+              break if text_field.text.include?(country)
+              break if text_field.text.include?(country)
+            end
+            logger.info "#{country} selected."
+            expect(text_field.text).to include(country)
+          end unless text_field.text.include?(country)
+        end
+      end
+
       class ShipToDomestic < Browser::StampsModal
-        attr_reader :ambiguous, :auto_suggest, :less_link, :blur_element,
-                    :address_not_found
+        include ShowShipToDetails, BlurOutElement
+
+        attr_reader :ambiguous, :auto_suggest, :address_not_found
 
         def initialize(param)
           super
-          @less_link = StampsElement.new browser.span(css: "div[id*=domestic]>div>div>div>div>div>div>a[class*=link]>span>span>span[id$=btnInnerEl]")
-          @blur_element = BlurOutElement.new(param)
           @address_not_found = AddressNotFound.new(param)
-          @textarea = ShipToTextArea.new browser.textarea(name: "freeFormAddress")
-          @email = StampsTextBox.new browser.text_field(name: 'BuyerEmail')
-          @phone = StampsTextBox.new browser.text_field(name: "ShipPhone")
-
           @ambiguous = AmbiguousAddress.new(param)
           @auto_suggest = AutoSuggestDomestic.new(param, @textarea)
-        end
-
-        def textarea
-          show_address
-          @textarea
-        end
-
-        def email
-          show_address
-          @email
-        end
-
-        def phone
-          show_address
-          @phone
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def present?
           dom_textarea.present?
         end
 
-        def less
-          less_link.click_while_present
+        def less_link
+          @less_link = StampsElement.new browser.span(css: "[id=shiptoview-domestic-targetEl] [class*=sdc-icon-up-arrow]") if @less_link.nil? || !@less_link.present?
+          @less_link
         end
 
-        def show_address
-          StampsElement.new(browser.span(css: "div[id*=shipto]>a>span>span>span[class*=down]")).click_while_present
+        def hide_ship_to_details
+          10.times do
+            break unless less_link.present?
+            less_link.click
+            sleep(0.05)
+          end
         end
 
-        def set address
+        def textarea
+          show_ship_to_details
+          @textarea = ShipToTextArea.new browser.textarea(name: "freeFormAddress") if @textarea.nil? || !@textarea.present?
+          @textarea
+        end
+
+        def email
+          show_ship_to_details
+          @email = StampsTextBox.new browser.text_field(name: 'BuyerEmail') if @email.nil? || !@email.present?
+          @email
+        end
+
+        def phone
+          show_ship_to_details
+          @phone = StampsTextBox.new browser.text_field(name: "ShipPhone") if @phone.nil? || !@phone.present?
+          @phone
+        end
+
+        def set(address)
           10.times do
             begin
               textarea.set(address)
               15.times do
-                blur_out
+                blur_out(3)
+                textarea.click
                 break if less_link.present?
               end
               break if less_link.present?
@@ -410,7 +450,7 @@ module Stamps
           expect(textarea.text).to include address.split(" ").last
         end
 
-        def set_ambiguous address
+        def set_ambiguous(address)
           10.times do
             textarea.set address
             blur_out
@@ -507,7 +547,9 @@ module Stamps
       end
 
       class DetailsInsureFor < Browser::StampsModal
-        attr_reader :checkbox, :textbox, :increment_trigger, :decrement_trigger, :terms, :blur_element
+        include BlurOutElement
+
+        attr_reader :checkbox, :textbox, :increment_trigger, :decrement_trigger, :terms
 
         def initialize(param)
           super
@@ -519,7 +561,6 @@ module Stamps
           verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
           @checkbox = StampsCheckBox.new(field, verify, "class", "checked")
           @terms = InsuranceTermsConditions.new(param)
-          @blur_element = BlurOutElement.new(param)
         end
 
         def checked?
@@ -541,10 +582,6 @@ module Stamps
         def value
           text.to_f if checked?
           0
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def set(value)
@@ -593,21 +630,16 @@ module Stamps
       end
 
       class DetailsTracking < Browser::StampsModal
-        attr_reader :textbox, :dropdown, :blur_element, :cost_label
+        attr_reader :textbox, :dropdown, :cost_label
         def initialize(param)
           super
           @textbox = StampsTextBox.new browser.text_field(name: 'Tracking')
           @dropdown = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
-          @blur_element = BlurOutElement.new(param)
           @cost_label = StampsElement.new(browser.label(css: "label[class*='selected_tracking_cost']"))
         end
 
         def present?
           textbox.present?
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def tracking_selection(selection)
@@ -912,8 +944,9 @@ module Stamps
       end
 
       class SingleOrderDetails < Browser::StampsModal
+        include BlurOutElement
         attr_reader :toolbar, :ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
-                    :footer, :customs, :items_ordered, :reference_no, :collapsed_details, :blur_element
+                    :footer, :customs, :items_ordered, :reference_no, :collapsed_details
 
         def initialize(param)
           super
@@ -928,14 +961,9 @@ module Stamps
           @dimensions = OrderDetailsDimensions.new(param)
           @items_ordered = ItemsOrderedSection.new(param)
           @customs = OrdersCustomsFields.new(param)
-          @blur_element = BlurOutElement.new(param)
           @body = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]"))
           @collapsed_details = DetailsCollapsible.new(param)
           @footer = DetailsFooter.new(param)
-        end
-
-        def blur_out
-          blur_element.blur_out
         end
 
         def present?

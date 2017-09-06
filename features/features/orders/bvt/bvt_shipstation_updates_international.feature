@@ -21,6 +21,10 @@ Feature:  Update International Orders to ShipStation
     Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
     Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description random string
 
+    Then expect Orders Grid service is Priority Mail
+    Then expect Orders Grid service is PM Package
+    Then expect Orders Grid service is correct
+
     # Edit the customs form
     Then click Order Details form Edit Form button
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
