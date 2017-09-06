@@ -21,8 +21,8 @@ Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
   expect(stamps.orders.filter_panel.selected_filter).to eql expectation
 end
 
-Then /^[Ee]xpect saved Order ID exist in the selected filter$/ do
-  50.times do
+Then /^[Ee]xpect cached Order ID exist in the selected filter$/ do
+  15.times do
     sleep(0.10)
     break if stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0]) > 0
   end

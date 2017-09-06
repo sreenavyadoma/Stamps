@@ -326,7 +326,7 @@ module Stamps
           show_ship_to_details
           text_field = nil
           text_fields = browser.text_fields(name: "ShipCountryCode")
-          50.times do
+          20.times do
             text_fields.each do |element|
               sleep(0.25)
               text_field = element if element.present?

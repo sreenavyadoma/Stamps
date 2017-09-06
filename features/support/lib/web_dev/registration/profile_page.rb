@@ -7,7 +7,7 @@ module Stamps
         end
 
         def promo_code
-          50.times do
+          20.times do
             @promo_code = RegProfilePromoCode.new(browser.text_field(id: 'promoCodeHidden'))
             alt_promo_code = StampsTextBox.new(browser.text_field(id: 'promoCode'))
             @promo_code = alt_promo_code if alt_promo_code.present?

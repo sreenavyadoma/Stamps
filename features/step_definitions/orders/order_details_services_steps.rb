@@ -2,7 +2,7 @@
 Then /^[Ss]et [Oo]rder [Dd]etails form service to (.*)$/ do |service|
   step "expect order details form is present"
   stamps.orders.order_details.service.select(service)
-  50.times do
+  20.times do
     step "blur out on Order Details form"
     sleep(0.015)
     break if stamps.orders.order_details.service.cost > 0

@@ -375,7 +375,7 @@ module Stamps
       end
 
       def check
-        50.times do
+        20.times do
           break if checked?
           checkbox.click
         end
@@ -384,7 +384,7 @@ module Stamps
 
       def uncheck
         if checked?
-          50.times do
+          20.times do
             checkbox.click
             break unless checked?
           end
@@ -403,7 +403,7 @@ module Stamps
       end
 
       def select
-        50.times do
+        20.times do
           break if selected?
           radio.click
         end

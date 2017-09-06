@@ -23,7 +23,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID
 end
 
 Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid row (\d+)$/ do |row|
-  30.times { sleep(0.25); break if stamps.orders.orders_grid.column.order_id.row(row) == test_param[:order_id][0] }
+  15.times { sleep(0.25); break if stamps.orders.orders_grid.column.order_id.row(row) == test_param[:order_id][0] }
   expect(stamps.orders.orders_grid.column.order_id.row(row)).to eql test_param[:order_id][0]
 end
 
