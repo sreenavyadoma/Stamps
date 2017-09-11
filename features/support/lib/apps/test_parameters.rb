@@ -22,6 +22,7 @@ module TestParameters
     if @modal_param.nil?
       @modal_param ||= ModalParam.new
       @modal_param.browser_sym = test_config.browser_sym
+      @modal_param.scenario_name = test_config.scenario_name
       @modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
       @modal_param.web_app = (ENV['WEB_APP'].downcase).to_sym
