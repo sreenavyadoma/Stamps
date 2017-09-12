@@ -2,6 +2,24 @@
 module Stamps
   module Mail
     module PrintModal
+      class InstallStampsConnect < Browser::StampsModal
+        def window_title
+          StampsElement.new(browser.divs(text: 'Install Stamps.com Connect').first)
+        end
+
+        def present?
+          window_title.present?
+        end
+
+        def body
+          StampsElement.new(browser.div(css: "[class*=x-window-default-closable] [id^=dialoguemodal-][class=x-autocontainer-innerCt]"))
+        end
+
+        def install_stamps_connect
+
+        end
+      end
+
       class MailPrinterComboBox < Browser::StampsModal
         attr_reader :textbox, :dropdown
 
@@ -90,8 +108,6 @@ module Stamps
           wait_until_present(8)
           expect(present?).to be(true), "Print button on Mail Print Modal is not present."
           5.times do
-            print_button.click
-            print_button.click
             print_button.click
             sleep(0.75)
             break unless print_button.present?
