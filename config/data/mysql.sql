@@ -479,7 +479,6 @@ INSERT INTO user_credentials (id, username, password, test_env, test_tag, in_use
 
 # PURCHASING CC
 INSERT INTO user_credentials (id, username, password, test_env, test_tag, in_use, in_use_date, in_use_time, user_status, user_role, comment, date_added) VALUES (NULL, 'cct3kmu68', 'pass111', 'qacc', 'purchasing', 0, NOW(), NOW(), 'Active', 'Meter Admin, Meter User', NULL, NOW());
-
 INSERT INTO user_credentials (id, username, password, test_env, test_tag, in_use, in_use_date, in_use_time, user_status, user_role, comment, date_added) VALUES (NULL, 'cctp4k23p69s2', 'pass111', 'qacc', 'purchasing', 0, NOW(), NOW(), 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, test_env, test_tag, in_use, in_use_date, in_use_time, user_status, user_role, comment, date_added) VALUES (NULL, 'ccn3iqjkt4ow6c', 'pass111', 'qacc', 'purchasing', 0, NOW(), NOW(), 'Active', 'Meter Admin, Meter User', NULL, NOW());
 INSERT INTO user_credentials (id, username, password, test_env, test_tag, in_use, in_use_date, in_use_time, user_status, user_role, comment, date_added) VALUES (NULL, 'ccpamng75', 'pass111', 'qacc', 'purchasing', 0, NOW(), NOW(), 'Active', 'Meter Admin, Meter User', NULL, NOW());

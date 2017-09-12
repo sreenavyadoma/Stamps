@@ -395,7 +395,7 @@ module Stamps
           manage_printing_options_modal.show_all if browser.lis(css: "li[class*=x-boundlist-item]").size < 20
         end
 
-        def print_on(str)
+        def print_on_selection(str)
           dropdown.wait_until_present(4)
           dropdown.click
           param.print_media = print_media(str)
