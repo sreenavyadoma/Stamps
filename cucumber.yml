@@ -199,7 +199,7 @@ healthcheck: --tags @healthcheck --guess DEBUG=false JENKINS=true HEALTHCHECK=tr
 authentication: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-whats_new: --tags @whats_new --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+whats_new: --tags @whats_new --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 Registration: --tags @Registration --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration 
 pam: --tags @pam --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=pam
