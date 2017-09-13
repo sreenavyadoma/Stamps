@@ -44,6 +44,7 @@ Feature: Profile page validation theme_1632
     Then expect Profile page promo code textbox exists
     Then set Profile page promo code to PR
     Then expect Profile page CONTINUE button exists
+    Then continue to Membership page
 
     # Validate tooltips for various values
     # Validate Email tooltips
