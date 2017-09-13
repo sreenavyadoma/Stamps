@@ -22,7 +22,7 @@ Then /^[Ee]xpect Print form Print On Field is present$/ do
 end
 
 Then /^[Ee]xpect Print form Ship From Field is present$/ do
-  expect(stamps.mail.print_form.ship_from.textbox.present?).to be(true)
+  expect(stamps.mail.print_form.mail_from.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Ship To Link is present$/ do
