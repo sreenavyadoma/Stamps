@@ -3,6 +3,11 @@ module Stamps
 
     class StampsElement
       attr_reader :element, :browser
+      alias_method :checkbox, :element
+      alias_method :radio, :element
+      alias_method :textbox, :element
+      alias_method :input, :element
+
       def initialize(element)
         @element = element
         @browser = element.browser
@@ -124,7 +129,7 @@ module Stamps
         end
 
         begin
-          return attribute_value('value') if element.present? && !attribute_value('value').nil? && attribute_value('value').size > 0
+          return attribute_value('value') if truthy? && !attribute_value('value').nil? && attribute_value('value').size > 0
         rescue
           #ignore
         end
@@ -198,10 +203,6 @@ module Stamps
     end
 
     class StampsWatirInput < StampsElement
-      def input
-        element
-      end
-
       def checked?
         begin
           return input.checked?
@@ -222,10 +223,6 @@ module Stamps
     end
 
     class StampsTextBox < StampsWatirInput
-      def textbox
-        element
-      end
-
       def set(str, iteration=1)
         iteration.to_i.times do
           begin
@@ -261,10 +258,6 @@ module Stamps
     end
 
     class StampsWatirRadio < StampsElement
-      def radio
-        element
-      end
-
       def set
         begin
           radio.set
@@ -285,10 +278,6 @@ module Stamps
     end
 
     class StampsWatirCheckBox < StampsElement
-      def checkbox
-        element
-      end
-
       def check
         5.times do
           set

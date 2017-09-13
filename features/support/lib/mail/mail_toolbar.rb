@@ -55,7 +55,7 @@ module Stamps
       def open_window(window)
         return window if window.present?
 
-        expect(print_button.present?).to be(true)
+        expect(print_button.present?).to be(true), "Print button is not present."
         30.times do
           begin
             print_button.click

@@ -2,6 +2,7 @@
 module Stamps
   module Mail
     class WebMail < Browser::StampsModal
+      include PrintFormPanel::PrintFormBlurOut
       attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_media
 
       def initialize(param)
@@ -12,6 +13,9 @@ module Stamps
       end
 
       def print_on(selection)
+        print_media.wait_until_present(5)
+        blur_out
+        expect(print_media.present?).to be(true), "Print-on drop-down is not present."
         param.print_media = print_media.print_on_selection(selection)
       end
 

@@ -373,6 +373,10 @@ module Stamps
           textbox.present?
         end
 
+        def wait_until_present(*args)
+          textbox.wait_until_present(*args)
+        end
+
         def manage_printing_options_modal
           # Open Mange Print Options modal
           begin

@@ -21,15 +21,15 @@ module Stamps
       end
 
       class MailPrinterComboBox < Browser::StampsModal
-        attr_reader :textbox, :dropdown
-
-        def initialize(param)
-          super
-          @textbox = StampsTextBox.new(browser.text_field(name: "printers"))
-          @dropdown = StampsElement.new(browser.div(css: "div[id$=-body]>div[id^=printwindow-][id$=-innerCt]>div[id^=printwindow-][id$=-targetEl]>div>div>div>div>div>div>div[class*=x-form-arrow-trigger-default]"))
+        def dropdown
+          StampsElement.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]"))
         end
 
-        def select(printer)
+        def textbox
+          StampsTextBox.new(browser.text_field(name: "printers"))
+        end
+
+        def select_printer(printer)
           begin
             case printer.downcase
               when /fac/
@@ -50,13 +50,15 @@ module Stamps
                 expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
             end
 
+            return if textbox.text.include?(printer)
+
             10.times do
               dropdown.click unless selection.present?
               selection.click
               sleep(0.15)
               break if textbox.text.include?(printer)
             end
-            expect(textbox.text).to include(printer)
+            expect(textbox.text).to include(printer), "Unable to select Printer #{printer}"
           end unless textbox.text.include?(printer)
         end
       end
@@ -82,11 +84,11 @@ module Stamps
       end
 
       class MailPrintModal < Browser::StampsModal
-        attr_accessor :paper_tray, :printer, :print_button, :reprint_link
+        attr_accessor :paper_tray, :mail_printer, :print_button, :reprint_link
 
         def initialize(param)
           super
-          @printer = MailPrinterComboBox.new(param)
+          @mail_printer = MailPrinterComboBox.new(param)
           @paper_tray = MailPaperTrayComboBox.new(param)
           @print_button = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
           @reprint_link = StampsElement.new(browser.a(text: 'Reprint'))
