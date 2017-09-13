@@ -80,8 +80,9 @@ mail_print_media:
   Certified Mail Label - SDC-3910: iconCertified,14
   Certified Mail Label - SDC-3930: iconCertified,15
   Certified Mail Label - SDC-3810: iconCertified,16
-  Roll 4x6: iconRoll,17
-  Roll 418x614: iconRoll,18
+  Certified Mail Label - SDC-3830: iconCertified,17
+  Roll 4x6: iconRoll,18
+  Roll 418x614: iconRoll,19
 
 mail_services:
   First Class: sdc-servicedroplist-fcletter
