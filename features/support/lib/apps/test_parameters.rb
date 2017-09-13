@@ -1,16 +1,28 @@
 module TestParameters
   def test_param
-    @test_data ||= Hash.new
-    @test_data[:customs_associated_items] ||= Hash.new
-    @test_data[:details_associated_items] ||= Hash.new
-    @test_data[:order_id] ||= Hash.new
-    @test_data
+    if @test_param.nil?
+      @test_param ||= Hash.new
+      @test_param[:customs_associated_items] ||= Hash.new
+      @test_param[:details_associated_items] ||= Hash.new
+      @test_param[:order_id] ||= Hash.new
+      @test_param[:service_look_up] ||= Hash.new
+      @test_param[:service_look_up]['FCM'] = 'First-Class Mail'
+      @test_param[:service_look_up]['PM'] = 'Priority Mail'
+      @test_param[:service_look_up]['PME'] = 'Priority Mail Express'
+      @test_param[:service_look_up]['MM'] = 'Media Mail'
+      @test_param[:service_look_up]['PSG'] = 'Parcel Select Ground'
+      @test_param[:service_look_up]['FCMI'] = 'First-Class Mail International'
+      @test_param[:service_look_up]['PMI'] = 'Priority Mail International'
+      @test_param[:service_look_up]['PMEI'] = 'Priority Mail Express International'
+    end
+    @test_param
   end
 
   def modal_param
     if @modal_param.nil?
       @modal_param ||= ModalParam.new
       @modal_param.browser_sym = test_config.browser_sym
+      @modal_param.scenario_name = test_config.scenario_name
       @modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
       @modal_param.web_app = (ENV['WEB_APP'].downcase).to_sym

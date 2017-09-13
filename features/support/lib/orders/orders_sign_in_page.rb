@@ -152,21 +152,15 @@ module Stamps
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
 
-                  50.times do
-                    logger.message loading_orders.text
-                    sleep(0.20)
-                    break unless loading_orders.present?
-                  end
-
-                  50.times do
-                    break unless loading_orders.present?
-                    logger.message loading_orders.text
-                    sleep(0.20)
-                  end
-
-                  50.times do
+                  20.times do
+                    sleep(0.05)
                     break unless invalid_username.present?
                     logger.message invalid_username.text
+                  end
+
+                  20.times do
+                    break unless loading_orders.present?
+                    logger.message loading_orders.text
                     sleep(0.20)
                   end
                 end

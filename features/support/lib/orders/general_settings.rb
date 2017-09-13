@@ -3,22 +3,22 @@ module Stamps
     module Settings
       #todo-rob re-work changes to Settings Fields tests
       class Pounds < Browser::StampsModal
-        attr_reader :text_box, :inc_bthn, :dec_btn
+        attr_reader :textbox, :inc_bthn, :dec_btn
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
+          @textbox = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-poundsnumberfield-inputEl'))
           @inc_bthn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=up]"))
           @dec_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-poundsnumberfield-trigger-spinner>div[class*=down]"))
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def set(value)
-          text_box.set(value)
-          logger.info "Pounds set to #{text_box.text}"
+          textbox.set(value)
+          logger.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -36,22 +36,22 @@ module Stamps
       end
 
       class Ounces < Browser::StampsModal
-        attr_reader :text_box, :inc_btn, :dec_btn
+        attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
+          @textbox = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-ouncesnumberfield-inputEl'))
           @inc_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=up]"))
           @dec_btn = StampsElement.new(browser.div(css: "div#sdc-resetfieldswin-ouncesnumberfield-trigger-spinner>div[class*=down]"))
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def set(value)
-          text_box.set(value)
-          logger.info "Pounds set to #{text_box.text}"
+          textbox.set(value)
+          logger.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -91,22 +91,22 @@ module Stamps
       end
 
       class Length < Browser::StampsModal
-        attr_reader :text_box, :inc_btn, :dec_btn
+        attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
+          @textbox = StampsTextBox.new(browser.text_field(name: 'sdc-resetfieldswin-lengthnumberfield-inputEl'))
           @inc_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=up]")
           @dec_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-lengthnumberfield-trigger-spinner>div[class*=down]")
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def set(value)
-          text_box.set(value)
-          logger.info "Pounds set to #{text_box.text}"
+          textbox.set(value)
+          logger.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -124,22 +124,22 @@ module Stamps
       end
 
       class Width < Browser::StampsModal
-        attr_reader :text_box, :inc_btn, :dec_btn
+        attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
+          @textbox = StampsTextBox.new(browser.text_field name: 'sdc-resetfieldswin-widthnumberfield-inputEl')
           @inc_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=up]")
           @dec_btn = StampsElement.new(browser.div css: "div#sdc-resetfieldswin-widthnumberfield-trigger-spinner>div[class*=down]")
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def set(value)
-          text_box.set(value)
-          logger.info "Pounds set to #{text_box.text}"
+          textbox.set(value)
+          logger.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -157,20 +157,20 @@ module Stamps
       end
 
       class Height < Browser::StampsModal
-        attr_reader :text_box
+        attr_reader :textbox
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
+          @textbox = StampsTextBox.new(browser.text_field name: 'sdc-resetfieldswin-heightnumberfield-inputEl')
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def set(value)
-          text_box.set(value)
-          logger.info "Pounds set to #{text_box.text}"
+          textbox.set(value)
+          logger.info "Pounds set to #{textbox.text}"
           expect(text).to eql value
         end
 
@@ -190,26 +190,26 @@ module Stamps
       end
 
       class SettingsLogoffDropDown < Browser::StampsModal
-        attr_reader :text_box, :drop_down
+        attr_reader :textbox, :dropdown
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
-          @drop_down = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
+          @textbox = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
+          @dropdown = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def select(selection)
           selection_label = StampsElement.new browser.li(text: selection)
           10.times do
-            break if text_box.text.include? selection
-            drop_down.click unless selection_label.present?
+            break if textbox.text.include? selection
+            dropdown.click unless selection_label.present?
             selection_label.click
           end
-          expect(text_box.text).to include(selection)
+          expect(textbox.text).to include(selection)
         end
 
         def five_min
@@ -238,26 +238,26 @@ module Stamps
       end
 
       class PostDateDropDown < Browser::StampsModal
-        attr_reader :text_box, :drop_down
+        attr_reader :textbox, :dropdown
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
-          @drop_down = StampsElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
+          @textbox = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div>input")
+          @dropdown = StampsElement.new browser.div css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(4)>div>div>div>div>div>div>div>div[id$=picker]"
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def select(selection)
           selection_label = StampsElement.new browser.li text: selection
           10.times do
-            break if text_box.text.include? selection
-            drop_down.click unless selection_label.present?
+            break if textbox.text.include? selection
+            dropdown.click unless selection_label.present?
             selection_label.click
           end
-          expect(text_box.text).to include(selection)
+          expect(textbox.text).to include(selection)
         end
 
         def twelve_am
@@ -358,22 +358,22 @@ module Stamps
       end
 
       class PostageBalanceDropDown < Browser::StampsModal
-        attr_reader :text_box, :drop_down
+        attr_reader :textbox, :dropdown
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
-          @drop_down = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
+          @textbox = StampsTextBox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div>input")
+          @dropdown = StampsElement.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(5)>div>div>div>div>div>div>div>div[id$=picker]")
         end
 
         def select(selection)
           selection_label = StampsElement.new browser.li text: selection
           10.times do
-            break if text_box.text.include? selection
-            drop_down.click unless selection_label.present?
+            break if textbox.text.include? selection
+            dropdown.click unless selection_label.present?
             selection_label.click
           end
-          expect(text_box.text).to include(selection)
+          expect(textbox.text).to include(selection)
         end
 
         def zero

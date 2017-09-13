@@ -20,8 +20,8 @@ end
 Then /^[Ee]xpect Customs form Package Contents is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_param[:customs_package_contents] : expectation
   sleep(0.15)
-  expect(stamps.orders.order_details.customs.edit_form.package_contents.combo_box.text_box.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.combo_box.text_box.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.package_contents.combobox.textbox.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.combobox.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Ss]et Customs form Non-Delivery Options to (.*)$/ do |value|
@@ -35,18 +35,18 @@ Then /^[Ee]xpect Customs form Non-Delivery Options is (?:correct|(.*))$/ do |exp
   actual = ""
   10.times do
     if modal_param.web_app == :orders
-      actual = stamps.orders.order_details.customs.edit_form.non_delivery_options.text_box.text
+      actual = stamps.orders.order_details.customs.edit_form.non_delivery_options.textbox.text
       break if actual == expectation
     end
     if modal_param.web_app == :mail
-      actual = stamps.mail.print_form.mail_customs.edit_form.non_delivery_options.text_box.text
+      actual = stamps.mail.print_form.mail_customs.edit_form.non_delivery_options.textbox.text
       break if actual == expectation
     end
   end
   test_config.logger.message "Expectation: #{expectation}"
   test_config.logger.message "Got: #{actual}"
-  expect(stamps.orders.order_details.customs.edit_form.non_delivery_options.text_box.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.non_delivery_options.text_box.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.non_delivery_options.textbox.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.non_delivery_options.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Ss]et Customs form Internal Transaction Number to (.*)$/ do |value|
@@ -59,8 +59,8 @@ end
 Then /^[Ee]xpect Customs form Internal Transaction Number is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_param[:customs_internal_transaction_no] : expectation
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.internal_transaction.text_box.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.internal_transaction.text_box.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Ss]et Customs form More Info to (?:(?:a|some) random string|(.*))$/ do |value|
@@ -271,8 +271,8 @@ end
 Then /^[Ee]xpect Customs Form Internal Transaction Number is (.+)$/ do |expectation|
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.internal_transaction.text_box.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.internal_transaction.text_box.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.internal_transaction.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Associated Item Grid count is (.+)$/ do |expectation|
@@ -357,22 +357,22 @@ end
 Then /^[Ee]xpect Customs form Associated Item (\d+) Quantity is (?:correct|(\d+))$/ do |item_number, expectation|
   expectation = (expectation.nil?)?test_param[:customs_associated_items][item_number][:quantity] : expectation
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_qty.text_box.text.to_i).to eql(expectation.to_i) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_qty.text_box.text.to_i).to eql(expectation.to_i) if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_qty.textbox.text.to_i).to eql(expectation.to_i) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_qty.textbox.text.to_i).to eql(expectation.to_i) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Associated Item (\d+) Unit Price is (?:correct|(.*))$/ do |item_number, expectation|
   expectation = (expectation.nil?)?test_param[:customs_associated_items][item_number][:price] :expectation
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_unit_price.text_box.text.to_f).to eql(expectation.to_f) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_unit_price.text_box.text.to_f).to eql(expectation.to_f) if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_unit_price.textbox.text.to_f).to eql(expectation.to_f) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).customs_item_unit_price.textbox.text.to_f).to eql(expectation.to_f) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Associated Item (\d+) Made In is (?:correct|(.*))$/ do |item_number, expectation|
   expectation = (expectation.nil?)?test_param[:customs_associated_items][item_number][:made_in] :expectation
   sleep(0.5)
-  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).made_in.text_box.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).made_in.text_box.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.order_details.customs.edit_form.associated_items.item_number(item_number.to_i).made_in.textbox.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.associated_items.item_number(item_number.to_i).made_in.textbox.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Associated Item (\d+) Tariff is (?:correct|(.*))$/ do |item_number, expectation|

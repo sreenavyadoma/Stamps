@@ -4,16 +4,16 @@ cuke_reports: --format json --out report.json --backtrace -f pretty -r features 
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
+rob_cc: --tags @search_orders WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111
+rob_stg: --tags @search_orders WEB_APP=orders JENKINS=true URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgld1uw4sroe7 PW=pass111
+rob_sc: --tags @mail_print_envelope_10_A2_A9 WEB_APP=orders JENKINS=true URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=selenium  USR=default PW=pass111 DEBUG=true # c2jinmzmu64
 kaushal_registration: --tags @registration_ui_validation_profile_page WEB_APP=registration URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false JENKINS=true
 
-rob_cc: --tags @filter_panel WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111
-rob_stg: --tags @mail_bvt_envelopes WEB_APP=orders JENKINS=true PW=pass111 URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgld1uw4sroe7 PW=pass111
-rob_sc: --tags @filter_panel WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=selenium
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-rob_mail_cc:  --tags @mail_bvt_international WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
+rob_mail_cc:  --tags @mail_print_postage_elements WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_mail_stg: --tags @pam_db_user_appscap_provisioning WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
-rob_mail_sc: --tags @filter_panel WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+rob_mail_sc: --tags @mail_print_envelope_10_A2_A9 WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
@@ -200,7 +200,7 @@ healthcheck: --tags @healthcheck --guess DEBUG=false JENKINS=true HEALTHCHECK=tr
 authentication: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 customs_form_auto_calculate_weight: --tags @customs_form_auto_calculate_weight --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-whats_new: --tags @whats_new --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+whats_new: --tags @whats_new --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 Registration: --tags @Registration --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=Registration 
 pam: --tags @pam --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=pam

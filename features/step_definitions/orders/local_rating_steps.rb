@@ -16,8 +16,8 @@ Then /^Verify Local Rating$/ do |table|
     step "set Order Details form Length to #{element["length"]}"
     step "set Order Details form Height to #{element["height"]}"
     step "set Order Details form Width to #{element["width"]}"
-    step "set Order Details form service to \"#{element["service"]}\""
-    step "set Order Details form Tracking to \"#{element["tracking"]}\""
+    step "set Order Details form service to #{element["service"]}"
+    step "set Order Details form Tracking to #{element["tracking"]}"
 
     10.times do
       order_details_form.blur_out

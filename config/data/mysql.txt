@@ -58,3 +58,33 @@ Run Redmine's install `bundle install --without development test'
 Check mysql2 gem gem list mysql2
 
 
+======================================================================================================
+
+  You've installed the binary version of mysql2.
+  It was built using MySQL Connector/C version 6.1.11.
+  It's recommended to use the exact same version to avoid potential issues.
+
+  At the time of building this gem, the necessary DLL files were retrieved from:
+  http://cdn.mysql.com/Downloads/Connector-C/mysql-connector-c-6.1.11-win32.zip
+
+  This gem *includes* vendor/libmysql.dll with redistribution notice in vendor/README.
+
+======================================================================================================
+
+======================================================================================================
+
+  You've installed the binary version of mysql.
+  It was built using MySQL Connector/C version 6.0.2.
+  It's recommended to use the exact same version to avoid potential issues.
+
+  At the time of building this gem, the necessary DLL files where available
+  in the following URL:
+
+  http://dev.mysql.com/get/Downloads/Connector-C/mysql-connector-c-noinstall-6.0.2-win32.zip/from/pick
+
+  You can put the lib\libmysql.dll available in this package to your Ruby bin directory.
+  E.g. C:\Ruby\bin
+
+======================================================================================================
+
+

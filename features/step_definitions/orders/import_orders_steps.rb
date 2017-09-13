@@ -113,7 +113,7 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
     order_id = row[0]
     if index  != 0
       counter += 1
-      step "Filter Panel: Search for #{row[4]}"
+      step "search Orders for #{row[4]}"
       expect(stamps.orders.orders_grid.column.requested_service.data(order_id)).to eql(row[3]), "Expected Service for order #{row[0]} is #{row[3]}, Service in orders grid is #{stamps.orders.orders_grid.column.requested_service.data(order_id)}"
       expect(stamps.orders.orders_grid.column.recipient.data(order_id)).to eql(row[4]), "Expected Recipient for order #{row[0]} is #{row[4]}, Recipient in orders grid is #{stamps.orders.orders_grid.column.recipient.data(order_id)}"
       expect(stamps.orders.orders_grid.column.company.data(order_id)).to eql(row[5]), "Expected Company for order #{row[0]} is #{row[5]}, Company in orders grid is #{stamps.orders.orders_grid.column.company.data(order_id)}"

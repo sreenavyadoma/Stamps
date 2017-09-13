@@ -371,7 +371,7 @@ end
 
 Then /^[Ii]n Settings modal, Expect Logoff is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.log_off.text_box.text).to eql expectation
+  expect(@general_settings.log_off.textbox.text).to eql expectation
 end
 
 # Postadate
@@ -473,7 +473,7 @@ end
 
 Then /^[Ii]n Settings modal, Expect Postdate is (.*)$/ do |expectation|
   step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.post_date.text_box.text).to eql expectation
+  expect(@general_settings.post_date.textbox.text).to eql expectation
 end
 
 # Mail Balance
@@ -506,7 +506,7 @@ Then /^[Ii]n Settings modal, Expect Mail Balance set to 500$/ do
 end
 
 Then /^[Ii]n Settings modal, Expect Mail Balance is (.*)$/ do |expectation|
-  expect(@general_settings.postage_balance.text_box.text).to eql expectation
+  expect(@general_settings.postage_balance.textbox.text).to eql expectation
 end
 
 # Reset Fields
@@ -736,13 +736,13 @@ Then /^Reset Fields:  Expect Weight lb equals (\d+)$/ do |lb|
   test_config.logger.step  "Reset Fields:  Expect Weight lb equals #{lb}"
 
   step "Reset Fields:  Check Weight"
-  expect(@reset_fields.weight.lb.text_box.text.to_i).to eql lb.to_i
+  expect(@reset_fields.weight.lb.textbox.text.to_i).to eql lb.to_i
 end
 
 Then /^Reset Fields:  Expect Weight oz equals (\d+)$/ do |oz|
   test_config.logger.step  "Reset Fields:  Expect Weight oz equals #{oz}"
   step "Reset Fields:  Check Weight"
-  expect(@reset_fields.weight.oz.text_box.text.to_i).to eql oz.to_i
+  expect(@reset_fields.weight.oz.textbox.text.to_i).to eql oz.to_i
 end
 
 Then /^Reset Fields:  Set Dimensions to length (\d+), width (\d+), height (\d+)$/ do |length, width, height|
@@ -756,19 +756,19 @@ end
 Then /^Reset Fields:  Expect Dimensions to length equals (\d+)$/ do |length|
   test_config.logger.step  "Reset Fields:  Expect Dimensions to length equals #{length}"
   step "Reset Fields:  Check Dimensions"
-  expect(@reset_fields.dimensions.length.text_box.text.to_i).to eql length.to_i
+  expect(@reset_fields.dimensions.length.textbox.text.to_i).to eql length.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to width equals (\d+)$/ do |width|
   test_config.logger.step  "Reset Fields:  Expect Dimensions to width equals #{width}"
   step "Reset Fields:  Check Dimensions"
-  expect(@reset_fields.dimensions.width.text_box.text.to_i).to eql width.to_i
+  expect(@reset_fields.dimensions.width.textbox.text.to_i).to eql width.to_i
 end
 
 Then /^Reset Fields:  Expect Dimensions to height equals (\d+)$/ do |height|
   test_config.logger.step  "Reset Fields:  Expect Dimensions to height equals #{height}"
   step "Reset Fields:  Check Dimensions"
-  expect(@reset_fields.dimensions.height.text_box.text.to_i).to eql height.to_i
+  expect(@reset_fields.dimensions.height.textbox.text.to_i).to eql height.to_i
 end
 
 Then /^Reset Fields:  Close$/ do

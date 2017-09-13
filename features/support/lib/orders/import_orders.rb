@@ -43,7 +43,7 @@ module Stamps
         StampsElement.new(browser.label(id: "fileNameLabel")).text
       end
 
-      def text_box
+      def textbox
         StampsTextBox.new browser.text_field(id: "files-inputEl")
       end
 

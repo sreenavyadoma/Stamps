@@ -12,7 +12,7 @@ module Stamps
         browser.spans css: 'span[id^=checkbox]'
       end
 
-      def drop_down_arrow_array
+      def dropdown_arrow_array
         browser.divs css: 'div[id*=trigger-picker]'
       end
 
@@ -45,15 +45,15 @@ module Stamps
       end
 
       def logoff_time_combo
-        drop_down_arrow_array[8]
+        dropdown_arrow_array[8]
       end
 
       def postdate_time_combo
-        drop_down_arrow_array[9]
+        dropdown_arrow_array[9]
       end
 
       def balance_notification_combo
-        drop_down_arrow_array[10]
+        dropdown_arrow_array[10]
       end
 
       def logoff_time

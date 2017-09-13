@@ -51,7 +51,8 @@ module Stamps
             rescue
               #ignore
             end
-            driver = Watir::Browser.new :chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate) #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+            driver = Watir::Browser.new :chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)
+            #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
             @browser_name = 'Google Chrome'
           when :ie
             begin

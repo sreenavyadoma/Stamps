@@ -99,7 +99,7 @@ Then /^[Oo]n PAM Customer Profile page, get Available Mail Amount$/ do
   test_config.logger.message "PAM: Available Mail ############################"
 end
 
-Then /^send username to standard out$/ do
+Then /^[Ss]end username to standard out$/ do
   test_config.logger.step " ############## NEW USER ID "
   test_config.logger.message " ############## #{test_param[:username]}"
   test_config.logger.message " ############## NEW USER ID "

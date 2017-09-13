@@ -1,14 +1,4 @@
 
-Then /^[Cc]lick Filter Panel Awaiting Shipment tab$/ do
-  test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-  stamps.orders.filter_panel.awaiting_shipment.select
-end
-
-Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
-  30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
-  expect(stamps.orders.filter_panel.selected_filter).to eql expectation
-end
-
 Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
   expect(['Shipped', 'Canceled', 'On Hold', 'Awaiting Shipment']).to include(str)
   case str
@@ -26,56 +16,17 @@ Then /^[Ss]elect [Ff]ilter [Pp]anel tab (.*)$/ do |str|
   step "expect selected filter is #{str}"
 end
 
-Then /^[Ee]xpect saved Order ID exist in the selected filter$/ do
-  50.times do
+Then /^[Ee]xpect selected [Ff]ilter is (.*)$/ do |expectation|
+  30.times { sleep(0.25); break if stamps.orders.filter_panel.selected_filter == expectation }
+  expect(stamps.orders.filter_panel.selected_filter).to eql expectation
+end
+
+Then /^[Ee]xpect cached Order ID exist in the selected filter$/ do
+  15.times do
     sleep(0.10)
     break if stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0]) > 0
   end
   expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][0])).to be > 0
-end
-
-Then /^Filter Panel: Search saved Order ID$/ do
-  step "Filter Panel: Search for #{test_param[:order_id][0]}"
-end
-
-Then /^Filter Panel: Search saved Ship Name$/ do
-   step "Filter Panel: Search for #{test_param[:full_name]}"
-end
-
-Then /^Filter Panel: Search saved Ship Company$/ do
-  step "Filter Panel: Search for #{test_param[:company]}"
-end
-
-Then /^Filter Panel: Search saved Email$/ do
-  step "Filter Panel: Search for #{test_param[:email]}"
-end
-
-Then /^Filter Panel: Search for (.*)$/ do |str|
-  expect(str.nil?).to be(false), "Search string can not be nil"
-  test_param[:orders_search_str] = str
-  stamps.orders.filter_panel.search_orders test_param[:orders_search_str]
-end
-
-Then /^Filter Panel: Search results count should be (\d*)$/ do |count|
-  expect(stamps.orders.filter_panel.search_results.count).to eql count
-end
-
-Then /^Filter Panel: Search results should be more than (\d*)$/ do |count|
-  expect(stamps.orders.filter_panel.search_results.count).to be > count
-end
-
-Then /^Filter Panel: Search Results should be present$/ do
-  sleep 1
-  expect(stamps.orders.filter_panel.search_results.present?).to be(true)
-end
-
-Then /^Filter Panel: Search Results should not be present$/ do
-  sleep 1
-  expect(stamps.orders.filter_panel.search_results.present?).not_to be(true)
-end
-
-Then /^Filter Panel: Remove search results$/ do
-  stamps.orders.filter_panel.search_results.remove
 end
 
 Then /^Filter Panel: Collapse Panel$/ do

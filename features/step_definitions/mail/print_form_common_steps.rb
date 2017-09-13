@@ -73,9 +73,9 @@ Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   10.times do
     stamps.mail.print_form.mail_to.country(test_param[:country])
     sleep(0.25)
-    break if stamps.mail.print_form.mail_to.mail_to_country.text_box.text.include?(test_param[:country]) && stamps.mail.print_form.mail_service.has_rates?
+    break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(test_param[:country]) && stamps.mail.print_form.mail_service.has_rates?
   end
-  expect(stamps.mail.print_form.mail_to.mail_to_country.text_box.text).to include test_param[:country]
+  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to include test_param[:country]
   step "blur out on print form"
 end
 
@@ -84,7 +84,7 @@ test_param[:total_ship_cost] = stamps.mail.mail_toolbar.total
 end
 
 Then /^[Ss]ave Print Form Mail From$/ do
-  test_param[:ship_from] = stamps.mail.print_form.mail_from.text_box.text
+  test_param[:ship_from] = stamps.mail.print_form.mail_from.textbox.text
 end
 
 

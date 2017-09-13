@@ -1,17 +1,17 @@
 
 Then /^Paging: Set Per Page drop-down to 100$/ do
   stamps.orders.orders_toolbar.per_page.x100
-  expect(stamps.orders.orders_toolbar.per_page.text_box.text).to eql "100"
+  expect(stamps.orders.orders_toolbar.per_page.textbox.text).to eql "100"
 end
 
 Then /^[Ii]n Orders Toolbar, set Per Page drop-down to 250$/ do
   stamps.orders.orders_toolbar.per_page.x250
-  expect(stamps.orders.orders_toolbar.per_page.text_box.text).to eql "250"
+  expect(stamps.orders.orders_toolbar.per_page.textbox.text).to eql "250"
 end
 
 Then /^[Ii]n Orders Toolbar, set Per Page drop-down to 500$/ do
   stamps.orders.orders_toolbar.per_page.x500
-  expect(stamps.orders.orders_toolbar.per_page.text_box.text).to eql "500"
+  expect(stamps.orders.orders_toolbar.per_page.textbox.text).to eql "500"
 end
 
 Then /^[Ii]n Orders Toolbar, expect number of orders on page is correct$/ do
@@ -21,7 +21,7 @@ Then /^[Ii]n Orders Toolbar, expect number of orders on page is correct$/ do
   sleep(0.35)
   awaiting_shipment_total_count = filter.awaiting_shipment.count
   multi_order_count = stamps.orders.multi_order.order_count
-  per_page_count = stamps.orders.orders_toolbar.per_page.text_box.text.to_i
+  per_page_count = stamps.orders.orders_toolbar.per_page.textbox.text.to_i
 
   if awaiting_shipment_total_count < per_page_count
     max_order_count = awaiting_shipment_total_count
@@ -176,9 +176,9 @@ When /^[Ss]et Page Number to (\d*)$/ do |value|
     sleep(0.35)
     page_number_textbox = stamps.orders.orders_toolbar.page_number
     page_number = page_number_textbox.text
-    text_box_field = page_number_textbox.element
-    text_box_field.click
-    text_box_field.click
+    textbox_field = page_number_textbox.element
+    textbox_field.click
+    textbox_field.click
     #test_config.logger.step "New page number #{page_number}"
     page_two_order_id = stamps.orders.orders_grid.column.order_id.row 1
     page_one_order_id.should_not eql page_two_order_id
