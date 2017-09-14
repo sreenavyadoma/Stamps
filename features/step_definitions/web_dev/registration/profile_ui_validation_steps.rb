@@ -64,7 +64,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age content under Money-saving offers and new pr
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age CONTINUE button exists$/ do
-  expect(registration.profile.continue_btn.present?).to be(true)
+  expect(registration.profile.continue_btn.present?).to be(true), "CONTINUE button doesn't exists on Profile Page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
