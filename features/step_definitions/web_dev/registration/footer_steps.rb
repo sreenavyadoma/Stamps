@@ -1,9 +1,9 @@
 Then /^[Ee]xpect Profile page Privacy Policy link exists$/ do
-  expect(registration.footer.privacy_policy_link.present?).to be(true)
+  expect(registration.footer.privacy_policy_link.present?).to be(true), "Privacy Policy link doesn't exists in footer of a page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age copyright link exists$/ do
-  expect(registration.footer.copyright_link.present?).to be(true)
+  expect(registration.footer.copyright_link.present?).to be(true), "Copyright link doesn't exists in footer of a page"
 end
 
 #Then /^[Ee]xpect [Pp]rofile [Pp]age Norton logo exists$/ do
@@ -11,11 +11,11 @@ end
 #end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age TRUSTe logo exists$/ do
-  expect(registration.footer.trust_elogo.present?).to be(true)
+  expect(registration.footer.trust_elogo.present?).to be(true), "TRUSTe logo doesn't exists in footer of a page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age LIVE chat button exists$/ do
-  expect(registration.footer.live_chat_button.present?).to be(true)
+  expect(registration.footer.live_chat_button.present?).to be(true), "LIVE chat button doesn't exists in footer of a page"
 end
 #:trust_elogo, :live_chat_button
 #@live_chat_button = StampsElement.new(browser.html_tag(name: "property"))
