@@ -48,6 +48,11 @@ Cucumber::Rake::Task.new(:registration_ui_validation_profile_page) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:registration_ui_validation_add_validation_model) do |t|
+  t.profile = 'registration_ui_validation_add_validation_model'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:registration_ui_validation_security_questions_page) do |t|
   t.profile = 'registration_ui_validation_security_questions_page'
   t.cucumber_opts = "-p cuke_reports"

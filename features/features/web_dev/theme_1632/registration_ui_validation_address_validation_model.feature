@@ -35,8 +35,8 @@ Feature: Registration Membership page validation Theme 1632
     Then Pause for 1 second
     Then expect Membership page Address validation model pop up header is Exact address not found
     Then expect Membership page Address validation model pop up header instructions is The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
-    Then expect Membership page Address validation model pop up Cancel button is exist
-    Then expect Membership page Address validation model pop up Continue button is exist
+    Then expect Membership page Address validation model pop up Cancel button exists
+    Then expect Membership page Address validation model pop up Continue button exists
     Then click Membership page Address validation model pop up Cancel button
     Then click Membership page Submit button
     Then Pause for 1 second

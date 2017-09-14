@@ -228,12 +228,12 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header in
   expect(registration.membership.model_header_instructions).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button is exist$/ do
-  expect(registration.membership.cancel.present?).to be(true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button exists$/ do
+  expect(registration.membership.cancel.present?).to be(true),  "Cancel Button DOES NOT exists on Address validation model"
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button is exist$/ do
-  expect(registration.membership.continue.present?).to be(true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button exists$/ do
+  expect(registration.membership.continue.present?).to be(true),  "Continue Button DOES NOT exists on Address validation model"
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do
