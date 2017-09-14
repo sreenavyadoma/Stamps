@@ -187,6 +187,7 @@ registration_ui_validation_add_postage_page: --tags @registration_ui_validation_
 registration_ui_validation_membership_page: --tags @registration_ui_validation_membership_page WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
 registration_ui_validation_profile_page: --tags @registration_ui_validation_profile_page WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
 registration_ui_validation_security_questions_page: --tags @registration_ui_validation_security_questions_page WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_add_validation_model: --tags @registration_ui_validation_security_questions_page WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11
 
