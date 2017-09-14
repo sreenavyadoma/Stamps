@@ -109,7 +109,7 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership Cancel anytime to contain:$/ do |
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership Bonus Offer Details link exists and is clickable$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+  expect(registration.membership.offer_details_link.present?).to be (true), "Bonus Offer Details link doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age Privacy Policy link exists and is clickable$/ do
