@@ -9,23 +9,23 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership header contain (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership first name exists$/ do
-  expect(registration.membership.first_name.present?).to be (true)
+  expect(registration.membership.first_name.present?).to be (true), "First Name doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership last name exists$/ do
-  expect(registration.membership.last_name.present?).to be (true)
+  expect(registration.membership.last_name.present?).to be (true), "Last Name doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership company exists$/ do
-  expect(registration.membership.company.present?).to be (true)
+  expect(registration.membership.company.present?).to be (true), "Company Name doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership address exists$/ do
-  expect(registration.membership.address.present?).to be (true)
+  expect(registration.membership.address.present?).to be (true), "Address doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership city exists$/ do
-  expect(registration.membership.city.present?).to be (true)
+  expect(registration.membership.city.present?).to be (true), "City doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership state dropdown exists$/ do
