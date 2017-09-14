@@ -29,23 +29,23 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership city exists$/ do
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership state dropdown exists$/ do
-  expect(registration.membership.city.present?).to be (true)
+  expect(registration.membership.city.present?).to be (true), "State doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership zip exists$/ do
-  expect(registration.membership.zip.present?).to be (true)
+  expect(registration.membership.zip.present?).to be (true), "Zip doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership phone exists$/ do
-  expect(registration.membership.phone.present?).to be (true)
+  expect(registration.membership.phone.present?).to be (true), "Phone doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership stamps logo exists$/ do
-  expect(registration.membership.stamps_logo.present?).to be (true)
+  expect(registration.membership.stamps_logo.present?).to be (true), "Stamps logo doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership usps logo exists$/ do
-  expect(registration.membership.usps_logo.present?).to be (true)
+  expect(registration.membership.usps_logo.present?).to be (true), "Usps logo doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership paragraph to contain (.*)$/ do |str|
@@ -53,35 +53,35 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership paragraph to contain (.*)$/ do |s
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership cardholders name exists$/ do
-  expect(registration.membership.cardholders_name.present?).to be (true)
+  expect(registration.membership.cardholders_name.present?).to be (true), "Cardholders name textbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership credit card number exists$/ do
-  expect(registration.membership.credit_card_number.present?). to be (true)
+  expect(registration.membership.credit_card_number.present?). to be (true), "Credit card number textbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership month dropdown exists$/ do
-  expect(registration.membership.month_dropdown.present?).to be (true)
+  expect(registration.membership.month_dropdown.present?).to be (true), "Month drop-down doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership year dropdown exists$/ do
-  expect(registration.membership.month_dropdown.present?).to be (true)
+  expect(registration.membership.month_dropdown.present?).to be (true), "Year drop-down doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership Billing address same as mailing address checkbox exists$/ do
-  expect(registration.membership.billingaddress_sameas_mailing address.present?).to be (true)
+  expect(registration.membership.billingaddress_sameas_mailing address.present?).to be (true), "Billing address same as mailing address checkbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership I agree to the Terms and conditions and Pricing details checkbox exists$/ do
-  expect(registration.membership.pricingandTnC.present?).to be (true)
+  expect(registration.membership.pricingandTnC.present?).to be (true), "Terms and conditions and Pricing details checkbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership back button exists$/ do
-  expect(registration.membership.back_button.present?).to be (true)
+  expect(registration.membership.back_button.present?).to be (true), "Back button doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership submit button exists$/ do
-  expect(registration.membership.submit_button.present?).to be (true)
+  expect(registration.membership.submit_button.present?).to be (true), "Submit button doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership why do you need my mailing information to contain:$/ do |str|
