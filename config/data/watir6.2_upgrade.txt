@@ -15,7 +15,7 @@ PC/VM Watir 6.2 Upgrade Steps:
     e.  c:\Stamps>bundle update selenium-webdriver
 e.	c:\Stamps>bundle install
 5.	Copy 32 bit geckodriver and chromedriver from \\rcruz-win7\Public\automation\install\watir\drivers\32bit to your C:\Stamps\binaries
-6.	Add C:\Ruby23\ and C:\Stamps\binaries to your environment variable Path on Windows.
+6.	Add C:\Ruby23\ and C:\Stamps\binaries to your lsenvironment variable Path on Windows.
 7.	Uninstall Firefox.
 8.	Uninstall Chrome.
 9.	Install Firefox 53 32 bit from \\rcruz-win7\Public\automation\install\watir\firefox\32bit
