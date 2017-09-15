@@ -28,10 +28,17 @@ module Stamps
 
             if firefox_profile.nil?
               capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(accept_insecure_certs: true)
+
+              profile = Selenium::WebDriver::Firefox::Profile.new
+              profile['network.http.phishy-userpass-length'] = 255
+
+              capabilities
+
               driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
             else
               profile = Selenium::WebDriver::Firefox::Profile.from_name(firefox_profile)
               profile.assume_untrusted_certificate_issuer = true
+              profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
             @browser_name = 'Mozilla Firefox'
@@ -44,7 +51,8 @@ module Stamps
             rescue
               #ignore
             end
-            driver = Watir::Browser.new :chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate) #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
+            driver = Watir::Browser.new :chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)
+            #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
             @browser_name = 'Google Chrome'
           when :ie
             begin
@@ -71,6 +79,7 @@ module Stamps
         logger.message "-"
         logger.message "BROWSER: #{@browser_name}"
         logger.message "-"
+        driver.cookies.clear
         @browser = driver
       rescue Exception => e
         err = e.backtrace.join("\n")

@@ -9,7 +9,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
   Scenario: Roll - 4" x 6" - MM
 
     #mail_print_roll_4x6_mm_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
@@ -23,7 +23,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
   Scenario: Roll - 4" x 6" - XM Envelope
 
    #mail_print_roll_4x6_xm_fr_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -34,7 +34,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_xm_lfr_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -45,7 +45,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then click Mail Print modal Print button
 
     #mail_print_roll_4x6_xm_pfr_envelope
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8
@@ -59,7 +59,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
   Scenario: Roll - 4" x 6" - XM Package
 
    #mail_print_roll_4x6_xm_package
-    Then select Print On Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 5 through 8

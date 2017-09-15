@@ -45,9 +45,9 @@ module Stamps
         end
 
         def first_security_question
-          drop_down = browser.divs(css: "div[class^=x-trigger-index-0]")[0]
-          text_box = browser.text_fields(css: "input[placeholder='<Please Select>']")[0]
-          @first_security_question ||= StampsDropDown.new(text_box, drop_down, :div)
+          dropdown = browser.divs(css: "div[class^=x-trigger-index-0]")[0]
+          textbox = browser.text_fields(css: "input[placeholder='<Please Select>']")[0]
+          @first_security_question ||= StampsDropDown.new(textbox, dropdown, :div)
         end
 
         def first_security_answer
@@ -55,9 +55,9 @@ module Stamps
         end
 
         def second_security_question
-          drop_down = browser.divs(css: "div[class^=x-trigger-index-0]")[1]
-          text_box = browser.text_fields(css: "input[placeholder='<Please Select>']")[1]
-          @first_security_question ||= StampsDropDown.new(text_box, drop_down, :div)
+          dropdown = browser.divs(css: "div[class^=x-trigger-index-0]")[1]
+          textbox = browser.text_fields(css: "input[placeholder='<Please Select>']")[1]
+          @first_security_question ||= StampsDropDown.new(textbox, dropdown, :div)
         end
 
         def second_security_answer

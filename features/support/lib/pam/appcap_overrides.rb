@@ -2,16 +2,16 @@ module Stamps
   module Pam
 
     class AppCapOverridesConfirmation < Browser::StampsModal
-      attr_reader :title, :ok_button
+      def title
+        StampsElement.new browser.td(text: 'AppCap Overrides')
+      end
 
-      def initialize(param)
-        super
-        @title = StampsElement.new browser.td(text: 'AppCap Overrides')
-        @ok_button = StampsElement.new browser.a(css: 'a[href*=Profile]')
+      def ok_button
+        StampsElement.new browser.a(css: 'a[href*=Profile]')
       end
 
       def text
-        title.text
+        StampsElement.new(browser.td(css: "tbody:nth-child(1)>tr:nth-child(2)>td:nth-child(2)")).text
       end
 
       def present?
@@ -21,10 +21,25 @@ module Stamps
       def ok
         ok_button.click
         ok_button.click_while_present
+        text
       end
     end
 
-    class InternetPostagePrinting < Browser::StampsModal
+    class AppCapCertifiedMail < Browser::StampsModal
+      def always_on
+        browser.radio(css: 'input[name=CertMail][value=On]').set
+      end
+
+      def always_off
+        browser.radio(css: 'input[name=CertMail][value=off]').set
+      end
+
+      def no_override
+        browser.radio(css: 'input[name=CertMail][value=None]').set
+      end
+    end
+
+    class AppCapInternetPostagePrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=IBIP][value=On]').set
       end
@@ -38,7 +53,7 @@ module Stamps
       end
     end
 
-    class NetStampsPrinting < Browser::StampsModal
+    class AppCapNetStampsPrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=NS][value=On]').set
       end
@@ -52,7 +67,7 @@ module Stamps
       end
     end
 
-    class ShippingLabelPrinting < Browser::StampsModal
+    class AppCapShippingLabelPrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=SL][value=On]').set
       end
@@ -66,7 +81,7 @@ module Stamps
       end
     end
 
-    class InternationalShipping < Browser::StampsModal
+    class AppCapInternationalShipping < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=IntlShipping][value=On]').set
       end
@@ -80,7 +95,7 @@ module Stamps
       end
     end
 
-    class AllowHighRiskCountries < Browser::StampsModal
+    class AppCapAllowHighRiskCountries < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
       end
@@ -94,7 +109,7 @@ module Stamps
       end
     end
 
-    class MailingLabelPrinting < Browser::StampsModal
+    class AppCapMailingLabelPrinting < Browser::StampsModal
       def always_on
         browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
       end
@@ -108,20 +123,45 @@ module Stamps
       end
     end
 
-    class AppCapOverrides < Browser::StampsModal
-      attr_reader :internet_postage_printing, :netstamps_printing, :shipping_label_printing, :international_shipping, :allow_high_risk_countries,
-                  :mailing_label_printing, :submit_button, :appcap_overrides
+    class AppCapOverridesPage < Browser::StampsModal
+      def username
+        StampsElement.new(browser.a(css: "tbody>tr:nth-child(2)>td:nth-child(2)>a"))
+      end
 
-      def initialize(param)
-        super
-        @internet_postage_printing = InternetPostagePrinting.new(param)
-        @netstamps_printing = NetStampsPrinting.new(param)
-        @shipping_label_printing = ShippingLabelPrinting.new(param)
-        @international_shipping = InternationalShipping.new(param)
-        @allow_high_risk_countries = AllowHighRiskCountries.new(param)
-        @mailing_label_printing = MailingLabelPrinting.new(param)
-        @submit_button = StampsElement.new browser.input(name: 'submit')
-        @appcap_overrides = AppCapOverridesConfirmation.new(param)
+      def internet_postage_printing
+        AppCapInternetPostagePrinting.new(param)
+      end
+
+      def netstamps_printing
+        AppCapNetStampsPrinting.new(param)
+      end
+
+      def shipping_label_printing
+        AppCapShippingLabelPrinting.new(param)
+      end
+
+      def international_shipping
+        AppCapInternationalShipping.new(param)
+      end
+
+      def allow_high_risk_countries
+        AppCapAllowHighRiskCountries.new(param)
+      end
+
+      def mailing_label_printing
+        AppCapMailingLabelPrinting.new(param)
+      end
+
+      def certified_mail
+        AppCapCertifiedMail.new(param)
+      end
+
+      def appcap_overrides
+        AppCapOverridesConfirmation.new(param)
+      end
+
+      def submit_button
+        StampsElement.new browser.input(name: 'submit')
       end
 
       def present?

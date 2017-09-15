@@ -27,7 +27,11 @@ module Stamps
 
       module AdvOptCostCode
         def cost_code
-          @cost_code = StampsComboBox.new(browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"), browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]"), :li, 0) if @cost_code.nil?
+          if @cost_code.nil?
+            input = browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
+            dropdown = browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
+            @cost_code = StampsComboBox.new(input, dropdown, :li, 0)
+          end
           @cost_code
         end
       end
@@ -107,9 +111,10 @@ module Stamps
 
         def calculate_postage_amount
           if @calculate_postage_amount.nil?
-            element = browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl')
+            radio = browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl')
             verify_element = browser.div(id: 'sdc-mainpanel-calculatepostageradio')
-            @calculate_postage_amount = StampsRadio.new(element, verify_element, "class", "checked")
+            #radio, check_verify, attribute, attribute_value
+            @calculate_postage_amount = StampsRadio.new(radio, verify_element, "class", "checked")
           end
           @calculate_postage_amount
         end
@@ -193,7 +198,7 @@ module Stamps
         def restricted_delivery
           if @restricted_delivery.nil?
             clickable_element = browser.span(css: "span[class*=sdc-mainpanel-rdcheckbox]")
-            verify = browser.div(css: "div[id^=certifiedmailview-][id$=-innerCt]>div>div>div>div>div>div:nth-child(4)>div>div>div[class*=checkbox ]")
+            verify = clickable_element.parent.parent.parent
             @restricted_delivery = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
           @restricted_delivery

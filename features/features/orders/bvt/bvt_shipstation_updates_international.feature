@@ -21,6 +21,10 @@ Feature:  Update International Orders to ShipStation
     Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
     Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description random string
 
+    Then expect Orders Grid service is Priority Mail
+    Then expect Orders Grid service is PM Package
+    Then expect Orders Grid service is correct
+
     # Edit the customs form
     Then click Order Details form Edit Form button
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
@@ -54,10 +58,10 @@ Feature:  Update International Orders to ShipStation
 
     Then Pause for 1 second
     Then blur out on Order Details form 3 times
-    Then uncheck Orders Grid saved Order ID
+    Then uncheck Orders Grid for cached Order ID
     #Then Refresh the browser
     Then Pause for 3 seconds
-    Then check Orders Grid saved Order ID
+    Then check Orders Grid for cached Order ID
     Then Pause for 2 seconds
 
     Then expect Order Details form International Ship-To Name is correct

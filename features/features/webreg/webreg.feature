@@ -14,7 +14,7 @@ Feature: Registration
     Then load sign-in credentials
 
     # Verify new user exist in PAM
-    Then visit PAM Customer Search page
+    Then load PAM Customer Search page
     Then set PAM Customer Search page username to cached value
     Then click PAM Customer Search page Search button
     Then expect PAM Customer Profile Page Status Reason is OK

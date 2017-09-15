@@ -7,9 +7,8 @@ Feature:  BVT Address Cleansing
   Scenario: Address Cleansing
     Then add new order
     Then set Order Details form Ship-To Domestic address to
-      | full_name          | company      | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
+      | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
-
     Then set Order Details form service to PM Package
     Then set Order Details form Ounces to 1
     Then blur out on Order Details form

@@ -58,7 +58,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Mail Date field is present$/ do
   step "Expect Advanced Options responds to Mail Date (mail_date)"
-  expect(stamps.mail.print_form.advanced_options.mail_date.text_box.present?).to be(true), "Advanced Options Mail Date field is NOT present"
+  expect(stamps.mail.print_form.advanced_options.mail_date.textbox.present?).to be(true), "Advanced Options Mail Date field is NOT present"
 end
 
 Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|))? ?(.*)?$/ do |day, value|
@@ -69,13 +69,13 @@ Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|)
       valid_date = Date.strptime(value, "%m/%d/%Y") rescue nil
       expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{value}"
       test_param[:mail_date] = value
-      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.text_box.set(test_param[:mail_date])
+      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.textbox.set(test_param[:mail_date])
     when /today plus/
       test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
     when /today/
       test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.today
     when /tomorrow/
-      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(value)
+      test_param[:mail_date] = stamps.mail.print_form.advanced_options.mail_date.date_picker.todays_date_plus(1)
     else
       valid_date = Date.strptime(value, "%m/%d/%Y") rescue nil
       expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{value}"
@@ -87,7 +87,7 @@ Then /^[Ee]xpect Advanced Options Mail Date is (?:correct|(.*))$/ do |expectatio
   expectation = test_param[:mail_date] if expectation.nil?
   valid_date = Date.strptime(expectation, "%m/%d/%Y") rescue nil
   expect(valid_date).not_to be_nil, "Invalid Date format. Expected date format mm/dd/YYYY (03/24/2017)  got #{expectation}"
-  expect(stamps.mail.print_form.advanced_options.mail_date.text_box.text).to eql(expectation), "Advanced Options Mail Date is not #{expectation}"
+  expect(stamps.mail.print_form.advanced_options.mail_date.textbox.text).to eql(expectation), "Advanced Options Mail Date is not #{expectation}"
 end
 
 Then /^[Ss]et Advanced Options Reference Number to (?:(?:a |some |)random string|(.*))$/ do |str|
@@ -109,7 +109,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Cost Code Field is present$/ do
   step "Expect Advanced Options responds to Cost Code (cost_code)"
-  expect(stamps.mail.print_form.advanced_options.cost_code.text_box.present?).to be(true), "Print form Cost Code Field is NOT present"
+  expect(stamps.mail.print_form.advanced_options.cost_code.textbox.present?).to be(true), "Print form Cost Code Field is NOT present"
 end
 
 Then /^[Ss]et Advanced Options Cost Code to (.*)$/ do |str|
@@ -119,7 +119,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Cost Code is (.*)$/ do |expectation|
   step "Expect Advanced Options responds to Cost Code (cost_code)"
-  expect(stamps.mail.print_form.advanced_options.cost_code.text_box.text).to eql(expectation)
+  expect(stamps.mail.print_form.advanced_options.cost_code.textbox.text).to eql(expectation)
 end
 
 # Certified Mail
@@ -178,6 +178,16 @@ Then /^[Ee]xpect Print Form Return Receipt is present$/ do
   expect(stamps.mail.print_form.return_receipt.present?).to be(true), "Print form include Return Receipt is NOT present"
 end
 
+Then /^[Ee]xpect Print Form Return Receipt is visible$/ do
+  step "Expect Print form responds to Return Receipt (return_receipt)"
+  expect(stamps.mail.print_form.return_receipt.visible?).to be(true), "Print form include Return Receipt is NOT visible"
+end
+
+Then /^[Ee]xpect Print Form Return Receipt is disabled$/ do
+  step "Expect Print form responds to Return Receipt (return_receipt)"
+  expect(stamps.mail.print_form.return_receipt.enabled?).to be(false), "Print form include Return Receipt is enabled"
+end
+
 Then /^[Ee]xpect Print Form Return Receipt is not visible$/ do
   expect{stamps.mail.print_form.return_receipt.present?}.to raise_exception(NoMethodError)
 end
@@ -204,12 +214,17 @@ end
 
 Then /^[Ee]xpect Print Form Certified Mail is checked$/ do
   step "Expect Print form responds to Certified Mail (certified_mail)"
-  expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Return Receipt is NOT checked"
+  expect(stamps.mail.print_form.certified_mail.checked?).to be(true), "Print form include Certified Mail is NOT checked"
 end
 
-Then /^[Ee]xpect Print Form Certified Mail is present$/ do
+Then /^[Ee]xpect Print Form Certified Mail is visible$/ do
   step "Expect Print form responds to Certified Mail (certified_mail)"
-  expect(stamps.mail.print_form.certified_mail.present?).to be(true), "Print form include Return Receipt is NOT present"
+  expect(stamps.mail.print_form.certified_mail.visible?).to be(true), "Print form include Certified Mail is NOT visible"
+end
+
+Then /^[Ee]xpect Print Form Certified Mail is disabled$/ do
+  step "Expect Print form responds to Certified Mail (certified_mail)"
+  expect(stamps.mail.print_form.certified_mail.enabled?).to be(false), "Print form include Certified Mail is enabled"
 end
 
 Then /^[Ee]xpect Advanced Options include Return Address is present$/ do

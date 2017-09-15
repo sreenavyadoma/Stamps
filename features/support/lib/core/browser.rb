@@ -1,33 +1,12 @@
 module Stamps
   module Browser
-    module HelpBlockElement
-      attr_accessor :help_elements, :index
-      def help_text(*args)
-        begin
-          return "" if help_elements.nil?
-          help_elements[(args.size==0)?((index.nil?)?0:index):(args[0].to_i-1)].text # if index has not been set use the first help text from help_elements
-        rescue Exception => e
-          p e.message
-          p e.backtrace.join("\n")
-          return ""
-        end
-      end
-
-      def has_error?
-        begin
-          help_elements.nil?false:help_elements.size > 0
-        rescue
-          return false
-        end
-      end
-    end
 
     class StampsElement
-      include ScopedAttrAccessor
       attr_reader :element, :browser
-      alias_method :text_box, :element
-      alias_method :check_box, :element
+      alias_method :checkbox, :element
       alias_method :radio, :element
+      alias_method :textbox, :element
+      alias_method :input, :element
 
       def initialize(element)
         @element = element
@@ -38,44 +17,57 @@ module Stamps
         browser.url
       end
 
-      def disabled?
-        begin
-          element.disabled?
-        rescue
-          true
-        end
+      def flash
+        element.flash
       end
 
-      def exist?
+      def disabled?
         begin
-          element.exist?
+          return element.disabled?
         rescue
-          false
+          #ignore
         end
+        true
       end
 
       def present?
         begin
-          element.exist? && element.visible?
+          return exist? && visible?
         rescue
-          return false
+          #ignore
         end
+        false
+      end
+
+      def clickable?
+        truthy? && present? && enabled?
       end
 
       def visible?
         begin
-          element.visible?
+          return element.visible?
         rescue
-          return false
+          #ignore
         end
+        false
+      end
+
+      def exist?
+        begin
+          return element.exist?
+        rescue
+          #ignore
+        end
+        false
       end
 
       def enabled?
         begin
-          element.enabled?
+          return element.enabled?
         rescue
-          return false
+          #ignore
         end
+        false
       end
 
       def truthy?
@@ -90,26 +82,28 @@ module Stamps
         end
       end
 
-      def wait_while_present(*args)
+      def wait_while_present(counter=2, duration=0.25)
         begin
-          ((args.nil? || args.size==0)?2:args[0].to_i).times do
+          (counter.to_i).times do
             break unless present?
-            sleep(0.25)
+            sleep(duration)
           end
         rescue
           #ignore
         end
+        self
       end
 
-      def wait_until_present(*args)
+      def wait_until_present(counter=2, duration=0.25)
         begin
-          ((args.nil? || args.size==0)?2:args[0].to_i).times do
+          (counter.to_i).times do
             break if present?
-            sleep(0.25)
+            sleep(duration)
           end
         rescue
           #ignore
         end
+        self
       end
 
       def scroll_into_view
@@ -118,15 +112,10 @@ module Stamps
         rescue
           # ignore
         end
+        self
       end
 
       def text
-        begin
-          return element.value if truthy? && !element.value.nil? && element.value.size > 0
-        rescue
-          #ignore
-        end
-
         begin
           return element.text if truthy? && !element.text.nil? && element.text.size > 0
         rescue
@@ -134,35 +123,48 @@ module Stamps
         end
 
         begin
-          return attribute_value('value') if element.present? && !attribute_value('value').nil? && attribute_value('value').size > 0
+          return element.value if truthy? && !element.value.nil? && element.value.size > 0
         rescue
-          return ""
+          #ignore
         end
-        ""
+
+        begin
+          return attribute_value('value') if truthy? && !attribute_value('value').nil? && attribute_value('value').size > 0
+        rescue
+          #ignore
+        end
+        ''
       end
 
       def attribute_value(attribute)
         begin
-          element.attribute_value(attribute) if present?
+          element.attribute_value(attribute)
         rescue
-          return ''
+          #ignore
         end
+        ''
       end
 
       def click
         begin
-          element.click if present?
+          element.click if clickable?
         rescue
           #ignore
         end
+        self
       end
 
-      def click_while_present(*args)
-        ((args.nil? || args.size==0)?10:args[0].to_i).times do
-          click
-          sleep(0.05)
-          break unless element.present?
+      def click_while_present(counter=2, duration=0.25)
+        begin
+          (counter.to_i).times do
+            click
+            sleep(duration)
+            break unless present?
+          end
+        rescue
+          #ignore
         end
+        self
       end
 
       def double_click
@@ -171,38 +173,20 @@ module Stamps
         rescue
           #ignore
         end
+        self
       end
 
-      def blur_out(*args)
-        ((args.nil? || args.length==0)?2:args[0].to_i).times do
-          click
-          double_click
-        end
-      end
-    end
-
-    class StampsTextBox < StampsElement
-      include HelpBlockElement
-      def set(txt)
-        3.times do
-          begin
-            clear
-            text_box.set(txt) if present?
-            break if text == txt
-            set_attribute_value("value", txt)  if present?
-            break if text == txt
-          rescue
-            #ignore
-          end
-        end
-      end
-
-      def clear
+      def blur_out(counter=2)
         begin
-          text_box.clear if present?
+          (counter.to_i).times do
+            flash
+            double_click
+            click
+          end
         rescue
           #ignore
         end
+        self
       end
 
       def set_attribute_value(attribute_name, value)
@@ -213,20 +197,87 @@ module Stamps
         attribute_value("data-errorqtip")
       end
 
-      def placeholder
-        attribute_value("placeholder")
-      end
-
       def style(property)
         element.style(property)
       end
     end
 
-    #class StampsWatirRadio < StampsWatirCheckBox
-    #end
+    class StampsWatirInput < StampsElement
+      def checked?
+        begin
+          return input.checked?
+        rescue
+          #ignore
+        end
+        false
+      end
+
+      def placeholder
+        begin
+          input.placeholder
+        rescue
+          #ignore
+        end
+        ''
+      end
+    end
+
+    class StampsTextBox < StampsWatirInput
+      def set(str, iteration=1)
+        iteration.to_i.times do
+          begin
+            clear
+            textbox.set(str) if present?
+            break if text == str
+            set_attribute_value("value", str)  if present?
+            break if text == str
+          rescue
+            #ignore
+          end
+        end
+        self
+      end
+
+      def append(txt)
+        begin
+          textbox.append(txt) if present?
+        rescue
+          #ignore
+        end
+        self
+      end
+
+      def clear
+        begin
+          textbox.clear if present?
+        rescue
+          #ignore
+        end
+        self
+      end
+    end
+
+    class StampsWatirRadio < StampsElement
+      def set
+        begin
+          radio.set
+        rescue
+          #ignore
+        end
+        self
+      end
+
+      def set?
+        begin
+          return radio.set?
+        rescue
+          #ignore
+        end
+        false
+      end
+    end
 
     class StampsWatirCheckBox < StampsElement
-      include HelpBlockElement
       def check
         5.times do
           set
@@ -243,7 +294,7 @@ module Stamps
 
       def set
         begin
-          check_box.set
+          checkbox.set
         rescue
           #ignore
         end
@@ -251,7 +302,7 @@ module Stamps
 
       def clear
         begin
-          check_box.clear
+          checkbox.clear
         rescue
           #ignore
         end
@@ -259,58 +310,75 @@ module Stamps
 
       def checked?
         begin
-          check_box.checked?
+          return checkbox.checked?
         rescue
-          return false
+          #ignore
         end
+        false
       end
 
       def set?
         begin
-          check_box.set?
+          return checkbox.set?
         rescue
-          return false
+          #ignore
         end
+        false
       end
     end
 
     class StampsCheckBox
-      attr_accessor :check_box, :check_verify, :attribute, :attribute_value
-      def initialize(check_box, check_verify, attribute, attribute_value)
-        @check_box = StampsElement.new(check_box)
-        @check_verify = StampsElement.new(check_verify)
+      attr_accessor :checkbox, :check_verify, :attribute, :attribute_value
+      def initialize(checkbox, check_verify, attribute, attribute_value)
+        @checkbox = StampsElement.new(checkbox)
+        @check_verify = check_verify
         @attribute = attribute
         @attribute_value = attribute_value
       end
 
       def present?
-        check_box.present?
+        checkbox.present?
       end
 
-      def check
-        50.times do
-          break if checked?
-          check_box.click
-        end
+      def enabled?
+        checkbox.enabled?
       end
 
-      def uncheck
-        if checked?
-          50.times do
-            check_box.click
-            break unless checked?
-          end
-        end
+      def visible?
+        checkbox.visible?
+      end
+
+      def exist?
+        checkbox.exist?
       end
 
       def checked?
         begin
           result = check_verify.attribute_value(attribute)
           return result == "true" if result == "true" || result == "false"
-          result.include?(attribute_value)
+          return result.include?(attribute_value)
         rescue
-          false
+          #ignore
         end
+        false
+      end
+
+      def check
+        20.times do
+          break if checked?
+          checkbox.click
+        end
+        self
+      end
+
+      def uncheck
+        if checked?
+          20.times do
+            checkbox.click
+            break unless checked?
+          end
+        end
+        self
       end
     end
 
@@ -318,36 +386,38 @@ module Stamps
       attr_accessor :radio, :check_verify, :attribute, :attribute_value
       def initialize(radio, check_verify, attribute, attribute_value)
         @radio = StampsElement.new(radio)
-        @check_verify = StampsElement.new(check_verify)
+        @check_verify = check_verify
         @attribute = attribute
         @attribute_value = attribute_value
       end
 
       def select
-        50.times{
+        20.times do
           break if selected?
           radio.click
-        }
-        expect(selected?).to be(true)
+        end
+        expect(selected?).to be(true), "Unable to select radio button"
+        self
       end
 
       def selected?
         begin
-          check_verify.attribute_value(attribute).include?(attribute_value)
+          return check_verify.attribute_value(attribute).include?(attribute_value)
         rescue
-          false
+          #ignore
         end
+        false
       end
     end
 
     class StampsOldDropDown #TODO-Rob refactor this to StampsGenericDropDown
-      attr_accessor :browser, :drop_down, :text_box, :html_tag
+      attr_accessor :browser, :dropdown, :textbox, :html_tag
 
-      def initialize(drop_down, html_tag, text_box)
-        @browser = drop_down.browser
-        @drop_down = StampsElement.new(drop_down)
+      def initialize(dropdown, html_tag, textbox)
+        @browser = dropdown.browser
+        @dropdown = StampsElement.new(dropdown)
         @html_tag = html_tag
-        @text_box = StampsTextBox.new(text_box)
+        @textbox = StampsTextBox.new(textbox)
       end
 
       def expose_selection(selection)
@@ -358,10 +428,11 @@ module Stamps
             "Unsupported HTML drop-down selection tag #{html_tag}".should
         end
 
-        5.times{
-          drop_down.click
+        5.times do
+          dropdown.click
           return selection_element if selection_element.present?
-        }
+        end
+        expect(selection_element.present?).to be(true), "Drop-down selection #{selection} is not in the list of values."
       end
 
       def select(selection)
@@ -370,7 +441,7 @@ module Stamps
           when String
             10.times do
               selection_element.click
-              break if text_box.text.include?(selection)
+              break if textbox.text.include?(selection)
             end
 
           else
@@ -387,21 +458,21 @@ module Stamps
     end
 
     class StampsDropDownLovSubStr < StampsTextBox
-      attr_accessor :list_of_values, :drop_down
+      attr_accessor :list_of_values, :dropdown
 
-      def initialize(text_box, drop_down, list_of_values)
-        super(text_box)
-        @drop_down = StampsElement.new(drop_down)
+      def initialize(textbox, dropdown, list_of_values)
+        super(textbox)
+        @dropdown = StampsElement.new(dropdown)
         @list_of_values = list_of_values
       end
 
       def select(str)
-        drop_down.click
+        dropdown.click
         sleep(0.25)
         expect(list_of_values).not_to be_nil, "Error: Set list_of_values before calling select_from_lov."
         10.times do
           begin
-            drop_down.click if list_of_values.size == 0
+            dropdown.click if list_of_values.size == 0
             break unless list_of_values.size == 0
           rescue
             #ignore
@@ -427,16 +498,16 @@ module Stamps
     end
 
     class StampsDropDown < StampsTextBox
-      attr_accessor :html_tag, :drop_down
+      attr_accessor :html_tag, :dropdown
 
-      def initialize(text_box, drop_down, html_tag)
-        super(text_box)
-        @drop_down = StampsElement.new(drop_down)
+      def initialize(textbox, dropdown, html_tag)
+        super(textbox)
+        @dropdown = StampsElement.new(dropdown)
         @html_tag = html_tag
       end
 
       def select(str)
-        drop_down.click
+        dropdown.click
         expect(html_tag).not_to be_nil, "Error: Set html_tag before calling select."
         case html_tag
           when :span
@@ -451,7 +522,7 @@ module Stamps
 
         20.times do
           begin
-            drop_down.click unless selection.present?
+            dropdown.click unless selection.present?
             selection.scroll_into_view
             selection.click
             break if text == str
@@ -465,33 +536,33 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :browser, :text_box, :inc_btn, :dec_btn
+      attr_reader :browser, :textbox, :inc_btn, :dec_btn
 
       def initialize(textbox, inc_btn, dec_btn)
-        @text_box = StampsTextBox.new(textbox)
+        @textbox = StampsTextBox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
-        @browser = text_box.browser
+        @browser = textbox.browser
       end
 
       def present?
-        text_box.present?
+        textbox.present?
       end
 
       def text
-        text_box.text
+        textbox.text
       end
 
       def set(value)
-        text_box.set(value)
+        textbox.set(value)
       end
 
       def increment(value)
-        current_value = text_box.text.to_i
+        current_value = textbox.text.to_i
         value.to_i.times do
           inc_btn.click
         end
-        expect(current_value + value.to_i).to eql text_box.text.to_i
+        expect(current_value + value.to_i).to eql textbox.text.to_i
       end
 
       def selection(str)
@@ -507,27 +578,27 @@ module Stamps
       end
 
       def decrement(value)
-        current_value = text_box.text.to_i
+        current_value = textbox.text.to_i
         value.to_i.times do
           dec_btn.click
         end
-        expect(current_value + value.to_i).to eql text_box.text.to_i
+        expect(current_value + value.to_i).to eql textbox.text.to_i
       end
     end
 
     class StampsComboBox
-      attr_accessor :browser, :text_box, :drop_down, :selection_type
+      attr_accessor :browser, :textbox, :dropdown, :selection_type
 
-      def initialize(text_boxes, drop_downs, selection_type, index)
+      def initialize(textboxes, dropdowns, selection_type, index)
         @index = index
-        @text_box = StampsTextBox.new(text_boxes[@index])
-        @drop_down = StampsTextBox.new(drop_downs[@index])
+        @textbox = StampsTextBox.new(textboxes[@index])
+        @dropdown = StampsTextBox.new(dropdowns[@index])
         @selection_type = selection_type
-        @browser = text_box.browser
+        @browser = textbox.browser
       end
 
       def present?
-        text_box.present?
+        textbox.present?
       end
 
       def selection(str)
@@ -543,19 +614,19 @@ module Stamps
       end
 
       def select(str)
-        drop_down.click
+        dropdown.click
         10.times do
           selection = StampsElement.new(selection(str))
           begin
-            break if (text_box.text).include?(str)
-            drop_down.click unless selection.present?
+            break if (textbox.text).include?(str)
+            dropdown.click unless selection.present?
             selection.click
           rescue
             #ignore
           end
         end
-        expect(text_box.text).to eql(str)
-        text_box.text
+        expect(textbox.text).to eql(str)
+        textbox.text
       end
     end
 

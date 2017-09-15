@@ -2,7 +2,8 @@
 module Stamps
   module Mail
     class WebMail < Browser::StampsModal
-      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_form , :print_media
+      include PrintFormPanel::PrintFormBlurOut
+      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_media
 
       def initialize(param)
         super
@@ -12,7 +13,13 @@ module Stamps
       end
 
       def print_on(selection)
-        param.print_media = print_media.print_on(selection)
+        print_media.wait_until_present(5)
+        blur_out
+        expect(print_media.present?).to be(true), "Print-on drop-down is not present."
+        param.print_media = print_media.print_on_selection(selection)
+      end
+
+      def print_form
         case param.print_media
           when :stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if @print_form.nil? || @print_form.print_media != :stamps
@@ -28,10 +35,13 @@ module Stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil? || @print_form.print_media != :certified_mails_3810
           when :rolls
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls) if @print_form.nil? || @print_form.print_media != :rolls
+          when :manage_printing_options
+            @print_form
           else
             # do nothing
         end
-        expect(@print_form.present?).to be(true)
+        expect(@print_form.present?).to be(true), "#(selection) form is not present."
+        @print_form
       end
 
       def present?

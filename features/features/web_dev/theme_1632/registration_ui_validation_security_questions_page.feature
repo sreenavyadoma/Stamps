@@ -1,32 +1,42 @@
 Feature: Registration Security questions page validation theme_1632
 
   Background:
-    Given I loaded registration profile page 1632
+    Given I loaded the default registration page
 
-  @securityquestions_page_ui_validation
+  @registration_ui_validation_security_questions_page
   Scenario:
-    Then set Profile page email to email
-    Then set Profile page username to username
-    Then set Profile page password to password
-    Then set Profile page retype password textbox to password
-    Then set Profile page Usage Type list of values to contain Business Use - Mostly mailing (letters/postcards/flats
-    Then on Profile page page, continue to Membership page
-    Then set Registration Membership first name text box to firstname
-    Then set Registration Membership last name text box to lastname
-    Then set Registration Membership company text box to company
-    Then set Registration Membership address text box to 1990 E Grand Ave
-    Then set Registration Membership city text box to city
-    Then set Registration Membership state text box to state
-    Then set Registration Membership zip text box to zip
-    Then set Registration Membership phone text box to phone
-    Then set Registration Membership cardholders name textbox to cardholdersname
-    Then set Registration Membership credit card number textbox to creditcardnumber
-    Then set Registration Membership month dropdown to month
-    Then set Registration Membership year to year
-    Then set Registration Membership billing address same as mailing address
-    Then set Registration Membership terms and condition
-    Then on Registration Membership page continue to Choose Supplies page
-    Then on Registration ATG page continue to Registration Security questions page
+
+    # Profile Page
+    Then set Profile page Email to random value
+    Then set Profile page Username to random value
+    Then set Profile page Password to random value
+    Then set Profile page Re-type password to same as previous password
+    Then set Profile page Survey Question to Individual
+    Then set How did you hear about us? to Magazine Ad
+    Then set Profile page Promo Code to PR33-NH77
+    Then continue to Membership page
+
+    # Membership Page
+    Then set Membership page member address to random address between zone 1 and 4
+    Then set Membership page Company to random value
+    Then set Membership page Phone to random value
+    Then set Membership page Cardholder's Name to random value
+    Then set Membership page Credit Card Number to default value
+    Then set Membership page Month to Dec (12)
+    Then set Membership page Year to this year plus 1
+    Then check Membership page Terms & Conditions
+    Then click Membership page Continue button
+
+    # Choose supplies Page
+    Then in Choose Supplies page, click Place Order button
+
+    # Add Postage Page
+    Then in Add Postage page, click Confirm button
+
+    # Ship Volume Survey Page
+    Then in Ship Volume Survey page, click Submit button
+
+    # Verify all security questions present
     Then expect Registration navigation bar Stamps logo exists
     Then expect Registration navigation bar USPS logo exists
     Then expect Registration Security questions header contain Before you start printing postage, make sure your account is protected.
@@ -51,7 +61,7 @@ Feature: Registration Security questions page validation theme_1632
 
     Then expect Profile page Privacy Policy link exists
     Then expect Profile page copyright link exists
-    Then expect Profile page Norton logo exists
+   #Then expect Profile page Norton logo exists
     Then expect Profile page TRUSTe logo exists
     Then expect Profile page LIVE chat button exists
 

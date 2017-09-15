@@ -1,6 +1,4 @@
 
-
-
 Then /^[Ss]et [Rr]egistration [Mm]embership first name text box to (.*)$/ do |firstname|
   registration.membership.first_name.set firstname
 end
@@ -57,6 +55,26 @@ Then /^[Ss]et [Rr]egistration [Mm]embership terms and condition$/ do
   registration.membership.termsnconditions
 end
 
+Then /^[Ss]et Security questions page select first question to (.*)$/ do |str|
+  registration.security_questions.first_question.select(str)
+end
+
+Then /^[Ss]et Security questions page select first answer to (.*)$/ do |str|
+  registration.security_questions.first_answer.set(str)
+end
+
+Then /^[Ss]et Security questions page select second question to (.*)$/ do |str|
+  registration.security_questions.second_question.select(str)
+end
+
+Then /^[Ss]et Security questions page select second answer to (.*)$/ do |str|
+  registration.security_questions.second_answer.set(str)
+end
+
+Then /^[Cc]lick Get Started button$/ do
+  registration.security_questions.get_started.click
+end
+
 Then /^[Oo]n [Mm]embership [Pp]age continue to Choose Supplies page$/ do
   registration.membership.submit_button
 end
@@ -81,9 +99,12 @@ Then /^[Ee]xpect [Rr]egistration Securityquestions second secret question dropup
   expect(registration.securityquestion.secondsecret_question_dropup). to eql(str)
 end
 
-Then /^[Ex]xpect Registration Securityquestions get started button exists/ do
+Then /^[Ee]xpect Registration Securityquestions get started button exists/ do
   registration.securityquestion.getstarted_button
 end
 
+Then /^[Ee]xpect congratulations message exists$/ do
+  expect(registration.security_second_question.present?).to be(true)
+end
 
 

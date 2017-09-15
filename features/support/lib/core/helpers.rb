@@ -105,6 +105,15 @@ module Stamps
   end
 
   module ParameterHelper
+
+    def state_fullname(state)
+      if @states.nil?
+        @states = Hash.new
+        @states["CA"] = "California"
+      end
+      @states
+    end
+
     def first_half(str)
       index = (str.size.to_f / 2).ceil
       str[0, index]
@@ -124,11 +133,20 @@ module Stamps
       ship_date.strftime("%m/%d/%Y")
     end
 
-    def is_whole_number?(variable)
-      variable % 1 == 0
+    def is_whole_number?(number)
+      number % 1 == 0
     end
 
-    def remove_dollar_sign str
+    def is_numeric?(str)
+      begin
+        return !!Float(str.to_f)
+      rescue
+        #ignore
+      end
+      false
+    end
+
+    def remove_dollar_sign(str)
       strip str, '$', ''
     end
 

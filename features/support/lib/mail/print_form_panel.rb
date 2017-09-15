@@ -7,6 +7,7 @@ module Stamps
           expect(@blur_out.present?).to be(true)
           2.times do
             @blur_out.double_click
+            @blur_out.flash
             @blur_out.click
           end
         end
@@ -15,7 +16,7 @@ module Stamps
       module MailFrom
         def mail_from
           @mail_from = PrintFormMailFrom.new(param) if @mail_from.nil? || !@mail_from.present?
-          expect(@mail_from.present?).to be(true)
+          expect(@mail_from.present?).to be(true), "Mail-From drop"
           @mail_from
         end
       end
@@ -94,20 +95,20 @@ module Stamps
 
         def stamp_amount
           if @stamp_amount.nil?
-            text_box = browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
+            textbox = browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
             inc_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]")
             dec_btn = browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")
-            @stamp_amount = StampsNumberField.new(text_box, inc_btn, dec_btn)
+            @stamp_amount = StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @stamp_amount
         end
 
         def quantity
           if @quantity.nil?
-            text_box = browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
+            textbox = browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
             inc_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")
             dec_btn = browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")
-            @quantity = StampsNumberField.new(text_box, inc_btn, dec_btn)
+            @quantity = StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
           @quantity
         end
@@ -124,7 +125,7 @@ module Stamps
 
         def certified_mail
           if @certified_mail.nil?
-            clickable_element = browser.span(id: "sdc-mainpanel-cmcheckbox")
+            clickable_element = browser.input(id: "sdc-mainpanel-cmcheckbox-inputEl")
             verify = browser.div(id: "sdc-mainpanel-cmcheckbox")
             @certified_mail = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end
@@ -147,7 +148,7 @@ module Stamps
 
         def return_receipt
           if @return_receipt.nil?
-            clickable_element = browser.span(id: "sdc-mainpanel-rrcheckbox")
+            clickable_element = browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl")
             verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
             @return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
           end

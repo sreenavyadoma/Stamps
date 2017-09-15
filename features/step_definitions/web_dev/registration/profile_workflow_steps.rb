@@ -19,13 +19,13 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   step "blur out on profile page"
 end
 
-Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|
-  expect(registration.profile.email.text).to eql((str.nil?)?test_param[:email]:str)
-end
-
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
   registration.profile.account_username.set((test_param[:username] = (str.nil?)?(test_helper.random_username):str))
   step "blur out on profile page"
+end
+
+Then /^[Ee]xpect Profile page [Uu]sername tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
+  expect(registration.profile.account_username.help_block.tooltip(tooltip_index)).to eql(str)
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
@@ -88,6 +88,10 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ 
   registration.profile.promo_code.set(test_param[:promo_code] = (str.nil?)?'':str)
 end
 
+Then /^[Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
+  expect(registration.profile.promo_code.help_block.tooltip(tooltip_index)).to eql(str)
+end
+
 Then /^[Ss]how [Pp]rofile [Pp]age [Pp]romo [Cc]ode [Tt]extbox$/ do
   registration.profile.show_promo_code
 end
@@ -97,7 +101,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Pp]romo [Cc]ode is (?:correct|(.*))$/ do |s
   expect(registration.profile.show_promo_code.text).to eql((str.nil?)?test_param[:promo_code]:str)
 end
 
-Then /^check [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
+Then /^[Cc]heck [Pp]rofile [Pp]age [Mm]oney-saving offers and new products$/ do
   registration.profile.money_saving_offers_checkbox.check
 end
 

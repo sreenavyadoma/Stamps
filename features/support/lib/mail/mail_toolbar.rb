@@ -1,11 +1,12 @@
 module Stamps
   module Mail
     class MailToolbar < Browser::StampsModal
-      attr_reader :total, :mail_print_modal, :confirm_window, :please_wait, :windows_print, :sample_button, :printing_problem, :insufficient_funds,
-                  :print_label, :print_stamps, :print_envelope, :print_quantity_warning
+      attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
+                  :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning
 
       def initialize(param)
         super
+        @install_stamps_connect = PrintModal::InstallStampsConnect.new(param)
         @mail_print_modal = PrintModal::MailPrintModal.new(param)
         @confirm_window = PrintModal::MailConfirmPrint.new(param)
         @please_wait = PrintModal::PleaseWait.new(param)
@@ -44,7 +45,7 @@ module Stamps
       end
 
       def print_sample
-        open_sample_window mail_print_modal
+        open_sample_window(mail_print_modal)
       end
 
       def print_postage
@@ -54,30 +55,14 @@ module Stamps
       def open_window(window)
         return window if window.present?
 
-        expect(print_button.present?).to be(true)
-        10.times do
+        expect(print_button.present?).to be(true), "Print button is not present."
+        30.times do
           begin
             print_button.click
+            window.wait_until_present(3)
+            return window if window.present?
 
-            window.wait_until_present(2)
-
-            #check for quantity dialog box to appear
-            # if quantity dialog box is present, click Agree and something
-
-            if print_quantity_warning.present?
-              5.times {
-              print_quantity_warning.agree_and_continue_btn
-              sleep(0.120)
-              agree_and_continue_btn.click
-              }
-            end
-
-
-
-
-
-
-
+            expect(install_stamps_connect.body.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
 
             if please_wait.present?
               logger.message(please_wait.paragraph)
@@ -97,7 +82,7 @@ module Stamps
             #ignore
           end
         end
-        expect(window.present?).to be(true)
+        expect(window.present?).to be(true), "Unable to open Mail Print Modal"
       end
 
       def open_sample_window window

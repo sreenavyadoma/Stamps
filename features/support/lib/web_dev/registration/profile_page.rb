@@ -7,14 +7,13 @@ module Stamps
         end
 
         def promo_code
-          50.times do
-            @promo_code = StampsTextBox.new(browser.text_field(id: 'promoCodeHidden'))
+          20.times do
+            @promo_code = RegProfilePromoCode.new(browser.text_field(id: 'promoCodeHidden'))
             alt_promo_code = StampsTextBox.new(browser.text_field(id: 'promoCode'))
             @promo_code = alt_promo_code if alt_promo_code.present?
             break if @promo_code.present?
           end
-          @promo_code.help_elements = browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")
-          @promo_code
+           @promo_code
         end
 
         def show_promo_code
@@ -28,21 +27,15 @@ module Stamps
 
       module AccountInfo
         def account_username
-          @account_username = StampsTextBox.new(browser.text_field(name: "username"))
-          @account_username.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")
-          @account_username
+          @account_username = RegProfileUsername.new(browser.text_field(name: "username"))
         end
 
         def account_password
-          @account_password = StampsTextBox.new(browser.text_field(name: "password"))
-          @account_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")
-          @account_password
+          @account_password = RegProfilePassword.new(browser.text_field(name: "password"))
         end
 
         def retype_password
-          @retype_password = StampsTextBox.new(browser.text_field(id: "confirmPassword"))
-          @retype_password.help_elements = browser.lis(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span")
-          @retype_password
+          @retype_password = RegProfileReTypePassword.new(browser.text_field(id: "confirmPassword"))
         end
       end
 
@@ -89,9 +82,7 @@ module Stamps
         end
 
         def email
-          @email ||= StampsTextBox.new(browser.text_field(id: "email"))
-          @email.help_elements = browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")
-          @email
+          @email ||= RegProfileEmail.new(browser.text_field(id: "email"))
         end
 
         def survey_question
@@ -108,6 +99,58 @@ module Stamps
 
         def continue_btn
           @continue_btn ||= StampsElement.new(browser.button(id: "next"))
+        end
+      end
+
+      class RegProfileEmail < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span"))
+        end
+      end
+
+      class RegProfileUsername < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
+        end
+      end
+
+      class RegProfilePassword < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span"))
+        end
+      end
+
+      class RegProfileReTypePassword < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li"))
+        end
+
+        def single_field_help_block
+          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
+        end
+      end
+
+      class RegProfilePromoCode < Stamps::Browser::StampsTextBox
+        def help_block
+          RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li"))
+        end
+      end
+
+      class RegProfileSurveyQuetion < Stamps::Browser::StampsDropDownLovSubStr
+        def single_field_help_block
+          RegHelpBlock.new(browser,browser.lis(css: "li[id=survey]>div>div:nth-child(1)>div>div>span"))
         end
       end
 

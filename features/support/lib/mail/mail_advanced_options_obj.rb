@@ -12,13 +12,13 @@ module Stamps
       end
 
       class CostCodeComboBox < Browser::StampsModal
-        attr_accessor :param, :text_box, :drop_down
+        attr_accessor :param, :textbox, :dropdown
 
         def initialize(param)
           super
           @index = index
-          @text_box = browser.text_field(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
-          @drop_down = browser.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
+          @textbox = browser.text_field(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
+          @dropdown = browser.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
         end
 
         def selection(str)
@@ -35,30 +35,31 @@ module Stamps
 
         def select(str)
           logger.info "Select #{str}"
-          drop_down.click
+          dropdown.click
           10.times do
             selection = StampsElement.new(selection(str))
-            break if text_box.text.include?(str)
-            drop_down.click unless selection.present?
+            break if textbox.text.include?(str)
+            dropdown.click unless selection.present?
             selection.click
-            logger.info "Selected: #{text_box.text} - #{((text_box.text).include? str)?"done": "not selected"}"
+            logger.info "Selected: #{textbox.text} - #{((textbox.text).include? str)?"done": "not selected"}"
           end
-          expect(text_box.text).to eql(str)
-          text_box.text
+          expect(textbox.text).to eql(str)
+          textbox.text
         end
       end
 
       module MailDateTextbox
-        def text_box
-          @text_box = StampsTextBox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @text_box.nil?
-          @text_box
+        def textbox
+          @textbox = StampsTextBox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @textbox.nil?
+          @textbox
         end
       end
 
       class MailDatePicker < Browser::StampsModal
         include MailDateTextbox
+        include ParameterHelper
 
-        attr_reader :trigger_picker, :valid_ship_date
+        attr_reader :trigger_picker
         def initialize(param)
           super
           @trigger_picker = StampsElement.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
@@ -85,12 +86,10 @@ module Stamps
             trigger_picker.click unless element.present?
             sleep(0.05)
             element.click
-            break if text_box.text.include?(date)
+            break if textbox.text.include?(date)
           end
-          trigger_picker.click
-          sleep(0.8)
-          trigger_picker.click
-          expect(text_box.text).to eql(date)
+          trigger_picker.click if element.present?
+          expect(textbox.text).to eql(date)
           date
         end
       end

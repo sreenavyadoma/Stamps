@@ -22,22 +22,23 @@ Feature:  Update Order to ShipStation
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
 
+    Then expect Orders Grid service is Priority Mail
+    Then expect Orders Grid service is PM Package
+    Then expect Orders Grid service is correct
+
     Then set Order Details form Reference Number to Update Orders To ShipStation
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
+    Then blur out on Order Details form 10 times
+    Then Pause for 2 seconds
+
+    Then uncheck Orders Grid for cached Order ID
+
+    Then Pause for 2 seconds
+    Then check Orders Grid for cached Order ID
+    Then Pause for 2 seconds
     Then blur out on Order Details form 20 times
-    Then Pause for 3 seconds
-
-    Then uncheck Orders Grid saved Order ID
-    Then Pause for 2 seconds
-
-    Then Refresh the browser
-
-    Then Pause for 2 seconds
-    Then blur out on Order Details form 20 times
-    Then check Orders Grid saved Order ID
-    Then Pause for 2 seconds
 
     #Verify Single Order Details form was saved in ShipStation
     Then expect Order Details form Ship-From and Ship-From saved values are the same
@@ -59,13 +60,13 @@ Feature:  Update Order to ShipStation
     Then expect Order Details form Width is 1
     Then expect Order Details form Height is 1
 
-    Then expect Order Details form service is PM Package
+    Then expect Order Details form service is correct
     Then expect Order Details form Service Cost is correct
 
     Then expect Order Details form Insure-For is 100.00
     Then expect Order Details form Insure-For Cost is correct
 
-    Then expect Order Details form Tracking is Signature Required
+    Then expect Order Details form Tracking is correct
     Then expect Order Details form Tracking Cost is correct
 
     Then expect Order Details form Reference Number is correct

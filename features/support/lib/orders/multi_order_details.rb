@@ -35,19 +35,18 @@ module Stamps
    end
 
       class MultiDetailsInsureFor < Browser::StampsModal
-        attr_reader :text_box, :increment_trigger, :decrement_trigger, :blur_element, :drop_down
+        attr_reader :textbox, :increment_trigger, :decrement_trigger, :blur_element, :dropdown
 
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div>div>[id^=combo-][id$=-inputEl]")
-          @drop_down = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(7)>div>div>div>div[id^=combo-][id$=bodyEl]>div>div[id$=picker]")
+          @textbox = StampsTextbox.new browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div>div>[id^=combo-][id$=-inputEl]")
+          @dropdown = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(7)>div>div>div>div[id^=combo-][id$=bodyEl]>div>div[id$=picker]")
           @decrement_trigger = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
-          @blur_element = BlurOutElement.new(param) # This blur out element is for single order details form. Must create a blur out element for multi order details
         end
 
         def text
-          text_box.text
+          textbox.text
         end
 
         def value
@@ -55,14 +54,10 @@ module Stamps
           0
         end
 
-        def blur_out
-          blur_element.blur_out
-        end
-
         def set(value)
           15.times do
             check
-            text_box.set(value)
+            textbox.set(value)
             sleep(0.25)
             3.times {blur_out}
             return true if text.to_f == value.to_f
@@ -85,20 +80,15 @@ module Stamps
       end
 
       class MultiOrderDetailsTracking < Browser::StampsModal
-        attr_reader :text_box, :drop_down, :blur_element
+        attr_reader :textbox, :dropdown
         def initialize(param)
           super(param)
-          @text_box = StampsTextbox.new browser.text_field(name: 'Tracking')
-          @drop_down = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
-          @blur_element = BlurOutElement.new(param)
+          @textbox = StampsTextbox.new browser.text_field(name: 'Tracking')
+          @dropdown = StampsElement.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
         end
 
         def present?
-          text_box.present?
-        end
-
-        def blur_out
-          blur_element.blur_out
+          textbox.present?
         end
 
         def tracking_selection(selection)
@@ -115,21 +105,21 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(drop_down.present?).to be(true)
+          expect(dropdown.present?).to be(true)
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
-            drop_down.click unless selection.present?
+            dropdown.click unless selection.present?
             selection.click
-            break if text_box.text.include?(str)
+            break if textbox.text.include?(str)
           end
-          expect(text_box.text).to include(str)
+          expect(textbox.text).to include(str)
         end
 
         def tooltip(selection)
           selection_label = browser.td(text: selection)
           5.times {
             begin
-              drop_down.click unless selection_label.present?
+              dropdown.click unless selection_label.present?
               if selection_label.present?
                 qtip = selection_label.parent.parent.parent.parent.attribute_value("data-qtip")
                 logger.info "#{qtip}"
@@ -146,20 +136,20 @@ module Stamps
         attr_reader :length, :width, :height
         def initialize(param)
           super(param)
-          text_box = browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
+          textbox = browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
           inc_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
-          @length = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @length = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          text_box = browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
+          textbox = browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
           inc_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]")
-          @width = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @width = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          text_box = browser.text_field(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
+          textbox = browser.text_field(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
           inc_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]")
           dec_btn = browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]")
-          @height = Stamps::Browser::StampsNumberField.new(text_box, inc_btn, dec_btn)
+          @height = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
         end
 
         def present?

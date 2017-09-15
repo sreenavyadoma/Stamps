@@ -18,11 +18,11 @@ Then /^[Ee]xpect Print form Ship-To address is (.*)$/ do |address|
 end
 #todo major rework here
 Then /^[Ee]xpect Print form Print On Field is present$/ do
-  expect(stamps.mail.print_on.present?).to be(true)
+  expect(stamps.mail.print_form.print_media.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Ship From Field is present$/ do
-  expect(stamps.mail.print_form.ship_from.text_box.present?).to be(true)
+  expect(stamps.mail.print_form.mail_from.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Ship To Link is present$/ do
@@ -30,7 +30,7 @@ Then /^[Ee]xpect Print form Ship To Link is present$/ do
 end
 
 Then /^[Ee]xpect Print form Ship To Country Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.country.text_box.present?).to be(true)
+  expect(stamps.mail.print_form.mail_to.country.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Email Check Box is present$/ do
@@ -38,15 +38,15 @@ Then /^[Ee]xpect Print form Email Check Box is present$/ do
 end
 
 Then /^[Ee]xpect Print form Email Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.email.text_box.present?).to be(true)
+  expect(stamps.mail.print_form.mail_to.email.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Pounds Field is present$/ do
-  expect(stamps.mail.print_form.weight.oz.text_box.present?).to be(true)
+  expect(stamps.mail.print_form.weight.oz.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Ounces Field is present$/ do
-  expect(stamps.mail.print_form.weight.lb.text_box.present?).to be(true)
+  expect(stamps.mail.print_form.weight.lb.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Weigh Button is present$/ do
@@ -58,7 +58,7 @@ Then /^[Ee]xpect Print form Auto Weigh check box is present$/ do
 end
 
 Then /^[Ee]xpect Print form service Field is present$/ do
-  expect(stamps.mail.print_form.service.text_box.present?).to be(true)
+  expect(stamps.mail.print_form.service.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form service Price is present$/ do
@@ -88,7 +88,7 @@ end
 
 
 Then /^[Ee]xpect Print form Insure For Field is present$/ do
-  expect(stamps.mail.shipping_labels.insure_for.text_box.present?).to be(true)
+  expect(stamps.mail.shipping_labels.insure_for.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Insure For Price is present$/ do
@@ -96,7 +96,7 @@ Then /^[Ee]xpect Print form Insure For Price is present$/ do
 end
 
 Then /^[Ee]xpect Print form Tracking Field is present$/ do
-  expect(stamps.mail.shipping_labels.tracking.text_box.present?).to be(true)
+  expect(stamps.mail.shipping_labels.tracking.textbox.present?).to be(true)
 end
 
 Then /^[Ee]xpect Print form Tracking Price is present$/ do

@@ -9,15 +9,15 @@ end
 
 Then /^Save Order Details data$/ do
   if stamps.orders.order_details.present?
-    test_param[:country] = stamps.orders.order_details.ship_to.country.text_box.text
+    test_param[:country] = stamps.orders.order_details.ship_to.country.textbox.text
     test_param[:service_cost] = stamps.orders.order_details.service.cost
-    test_param[:service] = stamps.orders.order_details.service.text_box.text
-    test_param[:ship_from] = stamps.orders.order_details.ship_from.text_box.text
+    test_param[:service] = stamps.orders.order_details.service.textbox.text
+    test_param[:ship_from] = stamps.orders.order_details.ship_from.textbox.text
     test_param[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
     test_param[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
     test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
     test_param[:tracking_cost] = stamps.orders.order_details.tracking.cost
-    test_param[:tracking] = stamps.orders.order_details.tracking.text_box.text
+    test_param[:tracking] = stamps.orders.order_details.tracking.textbox.text
   end
 end
 
@@ -32,9 +32,9 @@ end
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint button$/ do
   print_modal = stamps.orders.orders_toolbar.print_btn.print_modal
   @ship_date = print_modal.ship_date.text
-  @paper_tray = print_modal.paper_tray.text_box.text
-  @printer = print_modal.printer.text_box.text
-  @printing_on = print_modal.printing_on.text_box.text
+  @paper_tray = print_modal.paper_tray.textbox.text
+  @printer = print_modal.printer.textbox.text
+  @printing_on = print_modal.printing_on.textbox.text
   @printing_error = print_modal.print
   sleep(4)
 end
@@ -57,32 +57,6 @@ Then /^Label Unavailable:  Expect Visible$/ do
       #test_config.logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
       expect(@reprint_modal.present?).to be(true)
   end
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to Shipped$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_shipped.move
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to Canceled$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_canceled.move
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to Awaiting Shipment$/ do
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_awaiting_shipment.move
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to On Hold until today plus (\d+)$/ do |day|
-  step "In Orders Grid toolbar, select Move to On Hold until #{(Date.today + day.to_i).strftime("%m/%d/%Y")}"
-end
-
-Then /^[Ii]n Orders Grid toolbar, select Move to On Hold until (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
-  expect(stamps.orders.orders_toolbar.move_drop_down.enabled?).to be(true)
-  stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.cancel
-  stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.hold_until.set("#{month}/#{day}/#{year}")
-  stamps.orders.orders_toolbar.move_drop_down.move_to_on_hold.move
 end
 
 

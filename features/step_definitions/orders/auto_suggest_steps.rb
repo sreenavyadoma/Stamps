@@ -38,81 +38,81 @@ Then /^[Ss]elect entry (.*) in the auto suggest drop down list$/ do |entry|
 end
 
 Then /^[Ee]xpect Domestic Address is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   5.times{
   begin
-    actual = stamps.orders.order_details.ship_to.domestic.text_area.text
+    actual = stamps.orders.order_details.ship_to.domestic.textarea.text
     actual_stripped = actual.gsub(/\n/,", ")
     break if actual_stripped == value
     sleep(2)
   end}
-  actual =  stamps.orders.order_details.ship_to.domestic.text_area.text
+  actual =  stamps.orders.order_details.ship_to.domestic.textarea.text
   actual_stripped = actual.gsub(/\n/,", ")
   expect(actual_stripped).to eql value
 end
 
 Then /^[Ee]xpect Domestic Phone is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect Domestic Email is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Name is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Company is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.phone.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Address 1 is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Address 2 is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International City is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Province is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Postal Code is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Phone is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end
 
 Then /^[Ee]xpect International Email is (.*)$/ do |value|
-  stamps.orders.order_details.ship_to.domestic.show_address
+  step "show order details form ship-to fields"
   actual =  stamps.orders.order_details.ship_to.domestic.email.text
   expect(actual).to eql value
 end

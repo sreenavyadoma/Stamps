@@ -167,16 +167,8 @@ module Stamps
             break if size > 0
             sleep(0.35)
           }
-
-          if size == 0
-            return ""
-          end
-
-          begin
-            grid_text(:order_id, row)
-          rescue
-            return ""
-          end
+          return "" if size == 0
+          grid_text(:order_id, row)
         end
 
       end
@@ -841,12 +833,9 @@ module Stamps
 
         def check(row)
           scroll_into_view
-          if size > 0
-            checkbox_element(row).check
-            expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
-          else
-            expect("Unable to check order number #{row}").to eql "Grid is empty"
-          end
+          expect(size).to be > 0, "Grid is empty, there's no Order ID to check."
+          checkbox_element(row).check
+          expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
         end
 
         def uncheck(row)

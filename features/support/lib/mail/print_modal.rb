@@ -2,75 +2,100 @@
 module Stamps
   module Mail
     module PrintModal
-      class MailPrinterComboBox < Browser::StampsModal
-        attr_reader :text_box, :drop_down
-
-        def initialize(param)
-          super
-          @text_box = StampsTextBox.new(browser.text_field(name: "printers"))
-          @drop_down = StampsElement.new(browser.div(css: "div[id$=-body]>div[id^=printwindow-][id$=-innerCt]>div[id^=printwindow-][id$=-targetEl]>div>div>div>div>div>div>div[class*=x-form-arrow-trigger-default]"))
+      class InstallStampsConnect < Browser::StampsModal
+        def window_title
+          StampsElement.new(browser.divs(text: 'Install Stamps.com Connect').first)
         end
 
-        def select(printer)
-          case printer.downcase
-            when /fac/
-              selection = StampsElement.new(browser.li(text: 'factory'))
-            when /kyocera/
-              selection = StampsElement.new(browser.li(text: /Kyocera/))
-            when /epson/
-              selection = StampsElement.new(browser.li(text: /EPSON/))
-            when /brother/
-              selection = StampsElement.new(browser.li(text: /Brother/))
-            when /officejet/
-              selection = StampsElement.new(browser.li(text: /Officejet/))
-            when /dymo/
-              selection = StampsElement.new(browser.li(text: /DYMO/))
-            when /zdesigner/
-              selection = StampsElement.new(browser.li(text: /ZDesigner/))
-            else
-              expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
-          end
+        def present?
+          window_title.present?
+        end
 
-          10.times do
-            drop_down.click unless selection.present?
-            selection.click
-            sleep(0.15)
-            break if text_box.text.include?(printer)
-          end
-          expect(text_box.text).to include(printer)
+        def body
+          StampsElement.new(browser.div(css: "[class*=x-window-default-closable] [id^=dialoguemodal-][class=x-autocontainer-innerCt]"))
+        end
+
+        def install_stamps_connect
+
+        end
+      end
+
+      class MailPrinterComboBox < Browser::StampsModal
+        def dropdown
+          StampsElement.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]"))
+        end
+
+        def textbox
+          StampsTextBox.new(browser.text_field(name: "printers"))
+        end
+
+        def select_printer(printer)
+          begin
+            case printer.downcase
+              when /fac/
+                selection = StampsElement.new(browser.li(text: 'factory'))
+              when /kyocera/
+                selection = StampsElement.new(browser.li(text: /Kyocera/))
+              when /epson/
+                selection = StampsElement.new(browser.li(text: /EPSON/))
+              when /brother/
+                selection = StampsElement.new(browser.li(text: /Brother/))
+              when /officejet/
+                selection = StampsElement.new(browser.li(text: /Officejet/))
+              when /dymo/
+                selection = StampsElement.new(browser.li(text: /DYMO/))
+              when /zdesigner/
+                selection = StampsElement.new(browser.li(text: /ZDesigner/))
+              else
+                expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
+            end
+
+            return if textbox.text.include?(printer)
+
+            10.times do
+              dropdown.click unless selection.present?
+              selection.click
+              sleep(0.15)
+              break if textbox.text.include?(printer)
+            end
+            expect(textbox.text).to include(printer), "Unable to select Printer #{printer}"
+          end unless textbox.text.include?(printer)
         end
       end
 
       class MailPaperTrayComboBox < Browser::StampsModal
-        attr_accessor :drop_down, :text_box
+        attr_accessor :dropdown, :textbox
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new(browser.input(name: "paperTrays"))
-          @drop_down = StampsElement.new(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
+          @textbox = StampsTextBox.new(browser.input(name: "paperTrays"))
+          @dropdown = StampsElement.new(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
         end
 
         def select(str)
           selection_label = StampsElement.new(browser.li(text: str))
           10.times do
-            drop_down.click unless selection_label.present?
+            dropdown.click unless selection_label.present?
             selection_label.click
             sleep(0.15)
-            break if text_box.text.include?(str)
+            break if textbox.text.include?(str)
           end
         end
       end
 
       class MailPrintModal < Browser::StampsModal
-        attr_accessor :paper_tray, :printer, :print_button, :reprint_link, :window_title
+        attr_accessor :paper_tray, :mail_printer, :print_button, :reprint_link
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(text: "Print"))
-          @printer = MailPrinterComboBox.new(param)
+          @mail_printer = MailPrinterComboBox.new(param)
           @paper_tray = MailPaperTrayComboBox.new(param)
           @print_button = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
           @reprint_link = StampsElement.new(browser.a(text: 'Reprint'))
+        end
+
+        def window_title
+          StampsElement.new(browser.div(text: "Print"))
         end
 
         def present?
@@ -82,9 +107,15 @@ module Stamps
         end
 
         def print
-          print_button.click_while_present
-          reprint_link.wait_until_present(3)
-          expect(reprint_link.text).to eql('Reprint')
+          wait_until_present(8)
+          expect(present?).to be(true), "Print button on Mail Print Modal is not present."
+          5.times do
+            print_button.click
+            sleep(0.75)
+            break unless print_button.present?
+          end
+          print_button.wait_while_present(8)
+          expect(print_button.present?).to be(false), "Unable to click Print button on Mail Print Modal."
         end
 
         def print_expecting_rating_error
@@ -98,6 +129,7 @@ module Stamps
         def title
           StampsElement.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
         end
+
         def error_ok_button
           browser.span(text: 'OK')
         end

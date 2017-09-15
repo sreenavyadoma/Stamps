@@ -49,6 +49,7 @@ end
 
 Then /^[Ss]elect Print form [Ss]ervice (.*)$/ do |service|
   test_param[:service] = service
+  step "blur out on print form"
   stamps.mail.print_form.mail_service.select(test_param[:service])
 end
 
@@ -67,7 +68,15 @@ end
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   test_param[:country] = country
   test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
-  stamps.mail.print_form.mail_to.country((test_param[:country]))
+  step "blur out on print form"
+  # work around for rating problem
+  10.times do
+    stamps.mail.print_form.mail_to.country(test_param[:country])
+    sleep(0.25)
+    break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(test_param[:country]) && stamps.mail.print_form.mail_service.has_rates?
+  end
+  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to include test_param[:country]
+  step "blur out on print form"
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do
@@ -75,7 +84,7 @@ test_param[:total_ship_cost] = stamps.mail.mail_toolbar.total
 end
 
 Then /^[Ss]ave Print Form Mail From$/ do
-  test_param[:ship_from] = stamps.mail.print_form.mail_from.text_box.text
+  test_param[:ship_from] = stamps.mail.print_form.mail_from.textbox.text
 end
 
 

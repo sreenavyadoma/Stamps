@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Toolbar
 
-      class MoveToOnHold < Browser::StampsModal
+      class MoveToOnHoldModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
@@ -32,7 +32,7 @@ module Stamps
         end
       end
 
-      class MoveToCanceled < Browser::StampsModal
+      class MoveToCanceledModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -61,7 +61,7 @@ module Stamps
         end
       end
 
-      class MoveToShipped < Browser::StampsModal
+      class MoveToShippedModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -74,12 +74,18 @@ module Stamps
           window_title.present?
         end
 
-        def move
-          btn = StampsElement.new(browser.spans(text: "Move to Shipped").last)
-          10.times do
-            btn.click
-            break unless btn.present?
+        def order_number
+          StampsElement.new(browser.label(css: "[id^=thirdcolcell-]>label")).text
+        end
+
+        def move_to_shipped
+          ord_num = order_number
+          move_to_shipped_btn = StampsElement.new(browser.spans(text: "Move to Shipped").last)
+          30.times do
+            move_to_shipped_btn.click
+            break unless move_to_shipped_btn.present?
           end
+          expect(move_to_shipped_btn.present?).to be(false), "Unable to move order number #{ord_num} to Shipped"
         end
 
         def cancel
@@ -90,7 +96,7 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipment < Browser::StampsModal
+      class MoveToAwaitingShipmentModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -120,20 +126,20 @@ module Stamps
       end
 
       class MoveDropDown < Browser::StampsModal
-        attr_reader :drop_down, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_element
+        attr_reader :dropdown, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_element
 
         def initialize(param)
           super
-          @drop_down = StampsElement.new(browser.span(text: "Move"))
-          @shipped = MoveToShipped.new(param)
-          @canceled = MoveToCanceled.new(param)
-          @on_hold = MoveToOnHold.new(param)
-          @awaiting_shipment = MoveToAwaitingShipment.new(param)
+          @dropdown = StampsElement.new(browser.span(text: "Move"))
+          @shipped = MoveToShippedModal.new(param)
+          @canceled = MoveToCanceledModal.new(param)
+          @on_hold = MoveToOnHoldModal.new(param)
+          @awaiting_shipment = MoveToAwaitingShipmentModal.new(param)
           @tooltip_element = StampsElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
         end
 
         def enabled?
-          drop_down.enabled?
+          dropdown.enabled?
         end
 
         def move_to_shipped
@@ -174,11 +180,10 @@ module Stamps
               #do nothing.
           end
 
-          selection_item = StampsElement.new(browser.span(text: selection_str))
-
           30.times{
             return modal if modal.present?
-            drop_down.click unless selection_item.present?
+            selection_item = StampsElement.new(browser.span(text: selection_str))
+            dropdown.click unless selection_item.present?
             sleep(0.50)
             selection_item.hover
             sleep(0.25)
@@ -188,7 +193,7 @@ module Stamps
         end
 
         def tooltip
-          btn = drop_down
+          btn = dropdown
           btn.element.hover
           btn.element.hover
           15.times do
@@ -604,19 +609,19 @@ module Stamps
       end
 
       class PerPage < Browser::StampsModal
-        attr_reader :text_box, :drop_down
+        attr_reader :textbox, :dropdown
 
         def initialize(param)
           super
-          @text_box = StampsTextBox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
-          @drop_down = StampsElement.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
+          @textbox = StampsTextBox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
+          @dropdown = StampsElement.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
         end
 
         def select(selection)
           per_page = StampsElement.new(browser.li(text: selection))
-          box = text_box
+          box = textbox
           10.times do
-            drop_down.click unless per_page.present?
+            dropdown.click unless per_page.present?
             per_page.click if per_page.present?
             return box.text if box.text.include?(selection)
           end
@@ -711,14 +716,14 @@ module Stamps
       end
 
       class OrdersToolbar < Browser::StampsModal
-        attr_reader :print_btn, :add, :move_drop_down, :import_button, :import_orders_modal, :usps_intl_terms
+        attr_reader :print_btn, :add, :move_dropdown, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)
           super
           @import_button = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]"))
           @print_btn = ToolbarPrintButton.new(param)
           @add = AddButton.new(param)
-          @move_drop_down = MoveDropDown.new(param)
+          @move_dropdown = MoveDropDown.new(param)
           @import_orders_modal = ImportOrders.new(param)
           @usps_intl_terms = USPSTermsOrders.new(param)
         end
@@ -820,8 +825,8 @@ module Stamps
 
         def page_number
           field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-          text_box = StampsTextBox.new field
-          text_box
+          textbox = StampsTextBox.new field
+          textbox
         end
 
         def first_page

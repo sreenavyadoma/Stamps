@@ -17,17 +17,17 @@ module Stamps
 
       class Amazon < Browser::StampsModal
         class OrderSource < Browser::StampsModal
-          def text_box
+          def textbox
             StampsTextBox.new(browser.text_field name: "AmazonMarketplace")
           end
 
-          def drop_down
+          def dropdown
             StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2])
           end
 
           def select(selection)
-            dd = drop_down
-            text_field = text_box
+            dd = dropdown
+            text_field = textbox
             selection_field = StampsElement.new(browser.li text: selection)
 
             10.times do
@@ -51,17 +51,17 @@ module Stamps
         end
 
         class ProductIdentifier < Browser::StampsModal
-          def text_box
+          def textbox
             StampsTextBox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
           end
 
-          def drop_down
+          def dropdown
             StampsElement.new((browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
           end
 
           def select(selection)
-            dd = drop_down
-            text_field = text_box
+            dd = dropdown
+            text_field = textbox
             selection_field = StampsElement.new(browser.li text: selection)
 
             10.times do
