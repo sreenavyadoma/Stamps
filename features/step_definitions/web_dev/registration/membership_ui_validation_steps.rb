@@ -246,3 +246,28 @@ end
 
 
 # Username Taken Model
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up header is (.*)$/ do |str|
+  step "Pause for 2 second"
+  expect(registration.membership.uname_model_header).to eql(str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up custom body is (.*)$/ do |str|
+  expect(registration.membership.uname_model_custom_body).to eql(str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Username exists$/ do
+  expect(registration.membership.uname_textbox.present?).to be(true),  "Username DOES NOT exists on Username Taken model"
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue button exists$/ do
+  expect(registration.membership.uname_continue_btn.present?).to be(true),  "Continue Button DOES NOT exists on Username Taken model"
+end
+
+Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (.*)$/ do |str|
+  registration.membership.uname.set((test_param[:username] = (str.nil?)?(test_helper.random_username):str))
+end
+
+Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue button$/ do
+  registration.membership.uname_continue_btn.click
+end
