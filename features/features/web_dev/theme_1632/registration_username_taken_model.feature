@@ -33,4 +33,3 @@ Feature: Registration Username taken model
     Then expect Membership Page Username Taken model pop up Continue button exists
     Then set Membership Page Username Taken model pop up Username to random value
     Then click Membership page Username Taken model pop up Continue button
-
