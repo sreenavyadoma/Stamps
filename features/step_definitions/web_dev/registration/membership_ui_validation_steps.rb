@@ -112,6 +112,10 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership Bonus Offer Details link exists a
   expect(registration.membership.offer_details_link.present?).to be (true), "Bonus Offer Details link doesn't exists on Membership Page"
 end
 
+Then /^[Cc]ontinue to Username Taken Model$/ do
+  registration.membership.continue_btn.click
+end
+
 Then /^[Ee]xpect [Pp]rofile [Pp]age Privacy Policy link exists and is clickable$/ do
   # pending
   # 1. check for presence
@@ -264,8 +268,8 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue butt
   expect(registration.membership.uname_continue_btn.present?).to be(true),  "Continue Button DOES NOT exists on Username Taken model"
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (.*)$/ do |str|
-  registration.membership.uname.set((test_param[:username] = (str.nil?)?(test_helper.random_username):str))
+Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|
+  registration.membership.uname.set((test_param[:uname] = (str.nil?)?(test_helper.random_username):str))
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue button$/ do

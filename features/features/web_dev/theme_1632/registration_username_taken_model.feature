@@ -24,7 +24,7 @@ Feature: Registration Username taken model
     Then set Membership page Month to Dec (12)
     Then set Membership page Year to this year plus 1
     Then check Membership page Terms & Conditions
-    Then click Membership page Continue button
+    Then continue to Username Taken Model
 
     # Username Taken Model
     Then expect Membership Page Username Taken model pop up header is Username Taken
