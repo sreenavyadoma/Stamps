@@ -218,7 +218,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip (\d+) to be (.
 end
 
 
-# Multi Match Address
+# Multi Match Address Model
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header is (.*)$/ do |str|
   expect(registration.membership.model_header).to eql(str)
@@ -243,3 +243,6 @@ end
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Continue button$/ do
   registration.membership.continue.click
 end
+
+
+# Username Taken Model

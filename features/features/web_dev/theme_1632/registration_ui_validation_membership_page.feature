@@ -16,7 +16,6 @@ Feature: Registration Membership page validation Theme 1632
     Then continue to Membership page
 
     # Membership Page
-
     # Membership Page Validate Single Help block tooltips
     Then uncheck Membership page Billing address same as mailing address
     Then click Membership page Continue button
