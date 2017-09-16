@@ -205,7 +205,7 @@ module Stamps
         end
 
         def uname_textbox
-          StampsElement.new(browser.div(css: form[id='newUserNameForm']>div>div>div>input[id='newUsername']))
+          StampsTextBox.new(browser.input(name: "newUsername"))
         end
 
         def uname_continue_btn

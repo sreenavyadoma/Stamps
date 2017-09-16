@@ -269,7 +269,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue butt
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|
-  registration.membership.uname.set((test_param[:uname] = (str.nil?)?(test_helper.random_username):str))
+  registration.membership.uname_textbox.set((test_param[:uname] = (str.nil?)?(test_helper.random_username):str))
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue button$/ do
