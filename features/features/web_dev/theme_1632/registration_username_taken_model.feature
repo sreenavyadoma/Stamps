@@ -34,7 +34,6 @@ Feature: Registration Username taken model
     Then expect Membership Page Username Taken model pop up Continue button exists
     Then set Membership Page Username Taken model pop up Username to random value
     Then click Membership page Username Taken model pop up Continue button
-    #Then Pause for 1 seconds
 
     # Verify that Choose Supplies Page appeared
     Then expect welcome_kit_message exists

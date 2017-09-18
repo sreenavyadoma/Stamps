@@ -207,7 +207,6 @@ module Stamps
         def uname_text_box
           @uname_text_box ||= StampsTextBox.new(browser.text_field(id: "newUsername"))
           @uname_text_box
-
         end
 
         def uname_continue_btn

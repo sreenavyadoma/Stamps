@@ -14,7 +14,7 @@ module Stamps
       end
 
       def welcome_kit_message
-        browser.h1(text: "Customize your Welcome Kit").wait_until_present 10
+        browser.h1(text: "Customize your Welcome Kit").wait_until_present 20
       end
 
       def place_order
