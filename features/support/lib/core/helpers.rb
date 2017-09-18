@@ -470,16 +470,15 @@ module Stamps
     end
   end
 
-  class BrowserType
-    attr_reader :browser_sym
-    def initialize(browser_sym)
+  module BrowserType
+    def browser_selection(browser_sym)
       expect("ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge").to include(browser_sym),
         "Invalid browser selection: #{browser_sym}. Valid values for browser are ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge"
-      @browser_sym = :firefox if "ff|firefox|mozilla".include? browser_sym.downcase
-      @browser_sym = :chrome if "chrome|gc|google".include? browser_sym.downcase
-      @browser_sym = :ie if "ie|explorer|internet explorer".include? browser_sym.downcase
-      @browser_sym = :safari if "apple|osx|safari|mac".include? browser_sym.downcase
-      @browser_sym = :edge if "edge".include? browser_sym.downcase
+      return :firefox if "ff|firefox|mozilla".include? browser_sym.downcase
+      return :chrome if "chrome|gc|google".include? browser_sym.downcase
+      return :ie if "ie|explorer|internet explorer".include? browser_sym.downcase
+      return :safari if "apple|osx|safari|mac".include? browser_sym.downcase
+      return :edge if "edge".include? browser_sym.downcase
     end
   end
 end
