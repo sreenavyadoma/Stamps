@@ -40,10 +40,12 @@ end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
   registration.membership.first_name.wait_until_present(10)
-  expect(registration.membership.first_name.present?).to be(true)
+  step "something"
   registration.membership.first_name.set(test_param[:first_name] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
 end
-
+Then /^asfsfsd$/ do
+  expect(registration.membership.first_name.present?).to be(true)
+end
 Then /^[Ee]xpect [Mm]embership [Pp]age [Ff]irst [Nn]ame is (?:correct|(.*))$/ do |str|
   expect(registration.membership.first_name.text).to eql((str.nil?)?test_param[:first_name]:str)
 end

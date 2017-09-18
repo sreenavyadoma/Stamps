@@ -229,7 +229,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header in
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button is exist$/ do
-  expect(registration.membership.cancel.present?).to be(true)
+  expect(registration.membership.cancel.present?).to be(true), ""
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button is exist$/ do
