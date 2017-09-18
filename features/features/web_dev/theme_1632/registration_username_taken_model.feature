@@ -9,6 +9,7 @@ Feature: Registration Username taken model
     # Profile Page
     Then set Profile page Email to random value
     Then set Profile page Username to AutoStamps
+    # todo validate if username exists in the system or not
     Then set Profile page Password to random value
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Both mailing and shipping
