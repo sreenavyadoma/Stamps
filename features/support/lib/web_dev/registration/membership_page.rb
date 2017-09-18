@@ -195,6 +195,24 @@ module Stamps
         end
       end
 
+      module MemberUsernameTakenModel
+        def uname_model_header
+          StampsElement.new(browser.h3(css: "div[id='error']>div>div>div[class='modal-header']>h3")).text
+        end
+
+        def uname_model_custom_body
+          StampsElement.new(browser.p(css: "div[id='error']>div>div>div>div[id='prev-username']>p")).text
+        end
+
+        def uname_textbox
+          StampsTextBox.new(browser.input(name: "newUsername"))
+        end
+
+        def uname_continue_btn
+          StampsElement.new(browser.button(id: "btnUserNameTakenContinue"))
+        end
+      end
+
 
       class RegMembershipFirstName < Stamps::Browser::StampsTextBox
         def help_block
@@ -353,6 +371,7 @@ module Stamps
         include MembershipPagination
         include MembershipTermsAndConditions
         include MemberAddressValidationModel
+        include MemberUsernameTakenModel
         attr_reader :header
         def initialize(param)
           super

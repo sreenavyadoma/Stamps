@@ -9,43 +9,43 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership header contain (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership first name exists$/ do
-  expect(registration.membership.first_name.present?).to be (true)
+  expect(registration.membership.first_name.present?).to be (true), "First Name doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership last name exists$/ do
-  expect(registration.membership.last_name.present?).to be (true)
+  expect(registration.membership.last_name.present?).to be (true), "Last Name doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership company exists$/ do
-  expect(registration.membership.company.present?).to be (true)
+  expect(registration.membership.company.present?).to be (true), "Company Name doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership address exists$/ do
-  expect(registration.membership.address.present?).to be (true)
+  expect(registration.membership.address.present?).to be (true), "Address doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership city exists$/ do
-  expect(registration.membership.city.present?).to be (true)
+  expect(registration.membership.city.present?).to be (true), "City doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership state dropdown exists$/ do
-  expect(registration.membership.city.present?).to be (true)
+  expect(registration.membership.city.present?).to be (true), "State doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership zip exists$/ do
-  expect(registration.membership.zip.present?).to be (true)
+  expect(registration.membership.zip.present?).to be (true), "Zip doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership phone exists$/ do
-  expect(registration.membership.phone.present?).to be (true)
+  expect(registration.membership.phone.present?).to be (true), "Phone doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership stamps logo exists$/ do
-  expect(registration.membership.stamps_logo.present?).to be (true)
+  expect(registration.membership.stamps_logo.present?).to be (true), "Stamps logo doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership usps logo exists$/ do
-  expect(registration.membership.usps_logo.present?).to be (true)
+  expect(registration.membership.usps_logo.present?).to be (true), "Usps logo doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership paragraph to contain (.*)$/ do |str|
@@ -53,35 +53,35 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership paragraph to contain (.*)$/ do |s
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership cardholders name exists$/ do
-  expect(registration.membership.cardholders_name.present?).to be (true)
+  expect(registration.membership.cardholders_name.present?).to be (true), "Cardholders name textbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership credit card number exists$/ do
-  expect(registration.membership.credit_card_number.present?). to be (true)
+  expect(registration.membership.credit_card_number.present?). to be (true), "Credit card number textbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership month dropdown exists$/ do
-  expect(registration.membership.month_dropdown.present?).to be (true)
+  expect(registration.membership.month_dropdown.present?).to be (true), "Month drop-down doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership year dropdown exists$/ do
-  expect(registration.membership.month_dropdown.present?).to be (true)
+  expect(registration.membership.month_dropdown.present?).to be (true), "Year drop-down doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership Billing address same as mailing address checkbox exists$/ do
-  expect(registration.membership.billingaddress_sameas_mailing address.present?).to be (true)
+  expect(registration.membership.billingaddress_sameas_mailing address.present?).to be (true), "Billing address same as mailing address checkbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership I agree to the Terms and conditions and Pricing details checkbox exists$/ do
-  expect(registration.membership.pricingandTnC.present?).to be (true)
+  expect(registration.membership.pricingandTnC.present?).to be (true), "Terms and conditions and Pricing details checkbox doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership back button exists$/ do
-  expect(registration.membership.back_button.present?).to be (true)
+  expect(registration.membership.back_button.present?).to be (true), "Back button doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership submit button exists$/ do
-  expect(registration.membership.submit_button.present?).to be (true)
+  expect(registration.membership.submit_button.present?).to be (true), "Submit button doesn't exists on Membership Page"
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership why do you need my mailing information to contain:$/ do |str|
@@ -109,7 +109,11 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership Cancel anytime to contain:$/ do |
 end
 
 Then /^[Ee]xpect [Rr]egistration [Mm]embership Bonus Offer Details link exists and is clickable$/ do
-  expect(registration.membership.offer_details_link.present?).to be (true)
+  expect(registration.membership.offer_details_link.present?).to be (true), "Bonus Offer Details link doesn't exists on Membership Page"
+end
+
+Then /^[Cc]ontinue to Username Taken Model$/ do
+  registration.membership.continue_btn.click
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age Privacy Policy link exists and is clickable$/ do
@@ -218,7 +222,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip (\d+) to be (.
 end
 
 
-# Multi Match Address
+# Multi Match Address Model
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header is (.*)$/ do |str|
   expect(registration.membership.model_header).to eql(str)
@@ -228,12 +232,12 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header in
   expect(registration.membership.model_header_instructions).to eql(str)
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button is exist$/ do
-  expect(registration.membership.cancel.present?).to be(true), ""
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button exists$/ do
+  expect(registration.membership.cancel.present?).to be(true),  "Cancel Button DOES NOT exists on Address validation model"
 end
 
-Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button is exist$/ do
-  expect(registration.membership.continue.present?).to be(true)
+Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button exists$/ do
+  expect(registration.membership.continue.present?).to be(true),  "Continue Button DOES NOT exists on Address validation model"
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do
@@ -242,4 +246,32 @@ end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Continue button$/ do
   registration.membership.continue.click
+end
+
+
+# Username Taken Model
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up header is (.*)$/ do |str|
+  step "Pause for 2 second"
+  expect(registration.membership.uname_model_header).to eql(str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up custom body is (.*)$/ do |str|
+  expect(registration.membership.uname_model_custom_body).to eql(str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Username exists$/ do
+  expect(registration.membership.uname_textbox.present?).to be(true),  "Username DOES NOT exists on Username Taken model"
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue button exists$/ do
+  expect(registration.membership.uname_continue_btn.present?).to be(true),  "Continue Button DOES NOT exists on Username Taken model"
+end
+
+Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|
+  registration.membership.uname_textbox.set((test_param[:uname] = (str.nil?)?(test_helper.random_username):str))
+end
+
+Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue button$/ do
+  registration.membership.uname_continue_btn.click
 end
