@@ -84,3 +84,4 @@ Feature: Profile page validation theme_1632
     Then expect Profile page Survey Question is correct
 
     Then set Profile page promo code to PR33-NH77
+

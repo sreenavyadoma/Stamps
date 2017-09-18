@@ -1,9 +1,9 @@
-Feature: Registration Security questions page happy path
+Feature: Registration Choose Supplies Page validation Theme 1632
 
   Background:
     Given I loaded the default registration page
 
-  @registration_security_questions_happy_path
+  @registration_ui_validation_choose_supplies_page
   Scenario: Registration Security questions page happy path
 
     # Profile Page
@@ -29,19 +29,3 @@ Feature: Registration Security questions page happy path
 
     # Choose supplies Page
     Then click Choose Supplies page Place Order button
-
-    # Add Postage Page
-    #Then in Add Postage page, click Confirm button
-
-    # Ship Volume Survey Page
-    #Then in Ship Volume Survey page, click Submit button
-
-    # Select security quetions and answers
-    Then set Security questions page select first question to What was your high school mascot?
-    Then set Security questions page select first answer to Auto11
-    Then set Security questions page select second question to What is your father's birthplace?
-    Then set Security questions page select second answer to Auto11
-    Then click Get Started button
-
-    # Validate newly created account welcome page
-    #Then expect congratulations message exists

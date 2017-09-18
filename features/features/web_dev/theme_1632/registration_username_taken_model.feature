@@ -36,4 +36,4 @@ Feature: Registration Username taken model
     Then click Membership page Username Taken model pop up Continue button
 
     # Verify that Choose Supplies Page appeared
-    Then expect welcome_kit_message exists
+    Then expect Choose Supplies page welcome_kit_message exists
