@@ -204,8 +204,10 @@ module Stamps
           StampsElement.new(browser.p(css: "div[id='error']>div>div>div>div[id='prev-username']>p")).text
         end
 
-        def uname_textbox
-          StampsTextBox.new(browser.input(css: "div>input[id='newUsername']"))
+        def uname_text_box
+          @uname_text_box ||= StampsTextBox.new(browser.text_field(id: "newUsername"))
+          @uname_text_box
+
         end
 
         def uname_continue_btn

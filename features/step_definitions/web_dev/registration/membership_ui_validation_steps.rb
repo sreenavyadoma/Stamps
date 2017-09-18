@@ -261,7 +261,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up custom body i
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Username exists$/ do
-  expect(registration.membership.uname_textbox.present?).to be(true),  "Username DOES NOT exists on Username Taken model"
+  expect(registration.membership.uname_text_box.present?).to be(true),  "Username DOES NOT exists on Username Taken model"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue button exists$/ do
@@ -269,7 +269,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue butt
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|
-  registration.membership.uname_textbox.set(test_param[:username] = (str.nil?)?(test_helper.random_username):str)
+  registration.membership.uname_text_box.set (test_param[:uname_text_box] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue button$/ do
