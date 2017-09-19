@@ -115,15 +115,15 @@ module Stamps
 
       def initialize(param)
         super
-        @username_textbox = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
-        @password_textbox = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
-        @sign_in_button = StampsElement.new browser.button(id: "signInButton")
-        @sign_in_link = StampsElement.new browser.a(css: "a[class$=signInLink]")
-        @verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
-        @invalid_msg = StampsElement.new browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")
+        @username_textbox = StampsTextBox.new(browser.text_field(id: "UserNameTextBox"))
+        @password_textbox = StampsTextBox.new(browser.text_field(id: "PasswordTextBox"))
+        @sign_in_button = StampsElement.new(browser.button(id: "signInButton"))
+        @sign_in_link = StampsElement.new(browser.a(css: "a[class*=signInLink]"))
+        @verifying_account_info = StampsElement.new(browser.div(text: "Verifying account information..."))
+        @invalid_msg = StampsElement.new(browser.div(css: "div[id*=InvalidUsernamePasswordMsg]"))
         @whats_new_modal = WhatsNewModal.new(param)
-        @remember_username_checkbox = StampsWatirCheckBox.new browser.checkbox(id: "rememberUser")
-        @invalid_username_password = StampsElement.new browser.div(id: "InvalidUsernamePasswordMsg")
+        @remember_username_checkbox = StampsWatirCheckBox.new(browser.checkbox(id: "rememberUser"))
+        @invalid_username_password = StampsElement.new(browser.div(id: "InvalidUsernamePasswordMsg"))
         @username = ""
         @password = ""
         @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
@@ -139,7 +139,11 @@ module Stamps
       end
 
       def show_sign_in_modal
-        sign_in_link.hover unless username_textbox.present?
+        3.times do
+          sign_in_link.hover unless username_textbox.present?
+          sign_in_link.click unless username_textbox.present?
+          break if username_textbox.present?
+        end
       end
 
       def username(str)

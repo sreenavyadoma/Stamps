@@ -12,13 +12,13 @@ Then /^[Ss]earch filtered Orders for cached Ship-To Company name$/ do
 end
 
 Then /^[Ss]earch filtered Orders for cached Ship-To email$/ do
-  step "search Orders for #{test_param[:email].split('@').first} expecting to find at least 1"
+  step "search Orders for #{test_param[:email]} expecting to find at least 1"
 end
 
 Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |search_str, count|
+  step "set Filter Panel Search textbox to #{search_str}"
   begin
     15.times do
-      step "set Filter Panel Search textbox to #{search_str}"
       sleep(1)
       step "click Filter Panel Search button"
       sleep(1)
