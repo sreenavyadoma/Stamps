@@ -31,6 +31,6 @@ Feature: Registration Choose Supplies Page validation Theme 1632
     Then expect Choose Supplies page welcome_kit_message exists
     Then expect Choose Supplies page Place order button exists
     Then expect Choose Supplies page first paragraph contain Thank you for signing up for Stamps.com. Your free Welcome Kit is on its way. Included in the kit is a set of label sheets for printing stamps or shipping labels.
-    Then expect Choose Supplies page second paragraph contain If you want to buy additional labels or supplies, please select below.
+    Then expect Choose Supplies page second paragraph contain If you want to add a free postal scale (just pay S&H) or additional labels or supplies, please select below.
     Then expect Choose Supplies page welcome_kit_logo exists
     Then click Choose Supplies page Place Order button
