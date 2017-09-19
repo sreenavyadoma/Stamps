@@ -36,7 +36,7 @@ module Stamps
       up = ('A'..'Z').to_a
       digits = ('0'..'9').to_a
       special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
-      modal_param.test_env+(digits + down + up).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(0..5)))).shuffle.join #+ (digits + down + up).shuffle[1..1].join
+      modal_param.test_env+(digits + down + up).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+special+digits).sample(Random.rand(0..5)))).shuffle.join #+ (digits + down + up).shuffle[1..1].join
     end
 
     def random_email
