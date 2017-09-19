@@ -7,6 +7,14 @@ Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.profile = 'xxxxxxxxxx'
   t.cucumber_opts = "-p cuke_reports"
 end
+Cucumber::Rake::Task.new(:poc_stg_edge) do |t|
+  t.profile = 'poc_stg_edge'
+  t.cucumber_opts = "-p cuke_reports"
+end
+Cucumber::Rake::Task.new(:poc_cc_edge) do |t|
+  t.profile = 'poc_cc_edge'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:rob_mail_cc) do |t|
   t.profile = 'rob_mail_cc'

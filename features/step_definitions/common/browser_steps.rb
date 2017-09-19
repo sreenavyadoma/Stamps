@@ -23,6 +23,36 @@ Then /^[Pp]ause for (\d+) seconds?$/ do |seconds|
   rescue
     #ignore
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
 
 Then(/^Close the browser and clear cookies$/) do #Clear Cookies
