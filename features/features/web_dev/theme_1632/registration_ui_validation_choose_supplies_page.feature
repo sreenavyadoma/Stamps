@@ -25,7 +25,7 @@ Feature: Registration Choose Supplies Page validation Theme 1632
     Then set Membership page Month to Dec (12)
     Then set Membership page Year to this year plus 1
     Then check Membership page Terms & Conditions
-    Then click Membership page Continue button
+    Then click Membership page Submit button
 
     # Choose supplies Page
     Then expect Choose Supplies page welcome_kit_message exists

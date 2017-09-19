@@ -4,6 +4,7 @@ Then /^[Ee]xpect [Cc]hoose [Ss]upplies [Pp]age welcome_kit_message exists$/ do
 end
 
 Then /^[Ee]xpect [Cc]hoose [Ss]upplies [Pp]age first paragraph contain (.*)$/ do |str|
+  step "pause for 2 seconds"
   expect(registration.choose_supplies.welcome_kit_first_paragraph.text).to eql(str)
 end
 

@@ -14,19 +14,19 @@ module Stamps
       end
 
       def welcome_kit_message
-        browser.h1(text: "Customize your Welcome Kit").wait_until_present 30
+        StampsElement.new(browser.h1(text: "Customize your Welcome Kit")).wait_until_present 30
       end
 
       def welcome_kit_first_paragraph
-        browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").first.wait_until_present 10
+        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").first).wait_until_present 15
       end
 
       def welcome_kit_second_paragraph
-        browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").last.wait_until_present 10
+        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").last).wait_until_present 15
       end
 
       def welcome_kit_logo
-        StampsElement.new(browser.img(css: "img[alt*='Stamps.com Welcome Kit']")).wait_until_present 10
+        StampsElement.new(browser.img(css: "img[alt*='Stamps.com Welcome Kit']"))
       end
 
       def place_order_btn
@@ -34,10 +34,9 @@ module Stamps
       end
 
       def place_order
-        8.times do
+        10.times do
           place_order_btn.click
         end
-        nil
       end
     end
   end
