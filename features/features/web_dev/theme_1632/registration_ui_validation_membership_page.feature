@@ -129,19 +129,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
-    Then set Membership page member billing address to random address between zone 1 and 4
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
     Then set Membership page member address to random address between zone 5 and 8
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
-    Then set Membership page member billing address to random address between zone 5 and 8
     Then expect Membership page Billing Address is correct
     Then expect Membership page Billing City is correct
     Then expect Membership page Billing State is correct
@@ -153,19 +141,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Billing State is correct
     Then expect Membership page Billing Zip is correct
 
-    Then set Membership page member billing address to random address between zone 1
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
     Then set Membership page member address to random address between zone 2
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
-    Then set Membership page member billing address to random address between zone 2
     Then expect Membership page Billing Address is correct
     Then expect Membership page Billing City is correct
     Then expect Membership page Billing State is correct
@@ -177,19 +153,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Billing State is correct
     Then expect Membership page Billing Zip is correct
 
-    Then set Membership page member billing address to random address between zone 3
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
     Then set Membership page member address to random address between zone 4
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
-    Then set Membership page member billing address to random address between zone 4
     Then expect Membership page Billing Address is correct
     Then expect Membership page Billing City is correct
     Then expect Membership page Billing State is correct
@@ -201,19 +165,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Billing State is correct
     Then expect Membership page Billing Zip is correct
 
-    Then set Membership page member billing address to random address between zone 5
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
     Then set Membership page member address to random address between zone 6
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
-    Then set Membership page member billing address to random address between zone 6
     Then expect Membership page Billing Address is correct
     Then expect Membership page Billing City is correct
     Then expect Membership page Billing State is correct
@@ -225,25 +177,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Billing State is correct
     Then expect Membership page Billing Zip is correct
 
-    Then set Membership page member billing address to random address between zone 7
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
     Then set Membership page member address to random address between zone 8
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
-    Then set Membership page member billing address to random address between zone 8
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
-
-    Then set Membership page member address to random address in zone 2
     Then expect Membership page Billing Address is correct
     Then expect Membership page Billing City is correct
     Then expect Membership page Billing State is correct

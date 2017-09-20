@@ -1,11 +1,10 @@
 module Stamps
   class StampsTestSetup
-    include BrowserType
     attr_accessor :browser, :logger, :browser_sym, :firefox_profile, :windows_user, :scenario_name, :browser_name
 
-    def init(scenario_name, browser_selection, firefox_profile, windows_user)
+    def init(scenario_name, browser_sym, firefox_profile, windows_user)
       @scenario_name = scenario_name
-      @browser_sym = browser_selection(browser_selection)
+      @browser_sym = BrowserType.new(browser_sym).browser_sym
       @firefox_profile = firefox_profile
       @windows_user = windows_user
       @logger = StampsLogger.new(@scenario_name)
