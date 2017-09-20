@@ -455,7 +455,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Email to (.*)$/ do |email|
   test_param[:email] = (email.to_s.strip.downcase.include?('random'))?(test_helper.random_email):email
   step "show order details form ship-to fields"
   begin
-    stamps.orders.order_details.ship_to.domestic.email.set test_param[:email]
+    stamps.orders.order_details.ship_to.domestic.email.set(test_param[:email])
   end unless test_param[:email].length == 0
   step "Save Order Details data"
 end

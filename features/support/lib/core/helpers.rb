@@ -35,7 +35,7 @@ module Stamps
       down = ('a'..'z').to_a
       up = ('A'..'Z').to_a
       digits = ('0'..'9').to_a
-      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
+      special = ['_', '-']
       modal_param.test_env+(digits + down + up).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(0..5)))).shuffle.join + (digits + down + up).shuffle[1..1].join
     end
 
@@ -58,7 +58,7 @@ module Stamps
       down = ('a'..'z').to_a
       up = ('A'..'Z').to_a
       digits = ('0'..'9').to_a
-      special = ('!'..'?').to_a
+      special = ['_', '-']
       [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(min..max)))).shuffle.join
     end
 
@@ -479,7 +479,7 @@ module Stamps
       @browser_sym = :chrome if "chrome|gc|google".include? browser_sym.downcase
       @browser_sym = :ie if "ie|explorer|internet explorer".include? browser_sym.downcase
       @browser_sym = :safari if "apple|osx|safari|mac".include? browser_sym.downcase
-      @browser_sym = :edge if "edge".include? browser_sym.downcase
+      @browser_sym = :edge if "ms|me|microsoft|edge".include? browser_sym.downcase
     end
   end
 end
