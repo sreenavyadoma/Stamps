@@ -19,17 +19,17 @@ rates_test:
   rates_pmi_comm_base: PMI Comm Base
   rates_pmi_comm_plus: PMI Comm Plus
   rates_fcm_package: FCM Package
-  test_dir: \\rcruz-win7\Public\share\rates_test_data\tests
-  results_dir: \\rcruz-win7\Public\share\rates_test_data\results
+  test_dir: \\jenkinsvm01\Public\share\share\rates_test_data\tests
+  results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results
 
 import_orders_test:
-  import_orders_dir: \\jenkinsvm05\Shared\CSV Import Files
+  import_orders_dir: \\jenkinsvm01\Public\automation\data
   import_time_file: import_times.csv
   import_old_file: import_orders_old.csv
   import_existing_orders_time_file: import_existing_orders_times.csv
 
 windows_files:
-  import_csv_file: \\\\rcruz-win7\\Public\\automation\\data\\import_times.csv #data_for(:rates_test, {})['rates_pme_comm_base']
+  import_csv_file: \\\\jenkinsvm01\\Public\\automation\\data\\import_times.csv #data_for(:rates_test, {})['rates_pme_comm_base']
 
 registration:
   default_parameter_file: default_parameter
