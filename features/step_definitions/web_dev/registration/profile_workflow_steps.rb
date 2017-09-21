@@ -119,5 +119,6 @@ end
 
 Then /^[Cc]ontinue to [Mm]embership page$/ do
   registration.profile.continue
+  step "pause for 1 seconds"
 end
 
