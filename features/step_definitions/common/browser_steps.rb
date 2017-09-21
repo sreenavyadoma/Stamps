@@ -17,7 +17,7 @@ Then /^Refresh the browser$/ do
   end
 end
 
-Then /^[Pp]ause for (\d+) seconds?$/ do |seconds|
+Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
   begin
     sleep(seconds.to_i)
   rescue

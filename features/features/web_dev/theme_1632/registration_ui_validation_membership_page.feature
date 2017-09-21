@@ -48,6 +48,20 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Phone tooltip to be This field is required
     Then expect Membership page Credit Card Number tooltip 0 to be Invalid credit card number
 
+    ## Back end Validation for Membership Page ##
+    # Validate Backend Credit card tool tip
+    Then set Membership page member address to random address between zone 1 and 4
+    Then set Membership page Company to random value
+    Then set Membership page Phone to random value
+    Then set Membership page Cardholder's Name to random value
+    Then set Membership page Credit Card Number to 5417122242000949
+    Then set Membership page Month to Dec (12)
+    Then set Membership page Year to this year plus 1
+    Then check Membership page Billing address same as mailing address
+    Then check Membership page Terms & Conditions
+    Then click Membership page Submit button
+    Then expect Membership page Credit Card Number tooltip to be Stamps.com was unable to complete your registration because your payment method failed verification. Please correct your payment information.
+
     # Membership Page Valid Inputs
     Then set Membership page First Name to random value
     Then expect Membership page First Name is correct
@@ -112,81 +126,82 @@ Feature: Registration Membership page validation Theme 1632
 
     Then set Membership page Billing Address to 1350 Market Street Apt 2901
     Then expect Membership page Billing Address is correct
-
     Then set Membership page Billing City to San Francisco
     Then expect Membership page Billing City is correct
-
     Then select Membership page Billing State CA
     Then expect Membership page Billing State is correct
-
     Then set Membership page Billing Zip to 94102
     Then expect Membership page Billing Zip is correct
 
-    # Verify Address and Billing Address Zone wise
+    Then check Membership page Billing address same as mailing address
+
+    # Verify Physical Address Zone wise
     Then set Membership page member address to random address between zone 1 and 4
-    Then expect Membership page City is correct
+    Then expect Membership page Address is correct
     Then expect Membership page City is correct
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 5 and 8
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 1
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 2
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 3
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 4
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 5
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 6
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 7
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
     Then set Membership page member address to random address between zone 8
-    Then expect Membership page Billing Address is correct
-    Then expect Membership page Billing City is correct
-    Then expect Membership page Billing State is correct
-    Then expect Membership page Billing Zip is correct
+    Then expect Membership page Address is correct
+    Then expect Membership page City is correct
+    Then expect Membership page State is correct
+    Then expect Membership page Zip is correct
 
-    Then check Membership page Terms & Conditions
     Then expect Membership page Terms & Conditions is checked
 
     Then uncheck Membership page Terms & Conditions
     Then expect Membership page Terms & Conditions is unchecked
 
     Then check Membership page Terms & Conditions
+
+
+
