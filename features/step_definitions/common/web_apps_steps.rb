@@ -9,6 +9,7 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
 end
 
 Then /^new [Uu]ser signed in to Web Apps first time$/ do
+  step "pause for 60 seconds"
   step "I launch default browser"
   step "Health Check: Print - Web Batch" if modal_param.health_check
   step "Health Check: Print - Address Book" if modal_param.health_check
