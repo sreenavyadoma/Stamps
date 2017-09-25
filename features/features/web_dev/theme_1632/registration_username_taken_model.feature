@@ -13,6 +13,7 @@ Feature: Registration Username taken model
     Then set Profile page Password to random value
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Both mailing and shipping
+    Then set How did you hear about us? to Magazine Ad
     Then set Profile page Promo Code to PR33-NH77
     Then continue to Membership page
 
