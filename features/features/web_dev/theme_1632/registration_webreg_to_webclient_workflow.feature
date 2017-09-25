@@ -30,6 +30,11 @@ Feature: Webreg to Web client registration theme_1632
 
     # Web Client
     # Default browser launch
-    Then new user signed in to Web Apps first time
+    Then load web apps orders then sign-in
 
     # Select security quetions and answers
+    Then load web apps orders then sign-in expecting Security Questions
+    Then select Security Questions 1st security question What was your high school mascot?
+    Then set Security Questions 1st security answer to Auto11
+    Then select Security Questions 2nd security question What is your father's birthplace?
+    Then set Security Questions 2nd security answer to Auto11

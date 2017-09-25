@@ -8,18 +8,9 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
   step "Navigation Bar: Customer Balance"
 end
 
-Then /^new [Uu]ser signed in to Web Apps first time$/ do
-  step "pause for 60 seconds"
-  step "I launch default browser"
-  step "Health Check: Print - Web Batch" if modal_param.health_check
-  step "Health Check: Print - Address Book" if modal_param.health_check
-  step "load Web Apps Sign-in page"
-  step "sign-in to Web Apps as #{test_param[:username]}, #{test_param[:password]}"
-  step "Navigation Bar: Customer Balance"
-end
-
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in$/ do
   modal_param.web_app = :orders
+  step "pause for 120 seconds"
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{test_param[:username]}, #{test_param[:password]}"
 end
