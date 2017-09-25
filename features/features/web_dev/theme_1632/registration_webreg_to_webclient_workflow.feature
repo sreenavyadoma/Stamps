@@ -6,6 +6,8 @@ Feature: Webreg to Web client registration theme_1632
   @registration_webreg_to_webclient_workflow
   Scenario: Webreg to Web client registration
 
+    Then new user signed in to Web Apps first time
+
     # Profile Page
     Then set Profile page Email to random value
     Then set Profile page Username to random value
