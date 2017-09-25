@@ -6,6 +6,7 @@ Feature: Advanced Options BVT
     Given a valid user is signed in to Web Apps
 
     # ------------------------------------------------------------ Stamps Advanced Options
+
   Scenario: Advanced Options for Stamps
     Then select Print On Stamps
     Then show Advanced Options
@@ -39,7 +40,6 @@ Feature: Advanced Options BVT
     # ------------------------------------------------------------ Rolls Advanced Options
   Scenario: Advanced Options for Roll 4x6
     Then select Print On Roll 4x6
-
     Then set Advanced Options Mail Date to today
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
