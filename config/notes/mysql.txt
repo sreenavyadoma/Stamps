@@ -53,9 +53,11 @@ Download a "MySQL Connector/C NoInstall" from MySQL which version should lower t
 
 Install mysql2 by this command:
 gem install mysql2 --platform=ruby -- '--with-mysql-lib="C:\Program Files (x86)\MySQL\MySQL Connector C 6.1\lib" --with-mysql-include="C:\Program Files (x86)\MySQL\MySQL Connector C 6.1\include"'
+gem install mysql2 --no-rdoc --no-ri -- '--with-mysql-lib="C:\Program Files\MySQL\MySQL Connector.C 6.1\lib" --with-mysql-include="C:\Program Files\MySQL\MySQL Connector.C 6.1\include"'
 
 Run Redmine's install `bundle install --without development test'
-Check mysql2 gem gem list mysql2
+Check mysql2 gem
+gem list mysql2
 
 
 ======================================================================================================
