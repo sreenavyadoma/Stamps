@@ -45,25 +45,30 @@ module Stamps
 
       module SideAccount
         def side_account_header
-          @side_account_header ||= StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3"))
+          @side_account_header ||= StampsElement.new(browser.h3(css: "li[id=sideaccount]>h3")) if @side_account_header.nil? || !@side_account_header.present?
+          @side_account_header
         end
 
         def side_account_paragraph
-          @side_account_paragraph ||= StampsElement.new(browser.p(css: "li[id=sideaccount]>p"))
+          @side_account_paragraph ||= StampsElement.new(browser.p(css: "li[id=sideaccount]>p")) if @side_account_paragraph.nil? || !@side_account_paragraph.present?
+          @side_account_paragraph
         end
       end
 
       module MoneySavingOffers
         def money_saving_offers_header
-          @money_saving_offers_header ||= StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3"))
+          @money_saving_offers_header ||= StampsElement.new(browser.h3(css: "li[id=sideoptin]>div[id=optInDiv]>h3")) if @money_saving_offers_header.nil? || !@money_saving_offers_header.present?
+          @money_saving_offers_header
         end
 
         def money_saving_offers_checkbox
-          @money_saving_offers_checkbox ||= StampsWatirCheckBox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn'))
+          @money_saving_offers_checkbox ||= StampsWatirCheckBox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn')) if @money_saving_offers_checkbox.nil? || !@money_saving_offers_checkbox.present?
+          @money_saving_offers_checkbox
         end
 
         def money_saving_offers_paragraph
-          @money_saving_offers_paragraph ||= StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span"))
+          @money_saving_offers_paragraph ||= StampsElement.new(browser.span(css: "li[id=sideoptin]>div[id=optInDiv]>div>label>span")) if @money_saving_offers_paragraph.nil? || !@money_saving_offers_paragraph.present?
+          @money_saving_offers_paragraph
         end
       end
 
@@ -86,75 +91,89 @@ module Stamps
         end
 
         def email
-          @email ||= RegProfileEmail.new(browser.text_field(id: "email"))
+          @email ||= RegProfileEmail.new(browser.text_field(id: "email")) if @email.nil? || !@email.present?
+          @email
         end
 
         def survey_question
           element = browser.span(css: "button[data-id=usageType]>span[class*=option]")
           list_of_values = browser.spans(css: "li[id=survey]>div>div>div>div[class*=select]>div>ul>li>a>span[class=text]")
-          @survey_question ||= StampsDropDownLovSubStr.new(element, element, list_of_values)
+          @survey_question ||= StampsDropDownLovSubStr.new(element, element, list_of_values) if @survey_question.nil? || !@survey_question.present?
+          @survey_question
         end
 
         def referer_name
           element = browser.span(css: "button[data-id=referrerName]>span[class*=option]")
           list_of_values = browser.spans(css: "li[id=survey]>div>div:nth-child(2)>div>div>div>ul>li>a>span[class=text]")
-          @referer_name ||= StampsDropDownLovSubStr.new(element, element, list_of_values)
+          @referer_name ||= StampsDropDownLovSubStr.new(element, element, list_of_values) if @referer_name.nil? || !@referer_name.present?
+          @referer_name
         end
 
         def continue_btn
-          @continue_btn ||= StampsElement.new(browser.button(id: "next"))
+          @continue_btn ||= StampsElement.new(browser.button(id: "next")) if @continue_btn.nil? || !@continue_btn.present?
+          @continue_btn
         end
       end
 
       class RegProfileEmail < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=email]>div>div>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegProfileUsername < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegProfilePassword < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegProfileReTypePassword < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser,browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegProfilePromoCode < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
       end
 
       class RegProfileSurveyQuetion < Stamps::Browser::StampsDropDownLovSubStr
         def single_field_help_block
-          RegHelpBlock.new(browser,browser.lis(css: "li[id=survey]>div>div:nth-child(1)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser,browser.lis(css: "li[id=survey]>div>div:nth-child(1)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
@@ -164,10 +183,10 @@ module Stamps
         include AccountInfo
         include PromoCode
         include MainContent
-        attr_reader :header
-        def initialize(param)
-          super
-          @header = StampsElement.new(browser.h1(css: "div[id=page]>div>div>h1"))
+
+        def header
+          @header = StampsElement.new(browser.h1(css: "div[id=page]>div>div>h1")) if @header.nil? || !@header.present?
+          @header
         end
       end #ProfilePage
     end #Profile module
