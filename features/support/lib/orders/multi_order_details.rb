@@ -27,12 +27,12 @@ module Stamps
             end
             break if self.present?
           end
-        private
+        end
+
         def order_count_label
           browser.ps(css: 'b').last
         end
       end
-   end
 
       class MultiDetailsInsureFor < Browser::StampsModal
         attr_reader :textbox, :increment_trigger, :decrement_trigger, :blur_element, :dropdown
@@ -76,7 +76,6 @@ module Stamps
             decrement_trigger.click
           end
         end
-
       end
 
       class MultiOrderDetailsTracking < Browser::StampsModal
@@ -188,3 +187,6 @@ module Stamps
     end
   end
 end
+
+
+

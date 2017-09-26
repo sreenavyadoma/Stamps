@@ -2,7 +2,6 @@ module Stamps
   module Orders
     #todo-rob updates SettingsModal tests
     class SettingsModal < Browser::StampsModal
-      private
 
       def checkbox_status_array
         browser.divs css: 'div[class*=x-form-type-checkbox]'

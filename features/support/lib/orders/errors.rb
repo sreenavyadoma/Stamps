@@ -7,7 +7,6 @@ module Stamps
       end
 
       def message
-        logger.info "Server Error"
         StampsElement.new(browser.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last).text
       end
 
@@ -24,19 +23,15 @@ module Stamps
 
     class PrintingError < StandardError
       attr_reader :object
-
       def initialize(object)
         @object = object
       end
     end
 
     class OrderError < Browser::StampsModal
-
       def window_title
         browser.div text: 'Order Error'
       end
-
-      public
 
       def present?
         window_title.present?
@@ -65,8 +60,6 @@ module Stamps
     end
 
     class IncompleteOrderError < Browser::StampsModal
-      private
-
       def error_message_label
         browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
       end

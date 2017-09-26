@@ -4,7 +4,7 @@ module Stamps
       module PrintFormBlurOut
         def blur_out
           @blur_out = StampsElement.new(browser.label(text: 'Print On:')) if @blur_out.nil? || !@blur_out.present?
-          expect(@blur_out.present?).to be(true)
+          expect(@blur_out.present?).to be(true), "Blur out element is not present."
           2.times do
             @blur_out.double_click
             @blur_out.flash
