@@ -3,13 +3,19 @@ module Stamps
   module Mail
     class WebMail < Browser::StampsModal
       include PrintFormPanel::PrintFormBlurOut
-      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_media
+      def sign_in_modal
+        @sign_in_modal = MailSignInModal.new(param) if @sign_in_modal.nil? || !@sign_in_modal.present?
+        @sign_in_modal
+      end
 
-      def initialize(param)
-        super
-        @print_media = PrintFormPanel::PrintOn.new(param)
-        @sign_in_modal = MailSignInModal.new(param)
-        @mail_toolbar = MailToolbar.new(param)
+      def mail_toolbar
+        @mail_toolbar = MailToolbar.new(param) if @mail_toolbar.nil? || !@mail_toolbar.present?
+        @mail_toolbar
+      end
+
+      def print_media
+        @print_media = PrintFormPanel::PrintOn.new(param) if @print_media.nil? || !@print_media.present?
+        @print_media
       end
 
       def print_on(selection)
