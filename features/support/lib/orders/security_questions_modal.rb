@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Authentication
       class SecurityQuestionsSuccess < Browser::StampsModal
-        attr_accessor :cont_btn, :window_title, :body, :first_security_question, :first_security_answer, :second_security_question, :second_security_answer
+        attr_accessor :first_security_question, :first_security_answer, :second_security_question, :second_security_answer
         def initialize(param)
           super
           @first_security_question = SecurityFirstQuestion.new(param)

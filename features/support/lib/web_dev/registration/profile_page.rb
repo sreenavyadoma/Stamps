@@ -3,7 +3,8 @@ module Stamps
     module Profile
       module PromoCode
         def promo_code_link
-          @promo_code_link ||= StampsElement.new(browser.a(id: 'showPromoCode'))
+          @promo_code_link ||= StampsElement.new(browser.a(id: 'showPromoCode')) if @promo_code_link.nil? || !@promo_code_link.present?
+          @promo_code_link
         end
 
         def promo_code
@@ -27,15 +28,18 @@ module Stamps
 
       module AccountInfo
         def account_username
-          @account_username = RegProfileUsername.new(browser.text_field(name: "username"))
+          @account_username = RegProfileUsername.new(browser.text_field(name: "username")) if @account_username.nil? || !@account_username.present?
+          @account_username
         end
 
         def account_password
-          @account_password = RegProfilePassword.new(browser.text_field(name: "password"))
+          @account_password = RegProfilePassword.new(browser.text_field(name: "password")) if @account_password.nil? || !@account_password.present?
+          @account_password
         end
 
         def retype_password
-          @retype_password = RegProfileReTypePassword.new(browser.text_field(id: "confirmPassword"))
+          @retype_password = RegProfileReTypePassword.new(browser.text_field(id: "confirmPassword")) if @retype_password.nil? || !@retype_password.present?
+          @retype_password
         end
       end
 
