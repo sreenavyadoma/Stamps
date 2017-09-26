@@ -358,12 +358,12 @@ module Stamps
         include PrintFormBlurOut
         include PrintMediaHelper
         def textbox
-          @textbox = StampsTextBox.new(browser.text_field(css: "[class*=sdc-mainpanel-printmediadroplist]")) if @textbox.nil? || !@textbox.present?
+          @textbox = StampsTextBox.new(browser.text_field(css: "[name=PrintMedia]")) if @textbox.nil? || !@textbox.present?
           @textbox
         end
 
         def dropdown
-          @dropdown = StampsElement.new(browser.div(css: "[id^=printmediadroplist][id$=triggerWrap] [class$=trigger-first]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown = StampsElement.new(browser.div(css: "[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil? || !@dropdown.present?
           @dropdown
         end
 
