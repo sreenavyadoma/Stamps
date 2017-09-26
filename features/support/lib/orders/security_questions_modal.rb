@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Authentication
       class SecurityQuestionsSuccess < Browser::StampsModal
-        attr_accessor :first_security_question, :first_security_answer, :second_security_question, :second_security_answer
+        attr_accessor :cont_btn, :window_title, :body, :first_security_question, :first_security_answer, :second_security_question, :second_security_answer
         def initialize(param)
           super
           @first_security_question = SecurityFirstQuestion.new(param)
@@ -51,10 +51,10 @@ module Stamps
         end
 
         def select(str)
-          @selection = StampsElement.new(browser.lis(text: str).first) if @selection.nil? || !@selection.present?
-          @selection
+          drop_down.click
+          selection = StampsElement.new(browser.lis(text: str).first)
 
-          30.times do
+          15.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
@@ -69,8 +69,8 @@ module Stamps
         end
 
         def select(str)
-          @selection = StampsElement.new(browser.lis(text: str).first) if @selection.nil? || !@selection.present?
-          @selection
+          drop_down.click
+          selection = StampsElement.new(browser.lis(text: str).last)
 
           15.times do
             drop_down.click unless selection.present?
