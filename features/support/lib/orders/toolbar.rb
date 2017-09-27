@@ -596,7 +596,7 @@ module Stamps
             selection.click
             selection.click
           end
-          expect("Unable to Toolbar Settings Menu Selection - #{menu_item}").to eql ""
+          #expect("Unable to Toolbar Settings Menu Selection - #{menu_item}").to eql ""
         end
 
         def general_settings
