@@ -2,15 +2,6 @@ module Stamps
   module Orders
     module Authentication
       class SecurityQuestionsSuccess < Browser::StampsModal
-        attr_accessor :cont_btn, :window_title, :body, :first_security_question, :first_security_answer, :second_security_question, :second_security_answer
-        def initialize(param)
-          super
-          @first_security_question = SecurityFirstQuestion.new(param)
-          @first_security_answer = StampsTextBox.new(browser.text_fields(css: "input[type=password][name^=textfield-][name$=-inputEl]")[0])
-          @second_security_question = SecuritySecondQuestion.new(param)
-          @second_security_answer = StampsTextBox.new(browser.text_fields(css: "input[type=password][name^=textfield-][name$=-inputEl]")[1])
-        end
-
         def cont_btn
           @cont_btn = StampsElement.new( browser.span(text: "Continue")) if @cont_btn.nil? || !@cont_btn.present?
           @cont_btn
@@ -24,6 +15,16 @@ module Stamps
         def body
           @body = StampsElement.new( browser.div(css: "div[class*='app-window'][class*='window-closable']>div[id$=body]>div>div>div>div>label")) if @body.nil? || !@body.present?
           @body
+        end
+
+        def first_security_question
+          @first_security_question = SecurityFirstQuestion.new(param) if @first_security_question.nil? || !@first_security_question.present?
+          @first_security_question
+        end
+
+        def second_security_question
+          @second_security_question = SecuritySecondQuestion.new(param) if @second_security_question.nil? || !@second_security_question.present?
+          @second_security_question
         end
 
         def present?
@@ -46,37 +47,57 @@ module Stamps
 
       class SecurityFirstQuestion < Browser::StampsModal
         def drop_down
-          @drop_down = StampsElement.new(browser.div(css: "div[id^='container-'][id$='-targetEl']>div>div>div>div[id^='combo-'][id$='-trigger-picker']")) if @drop_down.nil? || !@drop_down.present?
+          @drop_down = StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[0]) if @drop_down.nil? || !@drop_down.present?
           @drop_down
+        end
+
+        def text_box
+          @text_box = StampsElement.new(browser.divs(css: "input[placeholder='<Please Select>']")[0]) if @text_box.nil? || !@text_box.present?
+          @text_box
         end
 
         def select(str)
           drop_down.click
           selection = StampsElement.new(browser.lis(text: str).first)
 
-          15.times do
+          1.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
           end
         end
+
+        def first_security_answer
+          @first_security_answer = StampsTextBox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @first_security_answer.nil? || !@first_security_answer.present?
+          @first_security_answer
+        end
       end
 
       class SecuritySecondQuestion < Browser::StampsModal
         def drop_down
-          @drop_down = StampsElement.new(browser.div(css: "div[id^='container-'][id$='-targetEl']>div>div>div>div[id^='combo-'][id$='-trigger-picker']")) if @drop_down.nil? || !@drop_down.present?
+          @drop_down = StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[1]) if @drop_down.nil? || !@drop_down.present?
           @drop_down
+        end
+
+        def text_box
+          @text_box = StampsElement.new(browser.divs(css: "input[placeholder='<Please Select>']")[1]) if @text_box.nil? || !@text_box.present?
+          @text_box
         end
 
         def select(str)
           drop_down.click
           selection = StampsElement.new(browser.lis(text: str).last)
 
-          15.times do
+          1.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
           end
+        end
+
+        def second_security_answer
+          @second_security_answer = StampsTextBox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @second_security_answer.nil? || !@second_security_answer.present?
+          @second_security_answer
         end
       end
     end
