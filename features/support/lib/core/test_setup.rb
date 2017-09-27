@@ -17,6 +17,18 @@ module Stamps
         logger.info "Browser Selection: #{browser_sym}"
         case(browser_sym)
 
+          when :edge # Launch Microsoft Edge
+            begin
+              stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
+              logger.error status
+              logger.error stdout
+            rescue
+              #ignore
+            end
+
+            capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
+            driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
+
           when :firefox # Launch Firefox
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
@@ -27,13 +39,10 @@ module Stamps
             end
 
             if firefox_profile.nil?
+              # profile = Selenium::WebDriver::Firefox::Profile.new
+              # profile['network.http.phishy-userpass-length'] = 255
+              # capabilities
               capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(accept_insecure_certs: true)
-
-              profile = Selenium::WebDriver::Firefox::Profile.new
-              profile['network.http.phishy-userpass-length'] = 255
-
-              capabilities
-
               driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
             else
               profile = Selenium::WebDriver::Firefox::Profile.from_name(firefox_profile)
@@ -51,7 +60,7 @@ module Stamps
             rescue
               #ignore
             end
-            driver = Watir::Browser.new :chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate)
+            driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
             @browser_name = 'Google Chrome'
           when :ie
@@ -79,7 +88,7 @@ module Stamps
         logger.message "-"
         logger.message "BROWSER: #{@browser_name}"
         logger.message "-"
-        driver.cookies.clear
+        #driver.cookies.clear
         @browser = driver
       rescue Exception => e
         err = e.backtrace.join("\n")

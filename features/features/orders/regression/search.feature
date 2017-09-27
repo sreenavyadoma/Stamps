@@ -18,14 +18,14 @@ Feature:  Basic Search
     Then uncheck Orders Grid for cached Order ID
     Then select Filter Panel tab Shipped
 
-    # Search for Email
-    Then select Filter Panel tab Awaiting Shipment
-    Then search filtered Orders for cached Ship-To email
-    Then expect Filter Panel search results tab is present
-    Then expect Filter Panel search result count is 1
-    Then expect Filter Panel search result count is greater than 0
-    Then remove Filter Panel search results tab
-    Then expect Filter Panel search results tab is not present
+#    # Search for Email
+#    Then select Filter Panel tab Awaiting Shipment
+#    Then search filtered Orders for cached Ship-To email
+#    Then expect Filter Panel search results tab is present
+#    Then expect Filter Panel search result count is 1
+#    Then expect Filter Panel search result count is greater than 0
+#    Then remove Filter Panel search results tab
+#    Then expect Filter Panel search results tab is not present
 
     # Search for new order
     Then select Filter Panel tab Awaiting Shipment
