@@ -541,7 +541,7 @@ module Stamps
 
 
         def title
-          StampsElement.new(browser.div text: "Settings")
+          StampsElement.new(browser.div text: "Orders Settings")
         end
 
         def present?
@@ -608,7 +608,7 @@ module Stamps
         end
 
         def save
-          button = StampsElement.new(browser.span text: "Save")
+          button = StampsElement.new(browser.span text: "Done")
           10.times do
             button.click
             return unless button.present?
