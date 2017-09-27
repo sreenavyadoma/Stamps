@@ -1,10 +1,12 @@
-Feature: Registration Security questions page happy path
+Feature: Webreg to Web client registration theme_1632
 
   Background:
     Given I loaded the default registration page
 
-  @registration_security_questions_happy_path
-  Scenario: Registration Security questions page happy path
+  @registration_webreg_to_webclient_workflow
+  Scenario: Webreg to Web client registration
+
+    Then new user signed in to Web Apps first time
 
     # Profile Page
     Then set Profile page Email to random value
@@ -25,23 +27,7 @@ Feature: Registration Security questions page happy path
     Then set Membership page Month to Dec (12)
     Then set Membership page Year to this year plus 1
     Then check Membership page Terms & Conditions
-    Then click Membership page Continue button
+    Then click Membership page Submit button
 
-    # Choose supplies Page
-    Then click Choose Supplies page Place Order button
-
-    # Add Postage Page
-    #Then in Add Postage page, click Confirm button
-
-    # Ship Volume Survey Page
-    #Then in Ship Volume Survey page, click Submit button
-
-    # Select security quetions and answers
-    Then set Security questions page select first question to What was your high school mascot?
-    Then set Security questions page select first answer to Auto11
-    Then set Security questions page select second question to What is your father's birthplace?
-    Then set Security questions page select second answer to Auto11
-    Then click Get Started button
-
-    # Validate newly created account welcome page
-    #Then expect congratulations message exists
+    # Web Client browser launch
+    Then new user signed in to Web Apps first time

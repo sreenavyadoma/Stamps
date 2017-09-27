@@ -10,35 +10,33 @@ module Stamps
       end
 
       def wait_until_present
-        #browser.button(text: "Place Order").wait_until_present 6
+        browser.button(text: "Place Order")
       end
 
       def welcome_kit_message
-        browser.h1(text: "Customize your Welcome Kit").wait_until_present 10
+        StampsElement.new(browser.h1(text: "Customize your Welcome Kit")).wait_until_present 30
+      end
+
+      def welcome_kit_first_paragraph
+        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").first).wait_until_present 15
+      end
+
+      def welcome_kit_second_paragraph
+        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").last).wait_until_present 15
+      end
+
+      def welcome_kit_logo
+        StampsElement.new(browser.img(css: "img[alt*='Stamps.com Welcome Kit']"))
+      end
+
+      def place_order_btn
+        StampsElement.new browser.button text: "Place Order"
       end
 
       def place_order
-        place_order_button = StampsElement.new browser.button text: "Place Order"
-        page_header = browser.h1 text: 'Customize your Welcome Kit'
-        welcome_kit = StampsElement.new page_header
-        welcome_kit_message = StampsElement.new page_header.parent.p
-
-        download_page = DownloadPage.new(param)
-        #@web_apps.mail.landing_page.whats_new_modal
-        place_order_button.wait_until_present 10
-
-        logger.info "Registration Page has loaded: #{browser.url}"
-        logger.info welcome_kit.text
-        logger.info welcome_kit_message.text
-
-        8.times do
-          place_order_button.click
-          #download_page.wait_until_present 2
-          #web_mail.landing_page.whats_new_modal.wait_until_present 10
-          #return download_page if download_page.present?
-          #return web_mail if web_mail.landing_page.whats_new_modal.present?
+        10.times do
+          place_order_btn.click
         end
-        nil
       end
     end
   end

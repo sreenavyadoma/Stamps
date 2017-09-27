@@ -357,16 +357,29 @@ module Stamps
       class PrintOn < Browser::StampsModal
         include PrintFormBlurOut
         include PrintMediaHelper
+        def textbox
+          @textbox = StampsTextBox.new(browser.text_field(css: "[name=PrintMedia]")) if @textbox.nil? || !@textbox.present?
+          @textbox
+        end
 
-        attr_accessor :dropdown, :textbox, :upgrade_plan, :manage_printing_options_lov, :manage_printing_options
+        def dropdown
+          @dropdown = StampsElement.new(browser.div(css: "[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown
+        end
 
-        def initialize(param)
-          super
-          @dropdown = StampsElement.new(browser.div(css: "div[id^=printmediadroplist-][id$=-trigger-picker]"))
-          @textbox = StampsTextBox.new(browser.text_field(name: "PrintMedia"))
-          @upgrade_plan = UpgradePlan.new(param)
-          @manage_printing_options_lov = StampsElement.new(browser.li(text: 'Manage Printing Options...'))
-          @manage_printing_options = ManagePrintOptionsModal.new(param)
+        def upgrade_plan
+          @upgrade_plan = UpgradePlan.new(param) if @upgrade_plan.nil? || !@upgrade_plan.present?
+          @upgrade_plan
+        end
+
+        def manage_printing_options_lov
+          @manage_printing_options_lov = StampsElement.new(browser.li(text: 'Manage Printing Options...')) if @manage_printing_options_lov.nil? || !@manage_printing_options_lov.present?
+          @manage_printing_options_lov
+        end
+
+        def manage_printing_options
+          @manage_printing_options = ManagePrintOptionsModal.new(param) if @manage_printing_options.nil? || !@manage_printing_options.present?
+          @manage_printing_options
         end
 
         def present?

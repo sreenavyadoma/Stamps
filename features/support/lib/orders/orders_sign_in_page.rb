@@ -96,7 +96,6 @@ module Stamps
         def login
           sign_in_btn.click
           sign_in_btn.click
-          sign_in_btn.click
         end
 
         def first_time_sign_in(usr, pw)
@@ -133,6 +132,7 @@ module Stamps
             invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
             new_welcome = NewWelcomeModal.new(param)
             security_questions = SecurityQuestions.new(param)
+            server_error = ServerError.new(param)
 
             expect(browser.url).to include "Orders"
 
@@ -148,6 +148,7 @@ module Stamps
                   password(pw)
                   login
                   wait_while_present(5)
+                  expect("Server Error").to eql(server_error.message) if server_error.present?
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?

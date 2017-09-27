@@ -14,7 +14,6 @@ module Stamps
       end
     end
 
-
     class RememberUsername < Browser::StampsModal
       attr_reader :remember_user_element
 
@@ -32,7 +31,6 @@ module Stamps
         browser.checkbox(css: "input[id=rememberUser]").set
       end
 
-      #Stamps::Browser::CheckBoxElement.new checkbox_field, verify_field, "class", "checked"
       def uncheck
         browser.checkbox(css: "input[id=rememberUser]").clear
         browser.checkbox(css: "input[id=rememberUser]").clear
@@ -40,11 +38,9 @@ module Stamps
     end
 
     class MailLandingPage < Browser::StampsModal
-      attr_reader :sign_in_modal
-
-      def initialize(param)
-        super
-        @sign_in_modal = MailSignInModal.new(param)
+      def sign_in_modal
+        @sign_in_modal = MailSignInModal.new(param) if @sign_in_modal.nil? || !@sign_in_modal.present?
+        @sign_in_modal
       end
 
       def url
@@ -110,28 +106,68 @@ module Stamps
     end
 
     class MailSignInModal < Browser::StampsModal
-      attr_reader :username_textbox, :password_textbox, :sign_in_button, :sign_in_link, :whats_new_modal, :verifying_account_info, :invalid_msg,
-                  :remember_username_checkbox, :invalid_username_password, :signed_in_user, :sign_in_form
+      def username_textbox
+        @username_textbox = StampsTextBox.new(browser.text_field(id: "UserNameTextBox")) if @username_textbox.nil? || !@username_textbox.present?
+        @username_textbox
+      end
 
-      def initialize(param)
-        super
-        @username_textbox = StampsTextBox.new(browser.text_field(id: "UserNameTextBox"))
-        @password_textbox = StampsTextBox.new(browser.text_field(id: "PasswordTextBox"))
-        @sign_in_button = StampsElement.new(browser.button(id: "signInButton"))
-        @sign_in_link = StampsElement.new(browser.a(css: "a[class*=signInLink]"))
-        @verifying_account_info = StampsElement.new(browser.div(text: "Verifying account information..."))
-        @invalid_msg = StampsElement.new(browser.div(css: "div[id*=InvalidUsernamePasswordMsg]"))
-        @whats_new_modal = WhatsNewModal.new(param)
-        @remember_username_checkbox = StampsWatirCheckBox.new(browser.checkbox(id: "rememberUser"))
-        @invalid_username_password = StampsElement.new(browser.div(id: "InvalidUsernamePasswordMsg"))
-        @username = ""
-        @password = ""
-        @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
-        @sign_in_form = StampsElement.new(browser.form(css: "form[class=form-signin]"))
+      def password_textbox
+        @password_textbox = StampsTextBox.new(browser.text_field(id: "PasswordTextBox")) if @password_textbox.nil? || !@password_textbox.present?
+        @password_textbox
+      end
+
+      def sign_in_button
+        @sign_in_button = StampsElement.new(browser.button(id: "signInButton")) if @sign_in_button.nil? || !@sign_in_button.present?
+        @sign_in_button
+      end
+
+      def invalid_msg
+        @invalid_msg = StampsElement.new(browser.div(css: "div[id*=InvalidUsernamePasswordMsg]")) if @invalid_msg.nil? || !@invalid_msg.present?
+        @invalid_msg
+      end
+
+      def whats_new_modal
+        @whats_new_modal = WhatsNewModal.new(param) if @whats_new_modal.nil? || !@whats_new_modal.present?
+        @whats_new_modal
+      end
+
+      def verifying_account_info
+        @verifying_account_info = StampsElement.new(browser.div(text: "Verifying account information...")) if @verifying_account_info.nil? || !@verifying_account_info.present?
+        @verifying_account_info
+      end
+
+      def remember_username_checkbox
+        @remember_username_checkbox = StampsWatirCheckBox.new(browser.checkbox(id: "rememberUser")) if @remember_username_checkbox.nil? || !@remember_username_checkbox.present?
+        @remember_username_checkbox
+      end
+
+      def invalid_username_password
+        @invalid_username_password = StampsElement.new(browser.div(id: "InvalidUsernamePasswordMsg")) if @invalid_username_password.nil? || !@invalid_username_password.present?
+        @invalid_username_password
+      end
+
+      def signed_in_user
+        @signed_in_user = StampsElement.new(browser.span(id: "userNameText")) if @signed_in_user.nil? || !@signed_in_user.present?
+        @signed_in_user
+      end
+
+      def sign_in_form
+        @sign_in_form = StampsElement.new(browser.form(css: "form[class=form-signin]")) if @sign_in_form.nil? || !@sign_in_form.present?
+        @sign_in_form
+      end
+
+      def server_error
+        @server_error = ServerError.new(param) if @server_error.nil? || !@server_error.present?
+        @server_error
       end
 
       def present?
         sign_in_link.present?
+      end
+
+      def sign_in_link
+        @sign_in_link = StampsElement.new(browser.a(css: "a[class*=signInLink]")) if @sign_in_link.nil? || !@sign_in_link.present?
+        @sign_in_link
       end
 
       def wait_until_present(*args)
@@ -194,6 +230,7 @@ module Stamps
               end
             end
             signed_in_user.wait_until_present(2)
+            expect("Server Error").to eql(server_error.message) if server_error.present?
             if whats_new_modal.present?
               whats_new_modal.continue
               break

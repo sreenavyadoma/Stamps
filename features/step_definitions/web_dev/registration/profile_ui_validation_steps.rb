@@ -102,3 +102,5 @@ end
 Then /^[Ee]xpect Profile page Survey Question tooltip to be (.*)$/ do |str|
   expect(registration.profile.survey_question.single_field_help_block.tooltip).to eql(str)
 end
+
+

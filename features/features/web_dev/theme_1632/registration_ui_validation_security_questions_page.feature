@@ -28,7 +28,7 @@ Feature: Registration Security questions page validation theme_1632
     Then click Membership page Continue button
 
     # Choose supplies Page
-    Then in Choose Supplies page, click Place Order button
+    Then click Choose Supplies page Place Order button
 
     # Add Postage Page
     Then in Add Postage page, click Confirm button

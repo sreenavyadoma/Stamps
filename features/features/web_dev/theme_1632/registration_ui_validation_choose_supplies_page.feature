@@ -1,9 +1,9 @@
-Feature: Registration Security questions page happy path
+Feature: Registration Choose Supplies Page validation Theme 1632
 
   Background:
     Given I loaded the default registration page
 
-  @registration_security_questions_happy_path
+  @registration_ui_validation_choose_supplies_page
   Scenario: Registration Security questions page happy path
 
     # Profile Page
@@ -25,23 +25,12 @@ Feature: Registration Security questions page happy path
     Then set Membership page Month to Dec (12)
     Then set Membership page Year to this year plus 1
     Then check Membership page Terms & Conditions
-    Then click Membership page Continue button
+    Then click Membership page Submit button
 
     # Choose supplies Page
+    Then expect Choose Supplies page welcome_kit_message exists
+    Then expect Choose Supplies page Place order button exists
+    Then expect Choose Supplies page first paragraph contain Thank you for signing up for Stamps.com. Your free Welcome Kit is on its way. Included in the kit is a set of label sheets for printing stamps or shipping labels.
+    Then expect Choose Supplies page second paragraph contain If you want to add a free postal scale (just pay S&H) or additional labels or supplies, please select below.
+    Then expect Choose Supplies page welcome_kit_logo exists
     Then click Choose Supplies page Place Order button
-
-    # Add Postage Page
-    #Then in Add Postage page, click Confirm button
-
-    # Ship Volume Survey Page
-    #Then in Ship Volume Survey page, click Submit button
-
-    # Select security quetions and answers
-    Then set Security questions page select first question to What was your high school mascot?
-    Then set Security questions page select first answer to Auto11
-    Then set Security questions page select second question to What is your father's birthplace?
-    Then set Security questions page select second answer to Auto11
-    Then click Get Started button
-
-    # Validate newly created account welcome page
-    #Then expect congratulations message exists

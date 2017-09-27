@@ -263,5 +263,6 @@ end
 
 Then /^[Cc]lick [Mm]embership [Pp]age [Ss]ubmit button$/ do
   registration.membership.continue_btn.click
+  step "pause for 2 seconds"
 end
 

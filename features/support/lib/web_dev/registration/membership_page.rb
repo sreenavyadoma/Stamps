@@ -165,7 +165,7 @@ module Stamps
 
         def continue_to_next_page
           continue_btn.click_while_present
-          continue_btn.wait_while_present(3)
+          continue_btn.wait_while_present(5)
         end
 
         def continue
@@ -192,6 +192,25 @@ module Stamps
 
         def address_list
           StampsElement.new(browser.divs(css: "div[id='multipleMatch']>table>tbody>tr>td>input").first)
+        end
+      end
+
+      module MemberUsernameTakenModel
+        def uname_model_header
+          StampsElement.new(browser.h3(css: "div[id='error']>div>div>div[class='modal-header']>h3")).text
+        end
+
+        def uname_model_custom_body
+          StampsElement.new(browser.p(css: "div[id='error']>div>div>div>div[id='prev-username']>p")).text
+        end
+
+        def uname_text_box
+          @uname_text_box ||= StampsTextBox.new(browser.text_field(id: "newUsername"))
+          @uname_text_box
+        end
+
+        def uname_continue_btn
+          StampsElement.new(browser.button(id: "btnUserNameTakenContinue"))
         end
       end
 
@@ -353,6 +372,7 @@ module Stamps
         include MembershipPagination
         include MembershipTermsAndConditions
         include MemberAddressValidationModel
+        include MemberUsernameTakenModel
         attr_reader :header
         def initialize(param)
           super
