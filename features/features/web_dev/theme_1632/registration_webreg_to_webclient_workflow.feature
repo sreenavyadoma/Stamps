@@ -39,3 +39,9 @@ Feature: Webreg to Web client registration theme_1632
     Then select Security Questions 2nd security question What is your father's birthplace?
     Then expect Security Questions 2nd security quetion is correct
     Then set Security Questions 2nd security answer to Auto11
+    Then click Security Questions page Continue button
+    Then expect Security Questions successfully set dialog exists
+    Then expect Security Questions successfully set dialog contain Security questions and answers have been successfully set.
+    Then click Security Questions page Continue button
+
+    Then load web apps orders then sign-in

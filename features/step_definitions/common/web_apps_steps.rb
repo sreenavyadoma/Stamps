@@ -53,6 +53,18 @@ Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Aa]nswer is (?:correc
   expect(modal[:security_questions].second_security_question.second_security_question.text).to eql((str.nil?)?test_param[:first_security_answer]:str)
 end
 
+Then /^[Cc]lick [Ss]ecurity [Qq]uestions [Pp]age [Cc]ontinue button$/ do
+  modal[:security_questions].continue
+end
+
+Then /^[Ee]xpect Security Questions successfully set dialog exists/ do
+  expect(modal[:security_questions].window_title).to be(true), "Security Questions doesn't set up successfully"
+end
+
+Then /^[Ee]xpect Security Questions successfully set dialog contain (.*)/ do |str|
+  expect(modal[:security_questions].security_que_successfully_msg.text).to eql(str)
+end
+
 Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
   modal_param.web_app = :mail
   step "load Web Apps Sign-in page"

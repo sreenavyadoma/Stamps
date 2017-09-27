@@ -12,9 +12,9 @@ module Stamps
           @window_title
         end
 
-        def body
-          @body = StampsElement.new( browser.div(css: "div[class*='app-window'][class*='window-closable']>div[id$=body]>div>div>div>div>label")) if @body.nil? || !@body.present?
-          @body
+        def security_que_successfully_msg
+          @security_que_successfully_msg = StampsElement.new( browser.div(text: "Security questions and answers have been successfully set.")) if @security_que_successfully_msg.nil? || !@security_que_successfully_msg.present?
+          @security_que_successfully_msg
         end
 
         def first_security_question
@@ -25,6 +25,11 @@ module Stamps
         def second_security_question
           @second_security_question = SecuritySecondQuestion.new(param) if @second_security_question.nil? || !@second_security_question.present?
           @second_security_question
+        end
+
+        def body
+          @body = StampsElement.new( browser.div(css: "div[class*='app-window'][class*='window-closable']>div[id$=body]>div>div>div>div>label")) if @body.nil? || !@body.present?
+          @body
         end
 
         def present?
@@ -60,7 +65,7 @@ module Stamps
           drop_down.click
           selection = StampsElement.new(browser.lis(text: str).first)
 
-          1.times do
+          15.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
@@ -88,7 +93,7 @@ module Stamps
           drop_down.click
           selection = StampsElement.new(browser.lis(text: str).last)
 
-          1.times do
+          15.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
