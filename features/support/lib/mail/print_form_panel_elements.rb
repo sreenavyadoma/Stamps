@@ -744,9 +744,17 @@ module Stamps
             blur_out
           end
           dropdown.click unless service_field.present?
+
+
+
           if service_field.present?
-            expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems. Got rate #{service_selection.cost_str}"
-            dropdown.click
+            specify_element = browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl')
+            specify_verify_element = browser.div(id: 'sdc-mainpanel-specifypostageradio')
+            specify_postage_amount = StampsRadio.new(specify_element, specify_verify_element, "class", "checked")
+            if !specify_postage_amount.selected?
+              expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems. Got rate #{service_selection.cost_str}"
+              dropdown.click
+            end
           end
           expect(textbox.text).to include(str), "Unable to select Mail Service #{str}. Expected Service textbox to contain #{str}, got #{textbox.text}"
           logger.info "#{textbox.text} service selected."
