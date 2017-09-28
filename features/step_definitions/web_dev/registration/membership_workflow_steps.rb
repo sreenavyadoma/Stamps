@@ -246,7 +246,7 @@ Then /^[Cc]heck [Mm]embership [Pp]age Terms & Conditions$/ do
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is checked$/ do
-  expect(registration.membership.agree_to_terms.checked?).to be(true), "Membership page Billing address same as mailing address is UNCHECKED and it should be CHECKED."
+  expect(registration.membership.agree_to_terms.checked?).to be(true), "Terms & Conditions is UNCHECKED and it should be CHECKED."
 end
 
 Then /^[Uu]ncheck [Mm]embership [Pp]age Terms & Conditions$/ do
@@ -254,7 +254,7 @@ Then /^[Uu]ncheck [Mm]embership [Pp]age Terms & Conditions$/ do
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do
-  expect(registration.membership.agree_to_terms.checked?).not_to be(true), "Membership page Billing address same as mailing address is CHECKED and it should be UNCHECKED"
+  expect(registration.membership.agree_to_terms.checked?).not_to be(true), "Terms & Conditions is CHECKED and it should be UNCHECKED"
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age [Cc]ontinue button$/ do
