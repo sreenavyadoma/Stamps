@@ -436,7 +436,8 @@ module Stamps
         attr_reader :header
         def initialize(param)
           super
-          @header = StampsElement.new(browser.h1(css: "div[id=page]>div>div>h1"))
+          @header = StampsElement.new(browser.h1(css: "div[id=page]>div>div>h1")) if @header.nil? || !@header.present?
+          @header
         end
       end
     end
