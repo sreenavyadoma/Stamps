@@ -172,7 +172,8 @@ module Stamps
 
       module MembershipPagination
         def back_btn
-          StampsElement.new(browser.button(id: "prev"))
+          @back_btn = StampsElement.new(browser.button(id: "prev")) if @back_btn.nil? || !@back_btn.present?
+          @back_btn
         end
 
         def back
@@ -180,7 +181,8 @@ module Stamps
         end
 
         def continue_btn
-          StampsElement.new(browser.button(id: "next"))
+          @continue_btn = StampsElement.new(browser.button(id: "next")) if @continue_btn.nil? || !@continue_btn.present?
+          @continue_btn
         end
 
         def continue_to_next_page
