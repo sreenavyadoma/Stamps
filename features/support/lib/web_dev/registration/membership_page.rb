@@ -224,20 +224,23 @@ module Stamps
 
       module MemberUsernameTakenModel
         def uname_model_header
-          StampsElement.new(browser.h3(css: "div[id='error']>div>div>div[class='modal-header']>h3")).text
+          @uname_model_header = StampsElement.new(browser.h3(css: "div[id='error']>div>div>div[class='modal-header']>h3")).text if @uname_model_header.nil? || !@uname_model_header.present?
+          @uname_model_header
         end
 
         def uname_model_custom_body
-          StampsElement.new(browser.p(css: "div[id='error']>div>div>div>div[id='prev-username']>p")).text
+          @uname_model_custom_body = StampsElement.new(browser.p(css: "div[id='error']>div>div>div>div[id='prev-username']>p")).text if @uname_model_custom_body.nil? || !@uname_model_custom_body.present?
+          @uname_model_custom_body
         end
 
         def uname_text_box
-          @uname_text_box ||= StampsTextBox.new(browser.text_field(id: "newUsername"))
+          @uname_text_box ||= StampsTextBox.new(browser.text_field(id: "newUsername")) if @uname_text_box.nil? || !@uname_text_box.present?
           @uname_text_box
         end
 
         def uname_continue_btn
-          StampsElement.new(browser.button(id: "btnUserNameTakenContinue"))
+          @uname_continue_btn = StampsElement.new(browser.button(id: "btnUserNameTakenContinue")) if @uname_continue_btn.nil? || !@uname_continue_btn.present?
+          @uname_continue_btn
         end
       end
 
