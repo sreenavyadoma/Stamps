@@ -90,43 +90,52 @@ module Stamps
 
       module MemberCreditCard
         def cc_holder_name
-          @cc_holder_name ||= RegMembershipCardHolderName.new(browser.text_field(id: "ccName")) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_holder_name ||= RegMembershipCardHolderName.new(browser.text_field(id: "ccName")) if @cc_holder_name.nil? || !@cc_holder_name.present?
+          @cc_holder_name
         end
 
         def cc_number
-          @cc_number ||= RegMembershipCreditCardNumber.new(browser.text_field(id: "ccNumber")) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_number ||= RegMembershipCreditCardNumber.new(browser.text_field(id: "ccNumber")) if @cc_number.nil? || !@cc_number.present?
+          @cc_number
         end
 
         def cc_month
           element = browser.span(css: "button[data-id=ccMonth]>span")
-          @cc_month ||= RegMembershipMonth.new(element, element, :span) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_month ||= RegMembershipMonth.new(element, element, :span) if @cc_month.nil? || !@cc_month.present?
+          @cc_month
         end
 
         def cc_year
           element = browser.span(css: "button[data-id=ccYear]>span[class*=option]")
-          @cc_year ||= RegMembershipYear.new(element, element, :span) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_year ||= RegMembershipYear.new(element, element, :span) if @cc_year.nil? || !@cc_year.present?
+          @cc_year
         end
 
         def cc_address
-          @cc_address ||= RegMembershipBillingAddress.new(browser.text_field(id: "billingStreet")) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_address ||= RegMembershipBillingAddress.new(browser.text_field(id: "billingStreet")) if @cc_address.nil? || !@cc_address.present?
+          @cc_address
         end
 
         def cc_city
-          @cc_city ||= RegMembershipBillingCity.new(browser.text_field(id: "billingCity")) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_city ||= RegMembershipBillingCity.new(browser.text_field(id: "billingCity")) if @cc_city.nil? || !@cc_city.present?
+          @cc_city
         end
 
         def cc_state
           element = browser.span(css: "button[data-id=billingState]>span")
           list_of_values = browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div[class*=select]>div>ul>li>a>span[class=text]")
-          @cc_state ||= RegMembershipBillingState.new(element, element, list_of_values) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_state ||= RegMembershipBillingState.new(element, element, list_of_values) if @cc_state.nil? || !@cc_state.present?
+          @cc_state
         end
 
         def cc_zip
-          @cc_zip ||= RegMembershipBillingZip.new(browser.text_field(id: "billingZip")) if @billing_zip.nil? || !@billing_zip.present?
+          @cc_zip ||= RegMembershipBillingZip.new(browser.text_field(id: "billingZip")) if @cc_zip.nil? || !@cc_zip.present?
+          @cc_zip
         end
 
         def use_mailing_for_billing
-          StampsWatirCheckBox.new(browser.checkbox(name: 'useMailingAddressForBilling')) if @billing_zip.nil? || !@billing_zip.present?
+          @use_mailing_for_billing = StampsWatirCheckBox.new(browser.checkbox(name: 'useMailingAddressForBilling')) if @use_mailing_for_billing.nil? || !@use_mailing_for_billing.present?
+          @use_mailing_for_billing
         end
       end
 
