@@ -197,23 +197,28 @@ module Stamps
 
       module MemberAddressValidationModel
         def model_header
-          StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3")).text
+          @model_header = StampsElement.new(browser.h3(css: "div[id=addressValidationModal]>div>div>div>h3")).text if @model_header.nil? || !@model_header.present?
+          @model_header
         end
 
         def model_header_instructions
-          StampsElement.new(browser.p(id: "instructions")).text
+          @model_header_instructions = StampsElement.new(browser.p(id: "instructions")).text if @model_header_instructions.nil? || !@model_header_instructions.present?
+          @model_header_instructions
         end
 
         def cancel
-          StampsElement.new(browser.divs(css: "div[class='modal-footer']>button").first)
+          @cancel = StampsElement.new(browser.divs(css: "div[class='modal-footer']>button").first) if @cancel.nil? || !@cancel.present?
+          @cancel
         end
 
         def continue
-          StampsElement.new(browser.divs(css: "div[class='modal-footer']>button").last)
+          @continue = StampsElement.new(browser.divs(css: "div[class='modal-footer']>button").last) if @continue.nil? || !@continue.present?
+          @continue
         end
 
         def address_list
-          StampsElement.new(browser.divs(css: "div[id='multipleMatch']>table>tbody>tr>td>input").first)
+          @address_list = StampsElement.new(browser.divs(css: "div[id='multipleMatch']>table>tbody>tr>td>input").first) if @address_list.nil? || !@address_list.present?
+          @address_list
         end
       end
 
