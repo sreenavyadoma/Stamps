@@ -20,7 +20,6 @@ Feature:  Requires x-number of label sheets
     Then set Order Details form Ship-To to random address between zone 5 and 8
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz
-    Then set Order Details form Dimensions to Length 1 Width 1 Height 1
 
 
     Then add new order
