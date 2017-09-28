@@ -12,7 +12,7 @@ Feature: Print Media - Roll 418x614
     Then set Order Details form Pounds to 1
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Print button
-    Then set Print modal Print-On to "Roll 418x614"
+    Then set Print modal Print-On to "Roll - 418x614"
     Then click print modal print button
     Then Sign out
 
