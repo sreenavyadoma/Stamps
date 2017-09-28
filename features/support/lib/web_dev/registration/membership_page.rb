@@ -247,151 +247,181 @@ module Stamps
 
       class RegMembershipFirstName < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipLastName < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipAddress < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipCity < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipState < Stamps::Browser::StampsDropDown
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipPhone < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipCardHolderName < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipCreditCardNumber < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipMonth < Stamps::Browser::StampsDropDown
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipYear < Stamps::Browser::StampsDropDown
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipBillingAddress < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipBillingCity < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipBillingState < Stamps::Browser::StampsDropDownLovSubStr
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(8)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipBillingZip < Stamps::Browser::StampsTextBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
       class RegMembershipTerms < Stamps::Browser::StampsWatirCheckBox
         def help_block
-          RegHelpBlock.new(browser, browser.lis(css: "div[class=terms-msg]>span>ul>li"))
+          @help_block = RegHelpBlock.new(browser, browser.lis(css: "div[class=terms-msg]>span>ul>li")) if @help_block.nil? || !@help_block.present?
+          @help_block
         end
 
         def single_field_help_block
-          RegHelpBlock.new(browser, browser.spans(css: "div[class=terms-msg]>span"))
+          @single_field_help_block = RegHelpBlock.new(browser, browser.spans(css: "div[class=terms-msg]>span")) if @single_field_help_block.nil? || !@single_field_help_block.present?
+          @single_field_help_block
         end
       end
 
