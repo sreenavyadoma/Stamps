@@ -141,23 +141,28 @@ module Stamps
 
       module MembershipTermsAndConditions
         def agree_to_terms
-          @agree_to_terms = RegMembershipTerms.new(browser.input(name: 'termsConditions'))
+          @agree_to_terms = RegMembershipTerms.new(browser.input(name: 'termsConditions')) if @agree_to_terms.nil? || !@agree_to_terms.present?
+          @agree_to_terms
         end
 
         def terms_conditions_link
-          @terms_conditions_link = StampsElement.new(browser.a(css: "a[class*='termsLabel terms-conditions-link'"))
+          @terms_conditions_link = StampsElement.new(browser.a(css: "a[class*='termsLabel terms-conditions-link'")) if @terms_conditions_link.nil? || !@terms_conditions_link.present?
+          @terms_conditions_link
         end
 
         def pricing_billing_details_link
-          @pricing_billing_details_link = StampsElement.new(browser.a(class: "pricing-billing-link"))
+          @pricing_billing_details_link = StampsElement.new(browser.a(class: "pricing-billing-link")) if @pricing_billing_details_link.nil? || !@pricing_billing_details_link.present?
+          @pricing_billing_details_link
         end
 
         def terms_label_1
-          @terms_label_1 = StampsElement.new(browser.span(css: "label[for=termsConditions]>span"))
+          @terms_label_1 = StampsElement.new(browser.span(css: "label[for=termsConditions]>span")) if @terms_label_1.nil? || !@terms_label_1.present?
+          @terms_label_1
         end
 
         def terms_label_2
-          @terms_label_2 = StampsElement.new(browser.span(class: "termsLabel"))
+          @terms_label_2 = StampsElement.new(browser.span(class: "termsLabel")) if @terms_label_2.nil? || !@terms_label_2.present?
+          @terms_label_2
         end
 
         def terms_label
