@@ -65,7 +65,7 @@ module Stamps
           drop_down.click
           selection = StampsElement.new(browser.lis(text: str).first)
 
-          15.times do
+          5.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click
@@ -93,7 +93,7 @@ module Stamps
           drop_down.click
           selection = StampsElement.new(browser.lis(text: str).last)
 
-          15.times do
+          1.times do
             drop_down.click unless selection.present?
             selection.scroll_into_view
             selection.click

@@ -54,11 +54,11 @@ Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Aa]nswer is (?:correc
 end
 
 Then /^[Cc]lick [Ss]ecurity [Qq]uestions [Pp]age [Cc]ontinue button$/ do
-  modal[:security_questions].continue
+  modal[:security_questions].cont_btn.click
 end
 
 Then /^[Ee]xpect Security Questions successfully set dialog exists/ do
-  expect(modal[:security_questions].window_title).to be(true), "Security Questions doesn't set up successfully"
+  expect(modal[:security_questions].window_title.present?).to be(true), "Security Questions doesn't set up successfully"
 end
 
 Then /^[Ee]xpect Security Questions successfully set dialog contain (.*)/ do |str|
