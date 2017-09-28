@@ -96,6 +96,7 @@ module Stamps
         def login
           sign_in_btn.click
           sign_in_btn.click
+          sign_in_btn.click
         end
 
         def first_time_sign_in(usr, pw)
@@ -131,7 +132,7 @@ module Stamps
             loading_orders = StampsElement.new browser.div(text: "Loading orders...")
             invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
             new_welcome = NewWelcomeModal.new(param)
-            security_questions = SecurityQuestions.new(param)
+            security_questions = SecurityQuestionsSuccess.new(param)
             server_error = ServerError.new(param)
 
             expect(browser.url).to include "Orders"
@@ -141,7 +142,7 @@ module Stamps
             logger.message "#"*15
 
             wait_until_present(4)
-            10.times do
+            30.times do
               begin
                 if present?
                   username(usr)
