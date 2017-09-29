@@ -6,8 +6,7 @@ Feature: Webreg to Web client registration theme_1632
   @registration_webreg_to_webclient_workflow
   Scenario: Webreg to Web client registration
 
-    Then new user signed in to Web Apps first time
-
+    # Web Registration
     # Profile Page
     Then set Profile page Email to random value
     Then set Profile page Username to random value
@@ -29,5 +28,20 @@ Feature: Webreg to Web client registration theme_1632
     Then check Membership page Terms & Conditions
     Then click Membership page Submit button
 
-    # Web Client browser launch
-    Then new user signed in to Web Apps first time
+    # Web Client
+    # Default browser launch
+    Then load web apps orders then sign-in expecting Security Questions
+
+    # Select security questions and answers
+    Then select Security Questions 1st security question What was your high school mascot?
+    Then expect Security Questions 1st security quetion is correct
+    Then set Security Questions 1st security answer to Auto11
+    Then select Security Questions 2nd security question What is your father's birthplace?
+    Then expect Security Questions 2nd security quetion is correct
+    Then set Security Questions 2nd security answer to Auto11
+    Then click Security Questions page Continue button
+    Then expect Security Questions successfully set dialog exists
+    Then expect Security Questions successfully set dialog contain Security questions and answers have been successfully set.
+    Then click Security Questions page Continue button
+
+    Then load web apps orders then sign-in
