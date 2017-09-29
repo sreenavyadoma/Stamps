@@ -50,21 +50,6 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Last Name tooltip 0 to be Invalid character in name
     Then expect Membership page Credit Card Number tooltip 0 to be Invalid credit card number
 
-    ## Back end Validation for Membership Page ##
-    # Validate Backend Credit card tool tip
-    Then pause for 1 second
-    Then set Membership page member address to random address between zone 5 and 8
-    Then set Membership page Company to random value
-    Then set Membership page Phone to random value
-    Then set Membership page Cardholder's Name to random value
-    Then set Membership page Credit Card Number to 5417122242000949
-    Then set Membership page Month to Dec (12)
-    Then set Membership page Year to this year plus 1
-    Then check Membership page Billing address same as mailing address
-    Then check Membership page Terms & Conditions
-    Then click Membership page Submit button
-    Then expect Membership page Credit Card Number tooltip to be Stamps.com was unable to complete your registration because your payment method failed verification. Please correct your payment information.
-
     # Membership Page Valid Inputs
     Then set Membership page First Name to random value
     Then expect Membership page First Name is correct
