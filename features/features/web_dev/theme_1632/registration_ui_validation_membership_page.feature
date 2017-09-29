@@ -51,6 +51,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Credit Card Number tooltip 0 to be Invalid credit card number
 
     # Membership Page Valid Inputs
+    Then pause for 1 second
     Then set Membership page First Name to random value
     Then expect Membership page First Name is correct
 
@@ -122,6 +123,8 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Billing Zip is correct
 
     Then check Membership page Billing address same as mailing address
+    Then check Membership page Terms & Conditions
+    Then expect Membership page Terms & Conditions is checked
 
     # Verify Physical Address Zone wise
     Then set Membership page member address to random address between zone 1 and 4
@@ -136,6 +139,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
+    Then pause for 1 second
     Then set Membership page member address to random address between zone 1
     Then expect Membership page Address is correct
     Then expect Membership page City is correct
@@ -160,6 +164,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
+    Then pause for 1 second
     Then set Membership page member address to random address between zone 5
     Then expect Membership page Address is correct
     Then expect Membership page City is correct
@@ -184,12 +189,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
-    Then expect Membership page Terms & Conditions is checked
-
     Then uncheck Membership page Terms & Conditions
     Then expect Membership page Terms & Conditions is unchecked
 
     Then check Membership page Terms & Conditions
-
-
-
