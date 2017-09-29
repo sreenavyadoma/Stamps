@@ -80,6 +80,11 @@ Cucumber::Rake::Task.new(:registration_ui_validation_choose_supplies_page) do |t
   t.profile = 'registration_ui_validation_choose_supplies_page'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:registration_security_questions_happy_path) do |t|
+  t.profile = 'registration_security_questions_happy_path'
+  t.cucumber_opts = "-p cuke_reports"
+end
 # END WEB REG
 
 Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
