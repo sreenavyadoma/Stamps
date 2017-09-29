@@ -34,7 +34,7 @@ module Stamps
       end
 
       def place_order
-        10.times do
+        15.times do
           place_order_btn.click
         end
       end
