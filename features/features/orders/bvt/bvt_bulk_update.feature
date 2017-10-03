@@ -25,8 +25,9 @@ Feature: Bulk Update International
     Then blur out on Order Details form 2 times
 
     # Check 1st two orders
-    Then check orders grid cached order id
+    Then Pause for 1 second
     Then check orders grid cached order id 1
+    Then Pause for 1 second
     Then check orders grid cached order id 2
     Then Pause for 1 seconds
 
@@ -39,17 +40,19 @@ Feature: Bulk Update International
     Then click Multi Order Form Update Order button
 
     # Uncheck both orders
-    Then Pause for 2 seconds
-    Then uncheck orders grid cached order id
+    Then Pause for 1 second
     Then uncheck orders grid cached order id 1
+    Then Pause for 1 second
     Then uncheck orders grid cached order id 2
-    Then Pause for 2 seconds
+    Then Pause for 1 second
 
     # verify fields in 1st order
     Then check orders grid cached order id 1
     Then expect Order Details form Ship From is correct
     Then expect Order Details form service is correct
+    Then Pause for 1 second
     Then uncheck orders grid cached order id 1
+    Then Pause for 1 second
 
     # verify fields in 2nd order
     Then check orders grid cached order id 2
