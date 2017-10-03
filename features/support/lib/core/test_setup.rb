@@ -51,7 +51,7 @@ module Stamps
               profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
-            driver.window.resize_to 1500, 1020
+            driver.window.resize_to 1500, 1200
             driver.window.move_to 0, 0
             @browser_name = 'Mozilla Firefox'
 
