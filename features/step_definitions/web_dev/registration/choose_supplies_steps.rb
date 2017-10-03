@@ -1,5 +1,6 @@
 
 Then /^[Ee]xpect [Cc]hoose [Ss]upplies [Pp]age welcome_kit_message exists$/ do
+  step "pause for 1 seconds"
   expect(registration.choose_supplies.welcome_kit_message.present?).to be(true), "Welcome kit Message DOES NOT exists on choose supplies page"
 end
 

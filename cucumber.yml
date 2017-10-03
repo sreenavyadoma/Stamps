@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_stg
+default: --backtrace --profile kaushal_registration
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -7,7 +7,7 @@ rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=def
 rob_cc: --tags @bulk_update_int WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111
 rob_stg: --tags @bulk_update_int WEB_APP=orders JENKINS=true URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgld1uw4sroe7 PW=pass111
 rob_sc: --tags @bulk_update_int WEB_APP=orders JENKINS=true URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=edge MAX_WINDOW=selenium  USR=default PW=pass111 DEBUG=true # c2jinmzmu64
-kaushal_registration: --tags @registration_ui_validation_membership_page WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false JENKINS=true
+kaushal_registration: --tags @registration_security_questions_happy_path WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false JENKINS=true
 
 rob_dev: --tags @bvt_shipping_address_management DEVELOPER=true WEB_APP=orders JENKINS=true USR=blin_cc1 PW=password1 URL=blin.corp.stamps.com --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
@@ -18,7 +18,7 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @details_large_dimensions_pm --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=chrome USR=default PW=password1
+eli_dev: --tags @mail_bvt_stamps --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=chrome USR=default PW=password1
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
@@ -191,6 +191,9 @@ registration_ui_validation_profile_page: --tags @registration_ui_validation_prof
 registration_ui_validation_security_questions_page: --tags @registration_ui_validation_security_questions_page WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
 registration_ui_validation_add_validation_model: --tags @registration_ui_validation_add_validation_model WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
 registration_username_taken_model: --tags @registration_username_taken_model WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
+registration_ui_validation_choose_supplies_page: --tags @registration_ui_validation_choose_supplies_page WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
+registration_security_questions_happy_path: --tags @registration_security_questions_happy_path WEB_APP=registration --guess DEBUG=false MAX_WINDOW=true JENKINS=true
+
 
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11
 

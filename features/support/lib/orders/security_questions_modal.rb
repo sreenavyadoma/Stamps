@@ -2,12 +2,34 @@ module Stamps
   module Orders
     module Authentication
       class SecurityQuestionsSuccess < Browser::StampsModal
-        attr_accessor :cont_btn, :window_title, :body
-        def initialize(param)
-          super
-          @cont_btn = StampsElement.new( browser.span(text: "Continue"))
-          @window_title = StampsElement.new( browser.span(text: "Security Questions"))
-          @body = StampsElement.new( browser.div(css: "div[class*='app-window'][class*='window-closable']>div[id$=body]>span>div"))
+        def cont_btn
+          @cont_btn = StampsElement.new( browser.span(text: "Continue")) if @cont_btn.nil? || !@cont_btn.present?
+          @cont_btn
+        end
+
+        def window_title
+          @window_title = StampsElement.new( browser.div(text: "Security Questions")) if @window_title.nil? || !@window_title.present?
+          @window_title
+        end
+
+        def security_que_successfully_msg
+          @security_que_successfully_msg = StampsElement.new( browser.div(text: "Security questions and answers have been successfully set.")) if @security_que_successfully_msg.nil? || !@security_que_successfully_msg.present?
+          @security_que_successfully_msg
+        end
+
+        def first_security_question
+          @first_security_question = SecurityFirstQuestion.new(param) if @first_security_question.nil? || !@first_security_question.present?
+          @first_security_question
+        end
+
+        def second_security_question
+          @second_security_question = SecuritySecondQuestion.new(param) if @second_security_question.nil? || !@second_security_question.present?
+          @second_security_question
+        end
+
+        def body
+          @body = StampsElement.new( browser.div(css: "div[class*='app-window'][class*='window-closable']>div[id$=body]>div>div>div>div>label")) if @body.nil? || !@body.present?
+          @body
         end
 
         def present?
@@ -28,47 +50,59 @@ module Stamps
         end
       end
 
-      class SecurityQuestions < Browser::StampsModal
-        attr_accessor :cont_btn, :success_modal
-        def initialize(param)
-          super
-          @cont_btn = StampsElement.new( browser.span(text: "Continue"))
-          @success_modal = SecurityQuestionsSuccess.new(param)
+      class SecurityFirstQuestion < Browser::StampsModal
+        def drop_down
+          @drop_down = StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[0]) if @drop_down.nil? || !@drop_down.present?
+          @drop_down
         end
 
-        def present?
-          success_modal.present?
+        def text_box
+          @text_box = StampsElement.new(browser.divs(css: "input[placeholder='<Please Select>']")[0]) if @text_box.nil? || !@text_box.present?
+          @text_box
         end
 
-        def wait_until_present(*args)
-          success_modal.wait_until_present(*args)
-        end
+        def select(str)
+          drop_down.click
+          selection = StampsElement.new(browser.lis(text: str).first)
 
-        def first_security_question
-          dropdown = browser.divs(css: "div[class^=x-trigger-index-0]")[0]
-          textbox = browser.text_fields(css: "input[placeholder='<Please Select>']")[0]
-          @first_security_question ||= StampsDropDown.new(textbox, dropdown, :div)
+          5.times do
+            drop_down.click unless selection.present?
+            selection.scroll_into_view
+            selection.click
+          end
         end
 
         def first_security_answer
-          @first_security_answer ||= StampsTextBox.new(browser.text_fields(css: "input[type=password][name^=textfield-][name$=-inputEl]")[0])
+          @first_security_answer = StampsTextBox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @first_security_answer.nil? || !@first_security_answer.present?
+          @first_security_answer
+        end
+      end
+
+      class SecuritySecondQuestion < Browser::StampsModal
+        def drop_down
+          @drop_down = StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")[1]) if @drop_down.nil? || !@drop_down.present?
+          @drop_down
         end
 
-        def second_security_question
-          dropdown = browser.divs(css: "div[class^=x-trigger-index-0]")[1]
-          textbox = browser.text_fields(css: "input[placeholder='<Please Select>']")[1]
-          @first_security_question ||= StampsDropDown.new(textbox, dropdown, :div)
+        def text_box
+          @text_box = StampsElement.new(browser.divs(css: "input[placeholder='<Please Select>']")[1]) if @text_box.nil? || !@text_box.present?
+          @text_box
+        end
+
+        def select(str)
+          drop_down.click
+          selection = StampsElement.new(browser.lis(text: str).last)
+
+          1.times do
+            drop_down.click unless selection.present?
+            selection.scroll_into_view
+            selection.click
+          end
         end
 
         def second_security_answer
-          @second_security_answer ||= StampsTextBox.new(browser.text_fields(css: "input[type=password][name^=textfield-][name$=-inputEl]")[1])
-        end
-
-        def continue
-          20.times do
-            cont_btn.click
-            return success_modal if success_modal.present?
-          end
+          @second_security_answer = StampsTextBox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @second_security_answer.nil? || !@second_security_answer.present?
+          @second_security_answer
         end
       end
     end

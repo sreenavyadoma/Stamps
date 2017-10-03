@@ -12,6 +12,7 @@ Feature: Registration Membership page validation Theme 1632
     Then set Profile page Password to random value
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Both mailing and shipping
+    Then set How did you hear about us? to Magazine Ad
     Then set Profile page Promo Code to PR33-NH77
     Then continue to Membership page
 
@@ -39,30 +40,18 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Terms & Conditions tooltip to be You must agree to the Terms & Conditions to proceed.
 
     # Membership Page tooltips with In-valid inputs
+    Then pause for 1 second
     Then set Membership page First Name to 1
     Then set Membership page Last Name to 2
     Then set Membership page Phone to 128889
     Then set Membership page Credit Card Number to 1234
+    Then click Membership page Submit button
     Then expect Membership page First Name tooltip 0 to be Invalid character in name
     Then expect Membership page Last Name tooltip 0 to be Invalid character in name
-    Then expect Membership page Phone tooltip to be This field is required
     Then expect Membership page Credit Card Number tooltip 0 to be Invalid credit card number
 
-    ## Back end Validation for Membership Page ##
-    # Validate Backend Credit card tool tip
-    Then set Membership page member address to random address between zone 1 and 4
-    Then set Membership page Company to random value
-    Then set Membership page Phone to random value
-    Then set Membership page Cardholder's Name to random value
-    Then set Membership page Credit Card Number to 5417122242000949
-    Then set Membership page Month to Dec (12)
-    Then set Membership page Year to this year plus 1
-    Then check Membership page Billing address same as mailing address
-    Then check Membership page Terms & Conditions
-    Then click Membership page Submit button
-    Then expect Membership page Credit Card Number tooltip to be Stamps.com was unable to complete your registration because your payment method failed verification. Please correct your payment information.
-
     # Membership Page Valid Inputs
+    Then pause for 1 second
     Then set Membership page First Name to random value
     Then expect Membership page First Name is correct
 
@@ -134,6 +123,8 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page Billing Zip is correct
 
     Then check Membership page Billing address same as mailing address
+    Then check Membership page Terms & Conditions
+    Then expect Membership page Terms & Conditions is checked
 
     # Verify Physical Address Zone wise
     Then set Membership page member address to random address between zone 1 and 4
@@ -148,6 +139,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
+    Then pause for 1 second
     Then set Membership page member address to random address between zone 1
     Then expect Membership page Address is correct
     Then expect Membership page City is correct
@@ -172,6 +164,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
+    Then pause for 1 second
     Then set Membership page member address to random address between zone 5
     Then expect Membership page Address is correct
     Then expect Membership page City is correct
@@ -196,12 +189,7 @@ Feature: Registration Membership page validation Theme 1632
     Then expect Membership page State is correct
     Then expect Membership page Zip is correct
 
-    Then expect Membership page Terms & Conditions is checked
-
     Then uncheck Membership page Terms & Conditions
     Then expect Membership page Terms & Conditions is unchecked
 
     Then check Membership page Terms & Conditions
-
-
-

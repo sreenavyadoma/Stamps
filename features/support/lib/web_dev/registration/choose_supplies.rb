@@ -10,7 +10,7 @@ module Stamps
       end
 
       def wait_until_present
-        browser.button(text: "Place Order")
+        browser.button(text: "Place Order").wait_until_present 30
       end
 
       def welcome_kit_message
@@ -18,11 +18,11 @@ module Stamps
       end
 
       def welcome_kit_first_paragraph
-        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").first).wait_until_present 15
+        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").first).wait_until_present 30
       end
 
       def welcome_kit_second_paragraph
-        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").last).wait_until_present 15
+        StampsElement.new(browser.ps(css: "div[class = 'container welcomeTextBucket']>section>p").last).wait_until_present 30
       end
 
       def welcome_kit_logo
@@ -34,7 +34,7 @@ module Stamps
       end
 
       def place_order
-        10.times do
+        15.times do
           place_order_btn.click
         end
       end

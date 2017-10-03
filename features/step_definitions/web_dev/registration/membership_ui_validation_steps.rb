@@ -175,6 +175,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Cardholder's Name tooltip to be (.*)$/ do
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip to be (.*)$/ do |str|
+  step "pause for 5 seconds"
   expect(registration.membership.cc_number.single_field_help_block.tooltip).to eql(str)
 end
 
