@@ -4,7 +4,7 @@ Feature: Bulk Update International
   Background:
     Given a valid user is signed in to Web Apps
 
-  @bulk_update_int
+  @bvt_bulk_update
   Scenario: Bulk Update International
 
     # Order #1 (Domestic)

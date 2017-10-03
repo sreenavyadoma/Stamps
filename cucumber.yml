@@ -233,7 +233,9 @@ bvt_purchasing_cc: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALT
 bvt_purchasing_stg: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USR=stgugqex0q4 PW=pass111
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=falsepa WEB_APP=orders 
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders 
-bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bvt_bulk_update: --tags @bvt_bulk_update --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
+
 
 dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders 
 dev_bvt_address_cleansing: --tags @bvt_address_cleansing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders 

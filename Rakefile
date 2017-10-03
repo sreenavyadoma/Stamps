@@ -1021,6 +1021,11 @@ Cucumber::Rake::Task.new(:bvt_shipstation_search) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bvt_bulk_update) do |t|
+  t.profile = 'bvt_bulk_update'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:search_orders) do |t|
   t.profile = 'search_orders'
   t.cucumber_opts = "-p cuke_reports"
