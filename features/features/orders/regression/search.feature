@@ -15,7 +15,7 @@ Feature:  Basic Search
     Then hide order details form Ship-To fields
     Then set Order Details form service to PM Package
     Then set Order Details form Weight to 1 lb 1 oz
-    Then uncheck Orders Grid for cached Order ID
+    Then uncheck orders grid cached order id
     Then select Filter Panel tab Shipped
 
 #    # Search for Email

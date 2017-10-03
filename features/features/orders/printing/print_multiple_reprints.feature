@@ -19,12 +19,12 @@ Feature: Multiple Reprints
     Then select Filter Panel tab Shipped
     Then In Orders Grid, Sort Order Date in Descending Order
     Then Pause for 2 seconds
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
     Then select Filter Panel tab Shipped
     Then Pause for 2 seconds
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 

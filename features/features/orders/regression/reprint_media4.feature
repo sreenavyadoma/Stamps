@@ -28,7 +28,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then click print modal print button
 
     Then select Filter Panel tab Shipped
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then in Print modal, Open Reprint Modal
     Then ReIn Print modal, Reprint
 

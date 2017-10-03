@@ -1,23 +1,24 @@
-Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |order_count|
+Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |count|
   test_param[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.orders.orders_grid.column.checkbox.uncheck(1)
-  stamps.orders.orders_toolbar.add.order_details
-  order_count = (order_count.nil?)?0:order_count.to_i
-  test_param[:order_id][order_count] = stamps.orders.order_details.toolbar.order_id
+  test_param[:order_id][(count.nil?)?test_param[:ord_id_ctr]+=1:count.to_i] =  stamps.orders.orders_toolbar.add_button.click
+  expect(stamps.orders.orders_grid.column.checkbox.checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
+  expect(stamps.orders.orders_grid.column.checkbox.order_id_checked?(test_param[:order_id][test_param[:ord_id_ctr]])).to be(true),
+         "Orders Grid Order ID #{test_param[:order_id][test_param[:ord_id_ctr]]} is unchecked!"
   step "Save Order Details data"
 end
 
 Then /^Save Order Details data$/ do
-  if stamps.orders.order_details.present?
-    test_param[:country] = stamps.orders.order_details.ship_to.country.textbox.text
-    test_param[:service_cost] = stamps.orders.order_details.service.cost
-    test_param[:service] = stamps.orders.order_details.service.textbox.text
-    test_param[:ship_from] = stamps.orders.order_details.ship_from.textbox.text
-    test_param[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-    test_param[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+  if stamps.orders.single_order_details.present?
+    test_param[:country] = stamps.orders.single_order_details.ship_to.country.textbox.text
+    test_param[:service_cost] = stamps.orders.single_order_details.service.cost
+    test_param[:service] = stamps.orders.single_order_details.service.textbox.text
+    test_param[:ship_from] = stamps.orders.single_order_details.single_ship_from.textbox.text
+    test_param[:insure_for_cost] = stamps.orders.single_order_details.insure_for.cost
+    test_param[:total_ship_cost] = stamps.orders.single_order_details.footer.total_ship_cost
     test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-    test_param[:tracking_cost] = stamps.orders.order_details.tracking.cost
-    test_param[:tracking] = stamps.orders.order_details.tracking.textbox.text
+    test_param[:tracking_cost] = stamps.orders.single_order_details.tracking.cost
+    test_param[:tracking] = stamps.orders.single_order_details.tracking.textbox.text
   end
 end
 
@@ -43,7 +44,7 @@ Then /^[Ii]n Print modal, Open Reprint Modal$/ do
   @reprint_modal = stamps.orders.orders_toolbar.reprint
 end
 
-Then /^Label Unavailable:  Expect Visible$/ do
+Then /^Label Unavailable: Expect Visible$/ do
   #test_config.logger.step "Label Unavailable:  Expect Visible"
   case @reprint_modal
     when LabelUnavailable

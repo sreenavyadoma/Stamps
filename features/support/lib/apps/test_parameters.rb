@@ -14,6 +14,7 @@ module TestParameters
       @test_param[:service_look_up]['FCMI'] = 'First-Class Mail International'
       @test_param[:service_look_up]['PMI'] = 'Priority Mail International'
       @test_param[:service_look_up]['PMEI'] = 'Priority Mail Express International'
+      @test_param[:ord_id_ctr] = 0
     end
     @test_param
   end

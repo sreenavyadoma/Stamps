@@ -123,6 +123,7 @@ module Stamps
           @@column_number_hash[column]
         end
 
+        # locate row location for order_id
         def row_number(order_id)
           5.times do
             column_num = column_number(:order_id)
@@ -533,7 +534,7 @@ module Stamps
         end
 
         def data(order_id)
-          test_helper.remove_dollar_sign(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
+          test_helper.dollar_amount_str(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
         end
       end
 
@@ -628,7 +629,7 @@ module Stamps
 
         def data(order_id)
           cost = grid_text_by_id(:ship_cost, order_id)
-          (cost.include? "$")?test_helper.remove_dollar_sign(cost).to_f.round(2):cost
+          (cost.include? "$")?test_helper.dollar_amount_str(cost).to_f.round(2):cost
         end
 
         def ship_cost_error(order_id)
@@ -832,17 +833,21 @@ module Stamps
         end
 
         def check(row)
-          scroll_into_view
-          expect(size).to be > 0, "Grid is empty, there's no Order ID to check."
-          checkbox_element(row).check
-          expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
+          begin
+            scroll_into_view
+            expect(size).to be > 0, "Grid is empty, there's no Order ID to check."
+            checkbox_element(row).check
+            expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
+          end unless checked?(row)
         end
 
         def uncheck(row)
-          scroll_into_view
-          if size > 0
-            checkbox_element(row).uncheck
-            expect(checked?(row)).to be(false), "Unable to uncheck checkbox row #{row}"
+          if checked?(row)
+            scroll_into_view
+            if size > 0
+              checkbox_element(row).uncheck
+              expect(checked?(row)).to be(false), "Unable to uncheck checkbox row #{row}"
+            end
           end
         end
 

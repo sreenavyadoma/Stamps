@@ -58,10 +58,10 @@ Feature:  Update International Orders to ShipStation
 
     Then Pause for 1 second
     Then blur out on Order Details form 3 times
-    Then uncheck Orders Grid for cached Order ID
+    Then uncheck orders grid cached order id
     #Then Refresh the browser
     Then Pause for 3 seconds
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then Pause for 2 seconds
 
     Then expect Order Details form International Ship-To Name is correct

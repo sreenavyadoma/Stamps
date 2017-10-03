@@ -13,19 +13,19 @@ Feature:  Basic Search
     Then set Order Details form service to PM Package
     Then set Order Details form Weight to 1 lb 1 oz
 
-    Then uncheck Orders Grid for cached Order ID
+    Then uncheck orders grid cached order id
 
     Then Pause for 3 seconds
     Then Refresh the browser
     Then Pause for 5 seconds
 
     # Search for new order
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then search filtered Orders for cached Order ID
     Then expect Filter Panel search results tab is present
     Then expect Filter Panel search result count is 1
 
-    #Then check Orders Grid for cached Order ID
+    #Then check orders grid cached order id
     Then expect Order Details form Order ID equals Grid Oder ID in row 1
     Then expect Order Details form Order ID is the same as saved Order ID
 

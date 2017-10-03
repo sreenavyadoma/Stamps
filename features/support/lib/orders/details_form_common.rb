@@ -1,45 +1,78 @@
 module Stamps
   module Orders
-    module OrderDetailsCommon
+    module DetailsFormCommon
 
-      class ShipFromAddress < Browser::StampsModal
-        attr_reader :manage_shipping_address, :form_type
-
+      class DetailsFormDimensions < Browser::StampsModal
         def initialize(param, form_type)
           super(param)
-          @manage_shipping_address = ShipFrom::ManageShippingAddresses.new(param)
+          expect([:single_order, :multi_order_details]).to include(form_type)
           @form_type = form_type
         end
 
-        def textbox
-          case form_type
-            when :single_order
-              @textbox = StampsTextBox.new browser.text_fields(name: "ShipFrom")[0]
-            when :multi_order
-              @textbox = StampsTextBox.new browser.text_fields(name: "ShipFrom")[1]
-            else
-              # invalid selection.
+        def length
+          if @length.nil? || !@length.present?
+            textbox = browser.text_fields(css: "[class*=sdc-mainpanel-lengthnumberfield]")[(@form_type==:single_order)?0:1]
+            inc_btn = browser.div(css: "")
+            dec_btn = browser.div(css: "")
+            @length = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
           end
+          @length
+        end
+
+        def width
+          if @width.nil? || !@width.present?
+            textbox = browser.text_field(css: "")
+            inc_btn = browser.div(css: "")
+            dec_btn = browser.div(css: "")
+            @width = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+          end
+          @width
+        end
+
+        def height
+          if @height.nil? || !@height.present?
+            textbox = browser.text_field(css: "")
+            inc_btn = browser.div(css: "")
+            dec_btn = browser.div(css: "")
+            @height = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+          end
+          @height
+        end
+
+        def present?
+          length.present? && width.present? && height.present?
+        end
+      end
+
+      class DetailsFormShipFrom < Browser::StampsModal
+        attr_reader :form_type
+
+        def initialize(param, form_type)
+          super(param)
+          expect([:single_order, :multi_order_details]).to include(form_type)
+          @form_type = form_type
+        end
+
+        def manage_shipping_address
+          @manage_shipping_address = ShipFrom::ManageShippingAddresses.new(param) if @manage_shipping_address.nil? || !@manage_shipping_address.present?
+          @manage_shipping_address
+        end
+
+        def textbox
+          @textbox = StampsTextBox.new(browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]) if @textbox.nil? || !@textbox.present?
+          @textbox
         end
 
         def dropdown
-          case form_type
-            when :single_order
-              @dropdown = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[0]
-            when :multi_order
-              @dropdown = StampsElement.new browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[1]
-            else
-              # invalid selection.
-              expect([:single_order, :multi_order]).to include(form_type)
-          end
-
+          @dropdown = StampsTextBox.new (browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]) if @dropdown.nil? || !@dropdown.present?
+          @dropdown
         end
 
         def select(str)
           return manage_shipping_address if manage_shipping_address.present?
           dropdown.click
-          sleep(1)
-          selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]:browser.li(text: /#{str}/))
+          sleep(0.5)
+          selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type==:single_order)?0:1]:browser.lis(text: /#{str}/)[(form_type==:single_order)?0:1])
           if str.downcase.include?("manage shipping")
             15.times do
               sleep(0.35)
@@ -47,7 +80,7 @@ module Stamps
               selection.scroll_into_view
               selection.click
               return manage_shipping_address if manage_shipping_address.present?
-              expect(manage_shipping_address.present?).to be(true), "Manage Shipping Address modal did not come up."
+              expect(manage_shipping_address.present?).to be(true), "Manage Shipping Address modal is not present!"
             end
           else
             15.times do
@@ -56,13 +89,14 @@ module Stamps
               selection.scroll_into_view
               selection.click
               sleep(0.35)
-              return if textbox.text.size > 2
+              return textbox.text if textbox.text.size > 2
             end
           end
+          textbox.text
         end
       end
 
-      module ServiceCost
+      module DetailsFormServiceCost
         def cost_label
           labels = browser.label(text: "Service:").parent.labels
           cost_element = nil
@@ -73,7 +107,7 @@ module Stamps
         end
 
         def cost
-          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
         end
 
         def inline_cost(service_name)
@@ -82,7 +116,7 @@ module Stamps
             begin
               dropdown.click unless cost_label.present?
               if cost_label.present?
-                service_cost = test_helper.remove_dollar_sign(cost_label.text)
+                service_cost = test_helper.dollar_amount_str(cost_label.text)
                 logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
                 dropdown.click if cost_label.present?
                 return service_cost.to_f.round(2)
@@ -94,7 +128,7 @@ module Stamps
         end
       end
 
-      class OrdersService < Browser::StampsModal
+      class DetailsFormService < Browser::StampsModal
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
           super(param)
@@ -121,11 +155,8 @@ module Stamps
           dropdown.click
           10.times do
             begin
-              if form_type==:multi_order_int
-                selection = StampsElement.new((browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text").last))
-              else
-                selection = StampsElement.new(browser.td(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text"))
-              end
+              tds = browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
+              selection = StampsElement.new((form_type==:multi_order_int)?tds.last : tds.first)
               dropdown.click unless selection.present?
               selection.scroll_into_view
               sleep(0.15)
@@ -138,6 +169,7 @@ module Stamps
             end
           end
           expect(textbox.text).to include(str)
+          textbox.text
         end
 
         def tooltip(selection)
@@ -214,7 +246,7 @@ module Stamps
               dec_btn = browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
               @oz = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-            when :multi_order
+            when :multi_order_details
               textbox = browser.text_field(name: 'WeightLbs')
               inc_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
               dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=down]")
@@ -225,7 +257,7 @@ module Stamps
               dec_btn = browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
               @oz = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
             else
-              expect([:single_order, :multi_order]).to include(form_type)
+              expect([:single_order, :multi_order_details]).to include(form_type)
           end
         end
       end

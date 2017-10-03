@@ -671,7 +671,7 @@ module Stamps
         end
 
         def cost_str
-          remove_dollar_sign(cost_field.text)
+          dollar_amount_str(cost_field.text)
         end
 
         def selection_is_numeric?
@@ -759,7 +759,7 @@ module Stamps
             begin
               dropdown.click unless cost_label.present?
               if cost_label.present?
-                service_cost = test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+                service_cost = test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
                 logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
                 return service_cost
               end

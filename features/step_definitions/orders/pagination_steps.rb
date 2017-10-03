@@ -20,7 +20,7 @@ Then /^[Ii]n Orders Toolbar, expect number of orders on page is correct$/ do
   stamps.orders.checkbox.check_all
   sleep(0.35)
   awaiting_shipment_total_count = filter.awaiting_shipment.count
-  multi_order_count = stamps.orders.multi_order.order_count
+  multi_order_count = stamps.orders.multi_order_details.order_count
   per_page_count = stamps.orders.orders_toolbar.per_page.textbox.text.to_i
 
   if awaiting_shipment_total_count < per_page_count

@@ -25,7 +25,7 @@ Feature: Orders Filter Panel
     Then expect selected Filter is Awaiting Shipment
     Then expect cached Order ID is in Orders Grid row 1
 
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then select Grid Toolbar Move menu item Move to On Hold
     Then set Move to On Hold modal Hold Until date to today plus 1
     Then click Move to On Hold modal move button
@@ -34,7 +34,7 @@ Feature: Orders Filter Panel
     Then expect cached Order ID exist in the selected filter
 
     Then search filtered Orders for cached Order ID
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then select Grid Toolbar Move menu item Move to Shipped
     Then expect Move to Shipped modal order number is correct
     Then click Move to Shipped modal move button
@@ -43,7 +43,7 @@ Feature: Orders Filter Panel
     Then expect cached Order ID exist in the selected filter
 
     Then search filtered Orders for cached Order ID
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then select Grid Toolbar Move menu item Move to Canceled
     Then click Move to Canceled modal move button
     Then select Filter Panel tab Canceled
@@ -51,7 +51,7 @@ Feature: Orders Filter Panel
     Then expect cached Order ID exist in the selected filter
 
     Then search filtered Orders for cached Order ID
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then select Grid Toolbar Move menu item Move to Awaiting Shipment
     Then click Move to Awaiting Shipment modal move button
     Then select Filter Panel tab Awaiting Shipment

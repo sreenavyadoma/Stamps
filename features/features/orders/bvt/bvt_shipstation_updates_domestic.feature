@@ -33,10 +33,10 @@ Feature:  Update Order to ShipStation
     Then blur out on Order Details form 10 times
     Then Pause for 2 seconds
 
-    Then uncheck Orders Grid for cached Order ID
+    Then uncheck orders grid cached order id
 
     Then Pause for 2 seconds
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then Pause for 2 seconds
     Then blur out on Order Details form 20 times
 

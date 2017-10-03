@@ -1,6 +1,6 @@
 
 Then /^[Ss]earch filtered Orders for cached Order ID$/ do
-  step "search Orders for #{test_param[:order_id][0]} expecting to find at least 1"
+  step "search Orders for #{test_param[:order_id][1]} expecting to find at least 1"
 end
 
 Then /^[Ss]earch filtered Orders for cached Ship-To full name$/ do

@@ -34,11 +34,11 @@ Then /^Verify Local Rating$/ do |table|
     expected_total_amount = element["total"]
 
     5.times do
-      stamps.orders.order_details.blur_out
+      stamps.orders.single_order_details.blur_out
       sleep(0.5)
-      total_ship_cost = stamps.orders.order_details.footer.total_ship_cost
-      stamps.orders.order_details.blur_out
-      stamps.orders.order_details.blur_out
+      total_ship_cost = stamps.orders.single_order_details.footer.total_ship_cost
+      stamps.orders.single_order_details.blur_out
+      stamps.orders.single_order_details.blur_out
       sleep(0.5)
       break if total_ship_cost == expected_total_amount.to_f.round(2)
     end
@@ -47,7 +47,7 @@ Then /^Verify Local Rating$/ do |table|
     #test_config.logger.step "  Test #{index} #{(results[index])?"Passed":"Failed"}"
     #test_config.logger.step "  --------------------------------------------------------------------------- "
 
-    actual = stamps.orders.order_details.footer.total_ship_cost
+    actual = stamps.orders.single_order_details.footer.total_ship_cost
     expect(actual).to eql expected_total_amount
 
     expect("").to eql "| Test #{index} | #{(results[index])?"Passed":"Failed"} |Expectation=#{element["total"]},Actual=#{total}| | #{element["service"]} | #{element["weight_lb"]} | #{element["weight_oz"]} | #{element["length"]} | #{element["height"]} | #{element["width"]} | #{element["tracking"]} | #{element["total"]} |" if actual != expected_total_amount

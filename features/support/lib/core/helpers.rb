@@ -106,6 +106,10 @@ module Stamps
 
   module ParameterHelper
 
+    def parse_service(str)
+      /.+(?= \(.*\)$)/.match(str).to_s
+    end
+
     def state_fullname(state)
       if @states.nil?
         @states = Hash.new
@@ -146,8 +150,27 @@ module Stamps
       false
     end
 
-    def remove_dollar_sign(str)
-      strip str, '$', ''
+    # str = $34.68 returns 34.68
+    def dollar_amount_str(str)
+      /[^$]+/.match(str).to_s
+    end
+
+    def dollar_amount_f(str)
+      /[^$]+/.match(str).to_f
+    end
+
+    # str = $34.68 returns 34
+    def dollars(str)
+      dolars_and_cents(str)[:dollars]
+    end
+
+    # str = $34.68 returns 68
+    def cents(str)
+      dolars_and_cents(str)[:cents]
+    end
+
+    def dolars_and_cents(str)
+      /\$(?<dollars>\d*).(?<cents>.*)/.match(str)
     end
 
     def format_address_arr(address_array)
