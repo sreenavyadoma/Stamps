@@ -28,6 +28,7 @@ module Stamps
 
             capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
             driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
+            driver.window.maximize
 
           when :firefox # Launch Firefox
             begin
@@ -50,6 +51,7 @@ module Stamps
               profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
+            driver.window.resize_to 1400, 960
             @browser_name = 'Mozilla Firefox'
 
           when :chrome
@@ -61,6 +63,7 @@ module Stamps
               #ignore
             end
             driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+            driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
             @browser_name = 'Google Chrome'
           when :ie
@@ -73,6 +76,7 @@ module Stamps
             end
 
             driver = Watir::Browser.new :ie
+            driver.window.maximize
             @browser_name = 'Internet Explorer'
           when :safari
             driver = Watir::Browser.new :safari
@@ -84,7 +88,6 @@ module Stamps
         #driver.window.move_to 0, 0
         #driver.window.resize_to 1000, 800
         #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || test_helper.to_bool(ENV['MAX_WINDOW']))
-        driver.window.maximize
         logger.message "-"
         logger.message "BROWSER: #{@browser_name}"
         logger.message "-"
