@@ -9,15 +9,14 @@ module Stamps
       @windows_user = windows_user
       @logger = StampsLogger.new(@scenario_name)
     end
-
+    
     def setup
       begin
         Watir::always_locate = true
-
         logger.info "Browser Selection: #{browser_sym}"
         case(browser_sym)
-
-          when :edge # Launch Microsoft Edge
+          # Launch Microsoft Edge
+          when :edge
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
               logger.error status
@@ -25,12 +24,11 @@ module Stamps
             rescue
               #ignore
             end
-
             capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
             driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
             driver.window.maximize
-
-          when :firefox # Launch Firefox
+          # Launch Firefox
+          when :firefox
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
               logger.error status
@@ -38,11 +36,7 @@ module Stamps
             rescue
               #ignore
             end
-
             if firefox_profile.nil?
-              # profile = Selenium::WebDriver::Firefox::Profile.new
-              # profile['network.http.phishy-userpass-length'] = 255
-              # capabilities
               capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(accept_insecure_certs: true)
               driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
             else
@@ -51,10 +45,9 @@ module Stamps
               profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
-            driver.window.resize_to 1500, 1200
+            driver.window.resize_to 1560, 1020
             driver.window.move_to 0, 0
             @browser_name = 'Mozilla Firefox'
-
           when :chrome
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
@@ -67,6 +60,7 @@ module Stamps
             driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
             @browser_name = 'Google Chrome'
+          # Launch Internet Explorer
           when :ie
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
@@ -75,7 +69,6 @@ module Stamps
             rescue
               #ignore
             end
-
             driver = Watir::Browser.new :ie
             driver.window.maximize
             @browser_name = 'Internet Explorer'
@@ -85,10 +78,6 @@ module Stamps
           else
             # do nothing.
         end
-
-        #driver.window.move_to 0, 0
-        #driver.window.resize_to 1000, 800
-        #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || test_helper.to_bool(ENV['MAX_WINDOW']))
         logger.message "-"
         logger.message "BROWSER: #{@browser_name}"
         logger.message "-"

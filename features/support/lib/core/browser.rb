@@ -31,12 +31,7 @@ module Stamps
       end
 
       def present?
-        begin
-          return exist? && visible?
-        rescue
-          #ignore
-        end
-        false
+        element.present?
       end
 
       def clickable?
