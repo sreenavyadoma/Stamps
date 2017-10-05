@@ -31,11 +31,16 @@ module Stamps
       end
 
       def present?
-        element.present?
+        begin
+          return exist? && visible?
+        rescue
+          #ignore
+        end
+        false
       end
 
       def clickable?
-        element.enabled?
+        truthy? && present? && enabled?
       end
 
       def visible?
@@ -48,12 +53,17 @@ module Stamps
       end
 
       def exist?
-        element.exist?
+        begin
+          return element.exist?
+        rescue
+          #ignore
+        end
+        false
       end
 
       def enabled?
         begin
-          return
+          return element.enabled?
         rescue
           #ignore
         end
