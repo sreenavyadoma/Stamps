@@ -30,7 +30,6 @@ Before do  |scenario|
   scenario.test_steps.each_with_index { |test_step, index| test_config.logger.message "---------------- Step #{index+1}: #{test_step.source.last.keyword}#{test_step.source.last.name}"}
   test_config.logger.message "-"
   test_config.logger.message "-"
-
   # MySql
   begin
     if modal_param.web_app == :mail || modal_param.web_app == :orders

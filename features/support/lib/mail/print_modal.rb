@@ -47,7 +47,9 @@ module Stamps
               when /zdesigner/
                 selection = StampsElement.new(browser.li(text: /ZDesigner/))
               else
-                expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
+                #
+                selection = StampsElement.new(browser.li(text: /printer/))
+                #expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
             end
 
             return if textbox.text.include?(printer)
