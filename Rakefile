@@ -1457,13 +1457,8 @@ Cucumber::Rake::Task.new(:details_placeholders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:grid_insured_value) do |t|
-  t.profile = 'grid_insured_value'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:grid_tracking) do |t|
-  t.profile = 'grid_tracking'
+Cucumber::Rake::Task.new(:grid_automation_test) do |t|
+  t.profile = 'grid_automation_test'
   t.cucumber_opts = "-p cuke_reports"
 end
 
