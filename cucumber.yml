@@ -1,6 +1,10 @@
 default: --backtrace --profile kaushal_orders
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
+
+kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+kaushal_orders: --tags @general_settings_logoff WEB_APP=orders JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
@@ -22,8 +26,6 @@ eli_dev: --tags @mail_bvt_stamps --guess DEBUG=false JENKINS=false HEALTHCHECK=t
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc USR=ss_cctest3 PW=password1
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-kaushal_orders: --tags @grid_automation_test WEB_APP=orders JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
@@ -313,7 +315,7 @@ grid_tracking: --tags @grid_tracking --guess DEBUG=false JENKINS=true HEALTHCHEC
 grid_ship_cost: --tags @grid_ship_cost --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 print_dialog_thermal_number_of_labels_count: --tags @print_dialog_thermal_number_of_labels_count --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_placeholders: --tags @details_placeholders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-general_settings: --tags @general_settings --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+general_settings_test_cases: --tags @general_settings_test_cases --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_ship_cost_total: --tags @details_ship_cost_total --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 nav_postage_balance_update: --tags @nav_postage_balance_update --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 tracking_defaults: --tags @tracking_defaults --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders

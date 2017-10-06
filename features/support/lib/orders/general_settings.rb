@@ -539,6 +539,9 @@ module Stamps
 
       class GeneralSettings < Browser::StampsModal
 
+        def general
+          @general = browser.span(text: 'General')
+        end
 
         def title
           StampsElement.new(browser.div text: "Orders Settings")

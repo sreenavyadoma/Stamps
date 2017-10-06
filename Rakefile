@@ -1551,8 +1551,8 @@ Cucumber::Rake::Task.new(:nav_postage_balance_update) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:general_settings) do |t|
-  t.profile = 'general_settings'
+Cucumber::Rake::Task.new(:general_settings_test_cases) do |t|
+  t.profile = 'general_settings_test_cases'
   t.cucumber_opts = "-p cuke_reports"
 end
 
