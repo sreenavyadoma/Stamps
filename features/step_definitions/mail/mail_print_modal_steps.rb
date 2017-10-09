@@ -9,6 +9,8 @@ end
 Then /^[Ss]et [Mm]ail [Pp]rint modal Printer to (.*)$/ do |printer|
   test_param[:printer] = printer
   step "expect mail print modal is present"
+  expect(stamps.mail.mail_toolbar.print_postage.mail_printer.present?).to be(true), "Unable to print on printer #{test_param[:printer]}. Check that StampsConnect is pointing to #{modal_param.test_env} on this PC."
+  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present
   stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(test_param[:printer])
 end
 
