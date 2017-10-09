@@ -1621,6 +1621,12 @@ Cucumber::Rake::Task.new(:filter_panel) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:filter_panel_tests) do |t|
+  t.profile = 'filter_panel_tests'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 Cucumber::Rake::Task.new(:new_country_code) do |t|
   t.profile = 'new_country_code'
   t.cucumber_opts = "-p cuke_reports"
