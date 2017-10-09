@@ -20,9 +20,13 @@ module TestParameters
   end
 
   def modal_param
+
     if @modal_param.nil?
       @modal_param ||= ModalParam.new
-      @modal_param.browser_sym = test_config.browser_sym
+
+      expect("ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge").to include(ENV['BROWSER'])
+      @modal_param.browser_sym = BrowserType.new(ENV['BROWSER']).browser_sym
+
       @modal_param.scenario_name = test_config.scenario_name
       @modal_param.firefox_profile = (ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
       expect(ENV['WEB_APP']).not_to be_nil
@@ -34,6 +38,8 @@ module TestParameters
       @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('cc')
       @modal_param.test_env = 'qasc' if ENV['URL'].downcase.include?('sc')
       @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('rating')
+
+      @modal_param.printer = ENV['PRINTER']
 
       @modal_param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 

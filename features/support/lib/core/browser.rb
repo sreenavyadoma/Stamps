@@ -632,7 +632,8 @@ module Stamps
 
     # Modals
     class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :browser_sym, :firefox_profile
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
+                    :developer, :debug, :browser_sym, :firefox_profile, :printer
     end
 
     # StampsModal - base class for modals containing StampsElements

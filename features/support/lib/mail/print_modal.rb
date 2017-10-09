@@ -35,6 +35,7 @@ module Stamps
           textbox.present?
         end
 
+        # returns selected printer or nil if printer is not on list of values
         def select_printer(printer)
           begin
             return textbox.text if textbox.text.include?(printer)
@@ -45,8 +46,8 @@ module Stamps
               sleep(0.15)
               return textbox.text if textbox.text.include?(printer)
             end
-            expect(textbox.text).to include(printer), "Unable to select Printer #{printer}"
           end unless textbox.text.include?(printer)
+
         end
       end
 

@@ -1,15 +1,13 @@
 module Stamps
   class StampsTestSetup
-    attr_accessor :browser, :logger, :browser_sym, :firefox_profile, :windows_user, :scenario_name, :browser_name
+    attr_accessor :browser, :logger, :firefox_profile, :browser_name, :scenario_name
 
-    def init(scenario_name, browser_sym, firefox_profile, windows_user)
+    def initialize_logger(scenario_name)
       @scenario_name = scenario_name
-      @browser_sym = BrowserType.new(browser_sym).browser_sym
-      @firefox_profile = firefox_profile
-      @windows_user = windows_user
-      @logger = StampsLogger.new(@scenario_name)
+      expect(scenario_name).to_not be(nil), "Scenario name cannot be nil, assign value to scenario_name prior to initialing logger."
+      @logger = StampsLogger.new(scenario_name)
     end
-    
+
     def setup
       begin
         Watir::always_locate = true
@@ -90,11 +88,6 @@ module Stamps
         logger.error e.message
         raise e
       end
-    end
-
-    def scenario_name=name
-      @test_name = name
-      logger.scenario_name = @test_name
     end
 
     def os
