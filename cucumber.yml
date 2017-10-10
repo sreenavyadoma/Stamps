@@ -34,7 +34,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
+mail_print_envelope_11: --tags @mail_print_envelope_11 --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail
 
 poc_stg_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc
 poc_stg_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff

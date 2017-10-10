@@ -22,41 +22,28 @@ module Stamps
 
       class MailPrinterComboBox < Browser::StampsModal
         def dropdown
-          StampsElement.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]"))
+          @dropdown = StampsElement.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown
         end
 
         def textbox
-          StampsTextBox.new(browser.text_field(name: "printers"))
+          @textbox = StampsTextBox.new(browser.text_field(name: "printers")) if @textbox.nil? || !@textbox.present?
+          @textbox
+        end
+
+        def present?
+          textbox.present?
         end
 
         def select_printer(printer)
           begin
-            case printer.downcase
-              when /fac/
-                selection = StampsElement.new(browser.li(text: 'factory'))
-              when /kyocera/
-                selection = StampsElement.new(browser.li(text: /Kyocera/))
-              when /epson/
-                selection = StampsElement.new(browser.li(text: /EPSON/))
-              when /brother/
-                selection = StampsElement.new(browser.li(text: /Brother/))
-              when /officejet/
-                selection = StampsElement.new(browser.li(text: /Officejet/))
-              when /dymo/
-                selection = StampsElement.new(browser.li(text: /DYMO/))
-              when /zdesigner/
-                selection = StampsElement.new(browser.li(text: /ZDesigner/))
-              else
-                expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
-            end
-
-            return if textbox.text.include?(printer)
-
+            return textbox.text if textbox.text.include?(printer)
+            selection = StampsElement.new(browser.li(text: /#{(printer.include?('\\'))? printer.gsub!(/.+\\/, '') : printer}/))
             10.times do
               dropdown.click unless selection.present?
               selection.click
               sleep(0.15)
-              break if textbox.text.include?(printer)
+              return textbox.text if textbox.text.include?(printer)
             end
             expect(textbox.text).to include(printer), "Unable to select Printer #{printer}"
           end unless textbox.text.include?(printer)
