@@ -37,9 +37,10 @@ module Stamps
 
         # returns selected printer or nil if printer is not on list of values
         def select_printer(printer)
+          printer = (printer.include?('\\'))? /.+\\(.*)/.match(printer)[1] : printer
           begin
             return textbox.text if textbox.text.include?(printer)
-            selection = StampsElement.new(browser.li(text: /#{(printer.include?('\\'))? printer.gsub!(/.+\\/, '') : printer}/))
+            selection = StampsElement.new(browser.li(text: /#{printer}/))
             10.times do
               dropdown.click unless selection.present?
               selection.click
@@ -47,7 +48,6 @@ module Stamps
               return textbox.text if textbox.text.include?(printer)
             end
           end unless textbox.text.include?(printer)
-
         end
       end
 
