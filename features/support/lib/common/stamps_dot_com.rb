@@ -1,12 +1,18 @@
 module Stamps
   class StampsDotCom < Browser::StampsModal
-    attr_reader :orders, :mail, :navigation_bar
+    def navigation_bar
+      @navigation_bar = Navigation::NavigationBar.new(param) if @navigation_bar.nil? || !@navigation_bar.present?
+      @navigation_bar
+    end
 
-    def initialize(param)
-      super
-      @navigation_bar = Navigation::NavigationBar.new(param)
-      @orders = WebOrders.new(param)
-      @mail = WebMail.new(param)
+    def orders
+      @orders = WebOrders.new(param) if @orders.nil? || !@orders.present?
+      @orders
+    end
+
+    def mail
+      @mail = WebMail.new(param) if @mail.nil? || !@mail.present?
+      @mail
     end
 
     def load_sign_in_page

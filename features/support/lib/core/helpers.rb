@@ -483,6 +483,25 @@ module Stamps
     end
   end
 
+  module BrowserType
+    def browser(browser)
+      case browser.downcase
+        when /ff|firefox|mozilla/
+          return :firefox
+        when /chrome|gc|google/
+          return :chrome
+        when /ms|me|microsoft|edge/
+          return :edge
+        # when /ie|explorer|internet explorer/
+        #   return :ie
+        # when /apple|osx|safari|mac/
+        #   return :safari
+        else
+          raise "#{browser} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
+      end
+    end
+  end
+
   class StampsTestHelper
     include RandomGenerators
     include ParameterHelper
@@ -490,17 +509,6 @@ module Stamps
     attr_reader :logger
     def initialize(logger)
       @logger = logger
-    end
-  end
-
-  class BrowserType
-    attr_reader :browser_sym
-    def initialize(browser_sym)
-      @browser_sym = :firefox if "ff|firefox|mozilla".include? browser_sym.downcase
-      @browser_sym = :chrome if "chrome|gc|google".include? browser_sym.downcase
-      @browser_sym = :ie if "ie|explorer|internet explorer".include? browser_sym.downcase
-      @browser_sym = :safari if "apple|osx|safari|mac".include? browser_sym.downcase
-      @browser_sym = :edge if "ms|me|microsoft|edge".include? browser_sym.downcase
     end
   end
 end

@@ -4,8 +4,7 @@ Then /^Teardown$/ do
 end
 
 Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |selection|
-  ENV['BROWSER'] = selection unless selection.nil?
-  test_config.setup
+  test_config.setup((selection.nil?)? modal_param.browser_str : selection)
 end
 
 Then /^Refresh the browser$/ do

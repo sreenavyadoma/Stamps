@@ -1,20 +1,20 @@
 module Stamps
   class StampsTestSetup
-    attr_accessor :browser, :logger, :firefox_profile, :browser_name, :scenario_name
+    attr_accessor :browser, :firefox_profile, :browser_version, :scenario_name
 
-    def initialize_logger(scenario_name)
-      @scenario_name = scenario_name
+    def logger
       expect(scenario_name).to_not be(nil), "Scenario name cannot be nil, assign value to scenario_name prior to initialing logger."
-      @logger = StampsLogger.new(scenario_name)
+      @logger = StampsLogger.new(scenario_name) if @logger.nil? || @logger.scenario_name != scenario_name # create new instance of logger if scenario name changes
+      @logger
     end
 
-    def setup
+    def setup(browser_str)
       begin
         Watir::always_locate = true
-        logger.info "Browser Selection: #{browser_sym}"
-        case(browser_sym)
-          # Launch Microsoft Edge
-          when :edge
+        logger.info "Browser Selection: #{browser_str}"
+        browser_version = 'Unknown'
+        case(browser_str)
+          when :edge # Launch Microsoft Edge
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
               logger.error status
@@ -25,8 +25,8 @@ module Stamps
             capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
             driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
             driver.window.maximize
-          # Launch Firefox
-          when :firefox
+            self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
+          when :firefox # Launch Firefox
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
               logger.error status
@@ -43,9 +43,9 @@ module Stamps
               profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
+            self.browser_version = /Mozilla\/[\d+\.]+ \(.+\d\)/.match(driver.execute_script("return navigator.userAgent;"))
             driver.window.resize_to 1560, 1020
             driver.window.move_to 0, 0
-            @browser_name = 'Mozilla Firefox'
           when :chrome
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
@@ -55,11 +55,10 @@ module Stamps
               #ignore
             end
             driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+            self.browser_version = /Chrome\/\d+[.*]\d+[.*]\d*[.*]\d*/.match(driver.execute_script("return navigator.userAgent;"))
             driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
-            @browser_name = 'Google Chrome'
-          # Launch Internet Explorer
-          when :ie
+          when :ie # Launch Internet Explorer
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
               logger.message status
@@ -69,18 +68,17 @@ module Stamps
             end
             driver = Watir::Browser.new :ie
             driver.window.maximize
-            @browser_name = 'Internet Explorer'
           when :safari
             driver = Watir::Browser.new :safari
-            @browser_name = 'Mac OS X - Safari'
           else
-            # do nothing.
+            raise "#{browser_str} is not a valid browser"
         end
+
+        self.browser = driver
         logger.message "-"
-        logger.message "BROWSER: #{@browser_name}"
+        logger.message "BROWSER: #{self.browser_version}"
         logger.message "-"
         #driver.cookies.clear
-        @browser = driver
       rescue Exception => e
         err = e.backtrace.join("\n")
         logger.error e.message
@@ -117,7 +115,7 @@ module Stamps
       rescue
         #ignore
       end
-      logger.info "#{@browser_name} closed."
+      logger.info "#{@browser_str} closed."
       logger.info "Test Done!"
 
     end

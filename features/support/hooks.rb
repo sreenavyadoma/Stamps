@@ -12,7 +12,7 @@ include Spreadsheet
 include DatabaseHelper
 
 Before do  |scenario|
-  test_config.initialize_logger(scenario.name)
+  test_config.scenario_name=scenario.name
   test_config.logger.message "-"
   test_config.logger.message "-"
   test_param[:web_app] = ENV['WEB_APP']

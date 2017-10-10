@@ -19,7 +19,7 @@ module Stamps
       end
 
       def print_on(selection)
-        print_media.wait_until_present(5)
+        wait_until_present(5)
         blur_out
         expect(print_media.present?).to be(true), "Print-on drop-down is not present."
         param.print_media = print_media.print_on_selection(selection)
@@ -51,11 +51,11 @@ module Stamps
       end
 
       def present?
-        toolbar.present?
+        print_media.present?
       end
 
       def wait_until_present(*args)
-        toolbar.wait_until_present(*args)
+        print_media.wait_until_present(*args)
       end
     end
   end
