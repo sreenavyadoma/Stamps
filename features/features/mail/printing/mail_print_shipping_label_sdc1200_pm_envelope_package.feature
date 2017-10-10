@@ -15,7 +15,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Ounces to 1
     Then select Print form service PM Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_large_envelope
@@ -25,7 +25,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Ounces to 1
     Then select Print form service PM Large/Thick Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_lfr_envelope
@@ -35,7 +35,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Ounces to 1
     Then select Print form service PM Legal Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_pfr_envelope
@@ -45,7 +45,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Ounces to 1
     Then select Print form service PM Padded Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_print_shipping_label_sdc1200_pm_package
@@ -59,7 +59,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then select Print form service PM Large Package
     Then set Dimensions to length 2 width 2 height 2
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_pm_package
@@ -69,7 +69,7 @@ Feature: Mail Shipping Label - SDC-1200 - PM Envelope Package
     Then set Print form Ounces to 1
     Then select Print form service PM Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

@@ -14,6 +14,6 @@ Feature: Mail Shipping Label - Left Side
     Then select Print form service Priority Mail Package
     Then select Print form service PM Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out

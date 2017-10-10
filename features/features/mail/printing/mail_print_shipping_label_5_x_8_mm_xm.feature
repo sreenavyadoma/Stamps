@@ -15,7 +15,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
     Then set Print form Ounces to 1
     Then select Print form service MM Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_print_shipping_label_5x8_xm
@@ -28,7 +28,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_5x8_xm_lfr_envelope
@@ -38,7 +38,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Legal Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_5x8_xm_package
@@ -48,7 +48,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_5x8_xm_pfr_envelope
@@ -58,7 +58,7 @@ Feature: Mail Shipping Label - 5 ½” x 8 ½” - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

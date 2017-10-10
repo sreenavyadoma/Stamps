@@ -12,7 +12,7 @@ Feature: Envelopes BVT
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
 

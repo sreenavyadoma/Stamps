@@ -21,7 +21,6 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
-    Then click print modal print button Sample
     Then click print modal print button
 
     #print_layout_cp72_5x8_left
@@ -136,7 +135,6 @@ Feature: Print 1 Intl CP72 label
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then click print modal print button Sample
     Then click print modal print button
 
    #print_layout_cp72_paper_single_ply
@@ -157,7 +155,7 @@ Feature: Print 1 Intl CP72 label
     Then set Print modal Printer to "factory"
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
-    Then click print modal print button Sample
+    
     Then click print modal print button
 
    #print_layout_cp72_roll_continuation
@@ -205,7 +203,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
-    Then click print modal print button Sample
+    
     Then click print modal print button
 
    #print_layout_cp72_sdc1200_single_ply
@@ -244,7 +242,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Roll 418x614"
-    Then click print modal print button Sample
+    
     Then click print modal print button
 
    #print_layout_fsa_cp72_paper_single_ply
@@ -268,7 +266,7 @@ Feature: Print 1 Intl CP72 label
     Then set Print modal Printer to "factory"
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
-    Then click print modal print button Sample
+    
     Then click print modal print button
 
    #print_layout_cp72_single_ply_apo_roll
@@ -286,7 +284,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
-    Then click print modal print button Sample
+    
     Then click print modal print button
 
     Then Sign out

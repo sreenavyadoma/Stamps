@@ -25,7 +25,7 @@ Feature:Shipping Label Preview Panel
     Then set Shipping Label Advanced Options Reference Number to test12435
     Then set Shipping Label Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
 
