@@ -169,5 +169,4 @@ Feature: Orders Filter Panel
     Then add new order
     Then expect selected Filter is Awaiting Shipment
 
-
     Then Sign out
