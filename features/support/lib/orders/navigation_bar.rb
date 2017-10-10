@@ -304,20 +304,19 @@ module Stamps
         end
       end
 
-      def amount
-        10.times do
-          amount = balance_element.text
-          amount_no_dollar_sign = amount.gsub("$","")
-          amount_stripped_all = amount_no_dollar_sign.gsub(",","")
-          return amount_stripped_all.to_f.round(2) if amount_stripped_all.length > 0
-        end
+      def balance_text
+        balance_element.wait_until_present(5)
+        test_helper.dollar_amount_str(balance_element.text)
       end
 
-      def new_balance old_balance
+      def amount
+        balance_text.to_f.round(2)
+      end
+
+      def new_balance(old_balance)
         10.times do
-          balance = (test_helper.dollar_amount_str(balance_element.text).gsub(',', '').to_f.round(2)).to_s
-          break unless balance.include? old_balance.to_s
-          sleep(0.35)
+          break unless (test_helper.dollar_amount_str(balance_text).to_f.round(2)).to_s.include? old_balance.to_s
+          sleep(0.25)
         end
         (test_helper.dollar_amount_str(balance_element.text).gsub(',', '').to_f.round(2)).to_s
       end

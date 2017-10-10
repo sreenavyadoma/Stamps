@@ -3,7 +3,6 @@ module Stamps
     attr_accessor :browser, :firefox_profile, :browser_version, :scenario_name
 
     def logger
-      expect(scenario_name).to_not be(nil), "Scenario name cannot be nil, assign value to scenario_name prior to initialing logger."
       @logger = StampsLogger.new(scenario_name) if @logger.nil? || @logger.scenario_name != scenario_name # create new instance of logger if scenario name changes
       @logger
     end
