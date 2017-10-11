@@ -91,6 +91,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Order Date is populated$/ do
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Recipient is (?:correct|(.*))$/ do |expectation|
+  step "Pause for 2 seconds"
   expectation = test_param[:full_name] if expectation.nil?
   expect(test_param[:order_id][1]).to be_truthy
   10.times { break if stamps.orders.orders_grid.column.recipient.data(test_param[:order_id][1]).eql? expectation }
