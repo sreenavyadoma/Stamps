@@ -91,6 +91,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Order Date is populated$/ do
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Recipient is (?:correct|(.*))$/ do |expectation|
+  step "Pause for 2 seconds"
   expectation = test_param[:full_name] if expectation.nil?
   expect(test_param[:order_id][1]).to be_truthy
   10.times { break if stamps.orders.orders_grid.column.recipient.data(test_param[:order_id][1]).eql? expectation }
@@ -197,7 +198,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid service is (?:correct|(.*))$/ do |expectation
   expectation = test_param[:service] if expectation.nil?
   expectation = (test_param[:service_look_up][expectation.split(' ').first].nil?)? expectation : test_param[:service_look_up][expectation.split(' ').first]
   10.times { break if stamps.orders.orders_grid.column.service.data(test_param[:order_id][1]).eql? expectation }
-  expect(stamps.orders.orders_grid.column.service.data(test_param[:order_id][1])).to eql expectation
+  expect(stamps.orders.orders_grid.column.service.data(test_param[:order_id][1])).to include expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Insured Value is \$(.+)$/ do |expectation|

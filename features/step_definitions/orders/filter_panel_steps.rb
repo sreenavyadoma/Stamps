@@ -83,16 +83,16 @@ Then /^[Ii]n left Filter Panel, expect system updates the grid to show only orde
 end
 
 Then /^[Ii]n left Filter Panel, expect system displays expanded filters panel$/ do
-  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be(true)
+  expect(stamps.orders.filter_panel.present?).to be(true), "Filter Panel does not present to the displays"
 end
 
 Then /^Filter Panel: Click on panel$/ do
-  stamps.orders.filter_panel.click_border_arrow
+  stamps.orders.filter_panel.menu_item.collapse.click
 end
 
 Then /^[Ii]n left Filter Panel, expect Filters panel is close$/ do
-  actual = stamps.orders.filter_panel.is_filter_panel_present?
-  expect(actual).to eql false
+  actual = stamps.orders.filter_panel.search_orders.present?
+  expect(actual).to be(false)
 end
 
 Then /^[Ii]n left Filter Panel, expect system shows an arrow above the Order Status Filter Panel - name$/ do
@@ -100,7 +100,7 @@ Then /^[Ii]n left Filter Panel, expect system shows an arrow above the Order Sta
 end
 
 Then /^[Ii]n left Filter Panel, expect Panel is open$/ do
-  expect(stamps.orders.filter_panel.is_filter_panel_present?).to be(true)
+  expect(stamps.orders.filter_panel.present?).to be(true)
 end
 
 Then /^[Ii]n left Filter Panel, expect panel is hidden$/ do

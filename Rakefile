@@ -1156,6 +1156,11 @@ Cucumber::Rake::Task.new(:bvt_ambigious_address) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bvt_all_tests) do |t|
+  t.profile = 'bvt_all_tests'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_address_cleansing) do |t|
   t.profile = 'bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
@@ -1472,6 +1477,26 @@ Cucumber::Rake::Task.new(:grid_automation_test) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:grid_tracking) do |t|
+  t.profile = 'grid_tracking'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_ship_cost) do |t|
+  t.profile = 'grid_ship_cost'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_insured_value) do |t|
+  t.profile = 'grid_insured_value'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_order_status) do |t|
+  t.profile = 'grid_order_status'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:threedcart) do |t|
   t.profile = 'threedcart'
   t.cucumber_opts = "-p cuke_reports"
@@ -1541,8 +1566,8 @@ Cucumber::Rake::Task.new(:nav_postage_balance_update) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:general_settings) do |t|
-  t.profile = 'general_settings'
+Cucumber::Rake::Task.new(:general_settings_test_cases) do |t|
+  t.profile = 'general_settings_test_cases'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1610,6 +1635,12 @@ Cucumber::Rake::Task.new(:filter_panel) do |t|
   t.profile = 'filter_panel'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:filter_panel_tests) do |t|
+  t.profile = 'filter_panel_tests'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 Cucumber::Rake::Task.new(:new_country_code) do |t|
   t.profile = 'new_country_code'

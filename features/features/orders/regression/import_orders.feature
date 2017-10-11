@@ -1,4 +1,3 @@
-
 Feature: Import Orders
 
   Background:
@@ -21,4 +20,3 @@ Feature: Import Orders
     Then Pause for 1 second
     Then Sign out
     Then Pause for 1 second
-
