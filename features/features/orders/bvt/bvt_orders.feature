@@ -97,7 +97,6 @@ Feature:  BVT test for Orders
     Then expect Order Details form Ship From is correct
     Then expect Order Details form international service is correct
     Then uncheck orders grid cached order id 2
-
     Then Sign out
 
 
