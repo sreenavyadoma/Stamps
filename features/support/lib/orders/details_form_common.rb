@@ -21,7 +21,7 @@ module Stamps
 
         def width
           if @width.nil? || !@width.present?
-            textbox = browser.text_field(css: "")
+            textbox = browser.text_field(css: "[class*=sdc-mainpanel-widthnumberfield]")[(@form_type==:single_order)?0:1]
             inc_btn = browser.div(css: "")
             dec_btn = browser.div(css: "")
             @width = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
@@ -31,7 +31,7 @@ module Stamps
 
         def height
           if @height.nil? || !@height.present?
-            textbox = browser.text_field(css: "")
+            textbox = browser.text_field(css: "[class*=sdc-mainpanel-heightnumberfield]")[(@form_type==:single_order)?0:1]
             inc_btn = browser.div(css: "")
             dec_btn = browser.div(css: "")
             @height = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
