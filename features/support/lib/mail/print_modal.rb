@@ -35,19 +35,19 @@ module Stamps
           textbox.present?
         end
 
-        # returns selected printer or nil if printer is not on list of values
-        def select_printer(printer)
-          printer = (printer.include?('\\'))? /.+\\(.*)/.match(printer)[1] : printer
-          begin
-            return textbox.text if textbox.text.include?(printer)
-            selection = StampsElement.new(browser.li(text: /#{printer}/))
-            10.times do
-              dropdown.click unless selection.present?
-              selection.click
-              sleep(0.15)
-              return textbox.text if textbox.text.include?(printer)
-            end
-          end unless textbox.text.include?(printer)
+        # /\\.+\.*/ =~ str, this will check str pattern
+        def select_printer(str)
+          selected_printer = StampsElement.new(browser.li(css: "div[id*=boundlist][class*='x-boundlist-default'][data-savedtabindex-ext-element-1='0'] li[class*='x-boundlist-item x-boundlist-selected']"))
+          partial_printer_name = (str.include?('\\'))? /\\\\(.+)\\/.match(str)[1] : str
+          5.times do
+            return textbox.text if textbox.text.include?(partial_printer_name)
+            selection = StampsElement.new(browser.li(text: /#{partial_printer_name}/))
+            dropdown.click unless selected_printer.present?
+            return false if selected_printer.present? && !selection.present?
+            selection.click
+            return textbox.text if textbox.text.include?(partial_printer_name)
+          end
+          false
         end
       end
 

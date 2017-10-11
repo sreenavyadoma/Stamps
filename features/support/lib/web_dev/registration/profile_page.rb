@@ -22,7 +22,7 @@ module Stamps
             promo_code_link.click
             return promo_code if present?
           end
-          expect(promo_code.present?).to be(true), "Unable to show Promo Code textbox upon clicking Show Promo Code link."
+          expect(promo_code).to be_present, "Unable to show Promo Code textbox upon clicking Show Promo Code link."
         end
       end
 

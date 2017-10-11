@@ -56,7 +56,7 @@ Then /^Label Unavailable: Expect Visible$/ do
       expect(label_unavailable_visible).to be(true)
     else
       #test_config.logger.step "Test #{(@reprint_modal.present?)?"Passed":"Failed"}"
-      expect(@reprint_modal.present?).to be(true)
+      expect(@reprint_modal).to be_present
   end
 end
 

@@ -58,7 +58,7 @@ Then /^[Cc]lick [Ss]ecurity [Qq]uestions [Pp]age [Cc]ontinue button$/ do
 end
 
 Then /^[Ee]xpect Security Questions successfully set dialog exists/ do
-  expect(modal[:security_questions].window_title.present?).to be(true), "Security Questions doesn't set up successfully"
+  expect(modal[:security_questions].window_title).to be_present, "Security Questions doesn't set up successfully"
 end
 
 Then /^[Ee]xpect Security Questions successfully set dialog contain (.*)/ do |str|

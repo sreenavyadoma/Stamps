@@ -22,7 +22,7 @@ module Stamps
         end
 
         def blur_out(count=1)
-          expect(multi_blur_out_element.present?).to be(true), "Blur out element is not present."
+          expect(multi_blur_out_element).to be_present, "Blur out element is not present."
           ((count.nil?)?1:count.to_i).times do
             multi_blur_out_element.double_click
             multi_blur_out_element.flash
@@ -118,7 +118,7 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(dropdown.present?).to be(true)
+          expect(dropdown).to be_present
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
             dropdown.click unless selection.present?
@@ -187,7 +187,7 @@ module Stamps
         def update_orders
           update_orders_btn.click
           sleep(2)
-          expect(updating_orders.present?).to be(true)
+          expect(updating_orders).to be_present
           updating_orders.wait_while_present(5)
         end
 

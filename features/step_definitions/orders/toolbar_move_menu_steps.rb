@@ -17,12 +17,12 @@ end
 
 # Moved to Shipped Modal
 Then /^[Cc]lick Move to Shipped modal move button$/ do
-  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_shipped.present?).to be(true), "Move to Shipped modal is not present"
+  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_shipped).to be_present, "Move to Shipped modal is not present"
   stamps.orders.orders_toolbar.move_dropdown.move_to_shipped.move_to_shipped
 end
 
 Then /^[Cc]lick Move to Shipped modal cancel button$/ do
-  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_shipped.present?).to be(true), "Move to Shipped modal is not present"
+  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_shipped).to be_present, "Move to Shipped modal is not present"
   stamps.orders.orders_toolbar.move_dropdown.move_to_shipped.cancel
 end
 
@@ -33,7 +33,7 @@ end
 
 # Moved to Canceled modal
 Then /^[Cc]lick Move to Canceled modal move button$/ do
-  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_canceled.present?).to be(true), "Move to Canceled modal is not present"
+  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_canceled).to be_present, "Move to Canceled modal is not present"
   stamps.orders.orders_toolbar.move_dropdown.move_to_canceled.move
 end
 
@@ -43,18 +43,18 @@ Then /^[Ss]et Move to On Hold modal Hold Until date to today plus (\d+)$/ do |da
 end
 
 Then /^[Ss]et Move to On Hold modal Hold Until date to (\d+)\/(\d+)\/(\d+)$/ do |month, day, year|
-  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_on_hold.present?).to be(true), "Move to Move to On Hold modal is not present"
+  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_on_hold).to be_present, "Move to Move to On Hold modal is not present"
   stamps.orders.orders_toolbar.move_dropdown.move_to_on_hold.hold_until.set("#{month}/#{day}/#{year}")
 end
 
 Then /^[Cc]lick Move to On Hold modal move button$/ do
-  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_on_hold.present?).to be(true), "Move to Move to On Hold modal is not present"
+  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_on_hold).to be_present, "Move to Move to On Hold modal is not present"
   stamps.orders.orders_toolbar.move_dropdown.move_to_on_hold.move
 end
 
 # Moved to Awaiting Shipment modal
 Then /^[Cc]lick Move to Awaiting Shipment modal move button$/ do
-  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_awaiting_shipment.present?).to be(true), "Move to Awaiting Shipment modal is not present"
+  expect(stamps.orders.orders_toolbar.move_dropdown.move_to_awaiting_shipment).to be_present, "Move to Awaiting Shipment modal is not present"
   stamps.orders.orders_toolbar.move_dropdown.move_to_awaiting_shipment.move
 end
 

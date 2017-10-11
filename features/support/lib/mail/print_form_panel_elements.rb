@@ -399,7 +399,7 @@ module Stamps
               manage_printing_options_lov.click
               sleep(0.25)
             end
-            expect(manage_printing_options.present?).to be(true), "Unable to open Manage Printing Options modal"
+            expect(manage_printing_options).to be_present, "Unable to open Manage Printing Options modal"
           end unless manage_printing_options.present?
           manage_printing_options
         end
@@ -441,7 +441,7 @@ module Stamps
             sleep(0.15)
           end
           dropdown.click unless manage_printing_options_lov.present?
-          #expect(selection.present?).to be(true), "Print On selection #{selection} is not in the Print On dropdown List of Values. Manually add it in Manage Printing Options modal." if manage_printing_options_lov.present?
+          #expect(selection).to be_present, "Print On selection #{selection} is not in the Print On dropdown List of Values. Manually add it in Manage Printing Options modal." if manage_printing_options_lov.present?
           expect(textbox.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{textbox.text}\""
         end
 
@@ -477,7 +477,7 @@ module Stamps
             return false if int_dd.present?
             sleep(0.1)
           end
-          expect(dom_dd.present? || int_dd.present?).to be(true), "Unable to determine if Mail-To Country dropdown is for domestic or international."
+          expect(dom_dd.present? || int_dd).to be_present, "Unable to determine if Mail-To Country dropdown is for domestic or international."
         end
 
         def dropdown
@@ -976,7 +976,7 @@ module Stamps
             return contacts_modal if contacts_modal.present?
             link.click
           end
-          expect(contacts_modal.present?).to be(true)
+          expect(contacts_modal).to be_present
         end
       end
 
@@ -1000,7 +1000,7 @@ module Stamps
         end
 
         def country(str)
-          expect(mail_to_country.present?).to be(true)
+          expect(mail_to_country).to be_present
           blur_out
           mail_to_country.select(str)
           address
@@ -1023,7 +1023,7 @@ module Stamps
             button.click
             sleep(0.2)
           end
-          expect(customs_form.present?).to be(true)
+          expect(customs_form).to be_present
         end
 
         def restrictions

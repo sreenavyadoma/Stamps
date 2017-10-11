@@ -104,7 +104,7 @@ Then /^[Ee]xpect Registration Securityquestions get started button exists/ do
 end
 
 Then /^[Ee]xpect congratulations message exists$/ do
-  expect(registration.security_second_question.present?).to be(true)
+  expect(registration.security_second_question).to be_present
 end
 
 

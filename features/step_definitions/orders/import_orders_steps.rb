@@ -40,7 +40,7 @@ end
 
 Then /^Import Orders: Select CSV File$/ do
   stamps.orders.orders_toolbar.import.select_csv_file
-  expect(stamps.orders.orders_toolbar.import.select_csv_file.present?).to be(true)
+  expect(stamps.orders.orders_toolbar.import.select_csv_file).to be_present
 end
 
 Then /^Import Orders: Expect Import is successful$/ do

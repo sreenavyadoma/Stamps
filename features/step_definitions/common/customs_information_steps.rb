@@ -165,7 +165,6 @@ end
 Then /^[Ee]xpect Customs form I agree to the USPS Privacy Act Statement is unchecked$/ do
   sleep(0.05)
   expect(stamps.orders.single_order_details.customs.edit_form.agree_to_terms.checked?).not_to be(true) if modal_param.web_app == :orders
-  expect(stamps.orders.single_order_details.customs.edit_form.agree_to_terms.checked?).not_to be(true)
   expect(stamps.mail.print_form.mail_customs.edit_form.agree_to_terms.checked?).not_to be(true) if modal_param.web_app == :mail
 end
 
@@ -204,21 +203,22 @@ Then /^[Ee]xpect Customs form More Info is hidden$/ do
   step "Blur out on Customs form"
   sleep(0.5)
   expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.more_info.present?).not_to be(true) if modal_param.web_app == :orders
+  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.more_info).not_to be_present if modal_param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info.present?).not_to be(true) if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form More Info is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.more_info.present?).to be(true) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info.present?).to be(true) if modal_param.web_app == :mail
+  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.more_info).to be_present if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.more_info).to be_present if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form License Number is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.license.present?).to be(true) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license.present?).to be(true) if modal_param.web_app == :mail
+  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.license).to be_present if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license).to be_present if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form License Number is hidden$/ do
@@ -236,8 +236,8 @@ end
 Then /^[Ee]xpect Customs form Certificate Number is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.certificate.present?).to be(true) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.certificate.present?).to be(true) if modal_param.web_app == :mail
+  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.certificate).to be_present if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.certificate).to be_present if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form Invoice Number is hidden$/ do
@@ -250,8 +250,8 @@ end
 Then /^[Ee]xpect Customs form Invoice Number is visible$/ do
   step "Blur out on Customs form"
   sleep(0.5)
-  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.invoice.present?).to be(true) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice.present?).to be(true) if modal_param.web_app == :mail
+  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.invoice).to be_present if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice).to be_present if modal_param.web_app == :mail
 end
 
 Then /^[Ee]xpect Customs form ITN Number is hidden$/ do

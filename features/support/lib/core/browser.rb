@@ -432,7 +432,7 @@ module Stamps
           dropdown.click
           return selection_element if selection_element.present?
         end
-        expect(selection_element.present?).to be(true), "Drop-down selection #{selection} is not in the list of values."
+        expect(selection_element).to be_present, "Drop-down selection #{selection} is not in the list of values."
       end
 
       def select(selection)

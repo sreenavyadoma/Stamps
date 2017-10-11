@@ -22,10 +22,10 @@ module Stamps
     end
 
     def modal_param
-
       if @modal_param.nil?
         @modal_param ||= ModalParam.new
 
+        expect(ENV['BROWSER']).to_not be(nil), "Browser is not defined, check your cucumber.yml entry for this test or your Jenkins job"
         @modal_param.browser_str = browser(ENV['BROWSER'])
 
         @modal_param.scenario_name = test_config.scenario_name

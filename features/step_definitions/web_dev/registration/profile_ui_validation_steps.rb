@@ -10,7 +10,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age paragraph contain (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age email exists$/ do
-  expect(registration.profile.email.present?).to be(true), "Email textbox DOES NOT exists on profile page"
+  expect(registration.profile.email).to be_present, "Email textbox DOES NOT exists on profile page"
 end
 
 Then /^[Ee]xpect Profile page Email tooltip count is (.*)$/ do |count|
@@ -22,27 +22,27 @@ Then /^[Ee]xpect Profile page Password tooltip count is (.*)$/ do |count|
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age username exists$/ do
-  expect(registration.profile.account_username.present?).to be(true), "Username textbox DOES NOT exist on profile page"
+  expect(registration.profile.account_username).to be_present, "Username textbox DOES NOT exist on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age password exists$/ do
-  expect(registration.profile.account_password.present?).to be(true), "Password textbox DOES NOT exist on profile page"
+  expect(registration.profile.account_password).to be_present, "Password textbox DOES NOT exist on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age retype password exists$/ do
-  expect(registration.profile.retype_password.present?).to be(true), "Retype password textbox DOES NOT exist on profile page"
+  expect(registration.profile.retype_password).to be_present, "Retype password textbox DOES NOT exist on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ss]urvey [Qq]uestion exists$/ do
-  expect(registration.profile.survey_question.present?).to be(true), "Survey Question DOES NOT exist on profile page"
+  expect(registration.profile.survey_question).to be_present, "Survey Question DOES NOT exist on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age promo code link exists$/ do
-  expect(registration.profile.promo_code_link.present?).to be(true), "Promo code link DOES NOT exist on profile page"
+  expect(registration.profile.promo_code_link).to be_present, "Promo code link DOES NOT exist on profile page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age promo code textbox exists$/ do
-  expect(registration.profile.promo_code.present?).to be(true), "Profile promo code textbox DOES NOT exist"
+  expect(registration.profile.promo_code).to be_present, "Profile promo code textbox DOES NOT exist"
 end
 
 
@@ -64,7 +64,7 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age content under Money-saving offers and new pr
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age CONTINUE button exists$/ do
-  expect(registration.profile.continue_btn.present?).to be(true), "CONTINUE button doesn't exists on Profile Page"
+  expect(registration.profile.continue_btn).to be_present, "CONTINUE button doesn't exists on Profile Page"
 end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Ee]mail is (?:correct|(.*))$/ do |str|

@@ -388,7 +388,7 @@ module Stamps
             privacy_act.wait_until_present 2
             return privacy_act if privacy_act.present?
           end
-          expect(privacy_act.present?).to be(true)
+          expect(privacy_act).to be_present
         end
       end
 
@@ -466,12 +466,12 @@ module Stamps
               #ignore
             end
           end
-          expect(orders_print_modal.present?).to be(true), "Print Modal is NOT present"
+          expect(orders_print_modal).to be_present, "Print Modal is NOT present"
         end
 
         def usps_terms
           modal = open_window(usps_terms_modal)
-          expect(modal.present?).to be(true), "USPS Terms Modal is NOT present"
+          expect(modal).to be_present, "USPS Terms Modal is NOT present"
           modal
         end
 
@@ -549,11 +549,11 @@ module Stamps
 
             if install_plugin_error.present?
               install_plugin_error.close
-              expect(window.present?).to be(true)
+              expect(window).to be_present
             end
           end
 
-          expect(window.present?).to be(true)
+          expect(window).to be_present
         end
 
         def print_expecting_error(*args)
@@ -673,7 +673,7 @@ module Stamps
           end
           expect(server_error.present?).to be(false), "Server Error: \n#{server_error.text}"
           expect(initializing_db.present?).to be(false), "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}"
-          expect(details_order_id.present?).to be(true), "Single Order Details Panel did not open upon clicking Add button."
+          expect(details_order_id).to be_present, "Single Order Details Panel did not open upon clicking Add button."
         end
 
         def tooltip

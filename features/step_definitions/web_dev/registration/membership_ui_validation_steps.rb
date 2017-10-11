@@ -234,11 +234,11 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header in
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button exists$/ do
-  expect(registration.membership.cancel.present?).to be(true),  "Cancel Button DOES NOT exists on Address validation model"
+  expect(registration.membership.cancel).to be_present,  "Cancel Button DOES NOT exists on Address validation model"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button exists$/ do
-  expect(registration.membership.continue.present?).to be(true),  "Continue Button DOES NOT exists on Address validation model"
+  expect(registration.membership.continue).to be_present,  "Continue Button DOES NOT exists on Address validation model"
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do
@@ -262,11 +262,11 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up custom body i
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Username exists$/ do
-  expect(registration.membership.uname_text_box.present?).to be(true),  "Username DOES NOT exists on Username Taken model"
+  expect(registration.membership.uname_text_box).to be_present,  "Username DOES NOT exists on Username Taken model"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue button exists$/ do
-  expect(registration.membership.uname_continue_btn.present?).to be(true),  "Continue Button DOES NOT exists on Username Taken model"
+  expect(registration.membership.uname_continue_btn).to be_present,  "Continue Button DOES NOT exists on Username Taken model"
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|

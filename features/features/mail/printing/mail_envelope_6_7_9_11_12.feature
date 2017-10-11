@@ -51,6 +51,7 @@ Feature: Envelope #6, #7, #9, #11, #12
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer
+
     Then click Mail Print modal Print button
 
   @mail_print_envelope_12

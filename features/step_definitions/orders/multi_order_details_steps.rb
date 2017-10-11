@@ -63,5 +63,5 @@ Then /^[Cc]lick [Mm]ulti Order [Ff]orm [Uu]pdate [Oo]rder button$/ do
 end
 
 Then /^expect multi order details form is present$/ do
-  expect(stamps.orders.multi_order_details.present?).to be(true), "Multi Order Details form is not present"
+  expect(stamps.orders.multi_order_details).to be_present, "Multi Order Details form is not present"
 end

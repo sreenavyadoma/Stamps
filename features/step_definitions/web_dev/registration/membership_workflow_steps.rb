@@ -40,7 +40,7 @@ end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
   registration.membership.first_name.wait_until_present(10)
-  expect(registration.membership.first_name.present?).to be(true)
+  expect(registration.membership.first_name).to be_present
   registration.membership.first_name.set(test_param[:first_name] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
 end
 
@@ -179,7 +179,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Bb]illing [Aa]ddress same as [Mm]ailing 
 end
 
 Then /^[Ee]xpect Billing Address form is present$/ do
-  expect(registration.membership.billing_address.present?).to be(true), "Billing Address form is NOT present but it should be PRESENT"
+  expect(registration.membership.billing_address).to be_present, "Billing Address form is NOT present but it should be PRESENT"
 end
 
 Then /^[Ee]xpect Billing Address form is not present$/ do

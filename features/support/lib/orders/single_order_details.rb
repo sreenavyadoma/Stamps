@@ -314,7 +314,7 @@ module Stamps
             sleep(0.35)
           end
           dd.should_not be nil
-          expect(dd.present?).to be(true), "Ship-To Country drop-down is not present"
+          expect(dd).to be_present, "Ship-To Country drop-down is not present"
           StampsElement.new(dd)
         end
 
@@ -333,7 +333,7 @@ module Stamps
             end
             break if !text_field.nil? && text_field.present?
           end
-          expect(text_field.present?).to be(true), "Ship-To Country is not present."
+          expect(text_field).to be_present, "Ship-To Country is not present."
           StampsTextBox.new(text_field)
         end
 
@@ -446,7 +446,7 @@ module Stamps
               expect("Unable to Ship-To address to #{address}. Error: #{e.message}").to eql "Set Ship-To Address Failed"
             end
           end
-          expect(less_link.present?).to be(true), "Less link did not appear on Single Order Details form. Unable to save Ship-To data."
+          expect(less_link).to be_present, "Less link did not appear on Single Order Details form. Unable to save Ship-To data."
           expect(textarea.text).to include address.split(" ").last
         end
 
@@ -656,7 +656,7 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(dropdown.present?).to be(true)
+          expect(dropdown).to be_present
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
             dropdown.click unless selection.present?
@@ -922,7 +922,7 @@ module Stamps
             edit_form_btn.click
             customs_form.wait_until_present(2)
           end
-          expect(customs_form.present?).to be(true)
+          expect(customs_form).to be_present
         end
 
         def restrictions
@@ -930,7 +930,7 @@ module Stamps
             return view_restrictions if view_restrictions.present?
             restrictions_btn.click
           end
-          expect(view_restrictions.present?).to be(true)
+          expect(view_restrictions).to be_present
         end
       end
 

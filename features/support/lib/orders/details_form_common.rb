@@ -80,7 +80,7 @@ module Stamps
               selection.scroll_into_view
               selection.click
               return manage_shipping_address if manage_shipping_address.present?
-              expect(manage_shipping_address.present?).to be(true), "Manage Shipping Address modal is not present!"
+              expect(manage_shipping_address).to be_present, "Manage Shipping Address modal is not present!"
             end
           else
             15.times do

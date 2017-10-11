@@ -1,6 +1,6 @@
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm is present$/ do
-  expect(stamps.orders.single_order_details.present?).to be(true), "Order Details form is not present"
+  expect(stamps.orders.single_order_details).to be_present, "Order Details form is not present"
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-From and Ship-From saved values are the same$/ do
@@ -145,15 +145,15 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Address fields are visible$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.ship_to.international.name.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.company.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.address_1.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.address_2.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.city.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.province.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.postal_code.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.phone.present?).to be(true)
-  expect(stamps.orders.single_order_details.ship_to.international.email.present?).to be(true)
+  expect(stamps.orders.single_order_details.ship_to.international.name).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.company).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.address_1).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.address_2).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.city).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.province).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.postal_code).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.phone).to be_present
+  expect(stamps.orders.single_order_details.ship_to.international.email).to be_present
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Domestic Ship-To fields are hidden$/ do
@@ -166,7 +166,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Restrictions button is visible/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.customs.browser_restrictions_button.present?).to be(true)
+  expect(stamps.orders.single_order_details.customs.browser_restrictions_button).to be_present
   stamps.orders.single_order_details.customs.restrictions.ok
 end
 
@@ -179,7 +179,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is visible/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.customs.edit_form_btn.present?).to be(true)
+  expect(stamps.orders.single_order_details.customs.edit_form_btn).to be_present
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is hidden/ do
@@ -191,7 +191,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is enabled/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.customs.edit_form_btn.present?).to be(true)
+  expect(stamps.orders.single_order_details.customs.edit_form_btn).to be_present
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is disabled/ do
@@ -261,7 +261,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Panel is present$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.present?).to be(true)
+  expect(stamps.orders.single_order_details).to be_present
 end
 
 Then /^[Ee]xpect Exact Address Not Found module to appear/ do

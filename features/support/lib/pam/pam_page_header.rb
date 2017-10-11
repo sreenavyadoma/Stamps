@@ -30,7 +30,7 @@ module Stamps
           sleep(0.35)
           return page if page.present?
         end
-        expect(page.present?).to be(true), "Unable to open AppCap Overrides Page, it is not present."
+        expect(page).to be_present, "Unable to open AppCap Overrides Page, it is not present."
       end
     end
   end

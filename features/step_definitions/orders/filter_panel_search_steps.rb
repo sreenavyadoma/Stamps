@@ -24,7 +24,7 @@ Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |search_s
       sleep(1)
       break if stamps.orders.filter_panel.search_orders.search_results.count >= count.to_i
     end
-    expect(stamps.orders.filter_panel.search_orders.search_results.present?).to be(true), "Couldn't find #{search_str} in Orders Grid"
+    expect(stamps.orders.filter_panel.search_orders.search_results).to be_present, "Couldn't find #{search_str} in Orders Grid"
   end unless search_str.nil? || search_str.size == 0
 
 end
@@ -48,7 +48,7 @@ end
 
 Then /^[Ee]xpect Filter Panel search results tab is present$/ do
   sleep 1
-  expect(stamps.orders.filter_panel.search_results.present?).to be(true)
+  expect(stamps.orders.filter_panel.search_results).to be_present
 end
 
 Then /^[Ee]xpect Filter Panel search results tab is not present$/ do

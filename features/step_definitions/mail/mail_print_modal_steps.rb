@@ -8,15 +8,15 @@ end
 
 Then /^[Ss]et [Mm]ail [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
   test_param[:printer] = (printer.nil?)? modal_param.printer : printer
+  expect(test_param[:printer]).to match(/\\.+\.*/) if test_param[:printer].include?('\\') #validate printer format
   step "expect mail print modal is present"
-  expect(stamps.mail.mail_toolbar.print_postage.mail_printer.present?).to be(true), "Unable to print on printer #{test_param[:printer]}. Check that StampsConnect is pointing to #{modal_param.test_env} on this PC."
-  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present
-  stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(test_param[:printer])
+  expect(stamps.mail.mail_toolbar.print_postage.mail_printer).to be_present, "Unable to print on printer #{test_param[:printer]}. Check that StampsConnect is pointing to #{modal_param.test_env} on this PC."
+  expect(stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(test_param[:printer])).to_not be(false), "Unable to select printer #{printer}. The printer does not exist in Printer drop-down list of values."
 end
 
 Then /^[Ee]xpect [Mm]ail [Pp]rint modal is present$/ do
   stamps.mail.mail_toolbar.print_postage.wait_until_present(5)
-  expect(stamps.mail.mail_toolbar.print_postage.present?).to be(true), "Mail Print modal is NOT present"
+  expect(stamps.mail.mail_toolbar.print_postage).to be_present, "Mail Print modal is NOT present"
 end
 
 When /^Mail: Print International Postage$/ do
