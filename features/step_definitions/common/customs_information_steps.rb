@@ -93,45 +93,45 @@ end
 
 Then /^[Ss]et Customs form License Number to (?:(?:a|some) random string|(.*))$/ do |value|
   test_param[:customs_license_no] = (((value.nil?)?test_helper.random_alpha_numeric(6): value)[0, 5])
-  stamps.orders.single_order_details.customs.edit_form.package_contents.contents.license.set(test_param[:customs_license_no]) if modal_param.web_app == :orders
-  stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license.set(test_param[:customs_license_no]) if modal_param.web_app == :mail
+  stamps.orders.single_order_details.customs.edit_form.license.set(test_param[:customs_license_no]) if modal_param.web_app == :orders
+  stamps.mail.print_form.mail_customs.edit_form.license.set(test_param[:customs_license_no]) if modal_param.web_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs form License Number is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_param[:customs_license_no] : expectation
   sleep(1)
-  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.license.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.license.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.single_order_details.customs.edit_form.license.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.license.text).to eql(expectation) if modal_param.web_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ss]et Customs form Certificate Number to (?:(?:a|some) random string|(.*))$/ do |value|
   test_param[:customs_certificate_no] = ((((value.nil?)?test_helper.random_alpha_numeric(8):value))[0,7])
-  stamps.orders.single_order_details.customs.edit_form.package_contents.contents.certificate.set(test_param[:customs_certificate_no]) if modal_param.web_app == :orders
-  stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.certificate.set(test_param[:customs_certificate_no]) if modal_param.web_app == :mail
+  stamps.orders.single_order_details.customs.edit_form.certificate.set(test_param[:customs_certificate_no]) if modal_param.web_app == :orders
+  stamps.mail.print_form.mail_customs.edit_form.certificate.set(test_param[:customs_certificate_no]) if modal_param.web_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs form Certificate Number is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_param[:customs_certificate_no]:expectation
   sleep(0.5)
-  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.certificate.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.certificate.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.single_order_details.customs.edit_form.certificate.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.certificate.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Ss]et Customs form Invoice Number to (?:(?:a|some) random string|(.*))$/ do |value|
   test_param[:customs_invoice_no] = (((value.nil?)?test_helper.random_alpha_numeric(10):value)[0,9])
-  stamps.orders.single_order_details.customs.edit_form.package_contents.contents.invoice.set(test_param[:customs_invoice_no]) if modal_param.web_app == :orders
-  stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice.set(test_param[:customs_invoice_no]) if modal_param.web_app == :mail
+  stamps.orders.single_order_details.customs.edit_form.invoice.set(test_param[:customs_invoice_no]) if modal_param.web_app == :orders
+  stamps.mail.print_form.mail_customs.edit_form.invoice.set(test_param[:customs_invoice_no]) if modal_param.web_app == :mail
   step "Save Customs Information form Total amount"
 end
 
 Then /^[Ee]xpect Customs form Invoice Number is (?:correct|(.*))$/ do |expectation|
   expectation = (expectation.nil?)?test_param[:customs_invoice_no]:expectation
   sleep(0.5)
-  expect(stamps.orders.single_order_details.customs.edit_form.package_contents.contents.invoice.text).to eql(expectation) if modal_param.web_app == :orders
-  expect(stamps.mail.print_form.mail_customs.edit_form.package_contents.contents.invoice.text).to eql(expectation) if modal_param.web_app == :mail
+  expect(stamps.orders.single_order_details.customs.edit_form.invoice.text).to eql(expectation) if modal_param.web_app == :orders
+  expect(stamps.mail.print_form.mail_customs.edit_form.invoice.text).to eql(expectation) if modal_param.web_app == :mail
 end
 
 Then /^[Dd]elete Customs form Associated Item (\d+)$/ do |item_number|

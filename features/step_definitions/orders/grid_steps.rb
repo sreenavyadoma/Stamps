@@ -197,7 +197,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid service is (?:correct|(.*))$/ do |expectation
   expectation = test_param[:service] if expectation.nil?
   expectation = (test_param[:service_look_up][expectation.split(' ').first].nil?)? expectation : test_param[:service_look_up][expectation.split(' ').first]
   10.times { break if stamps.orders.orders_grid.column.service.data(test_param[:order_id][1]).eql? expectation }
-  expect(stamps.orders.orders_grid.column.service.data(test_param[:order_id][1])).to eql expectation
+  expect(stamps.orders.orders_grid.column.service.data(test_param[:order_id][1])).to include expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Insured Value is \$(.+)$/ do |expectation|
