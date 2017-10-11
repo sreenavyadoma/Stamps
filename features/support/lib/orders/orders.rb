@@ -37,7 +37,7 @@ module Stamps
       end
 
       def present?
-        grid.present?
+        orders_grid.present?
       end
     end
   end
