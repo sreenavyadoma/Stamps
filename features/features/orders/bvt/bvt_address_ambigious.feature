@@ -7,7 +7,7 @@ Feature:  Ambigious Address
   Scenario: Ambigious Address
     Then add new order
     Then set Order Details form Ship-To to ambiguous address
-      | full_name            | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
+      | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Joseph Balancio | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Exact Address Not Found module to appear
     Then In Exact Address Not Found module, select row 2
