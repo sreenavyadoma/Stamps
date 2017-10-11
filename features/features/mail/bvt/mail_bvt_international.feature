@@ -48,7 +48,6 @@ Feature: International Shipping BVT
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-
     Then click Print form Edit Customs Form button
     Then Pause for 1 second
     Then expect Customs form Package Contents is Commercial Sample

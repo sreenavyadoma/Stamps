@@ -172,17 +172,18 @@ Then /^[Cc]lose Customs Information form$/ do
   step "Pause for 4 seconds"
   step "Blur out on Customs form 20 times"
   step "Save Customs Information form Total amount"
-  stamps.orders.single_order_details.customs.edit_form.close if modal_param.web_app == :orders
+  if modal_param.web_app == :orders
+    stamps.orders.single_order_details.customs.edit_form.close
+    step "blur out on Order Details form"
+    step "Save Order Details data"
+  end
   stamps.mail.print_form.mail_customs.edit_form.close if modal_param.web_app == :mail
-  step "blur out on Order Details form"
-  step "Save Order Details data"
 end
 
 Then /^Cancel Customs Form$/ do
   step "Blur out on Customs form"
   expect(stamps.orders.single_order_details.customs.edit_form.cancel).to be(false) if modal_param.web_app == :orders
   expect(stamps.mail.print_form.mail_customs.edit_form.cancel).to be(false) if modal_param.web_app == :mail
-  step "Save Order Details data"
 end
 
 Then /^[Ee]xpect Customs form USPS Privacy Act Warning is visible$/ do
