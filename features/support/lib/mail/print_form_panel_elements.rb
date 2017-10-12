@@ -242,6 +242,7 @@ module Stamps
           show_certified_mail_sdc3910
           show_certified_mail_sdc3930
           show_certified_mail_sdc3810
+          show_certified_mail_sdc3830
           show_roll_4x6
           show_roll_418x614
           save
