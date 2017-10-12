@@ -331,7 +331,7 @@ inline_service_rates: --tags @inline_service_rates --guess DEBUG=false JENKINS=t
 purchasing: --tags @purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 sorting: --tags @sort --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 auto_suggest: --tags @auto_suggest --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-new_country_code: --tags  @new_country_code --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+new_country: --tags  @new_country --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_panel: --tags  @details_panel --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 

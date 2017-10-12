@@ -1653,8 +1653,8 @@ Cucumber::Rake::Task.new(:filter_panel_tests) do |t|
 end
 
 
-Cucumber::Rake::Task.new(:new_country_code) do |t|
-  t.profile = 'new_country_code'
+Cucumber::Rake::Task.new(:new_country) do |t|
+  t.profile = 'new_country'
   t.cucumber_opts = "-p cuke_reports"
 end
 
