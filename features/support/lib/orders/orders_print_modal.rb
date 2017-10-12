@@ -48,7 +48,11 @@ module Stamps
         begin
           lov_item = selection(media)
           10.times do
-            break if textbox.text.include? media
+            if media == "Roll - 418x614"
+              break if textbox.text.include? "Roll - 4 ⅛"
+            else
+              break if textbox.text.include? media
+            end
             dropdown.click unless lov_item.present?
             lov_item.click
           end
