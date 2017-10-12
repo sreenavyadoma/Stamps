@@ -23,7 +23,6 @@ Feature: Import Orders
     Then Sign out
     Then Pause for 1 second
 
-
   @import_orders_ship_from_test
   Scenario:  Import Orders
     Then in Orders Toolbar, Import
@@ -39,7 +38,6 @@ Feature: Import Orders
     Then Pause for 1 second
     Then Sign out
     Then Pause for 1 second
-
 
   @import_updated_orders
   Scenario:  Import Updated Orders
