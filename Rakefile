@@ -1562,8 +1562,8 @@ Cucumber::Rake::Task.new(:print_layouts_cn22) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:reprint) do |t|
-  t.profile = 'reprint'
+Cucumber::Rake::Task.new(:reprint_tests) do |t|
+  t.profile = 'reprint_tests'
   t.cucumber_opts = "-p cuke_reports"
 end
 

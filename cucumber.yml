@@ -296,7 +296,7 @@ print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess DEBUG=false JENKI
 bulk_update_dom: --tags @bulk_update_dom --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bulk_update_int: --tags @bulk_update_int --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 # CHECK IF THESE ARE IN JENKINS
-reprint: --tags @reprint --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+reprint_tests: --tags @reprint_tests --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 print_multiple_reprints: --tags @print_multiple_reprints --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 print_on_thermal: --tags @print_on_thermal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 
