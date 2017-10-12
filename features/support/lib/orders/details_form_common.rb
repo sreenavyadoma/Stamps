@@ -72,7 +72,7 @@ module Stamps
           return manage_shipping_address if manage_shipping_address.present?
           dropdown.click
           sleep(0.5)
-          selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type==:single_order)?0:1]:browser.lis(text: /#{str}/)[(form_type==:single_order)?0:1])
+          selection = StampsElement.new((str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type==:single_order)?0:1]:browser.lis(text: /#{str}/)[(form_type==:multi_order_details)?0:1])
           if str.downcase.include?("manage shipping")
             15.times do
               sleep(0.35)

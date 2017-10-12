@@ -1,5 +1,5 @@
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ss]hip [Ff]rom to (.*)$/ do |value|
-  test_param[:ship_from] = stamps.orders.multi_order_details.multi_ship_from.select(value)
+Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ss]hip [Ff]rom to (.*)$/ do |str|
+  test_param[:ship_from] = stamps.orders.multi_order_details.multi_ship_from.select(str)
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|

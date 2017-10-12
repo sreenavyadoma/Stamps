@@ -1281,6 +1281,12 @@ Cucumber::Rake::Task.new(:bvt_shipstation_updates_domestic) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:international_customs_form) do |t|
+  t.profile = 'international_customs_form'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 Cucumber::Rake::Task.new(:international_customs_form_totals) do |t|
   t.profile = 'international_customs_form_totals'
   t.cucumber_opts = "-p cuke_reports"
