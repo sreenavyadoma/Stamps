@@ -1627,6 +1627,11 @@ Cucumber::Rake::Task.new(:rules_international) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:international_rules) do |t|
+  t.profile = 'international_rules'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:parcel_select) do |t|
   t.profile = 'parcel_select'
   t.cucumber_opts = "-p cuke_reports"

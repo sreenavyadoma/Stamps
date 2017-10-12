@@ -362,7 +362,7 @@ item_details: --tags @item_details --guess DEBUG=false JENKINS=true HEALTHCHECK=
 
 #need to reevaluate
 rules_domestic: --tags @rules_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-rules_international: --tags  @rules_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+international_rules: --tags  @international_rules --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 orders_10: --tags @orders_10 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 orders_20: --tags @orders_20 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 jenkins_orders: --tags @jenkins_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
