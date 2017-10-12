@@ -315,6 +315,10 @@ module Stamps
           show("Certified Mail Label - SDC-3810")
         end
 
+        def show_certified_mail_sdc3830
+          show("Certified Mail Label - SDC-3830")
+        end
+
         def show_roll_4x6
           show("Roll 4x6")
         end
