@@ -16,7 +16,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then set Print form Ounces to 1
     Then select Print form service MM Package
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
   @mail_print_roll_4_x_6_xm_envelope
@@ -30,7 +30,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_xm_lfr_envelope
@@ -41,7 +41,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Legal Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
     #mail_print_roll_4x6_xm_pfr_envelope
@@ -52,7 +52,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
   @mail_print_roll_4_x_6_xm_package
@@ -66,7 +66,7 @@ Feature: Mail Roll - 4" x 6" - MM XM
     Then set Print form Ounces to 1
     Then select Print form service PME Package
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
     Then Sign out
