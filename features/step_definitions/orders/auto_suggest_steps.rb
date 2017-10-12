@@ -17,7 +17,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form auto-suggest pop-up entry for Firstnam
   step "set Order Details form Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
   @found_item = false
   selection = "#{firstname} #{lastname}, #{company}"
-  @auto_suggest.name_fields.each do |field|
+  stamps.orders.single_order_details.ship_to.domestic.auto_suggest.auto_suggest_box.name_fields.each do |field|
     @found_item = true  if field.text.eql? selection
   end
   expect(@found_item).to be(true)
