@@ -373,6 +373,7 @@ local_rating_smoke_test: --tags @local_rating_smoke_test --guess DEBUG=false JEN
 import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 # Stores
+stores: --tags @stores --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 marketplace: --tags @marketplace --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 big_commerce: --tags @big_commerce --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 paypal: --tags @paypal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 

@@ -1246,6 +1246,11 @@ Cucumber::Rake::Task.new(:yahoo) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:stores) do |t|
+  t.profile = 'stores'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:grid_column_order) do |t|
   t.profile = 'grid_column_order'
   t.cucumber_opts = "-p cuke_reports"
