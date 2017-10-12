@@ -310,6 +310,7 @@ international_customs_form: --tags @international_customs_form --guess DEBUG=fal
 international_customs_form_totals: --tags @international_customs_form_totals --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 tooltip_customs_form: --tags @tooltip_customs_form --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+tooltips: --tags @tooltips --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_reference_no: --tags @details_reference_no --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 customs_form_qty: --tags @customs_form_qty --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 grid_automation_test: --tags @grid_automation_test --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders

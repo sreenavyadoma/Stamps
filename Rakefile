@@ -1307,6 +1307,11 @@ Cucumber::Rake::Task.new(:tooltip_customs_form) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:tooltips) do |t|
+  t.profile = 'tooltips'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_two_up_expanded_sdc1200_left_print3) do |t|
   t.profile = 'print_two_up_expanded_sdc1200_left_print3'
   t.cucumber_opts = "-p cuke_reports"
