@@ -3,7 +3,7 @@ default: --backtrace --profile kaushal_orders
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-kaushal_orders: --tags @bvt_all_tests WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+kaushal_orders: --tags @international_customs_form_totals WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
@@ -304,6 +304,7 @@ details_services: --tags @details_services --guess DEBUG=false JENKINS=true HEAL
 details_flat_rate_no_weight_international: --tags @details_flat_rate_no_weight_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_flat_rate_no_weight_domestic: --tags @details_flat_rate_no_weight_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_large_dimensions_pm: --tags @details_large_dimensions_pm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+international_customs_form: --tags @international_customs_form --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 international_customs_form_totals: --tags @international_customs_form_totals --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 tooltip_customs_form: --tags @tooltip_customs_form --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
