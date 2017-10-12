@@ -41,6 +41,7 @@ end
 
 When /^Edit [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
   stamps.orders.orders_grid.column.checkbox.check(row)
+  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
 end
 
 When /^[Cc]heck [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
