@@ -44,7 +44,6 @@ Feature: in Orders Grid, Tracking & Order Status
 
   @grid_tracking
   Scenario: Tracking & Order Status
-
     Then add new order
     Then expect Orders Grid Order Status is Awaiting Shipment
     Then set Order Details form Ship-From to default

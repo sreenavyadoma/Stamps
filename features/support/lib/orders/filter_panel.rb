@@ -6,7 +6,7 @@ module Stamps
 
         def initialize(param)
           super
-          @button = StampsElement.new(browser.span css: "span[id^=menuitem-][id$=-textEl]")
+          @button = StampsElement.new(browser.span css: "span[id^=button-][id$=-btnIconEl]")
           @tooltip_element = StampsElement.new(browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
@@ -191,7 +191,7 @@ module Stamps
       end
 
       class FilterPanel < Browser::StampsModal
-        attr_reader :search_orders, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold
+        attr_reader :search_orders, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold, :menu_item
 
         def initialize(param)
           super

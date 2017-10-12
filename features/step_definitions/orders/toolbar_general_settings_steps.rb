@@ -47,6 +47,11 @@ Then /^Settings: Uncheck USPS Terms$/ do
   @general_settings.usps_terms.uncheck
 end
 
+#to do setup some where in Orders Settings
+Then /^[Ii]n Orders Settings, click on General Settings tab$/ do
+  @general_settings.general.click
+end
+
 # Set Logoff
 
 Then /^[Ii]n Settings modal, set Logoff to 5 min.$/ do
