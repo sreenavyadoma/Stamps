@@ -9,8 +9,8 @@ module Stamps
 
         def more_info
           @more_info = StampsTextBox.new(browser.text_field(name: "CustomsComments")) if @more_info.nil? || !@more_info.present?
-          expect(@more_info.present?).to be(true)
-          expect(@more_info.present?).to be(true)
+          expect(@more_info).to be_present
+          expect(@more_info).to be_present
           @more_info
         end
       end
@@ -22,19 +22,19 @@ module Stamps
 
         def license
           @license = StampsTextBox.new(browser.text_field(name: "CustomsLicenseNumber")) if @license.nil? || !@license.present?
-          expect(@license.present?).to be(true)
+          expect(@license).to be_present
           @license
         end
 
         def certificate
           @certificate = StampsTextBox.new(browser.text_field(name: "CustomsCertificateNumber")) if @certificate.nil? || !@certificate.present?
-          expect(@license.present?).to be(true)
+          expect(@license).to be_present
           @certificate
         end
 
         def invoice
           @invoice = StampsTextBox.new(browser.text_field(name: "CustomsInvoiceNumber")) if @invoice.nil? || !@invoice.present?
-          expect(@invoice.present?).to be(true)
+          expect(@invoice).to be_present
           @invoice
         end
       end
@@ -234,7 +234,7 @@ module Stamps
         end
 
         def total_value
-          test_helper.remove_dollar_sign(total_value_element.text).to_f.round(2)
+          test_helper.dollar_amount_str(total_value_element.text).to_f.round(2)
         end
 
         def usps_privacy_act_statement

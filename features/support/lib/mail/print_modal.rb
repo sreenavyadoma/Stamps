@@ -22,44 +22,32 @@ module Stamps
 
       class MailPrinterComboBox < Browser::StampsModal
         def dropdown
-          StampsElement.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]"))
+          @dropdown = StampsElement.new(browser.div(css: "[id^=printwindow-] [class*=x-form-arrow-trigger-default]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown
         end
 
         def textbox
-          StampsTextBox.new(browser.text_field(name: "printers"))
+          @textbox = StampsTextBox.new(browser.text_field(name: "printers")) if @textbox.nil? || !@textbox.present?
+          @textbox
         end
 
-        def select_printer(printer)
-          begin
-            case printer.downcase
-              when /fac/
-                selection = StampsElement.new(browser.li(text: 'factory'))
-              when /kyocera/
-                selection = StampsElement.new(browser.li(text: /Kyocera/))
-              when /epson/
-                selection = StampsElement.new(browser.li(text: /EPSON/))
-              when /brother/
-                selection = StampsElement.new(browser.li(text: /Brother/))
-              when /officejet/
-                selection = StampsElement.new(browser.li(text: /Officejet/))
-              when /dymo/
-                selection = StampsElement.new(browser.li(text: /DYMO/))
-              when /zdesigner/
-                selection = StampsElement.new(browser.li(text: /ZDesigner/))
-              else
-                expect("Invalid Printer Selection.  #{printer} is not a valid drop-down selection.  To mail using PDF Factory, use factory.  To Print using Kyocera use Kyocera.").to eql ""
-            end
+        def present?
+          textbox.present?
+        end
 
-            return if textbox.text.include?(printer)
-
-            10.times do
-              dropdown.click unless selection.present?
-              selection.click
-              sleep(0.15)
-              break if textbox.text.include?(printer)
-            end
-            expect(textbox.text).to include(printer), "Unable to select Printer #{printer}"
-          end unless textbox.text.include?(printer)
+        # /\\.+\.*/ =~ str, this will check str pattern
+        def select_printer(str)
+          selected_printer = StampsElement.new(browser.li(css: "div[id*=boundlist][class*='x-boundlist-default'][data-savedtabindex-ext-element-1='0'] li[class*='x-boundlist-item x-boundlist-selected']"))
+          partial_printer_name = (str.include?('\\'))? /\\\\(.+)\\/.match(str)[1] : str
+          5.times do
+            return textbox.text if textbox.text.include?(partial_printer_name)
+            selection = StampsElement.new(browser.li(text: /#{partial_printer_name}/))
+            dropdown.click unless selected_printer.present?
+            return false if selected_printer.present? && !selection.present?
+            selection.click
+            return textbox.text if textbox.text.include?(partial_printer_name)
+          end
+          false
         end
       end
 
@@ -147,7 +135,7 @@ module Stamps
         end
 
         def total_cost
-          test_helper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last)).to_f.round(2)
+          test_helper.dollar_amount_str(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last)).to_f.round(2)
         end
 
         def check_naws_plugin_error

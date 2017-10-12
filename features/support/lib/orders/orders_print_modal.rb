@@ -482,7 +482,7 @@ module Stamps
 
       # todo-rob Test Print Total cost
       def total_cost
-        test_helper.remove_dollar_sign(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
+        test_helper.dollar_amount_str(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
       end
 
       def check_naws_plugin_error

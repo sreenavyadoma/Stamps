@@ -16,7 +16,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then set Print form Ounces to 1
     Then select Print form service PM Large Flat Rate Box
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_pm_medium_box
@@ -27,7 +27,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then set Print form Ounces to 1
     Then select Print form service PM Medium Flat Rate Box
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
     #mail_print_roll_4x6_pm_small_box
@@ -38,7 +38,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then set Print form Ounces to 1
     Then select Print form service PM Small Flat Rate Box
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
   @mail_print_roll_4_x_6_pm_regional_box
@@ -52,7 +52,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box A
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
    #mail_print_roll_4x6_pm_regional_box_b
@@ -63,7 +63,7 @@ Feature: Mail Roll - 4 ⅛” x 6 ¼” - PM Box
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box B
     Then Print Postage
-    Then set Mail Print modal Printer to ZDesigner
+    Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
 
     Then Sign out

@@ -15,7 +15,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
     Then set Print form Ounces to 1
     Then select Print form service FCM Large Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_fcm_package
@@ -25,7 +25,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
     Then set Print form Ounces to 1
     Then select Print form service FCM Package/Thick Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_print_shipping_label_sdc1200_psg
@@ -38,7 +38,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
     Then set Print form Ounces to 1
     Then select Print form service PSG Large Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_psg_oversized_package
@@ -48,7 +48,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
     Then set Print form Ounces to 1
     Then select Print form service PSG Oversized Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_sdc1200_psg_package
@@ -58,7 +58,7 @@ Feature: Mail Shipping Label - SDC-1200 - FCM PSG
     Then set Print form Ounces to 1
     Then select Print form service PSG Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

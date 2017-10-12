@@ -10,10 +10,10 @@ module Stamps
 
         def extra_services
           return @extra_services if !@extra_services.nil? && @extra_services.present?
-          expect(extra_services_btn.present?).to be(true), "Extra Services button is not present."
+          expect(extra_services_btn).to be_present, "Extra Services button is not present."
           @extra_services = PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil? || !@extra_services.present?
           20.times do extra_services_btn.click unless @extra_services.present? end
-          expect(@extra_services.present?).to be(true), "Extra Services modal did not open."
+          expect(@extra_services).to be_present, "Extra Services modal did not open."
           @extra_services
         end
       end
@@ -84,7 +84,7 @@ module Stamps
             @show_element.click
             break if @hide_element.present?
           end
-          expect(@hide_element.present?).to be(true)
+          expect(@hide_element).to be_present
         end
 
         def hide
@@ -94,7 +94,7 @@ module Stamps
             @hide_element.click
             break if @show_element.present?
           end
-          expect(@show_element.present?).to be(true)
+          expect(@show_element).to be_present
           self
         end
       end

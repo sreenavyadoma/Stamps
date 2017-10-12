@@ -15,7 +15,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Large Flat Rate Box
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_pm_medium_box
@@ -25,7 +25,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Medium Flat Rate Box
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_pm_small_box
@@ -35,7 +35,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Small Flat Rate Box
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_print_shipping_label_8_x_11_pm_regional_box
@@ -49,7 +49,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box A
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_shipping_label_8x11_pm_regional_box_b
@@ -59,7 +59,7 @@ Feature: Mail Shipping Label - 8 ½” x 11” PM BOX Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Regional Rate Box B
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

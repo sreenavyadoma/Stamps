@@ -388,7 +388,7 @@ module Stamps
             privacy_act.wait_until_present 2
             return privacy_act if privacy_act.present?
           end
-          expect(privacy_act.present?).to be(true)
+          expect(privacy_act).to be_present
         end
       end
 
@@ -466,12 +466,12 @@ module Stamps
               #ignore
             end
           end
-          expect(orders_print_modal.present?).to be(true), "Print Modal is NOT present"
+          expect(orders_print_modal).to be_present, "Print Modal is NOT present"
         end
 
         def usps_terms
           modal = open_window(usps_terms_modal)
-          expect(modal.present?).to be(true), "USPS Terms Modal is NOT present"
+          expect(modal).to be_present, "USPS Terms Modal is NOT present"
           modal
         end
 
@@ -549,11 +549,11 @@ module Stamps
 
             if install_plugin_error.present?
               install_plugin_error.close
-              expect(window.present?).to be(true)
+              expect(window).to be_present
             end
           end
 
-          expect(window.present?).to be(true)
+          expect(window).to be_present
         end
 
         def print_expecting_error(*args)
@@ -641,63 +641,39 @@ module Stamps
       end
 
       class AddButton < Browser::StampsModal
-        attr_reader :button, :initializing_db, :loading_orders
-
-        def initialize(param)
-          super
-          @button = StampsElement.new(browser.span(text: 'Add'))
-          @initializing_db = StampsElement.new(browser.div(text: "Initializing Order Database"))
-          @loading_orders = StampsElement.new(browser.div(text: "Loading orders..."))
-        end
-
-        def order
-          order_details
-        end
-
-        def order_details
-          details = Orders::Details::SingleOrderDetails.new(param)
-          nav_bar = Navigation::NavigationBar.new(param)
+        def click
+          add_btn = StampsElement.new(browser.span(text: 'Add'))
+          details_order_id = Orders::Details::SingleOrderDetailsOrderId.new(param)
           server_error = ShipStationServerError.new(param)
+          initializing_db = StampsElement.new(browser.div(text: "Initializing Order Database"))
 
-          15.times do |count|
+          15.times do
             begin
-              button.click
-
-              10.times do
-                sleep(0.35)
-                return details if details.present?
+              add_btn.click
+              20.times do
+                sleep(0.25)
+                return details_order_id.details_order_id if details_order_id.present?
               end
-
-              30.times do
+              # new accounts will connect to ShipStation for the first time.
+              20.times do
                 if initializing_db.present?
                   logger.message initializing_db.text
                   logger.message initializing_db.text
                   logger.message initializing_db.text
-                  initializing_db.wait_until_present 2
+                  initializing_db.wait_while_present(3)
                   break unless initializing_db.present?
                 end
               end
 
-              return details if details.present?
-              expect("#{server_error.text}").to eql "Server Error" if server_error.present?
+              return details_order_id if details_order_id.present?
+              expect(server_error.present?).to be(false), "Server Error: \n#{server_error.text}"
             rescue
               #ignore
             end
           end
-
-          expect("#{server_error.text}").to eql "Server Error" if server_error.present?
-
-          initializing_db.wait_until_present(15) if initializing_db.present?
-
-          if initializing_db.present?
-            message = "*****  #{initializing_db.text}  *****Ship Station might be down. USERNAME: #{nav_bar.username.text}"
-            logger.info message
-            expect(message).to eql "Initializing Database Error"
-          end
-
-          expect("#{server_error.text}").to eql "Server Error" if server_error.present?
-
-          expect("Single Order Details Panel did not open upon clicking Add button.").to eql "Unable to Add new orders." unless details.present?
+          expect(server_error.present?).to be(false), "Server Error: \n#{server_error.text}"
+          expect(initializing_db.present?).to be(false), "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}"
+          expect(details_order_id).to be_present, "Single Order Details Panel did not open upon clicking Add button."
         end
 
         def tooltip
@@ -716,16 +692,20 @@ module Stamps
       end
 
       class OrdersToolbar < Browser::StampsModal
-        attr_reader :print_btn, :add, :move_dropdown, :import_button, :import_orders_modal, :usps_intl_terms
+        attr_reader :print_btn, :move_dropdown, :import_button, :import_orders_modal, :usps_intl_terms
 
         def initialize(param)
           super
           @import_button = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]"))
           @print_btn = ToolbarPrintButton.new(param)
-          @add = AddButton.new(param)
           @move_dropdown = MoveDropDown.new(param)
           @import_orders_modal = ImportOrders.new(param)
           @usps_intl_terms = USPSTermsOrders.new(param)
+        end
+
+        def add_button
+          @add_button = AddButton.new(param) if @add_button.nil? || !@add_button.present?
+          @add_button
         end
 
         def refresh_orders

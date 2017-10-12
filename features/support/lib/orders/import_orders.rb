@@ -86,7 +86,7 @@ module Stamps
 
       def select_csv_file
         button = StampsElement.new browser.span(text: "Select CSV File")
-        open_file = Windows::OpenFile.new(param.browser_sym)
+        open_file = Windows::OpenFile.new(param.browser)
         10.times do
           button.element.parent.click
           button.click

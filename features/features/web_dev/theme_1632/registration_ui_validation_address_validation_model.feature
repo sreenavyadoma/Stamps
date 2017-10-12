@@ -12,6 +12,7 @@ Feature: Registration Membership page validation Theme 1632
     Then set Profile page Password to random value
     Then set Profile page Re-type password to same as previous password
     Then set Profile page Survey Question to Both mailing and shipping
+    Then set How did you hear about us? to Magazine Ad
     Then set Profile page Promo Code to PR33-NH77
     Then continue to Membership page
 
@@ -32,12 +33,12 @@ Feature: Registration Membership page validation Theme 1632
     Then click Membership page Submit button
 
     # Multi match Address Validation Model
-    Then Pause for 1 second
+    Then Pause for 2 second
     Then expect Membership page Address validation model pop up header is Exact address not found
     Then expect Membership page Address validation model pop up header instructions is The USPS address standardization system could not find your exact address. Select an address from the list below that best matches it:
     Then expect Membership page Address validation model pop up Cancel button exists
     Then expect Membership page Address validation model pop up Continue button exists
     Then click Membership page Address validation model pop up Cancel button
     Then click Membership page Submit button
-    Then Pause for 1 second
+    Then Pause for 2 second
     Then click Membership page Address validation model pop up Continue button

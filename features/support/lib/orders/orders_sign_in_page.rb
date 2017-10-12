@@ -132,7 +132,8 @@ module Stamps
             loading_orders = StampsElement.new browser.div(text: "Loading orders...")
             invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
             new_welcome = NewWelcomeModal.new(param)
-            security_questions = SecurityQuestions.new(param)
+            security_questions = SecurityQuestionsSuccess.new(param)
+            server_error = ServerError.new(param)
 
             expect(browser.url).to include "Orders"
 
@@ -141,13 +142,14 @@ module Stamps
             logger.message "#"*15
 
             wait_until_present(4)
-            10.times do
+            30.times do
               begin
                 if present?
                   username(usr)
                   password(pw)
                   login
                   wait_while_present(5)
+                  expect("Server Error").to eql(server_error.message) if server_error.present?
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
@@ -169,13 +171,13 @@ module Stamps
                 if new_welcome.present?
                   logger.message new_welcome.message
                   add_manual_order = new_welcome.next
-                  expect(add_manual_order.present?).to be(true)
+                  expect(add_manual_order).to be_present
                   import_from_csv = add_manual_order.next
-                  expect(import_from_csv.present?).to be(true)
+                  expect(import_from_csv).to be_present
                   import_from_stores = import_from_csv.next
-                  expect(import_from_stores.present?).to be(true)
+                  expect(import_from_stores).to be_present
                   learn_more = import_from_stores.next
-                  expect(learn_more.present?).to be(true)
+                  expect(learn_more).to be_present
                   learn_more.close
                 end
                 signed_in_user.wait_until_present(2)
@@ -221,7 +223,7 @@ module Stamps
                 return security_questions if security_questions.present?
               end
           end
-          expect(security_questions.present?).to be(true), ""
+          expect(security_questions).to be_present, ""
         end
       end
     end

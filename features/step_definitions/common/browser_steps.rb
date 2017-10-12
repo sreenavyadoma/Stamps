@@ -4,8 +4,7 @@ Then /^Teardown$/ do
 end
 
 Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |selection|
-  ENV['BROWSER'] = selection unless selection.nil?
-  test_config.setup
+  test_config.setup((selection.nil?)? modal_param.browser_str : selection)
 end
 
 Then /^Refresh the browser$/ do
@@ -17,7 +16,7 @@ Then /^Refresh the browser$/ do
   end
 end
 
-Then /^Pause for (\d+) seconds?$/ do |seconds|
+Then /^[Pp]ause for (\d+) [Ss]econd(?:|s)?$/ do |seconds|
   begin
     sleep(seconds.to_i)
   rescue

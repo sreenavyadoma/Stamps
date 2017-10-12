@@ -1,18 +1,18 @@
 module Stamps
   module Windows
     class OpenFile
-      attr_reader :browser_sym
+      attr_reader :browser
 
-      def initialize(browser_sym)
-        @browser_sym = browser_sym
+      def initialize(browser)
+        @browser = browser
       end
 
       def present?
         begin
-          if browser_sym == :firefox
+          if browser == :firefox
             exist = RAutomation::Window.new(:title => /File Upload/i).exists?
             return exist
-          elsif browser_sym == :chrome
+          elsif browser == :chrome
             exist = RAutomation::Window.new(:title => /&Open/i).exists?
             return exist
           else
@@ -31,7 +31,7 @@ module Stamps
       end
 
       def file_name(filename)
-        if browser_sym == :firefox
+        if browser == :firefox
           print_window = RAutomation::Window.new(:title => /File Upload/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
@@ -42,7 +42,7 @@ module Stamps
 
           print_window.button(:value => "&Open").click
 
-        elsif browser_sym == :chrome
+        elsif browser == :chrome
           print_window = RAutomation::Window.new(:title => /&Open/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?

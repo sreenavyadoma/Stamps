@@ -66,7 +66,7 @@ end
 
 Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   expect(@ach_credit).to be_truthy
-  dollar_amount = @ach_credit.dollar_amount
+  dollar_amount = @ach_credit.dollar_amount_str
   dollar_amount.set dollars
   dollar_amount.click
   dollar_amount.click

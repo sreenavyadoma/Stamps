@@ -3,19 +3,25 @@ module Stamps
   module Mail
     class WebMail < Browser::StampsModal
       include PrintFormPanel::PrintFormBlurOut
-      attr_accessor :sign_in_modal, :mail_toolbar, :mail_toolbar, :print_media
+      def sign_in_modal
+        @sign_in_modal = MailSignInModal.new(param) if @sign_in_modal.nil? || !@sign_in_modal.present?
+        @sign_in_modal
+      end
 
-      def initialize(param)
-        super
-        @print_media = PrintFormPanel::PrintOn.new(param)
-        @sign_in_modal = MailSignInModal.new(param)
-        @mail_toolbar = MailToolbar.new(param)
+      def mail_toolbar
+        @mail_toolbar = MailToolbar.new(param) if @mail_toolbar.nil? || !@mail_toolbar.present?
+        @mail_toolbar
+      end
+
+      def print_media
+        @print_media = PrintFormPanel::PrintOn.new(param) if @print_media.nil? || !@print_media.present?
+        @print_media
       end
 
       def print_on(selection)
-        print_media.wait_until_present(5)
+        wait_until_present(5)
         blur_out
-        expect(print_media.present?).to be(true), "Print-on drop-down is not present."
+        expect(print_media).to be_present, "Print-on drop-down is not present."
         param.print_media = print_media.print_on_selection(selection)
       end
 
@@ -40,16 +46,16 @@ module Stamps
           else
             # do nothing
         end
-        expect(@print_form.present?).to be(true), "#(selection) form is not present."
+        expect(@print_form).to be_present, "#(selection) form is not present."
         @print_form
       end
 
       def present?
-        toolbar.present?
+        print_media.present?
       end
 
       def wait_until_present(*args)
-        toolbar.wait_until_present(*args)
+        print_media.wait_until_present(*args)
       end
     end
   end

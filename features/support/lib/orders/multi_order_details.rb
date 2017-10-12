@@ -2,22 +2,36 @@ module Stamps
   module Orders
     module MultiOrderDetails
       class MultiOrderDetailsForm < Browser::StampsModal
-        attr_reader :ship_from_multi, :weight, :domestic_service, :int_service, :insurance, :tracking, :dimensions, :buttons
+        attr_reader :multi_ship_from, :weight, :multi_dom_service, :multi_int_service, :insurance, :tracking, :dimensions, :buttons
 
         def initialize(param)
           super
-          @ship_from_multi = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :multi_order)
+          @multi_ship_from = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
           #@weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
-          @domestic_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_dom)
-          @int_service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :multi_order_int)
+          @multi_dom_service = Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_dom)
+          @multi_int_service = Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
           # @insurance = MultiDetailsInsureFor.new(param)
           # @tracking = MultiOrderDetailsTracking.new(param)
           # @dimensions = MultiOrderDetailsDimensions.new(param)
           @buttons = MultiUpdateController.new(param)
         end
 
-        def present
-          ship_from_multi.present?
+        def multi_blur_out_element
+          @multi_blur_out_element = StampsElement.new(browser.label(text: "Bulk Update:")) if @multi_blur_out_element.nil? || !@multi_blur_out_element.present?
+          @multi_blur_out_element
+        end
+
+        def blur_out(count=1)
+          expect(multi_blur_out_element).to be_present, "Blur out element is not present."
+          ((count.nil?)?1:count.to_i).times do
+            multi_blur_out_element.double_click
+            multi_blur_out_element.flash
+            multi_blur_out_element.click
+          end
+        end
+
+        def present?
+          multi_blur_out_element.present?
         end
 
         def expand
@@ -27,12 +41,12 @@ module Stamps
             end
             break if self.present?
           end
-        private
+        end
+
         def order_count_label
           browser.ps(css: 'b').last
         end
       end
-   end
 
       class MultiDetailsInsureFor < Browser::StampsModal
         attr_reader :textbox, :increment_trigger, :decrement_trigger, :blur_element, :dropdown
@@ -76,7 +90,6 @@ module Stamps
             decrement_trigger.click
           end
         end
-
       end
 
       class MultiOrderDetailsTracking < Browser::StampsModal
@@ -105,7 +118,7 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(dropdown.present?).to be(true)
+          expect(dropdown).to be_present
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
             dropdown.click unless selection.present?
@@ -174,7 +187,7 @@ module Stamps
         def update_orders
           update_orders_btn.click
           sleep(2)
-          expect(updating_orders.present?).to be(true)
+          expect(updating_orders).to be_present
           updating_orders.wait_while_present(5)
         end
 
@@ -188,3 +201,6 @@ module Stamps
     end
   end
 end
+
+
+

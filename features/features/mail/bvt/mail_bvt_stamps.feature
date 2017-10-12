@@ -16,7 +16,7 @@ Feature: Print form BVT
     Then set Print form Quantity to 1
     Then set Advanced Options Reference Number to Stamp3221
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then set Print form Serial Number to B12345
@@ -25,7 +25,7 @@ Feature: Print form BVT
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

@@ -30,7 +30,7 @@ Feature:  Yahoo Store Management
 
       Then in Orders Toolbar, Refresh Orders
       Then in Orders Toolbar, Refresh Orders
-      Then check Orders Grid Order ID 637
+      Then check orders grid cached order id 637
       Then in Orders Toolbar, Refresh Orders
       Then select Filter Panel tab Shipped
       Then select Filter Panel tab Awaiting Shipment
@@ -49,7 +49,7 @@ Feature:  Yahoo Store Management
 
       Then in Orders Toolbar, Refresh Orders
       Then in Orders Toolbar, Refresh Orders
-      Then check Orders Grid Order ID 637
+      Then check orders grid cached order id 637
       Then in Orders Toolbar, Refresh Orders
       Then select Filter Panel tab Shipped
       Then select Filter Panel tab Awaiting Shipment
@@ -68,7 +68,7 @@ Feature:  Yahoo Store Management
 
       Then in Orders Toolbar, Refresh Orders
       Then in Orders Toolbar, Refresh Orders
-      Then check Orders Grid Order ID 637
+      Then check orders grid cached order id 637
       Then in Orders Toolbar, Refresh Orders
       Then select Filter Panel tab Shipped
       Then select Filter Panel tab Awaiting Shipment

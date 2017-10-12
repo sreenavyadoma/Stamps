@@ -57,7 +57,7 @@ Then /^[Cc]lick PAM AppCap Overrides link$/ do
     pam.pam_header.appcapp_overrides_link.click
     break if pam.appcap_overrides_page.present?
   end
-  expect(pam.appcap_overrides_page.present?).to be(true), "PAM AppCap Overrides is not present"
+  expect(pam.appcap_overrides_page).to be_present, "PAM AppCap Overrides is not present"
   expect(pam.appcap_overrides_page.username.text.downcase).to eql(test_param[:username].downcase)
 end
 

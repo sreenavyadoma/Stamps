@@ -112,6 +112,10 @@ Then /^[Ee]xpect [Rr]egistration [Mm]embership Bonus Offer Details link exists a
   expect(registration.membership.offer_details_link.present?).to be (true), "Bonus Offer Details link doesn't exists on Membership Page"
 end
 
+Then /^[Cc]ontinue to Username Taken Model$/ do
+  registration.membership.continue_btn.click
+end
+
 Then /^[Ee]xpect [Pp]rofile [Pp]age Privacy Policy link exists and is clickable$/ do
   # pending
   # 1. check for presence
@@ -171,6 +175,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Cardholder's Name tooltip to be (.*)$/ do
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip to be (.*)$/ do |str|
+  step "pause for 5 seconds"
   expect(registration.membership.cc_number.single_field_help_block.tooltip).to eql(str)
 end
 
@@ -218,7 +223,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Credit Card Number tooltip (\d+) to be (.
 end
 
 
-# Multi Match Address
+# Multi Match Address Model
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header is (.*)$/ do |str|
   expect(registration.membership.model_header).to eql(str)
@@ -229,11 +234,11 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up header in
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Cancel button exists$/ do
-  expect(registration.membership.cancel.present?).to be(true),  "Cancel Button DOES NOT exists on Address validation model"
+  expect(registration.membership.cancel).to be_present,  "Cancel Button DOES NOT exists on Address validation model"
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue button exists$/ do
-  expect(registration.membership.continue.present?).to be(true),  "Continue Button DOES NOT exists on Address validation model"
+  expect(registration.membership.continue).to be_present,  "Continue Button DOES NOT exists on Address validation model"
 end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do
@@ -242,4 +247,32 @@ end
 
 Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Continue button$/ do
   registration.membership.continue.click
+end
+
+
+# Username Taken Model
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up header is (.*)$/ do |str|
+  step "Pause for 2 second"
+  expect(registration.membership.uname_model_header).to eql(str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up custom body is (.*)$/ do |str|
+  expect(registration.membership.uname_model_custom_body).to eql(str)
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Username exists$/ do
+  expect(registration.membership.uname_text_box).to be_present,  "Username DOES NOT exists on Username Taken model"
+end
+
+Then /^[Ee]xpect [Mm]embership [Pp]age Username Taken model pop up Continue button exists$/ do
+  expect(registration.membership.uname_continue_btn).to be_present,  "Continue Button DOES NOT exists on Username Taken model"
+end
+
+Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:random value|(.*))$/ do |str|
+  registration.membership.uname_text_box.set (test_param[:uname_text_box] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
+end
+
+Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue button$/ do
+  registration.membership.uname_continue_btn.click
 end

@@ -18,7 +18,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     #mail_print_stamps_a_series_specify
@@ -31,7 +31,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_stamps_series_b
@@ -46,7 +46,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_stamps_b_series_specify
@@ -59,7 +59,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_stamps_series_c
@@ -74,7 +74,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_stamps_c_series_specify
@@ -87,7 +87,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_stamps_series_k
@@ -102,7 +102,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_stamps_k_series_specify
@@ -115,7 +115,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_stamps_series_l
@@ -130,7 +130,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_stamps_l_series_specify
@@ -143,7 +143,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_stamps_series_ml
@@ -158,7 +158,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then select Print form service FCM Large Envelope
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_stamps_ml_series_specify
@@ -171,7 +171,7 @@ Feature: Stamps Series #A, #B, #C, #K, #L, #ML
     Then set Print form Amount to 0.15
     Then set Advanced Options Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

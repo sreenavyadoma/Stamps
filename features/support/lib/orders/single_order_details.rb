@@ -5,7 +5,7 @@ module Stamps
         def blur_out(count=1)
           @service_blur_out_element = StampsElement.new(browser.label(text: 'Service:')) if @service_blur_out_element.nil? || !@service_blur_out_element.present?
           @weight_blur_out_element = StampsElement.new(browser.label(text: 'Weight:')) if @weight_blur_out_element.nil? || !@weight_blur_out_element.present?
-          count.to_i.times do
+          ((count.nil?)?1:count.to_i).times do
             @service_blur_out_element.click
             @weight_blur_out_element.double_click
             @weight_blur_out_element.click
@@ -314,7 +314,7 @@ module Stamps
             sleep(0.35)
           end
           dd.should_not be nil
-          expect(dd.present?).to be(true), "Ship-To Country drop-down is not present"
+          expect(dd).to be_present, "Ship-To Country drop-down is not present"
           StampsElement.new(dd)
         end
 
@@ -333,7 +333,7 @@ module Stamps
             end
             break if !text_field.nil? && text_field.present?
           end
-          expect(text_field.present?).to be(true), "Ship-To Country is not present."
+          expect(text_field).to be_present, "Ship-To Country is not present."
           StampsTextBox.new(text_field)
         end
 
@@ -446,7 +446,7 @@ module Stamps
               expect("Unable to Ship-To address to #{address}. Error: #{e.message}").to eql "Set Ship-To Address Failed"
             end
           end
-          expect(less_link.present?).to be(true), "Less link did not appear on Single Order Details form. Unable to save Ship-To data."
+          expect(less_link).to be_present, "Less link did not appear on Single Order Details form. Unable to save Ship-To data."
           expect(textarea.text).to include address.split(" ").last
         end
 
@@ -625,7 +625,7 @@ module Stamps
         end
 
         def cost
-          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
         end
       end
 
@@ -656,7 +656,7 @@ module Stamps
 
         # todo-rob Details Tracking selection fix
         def select(str)
-          expect(dropdown.present?).to be(true)
+          expect(dropdown).to be_present
           20.times do
             selection = StampsElement.new(tracking_selection(str).first)
             dropdown.click unless selection.present?
@@ -686,7 +686,7 @@ module Stamps
         end
 
         def cost
-          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
         end
 
         def tooltip(selection)
@@ -707,31 +707,6 @@ module Stamps
       end
 
       class DetailsStoreItem < Browser::StampsModal
-      end
-
-      class OrderDetailsDimensions < Browser::StampsModal
-        attr_reader :length, :width, :height
-        def initialize(param)
-          super
-          textbox = browser.text_field(css: "input[class^=sdc-mainpanel-lengthnumberfield]")
-          inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
-          @length = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-
-          textbox = browser.text_field(css: "input[class^=sdc-mainpanel-widthnumberfield]")
-          inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]")
-          @width = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-
-          textbox = browser.text_field(css: "input[class^=sdc-mainpanel-heightnumberfield]")
-          inc_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]")
-          @height = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-        end
-
-        def present?
-          length.present? && width.present? && height.present?
-        end
       end
 
       class AssociatedOrderItem < Browser::StampsModal
@@ -855,25 +830,41 @@ module Stamps
         end
       end
 
-      class DetailsToolbar < Browser::StampsModal
-        attr_reader :menu
-
-        def initialize(param)
-          super
-          @menu = ToolbarMenu.new(param)
+      class SingleOrderDetailsOrderId < Browser::StampsModal
+        def present?
+          order_id_element.present?
         end
 
-        def order_id
-          20.times{
+        def wait_until_present(*args)
+          order_id_element.wait_until_present(*args)
+        end
+
+        def order_id_element
+          @order_id_element = StampsElement.new(browser.b(css: "div[id^=singleOrderDetailsForm][class*=singleorder-detailsform]>div[id^=toolbar]>div[id^=toolbar]>div[id^=toolbar]>label>b")) if @order_id_element.nil? || !@order_id_element.present?
+          @order_id_element
+        end
+
+        def details_order_id
+          30.times{
             begin
-              order_id_label = StampsElement.new(browser.b(css: "div[id^=singleOrderDetailsForm][class*=singleorder-detailsform]>div[id^=toolbar]>div[id^=toolbar]>div[id^=toolbar]>label>b"))
-              sleep(0.25)
-              return order_id_label.text.split('#').last if order_id_label.text.include? '#'
+              return /\d+/.match(order_id_element.text).to_s if present?
+              sleep(0.15)
             rescue
               #ignroe
             end
           }
           ""
+        end
+      end
+
+      class DetailsToolbar < Browser::StampsModal
+        def menu
+          @menu = ToolbarMenu.new(param) if @menu.nil? || !@menu.present?
+          @menu
+        end
+
+        def order_id
+          SingleOrderDetailsOrderId.new(param).details_order_id
         end
       end
 
@@ -895,7 +886,7 @@ module Stamps
               #ignore
             end
           end
-          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
         end
 
         def multiple_order_cost
@@ -909,7 +900,7 @@ module Stamps
             end
             break unless cost.include? "$"
           end
-          test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+          test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
         end
       end
 
@@ -931,7 +922,7 @@ module Stamps
             edit_form_btn.click
             customs_form.wait_until_present(2)
           end
-          expect(customs_form.present?).to be(true)
+          expect(customs_form).to be_present
         end
 
         def restrictions
@@ -939,26 +930,26 @@ module Stamps
             return view_restrictions if view_restrictions.present?
             restrictions_btn.click
           end
-          expect(view_restrictions.present?).to be(true)
+          expect(view_restrictions).to be_present
         end
       end
 
       class SingleOrderDetails < Browser::StampsModal
         include BlurOutElement
-        attr_reader :toolbar, :ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
+        attr_reader :toolbar, :single_ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
                     :footer, :customs, :items_ordered, :reference_no, :collapsed_details
 
         def initialize(param)
           super
           @toolbar = DetailsToolbar.new(param)
-          @ship_from = Stamps::Orders::OrderDetailsCommon::ShipFromAddress.new(param, :single_order)
+          @single_ship_from = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :single_order)
           @ship_to = ShipTo.new(param)
-          @weight = Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :single_order)
-          @service = Stamps::Orders::OrderDetailsCommon::OrdersService.new(param, :single_order).extend(Stamps::Orders::OrderDetailsCommon::ServiceCost)
+          @weight = Stamps::Orders::DetailsFormCommon::OrderDetailsWeight.new(param, :single_order)
+          @service = Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :single_order).extend(Stamps::Orders::DetailsFormCommon::DetailsFormServiceCost)
           @insure_for = DetailsInsureFor.new(param)
           @tracking = DetailsTracking.new(param)
           @reference_no = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
-          @dimensions = OrderDetailsDimensions.new(param)
+          @dimensions = Stamps::Orders::DetailsFormCommon::DetailsFormDimensions.new(param, :single_order)
           @items_ordered = ItemsOrderedSection.new(param)
           @customs = OrdersCustomsFields.new(param)
           @body = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]"))

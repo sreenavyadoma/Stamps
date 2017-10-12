@@ -19,7 +19,7 @@ Feature: Mail Shipping Label - Right Side
     Then select Print form service PM Package
     Then on Print form, select right side starting label
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
 
@@ -34,7 +34,7 @@ Feature: Mail Shipping Label - Right Side
     Then select Print form service PM Package
     Then on Print form, select right side starting label
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
 
@@ -51,6 +51,6 @@ Feature: Mail Shipping Label - Right Side
     Then select Print form service PM Package
     Then on Print form, select right side starting label
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out

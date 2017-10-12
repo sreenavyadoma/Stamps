@@ -61,6 +61,11 @@ Cucumber::Rake::Task.new(:registration_ui_validation_add_validation_model) do |t
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:registration_username_taken_model) do |t|
+  t.profile = 'registration_username_taken_model'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:registration_ui_validation_security_questions_page) do |t|
   t.profile = 'registration_ui_validation_security_questions_page'
   t.cucumber_opts = "-p cuke_reports"
@@ -70,10 +75,45 @@ Cucumber::Rake::Task.new(:registration_normal_workflow) do |t|
   t.profile = 'registration_normal_workflow'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:registration_ui_validation_choose_supplies_page) do |t|
+  t.profile = 'registration_ui_validation_choose_supplies_page'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:registration_security_questions_happy_path) do |t|
+  t.profile = 'registration_security_questions_happy_path'
+  t.cucumber_opts = "-p cuke_reports"
+end
 # END WEB REG
 
 Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
   t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:xxxxxxxxxx) do |t|
+  t.profile = 'xxxxxxxxxx'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:rob_mail_stg) do |t|
+  t.profile = 'rob_mail_stg'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -991,6 +1031,11 @@ Cucumber::Rake::Task.new(:bvt_shipstation_search) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bvt_bulk_update) do |t|
+  t.profile = 'bvt_bulk_update'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:search_orders) do |t|
   t.profile = 'search_orders'
   t.cucumber_opts = "-p cuke_reports"
@@ -1108,6 +1153,11 @@ end
 
 Cucumber::Rake::Task.new(:bvt_ambigious_address) do |t|
   t.profile = 'bvt_ambigious_address'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_all_tests) do |t|
+  t.profile = 'bvt_all_tests'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1230,6 +1280,12 @@ Cucumber::Rake::Task.new(:bvt_shipstation_updates_domestic) do |t|
   t.profile = 'bvt_shipstation_updates_domestic'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:international_customs_form) do |t|
+  t.profile = 'international_customs_form'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 Cucumber::Rake::Task.new(:international_customs_form_totals) do |t|
   t.profile = 'international_customs_form_totals'
@@ -1422,13 +1478,28 @@ Cucumber::Rake::Task.new(:details_placeholders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:grid_insured_value) do |t|
-  t.profile = 'grid_insured_value'
+Cucumber::Rake::Task.new(:grid_automation_test) do |t|
+  t.profile = 'grid_automation_test'
   t.cucumber_opts = "-p cuke_reports"
 end
 
 Cucumber::Rake::Task.new(:grid_tracking) do |t|
   t.profile = 'grid_tracking'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_ship_cost) do |t|
+  t.profile = 'grid_ship_cost'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_insured_value) do |t|
+  t.profile = 'grid_insured_value'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:grid_order_status) do |t|
+  t.profile = 'grid_order_status'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1501,8 +1572,8 @@ Cucumber::Rake::Task.new(:nav_postage_balance_update) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:general_settings) do |t|
-  t.profile = 'general_settings'
+Cucumber::Rake::Task.new(:general_settings_test_cases) do |t|
+  t.profile = 'general_settings_test_cases'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1570,6 +1641,12 @@ Cucumber::Rake::Task.new(:filter_panel) do |t|
   t.profile = 'filter_panel'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:filter_panel_tests) do |t|
+  t.profile = 'filter_panel_tests'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 Cucumber::Rake::Task.new(:new_country_code) do |t|
   t.profile = 'new_country_code'

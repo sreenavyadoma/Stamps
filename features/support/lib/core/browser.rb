@@ -432,7 +432,7 @@ module Stamps
           dropdown.click
           return selection_element if selection_element.present?
         end
-        expect(selection_element.present?).to be(true), "Drop-down selection #{selection} is not in the list of values."
+        expect(selection_element).to be_present, "Drop-down selection #{selection} is not in the list of values."
       end
 
       def select(selection)
@@ -632,7 +632,8 @@ module Stamps
 
     # Modals
     class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :browser_sym, :firefox_profile
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
+                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str
     end
 
     # StampsModal - base class for modals containing StampsElements

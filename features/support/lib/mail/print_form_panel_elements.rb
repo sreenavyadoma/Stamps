@@ -242,6 +242,7 @@ module Stamps
           show_certified_mail_sdc3910
           show_certified_mail_sdc3930
           show_certified_mail_sdc3810
+          show_certified_mail_sdc3830
           show_roll_4x6
           show_roll_418x614
           save
@@ -315,6 +316,10 @@ module Stamps
           show("Certified Mail Label - SDC-3810")
         end
 
+        def show_certified_mail_sdc3830
+          show("Certified Mail Label - SDC-3830")
+        end
+
         def show_roll_4x6
           show("Roll 4x6")
         end
@@ -357,16 +362,29 @@ module Stamps
       class PrintOn < Browser::StampsModal
         include PrintFormBlurOut
         include PrintMediaHelper
+        def textbox
+          @textbox = StampsTextBox.new(browser.text_field(css: "[name=PrintMedia]")) if @textbox.nil? || !@textbox.present?
+          @textbox
+        end
 
-        attr_accessor :dropdown, :textbox, :upgrade_plan, :manage_printing_options_lov, :manage_printing_options
+        def dropdown
+          @dropdown = StampsElement.new(browser.div(css: "[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown
+        end
 
-        def initialize(param)
-          super
-          @dropdown = StampsElement.new(browser.div(css: "div[id^=printmediadroplist-][id$=-trigger-picker]"))
-          @textbox = StampsTextBox.new(browser.text_field(name: "PrintMedia"))
-          @upgrade_plan = UpgradePlan.new(param)
-          @manage_printing_options_lov = StampsElement.new(browser.li(text: 'Manage Printing Options...'))
-          @manage_printing_options = ManagePrintOptionsModal.new(param)
+        def upgrade_plan
+          @upgrade_plan = UpgradePlan.new(param) if @upgrade_plan.nil? || !@upgrade_plan.present?
+          @upgrade_plan
+        end
+
+        def manage_printing_options_lov
+          @manage_printing_options_lov = StampsElement.new(browser.li(text: 'Manage Printing Options...')) if @manage_printing_options_lov.nil? || !@manage_printing_options_lov.present?
+          @manage_printing_options_lov
+        end
+
+        def manage_printing_options
+          @manage_printing_options = ManagePrintOptionsModal.new(param) if @manage_printing_options.nil? || !@manage_printing_options.present?
+          @manage_printing_options
         end
 
         def present?
@@ -386,7 +404,7 @@ module Stamps
               manage_printing_options_lov.click
               sleep(0.25)
             end
-            expect(manage_printing_options.present?).to be(true), "Unable to open Manage Printing Options modal"
+            expect(manage_printing_options).to be_present, "Unable to open Manage Printing Options modal"
           end unless manage_printing_options.present?
           manage_printing_options
         end
@@ -428,7 +446,7 @@ module Stamps
             sleep(0.15)
           end
           dropdown.click unless manage_printing_options_lov.present?
-          #expect(selection.present?).to be(true), "Print On selection #{selection} is not in the Print On dropdown List of Values. Manually add it in Manage Printing Options modal." if manage_printing_options_lov.present?
+          #expect(selection).to be_present, "Print On selection #{selection} is not in the Print On dropdown List of Values. Manually add it in Manage Printing Options modal." if manage_printing_options_lov.present?
           expect(textbox.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{textbox.text}\""
         end
 
@@ -464,7 +482,7 @@ module Stamps
             return false if int_dd.present?
             sleep(0.1)
           end
-          expect(dom_dd.present? || int_dd.present?).to be(true), "Unable to determine if Mail-To Country dropdown is for domestic or international."
+          expect(dom_dd.present? || int_dd).to be_present, "Unable to determine if Mail-To Country dropdown is for domestic or international."
         end
 
         def dropdown
@@ -658,7 +676,7 @@ module Stamps
         end
 
         def cost_str
-          remove_dollar_sign(cost_field.text)
+          dollar_amount_str(cost_field.text)
         end
 
         def selection_is_numeric?
@@ -754,7 +772,7 @@ module Stamps
             begin
               dropdown.click unless cost_label.present?
               if cost_label.present?
-                service_cost = test_helper.remove_dollar_sign(cost_label.text).to_f.round(2)
+                service_cost = test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
                 logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
                 return service_cost
               end
@@ -963,7 +981,7 @@ module Stamps
             return contacts_modal if contacts_modal.present?
             link.click
           end
-          expect(contacts_modal.present?).to be(true)
+          expect(contacts_modal).to be_present
         end
       end
 
@@ -987,7 +1005,7 @@ module Stamps
         end
 
         def country(str)
-          expect(mail_to_country.present?).to be(true)
+          expect(mail_to_country).to be_present
           blur_out
           mail_to_country.select(str)
           address
@@ -1010,7 +1028,7 @@ module Stamps
             button.click
             sleep(0.2)
           end
-          expect(customs_form.present?).to be(true)
+          expect(customs_form).to be_present
         end
 
         def restrictions

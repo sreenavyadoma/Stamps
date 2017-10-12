@@ -1,0 +1,10 @@
+
+
+
+      def xxxxxxxx
+        yyyyyyyyyyyyyyyyyyyyy if @xxxxxxxx.nil? || !@xxxxxxxx.present?
+        @xxxxxxxx
+      end
+
+
+

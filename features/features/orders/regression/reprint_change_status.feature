@@ -16,7 +16,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then In left Filter Panel, expect order moved to Shipped
 
     Then select Filter Panel tab Shipped
-    Then check Orders Grid for cached Order ID
+    Then check orders grid cached order id
     Then in Print modal, Open Reprint Modal
     Then Label Unavailable:  Expect Visible
     Then Pause for 5 seconds

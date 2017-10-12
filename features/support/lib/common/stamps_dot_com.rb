@@ -1,25 +1,28 @@
 module Stamps
   class StampsDotCom < Browser::StampsModal
-    attr_reader :orders, :mail, :navigation_bar
+    def navigation_bar
+      @navigation_bar = Navigation::NavigationBar.new(param) if @navigation_bar.nil? || !@navigation_bar.present?
+      @navigation_bar
+    end
 
-    def initialize(param)
-      super
-      @navigation_bar = Navigation::NavigationBar.new(param)
-      @orders = WebOrders.new(param)
-      @mail = WebMail.new(param)
+    def orders
+      @orders = WebOrders.new(param) if @orders.nil? || !@orders.present?
+      @orders
+    end
+
+    def mail
+      @mail = WebMail.new(param) if @mail.nil? || !@mail.present?
+      @mail
     end
 
     def load_sign_in_page
       case param.test_env
         when /cc/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
-          #url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /sc/
-          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/"
-          #url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
+          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx"
         when /stg/
           url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
-          #url = "http://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx" if param.web_app == :mail
         when /rating/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
         else

@@ -17,7 +17,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_8x11_pm_large_envelope
@@ -29,7 +29,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Large/Thick Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     #mail_print_sample_shipping_label_8x11_pm_lfr_envelope
@@ -41,7 +41,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Legal Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     #mail_print_sample_shipping_label_8x11_pm_pfr_envelope
@@ -53,7 +53,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Padded Flat Rate Envelope
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_print_sample_shipping_label_8_x_11_pm_package
@@ -69,7 +69,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then select Print form service PM Large Package
     Then set Dimensions to length 2 width 2 height 2
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_sample_shipping_label_8x11_pm_package
@@ -81,7 +81,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” PM Envelope Package Paper
     Then set Print form Ounces to 1
     Then select Print form service PM Package
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

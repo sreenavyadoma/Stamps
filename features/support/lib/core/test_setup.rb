@@ -1,22 +1,18 @@
 module Stamps
   class StampsTestSetup
-    attr_accessor :browser, :logger, :browser_sym, :firefox_profile, :windows_user, :scenario_name, :browser_name
+    attr_accessor :browser, :firefox_profile, :browser_version, :scenario_name
 
-    def init(scenario_name, browser_sym, firefox_profile, windows_user)
-      @scenario_name = scenario_name
-      @browser_sym = BrowserType.new(browser_sym).browser_sym
-      @firefox_profile = firefox_profile
-      @windows_user = windows_user
-      @logger = StampsLogger.new(@scenario_name)
+    def logger
+      @logger = StampsLogger.new(scenario_name) if @logger.nil? || @logger.scenario_name != scenario_name # create new instance of logger if scenario name changes
+      @logger
     end
 
-    def setup
+    def setup(browser_str)
       begin
         Watir::always_locate = true
-
-        logger.info "Browser Selection: #{browser_sym}"
-        case(browser_sym)
-
+        logger.info "Browser Selection: #{browser_str}"
+        browser_version = 'Unknown'
+        case(browser_str)
           when :edge # Launch Microsoft Edge
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im MicrosoftEdge.exe /f")
@@ -25,10 +21,10 @@ module Stamps
             rescue
               #ignore
             end
-
             capabilities = Selenium::WebDriver::Remote::Capabilities.edge(accept_insecure_certs: true)
             driver = Watir::Browser.new(:edge, :desired_capabilities => capabilities)
-
+            driver.window.maximize
+            self.browser_version = /Edge\/.+/.match(driver.execute_script("return navigator.userAgent;"))
           when :firefox # Launch Firefox
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im firefox.exe /f")
@@ -37,11 +33,7 @@ module Stamps
             rescue
               #ignore
             end
-
             if firefox_profile.nil?
-              # profile = Selenium::WebDriver::Firefox::Profile.new
-              # profile['network.http.phishy-userpass-length'] = 255
-              # capabilities
               capabilities = Selenium::WebDriver::Remote::Capabilities.firefox(accept_insecure_certs: true)
               driver = Watir::Browser.new(:firefox, :desired_capabilities => capabilities)
             else
@@ -50,8 +42,9 @@ module Stamps
               profile['network.http.phishy-userpass-length'] = 255
               driver = Watir::Browser.new(:firefox, :profile => profile)
             end
-            @browser_name = 'Mozilla Firefox'
-
+            self.browser_version = /Firefox\/.+/.match(driver.execute_script("return navigator.userAgent;"))
+            driver.window.resize_to 1560, 1020
+            driver.window.move_to 0, 0
           when :chrome
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im chrome.exe /f")
@@ -61,9 +54,10 @@ module Stamps
               #ignore
             end
             driver = Watir::Browser.new(:chrome, switches: %w(--ignore-certificate-errors --disable-popup-blocking --disable-translate))
+            self.browser_version = /Chrome\/.+/.match(driver.execute_script("return navigator.userAgent;"))
+            driver.window.maximize
             #switches: ['--ignore-certificate-errors --disable-popup-blocking --disable-translate']
-            @browser_name = 'Google Chrome'
-          when :ie
+          when :ie # Launch Internet Explorer
             begin
               stdout, stdeerr, status = Open3.capture3("taskkill /im iexplore.exe /f")
               logger.message status
@@ -71,25 +65,19 @@ module Stamps
             rescue
               #ignore
             end
-
             driver = Watir::Browser.new :ie
-            @browser_name = 'Internet Explorer'
+            driver.window.maximize
           when :safari
             driver = Watir::Browser.new :safari
-            @browser_name = 'Mac OS X - Safari'
           else
-            # do nothing.
+            raise "#{browser_str} is not a valid browser"
         end
 
-        #driver.window.move_to 0, 0
-        #driver.window.resize_to 1000, 800
-        #driver.window.maximize if (ENV['MAX_WINDOW'].nil? || test_helper.to_bool(ENV['MAX_WINDOW']))
-        driver.window.maximize
+        self.browser = driver
         logger.message "-"
-        logger.message "BROWSER: #{@browser_name}"
+        logger.message "BROWSER: #{self.browser_version}"
         logger.message "-"
         #driver.cookies.clear
-        @browser = driver
       rescue Exception => e
         err = e.backtrace.join("\n")
         logger.error e.message
@@ -97,11 +85,6 @@ module Stamps
         logger.error e.message
         raise e
       end
-    end
-
-    def scenario_name=name
-      @test_name = name
-      logger.scenario_name = @test_name
     end
 
     def os
@@ -131,7 +114,7 @@ module Stamps
       rescue
         #ignore
       end
-      logger.info "#{@browser_name} closed."
+      logger.info "#{@browser_str} closed."
       logger.info "Test Done!"
 
     end

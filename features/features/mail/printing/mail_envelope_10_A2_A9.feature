@@ -14,7 +14,7 @@ Feature: Envelope #10, #A2, #A9
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_envelope_10_delivery_address
@@ -29,7 +29,7 @@ Feature: Envelope #10, #A2, #A9
     #Then on Envelope form, set Reference Number to 12345
     #Then on Envelope form, set Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_envelope_10_postage
@@ -44,7 +44,7 @@ Feature: Envelope #10, #A2, #A9
     #Then on Envelope form, set Reference Number to 54321
     #Then on Envelope form, set Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
    #mail_print_envelope_10_return_address
@@ -59,7 +59,7 @@ Feature: Envelope #10, #A2, #A9
     #Then on Envelope form, set Reference Number to 12345
     #Then on Envelope form, set Cost Code to None
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_print_envelope_A9
@@ -71,7 +71,7 @@ Feature: Envelope #10, #A2, #A9
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
   @mail_print_envelope_A2
@@ -83,7 +83,7 @@ Feature: Envelope #10, #A2, #A9
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print Postage
-    Then set Mail Print modal Printer to factory
+    Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
     Then Sign out

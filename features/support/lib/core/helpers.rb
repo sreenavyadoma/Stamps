@@ -35,8 +35,8 @@ module Stamps
       down = ('a'..'z').to_a
       up = ('A'..'Z').to_a
       digits = ('0'..'9').to_a
-      special = ['_', '-']
-      modal_param.test_env+(digits + down + up).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits), rand_samp_str(special)].concat(((down+up+digits+special).sample(Random.rand(0..5)))).shuffle.join + (digits + down + up).shuffle[1..1].join
+      special = ['-', '_', '.', '-', '_', '.', '-', '_', '.']
+      modal_param.test_env+(digits + down + up + special).shuffle[1..1].join + [rand_samp_str(down), rand_samp_str(up), rand_samp_str(digits)].concat(((down+up+digits).sample(Random.rand(0..5)))).shuffle.join #+ (digits + down + up).shuffle[1..1].join
     end
 
     def random_email
@@ -106,6 +106,10 @@ module Stamps
 
   module ParameterHelper
 
+    def parse_service(str)
+      /.+(?= \(.*\)$)/.match(str).to_s
+    end
+
     def state_fullname(state)
       if @states.nil?
         @states = Hash.new
@@ -146,8 +150,27 @@ module Stamps
       false
     end
 
-    def remove_dollar_sign(str)
-      strip str, '$', ''
+    # str = $34.68 returns 34.68
+    def dollar_amount_str(str)
+      str.gsub('$', '').gsub(',', '')
+    end
+
+    def dollar_amount_f(str)
+      /[^$]+/.match(str).to_f
+    end
+
+    # str = $34.68 returns 34
+    def dollars(str)
+      dolars_and_cents(str)[:dollars]
+    end
+
+    # str = $34.68 returns 68
+    def cents(str)
+      dolars_and_cents(str)[:cents]
+    end
+
+    def dolars_and_cents(str)
+      /\$(?<dollars>\d*).(?<cents>.*)/.match(str.gsub(',', ''))
     end
 
     def format_address_arr(address_array)
@@ -460,6 +483,25 @@ module Stamps
     end
   end
 
+  module BrowserType
+    def browser(browser)
+      case browser.downcase
+        when /ff|firefox|mozilla/
+          return :firefox
+        when /chrome|gc|google/
+          return :chrome
+        when /ms|me|microsoft|edge/
+          return :edge
+        # when /ie|explorer|internet explorer/
+        #   return :ie
+        # when /apple|osx|safari|mac/
+        #   return :safari
+        else
+          raise "#{browser} is not a valid selection. Valid browsers are ff|firefox|mozilla|chrome|gc|google|ms|me|microsoft|edge"
+      end
+    end
+  end
+
   class StampsTestHelper
     include RandomGenerators
     include ParameterHelper
@@ -467,19 +509,6 @@ module Stamps
     attr_reader :logger
     def initialize(logger)
       @logger = logger
-    end
-  end
-
-  class BrowserType
-    attr_reader :browser_sym
-    def initialize(browser_sym)
-      expect("ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge").to include(browser_sym),
-        "Invalid browser selection: #{browser_sym}. Valid values for browser are ff|firefox|mozilla|chrome|gc|google|ie|explorer|internet explorer|apple|osx|safari|mac|edge"
-      @browser_sym = :firefox if "ff|firefox|mozilla".include? browser_sym.downcase
-      @browser_sym = :chrome if "chrome|gc|google".include? browser_sym.downcase
-      @browser_sym = :ie if "ie|explorer|internet explorer".include? browser_sym.downcase
-      @browser_sym = :safari if "apple|osx|safari|mac".include? browser_sym.downcase
-      @browser_sym = :edge if "ms|me|microsoft|edge".include? browser_sym.downcase
     end
   end
 end

@@ -60,7 +60,7 @@ Then /^[Ss]et Security questions page select first question to (.*)$/ do |str|
 end
 
 Then /^[Ss]et Security questions page select first answer to (.*)$/ do |str|
-  registration.security_questions.first_answer.set(str)
+  registration.security_questions.first_question.first_answer.set(str)
 end
 
 Then /^[Ss]et Security questions page select second question to (.*)$/ do |str|
@@ -68,7 +68,7 @@ Then /^[Ss]et Security questions page select second question to (.*)$/ do |str|
 end
 
 Then /^[Ss]et Security questions page select second answer to (.*)$/ do |str|
-  registration.security_questions.second_answer.set(str)
+  registration.security_questions.second_question.second_answer.set(str)
 end
 
 Then /^[Cc]lick Get Started button$/ do
@@ -104,7 +104,7 @@ Then /^[Ee]xpect Registration Securityquestions get started button exists/ do
 end
 
 Then /^[Ee]xpect congratulations message exists$/ do
-  expect(registration.security_second_question.present?).to be(true)
+  expect(registration.security_second_question).to be_present
 end
 
 
