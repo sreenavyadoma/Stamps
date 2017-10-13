@@ -292,7 +292,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International Name data error tooltip 
     #web_apps.orders.order_details.ship_to.international.click_form
     stamps.orders.single_order_details.ship_to.international.name.scroll_into_view
     sleep(0.35)
-    data_error_tooltip = textbox.data_error_qtip
+    data_error_tooltip = textbox
     begin
       stamps.orders.single_order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
