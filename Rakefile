@@ -1246,6 +1246,11 @@ Cucumber::Rake::Task.new(:yahoo) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:stores) do |t|
+  t.profile = 'stores'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:grid_column_order) do |t|
   t.profile = 'grid_column_order'
   t.cucumber_opts = "-p cuke_reports"
@@ -1299,6 +1304,11 @@ end
 
 Cucumber::Rake::Task.new(:tooltip_customs_form) do |t|
   t.profile = 'tooltip_customs_form'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:tooltips) do |t|
+  t.profile = 'tooltips'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1468,6 +1478,11 @@ Cucumber::Rake::Task.new(:details_reference_no) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:details_order) do |t|
+  t.profile = 'details_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_dialog_thermal_number_of_labels_count) do |t|
   t.profile = 'print_dialog_thermal_number_of_labels_count'
   t.cucumber_opts = "-p cuke_reports"
@@ -1562,8 +1577,8 @@ Cucumber::Rake::Task.new(:print_layouts_cn22) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:reprint) do |t|
-  t.profile = 'reprint'
+Cucumber::Rake::Task.new(:reprint_tests) do |t|
+  t.profile = 'reprint_tests'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1627,6 +1642,11 @@ Cucumber::Rake::Task.new(:rules_international) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:international_rules) do |t|
+  t.profile = 'international_rules'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:parcel_select) do |t|
   t.profile = 'parcel_select'
   t.cucumber_opts = "-p cuke_reports"
@@ -1648,8 +1668,8 @@ Cucumber::Rake::Task.new(:filter_panel_tests) do |t|
 end
 
 
-Cucumber::Rake::Task.new(:new_country_code) do |t|
-  t.profile = 'new_country_code'
+Cucumber::Rake::Task.new(:new_country) do |t|
+  t.profile = 'new_country'
   t.cucumber_opts = "-p cuke_reports"
 end
 

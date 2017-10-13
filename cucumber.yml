@@ -1,9 +1,10 @@
-default: --backtrace --profile kaushal_order
+default: --backtrace --profile Kaushal_sc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
 kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
-kaushal_order: --tags @bulk_update_dom WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+kaushal_order: --tags @international_customs_form WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+Kaushal_sc: --tags @international_rules WEB_APP=orders JENKINS=true URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false  USR=default PW=pass111 DEBUG=true
 
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
@@ -296,7 +297,7 @@ print_layout_cn22_roll: --tags @print_layout_cn22_roll --guess DEBUG=false JENKI
 bulk_update_dom: --tags @bulk_update_dom --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bulk_update_int: --tags @bulk_update_int --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 # CHECK IF THESE ARE IN JENKINS
-reprint: --tags @reprint --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+reprint_tests: --tags @reprint_tests --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 print_multiple_reprints: --tags @print_multiple_reprints --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 print_on_thermal: --tags @print_on_thermal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 
@@ -310,6 +311,7 @@ international_customs_form: --tags @international_customs_form --guess DEBUG=fal
 international_customs_form_totals: --tags @international_customs_form_totals --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 international_customs_form_edit_delete_item: --tags @international_customs_form_edit_delete_item --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 tooltip_customs_form: --tags @tooltip_customs_form --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+tooltips: --tags @tooltips --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_reference_no: --tags @details_reference_no --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 customs_form_qty: --tags @customs_form_qty --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 grid_automation_test: --tags @grid_automation_test --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
@@ -331,8 +333,9 @@ inline_service_rates: --tags @inline_service_rates --guess DEBUG=false JENKINS=t
 purchasing: --tags @purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 sorting: --tags @sort --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 auto_suggest: --tags @auto_suggest --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-new_country_code: --tags  @new_country_code --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-details_panel: --tags  @details_panel --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+new_country: --tags  @new_country --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+details_panel: --tags  @details_panel --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+details_order: --tags  @details_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 # REGRESSION NOT INCLUDED
@@ -362,7 +365,7 @@ item_details: --tags @item_details --guess DEBUG=false JENKINS=true HEALTHCHECK=
 
 #need to reevaluate
 rules_domestic: --tags @rules_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-rules_international: --tags  @rules_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+international_rules: --tags  @international_rules --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 orders_10: --tags @orders_10 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 orders_20: --tags @orders_20 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 jenkins_orders: --tags @jenkins_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
@@ -373,6 +376,7 @@ local_rating_smoke_test: --tags @local_rating_smoke_test --guess DEBUG=false JEN
 import_orders_ship_from_test: --tags @import_orders_ship_from_test --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 # Stores
+stores: --tags @stores --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 marketplace: --tags @marketplace --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 big_commerce: --tags @big_commerce --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 paypal: --tags @paypal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
