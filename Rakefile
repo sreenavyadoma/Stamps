@@ -1478,6 +1478,11 @@ Cucumber::Rake::Task.new(:details_reference_no) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:details_order) do |t|
+  t.profile = 'details_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:print_dialog_thermal_number_of_labels_count) do |t|
   t.profile = 'print_dialog_thermal_number_of_labels_count'
   t.cucumber_opts = "-p cuke_reports"
