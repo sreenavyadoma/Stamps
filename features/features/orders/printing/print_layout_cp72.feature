@@ -20,7 +20,7 @@ Feature: Print 1 Intl CP72 label
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
-    Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
+    Then set Print modal Print-On to "Roll - 4 x 6"
     Then click print modal print button
 
     #print_layout_cp72_5x8_left
