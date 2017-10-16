@@ -1,47 +1,51 @@
 module Stamps
   module Orders
     module Grid
-      class Column < Browser::StampsModal
-        @@column_number_hash = Hash.new
-        @@grid_columns = {
-            check_box: " ",
-            store: "Store",
-            ship_cost: "Ship Cost",
-            age: "Age",
-            order_id: "Order ID",
-            order_date: "Order Date",
-            recipient: "Recipient",
-            company: "Company",
-            address: "Address",
-            city: "City",
-            state: "State",
-            zip: "Zip",
-            country: "Country",
-            phone: "Phone",
-            email: "Email",
-            qty: "Qty.",
-            item_sku: "Item SKU",
-            item_name: "Item Name",
-            ship_from: "Ship From",
-            service: "Service",
-            requested_service: "Requested Service",
-            weight: "Weight",
-            insured_value: "Insured Value",
-            tracking_service: "Tracking Service",
-            reference_no: "Reference No.",
-            cost_code: "Cost Code",
-            order_status: "Order Status",
-            date_printed: "Date Printed",
-            ship_date: "Ship Date",
-            tracking_no: "Tracking #",
-            order_total: "Order Total",
-            source: "Source"
-        }
+      module GridColumnCommon
+        def column_cache
+          @column_cache ||= {}
+        end
+        
+        def column_text
+          @column_text ||= {
+              check_box: " ",
+              store: "Store",
+              ship_cost: "Ship Cost",
+              age: "Age",
+              order_id: "Order ID",
+              order_date: "Order Date",
+              recipient: "Recipient",
+              company: "Company",
+              address: "Address",
+              city: "City",
+              state: "State",
+              zip: "Zip",
+              country: "Country",
+              phone: "Phone",
+              email: "Email",
+              qty: "Qty.",
+              item_sku: "Item SKU",
+              item_name: "Item Name",
+              ship_from: "Ship From",
+              service: "Service",
+              requested_service: "Requested Service",
+              weight: "Weight",
+              insured_value: "Insured Value",
+              tracking_service: "Tracking Service",
+              reference_no: "Reference No.",
+              order_status: "Order Status",
+              date_printed: "Date Printed",
+              ship_date: "Ship Date",
+              tracking_no: "Tracking #",
+              order_total: "Order Total",
+              source: "Source"
+          }
+        end
 
         def sort_order(column, sort_order)
           scroll_to_column(column)
 
-          span = browser.span(text: @@grid_columns[column])
+          span = browser.span(text: column_text[column])
           column = StampsElement.new(span)
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
           sort_order_span = span.parent.parent.parent.parent.parent
@@ -75,18 +79,18 @@ module Stamps
           expect(name).to be_truthy
           case name
             when Symbol
-              StampsElement.new(browser.span(text: @@grid_columns[name])).scroll_into_view
+              StampsElement.new(browser.span(text: column_text[name])).scroll_into_view
             when String
               StampsElement.new(browser.span(text: name)).scroll_into_view
             when Watir::Element
               StampsElement.new(name).scroll_into_view
             else
-              expect(name).to be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
+              raise "#{name} is not a recognized type in scroll_to_column(name). Check your tests."
           end
         end
 
         def empty?
-          size == 0
+          size==0
         end
 
         def size
@@ -112,15 +116,14 @@ module Stamps
         end
 
         def column_number(column)
-          if @@column_number_hash[column].nil?
+          if column_cache[column].nil?
             columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
             columns.each_with_index do |element, index|
-              scroll_to_column(element)
-              @@column_number_hash[@@grid_columns.key(StampsElement.new(element).text)] = index+1
+              scroll_to_column(element) #scroll unless element is visible
+              column_cache[column_text.key(StampsElement.new(element).text)] = index+1
             end
-
           end
-          @@column_number_hash[column]
+          column_cache[column]
         end
 
         # locate row location for order_id
@@ -137,11 +140,12 @@ module Stamps
               end
             end
           end
-          #"Unable to obtain row number for Order ID #{order_id}").to eql "" if row == 0
+          nil
         end
       end
 
-      class OrderId < Column
+      class OrderId < Browser::StampsModal
+        include GridColumnCommon
         def exist? order_id
           row_number(order_id) > 0
         end
@@ -174,7 +178,8 @@ module Stamps
 
       end
 
-      class Store < Column
+      class Store < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:store)
         end
@@ -196,8 +201,8 @@ module Stamps
         end
       end
 
-      class Age < Column
-
+      class Age < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:age)
         end
@@ -219,7 +224,8 @@ module Stamps
         end
       end
 
-      class OrderDate < Column
+      class OrderDate < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_date)
         end
@@ -241,7 +247,8 @@ module Stamps
         end
       end
 
-      class Recipient < Column
+      class Recipient < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:recipient)
         end
@@ -266,7 +273,8 @@ module Stamps
 
       end
 
-      class Company < Column
+      class Company < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:company)
         end
@@ -288,7 +296,8 @@ module Stamps
         end
       end
 
-      class Address < Column
+      class Address < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:address)
         end
@@ -310,7 +319,8 @@ module Stamps
         end
       end
 
-      class City < Column
+      class City < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:city)
         end
@@ -332,7 +342,8 @@ module Stamps
         end
       end
 
-      class State < Column
+      class State < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:state)
         end
@@ -354,7 +365,8 @@ module Stamps
         end
       end
 
-      class Zip < Column
+      class Zip < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:zip)
         end
@@ -376,7 +388,8 @@ module Stamps
         end
       end
 
-      class Phone < Column
+      class Phone < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:phone)
         end
@@ -398,7 +411,8 @@ module Stamps
         end
       end
 
-      class Email < Column
+      class Email < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:email)
         end
@@ -420,7 +434,8 @@ module Stamps
         end
       end
 
-      class Qty < Column
+      class Qty < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:qty)
         end
@@ -442,7 +457,8 @@ module Stamps
         end
       end
 
-      class ItemSKU < Column
+      class ItemSKU < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:item_sku)
         end
@@ -464,7 +480,8 @@ module Stamps
         end
       end
 
-      class ItemName < Column
+      class ItemName < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:item_name)
         end
@@ -486,7 +503,8 @@ module Stamps
         end
       end
 
-      class Weight < Column
+      class Weight < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:weight)
         end
@@ -516,7 +534,8 @@ module Stamps
         end
       end
 
-      class InsuredValue < Column
+      class InsuredValue < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:insured_value)
         end
@@ -538,7 +557,8 @@ module Stamps
         end
       end
 
-      class OrderStatus < Column
+      class OrderStatus < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_status)
         end
@@ -560,7 +580,8 @@ module Stamps
         end
       end
 
-      class ShipDate < Column
+      class ShipDate < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_date)
         end
@@ -582,7 +603,8 @@ module Stamps
         end
       end
 
-      class ShipFrom < Column
+      class ShipFrom < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_from)
         end
@@ -596,7 +618,8 @@ module Stamps
         end
       end
 
-      class Country < Column
+      class Country < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:country)
         end
@@ -618,7 +641,8 @@ module Stamps
         end
       end
 
-      class ShipCost < Column
+      class ShipCost < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_cost)
         end
@@ -647,7 +671,8 @@ module Stamps
 
       end
 
-      class Company < Column
+      class Company < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:company)
         end
@@ -661,7 +686,8 @@ module Stamps
         end
       end
 
-      class GridService < Column
+      class GridService < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:service)
         end
@@ -683,7 +709,8 @@ module Stamps
         end
       end
 
-      class RequestedService < Column
+      class RequestedService < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:requested_service)
         end
@@ -697,7 +724,8 @@ module Stamps
         end
       end
 
-      class ReferenceNo < Column
+      class ReferenceNo < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:reference_no)
         end
@@ -711,21 +739,8 @@ module Stamps
         end
       end
 
-      class CostCode < Column
-        def scroll_into_view
-          scroll_to_column(:cost_code)
-        end
-
-        def row(row)
-          grid_text(:cost_code, row)
-        end
-
-        def data(order_id)
-          grid_text_by_id(:cost_code, order_id)
-        end
-      end
-
-      class Tracking < Column
+      class Tracking < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:tracking_no)
         end
@@ -739,7 +754,8 @@ module Stamps
         end
       end
 
-      class DatePrinted < Column
+      class DatePrinted < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:date_printed)
         end
@@ -761,8 +777,8 @@ module Stamps
         end
       end
 
-      class GridCheckBox < Column
-
+      class GridCheckBox < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           field = StampsElement.new((browser.spans css: "div[componentid^=gridcolumn]").first)
           field.scroll_into_view
@@ -891,7 +907,8 @@ module Stamps
 
       end
 
-      class TrackingService < Column
+      class TrackingService < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:tracking_service)
         end
@@ -913,7 +930,8 @@ module Stamps
         end
       end
 
-      class OrderTotal < Column
+      class OrderTotal < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_total)
         end
@@ -935,7 +953,8 @@ module Stamps
         end
       end
 
-      class GridSource < Column
+      class GridSource < Browser::StampsModal
+        include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:source)
         end
@@ -957,64 +976,123 @@ module Stamps
         end
       end
 
-      class GridColumns < Browser::StampsModal
-        attr_reader :checkbox, :store, :order_id, :ship_cost, :order_date, :age, :recipient, :company,
-                    :address, :city, :state, :zip, :country, :phone, :email, :qty, :item_sku, :item_name,
-                    :service, :weight, :insured_value, :reference_no, :cost_code, :order_status, :date_printed,
-                    :tracking_service, :ship_date, :tracking_no, :requested_service, :source, :ship_from, :order_total
-        def initialize(param)
-          @checkbox = GridCheckBox.new(param)
-          @store = Store.new(param)
-          @order_id = OrderId.new(param)
-          @ship_cost = ShipCost.new(param)
-          @age = Age.new(param)
-          @order_date = OrderDate.new(param)
-          @recipient = Recipient.new(param)
-          @company = Company.new(param)
-          @country = Country.new(param)
-          @address = Address.new(param)
-          @city = City.new(param)
-          @state = State.new(param)
-          @zip = Zip.new(param)
-          @phone = Phone.new(param)
-          @email = Email.new(param)
-          @qty = Qty.new(param)
-          @item_sku = ItemSKU.new(param)
-          @item_name = ItemName.new(param)
-          @ship_from = ShipFrom.new(param)
-          @service = GridService.new(param)
-          @requested_service = RequestedService.new(param)
-          @weight = Weight.new(param)
-          @insured_value = InsuredValue.new(param)
-          @tracking_service = TrackingService.new(param)
-          @order_status = OrderStatus.new(param)
-          @date_printed = DatePrinted.new(param)
-          @ship_date = ShipDate.new(param)
-          @tracking_no = Tracking.new(param)
-          @order_total = OrderTotal.new(param)
-          @source = GridSource.new(param)
-          # todo-rob These two are no longer a column in orders grid
-          @reference_no = ReferenceNo.new(param)
-          @cost_code = CostCode.new(param)
-        end
-      end
-
       # Orders Grid
       class OrdersGrid < Browser::StampsModal
-        attr_reader :grid_element, :column
-
-        def initialize(param)
-          super
-          @column = GridColumns.new(param)
-          @grid_element = StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid-][id$=-body]"))
-        end
-
         def present?
           grid_element.present?
         end
 
         def wait_until_present(*args)
           grid_element.wait_until_present(*args)
+        end
+
+        def grid_column(name)
+          case(name)
+            when :checkbox
+              column[:checkbox] = GridCheckBox.new(param) if !column.has_key?(:checkbox) || !column[:checkbox].present?
+              return column[:checkbox]
+            when :store
+              column[:store] = Store.new(param) if !column.has_key?(:store) || !column[:store].present?
+              return column[:store]
+            when :order_id
+              column[:order_id] = OrderId.new(param) if !column.has_key?(:order_id) || !column[:order_id].present?
+              return column[:order_id]
+            when :ship_cost
+              column[:ship_cost] = ShipCost.new(param) if !column.has_key?(:ship_cost) || !column[:ship_cost].present?
+              return column[:ship_cost]
+            when :age
+              column[:age] = Age.new(param) if !column.has_key?(:age) || !column[:age].present?
+              return column[:age]
+            when :order_date
+              column[:order_date] = OrderDate.new(param) if !column.has_key?(:order_date) || !column[:order_date].present?
+              return column[:order_date]
+            when :recipient
+              column[:recipient] = Recipient.new(param) if !column.has_key?(:recipient) || !column[:recipient].present?
+              return column[:recipient]
+            when :company
+              column[:company] = Company.new(param) if !column.has_key?(:company) || !column[:company].present?
+              return column[:company]
+            when :country
+              column[:country] = Country.new(param) if !column.has_key?(:country) || !column[:country].present?
+              return column[:country]
+            when :address
+              column[:address] = Address.new(param) if !column.has_key?(:address) || !column[:address].present?
+              return column[:address]
+            when :city
+              column[:city] = City.new(param) if !column.has_key?(:city) || !column[:city].present?
+              return column[:city]
+            when :state
+              column[:state] = State.new(param) if !column.has_key?(:state) || !column[:state].present?
+              return column[:state]
+            when :zip
+              column[:zip] = Zip.new(param) if !column.has_key?(:zip) || !column[:zip].present?
+              return column[:zip]
+            when :phone
+              column[:phone] = Phone.new(param) if !column.has_key?(:phone) || !column[:phone].present?
+              return column[:phone]
+            when :email
+              column[:email] = Email.new(param) if !column.has_key?(:email) || !column[:email].present?
+              return column[:email]
+            when :qty
+              column[:qty] = Qty.new(param) if !column.has_key?(:qty) || !column[:qty].present?
+              return column[:qty]
+            when :item_sku
+              column[:item_sku] = ItemSKU.new(param) if !column.has_key?(:item_sku) || !column[:item_sku].present?
+              return column[:item_sku]
+            when :item_name
+              column[:item_name] = ItemName.new(param) if !column.has_key?(:item_name) || !column[:item_name].present?
+              return column[:item_name]
+            when :ship_from
+              column[:ship_from] = ShipFrom.new(param) if !column.has_key?(:ship_from) || !column[:ship_from].present?
+              return column[:ship_from]
+            when :service
+              column[:service] = GridService.new(param) if !column.has_key?(:service) || !column[:service].present?
+              return column[:service]
+            when :requested_service
+              column[:requested_service] = RequestedService.new(param) if !column.has_key?(:requested_service) || !column[:requested_service].present?
+              return column[:requested_service]
+            when :weight
+              column[:weight] = Weight.new(param) if !column.has_key?(:weight) || !column[:weight].present?
+              return column[:weight]
+            when :insured_value
+              column[:insured_value] = InsuredValue.new(param) if !column.has_key?(:insured_value) || !column[:insured_value].present?
+              return column[:insured_value]
+            when :tracking_service
+              column[:tracking_service] = TrackingService.new(param) if !column.has_key?(:tracking_service) || !column[:tracking_service].present?
+              return column[:tracking_service]
+            when :order_status
+              column[:order_status] = OrderStatus.new(param) if !column.has_key?(:order_status) || !column[:order_status].present?
+              return column[:order_status]
+            when :date_printed
+              column[:date_printed] = DatePrinted.new(param) if !column.has_key?(:date_printed) || !column[:date_printed].present?
+              return column[:date_printed]
+            when :ship_date
+              column[:ship_date] = ShipDate.new(param) if !column.has_key?(:ship_date) || !column[:ship_date].present?
+              return column[:ship_date]
+            when :tracking_no
+              column[:tracking_no] = Tracking.new(param) if !column.has_key?(:tracking_no) || !column[:tracking_no].present?
+              return column[:tracking_no]
+            when :order_total
+              column[:order_total] = OrderTotal.new(param) if !column.has_key?(:order_total) || !column[:order_total].present?
+              return column[:order_total]
+            when :source
+              column[:source] = GridSource.new(param) if !column.has_key?(:source) || !column[:source].present?
+              return column[:source]
+            when :reference_no
+              column[:reference_no] = ReferenceNo.new(param) if !column.has_key?(:reference_no) || !column[:reference_no].present?
+              return column[:reference_no]
+            else
+              raise "#{name} is not a valid column. Check your test."
+          end
+        end
+
+        private
+        def column
+          @column ||= {}
+        end
+        
+        def grid_element
+          StampsElement.new(browser.div(css: "[id^=ordersGrid-][class*=orders-grid]"))
         end
       end
     end

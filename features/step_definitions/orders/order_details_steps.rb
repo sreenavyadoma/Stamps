@@ -370,7 +370,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is truthy$/ do
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID equals Grid Oder ID in row (\d+)$/ do |row|
-  expect(stamps.orders.single_order_details.toolbar.order_id).to eql stamps.orders.orders_grid.column.order_id.row(row)
+  expect(stamps.orders.single_order_details.toolbar.order_id).to eql stamps.orders.orders_grid.grid_column(:order_id).row(row)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is the same as saved Order ID$/ do
