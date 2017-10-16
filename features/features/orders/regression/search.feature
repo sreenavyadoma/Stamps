@@ -1,5 +1,5 @@
 # Order: OrderNumber, ShipName, ShipCompany, Username, +BuyerEmail +OrderItem: SKU, Description
-Feature:  Basic Search
+Feature:  Search Orders
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -17,15 +17,6 @@ Feature:  Basic Search
     Then set Order Details form Weight to 1 lb 1 oz
     Then uncheck orders grid cached order id
     Then select Filter Panel tab Shipped
-
-#    # Search for Email
-#    Then select Filter Panel tab Awaiting Shipment
-#    Then search filtered Orders for cached Ship-To email
-#    Then expect Filter Panel search results tab is present
-#    Then expect Filter Panel search result count is 1
-#    Then expect Filter Panel search result count is greater than 0
-#    Then remove Filter Panel search results tab
-#    Then expect Filter Panel search results tab is not present
 
     # Search for new order
     Then select Filter Panel tab Awaiting Shipment
@@ -102,4 +93,3 @@ Feature:  Basic Search
     Then remove Filter Panel search results tab
     Then expect Filter Panel search results tab is not present
     Then Sign out
-
