@@ -114,16 +114,16 @@ Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in 
     if index  != 0
       counter += 1
       step "Filter Panel: Search for #{row[4]}"
-      expect(stamps.orders.orders_grid.column.requested_service.data(order_id)).to eql(row[3]), "Expected Service for order #{row[0]} is #{row[3]}, Service in orders grid is #{stamps.orders.orders_grid.column.requested_service.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.recipient.data(order_id)).to eql(row[4]), "Expected Recipient for order #{row[0]} is #{row[4]}, Recipient in orders grid is #{stamps.orders.orders_grid.column.recipient.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.company.data(order_id)).to eql(row[5]), "Expected Company for order #{row[0]} is #{row[5]}, Company in orders grid is #{stamps.orders.orders_grid.column.company.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.address.data(order_id).downcase).to eql((row[6]).downcase), "Expected Address for order #{row[0]} is #{row[6]}, Address in orders grid is #{stamps.orders.orders_grid.column.address.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.city.data(order_id).downcase).to eql((row[9]).downcase), "Expected City for order #{row[0]} is #{row[9]}, City in orders grid is #{stamps.orders.orders_grid.column.city.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.state.data(order_id)).to eql(row[10]), "Expected State for order #{row[0]} is #{row[10]}, State in orders grid is #{stamps.orders.orders_grid.column.state.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.zip.data(order_id)).to eql(row[11]), "Expected Zip for order #{row[0]} is #{row[11]}, Zip in orders grid is #{stamps.orders.orders_grid.column.zip.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.phone.data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.column.phone.data(order_id)}"
-      expect(stamps.orders.orders_grid.column.email.data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.column.email.data(order_id)}"
-      expect(test_helper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{test_helper.format_weight(stamps.orders.orders_grid.column.weight.data(order_id))}"
+      expect(stamps.orders.orders_grid.grid_column(:requested_service).data(order_id)).to eql(row[3]), "Expected Service for order #{row[0]} is #{row[3]}, Service in orders grid is #{stamps.orders.orders_grid.grid_column(:requested_service).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:recipient).data(order_id)).to eql(row[4]), "Expected Recipient for order #{row[0]} is #{row[4]}, Recipient in orders grid is #{stamps.orders.orders_grid.grid_column(:recipient).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:company).data(order_id)).to eql(row[5]), "Expected Company for order #{row[0]} is #{row[5]}, Company in orders grid is #{stamps.orders.orders_grid.grid_column(:company).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:address).data(order_id).downcase).to eql((row[6]).downcase), "Expected Address for order #{row[0]} is #{row[6]}, Address in orders grid is #{stamps.orders.orders_grid.grid_column(:address).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:city).data(order_id).downcase).to eql((row[9]).downcase), "Expected City for order #{row[0]} is #{row[9]}, City in orders grid is #{stamps.orders.orders_grid.grid_column(:city).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:state).data(order_id)).to eql(row[10]), "Expected State for order #{row[0]} is #{row[10]}, State in orders grid is #{stamps.orders.orders_grid.grid_column(:state).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:zip).data(order_id)).to eql(row[11]), "Expected Zip for order #{row[0]} is #{row[11]}, Zip in orders grid is #{stamps.orders.orders_grid.grid_column(:zip).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:phone).data(order_id)).to eql(row[13]), "Expected Phone for order #{row[0]} is #{row[13]}, Phone in orders grid is #{stamps.orders.orders_grid.grid_column(:phone).data(order_id)}"
+      expect(stamps.orders.orders_grid.grid_column(:email).data(order_id)).to eql(row[14]), "Expected Email for order #{row[0]} is #{row[14]}, Email in orders grid is #{stamps.orders.orders_grid.grid_column(:email).data(order_id)}"
+      expect(test_helper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))).to eql(row[15]), "Expected Weight for order #{row[0]} is #{row[15]}, Weight in orders grid is #{test_helper.format_weight(stamps.orders.orders_grid.grid_column(:weight).data(order_id))}"
       test_config.logger.step "Order # #{order_id} verified in Orders Grid"
     end
     break if counter >= num_orders

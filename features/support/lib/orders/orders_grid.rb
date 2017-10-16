@@ -2,12 +2,12 @@ module Stamps
   module Orders
     module Grid
       module GridColumnCommon
-        def column_number_cache
-          @column_number_cache |= {}
+        def column_cache
+          @column_cache ||= {}
         end
         
-        def column_names
-          @column_names |= {
+        def column_text
+          @column_text ||= {
               check_box: " ",
               store: "Store",
               ship_cost: "Ship Cost",
@@ -33,7 +33,6 @@ module Stamps
               insured_value: "Insured Value",
               tracking_service: "Tracking Service",
               reference_no: "Reference No.",
-              cost_code: "Cost Code",
               order_status: "Order Status",
               date_printed: "Date Printed",
               ship_date: "Ship Date",
@@ -41,13 +40,12 @@ module Stamps
               order_total: "Order Total",
               source: "Source"
           }
-          
         end
 
         def sort_order(column, sort_order)
           scroll_to_column(column)
 
-          span = browser.span(text: column_names[column])
+          span = browser.span(text: column_text[column])
           column = StampsElement.new(span)
           sort_order = (sort_order==:sort_ascending)?"ASC":"DESC"
           sort_order_span = span.parent.parent.parent.parent.parent
@@ -81,18 +79,18 @@ module Stamps
           expect(name).to be_truthy
           case name
             when Symbol
-              StampsElement.new(browser.span(text: column_names[name])).scroll_into_view
+              StampsElement.new(browser.span(text: column_text[name])).scroll_into_view
             when String
               StampsElement.new(browser.span(text: name)).scroll_into_view
             when Watir::Element
               StampsElement.new(name).scroll_into_view
             else
-              expect(name).to be_a(String).or(eq(Symbol)).or(eq(Watir::Element))
+              raise "#{name} is not a recognized type in scroll_to_column(name). Check your tests."
           end
         end
 
         def empty?
-          size == 0
+          size==0
         end
 
         def size
@@ -118,15 +116,14 @@ module Stamps
         end
 
         def column_number(column)
-          if column_number_cache[column].nil?
+          if column_cache[column].nil?
             columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
             columns.each_with_index do |element, index|
               scroll_to_column(element) #scroll unless element is visible
-              column_number_cache[column_names.key(StampsElement.new(element).text)] = index+1
+              column_cache[column_text.key(StampsElement.new(element).text)] = index+1
             end
-
           end
-          column_number_cache[column]
+          column_cache[column]
         end
 
         # locate row location for order_id
@@ -143,7 +140,7 @@ module Stamps
               end
             end
           end
-          #"Unable to obtain row number for Order ID #{order_id}").to eql "" if row == 0
+          nil
         end
       end
 
@@ -742,21 +739,6 @@ module Stamps
         end
       end
 
-      class CostCode < Browser::StampsModal
-        include GridColumnCommon
-        def scroll_into_view
-          scroll_to_column(:cost_code)
-        end
-
-        def row(row)
-          grid_text(:cost_code, row)
-        end
-
-        def data(order_id)
-          grid_text_by_id(:cost_code, order_id)
-        end
-      end
-
       class Tracking < Browser::StampsModal
         include GridColumnCommon
         def scroll_into_view
@@ -1007,110 +989,110 @@ module Stamps
         def grid_column(name)
           case(name)
             when :checkbox
-              grid_hash[:checkbox] = GridCheckBox.new(param) if !grid_hash.has_key?(:checkbox) || !grid_hash[:checkbox].present?
-              return grid_hash[:checkbox]
-            when :store_column
-              grid_hash[:store] = Store.new(param) if !grid_hash.has_key?(:store) || !grid_hash[:store].present?
-              return grid_hash[:store]
+              column[:checkbox] = GridCheckBox.new(param) if !column.has_key?(:checkbox) || !column[:checkbox].present?
+              return column[:checkbox]
+            when :store
+              column[:store] = Store.new(param) if !column.has_key?(:store) || !column[:store].present?
+              return column[:store]
             when :order_id
-              grid_hash[:order_id] = OrderId.new(param) if !grid_hash.has_key?(:order_id) || !grid_hash[:order_id].present?
-              return grid_hash[:order_id]
+              column[:order_id] = OrderId.new(param) if !column.has_key?(:order_id) || !column[:order_id].present?
+              return column[:order_id]
             when :ship_cost
-              grid_hash[:ship_cost] = ShipCost.new(param) if !grid_hash.has_key?(:ship_cost) || !grid_hash[:ship_cost].present?
-              return grid_hash[:ship_cost]
+              column[:ship_cost] = ShipCost.new(param) if !column.has_key?(:ship_cost) || !column[:ship_cost].present?
+              return column[:ship_cost]
             when :age
-              grid_hash[:age] = Age.new(param) if !grid_hash.has_key?(:age) || !grid_hash[:age].present?
-              return grid_hash[:age]
+              column[:age] = Age.new(param) if !column.has_key?(:age) || !column[:age].present?
+              return column[:age]
             when :order_date
-              grid_hash[:order_date] = OrderDate.new(param) if !grid_hash.has_key?(:order_date) || !grid_hash[:order_date].present?
-              return grid_hash[:order_date]
+              column[:order_date] = OrderDate.new(param) if !column.has_key?(:order_date) || !column[:order_date].present?
+              return column[:order_date]
             when :recipient
-              grid_hash[:recipient] = Recipient.new(param) if !grid_hash.has_key?(:recipient) || !grid_hash[:recipient].present?
-              return grid_hash[:recipient]
+              column[:recipient] = Recipient.new(param) if !column.has_key?(:recipient) || !column[:recipient].present?
+              return column[:recipient]
             when :company
-              grid_hash[:company] = Company.new(param) if !grid_hash.has_key?(:company) || !grid_hash[:company].present?
-              return grid_hash[:company]
+              column[:company] = Company.new(param) if !column.has_key?(:company) || !column[:company].present?
+              return column[:company]
             when :country
-              grid_hash[:country] = Country.new(param) if !grid_hash.has_key?(:country) || !grid_hash[:country].present?
-              return grid_hash[:country]
+              column[:country] = Country.new(param) if !column.has_key?(:country) || !column[:country].present?
+              return column[:country]
             when :address
-              grid_hash[:address] = Address.new(param) if !grid_hash.has_key?(:address) || !grid_hash[:address].present?
-              return grid_hash[:address]
+              column[:address] = Address.new(param) if !column.has_key?(:address) || !column[:address].present?
+              return column[:address]
             when :city
-              grid_hash[:city] = City.new(param) if !grid_hash.has_key?(:city) || !grid_hash[:city].present?
-              return grid_hash[:city]
+              column[:city] = City.new(param) if !column.has_key?(:city) || !column[:city].present?
+              return column[:city]
             when :state
-              grid_hash[:state] = State.new(param) if !grid_hash.has_key?(:state) || !grid_hash[:state].present?
-              return grid_hash[:state]
+              column[:state] = State.new(param) if !column.has_key?(:state) || !column[:state].present?
+              return column[:state]
             when :zip
-              grid_hash[:zip] = Zip.new(param) if !grid_hash.has_key?(:zip) || !grid_hash[:zip].present?
-              return grid_hash[:zip]
+              column[:zip] = Zip.new(param) if !column.has_key?(:zip) || !column[:zip].present?
+              return column[:zip]
             when :phone
-              grid_hash[:phone] = Phone.new(param) if !grid_hash.has_key?(:phone) || !grid_hash[:phone].present?
-              return grid_hash[:phone]
+              column[:phone] = Phone.new(param) if !column.has_key?(:phone) || !column[:phone].present?
+              return column[:phone]
             when :email
-              grid_hash[:email] = Email.new(param) if !grid_hash.has_key?(:email) || !grid_hash[:email].present?
-              return grid_hash[:email]
+              column[:email] = Email.new(param) if !column.has_key?(:email) || !column[:email].present?
+              return column[:email]
             when :qty
-              grid_hash[:qty] = Qty.new(param) if !grid_hash.has_key?(:qty) || !grid_hash[:qty].present?
-              return grid_hash[:qty]
+              column[:qty] = Qty.new(param) if !column.has_key?(:qty) || !column[:qty].present?
+              return column[:qty]
             when :item_sku
-              grid_hash[:item_sku] = ItemSKU.new(param) if !grid_hash.has_key?(:item_sku) || !grid_hash[:item_sku].present?
-              return grid_hash[:item_sku]
+              column[:item_sku] = ItemSKU.new(param) if !column.has_key?(:item_sku) || !column[:item_sku].present?
+              return column[:item_sku]
             when :item_name
-              grid_hash[:item_name] = ItemName.new(param) if !grid_hash.has_key?(:item_name) || !grid_hash[:item_name].present?
-              return grid_hash[:item_name]
+              column[:item_name] = ItemName.new(param) if !column.has_key?(:item_name) || !column[:item_name].present?
+              return column[:item_name]
             when :ship_from
-              grid_hash[:ship_from] = ShipFrom.new(param) if !grid_hash.has_key?(:ship_from) || !grid_hash[:ship_from].present?
-              return grid_hash[:ship_from]
+              column[:ship_from] = ShipFrom.new(param) if !column.has_key?(:ship_from) || !column[:ship_from].present?
+              return column[:ship_from]
             when :service
-              grid_hash[:service] = GridService.new(param) if !grid_hash.has_key?(:service) || !grid_hash[:service].present?
-              return grid_hash[:service]
+              column[:service] = GridService.new(param) if !column.has_key?(:service) || !column[:service].present?
+              return column[:service]
             when :requested_service
-              grid_hash[:requested_service] = RequestedService.new(param) if !grid_hash.has_key?(:requested_service) || !grid_hash[:requested_service].present?
-              return grid_hash[:requested_service]
+              column[:requested_service] = RequestedService.new(param) if !column.has_key?(:requested_service) || !column[:requested_service].present?
+              return column[:requested_service]
             when :weight
-              grid_hash[:weight] = Weight.new(param) if !grid_hash.has_key?(:weight) || !grid_hash[:weight].present?
-              return grid_hash[:weight]
+              column[:weight] = Weight.new(param) if !column.has_key?(:weight) || !column[:weight].present?
+              return column[:weight]
             when :insured_value
-              grid_hash[:insured_value] = InsuredValue.new(param) if !grid_hash.has_key?(:insured_value) || !grid_hash[:insured_value].present?
-              return grid_hash[:insured_value]
+              column[:insured_value] = InsuredValue.new(param) if !column.has_key?(:insured_value) || !column[:insured_value].present?
+              return column[:insured_value]
             when :tracking_service
-              grid_hash[:tracking_service] = TrackingService.new(param) if !grid_hash.has_key?(:tracking_service) || !grid_hash[:tracking_service].present?
-              return grid_hash[:tracking_service]
+              column[:tracking_service] = TrackingService.new(param) if !column.has_key?(:tracking_service) || !column[:tracking_service].present?
+              return column[:tracking_service]
             when :order_status
-              grid_hash[:order_status] = OrderStatus.new(param) if !grid_hash.has_key?(:order_status) || !grid_hash[:order_status].present?
-              return grid_hash[:order_status]
+              column[:order_status] = OrderStatus.new(param) if !column.has_key?(:order_status) || !column[:order_status].present?
+              return column[:order_status]
             when :date_printed
-              grid_hash[:date_printed] = DatePrinted.new(param) if !grid_hash.has_key?(:date_printed) || !grid_hash[:date_printed].present?
-              return grid_hash[:date_printed]
+              column[:date_printed] = DatePrinted.new(param) if !column.has_key?(:date_printed) || !column[:date_printed].present?
+              return column[:date_printed]
             when :ship_date
-              grid_hash[:ship_date] = ShipDate.new(param) if !grid_hash.has_key?(:ship_date) || !grid_hash[:ship_date].present?
-              return grid_hash[:ship_date]
+              column[:ship_date] = ShipDate.new(param) if !column.has_key?(:ship_date) || !column[:ship_date].present?
+              return column[:ship_date]
             when :tracking_no
-              grid_hash[:tracking_no] = Tracking.new(param) if !grid_hash.has_key?(:tracking_no) || !grid_hash[:tracking_no].present?
-              return grid_hash[:tracking_no]
+              column[:tracking_no] = Tracking.new(param) if !column.has_key?(:tracking_no) || !column[:tracking_no].present?
+              return column[:tracking_no]
             when :order_total
-              grid_hash[:order_total] = OrderTotal.new(param) if !grid_hash.has_key?(:order_total) || !grid_hash[:order_total].present?
-              return grid_hash[:order_total]
+              column[:order_total] = OrderTotal.new(param) if !column.has_key?(:order_total) || !column[:order_total].present?
+              return column[:order_total]
             when :source
-              grid_hash[:source] = GridSource.new(param) if !grid_hash.has_key?(:source) || !grid_hash[:source].present?
-              return grid_hash[:source]
+              column[:source] = GridSource.new(param) if !column.has_key?(:source) || !column[:source].present?
+              return column[:source]
             when :reference_no
-              grid_hash[:reference_no] = ReferenceNo.new(param) if !grid_hash.has_key?(:reference_no) || !grid_hash[:reference_no].present?
-              return grid_hash[:reference_no]
+              column[:reference_no] = ReferenceNo.new(param) if !column.has_key?(:reference_no) || !column[:reference_no].present?
+              return column[:reference_no]
             else
               raise "#{name} is not a valid column. Check your test."
           end
         end
 
         private
-        def grid_hash
-          @grid_hash |= {}
+        def column
+          @column ||= {}
         end
         
         def grid_element
-          StampsElement.new(browser.div(css: "div[id=appContent]>div>div>div[id^=ordersGrid-][id$=-body]"))
+          StampsElement.new(browser.div(css: "[id^=ordersGrid-][class*=orders-grid]"))
         end
       end
     end

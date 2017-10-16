@@ -1,5 +1,5 @@
 
-@grid_automation_test
+@orders_grid_tests
 Feature: in Orders Grid, Tracking & Order Status
 
   Background:

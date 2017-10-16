@@ -75,7 +75,7 @@ module Stamps
 
         self.browser = driver
         logger.message "-"
-        logger.message "BROWSER: #{self.browser_version}"
+        logger.message "BROWSER: #{self.browser_version.gsub("/", " ")}"
         logger.message "-"
         #driver.cookies.clear
       rescue Exception => e
