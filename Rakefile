@@ -1026,6 +1026,11 @@ Cucumber::Rake::Task.new(:search_orders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:search_orders_on_hold) do |t|
+  t.profile = 'search_orders_on_hold'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_shipstation_search) do |t|
   t.profile = 'bvt_shipstation_search'
   t.cucumber_opts = "-p cuke_reports"
