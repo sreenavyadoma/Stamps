@@ -584,6 +584,11 @@ module Stamps
             when /stores/
               selection = StampsElement.new(browser.span text: "Add/Edit Stores")
               modal = Orders::Stores::ManageStores.new(param)
+
+            # to-do Kaushal automation rules implement
+            when /automation_rules/
+              selection = StampsElement.new(browser.span text: " ")
+              modal = Orders::AutomationRules.new(param)
             else
               expect("Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.").to eql ""
           end
