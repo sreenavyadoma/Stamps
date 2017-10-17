@@ -47,12 +47,12 @@ Then /^[Ee]xpect Filter Panel search result count is greater than (\d+)$/ do |co
 end
 
 Then /^[Ee]xpect Filter Panel search results tab is present$/ do
-  sleep 1
+  sleep 3
   expect(stamps.orders.filter_panel.search_results).to be_present
 end
 
 Then /^[Ee]xpect Filter Panel search results tab is not present$/ do
-  sleep 1
+  sleep 3
   expect(stamps.orders.filter_panel.search_results.present?).not_to be(true)
 end
 
