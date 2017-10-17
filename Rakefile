@@ -1251,6 +1251,11 @@ Cucumber::Rake::Task.new(:yahoo) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:stores) do |t|
+  t.profile = 'stores'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:grid_column_order) do |t|
   t.profile = 'grid_column_order'
   t.cucumber_opts = "-p cuke_reports"
@@ -1304,6 +1309,11 @@ end
 
 Cucumber::Rake::Task.new(:tooltip_customs_form) do |t|
   t.profile = 'tooltip_customs_form'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:tooltips) do |t|
+  t.profile = 'tooltips'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1403,8 +1413,8 @@ Cucumber::Rake::Task.new(:print_dialog_label_sides) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_dialog_ship_date_today) do |t|
-  t.profile = 'print_dialog_ship_date_today'
+Cucumber::Rake::Task.new(:print_dialog_ship_date) do |t|
+  t.profile = 'print_dialog_ship_date'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1463,13 +1473,13 @@ Cucumber::Rake::Task.new(:print_layout_cp72) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_dialog_change_date) do |t|
-  t.profile = 'print_dialog_change_date'
+Cucumber::Rake::Task.new(:details_reference_no) do |t|
+  t.profile = 'details_reference_no'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:details_reference_no) do |t|
-  t.profile = 'details_reference_no'
+Cucumber::Rake::Task.new(:details_order) do |t|
+  t.profile = 'details_order'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1483,8 +1493,8 @@ Cucumber::Rake::Task.new(:details_placeholders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:grid_automation_test) do |t|
-  t.profile = 'grid_automation_test'
+Cucumber::Rake::Task.new(:orders_grid_tests) do |t|
+  t.profile = 'orders_grid_tests'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1567,8 +1577,8 @@ Cucumber::Rake::Task.new(:print_layouts_cn22) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:reprint) do |t|
-  t.profile = 'reprint'
+Cucumber::Rake::Task.new(:reprint_tests) do |t|
+  t.profile = 'reprint_tests'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1632,6 +1642,11 @@ Cucumber::Rake::Task.new(:rules_international) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:international_rules) do |t|
+  t.profile = 'international_rules'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:parcel_select) do |t|
   t.profile = 'parcel_select'
   t.cucumber_opts = "-p cuke_reports"
@@ -1653,8 +1668,8 @@ Cucumber::Rake::Task.new(:filter_panel_tests) do |t|
 end
 
 
-Cucumber::Rake::Task.new(:new_country_code) do |t|
-  t.profile = 'new_country_code'
+Cucumber::Rake::Task.new(:new_country) do |t|
+  t.profile = 'new_country'
   t.cucumber_opts = "-p cuke_reports"
 end
 

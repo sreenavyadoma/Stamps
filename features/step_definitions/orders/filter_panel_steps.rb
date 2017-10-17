@@ -24,9 +24,9 @@ end
 Then /^[Ee]xpect cached Order ID exist in the selected filter$/ do
   15.times do
     sleep(0.10)
-    break if stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][1]) > 0
+    break if stamps.orders.orders_grid.grid_column(:order_id).row_num(test_param[:order_id][1]) > 0
   end
-  expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][1])).to be > 0
+  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(test_param[:order_id][1])).to be > 0
 end
 
 Then /^Filter Panel: Collapse Panel$/ do
@@ -53,7 +53,7 @@ end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Shipped$/ do
   stamps.orders.filter_panel.shipped.select.order_date.sort_descending
-  expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][1])).to be > 0
+  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(test_param[:order_id][1])).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Canceled$/ do
@@ -62,8 +62,8 @@ Then /^[Ii]n left Filter Panel, expect order moved to Canceled$/ do
 end
 
 Then /^[Ii]n left Filter Panel, expect order moved to Awaiting Shipment$/ do
-  stamps.orders.orders_grid.column.order_date.sort_descending
-  expect(stamps.orders.orders_grid.column.order_id.row_num(test_param[:order_id][1])).to be > 0
+  stamps.orders.orders_grid.grid_column(:order_date).sort_descending
+  expect(stamps.orders.orders_grid.grid_column(:order_id).row_num(test_param[:order_id][1])).to be > 0
 end
 
 Then /^[Ii]n left Filter Panel, expect Awaiting Shipment count increased by (\d+)$/ do |count|

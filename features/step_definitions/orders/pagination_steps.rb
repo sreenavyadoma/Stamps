@@ -169,7 +169,7 @@ When /^[Ss]et Page Number to (\d*)$/ do |value|
   #test_config.logger.step "Set Page Number to #{value}"
   begin
     #test_config.logger.step "Set Page Number to \"#{value}\""
-    page_one_order_id = stamps.orders.orders_grid.column.order_id.row 1
+    page_one_order_id = stamps.orders.orders_grid.grid_column(:order_id).row 1
     page_number = stamps.orders.orders_toolbar.page_number.text
     #test_config.logger.step "Current page number #{page_number}"
     stamps.orders.orders_toolbar.page_number.set(value)
@@ -180,7 +180,7 @@ When /^[Ss]et Page Number to (\d*)$/ do |value|
     textbox_field.click
     textbox_field.click
     #test_config.logger.step "New page number #{page_number}"
-    page_two_order_id = stamps.orders.orders_grid.column.order_id.row 1
+    page_two_order_id = stamps.orders.orders_grid.grid_column(:order_id).row 1
     page_one_order_id.should_not eql page_two_order_id
   end unless value.length == 0
 end
