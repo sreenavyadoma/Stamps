@@ -164,7 +164,7 @@ Then /^[Ee]xpect Delete Automation Dialog is present$/ do ||
 
 end
 
-Then /^[Ee]xpect Delete dialog content is (.*)$/ do |value|
+Then /^[Ee]xpect Delete dialog header is (.*)$/ do |value|
 
 end
 

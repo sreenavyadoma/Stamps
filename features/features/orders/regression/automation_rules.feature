@@ -107,7 +107,7 @@ Feature: Validate Automation Rule Tab
     Then in Automation Rules page, click on automation rule Name
     Then in Automation Rules page, click on Delete button
     Then expect Delete Automation Dialog is present
-    Then expect Delete dialog content is Delete Automation Rule?
+    Then expect Delete dialog header is Delete Automation Rule?
     Then expect Delete Automation Dialog, Delete button is present
     Then expect Delete Automation Dialog, Cancel button is present
     Then in Delete Automation dialog, click on Delete button

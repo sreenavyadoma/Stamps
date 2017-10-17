@@ -127,6 +127,72 @@ module Stamps
           @second_dropdown
         end
       end
+
+      class EditRuleModal < Browser::StampsModal
+        include AddCriteria
+        include AddAction
+
+        def rule_name_edit
+          @rule_name = browser.span(text: '') if @rule_name.nil? || !@rule_name.present?
+          @rule_name
+        end
+
+        def check_box
+          @check_box = browser.span(text: '') if @check_box.nil? || !@check_box.present?
+          @check_box
+        end
+
+        def close
+          @close = browser.span(text: '') if @close.nil? || !@close.present?
+          @close
+        end
+
+        def every_actions_radio_btn
+          @every_actions_radio_btn = StampsElement.new(browser.div text: "") if @every_actions_radio_btn.nil? || !@every_actions_radio_btn.present?
+          @every_actions_radio_btn
+        end
+
+        def specific_actions_radio_btn
+          @specific_actions_radio_btn = StampsElement.new(browser.div text: "") if @specific_actions_radio_btn.nil? || !@specific_actions_radio_btn.present?
+          @specific_actions_radio_btn
+        end
+
+        def present?
+          rule_name.present?
+        end
+
+        def save_rule_btn
+          @save_rule_btn = StampsElement.new(browser.div text: "") if @save_rule_btn.nil? || !@save_rule_btn.present?
+          @save_rule_btn
+        end
+      end
+
+      class DeleteRuleModal < Browser::StampsModal
+
+        def header
+          @header = browser.span(text: '') if @header.nil? || !@header.present?
+          @header
+        end
+
+        def close
+          @close = browser.span(text: '') if @close.nil? || !@close.present?
+          @close
+        end
+
+        def present?
+          header.present?
+        end
+
+        def delete_btn
+          @delete_btn = StampsElement.new(browser.div text: "") if @delete_btn.nil? || !@delete_btn.present?
+          @delete_btn
+        end
+
+        def cancel_btn
+          @cancel_btn = StampsElement.new(browser.div text: "") if @cancel_btn.nil? || !@cancel_btn.present?
+          @cancel_btn
+        end
+      end
     end
   end
 end
