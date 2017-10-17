@@ -20,7 +20,7 @@ module Stamps
         when /cc/
           url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
         when /sc/
-          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx"
+          url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
         when /stg/
           url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
         when /rating/
