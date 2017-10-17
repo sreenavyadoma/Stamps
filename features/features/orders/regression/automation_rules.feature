@@ -20,7 +20,7 @@ Feature: Validate Automation Rule Tab
     Then in Orders Settings, click on Automation Rules tab
     Then in Automation Rules page, click on Add Button
     Then expect New Rule modal exists
-    Then set New Rule modal, Rule name to First Automation Rule
+    Then in New Rule modal, set Rule name to First Automation Rule
     Then expect Active rule checkbox checked
     Then expect Apply actions selected
     Then in New Rule modal, click on Add Action
@@ -37,7 +37,7 @@ Feature: Validate Automation Rule Tab
     Then in Orders Settings, click on Automation Rules tab
     Then in Automation Rules page, click on Add Button
     Then expect New Rule modal exists
-    Then set New Rule modal, Rule name to First Automation Rule
+    Then in New Rule modal, set Rule name to First Automation Rule
     Then expect Active rule checkbox checked
     Then expect Apply actions selected
     Then in New Rule Modal, click on specific criteria actions
@@ -60,7 +60,7 @@ Feature: Validate Automation Rule Tab
     Then in Automation Rules page, click on automation rule Name
     Then in Automation Rules page, click on Edit Button
     Then expect Edit Rule modal exists
-    Then set Edit Rule modal, Rule name to First Edited Automation Rule
+    Then in Edit Rule modal, set Rule name to First Edited Automation Rule
     Then in Edit Rule modal, click on Add Action
     Then in Edit Rule modal, set service to etc.
     Then in Edit Rule modal, set drop-down to FCM Package
@@ -81,7 +81,7 @@ Feature: Validate Automation Rule Tab
     Then in Automation Rules page, click on automation rule Name
     Then in Automation Rules page, click on Edit Button
     Then expect Edit Rule modal exists
-    Then set Edit Rule modal, Rule name to First Edited Automation Rule
+    Then in Edit Rule modal, set Rule name to First Edited Automation Rule
     Then in Edit Rule Modal, set first drop-down to State
     Then in Edit Rule Modal, set second drop-down to Is Equal To
     Then in Edit Rule Modal, set third drop-down to California
@@ -91,7 +91,7 @@ Feature: Validate Automation Rule Tab
     Then expect Automation Rules modal, updated Rule name present
     Then in Automation Rules page, click on automation rule Name
     Then in Automation Rules page, click on Edit Button
-    Then expect Edit Rule modal, Rule name to First Edited Automation Rule**
+    Then expect Edit Rule modal, Rule name to First Edited Automation Rule
     Then expect Edit Rule modal, first drop-down to State
     Then expect Edit Rule modal, second drop-down to Is Equal To
     Then expect Edit Rule modal, third drop-down to California
