@@ -68,7 +68,7 @@ Feature: Validate Automation Rule Tab
     Then expect Automation Rules modal, updated Rule name present
     Then in Automation Rules page, click on automation rule Name
     Then in Automation Rules page, click on Edit Button
-    Then expect Edit Rule modal, Rule name to First Edited Automation Rule**
+    Then expect Edit Rule modal, Rule name to First Edited Automation Rule
     Then expect Edit Rule modal, service to etc.
     Then expect Edit Rule modal, drop-down to FCM Package
     Then Close Settings modal
