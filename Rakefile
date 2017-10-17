@@ -1408,8 +1408,8 @@ Cucumber::Rake::Task.new(:print_dialog_label_sides) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:print_dialog_ship_date_today) do |t|
-  t.profile = 'print_dialog_ship_date_today'
+Cucumber::Rake::Task.new(:print_dialog_ship_date) do |t|
+  t.profile = 'print_dialog_ship_date'
   t.cucumber_opts = "-p cuke_reports"
 end
 

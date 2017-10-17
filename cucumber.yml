@@ -8,7 +8,7 @@ kaushal_orders: --tags @bvt_all_tests WEB_APP=orders JENKINS=true USR=cc_ks01 PW
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-rob_cc: --tags @print_dialog_ship_date_today WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+rob_cc: --tags @print_dialog_ship_date WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 rob_stg: --tags @bulk_update_int WEB_APP=orders JENKINS=true URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgee1mtqvwdc0 PW=pass111
 rob_sc: --tags @bulk_update_int WEB_APP=orders JENKINS=true URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=edge MAX_WINDOW=selenium  USR=default PW=pass111 DEBUG=true # c2jinmzmu64
 kaushal_registration: --tags @registration_security_questions_happy_path WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false JENKINS=true
@@ -273,7 +273,7 @@ print_sample_parcel_select_ground_large_package: --tags @print_sample_parcel_sel
 print_sample_pme_padded_flat_rate_envelope: --tags @print_sample_pme_padded_flat_rate_envelope --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 print_multiple_orders: --tags @print_multiple_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 # PRINT SHIP DATE
-print_dialog_ship_date_today: --tags @print_dialog_ship_date_today --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+print_dialog_ship_date: --tags @print_dialog_ship_date --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 # PRINT MEDIA
 tooltip_print_media: --tags @tooltip_print_media --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
 print_dialog_printing_on_8x11_paper: --tags @print_dialog_printing_on_8x11_paper --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
