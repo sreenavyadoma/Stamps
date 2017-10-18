@@ -3,6 +3,7 @@ $LOAD_PATH << File.expand_path('lib/features/orders', __FILE__)
 $LOAD_PATH << File.expand_path('features/support/lib', __FILE__)
 
 require 'data_magic'
+require 'yaml'
 require 'rake'
 require 'watir'
 require 'mysql2'
