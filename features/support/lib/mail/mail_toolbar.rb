@@ -35,6 +35,10 @@ module Stamps
               @print_button = StampsElement.new(browser.span(text: 'Print Label'))
             when :certified_mails
               @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+            when :certified_mails_3910_3930
+              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+            when :certified_mails_3810
+              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
             else
               # do nothing
           end
