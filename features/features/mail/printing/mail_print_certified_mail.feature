@@ -23,7 +23,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then click Mail Print modal Print button
 
   @mail_print_SDC_3710_hidden_postage
-  Scenario: Print SDC 3610 (with hidden postage)
+  Scenario: Print SDC 3710 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
@@ -41,7 +41,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then click Mail Print modal Print button
 
   @mail_print_SDC_3910_hidden_postage
-  Scenario: Print SDC 3610 (with hidden postage)
+  Scenario: Print SDC 3910 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
@@ -59,7 +59,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then click Mail Print modal Print button
 
   @mail_print_SDC_3930_hidden_postage
-  Scenario: Print SDC 3610 (with hidden postage)
+  Scenario: Print SDC 3930 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
@@ -77,7 +77,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then click Mail Print modal Print button
 
   @mail_print_SDC_3810_hidden_postage
-  Scenario: Print SDC 3610 (with hidden postage)
+  Scenario: Print SDC 3810 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
@@ -95,7 +95,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then click Mail Print modal Print button
 
   @mail_print_SDC_3830_hidden_postage
-  Scenario: Print SDC 3610 (with hidden postage)
+  Scenario: Print SDC 3830 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
