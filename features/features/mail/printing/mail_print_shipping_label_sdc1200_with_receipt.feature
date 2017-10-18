@@ -72,16 +72,4 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    #mail_print_shipping_label_sdc1200_GP
-    Then select Print On Shipping Label - SDC-1200
-    Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 1 through 4
-    Then set Print form Ounces to 1
-    Then select Print form service GPE Large Envelope
-    Then show Advanced Options
-    Then check Advanced Options Print Receipt
-    Then Print Postage
-    Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
-
     Then Sign out
