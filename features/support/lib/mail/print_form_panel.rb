@@ -74,8 +74,8 @@ module Stamps
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :labels)
             when :envelopes
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :envelopes)
-            when :certified_mails, :certified_mails_3910_3930, :certified_mails_3810
-              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil? || ((@advanced_options.print_media != :certified_mails) && (@advanced_options.print_media != :certified_mails_3910_3930) && (@advanced_options.print_media != :certified_mails_3810))
+            when :certified_mails, :certified_mails_3910_3930, :certified_mails_3810, :certified_mails_3830
+              @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil? || ((@advanced_options.print_media != :certified_mails) && (@advanced_options.print_media != :certified_mails_3910_3930) && (@advanced_options.print_media != :certified_mails_3810) && (@advanced_options.print_media != :certified_mails_3830))
             when :rolls
               @advanced_options = AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if @advanced_options.nil? || (@advanced_options.print_media != :rolls)
             else
@@ -148,6 +148,19 @@ module Stamps
       end
 
       module CertifiedMails3810
+        include CertifiedMails
+
+        def return_receipt
+          if @return_receipt.nil?
+            clickable_element = browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl")
+            verify = browser.div(id: "sdc-mainpanel-rrcheckbox")
+            @return_receipt = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "checked")
+          end
+          @return_receipt
+        end
+      end
+
+      module CertifiedMails3830
         include CertifiedMails
 
         def return_receipt

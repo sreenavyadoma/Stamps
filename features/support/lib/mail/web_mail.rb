@@ -39,6 +39,8 @@ module Stamps
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails39103930) if @print_form.nil? || @print_form.print_media != :certified_mails_3910_3930
           when :certified_mails_3810
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil? || @print_form.print_media != :certified_mails_3810
+          when :certified_mails_3830
+            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3830) if @print_form.nil? || @print_form.print_media != :certified_mails_3830
           when :rolls
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls) if @print_form.nil? || @print_form.print_media != :rolls
           when :manage_printing_options

@@ -22,7 +22,7 @@ module Stamps
       end
 
       def print_button
-        expect([:envelopes, :stamps, :labels, :rolls, :certified_mails, :certified_mails_3910_3930, :certified_mails_3810]).to include(param.print_media)
+        expect([:envelopes, :stamps, :labels, :rolls, :certified_mails, :certified_mails_3910_3930, :certified_mails_3810, :certified_mails_3830]).to include(param.print_media)
         10.times do
           case param.print_media
             when :envelopes
@@ -38,7 +38,9 @@ module Stamps
             when :certified_mails_3910_3930
               @print_button = StampsElement.new(browser.span(text: 'Print Label'))
             when :certified_mails_3810
-              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+              @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
+            when :certified_mails_3830
+              @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
             else
               # do nothing
           end

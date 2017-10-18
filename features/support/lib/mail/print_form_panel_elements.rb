@@ -49,6 +49,8 @@ module Stamps
               print_media = :certified_mails_3910_3930
             when /Certified Mail Label - SDC-3810/
               print_media = :certified_mails_3810
+            when /Certified Mail Label - SDC-3830/
+              print_media = :certified_mails_3830
             when /Shipping Label/
               print_media = :labels
             when /Envelope/
@@ -62,7 +64,7 @@ module Stamps
             else
               #ignore
           end
-          expect([:stamps, :labels, :envelopes, :certified_mails, :certified_mails_3810, :certified_mails_3910_3930, :rolls, :manage_printing_options]).to include(print_media)
+          expect([:stamps, :labels, :envelopes, :certified_mails, :certified_mails_3810, :certified_mails_3830, :certified_mails_3910_3930, :rolls, :manage_printing_options]).to include(print_media)
           print_media
         end
 
@@ -100,6 +102,8 @@ module Stamps
               return 'SDC-3930'
             when /Certified Mail Label - SDC-3810/
               return 'SDC-3810'
+            when /Certified Mail Label - SDC-3830/
+              return 'SDC-3830'
             when /Roll 4x6/
               return 'Roll - 4'
             when /Roll 418x614/
@@ -149,6 +153,8 @@ module Stamps
               return 'Certified Mail Label - Stamps.com SDC-3930'
             when /Certified Mail Label - SDC-3810/
               return 'Certified Mail #11 Envelope - Stamps.com SDC-3810'
+            when /Certified Mail Label - SDC-3830/
+              return 'Certified Mail #11 Envelope - Stamps.com SDC-3830'
             when /Roll 4x6/
               return 'Roll - 4" x 6" Shipping Label'
             when /Roll 418x614/
