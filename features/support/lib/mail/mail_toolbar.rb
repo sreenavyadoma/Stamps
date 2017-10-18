@@ -22,7 +22,7 @@ module Stamps
       end
 
       def print_button
-        expect([:envelopes, :stamps, :labels, :rolls, :certified_mails]).to include(param.print_media)
+        expect([:envelopes, :stamps, :labels, :rolls, :certified_mails, :certified_mails_3910_3930, :certified_mails_3810]).to include(param.print_media)
         10.times do
           case param.print_media
             when :envelopes
