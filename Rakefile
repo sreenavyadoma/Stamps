@@ -1965,6 +1965,11 @@ Cucumber::Rake::Task.new(:mail_print_label_right_side) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_print_certified_mail) do |t|
+  t.profile = 'mail_print_certified_mail'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_print_envelope_10) do |t|
   t.profile = 'mail_print_envelope_10'
   t.cucumber_opts = "-p cuke_reports"

@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_mail_cc
+default: --backtrace --profile eli_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -22,7 +22,7 @@ rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @mail_bvt_stamps --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=chrome USR=default PW=password1 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+eli_dev: --tags @mail_print_certified_mail --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=sc BROWSER=chrome USR=scanul3ajn5 PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc USR=ss_cctest3 PW=password1 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
@@ -409,6 +409,7 @@ dev_mail_bvt_international: --tags  @mail_bvt_international --guess DEBUG=false 
 
 mail_print_label_left_side: --tags  @mail_print_label_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_label_right_side: --tags  @mail_print_label_right_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_certified_mail: --tags  @mail_print_certified_mail --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
 mail_print_envelope_6_7_9_11_12: --tags @mail_print_envelope_6_7_9_11_12 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_envelope_10_A2_A9: --tags @mail_print_envelope_10_A2_A9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
