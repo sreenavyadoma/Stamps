@@ -409,7 +409,7 @@ dev_mail_bvt_international: --tags  @mail_bvt_international --guess DEBUG=false 
 
 mail_print_label_left_side: --tags  @mail_print_label_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_label_right_side: --tags  @mail_print_label_right_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_certified_mail: --tags  @mail_print_certified_mail --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_print_certified_mail_hidden_postage: --tags  @mail_print_certified_mail_hidden_postage --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
 mail_print_envelope_6_7_9_11_12: --tags @mail_print_envelope_6_7_9_11_12 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_envelope_10_A2_A9: --tags @mail_print_envelope_10_A2_A9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory

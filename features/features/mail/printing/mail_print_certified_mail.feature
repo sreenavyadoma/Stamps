@@ -1,10 +1,10 @@
-@mail_print_certified_mail
+@mail_print_certified_mail_hidden_postage
 Feature: Print Certified Mail (with hidden postage)
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_SDC_3610
+  @mail_print_SDC_3610_hidden_postage
   Scenario: Print SDC 3610 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
@@ -22,7 +22,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-  @mail_print_SDC_3710
+  @mail_print_SDC_3710_hidden_postage
   Scenario: Print SDC 3610 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
@@ -40,7 +40,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-  @mail_print_SDC_3910
+  @mail_print_SDC_3910_hidden_postage
   Scenario: Print SDC 3610 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
@@ -58,7 +58,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-  @mail_print_SDC_3930
+  @mail_print_SDC_3930_hidden_postage
   Scenario: Print SDC 3610 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
@@ -76,7 +76,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-  @mail_print_SDC_3810
+  @mail_print_SDC_3810_hidden_postage
   Scenario: Print SDC 3610 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
@@ -94,7 +94,7 @@ Feature: Print Certified Mail (with hidden postage)
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-  @mail_print_SDC_3830
+  @mail_print_SDC_3830_hidden_postage
   Scenario: Print SDC 3610 (with hidden postage)
 
     Then select Print On Shipping Label - Paper
