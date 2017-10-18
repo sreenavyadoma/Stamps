@@ -26,7 +26,7 @@ Feature: Print two labels on one sheet
 
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
 
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected

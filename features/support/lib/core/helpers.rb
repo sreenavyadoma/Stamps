@@ -105,7 +105,6 @@ module Stamps
   end
 
   module ParameterHelper
-
     def parse_service(str)
       /.+(?= \(.*\)$)/.match(str).to_s
     end

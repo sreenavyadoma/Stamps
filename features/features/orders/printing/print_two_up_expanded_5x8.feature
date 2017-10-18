@@ -14,7 +14,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -34,7 +34,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then check Orders Grid row 2
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -60,7 +60,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then check Orders Grid row 3
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -73,7 +73,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button
@@ -94,7 +94,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then check Orders Grid row 2
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button

@@ -15,7 +15,9 @@ Feature: Set Print Ship Date to Today
     Then in Orders Toolbar, click Print button
     Then set Print modal Ship Date to today
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
+    Then set Orders print modal printer factory
+    Then set Orders print modal printer \\QA-PRINTLAB2016.corp.stamps.com\HP LaserJe
     Then click print modal print button
     Then Pause for 2 seconds
     Then select Filter Panel tab Shipped
@@ -30,7 +32,7 @@ Feature: Set Print Ship Date to Today
     Then set Order Details form service to PM Flat Rate Envelope
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then set Print modal Ship Date to today plus 1
     Then click print modal print button
     Then Pause for 2 seconds
@@ -46,7 +48,7 @@ Feature: Set Print Ship Date to Today
     Then set Order Details form service to PM Flat Rate Envelope
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then set Print modal Ship Date to today plus 2
     Then click print modal print button
     Then Pause for 2 seconds
@@ -62,7 +64,7 @@ Feature: Set Print Ship Date to Today
     Then set Order Details form service to PM Flat Rate Envelope
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then set Print modal Ship Date to today plus 3
     Then click print modal print button
     Then Pause for 2 seconds

@@ -13,7 +13,7 @@ Feature: Multiple Reprints
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then click print modal print button
 
     Then select Filter Panel tab Shipped

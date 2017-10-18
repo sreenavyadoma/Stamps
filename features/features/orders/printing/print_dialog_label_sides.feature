@@ -13,7 +13,7 @@ Feature: Change Starting Label Position
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then expect Print modal left-side label is selected
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
@@ -25,7 +25,7 @@ Feature: Change Starting Label Position
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
     Then in Orders Toolbar, click Print button
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then expect Print modal left-side label is selected
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected

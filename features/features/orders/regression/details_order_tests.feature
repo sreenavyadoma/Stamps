@@ -406,7 +406,7 @@ Feature: All details tests for order
     Then in Print modal, check Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then click print modal print button
     Then Sign out
 
