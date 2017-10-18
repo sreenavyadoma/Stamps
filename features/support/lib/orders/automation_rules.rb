@@ -51,8 +51,8 @@ module Stamps
       end
 
       class NewRuleModal < Browser::StampsModal
-        include AddCriteria
-        include AddAction
+#        include AddCriteria
+ #       include AddAction
 
         def rule_name
           @rule_name = browser.span(text: '') if @rule_name.nil? || !@rule_name.present?
