@@ -41,7 +41,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set Print form Mail-From to default
     Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
-      | cn22   | random  | random           | random            | random | random   | random      | India  | random |
+      | cn22   | random  | random           | random            | random | random   | 12366      | India  | random |
     Then set Print form Ounces to 1
     Then select Print form service FCMI Package
     Then click Print form Edit Customs Form button
@@ -59,7 +59,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
     Then set Print form Mail-From to default
     Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
-      | cn72   | random  | random           | random            | random | random   | random      | India  | random  |
+      | cn72   | random  | random           | random            | random | random   | 78954      | India  | random  |
     Then set Print form Ounces to 1
     Then select Print form service PMI Package
     Then click Print form Edit Customs Form button

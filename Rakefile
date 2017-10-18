@@ -1842,6 +1842,11 @@ Cucumber::Rake::Task.new(:import_updated_orders) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:automation_rule) do |t|
+  t.profile = 'automation_rule'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 
 # MAIL

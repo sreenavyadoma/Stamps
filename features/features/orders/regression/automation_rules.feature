@@ -14,7 +14,7 @@ Feature: Validate Automation Rule Tab
     Then Close Settings modal
     Then Sign out
 
-  @automation_rule_add_w/o_criteria
+  @automation_rule_add_without_criteria
   Scenario: Add new Automation rule w/o criteria
     Then open Settings Modal
     Then in Orders Settings, click on Automation Rules tab
@@ -27,7 +27,7 @@ Feature: Validate Automation Rule Tab
     Then in New Rule modal, set service to etc.
     Then in New Rule modal, set drop-down to FCM Package
     Then in New Rule modal, click on Save Rule button
-    Then expect Automation Rules modal, Rule name present
+    Then expect Automation Rules modal, Rule name is present
     Then Close Settings modal
     Then Sign out
 
@@ -49,7 +49,7 @@ Feature: Validate Automation Rule Tab
     Then in New Rule modal, set service to etc.
     Then in New Rule modal, set drop-down to FCM Package
     Then in New Rule modal, click on Save Rule button
-    Then expect Automation Rules modal, Rule name present
+    Then expect Automation Rules modal, Rule name is present
     Then Close Settings modal
     Then Sign out
 

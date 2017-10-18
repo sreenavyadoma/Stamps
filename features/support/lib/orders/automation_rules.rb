@@ -3,6 +3,45 @@ module Stamps
     module AutomationRules
       #todo-kaushal find all element
 
+      module AddCriteria
+        def add_criteria_link
+          @add_criteria_link = browser.span(text: '') if @add_criteria_link.nil? || !@add_criteria_link.present?
+          @add_criteria_link
+        end
+
+        def first_dropdown
+          @first_dropdown = browser.span(text: '') if @first_dropdown.nil? || !@first_dropdown.present?
+          @first_dropdown
+        end
+
+        def second_dropdown
+          @second_dropdown = browser.span(text: '') if @second_dropdown.nil? || !@second_dropdown.present?
+          @second_dropdown
+        end
+
+        def third_dropdown
+          @third_dropdown = browser.span(text: '') if @third_dropdown.nil? || !@third_dropdown.present?
+          @third_dropdown
+        end
+      end
+
+      module AddAction
+        def add_action_link
+          @add_action_link = browser.span(text: '') if @add_action_link.nil? || !@add_action_link.present?
+          @add_action_link
+        end
+
+        def first_dropdown
+          @first_dropdown = browser.span(text: '') if @first_dropdown.nil? || !@first_dropdown.present?
+          @first_dropdown
+        end
+
+        def second_dropdown
+          @second_dropdown = browser.span(text: '') if @second_dropdown.nil? || !@second_dropdown.present?
+          @second_dropdown
+        end
+      end
+
       class AutomationRulesModal < Browser::StampsModal
 
         def add
@@ -86,45 +125,6 @@ module Stamps
         def save_rule_btn
           @save_rule_btn = StampsElement.new(browser.div text: "") if @save_rule_btn.nil? || !@save_rule_btn.present?
           @save_rule_btn
-        end
-      end
-
-      module AddCriteria
-        def add_criteria_link
-          @add_criteria_link = browser.span(text: '') if @add_criteria_link.nil? || !@add_criteria_link.present?
-          @add_criteria_link
-        end
-
-        def first_dropdown
-          @first_dropdown = browser.span(text: '') if @first_dropdown.nil? || !@first_dropdown.present?
-          @first_dropdown
-        end
-
-        def second_dropdown
-          @second_dropdown = browser.span(text: '') if @second_dropdown.nil? || !@second_dropdown.present?
-          @second_dropdown
-        end
-
-        def third_dropdown
-          @third_dropdown = browser.span(text: '') if @third_dropdown.nil? || !@third_dropdown.present?
-          @third_dropdown
-        end
-      end
-
-      module AddAction
-        def add_action_link
-          @add_action_link = browser.span(text: '') if @add_action_link.nil? || !@add_action_link.present?
-          @add_action_link
-        end
-
-        def first_dropdown
-          @first_dropdown = browser.span(text: '') if @first_dropdown.nil? || !@first_dropdown.present?
-          @first_dropdown
-        end
-
-        def second_dropdown
-          @second_dropdown = browser.span(text: '') if @second_dropdown.nil? || !@second_dropdown.present?
-          @second_dropdown
         end
       end
 

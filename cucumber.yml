@@ -1,9 +1,9 @@
-default: --backtrace --profile kaushal_mail
+default: --backtrace --profile kaushal_order
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
-kaushal_mail: --tags @mail_print_shipping_label_sdc1200_with_receipt WEB_APP=mail JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
-kaushal_order: --tags @mail_print_shipping_label_sdc1200_regular WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
+kaushal_mail: --tags @mail_print_shipping_label_sdc1200_with_receipt WEB_APP=mail JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=Brother HL-2270DW
+kaushal_order: --tags @automation_rule_add_w/o_criteria WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
 Kaushal_sc: --tags @international_rules WEB_APP=orders JENKINS=true URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false  USR=default PW=pass111 DEBUG=true
 
 #robcm=ccpryiihrjz ccfb311osps4x
@@ -336,7 +336,8 @@ auto_suggest: --tags @auto_suggest --guess DEBUG=false JENKINS=true HEALTHCHECK=
 new_country: --tags  @new_country --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_panel: --tags  @details_panel --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_order: --tags  @details_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+automation_rule: --tags @automation_rule --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
@@ -447,7 +448,7 @@ mail_print_sample_shipping_label_sdc1200_fcm_psg: --tags @mail_print_sample_ship
 mail_print_sample_shipping_label_sdc1200_mm_xm: --tags @mail_print_sample_shipping_label_sdc1200_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_sample_shipping_label_sdc1200_pm_box: --tags @mail_print_sample_shipping_label_sdc1200_pm_box --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_sample_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_sample_shipping_label_sdc1200_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_sdc1200_with_receipt: --tags @mail_print_sample_shipping_label_sdc1200_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+mail_print_shipping_label_sdc1200_with_receipt: --tags @mail_print_shipping_label_sdc1200_with_receipt --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 
 mail_print_shipping_label_sdc1200_fcm_psg: --tags @mail_print_shipping_label_sdc1200_fcm_psg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_shipping_label_sdc1200_mm_xm: --tags @mail_print_shipping_label_sdc1200_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
