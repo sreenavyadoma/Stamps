@@ -5,7 +5,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_shipping_label_sdc1200_regular
+  @mail_print_shipping_label_sdc1200
   Scenario: Shipping Label - sdc1200 regular
 
    #mail_print_shipping_label_sdc1200_regular
