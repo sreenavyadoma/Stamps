@@ -9,7 +9,6 @@ Feature: Print On List Of Values
     #Then expect Manage Print Options modal is present
     #Then search Manage Print Options for Shipping Label - Paper
 
-
     Then select Print On Stamps
     Then select Print On Shipping Label - Paper
     Then select Print On Shipping Label - SDC-1200

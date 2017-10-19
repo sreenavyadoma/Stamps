@@ -1,7 +1,7 @@
 
 Then /^[Ii]n Orders Toolbar, expect Print Tooltip to include (.*)$/ do |expectation|
   #test_config.logger.step "In Orders Toolbar, expect Print Tooltip to include #{expectation}"
-  actual = stamps.orders.orders_toolbar.print_btn.tooltip
+  actual = stamps.orders.orders_toolbar.toolbar_print.tooltip
   #test_config.logger.step "Test #{(actual.include? expectation)?"Passed":"Failed"}"
   expect(actual).to include(expectation)
 end
@@ -44,7 +44,7 @@ end
 Then /^Tooltips: Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |expectation, data_qtip|
   #test_config.logger.step "Tooltips: Expect Print Modal Print Media #{expectation} tooltip to include #{data_qtip}"
   tooltips = data_qtip.split "||"
-  actual_tooltip = stamps.orders.orders_toolbar.print_btn.print_modal.printing_on.tooltip expectation
+  actual_tooltip = stamps.orders.orders_print_modal.printing_on.tooltip expectation
   tooltips.each do |tooltip|
     #test_config.logger.step "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     expect(actual_tooltip).to include tooltip

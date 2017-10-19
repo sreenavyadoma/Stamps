@@ -31,6 +31,11 @@ module Stamps
         @multi_order_details
       end
 
+      def orders_print_modal
+        @orders_print_modal =  Stamps::Orders::OrdersPrintModal.new(param) if @orders_print_modal.nil? || !@orders_print_modal.present?
+        @orders_print_modal
+      end
+
       def styles
         @styles = PageStyles.new(param) if @styles.nil? || !@styles.present?
         @styles

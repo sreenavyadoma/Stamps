@@ -3,7 +3,7 @@ module Stamps
     include BrowserType
     def test_param
       if @test_param.nil?
-        @test_param ||= Hash.new
+        @test_param = Hash.new
         @test_param[:customs_associated_items] ||= Hash.new
         @test_param[:details_associated_items] ||= Hash.new
         @test_param[:order_id] ||= Hash.new
@@ -17,6 +17,11 @@ module Stamps
         @test_param[:service_look_up]['PMI'] = 'Priority Mail International'
         @test_param[:service_look_up]['PMEI'] = 'Priority Mail Express International'
         @test_param[:ord_id_ctr] = 0
+        @test_param[:username] = ENV['USR']
+        @test_param[:password] = ENV['PW']
+        @test_param[:web_app] = ENV['WEB_APP']
+        @test_param[:url] = ENV['URL']
+        @test_param[:test] = ENV['USER_CREDENTIALS']
       end
       @test_param
     end

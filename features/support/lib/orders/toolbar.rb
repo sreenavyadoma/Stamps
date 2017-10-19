@@ -407,17 +407,21 @@ module Stamps
       end
 
       class ToolbarPrintButton < Browser::StampsModal
-        attr_reader :print_order_btn, :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
+        attr_reader  :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
                     :multi_order_some_error, :multi_order_all_error
 
         def initialize(param)
           super
-          @orders_print_modal = Stamps::Orders::OrdersPrintModal.new(param)
           @print_order_btn = StampsElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
           @incomplete_order_modal = PrintIncompleteOrderError.new(param)
           @multi_order_some_error = PrintMultiOrderSomeHasError.new(param)
           @multi_order_all_error = PrintMultiOrderAllHaveError.new(param)
           @usps_terms_modal = USPSTermsOrders.new(param)
+        end
+
+        def print_order_btn
+          @orders_print_modal = Stamps::Orders::OrdersPrintModal.new(param) if @orders_print_modal.nil? || !@orders_print_modal.present?
+          @orders_print_modal
         end
 
         def present?
@@ -433,8 +437,8 @@ module Stamps
           print_order_btn.attribute_value("data-qtip").split("<br>").last
         end
 
-        def print_modal
-          15.times do |count|
+        def depress
+          15.times do
             begin
               return orders_print_modal if orders_print_modal.present?
               print_order_btn.click
@@ -449,7 +453,6 @@ module Stamps
                 logger.error incomplete_order_modal.error_message_p1
                 logger.error incomplete_order_modal.error_message_p2
                 incomplete_order_modal.ok
-
                 expect(incomplete_order_modal.error_message_p2).to eql ""
               end
 
@@ -641,39 +644,39 @@ module Stamps
       end
 
       class AddButton < Browser::StampsModal
-        def click
-          add_btn = StampsElement.new(browser.span(text: 'Add'))
-          details_order_id = Orders::Details::SingleOrderDetailsOrderId.new(param)
-          server_error = ShipStationServerError.new(param)
-          initializing_db = StampsElement.new(browser.div(text: "Initializing Order Database"))
+        def depress
+          @add_btn = StampsElement.new(browser.span(text: 'Add'))if @add_btn.nil? || !@add_btn.present?
+          @details_order_id = Orders::Details::SingleOrderDetailsOrderId.new(param) if @details_order_id.nil? || !@details_order_id.present?
+          @server_error = ShipStationServerError.new(param) if @server_error.nil? || !@server_error.present?
+          @initializing_db = StampsElement.new(browser.div(text: "Initializing Order Database")) if @initializing_db.nil? || !@initializing_db.present?
 
           15.times do
             begin
-              add_btn.click
+              @add_btn.click
               20.times do
                 sleep(0.25)
-                return details_order_id.details_order_id if details_order_id.present?
+                return @details_order_id.details_order_id if @details_order_id.present?
               end
               # new accounts will connect to ShipStation for the first time.
               20.times do
-                if initializing_db.present?
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
-                  logger.message initializing_db.text
-                  initializing_db.wait_while_present(3)
-                  break unless initializing_db.present?
+                if @initializing_db.present?
+                  logger.message @initializing_db.text
+                  logger.message @initializing_db.text
+                  logger.message @initializing_db.text
+                  @initializing_db.wait_while_present(3)
+                  break unless @initializing_db.present?
                 end
               end
 
-              return details_order_id if details_order_id.present?
-              expect(server_error.present?).to be(false), "Server Error: \n#{server_error.text}"
+              return @details_order_id if @details_order_id.present?
+              expect(@server_error.present?).to be(false), "Server Error: \n#{@server_error.text}"
             rescue
               #ignore
             end
           end
-          expect(server_error.present?).to be(false), "Server Error: \n#{server_error.text}"
-          expect(initializing_db.present?).to be(false), "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}"
-          expect(details_order_id).to be_present, "Single Order Details Panel did not open upon clicking Add button."
+          expect(@server_error.present?).to be(false), "Server Error: \n#{@server_error.text}"
+          expect(@initializing_db.present?).to be(false), "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}"
+          expect(@details_order_id).to be_present, "Single Order Details Panel did not open upon clicking Add button."
         end
 
         def tooltip
@@ -692,20 +695,56 @@ module Stamps
       end
 
       class OrdersToolbar < Browser::StampsModal
-        attr_reader :print_btn, :move_dropdown, :import_button, :import_orders_modal, :usps_intl_terms
-
-        def initialize(param)
-          super
-          @import_button = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]"))
-          @print_btn = ToolbarPrintButton.new(param)
-          @move_dropdown = MoveDropDown.new(param)
-          @import_orders_modal = ImportOrders.new(param)
-          @usps_intl_terms = USPSTermsOrders.new(param)
+        def elements
+          @elements ||= {}
         end
 
-        def add_button
+        def toolbar_item(item)
+          case(item)
+            when :print
+              elements[:print] = ToolbarPrintButton.new(param) if elements[:print].nil? || !elements[:print].present?
+              elements[:print]
+            else
+              #ignore
+          end
+        end
+
+        def import_button
+          elements[:import_button] = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")) if @import_button.nil? || !@import_button.present?
+          @import_button
+        end
+
+        def move_dropdown
+          @move_dropdown = MoveDropDown.new(param) if @move_dropdown.nil? || !@move_dropdown.present?
+          @move_dropdown
+        end
+
+        def import_orders_modal
+          @import_orders_modal = ImportOrders.new(param) if @import_orders_modal.nil? || !@import_orders_modal.present?
+          @import_orders_modal
+        end
+
+        def usps_intl_terms
+          @usps_intl_terms = USPSTermsOrders.new(param) if @usps_intl_terms.nil? || !@usps_intl_terms.present?
+          @usps_intl_terms
+        end
+
+        def toolbar_print
+          @toolbar_print_button = ToolbarPrintButton.new(param) if @toolbar_print_button.nil? || !@toolbar_print_button.present?
+          @toolbar_print_button
+        end
+
+        def toolbar_add
           @add_button = AddButton.new(param) if @add_button.nil? || !@add_button.present?
           @add_button
+        end
+
+        def present?
+          toolbar_print.present?
+        end
+
+        def wait_until_present(*args)
+          toolbar_print.wait_until_present(*args)
         end
 
         def refresh_orders
@@ -761,15 +800,6 @@ module Stamps
             import_button.click
           end
         end
-
-        def present?
-          print_btn.present?
-        end
-
-        def wait_until_present(*args)
-          print_btn.wait_until_present(*args)
-        end
-
         #============================
 
         def per_page
