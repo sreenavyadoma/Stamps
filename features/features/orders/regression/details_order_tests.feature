@@ -65,7 +65,6 @@ Feature: All details tests for order
     Then Sign out
 
 
-
   @details_flat_rate_no_weight_domestic
   Scenario:  Domestic Flat
     Then add new order
@@ -373,7 +372,6 @@ Feature: All details tests for order
     Then Sign out
 
 
-
   @details_panel
   Scenario: B-01995 When Details Panel is Collapsed, Add Button Should Expand it
     Then add new order
@@ -409,7 +407,6 @@ Feature: All details tests for order
     Then set Print modal Printer to "factory"
     Then click print modal print button
     Then Sign out
-
 
 
   @details_services

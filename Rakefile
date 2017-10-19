@@ -288,6 +288,11 @@ Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_pm_envelope_package)
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_print_shipping_label_sdc1200_with_receipt) do |t|
+  t.profile = 'mail_print_shipping_label_sdc1200_with_receipt'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_fcm_psg) do |t|
   t.profile = 'mail_print_shipping_label_5x8_fcm_psg'
   t.cucumber_opts = "-p cuke_reports"
@@ -1834,6 +1839,11 @@ end
 
 Cucumber::Rake::Task.new(:import_updated_orders) do |t|
   t.profile = 'import_updated_orders'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:automation_rule) do |t|
+  t.profile = 'automation_rule'
   t.cucumber_opts = "-p cuke_reports"
 end
 
