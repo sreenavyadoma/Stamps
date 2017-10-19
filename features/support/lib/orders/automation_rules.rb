@@ -5,39 +5,39 @@ module Stamps
 
       module AddCriteria
         def add_criteria_link
-          @add_criteria_link = browser.span(text: '') if @add_criteria_link.nil? || !@add_criteria_link.present?
+          @add_criteria_link = StampsElement.new(browser.span(text: '')) if @add_criteria_link.nil? || !@add_criteria_link.present?
           @add_criteria_link
         end
 
         def first_dropdown
-          @first_dropdown = browser.span(text: '') if @first_dropdown.nil? || !@first_dropdown.present?
+          @first_dropdown = StampsElement.new(browser.span(text: '')) if @first_dropdown.nil? || !@first_dropdown.present?
           @first_dropdown
         end
 
         def second_dropdown
-          @second_dropdown = browser.span(text: '') if @second_dropdown.nil? || !@second_dropdown.present?
+          @second_dropdown = StampsElement.new(browser.span(text: '')) if @second_dropdown.nil? || !@second_dropdown.present?
           @second_dropdown
         end
 
         def third_dropdown
-          @third_dropdown = browser.span(text: '') if @third_dropdown.nil? || !@third_dropdown.present?
+          @third_dropdown = StampsElement.new(browser.span(text: '')) if @third_dropdown.nil? || !@third_dropdown.present?
           @third_dropdown
         end
       end
 
       module AddAction
         def add_action_link
-          @add_action_link = browser.span(text: '') if @add_action_link.nil? || !@add_action_link.present?
+          @add_action_link = StampsElement.new(browser.span(text: '')) if @add_action_link.nil? || !@add_action_link.present?
           @add_action_link
         end
 
         def first_dropdown
-          @first_dropdown = browser.span(text: '') if @first_dropdown.nil? || !@first_dropdown.present?
+          @first_dropdown = StampsElement.new(browser.span(text: '')) if @first_dropdown.nil? || !@first_dropdown.present?
           @first_dropdown
         end
 
         def second_dropdown
-          @second_dropdown = browser.span(text: '') if @second_dropdown.nil? || !@second_dropdown.present?
+          @second_dropdown = StampsElement.new(browser.span(text: '')) if @second_dropdown.nil? || !@second_dropdown.present?
           @second_dropdown
         end
       end
@@ -45,22 +45,22 @@ module Stamps
       class AutomationRulesModal < Browser::StampsModal
 
         def add
-          @add = browser.span(text: '') if @add.nil? || !@add.present?
+          @add = StampsElement.new(browser.span(text: '')) if @add.nil? || !@add.present?
           @add
         end
 
         def edit
-          @edit = browser.span(text: '') if @edit.nil? || !@edit.present?
+          @edit = StampsElement.new(browser.span(text: '')) if @edit.nil? || !@edit.present?
           @edit
         end
 
         def delete
-          @delete = browser.span(text: '') if @delete.nil? || !@delete.present?
+          @delete = StampsElement.new(browser.span(text: '')) if @delete.nil? || !@delete.present?
           @delete
         end
 
         def header
-          @header = StampsElement.new(browser.div text: "") if @header.nil? || !@header.present?
+          @header = StampsElement.new(browser.div(text: "")) if @header.nil? || !@header.present?
           @header
         end
 
@@ -94,17 +94,17 @@ module Stamps
  #       include AddAction
 
         def rule_name
-          @rule_name = browser.span(text: '') if @rule_name.nil? || !@rule_name.present?
+          @rule_name = StampsElement.new(browser.span(text: '')) if @rule_name.nil? || !@rule_name.present?
           @rule_name
         end
 
         def check_box
-          @check_box = browser.span(text: '') if @check_box.nil? || !@check_box.present?
+          @check_box = StampsElement.new(browser.span(text: '')) if @check_box.nil? || !@check_box.present?
           @check_box
         end
 
         def close
-          @close = browser.span(text: '') if @close.nil? || !@close.present?
+          @close = StampsElement.new(browser.span(text: '')) if @close.nil? || !@close.present?
           @close
         end
 
@@ -138,12 +138,12 @@ module Stamps
         end
 
         def check_box
-          @check_box = browser.span(text: '') if @check_box.nil? || !@check_box.present?
+          @check_box = StampsElement.new(browser.span(text: '')) if @check_box.nil? || !@check_box.present?
           @check_box
         end
 
         def close
-          @close = browser.span(text: '') if @close.nil? || !@close.present?
+          @close = StampsElement.new(browser.span(text: '')) if @close.nil? || !@close.present?
           @close
         end
 
@@ -170,12 +170,12 @@ module Stamps
       class DeleteRuleModal < Browser::StampsModal
 
         def header
-          @header = browser.span(text: '') if @header.nil? || !@header.present?
+          @header = StampsElement.new(browser.span(text: '')) if @header.nil? || !@header.present?
           @header
         end
 
         def close
-          @close = browser.span(text: '') if @close.nil? || !@close.present?
+          @close = StampsElement.new(browser.span(text: '')) if @close.nil? || !@close.present?
           @close
         end
 
