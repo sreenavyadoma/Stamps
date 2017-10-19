@@ -1,97 +1,97 @@
 
-Then /^[Ii]n [Oo]rders [Ss]ettings, click on [Aa]utomation [Rr]ules tab$/ do
+Then /^[Cc]lick [Oo]rders [Ss]ettings [Aa]utomation [Rr]ules tab$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Aa]utomation [Rr]ules page, [Cc]lick on Add Button$/ do
+Then /^[Cc]lick [Aa]utomation [Rr]ules page Add Button$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, [Ss]et Rule name to (.*)$/ do |str|
+Then /^[Ss]et [Nn]ew [Rr]ule [Mm]odal Rule name to (.*)$/ do |str|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, click on Add Action$/ do
+Then /^[Cc]lick [Nn]ew [Rr]ule [Mm]odal Add Action$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, set service to (.*)$/ do |value|
+Then /^[Ss]et [Nn]ew [Rr]ule [Mm]odal service to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, set drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Nn]ew [Rr]ule [Mm]odal drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, click on Save Rule button$/ do
+Then /^[Cc]lick [Nn]ew [Rr]ule [Mm]odal Save Rule button$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, click on specific criteria actions$/ do
+Then /^[Cc]lick [Nn]ew [Rr]ule [Mm]odal specific criteria actions$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, click on Add Criteria$/ do
+Then /^[Cc]lick [Nn]ew [Rr]ule [Mm]odal Add Criteria$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, set first drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Nn]ew [Rr]ule [Mm]odal first drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, set second drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Nn]ew [Rr]ule [Mm]odal second drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Nn]ew [Rr]ule [Mm]odal, set third drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Nn]ew [Rr]ule [Mm]odal third drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Aa]utomation [Rr]ules page, click on automation rule Name$/ do
+Then /^[Cc]lick [Aa]utomation [Rr]ules page automation rule Name$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Aa]utomation [Rr]ules page, click on Edit Button$/ do
+Then /^[Cc]lick [Aa]utomation [Rr]ules page Edit Button$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Aa]utomation [Rr]ules page, click on Delete button$/ do
+Then /^[Cc]lick [Aa]utomation [Rr]ules page Delete button$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, set Rule name to (.*)$/ do |value|
+Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal Rule name to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, click on Add Action$/ do
+Then /^[Cc]lick [Ee]dit [Rr]ule [Mm]odal Add Action$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, set service to (.*)$/ do |value|
+Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal service to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, set drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, click on Save Rule button$/ do
+Then /^[Cc]lick [Ee]dit [Rr]ule [Mm]odal Save Rule button$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, set first drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal first drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, set second drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal second drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n [Ee]dit [Rr]ule [Mm]odal, set third drop-down to (.*)$/ do |value|
+Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal third drop-down to (.*)$/ do |value|
   stamps.orders.orders_toolbar.settings.select
 end
 
-Then /^[Ii]n Delete Automation dialog, click on Delete button$/ do
+Then /^[Cc]lick Delete Automation dialog Delete button$/ do
   stamps.orders.orders_toolbar.settings.select
 end
 

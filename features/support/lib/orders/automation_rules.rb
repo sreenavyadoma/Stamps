@@ -133,7 +133,7 @@ module Stamps
         include AddAction
 
         def rule_name_edit
-          @rule_name = browser.span(text: '') if @rule_name.nil? || !@rule_name.present?
+          @rule_name = StampsElement.new(browser.span(text: '')) if @rule_name.nil? || !@rule_name.present?
           @rule_name
         end
 

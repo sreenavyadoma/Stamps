@@ -575,8 +575,8 @@ module Stamps
       end
 
       class SettingsMenu < Browser::StampsModal
-        def select menu_item
-          dd = StampsElement.new browser.span css: "span[class*=sdc-icon-settings]"
+        def select(menu_item)
+          dd = StampsElement.new (browser.span css: "span[class*=sdc-icon-settings]")
           case menu_item.downcase
             when /settings/
               selection = StampsElement.new(browser.span text: "General Settings")
@@ -584,7 +584,6 @@ module Stamps
             when /stores/
               selection = StampsElement.new(browser.span text: "Add/Edit Stores")
               modal = Orders::Stores::ManageStores.new(param)
-
             # to-do Kaushal automation rules implement
             when /automation_rules/
               selection = StampsElement.new(browser.span text: " ")
