@@ -31,7 +31,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is present$/ do
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint button$/ do
-  print_modal = stamps.orders.orders_toolbar.toolbar_print.orders_print_modal
+  print_modal = stamps.orders.orders_toolbar.toolbar_item(:print).depress
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.textbox.text
   @printer = print_modal.printer.textbox.text

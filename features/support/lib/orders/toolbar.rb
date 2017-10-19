@@ -407,21 +407,24 @@ module Stamps
       end
 
       class ToolbarPrintButton < Browser::StampsModal
-        attr_reader  :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
-                    :multi_order_some_error, :multi_order_all_error
-
-        def initialize(param)
-          super
-          @print_order_btn = StampsElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
-          @incomplete_order_modal = PrintIncompleteOrderError.new(param)
-          @multi_order_some_error = PrintMultiOrderSomeHasError.new(param)
-          @multi_order_all_error = PrintMultiOrderAllHaveError.new(param)
-          @usps_terms_modal = USPSTermsOrders.new(param)
+        def incomplete_order_modal
+          @incomplete_order_modal = PrintIncompleteOrderError.new(param) if @incomplete_order_modal.nil? || !@incomplete_order_modal.present?
+          @incomplete_order_modal
         end
 
-        def print_order_btn
-          @orders_print_modal = Stamps::Orders::OrdersPrintModal.new(param) if @orders_print_modal.nil? || !@orders_print_modal.present?
-          @orders_print_modal
+        def multi_order_some_error
+          @multi_order_some_error = PrintMultiOrderSomeHasError.new(param) if @multi_order_some_error.nil? || !@multi_order_some_error.present?
+          @multi_order_some_error
+        end
+
+        def usps_terms_modal
+          @usps_terms_modal = USPSTermsOrders.new(param) if @usps_terms_modal.nil? || !@usps_terms_modal.present?
+          @usps_terms_modal
+        end
+
+        def multi_order_all_error
+          @multi_order_all_error = PrintMultiOrderAllHaveError.new(param) if @multi_order_all_error.nil? || !@multi_order_all_error.present?
+          @multi_order_all_error
         end
 
         def present?
@@ -574,6 +577,13 @@ module Stamps
 
         def print_invalid_address
           open_window InvalidAddressError.new(param)
+        end
+
+        private
+
+        def print_order_btn
+          @print_order_btn = StampsElement.new(browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) if @print_order_btn.nil? || !@print_order_btn.present?
+          @print_order_btn
         end
       end
 

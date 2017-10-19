@@ -17,7 +17,7 @@ end
 
 Then /^[Ss]elect new option \"(.*)\"$/ do |label|
   #test_config.logger.step "Select new option #{label}"
-  stamps.orders.orders_toolbar.toolbar_print.orders_print_modal
+  stamps.orders.orders_toolbar.toolbar_item(:print).depress
 end
 
 Then /^[Ee]xpect saves settings to \"(.*)\"$/ do |label|
@@ -26,7 +26,7 @@ end
 
 Then /^[Ee]xpect a print of \"(.*)\"$/ do |label|
   #test_config.logger.step "Expect a mail of #{label}"
-  stamps.orders.orders_toolbar.toolbar_print.orders_print_modal
+  stamps.orders.orders_toolbar.toolbar_item(:print).depress
 end
 
 
@@ -38,6 +38,6 @@ end
 
 Then /^[Ee]xpect system will only print first order$/ do |label|
   #test_config.logger.step "Expect system will only mail first order"
-  stamps.orders.orders_toolbar.toolbar_print.orders_print_modal
+  stamps.orders.orders_toolbar.toolbar_item(:print).depress
 end
 
