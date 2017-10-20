@@ -441,38 +441,24 @@ module Stamps
         end
 
         def click
+          @printing_on = OrdersPrintMediaDropList.new(param) if @printing_on.nil? || !@printing_on.present?
           15.times do
             begin
-              return orders_print_modal if orders_print_modal.present?
+              return true if @printing_on.present?
               print_order_btn.click
-              orders_print_modal.wait_until_present(3)
-
+              @printing_on.wait_until_present(3)
               30.times do
                 break unless usps_terms_modal.present?
                 usps_terms_modal.i_gree if usps_terms_modal.present?
               end
-
-              if incomplete_order_modal.present?
-                logger.error incomplete_order_modal.error_message_p1
-                logger.error incomplete_order_modal.error_message_p2
-                incomplete_order_modal.ok
-                expect(incomplete_order_modal.error_message_p2).to eql ""
-              end
-
-              if multi_order_some_error.present?
-                logger.error multi_order_some_error.error_message_p1
-                text = multi_order_some_error.error_message_p2
-                logger.error text
-                multi_order_some_error.continue
-                expect(text).to eql ""
-              end
-
-              return orders_print_modal if orders_print_modal.present?
+              raise incomplete_order_modal.error_message_p2 if incomplete_order_modal.present?
+              raise multi_order_some_error.error_message_p2 if multi_order_some_error.present?
+              return true if @printing_on.present?
             rescue
               #ignore
             end
           end
-          expect(orders_print_modal).to be_present, "Print Modal is NOT present"
+          false
         end
 
         def usps_terms

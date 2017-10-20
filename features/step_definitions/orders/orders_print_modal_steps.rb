@@ -2,12 +2,10 @@
 Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint button$/ do
   step "Save Order Details data"
   stamps.orders.orders_toolbar.toolbar_print.click
-  stamps.orders.orders_toolbar.toolbar_print.click
 end
 
 Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
   @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
-
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
@@ -152,13 +150,13 @@ When /^[Pp]rint expecting some orders can not be printed$/ do
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
-  actual = stamps.orders.orders_print_modal.labels_ready_to_print
+  actual = stamps.orders.orders_print_modal.label_count
   stamps.orders.orders_print_modal.close
   expect("You have #{actual} label(s) ready to mail").to eql "You have #{expectation} label(s) ready to mail"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal number of required label sheets is (\d+)$/ do |sheets|
-  expect(stamps.orders.orders_print_modal.label_sheet_required_count).to eql sheets
+  expect(stamps.orders.orders_print_modal.label_count).to eql sheets
 end
 
 Then /^[Pp]rint raises a [Pp]rinting Error/ do
