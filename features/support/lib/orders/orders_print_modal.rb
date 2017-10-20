@@ -448,8 +448,7 @@ module Stamps
             sleep(0.35)
             printing_error = printing_error_check
             return printing_error if printing_error.length > 1
-            break unless print_button.present?
-          rescue
+            break unless print_button.present?          rescue
             true
           end
         end
