@@ -12,7 +12,7 @@ Feature:  Requires x-number of label sheets
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz
 
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then expect Print modal number of required label sheets is 1
     Then expect Print modal Modal Title is "You have 1 label(s) ready to print"
     Then in Print modal, click Close button
@@ -25,7 +25,7 @@ Feature:  Requires x-number of label sheets
     Then check Orders Grid row 1
     Then check Orders Grid row 2
 
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then expect Print modal number of required label sheets is 1
     Then expect Print modal Modal Title is "You have 2 label(s) ready to print"
     Then in Print modal, click Close button

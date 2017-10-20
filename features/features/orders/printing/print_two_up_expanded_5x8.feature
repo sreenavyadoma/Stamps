@@ -12,7 +12,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details form Ship-To to PME MFR Box, 5.5x8.5, 2775 Stark Dr., Willoughby Hills OH 44094-9113
     Then set Order Details form service to PME Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then select Print modal left-side label
@@ -32,7 +32,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details form Ounces to 1
     Then check Orders Grid row 1
     Then check Orders Grid row 2
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then select Print modal left-side label
@@ -58,7 +58,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then check Orders Grid row 1
     Then check Orders Grid row 2
     Then check Orders Grid row 3
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then select Print modal left-side label
@@ -71,7 +71,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details form Ship-To to PS Package, 5.5x8.5 Right Side 1, 610 W Tefft St, Nipomo, CA 93444-9187
     Then set Order Details form service to PSG Package
     Then set Order Details form Ounces to 1
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then select Print modal right-side label
@@ -92,7 +92,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details form Dimensions to Length 1 Width 1 Height 1
     Then check Orders Grid row 1
     Then check Orders Grid row 2
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then select Print modal right-side label

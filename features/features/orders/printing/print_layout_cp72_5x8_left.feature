@@ -20,7 +20,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then select Print modal left-side label

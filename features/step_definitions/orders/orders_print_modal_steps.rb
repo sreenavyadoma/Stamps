@@ -1,11 +1,12 @@
 
-Then /^[Ii]n Orders Toolbar, click [Pp]rint button$/ do
+Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint button$/ do
   step "Save Order Details data"
-  stamps.orders.orders_toolbar.toolbar_item(:print).depress
+  stamps.orders.orders_toolbar.toolbar_print.click
+  stamps.orders.orders_toolbar.toolbar_print.click
 end
 
 Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
-  @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_item(:print).depress #this needs to change
+  @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
 
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end

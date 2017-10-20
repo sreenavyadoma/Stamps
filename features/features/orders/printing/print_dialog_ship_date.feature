@@ -4,6 +4,7 @@ Feature: Set Print Ship Date to Today
 
   Background:
     Given a valid user is signed in to Web Apps
+
   @print_dialog_ship_date_scenario
   Scenario: Set Ship Date to today
 
@@ -13,7 +14,7 @@ Feature: Set Print Ship Date to Today
     Then set Order Details form Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set Order Details form Ounces to 4
     Then set Order Details form service to PM Flat Rate Envelope
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Ship Date to today
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
@@ -31,7 +32,7 @@ Feature: Set Print Ship Date to Today
     Then set Order Details form Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set Order Details form Ounces to 4
     Then set Order Details form service to PM Flat Rate Envelope
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
     Then set Print modal Ship Date to today plus 1
@@ -47,7 +48,7 @@ Feature: Set Print Ship Date to Today
     Then set Order Details form Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set Order Details form Ounces to 4
     Then set Order Details form service to PM Flat Rate Envelope
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
     Then set Print modal Ship Date to today plus 2
@@ -63,7 +64,7 @@ Feature: Set Print Ship Date to Today
     Then set Order Details form Ship-To to PM FR Envelope, 8.5x11, 5912 83rd St., Lubbock TX 79424-3608
     Then set Order Details form Ounces to 4
     Then set Order Details form service to PM Flat Rate Envelope
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
     Then set Print modal Ship Date to today plus 3

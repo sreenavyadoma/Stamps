@@ -72,7 +72,7 @@ Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
 end
 
 Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
-  stamps.load_sign_in_page
+  stamps.orders.landing_page.load_sign_in_page
 end
 
 Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|

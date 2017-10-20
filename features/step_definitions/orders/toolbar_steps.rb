@@ -1,7 +1,7 @@
 Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |count|
   test_param[:old_balance] = stamps.navigation_bar.balance.amount
   stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)
-  test_param[:order_id][(count.nil?)?test_param[:ord_id_ctr]+=1:count.to_i] =  stamps.orders.orders_toolbar.toolbar_add.depress
+  test_param[:order_id][(count.nil?)?test_param[:ord_id_ctr]+=1:count.to_i] =  stamps.orders.orders_toolbar.toolbar_add.click
   expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(1)).to be(true), "Orders Grid checkbox 1 is unchecked!"
   expect(stamps.orders.orders_grid.grid_column(:checkbox).order_id_checked?(test_param[:order_id][test_param[:ord_id_ctr]])).to be(true),
          "Orders Grid Order ID #{test_param[:order_id][test_param[:ord_id_ctr]]} is unchecked!"
@@ -31,7 +31,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is present$/ do
 end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint button$/ do
-  print_modal = stamps.orders.orders_toolbar.toolbar_item(:print).depress
+  print_modal = stamps.orders.orders_toolbar.toolbar_print.click
   @ship_date = print_modal.ship_date.text
   @paper_tray = print_modal.paper_tray.textbox.text
   @printer = print_modal.printer.textbox.text

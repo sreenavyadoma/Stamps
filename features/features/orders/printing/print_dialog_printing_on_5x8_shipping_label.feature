@@ -11,7 +11,7 @@ Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
     Then set Order Details form service to PM Package
     Then set Order Details form Pounds to 1
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then click print modal print button

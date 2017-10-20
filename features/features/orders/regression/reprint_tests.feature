@@ -35,7 +35,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details form Pounds to 1
 
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then click print modal print button
@@ -60,7 +60,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details form Ounces to 1
 
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Roll 418x614"
     Then click print modal print button
 
@@ -90,7 +90,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then close Customs Information form
 
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
     Then click print modal print button
 
@@ -120,7 +120,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then close Customs Information form
 
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
     Then set Orders print modal printer
     Then click print modal print button
@@ -151,7 +151,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then close Customs Information form
 
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
     Then set Orders print modal printer
     Then click print modal print button
@@ -182,7 +182,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then close Customs Information form
 
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
     Then click print modal print button
