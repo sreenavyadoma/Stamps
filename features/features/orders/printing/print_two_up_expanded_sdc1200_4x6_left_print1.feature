@@ -11,9 +11,9 @@ Feature: Print 1 Domestic label on SDC-1200 4 ¼" x 6 ¾ right side
     Then set Order Details form service to PM Package
     Then set Order Details form Weight to 1 lb 1 oz
     Then set Order Details form Dimensions to Length 1 Width 1 Height 1
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button

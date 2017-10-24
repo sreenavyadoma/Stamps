@@ -45,9 +45,9 @@ module Stamps
           super
           browser.text_field(css: "input[class*=x-form-checkbox]")
           browser.a(text: "Download Software for Windows")
-          @username_textbox = StampsTextBox.new(browser.text_field(css: "input[placeholder=USERNAME]"))
-          @password_textbox = StampsTextBox.new(browser.text_field(css: "input[placeholder=PASSWORD]"))
-          @sign_in_btn = StampsElement.new(browser.span(css: "div[id^=app-main-][id$=-targetEl]>div>div>div>div>div:nth-child(6)>div>div>a>span>span>span[id$=btnInnerEl]"))
+          @username_textbox = StampsTextBox.new(browser.text_field(css: "[placeholder=USERNAME]"))
+          @password_textbox = StampsTextBox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
+          @sign_in_btn = StampsElement.new(browser.span(text: "Sign In"))
 
           @title = StampsElement.new(browser.div(text: 'Sign In'))
           @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
@@ -66,7 +66,7 @@ module Stamps
         end
 
         def present?
-          username_textbox.present?
+          browser.url.include?('SignIn')
         end
 
         def wait_until_present(*args)
@@ -127,13 +127,52 @@ module Stamps
           expect("Market Place modal is not present").to eql "First Time Sign In" unless market_place.present?
         end
 
+        def load_sign_in_page
+          case param.test_env
+            when /cc/
+              url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+            when /sc/
+              url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage'}/default2.aspx"
+            when /stg/
+              url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+            when /rating/
+              url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+            else
+              url = "http://#{param.test_env}/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+          end
+
+          logger.message "-"
+          logger.message "URL: #{url}"
+          logger.message "-"
+
+          browser.goto(url)
+          if browser.text.include? "Server Error"
+            logger.error browser.text
+            raise browser.text
+          end
+
+          logger.message "-"
+          logger.message "Page loaded: #{browser.url}"
+          logger.message "-"
+
+          case param.web_app
+            when :orders
+              expect(browser.url).to include "Orders"
+            when :mail
+              expect(browser.url.downcase).to include "webpostage"
+            else
+              # do nothing
+          end
+          browser.url
+        end
+
         def orders_sign_in(usr, pw)
           begin
-            loading_orders = StampsElement.new browser.div(text: "Loading orders...")
-            invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
+            loading_orders = StampsElement.new(browser.div(text: "Loading orders..."))
+            invalid_username = StampsElement.new(browser.span(id: "InvalidUsernameMsg"))
             new_welcome = NewWelcomeModal.new(param)
             security_questions = SecurityQuestionsSuccess.new(param)
-            server_error = ServerError.new(param)
+            server_error = Stamps::Orders::ServerError.new(param)
 
             expect(browser.url).to include "Orders"
 
@@ -148,8 +187,9 @@ module Stamps
                   username(usr)
                   password(pw)
                   login
-                  wait_while_present(5)
-                  expect("Server Error").to eql(server_error.message) if server_error.present?
+                  wait_while_present(3)
+
+                  expect(server_error).to_not be_present, server_error.message
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?

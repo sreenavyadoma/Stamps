@@ -11,7 +11,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then set Order Details form service to PM Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then expect Print modal Modal Title is "You have 1 label(s) ready to print"
     Then in Print modal, click Close button
 
@@ -21,7 +21,7 @@ Feature:  Print Window Title - You have x-number of labels ready to print
     Then set Order Details form Weight to 1 lb 1 oz
     Then check Orders Grid row 1
     Then check Orders Grid row 2
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then expect Print modal Modal Title is "You have 2 label(s) ready to print"
     Then in Print modal, click Close button
 

@@ -855,6 +855,7 @@ module Stamps
             checkbox_element(row).check
             expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
           end unless checked?(row)
+          checked?(row)
         end
 
         def uncheck(row)
@@ -865,6 +866,7 @@ module Stamps
               expect(checked?(row)).to be(false), "Unable to uncheck checkbox row #{row}"
             end
           end
+          checked?(row)
         end
 
         def checked?(row)
@@ -987,6 +989,7 @@ module Stamps
         end
 
         def grid_column(name)
+          wait_until_present(5)
           case(name)
             when :checkbox
               column[:checkbox] = GridCheckBox.new(param) if !column.has_key?(:checkbox) || !column[:checkbox].present?

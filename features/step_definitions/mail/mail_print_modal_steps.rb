@@ -30,6 +30,7 @@ When /^[Cc]lick Print button on [Mm]ail [Pp]rint modal Sample$/ do
   @printing_error = mail_print_modal.print
 end
 
+#todo-Rob change sentence structure and make print modal float (stamps.mail.mail_print_modal)
 Then /^Mail: in Print modal, Close$/ do
   stamps.mail.stamps.mail.close
 end

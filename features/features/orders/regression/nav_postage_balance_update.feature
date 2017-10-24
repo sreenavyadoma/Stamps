@@ -12,9 +12,9 @@ Feature: Mail Balance
     Then set Order Details form Tracking to USPS Tracking
     Then Pause for 1 second
     Then Save Order Details data
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to Shipping Label - Paper
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then click print modal print button
     Then Pause for 3 seconds
     Then NavBar: Expect Customer Balance is deducted the Printing Cost

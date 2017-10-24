@@ -407,17 +407,24 @@ module Stamps
       end
 
       class ToolbarPrintButton < Browser::StampsModal
-        attr_reader :print_order_btn, :orders_print_modal, :incomplete_order_modal, :usps_terms_modal,
-                    :multi_order_some_error, :multi_order_all_error
+        def incomplete_order_modal
+          @incomplete_order_modal = PrintIncompleteOrderError.new(param) if @incomplete_order_modal.nil? || !@incomplete_order_modal.present?
+          @incomplete_order_modal
+        end
 
-        def initialize(param)
-          super
-          @orders_print_modal = Stamps::Orders::OrdersPrintModal.new(param)
-          @print_order_btn = StampsElement.new browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")
-          @incomplete_order_modal = PrintIncompleteOrderError.new(param)
-          @multi_order_some_error = PrintMultiOrderSomeHasError.new(param)
-          @multi_order_all_error = PrintMultiOrderAllHaveError.new(param)
-          @usps_terms_modal = USPSTermsOrders.new(param)
+        def multi_order_some_error
+          @multi_order_some_error = PrintMultiOrderSomeHasError.new(param) if @multi_order_some_error.nil? || !@multi_order_some_error.present?
+          @multi_order_some_error
+        end
+
+        def usps_terms_modal
+          @usps_terms_modal = USPSTermsOrders.new(param) if @usps_terms_modal.nil? || !@usps_terms_modal.present?
+          @usps_terms_modal
+        end
+
+        def multi_order_all_error
+          @multi_order_all_error = PrintMultiOrderAllHaveError.new(param) if @multi_order_all_error.nil? || !@multi_order_all_error.present?
+          @multi_order_all_error
         end
 
         def present?
@@ -433,40 +440,25 @@ module Stamps
           print_order_btn.attribute_value("data-qtip").split("<br>").last
         end
 
-        def print_modal
-          15.times do |count|
+        def click
+          @printing_on = OrdersPrintMediaDropList.new(param) if @printing_on.nil? || !@printing_on.present?
+          15.times do
             begin
-              return orders_print_modal if orders_print_modal.present?
+              return true if @printing_on.present?
               print_order_btn.click
-              orders_print_modal.wait_until_present(3)
-
+              @printing_on.wait_until_present(3)
               30.times do
                 break unless usps_terms_modal.present?
                 usps_terms_modal.i_gree if usps_terms_modal.present?
               end
-
-              if incomplete_order_modal.present?
-                logger.error incomplete_order_modal.error_message_p1
-                logger.error incomplete_order_modal.error_message_p2
-                incomplete_order_modal.ok
-
-                expect(incomplete_order_modal.error_message_p2).to eql ""
-              end
-
-              if multi_order_some_error.present?
-                logger.error multi_order_some_error.error_message_p1
-                text = multi_order_some_error.error_message_p2
-                logger.error text
-                multi_order_some_error.continue
-                expect(text).to eql ""
-              end
-
-              return orders_print_modal if orders_print_modal.present?
+              raise incomplete_order_modal.error_message_p2 if incomplete_order_modal.present?
+              raise multi_order_some_error.error_message_p2 if multi_order_some_error.present?
+              return true if @printing_on.present?
             rescue
               #ignore
             end
           end
-          expect(orders_print_modal).to be_present, "Print Modal is NOT present"
+          false
         end
 
         def usps_terms
@@ -572,11 +564,18 @@ module Stamps
         def print_invalid_address
           open_window InvalidAddressError.new(param)
         end
+
+        private
+
+        def print_order_btn
+          @print_order_btn = StampsElement.new(browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) if @print_order_btn.nil? || !@print_order_btn.present?
+          @print_order_btn
+        end
       end
 
       class SettingsMenu < Browser::StampsModal
         def select(menu_item)
-          dd = StampsElement.new (browser.span css: "span[class*=sdc-icon-settings]")
+          dd = StampsElement.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
             when /settings/
               selection = StampsElement.new(browser.span text: "General Settings")
@@ -695,21 +694,79 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::StampsModal
-        attr_reader :print_btn, :move_dropdown, :import_button, :import_orders_modal, :usps_intl_terms
-
-        def initialize(param)
-          super
-          @import_button = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]"))
-          @print_btn = ToolbarPrintButton.new(param)
-          @move_dropdown = MoveDropDown.new(param)
-          @import_orders_modal = ImportOrders.new(param)
-          @usps_intl_terms = USPSTermsOrders.new(param)
+      module OrdersToolbarRightSide
+        def right_toolbar
+          @right_toolbar ||= {}
         end
 
-        def add_button
-          @add_button = AddButton.new(param) if @add_button.nil? || !@add_button.present?
-          @add_button
+        def toolbar_settings
+          right_toolbar[:settings] = SettingsMenu.new(param) if right_toolbar[:settings][:import].nil? || !right_toolbar[:settings][:import].present?
+          right_toolbar[:settings]
+        end
+
+        def toolbar_import
+          right_toolbar[:import] = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")) if right_toolbar[:import].nil? || !right_toolbar[:import].present?
+          right_toolbar[:import]
+        end
+
+        def import
+          raise "Import needs to be re-visited"
+          5.times do
+            return import_orders_modal if import_orders_modal.present?
+            toolbar_import.click
+          end
+        end
+      end
+
+      module OrdersToolbarLeftSide
+
+        def left_toolbar
+          @left_toolbar ||= {}
+        end
+
+        def present?
+          toolbar_print.present?
+        end
+
+        def wait_until_present(*args)
+          toolbar_print.wait_until_present(*args)
+        end
+
+        def toolbar_print
+          left_toolbar[:print] = ToolbarPrintButton.new(param) if left_toolbar[:print].nil? || !left_toolbar[:print].present?
+          left_toolbar[:print]
+        end
+
+        def toolbar_add
+          left_toolbar[:add] = AddButton.new(param) if left_toolbar[:add].nil? || !left_toolbar[:add].present?
+          left_toolbar[:add]
+        end
+
+        def toolbar_move
+          left_toolbar[:move] = MoveDropDown.new(param) if left_toolbar[:move].nil? || !left_toolbar[:move].present?
+          left_toolbar[:move]
+        end
+
+        def toolbar_tags
+          raise "Not yet implemented"
+        end
+
+        def toolbar_more_actions
+          raise "Not yet implemented"
+        end
+      end
+
+      class OrdersToolbar < Browser::StampsModal
+        include OrdersToolbarLeftSide
+
+        def import_orders_modal
+          @import_orders_modal = ImportOrders.new(param) if @import_orders_modal.nil? || !@import_orders_modal.present?
+          @import_orders_modal
+        end
+
+        def usps_intl_terms
+          @usps_intl_terms = USPSTermsOrders.new(param) if @usps_intl_terms.nil? || !@usps_intl_terms.present?
+          @usps_intl_terms
         end
 
         def refresh_orders
@@ -758,30 +815,10 @@ module Stamps
             importing_order.ok
           end
         end
-
-        def import
-          5.times do
-            return import_orders_modal if import_orders_modal.present?
-            import_button.click
-          end
-        end
-
-        def present?
-          print_btn.present?
-        end
-
-        def wait_until_present(*args)
-          print_btn.wait_until_present(*args)
-        end
-
         #============================
 
         def per_page
           PerPage.new(param)
-        end
-
-        def settings
-          SettingsMenu.new(param)
         end
 
         def reprint

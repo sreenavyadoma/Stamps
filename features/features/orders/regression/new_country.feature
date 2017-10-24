@@ -24,9 +24,9 @@ Feature:  Print new country orders
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Pause for 3 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then click print modal print button
     Then Sign out
 
@@ -50,9 +50,9 @@ Feature:  Print new country orders
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Pause for 3 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then click print modal print button
     Then Sign out
 

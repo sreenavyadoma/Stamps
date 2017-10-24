@@ -1,65 +1,58 @@
 # encoding: utf-8
 module Stamps
   module Orders
-    class PrintingOn < Browser::StampsModal
-      attr_reader :dropdown, :textbox
-
-      def initialize(param)
-        super
-        @dropdown = StampsElement.new browser.div css: "div[id^=printmediadroplist][id$=trigger-picker]"
-        @textbox = StampsTextBox.new browser.text_field css: "input[name^=printmediadroplist]"
+    class OrdersPrintMediaDropList < Browser::StampsModal
+      def dropdown
+        @dropdown = StampsElement.new( browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil? || !@dropdown.present?
+        @dropdown
       end
 
-      def selection media
-        case media
-          # Shipping Label: 8 ½" x 11" Paper
-          when /Paper/
-            return StampsElement.new(browser.li text: /Paper/)
-
-          # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-          when /SDC-1200/
-            return StampsElement.new(browser.li text: /SDC-1200/)
-
-          # Shipping Label: 5 ½" x 8 ½"
-          when /Shipping Label - 5 /
-            return StampsElement.new(browser.li text: /Shipping Label - 5 /)
-
-          # Roll 418x614
-          when /Roll - 418x614/
-            return StampsElement.new(browser.li text: /Roll - 4 ⅛/)
-
-          # Roll - 4" x 6" Shipping Label
-          when /Roll - 4 /
-            return StampsElement.new(browser.li text: /Roll - 4 /)
-          else
-            expect("Don't know what to do with #{media}.").to eql "Invalid Print Media Selection."
-        end
+      def textbox
+        @textbox = StampsTextBox.new(browser.text_field(css: "input[name^=printmediadroplist]")) if @textbox.nil? || !@textbox.present?
+        @textbox
       end
 
       def present?
         textbox.present?
       end
 
-      def label
-        StampsElement.new browser.span(css: "div[id^=printwindow-][id$=-targetEl]>div>label[id^=printmediadroplist-][id$=-labelEl]>span")
+      def wait_until_present(*args)
+        textbox.wait_until_present(*args)
       end
 
-      def select media
+      def selection_element(media)
+        case(media)
+          when /Paper/ # Shipping Label: 8 ½" x 11" Paper
+            return StampsElement.new(browser.li text: /Paper/)
+          when /SDC-1200/ # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+            return StampsElement.new(browser.li text: /SDC-1200/)
+          when /Shipping Label - 5 / # Shipping Label: 5 ½" x 8 ½"
+            return StampsElement.new(browser.li text: /Shipping Label - 5 /)
+          when /Roll - 418x614/ # Roll 418x614
+            return StampsElement.new(browser.li text: /Roll - 4 ⅛/)
+          when /Roll - 4 / # Roll - 4" x 6" Shipping Label
+            return StampsElement.new(browser.li text: /Roll - 4 /)
+          else
+            expect("Don't know what to do with #{media}.").to eql "Invalid Print Media Selection."
+        end
+      end
+
+      def select(media)
         begin
-          lov_item = selection(media)
+          selection = selection_element(media)
           10.times do
             if media == "Roll - 418x614"
               break if textbox.text.include? "Roll - 4 ⅛"
             else
               break if textbox.text.include? media
             end
-            dropdown.click unless lov_item.present?
-            lov_item.click
+            dropdown.click unless selection.present?
+            selection.click
           end
         end unless textbox.text.include? media
       end
 
-      def tooltip media
+      def tooltip(media)
         dropdown = self.dropdown
         media_selection = selection media
 
@@ -81,36 +74,37 @@ module Stamps
       end
     end
 
-    class Printer < Browser::StampsModal
-      attr_reader :dropdown, :textbox
+    class OrdersPrinter < Browser::StampsModal
+      def dropdown
+        @dropdown = StampsElement.new(browser.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")) if @dropdown.nil? || !@dropdown.present?
+        @dropdown
+      end
 
-      def initialize(param)
-        super
-        @dropdown = StampsElement.new browser.div id: "sdc-printpostagewindow-printerdroplist-trigger-picker"
-        @textbox = StampsTextBox.new browser.text_field id: "sdc-printpostagewindow-printerdroplist-inputEl"
+      def textbox
+        @textbox = StampsTextBox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")) if @textbox.nil? || !@textbox.present?
+        @textbox
       end
 
       def select(selection)
-        begin
-          selection_label = StampsElement.new browser.li(text: selection)
-
-          15.times do
-            return textbox.text  if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
-            dropdown.click unless selection_label.present?
-            selection_label.click
-          end
-          expect("Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.").to eql ""
-        end unless textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+        selection_label = StampsElement.new(browser.li(text: /#{selection}/))
+        15.times do
+          return textbox.text if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+          dropdown.click unless selection_label.present?
+          selection_label.click
+        end
+        nil
       end
     end
 
-    class PaperTray < Browser::StampsModal
-      attr_reader :dropdown, :textbox
+    class OrdersPaperTray < Browser::StampsModal
+      def dropdown
+        @dropdown = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]") if @dropdown.nil? || !@dropdown.present?
+        @dropdown
+      end
 
-      def initialize(param)
-        super
-        @dropdown = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")
-        @textbox = StampsTextBox.new browser.text_field(name: "paperTrays")
+      def textbox
+        @textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")) if @textbox.nil? || !@textbox.present?
+        @textbox
       end
 
       def select(selection)
@@ -125,62 +119,69 @@ module Stamps
       end
     end
 
-    class StartingLabel < Browser::StampsModal
-      attr_reader :left_label, :right_label
-
-      def initialize(param)
-        super
-        @left_label = StampsElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")
-        @right_label = StampsElement.new browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")
+    class OrdersStartingLabel < Browser::StampsModal
+      def left_label
+        @left_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")) if @left_label.nil? || !@left_label.present?
+        @left_label
       end
 
-      def left
-        10.times{
+      def right_label
+        @right_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")) if @right_label.nil? || !@right_label.present?
+        @right_label
+      end
+
+      def textbox
+        @textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")) if @textbox.nil? || !@textbox.present?
+        @textbox
+      end
+
+      def select_left_label
+        10.times do
           begin
             left_label.click
             break if (left_label.attribute_value "class").include? 'selected'
           rescue
             false
           end
-        }
+        end
         (left_label.attribute_value "class").include? 'selected'
       end
 
-      def right
-        10.times{
+      def select_right_label
+        10.times do
           begin
             right_label.click
             break if (right_label.attribute_value "class").include? 'selected'
           rescue
             false
           end
-        }
+        end
         (right_label.attribute_value "class").include? 'selected'
       end
 
       def left_selected?
-        label_selected? left_label
+        label_selected?(left_label)
       end
 
       def right_selected?
-        label_selected? right_label
+        label_selected?(right_label)
       end
 
-      def label_selected? div
-        8.times{
+      def label_selected?(div)
+        8.times do
           selected = (div.attribute_value 'class').include? 'selected'
           logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
           break if selected
-        }
+        end
         (div.attribute_value 'class').include? 'selected'
       end
 
       def default_selected?
-        label_selected? left_label
+        label_selected?(left_label)
       end
     end
 
-    class PrintOptions < Browser::StampsModal
+    class OrdersPrintOptions < Browser::StampsModal
       def hide_postage_value
         checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
         verify_field = checkbox_field.parent.parent.parent
@@ -232,7 +233,7 @@ module Stamps
       end
     end
 
-    class UspsTerms < Browser::StampsModal
+    class OrdersUspsTerms < Browser::StampsModal
       attr_reader :agree_to_terms, :cancel
 
       def initialize(param)
@@ -272,7 +273,8 @@ module Stamps
       end
     end
 
-    class DatePicker < Browser::StampsModal
+    #todo-Rob clean up orders date picker
+    class OrdersDatePicker < Browser::StampsModal
 
       def todays_date_div
         browser.div css: "div[title='Today']"
@@ -355,97 +357,73 @@ module Stamps
       end
     end
 
-    class ShipDate < Browser::StampsModal
-      attr_reader :textbox, :date_picker, :textbox_cc
-
-      def initialize(param)
-        super
-        @textbox = StampsTextBox.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
-        @textbox_cc = StampsTextBox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
-        @date_picker = DatePicker.new(param)
-      end
-
-      def text
-        sleep(0.35)
-        5.times do
-          return textbox.text if textbox.present?
-          return textbox_cc.text if textbox_cc.present?
-        end
-      end
-    end
-
-
-
-    class OrdersPrintModal < Browser::StampsModal
-
-      attr_reader :starting_label, :paper_tray, :date_picker, :printing_on, :ship_date, :print_options, :window_x_button,
-                  :print_sample_button, :printer, :email_tracking_details, :print_envelope_btn, :print_button
-
-      def initialize(param)
-        super
-        @printing_on = PrintingOn.new(param)
-        @printer = Printer.new(param)
-        @paper_tray = PaperTray.new(param)
-        @ship_date = ShipDate.new(param)
-        @starting_label = StartingLabel.new(param)
-        @print_options = PrintOptions.new(param)
-
-        @print_button = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl'))
-        @print_sample_button = StampsElement.new(browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl'))
-        @print_envelope_btn = StampsElement.new(browser.span(text: 'Print Envelope'))
+    class OrdersShipDate < Browser::StampsModal
+      def cache
+        @cache ||= {}
       end
 
       def present?
+        textbox.present?
+      end
+
+      def wait_until_present(*args)
+        textbox.wait_until_present(*args)
+      end
+
+      def date_picker
+        (cache[:date_picker].nil? || !cache[:date_picker].present?)?cache[:date_picker] = OrdersDatePicker.new(param):cache[:date_picker]
+      end
+
+      def textbox
+        (cache[:textbox].nil? || !cache[:textbox].present?)?cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id=sdc-printpostagewindow-shipdate-innerCt] input[id^=datefield]")):cache[:textbox]
+      end
+    end
+
+    #todo-Rob is this needed?
+    class OrdersPrintModalFields < Browser::StampsModal
+
+    end
+
+    #todo-Rob is this needed?
+    class OrdersPrintModal < Browser::StampsModal
+
+    end
+
+    module OrdersUpperPrintModal
+      def present?
         printing_on.present?
-      end
-
-      def close_window
-        window_x_button.click_while_present
-      end
-
-      def click
-        starting_label_tag = StampsElement.new(browser.span(text: "Starting Label:"))
-        20.times do
-          starting_label_tag.click
-        end
       end
 
       def wait_until_present(*args)
         print_button.wait_until_present(*args)
       end
 
-      def print
-        15.times do
-          begin
-            print_button.click
-            sleep(0.35)
-            print_button.click
-            sleep(0.35)
-            printing_error = printing_error_check
-            return printing_error if printing_error.length > 1
-            break unless print_button.present?
-          rescue
-            true
-          end
-        end
-        ""
+      def printing_on
+        (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on] = OrdersPrintMediaDropList.new(param):cache[:printing_on]
       end
 
+      def printer
+        (cache[:printer].nil? || !cache[:printer].present?)?cache[:printer] = OrdersPrinter.new(param):cache[:printer]
+      end
+
+      def paper_tray
+        (cache[:paper_tray].nil? || !cache[:paper_tray].present?)?cache[:paper_tray] = OrdersPaperTray.new(param):cache[:paper_tray]
+      end
+
+      def ship_date
+        (cache[:ship_date].nil? || !cache[:ship_date].present?)?cache[:ship_date] = OrdersShipDate.new(param):cache[:ship_date]
+      end
+
+      private
+      def cache
+        @cache ||= {}
+      end
+    end
+
+    module OrdersPrintModalFooter
       def print_expecting_rating_error
         postage
         RatingError.new(param).wait_until_present
-      end
-
-      def labels_ready_to_print
-        title[/\d+/]
-      end
-
-      def label_sheet_required_count
-        browser.label(css: 'label[class*=label-sheets-requred]').text.gsub(/[^\d]/, '')
-      end
-
-      def title
-        StampsElement.new(browser.div(css: "div[id^=printwindow]>div[id^=title]>div[id^=title]")).text
       end
 
       def print_sample
@@ -458,103 +436,75 @@ module Stamps
         self
       end
 
-      def print_sample_expecting_error
-        print_sample_button.when_present.click
-        printing_error_check
-        self
-      end
-
-      def error_ok_button
-        browser.span text: 'OK'
-      end
-
-      def error_message
-        browser.div(css: 'div[class=x-autocontainer-outerCt][id^=dialoguemodal]>div[id^=dialoguemodal]').text
-      end
-
-      def close
-        begin
-          x_button.click
-        rescue
-          #ignore
-        end
-      end
-
-      # todo-rob Test Print Total cost
       def total_cost
         test_helper.dollar_amount_str(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
       end
 
-      def check_naws_plugin_error
-        begin
-          error_label = browser.div text: 'Error'
-          if error_label.present?
-            @printing_error = true
-            ptags = browser.ps css: 'div[id^=dialoguemodal]>p'
-            logger.info "-- Chrome NAWS Plugin Error --"
-            ptags.each do |p_tag| logger.info "\n#{StampsElement.new(p_tag).text}" end
-            logger.info "-- Chrome NAWS Plugin Error --"
-            if error_ok_button.present?
-              error_message = self.error_message
-              5.times {
-                error_ok_button.click
-                break unless error_ok_button.present?
-              }
-              close
-            end
-            close
+      def print
+        15.times do
+          begin
+            print_button.click
+            sleep(0.25)
+            #printing_error = printing_error_check
+            #return printing_error if printing_error.length > 1
+            return true unless print_button.present?
+          rescue
+            #ignore
           end
-        rescue
-          #ignore
         end
-        @printing_error
+        false
       end
 
-      def printing_error_check
-        @printing_error = ""
-        incomplete_order_window = StampsElement.new browser.div text: "Incomplete Order"
-        error_window = StampsElement.new browser.div text: "Error"
-        ok_button = StampsElement.new browser.span text: 'OK'
-        message_label = StampsElement.new((browser.divs css: "div[id^=dialoguemodal][class=x-autocontainer-innerCt]").first)
-
-        sleep(2)
-
-        if error_window.present? || incomplete_order_window.present?
-          window_text = error_window.text
-          err_msg = message_label.text
-          @printing_error = "#{window_text} \n #{(err_msg)}"
-          logger.info "Printing Error: \n#{@printing_error}"
-        end
-
-        if ok_button.present?
-          logger.info "Error Window OK button"
-          ok_button.click
-          ok_button.click
-          ok_button.click
-        end
-        @printing_error
+      def print_sample_button
+        cache[:print_sample_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')) if cache[:print_sample_button].nil? || !cache[:print_sample_button].present?
+        cache[:print_sample_button]
       end
 
-      def x_button
-        browser.elements(css: 'img[class*=x-tool-close]').last
+      def print_button
+        cache[:print_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')) if cache[:print_button].nil? || !cache[:print_button].present?
+        cache[:print_button]
       end
 
-      def printer_label
-        browser.label text: 'Printer:'
+      private
+      def cache
+        @cache ||= {}
+      end
+    end
+
+    module OrdersPrintModalTitle
+      def window_title
+        @window_title = StampsElement.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')) if@window_title.nil? || !@window_title.present?
+        @window_title
       end
 
-      def printer_field
-        browser.text_field name: 'printers'
+      def label_count
+        window_title.text.gsub(/[^\d]/, '').to_i
       end
 
-      def paper_tray_field
-        browser.text_field name: 'paperTrays'
+      def x_image
+        @x_image = StampsElement.new(browser.img(css: "[id^=printwindow-] [class*=close]")) if @x_image.nil? || !@x_image.present?
+        @x_image
       end
 
-      def click_print_button
-        print_button.click
+      def close
+        x_image.click_while_present
+      end
+    end
+
+    class OrdersPrintModal < Browser::StampsModal
+      include OrdersPrintModalTitle
+      include OrdersUpperPrintModal
+      include OrdersPrintModalFooter
+
+      def starting_label
+        @starting_label = OrdersStartingLabel.new(param) if @starting_label.nil? || !@starting_label.present?
+        @starting_label
       end
 
+      def print_options
+        @print_options = OrdersPrintOptions.new(param) if @print_options.nil? || !@print_options.present?
+        @print_options
+      end
     end
 
     class RePrintModal < OrdersPrintModal

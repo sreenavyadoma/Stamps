@@ -15,9 +15,6 @@ Before do  |scenario|
   test_config.scenario_name=scenario.name
   test_config.logger.message "-"
   test_config.logger.message "-"
-  test_param[:web_app] = ENV['WEB_APP']
-  test_param[:url] = ENV['URL']
-  test_param[:test] = ENV['USER_CREDENTIALS']
   test_config.logger.message "-"
   test_config.logger.message "Running Tests..."
   test_config.logger.message "-"
@@ -31,18 +28,15 @@ Before do  |scenario|
   test_config.logger.message "-"
   test_config.logger.message "-"
   # MySql
-  begin
-    if modal_param.web_app == :mail || modal_param.web_app == :orders
-      if (!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?)
-        test_param[:username] = ENV['USR']
-        test_param[:password] = ENV['PW']
-      else
-        credentials = user_credentials.fetch(scenario.tags[0].name)
-        test_param[:username] = credentials[:username]
-        test_param[:password] = credentials[:password]
-      end
+  if modal_param.web_app == :mail || modal_param.web_app == :orders
+    if test_param[:username].nil? || test_param[:username].downcase == 'default' || test_param[:username].downcase == 'mysql'
+      credentials = user_credentials.fetch(scenario.tags[0].name)
+      test_param[:username] = credentials[:username]
+      test_param[:password] = credentials[:password]
     end
-  end unless modal_param.web_app == :registration
+  end
+  expect(test_param[:username]).to be_truthy
+  expect(test_param[:password]).to be_truthy
 end
 
 After do |scenario|

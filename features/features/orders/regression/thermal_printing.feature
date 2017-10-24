@@ -15,7 +15,7 @@ Feature: Thermal Printer
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Roll - 4 x 6"
     Then click print modal print button
     Then Sign out

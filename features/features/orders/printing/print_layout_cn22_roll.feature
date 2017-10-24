@@ -17,7 +17,7 @@ Feature: Print 1 Intl CN22 label on 4x6 Roll
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
     Then click print modal print button
     Then Sign out
