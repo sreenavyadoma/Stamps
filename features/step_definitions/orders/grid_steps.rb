@@ -50,17 +50,15 @@ When /^[Cc]heck [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
 end
 
 When /^[Uu]ncheck [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
-  stamps.orders.orders_grid.grid_column(:checkbox).uncheck(row)
-  expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(row)).to be(false), "Can't uncheck Orders Grid row #{row}"
+  expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Date Printed for this order is today$/ do
-  expect(stamps.orders.orders_grid.grid_column(:date_printed).data(test_param[:order_id][1])).to eql(Date.today.strftime "%b %-d")
+  expect(stamps.orders.orders_grid.grid_column(:date_printed).data(test_param[:order_id][1])).to eql(Date.today.strftime("%b %-d"))
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Date for this order is today(?:| plus (\d+))$/ do |day|
-  expectation = test_helper.valid_shipdate(day)
-  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id][1])).to eql expectation
+  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id][1])).to eql(test_helper.valid_shipdate(day))
 end
 
 Then /^[Ee]xpect Ship-To address is;$/ do |table|

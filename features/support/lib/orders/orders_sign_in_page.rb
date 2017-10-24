@@ -187,9 +187,9 @@ module Stamps
                   username(usr)
                   password(pw)
                   login
-                  wait_while_present(2)
+                  wait_while_present(3)
 
-                  expect("Server Error").to eql(server_error.message) if server_error.present?
+                  expect(server_error).to_not be_present, server_error.message
 
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?

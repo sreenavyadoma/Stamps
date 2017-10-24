@@ -399,23 +399,19 @@ module Stamps
       end
 
       def printing_on
-        cache[:printing_on] = OrdersPrintMediaDropList.new(param) if cache[:printing_on].nil? || !cache[:printing_on].present?
-        cache[:printing_on]
+        (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on] = OrdersPrintMediaDropList.new(param):cache[:printing_on]
       end
 
       def printer
-        cache[:printer] = OrdersPrinter.new(param) if cache[:printer].nil? || !cache[:printer].present?
-        cache[:printer]
+        (cache[:printer].nil? || !cache[:printer].present?)?cache[:printer] = OrdersPrinter.new(param):cache[:printer]
       end
 
       def paper_tray
-        cache[:paper_tray] = OrdersPaperTray.new(param) if cache[:paper_tray].nil? || !cache[:paper_tray].present?
-        cache[:paper_tray]
+        (cache[:paper_tray].nil? || !cache[:paper_tray].present?)?cache[:paper_tray] = OrdersPaperTray.new(param):cache[:paper_tray]
       end
 
       def ship_date
-        cache[:ship_date] = OrdersShipDate.new(param) if cache[:ship_date].nil? || !cache[:ship_date].present?
-        cache[:ship_date]
+        (cache[:ship_date].nil? || !cache[:ship_date].present?)?cache[:ship_date] = OrdersShipDate.new(param):cache[:ship_date]
       end
 
       private
