@@ -3,12 +3,6 @@ Then /^[Rr]un rate test FCM Package$/ do
   step "run rate sheet #{param_sheet}"
 end
 
-
-
-
-
-
-
 Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
   zone = 1
 

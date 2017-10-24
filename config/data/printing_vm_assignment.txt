@@ -80,10 +80,10 @@ xxxxxxxx, xxxxxxxx, xxxxxxxx
 Printing: SC
 
 jenkinsvm17, scg335yuz
-jenkinsvm18, scktdc9kq2r
-jenkinsvm19, schl0vlbfy2673
+jenkinsvm18, scktdc9kq2r      mail_bvt_stamps
+jenkinsvm19, schl0vlbfy2673   mail_bvt_extra_services
 jenkinsvm20, scv35fw4zw6t1s
-jenkinsvm21, scorv39u6m10ym
+jenkinsvm21, scorv39u6m10ym   mail_bvt_netstamps_specify
 jenkinsvm22, scud9fwbxicb
-jenkinsvm23, sclv6pm3r
+jenkinsvm23, sclv6pm3r        mail_bvt_international
 
