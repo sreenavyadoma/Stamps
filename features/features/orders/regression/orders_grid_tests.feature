@@ -53,7 +53,7 @@ Feature: in Orders Grid, Tracking & Order Status
     Then set Order Details form Tracking to USPS Tracking
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    #Then set Print modal Printer to "factory"
+    #Then set Orders print modal printer
     Then click print modal print button
     Then select Filter Panel tab Shipped
     #Then in Orders Grid, Sort Order ID in Descending Order

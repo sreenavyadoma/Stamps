@@ -23,7 +23,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -47,7 +47,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button
@@ -115,7 +115,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Orders Grid row 6
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -183,7 +183,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
     Then check Orders Grid row 6
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button

@@ -41,7 +41,7 @@ Feature: Print 1 Intl CP72 label
 
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -80,7 +80,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -132,7 +132,7 @@ Feature: Print 1 Intl CP72 label
     Then Pause for 2 seconds
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     Then click print modal print button
@@ -152,7 +152,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
     
@@ -221,7 +221,7 @@ Feature: Print 1 Intl CP72 label
     Then close Customs Information form
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾""
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     Then click print modal print button
@@ -263,7 +263,7 @@ Feature: Print 1 Intl CP72 label
 
     Then in Orders Toolbar, click Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
     

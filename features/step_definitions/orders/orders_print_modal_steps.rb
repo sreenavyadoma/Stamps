@@ -19,8 +19,15 @@ Then /^[Ii]n Print modal, click Close button$/ do
 end
 
 Then /^[Ss]et Print modal Printer to \"(.*)\"$/ do |printer|
-  stamps.orders.orders_toolbar.print_btn.print_modal.printer.select printer
+  stamps.orders.orders_toolbar.print_btn.print_modal.printer.select(printer)
 end
+
+Then /^[Ss]et [Oo]rders [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
+  test_param[:printer] = (printer.nil?)? modal_param.printer : printer
+  expect(test_param[:printer]).to match(/\\.+\.*/) if test_param[:printer].include?('\\') #validate printer format
+  step "expect mail print modal is present"
+end
+
 
 Then /^ReIn Print modal, Reprint$/ do
   stamps.orders.orders_toolbar.reprint.reprint
@@ -32,7 +39,7 @@ end
 
 Then /^[Ss]et Print modal Ship Date to today plus (\d+)$/ do |day|
   ship_date = test_helper.now_plus_mon_dd_excl_sunday(day)
-  @ship_date = stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.date_picker.today_plus(day)
+  @ship_date = stamps.orders.orders_toolbar.print_btn.print_modal.ship_date.date_picker.today_plus(ship_date)
 end
 
 Then /^[Ii]n Print modal, check Hide Mail Value$/ do
