@@ -47,7 +47,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then add Customs form Associated Item 31, Description random, Qty 1, Price 30, Made In United States, Tariff 31
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Roll - 4" x 6" Shipping Label"
     Then click print modal print button Sample
     Then click print modal print button

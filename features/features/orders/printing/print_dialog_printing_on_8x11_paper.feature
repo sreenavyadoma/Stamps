@@ -12,9 +12,9 @@ Feature: Print Media - Shipping Label: 8 ½" x 11" Paper
     Then set Order Details form Pounds to 1
     Then set Order Details form Ounces to 1
     Then Pause for 2 seconds
-    Then in Orders Toolbar, click Print button
+    Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
-    Then set Print modal Printer to "factory"
+    Then set Orders print modal printer
     Then click print modal print button
     Then Sign out
 

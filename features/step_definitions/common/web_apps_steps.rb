@@ -72,12 +72,12 @@ Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
 end
 
 Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
-  stamps.load_sign_in_page
+  stamps.orders.landing_page.load_sign_in_page
 end
 
 Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
-  stamps.orders.landing_page.orders_sign_in(username, password) if modal_param.web_app == :orders
-  stamps.mail.sign_in_modal.mail_sign_in(username, password) if modal_param.web_app == :mail
+  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if modal_param.web_app == :orders
+  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if modal_param.web_app == :mail
 end
 
 Then /^[Ss]ign out$/ do

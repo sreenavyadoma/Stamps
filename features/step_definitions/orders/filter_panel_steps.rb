@@ -37,12 +37,14 @@ Then /^Filter Panel: Expand Panel$/ do
   stamps.orders.filter_panel.menu_item.expand.click
 end
 
+#todo-Rob In left Filter Panel, expect Shipped Tab Date Printed is today
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Date Printed is today$/ do
   today = test_helper.now_plus_mon_dd 0
   stamps.orders.filter_panel.shipped.select.date_printed.sort_descending
   actual_print_date = stamps.orders.filter_panel.shipped.select.date_printed.row 1
 end
 
+#todo-Rob is this needed?
 Then /^[Ii]n left Filter Panel, expect Shipped Tab Ship Date is today$/ do
 
 end
