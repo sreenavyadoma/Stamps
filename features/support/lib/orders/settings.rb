@@ -1,8 +1,78 @@
 module Stamps
   module Orders
     #todo-rob updates SettingsModal tests
+
+
+    class StoresSettings < Browser::StampsModal
+      def add
+        button = StampsElement.new browser.span(id: "addStoreButton-btnIconEl")
+        modal = Stores::MarketPlace.new(param)
+        label_unavailable = LabelUnavailable.new(param)
+        15.times do
+          return modal if modal.present?
+          return label_unavailable if label_unavailable.present?
+          button.click
+        end
+        Stores::MarketPlace.new(param)
+      end
+
+      def edit
+
+      end
+
+      def reconnect
+
+      end
+
+      def delete
+
+      end
+
+      def select store
+
+      end
+
+      def present?
+        browser.span(id: "addStoreButton-btnIconEl").present?
+      end
+
+    end
+
+
     class SettingsModal < Browser::StampsModal
 
+
+      def general_settings
+
+      end
+
+      def stores_settings
+        button = StampsElement.new browser.span(text: "Stores")
+        modal = StoresSettings.new(param)
+        label_unavailable = LabelUnavailable.new(param)
+        15.times do
+          return modal if modal.present?
+          return label_unavailable if label_unavailable.present?
+          button.click
+        end
+        StoresSettings.new(param)
+      end
+
+      def international_settings
+
+      end
+
+      def label_messages_settings
+
+      end
+
+      def present?
+        browser.div(text: "Orders Settings").present?
+      end
+
+
+
+=begin
       def checkbox_status_array
         browser.divs css: 'div[class*=x-form-type-checkbox]'
       end
@@ -201,6 +271,7 @@ module Stamps
         #browser.div(css: "body>div[id^=userprefswindow]>div:nth-child(2)>div>div>div>div>div:nth-child(#{box_row})>div>div>div>div>div").attribute_value("class").include? 'x-form-cb-checked'
 
       end
+=end
 
     end
 

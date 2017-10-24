@@ -1,15 +1,14 @@
-default: --backtrace --profile rob_mail_cc
+default: --backtrace --profile rob_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
-kaushal_mail: --tags @mail_print_shipping_label_sdc1200_with_receipt WEB_APP=mail JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=Brother HL-2270DW
-kaushal_order: --tags @automation_rule WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
-Kaushal_sc: --tags @international_rules WEB_APP=orders JENKINS=true URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false  USR=default PW=pass111 DEBUG=true
+kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
+kaushal_orders: --tags @bvt_all_tests WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
 #robcm=ccpryiihrjz ccfb311osps4x
 rob: --tags @filter_panel WEB_APP=orders JENKINS=true URL=sc  PW=pass111 USR=default --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-rob_cc: --tags @print_dialog_ship_date WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+rob_cc: --tags @print_dialog_ship_date_scenario WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 rob_stg: --tags @bulk_update_int WEB_APP=orders JENKINS=true URL=stg DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false USR=stgee1mtqvwdc0 PW=pass111
 rob_sc: --tags @bulk_update_int WEB_APP=orders JENKINS=true URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=edge MAX_WINDOW=selenium  USR=default PW=pass111 DEBUG=true # c2jinmzmu64
 kaushal_registration: --tags @registration_security_questions_happy_path WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false JENKINS=true
@@ -27,8 +26,8 @@ eli_dev: --tags @mail_bvt_stamps --guess DEBUG=false JENKINS=false HEALTHCHECK=t
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 eva_dev: --tags @details_panel --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc USR=ss_cctest3 PW=password1 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 kaushal: --tags @print_two_up_expanded_paper WEB_APP=orders JENKINS=true USR=ccpryiihrjz PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
-kaushal_mailf: --tags @mail_bvt_purchasing WEB_APP=mail JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
-kaushal_orders: --tags @grid_automation_test WEB_APP=orders JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+kaushal_mail: --tags @mail_bvt_purchasing WEB_APP=mail JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
+kaushal_orders: --tags @orders_grid_tests WEB_APP=orders JENKINS=true USR=cccodfy3lh PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
@@ -203,7 +202,6 @@ registration_security_questions_happy_path: --tags @registration_security_questi
 mail_print_shipping_label_8x11: --tags @mail_print_shipping_label_8x11 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail_print_shipping_label_8x11 PRINTER=factory
 
 search_orders: --tags @search_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-search_orders_on_hold: --tags @search_orders_on_hold --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 output_username: --tags @output_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 generate_username: --tags @generate_username --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
@@ -315,7 +313,6 @@ tooltip_customs_form: --tags @tooltip_customs_form --guess DEBUG=false JENKINS=t
 tooltips: --tags @tooltips --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_reference_no: --tags @details_reference_no --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 customs_form_qty: --tags @customs_form_qty --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-grid_automation_test: --tags @grid_automation_test --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 orders_grid_tests: --tags @orders_grid_tests --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 grid_insured_value: --tags @grid_insured_value --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 grid_order_status: --tags @grid_order_status --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
@@ -338,8 +335,7 @@ auto_suggest: --tags @auto_suggest --guess DEBUG=false JENKINS=true HEALTHCHECK=
 new_country: --tags  @new_country --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_panel: --tags  @details_panel --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 details_order: --tags  @details_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-automation_rule: --tags @automation_rule --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+import_updated_orders: --tags  @import_updated_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
@@ -395,10 +391,10 @@ amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP
 mail_authentication: --tags  @mail_authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 mail_bvt_contacts: --tags  @mail_bvt_contacts --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
-mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_bvt_envelopes: --tags  @mail_bvt_envelopes --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 mail_bvt_extra_services: --tags  @mail_bvt_extra_services --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 mail_bvt_purchasing: --tags  @mail_bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
-mail_bvt_stamps: --tags  @mail_bvt_stamps --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+mail_bvt_stamps: --tags  @mail_bvt_stamps --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 mail_bvt_international: --tags  @mail_bvt_international --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 
 dev_mail_authentication: --tags  @mail_authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail 
@@ -412,7 +408,6 @@ dev_mail_bvt_international: --tags  @mail_bvt_international --guess DEBUG=false 
 
 mail_print_label_left_side: --tags  @mail_print_label_left_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_label_right_side: --tags  @mail_print_label_right_side --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_certified_mail_hidden_postage: --tags  @mail_print_certified_mail_hidden_postage --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
 mail_print_envelope_6_7_9_11_12: --tags @mail_print_envelope_6_7_9_11_12 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_envelope_10_A2_A9: --tags @mail_print_envelope_10_A2_A9 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
@@ -422,7 +417,7 @@ mail_print_roll_4_1_8_x_6_1_4_mm_xm: --tags @mail_print_roll_4_1_8_x_6_1_4_mm_xm
 mail_print_roll_4_1_8_x_6_1_4_pm_box: --tags @mail_print_roll_4_1_8_x_6_1_4_pm_box --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package: --tags @mail_print_roll_4_1_8_x_6_1_4_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
-mail_print_roll_4_x_6_fcm_psg: --tags @mail_print_roll_4_x_6_fcm_psg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+mail_print_roll_4_x_6_fcm_psg: --tags @mail_print_roll_4_x_6_fcm_psg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_roll_4_x_6_mm_xm: --tags @mail_print_roll_4_x_6_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_roll_4_x_6_pm_box: --tags @mail_print_roll_4_x_6_pm_box --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_roll_4_x_6_pm_envelope_package: --tags @mail_print_roll_4_x_6_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
@@ -451,7 +446,6 @@ mail_print_sample_shipping_label_sdc1200_fcm_psg: --tags @mail_print_sample_ship
 mail_print_sample_shipping_label_sdc1200_mm_xm: --tags @mail_print_sample_shipping_label_sdc1200_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_sample_shipping_label_sdc1200_pm_box: --tags @mail_print_sample_shipping_label_sdc1200_pm_box --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_sample_shipping_label_sdc1200_pm_envelope_package: --tags @mail_print_sample_shipping_label_sdc1200_pm_envelope_package --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
-mail_print_shipping_label_sdc1200_with_receipt: --tags @mail_print_shipping_label_sdc1200_with_receipt --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 
 mail_print_shipping_label_sdc1200_fcm_psg: --tags @mail_print_shipping_label_sdc1200_fcm_psg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_shipping_label_sdc1200_mm_xm: --tags @mail_print_shipping_label_sdc1200_mm_xm --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory

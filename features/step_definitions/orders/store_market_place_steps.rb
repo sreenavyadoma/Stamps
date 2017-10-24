@@ -6,9 +6,8 @@ Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation
   expect(actual).to eql expectation
 end
 
-Then /^Marketplace: Select PayPal$/ do
-  @market_place.should_not be_nil
-  @store = @market_place.paypal
+Then /^[Ss]elect Paypal on Marketplace modal$/ do
+  stamps.orders.orders_toolbar.settings.stores_settings.add.paypal
 end
 
 Then /^Marketplace: Select Big Commerce$/ do
