@@ -26,20 +26,7 @@ Then /^[Ii]n Orders Toolbar, Refresh Orders$/ do
   stamps.orders.orders_toolbar.refresh_orders
 end
 
-Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is present$/ do
-  expect(stamps.orders.orders_print_modal.present?).to be_truthy
-end
-
-Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint button$/ do
-  print_modal = stamps.orders.orders_toolbar.toolbar_print.click
-  @ship_date = print_modal.ship_date.text
-  @paper_tray = print_modal.paper_tray.textbox.text
-  @printer = print_modal.printer.textbox.text
-  @printing_on = print_modal.printing_on.textbox.text
-  @printing_error = print_modal.print
-  sleep(4)
-end
-
+#todo-Rob Revisit Reprinting tests, make it part of Printing tests
 Then /^[Ii]n Print modal, Open Reprint Modal$/ do
   @reprint_modal = stamps.orders.orders_toolbar.reprint
 end

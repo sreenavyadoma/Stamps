@@ -86,15 +86,13 @@ module Stamps
       end
 
       def select(selection)
-        begin
-          selection_label = StampsElement.new browser.li(text: selection)
-          15.times do
-            return textbox.text  if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
-            dropdown.click unless selection_label.present?
-            selection_label.click
-          end
-          expect("Unable to select Printer #{selection}.  Check and make sure the printer exist in this PC.").to eql ""
-        end unless textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+        selection_label = StampsElement.new(browser.li(text: /#{selection}/))
+        15.times do
+          return textbox.text if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
+          dropdown.click unless selection_label.present?
+          selection_label.click
+        end
+        nil
       end
     end
 
@@ -275,6 +273,7 @@ module Stamps
       end
     end
 
+    #todo-Rob clean up orders date picker
     class OrdersDatePicker < Browser::StampsModal
 
       def todays_date_div
@@ -359,28 +358,33 @@ module Stamps
     end
 
     class OrdersShipDate < Browser::StampsModal
-      attr_reader :textbox, :date_picker, :textbox_cc
-
-      def initialize(param)
-        super
-        @textbox = StampsTextBox.new browser.text_field(css: "input[id^=datefield-][id$=-inputEl]")
-        @textbox_cc = StampsTextBox.new browser.text_field(id: "sdc-printpostagewindow-shipdate-inputEl")
-        @date_picker = OrdersDatePicker.new(param)
+      def cache
+        @cache ||= {}
       end
 
-      def text
-        sleep(0.35)
-        5.times do
-          return textbox.text if textbox.present?
-          return textbox_cc.text if textbox_cc.present?
-        end
+      def present?
+        textbox.present?
+      end
+
+      def wait_until_present(*args)
+        textbox.wait_until_present(*args)
+      end
+
+      def date_picker
+        (cache[:date_picker].nil? || !cache[:date_picker].present?)?cache[:date_picker] = OrdersDatePicker.new(param):cache[:date_picker]
+      end
+
+      def textbox
+        (cache[:textbox].nil? || !cache[:textbox].present?)?cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id=sdc-printpostagewindow-shipdate-innerCt] input[id^=datefield]")):cache[:textbox]
       end
     end
 
+    #todo-Rob is this needed?
     class OrdersPrintModalFields < Browser::StampsModal
 
     end
 
+    #todo-Rob is this needed?
     class OrdersPrintModal < Browser::StampsModal
 
     end
@@ -395,28 +399,28 @@ module Stamps
       end
 
       def printing_on
-        elements[:printing_on] = OrdersPrintMediaDropList.new(param) if elements[:printing_on].nil? || !elements[:printing_on].present?
-        elements[:printing_on]
+        cache[:printing_on] = OrdersPrintMediaDropList.new(param) if cache[:printing_on].nil? || !cache[:printing_on].present?
+        cache[:printing_on]
       end
 
       def printer
-        elements[:printer] = OrdersPrinter.new(param) if elements[:printer].nil? || !elements[:printer].present?
-        elements[:printer]
+        cache[:printer] = OrdersPrinter.new(param) if cache[:printer].nil? || !cache[:printer].present?
+        cache[:printer]
       end
 
       def paper_tray
-        elements[:paper_tray] = OrdersPaperTray.new(param) if elements[:paper_tray].nil? || !elements[:paper_tray].present?
-        elements[:paper_tray]
+        cache[:paper_tray] = OrdersPaperTray.new(param) if cache[:paper_tray].nil? || !cache[:paper_tray].present?
+        cache[:paper_tray]
       end
 
       def ship_date
-        elements[:ship_date] = OrdersShipDate.new(param) if elements[:ship_date].nil? || !elements[:ship_date].present?
-        elements[:ship_date]
+        cache[:ship_date] = OrdersShipDate.new(param) if cache[:ship_date].nil? || !cache[:ship_date].present?
+        cache[:ship_date]
       end
 
       private
-      def elements
-        @elements ||= {}
+      def cache
+        @cache ||= {}
       end
     end
 
@@ -444,30 +448,30 @@ module Stamps
         15.times do
           begin
             print_button.click
-            print_button.click
-            sleep(0.35)
-            printing_error = printing_error_check
-            return printing_error if printing_error.length > 1
-            break unless print_button.present?          rescue
-            true
+            sleep(0.25)
+            #printing_error = printing_error_check
+            #return printing_error if printing_error.length > 1
+            return true unless print_button.present?
+          rescue
+            #ignore
           end
         end
-        ""
+        false
       end
 
       def print_sample_button
-        elements[:print_sample_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')) if elements[:print_sample_button].nil? || !elements[:print_sample_button].present?
-        elements[:print_sample_button]
+        cache[:print_sample_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')) if cache[:print_sample_button].nil? || !cache[:print_sample_button].present?
+        cache[:print_sample_button]
       end
 
       def print_button
-        elements[:print_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')) if elements[:print_button].nil? || !elements[:print_button].present?
-        elements[:print_button]
+        cache[:print_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')) if cache[:print_button].nil? || !cache[:print_button].present?
+        cache[:print_button]
       end
 
       private
-      def elements
-        @elements ||= {}
+      def cache
+        @cache ||= {}
       end
     end
 

@@ -18,8 +18,6 @@ Feature: Set Print Ship Date to Today
     Then set Print modal Ship Date to today
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
-    Then set Orders print modal printer factory
-    Then set Orders print modal printer \\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet
     Then click print modal print button
     Then Pause for 2 seconds
     Then select Filter Panel tab Shipped
@@ -35,6 +33,7 @@ Feature: Set Print Ship Date to Today
     Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
+    Then set Print modal Ship Date to today
     Then set Print modal Ship Date to today plus 1
     Then click print modal print button
     Then Pause for 2 seconds

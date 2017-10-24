@@ -1,3 +1,4 @@
+#todo-Rob set Print modal Email Tracking Details to Recipient to checked
 Feature: ORDERSAUTO-30 Add Tracking Email Option in Print Dialog
 
   Background:

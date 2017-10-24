@@ -271,11 +271,9 @@ module Stamps
       (Date.today + day.to_i).strftime "%b %-d"
     end
 
-    def now_plus_mon_dd_excl_sunday(day)
-      if Date.today.wday + day.to_i == 7
-        return (Date.today + day.to_i + 1).strftime "%b %-d"
-      end
-      (Date.today + day.to_i).strftime "%b %-d"
+    # add +1 to day if day is a Sunday. We don't ship on Sundays.
+    def valid_shipdate(day)
+      ((Date.today + day.to_i).wday == 0)? (Date.today + day.to_i + 1).strftime("%b %-d") : (Date.today + day.to_i).strftime("%b %-d")
     end
 
     def date_printed(*args)

@@ -3,7 +3,7 @@ module Stamps
 
     class ServerError < Browser::StampsModal
       def present?
-        (browser.divs(text: "Server Error").last).present?
+        browser.text.include?("Server Error")
       end
 
       def message

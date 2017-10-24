@@ -23,9 +23,26 @@ end
 
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
   test_param[:printer] = (printer.nil?)? modal_param.printer : printer
-  expect(test_param[:printer]).to match(/\\.+\.*/) if test_param[:printer].include?('\\') #validate printer format
+  if test_param[:printer].include?('\\') #validate printer format
+    expect(test_param[:printer]).to match(/\\.+\.*/)
+    test_param[:printer] = /\\\\(.+)\\/.match(test_param[:printer])[1]
+  end
   step "expect orders print modal is present"
-  stamps.orders.orders_print_modal.printer.select(test_param[:printer])
+  expect(stamps.orders.orders_print_modal.printer.select(test_param[:printer])).to_not be_nil, "Unable to select printer #{test_param[:printer]} for username #{test_param[:username]} in #{modal_param.web_app.to_s.capitalize} #{modal_param.test_env.upcase}"
+end
+
+Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is present$/ do
+  expect(stamps.orders.orders_print_modal).to be_present, "Orders Print Modal is not present"
+end
+
+Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint button$/ do
+  stamps.orders.orders_print_modal.print
+  # @ship_date = print_modal.ship_date.textbox.text
+  # @paper_tray = print_modal.paper_tray.textbox.text
+  # @printer = print_modal.printer.textbox.text
+  # @printing_on = print_modal.printing_on.textbox.text
+  # @printing_error = print_modal.print
+  # sleep(4)
 end
 
 Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is present$/ do
@@ -36,17 +53,13 @@ Then /^ReIn [Pp]rint modal, Reprint$/ do
   stamps.orders.orders_toolbar.reprint.reprint
 end
 
-Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today$/ do
-  step "set Print modal Ship Date to today plus 0"
-end
-
-Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today plus (\d+)$/ do |day|
-  ship_date = test_helper.now_plus_mon_dd_excl_sunday(day)
+Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today(?:| plus (\d+))$/ do |day|
+  ship_date = test_helper.valid_shipdate((day.nil?)?0:day.to_i)
   @ship_date = stamps.orders.orders_print_modal.ship_date.date_picker.today_plus(ship_date)
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do
-  stamps.orders.orders_print_modal.print_options.hide_postage_value.check
+  expect(stamps.orders.orders_print_modal.print_options.hide_postage_value).to
 end
 
 Then /^[Ii]n [Pp]rint modal, uncheck Hide Mail Value$/ do
@@ -94,7 +107,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) day\(s\) from today/ do |day|
-  expect(stamps.orders.orders_print_modal.ship_date.text).to eql test_helper.date_printed(day)
+  expect(stamps.orders.orders_print_modal.ship_date.textbox.text).to eql test_helper.date_printed(day)
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-On to \"(.*)\"$/ do |expectation|

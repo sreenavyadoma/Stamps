@@ -45,9 +45,9 @@ module Stamps
           super
           browser.text_field(css: "input[class*=x-form-checkbox]")
           browser.a(text: "Download Software for Windows")
-          @username_textbox = StampsTextBox.new(browser.text_field(css: "input[placeholder=USERNAME]"))
-          @password_textbox = StampsTextBox.new(browser.text_field(css: "input[placeholder=PASSWORD]"))
-          @sign_in_btn = StampsElement.new(browser.span(css: "div[id^=app-main-][id$=-targetEl]>div>div>div>div>div:nth-child(6)>div>div>a>span>span>span[id$=btnInnerEl]"))
+          @username_textbox = StampsTextBox.new(browser.text_field(css: "[placeholder=USERNAME]"))
+          @password_textbox = StampsTextBox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
+          @sign_in_btn = StampsElement.new(browser.span(text: "Sign In"))
 
           @title = StampsElement.new(browser.div(text: 'Sign In'))
           @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
@@ -168,11 +168,11 @@ module Stamps
 
         def orders_sign_in(usr, pw)
           begin
-            loading_orders = StampsElement.new browser.div(text: "Loading orders...")
-            invalid_username = StampsElement.new browser.span(id: "InvalidUsernameMsg")
+            loading_orders = StampsElement.new(browser.div(text: "Loading orders..."))
+            invalid_username = StampsElement.new(browser.span(id: "InvalidUsernameMsg"))
             new_welcome = NewWelcomeModal.new(param)
             security_questions = SecurityQuestionsSuccess.new(param)
-            server_error = ServerError.new(param)
+            server_error = Stamps::Orders::ServerError.new(param)
 
             expect(browser.url).to include "Orders"
 
@@ -187,7 +187,8 @@ module Stamps
                   username(usr)
                   password(pw)
                   login
-                  wait_while_present(5)
+                  wait_while_present(2)
+
                   expect("Server Error").to eql(server_error.message) if server_error.present?
 
                   security_questions.wait_until_present(2)

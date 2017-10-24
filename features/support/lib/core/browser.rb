@@ -238,6 +238,19 @@ module Stamps
         self
       end
 
+      def send_keys(symbol, iteration=1)
+        iteration.to_i.times do
+          begin
+            clear
+            textbox.send_keys(symbol) if present?
+            break if symbol.instance_of?(Symbol) || text == symbol
+          rescue
+            #ignore
+          end
+        end
+        self
+      end
+
       def append(txt)
         begin
           textbox.append(txt) if present?
@@ -368,7 +381,7 @@ module Stamps
           break if checked?
           checkbox.click
         end
-        self
+        checked?
       end
 
       def uncheck
@@ -378,7 +391,7 @@ module Stamps
             break unless checked?
           end
         end
-        self
+        checked?
       end
     end
 
