@@ -777,8 +777,20 @@ module Stamps
         end
 
         def settings
-          SettingsMenu.new(param)
+          button = StampsElement.new browser.span(id: "settingsButton-btnIconEl")
+          modal = SettingsModal.new(param)
+          label_unavailable = LabelUnavailable.new(param)
+          15.times do
+            return modal if modal.present?
+            return label_unavailable if label_unavailable.present?
+            button.click
+          end
+          SettingsModal.new(param)
         end
+
+#        def settings
+#          SettingsMenu.new(param)
+#        end
 
         def reprint
           button = StampsElement.new browser.span(text: "Reprint")

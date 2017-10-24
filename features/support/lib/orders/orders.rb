@@ -1,6 +1,24 @@
 module Stamps
   module Orders
+    module StoreMarketPlace
+      def cache
+        @cache ||= {}
+      end
+
+      def paypal
+        (cache[:paypal].nil? || !cache[:paypal].present?)?cache[:paypal] = PayPal.new(param):cache[:paypal]
+      end
+
+      def rakuten
+        (cache[:rakuten].nil? || !cache[:rakuten].present?)?cache[:rakuten] = RAkuten.new(param):cache[:rakuten]
+      end
+
+
+    end
+
     class WebOrders < Browser::StampsModal
+      include StoreMarketPlace
+
       def orders_toolbar
         @orders_toolbar = Toolbar::OrdersToolbar.new(param) if @orders_toolbar.nil? || !@orders_toolbar.present?
         @orders_toolbar
