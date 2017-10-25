@@ -6,6 +6,7 @@ end
 Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
   zone = 1
 
+  #test_param[:timer] = Date.now
   test_param[:result_file] = Spreadsheet::Workbook.new
   test_param[:result_sheet] = test_param[:result_file].create_worksheet
 

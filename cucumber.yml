@@ -1,9 +1,9 @@
-default: --backtrace --profile kaushal_mails
+default: --backtrace --profile kaushal_order
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
-kaushal_mails: --tags @rates_pmei_comm_base_group_2 WEB_APP=mail JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=Brother HL-2270DW
-kaushal_order: --tags @rates_parcel_select_ground WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
+kaushal_mails: --tags @rates_pmi_comm_plus_group_1 WEB_APP=mail JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=Brother HL-2270DW
+kaushal_order: --tags @rates_pmi_comm_plus_group_8 WEB_APP=orders JENKINS=true USR=cc_ks01 PW=pass111 URL=cc --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
 Kaushal_sc: --tags @international_rules WEB_APP=orders JENKINS=true URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false  USR=default PW=pass111 DEBUG=true
 
 #robcm=ccpryiihrjz ccfb311osps4x
