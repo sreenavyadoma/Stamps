@@ -22,7 +22,7 @@ Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
 end
 
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
-  test_param[:printer] = (printer.nil?)? modal_param.printer : printer
+  expect(test_param[:printer] = (printer.nil?)? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if test_param[:printer].include?('\\') #validate printer format
     expect(test_param[:printer]).to match(/\\.+\.*/)
     test_param[:printer] = /\\\\(.+)\\/.match(test_param[:printer])[1]
@@ -54,8 +54,7 @@ Then /^ReIn [Pp]rint modal, Reprint$/ do
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today(?:| plus (\d+))$/ do |day|
-  ship_date = test_helper.valid_shipdate((day.nil?)?0:day.to_i)
-  @ship_date = stamps.orders.orders_print_modal.ship_date.date_picker.today_plus(ship_date)
+  stamps.orders.orders_print_modal.ship_date.date_picker.today_plus(test_helper.valid_shipdate((day.nil?)?0:day.to_i))
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do

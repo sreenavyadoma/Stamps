@@ -1,14 +1,29 @@
 module Stamps
   module Orders
-    class WebOrders < Browser::StampsModal
+    module StoreMarketPlace
+      def paypal
+        (cache[:paypal].nil? || !cache[:paypal].present?)?cache[:paypal] = PayPal.new(param):cache[:paypal]
+      end
+
+      def rakuten
+        (cache[:rakuten].nil? || !cache[:rakuten].present?)?cache[:rakuten] = RAkuten.new(param):cache[:rakuten]
+      end
+
+      private
       def cache
         @cache ||= {}
       end
+    end
 
-      def present?
-        orders_grid.present?
+    module OrdersFloatingPrintModal
+      def orders_print_modal
+        (@orders_print_modal.nil? || !@orders_print_modal.present?)?@orders_print_modal=Stamps::Orders::Printing::OrdersPrintModal.new(param):@orders_print_modal
       end
+    end
 
+    class WebOrders < Browser::StampsModal
+      include StoreMarketPlace
+      include OrdersFloatingPrintModal
       def orders_toolbar
         (cache[:orders_toolbar].nil? || !cache[:orders_toolbar].present?)?cache[:orders_toolbar] = Toolbar::OrdersToolbar.new(param):cache[:orders_toolbar]
       end
@@ -26,23 +41,24 @@ module Stamps
       end
 
       def single_order_details
-        (cache[:single_order_details].nil? || cache[:single_order_details].present?)?cache[:single_order_details] = Orders::Details::SingleOrderDetails.new(param):cache[:single_order_details]
+        (cache[:single_order_details].nil? || !cache[:single_order_details].present?)?cache[:single_order_details] = Orders::Details::SingleOrderDetails.new(param):cache[:single_order_details]
       end
 
       def multi_order_details
         (cache[:multi_order_details].nil? || !cache[:multi_order_details].present?)?cache[:multi_order_details] = Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order_details]
       end
 
-      def orders_print_modal
-        (cache[:orders_print_modal].nil? || !cache[:orders_print_modal].present?)?cache[:orders_print_modal] =  Stamps::Orders::OrdersPrintModal.new(param):cache[:orders_print_modal]
-      end
-
-      def orders_settings
-        (cache[:orders_settings].nil? || !cache[:orders_settings].present?)?cache[:orders_settings] =  Stamps::Orders::Toolbar::SettingsMenu.new(param):cache[:orders_settings]
-      end
-
       def styles
         (cache[:styles].nil? || !cache[:styles].present?)?cache[:styles] = PageStyles.new(param):cache[:styles]
+      end
+
+      def present?
+        orders_grid.present?
+      end
+
+      private
+      def cache
+        @cache ||= {}
       end
     end
   end
