@@ -202,7 +202,7 @@ module Stamps
       end
     end
 
-    class StampsWatirInput < StampsElement
+    class StampsInput < StampsElement
       def checked?
         begin
           return input.checked?
@@ -210,6 +210,19 @@ module Stamps
           #ignore
         end
         false
+      end
+
+      def send_keys(symbol, iteration=1)
+        iteration.to_i.times do
+          begin
+            clear
+            textbox.send_keys(symbol) if present?
+            break if symbol.instance_of?(Symbol) || text == symbol
+          rescue
+            #ignore
+          end
+        end
+        self
       end
 
       def placeholder
@@ -222,7 +235,7 @@ module Stamps
       end
     end
 
-    class StampsTextBox < StampsWatirInput
+    class StampsTextBox < StampsInput
       def set(str, iteration=1)
         iteration.to_i.times do
           begin
@@ -231,19 +244,6 @@ module Stamps
             break if text == str
             set_attribute_value("value", str)  if present?
             break if text == str
-          rescue
-            #ignore
-          end
-        end
-        self
-      end
-
-      def send_keys(symbol, iteration=1)
-        iteration.to_i.times do
-          begin
-            clear
-            textbox.send_keys(symbol) if present?
-            break if symbol.instance_of?(Symbol) || text == symbol
           rescue
             #ignore
           end

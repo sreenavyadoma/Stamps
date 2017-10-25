@@ -407,24 +407,24 @@ module Stamps
       end
 
       class ToolbarPrintButton < Browser::StampsModal
+        def cache
+          @cache ||= {}
+        end
+
         def incomplete_order_modal
-          @incomplete_order_modal = PrintIncompleteOrderError.new(param) if @incomplete_order_modal.nil? || !@incomplete_order_modal.present?
-          @incomplete_order_modal
+          (cache[:incomplete_order].nil? || !cache[:incomplete_order].present?)?cache[:incomplete_order] = PrintIncompleteOrderError.new(param):cache[:incomplete_order]
         end
 
         def multi_order_some_error
-          @multi_order_some_error = PrintMultiOrderSomeHasError.new(param) if @multi_order_some_error.nil? || !@multi_order_some_error.present?
-          @multi_order_some_error
+          (cache[:multi_order].nil? || !cache[:multi_order].present?)?cache[:multi_order] = PrintMultiOrderSomeHasError.new(param):cache[:multi_order]
         end
 
         def usps_terms_modal
-          @usps_terms_modal = USPSTermsOrders.new(param) if @usps_terms_modal.nil? || !@usps_terms_modal.present?
-          @usps_terms_modal
+          (cache[:usps_terms].nil? || !cache[:usps_terms].present?)?cache[:usps_terms] = USPSTermsOrders.new(param):cache[:usps_terms]
         end
 
         def multi_order_all_error
-          @multi_order_all_error = PrintMultiOrderAllHaveError.new(param) if @multi_order_all_error.nil? || !@multi_order_all_error.present?
-          @multi_order_all_error
+          (cache[:multi_order_all_error].nil? || !cache[:multi_order_all_error].present?)?cache[:multi_order_all_error] = PrintMultiOrderAllHaveError.new(param):cache[:multi_order_all_error]
         end
 
         def present?
@@ -441,19 +441,18 @@ module Stamps
         end
 
         def click
-          @printing_on = OrdersPrintMediaDropList.new(param) if @printing_on.nil? || !@printing_on.present?
           15.times do
             begin
-              return true if @printing_on.present?
+              return true if printing_on.present?
               print_order_btn.click
-              @printing_on.wait_until_present(3)
+              printing_on.wait_until_present(3)
               30.times do
                 break unless usps_terms_modal.present?
                 usps_terms_modal.i_gree if usps_terms_modal.present?
               end
               raise incomplete_order_modal.error_message_p2 if incomplete_order_modal.present?
               raise multi_order_some_error.error_message_p2 if multi_order_some_error.present?
-              return true if @printing_on.present?
+              return true if printing_on.present?
             rescue
               #ignore
             end
@@ -566,10 +565,13 @@ module Stamps
         end
 
         private
+        def printing_on
+          (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on] = OrdersPrintMediaDropList.new(param):cache[:printing_on]
+        end
 
+        #todo-Rob verify css locator
         def print_order_btn
-          @print_order_btn = StampsElement.new(browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) if @print_order_btn.nil? || !@print_order_btn.present?
-          @print_order_btn
+          (cache[:print_order_btn].nil? || !cache[:print_order_btn].present?)?cache[:print_order_btn] = StampsElement.new(browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) :cache[:print_order_btn]
         end
       end
 
@@ -700,13 +702,11 @@ module Stamps
         end
 
         def toolbar_settings
-          right_toolbar[:settings] = SettingsMenu.new(param) if right_toolbar[:settings][:import].nil? || !right_toolbar[:settings][:import].present?
-          right_toolbar[:settings]
+          (right_toolbar[:settings][:import].nil? || !right_toolbar[:settings][:import].present?)?right_toolbar[:settings] = SettingsMenu.new(param):right_toolbar[:settings]
         end
 
         def toolbar_import
-          right_toolbar[:import] = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")) if right_toolbar[:import].nil? || !right_toolbar[:import].present?
-          right_toolbar[:import]
+          (right_toolbar[:import].nil? || !right_toolbar[:import].present?)?right_toolbar[:import] = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")):right_toolbar[:import]
         end
 
         def import
@@ -733,18 +733,15 @@ module Stamps
         end
 
         def toolbar_print
-          left_toolbar[:print] = ToolbarPrintButton.new(param) if left_toolbar[:print].nil? || !left_toolbar[:print].present?
-          left_toolbar[:print]
+          (left_toolbar[:print].nil? || !left_toolbar[:print].present?)?left_toolbar[:print] = ToolbarPrintButton.new(param):left_toolbar[:print]
         end
 
         def toolbar_add
-          left_toolbar[:add] = AddButton.new(param) if left_toolbar[:add].nil? || !left_toolbar[:add].present?
-          left_toolbar[:add]
+          (left_toolbar[:add].nil? || !left_toolbar[:add].present?)?left_toolbar[:add] = AddButton.new(param):left_toolbar[:add]
         end
 
         def toolbar_move
-          left_toolbar[:move] = MoveDropDown.new(param) if left_toolbar[:move].nil? || !left_toolbar[:move].present?
-          left_toolbar[:move]
+          (left_toolbar[:move].nil? || !left_toolbar[:move].present?)?left_toolbar[:move] = MoveDropDown.new(param):left_toolbar[:move]
         end
 
         def toolbar_tags
@@ -758,15 +755,16 @@ module Stamps
 
       class OrdersToolbar < Browser::StampsModal
         include OrdersToolbarLeftSide
+        def cache
+          @cache ||= {}
+        end
 
         def import_orders_modal
-          @import_orders_modal = ImportOrders.new(param) if @import_orders_modal.nil? || !@import_orders_modal.present?
-          @import_orders_modal
+          (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal] = ImportOrders.new(param):cache[:import_orders_modal]
         end
 
         def usps_intl_terms
-          @usps_intl_terms = USPSTermsOrders.new(param) if @usps_intl_terms.nil? || !@usps_intl_terms.present?
-          @usps_intl_terms
+          (cache[:usps_intl_terms].nil? || !cache[:usps_intl_terms].present?)?cache[:usps_intl_terms] = USPSTermsOrders.new(param):cache[:usps_intl_terms]
         end
 
         def refresh_orders
@@ -890,6 +888,7 @@ module Stamps
           number = number_str.scan /\d+/
           number.last.to_s
         end
+
       end
     end
   end
