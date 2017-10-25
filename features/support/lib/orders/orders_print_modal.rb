@@ -2,42 +2,6 @@
 module Stamps
   module Orders
     module Printing
-      module FloatingPrintModals
-        def terms_conditions
-          (@terms_conditions.nil? || !@terms_conditions.present?)?@terms_conditions = TermsAndConditions.new(param):@terms_conditions
-        end
-      end
-
-      class TermsAndConditions < Browser::StampsModal
-        def present?
-          i_agree_button.present?
-        end
-
-        def wait_until_present(*args)
-          i_agree_button.wait_until_present(*args)
-        end
-
-        def i_agree
-          15.times do
-            i_agree_button.click
-            break unless present?
-          end
-        end
-
-        def form_body
-
-        end
-
-        def close
-
-        end
-
-        private
-        def i_agree_button
-          (@i_agree_button.nil? || !@i_agree_button.present?)?@i_agree_button = StampsInput.new(browser.iframe(css: "iframe[id^=component-]").input(class: 'acceptBtn stamps')):@i_agree_button
-        end
-      end
-
       class OrdersPrintMediaDropList < Browser::StampsModal
         def dropdown
           @dropdown = StampsElement.new( browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil? || !@dropdown.present?
@@ -447,7 +411,6 @@ module Stamps
       end
 
       module OrdersPrintModalFooter
-        include FloatingPrintModals
         def print_expecting_rating_error
           postage
           RatingError.new(param).wait_until_present
@@ -472,10 +435,6 @@ module Stamps
             begin
               print_button.click
               sleep(0.25)
-              if terms_conditions.present?
-                logger.debug terms_conditions.form_body.text
-                terms_conditions.close
-              end
               return true unless print_button.present?
             rescue
               #ignore
