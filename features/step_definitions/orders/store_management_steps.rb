@@ -1,13 +1,35 @@
 
-Then /^Manage Stores: Open Modal$/ do
+Then /^[Oo]pen Orders Stores Settings$/ do
   #test_config.logger.step "Manage Stores: Open Modal"
-  @manage_stores = stamps.orders.orders_toolbar.toolbar_settings.click
+  stamps.orders.orders_toolbar.settings.stores_settings
 end
 
-Then /^Manage Stores: Add$/ do
+Then /^[Cc]lick Order Settings Stores Add button$/ do
   #test_config.logger.step "Manage Stores: Add"
-  @market_place = @manage_stores.add
+  stamps.orders.orders_toolbar.settings.stores_settings.add
 end
+
+Then /^[Cc]lick Order Settings Stores Edit button$/ do
+  #stamps.orders.orders_toolbar.settings.stores.edit
+end
+
+Then /^[Cc]lick Order Settings Stores Reconnect button$/ do
+  #stamps.orders.orders_toolbar.settings.stores.reconnect
+end
+
+Then /^[Cc]lick Order Settings Stores Delete button$/ do
+  #stamps.orders.orders_toolbar.settings.stores.delete
+end
+
+Then /^[Ss]elect Order Settings Store name (.*)$/ do |store|
+  #stamps.orders.orders_toolbar.settings.stores.select store
+end
+
+Then /^[Ee]xpect Order Settings Store name (.*) to be present$/ do |store|
+  expect(stamps.orders.orders_toolbar.settings.stores.store_list(store)).to be_present
+end
+
+
 
 Then /^Manage Stores: Close Modal$/ do
   #test_config.logger.step "Manage Stores: Close Modal"

@@ -1,12 +1,7 @@
 
-Then /^[Oo]pen Settings Modal$/ do
-  @general_settings = stamps.orders.orders_toolbar.settings #todo-Rob refactor General Settings.
+Then /^[Oo]pen Orders Settings$/ do
+  stamps.orders.orders_toolbar.settings
 end
-
-Then /^[Cc]lose Settings modal$/ do
-
-end
-
 # Services checkbox
 Then /^Settings: Check Services$/ do
   @general_settings.services.check

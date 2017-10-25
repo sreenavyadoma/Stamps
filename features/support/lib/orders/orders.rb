@@ -1,48 +1,61 @@
 module Stamps
   module Orders
-    class WebOrders < Browser::StampsModal
+    module StoreMarketPlace
       def cache
         @cache ||= {}
       end
 
-      def present?
-        orders_grid.present?
+      def paypal
+        (cache[:paypal].nil? || !cache[:paypal].present?)?cache[:paypal] = PayPal.new(param):cache[:paypal]
       end
 
+      def rakuten
+        (cache[:rakuten].nil? || !cache[:rakuten].present?)?cache[:rakuten] = RAkuten.new(param):cache[:rakuten]
+      end
+
+
+    end
+
+    class WebOrders < Browser::StampsModal
+      include StoreMarketPlace
+
       def orders_toolbar
-        (cache[:orders_toolbar].nil? || !cache[:orders_toolbar].present?)?cache[:orders_toolbar] = Toolbar::OrdersToolbar.new(param):cache[:orders_toolbar]
+        @orders_toolbar = Toolbar::OrdersToolbar.new(param) if @orders_toolbar.nil? || !@orders_toolbar.present?
+        @orders_toolbar
       end
 
       def landing_page
-        (cache[:landing_page].nil? || !cache[:landing_page].present?)?cache[:landing_page] = Orders::Authentication::OrdersLandingPage.new(param):cache[:landing_page]
+        @landing_page = Orders::Authentication::OrdersLandingPage.new(param) if @landing_page.nil? || !@landing_page.present?
+        @landing_page
       end
 
       def filter_panel
-        (cache[:filter_panel].nil? || !cache[:filter_panel].present?)?cache[:filter_panel] = Orders::LeftPanel::FilterPanel.new(param):cache[:filter_panel]
+        @filter_panel = Orders::LeftPanel::FilterPanel.new(param) if @filter_panel.nil? || !@filter_panel.present?
+        @filter_panel
       end
 
       def orders_grid
-        (cache[:orders_grid].nil? || !cache[:orders_grid].present?)?cache[:orders_grid] = Orders::Grid::OrdersGrid.new(param):cache[:orders_grid]
+        @orders_grid = Orders::Grid::OrdersGrid.new(param) if @orders_grid.nil? || !@orders_grid.present?
+        @orders_grid
       end
 
       def single_order_details
-        (cache[:single_order_details].nil? || cache[:single_order_details].present?)?cache[:single_order_details] = Orders::Details::SingleOrderDetails.new(param):cache[:single_order_details]
+        @single_order_details = Orders::Details::SingleOrderDetails.new(param) if @single_order_details.nil? || @single_order_details.present?
+        @single_order_details
       end
 
       def multi_order_details
-        (cache[:multi_order_details].nil? || !cache[:multi_order_details].present?)?cache[:multi_order_details] = Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order_details]
-      end
-
-      def orders_print_modal
-        (cache[:orders_print_modal].nil? || !cache[:orders_print_modal].present?)?cache[:orders_print_modal] =  Stamps::Orders::OrdersPrintModal.new(param):cache[:orders_print_modal]
-      end
-
-      def orders_settings
-        (cache[:orders_settings].nil? || !cache[:orders_settings].present?)?cache[:orders_settings] =  Stamps::Orders::Toolbar::SettingsMenu.new(param):cache[:orders_settings]
+        @multi_order_details = Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param) if @multi_order_details.nil? || !@multi_order_details.present?
+        @multi_order_details
       end
 
       def styles
-        (cache[:styles].nil? || !cache[:styles].present?)?cache[:styles] = PageStyles.new(param):cache[:styles]
+        @styles = PageStyles.new(param) if @styles.nil? || !@styles.present?
+        @styles
+      end
+
+      def present?
+        orders_grid.present?
       end
     end
   end

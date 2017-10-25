@@ -229,6 +229,22 @@ module Stamps
           search_textbox.set search_str
         end
 
+        def paypal_button
+          StampsElement.new browser.div(css: "a[data-store-name='paypal']>div")
+        end
+
+        def paypal
+          button = paypal_button
+          store = PayPal.new(param)
+          10.times do
+            button.click
+            sleep(0.35)
+            return store if store.present?
+          end
+          expect("PayPal Store Modal did not open.").to eql ""
+        end
+=begin
+
         def amazon_button
           StampsElement.new(browser.imgs css: "img[src*=amazon]").last
         end
@@ -362,22 +378,7 @@ module Stamps
           end
           expect("Big Commerce Store Modal did not open.").to eql ""
         end
-
-        def paypal_button
-          StampsElement.new(browser.imgs css: "img[src*='paypal']").last
-        end
-
-        def paypal
-          button = paypal_button
-          store = PayPal.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("PayPal Store Modal did not open.").to eql ""
-        end
-
+=end
       end
 
       class ManageStores < Browser::StampsModal
