@@ -22,7 +22,7 @@ Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
 end
 
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
-  test_param[:printer] = (printer.nil?)? modal_param.printer : printer
+  expect(test_param[:printer] = (printer.nil?)? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if test_param[:printer].include?('\\') #validate printer format
     expect(test_param[:printer]).to match(/\\.+\.*/)
     test_param[:printer] = /\\\\(.+)\\/.match(test_param[:printer])[1]
