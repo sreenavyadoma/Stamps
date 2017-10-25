@@ -1,10 +1,6 @@
 module Stamps
   module Orders
     module StoreMarketPlace
-      def cache
-        @cache ||= {}
-      end
-
       def paypal
         (cache[:paypal].nil? || !cache[:paypal].present?)?cache[:paypal] = PayPal.new(param):cache[:paypal]
       end
@@ -13,15 +9,21 @@ module Stamps
         (cache[:rakuten].nil? || !cache[:rakuten].present?)?cache[:rakuten] = RAkuten.new(param):cache[:rakuten]
       end
 
+      private
+      def cache
+        @cache ||= {}
+      end
+    end
 
+    module OrdersFloatingPrintModal
+      def orders_print_modal
+        (@orders_print_modal.nil? || !@orders_print_modal.present?)?@orders_print_modal=Stamps::Orders::Printing::OrdersPrintModal.new(param):@orders_print_modal
+      end
     end
 
     class WebOrders < Browser::StampsModal
       include StoreMarketPlace
-      def cache
-        @cache ||= {}
-      end
-
+      include OrdersFloatingPrintModal
       def orders_toolbar
         (cache[:orders_toolbar].nil? || !cache[:orders_toolbar].present?)?cache[:orders_toolbar] = Toolbar::OrdersToolbar.new(param):cache[:orders_toolbar]
       end
@@ -52,6 +54,11 @@ module Stamps
 
       def present?
         orders_grid.present?
+      end
+
+      private
+      def cache
+        @cache ||= {}
       end
     end
   end

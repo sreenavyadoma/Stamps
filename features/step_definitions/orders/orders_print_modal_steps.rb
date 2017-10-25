@@ -54,8 +54,7 @@ Then /^ReIn [Pp]rint modal, Reprint$/ do
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today(?:| plus (\d+))$/ do |day|
-  ship_date = test_helper.valid_shipdate((day.nil?)?0:day.to_i)
-  @ship_date = stamps.orders.orders_print_modal.ship_date.date_picker.today_plus(ship_date)
+  stamps.orders.orders_print_modal.ship_date.date_picker.today_plus(test_helper.valid_shipdate((day.nil?)?0:day.to_i))
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do

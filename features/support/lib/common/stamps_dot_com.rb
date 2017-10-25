@@ -1,9 +1,5 @@
 module Stamps
   class StampsDotCom < Browser::StampsModal
-    def cache
-      @cache ||= {}
-    end
-
     def navigation_bar
       (cache[:navigation_bar].nil? || !cache[:navigation_bar].present?)?cache[:navigation_bar] = Navigation::NavigationBar.new(param):cache[:navigation_bar]
     end
@@ -14,6 +10,11 @@ module Stamps
 
     def mail
       (cache[:mail].nil?)?cache[:mail] = WebMail.new(param):cache[:mail]
+    end
+
+    private
+    def cache
+      @cache ||= {}
     end
   end
 end

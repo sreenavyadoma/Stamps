@@ -407,10 +407,6 @@ module Stamps
       end
 
       class ToolbarPrintButton < Browser::StampsModal
-        def cache
-          @cache ||= {}
-        end
-
         def incomplete_order_modal
           (cache[:incomplete_order].nil? || !cache[:incomplete_order].present?)?cache[:incomplete_order] = PrintIncompleteOrderError.new(param):cache[:incomplete_order]
         end
@@ -565,8 +561,11 @@ module Stamps
         end
 
         private
+        def cache
+          @cache ||= {}
+        end
         def printing_on
-          (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on] = OrdersPrintMediaDropList.new(param):cache[:printing_on]
+          (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on] = Stamps::Orders::Printing::OrdersPrintMediaDropList.new(param):cache[:printing_on]
         end
 
         #todo-Rob verify css locator
@@ -682,7 +681,7 @@ module Stamps
         end
 
         def tooltip
-          tooltip_element = StampsElement.new browser.div(id: 'ext-quicktips-tip-innerCt')
+          tooltip_element = StampsElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
           button.element.hover
           button.element.hover
           15.times do
@@ -755,10 +754,6 @@ module Stamps
 
       class OrdersToolbar < Browser::StampsModal
         include OrdersToolbarLeftSide
-        def cache
-          @cache ||= {}
-        end
-
         def import_orders_modal
           (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal] = ImportOrders.new(param):cache[:import_orders_modal]
         end
@@ -889,6 +884,10 @@ module Stamps
           number.last.to_s
         end
 
+        private
+        def cache
+          @cache ||= {}
+        end
       end
     end
   end
