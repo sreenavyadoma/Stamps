@@ -76,13 +76,11 @@ module Stamps
 
     class OrdersPrinter < Browser::StampsModal
       def dropdown
-        @dropdown = StampsElement.new(browser.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")) if @dropdown.nil? || !@dropdown.present?
-        @dropdown
+        (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new(browser.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")):@dropdown
       end
 
       def textbox
-        @textbox = StampsTextBox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")) if @textbox.nil? || !@textbox.present?
-        @textbox
+        (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextBox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")):@textbox
       end
 
       def select(selection)
@@ -98,41 +96,36 @@ module Stamps
 
     class OrdersPaperTray < Browser::StampsModal
       def dropdown
-        @dropdown = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]") if @dropdown.nil? || !@dropdown.present?
-        @dropdown
+        (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]"):@dropdown
       end
 
       def textbox
-        @textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")) if @textbox.nil? || !@textbox.present?
-        @textbox
+        (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")):@textbox
       end
 
       def select(selection)
         begin
-          selection_label = StampsElement.new browser.li(text: selection)
-          5.times{
+          selection_label = StampsElement.new(browser.li(text: selection))
+          5.times do
             dropdown.click unless selection_label.present?
             selection_label.click
             break if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
-          }
+          end
         end unless textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
       end
     end
 
     class OrdersStartingLabel < Browser::StampsModal
       def left_label
-        @left_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")) if @left_label.nil? || !@left_label.present?
-        @left_label
+        (@left_label.nil? || !@left_label.present?)?@left_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")):@left_label
       end
 
       def right_label
-        @right_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")) if @right_label.nil? || !@right_label.present?
-        @right_label
+        (@right_label.nil? || !@right_label.present?)?@right_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")):@right_label
       end
 
       def textbox
-        @textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")) if @textbox.nil? || !@textbox.present?
-        @textbox
+        (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")):@textbox
       end
 
       def select_left_label
