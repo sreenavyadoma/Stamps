@@ -96,7 +96,7 @@ module Stamps
 
     class OrdersPaperTray < Browser::StampsModal
       def dropdown
-        (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]"):@dropdown
+        (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new(browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")):@dropdown
       end
 
       def textbox
