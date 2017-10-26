@@ -217,7 +217,7 @@ module Stamps
 
         def initialize(param)
           super
-          @search_field = StampsTextBox.new(browser.text_field(css: "[placeholder='Search']"))
+          @search_field = StampsTextbox.new(browser.text_field(css: "[placeholder='Search']"))
           @save_button = StampsElement.new(browser.span(text: "Save"))
           @close_button = StampsElement.new(browser.img(class: "x-tool-img x-tool-close"))
         end
@@ -349,7 +349,7 @@ module Stamps
 
           clickable_element = browser.div(css: "[class=x-grid-row-checker]")
           verify = browser.div(css: "[class=x-grid-row-checker]").parent.parent.parent.parent.parent
-          @search_result = Stamps::Browser::StampsCheckBox.new(clickable_element, verify, "class", "selected")
+          @search_result = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "selected")
         end
 
         def save
@@ -369,7 +369,7 @@ module Stamps
         include PrintFormBlurOut
         include PrintMediaHelper
         def textbox
-          @textbox = StampsTextBox.new(browser.text_field(css: "[name=PrintMedia]")) if @textbox.nil? || !@textbox.present?
+          @textbox = StampsTextbox.new(browser.text_field(css: "[name=PrintMedia]")) if @textbox.nil? || !@textbox.present?
           @textbox
         end
 
@@ -472,10 +472,10 @@ module Stamps
         def initialize(param)
           super
           @dom_textarea = MailDomTextArea.new(param)
-          @dom_dd = StampsTextBox.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
-          @int_dd = StampsTextBox.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
-          @dom_textbox = StampsTextBox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
-          @int_textbox = StampsTextBox.new(browser.inputs(name: "ShipCountryCode")[1])
+          @dom_dd = StampsTextbox.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
+          @int_dd = StampsTextbox.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
+          @dom_textbox = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
+          @int_textbox = StampsTextbox.new(browser.inputs(name: "ShipCountryCode")[1])
         end
 
         def enabled?
@@ -492,11 +492,11 @@ module Stamps
         end
 
         def dropdown
-          StampsTextBox.new((domestic?)? dom_dd : int_dd)
+          StampsTextbox.new((domestic?)? dom_dd : int_dd)
         end
 
         def textbox
-          StampsTextBox.new((domestic?)? dom_textbox : int_textbox)
+          StampsTextbox.new((domestic?)? dom_textbox : int_textbox)
         end
 
         def select(str)
@@ -528,18 +528,18 @@ module Stamps
 
         def initialize(param)
           super
-          @name = StampsTextBox.new(browser.text_field(name: "ShipName"))
-          @company = StampsTextBox.new(browser.text_field(name: "ShipCompany"))
-          @address_1 = StampsTextBox.new(browser.text_field(name: "ShipStreet1"))
-          @address_2 = StampsTextBox.new(browser.text_field(name: "ShipStreet2"))
-          @city = StampsTextBox.new(browser.text_field(name: "ShipCity"))
-          @province = StampsTextBox.new(browser.text_field(name: "ShipState"))
-          @postal_code = StampsTextBox.new(browser.text_field(name: "ShipPostalCode"))
-          @phone = StampsTextBox.new(browser.text_field(css: "div[id=shiptoview-international-targetEl]>div>div>div>div>div>div>div>input[name=ShipPhone]"))
+          @name = StampsTextbox.new(browser.text_field(name: "ShipName"))
+          @company = StampsTextbox.new(browser.text_field(name: "ShipCompany"))
+          @address_1 = StampsTextbox.new(browser.text_field(name: "ShipStreet1"))
+          @address_2 = StampsTextbox.new(browser.text_field(name: "ShipStreet2"))
+          @city = StampsTextbox.new(browser.text_field(name: "ShipCity"))
+          @province = StampsTextbox.new(browser.text_field(name: "ShipState"))
+          @postal_code = StampsTextbox.new(browser.text_field(name: "ShipPostalCode"))
+          @phone = StampsTextbox.new(browser.text_field(css: "div[id=shiptoview-international-targetEl]>div>div>div>div>div>div>div>input[name=ShipPhone]"))
         end
       end
 
-      class MailDomTextArea < StampsTextBox
+      class MailDomTextArea < StampsTextbox
         def initialize(param)
           super(param.browser.textarea(id: "sdc-mainpanel-shiptotextarea-inputEl"))
         end
@@ -576,7 +576,7 @@ module Stamps
 
         def initialize(param)
           super
-          @auto_weigh = StampsCheckBox.new browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
+          @auto_weigh = StampsCheckbox.new browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
           @weigh_btn = StampsElement.new browser.span(text: "Weigh")
 
           textbox = browser.text_field(name: "WeightLbs")
@@ -623,7 +623,7 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextBox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
+          @textbox = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
           @dropdown = StampsElement.new(browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker"))
           @manage_shipping_address = MailManageShippingAddresses.new(param)
         end
@@ -700,7 +700,7 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextBox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
+          @textbox = StampsTextbox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
           @dropdown = StampsElement.new browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")
           @service_selection = MailServiceSelection.new(param)
         end
@@ -815,7 +815,7 @@ module Stamps
 
       class StampAmount < Browser::StampsModal
         def textbox
-          StampsTextBox.new(browser.text_field name: "stampAmount")
+          StampsTextbox.new(browser.text_field name: "stampAmount")
         end
 
         def set(value)
@@ -843,8 +843,8 @@ module Stamps
         attr_reader :checkbox, :textbox
         def initialize(param)
           super
-          @checkbox = StampsCheckBox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
-          @textbox = StampsTextBox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
+          @checkbox = StampsCheckbox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
+          @textbox = StampsTextbox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
         end
 
         def set(value)
@@ -856,7 +856,7 @@ module Stamps
       class MailTracking < Browser::StampsModal
 
         def textbox
-          StampsTextBox.new browser.text_field name: "tracking"
+          StampsTextbox.new browser.text_field name: "tracking"
         end
 
         def dropdown
@@ -895,7 +895,7 @@ module Stamps
         end
 
         def textbox
-          StampsTextBox.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
+          StampsTextbox.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
         end
 
         def increment value
@@ -913,7 +913,7 @@ module Stamps
 
       class PrintFormCostCode < Browser::StampsModal
         def textbox
-          StampsTextBox.new browser.text_field name: "costCodeId"
+          StampsTextbox.new browser.text_field name: "costCodeId"
         end
 
         def dropdown
@@ -948,7 +948,7 @@ module Stamps
 
       class PrintFormQuantity < Browser::StampsModal
         def textbox
-          StampsTextBox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
+          StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
         end
 
         def set(value)

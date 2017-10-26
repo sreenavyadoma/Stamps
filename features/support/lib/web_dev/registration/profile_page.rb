@@ -10,7 +10,7 @@ module Stamps
         def promo_code
           20.times do
             @promo_code = RegProfilePromoCode.new(browser.text_field(id: 'promoCodeHidden'))
-            alt_promo_code = StampsTextBox.new(browser.text_field(id: 'promoCode'))
+            alt_promo_code = StampsTextbox.new(browser.text_field(id: 'promoCode'))
             @promo_code = alt_promo_code if alt_promo_code.present?
             break if @promo_code.present?
           end
@@ -62,7 +62,7 @@ module Stamps
         end
 
         def money_saving_offers_checkbox
-          @money_saving_offers_checkbox ||= StampsWatirCheckBox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn')) if @money_saving_offers_checkbox.nil? || !@money_saving_offers_checkbox.present?
+          @money_saving_offers_checkbox ||= StampsWatirCheckbox.new(browser.checkbox(css: '#sideoptin > #optInDiv > div.checkbox > #optIn')) if @money_saving_offers_checkbox.nil? || !@money_saving_offers_checkbox.present?
           @money_saving_offers_checkbox
         end
 
@@ -115,7 +115,7 @@ module Stamps
         end
       end
 
-      class RegProfileEmail < Stamps::Browser::StampsTextBox
+      class RegProfileEmail < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=email]>div>div>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -127,7 +127,7 @@ module Stamps
         end
       end
 
-      class RegProfileUsername < Stamps::Browser::StampsTextBox
+      class RegProfileUsername < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(1)>div>span>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -139,7 +139,7 @@ module Stamps
         end
       end
 
-      class RegProfilePassword < Stamps::Browser::StampsTextBox
+      class RegProfilePassword < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=accountinfo]>div>div:nth-child(2)>div>span>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -151,7 +151,7 @@ module Stamps
         end
       end
 
-      class RegProfileReTypePassword < Stamps::Browser::StampsTextBox
+      class RegProfileReTypePassword < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.spans(css: "li[id=accountinfo]>div>div:nth-child(3)>div>span>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -163,7 +163,7 @@ module Stamps
         end
       end
 
-      class RegProfilePromoCode < Stamps::Browser::StampsTextBox
+      class RegProfilePromoCode < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=promocode]>div>div>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block

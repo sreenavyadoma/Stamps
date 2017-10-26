@@ -213,19 +213,19 @@ module Stamps
         def initialize(param)
           super
           @save_btn = StampsElement.new browser.span(text: 'Save')
-          @origin_zip = StampsTextBox.new browser.text_field(name: 'OriginZip')
-          @name = StampsTextBox.new(browser.text_field(name: 'FullName'))
-          @company = StampsTextBox.new(browser.text_field(name: 'Company'))
-          @street_address_1 = StampsTextBox.new(browser.text_field name: 'Street1')
-          @street_address_2 = StampsTextBox.new(browser.text_field name: 'Street2')
-          @city = StampsTextBox.new(browser.text_field(name: 'City'))
+          @origin_zip = StampsTextbox.new browser.text_field(name: 'OriginZip')
+          @name = StampsTextbox.new(browser.text_field(name: 'FullName'))
+          @company = StampsTextbox.new(browser.text_field(name: 'Company'))
+          @street_address_1 = StampsTextbox.new(browser.text_field name: 'Street1')
+          @street_address_2 = StampsTextbox.new(browser.text_field name: 'Street2')
+          @city = StampsTextbox.new(browser.text_field(name: 'City'))
 
           dropdown = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
           textbox = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
-          @state = StampsDropDown.new(textbox, dropdown, :li)
+          @state = StampsDropdown.new(textbox, dropdown, :li)
 
-          @zip = StampsTextBox.new(browser.text_field(name: 'Zip'))
-          @phone = StampsTextBox.new(browser.text_field(name: "Phone"))
+          @zip = StampsTextbox.new(browser.text_field(name: 'Zip'))
+          @phone = StampsTextbox.new(browser.text_field(name: "Phone"))
         end
 
         def present?

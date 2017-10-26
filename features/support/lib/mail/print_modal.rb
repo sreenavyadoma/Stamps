@@ -27,7 +27,7 @@ module Stamps
         end
 
         def textbox
-          @textbox = StampsTextBox.new(browser.text_field(name: "printers")) if @textbox.nil? || !@textbox.present?
+          @textbox = StampsTextbox.new(browser.text_field(name: "printers")) if @textbox.nil? || !@textbox.present?
           @textbox
         end
 
@@ -56,7 +56,7 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextBox.new(browser.input(name: "paperTrays"))
+          @textbox = StampsTextbox.new(browser.input(name: "paperTrays"))
           @dropdown = StampsElement.new(browser.div(css: "div[class*='x-vbox-form-item']>div>div>div[id$=-trigger-picker]"))
         end
 

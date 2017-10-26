@@ -97,9 +97,9 @@ module Stamps
 
       def initialize(param)
         super
-        @dollar_amount = StampsTextBox.new browser.text_field(name: "Amount")
-        @cents_amount = StampsTextBox.new browser.text_field(name: "AmountFraction")
-        @comments = StampsTextBox.new browser.text_field(name: "comments")
+        @dollar_amount = StampsTextbox.new browser.text_field(name: "Amount")
+        @cents_amount = StampsTextbox.new browser.text_field(name: "AmountFraction")
+        @comments = StampsTextbox.new browser.text_field(name: "comments")
         @purchase_verification = ACHPurchaseVerification.new(param)
         @submit_button = StampsElement.new browser.input(:value => "Submit")
       end

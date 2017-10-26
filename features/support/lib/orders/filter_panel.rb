@@ -113,7 +113,7 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextBox.new browser.text_field(css: "[placeholder='Search Orders']")
+          @textbox = StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
           @search_button = StampsElement.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
           @search_results = SearchResults.new(param)
         end

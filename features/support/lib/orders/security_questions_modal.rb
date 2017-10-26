@@ -73,7 +73,7 @@ module Stamps
         end
 
         def first_security_answer
-          @first_security_answer = StampsTextBox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @first_security_answer.nil? || !@first_security_answer.present?
+          @first_security_answer = StampsTextbox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @first_security_answer.nil? || !@first_security_answer.present?
           @first_security_answer
         end
       end
@@ -101,7 +101,7 @@ module Stamps
         end
 
         def second_security_answer
-          @second_security_answer = StampsTextBox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @second_security_answer.nil? || !@second_security_answer.present?
+          @second_security_answer = StampsTextbox.new(browser.text_field(css: "input[data-errorqtip*='Security answer is required']")) if @second_security_answer.nil? || !@second_security_answer.present?
           @second_security_answer
         end
       end

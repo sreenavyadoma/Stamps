@@ -74,7 +74,7 @@ module Stamps
               end
 
               def textbox
-                StampsTextBox.new textbox_field
+                StampsTextbox.new textbox_field
               end
 
               def select service
@@ -109,7 +109,7 @@ module Stamps
 
             def requested_services
               text_field = browser.text_fields(name: "ServiceKey")[@index]
-              StampsTextBox.new text_field
+              StampsTextbox.new text_field
             end
 
             def delete
@@ -181,14 +181,14 @@ module Stamps
         end
 
         def store_nickname
-          StampsTextBox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
+          StampsTextbox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
         end
 
         def automatically_import_new_orders
           label = (browser.label text: "Automatically Import New Orders")
           checkbox_field = label.parent.textbox
           verify_field = label.parent.parent.parent
-          StampsCheckBox.new(checkbox_field, verify_field, "class", "checked")
+          StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
         end
       end
 
@@ -222,7 +222,7 @@ module Stamps
         end
 
         def search_textbox
-          StampsTextBox.new(browser.text_fields css: "input[placeholder='Search by Name']").last
+          StampsTextbox.new(browser.text_fields css: "input[placeholder='Search by Name']").last
         end
 
         def search search_str
@@ -471,7 +471,7 @@ module Stamps
                 checkbox_field = browser.divs(text: store_name).last
                 sleep(0.35)
                 check_verify_field = checkbox_field.parent
-                checkbox = StampsCheckBox.new checkbox_field, check_verify_field, "class", "focused"
+                checkbox = StampsCheckbox.new checkbox_field, check_verify_field, "class", "focused"
                 checkbox.check
                 checkbox.check
                 checkbox.check

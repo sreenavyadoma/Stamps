@@ -246,7 +246,7 @@ module Stamps
           "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
 
-        textbox = StampsTextBox.new(browser.text_field id: "sdc-purchasewin-otheramount")
+        textbox = StampsTextbox.new(browser.text_field id: "sdc-purchasewin-otheramount")
 
         checkbox.select
         textbox.set(value)

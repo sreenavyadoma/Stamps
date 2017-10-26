@@ -18,7 +18,7 @@ module Stamps
       end
 
       def first_answer
-        @first_answer ||= StampsTextBox.new(browser.text_field(id: 'secretAnswer1')) if @first_answer.nil? || !@first_answer.present?
+        @first_answer ||= StampsTextbox.new(browser.text_field(id: 'secretAnswer1')) if @first_answer.nil? || !@first_answer.present?
         @first_answer
       end
     end
@@ -40,7 +40,7 @@ module Stamps
       end
 
       def second_answer
-        @second_answer ||= StampsTextBox.new(browser.text_field(id: 'secretAnswer2')) if @second_answer.nil? || !@second_answer.present?
+        @second_answer ||= StampsTextbox.new(browser.text_field(id: 'secretAnswer2')) if @second_answer.nil? || !@second_answer.present?
         @second_answer
       end
     end

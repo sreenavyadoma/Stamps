@@ -11,7 +11,7 @@ module Stamps
           @window_title = StampsElement.new(browser.div(text: "Extra Services"))
           textboxes = browser.text_fields(id: "sdc-extraserviceswin-securitydroplist-inputEl")
           dropdowns = browser.divs(id: "sdc-extraserviceswin-securitydroplist-trigger-picker")
-          @security = StampsComboBox.new(textboxes, dropdowns, :li, 0)
+          @security = StampsCombobox.new(textboxes, dropdowns, :li, 0)
 
           textbox = browser.text_field(id: "sdc-extraserviceswin-valuenumberfield-inputEl")
           inc_btn = browser.div(css: "div[id=sdc-extraserviceswin-valuenumberfield-trigger-spinner]>div[class*=up]")
@@ -20,7 +20,7 @@ module Stamps
 
           textboxes = browser.text_fields(id: "sdc-extraserviceswin-contentdroplist-inputEl")
           dropdowns = browser.divs(id: "sdc-extraserviceswin-contentdroplist-trigger-picker")
-          @handling = StampsComboBox.new(textboxes, dropdowns, :li, 0)
+          @handling = StampsCombobox.new(textboxes, dropdowns, :li, 0)
 
           @save_element = StampsElement.new(browser.span(id: "sdc-extraservices-savebtn-btnInnerEl"))
           @close_element = StampsElement.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
@@ -108,7 +108,7 @@ module Stamps
           if @return_receipt.nil? || !@return_receipt.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-rrcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-rrcheckbox')
-            @return_receipt = StampsCheckBox.new(checkbox, verify, "class", "checked")
+            @return_receipt = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @return_receipt
         end
@@ -117,7 +117,7 @@ module Stamps
           if @restricted_delivery.nil? || !@restricted_delivery.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-rdcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-rdcheckbox')
-            @restricted_delivery = StampsCheckBox.new(checkbox, verify, "class", "checked")
+            @restricted_delivery = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @restricted_delivery
         end
@@ -136,7 +136,7 @@ module Stamps
           if @non_delivery_notice.nil? || !@non_delivery_notice.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-nndcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-nndcheckbox')
-            @non_delivery_notice = StampsCheckBox.new(checkbox, verify, "class", "checked")
+            @non_delivery_notice = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @non_delivery_notice
         end
@@ -145,7 +145,7 @@ module Stamps
           if @fragile.nil? || !@fragile.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-shcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-shcheckbox')
-            @fragile = StampsCheckBox.new(checkbox, verify, "class", "checked")
+            @fragile = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @fragile
         end
@@ -154,7 +154,7 @@ module Stamps
           if @non_rectangular.nil? || !@non_rectangular.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-notrectangularcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-notrectangularcheckbox')
-            @non_rectangular = StampsCheckBox.new(checkbox, verify, "class", "checked")
+            @non_rectangular = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @non_rectangular
         end
@@ -163,7 +163,7 @@ module Stamps
           if @return_receipt_merchandise.nil? || !@return_receipt_merchandise.present?
             checkbox = browser.span(id: "sdc-extraserviceswin-rrmcheckbox-displayEl")
             verify = browser.div(id: 'sdc-extraserviceswin-rrmcheckbox')
-            @return_receipt_merchandise = StampsCheckBox.new(checkbox, verify, "class", "checked")
+            @return_receipt_merchandise = StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @return_receipt_merchandise
         end

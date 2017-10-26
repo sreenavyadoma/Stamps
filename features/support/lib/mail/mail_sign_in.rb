@@ -107,12 +107,12 @@ module Stamps
 
     class MailSignInModal < Browser::StampsModal
       def username_textbox
-        @username_textbox = StampsTextBox.new(browser.text_field(id: "UserNameTextBox")) if @username_textbox.nil? || !@username_textbox.present?
+        @username_textbox = StampsTextbox.new(browser.text_field(id: "UserNameTextBox")) if @username_textbox.nil? || !@username_textbox.present?
         @username_textbox
       end
 
       def password_textbox
-        @password_textbox = StampsTextBox.new(browser.text_field(id: "PasswordTextBox")) if @password_textbox.nil? || !@password_textbox.present?
+        @password_textbox = StampsTextbox.new(browser.text_field(id: "PasswordTextBox")) if @password_textbox.nil? || !@password_textbox.present?
         @password_textbox
       end
 
@@ -137,7 +137,7 @@ module Stamps
       end
 
       def remember_username_checkbox
-        @remember_username_checkbox = StampsWatirCheckBox.new(browser.checkbox(id: "rememberUser")) if @remember_username_checkbox.nil? || !@remember_username_checkbox.present?
+        @remember_username_checkbox = StampsWatirCheckbox.new(browser.checkbox(id: "rememberUser")) if @remember_username_checkbox.nil? || !@remember_username_checkbox.present?
         @remember_username_checkbox
       end
 
@@ -306,9 +306,9 @@ module Stamps
         end
 
         sign_in_link = StampsElement.new browser.link(text: "Sign In")
-        username_textbox = StampsTextBox.new browser.text_field(id: "UserNameTextBox")
-        password_textbox = StampsTextBox.new browser.text_field(id: "PasswordTextBox")
-        remember_username = Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
+        username_textbox = StampsTextbox.new browser.text_field(id: "UserNameTextBox")
+        password_textbox = StampsTextbox.new browser.text_field(id: "PasswordTextBox")
+        remember_username = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, "class", "checked"
         sign_in_button = StampsElement.new browser.button(id: "signInButton")
         verifying_account_info = StampsElement.new browser.div(text: "Verifying account information...")
         signed_in_user = StampsElement.new browser.span(id: "userNameText")

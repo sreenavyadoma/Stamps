@@ -235,7 +235,7 @@ module Stamps
       end
     end
 
-    class StampsTextBox < StampsInput
+    class StampsTextbox < StampsInput
       def set(str, iteration=1)
         iteration.to_i.times do
           begin
@@ -290,7 +290,7 @@ module Stamps
       end
     end
 
-    class StampsWatirCheckBox < StampsElement
+    class StampsWatirCheckbox < StampsElement
       def check
         5.times do
           set
@@ -340,7 +340,7 @@ module Stamps
       end
     end
 
-    class StampsCheckBox
+    class StampsCheckbox
       attr_accessor :checkbox, :check_verify, :attribute, :attribute_value
       def initialize(checkbox, check_verify, attribute, attribute_value)
         @checkbox = StampsElement.new(checkbox)
@@ -430,7 +430,7 @@ module Stamps
         @browser = dropdown.browser
         @dropdown = StampsElement.new(dropdown)
         @html_tag = html_tag
-        @textbox = StampsTextBox.new(textbox)
+        @textbox = StampsTextbox.new(textbox)
       end
 
       def expose_selection(selection)
@@ -470,7 +470,7 @@ module Stamps
       end
     end
 
-    class StampsDropDownLovSubStr < StampsTextBox
+    class StampsDropDownLovSubStr < StampsTextbox
       attr_accessor :list_of_values, :dropdown
 
       def initialize(textbox, dropdown, list_of_values)
@@ -510,7 +510,7 @@ module Stamps
       end
     end
 
-    class StampsDropDown < StampsTextBox
+    class StampsDropdown < StampsTextbox
       attr_accessor :html_tag, :dropdown
 
       def initialize(textbox, dropdown, html_tag)
@@ -552,7 +552,7 @@ module Stamps
       attr_reader :browser, :textbox, :inc_btn, :dec_btn
 
       def initialize(textbox, inc_btn, dec_btn)
-        @textbox = StampsTextBox.new(textbox)
+        @textbox = StampsTextbox.new(textbox)
         @inc_btn = StampsElement.new(inc_btn)
         @dec_btn = StampsElement.new(dec_btn)
         @browser = textbox.browser
@@ -599,13 +599,13 @@ module Stamps
       end
     end
 
-    class StampsComboBox
+    class StampsCombobox
       attr_accessor :browser, :textbox, :dropdown, :selection_type
 
       def initialize(textboxes, dropdowns, selection_type, index)
         @index = index
-        @textbox = StampsTextBox.new(textboxes[@index])
-        @dropdown = StampsTextBox.new(dropdowns[@index])
+        @textbox = StampsTextbox.new(textboxes[@index])
+        @dropdown = StampsTextbox.new(dropdowns[@index])
         @selection_type = selection_type
         @browser = textbox.browser
       end

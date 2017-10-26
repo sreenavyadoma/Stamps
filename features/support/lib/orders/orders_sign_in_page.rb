@@ -45,8 +45,8 @@ module Stamps
           super
           browser.text_field(css: "input[class*=x-form-checkbox]")
           browser.a(text: "Download Software for Windows")
-          @username_textbox = StampsTextBox.new(browser.text_field(css: "[placeholder=USERNAME]"))
-          @password_textbox = StampsTextBox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
+          @username_textbox = StampsTextbox.new(browser.text_field(css: "[placeholder=USERNAME]"))
+          @password_textbox = StampsTextbox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
           @sign_in_btn = StampsElement.new(browser.span(text: "Sign In"))
 
           @title = StampsElement.new(browser.div(text: 'Sign In'))

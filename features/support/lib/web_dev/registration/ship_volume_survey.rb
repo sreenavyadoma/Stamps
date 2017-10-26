@@ -31,7 +31,7 @@ module Stamps
       end
 
       def consent_checkbox
-        @consent_checkbox = StampsWatirCheckBox.new(browser.checkbox(name: 'consentCheckbox'))
+        @consent_checkbox = StampsWatirCheckbox.new(browser.checkbox(name: 'consentCheckbox'))
       end
 
       def submit

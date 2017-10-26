@@ -25,46 +25,46 @@ module Stamps
         end
 
         def name
-          @name = StampsTextBox.new(browser.text_field(name: "ShipName")) if @name.nil? || !@name.present?
+          @name = StampsTextbox.new(browser.text_field(name: "ShipName")) if @name.nil? || !@name.present?
           @name
         end
 
         def company
-          @company = StampsTextBox.new(browser.text_field(name: "ShipCompany")) if @company.nil? || !@company.present?
+          @company = StampsTextbox.new(browser.text_field(name: "ShipCompany")) if @company.nil? || !@company.present?
           @company
         end
 
         def address_1
-          @address_1 = StampsTextBox.new(browser.text_field(name: "ShipStreet1")) if @address_1.nil? || !@address_1.present?
+          @address_1 = StampsTextbox.new(browser.text_field(name: "ShipStreet1")) if @address_1.nil? || !@address_1.present?
           @address_1
         end
 
         def address_2
-          @address_2 = StampsTextBox.new(browser.text_field(name: "ShipStreet2")) if @address_2.nil? || !@address_2.present?
+          @address_2 = StampsTextbox.new(browser.text_field(name: "ShipStreet2")) if @address_2.nil? || !@address_2.present?
           @address_2
         end
 
         def email
-          @email = StampsTextBox.new(browser.text_field(css: "[id*=shiptoview-international] [name=BuyerEmail]")) if @email.nil? || !@email.present?
+          @email = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=BuyerEmail]")) if @email.nil? || !@email.present?
           @email
         end
 
         def city
-          @city = StampsTextBox.new(browser.text_field(name: "ShipCity")) if @city.nil? || !@city.present?
+          @city = StampsTextbox.new(browser.text_field(name: "ShipCity")) if @city.nil? || !@city.present?
           @city
         end
 
         def phone
-          @phone = StampsTextBox.new(browser.text_field(css: "[id*=shiptoview-international] [name=ShipPhone]")) if @phone.nil? || !@phone.present?
+          @phone = StampsTextbox.new(browser.text_field(css: "[id*=shiptoview-international] [name=ShipPhone]")) if @phone.nil? || !@phone.present?
           @phone
         end
 
         def postal_code
-          @postal_code = StampsTextBox.new(browser.text_field(name: "ShipPostalCode")) if @xxxx.nil? || !@xxxx.present?
+          @postal_code = StampsTextbox.new(browser.text_field(name: "ShipPostalCode")) if @xxxx.nil? || !@xxxx.present?
         end
 
         def province
-          @province = StampsTextBox.new(browser.text_field(name: "ShipState")) if @xxxx.nil? || !@xxxx.present?
+          @province = StampsTextbox.new(browser.text_field(name: "ShipState")) if @xxxx.nil? || !@xxxx.present?
         end
 
         def less_link
@@ -154,7 +154,7 @@ module Stamps
           row = number.to_i<=0?0:number.to_i-1
           checkbox_field = browser.text_field css: "input[name=addrAmbig][value='#{row}']"
 
-          checkbox = StampsCheckBox.new checkbox_field, checkbox_field, "checked", "checked"
+          checkbox = StampsCheckbox.new checkbox_field, checkbox_field, "checked", "checked"
           checkbox.check
 
           accept_button = StampsElement.new browser.span text: "Accept"
@@ -197,7 +197,7 @@ module Stamps
         end
       end
 
-      class ShipToTextArea < StampsTextBox
+      class ShipToTextArea < StampsTextbox
         def full_address
           200.times do
             break if text.size > 5
@@ -334,7 +334,7 @@ module Stamps
             break if !text_field.nil? && text_field.present?
           end
           expect(text_field).to be_present, "Ship-To Country is not present."
-          StampsTextBox.new(text_field)
+          StampsTextbox.new(text_field)
         end
 
         def selected?(country)
@@ -420,13 +420,13 @@ module Stamps
 
         def email
           show_ship_to_details
-          @email = StampsTextBox.new browser.text_field(name: 'BuyerEmail') if @email.nil? || !@email.present?
+          @email = StampsTextbox.new browser.text_field(name: 'BuyerEmail') if @email.nil? || !@email.present?
           @email
         end
 
         def phone
           show_ship_to_details
-          @phone = StampsTextBox.new browser.text_field(name: "ShipPhone") if @phone.nil? || !@phone.present?
+          @phone = StampsTextbox.new browser.text_field(name: "ShipPhone") if @phone.nil? || !@phone.present?
           @phone
         end
 
@@ -553,13 +553,13 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextBox.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
+          @textbox = StampsTextbox.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
           @decrement_trigger = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
           @increment_trigger = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
 
           field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
           verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
-          @checkbox = StampsCheckBox.new(field, verify, "class", "checked")
+          @checkbox = StampsCheckbox.new(field, verify, "class", "checked")
           @terms = InsuranceTermsConditions.new(param)
         end
 
@@ -633,7 +633,7 @@ module Stamps
         attr_reader :textbox, :dropdown, :cost_label
         def initialize(param)
           super
-          @textbox = StampsTextBox.new browser.text_field(name: 'Tracking')
+          @textbox = StampsTextbox.new browser.text_field(name: 'Tracking')
           @dropdown = StampsElement.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
           @cost_label = StampsElement.new(browser.label(css: "label[class*='selected_tracking_cost']"))
         end
@@ -720,9 +720,9 @@ module Stamps
           dec_btn = browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index-1]
           @item_qty = Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          @item_id = StampsTextBox.new((browser.text_fields(name: "SKU")[index-1]))
+          @item_id = StampsTextbox.new((browser.text_fields(name: "SKU")[index-1]))
           @delete = StampsElement.new(browser.spans(css: "span[class*=sdc-icon-remove]")[index-1])
-          @item_description = StampsTextBox.new(browser.text_fields(name: "Description")[index-1])
+          @item_description = StampsTextbox.new(browser.text_fields(name: "Description")[index-1])
         end
 
         def present?
@@ -948,7 +948,7 @@ module Stamps
           @service = Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :single_order).extend(Stamps::Orders::DetailsFormCommon::DetailsFormServiceCost)
           @insure_for = DetailsInsureFor.new(param)
           @tracking = DetailsTracking.new(param)
-          @reference_no = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
+          @reference_no = StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
           @dimensions = Stamps::Orders::DetailsFormCommon::DetailsFormDimensions.new(param, :single_order)
           @items_ordered = ItemsOrderedSection.new(param)
           @customs = OrdersCustomsFields.new(param)

@@ -9,7 +9,7 @@ module Stamps
         end
 
         def textbox
-          @textbox = StampsTextBox.new(browser.text_field(css: "input[name^=printmediadroplist]")) if @textbox.nil? || !@textbox.present?
+          @textbox = StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist]")) if @textbox.nil? || !@textbox.present?
           @textbox
         end
 
@@ -81,7 +81,7 @@ module Stamps
         end
 
         def textbox
-          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextBox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")):@textbox
+          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")):@textbox
         end
 
         def select(selection)
@@ -101,7 +101,7 @@ module Stamps
         end
 
         def textbox
-          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")):@textbox
+          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(browser.text_field(name: "paperTrays")):@textbox
         end
 
         def select(selection)
@@ -126,7 +126,7 @@ module Stamps
         end
 
         def textbox
-          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextBox.new(browser.text_field(name: "paperTrays")):@textbox
+          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(browser.text_field(name: "paperTrays")):@textbox
         end
 
         def select_left_label
@@ -181,7 +181,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
+          StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def email_tracking
@@ -189,7 +189,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
+          StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def print_reference_no
@@ -197,7 +197,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent
           attribute = "class"
           verify_field_attrib = "checked"
-          StampsCheckBox.new checkbox_field, verify_field, attribute, verify_field_attrib
+          StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
       end
 
@@ -255,7 +255,7 @@ module Stamps
           attribute = "class"
           attrib_value_check = "checked"
 
-          dont_show_checkbox = Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, attribute, attrib_value_check
+          dont_show_checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
 
           if dont_show
             dont_show_checkbox.check
@@ -322,7 +322,7 @@ module Stamps
           day = day.to_i
           date_picker_header = StampsElement.new browser.div class: "x-datepicker-header"
           picker_button = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
-          ship_date_textbox = StampsTextBox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
+          ship_date_textbox = StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
 
           ship_date_str = test_helper.now_plus_month_dd day
           ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day

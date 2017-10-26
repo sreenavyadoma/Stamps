@@ -48,7 +48,7 @@ module Stamps
           super
           @window_title = StampsElement.new(browser.div(css: "div[id^=movetohold-][id$=_header-targetEl]>div[id^=title]"))
           @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
-          @hold_until = StampsTextBox.new(browser.text_field(css: "input[placeholder='Select a Date']"))
+          @hold_until = StampsTextbox.new(browser.text_field(css: "input[placeholder='Select a Date']"))
         end
 
         def present?
@@ -417,7 +417,7 @@ module Stamps
         def dont_show_this_again
           field = browser.label(text: "Don't show this again.")
           verify_field = field.parent.parent.parent
-          StampsCheckBox.new field, verify_field, "class", "checked"
+          StampsCheckbox.new field, verify_field, "class", "checked"
         end
 
         def usps_privacy_act_statement
@@ -663,7 +663,7 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextBox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
+          @textbox = StampsTextbox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
           @dropdown = StampsElement.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
         end
 
@@ -885,7 +885,7 @@ module Stamps
 
         def page_number
           field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-          textbox = StampsTextBox.new field
+          textbox = StampsTextbox.new field
           textbox
         end
 

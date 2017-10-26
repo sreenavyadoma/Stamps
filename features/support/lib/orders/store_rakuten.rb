@@ -34,15 +34,15 @@ module Stamps
         end
 
         def seller_id
-          StampsTextBox.new browser.text_field(name: "RakutenSellerID")
+          StampsTextbox.new browser.text_field(name: "RakutenSellerID")
         end
 
         def ftp_username
-          StampsTextBox.new(browser.text_fields(name: "AuthToken").first)
+          StampsTextbox.new(browser.text_fields(name: "AuthToken").first)
         end
 
         def ftp_password
-          StampsTextBox.new(browser.text_fields(name: "AuthToken").last)
+          StampsTextbox.new(browser.text_fields(name: "AuthToken").last)
         end
 
         def map_rakuten_sku
@@ -50,7 +50,7 @@ module Stamps
           verify_field = checkbox_field.parent.parent.parent.parent
           attribute_name = "class"
           attribute_value = "checked"
-          StampsCheckBox.new checkbox_field, verify_field, attribute_name, attribute_value
+          StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def connect

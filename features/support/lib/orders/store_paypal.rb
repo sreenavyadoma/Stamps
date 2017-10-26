@@ -135,7 +135,7 @@ module Stamps
         end
 
         def email_address
-          StampsTextBox.new frame.text_field(css: "input[id=paypalEmailField]")
+          StampsTextbox.new frame.text_field(css: "input[id=paypalEmailField]")
         end
 
         def verify_email
@@ -201,73 +201,73 @@ module Stamps
         end
 
         def restrict_to_email_address
-          StampsTextBox.new frame.text_field(css: "input[id=toemail]")
+          StampsTextbox.new frame.text_field(css: "input[id=toemail]")
         end
 
         def type_cart
           input = frame.input(css: 'input[id=cart]')
           verify = frame.input(css: 'input[id=cart]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_web_accept
           input = frame.input(css: 'input[id=webaccept]')
           verify = frame.input(css: 'input[id=webaccept]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_express_checkout
           input = frame.input(css: 'input[id=expresscheckout]')
           verify = frame.input(css: 'input[id=expresscheckout]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_send_money
           input = frame.input(css: 'input[id=sendmoney]')
           verify = frame.input(css: 'input[id=sendmoney]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_virtual_terminal
           input = frame.input(css: 'input[id=virtualterminal]')
           verify = frame.input(css: 'input[id=virtualterminal]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_subscription_payment
           input = frame.input(css: 'input[id=subscrpayment]')
           verify = frame.input(css: 'input[id=subscrpayment]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_merchant_payment
           input = frame.input(css: 'input[id=merchpmt]')
           verify = frame.input(css: 'input[id=merchpmt]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_mass_payment
           input = frame.input(css: 'input[id=masspay]')
           verify = frame.input(css: 'input[id=masspay]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_integral_evolution
           input = frame.input(css: 'input[id=integralevoluton]')
           verify = frame.input(css: 'input[id=integralevoluton]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_website_payments_pro_hosted
           input = frame.input(css: 'input[id=prohosted]')
           verify = frame.input(css: 'input[id=prohosted]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
         def type_website_payments_pro_api
           input = frame.input(css: 'input[id=proapi]')
           verify = frame.input(css: 'input[id=proapi]')
-          Stamps::Browser::StampsCheckBox.new(input, verify, "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
         end
 
       end

@@ -26,18 +26,18 @@ module Stamps
         end
 
         def store_id
-          StampsTextBox.new browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div[id^=textfield]>div[id$=bodyEl]>div>div>input")
+          StampsTextbox.new browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div[id^=textfield]>div[id$=bodyEl]>div>div>input")
         end
 
         def contact_token
           parent = browser.span(text: "Partner Store Contract Token").parent.parent
           input = parent.divs[0].div.div.textbox
           raise "Contact Token textbox does not exist or textbox locator is wrong." unless input.present?
-          StampsTextBox.new input
+          StampsTextbox.new input
         end
 
         def first_order_id_to_import
-          StampsTextBox.new browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div:nth-child(4)>div>div>div>div>div>div>input")
+          StampsTextbox.new browser.text_field(css: "div[id^=connectyahoowindow-][id$=-body]>div>div>div>div>div[class*=x-box-layout-ct]>div>div>div:nth-child(4)>div>div>div>div>div>div>input")
         end
 
         def connect_button
@@ -214,11 +214,11 @@ module Stamps
         end
 
         def username
-          StampsTextBox.new browser.text_field(id: 'login-input')
+          StampsTextbox.new browser.text_field(id: 'login-input')
         end
 
         def password
-          StampsTextBox.new browser.text_field(id: 'password')
+          StampsTextbox.new browser.text_field(id: 'password')
         end
 
         def sign_in

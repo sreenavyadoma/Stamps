@@ -59,12 +59,12 @@ module Stamps
         end
 
         def textbox
-          @textbox = StampsTextBox.new(browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]) if @textbox.nil? || !@textbox.present?
+          @textbox = StampsTextbox.new(browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]) if @textbox.nil? || !@textbox.present?
           @textbox
         end
 
         def dropdown
-          @dropdown = StampsTextBox.new (browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]) if @dropdown.nil? || !@dropdown.present?
+          @dropdown = StampsTextbox.new (browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]) if @dropdown.nil? || !@dropdown.present?
           @dropdown
         end
 
@@ -135,13 +135,13 @@ module Stamps
           @form_type = form_type
           case form_type
             when :single_order
-              @textbox = StampsTextBox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
+              @textbox = StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
               @dropdown = StampsElement.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
             when :multi_order_dom
-              @textbox = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
+              @textbox = StampsTextbox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
               @dropdown = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
             when :multi_order_int
-              @textbox = StampsTextBox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
+              @textbox = StampsTextbox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
               @dropdown = StampsElement.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
             else
               expect([:single_order, :multi_order_dom, :multi_order_int]).to include(form_type)

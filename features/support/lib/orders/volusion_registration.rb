@@ -54,27 +54,27 @@ module Stamps
         end
 
         def first_name
-          StampsTextBox.new browser.text_field(name: "ShipFirstName")
+          StampsTextbox.new browser.text_field(name: "ShipFirstName")
         end
 
         def last_name
-          StampsTextBox.new browser.text_field(name: "ShipLastName")
+          StampsTextbox.new browser.text_field(name: "ShipLastName")
         end
 
         def company
-          StampsTextBox.new browser.text_field(name: "ShipCompanyName")
+          StampsTextbox.new browser.text_field(name: "ShipCompanyName")
         end
 
         def address_1
-          StampsTextBox.new browser.text_field(name: "ShipAddress1")
+          StampsTextbox.new browser.text_field(name: "ShipAddress1")
         end
 
         def address_2
-          StampsTextBox.new browser.text_field(name: "ShipAddress2")
+          StampsTextbox.new browser.text_field(name: "ShipAddress2")
         end
 
         def city
-          StampsTextBox.new browser.text_field(name: "ShipCity")
+          StampsTextbox.new browser.text_field(name: "ShipCity")
         end
 
         def country
@@ -86,11 +86,11 @@ module Stamps
         end
 
         def zip_code
-          StampsTextBox.new browser.text_field(name: "ShipPostalCode")
+          StampsTextbox.new browser.text_field(name: "ShipPostalCode")
         end
 
         def phone_number
-          StampsTextBox.new browser.text_field(name: "ShipPhoneNumber")
+          StampsTextbox.new browser.text_field(name: "ShipPhoneNumber")
         end
 
         def type_of_address
@@ -202,7 +202,7 @@ module Stamps
         end
 
         def qty_field
-          StampsTextBox.new browser.text_field(name: 'QTY.SAMPLE1')
+          StampsTextbox.new browser.text_field(name: 'QTY.SAMPLE1')
         end
 
         def qty number
@@ -301,19 +301,19 @@ module Stamps
         end
 
         def email
-          StampsTextBox.new browser.text_field(name: "Email")
+          StampsTextbox.new browser.text_field(name: "Email")
         end
 
         def email_again
-          StampsTextBox.new browser.text_field(name: "Emailagain")
+          StampsTextbox.new browser.text_field(name: "Emailagain")
         end
 
         def password
-          StampsTextBox.new browser.text_field(name: "password")
+          StampsTextbox.new browser.text_field(name: "password")
         end
 
         def password_again
-          StampsTextBox.new browser.text_field(name: "passwordagain")
+          StampsTextbox.new browser.text_field(name: "passwordagain")
         end
 
         def receive_newsletter
@@ -341,11 +341,11 @@ module Stamps
         end
 
         def email
-          StampsTextBox.new browser.text_field(name: "email")
+          StampsTextbox.new browser.text_field(name: "email")
         end
 
         def password
-          StampsTextBox.new browser.text_field(name: "password")
+          StampsTextbox.new browser.text_field(name: "password")
         end
 
         def login

@@ -13,7 +13,7 @@ module Stamps
         end
 
         def company
-          @company ||= StampsTextBox.new(browser.text_field(id: "companyName")) if @company.nil? || !@company.present?
+          @company ||= StampsTextbox.new(browser.text_field(id: "companyName")) if @company.nil? || !@company.present?
           @company
         end
 
@@ -34,7 +34,7 @@ module Stamps
         end
 
         def zip
-          @zip ||= StampsTextBox.new(browser.text_field(id: "zip")) if @zip.nil? || !@zip.present?
+          @zip ||= StampsTextbox.new(browser.text_field(id: "zip")) if @zip.nil? || !@zip.present?
           @zip
         end
 
@@ -134,7 +134,7 @@ module Stamps
         end
 
         def use_mailing_for_billing
-          @use_mailing_for_billing = StampsWatirCheckBox.new(browser.checkbox(name: 'useMailingAddressForBilling')) if @use_mailing_for_billing.nil? || !@use_mailing_for_billing.present?
+          @use_mailing_for_billing = StampsWatirCheckbox.new(browser.checkbox(name: 'useMailingAddressForBilling')) if @use_mailing_for_billing.nil? || !@use_mailing_for_billing.present?
           @use_mailing_for_billing
         end
       end
@@ -234,7 +234,7 @@ module Stamps
         end
 
         def uname_text_box
-          @uname_text_box ||= StampsTextBox.new(browser.text_field(id: "newUsername")) if @uname_text_box.nil? || !@uname_text_box.present?
+          @uname_text_box ||= StampsTextbox.new(browser.text_field(id: "newUsername")) if @uname_text_box.nil? || !@uname_text_box.present?
           @uname_text_box
         end
 
@@ -245,7 +245,7 @@ module Stamps
       end
 
 
-      class RegMembershipFirstName < Stamps::Browser::StampsTextBox
+      class RegMembershipFirstName < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(1)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -257,7 +257,7 @@ module Stamps
         end
       end
 
-      class RegMembershipLastName < Stamps::Browser::StampsTextBox
+      class RegMembershipLastName < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(2)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -269,7 +269,7 @@ module Stamps
         end
       end
 
-      class RegMembershipAddress < Stamps::Browser::StampsTextBox
+      class RegMembershipAddress < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(4)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -281,7 +281,7 @@ module Stamps
         end
       end
 
-      class RegMembershipCity < Stamps::Browser::StampsTextBox
+      class RegMembershipCity < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(5)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -293,7 +293,7 @@ module Stamps
         end
       end
 
-      class RegMembershipState < Stamps::Browser::StampsDropDown
+      class RegMembershipState < Stamps::Browser::StampsDropdown
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(6)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -305,7 +305,7 @@ module Stamps
         end
       end
 
-      class RegMembershipPhone < Stamps::Browser::StampsTextBox
+      class RegMembershipPhone < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=personalinfo]>div>div:nth-child(8)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -317,7 +317,7 @@ module Stamps
         end
       end
 
-      class RegMembershipCardHolderName < Stamps::Browser::StampsTextBox
+      class RegMembershipCardHolderName < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(1)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -329,7 +329,7 @@ module Stamps
         end
       end
 
-      class RegMembershipCreditCardNumber < Stamps::Browser::StampsTextBox
+      class RegMembershipCreditCardNumber < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(2)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -341,7 +341,7 @@ module Stamps
         end
       end
 
-      class RegMembershipMonth < Stamps::Browser::StampsDropDown
+      class RegMembershipMonth < Stamps::Browser::StampsDropdown
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(1)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -353,7 +353,7 @@ module Stamps
         end
       end
 
-      class RegMembershipYear < Stamps::Browser::StampsDropDown
+      class RegMembershipYear < Stamps::Browser::StampsDropdown
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(3)>div>div:nth-child(2)>div>div[class*=help]>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -365,7 +365,7 @@ module Stamps
         end
       end
 
-      class RegMembershipBillingAddress < Stamps::Browser::StampsTextBox
+      class RegMembershipBillingAddress < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(6)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -377,7 +377,7 @@ module Stamps
         end
       end
 
-      class RegMembershipBillingCity < Stamps::Browser::StampsTextBox
+      class RegMembershipBillingCity < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(7)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -401,7 +401,7 @@ module Stamps
         end
       end
 
-      class RegMembershipBillingZip < Stamps::Browser::StampsTextBox
+      class RegMembershipBillingZip < Stamps::Browser::StampsTextbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "li[id=creditcard]>div>div:nth-child(9)>div>div>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block
@@ -413,7 +413,7 @@ module Stamps
         end
       end
 
-      class RegMembershipTerms < Stamps::Browser::StampsWatirCheckBox
+      class RegMembershipTerms < Stamps::Browser::StampsWatirCheckbox
         def help_block
           @help_block = RegHelpBlock.new(browser, browser.lis(css: "div[class=terms-msg]>span>ul>li")) if @help_block.nil? || !@help_block.present?
           @help_block

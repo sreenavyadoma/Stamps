@@ -50,7 +50,7 @@ module Stamps
 
       module MailDateTextbox
         def textbox
-          @textbox = StampsTextBox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @textbox.nil?
+          @textbox = StampsTextbox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @textbox.nil?
           @textbox
         end
       end

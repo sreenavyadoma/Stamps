@@ -18,7 +18,7 @@ module Stamps
       class Amazon < Browser::StampsModal
         class OrderSource < Browser::StampsModal
           def textbox
-            StampsTextBox.new(browser.text_field name: "AmazonMarketplace")
+            StampsTextbox.new(browser.text_field name: "AmazonMarketplace")
           end
 
           def dropdown
@@ -52,7 +52,7 @@ module Stamps
 
         class ProductIdentifier < Browser::StampsModal
           def textbox
-            StampsTextBox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
+            StampsTextbox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
           end
 
           def dropdown
@@ -102,11 +102,11 @@ module Stamps
         end
 
         def seller_id
-          StampsTextBox.new browser.text_field(name: "AmazonSellerID")
+          StampsTextbox.new browser.text_field(name: "AmazonSellerID")
         end
 
         def auth_token
-          StampsTextBox.new browser.text_field(name: "AuthToken")
+          StampsTextbox.new browser.text_field(name: "AuthToken")
         end
 
         def verify_seller_id

@@ -19,7 +19,7 @@ module Stamps
       def initialize(param)
         super
         @usps_approval = USPSCheckBox.new(param)
-        @new_meter_limit = StampsTextBox.new browser.text_field(name: "resetAmt")
+        @new_meter_limit = StampsTextbox.new browser.text_field(name: "resetAmt")
         @current_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
         @maximum_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
       end
