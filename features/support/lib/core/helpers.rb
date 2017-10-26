@@ -251,10 +251,12 @@ module Stamps
       date.strftime "%b %-d"
     end
 
-    def now_plus_mm_dd
-      now_plus_mm_dd_yy(0)
-    end
 
+
+
+
+
+    # returns mm/dd/yyyy "10/26/2017"
     def now_plus_mm_dd_yy(day)
       (Date.today + day.to_i).strftime "%m/%d/%Y"
     end

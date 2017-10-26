@@ -18,24 +18,30 @@ Then /^[Ii]n [Pp]rint modal, click Close button$/ do
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
+  step "Orders print modal printer dropdown is present"
   stamps.orders.orders_print_modal.printer.select(printer)
 end
 
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
   step "expect orders print modal is present"
+  step "Orders print modal printer dropdown is present"
   expect(test_param[:printer] = (printer.nil?)? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if test_param[:printer].include?('\\') #validate printer format
     expect(test_param[:printer]).to match(/\\.+\.*/)
     test_param[:printer] = /\\\\(.+)\\/.match(test_param[:printer])[1]
   end
-  expect(stamps.orders.orders_print_modal.printer.select(test_param[:printer])).to_not be_nil, "Unable to select printer \"#{test_param[:printer]}\". \nMake sure \"#{test_param[:printer]}\" is configured for host #{Socket.gethostname}. \nUSR: #{test_param[:username]}, #{modal_param.web_app.to_s.capitalize}(#{modal_param.test_env.upcase})"
+  expect(stamps.orders.orders_print_modal.printer.select(test_param[:printer])).to_not be_nil, "Unable to select printer \"#{test_param[:printer]}\". \nMake sure \"#{test_param[:printer]}\" is configured for host #{modal_param.hostname}. \nUSR: #{test_param[:username]}, #{modal_param.web_app.to_s.capitalize}(#{modal_param.test_env.upcase})"
+end
+
+Then /^[Oo]rders [Pp]rint [Mm]odal [Pp]rinter [Dd]rop[Dd]own is present$/ do
+  expect(stamps.orders.orders_print_modal.printer).to be_present, "Print modal Printer dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{modal_param.hostname}"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
   expect(stamps.orders.orders_print_modal).to be_present, "Orders Print Modal is not present"
 end
 
-Then /^[\w]lick [\w]rint [\w]odal [\w]rint [\w]utton$/ do
+Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
   stamps.orders.orders_print_modal.print
   # @ship_date = print_modal.ship_date.textbox.text
   # @paper_tray = print_modal.paper_tray.textbox.text
@@ -45,7 +51,7 @@ Then /^[\w]lick [\w]rint [\w]odal [\w]rint [\w]utton$/ do
   # sleep(4)
 end
 
-Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is present$/ do
+Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is [Pp]resent$/ do
   expect(stamps.orders.orders_print_modal).to be_present, "Orders Print modal is NOT present"
 end
 
@@ -54,7 +60,17 @@ Then /^ReIn [Pp]rint modal, Reprint$/ do
 end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today(?:| plus (\d+))$/ do |day|
+  step "expect print modal ship date dropdown is present"
   stamps.orders.orders_print_modal.ship_date.date_picker.today_plus(test_helper.valid_shipdate((day.nil?)?0:day.to_i))
+end
+
+Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) day\(s\) from today/ do |day|
+  step "expect print modal ship date dropdown is present"
+  expect(stamps.orders.orders_print_modal.ship_date.textbox.text).to eql test_helper.date_printed(day)
+end
+
+Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ do
+  expect(stamps.orders.orders_print_modal.ship_date).to be_present, "Ship Date dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{modal_param.hostname}"
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do
@@ -105,10 +121,6 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
   expect(stamps.orders.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
-Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) day\(s\) from today/ do |day|
-  expect(stamps.orders.orders_print_modal.ship_date.textbox.text).to eql test_helper.date_printed(day)
-end
-
 Then /^[Ss]et [\w]rint [Mm]odal [Pp]rint-On to \"(.*)\"$/ do |expectation|
   stamps.orders.orders_print_modal.printing_on.select(expectation)
 end
@@ -118,6 +130,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rinting On Label is (.*)$/ do |expectatio
 end
 
 Then /^[Ss]elect [Pp]rinter \"(.*)\"$/ do |printer|
+  step "Orders print modal printer dropdown is present"
   stamps.orders.orders_print_modal.printer.select(printer)
 end
 

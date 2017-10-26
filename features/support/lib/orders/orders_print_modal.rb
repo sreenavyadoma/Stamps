@@ -84,6 +84,14 @@ module Stamps
           (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")):@textbox
         end
 
+        def present?
+          textbox.present?
+        end
+
+        def wait_until_present(*args)
+          textbox.wait_until_present(*args)
+        end
+
         def select(selection)
           selection_label = StampsElement.new(browser.li(text: /#{selection}/))
           15.times do
@@ -271,7 +279,7 @@ module Stamps
       class OrdersDatePicker < Browser::StampsModal
 
         def todays_date_div
-          browser.div css: "div[title='Today']"
+          browser.div(css: "div[title='Today']")
         end
 
         def date_field(day)
@@ -459,8 +467,7 @@ module Stamps
 
       module OrdersPrintModalTitle
         def window_title
-          @window_title = StampsElement.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')) if@window_title.nil? || !@window_title.present?
-          @window_title
+          (@window_title.nil? || !@window_title.present?)?@window_title = StampsElement.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')):@window_title
         end
 
         def label_count
@@ -468,8 +475,7 @@ module Stamps
         end
 
         def x_image
-          @x_image = StampsElement.new(browser.img(css: "[id^=printwindow-] [class*=close]")) if @x_image.nil? || !@x_image.present?
-          @x_image
+          (@x_image.nil? || !@x_image.present?)?@x_image = StampsElement.new(browser.img(css: "[id^=printwindow-] [class*=close]")):@x_image
         end
 
         def close

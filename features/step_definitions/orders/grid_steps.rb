@@ -58,7 +58,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Date Printed for this order is today$/ do
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Date for this order is today(?:| plus (\d+))$/ do |day|
-  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id][1])).to eql(test_helper.valid_shipdate(day))
+  expect(stamps.orders.orders_grid.grid_column(:ship_date).data(test_param[:order_id][1])).to eql(test_helper.valid_shipdate((day.nil?)?0:day.to_i))
 end
 
 Then /^[Ee]xpect Ship-To address is;$/ do |table|

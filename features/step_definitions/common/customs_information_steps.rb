@@ -4,7 +4,7 @@ Then /^[Cc]lick (?:Order Details|Print) form Edit Form button$/ do
   stamps.mail.print_form.mail_customs.edit_form if modal_param.web_app == :mail
 end
 
-Then /^[Bb]lur out on Customs form(?:| (\d+)(?:| times))$/ do |count|
+Then /^[Bb]lur [Oo]ut [Oo]n [Cc]ustoms [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
   count = (count.nil?)?1:count.to_i
   count.times { stamps.orders.single_order_details.customs.edit_form.blur_out } if modal_param.web_app == :orders
   count.times { stamps.mail.print_form.mail_customs.edit_form.blur_out } if modal_param.web_app == :mail
