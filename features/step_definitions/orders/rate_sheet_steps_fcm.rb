@@ -6,7 +6,9 @@ end
 Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
   zone = 1
 
-  #test_param[:timer] = Date.now
+ # test_param[:starting_time] = Time.now
+ # test_param[:max_time] = 240 #seconds or 4 min
+
   test_param[:result_file] = Spreadsheet::Workbook.new
   test_param[:result_sheet] = test_param[:result_file].create_worksheet
 
@@ -309,6 +311,11 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
       test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:error_msg]] = "Zone #{zone} - Row #{row_number}: #{e.message}"
     end
   end
+
+ # if (Time.now - test_param[:starting_time]) > test_param[:max_time]
+ #   step "set Order Details form Reference Number to random"
+ #   step "blur out on Order Details form"
+ # end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
   @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Zone_#{zone}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"

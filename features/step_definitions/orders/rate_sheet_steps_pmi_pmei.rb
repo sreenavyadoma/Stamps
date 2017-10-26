@@ -346,8 +346,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
       expect(group).to be_between(1, 17).inclusive
   end
 
-  test_param[:start_time] = Time.now
-  test_param[:max_time] = 1800 #seconds or 30min
+  #test_param[:start_time] = Time.now
+  #test_param[:max_time] = 240 #seconds or 4 min
 
   format = Spreadsheet::Format.new :color=> :blue, :pattern_fg_color => :yellow, :pattern => 1
   fail_format = Spreadsheet::Format.new :color=> :red, :weight => :bold
@@ -507,10 +507,10 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
     end
   end
 
-  if (Time.now - test_param[:start_time] > test_param[:max_time])
-    step "Open Settings Modal"
-    step "In Settings modal, Save"
-  end
+ # if (Time.now - test_param[:start_time] > test_param[:max_time])
+ #   step "Open Settings Modal"
+ #   step "In Settings modal, Save"
+ # end
 
   result_sheet = param_sheet.gsub(/\s+/, "")
   @result_filename = "#{data_for(:rates_test, {})['results_dir']}\\#{result_sheet}_#{ENV['WEB_APP'].downcase}_#{ENV['URL'].downcase}_Group_#{group}_#{Time.now.strftime("%Y.%m.%d.%H.%M")}.xls"
