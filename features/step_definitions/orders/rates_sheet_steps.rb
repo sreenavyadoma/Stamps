@@ -1,11 +1,7 @@
 Then /^[Pp]repare environment for ratings test$/ do
-  if @modal_param.web_app == :mail
-    step "select Print On Shipping Label - 8 ½\" x 11\" Paper"
-  elsif @modal_param.web_app == :orders
-    step "add new order"
-  end
+  step "select Print On Shipping Label - Paper" if @modal_param.web_app == :mail
+  step "add new order" if @modal_param.web_app == :orders
 end
-
 
 Then /^[Ee]xcel rate sheet is loaded$/ do
   expect([:orders, :mail]).to include(modal_param.web_app)
