@@ -34,7 +34,6 @@ Feature: Set Print Ship Date to Today
     Then click Orders Toolbar Print button
     Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
-    Then set Print modal Ship Date to today
     Then set Print modal Ship Date to today plus 1
     Then click print modal print button
     Then Pause for 2 seconds

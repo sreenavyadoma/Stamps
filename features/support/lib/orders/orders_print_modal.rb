@@ -282,6 +282,10 @@ module Stamps
           browser.div(css: "div[title='Today']")
         end
 
+        def today_element
+          StampsElement.new(browser.div(css: "div[title='Today']"))
+        end
+
         def date_field(day)
           browser.td(css: "td[aria-label='#{test_helper.now_plus_month_dd day.to_i}']")
         end
@@ -291,12 +295,12 @@ module Stamps
         end
 
         def present?
-          date_picker_button.present?
+          today_element.present?
         end
 
         def now_month_dd
-          picker = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
-          today = StampsElement.new browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]"
+          picker = StampsElement.new(browser.div(css: "div[id^=datefield][id$=trigger-picker]"))
+          today = StampsElement.new(browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]")
           10.times {
             picker.click unless today.present?
             today.click
@@ -322,6 +326,7 @@ module Stamps
 
         end
 
+        #todo-Rob combine both methods below, set default value to 0
         def today
           today_plus 0
         end
