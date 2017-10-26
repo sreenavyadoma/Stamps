@@ -21,6 +21,7 @@ require 'yaml'
 require 'spreadsheet'
 require 'measured'
 require 'holidays'
+require 'socket'
 
 require_relative 'lib/core/scoped_attr_accessor'
 require_relative 'lib/apps/db_helper'

@@ -22,20 +22,20 @@ Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rinter to \"(.*)\"$/ do |printer|
 end
 
 Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
+  step "expect orders print modal is present"
   expect(test_param[:printer] = (printer.nil?)? modal_param.printer : printer).to_not be_nil, "PRINTER parameter is not defined. Printing tests must define PRINTER value either in cucumber.yml file or in Jenkins."
   if test_param[:printer].include?('\\') #validate printer format
     expect(test_param[:printer]).to match(/\\.+\.*/)
     test_param[:printer] = /\\\\(.+)\\/.match(test_param[:printer])[1]
   end
-  step "expect orders print modal is present"
-  expect(stamps.orders.orders_print_modal.printer.select(test_param[:printer])).to_not be_nil, "Unable to select printer #{test_param[:printer]} for username #{test_param[:username]} in #{modal_param.web_app.to_s.capitalize} #{modal_param.test_env.upcase}"
+  expect(stamps.orders.orders_print_modal.printer.select(test_param[:printer])).to_not be_nil, "Unable to select printer \"#{test_param[:printer]}\". \nMake sure \"#{test_param[:printer]}\" is configured for host #{Socket.gethostname}. \nUSR: #{test_param[:username]}, #{modal_param.web_app.to_s.capitalize}(#{modal_param.test_env.upcase})"
 end
 
-Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is present$/ do
+Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
   expect(stamps.orders.orders_print_modal).to be_present, "Orders Print Modal is not present"
 end
 
-Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint button$/ do
+Then /^[\w]lick [\w]rint [\w]odal [\w]rint [\w]utton$/ do
   stamps.orders.orders_print_modal.print
   # @ship_date = print_modal.ship_date.textbox.text
   # @paper_tray = print_modal.paper_tray.textbox.text
@@ -109,7 +109,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) day\(s\) from today/ do |d
   expect(stamps.orders.orders_print_modal.ship_date.textbox.text).to eql test_helper.date_printed(day)
 end
 
-Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-On to \"(.*)\"$/ do |expectation|
+Then /^[Ss]et [\w]rint [Mm]odal [Pp]rint-On to \"(.*)\"$/ do |expectation|
   stamps.orders.orders_print_modal.printing_on.select(expectation)
 end
 
@@ -125,7 +125,7 @@ Then /^Close Reprint Modal$/ do
   stamps.orders.orders_toolbar.reprint.close
 end
 
-Then /^Close Label Unavailable Modal$/ do
+Then /^[\w]lose Label Unavailable Modal$/ do
   stamps.orders.orders_toolbar.ok.close
 end
 

@@ -229,7 +229,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Tracking to (.*)$/ do |value|
   step "Save Order Details data"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form Ship-From to (.+)$/ do |value|
+Then /^[Ss]et [Oo]rder [Dd]etails [\w]orm Ship-From to (.+)$/ do |value|
   test_param[:ship_from] = stamps.orders.single_order_details.single_ship_from.select(value)
 end
 

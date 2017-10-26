@@ -45,7 +45,7 @@ module Stamps
         @modal_param.test_env = 'qasc' if ENV['URL'].downcase.include?('sc')
         @modal_param.test_env = 'qacc' if ENV['URL'].downcase.include?('rating')
 
-        @modal_param.printer = ENV['PRINTER']
+        @modal_param.printer = (ENV['PRINTER'].nil?)?'factory':ENV['PRINTER']
 
         @modal_param.debug = (ENV["DEBUG"].nil?)?false:ENV["DEBUG"].downcase == "true"
 
