@@ -34,8 +34,3 @@ end
 Then /^Mail: in Print modal, Close$/ do
   stamps.mail.stamps.mail.close
 end
-
-
-
-
-

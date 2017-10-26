@@ -1,6 +1,4 @@
 
-
-
 Then /^[Ee]xpect Print form Print Media Tooltip is (.*)$/ do |selection|
   stamps.mail.print_on.tooltip selection
 end
@@ -160,5 +158,3 @@ end
 Then /^[Ee]xpect Print form Print Button is present$/ do
   expect(stamps.mail.mail_toolbar.sample_button).to be_present
 end
-
-

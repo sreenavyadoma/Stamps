@@ -19,8 +19,8 @@ rates_test:
   rates_pmi_comm_base: PMI Comm Base
   rates_pmi_comm_plus: PMI Comm Plus
   rates_fcm_package: FCM Package
-  test_dir: \\jenkinsvm01\Public\share\share\rates_test_data\tests
-  results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results
+  test_dir: C:\Users\ksathavara\Github\Stamps\config\rates
+  results_dir: C:\Users\ksathavara\Github\Stamps\config\rates\results
 
 import_orders_test:
   import_orders_dir: \\jenkinsvm01\Public\automation\data
