@@ -331,7 +331,8 @@ module Stamps
           today_plus 0
         end
 
-        def today_plus(day)
+        # default day is today
+        def today_plus(day=0)
           day = day.to_i
           date_picker_header = StampsElement.new browser.div class: "x-datepicker-header"
           picker_button = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")

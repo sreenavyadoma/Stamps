@@ -22,7 +22,6 @@ Feature: Set Print Ship Date to Today
     Then Pause for 2 seconds
     Then select Filter Panel tab Shipped
     Then expect Orders Grid Ship Date for this order is today
-    Then expect Orders Grid Ship Date for this order is today plus 0
     Then expect Orders Grid Date Printed for this order is today
 
   # Ship Date today + 1
