@@ -7,7 +7,7 @@ GRANT ALL ON stamps.* TO rcruz;
 
 #mysql --host=172.16.13.237 --user=rcruz --password=Mysql#524113 stamps
 
-UPDATE user_credentials SET user_credentials.in_use = 0 where username = 'cchrvv6qp';
+UPDATE user_credentials SET user_credentials.in_use = 0 where username = 'cchrvv6qp';gem
 select * from user_credentials where username = 'cchrvv6qp';
 
 CREATE TABLE user_credentials (

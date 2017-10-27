@@ -4,18 +4,15 @@ module Stamps
     class WebMail < Browser::StampsModal
       include PrintFormPanel::PrintFormBlurOut
       def sign_in_modal
-        @sign_in_modal = MailSignInModal.new(param) if @sign_in_modal.nil? || !@sign_in_modal.present?
-        @sign_in_modal
+        (cache[:sign_in_modal].nil? || !cache[:sign_in_modal].present?)?cache[:sign_in_modal] = MailSignInModal.new(param):cache[:sign_in_modal]
       end
 
       def mail_toolbar
-        @mail_toolbar = MailToolbar.new(param) if @mail_toolbar.nil? || !@mail_toolbar.present?
-        @mail_toolbar
+        (cache[:mail_toolbar].nil? || !mail_toolbar.present?)?cache[:mail_toolbar] = MailToolbar.new(param):cache[:mail_toolbar]
       end
 
       def print_media
-        @print_media = PrintFormPanel::PrintOn.new(param) if @print_media.nil? || !@print_media.present?
-        @print_media
+        (cache[:print_media].nil? || !cache[:print_media].present?)?cache[:print_media] = PrintFormPanel::PrintOn.new(param):cache[:print_media]
       end
 
       def print_on(selection)
@@ -28,7 +25,7 @@ module Stamps
       def print_form
         case param.print_media
           when :stamps
-            @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if @print_form.nil? || @print_form.print_media != :stamps
+            cache[:stamps] = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if cache[:stamps].nil? || cache[:stamps].print_media != :stamps
           when :labels
             @print_form = PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabels) if @print_form.nil? || @print_form.print_media != :labels
           when :envelopes
@@ -58,6 +55,11 @@ module Stamps
 
       def wait_until_present(*args)
         print_media.wait_until_present(*args)
+      end
+
+      private
+      def cache
+        @cache ||= {}
       end
     end
   end

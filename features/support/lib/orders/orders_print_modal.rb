@@ -338,14 +338,13 @@ module Stamps
           picker_button = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
           ship_date_textbox = StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
 
-          ship_date_str = test_helper.now_plus_month_dd day
-          ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
-          date_field = StampsElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
+          ship_date_str = test_helper.now_plus_month_dd(day)
+          ship_date_mmddyy = test_helper.now_plus_mm_dd_yy(day)
+          date_field = StampsElement.new(browser.div(css: "td[aria-label='#{ship_date_str}']>div"))
 
           10.times{
             picker_button.click unless date_picker_header.present?
             sleep(0.35)
-
             if date_field.element.present?
               break
             else
