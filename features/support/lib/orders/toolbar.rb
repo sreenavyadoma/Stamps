@@ -798,62 +798,8 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::StampsModal
-        include OrdersToolbarLeftSide
-        def import_orders_modal
-          (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal] = ImportOrders.new(param):cache[:import_orders_modal]
-        end
-
-        def usps_intl_terms
-          (cache[:usps_intl_terms].nil? || !cache[:usps_intl_terms].present?)?cache[:usps_intl_terms] = USPSTermsOrders.new(param):cache[:usps_intl_terms]
-        end
-
-        def refresh_orders
-          button = StampsElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
-
-          button.click
-          sleep(0.35)
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          button.click
-          sleep(0.35)
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          button.click
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-          if importing_order.present?
-            logger.info importing_order.message
-            importing_order.ok
-          end
-        end
+      #todo-Rob verify these objects are still needed and which tests are using it
+      module ToolbarItemsToBeVerified
         #============================
 
         def per_page
@@ -928,6 +874,65 @@ module Stamps
           number_str=label.text
           number = number_str.scan /\d+/
           number.last.to_s
+        end
+      end
+
+      class OrdersToolbar < Browser::StampsModal
+        include OrdersToolbarLeftSide
+        include ToolbarItemsToBeVerified
+        def import_orders_modal
+          (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal] = ImportOrders.new(param):cache[:import_orders_modal]
+        end
+
+        def usps_intl_terms
+          (cache[:usps_intl_terms].nil? || !cache[:usps_intl_terms].present?)?cache[:usps_intl_terms] = USPSTermsOrders.new(param):cache[:usps_intl_terms]
+        end
+
+        def refresh_orders
+          button = StampsElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+
+          button.click
+          sleep(0.35)
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          button.click
+          sleep(0.35)
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          button.click
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
+          if importing_order.present?
+            logger.info importing_order.message
+            importing_order.ok
+          end
         end
 
         private

@@ -300,41 +300,15 @@ module Stamps
         include ShowShipToDetails
 
         def dropdown
-          dd = nil
-          dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
-          int_dd = browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div>div>div>div[class*=arrow-trigger]")
-          10.times do
-            if dom_dd.present?
-              dd = dom_dd
-              break
-            elsif int_dd.present?
-              dd = int_dd
-              break
-            end
-            sleep(0.35)
-          end
-          dd.should_not be nil
-          expect(dd).to be_present, "Ship-To Country drop-down is not present"
-          StampsElement.new(dd)
+          (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new(dd_selection):@dropdown
+        end
+
+        def textbox
+          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(txtbox_selection):@textbox
         end
 
         def present?
           dropdown.present?
-        end
-
-        def textbox
-          show_ship_to_details
-          text_field = nil
-          text_fields = browser.text_fields(name: "ShipCountryCode")
-          20.times do
-            text_fields.each do |element|
-              sleep(0.25)
-              text_field = element if element.present?
-            end
-            break if !text_field.nil? && text_field.present?
-          end
-          expect(text_field).to be_present, "Ship-To Country is not present."
-          StampsTextbox.new(text_field)
         end
 
         def selected?(country)
@@ -343,43 +317,34 @@ module Stamps
 
         def select(country)
           show_ship_to_details
-          dd = dropdown
-          text_field = textbox
-          logger.info "Select Country #{country}"
-          begin
-            dd.click
-            sleep(0.35)
-            dd.click
-            dd.click
-            lis = browser.lis(text: country)
-            expect(lis.size).to be_between(1, 2).inclusive
+          selection = nil
+          20.times do
+            break if textbox.text.include?(country)
+            dropdown.click
+            sleep(0.4)
+            browser.lis(text: country).each {|li| selection = StampsElement.new(li) if li.text.size>0}
+            dropdown.click unless selection.present?
+            selection.scroll_into_view
+            selection.click
+          end
+          textbox.text
+        end
 
-            case lis.size
-              when 1
-                selection = StampsElement.new(lis[0])
-              when 2
-                if lis[0].text.size > 0
-                  selection = StampsElement.new(lis[0])
-                else
-                  selection = StampsElement.new(lis[1])
-                end
-              else
-                expect(lis.size).to be_between(1, 2).inclusive
-            end
+        private
+        def dd_selection
+          20.times do
+            dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
+            int_dd = browser.div(css: "[id=shiptoview-international-targetEl] [id^=combo][id$=trigger-picker]")
+            return dom_dd if dom_dd.present?
+            return int_dd if int_dd.present?
+          end
+          raise "Unable to get a handle on Ship-To country drop-down for either domestic or international single order details form."
+        end
 
-            10.times do
-              break if text_field.text.include?(country)
-              dd.click unless selection.present?
-              selection.scroll_into_view
-              selection.scroll_into_view
-              selection.click if selection.present?
-              logger.info "Selection #{text_field.text} - #{(text_field.text.include? country)?"was selected": "not selected"}"
-              break if text_field.text.include?(country)
-              break if text_field.text.include?(country)
-            end
-            logger.info "#{country} selected."
-            expect(text_field.text).to include(country)
-          end unless text_field.text.include?(country)
+        def txtbox_selection
+          show_ship_to_details
+          20.times do browser.text_fields(name: "ShipCountryCode").each do |element| return element if element.present? end end
+          raise "Unable to get a handle on Ship-To country textbox for either domestic or international single order details form.."
         end
       end
 
