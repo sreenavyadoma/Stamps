@@ -300,11 +300,11 @@ module Stamps
         include ShowShipToDetails
 
         def dropdown
-          (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new(dd_selection):@dropdown
+          (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new(dd):@dropdown
         end
 
         def textbox
-          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(txtbox_selection):@textbox
+          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(txtbox):@textbox
         end
 
         def present?
@@ -331,7 +331,7 @@ module Stamps
         end
 
         private
-        def dd_selection
+        def dd
           20.times do
             dom_dd = browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")
             int_dd = browser.div(css: "[id=shiptoview-international-targetEl] [id^=combo][id$=trigger-picker]")
@@ -341,7 +341,7 @@ module Stamps
           raise "Unable to get a handle on Ship-To country drop-down for either domestic or international single order details form."
         end
 
-        def txtbox_selection
+        def txtbox
           show_ship_to_details
           20.times {browser.text_fields(name: "ShipCountryCode").each {|element| return element if element.present?}}
           raise "Unable to get a handle on Ship-To country textbox for either domestic or international single order details form.."
