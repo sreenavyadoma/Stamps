@@ -7,7 +7,7 @@ Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation
 end
 
 Then /^[Ss]elect Paypal on Marketplace modal$/ do
-  stamps.orders.orders_toolbar.settings.stores_settings.add.paypal
+  stamps.orders.orders_toolbar.orders_settings.stores_tab.add.paypal
 end
 
 Then /^Marketplace: Select Big Commerce$/ do

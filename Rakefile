@@ -1011,8 +1011,13 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:poc_sc_firefox) do |t|
+  t.profile = 'poc_sc_firefox'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:poc_sc_chrome) do |t|
+  t.profile = 'poc_sc_chrome'
   t.cucumber_opts = "-p cuke_reports"
 end
 

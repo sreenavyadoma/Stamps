@@ -343,7 +343,7 @@ module Stamps
 
         def txtbox_selection
           show_ship_to_details
-          20.times do browser.text_fields(name: "ShipCountryCode").each do |element| return element if element.present? end end
+          20.times {browser.text_fields(name: "ShipCountryCode").each {|element| return element if element.present?}}
           raise "Unable to get a handle on Ship-To country textbox for either domestic or international single order details form.."
         end
       end

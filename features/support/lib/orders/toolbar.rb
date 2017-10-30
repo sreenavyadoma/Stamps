@@ -821,10 +821,6 @@ module Stamps
           StampsElement.new(browser.span css: "span[class*=sdc-icon-settings]")
         end
 
-        def settings_modal
-          SettingsModal.new(param)
-        end
-
         def page_count
           (browser.divs css: "div[id^=tbtext]").last
         end
@@ -880,6 +876,11 @@ module Stamps
       class OrdersToolbar < Browser::StampsModal
         include OrdersToolbarLeftSide
         include ToolbarItemsToBeVerified
+
+        def orders_settings
+          (cache[:orders_settings].nil? || !cache[:orders_settings].present?)?cache[:orders_settings] = OrdersSettings.new(param):cache[:orders_settings]
+        end
+
         def import_orders_modal
           (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal] = ImportOrders.new(param):cache[:import_orders_modal]
         end
