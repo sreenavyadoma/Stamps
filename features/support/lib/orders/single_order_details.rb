@@ -644,11 +644,11 @@ module Stamps
 
         def tracking_selection(selection)
           if selection.downcase.include? "usps"
-            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
+            StampsElement.new( browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td"))
           elsif selection.downcase.include? "signature"
-            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
+            StampsElement.new(browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td"))
           elsif selection.downcase.include? "none"
-            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
+            StampsElement.new(browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td"))
           else
             expect("#{selection} is not a valid selection").to eql "Valid selections are USPS Tracking and Signature Required"
           end
