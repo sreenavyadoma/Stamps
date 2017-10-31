@@ -4,6 +4,11 @@ Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint button$/ do
   stamps.orders.orders_toolbar.toolbar_print.click
 end
 
+Then /^[Cc]lick [Oo]rders [Tt]oolbar [Ss]ettings button$/ do
+  stamps.orders.orders_settings.stores_tab
+  stamps.orders.orders_toolbar.orders_settings.stores_tab
+end
+
 Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
   @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError

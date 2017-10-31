@@ -1,11 +1,5 @@
 
-Then /^[Oo]pen Orders Stores Settings$/ do
-  #test_config.logger.step "Manage Stores: Open Modal"
-  stamps.orders.orders_settings.stores_tab
-end
-
 Then /^[Cc]lick Order Settings Stores Add button$/ do
-  #test_config.logger.step "Manage Stores: Add"
   stamps.orders.orders_settings.stores_tab.add
 end
 

@@ -9,6 +9,8 @@ Feature:  All Store Management
     Then Open Orders Settings
     Then Open Orders Stores Settings
     Then click Order Settings Stores Add button
+    Then select Paypal on Marketplace modal
+    Then set PayPal Email Address to qaclient@stamps.com
     #Then Open Orders Settings
     #Then Open Orders Stores Settings
     #Then click Order Settings Stores Add button

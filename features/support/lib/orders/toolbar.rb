@@ -39,7 +39,13 @@ module Stamps
         (@terms_conditions.nil? || !@terms_conditions.present?)?@terms_conditions = TermsAndConditions.new(param):@terms_conditions
       end
     end
+
     module Toolbar
+      module OrdersToolbarCache
+        def cache
+          @cache ||= {}
+        end
+      end
 
       class MoveToOnHoldModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn, :hold_until
@@ -873,12 +879,38 @@ module Stamps
         end
       end
 
+
+      class ToolbarSettingsIcon < Browser::StampsModal
+        include Stamps::Orders::OrdersSettingsTitle
+
+        def element
+          (@element.nil?||!@element.present?)?@element=StampsElement.new(browser.span(css: "[class*=sdc-icon-settings]")):@element
+        end
+
+        def click
+          20.times do
+            hover
+            element.click
+            break if window_title.present?
+          end
+        end
+
+        def hover
+          element.hover
+        end
+
+        def tooltip
+          raise "TBD. API not implemented"
+        end
+      end
+
       class OrdersToolbar < Browser::StampsModal
+        include OrdersToolbarCache
         include OrdersToolbarLeftSide
         include ToolbarItemsToBeVerified
 
         def orders_settings
-          (cache[:orders_settings].nil? || !cache[:orders_settings].present?)?cache[:orders_settings] = OrdersSettings.new(param):cache[:orders_settings]
+
         end
 
         def import_orders_modal
@@ -934,11 +966,6 @@ module Stamps
             logger.info importing_order.message
             importing_order.ok
           end
-        end
-
-        private
-        def cache
-          @cache ||= {}
         end
       end
     end

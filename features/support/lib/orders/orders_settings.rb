@@ -92,10 +92,6 @@ module Stamps
 
     module OrdersSettingsTitle
       include OrdersSettingsCache
-      def present?
-        window_title.present?
-      end
-
       def window_title
         (cache[:window_title].nil?)?cache[:window_title]=StampsElement.new(browser.div(css: "[id$=userprefswindow-1751_header-targetEl] div div")):cache[:window_title]
       end
@@ -108,6 +104,10 @@ module Stamps
     class OrdersSettings < Browser::StampsModal
       include OrdersSettingsTitle
       include OrdersSettingsTabBar
+
+      def present?
+        window_title.present?
+      end
     end
 
   end
