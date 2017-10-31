@@ -57,12 +57,12 @@ Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) Description to (.*)
   step "Save Order Details data"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form [Ss]hip-[Tt]o Country to (.*)$/ do |country|
+Then /^[Ss]et [Oo]rder [Dd]etails form [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country|
   step "show order details form ship-to fields"
-  stamps.orders.single_order_details.ship_to.country.select(country)
+  expect(stamps.orders.single_order_details.ship_to.country.select(test_param[:ship_to_country]=country)).to eql(test_param[:ship_to_country])
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form [Ii]nternational [Ss]hip-[Tt]o Name to \"(.*)\"$/ do |value|
+Then /^[Ss]et [Oo]rder [Dd]etails form [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_name] = ((value.downcase == 'random')? test_helper.random_full_name : value)
   if value.length == 0
     stamps.orders.single_order_details.ship_to.international.name.click
@@ -71,7 +71,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails form [Ii]nternational [Ss]hip-[Tt]o Name to \"
   end
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form [Ii]nternational [Ss]hip-[Tt]o Company to \"(.*)\"$/ do |value|
+Then /^[Ss]et [Oo]rder [Dd]etails form [Ii]nternational [Ss]hip-[Tt]o [Cc]ompany to \"(.*)\"$/ do |value|
   test_param[:int_ship_to_company] = ((value.downcase == 'random')? test_helper.random_full_name : value)
   if value.length == 0
     stamps.orders.single_order_details.ship_to.international.company.click

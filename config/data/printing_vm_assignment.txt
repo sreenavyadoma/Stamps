@@ -87,3 +87,15 @@ jenkinsvm21, scorv39u6m10ym   mail_bvt_netstamps_specify
 jenkinsvm22, scud9fwbxicb
 jenkinsvm23, sclv6pm3r        mail_bvt_international
 
+
+Printing Windows 10 STG
+jenkinsw10vm01, stgxxxxsomeusername, print_dialog_email_tracking
+jenkinsw10vm02, stgxxxxsomeusername, print_dialog_email_tracking
+
+Printing Windows 10 cc
+jenkinsw10vm03, stgxxxxsomeusername, print_dialog_email_tracking
+jenkinsw10vm04, stgxxxxsomeusername, print_dialog_email_tracking
+
+Printing Windows 10 sc
+jenkinsw10vm06, stgxxxxsomeusername, print_dialog_email_tracking
+jenkinsw10vm07, stgxxxxsomeusername, print_dialog_email_tracking

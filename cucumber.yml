@@ -41,6 +41,8 @@ poc_stg_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCH
 poc_stg_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff
 poc_cc_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=gc
 poc_cc_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=ff
+poc_sc_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=gc
+poc_sc_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff
 poc_cc_edge: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=edge
 poc_stg_edge: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=edge
 
@@ -369,8 +371,7 @@ rules_domestic: --tags @rules_domestic --guess DEBUG=false JENKINS=true HEALTHCH
 international_rules: --tags  @international_rules --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 orders_10: --tags @orders_10 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 orders_20: --tags @orders_20 --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-jenkins_orders: --tags @jenkins_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-add_new_order_eva: --tags @add_new_order_eva --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+jenkins_orders: --tags @jenkins_orders --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 local_rating: --tags @local_rating --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 local_rating_smoke_test: --tags @local_rating_smoke_test --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 

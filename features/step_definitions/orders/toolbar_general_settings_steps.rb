@@ -1,6 +1,6 @@
 
 Then /^[Oo]pen Orders Settings$/ do
-  stamps.orders.orders_toolbar.settings
+  stamps.orders.orders_toolbar.orders_settings
 end
 # Services checkbox
 Then /^Settings: Check Services$/ do

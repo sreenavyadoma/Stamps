@@ -9,13 +9,13 @@ module Stamps
       #@logger.level = Log4r::INFO
     end
 
-    def repeat char, count
+    def repeat(char, count)
       str=char
       count.to_i.times {str=str+char}
       str
     end
 
-    def message message
+    def message(message)
       begin
         message = repeat message, 25 if message.size==1
         @logger.info "#{scenario_name} :: #{message}"
@@ -25,7 +25,7 @@ module Stamps
       message
     end
 
-    def step message
+    def step(message)
       begin
         message = repeat message, 25 if message.size==1
         (@logger.info "#{scenario_name} :: #{message}")
@@ -35,7 +35,7 @@ module Stamps
       message
     end
 
-    def info message
+    def info(message)
       begin
         message = repeat message, 25 if message.size==1
         (@logger.info "#{scenario_name} :: #{message}") if StampsTestSetup.debug
@@ -45,7 +45,7 @@ module Stamps
       message
     end
 
-    def warn message
+    def warn(message)
       begin
         message = repeat message, 25 if message.size==1
         (@logger.warn "#{scenario_name} :: #{message}")
@@ -55,7 +55,7 @@ module Stamps
       message
     end
 
-    def error message
+    def error(message)
       begin
         message = repeat message, 25 if message.size==1
         (@logger.error "#{scenario_name} :: #{message}")
@@ -65,7 +65,7 @@ module Stamps
       message
     end
 
-    def fatal message
+    def fatal(message)
       begin
         message = repeat message, 25 if message.size==1
         (@logger.fatal "#{scenario_name} :: #{message}")
@@ -75,7 +75,7 @@ module Stamps
       message
     end
 
-    def debug message
+    def debug(message)
       begin
         message = repeat message, 25 if message.size==1
         @logger.debug "#{scenario_name} :: #{message}"

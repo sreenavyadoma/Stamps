@@ -798,8 +798,89 @@ module Stamps
         end
       end
 
+      #todo-Rob verify these objects are still needed and which tests are using it
+      module ToolbarItemsToBeVerified
+        #============================
+
+        def per_page
+          PerPage.new(param)
+        end
+
+        def reprint
+          button = StampsElement.new browser.span(text: "Reprint")
+          modal = RePrintModal.new(param)
+          label_unavailable = LabelUnavailable.new(param)
+          15.times do
+            return modal if modal.present?
+            return label_unavailable if label_unavailable.present?
+            button.click
+          end
+        end
+
+        def browser_settings_button
+          StampsElement.new(browser.span css: "span[class*=sdc-icon-settings]")
+        end
+
+        def page_count
+          (browser.divs css: "div[id^=tbtext]").last
+        end
+
+        def page_number
+          field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+          textbox = StampsTextbox.new field
+          textbox
+        end
+
+        def first_page
+          field = browser.span css: "span[class*=x-tbar-page-first]"
+          label = StampsElement.new field
+          label
+        end
+
+        def first_page_disabled
+          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          label = StampsElement.new field
+          label.element.disabled?
+        end
+
+        def previous_page
+          StampsElement.new element browser.span css: "span[class*=x-tbar-page-prev]"
+        end
+
+        def previous_page_disabled
+          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          label = StampsElement.new field
+          label.element.disabled?
+        end
+
+        def next_page
+          StampsElement.new element browser.span css: "span[class*=x-tbar-page-next]"
+        end
+
+        def last_page
+          StampsElement.new element browser.span css: "span[class*=x-tbar-page-last]"
+        end
+
+        def last_page_disabled
+          StampsElement.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+        end
+
+        def total_number_of_pages
+          label = (StampsElement.new browser.divs css: "div[id^=tbtext-]").last
+          number_str=label.text
+          number = number_str.scan /\d+/
+          number.last.to_s
+        end
+      end
+
       class OrdersToolbar < Browser::StampsModal
         include OrdersToolbarLeftSide
+        include ToolbarItemsToBeVerified
+
+        def orders_settings
+          (cache[:orders_settings].nil? || !cache[:orders_settings].present?)?cache[:orders_settings] = OrdersSettings.new(param):cache[:orders_settings]
+        end
+
         def import_orders_modal
           (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal] = ImportOrders.new(param):cache[:import_orders_modal]
         end
@@ -853,81 +934,6 @@ module Stamps
             logger.info importing_order.message
             importing_order.ok
           end
-        end
-        #============================
-
-        def per_page
-          PerPage.new(param)
-        end
-
-        def reprint
-          button = StampsElement.new browser.span(text: "Reprint")
-          modal = RePrintModal.new(param)
-          label_unavailable = LabelUnavailable.new(param)
-          15.times do
-            return modal if modal.present?
-            return label_unavailable if label_unavailable.present?
-            button.click
-          end
-        end
-
-        def browser_settings_button
-          StampsElement.new(browser.span css: "span[class*=sdc-icon-settings]")
-        end
-
-        def settings_modal
-          SettingsModal.new(param)
-        end
-
-        def page_count
-          (browser.divs css: "div[id^=tbtext]").last
-        end
-
-        def page_number
-          field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-          textbox = StampsTextbox.new field
-          textbox
-        end
-
-        def first_page
-          field = browser.span css: "span[class*=x-tbar-page-first]"
-          label = StampsElement.new field
-          label
-        end
-
-        def first_page_disabled
-          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = StampsElement.new field
-          label.element.disabled?
-        end
-
-        def previous_page
-          StampsElement.new element browser.span css: "span[class*=x-tbar-page-prev]"
-        end
-
-        def previous_page_disabled
-          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = StampsElement.new field
-          label.element.disabled?
-        end
-
-        def next_page
-          StampsElement.new element browser.span css: "span[class*=x-tbar-page-next]"
-        end
-
-        def last_page
-          StampsElement.new element browser.span css: "span[class*=x-tbar-page-last]"
-        end
-
-        def last_page_disabled
-          StampsElement.new browser.a css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-        end
-
-        def total_number_of_pages
-          label = (StampsElement.new browser.divs css: "div[id^=tbtext-]").last
-          number_str=label.text
-          number = number_str.scan /\d+/
-          number.last.to_s
         end
 
         private

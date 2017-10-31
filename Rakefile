@@ -999,16 +999,6 @@ Cucumber::Rake::Task.new(:eli_dev) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:add_new_order_eva) do |t|
-  t.profile = 'add_new_order_eva'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
-Cucumber::Rake::Task.new(:eva_dev) do |t|
-  t.profile = 'eva_dev'
-  t.cucumber_opts = "-p cuke_reports"
-end
-
 Cucumber::Rake::Task.new(:ray_dev) do |t|
   t.profile = 'ray_dev'
   t.cucumber_opts = "-p cuke_reports"
@@ -1021,8 +1011,13 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:poc_sc_firefox) do |t|
+  t.profile = 'poc_sc_firefox'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:poc_sc_chrome) do |t|
+  t.profile = 'poc_sc_chrome'
   t.cucumber_opts = "-p cuke_reports"
 end
 
