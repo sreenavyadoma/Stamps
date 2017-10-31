@@ -1,45 +1,5 @@
 module Stamps
   module Orders
-    module FloatingPrintModals
-      class TermsAndConditions < Browser::StampsModal
-        def present?
-          i_agree_button.present?
-        end
-
-        def wait_until_present(*args)
-          i_agree_button.wait_until_present(*args)
-        end
-
-        def i_agree_button
-          (cache[:i_agree].nil? || !cache[:i_agree].present?)?cache[:i_agree] = StampsInput.new(browser.iframe(css: "iframe[id^=component-]").input(class: 'acceptBtn stamps')):cache[:i_agree]
-        end
-
-        def i_agree
-          15.times do
-            i_agree_button.click
-            break unless present?
-          end
-        end
-
-        def form_body
-          (cache[:form_body].nil? || !cache[:form_body].present?)?cache[:form_body] = StampsElement.new(browser.iframe(css: "iframe[id^=component-]").form.div(css: "[class=form-body]").ps[0]):cache[:form_body]
-        end
-
-        def close
-          (cache[:close].nil? || !cache[:close].present?)?cache[:close] = StampsElement.new(browser.img(css: "[class*=x-tool-close]")):cache[:close]
-        end
-
-        private
-        def cache
-          @cache ||= {}
-        end
-      end
-
-      def terms_conditions
-        (@terms_conditions.nil? || !@terms_conditions.present?)?@terms_conditions = TermsAndConditions.new(param):@terms_conditions
-      end
-    end
-
     module Toolbar
       module OrdersToolbarCache
         def cache
@@ -52,9 +12,9 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(css: "div[id^=movetohold-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
-          @hold_until = StampsTextbox.new(browser.text_field(css: "input[placeholder='Select a Date']"))
+          @window_title=StampsElement.new(browser.div(css: "div[id^=movetohold-][id$=_header-targetEl]>div[id^=title]"))
+          @cancel_btn=StampsElement.new(browser.span(text: "Cancel"))
+          @hold_until=StampsTextbox.new(browser.text_field(css: "input[placeholder='Select a Date']"))
         end
 
         def present?
@@ -62,7 +22,7 @@ module Stamps
         end
 
         def move
-          move_btn = StampsElement.new(browser.spans(text: "Move").last)
+          move_btn=StampsElement.new(browser.spans(text: "Move").last)
           10.times do
             move_btn.click
             break unless move_btn.present?
@@ -82,8 +42,8 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
+          @window_title=StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
+          @cancel_btn=StampsElement.new(browser.span(text: "Cancel"))
         end
 
         def present?
@@ -91,7 +51,7 @@ module Stamps
         end
 
         def move
-          move_btn = StampsElement.new(browser.spans(text: "Move").last)
+          move_btn=StampsElement.new(browser.spans(text: "Move").last)
           10.times do
             move_btn.click
             break unless move_btn.present?
@@ -111,8 +71,8 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
+          @window_title=StampsElement.new(browser.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
+          @cancel_btn=StampsElement.new(browser.span(text: "Cancel"))
         end
 
         def present?
@@ -124,8 +84,8 @@ module Stamps
         end
 
         def move_to_shipped
-          ord_num = order_number
-          move_to_shipped_btn = StampsElement.new(browser.spans(text: "Move to Shipped").last)
+          ord_num=order_number
+          move_to_shipped_btn=StampsElement.new(browser.spans(text: "Move to Shipped").last)
           30.times do
             move_to_shipped_btn.click
             break unless move_to_shipped_btn.present?
@@ -146,8 +106,8 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn = StampsElement.new(browser.span(text: "Cancel"))
+          @window_title=StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-targetEl]>div[id^=title]"))
+          @cancel_btn=StampsElement.new(browser.span(text: "Cancel"))
         end
 
         def present?
@@ -155,7 +115,7 @@ module Stamps
         end
 
         def move
-          move_btn = StampsElement.new(browser.spans(text: "Move").last)
+          move_btn=StampsElement.new(browser.spans(text: "Move").last)
           10.times do
             move_btn.click
             break unless move_btn.present?
@@ -175,12 +135,12 @@ module Stamps
 
         def initialize(param)
           super
-          @dropdown = StampsElement.new(browser.span(text: "Move"))
-          @shipped = MoveToShippedModal.new(param)
-          @canceled = MoveToCanceledModal.new(param)
-          @on_hold = MoveToOnHoldModal.new(param)
-          @awaiting_shipment = MoveToAwaitingShipmentModal.new(param)
-          @tooltip_element = StampsElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+          @dropdown=StampsElement.new(browser.span(text: "Move"))
+          @shipped=MoveToShippedModal.new(param)
+          @canceled=MoveToCanceledModal.new(param)
+          @on_hold=MoveToOnHoldModal.new(param)
+          @awaiting_shipment=MoveToAwaitingShipmentModal.new(param)
+          @tooltip_element=StampsElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
         end
 
         def enabled?
@@ -206,28 +166,28 @@ module Stamps
         def select(selection)
           expect(enabled?).to be(true)
           expect([:shipped, :canceled, :awaiting_shipment, :on_hold]).to include(selection)
-          selection_str = ""
-          modal = nil
+          selection_str=""
+          modal=nil
           case selection
             when :shipped
-              selection_str = "Move to Shipped"
-              modal = shipped
+              selection_str="Move to Shipped"
+              modal=shipped
             when :canceled
-              selection_str = "Move to Canceled"
-              modal = canceled
+              selection_str="Move to Canceled"
+              modal=canceled
             when :awaiting_shipment
-              selection_str = "Move to Awaiting Shipment"
-              modal = awaiting_shipment
+              selection_str="Move to Awaiting Shipment"
+              modal=awaiting_shipment
             when :on_hold
-              selection_str = "Move to On Hold"
-              modal = on_hold
+              selection_str="Move to On Hold"
+              modal=on_hold
             else
               #do nothing.
           end
 
           30.times{
             return modal if modal.present?
-            selection_item = StampsElement.new(browser.span(text: selection_str))
+            selection_item=StampsElement.new(browser.span(text: selection_str))
             dropdown.click unless selection_item.present?
             sleep(0.50)
             selection_item.hover
@@ -238,7 +198,7 @@ module Stamps
         end
 
         def tooltip
-          btn = dropdown
+          btn=dropdown
           btn.element.hover
           btn.element.hover
           15.times do
@@ -257,9 +217,9 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new browser.div(text: 'Incomplete Order')
-          @ok_btn = StampsElement.new browser.span(text: "OK")
-          @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          @window_title=StampsElement.new browser.div(text: 'Incomplete Order')
+          @ok_btn=StampsElement.new browser.span(text: "OK")
+          @error_message_label=browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
 
         def present?
@@ -293,8 +253,8 @@ module Stamps
         #todo-rob update Print Multi Order Error tests
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(text: 'Order Error'))
-          @error_message_label = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          @window_title=StampsElement.new(browser.div(text: 'Order Error'))
+          @error_message_label=browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
         end
 
         def wait_until_present(*args)
@@ -311,8 +271,8 @@ module Stamps
 
         def initialize(param)
           super
-          @continue_btn = StampsElement.new browser.span(text: 'Continue')
-          @cancel_btn = StampsElement.new browser.span(text: 'Cancel')
+          @continue_btn=StampsElement.new browser.span(text: 'Continue')
+          @cancel_btn=StampsElement.new browser.span(text: 'Cancel')
         end
 
         def present?
@@ -341,7 +301,7 @@ module Stamps
 
         def initialize(param)
           super
-          @ok_btn = StampsElement.new(browser.span(text: "OK"))
+          @ok_btn=StampsElement.new(browser.span(text: "OK"))
         end
 
         def present?
@@ -358,9 +318,9 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new browser.div(text: 'USPS Privacy Act Statement')
-          @message_label = StampsElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
-          @ok_btn = StampsElement.new browser.span(text: "OK")
+          @window_title=StampsElement.new browser.div(text: 'USPS Privacy Act Statement')
+          @message_label=StampsElement.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          @ok_btn=StampsElement.new browser.span(text: "OK")
         end
 
         def present?
@@ -385,10 +345,10 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new browser.div(text: 'USPS Terms')
-          @i_agree_btn = StampsElement.new browser.span(text: "I Agree")
-          @cancel_btn = StampsElement.new browser.span(text: "Cancel")
-          @privacy_act_link = StampsElement.new browser.a(text: "USPS Privacy Act Statement")
+          @window_title=StampsElement.new browser.div(text: 'USPS Terms')
+          @i_agree_btn=StampsElement.new browser.span(text: "I Agree")
+          @cancel_btn=StampsElement.new browser.span(text: "Cancel")
+          @privacy_act_link=StampsElement.new browser.a(text: "USPS Privacy Act Statement")
         end
 
         def present?
@@ -421,13 +381,13 @@ module Stamps
         end
 
         def dont_show_this_again
-          field = browser.label(text: "Don't show this again.")
-          verify_field = field.parent.parent.parent
+          field=browser.label(text: "Don't show this again.")
+          verify_field=field.parent.parent.parent
           StampsCheckbox.new field, verify_field, "class", "checked"
         end
 
         def usps_privacy_act_statement
-          privacy_act = UspsPrivacyActStatement.new(param)
+          privacy_act=UspsPrivacyActStatement.new(param)
           10.times do
             privacy_act_link.click
             privacy_act.wait_until_present 2
@@ -455,19 +415,19 @@ module Stamps
         include Stamps::Orders::FloatingPrintModals
 
         def incomplete_order_modal
-          (cache[:incomplete_order].nil? || !cache[:incomplete_order].present?)?cache[:incomplete_order] = PrintIncompleteOrderError.new(param):cache[:incomplete_order]
+          (cache[:incomplete_order].nil? || !cache[:incomplete_order].present?)?cache[:incomplete_order]=PrintIncompleteOrderError.new(param):cache[:incomplete_order]
         end
 
         def multi_order_some_error
-          (cache[:multi_order].nil? || !cache[:multi_order].present?)?cache[:multi_order] = PrintMultiOrderSomeHasError.new(param):cache[:multi_order]
+          (cache[:multi_order].nil? || !cache[:multi_order].present?)?cache[:multi_order]=PrintMultiOrderSomeHasError.new(param):cache[:multi_order]
         end
 
         def usps_terms_modal
-          (cache[:usps_terms].nil? || !cache[:usps_terms].present?)?cache[:usps_terms] = USPSTermsOrders.new(param):cache[:usps_terms]
+          (cache[:usps_terms].nil? || !cache[:usps_terms].present?)?cache[:usps_terms]=USPSTermsOrders.new(param):cache[:usps_terms]
         end
 
         def multi_order_all_error
-          (cache[:multi_order_all_error].nil? || !cache[:multi_order_all_error].present?)?cache[:multi_order_all_error] = PrintMultiOrderAllHaveError.new(param):cache[:multi_order_all_error]
+          (cache[:multi_order_all_error].nil? || !cache[:multi_order_all_error].present?)?cache[:multi_order_all_error]=PrintMultiOrderAllHaveError.new(param):cache[:multi_order_all_error]
         end
 
         def present?
@@ -509,7 +469,7 @@ module Stamps
         end
 
         def usps_terms
-          modal = open_window(usps_terms_modal)
+          modal=open_window(usps_terms_modal)
           expect(modal).to be_present, "USPS Terms Modal is NOT present"
           modal
         end
@@ -558,7 +518,7 @@ module Stamps
 
           usps_terms.agree_to_terms if usps_terms_modal.present?
 
-          error_connecting_to_plugin = ErrorConnectingToPlugin.new(param)
+          error_connecting_to_plugin=ErrorConnectingToPlugin.new(param)
 
           10.times do
             begin
@@ -596,7 +556,7 @@ module Stamps
         end
 
         def print_expecting_error(*args)
-          error_window = IncompleteOrderError.new(param)
+          error_window=IncompleteOrderError.new(param)
           open_window error_window
           case args.length
             when 0
@@ -617,29 +577,29 @@ module Stamps
           @cache ||= {}
         end
         def printing_on
-          (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on] = Stamps::Orders::Printing::OrdersPrintMediaDropList.new(param):cache[:printing_on]
+          (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on]=Stamps::Orders::Printing::OrdersPrintMediaDropList.new(param):cache[:printing_on]
         end
 
         #todo-Rob verify css locator
         def print_order_btn
-          (cache[:print_order_btn].nil? || !cache[:print_order_btn].present?)?cache[:print_order_btn] = StampsElement.new(browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) :cache[:print_order_btn]
+          (cache[:print_order_btn].nil? || !cache[:print_order_btn].present?)?cache[:print_order_btn]=StampsElement.new(browser.a(css: "div[id^=app-main]>div[id^=toolbar]>div>div>a[data-qtip*=Print]")) :cache[:print_order_btn]
         end
       end
 
       class SettingsMenu < Browser::StampsModal
         def select(menu_item)
-          dd = StampsElement.new browser.span css: "span[class*=sdc-icon-settings]"
+          dd=StampsElement.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
             when /settings/
-              selection = StampsElement.new(browser.span text: "General Settings")
-              modal = Orders::Settings::GeneralSettings.new(param)
+              selection=StampsElement.new(browser.span text: "General Settings")
+              modal=Orders::Settings::GeneralSettings.new(param)
             when /stores/
-              selection = StampsElement.new(browser.span text: "Add/Edit Stores")
-              modal = Orders::Stores::ManageStores.new(param)
+              selection=StampsElement.new(browser.span text: "Add/Edit Stores")
+              modal=Orders::Stores::ManageStores.new(param)
             # to-do Kaushal automation rules implement
             when /automation_rules/
-              selection = StampsElement.new(browser.span text: " ")
-              modal = Orders::AutomationRulesModal.new(param)
+              selection=StampsElement.new(browser.span text: " ")
+              modal=Orders::AutomationRulesModal.new(param)
             else
               expect("Invalid Menu Selection - #{menu_item} is not recognized.  Valid selections are Settings or Stores.").to eql ""
           end
@@ -669,13 +629,13 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
-          @dropdown = StampsElement.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
+          @textbox=StampsTextbox.new(browser.text_field(id: "sdc-batch-grid-pagingtoolbar-combobox-inputEl"))
+          @dropdown=StampsElement.new(browser.div(id: "sdc-batch-grid-pagingtoolbar-combobox-trigger-picker"))
         end
 
         def select(selection)
-          per_page = StampsElement.new(browser.li(text: selection))
-          box = textbox
+          per_page=StampsElement.new(browser.li(text: selection))
+          box=textbox
           10.times do
             dropdown.click unless per_page.present?
             per_page.click if per_page.present?
@@ -698,10 +658,10 @@ module Stamps
 
       class AddButton < Browser::StampsModal
         def click
-          add_btn = StampsElement.new(browser.span(text: 'Add'))
-          details_order_id = Orders::Details::SingleOrderDetailsOrderId.new(param)
-          server_error = ShipStationServerError.new(param)
-          initializing_db = StampsElement.new(browser.div(text: "Initializing Order Database"))
+          add_btn=StampsElement.new(browser.span(text: 'Add'))
+          details_order_id=Orders::Details::SingleOrderDetailsOrderId.new(param)
+          server_error=ShipStationServerError.new(param)
+          initializing_db=StampsElement.new(browser.div(text: "Initializing Order Database"))
 
           15.times do
             begin
@@ -733,7 +693,7 @@ module Stamps
         end
 
         def tooltip
-          tooltip_element = StampsElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+          tooltip_element=StampsElement.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
           button.element.hover
           button.element.hover
           15.times do
@@ -753,11 +713,11 @@ module Stamps
         end
 
         def toolbar_settings
-          (right_toolbar[:settings][:import].nil? || !right_toolbar[:settings][:import].present?)?right_toolbar[:settings] = SettingsMenu.new(param):right_toolbar[:settings]
+          (right_toolbar[:settings][:import].nil? || !right_toolbar[:settings][:import].present?)?right_toolbar[:settings]=SettingsMenu.new(param):right_toolbar[:settings]
         end
 
         def toolbar_import
-          (right_toolbar[:import].nil? || !right_toolbar[:import].present?)?right_toolbar[:import] = StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")):right_toolbar[:import]
+          (right_toolbar[:import].nil? || !right_toolbar[:import].present?)?right_toolbar[:import]=StampsElement.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")):right_toolbar[:import]
         end
 
         def import
@@ -784,15 +744,15 @@ module Stamps
         end
 
         def toolbar_print
-          (left_toolbar[:print].nil? || !left_toolbar[:print].present?)?left_toolbar[:print] = ToolbarPrintButton.new(param):left_toolbar[:print]
+          (left_toolbar[:print].nil? || !left_toolbar[:print].present?)?left_toolbar[:print]=ToolbarPrintButton.new(param):left_toolbar[:print]
         end
 
         def toolbar_add
-          (left_toolbar[:add].nil? || !left_toolbar[:add].present?)?left_toolbar[:add] = AddButton.new(param):left_toolbar[:add]
+          (left_toolbar[:add].nil? || !left_toolbar[:add].present?)?left_toolbar[:add]=AddButton.new(param):left_toolbar[:add]
         end
 
         def toolbar_move
-          (left_toolbar[:move].nil? || !left_toolbar[:move].present?)?left_toolbar[:move] = MoveDropDown.new(param):left_toolbar[:move]
+          (left_toolbar[:move].nil? || !left_toolbar[:move].present?)?left_toolbar[:move]=MoveDropDown.new(param):left_toolbar[:move]
         end
 
         def toolbar_tags
@@ -813,9 +773,9 @@ module Stamps
         end
 
         def reprint
-          button = StampsElement.new browser.span(text: "Reprint")
-          modal = RePrintModal.new(param)
-          label_unavailable = LabelUnavailable.new(param)
+          button=StampsElement.new browser.span(text: "Reprint")
+          modal=RePrintModal.new(param)
+          label_unavailable=LabelUnavailable.new(param)
           15.times do
             return modal if modal.present?
             return label_unavailable if label_unavailable.present?
@@ -832,20 +792,20 @@ module Stamps
         end
 
         def page_number
-          field = browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
-          textbox = StampsTextbox.new field
+          field=browser.text_field css: "div[id^=pagingtoolbar][data-ref=innerCt]>div>div[id^=numberfield]>div[data-ref=bodyEl]>div>div:nth-child(1)>input"
+          textbox=StampsTextbox.new field
           textbox
         end
 
         def first_page
-          field = browser.span css: "span[class*=x-tbar-page-first]"
-          label = StampsElement.new field
+          field=browser.span css: "span[class*=x-tbar-page-first]"
+          label=StampsElement.new field
           label
         end
 
         def first_page_disabled
-          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = StampsElement.new field
+          field=browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          label=StampsElement.new field
           label.element.disabled?
         end
 
@@ -854,8 +814,8 @@ module Stamps
         end
 
         def previous_page_disabled
-          field = browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
-          label = StampsElement.new field
+          field=browser.a  css: "div[id^=pagingtoolbar][data-ref=targetEl]>[class*=x-btn-disabled]"
+          label=StampsElement.new field
           label.element.disabled?
         end
 
@@ -872,9 +832,9 @@ module Stamps
         end
 
         def total_number_of_pages
-          label = (StampsElement.new browser.divs css: "div[id^=tbtext-]").last
+          label=(StampsElement.new browser.divs css: "div[id^=tbtext-]").last
           number_str=label.text
-          number = number_str.scan /\d+/
+          number=number_str.scan /\d+/
           number.last.to_s
         end
       end
@@ -910,20 +870,20 @@ module Stamps
         include ToolbarItemsToBeVerified
 
         def orders_settings
-
+          (cache[:orders_settings].nil? || !cache[:orders_settings].present?)?cache[:orders_settings]=ToolbarSettingsIcon.new(param):cache[:orders_settings]
         end
 
         def import_orders_modal
-          (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal] = ImportOrders.new(param):cache[:import_orders_modal]
+          (cache[:import_orders_modal].nil? || !cache[:import_orders_modal].present?)?cache[:import_orders_modal]=ImportOrders.new(param):cache[:import_orders_modal]
         end
 
         def usps_intl_terms
-          (cache[:usps_intl_terms].nil? || !cache[:usps_intl_terms].present?)?cache[:usps_intl_terms] = USPSTermsOrders.new(param):cache[:usps_intl_terms]
+          (cache[:usps_intl_terms].nil? || !cache[:usps_intl_terms].present?)?cache[:usps_intl_terms]=USPSTermsOrders.new(param):cache[:usps_intl_terms]
         end
 
         def refresh_orders
-          button = StampsElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=StampsElement.new browser.span(css: "a[data-qtip*='Refresh Orders']>span>span>span[id$=btnInnerEl]")
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           button.click
           sleep(0.35)

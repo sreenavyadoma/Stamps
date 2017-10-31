@@ -4,7 +4,7 @@ Then /^What's New: Expect modal is present$/ do
   expect(stamps.mail.sign_in_modal.whats_new_modal.window_title.text).to eql "What’s new in Stamps.com Online"
 end
 
-Then /^What's New: Click Continue button$/ do
+Then /^What's New: Click Continue [Bb]utton$/ do
   stamps.mail.sign_in_modal.whats_new_modal.continue
 end
 

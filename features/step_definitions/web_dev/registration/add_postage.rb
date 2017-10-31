@@ -1,4 +1,4 @@
-Then /^[Ii]n Add Postage page, click Confirm button$/ do
+Then /^[Ii]n Add Postage page, click Confirm [Bb]utton$/ do
   registration.add_postage.confirm
 end
 

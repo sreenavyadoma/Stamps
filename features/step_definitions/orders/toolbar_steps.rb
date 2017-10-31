@@ -22,6 +22,15 @@ Then /^Save Order Details data$/ do
   end
 end
 
+Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint [Bb]utton$/ do
+  step "Save Order Details data"
+  stamps.orders.orders_toolbar.toolbar_print.click
+end
+
+Then /^[Cc]lick [Oo]rders [Tt]oolbar [Ss]ettings [Bb]utton$/ do
+  stamps.orders.orders_toolbar.orders_settings.click
+end
+
 Then /^[Ii]n Orders Toolbar, Refresh Orders$/ do
   stamps.orders.orders_toolbar.refresh_orders
 end

@@ -39,11 +39,11 @@ Then /^[Oo]n Add Funds modal, purchase Other Amount (\d+)$/ do |amount|
   stamps.navigation_bar.balance.buy_more.buy_other amount
 end
 
-Then /^[Oo]n Add Funds modal, click Purchase button$/ do
+Then /^[Oo]n Add Funds modal, click Purchase [Bb]utton$/ do
   stamps.navigation_bar.balance.buy_more.purchase
 end
 
-Then /^Buy Mail Confirm Transction: Click Confirm button$/ do
+Then /^Buy Mail Confirm Transction: Click Confirm [Bb]utton$/ do
   @purchase_approved = stamps.navigation_bar.balance.buy_more.purchase.confirm
 end
 
@@ -60,7 +60,7 @@ Then /^Buy Mail Purchase Approved: Expect text area contains, Your fund request 
   expect(actual_value).to eql expectation
 end
 
-Then /^Buy Mail Purchase Approved: Click OK button$/ do
+Then /^Buy Mail Purchase Approved: Click OK [Bb]utton$/ do
   expect(@purchase_approved).to be_truthy
   @purchase_approved.ok
 end

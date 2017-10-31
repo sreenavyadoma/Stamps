@@ -3,7 +3,7 @@ module Stamps
 
     class ServerError < Browser::StampsModal
       def present?
-        browser.text.include?("Server Error")
+        StampsElement.new(browser.div(text: /Server Error/)).present?
       end
 
       def message
@@ -18,7 +18,6 @@ module Stamps
           break unless present?
         end
       end
-
     end
 
     class PrintingError < StandardError
@@ -56,7 +55,6 @@ module Stamps
 
         error_message
       end
-
     end
 
     class IncompleteOrderError < Browser::StampsModal

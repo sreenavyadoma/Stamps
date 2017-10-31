@@ -61,7 +61,7 @@ When /^[Cc]lick Print Sample button on Print form$/ do
   @print_window = stamps.mail.mail_toolbar.print_sample
 end
 
-Then /^[Cc]lick Search Contacts close button$/ do
+Then /^[Cc]lick Search Contacts close [Bb]utton$/ do
   stamps.mail.print_form.mail_to.mail_to_link.click.close
 end
 

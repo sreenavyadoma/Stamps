@@ -3,7 +3,7 @@ Then /^[Cc]lick [Oo]rders [Ss]ettings [Aa]utomation [Rr]ules tab$/ do
   pending
 end
 
-Then /^[Cc]lick [Aa]utomation [Rr]ules page Add Button$/ do
+Then /^[Cc]lick [Aa]utomation [Rr]ules page Add [Bb]utton$/ do
   pending
 end
 
@@ -23,7 +23,7 @@ Then /^[Ss]et [Nn]ew [Rr]ule [Mm]odal drop-down to (.*)$/ do |value|
   pending
 end
 
-Then /^[Cc]lick [Nn]ew [Rr]ule [Mm]odal Save Rule button$/ do
+Then /^[Cc]lick [Nn]ew [Rr]ule [Mm]odal Save Rule [Bb]utton$/ do
   pending
 end
 
@@ -51,11 +51,11 @@ Then /^[Cc]lick [Aa]utomation [Rr]ules page automation rule Name$/ do
   pending
 end
 
-Then /^[Cc]lick [Aa]utomation [Rr]ules page Edit Button$/ do
+Then /^[Cc]lick [Aa]utomation [Rr]ules page Edit [Bb]utton$/ do
   pending
 end
 
-Then /^[Cc]lick [Aa]utomation [Rr]ules page Delete button$/ do
+Then /^[Cc]lick [Aa]utomation [Rr]ules page Delete [Bb]utton$/ do
   pending
 end
 
@@ -75,7 +75,7 @@ Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal drop-down to (.*)$/ do |value|
   pending
 end
 
-Then /^[Cc]lick [Ee]dit [Rr]ule [Mm]odal Save Rule button$/ do
+Then /^[Cc]lick [Ee]dit [Rr]ule [Mm]odal Save Rule [Bb]utton$/ do
   pending
 end
 
@@ -91,7 +91,7 @@ Then /^[Ss]et [Ee]dit [Rr]ule [Mm]odal third drop-down to (.*)$/ do |value|
   pending
 end
 
-Then /^[Cc]lick Delete Automation dialog Delete button$/ do
+Then /^[Cc]lick Delete Automation dialog Delete [Bb]utton$/ do
   pending
 end
 

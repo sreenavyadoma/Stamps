@@ -257,11 +257,11 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Terms & Conditions is unchecked$/ do
   expect(registration.membership.agree_to_terms.checked?).not_to be(true), "Terms & Conditions is CHECKED and it should be UNCHECKED"
 end
 
-Then /^[Cc]lick [Mm]embership [Pp]age [Cc]ontinue button$/ do
+Then /^[Cc]lick [Mm]embership [Pp]age [Cc]ontinue [Bb]utton$/ do
   registration.membership.continue_to_next_page
 end
 
-Then /^[Cc]lick [Mm]embership [Pp]age [Ss]ubmit button$/ do
+Then /^[Cc]lick [Mm]embership [Pp]age [Ss]ubmit [Bb]utton$/ do
   registration.membership.continue_btn.click
   step "pause for 2 seconds"
 end

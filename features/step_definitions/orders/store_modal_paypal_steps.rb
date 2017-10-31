@@ -16,7 +16,7 @@ Then /^PayPal: Expect PayPal store modal is present$/ do
   expect(expectation).to eql "PayPal store modal is present"
 end
 
-Then /^[Cc]lick Paypal verify email button$/ do
+Then /^[Cc]lick Paypal verify email [Bb]utton$/ do
   #test_config.logger.step "PayPal: Test Connection"
   stamps.orders.paypal.verify_email
 end

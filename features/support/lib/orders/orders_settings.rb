@@ -93,7 +93,7 @@ module Stamps
     module OrdersSettingsTitle
       include OrdersSettingsCache
       def window_title
-        (cache[:window_title].nil?)?cache[:window_title]=StampsElement.new(browser.div(css: "[id$=userprefswindow-1751_header-targetEl] div div")):cache[:window_title]
+        (cache[:window_title].nil?)?cache[:window_title]=StampsElement.new(browser.div(css: "[id=userprefswindow_header-targetEl] div div")):cache[:window_title]
       end
 
       def x_btn

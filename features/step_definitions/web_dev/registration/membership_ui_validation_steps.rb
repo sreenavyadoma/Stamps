@@ -241,11 +241,11 @@ Then /^[Ee]xpect [Mm]embership [Pp]age Address validation model pop up Continue 
   expect(registration.membership.continue).to be_present,  "Continue Button DOES NOT exists on Address validation model"
 end
 
-Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel button$/ do
+Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Cancel [Bb]utton$/ do
   registration.membership.cancel.click
 end
 
-Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Continue button$/ do
+Then /^[Cc]lick [Mm]embership [Pp]age Address validation model pop up Continue [Bb]utton$/ do
   registration.membership.continue.click
 end
 
@@ -273,6 +273,6 @@ Then /^[Ss]et [Mm]embership [Pp]age Username Taken model pop up Username to (?:r
   registration.membership.uname_text_box.set (test_param[:uname_text_box] = (str.nil?)?(test_helper.random_alpha_capitalize ):str)
 end
 
-Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue button$/ do
+Then /^[Cc]lick [Mm]embership [Pp]age Username Taken model pop up Continue [Bb]utton$/ do
   registration.membership.uname_continue_btn.click
 end

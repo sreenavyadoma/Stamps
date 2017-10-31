@@ -48,7 +48,7 @@ Then /^[Ss]et PAM [Cc]ustomer [Ss]earch page [Uu]sername to (?:cached value|(.*)
   pam.customer_search.search_username(test_param[:username])
 end
 
-Then /^[Cc]lick PAM [Cc]ustomer [Ss]earch page [Ss]earch button$/ do
+Then /^[Cc]lick PAM [Cc]ustomer [Ss]earch page [Ss]earch [Bb]utton$/ do
   test_param[:pam_search_result] = pam.customer_search.search_username(test_param[:username])
 end
 

@@ -2,7 +2,7 @@ Then /^Print (?:Postage|Label|Stamps|Envelope)$/ do
   stamps.mail.mail_toolbar.print_postage
 end
 
-When /^[Cc]lick [Mm]ail [Pp]rint modal Print button$/ do
+When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
   stamps.mail.mail_toolbar.print_postage.print
 end
 

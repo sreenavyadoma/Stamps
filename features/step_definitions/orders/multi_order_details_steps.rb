@@ -58,7 +58,7 @@ Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Hh]eight to (.*)$/ do |val|
   stamps.orders.multi_order_details.dimensions.height.set(val)
 end
 
-Then /^[Cc]lick [Mm]ulti Order [Ff]orm [Uu]pdate [Oo]rder button$/ do
+Then /^[Cc]lick [Mm]ulti Order [Ff]orm [Uu]pdate [Oo]rder [Bb]utton$/ do
   stamps.orders.multi_order_details.buttons.update_orders
 end
 

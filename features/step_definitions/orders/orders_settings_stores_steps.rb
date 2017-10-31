@@ -1,17 +1,17 @@
 
-Then /^[Cc]lick Order Settings Stores Add button$/ do
+Then /^[Cc]lick Order Settings Stores Add [Bb]utton$/ do
   stamps.orders.orders_settings.stores_tab.add
 end
 
-Then /^[Cc]lick Order Settings Stores Edit button$/ do
+Then /^[Cc]lick Order Settings Stores Edit [Bb]utton$/ do
   #stamps.orders.orders_settings.stores.edit
 end
 
-Then /^[Cc]lick Order Settings Stores Reconnect button$/ do
+Then /^[Cc]lick Order Settings Stores Reconnect [Bb]utton$/ do
   #stamps.orders.orders_settings.stores.reconnect
 end
 
-Then /^[Cc]lick Order Settings Stores Delete button$/ do
+Then /^[Cc]lick Order Settings Stores Delete [Bb]utton$/ do
   #stamps.orders.orders_settings.stores.delete
 end
 

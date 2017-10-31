@@ -6,8 +6,7 @@ Feature:  All Store Management
 
     @paypal_workflow
     Scenario: PayPal Workflow
-      Then Open Orders Settings
-      Then Open Orders Stores Settings
+      Then click orders toolbar settings button
       Then click Order Settings Stores Add button
       Then select Paypal on Marketplace modal
       Then set PayPal Email Address to qaclient@stamps.com

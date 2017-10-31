@@ -34,7 +34,7 @@ Then /^[Ss]et Filter Panel Search textbox to (.*)$/ do |str|
   stamps.orders.filter_panel.search_orders.textbox.set(test_param[:filter_panel_search_str])
 end
 
-Then /^[Cc]lick Filter Panel Search button$/ do
+Then /^[Cc]lick Filter Panel Search [Bb]utton$/ do
   stamps.orders.filter_panel.search_orders.search_button.click
 end
 

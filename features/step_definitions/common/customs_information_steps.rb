@@ -1,5 +1,5 @@
 
-Then /^[Cc]lick (?:Order Details|Print) form Edit Form button$/ do
+Then /^[Cc]lick (?:Order Details|Print) form Edit Form [Bb]utton$/ do
   stamps.orders.single_order_details.customs.edit_form if modal_param.web_app == :orders
   stamps.mail.print_form.mail_customs.edit_form if modal_param.web_app == :mail
 end

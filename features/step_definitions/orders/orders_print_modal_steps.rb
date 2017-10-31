@@ -1,13 +1,4 @@
 
-Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint button$/ do
-  step "Save Order Details data"
-  stamps.orders.orders_toolbar.toolbar_print.click
-end
-
-Then /^[Cc]lick [Oo]rders [Tt]oolbar [Ss]ettings button$/ do
-  stamps.orders.orders_settings.stores_tab
-  stamps.orders.orders_toolbar.orders_settings.stores_tab
-end
 
 Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
   @incomplete_order_modal = stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
@@ -18,7 +9,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal Incomplete Order Error Message (.*)$/ do |exp
   expect(@incomplete_order_modal.error_message).to include(expectation)
 end
 
-Then /^[Ii]n [Pp]rint modal, click Close button$/ do
+Then /^[Ii]n [Pp]rint modal, click Close [Bb]utton$/ do
   stamps.orders.orders_print_modal.close
 end
 

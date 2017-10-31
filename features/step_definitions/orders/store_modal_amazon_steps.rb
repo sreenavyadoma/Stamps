@@ -8,7 +8,7 @@ Then /^Amazon Store: Set Amazon MWS Auth Token to (.*)$/ do |auth_token|
   @store.auth_token.set auth_token
 end
 
-Then /^Amazon Store: Click Verify Seller ID button$/ do
+Then /^Amazon Store: Click Verify Seller ID [Bb]utton$/ do
   #test_config.logger.step "Amazon Store: Click Verify Seller ID button"
   @store.verify_seller_id
 end

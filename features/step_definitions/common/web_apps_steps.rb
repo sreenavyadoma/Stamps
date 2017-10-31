@@ -53,7 +53,7 @@ Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Aa]nswer is (?:correc
   expect(modal[:security_questions].second_security_question.second_security_question.text).to eql((str.nil?)?test_param[:first_security_answer]:str)
 end
 
-Then /^[Cc]lick [Ss]ecurity [Qq]uestions [Pp]age [Cc]ontinue button$/ do
+Then /^[Cc]lick [Ss]ecurity [Qq]uestions [Pp]age [Cc]ontinue [Bb]utton$/ do
   modal[:security_questions].cont_btn.click
 end
 
