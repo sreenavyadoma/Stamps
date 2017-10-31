@@ -412,7 +412,7 @@ module Stamps
       end
 
       class ToolbarPrintButton < Browser::StampsModal
-        include Stamps::Orders::FloatingPrintModals
+        include Stamps::Orders::TermsAndConditions
 
         def incomplete_order_modal
           (cache[:incomplete_order].nil? || !cache[:incomplete_order].present?)?cache[:incomplete_order]=PrintIncompleteOrderError.new(param):cache[:incomplete_order]
@@ -841,7 +841,7 @@ module Stamps
 
 
       class ToolbarSettingsIcon < Browser::StampsModal
-        include Stamps::Orders::OrdersSettingsTitle
+        include Stamps::Orders::OrdersSettings::OrdersSettingsTitle
 
         def element
           (@element.nil?||!@element.present?)?@element=StampsElement.new(browser.span(css: "[class*=sdc-icon-settings]")):@element
