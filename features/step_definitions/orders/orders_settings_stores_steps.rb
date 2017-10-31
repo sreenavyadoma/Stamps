@@ -1,32 +1,32 @@
 
 Then /^[Oo]pen Orders Stores Settings$/ do
   #test_config.logger.step "Manage Stores: Open Modal"
-  stamps.orders.orders_toolbar.orders_settings.stores_tab
+  stamps.orders.orders_settings.stores_tab
 end
 
 Then /^[Cc]lick Order Settings Stores Add button$/ do
   #test_config.logger.step "Manage Stores: Add"
-  stamps.orders.orders_toolbar.orders_settings.stores_tab.add
+  stamps.orders.orders_settings.stores_tab.add
 end
 
 Then /^[Cc]lick Order Settings Stores Edit button$/ do
-  #stamps.orders.orders_toolbar.orders_settings.stores.edit
+  #stamps.orders.orders_settings.stores.edit
 end
 
 Then /^[Cc]lick Order Settings Stores Reconnect button$/ do
-  #stamps.orders.orders_toolbar.orders_settings.stores.reconnect
+  #stamps.orders.orders_settings.stores.reconnect
 end
 
 Then /^[Cc]lick Order Settings Stores Delete button$/ do
-  #stamps.orders.orders_toolbar.orders_settings.stores.delete
+  #stamps.orders.orders_settings.stores.delete
 end
 
 Then /^[Ss]elect Order Settings Store name (.*)$/ do |store|
-  #stamps.orders.orders_toolbar.orders_settings.stores.select store
+  #stamps.orders.orders_settings.stores.select store
 end
 
 Then /^[Ee]xpect Order Settings Store name (.*) to be present$/ do |store|
-  expect(stamps.orders.orders_toolbar.orders_settings.stores.store_list(store)).to be_present
+  expect(stamps.orders.orders_settings.stores.store_list(store)).to be_present
 end
 
 
