@@ -87,7 +87,18 @@ Then /^[Ss]ave Print Form Mail From$/ do
   test_param[:ship_from] = stamps.mail.print_form.mail_from.textbox.text
 end
 
+# Need to put specific location
+Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do
+  stamps.mail.buy_more_labels.click
+end
 
+# Need to put specific location
+# Net stamps page step definitions
+
+Then /^[Ee]xpect [Bb]uy [Mm]ore [Ll]abels link [Nn]et[Ss]tamps [Hh]ome button exists$/ do
+  step "Pause for 5 seconds"
+  expect(stamps.mail.net_stamps_home_btn.present?).to be_present(true), ""
+end
 
 
 

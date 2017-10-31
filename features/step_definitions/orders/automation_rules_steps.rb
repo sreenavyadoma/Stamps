@@ -1,4 +1,6 @@
 
+# To Do all step definitions
+
 Then /^[Cc]lick [Oo]rders [Ss]ettings [Aa]utomation [Rr]ules tab$/ do
   stamps.orders.orders_toolbar.settings.select
 end
