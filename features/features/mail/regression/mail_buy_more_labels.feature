@@ -8,4 +8,4 @@ Feature: Validate Buy more labels link
     Then click on buy more labels link
     Then expect buy more labels link NetStamps home button exists
 
-
+    Then Sign out
