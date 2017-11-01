@@ -437,6 +437,9 @@ module Stamps
                 return param.print_media
               end
 
+              # validate str
+              #Shipping Label - SDC-1200
+              return nil unless data_for(:mail_print_media, {})[str]
               selection = StampsElement.new(browser.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
               dropdown.click unless manage_printing_options_lov.present?
               if selection.present?
@@ -675,7 +678,7 @@ module Stamps
         attr_accessor :browser, :service_str, :service_field, :cost_field
 
         def service(str)
-          @service_str = str
+          expect(data_for(:mail_services, {})[@service_str = str]).to_not be_nil, "#{str} is not a valid service selection. Check your test:\n#{data_for(:mail_services, {}).keys}"
           @service_field = StampsElement.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=text]"))
           @cost_field = StampsElement.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=amount]"))
           self

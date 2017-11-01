@@ -89,13 +89,15 @@ jenkinsvm23, sclv6pm3r        mail_bvt_international
 
 
 Printing Windows 10 STG
-jenkinsw10vm01, stgxxxxsomeusername, print_dialog_email_tracking
-jenkinsw10vm02, stgxxxxsomeusername, print_dialog_email_tracking
+jenkinsw10vm01, stgguhhwqrn4, print_dialog_printing_on_8x11_paper
+jenkinsw10vm02, stgsfgdq2s, print_dialog_printing_on_4x6_sdc1200
 
 Printing Windows 10 cc
-jenkinsw10vm03, stgxxxxsomeusername, print_dialog_email_tracking
-jenkinsw10vm04, stgxxxxsomeusername, print_dialog_email_tracking
+jenkinsw10vm03, ccpoua25ubf, mail_print_label_left_side
+jenkinsw10vm04, cclb1907er, print_dialog_email_tracking
+jenkinsw10vm05, ccnicemg6p, print_dialog_email_tracking
 
 Printing Windows 10 sc
-jenkinsw10vm06, stgxxxxsomeusername, print_dialog_email_tracking
-jenkinsw10vm07, stgxxxxsomeusername, print_dialog_email_tracking
+jenkinsw10vm06, scjl0x9a64odk, mail_print_sample_shipping_label_8_x_11_fcm_psg
+jenkinsw10vm07, scgra0a5kafp, print_dialog_email_tracking
+jenkinsw10vm08, scdhd9do5, print_dialog_email_tracking
