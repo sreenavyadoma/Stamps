@@ -2,8 +2,8 @@
 
 # These browser elements exists on all forms (i.e. Stamps, Envelopes, Shipping Label and Certified Mail)
 Then /^[Ss]elect Print On (.*)$/ do |media|
-  test_param[:print_on] = media
-  stamps.mail.print_on(test_param[:print_on])
+  expect(data_for(:mail_print_media, {})[test_param[:print_on] = media]).to_not be_nil, "\"#{test_param[:print_on]}\" is not a valid Print media. Valid options are:\n#{data_for(:mail_print_media, {}).keys}"
+  expect(stamps.mail.print_on(test_param[:print_on])).to_not be_nil, "Unable to select Print media #{test_param[:print_on]}. Check your test."
 end
 
 Then /^[Bb]lur out on [Pp]rint [Ff]orm$/ do

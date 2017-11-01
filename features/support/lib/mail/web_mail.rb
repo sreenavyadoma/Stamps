@@ -20,6 +20,7 @@ module Stamps
         blur_out
         expect(print_media).to be_present, "Print-on drop-down is not present."
         param.print_media = print_media.print_on_selection(selection)
+        param.print_media
       end
 
       def print_form

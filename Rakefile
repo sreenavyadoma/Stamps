@@ -2029,6 +2029,10 @@ Cucumber::Rake::Task.new(:mail_forgot_password) do |t|
   t.profile = 'mail_forgot_password'
   t.cucumber_opts = "-p cuke_reports"
 end
+Cucumber::Rake::Task.new(:mail_credentials) do |t|
+  t.profile = 'mail_credentials'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:mail_print_shipping_label_5x8_fcm_large_envelope) do |t|
   t.profile = 'mail_print_shipping_label_5x8_fcm_large_envelope'

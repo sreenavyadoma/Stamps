@@ -437,6 +437,9 @@ module Stamps
                 return param.print_media
               end
 
+              # validate str
+              #Shipping Label - SDC-1200
+              return nil unless data_for(:mail_print_media, {})[str]
               selection = StampsElement.new(browser.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
               dropdown.click unless manage_printing_options_lov.present?
               if selection.present?
