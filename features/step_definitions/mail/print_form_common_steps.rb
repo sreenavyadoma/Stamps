@@ -48,7 +48,7 @@ Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |height|
 end
 
 Then /^[Ss]elect Print form [Ss]ervice (.*)$/ do |service|
-  test_param[:service] = service
+  expect(data_for(:mail_services, {})[test_param[:service] = service]).to_not be_nil, "\"#{test_param[:service]}\" is not a valid Service selection. Valid options are:\n#{data_for(:mail_services, {}).keys}"
   step "blur out on print form"
   stamps.mail.print_form.mail_service.select(test_param[:service])
 end

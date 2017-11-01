@@ -1,9 +1,10 @@
 
 # common Print form steps for Envelope|Label|Roll|CM
 
+#todo-Rob figure out change from mail_to.country.select to mail_to.country
 Then /^[Ss]et Print form [Ii]nternational [Mm]ail [Tt]o [Cc]ountry to (.*)$/ do |country|
   test_param[:country] = country
-  stamps.mail.print_form.mail_to.country.select(test_param[:country])
+  stamps.mail.print_form.mail_to.country(test_param[:country])
 end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
