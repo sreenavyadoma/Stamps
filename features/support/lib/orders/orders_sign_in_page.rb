@@ -100,7 +100,7 @@ module Stamps
         end
 
         def first_time_sign_in(usr, pw)
-          market_place = Orders::Stores::MarketPlace.new(param)
+          market_place = Orders::Stores::Marketplace.new(param)
           username.wait_until_present(6)
 
           10.times do

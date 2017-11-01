@@ -7,23 +7,23 @@ module Stamps
         end
       end
 
-      #todo-rob updates SettingsModal tests
       module StoresTabViewToolbar
+        include OrdersSettingsCache
 
         def add_btn
+          (cache[:add_btn])?cache[:add_btn]=StampsElement.new(browser.span(css: "[id=addStoreButton-btnIconEl]")):cache[:add_btn]
+        end
 
+        def market_place_window
+          (cache[:market_place_window].nil?||!cache[:market_place_window].present?)?cache[:stores_tabmarket_place_window_view]=Browser::StampsModal.new(param).extend(Orders::Stores::MarketPlaceTitle):cache[:market_place_window]
         end
 
         def add
-          button=StampsElement.new(browser.span(css: "[id=addStoreButton-btnIconEl]"))
-          modal=Stores::MarketPlace.new(param)
-          label_unavailable=LabelUnavailable.new(param)
-          15.times do
-            return modal if modal.present?
-            return label_unavailable if label_unavailable.present?
-            button.click
+          20.times do
+            return true if market_place_window.window_title.present?
+            add_btn.click
           end
-          Stores::MarketPlace.new(param)
+          nil
         end
 
         def edit
@@ -39,30 +39,33 @@ module Stamps
         end
       end
 
-      class StoresTabView < Browser::StampsModal
-        include StoresTabViewToolbar
-
-        def select store
-
-        end
-
-        def present?
-          browser.span(id: "addStoreButton-btnIconEl").present?
-        end
-
-        private
-        def cache
-          @cache ||= {}
-        end
+      module StoresTabViewGrid
+        include OrdersSettingsCache
 
       end
 
+      module StoresTabViewBottom
+        include OrdersSettingsCache
+
+      end
+
+      class StoresTabView < Browser::StampsModal
+        include StoresTabViewToolbar
+        include StoresTabViewGrid
+        include StoresTabViewBottom
+
+        def present?
+          add_btn.present?
+        end
+      end
+
+      #fix me
       module OrdersSettingsTabBar
         include OrdersSettingsCache
         def stores_tab
           20.times do
             stores_element.click
-            return stores_tab_view if stores_tab_view.present?
+            return true if tab_view.add_btn.present?
           end
           nil
         end
@@ -84,7 +87,7 @@ module Stamps
         end
 
         def stores_tab_view
-          (cache[:stores_tab_view].nil? || !cache[:stores_tab_view].present?)?cache[:stores_tab_view]=StoresTabView.new(param):cache[:stores_tab_view]
+          (cache[:stores_tab_view].nil? || !cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Browser::StampsModal.new(param).extend(StoresTabViewToolbar):cache[:stores_tab_view]
         end
 
         def stores_element

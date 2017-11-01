@@ -1,6 +1,12 @@
 module Stamps
   module Orders
     module Stores
+      module StoresCache
+        def cache
+          @cache ||= {}
+        end
+      end
+
       class ImportingOrdersModal < Browser::StampsModal
         def present?
           browser.div(text: "Importing Orders").present?
@@ -192,13 +198,24 @@ module Stamps
         end
       end
 
-      class MarketPlace < Browser::StampsModal
-        attr_reader :window_title
-
-        def initialize(param)
-          super
-          @window_title = StampsElement.new browser.div text: "Add your Store or Marketplace"
+      module MarketPlaceTitle
+        include StoresCache
+        def window_title
+          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsElement.new(browser.divs(css: "[id^=storeselectionwindow-] [class$=x-title-item]")[1]):cache[:window_title]
         end
+
+        def x_btn
+          (cache[:x_btn].nil?||!cache[:v].present?)?cache[:x_btn]=StampsElement.new(browser.divs(css: "[id^=storeselectionwindow-] img").last):cache[:x_btn]
+        end
+
+        def close
+          x_btn.click_while_present
+        end
+      end
+
+
+      class Marketplace < Browser::StampsModal
+        include MarketPlaceTitle
 
         def present?
           window_title.present?
@@ -208,7 +225,7 @@ module Stamps
           window_title.wait_until_present(*args)
         end
 
-        def contains store_name
+        def contains(store_name)
           images = browser.imgs(class: "data-view-selection-enabled")
           images.each do |image|
             src = image.attribute_value "src"
@@ -243,142 +260,6 @@ module Stamps
           end
           expect("PayPal Store Modal did not open.").to eql ""
         end
-=begin
-
-        def amazon_button
-          StampsElement.new(browser.imgs css: "img[src*=amazon]").last
-        end
-
-        def amazon
-          button = amazon_button
-          store = Amazon.new(param)
-          10.times do
-            button.click
-            sleep(2)
-            return store if store.present?
-          end
-        end
-
-        def volusion_button
-          StampsElement.new(browser.imgs css: "img[src*=volusion]").last
-        end
-
-        def volusion
-          button = volusion_button
-          store = Volusion.new(param)
-          10.times do
-            button.click
-            sleep(2)
-            return store if store.present?
-          end
-          expect("Volusion Store Modal did not open.").to eql ""
-        end
-
-        def rakuten_button
-          StampsElement.new(browser.imgs css: "img[src*='rakuten']").last
-        end
-
-        def rakuten
-          button = rakuten_button
-          store = Rakuten.new(param)
-          10.times do
-            button.click
-            sleep(2)
-            return store if store.present?
-          end
-          expect("Rakuten Store Modal did not open.").to eql ""
-        end
-
-        def etsy_button
-          StampsElement.new(browser.imgs css: "img[src*='etsy']").last
-        end
-
-        def etsy
-          button = etsy_button
-          store = Etsy.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("Etsy Store Modal did not open.").to eql ""
-        end
-
-        def shopify_button
-          StampsElement.new(browser.imgs css: "img[src*='shopify']").last
-        end
-
-        def shopify
-          button = shopify_button
-          store = Shopify.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("Etsy Store Modal did not open.").to eql ""
-        end
-
-        def three_d_cart_button
-          StampsElement.new(browser.imgs css: "img[src*='3dcart']").last
-        end
-
-        def three_d_cart
-          button = three_d_cart_button
-          store = ThreeDCart.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("3dcart Store Modal did not open.").to eql ""
-        end
-
-        def ebay_button
-          StampsElement.new(browser.imgs css: "img[src*='ebay']").last
-        end
-
-        def ebay
-          button = etsy_button
-          store = Ebay.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("Etsy Store Modal did not open.").to eql ""
-        end
-
-        def yahoo_button
-          StampsElement.new(browser.imgs css: "img[src*='yahoo']").last
-        end
-
-        def yahoo
-          button = yahoo_button
-          store = Yahoo.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("Yahoo Store Modal did not open.").to eql ""
-        end
-
-        def big_commerce_button
-          StampsElement.new(browser.imgs css: "img[src*='bigcommerce']").last
-        end
-
-        def big_commerce
-          button = big_commerce_button
-          store = BigCommerce.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("Big Commerce Store Modal did not open.").to eql ""
-        end
-=end
       end
 
       class ManageStores < Browser::StampsModal
@@ -519,7 +400,7 @@ module Stamps
         end
 
         def market_place
-          MarketPlace.new(param)
+          Marketplace.new(param)
         end
 
         def edit
@@ -610,7 +491,6 @@ module Stamps
 
         end
       end
-
     end
   end
 end
