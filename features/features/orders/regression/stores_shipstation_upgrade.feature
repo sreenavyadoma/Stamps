@@ -38,7 +38,7 @@ Feature:  Shipstation Upgrade Path
     Then expect in Add Advanced Shipping Features! dialog ShipStation logo exists
     Then expect in Add Advanced Shipping Features! dialog body contain Free 60-day upgrade
     Then expect in Add Advanced Shipping Features! dialog Add Features Now Button exists
-    Then click Add Features Now Button
+    Then click on Add Features Now Button
 
     #Activate your new features
     Then expect Orders page Activate Your New Features dialog is present
