@@ -8,7 +8,7 @@ module Stamps
       end
 
       def mail_toolbar
-        (cache[:mail_toolbar].nil? || !mail_toolbar.present?)?cache[:mail_toolbar] = MailToolbar.new(param):cache[:mail_toolbar]
+        (cache[:mail_toolbar].nil? || !cache[:mail_toolbar].present?)?cache[:mail_toolbar] = MailToolbar.new(param):cache[:mail_toolbar]
       end
 
       def print_media

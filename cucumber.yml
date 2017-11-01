@@ -29,7 +29,7 @@ kaushal_orders: --tags @grid_automation_test WEB_APP=orders JENKINS=true USR=ccc
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
 #alex_mail_cc:  --tags @mail_authentication WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory
-alex_mail_cc:  --tags @mail_print_label_left_side WEB_APP=mail JENKINS=true USR=lrqacc001 PW=password1 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory
+alex_mail_cc:  --tags @mail_print_label_left_side WEB_APP=mail JENKINS=true USR=lrqacc001 PW=password1 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx

@@ -7,7 +7,7 @@ module Stamps
           @blur_out
         end
 
-        def blur_out(count=2)
+        def blur_out(count=1)
           expect(blur_out_element).to be_present, "Blur out element is not present."
           count.to_i.times do
             blur_out_element.double_click
