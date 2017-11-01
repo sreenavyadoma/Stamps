@@ -20,6 +20,7 @@ Feature:  Shipstation Upgrade Path
     Then check Looking for ShipStation? dialog don't show checkbox
     Then click on Sign in to ShipStation Button
     Then click on close Button
+    Then click on close Button
 
     Then Sign out
 
