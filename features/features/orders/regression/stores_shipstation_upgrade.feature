@@ -18,8 +18,6 @@ Feature:  Shipstation Upgrade Path
     Then check Looking for ShipStation? dialog don't show checkbox
     Then un-check Looking for ShipStation? dialog don't show checkbox
     Then check Looking for ShipStation? dialog don't show checkbox
-    Then click on Sign in to ShipStation Button
-    Then click on close Button
     Then click on close Button
 
     Then Sign out
@@ -56,3 +54,5 @@ Feature:  Shipstation Upgrade Path
     Then expect in Activate Your New Features dialog terms and conditions is checked
     Then click on login Button
     Then close Activate Your New Features dialog
+
+    Then Sign out
