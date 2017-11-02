@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_mail_cc
+default: --backtrace --profile alex_mail_print_shipping_label_5x8_fcm_psg
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -29,7 +29,15 @@ kaushal_orders: --tags @grid_automation_test WEB_APP=orders JENKINS=true USR=ccc
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
 #alex_mail_cc:  --tags @mail_authentication WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory
-alex_mail_cc:  --tags @mail_print_label_left_side WEB_APP=mail JENKINS=true USR=lrqacc001 PW=password1 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
+#alex_mail_cc:  --tags @mail_print_label_left_side WEB_APP=mail JENKINS=true USR=lrqacc001 PW=password1 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
+#mail_print_label_both_sides: --tags  @mail_print_label_both_sides --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
+alex_mail_cc:  --tags @mail_print_label_both_sides WEB_APP=mail JENKINS=true USR=lrqacc001 PW=password1 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
+alex_mail_bvt_stamps:  --tags @mail_bvt_stamps BROWSER=ff WEB_APP=mail JENKINS=true USR=abqast1 PW=password1 URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+alex_address_management:  --tags @address_management BROWSER=ff WEB_APP=orders JENKINS=true USR=abqast1 PW=password1 URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+alex_address_management:  --tags @address_management BROWSER=ff WEB_APP=orders JENKINS=true USR=abqast1 PW=password1 URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+alex_mail_forgot_password:  --tags @mail_forgot_password BROWSER=ff WEB_APP=orders JENKINS=true URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+alex_details_order:  --tags @details_order BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+alex_mail_print_shipping_label_5x8_fcm_psg:  --tags @mail_print_shipping_label_5x8_fcm_psg BROWSER=ff WEB_APP=mail JENKINS=true URL=sc USR=lrqasc003 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx

@@ -418,7 +418,7 @@ Feature: All details tests for order
     Then set Order Details form Ounces to 1
 
     Then set Order Details form service to FCM Large Envelope
-    Then expect Order Details form service is FCM Large Envelope
+    Then expect Order Details form service is FCM Large Envelope/Flat
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
