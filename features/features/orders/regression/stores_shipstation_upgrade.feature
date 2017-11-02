@@ -1,6 +1,6 @@
 
 @stores_shipstation_upgrade
-Feature:  Shipstation Upgrade Path
+Feature: Shipstation Upgrade Path
 
   Background:
     Given a valid user is signed in to Web Apps
