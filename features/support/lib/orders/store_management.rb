@@ -207,7 +207,7 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView
+      class MarketplaceDataView < Browser::StampsModal
         include StoresCache
         def store_count
           begin

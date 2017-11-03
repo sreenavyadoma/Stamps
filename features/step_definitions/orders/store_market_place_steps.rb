@@ -25,16 +25,16 @@ Then /^validate store name (.*)$/ do |str|
   expect(data_for(:supported_stores, {}).keys.to_a).to include(str.downcase)
 end
 
-#browser.div(css: "[style*='ebaybanner.png']") browser.div(css: "[style*='ebaybanner.png']")
+
 Then /^[Ee]xpect [Mm]arketplace [Dd]ataview [Cc]ount is (greater|less|equal) (?:than|to) (\d+)$/ do |operator, count|
   step "expect Marketplace modal is present"
   case(operator)
     when /greater/
-      expect(stamps.orders.marketplace.dataview.count).to be > count.to_i
+      expect(stamps.orders.marketplace.dataview.store_count).to be > count.to_i
     when /less/
-      expect(stamps.orders.marketplace.dataview.count).to be < count.to_i
+      expect(stamps.orders.marketplace.dataview.store_count).to be < count.to_i
     when /equal/
-      expect(stamps.orders.marketplace.dataview.count).to eql count.to_i
+      expect(stamps.orders.marketplace.dataview.store_count).to eql count.to_i
     else
       #ignore
   end
