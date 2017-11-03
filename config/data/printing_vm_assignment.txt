@@ -98,6 +98,6 @@ jenkinsw10vm04, cclb1907er, print_dialog_printing_on_4x6_roll
 jenkinsw10vm05, ccnicemg6p, print_dialog_email_tracking
 
 Printing Windows 10 sc
-jenkinsw10vm06, sclhz3g0kvlbb5, mail_print_sample_shipping_label_8_x_11_fcm_psg
-jenkinsw10vm07, scoaun1i52oxy, print_dialog_email_tracking
-jenkinsw10vm08, scdhd9do5, print_dialog_email_tracking
+jenkinsw10vm06, sclhz3g0kvlbb5, mail_print_shipping_label_5x8_fcm_psg
+jenkinsw10vm07, scoaun1i52oxy, mail_print_shipping_label_5x8_fcm_psg
+jenkinsw10vm08, scd2fehnpoz, mail_print_shipping_label_5x8_fcm_psg
