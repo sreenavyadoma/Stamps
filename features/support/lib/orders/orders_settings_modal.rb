@@ -11,16 +11,16 @@ module Stamps
         include OrdersSettingsCache
 
         def add_btn
-          (cache[:add_btn])?cache[:add_btn]=StampsElement.new(browser.span(css: "[id=addStoreButton-btnIconEl]")):cache[:add_btn]
+          (cache[:add_btn].nil?||!cache[:add_btn].present?)?cache[:add_btn]=StampsElement.new(browser.span(css: "[id=addStoreButton-btnIconEl]")):cache[:add_btn]
         end
 
         def market_place_window
-          (cache[:market_place_window].nil?||!cache[:market_place_window].present?)?cache[:stores_tabmarket_place_window_view]=Browser::StampsModal.new(param).extend(Orders::Stores::MarketPlaceTitle):cache[:market_place_window]
+          (cache[:market_place_window].nil?||!cache[:market_place_window].present?)?cache[:market_place_window]=Browser::StampsModal.new(param).extend(Orders::Stores::MarketPlaceTitle):cache[:market_place_window]
         end
 
         def add
           20.times do
-            return true if market_place_window.window_title.present?
+            return market_place_window.window_title.text if market_place_window.window_title.present?
             add_btn.click
           end
           nil
@@ -62,10 +62,15 @@ module Stamps
       #fix me
       module OrdersSettingsTabBar
         include OrdersSettingsCache
+
+        def stores_tab_view
+          (cache[:stores_tab_view].nil? || !cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Orders::OrdersSettings::StoresTabView.new(param):cache[:stores_tab_view]
+        end
+
         def stores_tab
           20.times do
-            stores_element.click
-            return true if tab_view.add_btn.present?
+            return stores_tab_view if stores_tab_view.add_btn.present?
+            stores_tab_btn.click
           end
           nil
         end
@@ -74,24 +79,17 @@ module Stamps
         end
 
         def international_settings
-
         end
 
         def label_messages_settings
-
         end
 
-        private
         def general_element
           (cache[:general_element].nil? || !cache[:general_element].present?)?cache[:general_element]=StampsElement.new(browser.span(css: "[id^=tabbar-][id$=-targetEl] a:nth-child(1)")):cache[:general_element]
         end
 
-        def stores_tab_view
-          (cache[:stores_tab_view].nil? || !cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Browser::StampsModal.new(param).extend(StoresTabViewToolbar):cache[:stores_tab_view]
-        end
-
-        def stores_element
-          (cache[:stores_tab].nil? || !cache[:stores_tab].present?)?cache[:stores_tab]=StampsElement.new(browser.span(css: "[id^=tabbar-][id$=-targetEl] a:nth-child(2)")):cache[:stores_tab]
+        def stores_tab_btn
+          (cache[:stores_tab_btn].nil? || !cache[:stores_tab_btn].present?)?cache[:stores_tab_btn]=StampsElement.new(browser.span(text: "Stores")):cache[:stores_tab_btn]
         end
 
         def international_element

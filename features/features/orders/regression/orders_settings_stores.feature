@@ -8,7 +8,14 @@ Feature:  All Store Management
   Scenario: Orders Settings - Stores
     Then click orders toolbar settings button
     Then click Order Settings Stores Add button
-    Then select Paypal on Marketplace modal
+    #Then select Paypal on Marketplace moda
+    # Then select Paypal on Marketplace modal
+    Then search Marketplace for store name Paypal
+    Then expect Marketplace dataview count is greater than 0
+    Then expect Marketplace dataview count is less than 2
+    Then expect Marketplace dataview count is equal to 1
+
+    Then click Marketplace store name Paypal
     Then set PayPal Email Address to qaclient@stamps.com
     #Then Open Orders Settings
     #Then click orders toolbar settings button

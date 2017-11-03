@@ -61,9 +61,7 @@ module Stamps
 
       class StoreSettings < Browser::StampsModal
         class ServiceMappingGrid < Browser::StampsModal
-
           class ServiceMappingLineItem < Browser::StampsModal
-
             class ServiceMappingShippingService < Browser::StampsModal
 
               def initialize(param, index)
@@ -201,7 +199,7 @@ module Stamps
       module MarketPlaceTitle
         include StoresCache
         def window_title
-          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsElement.new(browser.divs(css: "[id^=storeselectionwindow-] [class$=x-title-item]")[1]):cache[:window_title]
+          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsElement.new(browser.div(css: "[id^=storeselectionwindow-] [class$=x-title-item]")):cache[:window_title]
         end
 
         def x_btn
@@ -213,6 +211,32 @@ module Stamps
         end
       end
 
+      class MarketplaceDataView
+        def store_count
+          begin
+            browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
+          rescue
+            #ignore
+          end
+          0
+        end
+
+        def store_field
+
+        end
+
+        def click_store(str)
+          case(str.to_sym)
+            when :paypal
+            when :ebay
+            when :rakuten
+            when :shopify
+            else
+              #placeholder, raise exception.
+          end
+        end
+
+      end
 
       class Marketplace < Browser::StampsModal
         include MarketPlaceTitle
@@ -226,25 +250,25 @@ module Stamps
         end
 
         def contains(store_name)
-          images = browser.imgs(class: "data-view-selection-enabled")
-          images.each do |image|
-            src = image.attribute_value "src"
-            return store_name if src.include? store_name.downcase
-          end
-          "Store #{store_name} does not exist in store selection modal."
+          browser.imgs(class: "data-view-selection-enabled").each {|image| return store_name if image.attribute_value("src").include?(store_name.downcase)}
+          nil
         end
 
         def close
           (StampsElement.new((browser.imgs css: "img[class*='x-tool-close']").last)).click_while_present
         end
 
-        def search_textbox
-          StampsTextbox.new(browser.text_fields css: "input[placeholder='Search by Name']").last
+        def search_by_name
+          StampsTextbox.new(browser.text_fields css: "input[placeholder='Search by Name']")
         end
 
-        def search search_str
-          search_textbox.set search_str
+        def dataview
+          puts ''
         end
+
+        # def search_by_name(str)
+        #   search_textbox.set str
+        # end
 
         def paypal_button
           StampsElement.new browser.div(css: "a[data-store-name='paypal']>div")

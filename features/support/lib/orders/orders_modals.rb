@@ -26,6 +26,10 @@ module Stamps
       def orders_settings
         (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=Stamps::Orders::OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
       end
+
+      def marketplace
+        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=Stamps::Orders::Stores::Marketplace.new(param):cache[:marketplace]
+      end
     end
     
     module TermsAndConditions

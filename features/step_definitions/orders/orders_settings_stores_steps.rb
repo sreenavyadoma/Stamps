@@ -1,22 +1,23 @@
 
 Then /^[Cc]lick Order Settings Stores Add [Bb]utton$/ do
-  stamps.orders.orders_settings.stores_tab.add
+  expect(stamps.orders.orders_settings.stores_tab.add).to eql('Add your Store or Marketplace')
+  step "expect Marketplace modal is present"
 end
 
 Then /^[Cc]lick Order Settings Stores Edit [Bb]utton$/ do
-  #stamps.orders.orders_settings.stores.edit
+  pending #stamps.orders.orders_settings.stores.edit
 end
 
 Then /^[Cc]lick Order Settings Stores Reconnect [Bb]utton$/ do
-  #stamps.orders.orders_settings.stores.reconnect
+  pending #stamps.orders.orders_settings.stores.reconnect
 end
 
 Then /^[Cc]lick Order Settings Stores Delete [Bb]utton$/ do
-  #stamps.orders.orders_settings.stores.delete
+  pending #stamps.orders.orders_settings.stores.delete
 end
 
 Then /^[Ss]elect Order Settings Store name (.*)$/ do |store|
-  #stamps.orders.orders_settings.stores.select store
+  pending #stamps.orders.orders_settings.stores.select store
 end
 
 Then /^[Ee]xpect Order Settings Store name (.*) to be present$/ do |store|

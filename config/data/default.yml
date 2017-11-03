@@ -47,6 +47,12 @@ database:
     username: jenkins
     password: Jenkins123!
 
+supported_stores:
+  1: Paypal
+  2: Amazon
+  3: Ebay
+  4: Rakuten
+
 
 intellij:
   runner_options: --color -r features --format json --out report.json --backtrace -f pretty

@@ -851,8 +851,9 @@ module Stamps
           20.times do
             hover
             element.click
-            break if window_title.present?
+            return true if window_title.present?
           end
+          nil
         end
 
         def hover
