@@ -7,11 +7,11 @@ module Stamps
         end
 
         def message
-          StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
+          StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
         end
 
         def ok
-          button = StampsElement.new browser.span(text: 'OK')
+          button=StampsField.new browser.span(text: 'OK')
           button.click_while_present
         end
       end

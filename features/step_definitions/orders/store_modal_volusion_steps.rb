@@ -7,11 +7,11 @@ Then /^Volusion Store: Set Volusion API to (.*)$/ do |url|
 end
 
 Then /^Volusion Store: Connect$/ do
-  @store_settings = @store.connect
+  @store_settings=@store.connect
 end
 
 Then /^Volusion Store: Reconnect$/ do
-  @manage_stores = @store.reconnect
+  @manage_stores=@store.reconnect
   expect(@manage_stores.nil?).not_to be_nil
 end
 

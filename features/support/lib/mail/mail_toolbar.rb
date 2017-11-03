@@ -6,19 +6,19 @@ module Stamps
 
       def initialize(param)
         super
-        @install_stamps_connect = PrintModal::InstallStampsConnect.new(param)
-        @mail_print_modal = PrintModal::MailPrintModal.new(param)
-        @confirm_window = PrintModal::MailConfirmPrint.new(param)
-        @please_wait = PrintModal::PleaseWait.new(param)
-        @windows_print = Windows::PrintWindow.new(param.browser)
-        @sample_button = StampsElement.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
-        @printing_problem = PrintingProblem.new(param)
-        @insufficient_funds = MailInsufficientFunds.new(param)
-        @print_quantity_warning = PrintQuantityWarning.new(param)
+        @install_stamps_connect=PrintModal::InstallStampsConnect.new(param)
+        @mail_print_modal=PrintModal::MailPrintModal.new(param)
+        @confirm_window=PrintModal::MailConfirmPrint.new(param)
+        @please_wait=PrintModal::PleaseWait.new(param)
+        @windows_print=Windows::PrintWindow.new(param.browser)
+        @sample_button=StampsField.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
+        @printing_problem=PrintingProblem.new(param)
+        @insufficient_funds=MailInsufficientFunds.new(param)
+        @print_quantity_warning=PrintQuantityWarning.new(param)
       end
 
       def total
-        (StampsElement.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2)
+        (StampsField.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2)
       end
 
       def print_button
@@ -26,21 +26,21 @@ module Stamps
         10.times do
           case param.print_media
             when :envelopes
-              @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
+              @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
             when :stamps
-              @print_button = StampsElement.new(browser.span(text: 'Print Stamps'))
+              @print_button=StampsField.new(browser.span(text: 'Print Stamps'))
             when :labels
-              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+              @print_button=StampsField.new(browser.span(text: 'Print Label'))
             when :rolls
-              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+              @print_button=StampsField.new(browser.span(text: 'Print Label'))
             when :certified_mails
-              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+              @print_button=StampsField.new(browser.span(text: 'Print Label'))
             when :certified_mails_3910_3930
-              @print_button = StampsElement.new(browser.span(text: 'Print Label'))
+              @print_button=StampsField.new(browser.span(text: 'Print Label'))
             when :certified_mails_3810
-              @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
+              @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
             when :certified_mails_3830
-              @print_button = StampsElement.new(browser.span(text: 'Print Envelope'))
+              @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
             else
               # do nothing
           end
@@ -93,7 +93,7 @@ module Stamps
 
       def open_sample_window window
         return window if window.present?
-        print = sample_button
+        print=sample_button
 
         print.click
 
@@ -161,16 +161,16 @@ module Stamps
 
 
     class PrintingProblem < Browser::StampsModal
-      def element
-        StampsElement.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
+      def field
+        StampsField.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end
 
       def present?
-        element.present?
+        field.present?
       end
 
       def error_message
-        element.text
+        field.text
       end
     end
   end

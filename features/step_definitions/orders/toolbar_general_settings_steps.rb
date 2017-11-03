@@ -517,7 +517,7 @@ end
 # Reset Fields
 
 Then /^[Ii]n Settings modal, Open Reset Fields Modal$/ do
-  @reset_fields = @general_settings.reset_fields
+  @reset_fields=@general_settings.reset_fields
 end
 
 Then /^Reset Fields:  Check Service$/ do

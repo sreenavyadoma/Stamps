@@ -7,9 +7,9 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(text: "Confirm Print"))
-          @continue_btn = StampsElement.new(browser.span(text: "Continue"))
-          @do_not_prompt = StampsCheckbox.new browser.span(css: "div[id^=dialoguemodal-][id$=-targetEl]>div>div>div>span"),
+          @window_title=StampsField.new(browser.div(text: "Confirm Print"))
+          @continue_btn=StampsField.new(browser.span(text: "Continue"))
+          @do_not_prompt=StampsCheckbox.new browser.span(css: "div[id^=dialoguemodal-][id$=-targetEl]>div>div>div>span"),
                                               browser.div(css: "div[id^=dialoguemodal-][id$=-targetEl]>div[class*=checkbox]"), "class", "checked"
         end
 
@@ -35,9 +35,9 @@ module Stamps
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(text: "Please Wait"))
-          @paragraph = StampsElement.new(browser.div(css: "div[class*=resizable]>div[id^=dialoguemodal-][id$=-body]>div>div"))
-          @ok_btn = StampsElement.new(browser.span(text: "OK"))
+          @window_title=StampsField.new(browser.div(text: "Please Wait"))
+          @paragraph=StampsField.new(browser.div(css: "div[class*=resizable]>div[id^=dialoguemodal-][id$=-body]>div>div"))
+          @ok_btn=StampsField.new(browser.span(text: "OK"))
         end
 
         def present?

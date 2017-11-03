@@ -1,7 +1,7 @@
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ff]orm [Ss]ervice to (.*)$/ do |service|
   step "expect order details form is present"
-  test_param[:service] = test_helper.parse_service(stamps.orders.single_order_details.service.select(service))
+  test_param[:service]=test_helper.parse_service(stamps.orders.single_order_details.service.select(service))
   20.times do
     step "blur out on Order Details form"
     sleep(0.015)
@@ -12,7 +12,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ff]orm [Ii]nternational [Ss]ervice to (.*)$/ do |service|
   step "expect order details form is present"
-  test_param[:int_service] = test_helper.parse_service(stamps.orders.single_order_details.service.select(service))
+  test_param[:int_service]=test_helper.parse_service(stamps.orders.single_order_details.service.select(service))
   20.times do
     step "blur out on Order Details form"
     sleep(0.015)

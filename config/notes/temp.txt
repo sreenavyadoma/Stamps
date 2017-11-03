@@ -2,7 +2,7 @@
 
 
       def xxxxxxxx
-        yyyyyyyyyyyyyyyyyyyyy if @xxxxxxxx.nil? || !@xxxxxxxx.present?
+        yyyyyyyyyyyyyyyyyyyyy if @xxxxxxxx.nil?||!@xxxxxxxx.present?
         @xxxxxxxx
       end
 

@@ -9,20 +9,20 @@ Given /^(?:|(?:|[Aa] )(?:[Vv]alid |))[Uu]ser is signed in to Web Apps$/ do
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in$/ do
-  modal_param.web_app = :orders
+  modal_param.web_app=:orders
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{test_param[:username]}, #{test_param[:password]}"
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Oo]rders (?:and|then) sign-in expecting Security Questions$/ do
-  modal_param.web_app = :orders
+  modal_param.web_app=:orders
   step "pause for 40 seconds"
   step "load Web Apps Sign-in page"
-  modal[:security_questions] = stamps.orders.landing_page.orders_sign_in(test_param[:username], test_param[:password])
+  modal[:security_questions]=stamps.orders.landing_page.orders_sign_in(test_param[:username], test_param[:password])
 end
 
 Then /^[Ss]elect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Qq]uestion (.*)$/ do |str|
-  modal[:security_questions].first_security_question.select(test_param[:first_security_question] = str)
+  modal[:security_questions].first_security_question.select(test_param[:first_security_question]=str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Qq]uetion is (?:correct|(.*))$/ do |str|
@@ -30,7 +30,7 @@ Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Qq]uetion is (?:corre
 end
 
 Then /^[Ss]et [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Aa]nswer to (?:random value|(.*))$/ do |str|
-  modal[:security_questions].first_security_question.first_security_answer.set(test_param[:first_security_answer] = (str.nil?)?'automation':str)
+  modal[:security_questions].first_security_question.first_security_answer.set(test_param[:first_security_answer]=(str.nil?)?'automation':str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Aa]nswer is (?:correct|(.*))$/ do |str|
@@ -38,7 +38,7 @@ Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 1st [Ss]ecurity [Aa]nswer is (?:correc
 end
 
 Then /^[Ss]elect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Qq]uestion (.*)$/ do |str|
-  modal[:security_questions].second_security_question.select(test_param[:second_security_question] = str)
+  modal[:security_questions].second_security_question.select(test_param[:second_security_question]=str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Qq]uetion is (?:correct|(.*))$/ do |str|
@@ -46,7 +46,7 @@ Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Qq]uetion is (?:corre
 end
 
 Then /^[Ss]et [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Aa]nswer to (?:random value|(.*))$/ do |str|
-  modal[:security_questions].second_security_question.second_security_answer.set(test_param[:second_security_answer] = (str.nil?)?'automation':str)
+  modal[:security_questions].second_security_question.second_security_answer.set(test_param[:second_security_answer]=(str.nil?)?'automation':str)
 end
 
 Then /^[Ee]xpect [Ss]ecurity [Qa]uestions 2nd [Ss]ecurity [Aa]nswer is (?:correct|(.*))$/ do |str|
@@ -66,7 +66,7 @@ Then /^[Ee]xpect Security Questions successfully set dialog contain (.*)/ do |st
 end
 
 Then /^[Ll]oad [Ww]eb [Aa]pps [Mm]ail (?:and|then) sign-in$/ do
-  modal_param.web_app = :mail
+  modal_param.web_app=:mail
   step "load Web Apps Sign-in page"
   step "sign-in to Web Apps as #{modal_param.usr}, #{modal_param.pw}"
 end
@@ -76,8 +76,8 @@ Given /^[Ll]oad [Ww]eb [Aa]pps [Ss]ign-in page$/ do
 end
 
 Given /^[Ss]ign-in to [Ww]eb [Aa]pps as (.*), (.*)$/ do |username, password|
-  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if modal_param.web_app == :orders
-  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if modal_param.web_app == :mail
+  expect(stamps.orders.landing_page.orders_sign_in(username, password)).to eql(username) if modal_param.web_app==:orders
+  expect(stamps.mail.sign_in_modal.mail_sign_in(username, password)).to eql(username) if modal_param.web_app==:mail
 end
 
 Then /^[Ss]ign out$/ do
@@ -91,12 +91,12 @@ end
 
 Given /^Orders: Sign-in as new user (.*)\/(.*)$/ do |username, password|
   if username.downcase.include? 'random'
-    usr = @username
+    usr=@username
   else
-    usr = username
-    @username = username
+    usr=username
+    @username=username
   end
-  @market_place_modal = stamps.orders.landing_page.first_time_sign_in(usr, password)
+  @market_place_modal=stamps.orders.landing_page.first_time_sign_in(usr, password)
 end
 
 

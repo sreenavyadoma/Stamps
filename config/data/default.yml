@@ -48,10 +48,13 @@ database:
     password: Jenkins123!
 
 supported_stores:
-  1: Paypal
-  2: Amazon
-  3: Ebay
-  4: Rakuten
+  paypal: Paypal
+  amazon: Amazon
+  ebay: eBay
+  rakuten: Rakuten
+  etsy: Etsy
+  shopify: Shopify
+  magento: Magento
 
 
 intellij:

@@ -2,11 +2,11 @@ module Stamps
   class HealthCheck < Browser::StampsModal
 
     def health_check
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      param.test_env='stg' if param.test_env.downcase=='staging'
 
       case param.test_env.downcase
         when /sc/
-          url = "https://printext.qasc.stamps.com/orders/healthcheck.aspx"
+          url="https://printext.qasc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
@@ -19,7 +19,7 @@ module Stamps
           logger.message "-"
 
         when /cc/
-          url = "https://printext.qacc.stamps.com/orders/healthcheck.aspx"
+          url="https://printext.qacc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
@@ -32,7 +32,7 @@ module Stamps
           logger.message "-"
 
         when /stg/
-          url = "https://print.testing.stamps.com/orders/healthcheck.aspx"
+          url="https://print.testing.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
@@ -64,7 +64,7 @@ module Stamps
     end
 
     def address_book
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      param.test_env='stg' if param.test_env.downcase=='staging'
 
       case param.test_env.downcase
         when /sc/
@@ -113,7 +113,7 @@ module Stamps
     end
 
     def or_reports
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      param.test_env='stg' if param.test_env.downcase=='staging'
 
       case param.test_env.downcase
         when /sc/
@@ -167,7 +167,7 @@ module Stamps
     end
 
     def or_postage_tools
-      param.test_env = 'stg' if param.test_env.downcase == 'staging'
+      param.test_env='stg' if param.test_env.downcase=='staging'
 
       case param.test_env.downcase
         when /sc/

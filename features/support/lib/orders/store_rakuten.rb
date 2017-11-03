@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class RakutenSettings < StoreSettings
         def window_title
-          StampsElement.new browser.div text: "Rakuten Settings"
+          StampsField.new browser.div text: "Rakuten Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Rakuten < Browser::StampsModal
 
         def window_title
-          StampsElement.new(browser.div text: "Connect your Rakuten Store")
+          StampsField.new(browser.div text: "Connect your Rakuten Store")
         end
 
         def present?
@@ -26,7 +26,7 @@ module Stamps
         end
 
         def close
-          button = StampsElement.new browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
+          button=StampsField.new browser.img(css: "div[id^=connectrakutenwindow-]>div:nth-child(2)>img")
           5.times do
             button.click
             break unless present?
@@ -46,21 +46,21 @@ module Stamps
         end
 
         def map_rakuten_sku
-          checkbox_field = (browser.checkboxes(css: "input[type=button][id^=checkbox]").last)
-          verify_field = checkbox_field.parent.parent.parent.parent
-          attribute_name = "class"
-          attribute_value = "checked"
+          checkbox_field=(browser.checkboxes(css: "input[type=button][id^=checkbox]").last)
+          verify_field=checkbox_field.parent.parent.parent.parent
+          attribute_name="class"
+          attribute_value="checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute_name, attribute_value
         end
 
         def connect
-          button = StampsElement.new browser.span(text: "Connect")
-          settings = RakutenSettings.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
-          connecting_button = StampsElement.new browser.span(text: "Connecting...")
+          button=StampsField.new browser.span(text: "Connect")
+          settings=RakutenSettings.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
+          server_error=Orders::Stores::ServerError.new(param)
+          connecting_button=StampsField.new browser.span(text: "Connecting...")
 
-          max_server_error_retry_count = 5
+          max_server_error_retry_count=5
 
           15.times do |counter|
             button.click
@@ -70,12 +70,12 @@ module Stamps
               importing_order.ok
             end
             if server_error.present?
-              error_str = server_error.message
+              error_str=server_error.message
               logger.info error_str
               server_error.ok
               expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
             end
-            if connecting_button.element.visible?
+            if connecting_button.field.visible?
               logger.info connecting_button.text
             end
             return settings if settings.present?
@@ -87,7 +87,7 @@ module Stamps
       class ModifyRakutenStore < Rakuten
 
         def window_title
-          StampsElement.new(browser.div text: "Modify your Rakuten Store Connection")
+          StampsField.new(browser.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?

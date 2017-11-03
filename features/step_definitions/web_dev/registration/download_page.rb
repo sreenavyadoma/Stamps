@@ -1,8 +1,8 @@
 Then /^Registration: Expect Web Registration result page is either Download page or Webpostage$/ do
   case @web_mail
     when Registration::DownloadPage
-      expectation = "Congratulations on your new account!"
-      actual_value = registration.membership.download_page.text
+      expectation="Congratulations on your new account!"
+      actual_value=registration.membership.download_page.text
       #test_config.logger.step "Test #{(actual_value==expectation)?"Passed":"Failed"}"
       expect(actual_value).to eql expectation
     when WebMail

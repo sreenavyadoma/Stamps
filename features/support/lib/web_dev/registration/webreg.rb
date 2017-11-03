@@ -5,15 +5,15 @@ module Stamps
       attr_reader :bread_crumbs, :navigation, :profile, :membership, :footer, :choose_supplies, :add_postage, :ship_volume_survey, :security_questions
       def initialize(param)
         super
-        @navigation = Navigation::RegistrationNavigationBar.new(param)
-        @bread_crumbs = RegistrationBreadCrumbs.new(param)
-        @profile = Profile::ProfilePage.new(param)
+        @navigation=Navigation::RegistrationNavigationBar.new(param)
+        @bread_crumbs=RegistrationBreadCrumbs.new(param)
+        @profile=Profile::ProfilePage.new(param)
         @membership ||= Membership::MembershipPage.new(param)
-        @choose_supplies = ChooseSupplies.new(param)
-        @add_postage = AddPostage.new(param)
-        @ship_volume_survey = ShipVolumeSurvey.new(param)
-        @footer = Footer::ProfileFooter.new(param)
-        @security_questions = SecurityQuestionsRegistration.new(param)
+        @choose_supplies=ChooseSupplies.new(param)
+        @add_postage=AddPostage.new(param)
+        @ship_volume_survey=ShipVolumeSurvey.new(param)
+        @footer=Footer::ProfileFooter.new(param)
+        @security_questions=SecurityQuestionsRegistration.new(param)
       end
 
       def present?
@@ -27,18 +27,18 @@ module Stamps
       def load_theme(theme)
         case theme
           when /1632/
-            theme = 'theme_1632'
+            theme='theme_1632'
           else
             # do nothing
         end
 
         case modal_param.test_env.downcase
           when /cc/
-            url = "https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
+            url="https://qa-registration.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           when /sc/
-            url = "https://registrationext.qasc.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
+            url="https://registrationext.qasc.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           when /stg/
-            url = "https://registration.staging.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
+            url="https://registration.staging.stamps.com/registration/#{(theme.nil?)?"":"?theme=#{theme}"}"
           else
             #do nothing
         end
@@ -54,10 +54,10 @@ module Stamps
 
       def initialize(param)
         super
-        @header_elem = StampsElement.new browser.h3(text: "An Error Occurred")
-        @top_message_elem = StampsElement.new browser.p(id: "topMessage")
-        @error_code_elem = StampsElement.new browser.p(id: "errorCode")
-        @error_description_elem = StampsElement.new browser.p(id: "errorDescription")
+        @header_elem=StampsField.new browser.h3(text: "An Error Occurred")
+        @top_message_elem=StampsField.new browser.p(id: "topMessage")
+        @error_code_elem=StampsField.new browser.p(id: "errorCode")
+        @error_description_elem=StampsField.new browser.p(id: "errorDescription")
       end
 
       def present?

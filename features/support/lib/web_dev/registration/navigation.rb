@@ -6,8 +6,8 @@ module Stamps
 
         def initialize(param)
           super
-          @stamps_logo = StampsElement.new(browser.img(id: "sdc-logo"))
-          @usps_logo = StampsElement.new(browser.img(css: "img[src*=logo_usps_vendor_]"))
+          @stamps_logo=StampsField.new(browser.img(id: "sdc-logo"))
+          @usps_logo=StampsField.new(browser.img(css: "img[src*=logo_usps_vendor_]"))
         end
 
         def present?

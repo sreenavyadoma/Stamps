@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class EtsySettings < StoreSettings
         def window_title
-          StampsElement.new browser.div text: "Etsy Settings"
+          StampsField.new browser.div text: "Etsy Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Etsy < Browser::StampsModal
 
         def window_title
-          StampsElement.new(browser.div text: "Connect your Etsy Store")
+          StampsField.new(browser.div text: "Connect your Etsy Store")
         end
 
         def present?
@@ -30,21 +30,21 @@ module Stamps
         end
 
         def find_my_shops
-          button = StampsElement.new browser.span(text: "Find My Shops")
+          button=StampsField.new browser.span(text: "Find My Shops")
           button.click
           button.click
         end
 
         def available_shops
-          button = StampsElement.new((browser.text_fields(css: "input[id^=combo-][id$=-inputEl]")).last)
+          button=StampsField.new((browser.text_fields(css: "input[id^=combo-][id$=-inputEl]")).last)
           button.click
           button.click
         end
 
         def connect username, password
-          button = StampsElement.new browser.span(text: "Connect")
-          etsy_page = EtsyPage.new(param)
-          sign_in_page = EtsySignInPage.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          etsy_page=EtsyPage.new(param)
+          sign_in_page=EtsySignInPage.new(param)
 
           10.times do
             button.click
@@ -52,18 +52,18 @@ module Stamps
             if sign_in_page.present?
               sign_in_page.username.set username
               sign_in_page.password.set password
-              page = sign_in_page.sign_in
+              page=sign_in_page.sign_in
               10.times do
                 sleep(0.35)
                 break if page.present?
               end
-              settings = page.allow_access
+              settings=page.allow_access
               sleep(0.35)
               return settings
             end
 
             if etsy_page.present?
-              settings = etsy_page.allow_access
+              settings=etsy_page.allow_access
               sleep(0.35)
               return settings
             end
@@ -72,9 +72,9 @@ module Stamps
         end
 
         def reconnect username, password
-          button = StampsElement.new browser.span(text: "Connect")
-          etsy_page = EtsyPage.new(param)
-          sign_in_page = EtsySignInPage.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          etsy_page=EtsyPage.new(param)
+          sign_in_page=EtsySignInPage.new(param)
 
           10.times do
             button.click
@@ -82,18 +82,18 @@ module Stamps
             if sign_in_page.present?
               sign_in_page.username.set username
               sign_in_page.password.set password
-              page = sign_in_page.sign_in
+              page=sign_in_page.sign_in
               10.times do
                 sleep(0.35)
                 break if page.present?
               end
-              settings = page.allow_access_after_reconnect
+              settings=page.allow_access_after_reconnect
               sleep(0.35)
               return settings
             end
 
             if etsy_page.present?
-              settings = etsy_page.allow_access_after_reconnect
+              settings=etsy_page.allow_access_after_reconnect
               sleep(0.35)
               return settings
             end
@@ -105,7 +105,7 @@ module Stamps
       class ModifyEtsyStore < Etsy
 
         def window_title
-          StampsElement.new(browser.div text: "Modify your Etsy Store Connection")
+          StampsField.new(browser.div text: "Modify your Etsy Store Connection")
         end
 
         def present?
@@ -120,7 +120,7 @@ module Stamps
       class ReconnectEtsyStore < Etsy
 
         def window_title
-          StampsElement.new(browser.div text: "Modify your Rakuten Store Connection")
+          StampsField.new(browser.div text: "Modify your Rakuten Store Connection")
         end
 
         def present?
@@ -146,8 +146,8 @@ module Stamps
         end
 
         def sign_in
-          button = StampsElement.new browser.text_field(id: 'signin_button')
-          etsy_page = EtsyPage.new(param)
+          button=StampsField.new browser.text_field(id: 'signin_button')
+          etsy_page=EtsyPage.new(param)
 
           10.times do
             button.click
@@ -163,8 +163,8 @@ module Stamps
         end
 
         def allow_access
-          button = StampsElement.new browser.text_field(css: 'input[type=submit]')
-          settings = EtsySettings.new(param)
+          button=StampsField.new browser.text_field(css: 'input[type=submit]')
+          settings=EtsySettings.new(param)
 
           3.times do
             browser.execute_script("window.scrollBy(0,400)")
@@ -177,8 +177,8 @@ module Stamps
         end
 
         def allow_access_after_reconnect
-          button = StampsElement.new browser.text_field(css: 'input[type=submit]')
-          manage_stores = ManageStores.new(param)
+          button=StampsField.new browser.text_field(css: 'input[type=submit]')
+          manage_stores=ManageStores.new(param)
 
           3.times do
             browser.execute_script("window.scrollBy(0,400)")

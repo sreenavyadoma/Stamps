@@ -15,13 +15,13 @@ end
 
 Then /^Yahoo Store: Connect$/ do
   #test_config.logger.step "Yahoo Store: Connect"
-  @store_settings = @store.connect
+  @store_settings=@store.connect
   test_config.logger.step @store_settings.present?
 end
 
 Then /^Yahoo Store: Reconnect$/ do
   #test_config.logger.step "Yahoo Store: Reconnect"
-  @store_settings = @store.reconnect
+  @store_settings=@store.reconnect
   test_config.logger.step @store_settings.present?
 end
 
@@ -42,10 +42,10 @@ end
 
 Then /^Yahoo Store: Connect for the first time expecting Yahoo Settings modal$/ do
   #test_config.logger.step "Yahoo Store: Connect for the first time expecting Yahoo Settings modal"
-  @store_settings = @store.connect_expecting_store_settings
-  test_result = "Yahoo Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
+  @store_settings=@store.connect_expecting_store_settings
+  test_result="Yahoo Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
   test_config.logger.step test_result
-  if @store_settings.nil? || !(@store_settings.present?)
+  if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end
 end

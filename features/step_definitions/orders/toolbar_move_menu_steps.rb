@@ -27,7 +27,7 @@ Then /^[Cc]lick Move to Shipped modal cancel [Bb]utton$/ do
 end
 
 Then /^[Ee]xpect Move to Shipped modal order number is (?:correct|(.*))$/ do |expectation|
-  expectation = (expectation.nil?)?test_param[:order_id][1] : expectation
+  expectation=(expectation.nil?)?test_param[:order_id][1] : expectation
   expect(stamps.orders.orders_toolbar.toolbar_move.move_to_shipped.order_number).to eql(expectation)
 end
 

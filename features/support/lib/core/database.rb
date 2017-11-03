@@ -7,11 +7,11 @@ module Stamps
           @host=host
           @username=username
           @password=password
-          @logger = logger
+          @logger=logger
         end
 
         def connect
-          @connection = Mysql2::Client.new(host: host, username: username, password: password)
+          @connection=Mysql2::Client.new(host: host, username: username, password: password)
           connection.automatic_close=true
           logger.message "Database Encoding: #{connection.encoding}"
           logger.message "Database Info: #{connection.info}"

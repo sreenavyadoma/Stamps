@@ -18,10 +18,10 @@ module Stamps
 
       def initialize(param)
         super
-        @usps_approval = USPSCheckBox.new(param)
-        @new_meter_limit = StampsTextbox.new browser.text_field(name: "resetAmt")
-        @current_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
-        @maximum_meter = StampsElement.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
+        @usps_approval=USPSCheckBox.new(param)
+        @new_meter_limit=StampsTextbox.new browser.text_field(name: "resetAmt")
+        @current_meter=StampsField.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(3)>td:nth-child(2)")
+        @maximum_meter=StampsField.new browser.td(css: "table[style*=table-row]>tbody>tr>td>table>tbody>tr:nth-child(4)>td:nth-child(2)")
       end
 
       def present?
@@ -37,8 +37,8 @@ module Stamps
       end
 
       def submit
-        button = Stamps::Browser::StampsElement.new browser.input(name: "submit")
-        change_success = ChangeMeterLimitSuccess.new(param)
+        button=Stamps::Browser::StampsField.new browser.input(name: "submit")
+        change_success=ChangeMeterLimitSuccess.new(param)
         5.times do
           button.click
           button.click
@@ -57,16 +57,16 @@ module Stamps
       end
 
       def wait_until_present(*args)
-        (StampsElement.new browser.td(text: "Change Meter Limit Success")).wait_until_present(*args)
+        (StampsField.new browser.td(text: "Change Meter Limit Success")).wait_until_present(*args)
       end
 
       def text
-        (StampsElement.new browser.td(text: "Change Meter Limit Success")).text
+        (StampsField.new browser.td(text: "Change Meter Limit Success")).text
       end
 
       def ok
-        profile = CustomerProfilePage.new(param)
-        button = StampsElement.new browser.a(css: "a[href^=Profile]")
+        profile=CustomerProfilePage.new(param)
+        button=StampsField.new browser.a(css: "a[href^=Profile]")
         5.times do
           button.wait_until_present 2
           button.click

@@ -4,12 +4,12 @@ module Stamps
     module Printing
       class OrdersPrintMediaDropList < Browser::StampsModal
         def dropdown
-          @dropdown = StampsElement.new( browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown=StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil?||!@dropdown.present?
           @dropdown
         end
 
         def textbox
-          @textbox = StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist]")) if @textbox.nil? || !@textbox.present?
+          @textbox=StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist]")) if @textbox.nil?||!@textbox.present?
           @textbox
         end
 
@@ -21,18 +21,18 @@ module Stamps
           textbox.wait_until_present(*args)
         end
 
-        def selection_element(media)
+        def selection_field(media)
           case(media)
             when /Paper/ # Shipping Label: 8 ½" x 11" Paper
-              return StampsElement.new(browser.li text: /Paper/)
+              return StampsField.new(browser.li text: /Paper/)
             when /SDC-1200/ # Shipping Label: Stamps.com SDC-1200, 4 ¼" x 6 ¾"
-              return StampsElement.new(browser.li text: /SDC-1200/)
+              return StampsField.new(browser.li text: /SDC-1200/)
             when /Shipping Label - 5 / # Shipping Label: 5 ½" x 8 ½"
-              return StampsElement.new(browser.li text: /Shipping Label - 5 /)
+              return StampsField.new(browser.li text: /Shipping Label - 5 /)
             when /Roll - 418x614/ # Roll 418x614
-              return StampsElement.new(browser.li text: /Roll - 4 ⅛/)
+              return StampsField.new(browser.li text: /Roll - 4 ⅛/)
             when /Roll - 4 / # Roll - 4" x 6" Shipping Label
-              return StampsElement.new(browser.li text: /Roll - 4 /)
+              return StampsField.new(browser.li text: /Roll - 4 /)
             else
               expect("Don't know what to do with #{media}.").to eql "Invalid Print Media Selection."
           end
@@ -40,9 +40,9 @@ module Stamps
 
         def select(media)
           begin
-            selection = selection_element(media)
+            selection=selection_field(media)
             10.times do
-              if media == "Roll - 418x614"
+              if media=="Roll - 418x614"
                 break if textbox.text.include? "Roll - 4 ⅛"
               else
                 break if textbox.text.include? media
@@ -54,14 +54,14 @@ module Stamps
         end
 
         def tooltip(media)
-          dropdown = self.dropdown
-          media_selection = selection media
+          dropdown=self.dropdown
+          media_selection=selection media
 
           10.times do
             begin
               dropdown.click unless media_selection.present?
               if media_selection.present?
-                tooltip = media_selection.attribute_value "data-qtip"
+                tooltip=media_selection.attribute_value "data-qtip"
                 logger.info "Print Media Tooltip for \"#{media}\" is \n#{tooltip}\n"
                 if tooltip.include? "<strong>"
                   dropdown.click if media_selection.present?
@@ -77,11 +77,11 @@ module Stamps
 
       class OrdersPrinter < Browser::StampsModal
         def dropdown
-          (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new(browser.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")):@dropdown
+          (@dropdown.nil?||!@dropdown.present?)?@dropdown=StampsField.new(browser.div(id: "sdc-printpostagewindow-printerdroplist-trigger-picker")):@dropdown
         end
 
         def textbox
-          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")):@textbox
+          (@textbox.nil?||!@textbox.present?)?@textbox=StampsTextbox.new(browser.text_field(id: "sdc-printpostagewindow-printerdroplist-inputEl")):@textbox
         end
 
         def present?
@@ -93,7 +93,7 @@ module Stamps
         end
 
         def select(selection)
-          selection_label = StampsElement.new(browser.li(text: /#{selection}/))
+          selection_label=StampsField.new(browser.li(text: /#{selection}/))
           15.times do
             return textbox.text if textbox.text.include? selection[0..((selection.size>5)?selection.size-4:selection.size)]
             dropdown.click unless selection_label.present?
@@ -105,16 +105,16 @@ module Stamps
 
       class OrdersPaperTray < Browser::StampsModal
         def dropdown
-          (@dropdown.nil? || !@dropdown.present?)?@dropdown = StampsElement.new(browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")):@dropdown
+          (@dropdown.nil?||!@dropdown.present?)?@dropdown=StampsField.new(browser.div(css: "div[id^=printwindow-][id$=-body]>div>div>div[id^=combo]>div>div>div[id*=picker]")):@dropdown
         end
 
         def textbox
-          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(browser.text_field(name: "paperTrays")):@textbox
+          (@textbox.nil?||!@textbox.present?)?@textbox=StampsTextbox.new(browser.text_field(name: "paperTrays")):@textbox
         end
 
         def select(selection)
           begin
-            selection_label = StampsElement.new(browser.li(text: selection))
+            selection_label=StampsField.new(browser.li(text: selection))
             5.times do
               dropdown.click unless selection_label.present?
               selection_label.click
@@ -126,15 +126,15 @@ module Stamps
 
       class OrdersStartingLabel < Browser::StampsModal
         def left_label
-          (@left_label.nil? || !@left_label.present?)?@left_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")):@left_label
+          (@left_label.nil?||!@left_label.present?)?@left_label=StampsField.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(1)")):@left_label
         end
 
         def right_label
-          (@right_label.nil? || !@right_label.present?)?@right_label = StampsElement.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")):@right_label
+          (@right_label.nil?||!@right_label.present?)?@right_label=StampsField.new(browser.div(css: "div[class*=label-chooser-container-border]:nth-child(2)>div>div>div:nth-child(2)")):@right_label
         end
 
         def textbox
-          (@textbox.nil? || !@textbox.present?)?@textbox = StampsTextbox.new(browser.text_field(name: "paperTrays")):@textbox
+          (@textbox.nil?||!@textbox.present?)?@textbox=StampsTextbox.new(browser.text_field(name: "paperTrays")):@textbox
         end
 
         def select_left_label
@@ -171,7 +171,7 @@ module Stamps
 
         def label_selected?(div)
           8.times do
-            selected = (div.attribute_value 'class').include? 'selected'
+            selected=(div.attribute_value 'class').include? 'selected'
             logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
             break if selected
           end
@@ -185,26 +185,26 @@ module Stamps
 
       class OrdersPrintOptions < Browser::StampsModal
         def hide_postage_value
-          checkbox_field = browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute = "class"
-          verify_field_attrib = "checked"
+          checkbox_field=browser.span id: "sdc-printpostagewindow-hidepostagecheckbox-displayEl"
+          verify_field=checkbox_field.parent.parent.parent
+          attribute="class"
+          verify_field_attrib="checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def email_tracking
-          checkbox_field = browser.span id: "sdc-printpostagewindow-emailtrackingcheckbox-displayEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute = "class"
-          verify_field_attrib = "checked"
+          checkbox_field=browser.span id: "sdc-printpostagewindow-emailtrackingcheckbox-displayEl"
+          verify_field=checkbox_field.parent.parent.parent
+          attribute="class"
+          verify_field_attrib="checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
 
         def print_reference_no
-          checkbox_field = browser.span id: "sdc-printpostagewindow-printreferencenumbercheckbox-displayEl"
-          verify_field = checkbox_field.parent.parent.parent
-          attribute = "class"
-          verify_field_attrib = "checked"
+          checkbox_field=browser.span id: "sdc-printpostagewindow-printreferencenumbercheckbox-displayEl"
+          verify_field=checkbox_field.parent.parent.parent
+          attribute="class"
+          verify_field_attrib="checked"
           StampsCheckbox.new checkbox_field, verify_field, attribute, verify_field_attrib
         end
       end
@@ -215,7 +215,7 @@ module Stamps
         end
 
         def close
-          button = StampsElement.new browser.img(css: "img[class*='x-tool-img x-tool-close']")
+          button=StampsField.new browser.img(css: "img[class*='x-tool-img x-tool-close']")
           10.times do
             button.click
             break unless button.present?
@@ -223,7 +223,7 @@ module Stamps
         end
 
         def ok
-          button = StampsElement.new browser.span(text: "Ok")
+          button=StampsField.new browser.span(text: "Ok")
           10.times do
             button.click
             break unless button.present?
@@ -231,7 +231,7 @@ module Stamps
         end
 
         def message
-          StampsElement.new(browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last).text
+          StampsField.new(browser.divs(css: "div[id^=dialoguemodal][id$=innerCt]").last).text
         end
       end
 
@@ -240,12 +240,12 @@ module Stamps
 
         def initialize(param)
           super
-          @agree_to_terms = StampsElement.new browser.span text: "I Agree"
-          @cancel = StampsElement.new browser.span text: "Cancel"
+          @agree_to_terms=StampsField.new browser.span text: "I Agree"
+          @cancel=StampsField.new browser.span text: "Cancel"
         end
 
         def present?
-          (StampsElement.new browser.div text: "USPS Terms").present?
+          (StampsField.new browser.div text: "USPS Terms").present?
         end
 
         def agree_and_dont_show_again
@@ -254,16 +254,16 @@ module Stamps
         end
 
         def dont_show_this_again dont_show
-          checkbox_field = (browser.inputs css: "input[id^=checkbox-][id$=-inputEl]").last
+          checkbox_field=(browser.inputs css: "input[id^=checkbox-][id$=-inputEl]").last
           expect("USPS Terms - Don't show this again checkbox is not present").to eql "" unless checkbox_field.present?
 
-          verify_field = browser.div css: "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
+          verify_field=browser.div css: "div[class='x-field x-form-item x-form-item-default x-form-type-checkbox x-box-item x-field-default x-vbox-form-item x-form-item-no-label']"
           expect("USPS Terms - Don't show this again checkbox is not present").to eql "" unless verify_field.present?
 
-          attribute = "class"
-          attrib_value_check = "checked"
+          attribute="class"
+          attrib_value_check="checked"
 
-          dont_show_checkbox = Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
+          dont_show_checkbox=Stamps::Browser::StampsCheckbox.new checkbox_field, verify_field, attribute, attrib_value_check
 
           if dont_show
             dont_show_checkbox.check
@@ -282,8 +282,8 @@ module Stamps
           browser.div(css: "div[title='Today']")
         end
 
-        def today_element
-          StampsElement.new(browser.div(css: "div[title='Today']"))
+        def today_field
+          StampsField.new(browser.div(css: "div[title='Today']"))
         end
 
         def date_field(day)
@@ -291,16 +291,16 @@ module Stamps
         end
 
         def date(day)
-          StampsElement.new(date_field(day)).click
+          StampsField.new(date_field(day)).click
         end
 
         def present?
-          today_element.present?
+          today_field.present?
         end
 
         def now_month_dd
-          picker = StampsElement.new(browser.div(css: "div[id^=datefield][id$=trigger-picker]"))
-          today = StampsElement.new(browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]")
+          picker=StampsField.new(browser.div(css: "div[id^=datefield][id$=trigger-picker]"))
+          today=StampsField.new(browser.span css: "a[title*=Spacebar]>span>span>span[data-ref=btnInnerEl]")
           10.times {
             picker.click unless today.present?
             today.click
@@ -311,8 +311,8 @@ module Stamps
         end
 
         def todays_date
-          picker = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
-          today = StampsElement.new StampsElement.new browser.div css: "div[title=Today]"
+          picker=StampsField.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
+          today=StampsField.new StampsField.new browser.div css: "div[title=Today]"
           10.times {
             picker.click unless today.present?
             today.click
@@ -333,25 +333,25 @@ module Stamps
 
         # default day is today
         def today_plus(day=0)
-          day = day.to_i
-          date_picker_header = StampsElement.new browser.div class: "x-datepicker-header"
-          picker_button = StampsElement.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
-          ship_date_textbox = StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
+          day=day.to_i
+          date_picker_header=StampsField.new browser.div class: "x-datepicker-header"
+          picker_button=StampsField.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
+          ship_date_textbox=StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
 
-          ship_date_str = test_helper.now_plus_month_dd(day)
-          ship_date_mmddyy = test_helper.now_plus_mm_dd_yy(day)
-          date_field = StampsElement.new(browser.div(css: "td[aria-label='#{ship_date_str}']>div"))
+          ship_date_str=test_helper.now_plus_month_dd(day)
+          ship_date_mmddyy=test_helper.now_plus_mm_dd_yy(day)
+          date_field=StampsField.new(browser.div(css: "td[aria-label='#{ship_date_str}']>div"))
 
           10.times{
             picker_button.click unless date_picker_header.present?
             sleep(0.35)
-            if date_field.element.present?
+            if date_field.field.present?
               break
             else
               day += 1
-              ship_date_str = test_helper.now_plus_month_dd day
-              ship_date_mmddyy = test_helper.now_plus_mm_dd_yy day
-              date_field = StampsElement.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
+              ship_date_str=test_helper.now_plus_month_dd day
+              ship_date_mmddyy=test_helper.now_plus_mm_dd_yy day
+              date_field=StampsField.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
             end
           }
 
@@ -359,7 +359,7 @@ module Stamps
             picker_button.click unless date_field.present?
             date_field.click
             sleep(0.35)
-            return ship_date_textbox.text if ship_date_textbox.text == ship_date_mmddyy
+            return ship_date_textbox.text if ship_date_textbox.text==ship_date_mmddyy
           }
         end
       end
@@ -374,11 +374,11 @@ module Stamps
         end
 
         def date_picker
-          (cache[:date_picker].nil? || !cache[:date_picker].present?)?cache[:date_picker] = OrdersDatePicker.new(param):cache[:date_picker]
+          (cache[:date_picker].nil?||!cache[:date_picker].present?)?cache[:date_picker]=OrdersDatePicker.new(param):cache[:date_picker]
         end
 
         def textbox
-          (cache[:textbox].nil? || !cache[:textbox].present?)?cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id=sdc-printpostagewindow-shipdate-innerCt] input[id^=datefield]")):cache[:textbox]
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(css: "[id=sdc-printpostagewindow-shipdate-innerCt] input[id^=datefield]")):cache[:textbox]
         end
 
         private
@@ -402,19 +402,19 @@ module Stamps
         end
 
         def printing_on
-          (cache[:printing_on].nil? || !cache[:printing_on].present?)?cache[:printing_on] = OrdersPrintMediaDropList.new(param):cache[:printing_on]
+          (cache[:printing_on].nil?||!cache[:printing_on].present?)?cache[:printing_on]=OrdersPrintMediaDropList.new(param):cache[:printing_on]
         end
 
         def printer
-          (cache[:printer].nil? || !cache[:printer].present?)?cache[:printer] = OrdersPrinter.new(param):cache[:printer]
+          (cache[:printer].nil?||!cache[:printer].present?)?cache[:printer]=OrdersPrinter.new(param):cache[:printer]
         end
 
         def paper_tray
-          (cache[:paper_tray].nil? || !cache[:paper_tray].present?)?cache[:paper_tray] = OrdersPaperTray.new(param):cache[:paper_tray]
+          (cache[:paper_tray].nil?||!cache[:paper_tray].present?)?cache[:paper_tray]=OrdersPaperTray.new(param):cache[:paper_tray]
         end
 
         def ship_date
-          (cache[:ship_date].nil? || !cache[:ship_date].present?)?cache[:ship_date] = OrdersShipDate.new(param):cache[:ship_date]
+          (cache[:ship_date].nil?||!cache[:ship_date].present?)?cache[:ship_date]=OrdersShipDate.new(param):cache[:ship_date]
         end
 
         private
@@ -440,7 +440,7 @@ module Stamps
         end
 
         def total_cost
-          test_helper.dollar_amount_str(StampsElement.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
+          test_helper.dollar_amount_str(StampsField.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
         end
 
         def print
@@ -457,11 +457,11 @@ module Stamps
         end
 
         def print_sample_button
-          (cache[:print_sample_button].nil? || !cache[:print_sample_button].present?)?cache[:print_sample_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')):cache[:print_sample_button]
+          (cache[:print_sample_button].nil?||!cache[:print_sample_button].present?)?cache[:print_sample_button]=StampsField.new(browser.span(id: 'sdc-printwin-printsamplebtn-btnInnerEl')):cache[:print_sample_button]
         end
 
         def print_button
-          (cache[:print_button].nil? || !cache[:print_button].present?)?cache[:print_button] = StampsElement.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')):cache[:print_button]
+          (cache[:print_button].nil?||!cache[:print_button].present?)?cache[:print_button]=StampsField.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')):cache[:print_button]
         end
 
         private
@@ -472,7 +472,7 @@ module Stamps
 
       module OrdersPrintModalTitle
         def window_title
-          (@window_title.nil? || !@window_title.present?)?@window_title = StampsElement.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')):@window_title
+          (@window_title.nil?||!@window_title.present?)?@window_title=StampsField.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')):@window_title
         end
 
         def label_count
@@ -480,7 +480,7 @@ module Stamps
         end
 
         def x_image
-          (@x_image.nil? || !@x_image.present?)?@x_image = StampsElement.new(browser.img(css: "[id^=printwindow-] [class*=close]")):@x_image
+          (@x_image.nil?||!@x_image.present?)?@x_image=StampsField.new(browser.img(css: "[id^=printwindow-] [class*=close]")):@x_image
         end
 
         def close
@@ -494,11 +494,11 @@ module Stamps
         include OrdersPrintModalFooter
 
         def starting_label
-          (@starting_label.nil? || !@starting_label.present?)?@starting_label = OrdersStartingLabel.new(param):@starting_label
+          (@starting_label.nil?||!@starting_label.present?)?@starting_label=OrdersStartingLabel.new(param):@starting_label
         end
 
         def print_options
-          (@print_options.nil? || !@print_options.present?)?@print_options = OrdersPrintOptions.new(param):@print_options
+          (@print_options.nil?||!@print_options.present?)?@print_options=OrdersPrintOptions.new(param):@print_options
         end
       end
 
@@ -509,7 +509,7 @@ module Stamps
         end
 
         def reprint
-          button = StampsElement.new(browser.span(id: "sdc-printwin-printbtn-btnInnerEl"))
+          button=StampsField.new(browser.span(id: "sdc-printwin-printbtn-btnInnerEl"))
           10.times do
             button.click
             button.click

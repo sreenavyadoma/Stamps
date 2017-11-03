@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class BigCommerceSettings < StoreSettings
         def window_title
-          StampsElement.new browser.div text: "BigCommerce Settings"
+          StampsField.new browser.div text: "BigCommerce Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class BigCommerce < Browser::StampsModal
 
         def window_title
-          StampsElement.new browser.div(text: "Connect your Bigcommerce Store")
+          StampsField.new browser.div(text: "Connect your Bigcommerce Store")
         end
 
         def present?
@@ -26,7 +26,7 @@ module Stamps
         end
 
         def external_link
-          StampsElement.new browser.u(text: "here.")
+          StampsField.new browser.u(text: "here.")
         end
 
       end
