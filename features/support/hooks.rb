@@ -57,7 +57,7 @@ After do |scenario|
   test_config.teardown
   if scenario.failed?
     test_config.logger.error "#{scenario.feature}"
-    test_config.logger.error "#{scenario.feature} USER_CREDENTIALS FAILED! #{scenario.exception.message}"
+    test_config.logger.error "#{scenario.feature} #{scenario.name}:\n#{scenario.exception.message}"
     test_config.logger.error "#{scenario.feature}"
   end
   test_config.logger.step "  --  Test Parameters"

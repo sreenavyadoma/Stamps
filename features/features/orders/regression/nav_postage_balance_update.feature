@@ -13,7 +13,7 @@ Feature: Mail Balance
     Then Pause for 1 second
     Then Save Order Details data
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Paper
+    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
     Then set Orders print modal printer
     Then click print modal print button
     Then Pause for 3 seconds

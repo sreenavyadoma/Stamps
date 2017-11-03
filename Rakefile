@@ -1970,6 +1970,11 @@ Cucumber::Rake::Task.new(:mail_print_label_right_side) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_print_label_both_sides) do |t|
+  t.profile = 'mail_print_label_both_sides'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_print_certified_mail_hidden_postage) do |t|
   t.profile = 'mail_print_certified_mail_hidden_postage'
   t.cucumber_opts = "-p cuke_reports"
@@ -2027,6 +2032,10 @@ end
 
 Cucumber::Rake::Task.new(:mail_forgot_password) do |t|
   t.profile = 'mail_forgot_password'
+  t.cucumber_opts = "-p cuke_reports"
+end
+Cucumber::Rake::Task.new(:mail_credentials) do |t|
+  t.profile = 'mail_credentials'
   t.cucumber_opts = "-p cuke_reports"
 end
 
