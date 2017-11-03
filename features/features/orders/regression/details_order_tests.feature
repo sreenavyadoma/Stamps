@@ -396,8 +396,8 @@ Feature: All details tests for order
     Then set Order Details form Reference Number to random
     Then expect Order Details form Reference Number is correct
 
-    Then set Order Details form Reference Number to Rob
-    Then expect Order Details form Reference Number is Rob
+    Then set Order Details form Reference Number to details_reference_no
+    Then expect Order Details form Reference Number is details_reference_no
 
     Then click Orders Toolbar Print button
     Then in Print modal, uncheck Print Reference # on Shipping Label

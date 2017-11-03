@@ -13,7 +13,7 @@ Feature:  Requires x-number of label sheets
     Then set Order Details form Weight to 1 lb 1 oz
     Then click Orders Toolbar Print button
     Then expect Print modal number of required label sheets is 1
-    Then expect Print modal Modal Title is "You have 1 label(s) ready to print"
+    #Then expect Print modal Modal Title is "You have 1 label(s) ready to print"
     Then in Print modal, click Close button
 
     Then add new order

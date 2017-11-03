@@ -607,13 +607,14 @@ module Stamps
           textbox.present?
         end
 
+        #todo-rob create selection classes containing methods selection_item and selection_cost
         def tracking_selection(selection)
           if selection.downcase.include? "usps"
-            StampsElement.new( browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td"))
+            browser.tds(css: "div[id=sdc-trackingdroplist-dc]>table>tbody>tr>td")
           elsif selection.downcase.include? "signature"
-            StampsElement.new(browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td"))
+            browser.tds(css: "div[id=sdc-trackingdroplist-sc]>table>tbody>tr>td")
           elsif selection.downcase.include? "none"
-            StampsElement.new(browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td"))
+            browser.tds(css: "div[id=sdc-trackingdroplist-none]>table>tbody>tr>td")
           else
             expect("#{selection} is not a valid selection").to eql "Valid selections are USPS Tracking and Signature Required"
           end

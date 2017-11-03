@@ -177,11 +177,11 @@ end
 Then /^[Ee]xpect [Pp]rint [Mm]odal Title is \"You have (.*) label\(s\) ready to print\"$/ do |expectation|
   actual = stamps.orders.orders_print_modal.label_count
   stamps.orders.orders_print_modal.close
-  expect("You have #{actual} label(s) ready to mail").to eql "You have #{expectation} label(s) ready to mail"
+  expect("You have #{actual} label(s) ready to mail").to eql("You have #{expectation} label(s) ready to mail")
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal number of required label sheets is (\d+)$/ do |sheets|
-  expect(stamps.orders.orders_print_modal.label_count).to eql sheets
+  expect(stamps.orders.orders_print_modal.label_count).to eql(sheets.to_i)
 end
 
 Then /^[Pp]rint raises a [Pp]rinting Error/ do

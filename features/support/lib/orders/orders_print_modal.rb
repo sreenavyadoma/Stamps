@@ -472,7 +472,7 @@ module Stamps
 
       module OrdersPrintModalTitle
         def window_title
-          (@window_title.nil? || !@window_title.present?)?@window_title = StampsElement.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')):@window_title
+          (@window_title.nil? || !@window_title.present?)?@window_title = StampsElement.new(browser.div(css: '[id^=printwindow] [class*=x-title-text-default]')):@window_title
         end
 
         def label_count
