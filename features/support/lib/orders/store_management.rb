@@ -211,7 +211,7 @@ module Stamps
         include StoresCache
         def store_count
           begin
-            browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
+            return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
           rescue
             #ignore
           end
@@ -219,7 +219,7 @@ module Stamps
         end
 
         def store_field(str)
-          case(str.to_sym)
+          case(str.downcase.to_sym)
             when :paypal
               (cache[:paypal_store_field].nil?||!cache[:paypal_store_field].present?)?cache[:paypal_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:paypal_store_field]
             when :ebay
@@ -240,7 +240,7 @@ module Stamps
         end
 
         def store_window(str)
-          case(str.to_sym)
+          case(str.downcase.to_sym)
             when :paypal
               (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::StampsModal.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
             when :ebay
@@ -254,7 +254,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             else
-              return nil
+              raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
         end
 
