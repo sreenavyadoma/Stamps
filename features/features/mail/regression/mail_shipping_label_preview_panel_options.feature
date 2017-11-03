@@ -15,7 +15,8 @@ Feature:Shipping Label Preview Panel
     Then set Print form Mail-To to a random address in zone 1 through 4
 
     Then set Print form Ounces to 1
-    Then select Print form service Priority Mail Package
+    #Then select Print form service Priority Mail Package
+    Then select Print form service PM Package
     Then set Shipping Label Print form Hide Mail Value to Checked
     Then set Shipping Label Print form Hide Mail Value to Unchecked
     Then set Shipping Label Print form Print Reference Number to Checked
