@@ -6,14 +6,14 @@ module Stamps
       end
     end
 
-    module StoreMarketPlace
+    module MarketPlaceStoreModals
       include StampsOrdersCache
       def paypal
-        (cache[:paypal].nil?||!cache[:paypal].present?)?cache[:paypal]=PayPal.new(param):cache[:paypal]
+        (cache[:paypal].nil?||!cache[:paypal].present?)?cache[:paypal]=Stamps::Orders::Stores::PayPal.new(param):cache[:paypal]
       end
 
       def rakuten
-        (cache[:rakuten].nil?||!cache[:rakuten].present?)?cache[:rakuten]=RAkuten.new(param):cache[:rakuten]
+        (cache[:rakuten].nil?||!cache[:rakuten].present?)?cache[:rakuten]=Stamps::Orders::Stores::Rakuten.new(param):cache[:rakuten]
       end
     end
 

@@ -154,7 +154,7 @@ module Stamps
         end
 
         def email_address
-          (cache[:email_address].nil?||!cache[:email_address].present?)?cache[:email_address]=StampsField.new(iframe.text_field(css: "[class*=paypalEmailField]")):cache[:email_address]
+          (cache[:email_address].nil?||!cache[:email_address].present?)?cache[:email_address]=StampsTextbox.new(iframe.text_field(css: "[class*=paypalEmailField]")):cache[:email_address]
         end
 
         def verify_email_field

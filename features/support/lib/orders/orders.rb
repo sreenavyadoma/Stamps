@@ -9,7 +9,7 @@ module Stamps
 
     class WebOrders < Browser::StampsModal
       include WebOrdersCache
-      include StoreMarketPlace
+      include MarketPlaceStoreModals
       include StampsOrdersModals
       
       def orders_toolbar

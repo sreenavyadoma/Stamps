@@ -4,8 +4,7 @@ Then /^[Ee]xpect [Mm]arketplace [Mm]odal is [Pp]resent$/ do
 end
 
 Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
-  @market_place.should_not be_nil
-  actual=@market_place.contains expectation
+  actual=stamps.orders.marketplace.contains(expectation)
   expect(actual).to eql expectation
 end
 
@@ -15,10 +14,10 @@ Then /^[Ss]earch [Mm]arketplace for [Ss]tore [Nn]ame (.*)$/ do |str|
   stamps.orders.marketplace.search_by_name.set(test_param[:username]=str)
 end
 
-Then /^[Cc]onnect [Yy]our [Ss]tore [Nn]ame (.*)$/ do |str|
+Then /^[Aa]dd [Mm]arketplace [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  expect(stamps.orders.marketplace.dataview.connect_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
+  expect(stamps.orders.marketplace.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
 end
 
 Then /^validate store name (.*)$/ do |str|
@@ -51,51 +50,51 @@ Then /^[Ee]xpect Paypal is on Marketplace modal$/ do
 end
 
 Then /^Marketplace: Select Big Commerce$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.big_commerce
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.big_commerce
 end
 
 Then /^Marketplace: Select Amazon$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.amazon
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.amazon
 end
 
 Then /^Marketplace: Select Volusion$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.volusion
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.volusion
 end
 
 Then /^Marketplace: Select Rakuten$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.rakuten
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.rakuten
 end
 
 Then /^Marketplace: Select Etsy$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.etsy
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.etsy
 end
 
 Then /^Marketplace: Select Ebay$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.ebay
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.ebay
 end
 
 Then /^Marketplace: Select Shopify$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.shopify
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.shopify
 end
 
 Then /^Marketplace: Select 3dcart$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.three_d_cart
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.three_d_cart
 end
 
 Then /^Marketplace: Select Yahoo$/ do
-  @market_place.should_not be_nil
-  @store=@market_place.yahoo
+  stamps.orders.marketplace.should_not be_nil
+  @store=stamps.orders.marketplace.yahoo
 end
 
 Then /^Marketplace: Close Modal$/ do
-  @market_place.close
+  stamps.orders.marketplace.close
 end
 

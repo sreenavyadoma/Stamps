@@ -258,7 +258,7 @@ module Stamps
           end
         end
 
-        def connect_store(str)
+        def add_store(str)
           20.times do
             return store_window(str).window_title.text if store_window(str).window_title.present?
             store_field(str).click
@@ -295,25 +295,6 @@ module Stamps
 
         def dataview
           (cache[:dataview].nil?||!cache[:dataview].present?)?cache[:dataview]=MarketplaceDataView.new(param):cache[:dataview]
-        end
-
-        # def search_by_name(str)
-        #   search_textbox.set str
-        # end
-
-        def paypal_button
-          StampsField.new browser.div(css: "a[data-store-name='paypal']>div")
-        end
-
-        def paypal
-          button=paypal_button
-          store=PayPal.new(param)
-          10.times do
-            button.click
-            sleep(0.35)
-            return store if store.present?
-          end
-          expect("PayPal Store Modal did not open.").to eql ""
         end
       end
 

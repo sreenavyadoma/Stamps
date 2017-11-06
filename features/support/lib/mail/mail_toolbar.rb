@@ -67,18 +67,14 @@ module Stamps
             print_button.click
             window.wait_until_present(3)
             return window if window.present?
-
             expect(install_stamps_connect.body.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
-
             if please_wait.present?
               logger.message(please_wait.paragraph)
               please_wait.ok
               sleep(0.125)
               print_button.click
             end
-
             expect(insufficient_funds.text).to eql('Insufficient Funds') if insufficient_funds.present?
-
             if confirm_window.present?
               confirm_window.do_not_prompt.check
               confirm_window.continue

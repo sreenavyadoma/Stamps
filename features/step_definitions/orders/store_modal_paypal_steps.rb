@@ -1,5 +1,4 @@
 Then /^[Ss]et PayPal Email Address to (.*)$/ do |email|
-
   stamps.orders.paypal.email_address.set(test_param[:paypal_email]=email)
 end
 
