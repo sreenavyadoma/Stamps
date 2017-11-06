@@ -2,7 +2,7 @@ module Stamps
   module Mail
     class ForgotUsernameModal < Browser::StampsModal
       def window_x_button
-        StampsElement.new(browser.imgs(css: "img[class*='x-tool-close']")[0])
+        StampsField.new(browser.imgs(css: "img[class*='x-tool-close']")[0])
       end
 
       def close_window
@@ -30,13 +30,13 @@ module Stamps
       end
 
       def continue
-        button = StampsElement.new(browser.as css: "a[class*=app-modal-button-primary]").last
+        button=StampsField.new(browser.as css: "a[class*=app-modal-button-primary]").last
         button.click
         sleep(2)
       end
 
       def ok
-        button = StampsElement.new browser.span css: "span[id*=sdc-undefinedwindow-okbtn-btnIconEl]"
+        button=StampsField.new browser.span css: "span[id*=sdc-undefinedwindow-okbtn-btnIconEl]"
         button.click
         sleep(2)
 

@@ -2,37 +2,37 @@ module Stamps
   module Pam
     class PamHeader < Browser::StampsModal
       def search_link
-        StampsElement.new(browser.a(css: 'a[href*=AccountSearch]'))
+        StampsField.new(browser.a(css: 'a[href*=AccountSearch]'))
       end
 
       def customer_profile_link
-        StampsElement.new(browser.a(css: 'a[href*=Profile]'))
+        StampsField.new(browser.a(css: 'a[href*=Profile]'))
       end
 
       def change_meter_limit_link
-        StampsElement.new(browser.a(css: 'a[href*=MeterLimit]'))
+        StampsField.new(browser.a(css: 'a[href*=MeterLimit]'))
       end
 
       def appcapp_overrides_link
-        StampsElement.new(browser.a(css: 'a[href*=AppCapOverride]'))
+        StampsField.new(browser.a(css: 'a[href*=AppCapOverride]'))
       end
     end
 
     class PaymentAdministratorManager < Browser::StampsModal
       def page_title
-        StampsElement.new(browser.h5(text: "Customer Search"))
+        StampsField.new(browser.h5(text: "Customer Search"))
       end
 
       def visit
         case param.test_env.downcase
           when /cc/
-            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/Default.asp"
+            url="http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@qa-clientsite:82/pam/Default.asp"
           when /sc/
-            url = "http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/Default.asp"
+            url="http://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.qasc.stamps.com:82/pam/Default.asp"
           when /stg/
-            url = "https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/Default.asp"
+            url="https://#{data_for(:pam, {})['admin_username']}:#{data_for(:pam, {})['admin_password']}@site.staging.stamps.com:82/pam/Default.asp"
           else
-            url = nil
+            url=nil
         end
         expect(url).not_to be_nil, "URL is nil. Check your ENV['URL'] parameter."
         logger.info "Visit: #{url}"
@@ -51,7 +51,7 @@ module Stamps
       end
 
       def pam_header
-        @pam_header = PamHeader.new(param)
+        @pam_header=PamHeader.new(param)
       end
 
       def customer_search_page

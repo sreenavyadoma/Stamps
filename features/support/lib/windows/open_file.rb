@@ -4,16 +4,16 @@ module Stamps
       attr_reader :browser
 
       def initialize(browser)
-        @browser = browser
+        @browser=browser
       end
 
       def present?
         begin
-          if browser == :firefox
-            exist = RAutomation::Window.new(:title => /File Upload/i).exists?
+          if browser==:firefox
+            exist=RAutomation::Window.new(:title => /File Upload/i).exists?
             return exist
-          elsif browser == :chrome
-            exist = RAutomation::Window.new(:title => /&Open/i).exists?
+          elsif browser==:chrome
+            exist=RAutomation::Window.new(:title => /&Open/i).exists?
             return exist
           else
             expect("Invalid browser selection.  #{@browser_type} is not recognized.  User :firefox, :chrome or :ie").to eql ""
@@ -31,19 +31,19 @@ module Stamps
       end
 
       def file_name(filename)
-        if browser == :firefox
-          print_window = RAutomation::Window.new(:title => /File Upload/i)
+        if browser==:firefox
+          print_window=RAutomation::Window.new(:title => /File Upload/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
-          print_window_mouse = RAutomation::Adapter::Win32::Mouse.new(print_window)
+          print_window_mouse=RAutomation::Adapter::Win32::Mouse.new(print_window)
           print_window_mouse.click
 
           print_window.text_field(class: "Edit", :index => 0).set(filename)
 
           print_window.button(:value => "&Open").click
 
-        elsif browser == :chrome
-          print_window = RAutomation::Window.new(:title => /&Open/i)
+        elsif browser==:chrome
+          print_window=RAutomation::Window.new(:title => /&Open/i)
           wait_until_present
           expect("Print Window is not open").to eql "" unless present?
           print_window.activate

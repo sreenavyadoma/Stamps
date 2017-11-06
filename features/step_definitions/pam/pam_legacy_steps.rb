@@ -5,18 +5,18 @@ Then /^[Oo]n PAM Customer Search page, set 5.2 or lower$/ do
 end
 
 Then /^[Oo]n PAM Customer Search page, Verify user is found$/ do
-  expectation = "Customer was found"
+  expectation="Customer was found"
 
   if @pam_customer_profile_found
-    actual_value = expectation
+    actual_value=expectation
   else
     case @customer_profile
       when Pam::CustomerNotFoundPage
-        actual_value = @customer_profile.text
+        actual_value=@customer_profile.text
       when Pam::MeterInfoNotAvailableForAccount
-        actual_value = @customer_profile.text
+        actual_value=@customer_profile.text
       else
-        actual_value = "Customer was not found!"
+        actual_value="Customer was not found!"
     end
   end
   expect(actual_value).to eql expectation
@@ -24,13 +24,13 @@ end
 
 Then /^[Oo]n PAM Customer Profile page, click Change Meter Limit link$/ do
   expect(@customer_profile).to be_truthy
-  @change_meter_limit = @customer_profile.header.change_meter_limit
+  @change_meter_limit=@customer_profile.header.change_meter_limit
   # change meter limit if new limit is greater than current limit.
 end
 
 Then /^[Oo]n PAM Change Meter Limit page, set New Meter Limit to \$(\d+)$/ do |new_limit|
   expect(@change_meter_limit).to be_truthy
-  @change_limit = new_limit.to_f > @change_meter_limit.current_meter_limit
+  @change_limit=new_limit.to_f > @change_meter_limit.current_meter_limit
   @change_meter_limit.new_meter_limit.set(new_limit) if @change_limit
 end
 
@@ -61,24 +61,24 @@ end
 
 Then /^[Oo]n PAM Customer Profile page, click ACH Credit link$/ do
   expect(@customer_profile).to be_truthy
-  @ach_credit = @customer_profile.header.ach_credit
+  @ach_credit=@customer_profile.header.ach_credit
 end
 
 Then /^[Oo]n PAM ACH Purchase page, set Amount to \$(\d+)\.(\d+)$/ do |dollars, cents|
   expect(@ach_credit).to be_truthy
-  dollar_amount = @ach_credit.dollar_amount_str
+  dollar_amount=@ach_credit.dollar_amount_str
   dollar_amount.set dollars
   dollar_amount.click
   dollar_amount.click
   dollar_amount.click
 
-  cents_amount = @ach_credit.cents_amount
+  cents_amount=@ach_credit.cents_amount
   cents_amount.click
   cents_amount.click
   cents_amount.click
   cents_amount.set cents
 
-  comments = @ach_credit.comments
+  comments=@ach_credit.comments
   comments.click
   comments.click
   comments.click

@@ -1,11 +1,11 @@
 Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
-  @auto_suggest_partial_name = partial_name
-  @auto_suggest = stamps.orders.single_order_details.ship_to.domestic.auto_suggest.set @auto_suggest_partial_name
+  @auto_suggest_partial_name=partial_name
+  @auto_suggest=stamps.orders.single_order_details.ship_to.domestic.auto_suggest.set @auto_suggest_partial_name
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form International Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
-  @auto_suggest_partial_name = partial_name
-  @auto_suggest = stamps.orders.single_order_details.ship_to.international.auto_suggest.set @auto_suggest_partial_name
+  @auto_suggest_partial_name=partial_name
+  @auto_suggest=stamps.orders.single_order_details.ship_to.international.auto_suggest.set @auto_suggest_partial_name
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, select Ship-To auto-suggest item (\d+)$/ do |item_number|
@@ -15,10 +15,10 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
   step "set Order Details form Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
-  @found_item = false
-  selection = "#{firstname} #{lastname}, #{company}"
+  @found_item=false
+  selection="#{firstname} #{lastname}, #{company}"
   stamps.orders.single_order_details.ship_to.domestic.auto_suggest.auto_suggest_box.name_fields.each do |field|
-    @found_item = true  if field.text.eql? selection
+    @found_item=true  if field.text.eql? selection
   end
   expect(@found_item).to be(true)
 end
@@ -41,13 +41,13 @@ Then /^[Ee]xpect Domestic Address is (.*)$/ do |value|
   step "show order details form ship-to fields"
   5.times{
   begin
-    actual = stamps.orders.single_order_details.ship_to.domestic.textarea.text
-    actual_stripped = actual.gsub(/\n/,", ")
-    break if actual_stripped == value
+    actual=stamps.orders.single_order_details.ship_to.domestic.textarea.text
+    actual_stripped=actual.gsub(/\n/,", ")
+    break if actual_stripped==value
     sleep(2)
   end}
   actual =  stamps.orders.single_order_details.ship_to.domestic.textarea.text
-  actual_stripped = actual.gsub(/\n/,", ")
+  actual_stripped=actual.gsub(/\n/,", ")
   expect(actual_stripped).to eql value
 end
 

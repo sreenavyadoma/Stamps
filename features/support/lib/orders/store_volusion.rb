@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class VolusionSettings < StoreSettings
         def window_title
-          StampsElement.new browser.div text: "Volusion Settings"
+          StampsField.new browser.div text: "Volusion Settings"
         end
 
         def present?
@@ -21,19 +21,19 @@ module Stamps
         end
 
         def api_url url
-          textbox = StampsTextbox.new browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
+          textbox=StampsTextbox.new browser.text_field(css: "div>input[id^=textfield-][id$=-inputEl][name^=textfield-][name$=-inputEl][class*=required]")
           textbox.set url
         end
 
         def connect_button
-          StampsElement.new browser.span(text: "Connect")
+          StampsField.new browser.span(text: "Connect")
         end
 
         def connect
-          button = connect_button
-          settings = VolusionSettings.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=connect_button
+          settings=VolusionSettings.new(param)
+          server_error=Orders::Stores::ServerError.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.click
@@ -43,7 +43,7 @@ module Stamps
                 importing_order.ok
               end
               if server_error.present?
-                error_str = server_error.message
+                error_str=server_error.message
                 logger.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_msg}").to eql ""
@@ -61,10 +61,10 @@ module Stamps
         end
 
         def reconnect
-          button = connect_button
-          manage_stores = ManageStores.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=connect_button
+          manage_stores=ManageStores.new(param)
+          server_error=Orders::Stores::ServerError.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.click
@@ -74,7 +74,7 @@ module Stamps
                 importing_order.ok
               end
               if server_error.present?
-                error_str = server_error.message
+                error_str=server_error.message
                 logger.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
@@ -93,7 +93,7 @@ module Stamps
       class ModifyVolusionStore < Volusion
 
         def window_title
-          StampsElement.new(browser.div text: "Modify your Volusion Store Connection")
+          StampsField.new(browser.div text: "Modify your Volusion Store Connection")
         end
 
         def present?

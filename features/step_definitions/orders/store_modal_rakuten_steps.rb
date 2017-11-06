@@ -31,5 +31,5 @@ end
 Then /^Rakuten Store: Connect$/ do
   #test_config.logger.step "Rakuten Store: Connect"
   raise "Rakuten Store modal is not visible or present.  Check your test workflow" if @store.nil?
-  @store_settings = @store.connect
+  @store_settings=@store.connect
 end

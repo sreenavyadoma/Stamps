@@ -28,11 +28,11 @@ Before do  |scenario|
   test_config.logger.message "-"
   test_config.logger.message "-"
   # MySql
-  if modal_param.web_app == :mail || modal_param.web_app == :orders
-    if test_param[:username].nil? || test_param[:username].downcase == 'default' || test_param[:username].downcase == 'mysql'
-      credentials = user_credentials.fetch(scenario.tags[0].name)
-      test_param[:username] = credentials[:username]
-      test_param[:password] = credentials[:password]
+  if modal_param.web_app==:mail||modal_param.web_app==:orders
+    if test_param[:username].nil?||test_param[:username].downcase=='default'||test_param[:username].downcase=='mysql'
+      credentials=user_credentials.fetch(scenario.tags[0].name)
+      test_param[:username]=credentials[:username]
+      test_param[:password]=credentials[:password]
     end
   end
   expect(test_param[:username]).to be_truthy
@@ -52,7 +52,7 @@ After do |scenario|
   test_config.logger.message "-"
   test_config.logger.message "-"
 
-  user_credentials.close if (modal_param.web_app == :mail || modal_param.web_app == :orders) && !((!ENV['USR'].nil? && ENV['USR'].downcase != 'default') && (!ENV['PW'].nil?))
+  user_credentials.close if (modal_param.web_app==:mail||modal_param.web_app==:orders) && !((!ENV['USR'].nil? && ENV['USR'].downcase!='default') && (!ENV['PW'].nil?))
 
   test_config.teardown
   if scenario.failed?
@@ -66,10 +66,7 @@ After do |scenario|
   end
 end
 
-
-
-
-# result = db_connection.query("select * from user_credentials where test_env = 'stg' and in_use=1 and in_use_date = #{Time.now.to_date}")
+# result=db_connection.query("select * from user_credentials where test_env='stg' and in_use=1 and in_use_date=#{Time.now.to_date}")
 #
 # result.each_with_index do |row, index|
 #   if row['in_use_date']==Time.now.to_date
@@ -77,5 +74,3 @@ end
 #     break
 #   end
 # end
-
-

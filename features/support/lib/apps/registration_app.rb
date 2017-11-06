@@ -19,15 +19,15 @@ module Stamps
     end
 
     def registration_parameter_file(*args)
-      directory = "#{data_for(:registration, {})['development_dir']}"
-      directory = "#{data_for(:registration, {})['jenkins_dir']}" if test_helper.to_bool(ENV['JENKINS'])
+      directory="#{data_for(:registration, {})['development_dir']}"
+      directory="#{data_for(:registration, {})['jenkins_dir']}" if test_helper.to_bool(ENV['JENKINS'])
       FileUtils.mkdir_p(directory)
       return "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml" if test_helper.to_bool(ENV['JENKINS'])
       "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_parameter_file']:"#{args[0]}"}.yml"
     end
 
     def registration_data_store_file(*args)
-      directory = "#{data_for(:registration, {})['jenkins_dir']}"
+      directory="#{data_for(:registration, {})['jenkins_dir']}"
       FileUtils.mkdir_p(directory)
       "#{directory}\\#{ENV['URL']}_#{(args.length==0||args[0].nil?)?data_for(:registration, {})['default_data_store_file']:"#{args[0]}"}.txt"
     end

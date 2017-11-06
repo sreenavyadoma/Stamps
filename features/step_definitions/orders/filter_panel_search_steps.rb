@@ -25,16 +25,16 @@ Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |search_s
       break if stamps.orders.filter_panel.search_orders.search_results.count >= count.to_i
     end
     expect(stamps.orders.filter_panel.search_orders.search_results).to be_present, "Couldn't find #{search_str} in Orders Grid"
-  end unless search_str.nil? || search_str.size == 0
+  end unless search_str.nil?||search_str.size==0
 
 end
 
 Then /^[Ss]et Filter Panel Search textbox to (.*)$/ do |str|
-  test_param[:filter_panel_search_str] = str
+  test_param[:filter_panel_search_str]=str
   stamps.orders.filter_panel.search_orders.textbox.set(test_param[:filter_panel_search_str])
 end
 
-Then /^[Cc]lick Filter Panel Search button$/ do
+Then /^[Cc]lick Filter Panel Search [Bb]utton$/ do
   stamps.orders.filter_panel.search_orders.search_button.click
 end
 

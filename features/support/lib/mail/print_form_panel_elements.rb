@@ -3,15 +3,15 @@ module Stamps
     module PrintFormPanel
 
       class UpgradePlan < Browser::StampsModal
-        attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_element
+        attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_field
 
         def initialize(param)
           super
-          @window_title = StampsElement.new(browser.div(text: "Upgrade Plan"))
-          @close_btn = StampsElement.new(browser.img(text: "img[class*=close]"))
-          @upgrade_now_btn = StampsElement.new(browser.span(text: "Upgrade Now"))
-          @not_yet_btn = StampsElement.new(browser.span(text: "Not Yet"))
-          @paragraph_element = StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]"))
+          @window_title=StampsField.new(browser.div(text: "Upgrade Plan"))
+          @close_btn=StampsField.new(browser.img(text: "img[class*=close]"))
+          @upgrade_now_btn=StampsField.new(browser.span(text: "Upgrade Now"))
+          @not_yet_btn=StampsField.new(browser.span(text: "Not Yet"))
+          @paragraph_field=StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]"))
         end
 
         def present?
@@ -23,7 +23,7 @@ module Stamps
         end
 
         def paragraph
-          paragraph_element.text
+          paragraph_field.text
         end
 
         def not_yet
@@ -40,27 +40,27 @@ module Stamps
         def print_media(str)
           case str
             when /Certified Mail Label - SDC-3610/
-              print_media = :certified_mails
+              print_media=:certified_mails
             when /Certified Mail Label - SDC-3710/
-              print_media = :certified_mails
+              print_media=:certified_mails
             when /Certified Mail Label - SDC-3910/
-              print_media = :certified_mails_3910_3930
+              print_media=:certified_mails_3910_3930
             when /Certified Mail Label - SDC-3930/
-              print_media = :certified_mails_3910_3930
+              print_media=:certified_mails_3910_3930
             when /Certified Mail Label - SDC-3810/
-              print_media = :certified_mails_3810
+              print_media=:certified_mails_3810
             when /Certified Mail Label - SDC-3830/
-              print_media = :certified_mails_3830
+              print_media=:certified_mails_3830
             when /Shipping Label/
-              print_media = :labels
+              print_media=:labels
             when /Envelope/
-              print_media = :envelopes
+              print_media=:envelopes
             when /Roll/
-              print_media = :rolls
+              print_media=:rolls
             when /Manage Printing Options/
-              print_media = :manage_printing_options
+              print_media=:manage_printing_options
             when /Stamps/
-              print_media = :stamps
+              print_media=:stamps
             else
               #ignore
           end
@@ -124,7 +124,7 @@ module Stamps
             when /Shipping Label - Paper/
               return 'Shipping Label - 8 '
             when /Shipping Label - SDC-1200/
-              return 'Shipping Label - SDC-1200'
+              return 'Shipping Label - Stamps.com SDC-1200'
             when /Shipping Label - 5x8/
               return 'Shipping Label - 5 '
             when /Envelope - 10/
@@ -144,17 +144,17 @@ module Stamps
             when /Envelope - 12/
               return 'Envelope - #12'
             when /Certified Mail Label - SDC-3610/
-              return 'Certified Mail Label - SDC-3610'
+              return 'Certified Mail Label - Stamps.com SDC-3610'
             when /Certified Mail Label - SDC-3710/
-              return 'Certified Mail Label - SDC-3710'
+              return 'Certified Mail Label - Stamps.com SDC-3710'
             when /Certified Mail Label - SDC-3910/
-              return 'Certified Mail Label - SDC-3910'
+              return 'Certified Mail Label - Stamps.com SDC-3910'
             when /Certified Mail Label - SDC-3930/
-              return 'Certified Mail Label - SDC-3930'
+              return 'Certified Mail Label - Stamps.com SDC-3930'
             when /Certified Mail Label - SDC-3810/
-              return 'Certified Mail #11 Envelope - SDC-3810'
+              return 'Certified Mail #11 Envelope - Stamps.com SDC-3810'
             when /Certified Mail Label - SDC-3830/
-              return 'Certified Mail #11 Envelope - SDC-3830'
+              return 'Certified Mail #11 Envelope - Stamps.com SDC-3830'
             when /Roll 4x6/
               return 'Roll - 4" x 6" Shipping Label'
             when /Roll 418x614/
@@ -164,12 +164,12 @@ module Stamps
           end
         end
 
-        def selection_element(str)
+        def selection_field(str)
           case str
             when /Shipping Label - Paper/
               return 'Shipping Label - 8 '
             when /Shipping Label - SDC-1200/
-              return 'Shipping Label - SDC-1200'
+              return 'Shipping Label - Stamps.com SDC-1200'
             when /Shipping Label - 5x8/
               return 'Shipping Label - 5 '
             when /Envelope - 10/
@@ -189,15 +189,15 @@ module Stamps
             when /Envelope - 12/
               return 'Envelope - #12'
             when /Certified Mail Label - SDC-3610/
-              return 'Certified Mail Label - SDC-3610'
+              return 'Certified Mail Label - Stamps.com SDC-3610'
             when /Certified Mail Label - SDC-3710/
-              return 'Certified Mail Label - SDC-3710'
+              return 'Certified Mail Label - Stamps.com SDC-3710'
             when /Certified Mail Label - SDC-3910/
-              return 'Certified Mail Label - SDC-3910'
+              return 'Certified Mail Label - Stamps.com SDC-3910'
             when /Certified Mail Label - SDC-3930/
-              return 'Certified Mail Label - SDC-3930'
+              return 'Certified Mail Label - Stamps.com SDC-3930'
             when /Certified Mail Label - SDC-3810/
-              return 'Certified Mail #11 Envelope - SDC-3810'
+              return 'Certified Mail #11 Envelope - Stamps.com SDC-3810'
             when /Roll 4x6/
               return 'Roll - 4" x 6" Shipping Label'
             when /Roll 418x614/
@@ -217,9 +217,9 @@ module Stamps
 
         def initialize(param)
           super
-          @search_field = StampsTextbox.new(browser.text_field(css: "[placeholder='Search']"))
-          @save_button = StampsElement.new(browser.span(text: "Save"))
-          @close_button = StampsElement.new(browser.img(class: "x-tool-img x-tool-close"))
+          @search_field=StampsTextbox.new(browser.text_field(css: "[placeholder='Search']"))
+          @save_button=StampsField.new(browser.span(text: "Save"))
+          @close_button=StampsField.new(browser.img(class: "x-tool-img x-tool-close"))
         end
 
         def present?
@@ -342,14 +342,14 @@ module Stamps
           search_field.set(mpo_search_str(str))
           30.times do
             sleep(0.05)
-            break if browser.divs(css: "[class=x-grid-row-checker]").size == 1
+            break if browser.divs(css: "[class=x-grid-row-checker]").size==1
           end
-          search_result_count = browser.divs(css: "[class=x-grid-row-checker]").size
+          search_result_count=browser.divs(css: "[class=x-grid-row-checker]").size
           expect(search_result_count).to eql(1), "Search Results yield more than 1. Got #{search_result_count}"
 
-          clickable_element = browser.div(css: "[class=x-grid-row-checker]")
-          verify = browser.div(css: "[class=x-grid-row-checker]").parent.parent.parent.parent.parent
-          @search_result = Stamps::Browser::StampsCheckbox.new(clickable_element, verify, "class", "selected")
+          clickable_field=browser.div(css: "[class=x-grid-row-checker]")
+          verify=browser.div(css: "[class=x-grid-row-checker]").parent.parent.parent.parent.parent
+          @search_result=Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "selected")
         end
 
         def save
@@ -369,27 +369,27 @@ module Stamps
         include PrintFormBlurOut
         include PrintMediaHelper
         def textbox
-          @textbox = StampsTextbox.new(browser.text_field(css: "[name=PrintMedia]")) if @textbox.nil? || !@textbox.present?
+          @textbox=StampsTextbox.new(browser.text_field(css: "[name=PrintMedia]")) if @textbox.nil?||!@textbox.present?
           @textbox
         end
 
         def dropdown
-          @dropdown = StampsElement.new(browser.div(css: "[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil? || !@dropdown.present?
+          @dropdown=StampsField.new(browser.div(css: "[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil?||!@dropdown.present?
           @dropdown
         end
 
         def upgrade_plan
-          @upgrade_plan = UpgradePlan.new(param) if @upgrade_plan.nil? || !@upgrade_plan.present?
+          @upgrade_plan=UpgradePlan.new(param) if @upgrade_plan.nil?||!@upgrade_plan.present?
           @upgrade_plan
         end
 
         def manage_printing_options_lov
-          @manage_printing_options_lov = StampsElement.new(browser.li(text: 'Manage Printing Options...')) if @manage_printing_options_lov.nil? || !@manage_printing_options_lov.present?
+          @manage_printing_options_lov=StampsField.new(browser.li(text: 'Manage Printing Options...')) if @manage_printing_options_lov.nil?||!@manage_printing_options_lov.present?
           @manage_printing_options_lov
         end
 
         def manage_printing_options
-          @manage_printing_options = ManagePrintOptionsModal.new(param) if @manage_printing_options.nil? || !@manage_printing_options.present?
+          @manage_printing_options=ManagePrintOptionsModal.new(param) if @manage_printing_options.nil?||!@manage_printing_options.present?
           @manage_printing_options
         end
 
@@ -418,7 +418,7 @@ module Stamps
         def show_all_print_media
           dropdown.click unless manage_printing_options_lov.present?
           5.times do
-            break if browser.lis(css: "li[class*=x-boundlist-item]").size == 20
+            break if browser.lis(css: "li[class*=x-boundlist-item]").size==20
           end
           manage_printing_options_modal.show_all if browser.lis(css: "li[class*=x-boundlist-item]").size < 20
         end
@@ -426,9 +426,9 @@ module Stamps
         def print_on_selection(str)
           dropdown.wait_until_present(4)
           dropdown.click
-          param.print_media = print_media(str)
-          selected_sub_str = selected_sub_str(str)
-          mpo_search_str = mpo_search_str(str)
+          param.print_media=print_media(str)
+          selected_sub_str=selected_sub_str(str)
+          mpo_search_str=mpo_search_str(str)
 
           10.times do
             begin
@@ -437,10 +437,7 @@ module Stamps
                 return param.print_media
               end
 
-              # validate str
-              #Shipping Label - SDC-1200
-              return nil unless data_for(:mail_print_media, {})[str]
-              selection = StampsElement.new(browser.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
+              selection=StampsField.new(browser.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
               dropdown.click unless manage_printing_options_lov.present?
               if selection.present?
                 selection.scroll_into_view
@@ -460,7 +457,7 @@ module Stamps
         end
 
         def tooltip(selection)
-          selection_field = StampsElement.new browser.div(text: selection)
+          selection_field=StampsField.new browser.div(text: selection)
           10.times do
             dropdown.click unless selection_field.present?
             return selection_field.attribute_value "data-qtip" if selection_field.present?
@@ -474,11 +471,11 @@ module Stamps
 
         def initialize(param)
           super
-          @dom_textarea = MailDomTextArea.new(param)
-          @dom_dd = StampsTextbox.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
-          @int_dd = StampsTextbox.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
-          @dom_textbox = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
-          @int_textbox = StampsTextbox.new(browser.inputs(name: "ShipCountryCode")[1])
+          @dom_textarea=MailDomTextArea.new(param)
+          @dom_dd=StampsTextbox.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker"))
+          @int_dd=StampsTextbox.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]"))
+          @dom_textbox=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl"))
+          @int_textbox=StampsTextbox.new(browser.inputs(name: "ShipCountryCode")[1])
         end
 
         def enabled?
@@ -491,7 +488,7 @@ module Stamps
             return false if int_dd.present?
             sleep(0.1)
           end
-          expect(dom_dd.present? || int_dd).to be_present, "Unable to determine if Mail-To Country dropdown is for domestic or international."
+          expect(dom_dd.present?||int_dd).to be_present, "Unable to determine if Mail-To Country dropdown is for domestic or international."
         end
 
         def dropdown
@@ -505,7 +502,7 @@ module Stamps
         def select(str)
           begin
             dropdown.click
-            selection = StampsElement.new(browser.lis(text: str)[(domestic?)? 0 : 1])
+            selection=StampsField.new(browser.lis(text: str)[(domestic?)? 0 : 1])
             30.times do
               begin
                 dropdown.click unless selection.present?
@@ -513,12 +510,12 @@ module Stamps
                 selection.scroll_into_view
                 selection.click
                 blur_out
-                break if textbox.text == str
+                break if textbox.text==str
               rescue
                 #ignore
               end
             end
-          end unless textbox.text == str
+          end unless textbox.text==str
 
           expect(textbox.text).to eql(str)
           blur_out
@@ -531,14 +528,14 @@ module Stamps
 
         def initialize(param)
           super
-          @name = StampsTextbox.new(browser.text_field(name: "ShipName"))
-          @company = StampsTextbox.new(browser.text_field(name: "ShipCompany"))
-          @address_1 = StampsTextbox.new(browser.text_field(name: "ShipStreet1"))
-          @address_2 = StampsTextbox.new(browser.text_field(name: "ShipStreet2"))
-          @city = StampsTextbox.new(browser.text_field(name: "ShipCity"))
-          @province = StampsTextbox.new(browser.text_field(name: "ShipState"))
-          @postal_code = StampsTextbox.new(browser.text_field(name: "ShipPostalCode"))
-          @phone = StampsTextbox.new(browser.text_field(css: "div[id=shiptoview-international-targetEl]>div>div>div>div>div>div>div>input[name=ShipPhone]"))
+          @name=StampsTextbox.new(browser.text_field(name: "ShipName"))
+          @company=StampsTextbox.new(browser.text_field(name: "ShipCompany"))
+          @address_1=StampsTextbox.new(browser.text_field(name: "ShipStreet1"))
+          @address_2=StampsTextbox.new(browser.text_field(name: "ShipStreet2"))
+          @city=StampsTextbox.new(browser.text_field(name: "ShipCity"))
+          @province=StampsTextbox.new(browser.text_field(name: "ShipState"))
+          @postal_code=StampsTextbox.new(browser.text_field(name: "ShipPostalCode"))
+          @phone=StampsTextbox.new(browser.text_field(css: "div[id=shiptoview-international-targetEl]>div>div>div>div>div>div>div>input[name=ShipPhone]"))
         end
       end
 
@@ -554,7 +551,7 @@ module Stamps
 
         def initialize(param)
           super
-          @textarea = MailDomTextArea.new(param)
+          @textarea=MailDomTextArea.new(param)
         end
 
         def set(address)
@@ -580,18 +577,18 @@ module Stamps
 
         def initialize(param)
           super
-          @auto_weigh = StampsCheckbox.new browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
-          @weigh_btn = StampsElement.new browser.span(text: "Weigh")
+          @auto_weigh=StampsCheckbox.new browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"), browser.table(id: "sdc-mainpanel-autoweightcheckbox"), "class", "checked"
+          @weigh_btn=StampsField.new browser.span(text: "Weigh")
 
-          textbox = browser.text_field(name: "WeightLbs")
-          inc_btn = browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-up]")
-          dec_btn = browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")
-          @mail_pounds = StampsNumberField.new(textbox, inc_btn, dec_btn)
+          textbox=browser.text_field(name: "WeightLbs")
+          inc_btn=browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-up]")
+          dec_btn=browser.div(css: "div[class*=pounds-numberfield]>div>div>div>div[class*=spinner-down]")
+          @mail_pounds=StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          textbox = browser.text_field(name: "WeightOz")
-          inc_btn = browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-up]")
-          dec_btn = browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")
-          @mail_ounces = StampsNumberField.new(textbox, inc_btn, dec_btn)
+          textbox=browser.text_field(name: "WeightOz")
+          inc_btn=browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-up]")
+          dec_btn=browser.div(css: "div[class*=ounces-numberfield]>div>div>div>div[class*=spinner-down]")
+          @mail_ounces=StampsNumberField.new(textbox, inc_btn, dec_btn)
         end
 
         def present?
@@ -604,20 +601,20 @@ module Stamps
 
         def initialize(param)
           super
-          textbox = browser.text_field(name: "Length")
-          inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
-          @length = StampsNumberField.new(textbox, inc_btn, dec_btn)
+          textbox=browser.text_field(name: "Length")
+          inc_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=up]")
+          dec_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
+          @length=StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          textbox = browser.text_field(name: "Width")
-          inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=down]")
-          @width = StampsNumberField.new(textbox, inc_btn, dec_btn)
+          textbox=browser.text_field(name: "Width")
+          inc_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=up]")
+          dec_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=down]")
+          @width=StampsNumberField.new(textbox, inc_btn, dec_btn)
 
-          textbox = browser.text_field(name: "Height")
-          inc_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=up]")
-          dec_btn = browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=down]")
-          @height = StampsNumberField.new(textbox, inc_btn, dec_btn)
+          textbox=browser.text_field(name: "Height")
+          inc_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=up]")
+          dec_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=down]")
+          @height=StampsNumberField.new(textbox, inc_btn, dec_btn)
         end
       end
 
@@ -627,26 +624,26 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
-          @dropdown = StampsElement.new(browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker"))
-          @manage_shipping_address = MailManageShippingAddresses.new(param)
+          @textbox=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
+          @dropdown=StampsField.new(browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker"))
+          @manage_shipping_address=MailManageShippingAddresses.new(param)
         end
 
         def present?
           textbox.present?
         end
 
-        def selection_element(str)
+        def selection_field(str)
           if str.downcase.include?('default')
-            selection = StampsElement.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0])
+            selection=StampsField.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0])
           else
             # verify str is in Ship-From drop-down list of values
-            lovs = []
-            browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |element, index| lovs[index] = element.text }
+            lovs=[]
+            browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |field, index| lovs[index]=field.text }
             expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
-            selection = StampsElement.new(browser.li(text: /#{str}/))
+            selection=StampsField.new(browser.li(text: /#{str}/))
           end
-          StampsElement.new(selection)
+          StampsField.new(selection)
         end
 
         def select(str)
@@ -655,7 +652,7 @@ module Stamps
           if str.downcase.include? "manage shipping"
             10.times do
               begin
-                selection = selection_element(str)
+                selection=selection_field(str)
                 selection.click
                 return manage_shipping_address if manage_shipping_address.present?
                 dropdown.click unless selection.present?
@@ -665,7 +662,7 @@ module Stamps
             end
           else
             10.times do
-              selection = selection_element(str)
+              selection=selection_field(str)
               selection.click
               break if textbox.text.length > 0
               dropdown.click unless selection.present?
@@ -679,9 +676,9 @@ module Stamps
         attr_accessor :browser, :service_str, :service_field, :cost_field
 
         def service(str)
-          expect(data_for(:mail_services, {})[@service_str = str]).to_not be_nil, "#{str} is not a valid service selection. Check your test:\n#{data_for(:mail_services, {}).keys}"
-          @service_field = StampsElement.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=text]"))
-          @cost_field = StampsElement.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=amount]"))
+          @service_str=str
+          @service_field=StampsField.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=text]"))
+          @cost_field=StampsField.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=amount]"))
           self
         end
 
@@ -704,33 +701,33 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
-          @dropdown = StampsElement.new browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")
-          @service_selection = MailServiceSelection.new(param)
+          @textbox=StampsTextbox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
+          @dropdown=StampsField.new browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")
+          @service_selection=MailServiceSelection.new(param)
         end
 
         def has_rates?
           case(param.print_media)
             when :certified_mails
-              default_service = 'FCMI Package'
+              default_service='FCMI Package'
             when :labels
-              default_service = 'PM Flat Rate Envelope'
-              default_int_service = 'PMI Flat Rate Envelope'
+              default_service='PM Flat Rate Envelope'
+              default_int_service='PMI Flat Rate Envelope'
             when :envelopes
-              default_service = 'FCM Letter'
+              default_service='FCM Letter'
             when :rolls
-              default_service = 'PME Flat Rate Envelope'
-              default_int_service = 'PMI Flat Rate Envelope'
+              default_service='PME Flat Rate Envelope'
+              default_int_service='PMI Flat Rate Envelope'
             when :stamps
-              default_service = 'FCM Letter'
+              default_service='FCM Letter'
             else
               #do nothing
           end
-          has_rates = false
+          has_rates=false
           5.times do
-            if service_selection.service(default_service).service_field.present? || service_selection.service(default_int_service).service_field.present?
-              has_rates = service_selection.service(default_service).selection_is_numeric? || service_selection.service(default_int_service).selection_is_numeric?
-              dropdown.click if service_selection.service(default_service).service_field.present? || service_selection.service(default_int_service).service_field.present?
+            if service_selection.service(default_service).service_field.present?||service_selection.service(default_int_service).service_field.present?
+              has_rates=service_selection.service(default_service).selection_is_numeric?||service_selection.service(default_int_service).selection_is_numeric?
+              dropdown.click if service_selection.service(default_service).service_field.present?||service_selection.service(default_int_service).service_field.present?
               break
             else
               dropdown.click
@@ -742,7 +739,7 @@ module Stamps
         def select(str)
           logger.info "Select service #{str}"
           service_selection.service(str)
-          service_field = service_selection.service_field
+          service_field=service_selection.service_field
           15.times do
             break if (textbox.text).include?(str)
             dropdown.click unless service_field.present?
@@ -763,9 +760,9 @@ module Stamps
 
 
           if service_field.present?
-            specify_element = browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl')
-            specify_verify_element = browser.div(id: 'sdc-mainpanel-specifypostageradio')
-            specify_postage_amount = StampsRadio.new(specify_element, specify_verify_element, "class", "checked")
+            specify_field=browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl')
+            specify_verify_field=browser.div(id: 'sdc-mainpanel-specifypostageradio')
+            specify_postage_amount=StampsRadio.new(specify_field, specify_verify_field, "class", "checked")
             if !specify_postage_amount.selected?
               expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems. Got rate #{service_selection.cost_str}"
               dropdown.click
@@ -777,12 +774,12 @@ module Stamps
         end
 
         def cost(selection)
-          cost_label = StampsElement.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
+          cost_label=StampsField.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
           20.times do
             begin
               dropdown.click unless cost_label.present?
               if cost_label.present?
-                service_cost = test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
+                service_cost=test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
                 logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
                 return service_cost
               end
@@ -794,13 +791,13 @@ module Stamps
         end
 
         def tooltip(selection)
-          button = dropdown
-          selection_label = StampsElement.new browser.tr css: "tr[data-qtip*='#{selection}']"
+          button=dropdown
+          selection_label=StampsField.new browser.tr css: "tr[data-qtip*='#{selection}']"
           10.times {
             begin
               button.click unless selection_label.present?
               if selection_label.present?
-                tooltip = selection_label.attribute_value "data-qtip"
+                tooltip=selection_label.attribute_value "data-qtip"
                 logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
                 return tooltip
               end
@@ -812,7 +809,7 @@ module Stamps
         end
 
         def price
-          StampsElement.new(browser.label(id: "sdc-mainpanel-servicepricelabel"))
+          StampsField.new(browser.label(id: "sdc-mainpanel-servicepricelabel"))
         end
 
       end
@@ -823,20 +820,20 @@ module Stamps
         end
 
         def set(value)
-          text_field = textbox
+          text_field=textbox
           text_field.set(value)
           logger.info "Pounds set to #{text_field.text}"
         end
 
         def increment value
-          button = StampsElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
+          button=StampsField.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
           value.to_i.times do
             button.click
           end
         end
 
         def decrement value
-          button = StampsElement.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
+          button=StampsField.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
           value.to_i.times do
             button.click
           end
@@ -847,8 +844,8 @@ module Stamps
         attr_reader :checkbox, :textbox
         def initialize(param)
           super
-          @checkbox = StampsCheckbox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
-          @textbox = StampsTextbox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
+          @checkbox=StampsCheckbox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
+          @textbox=StampsTextbox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
         end
 
         def set(value)
@@ -864,20 +861,20 @@ module Stamps
         end
 
         def dropdown
-          StampsElement.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[7])
+          StampsField.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[7])
         end
 
         def select(selection)
           logger.info "Select Tracking #{selection}"
-          box = textbox
-          button = dropdown
-          selection_label = StampsElement.new browser.div text: selection
+          box=textbox
+          button=dropdown
+          selection_label=StampsField.new browser.div text: selection
           10.times {
             begin
               button.click #unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.click
-              selected_tracking = box.text
+              selected_tracking=box.text
               logger.info "Selected Tracking #{selected_tracking} - #{(selected_tracking.include? selection)?"done": "tracking not selected"}"
               break if selected_tracking.include? selection
             rescue
@@ -889,7 +886,7 @@ module Stamps
         end
 
         def price
-          StampsElement.new browser.label id: "sdc-mainpanel-trackingpricelabel"
+          StampsField.new browser.label id: "sdc-mainpanel-trackingpricelabel"
         end
       end
 
@@ -911,7 +908,7 @@ module Stamps
         end
 
         def price
-          StampsElement.new browser.label id: "sdc-mainpanel-insurancepricelabel"
+          StampsField.new browser.label id: "sdc-mainpanel-insurancepricelabel"
         end
       end
 
@@ -921,23 +918,23 @@ module Stamps
         end
 
         def dropdown
-          buttons = browser.divs css: "div[class*=x-form-arrow-trigger]"
-          button = StampsElement.new(buttons.last)
+          buttons=browser.divs css: "div[class*=x-form-arrow-trigger]"
+          button=StampsField.new(buttons.last)
         end
 
         def select(selection)
           logger.info "Select Cost Code #{selection}"
 
-          box = textbox
-          button = dropdown
-          selection_label = StampsElement.new browser.div text: selection
+          box=textbox
+          button=dropdown
+          selection_label=StampsField.new browser.div text: selection
           sleep(0.35)
           10.times {
             begin
               button.click #unless selection_label.present?
               selection_label.scroll_into_view
               selection_label.click
-              selected_cost_code = box.text
+              selected_cost_code=box.text
               logger.info "Selected Cost Code #{selected_cost_code} - #{(selected_cost_code.include? selection)?"done": "cost code not selected"}"
               break if selected_cost_code.include? selection
             rescue
@@ -956,20 +953,20 @@ module Stamps
         end
 
         def set(value)
-          text_field = textbox
+          text_field=textbox
           text_field.set(value)
           logger.info "Quantity set to #{text_field.text}"
         end
 
         def increment value
-          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-up]")[7])
+          button=StampsField.new(browser.divs(css: "div[class*=x-form-spinner-up]")[7])
           value.to_i.times do
             button.click
           end
         end
 
         def decrement value
-          button = StampsElement.new(browser.divs(css: "div[class*=x-form-spinner-down]")[7])
+          button=StampsField.new(browser.divs(css: "div[class*=x-form-spinner-down]")[7])
           value.to_i.times do
             button.click
           end
@@ -981,8 +978,8 @@ module Stamps
 
         def initialize(param)
           super
-          @link = StampsElement.new(browser.span(css: "label[class*=sdc-mainpanel-shiptolinkbtn]>span>span>span[id$=btnInnerEl]"))
-          @contacts_modal = MailSearchContactsModal.new(param)
+          @link=StampsField.new(browser.span(css: "label[class*=sdc-mainpanel-shiptolinkbtn]>span>span>span[id$=btnInnerEl]"))
+          @contacts_modal=MailSearchContactsModal.new(param)
         end
 
         def click
@@ -1001,16 +998,16 @@ module Stamps
 
         def initialize(param)
           super
-          @mail_to_country = MailToCountry.new(param)
-          @mail_to_link = PrintFormMailToLink.new(param)
+          @mail_to_country=MailToCountry.new(param)
+          @mail_to_link=PrintFormMailToLink.new(param)
         end
 
         def address
           blur_out
           if mail_to_country.domestic?
-            @address = MailToDom.new(param)
+            @address=MailToDom.new(param)
           else
-            @address = MailToInt.new(param)
+            @address=MailToInt.new(param)
           end
         end
 
@@ -1027,8 +1024,8 @@ module Stamps
 
         def initialize(param)
           super
-          @button = StampsElement.new(browser.span(id: "sdc-mainpanel-editcustombtn-btnInnerEl"))
-          @customs_form = Stamps::Common::Customs::CustomsInformation.new(param)
+          @button=StampsField.new(browser.span(id: "sdc-mainpanel-editcustombtn-btnInnerEl"))
+          @customs_form=Stamps::Common::Customs::CustomsInformation.new(param)
         end
 
         def edit_form

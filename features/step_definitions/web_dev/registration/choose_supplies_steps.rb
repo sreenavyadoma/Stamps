@@ -21,6 +21,6 @@ Then /^[Ee]xpect [Cc]hoose [Ss]upplies [Pp]age Place order button exists$/ do
   expect(registration.choose_supplies.place_order_btn).to be_present, "Place Order button DOES NOT exists on choose supplies page"
 end
 
-Then /^[Cc]lick Choose Supplies page Place Order button$/ do
+Then /^[Cc]lick Choose Supplies page Place Order [Bb]utton$/ do
   registration.choose_supplies.place_order
 end

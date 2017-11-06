@@ -8,7 +8,7 @@ Then /^Amazon Store: Set Amazon MWS Auth Token to (.*)$/ do |auth_token|
   @store.auth_token.set auth_token
 end
 
-Then /^Amazon Store: Click Verify Seller ID button$/ do
+Then /^Amazon Store: Click Verify Seller ID [Bb]utton$/ do
   #test_config.logger.step "Amazon Store: Click Verify Seller ID button"
   @store.verify_seller_id
 end
@@ -35,10 +35,10 @@ end
 
 Then /^Amazon Store: Connect for the first time expecting Amazon Settings modal$/ do
   #test_config.logger.step "Amazon Store: Connect for the first time expecting Amazon Settings modal"
-  @store_settings = @store.connect_expecting_store_settings
-  test_result = "Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
+  @store_settings=@store.connect_expecting_store_settings
+  test_result="Amazon Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
   test_config.logger.step test_result
-  if @store_settings.nil? || !(@store_settings.present?)
+  if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end
 end

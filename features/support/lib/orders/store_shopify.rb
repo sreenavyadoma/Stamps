@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class ShopifySettings < StoreSettings
         def window_title
-          StampsElement.new browser.div text: "Shopify Settings"
+          StampsField.new browser.div text: "Shopify Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Shopify < Browser::StampsModal
 
         def window_title
-          StampsElement.new(browser.div text: "Connect your Shopify Store")
+          StampsField.new(browser.div text: "Connect your Shopify Store")
         end
 
         def present?
@@ -30,14 +30,14 @@ module Stamps
         end
 
         def connect_button
-          StampsElement.new browser.span(text: "Connect")
+          StampsField.new browser.span(text: "Connect")
         end
 
         def connect
-          button = StampsElement.new browser.span(text: "Connect")
-          settings = ShopifySettings.new(param)
-          shopify = ShopifyPage.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          settings=ShopifySettings.new(param)
+          shopify=ShopifyPage.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -138,9 +138,9 @@ module Stamps
         end
 
         def reconnect
-          button = StampsElement.new browser.span(text: "Connect")
-          manage_stores = ManageStores.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          manage_stores=ManageStores.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -238,7 +238,7 @@ module Stamps
       class ModifyShopifyStore < Shopify
 
         def window_title
-          StampsElement.new(browser.div text: "Modify your Shopify Store Connection")
+          StampsField.new(browser.div text: "Modify your Shopify Store Connection")
         end
 
         def present?
@@ -264,8 +264,8 @@ module Stamps
         end
 
         def sign_in
-          button = StampsElement.new browser.text_field(css: "input[value='Log in']")
-          settings_page = ShopifySettings.new(param)
+          button=StampsField.new browser.text_field(css: "input[value='Log in']")
+          settings_page=ShopifySettings.new(param)
 
           10.times do
             button.click

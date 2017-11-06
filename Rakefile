@@ -2885,8 +2885,8 @@ Cucumber::Rake::Task.new(:mail_print_on_list_of_values) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_print_postage_elements) do |t|
-  t.profile = 'mail_print_postage_elements'
+Cucumber::Rake::Task.new(:mail_print_postage_fields) do |t|
+  t.profile = 'mail_print_postage_fields'
   t.cucumber_opts = "-p cuke_reports"
 end
 

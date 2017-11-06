@@ -1,6 +1,6 @@
 Then /^[Oo]n Add Funds modal, purchase 10$/ do
   #test_config.logger.step "on Add Funds modal, purchase 10"
-  test_param[:old_balance] = stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_10.select
 end
 
@@ -20,47 +20,47 @@ Then click print modal print button
 =end
 
 Then /^[Oo]n Add Funds modal, purchase 25$/ do
-  test_param[:old_balance] = stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_25.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase 50$/ do
-  test_param[:old_balance] = stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_50.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase 100$/ do
-  test_param[:old_balance] = stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_100.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase Other Amount (\d+)$/ do |amount|
-  test_param[:old_balance] = stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.amount
   stamps.navigation_bar.balance.buy_more.buy_other amount
 end
 
-Then /^[Oo]n Add Funds modal, click Purchase button$/ do
+Then /^[Oo]n Add Funds modal, click Purchase [Bb]utton$/ do
   stamps.navigation_bar.balance.buy_more.purchase
 end
 
-Then /^Buy Mail Confirm Transction: Click Confirm button$/ do
-  @purchase_approved = stamps.navigation_bar.balance.buy_more.purchase.confirm
+Then /^Buy Mail Confirm Transction: Click Confirm [Bb]utton$/ do
+  @purchase_approved=stamps.navigation_bar.balance.buy_more.purchase.confirm
 end
 
 Then /^Buy Mail Confirm Purchase: Expect text area contains, Please confirm your \$(.*) postage purchase.$/ do |amount|
-  expectation = "Please confirm that you wish to add $#{amount} to your account balance. Once you click the Confirm button, the amount will be added to your account and cannot be refunded."
-  actual_value = stamps.navigation_bar.balance.buy_more.purchase.text
+  expectation="Please confirm that you wish to add $#{amount} to your account balance. Once you click the Confirm button, the amount will be added to your account and cannot be refunded."
+  actual_value=stamps.navigation_bar.balance.buy_more.purchase.text
   expect(actual_value).to eql expectation
 end
 
 Then /^Buy Mail Purchase Approved: Expect text area contains, Your fund request for \$(.*) has been approved.$/ do |amount|
   expect(@purchase_approved).to be_truthy
-  expectation = "Your fund request for $#{amount} has been approved."
-  actual_value = @purchase_approved.text
+  expectation="Your fund request for $#{amount} has been approved."
+  actual_value=@purchase_approved.text
   expect(actual_value).to eql expectation
 end
 
-Then /^Buy Mail Purchase Approved: Click OK button$/ do
+Then /^Buy Mail Purchase Approved: Click OK [Bb]utton$/ do
   expect(@purchase_approved).to be_truthy
   @purchase_approved.ok
 end
@@ -68,12 +68,12 @@ end
 Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amount|
   10.times do
     sleep(0.35)
-    new_balance = stamps.navigation_bar.balance.amount
-    actual_purchased_amount = new_balance.to_f - test_param[:old_balance].to_f
+    new_balance=stamps.navigation_bar.balance.amount
+    actual_purchased_amount=new_balance.to_f - test_param[:old_balance].to_f
     break if actual_purchased_amount ==  purchase_amount.to_f
   end
-  new_balance = stamps.navigation_bar.balance.amount
-  actual_purchased_amount = new_balance.to_f - test_param[:old_balance].to_f
+  new_balance=stamps.navigation_bar.balance.amount
+  actual_purchased_amount=new_balance.to_f - test_param[:old_balance].to_f
   expect(actual_purchased_amount.round(2)).to eql purchase_amount.to_f.round(2)
 end
 

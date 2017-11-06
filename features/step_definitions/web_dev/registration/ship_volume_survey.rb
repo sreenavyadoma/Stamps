@@ -1,4 +1,4 @@
-Then /^[Ii]n Ship Volume Survey page, click Submit button$/ do
+Then /^[Ii]n Ship Volume Survey page, click Submit [Bb]utton$/ do
   registration.ship_volume_survey.submit
 end
 

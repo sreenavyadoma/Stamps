@@ -7,10 +7,10 @@ module Stamps
 
         def initialize(param)
           super
-          @privacy_policy_link = StampsElement.new(browser.a(css: "[data-pgtitle='Privacy Policy']"))
-          @copyright_link = StampsElement.new(browser.a(css: "[data-pgtitle='Copyright']"))
-          @trust_elogo = StampsElement.new(browser.img(css: "img[src$='logo_truste.png']"))
-          @live_chat_button = StampsElement.new(browser.button(value: "Live Chat"))
+          @privacy_policy_link=StampsField.new(browser.a(css: "[data-pgtitle='Privacy Policy']"))
+          @copyright_link=StampsField.new(browser.a(css: "[data-pgtitle='Copyright']"))
+          @trust_elogo=StampsField.new(browser.img(css: "img[src$='logo_truste.png']"))
+          @live_chat_button=StampsField.new(browser.button(value: "Live Chat"))
         end
 
         def present?

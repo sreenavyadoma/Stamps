@@ -3,15 +3,15 @@ module Stamps
 
     class AppCapOverridesConfirmation < Browser::StampsModal
       def title
-        StampsElement.new browser.td(text: 'AppCap Overrides')
+        StampsField.new browser.td(text: 'AppCap Overrides')
       end
 
       def ok_button
-        StampsElement.new browser.a(css: 'a[href*=Profile]')
+        StampsField.new browser.a(css: 'a[href*=Profile]')
       end
 
       def text
-        StampsElement.new(browser.td(css: "tbody:nth-child(1)>tr:nth-child(2)>td:nth-child(2)")).text
+        StampsField.new(browser.td(css: "tbody:nth-child(1)>tr:nth-child(2)>td:nth-child(2)")).text
       end
 
       def present?
@@ -125,7 +125,7 @@ module Stamps
 
     class AppCapOverridesPage < Browser::StampsModal
       def username
-        StampsElement.new(browser.a(css: "tbody>tr:nth-child(2)>td:nth-child(2)>a"))
+        StampsField.new(browser.a(css: "tbody>tr:nth-child(2)>td:nth-child(2)>a"))
       end
 
       def internet_postage_printing
@@ -161,7 +161,7 @@ module Stamps
       end
 
       def submit_button
-        StampsElement.new browser.input(name: 'submit')
+        StampsField.new browser.input(name: 'submit')
       end
 
       def present?

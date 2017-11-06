@@ -6,11 +6,11 @@ module Stamps
 
         def initialize(param)
           super
-          @title = StampsElement.new(browser.div(text: 'Welcome!'))
-          @msg_container = StampsElement.new(browser.div(id: 'sdc-window-tutorial-innerCt'))
-          @next_button = StampsElement.new(browser.span(text: 'Next'))
-          @close_button = StampsElement.new(browser.img(css: 'img[class$=x-tool-close]'))
-          @add_manual_order = AddManualOrderModal.new(param)
+          @title=StampsField.new(browser.div(text: 'Welcome!'))
+          @msg_container=StampsField.new(browser.div(id: 'sdc-window-tutorial-innerCt'))
+          @next_button=StampsField.new(browser.span(text: 'Next'))
+          @close_button=StampsField.new(browser.img(css: 'img[class$=x-tool-close]'))
+          @add_manual_order=AddManualOrderModal.new(param)
         end
 
         def present?
@@ -45,12 +45,12 @@ module Stamps
           super
           browser.text_field(css: "input[class*=x-form-checkbox]")
           browser.a(text: "Download Software for Windows")
-          @username_textbox = StampsTextbox.new(browser.text_field(css: "[placeholder=USERNAME]"))
-          @password_textbox = StampsTextbox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
-          @sign_in_btn = StampsElement.new(browser.span(text: "Sign In"))
+          @username_textbox=StampsTextbox.new(browser.text_field(css: "[placeholder=USERNAME]"))
+          @password_textbox=StampsTextbox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
+          @sign_in_btn=StampsField.new(browser.span(text: "Sign In"))
 
-          @title = StampsElement.new(browser.div(text: 'Sign In'))
-          @signed_in_user = StampsElement.new(browser.span(id: "userNameText"))
+          @title=StampsField.new(browser.div(text: 'Sign In'))
+          @signed_in_user=StampsField.new(browser.span(id: "userNameText"))
         end
 
         def remember_my_username
@@ -58,7 +58,7 @@ module Stamps
         end
 
         def validation_message
-          StampsElement.new(browser.span id: 'InvalidUsernameMsg').text
+          StampsField.new(browser.span id: 'InvalidUsernameMsg').text
         end
 
         def blur_out
@@ -100,7 +100,7 @@ module Stamps
         end
 
         def first_time_sign_in(usr, pw)
-          market_place = Orders::Stores::MarketPlace.new(param)
+          market_place=Orders::Stores::Marketplace.new(param)
           username.wait_until_present(6)
 
           10.times do
@@ -130,15 +130,15 @@ module Stamps
         def load_sign_in_page
           case param.test_env
             when /cc/
-              url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+              url="http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
             when /sc/
-              url = "http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+              url="http://printext.qasc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
             when /stg/
-              url = "https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+              url="https://print.testing.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
             when /rating/
-              url = "http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+              url="http://printext.qacc.stamps.com/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
             else
-              url = "http://#{param.test_env}/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
+              url="http://#{param.test_env}/#{(param.web_app==:orders)?'orders':'webpostage/default2.aspx'}"
           end
 
           logger.message "-"
@@ -168,11 +168,11 @@ module Stamps
 
         def orders_sign_in(usr, pw)
           begin
-            loading_orders = StampsElement.new(browser.div(text: "Loading orders..."))
-            invalid_username = StampsElement.new(browser.span(id: "InvalidUsernameMsg"))
-            new_welcome = NewWelcomeModal.new(param)
-            security_questions = SecurityQuestionsSuccess.new(param)
-            server_error = Stamps::Orders::ServerError.new(param)
+            loading_orders=StampsField.new(browser.div(text: "Loading orders..."))
+            invalid_username=StampsField.new(browser.span(id: "InvalidUsernameMsg"))
+            new_welcome=NewWelcomeModal.new(param)
+            security_questions=SecurityQuestionsSuccess.new(param)
+            server_error=Stamps::Orders::ServerError.new(param)
 
             expect(browser.url).to include "Orders"
 
@@ -210,13 +210,13 @@ module Stamps
                 new_welcome.wait_until_present(2)
                 if new_welcome.present?
                   logger.message new_welcome.message
-                  add_manual_order = new_welcome.next
+                  add_manual_order=new_welcome.next
                   expect(add_manual_order).to be_present
-                  import_from_csv = add_manual_order.next
+                  import_from_csv=add_manual_order.next
                   expect(import_from_csv).to be_present
-                  import_from_stores = import_from_csv.next
+                  import_from_stores=import_from_csv.next
                   expect(import_from_stores).to be_present
-                  learn_more = import_from_stores.next
+                  learn_more=import_from_stores.next
                   expect(learn_more).to be_present
                   learn_more.close
                 end
@@ -245,7 +245,7 @@ module Stamps
         end
 
         def orders_sign_in_sec_questions(usr, pw)
-          security_questions = SecurityQuestions.new(param)
+          security_questions=SecurityQuestions.new(param)
 
           expect(browser.url).to include "Orders"
 

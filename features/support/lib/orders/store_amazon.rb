@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class AmazonSettings < StoreSettings
         def window_title
-          StampsElement.new browser.div(text: "Amazon Settings")
+          StampsField.new browser.div(text: "Amazon Settings")
         end
 
         def present?
@@ -22,13 +22,13 @@ module Stamps
           end
 
           def dropdown
-            StampsElement.new(browser.divs(css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2])
+            StampsField.new(browser.divs(css: "div[id^=combo-][id$=-triggerWrap][class$=x-form-trigger-wrap-default]>div[id^=combo-][id$=-trigger-picker]")[2])
           end
 
           def select(selection)
-            dd = dropdown
-            text_field = textbox
-            selection_field = StampsElement.new(browser.li text: selection)
+            dd=dropdown
+            text_field=textbox
+            selection_field=StampsField.new(browser.li text: selection)
 
             10.times do
               dd.click unless selection_field.present?
@@ -56,13 +56,13 @@ module Stamps
           end
 
           def dropdown
-            StampsElement.new((browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
+            StampsField.new((browser.divs(css: "div[id^=combo-][id$=-trigger-picker]")).last)
           end
 
           def select(selection)
-            dd = dropdown
-            text_field = textbox
-            selection_field = StampsElement.new(browser.li text: selection)
+            dd=dropdown
+            text_field=textbox
+            selection_field=StampsField.new(browser.li text: selection)
 
             10.times do
               dd.click unless selection_field.present?
@@ -86,7 +86,7 @@ module Stamps
         end
 
         def window_title
-          StampsElement.new(browser.div text: "Connect your Amazon Store")
+          StampsField.new(browser.div text: "Connect your Amazon Store")
         end
 
         def present?
@@ -94,7 +94,7 @@ module Stamps
         end
 
         def close
-          button = StampsElement.new browser.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
+          button=StampsField.new browser.img(css: "div[id^=connectamazonwindow-][id$=header-targetEl]>div>img")
           5.times do
             button.click
             break unless present?
@@ -110,7 +110,7 @@ module Stamps
         end
 
         def verify_seller_id
-          button = StampsElement.new(browser.span text: "Verify Seller ID")
+          button=StampsField.new(browser.span text: "Verify Seller ID")
           3.times do
             button.click
           end
@@ -125,9 +125,9 @@ module Stamps
         end
 
         def connect
-          button = StampsElement.new browser.span(text: "Connect")
-          server_error = Orders::Stores::ServerError.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          server_error=Orders::Stores::ServerError.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -137,7 +137,7 @@ module Stamps
                 importing_order.ok
               end
               if server_error.present?
-                error_str = server_error.message
+                error_str=server_error.message
                 logger.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
@@ -151,16 +151,16 @@ module Stamps
         end
 
         def connect_expecting_store_settings
-          button = (StampsElement.new(browser.span text: "Connect"))
-          settings = AmazonSettings.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=(StampsField.new(browser.span text: "Connect"))
+          settings=AmazonSettings.new(param)
+          server_error=Orders::Stores::ServerError.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           20.times do
             button.click
             5.times do
               if server_error.present?
-                error_str = server_error.message
+                error_str=server_error.message
                 logger.info error_str
                 server_error.ok
                 expect("Server Error: \n#{error_str}").to eql ""
@@ -185,7 +185,7 @@ module Stamps
       class ModifyAmazonStore < Amazon
 
         def window_title
-          StampsElement.new(browser.div text: "Modify your Amazon Store Connection")
+          StampsField.new(browser.div text: "Modify your Amazon Store Connection")
         end
 
         def present?

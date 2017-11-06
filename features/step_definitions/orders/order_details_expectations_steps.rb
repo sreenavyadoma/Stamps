@@ -13,21 +13,21 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Associated Item (\d+) Qty is (?:correct|(\d+))$/ do |item_number, expectation|
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expectation = (expectation.nil?)?test_param[:details_associated_items][item_number][:item_qty] : expectation
+  expectation=(expectation.nil?)?test_param[:details_associated_items][item_number][:item_qty] : expectation
   expect(stamps.orders.single_order_details.items_ordered.item(item_number.to_i).item_qty.textbox.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Associated Item (\d+) ID is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expectation = (expectation.nil?)?test_param[:details_associated_items][item_number][:item_id] : expectation
+  expectation=(expectation.nil?)?test_param[:details_associated_items][item_number][:item_id] : expectation
   expect(stamps.orders.single_order_details.items_ordered.item(item_number.to_i).item_id.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Associated Item (\d+) Description is (?:correct|(.*))$/ do |item_number, expectation|
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expectation = (expectation.nil?)?test_param[:details_associated_items][item_number][:item_description] : expectation
+  expectation=(expectation.nil?)?test_param[:details_associated_items][item_number][:item_description] : expectation
   expect(stamps.orders.single_order_details.items_ordered.item(item_number.to_i).item_description.text).to eql expectation
 end
 
@@ -76,67 +76,67 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm service Placeholder is (.*)$/ do |e
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-To Country is (?:correct|(.*))$/ do |expectation|
-  expectation = (expectation.nil?)?test_param[:country] : expectation
+  expectation=(expectation.nil?)?test_param[:country] : expectation
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.ship_to.country.textbox.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Name is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:full_name] if expectation.nil?
+  expectation=test_param[:full_name] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.ship_to.international.name.text).to eql(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Company is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:company] if expectation.nil?
+  expectation=test_param[:company] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.ship_to.international.company.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Address 1 is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:street_address_1] if expectation.nil?
+  expectation=test_param[:street_address_1] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.ship_to.international.address_1.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Address 2 is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:street_address_2] if expectation.nil?
+  expectation=test_param[:street_address_2] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.ship_to.international.address_2.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To City is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:city] if expectation.nil?
+  expectation=test_param[:city] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.ship_to.international.city.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Province is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:state] if expectation.nil?
+  expectation=test_param[:state] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   expect(stamps.orders.single_order_details.ship_to.international.province.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Postal Code is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:zip] if expectation.nil?
+  expectation=test_param[:zip] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   expect(stamps.orders.single_order_details.ship_to.international.postal_code.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Phone is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:phone] if expectation.nil?
+  expectation=test_param[:phone] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   expect(stamps.orders.single_order_details.ship_to.international.phone.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Email is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:email] if expectation.nil?
+  expectation=test_param[:email] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.ship_to.international.email.text).to eql expectation
@@ -271,21 +271,21 @@ Then /^[Ee]xpect Exact Address Not Found module to appear/ do
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Reference Number is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:reference_no] if expectation.nil?
+  expectation=test_param[:reference_no] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.reference_no.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Insure-For is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = test_param[:insure_for] if expectation.nil?
+  expectation=test_param[:insure_for] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.insure_for.textbox.text.to_f.round(2)).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Insure-For Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = test_param[:insure_for_cost] if expectation.nil?
+  expectation=test_param[:insure_for_cost] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.insure_for.cost).to eql expectation.to_f.round(2)
@@ -328,8 +328,8 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Service Cost inline price for "([a-
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm service Tooltip for "(.*)" to include "(.*)"$/ do |service, tooltip_content|
-  tooltips = tooltip_content.split "||"
-  actual_tooltip = stamps.orders.single_order_details.service.tooltip service
+  tooltips=tooltip_content.split "||"
+  actual_tooltip=stamps.orders.single_order_details.service.tooltip service
   tooltips.each do |tooltip|
     expect(actual_tooltip).to include tooltip
   end
@@ -340,7 +340,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Service Cost saved value is the sam
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Service Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = test_param[:service_cost] if expectation.nil?
+  expectation=test_param[:service_cost] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.service.cost.to_f).to eql expectation.to_f.round(2)
@@ -353,7 +353,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Service Cost is greater than \$([0-
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Tracking Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = test_param[:tracking_cost] if expectation.nil?
+  expectation=test_param[:tracking_cost] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.tracking.cost).to eql expectation.to_f.round(2)
@@ -366,14 +366,14 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Tracking Cost is greater than \$([0
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Pounds? (?:is (\d+)|and saved Pounds? are the same)$/ do |expectation|
-  expectation = test_param[:pounds] if expectation.nil?
+  expectation=test_param[:pounds] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.weight.lb.textbox.text.to_f).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ounces? (?:is (\d+)|and saved Ounces? are the same)$/ do |expectation|
-  expectation = test_param[:ounces] if expectation.nil?
+  expectation=test_param[:ounces] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.weight.oz.textbox.text.to_f).to eql expectation.to_f.round(2)
@@ -402,14 +402,14 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Height is (\d+)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Tracking is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:tracking] if expectation.nil?
+  expectation=test_param[:tracking] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.tracking.textbox.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Total Ship Cost is (?:correct|(\d+.\d*))$/ do |expectation|
-  expectation = test_param[:total_ship_cost] if expectation.nil?
+  expectation=test_param[:total_ship_cost] if expectation.nil?
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   expect(stamps.orders.single_order_details.footer.total_ship_cost).to eql(expectation.to_f.round(2))
@@ -418,88 +418,88 @@ end
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-From Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.single_ship_from.textbox.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.single_ship_from.textbox.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-From drop-down be enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.single_ship_from.dropdown.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.single_ship_from.dropdown.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-To Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   step "show order details form ship-to fields"
-  expect(stamps.orders.single_order_details.ship_to.domestic.textarea.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.ship_to.domestic.textarea.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-To drop-down is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.ship_to.country.dropdown.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.ship_to.country.dropdown.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-To text area is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   step "show order details form ship-to fields"
-  expect(stamps.orders.single_order_details.ship_to.domestic.textarea.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.ship_to.domestic.textarea.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Phone Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
   step "show order details form ship-to fields"
-  expect(stamps.orders.single_order_details.ship_to.domestic.phone.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.ship_to.domestic.phone.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Email Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.ship_to.domestic.email.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.ship_to.domestic.email.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Pounds Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
-  expect(stamps.orders.single_order_details.weight.lb.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.weight.lb.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ounces Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
-  expect(stamps.orders.single_order_details.weight.oz.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.weight.oz.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm service Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
-  expect(stamps.orders.single_order_details.service.textbox.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.service.textbox.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm service drop-down is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
-  expect(stamps.orders.single_order_details.service.dropdown.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.service.dropdown.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Insure-For Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
-  expect(stamps.orders.single_order_details.insure_for.textbox.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.insure_for.textbox.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Insure-For Textbox is disabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
-  expect(stamps.orders.single_order_details.insure_for.textbox.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.insure_for.textbox.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails Form Tracking Textbox is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.tracking.textbox.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.tracking.textbox.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Tracking drop-down is enabled$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.tracking.dropdown.element.visible?).to be(true)
+  expect(stamps.orders.single_order_details.tracking.dropdown.field.visible?).to be(true)
 end
 
 

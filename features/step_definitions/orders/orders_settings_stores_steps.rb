@@ -1,32 +1,27 @@
 
-Then /^[Oo]pen Orders Stores Settings$/ do
-  #test_config.logger.step "Manage Stores: Open Modal"
-  stamps.orders.orders_toolbar.orders_settings.stores_tab
+Then /^[Cc]lick Order Settings Stores Add [Bb]utton$/ do
+  expect(stamps.orders.orders_settings.stores_tab.add).to eql('Add your Store or Marketplace')
+  step "expect Marketplace modal is present"
 end
 
-Then /^[Cc]lick Order Settings Stores Add button$/ do
-  #test_config.logger.step "Manage Stores: Add"
-  stamps.orders.orders_toolbar.orders_settings.stores_tab.add
+Then /^[Cc]lick Order Settings Stores Edit [Bb]utton$/ do
+  pending #stamps.orders.orders_settings.stores.edit
 end
 
-Then /^[Cc]lick Order Settings Stores Edit button$/ do
-  #stamps.orders.orders_toolbar.orders_settings.stores.edit
+Then /^[Cc]lick Order Settings Stores Reconnect [Bb]utton$/ do
+  pending #stamps.orders.orders_settings.stores.reconnect
 end
 
-Then /^[Cc]lick Order Settings Stores Reconnect button$/ do
-  #stamps.orders.orders_toolbar.orders_settings.stores.reconnect
-end
-
-Then /^[Cc]lick Order Settings Stores Delete button$/ do
-  #stamps.orders.orders_toolbar.orders_settings.stores.delete
+Then /^[Cc]lick Order Settings Stores Delete [Bb]utton$/ do
+  pending #stamps.orders.orders_settings.stores.delete
 end
 
 Then /^[Ss]elect Order Settings Store name (.*)$/ do |store|
-  #stamps.orders.orders_toolbar.orders_settings.stores.select store
+  pending #stamps.orders.orders_settings.stores.select store
 end
 
 Then /^[Ee]xpect Order Settings Store name (.*) to be present$/ do |store|
-  expect(stamps.orders.orders_toolbar.orders_settings.stores.store_list(store)).to be_present
+  expect(stamps.orders.orders_settings.stores.store_list(store)).to be_present
 end
 
 
@@ -39,19 +34,19 @@ end
 Then /^Manage Stores: Delete Row (\d+)$/ do |row|
   #test_config.logger.step "Manage Stores: Delete Row #{row}"
   step "Manage Stores: Open Modal"
-  grid = @manage_stores.stores_grid
-  size = grid.size
+  grid=@manage_stores.stores_grid
+  size=grid.size
   #test_config.logger.step "Grid Count before delete is #{size}"
-  delete_modal = @manage_stores.stores_grid.delete_row row
+  delete_modal=@manage_stores.stores_grid.delete_row row
   delete_modal.delete
   expect(delete_modal.present?).not_to be(true)
 end
 
 Then /^Manage Stores: Select Store (.*)$/ do |store_name|
-  test_param[:store_name] = (store_name.downcase.include? 'random')?test_param[:store_name]:store_name
+  test_param[:store_name]=(store_name.downcase.include? 'random')?test_param[:store_name]:store_name
   #test_config.logger.step "Manage Stores: Select Store #{test_data[:store_name]}"
   raise "Unble to select store name: #{test_param[:store_name]}.  Either it's nil or does not exist in the modal.  Check your test." if test_param[:store_name].nil?
-  raise "Store name can't be nil or an empty String" if test_param[:store_name].nil? || test_param[:store_name].size == 0
+  raise "Store name can't be nil or an empty String" if test_param[:store_name].nil?||test_param[:store_name].size==0
   @manage_stores.stores_grid.select(test_param[:store_name])
 end
 
@@ -67,15 +62,15 @@ end
 
 Then /^Manage Stores: Reconnect$/ do
   #test_config.logger.step "Manage Stores: Reconnect"
-  @store = @manage_stores.reconnect
+  @store=@manage_stores.reconnect
 end
 
 Then /^Manage Stores: Edit$/ do
   #test_config.logger.step "Manage Stores: Edit"
-  @store_settings = @manage_stores.edit
-  test_result = "Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
+  @store_settings=@manage_stores.edit
+  test_result="Store Settings modal is #{(@store_settings.present?)?"present":"not present"} - Test #{(@store_settings.present?)?"passed":"failed"}"
   test_config.logger.step test_result
-  if @store_settings.nil? || !(@store_settings.present?)
+  if @store_settings.nil?||!(@store_settings.present?)
     raise test_result
   end
 end

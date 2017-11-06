@@ -1,16 +1,16 @@
 module Stamps
   module Registration
     class SecurityQuestions1 < Browser::StampsModal
-      attr_reader :element
+      attr_reader :field
 
-      def initialize(element)
+      def initialize(field)
         super
       end
 
       def select(str)
         15.times do
-          return element.txt if element.txt.include?(str)
-          element
+          return field.txt if field.txt.include?(str)
+          field
         end
       end
     end

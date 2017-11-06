@@ -102,8 +102,8 @@ module Stamps
         end
 
         def continue
-          button = StampsElement.new browser.text_field(name: "btnContinue")
-          account_page = MyAccountPage.new(param)
+          button=StampsField.new browser.text_field(name: "btnContinue")
+          account_page=MyAccountPage.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -153,15 +153,15 @@ module Stamps
         end
 
         def place_order
-          button = StampsElement.new browser.button(id: "btnSubmitOrder")
-          order_num_field = StampsElement.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
+          button=StampsField.new browser.button(id: "btnSubmitOrder")
+          order_num_field=StampsField.new browser.div(css: "main#content_area>table>tbody>tr>td>div")
           10.times do
             button.click
             sleep(2)
             if order_num_field.present?
-              order_number_str = order_num_field.text
+              order_number_str=order_num_field.text
               logger.info order_number_str
-              order_number = /(\d+)/.match(order_number_str)
+              order_number=/(\d+)/.match(order_number_str)
               logger.info "ORDER NUMBER:  #{order_number}"
               return order_number
             end
@@ -179,14 +179,14 @@ module Stamps
         end
 
         def count
-          count = StampsElement.new(browser.span(css: "span[data-v-observable=cart-count]")).text
+          count=StampsField.new(browser.span(css: "span[data-v-observable=cart-count]")).text
           logger.info "Volusion Cart Count: #{count}"
           count.to_i
         end
 
         def proceed_to_checkout
-          button = StampsElement.new browser.text_field(css: "input[name='btn_checkout_guest']")
-          checkout = VolusionCheckOut.new(param)
+          button=StampsField.new browser.text_field(css: "input[name='btn_checkout_guest']")
+          checkout=VolusionCheckOut.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -206,22 +206,22 @@ module Stamps
         end
 
         def qty number
-          @qty_to_add = number.to_i
-          field = qty_field
+          @qty_to_add=number.to_i
+          field=qty_field
           field.set @qty_to_add
         end
 
         def add_to_bag
-          qty_textbox = self.qty_field
-          shopping_cart = VolusionCart.new(param)
-          cart_count_b4_add = shopping_cart.count
-          button = StampsElement.new browser.text_field(css: "input[alt='Add to cart']")
+          qty_textbox=self.qty_field
+          shopping_cart=VolusionCart.new(param)
+          cart_count_b4_add=shopping_cart.count
+          button=StampsField.new browser.text_field(css: "input[alt='Add to cart']")
           2.times do
             button.click
-            break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
+            break if (cart_count_b4_add + @qty_to_add)==shopping_cart.count
             sleep(2)
-            break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
-            break if (cart_count_b4_add + @qty_to_add) == shopping_cart.count
+            break if (cart_count_b4_add + @qty_to_add)==shopping_cart.count
+            break if (cart_count_b4_add + @qty_to_add)==shopping_cart.count
           end
         end
       end
@@ -232,8 +232,8 @@ module Stamps
         end
 
         def sample_product_one
-          link = StampsElement.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
-          product = VolusionProduct.new(param)
+          link=StampsField.new browser.a(css: "a[title='SAMPLE PRODUCT ONE, SAMPLE1']")
+          product=VolusionProduct.new(param)
           10.times do
             link.click
             sleep(0.35)
@@ -244,8 +244,8 @@ module Stamps
 
       class MyAccountPage < Browser::StampsModal
         def log_out
-          logged_out_field = StampsElement.new browser.li(text: "You are now logged out.")
-          button = StampsElement.new browser.a(css: "a[href*=logout]")
+          logged_out_field=StampsField.new browser.li(text: "You are now logged out.")
+          button=StampsField.new browser.a(css: "a[href*=logout]")
           5.times do
             button.click
             sleep(0.35)
@@ -258,23 +258,23 @@ module Stamps
         end
 
         def my_account
-          link = StampsElement.new browser.a(text: "My Account")
-          label = StampsElement.new browser.b(text: "My Orders")
+          link=StampsField.new browser.a(text: "My Account")
+          label=StampsField.new browser.b(text: "My Orders")
           10.times do
             link.click
             break if label.present?
           end
 
           def cart
-            shopping_cart = VolusionCart.new(param)
+            shopping_cart=VolusionCart.new(param)
             shopping_cart.visit
             shopping_cart
           end
         end
 
         def category_one
-          link = StampsElement.new(browser.as(text: "CATEGORY ONE").last)
-          category_1 = VolusionCategoryOne.new(param)
+          link=StampsField.new(browser.as(text: "CATEGORY ONE").last)
+          category_1=VolusionCategoryOne.new(param)
           10.times do
             link.click
             sleep(0.35)
@@ -321,8 +321,8 @@ module Stamps
         end
 
         def continue
-          button = StampsElement.new browser.text_field(id: "btnContinue")
-          shipping_address = VolusionShippingAddress.new(param)
+          button=StampsField.new browser.text_field(id: "btnContinue")
+          shipping_address=VolusionShippingAddress.new(param)
           10.times do
             button.click
             sleep(0.35)
@@ -349,12 +349,12 @@ module Stamps
         end
 
         def login
-          StampsElement.new browser.text_field(css: "input[src*=btn_login]")
+          StampsField.new browser.text_field(css: "input[src*=btn_login]")
         end
 
         def continue
-          button = StampsElement.new browser.img(css: "img[src*=Continue]")
-          registration = VolusionRegistration.new(param)
+          button=StampsField.new browser.img(css: "img[src*=Continue]")
+          registration=VolusionRegistration.new(param)
           10.times do
             button.click
             sleep(0.35)
