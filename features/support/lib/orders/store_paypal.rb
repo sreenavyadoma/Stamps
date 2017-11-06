@@ -116,6 +116,18 @@ module Stamps
         end
       end
 
+      class PayPalEmailVerficationSent < Browser::StampsModal
+        def confirm_token
+
+        end
+      end
+
+      class PayPalEmailVerificationRequired < Browser::StampsModal
+        def send_email_verification
+
+        end
+      end
+
       module PayPalCache
         def cache
           @cache ||= {}
@@ -141,6 +153,7 @@ module Stamps
       end
 
       class PayPal < Browser::StampsModal
+        include PayPalModals
         include PayPalCache
         include PayPalWindowTitle
 
