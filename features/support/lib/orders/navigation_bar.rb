@@ -182,15 +182,11 @@ module Stamps
       end
 
       def buy_50
-        if param.web_app == :orders || param.web_app == :mail
-          checkbox_element = browser.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
-          verify_element = checkbox_element.parent.parent.parent
-          attribute = "class"
-          verify_element_attrib = "checked"
-          StampsRadio.new checkbox_element, verify_element, attribute, verify_element_attrib
-        else
-          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
-        end
+        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
+        verify_element = checkbox_element.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_100

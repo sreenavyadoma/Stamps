@@ -571,6 +571,7 @@ module Stamps
       end
 
       class PrintFormEmail < Browser::StampsModal
+
       end
 
       class PrintFormWeight < Browser::StampsModal

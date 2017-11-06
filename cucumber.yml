@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_mail_bvt_purchasing
+default: --backtrace --profile alex_mail_print_postage_elements
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -40,6 +40,8 @@ alex_details_order:  --tags @details_order BROWSER=ff WEB_APP=orders JENKINS=tru
 alex_tracking_defaults:  --tags @details_reference_no BROWSER=ff WEB_APP=orders JENKINS=true URL=stg  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_details_reference_no:  --tags @details_reference_no BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_mail_bvt_purchasing:  --tags @mail_bvt_purchasing BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+alex_mail_print_postage_elements:  --tags @mail_print_postage_elements BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
