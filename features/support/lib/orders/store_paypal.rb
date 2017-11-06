@@ -146,11 +146,11 @@ module Stamps
         end
 
         def store_modal
-          StampsField.new browser.div(css: "div[id^='storeiframewindow'][id$='header']")
+          StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']"))
         end
 
         def store_icon
-          StampsField.new iframe.img(css: "img[src*=paypalbanner]")
+          StampsField.new(iframe.img(css: "img[src*=paypalbanner]"))
         end
 
         def email_address

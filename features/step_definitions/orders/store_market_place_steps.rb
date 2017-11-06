@@ -14,7 +14,7 @@ Then /^[Ss]earch [Mm]arketplace for [Ss]tore [Nn]ame (.*)$/ do |str|
   stamps.orders.marketplace.search_by_name.set(test_param[:username]=str)
 end
 
-Then /^[Aa]dd [Mm]arketplace [Ss]tore (.*)$/ do |str|
+Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
   expect(stamps.orders.marketplace.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
