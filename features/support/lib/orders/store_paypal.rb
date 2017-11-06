@@ -116,13 +116,13 @@ module Stamps
         end
       end
 
-      class PayPalEmailVerficationSent < Browser::StampsModal
+      class PayPalEmailVerSent < Browser::StampsModal
         def confirm_token
 
         end
       end
 
-      class PayPalEmailVerificationRequired < Browser::StampsModal
+      class PayPalEmailVer < Browser::StampsModal
         def send_email_verification
 
         end
