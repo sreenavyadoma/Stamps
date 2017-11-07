@@ -403,7 +403,7 @@ Feature: All details tests for order
     Then in Print modal, uncheck Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
-    Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
+    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then click print modal print button
     Then Sign out

@@ -25,7 +25,6 @@ Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
 end
 
 Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
-
   test_param[:ship_from_address]=ship_from.hashes.first
   test_param[:ship_from_zip]=test_param[:ship_from_address]["ship_from_zip"]
   test_param[:full_name]=test_param[:ship_from_address]['full_name']
