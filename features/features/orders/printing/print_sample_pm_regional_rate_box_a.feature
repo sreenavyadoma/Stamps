@@ -11,7 +11,7 @@ Feature: click print modal print button Sample - Priority Mail Regional Rate Box
     Then set Order Details form service to PM Regional Rate Box A
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button Sample
     Then Sign out

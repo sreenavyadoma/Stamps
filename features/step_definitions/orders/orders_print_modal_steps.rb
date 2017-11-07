@@ -117,7 +117,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
   expect(stamps.orders.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
-Then /^[Ss]et [\w]rint [Mm]odal [Pp]rint-On to \"(.*)\"$/ do |expectation|
+Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-[Oo]n to (.*)$/ do |expectation|
   stamps.orders.orders_print_modal.printing_on.select(expectation)
 end
 
