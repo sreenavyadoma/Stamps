@@ -8,7 +8,8 @@ module Stamps
       end
 
       def mail_toolbar
-        (cache[:mail_toolbar].nil?||!mail_toolbar.present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
+        # (cache[:mail_toolbar].nil?||!mail_toolbar.present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
+        (cache[:mail_toolbar].nil?||!cache[:mail_toolbar].present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
       end
 
       def print_media
@@ -25,7 +26,8 @@ module Stamps
       def print_form
         case param.print_media
           when :stamps
-            cache[:stamps]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if cache[:stamps].nil?||cache[:stamps].print_media!=:stamps
+            #cache[:stamps]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if cache[:stamps].nil?||cache[:stamps].print_media!=:stamps
+            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if cache[:stamps].nil?||cache[:stamps].print_media!=:stamps
           when :labels
             @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabels) if @print_form.nil?||@print_form.print_media!=:labels
           when :envelopes
