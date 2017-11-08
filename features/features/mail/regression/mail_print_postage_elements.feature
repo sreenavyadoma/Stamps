@@ -3,7 +3,7 @@ Feature: Verify Mail Elements Are Present
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_postage_elements
+  @mail_print_postage_fields
   Scenario: Print Mail Elements
     Then select Print On Shipping Label - Paper
     Then expect Print form Print On Field is present

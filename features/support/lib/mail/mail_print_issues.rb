@@ -5,10 +5,10 @@ module Stamps
 
       def initialize(param)
         super
-        @window_title = StampsElement.new(browser.div(text: 'Insufficient Funds'))
-        @body = StampsElement.new(browser.div(text: 'div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]'))
-        @add_funds_btn = StampsElement.new(browser.span(text: 'Add Funds'))
-        @close_btn = StampsElement.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
+        @window_title=StampsField.new(browser.div(text: 'Insufficient Funds'))
+        @body=StampsField.new(browser.div(text: 'div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]'))
+        @add_funds_btn=StampsField.new(browser.span(text: 'Add Funds'))
+        @close_btn=StampsField.new(browser.img(css: "img[class*='x-tool-img x-tool-close']"))
       end
 
       def present?
@@ -33,9 +33,9 @@ module Stamps
 
       def initialize(param)
         super
-        @close = StampsElement.new(browser.div(text: 'span[id^=button-1248-btnInnerEl]'))
-        @cancel = StampsElement.new(browser.div(text: 'span[id^=button-1249-btnInnerEl]'))
-        #@agree_and_continue_btn = StampsElement.new()
+        @close=StampsField.new(browser.div(text: 'span[id^=button-1248-btnInnerEl]'))
+        @cancel=StampsField.new(browser.div(text: 'span[id^=button-1249-btnInnerEl]'))
+        #@agree_and_continue_btn=StampsElement.new()
       end
 
       def close

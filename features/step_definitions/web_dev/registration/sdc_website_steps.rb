@@ -4,7 +4,7 @@ Then /^(?:|[Ii] )[Ll]oad(?:|ed) (?:|the default |default )[Rr]egistration(?: [Pp
     step "load SDC Website"
     step "click on Get Started"
   else
-    test_param[:registration_theme] = str
+    test_param[:registration_theme]=str
     step "I launch default browser"
     registration.load_theme(test_param[:registration_theme])
   end

@@ -5,8 +5,8 @@ module Stamps
 
       def initialize(param)
         super
-        @web_apps = StampsDotCom.new(param)
-        @web_mail = @web_apps.mail
+        @web_apps=StampsDotCom.new(param)
+        @web_mail=@web_apps.mail
       end
 
       def header_message
@@ -17,25 +17,25 @@ module Stamps
         #browser.button(text: "Submit").wait_until_present 6
       end
 
-      def element_drop_down
-        StampsElement.new(browser.span(css: "form[name=shipSurveyForm]>[class=shippingdropdown]"))
+      def field_drop_down
+        StampsField.new(browser.span(css: "form[name=shipSurveyForm]>[class=shippingdropdown]"))
       end
 
       def select(str)
-        element_drop_down.click
-        selection = StampsElement.new(browser.span(text: "1-10 packages per day (1-200 monthly)"))
+        field_drop_down.click
+        selection=StampsField.new(browser.span(text: "1-10 packages per day (1-200 monthly)"))
         15.times do
           selection.click
         end
-        expect(element.text).to include(str)
+        expect(field.text).to include(str)
       end
 
       def consent_checkbox
-        @consent_checkbox = StampsWatirCheckbox.new(browser.checkbox(name: 'consentCheckbox'))
+        @consent_checkbox=StampsWatirCheckbox.new(browser.checkbox(name: 'consentCheckbox'))
       end
 
       def submit
-        submit = StampsElement.new browser.button text: "Submit"
+        submit=StampsField.new browser.button text: "Submit"
         logger.info "Ship Volume Survey Page has loaded: #{browser.url}"
 
         10.times do

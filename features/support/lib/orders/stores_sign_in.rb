@@ -5,11 +5,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title = StampsElement.new browser.div(text: 'Learn More')
-        @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @close_button = StampsElement.new browser.span(text: 'Close')
-        @cancel_button = StampsElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @learn_button = StampsElement.new browser.span(text: 'Learn More')
+        @title=StampsField.new browser.div(text: 'Learn More')
+        @msg_container=StampsField.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @close_button=StampsField.new browser.span(text: 'Close')
+        @cancel_button=StampsField.new browser.img(css: 'img[class$=x-tool-close]')
+        @learn_button=StampsField.new browser.span(text: 'Learn More')
       end
 
       def present?
@@ -39,11 +39,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title = StampsElement.new browser.div(text: 'Import from Stores')
-        @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = StampsElement.new browser.span(text: 'Next')
-        @close_button = StampsElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @learn_more = LearnMoreModal.new(param)
+        @title=StampsField.new browser.div(text: 'Import from Stores')
+        @msg_container=StampsField.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button=StampsField.new browser.span(text: 'Next')
+        @close_button=StampsField.new browser.img(css: 'img[class$=x-tool-close]')
+        @learn_more=LearnMoreModal.new(param)
       end
 
       def present?
@@ -76,11 +76,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title = StampsElement.new browser.div(text: 'Import from CSV')
-        @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = StampsElement.new browser.span(text: 'Next')
-        @close_button = StampsElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @import_from_stores = ImportFromStoresModal.new(param)
+        @title=StampsField.new browser.div(text: 'Import from CSV')
+        @msg_container=StampsField.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button=StampsField.new browser.span(text: 'Next')
+        @close_button=StampsField.new browser.img(css: 'img[class$=x-tool-close]')
+        @import_from_stores=ImportFromStoresModal.new(param)
       end
 
       def present?
@@ -113,11 +113,11 @@ module Stamps
 
       def initialize(param)
         super
-        @title = StampsElement.new browser.div(text: 'Add Manual Order')
-        @msg_container = StampsElement.new browser.div(id: 'sdc-window-tutorial-innerCt')
-        @next_button = StampsElement.new browser.span(text: 'Next')
-        @close_button = StampsElement.new browser.img(css: 'img[class$=x-tool-close]')
-        @import_from_csv = ImportFromCsvModal.new(param)
+        @title=StampsField.new browser.div(text: 'Add Manual Order')
+        @msg_container=StampsField.new browser.div(id: 'sdc-window-tutorial-innerCt')
+        @next_button=StampsField.new browser.span(text: 'Next')
+        @close_button=StampsField.new browser.img(css: 'img[class$=x-tool-close]')
+        @import_from_csv=ImportFromCsvModal.new(param)
       end
 
       def present?

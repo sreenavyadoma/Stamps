@@ -19,13 +19,13 @@ end
 Then /^3DCart Store: Connect$/ do
   #test_config.logger.step "3DCart Store: Connect"
   raise "3dcart Store modal is not visible or present.  Check your test workflow" if @store.nil?
-  @store_settings = @store.connect
+  @store_settings=@store.connect
 end
 
 Then /^3DCart Store: Reconnect$/ do
   #test_config.logger.step "3DCart Store: Connect"
   raise "3dcart Store modal is not visible or present.  Check your test workflow" if @store.nil?
-  @store_settings = @store.reconnect
+  @store_settings=@store.reconnect
 end
 
 

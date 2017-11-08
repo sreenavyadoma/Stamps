@@ -71,7 +71,7 @@ Then /^[Ss]et Security questions page select second answer to (.*)$/ do |str|
   registration.security_questions.second_question.second_answer.set(str)
 end
 
-Then /^[Cc]lick Get Started button$/ do
+Then /^[Cc]lick Get Started [Bb]utton$/ do
   registration.security_questions.get_started.click
 end
 

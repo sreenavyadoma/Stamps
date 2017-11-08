@@ -1,20 +1,20 @@
 module Stamps
   module Registration
     class DownloadPage < Browser::StampsModal
-      def element
-        StampsElement.new browser.h1 css: "div>h1"
+      def field
+        StampsField.new browser.h1 css: "div>h1"
       end
 
       def present?
-        element.present?
+        field.present?
       end
 
       def wait_until_present(*args)
-        element.wait_until_present(*args)
+        field.wait_until_present(*args)
       end
 
       def text
-        element.text
+        field.text
       end
     end
   end

@@ -2,12 +2,12 @@ module Stamps
   module Orders
     module LeftPanel
       class CollapseButton < Browser::StampsModal
-        attr_reader :button, :tooltip_element
+        attr_reader :button, :tooltip_field
 
         def initialize(param)
           super
-          @button = StampsElement.new(browser.span css: "span[id^=button-][id$=-btnIconEl]")
-          @tooltip_element = StampsElement.new(browser.div id: 'ext-quicktips-tip-innerCt')
+          @button=StampsField.new(browser.span css: "span[id^=button-][id$=-btnIconEl]")
+          @tooltip_field=StampsField.new(browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
         def click
@@ -23,26 +23,26 @@ module Stamps
         end
 
         def tooltip
-          button.element.hover
-          button.element.hover
+          button.field.hover
+          button.field.hover
           15.times do
-            button.element.hover
+            button.field.hover
             sleep(0.35)
-            if tooltip_element.present?
-              logger.info tooltip_element.text
-              return tooltip_element.text
+            if tooltip_field.present?
+              logger.info tooltip_field.text
+              return tooltip_field.text
             end
           end
         end
       end
 
       class ExpandButton < Browser::StampsModal
-        attr_reader :button, :tooltip_element
+        attr_reader :button, :tooltip_field
 
         def initialize(param)
           super
-          @button = StampsElement.new(browser.img css: 'img[class*=tool-expand-right]')
-          @tooltip_element = StampsElement.new(browser.div id: 'ext-quicktips-tip-innerCt')
+          @button=StampsField.new(browser.img css: 'img[class*=tool-expand-right]')
+          @tooltip_field=StampsField.new(browser.div id: 'ext-quicktips-tip-innerCt')
         end
 
         def click
@@ -58,14 +58,14 @@ module Stamps
         end
 
         def tooltip
-          button.element.hover
-          button.element.hover
+          button.field.hover
+          button.field.hover
           15.times do
-            button.element.hover
+            button.field.hover
             sleep(0.35)
-            if tooltip_element.present?
-              logger.info tooltip_element.text
-              return tooltip_element.text
+            if tooltip_field.present?
+              logger.info tooltip_field.text
+              return tooltip_field.text
             end
           end
         end
@@ -76,8 +76,8 @@ module Stamps
 
         def initialize(param)
           super
-          @collapse = CollapseButton.new(param)
-          @expand = ExpandButton.new(param)
+          @collapse=CollapseButton.new(param)
+          @expand=ExpandButton.new(param)
         end
       end
 
@@ -86,9 +86,9 @@ module Stamps
 
         def initialize(param)
           super
-          @label = StampsElement.new browser.div(text: "Search Results")
-          @remove_button = StampsElement.new browser.a(css: "a[data-qtip=Remove]")
-          @count_label = StampsElement.new browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div")
+          @label=StampsField.new browser.div(text: "Search Results")
+          @remove_button=StampsField.new browser.a(css: "a[data-qtip=Remove]")
+          @count_label=StampsField.new browser.div(css: "div[id=left-filter-panel-targetEl]>table>tbody>tr>td:nth-child(3)>div>div")
         end
 
         def present?
@@ -113,9 +113,9 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox = StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
-          @search_button = StampsElement.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
-          @search_results = SearchResults.new(param)
+          @textbox=StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
+          @search_button=StampsField.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
+          @search_results=SearchResults.new(param)
         end
 
         def present?
@@ -124,25 +124,25 @@ module Stamps
       end
 
       module FilterTabHelper
-        attr_accessor :element, :panel_name
+        attr_accessor :field, :panel_name
         def selected?
           begin
-            element.parent.parent.parent.parent.attribute_value("class").include?('selected')
+            field.parent.parent.parent.parent.attribute_value("class").include?('selected')
           rescue
             false
           end
         end
 
-        def element
+        def field
           browser.divs(text: panel_name).first
         end
 
         def text
-          StampsElement.new(element).text
+          StampsField.new(field).text
         end
 
         def select
-          tab = StampsElement.new(element)
+          tab=StampsField.new(field)
           40.times do
             tab.double_click
             tab.click
@@ -158,11 +158,11 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name = "Awaiting Shipment"
+          @panel_name="Awaiting Shipment"
         end
 
         def count
-          StampsElement.new(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).text.to_i
+          StampsField.new(browser.div(css: "div#left-filter-panel-targetEl>table[style*=left]>tbody>tr>td>div[class*=widget]>div[class=sdc-badge]")).text.to_i
         end
       end
 
@@ -170,7 +170,7 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name = "Shipped"
+          @panel_name="Shipped"
         end
       end
 
@@ -178,7 +178,7 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name = "Canceled"
+          @panel_name="Canceled"
         end
       end
 
@@ -186,7 +186,7 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name = "On Hold"
+          @panel_name="On Hold"
         end
       end
 
@@ -195,13 +195,13 @@ module Stamps
 
         def initialize(param)
           super
-          @awaiting_shipment = AwaitingShipmentTab.new(param)
-          @shipped = ShippedTab.new(param)
-          @canceled = CanceledTab.new(param)
-          @on_hold = OnHoldTab.new(param)
-          @search_orders = SearchOrders.new(param)
-          @menu_item = FilterMenuItem.new(param)
-          @search_results = SearchResults.new(param)
+          @awaiting_shipment=AwaitingShipmentTab.new(param)
+          @shipped=ShippedTab.new(param)
+          @canceled=CanceledTab.new(param)
+          @on_hold=OnHoldTab.new(param)
+          @search_orders=SearchOrders.new(param)
+          @menu_item=FilterMenuItem.new(param)
+          @search_results=SearchResults.new(param)
         end
 
         def selected_filter

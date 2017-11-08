@@ -3,28 +3,27 @@ module Stamps
 
     class ServerError < Browser::StampsModal
       def present?
-        browser.text.include?("Server Error")
+        StampsField.new(browser.div(text: /Server Error/)).present?
       end
 
       def message
-        StampsElement.new(browser.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last).text
+        StampsField.new(browser.divs(css: "div[id^=dialoguemodal-][id$=-body][class*=sdc-warning]>div>div").last).text
       end
 
       def ok
-        button = StampsElement.new(browser.spans(text: "OK").last)
+        button=StampsField.new(browser.spans(text: "OK").last)
         20.times do
           button.click
           sleep(0.025)
           break unless present?
         end
       end
-
     end
 
     class PrintingError < StandardError
       attr_reader :object
       def initialize(object)
-        @object = object
+        @object=object
       end
     end
 
@@ -38,7 +37,7 @@ module Stamps
       end
 
       def ok
-        ok_btn = StampsElement.new(browser.span(text: 'OK'))
+        ok_btn=StampsField.new(browser.span(text: 'OK'))
         5.times {
           ok_btn.click
           break unless ok_btn.present?
@@ -46,7 +45,7 @@ module Stamps
       end
 
       def error_message
-        error_message = (StampsElement.new(browser.div(css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"))).text
+        error_message=(StampsField.new(browser.div(css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"))).text
 
         logger.error "----  Order Error  ----"
         logger.error error_message
@@ -56,7 +55,6 @@ module Stamps
 
         error_message
       end
-
     end
 
     class IncompleteOrderError < Browser::StampsModal
@@ -71,7 +69,7 @@ module Stamps
       end
 
       def ok
-        ok_btn = StampsElement.new browser.span(text: "OK")
+        ok_btn=StampsField.new browser.span(text: "OK")
         10.times{
           ok_btn.click
           break unless ok_btn.present?
@@ -79,7 +77,7 @@ module Stamps
       end
 
       def error_message
-        StampsElement.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
+        StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")).text
       end
 
       def present?
@@ -100,7 +98,7 @@ module Stamps
       end
 
       def cancel
-        cancel_button = StampsElement.new(browser.span(text: "Cancel"))
+        cancel_button=StampsField.new(browser.span(text: "Cancel"))
         5.times{
           begin
             cancel_button.click
@@ -112,7 +110,7 @@ module Stamps
       end
 
       def close_window
-        StampsElement.new(window_title).click_while_present
+        StampsField.new(window_title).click_while_present
       end
 
     end
@@ -120,7 +118,7 @@ module Stamps
     class RatingError < Browser::StampsModal
 
       def ok_button
-        StampsElement.new(browser.span(text: 'OK'))
+        StampsField.new(browser.span(text: 'OK'))
       end
 
       def wait_until_present
@@ -144,7 +142,7 @@ module Stamps
       end
 
       def error_message
-        StampsElement.new(browser.p(css: 'div[class=x-autocontainer-innerCt]>p:nth-child(1)')).text
+        StampsField.new(browser.p(css: 'div[class=x-autocontainer-innerCt]>p:nth-child(1)')).text
       end
 
     end

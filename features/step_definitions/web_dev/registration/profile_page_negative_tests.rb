@@ -1,4 +1,4 @@
-Then /^[Cc]lick Profile Page Continue button$/ do
+Then /^[Cc]lick Profile Page Continue [Bb]utton$/ do
   (registration.profile.continue_button.click)
 end
 

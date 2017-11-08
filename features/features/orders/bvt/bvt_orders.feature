@@ -10,12 +10,12 @@ Feature:  BVT tests for Orders
     Then add new order
     Then set Order Details form Ship-To to ambiguous address
       | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
-      | Joseph Balancio | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
+      | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Exact Address Not Found module to appear
     Then In Exact Address Not Found module, select row 2
     Then set Order Details form service to PM Package
     Then Pause for 2 seconds
-    Then expect Orders Grid Recipient is Joseph Balancio
+    Then expect Orders Grid Recipient is Juan Dela Cruz
     Then expect Orders Grid Company is Betfair
     Then expect Orders Grid City is San Francisco
     Then expect Orders Grid State is CA
@@ -155,7 +155,7 @@ Feature:  BVT tests for Orders
     Then set Order Details form Length to 1
     Then set Order Details form Height to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then click print modal print button
     Then Sign out
 

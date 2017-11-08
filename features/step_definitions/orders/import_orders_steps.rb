@@ -3,34 +3,34 @@ Then /^[Ii]n Orders Toolbar, Import$/ do
 end
 
 Then /^Import Orders: Import$/ do
-  import_time = stamps.orders.orders_toolbar.import.import
+  import_time=stamps.orders.orders_toolbar.import.import
   test_config.logger.step "Success modal is present after #{import_time} seconds"
 
-  #import_timer_filename = "\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
+  #import_timer_filename="\\\\rcruz-win7\\Public\\automation\\data\\import_times.csv"
 
-  import_time_file = data_for(:import_orders_test, {})['import_time_file']
-  import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
+  import_time_file=data_for(:import_orders_test, {})['import_time_file']
+  import_time_loc="#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
   test_config.logger.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
 
-  csv_file = CSV.open(import_time_loc, "a")
+  csv_file=CSV.open(import_time_loc, "a")
   csv_file.add_row([Time.now,import_time])
   test_config.logger.step "Import Time Saved to CSV file"
   csv_file.close
 end
 
 Then /^Import Orders: Import Existing Orders$/ do
-  import_time = stamps.orders.orders_toolbar.import.import
+  import_time=stamps.orders.orders_toolbar.import.import
   test_config.logger.step "Success modal is present after #{import_time} seconds"
 
-  import_time_file = data_for(:import_orders_test, {})['import_existing_orders_time_file']
-  import_time_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
+  import_time_file=data_for(:import_orders_test, {})['import_existing_orders_time_file']
+  import_time_loc="#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_time_file}"
 
   test_config.logger.step "Import Orders File: #{import_time_loc}"
   expect("Import Orders File: #{import_time_loc}").to eql "Import Time File does not exist!" unless File.exist?(import_time_loc)
 
-  csv_file = CSV.open(import_time_loc, "a")
+  csv_file=CSV.open(import_time_loc, "a")
   csv_file.add_row([Time.now,import_time])
   test_config.logger.step "Import Time Saved to CSV file"
   csv_file.close
@@ -64,34 +64,34 @@ end
 
 Then /^Import Orders: Randomize data in (.*)$/ do |filename|
 
-  import_old_file = data_for(:import_orders_test, {})['import_old_file']
+  import_old_file=data_for(:import_orders_test, {})['import_old_file']
   #test_config.logger.step "File location is #{'import_orders_dir'+ENV['URL']}"
-  import_new_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
-  import_old_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_old_file}"
+  import_new_loc="#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
+  import_old_loc="#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{import_old_file}"
 
   CSV.open(import_new_loc, "w+") do |csv_out|
-    old_csv = CSV.read(import_old_loc)
+    old_csv=CSV.read(import_old_loc)
     old_csv.each_with_index do |row, index|
       if index != 0
-        address = test_helper.rand_zone_1_4
-        row[2] = Random.rand(1..10)
-        row[3] = test_helper.random_full_name
-        row[4] = test_helper.random_full_name
-        row[5] = test_helper.random_company_name
-        row[6] = address['street_address']
-        row[9] = address['city']
-        row[10] = address['state']
-        row[11] = address['zip']
-        row[13] = test_helper.random_phone_number
-        row[14] = test_helper.random_email
-        row[15] = Random.rand(1..10)
-        row[16] = Random.rand(1..10)
-        row[17] = Random.rand(1..10)
-        row[18] = Random.rand(1..10)
-        row[19] = test_helper.random_full_name
-        row[20] = test_helper.random_full_name
-        row[21] = [true, false].sample
-        row[22] = test_helper.random_full_name
+        address=test_helper.rand_zone_1_4
+        row[2]=Random.rand(1..10)
+        row[3]=test_helper.random_full_name
+        row[4]=test_helper.random_full_name
+        row[5]=test_helper.random_company_name
+        row[6]=address['street_address']
+        row[9]=address['city']
+        row[10]=address['state']
+        row[11]=address['zip']
+        row[13]=test_helper.random_phone_number
+        row[14]=test_helper.random_email
+        row[15]=Random.rand(1..10)
+        row[16]=Random.rand(1..10)
+        row[17]=Random.rand(1..10)
+        row[18]=Random.rand(1..10)
+        row[19]=test_helper.random_full_name
+        row[20]=test_helper.random_full_name
+        row[21]=[true, false].sample
+        row[22]=test_helper.random_full_name
       end
       csv_out << row
     end
@@ -102,15 +102,15 @@ end
 
 Then /^Import Orders: Expect first (.*) orders in CSV file (.*) match orders in grid$/ do |num_orders, filename|
 
-  import_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
+  import_loc="#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
 
-  num_orders = num_orders.to_i
-  counter = 0
+  num_orders=num_orders.to_i
+  counter=0
 
-  import_csv = CSV.read(import_loc)
+  import_csv=CSV.read(import_loc)
   import_csv.each_with_index do |row, index|
 
-    order_id = row[0]
+    order_id=row[0]
     if index  != 0
       counter += 1
       step "Filter Panel: Search for #{row[4]}"
@@ -133,11 +133,11 @@ end
 
 Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename|
   step "In Orders Toolbar, Import" if stamps.orders.orders_toolbar.import.nil?
-  step "Import Orders: Select CSV File" if (stamps.orders.orders_toolbar.import.select_csv_file.nil? || !(stamps.orders.orders_toolbar.import.select_csv_file.present?))
+  step "Import Orders: Select CSV File" if (stamps.orders.orders_toolbar.import.select_csv_file.nil?||!(stamps.orders.orders_toolbar.import.select_csv_file.present?))
 
-  import_orders_loc = "#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
+  import_orders_loc="#{data_for(:import_orders_test, {})['import_orders_dir']}\\#{ENV['URL']}\\#{filename}"
 
-  #@csv_import_filename = "\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
+  #@csv_import_filename="\\\\rcruz-win7\\Public\\automation\\data\\#{filename}"
   #test_config.logger.step "Import File:  #{@csv_import_filename}"
   test_config.logger.step "Import File:  #{import_orders_loc}"
 
@@ -147,7 +147,7 @@ Then /^Import Orders: File Upload: Set Filename to (.*)$/ do |filename|
 end
 
 Then /^Import Orders: Expect Imported Filename is (.*)$/ do |expectation|
-  actual_value = stamps.orders.orders_toolbar.import.filename_label
+  actual_value=stamps.orders.orders_toolbar.import.filename_label
   expect(actual_value).to eql expectation
 end
 

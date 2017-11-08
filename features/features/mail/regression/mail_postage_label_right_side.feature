@@ -33,6 +33,7 @@ Feature: Mail Shipping Label - Right Side
     Then set Print form Ounces to 1
     Then select Print form service PM Package
     Then on Print form, select right side starting label
+    #Then select print modal right-side label
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button

@@ -1,29 +1,29 @@
 
 Then /^[Cc]heck [Oo]rders [Gg]rid [Cc]ached [Oo]rder [Ii][Dd](?:| (\d+))$/ do |order_id|
-  order_id = (order_id.nil?)?test_param[:order_id][1]:test_param[:order_id][order_id.to_i]
+  order_id=(order_id.nil?)?test_param[:order_id][1]:test_param[:order_id][order_id.to_i]
   stamps.orders.orders_grid.grid_column(:checkbox).check_order_id(order_id)
   expect(stamps.orders.orders_grid.grid_column(:checkbox).order_id_checked?(order_id)).to be(true), "Couldn't check Order ID #{order_id}"
 end
 
 Then /^[Uu]ncheck [Oo]rders [Gg]rid [Cc]ached [Oo]rder [Ii][Dd](?:| (.*))$/ do |order_id|
-  order_id = (order_id.nil?)?test_param[:order_id][1]:test_param[:order_id][order_id.to_i]
+  order_id=(order_id.nil?)?test_param[:order_id][1]:test_param[:order_id][order_id.to_i]
   stamps.orders.orders_grid.grid_column(:checkbox).uncheck_order_id(order_id)
   expect(stamps.orders.orders_grid.grid_column(:checkbox).order_id_checked?(order_id)).to be(false)
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
-  test_param[:store_name] = (expectation.downcase.include? 'random')?test_param[:store_name]:expectation
+  test_param[:store_name]=(expectation.downcase.include? 'random')?test_param[:store_name]:expectation
   expect(stamps.orders.orders_grid.grid_column(:store).data(test_param[:order_id][1])).to eql test_param[:store_name]
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID$/ do
-  details_order_id = stamps.orders.single_order_details.toolbar.order_id
-  grid_order_id = stamps.orders.orders_grid.grid_column(:order_id).row(1)
+  details_order_id=stamps.orders.single_order_details.toolbar.order_id
+  grid_order_id=stamps.orders.orders_grid.grid_column(:order_id).row(1)
   expect(details_order_id).to eql grid_order_id
 end
 
 Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
-  15.times { sleep(0.25); break if stamps.orders.orders_grid.grid_column(:order_id).row(row) == test_param[:order_id][1] }
+  15.times { sleep(0.25); break if stamps.orders.orders_grid.grid_column(:order_id).row(row)==test_param[:order_id][1] }
   expect(stamps.orders.orders_grid.grid_column(:order_id).row(row)).to eql test_param[:order_id][1]
 end
 
@@ -62,7 +62,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Date for this order is today(?:| plus (\
 end
 
 Then /^[Ee]xpect Ship-To address is;$/ do |table|
-  param_hash = table.hashes.first
+  param_hash=table.hashes.first
   step "expect Orders Grid Recipient is #{param_hash[:name]}"
   step "expect Orders Grid Company is #{param_hash[:company]}"
   step "expect Orders Grid Address is #{param_hash[:address]}"
@@ -87,74 +87,74 @@ end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Recipient is (?:correct|(.*))$/ do |expectation|
   step "Pause for 2 seconds"
-  expectation = test_param[:full_name] if expectation.nil?
+  expectation=test_param[:full_name] if expectation.nil?
   expect(test_param[:order_id][1]).to be_truthy
   10.times { break if stamps.orders.orders_grid.grid_column(:recipient).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:recipient).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Company is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:company] if expectation.nil?
+  expectation=test_param[:company] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:company).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:company).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Address is (?:correct|(.*))$/ do |expectation|
-  expectation = "#{test_param[:street_address_1]}#{(test_param[:street_address_2].scan(/(\w+)/).size>0)?" #{test_param[:street_address_2]}":""}" if expectation.nil?
+  expectation="#{test_param[:street_address_1]}#{(test_param[:street_address_2].scan(/(\w+)/).size>0)?" #{test_param[:street_address_2]}":""}" if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:address).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:address).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid City is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:city] if expectation.nil?
+  expectation=test_param[:city] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:city).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:city).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid State is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:state] if expectation.nil?
+  expectation=test_param[:state] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:state).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:state).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Zip is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:zip] if expectation.nil?
+  expectation=test_param[:zip] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:zip).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:zip).data(test_param[:order_id][1])).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Country is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:country] if expectation.nil?
+  expectation=test_param[:country] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:country).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:country).data(test_param[:order_id][1])).to include(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Email is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:email] if expectation.nil?
+  expectation=test_param[:email] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:email).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:email).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Phone is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:phone] if expectation.nil?
+  expectation=test_param[:phone] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:phone).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:phone).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Pounds is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:pounds] if expectation.nil?
+  expectation=test_param[:pounds] if expectation.nil?
   20.times { break if stamps.orders.orders_grid.grid_column(:weight).lb(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:weight).lb(test_param[:order_id][1])).to eql expectation.to_i
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ounces is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:ounces] if expectation.nil?
+  expectation=test_param[:ounces] if expectation.nil?
   10.times { break if stamps.orders.orders_grid.grid_column(:weight).oz(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:weight).oz(test_param[:order_id][1])).to eql expectation.to_i
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Weight is (\d+) lb. (\d+) oz.$/ do |pounds, ounces|
-  expectation = "#{pounds} lbs. #{ounces} oz."
+  expectation="#{pounds} lbs. #{ounces} oz."
   10.times { break if stamps.orders.orders_grid.grid_column(:weight).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:weight).data(test_param[:order_id][1])).to eql expectation
 end
@@ -190,8 +190,8 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship From is (.+)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid service is (?:correct|(.*))$/ do |expectation|
-  expectation = test_param[:service] if expectation.nil?
-  expectation = (test_param[:service_look_up][expectation.split(' ').first].nil?)? expectation : test_param[:service_look_up][expectation.split(' ').first]
+  expectation=test_param[:service] if expectation.nil?
+  expectation=(test_param[:service_look_up][expectation.split(' ').first].nil?)? expectation : test_param[:service_look_up][expectation.split(' ').first]
   10.times { break if stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id][1]).eql? expectation }
   expect(stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id][1])).to include expectation
 end
@@ -207,12 +207,12 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Reference No. is (.+)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Tracking service is (.+)$/ do |expectation|
-  10.times { break if stamps.orders.orders_grid.grid_column(:tracking_service).data(test_param[:order_id][1]) == expectation }
+  10.times { break if stamps.orders.orders_grid.grid_column(:tracking_service).data(test_param[:order_id][1])==expectation }
   expect(stamps.orders.orders_grid.grid_column(:tracking_service).data(test_param[:order_id][1])).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Order Status is (.+)$/ do |expectation|
-  10.times { break if stamps.orders.orders_grid.grid_column(:order_status).data(test_param[:order_id][1]) == expectation }
+  10.times { break if stamps.orders.orders_grid.grid_column(:order_status).data(test_param[:order_id][1])==expectation }
   expect(stamps.orders.orders_grid.grid_column(:order_status).data(test_param[:order_id][1])).to eql expectation
 end
 
@@ -227,19 +227,19 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Order Total is (.+)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |expectation|
-  grid_order_id = stamps.orders.orders_grid.grid_column(:order_id).row 1
-  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error grid_order_id
+  grid_order_id=stamps.orders.orders_grid.grid_column(:order_id).row 1
+  ship_cost_error=stamps.orders.orders_grid.grid_column(:ship_cost).data_error grid_order_id
   expect(ship_cost_error).to include(expectation)
-  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81453"
-  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81408"
-  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81407"
+  ship_cost_error=stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81453"
+  ship_cost_error=stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81408"
+  ship_cost_error=stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81407"
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid ship cost data error tooltip is \"(.*)\"$/ do |expectation|
   #test_config.logger.step "expect Orders Grid ship cost data error tooltip is #{expectation}"
-  grid_order_id = stamps.orders.orders_grid.grid_column(:order_id).row 1
-  grid_ship_cost = stamps.orders.orders_grid.grid_column(:ship_cost).data grid_order_id
-  error = grid_ship_cost.attribute_expectation "data-errorqtip"
+  grid_order_id=stamps.orders.orders_grid.grid_column(:order_id).row 1
+  grid_ship_cost=stamps.orders.orders_grid.grid_column(:ship_cost).data grid_order_id
+  error=grid_ship_cost.attribute_expectation "data-errorqtip"
   #test_config.logger.step "Test #{(error.include? expectation)?"Passed":"Failed"}"
   expect(error).to include(expectation)
 end

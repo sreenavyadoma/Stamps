@@ -19,7 +19,7 @@ module Stamps
       def left
         10.times{
           begin
-            element_helper.click left_label
+            field_helper.click left_label
             return true if label_selected? left_label
           rescue
             #ignore
@@ -31,7 +31,7 @@ module Stamps
       def right
         10.times{
           begin
-            element_helper.click right_label
+            field_helper.click right_label
             return true if label_selected? right_label
           rescue
             #ignore
@@ -50,7 +50,7 @@ module Stamps
 
       def label_selected? div
         8.times{
-          selected = (div.attribute_value 'class').include? 'selectedLabel'
+          selected=(div.attribute_value 'class').include? 'selectedLabel'
           logger.info "Label selected?  #{(selected)? 'Yes':'No'}"
           break if selected
         }
@@ -67,29 +67,29 @@ module Stamps
 
       def initialize(param)
         super
-        @reference_number = StampsTextBox.new browser.text_field(name: "referenceNumber")
+        @reference_number=StampsTextBox.new browser.text_field(name: "referenceNumber")
 
       end
 
       def preview_image
-        image = StampsElement.new browser.div css: "div[style*='Label_selection_and_view.gif']"
+        image=StampsElement.new browser.div css: "div[style*='Label_selection_and_view.gif']"
       end
 
       def hide_postage_value
-        checkbox_field = browser.input(id: "hidePostageCheckBox")
-        verify_field = checkbox_field.parent.parent.parent.parent
+        checkbox_field=browser.input(id: "hidePostageCheckBox")
+        verify_field=checkbox_field.parent.parent.parent.parent
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_receipt
-        checkbox_field = browser.input(id: "printreceiptcheckbox")
-        verify_field = checkbox_field.parent.parent.parent.parent
+        checkbox_field=browser.input(id: "printreceiptcheckbox")
+        verify_field=checkbox_field.parent.parent.parent.parent
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end
 
       def print_reference_number
-        checkbox_field = browser.input(id: "printreferencecheckbox")
-        verify_field = checkbox_field.parent.parent.parent.parent
+        checkbox_field=browser.input(id: "printreferencecheckbox")
+        verify_field=checkbox_field.parent.parent.parent.parent
         Stamps::Browser::StampsCheckBox.new checkbox_field, verify_field, "class", "checked"
       end
 

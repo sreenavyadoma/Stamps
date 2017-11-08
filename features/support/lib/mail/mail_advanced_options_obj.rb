@@ -7,7 +7,7 @@ module Stamps
 
         def initialize(param)
           super
-          @print_media = param.print_media
+          @print_media=param.print_media
         end
       end
 
@@ -16,9 +16,9 @@ module Stamps
 
         def initialize(param)
           super
-          @index = index
-          @textbox = browser.text_field(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
-          @dropdown = browser.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
+          @index=index
+          @textbox=browser.text_field(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
+          @dropdown=browser.div(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
         end
 
         def selection(str)
@@ -37,7 +37,7 @@ module Stamps
           logger.info "Select #{str}"
           dropdown.click
           10.times do
-            selection = StampsElement.new(selection(str))
+            selection=StampsField.new(selection(str))
             break if textbox.text.include?(str)
             dropdown.click unless selection.present?
             selection.click
@@ -50,7 +50,7 @@ module Stamps
 
       module MailDateTextbox
         def textbox
-          @textbox = StampsTextbox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @textbox.nil?
+          @textbox=StampsTextbox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @textbox.nil?
           @textbox
         end
       end
@@ -62,7 +62,7 @@ module Stamps
         attr_reader :trigger_picker
         def initialize(param)
           super
-          @trigger_picker = StampsElement.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
+          @trigger_picker=StampsField.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
         end
 
         def mail_dates
@@ -74,21 +74,21 @@ module Stamps
         end
 
         def todays_date_plus(number)
-          number = number.to_i
+          number=number.to_i
           choose_date(mail_dates[number], number)
         end
 
-        def choose_date(element, day)
-          date = valid_ship_date(day)
-          element = StampsElement.new(element)
+        def choose_date(field, day)
+          date=valid_ship_date(day)
+          field=StampsField.new(field)
           trigger_picker.click
           30.times do
-            trigger_picker.click unless element.present?
+            trigger_picker.click unless field.present?
             sleep(0.05)
-            element.click
+            field.click
             break if textbox.text.include?(date)
           end
-          trigger_picker.click if element.present?
+          trigger_picker.click if field.present?
           expect(textbox.text).to eql(date)
           date
         end
@@ -100,7 +100,7 @@ module Stamps
 
         def initialize(param)
           super
-          @date_picker = MailDatePicker.new(param)
+          @date_picker=MailDatePicker.new(param)
         end
       end
 

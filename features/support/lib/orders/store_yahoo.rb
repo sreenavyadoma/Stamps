@@ -3,7 +3,7 @@ module Stamps
     module Stores
       class YahooSettings < StoreSettings
         def window_title
-          StampsElement.new browser.div text: "Yahoo Settings"
+          StampsField.new browser.div text: "Yahoo Settings"
         end
 
         def present?
@@ -18,7 +18,7 @@ module Stamps
       class Yahoo < Browser::StampsModal
 
         def window_title
-          StampsElement.new browser.div(text: "Connect your Yahoo Store")
+          StampsField.new browser.div(text: "Connect your Yahoo Store")
         end
 
         def present?
@@ -30,8 +30,8 @@ module Stamps
         end
 
         def contact_token
-          parent = browser.span(text: "Partner Store Contract Token").parent.parent
-          input = parent.divs[0].div.div.textbox
+          parent=browser.span(text: "Partner Store Contract Token").parent.parent
+          input=parent.divs[0].div.div.textbox
           raise "Contact Token textbox does not exist or textbox locator is wrong." unless input.present?
           StampsTextbox.new input
         end
@@ -41,16 +41,16 @@ module Stamps
         end
 
         def connect_button
-          StampsElement.new browser.span(text: "Connect")
+          StampsField.new browser.span(text: "Connect")
         end
 
         def connect
-          button = StampsElement.new browser.span(text: "Connect")
-          settings = YahooSettings.new(param)
-          server_error = Orders::Stores::ServerError.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          settings=YahooSettings.new(param)
+          server_error=Orders::Stores::ServerError.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
-          max_server_error_retry_count = 5
+          max_server_error_retry_count=5
 
           20.times do |counter|
             button.click
@@ -60,7 +60,7 @@ module Stamps
               importing_order.ok
             end
             if server_error.present?
-              error_str = server_error.message
+              error_str=server_error.message
               logger.info error_str
               server_error.ok
               expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
@@ -71,12 +71,12 @@ module Stamps
         end
 
         def reconnect
-          button = StampsElement.new browser.span(text: "Connect")
-          server_error = Orders::Stores::ServerError.new(param)
-          manage_stores = ManageStores.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          server_error=Orders::Stores::ServerError.new(param)
+          manage_stores=ManageStores.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
-          max_server_error_retry_count = 5
+          max_server_error_retry_count=5
 
           20.times do |counter|
             button.click
@@ -85,7 +85,7 @@ module Stamps
               importing_order.ok
             end
             if server_error.present?
-              error_str = server_error.message
+              error_str=server_error.message
               logger.info error_str
               server_error.ok
               expect("Server Error: \n#{error_str}").to eql "" unless counter < max_server_error_retry_count
@@ -96,9 +96,9 @@ module Stamps
         end
 
         def reconnect_old
-          button = StampsElement.new browser.span(text: "Connect")
-          manage_stores = ManageStores.new(param)
-          importing_order = Orders::Stores::ImportingOrdersModal.new(param)
+          button=StampsField.new browser.span(text: "Connect")
+          manage_stores=ManageStores.new(param)
+          importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
           10.times do
             button.click
@@ -196,7 +196,7 @@ module Stamps
       class ModifyYahooStore < Yahoo
 
         def window_title
-          StampsElement.new(browser.div text: "Modify your Yahoo Store Connection")
+          StampsField.new(browser.div text: "Modify your Yahoo Store Connection")
         end
 
         def present?
@@ -222,8 +222,8 @@ module Stamps
         end
 
         def sign_in
-          button = StampsElement.new browser.text_field(css: "input[value='Log in']")
-          settings_page = ShopifySettings.new(param)
+          button=StampsField.new browser.text_field(css: "input[value='Log in']")
+          settings_page=ShopifySettings.new(param)
 
           10.times do
             button.click

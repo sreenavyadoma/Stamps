@@ -19,7 +19,7 @@ Feature: Print 1 single ply DPO CP72 label on 4⅛ x 6¼ roll
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Roll 418x614"
+    Then set Print modal Print-On to Roll 418x614
     Then click print modal print button Sample
     Then click print modal print button
     Then Sign out

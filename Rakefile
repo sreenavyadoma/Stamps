@@ -1970,6 +1970,11 @@ Cucumber::Rake::Task.new(:mail_print_label_right_side) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_print_label_both_sides) do |t|
+  t.profile = 'mail_print_label_both_sides'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_print_certified_mail_hidden_postage) do |t|
   t.profile = 'mail_print_certified_mail_hidden_postage'
   t.cucumber_opts = "-p cuke_reports"
@@ -2880,8 +2885,8 @@ Cucumber::Rake::Task.new(:mail_print_on_list_of_values) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:mail_print_postage_elements) do |t|
-  t.profile = 'mail_print_postage_elements'
+Cucumber::Rake::Task.new(:mail_print_postage_fields) do |t|
+  t.profile = 'mail_print_postage_fields'
   t.cucumber_opts = "-p cuke_reports"
 end
 

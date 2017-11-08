@@ -396,14 +396,14 @@ Feature: All details tests for order
     Then set Order Details form Reference Number to random
     Then expect Order Details form Reference Number is correct
 
-    Then set Order Details form Reference Number to Rob
-    Then expect Order Details form Reference Number is Rob
+    Then set Order Details form Reference Number to details_reference_no
+    Then expect Order Details form Reference Number is details_reference_no
 
     Then click Orders Toolbar Print button
     Then in Print modal, uncheck Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
     Then in Print modal, check Print Reference # on Shipping Label
-    Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
+    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then click print modal print button
     Then Sign out
@@ -418,7 +418,7 @@ Feature: All details tests for order
     Then set Order Details form Ounces to 1
 
     Then set Order Details form service to FCM Large Envelope
-    Then expect Order Details form service is FCM Large Envelope
+    Then expect Order Details form service is FCM Large Envelope/Flat
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present

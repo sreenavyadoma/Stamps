@@ -5,13 +5,13 @@ Then /^[Ss]et Extra Services COD to (\d*.?\d+)$/ do |amount|
 end
 
 Then /^[Ee]xpect Extra Services COD Price to be (\d*.?\d+)$/ do |expectation|
-  expect(stamps.mail.print_form.advanced_options.extra_services.cod_price_element).to be_present
-  20.times do break if stamps.mail.print_form.advanced_options.extra_services.cod_price == expectation.to_f.round(2) end
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod_price_field).to be_present
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.cod_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.cod_price).to eql(expectation.to_f.round(2))
 end
 
 Then /^[Ss]ave Extra Services$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services.save_element).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.save_field).to be_present
   stamps.mail.print_form.advanced_options.extra_services.save
 end
 
@@ -20,7 +20,7 @@ Then /^[Ee]xpect Extra Services is present$/ do
 end
 
 Then /^[Cc]lose Extra Services$/ do
-  expect(stamps.mail.print_form.advanced_options.extra_services.save_element).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.save_field).to be_present
   stamps.mail.print_form.advanced_options.extra_services.close
 end
 
@@ -30,7 +30,7 @@ Then /^[Ss]et Extra Services Security to (.*)$/ do |str|
 end
 
 Then /^[Ee]xpect Extra Services Security Price to be (\d*.?\d+)$/ do |expectation|
-  20.times do break if stamps.mail.print_form.advanced_options.extra_services.security_price == expectation.to_f.round(2) end
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.security_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.security_price).to eql(expectation.to_f.round(2))
 end
 
@@ -47,7 +47,7 @@ Then /^[Cc]heck Extra Services Return Receipt$/ do
 end
 
 Then /^[Ee]xpect Extra Services Return Receipt Price to be (\d*.?\d+)$/ do |expectation|
-  20.times do break if stamps.mail.print_form.advanced_options.extra_services.return_receipt_price == expectation.to_f.round(2) end
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.return_receipt_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt_price).to eql(expectation.to_f.round(2))
 end
 
@@ -68,7 +68,7 @@ Then /^[Cc]heck Extra Services Restricted Delivery$/ do
 end
 
 Then /^[Ee]xpect Extra Services Restricted Delivery Price to be (\d*.?\d+)$/ do |expectation|
-  20.times do break if stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price == expectation.to_f.round(2) end
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.restricted_delivery_price).to eql(expectation.to_f.round(2))
 end
 
@@ -81,7 +81,7 @@ Then /^[Cc]heck Extra Services Notice of Non-Delivery$/ do
 end
 
 Then /^[Ee]xpect Extra Services Notice of Non-Delivery Price to be (\d*.?\d+)$/ do |expectation|
-  20.times do break if stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price == expectation.to_f.round(2) end
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.non_delivery_notice_price).to eql(expectation.to_f.round(2))
 end
 
@@ -114,6 +114,6 @@ Then /^[Uu]ncheck Extra Services Non-Rectangular$/ do
 end
 
 Then /^[Ee]xpect Extra Services Total Price to be (\d*.?\d+)$/ do |expectation|
-  20.times do break if stamps.mail.print_form.advanced_options.extra_services.total_price == expectation.to_f.round(2) end
+  20.times do break if stamps.mail.print_form.advanced_options.extra_services.total_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.total_price).to eql(expectation.to_f.round(2))
 end

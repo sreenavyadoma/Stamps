@@ -5,7 +5,7 @@ Then /^Volusion: Visit Page$/ do
 end
 
 Then /^Volusion Login:  New Customers - Continue$/ do
-  @volusion_reg = volusion.continue
+  @volusion_reg=volusion.continue
 end
 
 Then /^Volusion Login:  Set Email Address to (.*)$/ do |email|
@@ -17,7 +17,7 @@ Then /^Volusion Login:  Set Password to (.*)$/ do |password|
 end
 
 Then /^Volusion New to Mail Stamps: Set email address to (.*)$/ do |email|
-  @volusion_email = (email.downcase == 'random')? "#{test_helper.random_alpha_numeric}@mailinator.com":email
+  @volusion_email=(email.downcase=='random')? "#{test_helper.random_alpha_numeric}@mailinator.com":email
   @volusion_reg.email.set @volusion_email
 end
 
@@ -26,7 +26,7 @@ Then /^Volusion New to Mail Stamps: Type email address again$/ do
 end
 
 Then /^Volusion New to Mail Stamps: Set new password to (.*)$/ do |password|
-  @volusion_password = password
+  @volusion_password=password
   @volusion_reg.password.set @volusion_password
 end
 
@@ -43,19 +43,19 @@ Then /^Volusion New to Mail Stamps: Uncheck receive newsletter$/ do
 end
 
 Then /^Volusion New to Mail Stamps: Click Continue$/ do
-  @volusion_shipping_address = @volusion_reg.continue
+  @volusion_shipping_address=@volusion_reg.continue
 end
 
 Then /^Volusion Shipping Address: Set First Name to (.*)$/ do |value|
-  @volusion_shipping_address.first_name.set(value.downcase == 'random')?(test_helper.random_full_name):value
+  @volusion_shipping_address.first_name.set(value.downcase=='random')?(test_helper.random_full_name):value
 end
 
 Then /^Volusion Shipping Address: Set Last Name to (.*)$/ do |value|
-  @volusion_shipping_address.last_name.set(value.downcase == 'random')?(test_helper.random_full_name):value
+  @volusion_shipping_address.last_name.set(value.downcase=='random')?(test_helper.random_full_name):value
 end
 
 Then /^Volusion Shipping Address: Set Company to (.*)$/ do |value|
-  @volusion_shipping_address.company.set(value.downcase == 'random')?(test_helper.random_full_name):value
+  @volusion_shipping_address.company.set(value.downcase=='random')?(test_helper.random_full_name):value
 end
 
 Then /^Volusion Shipping Address: Set Address 1 to (.*)$/ do |value|
@@ -83,7 +83,7 @@ Then /^Volusion Shipping Address: Set Zip Code to (.*)$/ do |value|
 end
 
 Then /^Volusion Shipping Address: Set Phone Number to (.*)$/ do |value|
-  @volusion_shipping_address.phone_number.set(value.downcase == 'random')?(test_helper.random_phone_number):value
+  @volusion_shipping_address.phone_number.set(value.downcase=='random')?(test_helper.random_phone_number):value
 end
 
 Then /^Volusion Shipping Address: Type of address - residential$/ do
@@ -103,7 +103,7 @@ Then /^Volusion Shipping Address: Type of address - No$/ do
 end
 
 Then /^Volusion Shipping Address: Click Continue$/ do
-  @my_account_page = @volusion_shipping_address.continue
+  @my_account_page=@volusion_shipping_address.continue
 end
 
 Then /^Volusion Account: Click My Account$/ do
@@ -111,11 +111,11 @@ Then /^Volusion Account: Click My Account$/ do
 end
 
 Then /^Volusion Account: Click CATEGORY ONE$/ do
-  @category_one = @my_account_page.category_one
+  @category_one=@my_account_page.category_one
 end
 
 Then /^Volusion Category One: Click SAMPLE PRODUCT ONE$/ do
-  @volusion_product = @category_one.sample_product_one
+  @volusion_product=@category_one.sample_product_one
 end
 
 Then /^Volusion Product: Set Quantity to (\d+)$/ do |qty|
@@ -127,11 +127,11 @@ Then /^Volusion Product: Click ADD TO BAG$/ do
 end
 
 Then /^Volusion Product: Visit Cart$/ do
-  @volusion_cart = @my_account_page.cart
+  @volusion_cart=@my_account_page.cart
 end
 
 Then /^Volusion Cart: Proceed to checkout$/ do
-  @checkout_page = @volusion_cart.proceed_to_checkout
+  @checkout_page=@volusion_cart.proceed_to_checkout
 end
 
 Then /^Volusion Checkout: Select My Saved Billing Address (.*)$/ do |address|
@@ -155,11 +155,11 @@ Then /^Volusion Checkout: Select Payment Method - Cash$/ do
 end
 
 Then /^Volusion Checkout: Place Order$/ do
-  @volusion_order_number = @checkout_page.place_order
+  @volusion_order_number=@checkout_page.place_order
 end
 
 Then /^Volusion Account: Sign out$/ do
-  @volusion_login_page = @my_account_page.log_out
+  @volusion_login_page=@my_account_page.log_out
 end
 
 

@@ -11,6 +11,6 @@ Feature: click print modal print button Sample - PME Package
     Then set Order Details form service to PME Package
     Then set Order Details form Ounces to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button Sample
