@@ -398,10 +398,11 @@ module Stamps
         def set(address)
           10.times do
             begin
+              textarea.click
               textarea.set(address)
               15.times do
-                blur_out(3)
                 textarea.click
+                blur_out(3)
                 break if less_link.present?
               end
               break if less_link.present?
@@ -411,8 +412,7 @@ module Stamps
               expect("Unable to Ship-To address to #{address}. Error: #{e.message}").to eql "Set Ship-To Address Failed"
             end
           end
-          expect(less_link).to be_present, "Less link did not appear on Single Order Details form. Unable to save Ship-To data."
-          expect(textarea.text).to include address.split(" ").last
+          textarea.text
         end
 
         def set_ambiguous(address)

@@ -4,11 +4,11 @@ module Stamps
     class WebMail < Browser::StampsModal
       include PrintFormPanel::PrintFormBlurOut
       def sign_in_modal
-        (cache[:sign_in_modal].nil?||!cache[:sign_in_modal].present?)?cache[:sign_in_modal]=MailSignInModal.new(param):cache[:sign_in_modal]
+        (cache[:sign_in_modal].nil?||!cache[:sign_in_modal].present?)?cache[:sign_in_modal]=MailSignIn::MailSignInModal.new(param):cache[:sign_in_modal]
       end
 
       def mail_toolbar
-        (cache[:mail_toolbar].nil?||!mail_toolbar.present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
+        (cache[:mail_toolbar].nil?||!cache[:mail_toolbar].present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
       end
 
       def print_media

@@ -316,34 +316,22 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o International address to$/ do |t
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  address=test_helper.address_helper_zone(address)
-  test_param[:street_address]=address['street_address']
-  test_param[:city]=address['city']
-  test_param[:state]=address['state']
-  test_param[:zip]=address['zip']
-  test_param[:full_name]=address['full_name']
-  test_param[:company]=address['company']
-  test_param[:ship_to_domestic]=test_helper.format_address(address)
-
   step "show order details form ship-to fields"
-  stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic])
+  expect(stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic]=test_helper.format_address(test_helper.address_helper_zone(address)))).to include(address.split(' ').last)
   step "Save Order Details data"
   step "hide order details form Ship-To fields"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form [Ss]hip-[Tt]o Domestic address to$/ do |table|
   address_table=table.hashes.first
-
   test_param[:full_name]=(address_table['full_name'].downcase.include?('random')) ? test_helper.random_full_name : address_table['full_name']
   test_param[:company]=(address_table['company'].downcase.include?('random')) ? test_helper.random_company_name : address_table['company']
   test_param[:street_address]=address_table['street_address']
-
   if address_table['street_address_2'].nil?
     test_param[:street_address_2]=""
   else
     test_param[:street_address_2]=(address_table['street_address_2'].downcase.include?('random')) ? test_helper.random_alpha_numeric(2, 7) : address_table['street_address_2']
   end
-
   test_param[:city]=(address_table['city'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['city']
   test_param[:state]=(address_table['state'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['state']
   test_param[:zip]=(address_table['zip'].downcase.include?('random')) ? test_helper.random_alpha_numeric : address_table['zip']

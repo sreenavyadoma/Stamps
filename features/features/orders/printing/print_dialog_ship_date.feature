@@ -3,7 +3,7 @@
 Feature: Set Print Ship Date to Today
 
   Background:
-    Given a valid user is signed in to Web Apps
+    Given user is signed in to Web Apps
 
   @print_dialog_ship_date
   Scenario: Set Ship Date to today

@@ -2,15 +2,20 @@
 module Stamps
   module Orders
     module Printing
+      module OrdersPrintingCache
+        def cache
+          @cache ||= {}
+        end
+      end
+
       class OrdersPrintMediaDropList < Browser::StampsModal
+        include OrdersPrintingCache
         def dropdown
-          @dropdown=StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil?||!@dropdown.present?
-          @dropdown
+          (cache[:printing_on].nil?||!cache[:printing_on].present?)?cache[:printing_on]=StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")):cache[:printing_on]
         end
 
         def textbox
-          @textbox=StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist]")) if @textbox.nil?||!@textbox.present?
-          @textbox
+          (cache[:printing_on].nil?||!cache[:printing_on].present?)?cache[:printing_on]=StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist]")):cache[:printing_on]
         end
 
         def present?
