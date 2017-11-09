@@ -476,8 +476,9 @@ module Stamps
       end
 
       module OrdersPrintModalTitle
+        include OrdersPrintingCache
         def window_title
-          (@window_title.nil?||!@window_title.present?)?@window_title=StampsField.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')):@window_title
+          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: '[id^=printwindow-][id$=_header-innerCt] [class*=x-title-text-default]')):cache[:window_title]
         end
 
         def label_count

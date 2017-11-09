@@ -446,9 +446,9 @@ module Stamps
         def click
           20.times do
             begin
-              return print_window.window_title.text if print_window.window_title.present?
               print_order_btn.click
               print_window.window_title.wait_until_present(4)
+              return print_window.window_title.text if print_window.window_title.present?
               if terms_conditions.present?
                 logger.debug terms_conditions.form_body.text
                 terms_conditions.i_agree
