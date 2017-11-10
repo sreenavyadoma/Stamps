@@ -1,10 +1,22 @@
-Feature: Mail Shipping Label - Right Side
-
-
+@mail_print_label_both_sides
+Feature: Mail Shipping Label - Left Side, Mail Shipping Label - Right Side
 
   Background:
     Given a valid user is signed in to Web Apps
 
+  @mail_print_label_left_side
+  Scenario: Left Side Shipping Label -  SDC-1200
+
+    Then select Print On Shipping Label - SDC-1200
+    Then set Print form Mail-From to default
+    Then set Print form international mail to country to United States
+    Then set Print form Mail-To random address in zone 1
+    Then set Print form Ounces to 1
+    Then select Print form service PM Package
+    Then Print Postage
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+    Then Sign out
 
   @mail_print_label_right_side
   Scenario: Right Side Shipping Label - 8 ½” x 11” Paper
@@ -33,7 +45,6 @@ Feature: Mail Shipping Label - Right Side
     Then set Print form Ounces to 1
     Then select Print form service PM Package
     Then on Print form, select right side starting label
-    #Then select print modal right-side label
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
