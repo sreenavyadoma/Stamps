@@ -1,12 +1,30 @@
 module Stamps
   module Orders
     module Grid
-      module GridColumnCommon
+      class GridColumnCommon < Browser::StampsModal
         include Stamps::Orders::LoadingOrders
 
-        def cache
-          @cache ||= {}
+        @column_number = {}
+        @cache = {}
+
+        def self.column_number
+          @column_number
         end
+
+        def column_number
+          self.class.column_number
+        end
+
+        def self.cache
+          @cache
+        end
+
+        def cache
+          self.class.cache
+        end
+      end
+
+      module GridColumnCommon
         
         def column_text
           cache[:column_text] ||= {
@@ -117,24 +135,21 @@ module Stamps
         end
 
         def column_number(column)
-          @column_number ||= {}
+
           if @column_number[column].nil?
-            columns=browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
-            columns.each_with_index do |field, index|
+            browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span").each_with_index do |field, index|
               scroll_to_column(field) #scroll unless field is visible
               @column_number[column_text.key(StampsField.new(field).text)]=index+1
             end
           end
-          @@column_number[column]
+          @column_number[column]
         end
 
         # locate order_id row number
         def row_number(order_id)
           loading_orders.wait_while_present(10)
           5.times do
-            column_num=column_number(:order_id)
-            fields=browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
-            fields.each_with_index do |field, index|
+            browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
               scroll_to_column(field)
               if StampsField.new(field).text.include?(order_id)
                 logger.info "Order ID #{order_id}, Row #{index+1}"
