@@ -30,7 +30,7 @@ Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
 end
 
 Then /^[Oo]rders [Pp]rint [Mm]odal [Pp]rinter [Dd]rop[Dd]own is present$/ do
-  expect(stamps.orders.orders_print_modal.printer).to be_present, "Print modal Printer dropdown is not present. Check that StampsConnect is connected. You might need to re-login on this PC #{modal_param.hostname}"
+  expect(stamps.orders.orders_print_modal.printer).to be_present, "StampsConnect is not connected. You might need to re-login on this PC: #{modal_param.hostname}"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
@@ -39,12 +39,6 @@ end
 
 Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
   stamps.orders.orders_print_modal.print
-  # @ship_date=print_modal.ship_date.textbox.text
-  # @paper_tray=print_modal.paper_tray.textbox.text
-  # @printer=print_modal.printer.textbox.text
-  # @printing_on=print_modal.printing_on.textbox.text
-  # @printing_error=print_modal.print
-  # sleep(4)
 end
 
 Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is [Pp]resent$/ do
@@ -70,7 +64,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal [Ss]hip [Dd]ate [Dd]rop[Dd]own is present$/ d
 end
 
 Then /^[Ii]n [Pp]rint modal, check Hide Mail Value$/ do
-  expect(stamps.orders.orders_print_modal.print_options.hide_postage_value).to
+  #expect(stamps.orders.orders_print_modal.print_options.hide_postage_value).to
 end
 
 Then /^[Ii]n [Pp]rint modal, uncheck Hide Mail Value$/ do
@@ -117,7 +111,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
   expect(stamps.orders.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
-Then /^[Ss]et [\w]rint [Mm]odal [Pp]rint-On to \"(.*)\"$/ do |expectation|
+Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-[Oo]n to (.*)$/ do |expectation|
   stamps.orders.orders_print_modal.printing_on.select(expectation)
 end
 

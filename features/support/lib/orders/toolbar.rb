@@ -444,11 +444,11 @@ module Stamps
         end
 
         def click
-          15.times do
+          20.times do
             begin
-              return true if printing_on.present?
               print_order_btn.click
-              printing_on.wait_until_present(4)
+              print_window.window_title.wait_until_present(4)
+              return print_window.window_title.text if print_window.window_title.present?
               if terms_conditions.present?
                 logger.debug terms_conditions.form_body.text
                 terms_conditions.i_agree
@@ -460,21 +460,18 @@ module Stamps
               end
               expect(incomplete_order_modal).to_not be_present, incomplete_order_modal.error_message_p2
               expect(multi_order_some_error).to_not be_present, multi_order_some_error.error_message_p2
-              return true if printing_on.present?
             rescue
               #ignore
             end
           end
-          false
+          nil
         end
 
         def usps_terms
-          modal=open_window(usps_terms_modal)
-          expect(modal).to be_present, "USPS Terms Modal is NOT present"
-          modal
+          open_window(usps_terms_modal)
         end
 
-        def open_window window
+        def open_window(window)
           return window if window.present?
 
           print_order_btn.click
@@ -576,8 +573,9 @@ module Stamps
         def cache
           @cache ||= {}
         end
-        def printing_on
-          (cache[:printing_on].nil?||!cache[:printing_on].present?)?cache[:printing_on]=Stamps::Orders::Printing::OrdersPrintMediaDropList.new(param):cache[:printing_on]
+
+        def print_window
+          (cache[:print_window].nil?||!cache[:print_window].present?)?cache[:print_window]=Browser::StampsModal.new(param).extend(Stamps::Orders::Printing::OrdersPrintModalTitle):cache[:print_window]
         end
 
         #todo-Rob verify css locator

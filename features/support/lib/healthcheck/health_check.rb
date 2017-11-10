@@ -3,40 +3,34 @@ module Stamps
 
     def health_check
       param.test_env='stg' if param.test_env.downcase=='staging'
-
       case param.test_env.downcase
         when /sc/
           url="https://printext.qasc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
-          logger.message "Visit: #{url}"
           browser.goto url
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
           logger.message "-"
           logger.message "-"
-
         when /cc/
           url="https://printext.qacc.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
-          logger.message "Visit: #{url}"
           browser.goto url
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
           logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
           logger.message "-"
           logger.message "-"
-
         when /stg/
           url="https://print.testing.stamps.com/orders/healthcheck.aspx"
           logger.message "-"
           logger.message "-"
           logger.message "Print - Orders"
-          logger.message "Visit: #{url}"
           browser.goto url
           logger.message "#{browser.url}"
           logger.message "#{browser.text}"
@@ -46,26 +40,19 @@ module Stamps
         else
           # do nothing
       end
-
-      logger.message browser.text
-
       if browser.text.include? "Server Error"
         logger.error "\n#{browser.url}\n#{browser.text}"
         raise "\n#{browser.url}\n#{browser.text}"
       end
-
       if browser.text.downcase.include? "server not found"
         logger.error "\n#{browser.url}\n#{browser.text}"
         raise "\n#{browser.url}\n#{browser.text}"
       end
-
-      logger.message browser.url
-      expect(browser.text).to include "All tests passed"
+      browser.text
     end
 
     def address_book
       param.test_env='stg' if param.test_env.downcase=='staging'
-
       case param.test_env.downcase
         when /sc/
           logger.message "Print - Address Book"
@@ -75,7 +62,6 @@ module Stamps
           logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
           logger.message "-"
           logger.message "-"
-
         when /cc/
           logger.message "Print - Address Book"
           browser.goto "https://printext.qacc.stamps.com/addressbook/healthcheck.aspx"
@@ -84,7 +70,6 @@ module Stamps
           logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
           logger.message "-"
           logger.message "-"
-
         when /stg/
           logger.message "Print - Address Book"
           browser.goto "https://print.testing.stamps.com/addressbook/healthcheck.aspx"
@@ -93,23 +78,18 @@ module Stamps
           logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
           logger.message "-"
           logger.message "-"
-
         else
-
+          #do nothing
       end
-
       if browser.text.include? "Server Error"
         logger.error "\n#{browser.url}\n#{browser.text}"
         raise "\n#{browser.url}\n#{browser.text}"
       end
-
       if browser.text.downcase.include? "server not found"
         logger.error "\n#{browser.url}\n#{browser.text}"
         raise "\n#{browser.url}\n#{browser.text}"
       end
-
-      logger.info browser.url
-      expect(browser.text).to include "All tests passed"
+      browser.text
     end
 
     def or_reports

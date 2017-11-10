@@ -12,5 +12,5 @@ Feature: Print Media - Roll - 4" x 6"
     Then set Order Details form Pounds to 1
     Then Pause for 2 seconds
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Roll - 4 x 6"
+    Then set Print modal Print-On to Roll - 4 x 6
     Then click print modal print button

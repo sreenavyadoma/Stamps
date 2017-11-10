@@ -155,7 +155,7 @@ Feature:  BVT tests for Orders
     Then set Order Details form Length to 1
     Then set Order Details form Height to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then click print modal print button
     Then Sign out
 

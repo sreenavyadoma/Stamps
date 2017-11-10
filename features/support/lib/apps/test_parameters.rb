@@ -53,7 +53,7 @@ module Stamps
         if @modal_param.web_app==:mail||@modal_param.web_app==:orders
           @modal_param.health_check=test_helper.to_bool ENV['HEALTHCHECK']
           @modal_param.url=ENV['URL']
-          @modal_param.developer=(ENV['DEVELOPER'].nil?)?false:ENV['DEVELOPER']
+          @modal_param.developer=ENV['DEVELOPER']
 
           expect(ENV['BROWSER']).to be_truthy
           expect(ENV['URL']).to be_truthy

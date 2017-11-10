@@ -98,7 +98,7 @@ Feature: Orders Filter Panel
     Then expect Orders Grid Zip is 92101
 
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Shipping Label - 8 ½" x 11" Paper"
+    Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then set Orders print modal printer
     Then click print modal print button
 

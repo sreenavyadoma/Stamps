@@ -24,7 +24,7 @@ end
 
 Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint [Bb]utton$/ do
   step "Save Order Details data"
-  stamps.orders.orders_toolbar.toolbar_print.click
+  expect(stamps.orders.orders_toolbar.toolbar_print.click).to be_truthy
 end
 
 Then /^[Cc]lick [Oo]rders [Tt]oolbar [Ss]ettings [Bb]utton$/ do
@@ -41,7 +41,6 @@ Then /^[Ii]n Print modal, Open Reprint Modal$/ do
 end
 
 Then /^Label Unavailable: Expect Visible$/ do
-  #test_config.logger.step "Label Unavailable:  Expect Visible"
   case @reprint_modal
     when LabelUnavailable
       test_config.logger.step @reprint_modal.message

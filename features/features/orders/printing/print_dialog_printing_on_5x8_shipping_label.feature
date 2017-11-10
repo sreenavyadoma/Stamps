@@ -12,7 +12,7 @@ Feature: Print Media - Shipping Label: 5 ½" x 8 ½"
     Then set Order Details form Pounds to 1
     Then Pause for 2 seconds
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to "Shipping Label - 5 ½" x 8 ½""
+    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then click print modal print button
     Then Sign out
