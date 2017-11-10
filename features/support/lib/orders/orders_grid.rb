@@ -2,12 +2,14 @@ module Stamps
   module Orders
     module Grid
       module GridColumnCommon
-        def column_cache
-          @column_cache ||= {}
+        include Stamps::Orders::LoadingOrders
+
+        def cache
+          @cache ||= {}
         end
         
         def column_text
-          @column_text ||= {
+          cache[:column_text] ||= {
               check_box: " ",
               store: "Store",
               ship_cost: "Ship Cost",
@@ -44,7 +46,6 @@ module Stamps
 
         def sort_order(column, sort_order)
           scroll_to_column(column)
-
           span=browser.span(text: column_text[column])
           column=StampsField.new(span)
           sort_order=(sort_order==:sort_ascending)?"ASC":"DESC"
@@ -63,7 +64,7 @@ module Stamps
           end
           return "ASC" if  sort_order_span.attribute_value("class").include?("ASC")
           return "DESC" if  sort_order_span.attribute_value("class").include?("DESC")
-          "Something went wrong."
+          nil
         end
 
         def grid_text_by_id(column, order_id)
@@ -116,18 +117,20 @@ module Stamps
         end
 
         def column_number(column)
-          if column_cache[column].nil?
+          @column_number ||= {}
+          if @column_number[column].nil?
             columns=browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
             columns.each_with_index do |field, index|
               scroll_to_column(field) #scroll unless field is visible
-              column_cache[column_text.key(StampsField.new(field).text)]=index+1
+              @column_number[column_text.key(StampsField.new(field).text)]=index+1
             end
           end
-          column_cache[column]
+          @@column_number[column]
         end
 
-        # locate row location for order_id
+        # locate order_id row number
         def row_number(order_id)
+          loading_orders.wait_while_present(10)
           5.times do
             column_num=column_number(:order_id)
             fields=browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
@@ -135,7 +138,7 @@ module Stamps
               scroll_to_column(field)
               if StampsField.new(field).text.include?(order_id)
                 logger.info "Order ID #{order_id}, Row #{index+1}"
-                sleep(0.35)
+                sleep(0.15)
                 return index + 1
               end
             end

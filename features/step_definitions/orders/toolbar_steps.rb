@@ -24,7 +24,7 @@ end
 
 Then /^[Cc]lick [Oo]rders [Tt]oolbar [Pp]rint [Bb]utton$/ do
   step "Save Order Details data"
-  expect(stamps.orders.orders_toolbar.toolbar_print.click).to be_truthy
+  expect(stamps.orders.orders_toolbar.toolbar_print.click).to match(/You have \d label ready to print/)
 end
 
 Then /^[Cc]lick [Oo]rders [Tt]oolbar [Ss]ettings [Bb]utton$/ do

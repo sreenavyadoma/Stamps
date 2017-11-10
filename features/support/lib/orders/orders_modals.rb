@@ -6,6 +6,13 @@ module Stamps
       end
     end
 
+    module LoadingOrders
+      include StampsOrdersCache
+      def loading_orders
+        (cache[:loading_orders].nil?||!cache[:loading_orders].present?)?cache[:loading_orders]=StampsField.new(browser.div(text: 'Loading orders...')):cache[:loading_orders]
+      end
+    end
+
     module MarketPlaceStoreModals
       include StampsOrdersCache
       def paypal_store

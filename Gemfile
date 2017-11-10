@@ -14,5 +14,6 @@ gem 'yml_reader'
 gem 'holidays'
 gem 'spreadsheet'
 gem 'measured'
+gem 'safe_yaml'
 
 

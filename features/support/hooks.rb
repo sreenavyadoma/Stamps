@@ -13,6 +13,8 @@ include DatabaseHelper
 
 Before do  |scenario|
   test_config.scenario_name=scenario.name
+  #yaml = '../config/data/webclient.yml'
+  #yml = YAML.load(yaml)
   test_config.logger.message "-"
   test_config.logger.message "-"
   test_config.logger.message "-"
