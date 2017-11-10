@@ -7,6 +7,21 @@ module Stamps
         end
       end
 
+      #todo-Rob refactor MoreInfoPage
+      class MoreInfoPage < Browser::StampsModal
+        def present?
+          browser.windows.size > 1
+        end
+
+        def title
+          browser.windows.last.title
+        end
+
+        def close
+          browser.windows.last.close
+        end
+      end
+
       class WhatsNewModal < Browser::StampsModal
         attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
