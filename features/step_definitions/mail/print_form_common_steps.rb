@@ -90,6 +90,8 @@ end
 # Need to put specific location
 Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do
   stamps.mail.buy_more_labels.click
+  stamps.mail.print_preview.buy_more_labels.xxx
+  #stamps.mail.print_preview.starting_label.xxx
 end
 
 # Need to put specific location

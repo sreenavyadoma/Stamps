@@ -85,12 +85,24 @@ module Stamps
         end
       end
 
+      module StampsPrintPreview
+        def buy_more_labels
+          (cache[:buy_more_labels].nil?||!cache[:buy_more_labels].present?)?cache[:buy_more_labels] = StampsField.new(browser.span(text: "Buy More Labels")):cache[:buy_more_labels]
+        end
+
+        def net_stamps_home_btn
+          browser.windows.last.use
+          (cache[:net_stamps_home_btn].nil?||!cache[:net_stamps_home_btn].present?)?cache[:net_stamps_home_btn] = StampsField.new(browser.img(css: "img[src*=home_logo]")):cache[:net_stamps_home_btn]
+        end
+      end
+
       module MailStamps
         include MailFrom
         include MailTo
         include MailWeight
         include MailService
         include MailAdvancedOptions
+        include StampsPrintPreview
 
         def serial_number
           @serial_number=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")) if @serial_number.nil?||!@serial_number.present?
