@@ -24,13 +24,10 @@ Feature: Shipstation Upgrade Path
 
   @add_advanced_shipping_features
   Scenario: Add advanced shipping features dialog
-
-    Then Manage Stores: Open Modal
-    Then Manage Stores: Delete All Stores
-
-    # Add Store
-    Then Manage Stores: Add
-    Then Marketplace: Select 3dcart
+    Then click orders toolbar settings button
+    Then click Order Settings Stores Add button
+    Then search Marketplace for store name ecwid
+    Then add Marketplace Store ecwid
 
     #Add advanced shipping feature dialog
     Then expect Orders page Add Advanced Shipping Features! dialog is present
@@ -46,13 +43,16 @@ Feature: Shipstation Upgrade Path
     Then expect in Activate Your New Features dialog password exists
     Then expect in Activate Your New Features dialog terms and conditions checkbox exists
     Then expect in Activate Your New Features dialog login Button exists
+    Then click on login Button
+    Then expect in Activate Your New Features dialog password tooltip to be This field is required
+    Then expect in Activate Your New Features dialog terms and conditions tooltip to be This field is required
     Then set in Activate Your New Features dialog username to random
     Then expect in Activate Your New Features dialog username is correct
     Then set in Activate Your New Features dialog password to random
     Then expect in Activate Your New Features dialog password is correct
     Then check in Activate Your New Features dialog terms and conditions checkbox
     Then expect in Activate Your New Features dialog terms and conditions is checked
-    Then click on login Button
+
     Then close Activate Your New Features dialog
 
     Then Sign out

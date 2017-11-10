@@ -15,6 +15,10 @@ module Stamps
       def rakuten
         (cache[:rakuten].nil?||!cache[:rakuten].present?)?cache[:rakuten]=Stamps::Orders::Stores::Rakuten.new(param):cache[:rakuten]
       end
+
+      def shipstation
+
+      end
     end
 
     module StampsOrdersModals

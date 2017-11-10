@@ -253,6 +253,8 @@ module Stamps
               raise "#{str} is not implemented."
             when :magento
               raise "#{str} is not implemented."
+            when :shipstation
+              # give back window title
             else
               raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end

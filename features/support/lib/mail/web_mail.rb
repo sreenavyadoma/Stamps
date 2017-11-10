@@ -50,15 +50,12 @@ module Stamps
       end
 
       def buy_more_labels
-        @buy_more_labels = StampsElement.new(browser.span(text: "Buy More Labels")) if @buy_more_labels.nil? || !@buy_more_labels.present?
-        expect(@buy_more_labels).to be_present
-        @buy_more_labels
+        (cache[:buy_more_labels].nil?||!cache[:buy_more_labels].present?)?cache[:buy_more_labels] = StampsField.new(browser.span(text: "Buy More Labels")):cache[:buy_more_labels]
       end
 
       def net_stamps_home_btn
-        @net_stamps_home_btn = StampsElement.new(browser.img(css: "img[src*=home_logo]")) if @net_stamps_home_btn.nil? || !@net_stamps_home_btn.present?
-        expect(@net_stamps_home_btn).to be_present
-        @net_stamps_home_btn
+        browser.windows.last.use
+        (cache[:net_stamps_home_btn].nil?||!cache[:net_stamps_home_btn].present?)?cache[:net_stamps_home_btn] = StampsField.new(browser.img(css: "img[src*=home_logo]")):cache[:net_stamps_home_btn]
       end
 
       def present?

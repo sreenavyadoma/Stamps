@@ -18,7 +18,7 @@ Then /^[Ee]xpect in [Ll]ooking for [Ss]hip[Ss]tation[?] dialog [Ss]ign in to [Ss
 end
 
 Then /^[Ee]xpect in [Ll]ooking for [Ss]hip[Ss]tation[?] dialog Close [Bb]utton exists$/ do
-#todo
+  pending
 end
 
 Then /^[Cc]heck [Ll]ooking for [Ss]hip[Ss]tation[?] dialog don't show checkbox$/ do
@@ -105,6 +105,14 @@ Then /^[Cc]heck in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions is checked$/ do
+#todo
+end
+
+Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword tooltip to be (.*)$/ do |str|
+#todo
+end
+
+Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions tooltip to be (.*)$/ do |str|
 #todo
 end
 
