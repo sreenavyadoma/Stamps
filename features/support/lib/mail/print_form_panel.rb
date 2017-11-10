@@ -87,12 +87,9 @@ module Stamps
 
       module StampsPrintPreview
         def buy_more_labels
-          (cache[:buy_more_labels].nil?||!cache[:buy_more_labels].present?)?cache[:buy_more_labels] = StampsField.new(browser.span(text: "Buy More Labels")):cache[:buy_more_labels]
-        end
-
-        def net_stamps_home_btn
-          browser.windows.last.use
-          (cache[:net_stamps_home_btn].nil?||!cache[:net_stamps_home_btn].present?)?cache[:net_stamps_home_btn] = StampsField.new(browser.img(css: "img[src*=home_logo]")):cache[:net_stamps_home_btn]
+          @buy_more_labels = StampsField.new(browser.span(text: "Buy More Labels")) if @buy_more_labels.nil?||!@buy_more_labels.present?
+          expect(@buy_more_labels).to be_present
+          @buy_more_labels
         end
       end
 
