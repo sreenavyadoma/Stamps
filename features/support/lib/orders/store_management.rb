@@ -234,6 +234,8 @@ module Stamps
               (cache[:etsy_store_field].nil?||!cache[:etsy_store_field].present?)?cache[:etsy_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:etsy_store_field]
             when :magento
               (cache[:magento_store_field].nil?||!cache[:magento_store_field].present?)?cache[:magento_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:magento_store_field]
+            when :opencart
+              (cache[:opencart_store_field].nil?||!cache[:opencart_store_field].present?)?cache[:opencart_store_field]=StampsField.new(browser.div(css: "[data-store-name=OpenCart]")):cache[:opencart_store_field]
             else
               return nil
           end
@@ -253,8 +255,8 @@ module Stamps
               raise "#{str} is not implemented."
             when :magento
               raise "#{str} is not implemented."
-            when :shipstation
-              # give back window title
+            when :opencart
+              (cache[:opencart].nil?||!cache[:opencart].present?)?cache[:opencart]=Browser::StampsModal.new(param).extend(Orders::Stores::ConnectYourOpenCartStore):cache[:opencart_window]
             else
               raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end

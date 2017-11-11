@@ -26,8 +26,8 @@ Feature: Shipstation Upgrade Path
   Scenario: Add advanced shipping features dialog
     Then click orders toolbar settings button
     Then click Order Settings Stores Add button
-    Then search Marketplace for store name ecwid
-    Then add Marketplace Store ecwid
+    Then search Marketplace for store name opencart
+    Then add Marketplace Store opencart
 
     #Add advanced shipping feature dialog
     Then expect Orders page Add Advanced Shipping Features! dialog is present

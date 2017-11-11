@@ -8,17 +8,6 @@ module Stamps
         end
       end
 
-      module ShipStationWindowTitle
-        include PayPalCache
-        def window_title
-          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first):cache[:window_title]
-        end
-
-        def x_btn
-          (cache[:x_btn].nil?||!cache[:x_btn].present?)?cache[:x_btn]=StampsField.new(browser.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first):cache[:x_btn]
-        end
-      end
-
       class LookingForShipStaion < StoreSettings
         include ShipStationUpgradeCache
 
