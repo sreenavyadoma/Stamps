@@ -235,7 +235,7 @@ module Stamps
             when :magento
               (cache[:magento_store_field].nil?||!cache[:magento_store_field].present?)?cache[:magento_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:magento_store_field]
             when :opencart
-              (cache[:opencart_store_field].nil?||!cache[:opencart_store_field].present?)?cache[:opencart_store_field]=StampsField.new(browser.div(css: "[data-store-name=OpenCart]")):cache[:opencart_store_field]
+              (cache[:opencart_store_field].nil?||!cache[:opencart_store_field].present?)?cache[:opencart_store_field]=StampsField.new(browser.div(css: "div[style*='/OpenCart']")):cache[:opencart_store_field]
             else
               return nil
           end
@@ -256,7 +256,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             when :opencart
-              (cache[:opencart].nil?||!cache[:opencart].present?)?cache[:opencart]=Browser::StampsModal.new(param).extend(Orders::Stores::ConnectYourOpenCartStore):cache[:opencart_window]
+              (cache[:opencart].nil?||!cache[:opencart].present?)?cache[:opencart]=Browser::StampsModal.new(param).extend(Orders::Stores::OpenCartCache):cache[:opencart_window]
             else
               raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
@@ -265,6 +265,13 @@ module Stamps
         def add_store(str)
           20.times do
             return store_window(str).window_title.text if store_window(str).window_title.present?
+            store_field(str).click
+          end
+          nil
+        end
+
+        def add_shipstation_store(str)
+          20.times do
             store_field(str).click
           end
           nil

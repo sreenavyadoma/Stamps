@@ -55,6 +55,7 @@ supported_stores:
   etsy: Etsy
   shopify: Shopify
   magento: Magento
+  opencart: OpenCart
 
 
 intellij:

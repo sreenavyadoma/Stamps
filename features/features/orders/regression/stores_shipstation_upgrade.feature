@@ -27,7 +27,7 @@ Feature: Shipstation Upgrade Path
     Then click orders toolbar settings button
     Then click Order Settings Stores Add button
     Then search Marketplace for store name opencart
-    Then add Marketplace Store opencart
+    Then add Marketplace shipstation Store opencart
 
     #Add advanced shipping feature dialog
     Then expect Orders page Add Advanced Shipping Features! dialog is present
