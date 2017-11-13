@@ -1,11 +1,6 @@
 module Stamps
   module Mail
     module MailSignIn
-      module MailSignInCache
-        def cache
-          @cache ||= {}
-        end
-      end
 
       class WhatsNewModal < Browser::StampsModal
         attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
@@ -46,7 +41,6 @@ module Stamps
       end
 
       class MailSignInModal < Browser::StampsModal
-        include MailSignInCache
 
         def username_textbox
           (cache[:username_textbox].nil?||!cache[:username_textbox].present?)?cache[:username_textbox]=StampsTextbox.new(browser.text_field(id: "UserNameTextBox")):cache[:username_textbox]

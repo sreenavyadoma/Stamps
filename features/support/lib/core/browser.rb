@@ -651,13 +651,29 @@ module Stamps
 
     # StampsModal - base class for modals containing StampsElements
     class StampsModal
-      attr_accessor :param, :browser, :logger, :helper
-
+      attr_accessor :param, :cache # :logger, :helper
       def initialize(param)
-        @param=param
-        @browser=param.browser
-        @logger=param.logger
-        @helper=StampsTestHelper.new(logger)
+        @cache ||= {}
+        cache[:param]=param
+        cache[:browser]=param.browser
+        cache[:logger]=param.logger
+        cache[:helper]=StampsTestHelper.new(param.logger)
+      end
+
+      def param
+        cache[:param]
+      end
+
+      def browser
+        cache[:browser]
+      end
+
+      def logger
+        cache[:logger]
+      end
+
+      def helper
+        cache[:helper]
       end
     end
   end

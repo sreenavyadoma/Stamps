@@ -1,15 +1,7 @@
 module Stamps
   module Orders
     module OrdersSettings
-      module OrdersSettingsCache
-        def cache
-          @cache ||= {}
-        end
-      end
-
       module StoresTabViewToolbar
-        include OrdersSettingsCache
-
         def add_btn
           (cache[:add_btn].nil?||!cache[:add_btn].present?)?cache[:add_btn]=StampsField.new(browser.span(css: "[id=addStoreButton-btnIconEl]")):cache[:add_btn]
         end
@@ -40,13 +32,9 @@ module Stamps
       end
 
       module StoresTabViewGrid
-        include OrdersSettingsCache
-
       end
 
       module StoresTabViewBottom
-        include OrdersSettingsCache
-
       end
 
       class StoresTabView < Browser::StampsModal
@@ -61,8 +49,6 @@ module Stamps
 
       #fix me
       module OrdersSettingsTabBar
-        include OrdersSettingsCache
-
         def stores_tab_view
           (cache[:stores_tab_view].nil?||!cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Orders::OrdersSettings::StoresTabView.new(param):cache[:stores_tab_view]
         end
@@ -102,7 +88,6 @@ module Stamps
       end
 
       module OrdersSettingsTitle
-        include OrdersSettingsCache
         def window_title
           (cache[:window_title].nil?)?cache[:window_title]=StampsField.new(browser.div(css: "[id=userprefswindow_header-targetEl] div div")):cache[:window_title]
         end

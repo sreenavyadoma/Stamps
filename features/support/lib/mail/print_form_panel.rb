@@ -3,8 +3,7 @@ module Stamps
     module PrintFormPanel
       module PrintFormBlurOut
         def blur_out_field
-          @blur_out=StampsField.new(browser.label(text: 'Print On:')) if @blur_out.nil?||!@blur_out.present?
-          @blur_out
+          (cache[:blur_out_field].nil?||!cache[:blur_out_field].present?)?cache[:blur_out_field]=StampsField.new(browser.label(text: 'Print On:')):cache[:blur_out_field]
         end
 
         def blur_out(count=2)
@@ -19,49 +18,37 @@ module Stamps
 
       module MailFrom
         def mail_from
-          @mail_from=PrintFormMailFrom.new(param) if @mail_from.nil?||!@mail_from.present?
-          expect(@mail_from).to be_present, "Mail-From drop"
-          @mail_from
+          (cache[:mail_from].nil?||!cache[:mail_from].present?)?cache[:mail_from]=PrintFormMailFrom.new(param):cache[:mail_from]
         end
       end
 
       module MailTo
         def mail_to
-          @mail_to=PrintFormMailTo.new(param) if @mail_to.nil?||!@mail_to.present?
-          expect(@mail_to).to be_present
-          @mail_to
+          (cache[:mail_to].nil?||!cache[:mail_to].present?)?cache[:mail_to]=PrintFormMailTo.new(param):cache[:mail_to]
         end
       end
 
       module MailWeight
         def mail_weight
-          @mail_weight=PrintFormWeight.new(param) if @mail_weight.nil?||!@mail_weight.present?
-          expect(@mail_weight).to be_present
-          @mail_weight
+          (cache[:mail_weight].nil?||!cache[:mail_weight].present?)?cache[:mail_weight]=PrintFormWeight.new(param):cache[:mail_weight]
         end
       end
 
       module MailDimensions
         def dimensions
-          @dimensions=PrintFormDimensions.new(param) if @dimensions.nil?||!@dimensions.present?
-          expect(@dimensions).to be_present
-          @dimensions
+          (cache[:dimensions].nil?||!cache[:dimensions].present?)?cache[:dimensions]=PrintFormDimensions.new(param):cache[:dimensions]
         end
       end
 
       module MailService
         def mail_service
-          @mail_service=PrintFormService.new(param) if @mail_service.nil?||!@mail_service.present?
-          expect(@mail_service).to be_present
-          @mail_service
+          (cache[:mail_service].nil?||!cache[:mail_service].present?)?cache[:mail_service]=PrintFormService.new(param):cache[:mail_service]
         end
       end
 
       module MailCustoms
         def mail_customs
-          @mail_customs=PrintFormCustoms.new(param) if @mail_customs.nil?||!@mail_customs.present?
-          expect(@mail_customs).to be_present
-          @mail_customs
+          (cache[:mail_customs].nil?||!cache[:mail_customs].present?)?cache[:mail_customs]=PrintFormCustoms.new(param):cache[:mail_customs]
         end
       end
 
@@ -69,19 +56,19 @@ module Stamps
         def advanced_options
           case param.print_media
             when :stamps
-              @advanced_options=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::StampsAdvancedOptions) if @advanced_options.nil?||(@advanced_options.print_media!=:stamps)
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::StampsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:stamps)
             when :labels
-              @advanced_options=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if @advanced_options.nil?||(@advanced_options.print_media!=:labels)
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:labels)
             when :envelopes
-              @advanced_options=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if @advanced_options.nil?||(@advanced_options.print_media!=:envelopes)
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:envelopes)
             when :certified_mails, :certified_mails_3910_3930, :certified_mails_3810, :certified_mails_3830
-              @advanced_options=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if @advanced_options.nil?||((@advanced_options.print_media!=:certified_mails) && (@advanced_options.print_media!=:certified_mails_3910_3930) && (@advanced_options.print_media!=:certified_mails_3810) && (@advanced_options.print_media!=:certified_mails_3830))
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if cache[:advanced_options].nil?||((cache[:advanced_options].print_media!=:certified_mails) && (cache[:advanced_options].print_media!=:certified_mails_3910_3930) && (cache[:advanced_options].print_media!=:certified_mails_3810) && (cache[:advanced_options].print_media!=:certified_mails_3830))
             when :rolls
-              @advanced_options=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if @advanced_options.nil?||(@advanced_options.print_media!=:rolls)
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:rolls)
             else
               # do nothing
           end
-          @advanced_options
+          cache[:advanced_options]
         end
       end
 
@@ -93,28 +80,19 @@ module Stamps
         include MailAdvancedOptions
 
         def serial_number
-          @serial_number=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")) if @serial_number.nil?||!@serial_number.present?
-          @serial_number
+          (cache[:serial_number].nil?||!cache[:serial_number].present?)?cache[:serial_number]=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")):cache[:serial_number]
         end
 
         def stamp_amount
-          if @stamp_amount.nil?
-            textbox=browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]")
-            inc_btn=browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]")
-            dec_btn=browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")
-            @stamp_amount=StampsNumberField.new(textbox, inc_btn, dec_btn)
-          end
-          @stamp_amount
+          (cache[:stamp_amount].nil?||!cache[:stamp_amount].present?)?cache[:stamp_amount]=StampsNumberField.new(browser.text_field(css: "input[class*=sdc-mainpanel-stampsamountnumberfield]"),
+                                                                                                                 browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=up]"),
+                                                                                                                 browser.div(css: "div[id^=printFormPanel-][id$=-innerCt]>div>div>div>div:nth-child(17)>div>div>div>div>div>div[id*=trigger-spinner]>div[class*=down]")):cache[:stamp_amount]
         end
 
         def quantity
-          if @quantity.nil?
-            textbox=browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]")
-            inc_btn=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]")
-            dec_btn=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")
-            @quantity=StampsNumberField.new(textbox, inc_btn, dec_btn)
-          end
-          @quantity
+          (cache[:quantity].nil?||!cache[:quantity].present?)?cache[:quantity]=StampsNumberField.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div>input[id^=numberfield]"),
+                                                                                                     browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=up]"),
+                                                                                                     browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(4)>div>div>div>div>div>div[id$=spinner]>div[class*=down]")):cache[:quantity]
         end
       end
 
@@ -128,60 +106,45 @@ module Stamps
         include MailDimensions
 
         def certified_mail
-          if @certified_mail.nil?
-            clickable_field=browser.input(id: "sdc-mainpanel-cmcheckbox-inputEl")
-            verify=browser.div(id: "sdc-mainpanel-cmcheckbox")
-            @certified_mail=Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "checked")
-          end
-          @certified_mail
+          (cache[:certified_mail].nil?||!cache[:certified_mail].present?)?cache[:certified_mail]=Stamps::Browser::StampsCheckbox.new(browser.input(id: "sdc-mainpanel-cmcheckbox-inputEl"),
+                                                                                                                                     browser.div(id: "sdc-mainpanel-cmcheckbox"),
+                                                                                                                                     "class",
+                                                                                                                                     "checked"):cache[:certified_mail]
         end
 
         def electronic_return_receipt
-          if @electronic_return_receipt.nil?
-            clickable_field=browser.span(id: "sdc-mainpanel-rrecheckbox-displayEl")
-            verify=browser.div(id: "sdc-mainpanel-rrecheckbox")
-            @electronic_return_receipt=Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "checked")
-          end
-          @electronic_return_receipt
+          (cache[:ereturn_receipt].nil?||!cache[:ereturn_receipt].present?)?cache[:ereturn_receipt]=Stamps::Browser::StampsCheckbox.new(browser.span(id: "sdc-mainpanel-rrecheckbox-displayEl"),
+                                                                                                                                     browser.div(id: "sdc-mainpanel-rrecheckbox"),
+                                                                                                                                     "class",
+                                                                                                                                     "checked"):cache[:ereturn_receipt]
         end
 
       end
 
       module CertifiedMails3810
-        include CertifiedMails
-
         def return_receipt
-          if @return_receipt.nil?
-            clickable_field=browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl")
-            verify=browser.div(id: "sdc-mainpanel-rrcheckbox")
-            @return_receipt=Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "checked")
-          end
-          @return_receipt
+          (cache[:return_receipt].nil?||!cache[:return_receipt].present?)?cache[:return_receipt]=Stamps::Browser::StampsCheckbox.new(browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl"),
+                                                                                                                                     browser.div(id: "sdc-mainpanel-rrcheckbox"),
+                                                                                                                                     "class",
+                                                                                                                                     "checked"):cache[:return_receipt]
         end
       end
 
       module CertifiedMails3830
-        include CertifiedMails
-
         def return_receipt
-          if @return_receipt.nil?
-            clickable_field=browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl")
-            verify=browser.div(id: "sdc-mainpanel-rrcheckbox")
-            @return_receipt=Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "checked")
-          end
-          @return_receipt
+          (cache[:return_receipt].nil?||!cache[:return_receipt].present?)?cache[:return_receipt]=Stamps::Browser::StampsCheckbox.new(browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl"),
+                                                                                                                                     browser.div(id: "sdc-mainpanel-rrcheckbox"),
+                                                                                                                                     "class",
+                                                                                                                                     "checked"):cache[:return_receipt]
         end
       end
 
       module CertifiedMails39103930
-        include CertifiedMails
         def return_receipt
-          if @return_receipt.nil?
-            clickable_field=browser.span(id: "sdc-mainpanel-rrcheckbox-displayEl")
-            verify=browser.div(id: "sdc-mainpanel-rrcheckbox")
-            @return_receipt=Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "checked")
-          end
-          @return_receipt
+          (cache[:return_receipt].nil?||!cache[:return_receipt].present?)?cache[:return_receipt]=Stamps::Browser::StampsCheckbox.new(browser.span(id: "sdc-mainpanel-rrcheckbox-displayEl"),
+                                                                                                                                     browser.div(id: "sdc-mainpanel-rrcheckbox"),
+                                                                                                                                     "class",
+                                                                                                                                     "checked"):cache[:return_receipt]
         end
       end
 
@@ -203,12 +166,11 @@ module Stamps
         include MailAdvancedOptions
 
         def ship_date
-          @ship_date=ShipDate.new(param) if @ship_date.nil?||!@ship_date.present?
-          @ship_date
+          (cache[:ship_date].nil?||!cache[:ship_date].present?)?cache[:ship_date]=ShipDate.new(param):cache[:ship_date]
         end
 
         def form_view
-          EnvelopeFormView.new(param)
+          raise "form_view is not yet implemented."
         end
       end
 
@@ -222,31 +184,27 @@ module Stamps
         include MailDimensions
 
         def mail_tracking
-          @mail_tracking=MailTracking.new(param) if @mail_insure_for.nil?||!@mail_insure_for.present?
-          expect(@mail_insure_for).to be_present
-          @mail_insure_for
+          (cache[:mail_tracking].nil?||!cache[:mail_tracking].present?)?cache[:ship_date]=MailTracking.new(param):cache[:mail_tracking]
         end
 
         def mail_ship_date
-          @mail_ship_date=ShipDate.new(param) if @mail_ship_date.nil?||!@mail_ship_date.present?
-          expect(@mail_ship_date).to be_present
-          @mail_ship_date
+          raise "mail_ship_date"
         end
 
         def form_view
-          @form_view=ShippingLabelPrintView.new(param) if @form_view.nil?||!@form_view.present?
-          expect(@form_view).to be_present
-          @form_view
+          raise "form_view is not yet implemented."
         end
       end
 
       class PrintForm < Browser::StampsModal
-        attr_reader :print_media
         include PrintFormBlurOut
-
         def initialize(param)
           super
-          @print_media=param.print_media
+          cache[:print_media]=param.print_media
+        end
+
+        def print_media
+          cache[:print_media]
         end
       end
     end

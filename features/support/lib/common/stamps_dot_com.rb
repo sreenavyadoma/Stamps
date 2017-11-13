@@ -11,10 +11,5 @@ module Stamps
     def mail
       (cache[:mail].nil?)?cache[:mail]=WebMail.new(param):cache[:mail]
     end
-
-    private
-    def cache
-      @cache ||= {}
-    end
   end
 end

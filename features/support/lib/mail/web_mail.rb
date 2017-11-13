@@ -56,11 +56,6 @@ module Stamps
       def wait_until_present(*args)
         print_media.wait_until_present(*args)
       end
-
-      private
-      def cache
-        @cache ||= {}
-      end
     end
   end
 end

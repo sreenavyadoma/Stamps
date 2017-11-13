@@ -1,33 +1,13 @@
 module Stamps
   module Orders
     module Grid
-      class GridColumnCommon < Browser::StampsModal
-        include Stamps::Orders::LoadingOrders
-
-        @column_number = {}
-        @cache = {}
-
-        def self.column_number
-          @column_number
-        end
-
-        def column_number
-          self.class.column_number
-        end
-
-        def self.cache
-          @cache
-        end
-
-        def cache
-          self.class.cache
-        end
-      end
-
       module GridColumnCommon
-        
+        def column_cache
+          @column_cache ||= {}
+        end
+
         def column_text
-          cache[:column_text] ||= {
+          @column_text ||= {
               check_box: " ",
               store: "Store",
               ship_cost: "Ship Cost",
@@ -64,6 +44,7 @@ module Stamps
 
         def sort_order(column, sort_order)
           scroll_to_column(column)
+
           span=browser.span(text: column_text[column])
           column=StampsField.new(span)
           sort_order=(sort_order==:sort_ascending)?"ASC":"DESC"
@@ -82,7 +63,7 @@ module Stamps
           end
           return "ASC" if  sort_order_span.attribute_value("class").include?("ASC")
           return "DESC" if  sort_order_span.attribute_value("class").include?("DESC")
-          nil
+          "Something went wrong."
         end
 
         def grid_text_by_id(column, order_id)
@@ -135,25 +116,26 @@ module Stamps
         end
 
         def column_number(column)
-
-          if @column_number[column].nil?
-            browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span").each_with_index do |field, index|
+          if column_cache[column].nil?
+            columns=browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
+            columns.each_with_index do |field, index|
               scroll_to_column(field) #scroll unless field is visible
-              @column_number[column_text.key(StampsField.new(field).text)]=index+1
+              column_cache[column_text.key(StampsField.new(field).text)]=index+1
             end
           end
-          @column_number[column]
+          column_cache[column]
         end
 
-        # locate order_id row number
+        # locate row location for order_id
         def row_number(order_id)
-          loading_orders.wait_while_present(10)
           5.times do
-            browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
+            column_num=column_number(:order_id)
+            fields=browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
+            fields.each_with_index do |field, index|
               scroll_to_column(field)
               if StampsField.new(field).text.include?(order_id)
                 logger.info "Order ID #{order_id}, Row #{index+1}"
-                sleep(0.15)
+                sleep(0.35)
                 return index + 1
               end
             end

@@ -2,14 +2,7 @@
 module Stamps
   module Orders
     module Printing
-      module OrdersPrintingCache
-        def cache
-          @cache ||= {}
-        end
-      end
-
       class OrdersPrintMediaDropList < Browser::StampsModal
-        include OrdersPrintingCache
         def dropdown
           (cache[:printing_on].nil?||!cache[:printing_on].present?)?cache[:printing_on]=StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")):cache[:printing_on]
         end
@@ -385,11 +378,6 @@ module Stamps
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(css: "[id=sdc-printpostagewindow-shipdate-innerCt] input[id^=datefield]")):cache[:textbox]
         end
-
-        private
-        def cache
-          @cache ||= {}
-        end
       end
 
       #todo-Rob is this needed?
@@ -420,11 +408,6 @@ module Stamps
 
         def ship_date
           (cache[:ship_date].nil?||!cache[:ship_date].present?)?cache[:ship_date]=OrdersShipDate.new(param):cache[:ship_date]
-        end
-
-        private
-        def cache
-          @cache ||= {}
         end
       end
 
@@ -468,15 +451,9 @@ module Stamps
         def print_button
           (cache[:print_button].nil?||!cache[:print_button].present?)?cache[:print_button]=StampsField.new(browser.span(id: 'sdc-printwin-printbtn-btnInnerEl')):cache[:print_button]
         end
-
-        private
-        def cache
-          @cache ||= {}
-        end
       end
 
       module OrdersPrintModalTitle
-        include OrdersPrintingCache
         def window_title
           (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: '[id^=printwindow-][id$=_header-innerCt] [class*=x-title-text-default]')):cache[:window_title]
         end

@@ -1,20 +1,12 @@
 module Stamps
   module Orders
-    module StampsOrdersCache
-      def cache
-        @cache ||= {}
-      end
-    end
-
     module LoadingOrders
-      include StampsOrdersCache
       def loading_orders
         (cache[:loading_orders].nil?||!cache[:loading_orders].present?)?cache[:loading_orders]=StampsField.new(browser.div(text: 'Loading orders...')):cache[:loading_orders]
       end
     end
 
     module MarketPlaceStoreModals
-      include StampsOrdersCache
       def paypal_store
         (cache[:paypal_store].nil?||!cache[:paypal_store].present?)?cache[:paypal_store]=Stamps::Orders::Stores::PayPal.new(param):cache[:paypal_store]
       end
@@ -25,7 +17,6 @@ module Stamps
     end
 
     module StampsOrdersModals
-      include StampsOrdersCache
       def orders_print_modal
         (cache[:orders_print_modal].nil?||!cache[:orders_print_modal].present?)?cache[:orders_print_modal]=Stamps::Orders::Printing::OrdersPrintModal.new(param):cache[:orders_print_modal]
       end
@@ -40,8 +31,6 @@ module Stamps
     end
     
     module TermsAndConditions
-      include StampsOrdersCache
-
       class TermsAndConditionsModal < Stamps::Browser::StampsModal
         def present?
           i_agree_button.present?
@@ -68,11 +57,6 @@ module Stamps
 
         def close
           (cache[:close].nil?||!cache[:close].present?)?cache[:close]=StampsField.new(browser.img(css: "[class*=x-tool-close]")):cache[:close]
-        end
-
-        private
-        def cache
-          @cache ||= {}
         end
       end
 

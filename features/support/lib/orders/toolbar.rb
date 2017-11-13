@@ -1,12 +1,6 @@
 module Stamps
   module Orders
     module Toolbar
-      module OrdersToolbarCache
-        def cache
-          @cache ||= {}
-        end
-      end
-
       class MoveToOnHoldModal < Browser::StampsModal
         attr_reader :window_title, :cancel_btn, :hold_until
 
@@ -569,11 +563,6 @@ module Stamps
           open_window InvalidAddressError.new(param)
         end
 
-        private
-        def cache
-          @cache ||= {}
-        end
-
         def print_window
           (cache[:print_window].nil?||!cache[:print_window].present?)?cache[:print_window]=Browser::StampsModal.new(param).extend(Stamps::Orders::Printing::OrdersPrintModalTitle):cache[:print_window]
         end
@@ -864,7 +853,6 @@ module Stamps
       end
 
       class OrdersToolbar < Browser::StampsModal
-        include OrdersToolbarCache
         include OrdersToolbarLeftSide
         include ToolbarItemsToBeVerified
 
