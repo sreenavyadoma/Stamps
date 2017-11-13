@@ -261,7 +261,7 @@ module Stamps
             when :shipping_label_paper
               search("Shipping Label - Paper").check
             when :shipping_label_sdc1200
-              search("shipping_label_sdc1200").check
+              search("Shipping Label - SDC-1200").check
             when :shipping_label_5x8
               search("Shipping Label - 5x8").check
             when :envelope_10
