@@ -256,7 +256,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             when :opencart
-              (cache[:opencart].nil?||!cache[:opencart].present?)?cache[:opencart]=Browser::StampsModal.new(param).extend(Orders::Stores::OpenCartCache):cache[:opencart_window]
+              (cache[:opencart].nil?||!cache[:opencart].present?)?cache[:opencart]=Browser::StampsModal.new(param).extend(Orders::Stores::OpenCartCache):cache[:opencart_window] #ShipstationMarketplaceWindowTitle
             else
               raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
@@ -270,7 +270,12 @@ module Stamps
           nil
         end
 
-        def add_shipstation_store(str)
+        def add_advanced_feature(str)
+          20.times do
+            return store_window(str).window_title.text if store_window(str).window_title.present?
+            store_field(str).click
+          end
+          nil
           5.times do
             store_field(str).click
           end
