@@ -5,7 +5,6 @@ module Stamps
       class DetailsFormDimensions < Browser::StampsModal
         def initialize(param, form_type)
           super(param)
-          expect([:single_order, :multi_order_details]).to include(form_type)
           @form_type=form_type
         end
 
@@ -49,7 +48,6 @@ module Stamps
 
         def initialize(param, form_type)
           super(param)
-          expect([:single_order, :multi_order_details]).to include(form_type)
           @form_type=form_type
         end
 
@@ -192,18 +190,14 @@ module Stamps
         end
 
         def disabled?(service)
-
           @details_services=data_for(:orders_services, {})
-
-          selection_field=browser.li(id: "#{@details_services[service]}")
-          #selection_field=browser.tr css: "tr[data-qtip*='#{service}']"
-          selection_label=StampsField.new selection_field
+          selection_label=StampsField.new(browser.li(id: "#{@details_services[service]}"))
 
           10.times do |index|
             dropdown.click unless selection_label.present?
             sleep(0.35)
-            if selection_field.present?
-              disabled_field=StampsField.new(selection_field.parent.parent.parent)
+            if selection_label.present?
+              disabled_field=StampsField.new(selection_label.element.parent.parent.parent)
               begin
                 if selection_label.present?
                   if disabled_field.present?
@@ -245,7 +239,6 @@ module Stamps
               inc_btn=browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=up]")
               dec_btn=browser.div(css: "div[id^=single]>div>div>div>div[id^=weight]>div>div>div>div>div>div[id*=ounces]>div[class*=down]")
               @oz=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-
             when :multi_order_details
               textbox=browser.text_field(name: 'WeightLbs')
               inc_btn=browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=pounds]>div>div>div>div[class*=up]")
@@ -257,7 +250,7 @@ module Stamps
               dec_btn=browser.div(css: "div[id^=multi]>div>div>div>div[id^=weight]>div>div>div[class*=ounces]>div>div>div>div[class*=down]")
               @oz=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
             else
-              expect([:single_order, :multi_order_details]).to include(form_type)
+              raise "Invalid form type: #{form_type}"
           end
         end
       end

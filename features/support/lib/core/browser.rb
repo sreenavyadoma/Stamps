@@ -2,7 +2,7 @@ module Stamps
   module Browser
 
     class StampsField
-      attr_reader :field, :browser
+      attr_reader :field
       alias_method :checkbox, :field
       alias_method :radio, :field
       alias_method :textbox, :field
@@ -11,6 +11,10 @@ module Stamps
       def initialize(field)
         @field=field
         @browser=field.browser
+      end
+
+      def self.browser
+        @browser
       end
 
       def url
@@ -651,21 +655,19 @@ module Stamps
 
     # StampsModal - base class for modals containing StampsElements
     class StampsModal
-      attr_accessor :param, :cache # :logger, :helper
       def initialize(param)
-        @cache ||= {}
-        cache[:param]=param
         cache[:browser]=param.browser
+        cache[:param]=param
         cache[:logger]=param.logger
         cache[:helper]=StampsTestHelper.new(param.logger)
       end
 
-      def param
-        cache[:param]
-      end
-
       def browser
         cache[:browser]
+      end
+
+      def param
+        cache[:param]
       end
 
       def logger
@@ -674,6 +676,11 @@ module Stamps
 
       def helper
         cache[:helper]
+      end
+
+      protected
+      def cache
+        @cache ||= {}
       end
     end
   end
