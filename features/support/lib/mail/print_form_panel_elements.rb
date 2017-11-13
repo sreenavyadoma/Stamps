@@ -449,11 +449,11 @@ module Stamps
         end
 
         def dropdown
-          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=((domestic?)?dom_dd:int_dd):cache[:dropdown]
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?(cache[:dropdown]=((domestic?)? dom_dd : int_dd)):cache[:dropdown]
         end
 
         def textbox
-          (cache[:upgrade_plan].nil?||!cache[:upgrade_plan].present?)?cache[:upgrade_plan]=((domestic?)?dom_textbox:int_textbox):cache[:upgrade_plan]
+          (cache[:upgrade_plan].nil?||!cache[:upgrade_plan].present?)?cache[:upgrade_plan]=((domestic?)? dom_textbox : int_textbox):cache[:upgrade_plan]
         end
 
         def select(str)
@@ -570,36 +570,41 @@ module Stamps
       end
 
       class PrintFormDimensions < Browser::StampsModal
-        attr_accessor :length, :width, :height
+        def length
+          (cache[:length].nil?||!cache[:length].present?)?cache[:length]=StampsNumberField.new(
+              browser.text_field(css: "[class*=sdc-mainpanel-lengthnumberfield]"),
+              browser.div(css: "[id^=dimensionsview-][id$=-targetEl]>div>div>div>div:nth-child(1) [id$=-trigger-spinner] [class*=up]"),
+              browser.div(css: "[id^=dimensionsview-][id$=-targetEl]>div>div>div>div:nth-child(1) [id$=-trigger-spinner] [class*=down]")):cache[:length]
+        end
 
-        def initialize(param)
-          super
-          textbox=browser.text_field(name: "Length")
-          inc_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=up]")
-          dec_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(1)>div>div>div>div[class*=down]")
-          @length=StampsNumberField.new(textbox, inc_btn, dec_btn)
+        def width
+          (cache[:width].nil?||!cache[:width].present?)?cache[:width]=StampsNumberField.new(
+              browser.text_field(css: "[class*=sdc-mainpanel-widthnumberfield]"),
+              browser.div(css: "[id^=dimensionsview-][id$=-targetEl]>div>div>div>div:nth-child(3) [id$=-trigger-spinner] [class*=up]"),
+              browser.div(css: "[id^=dimensionsview-][id$=-targetEl]>div>div>div>div:nth-child(3) [id$=-trigger-spinner] [class*=down]")):cache[:width]
+        end
 
-          textbox=browser.text_field(name: "Width")
-          inc_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=up]")
-          dec_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(3)>div>div>div>div[class*=down]")
-          @width=StampsNumberField.new(textbox, inc_btn, dec_btn)
-
-          textbox=browser.text_field(name: "Height")
-          inc_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=up]")
-          dec_btn=browser.div(css: "div[id^=dimensionsview-][id$=-targetEl]>div:nth-child(5)>div>div>div>div[class*=down]")
-          @height=StampsNumberField.new(textbox, inc_btn, dec_btn)
+        def height
+          (cache[:height].nil?||!cache[:height].present?)?cache[:height]=StampsNumberField.new(
+              browser.text_field(css: "[class*=sdc-mainpanel-heightnumberfield]"),
+              browser.div(css: "[id^=dimensionsview-][id$=-targetEl]>div>div>div>div:nth-child(5) [id$=-trigger-spinner] [class*=up]"),
+              browser.div(css: "[id^=dimensionsview-][id$=-targetEl]>div>div>div>div:nth-child(5) [id$=-trigger-spinner] [class*=down]")):cache[:height]
         end
       end
 
       class PrintFormMailFrom < Browser::StampsModal
-        attr_reader :textbox, :dropdown, :manage_shipping_address
         include PrintFormBlurOut
+        def textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl")):cache[:textbox]
+        end
 
-        def initialize(param)
-          super
-          @textbox=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl"))
-          @dropdown=StampsField.new(browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker"))
-          @manage_shipping_address=MailManageShippingAddresses.new(param)
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker")):cache[:dropdown]
+        end
+
+
+        def manage_shipping_address
+          (cache[:manage_shipping_address].nil?||!cache[:manage_shipping_address].present?)?cache[:manage_shipping_address]=MailManageShippingAddresses.new(param):cache[:manage_shipping_address]
         end
 
         def present?
@@ -621,7 +626,6 @@ module Stamps
 
         def select(str)
           dropdown.click
-
           if str.downcase.include? "manage shipping"
             10.times do
               begin

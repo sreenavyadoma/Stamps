@@ -8,12 +8,9 @@ Feature: Envelopes BVT
     Then select Print On Envelope - 10
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1
-
     Then set Print form Ounces to 1
     Then select Print form service FCM Letter
     Then Print Postage
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
     Then Sign out
-
-
