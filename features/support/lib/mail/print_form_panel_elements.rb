@@ -264,6 +264,8 @@ module Stamps
               search("Shipping Label - SDC-1200").check
             when :shipping_label_5x8
               search("Shipping Label - 5x8").check
+            when :envelope_9
+              search("Envelope - 9").check
             when :envelope_10
               search("Envelope - 10").check
             when :envelope_a9
@@ -384,7 +386,6 @@ module Stamps
           dropdown.click
           param.print_media=print_media(str)
           selected_sub_str=selected_sub_str(str)
-          mpo_search_str=mpo_search_str(str)
 
           10.times do
             begin
