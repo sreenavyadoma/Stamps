@@ -271,10 +271,9 @@ module Stamps
         end
 
         def add_shipstation_store(str)
-          20.times do
+          5.times do
             store_field(str).click
           end
-          nil
         end
       end
 
