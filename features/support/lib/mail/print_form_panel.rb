@@ -1,21 +1,6 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      module PrintFormBlurOut
-        def blur_out_field
-          (cache[:blur_out_field].nil?||!cache[:blur_out_field].present?)?cache[:blur_out_field]=StampsField.new(browser.label(text: 'Print On:')):cache[:blur_out_field]
-        end
-
-        def blur_out(count=2)
-          expect(blur_out_field).to be_present, "Blur out field is not present."
-          count.to_i.times do
-            blur_out_field.double_click
-            blur_out_field.flash
-            blur_out_field.click
-          end
-        end
-      end
-
       module MailFrom
         def mail_from
           (cache[:mail_from].nil?||!cache[:mail_from].present?)?cache[:mail_from]=PrintFormMailFrom.new(param):cache[:mail_from]
@@ -57,14 +42,14 @@ module Stamps
           case param.print_media
             when :stamps
               cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::StampsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:stamps)
-            when :labels
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:labels)
-            when :envelopes
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:envelopes)
-            when :certified_mails, :certified_mails_3910_3930, :certified_mails_3810, :certified_mails_3830
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if cache[:advanced_options].nil?||((cache[:advanced_options].print_media!=:certified_mails) && (cache[:advanced_options].print_media!=:certified_mails_3910_3930) && (cache[:advanced_options].print_media!=:certified_mails_3810) && (cache[:advanced_options].print_media!=:certified_mails_3830))
-            when :rolls
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:rolls)
+            when :label
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:label)
+            when :envelope
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:envelope)
+            when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if cache[:advanced_options].nil?||((cache[:advanced_options].print_media!=:certified_mail) && (cache[:advanced_options].print_media!=:certified_mail_3910_3930) && (cache[:advanced_options].print_media!=:certified_mail_3810) && (cache[:advanced_options].print_media!=:certified_mail_3830))
+            when :roll
+              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:roll)
             else
               # do nothing
           end
@@ -78,6 +63,11 @@ module Stamps
         include MailWeight
         include MailService
         include MailAdvancedOptions
+        include PrintOnTextbox
+        
+        def present?
+          print_on_textbox.text.include?('Stamps')
+        end
 
         def serial_number
           (cache[:serial_number].nil?||!cache[:serial_number].present?)?cache[:serial_number]=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-nsserialtextfield-inputEl")):cache[:serial_number]
@@ -96,7 +86,7 @@ module Stamps
         end
       end
 
-      module CertifiedMails
+      module CertifiedMail
         include MailFrom
         include MailTo
         include MailWeight
@@ -104,6 +94,11 @@ module Stamps
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
+        include PrintOnTextbox
+
+        def present?
+          print_on_textbox.text.include?('Certified Mail')
+        end
 
         def certified_mail
           (cache[:certified_mail].nil?||!cache[:certified_mail].present?)?cache[:certified_mail]=Stamps::Browser::StampsCheckbox.new(browser.input(id: "sdc-mainpanel-cmcheckbox-inputEl"),
@@ -121,7 +116,7 @@ module Stamps
 
       end
 
-      module CertifiedMails3810
+      module CertifiedMail3810
         def return_receipt
           (cache[:return_receipt].nil?||!cache[:return_receipt].present?)?cache[:return_receipt]=Stamps::Browser::StampsCheckbox.new(browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl"),
                                                                                                                                      browser.div(id: "sdc-mainpanel-rrcheckbox"),
@@ -130,7 +125,7 @@ module Stamps
         end
       end
 
-      module CertifiedMails3830
+      module CertifiedMail3830
         def return_receipt
           (cache[:return_receipt].nil?||!cache[:return_receipt].present?)?cache[:return_receipt]=Stamps::Browser::StampsCheckbox.new(browser.input(id: "sdc-mainpanel-rrcheckbox-inputEl"),
                                                                                                                                      browser.div(id: "sdc-mainpanel-rrcheckbox"),
@@ -139,7 +134,7 @@ module Stamps
         end
       end
 
-      module CertifiedMails39103930
+      module CertifiedMail39103930
         def return_receipt
           (cache[:return_receipt].nil?||!cache[:return_receipt].present?)?cache[:return_receipt]=Stamps::Browser::StampsCheckbox.new(browser.span(id: "sdc-mainpanel-rrcheckbox-displayEl"),
                                                                                                                                      browser.div(id: "sdc-mainpanel-rrcheckbox"),
@@ -148,7 +143,7 @@ module Stamps
         end
       end
 
-      module Rolls
+      module Roll
         include MailFrom
         include MailTo
         include MailWeight
@@ -156,14 +151,24 @@ module Stamps
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
+        include PrintOnTextbox
+
+        def present?
+          print_on_textbox.text.include?('Roll')
+        end
       end
 
-      module Envelopes
+      module Envelope
         include MailFrom
         include MailTo
         include MailWeight
         include MailService
         include MailAdvancedOptions
+        include PrintOnTextbox
+
+        def present?
+          print_on_textbox.text.include?('Envelope')
+        end
 
         def ship_date
           (cache[:ship_date].nil?||!cache[:ship_date].present?)?cache[:ship_date]=ShipDate.new(param):cache[:ship_date]
@@ -174,7 +179,7 @@ module Stamps
         end
       end
 
-      module ShippingLabels
+      module ShippingLabel
         include MailFrom
         include MailTo
         include MailWeight
@@ -182,6 +187,11 @@ module Stamps
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
+        include PrintOnTextbox
+
+        def present?
+          print_on_textbox.text.include?('Shipping Label')
+        end
 
         def mail_tracking
           (cache[:mail_tracking].nil?||!cache[:mail_tracking].present?)?cache[:ship_date]=MailTracking.new(param):cache[:mail_tracking]
@@ -198,14 +208,6 @@ module Stamps
 
       class PrintForm < Browser::StampsModal
         include PrintFormBlurOut
-        def initialize(param)
-          super
-          cache[:print_media]=param.print_media
-        end
-
-        def print_media
-          cache[:print_media]
-        end
       end
     end
   end

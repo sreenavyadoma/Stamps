@@ -1,5 +1,6 @@
 module Stamps
   module Mail
+    #todo-Rob too many instance variables, fix it.
     class MailToolbar < Browser::StampsModal
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
                   :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning
@@ -22,24 +23,24 @@ module Stamps
       end
 
       def print_button
-        expect([:envelopes, :stamps, :labels, :rolls, :certified_mails, :certified_mails_3910_3930, :certified_mails_3810, :certified_mails_3830]).to include(param.print_media)
+        expect([:envelope, :stamps, :label, :roll, :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830]).to include(param.print_media)
         10.times do
           case param.print_media
-            when :envelopes
+            when :envelope
               @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
             when :stamps
               @print_button=StampsField.new(browser.span(text: 'Print Stamps'))
-            when :labels
+            when :label
               @print_button=StampsField.new(browser.span(text: 'Print Label'))
-            when :rolls
+            when :roll
               @print_button=StampsField.new(browser.span(text: 'Print Label'))
-            when :certified_mails
+            when :certified_mail
               @print_button=StampsField.new(browser.span(text: 'Print Label'))
-            when :certified_mails_3910_3930
+            when :certified_mail_3910_3930
               @print_button=StampsField.new(browser.span(text: 'Print Label'))
-            when :certified_mails_3810
+            when :certified_mail_3810
               @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
-            when :certified_mails_3830
+            when :certified_mail_3830
               @print_button=StampsField.new(browser.span(text: 'Print Envelope'))
             else
               # do nothing

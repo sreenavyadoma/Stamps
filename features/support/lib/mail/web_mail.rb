@@ -25,28 +25,30 @@ module Stamps
       def print_form
         case param.print_media
           when :stamps
-            cache[:stamps]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if cache[:stamps].nil?||cache[:stamps].print_media!=:stamps
-          when :labels
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabels) if @print_form.nil?||@print_form.print_media!=:labels
-          when :envelopes
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelopes) if @print_form.nil?||@print_form.print_media!=:envelopes
-          when :certified_mails
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails) if @print_form.nil?||@print_form.print_media!=:certified_mails
-          when :certified_mails_3910_3930
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails39103930) if @print_form.nil?||@print_form.print_media!=:certified_mails_3910_3930
-          when :certified_mails_3810
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil?||@print_form.print_media!=:certified_mails_3810
-          when :certified_mails_3830
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3830) if @print_form.nil?||@print_form.print_media!=:certified_mails_3830
-          when :rolls
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls) if @print_form.nil?||@print_form.print_media!=:rolls
+            return (cache[:stamps].nil?||!cache[:stamps].present?)?cache[:stamps]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps):cache[:stamps]
+          when :label
+            return (cache[:label].nil?||!cache[:label].present?)?cache[:label]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabel):cache[:label]
+          when :envelope
+            return (cache[:envelope].nil?||!cache[:envelope].present?)?cache[:envelope]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelope):cache[:envelope]
+          when :certified_mail
+
+            return (cache[:envelope].nil?||!cache[:envelope].present?)?cache[:envelope]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail):cache[:envelope]
+
+            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail) if @print_form.nil?||@print_form.param.print_media!=:certified_mail
+          when :certified_mail_3910_3930
+            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail39103930) if @print_form.nil?||@print_form.param.print_media!=:certified_mail_3910_3930
+          when :certified_mail_3810
+            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3810) if @print_form.nil?||@print_form.param.print_media!=:certified_mail_3810
+          when :certified_mail_3830
+            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3830) if @print_form.nil?||@print_form.param.print_media!=:certified_mail_3830
+          when :roll
+            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Roll) if @print_form.nil?||@print_form.param.print_media!=:roll
           when :manage_printing_options
             @print_form
           else
             # do nothing
         end
-        expect(@print_form).to be_present, "#(selection) form is not present."
-        @print_form
+        nil
       end
 
       def present?

@@ -44,6 +44,8 @@ require_relative 'lib/orders/orders_modals'
 require_relative 'lib/orders/orders'
 require_relative 'lib/mail/mail_sign_in'
 require_relative 'lib/orders/store_management'
+require_relative 'lib/mail/print_form_panel_elements'
+require_relative 'lib/mail/print_form_panel'
 
 # # helper module
 # require_relative 'lib/orders/fields'

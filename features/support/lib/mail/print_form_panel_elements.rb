@@ -1,6 +1,20 @@
 module Stamps
   module Mail
     module PrintFormPanel
+      module PrintFormBlurOut
+        def blur_out_field
+          (cache[:blur_out_field].nil?||!cache[:blur_out_field].present?)?cache[:blur_out_field]=StampsField.new(browser.label(text: 'Print On:')):cache[:blur_out_field]
+        end
+
+        def blur_out(count=2)
+          expect(blur_out_field).to be_present, "Blur out field is not present."
+          count.to_i.times do
+            blur_out_field.double_click
+            blur_out_field.flash
+            blur_out_field.click
+          end
+        end
+      end
 
       class UpgradePlan < Browser::StampsModal
         attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_field
@@ -40,23 +54,23 @@ module Stamps
         def print_media(str)
           case(str)
             when /Certified Mail Label - SDC-3610/
-              return :certified_mails
+              return :certified_mail
             when /Certified Mail Label - SDC-3710/
-              return :certified_mails
+              return :certified_mail
             when /Certified Mail Label - SDC-3910/
-              return :certified_mails_3910_3930
+              return :certified_mail_3910_3930
             when /Certified Mail Label - SDC-3930/
-              return :certified_mails_3910_3930
+              return :certified_mail_3910_3930
             when /Certified Mail Label - SDC-3810/
-              return :certified_mails_3810
+              return :certified_mail_3810
             when /Certified Mail Label - SDC-3830/
-              return :certified_mails_3830
+              return :certified_mail_3830
             when /Shipping Label/
-              return :labels
+              return :label
             when /Envelope/
-              return :envelopes
+              return :envelope
             when /Roll/
-              return :rolls
+              return :roll
             when /Manage Printing Options/
               return :manage_printing_options
             when /Stamps/
@@ -211,15 +225,18 @@ module Stamps
       class ManagePrintOptionsModal < Browser::StampsModal
         include PrintMediaHelper
         def search_field
-          (cache[:search_field].nil?||!cache[:search_field].present?)?cache[:search_field]=StampsTextbox.new(browser.text_field(css: "[placeholder='Search']")):cache[:search_field]
+          (cache[:search_field].nil?||!cache[:search_field].present?)?cache[:search_field]=StampsTextbox.new(
+              browser.text_field(css: "[placeholder='Search']")):cache[:search_field]
         end
 
         def save_button
-          (cache[:save_button].nil?||!cache[:save_button].present?)?cache[:save_button]=StampsField.new(browser.span(text: "Save")):cache[:save_button]
+          (cache[:save_button].nil?||!cache[:save_button].present?)?cache[:save_button]=StampsField.new(
+              browser.span(text: "Save")):cache[:save_button]
         end
 
         def close_button
-          (cache[:close_button].nil?||!cache[:close_button].present?)?cache[:close_button]=StampsField.new(browser.img(class: "x-tool-img x-tool-close")):cache[:close_button]
+          (cache[:close_button].nil?||!cache[:close_button].present?)?cache[:close_button]=StampsField.new(
+              browser.img(class: "x-tool-img x-tool-close")):cache[:close_button]
         end
 
         def present?
@@ -328,15 +345,21 @@ module Stamps
         end
       end
 
+      module PrintOnTextbox
+        def print_on_textbox
+          (cache[:print_on_textbox].nil?||!cache[:print_on_textbox].present?)?cache[:print_on_textbox]=StampsTextbox.new(
+              browser.text_field(css: "[name=PrintMedia]")):cache[:print_on_textbox]
+        end
+      end
+
       class PrintOn < Browser::StampsModal
         include PrintFormBlurOut
         include PrintMediaHelper
-        def textbox
-          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(css: "[name=PrintMedia]")):cache[:textbox]
-        end
+        include PrintOnTextbox
 
         def dropdown
-          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.div(css: "[id^=printmediadroplist][id$=trigger-picker]")):cache[:dropdown]
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+              browser.div(css: "[id^=printmediadroplist][id$=trigger-picker]")):cache[:dropdown]
         end
 
         def upgrade_plan
@@ -344,7 +367,8 @@ module Stamps
         end
 
         def manage_printing_options_lov
-          (cache[:manage_printing_options_lov].nil?||!cache[:manage_printing_options_lov].present?)?cache[:manage_printing_options_lov]=StampsField.new(browser.li(text: 'Manage Printing Options...')):cache[:manage_printing_options_lov]
+          (cache[:manage_printing_options_lov].nil?||!cache[:manage_printing_options_lov].present?)?cache[:manage_printing_options_lov]=StampsField.new(
+              browser.li(text: 'Manage Printing Options...')):cache[:manage_printing_options_lov]
         end
 
         def manage_printing_options
@@ -352,11 +376,11 @@ module Stamps
         end
 
         def present?
-          textbox.present?
+          print_on_textbox.present?
         end
 
         def wait_until_present(*args)
-          textbox.wait_until_present(*args)
+          print_on_textbox.wait_until_present(*args)
         end
 
         def manage_printing_options_modal
@@ -385,20 +409,16 @@ module Stamps
           dropdown.wait_until_present(4)
           dropdown.click
           param.print_media=print_media(str)
-          selected_sub_str=selected_sub_str(str)
-
           10.times do
             begin
-              if textbox.text.include?(selected_sub_str)
+              if print_on_textbox.text.include?(selected_sub_str(str))
                 dropdown.click if manage_printing_options_lov.present?
                 return param.print_media
               end
-
               selection=StampsField.new(browser.li(css: "li[class^=#{(data_for(:mail_print_media, {})[str]).split(',').first}][data-recordindex='#{(data_for(:mail_print_media, {})[str]).split(',').last}']"))
               dropdown.click unless manage_printing_options_lov.present?
               if selection.present?
                 selection.scroll_into_view
-                selection.click
                 selection.click
               elsif manage_printing_options_lov.present? && !selection.present?
                 show_all_print_media
@@ -409,7 +429,7 @@ module Stamps
             sleep(0.15)
           end
           dropdown.click unless manage_printing_options_lov.present?
-          expect(textbox.text).to include(selected_sub_str), "Print On media selection failed. Expected textbox.text to include #{selected_sub_str}, got \"#{textbox.text}\""
+          nil
         end
 
         def tooltip(str)
@@ -424,19 +444,23 @@ module Stamps
       class MailToCountry < Browser::StampsModal
         include PrintFormBlurOut
         def dom_dd
-          (cache[:dom_dd].nil?||!cache[:dom_dd].present?)?cache[:dom_dd]=StampsTextbox.new(browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")):cache[:dom_dd]
+          (cache[:dom_dd].nil?||!cache[:dom_dd].present?)?cache[:dom_dd]=StampsTextbox.new(
+              browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")):cache[:dom_dd]
         end
 
         def int_dd
-          (cache[:int_dd].nil?||!cache[:int_dd].present?)?cache[:int_dd]=StampsTextbox.new(browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]")):cache[:int_dd]
+          (cache[:int_dd].nil?||!cache[:int_dd].present?)?cache[:int_dd]=StampsTextbox.new(
+              browser.div(css: "div[id=shiptoview-international-targetEl]>div:nth-child(1)>div>div>div[id^=combo]>div>div>div[id$=trigger-picker]")):cache[:int_dd]
         end
 
         def dom_textbox
-          (cache[:dom_textbox].nil?||!cache[:dom_textbox].present?)?cache[:dom_textbox]=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl")):cache[:dom_textbox]
+          (cache[:dom_textbox].nil?||!cache[:dom_textbox].present?)?cache[:dom_textbox]=StampsTextbox.new(
+              browser.text_field(id: "sdc-mainpanel-matltocountrydroplist-inputEl")):cache[:dom_textbox]
         end
 
         def int_textbox
-          (cache[:int_textbox].nil?||!cache[:int_textbox].present?)?cache[:int_textbox]=StampsTextbox.new(browser.inputs(name: "ShipCountryCode")[1]):cache[:int_textbox]
+          (cache[:int_textbox].nil?||!cache[:int_textbox].present?)?cache[:int_textbox]=StampsTextbox.new(
+              browser.inputs(name: "ShipCountryCode")[1]):cache[:int_textbox]
         end
 
         def domestic?
@@ -482,41 +506,50 @@ module Stamps
       class MailToInt < Browser::StampsModal
         include PrintFormBlurOut
         def name
-          (cache[:name].nil?||!cache[:name].present?)?cache[:name]=StampsTextbox.new(browser.text_field(name: "ShipName")):cache[:name]
+          (cache[:name].nil?||!cache[:name].present?)?cache[:name]=StampsTextbox.new(
+              browser.text_field(name: "ShipName")):cache[:name]
         end
 
         def company
-          (cache[:company].nil?||!cache[:company].present?)?cache[:company]=StampsTextbox.new(browser.text_field(name: "ShipCompany")):cache[:company]
+          (cache[:company].nil?||!cache[:company].present?)?cache[:company]=StampsTextbox.new(
+              browser.text_field(name: "ShipCompany")):cache[:company]
         end
 
         def address_1
-          (cache[:address_1].nil?||!cache[:address_1].present?)?cache[:address_1]=StampsTextbox.new(browser.text_field(name: "ShipStreet1")):cache[:address_1]
+          (cache[:address_1].nil?||!cache[:address_1].present?)?cache[:address_1]=StampsTextbox.new(
+              browser.text_field(name: "ShipStreet1")):cache[:address_1]
         end
 
         def address_2
-          (cache[:address_2].nil?||!cache[:address_2].present?)?cache[:address_2]=StampsTextbox.new(browser.text_field(name: "ShipStreet2")):cache[:address_2]
+          (cache[:address_2].nil?||!cache[:address_2].present?)?cache[:address_2]=StampsTextbox.new(
+              browser.text_field(name: "ShipStreet2")):cache[:address_2]
         end
 
         def city
-          (cache[:city].nil?||!cache[:city].present?)?cache[:city]=StampsTextbox.new(browser.text_field(name: "ShipCity")):cache[:city]
+          (cache[:city].nil?||!cache[:city].present?)?cache[:city]=StampsTextbox.new(
+              browser.text_field(name: "ShipCity")):cache[:city]
         end
 
         def province
-          (cache[:province].nil?||!cache[:province].present?)?cache[:province]=StampsTextbox.new(browser.text_field(name: "ShipState")):cache[:province]
+          (cache[:province].nil?||!cache[:province].present?)?cache[:province]=StampsTextbox.new(
+              browser.text_field(name: "ShipState")):cache[:province]
         end
 
         def postal_code
-          (cache[:postal_code].nil?||!cache[:postal_code].present?)?cache[:postal_code]=StampsTextbox.new(browser.text_field(name: "ShipPostalCode")):cache[:postal_code]
+          (cache[:postal_code].nil?||!cache[:postal_code].present?)?cache[:postal_code]=StampsTextbox.new(
+              browser.text_field(name: "ShipPostalCode")):cache[:postal_code]
         end
 
         def phone
-          (cache[:phone].nil?||!cache[:phone].present?)?cache[:phone]=StampsTextbox.new(browser.text_field(css: "[id=shiptoview-international-targetEl] [name=ShipPhone]")):cache[:phone]
+          (cache[:phone].nil?||!cache[:phone].present?)?cache[:phone]=StampsTextbox.new(
+              browser.text_field(css: "[id=shiptoview-international-targetEl] [name=ShipPhone]")):cache[:phone]
         end
       end
 
       module MailDomTextArea
         def textarea
-          (cache[:textarea].nil?||!cache[:textarea].present?)?cache[:textarea]=StampsTextbox.new(browser.textarea(id: "sdc-mainpanel-shiptotextarea-inputEl")):cache[:textarea]
+          (cache[:textarea].nil?||!cache[:textarea].present?)?cache[:textarea]=StampsTextbox.new(
+              browser.textarea(id: "sdc-mainpanel-shiptotextarea-inputEl")):cache[:textarea]
         end
       end
 
@@ -596,13 +629,14 @@ module Stamps
       class PrintFormMailFrom < Browser::StampsModal
         include PrintFormBlurOut
         def textbox
-          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl")):cache[:textbox]
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl")):cache[:textbox]
         end
 
         def dropdown
-          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker")):cache[:dropdown]
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+              browser.div(id: "sdc-mainpanel-shipfromdroplist-trigger-picker")):cache[:dropdown]
         end
-
 
         def manage_shipping_address
           (cache[:manage_shipping_address].nil?||!cache[:manage_shipping_address].present?)?cache[:manage_shipping_address]=MailManageShippingAddresses.new(param):cache[:manage_shipping_address]
@@ -613,87 +647,87 @@ module Stamps
         end
 
         def selection_field(str)
-          if str.downcase.include?('default')
-            selection=StampsField.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0])
+          if str.downcase.to_sym==:default
+            (cache[:default].nil?||!cache[:default].present?)?cache[:default]=StampsField.new(browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*=x-boundlist-item]")[0]):cache[:default]
           else
-            # verify str is in Ship-From drop-down list of values
-            lovs=[]
-            browser.lis(css: "ul[id^=boundlist-][id$=-listEl]>li[class*='x-boundlist-item']").each_with_index { |field, index| lovs[index]=field.text }
-            expect(lovs).to include(/#{str}/), "Ship From drop-down list of values: #{lovs} does not include #{str}"
-            selection=StampsField.new(browser.li(text: /#{str}/))
+            (cache[str.to_sym].nil?||!cache[str.to_sym].present?)?cache[str.to_sym]=StampsField.new(browser.li(text: /#{str}/)):cache[str.to_sym]
           end
-          StampsField.new(selection)
         end
 
         def select(str)
           dropdown.click
-          if str.downcase.include? "manage shipping"
+          if str.downcase.include?('manage shipping')
             10.times do
               begin
-                selection=selection_field(str)
-                selection.click
+                selection_field(str).click
                 return manage_shipping_address if manage_shipping_address.present?
-                dropdown.click unless selection.present?
+                dropdown.click unless selection_field(str).present?
               rescue
                 #ignore
               end
             end
           else
             10.times do
-              selection=selection_field(str)
-              selection.click
-              break if textbox.text.length > 0
-              dropdown.click unless selection.present?
+              selection_field(str).click
+              return textbox.text if textbox.text.length > 0
+              dropdown.click unless selection_field(str).present?
             end
           end
+          nil
         end
       end
 
       class MailServiceSelection < Browser::StampsModal
         include ParameterHelper
-        attr_accessor :browser, :service_str, :service_field, :cost_field
-
-        def service(str)
-          @service_str=str
-          @service_field=StampsField.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=text]"))
-          @cost_field=StampsField.new(browser.td(css: "li[id='#{data_for(:mail_services, {})[service_str]}']>table>tbody>tr>td[class*=amount]"))
-          self
+        def cost_field(str)
+          (cache[:cost_field].nil?||!cache[:cost_field].present?)?cache[:cost_field]=StampsField.new(
+              browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=amount]")):cache[:cost_field]
         end
 
-        def cost_str
-          dollar_amount_str(cost_field.text)
+        def service_field(str)
+          (cache[:service_field].nil?||!cache[:service_field].present?)?cache[:service_field]=StampsField.new(
+              browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=text]")):cache[:service_field]
         end
 
-        def selection_is_numeric?
-          is_numeric?(cost_str)
+        def cost_str(str)
+          dollar_amount_str(cost_field(str).text)
         end
 
-        def service_cost
-          (selection_is_numeric?)?cost_field.text.to_f: 0
+        def selection_is_numeric?(str)
+          is_numeric?(cost_str(str))
+        end
+
+        def service_cost(str)
+          (selection_is_numeric?)?cost_field(str).text.to_f : 0
         end
       end
 
       class PrintFormService < Browser::StampsModal
-        attr_reader :textbox, :dropdown, :service_selection
         include PrintFormBlurOut
+        def service_selection
+          (cache[:service_selection].nil?||!cache[:service_selection].present?)?cache[:service_selection]=MailServiceSelection.new(param):cache[:service_selection]
+        end
 
-        def initialize(param)
-          super
-          @textbox=StampsTextbox.new browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")
-          @dropdown=StampsField.new browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")
-          @service_selection=MailServiceSelection.new(param)
+        def textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              browser.text_field(id: "sdc-mainpanel-servicedroplist-inputEl")):cache[:textbox]
+        end
+
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+              browser.div(id: "sdc-mainpanel-servicedroplist-trigger-picker")):cache[:dropdown]
         end
 
         def has_rates?
           case(param.print_media)
-            when :certified_mails
+            when :certified_mail
               default_service='FCMI Package'
-            when :labels
+            when :label
               default_service='PM Flat Rate Envelope'
               default_int_service='PMI Flat Rate Envelope'
-            when :envelopes
+            when :envelope
               default_service='FCM Letter'
-            when :rolls
+            when :roll
               default_service='PME Flat Rate Envelope'
               default_int_service='PMI Flat Rate Envelope'
             when :stamps
@@ -703,9 +737,9 @@ module Stamps
           end
           has_rates=false
           5.times do
-            if service_selection.service(default_service).service_field.present?||service_selection.service(default_int_service).service_field.present?
-              has_rates=service_selection.service(default_service).selection_is_numeric?||service_selection.service(default_int_service).selection_is_numeric?
-              dropdown.click if service_selection.service(default_service).service_field.present?||service_selection.service(default_int_service).service_field.present?
+            if service_selection.service_field(default_service).present?||service_selection.service_field(default_service).present?
+              has_rates=service_selection.selection_is_numeric?(default_service)||service_selection.selection_is_numeric?(default_service)
+              dropdown.click if service_selection.service_field(default_service).present?||service_selection.service_field(default_service).present?
               break
             else
               dropdown.click
@@ -714,51 +748,39 @@ module Stamps
           has_rates
         end
 
-        def select(str)
-          logger.info "Select service #{str}"
-          service_selection.service(str)
-          service_field=service_selection.service_field
-          15.times do
-            break if (textbox.text).include?(str)
-            dropdown.click unless service_field.present?
-            begin
-              dropdown.click
-              browser.refresh
-            end unless service_selection.selection_is_numeric?
-            sleep(2)
-            dropdown.wait_until_present(4)
-            blur_out
-            dropdown.click unless service_field.present?
-            service_field.scroll_into_view
-            service_field.click
-            blur_out
-          end
-          dropdown.click unless service_field.present?
-
-
-
-          if service_field.present?
-            specify_field=browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl')
-            specify_verify_field=browser.div(id: 'sdc-mainpanel-specifypostageradio')
-            specify_postage_amount=StampsRadio.new(specify_field, specify_verify_field, "class", "checked")
-            if !specify_postage_amount.selected?
-              expect(service_selection.cost_str).to include("."), "Unable to get rates for Mail Service #{str} selection in #{param.test_env.upcase}.  #{param.test_env.upcase} might be having rating problems. Got rate #{service_selection.cost_str}"
-              dropdown.click
+        def service_cost(str)
+          dropdown.wait_until_present(4)
+          blur_out
+          20.times do
+            if service_selection.cost_field(str).present?
+              service_selection.cost_field(str).scroll_into_view
+              return service_selection.cost_field(str).text
             end
+            dropdown.click
           end
-          expect(textbox.text).to include(str), "Unable to select Mail Service #{str}. Expected Service textbox to contain #{str}, got #{textbox.text}"
-          logger.info "#{textbox.text} service selected."
+          nil
+        end
+
+        def select_service(str)
+          15.times do
+            break if textbox.text.include?(str)
+            dropdown.click unless service_selection.service_field(str).present?
+            dropdown.wait_until_present(4)
+            dropdown.click unless service_selection.service_field(str).present?
+            service_selection.service_field(str).scroll_into_view
+            service_selection.service_field(str).click
+            blur_out
+          end
           textbox.text
         end
 
         def cost(selection)
-          cost_label=StampsField.new browser.td css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"
+          cost_label=StampsField.new(browser.td(css: "tr[data-qtip*='#{selection}']>td:nth-child(3)"))
           20.times do
             begin
               dropdown.click unless cost_label.present?
               if cost_label.present?
                 service_cost=test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
-                logger.info "Service Cost for \"#{selection}\" is #{service_cost}"
                 return service_cost
               end
             rescue
@@ -768,6 +790,7 @@ module Stamps
           blur_out
         end
 
+        #todo-Rob rework tooltips
         def tooltip(selection)
           button=dropdown
           selection_label=StampsField.new browser.tr css: "tr[data-qtip*='#{selection}']"
@@ -787,110 +810,54 @@ module Stamps
         end
 
         def price
-          StampsField.new(browser.label(id: "sdc-mainpanel-servicepricelabel"))
+          (cache[:price].nil?||!cache[:price].present?)?cache[:price]=StampsField.new(
+              browser.label(id: "sdc-mainpanel-servicepricelabel")):cache[:price]
         end
 
-      end
-
-      class StampAmount < Browser::StampsModal
-        def textbox
-          StampsTextbox.new(browser.text_field name: "stampAmount")
-        end
-
-        def set(value)
-          text_field=textbox
-          text_field.set(value)
-          logger.info "Pounds set to #{text_field.text}"
-        end
-
-        def increment value
-          button=StampsField.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=up]"
-          value.to_i.times do
-            button.click
-          end
-        end
-
-        def decrement value
-          button=StampsField.new browser.div css: "div[id^=fieldcontainer-][id$=-innerCt]>div[id^=fieldcontainer-][id$=-targetEl]>table[id^=numberfield]>tbody>tr>td>table>tbody>tr>td>div[class*=down]"
-          value.to_i.times do
-            button.click
-          end
-        end
-      end
-
-      class PrintFormEmail < Browser::StampsModal
-        attr_reader :checkbox, :textbox
-        def initialize(param)
-          super
-          @checkbox=StampsCheckbox.new browser.input(id: "sdc-mainpanel-emailcheckbox-inputEl"), browser.table(id: "sdc-mainpanel-emailcheckbox"), "class", "checked"
-          @textbox=StampsTextbox.new browser.text_field(id: "sdc-mainpanel-emailtextfield-inputEl")
-        end
-
-        def set(value)
-          checkbox.check
-          textbox.set(value)
-        end
       end
 
       class MailTracking < Browser::StampsModal
-
         def textbox
-          StampsTextbox.new browser.text_field name: "tracking"
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              browser.text_field(id: "sdc-mainpanel-trackingdroplist-inputEl")):cache[:textbox]
         end
 
         def dropdown
-          StampsField.new(browser.divs(css: "div[class*=x-form-arrow-trigger]")[7])
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+              browser.div(id: "sdc-mainpanel-trackingdroplist-trigger-picker")):cache[:dropdown]
         end
 
-        def select(selection)
-          logger.info "Select Tracking #{selection}"
-          box=textbox
-          button=dropdown
-          selection_label=StampsField.new browser.div text: selection
-          10.times {
+        def selection_field(str)
+          (cache[str.to_sym].nil?||!cache[str.to_sym].present?)?cache[str.to_sym]=StampsField.new(
+              browser.div(text: selection)):cache[str.to_sym]
+        end
+
+        def select(str)
+          10.times do
             begin
-              button.click #unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.click
-              selected_tracking=box.text
-              logger.info "Selected Tracking #{selected_tracking} - #{(selected_tracking.include? selection)?"done": "tracking not selected"}"
-              break if selected_tracking.include? selection
+              dropdown.click unless selection_field(str).present?
+              selection_field(str).scroll_into_view
+              selection_field(str).click
+              return selection_field(str) if textbox.text.include?(str)
             rescue
               #ignore
             end
-          }
-          logger.info "Tracking selected: #{selection}"
-          selection_label
+          end
+          nil
         end
 
         def price
-          StampsField.new browser.label id: "sdc-mainpanel-trackingpricelabel"
-        end
-      end
-
-      class PrintFormInsureFor < Browser::StampsModal
-        def checkbox
-
-        end
-
-        def textbox
-          StampsTextbox.new browser.text_field id: "sdc-mainpanel-insureamtnumberfield-inputEl"
-        end
-
-        def increment value
-
-        end
-
-        def decrement value
-
-        end
-
-        def price
-          StampsField.new browser.label id: "sdc-mainpanel-insurancepricelabel"
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+              browser.label(id: "sdc-mainpanel-trackingpricelabel")):cache[:dropdown]
         end
       end
 
       class PrintFormCostCode < Browser::StampsModal
+        def textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              browser.text_field(id: "sdc-mainpanel-trackingdroplist-inputEl")):cache[:textbox]
+        end
+
         def textbox
           StampsTextbox.new browser.text_field name: "costCodeId"
         end
