@@ -11,7 +11,7 @@ end
 Then /^[Ss]earch [Mm]arketplace for [Ss]tore [Nn]ame (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  stamps.orders.marketplace.search_by_name.set(test_param[:username]=str)
+  stamps.orders.marketplace.search_by_name.set(test_param[:store_name]=str)
 end
 
 Then /^[Aa]dd [Mm]arketplace [Ss]tore (.*)$/ do |str|

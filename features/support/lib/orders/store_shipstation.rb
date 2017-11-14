@@ -92,15 +92,15 @@ module Stamps
         end
 
         def username
-          (cache[:username].nil?||!cache[:username].present?)?cache[:username] = StampsField.new(browser.input(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div>div>div>div[class*='readonly']>div>div>div>input[id^='textfield-']")):cache[:username]
+          (cache[:username].nil?||!cache[:username].present?)?cache[:username] = StampsField.new(browser.text_field(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div>div>div>div[class*='readonly']>div>div>div>input[id^='textfield-']")):cache[:username]
         end
 
         def password
-          (cache[:password].nil?||!cache[:password].present?)?cache[:password] = StampsTextbox.new(browser.input(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div>div>div>div[class*='password']>div>div>div>input[id^='textfield-']")):cache[:password]
+          (cache[:password].nil?||!cache[:password].present?)?cache[:password] = StampsTextbox.new(browser.text_field(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div>div>div>div[class*='password']>div>div>div>input[id^='textfield-']")):cache[:password]
         end
 
         def check_box
-          (cache[:check_box].nil?||!cache[:check_box].present?)?cache[:check_box] = StampsField.new(browser.span(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div[class*='checkbox']>div>div>span[id^='checkbox-'][id$='-displayEl']")):cache[:check_box]
+          (cache[:check_box].nil?||!cache[:check_box].present?)?cache[:check_box] = StampsWatirCheckbox.new(browser.span(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div[class*='checkbox']>div>div>span[id^='checkbox-'][id$='-displayEl']")):cache[:check_box]
         end
 
         def login

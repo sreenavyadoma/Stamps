@@ -34,13 +34,14 @@ Then /^[Cc]lick on [Ss]ign in to [Ss]hip[Ss]tation [Bb]utton$/ do
 end
 
 Then /^[Cc]lick on [Cc]lose [Bb]utton$/ do
-#todo
+  stamps.orders.stores.shipstation.add_advanced_shipping_feature.dialog_header.present?
 end
 
 
 # Add advanced shipping features dialog Step Definitions
 Then /^[Ee]xpect [Oo]rders [Pp]age [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog is present$/ do
   expect(stamps.orders.marketplace.dataview.store_window(:opencart).add_advanced_shipping_feature.dialog_header.present?).to be(true), "Add Advanced Shipping Features! dialog does not present"
+
 end
 
 Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog [Ss]hip[Ss]tation logo exists$/ do
@@ -90,19 +91,19 @@ Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Uu]sername is
 end
 
 Then /^[Ss]et in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword to (?:random value|(.*))$/ do |str|
-  stamps.orders.marketplace.dataview.store_window(:opencart).activate_your_new_features.password.send(test_param[:password]=(str.nil?)?"pass111":str)
+  stamps.orders.marketplace.dataview.store_window(:opencart).activate_your_new_features.password.set(test_param[:password]=(str.nil?)?"pass111":str)
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword is (?:correct|(.*))$/ do |str|
-  stamps.orders.marketplace.dataview.store_window(:opencart).activate_your_new_features.password.set(str)
+  expect(stamps.orders.marketplace.dataview.store_window(:opencart).activate_your_new_features.password.text).to eql(test_param[:password]), "Password does not correct"
 end
 
 Then /^[Cc]heck in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions checkbox$/ do
-#todo
+  stamps.orders.marketplace.dataview.store_window(:opencart).activate_your_new_features.check_box.click
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Tt]erms [Aa]nd [Cc]onditions is checked$/ do
-#todo
+  expect(stamps.orders.marketplace.dataview.store_window(:opencart).activate_your_new_features.check_box.checked?).to be(false), "Checkbox does not checked"
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Pp]assword tooltip to be (.*)$/ do |str|
