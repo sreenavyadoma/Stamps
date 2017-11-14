@@ -1,53 +1,17 @@
 module Stamps
   class HealthCheck < Browser::StampsModal
-
     def health_check
-      param.test_env='stg' if param.test_env.downcase=='staging'
       case param.test_env.downcase
         when /sc/
-          url="https://printext.qasc.stamps.com/orders/healthcheck.aspx"
-          logger.message "-"
-          logger.message "-"
-          logger.message "Print - Orders"
-          browser.goto url
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
+          browser.goto("https://printext.qasc.stamps.com/orders/healthcheck.aspx")
         when /cc/
-          url="https://printext.qacc.stamps.com/orders/healthcheck.aspx"
-          logger.message "-"
-          logger.message "-"
-          logger.message "Print - Orders"
-          browser.goto url
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
+          browser.goto("https://printext.qacc.stamps.com/orders/healthcheck.aspx")
         when /stg/
-          url="https://print.testing.stamps.com/orders/healthcheck.aspx"
-          logger.message "-"
-          logger.message "-"
-          logger.message "Print - Orders"
-          browser.goto url
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "Print - Orders: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
+          browser.goto("https://print.testing.stamps.com/orders/healthcheck.aspx")
         else
-          # do nothing
+          raise "Invalid environment selection: #{param.test_env}"
       end
-      if browser.text.include? "Server Error"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
-      if browser.text.downcase.include? "server not found"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
+      sleep(1.5)
       browser.text
     end
 
@@ -55,144 +19,46 @@ module Stamps
       param.test_env='stg' if param.test_env.downcase=='staging'
       case param.test_env.downcase
         when /sc/
-          logger.message "Print - Address Book"
-          browser.goto "https://printext.qasc.stamps.com/addressbook/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
+          browser.goto("https://printext.qasc.stamps.com/addressbook/healthcheck.aspx")
         when /cc/
-          logger.message "Print - Address Book"
-          browser.goto "https://printext.qacc.stamps.com/addressbook/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
+          browser.goto("https://printext.qacc.stamps.com/addressbook/healthcheck.aspx")
         when /stg/
-          logger.message "Print - Address Book"
-          browser.goto "https://print.testing.stamps.com/addressbook/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "Print - Address Book: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
+          browser.goto("https://print.testing.stamps.com/addressbook/healthcheck.aspx")
         else
-          #do nothing
+          raise "Invalid environment selection: #{param.test_env}"
       end
-      if browser.text.include? "Server Error"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
-      if browser.text.downcase.include? "server not found"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
+      sleep(1.5)
       browser.text
     end
 
     def or_reports
-      param.test_env='stg' if param.test_env.downcase=='staging'
-
       case param.test_env.downcase
         when /sc/
-          logger.message "OR - Reports"
-          browser.goto "https://orext.qasc.stamps.com/ORReports/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
-
+          browser.goto("https://orext.qasc.stamps.com/ORReports/healthcheck.aspx")
         when /cc/
-          logger.message "OR - Reports"
-          browser.goto "https://orext.qacc.stamps.com/orreports/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
-
+          browser.goto("https://orext.qacc.stamps.com/orreports/healthcheck.aspx")
         when /stg/
-          logger.message "OR - Reports"
-          browser.goto "https://or.staging.stamps.com/orreports/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "OR - Reports: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
-
+          browser.goto("https://or.staging.stamps.com/orreports/healthcheck.aspx")
         else
-          # do nothing
+          raise "Invalid environment selection: #{param.test_env}"
       end
-
-      if browser.text.include? "Server Error"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
-
-      if browser.text.downcase.include? "server not found"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
-
-      if browser.text.downcase.include? "server not found"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
-
-      logger.info browser.url
-      expect(browser.text).to include "All tests passed"
+      sleep(1.5)
+      browser.text
     end
 
     def or_postage_tools
-      param.test_env='stg' if param.test_env.downcase=='staging'
-
       case param.test_env.downcase
         when /sc/
-          logger.message "OR - Postage Tools"
-          browser.goto "https://orext.qasc.stamps.com/postagetools/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
-
+          browser.goto("https://orext.qasc.stamps.com/postagetools/healthcheck.aspx")
         when /cc/
-          logger.message "OR - Postage Tools"
-          browser.goto "https://orext.qacc.stamps.com/postagetools/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
-
+          browser.goto("https://orext.qacc.stamps.com/postagetools/healthcheck.aspx")
         when /stg/
-          logger.message "OR - Postage Tools"
-          browser.goto "https://or.staging.stamps.com/postagetools/healthcheck.aspx"
-          logger.message "#{browser.url}"
-          logger.message "#{browser.text}"
-          logger.message "OR - Postage Tools: Test #{(browser.text.include? "All tests passed")?"Passed":"Failed"}"
-          logger.message "-"
-          logger.message "-"
-
+          browser.goto("https://or.staging.stamps.com/postagetools/healthcheck.aspx")
         else
-          # do nothing
+          raise "Invalid environment selection: #{param.test_env}"
       end
-
-      if browser.text.include? "Server Error"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
-
-      if browser.text.downcase.include? "server not found"
-        logger.error "\n#{browser.url}\n#{browser.text}"
-        raise "\n#{browser.url}\n#{browser.text}"
-      end
-
-      logger.info browser.url
-      expect(browser.text).to include "All tests passed"
+      sleep(1.5)
+      browser.text
     end
   end
 
