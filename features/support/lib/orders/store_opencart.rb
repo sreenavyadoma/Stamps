@@ -7,10 +7,13 @@ module Stamps
         end
       end
 
-      class ConnectYourOpenCartStore < Browser::StampsModal
-
-        def ship_station_upgrade_dialog
+      module ConnectYourOpenCartStore
+        def add_advanced_shipping_feature
           AddAdvancedShippingFeatures.new(param) #ShipstationMarketplace
+        end
+
+        def activate_your_new_features
+          ActivateYourNewFeatures.new(param) #ShipstationMarketplace
         end
       end
     end

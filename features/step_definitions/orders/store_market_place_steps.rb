@@ -23,8 +23,7 @@ end
 Then /^[Aa]dd [Mm]arketplace shipstation [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  expect(stamps.orders.marketplace.dataview.add_advanced_feature(str)).to eql("Add Advanced...")
-  stamps.orders.marketplace.dataview.add_shipstation_store(str)
+  expect(stamps.orders.marketplace.dataview.add_advanced_feature(str)).to eql("Add Advanced Shipping Features!")
 end
 
 Then /^validate store name (.*)$/ do |str|
@@ -45,7 +44,6 @@ Then /^[Ee]xpect [Mm]arketplace [Dd]ataview [Cc]ount is (greater|less|equal) (?:
       #ignore
   end
 end
-stamps.orders.stores.shipstation
 #
 # Then /^[Ss]elect Paypal on Marketplace modal$/ do
 #   step "expect Paypal is on Marketplace modal"

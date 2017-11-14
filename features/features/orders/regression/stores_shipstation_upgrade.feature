@@ -38,15 +38,14 @@ Feature: Shipstation Upgrade Path
 
     #Activate your new features
     Then expect Orders page Activate Your New Features dialog is present
-    Then expect in Activate Your New Features dialog body contain Simply log in to ShipStation using your Stamps.com Username and Password.
+   # Then expect in Activate Your New Features dialog body contain Simply log in to ShipStation using your Stamps.com Username and Password. All of your existing stores and orders will be connected and synced.
     Then expect in Activate Your New Features dialog username exists
     Then expect in Activate Your New Features dialog password exists
     Then expect in Activate Your New Features dialog terms and conditions checkbox exists
     Then expect in Activate Your New Features dialog login Button exists
     Then click on login Button
     Then expect in Activate Your New Features dialog password tooltip to be This field is required
-    Then expect in Activate Your New Features dialog terms and conditions tooltip to be This field is required
-    Then set in Activate Your New Features dialog username to random
+    Then expect in Activate Your New Features dialog terms and conditions tooltip to be You must agree and consent to the above.
     Then expect in Activate Your New Features dialog username is correct
     Then set in Activate Your New Features dialog password to random
     Then expect in Activate Your New Features dialog password is correct
