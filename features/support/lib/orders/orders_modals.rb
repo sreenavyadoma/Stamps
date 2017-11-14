@@ -17,7 +17,7 @@ module Stamps
       end
 
       def shipstation
-        (cache[:shipstation].nil?||!cache[:shipstation].present?)?cache[:shipstation]=Stamps::Orders::Stores::ConnectYourOpenCartStore.new(param):cache[:shipstation]
+        (cache[:shipstation].nil?||!cache[:shipstation].present?)?cache[:shipstation]=Stamps::Orders::Stores::OpenCart.new(param):cache[:shipstation]
       end
     end
 

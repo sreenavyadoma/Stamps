@@ -34,14 +34,14 @@ Then /^[Cc]lick on [Ss]ign in to [Ss]hip[Ss]tation [Bb]utton$/ do
 end
 
 Then /^[Cc]lick on [Cc]lose [Bb]utton$/ do
-  stamps.orders.stores.shipstation.add_advanced_shipping_feature.dialog_header.present?
+
+  stamps.orders.marketplace.dataview.store_window(:opencart).add_advanced_shipping_feature.dialog_header.present?
 end
 
 
 # Add advanced shipping features dialog Step Definitions
 Then /^[Ee]xpect [Oo]rders [Pp]age [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog is present$/ do
-  expect(stamps.orders.marketplace.dataview.store_window(:opencart).add_advanced_shipping_feature.dialog_header.present?).to be(true), "Add Advanced Shipping Features! dialog does not present"
-
+  expect(stamps.orders.stores.shipstation.add_advanced_shipping_feature.dialog_header.present?).to be(true), "Add Advanced Shipping Features! dialog does not present"
 end
 
 Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog [Ss]hip[Ss]tation logo exists$/ do
