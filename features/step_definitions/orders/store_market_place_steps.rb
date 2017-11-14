@@ -14,7 +14,7 @@ Then /^[Ss]earch [Mm]arketplace for [Ss]tore [Nn]ame (.*)$/ do |str|
   stamps.orders.marketplace.search_by_name.set(test_param[:store_name]=str)
 end
 
-Then /^[Aa]dd [Mm]arketplace [Ss]tore (.*)$/ do |str|
+Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
   expect(stamps.orders.marketplace.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
@@ -51,7 +51,7 @@ end
 # end
 
 Then /^[Ee]xpect Paypal is on Marketplace modal$/ do
-  expect(stamps.orders.paypal).to be_present, "Paypal is not on Marketplace modal"
+  expect(stamps.orders.paypal_store).to be_present, "Paypal is not on Marketplace modal"
 end
 
 Then /^Marketplace: Select Big Commerce$/ do

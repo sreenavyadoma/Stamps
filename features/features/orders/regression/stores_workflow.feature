@@ -10,12 +10,11 @@ Feature:  All Store Management
       Then click Order Settings Stores Add button
       #Then select Paypal on Marketplace modal
       Then search Marketplace for store name Paypal
-      Then expect Marketplace dataview count is greater than 0
-      Then expect Marketplace dataview count is less than 2
       Then expect Marketplace dataview count is equal to 1
-
+      Then connect Marketplace store Paypal
       Then set PayPal Email Address to qaclient@stamps.com
       Then click Paypal verify email button
+      #need a valid paypal email to make this work
       Then set Paypal orders number option to use the Paypal transaction ID
       Then set Paypal orders number option to use the invoice number
       Then set PayPal Email Address restriction to qaclient@stamps.com
@@ -29,8 +28,6 @@ Feature:  All Store Management
       #Then Add new Paypal service mapping
       #Then Set Store Nickname to random
       #Then Set store service Mapping (\d+), Requested Services (.*), Shipping service (.*)
-
-
       #Then Paypal: Expect Help article is present
       #Then Paypal: Open Paypal link
       #Then Paypal: Expect Paypal site is present

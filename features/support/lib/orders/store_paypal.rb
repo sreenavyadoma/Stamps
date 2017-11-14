@@ -116,6 +116,18 @@ module Stamps
         end
       end
 
+      class PayPalEmailVerSent < Browser::StampsModal
+        def confirm_token
+
+        end
+      end
+
+      class PayPalEmailVer < Browser::StampsModal
+        def send_email_verification
+
+        end
+      end
+
       module PayPalCache
         def cache
           @cache ||= {}
@@ -133,7 +145,15 @@ module Stamps
         end
       end
 
+      module PayPalModals
+        include PayPalCache
+        def email_verification_modal
+
+        end
+      end
+
       class PayPal < Browser::StampsModal
+        include PayPalModals
         include PayPalCache
         include PayPalWindowTitle
 
@@ -146,11 +166,11 @@ module Stamps
         end
 
         def store_modal
-          StampsField.new browser.div(css: "div[id^='storeiframewindow'][id$='header']")
+          (cache[:store_modal].nil?||!cache[:store_modal].present?)?cache[:store_modal]=StampsField.new(browser.div(css: "div[id^='storeiframewindow'][id$='header']")):cache[:store_modal]
         end
 
         def store_icon
-          StampsField.new iframe.img(css: "img[src*=paypalbanner]")
+          (cache[:store_icon].nil?||!cache[:store_icon].present?)?cache[:store_icon]=StampsField.new(iframe.img(css: "img[src*=paypalbanner]")):cache[:store_icon]
         end
 
         def email_address

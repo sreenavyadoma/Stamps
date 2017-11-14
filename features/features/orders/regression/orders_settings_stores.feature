@@ -15,5 +15,5 @@ Feature:  All Store Management
     Then expect Marketplace dataview count is less than 2
     Then expect Marketplace dataview count is equal to 1
 
-    Then add Marketplace store Paypal
+    Then connect Marketplace store Paypal
     Then set PayPal Email Address to qaclient@stamps.com

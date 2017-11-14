@@ -38,23 +38,21 @@ module Stamps
         end
       end
 
+      #todo-Rob add caching
       class OrdersLandingPage < Browser::StampsModal
         attr_reader :username_textbox, :password_textbox, :sign_in_btn, :title, :signed_in_user
 
         def initialize(param)
           super
-          browser.text_field(css: "input[class*=x-form-checkbox]")
-          browser.a(text: "Download Software for Windows")
           @username_textbox=StampsTextbox.new(browser.text_field(css: "[placeholder=USERNAME]"))
           @password_textbox=StampsTextbox.new(browser.text_field(css: "[placeholder=PASSWORD]"))
           @sign_in_btn=StampsField.new(browser.span(text: "Sign In"))
-
           @title=StampsField.new(browser.div(text: 'Sign In'))
           @signed_in_user=StampsField.new(browser.span(id: "userNameText"))
         end
 
         def remember_my_username
-          expect("Not yet implemented.").to eql "remember_my_username"
+          raise "remember_my_username not yet implemented."
         end
 
         def validation_message
@@ -66,7 +64,7 @@ module Stamps
         end
 
         def present?
-          browser.url.include?('SignIn')
+          username_textbox.present?
         end
 
         def wait_until_present(*args)
@@ -172,7 +170,7 @@ module Stamps
             invalid_username=StampsField.new(browser.span(id: "InvalidUsernameMsg"))
             new_welcome=NewWelcomeModal.new(param)
             security_questions=SecurityQuestionsSuccess.new(param)
-            server_error=Stamps::Orders::ServerError.new(param)
+            server_error=Stamps::Orders::OrdersRuntimeError::ServerError.new(param)
 
             expect(browser.url).to include "Orders"
 
@@ -183,6 +181,7 @@ module Stamps
             wait_until_present(4)
             30.times do
               begin
+                return signed_in_user.text if signed_in_user.present?
                 if present?
                   username(usr)
                   password(pw)
@@ -190,23 +189,19 @@ module Stamps
                   wait_while_present(3)
 
                   expect(server_error).to_not be_present, server_error.message
-
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
-
-                  20.times do
-                    sleep(0.05)
-                    break unless invalid_username.present?
+                  if invalid_username.present?
                     logger.message invalid_username.text
+                    sleep(0.05)
                   end
-
                   20.times do
-                    break unless loading_orders.present?
-                    logger.message loading_orders.text
-                    sleep(0.20)
+                    if loading_orders.present?
+                      logger.message loading_orders.text
+                      sleep(0.20)
+                    end
                   end
                 end
-
                 new_welcome.wait_until_present(2)
                 if new_welcome.present?
                   logger.message new_welcome.message
@@ -221,29 +216,21 @@ module Stamps
                   learn_more.close
                 end
                 signed_in_user.wait_until_present(2)
-                break if signed_in_user.present?
               rescue Exception => e
                 logger.error e.message
                 logger.error e.backtrace.join "\n"
                 raise e
               end
-              signed_in_user.text
             end
-
-            expect(signed_in_user.text).to eql(usr), "Unable to sign-in to Orders in #{param.test_env}"
-
-            logger.message "#"*15
-            logger.message "Signed-in User: #{signed_in_user.text}"
-            logger.message "#"*15
-
-            signed_in_user.text
           rescue Exception => e
             logger.error e.message
             logger.error e.backtrace.join("\n")
             raise e
           end
+          nil
         end
 
+        #todo-Rob fix this
         def orders_sign_in_sec_questions(usr, pw)
           security_questions=SecurityQuestions.new(param)
 

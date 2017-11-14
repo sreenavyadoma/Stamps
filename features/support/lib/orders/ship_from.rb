@@ -19,7 +19,7 @@ module Stamps
         end
 
         def grid_cell(row, column)
-          browser.td css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})"
+          browser.td(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table:nth-child(#{row.to_i})>tbody>tr>td:nth-child(#{column.to_i})")
         end
 
         def grid_cell_text(row, column)
@@ -27,11 +27,14 @@ module Stamps
         end
 
         def checked?(row)
-          field=browser.table css: "div[id^=manageShipFromWindow][class^=x-window-body]>div>div[id$=body]>div[id^=gridview]>div[class=x-grid-item-container]>table[data-recordindex='#{row.to_i-1}']"
-          value=field.attribute_value "class"
-          checked=value.include? "selected"
-          logger.info "Row #{row} selected? #{checked}"
-          checked
+          begin
+            browser.tables(css: "[id^=manageShipFromWindow-][id$=-body][class*=closable] table").each_with_index do |grid_row_item, index|
+              return grid_row_item.attribute_value("class").include?('selected') if row==index+1
+            end
+          rescue
+            #ignore
+          end
+          false
         end
 
         def name row
@@ -257,16 +260,20 @@ module Stamps
 
       end
 
+      #todo-Rob fix me.
       class DeleteShippingAddress < Browser::StampsModal
 
         def window_title
           browser.div(text: "Delete Shipping Address")
         end
 
+
+
         def delete
-          del_btn=StampsField.new(browser.fields(text: 'Delete').last)
+          #del_btn=StampsField.new(browser.fields(text: 'Delete').last)
+          delete_btn=StampsField.new(browser.a(css: 'div[id^=dialoguemodal-][class*=closable] div[class*=x-panel-default-docked-bottom] a'))
           5.times do
-            del_btn.click
+            delete_btn.click
             break unless present?
           end
         end

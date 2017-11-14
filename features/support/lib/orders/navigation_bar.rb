@@ -138,12 +138,13 @@ module Stamps
         end
         expect("Auto-Buy Postage modal did not open.").to eql "Unable to open Auto-Buy Postage modal upon clicking Auto-buy postage link"
       end
-
+      #todo-Alex remove param.web_app check
       def purchase_button
-        if param.web_app==:orders
-          button=browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
-        elsif param.web_app==:mail
-          button=browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
+        if param.web_app == :orders || param.web_app == :mail
+          button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
+       # elsif param.web_app == :mail
+        #  #button = browser.span(id: "sdc-purchasewin-purchasebtn-btnIconEl")
+          #button = browser.span(id: "sdc-purchasewin-purchasebtn-btnInnerEl")
         else
           "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
         end
@@ -156,95 +157,43 @@ module Stamps
 
       def buy_10
         param.web_app.should_not be nil
-        if param.web_app==:orders
-          checkbox_field=browser.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
-          verify_field=checkbox_field.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        elsif param.web_app==:mail
-          checkbox_field=browser.input(id: "sdc-purchasewin-10dradio")
-          verify_field=checkbox_field.parent.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-
-        else
-          #
-        end
+        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-10dradio][id$=boxLabelEl]")
+        verify_element = checkbox_element.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_25
-        if param.web_app==:orders
-          checkbox_field=browser.label(css: "label[for=sdc-purchasewin-25dradio][id$=boxLabelEl]")
-          verify_field=checkbox_field.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        elsif param.web_app==:mail
-          checkbox_field=browser.input id: "sdc-purchasewin-25dradio"
-          verify_field=checkbox_field.parent.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        else
-          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
-        end
-
+        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-25dradio][id$=boxLabelEl]")
+        verify_element = checkbox_element.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_50
-        if param.web_app==:orders
-          checkbox_field=browser.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
-          verify_field=checkbox_field.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        elsif param.web_app==:mail
-          checkbox_field=browser.input id: "sdc-purchasewin-50dradio"
-          verify_field=checkbox_field.parent.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        else
-          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
-        end
+        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-50dradio][id$=boxLabelEl]")
+        verify_element = checkbox_element.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_100
-        if param.web_app==:orders
-          checkbox_field=browser.label(css: "label[for=sdc-purchasewin-100dradio][id$=boxLabelEl]")
-          verify_field=checkbox_field.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        elsif param.web_app==:mail
-          checkbox_field=browser.input id: "sdc-purchasewin-100dradio"
-          verify_field=checkbox_field.parent.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        else
-          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
-        end
+        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-100dradio][id$=boxLabelEl]")
+        verify_element = checkbox_element.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
       end
 
       def buy_other value
-        if param.web_app==:orders
-          checkbox_field=browser.label(css: "label[for=sdc-purchasewin-otherdradio][id$=boxLabelEl]")
-          verify_field=checkbox_field.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          checkbox=StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        elsif param.web_app==:mail
-          checkbox_field=browser.input id: "sdc-purchasewin-otherdradio"
-          verify_field=checkbox_field.parent.parent.parent.parent
-          attribute="class"
-          verify_field_attrib="checked"
-          checkbox=StampsRadio.new checkbox_field, verify_field, attribute, verify_field_attrib
-        else
-          "raise Purchase Button failure. #{param.web_app} is not a valid value for param.web_app, check your test."
-        end
+        checkbox_element = browser.label(css: "label[for=sdc-purchasewin-otherdradio][id$=boxLabelEl]")
+        verify_element = checkbox_element.parent.parent.parent
+        attribute = "class"
+        verify_element_attrib = "checked"
+        checkbox = StampsRadio.new(checkbox_element, verify_element, attribute, verify_element_attrib)
 
         textbox=StampsTextbox.new(browser.text_field id: "sdc-purchasewin-otheramount")
 

@@ -2,15 +2,20 @@
 module Stamps
   module Orders
     module Printing
+      module OrdersPrintingCache
+        def cache
+          @cache ||= {}
+        end
+      end
+
       class OrdersPrintMediaDropList < Browser::StampsModal
+        include OrdersPrintingCache
         def dropdown
-          @dropdown=StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")) if @dropdown.nil?||!@dropdown.present?
-          @dropdown
+          (cache[:printing_on].nil?||!cache[:printing_on].present?)?cache[:printing_on]=StampsField.new(browser.div(css: "div[id^=printmediadroplist][id$=trigger-picker]")):cache[:printing_on]
         end
 
         def textbox
-          @textbox=StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist]")) if @textbox.nil?||!@textbox.present?
-          @textbox
+          (cache[:printing_on].nil?||!cache[:printing_on].present?)?cache[:printing_on]=StampsTextbox.new(browser.text_field(css: "input[name^=printmediadroplist]")):cache[:printing_on]
         end
 
         def present?
@@ -471,8 +476,9 @@ module Stamps
       end
 
       module OrdersPrintModalTitle
+        include OrdersPrintingCache
         def window_title
-          (@window_title.nil?||!@window_title.present?)?@window_title=StampsField.new(browser.label(css: '[id^=printwindow] [class*=x-title-text-default]')):@window_title
+          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: '[id^=printwindow-][id$=_header-innerCt] [class*=x-title-text-default]')):cache[:window_title]
         end
 
         def label_count

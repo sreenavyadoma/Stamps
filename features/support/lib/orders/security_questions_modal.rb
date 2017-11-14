@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Authentication
+
       class SecurityQuestionsSuccess < Browser::StampsModal
         def cont_btn
           @cont_btn=StampsField.new(browser.span(text: "Continue")) if @cont_btn.nil?||!@cont_btn.present?
