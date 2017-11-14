@@ -107,6 +107,10 @@ module Stamps
           (cache[:login].nil?||!cache[:login].present?)?cache[:login] = StampsField.new(browser.span(text: "Log In")):cache[:login]
         end
 
+        def close_x
+          (cache[:login].nil?||!cache[:login].present?)?cache[:login] = StampsField.new(browser.img(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>img[src*='/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='")):cache[:login]
+        end
+
         def password_tooltip
           (cache[:password_tooltip].nil?||!cache[:password_tooltip].present?)?cache[:password_tooltip] = StampsField.new(browser.li(css: "div[id^='shipstationloginview-'][id$='-targetEl']>div>div>div>div>div>div>div>div[class*='password']>div>div[role='alert']>ul>li")):cache[:password_tooltip]
         end

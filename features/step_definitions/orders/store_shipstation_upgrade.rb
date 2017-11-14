@@ -119,5 +119,5 @@ Then /^[Cc]lick on [Ll]ogin Button$/ do
 end
 
 Then /^[Cc]lose [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog$/ do
-#todo
+  stamps.orders.marketplace.dataview.store_window(:opencart).activate_your_new_features.close_x.click
 end
