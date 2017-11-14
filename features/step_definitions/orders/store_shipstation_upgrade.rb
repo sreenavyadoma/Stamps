@@ -1,8 +1,7 @@
-#to-do all step def. by kaushal
 
 #Looking for shipstation? dialog Step Definitions
 Then /^[Ee]xpect [Oo]rders [Pp]age [Ll]ooking for [Ss]hip[Ss]tation[?] dialog is present$/ do
-#todo
+  expect(stamps.orders.stores.title.present?).to be(true), "Add Advanced Shipping Features! dialog does not present"
 end
 
 Then /^[Ee]xpect in [Ll]ooking for [Ss]hip[Ss]tation[?] dialog header contain (.*)$/ do |str|
@@ -34,7 +33,6 @@ Then /^[Cc]lick on [Ss]ign in to [Ss]hip[Ss]tation [Bb]utton$/ do
 end
 
 Then /^[Cc]lick on [Cc]lose [Bb]utton$/ do
-
   stamps.orders.marketplace.dataview.store_window(:opencart).add_advanced_shipping_feature.dialog_header.present?
 end
 
