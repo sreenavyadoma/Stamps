@@ -1,6 +1,6 @@
 
 @stores_shipstation_preupgrade
-Feature: Shipstation Pre-Upgrade Path
+Feature: ShipStation Pre-Upgrade Path
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -10,7 +10,8 @@ Feature: Shipstation Pre-Upgrade Path
     Then click orders toolbar settings button
     Then click Order Settings Stores Add button
     Then search Marketplace for store name opencart
-    Then add Marketplace shipstation Store opencart
+    Then expect Marketplace modal Requires Free Upgrade Message present in opencart
+    Then add Marketplace ShipStation Store opencart
 
     #Add advanced shipping feature dialog
     Then expect Orders page Add Advanced Shipping Features! dialog is present

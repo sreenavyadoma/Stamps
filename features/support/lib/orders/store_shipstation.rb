@@ -11,7 +11,6 @@ module Stamps
       class LookingForShipStaion < StoreSettings
         include ShipStationUpgradeCache
 
-        # To-Do by Kaushal
         def title
           (cache[:title].nil?||!cache[:title].present?)?cache[:title] = StampsField.new(browser.div(text: "Looking for ShipStation?")):cache[:title]
         end
@@ -40,7 +39,6 @@ module Stamps
       class AddAdvancedShippingFeatures < StoreSettings
         include ShipStationUpgradeCache
 
-        # To-Do by Kaushal
         def dialog_header
           (cache[:dialog_header].nil?||!cache[:dialog_header].present?)?cache[:dialog_header]=StampsField.new(browser.div(text: "Add Advanced Shipping Features!")):cache[:dialog_header]
         end

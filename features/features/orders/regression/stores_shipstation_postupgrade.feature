@@ -1,6 +1,6 @@
 
 @stores_shipstation_postupgrade
-Feature: Shipstation Post Upgrade Path
+Feature: ShipStation Post Upgrade Path
 
   Background:
     Given a valid user is signed in to Web Apps
@@ -19,5 +19,11 @@ Feature: Shipstation Post Upgrade Path
     Then check Looking for ShipStation? dialog don't show checkbox
     Then un-check Looking for ShipStation? dialog don't show checkbox
     Then click on close Button
+
+    # Validate Available in ShipStation Message in Marketplace
+    Then click orders toolbar settings button
+    Then click Order Settings Stores Add button
+    Then search Marketplace for store name opencart
+    Then expect Marketplace modal Available in ShipStation Message present in opencart
 
     Then Sign out

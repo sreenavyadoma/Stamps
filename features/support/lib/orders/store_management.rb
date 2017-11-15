@@ -248,7 +248,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             when :opencart
-              (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::StampsModal.new(param).extend(Orders::Stores::OpenCartWindowTitle):cache[:opencart_window] #ShipstationMarketplaceWindowTitle
+              (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::StampsModal.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
             else
               raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
@@ -265,8 +265,16 @@ module Stamps
         def add_advanced_feature(str)
           20.times do
             store_field(str).click
-            return StampsField.new(browser.div(text: "Add Advanced Shipping Features!")).text if StampsField.new(browser.div(text: "Add Advanced Shipping Features!")).present?
+            return store_window(str).window_title.text if store_window(str).window_title.present?
           end
+        end
+
+        def requires_upgrade_msg(str)
+          store_window(str).free_upgrade_message.present?
+        end
+
+        def available_shipstation_msg(str)
+          store_window(str).available_in_shipstation_msg.present?
         end
       end
 
