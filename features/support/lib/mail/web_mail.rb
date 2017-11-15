@@ -25,30 +25,26 @@ module Stamps
       def print_form
         case param.print_media
           when :stamps
-            return (cache[:stamps].nil?||!cache[:stamps].present?)?cache[:stamps]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps):cache[:stamps]
+            return (cache[:stamps_print_form].nil?||!cache[:stamps_print_form].present?)?cache[:stamps_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps):cache[:stamps_print_form]
           when :label
-            return (cache[:label].nil?||!cache[:label].present?)?cache[:label]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabel):cache[:label]
+            return (cache[:label_print_form].nil?||!cache[:label_print_form].present?)?cache[:label_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabel):cache[:label_print_form]
           when :envelope
-            return (cache[:envelope].nil?||!cache[:envelope].present?)?cache[:envelope]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelope):cache[:envelope]
+            return (cache[:envelope_print_form].nil?||!cache[:envelope_print_form].present?)?cache[:envelope_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelope):cache[:envelope_print_form]
           when :certified_mail
-
-            return (cache[:envelope].nil?||!cache[:envelope].present?)?cache[:envelope]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail):cache[:envelope]
-
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail) if @print_form.nil?||@print_form.param.print_media!=:certified_mail
+            return (cache[:certified_mail_print_form].nil?||!cache[:certified_mail_print_form].present?)?cache[:certified_mail_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail):cache[:certified_mail_print_form]
           when :certified_mail_3910_3930
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail39103930) if @print_form.nil?||@print_form.param.print_media!=:certified_mail_3910_3930
+            return (cache[:certified_mail_3910_3930_print_form].nil?||!cache[:certified_mail_3910_3930_print_form].present?)?cache[:certified_mail_3910_3930_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail39103930):cache[:certified_mail_3910_3930_print_form]
           when :certified_mail_3810
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3810) if @print_form.nil?||@print_form.param.print_media!=:certified_mail_3810
+            return (cache[:certified_mail_3810_print_form].nil?||!cache[:certified_mail_3810_print_form].present?)?cache[:certified_mail_3810_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3810):cache[:certified_mail_3810_print_form]
           when :certified_mail_3830
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3830) if @print_form.nil?||@print_form.param.print_media!=:certified_mail_3830
+            return (cache[:certified_mail_3830_print_form].nil?||!cache[:certified_mail_3830_print_form].present?)?cache[:certified_mail_3830_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3830):cache[:certified_mail_3830_print_form]
           when :roll
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Roll) if @print_form.nil?||@print_form.param.print_media!=:roll
+            return (cache[:roll_print_form].nil?||!cache[:roll_print_form].present?)?cache[:roll_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Roll):cache[:roll_print_form]
           when :manage_printing_options
-            @print_form
+            raise "manage_printing_options is not implemented."
           else
-            # do nothing
+            raise "Invalid Print Media symbol: #{param.print_media}"
         end
-        nil
       end
 
       def present?
