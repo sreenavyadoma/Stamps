@@ -174,11 +174,6 @@ orders_services:
   PMEI Padded Flat Rate Envelope: sdc-servicedroplist-emiflatratepaddedenvelope
   PMEI Legal Flat Rate Envelope: sdc-servicedroplist-emilegalflatrateenvelope
 
-shipping_method:
-  usps_fcml:
-    text: USPS First-Class Mail Letter
-    code: 809
-
 country_groups_PMI:
   group1:
     1: Canada|66
@@ -630,7 +625,6 @@ country_groups_PMI_flat_rate:
     146: Wallis & Futuna
     147: Sint Maarten
     148: Tristan da Cuhna
-
 
 country_groups_PMEI:
   group1:
@@ -1309,16 +1303,3 @@ us_states:
   AE:	Armed Forces Middle East
   AP:	Armed Forces Pacific
 
-login_fields:
-  sign_in_link_loc:
-    text: Sign In
-  username_loc:
-    id: UserNameTextBox
-  password_loc:
-    id: PasswordTextBox
-  sign_in_button_loc:
-    id: signInButton
-
-rob:
-  autobase: 326tsetaqcdS!
-  qaclient@stamps.com: 3d75007e-c693-4af8-bc83-12b68eb7ea34

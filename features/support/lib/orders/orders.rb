@@ -1,14 +1,6 @@
 module Stamps
   module Orders
-
-    module WebOrdersCache
-      def cache
-        @cache ||= {}
-      end
-    end
-
     class WebOrders < Browser::StampsModal
-      include WebOrdersCache
       include MarketPlaceStoreModals
       include StampsOrdersModals
       

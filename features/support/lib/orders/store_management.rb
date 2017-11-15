@@ -1,12 +1,6 @@
 module Stamps
   module Orders
     module Stores
-      module StoresCache
-        def cache
-          @cache ||= {}
-        end
-      end
-
       class ImportingOrdersModal < Browser::StampsModal
         def present?
           browser.div(text: "Importing Orders").present?
@@ -197,7 +191,6 @@ module Stamps
       end
 
       module MarketPlaceWindowTitle
-        include StoresCache
         def window_title
           (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: "[id^=storeselectionwindow-] [class$=x-title-item]")):cache[:window_title]
         end
@@ -208,7 +201,6 @@ module Stamps
       end
 
       class MarketplaceDataView < Browser::StampsModal
-        include StoresCache
         def store_count
           begin
             return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
@@ -279,7 +271,6 @@ module Stamps
       end
 
       class Marketplace < Browser::StampsModal
-        include StoresCache
         include MarketPlaceWindowTitle
 
         def present?

@@ -23,35 +23,32 @@ module Stamps
         wait_until_present(5)
         blur_out
         expect(print_media).to be_present, "Print-on drop-down is not present."
-        param.print_media=print_media.print_on_selection(selection)
+        param.print_media=print_media.select_print_on(selection)
       end
 
-      #todo-Rob implement caching
       def print_form
         case param.print_media
           when :stamps
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps) if cache[:stamps].nil?||cache[:stamps].print_media!=:stamps
-          when :labels
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabels) if @print_form.nil?||@print_form.print_media!=:labels
-          when :envelopes
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelopes) if @print_form.nil?||@print_form.print_media!=:envelopes
-          when :certified_mails
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails) if @print_form.nil?||@print_form.print_media!=:certified_mails
-          when :certified_mails_3910_3930
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails39103930) if @print_form.nil?||@print_form.print_media!=:certified_mails_3910_3930
-          when :certified_mails_3810
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3810) if @print_form.nil?||@print_form.print_media!=:certified_mails_3810
-          when :certified_mails_3830
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMails3830) if @print_form.nil?||@print_form.print_media!=:certified_mails_3830
-          when :rolls
-            @print_form=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Rolls) if @print_form.nil?||@print_form.print_media!=:rolls
+            return (cache[:stamps_print_form].nil?||!cache[:stamps_print_form].present?)?cache[:stamps_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps):cache[:stamps_print_form]
+          when :label
+            return (cache[:label_print_form].nil?||!cache[:label_print_form].present?)?cache[:label_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabel):cache[:label_print_form]
+          when :envelope
+            return (cache[:envelope_print_form].nil?||!cache[:envelope_print_form].present?)?cache[:envelope_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelope):cache[:envelope_print_form]
+          when :certified_mail
+            return (cache[:certified_mail_print_form].nil?||!cache[:certified_mail_print_form].present?)?cache[:certified_mail_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail):cache[:certified_mail_print_form]
+          when :certified_mail_3910_3930
+            return (cache[:certified_mail_3910_3930_print_form].nil?||!cache[:certified_mail_3910_3930_print_form].present?)?cache[:certified_mail_3910_3930_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail39103930):cache[:certified_mail_3910_3930_print_form]
+          when :certified_mail_3810
+            return (cache[:certified_mail_3810_print_form].nil?||!cache[:certified_mail_3810_print_form].present?)?cache[:certified_mail_3810_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3810):cache[:certified_mail_3810_print_form]
+          when :certified_mail_3830
+            return (cache[:certified_mail_3830_print_form].nil?||!cache[:certified_mail_3830_print_form].present?)?cache[:certified_mail_3830_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3830):cache[:certified_mail_3830_print_form]
+          when :roll
+            return (cache[:roll_print_form].nil?||!cache[:roll_print_form].present?)?cache[:roll_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Roll):cache[:roll_print_form]
           when :manage_printing_options
-            @print_form
+            raise "manage_printing_options is not implemented."
           else
-            # do nothing
+            raise "Invalid Print Media symbol: #{param.print_media}"
         end
-        expect(@print_form).to be_present, "#(selection) form is not present."
-        @print_form
       end
 
       def present?
@@ -60,11 +57,6 @@ module Stamps
 
       def wait_until_present(*args)
         print_media.wait_until_present(*args)
-      end
-
-      private
-      def cache
-        @cache ||= {}
       end
     end
   end

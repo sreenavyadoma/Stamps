@@ -5,7 +5,7 @@ module Stamps
         def column_cache
           @column_cache ||= {}
         end
-        
+
         def column_text
           @column_text ||= {
               check_box: " ",

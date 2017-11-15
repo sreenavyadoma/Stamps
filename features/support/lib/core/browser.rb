@@ -176,7 +176,7 @@ module Stamps
         self
       end
 
-      def blur_out(counter=2)
+      def blur_out(counter=1)
         begin
           (counter.to_i).times do
             flash
@@ -651,13 +651,30 @@ module Stamps
 
     # StampsModal - base class for modals containing StampsElements
     class StampsModal
-      attr_accessor :param, :browser, :logger, :helper
-
       def initialize(param)
-        @param=param
-        @browser=param.browser
-        @logger=param.logger
-        @helper=StampsTestHelper.new(logger)
+        cache[:param]=param
+        cache[:helper]=StampsTestHelper.new(param.logger)
+      end
+
+      def browser
+        cache[:param].browser
+      end
+
+      def param
+        cache[:param]
+      end
+
+      def logger
+        cache[:param].logger
+      end
+
+      def helper
+        cache[:helper]
+      end
+
+      protected
+      def cache
+        @cache ||= {}
       end
     end
   end
