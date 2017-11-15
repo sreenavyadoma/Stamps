@@ -1146,6 +1146,18 @@ Cucumber::Rake::Task.new(:paypal) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:stores_shipstation_preupgrade) do |t|
+  t.profile = 'stores_shipstation_preupgrade'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+Cucumber::Rake::Task.new(:stores_shipstation_postupgrade) do |t|
+  t.profile = 'stores_shipstation_postupgrade'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 Cucumber::Rake::Task.new(:big_commerce) do |t|
   t.profile = 'big_commerce'
   t.cucumber_opts = "-p cuke_reports"

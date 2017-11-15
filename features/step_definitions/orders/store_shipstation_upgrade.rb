@@ -54,7 +54,7 @@ Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog content
   expect(stamps.orders.shipstation.add_advanced_shipping_feature.content_heading.text).to eql(str), "Add Advanced Shipping Features! dialog does not contain or match content heading text"
 end
 
-Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog content list contain all list$/ do
+Then /^[Ee]xpect in [Aa]dd [Aa]dvanced [Ss]hipping [Ff]eatures[!] dialog contain all content list$/ do
   expect(stamps.orders.shipstation.add_advanced_shipping_feature.li_1.text).to eql("Includes mobile app for shipping on the go")
   expect(stamps.orders.shipstation.add_advanced_shipping_feature.li_2.text).to eql("Connect to 100+ marketplaces and channels")
   expect(stamps.orders.shipstation.add_advanced_shipping_feature.li_3.text).to eql("One-stop rate shopping saves you money")
