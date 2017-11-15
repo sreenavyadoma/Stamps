@@ -9,12 +9,13 @@ Feature: Shipstation Upgrade Path
   Scenario: Looking for shipstation? dialog
 
     Then expect Orders page Looking for ShipStation? dialog is present
-    Then expect in Looking for ShipStation? dialog header contain "Looks like you've taken advantage of our FREE 60-day upgrade to ShipStation.
+    Then expect in Looking for ShipStation? dialog header contain Looks like you’ve taken advantage of our FREE 60-day upgrade to ShipStation.
     Then expect in Looking for ShipStation? dialog CheckBox is present
     Then expect in Looking for ShipStation? dialog Sign in to ShipStation Button exists
     Then expect in Looking for ShipStation? dialog Close Button exists
     Then click on close Button
     Then Refresh the browser
+    Then expect Orders page Looking for ShipStation? dialog is present
     Then check Looking for ShipStation? dialog don't show checkbox
     Then un-check Looking for ShipStation? dialog don't show checkbox
     Then check Looking for ShipStation? dialog don't show checkbox
@@ -33,6 +34,8 @@ Feature: Shipstation Upgrade Path
     Then expect Orders page Add Advanced Shipping Features! dialog is present
     Then expect in Add Advanced Shipping Features! dialog ShipStation logo exists
     Then expect in Add Advanced Shipping Features! dialog body contain Free 60-day upgrade
+    Then expect in Add Advanced Shipping Features! dialog content heading contain Sell and ship without limits:
+    Then expect in Add Advanced Shipping Features! dialog content list contain all list
     Then expect in Add Advanced Shipping Features! dialog Add Features Now Button exists
     Then click on Add Features Now Button
 

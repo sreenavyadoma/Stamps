@@ -13,9 +13,7 @@ module Stamps
 
         # To-Do by Kaushal
         def title
-          (cache[:title].nil?||!cache[:title].present?)?cache[:title] = StampsField.new(browser.div(text: "Looking for ShipStation?")):cache[:title] if @title.nil? || !@title.present?
-          expect(@title).to be_present
-          @title
+          (cache[:title].nil?||!cache[:title].present?)?cache[:title] = StampsField.new(browser.div(text: "Looking for ShipStation?")):cache[:title]
         end
 
         def present?
@@ -23,27 +21,19 @@ module Stamps
         end
 
         def header
-          (cache[:header].nil?||!cache[:header].present?)?cache[:header] = StampsField.new(browser.ps(css: "div[id^='dialoguemodal-'][id$='-body']>div>div>label>p").first):cache[:header] if @header.nil? || !@header.present?
-          expect(@header).to be_present
-          @header
+          (cache[:header].nil?||!cache[:header].present?)?cache[:header] = StampsField.new(browser.ps(css: "div[id^='dialoguemodal-'][id$='-body']>div>div>label>p").first):cache[:header]
         end
 
         def check_box
-          (cache[:check_box].nil?||!cache[:check_box].present?)?cache[:check_box] = StampsField.new(browser.span(css: "div[id^='dialoguemodal-'][id$='-body']>div>div>div>div>div>span")):cache[:check_box] if @check_box.nil? || !@check_box.present?
-          expect(@check_box).to be_present
-          @check_box
+          (cache[:check_box].nil?||!cache[:check_box].present?)?cache[:check_box] = StampsField.new(browser.span(css: "div[id^='dialoguemodal-'][id$='-body']>div>div>div>div>div>span")):cache[:check_box]
         end
 
         def sign_in_to_shipstation
-          (cache[:sign_in_to_shipstation].nil?||!cache[:sign_in_to_shipstation].present?)?cache[:sign_in_to_shipstation] = StampsField.new(browser.span(text: "Sign in to ShipStation")):cache[:sign_in_to_shipstation] if @sign_in_to_shipstation.nil? || !@sign_in_to_shipstation.present?
-          expect(@sign_in_to_shipstation).to be_present
-          @sign_in_to_shipstation
+          (cache[:sign_in_to_shipstation].nil?||!cache[:sign_in_to_shipstation].present?)?cache[:sign_in_to_shipstation] = StampsField.new(browser.span(text: "Sign in to ShipStation")):cache[:sign_in_to_shipstation]
         end
 
         def close
-          (cache[:close].nil?||!cache[:close].present?)?cache[:close] = StampsField.new(browser.span(text: "Close")):cache[:close] if @close.nil? || !@close.present?
-          expect(@close).to be_present
-          @close
+          (cache[:close].nil?||!cache[:close].present?)?cache[:close] = StampsField.new(browser.span(text: "Close")):cache[:close]
         end
       end
 
@@ -63,6 +53,10 @@ module Stamps
           (cache[:body].nil?||!cache[:body].present?)?cache[:body] = StampsField.new(browser.h2(text: "Free 60-day upgrade")):cache[:body]
         end
 
+        def content_heading
+          (cache[:content_heading].nil?||!cache[:content_heading].present?)?cache[:content_heading] = StampsField.new(browser.h4(css: "div[class='content']>h4")):cache[:content_heading]
+        end
+
         def shipstation_logo
           (cache[:shipstation_logo].nil?||!cache[:shipstation_logo].present?)?cache[:shipstation_logo] = StampsField.new(browser.img(css: "div[id^='advancedfeatureswindow-']>div>div>img[src*='/WebSSUpgrade.gif']")):cache[:shipstation_logo]
         end
@@ -73,6 +67,30 @@ module Stamps
 
         def close_by_x
           (cache[:close_by_x].nil?||!cache[:close_by_x].present?)?cache[:close_by_x] = StampsField.new(browser.img(css: "img[class^='x-tool-img'][src*=/image/gif]")):cache[:close_by_x]
+        end
+
+        def li_1
+          (cache[:li_1].nil?||!cache[:li_1].present?)?cache[:li_1] = StampsField.new(browser.span(text: "Includes mobile app for shipping on the go")):cache[:li_1]
+        end
+
+        def li_2
+          (cache[:li_2].nil?||!cache[:li_2].present?)?cache[:li_2] = StampsField.new(browser.span(text: "Connect to 100+ marketplaces and channels")):cache[:li_2]
+        end
+
+        def li_3
+          (cache[:li_3].nil?||!cache[:li_3].present?)?cache[:li_3] = StampsField.new(browser.span(text: "One-stop rate shopping saves you money")):cache[:li_3]
+        end
+
+        def li_4
+          (cache[:li_4].nil?||!cache[:li_4].present?)?cache[:li_4] = StampsField.new(browser.span(text: "Real-time geo-tracking for all your shipments in one place")):cache[:li_4]
+        end
+
+        def li_5
+          (cache[:li_5].nil?||!cache[:li_5].present?)?cache[:li_5] = StampsField.new(browser.span(text: "Self-service returns portal for your customers")):cache[:li_5]
+        end
+
+        def li_6
+          (cache[:li_6].nil?||!cache[:li_6].present?)?cache[:li_6] = StampsField.new(browser.span(text: "Best-in-class shipping automation tools")):cache[:li_6]
         end
       end
 
