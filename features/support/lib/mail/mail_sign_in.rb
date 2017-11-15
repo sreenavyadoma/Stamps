@@ -1,9 +1,140 @@
 module Stamps
   module Mail
     module MailSignIn
-      module MailSignInCache
-        def cache
-          @cache ||= {}
+      #todo-Rob fix this, very unprofession
+      class MoreInfoPage < Browser::StampsModal
+        def present?
+          browser.windows.size > 1
+        end
+
+        def title
+          browser.windows.last.title
+        end
+
+        def close
+          browser.windows.last.close
+        end
+      end
+
+      class RememberUsername < Browser::StampsModal
+        attr_reader :remember_user_field
+
+        def initialize(param)
+          super
+          @remember_user_field=StampsField.new browser.checkbox(id: "rememberUser")
+        end
+
+        def present?
+          remember_user_field.present?
+        end
+
+        def check
+          browser.checkbox(css: "input[id=rememberUser]").set
+          browser.checkbox(css: "input[id=rememberUser]").set
+        end
+
+        def uncheck
+          browser.checkbox(css: "input[id=rememberUser]").clear
+          browser.checkbox(css: "input[id=rememberUser]").clear
+        end
+      end
+
+      class MailLandingPage < Browser::StampsModal
+        def sign_in_modal
+          @sign_in_modal=MailSignInModal.new(param) if @sign_in_modal.nil?||!@sign_in_modal.present?
+          @sign_in_modal
+        end
+
+        def url
+          browser.url
+        end
+
+        def is_url_correct?
+          browser.url.include? "stamps.com/Webpostage"
+        end
+
+        def wait_until_url_loads
+          20.times do
+            sleep(0.35)
+            break if browser.url.include? "stamps.com/Webpostage"
+          end
+        end
+
+        def present?
+          sign_in_modal.present?
+        end
+
+        def wait_until_present(*args)
+          sign_in_modal.wait_until_present(*args)
+        end
+      end
+
+      #todo-Rob refactor MoreInfoPage
+      #todo-Rob fix this, very unprofession
+      class MoreInfoPage < Browser::StampsModal
+        def present?
+          browser.windows.size > 1
+        end
+
+        def title
+          browser.windows.last.title
+        end
+
+        def close
+          browser.windows.last.close
+        end
+      end
+
+      class RememberUsername < Browser::StampsModal
+        attr_reader :remember_user_field
+
+        def initialize(param)
+          super
+          @remember_user_field=StampsField.new browser.checkbox(id: "rememberUser")
+        end
+
+        def present?
+          remember_user_field.present?
+        end
+
+        def check
+          browser.checkbox(css: "input[id=rememberUser]").set
+          browser.checkbox(css: "input[id=rememberUser]").set
+        end
+
+        def uncheck
+          browser.checkbox(css: "input[id=rememberUser]").clear
+          browser.checkbox(css: "input[id=rememberUser]").clear
+        end
+      end
+
+      class MailLandingPage < Browser::StampsModal
+        def sign_in_modal
+          @sign_in_modal=MailSignInModal.new(param) if @sign_in_modal.nil?||!@sign_in_modal.present?
+          @sign_in_modal
+        end
+
+        def url
+          browser.url
+        end
+
+        def is_url_correct?
+          browser.url.include? "stamps.com/Webpostage"
+        end
+
+        def wait_until_url_loads
+          20.times do
+            sleep(0.35)
+            break if browser.url.include? "stamps.com/Webpostage"
+          end
+        end
+
+        def present?
+          sign_in_modal.present?
+        end
+
+        def wait_until_present(*args)
+          sign_in_modal.wait_until_present(*args)
         end
       end
 
@@ -114,8 +245,6 @@ module Stamps
       end
 
       class MailSignInModal < Browser::StampsModal
-        include MailSignInCache
-
         def username_textbox
           (cache[:username_textbox].nil?||!cache[:username_textbox].present?)?cache[:username_textbox]=StampsTextbox.new(browser.text_field(id: "UserNameTextBox")):cache[:username_textbox]
         end

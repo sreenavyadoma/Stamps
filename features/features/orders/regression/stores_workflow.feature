@@ -8,7 +8,6 @@ Feature:  All Store Management
     Scenario: PayPal Workflow
       Then click orders toolbar settings button
       Then click Order Settings Stores Add button
-      #Then select Paypal on Marketplace modal
       Then search Marketplace for store name Paypal
       Then expect Marketplace dataview count is equal to 1
       Then connect Marketplace store Paypal

@@ -128,14 +128,7 @@ module Stamps
         end
       end
 
-      module PayPalCache
-        def cache
-          @cache ||= {}
-        end
-      end
-
       module PayPalWindowTitle
-        include PayPalCache
         def window_title
           (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first):cache[:window_title]
         end
@@ -146,7 +139,6 @@ module Stamps
       end
 
       module PayPalModals
-        include PayPalCache
         def email_verification_modal
 
         end
@@ -154,7 +146,6 @@ module Stamps
 
       class PayPal < Browser::StampsModal
         include PayPalModals
-        include PayPalCache
         include PayPalWindowTitle
 
         def iframe

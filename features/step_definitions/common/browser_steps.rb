@@ -3,8 +3,8 @@ Then /^Teardown$/ do
   test_config.teardown
 end
 
-Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |selection|
-  test_config.setup((selection.nil?)? modal_param.browser_str : selection)
+Given /^(?:|I )[Ll]aunch(?:|ed) (?:|browser)(?:| (\w+))(?:|(?:|the )default browser)$/ do |str|
+  test_config.setup((str.nil?)? modal_param.browser_str : str)
 end
 
 Then /^Refresh the browser$/ do
