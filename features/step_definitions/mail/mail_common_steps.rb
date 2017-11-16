@@ -32,7 +32,7 @@ Then /^[Ee]xpect Print form Ship To Country Field is present$/ do
 end
 
 Then /^[Ee]xpect Print form Email Check Box is present$/ do
-  expect(stamps.mail.print_form.mail_to.email.checkbox).to be_present
+  expect(stamps.mail.print_form.email_checkbox).to be_present
 end
 
 Then /^[Ee]xpect Print form Email Field is present$/ do

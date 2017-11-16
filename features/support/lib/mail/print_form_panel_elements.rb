@@ -572,7 +572,16 @@ module Stamps
       end
 
       class PrintFormEmail < Browser::StampsModal
+        include PrintFormBlurOut
+        def email_textbox
+          (cache[:email_textbox].nil?||!cache[:email_textbox].present?)?cache[:email_textbox]=StampsTextbox.new(
+              browser.text_field(id: "sdc-mainpanel-emailtextfield-webpostage-inputEl")):cache[:email_textbox]
+        end
 
+        def email_checkbox
+          (cache[:email_checkbox].nil?||!cache[:email_checkbox].present?)?cache[:email_checkbox]=StampsField.new(
+              browser.input(css: "input[id^='checkbox-'][id$='-inputEl'")):cache[:email_checkbox]
+        end
       end
 
       class PrintFormWeight < Browser::StampsModal
@@ -991,8 +1000,6 @@ module Stamps
         def i_agree_to_insurance_terms
         end
       end
-
-
     end
   end
 end

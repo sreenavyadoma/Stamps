@@ -12,6 +12,10 @@ Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
   stamps.mail.print_form.mail_from.select(test_param[:ship_from]=value)
 end
 
+Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
+  stamps.mail.print_form.mail_email.email_checkbox.click
+end
+
 Then /^[Ss]et Print form [Pp]ounds to (\d+)$/ do |pounds|
   stamps.mail.print_form.mail_weight.mail_pounds.set(test_param[:pounds]=pounds)
 end

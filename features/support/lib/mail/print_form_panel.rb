@@ -13,6 +13,12 @@ module Stamps
         end
       end
 
+      module MailEmail
+        def mail_email
+          (cache[:mail_email].nil?||!cache[:mail_email].present?)?cache[:mail_email]=PrintFormEmail.new(param):cache[:mail_email]
+        end
+      end
+
       module MailWeight
         def mail_weight
           (cache[:mail_weight].nil?||!cache[:mail_weight].present?)?cache[:mail_weight]=PrintFormWeight.new(param):cache[:mail_weight]
@@ -192,6 +198,7 @@ module Stamps
         include MailFrom
         include MailTo
         include MailWeight
+        include MailEmail
         include MailService
         include MailCustoms
         include MailAdvancedOptions
