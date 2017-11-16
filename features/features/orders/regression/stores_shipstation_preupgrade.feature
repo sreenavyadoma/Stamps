@@ -37,7 +37,6 @@ Feature: ShipStation Pre-Upgrade Path
     Then expect in Activate Your New Features dialog password is correct
     Then check in Activate Your New Features dialog terms and conditions checkbox
     Then expect in Activate Your New Features dialog terms and conditions is checked
-
     Then close Activate Your New Features dialog
 
     Then Sign out

@@ -6,7 +6,7 @@ Feature: ShipStation Post Upgrade Path
     Given a valid user is signed in to Web Apps
 
   @looking_for_shipstation_dialog
-  Scenario: Looking for shipstation? dialog
+  Scenario: Looking for ShipStation? dialog
 
     Then expect Orders page Looking for ShipStation? dialog is present
     Then expect in Looking for ShipStation? dialog header contain Looks like you’ve taken advantage of our FREE 60-day upgrade to ShipStation.
