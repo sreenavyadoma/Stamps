@@ -567,7 +567,6 @@ module Stamps
           textarea.double_click
           blur_out
           blur_out
-          blur_out
         end
       end
 
@@ -948,7 +947,7 @@ module Stamps
           @mail_to_link=PrintFormMailToLink.new(param)
         end
 
-        def address
+        def mail_address
           blur_out
           if mail_to_country.domestic?
             @address=MailToDom.new(param)

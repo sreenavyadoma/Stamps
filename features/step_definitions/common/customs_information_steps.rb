@@ -134,15 +134,17 @@ Then /^[Ee]xpect Customs form Invoice Number is (?:correct|(.*))$/ do |expectati
   expect(stamps.mail.print_form.mail_customs.edit_form.invoice.text).to eql(expectation) if modal_param.web_app==:mail
 end
 
+#todo-Rob revisit customs form
 Then /^[Dd]elete Customs form Associated Item (\d+)$/ do |item_number|
-  field=stamps.orders.single_order_details.customs.edit_form.associated_items if modal_param.web_app==:orders
-  field=stamps.mail.print_form.mail_customs.edit_form.associated_items if modal_param.web_app==:mail
-  count=field.size
-  line_item=field.item_number(item_number.to_i)
-  if count > 1
-    line_item.delete.click_while_present
+  if modal_param.web_app==:orders
+    field=stamps.orders.single_order_details.customs.edit_form.associated_items
   else
-    line_item.delete.click
+    field=stamps.mail.print_form.mail_customs.edit_form.associated_items
+  end
+  if field.size > 1
+    field.item_number(item_number.to_i).delete.click_while_present
+  else
+    field.item_number(item_number.to_i).delete.click
   end
 end
 

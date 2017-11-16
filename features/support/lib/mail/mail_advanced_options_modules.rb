@@ -4,35 +4,36 @@ module Stamps
 
       module AdvOptExtraServices
         def extra_services_btn
-          @extra_services_btn=StampsField.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")) if @extra_services_btn.nil?
-          @extra_services_btn
+          (cache[:extra_services_btn].nil?||!cache[:extra_services_btn].present?)?cache[:extra_services_btn]=StampsField.new(
+              browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")):cache[:extra_services_btn]
+        end
+
+        def xtra_serv_panel
+          (cache[:xtra_serv_panel].nil?||!cache[:xtra_serv_panel].present?)?cache[:xtra_serv_panel]=PrintFormPanel::MailExtraServices.new(param):cache[:xtra_serv_panel]
         end
 
         def extra_services
-          return @extra_services if !@extra_services.nil? && @extra_services.present?
-          expect(extra_services_btn).to be_present, "Extra Services button is not present."
-          @extra_services=PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil?||!@extra_services.present?
-          20.times do extra_services_btn.click unless @extra_services.present? end
-          expect(@extra_services).to be_present, "Extra Services modal did not open."
-          @extra_services
+          20.times do
+            return xtra_serv_panel if xtra_serv_panel.present?
+            extra_services_btn.click
+          end
         end
       end
 
       module AdvOptReferenceNumber
         def reference_number
-          @reference_number=StampsTextbox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) if @reference_number.nil?||!@reference_number.present?
-          @reference_number
+          (cache[:reference_number].nil?||!cache[:reference_number].present?)?cache[:reference_number]=StampsTextbox.new(
+              browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")):cache[:reference_number]
         end
       end
 
       module AdvOptCostCode
         def cost_code
-          if @cost_code.nil?
-            input=browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
-            dropdown=browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
-            @cost_code=StampsCombobox.new(input, dropdown, :li, 0)
-          end
-          @cost_code
+          (cache[:cost_code].nil?||!cache[:cost_code].present?)?cache[:cost_code]=StampsCombobox.new(
+              browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"),
+              browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]"),
+              :li,
+              0):cache[:cost_code]
         end
       end
 
@@ -106,7 +107,7 @@ module Stamps
         include AdvOptCostCode
 
         def present?
-          cost_code.present?
+          cost_code.present? && reference_number.present?
         end
 
         def calculate_postage_amount

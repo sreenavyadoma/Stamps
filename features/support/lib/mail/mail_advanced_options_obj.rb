@@ -1,16 +1,6 @@
 module Stamps
   module Mail
     module AdvancedOptions
-
-      class AdvancedOptionsContainer < Browser::StampsModal
-        attr_reader :print_media
-
-        def initialize(param)
-          super
-          @print_media=param.print_media
-        end
-      end
-
       class CostCodeComboBox < Browser::StampsModal
         attr_accessor :param, :textbox, :dropdown
 
