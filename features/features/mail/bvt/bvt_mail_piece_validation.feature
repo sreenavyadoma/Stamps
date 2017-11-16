@@ -1,5 +1,5 @@
-
 @bvt_mail_piece_validation
+
 Feature: Manually verify all mail pieces in Staging
 
   Background:
