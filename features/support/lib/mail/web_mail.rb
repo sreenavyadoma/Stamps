@@ -2,7 +2,6 @@
 module Stamps
   module Mail
     class WebMail < Browser::StampsModal
-
 #todo-Kaushal Incomplete printing error
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
