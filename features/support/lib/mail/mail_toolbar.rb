@@ -2,6 +2,8 @@ module Stamps
   module Mail
     #todo-Rob too many instance variables, fix it.
     class MailToolbar < Browser::StampsModal
+      include Stamps::Mail::MailModals::PrintIncompleteFields
+
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
                   :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning
 
@@ -53,6 +55,15 @@ module Stamps
 
       def print_sample
         open_sample_window(mail_print_modal)
+      end
+
+      def incomplete_window_title
+        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::StampsModal.new(param).extend(Stamps::Mail::MailModals::PrintIncompleteFields):cache[:incomplete_window_title]
+      end
+
+#todo-Kaushal Incomplete printing error
+      def print_postage_expecting_error
+        open_window(incomplete_window_title)
       end
 
       def print_postage

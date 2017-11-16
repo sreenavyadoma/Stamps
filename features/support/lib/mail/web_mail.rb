@@ -2,6 +2,9 @@
 module Stamps
   module Mail
     class WebMail < Browser::StampsModal
+
+#todo-Kaushal Incomplete printing error
+      include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
       def sign_in_modal
         (cache[:sign_in_modal].nil?||!cache[:sign_in_modal].present?)?cache[:sign_in_modal]=MailSignIn::MailSignInModal.new(param):cache[:sign_in_modal]

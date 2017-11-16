@@ -2,6 +2,31 @@ Then /^Print (?:Postage|Label|Stamps|Envelope)$/ do
   stamps.mail.mail_toolbar.print_postage
 end
 
+
+
+
+
+
+#todo-Kaushal Incomplete printing error
+
+Then /^Examples$/ do
+  expect(stamps.mail.mail_toolbar.print_postage_expecting_error).to eql('Incomplete Fields')
+end
+
+
+Then /^Incomplete Fields/ do
+  expect(stamps.mail.mail_modals.incomplete_fields.warning_message.text).to include('Ship To address is required')
+end
+
+
+
+
+
+
+
+
+
+
 When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
   stamps.mail.mail_toolbar.print_postage.print
 end
