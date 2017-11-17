@@ -7,7 +7,7 @@ module Stamps
 
         module IncFeldsWindowTitle
           def window_title
-            (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: "css goes here")):cache[:window_title]
+            (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(text: "Incomplete Fields")):cache[:window_title]
           end
         end
 
@@ -18,7 +18,7 @@ module Stamps
           end
 
           def warning_message
-            (cache[:warning_message].nil?||!cache[:warning_message].present?)?cache[:warning_message]=StampsField.new(browser.div(css: "css goes here")):cache[:warning_message]
+            (cache[:warning_message].nil?||!cache[:warning_message].present?)?cache[:warning_message]=StampsField.new(browser.div(css: "div[class*='sdc-warning dialogue']>div")):cache[:warning_message]
           end
         end
       end

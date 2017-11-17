@@ -2,7 +2,7 @@ module Stamps
   module Mail
     #todo-Rob too many instance variables, fix it.
     class MailToolbar < Browser::StampsModal
-      include Stamps::Mail::MailModals::PrintIncompleteFields
+      #include Stamps::Mail::MailModals::PrintIncompleteFields
 
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
                   :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning
@@ -58,12 +58,12 @@ module Stamps
       end
 
       def incomplete_window_title
-        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::StampsModal.new(param).extend(Stamps::Mail::MailModals::PrintIncompleteFields):cache[:incomplete_window_title]
+        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::StampsModal.new(param).extend(IncFeldsWindowTitle):cache[:incomplete_window_title]
       end
 
 #todo-Kaushal Incomplete printing error
       def print_postage_expecting_error
-        open_window(incomplete_window_title)
+        incomplete_window_title.window_title.text if incomplete_window_title.window_title.present?
       end
 
       def print_postage
@@ -90,6 +90,13 @@ module Stamps
             if confirm_window.present?
               confirm_window.do_not_prompt.check
               confirm_window.continue
+            end
+            expect(print_postage_expecting_error.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
+            if please_wait.present?
+              logger.message(please_wait.paragraph)
+              please_wait.ok
+              sleep(0.125)
+              print_button.click
             end
             return window if window.present?
           rescue
