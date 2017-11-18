@@ -44,7 +44,7 @@ Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
-  stamps.mail.print_form.mail_service.dropdown.present?.not_to be(true)
+  expect(stamps.mail.print_form.mail_service.select_service(test_param[:service]=service).present?).to be(false)
 end
 
 Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
