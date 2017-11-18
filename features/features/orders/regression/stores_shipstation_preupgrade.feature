@@ -24,7 +24,7 @@ Feature: ShipStation Pre-Upgrade Path
 
     #Activate your new features
     Then expect Orders page Activate Your New Features dialog is present
-    #Then expect in Activate Your New Features dialog body contain Simply log in to ShipStation using your Stamps.com Username and Password.
+    Then expect in Activate Your New Features dialog body contain Simply log in to ShipStation using your Stamps.com Username and Password.
     Then expect in Activate Your New Features dialog username exists
     Then expect in Activate Your New Features dialog password exists
     Then expect in Activate Your New Features dialog terms and conditions checkbox exists

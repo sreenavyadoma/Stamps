@@ -78,7 +78,7 @@ Then /^[Ee]xpect [Oo]rders [Pp]age [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog body contain (.*)$/ do |str|
-  expect(stamps.orders.shipstation.activate_your_new_features.body.text).to eql(str), "Activate Your New Features dialog does not have matching text"
+  expect(stamps.orders.shipstation.activate_your_new_features.body.text).to include(str), "Activate Your New Features dialog does not have matching text"
 end
 
 Then /^[Ee]xpect in [Aa]ctivate [Yy]our [Nn]ew [Ff]eatures dialog [Uu]sername exists$/ do

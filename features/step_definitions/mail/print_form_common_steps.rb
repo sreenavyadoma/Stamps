@@ -43,6 +43,10 @@ Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
   expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql(((str.nil?)?test_param[:height] : str).to_i)
 end
 
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
+  stamps.mail.print_form.mail_service.dropdown.present?.not_to be(true)
+end
+
 Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
   step "blur out on print form"
   stamps.mail.print_form.mail_service.select_service(test_param[:service]=str)

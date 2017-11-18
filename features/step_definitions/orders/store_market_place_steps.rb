@@ -20,7 +20,7 @@ Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
   expect(stamps.orders.marketplace.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
 end
 
-Then /^[Aa]dd [Mm]arketplace shipstation [Ss]tore (.*)$/ do |str|
+Then /^[Aa]dd [Mm]arketplace [Ss]hip[Ss]tation [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
   expect(stamps.orders.marketplace.dataview.add_advanced_feature(str)).to eql("Add Advanced Shipping Features!")
