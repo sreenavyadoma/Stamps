@@ -1,10 +1,6 @@
 
 # common Print form steps for Envelope|Label|Roll|CM
 
-Then /^[Ss]et Print form [Ii]nternational [Mm]ail [Tt]o [Cc]ountry to (.*)$/ do |country|
-  stamps.mail.print_form.mail_to.country.select(test_param[:country]=country)
-end
-
 Then /^[Ss]et Print form [Mm]ail-[Tt]o (?:|to )(?:|a )(?:|random )address(?: to| in| between|) (.*)$/ do |address|
   stamps.mail.print_form.mail_to.mail_address.textarea.set(test_param[:address]=test_helper.address_helper(address))
 end

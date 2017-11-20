@@ -363,20 +363,20 @@ module Stamps
       end
 
       class OrdersShipDate < Browser::StampsModal
-        def present?
-          textbox.present?
-        end
-
-        def wait_until_present(*args)
-          textbox.wait_until_present(*args)
-        end
-
         def date_picker
           (cache[:date_picker].nil?||!cache[:date_picker].present?)?cache[:date_picker]=OrdersDatePicker.new(param):cache[:date_picker]
         end
 
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(css: "[id=sdc-printpostagewindow-shipdate-innerCt] input[id^=datefield]")):cache[:textbox]
+        end
+
+        def present?
+          textbox.present?
+        end
+
+        def wait_until_present(*args)
+          textbox.wait_until_present(*args)
         end
       end
 

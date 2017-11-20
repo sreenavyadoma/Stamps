@@ -63,7 +63,7 @@ end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   10.times do # work around for rating problem
-    stamps.mail.print_form.mail_to.country(test_param[:country]=country)
+    stamps.mail.print_form.mail_to.mail_to_country.select_country(test_param[:country]=country)
     step "blur out on print form"
     sleep(0.15)
     break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(test_param[:country]) && stamps.mail.print_form.mail_service.has_rates?
