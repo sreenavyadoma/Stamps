@@ -34,7 +34,7 @@ Feature: All International Rules
 
     Then set Order Details form Ounces to 5
     Then set Order Details form service to PMI Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form Package Contents to Document
@@ -68,7 +68,7 @@ Feature: All International Rules
     Then set Order Details form Ounces to 5
     Then set Order Details form service to PMI Flat Rate Envelope
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Required
@@ -103,7 +103,7 @@ Feature: All International Rules
     Then expect Order Details form International Address fields are visible
     Then expect Order Details form Domestic Ship-To fields are hidden
     Then expect Order Details form Customs Restrictions button is visible
-    Then expect Order Details form Customs Edit Form button is visible
+    Then expect Order Details form Customs Customs Form button is visible
 
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -113,7 +113,7 @@ Feature: All International Rules
     Then set Order Details form service to PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Commercial Sample
     Then expect Customs form More Info is hidden
@@ -185,7 +185,7 @@ Feature: All International Rules
       | random | random  | random           | random           | random | random  | random      | Democratic People's Republic of (North) Korea| random  | random  |
     Then set Order Details form Ounces to 5
     Then set Order Details form service to PMI Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form Package Contents to Document
@@ -221,7 +221,7 @@ Feature: All International Rules
     Then set Order Details form service to PMI Flat Rate Envelope
 
   #Then set Order Details form service to FCMI Large Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Required
@@ -258,7 +258,7 @@ Feature: All International Rules
     Then set Order Details form service to PMI Flat Rate Envelope
 
   #Then set Order Details form service to FCMI Large Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then Expect Customs Form Internal Transaction Number is Required
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Required
@@ -295,7 +295,7 @@ Feature: All International Rules
     Then set Order Details form service to PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then set Order Details form service to FCMI Large Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Form Internal Transaction Number is Required
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
@@ -319,7 +319,7 @@ Feature: All International Rules
     Then set Order Details form Ounces to 5
     Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Ounces to 5
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then Expect Customs Form Internal Transaction Number is Not required
     Then set Customs form Package Contents to Commercial Sample
     Then Expect Customs Form Internal Transaction Number is Not required

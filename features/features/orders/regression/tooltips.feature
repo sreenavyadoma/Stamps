@@ -14,11 +14,11 @@ Feature:  Tooltip Errors
       | random | random  | random           | random           | random | random  | random      | Australia | random  | random  |
 
     Then set Order Details form service to PMI Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then Pause for 1 second
     Then Cancel Customs Form
     Then Pause for 1 second
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then Pause for 1 second
     Then uncheck Customs form I agree to the USPS Privacy Act Statement

@@ -16,7 +16,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -40,7 +40,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
     Then set Order Details form service to PMEI Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -78,7 +78,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
     Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -90,7 +90,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
     Then set Order Details form service to PMEI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -102,7 +102,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
     Then set Order Details form service to PMEI Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -146,7 +146,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
     Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -158,7 +158,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
     Then set Order Details form service to PMEI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -170,7 +170,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
     Then set Order Details form service to PMEI Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement

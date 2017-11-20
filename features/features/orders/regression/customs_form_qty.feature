@@ -24,7 +24,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then set Order Details form ID to random
     Then set Order Details form Description to random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then add Customs form Associated Item 1
     Then set Customs form Associated Item 1 Description to item 1
@@ -47,7 +47,7 @@ Feature: Customs Form Qty > 99 is not saved correctly
     Then uncheck Orders Grid row 1
     Then check Orders Grid row 1
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then Pause for 2 seconds
     Then expect Customs form Associated Item 1 Description is item 1
     Then expect Customs form Associated Item 1 Quantity is 5

@@ -983,7 +983,7 @@ module Stamps
           @customs_form=Stamps::Common::Customs::CustomsInformation.new(param)
         end
 
-        def edit_form
+        def edit_customs_form
           30.times do
             return customs_form if customs_form.present?
             button.scroll_into_view

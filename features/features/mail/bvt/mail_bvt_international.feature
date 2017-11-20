@@ -14,7 +14,7 @@ Feature: International Shipping BVT
 
     Then set Print form Ounces to 3
 
-    Then select Print form service FCMI Package
+    Then select Print form service PMI Flat Rate Envelope
 
     Then click Print form Edit Customs Form button
 

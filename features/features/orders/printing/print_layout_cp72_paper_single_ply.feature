@@ -12,7 +12,7 @@ Feature: Print 1 single ply Intl CP72 label on 8.5x11 - left side
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Document
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
