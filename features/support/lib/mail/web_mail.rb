@@ -27,21 +27,29 @@ module Stamps
       def print_form
         case param.print_media
           when :stamps
-            return (cache[:stamps_print_form].nil?||!cache[:stamps_print_form].present?)?cache[:stamps_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::MailStamps):cache[:stamps_print_form]
+            return (cache[:stamps_print_form].nil?||!cache[:stamps_print_form].present?)?cache[:stamps_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::MailStamps):cache[:stamps_print_form]
           when :label
-            return (cache[:label_print_form].nil?||!cache[:label_print_form].present?)?cache[:label_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::ShippingLabel):cache[:label_print_form]
+            return (cache[:label_print_form].nil?||!cache[:label_print_form].present?)?cache[:label_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::ShippingLabel):cache[:label_print_form]
           when :envelope
-            return (cache[:envelope_print_form].nil?||!cache[:envelope_print_form].present?)?cache[:envelope_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Envelope):cache[:envelope_print_form]
+            return (cache[:envelope_print_form].nil?||!cache[:envelope_print_form].present?)?cache[:envelope_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::Envelope):cache[:envelope_print_form]
           when :certified_mail
-            return (cache[:certified_mail_print_form].nil?||!cache[:certified_mail_print_form].present?)?cache[:certified_mail_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail):cache[:certified_mail_print_form]
+            return (cache[:certified_mail_print_form].nil?||!cache[:certified_mail_print_form].present?)?cache[:certified_mail_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::CertifiedMail):cache[:certified_mail_print_form]
           when :certified_mail_3910_3930
-            return (cache[:certified_mail_3910_3930_print_form].nil?||!cache[:certified_mail_3910_3930_print_form].present?)?cache[:certified_mail_3910_3930_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail39103930):cache[:certified_mail_3910_3930_print_form]
+            return (cache[:certified_mail_3910_3930_print_form].nil?||!cache[:certified_mail_3910_3930_print_form].present?)?cache[:certified_mail_3910_3930_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::CertifiedMail39103930):cache[:certified_mail_3910_3930_print_form]
           when :certified_mail_3810
-            return (cache[:certified_mail_3810_print_form].nil?||!cache[:certified_mail_3810_print_form].present?)?cache[:certified_mail_3810_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3810):cache[:certified_mail_3810_print_form]
+            return (cache[:certified_mail_3810_print_form].nil?||!cache[:certified_mail_3810_print_form].present?)?cache[:certified_mail_3810_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::CertifiedMail3810):cache[:certified_mail_3810_print_form]
           when :certified_mail_3830
-            return (cache[:certified_mail_3830_print_form].nil?||!cache[:certified_mail_3830_print_form].present?)?cache[:certified_mail_3830_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::CertifiedMail3830):cache[:certified_mail_3830_print_form]
+            return (cache[:certified_mail_3830_print_form].nil?||!cache[:certified_mail_3830_print_form].present?)?cache[:certified_mail_3830_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::CertifiedMail3830):cache[:certified_mail_3830_print_form]
           when :roll
-            return (cache[:roll_print_form].nil?||!cache[:roll_print_form].present?)?cache[:roll_print_form]=PrintFormPanel::PrintForm.new(param).extend(PrintFormPanel::Roll):cache[:roll_print_form]
+            return (cache[:roll_print_form].nil?||!cache[:roll_print_form].present?)?cache[:roll_print_form]=PrintFormPanel::PrintForm.new(
+                param).extend(PrintFormPanel::Roll):cache[:roll_print_form]
           when :manage_printing_options
             raise "manage_printing_options is not implemented."
           else

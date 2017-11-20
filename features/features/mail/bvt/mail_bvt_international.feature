@@ -11,11 +11,8 @@ Feature: International Shipping BVT
     Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
-
     Then set Print form Ounces to 3
-
     Then select Print form service FCMI Package
-
     Then click Print form Edit Customs Form button
 
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked

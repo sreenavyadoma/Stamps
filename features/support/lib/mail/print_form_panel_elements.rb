@@ -705,7 +705,8 @@ module Stamps
       class PrintFormService < Browser::StampsModal
         include PrintFormBlurOut
         def service_selection
-          (cache[:service_selection].nil?||!cache[:service_selection].present?)?cache[:service_selection]=MailServiceSelection.new(param):cache[:service_selection]
+          (cache[:service_selection].nil?||!cache[:service_selection].present?)?cache[:service_selection]=MailServiceSelection.new(
+              param):cache[:service_selection]
         end
 
         def textbox
