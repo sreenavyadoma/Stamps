@@ -1,5 +1,3 @@
-@print_dialog_ship_date
-@print_dialog_ship_date_1
 Feature: Set Print Ship Date to Today
 
   Background:
