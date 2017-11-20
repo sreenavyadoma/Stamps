@@ -62,13 +62,12 @@ Then /^[Cc]lick Search Contacts close [Bb]utton$/ do
 end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
-  10.times do # work around for rating problem
+  20.times do # work around for rating problem
     stamps.mail.print_form.mail_to.mail_to_country.select_country(test_param[:country]=country)
-    step "blur out on print form"
-    sleep(0.15)
     break if stamps.mail.print_form.mail_to.mail_to_country.textbox.text.include?(test_param[:country]) && stamps.mail.print_form.mail_service.has_rates?
   end
-  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to include test_param[:country]
+  expect(stamps.mail.print_form.mail_service).to be_has_rates, "Mail service list of values does not have rates."
+  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox.text).to eql(test_param[:country])
 end
 
 Then /^[Ss]ave Print Form Total Cost$/ do

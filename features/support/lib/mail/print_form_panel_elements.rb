@@ -675,7 +675,7 @@ module Stamps
         include ParameterHelper
         def cost_field(str)
           (cache[:cost_field].nil?||!cache[:cost_field].present?)?cache[:cost_field]=StampsField.new(
-              browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=amount]")):cache[:cost_field]
+              browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=amount]")):cache[:cost_field] #sdc-servicedroplist-fcletter
         end
 
         def service_field(str)
@@ -693,6 +693,10 @@ module Stamps
 
         def service_cost(str)
           (selection_is_numeric?)?cost_field(str).text.to_f : 0
+        end
+
+        def has_rates?(str)
+          !cost_field(str).text.include?('N/A')
         end
       end
 
@@ -730,18 +734,16 @@ module Stamps
             else
               #do nothing
           end
-          has_rates=false
-          5.times do
-            # service_cost(str)
-            if service_selection.service_field(default_service).present?||service_selection.service_field(default_service).present?
-              has_rates=service_selection.selection_is_numeric?(default_service)||service_selection.selection_is_numeric?(default_service)
-              dropdown.click if service_selection.service_field(default_service).present?||service_selection.service_field(default_service).present?
-              break
+          15.times do
+            if service_selection.service_field(default_service).present?
+              return service_selection.has_rates?(default_service)
+            elsif service_selection.service_field(default_int_service).present?
+              return service_selection.has_rates?(default_int_service)
             else
               dropdown.click
             end
           end
-          has_rates
+          false
         end
 
         def service_cost(str)

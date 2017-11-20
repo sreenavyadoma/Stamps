@@ -876,7 +876,7 @@ module Stamps
           super
           @customs_form=Stamps::Common::Customs::CustomsInformation.new(param)
           @view_restrictions=Orders::Details::ViewRestrictions.new(param)
-          @edit_form_btn=StampsField.new browser.span text: 'Edit Form...'
+          @edit_form_btn=StampsField.new browser.span(text: 'Edit Form...')
           @restrictions_btn=StampsField.new browser.span text: 'Restrictions...'
         end
 
