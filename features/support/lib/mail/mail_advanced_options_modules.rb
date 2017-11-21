@@ -4,98 +4,98 @@ module Stamps
 
       module AdvOptExtraServices
         def extra_services_btn
-          @extra_services_btn=StampsField.new(browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")) if @extra_services_btn.nil?
-          @extra_services_btn
+          (cache[:extra_services_btn].nil?||!cache[:extra_services_btn].present?)?cache[:extra_services_btn]=StampsField.new(
+              browser.span(id: "sdc-mainpanel-extraservicesbtn-btnInnerEl")):cache[:extra_services_btn]
+        end
+
+        def xtra_serv_panel
+          (cache[:xtra_serv_panel].nil?||!cache[:xtra_serv_panel].present?)?cache[:xtra_serv_panel]=PrintFormPanel::MailExtraServices.new(param):cache[:xtra_serv_panel]
         end
 
         def extra_services
-          return @extra_services if !@extra_services.nil? && @extra_services.present?
-          expect(extra_services_btn).to be_present, "Extra Services button is not present."
-          @extra_services=PrintFormPanel::MailExtraServices.new(param) if @extra_services.nil?||!@extra_services.present?
-          20.times do extra_services_btn.click unless @extra_services.present? end
-          expect(@extra_services).to be_present, "Extra Services modal did not open."
-          @extra_services
+          20.times do
+            return xtra_serv_panel if xtra_serv_panel.present?
+            extra_services_btn.click
+          end
         end
       end
 
       module AdvOptReferenceNumber
         def reference_number
-          @reference_number=StampsTextbox.new(browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")) if @reference_number.nil?||!@reference_number.present?
-          @reference_number
+          (cache[:reference_number].nil?||!cache[:reference_number].present?)?cache[:reference_number]=StampsTextbox.new(
+              browser.text_field(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(6)>div>div>div>div>div>div>input")):cache[:reference_number]
         end
       end
 
       module AdvOptCostCode
         def cost_code
-          if @cost_code.nil?
-            input=browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]")
-            dropdown=browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]")
-            @cost_code=StampsCombobox.new(input, dropdown, :li, 0)
-          end
-          @cost_code
+          (cache[:cost_code].nil?||!cache[:cost_code].present?)?cache[:cost_code]=StampsCombobox.new(
+              browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"),
+              browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]"),
+              :li,
+              0):cache[:cost_code]
         end
       end
 
       module AdvOptMailDate
         def mail_date
-          @mail_date=MailDate.new(param) if @mail_date.nil?
-          @mail_date
+          (cache[:mail_date].nil?||!cache[:mail_date].present?)?cache[:mail_date]=MailDate.new(param):cache[:mail_date]
         end
       end
 
       module AdvOptHideLabelValue
         def hide_label_value
-          if @hide_label_value.nil?
-            input=browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(1)>div>div>span")
-            verify=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(1)")
-            @hide_label_value=Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
-          end
-          @hide_label_value
+          (cache[:hide_label_value].nil?||!cache[:hide_label_value].present?)?cache[:hide_label_value]=StampsCheckbox.new(
+              browser.span(css: "[id^=printPreviewPanel-] div:nth-child(1)>div>div>span"),
+              browser.div(css: "[id^=printPreviewPanel-] [class*=fieldcontainer]>div>div>div>div>div:nth-child(1)"),
+              "class",
+              "checked"):cache[:hide_label_value]
         end
       end
 
       module AdvOptPrintReferenceNumber
         def print_reference_number
-          if @print_reference_number.nil?
-            input=browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)>div>div>span")
-            verify=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)")
-            @print_reference_number=Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
-          end
-          @print_reference_number
+          (cache[:reference_number].nil?||!cache[:reference_number].present?)?cache[:reference_number]=StampsCheckbox.new(
+              browser.span(css: "[id^=printPreviewPanel-] [class*=fieldcontainer]>div>div>div>div>div:nth-child(3)>div>div>span"),
+              browser.div(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)"),
+              "class",
+              "checked"):cache[:reference_number]
         end
       end
 
       module AdvOptPrintReceipt
         def print_receipt
-          if @print_receipt.nil?
-            input=browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)>div>div>span")
-            verify=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)")
-            @print_receipt=Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
-          end
-          @print_receipt
+          (cache[:print_receipt].nil?||!cache[:print_receipt].present?)?cache[:print_receipt]=StampsCheckbox.new(
+              browser.span(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)>div>div>span"),
+              browser.div(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)"),
+              "class",
+              "checked"):cache[:print_receipt]
         end
       end
 
       module AdvOptToggle
+        def show_field
+          (cache[:show_field].nil?||!cache[:show_field].present?)?cache[:show_field]=StampsField.new(browser.span(text: "Show Advanced Options")):cache[:show_field]
+        end
+
+        def hide_field
+          (cache[:hide_field].nil?||!cache[:hide_field].present?)?cache[:hide_field]=StampsField.new(browser.span(text: "Hide Advanced Options")):cache[:hide_field]
+        end
+
         def show
-          @show_field=StampsField.new(browser.span(text: "Show Advanced Options")) if @show_field.nil?
-          @hide_field=StampsField.new(browser.span(text: "Hide Advanced Options")) if @hide_field.nil?
           15.times do
-            @show_field.click
-            break if @hide_field.present?
+            show_field.click
+            return true if hide_field.present?
           end
-          expect(@hide_field).to be_present
+          false
         end
 
         def hide
-          @show_field=StampsField.new(browser.span(text: "Show Advanced Options")) if @show_field.nil?
-          @hide_field=StampsField.new(browser.span(text: "Hide Advanced Options")) if @hide_field.nil?
           15.times do
-            @hide_field.click
-            break if @show_field.present?
+            hide_field.click
+            return true if show_field.present?
           end
-          expect(@show_field).to be_present
-          self
+          false
         end
       end
 
@@ -106,26 +106,23 @@ module Stamps
         include AdvOptCostCode
 
         def present?
-          cost_code.present?
+          cost_code.present? && reference_number.present? && calculate_postage_amount.present? && specify_postage_amount.present?
         end
 
         def calculate_postage_amount
-          if @calculate_postage_amount.nil?
-            radio=browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl')
-            verify_field=browser.div(id: 'sdc-mainpanel-calculatepostageradio')
-            #radio, check_verify, attribute, attribute_value
-            @calculate_postage_amount=StampsRadio.new(radio, verify_field, "class", "checked")
-          end
-          @calculate_postage_amount
+          (cache[:calculate_postage].nil?||!cache[:calculate_postage].present?)?cache[:calculate_postage]=StampsRadio.new(
+              browser.span(id: 'sdc-mainpanel-calculatepostageradio-displayEl'),
+              browser.div(id: 'sdc-mainpanel-calculatepostageradio'),
+              "class",
+              "checked"):cache[:calculate_postage]
         end
 
         def specify_postage_amount
-          if @specify_postage_amount.nil?
-            field=browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl')
-            verify_field=browser.div(id: 'sdc-mainpanel-specifypostageradio')
-            @specify_postage_amount=StampsRadio.new(field, verify_field, "class", "checked")
-          end
-          @specify_postage_amount
+          (cache[:specify_postage].nil?||!cache[:specify_postage].present?)?cache[:specify_postage]=StampsRadio.new(
+              browser.span(id: 'sdc-mainpanel-specifypostageradio-displayEl'),
+              browser.div(id: 'sdc-mainpanel-specifypostageradio'),
+              "class",
+              "checked"):cache[:specify_postage]
         end
 
       end
@@ -141,7 +138,7 @@ module Stamps
         include AdvOptPrintReceipt
 
         def present?
-          cost_code.present?
+          cost_code.present? && reference_number.present? && mail_date.present?
         end
       end
 
@@ -153,34 +150,31 @@ module Stamps
         include AdvOptCostCode
 
         def present?
-          cost_code.present?
+          cost_code.present? && reference_number.present? && mail_date.present? && return_address.present? && delivery_address.present? && postage.present?
         end
 
         def return_address
-          if @return_address.nil?
-            input=browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(2)>div>div>span")
-            verify=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(2)")
-            @return_address=Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
-          end
-          @return_address
+          (cache[:return_address].nil?||!cache[:return_address].present?)?cache[:return_address]=StampsCheckbox.new(
+              browser.span(css: "[id^=printPreviewPanel-][id$=-innerCt] div:nth-child(5)>div>div>div:nth-child(2)>div>div>span"),
+              browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(2)"),
+              "class",
+              "checked"):cache[:return_address]
         end
 
         def delivery_address
-          if @delivery_address.nil?
-            input=browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(3)>div>div>span")
-            verify=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(3)")
-            @delivery_address=Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
-          end
-          @delivery_address
+          (cache[:delivery_address].nil?||!cache[:delivery_address].present?)?cache[:delivery_address]=StampsCheckbox.new(
+              browser.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)>div>div>span"),
+              browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(3)"),
+              "class",
+              "checked"):cache[:delivery_address]
         end
 
         def postage
-          if @postage.nil?
-            input=browser.span(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)>div>div>span")
-            verify=browser.div(css: "div[id^=printPreviewPanel-][id$=-innerCt]>div>div>div>div:nth-child(5)>div>div>div:nth-child(4)")
-            @postage=Stamps::Browser::StampsCheckbox.new(input, verify, "class", "checked")
-          end
-          @postage
+          (cache[:postage].nil?||!cache[:postage].present?)?cache[:postage]=StampsCheckbox.new(
+              browser.span(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)>div>div>span"),
+              browser.div(css: "[id^=printPreviewPanel-] div:nth-child(5)>div>div>div:nth-child(4)"),
+              "class",
+              "checked"):cache[:postage]
         end
       end
 
@@ -192,18 +186,16 @@ module Stamps
         include AdvOptCostCode
 
         def present?
-          cost_code.present?
+          cost_code.present? && restricted_delivery.present?
         end
 
         def restricted_delivery
-          if @restricted_delivery.nil?
-            clickable_field=browser.span(css: "span[class*=sdc-mainpanel-rdcheckbox]")
-            verify=clickable_field.parent.parent.parent
-            @restricted_delivery=Stamps::Browser::StampsCheckbox.new(clickable_field, verify, "class", "checked")
-          end
-          @restricted_delivery
+          (cache[:restricted_delivery].nil?||!cache[:restricted_delivery].present?)?cache[:restricted_delivery]=StampsCheckbox.new(
+              browser.input(css: "input[class*=sdc-mainpanel-rdcheckbox]"),
+              browser.div(css: "[id^=certifiedmailview-][id$=certifiedmailview-1148-outerCt] [id^=fieldcontainer-][id$=-innerCt] div:nth-child(4) [class*=x-form-type-checkbox]"),
+              "class",
+              "checked"):cache[:restricted_delivery]
         end
-
       end
 
       module RollsAdvancedOptions
@@ -217,7 +209,7 @@ module Stamps
         include AdvOptPrintReceipt
 
         def present?
-          cost_code.present?
+          cost_code.present? && reference_number.present? && mail_date.present?
         end
       end
 

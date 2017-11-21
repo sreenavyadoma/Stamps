@@ -1,0 +1,23 @@
+#todo-Rob include these in healthcheck test
+
+QACC
+        Postage on the Web         https://webpostageext.qacc.stamps.com/webpostage/healthcheck.aspx
+        Print VM (\webpostage)     https://printext.qacc.stamps.com/webpostage/healthcheck.aspx
+        Content Service VM         https://contentext.qacc.stamps.com/ContentService/healthcheck.aspx
+        Online Reporting           https://orext.qacc.stamps.com/PostageTools/healthcheck.aspx
+        SWSIM                      https://swsim.qacc.stamps.com/swsim/health.aspx
+        NAWS 1.0                   https://naws-la.qacc.stamps.com/healthcheck.aspx
+        NAWS 2.0 (SDC Connect)     https://naws.qacc.stamps.com/healthcheck.aspx
+        ATG Store                  https://customer.corp.stamps.com/healthcheck.aspx
+        ATG Store redirect         https://webpostage.qacc.stamps.com/webpostage/healthcheck.asp
+QASC
+        Postage on the Web         https://webpostageext.qasc.stamps.com/webpostage/healthcheck.aspx
+        Print VM (\webpostage)     https://printext.qasc.stamps.com/webpostage/healthcheck.aspx
+        Content Service VM         https://contentext.qasc.stamps.com/ContentService/healthcheck.aspx
+        Online Reporting           https://orext.qasc.stamps.com/PostageTools/healthcheck.aspx
+        SWSIM                      https://swsimext.qasc.stamps.com/swsim/health.aspx
+        NAWS 1.0                   https://naws-la.qasc.stamps.com/healthcheck.aspx
+        NAWS 2.0 (SDC Connect)     https://naws.qasc.stamps.com/healthcheck.aspx
+        ATG Store                  https://customer.corp.stamps.com/healthcheck.aspx
+        ATG Store redirect         https://webpostageext.qasc.stamps.com/webpostage/healthcheck.aspx
+

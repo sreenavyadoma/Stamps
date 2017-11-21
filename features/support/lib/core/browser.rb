@@ -145,9 +145,11 @@ module Stamps
         ''
       end
 
-      def click
+      def click(ctr=1)
         begin
-          field.click if clickable?
+          (ctr.to_i).times do
+            field.click if clickable?
+          end
         rescue
           #ignore
         end
@@ -167,18 +169,20 @@ module Stamps
         self
       end
 
-      def double_click
+      def double_click(ctr=1)
         begin
-          field.double_click if clickable?
+          (ctr.to_i).times do
+            field.double_click if clickable?
+          end
         rescue
           #ignore
         end
         self
       end
 
-      def blur_out(counter=1)
+      def blur_out(ctr=1)
         begin
-          (counter.to_i).times do
+          (ctr.to_i).times do
             flash
             double_click
             click

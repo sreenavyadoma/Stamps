@@ -56,7 +56,7 @@ module Stamps
         end
 
         def validation_message
-          StampsField.new(browser.span id: 'InvalidUsernameMsg').text
+          StampsField.new(browser.span id: 'InvalidUsernameMsg')
         end
 
         def blur_out
@@ -121,7 +121,7 @@ module Stamps
               return market_place
             end
           end
-          expect(validation_message).to eql ""
+          expect(validation_message.text).to eql ""
           expect("Market Place modal is not present").to eql "First Time Sign In" unless market_place.present?
         end
 
@@ -187,8 +187,8 @@ module Stamps
                   password(pw)
                   login
                   wait_while_present(3)
-
-                  expect(server_error).to_not be_present, server_error.message
+                  #expect(server_error).to_not be_present, server_error.message
+                  raise server_error.message if server_error.present?
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
                   if invalid_username.present?

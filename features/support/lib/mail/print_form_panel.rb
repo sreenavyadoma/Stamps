@@ -47,19 +47,18 @@ module Stamps
         def advanced_options
           case param.print_media
             when :stamps
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::StampsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:stamps)
+              return (cache[:stamps_options].nil?||!cache[:stamps_options].present?)?cache[:stamps_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::StampsAdvancedOptions):cache[:stamps_options]
             when :label
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::LabelsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:label)
+              return (cache[:label_options].nil?||!cache[:label_options].present?)?cache[:label_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::LabelsAdvancedOptions):cache[:label_options]
             when :envelope
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:envelope)
+              return (cache[:envelope_options].nil?||!cache[:envelope_options].present?)?cache[:envelope_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions):cache[:envelope_options]
             when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions) if cache[:advanced_options].nil?||((cache[:advanced_options].print_media!=:certified_mail) && (cache[:advanced_options].print_media!=:certified_mail_3910_3930) && (cache[:advanced_options].print_media!=:certified_mail_3810) && (cache[:advanced_options].print_media!=:certified_mail_3830))
+              return (cache[:cm_options].nil?||!cache[:cm_options].present?)?cache[:cm_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions):cache[:cm_options]
             when :roll
-              cache[:advanced_options]=AdvancedOptions::AdvancedOptionsContainer.new(param).extend(AdvancedOptions::RollsAdvancedOptions) if cache[:advanced_options].nil?||(cache[:advanced_options].print_media!=:roll)
+              return (cache[:roll_options].nil?||!cache[:roll_options].present?)?cache[:roll_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::RollsAdvancedOptions):cache[:roll_options]
             else
-              # do nothing
+              raise "Invalid Print Media: #{param.print_media}"
           end
-          cache[:advanced_options]
         end
       end
 

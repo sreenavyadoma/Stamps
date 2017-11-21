@@ -1,16 +1,6 @@
 module Stamps
   module Mail
     module AdvancedOptions
-
-      class AdvancedOptionsContainer < Browser::StampsModal
-        attr_reader :print_media
-
-        def initialize(param)
-          super
-          @print_media=param.print_media
-        end
-      end
-
       class CostCodeComboBox < Browser::StampsModal
         attr_accessor :param, :textbox, :dropdown
 
@@ -50,19 +40,17 @@ module Stamps
 
       module MailDateTextbox
         def textbox
-          @textbox=StampsTextbox.new(browser.text_field(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div>input")) if @textbox.nil?
-          @textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              browser.text_field(css: "[id=sdc-mainpanel-shipdatedatefield-targetEl] input")):cache[:textbox]
         end
       end
 
       class MailDatePicker < Browser::StampsModal
         include MailDateTextbox
         include ParameterHelper
-
-        attr_reader :trigger_picker
-        def initialize(param)
-          super
-          @trigger_picker=StampsField.new(browser.div(css: "div[id=sdc-mainpanel-shipdatedatefield-targetEl]>div>div>div>div[id*=picker]"))
+        def trigger_picker
+          (cache[:trigger_picker].nil?||!cache[:trigger_picker].present?)?cache[:trigger_picker]=StampsField.new(
+              browser.div(css: "[id=sdc-mainpanel-shipdatedatefield-targetEl] div[id*=picker]")):cache[:trigger_picker]
         end
 
         def mail_dates
@@ -96,14 +84,10 @@ module Stamps
 
       class MailDate < Browser::StampsModal
         include MailDateTextbox
-        attr_accessor :date_picker
-
-        def initialize(param)
-          super
-          @date_picker=MailDatePicker.new(param)
+        def date_picker
+          (cache[:date_picker].nil?||!cache[:date_picker].present?)?cache[:date_picker]=MailDatePicker.new(param):cache[:date_picker]
         end
       end
-
     end
   end
 end

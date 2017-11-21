@@ -464,24 +464,18 @@ module Stamps
         end
 
         def domestic?
-          30.times do
-            return true if dom_dd.present?
-            sleep(0.1)
-            return false if int_dd.present?
-            sleep(0.1)
-          end
-          raise "Unable to determine if MailToCountry is domestic or international"
+          dom_dd.present? && dom_textbox.present?
         end
 
         def dropdown
-          (cache[:dropdown].nil?||!cache[:dropdown].present?)?(cache[:dropdown]=((domestic?)? dom_dd : int_dd)):cache[:dropdown]
+          (domestic?)?dom_dd : int_dd
         end
 
         def textbox
-          (cache[:upgrade_plan].nil?||!cache[:upgrade_plan].present?)?cache[:upgrade_plan]=((domestic?)? dom_textbox : int_textbox):cache[:upgrade_plan]
+          (domestic?)?dom_textbox : int_textbox
         end
 
-        def select(str)
+        def select_country(str)
           begin
             dropdown.click
             selection=StampsField.new(browser.lis(text: str)[(domestic?)?0:1])
@@ -565,7 +559,6 @@ module Stamps
           textarea.double_click
           textarea.click
           textarea.double_click
-          blur_out
           blur_out
           blur_out
         end
@@ -691,7 +684,7 @@ module Stamps
         include ParameterHelper
         def cost_field(str)
           (cache[:cost_field].nil?||!cache[:cost_field].present?)?cache[:cost_field]=StampsField.new(
-              browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=amount]")):cache[:cost_field]
+              browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=amount]")):cache[:cost_field] #sdc-servicedroplist-fcletter
         end
 
         def service_field(str)
@@ -710,12 +703,17 @@ module Stamps
         def service_cost(str)
           (selection_is_numeric?)?cost_field(str).text.to_f : 0
         end
+
+        def has_rates?(str)
+          !cost_field(str).text.include?('N/A')
+        end
       end
 
       class PrintFormService < Browser::StampsModal
         include PrintFormBlurOut
         def service_selection
-          (cache[:service_selection].nil?||!cache[:service_selection].present?)?cache[:service_selection]=MailServiceSelection.new(param):cache[:service_selection]
+          (cache[:service_selection].nil?||!cache[:service_selection].present?)?cache[:service_selection]=MailServiceSelection.new(
+              param):cache[:service_selection]
         end
 
         def textbox
@@ -745,17 +743,16 @@ module Stamps
             else
               #do nothing
           end
-          has_rates=false
-          5.times do
-            if service_selection.service_field(default_service).present?||service_selection.service_field(default_service).present?
-              has_rates=service_selection.selection_is_numeric?(default_service)||service_selection.selection_is_numeric?(default_service)
-              dropdown.click if service_selection.service_field(default_service).present?||service_selection.service_field(default_service).present?
-              break
+          15.times do
+            if service_selection.service_field(default_service).present?
+              return service_selection.has_rates?(default_service)
+            elsif service_selection.service_field(default_int_service).present?
+              return service_selection.has_rates?(default_int_service)
             else
               dropdown.click
             end
           end
-          has_rates
+          false
         end
 
         def service_cost(str)
@@ -864,113 +861,74 @@ module Stamps
 
       class PrintFormCostCode < Browser::StampsModal
         def textbox
-          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
-              browser.text_field(id: "sdc-mainpanel-trackingdroplist-inputEl")):cache[:textbox]
-        end
-
-        def textbox
-          StampsTextbox.new browser.text_field name: "costCodeId"
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(name: "costCodeId")):cache[:textbox]
         end
 
         def dropdown
-          buttons=browser.divs css: "div[class*=x-form-arrow-trigger]"
-          button=StampsField.new(buttons.last)
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.div(css: "[id^=costcodesdroplist-][id$=-trigger-picker]")):cache[:dropdown]
         end
 
         def select(selection)
-          logger.info "Select Cost Code #{selection}"
-
-          box=textbox
-          button=dropdown
-          selection_label=StampsField.new browser.div text: selection
-          sleep(0.35)
-          10.times {
+          field=StampsField.new(browser.div(text: selection))
+          10.times do
             begin
-              button.click #unless selection_label.present?
-              selection_label.scroll_into_view
-              selection_label.click
-              selected_cost_code=box.text
-              logger.info "Selected Cost Code #{selected_cost_code} - #{(selected_cost_code.include? selection)?"done": "cost code not selected"}"
-              break if selected_cost_code.include? selection
+              dropdown.click unless field.present?
+              field.scroll_into_view
+              field.click
+              return textbox.text if textbox.text.include?(selection)
             rescue
               #ignore
             end
-          }
-          logger.info "Origin Country selected: #{selection}"
-          selection_label
-        end
-
-      end
-
-      class PrintFormQuantity < Browser::StampsModal
-        def textbox
-          StampsTextbox.new(browser.text_field css: "input[class*='sdc-previewpanel-quantitynumberfield']")
-        end
-
-        def set(value)
-          text_field=textbox
-          text_field.set(value)
-          logger.info "Quantity set to #{text_field.text}"
-        end
-
-        def increment value
-          button=StampsField.new(browser.divs(css: "div[class*=x-form-spinner-up]")[7])
-          value.to_i.times do
-            button.click
           end
-        end
-
-        def decrement value
-          button=StampsField.new(browser.divs(css: "div[class*=x-form-spinner-down]")[7])
-          value.to_i.times do
-            button.click
-          end
+          textbox.text
         end
       end
 
+      #todo-Rob reference http://jira.psisystems.local/browse/ORDERSAUTO-3460
       class PrintFormMailToLink < Browser::StampsModal
-        attr_accessor :link, :contacts_modal
+        def link
+          (cache[:link].nil?||!cache[:link].present?)?cache[:link]=StampsField.new(browser.span(css: "[class*=sdc-mainpanel-shiptolinkbtn] [id$=btnInnerEl]")):cache[:link]
+        end
 
-        def initialize(param)
-          super
-          @link=StampsField.new(browser.span(css: "label[class*=sdc-mainpanel-shiptolinkbtn]>span>span>span[id$=btnInnerEl]"))
-          @contacts_modal=MailSearchContactsModal.new(param)
+        def contacts_modal
+          (cache[:contacts_modal].nil?||!cache[:contacts_modal].present?)?cache[:contacts_modal]=MailSearchContactsModal.new(param):cache[:contacts_modal]
         end
 
         def click
-          15.times do
-            sleep(0.35)
+          30.times do
             return contacts_modal if contacts_modal.present?
             link.click
           end
-          expect(contacts_modal).to be_present
+          nil
         end
       end
 
       class PrintFormMailTo < Browser::StampsModal
-        attr_reader :mail_to_link, :mail_to_country
         include PrintFormBlurOut
-
-        def initialize(param)
-          super
-          @mail_to_country=MailToCountry.new(param)
-          @mail_to_link=PrintFormMailToLink.new(param)
+        def mail_to_country
+          (cache[:mail_to_country].nil?||!cache[:mail_to_country].present?)?cache[:mail_to_country]=MailToCountry.new(param):cache[:mail_to_country]
         end
 
-        def address
-          blur_out
-          if mail_to_country.domestic?
-            @address=MailToDom.new(param)
-          else
-            @address=MailToInt.new(param)
-          end
+        def mail_to_link
+          (cache[:mail_to_link].nil?||!cache[:mail_to_link].present?)?cache[:mail_to_link]=PrintFormMailToLink.new(param):cache[:mail_to_link]
+        end
+
+        def dom_mail_address
+          (cache[:dom_mail_address].nil?||!cache[:dom_mail_address].present?)?cache[:dom_mail_address]=MailToDom.new(param):cache[:dom_mail_address]
+        end
+
+        def int_mail_address
+          (cache[:int_mail_address].nil?||!cache[:int_mail_address].present?)?cache[:int_mail_address]=MailToInt.new(param):cache[:int_mail_address]
+        end
+
+        def mail_address
+          return dom_mail_address if mail_to_country.domestic?
+          int_mail_address
         end
 
         def country(str)
-          expect(mail_to_country).to be_present
-          blur_out
           mail_to_country.select(str)
-          address
+          mail_to_country.textbox.text
         end
       end
 

@@ -30,7 +30,7 @@ Then /^[Ss]et [Oo]rders [Pp]rint [Mm]odal [Pp]rinter ?(?:|(.*))$/ do |printer|
 end
 
 Then /^[Oo]rders [Pp]rint [Mm]odal [Pp]rinter [Dd]rop[Dd]own is present$/ do
-  expect(stamps.orders.orders_print_modal.printer).to be_present, "StampsConnect is not connected. You might need to re-login on this PC: #{modal_param.hostname}"
+  expect(stamps.orders.orders_print_modal.printer).to be_present, "StampsConnect is not connected. You might need to re-login to this PC: #{modal_param.hostname}"
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]rint [Mm]odal is [Pp]resent$/ do
@@ -49,9 +49,13 @@ Then /^ReIn [Pp]rint modal, Reprint$/ do
   stamps.orders.orders_toolbar.reprint.reprint
 end
 
-Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today(?:| plus (\d+))$/ do |day|
+Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to (?:today|today plus (\d+))$/ do |day|
   step "expect print modal ship date dropdown is present"
-  stamps.orders.orders_print_modal.ship_date.date_picker.today_plus((day.nil?)?0:day.to_i)
+  stamps.orders.orders_print_modal.ship_date.textbox.set(test_helper.today_plus(day))
+  stamps.orders.orders_print_modal.ship_date.shipdate_label.click(10)
+  stamps.orders.orders_print_modal.ship_date.shipdate_label.double_click(10)
+  test_param[:ship_date]=stamps.orders.orders_print_modal.ship_date.textbox.text
+  test_param[:ship_date]
 end
 
 Then /^[Ee]xpect [Pp]rint [Mm]odal Ship Date is (\d+) day\(s\) from today/ do |day|
