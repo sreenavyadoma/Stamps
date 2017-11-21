@@ -257,15 +257,15 @@ module Stamps
 
 
     # returns mm/dd/yyyy "10/26/2017"
-    def now_plus_mm_dd_yy(day)
+    def today_plus(day)
       (Date.today + day.to_i).strftime "%m/%d/%Y"
     end
 
     def now_month_dd
-      now_plus_month_dd(0)
+      this_month_plus(0)
     end
 
-    def now_plus_month_dd(day)
+    def this_month_plus(day)
       (Date.today + day.to_i).strftime "%B %d"
     end
 
@@ -274,8 +274,14 @@ module Stamps
     end
 
     # add +1 to day if day is a Sunday. We don't ship on Sundays.
-    def valid_shipdate(day)
+    def shipdate_today_plus(day)
       ((Date.today + day.to_i).wday==0)? (Date.today + day.to_i + 1).strftime("%b %-d") : (Date.today + day.to_i).strftime("%b %-d")
+    end
+
+    # takes a date string format "11/21/2017" and converts it to "Nov 21"
+    def grid_date_format(str)
+      return Date::strptime(str, "%m/%d/%Y").strftime("%b %-d") unless str.match(/\d{,2}\/\d{,2}\/\d{4}/).nil?
+      str
     end
 
     def date_printed(*args)
@@ -288,16 +294,13 @@ module Stamps
           "#{month}/#{day}/#{now.year}"
         when 1
           now=Date.today
-          logger.info "Today:  #{now}"
           days_to_add=args[0].to_i
           new_date=now + days_to_add
-          logger.info "New Date:  #{new_date}"
           month=(new_date.month.to_s.length==1)?"0#{new_date.month}":new_date.month
           day=(new_date.day.to_s.length==1)?"0#{new_date.day}":new_date.day
-          now="#{month}/#{day}/#{new_date.year}"
-          now
+          "#{month}/#{day}/#{new_date.year}"
         else
-          expect("Illegal number of arguments for TestHelper.date_from_today").to eql ""
+          raise "Illegal number of arguments for TestHelper.date_from_today"
       end
     end
 

@@ -354,7 +354,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Hide [Ii]nternational [Ss]hip-[Tt]o field
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is truthy$/ do
-  expect(test_param[:order_id][1].to_i).to be > 0
+  expect(test_param[:order_id].values.last.to_i).to be > 0
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID equals Grid Oder ID in row (\d+)$/ do |row|
@@ -362,7 +362,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID equals Grid Oder ID in row (\
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is the same as saved Order ID$/ do
-  expect(stamps.orders.single_order_details.toolbar.order_id).to eql test_param[:order_id][1]
+  expect(stamps.orders.single_order_details.toolbar.order_id).to eql test_param[:order_id].values.last
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form [Ss]hip-[Tt]o Name is (.*)$/ do |expectation|
