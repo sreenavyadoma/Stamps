@@ -51,6 +51,7 @@ end
 
 Then /^[Ss]et [Pp]rint [Mm]odal Ship Date to today(?:| plus (\d+))$/ do |day|
   step "expect print modal ship date dropdown is present"
+  stamps.orders.orders_print_modal.ship_date.textbox.set
   stamps.orders.orders_print_modal.ship_date.date_picker.today_plus((day.nil?)?0:day.to_i)
 end
 
