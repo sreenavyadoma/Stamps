@@ -1,4 +1,4 @@
-Then /^Print (?:Postage|Label|Stamps|Envelope)$/ do
+Then /^Print (?:[Pp]ostage|[Ll]abel|[Ss]tamps|[Ee]nvelope)$/ do
   stamps.mail.mail_toolbar.print_postage
 end
 

@@ -64,8 +64,6 @@ Feature: Manually verify all mail pieces in Staging
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-
-
   Scenario: Shipping Label - 8 ½" x 11" Paper
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
@@ -78,5 +76,14 @@ Feature: Manually verify all mail pieces in Staging
     Then check Advanced Options Print Receipt
     Then Print Label
     Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+    # Roll - 4" x 6" Shipping Label
+    Then select Print On Roll 4x6
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set Print form Ounces to 1
+    Then select Print form service PM Large Flat Rate Box
+    Then Print Postage
     Then click Mail Print modal Print button
     Then Sign out
