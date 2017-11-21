@@ -2,13 +2,6 @@ Then /^Print (?:Postage|Label|Stamps|Envelope)$/ do
   stamps.mail.mail_toolbar.print_postage
 end
 
-
-
-
-
-
-#todo-Kaushal Incomplete printing error
-
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ii]ncomplete [Ff]ields [Dd]ialog is [Pp]resent$/ do
   expect(stamps.mail.mail_toolbar.print_postage_expecting_error).to eql('Incomplete Fields')
 end
@@ -18,15 +11,6 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm [Ww]arning [Mm]essage is (.*)/ do |str|
   step "expect Print form Incomplete Fields dialog is present"
   expect(stamps.mail.mail_modals.incomplete_fields.warning_message.text).to include(str)
 end
-
-
-
-
-
-
-
-
-
 
 When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
   stamps.mail.mail_toolbar.print_postage.print

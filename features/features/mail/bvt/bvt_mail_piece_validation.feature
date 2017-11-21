@@ -66,3 +66,17 @@ Feature: Manually verify all mail pieces in Staging
 
 
 
+  Scenario: Shipping Label - 8 ½" x 11" Paper
+    Then select Print On Shipping Label - Paper
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set Print form Pounds to 0
+    Then set Print form Ounces to 1
+    Then select Print form service PM Flat Rate Envelope
+    Then show Advanced Options
+    Then check Advanced Options Print Receipt
+    Then Print Label
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+    Then Sign out
