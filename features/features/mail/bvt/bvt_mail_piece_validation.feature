@@ -7,6 +7,7 @@ Feature: Manually verify all mail pieces in Staging
 
   Scenario: Stamps B-Series
     Then select Print On Stamps
+    Then show Advanced Options
     Then set Print form Serial Number to B12345
     Then select Advanced Options Specify Postage Amount
     Then set Print form Mail-From to default
@@ -55,7 +56,8 @@ Feature: Manually verify all mail pieces in Staging
     Then Sign out
 
   Scenario: Certified Mail Label - SDC-3610
-    Then select Print On Shipping Label - Paper
+#    Then select Print On Shipping Label - Paper
+    Then select Print On Certified Mail Label - SDC-3610
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
