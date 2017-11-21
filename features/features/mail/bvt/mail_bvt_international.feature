@@ -13,17 +13,12 @@ Feature: International Shipping BVT
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
 
     Then set Print form Ounces to 3
-
     Then select Print form service PMI Flat Rate Envelope
-
     Then click Print form Edit Customs Form button
 
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
-
     Then set Customs form Package Contents to Document
-
     Then set Customs form More Info to some random string
-
     Then set Customs form Package Contents to Commercial Sample
     Then expect Customs form Package Contents is Commercial Sample
     Then set Customs form License Number to a random string
