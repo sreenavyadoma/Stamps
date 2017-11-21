@@ -23,7 +23,8 @@ web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=p
 
 eli_dev: --tags @mail_bvt_stamps --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=mail URL=stg BROWSER=chrome USR=default PW=password1 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111 PRINTER=\\QA-PRINTLAB2016.corp.stamps.com\HP LaserJet P2035
-sap:              --tags @registration_orders WEB_APP=regist
+sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
+
 #alex_mail_cc:  --tags @mail_authentication WEB_APP=mail JENKINS=true USR=cctruer0u PW=pass111 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory
 #alex_mail_cc:  --tags @mail_print_label_left_side WEB_APP=mail JENKINS=true USR=lrqacc001 PW=password1 URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false PRINTER=factory
 #mail_print_label_both_sides: --tags  @mail_print_label_both_sides --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail PRINTER=factory
@@ -31,8 +32,7 @@ alex_mail_cc:  --tags @mail_print_label_both_sides WEB_APP=mail JENKINS=true USR
 alex_mail_bvt_stamps:  --tags @mail_bvt_stamps BROWSER=ff WEB_APP=mail JENKINS=true USR=lrqacc001 PW=password1 URL=cc --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_address_management:  --tags @address_management BROWSER=ff WEB_APP=orders JENKINS=true USR=abqast1 PW=password1 URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_address_management:  --tags @address_management BROWSER=ff WEB_APP=orders JENKINS=true USR=abqast1 PW=password1 URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
-alex_mail_forgot_password:  --tags @mail_forgot_password BROWSERration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
-=ff WEB_APP=orders JENKINS=true URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
+alex_mail_forgot_password:  --tags @mail_forgot_password BROWSER=ff WEB_APP=orders JENKINS=true URL=stg --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_details_order:  --tags @details_order BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_tracking_defaults:  --tags @details_reference_no BROWSER=ff WEB_APP=orders JENKINS=true URL=stg  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_details_reference_no:  --tags @details_reference_no BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
