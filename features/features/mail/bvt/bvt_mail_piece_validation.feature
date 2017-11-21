@@ -50,6 +50,7 @@ Feature: Manually verify all mail pieces in Staging
     Then set Print form Ounces to 1
     Then select Print form service PM Large Flat Rate Box
     Then Print Postage
+    Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then click Mail Print modal Print button
     Then Sign out
 
