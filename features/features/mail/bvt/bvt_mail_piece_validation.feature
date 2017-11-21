@@ -59,7 +59,7 @@ Feature: Manually verify all mail pieces in Staging
 #    Then select Print On Shipping Label - Paper
     Then select Print On Certified Mail Label - SDC-3610
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
+#    Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1
