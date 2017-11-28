@@ -1,14 +1,13 @@
 module Stamps
   module Orders
     module Stores
-
       module ShipStationUpgradeCache
         def cache
           @cache ||= {}
         end
       end
 
-      class LookingForShipStaion < StoreSettings
+      class LookingForShipStaion < Browser::StampsModal
         include ShipStationUpgradeCache
 
         def title
@@ -36,7 +35,7 @@ module Stamps
         end
       end
 
-      class AddAdvancedShippingFeatures < StoreSettings
+      class AddAdvancedShippingFeatures < Browser::StampsModal
         include ShipStationUpgradeCache
 
         def dialog_header
@@ -92,7 +91,7 @@ module Stamps
         end
       end
 
-      class ActivateYourNewFeatures < StoreSettings
+      class ActivateYourNewFeatures < Browser::StampsModal
         include ShipStationUpgradeCache
 
         def body

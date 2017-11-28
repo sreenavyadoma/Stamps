@@ -87,7 +87,7 @@ Then /^[Ss]ave Print Form Mail From$/ do
 end
 
 Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do
-  stamps.mail.print_form.buy_more_labels.click
+  stamps.mail.print_preview.buy_more_labels.link.click
 end
 
 

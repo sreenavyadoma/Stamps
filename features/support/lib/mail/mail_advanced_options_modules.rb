@@ -55,21 +55,13 @@ module Stamps
 
       module AdvOptPrintReferenceNumber
         def print_reference_number
-          (cache[:reference_number].nil?||!cache[:reference_number].present?)?cache[:reference_number]=StampsCheckbox.new(
-              browser.span(css: "[id^=printPreviewPanel-] [class*=fieldcontainer]>div>div>div>div>div:nth-child(3)>div>div>span"),
-              browser.div(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)"),
-              "class",
-              "checked"):cache[:reference_number]
+          (cache[:print_reference_number].nil?||!cache[:print_reference_number].present?)?cache[:print_reference_number]=StampsField.new(browser.label(text: "Print Reference #")):cache[:print_reference_number]
         end
       end
 
       module AdvOptPrintReceipt
         def print_receipt
-          (cache[:print_receipt].nil?||!cache[:print_receipt].present?)?cache[:print_receipt]=StampsCheckbox.new(
-              browser.span(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)>div>div>span"),
-              browser.div(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)"),
-              "class",
-              "checked"):cache[:print_receipt]
+          (cache[:print_receipt].nil?||!cache[:print_receipt].present?)?cache[:print_receipt]=StampsField.new(browser.label(text: "Print Receipt")):cache[:print_receipt]
         end
       end
 

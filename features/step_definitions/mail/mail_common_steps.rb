@@ -1,160 +1,144 @@
 
-Then /^[Ee]xpect Print form Print Media Tooltip is (.*)$/ do |selection|
+Then /^[Ee]xpect [Pp]rint [Ff]orm Print Media Tooltip is (.*)$/ do |selection|
   stamps.mail.print_on.tooltip selection
 end
 
-Then /^[Ee]xpect Print form Print Media (.*) is disabled$/ do |selection|
+Then /^[Ee]xpect [Pp]rint [Ff]orm Print Media (.*) is disabled$/ do |selection|
   stamps.mail.print_on.disabled? selection
 end
 
-Then /^[Ee]xpect Print form Print Media (.*) is enabled$/ do |selection|
+Then /^[Ee]xpect [Pp]rint [Ff]orm Print Media (.*) is enabled$/ do |selection|
   stamps.mail.print_on.enabled? selection
 end
 
-Then /^[Ee]xpect Print form Ship-To address is (.*)$/ do |address|
+Then /^[Ee]xpect [Pp]rint [Ff]orm Ship-To address is (.*)$/ do |address|
 
 end
-#todo major rework here
-Then /^[Ee]xpect Print form Print On Field is present$/ do
-  expect(stamps.mail.print_form.print_media).to be_present
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Pp]rint [Oo]n [Ff]ield is present$/ do
+  expect(stamps.mail.print_media.dropdown.present?).to be(true), "Print On doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Ship From Field is present$/ do
-  expect(stamps.mail.print_form.mail_from.textbox).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Mm]ail [Ff]rom Field is present$/ do
+  expect(stamps.mail.print_form.mail_from.textbox.present?).to be(true), "Mail From doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Ship To Link is present$/ do
-  expect(stamps.mail.print_form.mail_to.contacts.link).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Mm]ail [Tt]o [Ll]ink is present$/ do
+  expect(stamps.mail.print_form.mail_to.mail_to_link.present?).to be(true), "Mail To doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Ship To Country Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.mail_to_country.textbox).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Mm]ail [Tt]o [Cc]ountry [Ff]ield is present$/ do
+  expect(stamps.mail.print_form.mail_to.mail_to_country.dom_dd.present?).to be(true), "Mail To Country field doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Email Check Box is present$/ do
-  expect(stamps.mail.print_form.email_checkbox).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Ee]mail [Cc]heck [Bb]ox is present$/ do
+  expect(stamps.mail.print_form.mail_email.email_checkbox.present?).to be(true), "Email Check box doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Email Field is present$/ do
-  expect(stamps.mail.print_form.mail_to.email.textbox).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Ee]mail [Ff]ield is present$/ do
+  expect(stamps.mail.print_form.mail_email.email_textbox.present?).to be(true), "Email Texxtbox doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Pounds Field is present$/ do
-  expect(stamps.mail.print_form.weight.oz.textbox).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Pp]ounds [Ff]ield is present$/ do
+  expect(stamps.mail.print_form.mail_weight.mail_pounds.present?).to be(true), "Pound field doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Ounces Field is present$/ do
-  expect(stamps.mail.print_form.weight.lb.textbox).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Oo]unces [Ff]ield is present$/ do
+  expect(stamps.mail.print_form.mail_weight.mail_ounces.present?).to be(true), "Ounces field doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Weigh Button is present$/ do
-  expect(stamps.mail.weight.weigh_button).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Ww]eigh [Bb]utton is present$/ do
+  expect(stamps.mail.print_form.mail_weight.weigh.present?).to be(true), "Weigh button doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Auto Weigh check box is present$/ do
-  expect(stamps.mail.weight.auto_weigh).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm Auto Weigh check box is present$/ do
+  expect(stamps.mail.print_form.mail_weight.auto_weigh.present?).to be(true), "Weigh check box doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form service Field is present$/ do
-  expect(stamps.mail.print_form.service.textbox).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Ff]ield is present$/ do
+  expect(stamps.mail.print_form.mail_service.textbox.present?).to be(true), "Service field doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form service Price is present$/ do
-  expect(stamps.mail.print_form.service.price).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice [Pp]rice is present$/ do
+  expect(stamps.mail.print_form.mail_service.price.present?).to be(true), "Service price doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Insure For Field is present$/ do
+  expect(stamps.mail.print_form.mail_insure_for.insure_for_amt.present?).to be(true), "Insure For doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Insure For Price is present$/ do
+  expect(stamps.mail.print_form.mail_insure_for.price.present?).to be(true), "Insure For price doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Tracking Field is present$/ do
+  expect(stamps.mail.print_form.mail_tracking.textbox.present?).to be(true), "Tracking field doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Tracking Price is present$/ do
+  expect(stamps.mail.print_form.mail_tracking.price.present?).to be(true), "Tracking price doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Label Image Preview is present$/ do
+  stamps.mail.print_form.advanced_options.print_receipt.click
+  expect(stamps.mail.print_preview.outer_image_preview.left_image_preview.present?).to be(true), "Left Label image doesn't exists on Print form"
+  expect(stamps.mail.print_preview.inner_image_preview.right_image_preview.present?).to be(true), "Right Label image doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Hide Mail Value check box is present$/ do
+  expect(stamps.mail.print_form.advanced_options.hide_label_value.present?).to be(true), "Hide Mail Value check box doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Print Receipt check box is present$/ do
+  expect(stamps.mail.print_form.advanced_options.print_receipt.present?).to be(true), "Print Receipt check box doesn't exists on Print form"
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Print Reference Number check box is present$/ do
+  expect(stamps.mail.print_form.advanced_options.print_reference_number.present?).to be(true), "Print Receipt check box doesn't exists on Print form"
 end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Then /^[Ee]xpect Print form Insure For Field is present$/ do
-  expect(stamps.mail.shipping_labels.insure_for.textbox).to be_present
-end
-
-Then /^[Ee]xpect Print form Insure For Price is present$/ do
-  expect(stamps.mail.shipping_labels.insure_for.price).to be_present
-end
-
-Then /^[Ee]xpect Print form Tracking Field is present$/ do
-  expect(stamps.mail.shipping_labels.tracking.textbox).to be_present
-end
-
-Then /^[Ee]xpect Print form Tracking Price is present$/ do
-  expect(stamps.mail.shipping_labels.tracking.price).to be_present
-end
-
-Then /^[Ee]xpect Print form Label Image Preview is present$/ do
-  expect(stamps.mail.shipping_labels.form_view.starting_label.left_label).to be_present
-  expect(stamps.mail.shipping_labels.form_view.starting_label.right_label).to be_present
-end
-
-Then /^[Ee]xpect Print form Hide Mail Value check box is present$/ do
-  expect(stamps.mail.shipping_labels.form_view.hide_postage_value).to be_present
-end
-
-Then /^[Ee]xpect Print form Print Receipt check box is present$/ do
-  expect(stamps.mail.shipping_labels.form_view.print_receipt).to be_present
-end
-
-Then /^[Ee]xpect Print form Reset Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Reset Button is present$/ do
   toolbar=Toolbar.new(modal_param)
-  expect(toolbar.reset).to be_present
+  expect(toolbar.reset).to be(true), "Service price doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Settings Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Settings Button is present$/ do
   toolbar=Toolbar.new(modal_param)
-  expect(toolbar.settings).to be_present
+  expect(toolbar.settings).to be(true), "Service price doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Help Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Help Button is present$/ do
   toolbar=Toolbar.new(modal_param)
-  expect(toolbar.help).to be_present
+  expect(toolbar.help).to be(true), "Service price doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Reprint Banner is present$/ do
-
-end
-
-Then /^[Ee]xpect Print form System Notification Banner is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Reprint Banner is present$/ do
 
 end
 
-Then /^[Ee]xpect Print form Feedback Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm System Notification Banner is present$/ do
+
+end
+
+Then /^[Ee]xpect [Pp]rint [Ff]orm Feedback Button is present$/ do
   toolbar=Toolbar.new(modal_param)
-  expect(toolbar.feedback).to be_present
+  expect(toolbar.feedback).to be(true), "Service price doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Classic Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Classic Button is present$/ do
   toolbar=Toolbar.new(modal_param)
-  expect(toolbar.classic).to be_present
+  expect(toolbar.classic).to be(true), "Service price doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Mail Total is present$/ do
-  expect(stamps.mail.mail_toolbar.total).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm Mail Total is present$/ do
+  expect(stamps.mail.mail_toolbar.total.present?).to be(true), "Service price doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect Print form Print Sample Button is present$/ do
-  expect(stamps.mail.mail_toolbar.print_button).to be_present
+Then /^[Ee]xpect [Pp]rint [Ff]orm Print Sample Button is present$/ do
+  expect(stamps.mail.mail_toolbar.sample_button.present?).to be(true), "Service price doesn't exists on Print form"
 end
 
 Then /^[Ee]xpect Print form Print Button is present$/ do
-  expect(stamps.mail.mail_toolbar.sample_button).to be_present
+  expect(stamps.mail.mail_toolbar.print_button.present?).to be(true), "Service price doesn't exists on Print form"
 end

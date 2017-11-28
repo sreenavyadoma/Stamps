@@ -14,14 +14,14 @@ module Stamps
         @confirm_window=PrintModal::MailConfirmPrint.new(param)
         @please_wait=PrintModal::PleaseWait.new(param)
         @windows_print=Windows::PrintWindow.new(param.browser)
-        @sample_button=StampsField.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
+        @sample_button=StampsField.new browser.span(text: "Print Sample")
         @printing_problem=PrintingProblem.new(param)
         @insufficient_funds=MailInsufficientFunds.new(param)
         @print_quantity_warning=PrintQuantityWarning.new(param)
       end
 
       def total
-        (StampsField.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2)
+        (cache[:total].nil?||!cache[:total].present?)?cache[:total]=(StampsField.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2):cache[:total]
       end
 
       def print_button
@@ -61,7 +61,6 @@ module Stamps
         (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::StampsModal.new(param).extend(IncFeldsWindowTitle):cache[:incomplete_window_title]
       end
 
-#todo-Kaushal Incomplete printing error
       def print_postage_expecting_error
         incomplete_window_title.window_title.text if incomplete_window_title.window_title.present?
       end

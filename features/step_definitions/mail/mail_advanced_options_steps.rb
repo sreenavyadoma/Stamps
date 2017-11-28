@@ -116,7 +116,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Reference Number field is present$/ do
   step "Expect Advanced Options responds to Reference Number (reference_number)"
-  expect(stamps.mail.print_form.advanced_options.reference_number).to be_present, "Reference Number field is NOT present"
+  expect(stamps.mail.print_form.advanced_options.reference_number.present?).to be(true), "Reference Number field is NOT present"
 end
 
 Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|

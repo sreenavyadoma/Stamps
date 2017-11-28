@@ -37,6 +37,18 @@ module Stamps
         end
       end
 
+      module MailInsureFor
+        def mail_insure_for
+          (cache[:mail_insure_for].nil?||!cache[:mail_insure_for].present?)?cache[:mail_insure_for]=PrintFormInsureFor.new(param):cache[:mail_insure_for]
+        end
+      end
+
+      module MailTracking
+        def mail_tracking
+          (cache[:mail_tracking].nil?||!cache[:mail_tracking].present?)?cache[:mail_tracking]=PrintFormTracking.new(param):cache[:mail_tracking]
+        end
+      end
+
       module MailCustoms
         def mail_customs
           (cache[:mail_customs].nil?||!cache[:mail_customs].present?)?cache[:mail_customs]=PrintFormCustoms.new(param):cache[:mail_customs]
@@ -162,6 +174,8 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailInsureFor
+        include MailTracking
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
@@ -177,6 +191,8 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailInsureFor
+        include MailTracking
         include MailAdvancedOptions
         include PrintOnTextbox
 
@@ -199,6 +215,8 @@ module Stamps
         include MailWeight
         include MailEmail
         include MailService
+        include MailInsureFor
+        include MailTracking
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
@@ -206,10 +224,6 @@ module Stamps
 
         def present?
           print_on_textbox.text.include?('Shipping Label')
-        end
-
-        def mail_tracking
-          (cache[:mail_tracking].nil?||!cache[:mail_tracking].present?)?cache[:ship_date]=MailTracking.new(param):cache[:mail_tracking]
         end
 
         def mail_ship_date

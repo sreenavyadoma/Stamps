@@ -112,7 +112,7 @@ module Stamps
 
             def delete
               StampsField.new(browser.spans(css: "span[class*=sdc-icon-remove]")[@index])
-            end
+              end
 
             def shipping_Service
               ServiceMappingShippingService.new(param, @index)
