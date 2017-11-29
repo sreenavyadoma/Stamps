@@ -3,6 +3,10 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm is present$/ do
   expect(stamps.orders.single_order_details).to be_present, "Order Details form is not present"
 end
 
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm is not present$/ do
+  expect(stamps.orders.single_order_details.present?).to be(false), "Order Details form is present"
+end
+
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-From and Ship-From saved values are the same$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
