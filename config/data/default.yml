@@ -19,8 +19,11 @@ rates_test:
   rates_pmi_comm_base: PMI Comm Base
   rates_pmi_comm_plus: PMI Comm Plus
   rates_fcm_package: FCM Package
-  test_dir: \\jenkinsvm01\Public\share\share\rates_test_data\tests
-  results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results
+  #test_dir: \\jenkinsvm01\Public\share\share\rates_test_data\tests
+  #results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results
+  test_dir: c:\rates_test_data\tests
+  results_dir: c:\rates_test_data\results
+
 
 import_orders_test:
   import_orders_dir: \\jenkinsvm01\Public\automation\data
@@ -182,7 +185,7 @@ country_groups_PMI:
     1: Hong Kong|66
     2: Republic of (South) Korea|44
   group4:
-    1:  Albania|66
+    1:  Albania|44
     2:  Armenia|44
     3:  Azerbaijan|70
     4:  Belarus|66
