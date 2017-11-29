@@ -80,7 +80,7 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm Tracking Price is present$/ do
 end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm Label Image Preview is present$/ do
-  stamps.mail.print_form.advanced_options.print_receipt.click
+  stamps.mail.print_form.advanced_options.print_receipt.check
   expect(stamps.mail.print_preview.outer_image_preview.left_image_preview.present?).to be(true), "Left Label image doesn't exists on Print form"
   expect(stamps.mail.print_preview.inner_image_preview.right_image_preview.present?).to be(true), "Right Label image doesn't exists on Print form"
 end
