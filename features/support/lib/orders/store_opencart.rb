@@ -1,12 +1,6 @@
 module Stamps
   module Orders
     module Stores
-      module OpenCartCache
-        def cache
-          @cache ||= {}
-        end
-      end
-
       module ShipStationUpgradeMessage
         def free_upgrade_message
           (cache[:free_upgrade_message].nil?||!cache[:free_upgrade_message].present?)?cache[:free_upgrade_message]= StampsField.new(browser.span(text: "Requires Free Upgrade")):cache[:free_upgrade_message]
@@ -22,8 +16,6 @@ module Stamps
       end
 
       class OpenCart < Browser::StampsModal
-        include OpenCartCache
-
         def add_advanced_shipping_feature
           AddAdvancedShippingFeatures.new(param)
         end
