@@ -357,6 +357,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
     @row=row
     test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]]="group#{group}"
     begin
+      #next if row_number < 50
       if row_number > 0
         test_config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
 
@@ -479,6 +480,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             step "set Print form Ounces to 0"
           end
 
+
           expectation_f=(test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:group]].to_f * 100).round / 100.0
           total_ship_cost_f=(test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0
 
@@ -518,7 +520,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[@rate_sheet_columns[:status]]=="Failed"
+        #if row[@rate_sheet_columns[:status]]=="Failed"
+        if row[@rate_sheet_columns[:status]]!="Passed"
           @failed_test_count +=1
           test_config.logger.step "Group #{group} - Row #{row_number} Failed"
         end
