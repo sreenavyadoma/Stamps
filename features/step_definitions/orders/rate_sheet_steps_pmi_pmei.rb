@@ -520,8 +520,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        #if row[@rate_sheet_columns[:status]]=="Failed"
-        if row[@rate_sheet_columns[:status]]!="Passed"
+        if row[@rate_sheet_columns[:status]]=="Failed" || row[@rate_sheet_columns[:error_msg]]!=""
+        #if row[@rate_sheet_columns[:status]]!="Passed"
           @failed_test_count +=1
           test_config.logger.step "Group #{group} - Row #{row_number} Failed"
         end
