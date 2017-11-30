@@ -139,7 +139,7 @@ Then /^[Dd]elete Customs form Associated Item (\d+)$/ do |item_number|
   if modal_param.web_app==:orders
     field=stamps.orders.single_order_details.customs.edit_customs_form.associated_items
   else
-    field=stamps.mail.print_form.mail_customs.edit_form.associated_items
+    field=stamps.mail.print_form.mail_customs.edit_customs_form.associated_items
   end
   if field.size > 1
     field.item_number(item_number.to_i).delete.click_while_present

@@ -7,6 +7,7 @@ Feature: International Shipping BVT
   Scenario: International Shipping
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
+    Then show Advanced Options
     Then set Advanced Options Mail Date to today
     Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
