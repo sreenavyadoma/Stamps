@@ -1,7 +1,6 @@
 module Stamps
   module Orders
     module Stores
-
       class LookingForShipStaion < Browser::StampsModal
 
         def title
