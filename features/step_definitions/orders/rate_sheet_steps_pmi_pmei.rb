@@ -357,7 +357,6 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
     @row=row
     test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]]="group#{group}"
     begin
-      #next if row_number < 50
       if row_number > 0
         test_config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
 
@@ -520,8 +519,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[@rate_sheet_columns[:status]]=="Failed" || row[@rate_sheet_columns[:error_msg]]!=""
-        #if row[@rate_sheet_columns[:status]]!="Passed"
+         if row[test_param[:result_sheet_columns][:status]]!="Passed"
           @failed_test_count +=1
           test_config.logger.step "Group #{group} - Row #{row_number} Failed"
         end
