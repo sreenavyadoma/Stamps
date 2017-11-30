@@ -67,7 +67,7 @@ Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|)
     when /date/
       test_param[:mail_date]=value
     when /today plus/
-      test_param[:mail_date]=(Date.today+value).strftime("%m/%d/%Y")
+      test_param[:mail_date]=(Date.today + value.to_i).strftime("%m/%d/%Y")
     when /today/
       test_param[:mail_date]=(Date.today).strftime("%m/%d/%Y")
     when /tomorrow/

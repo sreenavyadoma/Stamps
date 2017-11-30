@@ -168,6 +168,18 @@ module Stamps
           @return_receipt_merchandise
         end
       end
+
+      class ValueMustBeShown < Browser::StampsModal
+        def continue
+          (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(
+              browser.span(text: "Continue")):cache[:continue]
+        end
+
+        def cancel
+          (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(
+              browser.span(text: "Cancel")):cache[:cancel]
+        end
+      end
     end
   end
 end

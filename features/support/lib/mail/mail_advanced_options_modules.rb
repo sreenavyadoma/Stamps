@@ -12,6 +12,10 @@ module Stamps
           (cache[:xtra_serv_panel].nil?||!cache[:xtra_serv_panel].present?)?cache[:xtra_serv_panel]=PrintFormPanel::MailExtraServices.new(param):cache[:xtra_serv_panel]
         end
 
+        def value_must_be_shown
+          (cache[:value_must_be_shown_popup].nil?||!cache[:value_must_be_shown_popup].present?)?cache[:value_must_be_shown_popup]=PrintFormPanel::ValueMustBeShown.new(param):cache[:value_must_be_shown_popup]
+        end
+
         def extra_services
           20.times do
             return xtra_serv_panel if xtra_serv_panel.present?
