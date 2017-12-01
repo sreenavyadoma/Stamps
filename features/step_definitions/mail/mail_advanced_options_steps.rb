@@ -122,7 +122,14 @@ end
 Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|
   step "Expect Advanced Options responds to Reference Number (reference_number)"
   expectation=test_param[:reference_number] if expectation.nil?
+  expectation="" if expectation.nil?
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), "Advanced Options Reference Number is incorrect"
+end
+
+#this step confirms that there is no text in the Reference Number field
+Then /^[Ee]xpect Advanced Options Reference Number is blank$/ do
+  step "Expect Advanced Options responds to Reference Number (reference_number)"
+  expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(""), "Advanced Options Reference Number is incorrect"
 end
 
 Then /^[Ee]xpect Advanced Options Cost Code Field is present$/ do
