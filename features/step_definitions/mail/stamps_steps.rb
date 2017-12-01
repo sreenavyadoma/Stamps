@@ -46,6 +46,23 @@ Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
   stamps.mail.print_form.quantity.set(test_param[:quantity])
 end
 
+
+Then /^[Ee]xpect Print form Domestic Address field displays last printed contact$/ do
+  20.times do
+    stamps.mail.print_form.mail_to.blur_out  #blurs out domestic address field to make sure it can be read correctly
+    sleep(0.5);
+    stamps.mail.print_form.mail_to.blur_out
+    sleep(0.5);
+    reformatted_address = (stamps.mail.print_form.mail_to.dom_mail_address.textarea.text).gsub(/ \n/,"\n").gsub(",","")  #remove commas and unnecessary spaces from address that appears iin domestic address field
+    uncleansed_address = reformatted_address.slice(0..-6) #remove last 4 digits from zip code
+    break if uncleansed_address==test_param[:address].gsub(/ \n/,"\n")  #compare reformatted address from domestic address field to the last address used for printing postage
+  end
+  reformatted_address = (stamps.mail.print_form.mail_to.dom_mail_address.textarea.text).gsub(/ \n/,"\n").gsub(",","")
+  uncleansed_address = reformatted_address.slice(0..-6)
+  expect(uncleansed_address).to eql test_param[:address].gsub(/ \n/,"\n")
+  test_config.logger.step 'Address Match Confirmed'
+end
+
 Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
   20.times do
     stamps.mail.print_form.mail_to.blur_out

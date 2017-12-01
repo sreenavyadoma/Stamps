@@ -13,7 +13,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
     Then set Order Details form service to PMEI Package
     Then set Order Details form Weight to 2 lb 0 oz
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Gift
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 2, Made In United States, Tariff 2

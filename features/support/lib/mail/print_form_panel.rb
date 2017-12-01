@@ -13,6 +13,12 @@ module Stamps
         end
       end
 
+      module MailEmail
+        def mail_email
+          (cache[:mail_email].nil?||!cache[:mail_email].present?)?cache[:mail_email]=PrintFormEmail.new(param):cache[:mail_email]
+        end
+      end
+
       module MailWeight
         def mail_weight
           (cache[:mail_weight].nil?||!cache[:mail_weight].present?)?cache[:mail_weight]=PrintFormWeight.new(param):cache[:mail_weight]
@@ -28,6 +34,18 @@ module Stamps
       module MailService
         def mail_service
           (cache[:mail_service].nil?||!cache[:mail_service].present?)?cache[:mail_service]=PrintFormService.new(param):cache[:mail_service]
+        end
+      end
+
+      module MailInsureFor
+        def mail_insure_for
+          (cache[:mail_insure_for].nil?||!cache[:mail_insure_for].present?)?cache[:mail_insure_for]=PrintFormInsureFor.new(param):cache[:mail_insure_for]
+        end
+      end
+
+      module MailTracking
+        def mail_tracking
+          (cache[:mail_tracking].nil?||!cache[:mail_tracking].present?)?cache[:mail_tracking]=PrintFormTracking.new(param):cache[:mail_tracking]
         end
       end
 
@@ -56,6 +74,14 @@ module Stamps
         end
       end
 
+      module StampsPrintPreview
+        def buy_more_labels
+          @buy_more_labels = StampsField.new(browser.span(text: "Buy More Labels")) if @buy_more_labels.nil?||!@buy_more_labels.present?
+          expect(@buy_more_labels).to be_present
+          @buy_more_labels
+        end
+      end
+
       module MailStamps
         include MailFrom
         include MailTo
@@ -63,7 +89,8 @@ module Stamps
         include MailService
         include MailAdvancedOptions
         include PrintOnTextbox
-        
+        include StampsPrintPreview
+
         def present?
           print_on_textbox.text.include?('Stamps')
         end
@@ -147,6 +174,8 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailInsureFor
+        include MailTracking
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
@@ -162,6 +191,8 @@ module Stamps
         include MailTo
         include MailWeight
         include MailService
+        include MailInsureFor
+        include MailTracking
         include MailAdvancedOptions
         include PrintOnTextbox
 
@@ -182,7 +213,10 @@ module Stamps
         include MailFrom
         include MailTo
         include MailWeight
+        include MailEmail
         include MailService
+        include MailInsureFor
+        include MailTracking
         include MailCustoms
         include MailAdvancedOptions
         include MailDimensions
@@ -190,10 +224,6 @@ module Stamps
 
         def present?
           print_on_textbox.text.include?('Shipping Label')
-        end
-
-        def mail_tracking
-          (cache[:mail_tracking].nil?||!cache[:mail_tracking].present?)?cache[:ship_date]=MailTracking.new(param):cache[:mail_tracking]
         end
 
         def mail_ship_date

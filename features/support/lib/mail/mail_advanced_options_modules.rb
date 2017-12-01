@@ -12,6 +12,10 @@ module Stamps
           (cache[:xtra_serv_panel].nil?||!cache[:xtra_serv_panel].present?)?cache[:xtra_serv_panel]=PrintFormPanel::MailExtraServices.new(param):cache[:xtra_serv_panel]
         end
 
+        def value_must_be_shown
+          (cache[:value_must_be_shown_popup].nil?||!cache[:value_must_be_shown_popup].present?)?cache[:value_must_be_shown_popup]=PrintFormPanel::ValueMustBeShown.new(param):cache[:value_must_be_shown_popup]
+        end
+
         def extra_services
           20.times do
             return xtra_serv_panel if xtra_serv_panel.present?
@@ -30,8 +34,8 @@ module Stamps
       module AdvOptCostCode
         def cost_code
           (cache[:cost_code].nil?||!cache[:cost_code].present?)?cache[:cost_code]=StampsCombobox.new(
-              browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"),
-              browser.divs(css: "div[id^=costcodesdroplist-][id$=costcodesdroplist-1226-trigger-picker]"),
+              browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"),  #fixed typo in text field id
+              browser.divs(css: "div[id^=costcodesdroplist-][id$=trigger-picker]"),
               :li,
               0):cache[:cost_code]
         end
@@ -47,7 +51,7 @@ module Stamps
         def hide_label_value
           (cache[:hide_label_value].nil?||!cache[:hide_label_value].present?)?cache[:hide_label_value]=StampsCheckbox.new(
               browser.span(css: "[id^=printPreviewPanel-] div:nth-child(1)>div>div>span"),
-              browser.div(css: "[id^=printPreviewPanel-] [class*=fieldcontainer]>div>div>div>div>div:nth-child(1)"),
+              browser.div(text: "Hide Label Value"),
               "class",
               "checked"):cache[:hide_label_value]
         end
@@ -55,19 +59,19 @@ module Stamps
 
       module AdvOptPrintReferenceNumber
         def print_reference_number
-          (cache[:reference_number].nil?||!cache[:reference_number].present?)?cache[:reference_number]=StampsCheckbox.new(
-              browser.span(css: "[id^=printPreviewPanel-] [class*=fieldcontainer]>div>div>div>div>div:nth-child(3)>div>div>span"),
-              browser.div(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(3)"),
+          (cache[:print_reference_number].nil?||!cache[:print_reference_number].present?)?cache[:print_reference_number]=StampsCheckbox.new(
+              browser.span(css: "[id^=printPreviewPanel-] div:nth-child(3)>div>div>span"),
+              browser.div(text: "Print Reference #"),
               "class",
-              "checked"):cache[:reference_number]
+              "checked"):cache[:print_reference_number]
         end
       end
 
       module AdvOptPrintReceipt
         def print_receipt
           (cache[:print_receipt].nil?||!cache[:print_receipt].present?)?cache[:print_receipt]=StampsCheckbox.new(
-              browser.span(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)>div>div>span"),
-              browser.div(css: "[id^=printPreviewPanel-] div[class*=fieldcontainer]>div>div>div>div>div:nth-child(2)"),
+              browser.span(css: "[id^=printPreviewPanel-] div:nth-child(2)>div>div>span"),
+              browser.div(text: "Print Receipt"),
               "class",
               "checked"):cache[:print_receipt]
         end

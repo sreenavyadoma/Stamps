@@ -108,7 +108,7 @@ Feature:  BVT tests for Orders
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details form Ounces to 4
     Then set Order Details form service to FCMI Large Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs form Package Contents to Commercial Sample
     Then set Customs form Package Contents to Gift
@@ -343,7 +343,7 @@ Feature:  BVT tests for Orders
     Then expect Orders Grid service is correct
 
   # Edit the customs form
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
 
     Then set Customs form Package Contents to Document
@@ -412,7 +412,7 @@ Feature:  BVT tests for Orders
 
     Then expect Order Details form Insure-For is correct
     Then expect Order Details form Insure-For Cost is correct
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then Pause for 2 second
     Then expect Customs form Package Contents is Commercial Sample
     Then expect Customs form License Number is correct

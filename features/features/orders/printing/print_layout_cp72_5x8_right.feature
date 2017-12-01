@@ -12,7 +12,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - right side
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
     Then set Order Details form service to PMEI Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement

@@ -16,7 +16,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | FCMI Lg Env-Flat | 5.5x8.5 Right Side 2 | random           | random           | random | random  | random      | Croatia | random  | random  |
     Then set Order Details form service to FCMI Large Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -28,7 +28,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | FCMI Pkg-Thick Env | 5.5x8.5 Right Side 1 | random           | random           | random | random  | random      | India | random  | random  |
     Then set Order Details form service to FCMI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -53,7 +53,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | PMEI MFR Box | SDC-1200  | 234 Laurier Avenue West  | random     | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details form Weight to 1 lb 1 oz
     Then set Order Details form service to FCMI Large Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -66,7 +66,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | FCMI Letter | SDC-1200  | random           | random           | random | random  | random      | Costa Rica | random  | random  |
     Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 1 oz
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -100,7 +100,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then on Order Details form, Delete Item 1
     Then on Order Details form, Delete Item 2
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -123,7 +123,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | PMI PFR Envelope | 8.5x11 Right Side 2 | random           | random           | random | random  | random      | Australia | random  | random  |
     Then set Order Details form service to PMI Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -135,7 +135,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | PMI LFR Envelope | 8.5x11 Right Side 1 | random           | random           | random | random  | random      | Japan | random  | random  |
     Then set Order Details form service to PMI Legal Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -160,7 +160,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | PMI Pkg-Flat-Env | SDC-1200  | random           | random           | random | random  | random      | Australia | random  | random  |
     Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -172,7 +172,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
       | PMI FR Envelope | SDC-1200  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement

@@ -11,13 +11,19 @@ end
 Then /^[Ss]earch [Mm]arketplace for [Ss]tore [Nn]ame (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  stamps.orders.marketplace.search_by_name.set(test_param[:username]=str)
+  stamps.orders.marketplace.search_by_name.set(test_param[:store_name]=str)
 end
 
 Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
   expect(stamps.orders.marketplace.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
+end
+
+Then /^[Aa]dd [Mm]arketplace [Ss]hip[Ss]tation [Ss]tore (.*)$/ do |str|
+  step "validate store name #{str}"
+  step "expect Marketplace modal is present"
+  expect(stamps.orders.marketplace.dataview.add_advanced_feature(str)).to eql("Add Advanced Shipping Features!")
 end
 
 Then /^validate store name (.*)$/ do |str|
@@ -38,7 +44,6 @@ Then /^[Ee]xpect [Mm]arketplace [Dd]ataview [Cc]ount is (greater|less|equal) (?:
       #ignore
   end
 end
-
 #
 # Then /^[Ss]elect Paypal on Marketplace modal$/ do
 #   step "expect Paypal is on Marketplace modal"
@@ -98,3 +103,11 @@ Then /^Marketplace: Close Modal$/ do
   stamps.orders.marketplace.close
 end
 
+#todo-codereview ORDERSAUTO-3282
+Then /^[Ee]xpect [Mm]arketplace [Mm]odal [Rr]equires [Ff]ree [Uu]pgrade [Mm]essage [Pp]resent in (.*)$/ do |str|
+  expect(stamps.orders.marketplace.dataview.requires_upgrade_msg(str)).to be_present, " Requires Free Upgrade Message is NOT present"
+end
+
+Then /^[Ee]xpect [Mm]arketplace [Mm]odal [Aa]vailable in [Ss]hipStation [Mm]essage [Pp]resent in (.*)$/ do |str|
+  expect(stamps.orders.marketplace.dataview.available_shipstation_msg(str)).to be_present, " Available in ShipStation Message is NOT present"
+end

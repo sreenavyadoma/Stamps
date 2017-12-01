@@ -12,6 +12,10 @@ Then /^[Ss]et Print form Mail-From to (.*)$/ do |value|
   stamps.mail.print_form.mail_from.select(test_param[:ship_from]=value)
 end
 
+Then /^[Cc]heck Print form [Ee]mail [Tt]racking checkbox$/ do
+  stamps.mail.print_form.mail_email.email_checkbox.click
+end
+
 Then /^[Ss]et Print form [Pp]ounds to (\d+)$/ do |pounds|
   stamps.mail.print_form.mail_weight.mail_pounds.set(test_param[:pounds]=pounds)
 end
@@ -39,6 +43,10 @@ Then /^[Ee]xpect Print form height is (?:correct|(\d+))$/ do |str|
   expect(stamps.mail.print_form.dimensions.height.text.to_i).to eql(((str.nil?)?test_param[:height] : str).to_i)
 end
 
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Ss]ervice (.*) is not present in dropdown list$/ do |service|
+  expect(stamps.mail.print_form.mail_service.select_service(test_param[:service]=service).present?).to be(false)
+end
+
 Then /^[Ss]elect [Pp]rint [Ff]orm [Ss]ervice (.*)$/ do |str|
   step "blur out on print form"
   stamps.mail.print_form.mail_service.select_service(test_param[:service]=str)
@@ -57,9 +65,6 @@ When /^[Cc]lick Print Sample button on Print form$/ do
   @print_window=stamps.mail.mail_toolbar.print_sample
 end
 
-Then /^[Cc]lick Search Contacts close [Bb]utton$/ do
-  stamps.mail.print_form.mail_to.mail_to_link.click.close
-end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   20.times do # work around for rating problem
@@ -78,8 +83,9 @@ Then /^[Ss]ave Print Form Mail From$/ do
   test_param[:ship_from]=stamps.mail.print_form.mail_from.textbox.text
 end
 
-
-
+Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do
+  stamps.mail.print_preview.buy_more_labels.link.click
+end
 
 
 

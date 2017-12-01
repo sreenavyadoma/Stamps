@@ -14,7 +14,7 @@ Feature: Print 1 Intl CP72 label
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -32,7 +32,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then set Customs form ITN Number to random
@@ -54,7 +54,7 @@ Feature: Print 1 Intl CP72 label
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
     Then set Order Details form service to PMEI Padded Flat Rate Envelope
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -73,7 +73,7 @@ Feature: Print 1 Intl CP72 label
       | PMI LFRB |  5.5x8.5 Left Side | random       | random           | random | random  | random      | Australia | random  | random  |
     Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Gift
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -93,7 +93,7 @@ Feature: Print 1 Intl CP72 label
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set Order Details form service to PMI Flat Rate Envelope
     Then set Order Details form Weight to 1 lb 14 oz
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 1, Made In United States, Tariff 2
@@ -145,7 +145,7 @@ Feature: Print 1 Intl CP72 label
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
     Then set Order Details form service to PMI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Document
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -166,7 +166,7 @@ Feature: Print 1 Intl CP72 label
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
     Then set Order Details form service to PMI Large Flat Rate Box
     Then set Order Details form Weight to 2 lb 0 oz
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 2, Made In United States, Tariff 2
@@ -214,7 +214,7 @@ Feature: Print 1 Intl CP72 label
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
     Then set Order Details form service to PMEI Package
     Then set Order Details form Ounces to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -235,7 +235,7 @@ Feature: Print 1 Intl CP72 label
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then set Order Details form Weight to 3 lb 2 oz
     Then set Order Details form service to PSG Package
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Other
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -254,7 +254,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details form Weight to 1 lb 2 oz
     Then set Order Details form service to MM Package
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Other
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 25, Made In United States, Tariff 10
     Then set Customs form More Info to random
@@ -277,7 +277,7 @@ Feature: Print 1 Intl CP72 label
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set Order Details form Weight to 2 lb 1 oz
     Then set Order Details form service to PSG Package
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement

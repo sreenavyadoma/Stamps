@@ -7,20 +7,18 @@ Feature: International Shipping BVT
   Scenario: International Shipping
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
+    Then show Advanced Options
     Then set Advanced Options Mail Date to today
     Then set Print form Ship-To to international address
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | random | random  | random           | random            | random | random   | random      | Italy | random  |
     Then set Print form Ounces to 3
-    Then select Print form service FCMI Package
+    Then select Print form service PMI Flat Rate Envelope
     Then click Print form Edit Customs Form button
 
     Then expect Customs form I agree to the USPS Privacy Act Statement is unchecked
-
     Then set Customs form Package Contents to Document
-
     Then set Customs form More Info to some random string
-
     Then set Customs form Package Contents to Commercial Sample
     Then expect Customs form Package Contents is Commercial Sample
     Then set Customs form License Number to a random string
