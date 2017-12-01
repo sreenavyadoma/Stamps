@@ -244,6 +244,10 @@ details_non_integer_lb: --tags @details_non_integer_lb --guess DEBUG=false JENKI
 grid_order_status: --tags @grid_order_status --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 tooltips_improvements: --tags @tooltips_improvements --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
+# --------------------------  ORDERS Bugs
+orders_deselect_fails: --tags @orders_deselect_fails --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+
+
 # --------------------------  ORDERS BVT
 bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bvt_ambigious_address: --tags @bvt_ambigious_address --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders

@@ -1521,6 +1521,11 @@ Cucumber::Rake::Task.new(:orders_grid_tests) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:orders_deselect_fails) do |t|
+  t.profile = 'orders_deselect_fails'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:grid_tracking) do |t|
   t.profile = 'grid_tracking'
   t.cucumber_opts = "-p cuke_reports"
