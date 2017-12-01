@@ -1,4 +1,4 @@
-Feature: Mail Contacts Modal Bugs
+Feature: Ordersauto_3243 Adding Contact from Mail should not Add Reference # Or Cost Code
 
   Background:
     Given a valid user is signed in to Web Apps
