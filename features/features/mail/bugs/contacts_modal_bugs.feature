@@ -1,10 +1,10 @@
-Feature: Ordersauto_3243 Adding Contact from Mail should not Add Reference # Or Cost Code
+Feature: Mail Contacts Modal Bugs
 
   Background:
     Given a valid user is signed in to Web Apps
 
   @mail_bug_ordersauto_3243
-  Scenario: Ordersauto_3243 Adding Contact from Mail should not Add Reference # Or Cost Code
+  Scenario: ORDERSAUTO_3243 Adding Contact from Mail should not Add Reference # Or Cost Code
     Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
