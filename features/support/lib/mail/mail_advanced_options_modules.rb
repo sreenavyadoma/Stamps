@@ -30,7 +30,7 @@ module Stamps
       module AdvOptCostCode
         def cost_code
           (cache[:cost_code].nil?||!cache[:cost_code].present?)?cache[:cost_code]=StampsCombobox.new(
-              browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"),
+              browser.text_fields(css: "input[id^=costcodesdroplist-][id$=-inputEl]"),  #fixed typo in text field id
               browser.divs(css: "div[id^=costcodesdroplist-][id$=trigger-picker]"),
               :li,
               0):cache[:cost_code]

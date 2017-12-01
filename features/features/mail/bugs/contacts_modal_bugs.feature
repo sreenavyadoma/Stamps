@@ -19,9 +19,9 @@ Feature: Mail Contacts Modal Bugs
 
     Then click Print form Mail To link
     Then Expect Contacts Modal is Present
-    Then Search Contacts Modal for Recently added Contact
-    Then Select Recently Added Contact
-    Then expect Print form Domestic Address field displays recently added contact
+    Then Search Contacts Modal for last printed contact
+    Then Select Recently Printed Contact
+    Then expect Print form Domestic Address field displays last printed contact
     Then show Advanced Options
     Then Expect Advanced Options Reference Number is blank
     Then Expect Advanced Options Cost Code is None

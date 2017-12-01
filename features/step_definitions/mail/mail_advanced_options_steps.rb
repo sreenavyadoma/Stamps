@@ -126,6 +126,7 @@ Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |exp
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), "Advanced Options Reference Number is incorrect"
 end
 
+#this step confirms that there is no text in the Reference Number field
 Then /^[Ee]xpect Advanced Options Reference Number is blank$/ do
   step "Expect Advanced Options responds to Reference Number (reference_number)"
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(""), "Advanced Options Reference Number is incorrect"

@@ -29,9 +29,6 @@ end
 
 When /^[Cc]lick [Mm]ail [Pp]rint modal Print [Bb]utton$/ do
   stamps.mail.mail_toolbar.print_postage.print
-  if !test_param[:address].nil?
-    test_param[:last_printed_address] = test_param[:address]
-  end
 end
 
 Then /^[Ss]et [Mm]ail [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
