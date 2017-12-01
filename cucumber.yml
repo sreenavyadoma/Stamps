@@ -490,4 +490,4 @@ mail_print_envelope_10_return_address: --tags  @mail_print_envelope_10_return_ad
 mail_print_envelope_10_delivery_address: --tags  @mail_print_envelope_10_delivery_address --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_print_envelope_10_postage: --tags  @mail_print_envelope_10_postage --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
-mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail USR=scmtqry7p PW=pass111 PRINTER=factory
+mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
