@@ -46,6 +46,22 @@ Then /^[Ss]et Print form Quantity to (\d+)$/ do |value|
   stamps.mail.print_form.quantity.set(test_param[:quantity])
 end
 
+Then /^[Ee]xpect Print form Domestic Address field displays recently added contact$/ do
+  20.times do
+    stamps.mail.print_form.mail_to.blur_out
+    sleep(0.5);
+    stamps.mail.print_form.mail_to.blur_out
+    sleep(0.5);
+    reformatted_address = (stamps.mail.print_form.mail_to.dom_mail_address.textarea.text).gsub(/ \n/,"\n").gsub(",","")
+    uncleansed_address = reformatted_address.slice(0..-6)
+    break if uncleansed_address==test_param[:last_printed_address].gsub(/ \n/,"\n")
+  end
+  reformatted_address = (stamps.mail.print_form.mail_to.dom_mail_address.textarea.text).gsub(/ \n/,"\n").gsub(",","")
+  uncleansed_address = reformatted_address.slice(0..-6)
+  expect(uncleansed_address).to eql test_param[:last_printed_address].gsub(/ \n/,"\n")
+  test_config.logger.step 'Address Cleansed -- Expected Result Confirmed'
+end
+
 Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
   20.times do
     stamps.mail.print_form.mail_to.blur_out

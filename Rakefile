@@ -2950,3 +2950,15 @@ Cucumber::Rake::Task.new(:mail_bvt_address_cleansing) do |t|
   t.profile = 'mail_bvt_address_cleansing'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:mail_bvt_address_cleansing) do |t|
+  t.profile = 'mail_bvt_address_cleansing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_bug_ordersauto_3243) do |t|
+  t.profile = 'mail_bug_ordersauto_3243'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
