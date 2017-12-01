@@ -1157,6 +1157,18 @@ Cucumber::Rake::Task.new(:paypal) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:stores_shipstation_preupgrade) do |t|
+  t.profile = 'stores_shipstation_preupgrade'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+Cucumber::Rake::Task.new(:stores_shipstation_postupgrade) do |t|
+  t.profile = 'stores_shipstation_postupgrade'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 Cucumber::Rake::Task.new(:big_commerce) do |t|
   t.profile = 'big_commerce'
   t.cucumber_opts = "-p cuke_reports"
@@ -1509,6 +1521,11 @@ Cucumber::Rake::Task.new(:orders_grid_tests) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:orders_deselect_fails) do |t|
+  t.profile = 'orders_deselect_fails'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:grid_tracking) do |t|
   t.profile = 'grid_tracking'
   t.cucumber_opts = "-p cuke_reports"
@@ -1857,9 +1874,15 @@ end
 
 # MAIL
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
-
-
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
@@ -1873,6 +1896,21 @@ end
 
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_stamps_l_ml_unable_to_get_media_mail_bug) do |t|
+  t.profile = 'mail_stamps_l_ml_unable_to_get_media_mail_bug'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_email_required_bug) do |t|
+  t.profile = 'mail_email_required_bug'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -2045,6 +2083,12 @@ Cucumber::Rake::Task.new(:mail_forgot_password) do |t|
   t.profile = 'mail_forgot_password'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:mail_buy_more_labels) do |t|
+  t.profile = 'mail_buy_more_labels'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_credentials) do |t|
   t.profile = 'mail_credentials'
   t.cucumber_opts = "-p cuke_reports"

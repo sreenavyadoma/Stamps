@@ -14,7 +14,7 @@ Feature: Print 1 Intl CN22 label on 5.5x8.5 for EDD country - left side
     Then set Order Details form service to PMI Small Flat Rate Box
     Then set Order Details form Ounces to 1
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement

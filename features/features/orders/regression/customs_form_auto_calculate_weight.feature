@@ -23,7 +23,7 @@ Feature: Auto-Calculate Customs Form Weight
     Then set Order Details form ID to random
     Then set Order Details form Description to random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then add Customs form Associated Item 1
     Then set Customs form Associated Item 1 Description to item 1

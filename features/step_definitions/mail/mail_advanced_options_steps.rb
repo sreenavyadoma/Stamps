@@ -67,7 +67,7 @@ Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|)
     when /date/
       test_param[:mail_date]=value
     when /today plus/
-      test_param[:mail_date]=(Date.today+value).strftime("%m/%d/%Y")
+      test_param[:mail_date]=(Date.today + value.to_i).strftime("%m/%d/%Y")
     when /today/
       test_param[:mail_date]=(Date.today).strftime("%m/%d/%Y")
     when /tomorrow/
@@ -116,7 +116,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Reference Number field is present$/ do
   step "Expect Advanced Options responds to Reference Number (reference_number)"
-  expect(stamps.mail.print_form.advanced_options.reference_number).to be_present, "Reference Number field is NOT present"
+  expect(stamps.mail.print_form.advanced_options.reference_number.present?).to be(true), "Reference Number field is NOT present"
 end
 
 Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|

@@ -199,7 +199,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
     Then close Customs Information form
     Then click Orders Toolbar Print button
@@ -218,7 +218,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Width to 1
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

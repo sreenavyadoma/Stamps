@@ -247,7 +247,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -268,7 +268,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -521,7 +521,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -542,7 +542,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -794,7 +794,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -815,7 +815,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -1068,7 +1068,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -1089,7 +1089,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -1342,7 +1342,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -1363,7 +1363,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -1616,7 +1616,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender
@@ -1637,7 +1637,7 @@ Feature: 150 orders
 
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
 
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
 
     Then set Customs form Package Contents to Merchandise
     Then set Customs form Non-Delivery Options to Return to sender

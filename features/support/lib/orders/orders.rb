@@ -28,6 +28,10 @@ module Stamps
         (cache[:multi_order_details].nil?||!cache[:multi_order_details].present?)?cache[:multi_order_details]=Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order_details]
       end
 
+      def stores
+        (cache[:stores].nil?||!cache[:stores].present?)?cache[:stores]=StampsModal.new(param).extend(Orders::Stamps::MarketPlaceStoreModals):cache[:stores]
+      end
+
       def styles
         (cache[:styles].nil?||!cache[:styles].present?)?cache[:styles]=PageStyles.new(param):cache[:styles]
       end

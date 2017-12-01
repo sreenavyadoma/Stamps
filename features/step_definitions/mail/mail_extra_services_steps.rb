@@ -29,6 +29,11 @@ Then /^[Ss]et Extra Services Security to (.*)$/ do |str|
   stamps.mail.print_form.advanced_options.extra_services.security.select(str)
 end
 
+Then /^[Cc]lick value must be shown window Continue button$/ do ||
+  expect(stamps.mail.print_form.advanced_options.value_must_be_shown.continue).to be_present, ""
+  stamps.mail.print_form.advanced_options.value_must_be_shown.continue.click
+end
+
 Then /^[Ee]xpect Extra Services Security Price to be (\d*.?\d+)$/ do |expectation|
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.security_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.security_price).to eql(expectation.to_f.round(2))

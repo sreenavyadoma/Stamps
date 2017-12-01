@@ -14,6 +14,10 @@ module Stamps
       def rakuten
         (cache[:rakuten].nil?||!cache[:rakuten].present?)?cache[:rakuten]=Stamps::Orders::Stores::Rakuten.new(param):cache[:rakuten]
       end
+
+      def shipstation
+        (cache[:shipstation].nil?||!cache[:shipstation].present?)?cache[:shipstation]=Stamps::Orders::Stores::OpenCart.new(param):cache[:shipstation]
+      end
     end
 
     module StampsOrdersModals

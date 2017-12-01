@@ -2,7 +2,7 @@ module Stamps
   module Mail
     #todo-Rob too many instance variables, fix it.
     class MailToolbar < Browser::StampsModal
-      include Stamps::Mail::MailModals::PrintIncompleteFields
+      #include Stamps::Mail::MailModals::PrintIncompleteFields
 
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
                   :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning
@@ -14,14 +14,14 @@ module Stamps
         @confirm_window=PrintModal::MailConfirmPrint.new(param)
         @please_wait=PrintModal::PleaseWait.new(param)
         @windows_print=Windows::PrintWindow.new(param.browser)
-        @sample_button=StampsField.new browser.a(css: "a[class*=sdc-printpanel-printsamplebtn]")
+        @sample_button=StampsField.new browser.span(text: "Print Sample")
         @printing_problem=PrintingProblem.new(param)
         @insufficient_funds=MailInsufficientFunds.new(param)
         @print_quantity_warning=PrintQuantityWarning.new(param)
       end
 
       def total
-        (StampsField.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2)
+        (cache[:total].nil?||!cache[:total].present?)?cache[:total]=(StampsField.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2):cache[:total]
       end
 
       def print_button
@@ -58,12 +58,11 @@ module Stamps
       end
 
       def incomplete_window_title
-        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::StampsModal.new(param).extend(Stamps::Mail::MailModals::PrintIncompleteFields):cache[:incomplete_window_title]
+        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::StampsModal.new(param).extend(IncFeldsWindowTitle):cache[:incomplete_window_title]
       end
 
-#todo-Kaushal Incomplete printing error
       def print_postage_expecting_error
-        open_window(incomplete_window_title)
+        incomplete_window_title.window_title.text if incomplete_window_title.window_title.present?
       end
 
       def print_postage
@@ -90,6 +89,13 @@ module Stamps
             if confirm_window.present?
               confirm_window.do_not_prompt.check
               confirm_window.continue
+            end
+            expect(print_postage_expecting_error.text).to eql(install_stamps_connect.window_title.text) if install_stamps_connect.present?
+            if please_wait.present?
+              logger.message(please_wait.paragraph)
+              please_wait.ok
+              sleep(0.125)
+              print_button.click
             end
             return window if window.present?
           rescue
