@@ -414,6 +414,10 @@ rakuten: --tags @rakuten --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_A
 volusion: --tags @volusion --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
+# ----------------------------# MAIL Bugs
+mail_stamps_l_ml_unable_to_get_media_mail_bug: --tags  @mail_stamps_l_ml_unable_to_get_media_mail_bug --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+mail_email_required_bug: --tags  @mail_email_required_bug --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+
 # MAIL
 mail_authentication: --tags  @mail_authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
 mail_bvt_address_cleansing: --tags  @mail_bvt_address_cleansing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 

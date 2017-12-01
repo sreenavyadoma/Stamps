@@ -1874,9 +1874,15 @@ end
 
 # MAIL
 
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
-
-
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
@@ -1890,6 +1896,21 @@ end
 
 Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
+  t.profile = 'XXXXXXXXXXXXX'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_stamps_l_ml_unable_to_get_media_mail_bug) do |t|
+  t.profile = 'mail_stamps_l_ml_unable_to_get_media_mail_bug'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_email_required_bug) do |t|
+  t.profile = 'mail_email_required_bug'
   t.cucumber_opts = "-p cuke_reports"
 end
 
