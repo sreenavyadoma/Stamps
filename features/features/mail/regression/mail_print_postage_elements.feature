@@ -23,6 +23,7 @@ Feature: Verify Mail Elements Are Present
     Then expect Print form Insure For Price is present
     Then expect Print form Tracking Field is present
     Then expect Print form Tracking Price is present
+    Then show Advanced Options
     Then expect Print form Label Image Preview is present
     Then expect Print form Hide Mail Value check box is present
     Then expect Print form Print Receipt check box is present
