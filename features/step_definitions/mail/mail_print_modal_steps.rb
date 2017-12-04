@@ -33,6 +33,7 @@ When /^Mail: Print International Postage$/ do
   stamps.mail.mail_toolbar.print_international
 end
 
+#todo-Rob fix code smells
 When /^[Cc]lick Print button on [Mm]ail [Pp]rint modal Sample$/ do
   mail_print_modal=stamps.mail.mail_toolbar.print_sample
   @printer=mail_print_modal.printer.textbox.text
