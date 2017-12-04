@@ -2945,10 +2945,59 @@ Cucumber::Rake::Task.new(:mail_print_postage_fields) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+
+#--------------------### Mail Bugs ##---------------------
+
+Cucumber::Rake::Task.new(:bugs_advanced_options) do |t|
+  t.profile = 'bugs_advanced_options'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_certified_mail) do |t|
+  t.profile = 'bugs_certified_mail'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_contacts_modal) do |t|
+  t.profile = 'bugs_contacts_modal'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_envelope) do |t|
+  t.profile = 'bugs_envelope'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_extra_services) do |t|
+  t.profile = 'bugs_extra_services'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_roll) do |t|
+  t.profile = 'bugs_roll'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:stamps_bugs) do |t|
   t.profile = 'stamps_bugs'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:bugs_shipping_label) do |t|
+  t.profile = 'bugs_shipping_label'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_stamps_print) do |t|
+  t.profile = 'bugs_stamps_print'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_stamps) do |t|
+  t.profile = 'bugs_stamps'
+  t.cucumber_opts = "-p cuke_reports"
+end
+#----------------------------------------------------------------
 
 Cucumber::Rake::Task.new(:mail_invalid_credentials) do |t|
   t.profile = 'mail_invalid_credentials'
@@ -3010,4 +3059,46 @@ Cucumber::Rake::Task.new(:mail_bug_ordersauto_3243) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+#--------------------### Orders Bugs ##---------------------
 
+Cucumber::Rake::Task.new(:bugs_orders_filter_panel) do |t|
+  t.profile = 'bugs_orders_filter_panel'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_multi_order_details) do |t|
+  t.profile = 'bugs_multi_order_details'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_orders_customs_form) do |t|
+  t.profile = 'bugs_orders_customs_form'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_orders_grid) do |t|
+  t.profile = 'bugs_orders_grid'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_orders_grid_toolbar) do |t|
+  t.profile = 'bugs_orders_grid_toolbar'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_orders_navigation_bar) do |t|
+  t.profile = 'bugs_orders_navigation_bar'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_orders_settings) do |t|
+  t.profile = 'bugs_orders_settings'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bugs_single_order_details_form) do |t|
+  t.profile = 'bugs_single_order_details_form'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+#----------------------------------------------------------------
