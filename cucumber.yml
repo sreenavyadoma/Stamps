@@ -432,6 +432,7 @@ bugs_extra_services: --tags  @bugs_extra_services --guess DEBUG=false JENKINS=tr
 bugs_roll: --tags  @bugs_roll --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
 bugs_shipping_label: --tags  @bugs_shipping_label --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
 bugs_stamps_print: --tags  @bugs_stamps_print --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_stamps: --tags  @bugs_stamps --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
 
 # MAIL
 mail_authentication: --tags  @mail_authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 
