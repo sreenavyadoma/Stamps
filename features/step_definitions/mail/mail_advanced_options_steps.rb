@@ -23,7 +23,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Extra Services Button is visible$/ do
   step "Expect Advanced Options responds to Extra Services Button (extra_services_btn)"
-  expect(stamps.mail.print_form.advanced_options.extra_services_btn.visible?).to be(true), "Extra Services Button is NOT visible"
+  expect(stamps.mail.print_form.advanced_options.extra_services_btn).to be_visible, "Extra Services Button is NOT visible"
 end
 
 Then /^[Ss]elect Advanced Options Specify Postage Amount$/ do
