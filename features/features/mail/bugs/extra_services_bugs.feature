@@ -1,10 +1,9 @@
-@single_order_details_form_bugs
-Feature: Single Order Details form Bugs
+
+Feature: Extra Services bugs
 
   Background:
     Given a valid user is signed in to Web Apps
 
+  @extra_services_bugs
   Scenario:
-
-
 
