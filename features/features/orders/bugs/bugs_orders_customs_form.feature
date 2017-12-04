@@ -1,4 +1,4 @@
-@orders_customs_form_bugs
+@bugs_orders_customs_form
 Feature: Orders customs form bugs
 
   Background:

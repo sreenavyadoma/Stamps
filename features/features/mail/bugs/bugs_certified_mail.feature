@@ -1,7 +1,8 @@
-@orders_grid_toolbar_bugs
-Feature: Orders Grid Toolbar Bugs
+
+Feature: Shipping Label bugs
 
   Background:
     Given a valid user is signed in to Web Apps
 
+  @bugs_certified_mail
   Scenario:

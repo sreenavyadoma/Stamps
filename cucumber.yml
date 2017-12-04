@@ -247,7 +247,14 @@ grid_order_status: --tags @grid_order_status --guess DEBUG=false JENKINS=true HE
 tooltips_improvements: --tags @tooltips_improvements --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # --------------------------  ORDERS Bugs
-orders_deselect_fails: --tags @orders_deselect_fails --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_orders_filter_panel: --tags @bugs_orders_filter_panel --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_multi_order_details: --tags @bugs_multi_order_details --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_orders_customs_form: --tags @bugs_orders_customs_form --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_orders_grid: --tags @bugs_orders_grid --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_orders_grid_toolbar: --tags @bugs_orders_grid_toolbar --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_orders_navigation_bar: --tags @bugs_orders_navigation_bar --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_orders_settings: --tags @bugs_orders_settings --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_single_order_details_form: --tags @bugs_single_order_details_form --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 
 # --------------------------  ORDERS BVT
@@ -417,8 +424,14 @@ volusion: --tags @volusion --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB
 amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 # ----------------------------# MAIL Bugs
-stamps_bugs: --tags  @stamps_bugs --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
-mail_email_required_bug: --tags  @mail_email_required_bug --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_advanced_options: --tags  @bugs_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_certified_mail: --tags  @bugs_certified_mail --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_contacts_modal: --tags  @bugs_contacts_modal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_envelope: --tags  @bugs_envelope --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_extra_services: --tags  @bugs_extra_services --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_roll: --tags  @bugs_roll --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_shipping_label: --tags  @bugs_shipping_label --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+bugs_stamps_print: --tags  @bugs_stamps_print --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
 
 # MAIL
 mail_authentication: --tags  @mail_authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail 

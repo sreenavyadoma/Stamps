@@ -1,10 +1,10 @@
-@mail_print_on_bugs
-Feature: Print On Bugs
+
+Feature: Stamps print media bugs
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_partially_printed_bug_ordersauto_3349
+  @bugs_stamps_print
   Scenario: ORDERSAUTO-3349 Legacy WEBAPPS-7032 Thermal Label only partially printed if printed directly after 8 1/2 x 11 Shipping Label print with Receipt
 
     Then select Print On Shipping Label - 5x8
@@ -32,7 +32,7 @@ Feature: Print On Bugs
 
     Then Sign out
 
-  @mail_stamps_l_unable_to_get_media_mail_bug
+  @bugs_stamps_print
   Scenario: Web Client L Series NetStamps | Media Mail | Unable To Get Rates
 
   #mail_print_stamps_l_series_calculate
@@ -41,7 +41,7 @@ Feature: Print On Bugs
     Then select Advanced Options Calculate Postage Amount
     Then expect Print form service Media Mail is not present in dropdown list
 
-  @mail_stamps_ml_unable_to_get_media_mail_bug
+  @bugs_stamps_print
   Scenario: Web Client ML Series NetStamps | Media Mail | Unable To Get Rates
 
    #mail_print_stamps_ml_series_calculate
@@ -50,7 +50,7 @@ Feature: Print On Bugs
     Then select Advanced Options Calculate Postage Amount
     Then expect Print form service Media Mail is not present in dropdown list
 
-  @mail_email_required_bug
+  @bugs_stamps_print
   Scenario: E-mail field error validation - "Email is required." when printing Envelopes
 
     Then select Print On Shipping Label - Paper
@@ -63,3 +63,8 @@ Feature: Print On Bugs
     Then expect mail Print modal is present
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
+
+
+
+
+

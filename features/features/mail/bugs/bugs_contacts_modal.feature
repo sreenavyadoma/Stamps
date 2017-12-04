@@ -3,7 +3,7 @@ Feature: Mail Contacts Modal Bugs
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_bug_ordersauto_3243
+  @bugs_contacts_modal
   Scenario: ORDERSAUTO_3243 Adding Contact from Mail should not Add Reference # Or Cost Code
     Then select Print On Shipping Label - 5x8
     Then set Print form Mail-From to default
