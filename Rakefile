@@ -2945,6 +2945,11 @@ Cucumber::Rake::Task.new(:mail_print_postage_fields) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:stamps_bugs) do |t|
+  t.profile = 'stamps_bugs'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_invalid_credentials) do |t|
   t.profile = 'mail_invalid_credentials'
   t.cucumber_opts = "-p cuke_reports"
