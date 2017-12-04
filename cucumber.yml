@@ -417,7 +417,7 @@ volusion: --tags @volusion --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB
 amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 
 # ----------------------------# MAIL Bugs
-mail_stamps_l_ml_unable_to_get_media_mail_bug: --tags  @mail_stamps_l_ml_unable_to_get_media_mail_bug --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
+stamps_bugs: --tags  @stamps_bugs --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
 mail_email_required_bug: --tags  @mail_email_required_bug --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
 
 # MAIL
