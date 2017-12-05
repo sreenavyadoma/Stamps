@@ -20,11 +20,11 @@ module Stamps
       end
 
       def single_order_details
-        (cache[:single_order_details].nil?||!cache[:single_order_details].present?)?cache[:single_order_details]=Orders::Details::SingleOrderDetails.new(param):cache[:single_order_details]
+        (cache[:single_order].nil?||!cache[:single_order].present?)?cache[:single_order]=Orders::Details::SingleOrderDetails.new(param):cache[:single_order]
       end
 
       def multi_order_details
-        (cache[:multi_order_details].nil?||!cache[:multi_order_details].present?)?cache[:multi_order_details]=Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order_details]
+        (cache[:multi_order].nil?||!cache[:multi_order].present?)?cache[:multi_order]=Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order]
       end
 
       def marketplace
