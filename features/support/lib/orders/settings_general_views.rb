@@ -190,50 +190,49 @@ module Stamps
       end
 
       class SettingsLogoffDropDown < Browser::StampsModal
-        attr_reader :textbox, :dropdown
-
-        def initialize(param)
-          super
-          @textbox=StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
-          @dropdown=StampsField.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
+        def textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsField.new(
+              browser.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")):cache[:textbox]
         end
 
-        def text
-          textbox.text
-        end
-
-        def select(selection)
-          selection_label=StampsField.new browser.li(text: selection)
-          10.times do
-            break if textbox.text.include? selection
-            dropdown.click unless selection_label.present?
-            selection_label.click
-          end
-          expect(textbox.text).to include(selection)
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+              browser.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")):cache[:dropdown]
         end
 
         def five_min
-          select "5 min."
+          select("5 min.")
         end
 
         def ten_min
-          select "10 min."
+          select("10 min.")
         end
 
         def fifteen_min
-          select "15 min."
+          select("15 min.")
         end
 
         def thirty_min
-          select "30 min."
+          select("30 min.")
         end
 
         def one_hour
-          select "1 hour"
+          select("1 hour")
         end
 
         def two_hours
-          select "2 hours"
+          select("2 hours")
+        end
+
+        private
+        def select(str)
+          selection=StampsField.new(browser.li(text: str))
+          10.times do
+            return textbox.text if textbox.text==str
+            dropdown.click unless selection.present?
+            selection.click
+          end
+          nil
         end
       end
 
@@ -626,6 +625,71 @@ module Stamps
           end
         end
       end
+
+
+      module GeneralSettingsContainer
+        def gen_settings_header
+          (cache[:gen_settings].nil?||!cache[:gen_settings].present?)?cache[:gen_settings]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:gen_settings]
+        end
+
+        def services
+          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:services]
+        end
+
+        def logoff
+          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=SettingsLogoffDropDown.new(param):cache[:services]
+        end
+
+        def postdate
+        end
+
+        def account_balance
+          #create account balance class having drop=down $$$ and Auto-fund account
+        end
+
+        def print_options
+          # create class having two checkboxes
+        end
+
+        def reset_fields
+          # ResetFields modal
+        end
+
+        def usps_terms
+          #create class having checkbox and USPS Privacy Act Statement link and modal from clicking link
+        end
+
+        def contacts
+          #checkbox
+        end
+      end
+
+      module EmailNotificationContainer
+        def email_notif_header
+          (cache[:email_notif].nil?||!cache[:email_notif].present?)?cache[:email_notif]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[1]):cache[:email_notif]
+        end
+
+        def shipments
+          #checkbox & edit link
+        end
+
+        def deliveries
+          #checkbox & edit link
+        end
+      end
+
+      class GeneralTabView < Browser::StampsModal
+        include GeneralSettingsContainer
+        include EmailNotificationContainer
+
+        def present?
+          gen_settings_header.present?
+        end
+      end
+
     end
   end
 end

@@ -695,16 +695,12 @@ module Stamps
       end
 
       module OrdersToolbarRightSide
-        def right_toolbar
-          @right_toolbar ||= {}
-        end
-
         def toolbar_settings
-          (right_toolbar[:settings][:import].nil?||!right_toolbar[:settings][:import].present?)?right_toolbar[:settings]=SettingsMenu.new(param):right_toolbar[:settings]
+          (cache[:settings][:import].nil?||!cache[:settings][:import].present?)?cache[:settings]=SettingsMenu.new(param):cache[:settings]
         end
 
         def toolbar_import
-          (right_toolbar[:import].nil?||!right_toolbar[:import].present?)?right_toolbar[:import]=StampsField.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")):right_toolbar[:import]
+          (cache[:import].nil?||!cache[:import].present?)?cache[:import]=StampsField.new(browser.span(css: "a[data-qtip*='Import']>span>span>span[id$=btnIconEl]")):cache[:import]
         end
 
         def import
@@ -717,11 +713,6 @@ module Stamps
       end
 
       module OrdersToolbarLeftSide
-
-        def left_toolbar
-          @left_toolbar ||= {}
-        end
-
         def present?
           toolbar_print.present?
         end
@@ -731,15 +722,15 @@ module Stamps
         end
 
         def toolbar_print
-          (left_toolbar[:print].nil?||!left_toolbar[:print].present?)?left_toolbar[:print]=ToolbarPrintButton.new(param):left_toolbar[:print]
+          (cache[:print].nil?||!cache[:print].present?)?cache[:print]=ToolbarPrintButton.new(param):cache[:print]
         end
 
         def toolbar_add
-          (left_toolbar[:add].nil?||!left_toolbar[:add].present?)?left_toolbar[:add]=AddButton.new(param):left_toolbar[:add]
+          (cache[:add].nil?||!cache[:add].present?)?cache[:add]=AddButton.new(param):cache[:add]
         end
 
         def toolbar_move
-          (left_toolbar[:move].nil?||!left_toolbar[:move].present?)?left_toolbar[:move]=MoveDropDown.new(param):left_toolbar[:move]
+          (cache[:move].nil?||!cache[:move].present?)?cache[:move]=MoveDropDown.new(param):cache[:move]
         end
 
         def toolbar_tags
@@ -828,7 +819,7 @@ module Stamps
 
 
       class ToolbarSettingsIcon < Browser::StampsModal
-        include Stamps::Orders::OrdersSettings::OrdersSettingsTitle
+        include Stamps::Orders::OrdersSettings::OrdersSettingsModalTitle
 
         def field
           (@field.nil?||!@field.present?)?@field=StampsField.new(browser.span(css: "[class*=sdc-icon-settings]")):@field
@@ -854,6 +845,7 @@ module Stamps
 
       class OrdersToolbar < Browser::StampsModal
         include OrdersToolbarLeftSide
+        include OrdersToolbarRightSide
         include ToolbarItemsToBeVerified
 
         def orders_settings

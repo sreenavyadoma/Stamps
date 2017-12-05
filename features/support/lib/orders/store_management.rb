@@ -441,7 +441,7 @@ module Stamps
 
         def add
           button=add_button
-          store=market_place
+          store=marketplace
           10.times do
             button.click
             sleep(0.35)
@@ -449,7 +449,7 @@ module Stamps
           end
         end
 
-        def market_place
+        def marketplace
           Marketplace.new(param)
         end
 
