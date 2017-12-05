@@ -1,9 +1,11 @@
 
 Then /^[Ee]xpect [Mm]arketplace [Mm]odal is [Pp]resent$/ do
-  expect(stamps.orders.marketplace).to be_present, "Marketplace modal is NOT present"
+  expect(stamps.orders.orders_settings_modal).to be_present, "Marketplace modal is NOT present"
 end
 
 Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
+  stamps.orders.orders_settings_modal.stores_tab
+  stamps.orders.orders_settings_modal.stores_tab_view
   actual=stamps.orders.marketplace.contains(expectation)
   expect(actual).to eql expectation
 end
