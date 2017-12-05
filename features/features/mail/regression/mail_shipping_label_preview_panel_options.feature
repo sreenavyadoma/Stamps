@@ -14,6 +14,7 @@ Feature:Shipping Label Preview Panel
     Then set Print form Ounces to 1
     #Then select Print form service Priority Mail Package
     Then select Print form service PM Package
+    Then show Advanced Options
 
     # Hide Label Value Check-box
     Then check Advanced Options Hide Label Value
