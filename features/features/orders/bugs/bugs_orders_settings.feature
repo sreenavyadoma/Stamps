@@ -1,5 +1,5 @@
-@orders_navigation_bar_bugs
-Feature: Orders Navigation Bar Bugs
+@bugs_orders_settings
+Feature: Orders Settings Bugs
 
   Background:
     Given a valid user is signed in to Web Apps

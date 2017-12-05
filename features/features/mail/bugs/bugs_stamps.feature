@@ -1,8 +1,8 @@
 
-Feature: Shipping Label bugs
+Feature: Stamps print media bugs
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @shipping_label_bugs
+  @bugs_stamps
   Scenario:

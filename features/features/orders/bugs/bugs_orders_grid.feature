@@ -1,8 +1,7 @@
-
-Feature: Roll bugs
+@bugs_orders_grid
+Feature: Orders Grid Bugs
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @advanced_options_bugs
   Scenario:
