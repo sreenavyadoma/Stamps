@@ -200,16 +200,6 @@ module Stamps
               browser.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")):cache[:dropdown]
         end
 
-        def select(str)
-          selection=StampsField.new(browser.li(text: str))
-          10.times do
-            return textbox.text if textbox.text==str
-            dropdown.click unless selection.present?
-            selection.click
-          end
-          nil
-        end
-
         def five_min
           select("5 min.")
         end
@@ -232,6 +222,17 @@ module Stamps
 
         def two_hours
           select("2 hours")
+        end
+
+        private
+        def select(str)
+          selection=StampsField.new(browser.li(text: str))
+          10.times do
+            return textbox.text if textbox.text==str
+            dropdown.click unless selection.present?
+            selection.click
+          end
+          nil
         end
       end
 
@@ -624,12 +625,6 @@ module Stamps
           end
         end
       end
-
-
-
-
-
-
 
 
       module GeneralSettingsContainer

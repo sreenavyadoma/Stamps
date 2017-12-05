@@ -52,46 +52,27 @@ end
 # Set Logoff
 
 Then /^[Ii]n Settings modal, set Logoff to 5 min.$/ do
-  step "In Settings modal, Logoff set 5 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.five_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 10 min.$/ do
-  step "In Settings modal, Logoff set 10 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.ten_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 15 min.$/ do
-  step "In Settings modal, Logoff set 15 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.fifteen_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 30 min.$/ do
-  step "In Settings modal, Logoff set 30 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.thirty_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 1 hour.$/ do
-  step "In Settings modal, Logoff set 1 hour"
+  stamps.orders.orders_settings_modal.general_tab.log_off.one_hour
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 2 hours$/ do
-  step "In Settings modal, Logoff set 2 hours"
-end
-
-Then /^[Ii]n Settings modal, Logoff set (.*)$/ do |value|
-  case value.downcase
-    when "5 min"
-      stamps.orders.orders_settings_modal.general_tab.log_off.five_min
-    when "10 min"
-      stamps.orders.orders_settings_modal.general_tab.log_off.ten_min
-    when "15 min"
-      stamps.orders.orders_settings_modal.general_tab.log_off.fifteen_min
-    when "30 min"
-      stamps.orders.orders_settings_modal.general_tab.log_off.thirty_min
-    when "1 hour"
-      stamps.orders.orders_settings_modal.general_tab.log_off.one_hour
-    when "2 hours"
-      stamps.orders.orders_settings_modal.general_tab.log_off.two_hours
-    else
-      expect("Invalid Logoff Selection -  In Settings modal, Logoff #{value}").to eql "Settings"
-  end
+  stamps.orders.orders_settings_modal.general_tab.log_off.two_hours
 end
 
 Then /^[Ii]n Settings modal, set Postdate to 12:00 a.m.$/ do
