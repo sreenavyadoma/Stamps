@@ -11,7 +11,7 @@ module Stamps
         (cache[:orders_print_modal].nil?||!cache[:orders_print_modal].present?)?cache[:orders_print_modal]=Stamps::Orders::Printing::OrdersPrintModal.new(param):cache[:orders_print_modal]
       end
 
-      def orders_settings
+      def orders_settings_modal
         (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=Stamps::Orders::OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
       end
     end

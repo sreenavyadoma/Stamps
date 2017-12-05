@@ -190,50 +190,48 @@ module Stamps
       end
 
       class SettingsLogoffDropDown < Browser::StampsModal
-        attr_reader :textbox, :dropdown
-
-        def initialize(param)
-          super
-          @textbox=StampsTextbox.new browser.text_field(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div>input")
-          @dropdown=StampsField.new browser.div(css: "div[id^=userprefswindow-][id$=-body]>div>div>div>div>div>div>div>div:nth-child(3)>div>div>div>div>div>div>div>div[id$=picker]")
+        def textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsField.new(
+              browser.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")):cache[:textbox]
         end
 
-        def text
-          textbox.text
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+              browser.div(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) [class*=arrow-trigger]")):cache[:dropdown]
         end
 
-        def select(selection)
-          selection_label=StampsField.new browser.li(text: selection)
+        def select(str)
+          selection=StampsField.new(browser.li(text: str))
           10.times do
-            break if textbox.text.include? selection
-            dropdown.click unless selection_label.present?
-            selection_label.click
+            return textbox.text if textbox.text==str
+            dropdown.click unless selection.present?
+            selection.click
           end
-          expect(textbox.text).to include(selection)
+          nil
         end
 
         def five_min
-          select "5 min."
+          select("5 min.")
         end
 
         def ten_min
-          select "10 min."
+          select("10 min.")
         end
 
         def fifteen_min
-          select "15 min."
+          select("15 min.")
         end
 
         def thirty_min
-          select "30 min."
+          select("30 min.")
         end
 
         def one_hour
-          select "1 hour"
+          select("1 hour")
         end
 
         def two_hours
-          select "2 hours"
+          select("2 hours")
         end
       end
 
@@ -636,8 +634,8 @@ module Stamps
 
       module GeneralSettingsContainer
         def gen_settings_header
-          (cache[:email_notif_header].nil?||!cache[:email_notif_header].present?)?cache[:email_notif_header]=StampsField.new(
-              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:email_notif_header]
+          (cache[:gen_settings].nil?||!cache[:gen_settings].present?)?cache[:gen_settings]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:gen_settings]
         end
 
         def services
@@ -646,11 +644,10 @@ module Stamps
         end
 
         def logoff
-          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=Stamps::Orders::Settings::SettingsLogoffDropDown.new(param):cache[:services]
+          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=SettingsLogoffDropDown.new(param):cache[:services]
         end
 
         def postdate
-
         end
 
         def account_balance
@@ -676,8 +673,8 @@ module Stamps
 
       module EmailNotificationContainer
         def email_notif_header
-          (cache[:email_notif_header].nil?||!cache[:email_notif_header].present?)?cache[:email_notif_header]=StampsField.new(
-              browser.labels(css: "[class*=sdc-header-text]")[1]):cache[:email_notif_header]
+          (cache[:email_notif].nil?||!cache[:email_notif].present?)?cache[:email_notif]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[1]):cache[:email_notif]
         end
 
         def shipments
@@ -697,11 +694,6 @@ module Stamps
           gen_settings_header.present?
         end
       end
-
-
-
-
-
 
     end
   end
