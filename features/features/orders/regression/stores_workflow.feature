@@ -35,3 +35,13 @@ Feature:  All Store Management
       #Then Paypal: Close modal
       #Then Orders Settings: Click Done
       #Then Sign out
+
+
+    @square_workflow
+    Scenario: Square Store Workflow
+
+      Then click orders toolbar settings button
+      Then click Order Settings Stores Add button
+      Then search Marketplace for store name square
+      Then expect Marketplace dataview count is equal to 2
+      Then connect Marketplace store square

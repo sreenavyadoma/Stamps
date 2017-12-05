@@ -61,6 +61,15 @@ module Stamps
           nil
         end
 
+        def general_tab
+          20.times do
+            return general_field if general_field.title.present?
+            general_field.click
+          end
+          nil
+        end
+
+
         def general_settings
         end
 
