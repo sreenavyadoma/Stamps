@@ -4,6 +4,7 @@ Then /^[Oo]pen Orders Settings$/ do
 end
 # Services checkbox
 Then /^Settings: Check Services$/ do
+  stamps.orders.orders_settings.stores_tab
   @general_settings.services.check
 end
 

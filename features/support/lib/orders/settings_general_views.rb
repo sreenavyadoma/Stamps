@@ -626,6 +626,83 @@ module Stamps
           end
         end
       end
+
+
+
+
+
+
+
+
+      module GeneralSettingsContainer
+        def gen_settings_header
+          (cache[:email_notif_header].nil?||!cache[:email_notif_header].present?)?cache[:email_notif_header]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:email_notif_header]
+        end
+
+        def services
+          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:services]
+        end
+
+        def logoff
+          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=Stamps::Orders::Settings::SettingsLogoffDropDown.new(param):cache[:services]
+        end
+
+        def postdate
+
+        end
+
+        def account_balance
+          #create account balance class having drop=down $$$ and Auto-fund account
+        end
+
+        def print_options
+          # create class having two checkboxes
+        end
+
+        def reset_fields
+          # ResetFields modal
+        end
+
+        def usps_terms
+          #create class having checkbox and USPS Privacy Act Statement link and modal from clicking link
+        end
+
+        def contacts
+          #checkbox
+        end
+      end
+
+      module EmailNotificationContainer
+        def email_notif_header
+          (cache[:email_notif_header].nil?||!cache[:email_notif_header].present?)?cache[:email_notif_header]=StampsField.new(
+              browser.labels(css: "[class*=sdc-header-text]")[1]):cache[:email_notif_header]
+        end
+
+        def shipments
+          #checkbox & edit link
+        end
+
+        def deliveries
+          #checkbox & edit link
+        end
+      end
+
+      class GeneralTabView < Browser::StampsModal
+        include GeneralSettingsContainer
+        include EmailNotificationContainer
+
+        def present?
+          gen_settings_header.present?
+        end
+      end
+
+
+
+
+
+
     end
   end
 end
