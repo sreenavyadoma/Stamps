@@ -45,3 +45,6 @@ Feature:  All Store Management
       Then search Marketplace for store name square
       Then expect Marketplace dataview count is equal to 2
       Then connect Marketplace store square
+      Then expect Square store modal present
+      Then expect Square logo present
+      Then expect Square Authorize Button present

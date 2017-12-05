@@ -28,7 +28,7 @@ module Stamps
       end
 
       def market_place
-        (cache[:stores].nil?||!cache[:stores].present?)?cache[:stores]=StampsModal.new(param).extend(Orders::Stamps::MarketPlaceStoreModals):cache[:stores]
+        (cache[:stores].nil?||!cache[:stores].present?)?cache[:stores]=StampsModal.new(param).extend(Orders::MarketPlaceStoreModals):cache[:stores]
       end
 
       def styles
