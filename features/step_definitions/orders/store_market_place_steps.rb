@@ -51,7 +51,7 @@ end
 # end
 
 Then /^[Ee]xpect Paypal is on Marketplace modal$/ do
-  expect(stamps.orders.paypal_store).to be_present, "Paypal is not on Marketplace modal"
+  expect(stamps.orders.market_place.paypal_store).to be_present, "Paypal is not on Marketplace modal"
 end
 
 Then /^Marketplace: Select Big Commerce$/ do

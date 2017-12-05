@@ -1,7 +1,6 @@
 module Stamps
   module Orders
     class WebOrders < Browser::StampsModal
-      include MarketPlaceStoreModals
       include StampsOrdersModals
       
       def orders_toolbar
@@ -28,7 +27,7 @@ module Stamps
         (cache[:multi_order_details].nil?||!cache[:multi_order_details].present?)?cache[:multi_order_details]=Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order_details]
       end
 
-      def stores
+      def market_place
         (cache[:stores].nil?||!cache[:stores].present?)?cache[:stores]=StampsModal.new(param).extend(Orders::Stamps::MarketPlaceStoreModals):cache[:stores]
       end
 
