@@ -317,7 +317,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step "show order details form ship-to fields"
-  expect(stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic]=test_helper.format_address(test_helper.address_helper_zone(address)))).to include(address.split(' ').last)
+  stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic]=test_helper.format_address(test_helper.address_helper_zone(address)))
   step "Save Order Details data"
   step "hide order details form Ship-To fields"
 end

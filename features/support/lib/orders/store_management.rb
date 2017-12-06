@@ -305,14 +305,14 @@ module Stamps
 
         def search_by_name
           (cache[:search_by_name].nil?||!cache[:v].present?)?cache[:search_by_name]=StampsTextbox.new(browser.text_field(css: "input[placeholder='Search by Name']")):cache[:search_by_name]
-
         end
 
         def dataview
           (cache[:dataview].nil?||!cache[:dataview].present?)?cache[:dataview]=MarketplaceDataView.new(param):cache[:dataview]
         end
       end
-
+=begin
+      #todo-rob deprecated
       class ManageStores < Browser::StampsModal
         class ManageStoresGrid < Browser::StampsModal
 
@@ -542,6 +542,7 @@ module Stamps
 
         end
       end
+=end
     end
   end
 end

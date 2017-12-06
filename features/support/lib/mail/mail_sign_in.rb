@@ -481,37 +481,69 @@ module Stamps
           logger.info "#{username} is #{(signed_in_user.present?)?"signed-in!":"not signed-in."}"
           logger.info "Password is #{password}"
 
-          def invalid_username_password
-            StampsField.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
-          end
+          # def invalid_username_password
+          #   StampsField.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
+          # end
 
-          def forgot_username
-            sign_in_link=StampsField.new browser.link(text: "Sign In")
-            button=StampsField.new browser.a css: "a[class*=forgotUsername]"
-            forgot_username_modal=ForgotUsernameModal.new(param)
-            5.times do
-              sign_in_link.click
-              button.click
-              sleep(0.35)
-              return forgot_username_modal if forgot_username_modal.present?
-            end
-            expect("Unable to open Forgot Username Modal, check your code.").to eql "" unless forgot_password_modal.present?
-          end
+          # def forgot_username
+          #   sign_in_link=StampsField.new browser.link(text: "Sign In")
+          #   button=StampsField.new browser.a css: "a[class*=forgotUsername]"
+          #   forgot_username_modal=ForgotUsernameModal.new(param)
+          #   5.times do
+          #     sign_in_link.click
+          #     button.click
+          #     sleep(0.35)
+          #     return forgot_username_modal if forgot_username_modal.present?
+          #   end
+          #   expect("Unable to open Forgot Username Modal, check your code.").to eql "" unless forgot_password_modal.present?
+          # end
 
-          def forgot_password
-            sign_in_link=StampsField.new browser.link(text: "Sign In")
-            button=StampsField.new browser.a css: "a[class*=forgotPassword]"
-            forgot_password_modal=ForgotPasswordModal.new(param)
-            5.times do
-              sign_in_link.click
-              button.click
-              sleep(0.35)
-              return forgot_password_modal if forgot_password_modal.present?
-            end
-            expect("Unable to open Forgot Password Modal, check your code.").to eql "" unless forgot_password_modal.present?
-          end
+          # def forgot_password
+          #   sign_in_link=StampsField.new browser.link(text: "Sign In")
+          #   button=StampsField.new browser.a css: "a[class*=forgotPassword]"
+          #   forgot_password_modal=ForgotPasswordModal.new(param)
+          #   5.times do
+          #     sign_in_link.click
+          #     button.click
+          #     sleep(0.35)
+          #     return forgot_password_modal if forgot_password_modal.present?
+          #   end
+          #   expect("Unable to open Forgot Password Modal, check your code.").to eql "" unless forgot_password_modal.present?
+          # end
 
         end
+
+         def forgot_username
+           sign_in_link=StampsField.new browser.link(text: "Sign In")
+           button=StampsField.new browser.a css: "a[class*=forgotUsername]"
+           forgot_username_modal=ForgotUsernameModal.new(param)
+           5.times do
+             #sign_in_link.click
+             sign_in_link.hover
+             button.click
+             sleep(0.35)
+             return forgot_username_modal if forgot_username_modal.present?
+           end
+           expect("Unable to open Forgot Username Modal, check your code.").to eql "" unless forgot_password_modal.present?
+         end
+
+        def forgot_password
+          sign_in_link=StampsField.new browser.link(text: "Sign In")
+          button=StampsField.new browser.a css: "a[class*=forgotPassword]"
+          forgot_password_modal=ForgotPasswordModal.new(param)
+          5.times do
+            #sign_in_link.click
+            sign_in_link.hover
+            button.click
+            sleep(0.35)
+            return forgot_password_modal if forgot_password_modal.present?
+          end
+          #expect("Unable to open Forgot Password Modal, check your code.").to eql "" unless forgot_password_modal.present?
+        end
+
+         def invalid_username_password
+           StampsField.new browser.div css: "div[id*=InvalidUsernamePasswordMsg]"
+         end
       end
     end
   end

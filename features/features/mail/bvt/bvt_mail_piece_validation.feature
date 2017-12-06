@@ -51,13 +51,15 @@ Feature: Manually verify all mail pieces in Staging
     Then set Print form Ounces to 1
     Then select Print form service PM Large Flat Rate Box
     Then Print Postage
+    Then set Mail Print modal Printer Zebra LP 2844 on qa-printlab2016
     Then click Mail Print modal Print button
     Then Sign out
 
   Scenario: Certified Mail Label - SDC-3610
-    Then select Print On Shipping Label - Paper
+#    Then select Print On Shipping Label - Paper
+    Then select Print On Certified Mail Label - SDC-3610
     Then set Print form Mail-From to default
-    Then set Print form Mail-To Country to United States
+#    Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Pounds to 0
     Then set Print form Ounces to 1

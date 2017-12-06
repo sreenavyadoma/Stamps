@@ -11,32 +11,32 @@ Feature: General Settings Positive and Negative Test-cases
     Then click orders toolbar settings button
     Then in Orders Settings, click on General Settings tab
 
-    Then In Settings modal, set Logoff to 5 min.
+    Then set general settings logoff to 5 min.
     Then In Settings modal, Save
     Then click orders toolbar settings button
     Then In Settings modal, Expect Logoff is set for 5 min.
 
-    Then In Settings modal, set Logoff to 10 min.
+    Then set general settings logoff to 10 min.
     Then In Settings modal, Save
     Then click orders toolbar settings button
     Then In Settings modal, Expect Logoff is set for 10 min.
 
-    Then In Settings modal, set Logoff to 15 min.
+    Then set general settings logoff to 15 min.
     Then In Settings modal, Save
     Then click orders toolbar settings button
     Then In Settings modal, Expect Logoff is set for 15 min.
 
-    Then In Settings modal, set Logoff to 30 min.
+    Then set general settings logoff to 30 min.
     Then In Settings modal, Save
     Then click orders toolbar settings button
     Then In Settings modal, Expect Logoff is set for 30 min.
 
-    Then In Settings modal, set Logoff to 1 hour.
+    Then set general settings logoff to 1 hour.
     Then In Settings modal, Save
     Then click orders toolbar settings button
     Then In Settings modal, Expect Logoff is set for 1 hour
 
-    Then In Settings modal, set Logoff to 2 hours
+    Then set general settings logoff to 2 hours
     Then In Settings modal, Save
     Then click orders toolbar settings button
     Then In Settings modal, Expect Logoff is set for 2 hours
