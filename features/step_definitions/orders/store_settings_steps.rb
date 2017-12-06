@@ -1,13 +1,14 @@
-Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
+Then /^Set Store Nickname to (.*)$/ do |nickname|
   #test_config.logger.step "Store Settings: Set Store Nickname to #{nickname}"
   raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
   #test_config.logger.step "Old Amazon Store Name:#{test_data[:store_name]}"
   test_param[:store_name]=(nickname.downcase.include? 'random')?test_helper.random_alpha_numeric(20):nickname
   #test_config.logger.step "Store Nickname: #{test_data[:store_name]}"
   @store_settings.store_nickname.set test_param[:store_name]
+  sleep 1
 end
 
-Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
+Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
   #test_config.logger.step "Store Settings: Set Requested Services to random #{requested_services}"
   raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
 

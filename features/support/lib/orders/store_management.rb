@@ -54,9 +54,14 @@ module Stamps
       end
 
       class StoreSettings < Browser::StampsModal
+        def wait_until_present(*args)
+          (StampsField.new browser.div(text: "Paypal Settings")).wait_until_present(*args)
+        end
         class ServiceMappingGrid < Browser::StampsModal
           class ServiceMappingLineItem < Browser::StampsModal
             class ServiceMappingShippingService < Browser::StampsModal
+
+
 
               def initialize(param, index)
                 super(param)

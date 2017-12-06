@@ -22,11 +22,20 @@ Feature:  All Store Management
       Then Check Integral Evolution as a Paypal transaction type
       Then Uncheck Integral Evolution as a Paypal transaction type
       Then Check Express Checkout as a Paypal transaction type
-      #Then Connect to Paypal Store
-      #Then Set Paypal store nickname to My Store
-      #Then Add new Paypal service mapping
-      #Then Set Store Nickname to random
-      #Then Set store service Mapping (\d+), Requested Services (.*), Shipping service (.*)
+      Then Connect to Paypal Store
+      Then Set Store Nickname to random
+
+  @paypal_workflow_backlog
+  Scenario: PayPal Workflow backlog
+      Then Connect to Paypal Store
+      Then Set store nickname to My Store
+      #Then Add new service mapping
+      Then Set Store Nickname to random
+      Then Set store service Mapping 1, Requested Services Priority Envelope, Shipping service PM Flat Rate Envelope
+      #Then Save store settings
+      #Then Expect store nickname XXX appears in list
+
+
       #Then Paypal: Expect Help article is present
       #Then Paypal: Open Paypal link
       #Then Paypal: Expect Paypal site is present
