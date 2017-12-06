@@ -15,6 +15,13 @@ module Stamps
           nil
         end
 
+
+        #todo-Rob
+        def general_tab_view
+          (cache[:stores_tab_view].nil?||!cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Orders::OrdersSettings::StoresTabView.new(param):cache[:stores_tab_view]
+        end
+
+
         def general_tab
           (cache[:general_tab].nil?||!cache[:general_tab].present?)?cache[:general_tab]=Orders::OrdersSettings::GeneralTabView.new(param):cache[:general_tab]
         end
