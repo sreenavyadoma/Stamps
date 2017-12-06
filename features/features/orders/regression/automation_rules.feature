@@ -6,7 +6,7 @@ Feature: Validate Automation Rule Tab
 
   @automation_rule_content
   Scenario: Validate Automation rule Tab contents
-    Then open Settings Modal
+    Then click orders toolbar settings button
     Then click Orders Settings Automation Rules tab
     Then expect Automation Rules page Add Button exists
     Then expect Automation Rules page header contain Save time with Automation Rules
@@ -16,7 +16,7 @@ Feature: Validate Automation Rule Tab
 
   @automation_rule_add_without_criteria
   Scenario: Add new Automation rule w/o criteria
-    Then open Settings Modal
+    Then click orders toolbar settings button
     Then click Orders Settings Automation Rules tab
     Then click Automation Rules page Add Button
     Then expect New Rule modal exists
@@ -33,7 +33,7 @@ Feature: Validate Automation Rule Tab
 
   @automation_rule_add_with_criteria
   Scenario: Add new Automation rule with criteria
-    Then open Settings Modal
+    Then click orders toolbar settings button
     Then click Orders Settings Automation Rules tab
     Then click Automation Rules page Add Button
     Then expect New Rule modal exists
@@ -55,7 +55,7 @@ Feature: Validate Automation Rule Tab
 
   @automation_rule_edit_w/o_criteria
   Scenario: Edit new Automation rule w/o criteria
-    Then open Settings Modal
+    Then click orders toolbar settings button
     Then click Orders Settings Automation Rules tab
     Then click Automation Rules page automation rule Name
     Then click Automation Rules page Edit Button
@@ -76,7 +76,7 @@ Feature: Validate Automation Rule Tab
 
   @automation_rule_edit_with_criteria
   Scenario: Edit new Automation rule with criteria
-    Then open Settings Modal
+    Then click orders toolbar settings button
     Then click Orders Settings Automation Rules tab
     Then click Automation Rules page automation rule Name
     Then click Automation Rules page Edit Button
@@ -102,7 +102,7 @@ Feature: Validate Automation Rule Tab
 
   @automation_rule_delete
   Scenario: Delete Automation rule
-    Then open Settings Modal
+    Then click orders toolbar settings button
     Then click Orders Settings Automation Rules tab
     Then click Automation Rules page automation rule Name
     Then click Automation Rules page Delete button

@@ -56,7 +56,7 @@ module Stamps
         end
 
         def validation_message
-          StampsField.new(browser.span id: 'InvalidUsernameMsg').text
+          StampsField.new(browser.span id: 'InvalidUsernameMsg')
         end
 
         def blur_out
@@ -98,7 +98,7 @@ module Stamps
         end
 
         def first_time_sign_in(usr, pw)
-          market_place=Orders::Stores::Marketplace.new(param)
+          marketplace=Orders::Stores::Marketplace.new(param)
           username.wait_until_present(6)
 
           10.times do
@@ -112,17 +112,17 @@ module Stamps
             sign_in_btn.click
             blur_out
 
-            market_place.wait_until_present(6)
-            if market_place.present?
+            marketplace.wait_until_present(6)
+            if marketplace.present?
               logger.message "-"
               logger.message "Username: #{usr}"
               logger.message "Username: #{usr}"
               logger.message "-"
-              return market_place
+              return marketplace
             end
           end
-          expect(validation_message).to eql ""
-          expect("Market Place modal is not present").to eql "First Time Sign In" unless market_place.present?
+          expect(validation_message.text).to eql ""
+          expect("Market Place modal is not present").to eql "First Time Sign In" unless marketplace.present?
         end
 
         def load_sign_in_page
@@ -187,8 +187,8 @@ module Stamps
                   password(pw)
                   login
                   wait_while_present(3)
-
-                  expect(server_error).to_not be_present, server_error.message
+                  #expect(server_error).to_not be_present, server_error.message
+                  raise server_error.message if server_error.present?
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
                   if invalid_username.present?

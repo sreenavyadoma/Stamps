@@ -6,27 +6,17 @@ module Stamps
       end
     end
 
-    module MarketPlaceStoreModals
-      def paypal_store
-        (cache[:paypal_store].nil?||!cache[:paypal_store].present?)?cache[:paypal_store]=Stamps::Orders::Stores::PayPal.new(param):cache[:paypal_store]
-      end
-
-      def rakuten
-        (cache[:rakuten].nil?||!cache[:rakuten].present?)?cache[:rakuten]=Stamps::Orders::Stores::Rakuten.new(param):cache[:rakuten]
-      end
-    end
-
     module StampsOrdersModals
       def orders_print_modal
-        (cache[:orders_print_modal].nil?||!cache[:orders_print_modal].present?)?cache[:orders_print_modal]=Stamps::Orders::Printing::OrdersPrintModal.new(param):cache[:orders_print_modal]
+        (cache[:orders_print_modal].nil?||!cache[:orders_print_modal].present?)?cache[:orders_print_modal]=Printing::OrdersPrintModal.new(param):cache[:orders_print_modal]
       end
 
-      def orders_settings
-        (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=Stamps::Orders::OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
+      def orders_settings_modal
+        (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
       end
 
-      def marketplace
-        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=Stamps::Orders::Stores::Marketplace.new(param):cache[:marketplace]
+      def add_your_store_modal
+        (cache[:add_store].nil?||!cache[:add_store].present?)?cache[:add_store]=Stores::Marketplace.new(param):cache[:add_store]
       end
     end
     

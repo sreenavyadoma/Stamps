@@ -285,7 +285,7 @@ module Stamps
         end
 
         def date_field(day)
-          browser.td(css: "td[aria-label='#{test_helper.now_plus_month_dd day.to_i}']")
+          browser.td(css: "td[aria-label='#{test_helper.this_month_plus day.to_i}']")
         end
 
         def date(day)
@@ -336,8 +336,8 @@ module Stamps
           picker_button=StampsField.new browser.div(css: "div[id^=datefield][id$=trigger-picker]")
           ship_date_textbox=StampsTextbox.new browser.text_field(css: "input[id^=datefield][id$=inputEl]")
 
-          ship_date_str=test_helper.now_plus_month_dd(day)
-          ship_date_mmddyy=test_helper.now_plus_mm_dd_yy(day)
+          ship_date_str=test_helper.this_month_plus(day)
+          ship_date_mmddyy=test_helper.today_plus(day)
           date_field=StampsField.new(browser.div(css: "td[aria-label='#{ship_date_str}']>div"))
 
           10.times{
@@ -347,8 +347,8 @@ module Stamps
               break
             else
               day += 1
-              ship_date_str=test_helper.now_plus_month_dd day
-              ship_date_mmddyy=test_helper.now_plus_mm_dd_yy day
+              ship_date_str=test_helper.this_month_plus day
+              ship_date_mmddyy=test_helper.today_plus day
               date_field=StampsField.new browser.div css: "td[aria-label='#{ship_date_str}']>div"
             end
           }
@@ -363,6 +363,10 @@ module Stamps
       end
 
       class OrdersShipDate < Browser::StampsModal
+        def shipdate_label
+          (cache[:shipdate_label].nil?||!cache[:shipdate_label].present?)?cache[:shipdate_label]=StampsField.new(browser.span(css: '[id=sdc-printpostagewindow-shipdate-targetEl] [class*=x-form-item-label-inner-default]')):cache[:shipdate_label]
+        end
+
         def date_picker
           (cache[:date_picker].nil?||!cache[:date_picker].present?)?cache[:date_picker]=OrdersDatePicker.new(param):cache[:date_picker]
         end

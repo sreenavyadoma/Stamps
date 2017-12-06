@@ -565,15 +565,29 @@ module Stamps
       end
 
       class PrintFormEmail < Browser::StampsModal
+        include PrintFormBlurOut
+        def email_textbox
+          (cache[:email_textbox].nil?||!cache[:email_textbox].present?)?cache[:email_textbox]=StampsTextbox.new(
+              browser.text_field(id: "sdc-mainpanel-emailtextfield-webpostage-inputEl")):cache[:email_textbox]
+        end
 
+        def email_checkbox
+          (cache[:email_checkbox].nil?||!cache[:email_checkbox].present?)?cache[:email_checkbox]=StampsField.new(
+              browser.input(css: "input[id^='checkbox-'][id$='-inputEl'")):cache[:email_checkbox]
+        end
       end
 
       class PrintFormWeight < Browser::StampsModal
         include PrintFormBlurOut
+        def weigh
+          (cache[:weigh].nil?||!cache[:weigh].present?)?cache[:weigh]=StampsField.new(
+              browser.span(text: "Weigh")):cache[:weigh]
+        end
+
         def auto_weigh
           (cache[:auto_weigh].nil?||!cache[:auto_weigh].present?)?cache[:auto_weigh]=StampsCheckbox.new(
-              browser.input(id: "div[class*=autoweight-checkbox]>div>div>input[id^=checkbox]"),
-              browser.table(id: "sdc-mainpanel-autoweightcheckbox"),
+              browser.span(id: "div[class*=autoweight-checkbox]>div>div>span"),
+              browser.div(id: "div[class*=autoweight-checkbox]>div>div:nth-child(2)"),
               "class",
               "checked"):cache[:auto_weigh]
         end
@@ -814,7 +828,27 @@ module Stamps
 
       end
 
-      class MailTracking < Browser::StampsModal
+      class PrintFormInsureFor < Browser::StampsModal
+        include PrintFormBlurOut
+        def price
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsField.new(
+              browser.label(id: "sdc-mainpanel-insurancepricelabel")):cache[:textbox]
+        end
+
+        def insure_for_amt
+          (cache[:mail_pounds].nil?||!cache[:mail_pounds].present?)?cache[:mail_pounds]=StampsNumberField.new(
+              browser.input(id: "sdc-mainpanel-insureamtnumberfield-inputEl"),
+              browser.div(css: "div[id='sdc-mainpanel-insureamtnumberfield-trigger-spinner']>div[class*=spinner-up]"),
+              browser.div(css: "div[id='sdc-mainpanel-insureamtnumberfield-trigger-spinner']>div[class*=spinner-down]")):cache[:mail_pounds]
+        end
+
+        def present?
+          insure_for_amt.present? && insure_for_amt.present?
+        end
+      end
+
+      class PrintFormTracking < Browser::StampsModal
+        include PrintFormBlurOut
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
               browser.text_field(id: "sdc-mainpanel-trackingdroplist-inputEl")):cache[:textbox]
@@ -932,7 +966,7 @@ module Stamps
           @customs_form=Stamps::Common::Customs::CustomsInformation.new(param)
         end
 
-        def edit_form
+        def edit_customs_form
           30.times do
             return customs_form if customs_form.present?
             button.scroll_into_view
@@ -949,8 +983,6 @@ module Stamps
         def i_agree_to_insurance_terms
         end
       end
-
-
     end
   end
 end

@@ -23,7 +23,7 @@ end
 
 Then /^[Ee]xpect Advanced Options Extra Services Button is visible$/ do
   step "Expect Advanced Options responds to Extra Services Button (extra_services_btn)"
-  expect(stamps.mail.print_form.advanced_options.extra_services_btn.visible?).to be(true), "Extra Services Button is NOT visible"
+  expect(stamps.mail.print_form.advanced_options.extra_services_btn).to be_visible, "Extra Services Button is NOT visible"
 end
 
 Then /^[Ss]elect Advanced Options Specify Postage Amount$/ do
@@ -67,7 +67,7 @@ Then /^[Ss]et Advanced Options Mail Date to ((?:date|today plus|tomorrow|today|)
     when /date/
       test_param[:mail_date]=value
     when /today plus/
-      test_param[:mail_date]=(Date.today+value).strftime("%m/%d/%Y")
+      test_param[:mail_date]=(Date.today + value.to_i).strftime("%m/%d/%Y")
     when /today/
       test_param[:mail_date]=(Date.today).strftime("%m/%d/%Y")
     when /tomorrow/
@@ -116,13 +116,20 @@ end
 
 Then /^[Ee]xpect Advanced Options Reference Number field is present$/ do
   step "Expect Advanced Options responds to Reference Number (reference_number)"
-  expect(stamps.mail.print_form.advanced_options.reference_number).to be_present, "Reference Number field is NOT present"
+  expect(stamps.mail.print_form.advanced_options.reference_number.present?).to be(true), "Reference Number field is NOT present"
 end
 
 Then /^[Ee]xpect Advanced Options Reference Number is (?:correct|(.*))$/ do |expectation|
   step "Expect Advanced Options responds to Reference Number (reference_number)"
   expectation=test_param[:reference_number] if expectation.nil?
+  expectation="" if expectation.nil?
   expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(expectation), "Advanced Options Reference Number is incorrect"
+end
+
+#this step confirms that there is no text in the Reference Number field
+Then /^[Ee]xpect Advanced Options Reference Number is blank$/ do
+  step "Expect Advanced Options responds to Reference Number (reference_number)"
+  expect(stamps.mail.print_form.advanced_options.reference_number.text).to eql(""), "Advanced Options Reference Number is incorrect"
 end
 
 Then /^[Ee]xpect Advanced Options Cost Code Field is present$/ do

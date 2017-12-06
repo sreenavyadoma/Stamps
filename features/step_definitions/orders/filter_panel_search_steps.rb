@@ -1,6 +1,6 @@
 
 Then /^[Ss]earch filtered Orders for cached Order ID$/ do
-  step "search Orders for #{test_param[:order_id][1]} expecting to find at least 1"
+  step "search Orders for #{test_param[:order_id].values.last} expecting to find at least 1"
 end
 
 Then /^[Ss]earch filtered Orders for cached Ship-To full name$/ do
@@ -15,8 +15,8 @@ Then /^[Ss]earch filtered Orders for cached Ship-To email$/ do
   step "search Orders for #{test_param[:email]} expecting to find at least 1"
 end
 
-Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |search_str, count|
-  step "set Filter Panel Search textbox to #{search_str}"
+Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |str, count|
+  step "set Filter Panel Search textbox to #{str}"
   begin
     15.times do
       sleep(1)
@@ -24,8 +24,8 @@ Then /^[Ss]earch Orders for (.*) expecting to find at least (\d+)$/ do |search_s
       sleep(1)
       break if stamps.orders.filter_panel.search_orders.search_results.count >= count.to_i
     end
-    expect(stamps.orders.filter_panel.search_orders.search_results).to be_present, "Couldn't find #{search_str} in Orders Grid"
-  end unless search_str.nil?||search_str.size==0
+    expect(stamps.orders.filter_panel.search_orders.search_results).to be_present, "Couldn't find #{str} in Orders Grid"
+  end unless str.nil?||str.size==0
 
 end
 

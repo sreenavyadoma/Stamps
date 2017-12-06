@@ -16,7 +16,7 @@ Feature: 25 orders
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then set Order Details form Ounces to 2
     Then set Order Details form Pounds to 2
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -30,7 +30,7 @@ Feature: 25 orders
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then set Order Details form Ounces to 2
     Then set Order Details form Pounds to 2
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

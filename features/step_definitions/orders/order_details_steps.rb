@@ -317,7 +317,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step "show order details form ship-to fields"
-  expect(stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic]=test_helper.format_address(test_helper.address_helper_zone(address)))).to include(address.split(' ').last)
+  stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic]=test_helper.format_address(test_helper.address_helper_zone(address)))
   step "Save Order Details data"
   step "hide order details form Ship-To fields"
 end
@@ -354,7 +354,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Hide [Ii]nternational [Ss]hip-[Tt]o field
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is truthy$/ do
-  expect(test_param[:order_id][1].to_i).to be > 0
+  expect(test_param[:order_id].values.last.to_i).to be > 0
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID equals Grid Oder ID in row (\d+)$/ do |row|
@@ -362,7 +362,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID equals Grid Oder ID in row (\
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form Order ID is the same as saved Order ID$/ do
-  expect(stamps.orders.single_order_details.toolbar.order_id).to eql test_param[:order_id][1]
+  expect(stamps.orders.single_order_details.toolbar.order_id).to eql test_param[:order_id].values.last
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails form [Ss]hip-[Tt]o Name is (.*)$/ do |expectation|

@@ -3,6 +3,10 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm is present$/ do
   expect(stamps.orders.single_order_details).to be_present, "Order Details form is not present"
 end
 
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm is not present$/ do
+  expect(stamps.orders.single_order_details.present?).to be(false), "Order Details form is present"
+end
+
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Ship-From and Ship-From saved values are the same$/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
@@ -176,28 +180,28 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Restrictions button is hidd
   expect(stamps.orders.single_order_details.customs.browser_restrictions_button.present?).not_to be(true)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is visible/ do
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Customs Form button is visible/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.customs.edit_form_btn).to be_present
+  expect(stamps.orders.single_order_details.customs.custom_form_btn).to be_present
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is hidden/ do
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Customs Form button is hidden/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.customs.edit_form_btn.present?).not_to be(true)
+  expect(stamps.orders.single_order_details.customs.custom_form_btn.present?).not_to be(true)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is enabled/ do
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Customs Form button is enabled/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.customs.edit_form_btn).to be_present
+  expect(stamps.orders.single_order_details.customs.custom_form_btn).to be_present
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Edit Form button is disabled/ do
+Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm Customs Customs Form button is disabled/ do
   stamps.orders.single_order_details.wait_until_present(2)
   step "expect order details form is present"
-  expect(stamps.orders.single_order_details.customs.edit_form_btn.present?).not_to be(true)
+  expect(stamps.orders.single_order_details.customs.custom_form_btn.present?).not_to be(true)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm International Ship-To Name Placeholder is (.*)$/ do |expectation|

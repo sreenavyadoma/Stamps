@@ -870,21 +870,21 @@ module Stamps
       end
 
       class OrdersCustomsFields < Browser::StampsModal
-        attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :edit_form_btn, :restrictions_btn
+        attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :custom_form_btn, :restrictions_btn
 
         def initialize(param)
           super
           @customs_form=Stamps::Common::Customs::CustomsInformation.new(param)
           @view_restrictions=Orders::Details::ViewRestrictions.new(param)
-          @edit_form_btn=StampsField.new browser.span(text: 'Edit Form...')
+          @custom_form_btn=StampsField.new browser.span text: 'Customs Form...'
           @restrictions_btn=StampsField.new browser.span text: 'Restrictions...'
         end
 
-        def edit_form
+        def edit_customs_form
           10.times do
             return customs_form if customs_form.present?
-            edit_form_btn.scroll_into_view
-            edit_form_btn.click
+            custom_form_btn.scroll_into_view
+            custom_form_btn.click
             customs_form.wait_until_present(2)
           end
           expect(customs_form).to be_present

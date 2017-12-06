@@ -44,7 +44,7 @@ end
 Then /^Tooltips: Expect Print Modal Print Media \"(.*)\" tooltip to include \"(.*)\"$/ do |expectation, data_qtip|
   #test_config.logger.step "Tooltips: Expect Print Modal Print Media #{expectation} tooltip to include #{data_qtip}"
   tooltips=data_qtip.split "||"
-  actual_tooltip=stamps.orders.orders_print_modal.printing_on.tooltip expectation
+  actual_tooltip=stamps.orders.modals.orders_print_modal.printing_on.tooltip expectation
   tooltips.each do |tooltip|
     #test_config.logger.step "Test #{(actual_tooltip.include? tooltip)?"Passed":"Failed"}"
     expect(actual_tooltip).to include tooltip
@@ -53,48 +53,48 @@ end
 
 Then /^Tooltips: Expect Customs Form Tooltip Error for Total Weight is (.+)$/ do |expectation|
   #test_config.logger.step "Tooltips: Expect Customs Form Tooltip Error for Total Weight is #{expectation}"
-  stamps.orders.single_order_details.customs.edit_form.should_not be_nil
-  data_error_qtip=stamps.orders.single_order_details.customs.edit_form.total_weight.data_error
+  stamps.orders.single_order_details.customs.edit_customs_form.should_not be_nil
+  data_error_qtip=stamps.orders.single_order_details.customs.edit_customs_form.total_weight.data_error
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Associated Item Description Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Associated Item Description Tooltip Error is #{expectation}"
-  stamps.orders.single_order_details.customs.edit_form.should_not be_nil
-  data_error_qtip=stamps.orders.single_order_details.customs.edit_form.associated_items.item_number(1).description.data_error_qtip
+  stamps.orders.single_order_details.customs.edit_customs_form.should_not be_nil
+  data_error_qtip=stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(1).description.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Qty Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Qty Tooltip Error is #{expectation}"
-  stamps.orders.single_order_details.customs.edit_form.should_not be_nil
-  data_error_qtip=stamps.orders.single_order_details.customs.edit_form.associated_items.item_number(1).qty.textbox.data_error_qtip
+  stamps.orders.single_order_details.customs.edit_customs_form.should_not be_nil
+  data_error_qtip=stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(1).qty.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Unit Price Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Unit Price Tooltip Error is #{expectation}"
-  stamps.orders.single_order_details.customs.edit_form.should_not be_nil
-  data_error_qtip=stamps.orders.single_order_details.customs.edit_form.associated_items.item_number(1).unit_price.textbox.data_error_qtip
+  stamps.orders.single_order_details.customs.edit_customs_form.should_not be_nil
+  data_error_qtip=stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(1).unit_price.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Pounds Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Pounds Tooltip Error is #{expectation}"
-  stamps.orders.single_order_details.customs.edit_form.should_not be_nil
-  data_error_qtip=stamps.orders.single_order_details.customs.edit_form.associated_items.item_number(1).lb.textbox.data_error_qtip
+  stamps.orders.single_order_details.customs.edit_customs_form.should_not be_nil
+  data_error_qtip=stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(1).lb.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(data_error_qtip).to include(expectation)
 end
 
 Then /^[Oo]n Customs form, expect Ounces Tooltip Error is (.*)$/ do |expectation|
   #test_config.logger.step "expect Customs form Ounces Tooltip Error is #{expectation}"
-  stamps.orders.single_order_details.customs.edit_form.should_not be_nil
-  data_error_qtip=stamps.orders.single_order_details.customs.edit_form.associated_items.item_number(1).oz.textbox.data_error_qtip
+  stamps.orders.single_order_details.customs.edit_customs_form.should_not be_nil
+  data_error_qtip=stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(1).oz.textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_qtip.include? expectation)?'Passed':'Failed'}"
   expect(ddata_error_qtip).to include(expectation)
 end
@@ -296,12 +296,12 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails form International Name data error tooltip 
     begin
       stamps.orders.single_order_details.ship_to.international.name.scroll_into_view
       sleep(0.35)
-      break if data_error_tooltip.include? (expectation.size>10)?expectation[0..9]:expectation
+      break if data_error_tooltip.include (expectation.size>10)?expectation[0..9]:expectation
     end unless data_error_tooltip.nil?
   end
   stamps.orders.single_order_details.ship_to.international.name.scroll_into_view
   sleep(2)
-  data_error_tooltip=textbox.data_error_qtip
+  data_error_tooltip = textbox.data_error_qtip
   #test_config.logger.step "Test #{(data_error_tooltip.include? expectation)?"Passed":"Failed"}"
   expect(data_error_tooltip).to include(expectation)
 end

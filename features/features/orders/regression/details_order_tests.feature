@@ -195,7 +195,7 @@ Feature: All details tests for order
   # Priority Mail International Flat Rate Envelope
     Then set Order Details form service to PMI Flat Rate Envelope
     Then expect Order Details form service is PMI Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -209,7 +209,7 @@ Feature: All details tests for order
   # Priority Mail International Padded Flat Rate Envelope
     Then set Order Details form service to PMI Padded Flat Rate Envelope
     Then expect Order Details form service is PMI Padded Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -223,7 +223,7 @@ Feature: All details tests for order
   # Priority Mail International Legal Flat Rate Envelope
     Then set Order Details form service to PMI Legal Flat Rate Envelope
     Then expect Order Details form service is PMI Legal Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -237,7 +237,7 @@ Feature: All details tests for order
   # Priority Mail International Small Flat Rate Box
     Then set Order Details form service to PMI Small Flat Rate Box
     Then expect Order Details form service is PMI Small Flat Rate Box
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -251,7 +251,7 @@ Feature: All details tests for order
   # Priority Mail International Medium Flat Rate Box
     Then set Order Details form service to PMI Medium Flat Rate Box
     Then expect Order Details form service is PMI Medium Flat Rate Box
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -265,7 +265,7 @@ Feature: All details tests for order
   # Priority Mail International Large Flat Rate Box
     Then set Order Details form service to PMI Large Flat Rate Box
     Then expect Order Details form service is PMI Large Flat Rate Box
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -279,7 +279,7 @@ Feature: All details tests for order
   # PME International Flat Rate Envelope
     Then set Order Details form service to PMEI Flat Rate Envelope
     Then expect Order Details form service is PMEI Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -293,7 +293,7 @@ Feature: All details tests for order
   # PME International Padded Flat Rate Envelope
     Then set Order Details form service to PMEI Padded Flat Rate Envelope
     Then expect Order Details form service is PMEI Padded Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -307,7 +307,7 @@ Feature: All details tests for order
   # PME International Legal Flat Rate Envelope
     Then set Order Details form service to PMEI Legal Flat Rate Envelope
     Then expect Order Details form service is PMEI Legal Flat Rate Envelope
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 0
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -573,7 +573,7 @@ Feature: All details tests for order
       | random | random  | random           | random           | random | random  | random      | Brazil  | random  | random  |
     Then set Order Details form Ounces to 1
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
-    Then click Order Details form Edit Form button
+    Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In Brazil, Tariff 1
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

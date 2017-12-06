@@ -2,7 +2,6 @@
 module Stamps
   module Mail
     class WebMail < Browser::StampsModal
-#todo-Kaushal Incomplete printing error
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
       def sign_in_modal
@@ -11,6 +10,10 @@ module Stamps
 
       def mail_toolbar
         (cache[:mail_toolbar].nil?||!cache[:mail_toolbar].present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
+      end
+
+      def mail_external_sites
+        (cache[:mail_external_sites].nil?||!cache[:mail_external_sites].present?)?cache[:mail_external_sites]=MailExternalSites.new(param):cache[:mail_external_sites]
       end
 
       def print_media
@@ -22,6 +25,10 @@ module Stamps
         blur_out
         raise "Print-on drop-down is not present." unless print_media.present?
         param.print_media=print_media.select_print_on(selection)
+      end
+
+      def print_preview
+        (cache[:print_preview].nil?||!cache[:print_preview].present?)?cache[:print_preview]=PrintPreviewPanel::PrintPreview.new(param).extend(PrintPreviewPanel::StampsPrintPreview):cache[:print_preview]
       end
 
       def print_form

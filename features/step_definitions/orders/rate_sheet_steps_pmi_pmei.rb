@@ -512,7 +512,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   end
 
  # if (Time.now - test_param[:start_time] > test_param[:max_time])
- #   step "Open Settings Modal"
+ #   step "click orders toolbar settings button"
  #   step "In Settings modal, Save"
  # end
 
