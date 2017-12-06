@@ -94,8 +94,18 @@ module Stamps
         end
 
         def size
-          30.times do break if browser.tables(:css=>"div[id^=ordersGrid-][id$=-body]>div>div>table").size > 0 end
-          browser.tables(:css=>"div[id^=ordersGrid-][id$=-body]>div>div>table").size
+          15.times do
+            begin
+              sleep(0.05)
+              if (count=browser.tables(:css=>"div[id^=ordersGrid-][id$=-body] table").size) > 0
+                browser.tables(:css=>"div[id^=ordersGrid-][id$=-body] table")[0].flash
+                return count
+              end
+            rescue
+              #ignore
+            end
+          end
+          0
         end
 
         def parameter_helper
