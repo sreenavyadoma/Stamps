@@ -20,7 +20,8 @@ rates_test:
   rates_pmi_comm_plus: PMI Comm Plus
   rates_fcm_package: FCM Package
   test_dir: \\jenkinsvm01\Public\share\share\rates_test_data\tests
-  results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results
+  results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results\
+
 
 import_orders_test:
   import_orders_dir: \\jenkinsvm01\Public\automation\data
@@ -184,7 +185,11 @@ country_groups_PMI:
     1: Hong Kong|66
     2: Republic of (South) Korea|44
   group4:
-    1:  Albania|66
+      1:  Albania|44
+      4:  Belarus|66
+      15:  Bosnia-Herzegovina|44
+  group41:
+    1:  Albania|44
     2:  Armenia|44
     3:  Azerbaijan|70
     4:  Belarus|66
@@ -233,7 +238,7 @@ country_groups_PMI:
     24: Gibraltar|44
     25: Greenland|66
     26: Kosovo|70
-    27: Montenegro|70
+    27: Republic of Montenegro|70
   group6:
     1:  Bangladesh|44
     2:  Bhutan|66
@@ -243,7 +248,7 @@ country_groups_PMI:
     6:  Fiji|44
     7:  French Polynesia|66
     8:  India|44
-    9:  Indonesia|66
+    9:  Indonesia|44
     10: Kazakhstan|44
     11: Kiribati|44
     12: Kyrgyzstan|44
@@ -322,7 +327,7 @@ country_groups_PMI:
     45: Saint Helena|44
     46: Comoros|44
     47: Gambia|66
-    48: Tristan da Cuhna|22
+    48: Tristan da Cunha|44
   group8:
     1:  Algeria|44
     2:  Bahrain|44
@@ -615,7 +620,7 @@ country_groups_PMI_flat_rate:
     135: Iran
     136: Kosovo
     137: Libya
-    138: Montenegro
+    138: Republic of Montenegro
     139: Montserrat
     140: Pitcairn Island
     141: Reunion
@@ -625,7 +630,7 @@ country_groups_PMI_flat_rate:
     145: Tuvalu
     146: Wallis & Futuna
     147: Sint Maarten
-    148: Tristan da Cuhna
+    148: Tristan da Cunha
 
 country_groups_PMEI:
   group1:

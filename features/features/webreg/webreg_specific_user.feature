@@ -70,7 +70,7 @@ Feature: Registration
     Then add new order
     Then Pause for 1 second
     Then click orders toolbar settings button
-    Then In Settings modal, set Logoff to 2 hours
+    Then set general settings logoff to 2 hours
     Then In Settings modal, Save
     Then Navigation Bar: Customer Balance
     Then Navigation Bar: Wait while balance less than 5000

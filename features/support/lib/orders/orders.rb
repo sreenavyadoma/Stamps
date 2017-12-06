@@ -1,8 +1,6 @@
 module Stamps
   module Orders
     class WebOrders < Browser::StampsModal
-      include StampsOrdersModals
-      
       def orders_toolbar
         (cache[:orders_toolbar].nil?||!cache[:orders_toolbar].present?)?cache[:orders_toolbar]=Toolbar::OrdersToolbar.new(param):cache[:orders_toolbar]
       end
@@ -20,15 +18,19 @@ module Stamps
       end
 
       def single_order_details
-        (cache[:single_order_details].nil?||!cache[:single_order_details].present?)?cache[:single_order_details]=Orders::Details::SingleOrderDetails.new(param):cache[:single_order_details]
+        (cache[:single_order].nil?||!cache[:single_order].present?)?cache[:single_order]=Orders::Details::SingleOrderDetails.new(param):cache[:single_order]
       end
 
       def multi_order_details
-        (cache[:multi_order_details].nil?||!cache[:multi_order_details].present?)?cache[:multi_order_details]=Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order_details]
+        (cache[:multi_order].nil?||!cache[:multi_order].present?)?cache[:multi_order]=Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order]
+      end
+
+      def modals
+        (cache[:modals].nil?||!cache[:modals].present?)?cache[:modals]=StampsModal.new(param).extend(StampsOrdersModals):cache[:modals]
       end
 
       def marketplace
-        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=StampsModal.new(param).extend(Stamps::Orders::MarketPlaceStoreModals):cache[:marketplace]
+        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=StampsModal.new(param).extend(MarketPlaceStoreModals):cache[:marketplace]
       end
 
       def styles

@@ -1,11 +1,11 @@
 
-@mail_print_sample_shipping_label_8x11_fcm_psg
+@mail_print_sample_shipping_label_8_x_11_fcm_psg
 Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
 
   Background:
     Given a valid user is signed in to Web Apps
 
-  @mail_print_sample_shipping_label_8x11_fcm
+  @mail_print_sample_shipping_label_8_x_11_fcm
   Scenario: Sample Shipping Label - 8 ½” x 11” FCM Paper
 
    #mail_print_sample_shipping_label_8x11_fcm_large_envelope
@@ -32,7 +32,7 @@ Feature: Mail Sample Shipping Label - 8 ½” x 11” FCM PSG Paper
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-  @mail_print_sample_shipping_label_8x11_psg
+  @mail_print_sample_shipping_label_8_x_11_psg
   Scenario: Sample Shipping Label - 8 ½” x 11” PSG Paper
 
    #mail_print_sample_shipping_label_8x11_psg_large_package
