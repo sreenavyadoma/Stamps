@@ -2,6 +2,12 @@
 Then /^[Oo]pen Orders Settings$/ do
   stamps.orders.orders_settings
 end
+
+Then /^[Oo]pen Settings Modal$/ do
+  stamps.orders.orders_toolbar.orders_settings.click
+  #stamps.orders.orders_settings.general_field.click
+end
+
 # Services checkbox
 Then /^Settings: Check Services$/ do
   @general_settings.services.check
@@ -49,7 +55,8 @@ end
 
 #to do setup some where in Orders Settings
 Then /^[Ii]n Orders Settings, click on General Settings tab$/ do
-  @general_settings.general.click
+  #@general_settings.general.click
+  @orders_settings.general.click
 end
 
 # Set Logoff
@@ -92,6 +99,7 @@ Then /^[Ii]n Settings modal, Logoff set (.*)$/ do |value|
       @general_settings.log_off.one_hour
     when "2 hours"
       @general_settings.log_off.two_hours
+      #@orders_settings.log_off.two_hours
     else
       expect("Invalid Logoff Selection -  In Settings modal, Logoff #{value}").to eql "Settings"
   end

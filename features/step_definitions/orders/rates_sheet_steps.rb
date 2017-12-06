@@ -24,7 +24,14 @@ Then /^[Ee]xcel rate sheet is loaded$/ do
   @rate_file.should_not be nil
 end
 
-
+Then /^Login and configure rate tests$/ do
+  step "excel rate sheet is loaded"
+  step "a valid user is signed in to Web Apps"
+  #step "Open Settings Modal"
+  #step "in Orders Settings, click on General Settings tab"
+  #step "In Settings modal, set Logoff to 2 hours"
+  step "prepare environment for ratings test"
+end
 
 
 

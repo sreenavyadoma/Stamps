@@ -31,43 +31,29 @@ module Stamps
       end
 
       def username
-        #frame1=browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
-        #frame1.text_field(:id, 'login')
-        StampsTextbox.new (browser.text_field(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input"))
+        (cache[:username].nil? || cache[:username].present?)?cache[:username]=StampsTextbox.new(
+            (browser.text_field(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input"))):cache[:username]
       end
 
       def secret_answer_1
-        #frame1=browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
-        #frame1.text_field(name: "/stamps/userprofiling/SDCProfileFormHandler.value.codeword1")
-
-        #StampsField.new(browser.text_field(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[1])
-        StampsTextbox.new(browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[1])
-        #(cache[:int_textbox].nil?||!cache[:int_textbox].present?)?cache[:int_textbox]=StampsTextbox.new(
-            #browser.inputs(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[1]):cache[:int_textbox]
+        (cache[:secret_answer_1].nil? || cache[:secret_answer_1].present?)?cache[:secret_answer_1]=StampsTextbox.new(
+            browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[1]):cache[:secret_answer_1]
       end
 
       def secret_answer_2
-        #frame1=browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
-        #frame1.text_field(name: "/stamps/userprofiling/SDCProfileFormHandler.value.codeword2")
-        StampsTextbox.new(browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[2])
+        (cache[:secret_answer_2].nil? || cache[:secret_answer_2].present?)?cache[:secret_answer_2]=StampsTextbox.new(
+            browser.text_fields(css: "div[id^=forgotpasswordmodal]>div>div>div>div>div>div>div>div>div>div>div>div>input")[2]):cache[:secret_answer_2]
       end
 
       def continue
-        #frame1=browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
-        #button=frame1.div(id: "fb_btnContinue")
-        #button.click
         browser.spans(text: "Continue").each do |btn|
           button = StampsField.new(btn)
           return button.click if button.present?
         end
-        #StampsField.new(browser.span(text: "Continue")).click
         sleep(2)
       end
 
       def confirm_reset
-        #frame1=browser.iframe(css: "iframe[src*='/Store/login/lost_password/webpostage/']")
-        # confirmation=frame1.p(text: "Thank you. We have sent a temporary password in an email to you.")
-        #confirmation=frame1.p(text: "Thank you. We have sent a temporary password in an email to you.")
         confirmation=StampsField.new(browser.label(text: "We have sent a temporary password to the email address associated with your account."))
         5.times do
           sleep(0.35)
