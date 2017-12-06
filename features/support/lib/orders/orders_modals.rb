@@ -8,15 +8,15 @@ module Stamps
 
     module StampsOrdersModals
       def orders_print_modal
-        (cache[:orders_print_modal].nil?||!cache[:orders_print_modal].present?)?cache[:orders_print_modal]=Stamps::Orders::Printing::OrdersPrintModal.new(param):cache[:orders_print_modal]
+        (cache[:orders_print_modal].nil?||!cache[:orders_print_modal].present?)?cache[:orders_print_modal]=Printing::OrdersPrintModal.new(param):cache[:orders_print_modal]
       end
 
       def orders_settings_modal
-        (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=Stamps::Orders::OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
+        (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
       end
 
       def add_your_store_modal
-        (cache[:add_store].nil?||!cache[:add_store].present?)?cache[:add_store]=Stamps::Orders::Stores::Marketplace.new(param):cache[:add_store]
+        (cache[:add_store].nil?||!cache[:add_store].present?)?cache[:add_store]=Stores::Marketplace.new(param):cache[:add_store]
       end
     end
     
