@@ -1,6 +1,6 @@
 Then /^View Print On option (.*) tooltip$/ do |label|
   #test_config.logger.step "View Print On option #{label} tooltip"
-  tooltip=stamps.orders.orders_print_modal.print_on_tooltip label
+  tooltip=stamps.orders.modals.orders_print_modal.print_on_tooltip label
 end
 
 #Shipping Label 5.5 x 8.5
@@ -32,7 +32,7 @@ end
 
 Then /^[Ee]xpect a print Sample of \"(.*)\"$/ do |label|
   #test_config.logger.step "Expect a mail Sample of #{label}"
-  stamps.orders.orders_print_modal.print_sample
+  stamps.orders.modals.orders_print_modal.print_sample
 end
 
 

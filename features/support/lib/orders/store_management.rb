@@ -306,11 +306,7 @@ module Stamps
           (cache[:dataview].nil?||!cache[:dataview].present?)?cache[:dataview]=MarketplaceDataView.new(param):cache[:dataview]
         end
       end
-
-
-
-
-
+=begin
       #todo-rob deprecated
       class ManageStores < Browser::StampsModal
         class ManageStoresGrid < Browser::StampsModal
@@ -541,6 +537,7 @@ module Stamps
 
         end
       end
+=end
     end
   end
 end
