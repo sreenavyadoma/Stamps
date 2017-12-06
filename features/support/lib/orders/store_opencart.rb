@@ -17,15 +17,16 @@ module Stamps
 
       class OpenCart < Browser::StampsModal
         def add_advanced_shipping_feature
-          AddAdvancedShippingFeatures.new(param)
+          (cache[:advanced_shipping].nil?||!cache[:advanced_shipping].present?)?cache[:advanced_shipping]=AddAdvancedShippingFeatures.new(param):cache[:advanced_shipping]
         end
 
         def activate_your_new_features
+          (cache[:activate_features].nil?||!cache[:activate_features].present?)?cache[:activate_features]=ActivateYourNewFeatures.new(param):cache[:activate_features]
           ActivateYourNewFeatures.new(param)
         end
 
         def looking_for_shipstation
-          LookingForShipStaion.new(param)
+          (cache[:for_shipstation].nil?||!cache[:for_shipstation].present?)?cache[:for_shipstation]=LookingForShipStaion.new(param):cache[:for_shipstation]
         end
       end
     end

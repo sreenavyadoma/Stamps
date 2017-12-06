@@ -19,6 +19,8 @@ module Stamps
           (cache[:general_tab].nil?||!cache[:general_tab].present?)?cache[:general_tab]=Orders::OrdersSettings::GeneralTabView.new(param):cache[:general_tab]
         end
 
+
+
         def international_settings
         end
 

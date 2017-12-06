@@ -50,29 +50,24 @@ Then /^[Ii]n Orders Settings, click on General Settings tab$/ do
 end
 
 # Set Logoff
-
-Then /^[Ii]n Settings modal, set Logoff to 5 min.$/ do
-  stamps.orders.orders_settings_modal.general_tab.log_off.five_min
-end
-
-Then /^[Ii]n Settings modal, set Logoff to 10 min.$/ do
-  stamps.orders.orders_settings_modal.general_tab.log_off.ten_min
-end
-
-Then /^[Ii]n Settings modal, set Logoff to 15 min.$/ do
-  stamps.orders.orders_settings_modal.general_tab.log_off.fifteen_min
-end
-
-Then /^[Ii]n Settings modal, set Logoff to 30 min.$/ do
-  stamps.orders.orders_settings_modal.general_tab.log_off.thirty_min
-end
-
-Then /^[Ii]n Settings modal, set Logoff to 1 hour.$/ do
-  stamps.orders.orders_settings_modal.general_tab.log_off.one_hour
-end
-
-Then /^[Ii]n Settings modal, set Logoff to 2 hours$/ do
-  stamps.orders.orders_settings_modal.general_tab.log_off.two_hours
+Then /^set general settings logoff to (.*)$/ do |str|
+  expect(['5 min', '10 min', '15 min', '30 min', '1 hour', '2 hours']).to include(str)
+  case(str)
+    when /5 min/
+      stamps.orders.orders_settings_modal.general_tab.log_off.five_min
+    when /10 min/
+      stamps.orders.orders_settings_modal.general_tab.log_off.ten_min
+    when /15 min/
+      stamps.orders.orders_settings_modal.general_tab.log_off.fifteen_min
+    when /30 min/
+      stamps.orders.orders_settings_modal.general_tab.log_off.thirty_min
+    when /1 hour/
+      stamps.orders.orders_settings_modal.general_tab.log_off.one_hour
+    when /2 hours/
+      stamps.orders.orders_settings_modal.general_tab.log_off.two_hours
+    else
+      #ignore
+  end
 end
 
 Then /^[Ii]n Settings modal, set Postdate to 12:00 a.m.$/ do

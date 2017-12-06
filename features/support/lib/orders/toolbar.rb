@@ -845,7 +845,7 @@ module Stamps
 
       class OrdersToolbar < Browser::StampsModal
         include OrdersToolbarLeftSide
-        include OrdersToolbarRightSide
+        #include OrdersToolbarRightSide
         include ToolbarItemsToBeVerified
 
         def orders_settings

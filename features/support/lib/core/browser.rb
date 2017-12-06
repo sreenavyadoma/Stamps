@@ -653,8 +653,15 @@ module Stamps
                     :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
     end
 
+    module StampsCache
+      def cache
+        @cache ||= {}
+      end
+    end
+
     # StampsModal - base class for modals containing StampsElements
     class StampsModal
+      include StampsCache
       def initialize(param)
         cache[:param]=param
         cache[:helper]=StampsTestHelper.new(param.logger)
@@ -674,11 +681,6 @@ module Stamps
 
       def helper
         cache[:helper]
-      end
-
-      protected
-      def cache
-        @cache ||= {}
       end
     end
   end

@@ -1,29 +1,30 @@
 
 Then /^[Ee]xpect [Mm]arketplace [Mm]odal is [Pp]resent$/ do
-  expect(stamps.orders.marketplace).to be_present, "Marketplace modal is NOT present"
+  expect(stamps.orders.orders_settings_modal).to be_present, "Marketplace modal is NOT present"
 end
 
 Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
-  actual=stamps.orders.marketplace.contains(expectation)
-  expect(actual).to eql expectation
+  stamps.orders.orders_settings_modal.stores_tab
+  stamps.orders.orders_settings_modal.stores_tab_view
+  expect(stamps.orders.add_your_store_modal.contains(expectation)).to eql(expectation)
 end
 
 Then /^[Ss]earch [Mm]arketplace for [Ss]tore [Nn]ame (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  stamps.orders.marketplace.search_by_name.set(test_param[:store_name]=str)
+  stamps.orders.add_your_store_modal.search_by_name.set(test_param[:store_name]=str)
 end
 
 Then /^[Cc]onnect [Mm]arketplace [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  expect(stamps.orders.marketplace.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
+  expect(stamps.orders.add_your_store_modal.dataview.add_store(str)).to eql("Connect Your #{data_for(:supported_stores, {})[str.downcase]} Store")
 end
 
 Then /^[Aa]dd [Mm]arketplace [Ss]hip[Ss]tation [Ss]tore (.*)$/ do |str|
   step "validate store name #{str}"
   step "expect Marketplace modal is present"
-  expect(stamps.orders.marketplace.dataview.add_advanced_feature(str)).to eql("Add Advanced Shipping Features!")
+  expect(stamps.orders.add_your_store_modal.dataview.add_advanced_feature(str)).to eql("Add Advanced Shipping Features!")
 end
 
 Then /^validate store name (.*)$/ do |str|
@@ -35,11 +36,11 @@ Then /^[Ee]xpect [Mm]arketplace [Dd]ataview [Cc]ount is (greater|less|equal) (?:
   step "expect Marketplace modal is present"
   case(operator)
     when /greater/
-      expect(stamps.orders.marketplace.dataview.store_count).to be > count.to_i
+      expect(stamps.orders.add_your_store_modal.dataview.store_count).to be > count.to_i
     when /less/
-      expect(stamps.orders.marketplace.dataview.store_count).to be < count.to_i
+      expect(stamps.orders.add_your_store_modal.dataview.store_count).to be < count.to_i
     when /equal/
-      expect(stamps.orders.marketplace.dataview.store_count).to eql count.to_i
+      expect(stamps.orders.add_your_store_modal.dataview.store_count).to eql count.to_i
     else
       #ignore
   end
@@ -47,67 +48,68 @@ end
 #
 # Then /^[Ss]elect Paypal on Marketplace modal$/ do
 #   step "expect Paypal is on Marketplace modal"
-#   stamps.orders.marketplace.paypal.click
+#   stamps.orders.add_your_store_modal.paypal.click
 # end
+=begin
 
 Then /^[Ee]xpect Paypal is on Marketplace modal$/ do
-  expect(stamps.orders.marketplace.paypal_store).to be_present, "Paypal is not on Marketplace modal"
+  expect(stamps.orders.add_your_store_modal.paypal_store).to be_present, "Paypal is not on Marketplace modal"
 end
 
 Then /^Marketplace: Select Big Commerce$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.big_commerce
+  @store=stamps.orders.add_your_store_modal.big_commerce
 end
 
 Then /^Marketplace: Select Amazon$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.amazon
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.amazon
 end
 
 Then /^Marketplace: Select Volusion$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.volusion
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.volusion
 end
 
 Then /^Marketplace: Select Rakuten$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.rakuten
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.rakuten
 end
 
 Then /^Marketplace: Select Etsy$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.etsy
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.etsy
 end
 
 Then /^Marketplace: Select Ebay$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.ebay
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.ebay
 end
 
 Then /^Marketplace: Select Shopify$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.shopify
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.shopify
 end
 
 Then /^Marketplace: Select 3dcart$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.three_d_cart
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.three_d_cart
 end
 
 Then /^Marketplace: Select Yahoo$/ do
-  stamps.orders.marketplace.should_not be_nil
-  @store=stamps.orders.marketplace.yahoo
+  stamps.orders.add_your_store_modal.should_not be_nil
+  @store=stamps.orders.add_your_store_modal.yahoo
 end
 
 Then /^Marketplace: Close Modal$/ do
-  stamps.orders.marketplace.close
+  stamps.orders.add_your_store_modal.close
 end
+=end
 
 #todo-codereview ORDERSAUTO-3282
 Then /^[Ee]xpect [Mm]arketplace [Mm]odal [Rr]equires [Ff]ree [Uu]pgrade [Mm]essage [Pp]resent in (.*)$/ do |str|
-  expect(stamps.orders.marketplace.dataview.requires_upgrade_msg(str)).to be_present, " Requires Free Upgrade Message is NOT present"
+  expect(stamps.orders.add_your_store_modal.dataview.requires_upgrade_msg(str)).to be_present, " Requires Free Upgrade Message is NOT present"
 end
 
 Then /^[Ee]xpect [Mm]arketplace [Mm]odal [Aa]vailable in [Ss]hipStation [Mm]essage [Pp]resent in (.*)$/ do |str|
-  expect(stamps.orders.marketplace.dataview.available_shipstation_msg(str)).to be_present, " Available in ShipStation Message is NOT present"
+  expect(stamps.orders.add_your_store_modal.dataview.available_shipstation_msg(str)).to be_present, " Available in ShipStation Message is NOT present"
 end
