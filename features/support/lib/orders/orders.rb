@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     class WebOrders < Browser::StampsModal
-      include StampsOrdersModals
+      include StampsOrdersModals #todo-rob move this to same level as marketplace below
       
       def orders_toolbar
         (cache[:orders_toolbar].nil?||!cache[:orders_toolbar].present?)?cache[:orders_toolbar]=Toolbar::OrdersToolbar.new(param):cache[:orders_toolbar]
@@ -28,7 +28,7 @@ module Stamps
       end
 
       def marketplace
-        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=StampsModal.new(param).extend(Orders::Stamps::MarketPlaceStoreModals):cache[:marketplace]
+        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=StampsModal.new(param).extend(Stamps::Orders::MarketPlaceStoreModals):cache[:marketplace]
       end
 
       def styles
