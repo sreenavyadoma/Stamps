@@ -76,7 +76,6 @@ module Stamps
         end
 
         def scroll_to_column(name)
-          expect(name).to be_truthy
           case name
             when Symbol
               StampsField.new(browser.span(text: column_text[name])).scroll_into_view
