@@ -1,100 +1,78 @@
 
-Then /^[Oo]pen Orders Settings$/ do
-  stamps.orders.orders_settings
-end
 # Services checkbox
 Then /^Settings: Check Services$/ do
-  @general_settings.services.check
+  stamps.orders.orders_settings_modal.general_tab.services.check
 end
 
 Then /^[Ii]n Settings modal, Uncheck Services$/ do
-  @general_settings.services.uncheck
+  stamps.orders.orders_settings_modal.general_tab.services.uncheck
 end
 
 # Services checkbox
 Then /^Settings: Check Print Confirm$/ do
-  @general_settings.print_confirm.check
+  stamps.orders.orders_settings_modal.general_tab.print_confirm.check
 end
 
 Then /^Settings: Uncheck Print Confirm$/ do
-  @general_settings.print_confirm.uncheck
+  stamps.orders.orders_settings_modal.general_tab.print_confirm.uncheck
 end
 
 # Contacts$ checkbox
 Then /^Settings: Check Contacts$/ do
-  @general_settings.contacts.check
+  stamps.orders.orders_settings_modal.general_tab.contacts.check
 end
 
 Then /^Settings: Uncheck Contacts$/ do
-  @general_settings.contacts.uncheck
+  stamps.orders.orders_settings_modal.general_tab.contacts.uncheck
 end
 
 # Shipments checkbox
 Then /^Settings: Check Shipments$/ do
-  @general_settings.shipments.check
+  stamps.orders.orders_settings_modal.general_tab.shipments.check
 end
 
 Then /^Settings: Uncheck Shipments$/ do
-  @general_settings.shipments.uncheck
+  stamps.orders.orders_settings_modal.general_tab.shipments.uncheck
 end
 
 # USPS Terms checkbox
 Then /^Settings: Check USPS Terms$/ do
-  @general_settings.usps_terms.check
+  stamps.orders.orders_settings_modal.general_tab.usps_terms.check
 end
 
 Then /^Settings: Uncheck USPS Terms$/ do
-  @general_settings.usps_terms.uncheck
+  stamps.orders.orders_settings_modal.general_tab.usps_terms.uncheck
 end
 
 #to do setup some where in Orders Settings
 Then /^[Ii]n Orders Settings, click on General Settings tab$/ do
-  @general_settings.general.click
+  stamps.orders.orders_settings_modal.general_tab.general.click
 end
 
 # Set Logoff
 
 Then /^[Ii]n Settings modal, set Logoff to 5 min.$/ do
-  step "In Settings modal, Logoff set 5 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.five_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 10 min.$/ do
-  step "In Settings modal, Logoff set 10 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.ten_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 15 min.$/ do
-  step "In Settings modal, Logoff set 15 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.fifteen_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 30 min.$/ do
-  step "In Settings modal, Logoff set 30 min"
+  stamps.orders.orders_settings_modal.general_tab.log_off.thirty_min
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 1 hour.$/ do
-  step "In Settings modal, Logoff set 1 hour"
+  stamps.orders.orders_settings_modal.general_tab.log_off.one_hour
 end
 
 Then /^[Ii]n Settings modal, set Logoff to 2 hours$/ do
-  step "In Settings modal, Logoff set 2 hours"
-end
-
-Then /^[Ii]n Settings modal, Logoff set (.*)$/ do |value|
-  case value.downcase
-    when "5 min"
-      @general_settings.log_off.five_min
-    when "10 min"
-      @general_settings.log_off.ten_min
-    when "15 min"
-      @general_settings.log_off.fifteen_min
-    when "30 min"
-      @general_settings.log_off.thirty_min
-    when "1 hour"
-      @general_settings.log_off.one_hour
-    when "2 hours"
-      @general_settings.log_off.two_hours
-    else
-      expect("Invalid Logoff Selection -  In Settings modal, Logoff #{value}").to eql "Settings"
-  end
+  stamps.orders.orders_settings_modal.general_tab.log_off.two_hours
 end
 
 Then /^[Ii]n Settings modal, set Postdate to 12:00 a.m.$/ do
@@ -197,53 +175,53 @@ Then /^[Ii]n Settings modal, Postdate Set (.*)$/ do |value|
   test_config.logger.step "In Settings modal, Postdate Set #{value}"
   case value.downcase
     when "12:00 a.m."
-      @general_settings.post_date.twelve_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.twelve_am
     when "1:00 a.m."
-      @general_settings.post_date.one_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.one_am
     when "2:00 a.m."
-      @general_settings.post_date.two_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.two_am
     when "3:00 a.m."
-      @general_settings.post_date.three_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.three_am
     when "4:00 a.m."
-      @general_settings.post_date.four_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.four_am
     when "5:00 a.m."
-      @general_settings.post_date.five_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.five_am
     when "6:00 a.m."
-      @general_settings.post_date.six_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.six_am
     when "7:00 a.m."
-      @general_settings.post_date.seven_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.seven_am
     when "8:00 a.m."
-      @general_settings.post_date.eight_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.eight_am
     when "9:00 a.m."
-      @general_settings.post_date.nine_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.nine_am
     when "10:00 a.m."
-      @general_settings.post_date.ten_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.ten_am
     when "11:00 a.m."
-      @general_settings.post_date.eleven_am
+      stamps.orders.orders_settings_modal.general_tab.post_date.eleven_am
     when "12:00 p.m."
-      @general_settings.post_date.twelve_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.twelve_pm
     when "1:00 p.m."
-      @general_settings.post_date.one_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.one_pm
     when "2:00 p.m."
-      @general_settings.post_date.two_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.two_pm
     when "3:00 p.m."
-      @general_settings.post_date.three_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.three_pm
     when "4:00 p.m."
-      @general_settings.post_date.four_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.four_pm
     when "5:00 p.m."
-      @general_settings.post_date.five_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.five_pm
     when "6:00 p.m."
-      @general_settings.post_date.six_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.six_pm
     when "7:00 p.m."
-      @general_settings.post_date.seven_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.seven_pm
     when "8:00 p.m."
-      @general_settings.post_date.eight_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.eight_pm
     when "9:00 p.m."
-      @general_settings.post_date.nine_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.nine_pm
     when "10:00 p.m."
-      @general_settings.post_date.ten_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.ten_pm
     when "11:00 p.m."
-      @general_settings.post_date.eleven_pm
+      stamps.orders.orders_settings_modal.general_tab.post_date.eleven_pm
     else
       expect("Invalid Postdate Selection -  In Settings modal, Postdate #{value}").to eql "Settings"
   end
@@ -283,19 +261,19 @@ end
 Then /^[Ii]n Settings modal, Mail Balance Set (.*)$/ do |value|
   case value.downcase
     when "0"
-      @general_settings.postage_balance.zero
+      stamps.orders.orders_settings_modal.general_tab.postage_balance.zero
     when "10"
-      @general_settings.postage_balance.ten
+      stamps.orders.orders_settings_modal.general_tab.postage_balance.ten
     when "25"
-      @general_settings.postage_balance.twenty_five
+      stamps.orders.orders_settings_modal.general_tab.postage_balance.twenty_five
     when "50"
-      @general_settings.postage_balance.fifty
+      stamps.orders.orders_settings_modal.general_tab.postage_balance.fifty
     when "100"
-      @general_settings.postage_balance.one_hundred
+      stamps.orders.orders_settings_modal.general_tab.postage_balance.one_hundred
     when "250"
-      @general_settings.postage_balance.two_hundred_fifty
+      stamps.orders.orders_settings_modal.general_tab.postage_balance.two_hundred_fifty
     when "500"
-      @general_settings.postage_balance.five_hundred
+      stamps.orders.orders_settings_modal.general_tab.postage_balance.five_hundred
     else
       expect("Invalid Mail Balance Selection -  In Settings modal, Mail Balance #{value}").to eql "Settings"
   end
@@ -304,49 +282,49 @@ end
 # Expectations
 #  Services
 Then /^[Ii]n Settings modal, Expect Services Checked$/ do
-  expect(@general_settings.services.checked?).to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.services.checked?).to be(true)
 end
 
 Then /^[Ii]n Settings modal, Expect Services Unchecked$/ do
-  expect(@general_settings.services.checked?).not_to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.services.checked?).not_to be(true)
 end
 
 #  Print Confirm
 Then /^[Ii]n Settings modal, Expect Print Confirm Checked$/ do
-  expect(@general_settings.print_confirm.checked?).to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.print_confirm.checked?).to be(true)
 end
 
 Then /^[Ii]n Settings modal, Expect Print Confirm Unchecked$/ do
-  expect(@general_settings.print_confirm.checked?).not_to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.print_confirm.checked?).not_to be(true)
 end
 
 #  Print Confirm
 Then /^[Ii]n Settings modal, Expect USPS Terms Checked$/ do
-  expect(@general_settings.usps_terms.checked?).to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.usps_terms.checked?).to be(true)
 end
 
 Then /^[Ii]n Settings modal, Expect USPS Terms Unchecked$/ do
-  expect(@general_settings.usps_terms.checked?).not_to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.usps_terms.checked?).not_to be(true)
 end
 
 #  Contacts
 Then /^[Ii]n Settings modal, Expect Contacts Checked$/ do
-  expect(@general_settings.contacts.checked?).to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.contacts.checked?).to be(true)
 end
 
 Then /^[Ii]n Settings modal, Expect Contacts Unchecked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.contacts.checked?).not_to be(true)
+
+  expect(stamps.orders.orders_settings_modal.general_tab.contacts.checked?).not_to be(true)
 end
 
 #  Shipments
 Then /^[Ii]n Settings modal, Expect Shipments Checked$/ do
-  step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.shipments.checked?).to be(true)
+
+  expect(stamps.orders.orders_settings_modal.general_tab.shipments.checked?).to be(true)
 end
 
 Then /^[Ii]n Settings modal, Expect Shipments Unchecked$/ do
-  expect(@general_settings.shipments.checked?).not_to be(true)
+  expect(stamps.orders.orders_settings_modal.general_tab.shipments.checked?).not_to be(true)
 end
 
 # Logoff
@@ -375,8 +353,8 @@ Then /^[Ii]n Settings modal, Expect Logoff is set for 2 hours$/ do
 end
 
 Then /^[Ii]n Settings modal, Expect Logoff is (.*)$/ do |expectation|
-  step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.log_off.textbox.text).to eql expectation
+
+  expect(stamps.orders.orders_settings_modal.general_tab.log_off.textbox.text).to eql expectation
 end
 
 # Postadate
@@ -476,9 +454,8 @@ Then /^[Ii]n Settings modal, Expect Postdate set to 11:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 11:00 p.m."
 end
 
-Then /^[Ii]n Settings modal, Expect Postdate is (.*)$/ do |expectation|
-  step "Open Settings Modal" if @general_settings.nil?
-  expect(@general_settings.post_date.textbox.text).to eql expectation
+Then /^[Ii]n Settings modal, Expect Postdate is (.*)$/ do |expectation|  
+  expect(stamps.orders.orders_settings_modal.general_tab.post_date.textbox.text).to eql expectation
 end
 
 # Mail Balance
@@ -511,13 +488,13 @@ Then /^[Ii]n Settings modal, Expect Mail Balance set to 500$/ do
 end
 
 Then /^[Ii]n Settings modal, Expect Mail Balance is (.*)$/ do |expectation|
-  expect(@general_settings.postage_balance.textbox.text).to eql expectation
+  expect(stamps.orders.orders_settings_modal.general_tab.postage_balance.textbox.text).to eql expectation
 end
 
 # Reset Fields
 
 Then /^[Ii]n Settings modal, Open Reset Fields Modal$/ do
-  @reset_fields=@general_settings.reset_fields
+  @reset_fields=stamps.orders.orders_settings_modal.general_tab.reset_fields
 end
 
 Then /^Reset Fields:  Check Service$/ do
@@ -782,15 +759,15 @@ Then /^Reset Fields:  Close$/ do
 end
 
 Then /^[Ii]n Settings modal, Save$/ do
-  step "Open Settings Modal" if @general_settings.nil?
+
   #test_config.logger.step "In Settings modal, Save"
-  @general_settings.save
+  stamps.orders.orders_settings_modal.general_tab.save
 end
 
 Then /^[Ii]n Settings modal, Close$/ do
-  step "Open Settings Modal" if @general_settings.nil?
+
   #test_config.logger.step "In Settings modal, Close"
-  @general_settings.close
+  stamps.orders.orders_settings_modal.general_tab.close
 end
 
 

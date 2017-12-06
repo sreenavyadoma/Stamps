@@ -6,31 +6,13 @@ module Stamps
       end
     end
 
-    module MarketPlaceStoreModals
-      def paypal_store
-        (cache[:paypal_store].nil?||!cache[:paypal_store].present?)?cache[:paypal_store]=Stamps::Orders::Stores::PayPal.new(param):cache[:paypal_store]
-      end
-
-      def rakuten
-        (cache[:rakuten].nil?||!cache[:rakuten].present?)?cache[:rakuten]=Stamps::Orders::Stores::Rakuten.new(param):cache[:rakuten]
-      end
-
-      def shipstation
-        (cache[:shipstation].nil?||!cache[:shipstation].present?)?cache[:shipstation]=Stamps::Orders::Stores::OpenCart.new(param):cache[:shipstation]
-      end
-    end
-
     module StampsOrdersModals
       def orders_print_modal
         (cache[:orders_print_modal].nil?||!cache[:orders_print_modal].present?)?cache[:orders_print_modal]=Stamps::Orders::Printing::OrdersPrintModal.new(param):cache[:orders_print_modal]
       end
 
-      def orders_settings
+      def orders_settings_modal
         (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=Stamps::Orders::OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
-      end
-
-      def marketplace
-        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=Stamps::Orders::Stores::Marketplace.new(param):cache[:marketplace]
       end
     end
     
