@@ -630,12 +630,11 @@ module Stamps
       module GeneralSettingsContainer
         def gen_settings_header
           (cache[:gen_settings].nil?||!cache[:gen_settings].present?)?cache[:gen_settings]=StampsField.new(
-              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:gen_settings]
+              browser.label(text: "General Settings")):cache[:gen_settings]
         end
 
         def services
-          (cache[:services].nil?||!cache[:services].present?)?cache[:services]=StampsField.new(
-              browser.labels(css: "[class*=sdc-header-text]")[0]):cache[:services]
+          (cache[:services].nil?||!cache[:services].present?)?cache[:services]="":cache[:services]
         end
 
         def logoff
@@ -667,11 +666,6 @@ module Stamps
       end
 
       module EmailNotificationContainer
-        def email_notif_header
-          (cache[:email_notif].nil?||!cache[:email_notif].present?)?cache[:email_notif]=StampsField.new(
-              browser.labels(css: "[class*=sdc-header-text]")[1]):cache[:email_notif]
-        end
-
         def shipments
           #checkbox & edit link
         end
@@ -691,7 +685,34 @@ module Stamps
       end
 
       class InternationalTabView < Browser::StampsModal
+        def gen_settings_header
+          (cache[:gen_settings_header].nil?||!cache[:gen_settings_header].present?)?cache[:gen_settings_header]=StampsField.new(
+              browser.label(text: "Default Customs Information")[0]):cache[:gen_settings_header]
+        end
 
+        def package_contents
+
+        end
+
+
+        def non_delivery_options
+
+        end
+
+
+        def customs_declarations
+
+        end
+
+
+        def itn_number
+
+        end
+
+
+        def when_to_include_itn
+
+        end
       end
 
       class LabelMessagesTabView < Browser::StampsModal
