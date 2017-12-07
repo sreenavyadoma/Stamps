@@ -37,6 +37,10 @@ module Stamps
         (cache[:styles].nil?||!cache[:styles].present?)?cache[:styles]=PageStyles.new(param):cache[:styles]
       end
 
+      def external_sites
+        (cache[:external_sites].nil?||!cache[:external_sites].present?)?cache[:external_sites]=StampsModal.new(param).extend(StampsExternalSites):cache[:external_sites]
+      end
+
       def present?
         orders_grid.present?
       end

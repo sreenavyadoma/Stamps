@@ -13,29 +13,31 @@ module Stamps
       end
 
       module GeneralSettings
-        def text
-          (cache[:text].nil?||!cache[:text].present?)?cache[:text]= StampsField.new(browser.h3(text: "General Settings")):cache[:text]
+        def title_text
+          (cache[:title_text].nil?||!cache[:title_text].present?)?cache[:title_text]= StampsField.new(iframe.h3(css: "div[class^='storeEdit']>form>h3")):cache[:title_text]
         end
 
         def store_nickname
-          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(iframe.text_field(id: "storeName")):cache[:store_nickname]
+          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(iframe.text_field(name: "storeName")):cache[:store_nickname]
         end
 
         def checkbox
-          input=iframe.input(css: 'input[id=importOrders]')
-          verify=iframe.input(css: 'input[id=importOrders]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng_not_empty")
+          (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsCheckbox.new(
+              iframe.input(css: 'input[id=importOrders]'),
+              iframe.input(css: 'input[id=importOrders]'),
+              "class",
+              "ng-not-empty"):cache[:checkbox]
         end
       end
 
       module ServiceMapping
 
-        def text
-          (cache[:text].nil?||!cache[:text].present?)?cache[:text]= StampsField.new(browser.h3(text: "Service Mapping")):cache[:text]
+        def service_text
+          (cache[:service_text].nil?||!cache[:service_text].present?)?cache[:service_text]= StampsField.new(iframe.h3(text: "Service Mapping")):cache[:service_text]
         end
 
         def requested_service
-          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]= StampsTextbox.new(iframe.text_field(css: "div[id^='serviceName-'][name='serviceName']]")) :cache[:requested_service]
+          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]= StampsTextbox.new(iframe.text_field(text: "serviceName")) :cache[:requested_service]
         end
 
         def shipping_serv_dropdown
@@ -68,18 +70,24 @@ module Stamps
       end
 
       class Settings < Browser::StampsModal
+        include GeneralSettings
+        include ServiceMapping
+
+        def iframe
+          browser.iframe(css: "iframe[id=storeiframe]")
+        end
 
         def window_title
-          StampsField.new browser.div(text: "Settings")
+          StampsField.new browser.div(text: "Settings").wait_until_present
         end
 
         def present?
-          window_title.present?
+          wait_until_present.present?
         end
 
         def wait_until_present
           window=window_title
-          3.times do
+          20.times do
             break if window.present?
             sleep(0.35)
           end
@@ -98,7 +106,6 @@ module Stamps
           (cache[:save].nil?||!cache[:save].present?)?cache[:save]=StampsField.new(browser.button(id: "saveSettings")):cache[:save]
         end
       end
-
 
       class Square < Browser::StampsModal
         include SqaureWindowTitle
@@ -121,6 +128,10 @@ module Stamps
 
         def authorize_btn
           (cache[:authorize_btn].nil?||!cache[:authorize_btn].present?)?cache[:authorize_btn]=StampsField.new(iframe.button(css: "[ng-click='square.onAuthorizeClick()']")):cache[:authorize_btn]
+        end
+
+        def settings
+          (cache[:settings].nil?||!cache[:settings].present?)?cache[:settings]=Settings.new(param):cache[:settings]
         end
       end
     end
