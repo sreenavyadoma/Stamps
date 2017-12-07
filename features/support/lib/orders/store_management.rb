@@ -54,13 +54,12 @@ module Stamps
       end
 
       class StoreSettings < Browser::StampsModal
-        def wait_until_present(*args)
-          (StampsField.new browser.div(text: "Paypal Settings")).wait_until_present(*args)
-        end
         class ServiceMappingGrid < Browser::StampsModal
           class ServiceMappingLineItem < Browser::StampsModal
             class ServiceMappingShippingService < Browser::StampsModal
-
+              def iframe
+                browser.iframe(css: "iframe[id=storeiframe]")
+              end
 
 
               def initialize(param, index)
@@ -69,20 +68,46 @@ module Stamps
               end
 
               def dropdown
-                StampsField.new textbox_field.parent.parent.divs[1]
+                textbox
               end
 
               def textbox_field
-                browser.text_fields(name: "servicePackage")[@index]
+                iframe.text_fields(css: "input[class*=ui-select-search]")[@index]
               end
 
               def textbox
                 StampsTextbox.new textbox_field
               end
 
+              def select(str)
+                logger.info "Select service #{str}"
+                sleep(0.35)
+
+                dropdown.click
+                10.times do
+                  begin
+
+                    selection = data_for(:store_service_mapping, {})
+                    tds=browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
+                    selection=StampsField.new((form_type==:multi_obrder_int)?tds.last : tds.first)
+                    dropdown.click unless selection.present?
+                    selection.scroll_into_view
+                    sleep(0.15)
+                    selection.click
+                    logger.info "Selected service #{textbox.text} - #{(textbox.text.include? str)?"success": "service not selected"}"
+                    sleep(0.15)
+                    break if textbox.text.include?(str)
+                  rescue
+                    #ignore
+                  end
+                end
+                expect(textbox.text).to include(str)
+                textbox.text
+              end
+
               def select service
                 logger.info "Select Shipping service #{service}"
-                selection=StampsField.new(browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
+                selection=StampsField.new(iframe.trs(css: "tr[data-qtip*='#{service}']")[@index])
                 box=textbox
                 dd=dropdown
 
@@ -101,6 +126,10 @@ module Stamps
               end
             end
 
+            def iframe
+              browser.iframe(css: "iframe[id=storeiframe]")
+            end
+
             def initialize(param, index)
               super(param)
               @index=index
@@ -111,25 +140,29 @@ module Stamps
             end
 
             def requested_services
-              text_field=browser.text_fields(name: "ServiceKey")[@index]
+              text_field=iframe.text_fields(name: "serviceName")[@index]
               StampsTextbox.new text_field
             end
 
             def delete
-              StampsField.new(browser.spans(css: "span[class*=sdc-icon-remove]")[@index])
+              StampsField.new(iframe.spans(css: "span[class*=sdc-icon-remove]")[@index])
               end
 
-            def shipping_Service
+            def shipping_service
               ServiceMappingShippingService.new(param, @index)
             end
           end
 
-          def add_new_service_mapping_btn
-            StampsField.new browser.span(text: "Add New service Mapping")
+          def size
+            (iframe.inputs css: "input[id^=serviceName-]").size
           end
 
-          def size
-            (browser.divs css: "div[id^=singleservicemappingitem][class*=x-container-default]").size
+          def iframe
+            browser.iframe(css: "iframe[id=storeiframe]")
+          end
+
+          def add_new_service_mapping_btn
+            StampsField.new iframe.a text: "Add New Service Mapping"
           end
 
           def item index
@@ -156,7 +189,7 @@ module Stamps
         end
 
         def save
-          button=StampsField.new(browser.span text: "Save")
+          button=StampsField.new(iframe.span text: "Save")
           server_error=Orders::Stores::ServerError.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
@@ -180,12 +213,22 @@ module Stamps
         end
 
         def add_new_service_mapping
-          browser.span text: "Add New service Mapping"
+          StampsField.new iframe.a text: "Add New Service Mapping"
         end
 
         def store_nickname
-          StampsTextbox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
+          StampsTextbox.new iframe.text_field(id: "storeName")
         end
+
+        def wait_until_present(*args)
+          (StampsField.new browser.div(text: "Paypal Settings")).wait_until_present(*args)
+        end
+
+        def iframe
+          browser.iframe(css: "iframe[id=storeiframe]")
+        end
+
+
 
         def automatically_import_new_orders
           label=(browser.label text: "Automatically Import New Orders")

@@ -24,6 +24,8 @@ Feature:  All Store Management
       Then Check Express Checkout as a Paypal transaction type
       Then Connect to Paypal Store
       Then Set Store Nickname to random
+      Then Add new store service mapping
+      Then Set store service Mapping 1, Requested Services Priority Envelope, Shipping service PM Flat Rate Envelope
 
   @paypal_workflow_backlog
   Scenario: PayPal Workflow backlog

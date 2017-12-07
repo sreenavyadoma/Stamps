@@ -151,5 +151,5 @@ Then /^[Uu]ncheck Website Payments Pro API as a Paypal transaction type$/ do
 end
 
 Then /^Connect to Paypal Store$/ do
-  stamps.orders.marketplace.paypal_store.verify_email.connect
+  @store_settings = stamps.orders.marketplace.paypal_store.verify_email.connect
 end

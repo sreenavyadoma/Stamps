@@ -153,8 +153,8 @@ module Stamps
           dropdown.click
           10.times do
             begin
-              tds=browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
-              selection=StampsField.new((form_type==:multi_order_int)?tds.last : tds.first)
+              selection=iframe.spans(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
+              selection=StampsField.new((form_type==:multi_obrder_int)?tds.last : tds.first)
               dropdown.click unless selection.present?
               selection.scroll_into_view
               sleep(0.15)
@@ -164,6 +164,7 @@ module Stamps
               break if textbox.text.include?(str)
             rescue
               #ignore
+
             end
           end
           expect(textbox.text).to include(str)

@@ -176,7 +176,7 @@ module Stamps
           button=StampsField.new(iframe.span(text: "Verify Email"))
           connect_to_store=ConnectYourPaypalStore.new(param)
           button.click
-          sleep 5
+          sleep 10
           connect_to_store if connect_to_store.present?
         end
       end
@@ -196,7 +196,7 @@ module Stamps
         end
 
         def connect
-          button=StampsField.new(browser.span(text: "Connect"))
+          button=StampsField.new(iframe.span(text: "Connect"))
           store_settings=StoreSettings.new(param)
           10.times do
             button.click
