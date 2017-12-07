@@ -375,7 +375,7 @@ Feature: All details tests for order
   @details_panel
   Scenario: B-01995 When Details Panel is Collapsed, Add Button Should Expand it
     Then add new order
-    Then on Order Details form, Collapse Panel
+    #Then on Order Details form, Collapse Panel
     Then add new order
     Then expect Order Details form Panel is present
 
@@ -383,7 +383,6 @@ Feature: All details tests for order
     Then on Order Details form, Collapse Panel
     Then on Order Details form, Expand panel
     Then expect Order Details form Panel is present
-
 
   @details_reference_no
   Scenario: Reference Number
