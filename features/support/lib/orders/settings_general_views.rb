@@ -690,6 +690,14 @@ module Stamps
         end
       end
 
+      class InternationalTabView < Browser::StampsModal
+
+      end
+
+      class LabelMessagesTabView < Browser::StampsModal
+
+      end
+
     end
   end
 end
