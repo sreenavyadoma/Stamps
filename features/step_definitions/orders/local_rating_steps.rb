@@ -3,7 +3,7 @@ Then /^Verify Local Rating$/ do |table|
   #results_file="local_rating_results.csv"
   order_details_form=stamps.orders.details
   parameter_array=table.hashes
-  results=Hash.new
+  results={}
 
   parameter_array.each_with_index do |field, index|
     #test_config.logger.step "  --------------------------------------------------------------------------- "

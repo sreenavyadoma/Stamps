@@ -20,8 +20,12 @@ module Stamps
         @print_quantity_warning=PrintQuantityWarning.new(param)
       end
 
+      def totals_field
+        (cache[:total].nil?||!cache[:total].present?)?cache[:total]=StampsField.new(browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")):cache[:total]
+      end
+
       def total
-        (cache[:total].nil?||!cache[:total].present?)?cache[:total]=(StampsField.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2):cache[:total]
+        totals_field.text.gsub("Total: $", '').to_f.round(2)
       end
 
       def print_button

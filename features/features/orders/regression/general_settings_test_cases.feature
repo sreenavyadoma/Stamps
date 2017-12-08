@@ -10,6 +10,7 @@ Feature: General Settings Positive and Negative Test-cases
 
     Then click orders toolbar settings button
     Then in Orders Settings, click on General Settings tab
+    Then set general settings logoff to 2 hours
 
     Then set general settings logoff to 5 min.
     Then In Settings modal, Save

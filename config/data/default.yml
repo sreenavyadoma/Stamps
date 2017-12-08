@@ -23,6 +23,7 @@ rates_test:
   results_dir: \\jenkinsvm01\Public\share\share\rates_test_data\results\
 
 
+
 import_orders_test:
   import_orders_dir: \\jenkinsvm01\Public\automation\data
   import_time_file: import_times.csv
@@ -185,10 +186,6 @@ country_groups_PMI:
     1: Hong Kong|66
     2: Republic of (South) Korea|44
   group4:
-      1:  Albania|44
-      4:  Belarus|66
-      15:  Bosnia-Herzegovina|44
-  group41:
     1:  Albania|44
     2:  Armenia|44
     3:  Azerbaijan|70
