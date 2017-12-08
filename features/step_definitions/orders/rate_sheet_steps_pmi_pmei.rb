@@ -445,7 +445,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             step "set Order Details form Pounds to #{weight_lb}" if @modal_param.web_app==:orders
             step "set Print form Pounds to #{weight_lb}" if @modal_param.web_app==:mail
           else
-            weight_oz=Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
+            weight_oz=Measured::Weight.new(weight_lb).convert_to("oz").value.to_i
             #test_config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]="#{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]]=weight_oz
