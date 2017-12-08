@@ -358,9 +358,6 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
     test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:group]]="group#{group}"
     begin
       if row_number > 0
-        if row_number > 10
-          break
-        end
         test_config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Group #{group} - Row #{row_number}"
 
         #Set weight for country weight limit check
