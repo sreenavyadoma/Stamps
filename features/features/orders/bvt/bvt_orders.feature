@@ -22,7 +22,6 @@ Feature:  BVT tests for Orders
     Then expect Orders Grid Zip is 94102
     Then Sign out
 
-
   @bvt_address_cleansing
   Scenario: BVT Address Cleansing
     Then add new order
