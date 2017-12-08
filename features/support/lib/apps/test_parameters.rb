@@ -4,10 +4,10 @@ module Stamps
     def test_param
       if @test_param.nil?
         @test_param={}
-        @test_param[:customs_associated_items] ||= {}
-        @test_param[:details_associated_items] ||= {}
-        @test_param[:order_id] ||= {}
-        @test_param[:service_look_up] ||=
+        @test_param[:customs_associated_items] = {}
+        @test_param[:details_associated_items] = {}
+        @test_param[:order_id] = {}
+        @test_param[:service_look_up] = {}
         @test_param[:service_look_up]['FCM']='First-Class Mail'
         @test_param[:service_look_up]['PM']='Priority Mail'
         @test_param[:service_look_up]['PME']='Priority Mail Express'
