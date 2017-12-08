@@ -63,7 +63,7 @@ module Stamps
         end
 
         def li_2
-          (cache[:li_2].nil?||!cache[:li_2].present?)?cache[:li_2]=StampsField.new(browser.span(text: "Connect to 100+ marketplaces and channels")):cache[:li_2]
+          (cache[:li_2].nil?||!cache[:li_2].present?)?cache[:li_2]=StampsField.new(browser.span(text: "Connect to 75+ marketplaces and channels")):cache[:li_2]
         end
 
         def li_3
