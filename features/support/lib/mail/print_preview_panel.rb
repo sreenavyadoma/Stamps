@@ -21,11 +21,11 @@ module Stamps
           (cache[:buy_more_labels].nil?||!cache[:buy_more_labels].present?)?cache[:buy_more_labels]=PrintPreview.new(param):cache[:buy_more_labels]
         end
 
-        def outer_image_preview
+        def lable_preview
           (cache[:left_image_preview].nil?||!cache[:left_image_preview].present?)?cache[:left_image_preview]=PrintPreview.new(param):cache[:left_image_preview]
         end
 
-        def inner_image_preview
+        def right_image_preview
           (cache[:right_image_preview].nil?||!cache[:right_image_preview].present?)?cache[:right_image_preview]=PrintPreview.new(param):cache[:right_image_preview]
         end
       end

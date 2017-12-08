@@ -16,6 +16,10 @@ module Stamps
       def shipstation
         (cache[:shipstation].nil?||!cache[:shipstation].present?)?cache[:shipstation]=Stamps::Orders::Stores::OpenCart.new(param):cache[:shipstation]
       end
+
+      def square
+        (cache[:square_store].nil?||!cache[:square_store].present?)?cache[:square_store]=Stamps::Orders::Stores::Square.new(param):cache[:square_store]
+      end
     end
 
   end

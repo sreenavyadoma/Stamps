@@ -228,6 +228,8 @@ module Stamps
               (cache[:magento_store_field].nil?||!cache[:magento_store_field].present?)?cache[:magento_store_field]=StampsField.new(browser.a(css: "[data-store-name=paypal]")):cache[:magento_store_field]
             when :opencart
               (cache[:opencart_store_field].nil?||!cache[:opencart_store_field].present?)?cache[:opencart_store_field]=StampsField.new(browser.div(css: "div[style*='/OpenCart']")):cache[:opencart_store_field]
+            when :square
+              (cache[:square_store_field].nil?||!cache[:square_store_field].present?)?cache[:square_store_field]=StampsField.new(browser.div(css: "div[style*='/squarebanner']")):cache[:square_store_field]
             else
               return nil
           end
@@ -247,6 +249,8 @@ module Stamps
               raise "#{str} is not implemented."
             when :magento
               raise "#{str} is not implemented."
+            when :square
+              (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::StampsModal.new(param).extend(Orders::Stores::SqaureWindowTitle):cache[:square_window]
             when :opencart
               (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::StampsModal.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
             else

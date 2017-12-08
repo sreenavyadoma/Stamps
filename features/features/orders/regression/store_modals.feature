@@ -469,3 +469,14 @@ Feature:  All Store Management
     Then Manage Stores: Delete All Stores
     Then Manage Stores: Close Modal
     Then Sign out
+
+
+
+  @square
+  Scenario: Square Store
+
+    Then click orders toolbar settings button
+    Then click Order Settings Stores Add button
+    Then search Marketplace for store name square
+    Then expect Marketplace modal Requires Free Upgrade Message present in square
+    Then add Marketplace ShipStation Store square
