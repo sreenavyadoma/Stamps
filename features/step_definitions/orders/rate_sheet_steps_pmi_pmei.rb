@@ -30,8 +30,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   # Set result sheet name to parameter sheet name
   test_param[:result_sheet].name=param_sheet
 
-  @rate_sheet_columns=Hash.new
-  test_param[:result_sheet_columns]=Hash.new
+  @rate_sheet_columns={}
+  test_param[:result_sheet_columns]={}
   test_param[:result_sheet_column_offset]=8
 
   # map out parameter sheet column location

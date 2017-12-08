@@ -312,7 +312,7 @@ Then /^[Aa]dd Customs form Associated Item (\d+)$/ do |item_number|
 end
 
 Then /^[Ss]et Customs form Associated Item (\d+) Description to (.*)$/ do |item_number, value|
-  test_param[:customs_associated_items][item_number]=Hash.new unless test_param[:customs_associated_items].has_key?(item_number)
+  test_param[:customs_associated_items][item_number]={} unless test_param[:customs_associated_items].has_key?(item_number)
   test_param[:customs_associated_items][item_number][:description]=(value.downcase.include?('random')?(test_helper.random_alpha_numeric):value)
   stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_description.set(test_param[:customs_associated_items][item_number][:description]) if modal_param.web_app==:orders
   stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_description.set(test_param[:customs_associated_items][item_number][:description]) if modal_param.web_app==:mail
@@ -320,7 +320,7 @@ Then /^[Ss]et Customs form Associated Item (\d+) Description to (.*)$/ do |item_
 end
 
 Then /^[Ss]et Customs form Associated Item (\d+) Qty to (\d+)$/ do |item_number, value|
-  test_param[:customs_associated_items][item_number]=Hash.new unless test_param[:customs_associated_items].has_key?(item_number)
+  test_param[:customs_associated_items][item_number]={} unless test_param[:customs_associated_items].has_key?(item_number)
   test_param[:customs_associated_items][item_number][:quantity]=value
   stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_qty.set(test_param[:customs_associated_items][item_number][:quantity]) if modal_param.web_app==:orders
   stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_qty.set(test_param[:customs_associated_items][item_number][:quantity]) if modal_param.web_app==:mail
@@ -328,7 +328,7 @@ Then /^[Ss]et Customs form Associated Item (\d+) Qty to (\d+)$/ do |item_number,
 end
 
 Then /^[Ss]et Customs form Associated Item (\d+) Unit Price to (.*)$/ do |item_number, value|
-  test_param[:customs_associated_items][item_number]=Hash.new unless test_param[:customs_associated_items].has_key?(item_number)
+  test_param[:customs_associated_items][item_number]={} unless test_param[:customs_associated_items].has_key?(item_number)
   test_param[:customs_associated_items][item_number][:price]=value
   stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_unit_price.set(test_param[:customs_associated_items][item_number][:price]) if modal_param.web_app==:orders
   stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_unit_price.set(test_param[:customs_associated_items][item_number][:price]) if modal_param.web_app==:mail
@@ -336,14 +336,14 @@ Then /^[Ss]et Customs form Associated Item (\d+) Unit Price to (.*)$/ do |item_n
 end
 
 Then /^[Ss]et Customs form Associated Item (\d+) Made In is Country to (.*)$/ do |item_number, value|
-  test_param[:customs_associated_items][item_number]=Hash.new unless test_param[:customs_associated_items].has_key?(item_number)
+  test_param[:customs_associated_items][item_number]={} unless test_param[:customs_associated_items].has_key?(item_number)
   test_param[:customs_associated_items][item_number][:made_in]=value
   stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(item_number.to_i).made_in.select(test_param[:customs_associated_items][item_number][:made_in]) if modal_param.web_app==:orders
   stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).made_in.select(test_param[:customs_associated_items][item_number][:made_in]) if modal_param.web_app==:mail
 end
 
 Then /^[Ss]et Customs form Associated Item (\d+) Tarriff to (.*)$/ do |item_number, value|
-  test_param[:customs_associated_items][item_number]=Hash.new unless test_param[:customs_associated_items].has_key?(item_number)
+  test_param[:customs_associated_items][item_number]={} unless test_param[:customs_associated_items].has_key?(item_number)
   test_param[:customs_associated_items][item_number][:tarriff]=value
   stamps.orders.single_order_details.customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_hs_tariff.set(test_param[:customs_associated_items][item_number][:tarriff]) if modal_param.web_app==:orders
   stamps.mail.print_form.mail_customs.edit_customs_form.associated_items.item_number(item_number.to_i).customs_item_hs_tariff.set(test_param[:customs_associated_items][item_number][:tarriff]) if modal_param.web_app==:mail

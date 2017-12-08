@@ -4,7 +4,7 @@ module Stamps
     attr_reader :db_connection, :user_credentials
     def initialize(db_connection)
       @db_connection=db_connection
-      @user_credentials=Hash.new
+      @user_credentials={}
     end
 
     def fetch(cuke_tag)
