@@ -35,7 +35,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) Qty to (.*)$/ do |item_number, qty|
   step "expect order details form is present"
-  test_param[:details_associated_items][item_number]=Hash.new unless test_param[:details_associated_items].has_key?(item_number)
+  test_param[:details_associated_items][item_number]={} unless test_param[:details_associated_items].has_key?(item_number)
   test_param[:details_associated_items][item_number][:item_qty]=qty
   stamps.orders.single_order_details.items_ordered.item(item_number.to_i).item_qty.set(test_param[:details_associated_items][item_number][:item_qty] )
   step "Save Order Details data"
@@ -43,7 +43,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) ID to (.*)$/ do |item_number, str|
   step "expect order details form is present"
-  test_param[:details_associated_items][item_number]=Hash.new unless test_param[:details_associated_items].has_key?(item_number)
+  test_param[:details_associated_items][item_number]={} unless test_param[:details_associated_items].has_key?(item_number)
   test_param[:details_associated_items][item_number][:item_id]=(str.downcase.include?('random')?(test_helper.random_alpha_numeric):str)
   stamps.orders.single_order_details.items_ordered.item(item_number.to_i).item_id.set(test_param[:details_associated_items][item_number][:item_id])
   step "Save Order Details data"
@@ -51,7 +51,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form Associated Item (\d+) Description to (.*)$/ do |item_number, str|
   step "expect order details form is present"
-  test_param[:details_associated_items][item_number]=Hash.new unless test_param[:details_associated_items].has_key?(item_number)
+  test_param[:details_associated_items][item_number]={} unless test_param[:details_associated_items].has_key?(item_number)
   test_param[:details_associated_items][item_number][:item_description]=(str.downcase.include?('random')?(test_helper.random_alpha_numeric):str)
   stamps.orders.single_order_details.items_ordered.item(item_number.to_i).item_description.set(test_param[:details_associated_items][item_number][:item_description])
   step "Save Order Details data"
@@ -317,7 +317,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails form [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   step "show order details form ship-to fields"
-  expect(stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic]=test_helper.format_address(test_helper.address_helper_zone(address)))).to include(address.split(' ').last)
+  stamps.orders.single_order_details.ship_to.domestic.set(test_param[:ship_to_domestic]=test_helper.format_address(test_helper.address_helper_zone(address)))
   step "Save Order Details data"
   step "hide order details form Ship-To fields"
 end

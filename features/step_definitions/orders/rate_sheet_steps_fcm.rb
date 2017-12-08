@@ -18,8 +18,8 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
   # Set result sheet name to parameter sheet name
   test_param[:result_sheet].name=param_sheet
 
-  @rate_sheet_columns=Hash.new
-  test_param[:result_sheet_columns]=Hash.new
+  @rate_sheet_columns={}
+  test_param[:result_sheet_columns]={}
   test_param[:result_sheet_column_offset]=1
 
   # map out parameter sheet column location
@@ -322,7 +322,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[@rate_sheet_columns[:status]]=="Failed"
+        if row[test_param[:result_sheet_columns][:status]]=="Failed" || (row[test_param[:result_sheet_columns][:status]]!="Passed" && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count +=1
           test_config.logger.step "Zone #{zone} - Row #{row_number} Failed"
         end
@@ -352,6 +352,6 @@ Then /^Rates: Number of failed test should be less than (\d+)$/ do |count|
   test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
   test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
   test_config.logger.step "Number of Failed Tests: #{@failed_test_count}"
-  #@failed_test_count).to be < count
+  expect(@failed_test_count).to be < count
   test_config.logger.step "#{"*"*80}"
 end

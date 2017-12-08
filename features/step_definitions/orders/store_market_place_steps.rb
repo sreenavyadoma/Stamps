@@ -5,7 +5,6 @@ end
 
 Then /^Marketplace: Expect store selection modal contains (.*)$/ do |expectation|
   stamps.orders.modals.orders_settings_modal.stores_tab
-  stamps.orders.modals.orders_settings_modal.stores_tab_view
   expect(stamps.orders.modals.add_your_store_modal.contains(expectation)).to eql(expectation)
 end
 

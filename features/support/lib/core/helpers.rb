@@ -111,7 +111,7 @@ module Stamps
 
     def state_fullname(state)
       if @states.nil?
-        @states=Hash.new
+        @states={}
         @states["CA"]="California"
       end
       @states

@@ -449,7 +449,7 @@ Then /^[Ii]n Settings modal, Expect Postdate set to 11:00 p.m.$/ do
   step "In Settings modal, Expect Postdate is 11:00 p.m."
 end
 
-Then /^[Ii]n Settings modal, Expect Postdate is (.*)$/ do |expectation|  
+Then /^[Ii]n Settings modal, Expect Postdate is (.*)$/ do |expectation|
   expect(stamps.orders.modals.orders_settings_modal.general_tab.post_date.textbox.text).to eql expectation
 end
 

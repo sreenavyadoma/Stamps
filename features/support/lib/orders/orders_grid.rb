@@ -2,6 +2,7 @@ module Stamps
   module Orders
     module Grid
       module GridColumnCommon
+
         def column_cache
           @column_cache ||= {}
         end
@@ -860,9 +861,7 @@ module Stamps
         def check(row)
           begin
             scroll_into_view
-            expect(size).to be > 0, "Grid is empty, there's no Order ID to check."
             checkbox_field(row).check
-            expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
           end unless checked?(row)
           checked?(row)
         end
@@ -872,7 +871,6 @@ module Stamps
             scroll_into_view
             if size > 0
               checkbox_field(row).uncheck
-              expect(checked?(row)).to be(false), "Unable to uncheck checkbox row #{row}"
             end
           end
           checked?(row)
@@ -895,7 +893,7 @@ module Stamps
           end
 
           logger.info "Caching checked rows..."
-          checked_rows=Hash.new
+          checked_rows={}
           grid_total=row_count
           if cache_count > 2 && cache_count < grid_total
             cache_item_count=cache_count

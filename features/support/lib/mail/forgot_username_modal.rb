@@ -26,20 +26,26 @@ module Stamps
       end
 
       def email
-        StampsTextbox.new(browser.inputs css: "input[class*='x-form-field x-form-text']").last
+        # StampsTextbox.new(browser.inputs(css: "input[class*='x-form-field x-form-text']")).last
+        StampsTextbox.new(browser.text_fields(css: "input[class*='x-form-field x-form-text']").last)
       end
 
       def continue
-        button=StampsField.new(browser.as css: "a[class*=app-modal-button-primary]").last
-        button.click
+        #button=StampsField.new(browser.as css: "a[class*=app-modal-button-primary]").last
+        #button.click
+        StampsField.new(browser.span(text: "Continue")).click
         sleep(2)
       end
 
       def ok
-        button=StampsField.new browser.span css: "span[id*=sdc-undefinedwindow-okbtn-btnIconEl]"
-        button.click
+        confirmation=StampsField.new(browser.label(text: "We have sent your username to the email address associated with your account. If you cannot find this email, please check your spam folder."))
+        5.times do
+          sleep(0.35)
+          break if confirmation.present?
+        end
+        expect("Unable to confirm password reset, check your code.").to eql "" unless confirmation.present?
+        StampsField.new(browser.span( text: "Ok")).click
         sleep(2)
-
       end
     end
   end
