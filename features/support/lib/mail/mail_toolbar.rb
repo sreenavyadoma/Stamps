@@ -173,7 +173,6 @@ module Stamps
       end
     end
 
-
     class PrintingProblem < Browser::StampsModal
       def field
         StampsField.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
