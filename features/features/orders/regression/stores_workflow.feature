@@ -67,5 +67,5 @@ Feature:  All Store Management
       Then expect Settings dialog store import new orders is Unchecked
       Then check Settings dialog store import new orders
       # Service Mapping
-      Then expect Settings dialog Service Mapping is present
+      #Then expect Settings dialog Service Mapping is present
 

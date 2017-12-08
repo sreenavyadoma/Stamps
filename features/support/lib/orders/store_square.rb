@@ -30,36 +30,6 @@ module Stamps
         end
       end
 
-      module Products
-        def title_text
-          (cache[:title_text].nil?||!cache[:title_text].present?)?cache[:title_text]= StampsField.new(iframe.h3(css: "div[class^='products-section']>h3")):cache[:title_text]
-        end
-
-        def checkbox
-          (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsCheckbox.new(
-              iframe.input(css: 'input[id=addNewProducts]'),
-              iframe.input(css: 'input[id=addNewProducts]'),
-              "class",
-              "ng-not-empty"):cache[:checkbox]
-        end
-
-        def sku
-          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
-              browser.span(text: 'SKU'),
-              browser.span(text: 'SKU'),
-              "class",
-              "ng-not-empty"):cache[:sku]
-        end
-
-        def product_listing_name
-          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
-              browser.span(text: 'Product/Listing Name'),
-              browser.span(text: 'Product/Listing Name'),
-              "class",
-              "ng-not-empty"):cache[:product_listing_name]
-        end
-      end
-
       module ServiceMapping
 
         def service_text
@@ -96,6 +66,36 @@ module Stamps
 
         def action_remove_btn
           (cache[:action_remove_btn].nil?||!cache[:action_remove_btn].present?)?cache[:action_remove_btn]=StampsField.new(iframe.button(css: "[ng-click^='storeEdit.removeServiceMapping']")):cache[:action_remove_btn]
+        end
+      end
+
+      module Products
+        def title_text
+          (cache[:title_text].nil?||!cache[:title_text].present?)?cache[:title_text]= StampsField.new(iframe.h3(css: "div[class^='products-section']>h3")):cache[:title_text]
+        end
+
+        def checkbox
+          (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsCheckbox.new(
+              iframe.input(css: 'input[id=addNewProducts]'),
+              iframe.input(css: 'input[id=addNewProducts]'),
+              "class",
+              "ng-not-empty"):cache[:checkbox]
+        end
+
+        def sku
+          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
+              browser.span(text: 'SKU'),
+              browser.span(text: 'SKU'),
+              "class",
+              "ng-not-empty"):cache[:sku]
+        end
+
+        def product_listing_name
+          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
+              browser.span(text: 'Product/Listing Name'),
+              browser.span(text: 'Product/Listing Name'),
+              "class",
+              "ng-not-empty"):cache[:product_listing_name]
         end
       end
 
@@ -167,5 +167,3 @@ module Stamps
     end
   end
 end
-
-

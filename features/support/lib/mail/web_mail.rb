@@ -28,7 +28,7 @@ module Stamps
       end
 
       def print_preview
-        (cache[:print_preview].nil?||!cache[:print_preview].present?)?cache[:print_preview]=PrintPreviewPanel::PrintPreview.new(param).extend(PrintPreviewPanel::StampsPrintPreview):cache[:print_preview]
+        (cache[:print_preview].nil?||!cache[:print_preview].present?)?cache[:print_preview]=PrintPreviewPanel::PrintPreview.new(param):cache[:print_preview]
       end
 
       def print_form
