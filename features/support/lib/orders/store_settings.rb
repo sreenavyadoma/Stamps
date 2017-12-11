@@ -21,18 +21,17 @@ module Stamps
       end
 
       module GenSetServiceMapping
-        class GenSetServiceMapping < Browser::StampsModal
-
+        class GenSetServiceMappingField < Browser::StampsModal
           def textbox
-
           end
 
           def dropdown
+          end
 
+          def selection(str)
           end
 
           def select_service(str)
-
           end
         end
 
@@ -41,12 +40,6 @@ module Stamps
         end
 
         def shipping_service
-
-
-
-
-
-
         end
       end
     end
