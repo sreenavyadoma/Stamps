@@ -31,6 +31,10 @@ module Stamps
           def selection(str)
           end
 
+          def remove_service
+
+          end
+
           def select_service(str)
           end
         end
