@@ -1,6 +1,7 @@
 module Stamps
   module Browser
 
+    #todo-Rob REW
     class StampsField
       attr_reader :field, :browser
       alias_method :checkbox, :field
@@ -514,6 +515,7 @@ module Stamps
       end
     end
 
+    #todo-Rob REW
     class StampsDropdown < StampsTextbox
       attr_accessor :html_tag, :dropdown
 

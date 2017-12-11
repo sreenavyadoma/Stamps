@@ -209,6 +209,7 @@ module Stamps
         end
       end
 
+      #todo-Rob REW
       class AddShippingAddress < Browser::StampsModal
         attr_reader :save_btn, :origin_zip, :name, :company, :street_address_1, :street_address_2, :city, :state, :zip, :phone
         attr_accessor :address_hash
