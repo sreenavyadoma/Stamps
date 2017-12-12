@@ -22,7 +22,6 @@ module Stamps
 
         def activate_your_new_features
           (cache[:activate_features].nil?||!cache[:activate_features].present?)?cache[:activate_features]=ActivateYourNewFeatures.new(param):cache[:activate_features]
-          ActivateYourNewFeatures.new(param)
         end
 
         def looking_for_shipstation
