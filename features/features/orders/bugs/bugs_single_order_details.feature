@@ -1,4 +1,4 @@
-@bugs_single_order_details_form
+
 Feature: Single Order Details form Bugs
 
   Background:
@@ -23,7 +23,7 @@ Feature: Single Order Details form Bugs
 
     Then set Order Details form Ship-To Country to United States
     Then set Order Details form service to PM Package
-    Then Print expecting error This order is not ready for printing:\nShip To address is required
+    Then Print Order expecting error This order is not ready for printing:\nShip To address is required
 
 
 

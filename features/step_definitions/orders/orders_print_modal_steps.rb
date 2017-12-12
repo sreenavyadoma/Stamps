@@ -141,7 +141,9 @@ Then /^[\w]lose Label Unavailable Modal$/ do
   stamps.orders.orders_toolbar.ok.close
 end
 
-Then /^[Pp]rint expecting error (.*)$/ do |error_message|
+
+#todo-Rob Rework print_expecting_error
+Then /^Print Order expecting error (.*)$/ do |error_message|
   modal=stamps.orders.orders_toolbar.toolbar_print.print_expecting_error  #updated reference for printer_expecting_error
   error_message=error_message.gsub("\\n","\n") #reformatting newline character to match actual character in modal
   actual=modal.error_message
