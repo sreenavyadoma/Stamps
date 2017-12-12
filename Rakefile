@@ -1899,8 +1899,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:mail_reset) do |t|
+  t.profile = 'mail_reset'
   t.cucumber_opts = "-p cuke_reports"
 end
 
