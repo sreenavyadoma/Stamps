@@ -12,6 +12,7 @@ Feature: January 2017 Rates for SAS User in Zone 1
     Then expect Order Details form Total Ship Cost is 0.94
     Then Sign out
 
+
   @rates_orders_sas_zone_1
   Scenario: First-Class Mail Package/Thick Envelope
     Then set Order Details form Ship-To to random address in zone 1
