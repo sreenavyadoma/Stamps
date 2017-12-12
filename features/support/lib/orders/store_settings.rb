@@ -82,9 +82,49 @@ module Stamps
           end
 
           def select_service(str)
+            case(str)
+              when /First-Class Mail Large Envelope\/Flat/
+              else
+                #ignore
+            end
 
 
-
+            # 0 First-Class Mail Large Envelope/Flat
+            # 1 First-Class Mail Package/Thick Envelope
+            # 2 Priority Mail Large/Thick Envelope
+            # 3 Priority Mail Package
+            # 4 Priority Mail Large Package
+            # 5 Priority Mail Flat Rate Envelope
+            # 6 Priority Mail Padded Flat Rate Envelope
+            # 7 Priority Mail Legal Flat Rate Envelope
+            # 8 Priority Mail Small Flat Rate Box
+            # 9 Priority Mail Medium Flat Rate Box
+            # 10 Priority Mail Large Flat Rate Box
+            # 11 Priority Mail Regional Rate Box A
+            # 12 Priority Mail Regional Rate Box B
+            # 13 Priority Mail Express Package
+            # 14 Priority Mail Express Flat Rate Envelope
+            # 15 Priority Mail Express Padded Flat Rate Envelope
+            # 16 Priority Mail Express Legal Flat Rate Envelope
+            # 17 Media Mail Package
+            # 18 Parcel Select Ground Package
+            # 19 Parcel Select Ground Large Package
+            # 20 Parcel Select Ground Oversized Package
+            # 21 First-Class Mail International Large Envelope/Flat
+            # 22 First-Class Mail International Package/Thick Envelope
+            # 23 Priority Mail International Package
+            # 24 Priority Mail International Flat Rate Envelope
+            # 25 Priority Mail International Padded Flat Rate Envelope
+            # 26 Priority Mail International Legal Flat Rate Envelope
+            # 27 Priority Mail International Small Flat Rate Box
+            # 28 Priority Mail International Medium Flat Rate Box
+            # 29 Priority Mail International Large Flat Rate Box
+            # 30 Priority Mail International Regional Rate Box A
+            # 31 Priority Mail International Regional Rate Box B
+            # 32 Priority Mail Express International Package
+            # 33 Priority Mail Express International Flat Rate Envelope
+            # 34 Priority Mail Express International Padded Flat Rate Envelope
+            # 35 Priority Mail Express International Legal Flat Rate Envelope
 
 
 
