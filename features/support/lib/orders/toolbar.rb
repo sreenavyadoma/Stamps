@@ -469,7 +469,7 @@ module Stamps
           return window if window.present?
 
           print_order_btn.click
-
+          sleep 3
           window.wait_until_present 3
 
           return window if window.present?
@@ -547,7 +547,7 @@ module Stamps
         end
 
         def print_expecting_error(*args)
-          error_window=IncompleteOrderError.new(param)
+          error_window=Stamps::Orders::OrdersRuntimeError::IncompleteOrderError.new(param) #Updated class reference for IncompleteOrderError
           open_window error_window
           case args.length
             when 0
