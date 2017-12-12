@@ -60,14 +60,14 @@ module Stamps
           # 33 Priority Mail Express International Flat Rate Envelope
           # 34 Priority Mail Express International Padded Flat Rate Envelope
           # 35 Priority Mail Express International Legal Flat Rate Envelope
-          # 36 Manage Service Options...
+          # 36 Manage Service Options... input(css: "[id=customSelect] [class^=ui-select-search]")
 
           def textbox
-            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(iframe.text_field(css: "[type=search]")):cache[:textbox]
+            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(store_iframe.text_field(css: "[type=search]")):cache[:textbox]
           end
 
           def dropdown
-            (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(iframe.button(class: "action remove")):cache[:dropdown]
+            (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(store_iframe.div(class: "selectize-input")):cache[:dropdown]
           end
 
           def selection(str)
@@ -82,10 +82,6 @@ module Stamps
           end
 
           def select_service(str)
-
-
-
-
 
 
 
