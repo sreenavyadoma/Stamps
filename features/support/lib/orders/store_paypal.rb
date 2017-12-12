@@ -231,7 +231,6 @@ module Stamps
               store_iframe.input(css: 'input[id=cart]'), store_iframe.input(css: 'input[id=cart]'), "class", "ng_not_empty"):cache[:type_cart]
         end
 
-
         def type_web_accept
           (cache[:type_web_accept].nil?||!cache[:type_web_accept].present?)?cache[:type_web_accept]=Stamps::Browser::StampsCheckbox.new(
               store_iframe.input(css: 'input[id=webaccept]'), store_iframe.input(css: 'input[id=webaccept]'), "class", "ng_not_empty"):cache[:type_web_accept]
