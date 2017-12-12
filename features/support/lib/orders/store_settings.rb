@@ -21,7 +21,7 @@ module Stamps
       end
 
       module GenSetServiceMapping
-        class GenSetServiceMappingField < Browser::StampsModal
+        class GenSetShippingService < Browser::StampsModal
           include StoreIframe
 
           # 0 First-Class Mail Large Envelope/Flat
@@ -78,15 +78,29 @@ module Stamps
           end
 
           def manage_service_options
-
+            (cache[:manage_service].nil?||!cache[:manage_service].present?)?cache[:manage_service]=StampsField.new(iframe.button(class: "action remove")):cache[:manage_service]
           end
 
           def select_service(str)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           end
 
           def service_tooltip(str)
-
           end
         end
 
