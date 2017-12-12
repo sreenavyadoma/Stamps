@@ -47,7 +47,7 @@ alex_regress:  --tags @mail_forgot_username BROWSER=ff WEB_APP=mail JENKINS=true
 alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_bvt_shipping_address_management:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_credentials:  --tags @mail_forgot_username BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_mail:  --tags @mail_reset BROWSER=ff WEB_APP=mail JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_mail:  --tags @mail_reset BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_regress:  --tags @mail_print_label_left_side BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 #alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_4 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
