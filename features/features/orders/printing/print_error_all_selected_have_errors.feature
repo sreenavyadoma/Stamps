@@ -10,13 +10,13 @@ Feature:  Prompt User to Remove Orders in Error from Print Group
     Then set Order Details form Ship-From to default
     Then set Order Details form Ship-To to random address between zone 1 and 4
     Then check Orders Grid row 1
-    Then Print expecting error A service must be selected before printing.
+    Then Print Order expecting error A service must be selected before printing.
 
     Then add new order
     Then set Order Details form Ship-From to default
     Then check Orders Grid row 1
     Then check Orders Grid row 2
-    Then Print expecting error All selected orders have errors and cannot be printed.
+    Then Print Order expecting error All selected orders have errors and cannot be printed.
 
     Then add new order
     Then set Order Details form Ship-From to default

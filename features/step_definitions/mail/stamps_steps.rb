@@ -64,7 +64,7 @@ Then /^[Ee]xpect Print form Domestic Address field displays last printed contact
 end
 
 Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
-  20.times do
+   20.times do
     stamps.mail.print_form.mail_to.blur_out
     stamps.mail.print_form.mail_to.blur_out
     sleep(0.5);
@@ -75,6 +75,41 @@ Then /^[Ee]xpect Print form Domestic Address field displays (.*)$/ do |value|
   expect((stamps.mail.print_form.mail_to.mail_address.textarea.text).gsub(/ \n/,", ").gsub(/\n/,", ")).to eql value
   test_config.logger.step 'Address Cleansed -- Expected Result Confirmed'
 end
+
+#AB_ORDERSAUTO_3516
+Then /^[Ee]xpect Print form Domestic Address field is empty$/ do
+  expect(stamps.mail.print_form.mail_to.mail_address.textarea.text).to eql("")
+end
+
+#AB_ORDERSAUTO_3516
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Pp]ounds [Ff]ield is (\d+)$/ do |weight_lb|
+  expect(stamps.mail.print_form.mail_weight.mail_pounds.text).to eql(weight_lb), "Pound field isn't equal to #{weight_lb}"
+end
+
+#AB_ORDERSAUTO_3516
+Then /^[Ee]xpect [Pp]rint [Ff]orm [Oo]unces [Ff]ield is (\d+)$/ do |weight_oz|
+  expect(stamps.mail.print_form.mail_weight.mail_ounces.text).to eql(weight_oz), "Ounces field isn't equal to #{weight_oz}"
+end
+
+#AB_ORDERSAUTO_3516
+Then /^[Cc]lick [Rr]eset [Bb]utton$/ do
+  step "expect print form Reset Button is present"
+  toolbar.reset.click
+end
+
+#AB_ORDERSAUTO_3516
+Then /^[Cc]lick Mail toolbar menu reset button$/ do
+  stamps.mail.toolbar_menu.reset_fields.click
+end
+
+#AB_ORDERSAUTO_3516
+Then /^[Ee]xpect mail fields are reset$/ do
+  step "expect Print form Domestic Address field is empty"
+  step "expect Print form Pounds Field is 0"
+  step "expect Print form Ounces Field is 0"
+  step "expect Print form service is empty"
+end
+
 
 
 

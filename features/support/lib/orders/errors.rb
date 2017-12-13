@@ -50,13 +50,17 @@ module Stamps
       end
 
       class IncompleteOrderError < Browser::StampsModal
+
+        def wait_until_present(*args) #added wait_until_present to class
+          window_title.wait_until_present(*args)
+        end
+
         def error_message_label
           browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
         end
 
         def window_title
-          return browser.div(text: 'Order Errors') if browser.div(text: 'Order Errors').present?
-          return browser.div(text: 'Order Error') if browser.div(text: 'Order Error').present?
+          return StampsField.new browser.div(text: 'Incomplete Order') #Changed text from Order Error to Incomplete Order
           nil
         end
 

@@ -21,9 +21,19 @@ Then /^[Ss]elect Advanced Options Extra Services$/ do
   stamps.mail.print_form.advanced_options.extra_services
 end
 
-Then /^[Ee]xpect Advanced Options Extra Services Button is visible$/ do
+#AB_ORDERSAUTO_3516
+Then /^[Ee]xpect Advanced Options Extra Services Button is (\w+)/ do |str|
   step "Expect Advanced Options responds to Extra Services Button (extra_services_btn)"
-  expect(stamps.mail.print_form.advanced_options.extra_services_btn).to be_visible, "Extra Services Button is NOT visible"
+  case(str)
+    when /enabled/
+      expect(stamps.mail.print_form.advanced_options.extra_services_btn.field_disabled?).to be(false), "Extra Services Button is NOT enabled"
+    when /disabled/
+      expect(stamps.mail.print_form.advanced_options.extra_services_btn.field_disabled?).to be(true), "Extra Services Button is NOT disabled"
+      when /visible/
+        expect(stamps.mail.print_form.advanced_options.extra_services_btn).to be_visible, "Extra Services Button is NOT visible"
+    else
+      #else
+  end
 end
 
 Then /^[Ss]elect Advanced Options Specify Postage Amount$/ do
