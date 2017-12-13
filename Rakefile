@@ -3101,4 +3101,11 @@ Cucumber::Rake::Task.new(:bugs_single_order_details_form) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bugs_print_modal) do |t|
+  t.profile = 'bugs_print_modal'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
+
 #----------------------------------------------------------------
