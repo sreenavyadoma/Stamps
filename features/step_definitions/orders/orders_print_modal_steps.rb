@@ -5,6 +5,11 @@ Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
+Then /^[Cc]lick Orders Toolbar Print button expecting incomplete order$/ do
+  @incomplete_order_modal=stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
+  expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+end
+
 Then /^[Ee]xpect [Pp]rint [Mm]odal Incomplete Order Error Message (.*)$/ do |expectation|
   expect(@incomplete_order_modal.error_message).to include(expectation)
 end
@@ -136,8 +141,11 @@ Then /^[\w]lose Label Unavailable Modal$/ do
   stamps.orders.orders_toolbar.ok.close
 end
 
-Then /^[Pp]rint expecting error (.*)$/ do |error_message|
-  modal=stamps.orders.modals.orders_print_modal.print_expecting_error
+
+#todo-Rob Rework print_expecting_error
+Then /^Print Order expecting error (.*)$/ do |error_message|
+  modal=stamps.orders.orders_toolbar.toolbar_print.print_expecting_error  #updated reference for printer_expecting_error
+  error_message=error_message.gsub("\\n","\n") #reformatting newline character to match actual character in modal
   actual=modal.error_message
   modal.ok
   expect(actual).to include error_message
