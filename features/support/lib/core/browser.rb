@@ -206,6 +206,22 @@ module Stamps
       end
     end
 
+
+    #todo-Rob rework disabled field
+    #AB_ORDERSAUTO_3516
+    class StampsField2 < StampsField
+      def initialize(field, disabled_field, attribute, attribute_value)
+        super(field)
+        @disabled_field=disabled_field
+        @attribute = attribute
+        @attribute_value = attribute_value
+      end
+
+      def field_disabled?
+        @disabled_field.attribute_value(@attribute).include?(@attribute_value)
+      end
+    end
+
     class StampsInput < StampsField
       def checked?
         begin

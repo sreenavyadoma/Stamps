@@ -87,5 +87,10 @@ Then /^[Cc]lick on [Bb]uy [Mm]ore [Ll]abels link$/ do
   stamps.mail.print_preview.buy_more_labels.link.click
 end
 
+#AB_ORDERSAUTO_3516
+Then /^[Ee]xpect Print form service is empty$/ do
+  expect(stamps.mail.print_form.mail_service.textbox.text).eql?("")
+end
+
 
 
