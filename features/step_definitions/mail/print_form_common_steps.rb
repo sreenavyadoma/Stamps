@@ -61,7 +61,6 @@ When /^[Pp]rint [Ll]abel$/ do
   stamps.mail.mail_toolbar.print_label
 end
 
-
 When /^[Cc]lick Print Sample button on Print form$/ do
   @print_window=stamps.mail.mail_toolbar.print_sample
 end
@@ -79,7 +78,7 @@ When /^[Ss]elect on [Pp]rint [Pp]review [Pp]anel, [Rr]ight side starting label$/
 end
 
 Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, right side label is selected$/ do
-  expect(stamps.mail.print_preview.right_selected).to be(true), "Right Label image doesn't exists on Print form"
+  expect(stamps.mail.print_preview.right_selected?).to be(true), "Right Label image doesn't exists on Print form"
 end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
