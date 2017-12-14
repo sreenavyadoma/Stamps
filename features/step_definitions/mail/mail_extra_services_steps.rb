@@ -103,7 +103,7 @@ Then /^[Uu]ncheck Extra Services Fragile$/ do
 end
 
 Then /^[Cc]heck Extra Services Return Receipt for Merchandise$/ do
-  stamps.mail.print_form.advanced_options.extra_services.merchandise_return_receipt.check
+  stamps.mail.print_form.advanced_options.extra_services.return_receipt_merchandise.check
 end
 
 Then /^[Uu]ncheck Extra Services Return Receipt for Merchandise$/ do

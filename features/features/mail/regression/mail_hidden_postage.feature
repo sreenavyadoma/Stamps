@@ -12,7 +12,28 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then set Print form Ounces to 1
     Then select Print form service PM Package
     Then expect Advanced Options Hide Label Value is checked
+    Then show Advanced Options
     Then select Advanced Options Extra Services
+
+    Then check Extra Services Return Receipt for Merchandise
+    Then click value must be shown window Continue button
+    Then save Extra Services
+    Then expect Advanced Options Hide Label Value is unchecked
+    Then check Advanced Options Hide Label Value
+    Then Sign Out
+
+  @mail_hidden_postage_backlog
+  Scenario: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbox State for Hide Label Value
+    Then check Extra Services Return Receipt for Merchandise
+    Then click value must be shown window Continue button
+    Then expect Extra Services Return Receipt for Merchandise is checked
+    Then save Extra Services
+    Then expect Advanced Options Hide Label Value is unchecked
+    Then check Advanced Options Hide Label Value
+    Then expect Hidden Postage not Allowed modal appears due to Extra Service Return Receipt for Merchandise
+    Then click continue in Hidden Postage not Allowed modal
+    Then select Advanced Options Extra Services
+    Then extra Services Return Receipt for Merchandise is unchecked
 
     Then set Extra Services Security to Registered Mail
     Then click value must be shown window Continue button
@@ -50,17 +71,6 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then click continue in Hidden Postage not Allowed modal
     Then select Advanced Options Extra Services
     Then expect Extra Services Handling is Normal
-
-    Then check Extra Services Return Receipt for Merchandise
-    Then click value must be shown window Continue button
-    Then expect Extra Services Return Receipt for Merchandise is checked
-    Then save Extra Services
-    Then expect Advanced Options Hide Label Value is unchecked
-    Then check Advanced Options Hide Label Value
-    Then expect Hidden Postage not Allowed modal appears due to Extra Service Return Receipt for Merchandise
-    Then click continue in Hidden Postage not Allowed modal
-    Then select Advanced Options Extra Services
-    Then extra Services Return Receipt for Merchandise is unchecked
 
     Then close Extra Services
     Then select Print form service FCM Large Envelope
