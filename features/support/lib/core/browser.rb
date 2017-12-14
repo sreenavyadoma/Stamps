@@ -139,7 +139,7 @@ module Stamps
 
       def attribute_value(attribute)
         begin
-          field.attribute_value(attribute)
+          return field.attribute_value(attribute)
         rescue
           #ignore
         end
