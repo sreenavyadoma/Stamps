@@ -206,6 +206,95 @@ module Stamps
         end
       end
 
+      class MoreActionsDropDown < Browser::StampsModal
+        attr_reader :dropdown, :combine_orders, :split_order, :apply_bulk_action
+
+        def initialize(param)
+          super
+          @dropdown=StampsField.new(browser.span(text: "More Actions"))
+          @combine_orders=CombineOrdersModal.new(param)
+          @split_order=SplitOrder.new(param)
+          @apply_bulk_action.ApplyBulkAction.new(param)
+
+          @shipped=MoveToShippedModal.new(param)
+          @canceled=MoveToCanceledModal.new(param)
+          @on_hold=MoveToOnHoldModal.new(param)
+          @awaiting_shipment=MoveToAwaitingShipmentModal.new(param)
+          @tooltip_field=StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+        end
+
+        def enabled?
+          dropdown.enabled?
+        end
+
+        def move_to_shipped
+          select(:shipped)
+        end
+
+        def move_to_canceled
+          select(:canceled)
+        end
+
+        def move_to_awaiting_shipment
+          select(:awaiting_shipment)
+        end
+
+        def move_to_on_hold
+          select(:on_hold)
+        end
+
+        def select(selection)
+          expect(enabled?).to be(true)
+          expect([:shipped, :canceled, :awaiting_shipment, :on_hold]).to include(selection)
+          selection_str=""
+          modal=nil
+          case selection
+            when :shipped
+              selection_str="Move to Shipped"
+              modal=shipped
+            when :canceled
+              selection_str="Move to Canceled"
+              modal=canceled
+            when :awaiting_shipment
+              selection_str="Move to Awaiting Shipment"
+              modal=awaiting_shipment
+            when :on_hold
+              selection_str="Move to On Hold"
+              modal=on_hold
+            else
+              #do nothing.
+          end
+
+          30.times{
+            return modal if modal.present?
+            selection_item=StampsField.new(browser.span(text: selection_str))
+            dropdown.click unless selection_item.present?
+            sleep(0.50)
+            selection_item.hover
+            sleep(0.25)
+            selection_item.click
+          }
+          expect("Unable to select #{selection}").to eql("Move Menu - Select")
+        end
+
+        def tooltip
+          btn=dropdown
+          btn.field.hover
+          btn.field.hover
+          15.times do
+            btn.field.hover
+            sleep(0.35)
+            if tooltip_field.present?
+              logger.info tooltip_field.text
+              return tooltip_field.text
+            end
+          end
+        end
+      end
+
+
+
+
       class PrintIncompleteOrderError < Browser::StampsModal
         attr_reader :window_title, :ok_btn, :error_message_label
 
@@ -732,6 +821,10 @@ module Stamps
 
         def toolbar_move
           (cache[:move].nil?||!cache[:move].present?)?cache[:move]=MoveDropDown.new(param):cache[:move]
+        end
+
+        def toolbar_more_actions
+          (cache[:more_actions].nil?||!cache[:more_actions].present?)?cache[:more_actions]=MoreActionsDropDown.new(param):cache[:more_actions]
         end
 
         def toolbar_tags

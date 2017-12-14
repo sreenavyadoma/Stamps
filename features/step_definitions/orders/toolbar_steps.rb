@@ -53,4 +53,20 @@ Then /^Label Unavailable: Expect Visible$/ do
   end
 end
 
+Then /^[Ss]elect [Gr]rid [Tt]oolbar [M]ore [Aa]ctions item (.*)$/ do |str|
+  expect(['Move to Shipped', 'Move to Canceled', 'Move to On Hold', 'Move to Awaiting Shipment']).to include str
+  case str
+    when /Combine Orders/
+      #stamps.orders.orders_toolbar.toolbar_more_actions.combine_orders
+    when /Split Order/
+      stamps.orders.orders_toolbar.toolbar_more_actions.split_order
+    when /Apply Bulk Action/
+      #stamps.orders.orders_toolbar.toolbar_more_actions.apply_bulk_action
+    else
+      #ignore
+  end
+end
 
+Then /^[Cc]lick [Mm]ore [Aa]ctions [Ss]plit [Oo]rder [Bb]utton$/ do
+  stamps.orders.orders_toolbar.refresh_orders
+end
