@@ -24,7 +24,7 @@ ks_registration: --tags @registration_normal_workflow WEB_APP=registration URL=c
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @bugs_single_order_details_form --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff USR=scutfh8m1 PW=pass111 PRINTER=Automation Printer
+eli_dev: --tags @bugs_print_modal --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff USR=scutfh8m1 PW=pass111 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
@@ -265,6 +265,7 @@ bugs_orders_grid_toolbar: --tags @bugs_orders_grid_toolbar --guess DEBUG=false J
 bugs_orders_navigation_bar: --tags @bugs_orders_navigation_bar --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bugs_orders_settings: --tags @bugs_orders_settings --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bugs_single_order_details_form: --tags @bugs_single_order_details_form --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bugs_print_modal: --tags @bugs_print_modal --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 
 # --------------------------  ORDERS BVT
