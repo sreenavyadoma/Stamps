@@ -50,7 +50,50 @@ module Stamps
 
             #browser.spans(css: "[ng-bind-html^='service.PackageStr']").size
             browser.iframe(css: "[id=storeiframe]").spans(css: "[ng-bind-html^='service.PackageStr']").each {|field| p field.text}
+            browser.iframe(css: "[id=storeiframe]").span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]")
             "Package/Thick Envelope".match(/Package\/Thick Envelope/).to_s
+
+            textbox = StampsTextbox.new(browser.iframe(css: "[id=storeiframe]").span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]"))
+            dd = StampsField.new(browser.iframe(css: "[id=storeiframe]").div(class: "selectize-input"))
+            dd.click
+            logger.message "=================================================="
+            browser.iframe(css: "[id=storeiframe]").spans(css: "[ng-bind-html^='service.PackageStr']").each do|field|
+              field = StampsField.new(field)
+              dd.click unless field.present?
+              field.scroll_into_view
+              field_text = field.text
+              sleep(0.1)
+              field.click
+              textbox_text = textbox.text
+              sleep(0.1)
+              p "#{textbox_text} == #{field_text}"
+            end
+
+
+
+
+
+            textbox = StampsTextbox.new(browser.iframe(css: "[id=storeiframe]").span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]"))
+            dd = StampsField.new(browser.iframe(css: "[id=storeiframe]").div(class: "selectize-input"))
+            dd.click
+            logger.message "=================================================="
+            browser.iframe(css: "[id=storeiframe]").spans(css: "[ng-bind-html^='service.PackageStr']").each do|field|
+              field = StampsField.new(field)
+              dd.click unless field.present?
+              field.scroll_into_view
+              field_text = field.text
+              sleep(0.1)
+              field.click
+              textbox_text = textbox.text
+              sleep(0.1)
+              p "#{textbox_text} -- #{field_text}"
+            end
+
+
+
+
+
+
             case(str)
               when /First-Class Mail Large Envelope/
               when /xxxx/
