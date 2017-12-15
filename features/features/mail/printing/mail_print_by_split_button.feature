@@ -18,37 +18,102 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-  @mail_print_shipping_label_5x8_psg
-  Scenario: Shipping Label - 5 ½” x 8 ½” - PSG
+    Then Sign out
 
-   #mail_print_shipping_label_5x8_psg_large_package
-    Then select Print On Shipping Label - 5x8
-    Then set Print form Mail-From to default
-    Then set Print form Mail-To to a random address in zone 5 through 8
-    Then set Print form Ounces to 1
-    Then select Print form service PSG Large Package
-    Then Print Postage
-    Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+  @mail_print_envelope_6
+  Scenario: Print On: Envelope #6
 
-   #mail_print_shipping_label_5x8_psg_oversized_package
-    Then select Print On Shipping Label - 5x8
+    Then select Print On Envelope - 6
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service PSG Oversized Package
-    Then Print Postage
+    Then select Print form service FCM Letter
+    Then Print postage using split button
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-   #mail_print_shipping_label_5x8_psg_package
-    Then select Print On Shipping Label - 5x8
+  Scenario: Print On: Envelope #11
+
+    Then select Print On Envelope - 11
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
-    Then select Print form service PSG Package
-    Then Print Postage
+    Then select Print form service FCM Letter
+    Then Print postage using split button
+    Then set Mail Print modal Printer
+
+    Then click Mail Print modal Print button
+
+
+  @mail_print_SDC_3930_hidden_postage
+  Scenario: Print SDC 3930 (with hidden postage)
+
+    Then select Print On Shipping Label - Paper
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set Print form Pounds to 0
+    Then set Print form Ounces to 1
+    Then select Print form service PM Package
+    Then show Advanced Options
+    Then check Advanced Options Hide Label Value
+    Then expect Advanced Options Hide Label Value is checked
+    Then select Print On Certified Mail Label - SDC-3930
+    Then Print postage using split button
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
 
-    Then Sign out
+
+  @mail_print_roll_4_1_8_x_6_1_4_fcm
+  Scenario: Print on: Roll - 4 ⅛” x 6 ¼” - FCM
+
+  #mail_print_roll_4_1_8_x_6_1_4_fcm_large_envelope
+    Then select Print On Roll 418x614
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set Print form Ounces to 1
+    Then select Print form service FCM Large Envelope
+    Then Print postage using split button
+    Then set Mail Print modal Printer ZDesigner
+    Then click Mail Print modal Print button
+
+   #mail_print_roll_4x6_fcm_large_envelope
+    Then select Print On Roll 4x6
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then set Print form Mail-To to a random address in zone 1 through 4
+    Then set Print form Ounces to 1
+    Then select Print form service FCM Large Envelope
+    Then Print postage using split button
+    Then set Mail Print modal Printer ZDesigner
+    Then click Mail Print modal Print button
+
+
+  @mail_stamps_series_b
+  Scenario: Stamps Regression Series #B
+   #mail_print_stamps_b_series_calculate
+    Then select Print On Stamps
+    Then set Print form Serial Number to B12345
+    Then select Advanced Options Calculate Postage Amount
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then set Print form Ounces to 1
+    Then select Print form service FCM Large Envelope
+    Then set Advanced Options Cost Code to None
+    Then Print postage using split button
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
+
+   #mail_print_stamps_b_series_specify
+    Then select Print On Stamps
+    Then set Print form Serial Number to B12345
+    Then select Advanced Options Specify Postage Amount
+    Then set Print form Mail-From to default
+    Then set Print form Mail-To Country to United States
+    Then select Print form service Media Mail
+    Then set Print form Amount to 0.15
+    Then set Advanced Options Cost Code to None
+    Then Print postage using split button
+    Then set Mail Print modal Printer
+    Then click Mail Print modal Print button
