@@ -11,7 +11,7 @@ module Stamps
       module GenSetStoreNickname
         include StoreIframe
         def store_nickname
-          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(iframe.text_field(id: "storeName")):cache[:store_nickname]
+          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(store_iframe.text_field(id: "storeName")):cache[:store_nickname]
         end
 
         def auto_import_new_orders
@@ -21,157 +21,154 @@ module Stamps
       end
 
       module GenSetServiceMapping
+        include StoreIframe
         class GenSetShippingService < Browser::StampsModal
           include StoreIframe
 
           def textbox
-            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(store_iframe.text_field(css: "[type=search]")):cache[:textbox]
+            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(store_iframe.span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]")):cache[:textbox]
           end
 
           def dropdown
             (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(store_iframe.div(class: "selectize-input")):cache[:dropdown]
           end
 
-          def selection(str)
+          def select_service(str)
+            selection = StampsField.new(selection_field(str))
+            10.times do
+              dropdown.click unless selection.present?
+              return textbox.text if str==textbox.text
+            end
+            nil
           end
 
           def remove_service
-            (cache[:remove_service].nil?||!cache[:remove_service].present?)?cache[:remove_service]=StampsField.new(iframe.button(class: "action remove")):cache[:remove_service]
+            (cache[:remove_service].nil?||!cache[:remove_service].present?)?cache[:remove_service]=StampsField.new(store_iframe.button(class: "action remove")):cache[:remove_service]
           end
 
           def manage_service_options
-            (cache[:manage_service].nil?||!cache[:manage_service].present?)?cache[:manage_service]=StampsField.new(iframe.button(class: "action remove")):cache[:manage_service]
-          end
-
-          def select_service(str)
-            #Version 2. check number of selections, if less than 36, bring them all in.
-            #
-            # [ng-bind-html^='service.PackageStr']
-
-            #browser.spans(css: "[ng-bind-html^='service.PackageStr']").size
-            browser.iframe(css: "[id=storeiframe]").spans(css: "[ng-bind-html^='service.PackageStr']").each {|field| p field.text}
-            browser.iframe(css: "[id=storeiframe]").span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]")
-            "Package/Thick Envelope".match(/Package\/Thick Envelope/).to_s
-
-            textbox = StampsTextbox.new(browser.iframe(css: "[id=storeiframe]").span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]"))
-            dd = StampsField.new(browser.iframe(css: "[id=storeiframe]").div(class: "selectize-input"))
-            dd.click
-            logger.message "=================================================="
-            browser.iframe(css: "[id=storeiframe]").spans(css: "[ng-bind-html^='service.PackageStr']").each do|field|
-              field = StampsField.new(field)
-              dd.click unless field.present?
-              field.scroll_into_view
-              field_text = field.text
-              sleep(0.1)
-              field.click
-              textbox_text = textbox.text
-              sleep(0.1)
-              p "#{textbox_text} == #{field_text}"
-            end
-
-
-
-
-
-            textbox = StampsTextbox.new(browser.iframe(css: "[id=storeiframe]").span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]"))
-            dd = StampsField.new(browser.iframe(css: "[id=storeiframe]").div(class: "selectize-input"))
-            dd.click
-            logger.message "=================================================="
-            browser.iframe(css: "[id=storeiframe]").spans(css: "[ng-bind-html^='service.PackageStr']").each do|field|
-              field = StampsField.new(field)
-              dd.click unless field.present?
-              field.scroll_into_view
-              field_text = field.text
-              sleep(0.1)
-              field.click
-              textbox_text = textbox.text
-              sleep(0.1)
-              p "#{textbox_text} -- #{field_text}"
-            end
-
-
-
-
-
-
-            case(str)
-              when /First-Class Mail Large Envelope/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-              when /xxxx/
-
-              else
-                #ignore
-            end
-
-
-            # 0 First-Class Mail Large Envelope/Flat
-            # 1 First-Class Mail Package/Thick Envelope
-            # 2 Priority Mail Large/Thick Envelope
-            # 3 Priority Mail Package
-            # 4 Priority Mail Large Package
-            # 5 Priority Mail Flat Rate Envelope
-            # 6 Priority Mail Padded Flat Rate Envelope
-            # 7 Priority Mail Legal Flat Rate Envelope
-            # 8 Priority Mail Small Flat Rate Box
-            # 9 Priority Mail Medium Flat Rate Box
-            # 10 Priority Mail Large Flat Rate Box
-            # 11 Priority Mail Regional Rate Box A
-            # 12 Priority Mail Regional Rate Box B
-            # 13 Priority Mail Express Package
-            # 14 Priority Mail Express Flat Rate Envelope
-            # 15 Priority Mail Express Padded Flat Rate Envelope
-            # 16 Priority Mail Express Legal Flat Rate Envelope
-            # 17 Media Mail Package
-            # 18 Parcel Select Ground Package
-            # 19 Parcel Select Ground Large Package
-            # 20 Parcel Select Ground Oversized Package
-            # 21 First-Class Mail International Large Envelope/Flat
-            # 22 First-Class Mail International Package/Thick Envelope
-            # 23 Priority Mail International Package
-            # 24 Priority Mail International Flat Rate Envelope
-            # 25 Priority Mail International Padded Flat Rate Envelope
-            # 26 Priority Mail International Legal Flat Rate Envelope
-            # 27 Priority Mail International Small Flat Rate Box
-            # 28 Priority Mail International Medium Flat Rate Box
-            # 29 Priority Mail International Large Flat Rate Box
-            # 30 Priority Mail International Regional Rate Box A
-            # 31 Priority Mail International Regional Rate Box B
-            # 32 Priority Mail Express International Package
-            # 33 Priority Mail Express International Flat Rate Envelope
-            # 34 Priority Mail Express International Padded Flat Rate Envelope
-            # 35 Priority Mail Express International Legal Flat Rate Envelope
-
-
-
-
-
-
-
-
-
+            (cache[:manage_service].nil?||!cache[:manage_service].present?)?cache[:manage_service]=StampsField.new(store_iframe.button(class: "action remove")):cache[:manage_service]
           end
 
           def service_tooltip(str)
           end
+
+          private
+          def selection_field(str)
+            #Version 2. check number of selections, if less than 36, bring them all in.
+            #raise error or call Manage Service Options if store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']").size < 36
+            #browser.spans(css: "[ng-bind-html^='service.PackageStr']").size
+
+            case(str)
+              when /FCM Large Envelope/ #0. FCM Large Envelope/Flat (1-3 days) -- Large Envelope/Flat
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[0]
+              when /FCM Package/ #1. FCM Package/Thick Envelope (1-3 days) -- Package/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[1]
+              when /PM Large\/Thick Envelope/ #2. PM Large/Thick Envelope (1-3 days) -- Large/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[2]
+              when /PM Package/ #3. PM Package (1-3 days) -- Package
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[3]
+              when /PM Large Package/ #4. PM Large Package (1-3 days) -- Large Package
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[4]
+              when /PM Flat Rate Envelope/ #5. PM Flat Rate Envelope (1-3 days) -- Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[5]
+              when /PM Padded Flat Rate Envelope/ #6. PM Padded Flat Rate Envelope (1-3 days) -- Padded Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[6]
+              when /PM Legal Flat Rate Envelope/ #7. PM Legal Flat Rate Envelope (1-3 days) -- Legal Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[7]
+              when /PM Small Flat Rate Box/ #8. PM Small Flat Rate Box (1-3 days) -- Small Flat Rate Box
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[8]
+              when /PM Medium Flat Rate Box/ #9. PM Medium Flat Rate Box (1-3 days) -- Medium Flat Rate Box
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[9]
+              when /PM Large Flat Rate Box/  #10. PM Large Flat Rate Box (1-3 days) -- Large Flat Rate Box
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[10]
+              when /PM Regional Rate Box A/ #11. PM Regional Rate Box A (1-3 days) -- Regional Rate Box A
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[11]
+              when /PM Regional Rate Box B/ #12. PM Regional Rate Box B (1-3 days) -- Regional Rate Box B
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[12]
+              when /PME Package/  #13. PME Package/Flat/Thick Envelope (1-2 days) -- Package/Flat/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[13]
+              when /PME Flat Rate Envelope/  #14. PME Flat Rate Envelope (1-2 days) -- Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[14]
+              when /PME Padded Flat Rate Envelope/ #15. PME Padded Flat Rate Envelope (1-2 days) -- Padded Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[15]
+              when /PME Legal Flat Rate Envelope/ #16. PME Legal Flat Rate Envelope (1-2 days) -- Legal Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[16]
+              when /MM Package/ #17. MM Package/Flat/Thick Envelope (2-9 days) -- Package/Flat/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[17]
+              when /PSG Package/  #18. PSG Package/Flat/Thick Envelope (2-9 days) -- Package/Flat/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[18]
+              when /PSG Large Package/ #19. PSG Large Package (2-9 days) -- Large Package
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[19]
+              when /PSG Oversized Package/ #20. PSG Oversized Package (2-9 days) -- Oversized Package
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[20]
+              when /FCMI Large Envelope/ #21. FCMI Large Envelope/Flat (1 - 999 days) -- Large Envelope/Flat
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[21]
+              when /FCMI Package/ #22. FCMI Package/Thick Envelope (1 - 999 days) -- Package/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[22]
+              when /PMI Package/ #23. PMI Package/Flat/Thick Envelope (6 - 10 days) -- Package/Flat/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[23]
+              when /PMI Flat Rate Envelope/ #24. PMI Flat Rate Envelope (6 - 10 days) -- Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[24]
+              when /PMI Padded Flat Rate Envelope/ #25. PMI Padded Flat Rate Envelope (6 - 10 days) -- Padded Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[25]
+              when /PMI Legal Flat Rate Envelope/ #26. PMI Legal Flat Rate Envelope (6 - 10 days) -- Legal Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[26]
+              when /PMI Small Flat Rate Box/ #27. PMI Small Flat Rate Box (6 - 10 days) -- Small Flat Rate Box
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[27]
+              when /PMI Medium Flat Rate Box/ #28. PMI Medium Flat Rate Box (6 - 10 days) -- Medium Flat Rate Box
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[28]
+              when /PMI Large Flat Rate Box/ #29. PMI Large Flat Rate Box (6 - 10 days) -- Large Flat Rate Box
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[29]
+              when /PMI Regional Rate Box A/ #30. PMI Regional Rate Box A (6 - 10 days) -- Regional Rate Box A
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[30]
+              when /PMI Regional Rate Box B/ #31. PMI Regional Rate Box B (6 - 10 days) -- Regional Rate Box B
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[31]
+              when /PMEI Package/ #32. PMEI Package/Flat/Thick Envelope (3 - 5 days) -- Package/Flat/Thick Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[32]
+              when /PMEI Flat Rate Envelope/ #33. PMEI Flat Rate Envelope (3 - 5 days) -- Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[33]
+              when /PMEI Padded Flat Rate Envelope/ #34. PMEI Padded Flat Rate Envelope (3 - 5 days) -- Padded Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[34]
+              when /PMEI Legal Flat Rate Envelope/ #35. PMEI Legal Flat Rate Envelope (3 - 5 days) -- Legal Flat Rate Envelope
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[35]
+              when /Manage Service Options/ #36. PMEI Legal Flat Rate Envelope (3 - 5 days) -- Manage Service Options...
+                return store_iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[36]
+              else
+                raise "#{str} is not a valid service selection."
+            end
+          end
         end
 
         def requested_service
-          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(iframe.text_field(name: "serviceName")):cache[:requested_service]
+          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(store_iframe.text_field(name: "serviceName")):cache[:requested_service]
         end
 
         def shipping_service
+          (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=GenSetShippingService.new(param):cache[:shipping_service]
+        end
+      end
+
+      module GenSetProducts
+        include StoreIframe
+        def auto_add_to_products_page
+
+        end
+
+        def sku
+          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
+              store_iframe.label(css: "label[for='sku']"),
+              store_iframe.input(id: 'sku'),
+              "class",
+              "parse"):cache[:sku]
+        end
+
+        def product_listing_name
+          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
+              store_iframe.label(css: "label[for='productListingName']"),
+              store_iframe.input(id: 'productListingName'),
+              "class",
+              "parse"):cache[:product_listing_name]
         end
       end
     end
