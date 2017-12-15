@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class SecurityFirstQuestion < Browser::StampsBase
+    class SecurityFirstQuestion < Browser::Base
 
       def drop_down
         @drop_down ||= StampsField.new(browser.span(css: "button[title*='1ST QUESTION']>span[class*=filter-option]")) if @drop_down.nil?||!@drop_down.present?
@@ -23,7 +23,7 @@ module Stamps
       end
     end
 
-    class SecuritySecondQuestion < Browser::StampsBase
+    class SecuritySecondQuestion < Browser::Base
       def drop_down
         @drop_down ||= StampsField.new(browser.span(css: "button[title*='2ND QUESTION']>span[class*=filter-option]")) if @drop_down.nil?||!@drop_down.present?
         @drop_down
@@ -45,7 +45,7 @@ module Stamps
       end
     end
 
-    class SecurityQuestionsRegistration < Browser::StampsBase
+    class SecurityQuestionsRegistration < Browser::Base
 
       def first_question
         @first_question=SecurityFirstQuestion.new(param) if @first_question.nil?||!@first_question.present?

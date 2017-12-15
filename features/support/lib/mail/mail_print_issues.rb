@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailInsufficientFunds < Browser::StampsBase
+    class MailInsufficientFunds < Browser::Base
       attr_reader :window_title, :body, :add_funds_btn, :close_btn
 
       def initialize(param)
@@ -28,7 +28,7 @@ module Stamps
       end
     end
 
-    class PrintQuantityWarning < Browser::StampsBase
+    class PrintQuantityWarning < Browser::Base
       attr_reader :agree_and_continue_btn, :close, :cancel
 
       def initialize(param)

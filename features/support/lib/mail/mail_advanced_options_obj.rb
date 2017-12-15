@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module AdvancedOptions
-      class CostCodeComboBox < Browser::StampsBase
+      class CostCodeComboBox < Browser::Base
         attr_accessor :param, :textbox, :dropdown
 
         def initialize(param)
@@ -45,7 +45,7 @@ module Stamps
         end
       end
 
-      class MailDatePicker < Browser::StampsBase
+      class MailDatePicker < Browser::Base
         include MailDateTextbox
         include ParameterHelper
         def trigger_picker
@@ -82,7 +82,7 @@ module Stamps
         end
       end
 
-      class MailDate < Browser::StampsBase
+      class MailDate < Browser::Base
         include MailDateTextbox
         def date_picker
           (cache[:date_picker].nil?||!cache[:date_picker].present?)?cache[:date_picker]=MailDatePicker.new(param):cache[:date_picker]

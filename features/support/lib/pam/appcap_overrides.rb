@@ -1,7 +1,7 @@
 module Stamps
   module Pam
 
-    class AppCapOverridesConfirmation < Browser::StampsBase
+    class AppCapOverridesConfirmation < Browser::Base
       def title
         StampsField.new browser.td(text: 'AppCap Overrides')
       end
@@ -25,7 +25,7 @@ module Stamps
       end
     end
 
-    class AppCapCertifiedMail < Browser::StampsBase
+    class AppCapCertifiedMail < Browser::Base
       def always_on
         browser.radio(css: 'input[name=CertMail][value=On]').set
       end
@@ -39,7 +39,7 @@ module Stamps
       end
     end
 
-    class AppCapInternetPostagePrinting < Browser::StampsBase
+    class AppCapInternetPostagePrinting < Browser::Base
       def always_on
         browser.radio(css: 'input[name=IBIP][value=On]').set
       end
@@ -53,7 +53,7 @@ module Stamps
       end
     end
 
-    class AppCapNetStampsPrinting < Browser::StampsBase
+    class AppCapNetStampsPrinting < Browser::Base
       def always_on
         browser.radio(css: 'input[name=NS][value=On]').set
       end
@@ -67,7 +67,7 @@ module Stamps
       end
     end
 
-    class AppCapShippingLabelPrinting < Browser::StampsBase
+    class AppCapShippingLabelPrinting < Browser::Base
       def always_on
         browser.radio(css: 'input[name=SL][value=On]').set
       end
@@ -81,7 +81,7 @@ module Stamps
       end
     end
 
-    class AppCapInternationalShipping < Browser::StampsBase
+    class AppCapInternationalShipping < Browser::Base
       def always_on
         browser.radio(css: 'input[name=IntlShipping][value=On]').set
       end
@@ -95,7 +95,7 @@ module Stamps
       end
     end
 
-    class AppCapAllowHighRiskCountries < Browser::StampsBase
+    class AppCapAllowHighRiskCountries < Browser::Base
       def always_on
         browser.radio(css: 'input[name=AllowHighRiskCountries][value=On]').set
       end
@@ -109,7 +109,7 @@ module Stamps
       end
     end
 
-    class AppCapMailingLabelPrinting < Browser::StampsBase
+    class AppCapMailingLabelPrinting < Browser::Base
       def always_on
         browser.radio(css: 'input[name=CreateMailingLabelIndicia][value=On]').set
       end
@@ -123,7 +123,7 @@ module Stamps
       end
     end
 
-    class AppCapOverridesPage < Browser::StampsBase
+    class AppCapOverridesPage < Browser::Base
       def username
         StampsField.new(browser.a(css: "tbody>tr:nth-child(2)>td:nth-child(2)>a"))
       end

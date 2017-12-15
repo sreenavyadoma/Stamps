@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailSearchContactsModal < Browser::StampsBase
+    class MailSearchContactsModal < Browser::Base
       attr_accessor :window_title, :x_btn
 
       def initialize(param)

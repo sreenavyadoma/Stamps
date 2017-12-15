@@ -1,7 +1,25 @@
 module Stamps
   module Browser
-    module Base
+    class ModalParam
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
+                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
+    end
 
+    module StampsCache
+      def cache
+        @cache ||= {}
+      end
+    end
+
+    class Base
+      include StampsCache
+      attr_reader :param, :helper, :browser, :logger
+      def initialize(param)
+        @param=param
+        @helper=StampsTestHelper.new(param.logger)
+        @browser=param.browser
+        @logger=param.logger
+      end
     end
 
     #todo-Rob REW
@@ -664,29 +682,6 @@ module Stamps
         end
         expect(textbox.text).to eql(str)
         textbox.text
-      end
-    end
-
-    # Modals
-    class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
-                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
-    end
-
-    module StampsCache
-      def cache
-        @cache ||= {}
-      end
-    end
-
-    class StampsBase
-      include StampsCache
-      attr_reader :param, :helper, :browser, :logger
-      def initialize(param)
-        @param=param
-        @helper=StampsTestHelper.new(param.logger)
-        @browser=param.browser
-        @logger=param.logger
       end
     end
   end

@@ -14,7 +14,7 @@ module Stamps
         end
       end
 
-      class ShipToInternational < Browser::StampsBase
+      class ShipToInternational < Browser::Base
         include BlurOutElement
         def present?
           name.present?
@@ -81,7 +81,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestInternational < Browser::StampsBase
+      class AutoSuggestInternational < Browser::Base
         #todo-rob refactor auto-suggest internatinal
         attr_reader :auto_suggest_box
 
@@ -109,7 +109,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestPopUp < Browser::StampsBase
+      class AutoSuggestPopUp < Browser::Base
         def present?
           name_fields[0].present?
         end
@@ -134,7 +134,7 @@ module Stamps
         end
       end
 
-      class AddressNotFound < Browser::StampsBase
+      class AddressNotFound < Browser::Base
         attr_reader :window_title
 
         def initialize(param)
@@ -184,7 +184,7 @@ module Stamps
         end
       end
 
-      class AmbiguousAddress < Browser::StampsBase
+      class AmbiguousAddress < Browser::Base
         attr_reader :address_not_found
 
         def initialize(param)
@@ -296,7 +296,7 @@ module Stamps
         end
       end
 
-      class ShipToCountry < Browser::StampsBase
+      class ShipToCountry < Browser::Base
         include ShowShipToDetails
 
         def dropdown
@@ -348,7 +348,7 @@ module Stamps
         end
       end
 
-      class ShipToDomestic < Browser::StampsBase
+      class ShipToDomestic < Browser::Base
         include ShowShipToDetails, BlurOutElement
 
         attr_reader :ambiguous, :auto_suggest, :address_not_found
@@ -426,7 +426,7 @@ module Stamps
         end
       end
 
-      class AutoSuggestDomestic < Browser::StampsBase
+      class AutoSuggestDomestic < Browser::Base
         attr_reader :textarea, :auto_suggest_box
         def initialize(param, textarea)
           super(param)
@@ -452,7 +452,7 @@ module Stamps
         end
       end
 
-      class ShipTo < Browser::StampsBase
+      class ShipTo < Browser::Base
         attr_reader :country, :international, :domestic
         def initialize(param)
           super
@@ -462,7 +462,7 @@ module Stamps
         end
       end
 
-      class ViewRestrictions < Browser::StampsBase
+      class ViewRestrictions < Browser::Base
         def browser_ok_button
           StampsField.new(browser.span(text: "OK"))
         end
@@ -476,7 +476,7 @@ module Stamps
         end
       end
 
-      class InsuranceTermsConditions < Browser::StampsBase
+      class InsuranceTermsConditions < Browser::Base
         def present?
           begin
             (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present?||browser.spans(text: "I Agree").last.present?
@@ -511,7 +511,7 @@ module Stamps
         end
       end
 
-      class DetailsInsureFor < Browser::StampsBase
+      class DetailsInsureFor < Browser::Base
         include BlurOutElement
 
         attr_reader :checkbox, :textbox, :increment_trigger, :decrement_trigger, :terms
@@ -594,7 +594,7 @@ module Stamps
         end
       end
 
-      class DetailsTracking < Browser::StampsBase
+      class DetailsTracking < Browser::Base
         attr_reader :textbox, :dropdown, :cost_label
         def initialize(param)
           super
@@ -671,10 +671,10 @@ module Stamps
         end
       end
 
-      class DetailsStoreItem < Browser::StampsBase
+      class DetailsStoreItem < Browser::Base
       end
 
-      class AssociatedOrderItem < Browser::StampsBase
+      class AssociatedOrderItem < Browser::Base
         attr_reader :index, :item_qty, :item_id, :item_description, :delete
         def initialize(param, number)
           super(param)
@@ -699,7 +699,7 @@ module Stamps
         end
       end
 
-      class ItemsOrderedSection < Browser::StampsBase
+      class ItemsOrderedSection < Browser::Base
         attr_reader :add_btn, :dropdown
 
         def initialize(param)
@@ -743,7 +743,7 @@ module Stamps
         end
       end
 
-      class DetailsCollapsible < Browser::StampsBase
+      class DetailsCollapsible < Browser::Base
         attr_reader :field
         def initialize(param)
           super
@@ -762,7 +762,7 @@ module Stamps
         end
       end
 
-      class ToolbarMenu < Browser::StampsBase
+      class ToolbarMenu < Browser::Base
         attr_reader :dropdown
         def initialize(param)
           super
@@ -795,7 +795,7 @@ module Stamps
         end
       end
 
-      class SingleOrderDetailsOrderId < Browser::StampsBase
+      class SingleOrderDetailsOrderId < Browser::Base
         def present?
           order_id_field.present?
         end
@@ -822,7 +822,7 @@ module Stamps
         end
       end
 
-      class DetailsToolbar < Browser::StampsBase
+      class DetailsToolbar < Browser::Base
         def menu
           @menu=ToolbarMenu.new(param) if @menu.nil?||!@menu.present?
           @menu
@@ -833,7 +833,7 @@ module Stamps
         end
       end
 
-      class DetailsFooter < Browser::StampsBase
+      class DetailsFooter < Browser::Base
         attr_reader :label
         def initialize(param)
           super
@@ -869,7 +869,7 @@ module Stamps
         end
       end
 
-      class OrdersCustomsFields < Browser::StampsBase
+      class OrdersCustomsFields < Browser::Base
         attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :custom_form_btn, :restrictions_btn
 
         def initialize(param)
@@ -899,7 +899,7 @@ module Stamps
         end
       end
 
-      class SingleOrderDetails < Browser::StampsBase
+      class SingleOrderDetails < Browser::Base
         include BlurOutElement
         attr_reader :toolbar, :single_ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking, :dimensions,
                     :footer, :customs, :items_ordered, :reference_no, :collapsed_details

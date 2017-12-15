@@ -21,7 +21,7 @@ module Stamps
     end
     
     module TermsAndConditions
-      class TermsAndConditionsModal < Stamps::Browser::StampsBase
+      class TermsAndConditionsModal < Stamps::Browser::Base
         def present?
           i_agree_button.present?
         end

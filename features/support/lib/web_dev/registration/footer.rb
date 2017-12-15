@@ -2,7 +2,7 @@ module Stamps
   module Registration
     module Footer
 
-      class ProfileFooter < Browser::StampsBase
+      class ProfileFooter < Browser::Base
         attr_reader :privacy_policy_link, :copyright_link, :trust_elogo, :live_chat_button
 
         def initialize(param)

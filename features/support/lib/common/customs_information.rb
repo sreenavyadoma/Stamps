@@ -39,10 +39,10 @@ module Stamps
         end
       end
 
-      class PackageContentsDetails < Browser::StampsBase
+      class PackageContentsDetails < Browser::Base
       end
 
-      class CustomsMadeIn < Browser::StampsBase
+      class CustomsMadeIn < Browser::Base
         attr_reader :textbox, :dropdown, :index
 
         def initialize(param, textbox, dropdown, index)
@@ -70,7 +70,7 @@ module Stamps
         end
       end
 
-      class AssociatedCustomsLineItem < Browser::StampsBase
+      class AssociatedCustomsLineItem < Browser::Base
         attr_reader :delete, :customs_item_description, :customs_item_qty, :customs_item_unit_price, :made_in, :customs_item_hs_tariff, :index
 
         def initialize(param, index)
@@ -101,7 +101,7 @@ module Stamps
         end
       end
 
-      class AssociatedCustomsItems < Browser::StampsBase
+      class AssociatedCustomsItems < Browser::Base
         attr_reader :add_btn
 
         def initialize(param)
@@ -128,7 +128,7 @@ module Stamps
         end
       end
 
-      class UspsPrivactActStatementModal < Browser::StampsBase
+      class UspsPrivactActStatementModal < Browser::Base
         attr_reader :window_title, :okay
 
         def initialize(param)
@@ -142,7 +142,7 @@ module Stamps
         end
       end
 
-      class CustInfoPackageContents < Browser::StampsBase
+      class CustInfoPackageContents < Browser::Base
         attr_accessor :combobox, :contents
 
         def initialize(param)
@@ -160,7 +160,7 @@ module Stamps
         end
       end
 
-      class CustInfoInternalTransaction < Browser::StampsBase
+      class CustInfoInternalTransaction < Browser::Base
         attr_accessor :combobox, :itn_number
 
         def initialize(param)
@@ -176,7 +176,7 @@ module Stamps
         end
       end
 
-      class CustomsInformation < Browser::StampsBase
+      class CustomsInformation < Browser::Base
 
         attr_reader :window_title, :associated_items, :usps_privacy_act_warning, :close_button, :package_contents, :non_delivery_options, :internal_transaction,
                     :more_info, :itn_number, :license, :invoice, :total_value_field, :privacy_statement, :privacy_link,

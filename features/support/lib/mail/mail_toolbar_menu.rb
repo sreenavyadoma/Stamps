@@ -27,7 +27,7 @@ module Stamps
 
     end
 
-    class MailToolbarMenu < Browser::StampsBase
+    class MailToolbarMenu < Browser::Base
       include MailToolbarLeftSide
       include MailToolbarRightSide
     end

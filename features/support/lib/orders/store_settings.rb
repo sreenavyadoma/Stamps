@@ -27,7 +27,7 @@ module Stamps
 
       module GenSetServiceMapping
         include StoreIframe
-        class GenSetShippingService < Browser::StampsBase
+        class GenSetShippingService < Browser::Base
           include StoreIframe
 
           def textbox

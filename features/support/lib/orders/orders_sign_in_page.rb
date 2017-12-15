@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Authentication
-      class NewWelcomeModal < Browser::StampsBase
+      class NewWelcomeModal < Browser::Base
         attr_reader :title, :msg_container, :next_button, :close_button, :add_manual_order
 
         def initialize(param)
@@ -39,7 +39,7 @@ module Stamps
       end
 
       #todo-Rob add caching
-      class OrdersLandingPage < Browser::StampsBase
+      class OrdersLandingPage < Browser::Base
         attr_reader :username_textbox, :password_textbox, :sign_in_btn, :title, :signed_in_user
 
         def initialize(param)

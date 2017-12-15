@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::StampsBase
+      class MailExtraServices < Browser::Base
         attr_accessor :window_title, :security, :value, :handling, :save_field, :close_field, :security_price_field, :return_receipt_price_field,
                       :restricted_delivery_price_field, :cod_price_field, :non_delivery_notice_price_field, :content_price_field,
                       :special_handling_price_field, :merchandise_return_receipt_field, :total_price_field
@@ -169,7 +169,7 @@ module Stamps
         end
       end
 
-      class ValueMustBeShown < Browser::StampsBase
+      class ValueMustBeShown < Browser::Base
         def continue
           (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(
               browser.span(text: "Continue")):cache[:continue]

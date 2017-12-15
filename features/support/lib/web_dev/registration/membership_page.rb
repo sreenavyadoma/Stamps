@@ -425,7 +425,7 @@ module Stamps
         end
       end
 
-      class MembershipPage < Browser::StampsBase
+      class MembershipPage < Browser::Base
         include MemberPersonalInfo
         include MemberCreditCard
         include MemberBillingAddress

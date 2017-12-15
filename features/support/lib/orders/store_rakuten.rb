@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Rakuten < Browser::StampsBase
+      class Rakuten < Browser::Base
 
         def window_title
           StampsField.new(browser.div text: "Connect your Rakuten Store")

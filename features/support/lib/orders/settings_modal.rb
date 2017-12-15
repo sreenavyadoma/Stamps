@@ -87,7 +87,7 @@ module Stamps
         end
       end
 
-      class OrdersSettingsModal < Browser::StampsBase
+      class OrdersSettingsModal < Browser::Base
         include OrdersSettingsModalTitle
         include OrdersSettingsTabBar
 

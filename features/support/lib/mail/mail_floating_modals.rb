@@ -11,7 +11,7 @@ module Stamps
           end
         end
 
-        class PrintIncompleteFields < Browser::StampsBase
+        class PrintIncompleteFields < Browser::Base
           include IncFeldsWindowTitle
           def present?
             window_title.present?

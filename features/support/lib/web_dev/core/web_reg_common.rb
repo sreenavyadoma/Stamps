@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class SecurityQuestions1 < Browser::StampsBase
+    class SecurityQuestions1 < Browser::Base
       attr_reader :field
 
       def initialize(field)

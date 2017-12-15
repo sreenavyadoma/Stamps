@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class Volusion < Browser::StampsBase
+      class Volusion < Browser::Base
         def present?
           connect_button.present?
         end

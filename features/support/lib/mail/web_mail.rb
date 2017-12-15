@@ -1,7 +1,7 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class WebMail < Browser::StampsBase
+    class WebMail < Browser::Base
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
       def sign_in_modal

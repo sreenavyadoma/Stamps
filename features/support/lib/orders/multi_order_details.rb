@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module MultiOrderDetails
-      class MultiOrderDetailsForm < Browser::StampsBase
+      class MultiOrderDetailsForm < Browser::Base
         attr_reader :multi_ship_from, :weight, :multi_dom_service, :multi_int_service, :insurance, :tracking, :dimensions, :buttons
 
         def initialize(param)
@@ -48,7 +48,7 @@ module Stamps
         end
       end
 
-      class MultiDetailsInsureFor < Browser::StampsBase
+      class MultiDetailsInsureFor < Browser::Base
         attr_reader :textbox, :increment_trigger, :decrement_trigger, :blur_field, :dropdown
 
         def initialize(param)
@@ -92,7 +92,7 @@ module Stamps
         end
       end
 
-      class MultiOrderDetailsTracking < Browser::StampsBase
+      class MultiOrderDetailsTracking < Browser::Base
         attr_reader :textbox, :dropdown
         def initialize(param)
           super(param)
@@ -145,7 +145,7 @@ module Stamps
         end
       end
 
-      class MultiOrderDetailsDimensions < Browser::StampsBase
+      class MultiOrderDetailsDimensions < Browser::Base
         attr_reader :length, :width, :height
         def initialize(param)
           super(param)
@@ -170,7 +170,7 @@ module Stamps
         end
       end
 
-      class MultiUpdateController < Browser::StampsBase
+      class MultiUpdateController < Browser::Base
         attr_reader :update_orders_btn, :save_as_present_btn, :updating_orders
 
         def initialize(param)
