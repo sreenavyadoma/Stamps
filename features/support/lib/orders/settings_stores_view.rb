@@ -7,7 +7,7 @@ module Stamps
         end
 
         def marketplace_window_title
-          (cache[:marketplace_window_title].nil?||!cache[:marketplace_window_title].present?)?cache[:marketplace_window_title]=Browser::StampsModal.new(param).extend(Orders::Stores::MarketPlaceWindowTitle):cache[:marketplace_window_title]
+          (cache[:marketplace_window_title].nil?||!cache[:marketplace_window_title].present?)?cache[:marketplace_window_title]=Browser::StampsBase.new(param).extend(Orders::Stores::MarketPlaceWindowTitle):cache[:marketplace_window_title]
         end
 
         def add
@@ -37,7 +37,7 @@ module Stamps
       module StoresTabViewBottom
       end
 
-      class StoresTabView < Browser::StampsModal
+      class StoresTabView < Browser::StampsBase
         include StoresTabViewToolbar
         include StoresTabViewGrid
         include StoresTabViewBottom

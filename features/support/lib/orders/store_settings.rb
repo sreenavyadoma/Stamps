@@ -1,6 +1,11 @@
 module Stamps
   module Orders
-    module Stores
+    module OrdersSettings
+      module StoresSettings
+        class Base
+
+        end
+      end
 
       module StoreIframe
         def store_iframe
@@ -22,7 +27,7 @@ module Stamps
 
       module GenSetServiceMapping
         include StoreIframe
-        class GenSetShippingService < Browser::StampsModal
+        class GenSetShippingService < Browser::StampsBase
           include StoreIframe
 
           def textbox
@@ -141,18 +146,24 @@ module Stamps
         end
 
         def requested_service
-          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(store_iframe.text_field(name: "serviceName")):cache[:requested_service]
+          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(
+              store_iframe.text_field(name: "serviceName")):cache[:requested_service]
         end
 
         def shipping_service
-          (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=GenSetShippingService.new(param):cache[:shipping_service]
+          (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=GenSetShippingService.new(
+              param):cache[:shipping_service]
         end
       end
 
       module GenSetProducts
         include StoreIframe
         def auto_add_to_products_page
-
+          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
+              store_iframe.input(id: "addNewProducts"),
+              store_iframe.input(id: "addNewProducts"),
+              "class",
+              "parse"):cache[:add_to_products]
         end
 
         def sku
@@ -170,6 +181,10 @@ module Stamps
               "class",
               "parse"):cache[:product_listing_name]
         end
+      end
+
+      class StoreSettings
+
       end
     end
   end

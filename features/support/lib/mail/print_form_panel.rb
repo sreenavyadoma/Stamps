@@ -59,15 +59,15 @@ module Stamps
         def advanced_options
           case param.print_media
             when :stamps
-              return (cache[:stamps_options].nil?||!cache[:stamps_options].present?)?cache[:stamps_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::StampsAdvancedOptions):cache[:stamps_options]
+              return (cache[:stamps_options].nil?||!cache[:stamps_options].present?)?cache[:stamps_options]=Browser::StampsBase.new(param).extend(AdvancedOptions::StampsAdvancedOptions):cache[:stamps_options]
             when :label
-              return (cache[:label_options].nil?||!cache[:label_options].present?)?cache[:label_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::LabelsAdvancedOptions):cache[:label_options]
+              return (cache[:label_options].nil?||!cache[:label_options].present?)?cache[:label_options]=Browser::StampsBase.new(param).extend(AdvancedOptions::LabelsAdvancedOptions):cache[:label_options]
             when :envelope
-              return (cache[:envelope_options].nil?||!cache[:envelope_options].present?)?cache[:envelope_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions):cache[:envelope_options]
+              return (cache[:envelope_options].nil?||!cache[:envelope_options].present?)?cache[:envelope_options]=Browser::StampsBase.new(param).extend(AdvancedOptions::EnvelopesAdvancedOptions):cache[:envelope_options]
             when :certified_mail, :certified_mail_3910_3930, :certified_mail_3810, :certified_mail_3830
-              return (cache[:cm_options].nil?||!cache[:cm_options].present?)?cache[:cm_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions):cache[:cm_options]
+              return (cache[:cm_options].nil?||!cache[:cm_options].present?)?cache[:cm_options]=Browser::StampsBase.new(param).extend(AdvancedOptions::CertifiedMailsAdvancedOptions):cache[:cm_options]
             when :roll
-              return (cache[:roll_options].nil?||!cache[:roll_options].present?)?cache[:roll_options]=Browser::StampsModal.new(param).extend(AdvancedOptions::RollsAdvancedOptions):cache[:roll_options]
+              return (cache[:roll_options].nil?||!cache[:roll_options].present?)?cache[:roll_options]=Browser::StampsBase.new(param).extend(AdvancedOptions::RollsAdvancedOptions):cache[:roll_options]
             else
               raise "Invalid Print Media: #{param.print_media}"
           end
@@ -235,7 +235,7 @@ module Stamps
         end
       end
 
-      class PrintForm < Browser::StampsModal
+      class PrintForm < Browser::StampsBase
         include PrintFormBlurOut
       end
     end

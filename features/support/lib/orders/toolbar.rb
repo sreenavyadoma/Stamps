@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Toolbar
-      class MoveToOnHoldModal < Browser::StampsModal
+      class MoveToOnHoldModal < Browser::StampsBase
         attr_reader :window_title, :cancel_btn, :hold_until
 
         def initialize(param)
@@ -31,7 +31,7 @@ module Stamps
         end
       end
 
-      class MoveToCanceledModal < Browser::StampsModal
+      class MoveToCanceledModal < Browser::StampsBase
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -60,7 +60,7 @@ module Stamps
         end
       end
 
-      class MoveToShippedModal < Browser::StampsModal
+      class MoveToShippedModal < Browser::StampsBase
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -95,7 +95,7 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipmentModal < Browser::StampsModal
+      class MoveToAwaitingShipmentModal < Browser::StampsBase
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -124,7 +124,7 @@ module Stamps
         end
       end
 
-      class MoveDropDown < Browser::StampsModal
+      class MoveDropDown < Browser::StampsBase
         attr_reader :dropdown, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_field
 
         def initialize(param)
@@ -206,7 +206,7 @@ module Stamps
         end
       end
 
-      class PrintIncompleteOrderError < Browser::StampsModal
+      class PrintIncompleteOrderError < Browser::StampsBase
         attr_reader :window_title, :ok_btn, :error_message_label
 
         def initialize(param)
@@ -241,7 +241,7 @@ module Stamps
         end
       end
 
-      class PrintMultiOrderError < Browser::StampsModal
+      class PrintMultiOrderError < Browser::StampsBase
         attr_reader :window_title, :error_message_label
 
         #todo-rob update Print Multi Order Error tests
@@ -307,7 +307,7 @@ module Stamps
         end
       end
 
-      class UspsPrivacyActStatement < Browser::StampsModal
+      class UspsPrivacyActStatement < Browser::StampsBase
         attr_reader :window_title, :message_label, :ok_btn
 
         def initialize(param)
@@ -334,7 +334,7 @@ module Stamps
         end
       end
 
-      class USPSTermsOrders < Browser::StampsModal
+      class USPSTermsOrders < Browser::StampsBase
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
 
         def initialize(param)
@@ -391,7 +391,7 @@ module Stamps
         end
       end
 
-      class ShipStationServerError < Browser::StampsModal
+      class ShipStationServerError < Browser::StampsBase
         def window_title
           browser.divs(text: 'Server Error').first
         end
@@ -405,7 +405,7 @@ module Stamps
         end
       end
 
-      class ToolbarPrintButton < Browser::StampsModal
+      class ToolbarPrintButton < Browser::StampsBase
         include Stamps::Orders::TermsAndConditions
 
         def incomplete_order_modal
@@ -565,7 +565,7 @@ module Stamps
         end
 
         def print_window
-          (cache[:print_window].nil?||!cache[:print_window].present?)?cache[:print_window]=Browser::StampsModal.new(param).extend(Stamps::Orders::Printing::OrdersPrintModalTitle):cache[:print_window]
+          (cache[:print_window].nil?||!cache[:print_window].present?)?cache[:print_window]=Browser::StampsBase.new(param).extend(Stamps::Orders::Printing::OrdersPrintModalTitle):cache[:print_window]
         end
 
         #todo-Rob verify css locator
@@ -574,7 +574,7 @@ module Stamps
         end
       end
 
-      class SettingsMenu < Browser::StampsModal
+      class SettingsMenu < Browser::StampsBase
         def select(menu_item)
           dd=StampsField.new browser.span css: "span[class*=sdc-icon-settings]"
           case menu_item.downcase
@@ -612,7 +612,7 @@ module Stamps
         end
       end
 
-      class PerPage < Browser::StampsModal
+      class PerPage < Browser::StampsBase
         attr_reader :textbox, :dropdown
 
         def initialize(param)
@@ -644,7 +644,7 @@ module Stamps
         end
       end
 
-      class AddButton < Browser::StampsModal
+      class AddButton < Browser::StampsBase
         def click
           add_btn=StampsField.new(browser.span(text: 'Add'))
           details_order_id=Orders::Details::SingleOrderDetailsOrderId.new(param)
@@ -819,7 +819,7 @@ module Stamps
       end
 
 
-      class ToolbarSettingsIcon < Browser::StampsModal
+      class ToolbarSettingsIcon < Browser::StampsBase
         include Stamps::Orders::OrdersSettings::OrdersSettingsModalTitle
 
         def field
@@ -844,7 +844,7 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::StampsModal
+      class OrdersToolbar < Browser::StampsBase
         include OrdersToolbarLeftSide
         #include OrdersToolbarRightSide
         include ToolbarItemsToBeVerified

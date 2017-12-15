@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class DownloadPage < Browser::StampsModal
+    class DownloadPage < Browser::StampsBase
       def field
         StampsField.new browser.h1 css: "div>h1"
       end

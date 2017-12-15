@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Stores
 
-      class Error400 < Browser::StampsModal
+      class Error400 < Browser::StampsBase
 
         def close
           button=StampsField.new(browser.imgs(css: "img[class*=x-tool-close]").last)
@@ -35,7 +35,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationSent < Browser::StampsModal
+      class EmailVerificationSent < Browser::StampsBase
 
         def window_title
           StampsField.new browser.div(text: "Paypal Email Verification Sent")
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationRequired < Browser::StampsModal
+      class EmailVerificationRequired < Browser::StampsBase
 
         def window_title
           StampsField.new browser.div(text: "Paypal Email Verification Required")
@@ -116,13 +116,13 @@ module Stamps
         end
       end
 
-      class PayPalEmailVerSent < Browser::StampsModal
+      class PayPalEmailVerSent < Browser::StampsBase
         def confirm_token
 
         end
       end
 
-      class PayPalEmailVer < Browser::StampsModal
+      class PayPalEmailVer < Browser::StampsBase
         def send_email_verification
 
         end
@@ -150,7 +150,7 @@ module Stamps
           browser.iframe(css: "[id=storeiframe]")
         end
       end
-      class PayPal < Browser::StampsModal
+      class PayPal < Browser::StampsBase
         include PayPalModals
         include PayPalWindowTitle
         include StoreIframe
@@ -184,7 +184,7 @@ module Stamps
         end
       end
 
-      class ConnectYourPaypalStore < Browser::StampsModal
+      class ConnectYourPaypalStore < Browser::StampsBase
         include StoreIframe
         def store_icon
           StampsField.new(store_iframe.img(css: "img[src*=paypalbanner]"))

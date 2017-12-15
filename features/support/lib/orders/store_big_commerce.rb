@@ -15,7 +15,7 @@ module Stamps
         end
       end
 
-      class BigCommerce < Browser::StampsModal
+      class BigCommerce < Browser::StampsBase
 
         def window_title
           StampsField.new browser.div(text: "Connect your Bigcommerce Store")
@@ -34,7 +34,7 @@ module Stamps
       class ModifyBigCommerceStore < BigCommerce
       end
 
-      class BigCommercePage < Browser::StampsModal
+      class BigCommercePage < Browser::StampsBase
       end
     end
   end

@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::StampsModal
+      class ImportingOrdersModal < Browser::StampsBase
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -19,7 +19,7 @@ module Stamps
         end
       end
 
-      class DeleteStoreModal < Browser::StampsModal
+      class DeleteStoreModal < Browser::StampsBase
         def present?
           delete_btn.present?
         end
@@ -53,10 +53,10 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::StampsModal
-        class ServiceMappingGrid < Browser::StampsModal
-          class ServiceMappingLineItem < Browser::StampsModal
-            class ServiceMappingShippingService < Browser::StampsModal
+      class StoreSettings < Browser::StampsBase
+        class ServiceMappingGrid < Browser::StampsBase
+          class ServiceMappingLineItem < Browser::StampsBase
+            class ServiceMappingShippingService < Browser::StampsBase
 
               def initialize(param, index)
                 super(param)
@@ -200,7 +200,7 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView < Browser::StampsModal
+      class MarketplaceDataView < Browser::StampsBase
         def store_count
           begin
             return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
@@ -236,7 +236,7 @@ module Stamps
         def store_window(str)
           case(str.downcase.to_sym)
             when :paypal
-              (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::StampsModal.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
+              (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::StampsBase.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
             when :ebay
               raise "#{str} is not implemented."
             when :shopify
@@ -248,7 +248,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             when :opencart
-              (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::StampsModal.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
+              (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::StampsBase.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
             else
               raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
@@ -278,7 +278,7 @@ module Stamps
         end
       end
 
-      class Marketplace < Browser::StampsModal
+      class Marketplace < Browser::StampsBase
         include MarketPlaceWindowTitle
 
         def present?

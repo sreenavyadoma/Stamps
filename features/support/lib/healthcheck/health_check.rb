@@ -1,5 +1,5 @@
 module Stamps
-  class HealthCheck < Browser::StampsModal
+  class HealthCheck < Browser::StampsBase
     def health_check
       case param.test_env.downcase
         when /sc/

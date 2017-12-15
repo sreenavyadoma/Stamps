@@ -1,7 +1,7 @@
 module Stamps
   module Registration
     module Navigation
-      class RegistrationNavigationBar < Browser::StampsModal
+      class RegistrationNavigationBar < Browser::StampsBase
         attr_reader :stamps_logo, :usps_logo
 
         def initialize(param)

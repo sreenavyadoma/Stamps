@@ -1,6 +1,6 @@
 module Stamps
   module Navigation
-    class TransactionComplete < Browser::StampsModal
+    class TransactionComplete < Browser::StampsBase
       attr_reader :window_title, :textarea, :ok_btn
 
       def initialize(param)
@@ -27,7 +27,7 @@ module Stamps
       end
     end
 
-    class ConfirmTransaction < Browser::StampsModal
+    class ConfirmTransaction < Browser::StampsBase
       attr_reader :window_title, :transaction_complete, :confirm_btn
 
       def initialize(param)
@@ -74,7 +74,7 @@ module Stamps
       end
     end
 
-    class MinimumPurchaseAmountNotice < Browser::StampsModal
+    class MinimumPurchaseAmountNotice < Browser::StampsBase
       def present?
 
       end
@@ -88,7 +88,7 @@ module Stamps
       end
     end
 
-    class AccountBalanceLimit < Browser::StampsModal
+    class AccountBalanceLimit < Browser::StampsBase
       attr_reader :body, :window_title
 
       def initialize(param)
@@ -106,7 +106,7 @@ module Stamps
       end
     end
 
-    class AutoBuyPostageModal < Browser::StampsModal
+    class AutoBuyPostageModal < Browser::StampsBase
       attr_reader :window_title
 
       def initialize(param)
@@ -119,7 +119,7 @@ module Stamps
       end
     end
 
-    class AddFundsModal < Browser::StampsModal
+    class AddFundsModal < Browser::StampsBase
       attr_reader :confirm_transaction, :auto_add_funds_modal, :auto_buy_postage_link, :window_title, :account_balance_limit
 
       def initialize(param)
@@ -220,7 +220,7 @@ module Stamps
       end
     end
 
-    class BalanceDropDown < Browser::StampsModal
+    class BalanceDropDown < Browser::StampsBase
       attr_reader :add_funds_modal, :buy_more_dropdown, :buy_more_link, :view_history_link, :balance_field
 
       def initialize(param)
@@ -271,7 +271,7 @@ module Stamps
       end
     end
 
-    class UsernameDropDown < Browser::StampsModal
+    class UsernameDropDown < Browser::StampsBase
       attr_reader :username, :sign_out_link
 
       def initialize(param)
@@ -312,7 +312,7 @@ module Stamps
       end
     end
 
-    class NavigationBar < Browser::StampsModal
+    class NavigationBar < Browser::StampsBase
       attr_reader :balance, :username, :sign_out_link, :signed_in_username, :orders_link, :mail_link, :web_mail, :web_orders
 
       def initialize(param)

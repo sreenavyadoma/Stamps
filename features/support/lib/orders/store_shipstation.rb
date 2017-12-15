@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class LookingForShipStaion < Browser::StampsModal
+      class LookingForShipStaion < Browser::StampsBase
 
         def title
           (cache[:title].nil?||!cache[:title].present?)?cache[:title]=StampsField.new(browser.div(text: "Looking for ShipStation?")):cache[:title]
@@ -28,7 +28,7 @@ module Stamps
         end
       end
 
-      class AddAdvancedShippingFeatures < Browser::StampsModal
+      class AddAdvancedShippingFeatures < Browser::StampsBase
 
         def dialog_header
           (cache[:dialog_header].nil?||!cache[:dialog_header].present?)?cache[:dialog_header]=StampsField.new(browser.div(text: "Add Advanced Shipping Features!")):cache[:dialog_header]
@@ -83,7 +83,7 @@ module Stamps
         end
       end
 
-      class ActivateYourNewFeatures < Browser::StampsModal
+      class ActivateYourNewFeatures < Browser::StampsBase
 
         def body
           (cache[:body].nil?||!cache[:body].present?)?cache[:body]=StampsField.new(browser.p(css: "div[id^='shipstationloginview-']>div>div>div>div>div>label>p")):cache[:body]

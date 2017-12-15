@@ -1,5 +1,8 @@
 module Stamps
   module Browser
+    module Base
+
+    end
 
     #todo-Rob REW
     class StampsField
@@ -206,7 +209,6 @@ module Stamps
         field.style(property)
       end
     end
-
 
     #todo-Rob rework disabled field
     #AB_ORDERSAUTO_3516
@@ -677,28 +679,14 @@ module Stamps
       end
     end
 
-    # StampsModal - base class for modals containing StampsElements
-    class StampsModal
+    class StampsBase
       include StampsCache
+      attr_reader :param, :helper, :browser, :logger
       def initialize(param)
-        cache[:param]=param
-        cache[:helper]=StampsTestHelper.new(param.logger)
-      end
-
-      def browser
-        cache[:param].browser
-      end
-
-      def param
-        cache[:param]
-      end
-
-      def logger
-        cache[:param].logger
-      end
-
-      def helper
-        cache[:helper]
+        @param=param
+        @helper=StampsTestHelper.new(param.logger)
+        @browser=param.browser
+        @logger=param.logger
       end
     end
   end

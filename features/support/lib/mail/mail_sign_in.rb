@@ -2,7 +2,7 @@ module Stamps
   module Mail
     module MailSignIn
       #todo-Rob fix this, very unprofession
-      class MoreInfoPage < Browser::StampsModal
+      class MoreInfoPage < Browser::StampsBase
         def present?
           browser.windows.size > 1
         end
@@ -16,7 +16,7 @@ module Stamps
         end
       end
 
-      class RememberUsername < Browser::StampsModal
+      class RememberUsername < Browser::StampsBase
         attr_reader :remember_user_field
 
         def initialize(param)
@@ -39,7 +39,7 @@ module Stamps
         end
       end
 
-      class MailLandingPage < Browser::StampsModal
+      class MailLandingPage < Browser::StampsBase
         def sign_in_modal
           @sign_in_modal=MailSignInModal.new(param) if @sign_in_modal.nil?||!@sign_in_modal.present?
           @sign_in_modal
@@ -71,7 +71,7 @@ module Stamps
 
       #todo-Rob refactor MoreInfoPage
       #todo-Rob fix this, very unprofession
-      class MoreInfoPage < Browser::StampsModal
+      class MoreInfoPage < Browser::StampsBase
         def present?
           browser.windows.size > 1
         end
@@ -85,7 +85,7 @@ module Stamps
         end
       end
 
-      class RememberUsername < Browser::StampsModal
+      class RememberUsername < Browser::StampsBase
         attr_reader :remember_user_field
 
         def initialize(param)
@@ -108,7 +108,7 @@ module Stamps
         end
       end
 
-      class MailLandingPage < Browser::StampsModal
+      class MailLandingPage < Browser::StampsBase
         def sign_in_modal
           @sign_in_modal=MailSignInModal.new(param) if @sign_in_modal.nil?||!@sign_in_modal.present?
           @sign_in_modal
@@ -139,7 +139,7 @@ module Stamps
       end
 
       #todo-Rob refactor MoreInfoPage
-      class MoreInfoPage < Browser::StampsModal
+      class MoreInfoPage < Browser::StampsBase
         def present?
           browser.windows.size > 1
         end
@@ -153,7 +153,7 @@ module Stamps
         end
       end
 
-      class RememberUsername < Browser::StampsModal
+      class RememberUsername < Browser::StampsBase
         attr_reader :remember_user_field
 
         def initialize(param)
@@ -176,7 +176,7 @@ module Stamps
         end
       end
 
-      class MailLandingPage < Browser::StampsModal
+      class MailLandingPage < Browser::StampsBase
         def sign_in_modal
           @sign_in_modal=MailSignInModal.new(param) if @sign_in_modal.nil?||!@sign_in_modal.present?
           @sign_in_modal
@@ -206,7 +206,7 @@ module Stamps
         end
       end
 
-      class WhatsNewModal < Browser::StampsModal
+      class WhatsNewModal < Browser::StampsBase
         attr_reader :x_btn, :more_info_btn, :continue_btn, :more_info_page, :window_title
 
         def initialize(param)
@@ -244,7 +244,7 @@ module Stamps
         end
       end
 
-      class MailSignInModal < Browser::StampsModal
+      class MailSignInModal < Browser::StampsBase
         def username_textbox
           (cache[:username_textbox].nil?||!cache[:username_textbox].present?)?cache[:username_textbox]=StampsTextbox.new(browser.text_field(id: "UserNameTextBox")):cache[:username_textbox]
         end

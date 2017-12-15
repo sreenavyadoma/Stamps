@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class WebOrders < Browser::StampsModal
+    class WebOrders < Browser::StampsBase
       def orders_toolbar
         (cache[:orders_toolbar].nil?||!cache[:orders_toolbar].present?)?cache[:orders_toolbar]=Toolbar::OrdersToolbar.new(param):cache[:orders_toolbar]
       end
@@ -26,11 +26,11 @@ module Stamps
       end
 
       def modals
-        (cache[:modals].nil?||!cache[:modals].present?)?cache[:modals]=StampsModal.new(param).extend(StampsOrdersModals):cache[:modals]
+        (cache[:modals].nil?||!cache[:modals].present?)?cache[:modals]=StampsBase.new(param).extend(StampsOrdersModals):cache[:modals]
       end
 
       def marketplace
-        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=StampsModal.new(param).extend(MarketPlaceStoreModals):cache[:marketplace]
+        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=StampsBase.new(param).extend(MarketPlaceStoreModals):cache[:marketplace]
       end
 
       def styles

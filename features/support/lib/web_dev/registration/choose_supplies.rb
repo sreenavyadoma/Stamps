@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class ChooseSupplies < Browser::StampsModal
+    class ChooseSupplies < Browser::StampsBase
       attr_reader :web_apps, :web_mail
 
       def initialize(param)

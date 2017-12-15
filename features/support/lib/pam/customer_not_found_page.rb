@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class CustomerNotFoundPage < Browser::StampsModal
+    class CustomerNotFoundPage < Browser::StampsBase
       def status_reason
         StampsField.new(browser.td(:css, '[class=TD3][align=middle]'))
       end
@@ -10,7 +10,7 @@ module Stamps
       end
     end
 
-    class MeterInfoNotAvailable < Browser::StampsModal
+    class MeterInfoNotAvailable < Browser::StampsBase
       def page_title
         StampsField.new(browser.td(:text, 'Error'))
       end
