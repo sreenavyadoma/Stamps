@@ -2,6 +2,10 @@ Then /^Print (?:[Pp]ostage|[Ll]abel|[Ss]tamps|[Ee]nvelope)$/ do
   stamps.mail.mail_toolbar.print_postage
 end
 
+Then /^Print (?:[Pp]ostage|[Ll]abel|[Ss]tamps|[Ee]nvelope) using [Ss]plit [Bb]utton$/ do
+  stamps.mail.mail_toolbar.print_postage
+end
+
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ii]ncomplete [Ff]ields [Dd]ialog is [Pp]resent$/ do
   expect(stamps.mail.mail_toolbar.print_postage_expecting_error).to eql('Incomplete Fields')
 end
