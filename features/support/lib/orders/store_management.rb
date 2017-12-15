@@ -53,6 +53,8 @@ module Stamps
         end
       end
 
+
+=begin
       class StoreSettings < Browser::Base
         class ServiceMappingGrid < Browser::Base
           class ServiceMappingLineItem < Browser::Base
@@ -189,6 +191,7 @@ module Stamps
           StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
         end
       end
+=end
 
       module MarketPlaceWindowTitle
         def window_title

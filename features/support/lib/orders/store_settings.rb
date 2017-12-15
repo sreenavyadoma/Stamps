@@ -1,11 +1,6 @@
 module Stamps
   module Orders
-    module OrdersSettings
-      module StoresSettings
-        class Base
-
-        end
-      end
+    module Stores
 
       module StoreIframe
         def store_iframe
@@ -183,7 +178,7 @@ module Stamps
         end
       end
 
-      class StoreSettings
+      class StoreSettings < Browser::Base
 
       end
     end
