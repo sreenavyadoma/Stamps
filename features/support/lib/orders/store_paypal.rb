@@ -145,11 +145,6 @@ module Stamps
       end
 
 #todo-rob fix me
-      module StoreIframe
-        def store_iframe
-          browser.iframe(css: "[id=storeiframe]")
-        end
-      end
       class PayPal < Browser::Base
         include PayPalModals
         include PayPalWindowTitle
