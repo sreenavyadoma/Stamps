@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module DetailsFormCommon
 
-      class DetailsFormDimensions < Browser::StampsModal
+      class DetailsFormDimensions < Browser::Base
         def initialize(param, form_type)
           super(param)
           @form_type=form_type
@@ -43,7 +43,7 @@ module Stamps
         end
       end
 
-      class DetailsFormShipFrom < Browser::StampsModal
+      class DetailsFormShipFrom < Browser::Base
         attr_reader :form_type
 
         def initialize(param, form_type)
@@ -126,7 +126,7 @@ module Stamps
         end
       end
 
-      class DetailsFormService < Browser::StampsModal
+      class DetailsFormService < Browser::Base
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
           super(param)
@@ -224,7 +224,7 @@ module Stamps
         end
       end
 
-      class OrderDetailsWeight < Browser::StampsModal
+      class OrderDetailsWeight < Browser::Base
         attr_reader :lb, :oz
         def initialize(param, form_type)
           super(param)

@@ -1,7 +1,7 @@
 module Stamps
   module Registration
 
-    class WebRegistration < Browser::StampsModal
+    class WebRegistration < Browser::Base
       attr_reader :bread_crumbs, :navigation, :profile, :membership, :footer, :choose_supplies, :add_postage, :ship_volume_survey, :security_questions
       def initialize(param)
         super
@@ -49,7 +49,7 @@ module Stamps
 
     end
 
-    class AnErrorOccured < Browser::StampsModal
+    class AnErrorOccured < Browser::Base
       attr :header_elem, :top_message_elem, :error_code_elem, :error_description_elem
 
       def initialize(param)

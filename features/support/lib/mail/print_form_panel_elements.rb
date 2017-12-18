@@ -16,7 +16,7 @@ module Stamps
         end
       end
 
-      class UpgradePlan < Browser::StampsModal
+      class UpgradePlan < Browser::Base
         attr_reader :window_title, :close_btn, :upgrade_now_btn, :not_yet_btn, :paragraph_field
 
         def initialize(param)
@@ -222,7 +222,7 @@ module Stamps
         end
       end
 
-      class ManagePrintOptionsModal < Browser::StampsModal
+      class ManagePrintOptionsModal < Browser::Base
         include PrintMediaHelper
         def search_field
           (cache[:search_field].nil?||!cache[:search_field].present?)?cache[:search_field]=StampsTextbox.new(
@@ -352,7 +352,7 @@ module Stamps
         end
       end
 
-      class PrintOn < Browser::StampsModal
+      class PrintOn < Browser::Base
         include PrintFormBlurOut
         include PrintMediaHelper
         include PrintOnTextbox
@@ -441,7 +441,7 @@ module Stamps
         end
       end
 
-      class MailToCountry < Browser::StampsModal
+      class MailToCountry < Browser::Base
         include PrintFormBlurOut
         def dom_dd
           (cache[:dom_dd].nil?||!cache[:dom_dd].present?)?cache[:dom_dd]=StampsTextbox.new(
@@ -497,7 +497,7 @@ module Stamps
         end
       end
 
-      class MailToInt < Browser::StampsModal
+      class MailToInt < Browser::Base
         include PrintFormBlurOut
         def name
           (cache[:name].nil?||!cache[:name].present?)?cache[:name]=StampsTextbox.new(
@@ -547,7 +547,7 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::StampsModal
+      class MailToDom < Browser::Base
         include MailDomTextArea
         attr_reader :country
         include PrintFormBlurOut
@@ -564,7 +564,7 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::StampsModal
+      class PrintFormEmail < Browser::Base
         include PrintFormBlurOut
         def email_textbox
           (cache[:email_textbox].nil?||!cache[:email_textbox].present?)?cache[:email_textbox]=StampsTextbox.new(
@@ -577,7 +577,7 @@ module Stamps
         end
       end
 
-      class PrintFormWeight < Browser::StampsModal
+      class PrintFormWeight < Browser::Base
         include PrintFormBlurOut
         def weigh
           (cache[:weigh].nil?||!cache[:weigh].present?)?cache[:weigh]=StampsField.new(
@@ -611,7 +611,7 @@ module Stamps
         end
       end
 
-      class PrintFormDimensions < Browser::StampsModal
+      class PrintFormDimensions < Browser::Base
         def length
           (cache[:length].nil?||!cache[:length].present?)?cache[:length]=StampsNumberField.new(
               browser.text_field(css: "[class*=sdc-mainpanel-lengthnumberfield]"),
@@ -634,7 +634,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailFrom < Browser::StampsModal
+      class PrintFormMailFrom < Browser::Base
         include PrintFormBlurOut
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
@@ -685,7 +685,7 @@ module Stamps
         end
       end
 
-      class MailServiceSelection < Browser::StampsModal
+      class MailServiceSelection < Browser::Base
         include ParameterHelper
         def cost_field(str)
           (cache[:cost_field].nil?||!cache[:cost_field].present?)?cache[:cost_field]=StampsField.new(
@@ -714,7 +714,7 @@ module Stamps
         end
       end
 
-      class PrintFormService < Browser::StampsModal
+      class PrintFormService < Browser::Base
         include PrintFormBlurOut
         def service_selection
           (cache[:service_selection].nil?||!cache[:service_selection].present?)?cache[:service_selection]=MailServiceSelection.new(
@@ -828,7 +828,7 @@ module Stamps
 
       end
 
-      class PrintFormInsureFor < Browser::StampsModal
+      class PrintFormInsureFor < Browser::Base
         include PrintFormBlurOut
         def price
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsField.new(
@@ -847,7 +847,7 @@ module Stamps
         end
       end
 
-      class PrintFormTracking < Browser::StampsModal
+      class PrintFormTracking < Browser::Base
         include PrintFormBlurOut
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
@@ -884,7 +884,7 @@ module Stamps
         end
       end
 
-      class PrintFormCostCode < Browser::StampsModal
+      class PrintFormCostCode < Browser::Base
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(browser.text_field(name: "costCodeId")):cache[:textbox]
         end
@@ -910,7 +910,7 @@ module Stamps
       end
 
       #todo-Rob reference http://jira.psisystems.local/browse/ORDERSAUTO-3460
-      class PrintFormMailToLink < Browser::StampsModal
+      class PrintFormMailToLink < Browser::Base
         def link
           (cache[:link].nil?||!cache[:link].present?)?cache[:link]=StampsField.new(browser.span(css: "[class*=sdc-mainpanel-shiptolinkbtn] [id$=btnInnerEl]")):cache[:link]
         end
@@ -928,7 +928,7 @@ module Stamps
         end
       end
 
-      class PrintFormMailTo < Browser::StampsModal
+      class PrintFormMailTo < Browser::Base
         include PrintFormBlurOut
         def mail_to_country
           (cache[:mail_to_country].nil?||!cache[:mail_to_country].present?)?cache[:mail_to_country]=MailToCountry.new(param):cache[:mail_to_country]
@@ -957,7 +957,7 @@ module Stamps
         end
       end
 
-      class PrintFormCustoms < Browser::StampsModal
+      class PrintFormCustoms < Browser::Base
         attr_reader :button, :customs_form
 
         def initialize(param)

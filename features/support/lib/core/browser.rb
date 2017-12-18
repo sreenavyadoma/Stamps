@@ -1,6 +1,25 @@
 module Stamps
   module Browser
+    class ModalParam
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
+                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
+    end
 
+    class Base
+      attr_reader :param, :helper, :browser, :logger
+      def initialize(param)
+        @param=param
+        @helper=StampsTestHelper.new(param.logger)
+        @browser=param.browser
+        @logger=param.logger
+      end
+
+      def cache
+        (@cache.nil?)?@cache={}:@cache
+      end
+    end
+
+    #todo-Rob REW
     class StampsField
       attr_reader :field, :browser
       alias_method :checkbox, :field
@@ -138,7 +157,7 @@ module Stamps
 
       def attribute_value(attribute)
         begin
-          field.attribute_value(attribute)
+          return field.attribute_value(attribute)
         rescue
           #ignore
         end
@@ -205,7 +224,6 @@ module Stamps
         field.style(property)
       end
     end
-
 
     #todo-Rob rework disabled field
     #AB_ORDERSAUTO_3516
@@ -530,6 +548,7 @@ module Stamps
       end
     end
 
+    #todo-Rob REW
     class StampsDropdown < StampsTextbox
       attr_accessor :html_tag, :dropdown
 
@@ -660,43 +679,6 @@ module Stamps
         end
         expect(textbox.text).to eql(str)
         textbox.text
-      end
-    end
-
-    # Modals
-    class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
-                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
-    end
-
-    module StampsCache
-      def cache
-        @cache ||= {}
-      end
-    end
-
-    # StampsModal - base class for modals containing StampsElements
-    class StampsModal
-      include StampsCache
-      def initialize(param)
-        cache[:param]=param
-        cache[:helper]=StampsTestHelper.new(param.logger)
-      end
-
-      def browser
-        cache[:param].browser
-      end
-
-      def param
-        cache[:param]
-      end
-
-      def logger
-        cache[:param].logger
-      end
-
-      def helper
-        cache[:helper]
       end
     end
   end
