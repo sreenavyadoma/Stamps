@@ -26,7 +26,7 @@ Then /^[Ee]xpect [Ss]plit [Oo]rder [Mm]odal default new order id is correct$/ do
 end
 
 Then /^[Ss]et new order number to (.*)$/ do |number|
-  stamps.orders.orders_toolbar.toolbar_more_actions.split_order.new_order_id.set number
+  stamps.orders.orders_toolbar.toolbar_more_actions.split_order.new_order_id.set (number.downcase=='random')?(test_helper.random_phone_number):number
 end
 
 Then /^[Ss]et new order quantity for item (\d+) to (\d+)$/ do |item_number, quantity|
@@ -38,6 +38,6 @@ Then /^[Cc]onfirm order split$/ do
   stamps.orders.orders_toolbar.toolbar_more_actions.split_order.confirm_order_split
 end
 
-Then /[Cc]onfirm new order is selected$/ do
+Then /[Ee]xpect new order is selected$/ do
   expect(stamps.orders.single_order_details.toolbar.order_id).to eql test_param[:split_order_id]
 end
