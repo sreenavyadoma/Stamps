@@ -14,8 +14,11 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
     Then on Order Details form, Add Item 1, Qty 3, ID itemone, Description first item
     Then on Order Details form, Add Item 2, Qty 5, ID itemtwo, Description second item
 
-    Then click More Actions Split Order Button
+    Then select grid toolbar more actions item Split Order
+    Then expect Split Order modal original order id is correct
+    Then expect Split Order modal default new order id is correct
     Then expect item details in Split order Modal are correct
+    Then set new order number to 12345
     Then set new order quantity for item 1 to 1
     Then set new order quantity for item 2 to 2
 
@@ -40,7 +43,5 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
     Then expect order details form Associated Item 1 Qty is 3
     Then expect order details form Associated Item 1 ID is itemtwo
     Then expect order details form Associated Item 1 Description is second item
-
-    Then expect order details form Order ID is the same as saved Order ID
 
     Then Sign out

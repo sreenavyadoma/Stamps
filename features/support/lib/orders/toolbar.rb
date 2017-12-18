@@ -207,60 +207,47 @@ module Stamps
       end
 
       class MoreActionsDropDown < Browser::StampsModal
-        attr_reader :dropdown, :combine_orders, :split_order, :apply_bulk_action
+        attr_reader :dropdown, :split_order#, :apply_bulk_action, :combine_orders
 
         def initialize(param)
           super
           @dropdown=StampsField.new(browser.span(text: "More Actions"))
-          @combine_orders=CombineOrdersModal.new(param)
-          @split_order=SplitOrder.new(param)
-          @apply_bulk_action.ApplyBulkAction.new(param)
-
-          @shipped=MoveToShippedModal.new(param)
-          @canceled=MoveToCanceledModal.new(param)
-          @on_hold=MoveToOnHoldModal.new(param)
-          @awaiting_shipment=MoveToAwaitingShipmentModal.new(param)
-          @tooltip_field=StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+          #@combine_orders=CombineOrdersModal.new(param)
+          @split_order=SplitOrderModal.new(param)
+          #@apply_bulk_action.ApplyBulkActionModal.new(param)
         end
 
         def enabled?
           dropdown.enabled?
         end
 
-        def move_to_shipped
-          select(:shipped)
+        def select_combine_orders
+          select(:combine_orders)
         end
 
-        def move_to_canceled
-          select(:canceled)
+        def select_split_order
+          select(:split_order)
         end
 
-        def move_to_awaiting_shipment
-          select(:awaiting_shipment)
-        end
-
-        def move_to_on_hold
-          select(:on_hold)
+        def select_apply_bulk_action
+          select(:apply_bulk_action)
         end
 
         def select(selection)
           expect(enabled?).to be(true)
-          expect([:shipped, :canceled, :awaiting_shipment, :on_hold]).to include(selection)
+          expect([:combine_orders, :split_order, :apply_bulk_action]).to include(selection)
           selection_str=""
           modal=nil
           case selection
-            when :shipped
-              selection_str="Move to Shipped"
-              modal=shipped
-            when :canceled
-              selection_str="Move to Canceled"
-              modal=canceled
-            when :awaiting_shipment
-              selection_str="Move to Awaiting Shipment"
-              modal=awaiting_shipment
-            when :on_hold
-              selection_str="Move to On Hold"
-              modal=on_hold
+            when :combine_orders
+              selection_str="Combine Orders"
+              modal=combine_orders
+            when :split_order
+              selection_str="Split Order"
+              modal=split_order
+            when :apply_bulk_action
+              selection_str="Apply Bulk Action"
+              modal=apply_bulk_action
             else
               #do nothing.
           end
@@ -274,21 +261,7 @@ module Stamps
             sleep(0.25)
             selection_item.click
           }
-          expect("Unable to select #{selection}").to eql("Move Menu - Select")
-        end
-
-        def tooltip
-          btn=dropdown
-          btn.field.hover
-          btn.field.hover
-          15.times do
-            btn.field.hover
-            sleep(0.35)
-            if tooltip_field.present?
-              logger.info tooltip_field.text
-              return tooltip_field.text
-            end
-          end
+          expect("Unable to select #{selection}").to eql("More Actions Menu - Select")
         end
       end
 
@@ -828,10 +801,6 @@ module Stamps
         end
 
         def toolbar_tags
-          raise "Not yet implemented"
-        end
-
-        def toolbar_more_actions
           raise "Not yet implemented"
         end
       end

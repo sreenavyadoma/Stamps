@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_sc
+default: --backtrace --profile eli_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -24,7 +24,7 @@ ks_registration: --tags @registration_normal_workflow WEB_APP=registration URL=c
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @bugs_print_modal --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff USR=scutfh8m1 PW=pass111 PRINTER=Automation Printer
+eli_dev: --tags @split_order --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=cc BROWSER=ff USR=hal9000qa1 PW=password2 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
