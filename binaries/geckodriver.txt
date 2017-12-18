@@ -1,10 +1,2 @@
-12:53 PM 8/17/2017 v0.18.0
-5/22/2017 - geckodriver-v0.16.1-win32
-
-v0.16.1
-@AutomatedTester AutomatedTester released this 27 days ago · 5 commits to master since this release
-
-Fixed
-
-Read Firefox version number from stdout when failing to look for the application .ini file (fixes Selenium #3884)
-Session is now ended when closing the last Firefox window (fixes #613)
+geckodriver-v0.19.1-win64.zip
+geckodriver-v0.16.1-win32
