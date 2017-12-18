@@ -300,7 +300,7 @@ module Stamps
         end
       end
 
-      class PrintMultiOrderError < Browser::StampsModal
+      class PrintMultiOrderError < Browser::Base
         attr_reader :window_title, :error_message_label
 
         #todo-rob update Print Multi Order Error tests

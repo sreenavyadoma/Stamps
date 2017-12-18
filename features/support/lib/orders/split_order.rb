@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Toolbar
-      class SplitOrderModal < Browser::StampsModal
+      class SplitOrderModal < Browser::Base
         attr_reader :window_title
 
         def initialize(param)
@@ -50,7 +50,7 @@ module Stamps
           StampsField.new(browser.span(text: "Confirm"))
         end
 
-        class SplitItemDetails < Browser::StampsModal
+        class SplitItemDetails < Browser::Base
           attr_reader :index, :original_item_qty, :original_item_id, :original_item_description, :new_item_qty
           def initialize(param, number)
             super(param)
