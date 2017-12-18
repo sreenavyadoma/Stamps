@@ -383,7 +383,7 @@ automation_rule: --tags @automation_rule --guess DEBUG=false JENKINS=true HEALTH
 general_settings_test_cases: --tags @general_settings_test_cases --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-
+split_order: --tags @split_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 

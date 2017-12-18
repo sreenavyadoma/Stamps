@@ -1168,6 +1168,10 @@ Cucumber::Rake::Task.new(:stores_shipstation_postupgrade) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:split_order) do |t|
+  t.profile = 'split_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 Cucumber::Rake::Task.new(:big_commerce) do |t|
   t.profile = 'big_commerce'
