@@ -1,3 +1,11 @@
+Then /^set store settings store nickname to ([\w\.@]+)$/ do |nickname|
+  stamps.orders.marketplace.store_settings.store_nickname.set(nickname)
+end
+
+Then /^expect store settings (\w+) modal is present$/ do |store_name|
+  expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("#{store_name} Settings")
+end
+
 Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
   #test_config.logger.step "Store Settings: Set Store Nickname to #{nickname}"
   raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?

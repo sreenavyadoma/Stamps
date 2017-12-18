@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class ThreeDCartSettings < StoreSettings
         def window_title
           StampsField.new browser.div(text: "3dcart Settings")
@@ -128,6 +129,7 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
     end
   end
 end

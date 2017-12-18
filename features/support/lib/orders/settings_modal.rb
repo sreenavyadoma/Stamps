@@ -10,13 +10,6 @@ module Stamps
           nil
         end
 
-
-        #todo-Rob
-        def general_tab_view
-          (cache[:stores_tab_view].nil?||!cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Orders::OrdersSettings::StoresTabView.new(param):cache[:stores_tab_view]
-        end
-
-
         def general_tab
           20.times do
             return general_tab_view if general_tab_view.add_btn.present?

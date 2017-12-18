@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class YahooSettings < StoreSettings
         def window_title
           StampsField.new browser.div text: "Yahoo Settings"
@@ -14,6 +15,7 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
 
       class Yahoo < Browser::Base
 

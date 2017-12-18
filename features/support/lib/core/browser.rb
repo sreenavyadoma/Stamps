@@ -5,47 +5,17 @@ module Stamps
                     :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
     end
 
-    module BrowserMethods
-      class << self
-        def included(base)
-          base.extend ClassMethods
-        end
-      end
-
-      module ClassMethods
-        def assign_param(param)
-          @param=param
-        end
-
-        def assign_cache(cache)
-          @cache=cache
-        end
-
-        def param
-          @param
-        end
-
-        def browser
-          param.browser
-        end
-
-        def logger
-          param.logger
-        end
-
-        def cache
-          @cache
-        end
-      end
-    end
-
     class Base
-      include BrowserMethods
-      attr_reader :helper, :cache
+      attr_reader :param, :helper, :browser, :logger
       def initialize(param)
-        assign_param(param)
-        assign_cache({})
+        @param=param
         @helper=StampsTestHelper.new(param.logger)
+        @browser=param.browser
+        @logger=param.logger
+      end
+
+      def cache
+        (@cache.nil?)?@cache={}:@cache
       end
     end
 
