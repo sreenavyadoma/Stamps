@@ -10,12 +10,12 @@ Feature:  All Store Management
       Then click order settings stores edit button
       Then expect store settings PayPal modal is present
       Then set store settings store nickname to qaclient@stamps.com
-#      Then select store settings shipping service to FCM Large Envelope
-#      Then select store settings shipping service to FCM Package
-#      Then select store settings shipping service to PM Large/Thick Envelope
-#      Then select store settings shipping service to PM Package
-#      Then select store settings shipping service to PM Large Package
-#      Then select store settings shipping service to PM Flat Rate Envelope
+      Then select store settings shipping service to FCM Large Envelope
+      Then select store settings shipping service to FCM Package
+      Then select store settings shipping service to PM Large/Thick Envelope
+      Then select store settings shipping service to PM Package
+      Then select store settings shipping service to PM Large Package
+      Then select store settings shipping service to PM Flat Rate Envelope
       Then select store settings shipping service to PM Padded Flat Rate Envelope
       Then select store settings shipping service to PM Legal Flat Rate Envelope
       Then select store settings shipping service to PM Small Flat Rate Box
