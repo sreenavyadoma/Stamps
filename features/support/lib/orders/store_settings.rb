@@ -13,64 +13,8 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::Base
+      class StoreSettingsShippingService < Browser::Base
         include StoresIframe
-        include StoreSettingsWindowTitle
-        def present?
-          store_nickname.present?
-        end
-
-        def wait_until_present(*args)
-          store_nickname.wait_until_present(*args)
-        end
-
-        def store_nickname
-          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(iframe.text_field(id: "storeName")):cache[:store_nickname]
-        end
-
-        def auto_import_new_orders
-          (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
-              iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "not_empty"):cache[:auto_import]
-        end
-
-        def requested_service
-          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(
-              iframe.text_field(name: "serviceName")):cache[:requested_service]
-        end
-
-        def shipping_service
-          (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=GenSetShippingService.new(
-              param):cache[:shipping_service]
-        end
-
-        def auto_add_to_products_page
-          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
-              iframe.input(id: "addNewProducts"),
-              iframe.input(id: "addNewProducts"),
-              "class",
-              "parse"):cache[:add_to_products]
-        end
-
-        def sku
-          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
-              iframe.label(css: "label[for='sku']"),
-              iframe.input(id: 'sku'),
-              "class",
-              "parse"):cache[:sku]
-        end
-
-        def product_listing_name
-          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
-              iframe.label(css: "label[for='productListingName']"),
-              iframe.input(id: 'productListingName'),
-              "class",
-              "parse"):cache[:product_listing_name]
-        end
-
-        def save
-
-        end
-
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(iframe.span(css: "[class^=ui-select-match][placeholder='Select a Service'] span[ng-hide*=select]")):cache[:textbox]
         end
@@ -79,24 +23,15 @@ module Stamps
           (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(iframe.div(class: "selectize-input")):cache[:dropdown]
         end
 
-        def select_service(str)
+        def select(str)
           selection = StampsField.new(selection_field(str))
           10.times do
             dropdown.click unless selection.present?
-            return textbox.text if str==textbox.text
+            selection.scroll_into_view
+            selection.click
+            return textbox.text if textbox.text.include?(str)
           end
           nil
-        end
-
-        def remove_service
-          (cache[:remove_service].nil?||!cache[:remove_service].present?)?cache[:remove_service]=StampsField.new(iframe.button(class: "action remove")):cache[:remove_service]
-        end
-
-        def manage_service_options
-          (cache[:manage_service].nil?||!cache[:manage_service].present?)?cache[:manage_service]=StampsField.new(iframe.button(class: "action remove")):cache[:manage_service]
-        end
-
-        def service_tooltip(str)
         end
 
         private
@@ -183,6 +118,77 @@ module Stamps
             else
               raise "#{str} is not a valid service selection."
           end
+        end
+      end
+
+      class StoreSettings < Browser::Base
+        include StoresIframe
+        include StoreSettingsWindowTitle
+        def present?
+          store_nickname.present?
+        end
+
+        def wait_until_present(*args)
+          store_nickname.wait_until_present(*args)
+        end
+
+        def store_nickname
+          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(
+              iframe.text_field(id: "storeName")):cache[:store_nickname]
+        end
+
+        def shipping_service
+          (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=StoreSettingsShippingService.new(
+              param):cache[:shipping_service]
+        end
+
+        def auto_import_new_orders
+          (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
+              iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "not_empty"):cache[:auto_import]
+        end
+
+        def requested_service
+          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(
+              iframe.text_field(name: "serviceName")):cache[:requested_service]
+        end
+
+        def auto_add_to_products_page
+          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
+              iframe.input(id: "addNewProducts"),
+              iframe.input(id: "addNewProducts"),
+              "class",
+              "parse"):cache[:add_to_products]
+        end
+
+        def sku
+          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
+              iframe.label(css: "label[for='sku']"),
+              iframe.input(id: 'sku'),
+              "class",
+              "parse"):cache[:sku]
+        end
+
+        def product_listing_name
+          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
+              iframe.label(css: "label[for='productListingName']"),
+              iframe.input(id: 'productListingName'),
+              "class",
+              "parse"):cache[:product_listing_name]
+        end
+
+        def save
+
+        end
+
+        def remove_service
+          (cache[:remove_service].nil?||!cache[:remove_service].present?)?cache[:remove_service]=StampsField.new(iframe.button(class: "action remove")):cache[:remove_service]
+        end
+
+        def manage_service_options
+          (cache[:manage_service].nil?||!cache[:manage_service].present?)?cache[:manage_service]=StampsField.new(iframe.button(class: "action remove")):cache[:manage_service]
+        end
+
+        def service_tooltip(str)
         end
       end
     end

@@ -1,5 +1,9 @@
-Then /^set store settings store nickname to ([\w\.@]+)$/ do |nickname|
-  stamps.orders.marketplace.store_settings.store_nickname.set(nickname)
+Then /^set store settings store nickname to ([\w\.@]+)$/ do |str|
+  stamps.orders.marketplace.store_settings.store_nickname.set(str)
+end
+
+Then /^select store settings shipping service to ([\w \/]+)$/ do |str|
+  expect(stamps.orders.marketplace.store_settings.shipping_service.select(str)).to include(str)
 end
 
 Then /^expect store settings (\w+) modal is present$/ do |store_name|
