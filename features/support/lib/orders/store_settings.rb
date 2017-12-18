@@ -1,27 +1,13 @@
 module Stamps
   module Orders
     module Stores
-
       module StoreIframe
         def store_iframe
           browser.iframe(css: "[id=storeiframe]")
         end
       end
 
-      module GenSetStoreNickname
-        include StoreIframe
-        def store_nickname
-          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(store_iframe.text_field(id: "storeName")):cache[:store_nickname]
-        end
-
-        def auto_import_new_orders
-          (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
-              store_iframe.input(id: 'importOrders'), store_iframe.input(id: 'importOrders'), "class", "not_empty"):cache[:auto_import]
-        end
-      end
-
-      module GenSetServiceMapping
-        include StoreIframe
+      module StoreSettings
         class GenSetShippingService < Browser::Base
           include StoreIframe
 
@@ -140,46 +126,63 @@ module Stamps
           end
         end
 
-        def requested_service
-          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(
-              store_iframe.text_field(name: "serviceName")):cache[:requested_service]
+        class Base < Browser::Base
+          include StoreIframe
+          def store_nickname
+            (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(store_iframe.text_field(id: "storeName")):cache[:store_nickname]
+          end
+
+          def auto_import_new_orders
+            (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
+                store_iframe.input(id: 'importOrders'), store_iframe.input(id: 'importOrders'), "class", "not_empty"):cache[:auto_import]
+          end
+
+          def requested_service
+            (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(
+                store_iframe.text_field(name: "serviceName")):cache[:requested_service]
+          end
+
+          def shipping_service
+            (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=GenSetShippingService.new(
+                param):cache[:shipping_service]
+          end
+
+          def auto_add_to_products_page
+            (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
+                store_iframe.input(id: "addNewProducts"),
+                store_iframe.input(id: "addNewProducts"),
+                "class",
+                "parse"):cache[:add_to_products]
+          end
+
+          def sku
+            (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
+                store_iframe.label(css: "label[for='sku']"),
+                store_iframe.input(id: 'sku'),
+                "class",
+                "parse"):cache[:sku]
+          end
+
+          def product_listing_name
+            (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
+                store_iframe.label(css: "label[for='productListingName']"),
+                store_iframe.input(id: 'productListingName'),
+                "class",
+                "parse"):cache[:product_listing_name]
+          end
+
+          def save
+
+          end
         end
 
-        def shipping_service
-          (cache[:shipping_service].nil?||!cache[:shipping_service].present?)?cache[:shipping_service]=GenSetShippingService.new(
-              param):cache[:shipping_service]
+        class PaypalSettings < ::Base
+          def window_title
+
+          end
+
+
         end
-      end
-
-      module GenSetProducts
-        include StoreIframe
-        def auto_add_to_products_page
-          (cache[:add_to_products].nil?||!cache[:add_to_products].present?)?cache[:add_to_products]=StampsCheckbox.new(
-              store_iframe.input(id: "addNewProducts"),
-              store_iframe.input(id: "addNewProducts"),
-              "class",
-              "parse"):cache[:add_to_products]
-        end
-
-        def sku
-          (cache[:sku].nil?||!cache[:sku].present?)?cache[:sku]=StampsRadio.new(
-              store_iframe.label(css: "label[for='sku']"),
-              store_iframe.input(id: 'sku'),
-              "class",
-              "parse"):cache[:sku]
-        end
-
-        def product_listing_name
-          (cache[:product_listing_name].nil?||!cache[:product_listing_name].present?)?cache[:product_listing_name]=StampsRadio.new(
-              store_iframe.label(css: "label[for='productListingName']"),
-              store_iframe.input(id: 'productListingName'),
-              "class",
-              "parse"):cache[:product_listing_name]
-        end
-      end
-
-      class StoreSettings < Browser::Base
-
       end
     end
   end
