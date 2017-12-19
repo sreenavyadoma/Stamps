@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Settings
       #todo-rob re-work changes to Settings Fields tests
-      class Pounds < Browser::StampsModal
+      class Pounds < Browser::Base
         attr_reader :textbox, :inc_bthn, :dec_btn
 
         def initialize(param)
@@ -35,7 +35,7 @@ module Stamps
         end
       end
 
-      class Ounces < Browser::StampsModal
+      class Ounces < Browser::Base
         attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -68,7 +68,7 @@ module Stamps
         end
       end
 
-      class Weight < Browser::StampsModal
+      class Weight < Browser::Base
         attr_reader :lb, :oz
 
         def initialize(param)
@@ -90,7 +90,7 @@ module Stamps
         end
       end
 
-      class Length < Browser::StampsModal
+      class Length < Browser::Base
         attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -123,7 +123,7 @@ module Stamps
         end
       end
 
-      class Width < Browser::StampsModal
+      class Width < Browser::Base
         attr_reader :textbox, :inc_btn, :dec_btn
 
         def initialize(param)
@@ -156,7 +156,7 @@ module Stamps
         end
       end
 
-      class Height < Browser::StampsModal
+      class Height < Browser::Base
         attr_reader :textbox
 
         def initialize(param)
@@ -189,7 +189,7 @@ module Stamps
         end
       end
 
-      class SettingsLogoffDropDown < Browser::StampsModal
+      class SettingsLogoffDropDown < Browser::Base
         def textbox
           (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsField.new(
               browser.text_field(css: "[id^=generaltabview-][id$=-targetEl] [id^=form-][id$=-targetEl]>div:nth-child(4) input")):cache[:textbox]
@@ -236,7 +236,7 @@ module Stamps
         end
       end
 
-      class PostDateDropDown < Browser::StampsModal
+      class PostDateDropDown < Browser::Base
         attr_reader :textbox, :dropdown
 
         def initialize(param)
@@ -356,7 +356,7 @@ module Stamps
         end
       end
 
-      class PostageBalanceDropDown < Browser::StampsModal
+      class PostageBalanceDropDown < Browser::Base
         attr_reader :textbox, :dropdown
 
         def initialize(param)
@@ -404,7 +404,7 @@ module Stamps
         end
       end
 
-      class Dimensions < Browser::StampsModal
+      class Dimensions < Browser::Base
         attr_reader :length, :width, :height
 
         def initialize(param)
@@ -425,7 +425,7 @@ module Stamps
         end
       end
 
-      class ResetFields < Browser::StampsModal
+      class ResetFields < Browser::Base
         def present?
           (browser.div text: "Reset Fields").present?
         end
@@ -536,7 +536,7 @@ module Stamps
         end
       end
 
-      class GeneralSettings < Browser::StampsModal
+      class GeneralSettings < Browser::Base
 
         def general
           @general=browser.span(text: 'General')
@@ -675,7 +675,7 @@ module Stamps
         end
       end
 
-      class GeneralTabView < Browser::StampsModal
+      class GeneralTabView < Browser::Base
         include GeneralSettingsContainer
         include EmailNotificationContainer
 
@@ -684,7 +684,7 @@ module Stamps
         end
       end
 
-      class InternationalTabView < Browser::StampsModal
+      class InternationalTabView < Browser::Base
         def gen_settings_header
           (cache[:gen_settings_header].nil?||!cache[:gen_settings_header].present?)?cache[:gen_settings_header]=StampsField.new(
               browser.label(text: "Default Customs Information")[0]):cache[:gen_settings_header]
@@ -715,7 +715,7 @@ module Stamps
         end
       end
 
-      class LabelMessagesTabView < Browser::StampsModal
+      class LabelMessagesTabView < Browser::Base
 
       end
 
