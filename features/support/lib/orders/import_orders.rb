@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    class SuccessModal < Browser::StampsModal
+    class SuccessModal < Browser::Base
       def window_title
         StampsField.new(browser.div(css: "div[id^=dialoguemodal-][id$=_header-innerCt]")).text
       end
@@ -27,7 +27,7 @@ module Stamps
       end
     end
 
-    class ImportOrders < Browser::StampsModal
+    class ImportOrders < Browser::Base
       attr_reader :title
 
       def initialize(param)

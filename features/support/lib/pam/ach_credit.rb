@@ -1,6 +1,6 @@
 module Stamps
   module Pam
-    class ACHCreditError < Browser::StampsModal
+    class ACHCreditError < Browser::Base
       attr_reader :title, :ok_button
 
       def initialize(param)
@@ -22,7 +22,7 @@ module Stamps
       end
     end
 
-    class ACHCreditConfirmation < Browser::StampsModal
+    class ACHCreditConfirmation < Browser::Base
       attr_reader :title, :ok_button
 
       def initialize(param)
@@ -44,7 +44,7 @@ module Stamps
       end
     end
 
-    class ACHPurchaseVerification < Browser::StampsModal
+    class ACHPurchaseVerification < Browser::Base
       attr_reader :title, :confirmation, :ach_error, :yes_button, :no_button
 
       def initialize(param)
@@ -92,7 +92,7 @@ module Stamps
       end
     end
 
-    class ACHCredit < Browser::StampsModal
+    class ACHCredit < Browser::Base
       attr_reader :dollar_amount, :cents_amount, :comments, :purchase_verification, :submit_button
 
       def initialize(param)

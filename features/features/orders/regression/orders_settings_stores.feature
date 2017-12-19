@@ -17,3 +17,6 @@ Feature:  All Store Management
 
     Then connect Marketplace store Paypal
     Then set PayPal Email Address to qaclient@stamps.com
+
+
+

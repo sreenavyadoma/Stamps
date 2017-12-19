@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class VolusionSettings < StoreSettings
         def window_title
           StampsField.new browser.div text: "Volusion Settings"
@@ -14,8 +15,9 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
 
-      class Volusion < Browser::StampsModal
+      class Volusion < Browser::Base
         def present?
           connect_button.present?
         end

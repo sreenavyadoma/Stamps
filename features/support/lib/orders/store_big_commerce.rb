@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class BigCommerceSettings < StoreSettings
         def window_title
           StampsField.new browser.div text: "BigCommerce Settings"
@@ -14,8 +15,9 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
 
-      class BigCommerce < Browser::StampsModal
+      class BigCommerce < Browser::Base
 
         def window_title
           StampsField.new browser.div(text: "Connect your Bigcommerce Store")
@@ -34,7 +36,7 @@ module Stamps
       class ModifyBigCommerceStore < BigCommerce
       end
 
-      class BigCommercePage < Browser::StampsModal
+      class BigCommercePage < Browser::Base
       end
     end
   end
