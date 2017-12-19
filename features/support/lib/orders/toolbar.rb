@@ -209,16 +209,24 @@ module Stamps
       class MoreActionsDropDown < Browser::Base
         attr_reader :dropdown, :split_order#, :apply_bulk_action, :combine_orders
 
-        def initialize(param)
-          super
-          @dropdown=StampsField.new(browser.span(text: "More Actions"))
-          #@combine_orders=CombineOrdersModal.new(param)
-          @split_order=SplitOrderModal.new(param)
-          #@apply_bulk_action.ApplyBulkActionModal.new(param)
-        end
-
         def enabled?
           dropdown.enabled?
+        end
+
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.span(text: "More Actions")):cache[:dropdown]
+        end
+
+        def split_order
+          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Stamps::Orders::SplitOrderModal.new(param):cache[:split_order]
+        end
+
+        def combine_orders
+
+        end
+
+        def apply_bulk_action
+
         end
 
         def select_combine_orders

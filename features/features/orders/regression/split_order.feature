@@ -22,11 +22,11 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
     Then expect Split Order modal original order id is correct
     Then expect Split Order modal default new order id is correct
     Then expect item details in Split order Modal are correct
-    Then set new order number to random
-    Then set new order quantity for item 1 to 1
-    Then set new order quantity for item 2 to 2
+    Then set Split Order new order number to random
+    Then set Split Order new order quantity for item 1 to 1
+    Then set Split Order new order quantity for item 2 to 2
 
-    Then confirm order split
+    Then click Split Order modal confirm button
 
     Then expect new order is selected
     Then expect order details form ship-to Name is Split Order

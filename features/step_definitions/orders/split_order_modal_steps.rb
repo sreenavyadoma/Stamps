@@ -1,4 +1,4 @@
-Then /^[Ee]xpect item details in Split order Modal are correct$/ do
+Then /^[Ee]xpect item details in [Ss]plit [Oo]rder Modal are correct$/ do
 
   #stamps.orders.single_order_details.items_ordered.item(item_number.to_i).item_qty.set(test_param[:details_associated_items][item_number][:item_qty]
 
@@ -25,15 +25,15 @@ Then /^[Ee]xpect [Ss]plit [Oo]rder [Mm]odal default new order id is correct$/ do
   expect(stamps.orders.orders_toolbar.toolbar_more_actions.split_order.new_order_id.text).to eql (test_param[:order_id].values.last + "-1")
 end
 
-Then /^[Ss]et new order number to (.*)$/ do |number|
+Then /^[Ss]et [Ss]plit [Oo]rder new order number to (.*)$/ do |number|
   stamps.orders.orders_toolbar.toolbar_more_actions.split_order.new_order_id.set (number.downcase=='random')?(test_helper.random_phone_number):number
 end
 
-Then /^[Ss]et new order quantity for item (\d+) to (\d+)$/ do |item_number, quantity|
+Then /^[Ss]et [Ss]plit [Oo]rder new order quantity for item (\d+) to (\d+)$/ do |item_number, quantity|
   stamps.orders.orders_toolbar.toolbar_more_actions.split_order.item(item_number.to_i-1).new_item_qty.set quantity
 end
 
-Then /^[Cc]onfirm order split$/ do
+Then /^[Cc]lick [Ss]plit [Oo]rder modal confirm button$/ do
   test_param[:split_order_id] = stamps.orders.orders_toolbar.toolbar_more_actions.split_order.new_order_id.text
   stamps.orders.orders_toolbar.toolbar_more_actions.split_order.confirm_order_split
 end

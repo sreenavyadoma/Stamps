@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    module Toolbar
+
       class SplitOrderModal < Browser::Base
         attr_reader :window_title
 
@@ -69,6 +69,6 @@ module Stamps
 
       end
 
-    end
+
   end
 end
