@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class YahooSettings < StoreSettings
         def window_title
           StampsField.new browser.div text: "Yahoo Settings"
@@ -14,8 +15,9 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
 
-      class Yahoo < Browser::StampsModal
+      class Yahoo < Browser::Base
 
         def window_title
           StampsField.new browser.div(text: "Connect your Yahoo Store")
@@ -208,7 +210,7 @@ module Stamps
         end
       end
 
-      class YahooPage < Browser::StampsModal
+      class YahooPage < Browser::Base
         def present?
           browser.url.include? "shopify.com"
         end

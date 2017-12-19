@@ -32,7 +32,7 @@ module Stamps
 
         @modal_param.hostname=Socket.gethostname
         expect(ENV['BROWSER']).to_not be(nil), "Browser is not defined, check your cucumber.yml entry for this test or your Jenkins job"
-        @modal_param.browser_str=browser(ENV['BROWSER'])
+        @modal_param.browser_str=browser_type(ENV['BROWSER'])
 
         @modal_param.scenario_name=test_config.scenario_name
         @modal_param.firefox_profile=(ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']

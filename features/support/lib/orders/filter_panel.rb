@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module LeftPanel
-      class CollapseButton < Browser::StampsModal
+      class CollapseButton < Browser::Base
         attr_reader :button, :tooltip_field
 
         def initialize(param)
@@ -36,7 +36,7 @@ module Stamps
         end
       end
 
-      class ExpandButton < Browser::StampsModal
+      class ExpandButton < Browser::Base
         attr_reader :button, :tooltip_field
 
         def initialize(param)
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class FilterMenuItem < Browser::StampsModal
+      class FilterMenuItem < Browser::Base
         attr_reader :collapse, :expand
 
         def initialize(param)
@@ -81,7 +81,7 @@ module Stamps
         end
       end
 
-      class SearchResults < Browser::StampsModal
+      class SearchResults < Browser::Base
         attr_reader :label, :remove_button, :count_label
 
         def initialize(param)
@@ -108,7 +108,7 @@ module Stamps
         end
       end
 
-      class SearchOrders < Browser::StampsModal
+      class SearchOrders < Browser::Base
         attr_reader :textbox, :search_button, :search_results
 
         def initialize(param)
@@ -154,7 +154,7 @@ module Stamps
         end
       end
 
-      class AwaitingShipmentTab < Browser::StampsModal
+      class AwaitingShipmentTab < Browser::Base
         include FilterTabHelper
         def initialize(param)
           super
@@ -166,7 +166,7 @@ module Stamps
         end
       end
 
-      class ShippedTab < Browser::StampsModal
+      class ShippedTab < Browser::Base
         include FilterTabHelper
         def initialize(param)
           super
@@ -174,7 +174,7 @@ module Stamps
         end
       end
 
-      class CanceledTab < Browser::StampsModal
+      class CanceledTab < Browser::Base
         include FilterTabHelper
         def initialize(param)
           super
@@ -182,7 +182,7 @@ module Stamps
         end
       end
 
-      class OnHoldTab < Browser::StampsModal
+      class OnHoldTab < Browser::Base
         include FilterTabHelper
         def initialize(param)
           super
@@ -190,7 +190,7 @@ module Stamps
         end
       end
 
-      class FilterPanel < Browser::StampsModal
+      class FilterPanel < Browser::Base
         attr_reader :search_orders, :search_results, :awaiting_shipment, :shipped, :canceled, :on_hold, :menu_item
 
         def initialize(param)
