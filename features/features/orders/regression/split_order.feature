@@ -28,7 +28,7 @@ Feature: ORDERSAUTO-3405 New Sprint 11/22/17 WEBAPPS-6706 Split Order: Automatic
 
     Then click Split Order modal confirm button
 
-    Then expect new order is selected
+    Then expect new order from Split Order modal is selected in orders grid
     Then expect order details form ship-to Name is Split Order
     Then expect order details form ship-to Company Name is Stamps
     Then expect Order Details form Ship-To Cleansed Street Address is 1990 E Grand Ave

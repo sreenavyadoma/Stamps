@@ -261,7 +261,7 @@ module Stamps
           end
 
           30.times{
-            return modal if modal.present?
+            break if modal.present?
             selection_item=StampsField.new(browser.span(text: selection_str))
             dropdown.click unless selection_item.present?
             sleep(0.50)
@@ -269,7 +269,7 @@ module Stamps
             sleep(0.25)
             selection_item.click
           }
-          expect("Unable to select #{selection}").to eql("More Actions Menu - Select")
+          #expect("Unable to select #{selection}").to eql("More Actions Menu - Select")
         end
       end
 

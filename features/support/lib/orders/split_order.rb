@@ -24,19 +24,6 @@ module Stamps
           window_title.present?
         end
 
-
-      #  def item_id item_number
-      #    ((StampsField.new(browser.div(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")))[item_number*3]).text
-       # end
-
-      #  def item_description item_number
-      #    ((StampsField.new(browser.div(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")))[item_number*3 + 1]).text
-       # end
-
-       # def item_qty item_number
-       #   ((StampsField.new(browser.div(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")))[item_number*3 + 2]).text
-       # end
-
         def item(number)
           SplitItemDetails.new(param, number)
         end

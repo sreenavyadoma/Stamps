@@ -16,7 +16,7 @@ module Stamps
       end
 
       def split_order_modal
-        (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=OrdersSettings::SplitOrderModal.new(param):cache[:split_order]
+        (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=SplitOrderModal.new(param):cache[:split_order]
       end
     end
     
