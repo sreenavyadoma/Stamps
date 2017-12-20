@@ -12,8 +12,7 @@ module Stamps
         end
 
         def original_order_id
-          id=StampsField.new(browser.div(css: "div[id^=splitorderwindow-][id$=targetEl]>div>div"))
-          /\d+/.match(id.text).to_s
+          /\d+/.match(StampsField.new(browser.div(css: "div[id^=splitorderwindow-][id$=targetEl]>div>div")).text).to_s
         end
 
         def new_order_id
