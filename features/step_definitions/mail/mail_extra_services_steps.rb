@@ -4,6 +4,11 @@ Then /^[Ss]et Extra Services COD to (\d*.?\d+)$/ do |amount|
   stamps.mail.print_form.advanced_options.extra_services.cod.set(amount)
 end
 
+Then /^[Ee]xpect [Ee]xtra [Ss]ervices COD [Vv]alue is (\d*.?\d+)$/ do |amount|
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.cod.textbox.text).to eq amount
+end
+
 Then /^[Ee]xpect Extra Services COD Price to be (\d*.?\d+)$/ do |expectation|
   expect(stamps.mail.print_form.advanced_options.extra_services.cod_price_field).to be_present
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.cod_price==expectation.to_f.round(2) end
@@ -39,6 +44,12 @@ Then /^[Cc]lick value must be shown window Continue button$/ do
   stamps.mail.print_form.advanced_options.value_must_be_shown.continue.click
 end
 
+Then /^[Cc]lick [Ii] [Aa]gree in Special Contents Warning modal$/ do
+  expect(stamps.mail.print_form.advanced_options.special_contents_warning.i_agree).to be_present
+  stamps.mail.print_form.advanced_options.special_contents_warning.i_agree.click
+end
+
+
 Then /^[Ee]xpect Extra Services Security Price to be (\d*.?\d+)$/ do |expectation|
   20.times do break if stamps.mail.print_form.advanced_options.extra_services.security_price==expectation.to_f.round(2) end
   expect(stamps.mail.print_form.advanced_options.extra_services.security_price).to eql(expectation.to_f.round(2))
@@ -50,6 +61,11 @@ end
 
 Then /^[Ss]et Extra Services Handling to (.*)$/ do |str|
   stamps.mail.print_form.advanced_options.extra_services.handling.select(str)
+end
+
+Then /^[Ee]xpect Extra Services Handling is (.*)$/ do |str|
+  expect(stamps.mail.print_form.advanced_options.extra_services.handling).to be_present
+  expect(stamps.mail.print_form.advanced_options.extra_services.handling.textbox.text).to eq str
 end
 
 Then /^[Cc]heck Extra Services Return Receipt$/ do
@@ -93,6 +109,13 @@ Then /^[Ee]xpect Extra Services Return Receipt is unchecked$/ do
   expect(stamps.mail.print_form.advanced_options.extra_services.return_receipt.checked?).to be(false)
 end
 
+Then /^[Ee]xpect [Ee]xtra [Ss]ervices Electronic Return Receipt is checked$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.checked?).to be(true)
+end
+
+Then /^[Ee]xpect [Ee]xtra [Ss]ervices Electronic Return Receipt is unchecked$/ do
+  expect(stamps.mail.print_form.advanced_options.extra_services.electronic_return_receipt.checked?).to be(false)
+end
 
 
 

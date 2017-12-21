@@ -76,10 +76,16 @@ module Stamps
       end
 
       def continue
+        sleep 1
         continue_button.click
+        sleep 1
+        if continue_button.present?
+          continue_button.click
+        end
       end
 
       def cancel
+        sleep 1
         cancel_button.click
       end
     end

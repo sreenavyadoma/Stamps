@@ -113,6 +113,15 @@ module Stamps
           @return_receipt
         end
 
+        def electronic_return_receipt
+          if @electronic_return_receipt.nil?||!@electronic_return_receipt.present?
+            checkbox=browser.span(id: "sdc-extraserviceswin-rrecheckbox-displayEl")
+            verify=browser.div(id: 'sdc-extraserviceswin-rrecheckbox')
+            @electronic_return_receipt=StampsCheckbox.new(checkbox, verify, "class", "checked")
+          end
+          @electronic_return_receipt
+        end
+
         def restricted_delivery
           if @restricted_delivery.nil?||!@restricted_delivery.present?
             checkbox=browser.span(id: "sdc-extraserviceswin-rdcheckbox-displayEl")
@@ -178,6 +187,18 @@ module Stamps
         def cancel
           (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(
               browser.span(text: "Cancel")):cache[:cancel]
+        end
+      end
+
+      class SpecialContentsWarning < Browser::Base
+        def i_agree
+          (cache[:i_agree].nil?||!cache[:i_agree].present?)?cache[:i_agree]=StampsField.new(
+              browser.span(text: "I Agree")):cache[:i_agree]
+        end
+
+        def cancel
+          (cache[:more_info].nil?||!cache[:more_info].present?)?cache[:more_info]=StampsField.new(
+              browser.a(text: "More Info")):cache[:more_info]
         end
       end
     end

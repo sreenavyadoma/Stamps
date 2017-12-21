@@ -531,5 +531,5 @@ mail_print_envelope_10_delivery_address: --tags  @mail_print_envelope_10_deliver
 mail_print_envelope_10_postage: --tags  @mail_print_envelope_10_postage --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_buy_more_labels: --tags  @mail_buy_more_labels --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 
-
+mail_hidden_postage:  --tags  @mail_hidden_postage --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
 mail_bug_ordersauto_3243: --tags  @mail_bug_ordersauto_3243 --guess DEBUG=false HEALTHCHECK=true WEB_APP=mail PRINTER=factory
