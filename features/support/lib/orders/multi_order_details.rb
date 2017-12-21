@@ -1,19 +1,87 @@
 module Stamps
   module Orders
     module MultiOrderDetails
-      class MultiOrderDetailsForm < Browser::Base
-        attr_reader :multi_ship_from, :weight, :multi_dom_service, :multi_int_service, :insurance, :tracking, :dimensions, :buttons
+      class WeightField < Browser::Base
+        class PoundsField < Browser::Base
+          def present?
+            textbox.present?
+          end
 
-        def initialize(param)
-          super
-          @multi_ship_from=Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
-          #@weight=Stamps::Orders::OrderDetailsCommon::OrderDetailsWeight.new(param, :multi_order)
-          @multi_dom_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_dom)
-          @multi_int_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
-          # @insurance=MultiDetailsInsureFor.new(param)
-          # @tracking=MultiOrderDetailsTracking.new(param)
-          # @dimensions=MultiOrderDetailsDimensions.new(param)
+          def textbox
+            StampsTextbox.new(browser.text_field(css: "[class*=multiorder-detailsform] [name=WeightLbs]"))
+          end
+
+          def spinner_up
+            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=pounds-numberfield] [class*=spinner-up]"))
+          end
+
+          def spinner_down
+            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=pounds-numberfield] [class*=spinner-down]"))
+          end
+        end
+
+        class OuncesField < Browser::Base
+          def present?
+            textbox.present?
+          end
+
+          def textbox
+            StampsTextbox.new(browser.text_field(css: "[class*=multiorder-detailsform] [name=WeightOz]"))
+          end
+
+          def spinner_up
+            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-up]"))
+          end
+
+          def spinner_down
+            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-down]"))
+          end
+        end
+
+        def checkbox
+          StampsCheckbox.new(
+              browser.input(css: "[class*=multiorder-detailsform] [class*=weight-row]>div>div>[class*=x-form-type-checkbox] input"),
+              browser.div(css: "[class*=multiorder-detailsform] [class*=weight-row]>div>div>[class*=x-form-type-checkbox]"),
+              "class", "checked")
+        end
+
+        def pounds
+          PoundsField.new(param)
+        end
+
+        def ounces
+          OuncesField.new(param)
+        end
+
+        def weigh
+          StampsField.new(browser.a(css: "[class*=multiorder-detailsform] [class*=scale-btn]"))
+        end
+      end
+
+      class DomesticServiceField < Browser::Base
+
+      end
+
+      class BulkUpdate < Browser::Base
+        def weight
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=::WeightField.new(param):cache[:weight]
+        end
+
+        def buttons
           @buttons=MultiUpdateController.new(param)
+          (cache[:multi_order].nil?||!cache[:multi_order].present?)?cache[:multi_order]=Orders::MultiOrderDetails::BulkUpdate.new(param):cache[:multi_order]
+        end
+
+        def multi_int_service
+          @multi_int_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
+        end
+
+        def ship_from
+          @multi_ship_from=Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
+        end
+
+        def multi_dom_service
+          @multi_dom_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_dom)
         end
 
         def multi_blur_out_field
@@ -22,7 +90,7 @@ module Stamps
         end
 
         def blur_out(count=1)
-          expect(multi_blur_out_field).to be_present, "Blur out field is not present."
+          raise "Blur out field is not present." unless multi_blur_out_field.present?
           ((count.nil?)?1:count.to_i).times do
             multi_blur_out_field.double_click
             multi_blur_out_field.flash
@@ -36,9 +104,7 @@ module Stamps
 
         def expand
           5.times do
-            if collapsed_details.present?
-              collapsed_details.open
-            end
+            collapsed_details.open if collapsed_details.present?
             break if self.present?
           end
         end
@@ -48,9 +114,8 @@ module Stamps
         end
       end
 
-      class MultiDetailsInsureFor < Browser::Base
+      class InsureForField < Browser::Base
         attr_reader :textbox, :increment_trigger, :decrement_trigger, :blur_field, :dropdown
-
         def initialize(param)
           super(param)
           @textbox=StampsTextbox.new browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div>div>[id^=combo-][id$=-inputEl]")
@@ -64,7 +129,7 @@ module Stamps
         end
 
         def value
-          text.to_f if checked?
+          return text.to_f if checked?
           0
         end
 

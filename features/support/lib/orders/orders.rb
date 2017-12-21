@@ -21,8 +21,8 @@ module Stamps
         (cache[:single_order].nil?||!cache[:single_order].present?)?cache[:single_order]=Orders::Details::SingleOrderDetails.new(param):cache[:single_order]
       end
 
-      def multi_order_details
-        (cache[:multi_order].nil?||!cache[:multi_order].present?)?cache[:multi_order]=Orders::MultiOrderDetails::MultiOrderDetailsForm.new(param):cache[:multi_order]
+      def bulk_update
+        (cache[:bulk_update].nil?||!cache[:bulk_update].present?)?cache[:bulk_update]=Orders::MultiOrderDetails::BulkUpdate.new(param):cache[:bulk_update]
       end
 
       def modals

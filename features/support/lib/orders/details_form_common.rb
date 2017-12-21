@@ -43,6 +43,7 @@ module Stamps
         end
       end
 
+      #todo-Rob create one ship from for single order details and one for bulk update form.
       class DetailsFormShipFrom < Browser::Base
         attr_reader :form_type
 
@@ -52,18 +53,18 @@ module Stamps
         end
 
         def manage_shipping_address
-          @manage_shipping_address=ShipFrom::ManageShippingAddresses.new(param) if @manage_shipping_address.nil?||!@manage_shipping_address.present?
-          @manage_shipping_address
+          (cache[:manage_shipping_address].nil?||!cache[:manage_shipping_address].present?)?cache[:manage_shipping_address]=ShipFrom::ManageShippingAddresses.new(
+              param):cache[:manage_shipping_address]
         end
 
         def textbox
-          @textbox=StampsTextbox.new(browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]) if @textbox.nil?||!@textbox.present?
-          @textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]):cache[:textbox]
         end
 
         def dropdown
-          @dropdown=StampsTextbox.new (browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]) if @dropdown.nil?||!@dropdown.present?
-          @dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsTextbox.new(
+              browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]):cache[:dropdown]
         end
 
         def select(str)
@@ -126,6 +127,7 @@ module Stamps
         end
       end
 
+      #todo-Rob prone to error...fix it.
       class DetailsFormService < Browser::Base
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)

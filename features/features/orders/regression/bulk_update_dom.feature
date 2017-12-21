@@ -28,7 +28,8 @@ Feature: Bulk Update Domestic
       #Updating order details
         Then set Multi Order Details Form Ship From to Bulk Update Order 1
         Then set Multi Order Details Form Domestic service to PME Package
-        #Then set Multi Order Details Form Pounds to 2
+        Then set Multi Order Details Form Pounds to 1
+        Then set Multi Order Details Form Ounces to 1
         Then click Multi Order Form Update Order button
         Then Pause for 2 seconds
 
