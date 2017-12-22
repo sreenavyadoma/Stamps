@@ -504,7 +504,7 @@ module Stamps
     end
   end
 
-  class StampsTestHelper
+  class StampsTestHelper #todo-Rob This should be part of String object.
     include RandomGenerators
     include ParameterHelper
     include DefaultYmlData
