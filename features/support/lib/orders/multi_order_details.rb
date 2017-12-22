@@ -26,15 +26,16 @@ module Stamps
           end
 
           def textbox
-            StampsTextbox.new(browser.text_field(css: "[class*=multiorder-detailsform] [name=WeightOz]"))
+            (@textbox.nil?||!textbox.present?)?@textbox=StampsTextbox.new(browser.text_field(css: "[class*=multiorder-detailsform] [name=WeightOz]")):@textbox
           end
 
           def spinner_up
-            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-up]"))
+            (@spinner_up.nil?||!textbox.present?)?@spinner_up=StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-up]")):@spinner_up
+
           end
 
           def spinner_down
-            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-down]"))
+            (@spinner_down.nil?||!textbox.present?)?@spinner_down=StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-down]")):@spinner_down
           end
         end
 

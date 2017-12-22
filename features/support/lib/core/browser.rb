@@ -5,14 +5,50 @@ module Stamps
                     :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
     end
 
-    class Base
-      attr_reader :param, :helper, :browser, :cache, :logger
+    module Modals
+      class << self
+        def included(base)
+          base.extend ClassMethods
+        end
+
+        module ClassMethods
+          def assign(cache)
+            @cache=cache
+          end
+
+          def cache
+            @cache
+          end
+
+          def browser=(browser)
+            class_variable_set(@@browser, browser)
+          end
+
+          def browser
+            class_variable_get(@@browser)
+          end
+        end
+      end
+    end
+
+    class BaseCache
+      include Modals
+      attr_reader :param, :browser, :logger
       def initialize(param)
         @param=param
-        @helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
+        self.class.browser=param.browser
+        @logger=param.logger
+      end
+    end
+
+    class Base
+      attr_reader :param, :browser, :cache, :logger
+      def initialize(param)
+        @param=param
         @browser=param.browser
         @logger=param.logger
         @cache={}
+        #@helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
       end
     end
 
@@ -222,7 +258,7 @@ module Stamps
       end
     end
 
-    #todo-Rob rework disabled field
+    #todo-Rob IMPORTANT! rework disabled field
     #AB_ORDERSAUTO_3516
     class StampsField2 < StampsField
       def initialize(field, disabled_field, attribute, attribute_value)

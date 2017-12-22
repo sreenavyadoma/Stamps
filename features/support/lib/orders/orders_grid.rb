@@ -108,10 +108,6 @@ module Stamps
           0
         end
 
-        def parameter_helper
-          helper
-        end
-
         def grid_text(column, row)
           scroll_to_column(column)
           StampsField.new(grid_field(column, row)).text
