@@ -52,7 +52,7 @@ Feature:  All Store Management
       Then click Square Authorize Button
 
       # External sites Square Login page ##https://squareup.com/login?
-      Then expect external site square email textbox is present
+      Then expect external site square email text box is present
       Then set external site square email is webapps@stamps.com
       Then set external site square password is password1
       Then click external site square Sign In button
