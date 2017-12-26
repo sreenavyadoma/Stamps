@@ -1,5 +1,5 @@
 module Stamps
-  class StampsDotCom < Browser::StampsModal
+  class StampsDotCom < Browser::Base
     def navigation_bar
       (cache[:navigation_bar].nil?||!cache[:navigation_bar].present?)?cache[:navigation_bar]=Navigation::NavigationBar.new(param):cache[:navigation_bar]
     end

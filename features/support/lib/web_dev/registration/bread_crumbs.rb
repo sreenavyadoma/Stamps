@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class RegistrationBreadCrumbs < Browser::StampsModal
+    class RegistrationBreadCrumbs < Browser::Base
       attr_reader :bread_crumb_profile, :bread_crumb_membership, :bread_crumb_choose_supplies
 
       def initialize(param)

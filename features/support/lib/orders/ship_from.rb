@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module ShipFrom
-      class ManageShippingAddresses < Browser::StampsModal
+      class ManageShippingAddresses < Browser::Base
         attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
 
         def initialize(param)
@@ -209,7 +209,8 @@ module Stamps
         end
       end
 
-      class AddShippingAddress < Browser::StampsModal
+      #todo-Rob REW
+      class AddShippingAddress < Browser::Base
         attr_reader :save_btn, :origin_zip, :name, :company, :street_address_1, :street_address_2, :city, :state, :zip, :phone
         attr_accessor :address_hash
 
@@ -261,7 +262,7 @@ module Stamps
       end
 
       #todo-Rob fix me.
-      class DeleteShippingAddress < Browser::StampsModal
+      class DeleteShippingAddress < Browser::Base
 
         def window_title
           browser.div(text: "Delete Shipping Address")

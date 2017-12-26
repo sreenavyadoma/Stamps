@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class EtsySettings < StoreSettings
         def window_title
           StampsField.new browser.div text: "Etsy Settings"
@@ -14,8 +15,9 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
 
-      class Etsy < Browser::StampsModal
+      class Etsy < Browser::Base
 
         def window_title
           StampsField.new(browser.div text: "Connect your Etsy Store")
@@ -132,7 +134,7 @@ module Stamps
         end
       end
 
-      class EtsySignInPage < Browser::StampsModal
+      class EtsySignInPage < Browser::Base
         def present?
           browser.text_field(id: 'username-existing').present?
         end
@@ -157,7 +159,7 @@ module Stamps
         end
       end
 
-      class EtsyPage < Browser::StampsModal
+      class EtsyPage < Browser::Base
         def present?
           browser.url.include? "etsy.com"
         end

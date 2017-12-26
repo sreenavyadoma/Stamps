@@ -14,14 +14,10 @@ module Stamps
       def orders_settings_modal
         (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
       end
-
-      def add_your_store_modal
-        (cache[:add_store].nil?||!cache[:add_store].present?)?cache[:add_store]=Stores::Marketplace.new(param):cache[:add_store]
-      end
     end
     
     module TermsAndConditions
-      class TermsAndConditionsModal < Stamps::Browser::StampsModal
+      class TermsAndConditionsModal < Stamps::Browser::Base
         def present?
           i_agree_button.present?
         end
