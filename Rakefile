@@ -1209,6 +1209,11 @@ Cucumber::Rake::Task.new(:bvt_printing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
+  t.profile = 'bvt_purchasing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_purchasing_cc) do |t|
   t.profile = 'bvt_purchasing_cc'
   t.cucumber_opts = "-p cuke_reports"
