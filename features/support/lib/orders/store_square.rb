@@ -99,7 +99,7 @@ module Stamps
         end
       end
 
-      class Settings < Browser::StampsModal
+      class Settings < Browser::Base
         include GeneralSettings
         include ServiceMapping
 
@@ -137,7 +137,7 @@ module Stamps
         end
       end
 
-      class Square < Browser::StampsModal
+      class Square < Browser::Base
         include SqaureWindowTitle
 
         def iframe
