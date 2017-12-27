@@ -1,13 +1,14 @@
 module Stamps
   module Orders
 
+    #todo-ORDERSAUTO-3405 create a window title module for SplitOrderModal that you can use elsewhere in the code.
       class SplitOrderModal < Browser::Base
         attr_reader :window_title
 
         def initialize(param)
           super
 
-          @window_title=StampsField.new(browser.div(css: "div[id^=splitorderwindow-][id$=innerCt]"))
+          @window_title=StampsField.new(browser.div(css: "div[id^=splitorderwindow-][id$=innerCt]")) #todo-ORDERSAUTO-3405 this should be a module by itself
 
         end
 

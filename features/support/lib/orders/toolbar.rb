@@ -218,7 +218,7 @@ module Stamps
         end
 
         def split_order
-          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Stamps::Orders::SplitOrderModal.new(param):cache[:split_order]
+          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Stamps::Orders::SplitOrderModal.new(param):cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
         end
 
         def combine_orders
@@ -269,6 +269,7 @@ module Stamps
             sleep(0.25)
             selection_item.click
           }
+          #todo-ORDERSAUTO-3405 You have to return Window name to step definition calling this method then do an assertion on window name in step def.
           #expect("Unable to select #{selection}").to eql("More Actions Menu - Select")
         end
       end
