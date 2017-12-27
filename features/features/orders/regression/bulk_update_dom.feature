@@ -4,7 +4,7 @@ Feature: Bulk Update Domestic
     Given a valid user is signed in to Web Apps
 
     @bulk_update_dom
-    Scenario: Bulk Update Domestic
+    Scenario: Bulk Update Domestic #ORDERSAUTO-2261 Bulk Update: Dimensions controller
       #Adding 1st order
         Then add new order
         Then set Order Details form Ship-From to default
