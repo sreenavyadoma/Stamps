@@ -36,8 +36,12 @@ module Stamps
       attr_reader :param, :browser, :logger
       def initialize(param)
         @param=param
-        self.class.browser=param.browser
         @logger=param.logger
+        self.class.browser=param.browser
+      end
+
+      def cache
+        self.class.cache
       end
     end
 
