@@ -179,6 +179,16 @@ module Stamps
         def default_selected?
           label_selected?(left_label)
         end
+
+        #AB_ORDERSAUTO_3518
+        def label_displayed?
+          (div.attribute_value 'class').include? 'selected'
+          div = left_selected??left_label:right_label
+          8.times do
+            break if (div.attribute_value 'class').include? 'label-chooser-image-domestic'
+          end
+          (div.attribute_value 'class').include? 'selected'
+        end
       end
 
       class OrdersPrintOptions < Browser::Base

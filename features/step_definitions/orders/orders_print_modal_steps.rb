@@ -120,6 +120,11 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
   expect(stamps.orders.modals.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
+Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]review [Ll]abel is displayed$/ do
+  expect(stamps.orders.modals.orders_print_modal.starting_label.label_displayed?).to be(true), "Label Preview Image is not Displayed"
+end
+
+
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-[Oo]n to (.*)$/ do |expectation|
   stamps.orders.modals.orders_print_modal.printing_on.select(expectation)
 end
@@ -131,6 +136,10 @@ end
 Then /^[Ss]elect [Pp]rinter \"(.*)\"$/ do |printer|
   step "Orders print modal printer dropdown is present"
   stamps.orders.modals.orders_print_modal.printer.select(printer)
+end
+
+Then /^[Cc]lose [Pp]rint [Mm]odal$/ do
+  stamps.orders.modals.orders_print_modal.close
 end
 
 Then /^Close Reprint Modal$/ do

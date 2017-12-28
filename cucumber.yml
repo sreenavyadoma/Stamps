@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_cc
+default: --backtrace --profile alex_orders
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -52,7 +52,7 @@ alex_regress:  --tags @filter_panel BROWSER=ff WEB_APP=orders JENKINS=true URL=s
 alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 #alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_4 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @orders_fci_flats BROWSER=ff WEB_APP=orders JENKINS=true URL=sc USR=lrqasc003 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_orders:  --tags @print_label_preview_image BROWSER=ff WEB_APP=orders JENKINS=true URL=st USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
@@ -385,6 +385,7 @@ general_settings_test_cases: --tags @general_settings_test_cases --guess DEBUG=f
 stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 orders_fci_flats: --tags @orders_fci_flats --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+print_label_preview_image: --tags @print_label_preview_image --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 
 # REGRESSION NOT INCLUDED
