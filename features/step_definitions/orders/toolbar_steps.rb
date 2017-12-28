@@ -59,7 +59,7 @@ Then /^[Ss]elect [Gg]rid [Tt]oolbar [Mm]ore [Aa]ctions item (.*)$/ do |str|
     when /combine orders/
       #stamps.orders.orders_toolbar.toolbar_more_actions.select_combine_orders
     when /split order/
-      stamps.orders.orders_toolbar.toolbar_more_actions.select_split_order
+      stamps.orders.orders_toolbar.toolbar_more_actions.select_split_order #todo-ORDERSAUTO-3405 code review: select_split_order should return window title, do assertion on window title here.
     when /apply bulk action/
       #stamps.orders.orders_toolbar.toolbar_more_actions.select_apply_bulk_action
     else
