@@ -8,7 +8,7 @@ Feature: Domestic Address
   Scenario: Auto Suggest for Domestic Addresses
     Then add new order
     #Matching first name
-    Then set Order Details form Ship-To auto-suggest address to partial name Firstname
+    Then set Order Details Ship-To auto-suggest address to partial name Firstname
     Then expect Order Details form auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
     Then on Order Details form, select Ship-To auto-suggest item 1
     Then expect Order Details form Domestic Ship-To Name is Firstname Lastname
@@ -18,12 +18,12 @@ Feature: Domestic Address
   @auto_suggest_international
   Scenario: Select International Address
     Then add new order
-    Then set Order Details form Ship-To Country to Italy
-    Then set Order Details form International Ship-To auto-suggest address to partial name Com
+    Then set Order Details Ship-To Country to Italy
+    Then set Order Details International Ship-To auto-suggest address to partial name Com
     Then expect Order Details form auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
     Then expect Order Details form auto-suggest pop-up entry for Firstname Venice, Lastname Florence, Company CompanyNameInternational
     Then on Order Details form, select Ship-To auto-suggest item 1
-    Then set Order Details form International Ship-To auto-suggest address to partial name Flo
+    Then set Order Details International Ship-To auto-suggest address to partial name Flo
     Then on Order Details form, select Ship-To auto-suggest item 1
     Then expect Order Details form Ship-To Name is Venice Florence
     Then expect Order Details form International Ship-To Company is CompanyNameInternational

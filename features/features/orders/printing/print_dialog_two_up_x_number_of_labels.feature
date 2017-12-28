@@ -7,10 +7,10 @@ Feature:  Requires x-number of label sheets
   @print_dialog_two_up_x_number_of_labels
   Scenario:  Requires x-number of label sheets
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PM Flat Rate Envelope
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PM Flat Rate Envelope
+    Then set Order Details Weight to 1 lb 1 oz
 
     Then click Orders Toolbar Print button
     Then expect Print modal number of required label sheets is 1
@@ -18,9 +18,9 @@ Feature:  Requires x-number of label sheets
     Then in Print modal, click Close button
 
     Then add new order
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PM Flat Rate Envelope
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PM Flat Rate Envelope
+    Then set Order Details Weight to 1 lb 1 oz
 
     Then check Orders Grid row 1
     Then check Orders Grid row 2

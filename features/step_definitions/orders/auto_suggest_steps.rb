@@ -1,9 +1,9 @@
-Then /^[Ss]et [Oo]rder [Dd]etails form Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
+Then /^[Ss]et [Oo]rder [Dd]etails Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
   @auto_suggest_partial_name=partial_name
   @auto_suggest=stamps.orders.single_order_details.ship_to.domestic.auto_suggest.set @auto_suggest_partial_name
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails form International Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
+Then /^[Ss]et [Oo]rder [Dd]etails International Ship-To auto-suggest address to partial name (.*)$/ do |partial_name|
   @auto_suggest_partial_name=partial_name
   @auto_suggest=stamps.orders.single_order_details.ship_to.international.auto_suggest.set @auto_suggest_partial_name
 end

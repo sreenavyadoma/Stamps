@@ -1,5 +1,5 @@
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ss]hip [Ff]rom to (.*)$/ do |str|
-  expect(test_param[:multi_ship_from]=stamps.orders.bulk_update.ship_from.select(str)).to include(str)
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Ss]hip [Ff]rom to (.*)$/ do |str|
+  test_param[:multi_ship_from]=stamps.orders.bulk_update.ship_from.select(str)
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
@@ -10,58 +10,73 @@ Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
 
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Pp]ounds to (.*)$/ do |value|
-  test_param[:pounds]=value
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Pp]ounds to (.*)$/ do |str|
+  test_param[:pounds]=str
   stamps.orders.bulk_update.weight.lb.set(test_param[:pounds])
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Oo]unces to (.*)$/ do |value|
-  test_param[:ounces]=value
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Oo]unces to (.*)$/ do |str|
+  test_param[:ounces]=str
   stamps.orders.bulk_update.weight.oz.set(test_param[:ounces])
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Dd]omestic [Ss]ervice to (.*)$/ do |service|
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]omestic [Ss]ervice to (.*)$/ do |service|
   test_param[:service]=test_helper.parse_service(stamps.orders.bulk_update.domestic_service.select(service)) #todo-Rob what is this?
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ii]nternational [Ss]ervice to (.*)$/ do |service|
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |service|
   test_param[:int_service]=test_helper.parse_service(stamps.orders.bulk_update.international_service.select(service))
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ii]nsurance to (.+)$/ do |value|
-  stamps.orders.bulk_update.insurance.select(value)
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|
+  stamps.orders.bulk_update.insurance.select(str)
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ii]nsure [Aa]mount to (.+)$/ do |value|
-  stamps.orders.bulk_update.insurance.select(value)
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsure [Aa]mount to (.+)$/ do |str|
+  stamps.orders.bulk_update.insurance.select(str)
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Tt]racking to (.+)$/ do |value|
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Tt]racking to (.+)$/ do |str|
   #step "set Order Details form Tracking to \"USPS Tracking\""
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|
-  step "set multi order details form length to #{length}"
-  step "set multi order details form width to #{width}"
-  step "set multi order details form height to #{height}"
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|
+  step "set bulk update length to #{length}"
+  step "set bulk update width to #{width}"
+  step "set bulk update height to #{height}"
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ll]ength to (.*)$/ do |val|
-  stamps.orders.bulk_update.dimensions.length.set(val)
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Ll]ength to (.*)$/ do |str|
+  stamps.orders.bulk_update.dimensions.length.set(test_param[:bulk_length]=str)
+  step "expect bulk update length is correct"
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ww]idth to (.*)$/ do |val|
-  stamps.orders.bulk_update.dimensions.width.set(val)
+Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ll]ength is (?:correct|(.*))$/ do |str|
+  expect(stamps.orders.bulk_update.dimensions.length.value).to eql((str.nil?)?test_param[:bulk_length]:str)
 end
 
-Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Hh]eight to (.*)$/ do |val|
-  stamps.orders.bulk_update.dimensions.height.set(val)
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
+  stamps.orders.bulk_update.dimensions.width.set(test_param[:bulk_width]=str)
+  step "expect bulk update width is correct"
 end
 
-Then /^[Cc]lick [Mm]ulti Order [Ff]orm [Uu]pdate [Oo]rder [Bb]utton$/ do
+Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]idth is (?:correct|(.*))$/ do |str|
+  expect(stamps.orders.bulk_update.dimensions.width.value).to eql((str.nil?)?test_param[:bulk_width]:str)
+end
+
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
+  stamps.orders.bulk_update.dimensions.height.set(test_param[:bulk_height]=str)
+  step "expect bulk update height is correct"
+end
+
+Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Hh]eight is (?:correct|(.*))$/ do |str|
+  expect(stamps.orders.bulk_update.dimensions.v.value).to eql((str.nil?)?test_param[:bulk_height]:str)
+end
+
+Then /^[Cc]lick [Bb]ulk [Uu]pdate [Uu]pdate [Oo]rder [Bb]utton$/ do
   stamps.orders.bulk_update.buttons.update_orders
 end
 
-Then /^expect multi order details form is present$/ do
+Then /^[Ee]xpect [Bb]ulk [Uu]pdate is present$/ do
   expect(stamps.orders.bulk_update).to be_present, "Multi Order Details form is not present"
 end

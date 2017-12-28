@@ -6,12 +6,12 @@ Feature: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
   @print_layout_fsa_cp72_paper_single_ply
   Scenario: Print 1 single ply FSA CP72 label on on 8.5x11 - right side
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To Domestic address to
       | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
-    Then set Order Details form Weight to 1 lb 2 oz
-    Then set Order Details form service to MM Package
+    Then set Order Details Weight to 1 lb 2 oz
+    Then set Order Details service to MM Package
 
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Other

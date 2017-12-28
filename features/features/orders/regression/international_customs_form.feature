@@ -8,13 +8,13 @@ Feature:  Customs Form Item Grid
   @international_customs_form_totals
   Scenario:  Customs Form Grid - Add Items
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Zimbabwe | random  | random  |
-    Then set Order Details form service to PMI Flat Rate Envelope
-    Then set Order Details form Pounds to 3
-    Then set Order Details form Ounces to 3
+    Then set Order Details service to PMI Flat Rate Envelope
+    Then set Order Details Pounds to 3
+    Then set Order Details Ounces to 3
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
@@ -32,8 +32,8 @@ Feature:  Customs Form Item Grid
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | random | random  | random           | random           | random | random  | random      | Japan | random  | random  |
-    Then set Order Details form Ounces to 5
-    Then set Order Details form service to PMI Flat Rate Envelope
+    Then set Order Details Ounces to 5
+    Then set Order Details service to PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then click Order Details form Customs Form button
     Then expect Customs form Associated Item Grid count is 1

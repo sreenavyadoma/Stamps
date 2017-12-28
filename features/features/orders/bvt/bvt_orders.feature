@@ -8,12 +8,12 @@ Feature:  BVT tests for Orders
   @bvt_ambigious_address
   Scenario: BVT Ambigious Address
     Then add new order
-    Then set Order Details form Ship-To to ambiguous address
+    Then set Order Details Ship-To to ambiguous address
       | full_name       | company  | street_address      | city          | state | zip   | country       | phone           |  email            |
       | Juan Dela Cruz | Betfair  | 1390 Market Street  | San Francisco | CA    | 94102 | United States | (415) 123-5555  | rtest@stamps.com  |
     Then Expect Exact Address Not Found module to appear
     Then In Exact Address Not Found module, select row 2
-    Then set Order Details form service to PM Package
+    Then set Order Details service to PM Package
     Then Pause for 2 seconds
     Then expect Orders Grid Recipient is Juan Dela Cruz
     Then expect Orders Grid Company is Betfair
@@ -25,11 +25,11 @@ Feature:  BVT tests for Orders
   @bvt_address_cleansing
   Scenario: BVT Address Cleansing
     Then add new order
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-To Domestic address to
       | full_name     | company | street_address     | street_address_2| city          | state | zip | country       | phone          |  email           |
       | Euan Davidson | Betfair | 1350 Market Street |                 | San Francisco | CA    |     | United States | (415) 123-5555 | rtest@stamps.com |
-    Then set Order Details form service to PM Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PM Package
+    Then set Order Details Ounces to 1
     Then blur out on Order Details form
     Then Pause for 2 seconds
     Then expect Orders Grid Recipient is Euan Davidson
@@ -46,10 +46,10 @@ Feature:  BVT tests for Orders
 
   # Order #1 (Domestic)
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address in zone 1
-    Then set Order Details form service to PM Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address in zone 1
+    Then set Order Details service to PM Package
+    Then set Order Details Ounces to 1
     Then Pause for 1 second
 
   # Order #2 (International)
@@ -57,8 +57,8 @@ Feature:  BVT tests for Orders
     Then set Order Details Ship-To International address to
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
-    Then set Order Details form Weight to 2 lb 2 oz
-    Then set Order Details form international service to PMEI Package
+    Then set Order Details Weight to 2 lb 2 oz
+    Then set Order Details international service to PMEI Package
     Then blur out on Order Details form 2 times
 
   # Check 1st two orders
@@ -69,12 +69,12 @@ Feature:  BVT tests for Orders
     Then Pause for 1 seconds
 
   # Updating order details
-    Then expect multi order details form is present
+    Then expect Bulk Update is present
     Then blur out on multi order details form
-    Then set Multi Order Details Form Ship From to default
-    Then set multi order details form domestic service to PM Large Package
-    Then set Multi Order Details Form International service to PMI Package
-    Then click Multi Order Form Update Order button
+    Then set Bulk Update Ship From to default
+    Then set Bulk Update domestic service to PM Large Package
+    Then set Bulk Update International service to PMI Package
+    Then click Bulk Update Update Order button
 
   # Uncheck both orders
     Then Pause for 1 second
@@ -105,8 +105,8 @@ Feature:  BVT tests for Orders
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
-    Then set Order Details form Ounces to 4
-    Then set Order Details form service to FCMI Large Envelope
+    Then set Order Details Ounces to 4
+    Then set Order Details service to FCMI Large Envelope
     Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs form Package Contents to Commercial Sample
@@ -127,14 +127,14 @@ Feature:  BVT tests for Orders
   @bvt_new_order
   Scenario:  BVT Add a new order
     Then add new order
-    Then set Order Details form Ship-To to random address between zone 9
-    Then set Order Details form service to PM Package
-    Then set Order Details form Pounds to 1
-    Then set Order Details form Ounces to 1
-    Then set Order Details form Insure-For to $1.00
-    Then set Order Details form Length to 1
-    Then set Order Details form Width to 1
-    Then set Order Details form Height to 1
+    Then set Order Details Ship-To to random address between zone 9
+    Then set Order Details service to PM Package
+    Then set Order Details Pounds to 1
+    Then set Order Details Ounces to 1
+    Then set Order Details Insure-For to $1.00
+    Then set Order Details Length to 1
+    Then set Order Details Width to 1
+    Then set Order Details Height to 1
   # Orders Grid Operations
     Then uncheck Orders Grid row 1
     Then expect Orders Grid Pounds is 1
@@ -147,12 +147,12 @@ Feature:  BVT tests for Orders
   @bvt_printing
   Scenario:  BVT Printing
     Then add new order
-    Then set Order Details form Ship-To to random address between zone 5 and 8
-    Then set Order Details form service to PM Package
-    Then set Order Details form Ounces to 1
-    Then set Order Details form Width to 1
-    Then set Order Details form Length to 1
-    Then set Order Details form Height to 1
+    Then set Order Details Ship-To to random address between zone 5 and 8
+    Then set Order Details service to PM Package
+    Then set Order Details Ounces to 1
+    Then set Order Details Width to 1
+    Then set Order Details Length to 1
+    Then set Order Details Height to 1
     Then click Orders Toolbar Print button
     Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     Then click print modal print button
@@ -178,20 +178,20 @@ Feature:  BVT tests for Orders
       |ship_from_zip  | full_name  | company    | street_address     | street_address2 | city          | state       | zip    | country       | phone           |
       |90245          | Euan  | Betfair UK | 101 Mission Street | Suite 700       | San Francisco | California  | 94105  | United States | (415) 123-5555  |
     Then on Manage Shipping Address modal, delete all addresses
-    Then set Order Details form Ship-From to San Francisco, CA
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PM Package
+    Then set Order Details Ship-From to San Francisco, CA
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PM Package
     Then Sign out
 
 
   @bvt_shipstation_search
   Scenario: Search shipstation orders
     Then add new order
-    Then set Order Details form Ship-To to random address in zone 1
-    Then set Order Details form Email to random
-    Then set Order Details form Phone to random
-    Then set Order Details form service to PM Package
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details Ship-To to random address in zone 1
+    Then set Order Details Email to random
+    Then set Order Details Phone to random
+    Then set Order Details service to PM Package
+    Then set Order Details Weight to 1 lb 1 oz
 
     Then uncheck orders grid cached order id
 
@@ -219,26 +219,26 @@ Feature:  BVT tests for Orders
   @bvt_shipstation_updates_domestic
   Scenario: Update ShipStation for Domestic
     Then add new order
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-To Domestic address to
       | full_name       | company      | street_address   | street_address_2| city    | state | zip    | country  |
       | First Last | Company Name | 777 N Orange Ave | Apt 100         | Orlando | FL    | 32801  | United States |
 
-    Then set Order Details form Phone to 888-888-8888
-    Then set Order Details form Email to rtest@stamps.com
-    Then set Order Details form Pounds to 1
-    Then set Order Details form Ounces to 1
-    Then set Order Details form service to PM Package
-    Then set Order Details form Insure-For to $100.00
-    Then set Order Details form Tracking to Signature Required
-    Then set Order Details form Length to 1
-    Then set Order Details form Width to 1
-    Then set Order Details form Height to 1
+    Then set Order Details Phone to 888-888-8888
+    Then set Order Details Email to rtest@stamps.com
+    Then set Order Details Pounds to 1
+    Then set Order Details Ounces to 1
+    Then set Order Details service to PM Package
+    Then set Order Details Insure-For to $100.00
+    Then set Order Details Tracking to Signature Required
+    Then set Order Details Length to 1
+    Then set Order Details Width to 1
+    Then set Order Details Height to 1
 
     Then expect Orders Grid service is Priority Mail
     Then expect Orders Grid service is PM Package
     Then expect Orders Grid service is correct
 
-    Then set Order Details form Reference Number to Update Orders To ShipStation
+    Then set Order Details Reference Number to Update Orders To ShipStation
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
 
     Then Pause for 2 seconds
@@ -329,10 +329,10 @@ Feature:  BVT tests for Orders
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
 
     Then expect Order Details form Ship-To Country is correct
-    Then set Order Details form Weight to 2 lb 2 oz
-    Then set Order Details form service to PMI Package
-    Then set Order Details form Insure-For to $100.25
-    Then set Order Details form Reference Number to Some random string
+    Then set Order Details Weight to 2 lb 2 oz
+    Then set Order Details service to PMI Package
+    Then set Order Details Insure-For to $100.25
+    Then set Order Details Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
     Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
     Then on Order Details form, Add Item 3, Qty 3, ID ID 3, Description random string

@@ -9,7 +9,47 @@ module Stamps
 
       end
 
-      module MultiOrderDetailsBody
+      module Body
+        class Dimensions < Browser::Base
+          def initialize(param, form_type)
+            super(param)
+            @form_type=form_type
+          end
+
+          def length
+            if @length.nil?||!@length.present?
+              textbox=browser.text_fields(css: "[class*=sdc-mainpanel-lengthnumberfield]")[(@form_type==:single_order)?0:1]
+              inc_btn=browser.div(css: "")
+              dec_btn=browser.div(css: "")
+              @length=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            end
+            @length
+          end
+
+          def width
+            if @width.nil?||!@width.present?
+              textbox=browser.text_field(css: "[class*=sdc-mainpanel-widthnumberfield]")
+              inc_btn=browser.div(css: "")
+              dec_btn=browser.div(css: "")
+              @width=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            end
+            @width
+          end
+
+          def height
+            if @height.nil?||!@height.present?
+              textbox=browser.text_field(css: "[class*=sdc-mainpanel-heightnumberfield]")
+              inc_btn=browser.div(css: "")
+              dec_btn=browser.div(css: "")
+              @height=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
+            end
+            @height
+          end
+
+          def present?
+            length.present? && width.present? && height.present?
+          end
+        end
 
         class InsureForField < Browser::Base
           attr_reader :textbox, :increment_trigger, :decrement_trigger, :blur_field, :dropdown
@@ -247,7 +287,7 @@ module Stamps
       class BulkUpdate < Browser::Base
         include Toolbar
         include PresetMenu
-        include MultiOrderDetailsBody::Fields
+        include Body::Fields
 
         def buttons
           @buttons=MultiUpdateController.new(param)

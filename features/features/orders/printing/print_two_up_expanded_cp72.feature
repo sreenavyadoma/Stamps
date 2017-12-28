@@ -10,12 +10,12 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
 
     #print_two_up_expanded_cp72_5x8_left_print1
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
-    Then set Order Details form service to PMI Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Package
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
@@ -34,12 +34,12 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
    #print_two_up_expanded_cp72_5x8_right_print1
     # 1 CP72 label 5 ½" x 8 ½" right side
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
-    Then set Order Details form service to PMEI Padded Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMEI Padded Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
@@ -57,51 +57,51 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
 
    #print_two_up_expanded_cp72_paper_left
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
-    Then set Order Details form service to PME Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
+    Then set Order Details service to PME Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
-    Then set Order Details form service to PME Legal Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
+    Then set Order Details service to PME Legal Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
-    Then set Order Details form service to PME Padded Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
+    Then set Order Details service to PME Padded Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
-    Then set Order Details form service to PMI Large Flat Rate Box
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Large Flat Rate Box
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
-    Then set Order Details form service to PMEI Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMEI Package
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
-    Then set Order Details form service to PMEI Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMEI Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
@@ -125,51 +125,51 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5
 
    #print_two_up_expanded_cp72_paper_left_print3
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
-    Then set Order Details form service to PME Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to PME FR Envelope, 5.5x8.5, 26930 NE 152nd St., Duvall WA 98019-8316
+    Then set Order Details service to PME Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
-    Then set Order Details form service to PME Legal Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to PME LFR Envelope, 5.5x8.5, 2105 Kietzke Ln, Reno NV 89502-3602
+    Then set Order Details service to PME Legal Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
-    Then set Order Details form service to PME Padded Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to PME PFR Envelope, 5.5x8.5, 557 County Rd. H, Fredonia WI 53021-9634
+    Then set Order Details service to PME Padded Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFR Box | 5.5x8.5  | random           | random           | random | random  | random      | Spain | random  | random  |
-    Then set Order Details form service to PMI Large Flat Rate Box
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Large Flat Rate Box
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI Pkg-Flat-Env | 5.5x8.5 | random           | random           | random | random  | random      | Turkey | random  | random  |
-    Then set Order Details form service to PMEI Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMEI Package
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI FR Envelope | 5.5x8.5 | random           | random           | random | random  | random      | Argentina | random  | random  |
-    Then set Order Details form service to PMEI Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMEI Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10

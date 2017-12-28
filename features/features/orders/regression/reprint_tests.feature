@@ -29,10 +29,10 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - Closes Reprint Modal before reprint
 
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PM Package
-    Then set Order Details form Pounds to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PM Package
+    Then set Order Details Pounds to 1
 
     Then Pause for 2 seconds
     Then click Orders Toolbar Print button
@@ -51,13 +51,13 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - Domestic
 
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To Country to United States
+    Then set Order Details Ship-To Domestic address to
       | full_name         | company           | street_address  |street_address_2|  city        | state| zip   | country       | phone  |  email |
       | Reprint Test | 4.125 x 6.25 roll | 604 Arizona Ave |                | Santa Monica | CA   | 90401 | United States | 8885551212 | test@stamps.com |
-    Then set Order Details form service to PM Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PM Package
+    Then set Order Details Ounces to 1
 
     Then Pause for 2 seconds
     Then click Orders Toolbar Print button
@@ -76,13 +76,13 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - APO | CP72
 
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To Country to United States
+    Then set Order Details Ship-To Domestic address to
       | full_name   | company      | street_address    |street_address_2| city | state | zip    | country       | phone  |  email |
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  |                | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
-    Then set Order Details form Weight to 2 lb 1 oz
-    Then set Order Details form service to PSG Package
+    Then set Order Details Weight to 2 lb 1 oz
+    Then set Order Details service to PSG Package
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
@@ -106,12 +106,12 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - International | CN22
 
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | 5.5x8.5 | random           | random           | random | random  | random      | Norway | random  | random  |
-    Then set Order Details form service to FCMI Large Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Gift
@@ -137,12 +137,12 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - International | CP72
 
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | SDC-1200 | random           | random           | random | random  | random      | New Zealand | random  | random  |
-    Then set Order Details form service to PMI Large Flat Rate Box
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Large Flat Rate Box
+    Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
@@ -168,13 +168,13 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
   Scenario: User Reprints Order - US Territory | CP72
 
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To Country to United States
+    Then set Order Details Ship-To Domestic address to
       | full_name         | company            | street_address | street_address_2| city | state | zip        | country       | phone  |  email |
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |
-    Then set Order Details form Weight to 2 lb 1 oz
-    Then set Order Details form service to MM Package
+    Then set Order Details Weight to 2 lb 1 oz
+    Then set Order Details service to MM Package
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10

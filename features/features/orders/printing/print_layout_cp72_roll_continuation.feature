@@ -6,12 +6,12 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
   @print_layout_cp72_roll_continuation
   Scenario: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
-    Then set Order Details form service to PMI Large Flat Rate Box
-    Then set Order Details form Weight to 2 lb 0 oz
+    Then set Order Details service to PMI Large Flat Rate Box
+    Then set Order Details Weight to 2 lb 0 oz
     Then click Order Details form Customs Form button
     Then set Customs form Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
