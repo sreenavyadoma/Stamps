@@ -28,7 +28,6 @@ module Stamps
       def settings
 
       end
-
     end
 
     class MailToolbarMenu < Browser::Base
