@@ -5,30 +5,30 @@ Feature: Bulk Update Domestic
 
   @bulk_update_dimensions
   Scenario: ORDERSAUTO-2261 Bulk Update: Dimensions controller
-    #Add 1st order
-    Then add order 1
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 8
-    Then set Order Details service to PM Package
-    Then set Order Details Pounds to 1
-    Then set Order Details Ounces to 1
-    Then set Order Details Length to 1
-    Then set Order Details Width to 1
-    Then set Order Details Height to 1
-    #Add 2nd order
-    Then add order 2
-    Then set Order Details Ship-From to default
-    Then set Order Details Ship-To to random address between zone 8
-    Then set Order Details service to PM Large Package
-    Then set Order Details Pounds to 2
-    Then set Order Details Ounces to 2
-    Then set Order Details Length to 1
-    Then set Order Details Width to 1
-    Then set Order Details Height to 1
-
-    #Check 1st two orders
-    Then check order 1
-    Then check order 2
+#    #Add 1st order
+#    Then add order 1
+#    Then set Order Details Ship-From to default
+#    Then set Order Details Ship-To to random address between zone 8
+#    Then set Order Details service to PM Package
+#    Then set Order Details Pounds to 1
+#    Then set Order Details Ounces to 1
+#    Then set Order Details Length to 1
+#    Then set Order Details Width to 1
+#    Then set Order Details Height to 1
+#    #Add 2nd order
+#    Then add order 2
+#    Then set Order Details Ship-From to default
+#    Then set Order Details Ship-To to random address between zone 8
+#    Then set Order Details service to PM Large Package
+#    Then set Order Details Pounds to 2
+#    Then set Order Details Ounces to 2
+#    Then set Order Details Length to 1
+#    Then set Order Details Width to 1
+#    Then set Order Details Height to 1
+#
+#    #Check 1st two orders
+#    Then check order 1
+#    Then check order 2
 
     #Updating order details
     #Then set Bulk Update Ship From to default
@@ -47,6 +47,18 @@ Feature: Bulk Update Domestic
     Then set Bulk Update Length to 1
     Then set Bulk Update Width to 1
     Then set Bulk Update Height to 1
+
+    Then set bulk update length to 0
+    Then increment bulk update length by 8
+    Then decrement bulk update length by 8
+
+    Then set bulk update width to 0
+    Then increment bulk update width by 8
+    Then decrement bulk update width by 8
+
+    Then set bulk update height to 0
+    Then increment bulk update height by 8
+    Then decrement bulk update height by 8
 
     Then click Bulk Update Update Order button
     Then Pause for 2 seconds
