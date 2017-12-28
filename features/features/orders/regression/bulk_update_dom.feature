@@ -50,15 +50,21 @@ Feature: Bulk Update Domestic
 
     Then set bulk update length to 0
     Then increment bulk update length by 8
+    Then expect bulk update length is 8
     Then decrement bulk update length by 8
+    Then expect bulk update length is 0
 
     Then set bulk update width to 0
     Then increment bulk update width by 8
+    Then expect bulk update width is 8
     Then decrement bulk update width by 8
+    Then expect bulk update width is 0
 
     Then set bulk update height to 0
     Then increment bulk update height by 8
+    Then expect bulk update height is 8
     Then decrement bulk update height by 8
+    Then expect bulk update height is 0
 
     Then click Bulk Update Update Order button
     Then Pause for 2 seconds

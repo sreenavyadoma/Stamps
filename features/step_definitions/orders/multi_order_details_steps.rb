@@ -50,15 +50,15 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ll]ength to (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.length.set(test_param[:bulk_length]=str)
   step "expect bulk update length is correct"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.length.increment(test_param[:bulk_length_increment]=str)
 end
-
+#todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.length.decrement(test_param[:bulk_length_decrement]=str)
 end
-
+#todo-ORDERSAUTO-2261
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ll]ength is (?:correct|(.*))$/ do |str|
   expect(stamps.orders.bulk_update.dimensions.length.value).to eql((str.nil?)?test_param[:bulk_length]:str)
 end
@@ -67,11 +67,11 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.width.set(test_param[:bulk_width]=str)
   step "expect bulk update width is correct"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.width.increment(test_param[:bulk_width_increment]=str)
 end
-
+#todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.width.decrement(test_param[:bulk_width_decrement]=str)
 end
@@ -84,7 +84,7 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.height.set(test_param[:bulk_height]=str)
   step "expect bulk update height is correct"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.height.increment(test_param[:bulk_height_increment]=str)
 end

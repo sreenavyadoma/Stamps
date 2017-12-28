@@ -2,48 +2,53 @@ module Stamps
   module Orders
     module MultiOrderDetails
       module Toolbar
-
       end
 
       module PresetMenu
-
       end
 
       module Body
         class Dimensions < Browser::Base
-          def initialize(param, form_type)
-            super(param)
-            @form_type=form_type
-          end
-
           def length
-            if @length.nil?||!@length.present?
-              textbox=browser.text_fields(css: "[class*=sdc-mainpanel-lengthnumberfield]")[(@form_type==:single_order)?0:1]
-              inc_btn=browser.div(css: "")
-              dec_btn=browser.div(css: "")
-              @length=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-            end
-            @length
+            (cache[:length].nil?||!cache[:length].present?)?cache[:length]=StampsNumberField.new(
+                browser.text_field(css: "[class*=mult] [name=Length]"),
+                browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(1) [class*=up]"),
+                browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(1) [class*=down]")):cache[:length]
           end
 
           def width
-            if @width.nil?||!@width.present?
-              textbox=browser.text_field(css: "[class*=sdc-mainpanel-widthnumberfield]")
-              inc_btn=browser.div(css: "")
-              dec_btn=browser.div(css: "")
-              @width=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-            end
-            @width
+            (cache[:width].nil?||!cache[:width].present?)?cache[:width]=StampsNumberField.new(
+                browser.text_field(css: "[class*=mult] [name=Width]"),
+                browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(3) [class*=up]"),
+                browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(3) [class*=down]")):cache[:width]
           end
 
           def height
-            if @height.nil?||!@height.present?
-              textbox=browser.text_field(css: "[class*=sdc-mainpanel-heightnumberfield]")
-              inc_btn=browser.div(css: "")
-              dec_btn=browser.div(css: "")
-              @height=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-            end
-            @height
+            (cache[:height].nil?||!cache[:height].present?)?cache[:height]=StampsNumberField.new(
+                browser.text_field(css: '[class*=mult] [name=Height]'),
+                browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(5) [class*=up]"),
+                browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(5) [class*=down]")):cache[:height]
+          end
+
+          def present?
+            length.present? && width.present? && height.present?
+          end
+        end
+
+
+        class Weight < Browser::Base
+          def pounds
+            (cache[:pounds].nil?||!cache[:pounds].present?)?cache[:pounds]=StampsNumberField.new(
+                browser.text_field(css: "[class*=mult] [name=WeightLbs]"),
+                browser.div(css: "[class*=mult] [class*=pounds] [class*=up]"),
+                browser.div(css: "[class*=mult] [class*=pounds] [class*=down]")):cache[:length]
+          end
+
+          def ounces
+            (cache[:ounces].nil?||!cache[:ounces].present?)?cache[:ounces]=StampsNumberField.new(
+                browser.text_field(css: "[class*=mult] [name=WeightOz]"),
+                browser.div(css: "[class*=mult] [class*=ounces] [class*=up]"),
+                browser.div(css: "[class*=mult] [class*=ounces] [class*=down]")):cache[:width]
           end
 
           def present?
@@ -144,31 +149,6 @@ module Stamps
                 #ignore
               end
             }
-          end
-        end
-
-        class MultiOrderDetailsDimensions < Browser::Base
-          attr_reader :length, :width, :height
-          def initialize(param)
-            super(param)
-            textbox=browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Length]")
-            inc_btn=browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=up]")
-            dec_btn=browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(1)>div>div>div[id*=spinner]>div[class*=down]")
-            @length=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-
-            textbox=browser.text_field(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Width]")
-            inc_btn=browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=up]")
-            dec_btn=browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div[id^=dimensionsview]>div>div:nth-child(3)>div>div>div[id*=spinner]>div[class*=down]")
-            @width=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-
-            textbox=browser.text_field(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>div>div>div>input[name=Height]')
-            inc_btn=browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=up]")
-            dec_btn=browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div[id^=dimensionsview]>div>div>div[id^=numberfield]:nth-child(5)>div>div>div>div[class*=down]")
-            @height=Stamps::Browser::StampsNumberField.new(textbox, inc_btn, dec_btn)
-          end
-
-          def present?
-            length.present? && width.present? && height.present?
           end
         end
 
@@ -281,6 +261,9 @@ module Stamps
             @multi_int_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
           end
 
+          def dimensions
+            (cache[:length].nil?||!cache[:length].present?)?cache[:length]=Dimensions.new(param):cache[:length]
+          end
         end
       end
 

@@ -646,14 +646,6 @@ module Stamps
         textbox.set(value)
       end
 
-      def increment(value)
-        current_value=textbox.text.to_i
-        value.to_i.times do
-          inc_btn.click
-        end
-        expect(current_value + value.to_i).to eql textbox.text.to_i
-      end
-
       def selection(str)
         expect([:li, :div]).to include(@selection_type)
         case selection_type
@@ -666,12 +658,16 @@ module Stamps
         end
       end
 
+      def increment(value)
+        value.to_i.times do
+          inc_btn.click
+        end
+      end
+
       def decrement(value)
-        current_value=textbox.text.to_i
         value.to_i.times do
           dec_btn.click
         end
-        expect(current_value + value.to_i).to eql textbox.text.to_i
       end
     end
 

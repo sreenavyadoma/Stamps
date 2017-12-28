@@ -425,8 +425,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to ambiguous address$/ do |table|
   step "expect order details form is present"
-  ambiguous_address=test_helper.format_address table.hashes.first
-  stamps.orders.single_order_details.ship_to.domestic.set_ambiguous ambiguous_address
+  stamps.orders.single_order_details.ship_to.domestic.set_ambiguous(test_helper.format_address(table.hashes.first))
 end
 
 Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
@@ -449,60 +448,61 @@ Then /^[Ss]et [Oo]rder [Dd]etails Email to (.*)$/ do |email|
   step "Save Order Details data"
 end
 
+#todo-ORDERSAUTO-2261
 Then /^Increment [Oo]rder [Dd]etails Pounds by (\d*)$/ do |value|
   stamps.orders.single_order_details.weight.lb.increment value
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Decrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |value|
   stamps.orders.single_order_details.weight.lb.decrement value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Increment [Oo]rder [Dd]etails Ounces by (\d*)$/ do |value|
   stamps.orders.single_order_details.weight.oz.increment value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Decrement [Oo]rder [Dd]etails Ounces by (\d*)$/ do |value|
   stamps.orders.single_order_details.weight.oz.decrement value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Increment [Oo]rder [Dd]etails Length by (\d*)$/ do |value|
   stamps.orders.single_order_details.dimensions.length.increment value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Decrement [Oo]rder [Dd]etails Length by (\d*)$/ do |value|
   stamps.orders.single_order_details.dimensions.length.decrement value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Increment [Oo]rder [Dd]etails Width by (\d*)$/ do |value|
   stamps.orders.single_order_details.dimensions.width.increment value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Decrement [Oo]rder [Dd]etails Width by (\d*)$/ do |value|
   stamps.orders.single_order_details.dimensions.width.decrement value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Increment [Oo]rder [Dd]etails Height by (\d*)$/ do |value|
   stamps.orders.single_order_details.dimensions.height.increment value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Decrement [Oo]rder [Dd]etails Height by (\d*)$/ do |value|
   stamps.orders.single_order_details.dimensions.height.decrement value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Increment [Oo]rder [Dd]etails Insure-For by (\d*)$/ do |value|
   stamps.orders.single_order_details.insure_for.increment value
   step "Save Order Details data"
 end
-
+#todo-ORDERSAUTO-2261
 Then /^Decrement [Oo]rder [Dd]etails Insure-For by (\d*)$/ do |value|
   stamps.orders.single_order_details.insure_for.decrement value
   step "Save Order Details data"
