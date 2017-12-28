@@ -1,5 +1,5 @@
 Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ss]hip [Ff]rom to (.*)$/ do |str|
-  test_param[:ship_from]=stamps.orders.bulk_update.ship_from.select(str)
+  expect(test_param[:multi_ship_from]=stamps.orders.bulk_update.ship_from.select(str)).to include(str)
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
@@ -21,11 +21,11 @@ Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Oo]unces to (.*)$/ do |value
 end
 
 Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Dd]omestic [Ss]ervice to (.*)$/ do |service|
-  test_param[:service]=test_helper.parse_service(stamps.orders.bulk_update.multi_dom_service.select(service))
+  test_param[:service]=test_helper.parse_service(stamps.orders.bulk_update.domestic_service.select(service)) #todo-Rob what is this?
 end
 
 Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ii]nternational [Ss]ervice to (.*)$/ do |service|
-  test_param[:int_service]=test_helper.parse_service(stamps.orders.bulk_update.multi_int_service.select(service))
+  test_param[:int_service]=test_helper.parse_service(stamps.orders.bulk_update.international_service.select(service))
 end
 
 Then /^[Ss]et [Mm]ulti [Oo]rder [Dd]etails [Ff]orm [Ii]nsurance to (.+)$/ do |value|

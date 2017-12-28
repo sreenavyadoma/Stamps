@@ -26,7 +26,7 @@ Feature: Bulk Update Domestic
       Then check Orders Grid row 2
 
       #Updating order details
-      Then set Multi Order Details Form Ship From to Bulk Update Order 1
+      Then set Multi Order Details Form Ship From to default
       Then set Multi Order Details Form Domestic service to PME Package
       Then set Multi Order Details Form Pounds to 1
       Then set Multi Order Details Form Ounces to 1
@@ -37,20 +37,20 @@ Feature: Bulk Update Domestic
 
       #verify fields in 1st order
       Then check Orders Grid row 1
-      Then expect Order Details form Ship From is Bulk Update Order 1
+      Then expect Order Details form Ship From is default
       Then expect Orders Grid service is PME Package
       #Then expect Order Details form Pound is 2
       Then uncheck Orders Grid row 1
 
       #verify fields in 2nd order
       Then check Orders Grid row 2
-      Then expect Order Details form Ship From is Bulk Update Order 1
+      Then expect Order Details form Ship From is correct
       Then expect Orders Grid service is PME Package
       #Then expect Order Details form Pound is 2
 
       Then Sign out
 
-    @bulk_update_dom_
+    @bulk_update_dimensions
     Scenario: ORDERSAUTO-2261 Bulk Update: Dimensions controller
       #Add 1st order
       Then add order 1
@@ -78,7 +78,7 @@ Feature: Bulk Update Domestic
       Then check order 2
 
       #Updating order details
-      Then set Multi Order Details Form Ship From to Bulk Update Order 1
+      Then set Multi Order Details Form Ship From to default
       Then set Multi Order Details Form Domestic service to PME Package
 
       # check weight
@@ -96,7 +96,7 @@ Feature: Bulk Update Domestic
 
       #verify fields in 1st order
       Then check Orders Grid row 1
-      Then expect Order Details form Ship From is Bulk Update Order 1
+      Then expect Order Details form Ship From is correct
       Then expect Orders Grid service is PME Package
       #Then expect Order Details form Pound is 2
 
@@ -104,8 +104,8 @@ Feature: Bulk Update Domestic
       Then uncheck order 2
 
       #verify fields in 2nd order
-      Then check Orders Grid row 2
-      Then expect Order Details form Ship From is Bulk Update Order 1
+      Then check order 2
+      Then expect Order Details form Ship From is correct
       Then expect Orders Grid service is PME Package
       #Then expect Order Details form Pound is 2
 

@@ -8,9 +8,9 @@ Feature: Filter Panel Bugs
   Scenario:  ORDERSAUTO-3497 Legacy sprint - WEBAPPS-7073 Clicking Status Filter Fails to Deselect Orders
     Then add new order
     Then expect Order Details Form is present
-    Then uncheck orders grid cached order id 1
+    Then uncheck order
     Then expect Order Details Form is not present
-    Then check orders grid cached order id 1
+    Then check order
     Then expect Order Details Form is present
     Then select Filter Panel tab Awaiting Shipment
     Then expect Order Details Form is not present

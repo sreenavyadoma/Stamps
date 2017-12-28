@@ -63,9 +63,9 @@ Feature:  BVT tests for Orders
 
   # Check 1st two orders
     Then Pause for 1 second
-    Then check orders grid cached order id 1
+    Then check order 1
     Then Pause for 1 second
-    Then check orders grid cached order id 2
+    Then check order 2
     Then Pause for 1 seconds
 
   # Updating order details
@@ -78,24 +78,24 @@ Feature:  BVT tests for Orders
 
   # Uncheck both orders
     Then Pause for 1 second
-    Then uncheck orders grid cached order id 1
+    Then uncheck order 1
     Then Pause for 1 second
-    Then uncheck orders grid cached order id 2
+    Then uncheck order 2
     Then Pause for 1 second
 
   # verify fields in 1st order
-    Then check orders grid cached order id 1
+    Then check order 1
     Then expect Order Details form Ship From is correct
     Then expect Order Details form service is correct
     Then Pause for 1 second
-    Then uncheck orders grid cached order id 1
+    Then uncheck order 1
     Then Pause for 1 second
 
   # verify fields in 2nd order
-    Then check orders grid cached order id 2
+    Then check order 2
     Then expect Order Details form Ship From is correct
     Then expect Order Details form international service is correct
-    Then uncheck orders grid cached order id 2
+    Then uncheck order 2
     Then Sign out
 
 

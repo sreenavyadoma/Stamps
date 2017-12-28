@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module ShipFrom
+      #todo-Rob move ManageShippingAddresses modal to stamps.orders.modals.manage_shipping_addresses
       class ManageShippingAddresses < Browser::Base
         attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
 

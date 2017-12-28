@@ -43,10 +43,58 @@ module Stamps
         end
       end
 
+
+      class ShipFromField < Browser::Base
+        attr_reader :form
+        def initialize(param, form)
+          super(param)
+          @form=form
+        end
+
+        def manage_shipping_address
+          (cache[:shipping_address].nil?||!cache[:shipping_address].present?)?cache[:shipping_address]=ShipFrom::ManageShippingAddresses.new(
+              param):cache[:shipping_address]
+        end
+
+        def textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              (form==:single)?browser.text_field(css: "[class*=singleorder] [id^=shipfromdroplist-][id$=-trigger-picker]"):
+                  browser.text_field(css: "[class*=multiorder] [id^=shipfromdroplist][id$=-inputEl]")):cache[:textbox]
+        end
+
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsTextbox.new(
+              (form==:single)?browser.div(css: "[class*=single] [id^=shipfromdroplist-][id$=-trigger-picker]"):
+                  browser.div(css: "[class*=multiorder] [id^=shipfromdroplist-][id$=-trigger-picker]")):cache[:dropdown]
+
+
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.div(css: "[class*=multiorder] [id^=shipfromdroplist-][id$=-trigger-picker]")):cache[:dropdown]
+        end
+
+        def select(str)
+          return manage_shipping_address if manage_shipping_address.present?
+          dropdown.click
+          15.times do
+            selection1=(str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[0] :browser.lis(text: /#{str}/)[0]
+            selection2=(str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[1] :browser.lis(text: /#{str}/)[1]
+            selection=StampsField.new((selection1.present?)?selection1:selection2)
+            dropdown.click unless selection.present?
+            selection.scroll_into_view
+            selection.click
+            sleep(0.35)
+            if str.downcase.include?("manage shipping")
+              return manage_shipping_address if manage_shipping_address.present?
+            else
+              return textbox.text if textbox.text.size > 2
+            end
+          end
+          textbox.text
+        end
+      end
+
       #todo-Rob create one ship from for single order details and one for bulk update form.
       class DetailsFormShipFrom < Browser::Base
         attr_reader :form_type
-
         def initialize(param, form_type)
           super(param)
           @form_type=form_type
