@@ -26,11 +26,11 @@ module Stamps
       end
 
       def modals
-        (cache[:modals].nil?||!cache[:modals].present?)?cache[:modals]=Base.new(param).extend(StampsOrdersModals):cache[:modals]
+        (cache[:modals].nil?||!cache[:modals].present?)?cache[:modals]=Stamps::Browser::Base.new(param).extend(StampsOrdersModals):cache[:modals]
       end
 
       def marketplace
-        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=Base.new(param).extend(MarketPlaceStoreModals):cache[:marketplace]
+        (cache[:marketplace].nil?||!cache[:marketplace].present?)?cache[:marketplace]=Stamps::Browser::Base.new(param).extend(MarketPlaceStoreModals):cache[:marketplace]
       end
 
       def styles
