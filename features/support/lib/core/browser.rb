@@ -6,16 +6,13 @@ module Stamps
     end
 
     class Base
-      attr_reader :param, :helper, :browser, :logger
+      attr_reader :param, :browser, :cache, :logger
       def initialize(param)
         @param=param
-        @helper=StampsTestHelper.new(param.logger)
         @browser=param.browser
         @logger=param.logger
-      end
-
-      def cache
-        (@cache.nil?)?@cache={}:@cache
+        @helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
+        @cache={}
       end
     end
 
