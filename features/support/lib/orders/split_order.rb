@@ -47,32 +47,29 @@ module Stamps
           end
 
           def inc_btn
-            (cache[:inc_btn].nil?||!cache[:inc_btn].present?)?cache[:inc_btn]=browser.divs(css: "div[id^=singlesplitorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index]:cache[:inc_btn]
-
+            browser.divs(css: "div[id^=singlesplitorderitem-][id$=-targetEl]>div>div>div>div>div[class*=up]")[@index]
           end
 
           def dec_btn
-            (cache[:dec_btn].nil?||!cache[:dec_btn].present?)?cache[:dec_btn]=browser.divs(css: "div[id^=singlesplitorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index]:cache[:dec_btn]
-
+            browser.divs(css: "div[id^=singlesplitorderitem-][id$=-targetEl]>div>div>div>div>div[class*=down]")[@index]
           end
 
-          def original_item_id
-            (cache[:original_item_id].nil?||!cache[:original_item_id].present?)?cache[:original_item_id]=(StampsField.new(browser.divs(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")[@index*3 + 1]).text):cache[:original_item_id]
+          def original_item_id #item id for order that is getting split
+            StampsField.new(browser.divs(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")[@index*3 + 1]).text
 
           end
 
           def original_item_description
-            (cache[:original_item_description].nil?||!cache[:original_item_description].present?)?cache[:original_item_description]=(StampsField.new(browser.divs(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")[@index*3]).text):cache[:original_item_description]
+            StampsField.new(browser.divs(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")[@index*3]).text
 
           end
 
           def original_item_qty
-            (cache[:original_item_qty].nil?||!cache[:original_item_qty].present?)?cache[:original_item_qty]=(StampsField.new(browser.labels(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")[@index*3 + 2]).text):cache[:original_item_qty]
-
+            StampsField.new(browser.labels(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>label")[@index*3 + 2]).text
           end
 
           def new_item_qty
-            (cache[:new_item_qty].nil?||!cache[:new_item_qty].present?)?cache[:new_item_qty]=StampsTextbox.new(browser.text_fields(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>div>input")[@index]):cache[:new_item_qty]
+            StampsTextbox.new(browser.text_fields(css: "div[id^=singlesplitorderitem-][id$=targetEl]>div>div>div>div>input")[@index])
           end
         end
 
