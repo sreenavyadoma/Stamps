@@ -17,7 +17,6 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print label using split button
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
-
     Then Sign out
 
   @mail_print_envelope_6
@@ -41,8 +40,8 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print form service FCM Letter
     Then Print postage using split button
     Then set Mail Print modal Printer
-
     Then click Mail Print modal Print button
+    Then Sign out
 
 
   @mail_print_SDC_3930_hidden_postage
@@ -62,6 +61,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print postage using split button
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
+    Then Sign out
 
 
   @mail_print_roll_4_1_8_x_6_1_4_fcm
@@ -88,6 +88,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print postage using split button
     Then set Mail Print modal Printer ZDesigner
     Then click Mail Print modal Print button
+    Then Sign out
 
 
   @mail_stamps_series_b
@@ -117,3 +118,4 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then Print postage using split button
     Then set Mail Print modal Printer
     Then click Mail Print modal Print button
+    Then Sign out
