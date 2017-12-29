@@ -54,21 +54,21 @@ module Stamps
     end
 
     class HiddenPostageWarning < Browser::Base
-      attr_reader :continue_button, :cancel_button
 
-      def initialize(param)
-        super
-        @continue_button=StampsField.new(browser.span text: "Continue")
-        @cancel_button=StampsField.new(browser.span text: "Cancel")
-        #@agree_and_continue_btn=StampsElement.new()
+      def continue_button
+        (cache[:continue_button].nil?||!cache[:continue_button].present?)?cache[:continue_button]=StampsField.new(browser.span text: "Continue"):cache[:continue_button]
+      end
+
+      def cancel_button
+        (cache[:cancel_button].nil?||!cache[:cancel_button].present?)?cache[:cancel_button]=StampsField.new(browser.span text: "Cancel"):cache[:cancel_button]
+      end
+
+      def window_title
+        (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div text: "Hidden Postage Not Allowed"):cache[:window_title]
       end
 
       def present?
         window_title.present?
-      end
-
-      def window_title
-        StampsField.new(browser.div text: "Hidden Postage Not Allowed")
       end
 
       def extra_service service
