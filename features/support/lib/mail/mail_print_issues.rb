@@ -53,7 +53,7 @@ module Stamps
 
     end
 
-    class HiddenPostageWarning < Browser::Base
+    class HiddenPostageWarning < Browser::Base #This class represents the hidden postage warning modal. It appears when the hidden postage button is checked while an incompatible extra service option is selected
 
       def continue_button
         (cache[:continue_button].nil?||!cache[:continue_button].present?)?cache[:continue_button]=StampsField.new(browser.span text: "Continue"):cache[:continue_button]
@@ -71,7 +71,7 @@ module Stamps
         window_title.present?
       end
 
-      def extra_service service
+      def extra_service service #This method confirms that the appropriate extra service text appears in the hidden postage warning modal, indicating which extra service caused the warning.
         StampsField.new(browser.li text: service)
       end
 

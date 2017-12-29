@@ -178,19 +178,18 @@ module Stamps
         end
       end
 
-      class ValueMustBeShown < Browser::Base
+      class ValueMustBeShown < Browser::Base #This class represents the Postage Value Must be Shown modal. It appears when hidden postage has been checked and the user tries to add an extra service that is incompatible with hidden postage
+
         def continue
-          (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(
-              browser.span(text: "Continue")):cache[:continue]
+          (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(browser.span(text: "Continue")):cache[:continue]
         end
 
         def cancel
-          (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(
-              browser.span(text: "Cancel")):cache[:cancel]
+          (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(browser.span(text: "Cancel")):cache[:cancel]
         end
       end
 
-      class SpecialContentsWarning < Browser::Base
+      class SpecialContentsWarning < Browser::Base #This class represents the Special Contents Warning modal. It appears when the extra service "Live Animal" or "live Animal (with fee)" is selected
         def i_agree
           (cache[:i_agree].nil?||!cache[:i_agree].present?)?cache[:i_agree]=StampsField.new(
               browser.span(text: "I Agree")):cache[:i_agree]
