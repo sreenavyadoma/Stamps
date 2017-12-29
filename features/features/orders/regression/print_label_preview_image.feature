@@ -1,3 +1,4 @@
+#AB_ORDERAUTO_3518
 @print_label_preview_image
 Feature: Print label preview should have image for FCM Large Envelope
 
@@ -14,8 +15,10 @@ Feature: Print label preview should have image for FCM Large Envelope
     Then set Print modal Print-On to Shipping Label - Paper
     Then expect Print Modal Preview label is displayed
     Then set Print modal Print-On to Shipping Label - SDC-1200
+    When Select Print Modal right-side label
     Then expect Print Modal Preview label is displayed
     Then set Print modal Print-On to Shipping Label - 5 x 8
+    When Select Print Modal left-side label
     Then expect Print Modal Preview label is displayed
     Then Close Print Modal
     Then Sign out
