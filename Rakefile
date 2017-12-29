@@ -3069,7 +3069,6 @@ Cucumber::Rake::Task.new(:mail_hidden_postage) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-mail_hidden_postage
 #--------------------### Orders Bugs ##---------------------
 
 Cucumber::Rake::Task.new(:bugs_orders_filter_panel) do |t|
