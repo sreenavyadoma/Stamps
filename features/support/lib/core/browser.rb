@@ -5,14 +5,43 @@ module Stamps
                     :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
     end
 
+    module Cache
+      class << self
+        def included(base)
+          base.extend ClassMethods
+        end
+
+        module ClassMethods
+          def assign(cache)
+            @cache=cache
+          end
+
+          def cache
+            @cache
+          end
+        end
+      end
+    end
+
+    class BaseCache
+      include Cache
+      attr_reader :param, :browser, :logger
+      def initialize(param)
+        @param=param
+        @browser=param.browser
+        @logger=param.logger
+      end
+    end
+
+    #deprecated
     class Base
       attr_reader :param, :browser, :cache, :logger
       def initialize(param)
         @param=param
         @browser=param.browser
         @logger=param.logger
-        @helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
         @cache={}
+        #@helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
       end
     end
 
@@ -222,7 +251,7 @@ module Stamps
       end
     end
 
-    #todo-Rob rework disabled field
+    #todo-Rob IMPORTANT! rework disabled field
     #AB_ORDERSAUTO_3516
     class StampsField2 < StampsField
       def initialize(field, disabled_field, attribute, attribute_value)
@@ -585,12 +614,12 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :browser, :textbox, :inc_btn, :dec_btn
+      attr_reader :browser, :textbox, :increment, :decrement
 
       def initialize(textbox, inc_btn, dec_btn)
         @textbox=StampsTextbox.new(textbox)
-        @inc_btn=StampsField.new(inc_btn)
-        @dec_btn=StampsField.new(dec_btn)
+        @increment=StampsField.new(inc_btn)
+        @decrement=StampsField.new(dec_btn)
         @browser=textbox.browser
       end
 
@@ -606,14 +635,6 @@ module Stamps
         textbox.set(value)
       end
 
-      def increment(value)
-        current_value=textbox.text.to_i
-        value.to_i.times do
-          inc_btn.click
-        end
-        expect(current_value + value.to_i).to eql textbox.text.to_i
-      end
-
       def selection(str)
         expect([:li, :div]).to include(@selection_type)
         case selection_type
@@ -624,14 +645,6 @@ module Stamps
           else
             # do nothing
         end
-      end
-
-      def decrement(value)
-        current_value=textbox.text.to_i
-        value.to_i.times do
-          dec_btn.click
-        end
-        expect(current_value + value.to_i).to eql textbox.text.to_i
       end
     end
 
