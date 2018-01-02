@@ -1,6 +1,11 @@
 module Stamps
   module Orders
-    class WebOrders < Browser::Base
+    class WebOrders < Browser::BaseCache
+      assign({})
+      def cache
+        self.class.cache
+      end
+
       def orders_toolbar
         (cache[:orders_toolbar].nil?||!cache[:orders_toolbar].present?)?cache[:orders_toolbar]=Toolbar::OrdersToolbar.new(param):cache[:orders_toolbar]
       end
@@ -22,7 +27,7 @@ module Stamps
       end
 
       def bulk_update
-        (cache[:bulk_update].nil?||!cache[:bulk_update].present?)?cache[:bulk_update]=Orders::MultiOrderDetails::BulkUpdate.new(param):cache[:bulk_update]
+        (cache[:bulk_update].nil?||!cache[:bulk_update].present?)?cache[:bulk_update]=Orders::BulkUpdate::Form.new(param):cache[:bulk_update]
       end
 
       def modals

@@ -33,6 +33,7 @@ module Stamps
       end
     end
 
+    #deprecated
     class Base
       attr_reader :param, :browser, :cache, :logger
       def initialize(param)

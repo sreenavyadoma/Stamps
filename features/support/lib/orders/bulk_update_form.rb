@@ -1,6 +1,6 @@
 module Stamps
   module Orders
-    module MultiOrderDetails
+    module BulkUpdate
       module Toolbar
       end
 
@@ -8,7 +8,12 @@ module Stamps
       end
 
       module Body
-        class Dimensions < Browser::Base
+        class Dimensions < Browser::BaseCache
+          assign({})
+          def cache
+            self.class.cache
+          end
+
           def present?
             length.present? && width.present? && height.present? && checkbox.present?
           end
@@ -43,8 +48,12 @@ module Stamps
           end
         end
 
+        class Weight < Browser::BaseCache
+          assign({})
+          def cache
+            self.class.cache
+          end
 
-        class Weight < Browser::Base
           def pounds
             (cache[:pounds].nil?||!cache[:pounds].present?)?cache[:pounds]=StampsNumberField.new(
                 browser.text_field(css: "[class*=mult] [name=WeightLbs]"),
@@ -64,7 +73,8 @@ module Stamps
           end
         end
 
-        class InsureForField < Browser::Base
+        class InsureForField < Browser::BaseCache
+          assign({})
           attr_reader :textbox, :increment_trigger, :decrement_trigger, :blur_field, :dropdown
           def initialize(param)
             super(param)
@@ -72,6 +82,10 @@ module Stamps
             @dropdown=StampsField.new browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(7)>div>div>div>div[id^=combo-][id$=bodyEl]>div>div[id$=picker]")
             @decrement_trigger=StampsField.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
             @increment_trigger=StampsField.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
+          end
+
+          def cache
+            self.class.cache
           end
 
           def text
@@ -107,12 +121,17 @@ module Stamps
           end
         end
 
-        class MultiOrderDetailsTracking < Browser::Base
+        class MultiOrderDetailsTracking < Browser::BaseCache
+          assign({})
           attr_reader :textbox, :dropdown
           def initialize(param)
             super(param)
             @textbox=StampsTextbox.new browser.text_field(name: 'Tracking')
             @dropdown=StampsField.new browser.div(css: "div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
+          end
+
+          def cache
+            self.class.cache
           end
 
           def present?
@@ -160,7 +179,8 @@ module Stamps
           end
         end
 
-        class MultiUpdateController < Browser::Base
+        class MultiUpdateController < Browser::BaseCache
+          assign({})
           attr_reader :update_orders_btn, :save_as_present_btn, :updating_orders
 
           def initialize(param)
@@ -168,6 +188,10 @@ module Stamps
             @update_orders_btn=StampsField.new browser.span(text: 'Update Orders')
             @save_as_present_btn=StampsField.new browser.span(text: 'Save as Preset')
             @updating_orders=StampsField.new(browser.div(text: "Updating Orders"))
+          end
+
+          def cache
+            self.class.cache
           end
 
           def present?
@@ -252,33 +276,16 @@ module Stamps
 
         end
 
-        module Fields
-          def ship_from
-            @multi_ship_from=Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
-          end
-
-          def weight
-            (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=::WeightField.new(param):cache[:weight]
-          end
-
-          def domestic_service
-            @multi_dom_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_dom)
-          end
-
-          def international_service
-            @multi_int_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
-          end
-
-          def dimensions
-            (cache[:length].nil?||!cache[:length].present?)?cache[:length]=Dimensions.new(param):cache[:length]
-          end
-        end
       end
 
-      class BulkUpdate < Browser::Base
+      class Form < Browser::BaseCache
+        assign({})
         include Toolbar
         include PresetMenu
-        include Body::Fields
+
+        def cache
+          self.class.cache
+        end
 
         def buttons
           @buttons=MultiUpdateController.new(param)
@@ -292,13 +299,32 @@ module Stamps
         def blur_out(count=1)
           ((count.nil?)?1:count.to_i).times do
             blur_out_field.double_click
-            blur_out_field.flash
             blur_out_field.click
           end
         end
 
         def present?
           blur_out_field.present?
+        end
+
+        def ship_from
+          @multi_ship_from=Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
+        end
+
+        def weight
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::WeightField.new(param):cache[:weight]
+        end
+
+        def domestic_service
+          @multi_dom_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_dom)
+        end
+
+        def international_service
+          @multi_int_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
+        end
+
+        def dimensions
+          (cache[:dimensions].nil?||!cache[:dimensions].present?)?cache[:dimensions]=Body::Dimensions.new(param):cache[:dimensions]
         end
       end
     end

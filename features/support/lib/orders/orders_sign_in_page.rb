@@ -181,7 +181,7 @@ module Stamps
             wait_until_present(4)
             30.times do
               begin
-                return signed_in_user.text if signed_in_user.present?
+                 return signed_in_user.text if signed_in_user.present?
                 if present?
                   username(usr)
                   password(pw)
@@ -198,10 +198,11 @@ module Stamps
                   20.times do
                     if loading_orders.present?
                       logger.message loading_orders.text
-                      sleep(0.20)
+                      sleep(0.1)
                     end
                   end
                 end
+                 sleep(0.1)
                 new_welcome.wait_until_present(2)
                 if new_welcome.present?
                   logger.message new_welcome.message
