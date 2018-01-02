@@ -221,8 +221,7 @@ module Stamps
           end
         end
 
-        class DomesticServiceField < Browser::Base
-
+        class DomesticServiceField < Browser::BaseCache
         end
 
       end
