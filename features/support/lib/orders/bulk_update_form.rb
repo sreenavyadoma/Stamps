@@ -227,9 +227,9 @@ module Stamps
       end
 
       class Form < Browser::BaseCache
-        assign({})
         include Toolbar
         include PresetMenu
+        assign({})
 
         def cache
           self.class.cache
@@ -269,7 +269,7 @@ module Stamps
 
         # done
         def update_orders
-
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::WeightField.new(param):cache[:weight]
         end
 
         def weight
