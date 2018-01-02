@@ -183,10 +183,8 @@ module Stamps
         #AB_ORDERSAUTO_3518
         def label_displayed?
           div = (left_selected?)?(left_label):(right_label)
-          8.times do
-            break if (div.attribute_value 'class').include? 'label-chooser-image-domestic'
-          end
-          (div.attribute_value 'class').include? 'label-chooser-image-domestic'
+          8.times {break if (div.attribute_value 'class').include? 'label-chooser-image-domestic'}
+          (div.attribute_value 'class').include? 'label-chooser-image-domestic' #todo-Rob figuring out what to verify is dependent on print media, both for domestic and int.
         end
       end
 

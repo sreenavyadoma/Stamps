@@ -130,7 +130,6 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
   expect(stamps.orders.modals.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
-#AB_ORDERSAUTO_3518
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]review [Ll]abel is displayed$/ do
   expect(stamps.orders.modals.orders_print_modal.starting_label.label_displayed?).to be(true), "Label Preview Image is not Displayed"
 end
