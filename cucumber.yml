@@ -48,13 +48,12 @@ alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS
 alex_bvt_shipping_address_management:  --tags @bvt_shipping_address_management BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false PRINTER=factory
 alex_credentials:  --tags @mail_forgot_username BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_mail:  --tags @mail_reset BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast1 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_regress:  --tags @mail_print_label_left_side BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_regress:  --tags @filter_panel BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 #alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_4 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_4 BROWSER=ff WEB_APP=mail JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_rates_pm:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=mail JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_orders:  --tags @rates_orders_cpp_zone_1 BROWSER=ff WEB_APP=orders JENKINS=true URL=cc USR=abqacc10 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
-alex_stores:  --tags @stores_shipstation_preupgrade BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast14 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+alex_orders:  --tags @orders_fci_flats BROWSER=ff WEB_APP=orders JENKINS=true URL=sc USR=lrqasc003 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
+
 
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
@@ -276,11 +275,13 @@ bvt_address_cleansing: --tags @bvt_address_cleansing --guess DEBUG=false JENKINS
 bvt_international_shipping: --tags @bvt_international_shipping --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bvt_new_order: --tags @bvt_new_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bvt_printing: --tags @bvt_printing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders PRINTER=factory
+bvt_purchasing: --tags @bvt_purchasing --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 bvt_purchasing_cc: --tags @bvt_purchasing_cc --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USR=cchrvv6qp PW=pass111
 bvt_purchasing_stg: --tags @bvt_purchasing_stg --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders USR=stgugqex0q4 PW=pass111
 bvt_shipstation_updates_domestic: --tags @bvt_shipstation_updates_domestic --guess DEBUG=false JENKINS=true HEALTHCHECK=falsepa WEB_APP=orders
 bvt_shipstation_updates_international: --tags @bvt_shipstation_updates_international --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
 bvt_shipstation_search: --tags @bvt_shipstation_search --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+bvt_all_tests: --tags @bvt_all_tests --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 dev_bvt_shipping_address_management: --tags @bvt_shipping_address_management --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
 dev_bvt_address_cleansing: --tags @bvt_address_cleansing --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=orders
@@ -383,6 +384,7 @@ automation_rule: --tags @automation_rule --guess DEBUG=false JENKINS=true HEALTH
 general_settings_test_cases: --tags @general_settings_test_cases --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+orders_fci_flats: --tags @orders_fci_flats --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 
 # REGRESSION NOT INCLUDED
