@@ -5,7 +5,7 @@ module Stamps
                     :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
     end
 
-    module Modals
+    module Cache
       class << self
         def included(base)
           base.extend ClassMethods
@@ -19,29 +19,17 @@ module Stamps
           def cache
             @cache
           end
-
-          def browser=(browser)
-            class_variable_set(@@browser, browser)
-          end
-
-          def browser
-            class_variable_get(@@browser)
-          end
         end
       end
     end
 
     class BaseCache
-      include Modals
+      include Cache
       attr_reader :param, :browser, :logger
       def initialize(param)
         @param=param
+        @browser=param.browser
         @logger=param.logger
-        self.class.browser=param.browser
-      end
-
-      def cache
-        self.class.cache
       end
     end
 

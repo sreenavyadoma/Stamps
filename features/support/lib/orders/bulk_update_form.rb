@@ -10,7 +10,7 @@ module Stamps
       module Body
         class Dimensions < Browser::Base
           def present?
-            length.present? && width.present? && height.present?
+            length.present? && width.present? && height.present? && checkbox.present?
           end
 
           def length
@@ -35,7 +35,11 @@ module Stamps
           end
 
           def checkbox
-
+            (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsCheckbox.new(
+                browser.input(css: "[class*=mult] [class*=dimension-row] [role=checkbox]"),
+                browser.div(css: "[class*=mult] [class*=dimension-row] [class*=x-form-type-checkbox]"),
+                "class",
+                "checked"):cache[:checkbox]
           end
         end
 
