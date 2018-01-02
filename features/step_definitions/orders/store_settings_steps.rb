@@ -1,24 +1,31 @@
-Then /^Set Store Nickname to (.*)$/ do |nickname|
+Then /^set store settings store nickname to ([\w\.@]+)$/ do |str|
+  stamps.orders.marketplace.store_settings.store_nickname.set(str)
+end
+
+Then /^select store settings shipping service to ([\w \/]+)$/ do |str|
+  expect(stamps.orders.marketplace.store_settings.shipping_service.select(str)).to include(str)
+end
+
+Then /^expect store settings (\w+) modal is present$/ do |store_name|
+  expect(stamps.orders.marketplace.store_settings.window_title.text).to eql("#{store_name} Settings")
+end
+
+Then /^Store Settings: Set Store Nickname to (.*)$/ do |nickname|
   #test_config.logger.step "Store Settings: Set Store Nickname to #{nickname}"
   raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
   #test_config.logger.step "Old Amazon Store Name:#{test_data[:store_name]}"
   test_param[:store_name]=(nickname.downcase.include? 'random')?test_helper.random_alpha_numeric(20):nickname
   #test_config.logger.step "Store Nickname: #{test_data[:store_name]}"
   @store_settings.store_nickname.set test_param[:store_name]
-  sleep 1
 end
 
-Then /^[Aa]dd new store service mapping$/ do
-  @store_settings.add_new_service_mapping.click
-end
-
-Then /^[Ss]et store service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
+Then /^Store Settings: Set service Mapping (\d+), Requested Services (.*), Shipping service (.*)$/ do |item_number, requested_services, shipping_service|
   #test_config.logger.step "Store Settings: Set Requested Services to random #{requested_services}"
-  raise "Store Settings is not open.  Check your test workflow." if @store_settings.nil?
+  raise "Amazon Settings is not open.  Check your test workflow." if @store_settings.nil?
 
   service_mapping_item =@store_settings.service_mapping.item item_number.to_i
-  service_mapping_item.requested_services.set((requested_services.downcase.include? ('random'))?test_helper.random_alpha_numeric(20):requested_services)
-  service_mapping_item.shipping_service.select shipping_service
+  service_mapping_item.requested_services.set(requested_services.downcase.include? 'random')?test_helper.random_alpha_numeric(20):requested_services
+  service_mapping_item.shipping_Service.select shipping_service
 end
 
 Then /^Store Settings: Set Automatically Import New Orders to checked$/ do

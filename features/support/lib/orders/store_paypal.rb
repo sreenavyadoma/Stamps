@@ -2,7 +2,7 @@ module Stamps
   module Orders
     module Stores
 
-      class Error400 < Browser::StampsModal
+      class Error400 < Browser::Base
 
         def close
           button=StampsField.new(browser.imgs(css: "img[class*=x-tool-close]").last)
@@ -35,7 +35,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationSent < Browser::StampsModal
+      class EmailVerificationSent < Browser::Base
 
         def window_title
           StampsField.new browser.div(text: "Paypal Email Verification Sent")
@@ -71,7 +71,7 @@ module Stamps
         end
       end
 
-      class EmailVerificationRequired < Browser::StampsModal
+      class EmailVerificationRequired < Browser::Base
 
         def window_title
           StampsField.new browser.div(text: "Paypal Email Verification Required")
@@ -116,13 +116,13 @@ module Stamps
         end
       end
 
-      class PayPalEmailVerSent < Browser::StampsModal
+      class PayPalEmailVerSent < Browser::Base
         def confirm_token
 
         end
       end
 
-      class PayPalEmailVer < Browser::StampsModal
+      class PayPalEmailVer < Browser::Base
         def send_email_verification
 
         end
@@ -144,12 +144,13 @@ module Stamps
         end
       end
 
-      class PayPal < Browser::StampsModal
+#todo-rob fix me
+      class PayPal < Browser::Base
         include PayPalModals
         include PayPalWindowTitle
 
         def iframe
-          browser.iframe(css: "iframe[id=storeiframe]")
+          browser.iframe(css: "[id=storeiframe]")
         end
 
         def present?
@@ -176,27 +177,26 @@ module Stamps
           button=StampsField.new(iframe.span(text: "Verify Email"))
           connect_to_store=ConnectYourPaypalStore.new(param)
           button.click
-          sleep 10
+          sleep 5
           connect_to_store if connect_to_store.present?
         end
       end
 
-      class ConnectYourPaypalStore < Browser::StampsModal
+      class ConnectYourPaypalStore < Browser::Base
 
         def iframe
-          browser.iframe(css: "iframe[id=storeiframe]")
+          browser.iframe(css: "[id=storeiframe]")
         end
-
-        def window_title
-          StampsField.new(browser.div text: "Connect Your Paypal Store")
+        def store_icon
+          StampsField.new(iframe.img(css: "img[src*=paypalbanner]"))
         end
 
         def present?
-          restrict_to_email_address.present? && window_title.present?
+          restrict_to_email_address.present? && store_icon.present?
         end
 
         def connect
-          button=StampsField.new(iframe.span(text: "Connect"))
+          button=StampsField.new(browser.span(text: "Connect"))
           store_settings=StoreSettings.new(param)
           10.times do
             button.click
@@ -215,7 +215,7 @@ module Stamps
         end
 
         def radio_import_all_transactions
-          iframe.radio(css: 'input[id=importAllTransations]').set
+          iframe.radio(css: 'input[id=importAlltransations]').set
         end
 
         def radio_import_selected_types
@@ -223,76 +223,67 @@ module Stamps
         end
 
         def restrict_to_email_address
-          StampsTextbox.new iframe.text_field(css: "input[id=toEmail]")
+          (cache[:restrict_to_email].nil?||!cache[:restrict_to_email].present?)?cache[:restrict_to_email]=StampsTextbox.new(
+              iframe.text_field(css: "input[id=toemail]")):cache[:restrict_to_email]
         end
 
         def type_cart
-          input=iframe.input(css: 'input[id=cart]')
-          verify=iframe.input(css: 'input[id=cart]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          (cache[:type_cart].nil?||!cache[:type_cart].present?)?cache[:type_cart]=Stamps::Browser::StampsCheckbox.new(
+              iframe.input(css: 'input[id=cart]'), iframe.input(css: 'input[id=cart]'), "class", "ng_not_empty"):cache[:type_cart]
         end
 
         def type_web_accept
-          input=iframe.input(css: 'input[id=webaccept]')
-          verify=iframe.input(css: 'input[id=webaccept]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          (cache[:type_web_accept].nil?||!cache[:type_web_accept].present?)?cache[:type_web_accept]=Stamps::Browser::StampsCheckbox.new(
+              iframe.input(css: 'input[id=webaccept]'), iframe.input(css: 'input[id=webaccept]'), "class", "ng_not_empty"):cache[:type_web_accept]
         end
 
         def type_express_checkout
-          input=iframe.input(css: 'input[id=expresscheckout]')
-          verify=iframe.input(css: 'input[id=expresscheckout]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          (cache[:type_express_checkout].nil?||!cache[:type_express_checkout].present?)?cache[:type_express_checkout]=Stamps::Browser::StampsCheckbox.new(
+              iframe.input(css: 'input[id=expresscheckout]'), iframe.input(css: 'input[id=expresscheckout]'), "class", "ng_not_empty"):cache[:type_express_checkout]
         end
 
         def type_send_money
-          input=iframe.input(css: 'input[id=sendmoney]')
-          verify=iframe.input(css: 'input[id=sendmoney]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=sendmoney]'), iframe.input(css: 'input[id=sendmoney]'), "class", "ng_not_empty")
         end
 
         def type_virtual_terminal
-          input=iframe.input(css: 'input[id=virtualterminal]')
-          verify=iframe.input(css: 'input[id=virtualterminal]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=virtualterminal]'), iframe.input(css: 'input[id=virtualterminal]'), "class", "ng_not_empty")
         end
 
         def type_subscription_payment
-          input=iframe.input(css: 'input[id=subscrpayment]')
-          verify=iframe.input(css: 'input[id=subscrpayment]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=subscrpayment]'), iframe.input(css: 'input[id=subscrpayment]'), "class", "ng_not_empty")
         end
 
         def type_merchant_payment
-          input=iframe.input(css: 'input[id=merchpmt]')
-          verify=iframe.input(css: 'input[id=merchpmt]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=merchpmt]'), iframe.input(css: 'input[id=merchpmt]'), "class", "ng_not_empty")
         end
 
         def type_mass_payment
-          input=iframe.input(css: 'input[id=masspay]')
-          verify=iframe.input(css: 'input[id=masspay]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=masspay]'), iframe.input(css: 'input[id=masspay]'), "class", "ng_not_empty")
         end
 
         def type_integral_evolution
-          input=iframe.input(css: 'input[id=integralevolution]')
-          verify=iframe.input(css: 'input[id=integralevolution]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=integralevoluton]'), iframe.input(css: 'input[id=integralevoluton]'), "class", "ng_not_empty")
         end
 
         def type_website_payments_pro_hosted
-          input=iframe.input(css: 'input[id=prohosted]')
-          verify=iframe.input(css: 'input[id=prohosted]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=prohosted]'), iframe.input(css: 'input[id=prohosted]'), "class", "ng_not_empty")
         end
 
         def type_website_payments_pro_api
-          input=iframe.input(css: 'input[id=proapi]')
-          verify=iframe.input(css: 'input[id=proapi]')
-          Stamps::Browser::StampsCheckbox.new(input, verify, "class", "ng-not-empty")
+          #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=proapi]'), iframe.input(css: 'input[id=proapi]'), "class", "ng_not_empty")
         end
 
       end
+
     end
   end
 end

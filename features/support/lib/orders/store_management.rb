@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::StampsModal
+      class ImportingOrdersModal < Browser::Base
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -19,7 +19,7 @@ module Stamps
         end
       end
 
-      class DeleteStoreModal < Browser::StampsModal
+      class DeleteStoreModal < Browser::Base
         def present?
           delete_btn.present?
         end
@@ -53,14 +53,12 @@ module Stamps
         end
       end
 
-      class StoreSettings < Browser::StampsModal
-        class ServiceMappingGrid < Browser::StampsModal
-          class ServiceMappingLineItem < Browser::StampsModal
-            class ServiceMappingShippingService < Browser::StampsModal
-              def iframe
-                browser.iframe(css: "iframe[id=storeiframe]")
-              end
 
+=begin
+      class StoreSettings < Browser::Base
+        class ServiceMappingGrid < Browser::Base
+          class ServiceMappingLineItem < Browser::Base
+            class ServiceMappingShippingService < Browser::Base
 
               def initialize(param, index)
                 super(param)
@@ -68,46 +66,20 @@ module Stamps
               end
 
               def dropdown
-                textbox
+                StampsField.new textbox_field.parent.parent.divs[1]
               end
 
               def textbox_field
-                iframe.text_fields(css: "input[class*=ui-select-search]")[@index]
+                browser.text_fields(name: "servicePackage")[@index]
               end
 
               def textbox
                 StampsTextbox.new textbox_field
               end
 
-              def select(str)
-                logger.info "Select service #{str}"
-                sleep(0.35)
-
-                dropdown.click
-                10.times do
-                  begin
-
-                    selection = data_for(:store_service_mapping, {})
-                    tds=browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
-                    selection=StampsField.new((form_type==:multi_obrder_int)?tds.last : tds.first)
-                    dropdown.click unless selection.present?
-                    selection.scroll_into_view
-                    sleep(0.15)
-                    selection.click
-                    logger.info "Selected service #{textbox.text} - #{(textbox.text.include? str)?"success": "service not selected"}"
-                    sleep(0.15)
-                    break if textbox.text.include?(str)
-                  rescue
-                    #ignore
-                  end
-                end
-                expect(textbox.text).to include(str)
-                textbox.text
-              end
-
               def select service
                 logger.info "Select Shipping service #{service}"
-                selection=StampsField.new(iframe.trs(css: "tr[data-qtip*='#{service}']")[@index])
+                selection=StampsField.new(browser.trs(css: "tr[data-qtip*='#{service}']")[@index])
                 box=textbox
                 dd=dropdown
 
@@ -126,10 +98,6 @@ module Stamps
               end
             end
 
-            def iframe
-              browser.iframe(css: "iframe[id=storeiframe]")
-            end
-
             def initialize(param, index)
               super(param)
               @index=index
@@ -140,29 +108,25 @@ module Stamps
             end
 
             def requested_services
-              text_field=iframe.text_fields(name: "serviceName")[@index]
+              text_field=browser.text_fields(name: "ServiceKey")[@index]
               StampsTextbox.new text_field
             end
 
             def delete
-              StampsField.new(iframe.spans(css: "span[class*=sdc-icon-remove]")[@index])
+              StampsField.new(browser.spans(css: "span[class*=sdc-icon-remove]")[@index])
               end
 
-            def shipping_service
+            def shipping_Service
               ServiceMappingShippingService.new(param, @index)
             end
           end
 
-          def size
-            (iframe.inputs css: "input[id^=serviceName-]").size
-          end
-
-          def iframe
-            browser.iframe(css: "iframe[id=storeiframe]")
-          end
-
           def add_new_service_mapping_btn
-            StampsField.new iframe.a text: "Add New Service Mapping"
+            StampsField.new browser.span(text: "Add New service Mapping")
+          end
+
+          def size
+            (browser.divs css: "div[id^=singleservicemappingitem][class*=x-container-default]").size
           end
 
           def item index
@@ -189,7 +153,7 @@ module Stamps
         end
 
         def save
-          button=StampsField.new(iframe.span text: "Save")
+          button=StampsField.new(browser.span text: "Save")
           server_error=Orders::Stores::ServerError.new(param)
           importing_order=Orders::Stores::ImportingOrdersModal.new(param)
 
@@ -213,22 +177,12 @@ module Stamps
         end
 
         def add_new_service_mapping
-          StampsField.new iframe.a text: "Add New Service Mapping"
+          browser.span text: "Add New service Mapping"
         end
 
         def store_nickname
-          StampsTextbox.new iframe.text_field(id: "storeName")
+          StampsTextbox.new((browser.text_fields css: "input[name^=textfield-][name$=-inputEl][maxlength='50']").last)
         end
-
-        def wait_until_present(*args)
-          (StampsField.new browser.div(text: "Paypal Settings")).wait_until_present(*args)
-        end
-
-        def iframe
-          browser.iframe(css: "iframe[id=storeiframe]")
-        end
-
-
 
         def automatically_import_new_orders
           label=(browser.label text: "Automatically Import New Orders")
@@ -237,6 +191,7 @@ module Stamps
           StampsCheckbox.new(checkbox_field, verify_field, "class", "checked")
         end
       end
+=end
 
       module MarketPlaceWindowTitle
         def window_title
@@ -248,7 +203,7 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView < Browser::StampsModal
+      class MarketplaceDataView < Browser::Base
         def store_count
           begin
             return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
@@ -284,7 +239,7 @@ module Stamps
         def store_window(str)
           case(str.downcase.to_sym)
             when :paypal
-              (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::StampsModal.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
+              (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::Base.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
             when :ebay
               raise "#{str} is not implemented."
             when :shopify
@@ -296,7 +251,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             when :opencart
-              (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::StampsModal.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
+              (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
             else
               raise "#{str} - Invalid store selection or store is not yet implemented. Check your test."
           end
@@ -326,7 +281,7 @@ module Stamps
         end
       end
 
-      class Marketplace < Browser::StampsModal
+      class Marketplace < Browser::Base
         include MarketPlaceWindowTitle
 
         def present?

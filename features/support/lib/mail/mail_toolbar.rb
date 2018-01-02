@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     #todo-Rob too many instance variables, fix it.
-    class MailToolbar < Browser::StampsModal
+    class MailToolbar < Browser::Base
       #include Stamps::Mail::MailModals::PrintIncompleteFields
 
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
@@ -20,8 +20,12 @@ module Stamps
         @print_quantity_warning=PrintQuantityWarning.new(param)
       end
 
+      def totals_field
+        (cache[:total].nil?||!cache[:total].present?)?cache[:total]=StampsField.new(browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")):cache[:total]
+      end
+
       def total
-        (cache[:total].nil?||!cache[:total].present?)?cache[:total]=(StampsField.new browser.label(css: "div[id^=toolbar-][id$=-targetEl]>div[class*=ct]>div>div>div>div>div>label")).text.gsub("Total: $", '').to_f.round(2):cache[:total]
+        totals_field.text.gsub("Total: $", '').to_f.round(2)
       end
 
       def print_button
@@ -58,7 +62,7 @@ module Stamps
       end
 
       def incomplete_window_title
-        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::StampsModal.new(param).extend(IncFeldsWindowTitle):cache[:incomplete_window_title]
+        (cache[:incomplete_window_title].nil?||!cache[:incomplete_window_title].present?)?cache[:incomplete_window_title]=Browser::Base.new(param).extend(IncFeldsWindowTitle):cache[:incomplete_window_title]
       end
 
       def print_postage_expecting_error
@@ -174,7 +178,7 @@ module Stamps
     end
 
 
-    class PrintingProblem < Browser::StampsModal
+    class PrintingProblem < Browser::Base
       def field
         StampsField.new((browser.divs css: 'div[id^=dialoguemodal-][id$=-innerCt]').last)
       end

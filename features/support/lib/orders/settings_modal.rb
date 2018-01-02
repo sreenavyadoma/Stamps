@@ -1,46 +1,72 @@
 module Stamps
   module Orders
     module OrdersSettings
-      #fix me
       module OrdersSettingsTabBar
-        def stores_tab_view
-          (cache[:stores_tab_view].nil?||!cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Orders::OrdersSettings::StoresTabView.new(param):cache[:stores_tab_view]
-        end
-
         def stores_tab
           20.times do
             return stores_tab_view if stores_tab_view.add_btn.present?
-            stores_tab_btn.click
+            stores_tab_field.click
           end
           nil
         end
 
         def general_tab
+          20.times do
+            return general_tab_view if general_tab_view.add_btn.present?
+            gen_tab_field.click
+          end
+          nil
+        end
+
+        def international_tab
+          20.times do
+            return int_tab_view if int_tab_view.add_btn.present?
+            int_tab_field.click
+          end
+          nil
+        end
+
+        def label_messages_tab
+          20.times do
+            return label_tab_view if label_tab_view.add_btn.present?
+            label_tab_field.click
+          end
+          nil
+        end
+
+        private
+        # Views
+        def stores_tab_view
+          (cache[:stores_tab_view].nil?||!cache[:stores_tab_view].present?)?cache[:stores_tab_view]=Orders::OrdersSettings::StoresTabView.new(param):cache[:stores_tab_view]
+        end
+
+        def general_tab_view
           (cache[:general_tab].nil?||!cache[:general_tab].present?)?cache[:general_tab]=Orders::OrdersSettings::GeneralTabView.new(param):cache[:general_tab]
         end
 
-
-
-        def international_settings
+        def int_tab_view
+          (cache[:int_tab_view].nil?||!cache[:int_tab_view].present?)?cache[:int_tab_view]=Orders::OrdersSettings::InternationalTabView.new(param):cache[:int_tab_view]
         end
 
-        def label_messages_settings
+        def label_tab_view
+          (cache[:label_tab_view].nil?||!cache[:label_tab_view].present?)?cache[:label_tab_view]=Orders::OrdersSettings::LabelMessagesTabView.new(param):cache[:label_tab_view]
         end
 
-        def general_field
-          (cache[:general_field].nil?||!cache[:general_field].present?)?cache[:general_field]=StampsField.new(browser.span(css: "[id^=tabbar-][id$=-targetEl] a:nth-child(1)")):cache[:general_field]
+        # HTML fields
+        def stores_tab_field
+          (cache[:stores_tab_field].nil?||!cache[:stores_tab_field].present?)?cache[:stores_tab_field]=StampsField.new(browser.span(text: "Stores")):cache[:stores_tab_field]
         end
 
-        def stores_tab_btn
-          (cache[:stores_tab_btn].nil?||!cache[:stores_tab_btn].present?)?cache[:stores_tab_btn]=StampsField.new(browser.span(text: "Stores")):cache[:stores_tab_btn]
+        def gen_tab_field
+          (cache[:gen_tab_field].nil?||!cache[:gen_tab_field].present?)?cache[:gen_tab_field]=StampsField.new(browser.span(text: "General")):cache[:gen_tab_field]
         end
 
-        def international_field
-          (cache[:international_field].nil?||!cache[:international_field].present?)?cache[:international_field]=StampsField.new(browser.span(css: "[id^=tabbar-][id$=-targetEl] a:nth-child(3)")):cache[:international_field]
+        def int_tab_field
+          (cache[:int_tab_field].nil?||!cache[:int_tab_field].present?)?cache[:int_tab_field]=StampsField.new(browser.span(text: "International")):cache[:int_tab_field]
         end
 
-        def label_messages_field
-          (cache[:label_messages_field].nil?||!cache[:label_messages_field].present?)?cache[:label_messages_field]=StampsField.new(browser.span(css: "[id^=tabbar-][id$=-targetEl] a:nth-child(4)")):cache[:label_messages_field]
+        def label_tab_field
+          (cache[:label_tab_field].nil?||!cache[:label_tab_field].present?)?cache[:label_tab_field]=StampsField.new(browser.span(text: "Label Messages")):cache[:label_tab_field]
         end
       end
 
@@ -54,7 +80,7 @@ module Stamps
         end
       end
 
-      class OrdersSettingsModal < Browser::StampsModal
+      class OrdersSettingsModal < Browser::Base
         include OrdersSettingsModalTitle
         include OrdersSettingsTabBar
 

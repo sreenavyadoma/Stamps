@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class ThreeDCartSettings < StoreSettings
         def window_title
           StampsField.new browser.div(text: "3dcart Settings")
@@ -15,9 +16,9 @@ module Stamps
         end
       end
 
-      class ThreeDCart < Browser::StampsModal
+      class ThreeDCart < Browser::Base
 
-        class ProductWeightUnit < Browser::StampsModal
+        class ProductWeightUnit < Browser::Base
           def select(selection)
             dropdown=StampsField.new(browser.divs(css: "div[id^=combo-][id$=-trigger-picker]").last)
             textbox=StampsTextbox.new browser.text_field(css: "input[name^=combo-][name$=-inputEl][role=combobox]")
@@ -128,6 +129,7 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
     end
   end
 end

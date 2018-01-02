@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class AddPostage < Browser::StampsModal
+    class AddPostage < Browser::Base
       attr_reader :web_apps, :web_mail
 
       def initialize(param)

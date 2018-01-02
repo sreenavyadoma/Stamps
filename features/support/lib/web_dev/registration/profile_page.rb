@@ -177,7 +177,7 @@ module Stamps
         end
       end
 
-      class ProfilePage < Browser::StampsModal
+      class ProfilePage < Browser::Base
         include SideAccount
         include MoneySavingOffers
         include AccountInfo

@@ -2,6 +2,7 @@ module Stamps
   module Orders
     module Grid
       module GridColumnCommon
+
         def column_cache
           @column_cache ||= {}
         end
@@ -153,7 +154,7 @@ module Stamps
         end
       end
 
-      class OrderId < Browser::StampsModal
+      class OrderId < Browser::Base
         include GridColumnCommon
         def exist? order_id
           row_number(order_id) > 0
@@ -187,7 +188,7 @@ module Stamps
 
       end
 
-      class Store < Browser::StampsModal
+      class Store < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:store)
@@ -210,7 +211,7 @@ module Stamps
         end
       end
 
-      class Age < Browser::StampsModal
+      class Age < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:age)
@@ -233,7 +234,7 @@ module Stamps
         end
       end
 
-      class OrderDate < Browser::StampsModal
+      class OrderDate < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_date)
@@ -256,7 +257,7 @@ module Stamps
         end
       end
 
-      class Recipient < Browser::StampsModal
+      class Recipient < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:recipient)
@@ -282,7 +283,7 @@ module Stamps
 
       end
 
-      class Company < Browser::StampsModal
+      class Company < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:company)
@@ -305,7 +306,7 @@ module Stamps
         end
       end
 
-      class Address < Browser::StampsModal
+      class Address < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:address)
@@ -328,7 +329,7 @@ module Stamps
         end
       end
 
-      class City < Browser::StampsModal
+      class City < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:city)
@@ -351,7 +352,7 @@ module Stamps
         end
       end
 
-      class State < Browser::StampsModal
+      class State < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:state)
@@ -374,7 +375,7 @@ module Stamps
         end
       end
 
-      class Zip < Browser::StampsModal
+      class Zip < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:zip)
@@ -397,7 +398,7 @@ module Stamps
         end
       end
 
-      class Phone < Browser::StampsModal
+      class Phone < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:phone)
@@ -420,7 +421,7 @@ module Stamps
         end
       end
 
-      class Email < Browser::StampsModal
+      class Email < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:email)
@@ -443,7 +444,7 @@ module Stamps
         end
       end
 
-      class Qty < Browser::StampsModal
+      class Qty < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:qty)
@@ -466,7 +467,7 @@ module Stamps
         end
       end
 
-      class ItemSKU < Browser::StampsModal
+      class ItemSKU < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:item_sku)
@@ -489,7 +490,7 @@ module Stamps
         end
       end
 
-      class ItemName < Browser::StampsModal
+      class ItemName < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:item_name)
@@ -512,7 +513,7 @@ module Stamps
         end
       end
 
-      class Weight < Browser::StampsModal
+      class Weight < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:weight)
@@ -543,7 +544,7 @@ module Stamps
         end
       end
 
-      class InsuredValue < Browser::StampsModal
+      class InsuredValue < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:insured_value)
@@ -566,7 +567,7 @@ module Stamps
         end
       end
 
-      class OrderStatus < Browser::StampsModal
+      class OrderStatus < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_status)
@@ -589,7 +590,7 @@ module Stamps
         end
       end
 
-      class ShipDate < Browser::StampsModal
+      class ShipDate < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_date)
@@ -612,7 +613,7 @@ module Stamps
         end
       end
 
-      class ShipFrom < Browser::StampsModal
+      class ShipFrom < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_from)
@@ -627,7 +628,7 @@ module Stamps
         end
       end
 
-      class Country < Browser::StampsModal
+      class Country < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:country)
@@ -650,7 +651,7 @@ module Stamps
         end
       end
 
-      class ShipCost < Browser::StampsModal
+      class ShipCost < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:ship_cost)
@@ -680,7 +681,7 @@ module Stamps
 
       end
 
-      class Company < Browser::StampsModal
+      class Company < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:company)
@@ -695,7 +696,7 @@ module Stamps
         end
       end
 
-      class GridService < Browser::StampsModal
+      class GridService < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:service)
@@ -718,7 +719,7 @@ module Stamps
         end
       end
 
-      class RequestedService < Browser::StampsModal
+      class RequestedService < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:requested_service)
@@ -733,7 +734,7 @@ module Stamps
         end
       end
 
-      class ReferenceNo < Browser::StampsModal
+      class ReferenceNo < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:reference_no)
@@ -748,7 +749,7 @@ module Stamps
         end
       end
 
-      class Tracking < Browser::StampsModal
+      class Tracking < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:tracking_no)
@@ -763,7 +764,7 @@ module Stamps
         end
       end
 
-      class DatePrinted < Browser::StampsModal
+      class DatePrinted < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:date_printed)
@@ -786,7 +787,7 @@ module Stamps
         end
       end
 
-      class GridCheckBox < Browser::StampsModal
+      class GridCheckBox < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           field=StampsField.new((browser.spans css: "div[componentid^=gridcolumn]").first)
@@ -860,9 +861,7 @@ module Stamps
         def check(row)
           begin
             scroll_into_view
-            expect(size).to be > 0, "Grid is empty, there's no Order ID to check."
             checkbox_field(row).check
-            expect(checked?(row)).to be(true), "Unable to check checkbox row #{row}"
           end unless checked?(row)
           checked?(row)
         end
@@ -872,7 +871,6 @@ module Stamps
             scroll_into_view
             if size > 0
               checkbox_field(row).uncheck
-              expect(checked?(row)).to be(false), "Unable to uncheck checkbox row #{row}"
             end
           end
           checked?(row)
@@ -895,7 +893,7 @@ module Stamps
           end
 
           logger.info "Caching checked rows..."
-          checked_rows=Hash.new
+          checked_rows={}
           grid_total=row_count
           if cache_count > 2 && cache_count < grid_total
             cache_item_count=cache_count
@@ -918,7 +916,7 @@ module Stamps
 
       end
 
-      class TrackingService < Browser::StampsModal
+      class TrackingService < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:tracking_service)
@@ -941,7 +939,7 @@ module Stamps
         end
       end
 
-      class OrderTotal < Browser::StampsModal
+      class OrderTotal < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:order_total)
@@ -964,7 +962,7 @@ module Stamps
         end
       end
 
-      class GridSource < Browser::StampsModal
+      class GridSource < Browser::Base
         include GridColumnCommon
         def scroll_into_view
           scroll_to_column(:source)
@@ -988,7 +986,7 @@ module Stamps
       end
 
       # Orders Grid
-      class OrdersGrid < Browser::StampsModal
+      class OrdersGrid < Browser::Base
         @column = {}
         def present?
           grid_field.present?

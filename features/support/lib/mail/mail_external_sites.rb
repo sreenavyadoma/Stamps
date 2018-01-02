@@ -1,6 +1,6 @@
 module Stamps
   module Mail
-    class MailExternalSites < Browser::StampsModal
+    class MailExternalSites < Browser::Base
       def net_stamps_home_btn
         browser.windows.last.use
         15.times do

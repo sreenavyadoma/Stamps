@@ -111,7 +111,7 @@ module Stamps
 
     def state_fullname(state)
       if @states.nil?
-        @states=Hash.new
+        @states={}
         @states["CA"]="California"
       end
       @states
@@ -486,7 +486,7 @@ module Stamps
   end
 
   module BrowserType
-    def browser(browser)
+    def browser_type(browser)
       case browser.downcase
         when /ff|firefox|mozilla/
           return :firefox

@@ -3,11 +3,11 @@ module Stamps
     include BrowserType
     def test_param
       if @test_param.nil?
-        @test_param=Hash.new
-        @test_param[:customs_associated_items] ||= Hash.new
-        @test_param[:details_associated_items] ||= Hash.new
-        @test_param[:order_id] ||= Hash.new
-        @test_param[:service_look_up] ||= Hash.new
+        @test_param={}
+        @test_param[:customs_associated_items] = {}
+        @test_param[:details_associated_items] = {}
+        @test_param[:order_id] = {}
+        @test_param[:service_look_up] = {}
         @test_param[:service_look_up]['FCM']='First-Class Mail'
         @test_param[:service_look_up]['PM']='Priority Mail'
         @test_param[:service_look_up]['PME']='Priority Mail Express'
@@ -32,7 +32,7 @@ module Stamps
 
         @modal_param.hostname=Socket.gethostname
         expect(ENV['BROWSER']).to_not be(nil), "Browser is not defined, check your cucumber.yml entry for this test or your Jenkins job"
-        @modal_param.browser_str=browser(ENV['BROWSER'])
+        @modal_param.browser_str=browser_type(ENV['BROWSER'])
 
         @modal_param.scenario_name=test_config.scenario_name
         @modal_param.firefox_profile=(ENV['FIREFOX_PROFILE'].nil?)?'selenium':ENV['FIREFOX_PROFILE']
@@ -70,7 +70,7 @@ module Stamps
     end
 
     def modal
-      @modal ||= Hash.new
+      @modal ||= {}
     end
   end
 end

@@ -1209,6 +1209,11 @@ Cucumber::Rake::Task.new(:bvt_printing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
+  t.profile = 'bvt_purchasing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:bvt_purchasing_cc) do |t|
   t.profile = 'bvt_purchasing_cc'
   t.cucumber_opts = "-p cuke_reports"
@@ -1899,8 +1904,8 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:mail_reset) do |t|
+  t.profile = 'mail_reset'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -3100,5 +3105,12 @@ Cucumber::Rake::Task.new(:bugs_single_order_details_form) do |t|
   t.profile = 'bugs_single_order_details_form'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:bugs_print_modal) do |t|
+  t.profile = 'bugs_print_modal'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 
 #----------------------------------------------------------------

@@ -1,23 +1,15 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class WebMail < Browser::StampsModal
+    class WebMail < Browser::Base
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
       def sign_in_modal
         (cache[:sign_in_modal].nil?||!cache[:sign_in_modal].present?)?cache[:sign_in_modal]=MailSignIn::MailSignInModal.new(param):cache[:sign_in_modal]
       end
 
-      def mail_toolbar
-        (cache[:mail_toolbar].nil?||!cache[:mail_toolbar].present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
-      end
-
-      def mail_external_sites
-        (cache[:mail_external_sites].nil?||!cache[:mail_external_sites].present?)?cache[:mail_external_sites]=MailExternalSites.new(param):cache[:mail_external_sites]
-      end
-
-      def print_media
-        (cache[:print_media].nil?||!cache[:print_media].present?)?cache[:print_media]=PrintFormPanel::PrintOn.new(param):cache[:print_media]
+      def toolbar_menu
+        (cache[:toolbar_menu].nil?||!cache[:toolbar_menu].present?)?cache[:toolbar_menu]=MailToolbarMenu.new(param):cache[:toolbar_menu]
       end
 
       def print_on(selection)
@@ -25,10 +17,6 @@ module Stamps
         blur_out
         raise "Print-on drop-down is not present." unless print_media.present?
         param.print_media=print_media.select_print_on(selection)
-      end
-
-      def print_preview
-        (cache[:print_preview].nil?||!cache[:print_preview].present?)?cache[:print_preview]=PrintPreviewPanel::PrintPreview.new(param).extend(PrintPreviewPanel::StampsPrintPreview):cache[:print_preview]
       end
 
       def print_form
@@ -62,6 +50,22 @@ module Stamps
           else
             raise "Invalid Print Media symbol: #{param.print_media}"
         end
+      end
+
+      def print_preview
+        (cache[:print_preview].nil?||!cache[:print_preview].present?)?cache[:print_preview]=PrintPreviewPanel::PrintPreview.new(param).extend(PrintPreviewPanel::StampsPrintPreview):cache[:print_preview]
+      end
+
+      def mail_toolbar
+        (cache[:mail_toolbar].nil?||!cache[:mail_toolbar].present?)?cache[:mail_toolbar]=MailToolbar.new(param):cache[:mail_toolbar]
+      end
+
+      def mail_external_sites
+        (cache[:mail_external_sites].nil?||!cache[:mail_external_sites].present?)?cache[:mail_external_sites]=MailExternalSites.new(param):cache[:mail_external_sites]
+      end
+
+      def print_media
+        (cache[:print_media].nil?||!cache[:print_media].present?)?cache[:print_media]=PrintFormPanel::PrintOn.new(param):cache[:print_media]
       end
 
       def present?
