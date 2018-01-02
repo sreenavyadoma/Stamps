@@ -30,9 +30,13 @@ module Stamps
       end
     end
 
-    class MailToolbarMenu < Browser::Base
+    class MailToolbarMenu < Browser::BaseCache
       include MailToolbarLeftSide
       include MailToolbarRightSide
+      assign({})
+      def cache
+        self.class.cache
+      end
     end
   end
 end
