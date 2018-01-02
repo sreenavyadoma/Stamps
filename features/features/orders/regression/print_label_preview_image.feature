@@ -1,4 +1,4 @@
-#AB_ORDERAUTO_3518
+#AB_ORDERSAUTO_3518
 @print_label_preview_image
 Feature: Print label preview should have image for FCM Large Envelope
 

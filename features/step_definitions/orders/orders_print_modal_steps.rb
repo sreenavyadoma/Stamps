@@ -46,8 +46,18 @@ Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
   stamps.orders.modals.orders_print_modal.print
 end
 
+Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton for SAS$/ do
+    expect(stamps.orders.modals.orders_print_modal.print_fci_sas).to eql("Your GlobalPost Label"), "Your GlobalPost Label window is not present"
+end
+#stamps.orders.modals.your_global_post_label_dialog.xxx
 Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is [Pp]resent$/ do
   expect(stamps.orders.modals.orders_print_modal).to be_present, "Orders Print modal is NOT present"
+end
+
+Then /^[Pp]rint [Ss]hipping [Ll]abel for SAS$/ do
+  step "click Orders Toolbar Print button"
+  step "expect Print modal Print Modal is present"
+  step "click print modal print button"
 end
 
 Then /^ReIn [Pp]rint modal, Reprint$/ do
@@ -120,7 +130,7 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
   expect(stamps.orders.modals.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
-#AB_ORDERAUTO_3518
+#AB_ORDERSAUTO_3518
 Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]review [Ll]abel is displayed$/ do
   expect(stamps.orders.modals.orders_print_modal.starting_label.label_displayed?).to be(true), "Label Preview Image is not Displayed"
 end
@@ -215,6 +225,3 @@ end
 Then /^[Ss]elect (.*) pane$/ do |value|
 
 end
-
-
-
