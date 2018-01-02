@@ -9,6 +9,10 @@ module Stamps
 
       module Body
         class Dimensions < Browser::Base
+          def present?
+            length.present? && width.present? && height.present?
+          end
+
           def length
             (cache[:length].nil?||!cache[:length].present?)?cache[:length]=StampsNumberField.new(
                 browser.text_field(css: "[class*=mult] [name=Length]"),
@@ -30,8 +34,8 @@ module Stamps
                 browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(5) [class*=down]")):cache[:height]
           end
 
-          def present?
-            length.present? && width.present? && height.present?
+          def checkbox
+
           end
         end
 

@@ -52,11 +52,15 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ll]ength to (.*)$/ do |str|
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.length.increment(test_param[:bulk_length_increment]=str)
+  (test_param[:bulk_length_increment]=str).to_i.times do
+    stamps.orders.bulk_update.dimensions.length.increment.click
+  end
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.length.decrement(test_param[:bulk_length_decrement]=str)
+  (test_param[:bulk_length_decrement]=str).to_i.times do
+    stamps.orders.bulk_update.dimensions.length.decrement.click
+  end
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ll]ength is (?:correct|(.*))$/ do |str|
@@ -69,11 +73,15 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.width.increment(test_param[:bulk_width_increment]=str)
+  (test_param[:bulk_width_increment]=str).to_i.times do
+    stamps.orders.bulk_update.dimensions.width.increment.click
+  end
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.width.decrement(test_param[:bulk_width_decrement]=str)
+  (test_param[:bulk_width_decrement]=str).to_i.times do
+    stamps.orders.bulk_update.dimensions.width.decrement.click
+  end
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]idth is (?:correct|(.*))$/ do |str|
@@ -86,11 +94,15 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.height.increment(test_param[:bulk_height_increment]=str)
+  (test_param[:bulk_height_increment]=str).to_i.times do
+    stamps.orders.bulk_update.dimensions.height.increment.click
+  end
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.height.decrement(test_param[:bulk_height_decrement]=str)
+  (test_param[:bulk_height_decrement]=str).to_i.times do
+    stamps.orders.bulk_update.dimensions.height.decrement.click
+  end
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Hh]eight is (?:correct|(.*))$/ do |str|

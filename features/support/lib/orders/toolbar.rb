@@ -401,7 +401,7 @@ module Stamps
         end
 
         def text
-          StampsField.new(browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first).text
+          StampsField.new(browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first).text #todo-Rob this is wrong, fix it.
         end
       end
 

@@ -625,12 +625,12 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :browser, :textbox, :inc_btn, :dec_btn
+      attr_reader :browser, :textbox, :increment, :decrement
 
       def initialize(textbox, inc_btn, dec_btn)
         @textbox=StampsTextbox.new(textbox)
-        @inc_btn=StampsField.new(inc_btn)
-        @dec_btn=StampsField.new(dec_btn)
+        @increment=StampsField.new(inc_btn)
+        @decrement=StampsField.new(dec_btn)
         @browser=textbox.browser
       end
 
@@ -655,18 +655,6 @@ module Stamps
             browser.divs(text: str)
           else
             # do nothing
-        end
-      end
-
-      def increment(value)
-        value.to_i.times do
-          inc_btn.click
-        end
-      end
-
-      def decrement(value)
-        value.to_i.times do
-          dec_btn.click
         end
       end
     end
