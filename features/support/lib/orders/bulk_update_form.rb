@@ -54,6 +54,10 @@ module Stamps
             self.class.cache
           end
 
+          def present?
+            length.present? && width.present? && height.present?
+          end
+
           def pounds
             (cache[:pounds].nil?||!cache[:pounds].present?)?cache[:pounds]=StampsNumberField.new(
                 browser.text_field(css: "[class*=mult] [name=WeightLbs]"),
@@ -68,8 +72,12 @@ module Stamps
                 browser.div(css: "[class*=mult] [class*=ounces] [class*=down]")):cache[:width]
           end
 
-          def present?
-            length.present? && width.present? && height.present?
+          def checkbox
+            (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsCheckbox.new(
+                browser.input(css: "[class*=mult] [class*=weight-row]>div>div>div[class*=x-form-item] input"),
+                browser.div(css: "[class*=mult] [class*=weight-row]>div>div>div[class*=x-form-item]"),
+                "class",
+                "checked"):cache[:checkbox]
           end
         end
 
@@ -213,65 +221,6 @@ module Stamps
           end
         end
 
-        class PoundsField < Browser::Base
-          def present?
-            textbox.present?
-          end
-
-          def textbox
-            StampsTextbox.new(browser.text_field(css: "[class*=multiorder-detailsform] [name=WeightLbs]"))
-          end
-
-          def spinner_up
-            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=pounds-numberfield] [class*=spinner-up]"))
-          end
-
-          def spinner_down
-            StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=pounds-numberfield] [class*=spinner-down]"))
-          end
-        end
-
-        class OuncesField < Browser::Base
-          def present?
-            textbox.present?
-          end
-
-          def textbox
-            (@textbox.nil?||!textbox.present?)?@textbox=StampsTextbox.new(browser.text_field(css: "[class*=multiorder-detailsform] [name=WeightOz]")):@textbox
-          end
-
-          def spinner_up
-            (@spinner_up.nil?||!textbox.present?)?@spinner_up=StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-up]")):@spinner_up
-
-          end
-
-          def spinner_down
-            (@spinner_down.nil?||!textbox.present?)?@spinner_down=StampsField.new(browser.div(css: "[class*=multiorder-detailsform] [class*=ounces-numberfield] [class*=spinner-down]")):@spinner_down
-          end
-        end
-
-        class WeightField < Browser::Base
-
-          def checkbox
-            StampsCheckbox.new(
-                browser.input(css: "[class*=multiorder-detailsform] [class*=weight-row]>div>div>[class*=x-form-type-checkbox] input"),
-                browser.div(css: "[class*=multiorder-detailsform] [class*=weight-row]>div>div>[class*=x-form-type-checkbox]"),
-                "class", "checked")
-          end
-
-          def pounds
-            PoundsField.new(param)
-          end
-
-          def ounces
-            OuncesField.new(param)
-          end
-
-          def weigh
-            StampsField.new(browser.a(css: "[class*=multiorder-detailsform] [class*=scale-btn]"))
-          end
-        end
-
         class DomesticServiceField < Browser::Base
 
         end
@@ -311,16 +260,21 @@ module Stamps
           @multi_ship_from=Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
         end
 
-        def weight
-          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::WeightField.new(param):cache[:weight]
-        end
-
         def domestic_service
           @multi_dom_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_dom)
         end
 
         def international_service
           @multi_int_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
+        end
+
+        # done
+        def update_orders
+
+        end
+
+        def weight
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::WeightField.new(param):cache[:weight]
         end
 
         def dimensions

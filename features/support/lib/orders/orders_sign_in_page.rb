@@ -186,23 +186,14 @@ module Stamps
                   username(usr)
                   password(pw)
                   login
-                  wait_while_present(3)
+                  wait_while_present(2)
                   #expect(server_error).to_not be_present, server_error.message
                   raise server_error.message if server_error.present?
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
-                  if invalid_username.present?
-                    logger.message invalid_username.text
-                    sleep(0.05)
-                  end
-                  20.times do
-                    if loading_orders.present?
-                      logger.message loading_orders.text
-                      sleep(0.1)
-                    end
-                  end
+                  logger.message invalid_username.text if invalid_username.present?
+                  10.times {logger.message loading_orders.text if loading_orders.present?}
                 end
-                 sleep(0.1)
                 new_welcome.wait_until_present(2)
                 if new_welcome.present?
                   logger.message new_welcome.message

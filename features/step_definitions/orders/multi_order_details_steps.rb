@@ -11,13 +11,11 @@ Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Pp]ounds to (.*)$/ do |str|
-  test_param[:pounds]=str
-  stamps.orders.bulk_update.weight.lb.set(test_param[:pounds])
+  stamps.orders.bulk_update.weight.lb.set(test_param[:pounds]=str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Oo]unces to (.*)$/ do |str|
-  test_param[:ounces]=str
-  stamps.orders.bulk_update.weight.oz.set(test_param[:ounces])
+  stamps.orders.bulk_update.weight.oz.set(test_param[:ounces]=str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]omestic [Ss]ervice to (.*)$/ do |service|
@@ -52,19 +50,15 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ll]ength to (.*)$/ do |str|
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  (test_param[:bulk_length_increment]=str).to_i.times do
-    stamps.orders.bulk_update.dimensions.length.increment.click
-  end
+  (test_param[:bulk_length_increment]=str).to_i.times {stamps.orders.bulk_update.dimensions.length.increment.click}
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  (test_param[:bulk_length_decrement]=str).to_i.times do
-    stamps.orders.bulk_update.dimensions.length.decrement.click
-  end
+  (test_param[:bulk_length_decrement]=str).to_i.times {stamps.orders.bulk_update.dimensions.length.decrement.click}
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ll]ength is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.length.value).to eql((str.nil?)?test_param[:bulk_length]:str)
+  expect(stamps.orders.bulk_update.dimensions.length.text).to eql((str.nil?)?test_param[:bulk_length]:str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
@@ -73,19 +67,15 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  (test_param[:bulk_width_increment]=str).to_i.times do
-    stamps.orders.bulk_update.dimensions.width.increment.click
-  end
+  (test_param[:bulk_width_increment]=str).to_i.times {stamps.orders.bulk_update.dimensions.width.increment.click}
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  (test_param[:bulk_width_decrement]=str).to_i.times do
-    stamps.orders.bulk_update.dimensions.width.decrement.click
-  end
+  (test_param[:bulk_width_decrement]=str).to_i.times {stamps.orders.bulk_update.dimensions.width.decrement.click}
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]idth is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.width.value).to eql((str.nil?)?test_param[:bulk_width]:str)
+  expect(stamps.orders.bulk_update.dimensions.width.text).to eql((str.nil?)?test_param[:bulk_width]:str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
@@ -94,23 +84,19 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  (test_param[:bulk_height_increment]=str).to_i.times do
-    stamps.orders.bulk_update.dimensions.height.increment.click
-  end
+  (test_param[:bulk_height_increment]=str).to_i.times {stamps.orders.bulk_update.dimensions.height.increment.click}
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  (test_param[:bulk_height_decrement]=str).to_i.times do
-    stamps.orders.bulk_update.dimensions.height.decrement.click
-  end
+  (test_param[:bulk_height_decrement]=str).to_i.times {stamps.orders.bulk_update.dimensions.height.decrement.click}
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Hh]eight is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.height.value).to eql((str.nil?)?test_param[:bulk_height]:str)
+  expect(stamps.orders.bulk_update.dimensions.height.text).to eql((str.nil?)?test_param[:bulk_height]:str)
 end
 
 Then /^[Cc]lick [Bb]ulk [Uu]pdate [Uu]pdate [Oo]rder [Bb]utton$/ do
-  stamps.orders.bulk_update.buttons.update_orders
+  stamps.orders.bulk_update.update_orders
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate is present$/ do
