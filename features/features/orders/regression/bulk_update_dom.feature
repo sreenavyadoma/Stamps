@@ -25,7 +25,7 @@ Feature: Bulk Update Domestic
 #    Then set Order Details Length to 1
 #    Then set Order Details Width to 1
 #    Then set Order Details Height to 1
-#
+
 #    #Check 1st two orders
 #    Then check order 1
 #    Then check order 2
@@ -47,6 +47,11 @@ Feature: Bulk Update Domestic
     Then set Bulk Update Length to 1
     Then set Bulk Update Width to 1
     Then set Bulk Update Height to 1
+    Then expect Bulk Update Dimensions is checked
+    Then uncheck Bulk Update Dimensions
+    Then expect Bulk Update Dimensions is unchecked
+    Then check Bulk Update Dimensions
+    Then expect Bulk Update Dimensions is checked
 
     Then set bulk update length to 0
     Then increment bulk update length by 8
