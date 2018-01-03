@@ -192,6 +192,7 @@ module Stamps
                   security_questions.wait_until_present(2)
                   return security_questions if security_questions.present?
                   logger.message invalid_username.text if invalid_username.present?
+                  loading_orders.wait_until_present(4)
                   10.times {logger.message loading_orders.text if loading_orders.present?}
                 end
                 new_welcome.wait_until_present(2)

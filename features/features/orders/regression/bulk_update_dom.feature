@@ -30,18 +30,37 @@ Feature: Bulk Update Domestic
 #    Then check order 1
 #    Then check order 2
 
+
+    Then check row 1
+    Then check row 2
+    Then check row 3
+
     #Updating order details
     #Then set Bulk Update Ship From to default
     #todo-BulkUpdate missing expectation for Ship From
     #Then set Bulk Update Domestic service to PME Package
     #todo-BulkUpdate missing expectation for Domestic service
 
-    # check weight
-
+    # set weight
     Then set Bulk Update Pounds to 1
+    Then expect bulk update Pounds is correct
     Then set Bulk Update Ounces to 1
-    #todo-BulkUpdate missing expectation for Bulk Update Pounds
-    #todo-BulkUpdate missing expectation for Bulk Update Ounces
+    Then expect bulk update Ounces is correct
+    Then expect Bulk Update Weight is checked
+    Then uncheck Bulk Update Weight
+    Then expect Bulk Update Weight is unchecked
+    Then check Bulk Update Weight
+    Then expect Bulk Update Weight is checked
+    #increment/decrement pounds
+    Then set Bulk Update Pounds to 0
+    Then increment bulk update pounds by 8
+    Then decrement bulk update pounds by 8
+    Then expect bulk update pounds is 0
+    #increment/decrement Ounces
+    Then set Bulk Update Ounces to 0
+    Then increment bulk update Ounces by 8
+    Then decrement bulk update Ounces by 8
+    Then expect bulk update Ounces is 0
 
     #set dimensions
     Then set Bulk Update Length to 1

@@ -25,11 +25,19 @@ module Stamps
 
     class BaseCache
       include Cache
-      attr_reader :param, :browser, :logger
+      class << self
+        attr_accessor :browser
+      end
+
+      attr_reader :param, :logger
       def initialize(param)
         @param=param
-        @browser=param.browser
+        self.class.browser=param.browser
         @logger=param.logger
+      end
+
+      def browser
+        self.class.browser
       end
     end
 

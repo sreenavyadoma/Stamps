@@ -910,7 +910,7 @@ module Stamps
           @single_ship_from=Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :single_order)
           @ship_to=ShipTo.new(param)
           @weight=Stamps::Orders::DetailsFormCommon::OrderDetailsWeight.new(param, :single_order)
-          @service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :single_order).extend(Stamps::Orders::DetailsFormCommon::DetailsFormServiceCost)
+          @service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :single_order).extend(Stamps::Orders::DetailsFormCommon::DetailsFormServiceCost) #todo-Rob what is this????
           @insure_for=DetailsInsureFor.new(param)
           @tracking=DetailsTracking.new(param)
           @reference_no=StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))

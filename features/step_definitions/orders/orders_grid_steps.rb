@@ -29,25 +29,12 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost is the same as Details Form Ship Co
   expect(stamps.orders.single_order_details.footer.total_ship_cost).to eql(stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last))
 end
 
-Then /^[Ss]et [Oo]rders [Gg]rid [Rr]ow (\d+) to uncheck$/ do |row|
-  stamps.orders.orders_grid.grid_column(:checkbox).uncheck(row)
+When /^[Cc]heck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
+  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
+  expect(checked=stamps.orders.orders_grid.grid_column(:checkbox).checked?(row)).to be(true), "Row #{row} is #{(checked)?'checked':'unchecked'}"
 end
 
-Then /^[Ss]et [Oo]rders [Gg]rid [Rr]ow (\d+) to check$/ do |row|
-  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
-end
-
-When /^Edit [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
-  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
-  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
-end
-
-When /^[Cc]heck [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
-  stamps.orders.orders_grid.grid_column(:checkbox).check(row)
-  expect(stamps.orders.orders_grid.grid_column(:checkbox).checked?(row)).to be(true)
-end
-
-When /^[Uu]ncheck [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
+When /^[Uu]ncheck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|
   expect(stamps.orders.orders_grid.grid_column(:checkbox).uncheck(row)).to be(false), "Unable to uncheck Orders Grid row #{row}"
 end
 

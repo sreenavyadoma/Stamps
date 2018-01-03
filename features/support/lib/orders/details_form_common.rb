@@ -175,7 +175,7 @@ module Stamps
         end
       end
 
-      #todo-Rob prone to error...fix it.
+      #todo-Rob ORDERSAUTO-3605 - allow each form to have their own class implementation
       class DetailsFormService < Browser::Base
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
