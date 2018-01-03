@@ -419,7 +419,8 @@ shopify: --tags @shopify --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_A
 etsy: --tags @etsy --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 rakuten: --tags @rakuten --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
 volusion: --tags @volusion --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
-amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 
+amazon: --tags @amazon --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
+square: --tags @square_workflow --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # ----------------------------# MAIL Bugs
 bugs_advanced_options: --tags  @bugs_advanced_options --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=mail
