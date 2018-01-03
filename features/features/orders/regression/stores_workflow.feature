@@ -58,14 +58,29 @@ Feature:  All Store Management
       Then click external site square Sign In button
 
       # Settings Modal
-      Then expect Square Settings dialog is present
+      Then expect store settings modal is present
       # General Settings
-      Then expect Settings dialog General Settings is present
-      Then set store settings store nickname to qaclient@stamps.com
+      Then set store settings store nickname to StampsQA
       Then expect Settings dialog store import new orders is checked
       Then Uncheck Settings dialog store import new orders
       Then expect Settings dialog store import new orders is Unchecked
       Then check Settings dialog store import new orders
       # Service Mapping
+      Then select store settings requested service to service 1
       Then select store settings shipping service to FCM Large Envelope
+      Then Store Settings: click Save
+
+      # Square Settings Modal
+      Then select order settings store StampsQA
+      Then click order settings stores edit button
+      Then expect store settings Square modal is present
+      Then set store settings store nickname to SquareStampsQA
+      Then expect Settings dialog store import new orders is checked
+      Then Uncheck Settings dialog store import new orders
+      Then expect Settings dialog store import new orders is Unchecked
+      Then check Settings dialog store import new orders
+      Then select store settings requested service to service 1
+      Then select store settings shipping service to FCM Large Envelope
+      Then Store Settings: click Save
+      Then Sign out
 

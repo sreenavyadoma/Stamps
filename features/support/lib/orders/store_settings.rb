@@ -144,11 +144,11 @@ module Stamps
 
         def auto_import_new_orders
           (cache[:auto_import].nil?||!cache[:v].present?)?cache[:auto_import]=Stamps::Browser::StampsCheckbox.new(
-              iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "not_empty"):cache[:auto_import]
+              iframe.input(id: 'importOrders'), iframe.input(id: 'importOrders'), "class", "ng-not-empty"):cache[:auto_import]
         end
 
         def requested_service
-          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsField.new(
+          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]=StampsTextbox.new(
               iframe.text_field(name: "serviceName")):cache[:requested_service]
         end
 
@@ -177,7 +177,7 @@ module Stamps
         end
 
         def save
-
+          (cache[:save].nil?||!cache[:save].present?)?cache[:save]=StampsField.new(iframe.button(id: "saveSettings")):cache[:save]
         end
 
         def remove_service
