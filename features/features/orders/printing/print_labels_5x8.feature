@@ -72,7 +72,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then click print modal print button
 
     Then add new order
@@ -84,7 +84,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then click print modal print button
     Then Sign out
 
@@ -98,7 +98,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then click print modal print button
     Then Sign out
 
@@ -112,7 +112,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then set Order Details form Height to 1
     Then set Order Details form Length to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then click print modal print button
     Then Sign out
 
@@ -183,7 +183,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then check Orders Grid row 3
 
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then click print modal print button Sample
     Then Expect system will only print first order
     Then Sign out
@@ -203,7 +203,7 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 20, Made In United States, Tariff 10
     Then close Customs Information form
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then click print modal print button
     Then Sign out
 
@@ -223,6 +223,6 @@ Feature: I want is able to print to 5.5 x 8.5 labels (single or multi) B-01667
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then click print modal print button
     Then Sign out
