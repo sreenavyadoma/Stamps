@@ -43,32 +43,32 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) 
   step "set bulk update width to #{width}"
   step "set bulk update height to #{height}"
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Cc]heck [Bb]ulk [Uu]pdate [Dd]imensions$/ do
   stamps.orders.bulk_update.dimensions.checkbox.check
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Uu]ncheck [Bb]ulk [Uu]pdate [Dd]imensions$/ do
   stamps.orders.bulk_update.dimensions.checkbox.uncheck
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Dd]imensions is (checked|unchecked)$/ do |str|
   expect(checked=stamps.orders.bulk_update.dimensions.checkbox.checked?).to be((str=='checked')?true:false), "Expectation: #{str}, got #{(checked)?'checked':'uncheck'}"
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ll]ength to (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.length.set(test_param[:bulk_length]=str)
   step "expect bulk update length is correct"
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
   (test_param[:bulk_length_increment]=str).to_i.times {stamps.orders.bulk_update.dimensions.length.increment.click}
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
   (test_param[:bulk_length_decrement]=str).to_i.times {stamps.orders.bulk_update.dimensions.length.decrement.click}
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ll]ength is (?:correct|(.*))$/ do |str|
   expect(stamps.orders.bulk_update.dimensions.length.text).to eql((str.nil?)?test_param[:bulk_length]:str)
 end
@@ -77,11 +77,11 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.width.set(test_param[:bulk_width]=str)
   step "expect bulk update width is correct"
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
   (test_param[:bulk_width_increment]=str).to_i.times {stamps.orders.bulk_update.dimensions.width.increment.click}
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
   (test_param[:bulk_width_decrement]=str).to_i.times {stamps.orders.bulk_update.dimensions.width.decrement.click}
 end
@@ -94,7 +94,7 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
   stamps.orders.bulk_update.dimensions.height.set(test_param[:bulk_height]=str)
   step "expect bulk update height is correct"
 end
-#todo-ORDERSAUTO-2261
+
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
   (test_param[:bulk_height_increment]=str).to_i.times {stamps.orders.bulk_update.dimensions.height.increment.click}
 end

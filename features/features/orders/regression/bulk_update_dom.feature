@@ -38,12 +38,12 @@ Feature: Bulk Update Domestic
 
     # check weight
 
-    #Then set Bulk Update Pounds to 1
+    Then set Bulk Update Pounds to 1
+    Then set Bulk Update Ounces to 1
     #todo-BulkUpdate missing expectation for Bulk Update Pounds
-    #Then set Bulk Update Ounces to 1
     #todo-BulkUpdate missing expectation for Bulk Update Ounces
 
-    #check dimensions
+    #set dimensions
     Then set Bulk Update Length to 1
     Then set Bulk Update Width to 1
     Then set Bulk Update Height to 1
@@ -52,24 +52,25 @@ Feature: Bulk Update Domestic
     Then expect Bulk Update Dimensions is unchecked
     Then check Bulk Update Dimensions
     Then expect Bulk Update Dimensions is checked
-
+    #increment/decrement length
     Then set bulk update length to 0
     Then increment bulk update length by 8
     Then expect bulk update length is 8
     Then decrement bulk update length by 8
     Then expect bulk update length is 0
-
+    #increment/decrement width
     Then set bulk update width to 0
     Then increment bulk update width by 8
     Then expect bulk update width is 8
     Then decrement bulk update width by 8
     Then expect bulk update width is 0
-
+    #increment/decrement height
     Then set bulk update height to 0
     Then increment bulk update height by 8
     Then expect bulk update height is 8
     Then decrement bulk update height by 8
     Then expect bulk update height is 0
+
 
     Then click Bulk Update Update Order button
     Then Pause for 2 seconds
