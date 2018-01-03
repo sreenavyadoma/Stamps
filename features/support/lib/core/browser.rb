@@ -28,7 +28,6 @@ module Stamps
       class << self
         attr_accessor :browser
       end
-
       attr_reader :param, :logger
       def initialize(param)
         @param=param
