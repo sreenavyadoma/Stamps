@@ -61,11 +61,11 @@ Feature:  All Store Management
       Then expect Square Settings dialog is present
       # General Settings
       Then expect Settings dialog General Settings is present
-      Then set Settings dialog store NickName to sqaure QA testing
+      Then set store settings store nickname to qaclient@stamps.com
       Then expect Settings dialog store import new orders is checked
       Then Uncheck Settings dialog store import new orders
       Then expect Settings dialog store import new orders is Unchecked
       Then check Settings dialog store import new orders
       # Service Mapping
-      #Then expect Settings dialog Service Mapping is present
+      Then select store settings shipping service to FCM Large Envelope
 

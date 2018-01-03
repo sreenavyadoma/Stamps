@@ -15,9 +15,13 @@ module Stamps
       end
     end
 
-    class SquareLogin
-    include ExternalSquare
-    end
+    class SquareLogin < Browser::BaseCache
+      include ExternalSquare
+      assign({})
 
+      def cache
+        self.class.cache
+      end
+    end
   end
 end

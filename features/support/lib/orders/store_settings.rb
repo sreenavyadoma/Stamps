@@ -190,6 +190,10 @@ module Stamps
 
         def service_tooltip(str)
         end
+
+        def general_settings
+          (cache[:title_text].nil?||!cache[:title_text].present?)?cache[:title_text]= StampsField.new(iframe.h3(css: "div[class^='storeEdit']>form>h3")):cache[:title_text]
+        end
       end
     end
   end

@@ -253,7 +253,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             when :square
-              (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::StampsModal.new(param).extend(Orders::Stores::SqaureWindowTitle):cache[:square_window]
+              (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::Base.new(param).extend(Orders::Stores::SqaureWindowTitle):cache[:square_window]
             when :opencart
               (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
             else
