@@ -1022,6 +1022,7 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+
 Cucumber::Rake::Task.new(:poc_sc_firefox) do |t|
   t.profile = 'poc_sc_firefox'
   t.cucumber_opts = "-p cuke_reports"
@@ -1162,12 +1163,10 @@ Cucumber::Rake::Task.new(:stores_shipstation_preupgrade) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-
 Cucumber::Rake::Task.new(:stores_shipstation_postupgrade) do |t|
   t.profile = 'stores_shipstation_postupgrade'
   t.cucumber_opts = "-p cuke_reports"
 end
-
 
 Cucumber::Rake::Task.new(:big_commerce) do |t|
   t.profile = 'big_commerce'
@@ -1206,6 +1205,11 @@ end
 
 Cucumber::Rake::Task.new(:bvt_printing) do |t|
   t.profile = 'bvt_printing'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:bvt_purchasing) do |t|
+  t.profile = 'bvt_purchasing'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -1870,6 +1874,10 @@ Cucumber::Rake::Task.new(:automation_rule) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:print_label_preview_image) do |t|
+  t.profile = 'print_label_preview_image'
+  t.cucumber_opts = "-p cuke_reports"
+end
 
 
 # MAIL
@@ -1894,13 +1902,13 @@ Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:mail_fci_flats) do |t|
+  t.profile = 'mail_fci_flats'
   t.cucumber_opts = "-p cuke_reports"
 end
 
-Cucumber::Rake::Task.new(:XXXXXXXXXXXXX) do |t|
-  t.profile = 'XXXXXXXXXXXXX'
+Cucumber::Rake::Task.new(:mail_reset) do |t|
+  t.profile = 'mail_reset'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -3100,5 +3108,12 @@ Cucumber::Rake::Task.new(:bugs_single_order_details_form) do |t|
   t.profile = 'bugs_single_order_details_form'
   t.cucumber_opts = "-p cuke_reports"
 end
+
+Cucumber::Rake::Task.new(:bugs_print_modal) do |t|
+  t.profile = 'bugs_print_modal'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+
 
 #----------------------------------------------------------------

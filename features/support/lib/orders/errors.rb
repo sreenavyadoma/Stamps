@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module OrdersRuntimeError
-      class ServerError < Browser::StampsModal
+      class ServerError < Browser::Base
         def present?
           StampsField.new(browser.div(text: /Server Error/)).present?
         end
@@ -27,7 +27,7 @@ module Stamps
         end
       end
 
-      class OrderError < Browser::StampsModal
+      class OrderError < Browser::Base
         def window_title
           StampsField.new(browser.div(text: 'Order Error'))
         end
@@ -49,14 +49,18 @@ module Stamps
         end
       end
 
-      class IncompleteOrderError < Browser::StampsModal
+      class IncompleteOrderError < Browser::Base
+
+        def wait_until_present(*args) #added wait_until_present to class
+          window_title.wait_until_present(*args)
+        end
+
         def error_message_label
           browser.div css: "div[class='x-autocontainer-innerCt'][id^=dialoguemodal]"
         end
 
         def window_title
-          return browser.div(text: 'Order Errors') if browser.div(text: 'Order Errors').present?
-          return browser.div(text: 'Order Error') if browser.div(text: 'Order Error').present?
+          return StampsField.new browser.div(text: 'Incomplete Order') #Changed text from Order Error to Incomplete Order
           nil
         end
 
@@ -107,7 +111,7 @@ module Stamps
 
       end
 
-      class RatingError < Browser::StampsModal
+      class RatingError < Browser::Base
 
         def ok_button
           StampsField.new(browser.span(text: 'OK'))

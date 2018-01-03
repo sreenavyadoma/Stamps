@@ -5,6 +5,11 @@ Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 
+Then /^[Cc]lick Orders Toolbar Print button expecting incomplete order$/ do
+  @incomplete_order_modal=stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
+  expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
+end
+
 Then /^[Ee]xpect [Pp]rint [Mm]odal Incomplete Order Error Message (.*)$/ do |expectation|
   expect(@incomplete_order_modal.error_message).to include(expectation)
 end
@@ -41,8 +46,18 @@ Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton$/ do
   stamps.orders.modals.orders_print_modal.print
 end
 
+Then /^[Cc]lick [Pp]rint [Mm]odal [Pp]rint [Bb]utton for SAS$/ do
+    expect(stamps.orders.modals.orders_print_modal.print_fci_sas).to eql("Your GlobalPost Label"), "Your GlobalPost Label window is not present"
+end
+#stamps.orders.modals.your_global_post_label_dialog.xxx
 Then /^[Ee]xpect [Oo]rders [Pp]rint [Mm]odal is [Pp]resent$/ do
   expect(stamps.orders.modals.orders_print_modal).to be_present, "Orders Print modal is NOT present"
+end
+
+Then /^[Pp]rint [Ss]hipping [Ll]abel for SAS$/ do
+  step "click Orders Toolbar Print button"
+  step "expect Print modal Print Modal is present"
+  step "click print modal print button"
 end
 
 Then /^ReIn [Pp]rint modal, Reprint$/ do
@@ -115,6 +130,11 @@ Then /^[Ee]xpect [Pp]rint [Mm]odal left-side label is selected$/ do
   expect(stamps.orders.modals.orders_print_modal.starting_label.left_selected?).to be(true)
 end
 
+Then /^[Ee]xpect [Pp]rint [Mm]odal [Pp]review [Ll]abel is displayed$/ do
+  expect(stamps.orders.modals.orders_print_modal.starting_label.label_displayed?).to be(true), "Label Preview Image is not Displayed"
+end
+
+
 Then /^[Ss]et [Pp]rint [Mm]odal [Pp]rint-[Oo]n to (.*)$/ do |expectation|
   stamps.orders.modals.orders_print_modal.printing_on.select(expectation)
 end
@@ -128,6 +148,10 @@ Then /^[Ss]elect [Pp]rinter \"(.*)\"$/ do |printer|
   stamps.orders.modals.orders_print_modal.printer.select(printer)
 end
 
+Then /^[Cc]lose [Pp]rint [Mm]odal$/ do
+  stamps.orders.modals.orders_print_modal.close
+end
+
 Then /^Close Reprint Modal$/ do
   stamps.orders.orders_toolbar.reprint.close
 end
@@ -136,8 +160,11 @@ Then /^[\w]lose Label Unavailable Modal$/ do
   stamps.orders.orders_toolbar.ok.close
 end
 
-Then /^[Pp]rint expecting error (.*)$/ do |error_message|
-  modal=stamps.orders.modals.orders_print_modal.print_expecting_error
+
+#todo-Rob Rework print_expecting_error
+Then /^Print Order expecting error (.*)$/ do |error_message|
+  modal=stamps.orders.orders_toolbar.toolbar_print.print_expecting_error  #updated reference for printer_expecting_error
+  error_message=error_message.gsub("\\n","\n") #reformatting newline character to match actual character in modal
   actual=modal.error_message
   modal.ok
   expect(actual).to include error_message
@@ -197,6 +224,3 @@ end
 Then /^[Ss]elect (.*) pane$/ do |value|
 
 end
-
-
-

@@ -439,7 +439,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[test_param[:result_sheet_columns][:status]]=="Failed" || (row[test_param[:result_sheet_columns][:status]]!="Passed" && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
+        if row[test_param[:result_sheet_columns][:status]].casecmp("failed")==0 || (row[test_param[:result_sheet_columns][:status]].casecmp("passed")!=0 && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count +=1
           test_config.logger.step "Zone #{zone} - Row #{row_number} Failed"
         end

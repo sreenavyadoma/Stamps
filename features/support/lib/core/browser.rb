@@ -1,6 +1,51 @@
 module Stamps
   module Browser
+    class ModalParam
+      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
+                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
+    end
 
+    module Cache
+      class << self
+        def included(base)
+          base.extend ClassMethods
+        end
+
+        module ClassMethods
+          def assign(cache)
+            @cache=cache
+          end
+
+          def cache
+            @cache
+          end
+        end
+      end
+    end
+
+    class BaseCache
+      include Cache
+      attr_reader :param, :browser, :logger
+      def initialize(param)
+        @param=param
+        @browser=param.browser
+        @logger=param.logger
+      end
+    end
+
+    #deprecated
+    class Base
+      attr_reader :param, :browser, :cache, :logger
+      def initialize(param)
+        @param=param
+        @browser=param.browser
+        @logger=param.logger
+        @cache={}
+        #@helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
+      end
+    end
+
+    #todo-Rob REW
     class StampsField
       attr_reader :field, :browser
       alias_method :checkbox, :field
@@ -138,7 +183,7 @@ module Stamps
 
       def attribute_value(attribute)
         begin
-          field.attribute_value(attribute)
+          return field.attribute_value(attribute)
         rescue
           #ignore
         end
@@ -203,6 +248,21 @@ module Stamps
 
       def style(property)
         field.style(property)
+      end
+    end
+
+    #todo-Rob IMPORTANT! rework disabled field
+    #AB_ORDERSAUTO_3516
+    class StampsField2 < StampsField
+      def initialize(field, disabled_field, attribute, attribute_value)
+        super(field)
+        @disabled_field=disabled_field
+        @attribute = attribute
+        @attribute_value = attribute_value
+      end
+
+      def field_disabled?
+        @disabled_field.attribute_value(@attribute).include?(@attribute_value)
       end
     end
 
@@ -514,6 +574,7 @@ module Stamps
       end
     end
 
+    #todo-Rob REW
     class StampsDropdown < StampsTextbox
       attr_accessor :html_tag, :dropdown
 
@@ -553,12 +614,12 @@ module Stamps
     end
 
     class StampsNumberField
-      attr_reader :browser, :textbox, :inc_btn, :dec_btn
+      attr_reader :browser, :textbox, :increment, :decrement
 
       def initialize(textbox, inc_btn, dec_btn)
         @textbox=StampsTextbox.new(textbox)
-        @inc_btn=StampsField.new(inc_btn)
-        @dec_btn=StampsField.new(dec_btn)
+        @increment=StampsField.new(inc_btn)
+        @decrement=StampsField.new(dec_btn)
         @browser=textbox.browser
       end
 
@@ -574,14 +635,6 @@ module Stamps
         textbox.set(value)
       end
 
-      def increment(value)
-        current_value=textbox.text.to_i
-        value.to_i.times do
-          inc_btn.click
-        end
-        expect(current_value + value.to_i).to eql textbox.text.to_i
-      end
-
       def selection(str)
         expect([:li, :div]).to include(@selection_type)
         case selection_type
@@ -592,14 +645,6 @@ module Stamps
           else
             # do nothing
         end
-      end
-
-      def decrement(value)
-        current_value=textbox.text.to_i
-        value.to_i.times do
-          dec_btn.click
-        end
-        expect(current_value + value.to_i).to eql textbox.text.to_i
       end
     end
 
@@ -644,43 +689,6 @@ module Stamps
         end
         expect(textbox.text).to eql(str)
         textbox.text
-      end
-    end
-
-    # Modals
-    class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
-                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
-    end
-
-    module StampsCache
-      def cache
-        @cache ||= {}
-      end
-    end
-
-    # StampsModal - base class for modals containing StampsElements
-    class StampsModal
-      include StampsCache
-      def initialize(param)
-        cache[:param]=param
-        cache[:helper]=StampsTestHelper.new(param.logger)
-      end
-
-      def browser
-        cache[:param].browser
-      end
-
-      def param
-        cache[:param]
-      end
-
-      def logger
-        cache[:param].logger
-      end
-
-      def helper
-        cache[:helper]
       end
     end
   end

@@ -34,87 +34,88 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
       test_param[:result_sheet].row(0)[row_number]='weight_oz'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
+    #AB_ORDERSAUTO_3580 - changes to order of columns. Column=Row_number, not Row_number minus offset
     if column_name=='zone1'
       @rate_sheet_columns[:zone1]=row_number
-      test_param[:result_sheet_columns][:zone]=1
+      test_param[:result_sheet_columns][:zone]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:zone]]='zone1'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='service'
       @rate_sheet_columns[:service]=row_number
-      test_param[:result_sheet_columns][:service]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:service]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:service]]='service'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='tracking'
       @rate_sheet_columns[:tracking]=row_number
-      test_param[:result_sheet_columns][:tracking]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:tracking]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:tracking]]='tracking'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='execution_date'
       @rate_sheet_columns[:execution_date]=row_number
-      test_param[:result_sheet_columns][:execution_date]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:execution_date]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:execution_date]]='execution_date'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='username'
       @rate_sheet_columns[:username]=row_number
-      test_param[:result_sheet_columns][:username]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:username]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:username]]='username'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='ship_from'
       @rate_sheet_columns[:ship_from]=row_number
-      test_param[:result_sheet_columns][:ship_from]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:ship_from]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:ship_from]]='ship_from'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='ship_to_domestic'
       @rate_sheet_columns[:ship_to_domestic]=row_number
-      test_param[:result_sheet_columns][:ship_to_domestic]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:ship_to_domestic]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:ship_to_domestic]]='ship_to_domestic'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='weight'
       @rate_sheet_columns[:weight]=row_number
-      test_param[:result_sheet_columns][:weight]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:weight]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:weight]]='weight'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='service_selected'
       @rate_sheet_columns[:service_selected]=row_number
-      test_param[:result_sheet_columns][:service_selected]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:service_selected]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:service_selected]]='service_selected'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='tracking_selected'
       @rate_sheet_columns[:tracking_selected]=row_number
-      test_param[:result_sheet_columns][:tracking_selected]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:tracking_selected]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:tracking_selected]]='tracking_selected'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='total_ship_cost'
       @rate_sheet_columns[:total_ship_cost]=row_number
-      test_param[:result_sheet_columns][:total_ship_cost]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:total_ship_cost]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:total_ship_cost]]='total_ship_cost'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='results'
       @rate_sheet_columns[:results]=row_number
-      test_param[:result_sheet_columns][:results]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:results]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:results]]='results'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='status'
       @rate_sheet_columns[:status]=row_number
-      test_param[:result_sheet_columns][:status]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:status]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:status]]='status'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
     if column_name=='error_msg'
       @rate_sheet_columns[:error_msg]=row_number
-      test_param[:result_sheet_columns][:error_msg]=row_number - test_param[:result_sheet_column_offset]
+      test_param[:result_sheet_columns][:error_msg]=row_number
       test_param[:result_sheet].row(0)[test_param[:result_sheet_columns][:error_msg]]='error_msg'
       test_param[:result_sheet].row(0).set_format(row_number, @bold)
     end
@@ -322,7 +323,7 @@ Then /^[Rr]un rate sheet (.*)$/ do |param_sheet|
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[test_param[:result_sheet_columns][:status]]=="Failed" || (row[test_param[:result_sheet_columns][:status]]!="Passed" && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
+        if row[test_param[:result_sheet_columns][:status]].casecmp("failed")==0 || (row[test_param[:result_sheet_columns][:status]].casecmp("passed")!=0 && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count +=1
           test_config.logger.step "Zone #{zone} - Row #{row_number} Failed"
         end

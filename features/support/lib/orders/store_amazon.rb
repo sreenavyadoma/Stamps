@@ -1,6 +1,7 @@
 module Stamps
   module Orders
     module Stores
+=begin
       class AmazonSettings < StoreSettings
         def window_title
           StampsField.new browser.div(text: "Amazon Settings")
@@ -14,9 +15,10 @@ module Stamps
           window_title.wait_until_present
         end
       end
+=end
 
-      class Amazon < Browser::StampsModal
-        class OrderSource < Browser::StampsModal
+      class Amazon < Browser::Base
+        class OrderSource < Browser::Base
           def textbox
             StampsTextbox.new(browser.text_field name: "AmazonMarketplace")
           end
@@ -50,7 +52,7 @@ module Stamps
           end
         end
 
-        class ProductIdentifier < Browser::StampsModal
+        class ProductIdentifier < Browser::Base
           def textbox
             StampsTextbox.new(browser.text_field css: "input[name^=combo-][name$=-inputEl]")
           end

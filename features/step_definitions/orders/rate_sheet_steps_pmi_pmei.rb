@@ -442,7 +442,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             step "set Order Details form Pounds to #{weight_lb}" if @modal_param.web_app==:orders
             step "set Print form Pounds to #{weight_lb}" if @modal_param.web_app==:mail
           else
-            weight_oz=Measured::Weight.new(weight_lb).convert_to("oz").value.to_i
+            weight_oz=Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
             #test_config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]="#{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]]=weight_oz
@@ -519,7 +519,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
   test_param[:result_sheet].each_with_index do |row, row_number|
     begin
       if row_number > 0
-        if row[test_param[:result_sheet_columns][:status]]=="Failed" || (row[test_param[:result_sheet_columns][:status]]!="Passed" && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
+        if row[test_param[:result_sheet_columns][:status]].casecmp("failed")==0 || (row[test_param[:result_sheet_columns][:status]].casecmp("passed")!=0 && !row[test_param[:result_sheet_columns][:error_msg]].nil?)
           @failed_test_count +=1
           test_config.logger.step "Group #{group} - Row #{row_number} Failed"
         end
