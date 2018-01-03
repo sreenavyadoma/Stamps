@@ -6,7 +6,7 @@ module Stamps
     end
 
     def navigation_bar
-      (cache[:navigation_bar].nil?||!cache[:navigation_bar].present?)?cache[:navigation_bar]=Navigation::NavigationBar.new(param):cache[:navigation_bar]
+      (cache[:navigation].nil?||!cache[:navigation].present?)?cache[:navigation]=Navigation::NavigationBar.new(param):cache[:navigation]
     end
 
     def orders
