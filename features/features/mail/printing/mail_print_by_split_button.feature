@@ -16,9 +16,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print form service FCM Large Envelope
     Then Print label using split button
     Then set Mail Print modal Printer
-    Then Expect Print modal is present
-    Then close Orders Print modal
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
     Then Sign out
 
   @mail_print_envelope_6
@@ -31,7 +31,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print form service FCM Letter
     Then Print postage using split button
     Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
 
   Scenario: Print On: Envelope #11
 
@@ -42,7 +44,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print form service FCM Letter
     Then Print postage using split button
     Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
     Then Sign out
 
 
@@ -62,7 +66,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print On Certified Mail Label - SDC-3930
     Then Print postage using split button
     Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
     Then Sign out
 
 
@@ -78,7 +84,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print form service FCM Large Envelope
     Then Print postage using split button
     Then set Mail Print modal Printer ZDesigner
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
 
    #mail_print_roll_4x6_fcm_large_envelope
     Then select Print On Roll 4x6
@@ -89,7 +97,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print form service FCM Large Envelope
     Then Print postage using split button
     Then set Mail Print modal Printer ZDesigner
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
     Then Sign out
 
 
@@ -106,7 +116,9 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Advanced Options Cost Code to None
     Then Print postage using split button
     Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
 
    #mail_print_stamps_b_series_specify
     Then select Print On Stamps
@@ -119,5 +131,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Advanced Options Cost Code to None
     Then Print postage using split button
     Then set Mail Print modal Printer
-    Then click Mail Print modal Print button
+    Then Expect mail Print modal is present
+    Then close mail Print modal
+
     Then Sign out

@@ -189,7 +189,7 @@ module Stamps
         end
 
         def x_button
-          browser.fields(css: 'img[class*=x-tool-close]').last
+          browser.img(css: 'img[class*=x-tool-close]')
         end
 
         def printer_label
