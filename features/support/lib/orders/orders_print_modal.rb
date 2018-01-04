@@ -179,6 +179,13 @@ module Stamps
         def default_selected?
           label_selected?(left_label)
         end
+
+        #AB_ORDERSAUTO_3518
+        def label_displayed?
+          div = (left_selected?)?(left_label):(right_label)
+          8.times {break if (div.attribute_value 'class').include? 'label-chooser-image-domestic'}
+          (div.attribute_value 'class').include? 'label-chooser-image-domestic' #todo-Rob figuring out what to verify is dependent on print media, both for domestic and int.
+        end
       end
 
       class OrdersPrintOptions < Browser::Base

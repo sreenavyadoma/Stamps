@@ -24,7 +24,7 @@ Feature: User Prints 3 Domestic labels on SDC-1200 - left side
     Then check Orders Grid row 2
     Then check Orders Grid row 3
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected

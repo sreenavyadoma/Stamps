@@ -56,7 +56,7 @@ Feature: Print 1 Intl CP72 label with continuation on 5.5x8.5 - left side
 
     Then Pause for 2 seconds
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
