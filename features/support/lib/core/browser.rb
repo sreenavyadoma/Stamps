@@ -48,7 +48,6 @@ module Stamps
         @browser=param.browser
         @logger=param.logger
         @cache={}
-        #@helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
       end
     end
 
@@ -258,7 +257,7 @@ module Stamps
       end
     end
 
-    #todo-Rob IMPORTANT! rework disabled field
+    #todo-Rob rework disabled field
     #AB_ORDERSAUTO_3516
     class StampsField2 < StampsField
       def initialize(field, disabled_field, attribute, attribute_value)

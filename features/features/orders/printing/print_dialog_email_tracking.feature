@@ -12,7 +12,7 @@ Feature: Select Email Tracking for order when printing
     Then set Order Details service to MM Package
     Then set Order Details Ounces to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then in Print modal, check Email Tracking Details to Recipients
     Then click print modal print button
     Then Sign out

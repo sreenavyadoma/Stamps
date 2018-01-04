@@ -13,7 +13,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details service to PME Padded Flat Rate Envelope
     Then set Order Details Ounces to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
@@ -33,7 +33,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then check Orders Grid row 1
     Then check Orders Grid row 2
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
@@ -59,7 +59,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then check Orders Grid row 2
     Then check Orders Grid row 3
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal left-side label
     Then expect Print modal left-side label is selected
@@ -72,7 +72,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then set Order Details service to PSG Package
     Then set Order Details Ounces to 1
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
@@ -93,7 +93,7 @@ Feature: Print 1 Domestic label on 5.5x8.5
     Then check Orders Grid row 1
     Then check Orders Grid row 2
     Then click Orders Toolbar Print button
-    Then set Print modal Print-On to Shipping Label - Stamps.com SDC-1200, 4 ¼" x 6 ¾"
+    Then set Print modal Print-On to Shipping Label - SDC-1200, 4 ¼" x 6 ¾"
     Then set Orders print modal printer
     Then select Print modal right-side label
     Then expect Print modal right-side label is selected
