@@ -2017,10 +2017,16 @@ Cucumber::Rake::Task.new(:dev_mail_bvt_address_cleansing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_print_by_split_button) do |t|
+  t.profile = 'mail_print_by_split_button'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_print_label_left_side) do |t|
   t.profile = 'mail_print_label_left_side'
   t.cucumber_opts = "-p cuke_reports"
 end
+
 
 Cucumber::Rake::Task.new(:mail_print_label_right_side) do |t|
   t.profile = 'mail_print_label_right_side'
