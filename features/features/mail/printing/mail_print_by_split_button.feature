@@ -16,6 +16,8 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then select Print form service FCM Large Envelope
     Then Print label using split button
     Then set Mail Print modal Printer
+    Then Expect Print modal is present
+    Then close Orders Print modal
     Then click Mail Print modal Print button
     Then Sign out
 
