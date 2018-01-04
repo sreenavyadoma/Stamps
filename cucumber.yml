@@ -1,4 +1,4 @@
-default: --backtrace --profile alex_orders
+default: --backtrace --profile eli_dev
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -24,7 +24,7 @@ ks_registration: --tags @registration_normal_workflow WEB_APP=registration URL=c
 
 web_apps_dev: --tags @bvt_new_order WEB_APP=orders JENKINS=true USR=default PW=pass111 URL=tcarney-win7-3.corp.stamps.com --guess DEBUG=false HEALTHCHECK=false BROWSER=gc MAX_WINDOW=false
 
-eli_dev: --tags @bugs_print_modal --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff USR=scutfh8m1 PW=pass111 PRINTER=Automation Printer
+eli_dev: --tags @split_order --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=sc BROWSER=ff USR=scutfh8m1 PW=pass111 PRINTER=Automation Printer
 ray_dev: --tags @rates_parcel_select_ground --guess DEBUG=false JENKINS=false HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc USR=default PW=pass111
 sap:              --tags @registration_orders WEB_APP=registration URL=cc --guess DEBUG=false BROWSER=gc MAX_WINDOW=false
 
@@ -370,7 +370,7 @@ stores_shipstation_postupgrade: --tags @stores_shipstation_postupgrade --guess D
 stores_shipstation_preupgrade: --tags @stores_shipstation_preupgrade --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 orders_fci_flats: --tags @orders_fci_flats --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 print_label_preview_image: --tags @print_label_preview_image --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
-
+split_order: --tags @split_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders
 
 # REGRESSION NOT INCLUDED
 grid_column_order: --tags @grid_column_order --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders 

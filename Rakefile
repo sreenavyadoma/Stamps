@@ -1879,6 +1879,11 @@ Cucumber::Rake::Task.new(:print_label_preview_image) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:split_order) do |t|
+  t.profile = 'split_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 # MAIL
 
