@@ -201,15 +201,15 @@ module Stamps
             when /Envelope - 12/
               return 'Envelope - #12'
             when /Certified Mail Label - SDC-3610/
-              return 'Certified Mail Label - Stamps.com SDC-3610'
+              return 'Certified Mail Label - SDC-3610'
             when /Certified Mail Label - SDC-3710/
-              return 'Certified Mail Label - Stamps.com SDC-3710'
+              return 'Certified Mail Label - SDC-3710'
             when /Certified Mail Label - SDC-3910/
-              return 'Certified Mail Label - Stamps.com SDC-3910'
+              return 'Certified Mail Label - SDC-3910'
             when /Certified Mail Label - SDC-3930/
-              return 'Certified Mail Label - Stamps.com SDC-3930'
+              return 'Certified Mail Label - SDC-3930'
             when /Certified Mail Label - SDC-3810/
-              return 'Certified Mail #11 Envelope - Stamps.com SDC-3810'
+              return 'Certified Mail #11 Envelope - SDC-3810'
             when /Roll 4x6/
               return 'Roll - 4" x 6" Shipping Label'
             when /Roll 418x614/
