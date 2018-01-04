@@ -48,7 +48,6 @@ module Stamps
         @browser=param.browser
         @logger=param.logger
         @cache={}
-        #@helper=StampsTestHelper.new(param.logger) #todo-Rob StampsTestHelper should be implemented as a singleton class.
       end
     end
 
