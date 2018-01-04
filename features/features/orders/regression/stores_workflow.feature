@@ -71,11 +71,12 @@ Feature:  All Store Management
       Then Store Settings: click Save
 
       # Square Settings Modal
+      Then pause for 2 seconds
       Then select order settings store StampsQA
       Then click order settings stores edit button
       Then expect store settings Square modal is present
       # General Settings
-      Then set store settings store nickname to SquareStampsQA
+      Then set store settings store nickname to StampsQA
       Then expect Settings dialog store import new orders is checked
       Then Uncheck Settings dialog store import new orders
       Then expect Settings dialog store import new orders is Unchecked
