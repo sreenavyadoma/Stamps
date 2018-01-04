@@ -188,15 +188,15 @@ module Stamps
           browser.iframe(css: "[id=storeiframe]")
         end
         def store_icon
-          StampsField.new(iframe.img(css: "img[src*=paypalbanner]"))
+          StampsField.new(iframe.img(css: "img[src*=paypalbanner.png]"))
         end
 
         def present?
-          restrict_to_email_address.present? && store_icon.present?
+          restrict_to_email_address.present?
         end
 
         def connect
-          button=StampsField.new(browser.span(text: "Connect"))
+          button=StampsField.new(iframe.span(text: "Connect"))
           store_settings=StoreSettings.new(param)
           10.times do
             button.click
@@ -215,7 +215,7 @@ module Stamps
         end
 
         def radio_import_all_transactions
-          iframe.radio(css: 'input[id=importAlltransations]').set
+          iframe.radio(css: 'input[id=importAllTransations]').set
         end
 
         def radio_import_selected_types
@@ -223,8 +223,7 @@ module Stamps
         end
 
         def restrict_to_email_address
-          (cache[:restrict_to_email].nil?||!cache[:restrict_to_email].present?)?cache[:restrict_to_email]=StampsTextbox.new(
-              iframe.text_field(css: "input[id=toemail]")):cache[:restrict_to_email]
+          (cache[:restrict_to_email].nil?||!cache[:restrict_to_email].present?)?cache[:restrict_to_email]=StampsTextbox.new(iframe.text_field(css: "input[id=toEmail]")):cache[:restrict_to_email]
         end
 
         def type_cart
@@ -238,8 +237,8 @@ module Stamps
         end
 
         def type_express_checkout
-          (cache[:type_express_checkout].nil?||!cache[:type_express_checkout].present?)?cache[:type_express_checkout]=Stamps::Browser::StampsCheckbox.new(
-              iframe.input(css: 'input[id=expresscheckout]'), iframe.input(css: 'input[id=expresscheckout]'), "class", "ng_not_empty"):cache[:type_express_checkout]
+          #(cache[:type_express_checkout].nil?||!cache[:type_express_checkout].present?)?cache[:type_express_checkout]=
+              Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=expresscheckout]'), iframe.input(css: 'input[id=expresscheckout]'), "class", "ng_not_empty")#:cache[:type_express_checkout]
         end
 
         def type_send_money
@@ -269,7 +268,7 @@ module Stamps
 
         def type_integral_evolution
           #(cache[:xxxx].nil?||!cache[:xxxx].present?)?cache[:xxxx]=Bbbbbbbbb.bbbbbb:cache[:xxxx]
-          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=integralevoluton]'), iframe.input(css: 'input[id=integralevoluton]'), "class", "ng_not_empty")
+          Stamps::Browser::StampsCheckbox.new(iframe.input(css: 'input[id=integralevolution]'), iframe.input(css: 'input[id=integralevolution]'), "class", "ng_not_empty")
         end
 
         def type_website_payments_pro_hosted

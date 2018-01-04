@@ -13,7 +13,6 @@ Feature:  All Store Management
       Then connect Marketplace store Paypal
       Then set PayPal Email Address to qaclient@stamps.com
       Then click Paypal verify email button
-      #need a valid paypal email to make this work
       Then set Paypal orders number option to use the Paypal transaction ID
       Then set Paypal orders number option to use the invoice number
       Then set PayPal Email Address restriction to qaclient@stamps.com
@@ -22,16 +21,16 @@ Feature:  All Store Management
       Then Check Integral Evolution as a Paypal transaction type
       Then Uncheck Integral Evolution as a Paypal transaction type
       Then Check Express Checkout as a Paypal transaction type
+      Then Uncheck Express Checkout as a Paypal transaction type
       Then Connect to Paypal Store
-      Then Set Store Nickname to random
-      Then Add new store service mapping
-      Then Set store service Mapping 1, Requested Services Priority Envelope, Shipping service PM Flat Rate Envelope
+      Then Store Settings: Set Store Nickname to random
+      Then Store Settings: Set service Mapping 1, Requested Services Priority Envelope, Shipping service PM Flat Rate Envelope
 
   @paypal_workflow_backlog
   Scenario: PayPal Workflow backlog
       Then Connect to Paypal Store
       Then Set store nickname to My Store
-      #Then Add new service mapping
+      Then Add new service mapping
       Then Set Store Nickname to random
       Then Set store service Mapping 1, Requested Services Priority Envelope, Shipping service PM Flat Rate Envelope
       #Then Save store settings

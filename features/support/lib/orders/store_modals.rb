@@ -18,7 +18,7 @@ module Stamps
       end
 
       def add_your_store_modal
-        (cache[:add_store].nil?||!cache[:add_store].present?)?cache[:add_store]=Stamps::Orders::Marketplace.new(param):cache[:add_store]
+        (cache[:add_store].nil?||!cache[:add_store].present?)?cache[:add_store]=Stamps::Orders::Stores::Marketplace.new(param):cache[:add_store]
       end
     end
 
