@@ -9,7 +9,7 @@ module Stamps
 
       module StoreSettingsWindowTitle
         def window_title
-          StampsField.new(browser.div(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class$=x-title-item]"))
+          StampsField.new(browser.div(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class$=x-title-item]")).wait_until_present(store_nickname)
         end
       end
 
