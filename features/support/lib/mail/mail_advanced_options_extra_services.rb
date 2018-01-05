@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::Base
+      class MailExtraServices < Browser::Base #todo-Rob implement caching MailExtraServices
         attr_accessor :window_title, :security, :value, :handling, :save_field, :close_field, :security_price_field, :return_receipt_price_field,
                       :restricted_delivery_price_field, :cod_price_field, :non_delivery_notice_price_field, :content_price_field,
                       :special_handling_price_field, :merchandise_return_receipt_field, :total_price_field
