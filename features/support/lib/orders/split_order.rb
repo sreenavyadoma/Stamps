@@ -1,14 +1,17 @@
 module Stamps
   module Orders
     module SplitOrder
+      module WindowTitle
+        def window_title #the window title is used the verify that the modal has appeared
+          StampsField.new(browser.div(css: "div[id^=splitorderwindow-][id$=innerCt]"))
+        end
+      end
+
       class Modal < Browser::BaseCache
+        include WindowTitle
         assign({})
         def cache
           self.class.cache
-        end
-
-        def window_title #the window title is used the verify that the modal has appeared
-          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: "div[id^=splitorderwindow-][id$=innerCt]")):cache[:window_title]
         end
 
         def new_order_id #The default text in the New Order ID field, usually the existing orders ID with -1 appended to the end

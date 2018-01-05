@@ -206,8 +206,18 @@ module Stamps
         end
       end
 
-      class MoreActionsDropDown < Browser::Base
-        attr_reader :dropdown, :split_order#, :apply_bulk_action, :combine_orders
+      class MoreActionsDropDown < Browser::BaseCache
+
+        class WindowTitle < Browser::BaseCache
+          assign({})
+          def cache
+            self.class.cache
+          end
+        end
+        assign({})
+        def cache
+          self.class.cache
+        end
 
         def enabled?
           dropdown.enabled?
@@ -218,7 +228,7 @@ module Stamps
         end
 
         def split_order
-          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Stamps::Orders::SplitOrder::Modal.new(param):cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
+          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Browser::BaseCache.new(param).extend(Stamps::Orders::SplitOrder::WindowTitle):cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
         end
 
         def combine_orders
@@ -241,36 +251,32 @@ module Stamps
           select(:apply_bulk_action)
         end
 
-        def select(selection)
-          expect(enabled?).to be(true)
-          expect([:combine_orders, :split_order, :apply_bulk_action]).to include(selection)
-          selection_str=""
-          modal=nil
-          case selection
+        def selection_str(str)
+          case str
             when :combine_orders
-              selection_str="Combine Orders"
-              modal=combine_orders
+              return "Combine Orders"
             when :split_order
-              selection_str="Split Order"
-              modal=split_order
+              return "Split Order"
             when :apply_bulk_action
-              selection_str="Apply Bulk Action"
-              modal=apply_bulk_action
+              return "Apply Bulk Action"
             else
-              #do nothing.
+              # raise an exception instead  of expect([:combine_orders, :split_order, :apply_bulk_action]).to include(selection)
           end
+        end
 
-          30.times{
-            break if modal.present?
-            selection_item=StampsField.new(browser.span(text: selection_str))
-            dropdown.click unless selection_item.present?
-            sleep(0.50)
-            selection_item.hover
-            sleep(0.25)
-            selection_item.click
-          }
-          #todo-ORDERSAUTO-3405 You have to return Window name to step definition calling this method then do an assertion on window name in step def.
-          #expect("Unable to select #{selection}").to eql("More Actions Menu - Select")
+        def select(str)
+          expect(enabled?).to be(true)
+          5.times do
+            return split_order.window_title.text if split_order.window_title.present? #this should be return
+            selection=StampsField.new(browser.span(text: selection_str(str)))
+            dropdown.click unless selection.present?
+            sleep(0.1)
+            selection.hover
+            sleep(0.1)
+            selection.click
+            split_order.window_title.wait_until_present(2)
+          end
+          nil
         end
       end
 
