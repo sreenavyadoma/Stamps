@@ -218,7 +218,7 @@ module Stamps
         end
 
         def split_order
-          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Stamps::Orders::SplitOrderModal.new(param):cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
+          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Stamps::Orders::SplitOrder::Modal.new(param):cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
         end
 
         def combine_orders

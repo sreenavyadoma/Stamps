@@ -53,8 +53,7 @@ Then /^Label Unavailable: Expect Visible$/ do
   end
 end
 
-Then /^[Ss]elect [Gg]rid [Tt]oolbar [Mm]ore [Aa]ctions item (.*)$/ do |str|
-  expect(['Split Order', 'Apply Bulk Action', 'Combine Orders']).to include str
+Then /^[Ss]elect [Gg]rid [Tt]oolbar [Mm]ore [Aa]ctions item ([Ss]plit [Oo]rder|[Aa]pply [Bb]ulk [Aa]ction|[Cc]ombine [Oo]rders)$/ do |str|
   case str.downcase
     when /combine orders/
       #stamps.orders.orders_toolbar.toolbar_more_actions.select_combine_orders

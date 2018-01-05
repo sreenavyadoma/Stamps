@@ -1,7 +1,11 @@
 module Stamps
   module Orders
-
-      class SplitOrderModal < Browser::Base #this class represents the Split Order Modal
+    module SplitOrder
+      class Modal < Browser::BaseCache
+        assign({})
+        def cache
+          self.class.cache
+        end
 
         def window_title #the window title is used the verify that the modal has appeared
           (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: "div[id^=splitorderwindow-][id$=innerCt]")):cache[:window_title]
@@ -38,7 +42,7 @@ module Stamps
 
 
 
-        class SplitItemDetails < Browser::Base
+        class SplitItemDetails < Browser::BaseCache
 
           attr_reader :index
           def initialize(param, number)
@@ -74,7 +78,6 @@ module Stamps
 
 
       end
-
-
+    end
   end
 end
