@@ -81,6 +81,76 @@ module Stamps
           end
         end
 
+        class ListOfValues < Browser::Base
+          class << self
+            @@lov={}
+            def lov
+              @@lov
+            end
+          end
+        end
+
+        class ShipFrom < Browser::ListOfValues
+          attr_reader :form_type
+          def initialize(param, form_type)
+            super(param)
+            @form_type=form_type
+          end
+
+          def lov
+            self.class.lov
+          end
+
+          def manage_shipping_address
+            (cache[:manage_shipping_address].nil?||!cache[:manage_shipping_address].present?)?cache[:manage_shipping_address]=Orders::ShipFrom::ManageShippingAddresses.new(
+                param):cache[:manage_shipping_address]
+          end
+
+          def textbox
+            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+                browser.text_field(css: "[class*=multi] [componentid^=ship]")):cache[:textbox]
+          end
+
+          def dropdown
+            (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsTextbox.new(
+                browser.div(css: "[class*=multi] [id^=ship][id$=picker]")):cache[:dropdown]
+          end
+
+          def select(str)
+            return manage_shipping_address if manage_shipping_address.present?
+            dropdown.click
+            sleep(0.5)
+            selection=StampsField.new((str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type==:single_order)?0:1]:browser.lis(text: /#{str}/)[(form_type==:single_order)?0:1])
+            if str.downcase.include?("manage shipping")
+              15.times do
+                sleep(0.35)
+                dropdown.click unless selection.present?
+                selection.scroll_into_view
+                selection.click
+                return manage_shipping_address if manage_shipping_address.present?
+                expect(manage_shipping_address).to be_present, "Manage Shipping Address modal is not present!"
+              end
+            else
+              15.times do
+                sleep(0.35)
+                dropdown.click unless selection.present?
+                selection.scroll_into_view
+                selection.click
+                sleep(0.35)
+                return textbox.text if textbox.text.size > 2
+              end
+            end
+            textbox.text
+          end
+        end
+
+
+
+
+
+
+
+# REWORK -----------------------------------------------
         class DomesticService < Browser::BaseCache
           assign({})
           attr_reader :textbox, :dropdown, :form_type
@@ -190,12 +260,6 @@ module Stamps
             !(disabled? service)
           end
         end
-
-
-
-
-
-
 
         class InsureForField < Browser::BaseCache
           assign({})

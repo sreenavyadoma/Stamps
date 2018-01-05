@@ -1,5 +1,5 @@
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ss]hip [Ff]rom to (.*)$/ do |str|
-  test_param[:multi_ship_from]=stamps.orders.bulk_update.ship_from.select(str)
+  test_param[:bulk_ship_from]=stamps.orders.bulk_update.ship_from.select(str)
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
@@ -7,7 +7,6 @@ Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| time
 end
 
 Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
-
 end
 
 # Begin Bulk Update Weight steps

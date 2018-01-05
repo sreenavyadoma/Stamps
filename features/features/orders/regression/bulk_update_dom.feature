@@ -33,11 +33,14 @@ Feature: Bulk Update Domestic
 
     Then check row 1
     Then check row 2
-    Then check row 3
 
     #Updating order details
-    #Then set Bulk Update Ship From to default
+    Then set Bulk Update Ship From to default
     #todo-BulkUpdate missing expectation for Ship From
+
+
+
+
     #Then set Bulk Update Domestic service to PME Package
     #todo-BulkUpdate missing expectation for Domestic service
 
@@ -94,21 +97,26 @@ Feature: Bulk Update Domestic
     Then click Bulk Update Update Order button
     Then Pause for 2 seconds
 
-    Then Refresh the browser
+    #Then Refresh the browser
 
     #verify fields in 1st order
-    Then check Orders Grid row 1
-    Then expect Order Details form Ship From is correct
-    Then expect Orders Grid service is PME Package
-    #Then expect Order Details form Pound is 2
+    #Then check Orders Grid row 1
+    #Then expect Order Details form Ship From is correct
+    #Then expect Orders Grid service is PME Package
 
-    Then uncheck order 1
-    Then uncheck order 2
+    #Then uncheck order 1
+    #Then uncheck order 2
+
+
+    Then uncheck row 1
+    And uncheck row 2
+
+
 
     #verify fields in 2nd order
-    Then check order 2
-    Then expect Order Details form Ship From is correct
-    Then expect Orders Grid service is PME Package
+    #Then check order 2
+    #Then expect Order Details form Ship From is correct
+    #Then expect Orders Grid service is PME Package
     #Then expect Order Details form Pound is 2
 
     Then Sign out
