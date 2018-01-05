@@ -12,19 +12,19 @@ end
 
 # Begin Bulk Update Weight steps
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Pp]ounds to (.*)$/ do |str|
-  stamps.orders.bulk_update.weight.lb.set(test_param[:bulk_pounds]=str)
+  stamps.orders.bulk_update.weight.lbs.set(test_param[:bulk_lbs]=str)
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Pp]ounds is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.weight.lb.text).to eql((str.nil?)?test_param[:bulk_pounds]:str)
+  expect(stamps.orders.bulk_update.weight.lbs.text).to eql((str.nil?)?test_param[:bulk_lbs]:str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Oo]unces to (.*)$/ do |str|
-  stamps.orders.bulk_update.weight.oz.set(test_param[:bulk_ounces]=str)
+  stamps.orders.bulk_update.weight.oz.set(test_param[:bulk_oz]=str)
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]unces is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.weight.oz.text).to eql((str.nil?)?test_param[:bulk_ounces]:str)
+  expect(stamps.orders.bulk_update.weight.oz.text).to eql((str.nil?)?test_param[:bulk_oz]:str)
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]eight is (checked|unchecked)$/ do |str|
@@ -40,11 +40,11 @@ Then /^[Uu]ncheck [Bb]ulk [Uu]pdate [Ww]eight$/ do
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
-  (test_param[:bulk_lb_inc]=str).to_i.times {stamps.orders.bulk_update.weight.lb.increment.click}
+  (test_param[:bulk_lb_inc]=str).to_i.times {stamps.orders.bulk_update.weight.lbs.increment.click}
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
-  (test_param[:bulk_lb_dec]=str).to_i.times {stamps.orders.bulk_update.weight.lb.decrement.click}
+  (test_param[:bulk_lb_dec]=str).to_i.times {stamps.orders.bulk_update.weight.lbs.decrement.click}
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|

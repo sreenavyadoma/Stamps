@@ -55,21 +55,21 @@ module Stamps
           end
 
           def present?
-            length.present? && width.present? && height.present?
+            lbs.present? && oz.present? && checkbox.present?
           end
 
-          def pounds
-            (cache[:pounds].nil?||!cache[:pounds].present?)?cache[:pounds]=StampsNumberField.new(
+          def lbs
+            (cache[:lbs].nil?||!cache[:lbs].present?)?cache[:lbs]=StampsNumberField.new(
                 browser.text_field(css: "[class*=mult] [name=WeightLbs]"),
                 browser.div(css: "[class*=mult] [class*=pounds] [class*=up]"),
-                browser.div(css: "[class*=mult] [class*=pounds] [class*=down]")):cache[:length]
+                browser.div(css: "[class*=mult] [class*=pounds] [class*=down]")):cache[:lbs]
           end
 
-          def ounces
-            (cache[:ounces].nil?||!cache[:ounces].present?)?cache[:ounces]=StampsNumberField.new(
+          def oz
+            (cache[:oz].nil?||!cache[:oz].present?)?cache[:oz]=StampsNumberField.new(
                 browser.text_field(css: "[class*=mult] [name=WeightOz]"),
                 browser.div(css: "[class*=mult] [class*=ounces] [class*=up]"),
-                browser.div(css: "[class*=mult] [class*=ounces] [class*=down]")):cache[:width]
+                browser.div(css: "[class*=mult] [class*=ounces] [class*=down]")):cache[:oz]
           end
 
           def checkbox
@@ -382,15 +382,15 @@ module Stamps
 
         # done
         def update_orders
-          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=::Body::Weight.new(param):cache[:weight]
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::Weight.new(param):cache[:weight]
         end
 
         def weight
-          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=::Body::Weight.new(param):cache[:weight]
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::Weight.new(param):cache[:weight]
         end
 
         def dimensions
-          (cache[:dimensions].nil?||!cache[:dimensions].present?)?cache[:dimensions]=::Body::Dimensions.new(param):cache[:dimensions]
+          (cache[:dimensions].nil?||!cache[:dimensions].present?)?cache[:dimensions]=Body::Dimensions.new(param):cache[:dimensions]
         end
       end
     end
