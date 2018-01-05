@@ -260,7 +260,7 @@ module Stamps
             when :apply_bulk_action
               return "Apply Bulk Action"
             else
-              # raise an exception instead  of expect([:combine_orders, :split_order, :apply_bulk_action]).to include(selection)
+              raise "Invalid selection: #{str}"
           end
         end
 
