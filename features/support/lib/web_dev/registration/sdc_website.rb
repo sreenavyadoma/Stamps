@@ -1,6 +1,6 @@
 module Stamps
   module Registration
-    class SdcWebsite < Browser::Base
+    class SdcWebsite < Browser::BaseCache
       attr_reader :get_started_btn, :registration
       def initialize(param)
         super

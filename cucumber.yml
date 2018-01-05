@@ -1,4 +1,4 @@
-default: --backtrace --profile rob_cc
+default: --backtrace --profile mhossain_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -11,6 +11,10 @@ rob_mail_cc:  --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=cctru
 rob_mail_stg: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=stgee1mtqvwdc0 PW=pass111 URL=stg --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false PRINTER=factory
 rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=default PW=pass111 URL=sc --guess DEBUG=true HEALTHCHECK=false BROWSER=ff MAX_WINDOW=false
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
+
+#todo-Rob WebReg consider removing webapp, username, password fields
+mhossain_cc: --tags @registration_orders WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=stgee1mtqvwdc0 PW=pass111
+
 
 #Kaushal=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
 ks_cc: --tags @print_dialog_ship_date WEB_APP=orders JENKINS=true URL=cc DEBUG=true HEALTHCHECK=true BROWSER=ff MAX_WINDOW=false USR=cctruer0u PW=pass111 PRINTER=factory
