@@ -14,6 +14,10 @@ module Stamps
       def orders_settings_modal
         (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=OrdersSettings::OrdersSettingsModal.new(param):cache[:orders_settings]
       end
+
+      def split_order_modal
+        (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=SplitOrder::Modal.new(param):cache[:split_order]
+      end
     end
     
     module TermsAndConditions
