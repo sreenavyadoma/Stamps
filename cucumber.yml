@@ -13,7 +13,7 @@ rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=defaul
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 #todo-Rob WebReg consider removing webapp, username, password fields
-mhossain_cc: --tags @registration_orders WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=stgee1mtqvwdc0 PW=pass111
+mhossain_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=stgee1mtqvwdc0 PW=pass111
 
 
 #Kaushal=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
