@@ -29,7 +29,7 @@ Then /^[Ss]et [Mm]ail [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
 end
 
 Then /^[Cc]lose [Mm]ail [Pp]rint [Mm]odal$/ do
-  stamps.mail.mail_toolbar.mail_print_modal.x_button.click
+  stamps.mail.mail_toolbar.mail_print_modal.x_button.click #todo-Rob refactor Print Modal to stamps.mail.modals.mail_print_modal
 end
 
 Then /^[Ee]xpect [Mm]ail [Pp]rint modal is present$/ do
