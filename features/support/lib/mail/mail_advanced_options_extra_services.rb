@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::Base
+      class MailExtraServices < Browser::Base #todo-Rob implement caching MailExtraServices
         attr_accessor :window_title, :security, :value, :handling, :save_field, :close_field, :security_price_field, :return_receipt_price_field,
                       :restricted_delivery_price_field, :cod_price_field, :non_delivery_notice_price_field, :content_price_field,
                       :special_handling_price_field, :merchandise_return_receipt_field, :total_price_field
@@ -113,6 +113,15 @@ module Stamps
           @return_receipt
         end
 
+        def electronic_return_receipt
+          if @electronic_return_receipt.nil?||!@electronic_return_receipt.present?
+            checkbox=browser.span(id: "sdc-extraserviceswin-rrecheckbox-displayEl")
+            verify=browser.div(id: 'sdc-extraserviceswin-rrecheckbox')
+            @electronic_return_receipt=StampsCheckbox.new(checkbox, verify, "class", "checked")
+          end
+          @electronic_return_receipt
+        end
+
         def restricted_delivery
           if @restricted_delivery.nil?||!@restricted_delivery.present?
             checkbox=browser.span(id: "sdc-extraserviceswin-rdcheckbox-displayEl")
@@ -169,15 +178,26 @@ module Stamps
         end
       end
 
-      class ValueMustBeShown < Browser::Base
+      class ValueMustBeShown < Browser::Base #This class represents the Postage Value Must be Shown modal. It appears when hidden postage has been checked and the user tries to add an extra service that is incompatible with hidden postage
+
         def continue
-          (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(
-              browser.span(text: "Continue")):cache[:continue]
+          (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(browser.span(text: "Continue")):cache[:continue]
         end
 
         def cancel
-          (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(
-              browser.span(text: "Cancel")):cache[:cancel]
+          (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(browser.span(text: "Cancel")):cache[:cancel]
+        end
+      end
+
+      class SpecialContentsWarning < Browser::Base #This class represents the Special Contents Warning modal. It appears when the extra service "Live Animal" or "live Animal (with fee)" is selected
+        def i_agree
+          (cache[:i_agree].nil?||!cache[:i_agree].present?)?cache[:i_agree]=StampsField.new(
+              browser.span(text: "I Agree")):cache[:i_agree]
+        end
+
+        def cancel
+          (cache[:more_info].nil?||!cache[:more_info].present?)?cache[:more_info]=StampsField.new(
+              browser.a(text: "More Info")):cache[:more_info]
         end
       end
     end
