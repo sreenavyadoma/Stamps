@@ -1,6 +1,6 @@
 
 Then /^[Bb]lur out on [Pp]rofile [Pp]age$/ do
-  registration.profile.header.blur_out
+  registration.profile.header.blur_out #todo-Rob change blur out to do iteration here
 end
 
 Then /^[Pp]opulate all [Pp]rofile page required fields$/ do
