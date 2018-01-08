@@ -411,4 +411,3 @@ Then /^[Ee]xpect Advanced Options Print Reference # is unchecked$/ do
   step "Expect Advanced Options responds to Print Reference (print_reference_number)"
   expect(stamps.mail.print_form.advanced_options.print_reference_number.checked?).not_to be(true), "Advanced Options Print Reference # is NOT unchecked"
 end
-

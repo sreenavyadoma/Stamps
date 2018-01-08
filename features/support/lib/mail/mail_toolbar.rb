@@ -5,7 +5,7 @@ module Stamps
       #include Stamps::Mail::MailModals::PrintIncompleteFields
 
       attr_reader :total, :mail_print_modal, :install_stamps_connect, :confirm_window, :please_wait, :windows_print, :sample_button,
-                  :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning
+                  :printing_problem, :insufficient_funds, :print_label, :print_stamps, :print_envelope, :print_quantity_warning, :hidden_postage_warning
 
       def initialize(param)
         super
@@ -18,6 +18,7 @@ module Stamps
         @printing_problem=PrintingProblem.new(param)
         @insufficient_funds=MailInsufficientFunds.new(param)
         @print_quantity_warning=PrintQuantityWarning.new(param)
+        @hidden_postage_warning=HiddenPostageWarning.new(param)
       end
 
       def totals_field
