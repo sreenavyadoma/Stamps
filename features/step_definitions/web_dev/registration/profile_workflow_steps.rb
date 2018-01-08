@@ -19,6 +19,7 @@ Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
   #expect(['Abc', 'D']).to include('Y')
   registration.profile.email.set(test_param[:email]=(str.nil?)?(test_helper.random_email):str)
   step "blur out on profile page"
+
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Uu]sername to (?:random value|(.*))$/ do |str|
@@ -32,6 +33,7 @@ end
 
 Then /^[Ee]xpect [Pp]rofile [Pp]age [Uu]sername is (?:correct|(.*))$/ do |str|
   expect(registration.profile.account_username.text).to eql((str.nil?)?test_param[:username]:str)
+
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]assword to (?:random value|(.*))$/ do |str|

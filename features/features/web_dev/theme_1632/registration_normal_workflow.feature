@@ -14,7 +14,6 @@ Feature: Test Workflow - Theme 1632 Happy Path
     Then set How did you hear about us? to Magazine Ad
     Then set Profile page Promo Code to PR33-NH77
     Then continue to Membership page
-
     # Membership Page
     Then set Membership page member address to random address between zone 1 and 4
     Then set Membership page Company to random value
