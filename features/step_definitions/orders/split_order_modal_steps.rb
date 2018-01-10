@@ -32,5 +32,5 @@ Then /^[Cc]lick [Ss]plit [Oo]rder modal confirm button$/ do
 end
 
 Then /[Ee]xpect new order from [Ss]plit [Oo]rder modal is selected in orders grid$/ do
-  expect(stamps.orders.single_order_details.toolbar.order_id).to eql test_param[:split_order_id] #confirm the order id in the single order details form matches the saved new order id
+  expect(stamps.orders.order_details.toolbar.order_id).to eql test_param[:split_order_id] #confirm the order id in the single order details form matches the saved new order id
 end

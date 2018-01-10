@@ -17,7 +17,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Store is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Order ID is the same as Details Form Order ID$/ do
-  expect(stamps.orders.single_order_details.toolbar.order_id).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
+  expect(stamps.orders.order_details.toolbar.order_id).to eql(stamps.orders.orders_grid.grid_column(:order_id).row(1))
 end
 
 Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
@@ -26,7 +26,7 @@ Then /^[Ee]xpect cached Order ID is in [Oo]rders [Gg]rid [Rr]ow (\d+)$/ do |row|
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost is the same as Details Form Ship Cost$/ do
-  expect(stamps.orders.single_order_details.footer.total_ship_cost).to eql(stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last))
+  expect(stamps.orders.order_details.footer.total_ship_cost).to eql(stamps.orders.orders_grid.grid_column(:ship_cost).data(test_param[:order_id].values.last))
 end
 
 When /^[Cc]heck(?: [O]rders)?(?: [Gg]rid)? [Rr]ow (\d+)$/ do |row|

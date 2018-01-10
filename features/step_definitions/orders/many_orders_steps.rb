@@ -22,7 +22,7 @@ Then /^Create (\d+) new orders with Address set to (.*) and service set to (.*)$
     #SETTING SERVICE
     #step "set Order Details service to #{service}"
     #test_config.logger.step "set Order Details service to #{service}"
-    batch.single_order_details.service.select service
+    batch.order_details.service.select service
     #test_config.logger.step "Order #{iteration} created."
     sleep(0.35)
   }

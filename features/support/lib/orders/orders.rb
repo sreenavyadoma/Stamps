@@ -22,7 +22,7 @@ module Stamps
         (cache[:orders_grid].nil?||!cache[:orders_grid].present?)?cache[:orders_grid]=Orders::Grid::OrdersGrid.new(param):cache[:orders_grid]
       end
 
-      def single_order_details
+      def order_details
         (cache[:single_order].nil?||!cache[:single_order].present?)?cache[:single_order]=Orders::Details::SingleOrderDetails.new(param):cache[:single_order]
       end
 
