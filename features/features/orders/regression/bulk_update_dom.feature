@@ -30,18 +30,27 @@ Feature: Bulk Update Domestic
 #    Then check order 1
 #    Then check order 2
 
+    #Updating order details
+    #Then set Bulk Update Ship From to default
+    #todo-BulkUpdate missing expectation for Ship From
 
     Then check row 1
     Then check row 2
+    Then set Bulk Update service to PME Package
 
-    #Updating order details
-    Then set Bulk Update Ship From to default
-    #todo-BulkUpdate missing expectation for Ship From
+    Then uncheck row 2
+    Then expect order details service is PME Package
+    Then set order details service to PM Large Package
+
+    Then check row 2
+    Then set Bulk Update service to PME Padded Flat Rate Envelope
+
+    Then uncheck row 2
+    Then set Bulk Update service to PME Package
+    Then check row 2
 
 
-
-
-    #Then set Bulk Update Domestic service to PME Package
+    Then set Bulk Update Domestic service to PME Package
     #todo-BulkUpdate missing expectation for Domestic service
 
     # set weight
@@ -101,7 +110,7 @@ Feature: Bulk Update Domestic
 
     #verify fields in 1st order
     #Then check Orders Grid row 1
-    #Then expect Order Details form Ship From is correct
+    #Then expect Order Details Ship From is correct
     #Then expect Orders Grid service is PME Package
 
     #Then uncheck order 1
@@ -115,9 +124,9 @@ Feature: Bulk Update Domestic
 
     #verify fields in 2nd order
     #Then check order 2
-    #Then expect Order Details form Ship From is correct
+    #Then expect Order Details Ship From is correct
     #Then expect Orders Grid service is PME Package
-    #Then expect Order Details form Pound is 2
+    #Then expect Order Details Pound is 2
 
     Then Sign out
 
@@ -155,15 +164,15 @@ Feature: Bulk Update Domestic
 
       #verify fields in 1st order
       Then check Orders Grid row 1
-      Then expect Order Details form Ship From is default
+      Then expect Order Details Ship From is default
       Then expect Orders Grid service is PME Package
-      #Then expect Order Details form Pound is 2
+      #Then expect Order Details Pound is 2
       Then uncheck Orders Grid row 1
 
       #verify fields in 2nd order
       Then check Orders Grid row 2
-      Then expect Order Details form Ship From is correct
+      Then expect Order Details Ship From is correct
       Then expect Orders Grid service is PME Package
-      #Then expect Order Details form Pound is 2
+      #Then expect Order Details Pound is 2
 
       Then Sign out

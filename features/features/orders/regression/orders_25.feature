@@ -38,7 +38,7 @@ Feature: 25 orders
 
     # First Class Mail
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 1
@@ -51,7 +51,7 @@ Feature: 25 orders
     Then check Orders Grid row 1
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 2
@@ -65,7 +65,7 @@ Feature: 25 orders
 
     #Priority Mail
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then check Orders Grid row 1
@@ -77,7 +77,7 @@ Feature: 25 orders
     Then set Order Details Tracking to USPS Tracking
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 4
@@ -88,7 +88,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 5
@@ -100,7 +100,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 6
@@ -111,7 +111,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 7
@@ -123,7 +123,7 @@ Feature: 25 orders
     Then set Order Details Tracking to USPS Tracking
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 8
@@ -134,7 +134,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 9
@@ -146,7 +146,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 10
@@ -158,7 +158,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 11
@@ -170,7 +170,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 12
@@ -182,7 +182,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 13
@@ -194,7 +194,7 @@ Feature: 25 orders
     Then set Order Details Tracking to USPS Tracking
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 14
@@ -206,7 +206,7 @@ Feature: 25 orders
 
     # Priority Mail Express
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 15
@@ -217,7 +217,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 16
@@ -228,7 +228,7 @@ Feature: 25 orders
     Then set Order Details Tracking to USPS Tracking
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 17
@@ -239,7 +239,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 18
@@ -250,7 +250,7 @@ Feature: 25 orders
     Then set Order Details Tracking to USPS Tracking
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 19
@@ -262,7 +262,7 @@ Feature: 25 orders
 
     # Media Mail
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 20
@@ -275,7 +275,7 @@ Feature: 25 orders
 
     # Parcel Select
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 21
@@ -287,7 +287,7 @@ Feature: 25 orders
     Then set Order Details Tracking to USPS Tracking
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 22
@@ -299,7 +299,7 @@ Feature: 25 orders
     Then set Order Details Tracking to Signature Required
 
     Then add new order
-    Then expect Order Details form Order ID is truthy
+    Then expect Order Details Order ID is truthy
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 23

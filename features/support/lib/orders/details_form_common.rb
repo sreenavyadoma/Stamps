@@ -1,5 +1,19 @@
 module Stamps
   module Orders
+    module Services
+      class Base < Browser::FloatingBoundList
+        BULK_UPDATE=:bulk_update
+        ORDER_DETAILS=:single_order
+        def selection_field(form, str)
+          browser.tds(css "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")[get(form)]
+        end
+
+        def lov_count(str)
+          browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text").size
+        end
+      end
+    end
+
     module DetailsFormCommon
 
       class DetailsFormDimensions < Browser::Base
@@ -197,9 +211,7 @@ module Stamps
         end
 
         def select(str)
-          logger.info "Select service #{str}"
           sleep(0.35)
-
           dropdown.click
           10.times do
             begin

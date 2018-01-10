@@ -1,9 +1,7 @@
 module Stamps
   module Browser
-    class ModalParam
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
-                    :developer, :debug, :browser, :firefox_profile, :printer, :browser_str, :hostname
-    end
+    Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url,
+                       :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname)
 
     module Cache
       class << self
@@ -37,6 +35,55 @@ module Stamps
 
       def browser
         self.class.browser
+      end
+    end
+
+    class FloatingBoundList < BaseCache
+      @@hash={}
+      class << self
+        def set(key, val)
+          @@hash[key.to_sym]=val
+        end
+
+        def get(key)
+          @@hash[key.to_sym]
+        end
+
+        def has_key?(key)
+          @@hash.has_key?(key.to_sym)
+        end
+
+        def keys
+          @@hash.keys
+        end
+
+        def values
+          @@hash.values
+        end
+      end
+
+      def initialize(param)
+        super
+      end
+
+      def set(key, val)
+        self.class.set(key, val)
+      end
+
+      def get(key)
+        self.class.get(key)
+      end
+
+      def has_key?(key)
+        self.class.has_key?(key.to_sym)
+      end
+
+      def keys
+        self.class.keys
+      end
+
+      def values
+        self.class.values
       end
     end
 

@@ -7,7 +7,7 @@ module Stamps
       module PresetMenu
       end
 
-      module Body
+      module Fields
         class Dimensions < Browser::BaseCache
           assign({})
           def cache
@@ -81,24 +81,11 @@ module Stamps
           end
         end
 
-        class ListOfValues < Browser::Base
-          class << self
-            @@lov={}
-            def lov
-              @@lov
-            end
-          end
-        end
-
-        class ShipFrom < Browser::ListOfValues
+        class ShipFrom < Browser::FloatingBoundList
           attr_reader :form_type
           def initialize(param, form_type)
             super(param)
             @form_type=form_type
-          end
-
-          def lov
-            self.class.lov
           end
 
           def manage_shipping_address
@@ -117,6 +104,11 @@ module Stamps
           end
 
           def select(str)
+            blah unless get(:order_details) && get(:bulk_update)
+            # 1.If lov is nil, set lov[bulk:]=1
+            # 2. if lov is not nil and lov does not contain bulk key and single key exist with value 1, then set bulk key to 2 ()i.e lov[bulk:]=lov[single:]+1), else lov[bulk:]
+
+
             return manage_shipping_address if manage_shipping_address.present?
             dropdown.click
             sleep(0.5)
@@ -144,7 +136,95 @@ module Stamps
           end
         end
 
+        class Service < Services::Base
+          assign({})
+          def cache
+            self.class.cache
+          end
 
+          def textbox
+            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+                browser.text_field(css: "[class*=domestic-service-row] [name=service]")):cache[:textbox]
+          end
+
+          def dropdown
+            (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
+                browser.div(css: "[class*=domestic] [id$=trigger-picker]")):cache[:dropdown]
+          end
+
+          def select(str)
+            dropdown.click
+            set(BULK_UPDATE, 0) if get(BULK_UPDATE).nil? && get(ORDER_DETAILS).nil? # first time drop-down is clicked
+            set(BULK_UPDATE, values.max+1) if get(BULK_UPDATE).nil? && !get(ORDER_DETAILS).nil? && lov_count(str)==1 # order details form services had been clicked, first time for bulk update
+            selection = selection_field(BULK_UPDATE, str)
+            10.times do
+              begin
+                dropdown.click unless selection.present?
+                selection.scroll_into_view
+                sleep(0.2)
+                selection.click
+                sleep(0.15)
+                break if textbox.text.include?(str)
+              rescue
+                #ignore
+              end
+            end
+            textbox.text
+          end
+
+          def tooltip(selection)
+            button=dropdown
+            selection_label=StampsField.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
+            10.times do
+              begin
+                button.click unless selection_label.present?
+                sleep(0.15)
+                if selection_label.present?
+                  tooltip=selection_label.attribute_value("data-qtip")
+                  logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+                  return tooltip if tooltip.include? "<strong>"
+                end
+              rescue
+                #ignore
+              end
+            end
+            blur_out
+          end
+
+          def disabled?(service)
+            @details_services=data_for(:orders_services, {})
+            selection_label=StampsField.new(browser.li(id: "#{@details_services[service]}"))
+
+            10.times do |index|
+              dropdown.click unless selection_label.present?
+              sleep(0.35)
+              if selection_label.present?
+                disabled_field=StampsField.new(selection_label.element.parent.parent.parent)
+                begin
+                  if selection_label.present?
+                    if disabled_field.present?
+                      result=disabled_field.attribute_value("class").include? "disabled"
+                      sleep(0.35)
+                      result=disabled_field.attribute_value("class").include? "disabled"
+                      result=disabled_field.attribute_value("class").include? "disabled"
+                      dropdown.click
+                      return result
+                    end
+                  end
+                rescue
+                  #ignore
+                end
+              else
+                sleep(0.35)
+                return true if index==5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
+              end
+            end
+          end
+
+          def enabled? service
+            !(disabled? service)
+          end
+        end
 
 
 
@@ -437,7 +517,7 @@ module Stamps
         end
 
         def domestic_service
-          @multi_dom_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_dom)
+          @multi_dom_service=Fields::Service.new(param)
         end
 
         def international_service
@@ -446,15 +526,15 @@ module Stamps
 
         # done
         def update_orders
-          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::Weight.new(param):cache[:weight]
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Fields::Weight.new(param):cache[:weight]
         end
 
         def weight
-          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Body::Weight.new(param):cache[:weight]
+          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Fields::Weight.new(param):cache[:weight]
         end
 
         def dimensions
-          (cache[:dimensions].nil?||!cache[:dimensions].present?)?cache[:dimensions]=Body::Dimensions.new(param):cache[:dimensions]
+          (cache[:dimensions].nil?||!cache[:dimensions].present?)?cache[:dimensions]=Fields::Dimensions.new(param):cache[:dimensions]
         end
       end
     end

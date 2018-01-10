@@ -12,15 +12,15 @@ Feature: All International Rules
     Then set Order Details Ship-To Country to Australia
     Then check Orders Grid row 1
 
-    Then expect Order Details form International Name data error tooltip is "A first and last name of at least two characters each is required"
-    Then expect Order Details form International Company data error tooltip is "Company name must be at least two characters long"
-    Then expect Order Details form International Address 1 data error tooltip is "The ship to address is a required field"
-    Then expect Order Details form International City data error tooltip is "The ship to city is a required field"
-    Then expect Order Details form International Phone data error tooltip is "A valid phone number is required"
+    Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
+    Then expect Order Details International Company data error tooltip is "Company name must be at least two characters long"
+    Then expect Order Details International Address 1 data error tooltip is "The ship to address is a required field"
+    Then expect Order Details International City data error tooltip is "The ship to city is a required field"
+    Then expect Order Details International Phone data error tooltip is "A valid phone number is required"
 
-    Then expect Order Details form service data error tooltip is "Service is required"
-    Then expect Order Details form Weight Lbs data error tooltip is "Weight cannot be 0"
-    Then expect Order Details form Weight Oz data error tooltip is "Weight cannot be 0"
+    Then expect Order Details service data error tooltip is "Service is required"
+    Then expect Order Details Weight Lbs data error tooltip is "Weight cannot be 0"
+    Then expect Order Details Weight Oz data error tooltip is "Weight cannot be 0"
     Then Sign out
 
 
@@ -100,10 +100,10 @@ Feature: All International Rules
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To Country to Japan
 
-    Then expect Order Details form International Address fields are visible
-    Then expect Order Details form Domestic Ship-To fields are hidden
-    Then expect Order Details form Customs Restrictions button is visible
-    Then expect Order Details form Customs Customs Form button is visible
+    Then expect Order Details International Address fields are visible
+    Then expect Order Details Domestic Ship-To fields are hidden
+    Then expect Order Details Customs Restrictions button is visible
+    Then expect Order Details Customs Customs Form button is visible
 
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
@@ -348,17 +348,17 @@ Feature: All International Rules
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To Country to Antigua & Barbuda
     Then set Order Details International Ship-To Name to "a"
-    Then expect Order Details form International Name data error tooltip is "A first and last name of at least two characters each is required"
+    Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
 
 
     Then set Order Details Ship-From to default
     Then set Order Details International Ship-To Name to "abc def"
-    Then expect Order Details form International Name data error tooltip is ""
-    #Then expect Order Details form International Company data error tooltip is ""
+    Then expect Order Details International Name data error tooltip is ""
+    #Then expect Order Details International Company data error tooltip is ""
     #Then set Order Details International Ship-To Name to ""
     #Then set Order Details International Ship-To Company to "a"
-    #Then expect Order Details form International Company data error tooltip is "Company name must be at least two characters long"
+    #Then expect Order Details International Company data error tooltip is "Company name must be at least two characters long"
     #Then set Order Details International Ship-To Name to "a"
     #Then set Order Details International Ship-To Company to ""
-    #Then expect Order Details form International Name data error tooltip is "A First Name and Last Name or Company are required"
-    #Then expect Order Details form International Company data error tooltip is "A First Name and Last Name or Company are required"
+    #Then expect Order Details International Name data error tooltip is "A First Name and Last Name or Company are required"
+    #Then expect Order Details International Company data error tooltip is "A First Name and Last Name or Company are required"

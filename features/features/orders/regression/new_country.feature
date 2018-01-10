@@ -13,7 +13,7 @@ Feature:  Print new country orders
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country                          | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Bonaire, Sint Eustatius and Saba | random  | random  |
 
-    Then expect Order Details form Ship-To Country is Bonaire, Sint Eustatius and Saba
+    Then expect Order Details Ship-To Country is Bonaire, Sint Eustatius and Saba
     Then set Order Details service to FCMI Large Envelope
     Then set Order Details Ounces to 2
     Then set Order Details Pounds to 2
@@ -39,7 +39,7 @@ Feature:  Print new country orders
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code| country | phone   |  email  |
       | random | random  | random           | random           | random | random  | 12345      | Curacao | random  | random  |
 
-    Then expect Order Details form Ship-To Country is Curacao
+    Then expect Order Details Ship-To Country is Curacao
     Then set Order Details service to FCMI Large Envelope
     Then set Order Details Ounces to 2
     Then set Order Details Pounds to 2

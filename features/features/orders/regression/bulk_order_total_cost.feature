@@ -32,6 +32,6 @@ Feature: Total Cost of Multiple Orders
     Then check Orders Grid row 3
 
 
-    Then expect Order Details form Multiple Order Total Cost is $17.25
+    Then expect Order Details Multiple Order Total Cost is $17.25
 
 

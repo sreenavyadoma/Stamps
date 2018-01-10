@@ -85,16 +85,16 @@ Feature:  BVT tests for Orders
 
   # verify fields in 1st order
     Then check order 1
-    Then expect Order Details form Ship From is correct
-    Then expect Order Details form service is correct
+    Then expect Order Details Ship From is correct
+    Then expect Order Details service is correct
     Then Pause for 1 second
     Then uncheck order 1
     Then Pause for 1 second
 
   # verify fields in 2nd order
     Then check order 2
-    Then expect Order Details form Ship From is correct
-    Then expect Order Details form international service is correct
+    Then expect Order Details Ship From is correct
+    Then expect Order Details international service is correct
     Then uncheck order 2
     Then Sign out
 
@@ -206,8 +206,8 @@ Feature:  BVT tests for Orders
     Then expect Filter Panel search result count is 1
 
   #Then check orders grid cached order id
-    Then expect Order Details form Order ID equals Grid Oder ID in row 1
-    Then expect Order Details form Order ID is the same as saved Order ID
+    Then expect Order Details Order ID equals Grid Oder ID in row 1
+    Then expect Order Details Order ID is the same as saved Order ID
 
     Then expect Filter Panel search result count is greater than 0
     Then remove Filter Panel search results tab
@@ -253,34 +253,34 @@ Feature:  BVT tests for Orders
     Then blur out on Order Details form 20 times
 
   #Verify Single Order Details form was saved in ShipStation
-    Then expect Order Details form Ship-From and Ship-From saved values are the same
+    Then expect Order Details Ship-From and Ship-From saved values are the same
 
-    Then expect Order Details form Ship-To Name is First Last
-    Then expect Order Details form Ship-To Company Name is Company Name
-    Then expect Order Details form Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
-    Then expect Order Details form Ship-To Cleansed City is Orlando
-    Then expect Order Details form Ship-To Cleansed State is FL
-    Then expect Order Details form Ship-To Cleansed Zip Plus 4 Code is 32801-1175
-    Then expect Order Details form Ship-To Cleansed Zip Code is 32801
-    Then expect Order Details form Ship-To Phone is 888-888-8888
-    Then expect Order Details form Ship-To Email is rtest@stamps.com
+    Then expect Order Details Ship-To Name is First Last
+    Then expect Order Details Ship-To Company Name is Company Name
+    Then expect Order Details Ship-To Cleansed Street Address is 777 N Orange Ave Apt 100
+    Then expect Order Details Ship-To Cleansed City is Orlando
+    Then expect Order Details Ship-To Cleansed State is FL
+    Then expect Order Details Ship-To Cleansed Zip Plus 4 Code is 32801-1175
+    Then expect Order Details Ship-To Cleansed Zip Code is 32801
+    Then expect Order Details Ship-To Phone is 888-888-8888
+    Then expect Order Details Ship-To Email is rtest@stamps.com
 
-    Then expect Order Details form Pound is 1
-    Then expect Order Details form Ounce is 1
+    Then expect Order Details Pound is 1
+    Then expect Order Details Ounce is 1
 
-    Then expect Order Details form Length is 1
-    Then expect Order Details form Width is 1
-    Then expect Order Details form Height is 1
+    Then expect Order Details Length is 1
+    Then expect Order Details Width is 1
+    Then expect Order Details Height is 1
 
-    Then expect Order Details form Service Cost is correct
+    Then expect Order Details Service Cost is correct
 
-    Then expect Order Details form Insure-For is 100.00
-    Then expect Order Details form Insure-For Cost is correct
+    Then expect Order Details Insure-For is 100.00
+    Then expect Order Details Insure-For Cost is correct
 
-    Then expect Order Details form Tracking is correct
-    Then expect Order Details form Tracking Cost is correct
+    Then expect Order Details Tracking is correct
+    Then expect Order Details Tracking Cost is correct
 
-    Then expect Order Details form Reference Number is correct
+    Then expect Order Details Reference Number is correct
 
     Then expect Orders Grid Store is Manual Orders
     Then expect Orders Grid Order ID is the same as Details Form Order ID
@@ -328,7 +328,7 @@ Feature:  BVT tests for Orders
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country| phone         |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | India  | Random phone  | Random email  |
 
-    Then expect Order Details form Ship-To Country is correct
+    Then expect Order Details Ship-To Country is correct
     Then set Order Details Weight to 2 lb 2 oz
     Then set Order Details service to PMI Package
     Then set Order Details Insure-For to $100.25
@@ -380,37 +380,37 @@ Feature:  BVT tests for Orders
     Then check orders grid cached order id
     Then Pause for 2 seconds
 
-    Then expect Order Details form International Ship-To Name is correct
-    Then expect Order Details form International Ship-To Company is correct
-    Then expect Order Details form International Ship-To Address 1 is correct
-    Then expect Order Details form International Ship-To Address 2 is correct
-    Then expect Order Details form International Ship-To City is correct
-    Then expect Order Details form International Ship-To Province is correct
-    Then expect Order Details form International Ship-To Postal Code is correct
-    Then expect Order Details form International Ship-To Phone is correct
-    Then expect Order Details form International Ship-To Email is correct
+    Then expect Order Details International Ship-To Name is correct
+    Then expect Order Details International Ship-To Company is correct
+    Then expect Order Details International Ship-To Address 1 is correct
+    Then expect Order Details International Ship-To Address 2 is correct
+    Then expect Order Details International Ship-To City is correct
+    Then expect Order Details International Ship-To Province is correct
+    Then expect Order Details International Ship-To Postal Code is correct
+    Then expect Order Details International Ship-To Phone is correct
+    Then expect Order Details International Ship-To Email is correct
 
-    Then expect Order Details form Reference Number is correct
-    Then expect Order Details form Service Cost is correct
+    Then expect Order Details Reference Number is correct
+    Then expect Order Details Service Cost is correct
 
-    Then expect Order Details form Pounds is 2
-    Then expect Order Details form Ounces is 2
+    Then expect Order Details Pounds is 2
+    Then expect Order Details Ounces is 2
 
-    Then expect Order Details form Associated Item 1 Qty is 1
-    Then expect Order Details form Associated Item 1 ID is ID 1
-    Then expect Order Details form Associated Item 1 Description is Description 1
+    Then expect Order Details Associated Item 1 Qty is 1
+    Then expect Order Details Associated Item 1 ID is ID 1
+    Then expect Order Details Associated Item 1 Description is Description 1
 
-    Then expect Order Details form Associated Item 2 Qty is 2
-    Then expect Order Details form Associated Item 2 ID is correct
-    Then expect Order Details form Associated Item 2 Description is correct
+    Then expect Order Details Associated Item 2 Qty is 2
+    Then expect Order Details Associated Item 2 ID is correct
+    Then expect Order Details Associated Item 2 Description is correct
 
 
-    Then expect Order Details form Associated Item 3 Qty is 3
-    Then expect Order Details form Associated Item 3 ID is ID 3
-    Then expect Order Details form Associated Item 3 Description is correct
+    Then expect Order Details Associated Item 3 Qty is 3
+    Then expect Order Details Associated Item 3 ID is ID 3
+    Then expect Order Details Associated Item 3 Description is correct
 
-    Then expect Order Details form Insure-For is correct
-    Then expect Order Details form Insure-For Cost is correct
+    Then expect Order Details Insure-For is correct
+    Then expect Order Details Insure-For Cost is correct
     Then click Order Details form Customs Form button
     Then Pause for 2 second
     Then expect Customs form Package Contents is Commercial Sample
@@ -460,7 +460,7 @@ Feature:  BVT tests for Orders
     Then expect Orders Grid service is Priority Mail International
     Then expect Orders Grid Pounds is correct
     Then expect Orders Grid Ounces is correct
-    Then expect Order Details form Insure-For is correct
+    Then expect Order Details Insure-For is correct
     Then expect Orders Grid Order Status is Awaiting Shipment
 
     Then Pause for 2 second

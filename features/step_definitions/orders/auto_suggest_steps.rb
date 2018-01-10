@@ -13,7 +13,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, select Ship-To auto-suggest item (\d+)$/ 
   @auto_suggest.select(item_number)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails form auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
+Then /^[Ee]xpect [Oo]rder [Dd]etails auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
   step "set Order Details form Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
   @found_item=false
   selection="#{firstname} #{lastname}, #{company}"

@@ -9,10 +9,10 @@ Feature: Domestic Address
     Then add new order
     #Matching first name
     Then set Order Details Ship-To auto-suggest address to partial name Firstname
-    Then expect Order Details form auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
+    Then expect Order Details auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
     Then on Order Details form, select Ship-To auto-suggest item 1
-    Then expect Order Details form Domestic Ship-To Name is Firstname Lastname
-    Then expect Order Details form Domestic Ship-To Company is CompanyNameZoneOne
+    Then expect Order Details Domestic Ship-To Name is Firstname Lastname
+    Then expect Order Details Domestic Ship-To Company is CompanyNameZoneOne
     Then Sign out
 
   @auto_suggest_international
@@ -20,17 +20,17 @@ Feature: Domestic Address
     Then add new order
     Then set Order Details Ship-To Country to Italy
     Then set Order Details International Ship-To auto-suggest address to partial name Com
-    Then expect Order Details form auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
-    Then expect Order Details form auto-suggest pop-up entry for Firstname Venice, Lastname Florence, Company CompanyNameInternational
+    Then expect Order Details auto-suggest pop-up entry for Firstname Firstname, Lastname Lastname, Company CompanyNameZoneOne
+    Then expect Order Details auto-suggest pop-up entry for Firstname Venice, Lastname Florence, Company CompanyNameInternational
     Then on Order Details form, select Ship-To auto-suggest item 1
     Then set Order Details International Ship-To auto-suggest address to partial name Flo
     Then on Order Details form, select Ship-To auto-suggest item 1
-    Then expect Order Details form Ship-To Name is Venice Florence
-    Then expect Order Details form International Ship-To Company is CompanyNameInternational
-    Then expect Order Details form International Ship-To Address 1 is Italian Street address
-    Then expect Order Details form International Ship-To City is ItalianCity
-    Then expect Order Details form International Ship-To Province is Rome
-    Then expect Order Details form International Ship-To Postal Code is Pisa
-    Then expect Order Details form Ship-To Phone is 41511111111
-    Then expect Order Details form Ship-To Email is autosuggest001.2@mailinator.com
+    Then expect Order Details Ship-To Name is Venice Florence
+    Then expect Order Details International Ship-To Company is CompanyNameInternational
+    Then expect Order Details International Ship-To Address 1 is Italian Street address
+    Then expect Order Details International Ship-To City is ItalianCity
+    Then expect Order Details International Ship-To Province is Rome
+    Then expect Order Details International Ship-To Postal Code is Pisa
+    Then expect Order Details Ship-To Phone is 41511111111
+    Then expect Order Details Ship-To Email is autosuggest001.2@mailinator.com
     Then Sign out
