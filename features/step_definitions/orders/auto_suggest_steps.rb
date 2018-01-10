@@ -9,12 +9,12 @@ Then /^[Ss]et [Oo]rder [Dd]etails International Ship-To auto-suggest address to 
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, select Ship-To auto-suggest item (\d+)$/ do |item_number|
-  step "set Order Details form Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+  step "set Order Details Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
   @auto_suggest.select(item_number)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails auto-suggest pop-up entry for Firstname (.*), Lastname (.*), Company (.*)$/ do |firstname, lastname, company|
-  step "set Order Details form Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
+  step "set Order Details Ship-To auto-suggest address to partial name #{@auto_suggest_partial_name}" unless @auto_suggest.present?
   @found_item=false
   selection="#{firstname} #{lastname}, #{company}"
   stamps.orders.single_order_details.ship_to.domestic.auto_suggest.auto_suggest_box.name_fields.each do |field|

@@ -72,7 +72,7 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsure [Aa]mount to (.+)$/ do |str|
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Tt]racking to (.+)$/ do |str|
-  #step "set Order Details form Tracking to \"USPS Tracking\""
+  #step "set Order Details Tracking to \"USPS Tracking\""
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|

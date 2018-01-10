@@ -24,9 +24,9 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Collapse Store Items Ordered pane$/ do
 end
 
 Then /^[Oo]n [Oo]rder [Dd]etails form, Add Item (\d+), Qty (\d+), ID (.+), Description (.*)$/ do |item_number, qty, id, description|
-  step "set Order Details form Associated Item #{item_number} Qty to #{qty}"
-  step "set Order Details form Associated Item #{item_number} ID to #{id}"
-  step "set Order Details form Associated Item #{item_number} Description to #{description}"
+  step "set Order Details Associated Item #{item_number} Qty to #{qty}"
+  step "set Order Details Associated Item #{item_number} ID to #{id}"
+  step "set Order Details Associated Item #{item_number} Description to #{description}"
 end
 
 Then /^[Aa]dd [Oo]rder [Dd]etails form Associated Item (\d+)$/ do |item_number|
@@ -153,8 +153,8 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Delete Item (\d+)$/ do |item_number|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Weight to (\d+) lb (\d+) oz$/ do |pounds, ounces|
-  step "set Order Details form Pounds to #{pounds}"
-  step "set Order Details form Ounces to #{ounces}"
+  step "set Order Details Pounds to #{pounds}"
+  step "set Order Details Ounces to #{ounces}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Pounds to (\d+)$/ do |str|
@@ -172,9 +172,9 @@ Then /^[Bb]lur out on [Oo]rder [Dd]etails form(?:| (\d+)(?:| times))$/ do |count
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Dd]imensions to [Ll]ength (\d+) [Ww]idth (\d+) [Hh]eight (\d+)$/ do |length, width, height|
-  step "set Order Details form Length to #{length}"
-  step "set Order Details form Width to #{width}"
-  step "set Order Details form Height to #{height}"
+  step "set Order Details Length to #{length}"
+  step "set Order Details Width to #{width}"
+  step "set Order Details Height to #{height}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ll]ength to (\d*)$/ do |str|
@@ -225,10 +225,6 @@ Then /^[Ss]et [Oo]rder [Dd]etails Tracking to (.*)$/ do |str|
   step "Save Order Details data"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [\w]orm Ship-From to (.+)$/ do |str|
-  test_param[:ship_from]=stamps.orders.single_order_details.single_ship_from.select(str)
-end
-
 Then /^[Ss]et [Oo]rder [Dd]etails Ship-From to (.+)$/ do |str|
   test_param[:ship_from]=stamps.orders.single_order_details.single_ship_from.select(str)
 end
@@ -237,7 +233,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in P
   country_list=data_for(:country_groups_PMEI_flat_rate, {})["group" + group].values
   test_param[:country]=country_list[rand(country_list.size)]
   test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
-  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMEI price group (.*)$/ do |group|
@@ -258,14 +254,14 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in P
   end
   test_param[:country]=country_name
   test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
-  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list=data_for(:country_groups_PMI_flat_rate, {})["group" + group].values
   test_param[:country]=country_list[rand(country_list.size)]
   test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
-  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMI price group (.*)$/ do |group|
@@ -286,7 +282,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in P
   end
   test_param[:country]=country_name
   test_config.logger.step "#{"#"*10} Desired Country: #{test_param[:country]}"
-  step "set Order Details form Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o International address to$/ do |table|
@@ -303,16 +299,16 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o International address to$/ do |t
   test_param[:phone]=(address_table['phone'].downcase.include?('random')) ? test_helper.random_phone_number : address_table['phone']
   test_param[:email]=(address_table['email'].downcase.include?('random')) ? test_helper.random_email : address_table['email']
 
-  step "set Order Details form Ship-To Country to #{test_param[:country]}"
-  step "set Order Details form International Ship-To Name to \"#{test_param[:full_name]}\""
-  step "set Order Details form International Ship-To Company to \"#{test_param[:company]}\""
-  step "set Order Details form International Ship-To Address 1 to \"#{test_param[:street_address_1]}\""
-  step "set Order Details form International Ship-To Address 2 to \"#{test_param[:street_address_2]}\""
-  step "set Order Details form International Ship-To City to \"#{test_param[:city]}\""
-  step "set Order Details form International Ship-To Province to \"#{test_param[:state]}\""
-  step "set Order Details form International Ship-To Postal Code to \"#{test_param[:zip]}\""
-  step "set Order Details form International Ship-To Phone to \"#{test_param[:phone]}\""
-  step "set Order Details form International Ship-To Email to \"#{test_param[:email]}\""
+  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details International Ship-To Name to \"#{test_param[:full_name]}\""
+  step "set Order Details International Ship-To Company to \"#{test_param[:company]}\""
+  step "set Order Details International Ship-To Address 1 to \"#{test_param[:street_address_1]}\""
+  step "set Order Details International Ship-To Address 2 to \"#{test_param[:street_address_2]}\""
+  step "set Order Details International Ship-To City to \"#{test_param[:city]}\""
+  step "set Order Details International Ship-To Province to \"#{test_param[:state]}\""
+  step "set Order Details International Ship-To Postal Code to \"#{test_param[:zip]}\""
+  step "set Order Details International Ship-To Phone to \"#{test_param[:phone]}\""
+  step "set Order Details International Ship-To Email to \"#{test_param[:email]}\""
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
@@ -338,8 +334,8 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Domestic address to$/ do |table|
   test_param[:country]=(address_table['country'].size==0)?"United States":address_table['country']
   test_param[:ship_to]="#{test_param[:full_name]},#{test_param[:company]},#{test_param[:street_address]},#{test_param[:street_address_2]} ,#{test_param[:city]} #{test_param[:state]} #{test_param[:zip]}"
 
-  step "set Order Details form Ship-To Country to #{test_param[:country]}"
-  step "set order details form Ship-To text area to #{test_param[:ship_to]}"
+  step "set Order Details Ship-To Country to #{test_param[:country]}"
+  step "set Order Details Ship-To text area to #{test_param[:ship_to]}"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o text area to (.*)$/ do |address|
