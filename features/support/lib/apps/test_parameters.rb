@@ -28,8 +28,7 @@ module Stamps
 
     def modal_param
       if @modal_param.nil?
-        @modal_param ||= ModalParam.new
-
+        @modal_param ||= Param.new
         @modal_param.hostname=Socket.gethostname
         expect(ENV['BROWSER']).to_not be(nil), "Browser is not defined, check your cucumber.yml entry for this test or your Jenkins job"
         @modal_param.browser_str=browser_type(ENV['BROWSER'])
