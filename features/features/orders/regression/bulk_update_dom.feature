@@ -164,7 +164,7 @@ Feature: Bulk Update Domestic
 
       #verify fields in 1st order
       Then check Orders Grid row 1
-      Then expect Order Details Ship From is default
+      Then expect Order Details form Ship From is default
       Then expect Orders Grid service is PME Package
       #Then expect Order Details Pound is 2
       Then uncheck Orders Grid row 1

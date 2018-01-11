@@ -29,7 +29,7 @@ Then /^[Oo]n [Oo]rder [Dd]etails form, Add Item (\d+), Qty (\d+), ID (.+), Descr
   step "set Order Details Associated Item #{item_number} Description to #{description}"
 end
 
-Then /^[Aa]dd [Oo]rder [Dd]etails form Associated Item (\d+)$/ do |item_number|
+Then /^[Aa]dd [Oo]rder [Dd]etails Associated Item (\d+)$/ do |item_number|
   stamps.orders.order_details.items_ordered.item(item_number.to_i)
 end
 
@@ -514,6 +514,6 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Domestic [Ss]hip-[Tt]o Name is (.*)$/ do |s
 end
 
 #validating
-Then /^[E|e]xpect [Oo]rder [Dd]etails form Ship From is (?:correct|(.*))$/ do |expectation|
+Then /^[Ee]xpect [Oo]rder [Dd]etails Ship From is (?:correct|(.*))$/ do |expectation|
   expect(stamps.orders.order_details.single_ship_from.textbox.text).to include((expectation.nil?)?test_param[:ship_from]:expectation)
 end
