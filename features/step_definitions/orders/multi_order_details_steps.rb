@@ -7,6 +7,21 @@ Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| time
 end
 
 Then /^[Ss]ave [Mm]ulti [Oo]rder [Dd]etails [Dd]ata$/ do
+  #pending
+end
+
+# Update bulk orders
+Then /^[Cc]lick [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton$/ do
+  step 'expect bulk update orders button is present'
+  5.times do
+    stamps.orders.bulk_update.update_orders.click
+    stamps.orders.bulk_update.updating_orders.wait_while_present(3)
+    break unless stamps.orders.bulk_update.updating_orders.present?
+  end
+end
+
+Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton is present$/ do
+  expect(stamps.orders.bulk_update.update_orders).to be_present
 end
 
 # Begin Bulk Update Weight steps
@@ -56,11 +71,11 @@ end
 # End Bulk Update Weight steps
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do |service|
-  test_param[:service]=test_helper.parse_service(stamps.orders.bulk_update.domestic_service.select(service)) #todo-Rob what is this?
+  test_param[:service]=stamps.orders.bulk_update.domestic_service.select(service).parse_orders_service
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |service|
-  test_param[:int_service]=test_helper.parse_service(stamps.orders.bulk_update.international_service.select(service))
+  test_param[:int_service]=stamps.orders.bulk_update.international_service.select(service).parse_orders_service
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|

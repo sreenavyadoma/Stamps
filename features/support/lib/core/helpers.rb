@@ -105,11 +105,7 @@ module Stamps
   end
 
   module ParameterHelper
-    def parse_service(str)
-      /.+(?= \(.*\)$)/.match(str).to_s
-    end
-
-    def state_fullname(state)
+    def state_fullname(state) #todo-Rob. This is wrong, fix it.
       if @states.nil?
         @states={}
         @states["CA"]="California"

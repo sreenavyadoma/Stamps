@@ -1,13 +1,8 @@
 module Stamps
   module Browser
-=begin
-    class Param
-      attr_accessor :browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
-                    :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname
-    end
-=end
-    Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) do
-    end
+    Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
+                         :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) do
+    end unless Object.const_defined?('Param')
 
     module Cache
       class << self

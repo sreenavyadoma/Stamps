@@ -23,6 +23,7 @@ require 'measured'
 require 'holidays'
 require 'socket'
 
+require_relative 'lib/core/monkey_patch'
 require_relative 'lib/core/scoped_attr_accessor'
 require_relative 'lib/apps/db_helper'
 require_relative 'lib/core/user_credentials'

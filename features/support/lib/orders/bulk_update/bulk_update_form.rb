@@ -112,7 +112,7 @@ module Stamps
             return manage_shipping_address if manage_shipping_address.present?
             dropdown.click
             sleep(0.5)
-            selection=StampsField.new((str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type==:single_order)?0:1]:browser.lis(text: /#{str}/)[(form_type==:single_order)?0:1])
+            selection=StampsField.new((str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type==:single_order)?0:1]:browser.lis(visible_text: str)[(form_type==:single_order)?0:1])
             if str.downcase.include?("manage shipping")
               15.times do
                 sleep(0.35)
@@ -140,7 +140,7 @@ module Stamps
           BULK_UPDATE=:bulk_update
           ORDER_DETAILS=:single_order
           def selection_field(form, str)
-            browser.tds(css "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")[get(form)]
+            browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")[get(form)]
           end
 
           def lov_count(str)
@@ -168,7 +168,7 @@ module Stamps
             dropdown.click
             set(BULK_UPDATE, 0) if get(BULK_UPDATE).nil? && get(ORDER_DETAILS).nil? # first time drop-down is clicked
             set(BULK_UPDATE, values.max+1) if get(BULK_UPDATE).nil? && !get(ORDER_DETAILS).nil? && lov_count(str)==1 # order details form services had been clicked, first time for bulk update
-            selection = selection_field(BULK_UPDATE, str)
+            selection = StampsField.new(selection_field(BULK_UPDATE, str))
             10.times do
               begin
                 dropdown.click unless selection.present?
@@ -459,54 +459,14 @@ module Stamps
           end
         end
 
-        class MultiUpdateController < Browser::BaseCache
-          assign({})
-          attr_reader :update_orders_btn, :save_as_present_btn, :updating_orders
-
-          def initialize(param)
-            super(param)
-            @update_orders_btn=StampsField.new browser.span(text: 'Update Orders')
-            @save_as_present_btn=StampsField.new browser.span(text: 'Save as Preset')
-            @updating_orders=StampsField.new(browser.div(text: "Updating Orders"))
-          end
-
-          def cache
-            self.class.cache
-          end
-
-          def present?
-            update_orders_btn.present?
-          end
-
-          def update_orders
-            update_orders_btn.click
-            sleep(2)
-            updating_orders.wait_while_present(5)
-            #expect(updating_orders).to be_present
-          end
-
-          def save_as_present
-            5.times do
-              return view_restrictions if view_restrictions.present?
-              restrictions_btn.click
-            end
-          end
-        end
-
       end
 
       class Form < Browser::BaseCache
+        assign({})
         include Toolbar
         include PresetMenu
-        assign({})
-
         def cache
           self.class.cache
-        end
-
-        def buttons
-          @buttons=MultiUpdateController.new(param)
-          #(cache[:multi_order].nil?||!cache[:multi_order].present?)?cache[:multi_order]=Orders::MultiOrderDetails::BulkUpdateForm.new(param):cache[:multi_order]
         end
 
         def blur_out_field
@@ -528,17 +488,25 @@ module Stamps
           @multi_ship_from=Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
         end
 
-        def domestic_service
-          @multi_dom_service=Fields::Service.new(param)
-        end
-
         def international_service
           @multi_int_service=Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
         end
 
         # done
+        def domestic_service
+          (cache[:domestic_service].nil?||!cache[:domestic_service].present?)?cache[:domestic_service]=Fields::Service.new(param):cache[:domestic_service]
+        end
+
+        def updating_orders
+          StampsField.new(browser.div(text: "Updating Orders"))
+        end
+
         def update_orders
-          (cache[:weight].nil?||!cache[:weight].present?)?cache[:weight]=Fields::Weight.new(param):cache[:weight]
+          (cache[:update_orders].nil?||!cache[:update_orders].present?)?cache[:update_orders]=StampsField.new(browser.span(text: 'Update Orders')):cache[:update_orders]
+        end
+
+        def save_as_preset
+          (cache[:save_preset].nil?||!cache[:save_preset].present?)?cache[:save_preset]=StampsField.new(browser.span(text: 'Save as Preset')):cache[:save_preset]
         end
 
         def weight

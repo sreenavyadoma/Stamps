@@ -1,7 +1,7 @@
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |service|
   step "expect Order Details is present"
-  test_param[:service]=test_helper.parse_service(stamps.orders.order_details.service.select(service))
+  test_param[:service]=stamps.orders.order_details.service.select(service).parse_orders_service
   20.times do
     step "blur out on Order Details form"
     sleep(0.015)
@@ -12,7 +12,7 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |service|
   step "expect Order Details is present"
-  test_param[:int_service]=test_helper.parse_service(stamps.orders.order_details.service.select(service))
+  test_param[:int_service]=stamps.orders.order_details.service.select(service).parse_orders_service
   20.times do
     step "blur out on Order Details form"
     sleep(0.015)
@@ -23,12 +23,12 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ss]ervice is (?:correct|(.*))$/ do |expectation|
   step "expect Order Details is present"
-  expect(test_helper.parse_service(stamps.orders.order_details.service.textbox.text)).to eql((expectation.nil?)?test_param[:service]:expectation)
+  expect(stamps.orders.order_details.service.textbox.text.parse_orders_service).to eql((expectation.nil?)?test_param[:service]:expectation)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
   step "expect Order Details is present"
-  expect(test_helper.parse_service(stamps.orders.order_details.service.textbox.text)).to eql((expectation.nil?)?test_param[:int_service]:expectation)
+  expect(stamps.orders.order_details.service.textbox.text.parse_orders_service).to eql((expectation.nil?)?test_param[:int_service]:expectation)
 end
 
 
