@@ -15,7 +15,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to PMI Package
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -33,9 +33,9 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
-    Then set Customs form ITN Number to random
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -55,7 +55,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to PMEI Padded Flat Rate Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -74,7 +74,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to PMI Large Flat Rate Box
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Gift
+    Then set Customs Package Contents to Gift
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -94,7 +94,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to PMI Flat Rate Envelope
     Then set Order Details Weight to 1 lb 14 oz
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 1, Made In United States, Tariff 2
     Then add Customs form Associated Item 3, Description random, Qty 1, Price 1, Made In United States, Tariff 3
@@ -146,7 +146,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to PMI Package
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Document
+    Then set Customs Package Contents to Document
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -167,7 +167,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to PMI Large Flat Rate Box
     Then set Order Details Weight to 2 lb 0 oz
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 2, Made In United States, Tariff 2
     Then add Customs form Associated Item 3, Description random, Qty 1, Price 3, Made In United States, Tariff 3
@@ -215,7 +215,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to PMEI Package
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -236,7 +236,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details Weight to 3 lb 2 oz
     Then set Order Details service to PSG Package
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Other
+    Then set Customs Package Contents to Other
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -255,9 +255,9 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details service to MM Package
 
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Other
+    Then set Customs Package Contents to Other
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 25, Made In United States, Tariff 10
-    Then set Customs form More Info to random
+    Then set Customs More Info to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -278,7 +278,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details Weight to 2 lb 1 oz
     Then set Order Details service to PSG Package
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

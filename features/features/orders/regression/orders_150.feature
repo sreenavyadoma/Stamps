@@ -249,11 +249,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -270,11 +270,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -523,11 +523,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -544,11 +544,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -796,11 +796,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -817,11 +817,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -1070,11 +1070,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -1091,11 +1091,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -1344,11 +1344,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -1365,11 +1365,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -1618,11 +1618,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -1639,11 +1639,11 @@ Feature: 150 orders
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Merchandise
-    Then set Customs form Non-Delivery Options to Return to sender
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form More Info to random
-    Then set Customs form ITN Number to random
+    Then set Customs Package Contents to Merchandise
+    Then set Customs Non-Delivery Options to Return to sender
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs More Info to random
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

@@ -13,7 +13,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
     Then set Order Details service to PMI Package
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

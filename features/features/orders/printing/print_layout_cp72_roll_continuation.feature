@@ -13,7 +13,7 @@ Feature: Print 1 Intl CP72 label with continuation on on 4x6 Roll
     Then set Order Details service to PMI Large Flat Rate Box
     Then set Order Details Weight to 2 lb 0 oz
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 2, Made In United States, Tariff 2
     Then add Customs form Associated Item 3, Description random, Qty 1, Price 3, Made In United States, Tariff 3

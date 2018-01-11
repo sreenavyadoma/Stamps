@@ -13,7 +13,7 @@ Feature: Print 1 Intl CP72 label with continuation on 8.5x11 - left side
     Then set Order Details service to PMI Flat Rate Envelope
     Then set Order Details Weight to 1 lb 14 oz
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 1, Made In United States, Tariff 2
     Then add Customs form Associated Item 3, Description random, Qty 1, Price 1, Made In United States, Tariff 3

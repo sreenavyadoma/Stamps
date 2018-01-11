@@ -17,7 +17,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details service to FCMI Large Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -29,7 +29,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details service to FCMI Package
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -54,7 +54,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details Weight to 1 lb 1 oz
     Then set Order Details service to FCMI Large Envelope
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -67,7 +67,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details service to PMI Flat Rate Envelope
     Then set Order Details Weight to 1 lb 1 oz
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -101,7 +101,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then on Order Details form, Delete Item 2
 
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -124,7 +124,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details service to PMI Padded Flat Rate Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -136,7 +136,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details service to PMI Legal Flat Rate Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -161,7 +161,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details service to PMI Flat Rate Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -173,7 +173,7 @@ Feature: Print 2 Intl CN22 labels on 5.5x8.5
     Then set Order Details service to PMI Flat Rate Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

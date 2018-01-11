@@ -35,24 +35,24 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Commercial Sample
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Document
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Merchandise
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Gift
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Humanitarian Donation
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Returned Goods
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Other
-    Then Expect Customs Form Internal Transaction Number is Required
+    Then set Customs Package Contents to Commercial Sample
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Document
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Merchandise
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Gift
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Humanitarian Donation
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Returned Goods
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Other
+    Then Expect Customs Internal Transaction Number is Required
 
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form ITN Number to random
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Sign out
@@ -69,25 +69,25 @@ Feature: All International Rules
     Then set Order Details service to PMI Flat Rate Envelope
 
     Then click Order Details form Customs Form button
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Commercial Sample
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Document
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Merchandise
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Gift
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Humanitarian Donation
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Returned Goods
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Other
-    Then Expect Customs Form Internal Transaction Number is Required
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Commercial Sample
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Document
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Merchandise
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Gift
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Humanitarian Donation
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Returned Goods
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Other
+    Then Expect Customs Internal Transaction Number is Required
 
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form ITN Number to random
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Sign out
@@ -115,59 +115,59 @@ Feature: All International Rules
 
     Then click Order Details form Customs Form button
 
-    Then set Customs form Package Contents to Commercial Sample
-    Then expect Customs form More Info is hidden
-    Then expect Customs form License Number is visible
-    Then expect Customs form Certificate Number is visible
-    Then expect Customs form Invoice Number is visible
+    Then set Customs Package Contents to Commercial Sample
+    Then expect Customs More Info is hidden
+    Then expect Customs License Number is visible
+    Then expect Customs Certificate Number is visible
+    Then expect Customs Invoice Number is visible
 
-    Then set Customs form Package Contents to Document
-    Then expect Customs form More Info is visible
-    Then expect Customs form License Number is hidden
-    Then expect Customs form Certificate Number is hidden
-    Then expect Customs form Invoice Number is hidden
+    Then set Customs Package Contents to Document
+    Then expect Customs More Info is visible
+    Then expect Customs License Number is hidden
+    Then expect Customs Certificate Number is hidden
+    Then expect Customs Invoice Number is hidden
 
-    Then set Customs form Package Contents to Gift
-    Then expect Customs form More Info is visible
-    Then expect Customs form License Number is hidden
-    Then expect Customs form Certificate Number is hidden
-    Then expect Customs form Invoice Number is hidden
+    Then set Customs Package Contents to Gift
+    Then expect Customs More Info is visible
+    Then expect Customs License Number is hidden
+    Then expect Customs Certificate Number is hidden
+    Then expect Customs Invoice Number is hidden
 
-    Then set Customs form Package Contents to Humanitarian Donation
-    Then expect Customs form More Info is visible
-    Then expect Customs form License Number is hidden
-    Then expect Customs form Certificate Number is hidden
-    Then expect Customs form Invoice Number is hidden
+    Then set Customs Package Contents to Humanitarian Donation
+    Then expect Customs More Info is visible
+    Then expect Customs License Number is hidden
+    Then expect Customs Certificate Number is hidden
+    Then expect Customs Invoice Number is hidden
 
-    Then set Customs form Package Contents to Merchandise
-    Then expect Customs form More Info is visible
-    Then expect Customs form License Number is hidden
-    Then expect Customs form Certificate Number is hidden
-    Then expect Customs form Invoice Number is hidden
+    Then set Customs Package Contents to Merchandise
+    Then expect Customs More Info is visible
+    Then expect Customs License Number is hidden
+    Then expect Customs Certificate Number is hidden
+    Then expect Customs Invoice Number is hidden
 
-    Then set Customs form Package Contents to Returned Goods
-    Then expect Customs form More Info is visible
-    Then expect Customs form License Number is hidden
-    Then expect Customs form Certificate Number is hidden
-    Then expect Customs form Invoice Number is hidden
+    Then set Customs Package Contents to Returned Goods
+    Then expect Customs More Info is visible
+    Then expect Customs License Number is hidden
+    Then expect Customs Certificate Number is hidden
+    Then expect Customs Invoice Number is hidden
 
-    Then set Customs form Package Contents to Commercial Sample
-    Then expect Customs form More Info is hidden
-    Then set Customs form License Number to random
-    Then set Customs form Certificate Number to random
-    Then set Customs form Invoice Number to random
+    Then set Customs Package Contents to Commercial Sample
+    Then expect Customs More Info is hidden
+    Then set Customs License Number to random
+    Then set Customs Certificate Number to random
+    Then set Customs Invoice Number to random
 
-    Then set Customs form Non-Delivery Options to Treat as abandoned
-    Then set Customs form Non-Delivery Options to Return to sender
+    Then set Customs Non-Delivery Options to Treat as abandoned
+    Then set Customs Non-Delivery Options to Return to sender
 
-    Then set Customs form Internal Transaction Number to Required
-    Then expect Customs form ITN Number is visible
+    Then set Customs Internal Transaction Number to Required
+    Then expect Customs ITN Number is visible
 
-    Then set Customs form Internal Transaction Number to Not required
-    Then expect Customs form ITN Number is hidden
+    Then set Customs Internal Transaction Number to Not required
+    Then expect Customs ITN Number is hidden
 
-    Then set Customs form Internal Transaction Number to Required
-    Then set Customs form ITN Number to random
+    Then set Customs Internal Transaction Number to Required
+    Then set Customs ITN Number to random
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -186,23 +186,23 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Commercial Sample
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Document
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Merchandise
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Gift
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Humanitarian Donation
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Returned Goods
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Other
-    Then Expect Customs Form Internal Transaction Number is Required
+    Then set Customs Package Contents to Commercial Sample
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Document
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Merchandise
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Gift
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Humanitarian Donation
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Returned Goods
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Other
+    Then Expect Customs Internal Transaction Number is Required
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form ITN Number to random
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Sign out
@@ -222,25 +222,25 @@ Feature: All International Rules
 
   #Then set Order Details service to FCMI Large Envelope
     Then click Order Details form Customs Form button
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Commercial Sample
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Document
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Merchandise
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Gift
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Humanitarian Donation
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Returned Goods
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Other
-    Then Expect Customs Form Internal Transaction Number is Required
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Commercial Sample
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Document
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Merchandise
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Gift
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Humanitarian Donation
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Returned Goods
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Other
+    Then Expect Customs Internal Transaction Number is Required
 
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form ITN Number to random
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Sign out
@@ -259,25 +259,25 @@ Feature: All International Rules
 
   #Then set Order Details service to FCMI Large Envelope
     Then click Order Details form Customs Form button
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Commercial Sample
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Document
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Merchandise
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Gift
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Humanitarian Donation
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Returned Goods
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form Package Contents to Other
-    Then Expect Customs Form Internal Transaction Number is Required
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Commercial Sample
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Document
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Merchandise
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Gift
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Humanitarian Donation
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Returned Goods
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs Package Contents to Other
+    Then Expect Customs Internal Transaction Number is Required
 
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form ITN Number to random
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Sign out
@@ -297,12 +297,12 @@ Feature: All International Rules
     Then set Order Details service to FCMI Large Envelope
     Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Required
+    Then Expect Customs Internal Transaction Number is Required
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Not required
+    Then Expect Customs Internal Transaction Number is Not required
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
-    Then Expect Customs Form Internal Transaction Number is Required
-    Then set Customs form ITN Number to random
+    Then Expect Customs Internal Transaction Number is Required
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Sign out
@@ -320,23 +320,23 @@ Feature: All International Rules
     Then set Order Details service to PMI Flat Rate Envelope
     Then set Order Details Ounces to 5
     Then click Order Details form Customs Form button
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Commercial Sample
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Document
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Merchandise
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Gift
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Humanitarian Donation
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Returned Goods
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form Package Contents to Other
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then Expect Customs Form Internal Transaction Number is Not required
-    Then set Customs form ITN Number to random
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Commercial Sample
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Document
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Merchandise
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Gift
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Humanitarian Donation
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Returned Goods
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs Package Contents to Other
+    Then Expect Customs Internal Transaction Number is Not required
+    Then Expect Customs Internal Transaction Number is Not required
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Sign out

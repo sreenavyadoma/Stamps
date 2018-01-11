@@ -84,7 +84,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details Weight to 2 lb 1 oz
     Then set Order Details service to PSG Package
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -114,7 +114,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Gift
+    Then set Customs Package Contents to Gift
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -145,7 +145,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -176,7 +176,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details Weight to 2 lb 1 oz
     Then set Order Details service to MM Package
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

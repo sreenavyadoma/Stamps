@@ -17,7 +17,7 @@ Feature: Single Order Details form Bugs
     Then set Order Details Ounces to 3
     Then click Order Details form Customs Form button
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 100.50, Made In Zimbabwe, Tariff 100
-    Then expect Customs form Total Value is 100.50
+    Then expect Customs Total Value is 100.50
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
