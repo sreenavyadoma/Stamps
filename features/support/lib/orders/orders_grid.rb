@@ -2,12 +2,11 @@ module Stamps
   module Orders
     module Grid
       module GridColumnCommon
-
         def column_cache
           @column_cache ||= {}
         end
 
-        def column_text
+        def column_text #todo-Rob implement data store
           @column_text ||= {
               check_box: " ",
               store: "Store",
@@ -64,7 +63,7 @@ module Stamps
           end
           return "ASC" if  sort_order_span.attribute_value("class").include?("ASC")
           return "DESC" if  sort_order_span.attribute_value("class").include?("DESC")
-          "Something went wrong."
+          nil
         end
 
         def grid_text_by_id(column, order_id)
@@ -73,7 +72,7 @@ module Stamps
         end
 
         def row_count
-          browser.tables(css: "div[id^=ordersGrid-][id$=-body]>div>div>table").size.to_i
+          browser.tables(css: "[id^=ordersGrid-] table").size.to_i
         end
 
         def scroll_to_column(name)
@@ -96,21 +95,14 @@ module Stamps
         def size
           15.times do
             begin
-              sleep(0.05)
-              if (count=browser.tables(:css=>"div[id^=ordersGrid-][id$=-body] table").size) > 0
-                browser.tables(:css=>"div[id^=ordersGrid-][id$=-body] table")[0].flash
-                return count
-              end
+              return browser.tables(css: '[id^=ordersGrid-][id$=-body] table').size if browser.tables(css: '[id^=ordersGrid-][id$=-body] table').size > 0
             rescue
               #ignore
             end
           end
           0
         end
-
-        def parameter_helper
-          helper
-        end
+        alias_method :count, :size
 
         def grid_text(column, row)
           scroll_to_column(column)
@@ -790,16 +782,13 @@ module Stamps
       class GridCheckBox < Browser::Base
         include GridColumnCommon
         def scroll_into_view
-          field=StampsField.new((browser.spans css: "div[componentid^=gridcolumn]").first)
-          field.scroll_into_view
-          field
+          StampsField.new(browser.spans(class: "x-column-header-text-inner").first).scroll_into_view
         end
 
         def checkbox_header
           scroll_into_view
-
-          checkbox_field=(browser.spans css: "div[componentid^=gridcolumn]").first
-          check_verify_field=browser.div css: "div[class*=x-column-header-checkbox]"
+          checkbox_field=browser.spans(class: "x-column-header-text-inner").first
+          check_verify_field=browser.div(css: "div[class*=x-column-header-checkbox]")
           attribute="class"
           attrib_value_check="checker-on"
           Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
@@ -853,9 +842,10 @@ module Stamps
         end
 
         def checkbox_field(row)
-          div=browser.div(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})>tbody>tr>td>div>div[class=x-grid-row-checker]")
-          verify_field=browser.table(css: "div[id^=ordersGrid-][id$=-body]>div>div>table:nth-child(#{row.to_s})")
-          StampsCheckbox.new(div, verify_field, "class", "selected")
+          StampsCheckbox.new(
+              browser.div(css: "[id^=ordersGrid] table:nth-child(#{row.to_s}) [class=x-grid-row-checker]"),
+              browser.table(css: "[id*=Grid] table:nth-child(#{row.to_s})"),
+              "class", "selected")
         end
 
         def check(row)
@@ -892,7 +882,7 @@ module Stamps
             cache_count=args[0]
           end
 
-          logger.info "Caching checked rows..."
+          #logger.info "Caching checked rows..."
           checked_rows={}
           grid_total=row_count
           if cache_count > 2 && cache_count < grid_total
@@ -902,7 +892,7 @@ module Stamps
           else
             cache_item_count=cache_count
           end
-          logger.info "Number of rows to check:  #{cache_item_count}"
+          #logger.info "Number of rows to check:  #{cache_item_count}"
           1.upto(cache_item_count) { |row|
             checked=checked?(row)
             if checked
@@ -910,7 +900,7 @@ module Stamps
             end
             logger.info "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
           }
-          logger.info "Checked rows cached."
+          #logger.info "Checked rows cached."
           checked_rows
         end
 
