@@ -24,8 +24,8 @@ Feature: Tracking
     #Then expect Order Details service is PME Legal Flat Rate Envelope
     #Then expect Order Details Tracking is USPS Tracking
 
-    #Then set Order Details service to PME Package
-    #Then expect Order Details service is "PME Package"
+    #Then set Order Details service to PME Package/Flat/Thick Envelope
+    #Then expect Order Details service is "PME Package/Flat/Thick Envelope"
     #Then expect Order Details Tracking is USPS Tracking
 
     Then set Order Details service to PM Large/Thick Envelope

@@ -145,9 +145,9 @@ Feature: January 2017 Rates for CPP User in Zone 6
 
 
   @rates_orders_cpp_zone_6
-  Scenario: PME Package
+  Scenario: PME Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 6
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Weight to 23 lb 0 oz
     Then expect Order Details Service Cost is 117.40
     Then set Order Details Tracking to USPS Tracking

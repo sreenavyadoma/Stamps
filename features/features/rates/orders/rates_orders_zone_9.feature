@@ -136,9 +136,9 @@ Feature: Local Rating test for Zone 9
     Then expect Order Details Total Ship Cost is 28.72
 
   @rates_orders_zone_9
-  Scenario: PME Package
+  Scenario: PME Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 9
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Weight to 9 lb 0 oz
     Then expect Order Details Service Cost is 90.96
     Then set Order Details Tracking to USPS Tracking

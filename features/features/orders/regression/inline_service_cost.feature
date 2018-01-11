@@ -20,7 +20,7 @@ Feature: Ship-To Addresses
     Then expect Order Details Service Cost inline price for "Priority Mail Large Flat Rate Box" is greater than $0.01
     Then expect Order Details Service Cost inline price for "Priority Mail Regional Rate Box A" is greater than $0.01
     Then expect Order Details Service Cost inline price for "Priority Mail Regional Rate Box B" is greater than $0.01
-    Then expect Order Details Service Cost inline price for "PME Package" is greater than $0.01
+    Then expect Order Details Service Cost inline price for "PME Package/Flat/Thick Envelope" is greater than $0.01
     Then expect Order Details Service Cost inline price for "PME Flat Rate Envelope" is greater than $0.01
     Then expect Order Details Service Cost inline price for "PME Legal Flat Rate Envelope" is greater than $0.01
     Then expect Order Details Service Cost inline price for "PME Padded Flat Rate Envelope" is greater than $0.01

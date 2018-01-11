@@ -498,7 +498,7 @@ module Stamps
         end
 
         def updating_orders
-          StampsField.new(browser.div(text: "Updating Orders"))
+          (cache[:updating_orders].nil?||!cache[:updating_orders].present?)?cache[:updating_orders]=StampsField.new(browser.div(text: "Updating Orders")):cache[:updating_orders]
         end
 
         def update_orders

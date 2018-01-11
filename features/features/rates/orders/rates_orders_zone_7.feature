@@ -138,9 +138,9 @@ Feature: January 2017 Rates for Core User in Zone 7
     Then expect Order Details Total Ship Cost is 17.93
 
   @local_rating_zone_7
-  Scenario: PME Package
+  Scenario: PME Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 7
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Weight to 22 lb 1 oz
     Then expect Order Details Service Cost is 122.31
     Then set Order Details Tracking to USPS Tracking

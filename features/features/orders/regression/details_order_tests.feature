@@ -500,8 +500,8 @@ Feature: All details tests for order
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to PME Package
-    Then expect Order Details service is PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
+    Then expect Order Details service is PME Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present

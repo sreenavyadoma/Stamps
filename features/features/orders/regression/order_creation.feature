@@ -59,7 +59,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 1
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Tracking to Signature Required
 
     Then add new order
@@ -148,7 +148,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 1
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Tracking to Signature Required
 
     Then add new order
@@ -233,7 +233,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 1
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Tracking to Signature Required
 
     Then add new order

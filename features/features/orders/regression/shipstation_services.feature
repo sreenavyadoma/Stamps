@@ -36,8 +36,8 @@
     Then set Order Details service to PM Regional Rate Box B
     Then expect Order Details service is PM Regional Rate Box B
 
-    Then set Order Details service to PME Package
-    Then expect Order Details service is PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
+    Then expect Order Details service is PME Package/Flat/Thick Envelope
 
     Then set Order Details service to PME Flat Rate Envelope
     Then expect Order Details service is PME Flat Rate Envelope

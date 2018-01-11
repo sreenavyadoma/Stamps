@@ -213,7 +213,7 @@ Feature: 25 orders
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Tracking to Signature Required
 
     Then add new order

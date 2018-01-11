@@ -153,7 +153,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 15
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     * set Order Details Tracking to Signature Required
 
     * add new order
@@ -427,7 +427,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 15
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     * set Order Details Tracking to Signature Required
 
     * add new order
@@ -700,7 +700,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 15
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     * set Order Details Tracking to Signature Required
 
     * add new order
@@ -974,7 +974,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 15
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     * set Order Details Tracking to Signature Required
 
     * add new order
@@ -1248,7 +1248,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 15
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     * set Order Details Tracking to Signature Required
 
     * add new order
@@ -1522,7 +1522,7 @@ Feature: 150 orders
     * set Order Details Ship-To to random address between zone 1 and 4
 
     * set Order Details Ounces to 15
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     * set Order Details Tracking to Signature Required
 
     * add new order

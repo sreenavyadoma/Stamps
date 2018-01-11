@@ -20,8 +20,8 @@ Feature: Bulk Update Domestic
 #    Then set Order Details Ship-From to default
 #    Then set Order Details Ship-To to random address between zone 8
 #    Then set Order Details service to PM Large Package
-    Then set Order Details Pounds to 2
-    Then set Order Details Ounces to 2
+#    Then set Order Details Pounds to 2
+#    Then set Order Details Ounces to 2
 #    Then set Order Details Length to 1
 #    Then set Order Details Width to 1
 #    Then set Order Details Height to 1
@@ -36,11 +36,11 @@ Feature: Bulk Update Domestic
 
     Then check row 1
     Then check row 2
-    Then set Bulk Update service to PME Package
+    Then set Bulk Update service to PME Package/Flat/Thick Envelope
     Then click Bulk Update Orders button
 
     Then uncheck row 2
-    Then expect order details service is PME Package
+    Then expect order details service is PME Package/Flat/Thick Envelope
     Then set order details service to PM Large Package
 
     Then check row 2
@@ -48,11 +48,11 @@ Feature: Bulk Update Domestic
     Then click Bulk Update Orders button
 
     Then uncheck row 2
-    Then set Bulk Update service to PME Package
+    Then set Bulk Update service to PME Package/Flat/Thick Envelope
     Then check row 2
 
 
-    Then set Bulk Update Domestic service to PME Package
+    Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
     Then click Bulk Update Orders button
     #todo-BulkUpdate missing expectation for Domestic service
 
@@ -114,7 +114,7 @@ Feature: Bulk Update Domestic
     #verify fields in 1st order
     #Then check Orders Grid row 1
     #Then expect Order Details Ship From is correct
-    #Then expect Orders Grid service is PME Package
+    #Then expect Orders Grid service is PME Package/Flat/Thick Envelope
 
     #Then uncheck order 1
     #Then uncheck order 2
@@ -128,7 +128,7 @@ Feature: Bulk Update Domestic
     #verify fields in 2nd order
     #Then check order 2
     #Then expect Order Details Ship From is correct
-    #Then expect Orders Grid service is PME Package
+    #Then expect Orders Grid service is PME Package/Flat/Thick Envelope
     #Then expect Order Details Pound is 2
 
     Then Sign out
@@ -157,7 +157,7 @@ Feature: Bulk Update Domestic
 
       #Updating order details
       Then set Bulk Update Ship From to default
-      Then set Bulk Update Domestic service to PME Package
+      Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
       Then set Bulk Update Pounds to 1
       Then set Bulk Update Ounces to 1
       Then click Bulk Update Update Order button
@@ -168,14 +168,14 @@ Feature: Bulk Update Domestic
       #verify fields in 1st order
       Then check Orders Grid row 1
       Then expect Order Details Ship From is default
-      Then expect Orders Grid service is PME Package
+      Then expect Orders Grid service is PME Package/Flat/Thick Envelope
       #Then expect Order Details Pound is 2
       Then uncheck Orders Grid row 1
 
       #verify fields in 2nd order
       Then check Orders Grid row 2
       Then expect Order Details Ship From is correct
-      Then expect Orders Grid service is PME Package
+      Then expect Orders Grid service is PME Package/Flat/Thick Envelope
       #Then expect Order Details Pound is 2
 
       Then Sign out

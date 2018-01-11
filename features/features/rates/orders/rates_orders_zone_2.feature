@@ -133,9 +133,9 @@ Feature: January 2017 Rates for Core User in Zone 2
     Then Sign out
 
   @rates_orders_zone_2
-  Scenario: PME Package
+  Scenario: PME Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 2
-    Then set Order Details service to PME Package
+    Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Weight to 9 lb 0 oz
     Then expect Order Details Service Cost is 31.69
     Then set Order Details Tracking to USPS Tracking
