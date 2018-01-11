@@ -782,9 +782,7 @@ module Stamps
       class GridCheckBox < Browser::Base
         include GridColumnCommon
         def scroll_into_view
-          field=StampsField.new((browser.spans(class: "x-column-header-text-inner")).first)
-          field.scroll_into_view
-          field
+          StampsField.new(browser.spans(class: "x-column-header-text-inner").first).scroll_into_view
         end
 
         def checkbox_header
