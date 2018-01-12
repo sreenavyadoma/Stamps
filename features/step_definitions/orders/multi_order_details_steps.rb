@@ -58,7 +58,7 @@ Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
-  (test_param[:bulk_lb_dec]=str).to_i.times {stamps.orders.bulk_update.weight.lbs.decrement.click}
+  (test_param[:bulk_lb_dec]=str).to_i.times { stamps.orders.bulk_update.weight.lbs.decrement.click }
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
@@ -70,7 +70,7 @@ Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
 end
 # End Bulk Update Weight steps
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do |service|
+Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do | service |
   test_param[:service]=stamps.orders.bulk_update.domestic_service.select(service).parse_orders_service
 end
 

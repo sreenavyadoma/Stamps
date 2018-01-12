@@ -41,7 +41,7 @@ Feature: Bulk Update Domestic
 
     Then uncheck row 2
     Then expect order details service is PME Package/Flat/Thick Envelope
-    Then set order details service to PM Large Package
+    #Then set order details service to PM Large Package
 
     Then check row 2
     Then set Bulk Update service to PME Padded Flat Rate Envelope

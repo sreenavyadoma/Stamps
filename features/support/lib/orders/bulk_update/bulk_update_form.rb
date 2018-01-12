@@ -89,13 +89,19 @@ module Stamps
           end
 
           def manage_shipping_address
-            (cache[:manage_shipping_address].nil?||!cache[:manage_shipping_address].present?)?cache[:manage_shipping_address]=Orders::ShipFrom::ManageShippingAddresses.new(
-                param):cache[:manage_shipping_address]
+            if cache[:shipping_address].nil? || !cache[:shipping_address].present? then
+              cache[:shipping_address] = Orders::ShipFrom::ManageShippingAddresses.new(param)
+            else
+              cache[:shipping_address]
+            end
           end
 
           def textbox
-            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
-                browser.text_field(css: "[class*=multi] [componentid^=ship]")):cache[:textbox]
+            if cache[:textbox].nil? || !cache[:textbox].present? then
+              cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[class*=multi] [componentid^=ship]"))
+            else
+              cache[:textbox]
+            end
           end
 
           def dropdown
@@ -136,46 +142,35 @@ module Stamps
           end
         end
 
-        class Base < Browser::FloatingBoundList
-          BULK_UPDATE=:bulk_update
-          ORDER_DETAILS=:single_order
-          def selection_field(form, str)
-            browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")[get(form)]
-          end
-
-          def lov_count(str)
-            browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text").size
-          end
-        end
-
-        class Service < Base
+        class Service < Orders::Common::Service::Base
           assign({})
           def cache
             self.class.cache
           end
 
           def textbox
-            (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
-                browser.text_field(css: "[class*=domestic-service-row] [name=service]")):cache[:textbox]
+            if cache[:textbox].nil? || !cache[:textbox].present? then
+              cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[class*=domestic-service-row] [name=service]"))
+            else
+              cache[:textbox]
+            end
           end
 
           def dropdown
-            (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(
-                browser.div(css: "[class*=domestic] [id$=trigger-picker]")):cache[:dropdown]
+            if cache[:dropdown].nil? || !cache[:dropdown].present? then
+              cache[:dropdown] = StampsField.new(browser.div(css: "[class*=domestic] [id$=trigger-picker]"))
+            else
+              cache[:dropdown]
+            end
           end
 
           def select(str)
             dropdown.click
-            set(BULK_UPDATE, 0) if get(BULK_UPDATE).nil? && get(ORDER_DETAILS).nil? # first time drop-down is clicked
-            set(BULK_UPDATE, values.max+1) if get(BULK_UPDATE).nil? && !get(ORDER_DETAILS).nil? && lov_count(str)==1 # order details form services had been clicked, first time for bulk update
-            selection = StampsField.new(selection_field(BULK_UPDATE, str))
-            10.times do
+            selection = selection_field(BULK_UPDATE, str)
+            5.times do
               begin
                 dropdown.click unless selection.present?
-                selection.scroll_into_view
-                sleep(0.2)
-                selection.click
-                sleep(0.15)
+                selection.scroll_into_view.click
                 break if textbox.text.include?(str)
               rescue
                 #ignore
@@ -185,11 +180,12 @@ module Stamps
           end
 
           def tooltip(selection)
-            button=dropdown
+            raise "Service tooltip is not implemented!"
+=begin
             selection_label=StampsField.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
             10.times do
               begin
-                button.click unless selection_label.present?
+                dropdown.click unless selection_label.present?
                 sleep(0.15)
                 if selection_label.present?
                   tooltip=selection_label.attribute_value("data-qtip")
@@ -201,6 +197,7 @@ module Stamps
               end
             end
             blur_out
+=end
           end
 
           def disabled?(service)
@@ -242,7 +239,7 @@ module Stamps
 
 
 
-# REWORK -----------------------------------------------
+        # REWORK -----------------------------------------------
         class DomesticService < Browser::BaseCache
           assign({})
           attr_reader :textbox, :dropdown, :form_type
@@ -383,21 +380,19 @@ module Stamps
               textbox.set(value)
               sleep(0.25)
               3.times {blur_out}
-              return true if text.to_f==value.to_f
+              return true if text.to_f == value.to_f
             end
-            expect(text.to_f).to eql(value.to_f)
+            text.to_f
           end
 
           def increment(value)
-            value.to_i.times do
-              increment_trigger.click
-            end
+            value.to_i.times { increment_trigger.click }
+            text.to_f
           end
 
           def decrement(value)
-            value.to_i.times do
-              decrement_trigger.click
-            end
+            value.to_i.times { decrement_trigger.click }
+            text.to_f
           end
         end
 
