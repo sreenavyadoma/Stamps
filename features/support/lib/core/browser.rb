@@ -39,6 +39,10 @@ module Stamps
       def browser
         self.class.browser
       end
+
+      def cache
+        self.class.cache
+      end
     end
 
     # This class is deprecated. Use BaseCache instead.

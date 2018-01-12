@@ -1,8 +1,5 @@
 module Stamps
   module Orders
-    module Services
-    end
-
     module DetailsFormCommon
 
       class DetailsFormDimensions < Browser::Base
@@ -45,7 +42,6 @@ module Stamps
           length.present? && width.present? && height.present?
         end
       end
-
 
       class ShipFromField < Browser::Base
         attr_reader :form
@@ -95,7 +91,6 @@ module Stamps
         end
       end
 
-      #todo-Rob create one ship from for single order details and one for bulk update form.
       class DetailsFormShipFrom < Browser::Base
         attr_reader :form_type
         def initialize(param, form_type)
@@ -146,39 +141,6 @@ module Stamps
         end
       end
 
-      module DetailsFormServiceCost
-        def cost_label
-          labels=browser.label(text: "Service:").parent.labels
-          cost_field=nil
-          labels.each do |label|
-            cost_field=label if label.text.include?('.')
-          end
-          cost_field
-        end
-
-        def cost
-          test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
-        end
-
-        def inline_cost(service_name)
-          cost_label=StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
-          10.times do
-            begin
-              dropdown.click unless cost_label.present?
-              if cost_label.present?
-                service_cost=test_helper.dollar_amount_str(cost_label.text)
-                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
-                dropdown.click if cost_label.present?
-                return service_cost.to_f.round(2)
-              end
-            rescue
-              #ignore
-            end
-          end
-        end
-      end
-
-      #todo-Rob ORDERSAUTO-3605 - allow each form to have their own class implementation
       class DetailsFormService < Browser::Base
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
@@ -217,7 +179,6 @@ module Stamps
               #ignore
             end
           end
-          expect(textbox.text).to include(str)
           textbox.text
         end
 
@@ -273,6 +234,37 @@ module Stamps
         def enabled? service
           !(disabled? service)
         end
+
+        def cost_label
+          labels=browser.label(text: "Service:").parent.labels
+          cost_field=nil
+          labels.each do |label|
+            cost_field=label if label.text.include?('.')
+          end
+          cost_field
+        end
+
+        def cost
+          cost_label.text.to_f.round(2).dollar_amount_str
+        end
+
+        def inline_cost(service_name)
+          cost_label=StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
+          10.times do
+            begin
+              dropdown.click unless cost_label.present?
+              if cost_label.present?
+                service_cost=cost_label.text.dollar_amount_str
+                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                dropdown.click if cost_label.present?
+                return service_cost.to_f.round(2)
+              end
+            rescue
+              #ignore
+            end
+          end
+        end
+
       end
 
       class OrderDetailsWeight < Browser::Base

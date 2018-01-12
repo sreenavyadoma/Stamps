@@ -1,6 +1,6 @@
 Then /^[Oo]n Add Funds modal, purchase 10$/ do
   #test_config.logger.step "on Add Funds modal, purchase 10"
-  test_param[:old_balance]=stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_10.select
 end
 
@@ -20,22 +20,22 @@ Then click print modal print button
 =end
 
 Then /^[Oo]n Add Funds modal, purchase 25$/ do
-  test_param[:old_balance]=stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_25.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase 50$/ do
-  test_param[:old_balance]=stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_50.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase 100$/ do
-  test_param[:old_balance]=stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_100.select
 end
 
 Then /^[Oo]n Add Funds modal, purchase Other Amount (\d+)$/ do |amount|
-  test_param[:old_balance]=stamps.navigation_bar.balance.amount
+  test_param[:old_balance]=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.navigation_bar.balance.buy_more.buy_other amount
 end
 
@@ -68,11 +68,11 @@ end
 Then /^Buy Mail: Expect customer balance increased by \$(\d+)$/ do |purchase_amount|
   10.times do
     sleep(0.35)
-    new_balance=stamps.navigation_bar.balance.amount
+    new_balance=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str
     actual_purchased_amount=new_balance.to_f - test_param[:old_balance].to_f
     break if actual_purchased_amount ==  purchase_amount.to_f
   end
-  new_balance=stamps.navigation_bar.balance.amount
+  new_balance=stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str
   actual_purchased_amount=new_balance.to_f - test_param[:old_balance].to_f
   expect(actual_purchased_amount.round(2)).to eql purchase_amount.to_f.round(2)
 end

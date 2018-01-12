@@ -1,5 +1,5 @@
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ss]hip [Ff]rom to (.*)$/ do |str|
-  test_param[:bulk_ship_from]=stamps.orders.bulk_update.ship_from.select(str)
+  test_param[:bulk_ship_from] = stamps.orders.bulk_update.ship_from.select(str)
 end
 
 Then /^[Bb]lur [Oo]ut on [Mm]ulti [Oo]rder [Dd]etails [Ff]orm(?:| (\d+)(?:| times))$/ do |count|
@@ -26,23 +26,23 @@ end
 
 # Begin Bulk Update Weight steps
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Pp]ounds to (.*)$/ do |str|
-  stamps.orders.bulk_update.weight.lbs.set(test_param[:bulk_lbs]=str)
+  stamps.orders.bulk_update.weight.lbs.set(test_param[:bulk_lbs] = str)
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Pp]ounds is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.weight.lbs.text).to eql((str.nil?)?test_param[:bulk_lbs]:str)
+  expect(stamps.orders.bulk_update.weight.lbs.text).to eql((str.nil?) ? test_param[:bulk_lbs] : str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Oo]unces to (.*)$/ do |str|
-  stamps.orders.bulk_update.weight.oz.set(test_param[:bulk_oz]=str)
+  stamps.orders.bulk_update.weight.oz.set(test_param[:bulk_oz] = str)
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]unces is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.weight.oz.text).to eql((str.nil?)?test_param[:bulk_oz]:str)
+  expect(stamps.orders.bulk_update.weight.oz.text).to eql((str.nil?) ? test_param[:bulk_oz] : str)
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]eight is (checked|unchecked)$/ do |str|
-  expect(checked=stamps.orders.bulk_update.weight.checkbox.checked?).to be((str=='checked')?true:false), "Expectation: #{str}, got #{(checked)?'checked':'uncheck'}"
+  expect(checked = stamps.orders.bulk_update.weight.checkbox.checked?).to be((str == 'checked') ? true : false), "Expectation: #{str}, got #{(checked) ? 'checked' : 'uncheck'}"
 end
 
 Then /^[Cc]heck [Bb]ulk [Uu]pdate [Ww]eight$/ do
@@ -54,28 +54,28 @@ Then /^[Uu]ncheck [Bb]ulk [Uu]pdate [Ww]eight$/ do
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
-  (test_param[:bulk_lb_inc]=str).to_i.times {stamps.orders.bulk_update.weight.lbs.increment.click}
+  (test_param[:bulk_lb_inc] = str).to_i.times {stamps.orders.bulk_update.weight.lbs.increment.click}
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Pp]ounds by (.*)$/ do |str|
-  (test_param[:bulk_lb_dec]=str).to_i.times { stamps.orders.bulk_update.weight.lbs.decrement.click }
+  (test_param[:bulk_lb_dec] = str).to_i.times { stamps.orders.bulk_update.weight.lbs.decrement.click }
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
-  (test_param[:bulk_oz_inc]=str).to_i.times {stamps.orders.bulk_update.weight.oz.increment.click}
+  (test_param[:bulk_oz_inc] = str).to_i.times {stamps.orders.bulk_update.weight.oz.increment.click}
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
-  (test_param[:bulk_oz_dec]=str).to_i.times {stamps.orders.bulk_update.weight.oz.decrement.click}
+  (test_param[:bulk_oz_dec] = str).to_i.times {stamps.orders.bulk_update.weight.oz.decrement.click}
 end
 # End Bulk Update Weight steps
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do | service |
-  test_param[:service]=stamps.orders.bulk_update.domestic_service.select(service).parse_orders_service
+  test_param[:service] = stamps.orders.bulk_update.domestic_service.select(service).parse_orders_service
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |service|
-  test_param[:int_service]=stamps.orders.bulk_update.international_service.select(service).parse_orders_service
+  test_param[:int_service] = stamps.orders.bulk_update.international_service.select(service).parse_orders_service
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|
@@ -105,58 +105,58 @@ Then /^[Uu]ncheck [Bb]ulk [Uu]pdate [Dd]imensions$/ do
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Dd]imensions is (checked|unchecked)$/ do |str|
-  expect(checked=stamps.orders.bulk_update.dimensions.checkbox.checked?).to be((str=='checked')?true:false), "Expectation: #{str}, got #{(checked)?'checked':'uncheck'}"
+  expect(checked = stamps.orders.bulk_update.dimensions.checkbox.checked?).to be((str == 'checked') ? true : false), "Expectation: #{str}, got #{(checked) ? 'checked' : 'uncheck'}"
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ll]ength to (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.length.set(test_param[:bulk_length]=str)
+  stamps.orders.bulk_update.dimensions.length.set(test_param[:bulk_length] = str)
   step "expect bulk update length is correct"
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  (test_param[:bulk_length_inc]=str).to_i.times {stamps.orders.bulk_update.dimensions.length.increment.click}
+  (test_param[:bulk_length_inc] = str).to_i.times {stamps.orders.bulk_update.dimensions.length.increment.click}
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ll]ength by (.*)$/ do |str|
-  (test_param[:bulk_length_dec]=str).to_i.times {stamps.orders.bulk_update.dimensions.length.decrement.click}
+  (test_param[:bulk_length_dec] = str).to_i.times {stamps.orders.bulk_update.dimensions.length.decrement.click}
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ll]ength is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.length.text).to eql((str.nil?)?test_param[:bulk_length]:str)
+  expect(stamps.orders.bulk_update.dimensions.length.text).to eql((str.nil?) ? test_param[:bulk_length] : str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ww]idth to (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.width.set(test_param[:bulk_width]=str)
+  stamps.orders.bulk_update.dimensions.width.set(test_param[:bulk_width] = str)
   step "expect bulk update width is correct"
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  (test_param[:bulk_width_inc]=str).to_i.times {stamps.orders.bulk_update.dimensions.width.increment.click}
+  (test_param[:bulk_width_inc] = str).to_i.times {stamps.orders.bulk_update.dimensions.width.increment.click}
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Ww]idth by (.*)$/ do |str|
-  (test_param[:bulk_width_dec]=str).to_i.times {stamps.orders.bulk_update.dimensions.width.decrement.click}
+  (test_param[:bulk_width_dec] = str).to_i.times {stamps.orders.bulk_update.dimensions.width.decrement.click}
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ww]idth is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.width.text).to eql((str.nil?)?test_param[:bulk_width]:str)
+  expect(stamps.orders.bulk_update.dimensions.width.text).to eql((str.nil?) ? test_param[:bulk_width] : str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Hh]eight to (.*)$/ do |str|
-  stamps.orders.bulk_update.dimensions.height.set(test_param[:bulk_height]=str)
+  stamps.orders.bulk_update.dimensions.height.set(test_param[:bulk_height] = str)
   step "expect bulk update height is correct"
 end
 
 Then /^[Ii]ncrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  (test_param[:bulk_height_inc]=str).to_i.times {stamps.orders.bulk_update.dimensions.height.increment.click}
+  (test_param[:bulk_height_inc] = str).to_i.times {stamps.orders.bulk_update.dimensions.height.increment.click}
 end
 
 Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Hh]eight by (.*)$/ do |str|
-  (test_param[:bulk_height_dec]=str).to_i.times {stamps.orders.bulk_update.dimensions.height.decrement.click}
+  (test_param[:bulk_height_dec] = str).to_i.times {stamps.orders.bulk_update.dimensions.height.decrement.click}
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Hh]eight is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.dimensions.height.text).to eql((str.nil?)?test_param[:bulk_height]:str)
+  expect(stamps.orders.bulk_update.dimensions.height.text).to eql((str.nil?) ? test_param[:bulk_height] : str)
 end
 
 Then /^[Cc]lick [Bb]ulk [Uu]pdate [Uu]pdate [Oo]rder [Bb]utton$/ do

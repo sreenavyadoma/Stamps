@@ -1,14 +1,10 @@
 module Stamps
   module Orders
     module Common
-      module Service
+      module ServiceSelection
         ##
-        # This class keeps track of Service floating bound list # (service list
-        # of values) in the DOM. The problem we have is that service drop down
-        # list of values are not named properly, this class keeps track of
-        # bulk update form and order details form service list of values.
-        # This class is shared between BulkUpdate and OrderDetails.
-        class FloatingBoundList < BaseCache
+        # Persistent container
+        class FloatingBoundList
           @@hash={}
           class << self
             def set(key, val)
@@ -53,31 +49,41 @@ module Stamps
           end
         end
 
-        class Base < FloatingBoundList
-          BULK_UPDATE=:bulk_update
-          ORDER_DETAILS=:single_order
+        ##
+        # This class keeps track of Service floating bound list # (service list
+        # of values) in the DOM. The problem we have is that service drop down
+        # list of values are not named properly, this class keeps track of
+        # bulk update form and order details form service list of values.
+        # This class is shared between BulkUpdate and OrderDetails.
+        class FloatingServiceTracker < FloatingBoundList
+          BULK_UPDATE = :bulk_update unless defined? BULK_UPDATE
+          SINGLE_ORDER = :single_order unless defined? SINGLE_ORDER
+          attr_reader :browser
+          def initialize(param)
+            @browser = param.browser
+          end
 
           def bulk_update_first_load
-            set(BULK_UPDATE, 0) if get(BULK_UPDATE).nil? && get(ORDER_DETAILS).nil?
+            set(BULK_UPDATE, 0) if get(BULK_UPDATE).nil? && get(SINGLE_ORDER).nil?
           end
 
           def bulk_update_lov(str)
-            set(BULK_UPDATE, values.max + 1) if get(BULK_UPDATE).nil? && !get(ORDER_DETAILS).nil? && lov_count(str)==1
+            set(BULK_UPDATE, values.max + 1) if get(BULK_UPDATE).nil? && !get(SINGLE_ORDER).nil? && lov_count(str)==1
           end
 
           def order_details_first_load
-            set(ORDER_DETAILS, 0) if get(ORDER_DETAILS).nil? && get(BULK_UPDATE).nil?
+            set(SINGLE_ORDER, 0) if get(SINGLE_ORDER).nil? && get(BULK_UPDATE).nil?
           end
 
           def order_details_lov(str)
-            set(ORDER_DETAILS, values.max + 1) if get(ORDER_DETAILS).nil? && !get(BULK_UPDATE).nil? && lov_count(str)==1
+            set(SINGLE_ORDER, values.max + 1) if get(SINGLE_ORDER).nil? && !get(BULK_UPDATE).nil? && lov_count(str)==1
           end
 
           def selection_field(form, str)
             if form == BULK_UPDATE
               bulk_update_first_load
               bulk_update_lov(str)
-            elsif form == ORDER_DETAILS
+            elsif form == SINGLE_ORDER
               order_details_first_load
               order_details_lov(str)
               nil

@@ -32,15 +32,15 @@ end
 
 Then /^[Ee]xpect \$([0-9.]*) is deducted from customer balance if printing is successful$/ do |expected|
   if @printing_error
-    expect(stamps.navigation_bar.balance.amount.to_f).to eql test_param[:old_balance].to_f
+    expect(stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f).to eql test_param[:old_balance].to_f
   else
-    expect((stamps.navigation_bar.balance.amount.to_f + expected.to_f)).to eql test_param[:old_balance].to_f
+    expect((stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f + expected.to_f)).to eql test_param[:old_balance].to_f
   end
 end
 
 Then /^NavBar: Expect Customer Balance is deducted the Printing Cost$/ do
   if @printing_error.length > 0
-    expect(stamps.navigation_bar.balance.amount.to_f).to eql test_param[:old_balance].to_f
+    expect(stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f).to eql test_param[:old_balance].to_f
   else
     expect(test_param[:total_ship_cost].to_f.round(2)).to eql (test_param[:service_cost].to_f + test_param[:insure_for_cost].to_f + test_param[:tracking_cost].to_f).round(2)
     expect(stamps.navigation_bar.balance.new_balance(test_param[:old_balance]).to_f.round(2)).to eql (test_param[:old_balance].to_f - (test_param[:service_cost].to_f + test_param[:tracking_cost].to_f)).round(2)

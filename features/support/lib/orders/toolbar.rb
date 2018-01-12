@@ -721,7 +721,7 @@ module Stamps
       class AddButton < Browser::Base
         def click
           add_btn=StampsField.new(browser.span(text: 'Add'))
-          details_order_id=Orders::Details::SingleOrderDetailsOrderId.new(param)
+          details_order_id=Orders::SingleOrder::Fields::SingleOrderDetailsOrderId.new(param)
           server_error=ShipStationServerError.new(param)
           initializing_db=StampsField.new(browser.div(text: "Initializing Order Database"))
 

@@ -5,43 +5,40 @@ Feature: Bulk Update Domestic
 
   @bulk_update_dimensions
   Scenario: ORDERSAUTO-2261 Bulk Update: Dimensions controller
-#    #Add 1st order
-#    Then add order 1
-#    Then set Order Details Ship-From to default
-#    Then set Order Details Ship-To to random address between zone 8
-#    Then set Order Details service to PM Package
-#    Then set Order Details Pounds to 1
-#    Then set Order Details Ounces to 1
-#    Then set Order Details Length to 1
-#    Then set Order Details Width to 1
-#    Then set Order Details Height to 1
-#    #Add 2nd order
-#    Then add order 2
-#    Then set Order Details Ship-From to default
-#    Then set Order Details Ship-To to random address between zone 8
-#    Then set Order Details service to PM Large Package
-#    Then set Order Details Pounds to 2
-#    Then set Order Details Ounces to 2
-#    Then set Order Details Length to 1
-#    Then set Order Details Width to 1
-#    Then set Order Details Height to 1
 
-#    #Check 1st two orders
-#    Then check order 1
-#    Then check order 2
+    #Adding 1st order
+    Then add new order
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address in zone 1
+    Then set Order Details service to PM Package
+    Then set Order Details Pounds to 1
+    #Add 2nd order
+    Then add order 2
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 8
+    Then set Order Details service to PM Large Package
+    Then set Order Details Pounds to 2
+    Then set Order Details Ounces to 2
+    Then set Order Details Length to 1
+    Then set Order Details Width to 1
+    Then set Order Details Height to 1
+
+    #Check 1st two orders
+    Then check order 1
+    Then check order 2
 
     #Updating order details
     #Then set Bulk Update Ship From to default
     #todo-BulkUpdate missing expectation for Ship From
 
-    Then check row 1
-    Then check row 2
+    #Then check row 1
+    #Then check row 2
     Then set Bulk Update service to PME Package/Flat/Thick Envelope
     Then click Bulk Update Orders button
 
     Then uncheck row 2
     Then expect order details service is PME Package/Flat/Thick Envelope
-    #Then set order details service to PM Large Package
+    Then set order details service to PM Large Package
 
     Then check row 2
     Then set Bulk Update service to PME Padded Flat Rate Envelope
@@ -133,49 +130,49 @@ Feature: Bulk Update Domestic
 
     Then Sign out
 
-    @bulk_update_dom
-    Scenario: Bulk Update Domestic
-      #Adding 1st order
-      Then add new order
-      Then set Order Details Ship-From to default
-      Then set Order Details Ship-To to random address in zone 1
-      Then set Order Details service to PM Package
-      Then set Order Details Pounds to 1
+  @bulk_update_dom
+  Scenario: Bulk Update Domestic
+    #Adding 1st order
+    Then add new order
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address in zone 1
+    Then set Order Details service to PM Package
+    Then set Order Details Pounds to 1
 
-      #Adding 2nd order
-      Then add new order
-      Then set Order Details Ship-From to default
-      Then set Order Details Ship-To to random address in zone 1
-      Then set Order Details service to PM Package
-      Then set Order Details Pounds to 1
+    #Adding 2nd order
+    Then add new order
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address in zone 1
+    Then set Order Details service to PM Package
+    Then set Order Details Pounds to 1
 
-      Then Refresh the browser
+    Then Refresh the browser
 
-      #Check 1st two orders
-      Then check Orders Grid row 1
-      Then check Orders Grid row 2
+    #Check 1st two orders
+    Then check Orders Grid row 1
+    Then check Orders Grid row 2
 
-      #Updating order details
-      Then set Bulk Update Ship From to default
-      Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
-      Then set Bulk Update Pounds to 1
-      Then set Bulk Update Ounces to 1
-      Then click Bulk Update Update Order button
-      Then Pause for 2 seconds
+    #Updating order details
+    Then set Bulk Update Ship From to default
+    Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
+    Then set Bulk Update Pounds to 1
+    Then set Bulk Update Ounces to 1
+    Then click Bulk Update Update Order button
+    Then Pause for 2 seconds
 
-      Then Refresh the browser
+    Then Refresh the browser
 
-      #verify fields in 1st order
-      Then check Orders Grid row 1
-      Then expect Order Details Ship From is default
-      Then expect Orders Grid service is PME Package/Flat/Thick Envelope
-      #Then expect Order Details Pound is 2
-      Then uncheck Orders Grid row 1
+    #verify fields in 1st order
+    Then check Orders Grid row 1
+    Then expect Order Details Ship From is default
+    Then expect Orders Grid service is PME Package/Flat/Thick Envelope
+    #Then expect Order Details Pound is 2
+    Then uncheck Orders Grid row 1
 
-      #verify fields in 2nd order
-      Then check Orders Grid row 2
-      Then expect Order Details Ship From is correct
-      Then expect Orders Grid service is PME Package/Flat/Thick Envelope
-      #Then expect Order Details Pound is 2
+    #verify fields in 2nd order
+    Then check Orders Grid row 2
+    Then expect Order Details Ship From is correct
+    Then expect Orders Grid service is PME Package/Flat/Thick Envelope
+    #Then expect Order Details Pound is 2
 
-      Then Sign out
+    Then Sign out

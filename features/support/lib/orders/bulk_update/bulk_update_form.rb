@@ -33,9 +33,7 @@ module Stamps
           end
 
           def height
-            (cache[:height].nil?||!cache[:height].present?)?cache[:height]=StampsNumberField.new(
-                browser.text_field(css: '[class*=mult] [name=Height]'),
-                browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(5) [class*=up]"),
+            (cache[:height].nil?||!cache[:height].present?)?cache[:height]=StampsNumberField.new(browser.text_field(css: '[class*=mult] [name=Height]'), browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(5) [class*=up]"),
                 browser.div(css: "[class*=mult] [id^=dim][id$=El] [class*=target]>div:nth-child(5) [class*=down]")):cache[:height]
           end
 
@@ -81,7 +79,7 @@ module Stamps
           end
         end
 
-        class ShipFrom < Browser::FloatingBoundList
+        class ShipFrom < Browser::Base
           attr_reader :form_type
           def initialize(param, form_type)
             super(param)
@@ -142,10 +140,14 @@ module Stamps
           end
         end
 
-        class Service < Orders::Common::Service::Base
+        class Service < Browser::BaseCache
           assign({})
           def cache
             self.class.cache
+          end
+
+          def selection_field(order_form, str)
+            ::Common::ServiceSelection::FloatingServiceTracker.new(param).selection_field(order_form, str)
           end
 
           def textbox
@@ -166,7 +168,7 @@ module Stamps
 
           def select(str)
             dropdown.click
-            selection = selection_field(BULK_UPDATE, str)
+            selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::SINGLE_ORDER, str)
             5.times do
               begin
                 dropdown.click unless selection.present?

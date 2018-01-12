@@ -145,11 +145,6 @@ module Stamps
       false
     end
 
-    # str=$34.68 returns 34.68
-    def dollar_amount_str(str)
-      str.gsub('$', '').gsub(',', '')
-    end
-
     def dollar_amount_f(str)
       /[^$]+/.match(str).to_f
     end
