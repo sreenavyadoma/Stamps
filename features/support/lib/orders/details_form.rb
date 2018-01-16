@@ -164,7 +164,7 @@ module Stamps
 
           def set partial_address_hash
             exact_address_not_found_field = browser.div text: 'Exact Address Not Found'
-            form = DetailsForm.new(param)
+            form = DetailsForm.new(param) #todo-Rob this is wrong, change it.
             form.validate_address_link
             country_dropdown = self.country
             form.ship_to.set test_helper.format_address(partial_address_hash)
@@ -512,21 +512,45 @@ module Stamps
           end
         end
 
-        class InsureFor < Browser::Base
+        class InsureFor < Browser::BaseCache
           include BlurOutField
+          assign({})
+          def cache
+            self.class.cache
+          end
 
-          attr_reader :checkbox, :textbox, :increment_trigger, :decrement_trigger, :terms
+          def cost
+            cache[:cost] = StampsField.new(browser.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
+            cache[:cost]
+          end
 
-          def initialize(param)
-            super
-            @textbox = StampsTextbox.new browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div>input[name=InsuredValue]")
-            @decrement_trigger = StampsField.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=down]")
-            @increment_trigger = StampsField.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id*=spinner]>div[class*=up]")
+          def textbox
+            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[class*=single] [name=InsuredValue]")) if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox]
+          end
 
-            field = browser.input(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)>div>div>input")
-            verify = browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=checkbox-]:nth-child(2)")
-            @checkbox = StampsCheckbox.new(field, verify, "class", "checked")
-            @terms = InsuranceTermsConditions.new(param)
+          def checkbox
+            if cache[:checkbox].nil? || !cache[:checkbox].present?
+              cache[:checkbox] = StampsCheckbox.new(
+                  browser.label(text: "Insure For $:").parent.input,
+                  browser.label(text: "Insure For $:").parent.divs[1],
+                  "class", "checked")
+            end
+            cache[:checkbox]
+          end
+
+          def increment
+            cache[:increment] = StampsField.new browser.div(css: "[class*=single] [id^=insurance] [class*=down]") if cache[:increment].nil? || !cache[:increment].present?
+            cache[:increment]
+          end
+
+          def decrement
+            cache[:decrement] = StampsField.new browser.div(css: "[class*=single] [id^=insurance] [class*=up]") if cache[:decrement].nil? || !cache[:decrement].present?
+            cache[:decrement]
+          end
+
+          def terms
+            InsuranceTermsConditions.new(param) #todo-Rob move terms to stamps.modals.insurance_terms_conditions
           end
 
           def checked?
@@ -542,7 +566,7 @@ module Stamps
           end
 
           def text
-            textbox.text
+            textbox.text #todo-Rob need to transfer responsibility to step def
           end
 
           def value
@@ -568,40 +592,36 @@ module Stamps
               terms.agree if terms.present?
             end
           end
+        end
 
-          def increment(value)
-            value.to_i.times do
-              increment_trigger.click
-            end
-          end
-
-          def decrement(value)
-            value.to_i.times do
-              decrement_trigger.click
-            end
-          end
-
-          def cost_label
-            labels = browser.label(text: "Insure For $:").parent.parent.parent.parent.labels
-            cost_field = nil
-            labels.each do |label|
-              cost_field = label if label.text.include?('.')
-            end
-            cost_field
+        class Tracking < Browser::BaseCache
+          assign({})
+          def cache
+            self.class.cache
           end
 
           def cost
-            cost_label.text.to_f.round(2).dollar_amount_str
+            if cache[:cost].nil? || !cache[:cost].present?
+              cache[:cost] = StampsField.new(browser.label(css: '[class*=single] [class*=tracking_cost]'))
+            else
+              cache[:cost]
+            end
           end
-        end
 
-        class Tracking < Browser::Base
-          attr_reader :textbox, :dropdown, :cost_label
-          def initialize(param)
-            super
-            @textbox = StampsTextbox.new browser.text_field(name: 'Tracking')
-            @dropdown = StampsField.new browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]")
-            @cost_label = StampsField.new(browser.label(css: "label[class*='selected_tracking_cost']"))
+          def textbox
+            if cache[:textbox].nil? || !cache[:textbox].present?
+              cache[:textbox] = StampsTextbox.new(browser.text_field(css: '[class*=single] [name=Tracking]'))
+            else
+              cache[:textbox]
+            end
+          end
+
+          def dropdown
+            if cache[:dropdown].nil? || !cache[:dropdown].present?
+              cache[:dropdown] = StampsField.new(browser.div(css: "[class*=single] [id^=tracking][id$=picker]"))
+            else
+              cache[:dropdown]
+            end
           end
 
           def present?
@@ -649,10 +669,6 @@ module Stamps
               end
               expect("Unable to fetch inline cost for #{selection}").to eql "Details - Tracking inline cost"
             end
-          end
-
-          def cost
-            cost_label.text.to_f.round(2).dollar_amount_str
           end
 
           def tooltip(selection)
@@ -726,10 +742,8 @@ module Stamps
           def size
             browser.divs(css: "div[id^=singleorderitem-][id$=-targetEl]").size
           end
+          alias_method :count, :size
 
-          def count
-            size
-          end
 
           def item(number)
             associated_item = AssociatedOrderItem.new(param, number)
@@ -738,7 +752,6 @@ module Stamps
               return associated_item if associated_item.present?
               sleep(0.5)
               add_btn.click if number > size
-              logger.info "Item Count: #{size}"
             end
             associated_item
           end
@@ -830,29 +843,17 @@ module Stamps
           end
 
           def order_id
-            SingleOrderDetailsOrderId.new(param).details_order_id
+            SingleOrderDetailsOrderId.new(param).details_order_id #todo-Rob fix this
           end
         end
 
         class Footer < Browser::Base
-          attr_reader :label
-          def initialize(param)
-            super
-            @label = StampsField.new browser.strong(text: 'Total Ship Cost:')
+          def label
+            StampsField.new(browser.strong(text: 'Total Ship Cost:'))
           end
 
           def total_ship_cost
-            cost_label = StampsField.new browser.label(css: "div[id^=singleOrderDetailsForm]>div>div>div>label[class*=total_cost]")
-            10.times do
-              begin
-                cost = cost_label.text
-                logger.info "Single Order Details Total Cost is #{cost}"
-                break if cost.include? "$"
-              rescue
-                #ignore
-              end
-            end
-            cost_label.text.to_f.round(2).dollar_amount_str
+            StampsField.new(browser.strong(css: '[class*=singleorder-detailsform] [class*=total_cost] strong'))
           end
 
           def multiple_order_cost
@@ -866,7 +867,7 @@ module Stamps
               end
               break unless cost.include? "$"
             end
-            cost_label.text.to_f.round(2).dollar_amount_str
+            cost_label.text.dollar_amount_str.to_f.round(2)
           end
         end
 
@@ -911,19 +912,18 @@ module Stamps
           end
 
           def textbox
-            if cache[:textbox].nil? || !cache[:textbox].present?
-              cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[class*=domestic-service-row] [name=service]"))
-            else
-              cache[:textbox]
-            end
+            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[class*=domestic-service-row] [name=service]")) if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox]
           end
 
           def dropdown
-            if cache[:dropdown].nil? || !cache[:dropdown].present?
-              cache[:dropdown] = StampsField.new(browser.div(css: "[class*=domestic] [id$=trigger-picker]"))
-            else
-              cache[:dropdown]
-            end
+            cache[:dropdown] = StampsField.new(browser.div(css: "[class*=domestic] [id$=trigger-picker]")) if cache[:dropdown].nil? || !cache[:dropdown].present?
+            cache[:dropdown]
+          end
+
+          def cost
+            cache[:cost] = StampsField.new(browser.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
+            cache[:cost]
           end
 
           def select(str)
@@ -939,19 +939,6 @@ module Stamps
               end
             end
             textbox.text
-          end
-
-          def cost_label
-            labels=browser.label(text: "Service:").parent.labels
-            cost_field=nil
-            labels.each do |label|
-              cost_field=label if label.text.include?('.')
-            end
-            cost_field
-          end
-
-          def cost
-            cost_label.text.to_f.round(2).dollar_amount_str
           end
 
           def inline_cost(service_name)
@@ -1020,7 +1007,7 @@ module Stamps
           end
         end
       end
-      
+
     end
   end
 end

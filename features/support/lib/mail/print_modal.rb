@@ -135,7 +135,7 @@ module Stamps
         end
 
         def total_cost
-          browser.label(text: 'Total Cost:').parent.labels.last.to_f.round(2).dollar_amount_str
+          browser.label(text: 'Total Cost:').parent.labels.last.dollar_amount_str.to_f.round(2)
         end
 
         def check_naws_plugin_error

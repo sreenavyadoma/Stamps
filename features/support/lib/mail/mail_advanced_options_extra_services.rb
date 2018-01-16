@@ -53,55 +53,55 @@ module Stamps
         def security_price
           expect(security_price_field).to be_present
           security_price_field.blur_out(3)
-          security_price_field.text.to_f.round(2).dollar_amount_str
+          security_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def return_receipt_price
           expect(return_receipt_price_field).to be_present
           return_receipt_price_field.blur_out(3)
-          return_receipt_price_field.text.to_f.round(2).dollar_amount_str
+          return_receipt_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def restricted_delivery_price
           expect(restricted_delivery_price_field).to be_present
           restricted_delivery_price_field.blur_out(3)
-          restricted_delivery_price_field.text.to_f.round(2).dollar_amount_str
+          restricted_delivery_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def cod_price
           expect(cod_price_field).to be_present
           cod_price_field.blur_out(3)
-          cod_price_field.text.to_f.round(2).dollar_amount_str
+          cod_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def non_delivery_notice_price
           expect(non_delivery_notice_price_field).to be_present
           non_delivery_notice_price_field.blur_out(3)
-          non_delivery_notice_price_field.text.to_f.round(2).dollar_amount_str
+          non_delivery_notice_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def content_price
           expect(content_price_field).to be_present
           content_price_field.blur_out(3)
-          content_price_field.text.to_f.round(2).dollar_amount_str
+          content_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def special_handling_price
           expect(special_handling_price_field).to be_present
           special_handling_price_field.blur_out(3)
-          special_handling_price_field.text.to_f.round(2).dollar_amount_str
+          special_handling_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def merchandise_return_receipt
           expect(merchandise_return_receipt_field).to be_present
           merchandise_return_receipt_field.blur_out(3)
-          merchandise_return_receipt_field.text.to_f.round(2).dollar_amount_str
+          merchandise_return_receipt_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def total_price
           expect(total_price_field).to be_present
           total_price_field.blur_out(3)
-          total_price_field.text.to_f.round(2).dollar_amount_str
+          total_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def return_receipt

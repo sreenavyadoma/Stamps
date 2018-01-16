@@ -234,7 +234,7 @@ module Stamps
         end
 
         def total_value
-          total_value_field.text.to_f.round(2).dollar_amount_str
+          total_value_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def usps_privacy_act_statement

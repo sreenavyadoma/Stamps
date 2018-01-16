@@ -292,7 +292,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Insure-For Cost is (?:correct|(\d+.\d*))$/ 
   expectation=test_param[:insure_for_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.insure_for.cost).to eql expectation.to_f.round(2)
+  expect(stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)).to eql expectation.to_f.round(2)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Insure-For Cost is greater than \$(.*)$/ do |expectation|
@@ -416,7 +416,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Total Ship Cost is (?:correct|(\d+.\d*))$/ 
   expectation=test_param[:total_ship_cost] if expectation.nil?
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.footer.total_ship_cost).to eql(expectation.to_f.round(2))
+  expect(stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.to_f.round(2))
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-From Textbox is enabled$/ do

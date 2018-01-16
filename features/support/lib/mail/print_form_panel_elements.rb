@@ -791,7 +791,7 @@ module Stamps
             begin
               dropdown.click unless cost_label.present?
               if cost_label.present?
-                service_cost = cost_label.text.to_f.round(2).dollar_amount_str
+                service_cost = cost_label.text.dollar_amount_str.to_f.round(2)
                 return service_cost
               end
             rescue

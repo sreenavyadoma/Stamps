@@ -9,13 +9,13 @@ end
 Then /^Save Order Details data$/ do
   if stamps.orders.order_details.present?
     test_param[:country] = stamps.orders.order_details.ship_to.country.textbox.text
-    test_param[:service_cost] = stamps.orders.order_details.service.cost
+    test_param[:service_cost] = stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2)
     test_param[:service] = stamps.orders.order_details.service.textbox.text
     test_param[:ship_from] = stamps.orders.order_details.single_ship_from.textbox.text
-    test_param[:insure_for_cost] = stamps.orders.order_details.insure_for.cost
-    test_param[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost
+    test_param[:insure_for_cost] = stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)
+    test_param[:total_ship_cost] = stamps.orders.order_details.footer.total_ship_cost.text.dollar_amount_str.to_f.round(2)
     test_param[:awaiting_shipment_count] = stamps.orders.filter_panel.awaiting_shipment.count
-    test_param[:tracking_cost] = stamps.orders.order_details.tracking.cost
+    test_param[:tracking_cost] = stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2)
     test_param[:tracking] = stamps.orders.order_details.tracking.textbox.text
   end
 end

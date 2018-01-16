@@ -7,75 +7,48 @@ module Stamps
       end
 
       def orders_toolbar
-        if cache[:orders_toolbar].nil? || !cache[:orders_toolbar].present?
-          cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param)
-        else
-          cache[:orders_toolbar]
-        end
+        cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil? || !cache[:orders_toolbar].present?
+        cache[:orders_toolbar]
       end
 
       def landing_page
-        if cache[:landing_page].nil? || !cache[:landing_page].present?
-          cache[:landing_page] = Orders::Authentication::OrdersLandingPage.new(param)
-        else
-          cache[:landing_page]
-        end
+        cache[:landing_page] = Orders::Authentication::OrdersLandingPage.new(param) if cache[:landing_page].nil? || !cache[:landing_page].present?
+        cache[:landing_page]
       end
 
       def filter_panel
-        if cache['filter_panel'].nil? || !cache[:filter_panel].present?
-          cache[:filter_panel] = Orders::LeftPanel::FilterPanel.new(param)
-        else
-          cache[:filter_panel]
-        end
+        cache[:filter_panel] = Orders::LeftPanel::FilterPanel.new(param) if cache['filter_panel'].nil? || !cache[:filter_panel].present?
+        cache[:filter_panel]
       end
 
       def orders_grid
-        if cache[:orders_grid].nil? || !cache[:orders_grid].present?
-          cache[:orders_grid] = Orders::Grid::OrdersGrid.new(param)
-        else
-          cache[:orders_grid]
-        end
+        cache[:orders_grid] = Orders::Grid::OrdersGrid.new(param) if cache[:orders_grid].nil? || !cache[:orders_grid].present?
+        cache[:orders_grid]
       end
 
       def order_details
-        if cache[:single_order].nil? || !cache[:single_order].present?
-          cache[:single_order] = Orders::SingleOrder::DetailsForm.new(param)
-        else
-          cache[:single_order]
-        end
+        cache[:single_order] = Orders::SingleOrder::DetailsForm.new(param) if cache[:single_order].nil? || !cache[:single_order].present?
+        cache[:single_order]
       end
 
       def bulk_update
-        if cache[:bulk_update].nil? || !cache[:bulk_update].present?
-          cache[:bulk_update] = Orders::BulkUpdate::Form.new(param)
-        else
-          cache[:bulk_update]
-        end
+        cache[:bulk_update] = Orders::BulkUpdate::Form.new(param) if cache[:bulk_update].nil? || !cache[:bulk_update].present?
+        cache[:bulk_update]
       end
 
       def modals
-        if cache[:modals].nil? || !cache[:modals].present?
-          cache[:modals] = Stamps::Browser::Base.new(param).extend(StampsOrdersModals)
-        else
-          cache[:modals]
-        end
+        cache[:modals] = Stamps::Browser::Base.new(param).extend(StampsOrdersModals) if cache[:modals].nil? || !cache[:modals].present?
+        cache[:modals]
       end
 
       def marketplace
-        if cache[:marketplace].nil? || !cache[:marketplace].present?
-          cache[:marketplace] = Stamps::Browser::Base.new(param).extend(MarketPlaceStoreModals)
-        else
-          cache[:marketplace]
-        end
+        cache[:marketplace] = Stamps::Browser::Base.new(param).extend(MarketPlaceStoreModals) if cache[:marketplace].nil? || !cache[:marketplace].present?
+        cache[:marketplace]
       end
 
       def styles
-        if cache[:styles].nil? || !cache[:styles].present?
-          cache[:styles] = PageStyles.new(param)
-        else
-          cache[:styles]
-        end
+        cache[:styles] = PageStyles.new(param) if cache[:styles].nil? || !cache[:styles].present?
+        cache[:styles]
       end
 
       def present?

@@ -245,7 +245,7 @@ module Stamps
         end
 
         def cost
-          cost_label.text.to_f.round(2).dollar_amount_str
+          cost_label.text.dollar_amount_str.to_f.round(2)
         end
 
         def inline_cost(service_name)

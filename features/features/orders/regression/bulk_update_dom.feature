@@ -12,6 +12,7 @@ Feature: Bulk Update Domestic
     Then set Order Details Ship-To to random address in zone 1
     Then set Order Details service to PM Package
     Then set Order Details Pounds to 1
+    Then expect Order Details Ship Cost Total is correct
     #Add 2nd order
     Then add order 2
     Then set Order Details Ship-From to default
