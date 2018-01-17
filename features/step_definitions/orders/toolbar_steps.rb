@@ -1,3 +1,4 @@
+
 Then /^(?:[Cc]lick Orders Toolbar Add button|add new order|add [Oo]rder (\d+))$/ do |count|
   test_param[:old_balance] = stamps.navigation_bar.balance.balance_amount.text.dollar_amount_str.to_f
   stamps.orders.orders_grid.grid_column(:checkbox).uncheck(1)

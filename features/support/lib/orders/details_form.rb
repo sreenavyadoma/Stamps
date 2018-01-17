@@ -1,6 +1,41 @@
 module Stamps
   module Orders
     module SingleOrder
+      class InsuranceTermsConditions < Browser::Base
+        def present?
+          begin
+            (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
+          rescue
+            false
+          end
+        end
+
+        #todo-rob Updates to Insurance Terms and Conditions
+        def agree
+          10.times do
+            begin
+              browser.spans(text: "I Agree").each do |button|
+                StampsField.new(button).click
+              end
+            rescue
+              #ignore
+            end
+          end
+        end
+
+        def cancel
+          10.times do
+            begin
+              browser.spans(text: "Cancel").each do |button|
+                StampsField.new(button).click
+              end
+            rescue
+              #ignore
+            end
+          end
+        end
+      end
+
       module Fields
         module BlurOutField
           def blur_out(count=1)
@@ -477,41 +512,6 @@ module Stamps
           end
         end
 
-        class InsuranceTermsConditions < Browser::Base
-          def present?
-            begin
-              (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
-            rescue
-              false
-            end
-          end
-
-          #todo-rob Updates to Insurance Terms and Conditions
-          def agree
-            10.times do
-              begin
-                browser.spans(text: "I Agree").each do |button|
-                  StampsField.new(button).click
-                end
-              rescue
-                #ignore
-              end
-            end
-          end
-
-          def cancel
-            10.times do
-              begin
-                browser.spans(text: "Cancel").each do |button|
-                  StampsField.new(button).click
-                end
-              rescue
-                #ignore
-              end
-            end
-          end
-        end
-
         class InsureFor < Browser::BaseCache
           include BlurOutField
           assign({})
@@ -550,7 +550,7 @@ module Stamps
           end
 
           def terms
-            InsuranceTermsConditions.new(param) #todo-Rob move terms to stamps.modals.insurance_terms_conditions
+            InsuranceTermsConditions.new(param) #todo-Rob-usps-terms move set_and_agree_to_terms out of page object onto step def.
           end
 
           def checked?
@@ -584,14 +584,6 @@ module Stamps
             end
             expect(text.to_f).to eql(value.to_f)
           end
-
-          def set_and_agree_to_terms(value)
-            set(value)
-            3.times do
-              2.times {blur_out}
-              terms.agree if terms.present?
-            end
-          end
         end
 
         class Tracking < Browser::BaseCache
@@ -601,27 +593,18 @@ module Stamps
           end
 
           def cost
-            if cache[:cost].nil? || !cache[:cost].present?
-              cache[:cost] = StampsField.new(browser.label(css: '[class*=single] [class*=tracking_cost]'))
-            else
-              cache[:cost]
-            end
+            cache[:cost] = StampsField.new(browser.label(css: '[class*=single] [class*=tracking_cost]')) if cache[:cost].nil? || !cache[:cost].present?
+            cache[:cost]
           end
 
           def textbox
-            if cache[:textbox].nil? || !cache[:textbox].present?
-              cache[:textbox] = StampsTextbox.new(browser.text_field(css: '[class*=single] [name=Tracking]'))
-            else
-              cache[:textbox]
-            end
+            cache[:textbox] = StampsTextbox.new(browser.text_field(css: '[class*=single] [name=Tracking]')) if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox]
           end
 
           def dropdown
-            if cache[:dropdown].nil? || !cache[:dropdown].present?
-              cache[:dropdown] = StampsField.new(browser.div(css: "[class*=single] [id^=tracking][id$=picker]"))
-            else
-              cache[:dropdown]
-            end
+            cache[:dropdown] = StampsField.new(browser.div(css: "[class*=single] [id^=tracking][id$=picker]")) if cache[:dropdown].nil? || !cache[:dropdown].present?
+            cache[:dropdown]
           end
 
           def present?
@@ -912,17 +895,17 @@ module Stamps
           end
 
           def textbox
-            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[class*=domestic-service-row] [name=service]")) if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id^=singleOrder] [name=Service]")) if cache[:textbox].nil? || !cache[:textbox].present?
             cache[:textbox]
           end
 
           def dropdown
-            cache[:dropdown] = StampsField.new(browser.div(css: "[class*=domestic] [id$=trigger-picker]")) if cache[:dropdown].nil? || !cache[:dropdown].present?
+            cache[:dropdown] = StampsField.new(browser.div(css: "[id^=singleOrder] [id^=service][id$=picker]")) if cache[:dropdown].nil? || !cache[:dropdown].present?
             cache[:dropdown]
           end
 
           def cost
-            cache[:cost] = StampsField.new(browser.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
+            cache[:cost] = StampsField.new(browser.div(css: "[id^=single] [class*=service-droplist]").parent.labels[2]) if cache[:cost].nil? || !cache[:cost].present?
             cache[:cost]
           end
 

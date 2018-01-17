@@ -12,14 +12,14 @@ Feature: in Orders Grid, Tracking & Order Status
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 5
     Then set Order Details service to PM Flat Rate Envelope
-    Then on Order Details form, check Insure-For checkbox
+    Then check order details insure-for checkbox
     Then set Order Details Insure-For to $52.99
     Then Pause for 1 second
     Then expect Orders Grid Insured Value is $52.99
     Then Pause for 1 second
-    Then on Order Details form, uncheck Insure-For checkbox
+    Then uncheck order details insure-for checkbox
     Then set Order Details service to PM Package
-    Then on Order Details form, uncheck Insure-For checkbox
+    Then uncheck order details insure-for checkbox
     Then set Order Details Tracking to Signature Required
     Then Pause for 2 seconds
     Then expect Orders Grid Insured Value is $0.00
