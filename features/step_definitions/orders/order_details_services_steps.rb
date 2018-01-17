@@ -23,7 +23,8 @@ end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm [Ss]ervice is (?:correct|(.*))$/ do |expectation|
   step "expect order details form is present"
-  expect(test_helper.parse_service(stamps.orders.single_order_details.service.textbox.text)).to eql((expectation.nil?)?test_param[:service]:expectation)
+  # expect(test_helper.parse_service(stamps.orders.single_order_details.service.textbox.text)).to eql((expectation.nil?)?test_param[:service]:expectation)
+  expect(test_helper.parse_service(stamps.orders.single_order_details.service.textbox.text)).to eql((expectation.nil?)?test_param[:service]:(expectation.eql?("an empty string")?"":expectation))
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ff]orm [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |expectation|
