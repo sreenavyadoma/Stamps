@@ -21,11 +21,11 @@ module Stamps
         end
         logger.info "Visit:  #{url}"
         browser.goto(url)
-        get_started_btn.wait_until_present(5)
+        get_started_btn.wait_until_present(10)
         expect(get_started_btn).to be_present
       end
 
-      def get_started
+      def get_started #todo-MH move this functionality to step def, keeping page objects pure
         10.times do
           get_started_btn.click
           registration.wait_until_present(5)

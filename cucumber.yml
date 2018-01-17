@@ -1,4 +1,4 @@
-default: --backtrace --profile mhossain_cc
+default: --backtrace --profile mhossain1_cc
 
 cuke_reports: --format json --out report.json --backtrace -f pretty -r features --format pretty --format html --out reports
 
@@ -13,7 +13,7 @@ rob_mail_sc: --tags @print_dialog_ship_date WEB_APP=mail JENKINS=true USR=defaul
 rob_registration: --tags @registration_normal_workflow WEB_APP=registration URL=cc --guess DEBUG=true HEALTHCHECK=false BROWSER=chrome MAX_WINDOW=false JENKINS=true
 
 #todo-Rob WebReg consider removing webapp, username, password fields
-mhossain_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=ff MAX_WINDOW=false WEB_APP=registration USR=stgee1mtqvwdc0 PW=pass111
+mhossain1_cc: --tags @registration_normal_workflow WEB_APP=orders JENKINS=true URL=cc DEBUG=true BROWSER=chrome MAX_WINDOW=false WEB_APP=registration USR=mhossain1 PW=Password1
 
 
 #Kaushal=ccpryiihrjz ccfb311osps4x print_dialog_ship_date
@@ -47,7 +47,7 @@ xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
-xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
+xxxxxxxxxxxxx: --tags @xxxxxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail PRINTER=factory
 
 

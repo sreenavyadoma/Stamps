@@ -1,7 +1,7 @@
 # Membership Page validation steps
 
 Then /^[Bb]lur_out on [Mm]embership [Pp]age$/ do
-  registration.membership.header.blur_out
+  registration.profile.header.blur_out
 end
 
 Then /^[Pp]opulate all [Mm]embership [Pp]age required fields$/ do
@@ -12,7 +12,13 @@ Then /^[Pp]opulate all [Mm]embership [Pp]age required fields$/ do
   step "set Membership page Month to Dec (12)"
   step "set Membership page Year to 2026"
   step "check Membership page Terms & Conditions"
+
+
+
 end
+
+
+
 
 Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
   address=test_helper.address_helper_zone(address) #combine this
@@ -32,10 +38,13 @@ Then /^[Ss]et [Mm]embership [Pp]age [Mm]ember [Aa]ddress to(?: a |)(?: random ad
   step "set Membership page Address to #{test_param[:street_address]}"
   step "blur_out on membership page"
   step "set Membership page City to #{test_param[:city]}"
-  step "select Membership page State #{test_param[:state]}"
+  step "select Membership page State to #{test_param[:state]}"
   step "blur_out on membership page"
   step "set Membership page Zip to #{test_param[:zip]}"
   step "set Membership page Phone to #{test_param[:phone_number_format]}"
+
+
+
 end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Ff]irst [Nn]ame to (?:random value|(.*))$/ do |str|
@@ -66,6 +75,7 @@ end
 
 Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
   registration.membership.address.set(test_param[:address]=str)
+=begin
   registration.membership.address.click
   registration.membership.address.double_click
   registration.membership.address.click
@@ -74,6 +84,7 @@ Then /^[Ss]et [Mm]embership [Pp]age [Aa]ddress to (.*)$/ do |str|
   registration.membership.address.click
   registration.membership.address.click
   step "blur_out on membership page"
+=end
 end
 
 Then /^[Ee]xpect [Mm]embership [Pp]age [Aa]ddress is (?:correct|(.*))$/ do |str|
@@ -88,7 +99,7 @@ Then /^[Ee]xpect [Mm]embership [Pp]age [Cc]ity is (?:correct|(.*))$/ do |str|
   expect(registration.membership.city.text).to eql((str.nil?)?test_param[:city]:str)
 end
 
-Then /^[Ss]elect [Mm]embership [Pp]age [Ss]tate (.*)$/ do |str|
+Then /^[Ss]elect [Mm]embership [Pp]age [Ss]tate to (.*)$/ do |str|
   registration.membership.state.select(test_param[:state]=str)
 end
 
@@ -151,7 +162,7 @@ Then /^[Ss]et Membership page Year to this year plus (\d+)$/ do |year|
   step "set Membership page Year to year #{Date.today.year + year.to_i}"
 end
 
-Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to year (.*)$/ do |str|
+Then /^[Ss]et [Mm]embership [Pp]age [Yy]ear to (.*)$/ do |str|
   test_param[:cc_year]=str
   registration.membership.cc_year.select(test_param[:cc_year])
   step "blur_out on membership page"

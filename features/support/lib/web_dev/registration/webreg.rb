@@ -7,7 +7,7 @@ module Stamps
         super
         @navigation=Navigation::RegistrationNavigationBar.new(param)
         @bread_crumbs=RegistrationBreadCrumbs.new(param)
-        @profile=Profile::ProfilePage.new(param)
+        @profile=Profile::Page.new(param)
         @membership ||= Membership::MembershipPage.new(param)
         @choose_supplies=ChooseSupplies.new(param)
         @add_postage=AddPostage.new(param)

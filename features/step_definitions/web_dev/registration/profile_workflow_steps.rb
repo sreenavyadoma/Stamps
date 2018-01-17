@@ -13,12 +13,14 @@ Then /^[Pp]opulate all [Pp]rofile page required fields$/ do
 end
 
 Then /^[Ss]et [Pp]rofile [Pp]age [Ee]mail to (?:random value|(.*))$/ do |str|
-  registration.profile.email.wait_until_present(5)
+  registration.profile.email.wait_until_present(10)
   expect(registration.profile.email).to be_present, "Profile page did not load properly, check your test."
   #expect(registration.profile.email.text).to eql str
   #expect(['Abc', 'D']).to include('Y')
+
   registration.profile.email.set(test_param[:email]=(str.nil?)?(test_helper.random_email):str)
   step "blur out on profile page"
+
 
 end
 
@@ -90,6 +92,7 @@ end
 Then /^[Ss]et [Pp]rofile [Pp]age [Pp]romo [Cc]ode to (?:an empty string|(.*))$/ do |str|
   step "show profile page promo code textbox"
   registration.profile.promo_code.set(test_param[:promo_code]=(str.nil?)?'':str)
+
 end
 
 Then /^[Ee]xpect Profile page [Pp]romo [Cc]ode tooltip (\d+) to be (.*)$/ do |tooltip_index, str|
@@ -122,7 +125,8 @@ Then /^[Ee]xpect [Pp]rofile [Pp]age [Mm]oney-saving offers and new products is u
 end
 
 Then /^[Cc]ontinue to [Mm]embership page$/ do
-  registration.profile.continue
+  #registration.profile.continue
+  registration.profile.continue_btn.click
   step "pause for 1 seconds"
 end
 
