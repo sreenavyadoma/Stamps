@@ -60,7 +60,6 @@ Feature: Bulk Update Domestic
     Then set Bulk Update service to PME Package/Flat/Thick Envelope
     Then check row 2
 
-
     Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
     Then click Bulk Update Orders button
     #todo-BulkUpdate missing expectation for Domestic service
