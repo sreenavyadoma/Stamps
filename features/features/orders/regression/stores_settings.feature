@@ -23,7 +23,7 @@ Feature:  All Store Management
       Then select store settings shipping service to PM Large Flat Rate Box
       Then select store settings shipping service to PM Regional Rate Box A
       Then select store settings shipping service to PM Regional Rate Box B
-      Then select store settings shipping service to PME Package
+      Then select store settings shipping service to PME Package/Flat/Thick Envelope
       Then select store settings shipping service to PME Flat Rate Envelope
       Then select store settings shipping service to PME Padded Flat Rate Envelope
       Then select store settings shipping service to PME Legal Flat Rate Envelope

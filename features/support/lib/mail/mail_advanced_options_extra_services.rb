@@ -1,7 +1,7 @@
 module Stamps
   module Mail
     module PrintFormPanel
-      class MailExtraServices < Browser::Base
+      class MailExtraServices < Browser::Base #todo-Rob implement caching MailExtraServices
         attr_accessor :window_title, :security, :value, :handling, :save_field, :close_field, :security_price_field, :return_receipt_price_field,
                       :restricted_delivery_price_field, :cod_price_field, :non_delivery_notice_price_field, :content_price_field,
                       :special_handling_price_field, :merchandise_return_receipt_field, :total_price_field
@@ -53,55 +53,55 @@ module Stamps
         def security_price
           expect(security_price_field).to be_present
           security_price_field.blur_out(3)
-          test_helper.dollar_amount_str(security_price_field.text).to_f.round(2)
+          security_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def return_receipt_price
           expect(return_receipt_price_field).to be_present
           return_receipt_price_field.blur_out(3)
-          test_helper.dollar_amount_str(return_receipt_price_field.text).to_f.round(2)
+          return_receipt_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def restricted_delivery_price
           expect(restricted_delivery_price_field).to be_present
           restricted_delivery_price_field.blur_out(3)
-          test_helper.dollar_amount_str(restricted_delivery_price_field.text).to_f.round(2)
+          restricted_delivery_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def cod_price
           expect(cod_price_field).to be_present
           cod_price_field.blur_out(3)
-          test_helper.dollar_amount_str(cod_price_field.text).to_f.round(2)
+          cod_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def non_delivery_notice_price
           expect(non_delivery_notice_price_field).to be_present
           non_delivery_notice_price_field.blur_out(3)
-          test_helper.dollar_amount_str(non_delivery_notice_price_field.text).to_f.round(2)
+          non_delivery_notice_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def content_price
           expect(content_price_field).to be_present
           content_price_field.blur_out(3)
-          test_helper.dollar_amount_str(content_price_field.text).to_f.round(2)
+          content_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def special_handling_price
           expect(special_handling_price_field).to be_present
           special_handling_price_field.blur_out(3)
-          test_helper.dollar_amount_str(special_handling_price_field.text).to_f.round(2)
+          special_handling_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def merchandise_return_receipt
           expect(merchandise_return_receipt_field).to be_present
           merchandise_return_receipt_field.blur_out(3)
-          test_helper.dollar_amount_str(merchandise_return_receipt_field.text).to_f.round(2)
+          merchandise_return_receipt_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def total_price
           expect(total_price_field).to be_present
           total_price_field.blur_out(3)
-          test_helper.dollar_amount_str(total_price_field.text).to_f.round(2)
+          total_price_field.text.dollar_amount_str.to_f.round(2)
         end
 
         def return_receipt
@@ -111,6 +111,15 @@ module Stamps
             @return_receipt=StampsCheckbox.new(checkbox, verify, "class", "checked")
           end
           @return_receipt
+        end
+
+        def electronic_return_receipt
+          if @electronic_return_receipt.nil?||!@electronic_return_receipt.present?
+            checkbox=browser.span(id: "sdc-extraserviceswin-rrecheckbox-displayEl")
+            verify=browser.div(id: 'sdc-extraserviceswin-rrecheckbox')
+            @electronic_return_receipt=StampsCheckbox.new(checkbox, verify, "class", "checked")
+          end
+          @electronic_return_receipt
         end
 
         def restricted_delivery
@@ -169,15 +178,26 @@ module Stamps
         end
       end
 
-      class ValueMustBeShown < Browser::Base
+      class ValueMustBeShown < Browser::Base #This class represents the Postage Value Must be Shown modal. It appears when hidden postage has been checked and the user tries to add an extra service that is incompatible with hidden postage
+
         def continue
-          (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(
-              browser.span(text: "Continue")):cache[:continue]
+          (cache[:continue].nil?||!cache[:continue].present?)?cache[:continue]=StampsField.new(browser.span(text: "Continue")):cache[:continue]
         end
 
         def cancel
-          (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(
-              browser.span(text: "Cancel")):cache[:cancel]
+          (cache[:cancel].nil?||!cache[:cancel].present?)?cache[:cancel]=StampsField.new(browser.span(text: "Cancel")):cache[:cancel]
+        end
+      end
+
+      class SpecialContentsWarning < Browser::Base #This class represents the Special Contents Warning modal. It appears when the extra service "Live Animal" or "live Animal (with fee)" is selected
+        def i_agree
+          (cache[:i_agree].nil?||!cache[:i_agree].present?)?cache[:i_agree]=StampsField.new(
+              browser.span(text: "I Agree")):cache[:i_agree]
+        end
+
+        def cancel
+          (cache[:more_info].nil?||!cache[:more_info].present?)?cache[:more_info]=StampsField.new(
+              browser.a(text: "More Info")):cache[:more_info]
         end
       end
     end

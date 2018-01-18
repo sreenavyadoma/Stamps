@@ -3,8 +3,9 @@ module Stamps
     attr_accessor :browser, :firefox_profile, :browser_version, :scenario_name
 
     def logger
-      @logger=StampsLogger.new(scenario_name) if @logger.nil?||@logger.scenario_name!=scenario_name # create new instance of logger if scenario name changes
-      @logger
+      (@logger.nil?||@logger.scenario_name!=scenario_name)?@logger=StampsLogger.new(scenario_name):@logger
+      #@logger=StampsLogger.new(scenario_name) if @logger.nil?||@logger.scenario_name!=scenario_name # create new instance of logger if scenario name changes
+      #@logger
     end
 
     def setup(browser_str)

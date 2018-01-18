@@ -8,13 +8,13 @@ Feature:  Search Orders
   Scenario: Search order
     # Search for New Order ID
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address in zone 1
-    Then set Order Details form Email to random
-    Then set Order Details form Phone to random
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address in zone 1
+    Then set Order Details Email to random
+    Then set Order Details Phone to random
     Then hide order details form Ship-To fields
-    Then set Order Details form service to PM Package
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details service to PM Package
+    Then set Order Details Weight to 1 lb 1 oz
     Then uncheck orders grid cached order id
     Then select Filter Panel tab Shipped
 
@@ -51,13 +51,13 @@ Feature:  Search Orders
   Scenario: Search Orders On Hold
     # Search for New Order ID
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address in zone 1
-    Then set Order Details form Email to random
-    Then set Order Details form Phone to random
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address in zone 1
+    Then set Order Details Email to random
+    Then set Order Details Phone to random
     Then hide order details form Ship-To fields
-    Then set Order Details form service to PM Package
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details service to PM Package
+    Then set Order Details Weight to 1 lb 1 oz
 
     Then select Grid Toolbar Move menu item Move to On Hold
     Then set Move to On Hold modal Hold Until date to today plus 1

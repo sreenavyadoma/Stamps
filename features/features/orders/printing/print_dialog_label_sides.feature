@@ -8,10 +8,10 @@ Feature: Change Starting Label Position
   Scenario:  Print Modal Starting Label
 
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PME Padded Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PME Padded Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then click Orders Toolbar Print button
     Then set Orders print modal printer
     Then expect Print modal left-side label is selected
@@ -20,10 +20,10 @@ Feature: Change Starting Label Position
     Then click print modal print button
 
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PME Padded Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PME Padded Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then click Orders Toolbar Print button
     Then set Orders print modal printer
     Then expect Print modal left-side label is selected

@@ -5,11 +5,11 @@ Feature: Mail Balance
   Scenario: Update Mail Balance After Each Print
     Given a valid user is signed in to Web Apps
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form Pounds to 1
-    Then set Order Details form service to PM Package
-    Then set Order Details form Tracking to USPS Tracking
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details Pounds to 1
+    Then set Order Details service to PM Package
+    Then set Order Details Tracking to USPS Tracking
     Then Pause for 1 second
     Then Save Order Details data
     Then click Orders Toolbar Print button

@@ -1879,6 +1879,11 @@ Cucumber::Rake::Task.new(:print_label_preview_image) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:split_order) do |t|
+  t.profile = 'split_order'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 
 # MAIL
 
@@ -2017,10 +2022,16 @@ Cucumber::Rake::Task.new(:dev_mail_bvt_address_cleansing) do |t|
   t.cucumber_opts = "-p cuke_reports"
 end
 
+Cucumber::Rake::Task.new(:mail_print_by_split_button) do |t|
+  t.profile = 'mail_print_by_split_button'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
 Cucumber::Rake::Task.new(:mail_print_label_left_side) do |t|
   t.profile = 'mail_print_label_left_side'
   t.cucumber_opts = "-p cuke_reports"
 end
+
 
 Cucumber::Rake::Task.new(:mail_print_label_right_side) do |t|
   t.profile = 'mail_print_label_right_side'
@@ -2099,6 +2110,11 @@ end
 
 Cucumber::Rake::Task.new(:mail_credentials) do |t|
   t.profile = 'mail_credentials'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_hidden_postage) do |t|
+  t.profile = 'mail_hidden_postage'
   t.cucumber_opts = "-p cuke_reports"
 end
 
@@ -3064,6 +3080,11 @@ end
 
 Cucumber::Rake::Task.new(:mail_bug_ordersauto_3243) do |t|
   t.profile = 'mail_bug_ordersauto_3243'
+  t.cucumber_opts = "-p cuke_reports"
+end
+
+Cucumber::Rake::Task.new(:mail_hidden_postage) do |t|
+  t.profile = 'mail_hidden_postage'
   t.cucumber_opts = "-p cuke_reports"
 end
 
