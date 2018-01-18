@@ -49,7 +49,7 @@ Feature: Test Workflow - Theme 1632 Happy Path
 #    Then expect Security Questions 2nd security answer is correct
 
     #Then add new order
-    #Then expect Order Details form Order ID is the same as saved Order ID
+    #Then expect Order Details Order ID is the same as saved Order ID
     #Then Sign out
 
 

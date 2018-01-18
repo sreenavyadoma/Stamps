@@ -8,14 +8,14 @@ Feature: Print 1 Intl CP72 label
 
     #print_layout_cp72_4x6roll
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
-    Then set Order Details form service to PMI Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Package
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -25,17 +25,17 @@ Feature: Print 1 Intl CP72 label
 
     #print_layout_cp72_5x8_left
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
-    Then set Order Details form service to PMI Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Package
+    Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
-    Then set Customs form ITN Number to random
+    Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -48,14 +48,14 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_5x8_right
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name              | company   | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFR Envelope |  5.5x8.5 Right Side 1  | random       | random           | random | random  | random      | Argentina | random  | random  |
-    Then set Order Details form service to PMEI Padded Flat Rate Envelope
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMEI Padded Flat Rate Envelope
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -67,14 +67,14 @@ Feature: Print 1 Intl CP72 label
 
     #print_layout_cp72_5x8_single_ply
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMI LFRB |  5.5x8.5 Left Side | random       | random           | random | random  | random      | Australia | random  | random  |
-    Then set Order Details form service to PMI Large Flat Rate Box
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Large Flat Rate Box
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Gift
+    Then set Customs Package Contents to Gift
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -87,14 +87,14 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_paper_continuation
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then set Order Details form service to PMI Flat Rate Envelope
-    Then set Order Details form Weight to 1 lb 14 oz
+    Then set Order Details service to PMI Flat Rate Envelope
+    Then set Order Details Weight to 1 lb 14 oz
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 1, Made In United States, Tariff 2
     Then add Customs form Associated Item 3, Description random, Qty 1, Price 1, Made In United States, Tariff 3
@@ -139,14 +139,14 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_paper_single_ply
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then set Order Details form service to PMI Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMI Package
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Document
+    Then set Customs Package Contents to Document
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -160,14 +160,14 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_roll_continuation
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name     | company   | street_address_1 | street_address_2 | city   | province| postal_code | country | phone   |  email  |
       | PMI LFRB |  4x6 Roll | random           | random           | random | random  | random      | Italy   | random  | random  |
-    Then set Order Details form service to PMI Large Flat Rate Box
-    Then set Order Details form Weight to 2 lb 0 oz
+    Then set Order Details service to PMI Large Flat Rate Box
+    Then set Order Details Weight to 2 lb 0 oz
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 1
     Then add Customs form Associated Item 2, Description random, Qty 1, Price 2, Made In United States, Tariff 2
     Then add Customs form Associated Item 3, Description random, Qty 1, Price 3, Made In United States, Tariff 3
@@ -208,14 +208,14 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_sdc1200_single_ply
     Then add new order
-    Then set Order Details form Ship-From to default
+    Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
-    Then set Order Details form service to PMEI Package
-    Then set Order Details form Ounces to 1
+    Then set Order Details service to PMEI Package
+    Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -228,15 +228,15 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_dpo_cp72_roll_single_ply
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To Country to United States
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To Country to United States
+    Then set Order Details Ship-To Domestic address to
       | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
-    Then set Order Details form Weight to 3 lb 2 oz
-    Then set Order Details form service to PSG Package
+    Then set Order Details Weight to 3 lb 2 oz
+    Then set Order Details service to PSG Package
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Other
+    Then set Customs Package Contents to Other
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
@@ -247,17 +247,17 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_fsa_cp72_paper_single_ply
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To Domestic address to
       | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
-    Then set Order Details form Weight to 1 lb 2 oz
-    Then set Order Details form service to MM Package
+    Then set Order Details Weight to 1 lb 2 oz
+    Then set Order Details service to MM Package
 
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Other
+    Then set Customs Package Contents to Other
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 25, Made In United States, Tariff 10
-    Then set Customs form More Info to random
+    Then set Customs More Info to random
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -271,14 +271,14 @@ Feature: Print 1 Intl CP72 label
 
    #print_layout_cp72_single_ply_apo_roll
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To Domestic address to
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To Domestic address to
       | full_name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
-    Then set Order Details form Weight to 2 lb 1 oz
-    Then set Order Details form service to PSG Package
+    Then set Order Details Weight to 2 lb 1 oz
+    Then set Order Details service to PSG Package
     Then click Order Details form Customs Form button
-    Then set Customs form Package Contents to Merchandise
+    Then set Customs Package Contents to Merchandise
     Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

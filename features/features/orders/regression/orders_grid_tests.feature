@@ -8,19 +8,19 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_insured_value
   Scenario: Tracking & Order Status
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form Ounces to 5
-    Then set Order Details form service to PM Flat Rate Envelope
-    Then on Order Details form, check Insure-For checkbox
-    Then set Order Details form Insure-For to $52.99
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details Ounces to 5
+    Then set Order Details service to PM Flat Rate Envelope
+    Then check order details insure-for checkbox
+    Then set Order Details Insure-For to $52.99
     Then Pause for 1 second
     Then expect Orders Grid Insured Value is $52.99
     Then Pause for 1 second
-    Then on Order Details form, uncheck Insure-For checkbox
-    Then set Order Details form service to PM Package
-    Then on Order Details form, uncheck Insure-For checkbox
-    Then set Order Details form Tracking to Signature Required
+    Then uncheck order details insure-for checkbox
+    Then set Order Details service to PM Package
+    Then uncheck order details insure-for checkbox
+    Then set Order Details Tracking to Signature Required
     Then Pause for 2 seconds
     Then expect Orders Grid Insured Value is $0.00
     Then Pause for 1 second
@@ -35,10 +35,10 @@ Feature: in Orders Grid, Tracking & Order Status
   @grid_ship_cost
   Scenario: B-01743 Show Cost of Order in Ship Cost Grid
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form Ounces to 1
-    Then set Order Details form service to PM Small Flat Rate Box
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details Ounces to 1
+    Then set Order Details service to PM Small Flat Rate Box
     Then Expect Ship Cost equals Total amount
     Then Sign out
 
@@ -46,11 +46,11 @@ Feature: in Orders Grid, Tracking & Order Status
   Scenario: Tracking & Order Status
     Then add new order
     Then expect Orders Grid Order Status is Awaiting Shipment
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form Ounces to 5
-    Then set Order Details form service to PM Large Package
-    Then set Order Details form Tracking to USPS Tracking
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details Ounces to 5
+    Then set Order Details service to PM Large Package
+    Then set Order Details Tracking to USPS Tracking
     Then click Orders Toolbar Print button
     Then set Print modal Print-On to Shipping Label - 8 ½" x 11" Paper
     #Then set Orders print modal printer

@@ -37,6 +37,10 @@ module Stamps
       def browser
         self.class.browser
       end
+
+      def cache
+        self.class.cache
+      end
     end
 
     class FloatingBoundList < BaseCache
@@ -89,6 +93,7 @@ module Stamps
     end
 
     #deprecated
+    # This class is deprecated. Use BaseCache instead.
     class Base
       attr_reader :param, :browser, :cache, :logger
       def initialize(param)
@@ -99,7 +104,7 @@ module Stamps
       end
     end
 
-    #todo-Rob REW
+    # todo-Rob REW
     class StampsField
       attr_reader :field, :browser
       alias_method :checkbox, :field
@@ -124,7 +129,7 @@ module Stamps
         begin
           return field.disabled?
         rescue
-          #ignore
+          # ignore
         end
         true
       end
@@ -133,7 +138,7 @@ module Stamps
         begin
           return exist? && visible?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -146,7 +151,7 @@ module Stamps
         begin
           return field.visible?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -155,7 +160,7 @@ module Stamps
         begin
           return field.exist?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -164,7 +169,7 @@ module Stamps
         begin
           return field.enabled?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -177,7 +182,7 @@ module Stamps
         begin
           field.hover if present?
         rescue
-          #ignore
+          # ignore
         end
       end
 
@@ -188,7 +193,7 @@ module Stamps
             sleep(duration)
           end
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -200,7 +205,7 @@ module Stamps
             sleep(duration)
           end
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -218,19 +223,19 @@ module Stamps
         begin
           return field.text if truthy? && !field.text.nil? && field.text.size > 0
         rescue
-          #ignore
+          # ignore
         end
 
         begin
           return field.value if truthy? && !field.value.nil? && field.value.size > 0
         rescue
-          #ignore
+          # ignore
         end
 
         begin
           return attribute_value('value') if truthy? && !attribute_value('value').nil? && attribute_value('value').size > 0
         rescue
-          #ignore
+          # ignore
         end
         ''
       end
@@ -239,7 +244,7 @@ module Stamps
         begin
           return field.attribute_value(attribute)
         rescue
-          #ignore
+          # ignore
         end
         ''
       end
@@ -250,7 +255,7 @@ module Stamps
             field.click if clickable?
           end
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -263,7 +268,7 @@ module Stamps
             break unless clickable?
           end
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -274,7 +279,7 @@ module Stamps
             field.double_click if clickable?
           end
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -287,7 +292,7 @@ module Stamps
             click
           end
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -325,7 +330,7 @@ module Stamps
         begin
           return input.checked?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -337,7 +342,7 @@ module Stamps
             textbox.send_keys(symbol) if present?
             break if symbol.instance_of?(Symbol)||text==symbol
           rescue
-            #ignore
+            # ignore
           end
         end
         self
@@ -347,7 +352,7 @@ module Stamps
         begin
           input.placeholder
         rescue
-          #ignore
+          # ignore
         end
         ''
       end
@@ -363,7 +368,7 @@ module Stamps
             set_attribute_value("value", str)  if present?
             break if text==str
           rescue
-            #ignore
+            # ignore
           end
         end
         self
@@ -373,7 +378,7 @@ module Stamps
         begin
           textbox.append(txt) if present?
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -382,7 +387,7 @@ module Stamps
         begin
           textbox.clear if present?
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -393,7 +398,7 @@ module Stamps
         begin
           radio.set
         rescue
-          #ignore
+          # ignore
         end
         self
       end
@@ -402,7 +407,7 @@ module Stamps
         begin
           return radio.set? if present?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -427,7 +432,7 @@ module Stamps
         begin
           checkbox.set if present?
         rescue
-          #ignore
+          # ignore
         end
       end
 
@@ -435,7 +440,7 @@ module Stamps
         begin
           checkbox.clear if present?
         rescue
-          #ignore
+          # ignore
         end
       end
 
@@ -443,7 +448,7 @@ module Stamps
         begin
           return checkbox.checked?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -452,7 +457,7 @@ module Stamps
         begin
           return checkbox.set?
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -489,7 +494,7 @@ module Stamps
           return result=="true" if result=="true"||result=="false"
           return result.include?(attribute_value)
         rescue
-          #ignore
+          # ignore
         end
         false
       end
@@ -535,13 +540,13 @@ module Stamps
         begin
           return check_verify.attribute_value(attribute).include?(attribute_value)
         rescue
-          #ignore
+          # ignore
         end
         false
       end
     end
 
-    class StampsOldDropDown #TODO-Rob refactor this to StampsGenericDropDown
+    class StampsOldDropDown # TODO-Rob refactor this to StampsGenericDropDown
       attr_accessor :browser, :dropdown, :textbox, :html_tag
 
       def initialize(dropdown, html_tag, textbox)
@@ -606,7 +611,7 @@ module Stamps
             dropdown.click if list_of_values.size==0
             break unless list_of_values.size==0
           rescue
-            #ignore
+            # ignore
           end
         end
         20.times do
@@ -620,7 +625,7 @@ module Stamps
               end
             end
           rescue
-            #do nothing
+            # do nothing
           end
         end
         expect(text.downcase).to include(str.downcase)
@@ -628,7 +633,7 @@ module Stamps
       end
     end
 
-    #todo-Rob REW
+    # todo-Rob REW
     class StampsDropdown < StampsTextbox
       attr_accessor :html_tag, :dropdown
 
@@ -738,7 +743,7 @@ module Stamps
             dropdown.click unless selection.present?
             selection.click
           rescue
-            #ignore
+            # ignore
           end
         end
         expect(textbox.text).to eql(str)

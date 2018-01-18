@@ -266,7 +266,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
 
   expect("Check your parameter sheet: #{@rate_file_loc}").to eql error_msg if missing_column
 
-  # parameter zone is set in step "set Order Details form Ship-To to a random address in Zone xxx"
+  # parameter zone is set in step "set Order Details Ship-To to a random address in Zone xxx"
   # where xxx is a number between 1-9
   zone.should_not be nil
   case zone
@@ -303,7 +303,7 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
         test_config.logger.step"#{"#"*80} Rate Sheet: #{param_sheet}: Zone #{zone} - Row #{row_number}"
 
         # Set address to proper zone
-        step "set Order Details form Ship-To to a random address in Zone #{zone}"  if @modal_param.web_app==:orders
+        step "set Order Details Ship-To to a random address in Zone #{zone}"  if @modal_param.web_app==:orders
         step "set Print form Mail-To to a random address in zone #{zone}" if @modal_param.web_app==:mail
         step "save Print Form Mail From" if @modal_param.web_app==:mail
         # spreadsheet price for zone
@@ -340,8 +340,8 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:ship_to_domestic]]=test_param[:address]  if @modal_param.web_app==:mail
 
           # Set weight to 0
-          step "set Order Details form Pounds to 0" if @modal_param.web_app==:orders
-          step "set Order Details form Ounces to 0" if @modal_param.web_app==:orders
+          step "set Order Details Pounds to 0" if @modal_param.web_app==:orders
+          step "set Order Details Ounces to 0" if @modal_param.web_app==:orders
 
           step "set Print form Pounds to 0" if @modal_param.web_app==:mail
           step "set Print form Ounces to 0" if @modal_param.web_app==:mail
@@ -359,14 +359,14 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             weight_lb=weight_lb.to_i
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]]=weight_lb
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]="#{weight_lb} lb."
-            step "set Order Details form Pounds to #{weight_lb}"  if @modal_param.web_app==:orders
+            step "set Order Details Pounds to #{weight_lb}"  if @modal_param.web_app==:orders
             step "set Print form Pounds to #{weight_lb}"  if @modal_param.web_app==:mail
           else
             weight_oz=Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i
             #test_config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]="#{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]]=weight_oz
-            step "set Order Details form Ounces to #{weight_oz}"  if @modal_param.web_app==:orders
+            step "set Order Details Ounces to #{weight_oz}"  if @modal_param.web_app==:orders
             step "set Print form Ounces to #{weight_oz}"  if @modal_param.web_app==:mail
           end
           sleep(0.025)
@@ -379,14 +379,14 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
           # record execution time as time service was selected.
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:execution_date]]=Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details form service to #{service}" if @modal_param.web_app==:orders
+          step "set Order Details service to #{service}" if @modal_param.web_app==:orders
           step "select Print form service #{service}" if @modal_param.web_app==:mail
 
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]=test_param[:service]
 
           # Set Tracking
           begin
-            step "set Order Details form Tracking to #{row[@rate_sheet_columns[:tracking]]}"  if @modal_param.web_app==:orders
+            step "set Order Details Tracking to #{row[@rate_sheet_columns[:tracking]]}"  if @modal_param.web_app==:orders
           end unless row[@rate_sheet_columns[:tracking]].nil?
           # Write tracking to spreadsheet
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:tracking_selected]]=test_param[:tracking]
@@ -401,8 +401,8 @@ Then /^[Rr]un rate sheet (.*) in Zone (\d+)$/ do |param_sheet, zone|
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
           elsif @modal_param.web_app==:orders
-            step "set Order Details form Pounds to 0"
-            step "set Order Details form Ounces to 0"
+            step "set Order Details Pounds to 0"
+            step "set Order Details Ounces to 0"
           end
           expectation_f=(test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:zone]].to_f * 100).round / 100.0
           total_ship_cost_f=(test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:total_ship_cost]].to_f * 100).round / 100.0

@@ -555,7 +555,7 @@ module Stamps
         end
 
         def data(order_id)
-          test_helper.dollar_amount_str(grid_text_by_id(:insured_value, order_id)).to_f.round(2)
+          grid_text_by_id(:insured_value, order_id).dollar_amount_str.to_f.round(2)
         end
       end
 
@@ -654,8 +654,7 @@ module Stamps
         end
 
         def data(order_id)
-          cost=grid_text_by_id(:ship_cost, order_id)
-          (cost.include? "$")?test_helper.dollar_amount_str(cost).to_f.round(2):cost
+          grid_text_by_id(:ship_cost, order_id).dollar_amount_str
         end
 
         def ship_cost_error(order_id)
