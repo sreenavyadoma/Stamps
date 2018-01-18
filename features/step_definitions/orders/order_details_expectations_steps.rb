@@ -283,13 +283,13 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or is (?:correct|(\d+\.\d{2}))$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.insure_for.textbox.text.to_f.round(2)).to eql(expectation.nil? ? test_param[:insure_for] : expectation.to_f)
+  expect(stamps.orders.order_details.insure_for.textbox.text.to_f.round(2)).to eql(expectation.nil? ? test_param[:insured_value] : expectation.to_f)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]ost is (?:correct|(\d+\.\d{2}))$/ do |expectation|
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.nil? ? test_param[:insure_for] : expectation.to_f)
+  expect(stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)).to eql(expectation.nil? ? test_param[:insured_value] : expectation.to_f)
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]ost is greater than \$(.*)$/ do |expectation|
@@ -298,13 +298,13 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails [Ii]nsure-[Ff]or [Cc]ost is greater than \$
   expect(stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)).to be > expectation.to_f.round(2)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails service \"(.*)\" is disabled/ do |service|
+Then /^[Ee]xpect [Oo]rder [Dd]etails service \"(.*)\" is disabled/ do | service |
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
   expect(stamps.orders.order_details.service.disabled?(service)).to be(true)
 end
 
-Then /^[Ee]xpect [Oo]rder [Dd]etails service \"(.*)\" is enabled/ do |expectation|
+Then /^[Ee]xpect [Oo]rder [Dd]etails service \"(.*)\" is enabled/ do | expectation |
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
   expect(stamps.orders.order_details.service.enabled?(expectation)).to be(true)

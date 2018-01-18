@@ -7,12 +7,12 @@ module Stamps
 
         def initialize(param)
           super
-          @edit_button=StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
-          @add_button=StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
-          @window_title=StampsField.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
-          @close_button=StampsField.new browser.image(css: "img[class*='x-tool-close']")
-          @delete_button=StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
-          @add_shipping_address=AddShippingAddress.new(param)
+          @edit_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
+          @add_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
+          @window_title = StampsField.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
+          @close_button = StampsField.new browser.image(css: "img[class*='x-tool-close']")
+          @delete_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
+          @add_shipping_address = AddShippingAddress.new(param)
         end
 
         def present?
@@ -30,7 +30,7 @@ module Stamps
         def checked?(row)
           begin
             browser.tables(css: "[id^=manageShipFromWindow-][id$=-body][class*=closable] table").each_with_index do |grid_row_item, index|
-              return grid_row_item.attribute_value("class").include?('selected') if row==index+1
+              return grid_row_item.attribute_value("class").include?('selected') if row == index + 1
             end
           rescue
             #ignore
@@ -59,14 +59,14 @@ module Stamps
         end
 
         def locate_ship_from(name, company, city)
-          rows=shipping_address_count
+          rows = shipping_address_count
           1.upto rows do |row|
             window_title.click
-            grid_name=name row
-            grid_company=company row
-            grid_city=city row
-            grid_state=state row
-            if (grid_name.casecmp(name)==0) && (grid_company.casecmp(company)==0) && (grid_city.casecmp(city)==0)
+            grid_name = name row
+            grid_company = company row
+            grid_city = city row
+            grid_state = state row
+            if (grid_name.casecmp(name) == 0) && (grid_company.casecmp(company) == 0) && (grid_city.casecmp(city) == 0)
               logger.info "Match found! - Row #{row} :: Name=#{grid_name} :: Company=#{grid_company} :: City=#{grid_city} ::  State=#{grid_state} :: "
               return row
             else
@@ -85,7 +85,7 @@ module Stamps
           case args.length
             when 1
               if args.first.is_a? Hash
-                delete_row(locate_ship_from(args.first['full_name'], args.first['company'], args.first['city']))
+                delete_row(locate_ship_from(args.first[:full_name], args.first['company'], args.first['city']))
               else
                 expect("Address format is not yet supported for this delete call.").to eql ""
               end
@@ -96,7 +96,7 @@ module Stamps
         end
 
         def delete_row(number)
-          @delete_shipping_address=DeleteShippingAddress.new(param)
+          @delete_shipping_address = DeleteShippingAddress.new(param)
           5.times do
             select_row(number)
             click_delete_button
@@ -126,25 +126,25 @@ module Stamps
           case args.length
             when 1
               if args[0].is_a? Hash
-                address_hash=args[0]
-                name=address_hash['full_name']
-                company=address_hash['company']
-                city=address_hash['city']
+                address_hash = args[0]
+                name = address_hash[:full_name]
+                company = address_hash['company']
+                city = address_hash['city']
               else
-                expect("Wrong number of arguments for locate_address").to eql "" unless args.length==3
+                expect("Wrong number of arguments for locate_address").to eql "" unless args.length == 3
               end
             when 3
-              name=args[0]
-              company=args[1]
-              city=args[2]
+              name = args[0]
+              company = args[1]
+              city = args[2]
             else
-              expect("Wrong number of arguments for locate_address").to eql "" unless args.length==3
+              expect("Wrong number of arguments for locate_address").to eql "" unless args.length == 3
           end
           locate_ship_from(name, company, city) > 0
         end
 
         def select_address(name, company, city)
-          row_num=locate_ship_from(name, company, city)
+          row_num = locate_ship_from(name, company, city)
           if row_num > 0
             select_row row_num
             15.times do
@@ -161,7 +161,7 @@ module Stamps
         end
 
         def click_row_until_selected(row_num, attibute, attribute_value)
-          cell=StampsField.new(grid_cell(row_num, 1))
+          cell = StampsField.new(grid_cell(row_num, 1))
           5.times do
             begin
               cell.click
@@ -178,19 +178,19 @@ module Stamps
 
         def delete_all
           begin
-            count=shipping_address_count
+            count = shipping_address_count
             if count > 1
               for row in 1..(count)
                 window_title.click
                 delete_row 1
                 logger.info "Row #{row} :: Deleting row 1..."
-                break if shipping_address_count==1
+                break if shipping_address_count == 1
               end
             end
           rescue
             #
           end
-          @deleted=shipping_address_count==1
+          @deleted = shipping_address_count == 1
           self
         end
 
@@ -204,7 +204,7 @@ module Stamps
 
         def shipping_address_count
           wait_until_present
-          rows=browser.trs(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
+          rows = browser.trs(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
           logger.info "Manage Shipping Address:: row count=#{rows.length.to_i}"
           rows.length.to_i
         end
@@ -217,20 +217,20 @@ module Stamps
 
         def initialize(param)
           super
-          @save_btn=StampsField.new browser.span(text: 'Save')
-          @origin_zip=StampsTextbox.new browser.text_field(name: 'OriginZip')
-          @name=StampsTextbox.new(browser.text_field(name: 'FullName'))
-          @company=StampsTextbox.new(browser.text_field(name: 'Company'))
-          @street_address_1=StampsTextbox.new(browser.text_field name: 'Street1')
-          @street_address_2=StampsTextbox.new(browser.text_field name: 'Street2')
-          @city=StampsTextbox.new(browser.text_field(name: 'City'))
+          @save_btn = StampsField.new browser.span(text: 'Save')
+          @origin_zip = StampsTextbox.new browser.text_field(name: 'OriginZip')
+          @name = StampsTextbox.new(browser.text_field(name: 'FullName'))
+          @company = StampsTextbox.new(browser.text_field(name: 'Company'))
+          @street_address_1 = StampsTextbox.new(browser.text_field name: 'Street1')
+          @street_address_2 = StampsTextbox.new(browser.text_field name: 'Street2')
+          @city = StampsTextbox.new(browser.text_field(name: 'City'))
 
-          dropdown=browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
-          textbox=browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
-          @state=StampsDropdown.new(textbox, dropdown, :li)
+          dropdown = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
+          textbox = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
+          @state = StampsDropdown.new(textbox, dropdown, :li)
 
-          @zip=StampsTextbox.new(browser.text_field(name: 'Zip'))
-          @phone=StampsTextbox.new(browser.text_field(name: "Phone"))
+          @zip = StampsTextbox.new(browser.text_field(name: 'Zip'))
+          @phone = StampsTextbox.new(browser.text_field(name: "Phone"))
         end
 
         def present?
@@ -242,16 +242,16 @@ module Stamps
         end
 
         def ship_from_address(table)
-          @address_hash=table
+          @address_hash = table
           origin_zip.set table["ship_from_zip"]
-          name.set(table['full_name'])
+          name.set(table[:full_name])
           company.set(table['company'])
           street_address_1.set(table["street_address"])
           street_address_2.set(table["street_address2"])
           city.set(table['city'])
           state.select(table["state"])
           zip.set(table["zip"])
-          phone.set(table['phone'])
+          phone.set(table[:phone])
           save
         end
 
@@ -273,7 +273,7 @@ module Stamps
 
         def delete
           #del_btn=StampsField.new(browser.fields(text: 'Delete').last)
-          delete_btn=StampsField.new(browser.a(css: 'div[id^=dialoguemodal-][class*=closable] div[class*=x-panel-default-docked-bottom] a'))
+          delete_btn = StampsField.new(browser.a(css: 'div[id^=dialoguemodal-][class*=closable] div[class*=x-panel-default-docked-bottom] a'))
           5.times do
             delete_btn.click
             break unless present?
@@ -285,8 +285,8 @@ module Stamps
         end
 
         def close
-          field=browser.fields(css: 'img[class$=close]').last
-          present=field.present?
+          field = browser.fields(css: 'img[class$=close]').last
+          present = field.present?
           field.click if present
         end
 

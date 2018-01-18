@@ -7,6 +7,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Total label is (.*)$/ do |expectation|
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails Ship Cost Total is correct$/ do
+  calculated_cost = 0
   calculated_cost += stamps.orders.order_details.service.cost.text.dollar_amount_str.to_f.round(2)
   calculated_cost += stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2)
   calculated_cost += stamps.orders.order_details.insure_for.cost.text.dollar_amount_str.to_f.round(2)

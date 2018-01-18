@@ -18,9 +18,11 @@ Feature: Bulk Update Domestic
     Then set order details insure-for to $0.00
     Then increment order details insure-for by 6
     Then expect order details insure-for is 6.00
-    Then decrement order details insure-for by 7
+    Then set order details insure-for to $0.00
+    Then increment order details insure-for by 7
     Then expect order details insure-for is 7.00
     Then uncheck order details insure-for checkbox
+    Then expect order details insure-for is 0.00
     Then expect Order Details Ship Cost Total is correct
     #Add 2nd order
     Then add order 2

@@ -44,7 +44,7 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) ID to (.*)$/ do |item_number, str|
   step 'expect Order Details is present'
   test_param[:details_associated_items][item_number] = {} unless test_param[:details_associated_items].has_key?(item_number)
-  test_param[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random') ? test_helper.random_alpha_numeric : str)
+  test_param[:details_associated_items][item_number][:item_id] = (str.downcase.include?('random') ? StampsTest.rand_alpha_numeric : str)
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_id.set(test_param[:details_associated_items][item_number][:item_id])
   step 'Save Order Details data'
 end
@@ -52,7 +52,7 @@ end
 Then /^[Ss]et [Oo]rder [Dd]etails Associated Item (\d+) Description to (.*)$/ do |item_number, str|
   step 'expect Order Details is present'
   test_param[:details_associated_items][item_number] = {} unless test_param[:details_associated_items].has_key?(item_number)
-  test_param[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? test_helper.random_alpha_numeric : str)
+  test_param[:details_associated_items][item_number][:item_description] = (str.downcase.include?('random') ? StampsTest.rand_alpha_numeric : str)
   stamps.orders.order_details.items_ordered.item(item_number.to_i).item_description.set(test_param[:details_associated_items][item_number][:item_description])
   step 'Save Order Details data'
 end
@@ -63,7 +63,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to (.*)$/ do |country
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_name] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_name] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.name.click
   else
@@ -72,7 +72,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Nn]ame to \"(.
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ompany to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_company] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_company] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.company.click
   else
@@ -81,7 +81,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o [Cc]ompany to \
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 1 to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_address_1] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_address_1] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.address_1.click
   else
@@ -90,7 +90,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 1 to \"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 2 to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_address_2] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_address_2] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.address_2.click
   else
@@ -99,7 +99,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Address 2 to \"
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o City to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_city] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_city] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.city.click
   else
@@ -108,7 +108,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o City to \"(.*)\
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Province to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_province] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_province] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.province.click
   else
@@ -117,7 +117,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Province to \"(
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Postal Code to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_postal_code] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_postal_code] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.postal_code.click
   else
@@ -126,7 +126,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Postal Code to 
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Phone to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_phone] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_phone] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.phone.click
   else
@@ -135,7 +135,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Phone to \"(.*)
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]hip-[Tt]o Email to \"(.*)\"$/ do |str|
-  test_param[:int_ship_to_email] = ((str.downcase == 'random') ? test_helper.random_full_name : str)
+  test_param[:int_ship_to_email] = ((str.downcase == 'random') ? StampsTest.rand_full_name : str)
   if str.length == 0
     stamps.orders.order_details.ship_to.international.email.click
   else
@@ -209,11 +209,11 @@ end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nsure-[Ff]or to \$(\d+\.\d{2})$/ do |str|
   step 'check order details insure-for checkbox'
-  stamps.orders.order_details.insure_for.set(test_param[:insure_for] = str.to_f.round(2)) #todo-Rob-usps-terms move set_and_agree_to_terms out of page object onto step def.
+  stamps.orders.order_details.insure_for.textbox.set(test_param[:insured_value] = str.to_f)
   3.times do
     step 'blur out on Order Details form 2 times'
     stamps.orders.modals.insurance_terms_conditions.agree if stamps.orders.modals.insurance_terms_conditions.present?
-    break unless  stamps.orders.modals.insurance_terms_conditions.present?
+    break unless stamps.orders.modals.insurance_terms_conditions.present?
   end
   # wait until insurance price is updated before proceeding to next step
   10.times do
@@ -223,7 +223,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nsure-[Ff]or to \$(\d+\.\d{2})$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Tracking to (.*)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
   stamps.orders.order_details.tracking.select(test_param[:tracking] = str)
   10.times do
     break if stamps.orders.order_details.tracking.cost.text.dollar_amount_str.to_f.round(2) > 0
@@ -232,7 +232,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails Tracking to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails Ship-From to (.+)$/ do |str|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (.+)$/ do |str|
   test_param[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
 end
 
@@ -243,7 +243,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in P
   step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMEI price group (.*)$/ do |group|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMEI price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMEI, {})['group' + group].values
   country_array = (country_list[rand(country_list.size)]).split('|')
   country_name = country_array[0]
@@ -264,14 +264,14 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in P
   step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMI Flat Rate price group (.*)$/ do |group|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI Flat Rate price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI_flat_rate, {})['group' + group].values
   test_param[:country] = country_list[rand(country_list.size)]
   test_config.logger.step "#{"#" * 10} Desired Country: #{test_param[:country]}"
   step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMI price group (.*)$/ do |group|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Cc]ountry to a random country in PMI price group (.*)$/ do |group|
   country_list = data_for(:country_groups_PMI, {})['group' + group].values
   country_array = (country_list[rand(country_list.size)]).split('|')
   country_name = country_array[0]
@@ -292,17 +292,17 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in P
   step "set Order Details Ship-To Country to #{test_param[:country]}"
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o International address to$/ do |table|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Ii]nternational address to$/ do |table|
   test_param[:country] = table.hashes.first['country']
-  test_param[:full_name] = table.hashes.first['full_name'].downcase.include?('random') ? test_helper.random_full_name : table.hashes.first['full_name']
-  test_param[:company] = table.hashes.first['company'].downcase.include?('random') ? test_helper.random_company_name : table.hashes.first['company']
-  test_param[:street_address_1] = table.hashes.first['street_address_1'].downcase.include?('random') ? test_helper.random_alpha_numeric : table.hashes.first['street_address_1']
-  test_param[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? test_helper.random_suite : table.hashes.first['street_address_2']
-  test_param[:city] = table.hashes.first['city'].downcase.include?('random') ? test_helper.random_alpha_numeric : table.hashes.first['city']
-  test_param[:state] = table.hashes.first['province'].downcase.include?('random') ? test_helper.random_alpha_numeric : table.hashes.first['province']
-  test_param[:zip] = table.hashes.first['postal_code'].downcase.include?('random') ? test_helper.random_alpha_numeric : table.hashes.first['postal_code']
-  test_param[:phone] = table.hashes.first['phone'].downcase.include?('random') ? test_helper.random_phone_number : table.hashes.first['phone']
-  test_param[:email] = table.hashes.first['email'].downcase.include?('random') ? test_helper.random_email : table.hashes.first['email']
+  test_param[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? StampsTest.rand_full_name : table.hashes.first['full_name']
+  test_param[:company] = table.hashes.first['company'].downcase.include?('random') ? StampsTest.rand_comp_name : table.hashes.first['company']
+  test_param[:street_address_1] = table.hashes.first['street_address_1'].downcase.include?('random') ? StampsTest.rand_alpha_numeric : table.hashes.first['street_address_1']
+  test_param[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? StampsTest.rand_suite : table.hashes.first['street_address_2']
+  test_param[:city] = table.hashes.first['city'].downcase.include?('random') ? StampsTest.rand_alpha_numeric : table.hashes.first['city']
+  test_param[:state] = table.hashes.first['province'].downcase.include?('random') ? StampsTest.rand_alpha_numeric : table.hashes.first['province']
+  test_param[:zip] = table.hashes.first['postal_code'].downcase.include?('random') ? StampsTest.rand_alpha_numeric : table.hashes.first['postal_code']
+  test_param[:phone] = table.hashes.first[:phone].downcase.include?('random') ? StampsTest.rand_phone : table.hashes.first['phone']
+  test_param[:email] = table.hashes.first['email'].downcase.include?('random') ? StampsTest.rand_email : table.hashes.first['email']
 
   step "set Order Details Ship-To Country to #{test_param[:country]}"
   step "set Order Details International Ship-To Name to \"#{test_param[:full_name]}\""
@@ -316,30 +316,30 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o International address to$/ do |t
   step "set Order Details International Ship-To Email to \"#{test_param[:email]}\""
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
-  step 'show order details form ship-to fields'
-  stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic] = test_helper.format_address(test_helper.address_helper_zone(address)))
-  step 'Save Order Details data'
-  step 'hide order details form Ship-To fields'
-end
-
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Domestic address to$/ do |table|
-  test_param[:full_name] = table.hashes.first['full_name'].downcase.include?('random') ? test_helper.random_full_name : table.hashes.first['full_name']
-  test_param[:company] = table.hashes.first['company'].downcase.include?('random') ? test_helper.random_company_name : table.hashes.first['company']
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o [Dd]omestic address to$/ do |table|
+  test_param[:full_name] = table.hashes.first[:full_name].downcase.include?('random') ? StampsTest.rand_full_name : table.hashes.first['full_name']
+  test_param[:company] = table.hashes.first['company'].downcase.include?('random') ? StampsTest.rand_comp_name : table.hashes.first['company']
   test_param[:street_address] = table.hashes.first['street_address']
   if table.hashes.first['street_address_2'].nil?
     test_param[:street_address_2] = ''
   else
-    test_param[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? test_helper.random_alpha_numeric(2, 7) : table.hashes.first['street_address_2']
+    test_param[:street_address_2] = table.hashes.first['street_address_2'].downcase.include?('random') ? StampsTest.rand_alpha_numeric(2, 7) : table.hashes.first['street_address_2']
   end
-  test_param[:city] = table.hashes.first['city'].downcase.include?('random') ? test_helper.random_alpha_numeric : table.hashes.first['city']
-  test_param[:state] = table.hashes.first['state'].downcase.include?('random') ? test_helper.random_alpha_numeric : table.hashes.first['state']
-  test_param[:zip] = table.hashes.first['zip'].downcase.include?('random') ? test_helper.random_alpha_numeric : table.hashes.first['zip']
+  test_param[:city] = table.hashes.first['city'].downcase.include?('random') ? StampsTest.rand_alpha_numeric : table.hashes.first['city']
+  test_param[:state] = table.hashes.first['state'].downcase.include?('random') ? StampsTest.rand_alpha_numeric : table.hashes.first['state']
+  test_param[:zip] = table.hashes.first['zip'].downcase.include?('random') ? StampsTest.rand_alpha_numeric : table.hashes.first['zip']
   test_param[:country] = table.hashes.first['country'].size==0 ? 'United States' : table.hashes.first['country']
   test_param[:ship_to] = "#{test_param[:full_name]},#{test_param[:company]},#{test_param[:street_address]},#{test_param[:street_address_2]} ,#{test_param[:city]} #{test_param[:state]} #{test_param[:zip]}"
 
   step "set Order Details Ship-To Country to #{test_param[:country]}"
   step "set Order Details Ship-To text area to #{test_param[:ship_to]}"
+end
+
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o to(?: a |)(?: random address |)(?:to|in|between|) (.*)$/ do |address|
+  step 'show order details form ship-to fields'
+  stamps.orders.order_details.ship_to.domestic.set(test_param[:ship_to_domestic] = test_helper.format_address(test_helper.address_helper_zone(address)))
+  step 'Save Order Details data'
+  step 'hide order details form Ship-To fields'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o text area to (.*)$/ do |address|
@@ -349,7 +349,7 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o text area to (.*)$/ do |address|
   step 'Save Order Details data'
 end
 
-Then /^[Oo]n [Oo]rder [Dd]etails form, Hide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
+Then /^[Oo]n [Oo]rder [Dd]etails form, [Hh]ide [Ii]nternational [Ss]hip-[Tt]o fields$/ do
   stamps.orders.order_details.ship_to.international.hide_ship_to_details
 end
 
@@ -429,14 +429,14 @@ Then /^[Ii]n Exact Address Not Found module, select row (\d+)$/ do |row|
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Phone to (.*)$/ do |phone|
-  test_param[:phone] = phone.to_s.strip.downcase.include?('random') ? test_helper.random_phone_number : phone
+  test_param[:phone] = phone.to_s.strip.downcase.include?('random') ? StampsTest.rand_phone : phone
   step 'show order details form ship-to fields'
   stamps.orders.order_details.ship_to.domestic.phone.set(test_param[:phone]) unless test_param[:phone].length == 0
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Email to (.*)$/ do |email|
-  test_param[:email] = email.to_s.strip.downcase.include?('random') ? test_helper.random_email : email
+  test_param[:email] = email.to_s.strip.downcase.include?('random') ? StampsTest.rand_email : email
   step 'show order details form ship-to fields'
   stamps.orders.order_details.ship_to.domestic.email.set(test_param[:email]) unless test_param[:email].length == 0
   step 'Save Order Details data'
@@ -444,66 +444,66 @@ end
 
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.weight.lb.increment }
+  str.to_i.times { stamps.orders.order_details.weight.lb.increment.click }
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Pounds by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.weight.lb.decrement }
+  str.to_i.times { stamps.orders.order_details.weight.lb.decrement.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Ounces by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.weight.oz.increment }
+  str.to_i.times { stamps.orders.order_details.weight.oz.increment.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Ounces by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.weight.oz.decrement }
+  str.to_i.times { stamps.orders.order_details.weight.oz.decrement.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Length by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.dimensions.length.increment }
+  str.to_i.times { stamps.orders.order_details.dimensions.length.increment.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Length by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.dimensions.length.decrement }
+  str.to_i.times { stamps.orders.order_details.dimensions.length.decrement.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Width by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.dimensions.width.increment }
+  str.to_i.times { stamps.orders.order_details.dimensions.width.increment.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Width by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.dimensions.width.decrement }
+  str.to_i.times { stamps.orders.order_details.dimensions.width.decrement.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Oo]rder [Dd]etails Height by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.dimensions.height.increment }
+  str.to_i.times { stamps.orders.order_details.dimensions.height.increment.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Oo]rder [Dd]etails Height by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.dimensions.height.decrement }
+  str.to_i.times { stamps.orders.order_details.dimensions.height.decrement.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Ii]ncrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.insure_for.increment }
+  str.to_i.times { stamps.orders.order_details.insure_for.increment.click }
   step 'Save Order Details data'
 end
 #todo-ORDERSAUTO-2261
 Then /^[Dd]ecrement [Oo]rder [Dd]etails [Ii]nsure-[Ff]or by (\d*)$/ do |str|
-  str.to_i.times { stamps.orders.order_details.insure_for.decrement }
+  str.to_i.times { stamps.orders.order_details.insure_for.decrement.click }
   step 'Save Order Details data'
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails Reference Number to (.*)$/ do |str|
-  stamps.orders.order_details.reference_no.set(test_param[:reference_no] = str.downcase.include?('random') ? test_helper.random_alpha_numeric : str)
+  stamps.orders.order_details.reference_no.set(test_param[:reference_no] = str.downcase.include?('random') ? StampsTest.rand_alpha_numeric : str)
   step 'Save Order Details data'
 end
 

@@ -168,7 +168,7 @@ module Stamps
 
           def select(str)
             dropdown.click
-            selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::SINGLE_ORDER, str)
+            selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::BULK_UPDATE, str)
             5.times do
               begin
                 dropdown.click unless selection.present?

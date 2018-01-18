@@ -431,7 +431,7 @@ module Stamps
             @phone
           end
 
-          def set(address)
+          def set(address) #todo-Rob move setting textarea responsibility to step def
             10.times do
               begin
                 textarea.click
@@ -540,49 +540,13 @@ module Stamps
           end
 
           def increment
-            cache[:increment] = StampsField.new browser.div(css: "[class*=single] [id^=insurance] [class*=down]") if cache[:increment].nil? || !cache[:increment].present?
+            cache[:increment] = StampsField.new(browser.div(css: "[class*=single] [id^=insurance] [class*=up]")) if cache[:increment].nil? || !cache[:increment].present?
             cache[:increment]
           end
 
           def decrement
-            cache[:decrement] = StampsField.new browser.div(css: "[class*=single] [id^=insurance] [class*=up]") if cache[:decrement].nil? || !cache[:decrement].present?
+            cache[:decrement] = StampsField.new(browser.div(css: "[class*=single] [id^=insurance] [class*=down]")) if cache[:decrement].nil? || !cache[:decrement].present?
             cache[:decrement]
-          end
-
-          def terms
-            InsuranceTermsConditions.new(param) #todo-Rob-usps-terms move set_and_agree_to_terms out of page object onto step def.
-          end
-
-          def checked?
-            checkbox.checked?
-          end
-
-          def check
-            checkbox.check
-          end
-
-          def uncheck
-            checkbox.uncheck
-          end
-
-          def text
-            textbox.text #todo-Rob need to transfer responsibility to step def
-          end
-
-          def value
-            text.to_f if checked?
-            0
-          end
-
-          def set(value)
-            10.times do
-              check
-              textbox.set(value)
-              sleep(0.025)
-              2.times {blur_out}
-              return true if text.to_f == value.to_f
-            end
-            expect(text.to_f).to eql(value.to_f)
           end
         end
 

@@ -21,6 +21,7 @@ Then /^[Cc]lick [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton$/ do
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton is present$/ do
+  stamps.orders.bulk_update.update_orders.wait_until_present(5)
   expect(stamps.orders.bulk_update.update_orders).to be_present
 end
 
@@ -71,11 +72,11 @@ end
 # End Bulk Update Weight steps
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do | service |
-  test_param[:service] = stamps.orders.bulk_update.domestic_service.select(service).parse_orders_service
+  test_param[:service] = stamps.orders.bulk_update.domestic_service.select(service).strip_ord_service
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |service|
-  test_param[:int_service] = stamps.orders.bulk_update.international_service.select(service).parse_orders_service
+  test_param[:int_service] = stamps.orders.bulk_update.international_service.select(service).strip_ord_service
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|

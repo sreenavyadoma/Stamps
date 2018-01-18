@@ -5,10 +5,10 @@ module Stamps
         ##
         # Persistent container
         class FloatingBoundList
-          @@hash={}
+          @@hash = {}
           class << self
             def set(key, val)
-              @@hash[key.to_sym]=val
+              @@hash[key.to_sym] = val
             end
 
             def get(key)
@@ -58,41 +58,31 @@ module Stamps
         class FloatingServiceTracker < FloatingBoundList
           BULK_UPDATE = :bulk_update unless defined? BULK_UPDATE
           SINGLE_ORDER = :single_order unless defined? SINGLE_ORDER
-          attr_reader :browser
+          attr_reader :param
           def initialize(param)
-            @browser = param.browser
+            @param = param
           end
 
-          def bulk_update_first_load
-            set(BULK_UPDATE, 0) if get(BULK_UPDATE).nil? && get(SINGLE_ORDER).nil?
-          end
-
-          def bulk_update_lov(str)
-            set(BULK_UPDATE, values.max + 1) if get(BULK_UPDATE).nil? && !get(SINGLE_ORDER).nil? && lov_count(str)==1
-          end
-
-          def order_details_first_load
-            set(SINGLE_ORDER, 0) if get(SINGLE_ORDER).nil? && get(BULK_UPDATE).nil?
-          end
-
-          def order_details_lov(str)
-            set(SINGLE_ORDER, values.max + 1) if get(SINGLE_ORDER).nil? && !get(BULK_UPDATE).nil? && lov_count(str)==1
+          def lov_count(str)
+            param.browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text").size
           end
 
           def selection_field(form, str)
             if form == BULK_UPDATE
-              bulk_update_first_load
-              bulk_update_lov(str)
+              if get(BULK_UPDATE).nil? && get(SINGLE_ORDER).nil?
+                set(BULK_UPDATE, 0)
+              elsif get(BULK_UPDATE).nil? && !get(SINGLE_ORDER).nil? && lov_count(str) > 0
+                set(BULK_UPDATE, values.max + 1)
+              end
             elsif form == SINGLE_ORDER
-              order_details_first_load
-              order_details_lov(str)
+              if get(SINGLE_ORDER).nil? && get(BULK_UPDATE).nil?
+                set(SINGLE_ORDER, 0)
+              elsif get(SINGLE_ORDER).nil? && !get(BULK_UPDATE).nil? && lov_count(str) > 0
+                set(SINGLE_ORDER, values.max + 1)
+              end
               nil
             end
-            StampsField.new(browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")[get(form)])
-          end
-
-          def lov_count(str)
-            browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text").size
+            StampsField.new(param.browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")[get(form)])
           end
         end
       end
