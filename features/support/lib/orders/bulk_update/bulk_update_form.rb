@@ -319,7 +319,7 @@ module Stamps
         end
 
         def int_service
-          @multi_int_service = Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
+          cache[:int_service].nil? ? cache[:int_service] = ::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int) : cache[:int_service]
         end
 
         # done

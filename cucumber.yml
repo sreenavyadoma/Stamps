@@ -37,14 +37,12 @@ alex_rates:  --tags @rates_pm_comm_base_zone_1 BROWSER=ff WEB_APP=orders JENKINS
 alex_rates_pmi:  --tags @rates_pmi_comm_plus_group_9 BROWSER=ff WEB_APP=orders JENKINS=true URL=stg USR=abqast2 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 alex_orders:  --tags @orders_fci_flats BROWSER=ff WEB_APP=orders JENKINS=true URL=sc USR=lrqasc003 PW=password1  --guess DEBUG=true HEALTHCHECK=false MAX_WINDOW=false
 
-
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 xxxxxxxxxx: --tags @xxxxxxxxxx --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=xxxxxxxxxx
 mail_print_envelope_11: --tags @mail_print_envelope_11 --guess DEBUG=false JENKINS=true HEALTHCHECK=false WEB_APP=mail PRINTER=factory
-
 
 poc_stg_chrome: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=gc
 poc_stg_firefox: --tags @authentication --guess DEBUG=false JENKINS=true HEALTHCHECK=true WEB_APP=orders URL=stg BROWSER=ff

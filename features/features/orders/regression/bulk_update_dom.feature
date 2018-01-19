@@ -12,7 +12,7 @@ Feature: Bulk Update Domestic
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then set Order Details service to PMI Package
+    Then set Order Details international service to PMI Package
     Then set Order Details Weight to 2 lb 2 oz
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
     Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
