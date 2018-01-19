@@ -67,7 +67,7 @@ module Stamps
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[11]
             when /PM Regional Rate Box B/ #12. PM Regional Rate Box B (1-3 days) -- Regional Rate Box B
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[12]
-            when /PME Package/  #13. PME Package/Flat/Thick Envelope (1-2 days) -- Package/Flat/Thick Envelope
+            when /PME Package\/Flat\/Thick Envelope/  #13. PME Package/Flat/Thick Envelope/Flat/Thick Envelope (1-2 days) -- Package/Flat/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[13]
             when /PME Flat Rate Envelope/  #14. PME Flat Rate Envelope (1-2 days) -- Flat Rate Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[14]

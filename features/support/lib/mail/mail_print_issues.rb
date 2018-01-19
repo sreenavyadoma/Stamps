@@ -52,5 +52,42 @@ module Stamps
       end
 
     end
+
+    class HiddenPostageWarning < Browser::Base #This class represents the hidden postage warning modal. It appears when the hidden postage button is checked while an incompatible extra service option is selected
+
+      def continue_button
+        (cache[:continue_button].nil?||!cache[:continue_button].present?)?cache[:continue_button]=StampsField.new(browser.span text: "Continue"):cache[:continue_button]
+      end
+
+      def cancel_button
+        (cache[:cancel_button].nil?||!cache[:cancel_button].present?)?cache[:cancel_button]=StampsField.new(browser.span text: "Cancel"):cache[:cancel_button]
+      end
+
+      def window_title
+        (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div text: "Hidden Postage Not Allowed"):cache[:window_title]
+      end
+
+      def present?
+        window_title.present?
+      end
+
+      def extra_service service #This method confirms that the appropriate extra service text appears in the hidden postage warning modal, indicating which extra service caused the warning.
+        StampsField.new(browser.li text: service)
+      end
+
+      def continue
+        sleep 1
+        continue_button.click
+        sleep 1
+        if continue_button.present?
+          continue_button.click
+        end
+      end
+
+      def cancel
+        sleep 1
+        cancel_button.click
+      end
+    end
   end
 end

@@ -7,26 +7,26 @@ Feature:  Requires x-number of label sheets
   @print_dialog_thermal_number_of_labels_count
   Scenario:  Printing
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PM Flat Rate Envelope
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PM Flat Rate Envelope
+    Then set Order Details Weight to 1 lb 1 oz
     Then click Orders Toolbar Print button
     Then expect Print modal number of required label sheets is 1
     #Then expect Print modal Modal Title is "You have 1 label(s) ready to print"
     Then in Print modal, click Close button
 
     Then add new order
-    Then set Order Details form Ship-To to random address between zone 5 and 8
-    Then set Order Details form service to PM Flat Rate Envelope
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details Ship-To to random address between zone 5 and 8
+    Then set Order Details service to PM Flat Rate Envelope
+    Then set Order Details Weight to 1 lb 1 oz
 
 
     Then add new order
-    Then set Order Details form Ship-From to default
-    Then set Order Details form Ship-To to random address between zone 1 and 4
-    Then set Order Details form service to PM Small Flat Rate Box
-    Then set Order Details form Weight to 1 lb 1 oz
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 1 and 4
+    Then set Order Details service to PM Small Flat Rate Box
+    Then set Order Details Weight to 1 lb 1 oz
 
     Then check Orders Grid row 1
     Then check Orders Grid row 2

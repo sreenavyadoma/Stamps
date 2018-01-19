@@ -2,6 +2,10 @@ Then /^Print (?:[Pp]ostage|[Ll]abel|[Ss]tamps|[Ee]nvelope)$/ do
   stamps.mail.mail_toolbar.print_postage
 end
 
+Then /^Print (?:[Pp]ostage|[Ll]abel|[Ss]tamps|[Ee]nvelope) using [Ss]plit [Bb]utton$/ do
+  stamps.mail.toolbar_menu.print_button.click
+end
+
 Then /^[Ee]xpect [Pp]rint [Ff]orm [Ii]ncomplete [Ff]ields [Dd]ialog is [Pp]resent$/ do
   expect(stamps.mail.mail_toolbar.print_postage_expecting_error).to eql('Incomplete Fields')
 end
@@ -24,6 +28,10 @@ Then /^[Ss]et [Mm]ail [Pp]rint modal Printer ?(?:|(.*))$/ do |printer|
   expect(stamps.mail.mail_toolbar.print_postage.mail_printer.select_printer(test_param[:printer])).to_not be(false), "Unable to select printer #{printer}. The printer does not exist in Printer drop-down list of values."
 end
 
+Then /^[Cc]lose [Mm]ail [Pp]rint [Mm]odal$/ do
+  stamps.mail.mail_toolbar.mail_print_modal.x_button.click #todo-Rob refactor Print Modal to stamps.mail.modals.mail_print_modal
+end
+
 Then /^[Ee]xpect [Mm]ail [Pp]rint modal is present$/ do
   stamps.mail.mail_toolbar.print_postage.wait_until_present(5)
   expect(stamps.mail.mail_toolbar.print_postage).to be_present, "Mail Print modal is NOT present"
@@ -43,5 +51,5 @@ end
 
 #todo-Rob change sentence structure and make print modal float (stamps.mail.mail_print_modal)
 Then /^Mail: in Print modal, Close$/ do
-  stamps.mail.stamps.mail.close
+  stamps.mail.mail_toolbar.mail_print_modal.x_button.click
 end

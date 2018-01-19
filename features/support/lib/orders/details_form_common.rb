@@ -43,27 +43,74 @@ module Stamps
         end
       end
 
+      class ShipFromField < Browser::Base
+        attr_reader :form
+        def initialize(param, form)
+          super(param)
+          @form=form
+        end
+
+        def manage_shipping_address
+          (cache[:shipping_address].nil?||!cache[:shipping_address].present?)?cache[:shipping_address]=ShipFrom::ManageShippingAddresses.new(
+              param):cache[:shipping_address]
+        end
+
+        def textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              (form==:single)?browser.text_field(css: "[class*=singleorder] [id^=shipfromdroplist-][id$=-trigger-picker]"):
+                  browser.text_field(css: "[class*=multiorder] [id^=shipfromdroplist][id$=-inputEl]")):cache[:textbox]
+        end
+
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsTextbox.new(
+              (form==:single)?browser.div(css: "[class*=single] [id^=shipfromdroplist-][id$=-trigger-picker]"):
+                  browser.div(css: "[class*=multiorder] [id^=shipfromdroplist-][id$=-trigger-picker]")):cache[:dropdown]
+
+
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.div(css: "[class*=multiorder] [id^=shipfromdroplist-][id$=-trigger-picker]")):cache[:dropdown]
+        end
+
+        def select(str)
+          return manage_shipping_address if manage_shipping_address.present?
+          dropdown.click
+          15.times do
+            selection1=(str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[0] :browser.lis(text: /#{str}/)[0]
+            selection2=(str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[1] :browser.lis(text: /#{str}/)[1]
+            selection=StampsField.new((selection1.present?)?selection1:selection2)
+            dropdown.click unless selection.present?
+            selection.scroll_into_view
+            selection.click
+            sleep(0.35)
+            if str.downcase.include?("manage shipping")
+              return manage_shipping_address if manage_shipping_address.present?
+            else
+              return textbox.text if textbox.text.size > 2
+            end
+          end
+          textbox.text
+        end
+      end
+
       class DetailsFormShipFrom < Browser::Base
         attr_reader :form_type
-
         def initialize(param, form_type)
           super(param)
           @form_type=form_type
         end
 
         def manage_shipping_address
-          @manage_shipping_address=ShipFrom::ManageShippingAddresses.new(param) if @manage_shipping_address.nil?||!@manage_shipping_address.present?
-          @manage_shipping_address
+          (cache[:manage_shipping_address].nil?||!cache[:manage_shipping_address].present?)?cache[:manage_shipping_address]=ShipFrom::ManageShippingAddresses.new(
+              param):cache[:manage_shipping_address]
         end
 
         def textbox
-          @textbox=StampsTextbox.new(browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]) if @textbox.nil?||!@textbox.present?
-          @textbox
+          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
+              browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]):cache[:textbox]
         end
 
         def dropdown
-          @dropdown=StampsTextbox.new (browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]) if @dropdown.nil?||!@dropdown.present?
-          @dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsTextbox.new(
+              browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]):cache[:dropdown]
         end
 
         def select(str)
@@ -94,38 +141,6 @@ module Stamps
         end
       end
 
-      module DetailsFormServiceCost
-        def cost_label
-          labels=browser.label(text: "Service:").parent.labels
-          cost_field=nil
-          labels.each do |label|
-            cost_field=label if label.text.include?('.')
-          end
-          cost_field
-        end
-
-        def cost
-          test_helper.dollar_amount_str(cost_label.text).to_f.round(2)
-        end
-
-        def inline_cost(service_name)
-          cost_label=StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
-          10.times do
-            begin
-              dropdown.click unless cost_label.present?
-              if cost_label.present?
-                service_cost=test_helper.dollar_amount_str(cost_label.text)
-                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
-                dropdown.click if cost_label.present?
-                return service_cost.to_f.round(2)
-              end
-            rescue
-              #ignore
-            end
-          end
-        end
-      end
-
       class DetailsFormService < Browser::Base
         attr_reader :textbox, :dropdown, :form_type
         def initialize(param, form_type)
@@ -147,9 +162,7 @@ module Stamps
         end
 
         def select(str)
-          logger.info "Select service #{str}"
           sleep(0.35)
-
           dropdown.click
           10.times do
             begin
@@ -166,7 +179,6 @@ module Stamps
               #ignore
             end
           end
-          expect(textbox.text).to include(str)
           textbox.text
         end
 
@@ -222,6 +234,37 @@ module Stamps
         def enabled? service
           !(disabled? service)
         end
+
+        def cost_label
+          labels=browser.label(text: "Service:").parent.labels
+          cost_field=nil
+          labels.each do |label|
+            cost_field=label if label.text.include?('.')
+          end
+          cost_field
+        end
+
+        def cost
+          cost_label.text.dollar_amount_str.to_f.round(2)
+        end
+
+        def inline_cost(service_name)
+          cost_label=StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
+          10.times do
+            begin
+              dropdown.click unless cost_label.present?
+              if cost_label.present?
+                service_cost=cost_label.text.dollar_amount_str
+                logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                dropdown.click if cost_label.present?
+                return service_cost.to_f.round(2)
+              end
+            rescue
+              #ignore
+            end
+          end
+        end
+
       end
 
       class OrderDetailsWeight < Browser::Base

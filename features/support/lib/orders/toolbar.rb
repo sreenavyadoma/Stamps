@@ -206,7 +206,81 @@ module Stamps
         end
       end
 
-      class PrintIncompleteOrderError < Browser::Base
+      class MoreActionsDropDown < Browser::BaseCache
+
+        class WindowTitle < Browser::BaseCache
+          assign({})
+          def cache
+            self.class.cache
+          end
+        end
+        assign({})
+        def cache
+          self.class.cache
+        end
+
+        def enabled?
+          dropdown.enabled?
+        end
+
+        def dropdown
+          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsField.new(browser.span(text: "More Actions")):cache[:dropdown]
+        end
+
+        def split_order
+          (cache[:split_order].nil?||!cache[:split_order].present?)?cache[:split_order]=Browser::BaseCache.new(param).extend(Stamps::Orders::SplitOrder::WindowTitle):cache[:split_order] #todo-ORDERSAUTO-3405 code review: you should only get a handle on window title here. SplitOrderModal should have a window title module.
+        end
+
+        def combine_orders
+
+        end
+
+        def apply_bulk_action
+
+        end
+
+        def select_combine_orders
+          select(:combine_orders)
+        end
+
+        def select_split_order
+          select(:split_order)
+        end
+
+        def select_apply_bulk_action
+          select(:apply_bulk_action)
+        end
+
+        def selection_str(str)
+          case str
+            when :combine_orders
+              return "Combine Orders"
+            when :split_order
+              return "Split Order"
+            when :apply_bulk_action
+              return "Apply Bulk Action"
+            else
+              raise "Invalid selection: #{str}"
+          end
+        end
+
+        def select(str)
+          expect(enabled?).to be(true)
+          5.times do
+            return split_order.window_title.text if split_order.window_title.present? #this should be return
+            selection=StampsField.new(browser.span(text: selection_str(str)))
+            dropdown.click unless selection.present?
+            sleep(0.1)
+            selection.hover
+            sleep(0.1)
+            selection.click
+            split_order.window_title.wait_until_present(2)
+          end
+          nil
+        end
+      end
+
+       class PrintIncompleteOrderError < Browser::Base
         attr_reader :window_title, :ok_btn, :error_message_label
 
         def initialize(param)
@@ -401,7 +475,7 @@ module Stamps
         end
 
         def text
-          StampsField.new(browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first).text
+          StampsField.new(browser.divs(css: "div[class*=sdc-warning]>div[id$=outerCt]>div").first).text #todo-Rob this is wrong, fix it.
         end
       end
 
@@ -647,7 +721,7 @@ module Stamps
       class AddButton < Browser::Base
         def click
           add_btn=StampsField.new(browser.span(text: 'Add'))
-          details_order_id=Orders::Details::SingleOrderDetailsOrderId.new(param)
+          details_order_id=Orders::SingleOrder::Fields::SingleOrderDetailsOrderId.new(param)
           server_error=ShipStationServerError.new(param)
           initializing_db=StampsField.new(browser.div(text: "Initializing Order Database"))
 
@@ -734,11 +808,11 @@ module Stamps
           (cache[:move].nil?||!cache[:move].present?)?cache[:move]=MoveDropDown.new(param):cache[:move]
         end
 
-        def toolbar_tags
-          raise "Not yet implemented"
+        def toolbar_more_actions
+          (cache[:more_actions].nil?||!cache[:more_actions].present?)?cache[:more_actions]=MoreActionsDropDown.new(param):cache[:more_actions]
         end
 
-        def toolbar_more_actions
+        def toolbar_tags
           raise "Not yet implemented"
         end
       end
