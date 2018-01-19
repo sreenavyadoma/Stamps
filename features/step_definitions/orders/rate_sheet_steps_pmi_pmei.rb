@@ -418,8 +418,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # Set weight to 0
           test_config.logger.step "#{"#"*10} Desired Weight: #{row[@rate_sheet_columns[:weight_lb]]}"
           if @modal_param.web_app==:orders
-            step "set Order Details form Pounds to 0"
-            step "set Order Details form Ounces to 0"
+            step "set Order Details Pounds to 0"
+            step "set Order Details Ounces to 0"
           elsif @modal_param.web_app==:mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"
@@ -439,14 +439,14 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             weight_lb=weight_lb.to_i
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]]=weight_lb
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]="#{weight_lb} lb."
-            step "set Order Details form Pounds to #{weight_lb}" if @modal_param.web_app==:orders
+            step "set Order Details Pounds to #{weight_lb}" if @modal_param.web_app==:orders
             step "set Print form Pounds to #{weight_lb}" if @modal_param.web_app==:mail
           else
             weight_oz=Measured::Weight.new(weight_lb, "lb").convert_to("oz").value.to_i       #AB_ORDERSAUTO_3580 - IDE bug, Weight require 2 parameters
             #test_config.logger.step "weight_lb: #{weight_lb} was converted to #{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight]]="#{weight_oz} oz."
             test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:weight_lb]]=weight_oz
-            step "set Order Details form Ounces to #{weight_oz}" if @modal_param.web_app==:orders
+            step "set Order Details Ounces to #{weight_oz}" if @modal_param.web_app==:orders
             step "set Print form Ounces to #{weight_oz}" if @modal_param.web_app==:mail
           end
           sleep(0.025)
@@ -460,7 +460,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
           # record execution time as time service was selected.
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:execution_date]]=Time.now.strftime("%b %d, %Y %H:%M")
 
-          step "set Order Details form service to #{service}" if @modal_param.web_app==:orders
+          step "set Order Details service to #{service}" if @modal_param.web_app==:orders
           step "select Print form service #{service}" if @modal_param.web_app==:mail
           test_param[:result_sheet][row_number, test_param[:result_sheet_columns][:service_selected]]=test_param[:service]
           sleep(0.525)
@@ -472,8 +472,8 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
           # Set weight to 0
           if modal_param.web_app==:orders
-            step "set Order Details form Pounds to 0"
-            step "set Order Details form Ounces to 0"
+            step "set Order Details Pounds to 0"
+            step "set Order Details Ounces to 0"
           elsif modal_param.web_app==:mail
             step "set Print form Pounds to 0"
             step "set Print form Ounces to 0"

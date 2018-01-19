@@ -1,7 +1,7 @@
 
 
 Then /^[Ii]n [Pp]rint [Mm]odal, click [Pp]rint button Incomplete Order$/ do
-  @incomplete_order_modal=stamps.orders.orders_toolbar.toolbar_print.click #this needs to change
+  @incomplete_order_modal=stamps.orders.orders_toolbar.toolbar_print.click #todo-Rob move @incomplete_order_modal to stamps.orders.modals.incomplete_order_modal
   expect("Incomplete Order Modal did not open").to eql "click print modal print button Incomplete Order" unless @incomplete_order_modal.instance_of? Orders::Toolbar::PrintIncompleteOrderError
 end
 

@@ -439,7 +439,7 @@ module Stamps
         end
 
         def total_cost
-          test_helper.dollar_amount_str(StampsField.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
+          StampsField.new(browser.label(text: 'Total Cost:').parent.labels.last).text.dollar_amount_str.to_f.round(2)
         end
 
         def print
