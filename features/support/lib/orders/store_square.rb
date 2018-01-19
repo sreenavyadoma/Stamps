@@ -42,7 +42,8 @@ module Stamps
         end
       end
 
-      class Settings < Browser::Base
+      class Settings < Browser::BaseCache
+        assign({})
 
         def iframe
           browser.iframe(css: "iframe[id=storeiframe]")
@@ -78,8 +79,9 @@ module Stamps
         end
       end
 
-      class Square < Browser::Base
+      class Square < Browser::BaseCache
         include SqaureWindowTitle
+        assign({})
 
         def iframe
           browser.iframe(css: "iframe[id=storeiframe]")
