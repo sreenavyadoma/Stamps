@@ -76,7 +76,7 @@ Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do | servi
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |service|
-  test_param[:int_service] = stamps.orders.bulk_update.international_service.select(service).strip_ord_service
+  test_param[:int_service] = stamps.orders.bulk_update.int_service.select(service).strip_ord_service
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|

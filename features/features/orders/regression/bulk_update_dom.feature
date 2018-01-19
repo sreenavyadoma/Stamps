@@ -3,6 +3,65 @@ Feature: Bulk Update Domestic
   Background:
     Given a valid user is signed in to Web Apps
 
+  @bulk_update_int_services
+  Scenario: ORDERSAUTO-2261 Bulk Update: Dimensions controller
+
+    # Adding 1st order
+    Then add new order
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To International address to
+      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
+    Then set Order Details service to PMI Package
+    Then set Order Details Weight to 2 lb 2 oz
+    Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
+    Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
+    Then click Order Details form Customs Form button
+    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then check Customs form I agree to the USPS Privacy Act Statement
+    Then close Customs Information form
+
+    # Add 2nd order
+    Then add order 2
+    Then set Order Details Ship-From to default
+    Then set Order Details Ship-To to random address between zone 8
+    Then set Order Details service to PM Large Package
+    Then set Order Details Pounds to 2
+    Then set Order Details Ounces to 2
+    Then set Order Details Length to 1
+    Then set Order Details Width to 1
+    Then set Order Details Height to 1
+
+    # Check 1st two orders
+    # Then check order 1
+    # Then check order 2
+
+    Then check row 1
+    Then check row 2
+
+    Then expect bulk update is present
+    Then set Bulk Update international service to PMI Package
+
+    Then click Bulk Update Orders button
+
+    Then uncheck row 2
+    Then expect order details service is PME Package/Flat/Thick Envelope
+    Then set order details service to PM Large Package
+
+    Then check row 2
+    Then set Bulk Update service to PME Padded Flat Rate Envelope
+    Then click Bulk Update Orders button
+
+    Then uncheck row 2
+    Then set Bulk Update service to PME Package/Flat/Thick Envelope
+    Then check row 2
+
+    Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
+    Then click Bulk Update Orders button
+
+
+    Then Sign out
+
   @bulk_update_dimensions
   Scenario: ORDERSAUTO-2261 Bulk Update: Dimensions controller
 

@@ -318,7 +318,7 @@ module Stamps
           @multi_ship_from = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
         end
 
-        def international_service
+        def int_service
           @multi_int_service = Stamps::Orders::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int)
         end
 
@@ -344,7 +344,7 @@ module Stamps
         end
 
         def dimensions
-          cache[:dimensions].nil? || !cache[:dimensions].present? ? cache[:dimensions] = Fields::Dimensions.new(param) : cache[:dimensions]
+          cache[:dimensions].nil? ? cache[:dimensions] = Fields::Dimensions.new(param) : cache[:dimensions]
         end
       end
     end
