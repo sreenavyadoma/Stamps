@@ -34,9 +34,7 @@ module Stamps
       include MailToolbarLeftSide
       include MailToolbarRightSide
       assign({})
-      def cache
-        self.class.cache
-      end
+
     end
   end
 end
