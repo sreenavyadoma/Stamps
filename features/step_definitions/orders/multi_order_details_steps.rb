@@ -23,7 +23,7 @@ end
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton is present$/ do
   sleep(2)
   stamps.orders.bulk_update.update_orders.wait_until_present(7)
-  expect(stamps.orders.bulk_update.update_orders).to be_present, 'Bulk Update Orders button is not present'
+  expect(stamps.orders.bulk_update.update_orders.present?).to be(true), 'Bulk Update Orders button is not present'
 end
 
 # Begin Bulk Update Weight steps

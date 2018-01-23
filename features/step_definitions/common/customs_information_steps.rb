@@ -147,7 +147,7 @@ Then /^[Ee]xpect Customs Invoice Number is (?:correct|(.*))$/ do |expectation|
 end
 
 #todo-Rob revisit customs form
-Then /^[Dd]elete Customs form Associated Item (\d+)$/ do |item_number|
+Then /^[Dd]elete Customs Associated Item (\d+)$/ do |item_number|
   if modal_param.web_app == :orders
     field = stamps.common_modals.customs_form.associated_items
   else
