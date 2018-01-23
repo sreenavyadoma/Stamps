@@ -78,9 +78,10 @@ module Stamps
           dropdown.click
           selection = StampsField.new(browser.lis(text: str)[@lov_index.nil? ? @lov_index = browser.lis(text: "United States").size - 1 : @lov_index])
           dropdown.click
-          10.times do
+          15.times do
             break if textbox.text.include?(str)
             dropdown.click unless selection.present?
+            sleep(0.1)
             selection.scroll_into_view.click
           end
           textbox.text
