@@ -124,7 +124,7 @@ mail_services:
   PSG Oversized Package: sdc-servicedroplist-psoversizedpackage
   FCMI Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
   FCMI Package: sdc-servicedroplist-fcithickenvelope
-  PMI Package: sdc-servicedroplist-pmipackage
+  PMI Package/Flat/Thick Envelope: sdc-servicedroplist-pmipackage
   PMI Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
   PMI Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
   PMI Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope
@@ -162,7 +162,7 @@ orders_services:
   PSG Oversized Package: sdc-servicedroplist-psoversizedpackage
   FCMI Large Envelope: sdc-servicedroplist-fcilargeenvelopeorflat
   FCMI Package: sdc-servicedroplist-fcithickenvelope
-  PMI Package: sdc-servicedroplist-pmipackage
+  PMI Package/Flat/Thick Envelope: sdc-servicedroplist-pmipackage
   PMI Flat Rate Envelope: sdc-servicedroplist-pmiflatrateenvelope
   PMI Padded Flat Rate Envelope: sdc-servicedroplist-pmiflatratepaddedenvelope
   PMI Legal Flat Rate Envelope: sdc-servicedroplist-pmilegalflatrateenvelope

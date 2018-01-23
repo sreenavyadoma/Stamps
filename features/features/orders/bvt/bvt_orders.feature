@@ -73,7 +73,7 @@ Feature:  BVT tests for Orders
     Then blur out on multi order details form
     Then set Bulk Update Ship From to default
     Then set Bulk Update domestic service to PM Large Package
-    Then set Bulk Update International service to PMI Package
+    Then set Bulk Update International service to PMI Package/Flat/Thick Envelope
     Then click Bulk Update Update Order button
 
   # Uncheck both orders
@@ -330,7 +330,7 @@ Feature:  BVT tests for Orders
 
     Then expect Order Details Ship-To Country is correct
     Then set Order Details Weight to 2 lb 2 oz
-    Then set Order Details service to PMI Package
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $100.25
     Then set Order Details Reference Number to Some random string
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1

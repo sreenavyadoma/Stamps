@@ -12,7 +12,7 @@ Feature: Bulk Update Domestic
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then set Order Details international service to PMI Package
+    Then set Order Details international service to PMI Package/Flat/Thick Envelope
     Then set Order Details Weight to 2 lb 2 oz
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
     Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
@@ -20,12 +20,15 @@ Feature: Bulk Update Domestic
 
     Then add Customs Associated Item 1
 
-    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 2, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 3, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 4, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 5, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 1, Description random string, Qty 6, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 2, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
+    Then add Customs Associated Item 3, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 4, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
+    Then add Customs Associated Item 5, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 6, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
+    Then add Customs Associated Item 7, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 1, Description random string, Qty 2, Price 2, Made In United States, Tariff 2
+
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -43,7 +46,7 @@ Feature: Bulk Update Domestic
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then set Order Details international service to PMI Package
+    Then set Order Details international service to PMI Package/Flat/Thick Envelope
     Then set Order Details Weight to 2 lb 2 oz
     Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
     Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
@@ -51,12 +54,15 @@ Feature: Bulk Update Domestic
 
     Then add Customs Associated Item 1
 
-    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 2, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 3, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 4, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 5, Description random string, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs Associated Item 1, Description random string, Qty 6, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 2, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
+    Then add Customs Associated Item 3, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 4, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
+    Then add Customs Associated Item 5, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 6, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
+    Then add Customs Associated Item 7, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+    Then add Customs Associated Item 1, Description random string, Qty 2, Price 2, Made In United States, Tariff 2
+
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
@@ -71,12 +77,12 @@ Feature: Bulk Update Domestic
     Then check row 2
 
     Then expect bulk update is present
-    Then set Bulk Update international service to PMI Package
+    Then set Bulk Update international service to PMI Package/Flat/Thick Envelope
 
     Then click Bulk Update Orders button
 
     Then uncheck row 2
-    Then expect order details service is PME Package/Flat/Thick Envelope
+    Then expect order details service is PMI Package/Flat/Thick Envelope
     Then set order details service to PM Large Package
 
     Then check row 2

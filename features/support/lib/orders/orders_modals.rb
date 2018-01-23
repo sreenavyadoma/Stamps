@@ -26,11 +26,6 @@ module Stamps
         cache[:split_order]
       end
 
-      def customs_form
-        cache[:customs_form] = Stamps::Common::Customs::CustomsInformation.new(param) if cache[:customs_form].nil?
-        cache[:customs_form]
-      end
-
       def insurance_terms_conditions
         ::SingleOrder::InsuranceTermsConditions.new(param) #todo-Rob-usps-terms move set_and_agree_to_terms out of page object onto step def.
       end

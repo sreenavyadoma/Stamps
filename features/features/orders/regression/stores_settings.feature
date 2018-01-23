@@ -33,7 +33,7 @@ Feature:  All Store Management
       Then select store settings shipping service to PSG Oversized Package
       Then select store settings shipping service to FCMI Large Envelope
       Then select store settings shipping service to FCMI Package
-      Then select store settings shipping service to PMI Package
+      Then select store settings shipping service to PMI Package/Flat/Thick Envelope
       Then select store settings shipping service to PMI Flat Rate Envelope
       Then select store settings shipping service to PMI Padded Flat Rate Envelope
       Then select store settings shipping service to PMI Legal Flat Rate Envelope

@@ -380,7 +380,7 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
             step "set Order Details Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:orders
             step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:mail
           end
-        elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package"
+        elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package/Flat/Thick Envelope"
           step "set Order Details Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:orders
           step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:mail
         end

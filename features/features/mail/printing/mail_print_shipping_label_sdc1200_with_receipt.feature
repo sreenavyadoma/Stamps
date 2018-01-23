@@ -61,7 +61,7 @@ Feature: Mail Shipping Label - SDC-1200 with receipt
       | name   | company | street_address_1 | street_address_2  | city   | province | postal_code | country| phone  |
       | cn72   | random  | random           | random            | random | random   | 78954      | India  | random  |
     Then set Print form Ounces to 1
-    Then select Print form service PMI Package
+    Then select Print form service PMI Package/Flat/Thick Envelope
     Then click Print form Edit Customs Form button
     Then add Customs Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
     Then check Customs form I agree to the USPS Privacy Act Statement

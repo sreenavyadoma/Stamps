@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label on 4x6 Roll
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 4x6 Roll  | random           | random           | random | random  | random      | France | random  | random  |
-    Then set Order Details service to PMI Package
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise

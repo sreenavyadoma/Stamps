@@ -10,7 +10,7 @@ Feature: Print 1 Intl CP72 label on 5.5x8.5 - left side
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI LFR Envelope | 5.5x8.5  | random           | random           | random | random  | random      | Chile | random  | random  |
-    Then set Order Details service to PMI Package
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
     Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button

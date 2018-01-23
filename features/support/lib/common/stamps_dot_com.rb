@@ -13,6 +13,11 @@ module Stamps
     def mail
       cache[:mail].nil? ? cache[:mail] = WebMail.new(param) : cache[:mail]
     end
+
+    def common_modals
+      cache[:shared_modals] = Stamps::Browser::Base.new(param).extend(Stamps::Common::Modals) if cache[:shared_modals].nil?
+      cache[:shared_modals]
+    end
   end
 end
 

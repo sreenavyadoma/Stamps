@@ -1,5 +1,12 @@
 module Stamps
   module Common
+    module Modals
+      def customs_form
+        cache[:customs_form] = Stamps::Common::Customs::CustomsInformation.new(param) if cache[:customs_form].nil?
+        cache[:customs_form]
+      end
+    end
+
     module Customs
 
       module MoreInfo
@@ -45,19 +52,17 @@ module Stamps
       ##
       #
       class MadeIn < Browser::Base
-        attr_reader :index, :selection_index
+        attr_reader :index
 
         def initialize(param, index)
           super(param)
           @index = index
-          @selection_index = browser.lis(text: "United States").size - 1 # index is initialized once
         end
 
         def textbox
           if cache["textbox#{index}".to_sym].nil? || !cache["textbox#{index}".to_sym].present?
             cache["textbox#{index}".to_sym] = StampsTextbox.new(browser.text_fields(css: "[id^=singlecustomsitem] [name*=Country]")[index])
           end
-          cache["textbox#{index}".to_sym].scroll_into_view
           cache["textbox#{index}".to_sym]
         end
 
@@ -65,13 +70,13 @@ module Stamps
           if cache["dropdown#{index}".to_sym].nil? || !cache["dropdown#{index}".to_sym].present?
             cache["dropdown#{index}".to_sym] = StampsField.new(browser.divs(css: "[id^=singlecustomsitem] [id$=picker]")[index])
           end
-          cache["dropdown#{index}".to_sym].scroll_into_view
           cache["dropdown#{index}".to_sym]
         end
 
         def select(str)
+          dropdown.scroll_into_view
           dropdown.click
-          selection = StampsField.new(browser.lis(text: str)[selection_index])
+          selection = StampsField.new(browser.lis(text: str)[@lov_index.nil? ? @lov_index = browser.lis(text: "United States").size - 1 : @lov_index])
           dropdown.click
           10.times do
             break if textbox.text.include?(str)
@@ -118,9 +123,6 @@ module Stamps
 
         def made_in
           if cache["made_in#{index}".to_sym].nil?
-            browser.divs(css: "[id^=singlecustomsitem] [id$=picker]")[index].click #click Made In country drop down on first line item creation
-            sleep(0.05)
-            browser.divs(css: "[id^=singlecustomsitem] [id$=picker]")[index].click
             cache["made_in#{index}".to_sym] = MadeIn.new(param, index)
           end
           cache["made_in#{index}".to_sym].textbox.scroll_into_view
@@ -178,8 +180,15 @@ module Stamps
               cache["item_number#{number}".to_sym].item_description.scroll_into_view
               return cache["item_number#{number}".to_sym]
             end
-            add_item.click if number > size
-            sleep(0.2)
+
+            if number > size
+              add_item.click
+              sleep(0.2)
+              # expose Made In country list of values on item add
+              cache["item_number#{number}".to_sym].made_in.dropdown.click
+              sleep(0.05)
+              cache["item_number#{number}".to_sym].made_in.dropdown.click
+            end
           end
           nil
         end
