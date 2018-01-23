@@ -10,7 +10,6 @@ module Stamps
           expect(blur_out_field).to be_present, "Blur out field is not present."
           count.to_i.times do
             blur_out_field.double_click
-            blur_out_field.flash
             blur_out_field.click
           end
         end

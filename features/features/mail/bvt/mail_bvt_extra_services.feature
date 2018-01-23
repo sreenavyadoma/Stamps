@@ -16,35 +16,35 @@ Feature: Extra Services BVT
 
     Then set Extra Services Security to Registered Mail
     Then click value must be shown window Continue button
-    Then expect Extra Services Security Price to be 11.70
+    Then expect Extra Services Security Price to be 11.90
 
     Then set Extra Services Value to 30.00
-    Then expect Extra Services Security Price to be 12.50
+    Then expect Extra Services Security Price to be 12.60
 
     Then set Extra Services COD to 20.00
-    Then expect Extra Services COD Price to be 5.65
+    Then expect Extra Services COD Price to be 5.70
 
     Then check Extra Services Return Receipt
     Then expect Extra Services Return Receipt Price to be 2.75
 
     Then check Extra Services Restricted Delivery
-    Then expect Extra Services Restricted Delivery Price to be 4.95
+    Then expect Extra Services Restricted Delivery Price to be 5.10
 
     Then check Extra Services Notice of Non-Delivery
     Then expect Extra Services Notice of Non-Delivery Price to be 0.00
 
-    Then expect Extra Services Total Price to be 25.85
+    Then expect Extra Services Total Price to be 26.15
 
     Then save Extra Services
 
     Then select Advanced Options Extra Services
 
-    Then expect Extra Services Security Price to be 12.50
+    Then expect Extra Services Security Price to be 12.60
     Then expect Extra Services Return Receipt Price to be 2.75
-    Then expect Extra Services Restricted Delivery Price to be 4.95
-    Then expect Extra Services COD Price to be 5.65
+    Then expect Extra Services Restricted Delivery Price to be 5.10
+    Then expect Extra Services COD Price to be 5.70
     Then expect Extra Services Notice of Non-Delivery Price to be 0.00
-    Then expect Extra Services Total Price to be 25.85
+    Then expect Extra Services Total Price to be 26.15
 
     Then save Extra Services
     Then Sign out

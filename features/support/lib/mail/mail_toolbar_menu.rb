@@ -7,8 +7,12 @@ module Stamps
 
       end
 
-      def print
+      def mail_toolbar_model
+        (cache[:mail_toolbar_model].nil?||!cache[:mail_toolbar_model].present?)?cache[:mail_toolbar_model]=PrintModal::MailPrintModal.new(param):cache[:mail_toolbar_model]
+      end
 
+      def print_button
+        (cache[:print_button].nil?||!cache[:print_button].present?)?cache[:print_button] = StampsField.new(browser.span(text: 'Print')):cache[:print_button]
       end
     end
 
@@ -24,12 +28,15 @@ module Stamps
       def settings
 
       end
-
     end
 
-    class MailToolbarMenu < Browser::Base
+    class MailToolbarMenu < Browser::BaseCache
       include MailToolbarLeftSide
       include MailToolbarRightSide
+      assign({})
+      def cache
+        self.class.cache
+      end
     end
   end
 end

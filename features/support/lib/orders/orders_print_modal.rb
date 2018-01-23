@@ -179,6 +179,13 @@ module Stamps
         def default_selected?
           label_selected?(left_label)
         end
+
+        #AB_ORDERSAUTO_3518
+        def label_displayed?
+          div = (left_selected?)?(left_label):(right_label)
+          8.times {break if (div.attribute_value 'class').include? 'label-chooser-image-domestic'}
+          (div.attribute_value 'class').include? 'label-chooser-image-domestic' #todo-Rob figuring out what to verify is dependent on print media, both for domestic and int.
+        end
       end
 
       class OrdersPrintOptions < Browser::Base
@@ -432,7 +439,7 @@ module Stamps
         end
 
         def total_cost
-          test_helper.dollar_amount_str(StampsField.new(browser.label(text: 'Total Cost:').parent.labels.last).text).to_f.round(2)
+          StampsField.new(browser.label(text: 'Total Cost:').parent.labels.last).text.dollar_amount_str.to_f.round(2)
         end
 
         def print

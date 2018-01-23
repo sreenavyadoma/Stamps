@@ -19,6 +19,10 @@ module Stamps
           (cache[:value_must_be_shown_popup].nil?||!cache[:value_must_be_shown_popup].present?)?cache[:value_must_be_shown_popup]=PrintFormPanel::ValueMustBeShown.new(param):cache[:value_must_be_shown_popup]
         end
 
+        def special_contents_warning
+          (cache[:special_contents_warning_popup].nil?||!cache[:special_contents_warning_popup].present?)?cache[:special_contents_warning_popup]=PrintFormPanel::SpecialContentsWarning.new(param):cache[:special_contents_warning_popup]
+        end
+
         def extra_services
           20.times do
             return xtra_serv_panel if xtra_serv_panel.present?
