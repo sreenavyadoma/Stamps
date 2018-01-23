@@ -10,9 +10,6 @@ module Stamps
       module Fields
         class Dimensions < Browser::BaseCache
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def present?
             length.present? && width.present? && height.present? && checkbox.present?
@@ -48,9 +45,6 @@ module Stamps
 
         class Weight < Browser::BaseCache
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def present?
             lbs.present? && oz.present? && checkbox.present?
@@ -142,9 +136,6 @@ module Stamps
 
         class Service < Browser::BaseCache
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def selection_field(order_form, str)
             ::Common::ServiceSelection::FloatingServiceTracker.new(param).selection_field(order_form, str)
@@ -168,7 +159,7 @@ module Stamps
                 dropdown.click unless selection.present?
                 selection.scroll_into_view.click
                 break if textbox.text.include?(str)
-              rescue StandardError
+              rescue
                 #ignore
               end
             end
@@ -229,6 +220,218 @@ module Stamps
           end
         end
 
+        class IntService < Browser::BaseCache
+          assign({})
+
+          def selection_field(order_form, str)
+            ::Common::ServiceSelection::FloatingServiceTracker.new(param).selection_field(order_form, str)
+          end
+
+          def textbox
+            cache[:box] = StampsTextbox.new(browser.text_field(css: '[name=intlService]')) if cache[:box].nil? || !cache[:box].present?
+            cache[:box]
+          end
+
+          def dropdown
+            cache[:dd] = StampsField.new(browser.div(css: '[class*=intl] [id$=picker]')) if cache[:dd].nil? || !cache[:dd].present?
+            cache[:dd]
+          end
+
+          def select(str)
+            dropdown.click
+            selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::BULK_UPDATE, str)
+            5.times do
+              begin
+                dropdown.click unless selection.present?
+                selection.scroll_into_view.click
+                break if textbox.text.include?(str)
+              rescue
+                #ignore
+              end
+            end
+            textbox.text
+          end
+
+          def tooltip(selection)
+            raise 'Service tooltip is not implemented!'
+#             selection_label=StampsField.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
+#             10.times do
+#               begin
+#                 dropdown.click unless selection_label.present?
+#                 sleep(0.15)
+#                 if selection_label.present?
+#                   tooltip=selection_label.attribute_value("data-qtip")
+#                   logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+#                   return tooltip if tooltip.include? "<strong>"
+#                 end
+#               rescue
+#                 #ignore
+#               end
+#             end
+#             blur_out
+          end
+
+          def disabled?(service)
+            @details_services = data_for(:orders_services, {})
+            selection_label = StampsField.new(browser.li(id: @details_services[service].to_s))
+
+            10.times do |index|
+              dropdown.click unless selection_label.present?
+              sleep(0.35)
+              if selection_label.present?
+                disabled_field = StampsField.new(selection_label.element.parent.parent.parent)
+                begin
+                  if selection_label.present?
+                    if disabled_field.present?
+                      result = disabled_field.attribute_value('class').include? 'disabled'
+                      sleep(0.35)
+                      result = disabled_field.attribute_value('class').include? 'disabled'
+                      result = disabled_field.attribute_value('class').include? 'disabled'
+                      dropdown.click
+                      return result
+                    end
+                  end
+                rescue StandardError
+                  #ignore
+                end
+              else
+                sleep(0.35)
+                return true if index == 5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
+              end
+            end
+          end
+
+          def enabled?(service)
+            !(disabled? service)
+          end
+        end
+
+        class IntServiceTwo < Browser::Base
+          attr_reader :textbox, :dropdown, :form_type
+          def initialize(param, form_type)
+            super(param)
+            @form_type=form_type
+            case form_type
+              when :single_order
+                @textbox=StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm][id$=targetEl]>div>div>div>div>div>div>div>input[id^=service]"))
+                @dropdown=StampsField.new(browser.div(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-trigger-picker]"))
+              when :multi_order_dom
+                @textbox=StampsTextbox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=service]"))
+                @dropdown=StampsField.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(5)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
+              when :multi_order_int
+                @textbox=StampsTextbox.new(browser.text_field(css: "div[id^=multiOrderDetailsForm]>div>div>div>div>div>div>div>div[id^=servicedroplist-][id$=-inputWrap]>[name=intlService]"))
+                @dropdown=StampsField.new(browser.div(css: "div[id^=multiOrderDetailsForm][id$=targetEl]>div:nth-child(6)>div>div>div>div[id^=servicedroplist][id$=bodyEl]>div>div[id$=picker]"))
+              else
+                expect([:single_order, :multi_order_dom, :multi_order_int]).to include(form_type)
+            end
+          end
+
+          def select(str)
+            sleep(0.35)
+            dropdown.click
+            10.times do
+              begin
+                tds=browser.tds(css: "li##{data_for(:orders_services, {})[str]}>table>tbody>tr>td.x-boundlist-item-text")
+                selection=StampsField.new((form_type==:multi_order_int)?tds.last : tds.first)
+                dropdown.click unless selection.present?
+                selection.scroll_into_view
+                sleep(0.15)
+                selection.click
+                logger.info "Selected service #{textbox.text} - #{(textbox.text.include? str)?"success": "service not selected"}"
+                sleep(0.15)
+                break if textbox.text.include?(str)
+              rescue
+                #ignore
+              end
+            end
+            textbox.text
+          end
+
+          def tooltip(selection)
+            button=dropdown
+            selection_label=StampsField.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
+            10.times do
+              begin
+                button.click unless selection_label.present?
+                sleep(0.15)
+                if selection_label.present?
+                  tooltip=selection_label.attribute_value("data-qtip")
+                  logger.info "Service Tooltip for \"#{selection}\" is #{tooltip}"
+                  return tooltip if tooltip.include? "<strong>"
+                end
+              rescue
+                #ignore
+              end
+            end
+            blur_out
+          end
+
+          def disabled?(service)
+            @details_services=data_for(:orders_services, {})
+            selection_label=StampsField.new(browser.li(id: "#{@details_services[service]}"))
+
+            10.times do |index|
+              dropdown.click unless selection_label.present?
+              sleep(0.35)
+              if selection_label.present?
+                disabled_field=StampsField.new(selection_label.element.parent.parent.parent)
+                begin
+                  if selection_label.present?
+                    if disabled_field.present?
+                      result=disabled_field.attribute_value("class").include? "disabled"
+                      sleep(0.35)
+                      result=disabled_field.attribute_value("class").include? "disabled"
+                      result=disabled_field.attribute_value("class").include? "disabled"
+                      dropdown.click
+                      return result
+                    end
+                  end
+                rescue
+                  #ignore
+                end
+              else
+                sleep(0.35)
+                return true if index==5 #try to look for service in service selection drop-down 3 times before declaring it's disabled.
+              end
+            end
+          end
+
+          def enabled? service
+            !(disabled? service)
+          end
+
+          def cost_label
+            labels=browser.label(text: "Service:").parent.labels
+            cost_field=nil
+            labels.each do |label|
+              cost_field=label if label.text.include?('.')
+            end
+            cost_field
+          end
+
+          def cost
+            cost_label.text.dollar_amount_str.to_f.round(2)
+          end
+
+          def inline_cost(service_name)
+            cost_label=StampsField.new(browser.td(css: "tr[data-qtip*='#{service_name}']>td:nth-child(3)"))
+            10.times do
+              begin
+                dropdown.click unless cost_label.present?
+                if cost_label.present?
+                  service_cost=cost_label.text.dollar_amount_str
+                  logger.info "Service Cost for \"#{service_name}\" is #{service_cost}"
+                  dropdown.click if cost_label.present?
+                  return service_cost.to_f.round(2)
+                end
+              rescue
+                #ignore
+              end
+            end
+          end
+
+        end
+
         # REWORK -----------------------------------------------
 
         class MultiOrderDetailsTracking < Browser::BaseCache
@@ -238,10 +441,6 @@ module Stamps
             super(param)
             @textbox = StampsTextbox.new browser.text_field(name: 'Tracking')
             @dropdown = StampsField.new browser.div(css: 'div[id^=multiOrderDetailsForm-][id$=-targetEl]>div>div>div>div>div>div>div[id^=trackingdroplist-][id$=trigger-picker]')
-          end
-
-          def cache
-            self.class.cache
           end
 
           def present?
@@ -295,15 +494,13 @@ module Stamps
         assign({})
         include Toolbar
         include PresetMenu
-        def cache
-          self.class.cache
-        end
 
         def blur_out_field
-          cache[:blur_out].nil? || !cache[:blur_out].present? ? cache[:blur_out] = StampsField.new(browser.label(text: 'Bulk Update:')) : cache[:blur_out]
+          cache[:blur_out] = StampsField.new(browser.label(text: 'Bulk Update:')) if cache[:blur_out].nil? || !cache[:blur_out].present?
+          cache[:blur_out]
         end
 
-        def blur_out(count=1)
+        def blur_out(count = 1)
           (count.nil? ? 1 : count.to_i).times do
             blur_out_field.double_click
             blur_out_field.click
@@ -315,11 +512,11 @@ module Stamps
         end
 
         def ship_from
-          @multi_ship_from = Stamps::Orders::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
+          cache[:ship_from].nil? ? cache[:ship_from] = ::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details) : cache[:ship_from]
         end
 
-        def int_service
-          cache[:int_service].nil? ? cache[:int_service] = ::DetailsFormCommon::DetailsFormService.new(param, :multi_order_int) : cache[:int_service]
+        def intl_service
+          cache[:int_service].nil? ? cache[:int_service] = Fields::IntService.new(param) : cache[:int_service]
         end
 
         # done

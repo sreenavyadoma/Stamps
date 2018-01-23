@@ -12,18 +12,23 @@ module Stamps
     # Orders floating modals
     module StampsOrdersModals
       def orders_print_modal
-        cache[:orders_print_modal] = Printing::OrdersPrintModal.new(param) if cache[:orders_print_modal].nil? || !cache[:orders_print_modal].present?
+        cache[:orders_print_modal] = Printing::OrdersPrintModal.new(param) if cache[:orders_print_modal].nil?
         cache[:orders_print_modal]
       end
 
       def orders_settings_modal
-        cache[:orders_settings] = OrdersSettings::OrdersSettingsModal.new(param) if cache[:orders_settings].nil? || !cache[:orders_settings].present?
+        cache[:orders_settings] = OrdersSettings::OrdersSettingsModal.new(param) if cache[:orders_settings].nil?
         cache[:orders_settings]
       end
 
       def split_order_modal
-        cache[:split_order] = SplitOrder::Modal.new(param) if cache[:split_order].nil? || !cache[:split_order].present?
+        cache[:split_order] = SplitOrder::Modal.new(param) if cache[:split_order].nil?
         cache[:split_order]
+      end
+
+      def customs_form
+        cache[:customs_form] = Stamps::Common::Customs::CustomsInformation.new(param) if cache[:customs_form].nil?
+        cache[:customs_form]
       end
 
       def insurance_terms_conditions

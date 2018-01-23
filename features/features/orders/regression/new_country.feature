@@ -20,7 +20,7 @@ Feature:  Print new country orders
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Pause for 3 seconds
@@ -46,7 +46,7 @@ Feature:  Print new country orders
     Then on Order Details form, Add Item 1, Qty 1, ID Item 1 SKU, Description Item 1 Description
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then Pause for 3 seconds

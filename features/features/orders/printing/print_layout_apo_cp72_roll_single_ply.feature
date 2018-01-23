@@ -14,7 +14,7 @@ Feature: Print 1 single ply APO CP72 label on 4x6 roll
     Then set Order Details service to PSG Package
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then click Orders Toolbar Print button

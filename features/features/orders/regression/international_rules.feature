@@ -50,7 +50,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -85,7 +85,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -200,7 +200,7 @@ Feature: All International Rules
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -238,7 +238,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -275,7 +275,7 @@ Feature: All International Rules
     Then set Customs Package Contents to Other
     Then Expect Customs Internal Transaction Number is Required
 
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement
@@ -296,11 +296,11 @@ Feature: All International Rules
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
     Then set Order Details service to FCMI Large Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 1, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Not required
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 2501, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs ITN Number to random
     Then check Customs form I agree to the USPS Privacy Act Statement

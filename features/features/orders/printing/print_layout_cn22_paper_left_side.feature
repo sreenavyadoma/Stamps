@@ -14,7 +14,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
     Then add new order
@@ -27,7 +27,7 @@ Feature: Print 2 Intl CN22 labels on 8.5x11 - left side
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 2, Made In United States, Tariff 10
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 

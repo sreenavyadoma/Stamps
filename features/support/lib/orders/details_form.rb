@@ -1,7 +1,7 @@
 module Stamps
   module Orders
     module SingleOrder
-      class InsuranceTermsConditions < Browser::Base
+      class InsuranceTermsConditions < Browser::Base #todo-Rob move to Stamps::Common
         def present?
           begin
             (browser.divs(text: "Stamps.com Insurance Terms and Conditions").first).present? || browser.spans(text: "I Agree").last.present?
@@ -515,9 +515,6 @@ module Stamps
         class InsureFor < Browser::BaseCache
           include BlurOutField
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def cost
             cache[:cost] = StampsField.new(browser.div(css: "[class*=single] [class*=insurance-field]").parent.labels[4]) if cache[:cost].nil? || !cache[:cost].present?
@@ -552,9 +549,6 @@ module Stamps
 
         class Tracking < Browser::BaseCache
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def cost
             cache[:cost] = StampsField.new(browser.label(css: '[class*=single] [class*=tracking_cost]')) if cache[:cost].nil? || !cache[:cost].present?
@@ -818,25 +812,28 @@ module Stamps
           end
         end
 
-        class OrdersCustomsFields < Browser::Base
-          attr_reader :customs_form, :view_restrictions, :browser_restrictions_button, :custom_form_btn, :restrictions_btn
+        class Contents < Browser::BaseCache
+          assign({})
+          attr_reader
 
           def initialize(param)
             super
-            @customs_form = Stamps::Common::Customs::CustomsInformation.new(param)
-            @view_restrictions = Orders::SingleOrder::Fields::ViewRestrictions.new(param)
-            @custom_form_btn = StampsField.new browser.span text: 'Customs Form...'
-            @restrictions_btn = StampsField.new browser.span text: 'Restrictions...'
+            @restrictions_btn = StampsField.new(browser.span(text: 'Restrictions...'))
           end
 
-          def edit_customs_form
-            10.times do
-              return customs_form if customs_form.present?
-              custom_form_btn.scroll_into_view
-              custom_form_btn.click
-              customs_form.wait_until_present(2)
-            end
-            expect(customs_form).to be_present
+          def restrictions_btn
+            cache[:restrictions_btn] = StampsField.new(browser.a(css: '[data-qtip^=View]')) if cache[:restrictions_btn].nil? || !cache[:restrictions_btn].present?
+            cache[:restrictions_btn]
+          end
+
+          def view_restrictions
+            cache[:view_restrictions] = Orders::SingleOrder::Fields::ViewRestrictions.new(param) if cache[:view_restrictions].nil?
+            cache[:view_restrictions]
+          end
+
+          def customs_form
+            cache[:customs_form] = StampsField.new(browser.a(css: '[data-qtip*=Edit]')) if cache[:customs_form].nil? || !cache[:customs_form].present?
+            cache[:customs_form]
           end
 
           def restrictions
@@ -850,16 +847,13 @@ module Stamps
 
         class Service < Browser::BaseCache
           assign({})
-          def cache
-            self.class.cache
-          end
 
           def selection_field(order_form, str)
             ::Common::ServiceSelection::FloatingServiceTracker.new(param).selection_field(order_form, str)
           end
 
           def textbox
-            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id^=singleOrder] [name=Service]")) if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox] = StampsTextbox.new(browser.text_field(css: "[id^=singleOrder] [name=Service]"))  if cache[:textbox].nil? || !cache[:textbox].present?
             cache[:textbox]
           end
 
@@ -911,7 +905,7 @@ module Stamps
         assign({})
         include Fields::BlurOutField
         attr_reader :toolbar, :single_ship_from, :ship_to, :weight, :body, :insure_for, :service, :tracking,
-                    :dimensions, :footer, :customs, :items_ordered, :reference_no, :collapsed_details
+                    :dimensions, :footer, :items_ordered, :reference_no, :collapsed_details
         def initialize(param)
           super
           @toolbar = Fields::Toolbar.new(param)
@@ -923,10 +917,14 @@ module Stamps
           @reference_no = StampsTextbox.new(browser.text_field(css: "div[id^=singleOrderDetailsForm-][id$=-targetEl]>div:nth-child(10)>div>div>div>div>div>div>input"))
           @dimensions = Stamps::Orders::DetailsFormCommon::DetailsFormDimensions.new(param, :single_order)
           @items_ordered = Fields::ItemsOrderedSection.new(param)
-          @customs = Fields::OrdersCustomsFields.new(param)
           @body = StampsField.new(browser.div(css: "div[id^=singleOrderDetailsForm][id$=body]"))
           @collapsed_details = Fields::Collapsible.new(param)
           @footer = Fields::Footer.new(param)
+        end
+
+        def contents
+          cache[:contents] = Fields::Contents.new(param) if cache[:contents].nil?
+          cache[:contents]
         end
 
         def present?
@@ -934,11 +932,8 @@ module Stamps
         end
 
         def service
-          if cache[:service].nil? || !cache[:service].present?
-            cache[:service] = Fields::Service.new(param)
-          else
-            cache[:service]
-          end
+          cache[:service] = Fields::Service.new(param) if cache[:service].nil?
+          cache[:service]
         end
 
         def wait_until_present(*args)

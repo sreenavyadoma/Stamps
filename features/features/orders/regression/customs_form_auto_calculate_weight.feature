@@ -25,14 +25,14 @@ Feature: Auto-Calculate Customs Form Weight
 
     Then click Order Details form Customs Form button
 
-    Then add Customs form Associated Item 1
+    Then add Customs Associated Item 1
     Then set Customs Associated Item 1 Description to item 1
     Then set Customs Associated Item 1 Qty to 2
     Then set Customs Associated Item 1 Unit Price to 1
     Then set Customs Associated Item 1 Made In is Country to United States
     Then set Customs Associated Item 1 Tarriff to 5
 
-    Then add Customs form Associated Item 2
+    Then add Customs Associated Item 2
     Then set Customs Associated Item 2 Description to item 2
     Then set Customs Associated Item 2 Qty to 2
     Then set Customs Associated Item 2 Unit Price to 1

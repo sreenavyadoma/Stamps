@@ -26,14 +26,14 @@ Feature: Customs Form Qty > 99 is not saved correctly
 
     Then click Order Details form Customs Form button
 
-    Then add Customs form Associated Item 1
+    Then add Customs Associated Item 1
     Then set Customs Associated Item 1 Description to item 1
     Then set Customs Associated Item 1 Qty to 5
     Then set Customs Associated Item 1 Unit Price to 11.11
     Then set Customs Associated Item 1 Made In is Country to United States
     Then set Customs Associated Item 1 Tarriff to 5
 
-    Then add Customs form Associated Item 2
+    Then add Customs Associated Item 2
     Then set Customs Associated Item 2 Description to item 2
     Then set Customs Associated Item 2 Qty to 7
     Then set Customs Associated Item 2 Unit Price to 22.22

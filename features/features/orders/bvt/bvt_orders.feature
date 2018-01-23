@@ -108,7 +108,7 @@ Feature:  BVT tests for Orders
     Then set Order Details Ounces to 4
     Then set Order Details service to FCMI Large Envelope
     Then click Order Details form Customs Form button
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs Package Contents to Commercial Sample
     Then set Customs Package Contents to Gift
     Then set Customs Package Contents to Document
@@ -365,9 +365,9 @@ Feature:  BVT tests for Orders
 
     Then set Customs ITN Number to ITN123
 
-    Then add Customs form Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
-    Then add Customs form Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
-    Then add Customs form Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
+    Then add Customs Associated Item 1, Description Item 1, Qty 1, Price 1, Made In United States, Tariff 1
+    Then add Customs Associated Item 2, Description Item 2, Qty 2, Price 2, Made In Japan, Tariff 2
+    Then add Customs Associated Item 3, Description Random String, Qty 3, Price 3, Made In Canada, Tariff 3
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form

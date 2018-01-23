@@ -1,9 +1,6 @@
 module Stamps
   class StampsDotCom < Browser::BaseCache
     assign({})
-    def cache
-      self.class.cache
-    end
 
     def navigation_bar
       cache[:navigation].nil? ? cache[:navigation] = Navigation::NavigationBar.new(param) : cache[:navigation]

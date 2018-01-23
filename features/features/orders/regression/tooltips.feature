@@ -30,7 +30,7 @@ Feature:  Tooltip Errors
     Then expect Customs Associated Item Description Tooltip Error is Description is a required field
     Then expect Customs Qty Tooltip Error is Quantity must be greater than 0
     Then expect Customs Unit Price Tooltip Error is Value must be greater than 0
-    Then add Customs form Associated Item 1, Description random, Qty 1, Price 50, Made In United States, Tariff 100
+    Then add Customs Associated Item 1, Description random, Qty 1, Price 50, Made In United States, Tariff 100
     Then Pause for 2 seconds
     Then close Customs Information form
     Then Sign out

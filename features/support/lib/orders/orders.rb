@@ -2,9 +2,6 @@ module Stamps
   module Orders
     class WebOrders < Browser::BaseCache
       assign({})
-      def cache
-        self.class.cache
-      end
 
       def orders_toolbar
         cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil?
@@ -27,8 +24,8 @@ module Stamps
       end
 
       def order_details
-        cache[:single_order] = Orders::SingleOrder::DetailsForm.new(param) if cache[:single_order].nil?
-        cache[:single_order]
+        cache[:order_details] = Orders::SingleOrder::DetailsForm.new(param) if cache[:order_details].nil?
+        cache[:order_details]
       end
 
       def bulk_update
