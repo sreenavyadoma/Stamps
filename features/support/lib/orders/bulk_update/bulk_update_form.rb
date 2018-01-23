@@ -496,7 +496,9 @@ module Stamps
         include PresetMenu
 
         def blur_out_field
-          cache[:blur_out] = StampsField.new(browser.label(text: 'Bulk Update:')) if cache[:blur_out].nil? || !cache[:blur_out].present?
+          if cache[:blur_out].nil? || !cache[:blur_out].present?
+            cache[:blur_out] = StampsField.new(browser.label(text: 'Bulk Update:'))
+          end
           cache[:blur_out]
         end
 
@@ -512,28 +514,42 @@ module Stamps
         end
 
         def ship_from
-          cache[:ship_from].nil? ? cache[:ship_from] = ::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details) : cache[:ship_from]
+          if cache[:ship_from].nil?
+            cache[:ship_from] = ::DetailsFormCommon::DetailsFormShipFrom.new(param, :multi_order_details)
+          end
+          cache[:ship_from]
         end
 
         def intl_service
-          cache[:int_service].nil? ? cache[:int_service] = Fields::IntService.new(param) : cache[:int_service]
+          cache[:int_service] = Fields::IntService.new(param) if cache[:int_service].nil?
+          cache[:int_service]
         end
 
         # done
         def domestic_service
-          cache[:domestic_service].nil? ? cache[:domestic_service] = Fields::Service.new(param) : cache[:domestic_service]
+          cache[:domestic_service] = Fields::Service.new(param) if cache[:domestic_service].nil?
+          cache[:domestic_service]
         end
 
         def updating_orders
-          cache[:updating_orders].nil? || !cache[:updating_orders].present? ? cache[:updating_orders] = StampsField.new(browser.div(text: 'Updating Orders')) : cache[:updating_orders]
+          if cache[:updating_orders].nil? || !cache[:updating_orders].present?
+            cache[:updating_orders] = StampsField.new(browser.div(text: 'Updating Orders'))
+          end
+          cache[:updating_orders]
         end
 
         def update_orders
-          cache[:update_orders].nil? || !cache[:update_orders].present? ? cache[:update_orders] = StampsField.new(browser.span(text: 'Update Orders')) : cache[:update_orders]
+          if cache[:update_orders].nil? || !cache[:update_orders].present?
+            cache[:update_orders] = StampsField.new(browser.span(text: 'Update Orders'))
+          end
+          cache[:update_orders]
         end
 
         def save_as_preset
-          cache[:save_preset].nil? || !cache[:save_preset].present? ? cache[:save_preset] = StampsField.new(browser.span(text: 'Save as Preset')) : cache[:save_preset]
+          if cache[:save_preset].nil? || !cache[:save_preset].present?
+            cache[:save_preset] = StampsField.new(browser.span(text: 'Save as Preset'))
+          end
+          cache[:save_preset]
         end
 
         def weight
