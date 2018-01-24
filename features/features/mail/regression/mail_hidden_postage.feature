@@ -67,7 +67,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Handling is Normal
 
     Then close Extra Services
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
     Then set Extra Services Value to 1.00
@@ -156,7 +156,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Handling is Normal
 
     Then close Extra Services
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
     Then set Extra Services Value to 1.00
@@ -207,7 +207,7 @@ Feature: ORDERSAUTO-3353 New Sprint 11/22/17 WEBAPPS-6720 Update Default Checkbo
     Then expect Extra Services Handling is Normal
 
     Then close Extra Services
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then select Advanced Options Extra Services
     Then set Extra Services Security to USPS Insurance
     Then set Extra Services Value to 1.00

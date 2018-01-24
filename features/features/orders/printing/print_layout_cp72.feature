@@ -212,7 +212,7 @@ Feature: Print 1 Intl CP72 label
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
       | PMEI PFTE |  sdc1200 Right Side 1  | random       | random           | random | random  | random      | Costa Rica | random  | random  |
-    Then set Order Details service to PMEI Package
+    Then set Order Details service to PMEI Package/Flat/Thick Envelope
     Then set Order Details Ounces to 1
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
@@ -234,7 +234,7 @@ Feature: Print 1 Intl CP72 label
       | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |
     Then set Order Details Weight to 3 lb 2 oz
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Other
     Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
@@ -252,7 +252,7 @@ Feature: Print 1 Intl CP72 label
       | full_name | company | street_address        |street_address_2|  city    | state | zip        | country       | phone  |  email |
       | MM   | 8.5x11  | 118 E Marine Corps Dr |                |Hagatna | GU    | 96910-5126 | United States | random | random |
     Then set Order Details Weight to 1 lb 2 oz
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
 
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Other
@@ -276,7 +276,7 @@ Feature: Print 1 Intl CP72 label
       | full_name   | company      | street_address    |street_address_2|  city | state | zip    | country       | phone  |  email |
       | PSG LP | 4x6 roll | PSC 3 BOX 4120  |                      |APO  | AE     |  09021  | United States | random | random |
     Then set Order Details Weight to 2 lb 1 oz
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
     Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10

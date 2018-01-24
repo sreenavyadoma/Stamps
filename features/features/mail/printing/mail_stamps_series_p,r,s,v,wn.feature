@@ -13,7 +13,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then Pause for 1 second
@@ -42,7 +42,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then Pause for 1 second
@@ -71,7 +71,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then Pause for 1 second
@@ -114,7 +114,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then click Mail Print modal Print button
@@ -129,7 +129,7 @@ Feature: Stamps Series #P, #R, #S, #V, #WN
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print Postage
     Then Pause for 1 second

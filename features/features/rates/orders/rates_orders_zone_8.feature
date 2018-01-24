@@ -6,7 +6,7 @@ Feature: January 2017 Rates for Core User in Zone 9
   @rates_orders_zone_8
   Scenario: FCM Package
     Then set Order Details Ship-To to random address in zone 8
-    Then set Order Details service to FCM Large Envelope
+    Then set Order Details service to FCM Large Envelope/Flat
     Then set Order Details Weight to 0 lb 13 oz
     Then expect Order Details Service Cost is 3.50
     Then expect Order Details Total Ship Cost is 3.50
@@ -179,9 +179,9 @@ Feature: January 2017 Rates for Core User in Zone 9
     Then Sign out
 
   @rates_orders_zone_8
-  Scenario: MM Package
+  Scenario: MM Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 8
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Weight to 39 lb 0 oz
     Then expect Order Details Service Cost is 20.93
     Then set Order Details Tracking to USPS Tracking
@@ -191,7 +191,7 @@ Feature: January 2017 Rates for Core User in Zone 9
   @rates_orders_zone_8
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 8
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Weight to 12 lb 0 oz
     Then expect Order Details Service Cost is 41.35
     Then set Order Details Tracking to USPS Tracking

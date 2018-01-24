@@ -75,7 +75,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 3
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $56.00
     Then set Order Details Tracking to Signature Required
 
@@ -85,7 +85,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 10
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $235.00
     Then set Order Details Tracking to USPS Tracking
 
@@ -164,7 +164,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 3
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $56.00
     Then set Order Details Tracking to Signature Required
 
@@ -174,7 +174,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 10
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $235.00
     Then set Order Details Tracking to USPS Tracking
 
@@ -249,7 +249,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Ounces to 3
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $56.00
     Then set Order Details Tracking to Signature Required
 
@@ -259,7 +259,7 @@ Feature: 10 orders
     Then set Order Details Ship-From to default
     Then set Order Details Ship-To to random address between zone 1 and 4
     Then set Order Details Pounds to 10
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $235.00
     Then set Order Details Tracking to USPS Tracking
 

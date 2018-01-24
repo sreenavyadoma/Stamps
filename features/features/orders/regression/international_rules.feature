@@ -171,7 +171,7 @@ Feature: All International Rules
 
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then Sign out
 
 
@@ -220,7 +220,7 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
 
-  #Then set Order Details service to FCMI Large Envelope
+  #Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Commercial Sample
@@ -257,7 +257,7 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
 
-  #Then set Order Details service to FCMI Large Envelope
+  #Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then Expect Customs Internal Transaction Number is Required
     Then set Customs Package Contents to Commercial Sample
@@ -294,7 +294,7 @@ Feature: All International Rules
     Then set Order Details Ounces to 5
     Then set Order Details service to PMI Flat Rate Envelope
     Then on Order Details form, Add Item 1, Qty 1, ID random, Description random
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then add Customs Associated Item 1, Description random, Qty 1, Price 3000, Made In United States, Tariff 10
     Then Expect Customs Internal Transaction Number is Required

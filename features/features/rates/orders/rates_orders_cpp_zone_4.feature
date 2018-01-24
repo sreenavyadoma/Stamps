@@ -6,7 +6,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
   @rates_orders_cpp_zone_4
   Scenario: FCM Package
     Then set Order Details Ship-To to random address in zone 4
-    Then set Order Details service to FCM Large Envelope
+    Then set Order Details service to FCM Large Envelope/Flat
     Then set Order Details Weight to 0 lb 1 oz
     Then expect Order Details Service Cost is 0.98
     Then expect Order Details Total Ship Cost is 0.98
@@ -190,9 +190,9 @@ Feature: January 2017 Rates for CPP User in Zone 4
 
 
   @rates_orders_cpp_zone_4
-  Scenario: MM Package
+  Scenario: MM Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 4
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Weight to 30 lb 0 oz
     Then expect Order Details Service Cost is 16.61
     Then set Order Details Tracking to USPS Tracking
@@ -203,7 +203,7 @@ Feature: January 2017 Rates for CPP User in Zone 4
   @rates_orders_cpp_zone_4
   Scenario: Parcel Select Ground Package/Flat/Thick Envelope
     Then set Order Details Ship-To to random address in zone 4
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Weight to 45 lb 0 oz
     Then expect Order Details Service Cost is 41.49
     Then set Order Details Tracking to USPS Tracking

@@ -416,7 +416,7 @@ Feature: All details tests for order
     Then set Order Details Ship-To to random address in zone 1
     Then set Order Details Ounces to 1
 
-    Then set Order Details service to FCM Large Envelope
+    Then set Order Details service to FCM Large Envelope/Flat
     Then expect Order Details service is FCM Large Envelope/Flat
 
     Then click Orders Toolbar Print button
@@ -542,15 +542,15 @@ Feature: All details tests for order
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to MM Package
-    Then expect Order Details service is MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
+    Then expect Order Details service is MM Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to PSG Package
-    Then expect Order Details service is PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
+    Then expect Order Details service is PSG Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
@@ -577,15 +577,15 @@ Feature: All details tests for order
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-    Then set Order Details service to FCMI Large Envelope
-    Then expect Order Details service is FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
+    Then expect Order Details service is FCMI Large Envelope/Flat
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
     Then in Print modal, click Close button
 
-    Then set Order Details service to FCMI Package
-    Then expect Order Details service is FCMI Package
+    Then set Order Details service to FCMI Package/Thick Envelope
+    Then expect Order Details service is FCMI Package/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present
@@ -646,8 +646,8 @@ Feature: All details tests for order
     #Then set Order Details service to PMI Regional Rate Box B
     #Then expect Order Details service is PMI Regional Rate Box B
 
-    Then set Order Details service to PMEI Package
-    Then expect Order Details service is PMEI Package
+    Then set Order Details service to PMEI Package/Flat/Thick Envelope
+    Then expect Order Details service is PMEI Package/Flat/Thick Envelope
 
     Then click Orders Toolbar Print button
     Then expect Print modal Print Modal is present

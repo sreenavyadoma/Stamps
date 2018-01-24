@@ -733,7 +733,7 @@ module Stamps
         def has_rates?
           case(param.print_media)
             when :certified_mail
-              default_service = 'FCMI Package'
+              default_service = 'FCMI Package/Thick Envelope'
             when :label
               default_service = 'PM Flat Rate Envelope'
               default_int_service = 'PMI Flat Rate Envelope'

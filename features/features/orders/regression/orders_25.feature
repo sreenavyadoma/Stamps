@@ -20,7 +20,7 @@ Feature: 25 orders
     Then add Customs Associated Item 1, Description random, Qty 1, Price 100.50, Made In United States, Tariff 100
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
 
     Then add new order
     Then set Order Details Ship-From to default
@@ -45,7 +45,7 @@ Feature: 25 orders
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
-    Then set Order Details service to FCM Large Envelope
+    Then set Order Details service to FCM Large Envelope/Flat
     Then set Order Details Insure-For to $15.00
     Then set Order Details Tracking to "None"
     Then check Orders Grid row 1
@@ -269,7 +269,7 @@ Feature: 25 orders
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $56.00
     Then set Order Details Tracking to Signature Required
 
@@ -282,7 +282,7 @@ Feature: 25 orders
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $345.00
     Then set Order Details Tracking to USPS Tracking
 
@@ -294,7 +294,7 @@ Feature: 25 orders
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $456.00
     Then set Order Details Tracking to Signature Required
 

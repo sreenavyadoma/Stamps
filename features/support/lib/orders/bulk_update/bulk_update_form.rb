@@ -153,9 +153,9 @@ module Stamps
 
           def select(str)
             dropdown.click
-            selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::BULK_UPDATE, str)
-            5.times do
+            10.times do
               begin
+                selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::BULK_UPDATE, str)
                 dropdown.click unless selection.present?
                 selection.scroll_into_view.click
                 break if textbox.text.include?(str)
@@ -239,9 +239,9 @@ module Stamps
 
           def select(str)
             dropdown.click
-            selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::BULK_UPDATE, str)
             5.times do
               begin
+                selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::BULK_UPDATE, str)
                 dropdown.click unless selection.present?
                 selection.scroll_into_view.click
                 break if textbox.text.include?(str)

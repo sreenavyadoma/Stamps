@@ -21,8 +21,10 @@ Then /^[Cc]lick [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton$/ do
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Oo]rders [Bb]utton is present$/ do
-  sleep(2)
-  stamps.orders.bulk_update.update_orders.wait_until_present(7)
+  20.times do
+    sleep(0.5) unless stamps.orders.bulk_update.update_orders.present?
+    break if stamps.orders.bulk_update.update_orders.present?
+  end
   expect(stamps.orders.bulk_update.update_orders.present?).to be(true), 'Bulk Update Orders button is not present'
 end
 
@@ -72,12 +74,18 @@ Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
 end
 # End Bulk Update Weight steps
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do | service |
-  test_param[:service] = stamps.orders.bulk_update.domestic_service.select(service).strip_ord_service
+Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do |str|
+  test_param[:service] = stamps.orders.bulk_update.domestic_service.select(str).strip_ord_service
+  expect(test_param[:service]).to eql(str)
 end
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |service|
-  test_param[:int_service] = stamps.orders.bulk_update.intl_service.select(service).strip_ord_service
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |str|
+  test_param[:int_service] = stamps.orders.bulk_update.intl_service.select(str).strip_ord_service
+  expect(test_param[:int_service]).to eql(str)
+end
+
+Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |str|
+  expect(stamps.orders.bulk_update.intl_service.textbox.text).to eql(str.nil? ? test_param[:int_service] : str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|

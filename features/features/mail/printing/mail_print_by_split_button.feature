@@ -13,7 +13,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 5 through 8
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then Print label using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
@@ -65,7 +65,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
@@ -75,7 +75,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Mail-To Country to United States
     Then set Print form Mail-To to a random address in zone 1 through 4
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then Print postage using split button
     Then Expect mail Print modal is present
     Then close mail Print modal
@@ -90,7 +90,7 @@ Feature: New Sprint 12/6/17 WEBAPPS-6803 Add Print Split button to Mail Page. Pr
     Then set Print form Mail-From to default
     Then set Print form Mail-To Country to United States
     Then set Print form Ounces to 1
-    Then select Print form service FCM Large Envelope
+    Then select Print form service FCM Large Envelope/Flat
     Then set Advanced Options Cost Code to None
     Then Print postage using split button
     Then Expect mail Print modal is present

@@ -58,7 +58,7 @@ Feature:  BVT tests for Orders
       | full_name     | company       | street_address_1 | street_address_2 | city          | province      | postal_code   | country | phone        |  email        |
       | Random string | Random string | Random string    | Random string    | Random string | Random string | Random string | France  | Random phone | Random email  |
     Then set Order Details Weight to 2 lb 2 oz
-    Then set Order Details international service to PMEI Package
+    Then set Order Details international service to PMEI Package/Flat/Thick Envelope
     Then blur out on Order Details form 2 times
 
   # Check 1st two orders
@@ -106,7 +106,7 @@ Feature:  BVT tests for Orders
       | full_name   | company | street_address_1         | street_address_2 | city   | province | postal_code  | country| phone   |  email  |
       | random | random  | 234 Laurier Avenue West  | random           | Ottawa | Ontario  | K1A 0G9      | Canada | random  | random  |
     Then set Order Details Ounces to 4
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then click Order Details form Customs Form button
     Then add Customs Associated Item 1, Description random, Qty 1, Price 4, Made In Japan, Tariff 1
     Then set Customs Package Contents to Commercial Sample

@@ -82,7 +82,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
       | full_name   | company      | street_address    |street_address_2| city | state | zip    | country       | phone  |  email |
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  |                | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
     Then set Order Details Weight to 2 lb 1 oz
-    Then set Order Details service to PSG Package
+    Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
     Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10
@@ -110,7 +110,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
     Then set Order Details Ship-To International address to
       | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country    | phone   |  email  |
       | Reprint Test | 5.5x8.5 | random           | random           | random | random  | random      | Norway | random  | random  |
-    Then set Order Details service to FCMI Large Envelope
+    Then set Order Details service to FCMI Large Envelope/Flat
     Then set Order Details Ounces to 1
 
     Then click Order Details form Customs Form button
@@ -174,7 +174,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
       | full_name         | company            | street_address | street_address_2| city | state | zip        | country       | phone  |  email |
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |
     Then set Order Details Weight to 2 lb 1 oz
-    Then set Order Details service to MM Package
+    Then set Order Details service to MM Package/Flat/Thick Envelope
     Then click Order Details form Customs Form button
     Then set Customs Package Contents to Merchandise
     Then add Customs Associated Item 1, Description random, Qty 1, Price 30, Made In United States, Tariff 10

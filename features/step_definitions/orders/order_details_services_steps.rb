@@ -1,7 +1,8 @@
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |service|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
-  test_param[:service] = stamps.orders.order_details.service.select(service).strip_ord_service
+  test_param[:service] = stamps.orders.order_details.service.select(str).strip_ord_service
+  expect(test_param[:service]).to eql(str)
   20.times do
     step 'blur out on Order Details form'
     sleep(0.015)
@@ -10,9 +11,9 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Ss]ervice to (.*)$/ do |service|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |service|
+Then /^[Ss]et [Oo]rder [Dd]etails [Ii]nternational [Ss]ervice to (.*)$/ do |str|
   step 'expect Order Details is present'
-  test_param[:int_service] = stamps.orders.order_details.service.select(service).strip_ord_service
+  test_param[:int_service] = stamps.orders.order_details.service.select(str).strip_ord_service
   20.times do
     step 'blur out on Order Details form'
     sleep(0.015)
