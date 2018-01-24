@@ -2,17 +2,44 @@ module Stamps
   module Orders
     module ShipFrom
       #todo-Rob move ManageShippingAddresses modal to stamps.orders.modals.manage_shipping_addresses
-      class ManageShippingAddresses < Browser::Base
-        attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
+      class ManageShippingAddresses < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @edit_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
-          @add_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
-          @window_title = StampsField.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
-          @close_button = StampsField.new browser.image(css: "img[class*='x-tool-close']")
-          @delete_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
-          @add_shipping_address = AddShippingAddress.new(param)
+        def edit_button
+          if cache[:edit_button].nil? || !cache[:edit_button].present?
+            cache[:edit_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"))
+          end
+          cache[:edit_button]
+        end
+
+        def add_button
+          if cache[:add_button].nil? || !cache[:add_button].present?
+            cache[:add_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"))
+          end
+          cache[:add_button]
+        end
+
+        def window_title
+          if cache[:window_title].nil? || !cache[:window_title].present?
+            cache[:window_title] = StampsField.new(browser.div(css: 'div[class*=x-window-header-title-default]>div'))
+          end
+          cache[:window_title]
+        end
+
+        def close_button
+          cache[:close_button] = StampsField.new(browser.image(css: "img[class*='x-tool-close']")) if cache[:close_button].nil? || !cache[:close_button].present?
+          cache[:close_button]
+        end
+
+        def delete_button
+          if cache[:delete_button].nil? || !cache[:delete_button].present?
+            cache[:delete_button] = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
+          end
+          cache[:delete_button]
+        end
+
+        def add_shipping_address
+          cache[:add_shipping_address].nil? ? cache[:add_shipping_address] = AddShippingAddress.new(param) : cache[:add_shipping_address]
         end
 
         def present?
@@ -211,26 +238,61 @@ module Stamps
       end
 
       #todo-Rob REW
-      class AddShippingAddress < Browser::Base
-        attr_reader :save_btn, :origin_zip, :name, :company, :street_address_1, :street_address_2, :city, :state, :zip, :phone
+      class AddShippingAddress < Browser::BaseCache
+        assign({})
+
         attr_accessor :address_hash
 
-        def initialize(param)
-          super
-          @save_btn = StampsField.new browser.span(text: 'Save')
-          @origin_zip = StampsTextbox.new browser.text_field(name: 'OriginZip')
-          @name = StampsTextbox.new(browser.text_field(name: 'FullName'))
-          @company = StampsTextbox.new(browser.text_field(name: 'Company'))
-          @street_address_1 = StampsTextbox.new(browser.text_field name: 'Street1')
-          @street_address_2 = StampsTextbox.new(browser.text_field name: 'Street2')
-          @city = StampsTextbox.new(browser.text_field(name: 'City'))
+        def save_btn
+          cache[:save_btn] = StampsField.new(browser.span(text: 'Save')) if cache[:save_btn].nil? || !cache[:save_btn].present?
+          cache[:save_btn]
+        end
 
-          dropdown = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
-          textbox = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
-          @state = StampsDropdown.new(textbox, dropdown, :li)
+        def origin_zip
+          cache[:origin_zip] = StampsTextbox.new(browser.text_field(name: 'OriginZip')) if cache[:origin_zip].nil? || !cache[:origin_zip].present?
+          cache[:origin_zip]
+        end
 
-          @zip = StampsTextbox.new(browser.text_field(name: 'Zip'))
-          @phone = StampsTextbox.new(browser.text_field(name: "Phone"))
+        def name
+          cache[:name] = StampsTextbox.new(browser.text_field(name: 'FullName')) if cache[:name].nil? || !cache[:name].present?
+          cache[:name]
+        end
+
+        def company
+          cache[:company] = StampsTextbox.new(browser.text_field(name: 'Company')) if cache[:company].nil? || !cache[:company].present?
+          cache[:company]
+        end
+        def street_address_1
+          cache[:street_address_1] = StampsTextbox.new(browser.text_field name: 'Street1') if cache[:street_address_1].nil? || !cache[:street_address_1].present?
+          cache[:street_address_1]
+        end
+        def street_address_2
+          cache[:street_address_2] = StampsTextbox.new(browser.text_field name: 'Street2') if cache[:street_address_2].nil? || !cache[:street_address_2].present?
+          cache[:street_address_2]
+        end
+        def city
+          cache[:city] = StampsTextbox.new(browser.text_field(name: 'City')) if cache[:city].nil? || !cache[:city].present?
+          cache[:city]
+        end
+        def state
+          cache[:state]=StampsDropdown.new(textbox, dropdown, :li) if cache[:state].nil? || !cache[:state].present?
+          cache[:state]
+        end
+        def zip
+          cache[:zip] = StampsTextbox.new(browser.text_field(name: 'Zip')) if cache[:zip].nil? || !cache[:zip].present?
+          cache[:zip]
+        end
+        def phone
+          cache[:phone] = StampsTextbox.new(browser.text_field(name: "Phone")) if cache[:phone].nil? || !cache[:phone].present?
+          cache[:phone]
+        end
+
+        private def dropdown
+          browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
+        end
+
+        private def textbox
+          browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
         end
 
         def present?

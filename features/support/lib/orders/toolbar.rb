@@ -60,21 +60,31 @@ module Stamps
         end
       end
 
-      class MoveToShippedModal < Browser::Base
-        attr_reader :window_title, :cancel_btn
+      class MoveToShippedModal < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @window_title=StampsField.new(browser.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
-          @cancel_btn=StampsField.new(browser.span(text: "Cancel"))
+        def window_title
+          if cache[:window_title].nil? || !cache[:window_title].present?
+            cache[:window_title] = StampsField.new(browser.div(css: "div[id^=movetoshippedwindow-][id$=_header-targetEl]>div[id^=title]"))
+          end
+          cache[:window_title]
+        end
+        def cancel_btn
+          cache[:cancel_btn] = StampsField.new(browser.span(text: "Cancel")) if cache[:cancel_btn].nil? || !cache[:cancel_btn].present?
+          cache[:cancel_btn]
         end
 
         def present?
           window_title.present?
         end
 
+        def order
+          cache[:order] = StampsField.new(browser.label(css: "[id^=thirdcolcell-]>label")) if cache[:order].nil? || !cache[:order].present?
+          cache[:order]
+        end
+
         def order_number
-          StampsField.new(browser.label(css: "[id^=thirdcolcell-]>label")).text
+          order.text
         end
 
         def move_to_shipped
@@ -95,7 +105,9 @@ module Stamps
         end
       end
 
-      class MoveToAwaitingShipmentModal < Browser::Base
+      class MoveToAwaitingShipmentModal < Browser::BaseCache
+        assign({})
+
         attr_reader :window_title, :cancel_btn
 
         def initialize(param)
@@ -124,17 +136,37 @@ module Stamps
         end
       end
 
-      class MoveDropDown < Browser::Base
-        attr_reader :dropdown, :shipped, :canceled, :on_hold, :awaiting_shipment, :tooltip_field
+      class MoveDropDown < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @dropdown=StampsField.new(browser.span(text: "Move"))
-          @shipped=MoveToShippedModal.new(param)
-          @canceled=MoveToCanceledModal.new(param)
-          @on_hold=MoveToOnHoldModal.new(param)
-          @awaiting_shipment=MoveToAwaitingShipmentModal.new(param)
-          @tooltip_field=StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+        def dropdown
+          cache[:dropdown] = StampsField.new(browser.span(text: "Move")) if cache[:dropdown].nil? || cache[:dropdown].present?
+          cache[:dropdown]
+        end
+
+        def shipped
+          cache[:shipped] = MoveToShippedModal.new(param) if cache[:shipped].nil?
+          cache[:shipped]
+        end
+
+        def canceled
+          cache[:canceled] = MoveToCanceledModal.new(param) if cache[:canceled].nil?
+          cache[:canceled]
+        end
+
+        def on_hold
+          cache[:on_hold] = MoveToOnHoldModal.new(param) if cache[:on_hold].nil?
+          cache[:on_hold]
+        end
+
+        def awaiting_shipment
+          cache[:awaiting_shipment] = MoveToAwaitingShipmentModal.new(param) if cache[:awaiting_shipment].nil?
+          cache[:awaiting_shipment]
+        end
+
+        def tooltip_field
+          cache[:tooltip_field] = StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt')) if cache[:tooltip_field].nil?
+          cache[:tooltip_field]
         end
 
         def enabled?
@@ -280,8 +312,28 @@ module Stamps
         end
       end
 
-       class PrintIncompleteOrderError < Browser::Base
-        attr_reader :window_title, :ok_btn, :error_message_label
+       class PrintIncompleteOrderError < Browser::BaseCache
+         assign({})
+
+         attr_reader :window_title, :ok_btn, :error_message_label
+
+         def window_title
+           cache[:window_title] = StampsField.new(browser.div(text: 'Incomplete Order')) if cache[:window_title].nil? || !cache[:window_title].present?
+           cache[:window_title]
+         end
+
+         def ok_btn
+           cache[:ok_btn] = StampsField.new(browser.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+           cache[:ok_btn]
+         end
+
+         def error_message_label
+           if cache[:error_message_label].nil? || !cache[:error_message_label].present?
+            cache[:error_message_label] = browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+           end
+           cache[:error_message_label]
+         end
+
 
         def initialize(param)
           super
@@ -315,14 +367,17 @@ module Stamps
         end
       end
 
-      class PrintMultiOrderError < Browser::Base
-        attr_reader :window_title, :error_message_label
+      #todo-rob update Print Multi Order Error tests
+      class PrintMultiOrderError < Browser::BaseCache
+        assign({})
 
-        #todo-rob update Print Multi Order Error tests
-        def initialize(param)
-          super
-          @window_title=StampsField.new(browser.div(text: 'Order Error'))
-          @error_message_label=browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+        def window_title
+          cache[:window_title] = StampsField.new(browser.div(text: 'Order Error')) if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title]
+        end
+
+        def error_message_label
+          cache[:error_message_label].nil? ? cache[:error_message_label] = Navigation::NavigationBar.new(param) : cache[:error_message_label]
         end
 
         def wait_until_present(*args)
@@ -365,11 +420,9 @@ module Stamps
       end
 
       class PrintMultiOrderAllHaveError < PrintMultiOrderError
-        attr_reader :ok_btn
-
-        def initialize(param)
-          super
-          @ok_btn=StampsField.new(browser.span(text: "OK"))
+        def ok_btn
+          cache[:ok_btn] = StampsField.new(browser.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+          cache[:ok_btn]
         end
 
         def present?
@@ -381,14 +434,26 @@ module Stamps
         end
       end
 
-      class UspsPrivacyActStatement < Browser::Base
-        attr_reader :window_title, :message_label, :ok_btn
+      class UspsPrivacyActStatement < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @window_title=StampsField.new browser.div(text: 'USPS Privacy Act Statement')
-          @message_label=StampsField.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
-          @ok_btn=StampsField.new browser.span(text: "OK")
+        def window_title
+          if cache[:window_title].nil? || !cache[:window_title].present?
+            cache[:window_title] = StampsField.new(browser.div(text: 'USPS Privacy Act Statement'))
+          end
+          cache[:window_title]
+        end
+
+        def message_label
+          if cache[:message_label].nil? || !cache[:message_label].present?
+            cache[:message_label] = StampsField.new browser.div(css: "div[id^=dialoguemodal-][id$=-innerCt][class=x-autocontainer-innerCt]")
+          end
+          cache[:message_label]
+        end
+
+        def ok_btn
+          cache[:ok_btn] = StampsField.new(browser.span(text: "OK")) if cache[:ok_btn].nil? || !cache[:ok_btn].present?
+          cache[:ok_btn]
         end
 
         def present?
@@ -408,8 +473,32 @@ module Stamps
         end
       end
 
-      class USPSTermsOrders < Browser::Base
+      class USPSTermsOrders < Browser::BaseCache
+        assign({})
+
         attr_reader :window_title, :i_agree_btn, :cancel_btn, :privacy_act_link
+
+        def window_title
+          cache[:window_title] = StampsField.new(browser.div(text: 'USPS Terms')) if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title]
+        end
+
+        def i_agree_btn
+          cache[:i_agree_btn] = StampsField.new(browser.span(text: "I Agree")) if cache[:i_agree_btn].nil? || !cache[:i_agree_btn].present?
+          cache[:i_agree_btn]
+        end
+
+        def cancel_btn
+          cache[:cancel_btn] = StampsField.new(browser.span(text: "Cancel")) if cache[:cancel_btn].nil? || !cache[:cancel_btn].present?
+          cache[:cancel_btn]
+        end
+
+        def privacy_act_link
+          if cache[:privacy_act_link].nil? || !cache[:privacy_act_link].present?
+            cache[:privacy_act_link] = StampsField.new(browser.div(text: 'USPS Privacy Act Statement'))
+          end
+          cache[:privacy_act_link]
+        end
 
         def initialize(param)
           super
@@ -465,7 +554,8 @@ module Stamps
         end
       end
 
-      class ShipStationServerError < Browser::Base
+      class ShipStationServerError < Browser::BaseCache
+        assign({})
         def window_title
           browser.divs(text: 'Server Error').first
         end
@@ -479,23 +569,25 @@ module Stamps
         end
       end
 
-      class ToolbarPrintButton < Browser::Base
+      class ToolbarPrintButton < Browser::BaseCache
         include Stamps::Orders::TermsAndConditions
 
+        assign({})
+
         def incomplete_order_modal
-          (cache[:incomplete_order].nil?||!cache[:incomplete_order].present?)?cache[:incomplete_order]=PrintIncompleteOrderError.new(param):cache[:incomplete_order]
+          cache[:incomplete_order].nil? ? cache[:incomplete_order] = PrintIncompleteOrderError.new(param) : cache[:incomplete_order]
         end
 
         def multi_order_some_error
-          (cache[:multi_order].nil?||!cache[:multi_order].present?)?cache[:multi_order]=PrintMultiOrderSomeHasError.new(param):cache[:multi_order]
+          cache[:multi_order].nil? ? cache[:multi_order] = PrintMultiOrderSomeHasError.new(param) : cache[:multi_order]
         end
 
         def usps_terms_modal
-          (cache[:usps_terms].nil?||!cache[:usps_terms].present?)?cache[:usps_terms]=USPSTermsOrders.new(param):cache[:usps_terms]
+          cache[:usps_terms].nil? ? cache[:usps_terms] = USPSTermsOrders.new(param) : cache[:usps_terms]
         end
 
         def multi_order_all_error
-          (cache[:multi_order_all_error].nil?||!cache[:multi_order_all_error].present?)?cache[:multi_order_all_error]=PrintMultiOrderAllHaveError.new(param):cache[:multi_order_all_error]
+          cache[:multi_order_all_error].nil? ? cache[:multi_order_all_error] = PrintMultiOrderAllHaveError.new(param) : cache[:multi_order_all_error]
         end
 
         def present?
@@ -718,12 +810,43 @@ module Stamps
         end
       end
 
-      class AddButton < Browser::Base
+      class AddButton < Browser::BaseCache
+        assign({})
+
+        def add_btn
+          cache[:add_btn] = StampsField.new(browser.span(text: 'Add')) if cache[:add_btn].nil? || !cache[:add_btn].present?
+          cache[:add_btn]
+        end
+
+        def details_order_id
+          cache[:details_order_id] = Orders::SingleOrder::Fields::SingleOrderDetailsOrderId.new(param) if cache[:details_order_id].nil?
+          cache[:details_order_id]
+        end
+
+        def server_error
+          cache[:server_error] = ShipStationServerError.new(param) if cache[:server_error].nil?
+          cache[:server_error]
+        end
+
+        def initializing_db
+          if cache[:initializing_db].nil? || !cache[:initializing_db].present?
+            cache[:initializing_db] = StampsField.new(browser.div(text: "Initializing Order Database"))
+          end
+          cache[:initializing_db]
+        end
+
+        def tooltip_field
+          if cache[:tooltip_field].nil? || !cache[:tooltip_field].present?
+            cache[:tooltip_field] = StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+          end
+          cache[:tooltip_field]
+        end
+
         def click
-          add_btn=StampsField.new(browser.span(text: 'Add'))
-          details_order_id=Orders::SingleOrder::Fields::SingleOrderDetailsOrderId.new(param)
-          server_error=ShipStationServerError.new(param)
-          initializing_db=StampsField.new(browser.div(text: "Initializing Order Database"))
+          # add_btn=StampsField.new(browser.span(text: 'Add'))
+          # details_order_id=Orders::SingleOrder::Fields::SingleOrderDetailsOrderId.new(param)
+          # server_error=ShipStationServerError.new(param)
+          # initializing_db=StampsField.new(browser.div(text: "Initializing Order Database"))
 
           15.times do
             begin
@@ -755,7 +878,7 @@ module Stamps
         end
 
         def tooltip
-          tooltip_field=StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
+          #tooltip_field=StampsField.new(browser.div(id: 'ext-quicktips-tip-innerCt'))
           button.field.hover
           button.field.hover
           15.times do
@@ -797,19 +920,19 @@ module Stamps
         end
 
         def toolbar_print
-          (cache[:print].nil?||!cache[:print].present?)?cache[:print]=ToolbarPrintButton.new(param):cache[:print]
+          cache[:print].nil? ? cache[:print] = ToolbarPrintButton.new(param) : cache[:print]
         end
 
         def toolbar_add
-          (cache[:add].nil?||!cache[:add].present?)?cache[:add]=AddButton.new(param):cache[:add]
+          cache[:add].nil? ? cache[:add] = AddButton.new(param) : cache[:add]
         end
 
         def toolbar_move
-          (cache[:move].nil?||!cache[:move].present?)?cache[:move]=MoveDropDown.new(param):cache[:move]
+          cache[:move].nil? ? cache[:move] = MoveDropDown.new(param) : cache[:move]
         end
 
         def toolbar_more_actions
-          (cache[:more_actions].nil?||!cache[:more_actions].present?)?cache[:more_actions]=MoreActionsDropDown.new(param):cache[:more_actions]
+          cache[:more_actions].nil? ? cache[:more_actions] = MoreActionsDropDown.new(param) : cache[:more_actions]
         end
 
         def toolbar_tags
@@ -893,11 +1016,15 @@ module Stamps
       end
 
 
-      class ToolbarSettingsIcon < Browser::Base
+      class ToolbarSettingsIcon < Browser::BaseCache
         include Stamps::Orders::OrdersSettings::OrdersSettingsModalTitle
 
+        assign({})
+
         def field
-          (@field.nil?||!@field.present?)?@field=StampsField.new(browser.span(css: "[class*=sdc-icon-settings]")):@field
+          #(@field.nil?||!@field.present?)?@field=StampsField.new(browser.span(css: "[class*=sdc-icon-settings]")):@field
+          cache[:field] = StampsField.new(browser.span(css: "[class*=sdc-icon-settings]")) if cache[:field].nil? || !cache[:field].present?
+          cache[:field]
         end
 
         def click
@@ -918,21 +1045,23 @@ module Stamps
         end
       end
 
-      class OrdersToolbar < Browser::Base
+      class OrdersToolbar < Browser::BaseCache
         include OrdersToolbarLeftSide
         #include OrdersToolbarRightSide
         include ToolbarItemsToBeVerified
 
+        assign({})
+
         def orders_settings
-          (cache[:orders_settings].nil?||!cache[:orders_settings].present?)?cache[:orders_settings]=ToolbarSettingsIcon.new(param):cache[:orders_settings]
+          cache[:orders_settings].nil? ? cache[:orders_settings] = ToolbarSettingsIcon.new(param) : cache[:orders_settings]
         end
 
         def import_orders_modal
-          (cache[:import_orders_modal].nil?||!cache[:import_orders_modal].present?)?cache[:import_orders_modal]=ImportOrders.new(param):cache[:import_orders_modal]
+          cache[:import_orders_modal].nil? ? cache[:import_orders_modal] = ImportOrders.new(param) : cache[:import_orders_modal]
         end
 
         def usps_intl_terms
-          (cache[:usps_intl_terms].nil?||!cache[:usps_intl_terms].present?)?cache[:usps_intl_terms]=USPSTermsOrders.new(param):cache[:usps_intl_terms]
+          cache[:usps_intl_terms].nil? ? cache[:usps_intl_terms] = USPSTermsOrders.new(param) : cache[:usps_intl_terms]
         end
 
         def refresh_orders

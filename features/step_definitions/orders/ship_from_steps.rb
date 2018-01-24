@@ -21,30 +21,35 @@ end
 Then /^[Aa]dd random Ship-from address from (.*)$/ do |address|
   test_param[:ship_from_address]=helper.address_helper_zone(address)
 
-  stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").add.ship_from_address(test_param[:ship_from_address])
+  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(test_param[:ship_from_address])
 end
 
 Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
   test_param[:ship_from_address]=ship_from.hashes.first
-  test_param[:ship_from_zip]=test_param[:ship_from_address]["ship_from_zip"]
+  test_param[:ship_from_zip]=test_param[:ship_from_address]['ship_from_zip']
+  #step "On Manage Shipping Address Modal, add from zip #{test_param[:ship_from_address]['ship_from_zip']}"
   test_param[:full_name]=test_param[:ship_from_address][:full_name]
   test_param[:company]=test_param[:ship_from_address]['company']
-  test_param[:street_address]=test_param[:ship_from_address]["street_address"]
-  test_param[:street_address2]=test_param[:ship_from_address]["street_address2"]
+  test_param[:street_address]=test_param[:ship_from_address]['street_address']
+  test_param[:street_address2]=test_param[:ship_from_address]['street_address2']
   test_param[:city]=test_param[:ship_from_address]['city']
-  test_param[:state]=test_param[:ship_from_address]["state"]
-  test_param[:zip]=test_param[:ship_from_address]["zip"]
+  test_param[:state]=test_param[:ship_from_address]['state']
+  test_param[:zip]=test_param[:ship_from_address]['zip']
   test_param[:phone]=test_param[:ship_from_address][:phone]
-  stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").add.ship_from_address(test_param[:ship_from_address])
+  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(test_param[:ship_from_address])
 end
+
+# Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal, add from zip (\d+)$/ do zip_code
+#   test_param[:ship_from_zip]=zip_code
+# end
 
 Then /^[Oo]n Manage Shipping Address modal, add address (\w+)$/ do |address|
   test_param[:ship_from_address]=(address.include? 'random ship from zone 1 through 4')?(test_helper.rand_ship_from_zone_1_4):address
-  stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").add(test_param[:ship_from_address])
+  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add(test_param[:ship_from_address])
 end
 
 Then /^[Oo]n Manage Shipping Address modal, set Manage Shipping Addresses to$/ do
-  stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").add table.hashes.first
+  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add table.hashes.first
 end
 
 Then /^[Oo]n Manage Shipping Address modal, expect selection has (.*)$/ do |address|

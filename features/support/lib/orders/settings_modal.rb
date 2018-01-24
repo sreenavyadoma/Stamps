@@ -72,17 +72,25 @@ module Stamps
 
       module OrdersSettingsModalTitle
         def window_title
-          (cache[:window_title].nil?)?cache[:window_title]=StampsField.new(browser.div(css: "[id=userprefswindow_header-targetEl] div div")):cache[:window_title]
+          if cache[:window_title].nil? || !cache[:window_title].present?
+            cache[:window_title]=StampsField.new(browser.div(css: "[id=userprefswindow_header-targetEl] div div"))
+          end
+          cache[:window_title]
         end
 
         def x_btn
-          (cache[:window_title].nil?)?cache[:window_title]=StampsField.new(browser.img(css: "[id$=userprefswindow-1751_header-targetEl] img")):cache[:window_title]
+          if cache[:window_title].nil? || !cache[:window_title].present?
+              cache[:window_title]=StampsField.new(browser.img(css: "[id$=userprefswindow-1751_header-targetEl] img"))
+          end
+          cache[:window_title]
         end
       end
 
-      class OrdersSettingsModal < Browser::Base
+      class OrdersSettingsModal < Browser::BaseCache
         include OrdersSettingsModalTitle
         include OrdersSettingsTabBar
+
+        assign({})
 
         def present?
           window_title.present?

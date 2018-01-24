@@ -2,7 +2,9 @@ module Stamps
   module Orders
     module DetailsFormCommon
 
-      class DetailsFormDimensions < Browser::Base
+      class DetailsFormDimensions < Browser::BaseCache
+        assign({})
+
         def initialize(param, form_type)
           super(param)
           @form_type=form_type
@@ -91,26 +93,32 @@ module Stamps
         end
       end
 
-      class DetailsFormShipFrom < Browser::Base
+      class DetailsFormShipFrom < Browser::BaseCache
+        assign ({})
+
         attr_reader :form_type
+
         def initialize(param, form_type)
           super(param)
           @form_type=form_type
         end
 
         def manage_shipping_address
-          (cache[:manage_shipping_address].nil?||!cache[:manage_shipping_address].present?)?cache[:manage_shipping_address]=ShipFrom::ManageShippingAddresses.new(
-              param):cache[:manage_shipping_address]
+          cache[:manage_shipping_address].nil? ? cache[:manage_shipping_address] = ShipFrom::ManageShippingAddresses.new(param) : cache[:manage_shipping_address]
         end
 
         def textbox
-          (cache[:textbox].nil?||!cache[:textbox].present?)?cache[:textbox]=StampsTextbox.new(
-              browser.text_fields(name: "ShipFrom")[(form_type==:single_order)?0:1]):cache[:textbox]
+          if cache[:textbox].nil? || !cache[:textbox].present?
+            cache[:textbox]=StampsTextbox.new(browser.text_fields(name: "ShipFrom")[(form_type==:single_order) ? 0 : 1])
+          end
+          cache[:textbox]
         end
 
         def dropdown
-          (cache[:dropdown].nil?||!cache[:dropdown].present?)?cache[:dropdown]=StampsTextbox.new(
-              browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1]):cache[:dropdown]
+          if cache[:dropdown].nil? || !cache[:dropdown].present?
+            cache[:dropdown]=StampsTextbox.new(browser.divs(css: "div[id^=shipfromdroplist][id$=trigger-picker]")[(form_type==:single_order)?0:1])
+          end
+          cache[:dropdown]
         end
 
         def select(str)

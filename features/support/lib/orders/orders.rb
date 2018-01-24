@@ -2,9 +2,6 @@ module Stamps
   module Orders
     class WebOrders < Browser::BaseCache
       assign({})
-      def cache
-        self.class.cache
-      end
 
       def orders_toolbar
         cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil?
