@@ -38,9 +38,9 @@ module Stamps
           cache[:delete_button]
         end
 
-        def add_shipping_address
-          cache[:add_shipping_address].nil? ? cache[:add_shipping_address] = AddShippingAddress.new(param) : cache[:add_shipping_address]
-        end
+        # def add_shipping_address
+        #   cache[:add_shipping_address].nil? ? cache[:add_shipping_address] = AddShippingAddress.new(param) : cache[:add_shipping_address]
+        # end
 
         def present?
           add_button.present?
@@ -137,7 +137,7 @@ module Stamps
         def add
           5.times do
             begin
-              return add_shipping_address if add_shipping_address.present?
+              # return add_shipping_address if add_shipping_address.present?
               add_button.click
               add_shipping_address.wait_until_present(3)
             rescue Exception => e
@@ -146,7 +146,8 @@ module Stamps
               #ignore
             end
           end
-          expect("Unable to open Add Shipping Address modal.").to eql "Add Shipping Address"
+          # expect("Unable to open Add Shipping Address modal.").to eql "Add Shipping Address"
+          expect(stamps.orders.modals.add_shipping_address).to be_present, "Add Shipping Address modal is not present!"
         end
 
         def address_located?(*args) #name, company, city)
@@ -231,9 +232,7 @@ module Stamps
 
         def shipping_address_count
           wait_until_present
-          rows = browser.trs(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
-          logger.info "Manage Shipping Address:: row count=#{rows.length.to_i}"
-          rows.length.to_i
+          browser.tables(css: "[id^=grid-][class*=panel-body] [class=x-grid-item]").size
         end
       end
 

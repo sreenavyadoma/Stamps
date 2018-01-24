@@ -5,7 +5,10 @@ end
 
 Then /^[Oo]n Manage Shipping Address modal, delete all addresses$/ do
   #test_config.logger.step "on Manage Shipping Address modal, delete all addresses"
-  stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").delete_all.close_window
+  # stamps.orders.order_details.single_ship_from.select("Manage Shipping Addresses").delete_all.close_window
+  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses')
+  stamps.orders.modals.manage_shipping_addresses.delete_all
+  stamps.orders.modals.manage_shipping_addresses.close_window
 end
 
 Then /^[Oo]n Manage Shipping Address modal, delete Row (\d+) from Manage Shipping Addresses Modal/ do |row|
@@ -36,7 +39,11 @@ Then /^[Oo]n Manage Shipping Address modal, add address$/ do |ship_from|
   test_param[:state]=test_param[:ship_from_address]['state']
   test_param[:zip]=test_param[:ship_from_address]['zip']
   test_param[:phone]=test_param[:ship_from_address][:phone]
-  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(test_param[:ship_from_address])
+  #stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses').add.ship_from_address(test_param[:ship_from_address])
+  stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses')
+  stamps.orders.modals.manage_shipping_addresses.add
+  stamps.orders.modals.add_shipping_address.ship_from_address(test_param[:ship_from_address])
+  stamps.orders.modals.manage_shipping_addresses.close_window
 end
 
 # Then /^[Oo]n [Mm]anage [Ss]hipping [Aa]ddress [Mm]odal, add from zip (\d+)$/ do zip_code

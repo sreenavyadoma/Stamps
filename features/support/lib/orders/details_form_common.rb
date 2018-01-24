@@ -103,9 +103,9 @@ module Stamps
           @form_type=form_type
         end
 
-        def manage_shipping_address
-          cache[:manage_shipping_address].nil? ? cache[:manage_shipping_address] = ShipFrom::ManageShippingAddresses.new(param) : cache[:manage_shipping_address]
-        end
+        # def manage_shipping_address
+        #   cache[:manage_shipping_address].nil? ? cache[:manage_shipping_address] = ShipFrom::ManageShippingAddresses.new(param) : cache[:manage_shipping_address]
+        # end
 
         def textbox
           if cache[:textbox].nil? || !cache[:textbox].present?
@@ -122,7 +122,7 @@ module Stamps
         end
 
         def select(str)
-          return manage_shipping_address if manage_shipping_address.present?
+          # return manage_shipping_address if manage_shipping_address.present?
           dropdown.click
           sleep(0.5)
           selection=StampsField.new((str.downcase.include?('default'))?browser.lis(css: "[class*='x-boundlist-item-over'][data-recordindex='0']")[(form_type==:single_order)?0:1]:browser.lis(text: /#{str}/)[(form_type==:single_order)?0:1])
@@ -132,8 +132,9 @@ module Stamps
               dropdown.click unless selection.present?
               selection.scroll_into_view
               selection.click
-              return manage_shipping_address if manage_shipping_address.present?
-              expect(manage_shipping_address).to be_present, "Manage Shipping Address modal is not present!"
+              # return manage_shipping_address if manage_shipping_address.present?
+              # expect(manage_shipping_address).to be_present, "Manage Shipping Address modal is not present!"
+              expect(stamps.orders.modals.manage_shipping_addresses).to be_present, "Manage Shipping Address modal is not present!"
             end
           else
             15.times do

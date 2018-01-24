@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'watir', '6.2.1'
-gem 'selenium-webdriver', '3.4.0'
+gem 'watir', '6.10.2'
+gem 'selenium-webdriver', '3.8.0'
 gem 'rspec', '3.6.0'
 gem 'gherkin'
 gem 'cucumber', '2.4.0'
