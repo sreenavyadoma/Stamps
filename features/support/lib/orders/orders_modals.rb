@@ -31,11 +31,15 @@ module Stamps
       end
 
       def manage_shipping_addresses
-        cache[:manage_shipping_address].nil? ? cache[:manage_shipping_address] = ShipFrom::ManageShippingAddresses.new(param) : cache[:manage_shipping_address]
+        cache[:manage_shipping_addresses].nil? ? cache[:manage_shipping_addresses] = ShipFrom::ManageShippingAddresses.new(param) : cache[:manage_shipping_addresses]
       end
 
       def add_shipping_address
         cache[:add_shipping_address].nil? ? cache[:add_shipping_address] = ShipFrom::AddShippingAddress.new(param) : cache[:add_shipping_address]
+      end
+
+      def delete_shipping_address
+        cache[:delete_shipping_address].nil? ? cache[:delete_shipping_address] = ShipFrom::DeleteShippingAddress.new(param) : cache[:delete_shipping_address]
       end
     end
 
