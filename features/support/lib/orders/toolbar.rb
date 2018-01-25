@@ -240,8 +240,7 @@ module Stamps
 
       class MoreActionsDropDown < Browser::BaseCache
 
-        class WindowTitle < Browser::BaseCache #todo-Rob an inner class? This need to move to a module that can be shared.
-          assign({})
+        assign({})
 
         def enabled?
           dropdown.enabled?
@@ -1102,7 +1101,6 @@ module Stamps
           end
         end
       end
-    end
     end
   end
 end

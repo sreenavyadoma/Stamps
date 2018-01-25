@@ -290,7 +290,6 @@ module Stamps
           assign({})
 
           def dropdown
-            cache[:dropdown].nil? || !cache[:dropdown].present? ? cache[:dropdown] = StampsField.new(dd) : cache[:dropdown]
             if cache[:dropdown].nil? || !cache[:dropdown].present?
               cache[:dropdown] = StampsField.new(dropdown_field)
             end
@@ -298,7 +297,6 @@ module Stamps
           end
 
           def textbox
-            cache[:textbox].nil? || !cache[:textbox].present? ? cache[:textbox] = StampsTextbox.new(txtbox) : cache[:textbox]
             if cache[:textbox].nil? || !cache[:textbox].present?
               cache[:textbox] = StampsTextbox.new(textbox_field)
             end
@@ -449,7 +447,7 @@ module Stamps
           end
 
           def present?
-            dom_textarea.present?
+            textarea.present?
           end
 
           def less_link
