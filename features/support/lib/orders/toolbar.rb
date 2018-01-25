@@ -844,8 +844,8 @@ module Stamps
             begin
               add_btn.click
               20.times do
-                sleep(0.25)
-                return order_id.text if order_id.present?
+                sleep(0.15)
+                return order_id.text.extract_numbers if order_id.present?
               end
               # new accounts will connect to ShipStation for the first time.
               20.times do
@@ -858,15 +858,15 @@ module Stamps
                 end
               end
 
-              return order_id.text if order_id.present?
-              expect(server_error.present?).to be(false), "Server Error: \n#{server_error.text}"
+              raise "Server Error: \n#{server_error.text}" if server_error.present?
+
             rescue
               #ignore
             end
           end
-          expect(server_error.present?).to be(false), "Server Error: \n#{server_error.text}"
-          expect(initializing_db.present?).to be(false), "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}"
-          expect(order_id).to be_present, "Single Order Details Panel did not open upon clicking Add button."
+          raise "Server Error: \n#{server_error.text}" if server_error.present?
+          raise "Initializing Database took longer than expected. Check your test making sure ShipStation is up and running in  #{param.test_env}" if initializing_db.present?
+          raise "Unable to add new order."
         end
 
         def tooltip
@@ -928,7 +928,7 @@ module Stamps
         end
 
         def toolbar_tags
-          raise RuntimeError, "toolbar_tags is not implemented"
+          raise "toolbar_tags is not implemented"
         end
       end
 
@@ -1032,7 +1032,7 @@ module Stamps
         end
 
         def tooltip
-          raise RuntimeError, "Tooltips are not implemented"
+          raise "Tooltips are not implemented"
         end
       end
 

@@ -131,9 +131,7 @@ module Stamps
         # locate row location for order_id
         def row_number(order_id)
           5.times do
-            column_num = column_number(:order_id)
-            fields = browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
-            fields.each_with_index do |field, index|
+            browser.divs(css: "[id^=ordersGrid-][id$=-body] table td:nth-child(#{column_number(:order_id)})>div").each_with_index do |field, index|
               scroll_to_column(field)
               if StampsField.new(field).text.include?(order_id)
                 logger.info "Order ID #{order_id}, Row #{index + 1}"
