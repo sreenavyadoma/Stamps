@@ -46,9 +46,9 @@ module Stamps
             return (cache[:roll_print_form].nil?||!cache[:roll_print_form].present?)?cache[:roll_print_form]=PrintFormPanel::PrintForm.new(
                 param).extend(PrintFormPanel::Roll):cache[:roll_print_form]
           when :manage_printing_options
-            raise "manage_printing_options is not implemented."
+            raise RuntimeError, "manage_printing_options is not implemented."
           else
-            raise "Invalid Print Media symbol: #{param.print_media}"
+            raise RuntimeError, "Invalid Print Media symbol: #{param.print_media}"
         end
       end
 

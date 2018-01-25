@@ -45,10 +45,10 @@ module Stamps
         def sort_order(column, sort_order)
           scroll_to_column(column)
 
-          span=browser.span(text: column_text[column])
-          column=StampsField.new(span)
-          sort_order=(sort_order==:sort_ascending)?"ASC":"DESC"
-          sort_order_span=span.parent.parent.parent.parent.parent
+          span = browser.span(text: column_text[column])
+          column = StampsField.new(span)
+          sort_order = sort_order == :sort_ascending ? "ASC" : "DESC"
+          sort_order_span = span.parent.parent.parent.parent.parent
 
           10.times do
             column.scroll_into_view
@@ -89,7 +89,7 @@ module Stamps
         end
 
         def empty?
-          size==0
+          size == 0
         end
 
         def size
@@ -119,10 +119,10 @@ module Stamps
 
         def column_number(column)
           if column_cache[column].nil?
-            columns=browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
+            columns = browser.spans(css: "div[id^=gridcolumn-][id$=-textEl]>span")
             columns.each_with_index do |field, index|
               scroll_to_column(field) #scroll unless field is visible
-              column_cache[column_text.key(StampsField.new(field).text)]=index+1
+              column_cache[column_text.key(StampsField.new(field).text)] = index + 1
             end
           end
           column_cache[column]
@@ -131,12 +131,12 @@ module Stamps
         # locate row location for order_id
         def row_number(order_id)
           5.times do
-            column_num=column_number(:order_id)
-            fields=browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
+            column_num = column_number(:order_id)
+            fields = browser.divs(css: "div[id^=ordersGrid-][id$=-body]>div>div>table>tbody>tr>td:nth-child(#{column_num})>div")
             fields.each_with_index do |field, index|
               scroll_to_column(field)
               if StampsField.new(field).text.include?(order_id)
-                logger.info "Order ID #{order_id}, Row #{index+1}"
+                logger.info "Order ID #{order_id}, Row #{index + 1}"
                 sleep(0.35)
                 return index + 1
               end
@@ -174,7 +174,7 @@ module Stamps
             break if size > 0
             sleep(0.35)
           }
-          return "" if size==0
+          return "" if size == 0
           grid_text(:order_id, row)
         end
 
@@ -660,13 +660,13 @@ module Stamps
         def ship_cost_error(order_id)
           scroll_into_view
           begin
-            div=grid_field(:ship_cost, row_number(order_id)).div
-            data_error=div.attribute_value("data-qtip")
+            div = grid_field(:ship_cost, row_number(order_id)).div
+            data_error = div.attribute_value("data-qtip")
           rescue
-            data_error=""
+            data_error = ""
           end
 
-          logger.info "#{order_id} data-qtip error:  #{(data_error.length==0)?"None":data_error}"
+          logger.info "#{order_id} data-qtip error:  #{data_error.length == 0 ? "None" : data_error}"
           data_error
         end
 
@@ -786,25 +786,25 @@ module Stamps
 
         def checkbox_header
           scroll_into_view
-          checkbox_field=browser.spans(class: "x-column-header-text-inner").first
-          check_verify_field=browser.div(css: "div[class*=x-column-header-checkbox]")
-          attribute="class"
-          attrib_value_check="checker-on"
+          checkbox_field = browser.spans(class: "x-column-header-text-inner").first
+          check_verify_field = browser.div(css: "div[class*=x-column-header-checkbox]")
+          attribute = "class"
+          attrib_value_check = "checker-on"
           Stamps::Browser::StampsCheckbox.new checkbox_field, check_verify_field, attribute, attrib_value_check
         end
 
         def check_all(*args)
           scroll_into_view
-          if args.length==1
+          if args.length == 1
             if args[0].is_a? Hash
-              rows=args[0]
+              rows = args[0]
               logger.info "Restoring #{} checked orders..."
             else
-              expect("Invalid parameter exception.  This method expects a Hash of Web Elements.").to eql ""
+              raise ArgumentError, "This method expects a Hash of Web Elements, got #{args[0].class}"
             end
             rows.each do |hash_field|
-              row_number=hash_field[0]
-              checked=hash_field[1]
+              row_number = hash_field[0]
+              checked = hash_field[1]
               if checked
                 check(row_number)
                 logger.info "Row #{row_number} #{checked?(row_number)}"
@@ -876,26 +876,26 @@ module Stamps
         end
 
         def checked_rows(*args)
-          cache_count=5
-          if args.length==1
-            cache_count=args[0]
+          cache_count = 5
+          if args.length == 1
+            cache_count = args[0]
           end
 
           #logger.info "Caching checked rows..."
-          checked_rows={}
-          grid_total=row_count
+          checked_rows = {}
+          grid_total = row_count
           if cache_count > 2 && cache_count < grid_total
-            cache_item_count=cache_count
+            cache_item_count = cache_count
           elsif cache_count > grid_total
-            cache_item_count=grid_total
+            cache_item_count = grid_total
           else
-            cache_item_count=cache_count
+            cache_item_count = cache_count
           end
           #logger.info "Number of rows to check:  #{cache_item_count}"
           1.upto(cache_item_count) { |row|
-            checked=checked?(row)
+            checked = checked?(row)
             if checked
-              checked_rows[row]=checked
+              checked_rows[row] = checked
             end
             logger.info "Row #{row} Checked? #{checked}.  Stored:  #{checked_rows[row]}"
           }
@@ -989,74 +989,74 @@ module Stamps
           wait_until_present(5)
           case(name)
             when :checkbox
-              (!column.has_key?(:checkbox)||!column[:checkbox].present?)?column[:checkbox]=GridCheckBox.new(param):column[:checkbox]
+              !column.has_key?(:checkbox) || !column[:checkbox].present? ? column[:checkbox] = GridCheckBox.new(param) : column[:checkbox]
             when :store
-              (!column.has_key?(:store)||!column[:store].present?)?column[:store]=Store.new(param):column[:store]
+              !column.has_key?(:store) || !column[:store].present? ? column[:store] = Store.new(param) : column[:store]
             when :order_id
-              (!column.has_key?(:order_id)||!column[:order_id].present?)?column[:order_id]=OrderId.new(param):column[:order_id]
+              !column.has_key?(:order_id) || !column[:order_id].present? ? column[:order_id] = OrderId.new(param) : column[:order_id]
             when :ship_cost
-              (!column.has_key?(:ship_cost)||!column[:ship_cost].present?)?column[:ship_cost]=ShipCost.new(param):column[:ship_cost]
+              !column.has_key?(:ship_cost) || !column[:ship_cost].present? ? column[:ship_cost] = ShipCost.new(param) : column[:ship_cost]
             when :age
-              (!column.has_key?(:age)||!column[:age].present?)?column[:age]=Age.new(param):column[:age]
+              !column.has_key?(:age) || !column[:age].present? ? column[:age] = Age.new(param) : column[:age]
             when :order_date
-              (!column.has_key?(:order_date)||!column[:order_date].present?)?column[:order_date]=OrderDate.new(param):column[:order_date]
+              !column.has_key?(:order_date) || !column[:order_date].present? ? column[:order_date] = OrderDate.new(param) : column[:order_date]
             when :recipient
-              (!column.has_key?(:recipient)||!column[:recipient].present?)?column[:recipient]=Recipient.new(param):column[:recipient]
+              !column.has_key?(:recipient) || !column[:recipient].present? ? column[:recipient] = Recipient.new(param) : column[:recipient]
             when :company
-              (!column.has_key?(:company)||!column[:company].present?)?column[:company]=Company.new(param):column[:company]
+              !column.has_key?(:company) || !column[:company].present? ? column[:company] = Company.new(param) : column[:company]
             when :country
-              (!column.has_key?(:country)||!column[:country].present?)?column[:country]=Country.new(param):column[:country]
+              !column.has_key?(:country) || !column[:country].present? ? column[:country] = Country.new(param) : column[:country]
             when :address
-              (!column.has_key?(:address)||!column[:address].present?)?column[:address]=Address.new(param):column[:address]
+              !column.has_key?(:address) || !column[:address].present? ? column[:address] = Address.new(param) : column[:address]
             when :city
-              (!column.has_key?(:city)||!column[:city].present?)?column[:city]=City.new(param):column[:city]
+              !column.has_key?(:city) || !column[:city].present? ? column[:city] = City.new(param) : column[:city]
             when :state
-              (!column.has_key?(:state)||!column[:state].present?)?column[:state]=State.new(param):column[:state]
+              !column.has_key?(:state) || !column[:state].present? ? column[:state] = State.new(param) : column[:state]
             when :zip
-              (!column.has_key?(:zip)||!column[:zip].present?)?column[:zip]=Zip.new(param):column[:zip]
+              !column.has_key?(:zip) || !column[:zip].present? ? column[:zip] = Zip.new(param) : column[:zip]
             when :phone
-              (!column.has_key?(:phone)||!column[:phone].present?)?column[:phone]=Phone.new(param):column[:phone]
+              !column.has_key?(:phone) || !column[:phone].present? ? column[:phone] = Phone.new(param) : column[:phone]
             when :email
-              (!column.has_key?(:email)||!column[:email].present?)?column[:email]=Email.new(param):column[:email]
+              !column.has_key?(:email) || !column[:email].present? ? column[:email] = Email.new(param) : column[:email]
             when :qty
-              (!column.has_key?(:qty)||!column[:qty].present?)?column[:qty]=Qty.new(param):column[:qty]
+              !column.has_key?(:qty) || !column[:qty].present? ? column[:qty] = Qty.new(param) : column[:qty]
             when :item_sku
-              (!column.has_key?(:item_sku)||!column[:item_sku].present?)?column[:item_sku]=ItemSKU.new(param):column[:item_sku]
+              !column.has_key?(:item_sku) || !column[:item_sku].present? ? column[:item_sku] = ItemSKU.new(param) : column[:item_sku]
             when :item_name
-              (!column.has_key?(:item_name)||!column[:item_name].present?)?column[:item_name]=ItemName.new(param):column[:item_name]
+              !column.has_key?(:item_name) || !column[:item_name].present? ? column[:item_name] = ItemName.new(param) : column[:item_name]
             when :ship_from
-              (!column.has_key?(:ship_from)||!column[:ship_from].present?)?column[:ship_from]=ShipFrom.new(param):column[:ship_from]
+              !column.has_key?(:ship_from) || !column[:ship_from].present? ? column[:ship_from] = ShipFrom.new(param) : column[:ship_from]
             when :service
-              (!column.has_key?(:service)||!column[:service].present?)?column[:service]=GridService.new(param):column[:service]
+              !column.has_key?(:service) || !column[:service].present? ? column[:service] = GridService.new(param) : column[:service]
             when :requested_service
-              (!column.has_key?(:requested_service)||!column[:requested_service].present?)?column[:requested_service]=RequestedService.new(param):column[:requested_service]
+              !column.has_key?(:requested_service) || !column[:requested_service].present? ? column[:requested_service] = RequestedService.new(param) : column[:requested_service]
             when :weight
-              (!column.has_key?(:weight)||!column[:weight].present?)?column[:weight]=Weight.new(param):column[:weight]
+              !column.has_key?(:weight) || !column[:weight].present? ? column[:weight] = Weight.new(param) : column[:weight]
             when :insured_value
-              (!column.has_key?(:insured_value)||!column[:insured_value].present?)?column[:insured_value]=InsuredValue.new(param):column[:insured_value]
+              !column.has_key?(:insured_value) || !column[:insured_value].present? ? column[:insured_value] = InsuredValue.new(param) : column[:insured_value]
             when :tracking_service
-              (!column.has_key?(:tracking_service)||!column[:tracking_service].present?)?column[:tracking_service]=TrackingService.new(param):column[:tracking_service]
+              !column.has_key?(:tracking_service) || !column[:tracking_service].present? ? column[:tracking_service] = TrackingService.new(param) : column[:tracking_service]
             when :order_status
-              (!column.has_key?(:order_status)||!column[:order_status].present?)?column[:order_status]=OrderStatus.new(param):column[:order_status]
+              !column.has_key?(:order_status) || !column[:order_status].present? ? column[:order_status] = OrderStatus.new(param) : column[:order_status]
             when :date_printed
-              (!column.has_key?(:date_printed)||!column[:date_printed].present?)?column[:date_printed]=DatePrinted.new(param):column[:date_printed]
+              !column.has_key?(:date_printed) || !column[:date_printed].present? ? column[:date_printed] = DatePrinted.new(param) : column[:date_printed]
             when :ship_date
-              (!column.has_key?(:ship_date)||!column[:ship_date].present?)?column[:ship_date]=ShipDate.new(param):column[:ship_date]
+              !column.has_key?(:ship_date) || !column[:ship_date].present? ? column[:ship_date] = ShipDate.new(param) : column[:ship_date]
             when :tracking_no
-              (!column.has_key?(:tracking_no)||!column[:tracking_no].present?)?column[:tracking_no]=Tracking.new(param):column[:tracking_no]
+              !column.has_key?(:tracking_no) || !column[:tracking_no].present? ? column[:tracking_no] = Tracking.new(param) : column[:tracking_no]
             when :order_total
-              (!column.has_key?(:order_total)||!column[:order_total].present?)?column[:order_total]=OrderTotal.new(param):column[:order_total]
+              !column.has_key?(:order_total) || !column[:order_total].present? ? column[:order_total] = OrderTotal.new(param) : column[:order_total]
             when :source
-              (!column.has_key?(:source)||!column[:source].present?)?column[:source]=GridSource.new(param):column[:source]
+              !column.has_key?(:source) || !column[:source].present? ? column[:source] = GridSource.new(param) : column[:source]
             when :reference_no
-              (!column.has_key?(:reference_no)||!column[:reference_no].present?)?column[:reference_no]=ReferenceNo.new(param):column[:reference_no]
+              !column.has_key?(:reference_no) || !column[:reference_no].present? ? column[:reference_no] = ReferenceNo.new(param) : column[:reference_no]
             else
               raise "#{name} is not a valid column. Check your test."
           end
         end
 
         def grid_field
-          (!column.has_key?(:grid_field)||!column[:grid_field].present?)?column[:grid_field]=StampsField.new(browser.div(css: "[id^=ordersGrid-][class*=orders-grid]")):column[:grid_field]
+          !column.has_key?(:grid_field) || !column[:grid_field].present? ? column[:grid_field] = StampsField.new(browser.div(css: "[id^=ordersGrid-][class*=orders-grid]")) : column[:grid_field]
         end
 
         def self.column

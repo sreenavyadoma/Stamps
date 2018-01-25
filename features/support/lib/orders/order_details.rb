@@ -933,7 +933,7 @@ module Stamps
 
           def select(str)
             dropdown.scroll_into_view.click
-            5.times do
+            10.times do
               begin
                 field = StampsField.new(selection(str))
                 dropdown.scroll_into_view.click unless field.present?
