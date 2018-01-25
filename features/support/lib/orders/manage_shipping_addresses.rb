@@ -2,17 +2,40 @@ module Stamps
   module Orders
     module ShipFrom
       #todo-Rob move ManageShippingAddresses modal to stamps.orders.modals.manage_shipping_addresses
-      class ManageShippingAddresses < Browser::Base
-        attr_reader :edit_button, :add_button, :window_title, :close_button, :delete_button, :add_shipping_address
+      class ManageShippingAddresses < Browser::BaseCache
+        assign({})
 
-        def initialize(param)
-          super
-          @edit_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)")
-          @add_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)")
-          @window_title = StampsField.new browser.div(css: 'div[class*=x-window-header-title-default]>div')
-          @close_button = StampsField.new browser.image(css: "img[class*='x-tool-close']")
-          @delete_button = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
-          @add_shipping_address = AddShippingAddress.new(param)
+        def edit_button
+          if cache[:edit_button].nil? || !cache[:edit_button].present?
+            cache[:edit_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(2)"))
+          end
+          cache[:edit_button]
+        end
+
+        def add_button
+          if cache[:add_button].nil? || !cache[:add_button].present?
+            cache[:add_button] = StampsField.new(browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(1)"))
+          end
+          cache[:add_button]
+        end
+
+        def window_title
+          if cache[:window_title].nil? || !cache[:window_title].present?
+            cache[:window_title] = StampsField.new(browser.div(css: 'div[class*=x-window-header-title-default]>div'))
+          end
+          cache[:window_title]
+        end
+
+        def close_button
+          cache[:close_button] = StampsField.new(browser.image(css: "img[class*='x-tool-close']")) if cache[:close_button].nil? || !cache[:close_button].present?
+          cache[:close_button]
+        end
+
+        def delete_button
+          if cache[:delete_button].nil? || !cache[:delete_button].present?
+            cache[:delete_button] = StampsField.new browser.link(css: "div[id^=manageShipFromWindow]>div[id^=toolbar]>div>div>a:nth-child(3)")
+          end
+          cache[:delete_button]
         end
 
         def present?
@@ -76,16 +99,13 @@ module Stamps
           0
         end
 
-        def click_delete_button
-          delete_button.click
-          window_title.click
-        end
-
         def delete(*args)
           case args.length
             when 1
               if args.first.is_a? Hash
-                delete_row(locate_ship_from(args.first[:full_name], args.first['company'], args.first['city']))
+                #delete_row(locate_ship_from(args.first[:full_name], args.first['company'], args.first['city']))
+                select_row(locate_ship_from(args.first[:full_name], args.first['company'], args.first['city']))
+                delete_row
               else
                 expect("Address format is not yet supported for this delete call.").to eql ""
               end
@@ -95,31 +115,9 @@ module Stamps
           end
         end
 
-        def delete_row(number)
-          @delete_shipping_address = DeleteShippingAddress.new(param)
-          5.times do
-            select_row(number)
-            click_delete_button
-            break if @delete_shipping_address.present?
-          end
-          @delete_shipping_address.delete
-          @delete_shipping_address.close if @delete_shipping_address.present?
-          self
-        end
-
-        def add
-          5.times do
-            begin
-              return add_shipping_address if add_shipping_address.present?
-              add_button.click
-              add_shipping_address.wait_until_present(3)
-            rescue Exception => e
-              logger.error e.message
-              logger.error e.backtrace.join("\n")
-              #ignore
-            end
-          end
-          expect("Unable to open Add Shipping Address modal.").to eql "Add Shipping Address"
+        def delete_row
+          delete_button.click
+          window_title.click
         end
 
         def address_located?(*args) #name, company, city)
@@ -143,18 +141,6 @@ module Stamps
           locate_ship_from(name, company, city) > 0
         end
 
-        def select_address(name, company, city)
-          row_num = locate_ship_from(name, company, city)
-          if row_num > 0
-            select_row row_num
-            15.times do
-              edit_button.click
-              return add_shipping_address if add_shipping_address.present?
-            end
-          end
-          expect("Row: #{row_num}").to eql "Unable to Select name: #{name}, company: #{company}, city: #{city}"
-        end
-
         def select_row(row_num)
           click_row_until_selected(row_num, "class", "x-grid-item-selected")
           window_title.click
@@ -173,64 +159,79 @@ module Stamps
         end
 
         def deleted?
-          @deleted
-        end
-
-        def delete_all
-          begin
-            count = shipping_address_count
-            if count > 1
-              for row in 1..(count)
-                window_title.click
-                delete_row 1
-                logger.info "Row #{row} :: Deleting row 1..."
-                break if shipping_address_count == 1
-              end
-            end
-          rescue
-            #
-          end
-          @deleted = shipping_address_count == 1
-          self
+          shipping_address_count == 1
         end
 
         def close_window
           close_button.click_while_present
         end
 
-        def wait_until_present
-          add_button.wait_until_present 8
+        def wait_until_present(*args)
+          add_button.wait_until_present(*args)
         end
 
         def shipping_address_count
           wait_until_present
-          rows = browser.trs(css: "div[id^=grid-][class*=x-panel-body-default]>div>div>table")
-          logger.info "Manage Shipping Address:: row count=#{rows.length.to_i}"
-          rows.length.to_i
+          browser.tables(css: "[id^=grid-][class*=panel-body] [class*=x-grid-item]").size
         end
       end
 
       #todo-Rob REW
-      class AddShippingAddress < Browser::Base
-        attr_reader :save_btn, :origin_zip, :name, :company, :street_address_1, :street_address_2, :city, :state, :zip, :phone
+      class AddShippingAddress < Browser::BaseCache
+        assign({})
+
         attr_accessor :address_hash
 
-        def initialize(param)
-          super
-          @save_btn = StampsField.new browser.span(text: 'Save')
-          @origin_zip = StampsTextbox.new browser.text_field(name: 'OriginZip')
-          @name = StampsTextbox.new(browser.text_field(name: 'FullName'))
-          @company = StampsTextbox.new(browser.text_field(name: 'Company'))
-          @street_address_1 = StampsTextbox.new(browser.text_field name: 'Street1')
-          @street_address_2 = StampsTextbox.new(browser.text_field name: 'Street2')
-          @city = StampsTextbox.new(browser.text_field(name: 'City'))
+        def save_btn
+          cache[:save_btn] = StampsField.new(browser.span(text: 'Save')) if cache[:save_btn].nil? || !cache[:save_btn].present?
+          cache[:save_btn]
+        end
 
-          dropdown = browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
-          textbox = browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
-          @state = StampsDropdown.new(textbox, dropdown, :li)
+        def origin_zip
+          cache[:origin_zip] = StampsTextbox.new(browser.text_field(name: 'OriginZip')) if cache[:origin_zip].nil? || !cache[:origin_zip].present?
+          cache[:origin_zip]
+        end
 
-          @zip = StampsTextbox.new(browser.text_field(name: 'Zip'))
-          @phone = StampsTextbox.new(browser.text_field(name: "Phone"))
+        def name
+          cache[:name] = StampsTextbox.new(browser.text_field(name: 'FullName')) if cache[:name].nil? || !cache[:name].present?
+          cache[:name]
+        end
+
+        def company
+          cache[:company] = StampsTextbox.new(browser.text_field(name: 'Company')) if cache[:company].nil? || !cache[:company].present?
+          cache[:company]
+        end
+        def street_address_1
+          cache[:street_address_1] = StampsTextbox.new(browser.text_field name: 'Street1') if cache[:street_address_1].nil? || !cache[:street_address_1].present?
+          cache[:street_address_1]
+        end
+        def street_address_2
+          cache[:street_address_2] = StampsTextbox.new(browser.text_field name: 'Street2') if cache[:street_address_2].nil? || !cache[:street_address_2].present?
+          cache[:street_address_2]
+        end
+        def city
+          cache[:city] = StampsTextbox.new(browser.text_field(name: 'City')) if cache[:city].nil? || !cache[:city].present?
+          cache[:city]
+        end
+        def state
+          cache[:state]=StampsDropdown.new(textbox, dropdown, :li) if cache[:state].nil? || !cache[:state].present?
+          cache[:state]
+        end
+        def zip
+          cache[:zip] = StampsTextbox.new(browser.text_field(name: 'Zip')) if cache[:zip].nil? || !cache[:zip].present?
+          cache[:zip]
+        end
+        def phone
+          cache[:phone] = StampsTextbox.new(browser.text_field(name: "Phone")) if cache[:phone].nil? || !cache[:phone].present?
+          cache[:phone]
+        end
+
+        private def dropdown
+          browser.div(css: "div[id^=statecombobox-][id$=-trigger-picker]")
+        end
+
+        private def textbox
+          browser.text_field(css: 'input[id^=statecombobox-][id$=-inputEl]')
         end
 
         def present?
@@ -262,36 +263,41 @@ module Stamps
 
       end
 
-      #todo-Rob fix me.
-      class DeleteShippingAddress < Browser::Base
+      class DeleteShippingAddress < Browser::BaseCache
+        assign({})
 
         def window_title
-          browser.div(text: "Delete Shipping Address")
+          cache[:window_title] = StampsField.new(browser.div(text: "Delete Shipping Address")) if cache[:window_title].nil? || !cache[:window_title].present?
+          cache[:window_title]
         end
 
-
-
-        def delete
-          #del_btn=StampsField.new(browser.fields(text: 'Delete').last)
-          delete_btn = StampsField.new(browser.a(css: 'div[id^=dialoguemodal-][class*=closable] div[class*=x-panel-default-docked-bottom] a'))
-          5.times do
-            delete_btn.click
-            break unless present?
+        def delete_btn
+          if cache[:delete_btn].nil? || !cache[:delete_btn].present?
+            cache[:delete_btn] = StampsField.new(browser.a(css: 'div[id^=dialoguemodal-][class*=closable] div[class*=x-panel-default-docked-bottom] a'))
           end
+          cache[:delete_btn]
         end
 
         def present?
           window_title.present?
         end
 
+        def close_btn
+          if cache[:close_btn].nil? || !cache[:close_btn].present?
+            cache[:close_btn] = StampsField.new(browser.fields(css: 'img[class$=close]').last)
+          end
+          cache[:close_btn]
+        end
+
         def close
-          field = browser.fields(css: 'img[class$=close]').last
-          present = field.present?
-          field.click if present
+          close_btn.click if close_btn.present?
         end
 
         def message_field
-          browser.div css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"
+          if cache[:message_field].nil? || !cache[:message_field].present?
+            cache[:message_field] = StampsField.new(browser.div(css: "div[class=x-autocontainer-innerCt][id^=dialoguemodal]"))
+          end
+          cache[:message_field]
         end
       end
 
