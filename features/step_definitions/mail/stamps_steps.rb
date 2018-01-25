@@ -93,7 +93,7 @@ end
 
 #AB_ORDERSAUTO_3516
 Then /^[Cc]lick [Rr]eset [Bb]utton$/ do
-  step "expect print form Reset Button is present"
+  step 'expect print form Toolbar Menu Reset Button is present'
   toolbar.reset.click
 end
 

@@ -1,4 +1,3 @@
-
 Feature: Shipping Label bugs
 
   Background:
@@ -6,7 +5,6 @@ Feature: Shipping Label bugs
 
   @bugs_shipping_label
   Scenario: WEBAPPS-6783 Reset Button Resets Starting Label Position after Print
-
     Then select Print On Shipping Label - Paper
     Then set Print form Mail-From to default
     Then set Print form Mail-To to a random address in zone 1

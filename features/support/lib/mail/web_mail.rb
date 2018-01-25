@@ -1,9 +1,12 @@
 # encoding: utf-8
 module Stamps
   module Mail
-    class WebMail < Browser::Base
+    class WebMail < Browser::BaseCache
       include Stamps::Mail::MailModals
       include PrintFormPanel::PrintFormBlurOut
+
+      assign({})
+
       def sign_in_modal
         (cache[:sign_in_modal].nil?||!cache[:sign_in_modal].present?)?cache[:sign_in_modal]=MailSignIn::MailSignInModal.new(param):cache[:sign_in_modal]
       end

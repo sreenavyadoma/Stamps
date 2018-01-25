@@ -18,15 +18,18 @@ module Stamps
 
     module MailToolbarRightSide
       def reset_fields
-        StampsField.new(browser.span(css: "span[class*='sdc-icon-reset']"))
+        cache[:reset_fields] = StampsField.new(browser.span(css: "span[class*='sdc-icon-reset']")) if cache[:reset_fields].nil?||!cache[:reset_fields].present?
+        cache[:reset_fields]
       end
 
       def feedback
-
+        cache[:feedback] = StampsField.new(browser.span(css: "span[class*='sdc-icon-feedback']")) if cache[:feedback].nil?||!cache[:feedback].present?
+        cache[:feedback]
       end
 
       def settings
-
+        cache[:settings] = StampsField.new(browser.span(css: "span[class*='sdc-icon-settings']")) if cache[:settings].nil?||!cache[:settings].present?
+        cache[:settings]
       end
     end
 

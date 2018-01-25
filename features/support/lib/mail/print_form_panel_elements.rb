@@ -221,8 +221,11 @@ module Stamps
         end
       end
 
-      class ManagePrintOptionsModal < Browser::Base
+      class ManagePrintOptionsModal < Browser::BaseCache
         include PrintMediaHelper
+
+        assign({})
+
         def search_field
           (cache[:search_field].nil? || !cache[:search_field].present?) ? cache[:search_field] = StampsTextbox.new(
               browser.text_field(css: "[placeholder='Search']")) : cache[:search_field]
@@ -346,15 +349,19 @@ module Stamps
 
       module PrintOnTextbox
         def print_on_textbox
-          (cache[:print_on_textbox].nil? || !cache[:print_on_textbox].present?) ? cache[:print_on_textbox] = StampsTextbox.new(
-              browser.text_field(css: "[name=PrintMedia]")) : cache[:print_on_textbox]
+          if cache[:print_on_textbox].nil? || !cache[:print_on_textbox].present?
+              cache[:print_on_textbox] = StampsTextbox.new(browser.text_field(css: "[name=PrintMedia]"))
+          end
+          cache[:print_on_textbox]
         end
       end
 
-      class PrintOn < Browser::Base
+      class PrintOn < Browser::BaseCache
         include PrintFormBlurOut
         include PrintMediaHelper
         include PrintOnTextbox
+
+        assign({})
 
         def dropdown
           (cache[:dropdown].nil? || !cache[:dropdown].present?) ? cache[:dropdown] = StampsField.new(
@@ -440,8 +447,9 @@ module Stamps
         end
       end
 
-      class MailToCountry < Browser::Base
+      class MailToCountry < Browser::BaseCache
         include PrintFormBlurOut
+        assign({})
         def dom_dd
           (cache[:dom_dd].nil? || !cache[:dom_dd].present?) ? cache[:dom_dd] = StampsTextbox.new(
               browser.div(id: "sdc-mainpanel-matltocountrydroplist-trigger-picker")) : cache[:dom_dd]
@@ -496,8 +504,11 @@ module Stamps
         end
       end
 
-      class MailToInt < Browser::Base
+      class MailToInt < Browser::BaseCache
         include PrintFormBlurOut
+
+        assign({})
+
         def name
           (cache[:name].nil? || !cache[:name].present?) ? cache[:name] = StampsTextbox.new(
               browser.text_field(name: "ShipName")) : cache[:name]
@@ -546,10 +557,12 @@ module Stamps
         end
       end
 
-      class MailToDom < Browser::Base
+      class MailToDom < Browser::BaseCache
         include MailDomTextArea
-        attr_reader :country
         include PrintFormBlurOut
+        assign({})
+
+        attr_reader :country
 
         def set(address)
           textarea.click
@@ -563,8 +576,11 @@ module Stamps
         end
       end
 
-      class PrintFormEmail < Browser::Base
+      class PrintFormEmail < Browser::BaseCache
         include PrintFormBlurOut
+
+        assign({})
+
         def email_textbox
           (cache[:email_textbox].nil? || !cache[:email_textbox].present?) ? cache[:email_textbox] = StampsTextbox.new(
               browser.text_field(id: "sdc-mainpanel-emailtextfield-webpostage-inputEl")) : cache[:email_textbox]
@@ -576,8 +592,11 @@ module Stamps
         end
       end
 
-      class PrintFormWeight < Browser::Base
+      class PrintFormWeight < Browser::BaseCache
         include PrintFormBlurOut
+
+        assign({})
+
         def weigh
           (cache[:weigh].nil? || !cache[:weigh].present?) ? cache[:weigh] = StampsField.new(
               browser.span(text: "Weigh")) : cache[:weigh]
@@ -610,7 +629,9 @@ module Stamps
         end
       end
 
-      class PrintFormDimensions < Browser::Base
+      class PrintFormDimensions < Browser::BaseCache
+        assign({})
+
         def length
           (cache[:length].nil? || !cache[:length].present?) ? cache[:length] = StampsNumberField.new(
               browser.text_field(css: "[class*=sdc-mainpanel-lengthnumberfield]"),
@@ -633,8 +654,9 @@ module Stamps
         end
       end
 
-      class PrintFormMailFrom < Browser::Base
+      class PrintFormMailFrom < Browser::BaseCache
         include PrintFormBlurOut
+        assign({})
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(
               browser.text_field(id: "sdc-mainpanel-shipfromdroplist-inputEl")) : cache[:textbox]
@@ -684,8 +706,11 @@ module Stamps
         end
       end
 
-      class MailServiceSelection < Browser::Base
+      class MailServiceSelection < Browser::BaseCache
         include ParameterHelper
+
+        assign({})
+
         def cost_field(str)
           (cache[:cost_field].nil? || !cache[:cost_field].present?) ? cache[:cost_field] = StampsField.new(
               browser.td(css: "li[id='#{data_for(:mail_services, {})[str]}']>table>tbody>tr>td[class*=amount]")) : cache[:cost_field] #sdc-servicedroplist-fcletter
@@ -713,8 +738,11 @@ module Stamps
         end
       end
 
-      class PrintFormService < Browser::Base
+      class PrintFormService < Browser::BaseCache
         include PrintFormBlurOut
+
+        assign({})
+
         def service_selection
           (cache[:service_selection].nil? || !cache[:service_selection].present?) ? cache[:service_selection] = MailServiceSelection.new(
               param) : cache[:service_selection]
@@ -827,8 +855,11 @@ module Stamps
 
       end
 
-      class PrintFormInsureFor < Browser::Base
+      class PrintFormInsureFor < Browser::BaseCache
         include PrintFormBlurOut
+
+        assign({})
+
         def price
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsField.new(
               browser.label(id: "sdc-mainpanel-insurancepricelabel")) : cache[:textbox]
@@ -846,8 +877,11 @@ module Stamps
         end
       end
 
-      class PrintFormTracking < Browser::Base
+      class PrintFormTracking < Browser::BaseCache
         include PrintFormBlurOut
+
+        assign({})
+
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(
               browser.text_field(id: "sdc-mainpanel-trackingdroplist-inputEl")) : cache[:textbox]
@@ -883,7 +917,9 @@ module Stamps
         end
       end
 
-      class PrintFormCostCode < Browser::Base
+      class PrintFormCostCode < Browser::BaseCache
+        assign({})
+
         def textbox
           (cache[:textbox].nil? || !cache[:textbox].present?) ? cache[:textbox] = StampsTextbox.new(browser.text_field(name: "costCodeId")) : cache[:textbox]
         end
@@ -909,7 +945,9 @@ module Stamps
       end
 
       #todo-Rob reference http://jira.psisystems.local/browse/ORDERSAUTO-3460
-      class PrintFormMailToLink < Browser::Base
+      class PrintFormMailToLink < Browser::BaseCache
+        assign({})
+
         def link
           (cache[:link].nil? || !cache[:link].present?) ? cache[:link] = StampsField.new(browser.span(css: "[class*=sdc-mainpanel-shiptolinkbtn] [id$=btnInnerEl]")) : cache[:link]
         end
@@ -927,8 +965,9 @@ module Stamps
         end
       end
 
-      class PrintFormMailTo < Browser::Base
+      class PrintFormMailTo < Browser::BaseCache
         include PrintFormBlurOut
+        assign({})
         def mail_to_country
           (cache[:mail_to_country].nil? || !cache[:mail_to_country].present?) ? cache[:mail_to_country] = MailToCountry.new(param) : cache[:mail_to_country]
         end
