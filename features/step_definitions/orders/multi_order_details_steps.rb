@@ -74,18 +74,20 @@ Then /^[Dd]ecrement [Bb]ulk [Uu]pdate [Oo]unces by (.*)$/ do |str|
 end
 # End Bulk Update Weight steps
 
-Then /^[Ss]et [Bb]ulk [Uu]pdate (?:[Dd]omestic |)[Ss]ervice to (.*)$/ do |str|
-  test_param[:service] = stamps.orders.bulk_update.domestic_service.select(str).strip_ord_service
-  expect(test_param[:service]).to eql(str)
+Then /^[Ss]et [Bb]ulk [Uu]pdate [Dd]omestic [Ss]ervice to (.*)$/ do |str|
+  expect(stamps.orders.bulk_update.domestic_service.select(str).parse_service_name).to eql(test_param[:bulk_dom_service] = str)
+end
+
+Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Dd]omestic [Ss]ervice is (?:correct|(.*))$/ do |str|
+  expect(stamps.orders.bulk_update.domestic_service.textbox.text).to eql(str.nil? ? test_param[:bulk_dom_service] : str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice to (.*)$/ do |str|
-  test_param[:int_service] = stamps.orders.bulk_update.intl_service.select(str).strip_ord_service
-  expect(test_param[:int_service]).to eql(str)
+  expect(stamps.orders.bulk_update.intl_service.select(str).parse_service_name).to eql(test_param[:bulk_int_service] = str)
 end
 
 Then /^[Ee]xpect [Bb]ulk [Uu]pdate [Ii]nternational [Ss]ervice is (?:correct|(.*))$/ do |str|
-  expect(stamps.orders.bulk_update.intl_service.textbox.text).to eql(str.nil? ? test_param[:int_service] : str)
+  expect(stamps.orders.bulk_update.intl_service.textbox.text).to eql(str.nil? ? test_param[:bulk_int_service] : str)
 end
 
 Then /^[Ss]et [Bb]ulk [Uu]pdate [Ii]nsurance to (.+)$/ do |str|

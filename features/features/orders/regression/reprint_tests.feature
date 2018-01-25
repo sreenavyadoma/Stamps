@@ -52,7 +52,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to United States
+    Then set Order Details Domestic Ship-To Country to United States
     Then set Order Details Ship-To Domestic address to
       | full_name         | company           | street_address  |street_address_2|  city        | state| zip   | country       | phone  |  email |
       | Reprint Test | 4.125 x 6.25 roll | 604 Arizona Ave |                | Santa Monica | CA   | 90401 | United States | 8885551212 | test@stamps.com |
@@ -77,7 +77,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to United States
+    Then set Order Details Domestic Ship-To Country to United States
     Then set Order Details Ship-To Domestic address to
       | full_name   | company      | street_address    |street_address_2| city | state | zip    | country       | phone  |  email |
       | Reprint Test | 4x6 roll | PSC 3 BOX 4120  |                | APO  | AE     |  09021  | United States | 8885551212 | test@stamps.com |
@@ -169,7 +169,7 @@ Feature: As a batch shipper, I want is able to Reprint for Orders in "Shipped" V
 
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to United States
+    Then set Order Details Domestic Ship-To Country to United States
     Then set Order Details Ship-To Domestic address to
       | full_name         | company            | street_address | street_address_2| city | state | zip        | country       | phone  |  email |
       | Reprint Test | 8.5x11 Plain Paper | PO Box 10281   |                 | Palau| PW    | 96940-0881 | United States | 8885551212 | test@stamps.com |

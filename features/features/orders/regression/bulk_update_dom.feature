@@ -7,18 +7,18 @@ Feature: Bulk Update Domestic
   Scenario: ORDERSAUTO-2261 Bulk Update: Dimensions controller
 
     # Adding 1st order
-    Then add new order
-    Then set Order Details Ship-From to default
+#    Then add new order
+#    #Then set Order Details Ship-From to default
     Then set Order Details Ship-To International address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
-      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
-    Then set Order Details international service to PMI Package/Flat/Thick Envelope
-    Then set Order Details Weight to 2 lb 2 oz
-    Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
-    #Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
-    Then click Order Details form Customs Form button
-
-    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
+#      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
+#      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Canada | random  | random  |
+#    Then set Order Details service to PMI Package/Flat/Thick Envelope
+#    Then set Order Details Weight to 2 lb 2 oz
+#    Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
+#    #Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
+#    Then click Order Details form Customs Form button
+#
+#    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
 #    Then add Customs Associated Item 2, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
 #    Then add Customs Associated Item 3, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
 #    Then add Customs Associated Item 4, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
@@ -27,12 +27,12 @@ Feature: Bulk Update Domestic
 #    Then add Customs Associated Item 7, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
 #    Then add Customs Associated Item 1, Description random string, Qty 2, Price 2, Made In United States, Tariff 2
 
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+#    Then check Customs form I agree to the USPS Privacy Act Statement
+#    Then close Customs Information form
 
     # Add 2nd order
-    Then add order 2
-    Then set Order Details Ship-From to default
+#    Then add order 2
+#    #Then set Order Details Ship-From to default
 #    Then set Order Details Ship-To to random address between zone 8
 #    Then set Order Details service to PM Large Package
 #    Then set Order Details Pounds to 2
@@ -41,40 +41,34 @@ Feature: Bulk Update Domestic
 #    Then set Order Details Width to 1
 #    Then set Order Details Height to 1
 
-    Then set Order Details Ship-To International address to
-      | full_name   | company | street_address_1 | street_address_2 | city   | province| postal_code | country   | phone   |  email  |
-      | PMEI LFRE |  8.5x11 Left Side | random       | random           | random | random  | M12345      | Japan | random  | random  |
-    Then set Order Details international service to PMI Package/Flat/Thick Envelope
 
-    Then expect bulk update international service is correct
-    Then click Bulk Update Orders button
 
-    Then set Order Details Weight to 2 lb 2 oz
-    Then on Order Details form, Add Item 1, Qty 1, ID ID 1, Description Description 1
-    #Then on Order Details form, Add Item 2, Qty 2, ID random string, Description random string
-    Then click Order Details form Customs Form button
-
-    Then add Customs Associated Item 1, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 2, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 3, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 4, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 5, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 6, Description random string, Qty 1, Price 1, Made In Japan, Tariff 1
-#    Then add Customs Associated Item 7, Description random string, Qty 1, Price 1, Made In Canada, Tariff 1
-#    Then add Customs Associated Item 1, Description random string, Qty 2, Price 2, Made In United States, Tariff 2
-
-    Then check Customs form I agree to the USPS Privacy Act Statement
-    Then close Customs Information form
+#    Then check Customs form I agree to the USPS Privacy Act Statement
+#    Then close Customs Information form
 
     # Check 1st two orders
-    # Then check order 1
-    # Then check order 2
+#    Then check order 1
+#    Then check order 2
 
-    Then check row 1
-    Then check row 2
+    #Then check row 1
+    #Then check row 2
+
+    Then add order 1
+    Then set Order Details Domestic Ship-To Country to Canada
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
+
+    Then set Order Details international Ship-To Country to United States
+    Then set order details service to PM Large Package
+
+    Then set Order Details Domestic Ship-To Country to Canada
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
+
+    Then add order 2
+    Then set order details service to PM Large Package
 
     Then expect bulk update is present
     Then set Bulk Update international service to PMI Package/Flat/Thick Envelope
+    Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
 
     Then click Bulk Update Orders button
 
@@ -83,11 +77,11 @@ Feature: Bulk Update Domestic
     Then set order details service to PM Large Package
 
     Then check row 2
-    Then set Bulk Update service to PME Padded Flat Rate Envelope
+    Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
     Then click Bulk Update Orders button
 
     Then uncheck row 2
-    Then set Bulk Update service to PME Package/Flat/Thick Envelope
+    Then set Bulk Update domestic service to PME Package/Flat/Thick Envelope
     Then check row 2
 
     Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
@@ -137,7 +131,7 @@ Feature: Bulk Update Domestic
 
     #Then check row 1
     #Then check row 2
-    Then set Bulk Update service to PME Package/Flat/Thick Envelope
+    Then set Bulk Update domestic service to PME Package/Flat/Thick Envelope
     Then click Bulk Update Orders button
 
     Then uncheck row 2
@@ -145,11 +139,11 @@ Feature: Bulk Update Domestic
     Then set order details service to PM Large Package
 
     Then check row 2
-    Then set Bulk Update service to PME Padded Flat Rate Envelope
+    Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
     Then expect bulk update international service is PME Padded Flat Rate Envelope
 
     Then uncheck row 2
-    Then set Bulk Update service to PME Package/Flat/Thick Envelope
+    Then set Bulk Update domestic service to PME Package/Flat/Thick Envelope
     Then check row 2
 
     Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope

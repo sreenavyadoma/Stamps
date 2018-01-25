@@ -367,21 +367,21 @@ Then /^[Rr]un rate sheet (.*) in Country Price Group (\d+)$/ do |param_sheet, gr
 
         if (row[@rate_sheet_columns[:service]]).include? "PMEI Flat Rate"
           if group < 9
-            step "set Order Details Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app==:orders
+            step "set Order Details Domestic Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app==:orders
             step "set Print Form Ship-To Country to a random country in PMEI Flat Rate price group #{group}" if @modal_param.web_app==:mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMEI Package"
-          step "set Order Details Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app==:orders
+          step "set Order Details Domestic Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app==:orders
           step "set Print Form Ship-To Country to a random country in PMEI price group #{group}" if @modal_param.web_app==:mail
         end
 
         if (row[@rate_sheet_columns[:service]]).include? "PMI Flat Rate"
           if group < 9
-            step "set Order Details Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:orders
+            step "set Order Details Domestic Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:orders
             step "set Print Form Ship-To Country to a random country in PMI Flat Rate price group #{group}" if @modal_param.web_app==:mail
           end
         elsif (row[@rate_sheet_columns[:service]]).include? "PMI Package"
-          step "set Order Details Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:orders
+          step "set Order Details Domestic Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:orders
           step "set Print Form Ship-To Country to a random country in PMI price group #{group}" if @modal_param.web_app==:mail
         end
 

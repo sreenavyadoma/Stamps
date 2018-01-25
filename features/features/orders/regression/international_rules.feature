@@ -9,7 +9,7 @@ Feature: All International Rules
   Scenario: Add Missing Validation Logic for Phone and International Email
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to Australia
+    Then set Order Details Domestic Ship-To Country to Australia
     Then check Orders Grid row 1
 
     Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
@@ -98,7 +98,7 @@ Feature: All International Rules
   Scenario: International Shipping fields and Customs Information fields validation
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to Japan
+    Then set Order Details Domestic Ship-To Country to Japan
 
     Then expect Order Details International Address fields are visible
     Then expect Order Details Domestic Ship-To fields are hidden
@@ -346,7 +346,7 @@ Feature: All International Rules
   Scenario: Two character minimum for Name & Company
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to Antigua & Barbuda
+    Then set Order Details Domestic Ship-To Country to Antigua & Barbuda
     Then set Order Details International Ship-To Name to "a"
     Then expect Order Details International Name data error tooltip is "A first and last name of at least two characters each is required"
 

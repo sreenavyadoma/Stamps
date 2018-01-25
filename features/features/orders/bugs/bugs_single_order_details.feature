@@ -21,7 +21,7 @@ Feature: Single Order Details form Bugs
     Then check Customs form I agree to the USPS Privacy Act Statement
     Then close Customs Information form
 
-    Then set Order Details Ship-To Country to United States
+    Then set Order Details Domestic Ship-To Country to United States
     Then set Order Details service to PM Package
     Then Print Order expecting error This order is not ready for printing:\nShip To address is required
 

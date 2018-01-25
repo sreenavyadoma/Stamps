@@ -24,7 +24,7 @@ module Stamps
       end
 
       def order_details
-        cache[:order_details] = Orders::SingleOrder::DetailsForm.new(param) if cache[:order_details].nil?
+        cache[:order_details] = Orders::SingleOrder::OrderDetails.new(param) if cache[:order_details].nil?
         cache[:order_details]
       end
 

@@ -83,7 +83,7 @@ Then /^[Ee]xpect [Oo]rder [Dd]etails Ship-To Country is (?:correct|(.*))$/ do |e
   expectation = (expectation.nil?) ? test_param[:country] : expectation
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.ship_to.country.textbox.text).to eql expectation
+  expect(stamps.orders.order_details.ship_to.domestic.country.textbox.text).to eql expectation
 end
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails International Ship-To Name is (?:correct|(.*))$/ do |expectation|
@@ -438,7 +438,7 @@ end
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-To drop-down is enabled$/ do
   stamps.orders.order_details.wait_until_present(2)
   step "expect Order Details is present"
-  expect(stamps.orders.order_details.ship_to.country.dropdown.field.visible?).to be(true)
+  expect(stamps.orders.order_details.ship_to.domestic.country.dropdown.field.visible?).to be(true)
 end
 
 And /^[Ee]xpect [Oo]rder [Dd]etails Ship-To text area is enabled$/ do

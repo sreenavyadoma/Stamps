@@ -102,7 +102,7 @@ Feature: January 2017 Rates for SAS User in Zone 6
   Scenario: Priority Mail Medium Flat Rate Box
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to United States
+    Then set Order Details Domestic Ship-To Country to United States
     Then set Order Details Ship-To to random address in zone 6
     Then set Order Details service to PM Medium Flat Rate Box
     Then set Order Details Weight to 46 lb 0 oz

@@ -229,7 +229,7 @@ Feature: Print 1 Intl CP72 label
    #print_layout_dpo_cp72_roll_single_ply
     Then add new order
     Then set Order Details Ship-From to default
-    Then set Order Details Ship-To Country to United States
+    Then set Order Details Domestic Ship-To Country to United States
     Then set Order Details Ship-To Domestic address to
       | full_name     | company       | street_address      | street_address_2| city | state | zip        | country       | phone  |  email |
       | PSG PFTE | 4⅛ x 6¼ roll | UNIT 8400 BOX 0000  |                  |DPO  | AE    | 09498-9997 | United States | random | random |

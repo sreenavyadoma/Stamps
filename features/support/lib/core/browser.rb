@@ -22,6 +22,7 @@ module Stamps
           end
 
           def cache
+            raise RuntimeError, "cache has not been set. Call assign({}) prior to using cache." if @cache.nil?
             @cache
           end
         end
@@ -30,8 +31,7 @@ module Stamps
 
     ##
     #
-    class BaseCache
-      include Cache
+    class Base
       class << self
         attr_accessor :browser
       end
@@ -45,7 +45,12 @@ module Stamps
       def browser
         self.class.browser
       end
+    end
 
+    ##
+    #
+    class BaseCache < Base
+      include Cache
       def cache
         self.class.cache
       end
@@ -97,18 +102,6 @@ module Stamps
 
       def values
         self.class.values
-      end
-    end
-
-    ##
-    # This class is deprecated. Use BaseCache instead.
-    class Base
-      attr_reader :param, :browser, :cache, :logger
-      def initialize(param)
-        @param = param
-        @browser = param.browser
-        @logger = param.logger
-        @cache = {}
       end
     end
 

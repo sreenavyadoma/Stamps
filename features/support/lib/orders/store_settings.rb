@@ -105,7 +105,7 @@ module Stamps
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[30]
             when /PMI Regional Rate Box B/ #31. PMI Regional Rate Box B (6 - 10 days) -- Regional Rate Box B
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[31]
-            when /PMEI Package/Flat/Thick Envelope/ #32. PMEI Package/Flat/Thick Envelope/Flat/Thick Envelope (3 - 5 days) -- Package/Flat/Thick Envelope
+            when /PMEI Package\/Flat\/Thick Envelope/ #32. PMEI Package/Flat/Thick Envelope/Flat/Thick Envelope (3 - 5 days) -- Package/Flat/Thick Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[32]
             when /PMEI Flat Rate Envelope/ #33. PMEI Flat Rate Envelope (3 - 5 days) -- Flat Rate Envelope
               return iframe.spans(css: "[ng-bind-html^='service.PackageStr']")[33]
