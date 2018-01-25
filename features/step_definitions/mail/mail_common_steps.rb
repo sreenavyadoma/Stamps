@@ -98,7 +98,7 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm Print Reference Number check box is present$/ 
 end
 
 
-Then /^[Ee]xpect [Pp]rint [Ff]orm Reset Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Reset Button is present$/ do # todo-Rob this is unacceptable. This need to be reworked. changes from KS_ORDERSAUTO-3495 AND ORDERSAUTO-3479
   toolbar=Toolbar.new(modal_param)
   expect(toolbar.reset).to be(true), "Service price doesn't exists on Print form"
 end
@@ -110,6 +110,8 @@ end
 
 Then /^[Ee]xpect [Pp]rint [Ff]orm Help Button is present$/ do
   toolbar=Toolbar.new(modal_param)
+  # todo-Rob which Toolbar does this belong to? Orders Grid? Orders? Mail? There are many Toolbar objects out there. This is unacceptable.
+  # class Toolbar exists in Orders domain and not mail. I don't know how this can work. It's a hack.
   expect(toolbar.help).to be(true), "Service price doesn't exists on Print form"
 end
 
@@ -121,12 +123,12 @@ Then /^[Ee]xpect [Pp]rint [Ff]orm System Notification Banner is present$/ do
 
 end
 
-Then /^[Ee]xpect [Pp]rint [Ff]orm Feedback Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Feedback Button is present$/ do # todo-Rob this is unacceptable. This need to be reworked. changes from KS_ORDERSAUTO-3495 AND ORDERSAUTO-3479
   toolbar=Toolbar.new(modal_param)
   expect(toolbar.feedback).to be(true), "Service price doesn't exists on Print form"
 end
 
-Then /^[Ee]xpect [Pp]rint [Ff]orm Classic Button is present$/ do
+Then /^[Ee]xpect [Pp]rint [Ff]orm Classic Button is present$/ do # todo-Rob this is unacceptable. This need to be reworked. changes from KS_ORDERSAUTO-3495 AND ORDERSAUTO-3479
   toolbar=Toolbar.new(modal_param)
   expect(toolbar.classic).to be(true), "Service price doesn't exists on Print form"
 end
