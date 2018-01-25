@@ -34,12 +34,12 @@ module Stamps
       end
 
       def modals
-        cache[:modals] = Stamps::Browser::Base.new(param).extend(StampsOrdersModals) if cache[:modals].nil?
+        cache[:modals] = Stamps::Orders::StampsOrdersModals.new(param) if cache[:modals].nil?
         cache[:modals]
       end
 
       def marketplace
-        cache[:marketplace] = Stamps::Browser::Base.new(param).extend(MarketPlaceStoreModals) if cache[:marketplace].nil?
+        cache[:marketplace] = Stamps::Orders::MarketPlaceStoreModals.new(param) if cache[:marketplace].nil?
         cache[:marketplace]
       end
 
