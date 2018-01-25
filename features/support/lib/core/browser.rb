@@ -41,12 +41,17 @@ module Stamps
         self.class.browser = param.browser
         @logger = param.logger
       end
+
+      def browser
+        self.class.browser
+      end
     end
 
     ##
     #
     class BaseCache < Base
       include Cache
+
       def cache
         self.class.cache
       end
