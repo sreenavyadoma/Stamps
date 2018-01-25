@@ -22,7 +22,7 @@ module Stamps
           end
 
           def cache
-            raise RuntimeError, "cache has not been set. Call assign({}) prior to using cache." if @cache.nil?
+            raise RuntimeError, "cache has not been set. Missing assign({}) statement in your class." if @cache.nil?
             @cache
           end
         end
@@ -40,10 +40,6 @@ module Stamps
         @param = param
         self.class.browser = param.browser
         @logger = param.logger
-      end
-
-      def browser
-        self.class.browser
       end
     end
 
