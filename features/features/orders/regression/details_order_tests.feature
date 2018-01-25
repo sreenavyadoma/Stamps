@@ -323,37 +323,37 @@ Feature: All details tests for order
 
   @details_large_dimensions_pm
   Scenario: Priority Mail and Large Dimensions
-    * add new order
-    * expect Order Details service is an empty string
-    * set Order Details Ship-To to random address in zone 8
-    * set Order Details Ounces to 2
-    * set Order Details Pounds to 1
-    * set Order Details service to PM Package
-    * expect Order Details service is PM Package
-    * set Order Details Length to 20
-    * set Order Details Width to 35
-    * set Order Details Height to 20
-    * blur out on Order Details form
-    * blur out on Order Details form
-    * expect Order Details Dimensions are hidden
-    * set Order Details service to PM Package
-    * blur out on Order Details form
-    * set Order Details Length to 1
-    * set Order Details Width to 1
-    * set Order Details Height to 1
-    * Pause for 2 seconds
-    * expect Order Details service Textbox is enabled
-    * Pause for 1 second
-    * expect Order Details service is PM Package
-    * Pause for 1 second
-    * expect Order Details service "PM Package" is enabled
-    * Pause for 1 second
-    * set Order Details service to PM Package
-    * Pause for 2 seconds
-    * expect Order Details Length is 1
-    * expect Order Details Height is 1
-    * expect Order Details Width is 1
-    * Sign out
+    Then add new order
+    Then expect Order Details service is an empty string
+    Then set Order Details Ship-To to random address in zone 8
+    Then set Order Details Ounces to 2
+    Then set Order Details Pounds to 1
+    Then set Order Details service to PM Package
+    Then expect Order Details service is PM Package
+    Then set Order Details Length to 20
+    Then set Order Details Width to 35
+    Then set Order Details Height to 20
+    Then blur out on Order Details form
+    Then blur out on Order Details form
+    Then expect Order Details Dimensions are hidden
+    Then set Order Details service to PM Package
+    Then blur out on Order Details form
+    Then set Order Details Length to 1
+    Then set Order Details Width to 1
+    Then set Order Details Height to 1
+    Then Pause for 2 seconds
+    Then expect Order Details service Textbox is enabled
+    Then Pause for 1 second
+    Then expect Order Details service is PM Package
+    Then Pause for 1 second
+    Then expect Order Details service "PM Package" is enabled
+    Then Pause for 1 second
+    Then set Order Details service to PM Package
+    Then Pause for 2 seconds
+    Then expect Order Details Length is 1
+    Then expect Order Details Height is 1
+    Then expect Order Details Width is 1
+    Then Sign out
 
 
   @details_non_integer_lb
