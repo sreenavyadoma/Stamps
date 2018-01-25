@@ -229,7 +229,7 @@ Feature:  BVT tests for Orders
     Then set Order Details Ounces to 1
     Then set Order Details service to PM Package
     Then set Order Details Insure-For to $100.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1

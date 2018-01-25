@@ -138,7 +138,7 @@ Feature: January 2017 Rates for Core User in Zone 1
     Then set Order Details service to PME Package/Flat/Thick Envelope
     Then set Order Details Weight to 13 lb 0 oz
     Then expect Order Details Service Cost is 38.72
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 38.72
     Then Sign out
 
@@ -148,7 +148,7 @@ Feature: January 2017 Rates for Core User in Zone 1
     Then set Order Details service to PME Flat Rate Envelope
     Then set Order Details Weight to 7 lb 0 oz
     Then expect Order Details Service Cost is 21.18
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 21.18
     Then Sign out
 

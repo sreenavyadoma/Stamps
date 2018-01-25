@@ -165,7 +165,7 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then set Order Details service to PME Padded Flat Rate Envelope
     Then set Order Details Weight to 4 lb 0 oz
     Then expect Order Details Service Cost is 21.64
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 21.64
     Then Sign out
 
@@ -215,6 +215,6 @@ Feature: January 2017 Rates for CPP User in Zone 5
     Then set Order Details service to PSG Oversized Package
     Then set Order Details Weight to 56 lb 0 oz
     Then expect Order Details Service Cost is 106.11
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 108.56
     Then Sign out

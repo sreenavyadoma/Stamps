@@ -85,7 +85,7 @@ Feature: 25 orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
     Then set Order Details service to PM Package
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -97,7 +97,7 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to PM Large Package
     Then set Order Details Insure-For to $145.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -108,7 +108,7 @@ Feature: 25 orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
     Then set Order Details service to PM Flat Rate Envelope
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -131,7 +131,7 @@ Feature: 25 orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
     Then set Order Details service to PM Legal Flat Rate Envelope
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -143,7 +143,7 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to PM Small Flat Rate Box
     Then set Order Details Insure-For to $30.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -155,7 +155,7 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to PM Medium Flat Rate Box
     Then set Order Details Insure-For to $45.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -167,7 +167,7 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to PM Large Flat Rate Box
     Then set Order Details Insure-For to $239.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -179,7 +179,7 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to PM Regional Rate Box A
     Then set Order Details Insure-For to $105.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -202,7 +202,7 @@ Feature: 25 orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
     Then set Order Details Insure-For to $305.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     # Priority Mail Express
     Then add new order
@@ -214,7 +214,7 @@ Feature: 25 orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
     Then set Order Details service to PME Package/Flat/Thick Envelope
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -236,7 +236,7 @@ Feature: 25 orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
     Then set Order Details service to PME Padded Flat Rate Envelope
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -258,7 +258,7 @@ Feature: 25 orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
     Then set Order Details service to PME Padded Flat Rate Envelope
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     # Media Mail
     Then add new order
@@ -271,7 +271,7 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to MM Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $56.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     # Parcel Select
     Then add new order
@@ -296,7 +296,7 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to PSG Package/Flat/Thick Envelope
     Then set Order Details Insure-For to $456.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
 
     Then add new order
     Then expect Order Details Order ID is truthy
@@ -308,5 +308,5 @@ Feature: 25 orders
     Then set Order Details Height to 1
     Then set Order Details service to PSG Oversized Package
     Then set Order Details Insure-For to $567.00
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then Sign out

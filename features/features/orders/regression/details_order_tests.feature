@@ -691,7 +691,7 @@ Feature: All details tests for order
     Then set Order Details service to PM Package
     Then set Order Details Ounces to 1
     Then set Order Details Pounds to 1
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then set Order Details Length to 1
     Then set Order Details Width to 1
     Then set Order Details Height to 1

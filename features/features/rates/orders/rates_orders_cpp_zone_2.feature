@@ -52,7 +52,7 @@ Feature: January 2017 Rates for CPP User in Zone 2
     Then set Order Details service to PM Large Package
     Then set Order Details Weight to 22 lb 0 oz
     Then expect Order Details Service Cost is 15.54
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 17.99
     Then Sign out
 
@@ -173,7 +173,7 @@ Feature: January 2017 Rates for CPP User in Zone 2
     Then set Order Details service to PME Padded Flat Rate Envelope
     Then set Order Details Weight to 11 lb 0 oz
     Then expect Order Details Service Cost is 21.64
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 21.64
     Then Sign out
 
@@ -224,6 +224,6 @@ Feature: January 2017 Rates for CPP User in Zone 2
     Then set Order Details service to PSG Oversized Package
     Then set Order Details Weight to 50 lb 0 oz
     Then expect Order Details Service Cost is 63.99
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 66.44
     Then Sign out

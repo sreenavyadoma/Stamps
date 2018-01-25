@@ -158,7 +158,7 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then set Order Details service to PME Padded Flat Rate Envelope
     Then set Order Details Weight to 14 lb 0 oz
     Then expect Order Details Service Cost is 21.64
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 21.64
     Then Sign out
 
@@ -208,6 +208,6 @@ Feature: January 2017 Rates for Core User in Zone 3
     Then set Order Details service to PSG Oversized Package
     Then set Order Details Weight to 40 lb 0 oz
     Then expect Order Details Service Cost is 67.94
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 70.39
     Then Sign out

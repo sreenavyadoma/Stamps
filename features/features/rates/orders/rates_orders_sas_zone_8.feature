@@ -164,7 +164,7 @@ Feature: January 2017 Rates for SAS User in Zone 8
     Then set Order Details service to PME Padded Flat Rate Envelope
     Then set Order Details Weight to 21 lb 0 oz
     Then expect Order Details Service Cost is 21.64
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 21.64
     Then Sign out
 
@@ -174,7 +174,7 @@ Feature: January 2017 Rates for SAS User in Zone 8
     Then set Order Details service to PME Legal Flat Rate Envelope
     Then set Order Details Weight to 70 lb 0 oz
     Then expect Order Details Service Cost is 21.28
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 21.28
     Then Sign out
 
@@ -214,6 +214,6 @@ Feature: January 2017 Rates for SAS User in Zone 8
     Then set Order Details service to PSG Oversized Package
     Then set Order Details Weight to 7 lb 0 oz
     Then expect Order Details Service Cost is 173.87
-    Then set Order Details Tracking to Signature Required
+    # Then set Order Details Tracking to Signature Required
     Then expect Order Details Total Ship Cost is 176.32
     Then Sign out

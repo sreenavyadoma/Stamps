@@ -183,7 +183,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid service is (?:correct|(.*))$/ do |expectation
   expectation = test_param[:service] if expectation.nil?
   expectation = test_param[:service_look_up][expectation.split(' ').first].nil? ? expectation : test_param[:service_look_up][expectation.split(' ').first]
   10.times { break if stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id].values.last).eql? expectation }
-  expect(stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id].values.last)).to include expectation
+  expect(stamps.orders.orders_grid.grid_column(:service).data(test_param[:order_id].values.last)).to eql(expectation)
 end
 
 Then /^[Ee]xpect [Oo]rders [Gg]rid Insured Value is \$(.+)$/ do |expectation|
@@ -220,7 +220,7 @@ Then /^[Ee]xpect [Oo]rders [Gg]rid Ship Cost error to contain \"(.*)\"$/ do |exp
   grid_order_id = stamps.orders.orders_grid.grid_column(:order_id).row 1
   ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error grid_order_id
   expect(ship_cost_error).to include(expectation)
-  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81453"
+  ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81453" #todo-Alex, what is this?
   ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81408"
   ship_cost_error = stamps.orders.orders_grid.grid_column(:ship_cost).data_error "81407"
 end
