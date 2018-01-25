@@ -22,7 +22,7 @@ module Stamps
           end
 
           def cache
-            raise RuntimeError, "cache has not been set. Call assign({}) prior to using cache." if @cache.nil?
+            raise RuntimeError, "cache has not been set. Missing assign({}) statement in your class." if @cache.nil?
             @cache
           end
         end
@@ -51,6 +51,10 @@ module Stamps
     #
     class BaseCache < Base
       include Cache
+
+      def cache
+        self.class.cache
+      end
     end
 
     class FloatingBoundList < BaseCache
