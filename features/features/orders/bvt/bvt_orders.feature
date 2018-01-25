@@ -234,7 +234,6 @@ Feature:  BVT tests for Orders
     Then set Order Details Width to 1
     Then set Order Details Height to 1
 
-    Then expect Orders Grid service is Priority Mail
     Then expect Orders Grid service is PM Package
     Then expect Orders Grid service is correct
 
