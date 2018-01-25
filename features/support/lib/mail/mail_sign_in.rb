@@ -244,7 +244,8 @@ module Stamps
         end
       end
 
-      class MailSignInModal < Browser::Base
+      class MailSignInModal < Browser::BaseCache
+        assign({})
         def username_textbox
           (cache[:username_textbox].nil?||!cache[:username_textbox].present?)?cache[:username_textbox]=StampsTextbox.new(browser.text_field(id: "UserNameTextBox")):cache[:username_textbox]
         end

@@ -2,9 +2,6 @@ module Stamps
   module Orders
     class WebOrders < Browser::BaseCache
       assign({})
-      def cache
-        self.class.cache
-      end
 
       def orders_toolbar
         cache[:orders_toolbar] = Orders::Toolbar::OrdersToolbar.new(param) if cache[:orders_toolbar].nil?
@@ -37,12 +34,12 @@ module Stamps
       end
 
       def modals
-        cache[:modals] = Stamps::Browser::Base.new(param).extend(StampsOrdersModals) if cache[:modals].nil?
+        cache[:modals] = Stamps::Orders::StampsOrdersModals.new(param) if cache[:modals].nil?
         cache[:modals]
       end
 
       def marketplace
-        cache[:marketplace] = Stamps::Browser::Base.new(param).extend(MarketPlaceStoreModals) if cache[:marketplace].nil?
+        cache[:marketplace] = Stamps::Orders::MarketPlaceStoreModals.new(param) if cache[:marketplace].nil?
         cache[:marketplace]
       end
 

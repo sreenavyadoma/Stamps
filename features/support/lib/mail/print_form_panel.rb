@@ -235,7 +235,8 @@ module Stamps
         end
       end
 
-      class PrintForm < Browser::Base
+      class PrintForm < Browser::BaseCache
+        assign({})
         include PrintFormBlurOut
       end
     end

@@ -1,9 +1,15 @@
 module Stamps
+  ##
+  #
   module Browser
-    Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
-                       :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) do
-    end unless Object.const_defined?('Param')
+    unless Object.const_defined?('Param')
+      Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
+                         :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) do
+      end
+    end
 
+    ##
+    #
     module Cache
       class << self
         def included(base)
@@ -12,31 +18,39 @@ module Stamps
 
         module ClassMethods
           def assign(cache)
-            @cache=cache
+            @cache = cache
           end
 
           def cache
+            raise RuntimeError, "cache has not been set. Missing assign({}) statement in your class." if @cache.nil?
             @cache
           end
         end
       end
     end
 
-    class BaseCache
-      include Cache
+    ##
+    #
+    class Base
       class << self
         attr_accessor :browser
       end
       attr_reader :param, :logger
       def initialize(param)
-        @param=param
-        self.class.browser=param.browser
-        @logger=param.logger
+        @param = param
+        self.class.browser = param.browser
+        @logger = param.logger
       end
 
       def browser
         self.class.browser
       end
+    end
+
+    ##
+    #
+    class BaseCache < Base
+      include Cache
 
       def cache
         self.class.cache
@@ -44,10 +58,10 @@ module Stamps
     end
 
     class FloatingBoundList < BaseCache
-      @@hash={}
+      @@hash = {}
       class << self
         def set(key, val)
-          @@hash[key.to_sym]=val
+          @@hash[key.to_sym] = val
         end
 
         def get(key)
@@ -92,18 +106,6 @@ module Stamps
       end
     end
 
-    #deprecated
-    # This class is deprecated. Use BaseCache instead.
-    class Base
-      attr_reader :param, :browser, :cache, :logger
-      def initialize(param)
-        @param=param
-        @browser=param.browser
-        @logger=param.logger
-        @cache={}
-      end
-    end
-
     # todo-Rob REW
     class StampsField
       attr_reader :field, :browser
@@ -113,8 +115,8 @@ module Stamps
       alias_method :input, :field
 
       def initialize(field)
-        @field=field
-        @browser=field.browser
+        @field = field
+        @browser = field.browser
       end
 
       def url
@@ -186,9 +188,9 @@ module Stamps
         end
       end
 
-      def wait_while_present(counter=2, duration=0.25)
+      def wait_while_present(counter = 2, duration = 0.25)
         begin
-          (counter.to_i).times do
+          counter.to_i.times do
             break unless present?
             sleep(duration)
           end
@@ -198,9 +200,9 @@ module Stamps
         self
       end
 
-      def wait_until_present(counter=2, duration=0.25)
+      def wait_until_present(counter = 2, duration = 0.25)
         begin
-          (counter.to_i).times do
+          counter.to_i.times do
             break if present?
             sleep(duration)
           end
@@ -249,9 +251,9 @@ module Stamps
         ''
       end
 
-      def click(ctr=1)
+      def click(ctr = 1)
         begin
-          (ctr.to_i).times do
+          ctr.to_i.times do
             field.click if clickable?
           end
         rescue
@@ -260,9 +262,9 @@ module Stamps
         self
       end
 
-      def click_while_present(counter=2, duration=0.25)
+      def click_while_present(counter = 2, duration = 0.25)
         begin
-          (counter.to_i).times do
+          counter.to_i.times do
             click
             sleep(duration)
             break unless clickable?
@@ -273,9 +275,9 @@ module Stamps
         self
       end
 
-      def double_click(ctr=1)
+      def double_click(ctr = 1)
         begin
-          (ctr.to_i).times do
+          ctr.to_i.times do
             field.double_click if clickable?
           end
         rescue
@@ -284,9 +286,9 @@ module Stamps
         self
       end
 
-      def blur_out(ctr=1)
+      def blur_out(ctr = 1)
         begin
-          (ctr.to_i).times do
+          ctr.to_i.times do
             flash
             double_click
             click
@@ -315,7 +317,7 @@ module Stamps
     class StampsField2 < StampsField
       def initialize(field, disabled_field, attribute, attribute_value)
         super(field)
-        @disabled_field=disabled_field
+        @disabled_field = disabled_field
         @attribute = attribute
         @attribute_value = attribute_value
       end
@@ -335,12 +337,12 @@ module Stamps
         false
       end
 
-      def send_keys(symbol, iteration=1)
+      def send_keys(symbol, iteration = 1)
         iteration.to_i.times do
           begin
             clear
             textbox.send_keys(symbol) if present?
-            break if symbol.instance_of?(Symbol)||text==symbol
+            break if symbol.instance_of?(Symbol) || text == symbol
           rescue
             # ignore
           end
@@ -359,14 +361,14 @@ module Stamps
     end
 
     class StampsTextbox < StampsInput
-      def set(str, iteration=1)
+      def set(str, iteration = 1)
         iteration.to_i.times do
           begin
             clear
             textbox.set(str) if present?
-            break if text==str
-            set_attribute_value("value", str)  if present?
-            break if text==str
+            break if text == str
+            set_attribute_value("value", str) if present?
+            break if text == str
           rescue
             # ignore
           end
@@ -466,10 +468,10 @@ module Stamps
     class StampsCheckbox
       attr_accessor :checkbox, :check_verify, :attribute, :attribute_value
       def initialize(checkbox, check_verify, attribute, attribute_value)
-        @checkbox=StampsField.new(checkbox)
-        @check_verify=check_verify
-        @attribute=attribute
-        @attribute_value=attribute_value
+        @checkbox = StampsField.new(checkbox)
+        @check_verify = check_verify
+        @attribute = attribute
+        @attribute_value = attribute_value
       end
 
       def present?
@@ -490,8 +492,8 @@ module Stamps
 
       def checked?
         begin
-          result=check_verify.attribute_value(attribute)
-          return result=="true" if result=="true"||result=="false"
+          result = check_verify.attribute_value(attribute)
+          return result == "true" if result == "true" || result == "false"
           return result.include?(attribute_value)
         rescue
           # ignore
@@ -521,10 +523,10 @@ module Stamps
     class StampsRadio
       attr_accessor :radio, :check_verify, :attribute, :attribute_value
       def initialize(radio, check_verify, attribute, attribute_value)
-        @radio=StampsField.new(radio)
-        @check_verify=check_verify
-        @attribute=attribute
-        @attribute_value=attribute_value
+        @radio = StampsField.new(radio)
+        @check_verify = check_verify
+        @attribute = attribute
+        @attribute_value = attribute_value
       end
 
       def select
@@ -550,16 +552,16 @@ module Stamps
       attr_accessor :browser, :dropdown, :textbox, :html_tag
 
       def initialize(dropdown, html_tag, textbox)
-        @browser=dropdown.browser
-        @dropdown=StampsField.new(dropdown)
-        @html_tag=html_tag
-        @textbox=StampsTextbox.new(textbox)
+        @browser = dropdown.browser
+        @dropdown = StampsField.new(dropdown)
+        @html_tag = html_tag
+        @textbox = StampsTextbox.new(textbox)
       end
 
       def expose_selection(selection)
         case html_tag
           when :li
-            selection_field=browser.li(text: selection)
+            selection_field = browser.li(text: selection)
           else
             "Unsupported HTML drop-down selection tag #{html_tag}".should
         end
@@ -572,7 +574,7 @@ module Stamps
       end
 
       def select(selection)
-        selection_field=StampsField.new(expose_selection(selection))
+        selection_field = StampsField.new(expose_selection(selection))
         case selection
           when String
             10.times do
@@ -598,8 +600,8 @@ module Stamps
 
       def initialize(textbox, dropdown, list_of_values)
         super(textbox)
-        @dropdown=StampsField.new(dropdown)
-        @list_of_values=list_of_values
+        @dropdown = StampsField.new(dropdown)
+        @list_of_values = list_of_values
       end
 
       def select(str)
@@ -608,8 +610,8 @@ module Stamps
         expect(list_of_values).not_to be_nil, "Error: Set list_of_values before calling select_from_lov."
         10.times do
           begin
-            dropdown.click if list_of_values.size==0
-            break unless list_of_values.size==0
+            dropdown.click if list_of_values.size == 0
+            break unless list_of_values.size == 0
           rescue
             # ignore
           end
@@ -617,7 +619,7 @@ module Stamps
         20.times do
           begin
             list_of_values.each do |item_selection|
-              selection=StampsField.new(item_selection)
+              selection = StampsField.new(item_selection)
               if !selection.nil? && selection.text.downcase.include?(str.downcase)
                 sleep(0.05)
                 selection.click
@@ -639,8 +641,8 @@ module Stamps
 
       def initialize(textbox, dropdown, html_tag)
         super(textbox)
-        @dropdown=StampsField.new(dropdown)
-        @html_tag=html_tag
+        @dropdown = StampsField.new(dropdown)
+        @html_tag = html_tag
       end
 
       def select(str)
@@ -648,11 +650,11 @@ module Stamps
         expect(html_tag).not_to be_nil, "Error: Set html_tag before calling select."
         case html_tag
           when :span
-            selection=StampsField.new(browser.span(text: str))
+            selection = StampsField.new(browser.span(text: str))
           when :li
-            selection=StampsField.new(browser.li(text: str))
+            selection = StampsField.new(browser.li(text: str))
           when :div
-            selection=StampsField.new(browser.div(text: str))
+            selection = StampsField.new(browser.div(text: str))
           else
             # do nothing
         end
@@ -662,7 +664,7 @@ module Stamps
             dropdown.click unless selection.present?
             selection.scroll_into_view
             selection.click
-            break if text==str
+            break if text == str
           rescue
             # ignore
           end
@@ -676,14 +678,18 @@ module Stamps
       attr_reader :browser, :textbox, :increment, :decrement
 
       def initialize(textbox, inc_btn, dec_btn)
-        @textbox=StampsTextbox.new(textbox)
-        @increment=StampsField.new(inc_btn)
-        @decrement=StampsField.new(dec_btn)
-        @browser=textbox.browser
+        @textbox = StampsTextbox.new(textbox)
+        @increment = StampsField.new(inc_btn)
+        @decrement = StampsField.new(dec_btn)
+        @browser = textbox.browser
       end
 
       def present?
         textbox.present?
+      end
+
+      def scroll_into_view(*args)
+        textbox.scroll_into_view(*args)
       end
 
       def text
@@ -693,29 +699,17 @@ module Stamps
       def set(value)
         textbox.set(value)
       end
-
-      def selection(str)
-        expect([:li, :div]).to include(@selection_type)
-        case selection_type
-          when :li
-            browser.lis(text: str)
-          when :div
-            browser.divs(text: str)
-          else
-            # do nothing
-        end
-      end
     end
 
     class StampsCombobox
-      attr_accessor :browser, :textbox, :dropdown, :selection_type
+      attr_accessor :browser, :textbox, :dropdown, :selection_type, :index
 
       def initialize(textboxes, dropdowns, selection_type, index)
-        @index=index
-        @textbox=StampsTextbox.new(textboxes[@index])
-        @dropdown=StampsTextbox.new(dropdowns[@index])
-        @selection_type=selection_type
-        @browser=textbox.browser
+        @index = index
+        @textbox = StampsTextbox.new(textboxes[index])
+        @dropdown = StampsTextbox.new(dropdowns[index])
+        @selection_type = selection_type
+        @browser = textbox.browser
       end
 
       def present?
@@ -723,12 +717,11 @@ module Stamps
       end
 
       def selection(str)
-        expect([:li, :div]).to include(@selection_type)
         case selection_type
           when :li
-            browser.lis(text: str)[@index]
+            browser.lis(text: str)[index]
           when :div
-            browser.divs(text: str)[@index]
+            browser.divs(text: str)[index]
           else
             # do nothing
         end
@@ -737,16 +730,15 @@ module Stamps
       def select(str)
         dropdown.click
         10.times do
-          selection=StampsField.new(selection(str))
+          selection = StampsField.new(selection(str))
           begin
-            break if (textbox.text).include?(str)
+            break if textbox.text.include?(str)
             dropdown.click unless selection.present?
-            selection.click
+            selection.scroll_into_view.click
           rescue
             # ignore
           end
         end
-        expect(textbox.text).to eql(str)
         textbox.text
       end
     end

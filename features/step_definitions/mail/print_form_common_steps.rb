@@ -65,6 +65,21 @@ When /^[Cc]lick Print Sample button on Print form$/ do
   @print_window=stamps.mail.mail_toolbar.print_sample
 end
 
+When /^[Ss]elect on [Pp]rint [Pp]review [Pp]anel, [Ll]eft side starting label$/ do
+  stamps.mail.print_preview.select_left_label
+end
+
+Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, left side label is selected$/ do
+  expect(stamps.mail.print_preview.left_selected?).to be(true), "Left Label image doesn't exists on Print form"
+end
+
+When /^[Ss]elect on [Pp]rint [Pp]review [Pp]anel, [Rr]ight side starting label$/ do
+  stamps.mail.print_preview.select_right_label
+end
+
+Then /^[Ee]xpect on [Pp]rint [Pp]review [Pp]anel, right side label is selected$/ do
+  expect(stamps.mail.print_preview.right_selected?).to be(true), "Right Label image doesn't exists on Print form"
+end
 
 Then /^[Ss]et Print form [Mm]ail-[Tt]o [Cc]ountry to (.*)$/ do |country|
   20.times do # work around for rating problem

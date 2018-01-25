@@ -232,8 +232,12 @@ Then /^[Ss]et [Oo]rder [Dd]etails [Tt]racking to (.*)$/ do |str|
   step 'Save Order Details data'
 end
 
-Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (.+)$/ do |str|
-  test_param[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
+Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Ff]rom to (?:Manage Shipping Addresses\.\.\.|(.*))$/ do |str|
+  if str.nil?
+    stamps.orders.order_details.single_ship_from.select('Manage Shipping Addresses...')
+  else
+    test_param[:ship_from] = stamps.orders.order_details.single_ship_from.select(str)
+  end
 end
 
 Then /^[Ss]et [Oo]rder [Dd]etails [Ss]hip-[Tt]o Country to a random country in PMEI Flat Rate price group (.*)$/ do |group|

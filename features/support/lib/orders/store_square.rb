@@ -12,6 +12,63 @@ module Stamps
         end
       end
 
+      module GeneralSettings
+        def title_text
+          (cache[:title_text].nil?||!cache[:title_text].present?)?cache[:title_text]= StampsField.new(iframe.h3(css: "div[class^='storeEdit']>form>h3")):cache[:title_text]
+        end
+
+        def store_nickname
+          (cache[:store_nickname].nil?||!cache[:store_nickname].present?)?cache[:store_nickname]=StampsTextbox.new(iframe.text_field(name: "storeName")):cache[:store_nickname]
+        end
+
+        def checkbox
+          (cache[:checkbox].nil?||!cache[:checkbox].present?)?cache[:checkbox]=StampsCheckbox.new(
+              iframe.input(css: 'input[id=importOrders]'),
+              iframe.input(css: 'input[id=importOrders]'),
+              "class",
+              "ng-not-empty"):cache[:checkbox]
+        end
+      end
+
+      module ServiceMapping
+
+        def service_text
+          (cache[:service_text].nil?||!cache[:service_text].present?)?cache[:service_text]= StampsField.new(iframe.h3(text: "Service Mapping")):cache[:service_text]
+        end
+
+        def requested_service
+          (cache[:requested_service].nil?||!cache[:requested_service].present?)?cache[:requested_service]= StampsTextbox.new(iframe.text_field(text: "serviceName")) :cache[:requested_service]
+        end
+
+        def shipping_serv_dropdown
+          (cache[:shipping_serv_dropdown].nil?||!cache[:shipping_serv_dropdown].present?)?cache[:shipping_serv_dropdown]=StampsField.new(
+              browser.div(css: "div>input[placeholder='Select a Service']")):cache[:shipping_serv_dropdown]
+        end
+
+        def shipping_serv_textbox
+          (cache[:shipping_serv_textbox].nil?||!cache[:shipping_serv_textbox].present?)?cache[:shipping_serv_textbox]=StampsTextbox.new(iframe.text_field(placeholder: "Select a Service")):cache[:shipping_serv_textbox]
+        end
+
+        def select_servicess(str)
+          service_selection = StampsField.new(browser.span(text: str))
+
+          15.times do
+            break if shipping_serv_textbox.text.include?(str)
+            shipping_serv_dropdown.click unless service_selection.present?
+            shipping_serv_dropdown.wait_until_present(4)
+            shipping_serv_dropdown.click unless service_selection.present?
+            service_selection.scroll_into_view
+            service_selection.click
+            blur_out
+          end
+          shipping_serv_textbox.text
+        end
+
+        def action_remove_btn
+          (cache[:action_remove_btn].nil?||!cache[:action_remove_btn].present?)?cache[:action_remove_btn]=StampsField.new(iframe.button(css: "[ng-click^='storeEdit.removeServiceMapping']")):cache[:action_remove_btn]
+        end
+      end
+
       module Products
         def title_text
           (cache[:title_text].nil?||!cache[:title_text].present?)?cache[:title_text]= StampsField.new(iframe.h3(css: "div[class^='products-section']>h3")):cache[:title_text]
@@ -42,8 +99,9 @@ module Stamps
         end
       end
 
-      class Settings < Browser::BaseCache
-        assign({})
+      class Settings < Browser::Base
+        include GeneralSettings
+        include ServiceMapping
 
         def iframe
           browser.iframe(css: "iframe[id=storeiframe]")
@@ -79,6 +137,7 @@ module Stamps
         end
       end
 
+      class Square < Browser::Base
       class Square < Browser::BaseCache
         include SqaureWindowTitle
         assign({})
