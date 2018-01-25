@@ -308,7 +308,7 @@ end
 Then /^[Ee]xpect [Oo]rder [Dd]etails service \"(.*)\" is enabled/ do | expectation |
   # stamps.orders.order_details.wait_until_present(2)
   # step "expect Order Details is present"
-  # expect(stamps.orders.order_details.service.enabled?(expectation)).to be(true)
+  #  expect(stamps.orders.order_details.service.enabled?(expectation)).to be(true)
 end
 
 Then /^[Ee]xpect Pounds tooltip to display - The maximum value for this field is ([0-9.]+)$/ do |expectation|
