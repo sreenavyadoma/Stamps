@@ -29,6 +29,18 @@ module Stamps
       def insurance_terms_conditions
         ::SingleOrder::InsuranceTermsConditions.new(param) #todo-Rob-usps-terms move set_and_agree_to_terms out of page object onto step def.
       end
+
+      def manage_shipping_addresses
+        cache[:manage_shipping_addresses].nil? ? cache[:manage_shipping_addresses] = ShipFrom::ManageShippingAddresses.new(param) : cache[:manage_shipping_addresses]
+      end
+
+      def add_shipping_address
+        cache[:add_shipping_address].nil? ? cache[:add_shipping_address] = ShipFrom::AddShippingAddress.new(param) : cache[:add_shipping_address]
+      end
+
+      def delete_shipping_address
+        cache[:delete_shipping_address].nil? ? cache[:delete_shipping_address] = ShipFrom::DeleteShippingAddress.new(param) : cache[:delete_shipping_address]
+      end
     end
 
     module TermsAndConditions
@@ -65,7 +77,7 @@ module Stamps
       end
 
       def terms_conditions
-        cache[:terms_conditions] = TermsAndConditionsModal.new(param) if cache[:terms_conditions].nil? || !cache[:terms_conditions].present?
+        cache[:terms_conditions] = TermsAndConditionsModal.new(param) if cache[:terms_conditions].nil?
         cache[:terms_conditions]
       end
     end

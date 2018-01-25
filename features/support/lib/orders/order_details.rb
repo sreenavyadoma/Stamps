@@ -54,13 +54,12 @@ module Stamps
           end
         end
 
-        class AutoSuggestInternational < Browser::Base
-          # todo-rob refactor auto-suggest internatinal
-          attr_reader :auto_suggest_box
+        #todo-rob refactor auto-suggest internatinal
+        class AutoSuggestInternational < Browser::BaseCache
+          assign({})
 
-          def initialize(param)
-            super
-            @auto_suggest_box = AutoSuggestPopUp.new(param)
+          def auto_suggest_box
+            cache[:auto_suggest_box].nil? ? cache[:auto_suggest_box] = AutoSuggestPopUp.new(param) : cache[:auto_suggest_box]
           end
 
           def set address
@@ -82,7 +81,9 @@ module Stamps
           end
         end
 
-        class AutoSuggestPopUp < Browser::Base
+        class AutoSuggestPopUp < Browser::BaseCache
+          assign({})
+
           def present?
             name_fields[0].present?
           end
@@ -107,12 +108,14 @@ module Stamps
           end
         end
 
-        class AddressNotFound < Browser::Base
-          attr_reader :window_title
+        class AddressNotFound < Browser::BaseCache
+          assign({})
 
-          def initialize(param)
-            super
-            @window_title = StampsField.new browser.div(text: 'Exact Address Not Found')
+          def window_title
+            if cache[:window_title].nil? || !cache[:window_title].present?
+                cache[:window_title] = StampsField.new(browser.div(text: 'Exact Address Not Found'))
+            end
+            cache[:window_title]
           end
 
           def present?
@@ -157,12 +160,11 @@ module Stamps
           end
         end
 
-        class AmbiguousAddress < Browser::Base
-          attr_reader :address_not_found
+        class AmbiguousAddress < Browser::BaseCache
+          assign({})
 
-          def initialize(param)
-            super
-            @address_not_found = AddressNotFound.new(param)
+          def address_not_found
+            cache[:address_not_found].nil? ? cache[:address_not_found] =  AddressNotFound.new(param) : cache[:address_not_found]
           end
 
           def data_error
@@ -275,7 +277,7 @@ module Stamps
           end
         end
 
-        class ShipToCountry < BaseCache
+        class ShipToCountry < Browser::BaseCache
           assign({})
           include ShowShipToDetails
           attr_reader :textbox_field, :dropdown_field
@@ -285,7 +287,10 @@ module Stamps
             @dropdown_field = dropdown_field
           end
 
+          assign({})
+
           def dropdown
+            cache[:dropdown].nil? || !cache[:dropdown].present? ? cache[:dropdown] = StampsField.new(dd) : cache[:dropdown]
             if cache[:dropdown].nil? || !cache[:dropdown].present?
               cache[:dropdown] = StampsField.new(dropdown_field)
             end
@@ -293,6 +298,7 @@ module Stamps
           end
 
           def textbox
+            cache[:textbox].nil? || !cache[:textbox].present? ? cache[:textbox] = StampsTextbox.new(txtbox) : cache[:textbox]
             if cache[:textbox].nil? || !cache[:textbox].present?
               cache[:textbox] = StampsTextbox.new(textbox_field)
             end
@@ -420,13 +426,16 @@ module Stamps
           assign({})
           include ShowShipToDetails, BlurOutField
 
-          attr_reader :ambiguous, :auto_suggest, :address_not_found
+          def ambiguous
+            cache[:ambiguous].nil? ? cache[:ambiguous] = AmbiguousAddress.new(param) : cache[:ambiguous]
+          end
 
-          def initialize(param)
-            super
-            @address_not_found = AddressNotFound.new(param)
-            @ambiguous = AmbiguousAddress.new(param)
-            @auto_suggest = AutoSuggestDomestic.new(param, @textarea)
+          def auto_suggest
+            cache[:auto_suggest].nil? ? cache[:auto_suggest] = AutoSuggestDomestic.new(param, textarea) : cache[:auto_suggest]
+          end
+
+          def address_not_found
+            cache[:address_not_found].nil? ? cache[:address_not_found] = AddressNotFound.new(param) : cache[:address_not_found]
           end
 
           def country
@@ -457,21 +466,15 @@ module Stamps
           end
 
           def textarea
-            show_ship_to_details
-            @textarea = ShipToTextArea.new browser.textarea(name: "freeFormAddress") if @textarea.nil? || !@textarea.present?
-            @textarea
+            cache[:textarea].nil? || !cache[:textarea].present? ? cache[:textarea] = ShipToTextArea.new(browser.textarea(name: "freeFormAddress")) : cache[:textarea]
           end
 
           def email
-            show_ship_to_details
-            @email = StampsTextbox.new browser.text_field(name: 'BuyerEmail') if @email.nil? || !@email.present?
-            @email
+            cache[:email].nil? || !cache[:email].present? ? cache[:email] = StampsTextbox.new(browser.text_field(name: 'BuyerEmail')) : cache[:email]
           end
 
           def phone
-            show_ship_to_details
-            @phone = StampsTextbox.new browser.text_field(name: "ShipPhone") if @phone.nil? || !@phone.present?
-            @phone
+            cache[:phone].nil? || !cache[:phone].present? ? cache[:phone] = StampsTextbox.new(browser.text_field(name: "ShipPhone")) : cache[:phone]
           end
 
           def set(address) #todo-Rob move setting textarea responsibility to step def
@@ -485,10 +488,8 @@ module Stamps
                   break if less_link.present?
                 end
                 break if less_link.present?
-              rescue Exception => e
-                logger.error e.message
-                logger.error e.backtrace.join("\n")
-                expect("Unable to Ship-To address to #{address}. Error: #{e.message}").to eql "Set Ship-To Address Failed"
+              rescue
+                # ignore
               end
             end
             textarea.text
@@ -505,12 +506,18 @@ module Stamps
           end
         end
 
-        class AutoSuggestDomestic < Browser::Base
-          attr_reader :textarea, :auto_suggest_box
+        class AutoSuggestDomestic < Browser::BaseCache
+          assign({})
+
+          attr_reader :textarea
+
           def initialize(param, textarea)
             super(param)
             @textarea = textarea
-            @auto_suggest_box = AutoSuggestPopUp.new(param)
+          end
+
+          def auto_suggest_box
+            cache[:auto_suggest_box].nil? ? cache[:auto_suggest_box] = AutoSuggestPopUp.new(param) : cache[:auto_suggest_box]
           end
 
           def set(address)
@@ -523,9 +530,8 @@ module Stamps
                 return auto_suggest_box if auto_suggest_box.present?
                 ship_to_area1.double_click
                 return auto_suggest_box if auto_suggest_box.present?
-              rescue Exception => e
-                logger.error e.message
-                logger.error e.backtrace.join("\n")
+              rescue
+                # ignore
               end
             }
           end
@@ -703,13 +709,19 @@ module Stamps
           end
         end
 
-        class ItemsOrderedSection < Browser::Base
-          attr_reader :add_btn, :dropdown
+        class ItemsOrderedSection < Browser::BaseCache
+          assign({})
 
-          def initialize(param)
-            super
-            @add_btn = StampsField.new(browser.span(css: "span[class*=sdc-icon-add]"))
-            @dropdown = StampsField.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
+          def add_btn
+            cache[:add_btn] = StampsField.new(browser.span(css: "span[class*=sdc-icon-add]")) if cache[:add_btn].nil? || !cache[:add_btn].present?
+            cache[:add_btn]
+          end
+
+          def dropdown
+            if cache[:dropdown].nil? || cache[:dropdown].present?
+              cache[:dropdown] = StampsField.new(browser.img(css: "div[id^=associatedorderitems-][id$=_header-targetEl]>div>img"))
+            end
+            cache[:dropdown]
           end
 
           def expand
@@ -805,25 +817,39 @@ module Stamps
           end
         end
 
-        class Toolbar < Browser::Base
+        class Toolbar < Browser::BaseCache
           include OrderDetailsOrderId
+          assign({})
           def menu
-            @menu = ToolbarMenu.new(param) if @menu.nil? || !@menu.present?
-            @menu
+            cache[:menu].nil? ? cache[:menu] = ToolbarMenu.new(param) : cache[:menu]
+          end
+
+          def order
+            cache[:order].nil? ? cache[:order] = SingleOrderDetailsOrderId.new(param) : cache[:order]
           end
         end
 
-        class Footer < Browser::Base
+        class Footer < Browser::BaseCache
+          assign({})
+
           def label
-            StampsField.new(browser.strong(text: 'Total Ship Cost:'))
+            cache[:label].nil? || !cache[:label].present? ? cache[:label] = StampsField.new(browser.strong(text: 'Total Ship Cost:')) : cache[:label]
           end
 
           def total_ship_cost
-            StampsField.new(browser.strong(css: '[class*=singleorder-detailsform] [class*=total_cost] strong'))
+            if cache[:total_ship_cost].nil? || !cache[:total_ship_cost].present?
+                cache[:total_ship_cost] = StampsField.new(browser.strong(css: '[class*=singleorder-detailsform] [class*=total_cost] strong'))
+            end
+            cache[:total_ship_cost]
+          end
+
+          def cost_label
+            cache[:cost_label] = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1]) if cache[:cost_label].nil? || !cache[:cost_label].present?
+            cache[:cost_label]
           end
 
           def multiple_order_cost
-            cost_label = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1])
+            # cost_label = StampsField.new(browser.labels(css: "label[class*=total_cost]")[1])
             10.times do
               begin
                 cost = cost_label.text
@@ -903,7 +929,7 @@ module Stamps
                 return lov[1] if lov[1].present?
               end
             end
-            
+
             raise ArgumentError, "Unable to create selection field for #{str}. Maximum of 2 floating service list of values expected."
           end
 
