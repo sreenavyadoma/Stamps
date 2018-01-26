@@ -2,8 +2,8 @@
 Then /^[Cc]heck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/ do |order_id|
   order_id = order_id.nil? ? test_param[:order_id].values.last : test_param[:order_id][order_id.to_i]
   stamps.orders.orders_grid.grid_column(:checkbox).check_order_id(order_id)
-  expect(stamps.orders.orders_grid.grid_column(:checkbox).order_id_checked?(
-      order_id)).to be(true), "Couldn't check Order ID #{order_id}"
+  expect(stamps.orders.orders_grid.grid_column(
+      :checkbox).order_id_checked?(order_id)).to be(true), "Couldn't check Order ID #{order_id}"
 end
 
 Then /^[Uu]ncheck [Oorders ]*?[Ggrid ]*?[Ccached ]*?[Oo]rder[IiDd ]*?(?:| (\d+))$/ do |order_id|

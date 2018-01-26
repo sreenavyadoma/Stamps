@@ -92,12 +92,13 @@ Feature: Bulk Update Domestic
     Then add order 3
     Then set order details service to PM Large Package
 
-    Then check order 3
-    Then check order 4
+    Then add order 4
     Then set Order Details Domestic Ship-To Country to Canada
     Then set Order Details service to PMI Package/Flat/Thick Envelope
 
+
     Then check order 3
+    Then check order 4
     Then expect bulk update is present
 
     Then set Bulk Update international service to FCMI Large Envelope/Flat

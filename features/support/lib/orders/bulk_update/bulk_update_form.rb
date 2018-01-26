@@ -149,7 +149,7 @@ module Stamps
           def selection(str)
             lov = browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")
             if lov.size == 1 # return first one
-              lov[0]
+              return lov[0]
             elsif lov.size == 2
               10.times do
                 dropdown.scroll_into_view.click unless lov[0].present? || lov[1].present?
@@ -164,10 +164,10 @@ module Stamps
             dropdown.click
             10.times do
               begin
-                field = StampsField.new(selection(str))
-                dropdown.click unless field.present?
-                field.scroll_into_view.click
                 break if textbox.text.include?(str)
+                field = StampsField.new(selection(str))
+                dropdown.scroll_into_view.click unless field.present?
+                field.scroll_into_view.click
               rescue
                 #ignore
               end
@@ -260,10 +260,10 @@ module Stamps
             dropdown.click
             10.times do
               begin
+                break if textbox.text.include?(str)
                 field = StampsField.new(selection(str))
                 dropdown.click unless field.present?
                 field.scroll_into_view.click
-                break if textbox.text.include?(str)
               rescue
                 #ignore
               end
