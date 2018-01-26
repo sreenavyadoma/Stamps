@@ -157,7 +157,8 @@ module Stamps
                 return lov[1] if lov[1].present?
               end
             end
-            nil
+
+            raise ArgumentError, "Unable to create selection field for #{str}. Maximum of 2 floating service list of values expected."
           end
 
           def select(str)
@@ -176,7 +177,7 @@ module Stamps
           end
 
           def tooltip(selection)
-            raise 'Service tooltip is not implemented!'
+            raise 'Not Implemented'
 #             selection_label=StampsField.new(browser.tr(css: "tr[data-qtip*='#{selection}']"))
 #             10.times do
 #               begin
@@ -253,7 +254,7 @@ module Stamps
               end
             end
 
-            raise ArgumentError, "Unable to select international service #{str}"
+            raise ArgumentError, "Unable to create selection field for #{str}. Maximum of 2 floating service list of values expected."
           end
 
           def select(str)

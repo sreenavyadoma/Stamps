@@ -115,7 +115,7 @@ Feature: Bulk Update Domestic
 
     Then check order 4
     Then expect order details service is FCMI Large Envelope/Flat
-    Then set order details service to FCMI Large Envelope/Flat
+    Then set order details service to PMI Package/Flat/Thick Envelope
 
 
 
