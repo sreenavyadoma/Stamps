@@ -63,7 +63,7 @@ module Stamps
           case param.print_media
           when :stamps
             if cache[:stamps_options].nil? || !cache[:stamps_options].present?
-              cache[:stamps_options] = Stamps::Mail::AdvancedOptions::Form.class.assign({}).extend(AdvancedOptions::StampsAdvancedOptions)
+              cache[:stamps_options] = Stamps::Mail::AdvancedOptions::Form.new(param).extend(AdvancedOptions::StampsAdvancedOptions)
             end
             return cache[:stamps_options]
           when :label
@@ -262,7 +262,7 @@ module Stamps
 
       ##
       # print form
-      class Form < BaseCache
+      class Form < Browser::BaseCache
         assign({})
       end
     end
