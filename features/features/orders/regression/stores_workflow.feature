@@ -6,6 +6,7 @@ Feature:  All Store Management
 
     @paypal_workflow
     Scenario: PayPal Workflow
+
       Then click orders toolbar settings button
       Then click Order Settings Stores Add button
       Then search Marketplace for store name Paypal
@@ -36,4 +37,35 @@ Feature:  All Store Management
       #Then Orders Settings: Click Done
       #Then Sign out
 
+
+    @square_workflow
+    Scenario: Square Store Workflow
+
+      Then click orders toolbar settings button
+      Then click Order Settings Stores Add button
+      Then search Marketplace for store name square
+      Then expect Marketplace dataview count is equal to 2
+      Then connect Marketplace store square
+      Then expect Square store modal present
+      Then expect Square logo present
+      Then expect Square Authorize Button present
+      Then click Square Authorize Button
+
+      # External sites Square Login page ##https://squareup.com/login?
+      Then expect external site square email textbox is present
+      Then set external site square email is webapps@stamps.com
+      Then set external site square password is password1
+      Then click external site square Sign In button
+
+      # Settings Modal
+      Then expect Square Settings dialog is present
+      # General Settings
+      Then expect Settings dialog General Settings is present
+      Then set Settings dialog store NickName to sqaure QA testing
+      Then expect Settings dialog store import new orders is checked
+      Then Uncheck Settings dialog store import new orders
+      Then expect Settings dialog store import new orders is Unchecked
+      Then check Settings dialog store import new orders
+      # Service Mapping
+      #Then expect Settings dialog Service Mapping is present
 

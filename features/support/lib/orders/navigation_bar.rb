@@ -393,8 +393,13 @@ module Stamps
       def orders_link
         cache[:orders_link].nil? ? cache[:orders_link] = StampsField.new(browser.a(text: 'Orders')) : cache[:orders_link]
       end
+
       def mail_link
         cache[:mail_link].nil? ? cache[:mail_link] = StampsField.new(browser.a(text: 'Mail')) : cache[:mail_link]
+      end
+
+      def help_link
+        cache[:help_link].nil? ? cache[:help_link] = StampsField.new(browser.a(text: 'Help')) : cache[:help_link]
       end
 
       def orders

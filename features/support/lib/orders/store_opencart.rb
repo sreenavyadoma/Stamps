@@ -3,19 +3,20 @@ module Stamps
     module Stores
       module ShipStationUpgradeMessage
         def free_upgrade_message
-          (cache[:free_upgrade_message].nil?||!cache[:free_upgrade_message].present?)?cache[:free_upgrade_message]= StampsField.new(browser.span(text: "Requires Free Upgrade")):cache[:free_upgrade_message]
+          StampsField.new(browser.span(text: "Requires Free Upgrade"))
         end
 
         def available_in_shipstation_msg
-          (cache[:available_in_shipstation_msg].nil?||!cache[:available_in_shipstation_msg].present?)?cache[:available_in_shipstation_msg]= StampsField.new(browser.div(text: 'Available in ShipStation')):cache[:available_in_shipstation_msg]
+          StampsField.new(browser.div(text: 'Available in ShipStation'))
         end
 
         def window_title
-          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(text: "Add Advanced Shipping Features!")):cache[:window_title]
+          StampsField.new(browser.div(text: "Add Advanced Shipping Features!"))
         end
       end
 
-      class OpenCart < Browser::Base
+      class OpenCart < Browser::BaseCache
+        assign({})
         def add_advanced_shipping_feature
           (cache[:advanced_shipping].nil?||!cache[:advanced_shipping].present?)?cache[:advanced_shipping]=AddAdvancedShippingFeatures.new(param):cache[:advanced_shipping]
         end

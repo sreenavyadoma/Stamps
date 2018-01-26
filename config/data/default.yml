@@ -58,6 +58,7 @@ supported_stores:
   shopify: Shopify
   magento: Magento
   opencart: OpenCart
+  square: Square
 
 
 intellij:

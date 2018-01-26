@@ -19,6 +19,7 @@ module Stamps
         module ClassMethods
           def assign(cache)
             @cache = cache
+            self
           end
 
           def cache
@@ -40,6 +41,7 @@ module Stamps
         @param = param
         self.class.browser = param.browser
         @logger = param.logger
+        self
       end
 
       def browser
@@ -51,7 +53,6 @@ module Stamps
     #
     class BaseCache < Base
       include Cache
-
       def cache
         self.class.cache
       end
