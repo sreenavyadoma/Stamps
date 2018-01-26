@@ -113,6 +113,7 @@ Feature: Bulk Update Domestic
     Then expect order details service is PME Padded Flat Rate Envelope
     Then set order details service to PM Large Package
 
+    Then uncheck order 3
     Then check order 4
     Then expect order details service is FCMI Large Envelope/Flat
     Then set order details service to PMI Package/Flat/Thick Envelope

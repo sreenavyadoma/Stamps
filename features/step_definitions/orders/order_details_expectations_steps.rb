@@ -1,5 +1,6 @@
 
 Then /^[Ee]xpect [Oo]rder [Dd]etails is present$/ do
+  stamps.orders.order_details.wait_until_present(4)
   expect(stamps.orders.order_details).to be_present, "Order Details form is not present"
 end
 
