@@ -7,7 +7,7 @@ module Stamps
 
         module IncFeldsWindowTitle
           def window_title
-            (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(text: "Incomplete Fields")):cache[:window_title]
+            StampsField.new(browser.div(text: "Incomplete Fields"))
           end
         end
 

@@ -17,7 +17,6 @@ module Stamps
 
       class PrintPreview < Browser::BaseCache
         include PrintFormBlurOut
-
         assign({})
 
         def link

@@ -466,7 +466,7 @@ module Stamps
 
       module OrdersPrintModalTitle
         def window_title
-          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.div(css: '[id^=printwindow-][id$=_header-innerCt] [class*=x-title-text-default]')):cache[:window_title]
+          StampsField.new(browser.div(css: '[id^=printwindow-][id$=_header-innerCt] [class*=x-title-text-default]'))
         end
 
         def label_count
@@ -474,7 +474,7 @@ module Stamps
         end
 
         def x_image
-          (@x_image.nil?||!@x_image.present?)?@x_image=StampsField.new(browser.img(css: "[id^=printwindow-] [class*=close]")):@x_image
+          StampsField.new(browser.img(css: "[id^=printwindow-] [class*=close]"))
         end
 
         def close

@@ -203,7 +203,7 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView < Browser::Base
+      class MarketplaceDataView < Browser::BaseCache
         def store_count
           begin
             return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
