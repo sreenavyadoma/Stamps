@@ -80,7 +80,8 @@ module Stamps
       def open_window(window)
         return window if window.present?
 
-        expect(print_button).to be_present, "Print button is not present."
+        raise "Print button is not present" unless print_button.present?
+
         30.times do
           begin
             print_button.click
@@ -110,7 +111,7 @@ module Stamps
             #ignore
           end
         end
-        expect(window).to be_present, "Unable to open Mail Print Modal"
+        raise "Unable to open Mail Print Modal"
       end
 
       def open_sample_window window
