@@ -1,6 +1,11 @@
 module Stamps
   module Orders
     module OrdersSettings
+
+      class TempCache < Base::BaseCache
+        assign({})
+      end
+
       module StoresTabViewToolbar
         def add_btn
           (cache[:add_btn].nil?||!cache[:add_btn].present?)?cache[:add_btn]=StampsField.new(browser.span(css: "[id=addStoreButton-btnIconEl]")):cache[:add_btn]
@@ -11,7 +16,7 @@ module Stamps
         end
 
         def marketplace_window_title
-          (cache[:marketplace_window_title].nil?||!cache[:marketplace_window_title].present?)?cache[:marketplace_window_title]=Browser::Base.new(
+          (cache[:marketplace_window_title].nil?||!cache[:marketplace_window_title].present?)?cache[:marketplace_window_title]=Browser::BaseCache.new(
               param).extend(Orders::Stores::MarketPlaceWindowTitle):cache[:marketplace_window_title]
         end
 
@@ -50,9 +55,11 @@ module Stamps
       module StoresTabViewBottom
       end
 
-      class StoresTabView < Browser::Base
+      class StoresTabView < Browser::BaseCache
         include StoresTabViewToolbar
         include StoresTabViewBottom
+
+        assign({})
 
         def present?
           add_btn.present?

@@ -49,7 +49,7 @@ module Stamps
       end
 
       def external_sites
-        (cache[:external_sites].nil?||!cache[:external_sites].present?)?cache[:external_sites]=Base.new(param).extend(StampsExternalSites):cache[:external_sites]
+        (cache[:external_sites].nil?||!cache[:external_sites].present?)?cache[:external_sites]=Stamps::Orders::ExternalSites::WebPage.new(param):cache[:external_sites]
       end
 
       def present?

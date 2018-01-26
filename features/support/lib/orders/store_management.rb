@@ -1,7 +1,8 @@
 module Stamps
   module Orders
     module Stores
-      class ImportingOrdersModal < Browser::Base
+      class ImportingOrdersModal < Browser::BaseCache
+        assign({})
         def present?
           browser.div(text: "Importing Orders").present?
         end
@@ -203,10 +204,12 @@ module Stamps
         end
       end
 
-      class MarketplaceDataView < Browser::Base
+      class MarketplaceDataView < Browser::BaseCache
+        assign({})
+
         def store_count
           begin
-            return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]>a").size
+            return browser.divs(css: "[id^=dataview][class*=x-window-item]>[class=x-dataview-item][role=option]").size
           rescue
             #ignore
           end
@@ -253,7 +256,7 @@ module Stamps
             when :magento
               raise "#{str} is not implemented."
             when :square
-              (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::Base.new(param).extend(Orders::Stores::SqaureWindowTitle):cache[:square_window]
+              (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::Base.new(param).extend(Orders::Stores::SquareWindowTitle):cache[:square_window]
             when :opencart
               (cache[:opencart_window].nil?||!cache[:opencart_window].present?)?cache[:opencart_window]=Browser::Base.new(param).extend(Orders::Stores::ShipStationUpgradeMessage):cache[:opencart_window]
             else
@@ -263,8 +266,8 @@ module Stamps
 
         def add_store(str)
           20.times do
-            return store_window(str).window_title.text if store_window(str).window_title.present?
             store_field(str).click
+            return store_window(str).window_title.text if store_window(str).window_title.present?
           end
           nil
         end
@@ -285,8 +288,10 @@ module Stamps
         end
       end
 
-      class Marketplace < Browser::Base
+      class Marketplace < Browser::BaseCache
         include MarketPlaceWindowTitle
+
+        assign({})
 
         def present?
           window_title.present?

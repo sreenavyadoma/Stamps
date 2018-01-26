@@ -2,13 +2,13 @@ module Stamps
   module Orders
     module Stores
 
-      module SqaureWindowTitle
+      module SquareWindowTitle
         def window_title
-          (cache[:window_title].nil?||!cache[:window_title].present?)?cache[:window_title]=StampsField.new(browser.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first):cache[:window_title]
+          StampsField.new(browser.divs(css: "[id^=storeiframewindow-][id$=_header-targetEl] [class*=x-title-item]").first)
         end
 
         def x_btn
-          (cache[:x_btn].nil?||!cache[:x_btn].present?)?cache[:x_btn]=StampsField.new(browser.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first):cache[:x_btn]
+          StampsField.new(browser.imgs(css: "[id^=storeiframewindow-][id$=_header-targetEl] img").first)
         end
       end
 
@@ -99,9 +99,11 @@ module Stamps
         end
       end
 
-      class Settings < Browser::Base
+      class Settings < Browser::BaseCache
         include GeneralSettings
         include ServiceMapping
+
+        assign({})
 
         def iframe
           browser.iframe(css: "iframe[id=storeiframe]")
@@ -137,9 +139,8 @@ module Stamps
         end
       end
 
-      class Square < Browser::Base
       class Square < Browser::BaseCache
-        include SqaureWindowTitle
+        include SquareWindowTitle
         assign({})
 
         def iframe

@@ -51,7 +51,7 @@ module Stamps
     #
     class BaseCache < Base
       include Cache
-
+      assign({})
       def cache
         self.class.cache
       end
