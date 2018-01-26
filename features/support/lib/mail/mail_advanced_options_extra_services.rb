@@ -189,7 +189,9 @@ module Stamps
         end
       end
 
-      class SpecialContentsWarning < Browser::Base #This class represents the Special Contents Warning modal. It appears when the extra service "Live Animal" or "live Animal (with fee)" is selected
+      ##
+      # This class represents the Special Contents Warning modal. It appears when the extra service "Live Animal" or "live Animal (with fee)" is selected
+      class SpecialContentsWarning < Browser::Base
         def i_agree
           (cache[:i_agree].nil?||!cache[:i_agree].present?)?cache[:i_agree]=StampsField.new(
               browser.span(text: "I Agree")):cache[:i_agree]

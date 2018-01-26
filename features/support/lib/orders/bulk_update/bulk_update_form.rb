@@ -152,7 +152,7 @@ module Stamps
               lov[0]
             elsif lov.size == 2
               10.times do
-                dropdown.scroll_into_view.click unless lov[0].present? && lov[1].present?
+                dropdown.scroll_into_view.click unless lov[0].present? || lov[1].present?
                 return lov[0] if lov[0].present?
                 return lov[1] if lov[1].present?
               end
@@ -229,13 +229,8 @@ module Stamps
           end
         end
 
-        class IntService < Browser::BaseCache
+        class IntlService < Browser::BaseCache
           assign({})
-
-          def selection_field(order_form, str)
-            ::Common::ServiceSelection::FloatingServiceTracker.new(param).selection_field(order_form, str)
-          end
-
           def textbox
             cache[:box] = StampsTextbox.new(browser.text_field(css: '[name=intlService]')) if cache[:box].nil? || !cache[:box].present?
             cache[:box]
@@ -246,13 +241,28 @@ module Stamps
             cache[:dd]
           end
 
+          def selection(str)
+            lov = browser.tds(css: "li##{data_for(:orders_services, {})[str]} td.x-boundlist-item-text")
+            if lov.size == 1 # return first one
+              return lov[0]
+            elsif lov.size == 2
+              10.times do
+                dropdown.scroll_into_view.click unless lov[0].present? || lov[1].present?
+                return lov[0] if lov[0].present?
+                return lov[1] if lov[1].present?
+              end
+            end
+
+            raise ArgumentError, "Unable to select international service #{str}"
+          end
+
           def select(str)
             dropdown.click
-            5.times do
+            10.times do
               begin
-                selection = selection_field(::Common::ServiceSelection::FloatingServiceTracker::BULK_UPDATE, str)
-                dropdown.click unless selection.present?
-                selection.scroll_into_view.click
+                field = StampsField.new(selection(str))
+                dropdown.click unless field.present?
+                field.scroll_into_view.click
                 break if textbox.text.include?(str)
               rescue
                 #ignore
@@ -530,7 +540,7 @@ module Stamps
         end
 
         def intl_service
-          cache[:int_service] = Fields::IntService.new(param) if cache[:int_service].nil?
+          cache[:int_service] = Fields::IntlService.new(param) if cache[:int_service].nil?
           cache[:int_service]
         end
 

@@ -922,7 +922,7 @@ module Stamps
               return lov[0]
             elsif lov.size == 2
               10.times do
-                dropdown.scroll_into_view.click unless lov[0].present? && lov[1].present?
+                dropdown.scroll_into_view.click unless lov[0].present? || lov[1].present?
                 return lov[0] if lov[0].present?
                 return lov[1] if lov[1].present?
               end

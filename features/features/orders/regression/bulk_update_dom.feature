@@ -50,42 +50,73 @@ Feature: Bulk Update Domestic
 #    Then check order 1
 #    Then check order 2
 
-    #Then check row 1
-    #Then check row 2
+
+
+
+
+
 
     Then add order 1
-    Then set Order Details Domestic Ship-To Country to Canada
-    Then set Order Details service to PMI Package/Flat/Thick Envelope
-
-    Then set Order Details international Ship-To Country to United States
-    Then set order details service to PM Large Package
-
     Then set Order Details Domestic Ship-To Country to Canada
     Then set Order Details service to PMI Package/Flat/Thick Envelope
 
     Then add order 2
     Then set order details service to PM Large Package
 
+    Then check order 1
+    Then check order 2
+
     Then expect bulk update is present
-    Then set Bulk Update international service to PMI Package/Flat/Thick Envelope
+
+    Then set Bulk Update international service to FCMI Large Envelope/Flat
     Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
 
     Then click Bulk Update Orders button
 
-    Then uncheck row 2
-    Then expect order details service is PMI Package/Flat/Thick Envelope
+    Then uncheck order 1
+    Then uncheck order 2
+
+    Then check order 1
+    Then expect order details service is FCMI Large Envelope/Flat
+    Then set order details service to PMI Package/Flat/Thick Envelope
+
+    Then uncheck order 1
+
+    Then check order 2
+    Then expect order details service is PME Padded Flat Rate Envelope
     Then set order details service to PM Large Package
 
-    Then check row 2
+
+
+
+    Then add order 3
+    Then set order details service to PM Large Package
+
+    Then check order 3
+    Then check order 4
+    Then set Order Details Domestic Ship-To Country to Canada
+    Then set Order Details service to PMI Package/Flat/Thick Envelope
+
+    Then check order 3
+    Then expect bulk update is present
+
+    Then set Bulk Update international service to FCMI Large Envelope/Flat
     Then set Bulk Update domestic service to PME Padded Flat Rate Envelope
+
     Then click Bulk Update Orders button
 
-    Then uncheck row 2
-    Then set Bulk Update domestic service to PME Package/Flat/Thick Envelope
-    Then check row 2
+    Then uncheck order 3
+    Then uncheck order 4
 
-    Then set Bulk Update Domestic service to PME Package/Flat/Thick Envelope
-    Then click Bulk Update Orders button
+    Then check order 3
+    Then expect order details service is PME Padded Flat Rate Envelope
+    Then set order details service to PM Large Package
+
+    Then check order 4
+    Then expect order details service is FCMI Large Envelope/Flat
+    Then set order details service to FCMI Large Envelope/Flat
+
+
 
     Then Sign out
 
