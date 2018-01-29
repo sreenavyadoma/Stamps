@@ -4,15 +4,15 @@ module Stamps
       class StampsMySqlConnection
         attr_reader :host, :username, :password, :logger, :connection
         def initialize(host, username, password, logger)
-          @host=host
-          @username=username
-          @password=password
-          @logger=logger
+          @host = host
+          @username = username
+          @password = password
+          @logger = logger
         end
 
         def connect
-          @connection=Mysql2::Client.new(host: host, username: username, password: password)
-          connection.automatic_close=true
+          @connection = Mysql2::Client.new(host: host, username: username, password: password)
+          connection.automatic_close = true
           logger.message "Database Encoding: #{connection.encoding}"
           logger.message "Database Info: #{connection.info}"
         end

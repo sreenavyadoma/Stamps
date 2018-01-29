@@ -928,7 +928,7 @@ module Stamps
         end
 
         def toolbar_tags
-          raise "toolbar_tags is not implemented"
+          raise 'Not Implemented'
         end
       end
 
@@ -1032,7 +1032,7 @@ module Stamps
         end
 
         def tooltip
-          raise "Tooltips are not implemented"
+          raise 'Not Implemented'
         end
       end
 

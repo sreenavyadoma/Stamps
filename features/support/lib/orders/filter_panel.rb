@@ -133,9 +133,9 @@ module Stamps
 
         def initialize(param)
           super
-          @textbox=StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
-          @search_button=StampsField.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
-          @search_results=SearchResults.new(param)
+          @textbox = StampsTextbox.new browser.text_field(css: "[placeholder='Search Orders']")
+          @search_button = StampsField.new browser.div(css: "[id^=textfield-][id$=-trigger-search]")
+          @search_results = SearchResults.new(param)
         end
 
         def textbox
@@ -178,7 +178,7 @@ module Stamps
         end
 
         def select
-          tab=StampsField.new(field)
+          tab = StampsField.new(field)
           40.times do
             tab.double_click
             tab.click
@@ -195,7 +195,7 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="Awaiting Shipment"
+          @panel_name = "Awaiting Shipment"
         end
 
         def count
@@ -208,7 +208,7 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="Shipped"
+          @panel_name = "Shipped"
         end
       end
 
@@ -217,7 +217,7 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="Canceled"
+          @panel_name = "Canceled"
         end
       end
 
@@ -226,7 +226,7 @@ module Stamps
         include FilterTabHelper
         def initialize(param)
           super
-          @panel_name="On Hold"
+          @panel_name = "On Hold"
         end
       end
 

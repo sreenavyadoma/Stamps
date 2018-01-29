@@ -243,15 +243,15 @@ module Stamps
             when :paypal
               (cache[:paypal_window].nil?||!cache[:paypal_window].present?)?cache[:paypal_window]=Browser::Base.new(param).extend(Orders::Stores::PayPalWindowTitle):cache[:paypal_window]
             when :ebay
-              raise "#{str} is not implemented."
+              raise 'Not Implemented'
             when :shopify
-              raise "#{str} is not implemented."
+              raise 'Not Implemented'
             when :amazon
-              raise "#{str} is not implemented."
+              raise 'Not Implemented'
             when :etsy
-              raise "#{str} is not implemented."
+              raise 'Not Implemented'
             when :magento
-              raise "#{str} is not implemented."
+              raise 'Not Implemented'
             when :square
               (cache[:square_window].nil?||!cache[:square_window].present?)?cache[:square_window]=Browser::StampsModal.new(param).extend(Orders::Stores::SqaureWindowTitle):cache[:square_window]
             when :opencart
