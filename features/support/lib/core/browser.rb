@@ -53,7 +53,11 @@ module Stamps
 
     # todo-Rob REW
     class StampsField
-      attr_accessor :field, :browser
+      class << self
+        attr_accessor :browser
+      end
+
+      attr_reader :field
       alias_method :checkbox, :field
       alias_method :radio, :field
       alias_method :textbox, :field
@@ -61,8 +65,16 @@ module Stamps
 
       def initialize(field)
         @field = field
-        @browser = field.browser
-        raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self}.browser = browser after creating this object." if @browser.nil?
+        self.class.browser = field.browser
+      end
+
+      def browser
+        raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self}.browser = browser after creating this object." if self.class.browser.nil?
+        self.class.browser
+      end
+
+      def browser=(browser)
+        self.class.browser = browser
       end
 
       def url
