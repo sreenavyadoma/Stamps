@@ -18,7 +18,7 @@ module Stamps
           end
 
           def cache
-            @cache.nil? ? raise(ArgumentError, "Cache not set for class #{self.to_s.split('::').last}") : @cache
+            @cache.nil? ? raise(ArgumentError, "Cache not set for #{self.to_s.split('::').last}") : @cache
           end
         end
       end
