@@ -366,8 +366,8 @@ module Stamps
               break if signed_in_user.present?
             end
             return signed_in_user.text
-          rescue Exception => e
-            logger.error "#{e.message}\n#{e.backtrace.join '\n'}"
+          rescue
+            # ignore
           end
 
           raise "Unable to sign-in with credentials #{usr}/#{pw}"
