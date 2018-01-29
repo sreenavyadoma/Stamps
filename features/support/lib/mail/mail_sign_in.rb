@@ -365,7 +365,6 @@ module Stamps
               end
               break if signed_in_user.present?
             end
-            logger.message "#{'#' * 15}\nSigned-in User: #{signed_in_user.text}\n#{'#' * 15}"
             return signed_in_user.text
           rescue Exception => e
             logger.error "#{e.message}\n#{e.backtrace.join '\n'}"
