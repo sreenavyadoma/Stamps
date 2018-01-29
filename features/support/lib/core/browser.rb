@@ -2,11 +2,7 @@ module Stamps
   ##
   #
   module Browser
-    unless Object.const_defined?('Param')
-      Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media,
-                         :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) do
-      end
-    end
+    Param = Struct.new(:browser, :logger, :scenario_name, :web_app, :test_env, :health_check, :usr, :pw, :url, :print_media, :developer, :debug, :firefox_profile, :printer, :browser_str, :hostname) {} unless Object.const_defined?('Param')
 
     ##
     #
