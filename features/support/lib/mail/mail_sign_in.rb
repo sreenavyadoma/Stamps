@@ -369,6 +369,7 @@ module Stamps
           rescue Exception => e
             logger.error "#{e.message}\n#{e.backtrace.join '\n'}"
           end
+
           raise "Unable to sign-in with credentials #{usr}/#{pw}"
         end
 
