@@ -57,19 +57,21 @@ module Stamps
         attr_accessor :browser
       end
 
-      attr_reader :field
+      def initialize(field)
+        @field = field
+        self.browser = field.browser unless field.browser.nil?
+      end
+
+      def field
+        @field
+      end
       alias_method :checkbox, :field
       alias_method :radio, :field
       alias_method :textbox, :field
       alias_method :input, :field
 
-      def initialize(field)
-        @field = field
-        self.class.browser = field.browser
-      end
-
       def browser
-        raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self}.browser = browser after creating this object." if self.class.browser.nil?
+        raise ArgumentError, "browser is nil for html field #{field.class}. Set #{self.class.to_s.split('::').last}.browser = browser after creating this object." if self.class.browser.nil?
         self.class.browser
       end
 
